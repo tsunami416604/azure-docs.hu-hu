@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636240"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551982"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változót. Ha meg van adva, a rendszer a tároló inicializálása során figyelmen kívül hagyja ezt a környezeti változót.
 
-| Környezeti változó | Description |
+| Környezeti változó | Leírás |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az **1** érték például engedélyezve van, és a **0** le van tiltva. |
 
@@ -73,13 +73,13 @@ Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot
 
 A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |:---|:---|
 |**Felhasználói visszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
 |**Adatbázisbeli levelezési profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
 |**Magas rendelkezésre állás** | Rendelkezésre állási csoportok engedélyezése. |
 |**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
-|**MLServices végfelhasználói licencszerződései** | Az R-és Python-LICENCSZERZŐDÉSek elfogadása Azure Machine Learning csomagokhoz. Csak SQL Server 2019-es verzióra vonatkozik.|
+|**A ML-szolgáltatások végfelhasználói licencszerződései** | Az R-és Python-LICENCSZERZŐDÉSek elfogadása Azure Machine Learning csomagokhoz. Csak SQL Server 2019-es verzióra vonatkozik.|
 |**outboundnetworkaccess** |Engedélyezze a kimenő hálózati hozzáférést [Machine learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R-, Python-és Java-bővítményekhez.|
 
 Az alábbi minta MSSQL. conf fájl az SQL Edge esetében működik. Az MSSQL. conf fájl formátumával kapcsolatos további információkért lásd az [MSSQL. conf formátumot](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
@@ -114,7 +114,52 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="run-azure-sql-edge-as-non-root-user"></a>Az Azure SQL Edge futtatása nem gyökérszintű felhasználóként
+
+Az Azure SQL Edge CTP 2.2-től kezdve az SQL Edge-tárolók nem gyökérszintű felhasználóval vagy csoporttal futhatnak. Ha az Azure piactéren helyezi üzembe a programot, kivéve, ha egy másik felhasználó/csoport van megadva, az SQL Edge-tárolók az MSSQL (nem gyökérszintű) felhasználóként kezdődnek. Ha másik nem root felhasználót szeretne megadni az üzembe helyezés során, adja hozzá a `*"User": "<name|uid>[:<group|gid>]"*` kulcs-érték párokat a tároló létrehozási beállításai között. Az alábbi példában az SQL Edge úgy van konfigurálva, hogy felhasználóként induljon el `*IoTAdmin*` .
+
+```json
+{
+    ..
+    ..
+    ..
+    "User": "IoTAdmin",
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "MSSQL_PID=Premium"
+    ]
+}
+```
+
+Annak engedélyezéséhez, hogy a nem legfelső szintű felhasználó hozzáférjen a csatlakoztatott köteteken található adatbázis-fájlokhoz, győződjön meg arról, hogy a tárolóban futtatott felhasználó/csoport olvasási & írási engedéllyel rendelkezik az állandó fájl tárolásához. Az alábbi példában a nem root felhasználót a fájlok tulajdonosaként user_id 10001-es értékre állítjuk. 
+
+```bash
+chown -R 10001:0 <database file dir>
+```
+
+### <a name="upgrading-from-earlier-ctp-releases"></a>Frissítés korábbi CTP-kiadásokból
+
+Az Azure SQL Edge korábbi CTP-je úgy lett konfigurálva, hogy legfelső szintű felhasználóként fusson. A korábbi CTP-ről való frissítéskor a következő lehetőségek érhetők el:
+
+- Továbbra is használhatja a root felhasználót – a root felhasználó használatának folytatásához adja hozzá a `*"User": "0:0"*` kulcs-érték párokat a tároló létrehozása lehetőség alatt.
+- Az alapértelmezett MSSQL-felhasználó használata – az alapértelmezett MSSQL-felhasználó használata, kövesse az alábbi lépéseket
+  - Adjon hozzá egy MSSQL nevű felhasználót a Docker-gazdagépen. Az alábbi példában egy 10001-es AZONOSÍTÓJÚ felhasználói MSSQL-t adunk hozzá. Ezt a felhasználót a rendszer a legfelső szintű csoportba is felveszi.
+    ```bash
+    sudo useradd -M -s /bin/bash -u 10001 -g 0 mssql
+    ```
+  - Módosítsa az engedélyt arra a könyvtárra/csatlakoztatási kötetre, ahol az adatbázisfájl található 
+    ```bash
+    sudo chgrp -R 0 /var/lib/docker/volumes/kafka_sqldata/
+    sudo chmod -R g=u /var/lib/docker/volumes/kafka_sqldata/
+    ```
+- Másik nem gyökérszintű felhasználói fiók használata – másik nem gyökérszintű felhasználói fiók használata
+  - A tároló-létrehozási beállítások módosításával adja meg a `*"User": "user_name | user_id*` kulcs-érték párokat a tároló létrehozása lehetőség alatt. Cserélje le user_name vagy user_id a Docker-gazdagépről származó tényleges user_name vagy user_idra. 
+  - Módosítsa a könyvtár/csatlakoztatási kötet engedélyeit.
+
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

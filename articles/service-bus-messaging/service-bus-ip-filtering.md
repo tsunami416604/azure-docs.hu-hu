@@ -3,12 +3,12 @@ title: A Azure Service Bus IP-tűzfalszabályok konfigurálása
 description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 378f8a6331c18b2c99e3e08e83021878f7384c2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e9b39f1b163a894bf4831662ac050463086133d5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418515"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552917"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Azure Service Bus névtér elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -34,6 +34,7 @@ Az IP-tűzfalszabályok a Service Bus névtér szintjén lesznek alkalmazva. Ez�
 > A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
 > - Azure App Service
 > - Azure Functions
+> - Azure Monitor (diagnosztikai beállítás)
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfalszabályok létrehozásához egy Service Bus névtérhez. 

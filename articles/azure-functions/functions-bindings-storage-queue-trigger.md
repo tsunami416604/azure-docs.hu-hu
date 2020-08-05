@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 920f53fa962cc30f2068d78c9d1907b93019fe34
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055848"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564044"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure üzenetsor-tárolási trigger a Azure Functionshoz
 
@@ -163,7 +163,7 @@ A tárolási várólista-trigger olyanfunction.jsvan definiálva, ahol *a* *típ
 }
 ```
 
-Az * _ \_ init_. a. a. a (z \_ ). a.* `func.ServiceBusMessage`
+Az * _ \_ init_. a. a. a (z \_ ). a.* `func.QueueMessage`
 
 ```python
 import logging
@@ -311,7 +311,7 @@ public class QueueTriggerDemo {
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `QueueTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a.| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba**| n.a. | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -363,7 +363,7 @@ A [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger
 
 A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tagjai.
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor-üzenet tartalma egy karakterlánc, akkor a `QueueTrigger` `name` *function.js*tulajdonságban megnevezett változóval megegyező értékkel rendelkezik.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|
@@ -406,7 +406,7 @@ A várólista-trigger automatikusan megakadályozza, hogy a függvény többszö
 
 A [host.js](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [meg ahost.json Settings](functions-bindings-storage-queue-output.md#hostjson-settings) szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Írási várólista tárolási üzenetei (kimeneti kötés)](./functions-bindings-storage-blob-output.md)
 

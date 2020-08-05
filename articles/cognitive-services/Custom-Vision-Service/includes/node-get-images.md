@@ -13,4 +13,4 @@ ms.locfileid: "67179445"
 ---
 ## <a name="get-the-sample-images"></a>Mintaképek letöltése
 
-Ez a példa a [Cognitive Services Node. js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) Samples **/customvision/images** könyvtárában található rendszerképeket használja a githubon. Klónozza vagy töltse le ezt az adattárat a fejlesztői környezetbe.
+Ez a példa a [Cognitive Services Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) **-** minták tárházát használja a githubon. Klónozza vagy töltse le ezt az adattárat a fejlesztői környezetbe.

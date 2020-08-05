@@ -1,7 +1,7 @@
 ---
-title: Az Azure AD App SAML-jogcímek testreszabása
+title: Alkalmazás SAML-token jogcímek testreszabása
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan szabhatja testre az SAML-jogkivonat által az Azure AD-ben közzétett vállalati alkalmazásokhoz kiadott jogcímeket.
+description: Megtudhatja, hogyan szabhatja testre a Microsoft Identity platform által kibocsátott jogcímeket a vállalati alkalmazások SAML-jogkivonatában.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5cce985e3f63ade94fb626d18bded440caeff1fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274468"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552832"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
-Napjainkban a Azure Active Directory (Azure AD) támogatja az egyszeri bejelentkezést (SSO) a legtöbb nagyvállalati alkalmazással, beleértve az Azure AD-katalógusban és az egyéni alkalmazásokban előre integrált alkalmazásokat is. Amikor egy felhasználó az SAML 2,0 protokollal hitelesíti az alkalmazást az Azure AD-n keresztül, az Azure AD tokent küld az alkalmazásnak (HTTP-POSTon keresztül). Ezután az alkalmazás érvényesíti és használja a jogkivonatot a felhasználó bejelentkezésére a Felhasználónév és a jelszó kérése helyett. Ezek az SAML-tokenek a *jogcímek*által ismert felhasználóra vonatkozó adatokat tartalmaznak.
+Napjainkban a Microsoft Identity platform támogatja az egyszeri bejelentkezést (SSO) a legtöbb nagyvállalati alkalmazással, beleértve az Azure AD-katalógusban és az egyéni alkalmazásokban előre integrált alkalmazásokat is. Amikor a felhasználó az SAML 2,0 protokoll használatával hitelesít egy alkalmazást a Microsoft Identity platformon keresztül, a Microsoft Identity platform tokent küld az alkalmazásnak (HTTP-POSTon keresztül). Ezután az alkalmazás érvényesíti és használja a jogkivonatot a felhasználó bejelentkezésére a Felhasználónév és a jelszó kérése helyett. Ezek az SAML-tokenek a *jogcímek*által ismert felhasználóra vonatkozó adatokat tartalmaznak.
 
 A *jogcím* olyan információ, amelyet az identitás-szolgáltató az adott felhasználóhoz tartozó jogkivonatban lévő felhasználóval kapcsolatos. Az [SAML-tokenben](https://en.wikipedia.org/wiki/SAML_2.0)ezeket az adatok JELLEMZŐEN az SAML-attribútum utasításában találhatók. A felhasználó egyedi AZONOSÍTÓját általában az SAML-tulajdonos jelöli, más néven a name Identifier.
 
-Alapértelmezés szerint az Azure AD olyan SAML-jogkivonatot állít ki az alkalmazásnak, amely a `NameIdentifier` felhasználó felhasználónevét (más néven az egyszerű felhasználónevet) tartalmazza az Azure ad-ben, amely egyedileg azonosíthatja a felhasználót. Az SAML-jogkivonat a felhasználó e-mail-címét, utónevét és vezetéknevét tartalmazó további jogcímeket is tartalmaz.
+Alapértelmezés szerint a Microsoft Identity platform egy SAML-jogkivonatot bocsát ki az alkalmazásnak, amely a `NameIdentifier` felhasználó felhasználónevét (más néven az egyszerű felhasználónevet) tartalmazza az Azure ad-ben, amely egyedileg azonosíthatja a felhasználót. Az SAML-jogkivonat a felhasználó e-mail-címét, utónevét és vezetéknevét tartalmazó további jogcímeket is tartalmaz.
 
 Az SAML-jogkivonatban kiadott jogcímek megtekintéséhez vagy módosításához nyissa meg az alkalmazást Azure Portalban. Ezután nyissa meg a **felhasználói attribútumok & jogcímek** szakaszt.
 
@@ -48,19 +48,19 @@ A NameID (név azonosító érték) szerkesztése:
 
 ### <a name="nameid-format"></a>NameID formátuma
 
-Ha az SAML-kérelem megadott formátumú NameIDPolicy tartalmaz, az Azure AD tiszteletben tartja a kérelem formátumát.
+Ha az SAML-kérelem megadott formátumú NameIDPolicy tartalmaz, a Microsoft Identity platform tiszteletben tartja a kérelem formátumát.
 
-Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, az Azure AD a megadott formátumban adja ki a NameID. Ha nincs megadva a formátum, az Azure AD a jogcím forrásához társított alapértelmezett formátumot fogja használni.
+Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, akkor a Microsoft Identity platform a megadott formátumban fogja kiadni a NameID. Ha nincs megadva a formátum, a Microsoft Identity platform a kiválasztott jogcím forrásához társított alapértelmezett formátumot fogja használni.
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
 | NameID formátuma | Leírás |
 |---------------|-------------|
-| **Alapértelmezett** | Az Azure AD az alapértelmezett forrás formátumot fogja használni. |
-| **Állandó** | Az Azure AD a NameID formátumot használja állandóként. |
-| **EmailAddress** | Az Azure AD az EmailAddress formátumot fogja használni NameID formátumban. |
-| **Meghatározatlan** | Az Azure AD nem megadott NameID formátumot használ. |
-| **Windows-tartomány minősített neve** | Az Azure AD a WindowsDomainQualifiedName-t NameID formátumként fogja használni. |
+| **Alapértelmezett** | A Microsoft Identity platform az alapértelmezett forrás formátumot fogja használni. |
+| **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
+| **EmailAddress** | A Microsoft Identity platform NameID formátumban fogja használni az EmailAddress formátumot. |
+| **Meghatározatlan** | A Microsoft Identity platform NameID formátuma nem lesz meghatározva. |
+| **Windows-tartomány minősített neve** | A Microsoft Identity platform NameID formátumban fogja használni a WindowsDomainQualifiedName-t. |
 
 Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, és nem konfigurálható az Azure oldalán. További információ a NameIDPolicy attribútumról: [egyszeri bejelentkezéses SAML protokoll](single-sign-on-saml-protocol.md).
 
@@ -169,13 +169,13 @@ Jogcím feltételének hozzáadása:
 
 Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiértékeli a feltételeket felülről lefelé, hogy eldöntse, melyik értéket kell kibocsátania a jogcímben. 
 
-A Britta Simon például egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációjának megfelelően, amikor a Britta megpróbál bejelentkezni a fabrikam szolgáltatásba, az Azure AD az alábbi feltételeket fogja kiértékelni.
+A Britta Simon például egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációjának megfelelően, amikor a Britta megpróbál bejelentkezni a fabrikam szolgáltatásba, a Microsoft Identity platform az alábbi feltételek szerint értékeli ki a feltételeket.
 
-Először is az Azure AD ellenőrzi, hogy a Britta felhasználói típusa a-e `All guests` . Mivel ez igaz, az Azure AD hozzárendeli a jogcím forrását a következőhöz: `user.extensionattribute1` . Másodszor, az Azure AD ellenőrzi, hogy a Britta felhasználói típusa van `AAD guests` -e, mivel ez is igaz, az Azure ad hozzárendeli a jogcímek forrását `user.mail` . Végezetül a jogcím a Britta értékével van kibocsátva `user.mail` .
+Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasználói típusa a-e `All guests` . Mivel ez igaz, a Microsoft Identity platform hozzárendeli a jogcímek forrását a következőhöz: `user.extensionattribute1` . Másodszor, a Microsoft Identity platform ellenőrzi, hogy a Britta felhasználói típusa van `AAD guests` -e, mivel ez is igaz, a Microsoft Identity platform hozzárendeli a jogcímek forrását `user.mail` . Végezetül a jogcím a Britta értékével van kibocsátva `user.mail` .
 
 ![Feltételes konfiguráció igénylése](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)

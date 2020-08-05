@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187676"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563993"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-hitelesítés engedélyezése az Azure-SSIS integrációs modulhoz
 
@@ -128,7 +128,7 @@ Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https
 
    A parancsnak sikeresen el kell végeznie, és meg kell adnia a tárolt felhasználó számára, hogy létre tudja hozni az adatbázist (SSISDB).
 
-10. Ha a SSISDB SQL-hitelesítéssel lett létrehozva, és az Azure AD-hitelesítés használatára szeretné használni a Azure-SSIS IR az eléréséhez, kattintson a jobb gombbal a **SSISDB** -adatbázisra, és válassza az **Új lekérdezés**elemet.
+10. Ha a SSISDB SQL-hitelesítéssel lett létrehozva, és az Azure AD-hitelesítés használatára szeretné használni a Azure-SSIS IR az eléréséhez, először győződjön meg arról, **hogy a főadatbázishoz** való hozzáférés engedélyezésének lépései sikeresen befejeződtek. Ezután kattintson a jobb gombbal a **SSISDB** -adatbázisra, és válassza az **Új lekérdezés**elemet.
 
 11. A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza a **végrehajtás** lehetőséget az eszköztáron.
 
@@ -176,7 +176,7 @@ Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https
     
     A parancsnak sikeresen végre kell hajtania az ADF felügyelt identitásának megadását, amely lehetővé teszi egy adatbázis (SSISDB) létrehozását.
 
-6.  Ha a SSISDB SQL-hitelesítéssel lett létrehozva, és az Azure AD-hitelesítés használatára szeretné használni a Azure-SSIS IR az eléréséhez, kattintson a jobb gombbal a **SSISDB** -adatbázisra, és válassza az **Új lekérdezés**elemet.
+6.  Ha a SSISDB SQL-hitelesítéssel lett létrehozva, és az Azure AD-hitelesítés használatára szeretné használni a Azure-SSIS IR az eléréséhez, először győződjön meg arról, **hogy a főadatbázishoz** való hozzáférés engedélyezésének lépései sikeresen befejeződtek. Ezután kattintson a jobb gombbal a **SSISDB** -adatbázisra, és válassza az **Új lekérdezés**elemet.
 
 7.  A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza a **végrehajtás** lehetőséget az eszköztáron.
 

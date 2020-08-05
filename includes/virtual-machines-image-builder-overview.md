@@ -4,13 +4,13 @@ ms.author: cynthn
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+manager: daberry
+ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545289"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554905"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -56,6 +56,7 @@ A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatn
 - Windows 2019
 
 A RHEL ISOs-támogatás már nem támogatott.
+
 ## <a name="how-it-works"></a>Működés
 
 
@@ -99,9 +100,9 @@ A rendszerkép-készítő létrehoz egy virtuális gépet egy D1v2 VM-mérettel,
 Az Azure-rendszerkép-szerkesztő továbbítja a rendszerképet a kiválasztott régióknak, ami hálózati kimenő forgalomra is felmerülhet.
 
 ## <a name="hyper-v-generation"></a>Hyper-V generáció
-A képszerkesztő jelenleg az 1. generációs Hyper-V-lemezképeket és virtuális gépeket támogatja.
+Az Image Builder jelenleg a Hyper-V 1. generációs lemezképeket és virtuális gépeket támogatja.
  
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
  
 Az Azure Image Builder kipróbálásához tekintse meg a [Linux](../articles/virtual-machines/linux/image-builder.md) -és [Windows](../articles/virtual-machines/windows/image-builder.md) -rendszerképek készítésével foglalkozó cikkeket.
  

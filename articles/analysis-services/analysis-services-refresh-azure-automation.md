@@ -2,16 +2,16 @@
 title: Azure Analysis Services modellek frissítése a Azure Automationsal | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet kódokat frissíteni a Azure Analysis Services számára a Azure Automation használatával.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025404"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553903"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -223,7 +223,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Példák](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

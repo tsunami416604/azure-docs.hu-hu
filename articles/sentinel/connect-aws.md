@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564575"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563058"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 
-Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes eseményét az Azure Sentinelbe. Ez a kapcsolati folyamat delegálja az Azure Sentinel hozzáférését az AWS-erőforrás naplóihoz, és megbízhatósági kapcsolatot létesít az AWS CloudTrail és az Azure Sentinel között. Ez az AWS-ben valósítható meg egy olyan szerepkör létrehozásával, amely engedélyt ad az Azure Sentinelnek az AWS-naplók elérésére.
+Használja az AWS-összekötőt az AWS CloudTrail-kezelési események Azure Sentinelbe való továbbításához. Ez a kapcsolati folyamat delegálja az Azure Sentinel hozzáférését az AWS-erőforrás naplóihoz, és megbízhatósági kapcsolatot létesít az AWS CloudTrail és az Azure Sentinel között. Ez az AWS-ben valósítható meg egy olyan szerepkör létrehozásával, amely engedélyt ad az Azure Sentinelnek az AWS-naplók elérésére.
 
 > [!NOTE]
 > Az AWS CloudTrail [beépített korlátozásokkal](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) rendelkezik a LookupEvents API-ban. A szolgáltatás legfeljebb két tranzakció/másodperc (TPS) használatát teszi lehetővé, és mindegyik lekérdezés legfeljebb 50 rekordot tud visszaadni. Ennek következtében, ha egyetlen bérlő egy régióban másodpercenként több mint 100 rekordot generál, az adatfeldolgozás során várakozó fájlok és késések is megmaradnak.
@@ -33,7 +33,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 Írási engedéllyel kell rendelkeznie az Azure Sentinel munkaterületen.
 
 > [!NOTE]
-> Az Azure Sentinel minden régióból gyűjt CloudTrail eseményeket. Azt javasoljuk, hogy ne továbbítsa az eseményeket egyik régióból a másikba.
+> Az Azure Sentinel minden régióból gyűjt CloudTrail-kezelési eseményeket. Azt javasoljuk, hogy ne továbbítsa az eseményeket egyik régióból a másikba.
 
 ## <a name="connect-aws"></a>Az AWS csatlakoztatása 
 
@@ -82,7 +82,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az AWS CloudTrail az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

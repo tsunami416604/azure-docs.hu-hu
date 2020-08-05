@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128930"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562412"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -44,6 +44,10 @@ Nem, ez a forgatókönyv nem támogatott. Az alapértelmezett beállítások a k
 
 - Microsoft HRE Application proxy-összekötő – WAPCSvc – hálózati szolgáltatás
 - Microsoft AAD Application Proxy Connector Updater-WAPCUpdaterSvc-NT Authority\System
+
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>A globális rendszergazda vagy az alkalmazás-rendszergazda szerepkörrel rendelkező vendég felhasználó regisztrálja az összekötőt a (vendég) bérlőhöz?
+
+Nem, jelenleg ez nem lehetséges. A regisztrációs kísérlet mindig a felhasználó otthoni bérlője számára történik.
 
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>A háttérben futó alkalmazás több webkiszolgálón üzemel, és felhasználói munkamenetek megőrzését igényli. Hogyan lehet elérni a munkamenetek megőrzését? 
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318113"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563840"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
 A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 [Azure monitor](overview.md) egy Azure-szolgáltatás, amely teljesítmény-és rendelkezésre állási monitorozást biztosít az Azure-ban, más felhőalapú környezetekben vagy helyszíni környezetben futó alkalmazások és szolgáltatások számára. Azure Monitor a különböző forrásokból származó adatokat egy közös adatplatformba gyűjti, ahol elemezni lehet a trendeket és a rendellenességeket. A Azure Monitor gazdag funkciói segítenek gyorsan azonosítani és reagálni azokra a kritikus helyzetekre, amelyek hatással lehetnek az alkalmazásra.
@@ -121,7 +121,7 @@ A műveleti csoport a riasztások által aktiválható értesítések és művel
 
 
 ### <a name="what-is-an-action-rule"></a>Mi az a műveleti szabály?
-A műveleti szabályok lehetővé teszik egy adott feltételnek megfelelő riasztások viselkedésének módosítását. Ez lehetővé teszi az ilyen követelmények elvégzését a riasztási műveletek letiltásával a karbantartási időszakokban. Egy műveleti csoportot riasztási csoportra is alkalmazhat, ahelyett, hogy közvetlenül a riasztási szabályokra alkalmazná őket. Lásd: [műveleti szabályok](platform/alerts-action-rules.md).
+A műveleti szabályok lehetővé teszik egy adott feltételnek megfelelő riasztások viselkedésének módosítását. Ez lehetővé teszi az ilyen követelmények végrehajtását, mint a riasztási műveletek letiltását a karbantartási időszakban. Egy műveleti csoportot riasztási csoportra is alkalmazhat, ahelyett, hogy közvetlenül a riasztási szabályokra alkalmazná őket. Lásd: [műveleti szabályok](platform/alerts-action-rules.md).
 
 ## <a name="agents"></a>Ügynökök
 
@@ -137,7 +137,7 @@ Az Azure diagnosztikai bővítmény az Azure Virtual Machines szolgáltatáshoz 
 A Azure Monitor felé irányuló forgalom a Microsoft peering ExpressRoute áramkört használja. A különböző típusú ExpressRoute-forgalom leírását a [ExpressRoute dokumentációjában](../expressroute/expressroute-faqs.md#supported-services) találja. 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Hogyan ellenőrizhető, hogy az Log Analytics ügynök képes-e kommunikálni a Azure Monitorokkal?
-Az ügynök számítógépének Vezérlőpultján válassza a **biztonsági & beállítások**, **Microsoft monitoring Agent** lehetőséget. Az **Azure log Analytics (OMS)** lapon a zöld pipa ikon megerősíti, hogy az ügynök képes kommunikálni a Azure monitorokkal. A sárga figyelmeztető ikon azt jelzi, hogy az ügynök problémába ütközik. Ennek egyik gyakori oka, hogy a **Microsoft monitoring Agent** szolgáltatás leállt. A Service Control Manager használatával indítsa újra a szolgáltatást.
+Az ügynök számítógépének Vezérlőpultján válassza a **biztonsági & beállítások**, * * Microsoft monitoring Agent lehetőséget. Az **Azure log Analytics (OMS)** lapon a zöld pipa ikon megerősíti, hogy az ügynök képes kommunikálni a Azure monitorokkal. A sárga figyelmeztető ikon azt jelzi, hogy az ügynök problémába ütközik. Ennek egyik gyakori oka, hogy a **Microsoft monitoring Agent** szolgáltatás leállt. A Service Control Manager használatával indítsa újra a szolgáltatást.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hogyan leállítani a Log Analytics-ügynököt a Azure Monitorsal folytatott kommunikációhoz?
 Log Analytics közvetlenül csatlakozó ügynökökhöz nyissa meg a Vezérlőpultot, és válassza a **biztonsági & beállítások**, majd a **Microsoft monitoring Agent**lehetőséget. Az **Azure log Analytics (OMS)** lapon távolítsa el a felsorolt munkaterületeket. A System Center Operations Manager távolítsa el a számítógépet a Log Analytics felügyelt számítógépek listából. Operations Manager frissíti az ügynök konfigurációját, hogy a továbbiakban ne jelentsen Log Analytics. 
@@ -207,7 +207,7 @@ A tervező csak közreműködői engedélyekkel rendelkező felhasználók szám
 * [ASP.NET-kiszolgáló beállítása](app/monitor-performance-live-website-now.md)
 * [Java-kiszolgáló beállítása](app/java-agent.md)
 
-*Hány Application Insightst kell üzembe helyezni?:*
+*Hány Application Insights erőforrást kell üzembe helyezni:*
 
 * [A Application Insights üzembe helyezésének megtervezése: egy vagy több Application Insights erőforrás?](app/separate-resources.md)
 
@@ -272,7 +272,7 @@ Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
-[További információ](app/monitor-performance-live-website-now.md#questions).
+[További információk](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
@@ -315,10 +315,10 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 
 * Böngésző telemetria: összegyűjtjük a küldő IP-címét.
 * Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
-* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
+* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan lesznek begyűjtve Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
 
 
-Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információ](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -509,6 +509,15 @@ A legtöbb Application Insights adat 5 perces késéssel rendelkezik. Egyes adat
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>A HTTP 502 és a 503 választ nem mindig rögzíti Application Insights
+
+a "502 hibás átjáró" és "503 szolgáltatás nem érhető el" hibaüzeneteket a Application Insights nem mindig rögzíti. Ha csak ügyféloldali JavaScript van használatban a figyeléshez, ez a várt viselkedés, mivel a rendszer a hibaüzenetet a HTML-fejlécet tartalmazó oldal előtt adja vissza. 
+
+Ha az 502-es vagy a 503-es választ egy kiszolgálóoldali figyelést engedélyező kiszolgálóról küldték, a hibákat a Application Insights SDK fogja gyűjteni. 
+
+Azonban még mindig vannak olyan esetek, amikor a kiszolgálóoldali figyelés engedélyezve van egy alkalmazás webkiszolgálóján, hogy a Application Insights nem rögzíti a 502 vagy 503 hibát. Számos modern webkiszolgáló nem teszi lehetővé, hogy az ügyfelek közvetlenül kommunikáljanak egymással, hanem olyan megoldásokat alkalmaznak, mint a fordított proxyk, amelyekkel az ügyfél és az előtér-webkiszolgálók között oda-vissza továbbíthatja az adatokat. 
+
+Ebben a forgatókönyvben egy 502-es vagy 503-os választ lehet visszaadni az ügyfélnek egy fordított proxys rétegbeli probléma miatt, és ezt a Application Insights nem rögzíti. Ennek a rétegnek a problémáinak észlelése érdekében előfordulhat, hogy a fordított proxyról át kell küldenie a naplókat Log Analytics és létre kell hoznia egy egyéni szabályt a 502/503-válaszok ellenőrzéséhez. Ha többet szeretne megtudni a 502-es és a 503-es hibák gyakori okairól, tekintse meg a ["502 Bad Gateway" és a "503 szolgáltatás nem érhető el" című Azure app Service hibaelhárítási cikkét](../app-service/troubleshoot-http-502-http-503.md).     
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 
@@ -732,7 +741,7 @@ Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log A
 Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.
 
 - [Log Analytics](/answers/topics/azure-monitor.html)

@@ -3,18 +3,18 @@ title: Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
 description: Új Azure IoT Central-alkalmazás létrehozása. Hozza létre az alkalmazást az ingyenes díjszabási csomag vagy az egyik standard díjszabási csomag használatával.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/12/2020
+ms.date: 07/30/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758143"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552577"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -43,8 +43,11 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
     ![Azure IoT Central számlázási adatok](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Ha az előző oldalon az **egyéni alkalmazás** lehetőséget választotta, megjelenik egy **alkalmazás-sablon** legördülő lista. Innen válthat az egyéni és a régi sablonok között. Előfordulhat, hogy a szervezete számára elérhetővé tett egyéb sablonokat is láthat.
+    > Ha az előző oldalon az **egyéni alkalmazás** lehetőséget választotta, megjelenik egy alkalmazás- **sablon** legördülő lista. Előfordulhat, hogy a legördülő menü más sablonokat is tartalmaz, amelyeket a szervezete számára elérhetővé tettek. 
 
+    >[!IMPORTANT]
+    >Az **egyéni alkalmazás (örökölt)** sablon (v2) ki lett vonva, mivel az örökölt alkalmazás sablonjában korábban elérhető lehetőségek már elérhetők a legújabb **egyéni alkalmazás** sablonjában (v3). 
+    
 1. Válassza ezt az alkalmazást a 7 napos ingyenes próbaverzió díjszabási csomagjának használatával, vagy a standard díjszabási csomagok valamelyikével:
 
     - Az *ingyenes* csomag használatával létrehozott alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. Egy standard díjszabási csomag használatára a lejárat előtt bármikor átalakítható.
@@ -57,7 +60,7 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
     ![Azure IoT Central-alkalmazás](media/quick-deploy-iot-central/iotcentral-application.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő lépés a IoT Central megismerésének folytatása:
 

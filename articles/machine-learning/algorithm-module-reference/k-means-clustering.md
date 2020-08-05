@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/19/2020
-ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/04/2020
+ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921164"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553002"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
@@ -62,7 +62,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
 3.  A **Centroids száma**mezőben adja meg, hogy hány fürtből kell kezdeni az algoritmust.  
   
-     A modell nem garantált, hogy pontosan ezt a számú fürtöt hozza létre. Az algoritmus ezzel a számú adatponttal és iterációval kezdődik az optimális konfiguráció megtalálásához.  
+     A modell nem garantált, hogy pontosan ezt a számú fürtöt hozza létre. Az algoritmus ezzel a számú adatponttal és iterációval kezdődik az optimális konfiguráció megtalálásához. A [sklearn forráskódját](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069)a következő címen tekintheti meg:.
   
 4.  A tulajdonságok **inicializálásával** adhatja meg a fürt kezdeti konfigurációjának definiálásához használt algoritmust.  
   
@@ -143,6 +143,6 @@ Ezt a problémát több módon is elkerülheti:
   
 A fürtözési modellek esetében általánosságban lehetséges, hogy bármely adott konfiguráció a fürtök helyileg optimalizált halmazát fogja eredményezni. Más szóval a modell által visszaadott fürtök halmaza csak az aktuális adatpontokat, és nem általánosítható más adatértékekhez. Ha más kezdeti konfigurációt használ, a K-Mean metódus egy másik, magasabb szintű konfigurációt is talál. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

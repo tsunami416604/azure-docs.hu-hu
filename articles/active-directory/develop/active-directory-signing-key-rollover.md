@@ -1,5 +1,5 @@
 ---
-title: Kulcs átváltásának aláírása az Azure AD-ben
+title: Kulcs átváltásának aláírása a Microsoft Identity platformon
 description: Ez a cikk a Azure Active Directoryhoz tartozó, az aláírási kulcsra vonatkozó ajánlott eljárásokat ismerteti.
 services: active-directory
 author: rwike77
@@ -12,20 +12,20 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537236"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552764"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>A kulcsok átváltásának aláírása Azure Active Directory
-Ez a cikk azt ismerteti, hogy mit kell tudni az Azure Active Directory (Azure AD) szolgáltatásban használt nyilvános kulcsokról a biztonsági jogkivonatok aláírásához. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként, és vészhelyzetben azonnal összeállíthatók. Az Azure AD-t használó összes alkalmazásnak képesnek kell lennie programozott módon kezelni a kulcs átváltási folyamatát, vagy létre kell hoznia egy rendszeres manuális átváltási folyamatot. Folytassa az olvasással, hogy megtudja, hogyan működik a kulcsok működése, hogyan állapítható meg a rollover hatása az alkalmazásra, illetve hogyan lehet frissíteni az alkalmazást, vagy létre kell hozni egy rendszeres manuális átütemezési folyamatot a kulcsok átváltásához, ha szükséges.
+# <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
+Ez a cikk azt ismerteti, hogy mit kell tudni a Microsoft Identity platform által a biztonsági jogkivonatok aláírásához használt nyilvános kulcsokról. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként, és vészhelyzetben azonnal összeállíthatók. A Microsoft Identity platformot használó összes alkalmazásnak képesnek kell lennie programozott módon kezelni a kulcs-átváltási folyamatot, vagy létre kell hoznia egy rendszeres manuális átváltási folyamatot. Folytassa az olvasással, hogy megtudja, hogyan működik a kulcsok működése, hogyan állapítható meg a rollover hatása az alkalmazásra, illetve hogyan lehet frissíteni az alkalmazást, vagy létre kell hozni egy rendszeres manuális átütemezési folyamatot a kulcsok átváltásához, ha szükséges.
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure AD-beli aláíró kulcsok áttekintése
-Az Azure AD az iparági szabványokon alapuló, nyilvános kulcsú titkosítást használ a saját maga és az azt használó alkalmazások közötti megbízhatósági kapcsolat létrehozásához. A gyakorlatban ez a következő módon működik: az Azure AD egy nyilvános és titkos kulcspárből álló aláíró kulcsot használ. Amikor egy felhasználó bejelentkezik egy Azure AD-t használó alkalmazásba a hitelesítéshez, az Azure AD létrehoz egy biztonsági jogkivonatot, amely a felhasználóval kapcsolatos információkat tartalmaz. Ezt a jogkivonatot az Azure AD írja alá a saját titkos kulcsával, mielőtt visszaküldi az alkalmazásnak. Annak ellenőrzéséhez, hogy a jogkivonat érvényes-e, és az Azure AD-ből származik, az alkalmazásnak ellenőriznie kell a jogkivonat aláírását az Azure AD által közzétett nyilvános kulccsal, amely a bérlő [OpenID Connect Discovery-dokumentumában](https://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML/ws-fed [összevonási metaadat-dokumentumában](../azuread-dev/azure-ad-federation-metadata.md)található.
+## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Az aláíró kulcsok áttekintése a Microsoft Identity platformon
+A Microsoft Identity platform az iparági szabványokon alapuló, nyilvános kulcsú titkosítást használ a saját maga és az azt használó alkalmazások közötti megbízhatósági kapcsolat létrehozásához. A gyakorlatban ez a következő módon működik: a Microsoft Identity platform egy nyilvános és titkos kulcspárből álló aláíró kulcsot használ. Amikor a felhasználó bejelentkezik egy olyan alkalmazásba, amely a Microsoft Identity platformot használja a hitelesítéshez, a Microsoft Identity platform létrehoz egy biztonsági jogkivonatot, amely a felhasználóval kapcsolatos információkat tartalmaz. Ezt a tokent a Microsoft Identity platform írja alá a saját titkos kulcsának használatával, mielőtt visszaküldi az alkalmazásnak. Annak ellenőrzéséhez, hogy a jogkivonat érvényes-e, és hogy a Microsoft Identity platformból származik-e, az alkalmazásnak a Microsoft Identity platform által elérhető nyilvános kulccsal kell ellenőriznie a jogkivonat aláírását, amelyet a bérlő [OpenID Connect Discovery-dokumentum](https://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML/ws-fed [összevonási metaadat dokumentum](../azuread-dev/azure-ad-federation-metadata.md)tartalmaz.
 
-Biztonsági okokból az Azure AD aláíró kulcsa rendszeres időközönként, a vészhelyzet esetén pedig azonnal összeállítható. Minden, az Azure AD-val integrált alkalmazásnak fel kell készülnie arra, hogy kezelni tudja a kulcs átváltási eseményeit, függetlenül attól, hogy milyen gyakran fordul elő. Ha ez nem történik meg, és az alkalmazás egy lejárt kulcsot próbál használni az aláírás ellenőrzéséhez egy jogkivonat esetében, a bejelentkezési kérelem sikertelen lesz.
+Biztonsági okokból a Microsoft Identity platformhoz tartozó aláíró kulcs rendszeres időközönként, és vészhelyzet esetén azonnal átgörgethető. A Microsoft Identity platformmal integrált alkalmazásoknak fel kell készülniük arra, hogy az esetlegesen előforduló kulcsfontosságú átváltási eseményt kezeljék. Ha ez nem történik meg, és az alkalmazás egy lejárt kulcsot próbál használni az aláírás ellenőrzéséhez egy jogkivonat esetében, a bejelentkezési kérelem sikertelen lesz.
 
 Az OpenID Connect Discovery-dokumentumban és az összevonási metaadat-dokumentumban mindig több érvényes kulcs érhető el. Az alkalmazásnak fel kell készülnie a dokumentumban megadott kulcsok bármelyikének használatára, mivel előfordulhat, hogy az egyik kulcs hamarosan fel van tekerve, a másik pedig a pótlása, és így tovább.
 
@@ -148,7 +148,7 @@ Ha webes API-alkalmazást hozott létre a Visual Studio 2013-ben a webes API-sab
 
 Ha a hitelesítést manuálisan konfigurálta, kövesse az alábbi utasításokat, amelyből megtudhatja, hogyan konfigurálhatja a webes API-t a legfontosabb információk automatikus frissítéséhez.
 
-A következő kódrészlet bemutatja, hogyan kérheti le a legújabb kulcsokat az összevonási metaadat-dokumentumból, majd az [JWT jogkivonat-kezelővel](https://msdn.microsoft.com/library/dn205065.aspx) érvényesítheti a jogkivonatot. A kódrészlet feltételezi, hogy saját gyorsítótárazási mechanizmust használ a kulcs megőrzéséhez az Azure AD-ből származó jövőbeli jogkivonatok érvényesítéséhez, legyen szó adatbázisban, konfigurációs fájlhoz vagy máshol.
+A következő kódrészlet bemutatja, hogyan kérheti le a legújabb kulcsokat az összevonási metaadat-dokumentumból, majd az [JWT jogkivonat-kezelővel](https://msdn.microsoft.com/library/dn205065.aspx) érvényesítheti a jogkivonatot. A kódrészlet feltételezi, hogy saját gyorsítótárazási mechanizmust használ a kulcs megőrzéséhez a Microsoft Identity platform jövőbeli jogkivonatának érvényesítéséhez, függetlenül attól, hogy az adatbázis, a konfigurációs fájl vagy máshol található.
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Az erőforrásokat védő és a Visual Studio 2012-mel létrehozott webalkalmazások
-Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identitás-és elérési eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kibocsátói név érvényesítése (VINR) bejegyzést](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR feladata a megbízható identitás-szolgáltatók (Azure AD) adatainak és az általuk kiállított jogkivonatok érvényesítéséhez használt kulcsok fenntartásáért felelős. A VINR emellett megkönnyíti a Web.config fájlban tárolt kulcsok automatikus frissítését a címtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, amely ellenőrzi, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség szerint frissítse az alkalmazást az új kulcs használatára.
+Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identitás-és elérési eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kibocsátói név érvényesítése (VINR) bejegyzést](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR feladata a megbízható identitás-szolgáltatók (Microsoft Identity platform) adatainak és az általuk kiállított jogkivonatok ellenőrzéséhez használt kulcsok fenntartásáért felelős. A VINR emellett megkönnyíti a Web.config fájlban tárolt kulcsok automatikus frissítését a címtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, amely ellenőrzi, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség szerint frissítse az alkalmazást az új kulcs használatára.
 
 Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemutató-dokumentáció használatával hozta létre, akkor a projektben már szerepel a kulcs átváltási logikája. Megfigyelheti, hogy az alábbi kód már létezik a projektben. Ha az alkalmazás még nem rendelkezik ezzel a logikával, kövesse az alábbi lépéseket a hozzáadásához és annak ellenőrzéséhez, hogy megfelelően működik-e.
 
@@ -282,7 +282,7 @@ Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a kulcs átváltá
           </keys>
    ```
 2. A **\<add thumbprint="">** beállításban módosítsa az ujjlenyomat értékét úgy, hogy az egyik karaktert egy másikra cseréli. Mentse a **Web.config** fájlt.
-3. Hozza létre az alkalmazást, majd futtassa. Ha elvégezheti a bejelentkezési folyamatot, az alkalmazás sikeresen frissíti a kulcsot, ha letölti a szükséges információkat a címtár összevonási metaadat-dokumentumból. Ha problémába ütközik a bejelentkezés során, győződjön meg arról, hogy az alkalmazásban történt módosítások a [Bejelentkezés hozzáadása a webalkalmazáshoz az Azure ad](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) -vel című cikkben olvashatók, illetve a következő mintakód-minta letöltése és vizsgálata: [több-bérlős felhőalapú alkalmazás a Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Hozza létre az alkalmazást, majd futtassa. Ha elvégezheti a bejelentkezési folyamatot, az alkalmazás sikeresen frissíti a kulcsot, ha letölti a szükséges információkat a címtár összevonási metaadat-dokumentumból. Ha problémába ütközik a bejelentkezéssel, győződjön meg arról, hogy az alkalmazásban végrehajtott módosítások helyesek, ha beolvassa a [Bejelentkezés hozzáadása a webalkalmazáshoz a Microsoft Identity platform használatával](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) című cikket, vagy letölti és megvizsgálja a következő mintakód-mintát: [több-bérlős felhőalapú alkalmazás a Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Az erőforrásokat védő webalkalmazások és a Visual Studio 2008 vagy 2010 és a Windows Identity Foundation (WIF) 1.0-s verziójának használata a .NET 3,5-hoz
 Ha létrehoz egy alkalmazást a WIF 1.0-s verziójában, nincs megadva olyan mechanizmus, amely automatikusan frissíti az alkalmazás konfigurációját egy új kulcs használatára.
@@ -301,10 +301,10 @@ Ha létrehoz egy alkalmazást a WIF 1.0-s verziójában, nincs megadva olyan mec
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webalkalmazások/API-k, amelyek bármely más kódtár használatával védik az erőforrásokat, vagy manuálisan implementálják a támogatott protokollokat
 Ha más függvénytárat használ, vagy a támogatott protokollok bármelyikét manuálisan implementálja, akkor ellenőriznie kell a könyvtárat vagy a megvalósítást, hogy a kulcs beolvasása az OpenID Connect Discovery-dokumentumból vagy az összevonási metaadat-dokumentumból történjen. Ennek egyik módja, ha a kód vagy a könyvtár kódja alapján keres meg egy, az OpenID-felderítési dokumentumba vagy az összevonási metaadat-dokumentumba irányuló hívásokat.
 
-Ha a kulcs tárolása valahol vagy hardcoded történik az alkalmazásban, manuálisan is lekérheti a kulcsot, és ennek megfelelően frissítheti azt, ha az útmutatást tartalmazó dokumentum végén található utasítások alapján manuális átváltást végez. **Nyomatékosan javasoljuk, hogy az alkalmazás** a jelen cikk bármely megközelítési vázlatának használatával támogassa az automatikus átváltást, hogy elkerülje a jövőbeli fennakadásokat és a terhelést, ha az Azure ad növeli az átváltási ritmust, vagy vészhelyzeti sávon kívüli átváltást végez.
+Ha a kulcs tárolása valahol vagy hardcoded történik az alkalmazásban, manuálisan is lekérheti a kulcsot, és ennek megfelelően frissítheti azt, ha az útmutatást tartalmazó dokumentum végén található utasítások alapján manuális átváltást végez. **Nyomatékosan javasoljuk, hogy az alkalmazás** a jelen cikkben ismertetett módszerek bármelyikével növelje az automatikus átváltást, hogy elkerülje a jövőbeli fennakadásokat és a terhelést, ha a Microsoft Identity platform növeli az átváltási ritmust, vagy vészhelyzeti sávon kívüli rollovert használ.
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Az alkalmazás tesztelése annak megállapítására, hogy az érintett lesz-e
 Ellenőrizheti, hogy az alkalmazás támogatja-e az automatikus kulcsok átváltását a parancsfájlok letöltésével és a [GitHub-tárházban](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) található utasítások követésével.
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Manuális váltás végrehajtása, ha az alkalmazás nem támogatja az automatikus átváltást
-Ha az alkalmazás **nem** támogatja az automatikus átváltást, létre kell hoznia egy folyamatot, amely rendszeres időközönként figyeli az Azure ad aláíró kulcsait, és ennek megfelelően manuális átváltást végez. [Ez a GitHub-adattár](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) parancsfájlokat és útmutatást tartalmaz.
+Ha az alkalmazás **nem** támogatja az automatikus átváltást, akkor létre kell hoznia egy folyamatot, amely rendszeres időközönként figyeli a Microsoft Identity platform aláíró kulcsait, és ennek megfelelően manuális átváltást végez. [Ez a GitHub-adattár](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) parancsfájlokat és útmutatást tartalmaz.

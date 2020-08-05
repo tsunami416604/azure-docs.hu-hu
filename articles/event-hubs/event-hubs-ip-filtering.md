@@ -3,12 +3,12 @@ title: Azure Event Hubs tűzfalszabályok | Microsoft Docs
 description: A tűzfalszabályok használatával engedélyezheti az adott IP-címekről az Azure Event Hubs való kapcsolódást.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: a27c5981bb14c2ff98dfcb74692cf9db19a55137
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8ba327c78888d9e5f38693ae08a2022b2d1543a4
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421501"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553121"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Azure Event Hubs-névterek elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -28,6 +28,7 @@ Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizony
 > A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
 > - Azure-webalkalmazások
 > - Azure Functions
+> - Azure Monitor (diagnosztikai beállítás)
 
 
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok

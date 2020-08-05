@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 16e390f2c206cb1f81914bc02e15818282a54a5b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537564"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563500"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory 1-es verzió által támogatott számítási környezetek
 > [!NOTE]
@@ -114,7 +114,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 > [!IMPORTANT]
 > A HDInsight-fürt létrehoz egy *alapértelmezett tárolót* a JSON **linkedServiceName** tulajdonságban megadott Azure Blob Storage-tárolóban. A HDInsight nem törli ezt a tárolót a fürt törlése után. Egy igény szerinti HDInsight társított szolgáltatás esetén a rendszer minden alkalommal létrehoz egy HDInsight-fürtöt, amikor egy szeletet fel kell dolgozni, kivéve, ha van meglévő élő fürt (**TimeToLive**). A rendszer törli a fürtöt a feldolgozás befejezésekor. 
 >
-> Ahogy egyre több szeletet dolgoz fel, a blob Storage-ban sok tároló jelenik meg. Ha nincs szüksége a tárolók hibaelhárítási feladatokhoz, érdemes törölni a tárolókat a tárolási díjak csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. A blob Storage-ban a tárolók törléséhez használhatja a [Microsoft Storage Explorer](https://storageexplorer.com/) eszközt is.
+> Ahogy egyre több szeletet dolgoz fel, a blob Storage-ban sok tároló jelenik meg. Ha nincs szüksége a tárolók hibaelhárítási feladatokhoz, érdemes törölni a tárolókat a tárolási díjak csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. A blob Storage tárolóban lévő tárolók törléséhez használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt.
 >
 > 
 

@@ -1,7 +1,7 @@
 ---
-title: Konfigurálható Azure AD-jogkivonat élettartamai
+title: Konfigurálható jogkivonat élettartama
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan állíthatja be az Azure AD által kiállított jogkivonatok élettartamát.
+description: Megtudhatja, hogyan állíthatja be a Microsoft Identity platform által kiállított jogkivonatok élettartamát.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 23283a44f78522d2b589993c11b494092352cbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478365"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552849"
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
+# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
-Megadhatja az Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén.
+Megadhatja a Microsoft Identity platform által kiadott jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén.
 
 > [!IMPORTANT]
 > Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 30-ig az új bérlők nem használhatnak konfigurálható jogkivonat-élettartamot a munkamenet-és frissítési tokenek konfigurálásához. Az elavultság több hónapon belül megtörténik, ami azt jelenti, hogy a meglévő munkamenetek tiszteletben tartását és a tokenek frissítési jogkivonatait is megszüntetjük. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
@@ -68,12 +68,12 @@ A nyilvános ügyfelek nem tudják biztonságosan tárolni az ügyfél jelszavá
 > A Max Age tulajdonság azt az időtartamot használja, ameddig egyetlen jogkivonat használható. 
 
 ### <a name="id-tokens"></a>Azonosító jogkivonatok
-Az azonosító jogkivonatok átadása a webhelyeknek és a natív ügyfeleknek. Az azonosító jogkivonatok egy felhasználó profiljára vonatkozó adatokat tartalmaznak. Az azonosító jogkivonat a felhasználó és az ügyfél adott kombinációjára van kötve. Az azonosító jogkivonatok érvényessége csak a lejárat után tekinthető érvényesnek. A webalkalmazások általában a felhasználó munkamenetének élettartamát tükrözik az alkalmazásban a felhasználó számára kiállított azonosító jogkivonat élettartama alapján. Az azonosító token élettartama beállítható annak szabályozására, hogy a webalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges, hogy a felhasználó újra hitelesítve legyen az Azure AD-vel (csendes vagy interaktív módon).
+Az azonosító jogkivonatok átadása a webhelyeknek és a natív ügyfeleknek. Az azonosító jogkivonatok egy felhasználó profiljára vonatkozó adatokat tartalmaznak. Az azonosító jogkivonat a felhasználó és az ügyfél adott kombinációjára van kötve. Az azonosító jogkivonatok érvényessége csak a lejárat után tekinthető érvényesnek. A webalkalmazások általában a felhasználó munkamenetének élettartamát tükrözik az alkalmazásban a felhasználó számára kiállított azonosító jogkivonat élettartama alapján. Az azonosító token élettartama beállítható annak szabályozására, hogy a webalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges, hogy a felhasználó újra legyen hitelesítve a Microsoft Identity platformmal (csendes vagy interaktív módon).
 
 ### <a name="single-sign-on-session-tokens"></a>Egyszeri bejelentkezés munkamenet-jogkivonatai
-Amikor egy felhasználó az Azure AD-vel végzi a hitelesítést, az egyszeri bejelentkezési munkamenet (SSO) a felhasználó böngészőjével és az Azure AD-vel lesz létrehozva. A cookie-t tartalmazó SSO-jogkivonat ezt a munkamenetet jelöli. Az SSO-munkamenet tokenje nem kötődik egy adott erőforráshoz/ügyfélalkalmazás-alkalmazáshoz. Az egyszeri bejelentkezéses munkamenet-tokenek visszavonhatók, és az érvényességük minden használatkor be van jelölve.
+Amikor egy felhasználó a Microsoft Identity platformmal végzi a hitelesítést, az egyszeri bejelentkezési munkamenet (SSO) a felhasználó böngészőjével és a Microsoft Identity platformmal lesz létrehozva. A cookie-t tartalmazó SSO-jogkivonat ezt a munkamenetet jelöli. Az SSO-munkamenet tokenje nem kötődik egy adott erőforráshoz/ügyfélalkalmazás-alkalmazáshoz. Az egyszeri bejelentkezéses munkamenet-tokenek visszavonhatók, és az érvényességük minden használatkor be van jelölve.
 
-Az Azure AD kétféle egyszeri bejelentkezéses munkamenet-jogkivonatot használ: állandó és nem állandó. Az állandó munkamenet-tokeneket a böngésző állandó cookie-ként tárolja. A nem állandó munkamenet-tokenek munkamenet-cookie-ként vannak tárolva. (A munkamenet-cookie-k megsemmisülnek a böngésző bezárásakor.) Általában nem állandó munkamenet-token van tárolva. Ha azonban a **felhasználó a bejelentkezéskor jelölőnégyzet** bejelölését választja, a rendszer állandó munkamenet-tokent tárol.
+A Microsoft Identity platform kétféle egyszeri bejelentkezéses munkamenet-jogkivonatot használ: állandó és nem állandó. Az állandó munkamenet-tokeneket a böngésző állandó cookie-ként tárolja. A nem állandó munkamenet-tokenek munkamenet-cookie-ként vannak tárolva. (A munkamenet-cookie-k megsemmisülnek a böngésző bezárásakor.) Általában nem állandó munkamenet-token van tárolva. Ha azonban a **felhasználó a bejelentkezéskor jelölőnégyzet** bejelölését választja, a rendszer állandó munkamenet-tokent tárol.
 
 A nem állandó munkamenet-tokenek élettartama 24 óra. Az állandó tokenek élettartama 90 nap. Az egyszeri bejelentkezési munkamenet tokenjét az érvényességi időtartamon belül kell használni, az érvényességi időtartam a jogkivonat típusától függően egy másik 24 órán vagy 90 nap múlva meghosszabbodik. Ha a rendszer nem használja az egyszeri bejelentkezési munkamenet tokenjét az érvényességi időtartamon belül, akkor a rendszer lejártnak tekinti, és már nem fogadja el.
 
@@ -102,7 +102,7 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | Frissítési jogkivonat maximális inaktív ideje (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |90 nap |
 | Frissítési token maximális kora (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |Visszavonásig |
 
-* <sup>1</sup> Azok az összevont felhasználók, akik nem rendelkeznek elegendő visszavonási információval, minden olyan felhasználóhoz tartoznak, akik nem rendelkeznek szinkronizált "LastPasswordChangeTimestamp" attribútummal. Ezek a felhasználók ezt a rövid maximális kort kapják meg, mert a HRE nem tudja ellenőrizni, hogy mikor kell visszavonni a régi hitelesítő adatokhoz kötött jogkivonatokat (például a jelszó megváltozását), és gyakrabban kell visszakeresni, hogy a felhasználó és a társított jogkivonatok továbbra is jó helyzetben legyenek. A környezet javítása érdekében a bérlői rendszergazdáknak biztosítaniuk kell, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ezt a felhasználói objektumhoz a PowerShell vagy a AADSync használatával lehet beállítani).
+* <sup>1</sup> a nem elegendő visszavonási információval rendelkező összevont felhasználók között szerepelnek azok a felhasználók, akik nem rendelkeznek szinkronizált "LastPasswordChangeTimestamp" attribútummal. Ezek a felhasználók ezt a rövid maximális kort kapják meg, mert a HRE nem tudja ellenőrizni, hogy mikor kell visszavonni a régi hitelesítő adatokhoz kötött jogkivonatokat (például a jelszó megváltozását), és gyakrabban kell visszakeresni, hogy a felhasználó és a társított jogkivonatok továbbra is jó helyzetben legyenek. A környezet javítása érdekében a bérlői rendszergazdáknak biztosítaniuk kell, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ezt a felhasználói objektumhoz a PowerShell vagy a AADSync használatával lehet beállítani).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Szabályzat kiértékelése és rangsorolása
 Létrehozhat és hozzárendelhet egy jogkivonat-élettartam-szabályzatot egy adott alkalmazáshoz, a szervezetéhez és az egyszerű szolgáltatásokhoz. Egy adott alkalmazásra több házirend is alkalmazható. A jogkivonat élettartamára vonatkozó szabályzat a következő szabályokat követi:
@@ -129,13 +129,13 @@ Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan)
 > * Az A webalkalmazás egy normál használatú webalkalmazás, és nincs hozzárendelve szabályzatokhoz.
 > * A "B" webalkalmazás a szigorúan bizalmas folyamatokhoz használatos. Az egyszerű szolgáltatás a jogkivonat-élettartamra vonatkozó szabályzat 2., amelynek a munkamenet-tokenje legfeljebb 30 percet vesz igénybe.
 >
-> A felhasználó 12:00 ÓRAKOR elindítja az új böngésző-munkamenetet, és megpróbál hozzáférni A webalkalmazáshoz. A rendszer átirányítja a felhasználót az Azure AD-be, és megkéri, hogy jelentkezzen be. Ez létrehoz egy cookie-t, amely egy munkamenet-tokent tartalmaz a böngészőben. A rendszer visszairányítja a felhasználót az A webalkalmazásba egy azonosító jogkivonattal, amely lehetővé teszi, hogy a felhasználó hozzáférjen az alkalmazáshoz.
+> A felhasználó 12:00 ÓRAKOR elindítja az új böngésző-munkamenetet, és megpróbál hozzáférni A webalkalmazáshoz. A rendszer átirányítja a felhasználót a Microsoft Identity platformra, és megkéri, hogy jelentkezzen be. Ez létrehoz egy cookie-t, amely egy munkamenet-tokent tartalmaz a böngészőben. A rendszer visszairányítja a felhasználót az A webalkalmazásba egy azonosító jogkivonattal, amely lehetővé teszi, hogy a felhasználó hozzáférjen az alkalmazáshoz.
 >
-> A felhasználó 12:15 ÓRAKOR megpróbál hozzáférni a (z) B webalkalmazáshoz. A böngésző átirányítja az Azure AD-be, amely észleli a munkamenet cookie-t. A webalkalmazás B szolgáltatásának egyszerű szolgáltatása a jogkivonat élettartama (2), de a szülő szervezet része is, és az alapértelmezett jogkivonat élettartama házirend 1. A jogkivonat élettartamára vonatkozó házirend 2 érvénybe lép, mert az egyszerű szolgáltatásokhoz kapcsolódó házirendek magasabb prioritással rendelkeznek, mint a szervezet alapértelmezett házirendjei. A munkamenet jogkivonatát eredetileg az elmúlt 30 percben adták ki, ezért érvényesnek számít. A rendszer visszairányítja a felhasználót a (B) webalkalmazásba egy olyan azonosító jogkivonattal, amely hozzáférést biztosít számukra.
+> A felhasználó 12:15 ÓRAKOR megpróbál hozzáférni a (z) B webalkalmazáshoz. A böngésző átirányítja a Microsoft Identity platformra, amely észleli a munkamenet cookie-t. A webalkalmazás B szolgáltatásának egyszerű szolgáltatása a jogkivonat élettartama (2), de a szülő szervezet része is, és az alapértelmezett jogkivonat élettartama házirend 1. A jogkivonat élettartamára vonatkozó házirend 2 érvénybe lép, mert az egyszerű szolgáltatásokhoz kapcsolódó házirendek magasabb prioritással rendelkeznek, mint a szervezet alapértelmezett házirendjei. A munkamenet jogkivonatát eredetileg az elmúlt 30 percben adták ki, ezért érvényesnek számít. A rendszer visszairányítja a felhasználót a (B) webalkalmazásba egy olyan azonosító jogkivonattal, amely hozzáférést biztosít számukra.
 >
-> A felhasználó 1:00 ÓRAKOR megpróbál hozzáférni a (z) A webalkalmazáshoz. A rendszer átirányítja a felhasználót az Azure AD-ba. Az A webalkalmazás nincs hozzárendelve egyetlen házirendhez sem, azonban mivel az alapértelmezett jogkivonat-élettartamot biztosító szervezeten belül van, a házirend érvénybe lép. A rendszer az utolsó nyolc órában eredetileg kiállított munkamenet-cookie-t észleli. A felhasználó csendesen át lesz irányítva a webalkalmazásba egy új azonosító jogkivonattal. A felhasználónak nincs szüksége a hitelesítésre.
+> A felhasználó 1:00 ÓRAKOR megpróbál hozzáférni a (z) A webalkalmazáshoz. A rendszer átirányítja a felhasználót a Microsoft Identity platformra. Az A webalkalmazás nincs hozzárendelve egyetlen házirendhez sem, azonban mivel az alapértelmezett jogkivonat-élettartamot biztosító szervezeten belül van, a házirend érvénybe lép. A rendszer az utolsó nyolc órában eredetileg kiállított munkamenet-cookie-t észleli. A felhasználó csendesen át lesz irányítva a webalkalmazásba egy új azonosító jogkivonattal. A felhasználónak nincs szüksége a hitelesítésre.
 >
-> Ezt követően a felhasználó megpróbál hozzáférni a B webalkalmazáshoz. A rendszer átirányítja a felhasználót az Azure AD-ba. Ahogy korábban is, a jogkivonat élettartamának szabályzata 2 érvénybe lép. Mivel a jogkivonat több mint 30 perccel ezelőtt lett kiállítva, a rendszer felszólítja a felhasználót, hogy adja meg újra a bejelentkezési hitelesítő adatait. A rendszer új munkamenet-tokent és azonosító jogkivonatot állít ki. A felhasználó Ezután elérheti a B webalkalmazást.
+> Ezt követően a felhasználó megpróbál hozzáférni a B webalkalmazáshoz. A rendszer átirányítja a felhasználót a Microsoft Identity platformra. Ahogy korábban is, a jogkivonat élettartamának szabályzata 2 érvénybe lép. Mivel a jogkivonat több mint 30 perccel ezelőtt lett kiállítva, a rendszer felszólítja a felhasználót, hogy adja meg újra a bejelentkezési hitelesítő adatait. A rendszer új munkamenet-tokent és azonosító jogkivonatot állít ki. A felhasználó Ezután elérheti a B webalkalmazást.
 >
 >
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2830db6132e665d3f876a535fb645e936971b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cc38e576f53c3623bacc374a00adcb4cced01517
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283061"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552883"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Feltételes hozzáférés: MFA megkövetelése rendszergazdák számára
 
@@ -65,6 +65,10 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
       * Biztonsági rendszergazda
       * SharePoint-rendszergazda
       * Felhasználói rendszergazda
+   
+      > [!WARNING]
+      > A feltételes hozzáférési szabályzatok nem támogatják azokat a felhasználókat, akik egy [felügyeleti egységre](../users-groups-roles/roles-admin-units-assign-roles.md) vagy címtár-szerepkörre hatókörrel rendelkező, közvetlenül az adott objektumra (például [Egyéni szerepkörökre](../users-groups-roles/roles-create-custom.md)) kiterjedő címtár-szerepkört rendeltek.
+
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
@@ -73,7 +77,7 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

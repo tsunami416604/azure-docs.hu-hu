@@ -9,17 +9,28 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 06/05/2020
-ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361642"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553410"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
 Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét.
+
+## <a name="ctp-22"></a>CTP 2,2
+### <a name="sql-engine-build-number---15020001546"></a>SQL Engine Build száma – 15.0.2000.1546
+### <a name="fixes"></a>Javítások
+1. Nem legfelső szintű tárolók támogatása 
+2. A használati és diagnosztikai adatok gyűjtésének támogatása 
+3. A T-SQL streaming frissítései
+   - Unicode-karakterek támogatása a stream-objektumok neveinél
+   - Folyamatok tisztításának fejlesztése
+   - A naplózás és a diagnosztika fejlesztése
+4. Az adatfeldolgozás teljesítményének növelése
 
 ## <a name="ctp-21"></a>CTP 2,1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL Engine Build száma – 15.0.2000.1545

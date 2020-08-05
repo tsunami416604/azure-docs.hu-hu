@@ -6,18 +6,18 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 94d120973939dd1efabee868fc75e9f6c1352bf3
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976506"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562633"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Helyszíni alkalmazások közzététele az Azure AD Application Proxy használatával távoli felhasználók számára
 
@@ -180,14 +180,14 @@ További információ az összekötők telepítésének és a hálózat optimali
 
 ## <a name="other-use-cases"></a>Egyéb használati esetek
 
-Ezen a ponton az Application proxy használatával a helyszíni alkalmazások külsőleg is közzétehető, miközben az egyszeri bejelentkezés az összes Felhőbeli és helyszíni alkalmazásra engedélyezve van. Azonban léteznek más használati esetek is az App proxy számára, amely érdemes megemlíteni. Ezek például az alábbi jelentések lehetnek:
+Ezen a ponton az Application proxy használatával a helyszíni alkalmazások külsőleg is közzétehető, miközben az egyszeri bejelentkezés az összes Felhőbeli és helyszíni alkalmazásra engedélyezve van. Azonban léteznek más használati esetek is az App proxy számára, amely érdemes megemlíteni. Ezek közé tartoznak például az alábbiak:
 
 * **REST API-k biztonságos közzététele**. Ha a helyszínen vagy a felhőben futó virtuális gépeken üzemeltetett üzleti logikával vagy API-kkal rendelkezik, az Application proxy nyilvános végpontot biztosít API-hozzáféréshez. Az API Endpoint Access lehetővé teszi a hitelesítés és az engedélyezés vezérlését a bejövő portok megkövetelése nélkül. További biztonságot nyújt olyan prémium szintű Azure AD-funkciókon keresztül, mint például a többtényezős hitelesítés és az eszköz-alapú feltételes hozzáférés asztali számítógépekhez, iOS-, MAC-és Android-eszközökhöz az Intune használatával. További információ: [a natív ügyfélalkalmazások engedélyezése a](application-proxy-configure-native-client-application.md) OAuth és az API-k védelemmel való ellátásához a [2,0-as Azure Active Directory és API Management használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
 * **Távoli asztali szolgáltatások** **(RDS)**. A standard szintű RDS központi telepítések nyitott bejövő kapcsolatokat igényelnek. A [Távoli asztali környezet és az alkalmazásproxy üzembe helyezése](application-proxy-integrate-with-remote-desktop-services.md) azonban állandó kimenő kapcsolatban áll az összekötő szolgáltatást futtató kiszolgálóval. Így több alkalmazást is biztosíthat a végfelhasználók számára a helyszíni alkalmazások Távoli asztali szolgáltatások használatával történő közzétételével. Emellett csökkentheti az üzemelő példány támadási felületét is, és a kétlépéses ellenőrzés és a feltételes hozzáférés-vezérlés korlátozott készletét használhatja az RDS-hez.
 * **WebSockets használatával csatlakozó alkalmazások közzététele**. A [Qlik Sense](application-proxy-qlik.md) támogatás nyilvános előzetes verzióban érhető el, és a jövőben más alkalmazásokra is kiterjed.
 * **Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz**. Az Azure AD Application Proxy webalkalmazások közzétételére is használható, de az Azure AD Authentication Library (ADAL) szolgáltatással konfigurált [natív ügyfélalkalmazások](application-proxy-configure-native-client-application.md) közzétételére is használható. A natív ügyfélalkalmazások eltérnek a webalkalmazások, mert azok egy eszközre vannak telepítve, míg a Web Apps böngészőn keresztül érhető el.
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 
 A munkánk és az általunk használt eszközök gyorsan változnak. Ha több alkalmazott dolgozik a saját eszközein, és a szolgáltatott szoftveres (SaaS) alkalmazások átható használatát, a szervezeteknek az adatkezelést és az adatvédelmet is ki kell alakítani. A vállalatok már nem működnek kizárólag saját falain belül, és egy olyan árok védi őket, amely körülveszi a szegélyét. Az adattovábbítás több helyre, mint valaha – a helyszíni és a felhőalapú környezetek között. Ez az evolúció hozzájárult a felhasználók termelékenységének növeléséhez és a közös együttműködéshez, ugyanakkor nagyobb kihívást jelent a bizalmas adatok védelme is.
 
@@ -203,7 +203,7 @@ A szervezeteknek a következő előnyök kihasználásával kell megkezdeniük a
 * Automatikus frissítések a legújabb biztonsági javítások biztosításához
 * Új funkciók, mint azok kiadása; a legutóbbi támogatás az SAML egyszeri bejelentkezéshez és az alkalmazás-cookie-k részletesebb kezeléséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure AD Application Proxy tervezésével, működésével és kezelésével kapcsolatos információkért lásd: Azure-beli [ad Application proxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md).
 * Egy élő bemutató beléptetéséhez vagy az ingyenes 90 napos próbaverzió kiértékeléséhez tekintse meg a [Enterprise Mobility + Security első lépéseivel foglalkozó](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)témakört.

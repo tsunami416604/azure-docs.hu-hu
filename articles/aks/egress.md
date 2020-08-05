@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre és használhat statikus nyilván
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517773"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563245"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata a kimenő forgalomhoz egy *alapszintű* SKU Load Balancer használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat egy statikus
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy az Azure alapszintű Load Balancer használja.  Javasoljuk, hogy az [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát használja, és az [AK kimenő forgalmának szabályozására](https://docs.microsoft.com/azure/aks/limit-egress-traffic)szolgáló fejlettebb funkciókkal is rendelkezik.
+Ez a cikk azt feltételezi, hogy az Azure alapszintű Load Balancer használja.  Javasoljuk, hogy az [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md)használatát használja, és az [AK kimenő forgalmának szabályozására](./limit-egress-traffic.md)szolgáló fejlettebb funkciókkal is rendelkezik.
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 

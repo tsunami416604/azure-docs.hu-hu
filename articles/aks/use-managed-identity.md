@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: e96126d1516e8a1e20e6f6db9b3a448b94c71cd7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e660678f33f36b75147c2513c77d3085136127d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050595"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563203"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -35,20 +35,20 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlősík | nem látható | Az AK által használt felügyelt hálózati erőforrások, beleértve a bejövő terheléselosztó és az AK által felügyelt nyilvános IP-címek | A csomópont-erőforráscsoport közreműködői szerepköre | Előnézet
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | A csomópont-erőforráscsoport olvasói szerepköre | Egyelőre nem támogatott
-| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | No
-| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | No
-| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | No
-| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | No
-| Bővítmény | Calico | Nincs szükség identitásra | NA | No
-| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | No
-| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | No
-| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | No
-| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | No
-| Bővítmény | Virtuális csomópont (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | No
+| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | Nem
+| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | Nem
+| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | Nem
+| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Calico | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | Nem
+| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | Nem
+| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | Nem
+| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | Nem
+| Bővítmény | Virtuális csomópont (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | Nem
 
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>AK-fürt létrehozása felügyelt identitásokkal
@@ -207,10 +207,10 @@ A saját felügyelt identitások használatával történő sikeres fürtök a u
  },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat][aks-arm-template] .
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
+[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list

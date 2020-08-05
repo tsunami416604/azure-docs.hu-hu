@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261884"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551999"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Bevezetés a Azure Maps Power BI vizualizáció használatába
 
@@ -35,6 +35,9 @@ A Azure Maps vizualizáció csatlakozik az Azure-ban üzemeltetett felhőalapú 
 
 -   Annak a területnek a részleteit, amelyre a Térkép vonatkozik, az Azure-ba küldik, hogy lekérje a Térkép vászon megjelenítéséhez szükséges képeket (más néven a Térkép csempéit). 
 -   A hely, a szélesség és a hosszúság gyűjtőben lévő, az Azure-ba irányuló, a Térkép koordinátáinak (helymeghatározáshoz nevű folyamat) beolvasása céljából elküldhető. 
+-   A telemetria adatokat gyűjthet a vizualizáció állapotáról (azaz az összeomlási jelentésekről), ha a Power BI Telemetria beállítása engedélyezve van.
+
+A fent ismertetett forgatókönyveken kívül a rendszer nem küldi el a térképen a Azure Maps kiszolgálókra. Az összes adatmegjelenítés helyileg történik az ügyfélen belül.
 
 Előfordulhat, hogy a rendszergazdának frissítenie kell a tűzfalat, hogy engedélyezze a hozzáférést a Azure Maps platformhoz, amely a következő URL-címet használja.
 

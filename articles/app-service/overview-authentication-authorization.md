@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068221"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562378"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -22,15 +22,20 @@ A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismer�
 > [!IMPORTANT]
 > A szolgáltatás használata nem kötelező a hitelesítéshez és az engedélyezéshez. Használhatja a választott webes keretrendszer csomagban található biztonsági funkcióit, vagy megírhatja saját segédprogramjait is. Ne feledje azonban, hogy a [Chrome 80 a cookie-k SameSite-re való bevezetését](https://www.chromestatus.com/feature/5088147346030592) (2020. március), valamint az egyéni távoli hitelesítést vagy más, a helyek közötti cookie-kat használó egyéb forgatókönyveket is megszakíthatja az ügyfél Chrome-böngészők frissítésekor. A megkerülő megoldás összetett, mert a különböző böngészőkhöz különböző SameSite-viselkedéseket kell támogatni. 
 >
-> A App Service által üzemeltetett ASP.NET Core 2,1-es és újabb verziók már nem javítottak ehhez a feltörési változáshoz, és a Chrome 80 és a régebbi böngészők megfelelő kezelését végzik. Továbbá ugyanez a javítás a ASP.NET-keretrendszer 4.7.2 is üzembe kerül a App Service példányokon a januári 2020-es verzióban. További információért, például arról, hogy miként fogadta el az alkalmazás a javítást, tekintse meg a [Azure app Service SameSite-cookie frissítése](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)című témakört.
+> A App Service által üzemeltetett ASP.NET Core 2,1-es és újabb verziók már nem javítottak ehhez a feltörési változáshoz, és a Chrome 80 és a régebbi böngészők megfelelő kezelését végzik. Emellett a ASP.NET Framework 4.7.2 ugyanezt a javítást is telepítette a App Service példányokra az egész januári 2020-ben. További információ: [Azure app Service SameSite cookie Update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
 
 > [!NOTE]
 > A hitelesítési/engedélyezési funkciót más néven "egyszerű hitelesítésnek" is nevezzük.
 
+> [!NOTE]
+> Ha engedélyezi ezt a funkciót, a rendszer az alkalmazásnak **nem biztonságos** http-kérelmeket automatikusan átirányítja a https-re, függetlenül a HTTPS-t [kikényszerítő](configure-ssl-bindings.md#enforce-https)app Service konfigurációs beállításától. Ha szükséges, letilthatja ezt az `requireHttps` [Auth-beállítások konfigurációs fájljának](app-service-authentication-how-to.md#configuration-file-reference)beállításával, de ügyelnie kell arra, hogy ne legyenek továbbítva biztonsági tokenek a nem biztonságos http-kapcsolatokon keresztül.
+
 A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.
 
 ## <a name="how-it-works"></a>Működés
+
+### <a name="on-windows"></a>Windows rendszeren
 
 A hitelesítési és engedélyezési modul ugyanazon a Sandboxon fut, mint az alkalmazás kódja. Ha engedélyezve van, minden bejövő HTTP-kérelem áthalad az alkalmazás kódjának kezelése előtt.
 
@@ -44,6 +49,10 @@ Ez a modul több dolgot kezel az alkalmazásban:
 - Azonosító adatokat szúr be a kérelem fejlécbe
 
 A modul külön fut az alkalmazás kódjától, és az Alkalmazásbeállítások használatával van konfigurálva. Nem szükségesek SDK-k, meghatározott nyelvek vagy az alkalmazás kódjának módosítása. 
+
+### <a name="on-containers"></a>Tárolók
+
+A hitelesítési és engedélyezési modul egy külön tárolóban fut, amely el van különítve az alkalmazás kódjától. A mi a nagykövet mintának nevezett [minta](https://docs.microsoft.com/azure/architecture/patterns/ambassador)használatával a bejövő forgalom a Windows rendszeren hasonló funkciókat hajthat végre. Mivel nem fut a folyamaton belül, az adott nyelvi keretrendszerrel való közvetlen integráció nem lehetséges; az alkalmazás által igényelt releváns információk azonban az alább ismertetett kérelmek fejlécének használatával továbbítódnak.
 
 ### <a name="userapplication-claims"></a>Felhasználói/alkalmazási jogcímek
 

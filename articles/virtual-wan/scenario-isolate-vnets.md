@@ -6,24 +6,51 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: f43f17a0f3742831920836e448de3ef757f2dfa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568703"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553393"
 ---
 # <a name="scenario-isolating-vnets"></a>Forgatókönyv: a virtuális hálózatok elkülönítése
 
-A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Ebben a forgatókönyvben a cél az, hogy megakadályozza, hogy a virtuális hálózatok más elérésű legyen. Ez az úgynevezett virtuális hálózatok elkülönítése. A VNet belüli munkaterhelések elkülönítettek maradnak, és nem tudnak kommunikálni más virtuális hálózatok, mint bármely más esetben. A virtuális hálózatok azonban az összes ág (VPN, ÖÖÖ és felhasználói VPN) eléréséhez szükséges. Ebben az esetben minden VPN-, ExpressRoute-és felhasználói VPN-kapcsolat ugyanahhoz és egy útválasztási táblához van társítva. Az összes VPN-, ExpressRoute-és felhasználói VPN-kapcsolat továbbítja az útvonalakat ugyanahhoz az útválasztási táblákhoz. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
+A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Ebben a forgatókönyvben a cél az, hogy megakadályozza, hogy a virtuális hálózatok más elérésű legyen. Ez az úgynevezett virtuális hálózatok elkülönítése. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Forgatókönyv-munkafolyamat
+## <a name="design"></a><a name="design"></a>Tervezés
+
+Ebben az esetben egy adott VNet belüli munkaterhelés elkülönített marad, és nem tud kommunikálni más virtuális hálózatok. A virtuális hálózatok azonban az összes ág (VPN, ÖÖÖ és felhasználói VPN) eléréséhez szükséges. Ha szeretné kideríteni, hogy hány útválasztási táblázatra van szükség, létrehozhat egy kapcsolati mátrixot. Ebben az esetben a következő táblázathoz hasonlóan fog kinézni, ahol az egyes cellák azt jelzik, hogy egy forrás (sor) tud-e kommunikálni egy adott céllal (oszlop):
+
+| Forrás |   Művelet |  *Virtuális hálózatok* | *Ágak* |
+| -------------- | -------- | ---------- | ---|
+| Virtuális hálózatok     | &#8594;|           |     X    |
+| Ágak   | &#8594;|    X     |     X    |
+
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "feladó" oldala, a sorfejlécek) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a dőlt betűs oszlop fejléceit) egy adott forgalmi folyamat esetében.
+
+Ez a kapcsolati mátrix két különböző sor mintázatot biztosít, amelyek két útválasztási táblázatra fordíthatók le. A virtuális WAN már rendelkezik alapértelmezett útválasztási táblázattal, ezért szükség lesz egy másik útválasztási táblázatra. Ebben a példában az útválasztási táblázatot **RT_VNET**nevet adja.
+
+A virtuális hálózatok ehhez a **RT_VNET** útválasztási táblához lesz társítva. Mivel az ágakhoz való kapcsolódásra van szükségük, az ágakat a **RT_VNETra** kell terjeszteni (ellenkező esetben a virtuális hálózatok nem fogja megtanulni a fiókirodák előtagjait). Mivel az ágak mindig az alapértelmezett útválasztási táblázathoz vannak társítva, a virtuális hálózatok az alapértelmezett útválasztási táblázatba kell terjeszteni. Ennek eredményeképpen ez a végső terv:
+
+* Virtuális hálózatok:
+  * Társított útválasztási táblázat: **RT_VNET**
+  * Propagálás az útválasztási táblákba: **alapértelmezett**
+* Ágak
+  * Társított útválasztási táblázat: **alapértelmezett**
+  * Propagálás az útválasztási táblákba: **RT_VNET** és **alapértelmezett**
+
+Figyelje meg, hogy mivel csak az ágak vannak propagálva az útválasztási táblázat **RT_VNET**, ezek lesznek az egyetlen előtagok, amelyeket a virtuális hálózatok fog tanulni, és nem a többi virtuális hálózatok.
+
+További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
+
+## <a name="workflow"></a><a name="workflow"></a>Munkafolyamat
 
 Ennek a forgatókönyvnek a konfigurálásához a következő lépéseket kell figyelembe vennie:
 
-1. Hozzon létre egy egyéni útválasztási táblázatot. A példában az útválasztási táblázat **RT_VNet**. Útválasztási táblázat létrehozásával kapcsolatban lásd: [a virtuális központ útválasztásának konfigurálása](how-to-virtual-hub-routing.md). További információ az útválasztási táblákról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
+1. Hozzon létre egy egyéni útválasztási táblázatot az egyes csomópontokon. A példában az útválasztási táblázat **RT_VNet**. Útválasztási táblázat létrehozásával kapcsolatban lásd: [a virtuális központ útválasztásának konfigurálása](how-to-virtual-hub-routing.md). További információ az útválasztási táblákról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 2. A **RT_VNet** útválasztási táblázat létrehozásakor adja meg a következő beállításokat:
 
    * **Társítás**: válassza ki az elkülöníteni kívánt virtuális hálózatok.
@@ -31,7 +58,7 @@ Ennek a forgatókönyvnek a konfigurálásához a következő lépéseket kell f
 
 :::image type="content" source="./media/routing-scenarios/isolated/isolated-vnets.png" alt-text="Elkülönített virtuális hálózatok":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

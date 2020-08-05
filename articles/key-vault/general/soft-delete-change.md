@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388207"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564129"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A Soft-delete minden kulcstartón engedélyezve lesz.
 
@@ -48,7 +48,7 @@ A titkos kulcsok végleges törléséhez hozzáférést igénylő rendszerbizton
 
 Ha van olyan Azure Policy a kulcstartóban, amely a helyreállítható törlés kikapcsolását bízza meg, akkor ezt a szabályzatot le kell tiltani.  Előfordulhat, hogy ezt a problémát egy olyan rendszergazdának kell megadnia, aki a környezetre alkalmazott Azure-szabályzatokat vezérli. Ha ez a házirend nincs letiltva, elveszítheti az új kulcstartók létrehozását az alkalmazott házirend hatókörében.
 
-Ha a szervezete jogi megfelelőségi követelményeknek kell megfelelnie, és nem engedélyezheti a törölt kulcstartók és titkos kódok megőrzését a helyreállítható állapotban, hosszú időn keresztül módosítania kell a helyreállítható törlési időszakot, amely 7 – 90 nap között állítható be, hogy megfeleljen a szervezet szabványainak.
+Ha a szervezete jogi megfelelőségi követelmények hatálya alá tartozik, és a törölt kulcstartók és titkos kódok nem maradhatnak helyreállítható állapotban, hosszú időn keresztül módosítania kell a helyreállítható törlés megőrzési időtartamát, amely 7 – 90 nap között állítható be, hogy megfeleljen a szervezet szabványainak.
 
 ## <a name="procedures"></a>Eljárások
 
@@ -66,14 +66,14 @@ Ha a szervezete jogi megfelelőségi követelményeknek kell megfelelnie, és ne
 10. A Azure Policy panelen kattintson a "megfelelőség" elemre.
 11. Válassza ki az alkalmazott szabályzatot.
 
-Most már képesnek kell lennie szűrni, és látni, hogy a kulcstárolók melyike legyen engedélyezve a helyreállítható törlés (megfelelő erőforrások), és hogy mely kulcstartók esetében nincs engedélyezve a helyreállítható törlés (nem megfelelő újraforrású).
+Most már képesnek kell lennie szűrni, és látni, hogy a kulcstárolók melyike legyen engedélyezve a helyreállítható törlés (megfelelő erőforrások), és hogy mely kulcstartók esetében nem engedélyezett a helyreállítható törlés (nem megfelelő erőforrások).
 
 ### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Meglévő kulcstartóhoz tartozó Soft delete bekapcsolása
 
 1. Jelentkezzen be az Azure Portalra.
 2. Keresse meg a Key Vault.
 3. Válassza a tulajdonságok lehetőséget a beállítások területen.
-4. A helyreállítható törlés területen válassza a "helyreállítás engedélyezése" választógombot. a tár és a hozzá tartozó objektumok között.
+4. A helyreállítható törlés területen jelölje be a "tároló és az objektumok helyreállításának engedélyezése" választógombot.
 5. Állítsa be a megőrzési időszakot a Soft delete értékre.
 6. Válassza a Save (Mentés) lehetőséget.
 

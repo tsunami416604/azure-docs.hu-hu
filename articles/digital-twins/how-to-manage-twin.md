@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061606"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563925"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -37,10 +37,10 @@ Digitális dupla létrehozásához a következőket kell megadnia:
 
 Opcionálisan megadhatja a digitális iker összes tulajdonságának kezdeti értékeit. 
 
-> [!TIP]
-> Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor a GetDigitalTwin-t egy Twin értékkel tölti le.  
-
 A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők el `initData` , amely egy JSON-karakterlánc, amely tartalmazza a megfelelő adatokat.
+
+> [!TIP]
+> A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikk későbbi részében](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késést, ezért a lekérdezés helyett használja az API-hívást az újonnan létrehozott ikrek megjelenítéséhez, ha azonnali válaszra van szüksége. 
 
 ### <a name="initialize-properties"></a>Tulajdonságok inicializálása
 
@@ -90,6 +90,9 @@ object result = await client.GetDigitalTwin(id);
 ```
 
 Ez a hívás a Twin-adatok JSON-karakterláncként való visszaadása. 
+
+> [!TIP]
+> Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor lekéri a két értéket `GetDigitalTwin` .
 
 Ha több Twins egyetlen API-hívással szeretne beolvasni, tekintse meg a következő témakörben található lekérdezési API-példákat [*: a Twin Graph lekérdezése*](how-to-query-graph.md).
 
@@ -174,7 +177,12 @@ További információ a szerializálási segítő osztályokról [*: az Azure Di
 
 A digitális Twin tulajdonságok frissítéséhez írja be a cserélni kívánt adatokat a [JSON-javítás](http://jsonpatch.com/) formátumában. Így egyszerre több tulajdonságot is lecserélhet. Ezután átadja a JSON-javítási dokumentumot a következő `Update` metódusnak:
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+> [!TIP]
+> A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikkben korábban](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késést, ezért a lekérdezés helyett használja az API-hívást az újonnan frissített ikrek megjelenítéséhez, ha azonnali válaszra van szüksége. 
 
 Íme egy példa a JSON-javítási kódra. Ez a dokumentum helyettesíti a digitális Twin-fájl *tömeg* -és *RADIUS-* tulajdonságának értékét.
 
@@ -343,7 +351,7 @@ Az összes ikrek egyszerre történő törléséről például töltse le az okt
 
 Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

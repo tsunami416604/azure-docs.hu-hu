@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519733"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553971"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -61,9 +61,18 @@ További információt a [díjszabási oldalon](https://azure.microsoft.com/pric
 Az Azure Cognitive Search-ra épülő megoldások a következő módokon vehetik igénybe a költségeket:
 
 + Magának a szolgáltatásnak a díja, nonstop futtatása, minimális konfiguráció esetén (egy partíció és egy replika)
+
 + Kapacitás (replikák vagy partíciók) hozzáadása
-+ Sávszélességgel kapcsolatos díjak (kimenő adatforgalom) 
-+ Kiegészítő szolgáltatások, például AI-bővítés (Cognitive Services csatolása az szakértelmével-ben, amely az AI-feldolgozást definiálja vagy az Azure Storage használata a Knowledge Store-hoz) vagy keresési szolgáltatás üzembe helyezése egy magánhálózati virtuális hálózaton
+
++ Sávszélességgel kapcsolatos díjak (kimenő adatforgalom)
+
++ Adott funkciókhoz vagy szolgáltatásokhoz szükséges kiegészítő szolgáltatások:
+
+  + AI-gazdagodás ( [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)szükséges)
+  + Knowledge Store ( [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)szükséges)
+  + növekményes gazdagodás (az [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)-t igényli, az AI-bővítésre vonatkozik)
+  + ügyfél által felügyelt kulcsok és kettős titkosítás ( [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)szükséges)
+  + privát végpontok nem Internet-hozzáférési modellhez ( [Azure Private-hivatkozást](https://azure.microsoft.com/pricing/details/private-link/)igényel)
 
 ### <a name="service-costs"></a>Szolgáltatási költségek
 

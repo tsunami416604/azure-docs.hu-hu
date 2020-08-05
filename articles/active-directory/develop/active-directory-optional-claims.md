@@ -1,7 +1,7 @@
 ---
 title: Opcionális jogcímek megadása az Azure AD-alkalmazásokhoz
 titleSuffix: Microsoft identity platform
-description: Egyéni vagy további jogcímek hozzáadása a Azure Active Directory által kiállított SAML 2,0 és JSON web tokens (JWT) jogkivonatokhoz.
+description: Egyéni vagy további jogcímek hozzáadása a Microsoft Identity platform által kiadott SAML 2,0 és JSON web tokens (JWT) jogkivonatokhoz.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445588"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552866"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: opcionális jogcímek megadása az Azure AD-alkalmazáshoz
+# <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
 Az alkalmazások fejlesztői használhatják az Azure AD-alkalmazásokban választható jogcímeket annak meghatározására, hogy mely jogcímeket szeretnék elküldeni az alkalmazásnak.
 
 A következő választható jogcímeket használhatja:
 
 - Válassza ki az alkalmazáshoz tartozó jogkivonatokban szerepeltetni kívánt további jogcímeket.
-- Módosítsa az Azure AD által a jogkivonatokban visszaadott jogcímek viselkedését.
+- Módosítsa a Microsoft Identity platform által a jogkivonatokban visszaadott jogcímek viselkedését.
 - Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
 A standard jogcímek listájáért tekintse meg a [hozzáférési jogkivonat](access-tokens.md) és a [id_token](id-tokens.md) jogcím dokumentációját.
@@ -37,7 +37,7 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | N.A.         | Támogatott   |
+| Személyes Microsoft-fiók | N/A         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -77,7 +77,7 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 
 **3. táblázat: v 2.0 – csak opcionális jogcímek**
 
-| JWT jogcím     | Name                            | Leírás                                | Jegyzetek |
+| JWT jogcím     | Név                            | Leírás                                | Jegyzetek |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-cím                      | Az ügyféltől bejelentkezett IP-cím.   |       |
 | `onprem_sid`  | Helyszíni biztonsági azonosító |                                             |       |
@@ -137,7 +137,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 1. Válassza a **választható jogcím hozzáadása**lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 **Választható jogcímek konfigurálása az alkalmazás jegyzékfájlján keresztül:**
 
@@ -241,7 +241,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 1. Válassza a **csoportok hozzáadása** lehetőséget
 1. Válassza ki a visszaadni kívánt csoportok típusát (**minden csoport**, **SecurityGroup**vagy **DirectoryRole**). A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole**és a **DistributionList**
 1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait a csoportok jogcím értékének módosításához a helyszíni csoport attribútumain vagy a jogcím típusának a szerepkörre való módosításához.
-1. Válassza a **Mentés** lehetőséget
+1. Kattintson a **Mentés** gombra
 
 **Csoportok konfigurálása választható jogcímek az alkalmazás jegyzékfájlján keresztül:**
 
@@ -435,7 +435,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Amikor befejezte a jegyzékfájl frissítését **, a Mentés gombra kattintva** mentheti a jegyzékfájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure AD által biztosított standard jogcímekről.
 

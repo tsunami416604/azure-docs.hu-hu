@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529624"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554022"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
@@ -29,9 +29,9 @@ Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szo
 
 A szolgáltatás élettartamára a következő szolgáltatási tulajdonságok vannak rögzítve – a változtatások bármelyike új szolgáltatást igényel. Mivel ezek rögzítettek, vegye figyelembe a használati szempontokat az egyes tulajdonságok kitöltése során:
 
-* a szolgáltatás neve az URL-végpont részévé válik (a hasznos szolgáltatások neveire vonatkozó[tippek áttekintése](#name-the-service) ).
-* a szolgáltatási szinten [befolyásolja a számlázást](search-sku-tier.md) , és beállítja a kapacitás felső határát.
-* a szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha érdekli az adatbányászat és a mesterséges intelligencia-bővítés, akkor Cognitive Services és valószínűleg Azure Machine Learning ugyanabban a régióban, mint az Azure Cognitive Search.
+* A szolgáltatás neve az URL-végpont részévé válik (a hasznos szolgáltatások neveire vonatkozó[tippek áttekintése](#name-the-service) ).
+* A szolgáltatási szinten [befolyásolja a számlázást](search-sku-tier.md) , és beállítja a kapacitás felső határát. Néhány funkció nem érhető el az ingyenes szinten.
+* A szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha [magas szintű biztonsági funkciókra](search-security-overview.md) vagy [AI](cognitive-search-concept-intro.md)-bővítésre van szüksége, az Azure Cognitive Search-t a többi szolgáltatással azonos régióba kell helyeznie, vagy a szóban forgó szolgáltatást biztosító régiókban. 
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 
@@ -51,7 +51,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 ## <a name="choose-a-subscription"></a>Előfizetés kiválasztása
 
-Ha egynél több előfizetéssel rendelkezik, válasszon egyet a keresési szolgáltatáshoz.
+Ha egynél több előfizetéssel rendelkezik, válasszon egyet a keresési szolgáltatáshoz. Ha a [kettős titkosítást](search-security-overview.md#double-encryption) vagy más olyan szolgáltatásokat valósít meg, amelyek a felügyelt szolgáltatásbeli identitástól függenek, válassza ki ugyanazt az előfizetést, mint a Azure Key Vault vagy más olyan szolgáltatások esetében, amelyekhez a felügyelt identitások vannak használatban.
 
 ## <a name="set-a-resource-group"></a>Erőforráscsoport beállítása
 
@@ -89,6 +89,8 @@ Az Azure Cognitive Search a legtöbb régióban elérhető. A támogatott régi�
 
 > [!Note]
 > A közép-India és az Észak-Egyesült Arab Emírségek jelenleg nem érhető el új szolgáltatásokhoz. A régiókban már meglévő szolgáltatások esetében korlátozás nélkül méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A korlátozások ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozások már nem érvényesek.
+>
+> A kettős titkosítás csak bizonyos régiókban érhető el. További információ: [dupla titkosítás](search-security-overview.md#double-encryption).
 
 ### <a name="requirements"></a>Követelmények
 

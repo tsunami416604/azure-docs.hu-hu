@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447701"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562684"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -34,7 +34,7 @@ A runbookok további elkülönítéséhez használhatja az Azure Virtual Machine
 
 Ha konkrét követelménye van, Azure Firewall is felhasználhatja a teljesítéshez.
 
-* [Virtuális hálózatok és virtuális gépek az Azure-ban](../virtual-machines/windows/network-overview.md)
+* [Virtuális hálózatok és virtuális gépek az Azure-ban](../virtual-machines/network-overview.md)
 
 * [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -848,7 +848,7 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 
 **Útmutató**: az Azure-környezetben üzembe helyezett magas kockázatú alkalmazások elkülönítése különálló hálózati és erőforrás-tárolók használatával, például virtuális hálózatokkal, alhálózattal, előfizetésekkel és felügyeleti csoportokkal, a Azure Firewall, a webalkalmazási TŰZFAL (WAF) vagy a hálózati biztonsági csoport (NSG) segítségével megfelelően védhetők.
 
-* [Virtuális hálózatok és virtuális gépek az Azure-ban](../virtual-machines/windows/network-overview.md)
+* [Virtuális hálózatok és virtuális gépek az Azure-ban](../virtual-machines/network-overview.md)
 
 * [Azure Firewall áttekintése](../firewall/overview.md)
 
@@ -1288,7 +1288,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

@@ -301,7 +301,7 @@
     - name: Alkalmazások fejlesztése és futtatása
       items:
         - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: Meglévő alkalmazások telepítése Helm használatával
           href: kubernetes-helm.md
         - name: Az OpenFaaS használata

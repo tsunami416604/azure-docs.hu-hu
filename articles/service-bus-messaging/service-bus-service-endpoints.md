@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. ServiceBus 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422946"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552985"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Azure Service Bus névtér elérésének engedélyezése adott virtuális hálózatokból
 
@@ -32,6 +32,7 @@ Az eredmény az alhálózathoz és a megfelelő Service Bus névtérhez kötött
 > Az alábbi Microsoft-szolgáltatások szükségesek virtuális hálózaton
 > - Azure App Service
 > - Azure Functions
+> - Azure Monitor (diagnosztikai beállítás)
 
 > [!IMPORTANT]
 > A virtuális hálózatok csak [prémium szintű](service-bus-premium-messaging.md) Service Bus névterek esetén támogatottak.

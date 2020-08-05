@@ -372,7 +372,7 @@
     - name: Figyelés
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Biztonsági másolat és helyreállítás
-      href: backup-recovery.md
+      href: ../backup-recovery.md
     - name: A felhő bevezetésének keretrendszere
       href: /azure/cloud-adoption-framework/get-started/
     - name: Architektúra-központ

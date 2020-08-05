@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628793"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562446"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -48,7 +48,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 ## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
 A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
-* [Azure Portalra](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
@@ -104,6 +104,9 @@ Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használj
 
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Miért?
 Ha az alkalmazás helyi gyorsítótárat használ, a legújabb módosítások beszerzéséhez újra kell indítania a helyet. Nem kívánja közzétenni a módosításokat egy éles helyen? Tekintse meg a tárolóhelyek beállításait az előző ajánlott eljárások szakaszban.
+
+> [!NOTE]
+> A [csomag](deploy-run-package.md) központi telepítésének futtatása beállítás nem kompatibilis a helyi gyorsítótárral.
 
 ### <a name="where-are-my-logs"></a>Hol találhatók a naplók?
 A helyi gyorsítótárral a naplók és az adatmappák egy kicsit máshogy néznek ki. Az almappák szerkezete azonban változatlan marad, azzal a különbséggel, hogy az almappák az "egyedi virtuálisgép-azonosító" és az időbélyeg formátuma alatt vannak.

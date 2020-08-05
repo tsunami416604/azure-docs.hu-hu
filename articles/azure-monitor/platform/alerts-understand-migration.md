@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073624"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564095"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>A migrálási eszköz működésének ismertetése
 
@@ -104,7 +104,7 @@ A sikertelen kérelmek Mongo tartozó riasztásokat több riasztásra kell bonta
 
 ### <a name="classic-compute-metrics"></a>Klasszikus számítási mérőszámok
 
-A klasszikus számítási metrikákkal kapcsolatos riasztásokat a rendszer nem telepíti át az áttelepítési eszköz használatával, mivel a klasszikus számítási erőforrások még nem támogatottak az új riasztásokkal. A jövőben új riasztások jelennek meg az adott erőforrástípusok esetében. Ha ez elérhető, az ügyfeleknek új, egyenértékű riasztási szabályokat kell létrehozniuk a klasszikus riasztási szabályok alapján a 2020. június előtt.
+A klasszikus számítási metrikákkal kapcsolatos riasztásokat a rendszer nem telepíti át az áttelepítési eszköz használatával, mivel a klasszikus számítási erőforrások még nem támogatottak az új riasztásokkal. Az ilyen típusú új riasztások támogatása jelenleg nyilvános előzetes verzióban érhető el, és az ügyfelek a klasszikus riasztási szabályok alapján újra létrehozhatnak új egyenértékű riasztási szabályokat.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klasszikus riasztási szabályok elavult metrikák esetén
 
@@ -270,7 +270,7 @@ A Migrálás részeként új metrikai riasztások és új műveleti csoportok j�
 - Az előfizetések vagy erőforráscsoportok kizárása az áttelepítési folyamat időtartamára a szabályzat-hozzárendelésből. [További információ a házirendek Kizárási hatókörének kezeléséről](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
 - A "naplózás" vagy a "Hozzáfűzés" effektus eltávolítása vagy módosítása (ami például a hiányzó címkékkel kapcsolatos problémák megoldására szolgál). [További információ a házirendek hatásának kezeléséről](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A migrálási eszköz használata](alerts-using-migration-tool.md)
 - [Előkészületek a migráláshoz](alerts-prepare-migration.md)

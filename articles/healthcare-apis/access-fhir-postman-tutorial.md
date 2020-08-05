@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: f6c3b1f4c24ad2bce68c1cff7b22f0059d3534a2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446053"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563959"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -23,6 +23,7 @@ Egy ügyfélalkalmazás egy [Rest APIon](https://www.hl7.org/fhir/http.html)kere
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy FHIR-végpont az Azure-ban. Ezt beállíthatja a felügyelt Azure API-FHIR vagy az Azure-hoz készült nyílt forráskódú FHIR-kiszolgáló használatával. A felügyelt Azure API beállítása a FHIR [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)vagy [Azure CLI](fhir-paas-cli-quickstart.md)használatával.
+- Egy [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) , amelyet a FHIR szolgáltatás eléréséhez fog használni
 - A Posting telepítése megtörtént. A következő címről kérheti le:[https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR-kiszolgáló és-hitelesítés részletei
@@ -126,7 +127,7 @@ Ha megismétli a beteges keresést, a következőt kell látnia:
 
 ![Beteg létrehozva](media/tutorial-postman/postman-patient-found.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy FHIR API-t adott hozzá a Poster használatával. Olvassa el a támogatott funkciók szakasz támogatott API-funkcióit ismertető szakaszt.
  

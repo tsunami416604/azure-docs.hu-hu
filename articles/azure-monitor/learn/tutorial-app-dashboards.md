@@ -7,16 +7,18 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 706ae5a6c93468da9a65293c1bb4eefb136b938d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318419"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553274"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
-Több irányítópultot is létrehozhat az Azure Portalon, amelyeknek a csempéi különböző erőforráscsoportokban és előfizetésekben található Azure-erőforrások adatait jelenítik meg.  Különböző Azure Application Insights-diagramok és -nézetek rögzítésével egyéni irányítópultokat hozhat létre, amelyek átfogó képet mutatnak az alkalmazás állapotáról és teljesítményéről. Ez az oktatóanyag bemutatja, hogyan lehet az Azure Application Insightsból származó többféle adatot és vizualizációt tartalmazó egyéni irányítópultokat létrehozni.  Az alábbiak végrehajtásának módját ismerheti meg:
+Több irányítópultot is létrehozhat az Azure Portalon, amelyeknek a csempéi különböző erőforráscsoportokban és előfizetésekben található Azure-erőforrások adatait jelenítik meg.  Különböző Azure Application Insights-diagramok és -nézetek rögzítésével egyéni irányítópultokat hozhat létre, amelyek átfogó képet mutatnak az alkalmazás állapotáról és teljesítményéről. Ez az oktatóanyag bemutatja, hogyan lehet az Azure Application Insightsból származó többféle adatot és vizualizációt tartalmazó egyéni irányítópultokat létrehozni.
+
+ Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Egyéni irányítópult létrehozása az Azure-ban
@@ -25,13 +27,14 @@ Több irányítópultot is létrehozhat az Azure Portalon, amelyeknek a csempéi
 > * Egyéni Application Insights-metrikadiagramok hozzáadása az irányítópulthoz
 > * Naplók (Analytics) lekérdezés eredményeinek hozzáadása az irányítópulthoz
 
-
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
 - Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t.
+
+> [!NOTE]
+> Az irányítópultok használatához szükséges engedélyeket az [irányítópultok hozzáférés-vezérlésének megismerését ismertető](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboard-share-access#understanding-access-control-for-dashboards)cikkben tárgyaljuk.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -123,7 +126,7 @@ Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló 
 5. Válassza a **megosztás** lehetőséget, ha újra közzé szeretné tenni a módosításokat az irányítópulton, amely mostantól számos diagramot és vizualizációt tartalmaz a Application Insightsból.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekintse át az Application Insights dokumentációját, amely egy esettanulmányt is tartalmaz.
 
 > [!div class="nextstepaction"]

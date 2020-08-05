@@ -1,5 +1,5 @@
 ---
-title: Hogyan használja az Azure AD a SAML-protokollt
+title: Hogyan használja a Microsoft Identity platform az SAML protokollt
 description: Ez a cikk áttekintést nyújt az egyszeri bejelentkezés és az egyszeri kijelentkezés SAML-profiljairól Azure Active Directory.
 services: active-directory
 author: kenwith
@@ -12,22 +12,22 @@ ms.date: 10/05/2018
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 54d8278a93bfd2d6009422a5c105be14a7bc3c80
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274323"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552798"
 ---
-# <a name="how-azure-ad-uses-the-saml-protocol"></a>Hogyan használja az Azure AD a SAML-protokollt
+# <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Hogyan használja a Microsoft Identity platform az SAML protokollt
 
-Azure Active Directory (Azure AD) az SAML 2,0 protokollt használja, hogy az alkalmazások egyszeri bejelentkezéses felhasználói élményt nyújtsanak a felhasználóknak. Az Azure AD egyszeri bejelentkezési és [egyszeri kijelentkezési](single-sign-out-saml-protocol.md) SAML-profiljai elmagyarázzák, hogyan használják az SAML- [jogcímeket](single-sign-on-saml-protocol.md) , protokollokat és kötéseket az Identity Provider szolgáltatásban.
+A Microsoft Identity platform az SAML 2,0 protokollt használja, amely lehetővé teszi, hogy az alkalmazások egyszeri bejelentkezéses felhasználói élményt nyújtsanak a felhasználóknak. Az Azure AD egyszeri bejelentkezési és [egyszeri kijelentkezési](single-sign-out-saml-protocol.md) SAML-profiljai elmagyarázzák, hogyan használják az SAML- [jogcímeket](single-sign-on-saml-protocol.md) , protokollokat és kötéseket az Identity Provider szolgáltatásban.
 
-Az SAML protokoll megköveteli az Identitáskezelés (Azure AD) és a szolgáltató (az alkalmazás) számára, hogy saját magukról cseréljen információkat.
+Az SAML protokoll megköveteli az Identitáskezelő (Microsoft Identity platform) és a szolgáltató (az alkalmazás) számára a saját magukkal kapcsolatos információk cseréjét.
 
 Ha egy alkalmazás regisztrálva van az Azure AD-ben, az alkalmazás fejlesztője regisztrálja az összevonási szolgáltatással kapcsolatos információkat az Azure AD-vel. Ez az információ magában foglalja az alkalmazás **átirányítási URI** -ját és **metaadatait** .
 
-Az Azure AD a Cloud Service **metaadat-URI-ját** használja az aláíró kulcs és a kijelentkezési URI lekéréséhez. Az ügyfél megnyithatja az alkalmazást az **Azure ad-> alkalmazás-regisztrációban** , majd a **Beállítások-> tulajdonságaiban**a kijelentkezési URL-címet is frissítheti. Így az Azure AD elküldi a választ a megfelelő URL-címre. 
+A Microsoft Identity platform a Cloud Service **metaadat-URI-ját** használja az aláíró kulcs és a kijelentkezési URI lekéréséhez. Az ügyfél megnyithatja az alkalmazást az **Azure ad-> alkalmazás-regisztrációban** , majd a **Beállítások-> tulajdonságaiban**a kijelentkezési URL-címet is frissítheti. Így a Microsoft Identity platform a megfelelő URL-címre küldheti el a választ. 
 
 Azure Active Directory a bérlő-specifikus és a közös (bérlői független) egyszeri bejelentkezéses és egyszeri kijelentkezési végpontokat teszi elérhetővé. Ezek az URL-címek címezhető helyet jelölnek – nem csupán azonosítók –, így a végpontra léphet a metaadatok olvasásához.
 

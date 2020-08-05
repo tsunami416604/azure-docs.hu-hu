@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: a92aa304d605242063e0d0484317bc8c051959e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a41fe159f3ac7ef91ba943534aaa6baeeab83001
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317841"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552407"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -379,7 +379,7 @@ Emellett vizuálisan azonosíthatja az egyes hiperparaméterek beállítása tel
 
 [![hiperparaméter hangolása párhuzamos koordinátákkal](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-Az Azure web Portalon is megjelenítheti az összes hiperparaméter hangolási futtatást. A kísérleteknek a webes portálon való megtekintésével kapcsolatos további információkért lásd: [a kísérletek nyomon követése](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
+Az Azure web Portalon is megjelenítheti az összes hiperparaméter hangolási futtatást. A kísérleteknek a webes portálon való megtekintésével kapcsolatos további információkért lásd: [a kísérletek nyomon követése](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
 
 ## <a name="find-the-best-model"></a>A legjobb modell megkeresése
 
@@ -403,6 +403,6 @@ Tekintse meg a következő mappában található hiperparaméter-* jegyzetfüzet
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Kísérlet nyomon követése](how-to-track-experiments.md)
 * [Betanított modell üzembe helyezése](how-to-deploy-and-where.md)

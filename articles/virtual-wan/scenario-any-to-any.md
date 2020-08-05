@@ -6,22 +6,43 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecc2b3cf236cb2a78fd595189649e7f6b176d709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568714"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553427"
 ---
 # <a name="scenario-any-to-any"></a>Forgatókönyv: bármilyen
 
-A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Bármilyen szituációban bármely küllő elérheti egy másikat. Ha több központ létezik, a hub – hub útválasztás (más néven az Inter-hub) alapértelmezés szerint engedélyezve van a standard virtuális WAN-ban. 
+A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Bármilyen szituációban bármely küllő elérheti egy másikat. Ha több központ létezik, a hub – hub útválasztás (más néven az Inter-hub) alapértelmezés szerint engedélyezve van a standard virtuális WAN-ban. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
-Ebben a forgatókönyvben a VPN-, a ExpressRoute-és a felhasználói VPN-kapcsolatok ugyanahhoz az útválasztási táblához vannak társítva. Az összes VPN-, ExpressRoute-és felhasználói VPN-kapcsolat továbbítja az útvonalakat ugyanahhoz az útválasztási táblákhoz. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
+## <a name="design"></a><a name="design"></a>Tervezés
 
-## <a name="scenario-architecture"></a><a name="architecture"></a>Forgatókönyv-architektúra
+Ha szeretné megtudni, hogy hány útválasztási táblázatra van szükség egy virtuális WAN-forgatókönyvben, létrehozhat egy kapcsolati mátrixot, ahol minden cella azt jelöli, hogy egy forrás (sor) tud-e kommunikálni a célhoz (oszlophoz). Ebben a forgatókönyvben a kapcsolati mátrix triviális, de a többi forgatókönyvvel való összhang érdekében belefoglaljuk.
+
+| Forrás |   Művelet |  *Virtuális hálózatok* | *Ágak* |
+| -------------- | -------- | ---------- | ---|
+| Virtuális hálózatok     | &#8594;|      X     |     X    |
+| Ágak   | &#8594;|    X     |     X    |
+
+Az előző táblázatban szereplő összes cella azt ismerteti, hogy egy virtuális WAN-kapcsolat (a folyamat "from" oldaláról, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejléceit) egy adott forgalmi folyamat esetében.
+
+Mivel a virtuális hálózatok és az ágak (VPN, ExpressRoute és felhasználói VPN) összes kapcsolata ugyanazokkal a kapcsolati követelményekkel rendelkezik, egyetlen útválasztási táblára van szükség. Ennek eredményeképpen minden kapcsolat társítva lesz, és a rendszer az alapértelmezett útválasztási táblázatba továbbítja az útválasztási táblázatot:
+
+* Virtuális hálózatok:
+  * Társított útválasztási táblázat: **alapértelmezett**
+  * Propagálás az útválasztási táblákba: **alapértelmezett**
+* Ágak
+  * Társított útválasztási táblázat: **alapértelmezett**
+  * Propagálás az útválasztási táblákba: **alapértelmezett**
+
+További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
+
+## <a name="architecture"></a><a name="architecture"></a>Architektúra
 
 Az **1. ábrán**minden virtuális hálózatok és ág (VPN, EXPRESSROUTE, P2S) elérheti egymást. Egy virtuális központban a kapcsolatok a következőképpen működnek:
 
@@ -35,11 +56,11 @@ Ezek a kapcsolatok (alapértelmezés szerint a létrehozáskor) az alapértelmez
 
 :::image type="content" source="./media/routing-scenarios/any-any/figure-1.png" alt-text="1. ábra":::
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Forgatókönyv-munkafolyamat
+## <a name="workflow"></a><a name="workflow"></a>Munkafolyamat
 
 Ez a forgatókönyv alapértelmezés szerint engedélyezve van a standard szintű virtuális WAN esetében. Ha a ág – ág beállítás le van tiltva a WAN-konfigurációban, ez letiltja a fiókirodák közötti kapcsolatot. A VPN/ExpressRoute/User VPN a virtuális WAN ág-küllői.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

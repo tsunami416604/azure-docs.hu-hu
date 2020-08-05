@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501491"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553954"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
-Ez a cikk az Azure Cognitive Search legfontosabb biztonsági funkcióit ismerteti, amelyek a tartalom és a műveletek védelmére használhatók. 
+Ez a cikk az Azure Cognitive Search legfontosabb biztonsági funkcióit ismerteti, amelyek a tartalom és a műveletek védelmére használhatók.
 
-+ A tárolási rétegben a többhelyes titkosítás a platform szintjén van megadva, de a Cognitive Search az ügyfél által felügyelt kulcsokat is kínál a Azure Key Vault egy további titkosítási réteghez.
++ A tárolási rétegben a titkosítás az összes olyan, a szolgáltatás által felügyelt tartalomra épül, mint az indexek, a szinonimák leképezései, valamint az indexelő, az adatforrások és a szakértelmével definíciói. Az Azure Cognitive Search az indexelt tartalom kiegészítő titkosításához is támogatja az ügyfél által felügyelt kulcsok (CMK) hozzáadását. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.
 
 + A bejövő biztonság a keresési szolgáltatási végpontot a biztonsági szintek növekvő szintjén védi: a kérés API-kulcsaitól, a tűzfal bejövő szabályaitól a szolgáltatás teljes körű védelmét biztosító privát végpontok számára a nyilvános internetről.
 
@@ -29,29 +30,41 @@ Tekintse meg ezt a gyors iramú videót a biztonsági architektúra és az egyes
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>Titkosított átvitelek és tárolók
 
-A titkosítás az Azure Cognitive Searchban, a kapcsolatok és az átvitelek megkezdésével, a lemezen tárolt tartalom kiterjesztésével. A nyilvános interneten található keresési szolgáltatások esetében az Azure Cognitive Search a 443-es HTTPS-portot figyeli. Az összes ügyfél és szolgáltatás közötti kapcsolat TLS 1,2 titkosítást használ. A korábbi verziók (1,0 vagy 1,1) nem támogatottak.
+Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel kezdődik, és a lemezen tárolt tartalomra terjed ki. A nyilvános interneten található keresési szolgáltatások esetében az Azure Cognitive Search a 443-es HTTPS-portot figyeli. Az összes ügyfél és szolgáltatás közötti kapcsolat TLS 1,2 titkosítást használ. A korábbi verziók (1,0 vagy 1,1) nem támogatottak.
 
-### <a name="data-encryption-at-rest"></a>Inaktív adatok titkosítása
+A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-atrest.md#data-encryption-models)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
-Az Azure Cognitive Search az index definícióit és tartalmát, az adatforrás-definíciókat, az indexelő definíciókat, a készségkészlet-definíciókat és a szinonimákat is tartalmazza.
+| Modell | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
+|------------------|-------|-------------|--------------|------------|
+| kiszolgálóoldali titkosítás | Microsoft által felügyelt kulcsok | Nincs (beépített) | Nincs, az összes régióban elérhető minden szinten, a január 24 2018. után létrehozott tartalomhoz. | Tartalom (indexek és szinonima térképek) és definíciók (indexelő, adatforrások, szakértelmével) |
+| kiszolgálóoldali titkosítás | ügyfél által felügyelt kulcsok | Azure Key Vault | Minden régióban elérhető számlázandó szinten, a január 2019. után létrehozott tartalomhoz. | Az adatlemezeken található tartalom (indexek és szinonimák) |
+| kiszolgálóoldali dupla titkosítás | ügyfél által felügyelt kulcsok | Azure Key Vault | Elérhető a számlázási szinten, a kiválasztott régiókban, a keresési szolgáltatásokban augusztus 1 2020. után. | Az adatlemezeken és az ideiglenes lemezeken található tartalom (indexek és szinonimák) |
 
-A tárolási rétegben az adatai a Microsoft által kezelt kulcsokkal titkosítva vannak a lemezen. A titkosítás be-és kikapcsolása nem lehetséges, vagy a titkosítási beállítások megtekinthetők a portálon, vagy programozott módon. A titkosítás teljes mértékben belső, és az indexelési idő – befejezés vagy az index mérete nem mérhető. Automatikusan megtörténik az összes indexelésnél, beleértve az olyan index növekményes frissítését is, amely nem teljesen titkosított (január 2018. előtt jött létre).
+### <a name="service-managed-keys"></a>Szolgáltatás által felügyelt kulcsok
 
-Belsőleg a titkosítás az [Azure Storage Service Encryptionon](../storage/common/storage-service-encryption.md)alapul, és 256 bites AES- [titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ.
+A szolgáltatás által felügyelt titkosítás egy Microsoft-belső művelet, amely az [Azure Storage Service encryption](../storage/common/storage-service-encryption.md)alapján 256 bites [AES-titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ. Automatikusan megtörténik az összes indexelésnél, beleértve a nem teljes mértékben titkosított indexekhez tartozó növekményes frissítéseket (a 2018. január előtt létrehozva).
 
-> [!NOTE]
-> A inaktív adatok titkosítása 2018. január 24-én jelent meg, és minden szolgáltatási szinten érvényes, beleértve az ingyenes szintet is minden régióban. A teljes titkosításhoz az adott dátum előtt létrehozott indexeket el kell dobni, és újból létre kell hozni a titkosítás megkezdése érdekében. Ellenkező esetben csak a január 24 után hozzáadott új adatforgalom titkosítva van.
+### <a name="customer-managed-keys-cmk"></a>Ügyfél által felügyelt kulcsok (CMK)
 
-### <a name="customer-managed-key-cmk-encryption"></a>Ügyfél által felügyelt kulcs (CMK) titkosítása
+Az ügyfél által felügyelt kulcsokhoz további számlázható szolgáltatásra van szükség, Azure Key Vault, amely egy másik régióban, de ugyanabban az előfizetésben található, mint az Azure Cognitive Search. A CMK titkosításának engedélyezése növeli az index méretét és csökkenti a lekérdezési teljesítményt. Az eddigi megfigyelések alapján a lekérdezési időpontokban 30%-60%-os növekedés várható, bár a tényleges teljesítmény az index definíciója és a lekérdezések típusaitól függően változhat. A teljesítményre gyakorolt hatás miatt javasoljuk, hogy ezt a funkciót csak olyan indexeken engedélyezze, amelyekhez valóban szükség van. További információ: [az ügyfél által felügyelt titkosítási kulcsok konfigurálása az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
 
-Azok az ügyfelek, akik további tárterület-védelemmel szeretnék titkosítani az adataikat és az objektumokat, mielőtt azokat tárolják és titkosítsák a lemezen. Ez a módszer egy felhasználó által birtokolt kulcson alapul, amelyet a Microsofttól függetlenül Azure Key Vault felügyel és tárol. A tartalom titkosítása a lemezre titkosítás előtt "kettős titkosításnak" nevezzük. Az indexek és a szinonimák leképezése jelenleg szelektíven is elvégezhető. További információ: [ügyfél által felügyelt titkosítási kulcsok az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> A CMK titkosítás általánosan elérhető a január 2019 után létrehozott keresési szolgáltatásokhoz. Ingyenes (megosztott) szolgáltatásokban nem támogatott. 
->
->A funkció engedélyezése növeli az index méretét és csökkenti a lekérdezési teljesítményt. Az eddigi megfigyelések alapján a lekérdezési időpontokban 30%-60%-os növekedés várható, bár a tényleges teljesítmény az index definíciója és a lekérdezések típusaitól függően változhat. A teljesítményre gyakorolt hatás miatt javasoljuk, hogy ezt a funkciót csak olyan indexeken engedélyezze, amelyekhez valóban szükség van.
+### <a name="double-encryption"></a>Dupla titkosítás 
+
+Az Azure Cognitive Search a kettős titkosítás a CMK kiterjesztése. A rendszer úgy értelmezi, hogy az adatlemezre írt, hosszú távú tárolást, valamint az ideiglenes lemezekre írt rövid távú tárolást (a CMK egyszer, egyszer a szolgáltatás által felügyelt kulcsok alapján), valamint átfogó hatókörrel rendelkezik. A CMK közötti különbség a 1 2020 augusztusa előtt, illetve azt követően, és mi teszi a CMK egy dupla titkosítási funkciót az Azure Cognitive Search-ban, az adatok további titkosítása az ideiglenes lemezeken.
+
+A kettős titkosítás jelenleg az alábbi régiókban létrehozott új szolgáltatásokban érhető el augusztus 1-től:
+
++ USA 2. nyugati régiója
++ USA keleti régiója
++ USA déli középső régiója
++ USA-beli államigazgatás – Virginia
++ USA-beli államigazgatás – Arizona
 
 <a name="service-access-and-authentication"></a>
 
@@ -131,7 +144,7 @@ A Azure Policy az Azure-ba épített képesség, amely lehetővé teszi több sz
 
 Az Azure Cognitive Search esetében jelenleg egy beépített definíció van. Diagnosztikai naplózásra szolgál. A beépített használatával olyan házirendet rendelhet hozzá, amely azonosítja a diagnosztikai naplózásból hiányzó keresési szolgáltatásokat, majd bekapcsolja azt. További információ: [Azure Policy Azure Cognitive Search szabályozási megfelelőségi szabályozása](security-controls-policy.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Azure-biztonság – Alapismeretek](../security/fundamentals/index.yml)
 + [Azure-biztonság](https://azure.microsoft.com/overview/security)

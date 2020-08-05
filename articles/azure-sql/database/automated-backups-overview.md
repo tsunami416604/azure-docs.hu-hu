@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 07/20/2020
-ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 08/04/2020
+ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428219"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554039"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -120,7 +120,7 @@ További információ a LTR: a [biztonsági másolatok hosszú távú megőrzés
 
 ## <a name="storage-costs"></a>Tárolási költségek
 
-A Storage díjszabása attól függően változik, hogy a DTU modellt vagy a virtuális mag modellt használja-e.
+A biztonsági mentési tár ára attól függően változik, hogy a DTU modellt vagy a virtuális mag modellt használja-e, valamint a régióját is. A biztonsági mentési tár díja GB/hó használatban van, díjszabásért lásd: [Azure SQL Database díjszabási](https://azure.microsoft.com/pricing/details/sql-database/single/) oldal és az [Azure SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) oldal.
 
 ### <a name="dtu-model"></a>DTU-modell
 

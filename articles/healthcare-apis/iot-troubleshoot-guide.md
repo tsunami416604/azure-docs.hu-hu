@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/03/2020
 ms.author: jasteppe
-ms.openlocfilehash: 8c372a865e34b2cbd1b5b3e6d8619c3ef0f438e0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b404fa5322d3afa8cbf71741382d44dd0433d49c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460422"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553682"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT-összekötő a FHIR (előzetes verzió) – hibaelhárítási útmutató
 
-Ez a cikk az Azure IoT-összekötő gyakori hibaelhárítási lépéseit ismerteti FHIR hibaüzenetek és feltételek esetén.  
+Ez a cikk az Azure IoT-összekötő FHIR * hibaüzenetek és feltételek esetén történő hibaelhárításának lépéseit ismerteti.  
 
 Azt is megtudhatja, hogyan hozhat létre másolatot az Azure IoT-összekötőről a Azure Portalon kívüli JSON-leképezési fájlok szerkesztésére és archiválására, illetve a támogatási jegy megnyitásakor az Azure technikai támogatás biztosítására. 
 
@@ -67,12 +67,12 @@ Az Azure IoT Connector FHIR-megfeleltetési fájlokra való másolása hasznos l
 > [!TIP]
 > Ha a FHIR készült Azure IoT-összekötőhöz [Azure technikai támogatási](https://azure.microsoft.com/support/create-ticket/) jegyet nyit meg, ügyeljen arra, hogy a leképezési fájlok másolatait is tartalmazza a hibaelhárítási folyamat elősegítése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a FHIR készült Azure IoT-összekötővel kapcsolatos gyakori kérdéseket.
 
 >[!div class="nextstepaction"]
->[Azure IoT-összekötő a FHIR (előzetes verzió) – gyakori kérdések](fhir-faq.md#iot-connector-preview)
+>[Azure IoT-összekötő FHIR – gyakori kérdések](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * A Azure Portal a FHIR készült Azure IoT-összekötő a IoT-összekötő (előzetes verzió) néven ismert.
 

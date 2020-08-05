@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b83c60182c311d9b04a205da4ab0c3477dc9b9e
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373240"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563703"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -43,7 +43,7 @@ Az adatsík API-k az Azure Digital Twins-példányon belüli elemek kezelésére
 * **Lekérdezés** – a lekérdezési kategória lehetővé teszi a fejlesztők számára [, hogy a kettős gráfban a kapcsolatok között megtalálják a digitális ikrek készleteit](how-to-query-graph.md) .
 * **EventRoutes** – a EventRoutes kategória olyan API-kat tartalmaz, amelyek az [adattovábbítást](concepts-route-events.md)a rendszeren és az alsóbb rétegbeli szolgáltatásokon keresztül irányítják.
 
-A nyilvános előzetes verzióhoz tartozó legfrissebb adatsík API-verzió a _**2020-05-31 előzetes**_ verzió.
+A nyilvános előzetes verzióhoz tartozó legfrissebb adatsík API-verzió a _**2020-05-31 előzetes**_ verzió. Az adatsík műveletek _2020-03-01 – előzetes_ verzió API-verziója már elavult.
 
 Az adatsík API-k használata:
 * Az API-kat közvetlenül, a... alapján hívhatja le.
@@ -288,7 +288,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan használható az API-k egy Azure digitális Twins-példány és-hitelesítés beállításához:
 * [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md)

@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532458"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553087"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -197,6 +197,10 @@ Amikor új szabályzatot léptet érvénybe, a rendszer annak az ütemezését �
 - Ha a megőrzés kibővül, a meglévő helyreállítási pontok úgy vannak megjelölve, hogy az új szabályzatnak megfelelően megőrizze őket.
 - Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>Mennyi ideig őrzi meg a rendszer az adatokat a biztonsági másolatok leállításakor, de a biztonsági mentési adatokat is megőrzi?
+
+Ha a biztonsági mentések leállnak, és az adatokat megőrzi, az adattörlésre vonatkozó meglévő szabályzati szabályok megszűnnek, és az adatokat határozatlan ideig megőrzi a rendszer, amíg a rendszergazda el nem indítja a törlést.
+
 ## <a name="encryption"></a>Titkosítás
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Az Azure-ba küldött adatok titkosítottak?
@@ -220,7 +224,7 @@ A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosít�
 
 Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tárol másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

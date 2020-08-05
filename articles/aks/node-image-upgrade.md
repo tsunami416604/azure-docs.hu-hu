@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 13842512c7d983a70b32132b4a16be37ac0b2b54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050715"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562787"
 ---
 # <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Előzetes verzió – az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképének frissítése
 
@@ -47,7 +47,7 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -140,7 +140,7 @@ az aks nodepool show \
     --name mynodepool
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A legújabb csomópont-lemezképekkel kapcsolatos információkért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases) .
 - Ismerje meg, hogyan frissítheti a Kubernetes-verziót [egy AK-fürt frissítésével][upgrade-cluster].

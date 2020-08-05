@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) a tároláshoz, az
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80877898"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562838"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -35,8 +35,8 @@ Az alábbi táblázat a rendelkezésre álló tárolási típusokat és azok ké
 | Használati eset | Kötet beépülő modul | Egyszer írható/olvasható | Csak olvasható sok | Több olvasása/írása | A Windows Server-tároló támogatása |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
-| Strukturált alkalmazásadatok        | Azure Disks   | Yes | Nem  | Nem  | Yes |
-| Strukturálatlan adatok, fájlrendszerbeli műveletek | [BlobFuse][blobfuse] | Igen | Igen | Igen | No |
+| Strukturált alkalmazásadatok        | Azure Disks   | Igen | Nem  | Nem  | Igen |
+| Strukturálatlan adatok, fájlrendszerbeli műveletek | [BlobFuse][blobfuse] | Igen | Igen | Igen | Nem |
 
 Az AK-beli kötetek két elsődleges tárolási típusát az Azure-lemezek vagy a Azure Files. A biztonság növelése érdekében a mindkét típusú tároló az Azure Storage Service Encryption (SSE) alapértelmezés szerint az inaktív adatok titkosítására használja. A lemezek jelenleg nem titkosíthatók Azure Disk Encryption használatával az AK csomópont szintjén.
 
@@ -94,7 +94,7 @@ Ha az alkalmazások lemezeken vagy fájlokban tárolt adatokat tárolnak és has
 
 Ismerje meg az adatok biztonsági mentésének különböző módszereinek korlátozásait, és ha a pillanatkép előtt fokozatos leválasztása kell az adatait. Az adatbiztonsági másolatok nem feltétlenül lehetővé teszik a fürt üzembe helyezésének alkalmazási környezetének visszaállítását. További információ ezekről a forgatókönyvekről: [ajánlott eljárások az üzleti folytonosság és a vész-helyreállítás az AK-ban][best-practices-multi-region].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a tárolási ajánlott eljárásokat ismerteti az AK-ban. További információ a Kubernetes tárolásával kapcsolatos alapismeretekről: [az AK-beli alkalmazások tárolási fogalmai][aks-concepts-storage].
 
@@ -104,7 +104,7 @@ Ez a cikk a tárolási ajánlott eljárásokat ismerteti az AK-ban. További inf
 
 <!-- LINKS - Internal -->
 [aks-concepts-storage]: concepts-storage.md
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [dynamic-disks]: azure-disks-dynamic-pv.md
 [dynamic-files]: azure-files-dynamic-pv.md
 [reclaim-policy]: concepts-storage.md#storage-classes

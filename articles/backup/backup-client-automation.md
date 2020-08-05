@@ -3,12 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513727"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564027"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 Az elérhető lehetőségek a következők:
 
-| Beállítás | Részletek | Alapértelmezett |
+| Lehetőség | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
 | /p: "location" |A Azure Backup ügynök telepítési mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services ügynök |
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 A Windows Server vagy a Windows rendszerű ügyfélszámítógépen futtassa a [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) parancsmagot a gép a tárolóban való regisztrálásához.
-Ez és a biztonsági mentéshez használt egyéb parancsmagok a MSONLINE modulból származnak, amelyet a Mars AgentInstaller a telepítési folyamat részeként adott hozzá.
+Ez és a biztonsági mentéshez használt egyéb parancsmagok a MSONLINE modulból származnak, amelyet a MARS AgentInstaller a telepítési folyamat részeként adott hozzá.
 
 Az ügynök telepítője nem frissíti a $Env:P SModulePath változót. Ez azt jelenti, hogy a modul automatikus betöltése meghiúsul. Ennek megoldásához a következőket teheti:
 

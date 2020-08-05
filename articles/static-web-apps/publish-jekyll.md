@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3ced7e758669041d11d50ae7bfaf1065cf5439b3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4211f21d78ac0e06743c97f1081804fd641f9d2
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562019"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563572"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Jekyll-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Jekyll](https://jekyllrb.com/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -96,7 +96,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
@@ -120,7 +120,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
     :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
-### <a name="build"></a>Felépítés
+### <a name="build"></a>Build
 
 Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létrehozási folyamat az alkalmazás létrehozásához használ. Az alábbi beállítások a GitHub-művelet munkafolyamat-fájlját konfigurálja.
 
@@ -146,7 +146,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Nyissa meg a Jekyll alkalmazást egy szövegszerkesztőben, és nyissa meg a _. GitHub/munkafolyamatok/Azure-Pages-<WORKFLOW_NAME>. YML_ fájlt.
 
-1. Cserélje le a sort a `- uses: actions/checkout@v1` következő konfigurációs blokkra.
+1. Sorok hozzáadása a blokk után `- uses: actions/checkout@v2` a következő konfigurációs blokkhoz.
 
     ```yml
     - uses: actions/checkout@v2
@@ -154,12 +154,12 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
         submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
-        with:
+      with:
         ruby-version: 2.6
     - name: Install dependencies
-        run: bundle install
+      run: bundle install
     - name: Jekyll build
-        run: jekyll build
+      run: jekyll build
     ```
 
 1. Véglegesítse a frissített munkafolyamatot, és küldje el a GitHubnak.
@@ -176,7 +176,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
    :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 

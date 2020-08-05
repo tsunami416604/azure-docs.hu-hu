@@ -11,17 +11,17 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e12c22d56399ce1690bee678623c58288cf0163b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423813"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552203"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási végpontokon üzembe helyezett modellekről az Azure Kubernetes szolgáltatásban (ak) vagy Azure Container Instances (ACI), ha engedélyezi az Azure Application Insightst 
+Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási végpontokra üzembe helyezett modellekről az Azure Kubernetes szolgáltatásban (ak) vagy Azure Container Instances (ACI) a naplók lekérdezésével és az Azure Application Insights engedélyezésével 
 * [Python SDK Azure Machine Learning](#python)
 * [Azure Machine learning Studio](#studio) itt:https://ml.azure.com
 
@@ -42,6 +42,18 @@ A végpont kimeneti adatok és válaszok összegyűjtése mellett a következők
 
 * Az Azure Kubernetes Service (ak) vagy az Azure Container instance (ACI) számára üzembe helyezett, betanított gépi tanulási modell. Ha még nem rendelkezik ilyennel, tekintse meg a következő témakört: a [rendszerképek besorolási modellje](tutorial-train-models-with-aml.md) oktatóanyaga
 
+## <a name="query-logs-for-deployed-models"></a>Telepített modellek naplófájljainak lekérdezése
+
+A korábban üzembe helyezett webszolgáltatás naplófájljainak beolvasásához töltse be a szolgáltatást, és használja a `get_logs()` függvényt. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Webszolgáltatás metaadatainak és válaszideje
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ A végpont kimeneti adatok és válaszok összegyűjtése mellett a következők
 A webszolgáltatásra irányuló kérések adatainak naplózásához adjon hozzá `print` utasításokat a score.py-fájlhoz. Minden `print` utasítás egy bejegyzést eredményez az Application Insights nyomkövetési táblájában, az üzenet alatt `STDOUT` . Az utasítás tartalma a `print` `customDimensions` és `Contents` a nyomkövetési táblában is szerepelni fog. Ha JSON-karakterláncot nyomtat ki, akkor az a nyomkövetési kimenetben hierarchikus adatstruktúrát hoz létre `Contents` .
 
 Az Azure Application Insights közvetlenül is lekérdezheti az adatok eléréséhez, vagy beállíthat [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) egy Storage-fiókba a hosszú megőrzés vagy a további feldolgozás érdekében. A modell adatai ezután felhasználhatók a Azure Machine Learning a címkézés, az átképzés, a magyarázat, az adatelemzés vagy más felhasználás beállításához. 
+
 
 <a name="python"></a>
 
@@ -164,7 +177,7 @@ A megtekintéshez:
 1. Lépjen a Azure Machine Learning munkaterületére a [Studióban](https://ml.azure.com/).
 1. Válassza a **végpontok**lehetőséget.
 1. Válassza ki a telepített szolgáltatást.
-1. Görgessen le a **Application Insights URL-cím** megkereséséhez, és kattintson a hivatkozásra.
+1. Görgessen le a **Application Insights URL-cím** megkereséséhez, és válassza ki a hivatkozást.
 
     [![Application Insights URL-cím keresése](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 71dcad908884351950c89b590523ffa91d6d47f9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424767"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552781"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>A Directory sémakezelő bővítmény attribútumainak használata a jogcímek között
 
@@ -41,7 +41,7 @@ A címtár-séma bővítményeinek attribútumai kétféleképpen regisztrálhat
 Az AD-kapcsolat használatával létrehozott és szinkronizált címtár-séma-bővítményi attribútumok mindig az AD-kapcsolat által használt alkalmazás-AZONOSÍTÓhoz vannak társítva. A jogcímek forrásaként is használhatók, ha a **vállalati** alkalmazások konfigurációjában jogcímként konfigurálja azokat az SAML-alkalmazások számára, amelyeket a katalógus vagy a katalóguson kívüli alkalmazás konfigurálásával, a **vállalati alkalmazások**esetében regisztrálnak  Miután az AD-kapcsolaton keresztül létrehozott egy címtár-kiterjesztési attribútum szerepel a címtárban, az SAML SSO-jogcímek konfigurációs felhasználói felületén fog megjelenni.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Olyan jogcímek kibocsátása, amelyek a Graph vagy a PowerShell használatával egy alkalmazáshoz létrehozott címtár-séma bővítmény attribútumaiból származó adatokkal rendelkeznek.
-Ha a Directory sémakezelő bővítmény attribútuma Microsoft Graph vagy PowerShell használatával van regisztrálva (az alkalmazások kezdeti beállítása vagy üzembe helyezési lépése alapján), akkor ugyanaz az alkalmazás konfigurálható a Azure Active Directoryban, hogy az adott attribútumban lévő adatok a felhasználó bejelentkezésekor a jogcímben lévő felhasználói objektumból fogadhasson.  Az alkalmazás úgy konfigurálható, hogy olyan címtár-séma-bővítményekben fogadja az adatfogadást, amelyek nem [kötelező jogcímeket](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)használnak ugyanazon az alkalmazáson.  Ezek megadhatók az alkalmazás jegyzékfájljában.  Ez lehetővé teszi, hogy a több-bérlős alkalmazások saját használatra regisztrálják a címtár-séma bővítmény attribútumait. Ha az alkalmazás egy bérlőhöz lett kiépítve, a társított címtár-séma bővítményei elérhetővé válnak a bérlő felhasználói számára, és felhasználhatók.  Miután konfigurálta a bérlőben és a beleegyezett a hozzájárulásban, felhasználhatja az adattárolást és-lekérést a gráfon keresztül, és leképezheti az Azure AD által az alkalmazások számára kiadott jogcímek jogcímeit.
+Ha a Directory sémakezelő bővítmény attribútuma Microsoft Graph vagy PowerShell használatával van regisztrálva (az alkalmazások kezdeti beállítása vagy üzembe helyezési lépése alapján), akkor ugyanaz az alkalmazás konfigurálható a Azure Active Directoryban, hogy az adott attribútumban lévő adatok a felhasználó bejelentkezésekor a jogcímben lévő felhasználói objektumból fogadhasson.  Az alkalmazás úgy konfigurálható, hogy olyan címtár-séma-bővítményekben fogadja az adatfogadást, amelyek nem [kötelező jogcímeket](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)használnak ugyanazon az alkalmazáson.  Ezek megadhatók az alkalmazás jegyzékfájljában.  Ez lehetővé teszi, hogy a több-bérlős alkalmazások saját használatra regisztrálják a címtár-séma bővítmény attribútumait. Ha az alkalmazás egy bérlőhöz lett kiépítve, a társított címtár-séma bővítményei elérhetővé válnak a bérlő felhasználói számára, és felhasználhatók.  Miután konfigurálta a bérlőt és a hozzájárulást, felhasználhatja az adatok gráfon keresztüli tárolására és lekérésére, valamint a tokenekben a Microsoft Identity platform által az alkalmazásokhoz kiadott jogcímek leképezésére.
 
 A címtár-séma bővítmény attribútumai regisztrálhatók és kitölthetők bármely alkalmazáshoz.
 

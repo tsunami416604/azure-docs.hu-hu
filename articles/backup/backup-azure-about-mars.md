@@ -1,19 +1,20 @@
 ---
 title: Tudnivalók a MARS-ügynökről
 description: Ismerje meg, hogyan támogatja a MARS-ügynök a biztonsági mentési forgatókönyveket
-ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/04/2020
+ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497947"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562599"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Tudnivalók a Microsoft Azure Recovery Services (MARS) ügynökről
 
 Ez a cikk azt ismerteti, hogyan használja a Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba.
+
+## <a name="backup-scenarios"></a>Biztonsági mentési forgatókönyvek
 
 A MARS-ügynök a következő biztonsági mentési forgatókönyveket támogatja:
 
@@ -23,13 +24,21 @@ A MARS-ügynök a következő biztonsági mentési forgatókönyveket támogatja
 - **Kötet szintje**: a számítógép teljes Windows-kötetének a megóvása.
 - **Rendszerszintű**: a teljes Windows rendszerállapotának biztosítása.
 
+### <a name="additional-scenarios"></a>További helyzetek
+
+- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+
+- **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
+
+## <a name="restore-scenarios"></a>Visszaállítási forgatókönyvek
+
 A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
 ![MARS helyreállítási forgatókönyvek](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
 - **Ugyanazon kiszolgáló**: az a kiszolgáló, amelyen a biztonsági másolatot eredetileg létrehozták.
   - **Fájlok és mappák**: válassza ki a visszaállítani kívánt fájlokat és mappákat.
-  - **Kötet szintje**: válassza ki azt a kötetet és helyreállítási pontot, amelyet vissza szeretne állítani, majd állítsa vissza ugyanarra a helyre, vagy egy másik helyre ugyanazon a gépen.  Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
+  - **Kötet szintje**: válassza ki a visszaállítani kívánt kötetet és helyreállítási pontot. Ezután állítsa vissza ugyanarra a helyre vagy egy másik helyre ugyanazon a gépen.  Meglévő fájlok másolatának létrehozása, meglévő fájlok felülírása vagy a meglévő fájlok helyreállításának kihagyása.
   - **Rendszerszintű**: válassza ki a rendszerállapotot és a helyreállítási pontot, hogy a visszaállítás ugyanarra a gépre történjen egy adott helyen.
 
 - **Másodlagos kiszolgáló**: a biztonsági mentést végző kiszolgálótól eltérő kiszolgáló.
@@ -54,12 +63,6 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 - A **növekményes biztonsági mentések** (az azt követő biztonsági másolatok) a megadott ütemezés szerint futnak. A növekményes biztonsági mentések során a módosított fájlok azonosíthatók, és létrejön egy új VHD. A virtuális merevlemez tömörítve és titkosítva van, majd a rendszer elküldje a tárolónak. A növekményes biztonsági mentés befejeződése után az új VHD a kezdeti replikáció után létrehozott VHD-vel lesz egyesítve. Ez az egyesített VHD biztosítja a legújabb, a folyamatban lévő biztonsági mentéshez való összehasonlításhoz használt állapotot.
 
 - A MARS-ügynök **optimalizált módban** futtathatja a biztonsági mentési FELADATOT az USN (frissítési sorszám) módosítási napló használatával, vagy nem optimalizált **módban** , ha a címtárakban vagy fájlokban lévő módosításokat ellenőrzi a teljes kötet vizsgálatával. Az optimalizálatlan mód lassabb, mert az ügynöknek a köteten lévő összes fájlt be kell olvasnia, és össze kell hasonlítani a metaadatokkal a módosított fájlok meghatározásához.  A **kezdeti biztonsági mentés** mindig nem optimalizált módban fog futni. Ha az előző biztonsági mentés sikertelen volt, a következő ütemezett biztonsági mentési feladatokra nem optimalizált módban fog futni. Ha többet szeretne megtudni ezekről a módokról és azok ellenőrzéséről, tekintse meg [ezt a cikket](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode).
-
-### <a name="additional-scenarios"></a>További helyzetek
-
-- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](./backup-architecture.md#architecture-built-in-azure-vm-backup).
-
-- **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

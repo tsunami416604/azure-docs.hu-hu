@@ -1,20 +1,20 @@
 ---
 title: Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)
-description: ''
+description: Megtudhatja, hogyan hozhat létre titkosítási hatókört a blob-adattárolók és a Blobok szintjének elkülönítéséhez.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531877"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564146"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre titkosítási hatókört. Az
 
 ## <a name="create-an-encryption-scope"></a>Titkosítási hatókör létrehozása
 
-Titkosítási hatókör létrehozásához először létre kell hoznia egy Azure Key vaultot, és hozzá kell adnia a hatókörhöz használni kívánt kulcsot. A Key vaultban engedélyezni kell a **Soft delete** és a **Purge Protection** tulajdonságot is, és a Storage-fióknak ugyanabban a régióban kell lennie. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+A Microsoft által felügyelt kulccsal vagy Azure Key Vaultban tárolt, ügyfél által felügyelt kulccsal hozhat létre titkosítási hatóköröket. Ha ügyfél által felügyelt kulccsal szeretne titkosítási hatókört létrehozni, először létre kell hoznia egy Azure Key vaultot, és hozzá kell adnia a hatókörhöz használni kívánt kulcsot. A Key vaultban engedélyezni kell a **Soft delete** és a **Purge Protection** tulajdonságot is, és a Storage-fióknak ugyanabban a régióban kell lennie. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
 
 A létrehozáskor a titkosítási hatókör automatikusan engedélyezve lesz. A titkosítási hatókör létrehozása után megadhatja azt a blob létrehozásakor. A tároló létrehozásakor megadhat egy alapértelmezett titkosítási hatókört is, amely automatikusan a tárolóban lévő összes blobra vonatkozik.
 

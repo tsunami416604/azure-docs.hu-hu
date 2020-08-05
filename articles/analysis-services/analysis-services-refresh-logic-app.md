@@ -2,17 +2,17 @@
 title: Frissítés a Logic Apps for Azure Analysis Services models szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet a Azure Logic Apps használatával az aszinkron frissítést Azure Analysis Services.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025319"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552237"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
@@ -114,7 +114,7 @@ Válassza ki a kívánt órát.
 
 Mentse a logikai alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Példák](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

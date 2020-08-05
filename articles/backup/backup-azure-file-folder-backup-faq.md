@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533580"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563099"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
@@ -19,6 +19,12 @@ Ez a cikk a [Azure Backup](backup-overview.md) szolgáltatás Microsoft Azure Re
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Honnan tölthetők le a MARS-ügynök legújabb verziója?
 
 A Windows Server-gépek, a System Center DPM és a Microsoft Azure Backup-kiszolgáló biztonsági mentésekor használt legújabb MARS-ügynök [letölthető](https://aka.ms/azurebackup_agent).
+
+### <a name="where-can-i-download-the-vault-credentials-file"></a>Honnan tölthetők le a tároló hitelesítő adatainak fájlja?
+
+A Azure Portal navigáljon a tár **tulajdonságaihoz** . A **biztonsági másolat hitelesítő adatai**területen jelölje be a jelölőnégyzetet a **legújabb Recovery Services ügynök használatával**. Válassza a **Letöltés** lehetőséget.
+
+![Hitelesítő adatok letöltése](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Meddig érvényes a tár hitelesítő adatai?
 
@@ -174,7 +180,7 @@ A Azure Backup ügynöknek szüksége van egy jelszóra (amelyet a regisztráci�
 
 Vegye figyelembe a következő feltételeket:
 
-* Ha eltávolítja és újra regisztrálja az ügynököt ugyanarra az eredeti gépre, mint te
+* Ha eltávolítja és újra regisztrálja az ügynököt ugyanarra az eredeti gépre, amelyen a
   * *Ugyanez a jelszó*, akkor visszaállíthatja a biztonsági másolatok adatait.
   * *Más jelszó*, nem állíthatja vissza a biztonsági másolatban tárolt adatait.
 * Ha az ügynököt egy *másik gépre* telepíti, amelyen a
@@ -205,6 +211,6 @@ Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a vissza
 * A kötet-visszaállítás helyreállítási lehetőségnél a MARS-ügynök lehetőséget biztosít az ACL-engedélyek visszaállítására a helyreállított fájlra vagy mappára vonatkozóan.
 * Az egyes fájlok és mappák helyreállítási lehetőség esetén a MARS-ügynök ACL-engedélyekkel lesz visszaállítva (nincs lehetőség az ACL-visszaállítás kihagyására).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók](tutorial-backup-windows-server-to-azure.md) a Windows rendszerű gépek biztonsági mentéséről.

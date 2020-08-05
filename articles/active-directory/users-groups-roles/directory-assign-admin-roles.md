@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502477"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551693"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -195,8 +195,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják az alapszintű cí
 Ne használja. Ezt a szerepkört a rendszer automatikusan hozzárendeli a Azure AD Connect szolgáltatáshoz, és semmilyen más használatra nem javasolt vagy nem támogatott.
 
 ### <a name="directory-writers"></a>[Címtár-írók](#directory-writers-permissions)
-
-Ez egy örökölt szerepkör, amelyet olyan alkalmazásokhoz kell rendelni, amelyek nem támogatják az [engedélyezési keretrendszert](../develop/quickstart-register-app.md). Nem rendelhető hozzá egyetlen felhasználóhoz sem.
+A szerepkör felhasználói a felhasználók, csoportok és egyszerű szolgáltatások alapvető információit tudják olvasni és frissíteni. Ezt a szerepkört csak olyan alkalmazásokhoz rendelheti hozzá, amelyek nem támogatják az [engedélyezési keretrendszert](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Nem rendelhető hozzá egyetlen felhasználóhoz sem.
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 Administrator/CRM-rendszergazda](#crm-service-administrator-permissions)
 
@@ -1001,22 +1000,36 @@ Olvasás & az alapszintű könyvtár adatainak írása. Az alkalmazásokhoz val�
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
-| Microsoft. Directory/csoportok/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/createAsOwner | Csoportok létrehozása a Azure Active Directoryban. A létrehozó hozzá lett adva az első tulajdonosként, és a létrehozott objektum a Creator 250 létrehozott objektum-kvótájának számít. |
 | Microsoft. Directory/csoportok/appRoleAssignments/Update | A groups. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/alapszintű/frissítés | Azure Active Directoryban lévő csoportok alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/csoportok/assignLicense | A licencek kezelése Azure Active Directory-csoportokban. |
+| Microsoft. Directory/csoportok/alapszintű/frissítés | Azure Active Directoryban lévő csoportok alapszintű tulajdonságainak frissítése.  |
+| Microsoft. Directory/csoportok/besorolás/frissítés | Azure Active Directory a csoport Update besorolási tulajdonsága. |
+| Microsoft. Directory/csoportok/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
+| Microsoft. Directory/csoportok/groupType/Update | Egy csoport groupType tulajdonságának frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/tagok/frissítés | A groups. Members tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/tulajdonosok/frissítés | A groups. owners tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/csoportok/reprocessLicenseAssignment | Azure Active Directory-csoporthoz tartozó licenc-hozzárendelések újrafeldolgozása. |
+| Microsoft. Directory/csoportok/securityEnabled/Update | Egy csoport secutiryEnabled tulajdonságának frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/csoportok/láthatóság/frissítés | A csoport láthatósági tulajdonságának frissítése |
 | Microsoft. Directory/groupSettings/Basic/Update | A groupSettings alapszintű tulajdonságainak frissítése Azure Active Directory. |
-| Microsoft. Directory/groupSettings/Create | Hozzon létre groupSettings a Azure Active Directory. |
+| Microsoft. Directory/groupSettings/Create | GroupSettings létrehozása a Azure Active Directory.. |
 | Microsoft. Directory/groupSettings/delete | Azure Active Directory groupSettings törlése. |
+| Microsoft. Directory/Oauth2permissiongrant objektumok/Basic/Update | A Oauth2permissiongrant objektumok alapszintű tulajdonságainak frissítése Azure Active Directory. |
+| Microsoft. Directory/Oauth2permissiongrant objektumok/Create | Hozzon létre Oauth2permissiongrant objektumok a Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Az alkalmazás üzembe helyezési titkainak és hitelesítő adatainak kezelése. |
+| Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Az alkalmazás-kiépítési szinkronizálási feladatok elindítása, újraindítása és felfüggesztése. |
+| Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Alkalmazás-kiépítési szinkronizálás-feladatok és-séma létrehozása és kezelése. |
 | Microsoft. Directory/felhasználók/appRoleAssignments/Update | A users. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/felhasználók/assignLicense | Licencek kezelése Azure Active Directory felhasználóinak. |
 | Microsoft. Directory/felhasználók/alapszintű/frissítés | A Azure Active Directoryban lévő felhasználók alapszintű tulajdonságainak frissítése. |
-| Microsoft. Directory/felhasználók/invalidateAllRefreshTokens | Azure Active Directory összes felhasználói frissítési jogkivonatának érvénytelenítése. |
+| Microsoft. Directory/felhasználók/letiltás | Felhasználói fiók letiltása Azure Active Directoryban. |
+| Microsoft. Directory/felhasználók/engedélyezés | Felhasználói fiók engedélyezése Azure Active Directory |
+| Microsoft. Directory/felhasználók/invalidateAllRefreshTokens | A Azure Active Directory összes felhasználói frissítési jogkivonatának érvénytelenítése, hogy a felhasználóknak újra hitelesíteniük kell magukat a következő bejelentkezéskor |
 | Microsoft. Directory/felhasználók/kezelő/frissítés | A users. Manager tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/felhasználók/userPrincipalName/Update | A users. userPrincipalName tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/felhasználók/reprocessLicenseAssignment | Azure Active Directory-felhasználóhoz tartozó licenc-hozzárendelések újrafeldolgozása. |
+| Microsoft. Directory/felhasználók/userPrincipalName/Update | Frissítse a users. userPrincipalName tulajdonságot Azure Active Directory. |
+
 
 ### <a name="exchange-service-administrator-permissions"></a>Exchange szolgáltatás rendszergazdai engedélyei
 
@@ -1899,7 +1912,7 @@ Eszközkezelők | Elavult | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Eszköz felhasználói | Elavult | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Directory-olvasók | Directory-olvasók | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Címtár-szinkronizálási fiókok | Nem látható, mert nem használható | d29b2b05-8046-44ba-8758-1e26182fcf32
-Címtár-írók | Nem látható, mert nem használható | 9360feb5-f418-4baa-8175-e2a00bac4301
+Címtár-írók | Címtár-írók | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange szolgáltatás rendszergazdája | Exchange-rendszergazda | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Külső azonosító – felhasználói folyamat rendszergazdája | Külső azonosító – felhasználói folyamat rendszergazdája | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Külső azonosító felhasználói flow-attribútumának rendszergazdája | Külső azonosító felhasználói flow-attribútumának rendszergazdája | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
@@ -1978,7 +1991,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, tekintse meg az [Azure-szerepkörök (Azure RBAC) használatával történő hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

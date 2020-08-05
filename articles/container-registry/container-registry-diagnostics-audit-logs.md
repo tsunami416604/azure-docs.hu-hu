@@ -3,12 +3,12 @@ title: Erőforrás-naplók & gyűjtése
 description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252487"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553376"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
 
@@ -121,7 +121,7 @@ ContainerRegistryRepositoryEvents
 | project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
 ```
 
-### <a name="reposity-level-operation-failures"></a>A repók szintjének műveleti hibái
+### <a name="repository-level-operation-failures"></a>Tárház-szintű műveleti hibák
 
 ```kusto
 ContainerRegistryRepositoryEvents 

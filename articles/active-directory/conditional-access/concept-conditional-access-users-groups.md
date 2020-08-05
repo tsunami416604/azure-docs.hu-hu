@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274663"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552900"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
@@ -45,6 +45,9 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
 > [!WARNING]
 > Ha a felhasználók vagy csoportok tagjai több mint 2048 csoportnak, a hozzáférésük blokkolva lehet. Ez a korlátozás a közvetlen és a beágyazott csoporttagság is vonatkozik.
 
+> [!WARNING]
+> A feltételes hozzáférési szabályzatok nem támogatják azokat a felhasználókat, akik egy [felügyeleti egységre](../users-groups-roles/roles-admin-units-assign-roles.md) vagy címtár-szerepkörre hatókörrel rendelkező, közvetlenül az adott objektumra (például [Egyéni szerepkörökre](../users-groups-roles/roles-create-custom.md)) kiterjedő címtár-szerepkört rendeltek.
+
 ## <a name="exclude-users"></a>Felhasználók kizárása
 
 Ha a szervezetek egyaránt tartalmaznak és kizárnak egy felhasználót vagy csoportot, amelyet a felhasználó vagy csoport kizár a szabályzatból, a kizárási művelet felülbírál egy belefoglalást a házirendbe. A kizárásokat gyakran használják vészhelyzeti hozzáféréshez vagy bomlási fiókokhoz. További információ a segélyhívó fiókokról és azok fontos okairól a következő cikkekben talál további információt: 
@@ -71,7 +74,7 @@ Alapértelmezés szerint a házirend lehetővé teszi az aktuális felhasználó
 
 ![Figyelmeztetés, ne zárja ki magát!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek](concept-conditional-access-cloud-apps.md)
 

@@ -2,16 +2,16 @@
 title: Ajánlott eljárások a hosszú ideig futó műveletekhez Azure Analysis Servicesban | Microsoft Docs
 description: Ez a cikk a hosszú ideig futó műveletek ajánlott eljárásait ismerteti.
 author: minewiskan
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428107"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551948"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Ajánlott eljárások a hosszú ideig futó műveletekhez
 
@@ -45,7 +45,7 @@ Akár REST-, akár egyéni logikát használ, az ügyfélalkalmazások lekérdez
 Ha csak olvasható lekérdezési replikákat használ, míg a frissítések kötegekben vannak elvégezve, az ügyfélalkalmazás felhasználói továbbra is lekérhetik az adatok régi pillanatképét az írásvédett replikák esetében. A frissítések befejeződése után egy szinkronizálási művelet végrehajtásával a csak olvasható replikák naprakészen helyezhetők.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Aszinkron frissítés a REST API-val](analysis-services-async-refresh.md)  
 [Az Azure Analysis Services horizontális felskálázása](analysis-services-scale-out.md)  

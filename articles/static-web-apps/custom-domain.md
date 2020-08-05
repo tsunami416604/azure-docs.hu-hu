@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960299"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563347"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure Static Web Apps előzetes verziójában
 
@@ -37,7 +37,7 @@ Az alkalmazásokhoz számos különböző típusú DNS-konfiguráció érhető e
 
 ## <a name="map-a-cname-record"></a>CNAME rekord hozzárendelése
 
-Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használatával képezhető le `www.example.com` Az Azure statikus Web Apps által biztosított, automatikusan létrehozott tartományra.
+Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használatával képezhető le `www.example.com` , `blog.example.com` vagy bármely más altartomány az Azure statikus Web Apps által biztosított, automatikusan létrehozott tartományba.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
@@ -66,7 +66,7 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
     | Beállítás             | Érték                     |
     | ------------------- | ------------------------- |
     | Típus                | CNAME                     |
-    | Gazdagép                | www                       |
+    | Gazda                | www                       |
     | Érték               | Beillesztés a vágólapról |
     | TTL (ha van ilyen) | Kilépés alapértelmezett értékként    |
 
@@ -111,9 +111,9 @@ Néha azt szeretné, hogy az altartományba eljuttatott összes forgalom egy má
     | Beállítás | Érték                  |
     | ------- | ---------------------- |
     | Típus    | CNAME                  |
-    | Gazdagép    | \*                     |
+    | Gazda    | \*                     |
     | Érték   | www.example.com        |
-    | Élettartam     | Kilépés alapértelmezett értékként |
+    | TTL     | Kilépés alapértelmezett értékként |
 
 5. Mentse a módosításokat a DNS-szolgáltatóval.
 
@@ -121,7 +121,7 @@ Most, hogy a helyettesítő karakteres tartomány konfigurálva van, több órá
 
 Ha a DNS-módosítások feltöltése megtörtént, a webhely visszaadja a statikus webalkalmazáshoz konfigurált egyéni tartományt (például: `www.example.com` ).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásbeállítások konfigurálása](application-settings.md)

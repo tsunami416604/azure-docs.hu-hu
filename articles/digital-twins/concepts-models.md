@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2d062ea4f38742129d44be0e2b7ff51fe3ad8dd1
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131633"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562429"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -26,7 +26,7 @@ A modellek a JSON-LD-alapú **Digital Twin Definition Language (DTDL) nyelv**has
 
 Az Azure Digital Twins modelljei a digitális Twins Definition Language (DTDL) használatával definiálhatók. A DTDL JSON-LD-alapú, és a programozási nyelvtől független. A DTDL nem kizárólagos az Azure Digital Twins-ban, de más IoT-szolgáltatásokban, például a [IoT Plug and Playban](../iot-pnp/overview-iot-plug-and-play.md)is használhatók. 
 
-Az Azure Digital Twins a DTDL *2-es verzióját*használja. A DTDL ezen verziójával kapcsolatos további információkért tekintse meg a specifikációs dokumentációt a GitHubon: [*Digital Twins Definition Language (DTDL) – 2. verzió*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen verziójával kapcsolatos további információkért tekintse meg a specifikációs dokumentációt a GitHubon: [*Digital Twins Definition Language (DTDL) – 2. verzió*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Az DTDL _1-es verziójának_ használata az Azure Digital Twins használatával már elavult.
 
 > [!TIP] 
 > Nem minden olyan szolgáltatás, amely a DTDL-t használja, pontosan ugyanazokat a funkciókat implementálja, mint a DTDL. Például a IoT Plug and Play nem használja a graphs szolgáltatáshoz használt DTDL-funkciókat, míg az Azure digitális Twins jelenleg nem implementál DTDL-parancsokat. Az Azure digitális Twins-ra jellemző DTDL-funkciókkal kapcsolatos további információkért tekintse meg a jelen cikk későbbi, az [Azure Digital Twins DTDL megvalósítási sajátosságai](#azure-digital-twins-dtdl-implementation-specifics)című szakaszát.
@@ -213,7 +213,7 @@ A DTDL-érvényesítő minta egy .NET DTDL-elemző könyvtárra épül, amely ü
 
 További információ az elemző könyvtárról, például a használati példákról [*: a modellek elemzése és ellenőrzése*](how-to-use-parser.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
 * [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)

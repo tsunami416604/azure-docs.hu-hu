@@ -6,19 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/15/2020
-ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076347"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553927"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="feature-announcements-in-2020"></a>Szolgáltatások hirdetményei a 2020-ben
+
+### <a name="august-2020"></a>Augusztus 2020
+
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [dupla titkosítás](search-security-overview.md#encryption) | Biztonság | Engedélyezze a dupla titkosítást a tárolási rétegben az ügyfél által felügyelt kulcs (CMK) titkosításának az új keresési szolgáltatásokban történő konfigurálásával. Hozzon létre egy új szolgáltatást, [konfigurálja és alkalmazza az ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) indexekre vagy szinonimára, és használja ki az adott tartalomra vonatkozó kettős titkosítás előnyeit. | Általánosan elérhető minden olyan keresési szolgáltatáshoz, amely 2020. augusztus 1-től a következő régiókban lett létrehozva: USA 2. nyugati régiója, USA keleti régiója, USA déli középső régiója, US Gov Virginia, US Gov Arizona. A szolgáltatás létrehozásához használja a portált, a felügyeleti REST API-kat vagy az SDK-kat. |
 
 ### <a name="july-2020"></a>2020. július
 

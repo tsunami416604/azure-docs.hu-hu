@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432419"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563551"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -82,7 +82,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat az adatai-előál
     > [!NOTE]
     > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Néhány pillanat elteltével az új beállítás megjelenik az adat-előállító beállításainak listájában. A rendszer a diagnosztikai naplókat az adott munkaterületre továbbítja, amint új esemény-adatforrások jönnek létre. Akár 15 percig is eltarthat egy esemény kibocsátása, és amikor megjelenik a Log Analyticsban.
 
@@ -146,11 +146,11 @@ A monitor segítségével megtekintheti az Azure-beli számítási feladatok tel
 | TriggerCancelledRuns                  | Megszakított trigger-futtatási metrikák            | Darabszám    | Összesen                | Egy percen belül megszakított trigger-futtatások teljes száma. |
 | TriggerFailedRuns                    | Sikertelen trigger-futtatási metrikák              | Darabszám    | Összesen                | A sikertelen trigger-futtatások teljes száma egy percen belül. |
 | TriggerSucceededRuns                 | A sikeres trigger metrikákat futtat           | Darabszám    | Összesen                | Egy percen belül sikeresen elindított trigger-futtatások teljes száma. |
-| SSISIntegrationRuntimeStartCancelled  | SSIS megszakítva IR indítási metrikák           | Darabszám    | Összesen                | A percenként megszakított SSIS-integrációs modul teljes száma. |
-| SSISIntegrationRuntimeStartFailed    | Nem sikerült SSIS az IR indítási metrikákat             | Darabszám    | Összesen                | A SSIS összes olyan IR elindítása, amely egy percen belül meghiúsult. |
-| SSISIntegrationRuntimeStartSucceeded | Sikeres SSIS IR indítási metrikák          | Darabszám    | Összesen                | A SSIS-integrációs modul teljes száma, amely egy percen belül sikeres volt. |
-| SSISIntegrationRuntimeStopStuck      | Beragadt SSIS IR-leállítási metrikái               | Darabszám    | Összesen                | Egy percen belül beragadt SSIS IR-megállók teljes száma. |
-| SSISIntegrationRuntimeStopSucceeded  | Sikeres SSIS IR-leállítási metrikák           | Darabszám    | Összesen                | Egy percen belül sikeresen elvégezhető SSIS-állomások teljes száma. |
+| SSISIntegrationRuntimeStartCancelled  | Megszakított SSIS Integration Runtime Start mérőszámai           | Darabszám    | Összesen                | A percenként megszakított SSIS-integrációs modul teljes száma. |
+| SSISIntegrationRuntimeStartFailed    | Nem sikerült SSIS az Integration Runtime indítási mérőszámait             | Darabszám    | Összesen                | A SSIS integrációs modul teljes száma, amely egy percen belül meghiúsult. |
+| SSISIntegrationRuntimeStartSucceeded | Sikeres SSIS Integration Runtime indítási metrikái          | Darabszám    | Összesen                | A SSIS integrációs modul teljes száma, amely egy percen belül sikeres volt. |
+| SSISIntegrationRuntimeStopStuck      | Beragadt SSIS Integration Runtime leállítási metrikái               | Darabszám    | Összesen                | A SSIS integrációs modul összes leállási száma, amelyek egy percen belül beragadtak. |
+| SSISIntegrationRuntimeStopSucceeded  | Sikeres SSIS integrációs modul leállítási metrikái           | Darabszám    | Összesen                | A SSIS integrációs modul teljes száma, amely egy percen belül sikeres volt. |
 | SSISPackageExecutionCancelled         | SSIS-csomag végrehajtási metrikáinak megszakítva  | Darabszám    | Összesen                | A percenként megszakított SSIS-csomagok végrehajtásának teljes száma. |
 | SSISPackageExecutionFailed           | Sikertelen SSIS-csomag végrehajtási metrikái    | Darabszám    | Összesen                | Egy percen belül sikertelen SSIS-csomagok végrehajtásának teljes száma. |
 | SSISPackageExecutionSucceeded        | Sikeres SSIS-csomag végrehajtási metrikái | Darabszám    | Összesen                | Egy percen belül sikeres SSIS-csomagok végrehajtásának teljes száma. |
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
 | **storageAccountId** |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyhez diagnosztikai naplókat szeretne küldeni. |
 | **serviceBusRuleId** |Sztring | Annak a Service-Bus-névtérnek az azonosítója, amelyben a Event Hubs létre kívánja hozni a stream diagnosztikai naplóihoz. A szabály AZONOSÍTÓjának formátuma `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -455,7 +455,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 |**operationName**| Sztring | Az állapottal rendelkező tevékenység neve. Ha a tevékenység a kezdő szívverés, a tulajdonság értéke `MyActivity -` . Ha a tevékenység a záró szívverés, a tulajdonság értéke `MyActivity - Succeeded` . | `MyActivity - Succeeded` |
 |**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
 |**activityName**| Sztring | A tevékenység neve. | `MyActivity` |
-|**Start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`|
+|**start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`|
 |**végén**| Sztring | A tevékenység befejezési időpontja TimeSpan UTC formátumban fut. Ha a diagnosztikai napló azt mutatja, hogy egy tevékenység megkezdődött, de még nem fejeződött be, a tulajdonság értéke `1601-01-01T00:00:00Z` . | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>Folyamat – naplózási attribútumok futtatása
@@ -499,7 +499,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 |**szint**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
 |**operationName**| Sztring | A folyamat neve az állapotával együtt. A folyamat futásának befejeződése után a tulajdonság értéke `Pipeline - Succeeded` . | `MyPipeline - Succeeded`. |
 |**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
-|**Start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`. |
+|**start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`. |
 |**végén**| Sztring | A tevékenység befejezési időpontja TimeSpan UTC formátumban fut. Ha a diagnosztikai naplóban egy tevékenység megkezdődött, de még nem fejeződött be, a tulajdonság értéke `1601-01-01T00:00:00Z` .  | `2017-06-26T20:55:29.5007959Z` |
 |**állapota**| Sztring | A folyamat futásának végső állapota. A lehetséges tulajdonságok értékei a következők: `Succeeded` és `Failed` . | `Succeeded`|
 
@@ -544,7 +544,7 @@ További információ: [diagnosztikai beállítások](https://docs.microsoft.com
 |**triggerName**| Sztring | Az trigger neve. | `MyTrigger` |
 |**triggerType**| Sztring | Az trigger típusa. A lehetséges tulajdonságok értékei a következők: `Manual Trigger` és `Schedule Trigger` . | `ScheduleTrigger` |
 |**triggerEvent**| Sztring | Az eseményindító eseménye. | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**Start**| Sztring | A trigger égetésének kezdési időpontja TimeSpan UTC formátumban. | `2017-06-26T20:55:29.5007959Z`|
+|**start**| Sztring | A trigger égetésének kezdési időpontja TimeSpan UTC formátumban. | `2017-06-26T20:55:29.5007959Z`|
 |**állapota**| Sztring | Az a végső állapot, amely azt jelzi, hogy az trigger sikeresen kirúgták-e. A lehetséges tulajdonságok értékei a következők: `Succeeded` és `Failed` . | `Succeeded`|
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>SSIS integrációs modul naplózási attribútumai
@@ -833,7 +833,7 @@ A Log Analytics a következő kivételekkel örökli a sémát a Figyelőtől:
     | --- | --- | --- |
     | $. properties. UserProperties | UserProperties | Dinamikus |
     | $. properties. Széljegyzetek | Széljegyzetek | Dinamikus |
-    | $. properties. Bemeneti | Bevitel | Dinamikus |
+    | $. properties. Bemeneti | Bemenet | Dinamikus |
     | $. properties. Kimeneti | Kimenet | Dinamikus |
     | $. properties. Hiba. errorCode | ErrorCode | int |
     | $. properties. Hiba. üzenet | ErrorMessage | sztring |

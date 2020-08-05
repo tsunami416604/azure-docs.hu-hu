@@ -9,18 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 57589552af3b93d98733d4872b43a719703d501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f51afbcf50939d762b1b5d32d6204ccfbb9a62d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285730"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551676"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 
 A Azure Maps web SDK adatforrásokban tárolja az adatforrásokat. Az adatforrások használata optimalizálja az adatműveleteket a lekérdezéshez és a megjelenítéshez. Jelenleg két típusú adatforrás létezik:
 
-**GeoJSON-adatforrás**
+- **GeoJSON forrás**: a nyers helyadatok helyi kezelése GeoJSON formátumban. A kis-és közepes adatkészletek esetében is jó (több százezer alakzat).
+- **Vektoros csempe forrása**: a térképes mozaikrendszer alapján betölti az aktuális leképezési nézethez tartozó vektorgrafikus csempéket. Ideális nagy-és nagyméretű adatkészletekhez (millió vagy több milliárd alakzat).
+
+## <a name="geojson-data-source"></a>GeoJSON-adatforrás
 
 A GeoJSON-alapú adatforrás az osztály használatával helyileg tölti be és tárolja az adattárolást `DataSource` . A GeoJSON adatai manuálisan hozhatók létre vagy hozhatók létre az [Atlas.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) adatnévtérben található segítő osztályok használatával. Az `DataSource` osztály a helyi vagy távoli GeoJSON-fájlok importálására szolgáló függvényeket biztosít. A távoli GeoJSON-fájlokat egy CORs-kompatibilis végponton kell tárolni. Az `DataSource` osztály a fürtszolgáltatási pontokra vonatkozó adatgyűjtési funkciókat biztosít. Az és az adatkezelési szolgáltatással egyszerűen hozzáadhatók, eltávolíthatók és frissíthetők az `DataSource` osztályok. A következő kód azt mutatja be, hogyan hozhatók létre GeoJSON-adatkészletek Azure Mapsban.
 
@@ -37,7 +40,7 @@ var rawGeoJson = {
      }
 };
 
-//Create GeoJSON using helper classes (less error prone).
+//Create GeoJSON using helper classes (less error prone and less typing).
 var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
     "custom-property": "value"
 }); 
@@ -69,7 +72,7 @@ dataSource.setShapes(geoJsonData);
 > [!TIP]
 > Tegyük fel, hogy az a összes adatértékét felül szeretné írni `DataSource` . Ha a `clear` then függvényeket hívja meg `add` , akkor a Térkép kétszer is elvégezhető, ami egy kis késleltetést eredményezhet. Ehelyett használja a `setShapes` függvényt, amely eltávolítja és lecseréli az adatforrásban lévő összes adatát, és csak a Térkép egyetlen újbóli megjelenítését indítja el.
 
-**Vektoros csempe forrása**
+## <a name="vector-tile-source"></a>Vektoros csempe forrása
 
 A vektoros csempék forrása leírja, hogyan lehet hozzáférni a vektoros csempék rétegéhez. A [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) osztály használatával hozza létre a vektoros csempe forrását. A vektoros csempe rétegei hasonlóak a csempék rétegeihez, de nem azonosak. A csempe réteg egy raszteres rendszerkép. A vektoros csempe rétegek a **PBF** formátumában tömörített fájlok. Ez a tömörített fájl vektoros leképezési és egy vagy több réteget tartalmaz. A fájl az egyes rétegek stílusa alapján megjeleníthető és stílusú lehet az ügyfélen. A vektoros csempén lévő információk pontok, vonalak és sokszögek formájában található földrajzi funkciókat tartalmaznak. A raszteres csempe rétegei helyett több előnye van a vektoros csempék használatának:
 
@@ -88,7 +91,7 @@ Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.c
 > [!TIP]
 > Ha vektoros vagy raszteres képcsempéket használ a Azure Maps Render szolgáltatásból a web SDK-val, a `atlas.microsoft.com` helyőrzőre cserélheti `{azMapsDomain}` . Ezt a helyőrzőt a Térkép ugyanazokkal a tartománnyal helyettesíti, és a rendszer automatikusan hozzáfűzi ugyanazokat a hitelesítési adatokat is. Ez nagymértékben leegyszerűsíti a Azure Active Directory hitelesítés használatakor a renderelési szolgáltatással történő hitelesítést.
 
-Ha a térképen a vektoros csempe forrásának adatait szeretné megjeleníteni, a forrást csatlakoztathatja az egyik adatmegjelenítési réteghez. A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket a beállításokban. FThe következő kód betölti a Azure Maps Traffic flow Vector csempe szolgáltatást vektoros csempék forrásaként, majd megjeleníti egy térképen egy vonal réteg használatával. Ez a vektoros csempés forrás egyetlen adatkészlettel rendelkezik, amely a "forgalom flow" nevű rétegben található. Ebben az adatkészletben az adathalmazban található sorokra vonatkozó tulajdonság egy nevű tulajdonsággal rendelkezik, `traffic_level` amely a kód kiválasztásához és a sorok méretének méretezéséhez használatos.
+Ha a térképen a vektoros csempe forrásának adatait szeretné megjeleníteni, a forrást csatlakoztathatja az egyik adatmegjelenítési réteghez. A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket a beállításokban. A következő kód betölti a Azure Maps Traffic flow Vector csempe szolgáltatást vektoros csempe-forrásként, majd a térképen egy vonal réteget használva jeleníti meg. Ez a vektoros csempés forrás egyetlen adatkészlettel rendelkezik, amely a "forgalom flow" nevű rétegben található. Ebben az adatkészletben az adathalmazban található sorokra vonatkozó tulajdonság egy nevű tulajdonsággal rendelkezik, `traffic_level` amely a kód kiválasztásához és a sorok méretének méretezéséhez használatos.
 
 ```javascript
 //Create a vector tile source and add it to the map.
@@ -205,7 +208,7 @@ var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

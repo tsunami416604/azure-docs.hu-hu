@@ -2,23 +2,27 @@
 title: Fájlok és könyvtárak Azure Batch
 description: Ismerje meg a fájlokat és a címtárakat, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: e7babb7e2cfdbbe78f61be766c549c1e80cacf98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83791119"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552636"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Fájlok és könyvtárak Azure Batch
 
-Azure Batch minden egyes feladathoz tartozik egy munkakönyvtár, amelyben nulla vagy több fájlt és könyvtárat hoz létre. Ez a munkakönyvtár használható a tevékenység által futtatott program, az ez által feldolgozott adatok, valamint az eredményként létrejövő kimenet tárolására. A tevékenységhez tartozó összes fájlnak és könyvtárnak a tevékenység felhasználója a tulajdonosa.
+Azure Batch minden egyes feladathoz tartozik egy munkakönyvtár, amelyben létrehozhat fájlokat és címtárakat. Ez a munkakönyvtár használható a tevékenység által futtatott program, az ez által feldolgozott adatok, valamint az eredményként létrejövő kimenet tárolására. A tevékenységhez tartozó összes fájlnak és könyvtárnak a tevékenység felhasználója a tulajdonosa.
 
-A Batch szolgáltatás *gyökérkönyvtárként*elérhetővé teszi a csomópont fájlrendszerének egy részét. A tevékenységek az `AZ_BATCH_NODE_ROOT_DIR` környezeti változóra hivatkozva tudják elérni a gyökérkönyvtárat. A környezeti változók használatával kapcsolatos további információért lásd: [Környezeti beállítások tevékenységekhez](jobs-and-tasks.md#environment-settings-for-tasks).
+A Batch szolgáltatás *gyökérkönyvtárként*elérhetővé teszi a csomópont fájlrendszerének egy részét. Ez a gyökérkönyvtár a virtuális gép ideiglenes tárolóeszközén található, nem közvetlenül az operációsrendszer-meghajtón.
+
+A tevékenységek az `AZ_BATCH_NODE_ROOT_DIR` környezeti változóra hivatkozva tudják elérni a gyökérkönyvtárat. A környezeti változók használatával kapcsolatos további információért lásd: [Környezeti beállítások tevékenységekhez](jobs-and-tasks.md#environment-settings-for-tasks).
+
+## <a name="root-directory-structure"></a>Gyökérkönyvtár szerkezete
 
 A gyökérkönyvtár a következő könyvtárstruktúrát tartalmazza:
 
-! [Számítási csomópont címtárának szerkezete] [media\files-and-directories\node-folder-structure.png]
+![Képernyőfelvétel a számítási csomópontok címtárának struktúrájáról.](media\files-and-directories\node-folder-structure.png)
 
 - **alkalmazások**: a számítási csomóponton telepített alkalmazáscsomag részleteiről tartalmaz információkat. A tevékenységek az `AZ_BATCH_APP_PACKAGE` környezeti változóra hivatkozva tudják elérni ezt a könyvtárat.
 
@@ -33,7 +37,7 @@ A gyökérkönyvtár a következő könyvtárstruktúrát tartalmazza:
 - **workitems**: Ez a könyvtár tartalmazza a feladatok könyvtárait és azok feladatait a számítási csomóponton.
 
     A **workitems** könyvtárban a csomóponton futó minden egyes feladathoz létrejön egy **feladatok** könyvtár. Ez a könyvtár a környezeti változóra hivatkozó hivatkozással érhető el `AZ_BATCH_TASK_DIR` .
-    
+
     Az egyes **feladatok** könyvtárában a Batch szolgáltatás létrehoz egy munkakönyvtárat ( `wd` ), amelynek egyedi elérési útját a `AZ_BATCH_TASK_WORKING_DIR` környezeti változó adja meg. Ez a könyvtár olvasási/írási hozzáférést nyújt a tevékenységhez. A tevékenység jogosult fájlokat létrehozni, olvasni, módosítani és törölni ebben a könyvtárban. A rendszer a tevékenységhez beállított *RetentionTime* korlátozás értékének megfelelően őrzi meg a könyvtárat.
 
     A `stdout.txt` és a `stderr.txt` fájlok a **feladatok** mappába kerülnek a feladat végrehajtása során.
@@ -41,6 +45,6 @@ A gyökérkönyvtár a következő könyvtárstruktúrát tartalmazza:
 > [!IMPORTANT]
 > Amikor eltávolít egy csomópontot a készletből, a csomóponton tárolt összes fájlt is eltávolítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [hibák és az észlelés](error-handling.md) Azure Batchával.

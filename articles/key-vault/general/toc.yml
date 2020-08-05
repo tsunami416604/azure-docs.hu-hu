@@ -6,6 +6,8 @@
       href: overview.md
     - name: 'A kulcsok, titkos kódok és tanúsítványok ismertetése'
       href: about-keys-secrets-certificates.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:

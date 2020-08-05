@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502919"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552475"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
 
@@ -118,7 +118,7 @@ A featurizations testreszabásához adja meg  `"featurization": FeaturizationCo
 
 A támogatott testreszabások a következők:
 
-|Testreszabás|Meghatározás|
+|Testreszabás|Definíció|
 |--|--|
 |**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikusan észlelt funkciójának típusát.|
 |**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (mean, leggyakoribb és közepes) és a *HashOneHotEncoder*.|
@@ -161,7 +161,7 @@ text_transformations_used
 > [!NOTE]
 > A BERT implementációja a betanítási minta teljes szöveges hosszát 128 tokenre korlátozza. Ez azt jelenti, hogy az összes szöveges oszlop összefűzése esetén ideális esetben legfeljebb 128 tokennek kell lennie. Ideális esetben, ha több oszlop van jelen, az egyes oszlopokat fel kell metszeni úgy, hogy ez a feltétel teljesül. Ha például két szöveges oszlop szerepel az adattárban, mindkét szöveges oszlopot 64-tokenre kell metszeni (feltéve, hogy mindkét oszlopot egyenlően kell megjeleníteni a végső összefűzött szöveg oszlopban), mielőtt AutoML az információkat. A >128 tokent tartalmazó összefűzött oszlopok esetén a BERT 's tokenizer Layer a 128-tokenekre fogja lerövidíteni ezt a bemenetet.
 
-3. A szolgáltatás-elsöprő lépésekben a AutoML összehasonlítja a BERTt az adatok egy mintáján (a szavak és a megjelenő Word-beágyazások), és meghatározza, hogy a BERT pontos előrelépést eredményezne-e. Ha azt állapítja meg, hogy a BERT jobb, mint az alapterv, a AutoML ezt követően a BERTt használja a Text featurization, amely az optimális featurization stratégia, és a teljes adatok featurizing folytatja. Ebben az esetben a "PretrainedTextDNNTransformer" a végső modellben jelenik meg.
+3. A szolgáltatás-elsöprő lépésekben a AutoML összehasonlítja a BERTot az adatok egy mintáján lévő alapkonfiguráció (a szavak zacskója) alapján, és meghatározza, hogy a BERT pontos előrelépést eredményezne-e. Ha azt állapítja meg, hogy a BERT jobb, mint az alapterv, a AutoML ezt követően a BERTt használja a Text featurization, amely az optimális featurization stratégia, és a teljes adatok featurizing folytatja. Ebben az esetben a "PretrainedTextDNNTransformer" a végső modellben jelenik meg.
 
 A BERT általában hosszabb ideig fut a legtöbb más featurizers. Felgyorsulhat, ha több számítási feltételt biztosít a fürtben. A AutoML több csomóponton is terjeszti a BERTs-képzést, ha elérhetők (legfeljebb 8 csomópontot). Ezt úgy teheti meg, ha a [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) értéke nagyobb, mint 1. A jobb teljesítmény érdekében javasoljuk, hogy használjon RDMA képességekkel rendelkező SKU-ket (például "STANDARD_NC24r" vagy "STANDARD_NC24rs_V3")
 
@@ -186,7 +186,7 @@ automl_settings = {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan állíthatja be az automatikus ML-kísérleteket:
 

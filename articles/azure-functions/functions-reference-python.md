@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170377"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564010"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -17,7 +17,7 @@ Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatáva
 
 A Pythonban futó önálló függvények esetében tekintse meg a [Python függvények mintáit](/samples/browse/?products=azure-functions&languages=python).
 
-## <a name="programming-model"></a>Programozási modell
+## <a name="programming-model"></a>A programozási modell
 
 A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet azt várja, hogy a metódus a fájlban megadott globális metódusként legyen implementálva `main()` `__init__.py` . [Alternatív belépési pontot is megadhat](#alternate-entry-point).
 
@@ -251,7 +251,7 @@ def main(req):
 
 További naplózási módszerek érhetők el, amelyek lehetővé teszik a konzolra való írást különböző nyomkövetési szinteken:
 
-| Módszer                 | Leírás                                |
+| Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | KRITIKUS szintű üzenetet ír a gyökérszintű naplózó számára.  |
 | **`error(_message_)`**   | A legfelső szintű naplózó üzenetbe írja a Level hibát.    |
@@ -434,8 +434,8 @@ Az Azure-folyamatok használatával is felépítheti a függőségeket, és köz
 
 ### <a name="remote-build"></a>Távoli Build
 
-Távoli Build használata esetén a kiszolgálón visszaállított függőségek és a natív függőségek egyeznek az éles környezettel. Ez egy kisebb telepítési csomagot eredményez a feltöltéshez. Használjon távoli buildet Python-alkalmazások Windows rendszeren való fejlesztésekor. Ha a projektben egyéni függőségek vannak, a [távoli Build szolgáltatásban további index URL-cím is használható](#remote-build-with-extra-index-url). 
- 
+Távoli Build használata esetén a kiszolgálón visszaállított függőségek és a natív függőségek egyeznek az éles környezettel. Ez egy kisebb telepítési csomagot eredményez a feltöltéshez. Használjon távoli buildet Python-alkalmazások Windows rendszeren való fejlesztésekor. Ha a projektben egyéni függőségek vannak, a [távoli Build szolgáltatásban további index URL-cím is használható](#remote-build-with-extra-index-url).
+
 A függőségek a requirements.txt fájl tartalmától függően távolról szerezhetők be. A [távoli Build](functions-deployment-technologies.md#remote-build) a javasolt Build módszer. Alapértelmezés szerint a Azure Functions Core Tools távoli buildet kér, amikor az alábbi, az [Azure functionapp Publishing](functions-run-local.md#publish) parancs használatával teszi közzé a Python-projektet az Azure-ban.
 
 ```bash
@@ -456,7 +456,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 Ne felejtse el lecserélni a `<APP_NAME>` Function alkalmazás nevét az Azure-ban.
 
-A beállítás használatával a rendszer `--build local` a requirements.txt fájlból olvassa be a projektek függőségeit, és a függő csomagokat a rendszer helyileg tölti le és telepíti. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag a requirements.txt fájlban lévő függőségek nem szerezhetők meg a Core Tools használatával, az egyéni függőségek lehetőséget kell használni a közzétételhez. 
+A beállítás használatával a rendszer `--build local` a requirements.txt fájlból olvassa be a projektek függőségeit, és a függő csomagokat a rendszer helyileg tölti le és telepíti. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag a requirements.txt fájlban lévő függőségek nem szerezhetők meg a Core Tools használatával, az egyéni függőségek lehetőséget kell használni a közzétételhez.
 
 Helyi buildek használata nem ajánlott helyileg Windows rendszeren történő fejlesztéshez.
 
@@ -466,7 +466,7 @@ Ha a projekt függőségei nem találhatók a Python- [csomag indexében](https:
 
 #### <a name="remote-build-with-extra-index-url"></a>Távoli Build extra index URL-címmel
 
-Ha a csomagok elérhető egyéni csomag-indexből érhetők el, használjon távoli buildet. A közzététel előtt győződjön meg róla, hogy [létrehoz egy nevű alkalmazást](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` . A beállítás értéke az egyéni csomag indexének URL-címe. Ha ezt a beállítást választja, a rendszer a távoli buildet a `pip install` kapcsoló használatával futtatja `--extra-index-url` . További információt a [Python pip telepítési dokumentációjában](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)talál. 
+Ha a csomagok elérhető egyéni csomag-indexből érhetők el, használjon távoli buildet. A közzététel előtt győződjön meg róla, hogy [létrehoz egy nevű alkalmazást](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` . A beállítás értéke az egyéni csomag indexének URL-címe. Ha ezt a beállítást választja, a rendszer a távoli buildet a `pip install` kapcsoló használatával futtatja `--extra-index-url` . További információt a [Python pip telepítési dokumentációjában](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)talál.
 
 Az alapszintű hitelesítési hitelesítő adatokat is használhatja a további csomagok indexének URL-címeivel. További információért lásd: [alapszintű hitelesítési hitelesítő adatok](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) a Python dokumentációjában.
 
@@ -658,11 +658,14 @@ A könyvtárak listájának részletes ismertetését az alábbi hivatkozásokon
 
 A Python-feldolgozó függvények a kódtárak egy adott készletét igénylik. Ezeket a kódtárakat a függvények is használhatják, de nem a Python standard részét képezik. Ha a függvények bármelyik könyvtárra támaszkodnak, előfordulhat, hogy nem lesznek elérhetők a kódban, ha Azure Functionson kívül futnak. A [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) fájl **telepítés \_ szükséges** függőségeinek részletes listáját a telepítési feltételek című szakaszban találja.
 
+> [!NOTE]
+> Ha a Function alkalmazás requirements.txt tartalmaz egy `azure-functions-worker` bejegyzést, távolítsa el. A functions Worker szolgáltatást automatikusan Azure Functions platform felügyeli, és rendszeresen frissítjük új funkciókkal és hibajavításokkal. A munkavégző régi verziójának manuális telepítése requirements.txt váratlan problémákhoz vezethet.
+
 ### <a name="azure-functions-python-library"></a>Azure Functions Python-könyvtár
 
 Minden Python Worker-frissítés tartalmazza a [Azure functions Python Library (Azure. functions)](https://github.com/Azure/azure-functions-python-library)új verzióját. Ez a megközelítés megkönnyíti a Python-függvény alkalmazásai folyamatos frissítését, mivel minden frissítés visszafelé kompatibilis. A könyvtár kiadásait tartalmazó lista az [Azure functions PyPi](https://pypi.org/project/azure-functions/#history)található.
 
-A futásidejű függvénytár verzióját az Azure rögzíti, és requirements.txt nem bírálható felül. A `azure-functions` requirements.txt bejegyzése csak a kihelyezésre és a felhasználói tájékoztatásra szolgál. 
+A futásidejű függvénytár verzióját az Azure rögzíti, és requirements.txt nem bírálható felül. A `azure-functions` requirements.txt bejegyzése csak a kihelyezésre és a felhasználói tájékoztatásra szolgál.
 
 A következő kód használatával követheti nyomon a Python functions könyvtárának aktuális verzióját a futtatókörnyezetben:
 
@@ -689,11 +692,12 @@ A CORS teljes mértékben támogatott a Python-függvények alkalmazásaiban.
 
 A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmutatókat tartalmazza:
 
-* [ModuleNotFoundError és ImportError](recover-module-not-found.md)
+* [ModuleNotFoundError és ImportError](recover-python-functions.md#troubleshoot-modulenotfounderror)
+* [A "cygrpc" nem importálható](recover-python-functions.md#troubleshoot-cannot-import-cygrpc)
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 
@@ -703,7 +707,7 @@ További információkat találhat az alábbi forrásokban:
 * [BLOB Storage-kötések](functions-bindings-storage-blob.md)
 * [HTTP-és webhook-kötések](functions-bindings-http-webhook.md)
 * [Üzenetsor-tárolási kötések](functions-bindings-storage-queue.md)
-* [Időzítő eseményindító](functions-bindings-timer.md)
+* [Időzítő-eseményindító](functions-bindings-timer.md)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python

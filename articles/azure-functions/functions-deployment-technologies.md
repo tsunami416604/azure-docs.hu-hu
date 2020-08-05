@@ -4,12 +4,12 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 1554469c59eb9931b6d8552f537328e440ec6aeb
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388016"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562939"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -37,7 +37,7 @@ Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepít
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Portál szerkesztése |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup> a [manuális trigger-szinkronizálást](#trigger-syncing)igénylő üzembe helyezési technológia.  
+<sup>1</sup> a [manuális trigger-szinkronizálást](#trigger-syncing)igénylő üzembe helyezési technológia.
 <sup>2</sup> a portálon történő szerkesztés csak a http-és időzítő-eseményindítók esetében engedélyezett a Linux-függvények prémium és dedikált csomagok használatával.
 
 ## <a name="key-concepts"></a>Fő fogalmak
@@ -72,9 +72,9 @@ A Linuxon a távoli buildek engedélyezéséhez be kell állítani a következő
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Alapértelmezés szerint a [Azure functions Core Tools](functions-run-local.md) és a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) -hoz készült Azure functions-bővítmény is távoli buildeket hajt végre a Linux rendszeren való üzembe helyezéskor. Emiatt mindkét eszköz automatikusan létrehozza ezeket a beállításokat az Azure-ban. 
+Alapértelmezés szerint a [Azure functions Core Tools](functions-run-local.md) és a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) -hoz készült Azure functions-bővítmény is távoli buildeket hajt végre a Linux rendszeren való üzembe helyezéskor. Emiatt mindkét eszköz automatikusan létrehozza ezeket a beállításokat az Azure-ban.
 
-Az alkalmazások Linux rendszeren való létrehozásakor [a központi telepítési csomagból futnak](run-functions-from-deployment-package.md). 
+Az alkalmazások Linux rendszeren való létrehozásakor [a központi telepítési csomagból futnak](run-functions-from-deployment-package.md).
 
 ##### <a name="consumption-plan"></a>Használatalapú csomag
 
@@ -92,7 +92,7 @@ A következő üzembe helyezési módszerek érhetők el Azure Functionsban.
 
 Külső csomag URL-címével hivatkozhat a Function alkalmazást tartalmazó távoli csomag (. zip) fájlra. A fájl a megadott URL-címről töltődik le, és az alkalmazás [csomag](run-functions-from-deployment-package.md) módban fut.
 
->__Használat:__ Adja hozzá `WEBSITE_RUN_FROM_PACKAGE` az alkalmazás beállításait. A beállítás értékének URL-címnek kell lennie (a futtatni kívánt adott csomagfájl helye). A beállításokat a [portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)is hozzáadhatja. 
+>__Használat:__ Adja hozzá `WEBSITE_RUN_FROM_PACKAGE` az alkalmazás beállításait. A beállítás értékének URL-címnek kell lennie (a futtatni kívánt adott csomagfájl helye). A beállításokat a [portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)is hozzáadhatja.
 >
 >Ha az Azure Blob Storage-t használja, használjon egy [közös hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót, amely lehetővé teszi a funkciók elérését a csomaghoz. Az alkalmazás újraindításakor a rendszer lekéri a tartalom egy példányát. A hivatkozásnak érvényesnek kell lennie az alkalmazás élettartamára.
 
@@ -104,7 +104,7 @@ A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-b
 
 >__Használat:__ Üzembe helyezéséhez használja kedvenc ügyfélprogramját: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)vagy a parancssorból a [Azure functions Core Tools](functions-run-local.md#project-file-deployment)használatával. Ezek az eszközök alapértelmezés szerint a zip-telepítést használják, és [a csomagból futnak](run-functions-from-deployment-package.md). A Core Tools és a Visual Studio Code bővítmény lehetővé teszi a [távoli buildek](#remote-build) telepítését a Linux rendszeren való üzembe helyezéskor. Ha a. zip-fájlt manuálisan szeretné telepíteni a Function alkalmazásba, kövesse az [üzembe helyezés a. zip fájlból vagy URL-címről](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)című témakör utasításait.
 
->Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomagból fusson](run-functions-from-deployment-package.md). A csomagból való futtatáshoz állítsa az Alkalmazásbeállítás értéket a következőre: `WEBSITE_RUN_FROM_PACKAGE` `1` . A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára. 
+>Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomagból fusson](run-functions-from-deployment-package.md). A csomagból való futtatáshoz állítsa az Alkalmazásbeállítás értéket a következőre: `WEBSITE_RUN_FROM_PACKAGE` `1` . A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára.
 
 >__Mikor érdemes használni:__ A zip-telepítés a Azure Functions ajánlott központi telepítési technológiája.
 
@@ -167,7 +167,7 @@ Az FTP használatával közvetlenül átviheti a fájlokat a Azure Functionsba.
 
 A portálon alapuló szerkesztőben közvetlenül szerkesztheti a Function alkalmazásban található fájlokat (lényegében a módosítások mentésekor minden alkalommal üzembe helyezheti őket).
 
->__Használat:__ Ahhoz, hogy szerkeszteni tudja a függvényeket a Azure Portalban, létre kell hoznia [a függvényeket a portálon](functions-create-first-azure-function.md). Az igazság egyetlen forrásainak megtartása érdekében bármely más üzembe helyezési módszer használatával a függvény csak olvasható, és nem teszi lehetővé a portál folyamatos szerkesztését. Ha vissza szeretne térni olyan állapotba, amelyben szerkesztheti a fájljait a Azure Portalban, manuálisan is visszakapcsolhatja a szerkesztési módot, `Read/Write` és eltávolíthatja a telepítéshez kapcsolódó alkalmazás-beállításokat (például `WEBSITE_RUN_FROM_PACKAGE` ). 
+>__Használat:__ Ahhoz, hogy szerkeszteni tudja a függvényeket a Azure Portalban, létre kell hoznia [a függvényeket a portálon](functions-create-first-azure-function.md). Az igazság egyetlen forrásainak megtartása érdekében bármely más üzembe helyezési módszer használatával a függvény csak olvasható, és nem teszi lehetővé a portál folyamatos szerkesztését. Ha vissza szeretne térni olyan állapotba, amelyben szerkesztheti a fájljait a Azure Portalban, manuálisan is visszakapcsolhatja a szerkesztési módot, `Read/Write` és eltávolíthatja a telepítéshez kapcsolódó alkalmazás-beállításokat (például `WEBSITE_RUN_FROM_PACKAGE` ).
 
 >__Mikor érdemes használni:__ A portál jó módszer a Azure Functions megkezdésére. Az intenzívebb fejlesztési munka érdekében javasoljuk, hogy a következő ügyféleszközök egyikét használja:
 >
@@ -196,7 +196,7 @@ Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezé
 
 ## <a name="next-steps"></a>Következő lépések
 
-Olvassa el ezeket a cikkeket a Function apps üzembe helyezésével kapcsolatos további információkért: 
+Olvassa el ezeket a cikkeket a Function apps üzembe helyezésével kapcsolatos további információkért:
 
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 + [Folyamatos kézbesítés az Azure DevOps használatával](functions-how-to-azure-devops.md)

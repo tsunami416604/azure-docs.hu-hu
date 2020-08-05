@@ -2,13 +2,13 @@
 title: Metrikai riasztások a Azure Monitorről a tárolók számára | Microsoft Docs
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096724"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563364"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
@@ -33,7 +33,7 @@ Mielőtt elkezdené, erősítse meg a következőket:
 
     A megjelenített értéknek a **ciprod05262020**-nál későbbi verziónak kell lennie. Ha a fürt rendelkezik egy régebbi verzióval, kövesse a [frissítési ügynök az AK-fürtön](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) lépéseit a legújabb verzió beszerzéséhez.
     
-    Az ügynök kiadásával kapcsolatos további információkért lásd az [ügynök kiadási előzményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört. A metrikák gyűjtésének ellenőrzéséhez használhatja a Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, megkezdheti a riasztások beállítását.
+    Az ügynök kiadásával kapcsolatos további információkért lásd az [ügynök kiadási előzményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört. A metrikák gyűjtésének ellenőrzéséhez használhatja a Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, megkezdheti a riasztások beállítását. Ha nem jelenik meg a begyűjtött metrikák, a fürtszolgáltatási tag vagy az MSI nem rendelkezik a szükséges engedélyekkel. Annak ellenőrzéséhez, hogy az SPN vagy az MSI a **figyelési metrikák közzétevői** szerepkör tagja-e, kövesse a [fürt frissítése az Azure CLI](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) -vel című szakaszban ismertetett lépéseket a szerepkör-hozzárendelés megerősítéséhez és beállításához.
 
 ## <a name="alert-rules-overview"></a>Riasztási szabályok áttekintése
 
@@ -79,7 +79,7 @@ A következő riasztási alapú metrikák egyedi viselkedési jellemzőkkel rend
 
 A szolgáltatás részeként a következő metrikákat engedélyezheti és gyűjtheti be, hacsak másként nincs megadva:
 
-|Metrikai névtér |Metrika |Description |
+|Metrikai névtér |Metrika |Leírás |
 |---------|----|------------|
 |Bepillantást nyerhet. tároló/csomópontok |cpuUsageMillicores |A CPU-kihasználtságot a millicores üzemelteti.|
 |Bepillantást nyerhet. tároló/csomópontok |cpuUsagePercentage |CPU-használat százaléka a csomópont alapján.|
@@ -146,7 +146,7 @@ Az alapszintű lépések a következők:
 
 3. Keressen rá a **sablon**kifejezésre, majd válassza a **sablon**lehetőséget. telepítési.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 5. A sablonok létrehozásához több lehetőség is megjelenik, válassza **a saját sablon létrehozása a szerkesztőben**lehetőséget.
 
@@ -231,7 +231,7 @@ A ConfigMap konfigurációs fájljának konfigurálásához hajtsa végre az al�
 
 A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
 
