@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136258"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836071"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor a virtuális WAN (előzetes verzió)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87136258"
 A virtuális WAN erőforrás-szintű metrikák gyűjtése és bemutatása egy előre csomagolt virtuális WAN-metrikai munkafüzettel történik, amely a virtuális WAN, a hub, az átjáró és a kapcsolat szintjein jeleníti meg a metrikákat. Ebből a cikkből megtudhatja, hogyan használhatja a virtuális WAN Azure Monitor-bepillantást a virtuális WAN-topológiák és-mérőszámok egyetlen helyen történő megtekintéséhez.
 
 > [!NOTE]
-> Ebben az előzetes verzióban az megállapítások menü a kilépési folyamatban van.
+> A virtuális WAN-portálon található megállapítások menüpont a kilépési folyamatban van. Habár a virtuális WAN-hoz készült megállapítások menüje folyamatban van, a virtuális WAN-topológia és a metrikák munkafüzete közvetlenül elérhető az Azure-beli hálózatok használatával. További információ: [Azure monitor](../azure-monitor/insights/network-insights-overview.md) elemzések. 
 >
 
 ## <a name="before-you-begin"></a>Előkészületek

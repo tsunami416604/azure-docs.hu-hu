@@ -1,5 +1,5 @@
 ---
-title: A gépi tanulási modellek kiértékelése és enyhítése (előzetes verzió)
+title: A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogy a Fairlearn Python-csomag hogyan hozhat létre tisztességesebb modelleket, és hogyan segíthet a Fair-modellek kiépítésében.
 services: machine-learning
@@ -8,22 +8,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207294"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829373"
 ---
-# <a name="build-fairer-machine-learning-models-preview"></a>Igazságosabb gépi tanulási modellek készítése (előzetes verzió)
+# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
 
-Ismerje meg a tisztességes működést a gépi tanulásban, valamint azt, hogy a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag segítségével hogyan hozhat létre igazságosabb modelleket. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre. 
+Ismerje meg, hogy a gépi tanulás és a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag Hogyan csökkentheti a gépi tanulási modellek tisztességes problémáit. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre.
 
 A Fairlearn nyílt forráskódú csomagra vonatkozó [felhasználói útmutató](https://fairlearn.github.io/user_guide/index.html) következő összefoglalása leírja, hogyan használhatja azt a kiépített AI-rendszerek tisztaságának értékeléséhez.  A nyílt forráskódú Fairlearn-csomag olyan lehetőségeket is kínál, amelyek segítenek enyhíteni vagy csökkenteni a megfigyelt tisztességgel kapcsolatos problémákat.  Tekintse meg az útmutató és a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) , amelyek lehetővé teszik a mesterséges intelligencia [-](how-to-machine-learning-fairness-aml.md) rendszerek értékelését az Azure Machine Learningon való képzés során.
 
 
-## <a name="what-is-fairness-in-machine-learning-systems"></a>Mi a tisztességes a gépi tanulási rendszerekben?
+## <a name="what-is-fairness-in-machine-learning-models"></a>Mi a tisztességes a gépi tanulási modellekben?
 
 >[!NOTE]
 > A méltányosság egy szocio-technikai kérdés. A méltányosság számos aspektusa, például az igazságszolgáltatás és a megfelelő folyamat nem rögzíti a mennyiségi korrektség mérőszámait. Emellett számos mennyiségi korrektség mérőszáma nem lehet egyszerre kielégítve. A Fairlearn nyílt forráskódú csomag célja, hogy lehetővé tegye az emberek számára a különböző hatás-és kockázatcsökkentő stratégiák értékelését. Végső soron a mesterséges intelligenciát és a gépi tanulási modelleket kiépítő emberi felhasználók a forgatókönyvnek megfelelő kompromisszumokat hozhatnak.
@@ -38,7 +38,6 @@ A mesterséges intelligencia által okozott károk két gyakori típusa:
 
 Az AI-rendszerek tisztességtelen viselkedésének csökkentése érdekében fel kell mérnie és csökkentenie kell ezeket a károkat.
 
-
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>A méltányosság felmérése és enyhítése a Fairlearn
 
 A Fairlearn egy nyílt forráskódú Python-csomag, amely lehetővé teszi, hogy a gépi tanulási rendszerek fejlesztői felmérjék a rendszereik tisztaságát, és enyhítsék a megfigyelt tisztességgel kapcsolatos problémákat.
@@ -50,7 +49,8 @@ A Fairlearn nyílt forráskódú csomag két összetevőből áll:
 
 Ezek az összetevők együtt lehetővé teszik az adatszakértők és az üzleti vezetők számára, hogy a méltányosság és a teljesítmény között bármilyen kompromisszumot keressenek, és kiválassza az igényeiknek leginkább megfelelő kockázatcsökkentő stratégiát.
 
-## <a name="fairness-assessment"></a>Méltányosság felmérése
+## <a name="assess-fairness-in-machine-learning-models"></a>A tisztességesség értékelése a gépi tanulási modellekben
+
 A Fairlearn nyílt forráskódú csomagjában a méltányosság fogalma a **csoport méltányosság**néven ismert megközelítése, amely megkérdezi, hogy mely személyeknek van kockázata az ártalmak felderítésére? A kapcsolódó csoportok, más néven alpopulációk, **bizalmas szolgáltatásokkal** vagy bizalmas attribútumokkal vannak meghatározva. Az érzékeny funkciók a Fairlearn nyílt forráskódú csomagjában, vektorként vagy nevű mátrixként lesznek átadva `sensitive_features` . A kifejezés azt sugallja, hogy a rendszertervezőnek érzékenynek kell lennie ezekre a funkciókra a csoport tisztességének értékelésekor. 
 
 Egy dolog, ami szem előtt tartja, hogy ezek a funkciók tartalmaznak-e adatvédelmi következményeket a magánjellegű adatok miatt. A "bizalmas" szó azonban nem jelenti azt, hogy ezek a funkciók nem használhatók előrejelzések készítésére.
@@ -72,7 +72,7 @@ Az értékelési fázisban a méltányosság mértékét a különbségek mérő
 
 - Eltérés a kiválasztási arányban: Ez a metrika a különböző alcsoportok közötti különbségeket tartalmazza a kiválasztási arányban. Erre példa a hitelek jóváhagyási arányának eltérése. A kiválasztási arány azt jelenti, hogy az egyes osztályok datapoints frakciója 1 (bináris besorolás) vagy előrejelzési értékek eloszlása (regresszióban).
 
-## <a name="unfairness-mitigation"></a>Méltánytalanság enyhítése
+## <a name="mitigate-unfairness-in-machine-learning-models"></a>A gépi tanulási modellek méltánytalan használatának enyhítése
 
 ### <a name="parity-constraints"></a>Paritásos megkötések
 
@@ -83,7 +83,7 @@ A Fairlearn nyílt forráskódú csomag számos, a méltánytalanság enyhítés
 
 A Fairlearn nyílt forráskódú csomagja a következő típusú paritásos korlátozásokat támogatja: 
 
-|Paritásos megkötés  | Rendeltetés  |Gépi tanulási feladat  |
+|Paritásos megkötés  | Cél  |Gépi tanulási feladat  |
 |---------|---------|---------|
 |Demográfiai paritás     |  A foglalási károsodások enyhítése | Bináris besorolás, regresszió |
 |Equaled odds  | Kiosztási és szolgáltatásminőség-károsodások diagnosztizálása | Bináris besorolás        |

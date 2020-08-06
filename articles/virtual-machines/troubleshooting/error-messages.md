@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 4e35772e81329e112aac361b6a533c559154f03f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284693"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831226"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>A gyakori hibaüzenetek ismertetése a virtuális gépek kezelésekor az Azure-ban
 
@@ -176,7 +176,7 @@ Ez a szakasz a virtuális gépek kezelésekor felmerülő gyakori hibaüzeneteke
 |  OSProvisioningClientError  |  A virtuális géphez megadott Felhasználónév érvénytelen ehhez a Linux-disztribúcióhoz. Hiba részletei: {0} .  |
 |  OSProvisioningInternalError  |  Belső hiba miatt nem sikerült a (z) "" virtuális gép operációs rendszerének üzembe helyezése {0} .  |
 |  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A virtuális gép továbbra is befejezheti a kiépítés sikerességét. A kiépítési állapotot később ellenőrizze.  |
-|  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A virtuális gép továbbra is befejezheti a kiépítés sikerességét. A kiépítési állapotot később ellenőrizze. Győződjön meg arról is, hogy a rendszerkép megfelelően előkészített (általánosított).   <ul><li>[Windows]( ../windows/upload-image.md)-utasítások.</li><li> [Linux](../linux/capture-image.md) -utasítások</li></ul>  |
+|  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A virtuális gép továbbra is befejezheti a kiépítés sikerességét. A kiépítési állapotot később ellenőrizze. Győződjön meg arról is, hogy a rendszerkép megfelelően előkészített (általánosított).   <ul><li>[Windows]( ../windows/upload-generalized-managed.md)-utasítások.</li><li> [Linux](../linux/capture-image.md) -utasítások</li></ul>  |
 |  OSProvisioningTimedOut  |  A (z) "" virtuális gép operációs rendszer általi üzembe {0} helyezése nem fejeződik be a megadott időn belül. A rendszer azonban a virtuális gép vendég ügynökét észlelte. Ez azt sugallja, hogy a vendég operációs rendszer nem lett megfelelően felkészülve a virtuálisgép-rendszerképként való használatra (CreateOption = FromImage). A probléma megoldásához használja a VHD-t a következő módon: CreateOption = csatolja vagy készítse el megfelelően a rendszerképként való használatra:   <ul><li>Windows-utasítások:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux-utasítások:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  A virtuális gép szükséges mérete jelenleg nem érhető el a kiválasztott helyen.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Az erőforrás jelenleg nem frissíthető, mert folyamatban van a platform frissítése. Próbálkozzon újra később.  |

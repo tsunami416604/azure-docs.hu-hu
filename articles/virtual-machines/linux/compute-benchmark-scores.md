@@ -5,12 +5,12 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373419"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830529"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>A Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy teljesítményű virtuálisgép-felállásának számítási teljesítményét mutatják be Ubuntu rendszeren. A számítási teljesítménytesztek pontszámai a [Windows rendszerű virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetében is elérhetők.
@@ -469,6 +469,5 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 A Linux-számok kiszámításához az Ubuntu-on futó [megjegyzéssel](https://www.eembc.org/coremark/faq.php) kell számolni. A közös Megjegyzés a virtuális processzorok számával beállított szálak számával, a párhuzamosságok pedig a PThreads értékkel lett konfigurálva. Az ismétlések megcélzott száma a várt teljesítmény alapján lett kiigazítva legalább 20 másodperces futtatókörnyezet biztosításához (általában sokkal hosszabb). Az utolsó pontszám az ismétlések számát jelöli, amelyet a teszt futtatásához szükséges másodpercek száma alapján töltöttek le. Mindegyik teszt legalább hét alkalommal futott minden egyes virtuális gépen. A fent látható futtatási dátumok tesztelése. A tesztek több virtuális gépen futnak az Azure nyilvános régióiban, a virtuális gép a futtatást követően támogatott volt. Az "A" és "B" alapszintű (feltört) sorozat nem látható, mert a teljesítmény változó. Az N sorozat nem jelenik meg, mert a GPU központilag működnek, és a GPU teljesítménye nem mérhető.
 
 ## <a name="next-steps"></a>További lépések
-* A tárolási kapacitás, a lemez adatai és a virtuálisgép-méretek kiválasztásával kapcsolatos további szempontok: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* A tárolási kapacitás, a lemez adatai és a virtuálisgép-méretek kiválasztásával kapcsolatos további szempontok: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Az egymegjegyzéses parancsfájlok Linux rendszerű virtuális gépeken való futtatásához töltse le az [Egymegjegyzéses parancsfájl csomagját](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
-

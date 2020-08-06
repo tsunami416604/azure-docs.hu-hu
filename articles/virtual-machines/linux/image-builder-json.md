@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543605"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830342"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -104,7 +104,7 @@ Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozz
         }
     }
 ```
-## <a name="tags"></a>Címkéket
+## <a name="tags"></a>Címkék
 
 Ezek a generált rendszerképhez megadható kulcs/érték párok.
 
@@ -116,7 +116,7 @@ Ez a választható szakasz használható annak biztosítására, hogy a folytat�
     "dependsOn": [],
 ```
 
-További információ: az [erőforrás-függőségek meghatározása](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
+További információ: az [erőforrás-függőségek meghatározása](../../azure-resource-manager/templates/define-resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Identitás
 
@@ -137,8 +137,8 @@ A rendszerkép-szerkesztő támogatja a felhasználó által hozzárendelt ident
 * Csak egyetlen identitást támogat
 * Nem támogatja az egyéni tartományneveket
 
-További információ: [Mi az az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-A szolgáltatás telepítésével kapcsolatos további információkért lásd: [felügyelt identitások konfigurálása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)Azure-beli virtuális gépeken az Azure CLI használatával.
+További információ: [Mi az az Azure-erőforrások felügyelt identitása?](../../active-directory/managed-identities-azure-resources/overview.md).
+A szolgáltatás telepítésével kapcsolatos további információkért lásd: [felügyelt identitások konfigurálása](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)Azure-beli virtuális gépeken az Azure CLI használatával.
 
 ## <a name="properties-source"></a>Tulajdonságok: forrás
 
@@ -151,10 +151,10 @@ Az API-nak szüksége van egy "forrás típusa" elemre, amely meghatározza a re
 
 
 > [!NOTE]
-> Meglévő egyéni Windows-rendszerképek használatakor a Sysprep-parancsot akár 8 alkalommal is futtathatja egyetlen Windows-lemezképen, további információt a [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) dokumentációjában talál.
+> Meglévő egyéni Windows-rendszerképek használatakor a Sysprep-parancsot akár 8 alkalommal is futtathatja egyetlen Windows-lemezképen, további információt a [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) dokumentációjában talál.
 
 ### <a name="platformimage-source"></a>PlatformImage forrása 
-Az Azure Image Builder a Windows Servert és az ügyfelet, valamint a Linux Azure Marketplace-rendszerképeket is támogatja, [itt](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) találja a teljes listát. 
+Az Azure Image Builder a Windows Servert és az ügyfelet, valamint a Linux Azure Marketplace-rendszerképeket is támogatja, [itt](../windows/image-builder-overview.md#os-support) találja a teljes listát. 
 
 ```json
         "source": {
@@ -373,7 +373,7 @@ Tulajdonságok testreszabása:
 - **validExitCodes** – választható, érvényes kódok, amelyek a parancsfájl/beágyazott parancsból visszaadhatók, így elkerülhető a parancsfájl/beágyazott parancs hibájának jelentése.
 - **runElevated** – opcionális, logikai, támogatás emelt szintű engedélyekkel rendelkező parancsok és parancsfájlok futtatásához.
 - **sha256Checksum** – a fájl sha256-ellenőrzőösszegének értéke, ezt helyileg létrehozhatja, majd a rendszerkép-szerkesztő ellenőrzőösszeget és érvényesítést végez.
-    * A sha256Checksum létrehozása a Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) PowerShell használatával
+    * A sha256Checksum létrehozása a Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) PowerShell használatával
 
 
 ### <a name="file-customizer"></a>Fájl-testreszabó
@@ -567,7 +567,7 @@ A megosztott képkatalógusok a következőket alkotják:
 - Képdefiníciók – a rendszerképek fogalmi csoportosítása. 
 - Lemezkép-verziók – ez egy virtuális gép vagy méretezési csoport üzembe helyezésére szolgáló rendszerkép-típus. A lemezkép-verziók más régiókban is replikálhatók, ahol a virtuális gépeket telepíteni kell.
  
-A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjteményt és egy rendszerkép-definíciót, lásd: [megosztott lemezképek](shared-images.md). 
+A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjteményt és egy rendszerkép-definíciót, lásd: [megosztott lemezképek](../shared-images-cli.md). 
 
 ```json
 {

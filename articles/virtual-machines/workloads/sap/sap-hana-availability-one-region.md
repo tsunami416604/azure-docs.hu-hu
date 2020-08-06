@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035859"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833317"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
 Ez a cikk számos rendelkezésre állási forgatókönyvet ismertet egy Azure-régión belül. Az Azure számos régióval rendelkezik, és a világ minden pontján elterjedt. Az Azure-régiók listájáért lásd: [Azure-régiók](https://azure.microsoft.com/regions/). Az Azure-régión belüli virtuális gépeken való SAP HANA üzembe helyezéséhez a Microsoft egy HANA-példánnyal rendelkező egyetlen virtuális gép üzembe helyezését kínálja. A rendelkezésre állás érdekében két, HANA-példánnyal rendelkező virtuális gépet telepíthet egy olyan Azure-beli rendelkezésre állási [csoporton](../../windows/tutorial-availability-sets.md) belül, amely HANA rendszerreplikációt használ a rendelkezésre álláshoz. 
@@ -82,7 +82,7 @@ Az architektúra a következőképpen néz ki:
 
 Ez a beállítás nem alkalmas a helyreállítási időkorlát (RPO) és a helyreállítási idő célkitűzés (RTO) idejének elérésére. A RTO idő különösen a teljes adatbázisnak a másolt biztonsági másolatok használatával történő teljes visszaállításának szükségessége miatt csökkenhet. Ez a beállítás azonban hasznos lehet a fő példányok nem szándékolt adattörlésének helyreállításához. Ezzel a beállítással bármikor visszaállíthat egy adott időpontra, kinyerheti az adatait, és importálhatja a törölt adatait a fő példányba. Ezért érdemes lehet egy biztonsági másolati módszert használni más magas rendelkezésre állású funkciókkal kombinálva. 
 
-A biztonsági másolatok másolásakor előfordulhat, hogy a SAP HANA példányán futó fő virtuális géppel kisebb virtuális gépet használ. Ne feledje, hogy kisebb számú virtuális merevlemezt is csatolhat kisebb virtuális gépekhez. További információ az egyes virtuálisgép-típusok korlátairól: a [Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md).
+A biztonsági másolatok másolásakor előfordulhat, hogy a SAP HANA példányán futó fő virtuális géppel kisebb virtuális gépet használ. Ne feledje, hogy kisebb számú virtuális merevlemezt is csatolhat kisebb virtuális gépekhez. További információ az egyes virtuálisgép-típusok korlátairól: a [Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md).
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Rendszer-replikálás SAP HANA automatikus feladatátvétel nélkül
 

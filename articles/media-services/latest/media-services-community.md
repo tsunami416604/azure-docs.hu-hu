@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c47488915997f054487d8343c7c3c032135dcdb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828499"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833079"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3 Közösség  
 
@@ -28,7 +28,7 @@ Ez a Azure Media Services közösségi oldal a különböző módszereket tárgy
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Vita
+## <a name="discussion"></a>Vita (Discussion)
 
 ### <a name="twitter"></a>Twitter
 
@@ -40,7 +40,7 @@ Az alábbi fórumok az aktuális termékekkel és szolgáltatásokkal kapcsolato
 
 Az MSDN jelenleg Media Services csapat elsődleges közösségi fóruma.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 A csapat az Azure-Media-Services szolgáltatással Stack Overflow címkézett kérdéseket is figyeli.
 

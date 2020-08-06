@@ -1,6 +1,6 @@
 ---
 title: A HDFS CLI használata Azure Data Lake Storage Gen2
-description: A Data Lake Storage Gen2 HDFS CLI bemutatása
+description: A Azure Data Lake Storage Gen2hoz használja a Hadoop elosztott fájlrendszer (HDFS) CLI-t. Hozzon létre egy tárolót, szerezze be a fájlok vagy könyvtárak listáját, és így tovább.
 services: storage
 author: normesta
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109450"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836309"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS CLI használata Data Lake Storage Gen2
 
@@ -58,7 +58,7 @@ A (z) Azure Portalban található HDInsight-fürt panelének "SSH + fürt bejele
 
 Cserélje le a `<path>` helyőrzőt a tároló vagy a tároló mappa URI azonosítójának helyére.
 
-Például:`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
+Például: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
@@ -66,7 +66,7 @@ Például:`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.
 
 Cserélje le a `<path>` helyőrzőt a gyökér tároló nevére vagy egy, a tárolón belüli mappára.
 
-Például:`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+Például: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>Fájl vagy könyvtár törlése
 
@@ -74,7 +74,7 @@ Például:`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windo
 
 Cserélje le a `<path>` helyőrzőt a törölni kívánt fájl vagy mappa URI-fájljára.
 
-Például:`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
+Például: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Fájlok és könyvtárak Access Control listáinak (ACL-jei) megjelenítése
 
@@ -116,7 +116,7 @@ Lásd: [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-
 
 A parancsok teljes listáját megtekintheti a [Apache Hadoop 2.4.1 fájlrendszer rendszerhéj-útmutatójának](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) webhelyén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Data Lake Storage Gen2 képes fiók használata Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 019c627743c344fc0f07c8954ebdfdf2eca0437b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267047"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836207"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató Azure-beli virtuális gépek számítási teljesítményét mutatják be. A számítási teljesítménytesztek pontszámai Linux rendszerű [virtuális gépek](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)esetén is elérhetők.
@@ -389,5 +389,4 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 A Windows-kiszolgálón a Windows-számok a [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) futtatásával lettek kiszámítva. A SPECint az alapsebesség beállítás (SPECint_rate2006) használatával lett futtatva, egy másolattal vCPU. A SPECint 12 külön tesztből áll, amelyek mindegyike háromszor fut le, és az egyes tesztek középértékét veszi figyelembe, és súlyozást alkot egy összetett pontszám létrehozásához. Ezeket a teszteket ezután több virtuális gépen futtatták az átlagos pontszámok megadásához.
 
 ## <a name="next-steps"></a>További lépések
-* A tárolási kapacitás, a lemez adatai és a virtuálisgép-méretek kiválasztásával kapcsolatos további szempontok: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
+* A tárolási kapacitás, a lemez adatai és a virtuálisgép-méretek kiválasztásával kapcsolatos további szempontok: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

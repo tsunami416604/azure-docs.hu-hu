@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963206"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835986"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -61,7 +61,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 #### <a name="servers-supporting-up-to-4-tb-storage"></a>Legfeljebb 4 TB tárterületet támogató kiszolgálók
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|872415232|134217728|872415232|
 |Alapszintű|2|2684354560|134217728|2684354560|
@@ -79,7 +79,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 #### <a name="servers-support-up-to-16-tb-storage"></a>A kiszolgálók legfeljebb 16 TB tárterületet támogatnak
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|872415232|134217728|872415232|
 |Alapszintű|2|2684354560|134217728|2684354560|
@@ -108,7 +108,7 @@ A Azure Database for MySQL a legnagyobb **1 TB**-ot támogatja egyetlen adatfáj
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -126,7 +126,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 ### <a name="max_connections"></a>max_connections
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
 |Alapszintű|1|50|10|50|
 |Alapszintű|2|100|10|100|
@@ -157,7 +157,7 @@ A MySQL-hez való új ügyfélkapcsolatok létrehozása időt vesz igénybe, a k
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -182,7 +182,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 > [!NOTE]
 > A lekérdezési gyorsítótár elavult a MySQL-5.7.20 telepítése, és el lett távolítva a MySQL 8,0-ben.
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -198,11 +198,26 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 |Memóriaoptimalizált|16|0|0|134217728|
 |Memóriaoptimalizált|32|0|0|134217728|
 
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+Alapértelmezés szerint a lower_case_table_name 1 értékre van állítva, és a MySQL 5,6-es és a MySQL 5,7-es verziójában frissítheti ezt a paramétert
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names) .
+
+> [!NOTE]
+> A MySQL 8,0-ben a lower_case_table_name alapértelmezett értéke 1, és nem módosítható.
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+Ha a "sor mérete túl nagy (> 8126)" hasonló hibaüzenetet kap, érdemes kikapcsolni a paramétert **innodb_strict_mode**. A (z) **innodb_strict_mode** kiszolgáló paramétert nem lehet globálisan módosítani a kiszolgáló szintjén, mert ha a sor adatmérete nagyobb, mint 8k, az adatokat a rendszer a lehetséges adatvesztéshez vezető hiba nélkül csonkolja. Azt javasoljuk, hogy módosítsa a sémát úgy, hogy az illeszkedjen az oldal méretének korlátozásához. 
+
+Ez a paraméter a használatával állítható be a munkamenet szintjén `init_connect` . Ha **innodb_strict_modet** szeretne beállítani a munkamenet szintjén, a [beállítás paraméter nem jelenik](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)meg.
+
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -222,7 +237,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|

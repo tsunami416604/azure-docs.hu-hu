@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079808"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833334"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
 Az SAP NetWeaver, a Business One `Hybris` vagy a S/4HANA rendszerek Azure-architektúrájának tervezése számos különböző lehetőséget kínál a különböző architektúrák és eszközök számára, amelyek segítségével méretezhető, hatékony és nagy mértékben elérhető üzembe helyezést érhet el. Bár a használt operációs rendszertől vagy adatbázis-kezelőtől függ, korlátozások vannak érvényben. A helyszíni támogatás nem minden esetben támogatott ugyanúgy az Azure-ban. Ez a dokumentum a támogatott nem magas rendelkezésre állású konfigurációkon és a magas rendelkezésre állású konfigurációkon és architektúrán keresztül kizárólag az Azure-beli virtuális gépeket használja. A [Hana Large-példányokkal](./hana-overview-architecture.md)támogatott forgatókönyvek esetében tekintse [meg a Hana Large instances által támogatott forgatókönyvek](./hana-supported-scenario.md)című cikket. 
@@ -246,7 +246,7 @@ A vész-helyreállítási régióban egy kisebb méretű virtuális gép is hasz
 - A virtuálisgép-családokra való átméretezés problémát jelenthet, ha a különböző virtuális gépeket egy Azure-beli rendelkezésre állási csoportba gyűjti, vagy ha az M sorozatú család és a virtuális gépek Mv2-családja között újraméretezés történik.
 - Az adatbázis-példány processzor-és memóriahasználat, amely minimális késleltetéssel és elegendő CPU-és memória-erőforrással képes fogadni a módosításokat, hogy a módosítások csak minimális késleltetéssel legyenek alkalmazva.  
 
-A különböző virtuálisgép-méretek korlátozásával kapcsolatos további részletek [itt](../../linux/sizes.md) találhatók 
+A különböző virtuálisgép-méretek korlátozásával kapcsolatos további részletek [itt](../../sizes.md) találhatók 
 
 Egy másik támogatott módszer a DR cél üzembe helyezéséhez, hogy egy második adatbázis-kezelő példányt telepítsen egy olyan virtuális gépre, amely egy nem éles környezetben működő SAP-példány nem üzemi adatbázis-kezelő példányát futtatja. Ez egy kicsit nagyobb kihívást jelenthet, mivel meg kell állapítania, hogy mi a memória, a processzor-erőforrások, a hálózati sávszélesség és a tárolási sávszélesség a DR forgatókönyvben főpéldányként működni kívánó konkrét cél példányok esetén. Különösen a HANA-ban kifejezetten ajánlott olyan példányt konfigurálni, amely egy megosztott gazdagépen a DR célként funkcionál, hogy az adatok ne legyenek előre betöltve a DR cél példányba.
 

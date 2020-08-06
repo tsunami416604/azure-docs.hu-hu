@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318385"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829594"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
@@ -42,7 +42,7 @@ A metrikák megtekintéséhez a *Microsoft.Insights* erőforrás-szolgáltatóna
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Nem rendelkezik megfelelő hozzáférési engedélyekkel az erőforráshoz
 
-Az Azure-ban a metrikák hozzáférését [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md) vezérli. Az erőforrások metrikáinak megtekintéséhez a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader), a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz kell tartoznia.
+Az Azure-ban a metrikák elérését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)vezérli. Az erőforrások metrikáinak megtekintéséhez a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader), a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz kell tartoznia.
 
 **Megoldás:** Győződjön meg arról, hogy rendelkezik megfelelő engedélyekkel ahhoz az erőforráshoz, amelynek a mérőszámait vizsgálja.
 
@@ -118,4 +118,3 @@ Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az 
 * [A metrika Explorer speciális funkcióinak megismerése](metrics-charts.md)
 * [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](metrics-supported.md)
 * [A konfigurált diagramok példáinak megtekintése](metric-chart-samples.md)
-

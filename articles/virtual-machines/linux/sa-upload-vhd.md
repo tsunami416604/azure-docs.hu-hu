@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d667ff3949fcf58affc72b5d75a40abd8ca0dcb6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292267"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830308"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép feltöltése és létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-A célként megadott Storage-fióknak meg kell egyeznie, mint ahol a virtuális lemezt feltöltötte. Emellett az az **VM Create** parancs által megkövetelt összes további paramétert is meg kell adnia vagy válaszolnia kell, mint például a virtuális hálózat, a nyilvános IP-cím, a Felhasználónév és az ssh-kulcsok. További információt a [klasszikus CLI Resource Manager-paraméterekről](../azure-cli-arm-commands.md#virtual-machines)itt olvashat.
+A célként megadott Storage-fióknak meg kell egyeznie, mint ahol a virtuális lemezt feltöltötte. Emellett az az **VM Create** parancs által megkövetelt összes további paramétert is meg kell adnia vagy válaszolnia kell, mint például a virtuális hálózat, a nyilvános IP-cím, a Felhasználónév és az ssh-kulcsok. További információt a [klasszikus CLI Resource Manager-paraméterekről](/previous-versions/azure/virtual-machines/azure-cli-arm-commands#virtual-machines)itt olvashat.
 
 ## <a name="requirements"></a>Követelmények
 A következő lépések elvégzéséhez a következőkre lesz szüksége:

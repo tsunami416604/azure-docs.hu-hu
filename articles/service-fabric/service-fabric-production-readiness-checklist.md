@@ -3,12 +3,12 @@ title: Azure Service Fabric üzemi készültségi ellenőrzőlista
 description: Az ajánlott eljárások követésével megkezdheti Service Fabric alkalmazás és a fürt gyártását.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282058"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835867"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
@@ -35,7 +35,7 @@ Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Az
 1. Hozzon létre egy helyreállítási időkorlátot (RPO) a szolgáltatáshoz, és állítson be egy vész- [helyreállítási folyamatot](service-fabric-disaster-recovery.md) , és tesztelje.
 1. Tervezze meg manuálisan vagy programozott módon a fürt [méretezését](service-fabric-cluster-scaling.md) .
 1. Tervezze meg a fürtcsomópontok [javítását](service-fabric-patch-orchestration-application.md) . 
-1. Hozzon létre egy CI/CD-folyamatot, hogy a legújabb módosítások folyamatosan legyenek tesztelve. Például az [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) vagy a [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) használatával
+1. Hozzon létre egy CI/CD-folyamatot, hogy a legújabb módosítások folyamatosan legyenek tesztelve. Például az [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) vagy a [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) használatával
 1. Tesztelje a fejlesztési & átmeneti fürtöket a Load és a [fault Analysis Service szolgáltatásban](service-fabric-testability-overview.md) , és indukálja a szabályozott [káoszt](service-fabric-controlled-chaos.md). 
 1. Tervezze meg az alkalmazások [méretezését](service-fabric-concepts-scalability.md) . 
 

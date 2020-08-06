@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088291"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831107"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum útmutatást nyújt az SAP Business One Azure Virtual Machines üzembe helyezéséhez. A dokumentáció nem helyettesíti a Business One for SAP szolgáltatás telepítési dokumentációját. A dokumentációnak az Azure-infrastruktúrára vonatkozó alapszintű tervezési és üzembe helyezési útmutatókat kell kiterjednie, amelyekkel az üzleti alkalmazások futtatása elérhető
@@ -149,7 +149,7 @@ A biztonsági mentési és visszaállítási stratégiák SAP HANA olvassa el az
 ### <a name="business-one-client-server"></a>Üzleti egy ügyfél-kiszolgáló
 Ezeknek az összetevőknek a tárolási szempontjai nem az elsődleges szempont. azonban megbízható platformot szeretne használni. Ezért az Azure Premium Storaget kell használnia ehhez a virtuális géphez, még az alap VHD-hez is. A virtuális gép méretezése az [SAP Business One Hardware követelmények útmutatójában](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)megadott adattal. Az Azure-ban a dokumentum 2,4-es fejezetében ismertetett követelményekkel kell összpontosítania és kiszámítani. A követelmények kiszámítása során össze kell hasonlítani azokat a következő dokumentumokkal, hogy megtalálják az ideális virtuális gépet:
 
-- [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md)
+- [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md)
 - [SAP-Megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 A Microsoft által dokumentált processzorok és memória számának összevetése. A virtuális gépek kiválasztásakor tartsa szem előtt a hálózat átviteli sebességét is.

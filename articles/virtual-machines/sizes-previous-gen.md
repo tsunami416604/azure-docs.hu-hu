@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289702"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831294"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -80,7 +80,7 @@ A NVv2-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc leh
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek régebbi generációi
 
-Ez a szakasz a virtuális gépek méreteinek régebbi generációit ismerteti. Ezek a méretek továbbra is támogatottak, de nem kapnak további kapacitást. Az általánosan elérhető újabb vagy alternatív méretek. A [Linux rendszerű virtuális gépek méretei az Azure-ban](linux/sizes.md) , az igényeinek leginkább megfelelő virtuálisgép-méretek kiválasztásához szükségesek.  
+Ez a szakasz a virtuális gépek méreteinek régebbi generációit ismerteti. Ezek a méretek továbbra is támogatottak, de nem kapnak további kapacitást. Az általánosan elérhető újabb vagy alternatív méretek. A [Linux rendszerű virtuális gépek méretei az Azure-ban](./sizes.md) , az igényeinek leginkább megfelelő virtuálisgép-méretek kiválasztásához szükségesek.  
 
 A Linux rendszerű virtuális gépek átméretezésével kapcsolatos további információkért lásd: [Linux rendszerű virtuális gép](linux/change-vm-size.md)átméretezése.  
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367401"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835901"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -195,7 +195,7 @@ Azok a szervezetek, amelyek nem vesznek fel az Identity Protection további rét
 
 ## <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés alkalmazása
 
-A felhőalapú erőforrásokhoz való hozzáférés kezelése kritikus fontosságú a felhőt használó bármely szervezet számára. A [szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)segítségével felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz, mit tehet ezekkel az erőforrásokkal, és milyen területekhez férhet hozzá.
+A felhőalapú erőforrásokhoz való hozzáférés kezelése kritikus fontosságú a felhőt használó bármely szervezet számára. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)segítségével felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz, mit tehet az erőforrásokkal, és milyen területekhez férhet hozzá.
 
 A csoportok vagy az egyes Azure-funkciókért felelős egyedi szerepkörök kijelölik a félreértéseket, amelyek biztonsági kockázatokat okozó emberi és automatizálási hibákhoz vezethetnek. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján.
 

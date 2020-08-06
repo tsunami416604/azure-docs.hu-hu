@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870286"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835484"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
@@ -31,7 +31,7 @@ Feltöltheti az általánosított és a speciális virtuális merevlemezeket is.
 >
 
 
-| Forgatókönyv                                                                                                                         | Dokumentáció                                                                                                                       |
+| Eset                                                                                                                         | Dokumentáció                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Meglévő AWS EC2-példányokkal rendelkezik, amelyeket felügyelt lemezek használatával szeretne áttelepíteni az Azure-beli virtuális gépekre                              | [Virtuális gép áthelyezése Amazon Web Servicesból (AWS) az Azure-ba](aws-to-azure.md)                           |
 | Van olyan virtuális gépe, amelyet egy másik virtualizációs platformon szeretne használni több Azure-beli virtuális gép létrehozásához. | [Töltse fel az általánosított virtuális merevlemezt, és használja az új virtuális gép létrehozásához az Azure-ban](upload-generalized-managed.md) |
@@ -55,7 +55,7 @@ Válasszon ki egy helyet, ahol elérhetők az Azure Managed Disks. Ha prémium s
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete
 
-Ha prémium szintű Managed Disksra végez áttelepítést, frissítenie kell a virtuális gép méretét, hogy Premium Storage a virtuális gép helyét tartalmazó régióban elérhető méretet. Tekintse át a Premium Storage képes virtuális gépek méretét. Az Azure-beli virtuális gép méretének specifikációi a [virtuális gépek méretei](sizes.md)szerint vannak felsorolva.
+Ha prémium szintű Managed Disksra végez áttelepítést, frissítenie kell a virtuális gép méretét, hogy Premium Storage a virtuális gép helyét tartalmazó régióban elérhető méretet. Tekintse át a Premium Storage képes virtuális gépek méretét. Az Azure-beli virtuális gép méretének specifikációi a [virtuális gépek méretei](../sizes.md)szerint vannak felsorolva.
 Tekintse át a Premium Storaget használó virtuális gépek teljesítményének jellemzőit, és válassza ki a legmegfelelőbb virtuálisgép-méretet, amely legjobban megfelel a számítási feladatnak. Győződjön meg arról, hogy elegendő sávszélesség áll rendelkezésre a virtuális gépen a lemez forgalmának elvégzéséhez.
 
 ### <a name="disk-sizes"></a>Lemezek mérete

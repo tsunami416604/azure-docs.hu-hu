@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507879"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835527"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>A nagyszámítógépek Azure-beli virtuális gépeken való üzemeltetése
 
@@ -88,9 +88,9 @@ Az Azure kötelezettségvállalási alapú szolgáltatói szerződéseket (SLA-k
 
 Az Azure IaaS, például a virtuális gépek esetében az adott rendszerfunkciók feladatátvételi támogatást biztosítanak, például a feladatátvételi fürtszolgáltatás példányai és a rendelkezésre állási készletek. Ha az Azure platformot szolgáltatásként (Pásti) használja, a platform automatikusan kezeli a feladatátvételt. Ilyenek például a [Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md) és a [Azure Cosmos db](../../../cosmos-db/introduction.md).
 
-### <a name="scalability"></a>Skálázhatóság
+### <a name="scalability"></a>Méretezhetőség
 
-A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](../../linux/sizes.md) -és [Windows](../../windows/sizes.md) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a szolgáltatások igény szerinti [skálázása](/azure/architecture/best-practices/auto-scaling) használaton alapuló számlázási modell keretében történik.
+A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](../../sizes.md) -és [Windows](../../sizes.md) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a szolgáltatások igény szerinti [skálázása](/azure/architecture/best-practices/auto-scaling) használaton alapuló számlázási modell keretében történik.
 
 ### <a name="storage"></a>Storage
 
@@ -110,7 +110,7 @@ Azure Government egy ideiglenes hatóságot (P-ATO) kapott ahhoz, hogy a FedRAMP
 
 Első lépésként töltse le [Microsoft Azure Government felhőt a nagyszámítógépek alkalmazásaihoz](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kérje [partnereit](partner-workloads.md) , hogy segítsenek áttelepíteni vagy áthelyezni a nagyszámítógépű alkalmazásokat. 
 

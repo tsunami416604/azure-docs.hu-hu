@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086608"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833895"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -128,7 +128,7 @@ Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások prémium 
 
 * Alapértelmezés szerint az SAP-telepítő az alapértelmezett telepítési mappában helyezi el az összeállítási fájlokat. Ezeket a szerelvény-fájlokat egy másik helyre kell másolnia a forgatókönyv alapján, az alábbiak szerint:
 
-  Az ISE-ben futó Logic apps esetén kövesse az [integrációs szolgáltatás környezetének előfeltételei](#sap-ise)című témakörben leírt lépéseket. A több-bérlős Azure-ban futó Logic apps és a helyszíni adatátjáró használata esetén másolja az alapértelmezett telepítési mappából az adatátjáró telepítési mappájába az összeállítási fájlokat. Ha az adatátjáróval kapcsolatos problémákba ütközik, tekintse át a következő problémákat:
+  * Az ISE-ben futó Logic apps esetén kövesse az [integrációs szolgáltatás környezetének előfeltételei](#sap-ise)című témakörben leírt lépéseket. A több-bérlős Azure-ban futó Logic apps és a helyszíni adatátjáró használata esetén másolja az alapértelmezett telepítési mappából az adatátjáró telepítési mappájába az összeállítási fájlokat. Ha az adatátjáróval kapcsolatos problémákba ütközik, tekintse át a következő problémákat:
 
   * Telepítenie kell az SAP ügyféloldali kódtár 64 bites verzióját, mert az adatátjáró csak 64 bites rendszereken fut. Ellenkező esetben a "hibás rendszerkép" hibaüzenet jelenik meg, mert az adatátjáró-gazda szolgáltatás nem támogatja a 32 bites szerelvényeket.
 
@@ -431,7 +431,7 @@ A tömb szűrő beállításakor az trigger csak a megadott SAP-tevékenységtí
 
 Az SAP-műveletek szűrése a helyszíni adatátjáróhoz tartozó SAP-adapter szintjén történik. További információ: [hogyan küldhet teszt IDocs az SAP-Logic apps](#send-idocs-from-sap).
 
-Ha nem tud IDoc-csomagokat küldeni az SAP-ból a logikai alkalmazás triggerére, tekintse meg a tranzakciós RFC (tRFC) Call elutasítás üzenetet az SAP tRFC párbeszédpanelen (T-Code SM58). Az SAP-felületen a következő hibaüzenetek jelenhetnek meg, amelyeket az **állapot szövegmezőben** lévő alsztring korlátok miatt levágja a program.
+Ha nem tud IDoc-csomagokat küldeni az SAP-ból a logikai alkalmazás triggerére, tekintse meg a tranzakciós RFC (tRFC) Call elutasítás üzenetet az SAP tRFC párbeszédpanelen (T-Code SM58). Az SAP-felületen a következő hibaüzenetek jelenhetnek meg, amelyek az **állapot szövegmezőben** lévő alsztringek korlátai miatt lesznek levágva.
 
 * `The RequestContext on the IReplyChannel was closed without a reply being`: Váratlan hibák történnek, amikor a csatorna összes kezelője leállítja a csatornát egy hiba miatt, és újraépíti a csatornát más üzenetek feldolgozására.
 
@@ -532,7 +532,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 1. Mentse a módosításokat.
 
-1. A kapcsolódás teszteléséhez válassza a **kapcsolódási teszt** lehetőséget.
+1. A kapcsolódás teszteléséhez válassza a **kapcsolódási teszt**lehetőséget.
 
 #### <a name="create-receiver-port"></a>Fogadó port létrehozása
 
@@ -606,11 +606,11 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 1. A IDoc- **feldolgozási beállítások tesztelési eszközének** megnyitásához az SAP-felületen használja az **we19** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
-1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Kattintson a **Létrehozás** gombra.
+1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Válassza a **Létrehozás** lehetőséget.
 
 1. A **Folytatás**gombra kattintva erősítse meg, hogy **melyik IDoc-típust?** üzenet jelenik meg.
 
-1. Válassza ki a **EDIDC** csomópontot. Adja meg a fogadó és a küldő portok megfelelő értékeit. Válassza a **Folytatás** elemet.
+1. Válassza ki a **EDIDC** csomópontot. Adja meg a fogadó és a küldő portok megfelelő értékeit. Válassza a **Folytatás**lehetőséget.
 
 1. Válassza a **normál kimenő feldolgozás**lehetőséget.
 
@@ -727,7 +727,10 @@ A következő példa egy olyan RFC-hívás, amely egy olyan Table paramétert ta
 
 ```
 
-A következő példa a névterek előtagjait tartalmazza. Az összes előtagokat egyszerre deklarálhatja, vagy a csomópontok attribútumaiként bármilyen mennyiségű előtagot deklarálhat. Az RFC-névtér aliasa az `ns0` alapszintű típushoz tartozó gyökérként és paraméterekként használható. Vegye figyelembe, hogy az összetett típusok egy másik névtérben vannak deklarálva az RFC-típusoknál az aliassal, a `ns3` normál RFC-névtér helyett az aliassal `ns0` .
+A következő példa a névterek előtagjait tartalmazza. Az összes előtagokat egyszerre deklarálhatja, vagy tetszőleges számú előtagot deklarálhat egy csomópont attribútumaiként. Az RFC-névtér aliasa az `ns0` alapszintű típushoz tartozó gyökérként és paraméterekként használható.
+
+> [!NOTE]
+> az összetett típusok egy másik névtérben vannak deklarálva az RFC-típusoknál az aliassal, a `ns3` normál RFC-névtér helyett az aliassal `ns0` .
 
 ```xml
 
@@ -883,7 +886,7 @@ Az alábbi példa egy egyszerű szegmenseket tartalmazó minta adatrekord. Ez a 
 
 ```
 
-A következő példa egy csoportosított szegmenseket tartalmazó adatrekord. Ebbe beletartozik egy csoport szülő csomópontja, `E2EDKT1002GRP` és több alárendelt csomópont is, beleértve a és a-t is `E2EDKT1002` `E2EDKT2001` . 
+A következő példa egy csoportosított szegmenseket tartalmazó adatrekord. A rekord tartalmaz egy csoport szülő csomópontot, `E2EDKT1002GRP` és több alárendelt csomópontot is, beleértve a és a-t is `E2EDKT1002` `E2EDKT2001` . 
 
 ```xml
 
@@ -900,7 +903,7 @@ A következő példa egy csoportosított szegmenseket tartalmazó adatrekord. Eb
 
 ```
 
-Az ajánlott módszer egy IDoc-azonosító létrehozása a tRFC való használathoz. Ezt a tranzakció-azonosítót beállíthatja az `tid` SAP-összekötő API [IDoc küldése műveletének](https://docs.microsoft.com/connectors/sap/#send-idoc) használatával.
+Az ajánlott módszer egy IDoc-azonosító létrehozása a tRFC való használathoz. Ezt a tranzakció-azonosítót beállíthatja az `tid` SAP-összekötő API [IDoc küldése műveletének](/connectors/sap/#send-idoc) használatával.
 
 A következő példa egy alternatív módszer a tranzakció azonosítójának megadására, vagy `tid` . Ebben a példában az utolsó adatrekord szegmens csomópontja és a IDoc adatcsomópontja le van zárva. Ezt követően a GUID `guid` azonosítót használja a rendszer a duplikált elemek észlelésére szolgáló tRFC. 
 

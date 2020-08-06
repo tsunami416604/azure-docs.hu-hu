@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543826"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835935"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -60,7 +60,7 @@ A Cloud Service-modelltől függően az alkalmazás vagy szolgáltatás biztons�
 
 A beépített funkciók hat funkcionális területen vannak rendszerezve: műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. Az Azure platformon elérhető funkciókkal és képességekkel kapcsolatos további részleteket az alábbi hat területen tekintheti meg összefoglaló információk alapján.
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 Ez a szakasz további információkat tartalmaz a biztonsági műveletek főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összefoglaló információkkal kapcsolatban.
 
 ### <a name="security-and-audit-dashboard"></a>Security and Audit irányítópult
@@ -239,10 +239,10 @@ Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kér
 
 Az alkalmazás számos Application Delivery Controller (ADC) funkciót kínál, többek között a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a [TLS-kiszervezést](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), az egyéni állapotú mintavételeket, a többhelyes és sok más támogatást.
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazásoknak a standard Application Delivery Control (ADC) függvényekhez. A webalkalmazási tűzfal ezt úgy éri el, hogy védelmet nyújt az alkalmazásoknak az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben.
 
-![Web Application Firewall (Webalkalmazási tűzfal)](./media/overview/azure-security-fig1.png)
+![Webalkalmazási tűzfal](./media/overview/azure-security-fig1.png)
 
 -   SQL-injektálás elleni védelem
 
@@ -336,7 +336,7 @@ A Microsoft több biztonsági gyakorlatot és technológiát használ termékei 
 
 -   A [jogkivonat-alapú hitelesítés](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) lehetővé teszi a hitelesítés Azure Active Directory használatával.
 
--   A [szerepköralapú hozzáférés-vezérlés (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) lehetővé teszi a hozzáférés megadását a felhasználó hozzárendelt szerepköre alapján, így a felhasználók számára csak a feladat feladatainak elvégzéséhez szükséges hozzáférés mennyiségét biztosíthatja. A RBAC személyre szabása a szervezet üzleti modelljében és a kockázati toleranciában végezhető el.
+-   Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) lehetővé teszi, hogy a felhasználó hozzárendelt szerepköre alapján engedélyezze a hozzáférést, így a felhasználók csak a feladat feladataik elvégzéséhez szükséges hozzáférést biztosíthatják. A RBAC személyre szabása a szervezet üzleti modelljében és a kockázati toleranciában végezhető el.
 
 -   Az [integrált Identitáskezelés (hibrid identitás)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) lehetővé teszi a felhasználók hozzáférésének felügyeletét a belső adatközpontokban és a Felhőbeli platformokon, így egyetlen felhasználói identitást hozhat létre a hitelesítéshez és az összes erőforrás engedélyezéséhez.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292380"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830546"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
 
@@ -34,9 +34,9 @@ A [Ansible](https://www.ansible.com/) egy automatizálási motor a konfiguráci�
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- A [Ansible telepítése és konfigurálása Linux rendszeren az Azure](../ansible/ansible-install-configure.md)-hoz való használatra.
-- [Hozzon létre egy linuxos virtuális gépet](../ansible/ansible-create-vm.md).
-- [Linux rendszerű virtuális gép kezelése](../ansible/ansible-manage-linux-vm.md).
+- A [Ansible telepítése és konfigurálása Linux rendszeren az Azure](/azure/developer/ansible/install-on-linux-vm)-hoz való használatra.
+- [Hozzon létre egy linuxos virtuális gépet](/azure/developer/ansible/vm-configure).
+- [Linux rendszerű virtuális gép kezelése](/azure/developer/ansible/vm-manage).
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ A [Chef](https://www.chef.io/) egy automatizálási platform, amely segít megha
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 - [A Chef automatizálásának üzembe helyezése az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Telepítse a cheft Windows rendszeren, és hozzon létre Azure virtuális gépeket](../chef/chef-automation.md).
+- [Telepítse a cheft Windows rendszeren, és hozzon létre Azure virtuális gépeket](/azure/developer/chef/windows-vm-configure).
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="azure-custom-script-extension"></a>Azure egyéni szkriptek futtatására szolgáló bővítmény
-A [Linux](./linux/extensions-customscript.md) vagy a [Windows rendszerhez](./windows/extensions-customscript.md) készült egyéni parancsfájl-bővítmény letölti és végrehajtja az Azure-beli virtuális gépeken futó parancsfájlokat. A bővítményt a virtuális gép létrehozásakor vagy a virtuális gép használatba helyezésekor bármikor használhatja.
+A [Linux](./extensions/custom-script-linux.md) vagy a [Windows rendszerhez](./extensions/custom-script-windows.md) készült egyéni parancsfájl-bővítmény letölti és végrehajtja az Azure-beli virtuális gépeken futó parancsfájlokat. A bővítményt a virtuális gép létrehozásakor vagy a virtuális gép használatba helyezésekor bármikor használhatja.
 
 A parancsfájlok letölthetők az Azure Storage-ból vagy bármilyen nyilvános helyről, például egy GitHub-adattárból. Az egyéni szkriptek bővítménnyel bármilyen nyelven írhat parancsfájlokat, amelyek a forrás virtuális gépen futnak. Ezek a parancsfájlok az alkalmazások telepítéséhez vagy a virtuális gép igény szerinti konfigurálásához használhatók. A hitelesítő adatok védelme érdekében a bizalmas adatokat, például a jelszavakat védett konfigurációban lehet tárolni. Ezeket a hitelesítő adatokat a rendszer csak a virtuális gépen fejti vissza.
 
@@ -116,7 +116,7 @@ A Azure Automation egy kívánt állapot-konfiguráció (DSC) szolgáltatást is
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Hozzon létre egy PowerShell-runbook](../automation/automation-first-runbook-textual-powershell.md).
+- [Hozzon létre egy PowerShell-runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
 - [Hibrid Runbook-feldolgozók használata helyszíni erőforrások kezeléséhez](../automation/automation-hybrid-runbook-worker.md).
 - [Azure Automation DSC használata](../automation/automation-dsc-getting-started.md).
 
@@ -126,7 +126,7 @@ Az [Azure DevOps Services](https://www.visualstudio.com/team-services/) olyan es
 
 További információk:
 
-- [Azure DevOps-szolgáltatások](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps-szolgáltatások](/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ A [Jenkins](https://jenkins.io) egy folyamatos integrációs kiszolgáló, amely
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker](../jenkins/tutorial-jenkins-github-docker-cicd.md).
+- [Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker](/azure/developer/jenkins/pipeline-with-github-and-docker).
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
@@ -149,4 +149,3 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="next-steps"></a>További lépések
 Számos különböző lehetőség áll rendelkezésre az infrastruktúra-automatizálási eszközök használatára az Azure-ban. Ön szabadon használhatja az igényeinek és környezetének legmegfelelőbb megoldást. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](./linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](./windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.
-

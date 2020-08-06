@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279287"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830750"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>A Azure Portal használata közvetlen metódusok meghívásához
 
-IoT Hub lehetővé teszi [közvetlen metódusok](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules) meghívását a felhőből származó peremhálózati eszközökön. Az élő videó elemzése IoT Edge (LVA) modul számos [közvetlen módszert](/azure/media-services/live-video-analytics-edge/direct-methods) tesz elérhetővé, amelyek segítségével meghatározhatja, telepítheti és létrehozhatja az élő videók elemzésére szolgáló különböző munkafolyamatokat.
+IoT Hub lehetővé teszi [közvetlen metódusok](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules) meghívását a felhőből származó peremhálózati eszközökön. Az élő videó elemzése IoT Edge (LVA) modul számos [közvetlen módszert](./direct-methods.md) tesz elérhetővé, amelyek segítségével meghatározhatja, telepítheti és létrehozhatja az élő videók elemzésére szolgáló különböző munkafolyamatokat.
 
 Ebből a cikkből megtudhatja, hogyan hívhat meg közvetlen metódusú hívásokat az élő videók elemzéséhez IoT Edge modulhoz a Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Microsoft Edge-eszközén futó IoT Edge-modul élő videó-elemzését a gyors útmutató [: élő videó analytics IoT Edge](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) vagy a portál használatával végezheti el [.](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)
+* A Microsoft Edge-eszközén futó IoT Edge-modul élő videó-elemzését a gyors útmutató [: élő videó analytics IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) vagy a portál használatával végezheti el [.](./deploy-iot-edge-device.md)
 
-* Megismerheti az [élő videók elemzését](/azure/media-services/live-video-analytics-edge/overview) és [a Media Graph koncepcióját](/azure/media-services/live-video-analytics-edge/media-graph-concept).
+* Megismerheti az [élő videók elemzését](./overview.md) és [a Media Graph koncepcióját](./media-graph-concept.md).
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>Közvetlen metódusok meghívása Azure Portal használatával
 
-A LVA modul által elérhető [közvetlen metódusok](/azure/media-services/live-video-analytics-edge/direct-methods) mindegyike Azure Portal használatával hívható meg. Az alábbi lépések egy közvetlen metódus részleteit tartalmazzák. Más közvetlen metódusokat hasonló lépések használatával hívhat meg. Az egyes közvetlen metódusoknak azonban egy adott JSON-törzsre van szükségük.
+A LVA modul által elérhető [közvetlen metódusok](./direct-methods.md) mindegyike Azure Portal használatával hívható meg. Az alábbi lépések egy közvetlen metódus részleteit tartalmazzák. Más közvetlen metódusokat hasonló lépések használatával hívhat meg. Az egyes közvetlen metódusoknak azonban egy adott JSON-törzsre van szükségük.
 
 A `GraphTopologyList` metódus hívásával lekérheti az aktuálisan telepített gráf-topológiák listáját IoT Edge modulon. A következő lépésekkel hívhatja meg ezt a közvetlen metódust:
 
@@ -66,15 +66,15 @@ A `GraphTopologyList` metódus hívásával lekérheti az aktuálisan telepítet
 
 | Feltétel             | Állapotkód | Részletes hibakód |
 |-----------------------|-------------|---------------------|
-| Success               | 200         | n.a.                 |
+| Success               | 200         | N/A                 |
 | Általános felhasználói hibák   | 400 tartomány   |                     |
 | Általános kiszolgálói hibák | 500 tartomány   |                     |
 
 ## <a name="next-steps"></a>További lépések
 
-A [közvetlen metódusok](/azure/media-services/live-video-analytics-edge/direct-methods) oldalon további közvetlen módszerek is megtalálhatók.
+A [közvetlen metódusok](./direct-methods.md) oldalon további közvetlen módszerek is megtalálhatók.
 
 > [!NOTE]
 > Egy gráf-példány egy adott topológiát hoz létre, ezért győződjön meg arról, hogy rendelkezik a megfelelő topológiával a Graph-példány létrehozása előtt.
 
-Rövid útmutató [: a mozgásérzékelők kibocsátási eseményeinek észlelése](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) jól használható a közvetlen metódusok által kezdeményezett hívások pontos sorrendjének megismeréséhez.
+Rövid útmutató [: a mozgásérzékelők kibocsátási eseményeinek észlelése](./get-started-detect-motion-emit-events-quickstart.md) jól használható a közvetlen metódusok által kezdeményezett hívások pontos sorrendjének megismeréséhez.

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 0d1a6d5626e081ff50f65b3a4396e223b33f920d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 85b1b6c56221deaa03057a7ccb658b4bf67124eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433588"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830580"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Átfedés létrehozása a Media Encoder Standard használatával
 
@@ -19,7 +19,7 @@ A Media Encoder Standard lehetővé teszi egy rendszerkép átfedését egy megl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Gyűjtsön olyan fiókadatokat, amelyekre szükség van a *appsettings.js* konfigurálásához a minta fájljában. Ha nem tudja, hogyan teheti meg, tekintse meg a rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)című témakört. A következő értékeket kell megvárni a fájl *appsettings.js* .
+* Gyűjtsön olyan fiókadatokat, amelyekre szükség van a *appsettings.js* konfigurálásához a minta fájljában. Ha nem tudja, hogyan teheti meg, tekintse meg a rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](../../active-directory/develop/quickstart-register-app.md)című témakört. A következő értékeket kell megvárni a fájl *appsettings.js* .
 
     ```json
     {
@@ -40,7 +40,7 @@ Ha még nem ismeri az átalakításokat, javasoljuk, hogy hajtsa végre a követ
 
 * [Videó és hang kódolásának](encoding-concept.md) olvasása Media Services
 * Olvassa el, [Hogyan kódolhat egyéni átalakító-.net-](customize-encoder-presets-how-to.md)tel. A cikk lépéseit követve állítsa be, hogy az átalakításokkal való együttműködéshez szükség van-e a .NET-re, majd térjen vissza ide az átfedések előre beállított mintájának kipróbálásához.
-* Lásd az [átalakítások hivatkozási dokumentumát](https://docs.microsoft.com/rest/api/media/transforms).
+* Lásd az [átalakítások hivatkozási dokumentumát](/rest/api/media/transforms).
 
 Ha már ismeri az átalakításokat, töltse le az átfedések mintáját.
 
@@ -48,6 +48,6 @@ Ha már ismeri az átalakításokat, töltse le az átfedések mintáját.
 
 Töltse le a [Media-Services-overlay mintát](https://github.com/Azure-Samples/media-services-overlays) az átfedések megkezdéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Videó kivágása Media Services-.NET-kódolással](subclip-video-dotnet-howto.md)

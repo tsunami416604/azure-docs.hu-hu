@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232107"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829629"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -97,9 +97,9 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 
 * Az üzleti igények kielégítéséhez szükséges megoldás
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
-* Nem értelmezhető
+* Nem alkalmazható
 
-|Terület |Description |
+|Terület |Leírás |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |
@@ -149,7 +149,7 @@ Az Azure AD-jelentések a következő szerepkörökből olvashatók be:
 
 * Biztonsági olvasó
 
-* Jelentés olvasója
+* Jelentésolvasó
 
 További információ az [Azure ad rendszergazdai szerepköreiről](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
 
@@ -193,6 +193,4 @@ A fenti tervezési útmutató alapján a korábban létrehozott döntéseknek me
 
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) megvalósításának megfontolása 
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) megvalósításának megfontolása
-
- 
+Vegye fontolóra az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) megvalósítását

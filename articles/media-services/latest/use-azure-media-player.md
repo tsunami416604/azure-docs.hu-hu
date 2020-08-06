@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292883"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836020"
 ---
 # <a name="playback-with-azure-media-player"></a>Lejátszás Azure Media Player
 
@@ -47,7 +47,7 @@ A videó streamek diagnosztizálásának figyeléséhez használhatja a [Azure M
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>Azure Media Player beállítása a HTML-ben
 
-A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Media Services-fiókjából. A Azure Media Player beállításával és konfigurálásával kapcsolatos részletekért tekintse meg [Azure Media Player dokumentációját](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) .
+A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Media Services-fiókjából. A Azure Media Player beállításával és konfigurálásával kapcsolatos részletekért tekintse meg [Azure Media Player dokumentációját](../azure-media-player/azure-media-player-overview.md) .
 
 ## <a name="additional-notes"></a>További megjegyzések
 
@@ -55,5 +55,5 @@ A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igén
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Media Player dokumentációja](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Az Azure Media Player dokumentációja](../azure-media-player/azure-media-player-overview.md)
 * [Azure Media Player minták](https://github.com/Azure-Samples/azure-media-player-samples)

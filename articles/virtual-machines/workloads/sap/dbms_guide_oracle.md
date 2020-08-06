@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051844"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832263"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -359,9 +359,9 @@ Erősen ajánlott az [Azure Managed Disks](../../windows/managed-disks-overview.
 
 A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információ:
 
-- [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 Ha az Azure-beli blob Storage-on vagy a Managed Disks-on alapuló lemezeket használ, akkor az [azure Virtual Machines adatbázis-kezelő rendszerbe állítása az SAP-munkaterhelésre](dbms_guide_general.md) című szakaszban szereplő utasítások a Oracle Database is érvényesek az üzemelő példányokra.
@@ -374,10 +374,10 @@ A minimális konfiguráció a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Prémium | Nincs | Nem szükséges |
-| \oracle \<SID> \origlogaB & mirrlogA | Prémium | Nincs | Nem szükséges |
+| \oracle \<SID> \origlogaA & mirrlogB | Prémium | Nincsenek | Nem szükséges |
+| \oracle \<SID> \origlogaB & mirrlogA | Prémium | Nincsenek | Nem szükséges |
 | \oracle \<SID> \sapdata1... n | Prémium | Csak olvasható | Használható |
-| \oracle \<SID> \oraarch | Standard | Nincs | Nem szükséges |
+| \oracle \<SID> \oraarch | Standard | Nincsenek | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | | Nem szükséges |
 
 
@@ -387,13 +387,13 @@ A teljesítmény konfigurációja a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Prémium | Nincs | Használható  |
-| \oracle \<SID> \origlogaB | Prémium | Nincs | Használható |
-| \oracle \<SID> \mirrlogAB | Prémium | Nincs | Használható |
-| \oracle \<SID> \mirrlogBA | Prémium | Nincs | Használható |
+| \oracle \<SID> \origlogaA | Prémium | Nincsenek | Használható  |
+| \oracle \<SID> \origlogaB | Prémium | Nincsenek | Használható |
+| \oracle \<SID> \mirrlogAB | Prémium | Nincsenek | Használható |
+| \oracle \<SID> \mirrlogBA | Prémium | Nincsenek | Használható |
 | \oracle \<SID> \sapdata1... n | Prémium | Csak olvasható | Ajánlott  |
-| \oracle\SID\sapdata (n + 1) * | Prémium | Nincs | Használható |
-| \oracle \<SID> \oraarch * | Prémium | Nincs | Nem szükséges |
+| \oracle\SID\sapdata (n + 1) * | Prémium | Nincsenek | Használható |
+| \oracle \<SID> \oraarch * | Prémium | Nincsenek | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
 * (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
@@ -450,9 +450,9 @@ Erősen ajánlott az [Azure Managed Disks](../../windows/managed-disks-overview.
 
 A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkat a következő cikkekben talál: 
 
-- [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 Ha az Azure-beli blob Storage vagy a Managed Disks alapján lemezeket használ, az [azure Virtual Machines adatbázis-kezelői szolgáltatás az SAP-munkaterheléshez való üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md) a Oracle Database is érvényesek.
 
@@ -464,10 +464,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium | Nincs | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium | Nincsenek | Nem szükséges |
 | /Oracle/ \<SID> /sapdata1... n | Prémium | Csak olvasható | Használható |
-| /Oracle/ \<SID> /oraarch | Standard | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /oraarch | Standard | Nincsenek | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -478,13 +478,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium | Nincs | Használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium | Nincs | Használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium | Nincs | Használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium | Nincs | Használható |
+| /Oracle/ \<SID> /origlogaA | Prémium | Nincsenek | Használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium | Nincsenek | Használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium | Nincsenek | Használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium | Nincsenek | Használható |
 | /Oracle/ \<SID> /sapdata1... n | Prémium | Csak olvasható | Ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium | Nincs | Használható |
-| /Oracle/ \<SID> /oraarch * | Prémium | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium | Nincsenek | Használható |
+| /Oracle/ \<SID> /oraarch * | Prémium | Nincsenek | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával

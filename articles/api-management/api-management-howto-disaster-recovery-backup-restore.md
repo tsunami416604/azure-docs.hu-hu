@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250447"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830257"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -169,19 +169,24 @@ Adja meg a kérelem fejlécének értékét a következőre: `Content-Type` `app
 
 A Backup egy hosszú ideig futó művelet, amely több mint egy percet is igénybe vehet. Ha a kérelem sikeres volt, és a biztonsági mentési folyamat elindult, a rendszer egy `202 Accepted` fejlécet tartalmazó Response állapotkódot kap `Location` . A művelet állapotának megállapításához végezze el a "GET" kéréseket a fejlécben lévő URL-címhez `Location` . Amíg a biztonsági mentés folyamatban van, továbbra is "202 elfogadott" állapotkódot kap. A válasz kódja a `200 OK` biztonsági mentési művelet sikeres befejezését jelzi.
 
-Biztonsági mentési vagy visszaállítási kérelem készítésekor vegye figyelembe a következő korlátozásokat:
+#### <a name="constraints-when-making-backup-or-restore-request"></a>Biztonsági mentési vagy visszaállítási kérelem végrehajtásakor megkötések
 
 -   A kérelem törzsében megadott **tárolónak** **léteznie kell**.
 -   A biztonsági mentés folyamatban van, így **elkerülhető a szolgáltatásban történt felügyeleti változások** , például az SKU frissítése vagy a lefokozás, a tartománynév módosítása és egyebek.
 -   A biztonsági másolat visszaállítását csak a létrehozás időpontja óta **30 napig garantáljuk** .
--   Az elemzési jelentések létrehozásához használt **használati adatok** **nem szerepelnek** a biztonsági mentésben. Az [Azure API Management REST API][azure api management rest api] használatával rendszeres időközönként beolvashatja az elemzési jelentéseket a megőrzéshez.
--   Emellett a következő elemek nem részei a biztonsági mentési adatoknak: egyéni tartomány TLS/SSL-tanúsítványok, valamint az ügyfél, a fejlesztői portál tartalma és a virtuális hálózat integrációs beállításai által feltöltött bármely közbenső vagy főtanúsítvány.
--   A szolgáltatás biztonsági másolatának elvégzéséhez használt gyakoriság a helyreállítási pontok céljára is hatással van. A lehető legkisebbre csökkentése érdekében javasoljuk, hogy a rendszeres biztonsági mentéseket és az igény szerinti biztonsági mentéseket a API Management szolgáltatás módosítása után végezze el.
 -   A szolgáltatás konfigurációjában (például az API-k, a házirendek és a fejlesztői portál megjelenésében) **végrehajtott módosítások** **kizárhatók a biztonsági mentésből, és elvesznek**.
--   Hozzáférés **engedélyezése** a vezérlési síkon az Azure Storage-fiókba, ha engedélyezve van a [tűzfal][azure-storage-ip-firewall] . Az ügyfélnek meg kell nyitnia az [Azure API Management vezérlési sík IP-címeit][control-plane-ip-address] a Storage-fiókjában a biztonsági mentéshez vagy a visszaállításhoz. 
+-   Hozzáférés **engedélyezése** a vezérlési síkon az Azure Storage-fiókba, ha engedélyezve van a [tűzfal][azure-storage-ip-firewall] . Az ügyfélnek meg kell nyitnia az [Azure API Management vezérlési sík IP-címeit][control-plane-ip-address] a Storage-fiókjában a biztonsági mentéshez vagy a visszaállításhoz. Ennek az az oka, hogy az Azure Storage-ba irányuló kérések nem címfordítást nyilvános IP-címekre a számítási > (Azure API Management Control Plane). A régiók közötti tárolási kérelem címfordítást lesz.
 
-> [!NOTE]
-> Ha olyan Storage-fiókkal kísérli meg a biztonsági mentést és a visszaállítást, amelyről vagy egy API Management szolgáltatásról [van szükség][azure-storage-ip-firewall] , akkor az azonos Azure-régióban nem fog működni. Ennek az az oka, hogy az Azure Storage-ba irányuló kérések nem címfordítást nyilvános IP-címekre a számítási > (Azure API Management Control Plane). A régiók közötti tárolási kérelem címfordítást lesz.
+#### <a name="what-is-not-backed-up"></a>Mi nem biztonsági mentés
+-   Az elemzési jelentések létrehozásához használt **használati adatok** **nem szerepelnek** a biztonsági mentésben. Az [Azure API Management REST API][azure api management rest api] használatával rendszeres időközönként beolvashatja az elemzési jelentéseket a megőrzéshez.
+-   [Egyéni tartomány TLS/SSL-](configure-custom-domain.md) tanúsítványok
+-   [Egyéni hitelesítésszolgáltatói tanúsítvány](api-management-howto-ca-certificates.md) , amely tartalmazza az ügyfél által feltöltött köztes vagy főtanúsítványokat
+-   [Virtuális hálózat](api-management-using-with-vnet.md) integrációs beállításai.
+-   [Felügyelt identitás](api-management-howto-use-managed-service-identity.md) konfigurálása.
+-   [Azure monitor diagnosztika](api-management-howto-use-azure-monitor.md) Configuration.
+-   [Protokollok és titkosítási](api-management-howto-manage-protocols-ciphers.md) beállítások.
+
+A szolgáltatás biztonsági másolatának elvégzéséhez használt gyakoriság a helyreállítási pontok céljára is hatással van. A lehető legkisebbre csökkentése érdekében javasoljuk, hogy a rendszeres biztonsági mentéseket és az igény szerinti biztonsági mentéseket a API Management szolgáltatás módosítása után végezze el.
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>API Management szolgáltatás visszaállítása
 
@@ -223,7 +228,7 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 > [!NOTE]
 > A biztonsági mentési és visszaállítási műveletek a PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) és a [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) parancsokkal is elvégezhetők.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási folyamat különböző lépéseihez.
 

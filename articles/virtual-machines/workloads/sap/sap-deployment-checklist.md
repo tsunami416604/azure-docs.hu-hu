@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495658"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836343"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -63,7 +63,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
         - A RTO és a RPO alapján határozza meg, hogy a magas rendelkezésre állást és a vész-helyreállítási architektúrát hogyan kell kinéznie.
         - Egy zónán belüli magas rendelkezésre álláshoz tekintse meg a kívánt adatbázis-kezelőt az Azure-ban. A legtöbb adatbázis-kezelő csomag szinkron módszert kínál a szinkron gyors készenléti állapothoz, amelyet az üzemi rendszerek esetében ajánlott. Tekintse meg az SAP-hez kapcsolódó dokumentációt a különböző adatbázisokhoz, az [Azure Virtual Machines adatbázis-kezelő üzembe helyezésével kapcsolatos megfontolások alapján az SAP-munkaterhelésekhez és a](./dbms_guide_general.md) kapcsolódó dokumentumokhoz.
            A Windows Server feladatátvételi fürtszolgáltatás az adatbázis-kezelő réteg megosztott lemezes konfigurációjának használatával, mint például a [SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017), nem támogatott. Ehelyett használjon például a következő megoldásokat:
-           - [SQL Server Always On](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server Always On](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA rendszerreplikáció](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - Az Azure-régiók közötti vész-helyreállításhoz tekintse át a különböző adatbázis-kezelői szolgáltatók által kínált megoldásokat. Ezek többsége támogatja az aszinkron replikálást vagy a naplózást.
@@ -103,8 +103,8 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Tekintse át az SAP-támogatási megjegyzések, a SAP HANA a hardver könyvtára és az SAP PAM-ban található erőforrásokat. Győződjön meg arról, hogy az Azure-beli támogatott virtuális gépek nem változtak, támogatott operációsrendszer-kiadások a virtuálisgép-típusokhoz, valamint a támogatott SAP-és adatbázis-kezelői kiadások.
         - Ellenőrizze újra az alkalmazás méretezését és az Azure-ban üzembe helyezett infrastruktúrát. Ha meglévő alkalmazásokat helyez át, akkor gyakran a szükséges SAP-t származtathatja a használt infrastruktúrából és az [SAP teljesítményteszt weblapjáról](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) , és összehasonlíthatja az [SAP-támogatási megjegyzésekben](https://launchpad.support.sap.com/#/notes/1928533)felsorolt sap-számokkal #1928533. Tartsa szem előtt [ezt a cikket a SAP-minősítések](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) esetében is.
         - Értékelje ki és tesztelje az Azure-beli virtuális gépek méretezését a tervezési fázisban kiválasztott virtuálisgép-típusok maximális tárolási sebessége és hálózati átviteli sebessége tekintetében. Itt megtalálja az itt található adatfájlokat:
-           -  [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
-           -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
+           -  [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
+           -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
    2. Tárterület
         - Legalább az [Azure standard SSD Storage](../../windows/disks-types.md#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
         - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](../../windows/disks-types.md#standard-hdd)használatát nem javasoljuk.
@@ -207,8 +207,8 @@ Ebben a fázisban általában fejlesztési rendszereket, egység-tesztelési ren
 11. Győződjön meg arról, hogy a virtuális gépek a megfelelő [Azure közelségi elhelyezési csoportba](../../linux/co-location.md)vannak telepítve, az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében című témakörben leírtak szerint.
 11. A számítási feladatok alkalmazása előtt végezze el az összes többi, a koncepció igazolására szolgáló szakaszt.
 12. A számítási feladatok alkalmazása esetén jegyezze fel a rendszerek erőforrás-felhasználását az Azure-ban. Hasonlítsa össze ezt a felhasználást a régi platform rekordjaival. A jövőbeli központi telepítések VM-méretezésének módosítása, ha úgy látja, hogy nagy különbségek vannak. Ne feledje, hogy ha a virtuális gépek számának csökkentése, tárolása és hálózati sávszélessége is csökken.
-    - [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Linuxos virtuális gépek méretei az Azure-ban](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Linuxos virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Kísérletezzen a rendszermásolási funkciókkal és folyamatokkal. A cél az, hogy megkönnyítse egy fejlesztési rendszer vagy egy tesztelési rendszer másolását, így a Project csapatok gyorsan új rendszerekhez juthatnak. Ezeket a feladatokat az [SAP láma](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) használatával érdemes használni.
 14. Optimalizálja és élesítse a csapat Azure szerepköralapú hozzáférését, engedélyeit és folyamatait, hogy megbizonyosodjon róla, hogy a feladatok elkülönítése megtörtént. Ugyanakkor győződjön meg arról, hogy az összes csapat el tudja végezni a feladatait az Azure-infrastruktúrában.
 15. Magas rendelkezésre állású és vész-helyreállítási eljárások gyakorlása, tesztelése és dokumentálása, amelyek lehetővé teszik, hogy a munkatársak végrehajtsák ezeket a feladatokat. Azonosítsa a hiányosságokat, és alkalmazkodjon az új Azure-funkciókhoz, amelyeket integrál az üzembe helyezésbe.

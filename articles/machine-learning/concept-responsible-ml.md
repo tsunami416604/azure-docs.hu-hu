@@ -1,36 +1,39 @@
 ---
-title: Felelős Machine Learning (ML) előzetes verzió
+title: Mi a felelős gépi tanulás (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy mi a felelős ML, és hogyan használható a Azure Machine Learning
+description: Ismerje meg, hogy a felelős gépi tanulás hogyan használható Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201935"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829390"
 ---
-# <a name="responsible-machine-learning-ml-preview"></a>Felelős Machine Learning (ML) előzetes verzió
+# <a name="what-is-responsible-machine-learning-preview"></a>Mi a felelős gépi tanulás? (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogy a felelős ML milyen módon helyezheti üzembe a gyakorlatban a Azure Machine Learning használatával.
+Ebből a cikkből megtudhatja, milyen felelősségteljes gépi tanulásra (ML) van szükség, és hogyan helyezheti üzembe azt Azure Machine Learning használatával.
 
-Az AI-rendszerek fejlesztése és használata során a megbízhatóságnak a legfontosabbnak kell lennie. Megbízhatóság a platformon, a folyamaton és a modelleken. A Microsoftnál a felelős ML a következő értékeket és alapelveket foglalja magában:
+## <a name="responsible-machine-learning-principles"></a>A felelősségteljes gépi tanulás alapelvei
+
+Az AI-rendszerek fejlesztése és használata során a megbízhatóságnak a legfontosabbnak kell lennie. Megbízhatóság a platformon, a folyamaton és a modelleken. A Microsoftnál a felelős gépi tanulás a következő értékeket és alapelveket foglalja magában:
 
 - A gépi tanulási modellek ismertetése
   - A modell viselkedésének értelmezése és magyarázata
   - A modell kiértékelése és enyhítése
 - A személyek és az adataik védelme
-  - A különbözeti adatokkal való kitettség megakadályozása  
+  - A különbözeti adatokkal való kitettség megakadályozása
+  - Titkosított adatkezelés a homomorphic titkosítás használatával
 - A végpontok közötti gépi tanulási folyamat szabályozása
   - A gépi tanulási életciklus dokumentálása az adatlapokkal
 
-:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Felelős ML-oszlopok":::
+:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Felelős ML pillérek – értelmező, differenciált adatvédelem, homomorphic titkosítás, naplózási nyomvonal – Azure Machine Learning":::
 
 Mivel a mesterséges intelligencia és az autonóm rendszerek egyre inkább integrálják a társadalmat a társadalomba, fontos, hogy proaktív módon végezze el az ilyen technológiák nem szándékolt következményeinek megelőzését és enyhítését.
 
@@ -40,7 +43,7 @@ A nehezen érthető vagy átlátszatlan rendszerek problémái lehetnek, mert az
 
 A értelmezhető AI-rendszerek létrehozásához használja a [InterpretML](https://github.com/interpretml/interpret)-t, amely a Microsoft által készített nyílt forráskódú csomag. A InterpretML a gépi tanulási modellek, például az [automatizált gépi tanulási modellek](how-to-machine-learning-interpretability-automl.md) [értelmezése és magyarázata](how-to-machine-learning-interpretability-aml.md) [Azure Machine learning belül is használható](how-to-machine-learning-interpretability.md) .
 
-## <a name="assess-and-mitigate-model-unfairness"></a>A modell kiértékelése és enyhítése
+## <a name="mitigate-fairness-in-machine-learning-models"></a>A gépi tanulási modellek tisztaságának enyhítése
 
 Mivel a mesterséges intelligencia-rendszerek egyre nagyobb szerepet játszanak a társadalom mindennapos döntéshozatalában, rendkívül fontos, hogy ezek a rendszerek jól működjenek a tisztességes eredmények mindenki számára való biztosítása terén.
 
@@ -64,6 +67,16 @@ A differentially privát rendszereinek megvalósítása nehéz feladat. A [White
 > [!NOTE]
 > Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
 
+## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Titkosított adatmennyiség homomorphic titkosítással
+
+A hagyományos Felhőbeli tárolási és számítási megoldások esetében a felhőnek titkosítatlan hozzáférésre van szüksége az ügyféladatok számára a számítási feladatokhoz. Ez a hozzáférés a Felhőbeli operátorok számára teszi elérhetővé az adatvédelmet. Az adatvédelem a felhő által megvalósított hozzáférés-vezérlési házirendekre támaszkodik, és az ügyfél megbízhatónak tartja.
+
+A homomorphic titkosítás lehetővé teszi a számítások elvégzését a titkosított adatokon anélkül, hogy hozzá kellene férnie egy titkos (visszafejtési) kulcshoz. A számítások eredményei titkosítottak, és csak a titkos kulcs tulajdonosa által láthatók. A homomorphic titkosítás használata esetén a Felhőbeli operátorok soha nem titkosítják a tárolt és a számítástechnikai adataikat. A számításokat a rendszer közvetlenül a titkosított adatokon hajtja végre. Az adatok védelme a legkorszerűbb titkosításra támaszkodik, az adatok tulajdonosa pedig az összes információ kiadását vezérli. A Microsoft homomorphic-titkosításával kapcsolatos további információkért lásd: [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
+
+A Azure Machine Learning homomorphic-titkosítás használatának megkezdéséhez használja a [Microsoft Seal](https://github.com/microsoft/SEAL) [titkosított-következtetések Python-](https://pypi.org/project/encrypted-inference/) kötéseit. A Microsoft SEAL egy nyílt forráskódú homomorphic titkosítási függvénytár, amely lehetővé teszi, hogy a hozzáadások és a szorzások titkosított egész számokon vagy valós számokon legyenek elvégezve. A Microsoft SEAL szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) vagy a [Microsoft kutatási projektjét ismertető oldalt](https://www.microsoft.com/research/project/microsoft-seal/).
+
+A következő példában megtudhatja, [Hogyan helyezhet üzembe egy titkosított, Azure Machine learning-alapú webszolgáltatást](how-to-homomorphic-encryption-seal.md).
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>A gépi tanulási életciklus dokumentálása az adatlapokkal
 
 A megfelelő információk dokumentálása a gépi tanulási folyamat során kulcsfontosságú a felelős döntések meghozatalához az egyes fázisokban. Az adatlapokon dokumentálhatja a gépi tanulási életciklus részeként használt és létrehozott gépi tanulási eszközöket.
@@ -83,5 +96,5 @@ Tekintse meg az alábbi mintát, amelyből megtudhatja, hogyan hozhatja létre a
 
 ## <a name="additional-resources"></a>További források
 
-- A homomorphic titkosítás használatával [helyezzen üzembe egy titkosított következtetési webszolgáltatás-szolgáltatást](how-to-homomorphic-encryption-seal.md).
+- További információkért tekintse meg a [felelős innovációs eszközkészletet](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) az ajánlott eljárások megismeréséhez.
 - További információ a Machine learning-rendszer dokumentációjának a [ml](https://www.partnershiponai.org/about-ml/) -készletéről.

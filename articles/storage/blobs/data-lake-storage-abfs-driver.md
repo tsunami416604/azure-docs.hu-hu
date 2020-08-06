@@ -1,6 +1,6 @@
 ---
 title: Az Azure Blob fájlrendszer-illesztőprogramja Azure Data Lake Storage Gen2
-description: A ABFS Hadoop fájlrendszer-illesztőprogramja
+description: Ismerje meg az Azure Blob filesystem-illesztőprogramját (ABFS), amely egy dedikált Azure Storage-illesztőprogram a Hadoop. Azure Data Lake Storage Gen2 az illesztőprogram használatával férhet hozzá az adataihoz.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75970279"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836360"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer-illesztőprogram (ABFS): a Hadoop dedikált Azure Storage-illesztőprogramja
 
@@ -53,7 +53,7 @@ A ABFS-illesztőprogram két hitelesítési módszert támogat, hogy a Hadoop al
    > [!NOTE]
    > A Azure Data Lake Storage Gen2 csak az Azure AD v 1.0-s végpontokat támogatja.
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
 A ABFS-illesztőprogram összes konfigurációja a konfigurációs fájlban van tárolva <code>core-site.xml</code> . A [Ambari](https://ambari.apache.org/)-t tartalmazó Hadoop-disztribúciók esetében a konfiguráció a webportál vagy a Ambari REST API használatával is kezelhető.
 

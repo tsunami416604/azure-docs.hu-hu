@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: ac9c8b0fe974c0a4dfebf1bcc303a379e2bd07ed
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268033"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831413"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
@@ -67,7 +67,7 @@ Ez az architektúra az Azure-beli virtuális gépeken futtatja az alkalmazások,
 
 -   Egy DB2 pureScale-fürt. Az Azure-ban szükséges számítási erőforrások típusa a beállítástól függ. Általánosságban elmondható, hogy két módszert használ:
 
-    -   Többcsomópontos, nagy teljesítményű számítástechnikai (HPC) stílusú hálózat használata, ahol kis-és közepes méretű példányok férnek hozzá a megosztott tárolóhoz. Ebben a HPC-típusú konfigurációban az Azure memóriára optimalizált E-sorozat-vagy Storage-optimalizált L sorozatú [virtuális gépek](../windows/sizes.md) biztosítják a szükséges számítási teljesítményt.
+    -   Többcsomópontos, nagy teljesítményű számítástechnikai (HPC) stílusú hálózat használata, ahol kis-és közepes méretű példányok férnek hozzá a megosztott tárolóhoz. Ebben a HPC-típusú konfigurációban az Azure memóriára optimalizált E-sorozat-vagy Storage-optimalizált L sorozatú [virtuális gépek](../sizes.md) biztosítják a szükséges számítási teljesítményt.
 
     -   Használjon kevesebb nagyméretű virtuálisgép-példányt az adatkezelők számára. Nagyméretű példányok esetén a legnagyobb memóriára optimalizált [M sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuális gépek ideálisak a nagy mennyiségű memóriabeli számítási feladatokhoz. A DB2 futtatásához használt logikai partíció (LPAR) méretétől függően szükség lehet egy dedikált példányra.
 

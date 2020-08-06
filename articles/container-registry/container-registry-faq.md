@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247030"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836394"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -254,7 +254,9 @@ A kép karanténba helyezése jelenleg az ACR előzetes verziójú funkciója. E
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Hogyan engedélyezze a névtelen lekéréses hozzáférést?
 
-Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés beállítása jelenleg előzetes verziójú szolgáltatás. A nyilvános hozzáférés engedélyezéséhez nyisson meg egy támogatási jegyet a következő címen: https://aka.ms/acr/support/create-ticket . Részletekért tekintse meg az [Azure visszajelzési fórumát](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés beállítása jelenleg előzetes verziójú szolgáltatás. Ha a beállításjegyzékben bármely [hatókör-hozzárendelési (felhasználó) vagy token-erőforrás](https://aka.ms/acr/repo-permissions) szerepel, törölje őket a támogatási jegy előléptetése előtt (a rendszer-hatóköri térképek figyelmen kívül hagyhatók). A nyilvános hozzáférés engedélyezéséhez nyisson meg egy támogatási jegyet a következő címen: https://aka.ms/acr/support/create-ticket . Részletekért tekintse meg az [Azure visszajelzési fórumát](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnosztika és állapot-ellenőrzések
@@ -427,7 +429,7 @@ Ha a Microsoft Edge/IE böngészőt használja, legfeljebb 100 adattárat vagy c
 Előfordulhat, hogy a böngésző nem tudja elküldeni a tárolók vagy címkék kiszolgálónak való beolvasására vonatkozó kérést. Többek között a következők lehetnek:
 
 * Hálózati kapcsolat hiánya
-* Tűzfal
+* Firewall
 * Ad-blokkolók
 * DNS-hibák
 
@@ -517,6 +519,6 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub-műveletek](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.

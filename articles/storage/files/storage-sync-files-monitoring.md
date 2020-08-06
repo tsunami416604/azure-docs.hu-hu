@@ -4,15 +4,15 @@ description: A Azure File Sync figyelése.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515199"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832620"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -20,7 +20,11 @@ A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegos
 
 Ez a cikk azt ismerteti, hogyan figyelheti Azure File Sync üzembe helyezését a Azure Monitor, a Storage Sync Service és a Windows Server használatával.
 
-Jelenleg az alábbi figyelési lehetőségek állnak rendelkezésre.
+Ebben az útmutatóban a következő forgatókönyvek jelennek meg: 
+- Azure Monitor Azure File Sync metrikáinak megtekintése.
+- Riasztásokat hozhat létre a Azure Monitorban, hogy proaktívan értesítse Önt a kritikus feltételekről.
+- Azure File Sync központi telepítés állapotának figyelése a Azure Portal használatával.
+- Az eseménynaplók és a teljesítményszámlálók használata a Windows-kiszolgálókon a Azure File Sync üzemelő példány állapotának figyeléséhez. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -34,7 +38,7 @@ Azure Monitor Azure File Sync metrikáinak megtekintéséhez válassza ki a **St
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
@@ -48,18 +52,28 @@ Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
 ### <a name="alerts"></a>Riasztások
 
-Ha Azure Monitor riasztásokat szeretne konfigurálni, válassza ki a Storage Sync szolgáltatást, majd válassza ki a riasztáshoz használni kívánt [Azure file Sync metrikát](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) .  
+A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
+
+**Riasztások létrehozása Azure File Synchoz**
+
+- Nyissa meg a **Storage Sync szolgáltatást** a **Azure Portal**. 
+- Kattintson a **riasztások** elemre a figyelés szakaszban, majd kattintson az **+ új riasztási szabály**elemre.
+- Kattintson a **feltétel kiválasztása** lehetőségre, és adja meg a következő információkat a riasztáshoz: 
+    - **Metrika**
+    - **Dimenzió neve**
+    - **Riasztási logika**
+- Kattintson a **műveleti csoport kijelölése** elemre, és adjon hozzá egy műveleti csoportot (E-mail, SMS stb.) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+- Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+- A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.  
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Forgatókönyv | A riasztáshoz használandó metrika |
+| Eset | A riasztáshoz használandó metrika |
 |-|-|
 | Kiszolgálói végpont állapota a portálon = hiba | Szinkronizálási munkamenet eredménye |
 | A fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal | Nem szinkronizált fájlok |
 | A regisztrált kiszolgáló nem tud kommunikálni a Storage Sync szolgáltatással | Kiszolgáló online állapota |
 | A Felhőbeli rétegek felidézésének mérete túllépte a 500GiB egy napon belül  | Felhőbeli rétegek felidézésének mérete |
-
-Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
 ## <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
 
@@ -79,7 +93,7 @@ A regisztrált kiszolgáló állapotának, a kiszolgálói végpont állapotána
 
 - A következő metrikai diagramok láthatók a Storage Sync szolgáltatás portálon:
 
-  | Metrika neve | Description | Lap neve |
+  | Metrika neve | Leírás | Lap neve |
   |-|-|-|
   | Szinkronizált bájtok száma | Átvitt adatok mérete (feltöltés és letöltés) | Szinkronizálási csoport, kiszolgálói végpont |
   | Felhőbeli rétegek felidézése | Visszahívott adatmennyiség | Regisztrált kiszolgálók |
@@ -136,7 +150,7 @@ A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyis
 
 A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesítményfigyelőben:
 
-| Teljesítmény Object\Counter neve | Description |
+| Teljesítmény Object\Counter neve | Leírás |
 |-|-|
 | AFS bájtok Transferred\Downloaded sebessége (bájt/s) | A másodpercenként letöltött bájtok száma. |
 | AFS bájtok Transferred\Uploaded sebessége (bájt/s) | A másodpercenként feltöltött bájtok száma. |
@@ -146,8 +160,8 @@ A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesí
 | AFS Sync Operations\Total szinkronizálási művelet/mp | A szinkronizált fájlok teljes száma (feltöltés és letöltés). |
 
 ## <a name="next-steps"></a>További lépések
-- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
+- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
-- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
-- [Azure-fájlok szinkronizálásának hibaelhárítása](storage-sync-files-troubleshoot.md)
+- [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
+- [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)
 - [Azure Files gyakori kérdések](storage-files-faq.md)

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077483"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832518"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory hitelesítés konfigurálása a felhasználói VPN-hez
 
@@ -23,14 +23,14 @@ Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámít�
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * WAN létrehozása
-> * Elosztó létrehozása
-> * Pont–hely konfiguráció létrehozása
-> * VPN-ügyfél profiljának letöltése
-> * Pont–hely konfiguráció alkalmazása hubra
-> * Virtuális hálózat csatlakoztatása elosztóhoz
-> * A VPN-ügyfél konfigurációjának letöltése és alkalmazása
-> * A virtuális WAN megtekintése
+> * Virtuális WAN létrehozása
+> * Virtuális központ létrehozása
+> * Felhasználói VPN-konfiguráció létrehozása
+> * Virtuális WAN-felhasználói VPN-profil letöltése
+> * Felhasználói VPN-konfiguráció alkalmazása egy virtuális hubhoz
+> * VNet összekötése virtuális hubhoz
+> * A felhasználó VPN-ügyfél konfigurációjának letöltése és alkalmazása
+> * Virtuális WAN megtekintése
 
 ![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -81,9 +81,9 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 3. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 4. Az **átadott érvényesítés** lapon kattintson a **Létrehozás**gombra.
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Új P2S-konfiguráció létrehozása
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>Új felhasználói VPN-konfiguráció létrehozása
 
-A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatására vonatkozó paramétereket.
+A felhasználó VPN-konfigurációja határozza meg a távoli ügyfelek csatlakoztatásának paramétereit.
 
 1. A virtuális WAN területen válassza a **felhasználói VPN-konfigurációk**lehetőséget.
 
@@ -93,7 +93,16 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
 
    ![Új konfiguráció](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. Adja meg az adatokat, és kattintson a **Létrehozás** gombra.
+3. Adja meg az adatokat, és kattintson a **Létrehozás**gombra.
+
+   * **Konfiguráció neve** – adja meg a felhasználói VPN-konfiguráció meghívásához használni kívánt nevet.
+   * **Alagút típusa** – válassza az OpenVPN lehetőséget.
+   * **Hitelesítési módszer** – válassza a Azure Active Directory lehetőséget.
+   * **Célközönség** – írja be az Azure ad-bérlőben regisztrált [Azure VPN](openvpn-azure-ad-tenant.md) Enterprise-alkalmazás alkalmazás-azonosítóját. 
+   * **Kibocsátó** - `https://sts.windows.net/<your Directory ID>/`
+   * **HRE-bérlő** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![Új konfiguráció](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,7 +120,7 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
 6. Kattintson a **Megerősítés** gombra.
 7. A művelet végrehajtása akár 30 percet is igénybe vehet.
 
-## <a name="download-vpn-profile"></a><a name="device"></a>VPN-profil letöltése
+## <a name="download-user-vpn-profile"></a><a name="device"></a>Felhasználói VPN-profil letöltése
 
 A VPN-profillal konfigurálhatja az ügyfeleket.
 
@@ -188,13 +197,12 @@ Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 2. Az Áttekintés lapon a térképen látható pontok mindegyike egy elosztót jelöl.
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Erőforrások felszabadítása
-
-Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
+Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>További lépések
