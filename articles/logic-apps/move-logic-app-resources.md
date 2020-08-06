@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039159"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826211"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logikai alkalmazás erőforrásainak áthelyezése más Azure-erőforráscsoportok,-régiók vagy-előfizetések között
 
@@ -31,7 +31,7 @@ Ha logikai alkalmazást vagy kapcsolódó erőforrásokat szeretne áttelepíten
 
 * Ugyanazt az Azure-előfizetést, amelyet az áthelyezni kívánt logikai alkalmazás vagy integrációs fiók létrehozásához használt.
 
-* Erőforrás-tulajdonos engedélyei a kívánt erőforrások áthelyezéséhez és beállításához. További információ a [szerepköralapú hozzáférés-vezérlésről (RBAC)](../role-based-access-control/built-in-roles.md#owner).
+* Erőforrás-tulajdonos engedélyei a kívánt erőforrások áthelyezéséhez és beállításához. További információ az [Azure szerepköralapú hozzáférés-vezérléséről (Azure RBAC)](../role-based-access-control/built-in-roles.md#owner).
 
 <a name="move-subscription"></a>
 

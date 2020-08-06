@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534991"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824528"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vész-helyreállítás beállítása SQL Serverhoz
 
@@ -48,7 +48,7 @@ SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| Replikálás Az
 > * Győződjön meg arról, hogy a gépen megfigyelt adatváltozási arány [site Recovery korláton](vmware-physical-azure-support-matrix.md#churn-limits)belül van. A változási arányt írási bájt/másodpercben mérjük. A Windows rendszert futtató gépek esetében a változási arányt a Feladatkezelő **teljesítmény** lapjára kattintva tekintheti meg. Figyelje meg az egyes lemezek írási sebességét.
 > * Site Recovery támogatja a feladatátvevő fürtök példányainak replikálását Közvetlen tárolóhelyekon. További információ: [közvetlen tárolóhelyek replikáció engedélyezése](azure-to-azure-how-to-enable-replication-s2d-vms.md).
 > 
-> Ha az SQL-munkaterhelést az Azure-ba telepíti át, javasoljuk, hogy alkalmazza az [azure Virtual Machines SQL Server teljesítményre vonatkozó irányelveit](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
+> Ha az SQL-munkaterhelést az Azure-ba telepíti át, javasoljuk, hogy alkalmazza az [azure Virtual Machines SQL Server teljesítményre vonatkozó irányelveit](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
 
 ## <a name="disaster-recovery-of-an-application"></a>Alkalmazás vész-helyreállítása
 

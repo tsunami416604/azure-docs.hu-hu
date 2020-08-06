@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 08808fa0577077b642d0f21e3995931726d4d8a3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8a9ca656ec102a101df9aafb87652680a1001f31
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423541"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826279"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -18,7 +18,7 @@ ms.locfileid: "87423541"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Probléma követése</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Támogatási lehetőségek</a> 
 - <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Támogatott verziók</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kódminták</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kód mintái</a>
 
 Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet és SDK-k legújabb kiadásairól és frissítéseiről.
 
@@ -51,9 +51,9 @@ Közzétettük a frissítéseket a támogatási dátum végéig a 6,5 7,1-ig ter
 ### <a name="improve-application-life-cycle-experience"></a>Az alkalmazás életciklus-élményének javítása
 
 - **[Előnézet: kérések kiürítése](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)**: a szolgáltatás tervezett karbantartása (például a szolgáltatás frissítése vagy a csomópont inaktiválása) során lehetővé szeretné tenni a szolgáltatások számára, hogy szabályosan kiürítse a kapcsolatokat. Ez a szolgáltatás egy példány záró késleltetési időtartamát adja a szolgáltatás konfigurációjában. A tervezett műveletek során az SF eltávolítja a szolgáltatás címeit a felderítésből, majd megvárja ezt az időtartamot a szolgáltatás leállítása előtt.
-- **[Automatikus alfürt észlelése és kiegyensúlyozása](/azure/service-fabric/cluster-resource-manager-subclustering )**: az alfürtözés akkor történik meg, ha a különböző elhelyezési korlátozásokkal rendelkező szolgáltatások közös [terhelési metrikával](./service-fabric-cluster-resource-manager-metrics.md)rendelkeznek. Ha a különböző típusú csomópontok terhelése jelentősen eltér, a Service Fabric fürterőforrás-kezelő úgy véli, hogy a fürt kiegyensúlyozatlan, még akkor is, ha az elhelyezési korlátozások miatt a lehető legjobb egyensúlyt látja el. Ennek eredményeképpen megkísérli a fürt újraelosztását, ami esetleg szükségtelen szolgáltatási mozgásokat okoz (mivel az "egyensúlyhiány" nem lehet lényegesen javítható). Ettől a kiadástól kezdve a fürterőforrás-kezelő megkísérli automatikusan felderíteni ezeket a konfigurációkat, és megismerni, hogy mikor lehet a mozgással javítani az egyensúlyhiányt  
+- **[Automatikus alfürt észlelése és kiegyensúlyozása](./cluster-resource-manager-subclustering.md)**: az alfürtözés akkor történik meg, ha a különböző elhelyezési korlátozásokkal rendelkező szolgáltatások közös [terhelési metrikával](./service-fabric-cluster-resource-manager-metrics.md)rendelkeznek. Ha a különböző típusú csomópontok terhelése jelentősen eltér, a Service Fabric fürterőforrás-kezelő úgy véli, hogy a fürt kiegyensúlyozatlan, még akkor is, ha az elhelyezési korlátozások miatt a lehető legjobb egyensúlyt látja el. Ennek eredményeképpen megkísérli a fürt újraelosztását, ami esetleg szükségtelen szolgáltatási mozgásokat okoz (mivel az "egyensúlyhiány" nem lehet lényegesen javítható). Ettől a kiadástól kezdve a fürterőforrás-kezelő megkísérli automatikusan felderíteni ezeket a konfigurációkat, és megismerni, hogy mikor lehet a mozgással javítani az egyensúlyhiányt  
 - [**A másodlagos replikák eltérő áthelyezési díja**](./service-fabric-cluster-resource-manager-movement-cost.md): új VeryHigh váltunk ki, amely további rugalmasságot biztosít bizonyos helyzetekben, hogy meghatározza, hogy a másodlagos replikák esetében érdemes-e külön áthelyezési költségeket használni.
-- Engedélyezve van az [**élettartam**](/azure/service-fabric/probes-codepackage ) mintavételi mechanizmusa a tároló alkalmazások számára. Az élettartam mintavételi súgója bejelenti a tároló alkalmazás élettartamát, és ha nem válaszol időben, akkor a rendszer újraindítást eredményez.
+- Engedélyezve van az [**élettartam**](./probes-codepackage.md) mintavételi mechanizmusa a tároló alkalmazások számára. Az élettartam mintavételi súgója bejelenti a tároló alkalmazás élettartamát, és ha nem válaszol időben, akkor a rendszer újraindítást eredményez.
 - [**Futtatás befejezésre/egyszer a szolgáltatások számára**](./run-to-completion.md)**
 
 ### <a name="image-store-improvements"></a>lemezképtároló fejlesztése

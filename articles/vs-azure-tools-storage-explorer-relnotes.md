@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Storage Explorer kibocsátási megjegyzések
-description: A Microsoft Azure Storage Explorer kibocsátási megjegyzései
+description: Olvassa el a Microsoft Azure Storage Explorer legújabb verziójának kibocsátási megjegyzéseit. A korábbi verziók kibocsátási megjegyzései is megjelennek.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80351058"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828778"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
 
@@ -753,7 +753,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * A megszakított bérletek mostantól egyszerre csak egy blobon hajthatók végre. Emellett meg kell adnia annak a blobnak a nevét, amelynek a bérletét megszakította. Ez a változás azért történt, hogy csökkentse a bérlet véletlen megszakításának valószínűségét, különösen a virtuális gépek esetében. #394
 * Ha bármikor bejelentkezik a bejelentkezési problémákba, most már próbálkozhat a hitelesítés alaphelyzetbe állításával. Lépjen a "Súgó" menüre, és kattintson az "alaphelyzetbe állítás" gombra a funkció eléréséhez. #419
 
-### <a name="fix"></a>Hibajavítás
+### <a name="fix"></a>Javítás
 
 * Az erős felhasználói visszajelzés után az emulátor alapértelmezett csomópontja újra engedélyezve lett. Továbbra is hozzáadhat további Emulator-kapcsolatokat a csatlakozás párbeszédpanelen, de ha az emulátor az alapértelmezett portok használatára van konfigurálva, akkor az "emulátor * alapértelmezett portok" csomópontot is használhatja a "helyi & csatolt/Storage-fiókok" területen. #669
 * Storage Explorer többé nem teszi lehetővé a blob-metaadatok kezdő vagy záró szóközt tartalmazó értékének beállítását. #760

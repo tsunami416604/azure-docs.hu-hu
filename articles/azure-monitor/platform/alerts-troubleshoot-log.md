@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321105"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828455"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
@@ -190,7 +190,7 @@ A Azure Monitor a konfiguráció részeként létrehozott összes naplózási ri
 
 ## <a name="alert-rule-quota-was-reached"></a>Elérte a riasztási szabály kvótáját
 
-Az előfizetés és az erőforrás naplózott keresési riasztási szabályainak száma az [itt](https://docs.microsoft.com/azure/azure-monitor/service-limits)ismertetett kvóta-korlátozások hatálya alá tartozik.
+Az előfizetés és az erőforrás naplózott keresési riasztási szabályainak száma az [itt](../service-limits.md)ismertetett kvóta-korlátozások hatálya alá tartozik.
 
 ### <a name="recommended-steps"></a>Javasolt lépések
     
@@ -201,7 +201,7 @@ Ha elérte a kvóta korlátját, a következő lépések segíthetnek a problém
 
     - Azon előfizetések azonosítói, amelyeknél növelni kívánja a kvótakorlátokat
     - A kvóta növelésének oka
-    - A kvóta növelésének erőforrás-típusa: **log Analytics**, **Application Insights** stb.
+    - A kvóta növelésének erőforrás-típusa: **log Analytics**, **Application Insights**stb.
     - Kért kvótakorlát
 
 
@@ -226,4 +226,3 @@ Ha elérte a kvóta korlátját, a következő lépések segíthetnek a problém
 - További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
 - További információ a [Application Insightsról](../log-query/log-query-overview.md).
 - További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).
-

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514379"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827894"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
 A tömeges adatmennyiségeket kétféleképpen is áttelepítheti Azure File Syncba:
@@ -89,6 +89,13 @@ Tiltsa le az offline adatátviteli módot csak akkor, ha az állapot be van **t�
 > [!IMPORTANT]
 > Miután letiltotta az offline adatátviteli módot, nem engedélyezheti újra, még akkor is, ha a tömeges áttelepítésből származó átmeneti megosztás továbbra is elérhető.
 
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>A felhőben Azure File Sync és előre összeállított fájlok
+
+Ha egy Azure-fájlmegosztás más módon, például a DataBox-n keresztül, a AzCopy-on keresztül, a RoboCopy egy Felhőbeli biztonsági mentésből vagy bármilyen más módszerből áll, akkor továbbra is követnie kell a jelen cikkben ismertetett [Offline adatátvitel folyamatot](#process-for-offline-data-transfer) . Csak a DataBox kell figyelmen kívül hagynia, mint a fájlok felhőbe való áthelyezésének módszerét. Azonban fontos, hogy a fájlok előkészítését továbbra is egy *átmeneti megosztásban* , nem pedig a végső, Azure file Sync csatlakoztatott megosztáson kövesse.
+
+> [!WARNING]
+> **Kövesse a fájlok előkészítésének folyamatát egy átmeneti megosztásban, nem pedig a végső**, Azure file Sync csatlakoztatott megosztást. Ha nem, a fájlok ütközései megjelenhetnek (a fájlok is tárolódnak), valamint az élő kiszolgálón törölt fájlok is visszatérhetnek, ha még léteznek a régebbi, kihelyezett fájlok készletében. Emellett a mappák módosításai egyesítve lesznek egymással, így a hiba miatt nagyon nehéz elkülöníteni a névteret.
+
 ## <a name="next-steps"></a>További lépések
 - [Azure File Sync központi telepítésének megtervezése](storage-sync-files-planning.md)
-- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+- [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

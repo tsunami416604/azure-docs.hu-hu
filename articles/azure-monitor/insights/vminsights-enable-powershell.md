@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328233"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824579"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>Azure Monitor for VMs engedélyezése a PowerShell használatával
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs Azure-beli virtuális gépeken a PowerShell használatával. Ez az eljárás a következő módon használható:
@@ -35,7 +35,7 @@ Több virtuális gép vagy virtuálisgép-méretezési csoport Azure Monitor for
 
 A parancsfájl minden egyes virtuális gép vagy virtuálisgép-méretezési csoport esetében ellenőrzi, hogy a Log Analytics ügynök és a függőségi ügynök virtuálisgép-bővítménye már telepítve van-e. Ha mindkét bővítmény telepítve van, a parancsfájl megpróbálja újratelepíteni. Ha mindkét bővítmény nincs telepítve, a parancsfájl telepíti őket.
 
-Győződjön meg arról, hogy a Azure PowerShell-modult használja az az Version 1.0.0 vagy újabb verzióval, és a `Enable-AzureRM` kompatibilitási aliasok engedélyezve vannak. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
+Győződjön meg arról, hogy a Azure PowerShell-modult használja az az Version 1.0.0 vagy újabb verzióval, és a `Enable-AzureRM` kompatibilitási aliasok engedélyezve vannak. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
 A parancsfájl argumentumának részleteiről és a példa használatáról a Futtatás gombra kattintva kérheti le a listát `Get-Help` .
 

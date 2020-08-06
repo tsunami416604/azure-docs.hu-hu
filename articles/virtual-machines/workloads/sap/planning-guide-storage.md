@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042313"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825004"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -146,7 +146,7 @@ Az SAP számítási funkciói mátrixa a következőhöz hasonlóan néz ki:
 | Késés | alacsony – közepes | - |
 | IOPS SLA | IGEN | - |
 | IOPS lineáris kapacitás | félig lineáris zárójelben  | [Felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| IOPS maximális száma lemezenként | 20 000 [a lemez méretétől függ](https://azure.microsoft.com/pricing/details/managed-disks/) | A [virtuális gépek korlátozásait](../../linux/sizes.md) is figyelembe kell venni |
+| IOPS maximális száma lemezenként | 20 000 [a lemez méretétől függ](https://azure.microsoft.com/pricing/details/managed-disks/) | A [virtuális gépek korlátozásait](../../sizes.md) is figyelembe kell venni |
 | Átviteli sebesség (SLA) | IGEN | - |
 | Lineáris átviteli sebesség a kapacitásig | félig lineáris zárójelben | [Felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | HANA Certified | IGEN | [kifejezetten SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
@@ -335,11 +335,11 @@ A helyi forgatókönyvekhez képest a kiválasztott virtuálisgép-típus az Ön
 
 | Tárolási típus| Linux | Windows | Megjegyzések |
 | --- | --- | --- | --- |
-| Standard HDD | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md) | Valószínűleg nehéz megérinteni a közepes vagy nagyméretű virtuális gépek tárolási korlátait |
-| Standard SSD | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md) | Valószínűleg nehéz megérinteni a közepes vagy nagyméretű virtuális gépek tárolási korlátait |
-| Prémium szintű Storage | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md) | Könnyen elérheti a IOPS vagy a tárolási sebességű virtuális gépek korlátait a tárolási konfigurációval |
-| Ultravékony lemezes tárolás | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md) | Könnyen elérheti a IOPS vagy a tárolási sebességű virtuális gépek korlátait a tárolási konfigurációval |
-| Azure NetApp Files | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../linux/sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md) | A tárolási forgalom hálózati átviteli sávszélességet és nem tárolási sávszélességet használ. |
+| Standard HDD | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | Valószínűleg nehéz megérinteni a közepes vagy nagyméretű virtuális gépek tárolási korlátait |
+| Standard SSD | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | Valószínűleg nehéz megérinteni a közepes vagy nagyméretű virtuális gépek tárolási korlátait |
+| Prémium szintű Storage | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | Könnyen elérheti a IOPS vagy a tárolási sebességű virtuális gépek korlátait a tárolási konfigurációval |
+| Ultravékony lemezes tárolás | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | Könnyen elérheti a IOPS vagy a tárolási sebességű virtuális gépek korlátait a tárolási konfigurációval |
+| Azure NetApp Files | [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md) | A tárolási forgalom hálózati átviteli sávszélességet és nem tárolási sávszélességet használ. |
 
 Korlátozásként vegye figyelembe a következőket:
 

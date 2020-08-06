@@ -1,6 +1,6 @@
 ---
 title: Méretezhető és teljesítményű táblák tervezése az Azure Table Storage-ban. | Microsoft Docs
-description: Méretezhető és teljesítményű táblák tervezése az Azure Table Storage-ban.
+description: Megtudhatja, hogyan tervezhet méretezhető és teljesítményű táblákat az Azure Table Storage-ban. Tekintse át a táblák partícióit, az entitás-csoportok tranzakcióit, valamint a kapacitás és a Cost szempontjait.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656913"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824409"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagy teljesítményű táblák tervezése
 
@@ -37,7 +37,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Időbélyeg</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>

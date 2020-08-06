@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057551"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827231"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával
 
@@ -36,7 +36,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 2. **Erőforráscsoportok** kiválasztása
 
     ![erőforráscsoport hozzáadása](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. Írja be a következő értékeket:
 
    - **Előfizetés**: Válassza ki az Azure-előfizetést. 
@@ -62,7 +62,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 ## <a name="open-resource-groups"></a>Erőforráscsoportok megnyitása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza az **Erőforráscsoportok** lehetőséget.
+2. Válassza az **erőforráscsoportok**lehetőséget.
 3. Válassza ki a megnyitni kívánt erőforráscsoportot.
 
 ## <a name="delete-resource-groups"></a>Erőforráscsoportok törlése
@@ -105,7 +105,7 @@ További információ a sablonok exportálásáról: [egy-és többerőforrásos
 
 ## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportok hozzáférésének kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md) az Azure-beli erőforrásokhoz való hozzáférés kezelésének módja. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 

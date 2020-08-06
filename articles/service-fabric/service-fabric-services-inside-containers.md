@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan tárolóba helyezése a Service Fabric Reliable
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186afb87b4668ad575208beeeb19643e6a11cedd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466185"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824545"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és a Reliable Actors tárolóba helyezése Windowson
 
@@ -93,7 +93,7 @@ Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli f
    </Policies>
    ```
 
-9. A tároló-elkülönítési mód konfigurálásával kapcsolatban lásd az [elkülönítési mód konfigurálása]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)című témakört. A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek azt mutatják be, hogyan van megadva az elkülönítési mód az alkalmazás jegyzékfájljában.
+9. A tároló-elkülönítési mód konfigurálásával kapcsolatban lásd az [elkülönítési mód konfigurálása]( ./service-fabric-get-started-containers.md#configure-isolation-mode)című témakört. A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek azt mutatják be, hogyan van megadva az elkülönítési mód az alkalmazás jegyzékfájljában.
 
    ```xml
    <Policies>

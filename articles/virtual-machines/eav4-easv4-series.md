@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 59dbe7f1a41c7241843362018909e9b65efe7b0e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 484539a9c41f055d2b215e6f5a1326d06faca82d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292440"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829220"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 és Easv4 sorozat
 
@@ -83,7 +83,7 @@ A Easv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron a
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>További lépések
 

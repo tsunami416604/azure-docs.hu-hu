@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525466"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827418"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -77,7 +77,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 Bizonyos Microsoft-dokumentációk többek között egy kicsit másképpen ismertetik a létesítmények közötti forgatókönyveket, különösen a magas rendelkezésre állást biztosító adatbázis-konfigurációk esetében Az SAP-vel kapcsolatos dokumentumok esetében a létesítmények közötti forgatókönyv a telephelyek közötti vagy a privát [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -kapcsolatra, valamint egy, a helyszíni és az Azure közötti elosztott SAP-környezetre vezethető vissza.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 Az Azure-beli SAP-munkaterheléseken más cikkek is elérhetők. Az Azure-beli SAP-számítási [feladatok első lépései: első lépések](./get-started.md) , majd válassza ki a kívánt területét.
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területek tekintetében.
@@ -174,7 +174,7 @@ Az Azure Storage-fiók egy adminisztratív szerkezet, valamint a korlátozások 
 
 A standard szintű tároláshoz ne feledje, hogy a Storage-fiók IOPS korlátja van. Tekintse meg a **teljes kérelmek arányát** tartalmazó sort az [Azure Storage skálázhatósági és teljesítményi célpontjai](../../../storage/common/scalability-targets-standard-account.md)című cikkben. Az Azure-előfizetéshez tartozó Storage-fiókok száma is kezdeti korláttal rendelkezik. A virtuális merevlemezek elosztása a nagyobb SAP-környezethez különböző tárolási fiókok között, hogy elkerülje a tárolási fiókok korlátait. Ez unalmas feladat, ha több száz virtuális géppel dolgozik, és több mint ezer VHD-t használ.
 
-Mivel az adatbázis-kezelők standard szintű tárolását az SAP-munkaterhelésekkel együtt nem ajánlott használni, a standard szintű tárolásra vonatkozó referenciák és javaslatok erre a rövid [cikkre korlátozódnak.](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
+Mivel az adatbázis-kezelők standard szintű tárolását az SAP-munkaterhelésekkel együtt nem ajánlott használni, a standard szintű tárolásra vonatkozó referenciák és javaslatok erre a rövid [cikkre korlátozódnak.](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
 
 A Microsoft a különböző Azure Storage-fiókokban lévő virtuális merevlemezek tervezésével és üzembe helyezésével kapcsolatos adminisztratív munka elkerülése érdekében az [azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) 2017-ben mutatkozott be. A Managed Disks szolgáltatás a standard Storage és a Premium Storage esetében érhető el. A felügyelt lemezek fő előnyei a nem felügyelt lemezekhez képest a következők:
 
@@ -205,7 +205,7 @@ A következő javaslatok ezeket az I/O-tulajdonságokat feltételezik a szabván
 
 A standard szintű tároláshoz a lehetséges gyorsítótár-típusok a következők:
 
-* Egyik sem
+* Nincsenek
 * Olvasás
 * Olvasás/írás
 
@@ -213,7 +213,7 @@ A konzisztens és determinisztikus teljesítmény érdekében állítsa be a sza
 
 A Premium Storage esetében a következő gyorsítótárazási lehetőségek léteznek:
 
-* Egyik sem
+* Nincsenek
 * Olvasás
 * Olvasás/írás
 * Nincs + írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
@@ -327,7 +327,7 @@ A terheléselosztó a DirectServerReturn lehetőséget kínálja. Ha ez a beáll
 
 Azt javasoljuk, hogy a DirectServerReturn az SAP-alkalmazási réteg és az adatbázis-kezelő réteg között elhelyezni kívánt terheléselosztó kombinációjában konfigurálja. Ez a konfiguráció csökkenti a két réteg közötti hálózati késést.
 
-Ennek a konfigurációnak a SQL Server always on használatával történő beállításával kapcsolatos példát a [ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)című témakörben talál.
+Ennek a konfigurációnak a SQL Server always on használatával történő beállításával kapcsolatos példát a [ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)című témakörben talál.
 
 Ha közzétett GitHub JSON-sablonokat használ az SAP-infrastruktúra Azure-beli üzembe helyezésére, tanulmányozza ezt a [sablont egy SAP 3 szintű rendszerhez](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). Ebben a sablonban a terheléselosztó helyes beállításait is láthatja.
 
@@ -362,7 +362,7 @@ Az SAP-alkalmazások Azure-beli virtuális gépeken történő éles használat�
 További információ a SAPOSCOL és az SAP-állomás ügynökeit tároló összetevők üzembe helyezéséről, valamint ezeknek az összetevőknek a életciklus-kezeléséről: [telepítési útmutató][deployment-guide].
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egy adott adatbázis-kezelő rendszerről további információt a következő témakörben talál:
 
 - [SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)

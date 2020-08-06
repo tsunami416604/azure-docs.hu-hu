@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage-események küldése a webes végpontnak – PowerShell | Microsoft Docs
-description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
+description: Használja Azure Event Grid a blob Storage-eseményekre való előfizetésre, az események aktiválására és az eredmény megtekintésére. A Azure PowerShell használatával átirányíthatja a tárolási eseményeket egy webes végpontra.
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,12 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 809ab593d4d3f58fa3c91b896e5df3a0db7865f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68847157"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824511"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: tárolási események továbbítása webes végponthoz a PowerShell használatával
 
@@ -45,7 +45,7 @@ Ez a példa **westus2** használ, és egy változóban tárolja a kijelölést a
 $location = "westus2"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -161,7 +161,7 @@ Set-AzStorageBlobContent -File gridTestFile.txt -Container $containerName -Conte
 
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha azt tervezi, hogy a Storage-fiókkal és az esemény-előfizetéssel folytatja a munkát, ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő parancs használatával törölheti a cikkben létrehozott erőforrásokat.
 
 ```powershell

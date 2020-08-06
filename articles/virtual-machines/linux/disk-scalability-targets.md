@@ -7,18 +7,18 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f0345df783a3bf3398c8be6b04dbc5671855f6be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 33a0df73e280fc195a7ccba18c857b2ebdcbe31a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502639"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825395"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Méretezhetőségi és teljesítménycélok Linux rendszerű virtuálisgép-lemezekhez
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-További részletekért tekintse meg a Linux rendszerű [virtuális gépek méretét](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+További részletekért tekintse meg a Linux rendszerű [virtuális gépek méretét](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
 
@@ -31,6 +31,6 @@ A csillaggal jelölt méretek jelenleg előzetes verzióban érhetők el. Tekint
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md)

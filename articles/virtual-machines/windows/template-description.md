@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283231"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827452"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális számítógépek egy Azure Resource Manager-sablonban
 
@@ -274,7 +274,7 @@ A tulajdonság beállításához a hálózati adapternek léteznie kell. Ezért 
 
 A virtuális gépek erőforrásának definiálásakor több profil elemet is használ a rendszer. Néhány szükséges, néhányat pedig nem kötelező megadni. Például a hardwareProfile, a osProfile, a storageProfile és a networkProfile elem megadása kötelező, de a diagnosticsProfile megadása nem kötelező. Ezek a profilok olyan beállításokat határoznak meg, mint például:
    
-- [méret](sizes.md)
+- [méret](../sizes.md)
 - [név](/azure/architecture/best-practices/resource-naming) és hitelesítő adatok
 - lemez-és [operációsrendszer-beállítások](cli-ps-findimage.md)
 - [hálózati adapter](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ Ha a virtuális gépet felügyelt lemezképből szeretné létrehozni, módosít
 
 ### <a name="attach-data-disks"></a>Adatlemezek csatolása
 
-Szükség esetén adatlemezeket is hozzáadhat a virtuális gépekhez. A [lemezek száma](sizes.md) a használt operációsrendszer-lemez méretétől függ. Ha a virtuális gépek mérete Standard_DS1_v2 értékre van állítva, akkor a hozzájuk tartozó adatlemezek maximális száma kettő. A példában egy felügyelt adatlemez kerül be az egyes virtuális gépekbe:
+Szükség esetén adatlemezeket is hozzáadhat a virtuális gépekhez. A [lemezek száma](../sizes.md) a használt operációsrendszer-lemez méretétől függ. Ha a virtuális gépek mérete Standard_DS1_v2 értékre van állítva, akkor a hozzájuk tartozó adatlemezek maximális száma kettő. A példában egy felügyelt adatlemez kerül be az egyes virtuális gépekbe:
 
 ```json
 "dataDisks": [
@@ -439,7 +439,7 @@ A telepített bővítmények állapotát a portál bővítmények beállításai
 
 A bővítmény információit a **Get-AzVMExtension** PowerShell-paranccsal, a virtuálisgép- **BŐVÍTMÉNY Get** Azure CLI-paranccsal vagy a **bővítmény információinak beolvasása** REST API is lekérheti.
 
-## <a name="deployments"></a>Üzemelő példányok
+## <a name="deployments"></a>Központi telepítés
 
 A sablonok központi telepítésekor az Azure nyomon követi a csoportként telepített erőforrásokat, és automatikusan hozzárendel egy nevet ehhez a telepített csoporthoz. A központi telepítés neve megegyezik a sablon nevével.
 

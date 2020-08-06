@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116964"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825956"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
 > [!NOTE]
-> A "felhasználók" kifejezés egy nagy kapacitású-(Citus-) kiszolgálócsoport felhasználóira hivatkozik. Az Azure-előfizetések felhasználóinak és a hozzájuk tartozó jogosultságoknak a megismeréséhez látogasson el az [Azure szerepköralapú hozzáférés-vezérlés (RBAC) című cikkre](../role-based-access-control/built-in-roles.md) , vagy tekintse át a [szerepkörök testreszabását](../role-based-access-control/custom-roles.md)
+> A "felhasználók" kifejezés egy nagy kapacitású-(Citus-) kiszolgálócsoport felhasználóira hivatkozik. Az Azure-előfizetések felhasználóinak és azok jogosultságának megismeréséhez látogasson el az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) című cikkre](../role-based-access-control/built-in-roles.md) , vagy tekintse át a [szerepkörök testreszabását](../role-based-access-control/custom-roles.md)ismertető cikket.
 
 ## <a name="the-server-admin-account"></a>A kiszolgálói rendszergazdafiók
 
@@ -50,7 +50,7 @@ Ahogy említettük, a `citus` rendszergazdai fióknak nincs engedélye további 
 
    ![A szerepkörök lap](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. Adja meg a szerepkör nevét és jelszavát. Kattintson a **Save** (Mentés) gombra.
+2. Adja meg a szerepkör nevét és jelszavát. Kattintson a **Mentés** gombra.
 
    ![Szerepkör hozzáadása](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
@@ -81,7 +81,7 @@ Egy felhasználó frissítéséhez keresse fel a nagy kapacitású-kiszolgálóc
 
 A `citus` szerepkör jogosultsággal rendelkezik, és nem törölhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy csatlakozhasson a kapcsolódáshoz: [nagy kapacitású-(Citus-) tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-hyperscale-manage-firewall-using-portal.md).
 

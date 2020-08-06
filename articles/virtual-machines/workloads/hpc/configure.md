@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c49286f370691c39c3d14d589f2657d6e0bb3c04
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542331"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825140"
 ---
 # <a name="configure-and-optimize-vms"></a>Virtuális gépek konfigurálása és optimalizálása
 
 Ez a cikk ismert technikákat használ a InfiniBand-kompatibilis [H-sorozat](../../sizes-hpc.md) és az [N sorozatú](../../sizes-gpu.md) virtuális gépek HPC-hoz történő konfigurálásához és optimalizálásához.
 
 ## <a name="vm-images"></a>VM-lemezképek
-A InfiniBand-kompatibilis virtuális gépeken a megfelelő illesztőprogramok szükségesek a RDMA engedélyezéséhez. Linux rendszeren a piactéren elérhető CentOS-HPC virtuálisgép-lemezképek előre konfigurálva vannak a megfelelő illesztőprogramokkal. Az Ubuntu-alapú virtuálisgép-lemezképek a megfelelő illesztőprogramokkal konfigurálhatók az [itt leírt utasítások](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)alapján. Azt is javasoljuk, hogy hozzon létre egyéni virtuálisgép- [rendszerképeket](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) a megfelelő illesztőprogramokkal és konfigurációval, és használja azokat ismétlődően.
+A InfiniBand-kompatibilis virtuális gépeken a megfelelő illesztőprogramok szükségesek a RDMA engedélyezéséhez. Linux rendszeren a piactéren elérhető CentOS-HPC virtuálisgép-lemezképek előre konfigurálva vannak a megfelelő illesztőprogramokkal. Az Ubuntu-alapú virtuálisgép-lemezképek a megfelelő illesztőprogramokkal konfigurálhatók az [itt leírt utasítások](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)alapján. Azt is javasoljuk, hogy hozzon létre egyéni virtuálisgép- [rendszerképeket](../../linux/tutorial-custom-images.md) a megfelelő illesztőprogramokkal és konfigurációval, és használja azokat ismétlődően.
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM-rendszerképek
 A RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances), a CentOS-HPC 6,5-es vagy újabb verziójának használata esetén a piactéren legfeljebb 7,5-ig használhatók a piactéren. A [H16 sorozatú virtuális gépek](../../h-series.md)esetében például a 7,1 és a 7,5 verziók használata javasolt. Ezek a virtuálisgép-rendszerképek előre be vannak töltve a RDMA és az Intel MPI 5,1-es verziójának közvetlen hálózati illesztőprogramjaival.
@@ -53,7 +53,7 @@ A virtuális gépen a jobb teljesítmény érdekében a következő választhat�
 
 ### <a name="update-lis"></a>LIS frissítése
 
-Ha a funkcionalitáshoz vagy a teljesítményhez szükséges, a [Linux Integration Services (lis) illesztőprogramjai](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) telepíthetők vagy frissíthetők a támogatott operációsrendszer-disztribúciókban, különösen az egyéni lemezkép vagy egy régebbi operációsrendszer-verzió (például a CentOS/RHEL 6. x vagy a 7. x korábbi verziója) használatával telepíthetők.
+Ha a funkcionalitáshoz vagy a teljesítményhez szükséges, a [Linux Integration Services (lis) illesztőprogramjai](../../linux/endorsed-distros.md) telepíthetők vagy frissíthetők a támogatott operációsrendszer-disztribúciókban, különösen az egyéni lemezkép vagy egy régebbi operációsrendszer-verzió (például a CentOS/RHEL 6. x vagy a 7. x korábbi verziója) használatával telepíthetők.
 
 ```bash
 wget https://aka.ms/lis

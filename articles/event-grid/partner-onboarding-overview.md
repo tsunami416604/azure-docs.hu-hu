@@ -3,12 +3,12 @@ title: Bevezető Azure Event Grid partnerként
 description: Azure Event Grid partneri témakör beírása. Ismerje meg az erőforrás-modellt és a közzétételi folyamatot a partneri témakörökben.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461255"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826789"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Bevezető Azure Event Grid partnerként
 
@@ -91,7 +91,7 @@ A következő erőforrás-modell a partneri témakörökben található.
 ### <a name="partner-topic-types"></a>Partneri témák típusai
 * Erőforrás`partnerTopicTypes`
 * Használja: ügyfelek
-* Leírás: a partneri témák olyan tenantwide, amelyek lehetővé teszik, hogy az ügyfelek felfedezzék a jóváhagyott partneri témakörök listáját. Az URL-cím így néz ki:https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Leírás: a partneri témák a bérlői szintű erőforrástípusok, amelyek lehetővé teszik, hogy az ügyfelek felfedezzék a jóváhagyott partneri témakörök listáját. Az URL-cím így néz ki:https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Hatókör: globális
 
 ## <a name="publish-events-to-event-grid"></a>Események közzététele Event Grid
@@ -150,10 +150,10 @@ A partnerNamespace-végpontra való közzététel után választ kap. A válasz 
 | Helytelen végpont                 | 404 Nem található         |
 | Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM-sablon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM-sablon](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sablon sémája](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API-k](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLI-bővítmény](/cli/azure/ext/eventgrid/?view=azure-cli-latest)

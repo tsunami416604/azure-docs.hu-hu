@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359160"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828795"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
 Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
@@ -104,12 +104,12 @@ A szolgáltatási példányok törlésekor vegye figyelembe a következőket:
 
 [//]: # (A RBAC szakasz kezdete)
 ## <a name="manage-access-with-role-based-access-control"></a>Hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel
-A Azure AD Connect Health [szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) hozzáférést biztosít a globális rendszergazdáktól eltérő felhasználókhoz és csoportokhoz. A RBAC szerepköröket rendel hozzá a kívánt felhasználókhoz és csoportokhoz, és lehetővé teszi a címtárban lévő globális rendszergazdák korlátozását.
+A Azure AD Connect Health [Azure szerepköralapú hozzáférés-vezérlése (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) hozzáférést biztosít a felhasználók és csoportok számára a globális rendszergazdáktól eltérő csoportokhoz. A RBAC szerepköröket rendel hozzá a kívánt felhasználókhoz és csoportokhoz, és lehetővé teszi a címtárban lévő globális rendszergazdák korlátozását.
 
 ### <a name="roles"></a>Szerepkörök
 Azure AD Connect Health a következő beépített szerepköröket támogatja:
 
-| Szerepkör | Engedélyek |
+| Role | Engedélyek |
 | --- | --- |
 | Tulajdonos |A tulajdonosok *kezelhetik a hozzáférést* (például hozzárendelhet egy szerepkört egy felhasználóhoz vagy csoportjához), *megtekintheti az összes információt* (például a riasztások megtekintése) a portálról, és *módosíthatja a beállításokat* (például az e-mailes értesítéseket) a Azure ad Connect Healthon belül. <br>Alapértelmezés szerint az Azure AD globális rendszergazdái ehhez a szerepkörhöz vannak rendelve, és ez nem módosítható. |
 | Közreműködő |A közreműködők megtekinthetik az *összes információt* (például a riasztások megtekintése) a portálról, és *módosíthatják a beállításokat* (például az e-mailes értesítéseket) a Azure ad Connect Healthon belül. |
@@ -133,10 +133,10 @@ Ha engedélyezni szeretné, hogy a felhasználói hozzáférés a Azure AD Conne
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: felhasználók és csoportok hozzáadása és szerepkörök társítása
 1. A **Konfigurálás** szakaszban kattintson a **felhasználók**elemre.<br>
    ![Képernyőkép a Azure AD Connect Health Resource Sidebarról](./media/how-to-connect-health-operations/startRBAC.png)
-2. Válassza a **Hozzáadás** elemet.
+2. Válassza a **Hozzáadás** lehetőséget.
 3. A **szerepkör kiválasztása** panelen válasszon ki egy szerepkört (például **tulajdonos**).<br>
    ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_add.png)
-4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** gombra.
+4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** elemre.
    ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. Válassza az **OK** lehetőséget.<br>
 6. A szerepkör-hozzárendelés befejezése után a felhasználók és csoportok megjelennek a listában.<br>

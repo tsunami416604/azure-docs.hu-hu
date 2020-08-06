@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057619"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824494"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához (előzetes verzió)
 
-Ha [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)Azure-ügyfelet használ, megadhat egy másik felhasználói vagy egyszerű szolgáltatást a fiókjához tartozó előfizetések létrehozásához. Ebből a cikkből megtudhatja, hogyan használhatja a [szerepköralapú Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) az előfizetések létrehozására, valamint az előfizetés-létrehozás naplózására. A megosztani kívánt fiók tulajdonosi szerepkörének kell lennie.
+Ha [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)Azure-ügyfelet használ, megadhat egy másik felhasználói vagy egyszerű szolgáltatást a fiókjához tartozó előfizetések létrehozásához. Ebből a cikkből megtudhatja, hogyan használhatja az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) az előfizetések létrehozására, valamint az előfizetés-létrehozás naplózására. A megosztani kívánt fiók tulajdonosi szerepkörének kell lennie.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

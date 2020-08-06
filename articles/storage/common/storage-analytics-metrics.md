@@ -1,6 +1,6 @@
 ---
 title: Azure Storage Analytics metrikák (klasszikus)
-description: Ismerje meg, hogyan használhatja Storage Analytics metrikákat az Azure Storage-ban.
+description: Ismerje meg, hogyan használhatja Storage Analytics metrikákat az Azure Storage-ban. Ismerje meg a tranzakciók és a kapacitás mérőszámait, a metrikák tárolási módját, a metrikák engedélyezését és egyebeket.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087271"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828047"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
 
@@ -146,7 +146,7 @@ A Storage-fiókja Azure Portal menüjének **figyelés (klasszikus)** szakaszáb
 
 Ha le szeretné tölteni a mérőszámokat a hosszú távú tároláshoz, vagy helyileg kívánja elemezni őket, egy eszközt kell használnia, vagy írnia kell egy kódot a táblák olvasásához. Az elemzéshez le kell töltenie a perc mérőszámait. A táblák nem jelennek meg, ha a Storage-fiókban lévő összes táblát listázza, de közvetlenül a név alapján érheti el őket. Számos Storage-szemöldök eszköz ismeri ezeket a táblázatokat, és lehetővé teszi, hogy közvetlenül megtekintse őket. Az elérhető eszközök listáját az [Azure Storage-ügyféleszközök](/azure/storage/storage-explorers)című témakörben tekintheti meg.
 
-|Mérőszámok|Táblák nevei|Jegyzetek| 
+|Mérőszámok|Táblák nevei|Megjegyzések| 
 |-|-|-|  
 |Óránkénti mérőszámok|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|A 2013. augusztus 15. előtti verziókban ezek a táblázatok a következőképpen ismertek:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> A file Service metrikái a 2015-as verziótól kezdődően érhetők el.|  
 |Perc mérőszámok|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Csak PowerShell használatával vagy programozott módon engedélyezhető.<br /><br /> A file Service metrikái a 2015-as verziótól kezdődően érhetők el.|  

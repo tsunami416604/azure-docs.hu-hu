@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532594"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826704"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -112,7 +112,7 @@ Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Hozzáférés-vezérlési Szerepkörök hozzáadása a fiókhoz
 
-Az Azure HPC cache [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) használ, hogy engedélyezze a gyorsítótár-szolgáltatás számára az Azure Blob Storage-célokhoz való hozzáférést a Storage-fiókhoz.
+Az Azure HPC cache az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) használatával engedélyezi a gyorsítótár-szolgáltatás számára, hogy hozzáférjen az Azure Blob Storage-célokhoz tartozó Storage-fiókhoz.
 
 A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) és a [Storage blob adatközreműködőit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
 
@@ -147,7 +147,7 @@ Az Azure-szerepkörök hozzáadásának lépései:
 
 BLOB Storage-cél hozzáadása előtt győződjön meg arról, hogy a gyorsítótár megfelelő szerepkörrel rendelkezik a Storage-fiók eléréséhez, és hogy a tűzfalbeállítások lehetővé teszik a tárolási cél létrehozását.
 
-Az Azure HPC cache [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/index.yml) használ, hogy engedélyezze a gyorsítótár-szolgáltatás számára az Azure Blob Storage-célokhoz való hozzáférést a Storage-fiókhoz.
+Az Azure HPC cache az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával engedélyezi a gyorsítótár-szolgáltatás számára, hogy hozzáférjen az Azure Blob Storage-célokhoz tartozó Storage-fiókhoz.
 
 A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](../role-based-access-control/built-in-roles.md#storage-account-contributor) és a [Storage blob adatközreműködőit](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
 
@@ -220,9 +220,9 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | None                     |
+| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincsenek                     |
 | 15%-nál nagyobb írások       | Olvasás/írás   | Soha                 | 1 óra                   |
-| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | None                     |
+| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincsenek                     |
 
 ### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
 

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327480"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824562"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -110,7 +110,7 @@ A metrikai riasztások alapértelmezés szerint állapottal rendelkeznek, ezért
 
 Metrika-riasztási szabály létrehozásakor a metrika neve a [metrika-definíciók API](/rest/api/monitor/metricdefinitions/list) -val lesz érvényesítve, hogy biztosan létezik. Bizonyos esetekben riasztási szabályt kell létrehoznia egy egyéni metrika esetében még a kibocsátása előtt is. Ha például egy ARM-sablonnal hoz létre egy Application Insights-erőforrást, amely egy egyéni metrikát fog kibocsátani, valamint egy riasztási szabályt, amely figyeli a metrikát.
 
-Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metrika definícióinak érvényesítése során, használhatja a *skipMetricValidation* paramétert a riasztási szabály feltételek szakaszában, ami miatt a metrika érvényesítése ki lesz hagyva. Tekintse meg az alábbi példát, amely bemutatja, hogyan használhatja ezt a paramétert egy ARM-sablonban (teljes ARM-sablon mintákhoz metrikus riasztási szabályok létrehozásához [).]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)
+Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metrika definícióinak érvényesítése során, használhatja a *skipMetricValidation* paramétert a riasztási szabály feltételek szakaszában, ami miatt a metrika érvényesítése ki lesz hagyva. Tekintse meg az alábbi példát, amely bemutatja, hogyan használhatja ezt a paramétert egy ARM-sablonban (teljes ARM-sablon mintákhoz metrikus riasztási szabályok létrehozásához [).]( ./alerts-metric-create-templates.md)
 
 ```json
 "criteria": {
@@ -247,4 +247,3 @@ Például:
 ## <a name="next-steps"></a>További lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).
-

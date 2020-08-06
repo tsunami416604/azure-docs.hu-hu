@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421059"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827622"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Virtuális gépek méretei az Azure-ban
 
@@ -31,7 +31,7 @@ Ez a cikk az alkalmazások és munkaterhelések futtatásához használható Azu
 - A különböző méretek díjszabásával kapcsolatos információkért tekintse meg a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) vagy a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)díjszabási oldalait.
 - Az Azure-régiókban található virtuálisgép-méretek elérhetőségét lásd: [régiók által elérhető termékek](https://azure.microsoft.com/regions/services/).
 - Az Azure-beli virtuális gépekre vonatkozó általános korlátokat lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- További információ arról, hogy az Azure Hogyan nevezi el a virtuális gépeket: az [Azure virtuálisgép-méretek elnevezési konvenciói](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+- További információ arról, hogy az Azure Hogyan nevezi el a virtuális gépeket: az [Azure virtuálisgép-méretek elnevezési konvenciói](./vm-naming-conventions.md).
 
 ## <a name="rest-api"></a>REST API
 
@@ -55,7 +55,7 @@ További információ a Windows rendszerű virtuális gépek számítási teljes
 
 [!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a rendelkezésre álló különböző virtuálisgép-méretekről:
 

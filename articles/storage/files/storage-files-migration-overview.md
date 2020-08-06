@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660758"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827860"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -81,7 +81,7 @@ A hivatkozás nélküli forgatókönyv még nem rendelkezik közzétett áttelep
 | Forrás | Cél: </br>Hibrid üzembe helyezés | Cél: </br>Csak felhőalapú központi telepítés |
 |:---|:--|:--|
 | | Eszköz kombinációja:| Eszköz kombinációja: |
-| Windows Server 2012 R2 és újabb verziók | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync és Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync és Data Box</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 és újabb verziók | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync és Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[A felhőben Azure File Sync és előre összeállított fájlok](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync és Data Box</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 és korábbi verziók | <ul><li>Azure File Sync és Data Box</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li></ul> | <ul><li>Azure File Sync és Storage áttelepítési szolgáltatás</li><li>RoboCopy</li></ul> |
 | Hálózatra csatlakoztatott tároló (NAS) | <ul><li>[Azure File Sync és RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux vagy Samba | <ul><li>[Azure File Sync és RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
@@ -152,5 +152,5 @@ Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rét
 További információ a jelen cikkben említett Azure Files technológiákról:
 
 * [Az Azure file share áttekintése](storage-files-introduction.md)
-* [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
+* [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 * [Azure File Sync: felhőalapú rétegek](storage-sync-cloud-tiering.md)
