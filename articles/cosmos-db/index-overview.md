@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85798153"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760872"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
@@ -174,7 +174,6 @@ Mindaddig, amíg az egyik szűrési predikátum az egyik indexet használja, a l
 
 * Felgyorsíthatja a lekérdezéseket, és elkerülheti a tárolók teljes vizsgálatát, ha olyan függvényeket használ, amelyek nem használják az indexet (például tartalmazza) az indexet használó további szűrési predikátumok hozzáadásával. A Filter záradékok sorrendje nem fontos. A lekérdezési motor kideríti, hogy mely predikátumok szelektívek, és ennek megfelelően futtatják a lekérdezést.
 
-
 ## <a name="querying-with-indexes"></a>Lekérdezés indexekkel
 
 Az adatindexelés során kinyert elérési utak megkönnyítik az index keresését egy lekérdezés feldolgozásakor. Az `WHERE` indexelt elérési utak listáját tartalmazó lekérdezés záradékának egyeztetésével nagyon gyorsan azonosíthatja a lekérdezési predikátumnak megfelelő elemeket.
@@ -190,5 +189,5 @@ Vegyük például a következő lekérdezést: `SELECT location FROM location IN
 
 Az indexeléssel kapcsolatos további információkért olvassa el a következő cikkeket:
 
-- [Indexelési házirend](index-policy.md)
+- [Indexelési szabályzat](index-policy.md)
 - [Az indexelési szabályzat kezelése](how-to-manage-indexing-policy.md)

@@ -1,14 +1,14 @@
 ---
 title: Ausztráliai kormányzati ISM – védett terv minta áttekintése
 description: Az ausztrál Government, az ISM által védett tervezet minta áttekintése. Ez a tervrajz-minta segít az ügyfeleknek az egyes ISM-védelemmel ellátott vezérlők értékelésében.
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517099"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760430"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Az Australian Government által védett tervezetek mintájának vezérlése
 
@@ -106,10 +106,10 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - Service Fabric-fürtök esetében csak Azure Active Directoryt kell használnia az ügyfél-hitelesítéshez
-- \[Előzetes verzió \] : a Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
-- \[Előzetes verzió \] : a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózására vonatkozó előfeltételek központi telepítése
-- \[Előzetes verzió \] : olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
-- \[Előzetes verzió \] : Előfeltételek telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózásához
+- A Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat jelszavak nélküli fiókokból
+- A jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásának előfeltételei üzembe helyezése
+- Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
+- Előfeltételek telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózásához
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 a többtényezős hitelesítés az általános jogú felhasználók hitelesítésére szolgál
 
@@ -122,8 +122,8 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 az egytényezős hitelesítéshez használt hozzáférési kódok legalább 14 karakterből állnak, és ideális esetben 4 véletlenszerű kifejezéssel rendelkeznek
 
-- \[Előzetes verzió \] : naplózási eredmények megjelenítése a Windows rendszerű virtuális gépek konfigurációjában a "biztonsági beállítások – fiókok házirendjei"
-- \[Előzetes verzió \] : előfeltételek központi telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a "biztonsági beállítások – fiók szabályzatokban"
+- A Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése a "biztonsági beállítások – fiókok házirendjeiben"
+- Előfeltételek telepítése a Windows rendszerű virtuális gépek konfigurációinak naplózásához a "biztonsági beállítások – fiók szabályzatokban"
 
 ## <a name="guidelines-for-system-management---system-administration"></a>Irányelvek a rendszerkezeléshez – rendszerfelügyelet
 
@@ -147,7 +147,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell a gépeken
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -159,7 +159,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell Virtual Machines
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -171,7 +171,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell Virtual Machines
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -183,7 +183,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell Virtual Machines
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -195,7 +195,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell Virtual Machines
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -207,7 +207,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell Virtual Machines
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
@@ -229,8 +229,8 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 a következő események vannak naplózva operációs rendszerekre: hozzáférés fontos információkhoz és folyamatokhoz, alkalmazás-összeomlások és hibaüzenetek, speciális jogosultságok használata, a fiókok módosításai, a biztonsági házirend módosításai, a rendszerkonfigurációk, a tartománynévrendszer (DNS) és a Hypertext Transfer Protocol (HTTP) kérelmek módosításai, sikertelen hozzáférés az adatforgalomhoz és a rendszererőforrásokhoz, a szolgáltatási hibákhoz és újraindítás , az adatok átvitele külső adathordozóra, felhasználóra vagy csoportra, speciális jogosultságok használata
 
 - \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- Log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
 - Diagnosztikai beállítás naplózása
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 a következő események vannak naplózva az adatbázisokhoz: különösen fontos információkhoz férhet hozzá, az új felhasználók, különösen a Kiemelt felhasználók, a megjegyzéseket tartalmazó lekérdezések, a több beágyazott lekérdezést tartalmazó lekérdezések, a lekérdezési vagy adatbázis-riasztások vagy meghibásodások, a jogosultságok emelésének megkísérlése, a sikeres vagy sikertelen hozzáférés, az adatbázis-struktúra módosításai, a felhasználói szerepkörökre vagy az adatbázis engedélyeire vonatkozó módosítások, adatbázis-rendszergazdai műveletek , adatbázis-bejelentkezések és kijelentkezések, az adatmódosítások, végrehajtható parancsok használata
@@ -246,7 +246,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- \[Előzetes verzió \] : a sebezhetőségi felmérést engedélyezni kell Virtual machines
+- A sebezhetőségi felmérést engedélyezni kell Virtual Machines
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell

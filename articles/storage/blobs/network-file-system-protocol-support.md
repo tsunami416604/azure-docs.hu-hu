@@ -1,24 +1,24 @@
 ---
 title: Hálózati fájlrendszer 3,0-támogatás az Azure Blob Storage-ban (előzetes verzió) | Microsoft Docs
-description: A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi a Linux-ügyfelek számára, hogy egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztassanak egy tárolót a blob Storage-ban.
+description: A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi, hogy a Windows-és Linux-ügyfelek egy Azure-beli virtuális gépről (VM) vagy egy helyszíni rendszert futtató számítógépről csatlakoztassanak egy tárolót a blob Storage-ban.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372892"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760923"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)
 
-A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi a Linux-ügyfelek számára, hogy egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztassanak egy tárolót a blob Storage-ban. 
+A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi, hogy a Windows-vagy Linux-ügyfelek egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztassanak egy tárolót a blob Storage-ban. 
 
 > [!NOTE]
 > Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el, és a következő régiókban érhető el: USA keleti régiója, USA középső régiója és Közép-Kanada.
@@ -41,7 +41,7 @@ A Storage-fiók tárolójának csatlakoztatásához ezeket a dolgokat kell végr
 
 7. Csatlakoztassa a tárolót.
 
-Részletes útmutatásért lásd: [blob Storage csatlakoztatása Linux rendszeren a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md).
+Részletes útmutatásért lásd: [blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md).
 
 > [!IMPORTANT]
 > Fontos, hogy ezeket a feladatokat sorrendben végezze el. Nem csatlakoztathatja a létrehozott tárolókat, mielőtt engedélyezi az NFS 3,0 protokollt a fiókjában. Továbbá, miután engedélyezte az NFS 3,0 protokollt a fiókjához, nem tilthatja le.
@@ -111,9 +111,9 @@ Az előzetes verzió ideje alatt a Storage-fiókban tárolt adatokra ugyanazon a
 
 Az előzetes verzióban nem számítunk fel tranzakciót. A tranzakciók díjszabása változhat, és akkor lesz meghatározva, ha általánosan elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Első lépésként tekintse [meg a blob Storage csatlakoztatása Linux rendszeren a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.
+Első lépésként tekintse meg [a blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.
 
 
 

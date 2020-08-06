@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5b105bf6fea8b78a11f77d73918376670be9ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf483d5a9b6a75ccad48908701d89d1c40206208
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052573"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759869"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára
 
@@ -1016,7 +1016,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza a ** < *SID*>-LB-ASCs terheléselosztó**terheléselosztási  >  **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Name
+   * Név
    * Port
    * Háttérbeli port
 
@@ -1449,7 +1449,7 @@ A következő néhány feladat nem szerepel a szabványos SAP-telepítési dokum
 
 Az ASCS/SCS-példány SAP-profiljának módosítása:
 
-1. Adja hozzá ezt a profil paramétert az SAP ASCS/SCS instance profilhoz:
+1. Adja hozzá ezt a profil paramétert az SAP ASCS/SCS instance profilhoz, ha a ENSA1-t használja:
 
    ```
    enque/encni/set_so_keepalive = true
@@ -1461,6 +1461,8 @@ Az ASCS/SCS-példány SAP-profiljának módosítása:
    Például az SAP SCS-példány profiljához és a megfelelő elérési úthoz:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+
+   A ENSA1 és a ENSA2 esetében ügyeljen arra, hogy az `keepalive` operációs rendszer paramétereinek beállítása a [1410736](https://launchpad.support.sap.com/#/notes/1410736)-es SAP-megjegyzésben leírtak szerint történjen.  
 
 2. A módosítások alkalmazásához indítsa újra az SAP ASCS/SCS-példányt.
 

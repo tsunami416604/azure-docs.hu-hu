@@ -5,27 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289099"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759733"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk áttekintést nyújt az egyéni nézetek létrehozásához és szerkesztéséhez szükséges tervezőről és eljárásokról.
 
 > [!IMPORTANT]
-> A Azure Monitorban megjelenő nézeteket a rendszer fokozatosan kicseréli, és olyan [munkafüzetek](workbooks-overview.md) helyébe lép, amelyek további funkciókat biztosítanak. A meglévő nézetek munkafüzetekbe konvertálásával kapcsolatos részletekért tekintse meg a [Azure monitor View Designer és a munkafüzetek áttérési útmutatóját](view-designer-conversion-overview.md) . Tekintse meg az alábbi táblázatot a következő néhány hónap során elvégzendő lépésekről.
-> 
-> | Módosítás | Ez azt jelenti, hogy | Várható dátum |
-> |:---|:---|:---|
-> | Tiltsa le a View Designer használatával létrehozott új nézetek létrehozását. | A továbbiakban nem hozhat létre és menthet új egyéni nézeteket a Azure Portal.| November 2020 |
-> | Tiltsa le a szerkesztési funkciót a meglévő nézetekhez a Tervező nézetben. | Többé nem fogja tudni módosítani és menteni a meglévő egyéni nézetek módosításait. | November 2020 |
-> | Nézetek telepítésének letiltása Log Analytics munkaterületekre | Az ARM használatával már nem telepíthet egyéni nézeteket Log Analytics munkaterületekre. | Március 2021 |
-> | A tervező már nem érhető el a Azure Portal | A portál felhasználói felülete többé nem támogatja a View Designer használatát. | Június 2021 |
-> | A munkaterület Összegzésből eltávolított egyéni nézetek | Többé nem fog tudni hozzáférni az egyéni nézet adataihoz. | December 2021 |
+> A Azure Monitor nézetei olyan [munkafüzetekbe](workbooks-overview.md) lettek áttelepítve, amelyek további funkciókat biztosítanak. A meglévő nézetek munkafüzetekbe konvertálásával kapcsolatos részletekért tekintse meg a [Azure monitor View Designer és a munkafüzetek áttérési útmutatóját](view-designer-conversion-overview.md) .
  
 
 

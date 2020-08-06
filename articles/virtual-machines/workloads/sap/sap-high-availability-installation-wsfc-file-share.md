@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617329"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760889"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás az Azure-beli SAP ASCS/SCS-példányok esetén
 
@@ -323,6 +323,7 @@ Frissítse a paramétereket az SAP ASCS/SCS instance Profile \<SID> _ASCS/ \<Nr>
 | enque/encni/set_so_keepalive  | **igaz** |
 | szolgáltatás/ha_check_node | **1** |
 
+`enque/encni/set_so_keepalive`A paraméter csak akkor szükséges, ha a ENSA1-t használja.  
 Indítsa újra az SAP ASCS/SCS-példányt. Állítsa be a `KeepAlive` paramétereket mind az SAP-ASCS, mind az SCS-fürtcsomópontok esetében, és az [SAP ASCS/SCS-példány fürtcsomópontok esetében adja meg a beállításjegyzékbeli bejegyzéseket][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Adatbázis-kezelő példány és SAP-alkalmazáskiszolgáló telepítése

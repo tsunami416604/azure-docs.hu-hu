@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809484"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760413"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -28,9 +28,9 @@ Ez a cikk az Azure-előtérben elérhető funkciókkal és funkciókkal kapcsola
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
+### <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
 
-Az Azure bejárati ajtó egy alkalmazásszolgáltatási hálózat (ADN) szolgáltatás, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál alkalmazásai számára. A dinamikus hely gyorsítását (DSA) és a globális terheléselosztást is biztosítja a közel valós idejű feladatátvételsel együtt. Ez egy kiválóan elérhető és méretezhető szolgáltatás, amelyet az Azure teljes körűen kezel.
+Az Azure bejárati ajtó egy alkalmazásszolgáltatási hálózat (ADN) szolgáltatás, amely különböző 7. rétegbeli terheléselosztási funkciókat kínál alkalmazásai számára. Dinamikuswebhely-gyorsítást (DSA), valamint globális terheléselosztást biztosít, közel valós idejű feladatátvétellel. Ez egy magas rendelkezésre állású és nagy mértékben skálázható szolgáltatás, amelyet teljes mértékben az Azure felügyel.
 
 ### <a name="what-features-does-azure-front-door-support"></a>Milyen funkciókat támogat az Azure bejárati ajtó?
 
@@ -123,7 +123,7 @@ Megjegyzés: az egyéni TLS/SSL-tanúsítvány frissítései körülbelül 30 pe
 Az útvonalak vagy háttér-készletek, stb. minden frissítése zökkenőmentes, és nulla állásidőt eredményez (ha az új konfiguráció helyes). A tanúsítványok frissítései szintén atomi jellegűek, és nem okoznak kimaradást, kivéve, ha a "AFD Managed" típusról "saját tanúsítvány használata" értékre vált, vagy fordítva.
 
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Képes az Azure-beli bejárati terheléselosztásra vagy a virtuális hálózaton belüli forgalom irányítására?
 
@@ -159,9 +159,12 @@ Az előtérben felügyelt tanúsítvány beállításnál a tanúsítványokat a
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Milyen titkosítási csomagokat támogat az Azure bejárati ajtó?
 
-A TLS 1.2 esetén a következő titkosítási csomagok támogatottak:
+A TLS 1.2 esetén a következő titkosítási csomagok támogatottak: 
 
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
 Ha a TLS 1.0/1.1-es verzióval rendelkező egyéni tartományok használata engedélyezve van, a következő titkosítási csomagok támogatottak:
 

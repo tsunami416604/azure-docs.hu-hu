@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373487"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759699"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,17 +29,20 @@ Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes r�
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
 ### <a name="september-2020"></a>2020. szeptember
 
-Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva. Ezek az SQL-átjárók a 2020 szeptember 10-én megkezdik az ügyfél forgalmának elfogadását:
+
+- USA nyugati középső régiója: 13.78.248.43 
+- Dél-Afrika északi régiója: 102.133.120.2  
+
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva. Ezek az SQL-átjárók a 2020 szeptember 1-jén kezdik el az ügyfelek forgalmának elfogadását:
 
 - Észak-Európa: 13.74.104.113 
 - Nyugat-RÉGIÓJA: 40.78.248.10 
 - Nyugat-Európa: 52.236.184.163 
 - USA déli középső régiója: 20.45.121.1, 20.49.88.1 
 
-A meglévő SQL-átjárók a következő régiókban kezdik el a forgalom fogadását:
+A meglévő SQL Gateway-átjárók a következő régiókban kezdik el a forgalom fogadását. Ezek az SQL-átjárók a 2020. szeptember 1-jén kezdik el az ügyfelek forgalmának elfogadását. :
 - Kelet-Japán: 40.79.184.8, 40.79.192.5
-
-Ezek az SQL-átjárók a 2020. szeptember 1-jén kezdik el az ügyfelek forgalmának elfogadását. 
 
 ### <a name="august-2020"></a>Augusztus 2020
 
@@ -82,7 +85,7 @@ A következőket lehet befolyásolni:
 - A [zóna redundáns konfigurációjának](high-availability-sla.md#zone-redundant-configuration) használata az adatbázishoz
 
 A következőket nem érinti a rendszer:
-
+ 
 - Átirányítás a kapcsolatok házirendjének megfelelően
 - Kapcsolatok SQL Database az Azure-ban és a szolgáltatási címkék használatával
 - A SQL Server JDBC illesztőprogram támogatott verzióival létesített kapcsolatok nem lesznek hatással. A támogatott JDBC-verziókért lásd: [a Microsoft JDBC-illesztőprogram letöltése SQL Serverhoz](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
@@ -95,6 +98,6 @@ Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogram
 
 Ha a fenti megoldás nem működik, a következő URL-cím használatával kérjen SQL Database vagy SQL felügyelt példányra vonatkozó támogatási kérelmet:https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure SQL kapcsolati architektúráról](connectivity-architecture.md)

@@ -2,7 +2,7 @@
 title: Egyéni tartomány hozzáadása – Azure Active Directory | Microsoft Docs
 description: Útmutató egyéni tartomány hozzáadásához a Azure Active Directory használatával.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603961"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796811"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
 
@@ -54,7 +54,7 @@ A címtár létrehozása után felveheti az egyéni tartománynevet.
 
     ![Custom Domain Names (egyéni tartománynevek) lap, amelyen az egyéni tartomány hozzáadása látható](media/add-custom-domain/add-custom-domain.png)
 
-1. Az **Egyéni tartománynév**mezőben adja meg a szervezet új nevét, ebben a példában a *contoso.com*. Válassza az **Add domain** (Tartomány hozzáadása) lehetőséget.
+1. Az **Egyéni tartománynév**mezőben adja meg a szervezet új nevét, ebben a példában a *contoso.com*. Válassza a **Tartomány hozzáadása** lehetőséget.
 
     ![Egyéni tartománynevek lap az egyéni tartomány hozzáadása oldalon](media/add-custom-domain/add-custom-domain-blade.png)
 
@@ -65,7 +65,7 @@ A címtár létrehozása után felveheti az egyéni tartománynevet.
 
     ![Contoso-lap DNS-bejegyzési információkkal](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
-## <a name="add-your-dns-information-to-the-domain-registrar"></a>Adja hozzá a DNS-adatokat a tartományregisztráló
+## <a name="add-your-dns-information-to-the-domain-registrar"></a>DNS-adatok hozzáadása a tartományregisztrálóhoz
 
 Miután hozzáadta az egyéni tartománynevet az Azure AD-hez, vissza kell térnie a tartományregisztráló, és hozzá kell adnia az Azure AD DNS-adatokat a másolt TXT-fájlból. A TXT-rekordnak a tartományhoz való létrehozása ellenőrzi a tartománynév tulajdonjogát.
 

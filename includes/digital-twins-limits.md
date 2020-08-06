@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507241"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771072"
 ---
 ### <a name="functional-limits"></a>Működési korlátok
 
@@ -31,7 +31,7 @@ Az alábbi táblázat felsorolja az Azure Digital Twins működési korlátait a
 | Lekérdezés | Kifejezések száma `AND`  /  `OR` egy lekérdezésben | 50 | Igen |
 | Lekérdezés | Egy `IN`  /  `NOT IN` záradékban található tömb elemeinek száma | 50 | Igen |
 | Lekérdezés | A lekérdezésben szereplő karakterek száma | 8,000 | Igen |
-| Lekérdezés | `JOINS`Lekérdezésben szereplő szám | 1 | Igen |
+| Lekérdezés | `JOINS`Lekérdezésben szereplő szám | 5 | Igen |
 
 ### <a name="rate-limits"></a>Sebességkorlátok
 

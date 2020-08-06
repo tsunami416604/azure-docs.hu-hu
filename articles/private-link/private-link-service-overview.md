@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202213"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760947"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
 Az Azure Private link Service a saját szolgáltatására vonatkozik, amelyet az Azure privát kapcsolata működtet. Az [Azure standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) mögött futó szolgáltatás engedélyezhető a magánjellegű kapcsolatokhoz való hozzáféréshez, így a szolgáltatás felhasználói saját virtuális hálózatok férhetnek hozzá. Ügyfelei létrehozhatnak egy privát végpontot a VNet belül, és leképezhetők a szolgáltatásba. Ez a cikk a szolgáltatói oldalával kapcsolatos fogalmakat ismerteti. 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Privát kapcsolati szolgáltatás munkafolyamata" border="true":::
+
+*Ábra: Azure Private link Service.*
+
 ## <a name="workflow"></a>Munkafolyamat
 
 ![Privát kapcsolati szolgáltatás munkafolyamata](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*Ábra: az Azure Private link Service munkafolyamata.*
 
 ### <a name="create-your-private-link-service"></a>A privát kapcsolat szolgáltatás létrehozása
 

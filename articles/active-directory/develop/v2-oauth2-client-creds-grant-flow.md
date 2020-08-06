@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529225"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759070"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
@@ -64,19 +64,11 @@ Az ACL-ek használata helyett API-k használatával teheti elérhetővé az **al
 * E-mail küldése bármely felhasználóként
 * Címtáradatok olvasása
 
-Az alkalmazás engedélyeivel kapcsolatos további információkért tekintse át a [beleegyezett és az engedélyek dokumentációját](v2-permissions-and-consent.md#permission-types).
+Ha az alkalmazás engedélyeit saját API-val szeretné használni (a Microsoft Graph helyett), először ki kell jelölnie [az API](quickstart-configure-app-expose-web-apis.md) -t az API alkalmazás-regisztrálási hatókörének meghatározásával a Azure Portalban. Ezután [konfigurálja az API-hoz való hozzáférést](quickstart-configure-app-access-web-apis.md) úgy, hogy kiválasztja ezeket az engedélyeket az ügyfélalkalmazás alkalmazásának regisztrációjában. Ha nem adott meg hatókört az API alkalmazás-regisztrációjában, nem fog tudni megadnia az alkalmazás engedélyeit az adott API számára az ügyfélalkalmazás alkalmazás-regisztrációjában a Azure Portal.
 
-Az alkalmazás engedélyeinek használatához kövesse a következő szakaszokban ismertetett lépéseket.
+Ha alkalmazásként (a felhasználóval ellentétben) végez hitelesítést, nem használhat *delegált engedélyeket* – a felhasználók által megadott hatóköröket. Az alkalmazáshoz vagy a webes API általi előzetes engedélyezéshez olyan alkalmazás-engedélyeket kell használni, amelyeket szerepköröknek is neveznek.
 
-> [!NOTE]
-> Ha alkalmazásként végez hitelesítést, a felhasználóval ellentétben nem használhatja a "delegált engedélyek" (a felhasználó által megadott hatóköröket).  Az alkalmazás rendszergazdája (vagy a webes API általi előhitelesítésen keresztül) az "alkalmazás engedélyei" (más néven "szerepkörök") használatát kell megadnia.
-
-#### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az engedélyek igénylése az alkalmazás regisztrációs portálján
-
-1. Regisztráljon, és hozzon létre egy alkalmazást az új [Alkalmazásregisztrációk (előzetes verzió) felületén](quickstart-register-app.md).
-2. Nyissa meg az alkalmazást az Alkalmazásregisztrációk (előzetes verzió) felületén. Navigáljon a **tanúsítványok & Secrets** szakaszhoz, és vegyen fel egy **új ügyfél-titkot**, mert legalább egy ügyfél-titok szükséges a jogkivonat igényléséhez.
-3. Keresse meg az **API-engedélyek** szakaszt, majd adja hozzá az alkalmazás által igényelt alkalmazás- **engedélyeket** .
-4. **Mentse** az alkalmazás regisztrációját.
+További információ az alkalmazás engedélyeiről: [engedélyek és beleegyezik](v2-permissions-and-consent.md#permission-types).
 
 #### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: a felhasználó aláírása az alkalmazásba
 

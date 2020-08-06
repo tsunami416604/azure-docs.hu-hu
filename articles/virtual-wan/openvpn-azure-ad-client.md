@@ -260,6 +260,6 @@ azurevpn -i azurevpnconfig.xml
 az importálás kényszerítéséhez használja az **-f** kapcsolót is
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259952"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760124"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Műveletek a standard szabályok motorban Azure CDN
 
@@ -30,11 +30,11 @@ Ezzel a művelettel írhatja felül a végpont élettartam (TTL) értékét azon
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Gyorsítótár viselkedése |  Description              
+Gyorsítótár viselkedése |  Leírás              
 ---------------|----------------
 Gyorsítótár megkerülése | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer nem gyorsítótárazza a tartalmat.
-Felülbírálás | Ha ez a beállítás be van jelölve, és a szabály egyezést ad meg, a rendszer felülírja a forrásból visszaadott TTL-értéket a műveletben megadott értékkel.
-Ha hiányzik, állítsa be | Ha ez a beállítás be van jelölve, és a szabály egyezik, ha a forrástól nem tért vissza TTL-érték, a szabály az ÉLETTARTAMot a műveletben megadott értékre állítja be.
+Felülbírálás | Ha ez a beállítás be van jelölve, és a szabály egyezést ad meg, a rendszer felülírja a forrásból visszaadott TTL-értéket a műveletben megadott értékkel. Ez a viselkedés csak akkor lesz alkalmazva, ha a válasz gyorsítótárazható. A Cache-Control Response fejlécben a "no-cache", a "Private", a "No-Store" értékekkel a művelet nem lesz alkalmazható.
+Ha hiányzik, állítsa be | Ha ez a beállítás be van jelölve, és a szabály egyezik, ha a forrástól nem tért vissza TTL-érték, a szabály az ÉLETTARTAMot a műveletben megadott értékre állítja be. Ez a viselkedés csak akkor lesz alkalmazva, ha a válasz gyorsítótárazható. A Cache-Control Response fejlécben a "no-cache", a "Private", a "No-Store" értékekkel a művelet nem lesz alkalmazható.
 
 #### <a name="additional-fields"></a>További mezők
 
@@ -48,7 +48,7 @@ Ezzel a művelettel módosíthatja a gyorsítótár-kulcsot a lekérdezési kara
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Viselkedés | Description
+Viselkedés | Leírás
 ---------|------------
 Belefoglalás | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok a gyorsítótár kulcsának létrehozásakor is szerepelni tudnak. 
 Minden egyedi URL gyorsítótárazása | Ha ez a beállítás be van jelölve, és a szabály megfelel, minden egyedi URL-cím saját gyorsítótár-kulccsal rendelkezik. 
@@ -61,9 +61,9 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek a forrásnak k�
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
-Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
+Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a kérelemből. | Sztring
 
@@ -73,9 +73,9 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
-Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
+Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a válaszból. | Sztring
 
@@ -85,7 +85,7 @@ Ezzel a művelettel átirányíthatja az ügyfeleket egy új URL-címre.
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Mező | Description 
+Mező | Leírás 
 ------|------------
 Típus | Válassza ki a kérelmezőnek visszatérni kívánt választ: talált (302), áthelyezett (301), ideiglenes átirányítás (307) és végleges átirányítás (308).
 Protokoll | Egyeztetési kérelem, HTTP, HTTPS.
@@ -102,7 +102,7 @@ Ezzel a művelettel átírhatja egy olyan kérelem elérési útját, amely útb
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Mező | Description 
+Mező | Leírás 
 ------|------------
 Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvonalon. Jelenleg a forrás minta előtag-alapú egyezést használ. Az összes URL-cím eléréséhez használjon egy perjelet ( **/** ) a forrás minta értékének megfelelően.
 Cél | Adja meg az újraíráshoz használandó célhely elérési útját. A cél elérési útja felülírja a forrás mintát.

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 88f1c120ac4578e077e1c51f59bcaf53b1de2083
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 0cbfed307cea1bd98bf864046a8c08edb849226a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87538897"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797985"
 ---
 # <a name="enable-infiniband"></a>Infiniband engedélyezése
 
@@ -42,11 +42,12 @@ A virtuálisgép-bővítmény virtuális géphez való hozzáadásához [Azure P
 A [Mellanox OpenFabrics-illesztőprogramok (OFED)](https://www.mellanox.com/products/InfiniBand-VPI-Software) manuálisan telepíthetők az [SR-IOV enabled](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépekre.
 
 ### <a name="linux"></a>Linux
-A [Linux rendszerhez készült OFED-illesztőprogramok](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) az alábbi példával telepíthetők. Bár ez a példa a RHEL/CentOS-re mutat, de a lépések általánosak, és bármilyen kompatibilis Linux operációs rendszerhez használhatók, például Ubuntu (16,04, 18,04 19,04, 20,04) és SLES (12 SP4 és 15). A beérkezett fájlok illesztőprogramjai is működnek, de a Mellanox OFED-illesztőprogramok további funkciókat biztosítanak.
+A [Linux rendszerhez készült OFED-illesztőprogramok](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) az alábbi példával telepíthetők. Bár ez a példa a RHEL/CentOS-re mutat, de a lépések általánosak, és bármilyen kompatibilis Linux operációs rendszerhez használhatók, például Ubuntu (16,04, 18,04 19,04, 20,04) és SLES (12 SP4 és 15). További példák a többi disztribúcióra a [azhpc-lemezképek](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mellanoxofed.sh)tárházában. A beérkezett fájlok illesztőprogramjai is ugyanúgy működnek, de a Mellanox OFED-illesztőprogramok további funkciókat biztosítanak.
 
 ```bash
 MLNX_OFED_DOWNLOAD_URL=http://content.mellanox.com/ofed/MLNX_OFED-5.0-2.1.8.0/MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
-# Optinally verify checksum
+# Optionally verify checksum
+wget --retry-connrefused --tries=3 --waitretry=5 $MLNX_OFED_DOWNLOAD_URL
 tar zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
 
 KERNEL=( $(rpm -q kernel | sed 's/kernel\-//g') )

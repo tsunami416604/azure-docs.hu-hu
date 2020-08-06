@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543350"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760396"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -172,7 +172,7 @@ A példányban történt módosítások a lekérdezésekben akár 10 másodperce
 Az előzetes verzió használatakor további korlátozások is rendelkezésre állnak `JOIN` .
 * Az utasítás nem támogatja az allekérdezéseket `FROM` .
 * `OUTER JOIN`a szemantika nem támogatott, ami azt jelenti, hogy ha a kapcsolat nulla rangú, akkor a rendszer a teljes "sort" kizárja a kimeneti eredményhalmaz alapján.
-* A nyilvános előzetes verzióban a Graph bejárási mélysége korlátozott: a `JOIN` lekérdezésekben csak egy engedélyezett.
+* Az előzetes verzióban a Graph bejárási mélysége `JOIN` lekérdezési szinten legfeljebb öt szintre van korlátozva.
 * A műveletek forrása `JOIN` korlátozott: a lekérdezésnek deklarálnia kell azokat az ikreket, amelyeken a lekérdezés elindul.
 
 ## <a name="query-best-practices"></a>Ajánlott eljárások lekérdezésekhez

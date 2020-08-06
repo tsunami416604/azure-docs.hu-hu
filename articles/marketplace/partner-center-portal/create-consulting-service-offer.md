@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317773"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798222"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -140,7 +140,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 3. Megoldási területek
 4. Iparágak
 5. Ajánlat neve
-6. Összegzés
+6. Összefoglalás
 7. Leírás
 8. Képernyőképek/videók
 
@@ -155,7 +155,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 3. Termékek
 4. Iparágak
 5. Ajánlat neve
-6. Összegzés
+6. Összefoglalás
 7. Leírás
 8. Képernyőképek/videók
 9. Dokumentumok
@@ -207,12 +207,14 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának PNG-fájlját a következő képpont méretek mindegyikében:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) méretű embléma létrehozásához. Ezt másik képpel is lecserélheti.
 
-- **Kicsi (48 x 48)**
-- **Nagyméretű (216 x 216)**
+Mindkét embléma mérete szükséges a lista különböző helyein való használathoz:
 
-Az összes emblémát meg kell adni, és a Piactéri lista különböző helyein használják.
+- **Kicsi** (48 x 48)
+- **Nagy** (216 x 216 és 350 x 350 között)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448973"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761008"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -32,7 +32,7 @@ A következő cikkből megtudhatja, hogyan konfigurálhatja az időszinkronizál
 **Felelősség:** Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
-**Útmutató:** Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A Tevékenységnaplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az DevTest Labs-példányok felügyeleti síkja szintjén.
+**Útmutató:** Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-beli tevékenység naplójának adatai alapján meghatározhatja, hogy a DevTest Labs-példányok felügyeleti síkon milyen műveleteket hajtson végre az írási műveletekhez (PUT, POST, DELETE).
 
 További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md).
 
@@ -41,7 +41,7 @@ További információ: [diagnosztikai beállítások létrehozása a platform na
 **Felelősség:** Ügyfél
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
-**Útmutató:** Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A Tevékenységnaplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az DevTest Labs-példányok felügyeleti síkja szintjén.
+**Útmutató:** Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mi, ki és mikor" minden írási művelethez (PUT, POST, DELETE) a DevTest Labs-példányok felügyeleti síkja szintjén.
 
 További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md).
 
@@ -120,7 +120,7 @@ További információkért tekintse meg a következő cikket: [riasztás a log A
 *További információ [: Security Control (identitás és Access Control](../security/benchmarks/security-control-identity-access-control.md)).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
-**Útmutató:** Azure Active Directory (Azure AD) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modul használatával ad hoc lekérdezéseket futtathat a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
+**Útmutató:** Azure Active Directory (Azure AD) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket futtathat a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
 - [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 - [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
@@ -258,6 +258,110 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Felelősség:** Ügyfél
 
+## <a name="data-protection"></a>Adatvédelem
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
+
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
+**Útmutató:** A címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
+
+- [Címkék létrehozása és használata](../azure-resource-manager/resource-group-using-tags.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
+**Útmutató:** Külön előfizetések vagy felügyeleti csoportok implementálása fejlesztési, tesztelési és éles környezetekben. Azure DevTest Labs példányokat virtuális hálózat/alhálózat szerint kell elválasztani, és a címkét megfelelően címkézve kell megadni. 
+
+- [További Azure-előfizetések létrehozása](../billing/billing-create-subscription.md)
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create.md)
+- [Virtuális hálózat konfigurálása a DevTest Labs szolgáltatáshoz](devtest-lab-configure-vnet.md)
+- [Címkék létrehozása és használata](../azure-resource-manager/resource-group-using-tags.md)
+- [Címkék létrehozása és használata a DevTest Labs szolgáltatásban](devtest-lab-add-tag.md)
+
+**Azure Security Center figyelés:** Jelenleg nem érhető el
+
+**Felelősség:** Ügyfél
+
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
+**Útmutató:** Még nem érhető el; az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el Azure DevTest Labs számára.
+
+A Microsoft kezeli a Azure DevTest Labs alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
+
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center figyelés:** Jelenleg nem érhető el
+
+**Felelősség:** Megosztott
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
+**Útmutató:** A Azure DevTest Labs alapértelmezés szerint TLS-titkosítású kommunikációt igényel. A 1,2-es TLS-verziók jelenleg támogatottak. Ha az ügyféloldali kódtár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése a Azure Portal vagy a felügyeleti API-kon keresztül végezhető el. Olyan esetekben, ahol a titkosított kapcsolatok nem lehetségesek, a tesztkörnyezet és az ügyfélalkalmazás virtuális hálózatra helyezése ajánlott.
+
+[A DevTest Labs adatátviteli forgatókönyve titkosításának megismerése](https://techcommunity.microsoft.com/t5/azure-developer-community-blog/azure-devtest-labs-enforcing-tls-1-2-starting-may-01-2020/ba-p/1236279)
+
+**Azure Security Center figyelés:** igen
+
+**Felelősség:** Megosztott
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
+**Útmutató:** Az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el Azure DevTest Labs számára. A bizalmas adatokat tartalmazó példányok címkézése, és ha szükséges, a harmadik féltől származó megoldás implementálása.
+
+A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center figyelés:** Jelenleg nem érhető el
+
+**Felelősség:** Ügyfél
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
+**Útmutató:** A Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja a Azure DevTest Labshoz való hozzáférést a laborokhoz.
+
+- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [A DevTest Labs szerepköreinek megismerése](devtest-lab-add-devtest-user.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
+**Útmutató:** Ha a DevTest Labs részeként létrehozott számítási erőforrások megfelelőségére szükség van, egy külső gyártótól származó eszközt, például egy automatizált gazdagép-alapú adatvesztés-megelőzési megoldást kell megvalósítani, hogy a hozzáférés-vezérlést az adatokra akkor is kényszerítse, ha az adatok a rendszerből vannak másolva.
+
+A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
+
+- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Nem alkalmazható
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
+**Útmutató:** Azure DevTest Labs a következő ügyféladatokat tárolja:
+
+- Az összetevők alkalmazásával létrehozott üzembe helyezési és kiterjesztési naplókat tartalmazó összetevők [eredményei](add-artifact-vm.md)
+- A képletekben a virtuális gépek létrehozásához használt [dokumentumok](devtest-lab-manage-formulas.md)
+- Az operációs rendszer és az adatlemezek a tesztkörnyezet virtuális gépei számára 
+
+A rendszer az összetevők eredményeit és a képletek dokumentumait egy olyan Azure Storage-fiókba továbbítja, amely az összes tesztkörnyezetben üzemelő példány részeként jön létre. Az Azure Storage-ban tárolt adatai a 256 bites AES-titkosítással vannak titkosítva és visszafejtve, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás nem tiltható le. A Microsoft által felügyelt kulcsokat használhatja a Storage-fiók titkosításához, vagy a titkosítást a saját kulcsaival is kezelheti. További információ: [a labor Storage-fiók titkosítása](encrypt-storage.md).
+
+Alapértelmezés szerint az összes Lab operációs rendszer és adatlemez egy platform által felügyelt kulccsal van titkosítva. Az összes felügyelt lemez, pillanatkép, lemezkép és a meglévő felügyelt lemezekre írt adatok automatikusan titkosítva vannak a platform által felügyelt kulcsokkal. A labor tulajdonosaként beállíthatja, hogy a labor operációsrendszer-lemezei egy ügyfél által felügyelt kulccsal legyenek titkosítva. A labor adatlemezek ügyfél által felügyelt kulcsával történő titkosítás jelenleg nem konfigurálható a laborban. Egy előfizetés-rendszergazda azonban az előfizetésben lévő Lab-lemezekre is konfigurálhatja ezt a beállítást. További információ: a [labor DevTest Labs operációsrendszer-lemezek titkosítása az ügyfél által felügyelt kulcsokkal](encrypt-disks-customer-managed-keys.md).
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Megosztott
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
+**Útmutató:** A Azure Monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a DevTest Labs-példányok és egyéb kritikus vagy kapcsolódó erőforrások módosíthatók.
+
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a DevTest Labs tevékenység-naplózási eseményeihez](create-alerts.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+
+
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 *További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
@@ -372,7 +476,7 @@ Emellett az Azure Resource Graph segítségével lekérdezheti vagy felderíthet
 **Felelősség:** Ügyfél
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
-**Útmutató:** Azure Automation teljes körű vezérlést biztosít az üzembe helyezés, a műveletek és a számítási feladatok és erőforrások leszerelése során. Előfizetés-rendszergazdaként az Azure-beli virtuális gépek leltározásával automatizálhatja az előfizetésben található DevTest Labs-beli virtuális gépeken futó összes szoftver információinak gyűjtését. A szoftver neve, verziója, közzétevője és frissítési ideje tulajdonságok a Azure Portal érhetők el. A telepítés dátumának és egyéb információinak eléréséhez az ügyfélnek a vendég szintű diagnosztika engedélyezéséhez és a Windows-eseménynaplók Log Analytics munkaterületre való bekapcsolásához van szükség.
+**Útmutató:** Azure Automation teljes körű vezérlést biztosít az üzembe helyezés, a műveletek és a számítási feladatok és erőforrások leszerelése során. Előfizetés-rendszergazdaként az Azure-beli virtuális gépek leltározásával automatizálhatja az előfizetésében található DevTest Labs-beli virtuális gépeken futó összes szoftver információinak gyűjtését. A szoftver neve, verziója, közzétevője és frissítési ideje tulajdonságok a Azure Portal érhetők el. A telepítés dátumának és egyéb információinak eléréséhez az ügyfélnek a vendég szintű diagnosztika engedélyezéséhez és a Windows-eseménynaplók Log Analytics munkaterületre való bekapcsolásához van szükség.
 
 Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, az adaptív alkalmazás-vezérlők a Azure Security Center a gépi tanulás segítségével elemzik a gépen futó alkalmazásokat, és létrehoznak egy engedélyezési listát ebből az intelligenciával. Ez a funkció nagy mértékben leegyszerűsíti az alkalmazások engedélyezési listájának házirend-szabályzatának konfigurálását és karbantartását, így elkerülhető, hogy a nemkívánatos szoftverek ne legyenek használatban a környezetben. Konfigurálhatja a naplózási módot vagy a kényszerített módot. A naplózási mód csak a védett virtuális gépeken lévő tevékenységeket naplózza. A kényszerített mód kikényszeríti a szabályokat, és ellenőrzi, hogy a nem engedélyezett alkalmazások le vannak-e tiltva. 
 
@@ -421,7 +525,7 @@ Lásd az alábbi cikkeket:
 
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
-**Útmutató:** Az adaptív alkalmazás-vezérlés intelligens, automatizált és teljes körű megoldást kínál a Azure Security Center, amely segítségével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-beli és a nem Azure-beli (Windows és Linux) DevTest Labs szolgáltatásban üzemeltetett alkalmazásokkal. Megjegyzés: ahhoz, hogy ezt a beállítást a DevTest Labs szolgáltatásban található mögöttes számítási erőforrások számára konfigurálja, az előfizetés rendszergazdájának kell lennie. Harmadik féltől származó megoldás implementálása, ha ez a beállítás nem felel meg a szervezet követelményének.
+**Útmutató:** Az adaptív alkalmazás-vezérlés intelligens, automatizált és teljes körű megoldást kínál a Azure Security Center, amely segítségével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-beli és a nem Azure-beli (Windows és Linux) DevTest Labs szolgáltatásban üzemeltetett alkalmazásokkal. Megjegyzés: ezt a beállítást a DevTest Labs szolgáltatásban üzemeltetett számítási erőforrások esetében kell beállítania előfizetés-rendszergazdaként. Harmadik féltől származó megoldás implementálása, ha ez a beállítás nem felel meg a szervezet követelményének.
 
 - [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
@@ -461,6 +565,156 @@ Lásd az alábbi cikkeket:
 - [Útmutató az előfizetéssel kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
 **Azure Security Center figyelés:** Nem érhető el
+
+**Felelősség:** Ügyfél
+
+## <a name="secure-configuration"></a>Biztonságos konfiguráció
+**További információkért lásd: biztonság-vezérlés: biztonságos konfiguráció.**
+
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
+**Útmutató:** Azure Policy-Aliasok használatával egyéni szabályzatokat hozhat létre a DevTest Labs részeként létrehozott Azure-erőforrások naplózásához vagy érvényesítéséhez. A beépített Azure Policy-definíciókat is használhatja.
+
+Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaScript Object Notation (JSON), amelyet át kell tekinteni, hogy a konfigurációk megfeleljenek/túllépik a szervezete biztonsági követelményeit.
+
+Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure Security Center javaslatokat is alkalmazhat.
+
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
+- [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
+- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
+**Útmutató:** A DevTest Labs részeként létrehozott összes mögöttes számítási erőforrás biztonsági konfigurációinak fenntartásához Azure Security Center ajánlásokat kell használnia. Emellett egyéni operációsrendszer-lemezképeket vagy Azure Automation állapot-konfigurációt vagy DevTest Labs-összetevőket is használhat a szervezete által igényelt operációs rendszer biztonsági konfigurációjának létrehozásához.
+
+- [Azure Security Center javaslatok figyelése](../security-center/security-center-recommendations.md)
+- [Biztonsági javaslatok – útmutató](../security-center/recommendations-reference.md)
+- [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
+- [Virtuális merevlemez feltöltése és használata új Windows rendszerű virtuális gépek létrehozásához az Azure-ban](../virtual-machines/windows/upload-generalized-managed.md)
+- [Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel](../virtual-machines/linux/upload-vhd.md)
+- [Egyéni lemezképek létrehozása és terjesztése több DevTest Labs-hoz](image-factory-save-distribute-custom-images.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Nem alkalmazható
+
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
+**Útmutató:** **Ha nem léteznek** szabályok a DevTest Labs részeként létrehozott Azure-erőforrások biztonságos beállításainak betartatásához, használja Azure Policy **megtagadását** és telepítését. Emellett Azure Resource Manager-sablonok használatával is megőrizheti a szervezete által igényelt Azure-erőforrások biztonsági konfigurációját.
+
+- [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
+- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
+- [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
+**Útmutató:** A biztonsági rések felmérése a tesztkörnyezet részeként létrehozott, mögöttes Azure-beli számítási erőforrásokon Azure Security Center. Emellett a szervezete által igényelt operációs rendszer biztonsági konfigurációjának fenntartása érdekében Azure Resource Manager sablonokat, egyéni operációsrendszer-lemezképeket vagy Azure Automation állapot-konfigurációt is használhat. Használhatja a lemezkép-előállító megoldást is, amely egy olyan konfigurációs programkódot használó megoldás, amely rendszeresen készít és terjeszt képeket automatikusan az összes kívánt konfigurációval.
+
+Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendszerképeket a Microsoft felügyeli és tartja karban.
+
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
+- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Rendszerkép-előállító létrehozása a DevTest Labs szolgáltatásban](image-factory-create.md)
+
+**Azure Security Center figyelés:** igen
+
+**Felelősség:** Megosztott
+
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
+**Útmutató:** Az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, Azure Resource Manager sablonokat és a kívánt állapotú konfigurációs parancsfájlokat. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára az Azure DevOps-vel való integráció esetén.
+
+- [Az Azure Repos git oktatóanyaga](/devops/repos/git/gitworkflow?view=azure-devops)
+- [Az engedélyek és a csoportok](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Integráció a Azure DevTest Labs és az Azure DevOps munkafolyamat között](devtest-lab-dev-ops.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
+**Útmutató:** Ha egyéni lemezképeket használ, a szerepköralapú hozzáférés-vezérlés (RBAC) használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez. A megosztott képkatalógus használatával megoszthatja a lemezképeket olyan meghatározott laborokkal, amelyeknek szükségük van rá. A tárolói lemezképek esetében tárolja őket a Azure Container Registryban, és a RBAC használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez.
+
+- [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Megosztott képgyűjtemény konfigurálása DevTest Labs számára](configure-shared-image-gallery.md)
+- [A Container Registry RBAC ismertetése](../container-registry/container-registry-roles.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
+**Útmutató:** Az Azure-erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Azure Policy-Aliasok használatával egyéni szabályzatokat hozhat létre a DevTest Labs szolgáltatásban létrehozott Azure-erőforrások hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Az adott erőforrásokhoz kapcsolódó beépített szabályzat-definíciókat is igénybe vehet. Emellett Azure Automation használatával is telepítheti a konfigurációs módosításokat.
+
+- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: rendszerkonfiguráció-felügyeleti eszközök központi telepítése operációs rendszerekhez
+**Útmutató:** Azure Automation állapot-konfiguráció a kívánt állapot-konfigurációs (DSC) csomópontok egyike a felhőben vagy a helyszíni adatközpontban. Könnyedén beépítheti a gépeket, hozzárendelheti a deklaratív konfigurációkat, és megtekintheti azokat a jelentéseket, amelyek az egyes gépek megfelelőségét a megadott kívánt állapotnak megfelelően mutatják. Olyan egyéni összetevőt is megírhat, amely az összes tesztkörnyezetben telepíthető, és így biztosíthatja, hogy azok a szervezeti házirendek követésével legyenek végrehajtva. 
+
+- [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](../automation/automation-dsc-onboarding.md)
+- [Egyéni összetevők létrehozása a DevTest Labs virtuális gépei számára](devtest-lab-artifact-author.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
+**Útmutató:** A DevTest Labs szolgáltatásban létrehozott Azure-erőforrások alapkonfigurációjának vizsgálatához használja a Azure Security Center. Emellett az Azure-erőforrások konfigurációjának riasztására és naplózására Azure Policy is használhatja.
+
+- [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
+ 
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
+**Útmutató:** A Azure Security Center használatával elvégezheti a tárolók operációsrendszer-és Docker-beállításainak alapkonfigurációját.
+
+- [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/security-center-container-recommendations.md)
+
+**Azure Security Center figyelés:** Nem alkalmazható
+
+**Felelősség:** Ügyfél
+
+### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
+**Útmutató:** A Felhőbeli alkalmazások titkos felügyeletének egyszerűbbé és biztonságossá tételéhez használja a Managed Service Identityt a Azure Key Vaultvel együtt.
+
+- [Felügyelt identitás konfigurálása Azure Resource Manager környezetek telepítéséhez a DevTest Labs szolgáltatásban](use-managed-identities-environments.md)
+- [Felügyelt identitás konfigurálása virtuális gépek üzembe helyezéséhez a DevTest Labs szolgáltatásban](enable-managed-identities-lab-vms.md)
+- [Kulcstartó létrehozása](../key-vault/quick-create-portal.md)
+- [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/managed-identity.md)
+
+**Azure Security Center figyelés:** igen
+
+**Felelősség:** Ügyfél
+
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
+**Útmutató:** Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását az Azure AD-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
+
+- [Felügyelt identitás konfigurálása Azure Resource Manager környezetek telepítéséhez a DevTest Labs szolgáltatásban](use-managed-identities-environments.md)
+- [Felügyelt identitás konfigurálása virtuális gépek üzembe helyezéséhez a DevTest Labs szolgáltatásban](enable-managed-identities-lab-vms.md)
+ 
+**Azure Security Center figyelés:** igen
+
+**Felelősség:** Ügyfél
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
+**Útmutató:** Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+
+- A hitelesítő adatok beolvasójának beállítása
+
+**Azure Security Center figyelés:** Nem alkalmazható
 
 **Felelősség:** Ügyfél
 
@@ -561,7 +815,7 @@ Ha az Azure Disk Encryption szolgáltatást használja, visszaállíthatja az Az
 
 - [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 - [Microsoft Security Response Center – incidens anatómiája](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
-- [A NIST számítógépes biztonsági incidensek kezelésének útmutatója a saját incidensekre vonatkozó válaszadási terv létrehozásához nyújtott támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [A NIST számítógépes biztonsági incidensek kezelésével kapcsolatos útmutató a saját incidens-válasz tervének létrehozásához](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 

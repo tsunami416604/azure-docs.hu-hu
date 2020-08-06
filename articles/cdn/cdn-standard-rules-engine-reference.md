@@ -61,7 +61,7 @@ A százalékos aláírás az URL-kódolás (például:) jelzésére szolgál `%2
 
 Jelenleg a standard szintű szabályok motorjában a **UrlPath Matching feltételben** szereplő helyettesítő karaktert támogatjuk. A \* karakter egy csillag, amely egy vagy több karaktert jelöl. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyeztetési feltételek a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md)
 - [Műveletek a standard szabályok motorban](cdn-standard-rules-engine-actions.md)

@@ -1,24 +1,24 @@
 ---
-title: Az Azure Blob Storage csatlakoztatása Linux rendszeren az NFS 3,0 protokoll (előzetes verzió) használatával | Microsoft Docs
-description: Megtudhatja, hogyan csatlakoztathat egy tárolót a blob Storage-ban egy Linux-alapú Azure-beli virtuális gépről (VM) vagy egy olyan Linux rendszerről, amely a helyszínen fut az NFS 3,0 protokoll használatával.
+title: Az Azure Blob Storage csatlakoztatása az NFS 3,0 protokoll (előzetes verzió) használatával | Microsoft Docs
+description: Megtudhatja, hogyan csatlakoztathat tárolót a blob Storage-ban egy Azure-beli virtuális gépről (VM) vagy egy, a helyszínen futó ügyfélről az NFS 3,0 protokoll használatával.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372909"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760794"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása Linux rendszeren a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
-A blob Storage-tárolót egy Linux-alapú Azure-beli virtuális gépről (VM) vagy egy, a helyszínen futó Linux rendszerről is csatlakoztathatja az NFS 3,0 protokoll használatával. Ez a cikk lépésről lépésre haladó útmutatót tartalmaz. Ha többet szeretne megtudni az NFS 3,0 protokoll támogatásáról a blob Storage-ban, tekintse meg a következőt: [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md).
+A blob Storage-tárolók egy Windows-vagy Linux-alapú Azure-beli virtuális gépről (VM) vagy olyan Windows-vagy Linux-rendszerből is csatlakoztathatók, amely a helyszínen fut az NFS 3,0 protokoll használatával. Ez a cikk lépésről lépésre haladó útmutatót tartalmaz. Ha többet szeretne megtudni az NFS 3,0 protokoll támogatásáról a blob Storage-ban, tekintse meg a következőt: [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md).
 
 > [!NOTE]
 > Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el, és a következő régiókban érhető el: USA keleti régiója, USA középső régiója és Közép-Kanada.
@@ -117,6 +117,10 @@ Hozzon létre egy tárolót a Storage-fiókban ezen eszközök vagy SDK-k bárme
 
 ## <a name="step-7-mount-the-container"></a>7. lépés: a tároló csatlakoztatása
 
+Hozzon létre egy könyvtárat a Windows-vagy Linux-rendszeren, majd csatlakoztatjon egy tárolót a Storage-fiókhoz.
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. Linux rendszeren hozzon létre egy könyvtárat.
 
    ```
@@ -133,12 +137,31 @@ Hozzon létre egy tárolót a Storage-fiókban ezen eszközök vagy SDK-k bárme
 
    - Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
 
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. Nyissa meg a **Windows-szolgáltatások** párbeszédpanelt, majd kapcsolja be az **NFS-ügyfélszolgáltatás** funkciót. 
+
+   ![A hálózati fájlrendszer funkciójának ügyfele](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. Csatoljon egy tárolót a [csatlakoztatási](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) parancs használatával.
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - Cserélje le a `<storage-account-name>` parancsban megjelenő helyőrzőt a Storage-fiók nevére.  
+
+   - Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
+
+---
+
 ## <a name="resolve-common-issues"></a>Gyakori problémák megoldása
 
 |Probléma/hiba | Feloldás|
 |---|---|
-|`Access denied by server while mounting`|Győződjön meg arról, hogy az ügyfél egy támogatott alhálózaton belül fut. Tekintse meg a [támogatott hálózati telephelyeket](network-file-system-protocol-support.md#supported-network-connections).|
-|`No such file or directory`| Győződjön meg arról, hogy a csatlakoztatni kívánt tároló létre lett hozva a szolgáltatás regisztrálásának ellenőrzése után. Lásd: [2. lépés: annak ellenőrzése, hogy a szolgáltatás regisztrálva van-e](#step-2-verify-that-the-feature-is-registered). Győződjön meg arról is, hogy a mount parancsot írja be, és a paramétereket közvetlenül a terminálon adja meg. Ha a parancs bármely részét a terminálba másolja és beilleszti egy másik alkalmazásból, a beillesztett adatok rejtett karakterei is megjelenhetnek a hiba miatt.|
+|`Access denied by server while mounting`|Győződjön meg arról, hogy az ügyfél támogatott alhálózatot futtat. Tekintse meg a [támogatott hálózati telephelyeket](network-file-system-protocol-support.md#supported-network-connections).|
+|`No such file or directory`| Győződjön meg arról, hogy a csatlakoztatni kívánt tároló a funkció regisztrálásának ellenőrzése után jött létre. Lásd: [2. lépés: annak ellenőrzése, hogy a szolgáltatás regisztrálva van-e](#step-2-verify-that-the-feature-is-registered). Győződjön meg arról is, hogy a mount parancsot írja be, és a paramétereket közvetlenül a terminálon adja meg. Ha a parancs bármely részét egy másik alkalmazásból másolja és illeszti be a terminálba, a beillesztett információ rejtett karakterei is okozhatják ezt a hibát.|
 
 ## <a name="see-also"></a>További információ
 

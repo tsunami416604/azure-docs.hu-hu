@@ -4,76 +4,47 @@ description: Töltsön le egy linuxos virtuális merevlemezt az Azure CLI és a 
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 08/21/2019
+ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289779"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761056"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linuxos virtuális merevlemez letöltése az Azure-ból
 
-Ebből a cikkből megtudhatja, hogyan tölthet le egy linuxos virtuális merevlemezt (VHD-fájlt) az Azure-ból az Azure CLI és a Azure Portal használatával. 
-
-Ha még nem tette meg, telepítse az [Azure CLI](/cli/azure/install-az-cli2)-t.
+Ebből a cikkből megtudhatja, hogyan tölthet le egy linuxos virtuális merevlemezt (VHD-fájlt) az Azure-ból a Azure Portal használatával. 
 
 ## <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-Egy virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuális géphez van csatlakoztatva. A virtuális merevlemez letöltéséhez le kell állítania a virtuális gépet. Ha a virtuális merevlemezt [képként](tutorial-custom-images.md) szeretné létrehozni más virtuális gépek új lemezekkel való létrehozásához, meg kell szüntetnie és általánosítani a fájlban található operációs rendszert, és le kell állítania a virtuális gépet. Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, csak le kell állítania és felszabadítani kell a virtuális gépet.
-
-Ha a virtuális merevlemezt képként szeretné használni más virtuális gépek létrehozásához, hajtsa végre a következő lépéseket:
-
-1. Használja az SSH-t, a fiók nevét és a virtuális gép nyilvános IP-címét, hogy csatlakozhasson hozzá, és kiépítse azt. A nyilvános IP-címet az [az Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show)paranccsal érheti el. A + User paraméter eltávolítja az utolsó kiosztott felhasználói fiókot is. Ha a fiók hitelesítő adatait a virtuális gépre veszi fel, hagyja ki ezt a + felhasználói paramétert. Az alábbi példa eltávolítja az utolsó kiépített felhasználói fiókot:
-
-    ```bash
-    ssh azureuser@<publicIpAddress>
-    sudo waagent -deprovision+user -force
-    exit 
-    ```
-
-2. Jelentkezzen be az Azure-fiókjába az [az login](/cli/azure/reference-index)paranccsal.
-3. Állítsa le és szabadítsa fel a virtuális gépet.
-
-    ```azurecli
-    az vm deallocate --resource-group myResourceGroup --name myVM
-    ```
-
-4. A virtuális gép általánosítása. 
-
-    ```azurecli
-    az vm generalize --resource-group myResourceGroup --name myVM
-    ``` 
-
-Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, hajtsa végre a következő lépéseket:
+Egy virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuális géphez van csatlakoztatva. A virtuális merevlemez letöltéséhez le kell állítania a virtuális gépet. 
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2.  A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
 3.  Válassza ki a virtuális gépet a listából.
 4.  A virtuális gép lapján válassza a **Leállítás**lehetőséget.
 
-    ![VM leállítása](./media/download-vhd/export-stop.png)
+    :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Megjeleníti a virtuális gép leállítására szolgáló menü gombot.":::
 
 ## <a name="generate-sas-url"></a>SAS URL-cím előállítása
 
 A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL-címét kell létrehoznia. Az URL-cím létrehozásakor a rendszer lejárati időt rendel az URL-címhez.
 
-1.  A virtuális gép oldalának menüjében válassza a **lemezek**lehetőséget.
-2.  Válassza ki a virtuális gép operációsrendszer-lemezét, majd válassza a **lemez exportálása**lehetőséget.
-3.  Válassza az **URL-cím előállítása**lehetőséget.
-
-    ![URL-cím előállítása](./media/download-vhd/export-generate.png)
-
+1. A virtuális gép oldalának menüjében válassza a **lemezek**lehetőséget.
+2. Válassza ki a virtuális gép operációsrendszer-lemezét, majd válassza a **lemez exportálása**lehetőséget.
+1. Ha szükséges, frissítse az **URL-cím érvényességét (másodpercben)** , hogy elegendő idő legyen a letöltés befejezésére. Az alapértelmezett érték 3600 másodperc (egy óra).
+3. Válassza az **URL-cím előállítása**lehetőséget.
+ 
+      
 ## <a name="download-vhd"></a>VHD letöltése
 
 1.  A létrehozott URL-cím alatt válassza **a VHD-fájl letöltése**lehetőséget.
-**
-    ![VHD letöltése](./media/download-vhd/export-download.png)
+
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Megjeleníti a virtuális merevlemez letöltésére szolgáló gombot.":::
 
 2.  Előfordulhat, hogy a letöltés indításához a böngésző **Mentés** elemét kell választania. A VHD-fájl alapértelmezett neve *ABCD*.
-
-    ![Válassza a mentés lehetőséget a böngészőben](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>További lépések
 

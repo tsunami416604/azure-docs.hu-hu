@@ -286,7 +286,7 @@ Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexel
 - nincs belefoglalt elérési út, és
 - `/*`az egyetlen kizárt elérési út.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

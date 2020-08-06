@@ -4,15 +4,15 @@ description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozha
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: b031b2a26f81c34f1699e530c8d0bb8839454c89
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e13d7a1cb35d2b0c9544a8be36f834efc6970501
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543877"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759648"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Az Azure-Availability Zones támogató régiók
 
@@ -58,12 +58,11 @@ Az egyes régiókban elérhető szolgáltatások, valamint a rendelkezésre áll
 Az Azure emellett a következő régiókban nyújt Availability Zones támogatást:
 
 - USA-beli államigazgatás – Virginia
-- Kelet-Ausztrália
 - Dél-Afrika északi régiója
 - USA déli középső régiója
 - Közép-Kanada
 
-Ha többet szeretne megtudni a Availability Zones támogatásáról ebben az öt régióban, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével, vagy nyisson meg egy technikai támogatási kérelmet.
+Ha többet szeretne megtudni a négy régió Availability Zones támogatásáról, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével, vagy nyisson meg egy technikai támogatási kérelmet.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
+title: Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 description: Az Azure szerepköralapú hozzáférés-vezérlésének (Azure RBAC) áttekintése. Szerepkör-hozzárendelések használata az Azure-erőforrásokhoz való hozzáférés szabályozásához.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.workload: identity
 ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: azuread-video-2020
+ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171580"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761127"
 ---
-# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
+# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
 A felhőbeli erőforrások hozzáférésének kezelése kritikus fontosságú a felhőt használó vállalatok számára. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz, mit tehet az erőforrásokkal, és milyen területekhez férhet hozzá.
 
@@ -136,7 +137,6 @@ Az Azure RBAC a következő magas szintű lépésekkel határozza meg, hogy van-
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: a felhasználó hozzáférésének megtekintése Azure-erőforrásokhoz](check-access.md)
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
 - [Felhőalapú bevezetési keretrendszer: erőforrás-hozzáférés kezelése az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a11c74087731ddd3de4d6277e605ce06a8eea6
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: df9c55971d05efcdbf1300a8023285bd0c8f3e4f
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126324"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Raketa
 
@@ -43,20 +43,29 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Raketa támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-
-* A Raketa konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Raketa támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+* A Raketa konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-raketa-from-the-gallery"></a>Raketa hozzáadása a gyűjteményből
 
 A Raketa Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Raketa a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Raketa** kifejezést a keresőmezőbe.
-1. Válassza ki a **Raketa** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást [1].
+
+    ![rkt_1](./media/raketa-tutorial/azure-active-directory.png)
+
+1. Keresse meg a **vállalati alkalmazások** [2] elemet, majd válassza a **minden alkalmazás** [3] lehetőséget.
+
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** [4] elemet. 
+
+    ![rkt_2](./media/raketa-tutorial/new-app.png)
+
+1. A **Hozzáadás a** katalógusból [5] szakaszban írja be a **Raketa** kifejezést a keresőmezőbe: [6].
+
+1. Válassza a **Raketa** elemet az eredmények panel [7] területen, majd kattintson a **Hozzáadás** gombra [8]. 
+
+    ![rkt_3](./media/raketa-tutorial/add-btn.png)
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-raketa"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Raketa
@@ -76,57 +85,88 @@ Az Azure AD SSO és a Raketa konfigurálásához és teszteléséhez hajtsa vég
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Raketa** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **Raketa** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** [9] lehetőséget.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![rkt_4](./media/raketa-tutorial/manage-sso.png)
+
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon [9] Válassza az **SAML** [10] lehetőséget.
+
+    ![rkt_5](./media/raketa-tutorial/saml.png)
+
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztése/toll ikonjára [11] a beállítások szerkesztéséhez.
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://raketa.travel/`
+    1. Az **azonosítóban (Entity ID)** [12] és a **bejelentkezési URL-cím** [14] szövegmezőben írja be a következő URL-címet: `https://raketa.travel/` .
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://raketa.travel/sso/acs?clientId=<CLIENT_ID>`
+    1. A **Válasz URL-címe** szövegmezőben [13] írjon be egy URL-címet a következő minta használatával: `https://raketa.travel/sso/acs?clientId=<CLIENT_ID>` .  
+
+    ![rkt_6](./media/raketa-tutorial/enter-urls.png)
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a Raketa ügyfélszolgálati [csapatához](mailto:help@raketa.travel) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
-
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd válassza a **Letöltés** [15] lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
 1. A **Raketa beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    1. Bejelentkezési URL [16] – az engedélyezési weblap URL-címe, amely a felhasználók hitelesítési rendszerre való átirányítására szolgál.
+
+    1. Azure AD-azonosító [17] – Azure AD-azonosító.
+
+    1. Kijelentkezési URL [18] – a weblap URL-címe, amely a felhasználók a kijelentkezés után való átirányításához használatos.
+
+    ![rkt_7](./media/raketa-tutorial/copy-urls.png)
+
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** [1], majd a **felhasználók** [19] lehetőséget, majd válassza **a minden felhasználó** [20] elemet.
+
+1. Válassza a képernyő tetején található [21] **új felhasználót** .
+
+    ![rkt_8](./media/raketa-tutorial/new-user.png)
+
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+
+   1. A Felhasználónév mezőben adja meg a (z) [22] **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+
+   1. A név mezőbe írja be a (z) [23] **nevet** `B.Simon` .
+
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet [25], majd írja le a [24] **jelszó** mezőben megjelenő értéket.
+
+   1. Kattintson a **Létrehozás** [26] elemre. 
+
+    ![rkt_9](./media/raketa-tutorial/create-user.png)
+
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Raketa.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Raketa**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** [2] elemet, majd válassza a **minden alkalmazás** [3] lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+1. Az alkalmazások listában válassza a **Raketa** [27] elemet.  
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+    ![rkt_10](./media/raketa-tutorial/add-raketa.png)
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** [28] lehetőséget. 
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+    ![rkt_11](./media/raketa-tutorial/users-groups.png)
+
+1. Válassza a **felhasználó hozzáadása** [29] lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** [30] lehetőséget.
+
+    ![rkt_12](./media/raketa-tutorial/add-user-raketa.png)
+
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a **B. Simon** [31] elemet a felhasználók listából, majd kattintson a **Select** [32] gombra a képernyő alján.
+
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra [33]. 
+
+    ![rkt_13](./media/raketa-tutorial/assign-user.png)
 
 ## <a name="configure-raketa-sso"></a>Raketa SSO konfigurálása
 
@@ -134,7 +174,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Raketa** oldalon, el 
 
 ### <a name="create-raketa-test-user"></a>Raketa-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Raketa-ben. Együttműködik a [Raketa támogatási csapatával](mailto:help@raketa.travel) , hogy hozzáadja a felhasználókat a Raketa platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Raketa-ben. Együttműködik a [Raketa támogatási csapatával](mailto:help@raketa.travel) , hogy hozzáadja a felhasználókat a Raketa platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -155,4 +195,3 @@ Ha a hozzáférési panelen a Raketa csempére kattint, automatikusan be kell je
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [A Raketa és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

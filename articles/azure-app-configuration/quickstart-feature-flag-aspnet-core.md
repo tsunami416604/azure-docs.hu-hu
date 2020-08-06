@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80803143"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760141"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
 
@@ -28,12 +28,12 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **funkció-kezelő** > **+ Hozzáadás** elemet a szolgáltatáshoz `Beta`tartozó jelző hozzáadásához.
+6. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
 
-    Most `label` hagyja meg a nem definiált lehetőséget. Válassza az **alkalmaz** lehetőséget az új funkció jelző mentéséhez.
+    `label`Most hagyja meg a nem definiált lehetőséget. Válassza az **alkalmaz** lehetőséget az új funkció jelző mentéséhez.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -53,10 +53,10 @@ A Secret Manager használatához adjon hozzá egy `UserSecretsId` elemet a *. cs
 
 1. Nyissa meg a *. csproj* fájlt.
 
-1.  Adjon hozzá `UserSecretsId` egy elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is.
+1.  Adjon hozzá egy `UserSecretsId` elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`a `CreateWebHostBuilder` .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
+    > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -99,7 +99,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. A következő parancsok futtatásával adjon hozzá hivatkozásokat a `Microsoft.Azure.AppConfiguration.AspNetCore` és a `Microsoft.FeatureManagement.AspNetCore` NuGet-csomagokhoz:
+1. `Microsoft.Azure.AppConfiguration.AspNetCore`A következő parancsok futtatásával adjon hozzá hivatkozásokat a és a `Microsoft.FeatureManagement.AspNetCore` NuGet-csomagokhoz:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
@@ -114,7 +114,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 1. Adjon hozzá egy **ConnectionStrings: AppConfig** nevű titkos kulcsot a Secret Managerhez.
 
-    Ez a titok tartalmazza a kapcsolati karakterláncot az alkalmazás konfigurációs tárolójának eléréséhez. Cserélje le `<your_connection_string>` a következő parancs értékét az alkalmazás konfigurációs tárolójának a kapcsolatok karakterláncára. A kapcsolati karakterláncot a Azure Portal **elérési kulcsa** alatt találja.
+    Ez a titok tartalmazza a kapcsolati karakterláncot az alkalmazás konfigurációs tárolójának eléréséhez. Cserélje le a `<your_connection_string>` következő parancs értékét az alkalmazás konfigurációs tárolójának a kapcsolatok karakterláncára. A kapcsolati karakterláncot a Azure Portal **elérési kulcsa** alatt találja.
 
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
@@ -126,10 +126,10 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
     Ezt a titkot az alkalmazás konfigurációs API-jával érheti el. Egy kettőspont (:) a konfiguráció neve az App Configuration API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
-1. A *program.cs*-ben frissítse `CreateWebHostBuilder` a metódust az alkalmazás konfigurációjának használatára `config.AddAzureAppConfiguration()` a metódus meghívásával.
+1. A *program.cs*-ben frissítse a metódust az `CreateWebHostBuilder` alkalmazás konfigurációjának használatára a metódus meghívásával `config.AddAzureAppConfiguration()` .
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`a `CreateWebHostBuilder` .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
+    > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -171,7 +171,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     using Microsoft.FeatureManagement;
     ```
 
-1. Frissítse a `ConfigureServices` metódust a szolgáltatás jelölő támogatásának hozzáadásához `services.AddFeatureManagement()` a metódus meghívásával. Megadhatja, hogy a szolgáltatás jelzőjén használható szűrőket a következő hívásával `services.AddFeatureFilter<FilterType>()`is felhasználhatja:
+1. Frissítse a `ConfigureServices` metódust a szolgáltatás jelölő támogatásának hozzáadásához a metódus meghívásával `services.AddFeatureManagement()` . Megadhatja, hogy a szolgáltatás jelzőjén használható szűrőket a következő hívásával is felhasználhatja `services.AddFeatureFilter<FilterType>()` :
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
     ```csharp
@@ -186,7 +186,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddFeatureManagement();
+        services.AddSingleton(Configuration).AddFeatureManagement();
     }
 
     ---
@@ -288,7 +288,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Nyissa meg *_Layout. cshtml* mappát a *nézetek*\\*megosztott* könyvtárában, `<nav>` és cserélje le `<body>`  >  `<header>` a vonalkódot a következő kóddal:
+1. Nyissa meg *_Layout. cshtml* mappát a *nézetek* \\ *megosztott* könyvtárában, és cserélje le a `<nav>` vonalkódot a `<body>`  >  `<header>` következő kóddal:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -343,7 +343,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     dotnet run
     ```
 
-1. Nyisson meg egy böngészőablakot, és nyissa meg a következőt: `https://localhost:5000`, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+1. Nyisson meg egy böngészőablakot, és nyissa meg a következőt `https://localhost:5000` :, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
     Ha dolgozik a Azure Cloud Shellban, válassza a *webes előnézet* gombot, majd a *configure (Konfigurálás*) lehetőséget.  Ha a rendszer kéri, válassza a 5000-es portot.
 
     ![A webes előnézet gomb megkeresése](./media/quickstarts/cloud-shell-web-preview.png)
@@ -355,7 +355,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 1. Válassza a **szolgáltatásvezérlő**lehetőséget, majd módosítsa a **bétaverzió** állapotát **a be**értékre.
 
-1. Térjen vissza a parancssorba, és szakítsa `dotnet` meg a futó `Ctrl-C`folyamatot a következő lenyomásával:.  Indítsa újra az alkalmazást `dotnet run`a használatával.
+1. Térjen vissza a parancssorba, és szakítsa meg a futó folyamatot a következő `dotnet` lenyomásával: `Ctrl-C` .  Indítsa újra az alkalmazást a használatával `dotnet run` .
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 

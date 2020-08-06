@@ -494,10 +494,8 @@
       items:
         - name: Az egyéni kulcsszavak áttekintése
           href: custom-keyword-overview.md
-        - name: Egyéni kulcsszóelnevezési irányelvek
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Egyéni kulcsszófelismerés
-          href: speech-devices-sdk-create-kws.md
+        - name: Az egyéni kulcsszavak alapjai
+          href: custom-keyword-basics.md
 - name: Beszélőfelismerés
   items:
     - name: Áttekintés
@@ -642,7 +640,7 @@
       href: how-to-migrate-from-bing-speech.md
     - name: A Translator Speech API-ból
       href: how-to-migrate-from-translator-speech-api.md
-- name: Források
+- name: További források
   items:
     - name: Támogatás
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'

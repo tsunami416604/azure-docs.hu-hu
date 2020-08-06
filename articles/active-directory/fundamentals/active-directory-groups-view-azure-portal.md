@@ -2,7 +2,7 @@
 title: Rövid útmutató – csoportok megtekintése & tagoknak – Azure AD
 description: Útmutatás a szervezeti csoportok és a hozzájuk rendelt tagok megkereséséhez és megtekintéséhez.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75423014"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797491"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -50,7 +50,7 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
     
     - **Tagság típusa:** válassza a **Hozzárendelt** lehetőséget.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-new-user"></a>Új felhasználó létrehozása
 Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Az "egyéni tartománynevek" lapon először tekintse meg a hitelesített tartománynevet, amelyben a felhasználókat létre szeretné hozni. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.
@@ -61,14 +61,14 @@ Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak m
 
     - **Név:** írja be a következőt: _Alain Charon_.
 
-    - **Felhasználónév:** Írja be az *alain\@contoso.com*.
+    - **Felhasználónév:** Írja be az *alain \@ contoso.com*.
 
 3. Másolja a **Jelszó** mezőben szereplő, automatikusan előállított jelszót, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-group-member"></a>Csoporttag hozzáadása
 Most, hogy már rendelkezik egy csoporttal és egy felhasználóval, hozzáadhatja _Alain Charont_ az _MDM policy – West_ csoport tagjaként. Csoporttagok hozzáadásával kapcsolatos további információkért lásd: [Csoporttagok hozzáadása vagy eltávolítása](active-directory-groups-members-azure-portal.md).
 
-1. Válassza ki **Azure Active Directory** > **csoportokat**.
+1. Válassza ki **Azure Active Directory**  >  **csoportokat**.
 
 2. A **Csoportok – Minden csoport** lapon keresse meg és válassza ki az **MDM policy – West** csoportot.
 
@@ -81,7 +81,7 @@ Most, hogy már rendelkezik egy csoporttal és egy felhasználóval, hozzáadhat
 ## <a name="view-all-groups"></a>Az összes csoport megtekintése
 A vállalat összes csoportját megtekintheti az Azure Portal **Csoportok – Minden csoport** lapján.
 
-- Válassza az Azure **Active Directory** > **csoportok**lehetőséget.
+- Válassza az Azure **Active Directory**  >  **csoportok**lehetőséget.
 
     A **Csoportok – Minden csoport** lap megjelenik, és mutatja az összes aktív csoportot.
 

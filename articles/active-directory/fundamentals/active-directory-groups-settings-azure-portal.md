@@ -2,7 +2,7 @@
 title: A csoport adatainak szerkesztése – Azure Active Directory | Microsoft Docs
 description: Útmutatás a csoport adatainak Azure Active Directory használatával történő szerkesztéséhez.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 410570798e468244763c05b3275801427dc4b2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604233"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797525"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatainak szerkesztése Azure Active Directory használatával
 
@@ -47,7 +47,7 @@ A Azure Active Directory (Azure AD) használatával szerkesztheti a csoportok be
 
     - **Csoport neve.** Szerkessze a létező csoportnév-nevet.
     
-    - **A csoport ismertetése.** A meglévő csoport leírásának szerkesztése.
+    - **Csoport leírása** A meglévő csoport leírásának szerkesztése.
 
     - **Csoport típusa** A csoport típusa nem módosítható a létrehozása után. A **csoport típusának**módosításához törölnie kell a csoportot, és létre kell hoznia egy újat.
     

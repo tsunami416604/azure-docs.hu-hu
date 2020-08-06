@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280834"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759206"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
@@ -23,15 +23,15 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegy
 
 ## <a name="july-2020"></a>2020. július
 
-### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>Olvasási API v 3.1 – előzetes verzió: az egyszerűsített kínai támogatás támogatása
-A Computer Vision Read API v 3.1 – preview. 1 az egyszerűsített kínai támogatását adja meg.
+### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>A Read API v 3.1 nyilvános előzetes verziója egyszerűsített kínai támogatást nyújt
+A Computer Vision Read API v 3.1 nyilvános előzetes verziója támogatja az egyszerűsített kínai verziót.
 
 * Az olvasási API előzetes verziója az angol, holland, francia, német, olasz, portugál, egyszerűsített kínai és spanyol nyelveket támogatja.
 
 További információért tekintse meg az [OLVASÁSI API áttekintése](concept-recognizing-text.md) című témakört.
 
 > [!div class="nextstepaction"]
-> [További információ az olvasási API v 3.1 – előzetes verzióról. 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [További információ az olvasási API v 3.1 nyilvános előzetes verziójáról](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020. május
 Computer Vision API v 3.0 általánosan elérhető, az [OLVASÁSI API](concept-recognizing-text.md)frissítéseivel:

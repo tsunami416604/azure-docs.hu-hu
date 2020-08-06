@@ -3,7 +3,7 @@ title: Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelés
 description: Megtudhatja, hogyan delegálhat hozzáférési szabályozást a rendszergazdáktól a csomagkezelő és a projektmenedzserek eléréséhez, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acea7503e5cdde9ff55c27f16351b21453fe521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078340"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798637"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében lévő csomagkezelő hozzáféréséhez
 
@@ -68,7 +68,7 @@ A következő lépésekkel távolíthat el egy felhasználót a Access Package M
 
 1. Vegyen fel egy pipát az eltávolítani kívánt Access Package Manager mellett.
 
-1. Kattintson az **Eltávolítás** lehetőségre.
+1. Kattintson az **Eltávolítás** elemre.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291516"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760668"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -202,19 +202,19 @@ Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbíz
 
 1. Kattintson a jobb gombbal a csomagra, és válassza a **Tulajdonságok**lehetőséget.
 2. A megjelenő ablakban válassza a **digitális aláírások** fület. A lapon csak egy elemnek kell szerepelnie a listán, ahogy az az alábbi képen is látható. Válassza ki az elemet az elem kiemeléséhez, majd válassza a **részletek**lehetőséget.
-3. Amikor megjelenik a digitális aláírás részletei ablak, válassza az **általános** lapot, majd válassza a **tanúsítvány telepítése**lehetőséget.
+3. Amikor megjelenik a digitális aláírás részletei ablak, válassza az **általános** lapot, majd válassza a **Tanúsítvány megtekintése**lehetőséget, majd válassza a **tanúsítvány telepítése**lehetőséget.
 4. A telepítő megnyitásakor válassza a **helyi gép** lehetőséget a tárolási helyként, majd kattintson a **tovább**gombra.
 5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen**lehetőséget.
 6. Válassza **a minden tanúsítvány tárolása a következő tárolóban**lehetőséget, majd válassza a **Tallózás**lehetőséget.
 7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek**lehetőséget, majd kattintson **az OK gombra**.
-8. Válassza a **Befejezés** lehetőséget.
+8. Válassza a **tovább** , majd a **Befejezés**lehetőséget.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-parancsfájlok előkészítése MSIX-alkalmazás csatolásához
 
 A MSIX-alkalmazás csatolása négy különböző fázist tartalmaz, amelyeket a következő sorrendben kell végrehajtani:
 
 1. Fázis
-2. Regisztráljon
+2. Regisztráció
 3. Képes
 4. Kilépés
 

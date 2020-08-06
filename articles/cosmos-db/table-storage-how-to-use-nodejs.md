@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9404232533ae86e14f9b87c65fdd086f84e8aebb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414003"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760974"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 
@@ -123,7 +123,7 @@ function (returnObject, finalCallback, next)
 
 Ebben a visszahívásban, és a `returnObject` (a kéréstől a kiszolgálónak küldött válasz) feldolgozását követően a visszahívásnak meg kell hívnia, `next` hogy továbbra is feldolgozza-e más szűrőket, vagy egyszerűen hívja meg a szolgáltatás meghívásának `finalCallback` befejezését.
 
-Az újrapróbálkozási logikát megvalósító két szűrő szerepel az Azure SDK for Node.js, a `ExponentialRetryPolicyFilter** and ` LinearRetryPolicyFilter `. The following creates a ` TableService ` object that uses the ` ExponentialRetryPolicyFilter:
+Az újrapróbálkozási logikát megvalósító két szűrő szerepel a Node.js készült Azure SDK-ban `ExponentialRetryPolicyFilter` és a-ben `LinearRetryPolicyFilter` . A következő létrehoz egy `TableService` objektumot, amely a következőket használja `ExponentialRetryPolicyFilter` :
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -477,7 +477,7 @@ Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosít
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következő forrásanyagokat.
 

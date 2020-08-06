@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688891"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760906"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és megosztott lemezen az Azure-beli SAP ASCS/SCS-példányhoz
 
@@ -225,7 +225,7 @@ Először adjon hozzá egy új profil paramétert. A profil paraméter megakadá
 
 Az ASCS/SCS-példány SAP-profiljának módosítása:
 
-1. Adja hozzá ezt a profil paramétert az SAP ASCS/SCS instance profilhoz:
+1. Adja hozzá ezt a profil paramétert az SAP ASCS/SCS instance profilhoz, ha az ENSA1-t használja.
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ Az ASCS/SCS-példány SAP-profiljának módosítása:
    Például az SAP SCS-példány profiljához és a megfelelő elérési úthoz:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   A ENSA1 és a ENSA2 esetében ügyeljen arra, hogy az `keepalive` operációs rendszer paramétereinek beállítása a [1410736](https://launchpad.support.sap.com/#/notes/1410736)-es SAP-megjegyzésben leírtak szerint történjen.   
 
 2. A módosítások alkalmazásához indítsa újra az SAP ASCS/SCS-példányt.
 
