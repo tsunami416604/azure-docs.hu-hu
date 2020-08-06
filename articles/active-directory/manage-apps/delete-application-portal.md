@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223907"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808235"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás törlése a Azure Active Directory (Azure AD) bérlőből
 
@@ -44,9 +43,15 @@ Alkalmazás törlése az Azure AD-bérlőből:
 1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **Tulajdonságok**lehetőséget.
 1. Válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni szeretné az alkalmazást az Azure ad-bérlőből.
 
+> [!TIP]
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha elkészült ezzel a rövid útmutatóval, érdemes törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlése ebben a rövid útmutatóban szerepelt.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Alkalmazások kezelése – ajánlott eljárások](application-management-fundamentals.md)
-- [Alkalmazások kezelése – gyakori forgatókönyvek](common-scenarios.md)
-- [Az alkalmazások felügyeletének láthatósága és szabályozása](cloud-app-security.md)
+Elvégezte a gyors üzembe helyezési sorozatot! Következő lépésként olvassa el az App Management ajánlott eljárásait ismertető témakört.
+> [!div class="nextstepaction"]
+> [Alkalmazások kezelése – ajánlott eljárások](application-management-fundamentals.md)

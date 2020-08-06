@@ -998,7 +998,7 @@
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
                     - name: 'FCI létrehozása a következővel:'
                       items:
-                        - name: Azure megosztott lemezek (SQL2019+)
+                        - name: Azure megosztott lemezek
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
                         - name: Közvetlen tárolóhelyek (Win2016+)
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md

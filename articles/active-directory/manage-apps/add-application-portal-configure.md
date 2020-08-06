@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338044"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808405"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -95,9 +95,17 @@ Egyéni embléma használata:
    > [!NOTE]
    > A **Tulajdonságok** ablaktáblán megjelenő miniatűr nem azonnal frissül. A frissített ikon megjelenítéséhez kattintson a **Tulajdonságok** panel bezárásához és újbóli megnyitásához.
 
-## <a name="next-steps"></a>További lépések
 
-Most, hogy konfigurálta egy alkalmazás tulajdonságait, folytathatja az egyszeri bejelentkezés beállítását.
+> [!TIP]
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
 
-- [Egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)
-- [Alkalmazás törlése](delete-application-portal.md)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+A következő cikkből megtudhatja, hogyan állíthatja be az egyszeri bejelentkezést az alkalmazásokhoz.
+> [!div class="nextstepaction"]
+> [Egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)

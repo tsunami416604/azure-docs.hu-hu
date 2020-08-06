@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77615495"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810171"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: Azure térbeli horgonyok megosztása a munkamenetek és az eszközök között
 
@@ -34,7 +34,7 @@ A következőket fogja megtanulni:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Érdemes megjegyezni, hogy bár ebben az oktatóanyagban az Unity és egy ASP.NET Core webalkalmazást használ, csak egy példát mutat be, hogy miként oszthat meg Azure térbeli horgony-azonosítókat más eszközökön. Ugyanezen cél elérése érdekében más nyelveket és háttér-technológiákat is használhat. Az oktatóanyagban használt ASP.NET Core webalkalmazás a .NET Core 2,2 SDK-val való függőséggel is rendelkezik. Normál Azure-Web Apps (Windows rendszeren) fut, de jelenleg nem fog működni az Azure Web Apps Linux rendszeren.
+Érdemes megjegyezni, hogy bár ebben az oktatóanyagban az Unity és egy ASP.NET Core webalkalmazást használ, csak egy példát mutat be, hogy miként oszthat meg Azure térbeli horgony-azonosítókat más eszközökön. Ugyanezen cél elérése érdekében más nyelveket és háttér-technológiákat is használhat.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -56,9 +56,9 @@ A szolgáltatás a VS Code-ban való üzembe helyezése előtt létre kell hozni
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Navigáljon a <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a> , és jelentkezzen be az Azure-előfizetésbe.
+Navigáljon a <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> , és jelentkezzen be az Azure-előfizetésbe.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
@@ -76,25 +76,19 @@ A **üzemeltetési terv konfigurálása** párbeszédpanelen használja a követ
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|App Service-csomag| MySharingServicePlan | Az App Service-csomag neve. |
+|App Service Plan (App Service-csomag)| MySharingServicePlan | Az App Service-csomag neve. |
 | Hely | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Méret | Ingyenes | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag. |
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
-Nyissa meg a Visual Studio Code-ot, és `Sharing\SharingServiceSample` nyissa meg a projektet a mappában. <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Ezt az oktatóanyagot</a> követve üzembe helyezheti a megosztási szolgáltatást a Visual Studio Code használatával. A "Megnyitás a Visual Studio Code-ban" című szakaszban leírtak szerint járjon el. Ne hozzon létre egy másik MVC-projektet a fenti lépésben leírtak szerint, mivel már rendelkezik az üzembe helyezni és közzétenni kívánt projekttel – a SharingServiceSample.
+Nyissa meg a Visual Studio Code-ot, és nyissa meg a projektet a `Sharing\SharingServiceSample` mappában. <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Ezt az oktatóanyagot</a> követve üzembe helyezheti a megosztási szolgáltatást a Visual Studio Code használatával. A "Megnyitás a Visual Studio Code-ban" című szakaszban leírtak szerint járjon el. Ne hozzon létre egy másik ASP.NET-projektet a fenti lépésben leírtak szerint, mivel már rendelkezik az üzembe helyezni és közzétenni kívánt projekttel – a SharingServiceSample.
 
 ---
 
 ## <a name="deploy-the-sample-app"></a>A minta alkalmazás üzembe helyezése
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
-
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-### <a name="unity-20193"></a>Unity 2019,3
-
-A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

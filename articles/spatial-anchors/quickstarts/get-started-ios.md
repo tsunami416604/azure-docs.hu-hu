@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 99f3b5bc763c6ffb43fd143cf394be9157b2c83f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460269"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809986"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: iOS-alkalmazás létrehozása Azure térbeli Horgonyokkal Swift vagy Objective-C nyelven
 
@@ -101,7 +101,7 @@ Keresse meg a `spatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fi�
 
 Keresse meg a `spatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
-Keresse meg `startSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `cloudSession!.configuration.accountDomain = "MyAccountDomain";` .
+Keresse meg a `spatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` fiókot a fiók tartományára.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
@@ -111,7 +111,7 @@ Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fi�
 
 Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
-Keresse meg `startSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `_cloudSession.configuration.accountDomain = @"MyAccountDomain";` .
+Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` fiókot a fiók tartományára.
 
 ---
 

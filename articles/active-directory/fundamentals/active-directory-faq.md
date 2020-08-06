@@ -2,7 +2,7 @@
 title: Gyakori kérdések (GYIK) – Azure Active Directory | Microsoft Docs
 description: Gyakori kérdések és válaszok az Azure és a Azure Active Directory, a jelszavas kezelés és az alkalmazás-hozzáférés terén.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775b71dd88c26dfe3ee62326615f6a81ee237deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604420"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799090"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések a Azure Active Directory
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -32,7 +32,7 @@ További információkért lásd: [Mi az az Azure Active Directory?](active-dire
 **V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha nem rendelkezik fizetős Office 365-vagy Azure AD-előfizetéssel, aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/free/
 ) vagy egy fizetős előfizetést.
 
-További információkért lásd:
+További információ:
 
 * [How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)](active-directory-how-subscriptions-associated-directory.md)
 
@@ -160,7 +160,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 
 **V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításaitól függően beállíthatja az egyszeri bejelentkezést és az automatizált üzembe helyezést.  
 
-További információkért lásd:
+További információ:
 
 * [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ További információ: [végfelhasználói élmények az alkalmazásokhoz](../ma
 
 **V:** Az Azure AD számos szabványos protokollt támogat a hitelesítéshez és az engedélyezéshez, például ilyen a SAML 2.0, az OpenID Connect, az OAuth 2.0 és a WS-Federation. Az Azure AD a jelszótárolást és az automatikus bejelentkezési képességeket is támogatja olyan alkalmazásoknál, amelyek csak az űrlapalapú hitelesítést támogatják.  
 
-További információkért lásd:
+További információ:
 
 * [Hitelesítési forgatókönyvek az Azure AD-hez](../develop/authentication-scenarios.md)
 * [Hitelesítési protokollok Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)

@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: c40d05b9b58d77e5e95fcd0c8bdb67ae0470c458
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/05/2020
+ms.openlocfilehash: 5244d9711886376fe9502e31c227d8d74de4c21a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530712"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800362"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Adatok másolása az Azure SQL felügyelt példányára és onnan a Azure Data Factory használatával
 
@@ -598,7 +598,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 | uniqueidentifier |Guid |
 | varbinary |Bájt [] |
 | varchar |Karakterlánc, char [] |
-| xml |Xml |
+| xml |Sztring |
 
 >[!NOTE]
 > A decimális átmeneti típusra leképezett adattípusok esetén a másolási tevékenység jelenleg legfeljebb 28-ig támogatja a pontosságot. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.

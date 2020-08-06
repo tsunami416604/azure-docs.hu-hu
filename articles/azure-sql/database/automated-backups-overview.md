@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554039"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810272"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -26,22 +26,38 @@ ms.locfileid: "87554039"
 
 ## <a name="what-is-a-database-backup"></a>Mi az adatbázis biztonsági mentése?
 
-Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel ezek az adatok a sérüléstől vagy törléstől védve vannak.
+Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel ezek az adatok a sérüléstől vagy törléstől védve vannak. Ezek a biztonsági másolatok lehetővé teszik az adatbázis visszaállítását egy adott időpontra a beállított megőrzési időtartamon belül. Ha az adatvédelmi szabályok megkövetelik, hogy a biztonsági másolatok hosszabb ideig is elérhetők legyenek (akár 10 évig), konfigurálhatja a [hosszú távú adatmegőrzést](long-term-retention-overview.md) mind az önálló, mind a készletezett adatbázisokhoz.
+
+### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
 Mind a SQL Database, mind az SQL felügyelt példánya SQL Server technológiával [teljes biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) készít minden héten, a [különbözeti biztonsági mentéseket](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) 12-24 óránként, a [tranzakciós napló biztonsági](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) mentését pedig 5 – 10 percenként. A tranzakciónapló biztonsági mentései gyakorisága a számítási mérettől és az adatbázis-tevékenység mennyiségétől függ.
 
 Adatbázis visszaállításakor a szolgáltatás határozza meg, hogy a rendszer melyik teljes, különbözeti és tranzakciónapló biztonsági másolatokat szeretné visszaállítani.
 
-Ezek a biztonsági másolatok lehetővé teszik az adatbázis visszaállítását egy adott időpontra a beállított megőrzési időtartamon belül. A biztonsági másolatok olyan [ra-GRS tároló Blobok](../../storage/common/storage-redundancy.md) , amelyek egy [párosított régióba](../../best-practices-availability-paired-regions.md) replikálódnak az elsődleges régióban található biztonsági mentési tárterületet érintő kimaradások elleni védelem érdekében. 
+### <a name="backup-storage-redundancy"></a>Biztonsági mentési tár redundancia
 
-Ha az adatvédelmi szabályok megkövetelik, hogy a biztonsági másolatok hosszabb ideig is elérhetők legyenek (akár 10 évig), konfigurálhatja a [hosszú távú adatmegőrzést](long-term-retention-overview.md) mind az önálló, mind a készletezett adatbázisokhoz.
+> [!IMPORTANT]
+> A biztonsági mentések konfigurálható tárolási redundancia jelenleg csak az SQL felügyelt példányai számára érhető el, és csak a felügyelt példány létrehozása folyamat során adható meg. Az erőforrás kiépítése után nem módosítható a biztonságimásolat-tárolási redundancia beállítás.
+
+A Backup Storage-redundancia konfigurálásának lehetősége lehetővé teszi a helyileg redundáns (LRS), a Zone-redundáns (ZRS) vagy a Geo-redundáns (RA-GRS) [tárolási Blobok](../../storage/common/storage-redundancy.md)közötti választást. A tárolási redundancia-mechanizmusok több példányban tárolják az adataikat, így védve vannak a tervezett és nem tervezett eseményekről, beleértve az átmeneti hardverhiba, a hálózati vagy áramkimaradások vagy a súlyos természeti katasztrófákat. Ez a funkció jelenleg csak az SQL felügyelt példányai esetében érhető el.
+
+Az RA-GRS Storage-Blobok egy [párosított régióba](../../best-practices-availability-paired-regions.md) vannak replikálva, hogy védelmet nyújtson a biztonsági mentési tárolót az elsődleges régióban, és lehetővé teszi a kiszolgáló más régióba való visszaállítását vészhelyzet esetén. 
+
+Ezzel szemben a LRS és a ZRS Storage-Blobok biztosítják, hogy az adatai ugyanabban a régióban maradnak, ahol a SQL Database vagy az SQL felügyelt példánya telepítve van. A Zone-redundáns tárolás (ZRS) jelenleg csak [bizonyos régiókban](../../storage/common/storage-redundancy.md#zone-redundant-storage)érhető el).
+
+> [!IMPORTANT]
+> A felügyelt SQL-példányok esetében a rendszer a konfigurált biztonsági mentési redundanciát alkalmazza az időponthoz kötött visszaállítási (PITR) és hosszú távú adatmegőrzési biztonsági másolatok (LTR) esetében használt rövid távú biztonsági mentési adatmegőrzési beállításokra is.
+
+### <a name="backup-usage"></a>Biztonsági mentés használata
 
 A biztonsági másolatokat a következő célokra használhatja:
 
-- Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával [visszaállíthat egy meglévő adatbázist egy korábbi időpontra](recovery-using-backups.md#point-in-time-restore) a megőrzési időszakon belül. Az önálló és a készletezett adatbázisok esetében a művelet egy új adatbázist hoz létre az eredeti adatbázissal megegyező kiszolgálón, de egy másik név alatt az eredeti adatbázis felülírásának elkerüléséhez. A visszaállítás befejeződése után törölheti vagy [átnevezheti](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) az eredeti adatbázist, és átnevezheti a visszaállított adatbázist, hogy az eredeti adatbázis neve legyen. Felügyelt példány esetén a művelet hasonlóképpen létrehozhatja az adatbázis egy példányát ugyanazon az előfizetésben és ugyanabban a régióban, ugyanazon a másik felügyelt példányon is.
-- A [törölt adatbázis visszaállítása a törlés](recovery-using-backups.md#deleted-database-restore) időpontjára vagy a megőrzési időtartamon belül bármely időpontra. A törölt adatbázist csak ugyanazon a kiszolgálón vagy felügyelt példányon lehet visszaállítani, ahol az eredeti adatbázis létrejött. Adatbázis törlésekor a szolgáltatás a törlés előtt elvégzi a tranzakciós napló utolsó biztonsági mentését, hogy megakadályozza az adatvesztést.
-- [Adatbázis visszaállítása egy másik földrajzi régióba](recovery-using-backups.md#geo-restore). A Geo-visszaállítás lehetővé teszi, hogy egy földrajzi katasztrófa után helyreállítsa az adatbázist vagy a biztonsági mentéseket az elsődleges régióban. Egy új adatbázist hoz létre bármely meglévő kiszolgálón vagy felügyelt példányon bármely Azure-régióban.
-- Egy adatbázis visszaállítása egy önálló adatbázis vagy készletezett adatbázis [adott hosszú távú biztonsági másolatából](long-term-retention-overview.md) , ha az adatbázis hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) van konfigurálva. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) vagy [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](long-term-retention-overview.md).
+- **Meglévő adatbázis**  -  adott időpontban történő visszaállítása Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával [visszaállíthat egy meglévő adatbázist egy korábbi időpontra](recovery-using-backups.md#point-in-time-restore) a megőrzési időszakon belül. SQL Database esetén a művelet egy új adatbázist hoz létre az eredeti adatbázissal megegyező kiszolgálón, de az eredeti adatbázis felülírásának elkerüléséhez más nevet használ. A visszaállítás befejeződése után törölheti az eredeti adatbázist. Másik lehetőségként [átnevezheti](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) az eredeti adatbázist is, majd átnevezheti a visszaállított adatbázist az eredeti adatbázis nevére. Hasonlóképpen, a felügyelt SQL-példányok esetében ez a művelet létrehoz egy másolatot az adatbázisról ugyanazon az előfizetésben és ugyanazon a régión belül ugyanazon vagy eltérő felügyelt példányon.
+- **Törölt adatbázis**  -  adott időpontban történő visszaállítása A [törölt adatbázis visszaállítása a törlés](recovery-using-backups.md#deleted-database-restore) időpontjára vagy a megőrzési időtartamon belül bármely időpontra. A törölt adatbázist csak ugyanazon a kiszolgálón vagy felügyelt példányon lehet visszaállítani, ahol az eredeti adatbázis létrejött. Adatbázis törlésekor a szolgáltatás a törlés előtt elvégzi a tranzakciós napló utolsó biztonsági mentését, hogy megakadályozza az adatvesztést.
+- **Geo-visszaállítás**  -  [Adatbázis visszaállítása egy másik földrajzi régióba](recovery-using-backups.md#geo-restore). A Geo-visszaállítás lehetővé teszi, hogy egy földrajzi katasztrófa után helyreállítsa az adatbázist vagy a biztonsági mentéseket az elsődleges régióban. Egy új adatbázist hoz létre bármely meglévő kiszolgálón vagy felügyelt példányon bármely Azure-régióban.
+   > [!IMPORTANT]
+   > A Geo-visszaállítás csak a konfigurált geo-redundáns (RA-GRS) biztonsági mentési tárolóval rendelkező felügyelt példányok esetén érhető el.
+- **Visszaállítás a hosszú távú biztonsági mentésből**  -  Egy adatbázis visszaállítása egy önálló adatbázis vagy készletezett adatbázis [adott hosszú távú biztonsági másolatából](long-term-retention-overview.md) , ha az adatbázis hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) van konfigurálva. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) vagy [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](long-term-retention-overview.md).
 
 A visszaállítás végrehajtásához tekintse meg [az adatbázis biztonsági másolatokból való visszaállítását](recovery-using-backups.md)ismertető témakört.
 
@@ -50,13 +66,13 @@ A visszaállítás végrehajtásához tekintse meg [az adatbázis biztonsági m�
 
 Az alábbi példákkal kipróbálhatja a biztonsági mentési konfigurációt és a visszaállítási műveleteket:
 
-| | Azure Portal | Azure PowerShell |
+| Művelet | Azure Portal | Azure PowerShell |
 |---|---|---|
-| **Biztonsági másolatok megőrzésének módosítása** | [Önálló adatbázis](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Felügyelt példány](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Önálló adatbázis](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **A biztonsági másolatok hosszú távú megőrzésének módosítása** | [Önálló adatbázis](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Felügyelt példány – N/A  | [Önálló adatbázis](long-term-backup-retention-configure.md)<br/>Felügyelt példány – N/A  |
-| **Adatbázis visszaállítása egy adott időpontban** | [Önálló adatbázis](recovery-using-backups.md#point-in-time-restore) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Törölt adatbázis visszaállítása** | [Önálló adatbázis](recovery-using-backups.md) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Adatbázis visszaállítása az Azure Blob Storage-ból** | Önálló adatbázis – N/A <br/>Felügyelt példány – N/A  | Önálló adatbázis – N/A <br/>[Felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Biztonsági másolatok megőrzésének módosítása** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **A biztonsági másolatok hosszú távú megőrzésének módosítása** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL felügyelt példánya – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Adatbázis visszaállítása egy adott időpontban** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Törölt adatbázis visszaállítása** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Adatbázis visszaállítása az Azure Blob Storage-ból** | SQL Database – N/A <br/>SQL felügyelt példánya – N/A  | SQL Database – N/A <br/>[SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Biztonsági mentés ütemezése
 
@@ -98,6 +114,7 @@ A biztonsági mentési tárterület-felhasználás legfeljebb az adatbázis maxi
 - Nagyméretű adatterhelési műveletek esetén érdemes lehet [fürtözött oszlopcentrikus indexeket](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) használni, és a kapcsolódó [ajánlott eljárásokat](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)követni, és/vagy csökkenteni a nem fürtözött indexek számát.
 - A általános célú szolgáltatási szinten a kiépített adattárolás olcsóbb, mint a biztonsági mentési tár ára. Ha folyamatosan nagy mennyiségű biztonsági mentési tárolási költséggel rendelkezik, érdemes lehet növelni az adattárolást a biztonsági mentési tárolón való mentéshez.
 - Az ideiglenes eredmények és/vagy átmeneti adatmennyiségek tárolásához az alkalmazás logikájában állandó táblák helyett használjon TempDB.
+- Helyileg redundáns biztonsági mentési tárterület használata, ha lehetséges (például fejlesztési/tesztelési környezetek)
 
 ## <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
@@ -112,15 +129,13 @@ Az elmúlt 1-35 napon belüli PITR biztonsági mentését időnként rövid táv
 
 ### <a name="long-term-retention"></a>Hosszú távú megőrzés
 
-Az önálló és a készletezett adatbázisok és a felügyelt példányok esetében az Azure Blob Storage-ban akár 10 évig is beállíthatja a teljes biztonsági másolatok hosszú távú megőrzését (LTR). Ha engedélyezi a LTR szabályzatot, a hetente teljes biztonsági mentést a rendszer automatikusan átmásolja egy másik RA-GRS tárolóba. A különböző megfelelőségi követelmények kielégítése érdekében a heti, havi és/vagy évenkénti teljes biztonsági mentésekhez eltérő megőrzési időt választhat. A tárterület-felhasználás a LTR biztonsági mentések kiválasztott gyakoriságával, valamint a megőrzési időtartammal vagy időszakokkal függ. A [ltr díjszabási számológép](https://azure.microsoft.com/pricing/calculator/?service=sql-database) használatával megbecsülheti a ltr-tároló költségeit.
-
-A PITR biztonsági mentésekhez hasonlóan a LTR biztonsági mentések a földrajzilag redundáns tárolással védettek. További információ: [Azure Storage-redundancia](../../storage/common/storage-redundancy.md).
+Mind a SQL Database, mind az SQL felügyelt példány esetében az Azure Blob Storage-ban akár 10 évig is beállíthatja a teljes biztonsági mentés hosszú távú megőrzését (LTR). A LTR házirend konfigurálása után a teljes biztonsági mentések automatikusan egy másik Storage-tárolóba kerülnek. A különböző megfelelőségi követelmények kielégítése érdekében a heti, havi és/vagy évenkénti teljes biztonsági mentésekhez eltérő megőrzési időt választhat. A tárterület-használat a LTR biztonsági mentések kiválasztott gyakoriságával és megőrzési idejével függ. A [ltr díjszabási számológép](https://azure.microsoft.com/pricing/calculator/?service=sql-database) használatával megbecsülheti a ltr-tároló költségeit.
 
 További információ a LTR: a [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Tárolási költségek
 
-A biztonsági mentési tár ára attól függően változik, hogy a DTU modellt vagy a virtuális mag modellt használja-e, valamint a régióját is. A biztonsági mentési tár díja GB/hó használatban van, díjszabásért lásd: [Azure SQL Database díjszabási](https://azure.microsoft.com/pricing/details/sql-database/single/) oldal és az [Azure SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) oldal.
+A biztonsági mentési tár díja változó, és a vásárlási modelltől (DTU vagy virtuális mag), a biztonsági mentési tárterülettől, valamint a régiótól is függ. A biztonsági mentési tár díja GB/hó használatban van, díjszabásért lásd: [Azure SQL Database díjszabási](https://azure.microsoft.com/pricing/details/sql-database/single/) oldal és az [Azure SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) oldal.
 
 ### <a name="dtu-model"></a>DTU-modell
 
@@ -153,6 +168,18 @@ Most egy összetettebb példa. Tegyük fel, hogy ugyanazt az üresjárati adatb�
 A tényleges biztonsági mentési számlázási forgatókönyvek összetettebbek. Mivel az adatbázis változásainak aránya függ a munkaterheléstől, és az idő múlásával változik, az egyes különbözeti és naplózott biztonsági másolatok mérete is változhat, ami miatt az óránkénti biztonsági mentés a tárterület-felhasználásra megfelelően ingadozik. Továbbá minden különbözeti biztonsági mentés az adatbázisban az utolsó teljes biztonsági mentés óta végrehajtott összes változást tartalmazza, így az összes különbözeti biztonsági mentés teljes mérete fokozatosan nő a hét folyamán, majd a teljes, differenciált és naplózott biztonsági másolatok kiesése után meredeken csökken. Ha például egy nagy mennyiségű írási tevékenység, például az index újraépítése a teljes biztonsági mentés befejezése után futott le, akkor az index újraépítésének módosításait a rendszer az Újraépítés ideje alatt, a következő különbözeti biztonsági másolatban, valamint minden, a következő teljes biztonsági mentésig vett különbözeti biztonsági másolatban fogja tartalmazni. Az utóbbi forgatókönyvben a nagyobb adatbázisok esetében a szolgáltatás optimalizálása egy teljes biztonsági mentést készít, nem pedig különbözeti biztonsági mentést, ha a különbözeti biztonsági másolat túlzottan nagyméretű lenne. Ez csökkenti az összes különbözeti biztonsági mentés méretét a következő teljes biztonsági mentésig.
 
 Az egyes biztonsági mentési típusok (teljes, különbözeti, tranzakciós napló) teljes biztonsági mentését a használat [monitorozása](#monitor-consumption)című témakörben leírtak szerint figyelheti.
+
+### <a name="backup-storage-redundancy"></a>Biztonsági mentési tár redundancia
+
+A biztonsági mentési tár redundancia a következő módon befolyásolja a biztonsági mentési költségeket:
+- LRS ár = x
+- ZRS ár = 1,25 x
+- RA-GRS ár = 2x
+
+A biztonsági mentési tár díjszabásával kapcsolatos további információkért tekintse meg [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/single/) és az [Azure SQL felügyelt példányának díjszabási oldalát](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+
+> [!IMPORTANT]
+> A biztonsági mentések konfigurálható tárolási redundancia jelenleg csak az SQL felügyelt példányai számára érhető el, és csak a felügyelt példány létrehozása folyamat során adható meg. Az erőforrás kiépítése után nem módosítható a biztonságimásolat-tárolási redundancia beállítás.
 
 ### <a name="monitor-costs"></a>Költségek figyelése
 
@@ -301,7 +328,55 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 További információ: a [biztonsági másolatok megőrzésének REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>Következő lépések
+#### <a name="sample-request"></a>Példa a kérelemre
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
+```
+
+#### <a name="request-body"></a>A kérés törzse
+
+```json
+{
+  "properties":{
+    "retentionDays":28
+  }
+}
+```
+
+#### <a name="sample-response"></a>Mintaválasz
+
+Állapotkód: 200
+
+```json
+{
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+  }
+}
+```
+
+További információ: a [biztonsági másolatok megőrzésének REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+
+## <a name="configure-backup-storage-redundancy"></a>A biztonsági mentési tár redundancia konfigurálása
+
+> [!NOTE]
+> A biztonsági mentések konfigurálható tárolási redundancia jelenleg csak az SQL felügyelt példányai számára érhető el, és csak a felügyelt példány létrehozása folyamat során adható meg. Az erőforrás kiépítése után nem módosítható a biztonságimásolat-tárolási redundancia beállítás.
+
+A felügyelt példányok biztonsági mentési tárolási redundancia csak a példány létrehozásakor állítható be. Az alapértelmezett érték a Geo-redundáns tárolás (RA-GRS). A helyileg redundáns (LRS), a Zone-redundáns (ZRS) és a Geo-redundáns (RA-GRS) biztonsági mentési tár közötti különbségekért látogasson el a [felügyelt példány díjszabása oldalra](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>A biztonsági mentési tár redundancia konfigurálása a Azure Portal használatával
+
+A Azure Portal a biztonsági mentési tárhely-redundancia módosításának lehetősége az SQL felügyelt példányának létrehozásakor az **alapok** lapon, a **felügyelt példány konfigurálása** lehetőséggel elérhető, a **számítási és tárolási** panelen érhető el.
+![A számítási és tárolási konfiguráció megnyitása – panel](./media/automated-backups-overview/open-configuration-blade-mi.png)
+
+Keresse meg a biztonsági mentési tár redundancia lehetőséget a **számítási és tárolási** panelen.
+![A biztonsági mentési tár redundancia konfigurálása](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
+
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a Azure Portal használatával](recovery-using-backups.md).

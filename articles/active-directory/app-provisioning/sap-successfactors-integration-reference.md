@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: 4aac13bf34394c359837ecd7a85abd78495bc4b4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283112"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808456"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>A Azure Active Directory kiépítés integrálása az SAP SuccessFactors 
 
@@ -33,7 +33,7 @@ Az Azure AD kiépítési szolgáltatás alapszintű hitelesítést használ az E
 Az Azure AD kiépítési szolgáltatás és a SuccessFactors közötti kapcsolat további biztonságossá tételéhez az alábbi lépések végrehajtásával adhatja hozzá az Azure AD IP-tartományokat a SuccessFactors IP-engedélyezési listájában:
 
 1. Töltse le az Azure nyilvános felhő [legújabb IP-tartományait](https://www.microsoft.com/download/details.aspx?id=56519) 
-1. Nyissa meg a fájlt, és keresse meg a címkéket **AzureActiveDirectory** és **AzureActiveDirectoryDomainServices** 
+1. Nyissa meg a fájlt, és keresse meg a **AzureActiveDirectory** címke kifejezést. 
 
    >[!div class="mx-imgBorder"] 
    >![Azure AD IP-címtartomány](media/sap-successfactors-integration-reference/azure-active-directory-ip-range.png)

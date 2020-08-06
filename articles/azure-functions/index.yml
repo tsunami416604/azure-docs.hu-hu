@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: a08908b699d50a7e1e740f162a0b3f53fa96e434
-  ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+  ms.openlocfilehash: 7a6f493bef86952de212eea264cccea1c0bcfeca
+  ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/08/2020
-  ms.locfileid: "80886568"
+  ms.lasthandoff: 08/05/2020
+  ms.locfileid: "87810054"
 landingContent:
 - title: Az Azure Functions ismertetése
   linkLists:
@@ -121,7 +121,7 @@ landingContent:
     - text: Létrehozás és üzembe helyezés az Azure Pipelines használatával
       url: functions-how-to-azure-devops.md
     - text: Üzembe helyezés a Jenkins beépülő modul használatával
-      url: /azure/jenkins/jenkins-azure-functions-deploy
+      url: /azure/developer/jenkins/deploy-to-azure-functions
 - title: Teljesítmény és monitorozás
   linkLists:
   - linkListType: concept

@@ -12,13 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055392"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808371"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése
 
@@ -68,11 +67,17 @@ Egy adott alkalmazás megkeresése:
 3. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával. Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
     ![Példa az összes értékesítést elindító alkalmazásra](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ebben a rövid útmutatóban nem hozott létre új erőforrásokat, ezért nem kell megtisztítani.
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan tekintheti meg az alkalmazásokat az Azure AD-bérlőben. Megtanulta, hogyan szűrheti az alkalmazások listáját az alkalmazás típusa, állapota és láthatósága alapján. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
-
-- [Alkalmazás felvétele](add-application-portal.md)
-- [Alkalmazás konfigurálása](add-application-portal-configure.md)
-- [Egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)
-- [Alkalmazás törlése](delete-application-portal.md)
+A következő cikkből megtudhatja, hogyan használhatja az Azure AD-t az alkalmazások identitás-szolgáltatójának használatával.
+> [!div class="nextstepaction"]
+> [Alkalmazás felvétele](add-application-portal.md)

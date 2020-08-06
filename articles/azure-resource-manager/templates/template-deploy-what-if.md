@@ -3,23 +3,23 @@ title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888738"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810071"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
-Azure Resource Manager (ARM-) sablon üzembe helyezése előtt megtekintheti a megjelenő módosításokat. A Azure Resource Manager a mi-if művelettel teszi lehetővé, hogy az erőforrások hogyan változnak, ha telepíti a sablont. A mi a teendő, ha a művelet nem módosítja a meglévő erőforrásokat. Ehelyett a megadott sablon központi telepítésekor a módosításokat előre jelezheti.
+Azure Resource Manager sablon (ARM-sablon) üzembe helyezése előtt megtekintheti a megjelenő módosításokat. A Azure Resource Manager a mi-if művelettel teszi lehetővé, hogy az erőforrások hogyan változnak, ha telepíti a sablont. A mi a teendő, ha a művelet nem módosítja a meglévő erőforrásokat. Ehelyett a megadott sablon központi telepítésekor a módosításokat előre jelezheti.
 
 > [!NOTE]
 > A mi-if művelet jelenleg előzetes verzióban érhető el. Előzetes kiadásként előfordulhat, hogy az eredmények azt mutatják, hogy egy erőforrás akkor változik, ha valójában nem történt változás. Dolgozunk ezen problémák csökkentésén, de segítségre van szükségünk. Kérjük, jelentse ezeket a problémákat a következő címen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet. Mi a teendő, ha az erőforráscsoport és az előfizetés szintjén üzemelő példányok is támogatottak.
+Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet. Mi a teendő, ha az erőforráscsoport, az előfizetés, a felügyeleti csoport és a bérlői szintű üzemelő példányok esetében támogatott.
 
 ## <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
 
@@ -125,20 +125,23 @@ Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuáli
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A sablon telepítésének megkezdése előtt használja az [az Deployment Group What-if](/cli/azure/deployment/group#az-deployment-group-what-if) vagy [az Deployment sub What-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)parancsot.
+A következő paranccsal tekintheti meg a módosításokat a sablon telepítése előtt:
 
-* `az deployment group what-if`erőforráscsoport-telepítések esetén
-* `az deployment sub what-if`előfizetési szintű központi telepítések esetén
+* [az üzembe helyezési csoport mi – ha](/cli/azure/deployment/group#az-deployment-group-what-if) az erőforráscsoport-telepítésekhez
+* [az üzembe helyezési alárendelt](/cli/azure/deployment/sub#az-deployment-sub-what-if)
+* [az Deployment mg mi – ha](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) a felügyeleti csoport központi telepítései
+* [az üzembe helyezési bérlő](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if)
 
-A `--confirm-with-what-if` kapcsolót (vagy annak rövid formáját) használva `-c` megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést. Adja hozzá ezt a kapcsolót az [üzembe helyezési csoport létrehozása](/cli/azure/deployment/group#az-deployment-group-create) vagy [az üzembe helyezés sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)elemhez.
+A `--confirm-with-what-if` kapcsolót (vagy annak rövid formáját) használva `-c` megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést. Adja hozzá ezt a kapcsolót a következőhöz:
 
-* `az deployment group create --confirm-with-what-if`vagy `-c` erőforráscsoport-telepítések esetén
-* `az deployment sub create --confirm-with-what-if`vagy `-c` előfizetési szintű központi telepítések esetén
+* [az üzembe helyezési csoport létrehozása](/cli/azure/deployment/group#az-deployment-group-create)
+* [az Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
+* [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [az Deployment bérlő létrehozása](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Egy olyan JSON-objektum beszerzéséhez, amelyet programozott módon vizsgálhat a változásokhoz, használja a következőt:
+Használhatja például `az deployment group create --confirm-with-what-if` `-c` a (z) vagy for erőforráscsoport üzemelő példányait.
 
-* `az deployment group what-if --no-pretty-print`erőforráscsoport-telepítések esetén
-* `az deployment sub what-if --no-pretty-print`előfizetési szintű központi telepítések esetén
+Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Egy olyan JSON-objektum beszerzéséhez, amelyet programozott módon vizsgálhat a változásokhoz, használja a `--no-pretty-print` kapcsolót. Például `az deployment group what-if --no-pretty-print` az erőforráscsoport-telepítésekhez használható.
 
 Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure CLI konfigurációs](/cli/azure/azure-cli-configuration) fájlját. Állítsa **no_color** a no_color **értéket igen**értékre.
 
@@ -147,7 +150,9 @@ Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure 
 REST API esetén használja a következőt:
 
 * [Központi telepítések – What if](/rest/api/resources/deployments/whatif) az erőforráscsoportok üzembe helyezéséhez
-* [Központi telepítések – What if](/rest/api/resources/deployments/whatifatsubscriptionscope) az előfizetések hatókörében az előfizetés szintjén üzemelő példányok esetében
+* [Központi telepítések –](/rest/api/resources/deployments/whatifatsubscriptionscope) az előfizetések hatókörének What if az előfizetés központi telepítéséhez
+* [Központi telepítések – What if a felügyeleti csoport hatókörében](/rest/api/resources/deployments/whatifatmanagementgroupscope) a felügyeleti csoportok központi telepítéséhez
+* [Központi telepítések – What if a bérlői hatókörben](/rest/api/resources/deployments/whatifattenantscope) a bérlői környezetekben.
 
 ## <a name="change-types"></a>Típusok módosítása
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 Figyelje meg, hogy a kimenet felső részén a színek határozzák meg a változások típusát.
 
-A kimenet alján látható, hogy a címke tulajdonosa törölve lett. A 10.0.0.0/16 értékről 10.0.0.0/15-re módosult a címtartomány. A subnet001 nevű alhálózat törölve lett. Ne feledje, hogy ezeket a módosításokat ténylegesen nem telepítették. Megjelenik a sablon központi telepítése során megjelenő változtatások előnézete.
+A kimenet alján látható, hogy a címke tulajdonosa törölve lett. A 10.0.0.0/16 értékről 10.0.0.0/15-re módosult a címtartomány. A subnet001 nevű alhálózat törölve lett. Ne feledje, hogy ezek a módosítások nem lettek telepítve. Megjelenik a sablon központi telepítése során megjelenő változtatások előnézete.
 
 A töröltként felsorolt tulajdonságok némelyike valójában nem változik. A tulajdonságokat helytelenül lehet törölni, ha nem a sablonban vannak, de automatikusan be vannak állítva az üzembe helyezés során alapértelmezett értékként. Ez az eredmény "Noise" a mi-if válaszban. A végső központilag telepített erőforrás a tulajdonságoknál beállított értékeket fogja tartalmazni. A mi-if művelet lejáratakor ezek a tulajdonságok kiszűrve lesznek az eredményből.
 

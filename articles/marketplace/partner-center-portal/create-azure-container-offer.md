@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503225"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799174"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Container-ajánlat létrehozása az Azure Marketplace-en
 
@@ -133,7 +133,7 @@ Ezen a lapon megadhatja a kereskedelmi piactéren megjelenő ajánlat részletei
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -195,14 +195,15 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
- Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti.
+
+A lista különböző helyein való használathoz mindhárom embléma mérete szükséges:
 
 - **Kicsi** (48 x 48)
-- **Közepes** (90 X 90)
-- **Nagyméretű** (216 x 216)
-- **Széles** (255 X 115)
+- **Közepes** (90 x 90)
+- **Nagy** (216 x 216 és 350 x 350 között)
 
-Mind a négy emblémát kötelező megadni, és a piactér-lista különböző helyein használatos.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

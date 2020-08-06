@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 5ead227d886805c0ed48ebb52c4c0e30ef13b851
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320034"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808711"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -50,10 +50,10 @@ Az **ajánlat áttekintése** oldalon láthatók az ajánlat közzétételéhez 
 
 Ezen a lapon olyan hivatkozások találhatók, amelyek az ajánlaton végzett műveletekre vonatkozó műveleteket hajtanak végre. Például:
 
-- Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer).
-- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan))
-- Ha az ajánlat előzetes verzióban érhető el – [Go-Live](publishing-status.md#publisher-approval))
-- Ha nem fejezte be a közzétevő kijelentkezését – a [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)folyamatban van.)
+- Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer)
+- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Ha az ajánlat előzetes verzióban érhető [el](publishing-status.md#publisher-approval)
+- Ha még nem fejezte be a közzétevő kijelentkezését – a [Közzététel megszakítása](update-existing-offer.md#cancel-publishing) folyamatban van.
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
@@ -199,14 +199,15 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti.
 
-- **Kicsi (48 x 48)**
-- **Közepes (90 x 90)**
-- **Nagyméretű (216 x 216)**
-- **Széles (255 x 115)**
+A lista különböző helyein való használathoz mindhárom embléma mérete szükséges:
 
-Mind a négy emblémát kötelező megadni, és a piactér-lista különböző helyein használatos.
+- **Kicsi** (48 x 48)
+- **Közepes** (90 x 90)
+- **Nagy** (216 x 216 és 350 x 350 között)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

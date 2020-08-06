@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317721"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800336"
 ---
 # <a name="create-a-saas-offer"></a>SaaS-ajánlat létrehozása
 
@@ -133,7 +133,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összegzés
+8. Összefoglalás
 9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok
@@ -282,12 +282,16 @@ A mező kitöltése kötelező.
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
 - **Dokumentumok** (kötelező) – kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz, PDF formátumban, legalább egy és legfeljebb három dokumentumhoz.
-- **Képek** (nem kötelező) – több hely is van, ahol az ajánlat emblémájának képei megjelenhetnek a piactéren (k) a következő képpont-méretek PNG formátumban való megadásával:
+- **Képek** (kötelező) – több hely is van, ahol az ajánlat emblémájának képei az egész piactéren megjelenhetnek. Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti. **Széles** embléma hozzáadása nem kötelező.
 
-  - **Kicsi** (48 x 48, kötelező)
-  - **Közepes** (90 x 90, kötelező)
-  - **Nagyméretű** (216 x 216, kötelező)
-  - **Széles** (255 x 115)
+    A lista különböző helyein három embléma mérete szükséges. egy nem kötelező:
+
+    - **Kicsi** (48 x 48)
+    - **Közepes** (90 x 90)
+    - **Nagy** (216 x 216 és 350 x 350 között)
+    - **Széles** (255 x 115), nem *kötelező*
+
+    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 - **Képernyőképek** (kötelező) – adjon meg legfeljebb öt képernyőképet, amely az ajánlatát mutatja be, a mérete 1280 x 720 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező) – az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.

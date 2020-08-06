@@ -3,7 +3,7 @@ title: Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure 
 description: Megtudhatja, hogyan módosíthatja egy meglévő hozzáférési csomag erőforrás-szerepköreit Azure Active Directory jogosultságok felügyelete alatt.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550314"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798638"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
 
@@ -86,11 +86,11 @@ További információt a csoportok és az [Office 365-csoportok és a Microsoft 
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – csoportok kiválasztása](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. Kattintson a **Kiválasztás** gombra.
+1. Kattintson a **Kiválasztás** elemre.
 
     Miután kiválasztotta a csoportot vagy a csapatot, az **altípus** oszlopban a következő altípusok egyike jelenik meg:
 
-    | Altípus | Description |
+    | Altípus | Leírás |
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
     | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
@@ -128,7 +128,7 @@ Az alkalmazások kiválasztásakor a következő szempontokat érdemes figyelemb
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – alkalmazások kiválasztása](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. Kattintson a **Kiválasztás** gombra.
+1. Kattintson a **Kiválasztás** elemre.
 
 1. A **szerepkör** listából válassza ki az alkalmazás szerepkört.
 
@@ -148,7 +148,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint Online-webhelyek kiválasztása](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. Kattintson a **Kiválasztás** gombra.
+1. Kattintson a **Kiválasztás** elemre.
 
 1. A **szerepkör** listából válassza ki a SharePoint Online-webhely szerepkört.
 

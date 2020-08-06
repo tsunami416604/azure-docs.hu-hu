@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077094"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800500"
 ---
 # <a name="azure-resource-logs"></a>Azure-erőforrás-naplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.
 
-További információ a diagnosztikai beállítások létrehozásáról és a Azure Monitor méretezése a [különböző célhelyeken](diagnostic-settings.md) című témakörben talál további információt a diagnosztikai beállítások létrehozásáról és a nagy [Azure Policy méretekben történő üzembe helyezéséről](deploy-scale.md) , ha a Azure Policy használatával automatikusan hozza létre a létrehozott Azure-erőforrások diagnosztikai beállításait.
+További információ a diagnosztikai beállítások létrehozásáról és a Azure Monitor méretezése a [különböző célhelyeken](diagnostic-settings.md) című témakörben talál további információt a diagnosztikai beállítások létrehozásáról és a nagy [Azure Policy méretekben történő üzembe helyezéséről](../deploy-scale.md) , ha a Azure Policy használatával automatikusan hozza létre a létrehozott Azure-erőforrások diagnosztikai beállításait.
 
 ## <a name="send-to-log-analytics-workspace"></a>Küldés a Log Analytics-munkaterületre
  Az erőforrás-naplók elküldése egy Log Analytics munkaterületre a [Azure monitor naplók](data-platform-logs.md) funkcióinak engedélyezéséhez, amely a következőket tartalmazza:

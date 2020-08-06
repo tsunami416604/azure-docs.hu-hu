@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502647"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810224"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Váltás Express.jsról Azure Functionsra
 
@@ -27,7 +27,7 @@ A kód kiszolgáló nélküli architektúrára való áttelepítésekor a Expres
 - **Konfigurálás és konvenciók**: a functions-alkalmazás a fájl _function.js_ használja a http-műveletek definiálásához, a biztonsági házirendek definiálásához, valamint a függvény [bemenetének és kimenetének](./functions-triggers-bindings.md)konfigurálásához. Alapértelmezés szerint a fájlnevet tartalmazó mappa neve határozza meg a végpont nevét, de a nevet a `route` fájl [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) tulajdonságán keresztül is módosíthatja.
 
 > [!TIP]
-> Ismerkedjen meg az interaktív oktatóanyag [-újraNode.jsával, és az Azure functions segítségével a kiszolgáló nélküli API-kkal expressz API-](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)kat.
+> Ismerkedjen meg az interaktív oktatóanyag [-újraNode.jsával, és az Azure functions segítségével a kiszolgáló nélküli API-kkal expressz API-](/learn/modules/shift-nodejs-express-apis-serverless/)kat.
 
 ## <a name="example"></a>Példa
 
@@ -138,4 +138,4 @@ A `get` `methods` tömbben definiálva a függvény a HTTP-kérelmek számára �
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az interaktív oktatóanyag-újrabontási [Node.js és a kiszolgáló nélküli API-k expressz API-kkal Azure functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)
+- További információ az interaktív oktatóanyag-újrabontási [Node.js és a kiszolgáló nélküli API-k expressz API-kkal Azure functions](/learn/modules/shift-nodejs-express-apis-serverless/)

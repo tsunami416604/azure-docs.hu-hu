@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537511"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800466"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * Az `endpoint-name` azonosít egy végpontot, például egy Event hub, Event Grid vagy Service Bus. Ezeket a végpontokat az előfizetésében kell létrehoznia, és az Azure Digital Twins-hoz kell csatolni a vezérlési sík API-kkal a regisztrációs hívás előtt.
 
-Az átadott esemény-útválasztási objektum `EventRoutes.Add` egy [ **szűrő** paramétert](./how-to-manage-routes.md#filter-events)is végrehajt, amellyel korlátozható az ezt az útvonalat követő események típusai.
+Az átadott esemény-útválasztási objektum `EventRoutes.Add` egy [ **szűrő** paramétert](./how-to-manage-routes-apis-cli.md#filter-events)is végrehajt, amellyel korlátozható az ezt az útvonalat követő események típusai.
 
 Az útvonalakat az [Azure Digital Twins CLI](how-to-use-cli.md)használatával is létrehozhatja.
 
@@ -87,10 +87,10 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: események útvonalának beállítása és kezelése:
-* [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes.md)
+* [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)
 
 Vagy tekintse meg a Azure Functions használata az események útválasztásához az Azure digitális Ikrekben:
 * [*Útmutató: Azure-függvény beállítása az adat feldolgozásához*](how-to-create-azure-function.md)

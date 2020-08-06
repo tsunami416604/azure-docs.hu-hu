@@ -3,7 +3,7 @@ title: Hozzáférési csomag hozzáférésének áttekintése az Azure AD-jogosu
 description: Megtudhatja, hogyan végezheti el a jogosultságok felügyeleti hozzáférési csomagjainak hozzáférési felülvizsgálatát Azure Active Directory hozzáférési felülvizsgálatokban (előzetes verzió).
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078567"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798597"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzáférésének áttekintése az Azure AD-jogosultságok kezelésében
 

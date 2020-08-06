@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9e946d7f4616799768711ee8c18584a2a8fcff2a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d5a5d7ec07587b20a8a6285deafa6215db990a5
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482009"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810377"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Gyors útmutató: Azure térbeli horgonyokat használó Unity HoloLens-alkalmazás létrehozása
 
@@ -33,10 +33,10 @@ A következőket fogja megtanulni:
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítenie kell egy olyan Windows rendszerű számítógépet, amelynek <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 vagy 2019,2</a> , valamint a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> vagy újabb verziója van telepítve. A Visual Studio-telepítésnek tartalmaznia kell a **univerzális Windows-platform fejlesztési** munkaterhelést és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevőt. <a href="https://git-scm.com/download/win" target="_blank">A git for Windows és a</a> <a href="https://git-lfs.github.com/">git LFS</a>is telepítenie kell.
+- Telepítenie kell egy Windows rendszerű számítógépet, amelynek a <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> és a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> -es vagy újabb verziója van telepítve. A Visual Studio-telepítésnek tartalmaznia kell a **univerzális Windows-platform fejlesztési** munkaterhelést és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevőt. <a href="https://git-scm.com/download/win" target="_blank">A git for Windows és a</a> <a href="https://git-lfs.github.com/">git LFS</a>is telepítenie kell.
 - Szüksége van egy olyan HoloLens-eszközre, amelyen engedélyezve van a [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . A [Windows 10 október 2018 frissítésének](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (más néven RS5) telepítve kell lennie az eszközön. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd válassza a **frissítések keresése**lehetőséget.
-- Az alkalmazásban engedélyeznie kell a **SpatialPerception** képességet. Ez a beállítás a beállítások **kiépítése** > a**lejátszó beállításaiban** > **közzétételi beállítások** > **lehetőségre**.
-- Az alkalmazásban engedélyeznie kell a **Windows Mixed Reality SDK**-val **támogatott virtuális valóságot** . Ez a beállítás a **Build Settings** > **Player Settings** > **XR**beállításokban található.
+- Az alkalmazásban engedélyeznie kell a **SpatialPerception** képességet. Ez a beállítás a beállítások **kiépítése**a  >  **lejátszó beállításaiban**  >  **közzétételi beállítások**  >  **lehetőségre**.
+- Az alkalmazásban engedélyeznie kell a **Windows Mixed Reality SDK**-val **támogatott virtuális valóságot** . Ez a beállítás a **Build Settings**  >  **Player Settings**  >  **XR**beállításokban található.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -46,7 +46,7 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
-A **Build-beállítások** megnyitásához válassza a **fájl** > -**létrehozási beállítások**lehetőséget.
+A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások**lehetőséget.
 
 A **platform** szakaszban válassza a **univerzális Windows-platform**lehetőséget. Módosítsa a **céleszköz** **HoloLens**.
 
@@ -56,13 +56,7 @@ Válassza a **platform váltása** lehetőséget a platform **univerzális Windo
 
 A **létrehozási beállítások** ablak bezárásához.
 
-## <a name="configure-the-account-identifier-and-key"></a>A fiók azonosítójának és kulcsának konfigurálása
-
-A **projekt** ablaktáblán válassza a lehetőséget `Assets/AzureSpatialAnchors.Examples/Scenes` , és nyissa meg a `AzureSpatialAnchorsBasicDemo.unity` jelenet fájlt.
-
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
-
-Mentse a jelenetet a **fájl** > **mentése**lehetőség kiválasztásával.
 
 ## <a name="export-the-hololens-visual-studio-project"></a>A HoloLens Visual Studio-projekt exportálása
 
@@ -84,17 +78,11 @@ Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként**haszn
 
 Kapcsolja be a HoloLens eszközt, jelentkezzen be, és csatlakoztassa az eszközt a számítógéphez USB-kábellel.
 
- > Válassza **a hibakeresés****indítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.
+Válassza a **hibakeresés**  >  **indítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.
 
 A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 
 A Visual Studióban állítsa le az alkalmazást a **hibakeresés leállítása** vagy a SHIFT + F5 billentyűkombináció kiválasztásával.
-
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-### <a name="unity-20193"></a>Unity 2019,3
-
-A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
@@ -102,3 +90,6 @@ A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+
+> [!div class="nextstepaction"]
+> [Útmutató: Azure térbeli horgonyok konfigurálása Unity-projektben](../how-tos/setup-unity-project.md)

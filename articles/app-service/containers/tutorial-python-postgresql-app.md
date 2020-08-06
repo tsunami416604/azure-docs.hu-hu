@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - tracking-python
 - devx-track-azurecli
-ms.openlocfilehash: dfc7cf0a0d3b46020d94e86a3158b1e0cbf6ea5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485286"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799464"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -31,6 +31,9 @@ Ebben az oktatóanyagban az Azure CLI használatával végezheti el a következ�
 > * A kód frissítése és újbóli üzembe helyezése
 > * Diagnosztikai naplók megtekintése
 > * A webalkalmazás kezelése a Azure Portalban
+
+Használhatja az [oktatóanyag Azure Portal verzióját](/azure/developer/python/tutorial-python-postgresql-app-portal)is.
+
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
 

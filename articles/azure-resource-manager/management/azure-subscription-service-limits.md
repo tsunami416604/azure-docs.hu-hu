@@ -4,12 +4,12 @@ description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, 
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515871"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810479"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
 
@@ -375,11 +375,11 @@ Azure Files korlátozásokkal kapcsolatos további információkért lásd: [Azu
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-További információ: [virtuális gépek méretei](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+További információ: [virtuális gépek méretei](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 #### <a name="disk-encryption-sets"></a>Lemezes titkosítási készletek
 
-A 50-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) vagy [Windows rendszerű](/azure/virtual-machines/windows/disk-encryption#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
+A 50-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) vagy [Windows rendszerű](../../virtual-machines/windows/disk-encryption.md#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
 
 ### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
 
@@ -423,9 +423,9 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Az Azure Cloud Services mérete](../../cloud-services/cloud-services-sizes-specs.md)
 * [Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások](resource-name-rules.md)

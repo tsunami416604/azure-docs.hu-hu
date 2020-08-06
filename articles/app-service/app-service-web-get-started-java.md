@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324233"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799990"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyorsútmutató: Java-alkalmazás létrehozása az Azure App Service-ben Windows rendszeren
 
@@ -49,13 +49,19 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-Az üzembe helyezés folyamata Azure App Service az Azure CLI-vel automatikusan felveheti az Azure-beli hitelesítő adatait. Ha nem telepítette az Azure CLI-t, a Maven beépülő modul bejelentkezik a OAuth vagy az eszköz bejelentkezésével. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) részleteit.
+A Azure App Service üzembe helyezése az Azure CLI-ből automatikusan kiválaszthatja az Azure-beli hitelesítő adatait. A Maven beépülő modul a OAuth vagy az eszköz bejelentkezését fogja bejelentkezni, ha az Azure CLI nincs helyileg telepítve. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) részleteit.
 
-Futtassa a következő Maven-parancsot a parancssorban a központi telepítés konfigurálásához, válassza a **"2"** lehetőséget az első lépésben a **Windows** operációs rendszerhez, majd fogadja el az alapértelmezett beállításokat az **ENTER** billentyű lenyomásával, amíg meg nem jelenik a **Confirm (y/N)** üzenet, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült. 
-
+Az alábbi Maven-parancs futtatásával konfigurálhatja az üzemelő példányt
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+A rendszer felkéri, hogy válasszon 
+* **Operációs rendszer (alapértelmezett: `linux` )**
+* **Java-verzió (alapértelmezett: `1.8` )**
+* **Webes tároló (alapértelmezett: `tomcat 8.5` )** 
+
+Ügyeljen arra, hogy a **`2`** **Windows** operációs rendszer első lépéseként válassza ki a kívánt adatokat. A többi konfiguráció az **ENTER**billentyű lenyomásával hagyható el. Végül nyomja meg **`Y`** a **Confirm (i/N)** promptot a konfigurálás befejezéséhez.
 
 Egy mintavételi folyamat A következőképpen néz ki:
 
@@ -135,7 +141,7 @@ Confirm (Y/N)? :
 > [!NOTE]
 > Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-A Megnyitás gombra `pom.xml` kattintva megtekintheti a frissített konfigurációt.
+`pom.xml`A frissített konfiguráció megjelenítéséhez nyissa meg a következőt:.
 
 ```bash
 code pom.xml
@@ -153,8 +159,11 @@ Szükség esetén közvetlenül a Pom-fájlban módosíthatja a App Service konf
 `<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)tekintheti meg. | 0.1.0 +
 `<deployment>` | true | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)láthatja a részleteket. | 0.1.0 +
 
+Ügyeljen arra, hogy a `<appName>` és a `<resourceGroup>` ( `helloworld-1590394316693` és `helloworld-1590394316693-rg` ennek megfelelően a bemutatóban) értékeit később is használni fogjuk.
+
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
@@ -169,13 +178,14 @@ Ezután az alábbi paranccsal telepítheti a Java-alkalmazást az Azure-ba:
 mvn package azure-webapp:deploy
 ```
 
-Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a webböngészőjében a következő URL-cím használatával, például: `http://<webapp>.azurewebsites.net/`.
+Az üzembe helyezés befejezése után az alkalmazás készen áll `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` a bemutatóban). Nyissa meg az URL-címet a helyi webböngészővel, és tekintse meg a következőt:
 
 ![Azure App Service futó minta alkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Gratulálunk!** Üzembe helyezte az első Java-alkalmazást, hogy App Service Windows rendszeren.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

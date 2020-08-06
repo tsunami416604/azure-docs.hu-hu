@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016972"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809952"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználók üzembe helyezéséhez (előzetes verzió)
-Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. Ez az integráció nyilvános előzetes verzióban érhető el, és támogatja a több mint [70 felhasználói attribútum](../app-provisioning/sap-successfactors-attribute-reference.md) lekérését a SuccessFactors Employee Central-ból.
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználó kiépítési felállításához 
+Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 
 
 >[!NOTE]
 >Akkor használja ezt az oktatóanyagot, ha a SuccessFactors kiépíteni kívánt felhasználóknak helyszíni AD-fiókra és opcionálisan Azure AD-fiókra van szükségük. Ha a SuccessFactors felhasználóinak csak az Azure AD-fiókra van szükségük (csak felhőalapú felhasználók), tekintse meg az [SAP SuccessFactors konfigurálása az Azure ad](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) -beli felhasználók számára című oktatóanyagot. 
@@ -82,7 +82,7 @@ A Felhőbeli HR-alapú felhasználóknak a SuccessFactors-ből az AD-be történ
 * Az Active Directory-felhasználók üzembe helyezéséhez telepítendő SuccessFactors száma
 * Egyező azonosító, attribútum-hozzárendelés, átalakítás és hatóköri szűrők
 
-A témakör részletes útmutatását a [Cloud HR üzembe helyezési tervében](../app-provisioning/plan-cloud-hr-provision.md) találja. 
+A témakör részletes útmutatását a [Cloud HR üzembe helyezési tervében](../app-provisioning/plan-cloud-hr-provision.md) találja. Tekintse meg az [SAP SuccessFactors-integrációs referenciáját](../app-provisioning/sap-successfactors-integration-reference.md) , ahol megismerheti a támogatott entitásokat, a feldolgozás részleteit és a különböző HR-forgatókönyvek integrálásának testreszabását. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Az integráció SuccessFactors konfigurálása
 

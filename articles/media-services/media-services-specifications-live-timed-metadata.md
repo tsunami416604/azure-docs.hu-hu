@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 37b3e5eff0baee736fc05760e19c31fdc513e23d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 665bb89d929433db5868eff1c2a5d182d7a94d54
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060379"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800279"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 
@@ -42,7 +42,7 @@ Ez a specifikáció több, a Media Services által támogatott üzemmódot vázo
 
 ## <a name="11-terms-used"></a>1,1 használt kifejezések
 
-| Kifejezés                | Definíció                                                                                                                                                                                                                                    |
+| Időszak                | Definíció                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ad-töréspont            | Az a hely vagy pont, ahol egy vagy több hirdetés ütemezhető kézbesítésre; ugyanaz, mint az igény szerinti és elhelyezési lehetőség.                                                                                                                     |
 | Ad-döntési szolgáltatás | külső szolgáltatás, amely eldönti, hogy mely ad (k) és időtartamok jelenjenek meg a felhasználó számára. A szolgáltatásokat általában egy partner nyújtja, és a jelen dokumentum hatókörén kívül esik.                                                                    |
@@ -208,7 +208,7 @@ Az [MPEG-DASH] EventStream XML-adattartalom sémája a következőképpen van de
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott séma azonosító URI-k
-| Séma AZONOSÍTÓjának URI-ja                 | Description                                                                                                                                                                                                                                          |
+| Séma AZONOSÍTÓjának URI-ja                 | Leírás                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/emsg/ID3 | Leírja, hogy a [ID3v2] metaadatok hogyan hajthatók végre időzített metaadatokként egy CMAF-kompatibilis [MPEGCMAF] darabolt MP4-ben. További információért lásd az [időzített metaadatokat a Common Media Application Format (CMAF) alkalmazásban.](https://github.com/AOMediaCodec/id3-emsg) |
 
@@ -220,7 +220,7 @@ Egy érvényes **"onUserDataEvent"** esemény kézhezvétele után Azure Media S
 - (b) továbbítsa azt a CMAF-töredékek HLS vagy KÖTŐJELen keresztül történő kézbesítéséhez, vagy 
 - (c) Smooth Streaming [MS-SSTR] használatával átalakíthatja a továbbítást egy ritka nyomon követési jelre.
 
-Amellett, hogy a sávon belüli "emsg" formátum CMAF vagy TS PES-csomagok a HLS-hez, a kötőjel (MPD) jegyzékfájlja, és Smooth Streaming tartalmazni fog egy hivatkozást a sávon belüli esemény-adatfolyamokra (más néven a Smooth Streaming). 
+Amellett, hogy a sávon belüli "emsg" formátum CMAF vagy TS PES-csomagok a HLS-hez, a kötőjel (MPD) jegyzékfájlja, és Smooth Streaming tartalmazni fog egy hivatkozást a sávon belüli esemény-adatfolyamokra (más néven a Smooth Streaming).
 
 Az egyes események vagy adattartalmaik nem közvetlenül a HLS, KÖTŐJELhez vagy simított jegyzékfájlokhoz tartoznak. 
 
@@ -255,7 +255,7 @@ Lásd például [a 3.3.3.1 Dash manifestt egyetlen időszakra és az Adobe Simpl
 
 #### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Példa HLS-jegyzékfájl kimenetére az Adobe RTMP egyszerű üzemmódjának használatakor
 
-Lásd: [3.2.2 HLS manifest – példa az Adobe Simple Mode és a ext-X-Cue címke használatával](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
+Lásd: [3.2.2 HLS manifest – példa az Adobe Simple Mode és a ext-X-Cue címke használatával](#322-apple-hls-with-adobe-primetime-ext-x-cue)
 
 ## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>2.1.4 RTMP ad Cue-jelzés "onAdCue"-SCTE-35 móddal
 
@@ -276,11 +276,15 @@ Ebben az esetben a következő adattartalomot kell elküldeni a helyszíni kódo
 
 ---
 
-#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>Példa MPEG DASH. mpd jegyzékfájlra SCTE-35 móddal
-Lásd: [3.3.3.2 – példa Dash manifest – SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+<!---
+#### Example MPEG DASH .mpd manifest with SCTE-35 mode
+See [Section 3.3.3.2 example DASH manifest with SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+--->
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Példa HLS manifest. m3u8 SCTE-35 módú jellel
-Lásd: [3.2.1.1, példa: HLS manifest, SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+Lásd: [3.2.1.1, példa: HLS manifest, SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-cue-signaling-of-scte-35)
+
+
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP ad-jelzés a "onCuePoint" elemmel élő
 
@@ -355,6 +359,7 @@ Ha ezt az ad-jelölőt használja, a HLS jegyzékfájl kimenete az Adobe "Simple
 </MPD>
 ~~~
 
+
 #### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>Példa HLS lejátszási listára, Adobe Simple Mode-jelek EXT-X-CUE címke használatával (csonkolt "..." a rövidség kedvéért)
 
 Az alábbi példa bemutatja a Media Services dinamikus csomagolásának kimenetét egy RTMP betöltési streamhez az Adobe "Simple" mód jelei és az örökölt [Adobe-főkiszolgálói] EXT-X-CUE címke használatával.  
@@ -409,7 +414,8 @@ Az élő stream betöltésével kapcsolatos követelményekért tekintse meg az 
 
 Minden ritka töredék egy film fragment Box ("moof") és a Media Data Box ("mdat")ből áll, ahol a "mdat" mező a bináris üzenet.
 
-A keretek pontos beszúrásához a kódolónak fel kell osztania a töredéket a bemutató időpontjában, ahol a végszót be kell szúrni.  Létre kell hozni egy új töredéket, amely egy újonnan létrehozott IDR-kerettel kezdődik, vagy 1. vagy 2. típusú stream hozzáférési pontokkal (SAP), az [ISO-14496-12] i. mellékletben meghatározottak szerint. Ez lehetővé teszi az Azure adathordozó-csomagoló számára, hogy megfelelően létrehozzon egy HLS-jegyzékfájlt és egy KÖTŐJELes többpontos jegyzékfájlt, ahol az új időszak a kereten belüli, összefonásra vonatkozó, feltételes bemutató időpontjában kezdődik.
+A keretek pontos beszúrásához a kódolónak fel kell osztania a töredéket a bemutató időpontjában, ahol a végszót be kell szúrni.  Létre kell hozni egy új töredéket, amely egy újonnan létrehozott IDR-kerettel kezdődik, vagy 1. vagy 2. típusú stream hozzáférési pontokkal (SAP), az [ISO-14496-12] i. mellékletben meghatározottak szerint.
+<!--- This allows the Azure Media Packager to properly generate an HLS manifest and a DASH multi-period manifest where the new Period begins at the frame-accurate splice conditioned presentation time. --->
 
 ### <a name="221-live-server-manifest-box"></a>2.2.1 élő kiszolgáló jegyzékfájlja
 
@@ -419,7 +425,7 @@ A **ritka számot be kell jelenteni** az élő kiszolgáló jegyzékfájljában 
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Szám         | Kötelező      | "0" értéknek **kell lennie** , amely egy ismeretlen, változó bitsebességű számot jelez.                                                                                                                                                          |
 | parentTrackName    | Sztring         | Kötelező      | A fölérendelt nyomon követési időszaknak **kell lennie** , amelyhez a ritka nyomon követési időkódok időkerete igazított. A szülő nyomon követése nem lehet ritka.                                                                             |
-| manifestOutput     | Logikai érték        | Kötelező      | A "true" értéknek **kell lennie** , amely azt jelzi, hogy a ritka nyomon követés be lesz ágyazva a zökkenőmentes ügyfél-jegyzékfájlba.                                                                                                                        |
+| manifestOutput     | Logikai        | Kötelező      | A "true" értéknek **kell lennie** , amely azt jelzi, hogy a ritka nyomon követés be lesz ágyazva a zökkenőmentes ügyfél-jegyzékfájlba.                                                                                                                        |
 | Altípus            | Sztring         | Kötelező      | Az "adat" négy karakterből álló kódnak **kell lennie** .                                                                                                                                                                                  |
 | Séma             | Sztring         | Kötelező      | Az üzenet-sémát azonosító URN vagy URL-címnek **kell lennie** . A (z) [SCTE-35] üzenetek **esetében ennek az** "urn: SCTE: scte35:2013: bin" értékűnek kell lennie ahhoz, hogy üzeneteket lehessen ELKÜLDENI a HLS, a Smooth és a Dash ügyfeleknek a [SCTE-35] megfelelőséggel. |
 | trackName          | Sztring         | Kötelező      | A ritka sáv nevének **kell lennie** . A trackName használatával több esemény-adatfolyamot is megkülönböztetni ugyanazzal a sémával. Minden egyedi esemény-adatfolyamnak egyedi nyomkövetési névvel **kell** rendelkeznie.                                |
@@ -542,21 +548,182 @@ A StreamIndex tartalmaznia **kell** az "adattípust", és a CustomAttributes tar
 
 A Azure Media Services a következő HLS-jegyzékeket támogatja az ad-adatoknak az élő vagy igény szerinti eseményeknél való jelzéséhez. 
 
-- EXT-X-DATERANGE az Apple HLS definiálva [RFC8216]
-- EXT-X-CUE az [Adobe-főkiszolgálói] meghatározása szerint – ez a mód "örökölt". Ha lehetséges, az ügyfeleknek el kell fogadniuk az EXT-X-DATERANGE címkét.
+<!--- EXT-X-DATERANGE as defined in Apple HLS [RFC8216] --->
+- EXT-X-CUE az [Adobe-főműsoridőben] meghatározott módon
+<!--- this mode is considered "legacy".  Customers should adopt the EXT-X-DATERANGE tag when possible. --->
 
 Az egyes címkék adatkimenete a felhasznált betöltési mód alapján változhat. Például az Adobe Simple Mode módban való betöltés nem tartalmazza a teljes SCTE-35 Base64 kódolású adattartalmat.
 
-## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1 Apple HLS EXT-X-DATERANGE (ajánlott)
+<!---
+## 3.2.1 Apple HLS with EXT-X-DATERANGE (recommended)
 
-Az Apple HTTP Live Streaming [RFC8216] specifikációja lehetővé teszi a [SCTE-35] üzenetek jelzését. Az üzenetek bekerülnek a szegmens lejátszási listára egy EXT-X-DATERANGE címke alapján [RFC8216] szakaszban, melynek címe: "Mapping SCTE-35 in EXT-X-DATERANGE".  Az ügyfélalkalmazás rétege elemezheti az M3U-listát, és feldolgozhatja az M3U-címkéket, vagy megtekintheti az eseményeket az Apple Player Framework használatával.  
+The Apple HTTP Live Streaming [RFC8216] specification allows for signaling of [SCTE-35] messages. The messages are inserted into the segment playlist in an EXT-X-DATERANGE tag per [RFC8216] section titled "Mapping SCTE-35 into EXT-X-DATERANGE".  The client application layer can parse the M3U playlist and process M3U tags, or receive the events through the Apple player framework.  
 
-A Azure Media Services (3. verzió API) **ajánlott** megközelítése a [RFC8216] követése, és a (X_DATERANGE) [SCTE35] ad igény szerinti díszítésének EXT-címkéjének használata a jegyzékfájlban.
+The **RECOMMENDED** approach in Azure Media Services (version 3 API) is to follow [RFC8216] and use the EXT-X_DATERANGE tag for [SCTE35] ad avail decoration in the manifest.
+--->
 
-## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 példa HLS manifest. m3u8, amely a SCTE-35 EXT-X-DATERANGE jeleket mutatja
 
-A következő példa a Media Services dinamikus HLS származó jegyzékfájl kimenetét jeleníti meg, amely a SCTE-35 eseményeket jelzi a streamben: [RFC8216]. Emellett ez az adatfolyam tartalmazza az [Adobe-főkiszolgálói] "örökölt" EXT-X-CUE címkéjét.
+## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-cue-signaling-of-scte-35"></a>3.2.1.1 példa HLS manifest. m3u8, amely a SCTE-35 EXT-X-CUE-jeleket mutatja
 
+Az alábbi példa HLS a Media Services dinamikus csomagolásban az EXT-X-CUE címkét jeleníti meg az [Adobe-főkiszolgálói] SCTE35 módban. 
+
+~~~
+#EXTM3U
+#EXT-X-VERSION:8
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:2
+#EXT-X-INDEPENDENT-SEGMENTS
+#EXT-X-PROGRAM-DATE-TIME:2020-01-07T19:40:50Z
+#EXTINF:1.501500,no-desc
+Fragments(video=22567545,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22702680,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22837815,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=22972950,format=m3u8-aapl-v8)
+#EXTINF:1.501500,no-desc
+Fragments(video=23108085,format=m3u8-aapl-v8)
+#EXTINF:1.234567,no-desc
+Fragments(video=23243220,format=m3u8-aapl-v8)
+#EXTINF:0.016689,no-desc
+Fragments(video=23354331,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=0.000022
+#EXTINF:0.250244,no-desc
+Fragments(video=23355833,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=0.250267
+#EXTINF:0.850856,no-desc
+Fragments(video=23378355,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.101122
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=0.000000,TIME=260.610344,CUE="/DAgAAAAAAXdAP/wDwUAAAPqf0/+AWXk0wABAQEAAGB86Fo="
+#EXTINF:0.650644,no-desc
+Fragments(video=23454932,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.751767
+#EXTINF:0.050044,no-desc
+Fragments(video=23513490,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=1.801811
+#EXTINF:1.451456,no-desc
+Fragments(video=23517994,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=3.253267
+#EXTINF:1.501500,no-desc
+Fragments(video=23648625,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=4.754767
+#EXTINF:1.501500,no-desc
+Fragments(video=23783760,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=6.256267
+#EXTINF:1.501500,no-desc
+Fragments(video=23918895,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=7.757767
+#EXTINF:1.501500,no-desc
+Fragments(video=24054030,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=9.259267
+#EXTINF:1.501500,no-desc
+Fragments(video=24189165,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=10.760767
+#EXTINF:1.501500,no-desc
+Fragments(video=24324300,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=12.262267
+#EXTINF:1.501500,no-desc
+Fragments(video=24459435,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=13.763767
+#EXTINF:1.501500,no-desc
+Fragments(video=24594570,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=15.265267
+#EXTINF:1.501500,no-desc
+Fragments(video=24729705,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=16.766767
+#EXTINF:1.501500,no-desc
+Fragments(video=24864840,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=18.268267
+#EXTINF:1.501500,no-desc
+Fragments(video=24999975,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=19.769767
+#EXTINF:1.501500,no-desc
+Fragments(video=25135110,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=21.271267
+#EXTINF:1.501500,no-desc
+Fragments(video=25270245,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=22.772767
+#EXTINF:1.501500,no-desc
+Fragments(video=25405380,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=24.274267
+#EXTINF:1.501500,no-desc
+Fragments(video=25540515,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=25.775767
+#EXTINF:1.501500,no-desc
+Fragments(video=25675650,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=27.277267
+#EXTINF:1.501500,no-desc
+Fragments(video=25810785,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=28.778767
+#EXTINF:1.501500,no-desc
+Fragments(video=25945920,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=30.280267
+#EXTINF:1.501500,no-desc
+Fragments(video=26081055,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=31.781767
+#EXTINF:1.501500,no-desc
+Fragments(video=26216190,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=33.283267
+#EXTINF:1.501500,no-desc
+Fragments(video=26351325,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=34.784767
+#EXTINF:1.501500,no-desc
+Fragments(video=26486460,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=36.286267
+#EXTINF:1.501500,no-desc
+Fragments(video=26621595,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=37.787767
+#EXTINF:1.501500,no-desc
+Fragments(video=26756730,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=39.289267
+#EXTINF:1.501500,no-desc
+Fragments(video=26891865,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=40.790767
+#EXTINF:1.501500,no-desc
+Fragments(video=27027000,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=42.292267
+#EXTINF:1.501500,no-desc
+Fragments(video=27162135,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=43.793767
+#EXTINF:1.501500,no-desc
+Fragments(video=27297270,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=45.295267
+#EXTINF:1.501500,no-desc
+Fragments(video=27432405,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=46.796767
+#EXTINF:1.501500,no-desc
+Fragments(video=27567540,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=48.298267
+#EXTINF:1.501500,no-desc
+Fragments(video=27702675,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=49.799767
+#EXTINF:1.501500,no-desc
+Fragments(video=27837810,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=51.301267
+#EXTINF:1.501500,no-desc
+Fragments(video=27972945,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=52.802767
+#EXTINF:1.501500,no-desc
+Fragments(video=28108080,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=54.304267
+#EXTINF:1.501500,no-desc
+Fragments(video=28243215,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=55.805767
+#EXTINF:1.501500,no-desc
+Fragments(video=28378350,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=57.307267
+#EXTINF:1.501500,no-desc
+Fragments(video=28513485,format=m3u8-aapl-v8)
+#EXT-X-CUE:ID="1002",TYPE="scte35",DURATION=59.993278,TIME=259.509244,CUE="/DAlAAAAAAXdAP/wFAUAAAPqf+/+AWRhuP4AUmNjAAEBAQAA8g1eNw==",ELAPSED=58.808767
+#EXTINF:1.501500,no-desc
+Fragments(video=28648620,format=m3u8-aapl-v8)
+
+~~~
+
+
+<!---
+THIS VERSION HAS THE HLSv8 DATERANGE Tags in it
 ~~~
 #EXTM3U
 #EXT-X-VERSION:8
@@ -755,10 +922,11 @@ Fragments(video=28648620,format=m3u8-aapl-v8)
 
 ~~~
 
+--->
 
-## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue-legacy"></a>3.2.2 Apple HLS az Adobe főműsoridőben EXT-X-CUE (örökölt)
+## <a name="322-apple-hls-with-adobe-primetime-ext-x-cue"></a>3.2.2 Apple HLS az Adobe főműsoridővel EXT-X-CUE
 
-Létezik egy "örökölt" implementáció is a Azure Media Services (2. és 3. verziójú API), amely az EXT-X-CUE címkét használja az [Adobe-főkiszolgálói] "SCTE-35 Mode" kifejezésben meghatározottak szerint. Ebben a módban a Azure Media Services Base64 kódolású [SCTE-35] splice_info_section () beágyazását fogja ellátni az EXT-X-CUE címkében.  
+Media Services (2. és 3. verzió) támogatja az EXT-X-CUE címke kimenetét az [Adobe-főkiszolgálói] "SCTE-35 Mode" definícióban meghatározottak szerint. Ebben a módban a Azure Media Services Base64 kódolású [SCTE-35] splice_info_section () beágyazását fogja ellátni az EXT-X-CUE címkében.  
 
 Az "örökölt" EXT-X-CUE címke az alábbi módon van definiálva, és az [Adobe-főkiszolgálói] specifikációban hivatkozott normatíva is lehet. Ezt csak az örökölt SCTE35-jelzésekhez szabad használni, ha szükséges, ellenkező esetben az ajánlott címke a [RFC8216]-ben van definiálva EXT-X-DATERANGE. 
 
@@ -771,12 +939,15 @@ Az "örökölt" EXT-X-CUE címke az alábbi módon van definiálva, és az [Adob
 | ELTELT            | decimális lebegőpontos szám | Nem kötelező, de kötelező a csúszó ablakhoz | Ha a rendszer megismétli a jelet a csúszó bemutató ablakának támogatásához, akkor ebben **a mezőben az** esemény megkezdése óta eltelt bemutatási idő mennyiségének kell lennie. Az egységek töredékes másodpercek. Ez az érték túllépheti a Összefonás vagy a szegmens eredeti megadott időtartamát. |
 | TIME               | decimális lebegőpontos szám | Kötelező                                  | Az esemény megjelenítési időpontja. Az egységek töredékes másodpercek.                                                                                                                                                                                                                        |
 
-
 A HLS Player alkalmazás rétege a típus használatával azonosítja az üzenet formátumát, dekódolja az üzenetet, alkalmazza a szükséges időkonverziókat, és feldolgozza az eseményt.  Az események az esemény időbélyegének megfelelően szinkronizálva lesznek a fölérendelt sáv szegmensének lejátszási listájában.  Ezeket a rendszer a legközelebbi szegmens (#EXTINF címke) elé szúrja be.
 
-### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>3.2.3 HLS. m3u8 manifest – példa az "örökölt" Adobe főműsoridőt EXT-X-CUE használatával
 
-Az alábbi példa az Adobe főkiszolgálói EXT-X-CUE címke használatával mutatja be a HLS-jegyzékfájlok díszítését.  A "CUE" paraméter csak a típus és az időtartam tulajdonságokat tartalmazza, ami azt jelenti, hogy ez egy RTMP-forrás az Adobe "Simple" üzemmódjának jelzésével.  Ha ez egy SCTE-35 módú jel volt, a címke tartalmazza a [3.2.1.1-példában](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)látható Base64 kódolású bináris SCTE-35 adattartalmat.
+### <a name="323-hls-m3u8-manifest-example-using-adobe-primetime-ext-x-cue"></a>3.2.3 HLS. m3u8 manifest – példa az Adobe főműsoridőnek EXT-X-CUE használatával
+
+Az alábbi példa az Adobe főkiszolgálói EXT-X-CUE címke használatával mutatja be a HLS-jegyzékfájlok díszítését.  A "CUE" paraméter csak a típus és az időtartam tulajdonságokat tartalmazza, ami azt jelenti, hogy ez egy RTMP-forrás az Adobe "Simple" üzemmódjának jelzésével.  
+<!---If this was a SCTE-35 mode signal, the tag would include the base64 encoded binary SCTE-35 payload as seen in the [3.2.1.1 example](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35).
+--->
+
 
 ~~~
 #EXTM3U
@@ -839,7 +1010,7 @@ Fragments(video=4011702982,format=m3u8-aapl)
 
 ~~~
 
-### <a name="324-hls-message-handling-for-legacy-adobe-primetime-ext-x-cue"></a>3.2.4 HLS az "örökölt" Adobe főműsoridőhez EXT-X-CUE
+### <a name="324-hls-message-handling-for-adobe-primetime-ext-x-cue"></a>3.2.4 HLS-üzenetkezelés az Adobe főműsoridőhez EXT-X-CUE
 
 Az események az egyes videó-és hangsávok szegmensének lejátszási listáján vannak jelezve. Az EXT-X-CUE címke pozíciójának mindig közvetlenül az első HLS-szegmens (összekapcsolás vagy szegmens elején), vagy közvetlenül az utolsó HLS-szegmens (Összefonás vagy szegmens végén) **után kell** lennie, amely az [Adobe-főkiszolgálói] által megkövetelt értékre vonatkozik.
 
@@ -855,7 +1026,7 @@ A [MPEGDASH] három módszert biztosít az események jelzésére:
 2.  A sávon belül megjelenő események az Event Message Box ("emsg") használatával
 3.  1 és 2 kombináció
 
-Az MPD-EventStream jelzett események hasznosak a VOD-adatfolyamok számára, mivel az ügyfelek az összes eseményhez hozzáférnek, azonnal az MPD letöltésekor. A SSAI jelzése is hasznos, ahol az alsóbb rétegbeli SSAI gyártójának a jeleket egy többpontos MPD-jegyzékből kell elemezni, és az ad-tartalmat dinamikusan kell beszúrnia.  A sávon kívüli ("emsg") megoldás az élő adatfolyamok esetében hasznos, ahol az ügyfeleknek nem kell újra letölteniük az MPD-t, vagy az ügyfél és a forrás között nem történik SSAI-jegyzékfájl-manipuláció. 
+Az MPD-EventStream jelzett események hasznosak a VOD-adatfolyamok számára, mivel az ügyfelek az összes eseményhez hozzáférnek, azonnal az MPD letöltésekor. A SSAI-jelzések esetében is hasznos, ahol az alsóbb rétegbeli SSAI gyártónak elemezni kell a jeleket az MPD-jegyzékből, és dinamikusan kell beszúrnia az ad-tartalmat.  A sávon kívüli ("emsg") megoldás az élő adatfolyamok esetében hasznos, ahol az ügyfeleknek nem kell újra letölteniük az MPD-t, vagy az ügyfél és a forrás között nem történik SSAI-jegyzékfájl-manipuláció. 
 
 Azure Media Services a kötőjel alapértelmezett viselkedése az MPD EventStream és sávon belüli, az Event Message Box ("emsg") használatával történő jel.
 
@@ -871,18 +1042,20 @@ A [SCTE-35] Cue-üzenetek DASH-ben történő szállításának normatív refere
 
 Az események manifest (MPD) díszítését az MPD jelzi az EventStream elem használatával, amely az időszak elemen belül jelenik meg. A használt schemeId az "urn: SCTE: scte35:2014: XML + bin".
 
+
 > [!NOTE]
 > A rövidség kedvéért a [SCTE-35] lehetővé teszi a Base64 kódolású szakasz használatát a Signal. Binary elemben (a Signal. SpliceInfoSection elem helyett), amely egy teljesen elemzett Cue-üzenet szállításának alternatívájaként.
 > A Azure Media Services ezt az "XML + bin" módszert használja az MPD jegyzékfájlban való megjelenítéshez.
 > Ez az ajánlott módszer az [DASH-IF-IOP] – Lásd a [kötőjel "ad inserting Event Streams" című szakaszát, ha IOP-útmutató](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html#ads-insertion-event-streams)
 > 
 
+
 A EventStream elem a következő attribútumokkal rendelkezik:
 
 | **Attribútum neve** | **Típus**                | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet sémáját azonosító URN-nek vagy URL- **címnek kell** lennie; A támogatott kimeneti schemeId "urn: SCTE: scte35:2014: XML + bin"/[SCTE-214-1] SEC 6.7.4 (MPD) lehet, mivel a szolgáltatás jelenleg csak az "XML + bin"-t támogatja, ha rövid idő alatt az MPD szerepel. |
-| Érték              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
+| value              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
 | Időskála          | 32 bites előjel nélküli egész szám | Kötelező      | Az időskála másodpercenkénti száma.                                                                                                                                                                                                                                                                                                                                                     |
 
 
@@ -909,12 +1082,14 @@ Az alábbi példa egy olyan részlet EventStream mutat be, amely egy RTMP-adatfo
     </EventStream>
 ~~~
 
+
 #### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>példa az 3.3.2.2 MPEG DASH. mpd-jegyzékfájlra egy RTMP-adatfolyamhoz az Adobe SCTE-35 mód használatával
 
 Az alábbi példa egy olyan részlet EventStream mutat be, amely az SCTE-35 módú adatjelzést használó RTMP-adatfolyamhoz tartozó dinamikus csomagoló Media Services.
 
+Példa EventStream elemre az XML + bin stílusú jelzések használatával [SCTE-214-1]
+
 ~~~ xml
-<!-- Example EventStream element using xml+bin style signaling per [SCTE-214-1] -->
 
       <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
         <Event presentationTime="2595092444" duration="11011000" id="1002">
@@ -930,11 +1105,14 @@ Az alábbi példa egy olyan részlet EventStream mutat be, amely az SCTE-35 mód
       </EventStream>
 ~~~
 
+
+
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a presentationTime a [SCTE-35] eseménynek a lefordított időponthoz viszonyított időpontja, amely nem az üzenet érkezési időpontja.
 > A (z) [MPEGDASH] a következőt határozza meg: Event@presentationTime "az esemény megjelenítésének időpontja az időszak elejéhez viszonyítva.
 > A megjelenítési idő másodpercben megadott értéke az attribútum értékének és az attribútum értékének a felosztása EventStream@timescale .
 > Ha nincs jelen, a megjelenítési idő értéke 0.
+
 
 #### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 – példa az MPEG DASH manifest (MPD) használatára egyidejű, EventStream, Adobe egyszerű üzemmódú jelek használatával
 
@@ -992,10 +1170,11 @@ Az egyes egyszerű jeleket a (z),, és tulajdonságokat tartalmazó Event elembe
 
 ~~~
 
-#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 például az MPEG DASH manifest (MPD) többpontos EventStream, az Adobe SCTE35 mód jelzésének használatával
+<!---
+#### 3.3.3.2 Example MPEG DASH manifest (MPD) with multi-period, EventStream, using Adobe SCTE35 mode signaling
 
-Az alábbi példa bemutatja, hogyan jelenik meg a forrás RTMP-adatfolyam Media Services dinamikus csomagolásának kimenete az Adobe SCTE35 mód jelzésének használatával.
-Ebben az esetben a kimeneti jegyzékfájl egy többpontos kötőjel. mpd egy EventStream elemmel, az @schemeIdUri "urn: SCTE: scte35:2014: XML + bin" tulajdonság pedig " @value scte35" értékre van állítva. A EventStream minden esemény eleme tartalmazza a teljes Base64 kódolású bináris SCTE35-jelet. 
+The following example shows the output from the Media Services dynamic packager for a source RTMP stream using the Adobe SCTE35 mode signaling.
+In this case, the output manifest is a multi-period DASH .mpd with an EventStream element, and @schemeIdUri property set to "urn:scte:scte35:2014:xml+bin" and a @value property set to "scte35". Each Event element in the EventStream contains the full base64 encoded binary SCTE35 signal 
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1028,9 +1207,6 @@ Ebben az esetben a kimeneti jegyzékfájl egy többpontos kötőjel. mpd egy Eve
                 <SegmentTimeline>
                     <S t="7417856" d="133120"/>
                     <S d="132096" r="1"/>
-                    
-                    <!--> ... aduio segments truncated for sample brevity </-->
-
                 </SegmentTimeline>
             </SegmentTemplate>
             <ProducerReferenceTime id="7417856" type="0" wallClockTime="2020-01-07T19:40:50.037Z" presentationTime="7417856"/>
@@ -1122,6 +1298,9 @@ Ebben az esetben a kimeneti jegyzékfájl egy többpontos kötőjel. mpd egy Eve
 </MPD>
 
 ~~~
+
+--->
+
 ### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG-kötőjel sávon belüli esemény-jelző
 
 A sávon kívüli adatfolyamok esetén az MPD-nek egy InbandEventStream elemre van szüksége a beállított értéknél.  Ez az elem egy kötelező schemeIdUri attribútummal és választható időkeret-attribútummal rendelkezik, amely szintén megjelenik az esemény üzenet mezőjében ("emsg").  Az **mpd-ben nem** definiált séma-azonosítókkal rendelkező esemény-üzenetsor nem lehet jelen.
@@ -1164,6 +1343,7 @@ Smooth Streaming **Betöltés** [MS-SSTR-betöltés] megköveteli, hogy a Media 
 
 Az RTMP betöltéséhez az AMF-üzenet Cue attribútuma a [SCTE-35] által definiált Base64 kódolású **splice_info_section ()** értékre van állítva.  
 
+
 Ha az üzenetek a fent ismertetett formátumban vannak megadva, a rendszer elküldi őket a HLS, a Smooth és a DASH ügyfeleknek a fentiekben leírtak szerint.  
 
 Ha teszteli a megvalósítást a Azure Media Services platformmal, először a "pass-through" LiveEvent kell elkezdeni a tesztelést, mielőtt a kódolást LiveEvent.
@@ -1174,9 +1354,10 @@ Ha teszteli a megvalósítást a Azure Media Services platformmal, először a "
 
 | Dátum     | Változások                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| 07/2/19  | Átdolgozott RTMP betöltés a SCTE35-támogatáshoz, új RTMP "onCuePoint"                                  |
+| 07/2/19  | Felülvizsgált RTMP betöltési támogatás, új RTMP "onCuePoint" az elemek élő működéséhez                                            |
 | 08/22/19 | Frissítve a OnUserDataEvent és az RTMP egyéni metaadatokhoz való hozzáadásához                                                          |
 | 1/08/20  | Kijavítva a hiba a RTMP egyszerű és RTMP SCTE35 módban. A "onCuePoint" típusról "onAdCue" értékre módosult. Frissült az egyszerű üzemmódú tábla. |
+| 08/4/20  | Eltávolította a DATERANGE címke támogatását, hogy az megfeleljen az éles szolgáltatás megvalósításának.    |
 
 ## <a name="next-steps"></a>További lépések
 Megtekintheti Media Services képzési útvonalakat.

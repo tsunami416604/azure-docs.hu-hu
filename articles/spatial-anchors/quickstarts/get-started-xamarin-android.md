@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870887"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810309"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -63,9 +63,7 @@ Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fi�
 
 Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
-Nyissa meg a következő fájlt: `Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs`.
-
-Keresse meg `AzureSpatialAnchorsManager(Session arCoreSession)` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";` .
+Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` fiókot a fiók tartományára.
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Az alkalmazás üzembe helyezése Android-eszközön
 

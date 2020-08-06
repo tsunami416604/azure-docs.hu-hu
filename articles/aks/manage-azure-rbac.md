@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan használható az Azure RBAC az Kubernetes-engedélyezéshez az Azure Kubernetes Service (ak) szolgáltatással.
 services: container-service
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498106"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799361"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -33,29 +33,25 @@ Az Azure-ból származó Kubernetes-erőforrások RBAC kezelése lehetővé tesz
 
 ### <a name="prerequisites"></a>Előfeltételek 
 - Regisztráljon az előzetes verzióra <https://aka.ms/aad-rbac-sign-up-form> .
+- Győződjön meg arról, hogy az Azure CLI 2.9.0 vagy újabb verziója van
 - Győződjön meg arról, hogy engedélyezve van a `EnableAzureRBACPreview` funkció jelzője.
-- Győződjön meg arról, hogy engedélyezve van a `AAD-V2` funkció jelzője.
 - Győződjön meg arról, hogy a `aks-preview` [CLI-bővítmény][az-extension-add] v 0.4.55 vagy újabb verziója van telepítve
 - Győződjön meg arról, hogy telepítette a [kubectl v 1.18.3 +][az-aks-install-cli]alkalmazást.
 
-#### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>`EnableAzureRBACPreview`A regisztráció és az `AAD-V2` előzetes verzió funkciói
+#### <a name="register-enableazurerbacpreview-preview-feature"></a>`EnableAzureRBACPreview`Előzetes verzió funkciójának regisztrálása
 
-Az Azure RBAC Kubernetes-engedélyezést használó AK-fürtök létrehozásához engedélyeznie kell a `EnableAzureRBACPreview` és a `AAD-V2` szolgáltatás jelzőit az előfizetésében.
+Az Azure RBAC Kubernetes-engedélyezést használó AK-fürtök létrehozásához engedélyeznie kell a `EnableAzureRBACPreview` szolgáltatás jelölőjét az előfizetésén.
 
-Regisztrálja a `EnableAzureRBACPreview` és a `AAD-V2` szolgáltatás jelzőit az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
+Regisztrálja a `EnableAzureRBACPreview` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-
-az feature register --namespace "Microsoft.ContainerService"  --name "AAD-V2"
 ```
 
 Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
 Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az [az Provider Register] [az-Provider-Register] parancs használatával:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037508"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800370"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -134,7 +134,7 @@ A legújabb Ubuntu LTS-verziót használjuk, a jelenleg [ubuntu 20,04 LTS (gyúj
 Az Azure Spring Cloud-ra vonatkozó biztonsági javítások az éles környezetbe kerülnek.
 Az Azure Spring Cloud-ra vonatkozó kritikus biztonsági javítások (CVE-pontszám >= 9) a lehető leghamarabb bekerülnek.
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Telepítés
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Támogatja az Azure Spring Cloud a Blue-Green üzembe helyezést?
 Igen. További információ: [átmeneti környezet beállítása](spring-cloud-howto-staging-environment.md).
@@ -161,6 +161,21 @@ A meglévő Spring Cloud-szolgáltatásoknak az Azure Spring Cloudba való átte
 * Javasoljuk, hogy a hivatalos és a stabil Pivotal rugós kódtárakat használja. A Pivotal Spring-kódtárak nem hivatalos, bétaverziós vagy elágazó verziói nem rendelkeznek szolgáltatói szerződés (SLA) támogatással.
 
 Az áttelepítés után figyelje a CPU-/RAM-mérőszámokat és a hálózati forgalmat annak érdekében, hogy az alkalmazás példányai megfelelően méretezhetők legyenek.
+
+## <a name="trouble-shooting"></a>Hibaelhárítás
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Milyen hatással van a szolgáltatás-beállításjegyzék ritkán nem érhető el?
+
+Bizonyos ritkán előforduló forgatókönyvek esetében előfordulhat, hogy bizonyos hibákat tapasztal, például: 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+az alkalmazások naplóiból. Ezt a problémát a rugós keretrendszer a hálózati instabil vagy más hálózati problémák miatt nagyon alacsony díjszabással vezette be. 
+
+Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és újrapróbálkozási szabályzattal is rendelkezik. Érdemes lehet egy átmeneti hibának tekinteni, és biztonságosan kihagyni.
+
+Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
+
 
 ## <a name="next-steps"></a>További lépések
 

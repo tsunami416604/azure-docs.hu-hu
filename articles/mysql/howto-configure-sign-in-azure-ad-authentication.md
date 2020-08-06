@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 6efe6392c32221f979a9ac319b4385b4b94b1235
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171325"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799838"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Active Directory ho
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda felhasználó beállítása
 
-Csak az Azure AD-rendszergazda felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Az Azure AD-rendszergazda felhasználó létrehozásához kövesse az alábbi lépéseket
+Csak az Azure AD-rendszergazda felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Azure AD-rendszergazda felhasználó létrehozásához kövesse az alábbi lépéseket
 
 1. A Azure Portal válassza ki a Azure Database for MySQL azon példányát, amelyet engedélyezni kíván az Azure AD-ben.
 2. A beállítások területen válassza a Active Directory rendszergazda elemet:

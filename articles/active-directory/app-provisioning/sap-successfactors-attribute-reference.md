@@ -2,36 +2,37 @@
 title: SAP SuccessFactors-attribútumok referenciája
 description: Megtudhatja, hogy a SuccessFactors mely attribútumait támogatja a SuccessFactors-HR-vezérelt kiépítés
 services: active-directory
-author: kenwith
+author: cmmdesai
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/06/2019
-ms.author: kenwith
+ms.date: 08/05/2020
+ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781548"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808507"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-attribútumok referenciája
 
 Ebben a cikkben a következőkkel kapcsolatos információkat talál:
 
-- [Támogatott SuccessFactors-entitások és-attribútumok](#supported-successfactors-entities-and-attributes)
+- [SuccessFactors-entitások és-attribútumok](#supported-successfactors-entities-and-attributes)
 - [Alapértelmezett attribútumok leképezése](#default-attribute-mapping)
 
 ## <a name="supported-successfactors-entities-and-attributes"></a>Támogatott SuccessFactors-entitások és-attribútumok
 
-Az alábbi táblázat a következő két üzembe helyezési alkalmazás által támogatott SuccessFactors-attribútumok listáját rögzíti:
+Az alábbi táblázat rögzíti az alapértelmezett SuccessFactors-attribútumok listáját a következő két üzembe helyezési alkalmazásban:
 
 - [SuccessFactors Active Directory a felhasználók üzembe helyezése](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 - [SuccessFactors az Azure AD-felhasználók üzembe helyezéséhez](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
+További attribútumok esetében tekintse meg az [SAP SuccessFactors-integrációs referenciát](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) a séma kiterjesztéséhez. 
 
 | \# | SuccessFactors entitás                  | SuccessFactors attribútum     | Művelet típusa |
 |----|----------------------------------------|------------------------------|----------------|
@@ -71,7 +72,7 @@ Az alábbi táblázat a következő két üzembe helyezési alkalmazás által t
 | 34 | Felhasználó                                   | Becenév                     | Olvasás           |
 | 35 | Felhasználó                                   | state                        | Olvasás           |
 | 36 | Felhasználó                                   | timeZone                     | Olvasás           |
-| 37 | Felhasználó                                   | felhasználónév                     | Olvasás           |
+| 37 | Felhasználó                                   | username                     | Olvasás           |
 | 38 | Felhasználó                                   | Irányítószám                      | Olvasás           |
 | 39 | PerPhone                               | areaCode                     | Olvasás           |
 | 40 | PerPhone                               | Országhívószám                  | Olvasás           |
@@ -130,7 +131,7 @@ Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmaz
 | 7  | Felhasználó                                   | city                     | l                                       | NA                                                                                           |
 | 8  | Felhasználó                                   | ország                  | co                                      | NA                                                                                           |
 | 9  | Felhasználó                                   | state                    | st                                      | NA                                                                                           |
-| 10 | Felhasználó                                   | felhasználónév                 | samAccountName                          | NA                                                                                           |
+| 10 | Felhasználó                                   | username                 | samAccountName                          | NA                                                                                           |
 | 11 | Felhasználó                                   | Irányítószám                  | Irányítószám                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | Levelezés                                    | NA                                                                                           |
 | 13 | EmpJob                                 | Beosztás                 | cím                                   | NA                                                                                           |

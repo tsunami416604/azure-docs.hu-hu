@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506570"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810003"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -166,7 +166,7 @@ Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a hát
 
 Igen.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Application Gateway mindig virtuális hálózatban van üzembe helyezve?
 
@@ -353,7 +353,7 @@ Application Gateway-specifikus információk:
 Ha egy visszavont nemzetközi árumegállapodások vagy által kiállított tanúsítványt használ, az alkalmazás rendelkezésre állása megszakadhat, és az alkalmazástól függően előfordulhat, hogy számos hibaüzenetet kap, többek között a következőket: 
 
 1.  Érvénytelen tanúsítvány/visszavont tanúsítvány
-2.  A kapcsolatok időkorlátja lejárt
+2.  A kapcsolat időtúllépés miatt megszakadt
 3.  HTTP 502
 
 Ha el szeretné kerülni az alkalmazás megszakítását a probléma miatt, vagy egy visszavont HITELESÍTÉSSZOLGÁLTATÓ újbóli kibocsátását, a következő műveleteket kell végrehajtania: 
@@ -467,30 +467,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Hogyan csak a saját előtérbeli IP-címmel rendelkező Application Gateway v2-t használja?
-
-A Application Gateway v2 jelenleg nem támogatja csak a magánhálózati IP-üzemmódot. A következő kombinációkat támogatja
-* Privát IP-cím és nyilvános IP-cím
-* Csak nyilvános IP-cím
-
-Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2-t, kövesse az alábbi eljárást:
-1. Nyilvános és privát előtér-IP-címmel rendelkező Application Gateway létrehozása
-2. Ne hozzon létre figyelőket a nyilvános előtérbeli IP-címhez. A Application Gateway nem fogja figyelni a nyilvános IP-cím forgalmát, ha a rendszer nem hoz létre figyelőket.
-3. Hozzon létre és csatoljon egy [hálózati biztonsági csoportot](https://docs.microsoft.com/azure/virtual-network/security-overview) a Application Gateway alhálózat számára a következő konfigurációval a prioritás sorrendjében:
-    
-    a. Engedélyezi a forrásból származó forgalmat a **GatewayManager** szolgáltatás címkéjének és céljának, mint a **65200-65535** **-as** portot. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezek a portok tanúsítvány-hitelesítéssel vannak védve (zárolva). A külső entitások, beleértve az átjáró felhasználói rendszergazdáit, nem indíthatnak módosításokat a végpontokon a megfelelő tanúsítványok nélkül.
-    
-    b. Adatforgalom engedélyezése a forrástól a **AzureLoadBalancer** szolgáltatás címkéjének és **a célként** megadott portnak megfelelően
-    
-    c. A forrásként megadott összes bejövő forgalom megtagadása az **Internet** Service címkeként **és a célportként.** Adja meg ezt a szabályt a *legkevesebb prioritással* a bejövő szabályokban
-    
-    d. Tartsa meg az alapértelmezett szabályokat, például engedélyezze a VirtualNetwork bejövő beállítást, hogy a magánhálózati IP-címekhez való hozzáférés ne legyen letiltva.
-    
-    e. A kimenő internetkapcsolatot nem lehet blokkolni. Ellenkező esetben a naplózással, a metrikákkal és egyéb problémákkal szembesül.
-
-NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

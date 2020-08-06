@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b7f924c7f115e8eddda93ea0c096ab94411da72
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652498"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810394"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -86,7 +86,7 @@ Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fi�
 
 Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
-Keresse meg `public AzureSpatialAnchorsManager(Session arCoreSession)` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");` .
+Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` fiókot a fiók tartományára.
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -96,7 +96,7 @@ Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fi�
 
 Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
-Keresse meg `AzureSpatialAnchorsApplication::StartCloudSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");` .
+Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` fiókot a fiók tartományára.
 
 ---
 

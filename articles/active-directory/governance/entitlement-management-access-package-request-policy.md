@@ -3,7 +3,7 @@ title: Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállít�
 description: Megtudhatja, hogyan módosíthatja a hozzáférési csomagokra vonatkozó kérelmeket és jóváhagyási beállításokat Azure Active Directory jogosultságok kezelése során.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf38013efb14e412fbcd43e06dcf17e61c3bc4a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078818"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798766"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében
 
@@ -35,7 +35,7 @@ Azt határozza meg, hogy ki kérheti a hozzáférési csomag igénylését egy s
 
 ![Több házirend egy hozzáférési csomagban](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| Forgatókönyv | Szabályzatok száma |
+| Eset | Szabályzatok száma |
 | --- | --- |
 | Szeretném, hogy a címtárban lévő összes felhasználó ugyanazzal a kéréssel és jóváhagyási beállításokkal rendelkezzen a hozzáférési csomaghoz | Eggyel |
 | Azt szeretném, hogy az egyes csatlakoztatott szervezetek összes felhasználója hozzáférhessen egy hozzáférési csomag igényléséhez | Eggyel |

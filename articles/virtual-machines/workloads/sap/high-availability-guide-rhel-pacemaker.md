@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065131"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800262"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -125,7 +125,11 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 1. **[A]** telepítési állomásnév feloldása
 
    Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
-   Cserélje le az IP-címet és a gazdagépet a következő parancsokra. A/etc/hosts használatának előnye, hogy a fürt független lesz a DNS-től, ami egyetlen meghibásodási pont lehet.
+   Cserélje le az IP-címet és a gazdagépet a következő parancsokra.  
+
+   >[!IMPORTANT]
+   > Ha a fürt konfigurációjában állomásnévket használ, elengedhetetlen, hogy megbízható legyen az állomásnév feloldása. A fürt kommunikációja sikertelen lesz, ha a nevek nem érhetők el, és ez a fürt feladatátvételi késéséhez vezethet.
+   > A/etc/hosts használatának előnye, hogy a fürt független lesz a DNS-től, ami egyetlen meghibásodási pont lehet.  
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>

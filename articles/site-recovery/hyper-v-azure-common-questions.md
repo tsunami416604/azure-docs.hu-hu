@@ -3,12 +3,12 @@ title: Gyakori kérdések a Hyper-V vész-helyreállítással kapcsolatban Azure
 description: Ez a cikk a helyi Hyper-V virtuális gépeken az Azure-ba való vész-helyreállítás beállításával kapcsolatos gyakori kérdéseket összegzi a Azure Site Recovery-hely használatával.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132665"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799888"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Vészhelyreállítás Hyper-V-ről Azure-ba – Gyakori kérdések
 
@@ -74,7 +74,7 @@ Igen. Amikor létrehoz egy tárolót egy régióban, biztosítjuk, hogy az Site 
 Igen, [Az Azure-ban](../storage/common/storage-service-encryption.md) a titkosítás és a titkosítás is támogatott.
 
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Telepítés
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Mire használhatom a Hyper-V-t az Azure-ba történő replikációhoz?
 
@@ -156,6 +156,10 @@ Az Azure-ba való replikáláskor a replikálási forgalom elér egy Azure Stora
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik a replikált virtuális gépekre vonatkozó követelmények?
 
 A replikáláshoz a Hyper-V virtuális gépnek támogatott operációs rendszert kell futtatnia. Emellett a virtuális gépnek meg kell felelnie az Azure-beli virtuális gépek követelményeinek. [További információ](hyper-v-azure-support-matrix.md#replicated-vms) a támogatási mátrixban található.
+
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>Miért van szükség további standard szintű Storage-fiókra, ha a virtuális gépek lemezeit a Premium Storage-ba replikálom?
+
+Ha a helyszíni virtuális gépeket/fizikai kiszolgálókat a Premium Storage-ba replikálja, a védett gép lemezén található összes adattal a Premium Storage-fiókba lesznek replikálva. A replikációs naplók tárolásához további szabványos Storage-fiókra van szükség. A lemezes adatreplikálás kezdeti fázisának befejezése után a rendszer folyamatosan nyomon követi a helyszíni lemezek összes módosítását, és replikációs naplóként tárolja ezt a további szabványos Storage-fiókban.
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran lehet replikálni az Azure-ba?
 

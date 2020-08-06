@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1687224e796043af1f7c3d1ee6f0417465fb4959
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317652"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800298"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat létrehozása
 
@@ -142,7 +142,7 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Összegzés
+9. Összefoglalás
 10. Leírás
 11. Képernyőképek/videók
 
@@ -207,11 +207,14 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának PNG-fájlját két képpontos méretben:
-- **Kicsi** (48 x 48)
-- **Nagyméretű** (216 x 216)
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) méretű embléma létrehozásához. Ezt másik képpel is lecserélheti.
 
-Mindkét emblémát meg kell adni, és a piactér-lista különböző helyein használják.
+Mindkét embléma mérete szükséges a lista különböző helyein való használathoz:
+
+- **Kicsi** (48 x 48)
+- **Nagy** (216 x 216 és 350 x 350 között)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 

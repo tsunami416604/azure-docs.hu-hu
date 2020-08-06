@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763737"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799502"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Felhasználók vagy csoportok hozzárendelése vállalati alkalmazáshoz az Azure Active Directoryban
 
@@ -26,6 +26,9 @@ Ez a cikk bemutatja, hogyan rendelhet hozzá felhasználókat vagy csoportokat A
 A nagyobb fokú szabályozás érdekében a vállalati alkalmazások bizonyos típusai úgy konfigurálhatók, hogy [felhasználói hozzárendelést kérjenek](#configure-an-application-to-require-user-assignment). 
 
 Ha [felhasználót vagy csoportot szeretne hozzárendelni egy vállalati alkalmazáshoz](#assign-users-or-groups-to-an-app-via-the-azure-portal), globális rendszergazdaként, alkalmazás-rendszergazdaként, felhőalapú alkalmazás-rendszergazdaként vagy a vállalati alkalmazás hozzárendelt tulajdonosával kell bejelentkeznie.
+
+> [!IMPORTANT]
+> Ha egy alkalmazáshoz rendel hozzá egy csoportot, akkor csak a csoport felhasználói férhetnek hozzá. A hozzárendelés nem kaszkádba ágyazott csoportokba kerül.
 
 > [!NOTE]
 > A csoport alapú hozzárendeléshez prémium szintű Azure Active Directory P1 vagy P2 kiadás szükséges. A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagságok és az Office 365-csoportok jelenleg nem támogatottak. A cikkben tárgyalt funkciókra vonatkozó további licencelési követelményekért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory). 

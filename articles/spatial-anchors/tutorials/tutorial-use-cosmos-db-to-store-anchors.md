@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77615153"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810020"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Azure térbeli horgonyok megosztása munkamenetek és eszközök között egy Azure Cosmos DB háttérrel
 
@@ -21,7 +21,7 @@ Ez az oktatóanyag az [Azure térbeli horgonyok munkamenetek és eszközök köz
 
 ![Az objektumok megőrzését bemutató GIF](./media/persistence.gif)
 
-Érdemes megjegyezni, hogy bár a Unity és a Azure Cosmos DB is ebben az oktatóanyagban fog megjelenni, csupán egy példát mutat arra, hogyan oszthat meg térbeli horgonyokat az eszközök között. A felhasználó más nyelveket és háttér-technológiákat is elérhet ugyanezen cél eléréséhez. Emellett az oktatóanyagban használt ASP.NET Core webalkalmazáshoz a .NET Core 2,2 SDK szükséges. A Windows Web Apps működik, de jelenleg nem fut Web Apps Linux rendszeren.
+Érdemes megjegyezni, hogy bár a Unity és a Azure Cosmos DB is ebben az oktatóanyagban fog megjelenni, csupán egy példát mutat arra, hogyan oszthat meg térbeli horgonyokat az eszközök között. A felhasználó más nyelveket és háttér-technológiákat is elérhet ugyanezen cél eléréséhez.
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -29,27 +29,19 @@ Vegyen fel egy Azure Cosmos-adatbázist a korábban létrehozott erőforráscsop
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Másolja ki `Connection String` az-t, mert szüksége lesz rá.
+Másolja ki az-t `Connection String` , mert szüksége lesz rá.
 
 ## <a name="make-minor-changes-to-the-sharingservice-files"></a>A SharingService-fájlok kisebb módosításának elvégzése
 
-A **megoldáskezelő**megnyitásához `SharingService\Startup.cs`nyissa meg a t.
+A **megoldáskezelő**megnyitásához nyissa meg a t `SharingService\Startup.cs` .
 
-Keresse `#define INMEMORY_DEMO` meg a fájl elejét, és írja be a sort. Mentse a fájlt.
+Keresse meg a `#define INMEMORY_DEMO` fájl elejét, és írja be a sort. Mentse a fájlt.
 
-A **megoldáskezelő**megnyitásához `SharingService\appsettings.json`nyissa meg a t.
+A **megoldáskezelő**megnyitásához nyissa meg a t `SharingService\appsettings.json` .
 
-Keresse meg `StorageConnectionString` a tulajdonságot, és állítsa be úgy az értéket, hogy `Connection String` megegyezzen az [adatbázis-fiók létrehozása lépésben](#create-a-database-account)másolt értékkel. Mentse a fájlt.
+Keresse meg a `StorageConnectionString` tulajdonságot, és állítsa be úgy az értéket, hogy megegyezzen az `Connection String` [adatbázis-fiók létrehozása lépésben](#create-a-database-account)másolt értékkel. Mentse a fájlt.
 
 Közzéteheti a megosztási szolgáltatást, és futtathatja a minta alkalmazást.
-
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-### <a name="unity-20193"></a>Unity 2019,3
-
-A változtatások miatt a 2019,3 egység jelenleg nem támogatott. Használja a 2019,1 vagy a 2019,2 egységet.
-
-[!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>További lépések
 

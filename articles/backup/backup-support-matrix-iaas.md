@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531863"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810462"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -137,7 +137,7 @@ Virtuális gép visszaállítása eltérő virtuális hálózatban |Támogatott.
 
 **Számítás** | **Támogatás**
 --- | ---
-Virtuális gép mérete |Bármely Azure-beli virtuálisgép-méret legalább 2 CPU-maggal és 1 GB RAM-mal.<br/><br/> [Részletek](../virtual-machines/windows/sizes.md)
+Virtuális gép mérete |Bármely Azure-beli virtuálisgép-méret legalább 2 CPU-maggal és 1 GB RAM-mal.<br/><br/> [Részletek](../virtual-machines/sizes.md)
 Virtuális gépek biztonsági mentése a [rendelkezésre állási csoportokban](../virtual-machines/availability.md#availability-sets) | Támogatott.<br/><br/> Az elérhető készletekben lévő virtuális gépeket nem állíthatja helyre a virtuális gép gyors létrehozásához szükséges lehetőség használatával. Ehelyett a virtuális gép visszaállításakor állítsa vissza a lemezt, és használja egy virtuális gép üzembe helyezéséhez, vagy egy lemez visszaállításához, és használja egy meglévő lemez cseréjéhez.
 A [Hybrid use Benefit (hub) használatával](../virtual-machines/windows/hybrid-use-benefit-licensing.md) üzembe helyezett virtuális gépek biztonsági mentése | Támogatott.
 [Méretezési csoportokban](../virtual-machine-scale-sets/overview.md) üzembe helyezett virtuális gépek biztonsági mentése |Támogatott. A rendszer-előkészítési [módot](../virtual-machine-scale-sets/orchestration-modes.md) a tartalék tartomány 2 értékére kell beállítani. A rendelkezésre állási csoport nem támogatott.
