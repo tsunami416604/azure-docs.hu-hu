@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 08/04/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420651"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761161"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -50,7 +50,7 @@ Az összetett indexek segítségével egyszerre több mezőn rendezheti a művel
 
 `db.coll.find().sort({name:1,age:1})`
 
-Az előző összetett index használatával a lekérdezéseket az összes mező ellentétes rendezési sorrendjével is hatékonyan rendezheti. Íme egy példa:
+Az előző összetett index használatával a lekérdezéseket az összes mező ellentétes rendezési sorrendjével is hatékonyan rendezheti. Bemutatunk egy példát:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -319,7 +319,12 @@ Az index előrehaladásának részletei az aktuális indexelési művelet előre
 
 A **háttérbeli** index tulajdonsághoz megadott értéktől függetlenül az index frissítése mindig a háttérben történik. Mivel az index frissítései alacsonyabb prioritással használják a kérelmek egységeit, mint a többi adatbázis-műveletnél, az index módosításai nem eredményeznek semmilyen állásidőt az írási, frissítési és törlési műveletekhez.
 
-Új index hozzáadásakor a lekérdezések azonnal az indexet fogják használni. Ez azt jelenti, hogy előfordulhat, hogy a lekérdezések nem adják vissza az összes egyező eredményt, így a hibák visszaküldése nélkül is megtörténnek. Az index átalakításának befejeződése után a lekérdezés eredményei konzisztensek lesznek. [Nyomon követheti az index előrehaladását](#track-index-progress).
+Új index hozzáadásakor nincs hatása a rendelkezésre állás olvasására. A lekérdezések csak akkor használják az új indexeket, ha az index átalakítása befejeződött. Az index átalakítása során a lekérdezési motor továbbra is a meglévő indexeket fogja használni, így az indexelési módosítás megkezdése előtt meg kell figyelnie a hasonló olvasási teljesítményt az indexelési átalakítás során. Új indexek hozzáadásakor nem áll fenn a hiányos vagy inkonzisztens lekérdezési eredmények kockázata is.
+
+Az indexek eltávolításakor és a lekérdezések azonnali futtatásakor a szűrők az eldobott indexeken vannak, az eredmények inkonzisztensek lehetnek, és nem teljesek, amíg az index átalakítása be nem fejeződik. Ha eltávolítja az indexeket, a lekérdezési motor nem garantál konzisztens vagy teljes eredményt, amikor a lekérdezések szűrik ezeket az újonnan eltávolított indexeket. A legtöbb fejlesztő nem dobja el az indexeket, és azonnal megpróbálja lekérdezni őket, így a gyakorlatban ez a helyzet nem valószínű.
+
+> [!NOTE]
+> [Nyomon követheti az index előrehaladását](#track-index-progress).
 
 ## <a name="migrate-collections-with-indexes"></a>Gyűjtemények migrálása indexekkel
 

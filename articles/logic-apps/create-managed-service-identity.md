@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: de6311e786065bebe7399ccb3625798866e864df
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533342"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760294"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
@@ -197,7 +197,7 @@ Az Azure-erőforrások (például a Logic apps) létrehozásának és üzembe he
 
 * Egy `identity` objektum, amelynek tulajdonsága a következőre van `type` beállítva`UserAssigned`
 
-* Olyan gyermekobjektum `userAssignedIdentities` , amely meghatározza az identitás erőforrás-azonosítóját, amely egy másik gyermekobjektum, amely a `principalId` és `clientId` tulajdonságokkal rendelkezik.
+* A `userAssignedIdentities` felhasználó által hozzárendelt erőforrást és nevet megadó gyermekobjektum
 
 Ez a példa egy logikai alkalmazás erőforrás-definícióját mutatja be egy HTTP PUT-kérelemhez, és tartalmaz egy nem paraméteres `identity` objektumot. Az PUT kérelemre és az azt követő lekérési műveletre adott válasz az alábbi `identity` objektummal is rendelkezik:
 
@@ -215,10 +215,7 @@ Ez a példa egy logikai alkalmazás erőforrás-definícióját mutatja be egy H
          "identity": {
             "type": "UserAssigned",
             "userAssignedIdentities": {
-               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {
-                  "principalId": "<principal-ID>",
-                  "clientId": "<client-ID>"
-               }
+               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {}
             }
          },
          "properties": {
@@ -231,12 +228,6 @@ Ez a példa egy logikai alkalmazás erőforrás-definícióját mutatja be egy H
    "outputs": {}
 }
 ```
-
-| Tulajdonság (JSON) | Érték | Leírás |
-|-----------------|-------|-------------|
-| `principalId` | <*elsődleges azonosító*> | A felhasználó által hozzárendelt felügyelt identitás globálisan egyedi azonosítója (GUID) az Azure AD-bérlőben |
-| `clientId` | <*ügyfél-azonosító*> | Egy globálisan egyedi azonosító (GUID) a logikai alkalmazás új identitásához, amelyet a rendszer a Futtatás során hívásokhoz használ |
-||||
 
 Ha a sablon a felügyelt identitás erőforrás-definícióját is tartalmazza, akkor parametrizálja az `identity` objektumot. Ez a példa azt szemlélteti, hogy a gyermek `userAssignedIdentities` objektum hogyan hivatkozik a `userAssignedIdentity` sablon szakaszában definiált változóra `variables` . Ez a változó a felhasználó által hozzárendelt identitás erőforrás-AZONOSÍTÓJÁRA hivatkozik.
 
@@ -281,22 +272,11 @@ Ha a sablon a felügyelt identitás erőforrás-definícióját is tartalmazza, 
          "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
          "name": "[parameters('Template_UserAssignedIdentityName')]",
          "location": "[resourceGroup().location]",
-         "properties": {
-            "tenantId": "<tenant-ID>",
-            "principalId": "<principal-ID>",
-            "clientId": "<client-ID>"
-         }
+         "properties": {}
       }
   ]
 }
 ```
-
-| Tulajdonság (JSON) | Érték | Leírás |
-|-----------------|-------|-------------|
-| `tenantId` | <*Azure-AD-bérlő-azonosító*> | A globálisan egyedi azonosító (GUID), amely az Azure AD-bérlőt jelképezi, ahol a felhasználó által hozzárendelt identitás most már tagja. Az Azure AD-bérlőn belül az egyszerű szolgáltatásnév neve megegyezik a felhasználó által hozzárendelt identitás nevével. |
-| `principalId` | <*elsődleges azonosító*> | A felhasználó által hozzárendelt felügyelt identitás globálisan egyedi azonosítója (GUID) az Azure AD-bérlőben |
-| `clientId` | <*ügyfél-azonosító*> | Egy globálisan egyedi azonosító (GUID) a logikai alkalmazás új identitásához, amelyet a rendszer a Futtatás során hívásokhoz használ |
-||||
 
 <a name="access-other-resources"></a>
 
@@ -508,7 +488,7 @@ A felügyelt identitás mostantól le van tiltva a logikai alkalmazásban.
 
 ### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>Felügyelt identitás letiltása Azure Resource Manager sablonban
 
-Ha a logikai alkalmazás felügyelt identitását egy Azure Resource Manager sablonnal hozta létre, állítsa be az `identity` objektum `type` gyermek tulajdonságát a következőre: `None` . A rendszer által felügyelt identitás esetében ez a művelet törli a résztvevő AZONOSÍTÓját is az Azure AD-ből.
+Ha a logikai alkalmazás felügyelt identitását egy Azure Resource Manager sablonnal hozta létre, állítsa be az `identity` objektum `type` gyermek tulajdonságát a következőre: `None` .
 
 ```json
 "identity": {
@@ -516,6 +496,6 @@ Ha a logikai alkalmazás felügyelt identitását egy Azure Resource Manager sab
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonságos hozzáférés és az adatAzure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md)

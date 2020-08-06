@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 1f6624c454364ca19c8ce112cb1cbbef134f162d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567979"
+ms.locfileid: "87759614"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Az Azure SQL Edge használati és diagnosztikai adatok konfigurálása
 
@@ -87,7 +87,7 @@ Az Azure SQL Edge használati és diagnosztikai adatgyűjtés helyi naplózási 
 
 A helyi naplózás használatának és a diagnosztikai adatoknak az Azure SQL Edge-ben való engedélyezése
 
-1. Hozzon létre egy célként megadott könyvtárat az új helyi naplózási naplófájlok tárolásához. Ezt a célként megadott könyvtárat ugyanabban a csatlakoztatási kötetben kell létrehozni, amely az SQL Edge/var/opt/MSSQL/elérési útjára van leképezve.
+1. Hozzon létre egy célként megadott könyvtárat az új helyi naplózási naplófájlok tárolásához. Ez a célkönyvtár lehet a gazdagépen vagy a tárolón belül. Az alábbi példában a cél könyvtár ugyanabban a csatlakoztatási kötetben jön létre, amely az SQL Edge/var/opt/MSSQL/elérési útjára van leképezve.
 
    ```bash
    sudo mkdir <host mount path>/audit
@@ -95,14 +95,14 @@ A helyi naplózás használatának és a diagnosztikai adatoknak az Azure SQL Ed
 
 2. A használati és diagnosztikai adatok naplózásának beállítása környezeti változók vagy MSSQL. conf fájl használatával.
 
-   - Környezeti változók használata – adja hozzá a következő környezeti változót az SQL Edge-telepítéshez.
+   - Környezeti változók használata – adja hozzá a következő környezeti változót az SQL Edge-telepítéshez, és adja meg a naplófájlok célmappáját.
    
-     `*MSSQL_TELEMETRY_DIR = /var/opt/mssql/audit*`
+     `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - Az MSSQL. conf fájl használata – adja hozzá a következő sorokat az MSSQL. conf fájlban.
+   - Az MSSQL. conf fájl használata – adja hozzá a következő sorokat az MSSQL. conf fájlhoz, és adja meg a naplófájlok célmappáját.
        ```ini
        [telemetry]
-       userrequestedlocalauditdirectory  = /var/opt/mssql/audit
+       userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
 ## <a name="next-steps"></a>Következő lépések

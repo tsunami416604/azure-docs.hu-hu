@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290930"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760634"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -25,34 +25,34 @@ A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említet
 
 Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi kód megadását. További információ: [optikai karakterfelismerés (OCR)](concept-recognizing-text.md) .
 
-|Nyelv| Nyelvkód | OCR API | A v 3.0 olvasása | Olvasás: v 3.1 – előzetes verzió. 1 |
+|Nyelv| Nyelvkód | OCR API | A v 3.0 olvasása | A v 3.1 nyilvános előzetes verziójának olvasása |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arab | `ar`|✔ | | |
 |Kínai (egyszerűsített) | `zh-Hans`|✔ | |✔ |
 |Kínai (hagyományos) | `zh-Hant`|✔ | | |
-|cseh | `cs` |✔ | | |
-|dán | `da` |✔ | | |
-|holland | `nl` |✔ |✔ |✔ |
-|angol | `en` |✔ |✔ |✔ |
-|finn | `fi` |✔ | | |
-|francia | `fr` |✔ |✔ |✔ |
-|német | `de` |✔ |✔ |✔ |
-|görög | `el` |✔ | | |
-|magyar | `hu` |✔ | | |
-|olasz | `it` |✔ |✔ |✔ |
+|Cseh | `cs` |✔ | | |
+|Dán | `da` |✔ | | |
+|Holland | `nl` |✔ |✔ |✔ |
+|Angol | `en` |✔ |✔ |✔ |
+|Finn | `fi` |✔ | | |
+|Francia | `fr` |✔ |✔ |✔ |
+|Német | `de` |✔ |✔ |✔ |
+|Görög | `el` |✔ | | |
+|Magyar | `hu` |✔ | | |
+|Olasz | `it` |✔ |✔ |✔ |
 |Japán | `ja` |✔ | | |
-|koreai | `ko` |✔ | | |
-|norvég | `nb` |✔ | | |
-|lengyel | `pl` |✔ | | |
-|portugál | `pt` |✔ |✔ |✔ |
+|Koreai | `ko` |✔ | | |
+|Norvég | `nb` |✔ | | |
+|Lengyel | `pl` |✔ | | |
+|Portugál | `pt` |✔ |✔ |✔ |
 |Román | `ro` |✔ | | |
-|orosz | `ru` |✔ | | |
+|Orosz | `ru` |✔ | | |
 |Szerb (cirill betűs) | `sr-Cyrl` |✔ | | |
 |Szerb (latin betűs) | `sr-Latn` |✔ | | |
 |Szlovák | `sk` |✔ | | |
-|spanyol | `es` |✔ |✔ |✔ |
-|svéd | `sw` |✔ | | |
-|török | `tr` |✔ | | |
+|Spanyol | `es` |✔ |✔ |✔ |
+|Svéd | `sw` |✔ | | |
+|Török | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>Rendszerkép elemzése
 
@@ -61,12 +61,12 @@ Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/servi
 |Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín (Color) | Arcok | ImageType | Objektumok | Hírességek | Arcrészek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
+|Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japán | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
 

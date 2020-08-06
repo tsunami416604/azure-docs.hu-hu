@@ -5,14 +5,14 @@ services: vpn-gateway
 author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 08/04/2020
 ms.author: alzam
-ms.openlocfilehash: cf978f9551e5b2db885ca28d14f66586c029d913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082222"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761178"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása P2S OpenVPN protokollt használó kapcsolatokhoz: Azure AD-hitelesítés
 
@@ -250,7 +250,16 @@ Megváltoztathatja a letöltött profil XML-fájlját, ** \<excluderoutes> \<rou
 </clientconfig>
 </azvpnprofile>
 ```
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Importálható a profil parancssori parancssorból?
 
-## <a name="next-steps"></a>További lépések
+A profilt parancssorból is importálhatja, ha a letöltött **azurevpnconfig.xml** fájlt a **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** mappába helyezi, és az alábbi parancsot futtatja:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+az importálás kényszerítéséhez használja az **-f** kapcsolót is
+
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

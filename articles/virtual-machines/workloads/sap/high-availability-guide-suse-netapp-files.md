@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 261db7d90824aea61ebc974f91eb8f772f8fc68a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75573cb49bcc0aca206ad8f13f060121e70a0621
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082086"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760617"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
 
@@ -644,9 +644,11 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    </code></pre>
+
+   A ENSA1 és a ENSA2 esetében ügyeljen arra, hogy az `keepalive` operációs rendszer paramétereinek beállítása a [1410736](https://launchpad.support.sap.com/#/notes/1410736)-es SAP-megjegyzésben leírtak szerint történjen.  
 
    * ERS-profil
 
@@ -668,8 +670,6 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 6. **[A] A** Keep Alive konfigurálása
 
    Az SAP NetWeaver Application Server és a ASCS/SCS közötti kommunikáció egy szoftveres terheléselosztó használatával irányítható át. A terheléselosztó konfigurálható időtúllépés után leválasztja az inaktív kapcsolatokat. Ennek elkerüléséhez be kell állítania egy paramétert az SAP NetWeaver ASCS/SCS profilban, és módosítania kell a Linux rendszer beállításait. További információért olvassa el az [SAP megjegyzés 1410736][1410736] .
-
-   A enque/encni/set_so_keepalive ASCS/SCS-profil paramétere már hozzá lett adva az utolsó lépésben.
 
    <pre><code>
    # Change the Linux system configuration
@@ -1435,7 +1435,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](./high-availability-guide-suse-multi-sid.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

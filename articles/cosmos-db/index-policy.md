@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja és módosíthatja az alapért
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636325"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760821"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 
@@ -20,7 +20,7 @@ Azure Cosmos DB minden tárolóhoz tartozik egy indexelési házirend, amely azt
 Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatikus viselkedést, hogy jobban megfeleljen az igényeinek. Az indexelési *mód*beállításával testre szabhatja a tároló indexelési házirendjét, és belefoglalhatja vagy kizárhatja a *Tulajdonságok elérési útját*.
 
 > [!NOTE]
-> A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik.
+> A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik. Tudnivalók a [Azure Cosmos db API-MongoDB való](mongodb-indexing.md) indexeléséről
 
 ## <a name="indexing-mode"></a>Indexelési mód
 
@@ -36,7 +36,7 @@ Alapértelmezés szerint az indexelési házirend a következőre van beállítv
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
 
-Az egyéni indexelési házirend megadhatja az indexelésből explicit módon befoglalt vagy kizárt tulajdonságokat. Az indexelt elérési utak számának optimalizálásával csökkentheti a tároló által használt tárterület méretét, és javíthatja az írási műveletek késését. Ezek az elérési utak az [indexelés áttekintése szakaszban leírt módszer](index-overview.md#from-trees-to-property-paths) szerint vannak meghatározva, a következő kiegészítésekkel:
+Az egyéni indexelési házirend megadhatja az indexelésből explicit módon befoglalt vagy kizárt tulajdonságokat. Az indexelt elérési utak számának optimalizálásával jelentősen csökkentheti az írási műveletek késését és az RU díját. Ezek az elérési utak az [indexelés áttekintése szakaszban leírt módszer](index-overview.md#from-trees-to-property-paths) szerint vannak meghatározva, a következő kiegészítésekkel:
 
 - egy skaláris értékhez (sztringhez vagy számhoz) vezető útvonal végződik`/?`
 - egy tömb elemeit a rendszer a jelöléssel együtt tárgyalja `/[]` (a helyett `/0` `/1` stb.).
@@ -101,7 +101,7 @@ Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-e
 
 Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a pontosabb elérési út elsőbbséget élvez.
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 **Belefoglalt elérési út**:`/food/ingredients/nutrition/*`
 
@@ -129,7 +129,7 @@ Ha a térbeli elérési utat definiálja az indexelési házirendben, meg kell h
 
 * LineString
 
-Alapértelmezés szerint a Azure Cosmos DB nem hoz létre térbeli indexeket. Ha a térbeli SQL beépített funkcióit szeretné használni, hozzon létre egy térbeli indexet a szükséges tulajdonságokkal. A térbeli indexek hozzáadására vonatkozó példákat a következő [szakaszban](geospatial.md) találja: indexelési házirend.
+Alapértelmezés szerint a Azure Cosmos DB nem hoz létre térbeli indexeket. Ha a térbeli SQL beépített funkcióit szeretné használni, hozzon létre egy térbeli indexet a szükséges tulajdonságokkal. A térbeli indexek hozzáadására vonatkozó példákat a következő [szakaszban](sql-query-geospatial-index.md) találja: indexelési házirend.
 
 ## <a name="composite-indexes"></a>Összetett indexek
 
@@ -259,16 +259,23 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 
 ## <a name="modifying-the-indexing-policy"></a>Az indexelési szabályzat módosítása
 
-Egy tároló indexelési házirendjét bármikor frissítheti [a Azure Portal vagy a támogatott SDK-k egyikével](how-to-manage-indexing-policy.md). Az indexelési házirend frissítése elindítja a régi indexről az új verzióra történő átalakítást, amely online és helyben történik (így a művelet során nincs szükség további tárolóhelyre). A régi szabályzat indexét a rendszer hatékonyan átalakítja az új szabályzatra anélkül, hogy az hatással lenne az írási rendelkezésre állásra vagy a tárolón kiosztott átviteli sebességre. Az index transzformáció egy aszinkron művelet, és a befejezéshez szükséges idő a kiépített átviteli sebességtől, az elemek számától és méretétől függ.
+Egy tároló indexelési házirendjét bármikor frissítheti [a Azure Portal vagy a támogatott SDK-k egyikével](how-to-manage-indexing-policy.md). Az indexelési házirend frissítése elindítja a régi indexről az új verzióra történő átalakítást, amely online és helyben történik (így a művelet során nincs szükség további tárolóhelyre). A régi szabályzat indexét a rendszer hatékonyan átalakítja az új szabályzatra anélkül, hogy ez hatással lenne az írási rendelkezésre állásra, az olvasási rendelkezésre állásra vagy a tárolón kiosztott átviteli sebességre. Az index transzformáció egy aszinkron művelet, és a befejezéshez szükséges idő a kiépített átviteli sebességtől, az elemek számától és méretétől függ.
 
 > [!NOTE]
-> A tartomány vagy a térbeli index hozzáadásakor a lekérdezések nem adják vissza az összes egyező eredményt, így a hibák visszaküldése nélkül is megtörténnek. Ez azt jelenti, hogy előfordulhat, hogy a lekérdezési eredmények nem konzisztensek, amíg az index átalakítása be nem fejeződik. Az indexek átalakításának előrehaladását az SDK-k [egyikével](how-to-manage-indexing-policy.md)követheti nyomon.
+> Az indexek átalakításának előrehaladását az SDK-k [egyikével](how-to-manage-indexing-policy.md)követheti nyomon.
 
-Ha az új indexelési házirend mód konzisztens értékre van állítva, akkor a rendszer nem alkalmazhat más indexelési házirendet, amíg az index átalakítás folyamatban van. A futó index-transzformáció megszakítható úgy, hogy az indexelési házirend mód értékét a none értékre állítja (amely azonnal eldobja az indexet).
+Az index-átalakítások során nincs hatása a rendelkezésre állás írására. Az index átalakítás a kiosztott RUs-t használja, de alacsonyabb prioritással rendelkezik, mint a SZIFILISZi műveletek vagy lekérdezések.
+
+Új index hozzáadásakor nincs hatása a rendelkezésre állás olvasására. A lekérdezések csak akkor használják az új indexeket, ha az index átalakítása befejeződött. Az index átalakítása során a lekérdezési motor továbbra is a meglévő indexeket fogja használni, így az indexelési módosítás megkezdése előtt meg kell figyelnie a hasonló olvasási teljesítményt az indexelési átalakítás során. Új indexek hozzáadásakor nem áll fenn a hiányos vagy inkonzisztens lekérdezési eredmények kockázata is.
+
+Az indexek eltávolításakor és az eldobott indexeken szűrt lekérdezések azonnali futtatásakor nincs garancia konzisztens vagy teljes lekérdezési eredményekre. Ha több indexet távolít el, és egyetlen indexelési házirendben is megváltoznak, a lekérdezési motor konzisztens és teljes eredményeket garantál az index-transzformáció során. Ha azonban több indexelési házirend módosításával távolítja el az indexeket, a lekérdezési motor nem garantál konzisztens vagy teljes eredményeket, amíg az összes index átalakítás be nem fejeződik. A legtöbb fejlesztő nem dobja el az indexeket, és azonnal megpróbálja futtatni ezeket az indexeket használó lekérdezéseket, így a gyakorlatban ez a helyzet nem valószínű.
+
+> [!NOTE]
+> Ha lehetséges, mindig egyetlen indexelési házirend módosításával érdemes több indexelési változást csoportosítani
 
 ## <a name="indexing-policies-and-ttl"></a>Indexelési házirendek és TTL
 
-Az élettartam [(TTL) funkció](time-to-live.md) használatához az indexelésnek aktívnak kell lennie a tárolón, amelyen be van kapcsolva. Ez azt jelenti, hogy:
+Az élettartam [(TTL) szolgáltatás](time-to-live.md) használatához indexelés szükséges. Ez azt jelenti, hogy:
 
 - nem lehet aktiválni az ÉLETTARTAMot olyan tárolón, ahol az indexelési mód nincs értékre van állítva.
 - az indexelési mód nem állítható be egyetlen olyan tárolón sem, amelyben az élettartam aktiválva van.
@@ -279,7 +286,7 @@ Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexel
 - nincs belefoglalt elérési út, és
 - `/*`az egyetlen kizárt elérési út.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

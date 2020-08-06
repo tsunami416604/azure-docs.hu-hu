@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: dc96cc704533c2b4fb5dc25b41a2440c66849b53
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1676815e1b5614a1e9aa33a1dc5ce471601bde76
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289076"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759325"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -105,7 +105,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | Kelet-Norvégia          | 51.120.96.0        |
 | Norvégia nyugati régiója          | 51.120.216.0       |
-| Dél-Afrika északi régiója   | 102.133.152.0      |
+| Dél-Afrika északi régiója   | 102.133.152.0, 102.133.120.2       |
 | Dél-Afrika nyugati régiója    | 102.133.24.0       |
 | USA déli középső régiója     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
@@ -115,13 +115,13 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Észak-Egyesült Arab            | 65.52.248.0        |
 | Az Egyesült Királyság déli régiója             | 51.140.184.11      |
 | Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |
-| USA nyugati középső régiója      | 13.78.145.25       |
+| USA nyugati középső régiója      | 13.78.145.25, 13.78.248.43        |
 | Nyugat-Európa          | 40.68.37.158, 191.237.232.75, 104.40.168.105, 52.236.184.163  |
 | USA nyugati régiója              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | USA 2. nyugati régiója            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)című témakörben talál.
 - A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md)-ban.

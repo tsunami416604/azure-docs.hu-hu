@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: c35c34d5ffe3f3349430f17e71ad8192f4d8256e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263364"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761195"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB Python-jegyzetfüzetekben (előzetes verzió)
 
@@ -51,7 +51,7 @@ Futtassa a ```%%sql?``` parancsot egy cellában, és tekintse meg a jegyzetfüze
 
 ## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>SQL-lekérdezés és kimenet futtatása pandák DataFrame
 
-A ``%%sql`` lekérdezés eredményeit egy [Panda DataFrame](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)is kiválaszthatja. Használja a szintaxist: 
+A ``%%sql`` lekérdezés eredményeit egy [Panda DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame)is kiválaszthatja. Használja a szintaxist: 
 
 ```python
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
@@ -202,7 +202,7 @@ Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeret
 
 :::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Jegyzetfüzetek alaphelyzetbe állítása munkaterület":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
 - Tudnivalók a [Azure Cosmos db PYTHON SDK for SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) -ról

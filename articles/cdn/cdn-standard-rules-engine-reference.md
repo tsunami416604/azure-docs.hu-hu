@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559313"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760090"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>A Standard szabálymotor referenciája az Azure CDN-hez
 
@@ -59,17 +59,9 @@ A százalékos aláírás az URL-kódolás (például:) jelzésére szolgál `%2
 
 ### <a name="wildcard-values"></a>Helyettesítő karakteres értékek
 
-A helyettesítő karakterként értelmezett szöveg a speciális karakterek további jelentését rendeli hozzá. A következő táblázat ismerteti, hogyan történik a speciális karakterek értelmezése a szabványos szabályok motorban:
+Jelenleg a standard szintű szabályok motorjában a **UrlPath Matching feltételben** szereplő helyettesítő karaktert támogatjuk. A \* karakter egy csillag, amely egy vagy több karaktert jelöl. 
 
-Karakter | Description
-----------|------------
-\ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt. Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
-% | A százalékos aláírás az URL-kódolás (például:) jelzésére szolgál `%20` .
-\* | A csillag egy helyettesítő karakter, amely egy vagy több karaktert jelöl.
-lemezterület | A szóköz karakter azt jelzi, hogy az egyeztetési feltételt a megadott értékek vagy minták valamelyikével lehet kielégíteni.
-szimpla idézőjelek | Egyetlen idézőjel nem rendelkezik speciális jelentéssel. Az egyszeres idézőjelek halmaza azonban azt jelzi, hogy egy értéket literál értékként kell kezelni. Az aposztrófok az alábbi módokon használhatók:<ul><li>Annak engedélyezése, hogy az egyeztetési feltétel teljesüljon, ha a megadott érték megegyezik az összehasonlítási érték bármely részével.  Például a `'ma'` következő sztringek bármelyike megfelel: <ul><li>/Business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template. **ma**p</li></ul><li>Egy speciális karakter literál karakterként való megadásának engedélyezése. Megadhat például egy konstans térközt úgy, hogy szóközzel látja el az aposztrófokat ( `' '` vagy `'<sample value>'` ).</li><li>Üres érték megadásának engedélyezése. Adja meg az üres értéket egy szimpla idézőjelek ("**"**) készletének megadásával.</li></ul>**Fontos**:<br /><ul><li>Ha a megadott érték nem tartalmaz helyettesítő karaktert, az érték automatikusan literál értéknek tekintendő. Nem kell megadnia egyetlen idézőjelek készletét egy literál értékhez.</li><li>Ha egy fordított perjel nem használ másik karaktert a táblázatban, a rendszer figyelmen kívül hagyja a fordított perjelet, ha egyszeres idézőjelek készletében van megadva.</li><li>A speciális karakter literál karakterként való megadásának másik módja egy fordított perjel () használatával történő Escape-érték `\` .</li></ul>
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyeztetési feltételek a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md)
 - [Műveletek a standard szabályok motorban](cdn-standard-rules-engine-actions.md)
