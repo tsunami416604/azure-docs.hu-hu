@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837344"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>A virtuális gépekkel kapcsolatos ajánlatok közzétételi útmutatója
 
@@ -29,7 +29,7 @@ Ahhoz, hogy a felhasználók az ajánlat tesztelésére legyenek érvényesek, a
 
 Egy vagy több virtuális gépet üzembe helyezhet az infrastruktúra-szolgáltatás (IaaS) vagy a szolgáltatott szoftver (SaaS) használatával. A *tesztelési meghajtó* közzétételi lehetőségének előnye, hogy egy virtuális gép vagy egy teljes megoldás automatikus beállítása egy partner által üzemeltetett interaktív bemutató. A tesztvezetés lehetővé teszi, hogy az ügyfelek további díjak nélkül értékeljék a virtuális gépeket. Az ügyfélnek nem kell egy meglévő Azure-ügyfélnek lennie a próbaverzióval való részvételhez. 
 
-Első lépésként vegye fel velünk a kapcsolatot e-mailben az [amp-testdrive](mailto:amp-testdrive@microsoft.com)címen. 
+További információ a tesztelési meghajtókról: [Mi az a test Drive?](what-is-test-drive.md)
 
 |Követelmények  |Részletek |
 |---------|---------|

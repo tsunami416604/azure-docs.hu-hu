@@ -1,6 +1,6 @@
 ---
 title: Azure-alapú megoldás kiválasztása adatátvitelhez | Microsoft Docs
-description: Megtudhatja, hogyan választhat ki Azure-megoldást az adatátvitelhez az adatméretek és a környezetben elérhető hálózati sávszélesség alapján
+description: Megtudhatja, hogyan választhat egy Azure-megoldást az adatátvitelhez az adatméretek és a környezetben elérhető hálózati sávszélesség alapján.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,14 +8,14 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514441"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836598"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-alapú megoldás kiválasztása adatátvitelhez
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-megoldás kiválasztása adatátvitelhez
 
 Ez a cikk áttekintést nyújt a közös Azure adatátviteli megoldásokról. A cikk a környezetében található hálózati sávszélességtől és az átvinni kívánt adatok méretétől függően a javasolt beállításokra is hivatkozik.
 

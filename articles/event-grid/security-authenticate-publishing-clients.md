@@ -3,12 +3,12 @@ title: Ügyfelek hitelesítése az eseményeket Event Grid egyéni témakörök 
 description: Ez a cikk különböző módszereket ismertet az ügyfelek közzétételi eseményeinek Event Grid egyéni témakörökbe való hitelesítéséhez.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1e147830a4b37a8603df8e4ce29953acab2345bd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115876"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837397"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Közzétételi ügyfelek hitelesítése (Azure Event Grid)
 Ez a cikk a **hozzáférési kulcs** vagy a **közös hozzáférésű aláírás (SAS)** token használatával Azure Event Grid témaköröket vagy tartományokat közzétevő ügyfelek hitelesítésével kapcsolatos információkat tartalmaz. A SAS-token használatát javasoljuk, de a kulcsos hitelesítés egyszerű programozást biztosít, és számos meglévő webhook-közzétevővel kompatibilis.  
@@ -27,7 +27,7 @@ aeg-sas-key: XXXXXXXXXXXXXXXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 `aeg-sas-key`Lekérdezési paraméterként is megadható. 
 
 ```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+https://<yourtopic>.<region>.eventgrid.azure.net/api/events?aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 A témakörök vagy tartományok hozzáférési kulcsainak lekérésével kapcsolatos útmutatásért lásd: [hozzáférési kulcsok](get-access-keys.md)beolvasása.
@@ -35,7 +35,7 @@ A témakörök vagy tartományok hozzáférési kulcsainak lekérésével kapcso
 ## <a name="authenticate-using-a-sas-token"></a>Hitelesítés SAS-token használatával
 Event Grid erőforrás SAS-jogkivonatai közé tartozik az erőforrás, a lejárati idő és az aláírás. Az SAS-token formátuma: `r={resource}&e={expiration}&s={signature}` .
 
-Az erőforrás az Event Grid-témakör elérési útja, amelyhez eseményeket küld. Egy érvényes erőforrás elérési útja például a következő: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Az összes támogatott API-verzió megtekintéséhez lásd: [Microsoft. EventGrid erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
+Az erőforrás az Event Grid-témakör elérési útja, amelyhez eseményeket küld. Egy érvényes erőforrás elérési útja például a következő: `https://<yourtopic>.<region>.eventgrid.azure.net/api/events` . Az összes támogatott API-verzió megtekintéséhez lásd: [Microsoft. EventGrid erőforrástípusok](/azure/templates/microsoft.eventgrid/allversions). 
 
 Először programozott módon állítson elő SAS-tokent, majd használja a `aeg-sas-token` fejlécet vagy a `Authorization SharedAccessSignature` fejlécet a Event Grid való hitelesítéshez. 
 
@@ -69,15 +69,15 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 Íme egy példa arra, hogy az SAS-tokent a fejléc értékeként adja át `aeg-sas-toke` . 
 
 ```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ### <a name="using-authorization-header"></a>Az engedélyezési fejléc használata
 Íme egy példa arra, hogy az SAS-tokent a fejléc értékeként adja át `Authorization` . 
 
 ```http
-Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az események kézbesítéséhez az eseménykezelővel való hitelesítés megismeréséhez tekintse meg az [esemény kézbesítésének hitelesítését](security-authentication.md) ismertető témakört. 

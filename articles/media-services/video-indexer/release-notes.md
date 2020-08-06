@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042634"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837309"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -29,6 +29,28 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="july-2020"></a>2020. július
+
+### <a name="ga-for-multi-language-identification"></a>GA a többnyelvű azonosításhoz
+
+A többnyelvű azonosítást az előzetes verzióról a GA-ra helyezi át, és készen áll a hatékony használatra.
+
+Az "előzetes verzióról a GA-re" való áttérésre nincs hatással az árképzés.
+
+### <a name="video-indexer-website-improvements"></a>Video Indexer webhely fejlesztése
+
+#### <a name="adjustments-in-the-video-gallery"></a>Beállítások a videó-galériában
+
+Új keresési sáv a mélyreható információk kereséséhez további szűrési képességekkel. A keresési eredmények is bővültek.
+
+Új listanézet, amely több fájllal rendezheti és kezelheti a videó-archívumokat.
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>Új panel az egyszerű kijelöléshez és konfiguráláshoz
+
+Az egyszerű kiválasztáshoz és a felhasználói konfigurációhoz hozzáadott oldalsó panel, amely lehetővé teszi az egyszerű és a gyors fiókok létrehozását és megosztását, valamint a konfiguráció beállítását.
+
+A felhasználói beállításokhoz és a súgóhoz is használhatja az oldalsó panelt.
 
 ## <a name="june-2020"></a>2020. június
 

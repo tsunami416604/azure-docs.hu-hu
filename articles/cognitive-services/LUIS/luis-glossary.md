@@ -3,12 +3,12 @@ title: Szószedet – LUIS
 description: A Szószedet a LUIS API szolgáltatással való munka során felmerülő feltételeket ismerteti.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056378"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836411"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) Szószedet a LUIS szolgáltatással való munka során felmerülő feltételeket ismerteti.
@@ -51,7 +51,7 @@ Az authoring erőforrás rendelkezik egy Azure "Kind" típussal `LUIS-Authoring`
 A Batch-tesztelés lehetővé teszi, hogy a jelenlegi LUIS alkalmazás modelljeit a felhasználói hosszúságú kimondott szöveg konzisztens és ismert tesztelési készletével érvényesítse. A Batch-teszt egy JSON- [formátumú fájlban](luis-concept-batch-test.md#batch-file-format)van definiálva.
 
 Lásd még:
-* [Fogalmak](luis-concept-batch-test.md)
+* [Alapelvek](luis-concept-batch-test.md)
 * A Batch [-](luis-how-to-batch-test.md) teszt futtatása
 * [Oktatóanyag](luis-tutorial-batch-testing.md) – batch-teszt létrehozása és futtatása
 
@@ -72,7 +72,7 @@ A kötegelt tesztelés során a pontosság (más néven pozitív prediktív ért
 
 Egy Animal batch-tesztre példa az előre jelzett juhok száma az állatok összesített száma (juh és nem juh) szerint elosztva.
 
-### <a name="recall"></a>Visszahívás
+### <a name="recall"></a>Recall
 
 A Batch-tesztelés során a visszahívás (más néven érzékenység) lehetőség a LUIS általánosítása.
 
@@ -94,11 +94,11 @@ Egy [példa egy](#intent) osztályozó példára.
 
 ## <a name="collaborator"></a>Közreműködő
 
-Egy közreműködő fogalmilag ugyanaz, mint a [közreműködő](#contributor). A munkatárs hozzáférést kap, ha a tulajdonos hozzáadja a közreműködő e-mail-címét egy olyan alkalmazáshoz, amely nem a szerepköralapú hozzáférés (RBAC) használatával van vezérelve. Ha továbbra is használja a közreműködőket, telepítse át a LUIS-fiókját, és használja a LUIS authoring-erőforrásokat a közreműködők RBAC való kezeléséhez.
+Egy közreműködő fogalmilag ugyanaz, mint a [közreműködő](#contributor). A közreműködő hozzáférést kap, ha a tulajdonos hozzáadja a közreműködő e-mail-címét egy olyan alkalmazáshoz, amely nem az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) van vezérelve. Ha továbbra is használja a közreműködőket, telepítse át a LUIS-fiókját, és használja a LUIS authoring-erőforrásokat a közreműködők RBAC való kezeléséhez.
 
 ## <a name="contributor"></a>Közreműködő
 
-A közreműködő nem [tulajdonosa](#owner) az alkalmazásnak, de ugyanazokkal az engedélyekkel rendelkezik a szándékok, az entitások és a hosszúságú kimondott szöveg hozzáadásához, szerkesztéséhez és törléséhez. A közreműködők szerepköralapú hozzáférést (RBAC) biztosítanak egy LUIS-alkalmazáshoz.
+A közreműködő nem [tulajdonosa](#owner) az alkalmazásnak, de ugyanazokkal az engedélyekkel rendelkezik a szándékok, az entitások és a hosszúságú kimondott szöveg hozzáadásához, szerkesztéséhez és törléséhez. A közreműködők Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosítanak egy LUIS-alkalmazáshoz.
 
 Lásd még:
 * [Közreműködők hozzáadása](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)
@@ -107,7 +107,7 @@ Lásd még:
 
 A leíró a Machine learning [szolgáltatáshoz](#features)korábban használt kifejezés.
 
-## <a name="domain"></a>Domain
+## <a name="domain"></a>Tartomány
 
 A LUIS kontextusban a tartomány az ismeretek területe. A tartomány a forgatókönyvre jellemző. A különböző tartományok adott nyelvet és terminológiát használnak, amelyek a tartomány kontextusában jelentenek. Ha például a zene lejátszásához készít egy alkalmazást, az alkalmazás a zenére jellemző használati feltételekkel és nyelvvel fog rendelkezni: "Song, Track, album, dalszöveg, b-Side, Artist". Tartományokra vonatkozó példák: [előre összeépített tartományok](#prebuilt-domain).
 
@@ -160,7 +160,7 @@ A [reguláris kifejezés entitás](reference-entity-regular-expression.md) regul
 
 Előre összeépített [entitáshoz](#prebuilt-entity) tartozó előre felépített modell bejegyzésének megjelenítése
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A gépi tanulásban a funkció olyan jellemző, amely segít a modellnek egy adott fogalom felismerésében. Ez egy olyan tipp, amelyet a LUIS használhat, de nem kemény szabályt.
 

@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: d4beec60a2cd705884ee79296c9afab2afc08c2e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 09b6bf6db5927c49950fc5b2a6d1753d53364380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534498"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836649"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -18,7 +18,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 
 ## <a name="deployment-method-support"></a>Üzembe helyezési módszer támogatása
 
-**Üzembe helyezés** |  **Támogatás**
+**Telepítés** |  **Támogatás**
 --- | ---
 **Azure Portal** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
@@ -170,7 +170,7 @@ SUSE Linux Enterprise Server 15 és 15 SP1 | 9,32 | Alapértelmezés szerint a r
 
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
-Méret | Bármely Azure-beli VM-méret legalább 2 CPU-maggal és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/windows/sizes.md).
+Méret | Bármely Azure-beli VM-méret legalább 2 CPU-maggal és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/sizes.md).
 Rendelkezésre állási csoportok | Támogatott | Ha az alapértelmezett beállításokkal engedélyezi egy Azure-beli virtuális gép replikálását, a rendszer automatikusan létrehoz egy rendelkezésre állási készletet a forrás régió beállításai alapján. Ezek a beállítások módosíthatók.
 Rendelkezésre állási zónák | Támogatott |
 Hybrid use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gépen engedélyezve van a HUB-licenc, a feladatátvételi teszt vagy a feladatátvételi művelet a HUB-licencet is használja.
@@ -205,7 +205,7 @@ OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-m
 Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez<br></br>4095 GB a nem felügyelt lemezekhez|
 Adatlemez minimális mérete | Nem felügyelt lemezekre vonatkozó korlátozás. 2 GB a felügyelt lemezekhez |
-Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/windows/sizes.md) információ a virtuális gépek méreteiről.
+Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/sizes.md) információ a virtuális gépek méreteiről.
 Adatlemez változási aránya | A Premium Storage esetében legfeljebb 20 MB/s lemezterület. A standard szintű tároláshoz legfeljebb 2 MB/s lemez adható meg. | Ha a lemez átlagos adatváltozási sebessége folyamatosan meghaladja a maximális értéket, a replikálás nem fog megjelenni.<br/><br/>  Ha azonban a maximális érték szórványosan túllépi a replikálást, a replikáció felmerülhet, de előfordulhat, hogy némileg késleltetett helyreállítási pontok jelenhetnek meg.
 Adatlemez – szabványos Storage-fiók | Támogatott |
 Adatlemez – Premium Storage-fiók | Támogatott | Ha a virtuális gép rendelkezik lemezekkel a prémium és a standard szintű Storage-fiókok között, kiválaszthat egy másik cél Storage-fiókot az egyes lemezekhez, így biztosítva, hogy ugyanaz a tárolási konfiguráció a céltartományban.
@@ -219,7 +219,7 @@ Titkosítás nyugalmi állapotban (SSE) | Támogatott | Az SSE a Storage-fiókok
 Inaktív titkosítás (CMK) | Támogatott | A felügyelt lemezek esetében a szoftveres és a HSM-kulcsok is támogatottak
 Dupla titkosítás a nyugalmi állapotban | Támogatott | További információ a [Windows](../virtual-machines/windows/disk-encryption.md) és a [Linux](../virtual-machines/linux/disk-encryption.md) támogatott régióiról
 Azure Disk Encryption (ADE) Windows operációs rendszerhez | Felügyelt lemezekkel rendelkező virtuális gépek esetén támogatott. | A nem felügyelt lemezeket használó virtuális gépek nem támogatottak. <br/><br/> A HSM-védelemmel ellátott kulcsok nem támogatottak. <br/><br/> Az egyes kötetek egyetlen lemezen való titkosítása nem támogatott. |
-Azure Disk Encryption (ADE) Linux operációs rendszerhez | Felügyelt lemezekkel rendelkező virtuális gépek esetén támogatott. | A nem felügyelt lemezeket használó virtuális gépek nem támogatottak. <br/><br/> A HSM-védelemmel ellátott kulcsok nem támogatottak. <br/><br/> Az egyes kötetek egyetlen lemezen való titkosítása nem támogatott. <br><br> A replikáció engedélyezésének ismert problémája. [Részletek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137) |
+Azure Disk Encryption (ADE) Linux operációs rendszerhez | Felügyelt lemezekkel rendelkező virtuális gépek esetén támogatott. | A nem felügyelt lemezeket használó virtuális gépek nem támogatottak. <br/><br/> A HSM-védelemmel ellátott kulcsok nem támogatottak. <br/><br/> Az egyes kötetek egyetlen lemezen való titkosítása nem támogatott. <br><br> A replikáció engedélyezésének ismert problémája. [Részletek](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS-kulcs elforgatása | Nem támogatott | Ha a Storage-fiókok SAS-kulcsát elforgatják, az ügyfélnek le kell tiltania és újra engedélyeznie kell a replikálást. |
 Gyors Hozzáadás    | Támogatott | A replikált Azure-beli virtuális géphez hozzáadott adatlemez replikálásának engedélyezése támogatott a felügyelt lemezeket használó virtuális gépek esetében. <br/><br/> Egyszerre csak egy lemezt lehet felvenni egy Azure-beli virtuális gépre. Több lemez párhuzamos hozzáadása nem támogatott. |
 Gyors lemez eltávolítása    | Nem támogatott | Ha eltávolít egy adatlemezt a virtuális gépen, le kell tiltania a replikációt, és újra engedélyeznie kell a replikációt a virtuális gépen.
@@ -290,4 +290,3 @@ Site Recovery szolgáltatáshoz való privát hivatkozás | Támogatott | [Tová
 
 - Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md) .
 - A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).
-

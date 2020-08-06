@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 07fde5a8e7e3d542ed3fa3bc54b761d5434ac710
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284863"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836882"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése az Azure-beli OpenSUSE Linux rendszerű virtuális gépeken
 
@@ -32,7 +32,7 @@ Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforr
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Hozza létre a virtuális gépet. Ebben a példában a virtuális gép neve *myVM* , a virtuális gép mérete pedig *Standard_D2s_v3*, de ki kell választania azt a virtuálisgép- [méretet](sizes.md) , amelyet a munkaterheléshez legmegfelelőbbnek tekint.
+Hozza létre a virtuális gépet. Ebben a példában a virtuális gép neve *myVM* , a virtuális gép mérete pedig *Standard_D2s_v3*, de ki kell választania azt a virtuálisgép- [méretet](../sizes.md) , amelyet a munkaterheléshez legmegfelelőbbnek tekint.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -157,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>További lépések
 A MySQL-vel kapcsolatos részletekért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc).
-
-
-
-

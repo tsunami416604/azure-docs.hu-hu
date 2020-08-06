@@ -4,12 +4,12 @@ description: Az Azure VMware-megoldással (AVS) kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003423"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836581"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Gyakran ismételt kérdések az Azure VMware Solution (AVS) előzetes verziójáról
 
@@ -25,7 +25,7 @@ Mivel a vállalatok az informatikai modernizációs stratégiákat követve jav�
 
 **Hol érhető el még ma az AVS?**
 
-Az előzetes verzió ideje alatt az Egyesült Államok keleti régiójában, Észak-Amerika és Amszterdamban, Nyugat-Európában érhető el.
+A szolgáltatás folyamatosan bővül az új régiókban, ezért további részletekért tekintse meg a [legújabb szolgáltatás elérhetőségi információit](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) . 
 
 **Az Azure VMware Solution-(AVS-) példányokban futó munkaterhelések az Azure-szolgáltatásokkal is felhasználhatók vagy integrálva vannak?**
 
@@ -57,7 +57,7 @@ A szolgáltatásban végzett frissítések a Microsoft Azure szokásos módosít
 
 **Miben különbözik a CloudSimple Azure VMware-megoldástól?**
 
-Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalapú szolgáltatói partnerséggel rendelkezik. Az új megoldás teljes mértékben a Microsoft által készített, készített és támogatott, és a VMware támogatja. Építészeti szempontból a megoldások konzisztensek, és a VMware Technology stack egy Azure dedikált infrastruktúrán fut.
+Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalapú szolgáltatói partnerséggel rendelkezik. Az új megoldást a Microsoft tervezte, építi és támogatja, és a VMware támogatja. Építészeti szempontból a megoldások konzisztensek, és a VMware Technology stack egy Azure dedikált infrastruktúrán fut.
 
 **Ha meglévő Azure VMware-megoldási ügyfél vagyok, mit jelent ez az előzetes verzió?**
 
@@ -65,7 +65,7 @@ A CloudSimple nem változtatja meg a meglévő Azure VMware-megoldást. Továbbr
 
 **Áttelepíthetem az Azure VMware-megoldásról az új megoldás CloudSimple?**
 
-Igen, az Azure VMware-megoldás támogatja az áttelepítést a jól ismert VMware-eszközökkel, például a HCX-vel. Az új megoldásba való Migrálás iránt érdeklődő ügyfeleknek a Microsoft-fiók csapatával együttműködve megismerheti a lehetőségeket és a rendelkezésre álló támogatást.
+Igen, az Azure VMware-megoldás támogatja az áttelepítést a jól ismert VMware-eszközökkel, például a HCX-vel. Az új megoldásba való Migrálás iránt érdeklődő ügyfeleknek a Microsoft-fiók csapatával megismerheti a lehetőségeket és a rendelkezésre álló támogatást.
 
 
 
@@ -89,7 +89,7 @@ Az ESXi-gazdagépek két vSAN diskgroups rendelkeznek, amelyek kapacitása 15,2 
 
 **Mennyi hálózati sávszélesség érhető el az egyes ESXi-gazdagépeken?**
 
-Az ESXi-gazdagépek 25 GB/s-ig támogatják a csatlakozási sávszélességet.
+Minden ESXi-gazdagép 4 25 Gbps hálózati adapterrel van konfigurálva, és két hálózati adapterrel van kiépítve az ESXi rendszerforgalmához és két hálózati terheléselosztási forgalomhoz kiépítve. 
 
 **Titkosítva vannak-e a vSAN-adattárolókban tárolt adatok a nyugalmi állapotban?**
 
@@ -143,7 +143,7 @@ A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből
 
 A privát felhőalapú szoftverek olyan ütemterv szerint frissülnek, amely nyomon követi a VMware-től származó szoftveres csomag kiadását. A saját felhő nem igényel állásidőt a frissítésekhez.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 **Milyen hálózati IP-cím megtervezésére van szükség a privát felhők helyszíni környezetekben való beépítéséhez?**
 
@@ -197,11 +197,11 @@ Az előzetes verzióban az AVS számlázása az utólagos elszámolású szolgá
 
 **Hogyan történik az árképzés felépítése az AVS előzetes verziójában?**
 
-A díjszabással kapcsolatos általános kérdésekben tekintse meg az Azure VMware megoldás [díjszabását](https://azure.microsoft.com/pricing/details/azure-vmware) ismertető oldalt. Az előzetes verzió díjszabása igény szerint érhető el, forduljon a fiók csapatához, vagy kövesse a díjszabási oldalon található hivatkozást az értékesítésekhez.
+A díjszabással kapcsolatos általános kérdésekben tekintse meg az Azure VMware megoldás [díjszabását](https://azure.microsoft.com/pricing/details/azure-vmware) ismertető oldalt. Az előzetes verzió díjszabása igény szerint érhető el, lépjen kapcsolatba a fiók csapatával, vagy kövesse a díjszabási oldalon található hivatkozást az értékesítéshez.
 
 **Ki támogatja az AVS-t?**
 
-Az AVS támogatását a Microsoft továbbítja. Kérjük, vegye figyelembe, hogy az előzetes verzióra vonatkozó irányelvek alapján a rendszer 9 és 5 óra között biztosítja a támogatást a hétfőtől péntekig. [Ebből a hivatkozásból](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) támogatási jegyet is létrehozhat
+Az AVS támogatását a Microsoft továbbítja. Vegye figyelembe, hogy az előzetes verzióra vonatkozó irányelvek szerint a rendszer 9 és 5 óra között is biztosít támogatást hétfőtől péntekig. [Ebből a hivatkozásból](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) támogatási jegyet is létrehozhat
 
 **Milyen fiókokra van szükségem egy AVS Private Cloud létrehozásához?**
 

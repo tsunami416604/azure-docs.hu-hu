@@ -8,12 +8,12 @@ ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f85283ad90f219dfbf404c437a843e1191b19fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498735"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837278"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Azure Database for MySQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
 
@@ -78,7 +78,7 @@ A parancsmag **PointInTimeRestore** paraméterének `Restore-AzMySqlServer` a k�
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| Név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -120,7 +120,7 @@ A parancsmag **GeoRestore** paraméterének `Restore-AzMySqlServer` a következ�
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Name | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Név | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 
@@ -133,4 +133,4 @@ A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az erede
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure Database for MySQL kiszolgáló paramétereinek testreszabása a PowerShell használatával](howto-configure-server-parameters-using-powershell.md)
+> [Azure Database for MySQL kapcsolódási karakterlánc létrehozása a PowerShell-lel](howto-connection-string-powershell.md)

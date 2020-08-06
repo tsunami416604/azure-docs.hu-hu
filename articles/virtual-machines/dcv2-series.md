@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a88804d85bde13a1e8b333e96053f7d85c4bd2d5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292466"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837125"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -58,7 +58,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>További lépések
 

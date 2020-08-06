@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460677"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836717"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric Azure biztonsági alapterve
 
 Az Service Fabric Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
 
 
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
 **Útmutató**: gondoskodjon arról, hogy az összes Virtual Network alhálózati üzemelő példány rendelkezzen egy hálózati biztonsági csoporttal, amely az alkalmazás megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel van alkalmazva.
 
-* [Azure Firewall üzembe helyezése sablon használatával](https://docs.microsoft.com/azure/firewall/deploy-template)
+* [Azure Firewall üzembe helyezése sablon használatával](../firewall/deploy-template.md)
 
-* [Peremhálózati hálózatok létrehozása Azure hálózati biztonsági csoportok (NSG) használatával](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices#use-network-isolation-and-security-with-azure-service-fabric)
+* [Peremhálózati hálózatok létrehozása Azure hálózati biztonsági csoportok (NSG) használatával](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
-* [Azure Service Fabric-fürt integrálása meglévő virtuális hálózattal](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)
+* [Azure Service Fabric-fürt integrálása meglévő virtuális hálózattal](./service-fabric-patterns-networking.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -46,11 +46,11 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 **Útmutató**: az Azure Service Fabric-fürt biztonságossá tételéhez használt virtuális hálózatra, alhálózatra és hálózati biztonsági csoportra vonatkozó hálózati védelmi javaslatok Azure Security Center használata és szervizelése. Engedélyezze a hálózati biztonsági csoport (NSG) folyamatának naplóit, és küldje el a naplókat egy Azure Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Azure Log Analytics-munkaterületre, és az Azure Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. Az Azure Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-* [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Az Azure Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Az Azure Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-* [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -62,11 +62,11 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalkalmazási tűzfal (WAF) üzembe helyezését a kritikus webalkalmazások előtt. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre.
 
-* [Service Fabric és Azure API Management – áttekintés](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)
+* [Service Fabric és Azure API Management – áttekintés](./service-fabric-api-management-overview.md)
 
-* [API Management integrálása egy belső VNET Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [API Management integrálása egy belső VNET Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Az Azure WAF üzembe helyezése](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -76,9 +76,9 @@ A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalka
 
 **Útmutató**: a DDOS-támadások elleni védelem érdekében engedélyezze az Azure DDoS standard Protection szolgáltatást azon a virtuális hálózaton, amelyen az Azure Service Fabric-fürt üzembe lett helyezve. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-* [A DDoS Protection konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -88,11 +88,11 @@ A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalka
 
 **Útmutató**: engedélyezze a hálózati biztonsági csoport (NSG) számára az Azure Service Fabric-fürt védelméhez használt alhálózathoz csatolt NSG. Jegyezze fel a NSG folyamat naplóit egy Azure Storage-fiókba a flow-rekordok létrehozásához. Ha a rendellenes tevékenységek kivizsgálásához szükséges, engedélyezze az Azure Network Watcher a csomagok rögzítését.
 
-* [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [A Network Watcher engedélyezése](../network-watcher/network-watcher-create.md)
 
-* [A Traffic Analytics használata a NSG-naplók megjelenítéséhez](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [A Traffic Analytics használata a NSG-naplók megjelenítéséhez](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -100,15 +100,15 @@ A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalka
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-**Útmutató**: válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az azonosítók/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal. Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+**Útmutató**: válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az azonosítók/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal. Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
 Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Riasztások konfigurálása Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Riasztások konfigurálása Azure Firewall](../firewall/threat-intel.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -118,11 +118,11 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 **Útmutató**: Azure-Application Gateway üzembe helyezése a megbízható tanúsítványokhoz engedélyezett https/SSL-alapú webalkalmazásokhoz.
 
-* [Application Gateway üzembe helyezése](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway üzembe helyezése](../application-gateway/quick-create-portal.md)
 
-* [A Application Gateway konfigurálása a HTTPS használatára](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [A Application Gateway konfigurálása a HTTPS használatára](../application-gateway/create-ssl-portal.md)
 
-* [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](https://docs.microsoft.com/azure/application-gateway/overview)
+* [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](../application-gateway/overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -132,9 +132,9 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 **Útmutató**: a virtuális hálózati szolgáltatás címkéi segítségével definiálhatja azokat a hálózati biztonsági csoportokat (NSG), amelyek az Azure Service Fabric-fürt üzembe helyezéséhez használt alhálózathoz csatlakoznak. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-* [Virtuális hálózati szolgáltatás címkéi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
 
-* [Service Fabric hálózatkezelés – ajánlott eljárások](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-networking)
+* [Service Fabric hálózatkezelés – ajánlott eljárások](./service-fabric-best-practices-networking.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -146,11 +146,11 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek kiépítését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, RBAC-vezérlők és házirendek egyetlen tervrajz-definícióban történő csomagolásával. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
-* [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -164,11 +164,11 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával felkeresheti vagy végrehajthatja az erőforrásokon végzett műveleteket a címkék alapján.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -178,9 +178,9 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és az Azure Service Fabric üzemelő példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -188,13 +188,13 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információ [: Security Control: naplózás és figyelés](/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
 **Útmutató**: a Microsoft az Azure Service Fabric-fürt összetevőinek időforrásait is fenntartja, a számítási környezetek időszinkronizálását frissítheti.
 
-* [Az Azure számítási erőforrások időszinkronizálásának konfigurálása](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Az Azure számítási erőforrások időszinkronizálásának konfigurálása](../virtual-machines/windows/time-sync.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -204,11 +204,11 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 Útmutató: az Azure Service Fabric-fürt **Bevezetésével**Azure monitor a fürt által generált biztonsági adatokat összesítve. Lásd: diagnosztikai problémák és megoldások a Service Fabric.
 
-* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Gyakori Service Fabric forgatókönyvek diagnosztizálása](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-common-scenarios)
+* [Gyakori Service Fabric forgatókönyvek diagnosztizálása](./service-fabric-diagnostics-common-scenarios.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -218,13 +218,13 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: engedélyezze a Azure Monitor a Service Fabric-fürthöz, és irányítsa azt egy log Analytics munkaterületre. Ez naplózza a kapcsolódó fürt adatait és az operációsrendszer-metrikákat az összes Azure Service Fabric-fürtcsomópontok esetében.
 
-* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [A Log Analytics-ügynök üzembe helyezése a csomópontokon](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [A Log Analytics-ügynök üzembe helyezése a csomópontokon](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics naplók keresése](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics naplók keresése](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -234,13 +234,13 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure Service Fabric-fürt előkészítése Azure Monitorre. Győződjön meg arról, hogy a használt Log Analytics munkaterületen a szervezet megfelelőségi előírásai szerint beállított napló-megőrzési időtartam szerepel.
 
-* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [A Log Analytics-ügynök üzembe helyezése a csomópontokon](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [A Log Analytics-ügynök üzembe helyezése a csomópontokon](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -250,13 +250,13 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure Service Fabric-fürt előkészítése Azure Monitorre. Győződjön meg arról, hogy a használt Log Analytics munkaterületen a szervezet megfelelőségi előírásai szerint beállított napló-megőrzési időtartam szerepel.
 
-* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Azure Monitor naplók konfigurálása Service Fabric-integrációval](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Monitor naplók beállítása a tárolók figyeléséhez az Azure-ban Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [A Log Analytics-ügynök üzembe helyezése a csomópontokon](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [A Log Analytics-ügynök üzembe helyezése a csomópontokon](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -266,7 +266,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: azure-log Analytics munkaterület-lekérdezések használata az Azure Service Fabric-naplók lekérdezéséhez.
 
-* [Log Analytics naplók keresése](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics naplók keresése](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -276,9 +276,9 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure log Analytics munkaterületének használata az Azure Service Fabric-fürttel kapcsolatos rendellenes tevékenységekre vonatkozó figyeléshez és riasztáshoz.
 
-* [Riasztások kezelése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -288,7 +288,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: alapértelmezés szerint a Windows Defender a windows Server 2016 rendszerre van telepítve. Ha nem a Windows Defendert használja, tekintse meg a Antimaleware dokumentációját a konfigurációs szabályokhoz. A Windows Defender Linux rendszeren nem támogatott.
 
-* [Részletekért lásd: Windows Defender Antivirus Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Részletekért lásd: Windows Defender Antivirus Windows Server 2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -312,7 +312,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](/azure/security/benchmarks/security-control-identity-access-control).*
+*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -320,11 +320,11 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatokat is használhat.
 
-* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Identitás és hozzáférés figyelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identitás és hozzáférés figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -334,7 +334,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: fürt kiépítés esetén az Azure-ban új jelszavakat kell létrehoznia a webes portálhoz. Nincsenek módosítható alapértelmezett jelszavak, azonban más jelszavakat is megadhat a webes portálhoz való hozzáféréshez.
 
-* [Létrehozás az Azure Portalon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
+* [Létrehozás az Azure Portalon](./service-fabric-cluster-creation-via-portal.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -346,9 +346,9 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatokat is használhat.
 
-* [Azure Active Directory ügyfél-hitelesítés beállítása](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-windows-cluster#set-up-azure-active-directory-client-authentication)
+* [Azure Active Directory ügyfél-hitelesítés beállítása](./service-fabric-tutorial-create-vnet-and-windows-cluster.md#set-up-azure-active-directory-client-authentication)
 
-* [Identitás és hozzáférés figyelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identitás és hozzáférés figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -358,7 +358,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: ha lehetséges, használjon Azure Active Directory SSO-t a különálló önálló hitelesítő adatok konfigurálása helyett. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata.
 
-* [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Az egyszeri bejelentkezés ismertetése az Azure AD-vel](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -368,9 +368,9 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: az Azure ad MFA engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése.
 
-* [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -380,9 +380,9 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: az Azure Service Fabric-fürtök és a kapcsolódó erőforrások bevezetésére és konfigurálására konfigurált többtényezős hitelesítés (MFA) használata a mancsok (emelt szintű hozzáférési munkaállomások) használatával.
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -392,9 +392,9 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutatás**: Azure Active Directory (AD) PRIVILEGED Identity Management (PIM) használata naplók és riasztások generálásához, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos felhasználói viselkedéssel kapcsolatos riasztások és jelentések megtekintéséhez.
 
-* [Privileged Identity Management (PIM) üzembe helyezése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Az Azure AD kockázati észlelések ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -404,7 +404,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel engedélyezheti, hogy a hozzáférés csak az IP-címtartományok vagy országok/régiók adott logikai csoportjaihoz legyen elérhető.
 
-* [Elnevezett helyszínek konfigurálása az Azure-ban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -414,9 +414,9 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: a Azure Active Directory (HRE) használata központi hitelesítési és engedélyezési rendszerrel az Azure Service Fabric-fürtök felügyeleti végpontjai számára való hozzáférés biztosításához. A HRE erős titkosítással védi az adatok védelmét a nyugalmi és átviteli állapotban lévő adatokhoz. A HRE a felhasználó hitelesítő adatait is sók, kivonatok és biztonságosan tárolja.
 
-* [HRE-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [HRE-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Azure Active Directory beállítása Service Fabric ügyfél-hitelesítéshez](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+* [Azure Active Directory beállítása Service Fabric ügyfél-hitelesítéshez](./service-fabric-cluster-creation-setup-aad.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -426,7 +426,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: Azure Active Directory (HRE) hitelesítés használata az Azure Service Fabric-fürttel. A HRE olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználó hozzáférését rendszeresen felül lehet vizsgálni, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-* [Az Azure Identity hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -438,7 +438,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 Ezt a folyamatot leegyszerűsítheti a HRE felhasználói fiókjainak diagnosztikai beállításainak létrehozásával, a naplók és a bejelentkezési naplók Azure Log Analytics-munkaterületre való elküldésével. A kívánt riasztások konfigurálása az Azure Log Analytics-munkaterületen belül.
 
-* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -448,11 +448,11 @@ Ezt a folyamatot leegyszerűsítheti a HRE felhasználói fiókjainak diagnoszti
 
 **Útmutató**: az Azure ad kockázatkezelési és identitás-védelmi funkcióival konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-* [Az Azure AD kockázatos bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -462,7 +462,7 @@ Ezt a folyamatot leegyszerűsítheti a HRE felhasználói fiókjainak diagnoszti
 
 **Útmutató**: nem érhető el; Ügyfélszéf az Azure Service Fabric még nem támogatott.
 
-* [Ügyfélszéf támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Ügyfélszéf támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -470,13 +470,13 @@ Ezt a folyamatot leegyszerűsítheti a HRE felhasználói fiókjainak diagnoszti
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató**: címkék használata az Azure Service Fabric-fürtökhöz kapcsolódó erőforrásokon, amelyek segítséget nyújtanak a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követésében.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -486,19 +486,19 @@ Ezt a folyamatot leegyszerűsítheti a HRE felhasználói fiókjainak diagnoszti
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az erőforrásokat VNet/alhálózattal kell elválasztani, és megfelelő címkével kell ellátni, és egy NSG vagy Azure Firewall által védettnek kell lennie. A bizalmas adatok tárolására vagy feldolgozására szolgáló erőforrásoknak elég elszigeteltnek kell lenniük. A bizalmas adatok tárolására és feldolgozására Virtual Machines a házirend és eljárás (ok) bekapcsolásával kikapcsolhatja azokat, ha nincsenek használatban.
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Riasztások vagy riasztások konfigurálása és a Azure Firewall megtagadása](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Riasztások vagy riasztások konfigurálása és a Azure Firewall megtagadása](../firewall/threat-intel.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -512,7 +512,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 képességek.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -524,9 +524,9 @@ képességek.
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
 
-* [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Service Fabric fürt biztonsági forgatókönyvei](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+* [Service Fabric fürt biztonsági forgatókönyvei](./service-fabric-cluster-security.md)
 
 * [A TLS-konfiguráció Service Fabric hibaelhárítási útmutatója](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
@@ -540,7 +540,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -560,7 +560,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -570,13 +570,13 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a titkosítás használata az összes Azure-erőforráson. A Microsoft azt javasolja, hogy az Azure kezelje a titkosítási kulcsokat, azonban lehetőség van arra, hogy a saját kulcsait bizonyos példányokban kezelje.
 
-* [A inaktív adatok titkosításának megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [A inaktív adatok titkosításának megismerése az Azure-ban](../security/fundamentals/encryption-atrest.md)
 
-* [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+* [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../storage/common/storage-encryption-keys-portal.md)
 
-* [Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára a Windows rendszerben](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-windows)
+* [Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára a Windows rendszerben](./service-fabric-enable-azure-disk-encryption-windows.md)
 
-* [Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára Linux rendszerben](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-linux)
+* [Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára Linux rendszerben](./service-fabric-enable-azure-disk-encryption-linux.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -586,7 +586,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -594,7 +594,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -604,11 +604,11 @@ Az Azure Virtual Machines és a Container images szolgáltatásban a sebezhetős
 
 Külső gyártótól származó megoldás használata a sebezhetőségi felmérések hálózati eszközökön és webalkalmazásokon való elvégzéséhez. Távoli vizsgálatok végrehajtásakor ne használjon egyetlen, örökös rendszergazdai fiókot. Érdemes lehet a beolvasni a JIT üzembe helyezési módszertant alkalmazni. A vizsgálati fiók hitelesítő adatait védeni kell, figyelni kell, és csak a sebezhetőségi vizsgálathoz kell használni.
 
-* [A Service Fabric fault Analysis Service bemutatása](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)
+* [A Service Fabric fault Analysis Service bemutatása](./service-fabric-testability-overview.md)
 
-* [Vezérelt káosz indukálása Service Fabric-fürtökben](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
+* [Vezérelt káosz indukálása Service Fabric-fürtökben](./service-fabric-controlled-chaos.md)
 
-* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -620,13 +620,13 @@ Külső gyártótól származó megoldás használata a sebezhetőségi felmér�
 
 Az operációs rendszer javításait az éles környezetbe való helyezés előtt is tesztelheti, ha a manuális triggert használja a méretezési csoport operációsrendszer-lemezképének frissítéséhez. Vegye figyelembe, hogy a manuális trigger beállítás nem biztosít beépített visszaállítást. OPERÁCIÓSRENDSZER-javítások figyelése a Azure Automation Update Management használatával.
 
-* [A Service Fabric fürtcsomópontok javításának kezelése](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [A Service Fabric fürtcsomópontok javításának kezelése](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Virtuális gépek naprakészen tartása a legújabb méretezési csoport modelljével](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+* [Virtuális gépek naprakészen tartása a legújabb méretezési csoport modelljével](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure Automation Update Management áttekintése](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
+* [Azure Automation Update Management áttekintése](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -636,11 +636,11 @@ Az operációs rendszer javításait az éles környezetbe való helyezés előt
 
 **Útmutató**: az operációs rendszer rendszerképének automatikus verziófrissítésének engedélyezése az Azure Service Fabric-fürt virtuálisgép-méretezési csoportjain. A patch-előkészítési alkalmazás (POA) egy alternatív megoldás, amely az Azure-on kívül üzemeltetett Service Fabric-fürtökhöz készült. A POA használható Azure-fürtökkel, és további üzemeltetési terheléssel.
 
-* [A Service Fabric fürtcsomópontok javításának kezelése](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [A Service Fabric fürtcsomópontok javításának kezelése](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Az operációsrendszer-javítási ütemterv konfigurálása Service Fabric fürtökhöz](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
+* [Az operációsrendszer-javítási ütemterv konfigurálása Service Fabric fürtökhöz](./service-fabric-patch-orchestration-application.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -664,7 +664,7 @@ Az operációs rendszer javításait az éles környezetbe való helyezés előt
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -672,11 +672,11 @@ Az operációs rendszer javításait az éles környezetbe való helyezés előt
 
 Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
 
-* [Lekérdezések létrehozása az Azure Resource Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -686,7 +686,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -696,11 +696,11 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -724,9 +724,9 @@ Engedélyezett erőforrástípusok
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -744,7 +744,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (például a számítási, tárolási, hálózati, portok és protokollok stb.), beleértve az Azure Service Fabric-fürtöket az előfizetésében. Távolítsa el a felderített nem jóváhagyott Azure-erőforrásokat. Az Azure Service Fabric fürtcsomópontok esetében egy külső gyártótól származó megoldást kell megvalósítani a nem jóváhagyott szoftverek eltávolítására vagy riasztására.
 
-* [Lekérdezések létrehozása az Azure Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -762,9 +762,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: a Azure Policy használatával korlátozhatja, hogy mely szolgáltatásokat lehet kiépíteni a környezetében.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -782,7 +782,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek az Azure Resources Managerrel való interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés letiltása" beállításával.
 
-* [Feltételes hozzáférés konfigurálása az Azure Resources Manager elérésének blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Feltételes hozzáférés konfigurálása az Azure Resources Manager elérésének blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -792,7 +792,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az operációs rendszer specifikus konfigurációjának vagy külső erőforrásainak használata arra, hogy korlátozza a felhasználók számára az Azure számítási erőforrásokon belüli parancsfájlok futtatását.
 
-* [Például a PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Például a PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -802,9 +802,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az üzleti műveletekhez szükséges szoftverek, de nagyobb kockázatot jelenthetnek a szervezet számára, el kell különíteni a saját virtuális gépén és/vagy virtuális hálózatán belül, és megfelelően biztonságossá kell tennie egy Azure Firewall vagy hálózati biztonsági csoporttal.
 
-* [Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -812,15 +812,15 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. ServiceFabric" névtérben egyéni szabályzatok létrehozásához a Service Fabric-fürt hálózati konfigurációjának naplózásához vagy érvényesítéséhez.
 
-* [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -838,9 +838,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure Service Fabric-fürtök és a kapcsolódó erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -858,9 +858,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: ha egyéni Azure Policy-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-* [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -870,11 +870,11 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: Ha egyéni lemezképeket használ, akkor a RBAC használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez. A Container images esetében tárolja azokat Azure Container Registry és használja ki a RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
-* [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [A Container Registry RBAC ismertetése](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [A Container Registry RBAC ismertetése](../container-registry/container-registry-roles.md)
 
-* [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -884,7 +884,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. ServiceFabric" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -902,9 +902,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. ServiceFabric" névtérben egyéni szabályzatok létrehozásához a Service Fabric-fürt konfigurációjának naplózásához vagy érvényesítéséhez.
 
-* [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -914,7 +914,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: a Azure Security Center használatával elvégezheti a tárolók operációs rendszerének és Docker-beállításainak alapkonfigurációját.
 
-* [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/container-security.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -924,13 +924,13 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: a Managed Service Identity együttes használata a Azure Key Vault a Felhőbeli alkalmazások titkos felügyeletének egyszerűsítése és biztonságossá tétele érdekében.
 
-* [Felügyelt identitások használata az Azure-hoz a Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Felügyelt identitások használata az Azure-hoz a Service Fabric](./concepts-managed-identity.md)
 
-* [Felügyelt identitás támogatásának konfigurálása új Service Fabric-fürthöz](https://docs.microsoft.com/azure/service-fabric/configure-new-azure-service-fabric-enable-managed-identity)
+* [Felügyelt identitás támogatásának konfigurálása új Service Fabric-fürthöz](./configure-new-azure-service-fabric-enable-managed-identity.md)
 
-* [Felügyelt identitás használata Service Fabric alkalmazással](https://docs.microsoft.com/azure/service-fabric/how-to-managed-identity-service-fabric-app-code)
+* [Felügyelt identitás használata Service Fabric alkalmazással](./how-to-managed-identity-service-fabric-app-code.md)
 
-* [Service Fabric alkalmazások KeyVaultReference támogatása](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+* [Service Fabric alkalmazások KeyVaultReference támogatása](./service-fabric-keyvault-references.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -940,7 +940,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: felügyelt identitások használhatók az Azure-ban telepített Service Fabric-fürtökben, valamint az Azure-erőforrásként üzembe helyezett alkalmazásokhoz. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
-* [Felügyelt identitások használata az Azure-hoz a Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Felügyelt identitások használata az Azure-hoz a Service Fabric](./concepts-managed-identity.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -954,7 +954,7 @@ A Azure Key Vault használatával automatikusan elforgathatja Service Fabric-fü
 
 * [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-* [Tanúsítványkezelő Service Fabric-fürtökben](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#certificate-rotation)
+* [Tanúsítványkezelő Service Fabric-fürtökben](./cluster-security-certificate-management.md#certificate-rotation)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -962,7 +962,7 @@ A Azure Key Vault használatával automatikusan elforgathatja Service Fabric-fü
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -970,7 +970,7 @@ A Azure Key Vault használatával automatikusan elforgathatja Service Fabric-fü
 
 Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok antimalware-dokumentációját. A Windows Defender Linux rendszeren nem támogatott.
 
-* [A Windows Defender víruskereső ismertetése Windows Server 2016 rendszeren](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [A Windows Defender víruskereső ismertetése Windows Server 2016 rendszeren](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -994,13 +994,13 @@ Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
 **Útmutató**: a Service Fabric biztonsági mentési és visszaállítási szolgáltatása lehetővé teszi az állapot-nyilvántartó szolgáltatásokban tárolt információk egyszerű és automatikus biztonsági mentését. Az alkalmazásadatok rendszeres biztonsági mentése alapvető fontosságú az adatvesztés és a szolgáltatás nem rendelkezésre állása elleni védelemhez. Service Fabric egy opcionális biztonsági mentési és visszaállítási szolgáltatást biztosít, amely lehetővé teszi az állapot-nyilvántartó Reliable Services (beleértve a Actor Servicest is) rendszeres biztonsági mentését anélkül, hogy további kódokat kellene írnia. Emellett elősegíti a korábban készített biztonsági mentések visszaállítását is.
 
-* [Rendszeres biztonsági mentés és visszaállítás egy Azure Service Fabric-fürtben](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Rendszeres biztonsági mentés és visszaállítás egy Azure Service Fabric-fürtben](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1010,11 +1010,11 @@ Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok
 
 **Útmutató**: engedélyezze a Backup Restore Service szolgáltatást a Service Fabric-fürtön, és hozzon létre biztonsági mentési szabályzatokat az állapot-nyilvántartó szolgáltatások rendszeres és igény szerinti biztonsági mentéséhez. Az ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton belül.
 
-* [Rendszeres biztonsági mentés és visszaállítás egy Azure Service Fabric-fürtben](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Rendszeres biztonsági mentés és visszaállítás egy Azure Service Fabric-fürtben](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
-* [Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1024,11 +1024,11 @@ Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok
 
 **Útmutató**: a biztonsági mentési konfigurációs információk és a rendelkezésre álló biztonsági másolatok rendszeres áttekintésével gondoskodhat arról, hogy a visszaállítás a biztonsági mentési visszaállítási szolgáltatásból is elvégezhető legyen. Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének visszaállítását.
 
-* [Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Biztonsági mentés visszaállítása az Azure-ban Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backup-restore-service-trigger-restore)
+* [Biztonsági mentés visszaállítása az Azure-ban Service Fabric](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1040,9 +1040,9 @@ Ha nem a Windows Defendert használja, tekintse meg a konfigurációs szabályok
 
 Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy a Key Vaultban a helyreállítható törlés engedélyezve van a kulcsok véletlen vagy rosszindulatú törléssel szembeni védeleméhez.
 
-* [Azure Storage-titkosítás inaktív állapotban](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Azure Storage-titkosítás inaktív állapotban](../storage/common/storage-service-encryption.md)
 
-* [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1050,7 +1050,7 @@ Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy 
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -1072,9 +1072,9 @@ Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy 
 
 Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat egy elnevezési rendszert az Azure-erőforrások azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-* [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -1094,7 +1094,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-* [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1104,9 +1104,9 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások Sentinel továbbításához.
 
-* [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-* [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -1116,7 +1116,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
 
-* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1124,7 +1124,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -1140,5 +1140,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

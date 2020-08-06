@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052838"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836445"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával 
 
@@ -282,7 +282,7 @@ Jegyezze fel a {Resolution} makró használatát a fájlnévben. azt jelzi, hogy
 Noha az összes fenti példa azt ismerteti, hogyan küldhet olyan kódolási feladatot, amely csak képeket hoz létre, a videó/hang kódolását a miniatűr generálásával is kombinálhatja. A következő JSON-és XML-beállításkészlet **Media Encoder standard** a miniatűr létrehozásához a kódolás során.
 
 ### <a name="json-preset"></a><a id="json"></a>JSON-készlet
-A sémával kapcsolatos további információkért tekintse meg [ezt a](/azure/media-services/previous/media-services-mes-schema) cikket.
+A sémával kapcsolatos további információkért tekintse meg [ezt a](./media-services-mes-schema.md) cikket.
 
 ```json
     {
@@ -347,7 +347,7 @@ A sémával kapcsolatos további információkért tekintse meg [ezt a](/azure/m
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML-beállításkészlet
-A sémával kapcsolatos további információkért tekintse meg [ezt a](/azure/media-services/previous/media-services-mes-schema) cikket.
+A sémával kapcsolatos további információkért tekintse meg [ezt a](./media-services-mes-schema.md) cikket.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>

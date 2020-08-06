@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408318"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836938"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -62,7 +62,7 @@ A következő *Erőforrás-létrehozási* oldalon adja meg az alább megadott é
 
 Ha elkészült, válassza a _felülvizsgálat + létrehozás_elemet. Ekkor megjelenik egy összefoglaló oldal, ahol áttekintheti a megadott példányok részleteit, és elvégezheti a _létrehozást_. 
 
-### <a name="verify-success"></a>Sikeres ellenőrzés
+### <a name="verify-success-and-collect-important-values"></a>Sikeres ellenőrzés és fontos értékek összegyűjtése
 
 A *create (létrehozás*) gombra kattintva megtekintheti a példány üzembe helyezésének állapotát az Azure-értesítésekben a portál ikon sávján keresztül. Az értesítés akkor jelenik meg, ha az üzembe helyezés sikeres volt, és a létrehozott példány megtekintéséhez válassza az _Ugrás az erőforráshoz_ gombot.
 
@@ -171,7 +171,7 @@ Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:
 * [*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)

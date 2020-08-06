@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836921"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártya használatával
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Virtuális gép létrehozása és a hálózati adapterek csatlakoztatása
-A virtuális gép létrehozásakor határozza meg a által létrehozott hálózati adaptereket `--nics` . A virtuális gép méretének kiválasztásakor is ügyelnie kell rá. A virtuális gépekhez adható hálózati adapterek teljes száma korlátozott. További információ a [Linux rendszerű virtuális gépek méreteiről](sizes.md).
+A virtuális gép létrehozásakor határozza meg a által létrehozott hálózati adaptereket `--nics` . A virtuális gép méretének kiválasztásakor is ügyelnie kell rá. A virtuális gépekhez adható hálózati adapterek teljes száma korlátozott. További információ a [Linux rendszerű virtuális gépek méreteiről](../sizes.md).
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példa egy *myVM*nevű virtuális gépet hoz létre:
 
@@ -97,7 +97,7 @@ az vm create \
 Adja hozzá az útválasztási táblázatokat a vendég operációs rendszerhez a [vendég operációs rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című témakörben leírt lépések végrehajtásával.
 
 ## <a name="add-a-nic-to-a-vm"></a>Hálózati adapter hozzáadása egy virtuális géphez
-Az előző lépések több hálózati adapterrel rendelkező virtuális gépet hoztak létre. A meglévő virtuális gépekhez az Azure CLI-vel is hozzáadhat hálózati adaptereket. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni. Ha szükséges, [átméretezheti a virtuális gépet](change-vm-size.md).
+Az előző lépések több hálózati adapterrel rendelkező virtuális gépet hoztak létre. A meglévő virtuális gépekhez az Azure CLI-vel is hozzáadhat hálózati adaptereket. A különböző virtuálisgép- [méretek](../sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni. Ha szükséges, [átméretezheti a virtuális gépet](change-vm-size.md).
 
 Hozzon létre egy másik hálózati adaptert az [az Network NIC Create](/cli/azure/network/nic)paranccsal. A következő példában létrehozunk egy *myNic3* nevű hálózati adaptert az előző lépésekben létrehozott háttérbeli alhálózathoz és hálózati biztonsági csoporthoz:
 
@@ -241,7 +241,7 @@ Ellenőrizze, hogy a hozzáadott útvonal megmarad-e az újraindítások közöt
 ping bing.com -c 4 -I eth1
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse át a Linux rendszerű [virtuális gépek méretét](sizes.md) , amikor több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni. Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak.
+## <a name="next-steps"></a>További lépések
+Tekintse át a Linux rendszerű [virtuális gépek méretét](../sizes.md) , amikor több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni. Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak.
 
 A virtuális gépek további biztonságossá tételéhez használja az igény szerinti virtuálisgép-hozzáférést. Ez a szolgáltatás a hálózati biztonsági csoportra vonatkozó szabályokat nyitja meg az SSH-forgalomhoz, ha szükséges, és egy meghatározott ideig. További információk: [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén).

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534005"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836768"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Engedélyek az Azure Sentinelben
 
-Az Azure Sentinel [szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) használatával biztosít olyan [beépített szerepköröket](../role-based-access-control/built-in-roles.md)   , amelyek a felhasználókhoz, csoportokhoz és szolgáltatásokhoz rendelhetők az Azure-ban.
+Az Azure Sentinel az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) használatával biztosítja az Azure-beli felhasználókhoz, csoportokhoz és szolgáltatásokhoz hozzárendelhető [beépített szerepköröket](../role-based-access-control/built-in-roles.md)   .
 
 A RBAC segítségével szerepköröket hozhat létre és rendelhet hozzá a biztonsági operatív csapatához, hogy megfelelő hozzáférést biztosítson az Azure Sentinelhez. A különböző szerepkörök részletesen szabályozzák, hogy az Azure Sentinel mely felhasználóinak láthatják és tudják megtekinteni. Az Azure-szerepkörök közvetlenül az Azure Sentinel-munkaterülethez rendelhetők (lásd az alábbi megjegyzést), vagy egy olyan előfizetésben vagy erőforráscsoporthoz, amelyhez a munkaterület tartozik, amelyet az Azure Sentinel örököl.
 
@@ -76,7 +76,7 @@ Ha például az Azure Sentinel **olvasó** szerepkörhöz hozzárendelt felhaszn
 
 Az alábbi táblázat összefoglalja az Azure Sentinel szerepköreit és engedélyezett műveleteit. 
 
-| Szerepkör | Forgatókönyvek létrehozása és futtatása| Munkafüzetek, analitikai szabályok és egyéb Azure Sentinel-erőforrások létrehozása és szerkesztése | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
+| Role | Forgatókönyvek létrehozása és futtatása| Munkafüzetek, analitikai szabályok és egyéb Azure Sentinel-erőforrások létrehozása és szerkesztése | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
 |---|---|---|---|---|
 | Azure Sentinel Reader | -- | -- | -- | &#10003; |
 | Azure Sentinel Responder | -- | -- | &#10003; | &#10003; |

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71180052"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841868"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>A prémium szintű fájlmegosztás további korlátai
 
@@ -25,9 +25,9 @@ ms.locfileid: "71180052"
 
 |Terület  |Prémium fájl  |Standard fájl |
 |---------|---------|---------|
-|Méret                  |1 TiB         |1 TiB|
+|Méret                  |4 TiB         |1 TiB|
 |IOPS maximális száma     |5000         |1,000|
 |Egyidejű kezelők    |2000         |2000|
 |Kimenő forgalom  |300 MiB/mp|      Lásd a szabványos fájl átviteli sebességének értékeit|
 |Bejövő forgalom  |200 MiB/mp| Lásd a szabványos fájl átviteli sebességének értékeit|
-|Teljesítmény| Lásd a prémium szintű fájlok bejövő/kimenő értékeit| Akár 60 MiB/mp|
+|Átviteli sebesség| Lásd a prémium szintű fájlok bejövő/kimenő értékeit| Akár 60 MiB/mp|

@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078213"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837380"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Alkalmazások és megoldások migrálása BizTalk Servicesról Azure Logic Apps
 
@@ -35,7 +35,7 @@ Ez a táblázat a Logic Apps BizTalk Services képességeit képezi le.
 | BizTalk Services   | Logic Apps            | Cél                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Összekötő          | Összekötő             | Az adatküldés és fogadás   |
-| Híd             | Logikai alkalmazás             | Folyamat processzora           |
+| Bridge             | Logikai alkalmazás             | Folyamat processzora           |
 | Ellenőrzés fázisa     | XML-érvényesítési művelet | XML-dokumentum ellenőrzése sémán keresztül | 
 | Dúsítási szakasz       | Adattokenek           | Tulajdonságok előléptetése üzenetekre vagy útválasztási döntések |
 | Átalakítási fázis    | Átalakítási művelet      | XML-üzenetek konvertálása egyik formátumból a másikba |
@@ -103,7 +103,7 @@ BizTalk Services feldolgozás során a dúsítási szakasz tulajdonságokat hoz 
 
 ### <a name="run-custom-code"></a>Egyéni kód futtatása
 
-BizTalk Services lehetővé teszi a saját szerelvényekben feltöltött [egyéni kódok futtatását](/previous-versions/azure/dn232389(v=azure.100)) . Ezt a funkciót a [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) felület valósítja meg. A híd minden szakasza két tulajdonságot tartalmaz (a beléptetési Ellenőrnél és a kilépési Ellenőrnél), amelyek biztosítják az ezt a felületet megvalósító .NET-típust. Az egyéni kód lehetővé teszi, hogy összetettebb adatfeldolgozást végezzen az adatokon, és lehetővé teszi a meglévő kódok újrafelhasználását olyan szerelvényekben, amelyek közös üzleti logikát végeznek. 
+BizTalk Services lehetővé teszi a saját szerelvényekben feltöltött [egyéni kódok futtatását](/previous-versions/azure/dn232389(v=azure.100)) . Ezt a funkciót a [IMessageInspector]() felület valósítja meg. A híd minden szakasza két tulajdonságot tartalmaz (a beléptetési Ellenőrnél és a kilépési Ellenőrnél), amelyek biztosítják az ezt a felületet megvalósító .NET-típust. Az egyéni kód lehetővé teszi, hogy összetettebb adatfeldolgozást végezzen az adatokon, és lehetővé teszi a meglévő kódok újrafelhasználását olyan szerelvényekben, amelyek közös üzleti logikát végeznek. 
 
 A Logic Apps két elsődleges módszert biztosít az egyéni kódok végrehajtásához: Azure Functions és API Apps. Azure Functions létrehozhatók és meghívhatók a Logic apps szolgáltatásban. Lásd: [egyéni kód hozzáadása és futtatása logikai alkalmazásokhoz Azure Functionson keresztül](../logic-apps/logic-apps-azure-functions.md). A saját eseményindítók és műveletek létrehozásához használja a API Appst, Azure App Service egy részét. További információ a [Logic Appshoz használandó egyéni API létrehozásáról](../logic-apps/logic-apps-create-api-app.md). 
 

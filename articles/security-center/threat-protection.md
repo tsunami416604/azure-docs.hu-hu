@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037188"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836802"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -54,11 +54,15 @@ A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-
 
     Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* **Fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – A végpontokat célzó, fájlokra kiterjedő támadások gyakoriak. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
+* **Fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – A fájl nélküli támadások rosszindulatú hasznos adatokat szúrnak be a memóriába, így elkerülhetők a lemezes ellenőrzési módszerek. A támadó adattartalma a feltört folyamatok memóriájában marad, és számos kártékony tevékenységet hajt végre.
 
-    A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a biztonsági szempontból kritikus folyamatok memóriájában.
+    A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a folyamatok memóriájában. A Linux-specifikus megállapítások a következők azonosítását tartalmazzák: 
 
-    Megtalálhatja a kihasználat, a kódok befecskendezését és a kártékony hasznos adatok végrehajtását. A fájlok közötti támadás észlelése részletes biztonsági riasztásokat generál a riasztások osztályozásának, korrelációjának és az alsóbb szintű válaszidő felgyorsításához. Ez a megközelítés kiegészíti az eseményvezérelt EDR megoldásokat, és nagyobb észlelési lefedettséget biztosít.
+    - Jól ismert eszközkészletek és kriptográfiai adatbányászati szoftverek 
+    - A héjkód, amely egy kis kódrészlet, amely általában a szoftveres biztonsági rések kiaknázása során hasznos adattartalomként használatos.
+    - Rosszindulatú végrehajtható fájl beinjektálása a folyamat memóriájába
+
+    A fájlok közötti támadás észlelése olyan részletes biztonsági riasztásokat hoz létre, amelyek a további folyamat metaadatainak, például a hálózati tevékenység leírását tartalmazzák. Ez felgyorsítja a riasztások osztályozását, korrelációját és az alsóbb rétegbeli válaszadási időt. Ez a megközelítés kiegészíti az Event-alapú EDR megoldásokat, és nagyobb észlelési lefedettséget biztosít.
 
     A fájlokba nem kerülő támadás észlelésével kapcsolatos riasztások részleteiért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
 
@@ -134,7 +138,7 @@ A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenci
 
 A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme a speciális SQL biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi, amely a Azure SQL Database, az Azure SQL felügyelt példányaira, a Azure SQL Data Warehouse adatbázisokra és az Azure Virtual Machines SQL-kiszolgálóira terjed ki.
 
-További információkért lásd:
+További információ:
 
 * [A komplex veszélyforrások elleni védelem engedélyezése a Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Az Azure-beli SQL serverek komplex veszélyforrások elleni védelmének engedélyezése Virtual Machines](security-center-iaas-advanced-data.md)
@@ -185,7 +189,7 @@ Ha egy fájl gyanúja szerint kártevőt tartalmaz, Security Center riasztást j
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
-További információkért lásd:
+További információ:
 
 * [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Az Azure Storage veszélyforrások elleni védelmi értesítéseinek listája](alerts-reference.md#alerts-azurestorage)
@@ -204,7 +208,7 @@ További információkért lásd:
 
 A Azure Cosmos DB riasztások szokatlan és potenciálisan ártalmas kísérletekkel jönnek létre Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához.
 
-További információkért lásd:
+További információ:
 
 * [A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [A veszélyforrások elleni védelmi riasztások listája Azure Cosmos DB (előzetes verzió)](alerts-reference.md#alerts-azurecosmos)

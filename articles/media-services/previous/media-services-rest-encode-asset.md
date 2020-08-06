@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9320677e970d9194e2cccad07522d7a63b6353d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999972"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837329"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Eszköz kódolása Media Encoder Standard használatával
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "86999972"
 
 Az interneten keresztüli digitális videó továbbításához tömöríteni kell az adathordozót. A digitális videofájlok nagy méretűek, és előfordulhat, hogy túl nagy méretűek az interneten keresztül, vagy ha az ügyfelek eszközei megfelelően jelennek meg. A kódolás a videó és hang tömörítésének folyamata, így az ügyfelek megtekinthetik az adathordozót.
 
-A kódolási feladatok a Azure Media Services leggyakoribb feldolgozási műveleteinek egyike. Kódolási feladatokat hozhat létre a médiafájlok egyik kódolásból a másikba való konvertálásához. Kódoláskor használhatja a Media Services beépített kódolót (Media Encoder Standard). Media Services-Partner által biztosított kódolót is használhat. A külső gyártótól származó kódolók az Azure Piactéren keresztül érhetők el. A kódolási feladatok részleteit a kódolóhoz megadott előre definiált karakterláncok, illetve előre definiált konfigurációs fájlok használatával határozhatja meg. Az elérhető beállításkészletek típusairól a következő témakörben talál további információt: [Media Encoder standard](/azure/media-services/previous/media-services-mes-presets-overview).
+A kódolási feladatok a Azure Media Services leggyakoribb feldolgozási műveleteinek egyike. Kódolási feladatokat hozhat létre a médiafájlok egyik kódolásból a másikba való konvertálásához. Kódoláskor használhatja a Media Services beépített kódolót (Media Encoder Standard). Media Services-Partner által biztosított kódolót is használhat. A külső gyártótól származó kódolók az Azure Piactéren keresztül érhetők el. A kódolási feladatok részleteit a kódolóhoz megadott előre definiált karakterláncok, illetve előre definiált konfigurációs fájlok használatával határozhatja meg. Az elérhető beállításkészletek típusairól a következő témakörben talál további információt: [Media Encoder standard](./media-services-mes-presets-overview.md).
 
 Minden feladathoz egy vagy több feladat tartozhat, attól függően, hogy milyen típusú feldolgozást szeretne elvégezni. A REST API segítségével a feladatokat és a hozzájuk kapcsolódó feladatokat kétféleképpen hozhatja létre:
 
@@ -65,7 +65,7 @@ További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Ser
 >
 >
 
-Az alábbi példa bemutatja, hogyan hozhat létre és küldhet el egy feladatot egy adott feladattal egy adott felbontás és minőség alapján. Media Encoder Standard használatával történő kódoláskor Itt adhatja meg az [itt](/azure/media-services/previous/media-services-mes-presets-overview)megadott feladat-konfigurálási beállításkészletet.
+Az alábbi példa bemutatja, hogyan hozhat létre és küldhet el egy feladatot egy adott feladattal egy adott felbontás és minőség alapján. Media Encoder Standard használatával történő kódoláskor Itt adhatja meg az [itt](./media-services-mes-presets-overview.md)megadott feladat-konfigurálási beállításkészletet.
 
 Kérés:
 
@@ -292,5 +292,5 @@ HTTP/1.1 201 Created
 ## <a name="next-steps"></a>További lépések
 Most, hogy már tudja, hogyan hozhat létre egy adategység kódolására szolgáló feladatot, tekintse meg a következő témakört: [a feladatok előrehaladásának ellenőrzéséhez Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 [Adathordozó-processzorok beolvasása](media-services-rest-get-media-processor.md)

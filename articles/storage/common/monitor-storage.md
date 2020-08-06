@@ -1,6 +1,6 @@
 ---
 title: Az Azure Storage figyelése | Microsoft Docs
-description: Ismerje meg, hogyan figyelheti az Azure Storage teljesítményét és rendelkezésre állását.
+description: Ismerje meg, hogyan figyelheti az Azure Storage teljesítményét és rendelkezésre állását. Az Azure Storage-adatok figyelése, a konfiguráció megismerése és a metrika és a naplózási adatok elemzése.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182712"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836666"
 ---
 # <a name="monitor-azure-storage"></a>Az Azure Storage figyelése
 
@@ -56,7 +56,7 @@ A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás-végpontra i
 
  A hitelesített kérések alábbi típusai vannak rögzítve:
 
-- Sikeres kérelmek
+- Sikeres kérések
 - Sikertelen kérések, köztük az időtúllépések, torlódások, valamint a hálózati, hitelesítési és egyéb hibák
 - Megosztott elérési aláírást (SAS) vagy OAuth használó kérelmek, beleértve a sikertelen és sikeres kérelmeket
 - Elemzési adatokra irányuló kérelmek (a klasszikus naplózási adatok a **$logs** tárolóban és az osztály metrikájának adatai a **$metric** táblákban)
@@ -67,14 +67,14 @@ A tárolási szolgáltatás által kezdeményezett kérelmek (például a napló
 
  A rendszer a következő típusú névtelen kérelmeket naplózza:
 
-- Sikeres kérelmek
+- Sikeres kérések
 - Kiszolgálóhibák
 - Időtúllépési hibák az ügyfél és a kiszolgáló esetében
 - Sikertelen GET kérelmek a 304 hibakódmal (nincs módosítva)
 
 Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott adatok teljes listáját a [Storage naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és a [tárolási napló formátuma](monitor-storage-reference.md)című témakörben tekintheti meg.
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, az Azure CLI vagy a PowerShell használatával történő létrehozásával kapcsolatban lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -86,9 +86,9 @@ Meg kell adnia azoknak a műveleteknek a kategóriáit is, amelyekhez naplókat 
 
 | Kategória | Leírás |
 |:---|:---|
-| StorageRead | Olvasási műveletek a blobokon. |
-| StorageWrite | Írási műveletek a blobokon. |
-| StorageDelete | Törlési műveletek a blobokon. |
+| StorageRead | Objektumok olvasási műveletei. |
+| StorageWrite | Írási műveletek az objektumokon. |
+| StorageDelete | Objektumok törlési műveletei. |
 
 ## <a name="analyze-metric-data"></a>Metrikai adatok elemzése
 
@@ -327,7 +327,7 @@ Bemutatunk egy példát:
 
 Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál. 
 
-![Auditnaplók](media/monitor-storage/event-hub-log.png)
+![Naplók](media/monitor-storage/event-hub-log.png)
 
 A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 

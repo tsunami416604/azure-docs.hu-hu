@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080437"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837176"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok – tervezett karbantartás értesítései
 
@@ -84,7 +84,7 @@ Az **önkiszolgáló karbantartási** oszlop most megjelenik a virtuálisgép-m�
 | Érték | Leírás |
 |-------|-------------|
 | Igen | A virtuálisgép-méretezési csoport legalább egy virtuális gépe önkiszolgáló ablakban található. Az önkiszolgáló ablakon bármikor elindíthatja a karbantartást. | 
-| No | Az érintett virtuálisgép-méretezési csoport önkiszolgáló ablakában egyetlen virtuális gép sem található. | 
+| Nem | Az érintett virtuálisgép-méretezési csoport önkiszolgáló ablakában egyetlen virtuális gép sem található. | 
 | - | A virtuális gépek méretezési csoportjai nem részei a tervezett karbantartási hullámnak.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Értesítés és riasztások a portálon
@@ -181,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** A rendelkezésre állási csoportokban vagy a virtuálisgép-méretezési csoportokban üzembe helyezett virtuális gépek frissítési tartományokat használnak. A karbantartás során az Azure betartja a frissítési tartomány korlátozását, és nem indít újra virtuális gépeket egy másik frissítési tartományból (ugyanazon rendelkezésre állási csoporton belül). Az Azure a virtuális gépek következő csoportjára való áttérés előtt legalább 30 percet vár. 
 
-A magas rendelkezésre állással kapcsolatos további információkért lásd: [régiók és rendelkezésre állás az Azure-beli virtuális gépek](../virtual-machines/windows/availability.md)számára.
+A magas rendelkezésre állással kapcsolatos további információkért lásd: [régiók és rendelkezésre állás az Azure-beli virtuális gépek](../virtual-machines/availability.md)számára.
 
 **K: Hogyan kaphatok értesítést a tervezett karbantartásról?**
 

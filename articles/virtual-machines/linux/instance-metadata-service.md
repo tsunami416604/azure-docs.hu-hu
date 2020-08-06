@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 0d31d982e7788970cbf7aad7dd64db9e6d4b9b10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502197"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836989"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -44,7 +44,7 @@ A IMDS lekérdezésével kapcsolatban további példákat talál az [Azure-péld
 
 Az alábbi mintakód egy példány összes metaadatának beolvasására szolgál az adott adatforráshoz való hozzáféréshez: [metadata API](#metadata-apis) szakasz. 
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
@@ -202,7 +202,7 @@ Ha nincs megadva verzió, a rendszer egy hibaüzenetet ad vissza a legújabb tá
 > [!NOTE]
 > A válasz egy JSON-karakterlánc. A következő példa azt jelzi, hogy a hiba feltétele, ha nincs megadva a verzió, a válasz elég kinyomtatva az olvashatóság érdekében.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
@@ -261,14 +261,14 @@ tagsList | Az egyszerűbb programozási elemzéshez JSON-tömbként formázott C
 version | A VM-rendszerkép verziója | 2017-04-02
 vmId | A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | A virtuálisgép-méretezési csoport virtuálisgép-méretezési [készletének neve](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
+vmSize | [Virtuális gép mérete](../sizes.md) | 2017-04-02
 zóna | A virtuális gép [rendelkezésre állási zónája](../../availability-zones/az-overview.md) | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>1. példa: az Azure-on futó virtuális gép nyomon követése
 
 Szolgáltatóként szükség lehet a szoftvert futtató virtuális gépek számának nyomon követésére, vagy olyan ügynökökkel, amelyeknek nyomon kell követniük a virtuális gép egyediségét. A virtuális gép egyedi AZONOSÍTÓjának beszerzéséhez használja a `vmId` mezőt instance metadata Service.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
@@ -286,7 +286,7 @@ Bizonyos esetekben a különböző adatreplikák elhelyezése elsődleges fontos
 Ezen döntések elvégzéséhez [Availability Zones](../../availability-zones/az-overview.md) is használhatja a példányokhoz.
 Ezeket az adatlekérdezéseket közvetlenül a Instance Metadata Service keresztül kérdezheti le.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
@@ -302,7 +302,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Szolgáltatóként olyan támogatási hívást kaphat, amelyben további információkat szeretne megtudni a virtuális gépről. Ha arra kéri az ügyfelet, hogy ossza meg a számítási metaadatokat, alapvető információkat biztosíthat a támogatási szakember számára az Azure-beli virtuális gépekről.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
@@ -402,7 +402,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Az Azure számos szuverén felhővel rendelkezik, mint például a [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Időnként szükség van az Azure-környezetre bizonyos futtatókörnyezeti döntések elvégzéséhez. A következő minta bemutatja, hogyan érheti el ezt a viselkedést.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
@@ -441,7 +441,7 @@ macAddress | VM MAC-címe | 2017-04-02
 
 #### <a name="sample-1-retrieving-network-information"></a>1. példa: hálózati adatok beolvasása
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
@@ -536,7 +536,7 @@ writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator
 
 Az alábbi példa bemutatja, hogyan lehet lekérdezni a virtuális gép tárolási adatait.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
@@ -608,7 +608,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 A virtuális gépek címkéi a példány/számítás/címkék végpont alatt találhatók a példány API-val.
 Előfordulhat, hogy az Azure-beli virtuális gépen a címkék logikailag rendszerezve lettek. A virtuális géphez rendelt címkék az alábbi kérelem használatával kérhetők le.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
@@ -622,7 +622,7 @@ Department:IT;Environment:Test;Role:WebRole
 
 A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel vannak elválasztva. Ez a kimenet akkor lehet probléma, ha a címkékben pontosvesszőt használnak. Ha egy elemzőt a címkék programozott kinyeréséhez kell írni, a mezőre kell támaszkodnia `tagsList` . A `tagsList` mező egy olyan JSON-tömb, amely nem határolójeleket, és így könnyebben elemezhető.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
@@ -656,7 +656,7 @@ Instance Metadata Service által kiszolgált forgatókönyv része a garancia ar
 > [!NOTE]
 > Minden API-válasz JSON-karakterlánc. Az alábbi példákban az olvashatóság érdekében a következő válaszokat kell kinyomtatni.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -699,7 +699,7 @@ A piactér-szállítók biztosítani szeretnék, hogy a szoftverük csak az Azur
 > [!NOTE]
 > A jQ telepítéséhez szükséges.
 
-**Kérelem**
+**Kérés**
 
 ```bash
 # Get the signature
@@ -900,4 +900,4 @@ Használja a probléma típusát, `Management` és válassza ki `Instance Metada
 
 További információk:
 1. [Szerezze be a virtuális gép hozzáférési jogkivonatát](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
-1. [Ütemezett események](scheduled-events.md)
+1. [Scheduled Events](scheduled-events.md)

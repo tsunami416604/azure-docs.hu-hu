@@ -3,18 +3,18 @@ title: Együttműködés a Tudásbázisban – QnA Maker
 description: QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) van ellátva.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446950"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837431"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Együttműködés a szerzőkkel és a szerkesztővel
 
 Az együttműködés a QnA Maker erőforrás szintjén biztosítható, hogy a közreműködő szerepköre alapján korlátozza a közreműködők hozzáférését. További információ a QnA Maker közreműködő hitelesítési [fogalmakról](../Concepts/role-based-access-control.md).
 
-## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Szerepköralapú hozzáférés (RBAC) hozzáadása a QnA Maker erőforráshoz
+## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) hozzáadása a QnA Maker-erőforráshoz
 
 QnA Maker lehetővé teszi, hogy több személy is működjenek együtt az összes Tudásbázisban ugyanabban a QnA Maker erőforrásban. Ez a szolgáltatás az Azure [szerepköralapú Access Control](../../../active-directory/role-based-access-control-configure.md)biztosít.
 
@@ -36,13 +36,13 @@ A következő lépések a közreműködő szerepkört használják, de a [szerep
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     ![QnA Maker IAM Hozzáadás](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. Válasszon ki egy szerepkört a következő listából:
 
-    |Szerepkör|
+    |Role|
     |--|
     |Tulajdonos|
     |Közreműködő|
