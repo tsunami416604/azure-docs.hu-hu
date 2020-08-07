@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7a9c367c1669aab18da5a7cb1f7d732f9b8aee9e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319065"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847635"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -431,6 +431,6 @@ Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log.txt fá
 
 Rövid idő alatt több számítási erőforrást is megtanult a megerősítő tanulási ügynök betanítására, hogy nagyon jól játszhasson.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan taníthat meg egy megerősítéses oktatási ügynököt egy IMPALA learning-ügynök használatával. Ha további példákat szeretne látni, ugorjon a [Azure Machine learning megerősítése learning GitHub-tárházra](https://aka.ms/azureml-rl-notebooks).

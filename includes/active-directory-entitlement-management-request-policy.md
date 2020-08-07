@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: active-directory
 author: msaburnley
 ms.service: active-directory
@@ -25,7 +25,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
     ![Hozzáférési csomag – kérelmek – a címtárban lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Válasszon egyet az alábbi lehetőségek közül:
+1. Válasszon az alábbi lehetőségek közül:
 
     |  |  |
     | --- | --- |
@@ -60,7 +60,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
 
     ![Hozzáférési csomag – kérelmek – a címtárban nem szereplő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Válasszon egyet az alábbi lehetőségek közül:
+1. Válasszon az alábbi lehetőségek közül:
 
     |  |  |
     | --- | --- |

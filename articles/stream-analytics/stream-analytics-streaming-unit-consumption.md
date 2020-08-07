@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704182"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903561"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A streamelési egységek ismertetése és módosítása
 
@@ -27,7 +27,7 @@ A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, 
 
 2. Az erőforrások listájában keresse meg a méretezni kívánt Stream Analytics-feladatot, majd nyissa meg. 
 
-3. A feladatok lapon a **configure (Konfigurálás** ) fejléc alatt válassza a **skála**lehetőséget. 
+3. A feladatok lapon a **configure (Konfigurálás** ) fejléc alatt válassza a **skála**lehetőséget.Az SUs alapértelmezett száma 3 a feladatok létrehozásakor.
 
     ![Azure Portal Stream Analytics feladatok konfigurálása][img.stream.analytics.preview.portal.settings.scale]
     
@@ -145,7 +145,7 @@ A gyors keresés érdekében az ASA-ben lévő hivatkozási adatmennyiség betö
 ### <a name="use-of-udf-functions"></a>UDF függvények használata
 UDF-függvény hozzáadásakor Azure Stream Analytics betölti a JavaScript-futtatókörnyezetet a memóriába. Ez hatással lesz a SU%-ra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Párhuzamosítható-lekérdezések létrehozása a Azure Stream Analyticsban](stream-analytics-parallelization.md)
 * [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)
 

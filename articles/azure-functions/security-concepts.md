@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502681"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850712"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -70,6 +70,18 @@ A következő táblázat a különböző típusú hozzáférési kulcsok haszná
 <sup>2</sup> A kiterjesztés által meghatározott nevek.
 
 A hozzáférési kulcsokkal kapcsolatos további tudnivalókért tekintse meg a [http-trigger kötését ismertető cikket](functions-bindings-http-webhook-trigger.md#obtaining-keys).
+
+
+#### <a name="secret-repositories"></a>Titkos adattárak
+
+Alapértelmezés szerint a kulcsok tárolása blob Storage-tárolóban történik a beállítás által biztosított fiókban `AzureWebJobsStorage` . Adott Alkalmazásbeállítások használatával felülbírálhatja ezt a viselkedést, és más helyen tárolhatja a kulcsokat.
+
+|Hely  |Beállítás | Érték | Leírás  |
+|---------|---------|---------|---------|
+|Eltérő Storage-fiók     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Egy második Storage-fiók blob Storage-tárolójában tárolja a kulcsokat a megadott SAS URL-cím alapján. A kulcsok titkosítva vannak, mielőtt a rendszer a Function-alkalmazáshoz tartozó titkos kulcs használatával tárolja őket. |
+|Fájlrendszer   | `AzureWebJobsSecretStorageType`   |  `files`       | A kulcsok megmaradnak a fájlrendszerben, és a rendszer titkosítja a tárterületet a Function alkalmazás titkos kódjának egyedi titkát használva. |
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | A tárolónak rendelkeznie kell egy olyan hozzáférési házirenddel, amely megfelel az üzemeltetési erőforrás rendszerhez rendelt felügyelt identitásának. A hozzáférési házirendnek a következő titkos engedélyeket kell megadnia a személyazonossághoz:,, `Get` `Set` `List` és `Delete` . <br/>Helyi futtatásakor a rendszer a fejlesztői identitást használja, és a beállításoknak a [fájllocal.settings.js](functions-run-local.md#local-settings-file)kell lenniük. | 
+|A Kubernetes titkos kódjai  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (nem kötelező) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Csak akkor támogatott, ha a functions futtatókörnyezetet futtatja a Kubernetes-ben. Ha `AzureWebJobsKubernetesSecretName` nincs beállítva, a tárház írásvédettnak minősül. Ebben az esetben az értékeket az üzembe helyezés előtt kell létrehozni. A Azure Functions Core Tools automatikusan hozza létre az értékeket a Kubernetes való üzembe helyezéskor.|
 
 ### <a name="authenticationauthorization"></a>Hitelesítés/engedélyezés
 
@@ -203,7 +215,7 @@ A hozzáférési korlátozások lehetővé teszik az engedélyezési/megtagadás
 
 Az átjáró-szolgáltatások, például az [azure Application Gateway](../application-gateway/overview.md) és az [Azure bejárati ajtó](../frontdoor/front-door-overview.md) lehetővé teszik a webalkalmazási tűzfal (WAF) beállítását. A WAF-szabályok az észlelt támadások figyelésére vagy letiltására szolgálnak, amelyek további védelmi réteget biztosítanak a függvények számára. A WAF beállításához a Function app-nak egy beadási vagy privát végpontok (előzetes verzió) használatával kell futnia. További információt a [privát végpontok használata](../app-service/networking/private-endpoint.md)című témakörben talál.    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Azure Functions Azure biztonsági alapterve](security-baseline.md)
 + [Azure Functions diagnosztika](functions-diagnostics.md)

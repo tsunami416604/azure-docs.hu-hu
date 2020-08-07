@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 330066a950165d3424ca7900493ac89ce746b309
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683504"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904531"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PagerDuty
 
@@ -38,6 +38,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * PagerDuty egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+
+> [!NOTE]
+> Ha MFA-vagy jelszó-nélküli hitelesítést használ az Azure AD-ben, akkor kapcsolja ki a AuthnContext értéket az SAML-kérelemben. Ellenkező esetben az Azure AD a hibát nem egyezik a AuthnContext, és nem küldi vissza a jogkivonatot az alkalmazásnak.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -107,9 +110,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -180,7 +183,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Pa
 
     a. Írja be a felhasználó vezetéknevét **és vezetéknevét** , például **B. Simon**. 
    
-    b. Adja meg a felhasználó **e-mail-** címét, például: **b.\@Simon contoso.com**.
+    b. Adja meg a felhasználó **e-mail-** címét, például: **b. Simon \@ contoso.com**.
    
     c. Kattintson a **Hozzáadás**, majd a **Meghívók küldése**elemre.
    
@@ -193,7 +196,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a PagerDuty csempére kattint, automatikusan be kell jelentkeznie arra a PagerDuty, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Service Management-tanúsítvány feltöltése | Microsoft Docs
-description: Megtudhatja, hogyan töltheti fel a Azure Portal szolgáltatás-felügyeleti tanúsítványát.
+description: Megtudhatja, hogyan töltheti fel a Azure Portal szolgáltatás-felügyeleti tanúsítványát. A felügyeleti tanúsítványok lehetővé teszik a hitelesítését a klasszikus üzemi modellel.
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d2436b524ba6df68b12206bcb545e54a405b731
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78329119"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848553"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure Service Management-tanúsítvány feltöltése
 A felügyeleti tanúsítványok lehetővé teszik az Azure által biztosított klasszikus üzembehelyezési modell hitelesítését. Számos program és eszköz (például a Visual Studio vagy az Azure SDK) ezeket a tanúsítványokat használja a különböző Azure-szolgáltatások konfigurációjának és üzembe helyezésének automatizálására. 
@@ -51,5 +51,5 @@ Miután létrehozott egy felügyeleti tanúsítványt (. cer fájl csak a nyilv�
 
     ![Beállítások](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy rendelkezik egy előfizetéshez társított felügyeleti tanúsítvánnyal, (miután telepítette a megfelelő tanúsítványt helyileg) programozott módon kapcsolódhat a [klasszikus üzemi modellhez REST API](/azure/?pivot=sdkstools) és automatizálhatja az adott előfizetéshez kapcsolódó különböző Azure-erőforrásokat.

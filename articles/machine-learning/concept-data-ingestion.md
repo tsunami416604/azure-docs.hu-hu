@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 48393ac14805c60ac12df9256f915721ee928758
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552840"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875319"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Adatfeldolgozási lehetőségek Azure Machine Learning munkafolyamatokhoz
 
@@ -74,7 +74,7 @@ A következő ábrán a Azure Machine Learning folyamat két lépésből áll: a
 
 ![Azure-folyamat + SDK-adatfeldolgozás](media/concept-data-ingestion/data-ingest-option-two.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse az alábbi útmutatókat:
 * [Adatfeldolgozási folyamat összeállítása Azure Data Factory](how-to-data-ingest-adf.md)

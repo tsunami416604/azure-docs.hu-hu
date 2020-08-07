@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6fe9fdd68f9419a9f730ea64b5aea19f583d751c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496746"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902031"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
 
@@ -78,7 +78,7 @@ A parancsmag **PointInTimeRestore** paraméterének `Restore-AzPostgreSqlServer`
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| Név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -120,7 +120,7 @@ A parancsmag **GeoRestore** paraméterének `Restore-AzPostgreSqlServer` a köve
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Name | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Név | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 
@@ -130,7 +130,7 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Azure Database for PostgreSQL kiszolgáló paramétereinek testreszabása a PowerShell használatával](howto-configure-server-parameters-using-powershell.md)
+> [Azure Database for PostgreSQL kapcsolódási karakterlánc létrehozása a PowerShell-lel](howto-connection-string-powershell.md)

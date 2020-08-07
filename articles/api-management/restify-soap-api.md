@@ -1,6 +1,6 @@
 ---
 title: SOAP API importálása, majd konvertálása REST-té az Azure Portal használatával | Microsoft Docs
-description: Megismerheti, hogyan importálhat SOAP API-t, és konvertálhatja REST-té az API Management szolgáltatással.
+description: Ismerje meg, hogyan importálhat egy SOAP API-t, hogyan alakíthatja át a API Managementba, majd tesztelheti az API-t az Azure-ban és a fejlesztői portálon.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74108105"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843827"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>SOAP API importálása és konvertálása REST-té
 
@@ -59,7 +59,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 
     * **Kezdő**
     * **Korlátlan**   
-10. Kattintson a **Létrehozás** gombra.
+10. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
 
@@ -78,7 +78,7 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

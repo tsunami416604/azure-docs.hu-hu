@@ -1,7 +1,7 @@
 ---
 title: Tárolt hozzáférési szabályzat létrehozása a .NET-tel
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre tárolt hozzáférési szabályzatot a .NET ügyféloldali kódtár használatával.
+description: Az Azure Storage és a .NET használatával hozzon létre egy tárolt hozzáférési szabályzatot. A kiszolgálón a szolgáltatás szintű közös hozzáférésű aláírások további szintjének szabályozása.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f4a0d69f3687f0dcc174a2d8a1275a2bf55d9ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504389"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903765"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Tárolt hozzáférési szabályzat létrehozása a .NET-tel
 
@@ -23,7 +23,7 @@ A tárolt hozzáférési szabályzatok a kiszolgálóoldali megosztott hozzáfé
   
 A következő Azure Storage-erőforrások támogatják a tárolt hozzáférési szabályzatokat:  
   
-- BLOB-tárolók  
+- Blobtárolók  
 - Fájlmegosztások  
 - Üzenetsorok  
 - Táblák  
@@ -125,7 +125,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ---
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)
 - [Tárolt hozzáférési szabályzat meghatározása](/rest/api/storageservices/define-stored-access-policy)

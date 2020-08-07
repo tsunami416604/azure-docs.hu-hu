@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ba121400368f37c4a562a9c34e209c59d15b173c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404112"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834456"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. A detektor modell létrehozása után használhatja a Custom Vision szolgáltatást az objektumok észleléséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,10 +51,11 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek detektorát. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Domain|Cél|
+    |Tartomány|Cél|
     |---|---|
     |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
+    |__Termékek a polcokon__|A polcokon található termékek észlelésére és besorolására optimalizált.|
     |__Kompakt tartományok__| A mobileszközök valós idejű objektum-észlelésének korlátaira optimalizált. A kompakt tartományok által generált modellek helyileg is futtathatók.|
 
 1. Végül válassza a __projekt létrehozása__lehetőséget.
@@ -110,7 +111,7 @@ Minden alkalommal, amikor betanítja a detektort, létrehoz egy új _iterációt
 
 A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre és taníthat egy Object detektor-modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

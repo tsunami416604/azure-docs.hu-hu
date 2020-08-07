@@ -4,12 +4,12 @@ description: Az Azure VMware-megoldással (AVS) kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836581"
+ms.locfileid: "87872327"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Gyakran ismételt kérdések az Azure VMware Solution (AVS) előzetes verziójáról
 
@@ -45,7 +45,7 @@ Bizonyos integrációk és használati esetek eseti alapon is kiértékelhető.
 
 **Áttelepíthetem a vSphere virtuális gépeket a helyszíni környezetből az AVS Private felhőkbe?**
 
-Igen. A virtuális gépek áttelepítése és vMotion használatával a virtuális gépek áthelyezhetők egy privát felhőbe, ha a standard szintű Cross vCenter [vMotion-követelmények] [ https://kb.vmware.com/s/article/210695 ] teljesülnek.
+Igen. A VM-Migrálás és a vMotion segítségével a virtuális gépek áthelyezhetők a privát felhőbe, ha a standard szintű vCenter [vMotion](https://kb.vmware.com/s/article/210695) teljesülnek.
 
 **A vSphere adott verziója szükséges a helyszíni környezetekben?**
 

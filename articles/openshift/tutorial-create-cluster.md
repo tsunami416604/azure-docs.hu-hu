@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475651"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904190"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -49,9 +49,9 @@ A Red Hat pull Secret lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Con
 
    Be kell jelentkeznie a Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail-címével, és el kell fogadnia a használati feltételeket.
 
-2. **Kattintson a lekérési titok letöltése elemre.**
+2. Ha első alkalommal hoz létre fürtöt, nyissa meg a [**OpenShift termék lapját**](https://developers.redhat.com/products/codeready-containers) . A regisztráció után lépjen a [**Red Hat OpenShift a Fürtfelügyelő lapra**](https://cloud.redhat.com/openshift/), ahol a **pull Secret letöltése** elemre kattinthat, és letöltheti az ARO-fürthöz használni kívánt lekéréses titkot.
 
-Tartsa meg a mentett `pull-secret.txt` fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
+Tartsa biztonságos helyen a mentett `pull-secret.txt` fájlt. A fájl minden egyes fürt létrehozásakor használatos, ha olyan fürtöt kell létrehoznia, amely a Red hat vagy a Certified partnereknek szóló mintákat vagy operátorokat tartalmaz.
 
 A parancs futtatásakor a (z `az aro create` ) paraméter használatával hivatkozhat a lekéréses titkos kulcsra `--pull-secret @pull-secret.txt` . Futtassa `az aro create` azt a könyvtárat, ahová a fájlt mentette `pull-secret.txt` . Ellenkező esetben cserélje le `@pull-secret.txt` a-t a kifejezésre `@<path-to-my-pull-secret-file>` .
 
@@ -192,7 +192,7 @@ az aro create \
 
 A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

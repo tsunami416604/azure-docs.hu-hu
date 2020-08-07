@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 9464544e8c80ad32269ad27ed3592871d0077713
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 08e36f8ef31114b18a166e7a14d6d7ad8385582c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544030"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850372"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ A cikkben szereplő példák a következőket mutatják be:
 
 A környezetek Azure Machine Learningban való működésének magas szintű áttekintését lásd: [Mi az a ml-környezet?](concept-environments.md) További információ a fejlesztési környezetek konfigurálásáról: [itt](how-to-configure-environment.md).
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 * A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Azure Machine learning munkaterület](how-to-manage-workspace.md)
@@ -454,7 +454,7 @@ Töltse le a regisztrált környezetet a következő parancs használatával.
 az ml environment download -n myenv -d downloaddir
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha felügyelt számítási célt kíván használni a modell betanításához, tekintse meg az [oktatóanyag: modell](tutorial-train-models-with-aml.md)betanítása című témakört.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 56bdaa324420bf274e7cda8ac1c6506e4bc9ad21
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 954ea8d544baa2538e1b92a9f03b7a48169e7360
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404058"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834439"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Gyors útmutató: osztályozó készítése Custom Vision
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy osztályozó a Custom Vision webhelyén. Az osztályozó modell létrehozása után használhatja a Custom Vision szolgáltatást a rendszerkép besorolásához.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,12 +51,12 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek besorolását. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Domain|Cél|
+    |Tartomány|Cél|
     |---|---|
     |__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
-    |__Arcrész__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák.|
-    |__Kiskereskedelem__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
+    |__Arcrészek__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák.|
+    |__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
     |__Kompakt tartományok__| A mobileszközök valós idejű besorolásának korlátaira optimalizált. A kompakt tartományok által generált modellek helyileg is futtathatók.|
 
 1. Végül válassza a __projekt létrehozása__lehetőséget.
@@ -113,7 +113,7 @@ Az osztályozó betanításakor minden alkalommal létre kell hoznia egy új _it
 
 A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre és taníthat képbesorolási modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

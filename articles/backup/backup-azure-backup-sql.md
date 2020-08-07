@@ -3,12 +3,12 @@ title: SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure Backup szolgáltatás használatával
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055377"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876308"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 
@@ -21,6 +21,9 @@ SQL Server-adatbázis biztonsági mentése az Azure-ba és az Azure-ból való h
 1. Hozzon létre egy biztonsági mentési szabályzatot SQL Server adatbázisok védelméhez az Azure-ban.
 1. Hozzon létre igény szerinti biztonsági másolatokat az Azure-ban.
 1. Az adatbázis helyreállítása az Azure-ból.
+
+>[!NOTE]
+>A DPM 2019 UR2 támogatja a fürt megosztott kötetei (CSV) használatával SQL Server feladatátvevő fürt példányait.
 
 ## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
 
@@ -190,6 +193,6 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 
     A helyreállítás befejezésekor a visszaállított adatbázis konzisztens az alkalmazással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Backup GYIK](backup-azure-backup-faq.md).

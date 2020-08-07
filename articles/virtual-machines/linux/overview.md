@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c24989c73aa4343fea2b719a5b1e8c63c06af010
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082464"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835629"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek az Azure-ban
 
@@ -45,7 +45,7 @@ Az Azure-ban létrehozott minden erőforrás világszerte több [földrajzi rég
 
 Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olvasható néhány módszer.
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot. |
@@ -56,7 +56,7 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 Az Azure bejelentett egy iparágvezető, 99,9%-os elérhetőséget biztosító egypéldányos virtuálisgép-szolgáltatói szerződést, amelynek az a feltétele, hogy az üzembe helyezett virtuális gép összes lemezén prémium szintű tárolást használjon.  Ahhoz, hogy az üzembe helyezett példány megfeleljen a standard 99,95%-os virtuálisgép-szolgáltatói szerződésnek, legalább még két virtuális gépet kell üzembe helyeznie a számítási feladatok futtatásához egy rendelkezésre állási csoporton belül. A rendelkezésre állási csoport biztosítja, hogy a virtuális gépek több tartalék tartomány között legyenek elosztva az Azure-adatközpontokban, valamint az őket futtató gazdagépeknek különböző karbantartási időszakaik legyenek. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
 ## <a name="vm-size"></a>Virtuális gép mérete
-A használt virtuális gép [mérete](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a futtatni kívánt számítási feladatok mennyiségétől függ. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz.
+A használt virtuális gép [mérete](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a futtatni kívánt számítási feladatok mennyiségétől függ. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz.
 
 Az Azure [óradíjat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) számít fel a virtuális gép méretétől és az operációs rendszertől függően. Nem egész órák esetében az Azure csak a használt perceket számlázza. A tárhely árazása és felszámítása külön történik.
 
@@ -101,19 +101,19 @@ Az Azure támogatja a [Cloud-init](https://cloud-init.io/) használatát a legt�
 
 * [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md)
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 * [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
 * [Lemez hozzáadása Linux rendszerű virtuális géphez az azure-cli használatával](add-disk.md)
 * [Adatlemez csatlakoztatása Linux rendszerű virtuális géphez az Azure Portalon](attach-disk-portal.md)
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 * [A Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../virtual-network/public-ip-addresses.md)
 * [Portok nyitása egy Linux rendszerű virtuális géphez az Azure Portalon](nsg-quickstart.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](portal-create-fqdn.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre az első virtuális gépet!
 

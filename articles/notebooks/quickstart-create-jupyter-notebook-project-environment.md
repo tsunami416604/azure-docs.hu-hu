@@ -3,13 +3,13 @@ title: Azure Notebooks előnézeti projekt létrehozása egyéni környezettel
 description: Hozzon létre egy új projektet Azure Notebooks előzetes verzióban, amely a telepített csomagok és indítási parancsfájlok meghatározott készletével van konfigurálva.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 655c016b55abdcf4b6f546a1fe16348ec4c83724
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832899"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853364"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rövid útmutató: projekt létrehozása egyéni környezettel Azure Notebooks előzetes verzióban
 
@@ -67,7 +67,7 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
 1. A környezet teszteléséhez hozzon létre és futtasson egy új jegyzetfüzetet, majd hozzon létre egy kódot tartalmazó cellát olyan utasításokkal, amelyek a környezetben lévő csomagtól függenek, például egy Python- `import` utasítás használatával. Ha az utasítás sikeres, a szükséges csomag telepítése sikeresen megtörtént a környezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Projektek kezelése és konfigurálása Azure Notebooks](configure-manage-azure-notebooks-projects.md)

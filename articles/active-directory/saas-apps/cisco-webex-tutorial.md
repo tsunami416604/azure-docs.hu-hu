@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a6182159275236f023a1647275ed1fb8c8f4112
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026269"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905771"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció Cisco WebEx-értekezletekkel
 
@@ -39,6 +39,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * A Cisco WebEx az egyszeri bejelentkezést (SSO) engedélyezte az előfizetést.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -103,7 +106,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 6. A fentieken kívül a Cisco WebEx üléseinek alkalmazása néhány további attribútumot vár az SAML-válaszban való visszatéréshez. A felhasználó attribútumai párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------|  --------- |
     |   FirstName    | User. givenName |
     |   LastName    | felhasználó. vezetéknév |
@@ -120,7 +123,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. A **forrás attribútum** listából válassza ki az adott sorhoz tartozó attribútum értékét a legördülő listából.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -138,9 +141,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
     1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-    1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-    1. Kattintson a **Létrehozás**gombra.
+    1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -162,7 +165,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-cisco-webex-meetings-sso"></a>Cisco WebEx-értekezletek – SSO konfigurálása
 
-1. Nyissa `https://<customername>.webex.com/admin` meg az URL-címet az adminisztrációs hitelesítő adataival.
+1. Nyissa meg az `https://<customername>.webex.com/admin` URL-címet az adminisztrációs hitelesítő adataival.
 
 2. Nyissa meg a **gyakori hely beállításait** , és navigáljon az **SSO-konfigurációhoz**.
  
@@ -178,14 +181,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     c. Az **Exportálás** gombra kattintva letöltheti a szolgáltatói metaadat-fájlt, és feltöltheti azt az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
 
-    d. A **AuthContextClassRef** szövegmezőbe írja be `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` a (z) értéket, és ha engedélyezni szeretné az MFA használatát az Azure ad-ban, írja be a két értéket, például:`urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
+    d. A **AuthContextClassRef** szövegmezőbe írja be a (z) értéket, `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` és ha ENGEDÉLYEZNI szeretné az MFA használatát az Azure ad-ban, írja be a két értéket, például:`urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
 
     e. Válassza az **automatikus fiók létrehozása**lehetőséget.
 
     >[!NOTE]
     >Az igény **szerinti felhasználó üzembe** helyezésének engedélyezéséhez ellenőriznie kell az **automatikus fiók létrehozását**. Az SAML-jogkivonat attribútumait is át kell adni az SAML-válaszban.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
     >[!NOTE]
     >Ez a konfiguráció csak azoknál az ügyfeleknél használható, akik e-mail-formátumban használják a WebEx UserID-t.

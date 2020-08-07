@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494785"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876716"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -29,25 +29,17 @@ A kívánt állapot-konfiguráció (DSC) egy olyan felügyeleti platform, amelyn
 
 A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítmény telepíti a és a DSC-ügynököt az Azure Virtual Machines szolgáltatásban. A DSC bővítmény a következő műveleteket is elvégezheti:
 
-
 - Regisztrálja a linuxos virtuális gépet egy Azure Automation-fiókba a konfigurációk Azure Automation szolgáltatásból való lekéréséhez (ExtensionAction-regisztráció).
 - A MOF-konfigurációk leküldése a Linux rendszerű virtuális gépre (leküldéses ExtensionAction).
 - Alkalmazza a meta MOF-konfigurációt a Linux rendszerű virtuális gépre egy lekérési kiszolgáló konfigurálásához a csomópont-konfiguráció lekéréséhez (lekéréses ExtensionAction).
 - Telepítsen egyéni DSC-modulokat a Linux rendszerű virtuális gépre (telepítse a ExtensionAction-t).
 - Távolítsa el az egyéni DSC-modulokat a Linux rendszerű virtuális gépről (távolítsa el a ExtensionAction).
 
- 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](../linux/endorsed-distros.md) , kivéve a következőket:
-
-| Disztribúció | Verzió |
-|---|---|
-| Debian | Az összes verzió |
-| Ubuntu| 18,04 |
+A Linux rendszerű csomópontok esetében a DSC Linux bővítmény támogatja a [POWERSHELL DSC dokumentációjában](/powershell/scripting/dsc/getting-started/lnxgettingstarted)felsorolt összes Linux-disztribúciót.
  
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 

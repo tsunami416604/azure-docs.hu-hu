@@ -3,16 +3,16 @@ title: Kapcsolódás az Azure Event Hubshoz
 description: Az Azure Event Hubs és Azure Logic Apps használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelik az eseményeket.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284098"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848842"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események monitorozása, fogadása és küldése az Azure Event Hubs és az Azure Logic Apps használatával
 
@@ -62,6 +62,9 @@ Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logi
 
 Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-munkafolyamatot, amikor új eseményeket továbbítanak az Event hub-nak. 
 
+> [!NOTE]
+> Az Event hub összes eseményindítója *hosszú lekérdezési* eseményindítókat használ, ami azt jelenti, hogy az eseményindító feldolgozza az összes eseményt, majd egy partíción 30 másodpercet vár, hogy további események jelenjenek meg az Event hub-ban. Tehát ha az trigger négy partícióval van beállítva, ez a késleltetés akár két percet is igénybe vehet, mielőtt az aktiválás befejezi az összes partíció lekérdezését. Ha nem érkezik esemény ezen a késésen belül, a rendszer kihagyja a trigger futtatását. Ellenkező esetben az eseményindító addig folytatja az eseményeket, amíg az Event hub üres nem lesz. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési időköz alapján történik.
+
 1. A Azure Portal vagy a Visual Studióban hozzon létre egy üres logikai alkalmazást, amely megnyitja Logic Apps designert. Ez a példa a Azure Portal használja.
 
 1. A keresőmezőbe írja be szűrőként az "Event hubok" kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót: **Ha az Event hub eseményei elérhetők a Event Hubs**
@@ -100,11 +103,6 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 1. Most folytassa a logikai alkalmazáshoz egy vagy több művelet hozzáadását azokkal a feladatokkal, amelyeket el szeretne végezni az trigger eredményeivel. 
 
    Ha például egy adott érték (például egy kategória) alapján szeretne eseményeket szűrni, hozzáadhat egy feltételt, hogy az **esemény küldése** művelet csak azokat az eseményeket küldje el, amelyek megfelelnek a feltételnek. 
-
-> [!NOTE]
-> Az Event hub összes eseményindítója *hosszú lekérdezési* eseményindítókat használ, ami azt jelenti, hogy amikor egy eseményindító aktiválódik, az eseményindító feldolgozza az összes eseményt, majd 30 másodpercig várakozik, hogy további események jelenjenek meg az Event hub-ban.
-> Ha 30 másodpercen belül nem érkezik esemény, a rendszer kihagyja a trigger futtatását. Ellenkező esetben az eseményindító addig folytatja az eseményeket, amíg az Event hub üres nem lesz.
-> A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési időköz alapján történik.
 
 <a name="add-action"></a>
 
@@ -178,6 +176,6 @@ A technikai részleteket, például az eseményindítókat, a műveleteket és a
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

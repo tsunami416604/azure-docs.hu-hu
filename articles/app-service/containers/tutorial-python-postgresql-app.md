@@ -9,14 +9,14 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-- tracking-python
+- devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2148668b555afe0d11156a6ee213248b1cad1beb
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799464"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904836"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -118,7 +118,7 @@ Ezek a módosítások a Django konfigurálására szolgálnak az éles környeze
 ## <a name="create-postgres-database-in-azure"></a>Postgres-adatbázis létrehozása az Azure-ban
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. -->
 
 Telepítse a `db-up` bővítményt az Azure CLI-hez:
 
@@ -131,12 +131,12 @@ Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI
 Ezután hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal:
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen4_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
 - Cserélje le az értékét az *\<postgres-server-name>* összes Azure-beli egyedi névre (a kiszolgálói végpont `https://\<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
 - És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz.
-- Az itt használt B_Gen4_1 (alapszintű, Gen4, 1 Core) [árképzési szint](../../postgresql/concepts-pricing-tiers.md) a legkevésbé költséges. Éles adatbázisok esetében hagyja ki az `--sku-name` argumentumot, hogy ehelyett a GP_Gen5_2 (általános célú, Gen 5, 2 magok) szintet használja.
+- Az itt használt B_Gen5_1 (alapszintű, Gen5, 1 Core) [árképzési szint](../../postgresql/concepts-pricing-tiers.md) a legkevésbé költséges. Éles adatbázisok esetében hagyja ki az `--sku-name` argumentumot, hogy ehelyett a GP_Gen5_2 (általános célú, Gen 5, 2 magok) szintet használja.
 
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
 
@@ -406,7 +406,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jele
 
 ![A Python Django-alkalmazás kezelése a Azure Portal áttekintés lapján](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha meg szeretné tartani az alkalmazást, vagy folytassa a következő oktatóanyaggal, ugorjon a [következő lépésekre](#next-steps). Ellenkező esetben a folyamatos költségek elkerülése érdekében törölheti az ehhez az oktatóanyaghoz tartozó erőforráscsoport-létrehozási csoportot:
 
@@ -416,7 +416,7 @@ az group delete
 
 A parancs az *. Azure/config* fájlban gyorsítótárazott erőforráscsoport-nevet használja. Az erőforráscsoport törlésével felszabadítja és törli az abban található összes erőforrást is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan képezhető le egyéni DNS-név az alkalmazáshoz:
 

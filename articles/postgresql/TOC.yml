@@ -255,6 +255,8 @@
           items:
             - name: TLS konfigurálása
               href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: Kiszolgáló paramétereinek konfigurálása
           items:
             - name: Azure Portal

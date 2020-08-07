@@ -1,6 +1,6 @@
 ---
 title: Azure Storage Analytics-naplózás
-description: Ismerje meg, hogyan naplózhatja az Azure Storage szolgáltatással kapcsolatos kérések részleteit.
+description: Storage Analytics használatával naplózhatja az Azure Storage-kérelmek részleteit. Megtekintheti a naplózott kérelmeket, a naplók tárolási módját, a tárolási naplózás engedélyezését és egyebeket.
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 061c7f6a45b8667b7fd03d62bee67c695bec5e68
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87276788"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903221"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage Analytics naplózása
 
@@ -208,7 +208,7 @@ Ha többet szeretne megtudni az egyes fájlok letöltéséről, tekintse meg az 
 
 Ha letöltötte a napló adatait, megtekintheti a bejegyzéseket a fájlokban. Ezek a naplófájlok olyan tagolt szöveges formátumot használnak, amelyet számos napló-olvasási eszköz képes elemezni, beleértve a Microsoft Message Analyzert (további információért lásd: útmutató a [figyeléshez, a diagnosztizáláshoz és a hibaelhárításhoz Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök különböző lehetőségekkel rendelkeznek a naplófájlok tartalmának formázásához, szűréséhez, rendezéséhez, valamint az ad-kereséshez. További információ a tárolási naplózási naplófájl formátumáról és tartalmáról: [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format)
 * [Naplózott műveletek és állapotüzenetek Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)

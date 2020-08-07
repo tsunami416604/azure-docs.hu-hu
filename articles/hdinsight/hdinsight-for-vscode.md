@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-python
+ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087129"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876784"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -438,7 +438,7 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
   >
   >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
-## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók tallózása
 
@@ -473,6 +473,6 @@ A menüsávban válassza a parancs- **View**  >  **paletta**megtekintése elemet
 
 ![ismert problémák](./media/hdinsight-for-vscode/known-issue.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Spark & kaptár Visual Studio Code-hoz való használatát bemutató videó: [spark &-struktúra a Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706)-hoz.

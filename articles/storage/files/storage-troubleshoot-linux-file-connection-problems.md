@@ -1,18 +1,18 @@
 ---
 title: A Linux Azure Files problémáinak elhárítása | Microsoft Docs
-description: A Linux-Azure Files kapcsolatos problémák elhárítása
+description: A Linuxon Azure Files problémák elhárítása. A Linux-ügyfelekről való kapcsolódáskor, valamint a lehetséges megoldásokkal kapcsolatban tekintse meg a Azure Files kapcsolatos gyakori problémákat.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259997"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904921"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 

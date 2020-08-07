@@ -5,14 +5,18 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 93a86bc035803517ff61c79ae4b8a7fc46dd811f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322380"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852140"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
+
+> [!WARNING]
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat.
+>
 
 A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesítést kapjon, ha az egyik mérőszám egy küszöbértéket túlnyúlik. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások terén. További információ az új metrikai riasztások funkcióról a [metrikus riasztások áttekintése című témakörben](./alerts-metric-overview.md)olvasható. Ebben a cikkben azt ismertetjük, hogyan hozhatók létre, tekinthetők meg és kezelhetők a klasszikus metrikus riasztási szabályok Azure Portal, az Azure CLI és a PowerShell használatával.
 
@@ -128,7 +132,7 @@ Ez a rész bemutatja, hogyan hozhat létre, tekinthet meg és kezelhet klassziku
 
 8. A klasszikus riasztási szabályok már nem hozhatók létre a PowerShell használatával. Riasztási szabály létrehozásához az új ["Add-AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) parancsot kell használnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzon létre egy klasszikus metrikai riasztást egy Resource Manager-sablonnal](./alerts-enable-template.md).
 - [Klasszikus metrikai riasztást küld egy nem Azure-rendszerről webhook használatával](./alerts-webhooks.md).

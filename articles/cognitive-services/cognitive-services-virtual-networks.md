@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148089"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876580"
 ---
-# <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatok konfigurálása
+# <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatainak konfigurálása
 
-Az Azure Cognitive Services többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi a Cognitive Services-fiókok védelmét a hálózatok egy adott részhalmaza számára. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá a fiókhoz. A kérelmek szűrésével korlátozhatja az erőforrásokhoz való hozzáférést. Csak a megadott IP-címekről, IP-tartományokról vagy az [Azure virtuális hálózatokban](../virtual-network/virtual-networks-overview.md)lévő alhálózatok listájáról származó kérelmek engedélyezése. Ha érdekli az ajánlat, az [előzetes verzió elérését kell kérnie](https://aka.ms/cog-svc-vnet-signup).
+Az Azure Cognitive Services többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi a Cognitive Services-fiókok védelmét a hálózatok egy adott részhalmaza számára. A hálózati szabályok konfigurálásakor csak azok az alkalmazások férhetnek hozzá a fiókhoz, amelyek a megadott hálózatokon keresztül kérik le az adatokat. Az erőforrásokhoz való hozzáférést kérelemszűréssel korlátozhatja. Csak a megadott IP-címekről, IP-tartományokról vagy az [Azure virtuális hálózatokban](../virtual-network/virtual-networks-overview.md)lévő alhálózatok listájáról származó kérelmek engedélyezése.
 
 Egy Cognitive Services erőforráshoz hozzáférő alkalmazás, ha a hálózati szabályok érvényben vannak, engedélyezésre van szükség. Az engedélyezés [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) hitelesítő adatokkal vagy egy érvényes API-kulccsal támogatott.
 
 > [!IMPORTANT]
 > A tűzfalszabályok bekapcsolásával a Cognitive Services fiók alapértelmezés szerint blokkolja a bejövő kérelmeket. A kérések engedélyezéséhez a következő feltételek egyikének teljesülnie kell:
+
 > * A kérelemnek egy Azure Virtual Networkon (VNet) belül működő szolgáltatásból kell származnia, amely a cél Cognitive Services fiók engedélyezett alhálózatok listáján található. A VNet származó kérelmekben lévő végpontot a Cognitive Services fiókjának [Egyéni altartományának](cognitive-services-custom-subdomains.md) kell beállítania.
 > * Vagy a kérelemnek az IP-címek engedélyezett listájáról kell származnia.
 >
@@ -39,39 +40,39 @@ A hálózati szabályok érvénybe léptetése az Azure Cognitive Services össz
 
 ## <a name="supported-regions-and-service-offerings"></a>Támogatott régiók és szolgáltatási ajánlatok
 
-Az alább felsorolt Cognitive Services virtuális hálózatok támogatása az *USA középső – euap*, az USA *déli középső*régiója, az USA *keleti*régiója, az *USA 2. nyugati*régiója, *Észak-Európa*, *Dél-Afrika*, *Nyugat-európa*, Közép- *India*, *Kelet-Ausztrália*, *USA nyugati*régiója és *US gov Virginia* Azure-régiók számára korlátozódik. Ha a szolgáltatási ajánlat nem szerepel a listán, a virtuális hálózatok nem támogatottak.
+Az alább felsorolt Cognitive Services a kereskedelmi felhőben és US Gov felhőben lévő virtuális hálózatokat támogatják. Ha a szolgáltatás nem szerepel a listán, a virtuális hálózatok még nem támogatottak.
 
 > [!div class="checklist"]
+
 > * [Anomáliadetektor](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
 > * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-
-Az alább felsorolt Cognitive Services virtuális hálózati támogatása az *USA középső – euap*, az USA *déli középső*régiója, az USA *keleti*régiója, az *USA 2. nyugati*régiója, valamint a *globális*és a *US gov Virginia* Azure-régiók esetében van korlátozva.
-> [!div class="checklist"]
 > * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
-A fenti szolgáltatásokhoz tartozó virtuális hálózati szolgáltatás-végpontok támogatása mellett Cognitive Services a kimenő hálózati szabályok konfigurálásához is támogatja a szolgáltatási címkéket. A CognitiveServicesManagement szolgáltatás címkéje a következő szolgáltatásokat tartalmazza.
+
+Cognitive Services támogatja a hálózati szabályok konfigurálásához szükséges szolgáltatási címkéket. Az alább felsorolt szolgáltatások a **CognitiveServicesManagement** szolgáltatás címkéjén találhatók.
 > [!div class="checklist"]
+
 > * [Anomáliadetektor](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding (LUIS)](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
 > * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator](./translator/index.yml)
-> * [Beszédszolgáltatás](./speech-service/index.yml)
+> * [Beszédfelismerési szolgáltatás](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Az alapértelmezett hálózati hozzáférési szabály módosítása
 
@@ -330,6 +331,7 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
         -g "myresourcegroup" -n "myaccount" \
         --subnet $subnetid
     ```
+
 ***
 
 > [!IMPORTANT]
@@ -355,7 +357,7 @@ Jelenleg csak IPV4-címek támogatottak. Minden Cognitive Services erőforrás a
 
 Ha a helyszíni hálózatokról egy IP-hálózati szabállyal kíván hozzáférést biztosítani a Cognitive Services erőforráshoz, meg kell határoznia a hálózat által használt internet felé irányuló IP-címeket. Segítségért forduljon a hálózati rendszergazdához.
 
-Ha [ExpressRoute](../expressroute/expressroute-introduction.md) -t használ a nyilvános vagy a Microsoft-partnerek számára, azonosítania kell a NAT IP-címeit. Nyilvános társítás esetén a ExpressRoute-áramkör alapértelmezés szerint két NAT IP-címet használ. Mindegyiket az Azure-szolgáltatás forgalmára alkalmazza a rendszer, amikor a forgalom belép a Microsoft Azure hálózati gerincbe. A Microsoft-társak esetében a használt NAT IP-címek vagy a szolgáltató által biztosított vagy biztosított ügyfelek. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering).
+Ha [ExpressRoute](../expressroute/expressroute-introduction.md) használ a nyilvános vagy a Microsoft-partnerek számára, meg kell határoznia a NAT IP-címeit. Nyilvános társítás esetén a ExpressRoute-áramkör alapértelmezés szerint két NAT IP-címet használ. Mindegyiket az Azure-szolgáltatás forgalmára alkalmazza a rendszer, amikor a forgalom belép a Microsoft Azure hálózati gerincbe. A Microsoft-társak esetében a használt NAT IP-címek vagy a szolgáltató által biztosított vagy biztosított ügyfelek. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering).
 
 ### <a name="managing-ip-network-rules"></a>IP-hálózati szabályok kezelése
 
@@ -491,13 +493,13 @@ A Cognitive Services erőforrásaihoz [saját végpontokat](../private-link/priv
 
 A Cognitive Services erőforrásokhoz tartozó magánhálózati végpontok a következőket teszik lehetővé:
 
-- A Cognitive Services-erőforrás biztonságossá tételéhez konfigurálja a tűzfalat úgy, hogy az Cognitive Services szolgáltatás nyilvános végpontján lévő összes kapcsolatot letiltsa.
-- A VNet biztonságának fokozása azáltal, hogy letiltja a VNet kiszűrése adatait.
-- Biztonságosan csatlakozhat Cognitive Services erőforrásokhoz olyan helyszíni hálózatokból, amelyek VPN-vagy [Expressroute](../expressroute/expressroute-locations.md) [-](../vpn-gateway/vpn-gateway-about-vpngateways.md) kapcsolaton keresztül csatlakoznak a VNet.
+* A Cognitive Services-erőforrás biztonságossá tételéhez konfigurálja a tűzfalat úgy, hogy az Cognitive Services szolgáltatás nyilvános végpontján lévő összes kapcsolatot letiltsa.
+* A VNet biztonságának fokozása azáltal, hogy letiltja a VNet kiszűrése adatait.
+* Biztonságosan csatlakozhat Cognitive Services erőforrásokhoz olyan helyszíni hálózatokból, amelyek VPN-vagy [Expressroute](../expressroute/expressroute-locations.md) [-](../vpn-gateway/vpn-gateway-about-vpngateways.md) kapcsolaton keresztül csatlakoznak a VNet.
 
 ### <a name="conceptual-overview"></a>Fogalmi áttekintés
 
-A privát végpontok egy speciális hálózati adapterek a [VNet](../virtual-network/virtual-networks-overview.md)található Azure-szolgáltatásokhoz. Amikor létrehoz egy privát végpontot a Cognitive Services erőforráshoz, biztonságos kapcsolatot biztosít a VNet található ügyfelek és az erőforrás között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a Cognitive Services szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
+A privát végpont a [VNet](../virtual-network/virtual-networks-overview.md)található Azure-erőforrások speciális hálózati adaptere. A Cognitive Services erőforráshoz tartozó privát végpontok létrehozása biztonságos kapcsolatot biztosít a VNet és az erőforrás-ügyfelek között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a Cognitive Services szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
 
 A VNet lévő alkalmazások zökkenőmentesen kapcsolódhatnak a szolgáltatáshoz a magánhálózati végponton keresztül, ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni fognak. A kivétel a beszédfelismerési szolgáltatás, amelyhez külön végpont szükséges. Tekintse meg a [saját végpontok című szakaszt a Speech Service](#private-endpoints-with-the-speech-service)-ben. A magánhálózati végpontok a Cognitive Services erőforrás által támogatott összes protokollal használhatók, beleértve a REST-et is.
 
@@ -509,11 +511,11 @@ Cognitive Services erőforrás-tulajdonosok kezelhetik a belefoglalt kérelmeket
 
 ### <a name="private-endpoints"></a>Privát végpontok
 
-A magánhálózati végpont létrehozásakor meg kell adnia azt a Cognitive Services erőforrást, amelyhez csatlakozik. A privát végpontok létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
+A magánhálózati végpont létrehozásakor meg kell adnia azt a Cognitive Services erőforrást, amelyhez csatlakozik. A privát végpontok létrehozásával kapcsolatos további információkért lásd:
 
-- [Privát végpont létrehozása a Azure Portal privát kapcsolati központjának használatával](../private-link/create-private-endpoint-portal.md)
-- [Privát végpont létrehozása az Azure CLI-vel](../private-link/create-private-endpoint-cli.md)
-- [Privát végpont létrehozása Azure PowerShell használatával](../private-link/create-private-endpoint-powershell.md)
+* [Privát végpont létrehozása a Azure Portal privát kapcsolati központjának használatával](../private-link/create-private-endpoint-portal.md)
+* [Privát végpont létrehozása az Azure CLI-vel](../private-link/create-private-endpoint-cli.md)
+* [Privát végpont létrehozása Azure PowerShell használatával](../private-link/create-private-endpoint-powershell.md)
 
 ### <a name="connecting-to-private-endpoints"></a>Csatlakozás privát végpontokhoz
 
@@ -523,7 +525,7 @@ A VNet csatolt [saját DNS-zónát](../dns/private-dns-overview.md) hozunk létr
 
 ### <a name="private-endpoints-with-the-speech-service"></a>Privát végpontok a beszédfelismerési szolgáltatással
 
-Ha privát végpontokat használ a beszédfelismerési szolgáltatással, egyéni végpontot kell használnia a Speech Service API meghívásához. A globális végpontot nem használhatja. Használjon {Account} formátumú végpontot. {STT | TTS | hang | DLS}. Speech. microsoft. com.
+Ha privát végpontokat használ a beszédfelismerési szolgáltatással, egyéni végpontot kell használnia a beszédfelismerési szolgáltatás meghívásához. A globális végpontot nem használhatja. A végpontnak a következő mintát kell követnie: `{account}.{stt|tts|voice|dls}.speech.microsoft.com` .
 
 ### <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
 
@@ -531,17 +533,17 @@ Privát végpont létrehozásakor a rendszer a Cognitive Services erőforráshoz
 
 Ha a végponti URL-címet a VNet kívülről a privát végpontra oldja fel, a rendszer a Cognitive Services erőforrás nyilvános végpontját oldja fel. A privát végpontot futtató VNet feloldva a végpont URL-címe feloldódik a magánhálózati végpont IP-címére.
 
-Ez a megközelítés lehetővé teszi a Cognitive Services erőforrás elérését ugyanazzal a kapcsolati karakterlánccal, mint a privát végpontokat üzemeltető VNet lévő ügyfelekre, valamint a VNet kívüli ügyfelekre.
+Ez a megközelítés lehetővé teszi a Cognitive Services erőforrás elérését ugyanazzal a kapcsolati karakterlánccal, mint a privát végpontokat és a VNet kívüli ügyfeleket működtető VNet lévő ügyfelek számára.
 
-Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek kell lenniük feloldani a Cognitive Services erőforrás-végpont teljes tartománynevét (FQDN) a magánhálózati végpont IP-címére. A DNS-kiszolgálót úgy kell konfigurálni, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához.
+Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek kell lenniük feloldani a Cognitive Services erőforrás-végpont teljes tartománynevét (FQDN) a magánhálózati végpont IP-címére. Konfigurálja úgy a DNS-kiszolgálót, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához.
 
 > [!TIP]
 > Ha egyéni vagy helyszíni DNS-kiszolgálót használ, a DNS-kiszolgálót úgy kell konfigurálnia, hogy az "privatelink" altartományban lévő Cognitive Services erőforrás nevét feloldja a magánhálózati végpont IP-címére. Ezt úgy teheti meg, hogy delegálja a "privatelink" altartományt a VNet magánhálózati DNS-zónájába, vagy konfigurálja a DNS-zónát a DNS-kiszolgálón, és hozzáadja a DNS-rekordot.
 
 A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Azure virtuális hálózatokon található erőforrások névfeloldása](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [A magánhálózati végpontok DNS-konfigurációja](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure virtuális hálózatokon található erőforrások névfeloldása](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+* [A magánhálózati végpontok DNS-konfigurációja](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ### <a name="pricing"></a>Díjszabás
 

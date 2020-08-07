@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 8aebcfc2a46de3922dbc41942e63e71844de6e83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319745"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846700"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
@@ -420,7 +420,7 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a teljes [AzureML REST API-referenciával](https://docs.microsoft.com/rest/api/azureml/).
 - Megtudhatja, hogyan használhatja a Studio & designert [az autó árának előrejelzésére a Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).

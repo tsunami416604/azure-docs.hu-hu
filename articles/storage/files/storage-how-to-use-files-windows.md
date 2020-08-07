@@ -1,18 +1,18 @@
 ---
 title: Azure-fájlmegosztás használata Windowson | Microsoft Docs
-description: Az Azure-fájlmegosztások használata Windowson és Windows Serveren.
+description: Ismerje meg, hogyan használhatja az Azure-fájlmegosztást a Windows és a Windows Server használatával. Azure-fájlmegosztás használata SMB 3,0-mel a helyszíni vagy Azure-beli virtuális gépeken futó Windows-példányokon.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509778"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905754"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -30,8 +30,8 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 | Windows 8.1 | SMB 3.0 | Igen | Igen |
 | Windows Server 2012 R2 | SMB 3.0 | Igen | Igen |
 | Windows Server 2012 | SMB 3.0 | Igen | Igen |
-| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Nem |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Nem |
+| Windows 7<sup>3</sup> | SMB 2.1 | Igen | Nem |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Igen | Nem |
 
 <sup>1</sup> Windows 10, 1507, 1607, 1709, 1803, 1809, 1903 és 1909.  
 <sup>2</sup> Windows Server, 1809, 1903 és 1909 verzió.  
@@ -59,7 +59,7 @@ A szkript beszerzése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Navigáljon ahhoz a Storage-fiókhoz, amely a csatlakoztatni kívánt fájlmegosztást tartalmazza.
-1. Válassza a **fájlmegosztás**lehetőséget.
+1. Válassza a **Fájlmegosztások** lehetőséget.
 1. Válassza ki a csatlakoztatni kívánt fájlmegosztást.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="például":::
@@ -129,9 +129,9 @@ A következő táblázat részletes leírást ad az SMB 1 állapotáról minden 
 
 | Windows-verzió                           | SMB 1 alapértelmezett állapota | Letiltási/eltávolítási módszer       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019                       | Letiltva             | Eltávolítás Windows-funkcióval |
-| Windows Server, 1709+ verziók            | Letiltva             | Eltávolítás Windows-funkcióval |
-| Windows 10, 1709+ verziók                | Letiltva             | Eltávolítás Windows-funkcióval |
+| Windows Server 2019                       | Disabled (Letiltva)             | Eltávolítás Windows-funkcióval |
+| Windows Server, 1709+ verziók            | Disabled (Letiltva)             | Eltávolítás Windows-funkcióval |
+| Windows 10, 1709+ verziók                | Disabled (Letiltva)             | Eltávolítás Windows-funkcióval |
 | Windows Server 2016                       | Engedélyezve              | Eltávolítás Windows-funkcióval |
 | Windows 10, 1507-es, 1607-es és 1703-as verziók | Engedélyezve              | Eltávolítás Windows-funkcióval |
 | Windows Server 2012 R2                    | Engedélyezve              | Eltávolítás Windows-funkcióval | 
@@ -198,8 +198,8 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 - [Az SMB 1 felfedezése a környezetben DSCEA használatával](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
 - [Az SMB 1 letiltása csoportházirend használatával](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+- [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 - [Gyakori kérdések](../storage-files-faq.md)
 - [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      

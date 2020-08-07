@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – Sebességkorlát-szabályzat beállítása | Microsoft Docs
-description: Azure PowerShell-példaszkript – Sebességkorlát-szabályzat beállítása
+description: Megtudhatja, hogyan állíthatja be a díjszabási szabályzatot a Azure PowerShell. Tekintse meg a minta parancsfájlt, és tekintse meg a további rendelkezésre álló erőforrásokat.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 991a9fd9fa0717c97a549d371ca47c5b389d1a27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40bbd520eb265b70f95c6b365b590727af8ea144
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008744"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851290"
 ---
 # <a name="set-up-rate-limit-policy"></a>Sebességkorlát-szabályzat beállítása
 
-Ez a példaszkript egy sebességkorlát-szabályzatot állít be. 
+Ez a minta-parancsfájl beállítja a ráta-korlátozási szabályzatot. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

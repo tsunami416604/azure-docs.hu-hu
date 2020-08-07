@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: 45ff681bdf0260b6e3c12f7e644d102a49206c9f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/06/2020
+ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288906"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875455"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -22,7 +22,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Power automati
 
 Például kiszámíthatja az értékeket matematikai függvények, például az [Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add) függvény használatával, ha az egész számot vagy az úszót szeretné megadni. Az alábbi példa a functions által elvégezhető műveleteket is végrehajtja:
 
-| Feladat | Függvény szintaxisa | Eredmény |
+| Tevékenység | Függvény szintaxisa | Eredmény |
 | ---- | --------------- | ------ |
 | Karakterláncot ad vissza kisbetűs formátumban. | toLower (' <*text*> ') <p>Például: toLower (' Hello ') | Hello |
 | Globálisan egyedi azonosító (GUID) visszaadása. | GUID () |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
@@ -40,7 +40,7 @@ Ha szeretné megmutatni, hogyan használható egy függvény egy kifejezésben, 
 
 Íme néhány további általános módszer, amelyekkel a függvények a kifejezésekben használhatók:
 
-| Feladat | Függvény szintaxisa egy kifejezésben |
+| Tevékenység | Függvény szintaxisa egy kifejezésben |
 | ---- | -------------------------------- |
 | Hajtson végre munkát egy elemmel az elem függvénybe való átadásával. | " \@ < *függvénynév*> (<*elem*>)" |
 | 1. szerezze be a *parameterName*értékét a beágyazott függvény használatával `parameters()` . </br>2. végezze el a munkát az eredménnyel, ha ezt az értéket a *függvénynév*értékre adja át. | " \@ < *függvénynév*> (parameters (' <*parameterName*> '))" |
@@ -77,12 +77,12 @@ Az alábbi fejezetek a függvényeket az általános céljuk alapján rendezik, 
 
 A sztringek használatához használhatja ezeket a karakterlánc-függvényeket és néhány [gyűjteményi funkciót](#collection-functions)is. A karakterlánc-függvények csak karakterláncokon működnek.
 
-| Karakterlánc-függvény | Feladat |
+| Karakterlánc-függvény | Tevékenység |
 | --------------- | ---- |
 | [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Egyesítse kettő vagy több karakterláncot, és állítsa vissza az egyesített karakterláncot. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Győződjön meg arról, hogy a karakterlánc a megadott alkarakterlánccal végződik-e. |
 | [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Szám visszaadása karakterláncként a megadott formátum alapján |
-| [GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Globálisan egyedi azonosító (GUID) létrehozása karakterláncként. |
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Globálisan egyedi azonosító (GUID) létrehozása karakterláncként. |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Egy alsztring kezdő pozíciójának visszaadása. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Egy alsztring utolsó előfordulásának kezdő pozíciójának visszaadása. |
 | [csere](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Cserélje le az alsztringet a megadott sztringre, és adja vissza a frissített karakterláncot. |
@@ -100,9 +100,9 @@ A sztringek használatához használhatja ezeket a karakterlánc-függvényeket 
 
 A gyűjtemények, általában tömbök, karakterláncok és esetenként a szótárak használatával a következő gyűjtemény-függvények használhatók.
 
-| Gyűjtési függvény | Feladat |
+| Gyűjtési függvény | Tevékenység |
 | ------------------- | ---- |
-| [tartalmaz](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Győződjön meg arról, hogy egy gyűjteménynek van-e konkrét eleme. |
+| [tartalmazza](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Győződjön meg arról, hogy egy gyűjteménynek van-e konkrét eleme. |
 | [üres](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Győződjön meg arról, hogy a gyűjtemény üres. |
 | [első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Egy gyűjtemény első elemének visszaadása. |
 | [kereszteződés](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Olyan gyűjteményt ad vissza, amely *csak* a megadott gyűjtemények közös elemeit tartalmazta. |
@@ -124,7 +124,7 @@ A feltételekkel való együttműködéshez hasonlítsa össze az értékeket é
 > [!NOTE]
 > Ha logikai függvényeket vagy feltételeket használ az értékek összehasonlításához, a rendszer null értékeket konvertál üres karakterlánc ( `""` ) értékekre. A feltételek viselkedése eltér, ha Null érték helyett üres karakterláncot hasonlít össze. További információ: [String () függvény](#string). 
 
-| Logikai összehasonlító függvény | Feladat |
+| Logikai összehasonlító függvény | Tevékenység |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Győződjön meg arról, hogy az összes kifejezés igaz-e. |
 | [egyenlő](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Győződjön meg arról, hogy mindkét érték egyenértékű-e. |
@@ -146,7 +146,7 @@ Az érték típusának vagy formátumának módosításához használhatja ezeke
 > [!NOTE]
 > Azure Logic Apps automatikusan átalakítja az értékeket egyes adattípusok között, ami azt jelenti, hogy nem kell manuálisan végrehajtania ezeket a konverziókat. Ha azonban így tesz, előfordulhat, hogy váratlan megjelenítési viselkedést tapasztal, amely nem befolyásolja a tényleges konverziót, csak a megjelenésük módját. További információ: [implicit adattípus-konverziók](#implicit-data-conversions).
 
-| Átalakítási függvény | Feladat |
+| Átalakítási függvény | Tevékenység |
 | ------------------- | ---- |
 | [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | Tömb visszaadása egyetlen megadott bemenetből. Több bemenet esetén lásd: [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Egy sztring Base64 kódolású verziójának visszaadása. |
@@ -208,7 +208,7 @@ Logic Apps automatikusan vagy implicit módon végrehajt Base64 kódolást vagy 
 Az egész számokkal és az úszókkal való munkavégzéshez használhatja ezeket a matematikai függvényeket.
 Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [betűrendes listát](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Matematikai függvény | Feladat |
+| Matematikai függvény | Tevékenység |
 | ------------- | ---- |
 | [hozzáadása](../logic-apps/workflow-definition-language-functions-reference.md#add) | Az eredmény visszaadása két szám hozzáadásával. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Az eredmény visszaadása két szám elosztásával. |
@@ -228,7 +228,7 @@ Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [bet�
 A dátumok és időpontok használatához használhatja ezeket a dátum-és időfüggvényeket.
 Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [betűrendes listát](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Dátum vagy idő függvény | Feladat |
+| Dátum vagy idő függvény | Tevékenység |
 | --------------------- | ---- |
 | [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Adja hozzá a napok számát egy időbélyeghez. |
 | [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Adja meg az időbélyegzőhöz tartozó órák számát. |
@@ -265,7 +265,7 @@ Ezek a munkafolyamat-függvények a következőket teszik lehetővé:
 Hivatkozhat például egy művelet kimenetére, és az adatokat egy későbbi műveletben is használhatja.
 Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [betűrendes listát](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Munkafolyamat-függvény | Feladat |
+| Munkafolyamat-függvény | Tevékenység |
 | ----------------- | ---- |
 | [művelet](../logic-apps/workflow-definition-language-functions-reference.md#action) | Az aktuális művelet kimenetének visszaadása futásidőben vagy más JSON-név és érték párokból származó értékek alapján. Lásd még: [műveletek](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Egy művelet `body` kimenetének visszaadása futásidőben. Lásd még: [törzs](../logic-apps/workflow-definition-language-functions-reference.md#body). |
@@ -299,7 +299,7 @@ Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [bet�
 Az egységes erőforrás-azonosítók (URI-k) használata és a különböző tulajdonságértékek beolvasása az URI-k esetében ezeket az URI-elemzési funkciókat használhatja.
 Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [betűrendes listát](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| URI-elemzési függvény | Feladat |
+| URI-elemzési függvény | Tevékenység |
 | -------------------- | ---- |
 | [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | `host`Egy egységes erőforrás-azonosító (URI) értékének visszaadása. |
 | [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | `path`Egy egységes erőforrás-azonosító (URI) értékének visszaadása. |
@@ -316,7 +316,7 @@ Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [bet�
 A JSON-objektumok és az XML-csomópontok használatához ezeket a manipulációs funkciókat használhatja.
 Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [betűrendes listát](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Manipulációs függvény | Feladat |
+| Manipulációs függvény | Tevékenység |
 | --------------------- | ---- |
 | [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Adjon hozzá egy tulajdonságot és annak értékét, vagy név-érték párokat egy JSON-objektumhoz, és adja vissza a frissített objektumot. |
 | [összefonódik](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Az első nem null értéket ad vissza egy vagy több paraméterből. |
@@ -1276,7 +1276,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*destinationTimeZone*> | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
+| <*destinationTimeZone*> | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: ss: fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
@@ -1318,8 +1318,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
-| <*destinationTimeZone*> | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
+| <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
+| <*destinationTimeZone*> | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: ss: fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
@@ -1361,7 +1361,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
+| <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: ss: fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
@@ -2699,10 +2699,9 @@ last(createArray(0, 1, 2, 3))
 
 ### <a name="lastindexof"></a>lastIndexOf
 
-A kezdő pozíció vagy az index értékének visszaadása egy alsztring utolsó előfordulásakor.
-Ez a függvény nem megkülönbözteti a kis-és nagybetűket, és az indexek a 0 számmal kezdődnek.
+A kezdő pozíció vagy az index értékének visszaadása egy alsztring utolsó előfordulásakor. Ez a függvény nem megkülönbözteti a kis-és nagybetűket, és az indexek a 0 számmal kezdődnek.
 
-```
+```json
 lastIndexOf('<text>', '<searchText>')
 ```
 
@@ -2710,22 +2709,38 @@ lastIndexOf('<text>', '<searchText>')
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A keresendő alsztringet tartalmazó karakterlánc |
 | <*Keresettszöveg*> | Igen | Sztring | A keresendő alsztring |
-|||||
+|||
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*záró index – érték*> | Egész szám | A megadott alsztring utolsó előfordulásának kezdő pozíciója vagy index értéke. <p>Ha a sztring nem található, az-1 számot kell visszaadnia. |
-||||
+| <*záró index – érték*> | Egész szám | A megadott alsztring utolsó előfordulásának kezdő pozíciója vagy index értéke. |
+|||
 
-*Példa*
+Ha a karakterlánc vagy az alsztring értéke üres, a következő viselkedés történik:
 
-Ez a példa megkeresi a "világ" alsztring utolsó előfordulásának kezdő index értékét a "Hello World" karakterláncban:
+* Ha a karakterlánc értéke üres, a függvény a következőt `-1` adja vissza:
 
+* Ha a karakterlánc és az alkarakterlánc értékei egyaránt üresek, a függvény a `0` visszaadott értéket adja vissza.
+
+* Ha csak az alsztring értéke üres, akkor a következő két érték közül a nagyobb értéket adja vissza:
+
+  * `0`
+
+  * A karakterlánc hossza (mínusz 1).
+
+*Példák*
+
+Ez a példa megkeresi a karakterláncban található alsztring alsztring utolsó előfordulásának kezdő index értékét `world` `hello world hello world` . A visszaadott eredmény a következő `18` :
+
+```json
+lastIndexOf('hello world hello world', 'world')
 ```
-lastIndexOf('hello world', 'world')
-```
 
-És visszaadja ezt az eredményt:`6`
+Ez a példa hiányzik az alkarakterlánc paraméterből, és az értéket adja vissza, `22` mert a bemeneti karakterlánc () mínusz 1 értékének értéke 0-nál `23` nagyobb.
+
+```json
+lastIndexOf('hello world hello world', '')
+```
 
 <a name="length"></a>
 
@@ -4860,6 +4875,6 @@ A példában szereplő 8. példában a példa az XPath kifejezést használja `'
 
 Az eredmény:`Paris`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

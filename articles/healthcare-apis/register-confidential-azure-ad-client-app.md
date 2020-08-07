@@ -2,18 +2,18 @@
 title: Bizalmas ügyfélalkalmazás regisztrálása az Azure AD-ben – Azure API a FHIR-hez
 description: Regisztráljon egy bizalmas ügyfélalkalmazás Azure Active Directoryban, amely hitelesíti a felhasználó nevében, és hozzáférést kér az erőforrás-alkalmazásokhoz.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 6642adf5f51be1f4f54c538624829fe9004d3907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 756645d2df22f1222c3004a44e5a46c7a3bc1a2f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871875"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852548"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Bizalmas ügyfélalkalmazás regisztrálása a Azure Active Directoryban
 
@@ -71,7 +71,7 @@ További API-engedélyek hozzáadása:
 
 3. A létrehozást követően csak egyszer fog megjelenni a portálon. Jegyezze fel, és tárolja biztonságosan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy bizalmas ügyfélalkalmazás Azure Active Directoryban. Most már készen áll a [FHIR készült Azure API](fhir-paas-powershell-quickstart.md)üzembe helyezésére.
 
