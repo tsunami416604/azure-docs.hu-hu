@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285832"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922251"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
@@ -80,7 +80,7 @@ Az ügyfél-azonosító megtekintésével kapcsolatos információkért lásd a 
 
 ## <a name="authorization-with-role-based-access-control"></a>Engedélyezés szerepköralapú hozzáférés-vezérléssel
 
-Azure Maps támogatja az Azure [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview) összes elsődleges típusának elérését, többek között a következőket: egyéni Azure ad-felhasználók,-csoportok,-alkalmazások, Azure-erőforrások és az Azure által felügyelt identitások. A rendszerbiztonsági tag-típusok engedélyeket, más néven szerepkör-definíciókat kapnak. A szerepkör-definíciók engedélyeket biztosítanak a REST API műveletekhez. Egy vagy több Azure Maps-fiókhoz való hozzáférés alkalmazása hatókörként ismert. A rendszerbiztonsági tag, a szerepkör-definíció és a hatókör alkalmazásakor a rendszer létrehoz egy szerepkör-hozzárendelést. 
+Azure Maps támogatja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) összes elsődleges típusának elérését, beleértve az egyes Azure ad-felhasználók, csoportok, alkalmazások, Azure-erőforrások és az Azure által felügyelt identitások használatát. A rendszerbiztonsági tag-típusok engedélyeket, más néven szerepkör-definíciókat kapnak. A szerepkör-definíciók engedélyeket biztosítanak a REST API műveletekhez. Egy vagy több Azure Maps-fiókhoz való hozzáférés alkalmazása hatókörként ismert. A rendszerbiztonsági tag, a szerepkör-definíció és a hatókör alkalmazásakor a rendszer létrehoz egy szerepkör-hozzárendelést. 
 
 A következő részek az Azure AD szerepköralapú hozzáférés-vezérléssel való Azure Maps integrációjának alapfogalmait és összetevőit tárgyalják. A Azure Maps-fiók beállításának részeként egy Azure AD-címtár van társítva ahhoz az Azure-előfizetéshez, amelyhez a Azure Maps-fiók található. 
 
@@ -114,7 +114,7 @@ Ezt követően az egyéni szerepkör-definíció bármely rendszerbiztonsági ta
 
 Íme néhány példa arra, hogy az egyéni szerepkörök Hogyan javíthatják az alkalmazások biztonságát.
 
-| Forgatókönyv                                                                                                                                                                                                                 | Egyéni szerepkörre vonatkozó adatművelet (ek)                                                                                                                  |
+| Eset                                                                                                                                                                                                                 | Egyéni szerepkörre vonatkozó adatművelet (ek)                                                                                                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | Nyilvános vagy interaktív bejelentkezési weblap, amely alapszintű Térkép csempével és más REST API-kkal nem rendelkezik.                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | Olyan alkalmazás, amely csak fordított helymeghatározáshoz és más REST API-k használatát igényli.                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

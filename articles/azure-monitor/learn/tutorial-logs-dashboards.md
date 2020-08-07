@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148259"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927368"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Irányítópultok létrehozása és megosztása Log Analytics-adatokból
 
@@ -26,7 +26,7 @@ Log Analytics irányítópultok képesek megjeleníteni az összes mentett napl�
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="create-a-shared-dashboard"></a>Megosztott irányítópult létrehozása
@@ -54,7 +54,7 @@ Amikor létrehoz egy irányítópultot, az alapértelmezetten privát lesz, vagy
 
 ![Új irányítópult megosztása az Azure Portalon](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-A rendszer felkéri, hogy válasszon ki egy előfizetést és egy erőforráscsoportot, ahová az irányítópultot közzé kívánja tenni. A kényelmesebb használat érdekében a portál közzétételi folyamata egy olyan mintához vezet, amellyel az irányítópultokat egy **irányítópultok** elnevezésű erőforráscsoportba helyezi.  Ellenőrizze a kiválasztott előfizetést, majd kattintson a **Közzététel** elemre.  A rendszer az irányítópulton megjelenő információhoz való hozzáférést az [Azure erőforrás-alapú hozzáférés-vezérléssel](../../role-based-access-control/role-assignments-portal.md) ellenőrzi.   
+A rendszer felkéri, hogy válasszon ki egy előfizetést és egy erőforráscsoportot, ahová az irányítópultot közzé kívánja tenni. A kényelmesebb használat érdekében a portál közzétételi folyamata egy olyan mintához vezet, amellyel az irányítópultokat egy **irányítópultok** elnevezésű erőforráscsoportba helyezi.  Ellenőrizze a kiválasztott előfizetést, majd kattintson a **Közzététel** elemre.  Az irányítópulton megjelenő információk elérését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)vezérli.   
 
 ## <a name="visualize-a-log-query"></a>Napló lekérdezésének megjelenítése
 A [log Analytics](../log-query/get-started-portal.md) egy dedikált portál, amely a naplózási lekérdezésekkel és azok eredményeivel való együttműködésre szolgál. Szolgáltatásai közé tartozik a lekérdezés több sorban való szerkesztése, a szelektív kódvégrehajtás, a kontextusfüggő Intellisense és az intelligens elemzés. Ebben az oktatóanyagban a Log Analytics használatával grafikus formában hozza létre a teljesítmény nézetet, mentse egy későbbi lekérdezéshez, majd rögzítse azt a korábban létrehozott megosztott irányítópultra.
@@ -86,7 +86,7 @@ Most, hogy rögzítettünk egy lekérdezést az irányítópulton, láthatja, ho
 
 ![A minta-irányítópult kész konfigurációja](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre irányítópultot a Azure Portalban, és hogyan adhat hozzá egy napló-lekérdezést.  Folytassa a következő oktatóanyaggal, amely a napló lekérdezési eredményei alapján megvalósítható különböző válaszokat ismerteti.  
 
 > [!div class="nextstepaction"]

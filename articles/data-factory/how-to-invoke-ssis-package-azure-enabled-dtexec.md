@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414332"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927079"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services csomagok futtatása az Azure-kompatibilis dtexec segédprogrammal
 
@@ -87,7 +87,7 @@ A AzureDTExec meghívása hasonló beállításokat kínál a dtexec meghívás�
 - **/F [Ile]**: a fájlrendszerben, a fájlmegosztást vagy a Azure Filesban tárolt csomagot tölt be. A beállítás értékeként megadhatja a csomagfájl UNC elérési útját a fájlrendszerben, a fájlmegosztást vagy a Azure Files a. dtsx kiterjesztésű fájllal. Ha a megadott UNC elérési út szóközt tartalmaz, tegye idézőjelek közé a teljes elérési utat.
 - **/Conf [igFile]**: meghatározza az értékek kinyerésére szolgáló konfigurációs fájlt. Ezzel a beállítással megadhatja a csomag futásidejű konfigurációját, amely eltér a tervezési időpontban megadott értéktől. Egy XML-konfigurációs fájlban különböző beállításokat tárolhat, majd betöltheti őket a csomag végrehajtása előtt. További információ: SSIS- [csomag beállításai](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). A beállítás értékének megadásához használja az UNC elérési utat a fájlrendszerben, a fájlmegosztást vagy Azure Files a saját dtsConfig-bővítménnyel. Ha a megadott UNC elérési út szóközt tartalmaz, tegye idézőjelek közé a teljes elérési utat.
 - **/Conn [csolat]**: a csomag meglévő kapcsolataihoz tartozó kapcsolatok karakterláncait határozza meg. Ezzel a beállítással beállíthatja, hogy a csomagban lévő, a tervezési időpontban megadott beállításoktól eltérő futásidejű kapcsolatok karakterláncai meglegyenek a csomag meglévő kapcsolataihoz. A beállítás értékét a következőképpen adhatja meg: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` .
-- **Készlet**: felülbírálja a paraméter, változó, tulajdonság, tároló, naplózási szolgáltató, foreach enumerálás vagy a csomagbeli kapcsolatok konfigurációját. Ez a beállítás többször is megadható. A beállítás értékét a következőképpen adhatja meg: `property_path;value` . Például `\package.variables[counter].Value;1` felülbírálja a `counter` változó értékét 1-ként. A **csomag konfigurációja** varázslóval megkeresheti, másolhatja és beillesztheti a csomagban lévő azon elemek értékét, `property_path` amelyek értékeit felül szeretné bírálni. További információ: [csomag konfigurálása varázsló](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **Készlet**: felülbírálja a paraméter, változó, tulajdonság, tároló, naplózási szolgáltató, foreach enumerálás vagy a csomagbeli kapcsolatok konfigurációját. Ez a beállítás többször is megadható. A beállítás értékét a következőképpen adhatja meg: `property_path;value` . Például `\package.variables[counter].Value;1` felülbírálja a `counter` változó értékét 1-ként. A **csomag konfigurációja** varázslóval megkeresheti, másolhatja és beillesztheti a csomagban lévő azon elemek értékét, `property_path` amelyek értékeit felül szeretné bírálni. További információ: [csomag konfigurálása varázsló](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis).
 - **/De [Crypt]**: a **EncryptAllWithPassword** / **EncryptSensitiveWithPassword** védelmi szintjével konfigurált csomag visszafejtési jelszavának beállítása.
 
 > [!NOTE]

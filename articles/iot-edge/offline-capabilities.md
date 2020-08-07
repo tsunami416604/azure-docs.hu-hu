@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6ed74149f106b801049da429dfe7b79b984a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e929463c33603c650bec2e9a49a13dde6965e39f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725244"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926654"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
 
@@ -20,7 +20,7 @@ Azure IoT Edge támogatja a kibővített offline műveleteket a IoT Edge-eszköz
 
 ## <a name="how-it-works"></a>Működés
 
-Amikor egy IoT Edge eszköz offline módba kerül, a IoT Edge hub három szerepkört vesz igénybe. Először tárolja az összes olyan üzenetet, amely feljebb kerülne, és az eszköz újracsatlakoztatása után menti azokat. Másodszor, IoT Hub nevében hajtja végre a modulok és a gyermek eszközök hitelesítését, hogy azok továbbra is működőképesek legyenek. Harmadszor, lehetővé teszi az olyan alárendelt eszközök közötti kommunikációt, amelyek általában a IoT Hubon keresztül mennek keresztül.
+Amikor egy IoT Edge eszköz offline módba kerül, a IoT Edge hub három szerepkört vesz igénybe. Először tárolja az összes olyan üzenetet, amely feljebb kerülne, és az eszköz újracsatlakoztatása után menti azokat. Másodszor, az IoT Hub nevében eljárva hitelesíti a modulokat és a gyermekeszközöket, hogy azok továbbra is működhessenek. Harmadszor, lehetővé teszi a gyermekeszközök közötti kommunikációt, amely egyébként az IoT Hubon keresztül zajlana.
 
 Az alábbi példa azt szemlélteti, hogyan működik egy IoT Edge-forgatókönyv kapcsolat nélküli módban:
 
@@ -95,7 +95,7 @@ A [lekérdezés](../iot-hub/iot-hub-devguide-query-language.md) módosításáva
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>3. lehetőség: a IoT Hub Service SDK használata
 
-Végül pedig a C#, a Java vagy a Node.js IoT Hub Service SDK használatával felügyelheti a szülő-gyermek kapcsolatokat. Az alábbi példa egy alárendelt eszköz C# SDK-val történő [hozzárendelését szemlélteti](https://aka.ms/set-child-iot-device-c-sharp) .
+Végül pedig a C#, a Java vagy a Node.js IoT Hub Service SDK használatával felügyelheti a szülő-gyermek kapcsolatokat. Az alábbi példa egy alárendelt eszköz C# SDK-val történő [hozzárendelését szemlélteti](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs) .
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>A szülő eszköz beállítása átjáróként
 

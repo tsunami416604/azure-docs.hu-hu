@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: riasztások konfigurálása diagnosztikai erőforrás-naplózási eseményekhez'
-description: A riasztások VPN Gateway diagnosztikai erőforrás-naplózási eseményeken való konfigurálásának lépései
+description: Megtudhatja, hogyan állíthatja be a riasztásokat az Azure VPN Gateway erőforrás-naplózási eseményei alapján, Azure Monitor Log Analytics és az Azure-ban elérhető erőforrás-naplók használatával.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d79bdc669ab2c3785b1cde569cfce3021e4d924f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075598"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923186"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Riasztások beállítása az erőforrás-naplózási eseményekről VPN Gateway
 

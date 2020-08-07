@@ -3,16 +3,16 @@ title: Engedélyek Azure Advisor
 description: Az Advisor engedélyei, valamint az, hogy miként lehet letiltani az előfizetések konfigurálását, illetve elhalasztani vagy elvetheti az ajánlásokat.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057581"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927385"
 ---
 # <a name="permissions-in-azure-advisor"></a>Engedélyek Azure Advisor
 
-A Azure Advisor az Azure-erőforrások és-előfizetések használata és konfigurációja alapján nyújt javaslatokat. Az Advisor a [szerepköralapú Access Control](../role-based-access-control/overview.md) (RBAC) által biztosított [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használja a javaslatok és az Advisor-funkciók hozzáférésének kezeléséhez. 
+A Azure Advisor az Azure-erőforrások és-előfizetések használata és konfigurációja alapján nyújt javaslatokat. Az Advisor az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) által biztosított [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használja a javaslatok és az Advisor funkcióinak hozzáférésének kezeléséhez. 
 
 ## <a name="roles-and-their-access"></a>Szerepkörök és a hozzájuk tartozó hozzáférés
 

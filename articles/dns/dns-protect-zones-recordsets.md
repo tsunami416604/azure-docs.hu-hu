@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131531"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920500"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és -rekordok védelme
 
@@ -20,7 +20,7 @@ ms.locfileid: "87131531"
 
 A DNS-zónák és-rekordok kritikus erőforrások. Egy DNS-zóna vagy egyetlen DNS-rekord törlése a szolgáltatás kimaradását eredményezheti. Fontos, hogy a DNS-zónák és-rekordok védve legyenek a jogosulatlan vagy véletlen változásokkal szemben.
 
-Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a saját DNS-zónák és-rekordok védetté tételét az ilyen változásokkal szemben.  A Azure Resource Manager: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és [erőforrás-zárolások](../azure-resource-manager/management/lock-resources.md)által biztosított két hatékony értékpapír-funkciót alkalmazzuk.
+Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a saját DNS-zónák és-rekordok védetté tételét az ilyen változásokkal szemben.  Azure Resource Manager az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) és az [erőforrás-zárolások](../azure-resource-manager/management/lock-resources.md)által biztosított két hatékony értékpapír-funkciót alkalmazzuk.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ead7eb19e49574073f038648ca1d247b2dab98f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131701"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923883"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
 
-Az irányítópult konfigurálását követően közzéteheti és megoszthatja azt a szervezet más felhasználóival. Lehetővé teszi mások számára az irányítópult megtekintését az Azure [szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md) (RBAC) használatával. Rendeljen hozzá egy felhasználót vagy egy felhasználói csoportot egy szerepkörhöz. Ez a szerepkör határozza meg, hogy a felhasználók megtekinthetik vagy módosíthatják a közzétett irányítópultot.
+Az irányítópult konfigurálását követően közzéteheti és megoszthatja azt a szervezet más felhasználóival. Lehetővé teszi mások számára az irányítópult megtekintését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával. Rendeljen hozzá egy felhasználót vagy egy felhasználói csoportot egy szerepkörhöz. Ez a szerepkör határozza meg, hogy a felhasználók megtekinthetik vagy módosíthatják a közzétett irányítópultot.
 
 Minden közzétett irányítópult Azure-erőforrásként van megvalósítva. Az előfizetéshez tartozó felügyelhető elemek, és egy erőforráscsoport tartalmazza őket. Hozzáférés-vezérlési perspektívából az irányítópultok nem különböznek más erőforrásokkal, például egy virtuális géppel vagy egy Storage-fiókkal.
 

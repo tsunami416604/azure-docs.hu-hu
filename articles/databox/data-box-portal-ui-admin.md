@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk – portáladminisztrációs útmutató | Microsoft Docs
-description: A cikk az Azure Data Box az Azure Portalon keresztüli kezelését ismerteti.
+description: Megtudhatja, hogyan kezelheti a Data Box Disk a Azure Portal használatával. A megrendelések kezelése, a lemezek kezelése, valamint egy megrendelés állapotának nyomon követése.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924753"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box Disk felügyelete az Azure Portal használatával
 
@@ -119,7 +119,7 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
 ## <a name="view-order-status"></a>Rendelés állapotának megtekintése
 
-|Rendelés állapota |Description |
+|Rendelés állapota |Leírás |
 |---------|---------|
 |Megrendelve     | A rendelés sikeresen fel lett adva. <br> Ha a lemezek nem érhetők el, értesítést kap. <br>Ha vannak elérhető meghajtók, a Microsoft kiválaszt egyet a szállításhoz, és előkészíti a meghajtócsomagot.        |
 |Feldolgozva     | A rendelés feldolgozása befejeződött. <br> A rendelése feldolgozása során a következő műveletek történnek meg:<li>A lemezek titkosítása a AES-128 BitLocker használatával. </li> <li>A Data Box Disk-meghajtók zárolása az illetéktelen hozzáférés megakadályozására.</li><li>A folyamat során létrejön a lemezek zárolását feloldó hozzáférési kulcs.</li>        |

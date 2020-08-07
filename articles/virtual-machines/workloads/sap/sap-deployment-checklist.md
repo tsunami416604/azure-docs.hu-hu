@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836343"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924427"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -74,7 +74,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
 4.  Az alapszolgáltatások kialakítása. A tervnek a következő elemeket kell tartalmaznia:
     - Active Directory és DNS-kialakítás.
     - Hálózati topológia az Azure-ban és különböző SAP-rendszerek hozzárendelése.
-    - [Szerepköralapú hozzáférési](../../../role-based-access-control/overview.md) struktúra az Azure-ban infrastruktúrát és SAP-alkalmazásokat kezelő csapatok számára.
+    - [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../../role-based-access-control/overview.md) struktúra az Azure-ban infrastruktúrát és SAP-alkalmazásokat kezelő csapatok számára.
     - Erőforráscsoport-topológia.
     - [Címkézési stratégia](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - A virtuális gépek és egyéb infrastruktúra-összetevők és/vagy logikai nevek elnevezési konvenciói.

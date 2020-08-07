@@ -12,29 +12,37 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422912"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920109"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Oktatóanyag: két felügyelt példány közötti replikáció konfigurálása
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik adatbázisból egy másikba SQL Server vagy az [Azure SQL felügyelt példányain](sql-managed-instance-paas-overview.md) (nyilvános előzetes verzió). Az SQL felügyelt példánya lehet közzétevő, terjesztő vagy előfizető a replikációs topológiában. Lásd: [tranzakciós replikációs konfigurációk](replication-transactional-overview.md#common-configurations) az elérhető konfigurációkhoz.
+A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik adatbázisból egy másikba SQL Server vagy az [Azure SQL felügyelt példányain](sql-managed-instance-paas-overview.md). Az SQL felügyelt példánya lehet közzétevő, terjesztő vagy előfizető a replikációs topológiában. Lásd: [tranzakciós replikációs konfigurációk](replication-transactional-overview.md#common-configurations) az elérhető konfigurációkhoz. 
 
-> [!NOTE]
-> Ez a cikk a [tranzakciós replikáció](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
+A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
-Ez az oktatóanyag azt ismerteti, hogyan konfigurálhat egy felügyelt példányt közzétevőként és terjesztőként, majd egy második felügyelt példányt az előfizetőként.  
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+> [!div class="checklist"]
+>
+> - Felügyelt példány konfigurálása replikációs közzétevőként és terjesztőként.
+> - Felügyelt példány konfigurálása replikációs terjesztőként.
 
 ![Replikálás két felügyelt példány között](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
-  > [!NOTE]
-  > - Ebből a cikkből megtudhatja, hogyan konfigurálhat egy speciális felhasználót a replikáció és az SQL felügyelt példányok végpontok közötti, az erőforráscsoport létrehozásával történő konfigurálásának megkezdéséhez. Ha már telepítette a felügyelt példányokat, ugorjon a [4. lépésre](#4---create-a-publisher-database) a közzétevői adatbázis létrehozásához, vagy a [6. lépést](#6---configure-distribution) , ha már rendelkezik közzétevői és előfizetői adatbázissal, és készen áll a replikáció konfigurálására.  
-  > - Ez a cikk a közzétevőt és a terjesztőt konfigurálja ugyanazon a felügyelt példányon. Ha a terjesztőt külön felügyelt példányra kívánja helyezni, tekintse meg a [tranzakciós replikáció konfigurálása az Azure SQL felügyelt példány és a SQL Server között](replication-two-instances-and-sql-server-configure-tutorial.md)című oktatóanyagot. 
+Ez az oktatóanyag egy tapasztalt közönség számára készült, és feltételezi, hogy a felhasználó ismeri az Azure-beli felügyelt példányok és SQL Server virtuális gépek üzembe helyezését és csatlakozását. 
+
+
+> [!NOTE]
+> - Ez a cikk a [tranzakciós replikáció](/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](../database/auto-failover-group-overview.md), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
+
+
 
 ## <a name="requirements"></a>Követelmények
 
@@ -285,7 +293,7 @@ Futtassa az alábbi T-SQL-kódrészletet további sorok beszúrásához a közz�
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A kiadvány eldobásához futtassa az alábbi T-SQL-parancsot:
 
@@ -316,6 +324,6 @@ GO
 
 Az Azure-erőforrások tisztításához [törölje az SQL felügyelt példányának erőforrásait az erőforráscsoporthoz](../../azure-resource-manager/management/manage-resources-portal.md#delete-resources) , majd törölje az erőforráscsoportot `SQLMI-Repl` . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat is megtudhat a [tranzakciós replikálásról az Azure SQL felügyelt példányával](replication-transactional-overview.md) kapcsolatban, vagy megismerheti az [SQL felügyelt példányok közzétevője/terjesztője és az Azure-beli virtuális gép SQL-előfizetője](replication-two-instances-and-sql-server-configure-tutorial.md)közötti replikáció konfigurálását. 

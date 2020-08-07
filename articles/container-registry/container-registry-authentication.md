@@ -3,12 +3,12 @@ title: Beállításjegyzék-hitelesítési beállítások
 description: A privát Azure Container Registry hitelesítési lehetőségei, beleértve a Azure Active Directory identitással való bejelentkezést, az egyszerű szolgáltatásnév használatát és a nem kötelező rendszergazdai hitelesítő adatok használatát.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 0d44a97e01eef709dff47342e4503d1e0263a225
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760583"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926320"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Hitelesítés Azure Container registryvel
 
@@ -44,7 +44,7 @@ Amikor bejelentkezik a szolgáltatásba `az acr login` , a parancssori felület 
 
 A beállításjegyzékhez való hozzáféréshez a által használt jogkivonat `az acr login` **3 órára**érvényes, ezért javasoljuk, hogy a parancs futtatása előtt mindig jelentkezzen be a beállításjegyzékbe `docker` . Ha a token lejár, akkor a `az acr login` parancs ismételt hitelesítésével frissítheti azt. 
 
-`az acr login`Az Azure-identitásokkal [való használata szerepköralapú hozzáférést](../role-based-access-control/role-assignments-portal.md)biztosít. Bizonyos esetekben előfordulhat, hogy be kell jelentkeznie egy beállításjegyzékbe saját egyéni identitásával az Azure AD-ben, vagy más Azure-felhasználókat is be kell állítania bizonyos [RBAC-szerepkörökkel és engedélyekkel](container-registry-roles.md). A szolgáltatások közötti forgatókönyvek esetében, illetve egy munkacsoport vagy egy fejlesztési munkafolyamat igényének kezeléséhez, ahol nem szeretne egyéni hozzáférést kezelni, az [Azure-erőforrások felügyelt identitásával](container-registry-authentication-managed-identity.md)is bejelentkezhet.
+`az acr login`Az Azure-identitások használatával [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)biztosít. Bizonyos esetekben előfordulhat, hogy be kell jelentkeznie egy beállításjegyzékbe a saját egyéni identitásával az Azure AD-ben, vagy más Azure-felhasználókat adott [Azure-szerepkörökkel és-engedélyekkel](container-registry-roles.md)kell konfigurálnia. A szolgáltatások közötti forgatókönyvek esetében, illetve egy munkacsoport vagy egy fejlesztési munkafolyamat igényének kezeléséhez, ahol nem szeretne egyéni hozzáférést kezelni, az [Azure-erőforrások felügyelt identitásával](container-registry-authentication-managed-identity.md)is bejelentkezhet.
 
 ### <a name="az-acr-login-with---expose-token"></a>az ACR login with--megvilágít-token
 
@@ -73,7 +73,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>Szolgáltatásnév
 
-Ha egy [egyszerű szolgáltatásnevet](../active-directory/develop/app-objects-and-service-principals.md) rendel hozzá a beállításjegyzékhez, az alkalmazás vagy szolgáltatás a fej nélküli hitelesítéshez használhatja azt. Az egyszerű szolgáltatások lehetővé teszik a [szerepkörön alapuló hozzáférést](../role-based-access-control/role-assignments-portal.md) a beállításjegyzékhez, és több egyszerű szolgáltatást is hozzárendelhet egy beállításjegyzékhez. Több egyszerű szolgáltatás lehetővé teszi különböző alkalmazások eltérő hozzáférésének megadását.
+Ha egy [egyszerű szolgáltatásnevet](../active-directory/develop/app-objects-and-service-principals.md) rendel hozzá a beállításjegyzékhez, az alkalmazás vagy szolgáltatás a fej nélküli hitelesítéshez használhatja azt. Az egyszerű szolgáltatások lehetővé teszik az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) egy beállításjegyzékbe, és több egyszerű szolgáltatásnevet is hozzárendelhet egy beállításjegyzékhez. Több egyszerű szolgáltatás lehetővé teszi különböző alkalmazások eltérő hozzáférésének megadását.
 
 A tároló-beállításjegyzékhez elérhető szerepkörök a következők:
 

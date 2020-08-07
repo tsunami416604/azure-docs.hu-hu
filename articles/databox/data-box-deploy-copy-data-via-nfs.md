@@ -1,6 +1,6 @@
 ---
 title: Az adatAzure Data Box NFS-en keresztüli adatmásolási oktatóanyag | Microsoft Docs
-description: Útmutató az adatmásoláshoz a Azure Data Box NFS-en keresztül
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat a gazdagépről, és hogyan másolhat adatokból Azure Data Box az NFS és a helyi webes felhasználói felület használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960517"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926076"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: az Adatmásolás Azure Data Box NFS-en keresztül
 
@@ -48,7 +48,7 @@ A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, 
 
 Az alábbi táblázat a Data Boxon található megosztások UNC elérési útját és az adatok feltöltéséhez használt Azure Storage elérési útjának URL-címét mutatja. Az Azure Storage elérési útjának végső URL-címe a megosztás UNC elérési útjából származik.
  
-| Azure Storage-típus| Data Box megosztások                                       |
+| Azure Storage-típus| Data Box-megosztások                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure-blokkblobok | <li>A megosztások UNC elérési útja: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-lapblobok  | <li>A megosztások UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -139,17 +139,17 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 > [!IMPORTANT]
 > A következő Linux-fájltípusok nem támogatottak: szimbolikus hivatkozások, szövegfájlok, fájlok, szoftvercsatornák és csövek blokkolása. Ezek a fájltípusok a **szállításra való előkészítés** lépésben hibát okoznak.
 
-Ha hiba történik, a másolási folyamat során értesítést fog látni.
+Ha hiba lép fel a másolási folyamat során, megjelenik erről egy értesítés.
 
-![A csatlakozási és a másolási hibák letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-1.png)
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-1.png)
 
-Válassza a **probléma lista letöltése**lehetőséget.
+Válassza a **Hibalista letöltése** lehetőséget.
 
-![A csatlakozási és a másolási hibák letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-2.png)
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-2.png)
 
-A lista megnyitásával tekintse meg a hiba részleteit, és válassza a megoldás URL-címét az ajánlott megoldás megtekintéséhez.
+Nyissa meg a listát a hiba részleteinek megtekintéséhez, majd kattintson a megoldás URL-címére az ajánlott megoldás megtekintéséhez.
 
-![A csatlakozási és a másolási hibák letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-3.png)
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-3.png)
 
 További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 

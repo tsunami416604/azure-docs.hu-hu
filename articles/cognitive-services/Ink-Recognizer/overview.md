@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448150"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927453"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
 
@@ -28,7 +28,7 @@ A tinta-felismerő kognitív szolgáltatás felhőalapú REST API biztosít a di
 
 A kézírás-felismerő API használatával könnyedén felismerheti az alkalmazásaiban található kézzel írt tartalmakat. 
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 | Kézírás-felismerés | A kézzel írt tartalmakat 63 fő [nyelven és területi beállításokban](language-support.md)ismerheti fel. | 
 | Elrendezés felismerése | A digitális tinta tartalmával kapcsolatos szerkezeti információk beolvasása. A tartalom a régiók, a bekezdések, a sorok, a szavak és a listajeles listák megírásával szakítható meg. Az alkalmazások ezután az elrendezési adatok segítségével további funkciókat hozhatnak létre, például az automatikus lista formázását és az alakzat igazítását. |
@@ -43,14 +43,14 @@ A tinta-felismerő API egy REST-alapú webszolgáltatás, amely megkönnyíti a 
 
 Regisztráció után:
 
-1. Végezze el a szabadkézi körvonal adatait, és [formázza](concepts/send-ink-data.md#sending-ink-data) az érvényes JSON-t.
+1. Végezze el a szabadkézi körvonal adatait, és [formázza](concepts/send-ink-data.md#sending-ink-data) az érvényes JSON-t. Az API legfeljebb 1500 tollvonási ecsetvonást fogad el. 
 1. Küldjön egy kérelmet a tinta-felismerő API-nak az adataival.
 1. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
 ## <a name="next-steps"></a>További lépések
 
 A következő nyelveken kipróbálhat egy rövid útmutatót, amellyel megkezdheti a szabadkézi felismerő API hívását.
-* [C #](quickstarts/csharp.md)
+* [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
 * [JavaScript](quickstarts/javascript.md)
 

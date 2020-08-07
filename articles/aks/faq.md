@@ -2,13 +2,13 @@
 title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 07/31/2020
-ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/06/2020
+ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485626"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927147"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -193,7 +193,7 @@ Az AK nem felügyelt szolgáltatás, és a IaaS-erőforrások kezelése nem tám
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Az AK a fürt régióján kívül tárolja a vásárlói adatmennyiséget?
 
-Nem. Az AK-fürtökben létrehozott összes adathalmaz a fürt régiójában marad.
+Az ügyféladatok egyetlen régióban való tárolását lehetővé tevő szolgáltatás jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja.
 
 <!-- LINKS - internal -->
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: fa23637500755f43bb380a9f20cbe3acc7c3a394
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371379"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925804"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
 Ebben a cikkben az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét tárgyaljuk, amelyekkel biztosítható a platform-szolgáltatásként szolgáló webes és mobil alkalmazások védelme. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -56,7 +56,7 @@ Az SAS lehetővé teszi a tartalmak megosztását, ahogyan azt a Storage-fiók k
 További információ a közös hozzáférésű aláírásról: a [közös hozzáférésű aláírások használata](/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 ## <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés alkalmazása
-A hozzáférés kezelésének másik módja a [szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview) (RBAC) használata. A RBAC-mel arra összpontosít, hogy az alkalmazottaknak szükségük van a rájuk vonatkozó pontos engedélyek megadására, és a minimális jogosultsági szintű biztonsági alapelveket figyelembe véve. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. A RBAC segít a probléma megoldásában azáltal, hogy részletes hozzáférés-kezelést nyújt az Azure-hoz. Ez olyan szervezetek számára fontos, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez.
+A hozzáférés kezelésének egy másik módja az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)használata. A RBAC-mel arra összpontosít, hogy az alkalmazottaknak szükségük van a rájuk vonatkozó pontos engedélyek megadására, és a minimális jogosultsági szintű biztonsági alapelveket figyelembe véve. Túl sok engedély teheti ki a fiókot a támadók számára. A túl kevés engedély azt jelenti, hogy az alkalmazottak nem tudják hatékonyan elvégezni a munkájukat. A RBAC segít a probléma megoldásában azáltal, hogy részletes hozzáférés-kezelést nyújt az Azure-hoz. Ez olyan szervezetek számára fontos, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez.
 
 Az Azure-ban az Azure beépített szerepkörei segítségével jogosultságokat rendelhet a felhasználókhoz. Használja például a Storage-fiók közreműködője olyan felhőalapú operátorok esetében, amelyeknek a Storage-fiókokat és a klasszikus Storage-fiók közreműködői szerepkörét kell kezelnie a klasszikus Storage-fiókok kezeléséhez. Azon felhőalapú operátorok esetében, amelyeknek virtuális gépeket kell kezelnie, de nem az a virtuális hálózat vagy a Storage-fiók, amelyhez csatlakoznak, a virtuális gép közreműködői szerepkörhöz adhatók hozzá.
 

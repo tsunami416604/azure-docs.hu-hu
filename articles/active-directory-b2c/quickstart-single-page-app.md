@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a754873aeafe8d4e7b48d49647469874ff40f7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875877"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921758"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rövid útmutató: Bejelentkezés beállítása egyoldalas alkalmazáshoz az Azure Active Directory B2C használatával
 
@@ -47,7 +47,7 @@ A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vál
     npm start
     ```
 
-    A Server *. js* által indított kiszolgáló megjeleníti a figyelt portot:
+    A *server.js* által elindított kiszolgáló megjeleníti a figyelt portot:
 
     ```console
     Listening on port 6420...
@@ -75,6 +75,10 @@ Válassza a **Call API** lehetőséget, hogy a megjelenített nevet JSON-objektu
 ![Példa a webes API-választ megjelenítő böngészőben elérhető alkalmazásra](./media/quickstart-single-page-app/call-api-spa.png)
 
 Az egyoldalas mintaalkalmazás a védett webes API-erőforrás felé küldött kérésbe belefoglal egy hozzáférési jogkivonatot.
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+
+Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>További lépések
 

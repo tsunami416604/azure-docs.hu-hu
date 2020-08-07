@@ -3,19 +3,19 @@ title: Erőforrások, szerepkörök és hozzáférés-vezérlés az Azure Applic
 description: A szervezet adatai tulajdonosai, közreműködői és olvasói.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325695"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926501"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés a Application Insightsban
 
-A [Microsoft Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md)használatával szabályozhatja, hogy ki olvasta és frissítse az adataihoz való hozzáférést az Azure [Application Insightsban][start].
+Az Azure- [beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)használatával szabályozhatja, hogy ki olvasta és frissítse az adataihoz való hozzáférést az Azure [Application Insightsban][start].
 
 > [!IMPORTANT]
-> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információ](#access).
+> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információk](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -67,7 +67,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepköreivel k
 
 Adott esetben a kapcsolódó hivatalos dokumentációra hivatkozunk.
 
-| Szerepkör | Az erőforráscsoporthoz |
+| Role | Az erőforráscsoporthoz |
 | --- | --- |
 | [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) |Bármit megváltoztathat, beleértve a felhasználói hozzáférést is. |
 | [Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) |Bármit szerkeszthet, beleértve az összes erőforrást is. |
@@ -101,7 +101,7 @@ Ha a kívánt felhasználó nem szerepel a címtárban, meghívhat bárkit egy M
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-* [Szerepköralapú hozzáférés-vezérlés az Azure-ban](../../role-based-access-control/role-assignments-portal.md)
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>PowerShell-lekérdezés a szerepkör tagságának meghatározásához
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535110"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920415"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Szerepköralapú Access Control a StorSimple
 
@@ -163,7 +163,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>Felhasználók hozzáadása az egyéni szerepkörhöz
 
-A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. A hozzáférés megadásakor vegye figyelembe, hogy a szülő csomóponton megadott hozzáférést a gyermek örökli. További információért lépjen a [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)elemre.
+A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. A hozzáférés megadásakor vegye figyelembe, hogy a szülő csomóponton megadott hozzáférést a gyermek örökli. További információért látogasson el az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)című témakörre.
 
 1. Nyissa meg a **hozzáférés-vezérlés (iam)** lehetőséget. Kattintson a **+ Hozzáadás** elemre a hozzáférés-vezérlés panelen.
 

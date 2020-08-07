@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087050"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924121"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -109,7 +109,7 @@ Igen. Az alhálózatok bármikor hozzáadhatók a virtuális hálózatok, felté
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Megváltoztathatom az alhálózat méretét, miután Létrehoztam?
 Igen. Egy alhálózatot akkor vehet fel, távolíthat el, bővíthet vagy szűkíthet, ha nincsenek benne üzembe helyezett virtuális gépek vagy szolgáltatások.
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>Módosíthatom az alhálózatokat a létrehozásuk után?
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Módosíthatom a vnet a létrehozása után?
 Igen. Hozzáadhat, eltávolíthat és módosíthat a VNet által használt CIDR-blokkokat.
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Ha egy VNet futtatom a szolgáltatásokat, csatlakozhatok az internethez?
@@ -195,7 +195,7 @@ Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service E
 
 * [Hálózati szolgáltatások App Service](../app-service/networking-features.md)
 * [Web Apps létrehozása App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Alkalmazás integrálása egy Azure-beli virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Az alkalmazás integrálása Azure-Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Hozzáférési korlátozások App Service](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Telepíthetek Cloud Services webes és feldolgozói szerepkörökkel (VNet)?

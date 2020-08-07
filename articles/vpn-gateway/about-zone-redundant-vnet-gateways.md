@@ -1,6 +1,6 @@
 ---
 title: Tudnivalók a Azure Availability Zones-beli virtuális hálózati átjárók használatáról
-description: Ismerkedjen meg VPN Gateway-és ExpressRoute-átjárókkal Availability Zonesban.
+description: Ismerje meg a Azure Availability Zones VPN-és ExpressRoute-átjáróit, a rugalmasságot, a méretezhetőséget és a magasabb rendelkezésre állást a VNet-átjárók számára.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a0a3d59477511ebf019e2c2019786788a92ad70
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864298"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922693"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Tudnivalók a Azure Availability Zones-beli virtuális hálózati átjárók használatáról
 

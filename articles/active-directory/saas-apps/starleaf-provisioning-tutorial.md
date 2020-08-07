@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064291"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920687"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés StarLeaf konfigurálása
 
@@ -36,7 +36,7 @@ Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehaj
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [Egy StarLeaf-bérlő](https://www.starleaf.com/solutions/).
+* [Egy StarLeaf-bérlő](https://starleaf.com/).
 * Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a StarLeaf-ben.
 
 ## <a name="assign-users-to-starleaf"></a>Felhasználók StarLeaf rendelése
@@ -115,7 +115,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a StarLeaf**lehetőséget.
 

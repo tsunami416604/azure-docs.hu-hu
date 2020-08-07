@@ -1,18 +1,18 @@
 ---
 title: Az Azure VPN Gateway OpenVPN-ügyfeleinek konfigurálása | Microsoft Docs
-description: Az OpenVPN-ügyfelek Azure-VPN Gateway konfigurálásának lépései
+description: Ismerje meg, hogyan konfigurálhatja az OpenVPN Protocol-ügyfeleket az Azure VPN Gatewayhoz, beleértve a Windows-, Mac-és Linux-ügyfeleket is.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: bdddf097265e7af688175688b6f3214413a90fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 136dcb0b2d1740aa5cadbd716b4a8386ad5cf486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984092"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926212"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Az Azure VPN Gateway OpenVPN-ügyfeleinek konfigurálása
 

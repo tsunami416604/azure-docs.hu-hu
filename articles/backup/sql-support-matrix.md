@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és korlátozásokat
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513183"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926450"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
 
@@ -25,21 +25,26 @@ A Azure Backup használatával biztonsági mentést készíthet a Microsoft Azur
 **Támogatott SQL Server verziók** | SQL Server 2019, SQL Server 2017 a [termék életciklusának keresése lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS a [termék életciklusa lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, standard, web, Developer, Express.
 **Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve a virtuális gépen
 
-## <a name="feature-consideration-and-limitations"></a>Funkciókkal kapcsolatos szempontok és korlátozások
+## <a name="feature-considerations-and-limitations"></a>Szolgáltatásokkal kapcsolatos megfontolások és korlátozások
 
-* SQL Server biztonsági mentés konfigurálható a Azure Portal vagy a **PowerShellben**. Nem támogatjuk a CLI-t.
+|Beállítás  |Felső korlát |
+|---------|---------|
+|A kiszolgálókon (és a tárolóban) védetté tehető adatbázisok száma    |   2000      |
+|Az adatbázis mérete támogatott (ezen túlmenően a teljesítménnyel kapcsolatos problémák merülhetnek fel)   |   2 TB      |
+|Adatbázisban támogatott fájlok száma    |   1000      |
+
+>[!NOTE]
+> [Töltse le a részletes Resource Plannert](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) , hogy kiszámítsa a kiszolgálón javasolt védett adatbázisok hozzávetőleges számát a virtuálisgép-erőforrások, a sávszélesség és a biztonsági mentési szabályzat alapján.
+
+* SQL Server biztonsági mentés konfigurálható a Azure Portal vagy a **PowerShellben**. A CLI nem támogatott.
 * A megoldás mindkét típusú [üzembe helyezést](../azure-resource-manager/management/deployment-models.md) támogatja – Azure Resource Manager virtuális gépeket és klasszikus virtuális gépeket.
-* A SQL Server rendszert futtató virtuális gépek internetkapcsolatot igényelnek az Azure nyilvános IP-címeinek eléréséhez.
+* Az összes biztonsági mentési típus (teljes/különbözeti/napló) és helyreállítási modellek (egyszerű/teljes/tömegesen naplózott) támogatottak.
+* A csak **olvasható** adatbázisok esetében a teljes és a másolási csak a teljes biztonsági mentési típusok támogatottak.
+* Az SQL natív tömörítés támogatott, ha a felhasználó explicit módon engedélyezi a biztonsági mentési szabályzatot. Azure Backup felülbírálja a példányok szintjének alapértelmezett értékeit a TÖMÖRÍTÉSi/NO_COMPRESSION záradékkal a felhasználó által beállított vezérlőelem értékétől függően.
+* A TDE-kompatibilis adatbázis biztonsági mentése támogatott. Ha egy TDE-titkosított adatbázist szeretne visszaállítani egy másik SQL Serverre, először [vissza kell állítania a tanúsítványt a célkiszolgálóra](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). A TDE-kompatibilis adatbázisok SQL Server 2016-es és újabb verzióinak biztonsági mentési tömörítése elérhető, de az [itt](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)leírtak szerint alacsonyabb adatátviteli mérettel.
+* A tükrözési adatbázisokhoz és az adatbázis-pillanatképekhez tartozó biztonsági mentési és visszaállítási műveletek nem támogatottak.
 * SQL Server **feladatátvevő fürt példánya (** nem támogatott).
-* A tükrözési adatbázisok és az adatbázis-Pillanatképek biztonsági mentésére és visszaállítására vonatkozó műveletek nem támogatottak.
-* Ha több biztonsági mentési megoldást használ a különálló SQL Server példány vagy az SQL always on rendelkezésre állási csoport biztonsági mentéséhez, a biztonsági mentés sikertelen lehet; ne tegye meg.
-* A rendelkezésre állási csoport két csomópontjának különálló, azonos vagy eltérő megoldásokkal történő biztonsági mentése a biztonsági mentés sikertelenségét is eredményezheti.
-* A Azure Backup csak a teljes és csak a csak **olvasható** adatbázisok teljes biztonsági mentési típusait támogatja
-* A nagy mennyiségű fájllal rendelkező adatbázisok védelme nem biztosítható. A támogatott fájlok maximális száma **~ 1000**.  
-* Egy tárolóban akár **2000** SQL Server adatbázisra is készíthet biztonsági mentést. Több tárolót is létrehozhat abban az esetben, ha nagyobb számú adatbázisra van szüksége.
-* A biztonsági mentést akár **50** adatbázisra is konfigurálhatja egy menet közben. Ez a korlátozás segít optimalizálni a biztonsági mentési terheléseket.
-* Az adatbázisok akár **2 TB** -os méretekben is támogatottak; a teljesítménnyel kapcsolatos problémáknál nagyobb méreteket eredményezhet.
-* Ha szeretné, hogy a kiszolgálók hány adatbázis védelmét tudják védeni, vegye figyelembe az olyan tényezőket, mint a sávszélesség, a virtuális gép mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [Töltse le](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-tervezőt, hogy a virtuális gépek erőforrásai és a biztonsági mentési szabályzat alapján számítsa ki a kiszolgálónként használható adatbázisok hozzávetőleges számát.
+* Ha több biztonsági mentési megoldást használ a különálló SQL Server példány vagy az SQL always on rendelkezésre állási csoport biztonsági mentéséhez, a biztonsági mentés sikertelen lehet. Ne tegye meg. A rendelkezésre állási csoport két csomópontjának különálló, azonos vagy eltérő megoldásokkal történő biztonsági mentése a biztonsági mentés sikertelenségét is eredményezheti.
 * A rendelkezésre állási csoportok konfigurálásakor a biztonsági mentések a különböző csomópontokból származnak, néhány tényező alapján. A rendelkezésre állási csoport biztonsági mentési viselkedését az alábbiakban összegzi.
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Biztonsági mentés működése az Always On rendelkezésreállási csoportok esetén
@@ -89,6 +94,6 @@ Differenciál | Elsődleges
 Napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

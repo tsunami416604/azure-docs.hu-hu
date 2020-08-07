@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2089fcd6e774fd735aa4709b072caafe092b46a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e563e53ad0d5ec90fb9b728c8ffe2d239cf0763
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669443"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920597"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés a SQL Server 2014 virtuális gépekhez (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,11 +60,11 @@ Az automatikus biztonsági mentés használatához vegye figyelembe a következ�
 
 Az alábbi táblázat az automatikus biztonsági mentéshez konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
-| Beállítás | Tartomány (alapértelmezett) | Description |
+| Beállítás | Tartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
 | **Automatikus biztonsági mentés** | Engedélyezés/letiltás (letiltva) | Engedélyezheti vagy letilthatja a SQL Server 2014 standard vagy Enterprise rendszert futtató Azure-beli virtuális gépek automatizált biztonsági mentését. |
 | **Megtartási időszak** | 1-30 nap (30 nap) | A biztonsági másolat megőrzésének napjainak száma. |
-| **Tárfiók** | Azure Storage-fiók | Egy Azure Storage-fiók, amelyet a blob Storage-ban lévő automatizált biztonságimásolat-fájlok tárolására használ. Ezen a helyen létrejön egy tároló az összes biztonságimásolat-fájl tárolásához. A biztonságimásolat-fájl elnevezési konvenciója tartalmazza a dátumot, az időt és a gép nevét. |
+| **Storage-fiók** | Azure Storage-fiók | Egy Azure Storage-fiók, amelyet a blob Storage-ban lévő automatizált biztonságimásolat-fájlok tárolására használ. Ezen a helyen létrejön egy tároló az összes biztonságimásolat-fájl tárolásához. A biztonságimásolat-fájl elnevezési konvenciója tartalmazza a dátumot, az időt és a gép nevét. |
 | **Titkosítás** | Engedélyezés/letiltás (letiltva) | Engedélyezheti vagy letilthatja a titkosítást. Ha engedélyezve van a titkosítás, a biztonsági mentés visszaállításához használt tanúsítványok az azonos `automaticbackup` elnevezési konvencióval azonos tárolóban található megadott Storage-fiókban találhatók. Ha a jelszó megváltozik, új tanúsítvány jön létre ezzel a jelszóval, de a régi tanúsítvány továbbra is a korábbi biztonsági mentéseket állítja vissza. |
 | **Jelszó** | Jelszó szövege | A titkosítási kulcsok jelszava. Erre csak akkor van szükség, ha engedélyezve van a titkosítás. A titkosított biztonsági mentés visszaállításához a biztonsági másolat készítésének időpontjában használt jelszóval és kapcsolódó tanúsítvánnyal kell rendelkeznie. |
 
@@ -276,7 +276,7 @@ Egy másik lehetőség, hogy kihasználja az értesítések beépített Database
 
 ## <a name="next-steps"></a>További lépések
 
-Az automatikus biztonsági mentés az Azure-beli virtuális gépeken felügyelt biztonsági mentést konfigurál. Ezért fontos, hogy [áttekintse a felügyelt biztonsági mentés dokumentációját SQL Server 2014](https://msdn.microsoft.com/library/dn449497(v=sql.120).aspx)-es számítógépen.
+Az automatikus biztonsági mentés az Azure-beli virtuális gépeken felügyelt biztonsági mentést konfigurál. Ezért fontos, hogy [áttekintse a felügyelt biztonsági mentés dokumentációját SQL Server 2014](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)-es számítógépen.
 
 Az Azure-beli virtuális gépeken való SQL Serverról további biztonsági mentési és visszaállítási útmutatást talál a következő cikkben: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machines szolgáltatásban](backup-restore.md).
 

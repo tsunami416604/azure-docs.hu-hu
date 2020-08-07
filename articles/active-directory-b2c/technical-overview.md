@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281922"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921673"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -262,7 +262,4 @@ További információ a használati elemzésekről: a [felhasználói viselkedé
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy alaposabban megtekintette a Azure Active Directory B2C funkcióit és technikai aspektusait, a szolgáltatással való ismerkedéshez hozzon létre egy B2C-bérlőt:
-
-> [!div class="nextstepaction"]
-> [Oktatóanyag: Azure Active Directory B2C bérlő létrehozása >](tutorial-create-tenant.md)
+Most, hogy mélyebben megtekintette a Azure Active Directory B2C funkcióit és technikai aspektusait, ismerkedjen meg a [Azure Active Directory B2C-bérlő létrehozásához szükséges oktatóanyaggal](tutorial-create-tenant.md).

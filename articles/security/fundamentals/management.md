@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224706"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921928"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -66,7 +66,7 @@ A hozzáférési erőforrások konszolidálása és a felügyelet nélküli vég
 ### <a name="providing-security-for-azure-remote-management"></a>Az Azure távfelügyelet biztonsági megoldásai
 Az Azure biztonsági mechanizmusai segítséget nyújtanak a rendszergazdáknak a felhőszolgáltatások és virtuális gépek felügyeletében. Ezen mechanizmusok az alábbiak:
 
-* Hitelesítés és [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md).
+* Hitelesítés és [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Figyelés és naplózás.
 * Tanúsítványok és titkosított kommunikáció.
 * Webes felügyeleti portál.
@@ -123,7 +123,7 @@ Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek ko
 
 Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesítési mechanizmusokkal rendelkezhetnek mind a végfelhasználói, mind a rendszergazdai hozzáféréshez, míg mások az Azure AD előnyeit használják ki. Attól függően, hogy hitelesítő adatokat von össze Active Directory összevonási szolgáltatások (AD FS) segítségével, címtár-szinkronizálást használ, vagy csak a felhőben kezeli a felhasználói fiókokat, a [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) használata segít az identitás-életciklusok erőforrások közötti kezelésében.
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 Az Azure virtuális hálózataihoz való ügyfélkapcsolatok biztonságossá tételének céljából több mechanizmus áll rendelkezésre. Ezen mechanizmusok közül kettő, a [helyek közötti VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) és a [pont-hely típusú VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S) lehetővé teszik az iparági szabványnak megfelelő IPsec (S2S) vagy a [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) használatát titkosítás és alagútkezelés céljából. A nyilvánosan elérhető Azure-szolgáltatásokhoz (pl. Azure Portal) való csatlakozáshoz az Azure-nak HTTPS-kapcsolatra van szüksége.
 
 Az olyan önálló megerősített munkaállomás esetében, amely nem RD-átjárón keresztül csatlakozik az Azure-hoz, javasolt, hogy SSTP alapú pont-hely típusú VPN-nel hozza létre az Azure Virtual Networkkel kialakított kezdeti kapcsolatot, majd az egyes virtuális gépekhez vezető RDP-kapcsolatokat a VPN-alagútból alakítsa ki.

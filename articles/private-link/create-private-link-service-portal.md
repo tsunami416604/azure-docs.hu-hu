@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 125b70b389809c576d17d1c8de35290c1c402c4a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852888"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927238"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
 
@@ -33,7 +33,7 @@ Először hozzon létre egy virtuális hálózatot. Következő lépésként hoz
 
 Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Emellett létrehozza azt az alhálózatot is, amely a privát kapcsolati szolgáltatáshoz hozzáférő terheléselosztó futtatására szolgál.
 
-Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
+Ebben a szakaszban a következő paraméterekkel kell helyettesítenie a lépéseket az alábbi információkkal:
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
@@ -133,7 +133,7 @@ Terheléselosztó-szabály létrehozása:
 
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
 
-Ebben a szakaszban egy standard Load Balancer mögötti privát kapcsolati szolgáltatást hoz létre.
+Ebben a szakaszban egy, a standard Load Balancer mögötti privát kapcsolati szolgáltatást fog létrehozni.
 
 1. A Azure Portal oldal bal felső részén válassza az **erőforrás létrehozása**  >  **magánhálózat**  >  **privát kapcsolati központ (előzetes verzió)** lehetőséget. A portál keresőmező használatával is megkeresheti a privát hivatkozást.
 

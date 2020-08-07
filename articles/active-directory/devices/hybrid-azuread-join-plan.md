@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461765"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925345"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -123,7 +123,7 @@ A felügyelt környezetek a [jelszó kivonatos szinkronizálásával (PHS)](/azu
 Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
 > [!NOTE]
-> A lépcsőzetes bevezetést [használó felhőalapú hitelesítés](/hybrid/how-to-connect-staged-rollout) csak a Windows 10 1903 frissítésének megkezdése után támogatott
+> A lépcsőzetes bevezetést [használó felhőalapú hitelesítés](/azure/active-directory/hybrid/how-to-connect-staged-rollout) csak a Windows 10 1903 frissítésének megkezdése után támogatott
 
 ### <a name="federated-environment"></a>Összevont környezet
 

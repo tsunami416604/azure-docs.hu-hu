@@ -1,6 +1,6 @@
 ---
 title: Adatok átvitele az Azure Data Box Gatewayjel | Microsoft Docs
-description: Megismerheti, hogyan adhat hozzá megosztásokat a Data Box Gateway eszközön, és hogyan csatlakozhat azokhoz.
+description: Megtudhatja, hogyan adhat hozzá és csatlakozhat a Azure Data Box Gateway lévő megosztásokhoz, és a Data Box Gateway eszköz az Azure-ba viheti át az adatátvitelt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561721"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923475"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: adatok átvitele Azure Data Box Gateway
 
@@ -107,7 +107,7 @@ A Data Box Gatewayhoz csatlakoztatott Windows Server-ügyfélen a következő pa
 
 
 2. A billentyűzeten válassza a Windows + R lehetőséget. 
-3. A **Futtatás** ablakban adja meg a `\\<device IP address>` elemet, majd kattintson az **OK gombra**. Megnyílik a fájlkezelő. Ekkor meg kell tudnia tekinteni a mappákként létrehozott megosztásokat. A Fájlkezelőben kattintson duplán egy megosztásra (mappára) a tartalom megtekintéséhez.
+3. A **Futtatás** ablakban adja meg a elemet, majd kattintson az `\\<device IP address>` **OK gombra**. Megnyílik a fájlkezelő. Ekkor meg kell tudnia tekinteni a mappákként létrehozott megosztásokat. A Fájlkezelőben kattintson duplán egy megosztásra (mappára) a tartalom megtekintéséhez.
  
     ![Csatlakozás SMB-megosztáshoz](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -137,7 +137,7 @@ Az Azure Stack Edge-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a
 > A következő kikötések alkalmazhatók erre a kiadásra:
 > - Miután létrehozott egy fájlt a megosztásokban, a fájl átnevezése nem támogatott.
 > - A fájlok megosztásból való törlése nem törli a bejegyzéseket a tárfiókból.
-> - Ha az `rsync` Adatmásolást használja, `rsync -a` akkor a beállítás nem támogatott.
+> - Ha az `rsync` Adatmásolást használja, akkor `rsync -a` a beállítás nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

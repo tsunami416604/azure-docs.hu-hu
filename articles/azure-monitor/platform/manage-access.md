@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489452"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925634"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
 
@@ -102,11 +102,11 @@ Ha Azure Resource Manager-sablonban szeretné konfigurálni a hozzáférési mó
 
 ## <a name="manage-access-using-workspace-permissions"></a>Hozzáférés kezelése a munkaterület engedélyeivel
 
-Minden munkaterülethez több fiók is társítható, és mindegyik fiók több munkaterülethez is hozzáférhet. A hozzáférés az [Azure szerepköralapú hozzáférés](../../role-based-access-control/role-assignments-portal.md)használatával felügyelhető.
+Minden munkaterülethez több fiók is társítható, és mindegyik fiók több munkaterülethez is hozzáférhet. A hozzáférés az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)használatával felügyelhető.
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
-|Művelet |Azure-engedélyek szükségesek |Jegyzetek |
+|Művelet |Azure-engedélyek szükségesek |Megjegyzések |
 |-------|-------------------------|------|
 | Figyelési megoldások hozzáadása és eltávolítása | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Az engedélyeknek az erőforráscsoport vagy előfizetés szinteken kell megadva lenniük. |
 | Tarifacsomag módosítása | `Microsoft.OperationalInsights/workspaces/*/write` | |

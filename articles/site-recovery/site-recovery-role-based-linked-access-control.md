@@ -6,12 +6,12 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: a11cd001e33e52f9138d9b302c39e04ee3d984a5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503531"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927164"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC)
 
@@ -53,7 +53,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft. ClassicCompute/virtualMachines/READ |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/delete |
-| Network (Hálózat) | Resource Manager | Microsoft. Network/networkInterfaces/READ |
+| Hálózat | Resource Manager | Microsoft. Network/networkInterfaces/READ |
 |  |  | Microsoft. Network/networkInterfaces/Write |
 |  |  | Microsoft. Network/networkInterfaces/delete |
 |  |  | Microsoft. Network/networkInterfaces/csatlakozás/művelet |
@@ -72,7 +72,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 Érdemes lehet a "Virtual Machine közreműködő" és a "klasszikus virtuálisgép-közreműködő" [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használni a Resource Manager és a klasszikus üzemi modellekhez.
 
 ## <a name="next-steps"></a>További lépések
-* [Szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md): első lépések a RBAC a Azure Portal.
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): első lépések a RBAC a Azure Portal.
 * Ismerje meg, hogyan kezelheti a hozzáférést a következővel:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

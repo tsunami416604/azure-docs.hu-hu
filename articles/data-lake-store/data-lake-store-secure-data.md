@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515251"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926297"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme
 A Azure Data Lake Storage Gen1ban lévő adatvédelme egy három lépésből álló megközelítés.  Mind a szerepköralapú hozzáférés-vezérlést (RBAC), mind a hozzáférés-vezérlési listákat (ACL-eket) úgy kell beállítani, hogy teljes mértékben engedélyezzék a felhasználók és biztonsági csoportok számára az adathozzáférést.
 
-1. Első lépésként hozzon létre biztonsági csoportokat a Azure Active Directoryban (HRE). Ezek a biztonsági csoportok szerepköralapú hozzáférés-vezérlés (RBAC) megvalósítására szolgálnak Azure Portalban. További információ: [szerepköralapú Access Control Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
+1. Első lépésként hozzon létre biztonsági csoportokat a Azure Active Directoryban (HRE). Ezek a biztonsági csoportok az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) megvalósítására szolgálnak a Azure Portal. További információ: [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. Rendelje hozzá a HRE biztonsági csoportokat a Data Lake Storage Gen1 fiókhoz. Ez szabályozza a Data Lake Storage Gen1 fiók hozzáférését a portálról vagy API-kból a portálról és a felügyeleti műveletekről.
 3. Rendelje hozzá a HRE biztonsági csoportokat hozzáférés-vezérlési listákként (ACL) a Data Lake Storage Gen1 fájlrendszerben.
 4. Emellett beállíthat egy IP-címtartományt is olyan ügyfelek számára, akik hozzáférhetnek a Data Lake Storage Gen1 található adatelérési pontokhoz.
@@ -74,7 +74,7 @@ Amikor felhasználókat vagy biztonsági csoportokat rendel hozzá Data Lake Sto
    
     ![Biztonsági csoport hozzáadása](./media/data-lake-store-secure-data/adl.add.user.2.png "Biztonsági csoport hozzáadása")
    
-5. Kattintson a **Save** (Mentés) gombra. A hozzáadott biztonsági csoport az alábbi módon jelenik meg.
+5. Kattintson a **Mentés** gombra. A hozzáadott biztonsági csoport az alábbi módon jelenik meg.
    
     ![Biztonsági csoport hozzáadva](./media/data-lake-store-secure-data/adl.add.user.3.png "Biztonsági csoport hozzáadva")
 
@@ -130,7 +130,7 @@ Az adathozzáférés nem változik, és továbbra is a hozzáférési ACL-ek kez
 1. A Data Lake Storage Gen1-fiók panelen kattintson a **Access Control (iam)** elemre. 
    
     ![Biztonsági csoport kiosztása Data Lake Storage Gen1-fiókhoz](./media/data-lake-store-secure-data/adl.select.user.icon.png "Biztonsági csoport kiosztása Data Lake Storage Gen1-fiókhoz")
-2. A **Access Control (iam)** panelen kattintson az eltávolítani kívánt biztonsági csoport (ok) ra. Kattintson az **Eltávolítás** lehetőségre.
+2. A **Access Control (iam)** panelen kattintson az eltávolítani kívánt biztonsági csoport (ok) ra. Kattintson az **Eltávolítás** elemre.
    
     ![Biztonsági csoport eltávolítva](./media/data-lake-store-secure-data/adl.remove.group.png "Biztonsági csoport eltávolítva")
 
@@ -147,7 +147,7 @@ Ha a biztonsági csoport ACL-jeit egy Data Lake Storage Gen1 fájlrendszerből t
    
     ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-secure-data/adl.remove.acl.png "Engedélyek kiosztása a csoportnak")
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -155,4 +155,3 @@ Ha a biztonsági csoport ACL-jeit egy Data Lake Storage Gen1 fájlrendszerből t
 * [Az 1. generációs Data Lake Storage használatának első lépései a PowerShell-lel](data-lake-store-get-started-powershell.md)
 * [A Data Lake Storage Gen1 használatának első lépései a .NET SDK-val](data-lake-store-get-started-net-sdk.md)
 * [Diagnosztikai naplók elérése Data Lake Storage Gen1hoz](data-lake-store-diagnostic-logs.md)
-

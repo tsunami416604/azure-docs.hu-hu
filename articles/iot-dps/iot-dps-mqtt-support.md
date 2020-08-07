@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680679"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924206"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Kommunikáció a DPS használatával a MQTT protokollal
 
@@ -82,7 +82,7 @@ WebSocket-kapcsolaton keresztüli kapcsolódáskor adja meg az alprotokollot `mq
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/documentation).
+Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/).
 
 A DPS képességeinek további megismeréséhez lásd:
 

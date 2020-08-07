@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: alkalmazás regisztrálása'
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan regisztrálhat egy webalkalmazást Azure Active Directory B2C a Azure Portal használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat egy webalkalmazást Azure Active Directory B2C a Azure Portal használatával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0fd062bd0e58ecc714e4f450c93384e47e743b65
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169330"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922013"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban
 
@@ -31,7 +31,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha inkább natív alkalmazást használ (például iOS, Android, Mobile & Desktop), Ismerje meg, [Hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,7 +65,7 @@ Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit 
 
 1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **hitelesítés**lehetőséget.
 1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 

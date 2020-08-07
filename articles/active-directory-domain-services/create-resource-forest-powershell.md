@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505769"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921996"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Hozzon létre egy Azure Active Directory Domain Services erőforrás-erdőt és a kimenő erdőszintű megbízhatóságot a helyszíni tartományba Azure PowerShell
 
@@ -102,7 +102,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
 1. Tekintse át a parancsfájlhoz szükséges következő paramétereket `New-AzureAaddsForest` . Győződjön meg arról, hogy az előfeltétel **Azure PowerShell** és az **Azure ad PowerShell** -modulok is rendelkezésre állnak. Győződjön meg arról, hogy megtervezte a virtuális hálózati követelményeket az alkalmazás és a helyszíni kapcsolat biztosításához.
 
-    | Name                         | Parancsfájl paramétere          | Leírás |
+    | Név                         | Parancsfájl paramétere          | Leírás |
     |:-----------------------------|---------------------------|:------------|
     | Előfizetés                 | *-azureSubscriptionId*    | Az Azure AD DS számlázáshoz használt előfizetés-azonosító. A [Get-AzureRMSubscription][Get-AzureRMSubscription] parancsmag használatával lekérheti az előfizetések listáját. |
     | Erőforráscsoport               | *-aaddsResourceGroupName* | A felügyelt tartomány és a kapcsolódó erőforrások erőforráscsoport neve. |
@@ -112,7 +112,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
     A `New-AzureAaddsForest` szkript létrehozhatja az Azure-beli virtuális hálózatot és az azure AD DS alhálózatot, ha ezek az erőforrások még nem léteznek. A parancsfájl opcionálisan létrehozhatja a számítási feladatok alhálózatait, ha meg van adva:
 
-    | Name                              | Parancsfájl paramétere                  | Leírás |
+    | Név                              | Parancsfájl paramétere                  | Leírás |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuális hálózat neve              | *-aaddsVnetName*                  | A felügyelt tartomány virtuális hálózatának neve.|
     | Címtér                     | *-aaddsVnetCIDRAddressSpace*      | A virtuális hálózat CIDR jelölése (a virtuális hálózat létrehozásakor).|
@@ -148,8 +148,8 @@ Mielőtt elkezdené, győződjön meg róla, hogy tisztában van a [hálózati m
 
 1. Hozzon létre hibrid kapcsolatot a helyszíni hálózattal az Azure-ban egy Azure VPN vagy Azure ExpressRoute-kapcsolat használatával. A hibrid hálózati konfiguráció meghaladja a dokumentáció hatókörét, és előfordulhat, hogy már létezik a környezetében. Az egyes forgatókönyvekkel kapcsolatos részletekért tekintse meg a következő cikkeket:
 
-    * [Azure-helyek közötti VPN](/vpn-gateway/vpn-gateway-about-vpngateways).
-    * Az [Azure ExpressRoute áttekintése](/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Azure-helyek közötti VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+    * Az [Azure ExpressRoute áttekintése](/azure/expressroute/expressroute-introduction).
 
     > [!IMPORTANT]
     > Ha közvetlenül a felügyelt tartomány virtuális hálózatához hozza létre a kapcsolódást, használjon külön átjáró-alhálózatot. Ne hozza létre az átjárót a felügyelt tartomány alhálózatában.
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Most adja meg a parancsfájlt a következő információkkal:
 
-| Name                               | Parancsfájl paramétere     | Leírás |
+| Név                               | Parancsfájl paramétere     | Leírás |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS tartomány neve            | *-ManagedDomainFqdn* | A felügyelt tartomány teljes tartományneve, például *aaddscontoso.com* |
 | Helyszíni AD DS tartomány neve      | *-TrustFqdn*         | A megbízható erdő teljes tartományneve, például *onprem.contoso.com* |

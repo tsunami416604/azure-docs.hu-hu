@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb536b27fe283170626ca6ffa2d21749d511f244
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026747"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923509"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
@@ -105,7 +105,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| allowPublicClient | Logikai érték |
+| allowPublicClient | Logikai |
 
 Megadja a tartalék alkalmazás típusát. Az Azure AD alapértelmezés szerint kikövetkezteti az alkalmazás típusát a replyUrlsWithType. Vannak olyan helyzetek, amikor az Azure AD nem tudja megállapítani az ügyfél-alkalmazás típusát. Például az egyik ilyen forgatókönyv az a [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) folyamat, amelyben a HTTP-kérelem URL-átirányítás nélkül történik. Ezekben az esetekben az Azure AD az alkalmazás típusát a tulajdonság értéke alapján fogja értelmezni. Ha az érték TRUE (igaz), a tartalék alkalmazás típusa nyilvános ügyfélként van beállítva, például egy mobileszközön futó telepített alkalmazás. Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a tartalék alkalmazás típusa bizalmas ügyfél, például webalkalmazás.
 
@@ -119,7 +119,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| availableToOtherTenants | Logikai érték |
+| availableToOtherTenants | Logikai |
 
 Értéke TRUE (igaz), ha az alkalmazás más Bérlővel van megosztva; Ellenkező esetben hamis.
 
@@ -364,7 +364,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | Logikai érték |
+| oauth2AllowImplicitFlow | Logikai |
 
 Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be `OAuth 2.0 implicit grant flow` a tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
 
@@ -378,7 +378,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | Logikai érték |
+| oauth2AllowIdTokenImplicitFlow | Logikai |
 
 Megadja, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow ID-tokeneket. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos.
 
@@ -417,7 +417,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2RequiredPostResponse | Logikai érték |
+| oauth2RequiredPostResponse | Logikai |
 
 Azt határozza meg, hogy a OAuth 2,0 jogkivonat-kérelmek részeként az Azure AD engedélyezi-e a POST kéréseket, a kérések helyett. Az alapértelmezett érték a False (hamis), amely azt határozza meg, hogy csak a GET kérelmek engedélyezettek lesznek.
 
@@ -492,7 +492,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| publicClient | Logikai érték|
+| publicClient | Logikai|
 
 Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás).
 
@@ -532,6 +532,7 @@ Ez a többértékű tulajdonság azon regisztrált redirect_uri értékek listá
 
 - `Web`
 - `InstalledClient`
+- `Spa`
 
 További információ: [replyUrl-korlátozások és korlátozások](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 

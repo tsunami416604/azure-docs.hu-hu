@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc665aec3aa8c08449815dbb255f87404e370f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87906054"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926722"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -93,9 +93,8 @@ Az [API-összekötők](api-connectors-overview.md) használatával integrálhatj
 ![A felhasználói folyamatok lapját ábrázoló képernyőfelvétel](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 <!--TODO: Add screenshot with API connectors -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)
 - [A meghívó érvényesítési folyamat ismertetése](redemption-experience.md)
-- És mint mindig, visszajelzésekkel, hozzászólásokkal és javaslatokkal most is fordulhat a termékért felelős csoporthoz a [Microsoft technikai Közösségen](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) keresztül.

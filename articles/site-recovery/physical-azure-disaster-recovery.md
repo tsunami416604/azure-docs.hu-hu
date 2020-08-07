@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500427"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927283"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
 
@@ -59,7 +59,7 @@ Microsoft Azure- [fiók](https://azure.microsoft.com/)beszerzése.
 Győződjön meg arról, hogy az Azure-fiókja rendelkezik a virtuális gépek Azure-ba történő replikálásához szükséges engedélyekkel.
 
 - Tekintse át a gépek Azure-ba való replikálásához szükséges [engedélyeket](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) .
-- [Szerepköralapú hozzáférési](../role-based-access-control/role-assignments-portal.md) engedélyek ellenőrzése és módosítása. 
+- Ellenőrizze és módosítsa az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) engedélyeit. 
 
 
 

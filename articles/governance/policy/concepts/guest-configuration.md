@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901980"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921690"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -69,7 +69,7 @@ Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek
 |Microsoft|Windows Server|2012 és újabb verziók|
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7,3 és újabb verziók|
-|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8, 9,0 és újabb verziók|
+|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
 |SUSE|SLES|12 SP3 és újabb verziók|
 
 Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirendek támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
@@ -197,7 +197,7 @@ A vendég konfiguráció beépített házirendjének mintái a következő helys
 - [Beépített kezdeményezések – vendég konfigurációja](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan tekintheti meg az egyes beállításokat a [vendég konfiguráció megfelelősége nézetből](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

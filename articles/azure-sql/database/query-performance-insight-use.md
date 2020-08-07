@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042883"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926399"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Lekérdezési terheléselemző megköveteli, hogy a [lekérdezési tároló](htt
 
 ## <a name="permissions"></a>Engedélyek
 
-A következő [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) engedélyekre van szükség a lekérdezési terheléselemző használatához:
+A Lekérdezési terheléselemző használatához a következő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek:
 
 * **Olvasó**, **tulajdonos**, **közreműködő**, **SQL db közreműködő**vagy **SQL Server közreműködő** engedély szükséges a legfelső szintű erőforrás-felhasználású lekérdezések és diagramok megtekintéséhez.
 * A lekérdezés szövegének megtekintéséhez **tulajdonos**, **közreműködő**, **SQL-adatbázis közreműködői**vagy **SQL Server közreműködői** engedélyek szükségesek.
@@ -86,7 +86,7 @@ Alapértelmezés szerint a Lekérdezési terheléselemző megjeleníti az első 
    > A finomabb összehasonlításhoz (legfeljebb egy percig) érdemes lehet egyéni DTU-kihasználtsági diagramot létrehozni:
    >
    > 1. A Azure Portal válassza a **Azure SQL Database**  >  **figyelés**lehetőséget.
-   > 2. Válassza a **Metrika** lehetőséget.
+   > 2. Válassza a **Metrikák** lehetőséget.
    > 3. Válassza a **+ diagram hozzáadása**elemet.
    > 4. Válassza ki a DTU százalékos arányát a diagramon.
    > 5. Emellett válassza az **elmúlt 24 óra** lehetőséget a bal felső menüben, és módosítsa egy percre.
@@ -178,7 +178,7 @@ A hosszú ideig futó lekérdezések azonosítása:
    > Az adatbázis DTU-felhasználásának részletesebb megismeréséhez (legfeljebb egy percig) érdemes lehet egyéni diagramot létrehozni a Azure Portalban:
    >
    > 1. Válassza **Azure SQL Database**  >  **figyelés**lehetőséget.
-   > 2. Válassza a **Metrika** lehetőséget.
+   > 2. Válassza a **Metrikák** lehetőséget.
    > 3. Válassza a **+ diagram hozzáadása**elemet.
    > 4. Válassza ki a DTU százalékos arányát a diagramon.
    > 5. Emellett válassza az **elmúlt 24 óra** lehetőséget a bal felső menüben, és módosítsa egy percre.

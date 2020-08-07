@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: f6a30dd66ccf476da0293bdebf9054b6781a6bf6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44803338a27fc492f4dc896a0edb398b2ce486ea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049944"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926127"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -156,7 +156,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>Alkalmazás érvényesítése
 
-Futtassa az alábbi parancsot, és a böngészőben navigáljon a [localhost: 3000](http://localhost:3000) -re, és ellenőrizze, hogy fut-e az alkalmazás.
+Futtassa az alábbi parancsot, és navigáljon a `localhost:3000` böngészőjében, és ellenőrizze, hogy fut-e az alkalmazás.
 
 ```bash
 kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo-vote-front 3000:80

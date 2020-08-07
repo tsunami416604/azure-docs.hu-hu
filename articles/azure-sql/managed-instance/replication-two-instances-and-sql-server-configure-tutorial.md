@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532526"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920143"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik adatbázisból egy másikba SQL Server vagy az [Azure SQL felügyelt példányain](sql-managed-instance-paas-overview.md). Az SQL felügyelt példánya lehet közzétevő, terjesztő vagy előfizető a replikációs topológiában. Lásd: [tranzakciós replikációs konfigurációk](replication-transactional-overview.md#common-configurations) az elérhető konfigurációkhoz. 
+
+A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -30,11 +34,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![A felügyelt példányok közzétevője, a felügyelt példányok terjesztője és a SQL Server előfizető közötti replikáció](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-Ez az oktatóanyag egy tapasztalt közönség számára készült, és feltételezi, hogy a felhasználó ismeri az Azure-beli felügyelt példányok és SQL Server virtuális gépek üzembe helyezését és csatlakozását. Ennek megfelelően a jelen oktatóanyag bizonyos lépéseinek átláthatók.
+Ez az oktatóanyag egy tapasztalt közönség számára készült, és feltételezi, hogy a felhasználó ismeri az Azure-beli felügyelt példányok és SQL Server virtuális gépek üzembe helyezését és csatlakozását. 
 
-További információ: az [Azure SQL felügyelt példányának áttekintése](sql-managed-instance-paas-overview.md) és az [SQL tranzakciós replikációs](replication-transactional-overview.md) cikkei.
 
-A felügyelt példányok közzétevője és egy felügyelt példány-előfizető közötti replikáció konfigurálását lásd: [tranzakciós replikáció konfigurálása két felügyelt példány között](replication-between-two-instances-configure-tutorial.md).
+> [!NOTE]
+> Ez a cikk a [tranzakciós replikáció](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) használatát ismerteti az Azure SQL felügyelt példányain. Nem kapcsolódik a [feladatátvételi csoportokhoz](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), az Azure SQL felügyelt példányának szolgáltatása, amely lehetővé teszi az egyes példányok teljes olvasható replikáinak létrehozását. A [tranzakciós replikáció feladatátvételi csoportokkal való](replication-transactional-overview.md#with-failover-groups)konfigurálásakor további szempontokat is figyelembe kell venni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -142,7 +146,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 ### <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 1. Az új Azure-erőforrás létrehozásához válassza **az erőforrás létrehozása** lehetőséget.
 1. Keressen rá az `private dns zone` Azure Marketplace-en.
 1. Válassza ki a Microsoft által közzétett **saját DNS zóna** erőforrást, majd válassza a **Létrehozás** lehetőséget a DNS-zóna létrehozásához.
@@ -345,7 +349,7 @@ Use ReplTutorial
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
 1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez.

@@ -2,15 +2,15 @@
 title: A sablon specifikációinak áttekintése
 description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/06/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f5151550b9f23ba63380688f53325f8976f14a51
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497800"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921878"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
 
@@ -18,7 +18,7 @@ A sablon specifikációja egy új erőforrástípus, amellyel egy Azure Resource
 
 A **Microsoft. Resources/templateSpecs** a sablonhoz tartozó specifikációk új erőforrástípus. Egy fő sablonból és tetszőleges számú csatolt sablonból áll. Az Azure biztonságosan tárolja a sablonhoz tartozó specifikációkat az erőforráscsoportok között. A sablon specifikációi támogatják a [verziószámozást](#versioning).
 
-A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközöket (például PowerShell, Azure CLI, Azure Portal, REST és más támogatott SDK-kat és ügyfeleket) kell használnia. Ugyanazokat a parancsokat használja, és ugyanazokat a paramétereket adja át a sablonhoz.
+A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközöket (például PowerShell, Azure CLI, Azure Portal, REST és más támogatott SDK-kat és ügyfeleket) kell használnia. Ugyanazokat a parancsokat használja, mint a sablonhoz.
 
 > [!NOTE]
 > A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [a várakozási listára](https://aka.ms/templateSpecOnboarding).
@@ -37,21 +37,32 @@ Az alábbi példa egy egyszerű sablont mutat be egy Storage-fiók létrehozás�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-06-01",
-      "location": "[resourceGroup().location]",
-      "kind": "StorageV2",
-      "sku": {
-        "name": "Premium_LRS",
-        "tier": "Premium"
-      }
-    }
-  ]
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ]
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[concat('store', uniquestring(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            }
+        }
+    ]
 }
 ```
 
@@ -105,6 +116,42 @@ $id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG
+```
+
+## <a name="parameters"></a>Paraméterek
+
+A paraméterek a sablon specifikációba való átadása pontosan olyan, mint a paraméterek átadása egy ARM-sablonba. Adja hozzá a paraméter értékeit a beágyazott vagy egy paraméter-fájlban.
+
+Ha egy paramétert szeretne átadni, használja a következőt:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -StorageAccountType Standard_GRS
+```
+
+Helyi paraméter fájljának létrehozásához használja a következőt:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "StorageAccountType": {
+      "value": "Standard_GRS"
+    }
+  }
+}
+```
+
+És adja át a paramétert a fájlnak:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -TemplateParameterFile ./mainTemplate.parameters.json
 ```
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>Sablon létrehozása a csatolt sablonokkal

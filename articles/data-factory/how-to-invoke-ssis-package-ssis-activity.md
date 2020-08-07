@@ -14,12 +14,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/20/2020
-ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003203"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926705"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása az SSIS-csomag végrehajtása tevékenységgel az Azure Data Factoryben
 
@@ -97,7 +97,7 @@ A SSIS-csomag végrehajtása tevékenység **Beállítások** lapján hajtsa vé
 
 Ha a **SSISDB** automatikusan ki van választva, ha a Azure-SSIS IR Azure SQL Database kiszolgáló/felügyelt példány által ÜZEMELTETett SSIS-katalógussal (SSISDB) lett kiépítve, vagy kiválaszthatja saját maga is. Ha be van jelölve, hajtsa végre az alábbi lépéseket.
 
-   1. Ha a Azure-SSIS IR fut, és a **manuális bejegyzések** jelölőnégyzet nincs bejelölve, tallózással keresse meg és válassza ki a meglévő mappákat, projekteket, csomagokat és környezeteket a SSISDB. Válassza a **frissítés** lehetőséget az újonnan hozzáadott mappák, projektek, csomagok vagy KÖRNYEZETek SSISDB való beolvasásához, hogy elérhetők legyenek a böngészéshez és a kiválasztáshoz. A csomagok végrehajtásához szükséges környezetek tallózásához és kiválasztásához előre be kell állítania a projekteket, hogy a SSISDB alatt található azonos mappák hivatkozásaiként adja hozzá ezeket a környezeteket. További információ: [SSIS-környezetek létrehozása és leképezése](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
+   1. Ha a Azure-SSIS IR fut, és a **manuális bejegyzések** jelölőnégyzet nincs bejelölve, tallózással keresse meg és válassza ki a meglévő mappákat, projekteket, csomagokat és környezeteket a SSISDB. Válassza a **frissítés** lehetőséget az újonnan hozzáadott mappák, projektek, csomagok vagy KÖRNYEZETek SSISDB való beolvasásához, hogy elérhetők legyenek a böngészéshez és a kiválasztáshoz. A csomagok végrehajtásához szükséges környezetek tallózásához és kiválasztásához előre be kell állítania a projekteket, hogy a SSISDB alatt található azonos mappák hivatkozásaiként adja hozzá ezeket a környezeteket. További információ: [SSIS-környezetek létrehozása és leképezése](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
 
    1. A **naplózási szint**beállításnál válassza ki a csomag végrehajtásának előre meghatározott hatókörét. Ha ehelyett a testreszabott naplózási nevet szeretné megadni, jelölje be a **testreszabott** jelölőnégyzetet. 
 
@@ -269,7 +269,7 @@ Hajtsa végre a következő lépéseket a SSIS-csomag végrehajtása tevékenys�
 
    1. Adja meg a kiválasztott csomagban lévő meglévő tulajdonságok elérési útját, ha manuálisan szeretné hozzárendelni az értékeket. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. A felhasználói változó értékének felülbírálásához például adja meg az elérési útját a következő formátumban: `\Package.Variables[User::<variable name>].Value` . 
 
-      A Package tulajdonság megfelelő **elérési útját** a SSDT-on található csomag megnyitásával szerezheti be. A csomag megnyitása után válassza ki a vezérlési folyamat és **konfigurációk** tulajdonságot a SSDT **Tulajdonságok** ablakában. Ezután a configurations ( **konfigurációk** ) tulajdonság melletti három pont (**..**.) gombra kattintva nyissa meg a csomag- **konfigurációk szervezőjét** , amelyet általában a csomag [-telepítési modellben való létrehozásához](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014)használ. 
+      A Package tulajdonság megfelelő **elérési útját** a SSDT-on található csomag megnyitásával szerezheti be. A csomag megnyitása után válassza ki a vezérlési folyamat és **konfigurációk** tulajdonságot a SSDT **Tulajdonságok** ablakában. Ezután a configurations ( **konfigurációk** ) tulajdonság melletti három pont (**..**.) gombra kattintva nyissa meg a csomag- **konfigurációk szervezőjét** , amelyet általában a csomag [-telepítési modellben való létrehozásához](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)használ. 
 
       ![Csomag tulajdonságainak beolvasása az SSDT-konfigurációk tulajdonságból](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 

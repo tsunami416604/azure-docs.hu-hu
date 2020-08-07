@@ -1,18 +1,18 @@
 ---
 title: 'Az OpenVPN konfigurálása az Azure VPN Gatewayban: PowerShell'
-description: Az OpenVPN Azure VPN Gateway konfigurálásának lépései
+description: Megtudhatja, hogyan állíthatja be az Azure VPN Gateway OpenVPN-protokollját egy működő pont – hely környezethez. Szükség esetén pont – hely típusú VPN-t is létrehozhat.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: de8d03467b5e44df1b9069c6db31d496785ff32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c1c97bb0e4909bafe2d5ee9012190264b326e6c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983848"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926148"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Az OpenVPN konfigurálása az Azure pont – hely kapcsolathoz VPN Gateway
 

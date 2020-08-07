@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 644184f5bb51d049d890655ada5be5ebd4c11bf7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909920"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926671"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -48,7 +48,7 @@ Ha lehetséges, az alábbi táblázat a két verzió közötti ügyféloldali k�
 | Az indexelő, az adatforrások és a szakértelmével által használt ügyfél | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**új**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> A 11-es verzió átnevezi a 10-es verziót `SearchIndexClient` `SearchClient` , majd újra felhasználja egy olyan ügyfél nevét, amely index, Analyzer és szinonima Térkép objektummal működik. Az ügyfél-referenciák frissítésekor kövesse a lépések lépéseit a [frissítéshez](#UpgradeSteps) a keresés és csere során felmerülő félreértések elkerülése érdekében.
+> `SearchIndexClient`mindkét verzióban létezik, de különböző dolgokat támogat. A 10-es verzióban `SearchIndexClient` Indexek és egyéb objektumok hozhatók létre. A 11-es verzióban a `SearchIndexClient` meglévő indexekkel működik. A kód frissítésekor a félreértések elkerülése érdekében figyelembe kell venni, hogy milyen sorrendben frissülnek az ügyfelek hivatkozásai. A [frissítéshez szükséges lépések](#UpgradeSteps) végrehajtásával csökkentheti a karakterlánc-helyettesítési problémákat.
 
 <a name="naming-differences"></a>
 
@@ -125,7 +125,7 @@ A 11-es verzió teljes mértékben támogatja a következő objektumokat és mű
 
 A következő 10-es verziójú funkciók még nem érhetők el a 11. verzióban. Ha ezeket a szolgáltatásokat használja, az áttelepítés után tartsa lenyomva a szolgáltatást, amíg azok nem támogatottak.
 
-+ [térinformatikai típusok](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.serialization.geojsonextensions)
++ térinformatikai típusok
 + [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (bár [ezt a megoldást](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)használhatja).
 + [Tudástár](knowledge-store-concept-intro.md)
 
@@ -173,7 +173,7 @@ A szolgáltatási verziók esetében a 10 – 11 értékre való áttérés a k�
 
 + A null értékek [rendezett eredményei](search-query-odata-orderby.md) módosultak ebben a verzióban, és először Null érték jelenik meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` . Ha kódot írt a null értékek rendezésének kezeléséhez, tekintse át és távolítsa el ezt a kódot, ha már nincs rá szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Példák a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
