@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052484"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904258"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -58,6 +58,13 @@ A cikk bemutatja, hogyan tölthet fel és indexelheti a videókat a következő 
 
 A Video Indexer használatával használható fájlformátumok listáját a [bemeneti tároló/fájlformátumok](../latest/media-encoder-standard-formats.md#input-containerfile-formats) című cikkben találja.
 
+## <a name="video-files-storage"></a>Videofájlok tárolása
+
+- Fizetős Video Indexer fiókkal létrehoz egy Video Indexer fiókot, amely az Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik. További információ: az [Azure-hoz csatlakoztatott video Indexer-fiók létrehozása](connect-to-azure.md).
+- A videofájlokat az Azure Storage tárolja Azure Media Services. Nincs időbeli korlátozás.
+- Bármikor törölheti a videó-és hangfájlokat, valamint a belőlük kinyert metaadatokat és elemzéseket Video Indexer alapján. Ha töröl egy fájlt a Video Indexer, a fájl és a hozzá tartozó metaadatok és az adatok véglegesen törlődnek a Video Indexerból. Ha azonban végrehajtotta saját biztonsági mentési megoldását az Azure Storage-ban, a fájl az Azure Storage-ban marad.
+- A videók perzisztencia megegyeznek, függetlenül attól, hogy a feltöltés készen áll-e a Video Indexer webhely vagy a feltöltési API használatával.
+   
 ## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Videó feltöltése és indexelése a Video Indexer webhelyén
 
 > [!NOTE]
@@ -110,7 +117,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
         
     - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>Jegyzetek
+##### <a name="notes"></a>Megjegyzések
 
 - Video Indexer az eredeti URL-címben megadott meglévő paramétereket adja vissza.
 - A megadott URL-címet kódolni kell.
@@ -141,6 +148,9 @@ A **priority** paraméter csak a fizetős fiókok esetében támogatott.
 A videó feltöltése után a Video Indexer opcionálisan kódolja a videót. Ezután továbblép a videó indexelésére és elemzésére. Amikor a Video Indexer végzett az elemzéssel, kapni fog egy értesítést, benne a videó azonosítójával.  
 
 A [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy a [Videó újraindexelése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API használatakor a `streamingPreset` az egyik választható paraméter. Ha a `streamingPreset` paramétert `Default`, `SingleBitrate` vagy `AdaptiveBitrate` értékre állítja, a kódolási folyamat aktiválódik. Az indexelési és a kódolási feladatok befejezése után a rendszer közzéteszi a videót, amely streamelhető is. A videó streameléséhez használt streamvégpontnak **Futó** állapotban kell lennie.
+
+A SingleBitrate standard kódoló díja a kimeneten fog vonatkozni. Ha a videó magassága nagyobb vagy egyenlő, mint 720, Video Indexer kódolja a 1280x720. Ellenkező esetben a 640x468.
+Az alapértelmezett beállítás a [Content Aware kódolás](../latest/content-aware-encoding.md).
 
 Az indexelési és kódolási feladatok futtatásához a [Video Indexer-fiókjához csatlakoztatott Azure Media Services-fióknak](connect-to-azure.md) fenntartott egységekre van szüksége. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. Mivel ezek nagy számításigényű feladatok, határozottan ajánlott az S3-as egységtípus. A kérelemegységek száma meghatározza a párhuzamosan futtatható feladatok maximális számát. Az általános javaslat 10 S3 kérelemegység. 
 
@@ -348,12 +358,12 @@ public class AccountContractSlim
 
 A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi táblázatban láthatók.
 
-|Állapotkód|Hibatípus (a válasz törzsében)|Description|
+|Állapotkód|Hibatípus (a válasz törzsében)|Leírás|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
 |429||A próbaverziós fiókok percenként 5 feltöltést vehetnek igénybe. A fizetős fiókok percenként 50 feltöltést engedélyeznek.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)

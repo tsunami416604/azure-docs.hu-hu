@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/5/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551678"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845459"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
 
@@ -59,10 +59,10 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Állítsa be az átirányítási URI-t az alap URL-címre.
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-1. Az Azure Portal bezárása előtt állítson be egy ügyfél-titkot.
 1. A Azure Portal válassza ki az alkalmazást, és válassza a **tanúsítványok & titkok**lehetőséget.
 1. Válassza az **új ügyfél titkot** , és adjon hozzá egy vagy két év időtartamú titkot.
 1. A lap mentésekor a Azure Portal megjeleníti a titkos értéket. Másolja és mentse a titkos értéket egy biztonságos helyen.
+1. Hozzon létre egy hatókört az alkalmazáshoz az alkalmazás **API** -oldalán, és kattintson a "hatókör hozzáadása" elemre.  Előfordulhat, hogy a portálon létre kell hoznia egy alkalmazás-azonosító URI-t is. 
 
 > [!IMPORTANT]
 > A saját implementációjában az Alkalmazásbeállítások konfigurálásához szükség van a titkos kulcsra. Ez a titkos érték nem jelenik meg újra, és semmilyen más módon nem kérhető le. Jegyezze fel, amint a Azure Portal látható.
@@ -79,7 +79,7 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Konfigurálja az alkalmazás engedélyeit. Az **API-engedélyek**területen válassza az **engedély hozzáadása** , majd **az API**-k elemet.
 1. Írja be a középső rétegbeli szolgáltatás nevét a szövegmezőbe.
-1. Válassza az **engedélyek kiválasztása** , majd **a \<service name> hozzáférés **lehetőséget.
+1. Válassza az **engedélyek kiválasztása** lehetőséget, majd válassza ki a középső réteg regisztrálásának utolsó lépésében létrehozott hatókört.
 
 ### <a name="configure-known-client-applications"></a>Ismert ügyfélalkalmazások konfigurálása
 
@@ -105,7 +105,7 @@ Az ügyfélalkalmazás védelmét egy közös titok vagy egy tanúsítvány véd
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
 | állítás |kötelező | A kérelemben használt jogkivonat értéke. |
@@ -249,7 +249,7 @@ Néhány OAuth-alapú webszolgáltatásnak hozzá kell férnie más webszolgált
 
 Az SAML-állítások szolgáltatás-szolgáltatásra irányuló kérelme a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**értékűnek kell lennie. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke.|
@@ -291,7 +291,7 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 
 A helyettesítő karakteres válasz URL-címekkel rendelkező nyilvános ügyfelek nem használhatják az `id_token` OBO-folyamatokat. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OAuth 2,0 protokollról és egy másik módszer az ügyfél-hitelesítő adatokat használó szolgáltatás-szolgáltatás hitelesítés végrehajtásához:
 

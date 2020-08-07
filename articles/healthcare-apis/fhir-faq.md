@@ -2,18 +2,18 @@
 title: Az Azure-beli FHIR-szolgáltatásokkal kapcsolatos gyakori kérdések – Azure API for FHIR
 description: Válaszok a FHIR készült Azure API-val kapcsolatos gyakori kérdésekre, például a FHIR API-k mögötti adattárolási helyhez és a verziók támogatásához.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
-ms.author: mihansen
-ms.openlocfilehash: b3838c46dcd5515cca81f41a4b8ac55bc68ffe69
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.author: matjazl
+ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552934"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843521"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 

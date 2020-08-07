@@ -3,18 +3,18 @@ title: Azure API a FHIR hozzáférési token érvényesítéséhez
 description: Végigvezeti a jogkivonat-ellenőrzésen, és tippeket ad a hozzáférési problémák elhárításához
 services: healthcare-apis
 author: caitlinv39
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: 672acd4f68acd4998fd7631240c2f998299def11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 426ec0c2d6cc274aa0b6829eb4a30fd29b9ba8e2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871958"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844660"
 ---
 # <a name="azure-api-for-fhir-access-token-validation"></a>Azure API a FHIR hozzáférési token érvényesítéséhez
 
@@ -118,7 +118,7 @@ A szerepkörök a FHIR- [kiszolgálón való definiálásának](https://github.c
 
 A FHIR-kiszolgálók azt is ellenőrizhetik, hogy egy hozzáférési jogkivonat rendelkezik-e hatókörrel (jogkivonat-jogcímben `scp` ) a FHIR API azon részéhez való hozzáféréshez, amelyet az ügyfél megkísérel elérni. Jelenleg a FHIR-hez készült Azure API és az Azure-hoz készült FHIR-kiszolgáló nem érvényesíti a jogkivonat-hatóköröket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már tudja, hogyan hajthatja végre a jogkivonat-érvényesítést, elvégezheti az oktatóanyagot egy JavaScript-alkalmazás létrehozásához és a FHIR-információk olvasásához.
 
 >[!div class="nextstepaction"]

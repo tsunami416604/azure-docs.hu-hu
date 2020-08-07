@@ -9,18 +9,18 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543095"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760736"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
 
 Ez a cikk segítséget nyújt az Azure Blob Storage költségeinek megtervezéséhez és kezeléséhez. Először is becsülje meg a költségeket az Azure díjszabási kalkulátor használatával. A Storage-fiók létrehozása után optimalizálja a fiókot, így csak azért kell fizetnie, amire szüksége van. A Cost Management-funkciók használatával megadhatja a költségvetéseket és figyelheti a költségeket. Áttekintheti az előre jelzett költségeket, és figyelemmel kísérheti a kiadási trendeket, hogy azonosítsa azokat a területeket, ahol érdemes lehet eljárni.
 
-Ne feledje, hogy az Azure Storage szolgáltatás költségei csak a havi költségek egy részét jelentik az Azure-számlán. Bár ez a cikk azt ismerteti, hogyan lehet megbecsülni és kezelni az Azure Storage költségeit, az Azure-előfizetéshez használt összes Azure-szolgáltatás és erőforrás díja, beleértve a külső szolgáltatásokat is. Miután megismerte az Azure Storage költségeinek kezelését, hasonló módszerekkel kezelheti az előfizetésben használt összes Azure-szolgáltatás költségeit.
+Ne feledje, hogy a blob Storage költségei csak a havi költségek egy részét jelentik az Azure-számlán. Bár ez a cikk azt ismerteti, hogyan lehet megbecsülni és kezelni a blob Storage költségeit, az Azure-előfizetéshez használt összes Azure-szolgáltatás és-erőforrás, beleértve a harmadik féltől származó szolgáltatásokat is. Miután megismerte a blob Storage költségeinek kezelését, hasonló módszerekkel kezelheti az előfizetésben használt összes Azure-szolgáltatás költségeit.
 
 ## <a name="estimate-costs"></a>A költségek megbecslése
 
@@ -85,7 +85,7 @@ A Cost Analysis használatakor különböző időintervallumok esetén megtekint
 
 Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 2. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis**lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
 
@@ -99,7 +99,7 @@ Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
 Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régiók (helyszínek) és az erőforráscsoport költségei is megjelennek. További szűrőket is hozzáadhat (például egy szűrőt az adott Storage-fiókok költségeinek megjelenítéséhez).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a költségek a [Cost Analysis](../../cost-management-billing/costs/quick-acm-cost-analysis.md)szolgáltatással történő kezeléséről.
 
