@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 70244f6709e35271f63834fd818ea7c72e52a419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52cba173f7d3fe4c4d65d538fac3ef850f0491e2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032068"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835408"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision 3,0 REST API és C használatával #
 
@@ -405,7 +405,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 
 Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezzen fel egy alapszintű Windows-alkalmazást, amely Computer Visiont használ az optikai karakterfelismerés (OCR) végrehajtásához. Intelligens vágású miniatűrök létrehozása; Emellett vizuális funkciók (például arcok) észlelése, kategorizálása, címkézése és leírása a képen.
 

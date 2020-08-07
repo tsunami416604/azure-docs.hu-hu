@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588632"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904003"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 | -------| ----------- |
 | api-verzió <img width=200/>   | **Szükséges lekérdezési paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` . |
 | language | **Opcionális lekérdezési paraméter**.<br/>A szövegbeviteli szöveg nyelvét azonosító nyelvi címke. Ha nincs megadva kód, az automatikus nyelvfelismerés lesz alkalmazva. |
-| szkriptet.    | **Opcionális lekérdezési paraméter**.<br/>A bemeneti szöveg által használt parancsfájlt azonosító szkript címkéje. Ha nincs megadva parancsfájl, a rendszer a nyelv alapértelmezett parancsfájlját fogja feltételezni.  | 
+| parancsfájl    | **Opcionális lekérdezési paraméter**.<br/>A bemeneti szöveg által használt parancsfájlt azonosító szkript címkéje. Ha nincs megadva parancsfájl, a rendszer a nyelv alapértelmezett parancsfájlját fogja feltételezni.  | 
 
 A kérelem fejlécei a következők:
 
@@ -61,7 +61,7 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON-objektum `Te
 Az alábbi korlátozások érvényesek:
 
 * A tömb legfeljebb 100 elemet tartalmazhat.
-* Egy tömb elemének szöveges értéke nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
+* Egy tömb elemének szöveges értéke nem lehet hosszabb 50 000 karakternél, beleértve a szóközöket is.
 * A kérelemben szereplő teljes szöveg nem lehet hosszabb 50 000 karakternél, beleértve a szóközöket is.
 * Ha a `language` lekérdezési paraméter meg van adva, akkor az összes tömb elemnek ugyanabban a nyelven kell lennie. Ellenkező esetben a rendszer minden egyes tömb elemhez külön alkalmazza a nyelv automatikus észlelését.
 

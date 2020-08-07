@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: f4fa90025e9aaa12c065514e0dd4e5d76e4f8d24
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: seo-python-october2019, devx-track-python
+ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337301"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852480"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Gyors útmutató: Azure Service Bus várólisták használata a Python használatával
 
@@ -113,7 +113,7 @@ Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a metódus me
 > [!TIP]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. Service Bus Explorer lehetővé teszi egy Service Bus névtérhez való kapcsolódást és az üzenetkezelési entitások egyszerű felügyeletét. Az eszköz olyan speciális funkciókat biztosít, mint például az importálási/exportálási funkciók, a témakörök, a várólisták, az előfizetések, a továbbító szolgáltatások, az értesítési központok és az Event hub-eszközök tesztelése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte Service Bus várólisták alapjait, további információt a [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions] című témakörben talál.
 

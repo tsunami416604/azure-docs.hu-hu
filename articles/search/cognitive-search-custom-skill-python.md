@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604694"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852786"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
 
@@ -264,7 +264,7 @@ Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a kész
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Gratulálunk! Létrehozta az első egyéni szaktudását. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. További információért kattintson az alábbi hivatkozásokra.
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)

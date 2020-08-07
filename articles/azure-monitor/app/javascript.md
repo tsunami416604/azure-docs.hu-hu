@@ -2,14 +2,14 @@
 title: Azure-Application Insights JavaScript-alapú webalkalmazásokhoz
 description: Megtekintheti az oldal nézetét és a munkamenetek számát, a webes ügyfél adatait, az egyoldalas alkalmazásokat (SPA) és a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon.
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531319"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905825"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -107,10 +107,10 @@ Az elérhető konfigurációs lehetőségek a következők
 | Név | Típus | Leírás
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
-| name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, az alapértelmezett érték a appInsights. Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
+| name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
 | ld | szám az MS-ban *[opcionális]* | Meghatározza azt a betöltési késleltetést, ameddig a rendszer megpróbálja betölteni az SDK-t. Az alapértelmezett érték a 0ms, és minden negatív érték azonnal hozzáad egy szkript címkét &lt; a &gt; lap főrégiójához, amely letiltja az oldal betöltési eseményét, amíg a parancsfájl be nem töltődik (vagy sikertelen).
 | useXhr | logikai érték *[opcionális]* | Ez a beállítás csak jelentési SDK-betöltési hibák esetén használatos. A jelentéskészítés először a beolvasást () fogja használni, ha elérhető, majd a tartalék x/óra értékre állítja be ezt az értéket, csak a beolvasás ellenőrzését. Ezt az értéket csak akkor kell használni, ha az alkalmazás olyan környezetben van használatban, amelyben a fetch nem fogja elküldeni a sikertelen események eseményeit.
-| crossOrigin | karakterlánc *[nem kötelező]* | Ennek a beállításnak a megadásával az SDK letöltéséhez hozzáadott parancsfájl-címke tartalmazza a crossOrigin attribútumot a karakterlánc értékkel. Ha nincs definiálva (az alapértelmezett) nincs crossOrigin attribútum hozzáadva. Az ajánlott értékek nincsenek definiálva (az alapértelmezett érték); ""; vagy "névtelen" (az összes érvényes értéknél lásd [: HTML-attribútum: crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) -dokumentáció)
+| crossOrigin | karakterlánc *[nem kötelező]* | Ennek a beállításnak a megadásával az SDK letöltéséhez hozzáadott parancsfájl-címke tartalmazza a crossOrigin attribútumot a karakterlánc értékkel. Ha nincs definiálva (az alapértelmezett) nincs crossOrigin attribútum hozzáadva. Az ajánlott értékek nincsenek definiálva (az alapértelmezett érték); ""; vagy a "névtelen" (az összes érvényes értéknél lásd a [HTML-attribútumot: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentáció)
 | cfg | objektum **[kötelező]** | Az inicializálás során a Application Insights SDK-nak átadott konfiguráció.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Telemetria küldése a Azure Portalba
@@ -150,10 +150,10 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Leírás |
+| Név | Alapértelmezett | Leírás |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -195,9 +195,9 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | enableResponseHeaderTracking | hamis | Igaz értéke esetén a rendszer az AJAX & beolvasási kérelem válaszának fejléceit nyomon követi, az alapértelmezett érték a false.
 | distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)a példát.
 | enableAjaxErrorStatusText | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a nem a sikertelen AJAX-kérelmekhez tartozó függőségi esemény szövege
-| enableAjaxPerfTracking | hamis | Alapértelmezett hamis érték. A felkeresett és a további böngészőablakokat is tartalmazó jelző. a jelentett Ajax (x/óra és beolvasás) teljesítménybeli időzítései jelentettek mérőszámokat.
+| enableAjaxPerfTracking | hamis | Alapértelmezett hamis érték. A felkeresett és a további böngészőablakokat is tartalmazó jelző. a jelzett `ajax` (x/óra és Fetch) teljesítménybeli időzítések jelentettek mérőszámokat.
 | maxAjaxPerfLookupAttempts | 3 | Az alapértelmezett érték 3. Az ablak keresésének maximális száma. a teljesítmény időzítése (ha elérhető), ez azért szükséges, mert nem minden böngésző tölti ki az ablakot. a teljesítmény az x/h-kérelem végének bejelentése előtt, valamint a beolvasási kérelmeknél ez a befejezés után lesz hozzáadva.
-| ajaxPerfLookupDelay | 25 | Az alapértelmezett érték 25 MS. Az a várakozási idő, ameddig a rendszer újra megkísérli megkeresni a Windowst. a teljesítmény időzítése egy Ajax-kérelem esetében, az idő ezredmásodpercben van, és közvetlenül a setTimeout () értékre lesz átadva.
+| ajaxPerfLookupDelay | 25 | Az alapértelmezett érték 25 MS. Az a várakozási idő, ameddig a rendszer újra megkísérli megkeresni a Windowst. a kérelmek teljesítményének időzítése `ajax` ezredmásodpercben történik, és közvetlenül a setTimeout () függvénynek lesz átadva.
 | enableUnhandledPromiseRejectionTracking | hamis | Ha az értéke igaz, a nem kezelt ígéretek elutasítása automatikusan történik, és JavaScript-hibaként fog jelenteni. Ha a disableExceptionTracking értéke igaz (ne kövesse nyomon a kivételeket), a rendszer figyelmen kívül hagyja a konfigurációs értéket, és nem kezeli az ígéretek elutasítását.
 
 ## <a name="single-page-applications"></a>Egyoldalas alkalmazások
@@ -219,6 +219,38 @@ A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az 
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="correlation"></a>Korreláció
+
+Az ügyfél és a kiszolgálóoldali korreláció a következő esetén támogatott:
+
+- X/s/AJAX-kérelmek 
+- Kérelmek beolvasása 
+
+Az ügyfél és a kiszolgálóoldali korreláció **nem támogatott** a `GET` és a `POST` kérelmek esetében.
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Az AJAX-és a kiszolgálói kérelmek közötti kereszthivatkozások engedélyezése
+
+`CORS`A korreláció engedélyezéséhez az ügyfélnek két további kérelem-fejlécet kell küldenie, és `Request-Id` `Request-Context` a kiszolgálónak képesnek kell lennie a kapcsolatok fogadására a jelen fejlécekben. A fejlécek küldését `enableCorsCorrelation: true` a JavaScript SDK konfigurációján belül engedélyezheti. 
+
+A kiszolgálóoldali `Access-Control-Allow-Headers` konfigurációtól függően gyakran szükséges a kiszolgálóoldali lista kiterjesztése a és a manuális hozzáadásával `Request-Id` `Request-Context` .
+
+Hozzáférés-vezérlés engedélyezése – fejlécek: `Request-Id` , `Request-Context` ,`<your header>`
+
+Ha az ügyfél által kommunikáló külső kiszolgálók közül bármelyik nem fogadja el a és a `Request-Id` `Request-Context` fejlécet, és nem tudja frissíteni a konfigurációját, akkor a konfigurációs tulajdonsággal kell őket egy kizárási listára helyeznie `correlationHeaderExcludeDomains` . Ez a tulajdonság támogatja a helyettesítő karaktereket.
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>Böngésző-és ügyféloldali adat megismerése
 

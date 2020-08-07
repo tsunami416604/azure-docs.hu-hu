@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: f43db986f70e64e55225465223b7e324450541a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec4b771387854c40045f2b57afe7ead6c52f2c7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084336"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836037"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával (3.0.0-Preview1 verzió)
 
@@ -317,7 +317,7 @@ A leküldéses értesítések küldése általában olyan háttérszolgáltatás
 
 Az alábbiakban felsorolunk néhány olyan oktatóanyagot, amelyet érdemes lehet áttekinteni az értesítések küldéséhez:
 
-- Azure Mobile Apps: a [leküldéses értesítések hozzáadása iOS-alkalmazáshoz](/azure/app-service-mobile/app-service-mobile-ios-get-started-push)című témakörből megtudhatja, hogyan küldhet értesítéseket az Notification Hubs-vel integrált Mobile apps háttérből.
+- Azure Mobile Apps: a [leküldéses értesítések hozzáadása iOS-alkalmazáshoz](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)című témakörből megtudhatja, hogyan küldhet értesítéseket az Notification Hubs-vel integrált Mobile apps háttérből.
 - ASP.NET: [a Notification Hubs használatával leküldéses értesítéseket küldhet a felhasználóknak](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 - Azure Notification Hubs Java SDK: Tekintse meg a Java [-ból való használatról](notification-hubs-java-push-notification-tutorial.md)szóló értesítések a Java Notification Hubs használatával történő küldését ismertető témakört   . Ez az Eclipse-ben lett tesztelve Android-fejlesztéshez.
 - PHP: [Notification Hubs használata a PHP-ből](notification-hubs-php-push-notification-tutorial.md).
@@ -336,7 +336,7 @@ A leküldéses értesítések iOS rendszeren történő teszteléséhez üzembe 
 
    :::image type="content" source="media/ios-sdk/image8.png" alt-text="Teszt küldése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az egyszerű példában leküldéses értesítéseket küld a regisztrált iOS-eszközökre. Ha szeretné megtudni, hogyan küldhet leküldéses értesítéseket adott iOS-eszközökre, folytassa a következő oktatóanyaggal:
 

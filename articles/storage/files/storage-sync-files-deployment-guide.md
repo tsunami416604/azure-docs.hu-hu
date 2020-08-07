@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync üzembe helyezése | Microsoft Docs
-description: Megtudhatja, hogyan helyezheti üzembe a Azure File Synct az elejétől a végéig.
+description: Megtudhatja, hogyan helyezheti üzembe a Azure File Synct, az elejétől a végéig, a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460626"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903850"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -78,15 +78,15 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
 
    - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
 
-1. Bejelentkezés lehetőséget.
+1. Jelentkezzen be.
 
-   Jelentkezzen be az az [login](/cli/azure/reference-index#az-login) paranccsal, ha a parancssori felület helyi telepítését használja.
+   Jelentkezzen be az [az login](/cli/azure/reference-index#az-login) paranccsal, ha a CLI helyi telepítését használja.
 
    ```azurecli
    az login
    ```
 
-    A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+    A terminálon megjelenő utasítások alapján végezze el a hitelesítési folyamatot.
 
 1. Telepítse az az [filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI bővítményt.
 
@@ -584,7 +584,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

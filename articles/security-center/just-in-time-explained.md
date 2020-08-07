@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420838"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833453"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Igény szerinti (JIT) VM-hozzáférés ismertetése
 
@@ -44,7 +44,7 @@ Ha engedélyezi a virtuális gépek igény szerinti elérését, kiválaszthatja
 
 Ha már léteznek más szabályok a kiválasztott portokhoz, akkor a meglévő szabályok prioritást élveznek az új "minden bejövő forgalom tiltása" szabályban. Ha nincsenek meglévő szabályok a kiválasztott portokon, akkor az új szabályok elsődleges prioritást kapnak a NSG és a Azure Firewall.
 
-Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó rendelkezik [-e szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) engedélyekkel az adott virtuális géphez. Ha a kérést jóváhagyják, Security Center konfigurálja a NSG és a Azure Firewall, hogy engedélyezze a bejövő forgalmat a kiválasztott portokra a megfelelő IP-címről (vagy tartományból) a megadott időtartamra. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. A már létrehozott kapcsolatok nincsenek megszakítva.
+Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó rendelkezik [-e Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) az adott virtuális géphez. Ha a kérést jóváhagyják, Security Center konfigurálja a NSG és a Azure Firewall, hogy engedélyezze a bejövő forgalmat a kiválasztott portokra a megfelelő IP-címről (vagy tartományból) a megadott időtartamra. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. A már létrehozott kapcsolatok nincsenek megszakítva.
 
 > [!NOTE]
 > A JIT nem támogatja a [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)által vezérelt Azure-tűzfalak által védett virtuális gépeket.

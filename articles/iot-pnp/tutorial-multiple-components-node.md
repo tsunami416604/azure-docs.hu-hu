@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420685"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904054"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Oktatóanyag: minta-IoT csatlakoztatása Plug and Play előzetes verzió több összetevő-eszköz alkalmazása IoT Hub (Node.js)
 
@@ -98,29 +98,29 @@ Nyissa meg a *pnpTemperatureController.js* fájlt egy tetszőleges szerkesztőpr
 
 1. Határozza meg, `modelId` hogy melyik a megvalósított eszköz DTMI. Ez a DTMI felhasználó által definiált, és meg kell egyeznie a [hőmérséklet-vezérlő DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)DTMI.
 
-1. Implementálja a hőmérséklet-vezérlő DTDL-modellben meghatározott összetevőket. A valós hőmérséklet-vezérlő összetevőinek meg kell valósítaniuk ezt a két felületet. Ez a két csatoló már közzé van téve egy központi tárházban. Ebben a példában a két csatoló a következő:
+2. Implementálja a hőmérséklet-vezérlő DTDL-modellben meghatározott összetevőket. A valós hőmérséklet-vezérlő összetevőinek meg kell valósítaniuk ezt a két felületet. Ez a két csatoló már közzé van téve egy központi tárházban. Ebben a példában a két csatoló a következő:
   - Okostelefonok
   - Az Azure által fejlesztett eszközök adatai
 
-1. Adja meg az összetevők nevét. Ez a minta két termosztáttal és egy eszköz-információs összetevővel rendelkezik.
+3. Adja meg az összetevők nevét. Ez a minta két termosztáttal és egy eszköz-információs összetevővel rendelkezik.
 
-1. Adja meg a parancs nevét. Ezek azok a parancsok, amelyekre az eszköz válaszol.
+4. Adja meg a parancs nevét. Ezek azok a parancsok, amelyekre az eszköz válaszol.
 
-1. Adja meg az `serialNumber` állandót. A `serialNumber` rögzített egy adott eszközt.
+5. Adja meg az `serialNumber` állandót. A `serialNumber` rögzített egy adott eszközt.
 
-1. Adja meg a parancs-kezelőket.
+6. Adja meg a parancs-kezelőket.
 
-1. Adja meg a függvényeket a parancs válaszainak elküldéséhez.
+7. Adja meg a függvényeket a parancs válaszainak elküldéséhez.
 
-1. Segítő függvények definiálása a parancsok naplózásához.
+8. Segítő függvények definiálása a parancsok naplózásához.
 
-1. Adjon meg egy segítő függvényt a tulajdonságok létrehozásához.
+9. Adjon meg egy segítő függvényt a tulajdonságok létrehozásához.
 
-1. Adjon meg egy figyelőt a tulajdonságok frissítéseihez.
+10. Adjon meg egy figyelőt a tulajdonságok frissítéseihez.
 
-1. Definiáljon egy függvényt, amely telemetria küld az eszközről. Mindkét termosztát és a gyökérszintű összetevő telemetria küld. Ez a függvény paraméterként fogadja az összetevő nevét.
+11. Definiáljon egy függvényt, amely telemetria küld az eszközről. Mindkét termosztát és a gyökérszintű összetevő telemetria küld. Ez a függvény paraméterként fogadja az összetevő nevét.
 
-1. Definiáljon egy `main` függvényt, amely:
+12. Definiáljon egy `main` függvényt, amely:
 
     1. Az eszközoldali SDK használatával hozza létre az eszköz ügyfelet, és csatlakozik az IoT hubhoz. Az eszköz biztosítja, `modelId` hogy a IoT hub azonosítani tudja az eszközt IoT Plug and Play eszközként.
 

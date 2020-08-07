@@ -6,15 +6,15 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
 ms.reviewer: dseven
-ms.author: mihansen
-author: hansenms
+ms.author: matjazl
+author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563959"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844847"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -72,7 +72,7 @@ A következő részletekre lesz szüksége:
 | Ügyfél-azonosító             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | Alkalmazásazonosító             |
 | Titkos ügyfélkulcs         | `XXXXXXXX`                                                                                                        | Titkos ügyfél kulcsa          |
 | Hatókör | `<Leave Blank>` |
-| Állapot                 | `1234`                                                                                                            |                            |
+| Állam                 | `1234`                                                                                                            |                            |
 | Ügyfél-hitelesítés | Ügyfél hitelesítő adatainak küldése a törzsben                                                                                 |                 
 
 Nyomja meg a "kérelem token" elemet, és a rendszer végigvezeti a Azure Active Directory hitelesítési folyamaton, és egy tokent ad vissza a Poster-nek. Ha problémákat tapasztal, nyissa meg a Poster-konzolt (a "View->show Poster Console" menüpontban).

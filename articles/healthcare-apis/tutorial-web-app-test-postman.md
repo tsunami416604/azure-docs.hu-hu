@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84872604"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852922"
 ---
 # <a name="testing-the-fhir-api"></a>A FHIR API tesztelése
 Az előző két lépésben üzembe helyezte az Azure API-t a FHIR számára, és regisztrálta az ügyfélalkalmazás alkalmazását. Most már készen áll arra, hogy tesztelje, hogy a FHIR készült Azure API be van-e állítva az ügyfélalkalmazás számára. 
@@ -22,11 +22,11 @@ Az előző két lépésben üzembe helyezte az Azure API-t a FHIR számára, és
 ## <a name="retrieve-capability-statement"></a>Képességek beolvasása utasítás
 Először is megkapjuk az Azure API FHIR-hez készült funkciójának utasításait. 
 1. Poster megnyitása
-1. A https:// \< FHIR-Server-NAME>. azurehealthcareapis.com/metadata paranccsal kérheti le a képességi utasítást. Az alábbi képen a FHIR-kiszolgáló neve **fhirserver**.
+1. A https://. azurehealthcareapis.com/metadata lekérésével kérje le a képességi utasítást \<FHIR-SERVER-NAME> . Az alábbi képen a FHIR-kiszolgáló neve **fhirserver**.
 
 ![Képesség nyilatkozata](media/tutorial-web-app/postman-capability-statement.png)
 
-A következő lépésben megpróbálunk beolvasni egy beteget. Ha beteget szeretne beolvasni, írja be a GET https:// \< FHIR-Server-NAME>. azurehealthcareapis.com/Patient értéket. 401 jogosulatlan hibaüzenetet fog kapni. Ez a hiba azért van, mert nem bizonyította, hogy hozzáféréssel kell rendelkeznie a beteg-adatszolgáltatásokhoz.
+A következő lépésben megpróbálunk beolvasni egy beteget. A beteg beolvasásához írja be a következőt: GET https:// \<FHIR-SERVER-NAME> . azurehealthcareapis.com/Patient. 401 jogosulatlan hibaüzenetet fog kapni. Ez a hiba azért van, mert nem bizonyította, hogy hozzáféréssel kell rendelkeznie a beteg-adatszolgáltatásokhoz.
 
 ## <a name="get-patient-from-fhir-server"></a>FHIR-kiszolgálóról származó páciens beszerzése
 ![Sikertelen beteg](media/tutorial-web-app/postman-patient-authorization-failed.png)
@@ -41,12 +41,12 @@ A hozzáféréshez hozzáférési jogkivonatra van szükség.
 |Jogkivonat neve           |A token neve                                               |
 |Engedélyezési típus           |Engedélyezési kód                                                  |
 |Visszahívási URL         |https://www.getpostman.com/oauth2/callback                          |
-|Hitelesítési URL-cím             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|Hitelesítési URL-cím             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/? Resource = https:// \<FHIR-SERVER-NAME> . azurehealthcareapis.com|
 |Hozzáférési jogkivonat URL-címe     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
 |Ügyfél-azonosító            |Az előző lépések során másolt ügyfél-azonosító             |
-|Titkos ügyfélkulcs        |\<ÜRES>                                                            |
-|Hatókör                |\<ÜRES>                                                            |
-|Állapot                |1234                                                                |
+|Titkos ügyfélkulcs        |\<BLANK>                                                            |
+|Hatókör                |\<BLANK>                                                            |
+|Állam                |1234                                                                |
 |Ügyfél-hitelesítés|Ügyfél hitelesítő adatainak küldése a törzsben                                     |
 
 4. Jelentkezzen be a hitelesítő adataival, és válassza az **elfogadás** lehetőséget.

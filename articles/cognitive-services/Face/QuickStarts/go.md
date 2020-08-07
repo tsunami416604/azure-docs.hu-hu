@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 8de043e9ae79c29d1c6d7e4f59ac7494eeb2d4f8
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 538024c88799b42e19ec04784b53cfc6c1a8430e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985581"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833776"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával
 
@@ -312,7 +312,7 @@ Meg kell jelennie a konzolon kinyomtatott, észlelt arc típusú információk J
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy go-konzol alkalmazást írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaállítsa az attribútumokat. További információért olvassa el a Face API dokumentációját.
 

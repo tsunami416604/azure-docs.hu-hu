@@ -1,24 +1,24 @@
 ---
 title: Azure Files megosztás létrehozása és használata Windows rendszerű virtuális gépeken
-description: Ebben a rövid útmutatóban egy Azure Files-megosztást állít be a Azure Portal, és csatlakoztatva van egy Windows rendszerű virtuális géphez. Kapcsolódjon a fájlmegosztás fájlhoz, töltse fel a fájlokat a megosztásba. Ezután pillanatképet készít a fájlmegosztás fájlról, módosítja a fájlokat a megosztásban, és visszaállítja a fájlmegosztás korábbi pillanatképét.
+description: Hozzon létre és használjon egy Azure Files megosztást a Azure Portalban. Kapcsolódjon egy Windows rendszerű virtuális géphez, kapcsolódjon a fájlmegosztáshoz, és töltsön fel egy fájlt a fájlok megosztására.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75463914"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836428"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rövid útmutató: Azure Files megosztás létrehozása és kezelése Windows rendszerű virtuális gépekkel
 
 A cikk a Azure Files-megosztás létrehozásának és használatának alapvető lépéseit mutatja be. Ebben a rövid útmutatóban a hangsúly a Azure Files-megosztás gyors beállításán alapul, így a szolgáltatás működése is megtapasztalható. Ha részletesebb útmutatásra van szüksége az Azure-fájlmegosztás saját környezetben történő létrehozásához és használatához, tekintse meg az [Azure-fájlmegosztás használata a Windowsban](storage-how-to-use-files-windows.md)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -56,7 +56,7 @@ Utána a fájlmegosztás létrehozása következik.
 
     ![Fájl feltöltése](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
-1. Tallózással keresse meg azt a helyet, ahová a. txt fájlt létrehozta > válassza a *qsTestFile. txt* > a **feltöltés**lehetőséget.
+1. Tallózással keresse meg azt a helyet, ahová a. txt fájlt létrehozta > válassza ki *qsTestFile.txt* > válassza a **feltöltés**lehetőséget.
 
 Eddig létrehozott egy Azure Storage-fiókot és egy fájlmegosztást egyetlen fájllal az Azure-ban. Ezután hozza létre az Azure-beli virtuális gépet a Windows Server 2016 Datacenter használatával, hogy az ebben a rövid útmutatóban a helyszíni kiszolgálót képviseljék.
 
@@ -72,8 +72,8 @@ Eddig létrehozott egy Azure Storage-fiókot és egy fájlmegosztást egyetlen f
 1. Hagyja bejelölve az alapértelmezett beállításokat a **Régió**, **Rendelkezésre állási beállítások**, **Kép** és **Méret** mezőkben.
 1. A **rendszergazdai fiók**területen adja *VMadmin* hozzá a VMadmin **nevet** , és adjon meg egy **jelszót** a virtuális géphez.
 1. A **Bejövőport-szabályok** területen válassza a **Kijelölt portok engedélyezése**lehetőséget, majd válassza az **RDP (3389)** és a **HTTP** elemeket a legördülő listából.
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
-1. Kattintson a **Létrehozás** gombra. Az új virtuális gép létrehozása eltarthat pár percig.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget. Az új virtuális gép létrehozása eltarthat pár percig.
 
 1. Miután a virtuális gép üzembe helyezése befejeződött, válassza **az Ugrás az erőforráshoz**lehetőséget.
 
@@ -87,7 +87,7 @@ Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatleme
 
 1. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat, hogy az **IP-cím** használatával csatlakozzon az *3389* **portszámon** keresztül, és válassza az **RDP-fájl letöltése**lehetőséget.
 1. Nyissa meg a letöltött RDP-fájlt, és válassza a **Kapcsolódás** lehetőséget, amikor a rendszer kéri.
-1. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet *localhost\username*- &lt;ként&gt; , ahol a Felhasználónév a virtuális géphez létrehozott virtuális gép rendszergazdai felhasználóneve. Adja meg a virtuális géphez létrehozott jelszót, majd kattintson **az OK gombra**.
+1. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet *localhost\username*-ként, ahol a &lt; Felhasználónév &gt; a virtuális géphez létrehozott virtuális gép rendszergazdai felhasználóneve. Adja meg a virtuális géphez létrehozott jelszót, majd kattintson **az OK gombra**.
 
    ![További lehetőségek](./media/storage-files-quick-create-use-windows/local-host2.png)
 
@@ -101,13 +101,13 @@ Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatleme
    ![Az UNC-útvonal az Azure Files Csatlakozás oldaláról](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. A virtuális gépen nyissa meg a **fájlkezelőt** , és válassza ki **ezt a számítógépet** az ablakban. Ez a kijelölés megváltoztatja a menüszalagon elérhető menüket. A **számítógép** menüben válassza a **hálózati meghajtó csatlakoztatása**lehetőséget.
-1. Válassza ki a meghajtó betűjelét, és írja be az UNC-útvonalat. Ha követte az ebben a rövid útmutatóban szereplő elnevezési javaslatokat, másolja * \\a qsstorageacct. file. Core. Windows. net\qsfileshare fájlt* a **Jegyzettömbből**.
+1. Válassza ki a meghajtó betűjelét, és írja be az UNC-útvonalat. Ha követte az ebben a rövid útmutatóban szereplő elnevezési javaslatokat, másolja a * \\ qsstorageacct. file. Core. Windows. net\qsfileshare fájlt* a **Jegyzettömbből**.
 
    Győződjön meg arról, hogy mindkét jelölőnégyzet be van jelölve.
 
    ![A Hálózati meghajtó csatlakoztatása párbeszédpanel képernyőképe](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
-1. Válassza a **Finish** (Befejezés) elemet.
+1. Válassza a **Befejezés** lehetőséget.
 1. A **Windows rendszerbiztonság** párbeszédpanelen:
 
    - A Jegyzettömbből másolja ki a Storage-fiók nevét a előtagértéke az AZURE-ba, és illessze be a **Windows rendszerbiztonság** párbeszédpanelen a Felhasználónév mezőbe. Ha követte a jelen rövid útmutatóban szereplő elnevezési javaslatokat, másolja a *AZURE\qsstorageacct*.
@@ -115,7 +115,7 @@ Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatleme
 
       ![Az UNC-útvonal az Azure Files Csatlakozás oldaláról](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
-## <a name="create-a-share-snapshot"></a>Megosztási pillanatkép létrehozása
+## <a name="create-a-share-snapshot"></a>Megosztás-pillanatkép létrehozása
 
 Most, hogy leképezte a meghajtót, létrehozhat egy pillanatképet.
 
@@ -123,7 +123,7 @@ Most, hogy leképezte a meghajtót, létrehozhat egy pillanatképet.
 
    ![Pillanatkép létrehozása](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
-1. A virtuális gépen nyissa meg a *qstestfile. txt* fájlt, és írja be a következőt: "a fájl módosítva" > mentse és zárjuk be a fájlt.
+1. A virtuális gépen nyissa meg a *qstestfile.txtt* , és írja be a "Ez a fájl módosítva" > mentse és zárjuk be a fájlt.
 1. Hozzon létre egy másik pillanatképet.
 
 ## <a name="browse-a-share-snapshot"></a>Megosztási pillanatkép tallózása
@@ -133,7 +133,7 @@ Most, hogy leképezte a meghajtót, létrehozhat egy pillanatképet.
 
    ![Az időbélyegek listájában kiválasztott pillanatkép](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
-1. Az adott pillanatkép ablaktábláján válassza a *qsTestFile. txt*elemet.
+1. A pillanatkép ablaktábláján válassza a *qsTestFile.txt*lehetőséget.
 
 ## <a name="restore-from-a-snapshot"></a>Visszaállítás pillanatképből
 
@@ -159,7 +159,7 @@ A helyszíni VSS-pillanatképekhez hasonlóan a csatlakoztatott Azure-fájlmegos
 
    ![Csatlakoztatott megosztás a Fájlkezelőben](./media/storage-files-quick-create-use-windows/snapshot-windows-mount.png)
 
-1. Válassza ki a *qsTestFile. txt fájlt* , és > kattintson a jobb gombbal, és válassza a **Tulajdonságok** lehetőséget a menüből.
+1. Válassza a *qsTestFile.txt* lehetőséget, majd > a menüben kattintson a jobb gombbal, majd válassza a **Tulajdonságok** menüpontot.
 
    ![Kijelölt könyvtár helyi menüje](./media/storage-files-quick-create-use-windows/snapshot-windows-previous-versions.png)
 
@@ -173,13 +173,13 @@ A helyszíni VSS-pillanatképekhez hasonlóan a csatlakoztatott Azure-fájlmegos
 
 1. Válassza a **visszaállítás**lehetőséget. Ez a művelet a teljes könyvtár tartalmát rekurzív módon másolja át az eredeti helyre a megosztási pillanatkép létrehozásának időpontjában.
 
-   ![Visszaállítás gomb a figyelmeztető üzenet](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) megjegyzése: Ha a fájl nem módosult, akkor a fájl korábbi verziója nem jelenik meg, mert a fájl a pillanatképtel megegyező verziójú. Ez összhangban van azzal, hogy ez hogyan működik a Windows-fájlkiszolgálón.
+   ![Visszaállítás gomb a figyelmeztető üzenet ](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) megjegyzése: Ha a fájl nem módosult, akkor a fájl korábbi verziója nem jelenik meg, mert a fájl a pillanatképtel megegyező verziójú. Ez összhangban van azzal, hogy ez hogyan működik a Windows-fájlkiszolgálón.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Azure-fájlmegosztás használata Windows rendszeren](storage-how-to-use-files-windows.md)
+> [Azure-fájlmegosztás használata a Windows rendszeren](storage-how-to-use-files-windows.md)

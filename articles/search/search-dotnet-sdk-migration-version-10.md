@@ -1,5 +1,5 @@
 ---
-title: Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
+title: Frissítés a .NET SDK 10-es verziójára
 titleSuffix: Azure Cognitive Search
 description: Telepítse át a kódot az Azure Cognitive Search .NET SDK 10-es verziójára a régebbi verzióról. Ismerje meg, hogy mi az új, és milyen kód módosítása szükséges.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562377"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905781"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
 
@@ -111,7 +111,7 @@ var webApiSkill = new WebApiSkill(
 
 A formáló képesség mostantól lehetővé teszi a bemeneti konszolidációt a beágyazott környezetekben. Ennek a módosításnak az engedélyezéséhez módosítva lett, `InputFieldMappingEntry` hogy csak egy `Source` tulajdonság vagy a és a tulajdonságok megadásával legyen létrehozva `SourceContext` `Inputs` .
 
-Valószínűleg nem lesz szükség a kód módosítására; vegye figyelembe azonban, hogy a két kombinációnak csak egy része engedélyezett. Ez a következőkkel jár:
+Valószínűleg nem lesz szükség a kód módosítására; vegye figyelembe azonban, hogy a két kombinációnak csak egy része engedélyezett. Ez a következőket jelenti:
 
 - A `InputFieldMappingEntry` csak `Source` az inicializálási lehetőség létrehozása érvényes.
 - Csak a `InputFieldMappingEntry` `SourceContext` és `Inputs` a inicializálása érvényes.
@@ -154,7 +154,7 @@ Ha úgy dönt, hogy egyéni névvel azonosítja a szaktudást, akkor először f
 > [!NOTE]
 > Elkezdjük felstrukturálni a hibákat és a figyelmeztetéseket, hogy a lehető legpontosabban szerepeljenek ezek a hasznos információk. Dolgozunk annak biztosításán, hogy az összes hiba és figyelmeztetés ezen adatok jelennek meg, de a folyamat folyamatban van, és ezek a további részletek nem mindig lesznek feltöltve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Shapeer-képesség változásai a legnagyobb hatással lehetnek az új vagy meglévő kódokra. A következő lépésként mindenképpen tekintse át ezt a példát a bemeneti struktúra: [formáló ÜGYESSÉGI JSON-definíció példájának](cognitive-search-skill-shaper.md) szemléltetése.
 - Ugorjon végig a [mesterséges intelligenciával foglalkozó áttekintésben](cognitive-search-concept-intro.md).

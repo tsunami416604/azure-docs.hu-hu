@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-- tracking-python
+- devx-track-python
 ms.date: 01/09/2020
-ms.openlocfilehash: c03209413235b0d6fca22039756d6c19b643034b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6a93410b40926904a8429b70522eb01ab02f80a7
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606496"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876461"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Python)
 
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban egy közvetlen módszert használ az Azure IoT Hubh
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-bővítmény hozzáadása
 
-A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT-bővítmény az IoT Hubhoz, az IoT Edge-hez és az IoT Device Provisioning Service-hez (DPS) használható parancsokkal bővíti az Azure CLI-t.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -78,7 +78,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
-    Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
+    Jegyezze fel az eszközkapcsolati sztringet, amely az alábbihoz hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 

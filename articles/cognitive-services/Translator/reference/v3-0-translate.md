@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090858"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903986"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: fordítás
 
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>api-verzió</td>
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>a</td>
     <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg nyelvét. A hatókör használatával megkeresheti, hogy mely nyelvek érhetők el a <a href="./v3-0-languages.md">támogatott nyelvek</a> közül <code>translation</code> . Ha a <code>from</code> paraméter nincs megadva, a rendszer az automatikus nyelvfelismerés alapján határozza meg a forrás nyelvét. <br/><br/>A <code>from</code> <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dinamikus szótár</a> funkció használatakor az automatikus észlelés helyett a (z) paramétert kell használnia.</td>
@@ -104,7 +104,7 @@ A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
@@ -136,7 +136,7 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON `Text` -obje
 Az alábbi korlátozások érvényesek:
 
 * A tömb legfeljebb 100 elemet tartalmazhat.
-* A kérelemben szereplő teljes szöveg nem lehet hosszabb 5 000 karakternél, beleértve a szóközöket is.
+* A kérelemben szereplő teljes szöveg nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
 
 ## <a name="response-body"></a>Választörzs
 
@@ -182,7 +182,7 @@ Példa a JSON-válaszokra a [példák](#examples) szakaszban.
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
     <tr>
     <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
@@ -199,7 +199,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>
@@ -364,7 +364,7 @@ Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Műveletek</th>
+  <th>Művelet</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Ez az alapértelmezett viselkedés. A káromkodás a forrás és a cél között lesz továbbítva.<br/><br/>

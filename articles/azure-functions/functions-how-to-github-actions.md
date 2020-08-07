@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 3fcf26670ec03b1d3a496574e58ae706acdf5c53
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853291"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -26,7 +26,7 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 | Section | Feladatok |
 | ------- | ----- |
 | **Hitelesítés** | <ol><li>Adjon meg egy egyszerű szolgáltatásnevet.</li><li>Közzétételi profil letöltése.</li><li>Hozzon létre egy GitHub-titkot.</li></ol>|
-| **Felépítés** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
+| **Építeni** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
 | **Telepítés** | <ol><li>Telepítse a Function alkalmazást.</li></ol>|
 
 > [!NOTE]
@@ -218,9 +218,9 @@ Az alábbi példa a következők 1. verzióját használja `functions-action` :
         app-name: PLEASE_REPLACE_THIS_WITH_YOUR_FUNCTION_APP_NAME
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes munkafolyamat. YAML fájl megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://aka.ms/functions-actions-samples) tárházában található, a névvel rendelkező fájlok egyikét `functionapp` . Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 
 > [!div class="nextstepaction"]
-> [További információ a GitHub-műveletekről](https://help.github.com/en/articles/about-github-actions)
+> [További információ a GitHub Actions szolgáltatásról](https://help.github.com/en/articles/about-github-actions)

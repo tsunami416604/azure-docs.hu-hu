@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 061d6d1088358e5da0cb590fad5ed0a4cd9e422a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403470"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834218"
 ---
 # <a name="what-is-the-azure-face-service"></a>Mi az Azure Face Service?
 
@@ -51,7 +51,7 @@ Az alábbi példa a cél arcot mutatja:
 
 ![Öt mosolygó személy. Az a és b képek ugyanazt a személyt jelenítik meg.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Négy hasonló arc megtalálásához a matchPerson mód az a és b értéket adja vissza, amely ugyanazt a személyt jeleníti meg, mint a cél arca. A matchFace mód az a, b, c és d&mdash;pontosan négy pályázót ad vissza, még akkor is, ha nem ugyanaz a személy, mint a cél, vagy alacsony hasonlóságot mutat. További információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy a [hasonló API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) -referenciát.
+Négy hasonló arc megtalálásához a matchPerson mód az a és b értéket adja vissza, amely ugyanazt a személyt jeleníti meg, mint a cél arca. A matchFace mód az a, b, c és d &mdash; pontosan négy pályázót ad vissza, még akkor is, ha nem ugyanaz a személy, mint a cél, vagy alacsony hasonlóságot mutat. További információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy a [hasonló API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) -referenciát.
 
 ## <a name="face-grouping"></a>Arccsoportosítás
 
@@ -61,7 +61,7 @@ A Group API több csoportra osztja az ismeretlen arcokat a hasonlóság alapján
 
 Az azonosított API azonosítja az észlelt arcot egy személy adatbázisán. Ez a funkció akkor lehet hasznos, ha az automatikus képcímkézést a Photo Management szoftverben lehet használni. Az adatbázist előre kell létrehoznia, és bármikor szerkesztheti.
 
-Az alábbi képen a nevű `"myfriends"`adatbázisra mutat példát. Mindegyik csoport legfeljebb 1 000 000 különböző személy objektumot tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
+Az alábbi képen a nevű adatbázisra mutat példát `"myfriends"` . Mindegyik csoport legfeljebb 1 000 000 különböző személy objektumot tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
 
 ![Három oszlopból álló rács különböző személyek számára, melyek mindegyike három sornyi képpel rendelkezik](./Images/person.group.clare.jpg)
 
@@ -69,7 +69,7 @@ Az adatbázis létrehozása és betanítása után az azonosítást a csoporton 
 
 A személy azonosításával kapcsolatos további információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy az API-referenciák [azonosítására](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) szolgáló dokumentációt.
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Tárolók
 
 [A Face tárolóval](face-how-to-install-containers.md) az arcok észlelésére, felismerésére és azonosítására van egy szabványosított Docker-tároló telepítése az adataihoz közelebb.
 
@@ -84,7 +84,7 @@ Az alábbi példák a Face szolgáltatás használatának néhány módját muta
 
 Akárcsak az összes Cognitive Services erőforrás esetében, a Face szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információkért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövessen egy rövid útmutatót egy Arcfelismerés forgatókönyv megvalósításához a kódban:
 

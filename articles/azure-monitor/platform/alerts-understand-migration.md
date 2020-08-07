@@ -1,44 +1,33 @@
 ---
-title: A Azure Monitor-riasztások áttelepítési eszközének ismertetése
-description: Ismerje meg, hogy a riasztások áttelepítési eszköze hogyan működik és hibaelhárítási problémákkal rendelkezik.
+title: Az Azure Monitor-riasztások áttelepítésének ismertetése
+description: Ismerje meg, hogyan működik a riasztások áttelepítése és a problémák elhárítása.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564095"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852395"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>A migrálási eszköz működésének ismertetése
+# <a name="understand-migration-options-to-newer-alerts"></a>Az új riasztások áttelepítési lehetőségeinek megismerése
 
-Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a klasszikus riasztások Azure monitor 2019 (eredetileg a 2019. június 30-ig) megszűnnek. Az áttelepítési eszköz a Azure Portalban olyan ügyfelek számára érhető el, akik klasszikus riasztási szabályokat használnak, és magukat a migrációt szeretnék elindítani.
+A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat. A fennmaradó riasztások áttelepítése, [Azure Government a felhő](../../azure-government/documentation-government-welcome.md)és az [Azure China 21Vianet](https://docs.azure.cn/)hamarosan új dátummal fog bejelenteni.
 
-Ez a cikk azt ismerteti, hogyan működik az önkéntes áttelepítési eszköz. Emellett ismerteti a gyakori problémákra vonatkozó jogorvoslatokat is.
-
-> [!NOTE]
-> Az áttelepítési eszköz késése miatt a klasszikus riasztások áttelepítésének lejárati dátuma [2019 augusztus 31-ig](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) , az eredetileg bejelentett, 2019. június 30-ig.
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Nem migrált klasszikus riasztási szabályok
+Ez a cikk azt ismerteti, hogyan működik a manuális áttelepítési és az önkéntes áttelepítési eszköz, amelyet a rendszer a fennmaradó riasztási szabályok áttelepítésére használ. Emellett ismerteti a gyakori problémákra vonatkozó jogorvoslatokat is.
 
 > [!IMPORTANT]
 > Az áttelepítés nem érinti a tevékenységek naplójának riasztásait (a szolgáltatás állapotával kapcsolatos riasztásokat is beleértve) és a naplózási riasztásokat. Az áttelepítés csak az [itt](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)ismertetett klasszikus riasztási szabályokra vonatkozik.
 
-Bár az eszköz szinte az összes [klasszikus riasztási szabályt](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)át tudja telepíteni, bizonyos kivételek vannak. A következő riasztási szabályok nem lesznek áttelepítve az eszköz használatával (vagy az automatikus áttelepítés 2019. szeptemberének indításakor):
-
-- Klasszikus riasztási szabályok a virtuális gépek vendég metrikái (Windows és Linux rendszereken egyaránt). A [riasztási szabályok újbóli létrehozásával kapcsolatos útmutatásért](#guest-metrics-on-virtual-machines) lásd a jelen cikk későbbi, új metrikai riasztások című részében.
-- Klasszikus riasztási szabályok klasszikus tárolási mérőszámokhoz. Tekintse [meg a klasszikus Storage-fiókok figyelésével kapcsolatos útmutatót](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klasszikus riasztási szabályok néhány Storage-fiók metrikáján. A [részleteket](#storage-account-metrics) a cikk későbbi részében találja.
-- A klasszikus riasztási szabályok egyes Cosmos DB metrikák esetében. A [részleteket](#cosmos-db-metrics) a cikk későbbi részében találja.
-- Klasszikus riasztási szabályok a klasszikus virtuális gépek és a Cloud Services-metrikák (Microsoft. ClassicCompute/virtualMachines és Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök) esetében. A [részleteket](#classic-compute-metrics) a cikk későbbi részében találja.
-
-Ha az előfizetése klasszikus szabályokkal rendelkezik, azokat manuálisan kell áttelepítenie. Mivel nem tudunk automatikus áttelepítést biztosítani, az ilyen típusú meglévő, klasszikus metrikai riasztások továbbra is a 2020 júniusáig fognak működni. Ez a bővítmény időt biztosít az új riasztásokra való áttérésre. Továbbra is létrehozhat új klasszikus riasztásokat a fentiekben felsorolt kivételek szerint, 2020-ig. Azonban minden más esetben nem hozhatók létre új klasszikus riasztások augusztus 2019. után.
-
 > [!NOTE]
-> A fent felsorolt kivételek mellett, ha a klasszikus riasztási szabályok érvénytelenek, azaz [elavult metrikákkal](#classic-alert-rules-on-deprecated-metrics) vagy törölt erőforrásokkal rendelkeznek, nem lesznek áttelepítve, és a szolgáltatás kivonása után nem lesznek elérhetők.
+> Ha a klasszikus riasztási szabályok érvénytelenek, azaz [elavult metrikákkal](#classic-alert-rules-on-deprecated-metrics) vagy törölt erőforrásokkal rendelkeznek, nem lesznek áttelepítve, és a szolgáltatás kivonása után nem lesznek elérhetők.
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Klasszikus riasztások manuális áttelepítése újabb riasztásokra
+
+Azok az ügyfelek, akik a fennmaradó riasztások manuális áttelepítését érdeklik, már az alábbi részekben is megtehetik. Ezek a csoportok olyan mérőszámokat is definiálnak, amelyeket az erőforrás-szolgáltató visszavon, és jelenleg nem lehet közvetlenül áttelepíteni.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Vendég metrikák a virtuális gépeken
 

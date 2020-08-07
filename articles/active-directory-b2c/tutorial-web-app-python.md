@@ -10,13 +10,13 @@ ms.date: 06/12/2020
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.custom: tracking-python
-ms.openlocfilehash: 331f38f899c77f451fd43b81d7e83d73b3d5bcc1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: devx-track-python
+ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782418"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844626"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egy Python-webalkalmazásban Azure AD B2C
 
@@ -172,7 +172,7 @@ A **Létrehozás**gombra kattintva az alkalmazás megjeleníti a bejelentkezett 
 
 Ha tesztelni szeretné a bejelentkezést, válassza ki a **kijelentkezési** hivatkozást, majd válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be a regisztráció során megadott e-mail-címmel és jelszóval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Python-lombik webalkalmazást konfigurált a Azure AD B2C-bérlőben lévő felhasználói folyamattal való együttműködésre a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 

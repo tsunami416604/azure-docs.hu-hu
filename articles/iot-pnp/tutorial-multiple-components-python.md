@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352792"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905856"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>Oktatóanyag: minta IoT csatlakoztatása Plug and Play előzetes verzió több összetevő-eszköz alkalmazása IoT Hub (Python)
 
@@ -86,26 +86,26 @@ Nyissa meg a *pnp_temp_controller_with_thermostats.* a fájlt egy tetszőleges s
 
 1. Importálás `pnp_helper_preview_refresh.py` a segítő módszerekhez való hozzáféréshez.
 
-1. A két digitális kettős modell azonosítóját (DTMIs) határozza meg, amelyek egyedileg jelölik a DTDL modellben definiált két különböző felületet. A valós hőmérséklet-vezérlő összetevőinek meg kell valósítaniuk ezt a két felületet. Ez a két csatoló már közzé van téve egy központi tárházban. Ezeknek a DTMIs ismerniük kell a felhasználó számára, és az eszközök megvalósítási forgatókönyvtől függően változhatnak. Az aktuális minta esetében ez a két csatoló a következőket képviseli:
+2. A két digitális kettős modell azonosítóját (DTMIs) határozza meg, amelyek egyedileg jelölik a DTDL modellben definiált két különböző felületet. A valós hőmérséklet-vezérlő összetevőinek meg kell valósítaniuk ezt a két felületet. Ez a két csatoló már közzé van téve egy központi tárházban. Ezeknek a DTMIs ismerniük kell a felhasználó számára, és az eszközök megvalósítási forgatókönyvtől függően változhatnak. Az aktuális minta esetében ez a két csatoló a következőket képviseli:
 
   - Egy termosztát
   - Az Azure által fejlesztett eszközök adatai.
 
-. A `model_id` megvalósított eszköz DTMI határozza meg. A DTMI felhasználó által definiált, és meg kell egyeznie a DTMI a DTDL-modell fájljában.
+3. A `model_id` megvalósított eszköz DTMI határozza meg. A DTMI felhasználó által definiált, és meg kell egyeznie a DTMI a DTDL-modell fájljában.
 
-1. Meghatározza a DTDL-fájlban található összetevők nevét. Két termosztát található a DTDL és egy eszköz-információs összetevőben. A rendszer a `serial_number` gyökérszintű felületen is definiált konstanst. Egy `serial_number` eszköz nem módosítható.
+4. Meghatározza a DTDL-fájlban található összetevők nevét. Két termosztát található a DTDL és egy eszköz-információs összetevőben. A rendszer a `serial_number` gyökérszintű felületen is definiált konstanst. Egy `serial_number` eszköz nem módosítható.
 
-1. A parancs-kezelő implementációit határozza meg. Ezek határozzák meg, hogy az eszköz mikor kapja meg a parancs kéréseit.
+5. A parancs-kezelő implementációit határozza meg. Ezek határozzák meg, hogy az eszköz mikor kapja meg a parancs kéréseit.
 
-1. Függvények definiálása a parancs válaszának létrehozásához. Ezek határozzák meg, hogy az eszköz hogyan válaszol a parancs kéréseire. Ha egy parancsnak egyéni választ kell küldenie az IoT hubhoz, a parancs-válasz függvényeket kell létrehoznia. Ha nincs megadva egy parancshoz tartozó Response függvény, a rendszer általános választ kap. Ebben a mintában csak a **getMaxMinReport** parancs egyéni választ tartalmaz.
+6. Függvények definiálása a parancs válaszának létrehozásához. Ezek határozzák meg, hogy az eszköz hogyan válaszol a parancs kéréseire. Ha egy parancsnak egyéni választ kell küldenie az IoT hubhoz, a parancs-válasz függvényeket kell létrehoznia. Ha nincs megadva egy parancshoz tartozó Response függvény, a rendszer általános választ kap. Ebben a mintában csak a **getMaxMinReport** parancs egyéni választ tartalmaz.
 
-1. Definiál egy függvényt, amely telemetria küld az eszközről. A Termosztátok és a legfelső szintű interfész telemetria is küldenek. Ez a függvény egy opcionális összetevő-Name paramétert használ, amely lehetővé teszi annak azonosítását, hogy a telemetria melyik összetevőt küldték.
+7. Definiál egy függvényt, amely telemetria küld az eszközről. A Termosztátok és a legfelső szintű interfész telemetria is küldenek. Ez a függvény egy opcionális összetevő-Name paramétert használ, amely lehetővé teszi annak azonosítását, hogy a telemetria melyik összetevőt küldték.
 
-1. Egy figyelőt határoz meg a parancsok kéréséhez.
+8. Egy figyelőt határoz meg a parancsok kéréséhez.
 
-1. Egy figyelőt határoz meg a kívánt tulajdonságok frissítéseihez.
+9. Egy figyelőt határoz meg a kívánt tulajdonságok frissítéseihez.
 
-1. A funkciója a következőket tartalmazhatja `main` :
+10. A funkciója a következőket tartalmazhatja `main` :
 
     1. Az eszközoldali SDK használatával hozza létre az eszköz ügyfelet, és csatlakozik az IoT hubhoz. Az eszköz elküldi `model_id` azt, hogy az IoT hub azonosítani tudja az eszközt IoT Plug and Play eszközként.
 

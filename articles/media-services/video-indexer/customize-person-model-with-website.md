@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/06/2020
 ms.author: kumud
-ms.openlocfilehash: 28cb73df2df91fc96d7ac19e25d7bd13f47df41e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047295"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904496"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Személy modell testreszabása a Video Indexer webhellyel
 
@@ -126,9 +126,20 @@ Ha meg szeretné nézni a saját modelljeinek tartalmát, válassza a személy m
 
 ### <a name="manage-a-person"></a>Személy kezelése
 
-Ha a **kezelés**lehetőséget választja, megjelenik az összes olyan arc, amelyet a személy modellből betanítanak. Ezek az arcok az adott személy azon lapjairól érkeznek, amelyek ezt a személy modellt használják, vagy a manuálisan feltöltött képekből származnak.
+Ha a **kezelés**lehetőséget választja, a **személy részleteit** tartalmazó ablakban láthatja, hogy az adott személy modellje milyen arcot oktat. Ezek az arcok az adott személy azon lapjairól érkeznek, amelyek ezt a személy modellt használják, vagy a manuálisan feltöltött képekből származnak.
+
+> [!TIP]
+> A személy **adatai** ablak megnyitásához kattintson a személy nevére, vagy kattintson a **kezelés**lehetőségre, ahogy az a fentiekben látható.
+
+#### <a name="add-a-face"></a>Arc hozzáadása
 
 A **képek hozzáadása**lehetőség kiválasztásával több arcot is hozzáadhat a személyhez.
+
+#### <a name="delete-a-face"></a>Arc törlése
+
+Válassza ki a törölni kívánt rendszerképet, és kattintson a **Törlés**gombra.
+
+#### <a name="rename-and-delete-the-person"></a>Személy átnevezése és törlése 
 
 A kezelés ablaktáblával átnevezheti a személyt, és törölheti a személyt a személy modellből.
 
@@ -210,6 +221,6 @@ A személy, ha megkapta a nevét, továbbra is létezik a személy modellben, am
 
 ![Arc törlése a videóban](./media/customize-face-model/delete-face.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Személy modell testreszabása API-k használatával](customize-person-model-with-api.md)

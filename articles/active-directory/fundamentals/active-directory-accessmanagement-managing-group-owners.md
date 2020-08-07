@@ -2,7 +2,7 @@
 title: Csoport tulajdonosainak hozzáadása vagy eltávolítása – Azure Active Directory | Microsoft Docs
 description: Útmutatás a tulajdonosok Azure Active Directory használatával történő hozzáadásához vagy eltávolításához.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5fc389ccb52c4a5eeec0e0f544a17b011333a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e696ff576ffa8e788312344c4ebd103184173fa4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604522"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799582"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Csoport tulajdonosainak hozzáadása vagy eltávolítása Azure Active Directory
 A Azure Active Directory-(Azure AD-) csoportokat a csoport tulajdonosai és kezelik. A csoport tulajdonosai lehetnek felhasználók vagy egyszerű szolgáltatások, és képesek a csoport kezelésére, beleértve a tagságot is. A csoport tulajdonosai csak a meglévő tulajdonosok vagy csoport-felügyeleti rendszergazdák számára rendelhetők hozzá. A csoport tulajdonosai nem szükségesek a csoport tagjainak lennie.
@@ -60,7 +60,7 @@ Tulajdonos eltávolítása egy csoportból az Azure AD használatával.
 
     A tulajdonos eltávolítása után visszatérhet a **tulajdonosok** lapra, és megtekintheti a név eltávolítását a tulajdonosok listájából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)
 
 - [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md)

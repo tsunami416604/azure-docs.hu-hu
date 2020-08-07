@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3e83781a5ac8270cef37346b5850edd95a102f6a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404221"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834405"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="enter-credentials"></a>Hitelesítő adatok megadása
 
-Szerkessze `App.config` a fájlt, és adja hozzá a Active Directory bérlő nevét, a szolgáltatási végpontokat és a `#####`által jelzett előfizetési kulcsokat. A következő adatokra lesz szüksége:
+Szerkessze a `App.config` fájlt, és adja hozzá a Active Directory bérlő nevét, a szolgáltatási végpontokat és a által jelzett előfizetési kulcsokat `#####` . A következő adatokra lesz szüksége:
 
 |Kulcs|Leírás|
 |-|-|
@@ -357,9 +357,9 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban olyan alkalmazást állít be, amely moderálja a videó&mdash;tartalmát, beleértve&mdash;az átirat tartalmát, és a felülvizsgálati eszközben hozza létre az értékeléseket. Következő lépésként tekintse meg a videó moderálásának részleteit.
+Ebben az oktatóanyagban olyan alkalmazást állít be, amely moderálja a videó tartalmát, &mdash; beleértve &mdash; az átirat tartalmát, és a felülvizsgálati eszközben hozza létre az értékeléseket. Következő lépésként tekintse meg a videó moderálásának részleteit.
 
 > [!div class="nextstepaction"]
 > [Videomoderálás](./video-moderation-human-review.md)

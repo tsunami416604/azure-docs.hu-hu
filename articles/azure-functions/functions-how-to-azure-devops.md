@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: tracking-python, devx-track-azurecli
-ms.openlocfilehash: 4f291fd7787b67b2717662c9aaa20e2a825f33b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 15ac5bde6029b5608ff02c35451d4041bec29796
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496831"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853347"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Folyamatos kézbesítés az Azure DevOps használatával
 
@@ -30,7 +30,7 @@ YAML-alapú folyamat létrehozásához először létre kell hoznia az alkalmaz�
 
 Az alkalmazás Azure-folyamatokban való létrehozása az alkalmazás programozási nyelvtől függ. Az egyes nyelveken olyan speciális összeállítási lépések vannak, amelyek üzembe helyezési összetevőt hoznak létre. Az üzembe helyezési összetevő használatával üzembe helyezhetők a Function alkalmazás az Azure-ban.
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A következő minta használatával létrehozhat egy YAML-fájlt egy .NET-alkalmazás létrehozásához:
 
@@ -266,7 +266,7 @@ Az Azure-beli build-folyamat létrehozásához használja az `az functionapp dev
 
     - A projekt rendszergazdájának kell lennie az Azure DevOps-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure functions áttekintését](functions-overview.md).
 - Tekintse át az [Azure DevOps áttekintését](/azure/devops/pipelines/).

@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773279"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835816"
 ---
 # <a name="confidential-computing-on-azure"></a>Bizalmas számítástechnika az Azure-ban
 
@@ -52,7 +52,7 @@ Az enklávék a hardver processzorának és memóriájának biztonságos részei
 
 Az alkalmazások fejlesztése során a [szoftvereszközök](#oe-sdk) segítségével a kód és az adatközpontban tárolt adatvédelmek részeinek védelmét is elvégezheti. Ezek az eszközök biztosítják, hogy a kód és az adatai nem tekinthetők meg és nem módosíthatók a megbízható környezeten kívüli személyek számára. 
 
-Alapvetően az enklávét fekete dobozként kell meggondolni. A mezőbe a titkosított kódot és az adatmezőket helyezheti el. A mező kívülről nem láthat semmit. Az enklávénak egy kulcsot kell adnia az adatvisszafejtéshez, majd újra fel kell dolgoznia és titkosítania kell az adatközpontot az enklávéból való kiküldésük előtt.
+Alapvetően úgy gondolja, hogy egy enklávé biztonságos mező. A mezőbe a titkosított kódot és az adatmezőket helyezheti el. A mező kívülről nem láthat semmit. Az enklávénak egy kulcsot kell adnia az adatvisszafejtéshez, majd újra fel kell dolgoznia és titkosítania kell az adatközpontot az enklávéból való kiküldésük előtt.
 
 ### <a name="attestation"></a>Igazolási
 
@@ -67,7 +67,7 @@ Az igazolást olyan biztonságos igazolási szolgáltatás használatával kell 
 
 Az Azure bizalmas számítástechnikai részlege lehetővé teszi, hogy a virtualizált környezetekben a bizalmas számítástechnikai funkciókat használja. Mostantól eszközöket, szoftvereket és felhőalapú infrastruktúrát is használhat a biztonságos hardverre való kiépítéshez. 
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual Machines
 
 Az Azure az első olyan felhőalapú szolgáltató, amely a virtualizált környezetekben nyújt bizalmas számítástechnikai szolgáltatásokat. Olyan virtuális gépeket fejlesztettünk ki, amelyek absztrakt rétegként működnek a hardver és az alkalmazás között. A számítási feladatokat nagy méretekben, a redundancia és a rendelkezésre állási lehetőségek használatával futtathatja.  
 
@@ -108,7 +108,7 @@ Ha egy enklávéban futó kódot szeretne írni, használja a szolgáltató ált
 
 Az OE SDK egyetlen absztrakciós rétegként van felépítve bármely CSP hardverén. Az OE SDK az Azure-beli bizalmas számítástechnikai virtuális gépeken is használható a enklávékban található alkalmazások létrehozásához és futtatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Helyezzen üzembe egy DCsv2-sorozatú virtuális gépet, és telepítse az OE SDK-t.
 

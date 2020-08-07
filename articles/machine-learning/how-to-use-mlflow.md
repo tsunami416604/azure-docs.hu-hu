@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: ea26e1861d1e3916302563a27389763ebc4c450c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326698"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853381"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Modell metrikáinak nyomon követése és ML modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
 
@@ -347,7 +347,7 @@ webservice.wait_for_deployment()
 
 A szolgáltatás üzembe helyezése több percet is igénybe vehet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem tervezi a naplózott metrikák és összetevők használatát a munkaterületen, akkor a törlési képesség jelenleg nem érhető el. Ehelyett törölje a Storage-fiókot és-munkaterületet tartalmazó erőforráscsoportot, így nem számítunk fel díjat:
 
@@ -365,6 +365,6 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 
 Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://aka.ms/azureml-mlflow-examples) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * Figyelje az [adateltolódáshoz](how-to-monitor-data-drift.md)használt üzemi modelleket.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554056"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902045"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -128,7 +128,7 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 |Területi beállítás  | Nyelv            | Nem | Hang neve | Stílus támogatása |
 |--|--|--|--|--|
 | `ar-EG` | Arab (Egyiptom)                  | Nő | `ar-EG-SalmaNeural`      | Általános kérdések |
-| `ar-SA` | Arab (Szaúd-Arábia)           | Nő | `ar-SA-ZariyahNeura`     | Általános kérdések |
+| `ar-SA` | Arab (Szaúd-Arábia)           | Nő | `ar-SA-ZariyahNeural`    | Általános kérdések |
 | `ca-ES` | Katalán (Spanyolország)                 | Nő | `ca-ES-AlbaNeural`       | Általános kérdések |
 | `da-DK` | Dán (Dánia)                | Nő | `da-DK-ChristelNeural`   | Általános kérdések |
 | `de-DE` | Német (Németország)                | Nő | `de-DE-KatjaNeural`      | Általános kérdések |
@@ -354,7 +354,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Speaker Recognition
+## <a name="speaker-recognition"></a>Beszélőfelismerés
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

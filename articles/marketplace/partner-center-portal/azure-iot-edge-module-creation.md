@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808711"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876631"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -199,15 +199,14 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti.
+Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles méretben:
 
-A lista különböző helyein való használathoz mindhárom embléma mérete szükséges:
+- **Kicsi (48 x 48)**
+- **Közepes (90 x 90)**
+- **Nagyméretű (216 x 216)**
+- **Széles (255 x 115)**
 
-- **Kicsi** (48 x 48)
-- **Közepes** (90 x 90)
-- **Nagy** (216 x 216 és 350 x 350 között)
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Mind a négy emblémát kötelező megadni, és a piactér-lista különböző helyein használatos.
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 
@@ -484,6 +483,6 @@ Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**l
 
 Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer)

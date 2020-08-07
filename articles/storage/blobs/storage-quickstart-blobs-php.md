@@ -1,18 +1,18 @@
 ---
 title: Azure rövid útmutató – Blob létrehozása objektumtárban PHP használatával | Microsoft Docs
-description: Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a PHP használatával
+description: Gyorsan megtudhatja, hogyan vihet át objektumokat az Azure Blob Storage-ba a PHP használatával. Blokk-Blobok feltöltése, letöltése és listázása egy tárolóban az Azure Blob Storage-ban.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68726390"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835748"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
 A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
@@ -173,7 +173,7 @@ A blobok tartalmát a **getBlob()** metódus segítségével kérheti le. A köv
     fpassthru($blob->getContentStream());
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a **deletecontainer()** metódussal. Ha már nincs szüksége a létrehozott fájlokra, a **deleteblob()** metódus használatával törölheti őket.
 
 ```PHP
@@ -202,7 +202,7 @@ Blob Storage-tárolókat alkalmazó PHP-alkalmazások fejlesztéséhez tekintse 
 - Az Azure Storage-hoz készült [PHP ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-php) megtekintheti, letöltheti és telepítheti a GitHubról.
 - Tekintse át a PHP ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a PHP használatával. Ha bővebb információra van szüksége a PHP használatával kapcsolatban, lépjen tovább a PHP fejlesztői központunkba.
 
