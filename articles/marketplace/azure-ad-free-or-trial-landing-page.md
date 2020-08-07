@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: d360b890023c1a14f80d9fc8efc703abd7544710
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328329"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921384"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Az ingyenes vagy próbaverziós SaaS-ajánlat kezdőlapjának összeállítása a kereskedelmi piactéren
 
@@ -53,7 +53,7 @@ Az első lépésekhez kövesse az [új alkalmazások regisztrálásának](https:
 
 Ha le szeretné kérdezni a Microsoft Graph API- [t, konfigurálja az új alkalmazást a webes API-k eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Ha kijelöli az alkalmazás API-engedélyeit, a felhasználó alapértelmezett értéke **. az olvasás** elég ahhoz, hogy alapvető információkat gyűjtsön a felhasználóról, hogy a bevezetési folyamat zökkenőmentes és automatikus legyen. Ne igényeljen **rendszergazdai**jogosultsággal jelölt API-engedélyeket, mivel ez letiltja a nem rendszergazda felhasználók számára a Kezdőlap meglátogatását.
 
-Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési folyamat részeként, érdemes lehet az Azure AD [növekményes hozzájárulási](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#incremental-and-dynamic-consent) funkcióit használni, hogy a piactéren eljuttatott összes felhasználó képes legyen a kezdeti kommunikációra a kezdőlapon.
+Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési folyamat részeként, érdemes lehet az Azure AD [növekményes hozzájárulási](https://aka.ms/incremental-consent) funkcióit használni, hogy a piactéren eljuttatott összes felhasználó képes legyen a kezdeti kommunikációra a kezdőlapon.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Mintakód használata kiindulási pontként
 

@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag az adatok megosztásokhoz való továbbításához Azure Stack Edge használatával | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá és csatlakozhat a megosztásokhoz Azure Stack Edge-eszközön.
+description: Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá és csatlakozhat a Azure Stack Edge-eszközön lévő megosztásokhoz, így Azure Stack Edge az adatok átvitelét az Azure-ba.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e62d746be92583abead1c3edb93900068b123838
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82571076"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926110"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge"></a>Oktatóanyag: adatok átvitele Azure Stack Edge-sel
 
@@ -116,7 +116,7 @@ Az Azure Stack Edge-eszközhöz csatlakoztatott Windows Server-ügyfélen a para
 
 3. A billentyűzeten válassza a Windows + R lehetőséget.
 
-4. A **Futtatás** ablakban adja meg a `\\<device IP address>`elemet, majd kattintson az **OK gombra**.  
+4. A **Futtatás** ablakban adja meg a `\\<device IP address>` elemet, majd kattintson az **OK gombra**.  
    Megnyílik a fájlkezelő. Ekkor meg kell tudnia tekinteni a mappákként létrehozott megosztásokat. A Fájlkezelőben kattintson duplán egy megosztásra (mappára) a tartalom megtekintéséhez.
  
     ![Csatlakozás SMB-megosztáshoz](./media/azure-stack-edge-deploy-add-shares/connect-to-share2.png)

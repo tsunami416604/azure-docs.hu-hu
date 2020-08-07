@@ -5,22 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119307"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920432"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
-A Azure Cosmos DB natív támogatást biztosít a huzal protokollal kompatibilis API-k számára a népszerű adatbázisokhoz. Ilyenek például a MongoDB, az Apache Cassandra, a Gremlin és az Azure Table Storage. Ezek az adatbázisok nem biztosítanak pontosan meghatározott konzisztencia-modelleket vagy SLA-alapú garanciákat a konzisztencia szintjéhez. Általában csak a Azure Cosmos DB által kínált öt konzisztencia-modell részhalmazát biztosítják. 
+A Azure Cosmos DB natív támogatást biztosít a huzal protokollal kompatibilis API-k számára a népszerű adatbázisokhoz. Ilyenek például a MongoDB, az Apache Cassandra, a Gremlin és az Azure Table Storage. Ezek az adatbázisok nem biztosítanak pontosan meghatározott konzisztencia-modelleket vagy SLA-alapú garanciákat a konzisztencia szintjéhez. Általában csak a Azure Cosmos DB által kínált öt konzisztencia-modell részhalmazát biztosítják.
 
 Az SQL API, a Gremlin API és a Table API használatakor a rendszer az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintet használja. 
 
 Ha Cassandra API vagy Azure Cosmos DB API-ját használja a MongoDB, az alkalmazások az Apache Cassandra és a MongoDB által kínált összes konzisztencia-készletet megkapják, ami még erősebb következetességet és tartósságot garantál. Ez a dokumentum az Apache Cassandra és a MongoDB konzisztencia-szintjeinek megfelelő Azure Cosmos DB következetességi szinteket mutatja.
+
+> [!NOTE]
+> Az Azure Cosmos DB alapértelmezett konzisztencia-modellje a munkamenet. A munkamenet egy ügyfél-központú konzisztencia-modell, amelyet Cassandra vagy MongoDB sem natív módon támogat. További információ arról, hogy melyik konzisztencia-modell válassza a következőt: [Azure Cosmos db a konzisztencia szintjei](consistency-levels.md)
 
 ## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Az Apache Cassandra és a Azure Cosmos DB konzisztencia-szintjei közötti leképezés
 
@@ -36,14 +39,14 @@ Az alábbi táblázat azt mutatja be, hogy a natív Cassandra konzisztencia-szin
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>A MongoDB és a Azure Cosmos DB konzisztencia-szintjei közötti megfeleltetés
 
-A Azure Cosmos DBtól eltérően a natív MongoDB nem biztosít pontosan meghatározott konzisztencia-garanciát. Ehelyett a natív MongoDB lehetővé teszi a felhasználók számára a következő konzisztencia-garanciák konfigurálását: egy írási aggály, egy olvasási probléma és a isMaster direktíva, hogy az olvasási műveleteket elsődleges vagy másodlagos replikára irányítsa a kívánt konzisztencia-szint elérése érdekében. 
+A Azure Cosmos DBtól eltérően a natív MongoDB nem biztosít pontosan meghatározott konzisztencia-garanciát. Ehelyett a natív MongoDB lehetővé teszi a felhasználók számára a következő konzisztencia-garanciák konfigurálását: egy írási aggály, egy olvasási probléma és a isMaster direktíva, hogy az olvasási műveleteket elsődleges vagy másodlagos replikára irányítsa a kívánt konzisztencia-szint elérése érdekében.
 
 Ha Azure Cosmos DB API-ját használja a MongoDB, a MongoDB-illesztőprogram az írási régiót elsődleges replikaként kezeli, és minden más régió olvasási replika. Kiválaszthatja, hogy melyik régiót rendeli hozzá az Azure Cosmos-fiókjához elsődleges replikaként. 
 
 A MongoDB Azure Cosmos DB API-ját használja:
 
 * Az írási aggály az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintre van leképezve.
- 
+
 * Azure Cosmos DB dinamikusan leképezi a MongoDB-ügyfél illesztőprogramja által megadott olvasási aggályt az olvasási kérelemben dinamikusan konfigurált Azure Cosmos DB konzisztencia-szintek egyikére.  
 
 * Az Azure Cosmos-fiókjához tartozó adott régiót a "Master" kifejezéssel jegyzetekkel láthatja el, ha az első írható régióként teszi a régiót. 

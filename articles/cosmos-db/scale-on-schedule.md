@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923655"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Cosmos DB átviteli sebesség méretezése Azure Functions időzítő-trigger használatával
 
@@ -23,7 +23,7 @@ Az átviteli sebességet [Azure Resource Manager sablonokon](resource-manager-sa
 
 A Azure Cosmos DB ütemezésének egyszerűsítése érdekében az [Azure Cosmos átviteli ütemező](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)nevű minta projektet hoztunk létre. Ez a projekt egy Azure Functions alkalmazás két időzítő eseményindítóval – "ScaleUpTrigger" és "ScaleDownTrigger". Az eseményindítók egy PowerShell-parancsfájlt futtatnak, amely minden egyes Eseményindítóban meghatározza az adott erőforrás átviteli sebességét `resources.json` . Az ScaleUpTrigger úgy van konfigurálva, hogy 8 ÓRAKOR UTC-kor fusson, és a ScaleDownTrigger 6 ÓRAKOR UTC-re van konfigurálva, és ezek az időpontok könnyen frissíthetők a `function.json` fájlon belül az egyes triggerekhez.
 
-Ezt a projektet helyileg is elvégezheti, ha módosítani szeretné a felskálázásra és a lefelé irányuló Azure Cosmos DB erőforrásokat, valamint az ütemezett futtatást. Később üzembe helyezheti azt egy Azure-előfizetésben, és biztonságossá teheti felügyelt szolgáltatás identitásával, [szerepköralapú Access Control](role-based-access-control.md) (RBAC) engedélyekkel az "Azure Cosmos db operátor" szerepkörrel az átviteli sebesség beállításához az Azure Cosmos-fiókokon.
+Ezt a projektet helyileg is elvégezheti, ha módosítani szeretné a felskálázásra és a lefelé irányuló Azure Cosmos DB erőforrásokat, valamint az ütemezett futtatást. Később üzembe helyezheti azt egy Azure-előfizetésben, és felügyelt szolgáltatás-identitással biztonságossá teheti az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](role-based-access-control.md) engedélyekkel az "Azure Cosmos db operátor" szerepkörrel az átviteli sebesség az Azure Cosmos-fiókokon való beállításához.
 
 ## <a name="next-steps"></a>Következő lépések
 

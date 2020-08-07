@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923730"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
 Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalapú vagy csak felhőalapú célokra alkalmasak. Bármely szervezet az Azure AD-hez csatlakoztatott eszközöket a méret vagy az iparág méretétől függetlenül is üzembe helyezheti. Az Azure AD-csatlakozás hibrid környezetben is működik, ami lehetővé teszi a Felhőbeli és a helyszíni alkalmazások és erőforrások elérését.
 
-| Azure AD-csatlakozás | Description |
+| Azure AD-csatlakozás | Leírás |
 | --- | --- |
 | **Definíció** | Csak az Azure AD-hez csatlakozik, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
 | **Elsődleges célközönség** | Alkalmas a csak felhőalapú és a hibrid szervezetekhez. |
 |   | Egy szervezet összes felhasználójára érvényes |
 | **Az eszközök tulajdonjoga** | Szervezet |
-| **Operációs rendszerek** | Minden Windows 10-es eszköz |
+| **Operációs rendszerek** | Minden Windows 10 rendszerű eszköz, kivéve a Windows 10 Home rendszert |
 |   | [Az Azure-ban futó Windows Server 2019 Virtual Machines](howto-vm-sign-in-azure-ad-windows.md) (Server Core nem támogatott) |
 | **Telepítés** | Önkiszolgáló: Windows OOBE vagy beállítások |
 |   | Csoportos regisztráció |
@@ -62,7 +62,7 @@ Habár az Azure AD elsősorban az olyan cégek számára készült, amelyek nem 
 - Ha felhasználók egy csoportját az Azure AD-ben szeretné felügyelni az Active Directory helyett. Ez a forgatókönyv például a szezonális feldolgozók, a vállalkozók vagy a tanulók számára is alkalmazható.
 - Ha csatlakozási lehetőséget kíván nyújtani a korlátozott helyszíni infrastruktúrájú távoli fiókirodákban tartózkodó felhasználóknak.
 
-Az Azure AD-csatlakoztatott eszközök csak Windows 10 rendszerű eszközök lehetnek.
+Az Azure AD-hez csatlakoztatott eszközöket az összes Windows 10-es eszközhöz konfigurálhatja a Windows 10 Home kivételével.
 
 Az Azure AD-hez csatlakoztatott eszközök leegyszerűsítik:
 

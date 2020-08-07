@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 26dba14baa95a91c12e9ccd277731b91207b4a4c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f9995b82c1dc437cdaa2f9f987abba3e9681454a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533257"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926756"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -52,7 +52,7 @@ Az alkalmazások végpontokon keresztül férnek hozzá a síkokhoz. A két sík
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
-| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Üzemeltetés | Hozzáférés- &nbsp; vezérlési mechanizmus |
+| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Műveletek | Hozzáférés- &nbsp; vezérlési mechanizmus |
 | --- | --- | --- | --- |
 | Felügyeleti sík | **Globális**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | Kulcstartók létrehozása, olvasása, frissítése és törlése<br><br>Key Vault hozzáférési szabályzatok beállítása<br><br>Key Vault címkék beállítása | Azure-RBAC |
 | Adatsík | **Globális**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Azure US government:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 | Kulcsok: visszafejtés, titkosítás,<br> kicsomagolás, becsomagolás, ellenőrzés, aláírás,<br> beolvasás, Listázás, frissítés, létrehozás,<br> importálás, törlés, biztonsági mentés, visszaállítás<br><br> Titkok: beolvasás, Listázás, beállítás, törlés | Hozzáférési szabályzat Key Vault |
@@ -126,12 +126,12 @@ A következő műveleteket kell engedélyeznie a szerepkörökhöz:
 
 A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzáférési engedélyeit.
 
-| Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei |
+| Role | Felügyeleti sík engedélyei | Adatsík engedélyei |
 | --- | --- | --- |
 | Biztonsági csapat | Key Vault közreműködő | Kulcsok: biztonsági mentése, létrehozása, törlése, beolvasása, importálása, listázása, visszaállítása<br>Titkok: minden művelet |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | None |
-| Ellenőrök | None | Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). |
-| Alkalmazás | None | Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek |
+| Ellenőrök | Nincsenek | Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). |
+| Alkalmazás | Nincsenek | Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek `Contributor` hozzá kell férniük az ilyen típusú erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
@@ -197,7 +197,7 @@ Javasoljuk, hogy [Key Vault tűzfalak és virtuális hálózatok konfigurálás�
 
 ## <a name="resources"></a>További források
 
-* [Azure AD-RBAC](../../role-based-access-control/role-assignments-portal.md)
+* [Azure-RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 * [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
 

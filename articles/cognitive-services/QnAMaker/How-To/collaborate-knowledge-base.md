@@ -3,12 +3,12 @@ title: Együttműködés a Tudásbázisban – QnA Maker
 description: QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) van ellátva.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837431"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926847"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Együttműködés a szerzőkkel és a szerkesztővel
 
@@ -16,7 +16,7 @@ Az együttműködés a QnA Maker erőforrás szintjén biztosítható, hogy a k�
 
 ## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) hozzáadása a QnA Maker-erőforráshoz
 
-QnA Maker lehetővé teszi, hogy több személy is működjenek együtt az összes Tudásbázisban ugyanabban a QnA Maker erőforrásban. Ez a szolgáltatás az Azure [szerepköralapú Access Control](../../../active-directory/role-based-access-control-configure.md)biztosít.
+QnA Maker lehetővé teszi, hogy több személy is működjenek együtt az összes Tudásbázisban ugyanabban a QnA Maker erőforrásban. Ez a szolgáltatás az [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../../active-directory/role-based-access-control-configure.md)van ellátva.
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>Hozzáférés a QnA Maker erőforrás szintjén
 

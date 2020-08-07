@@ -3,16 +3,16 @@ title: Azure-szerepkörök és-engedélyek
 description: Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és az identitás-és hozzáférés-kezelés (IAM) használatával részletes engedélyeket biztosíthat az Azure Container Registry erőforrásaihoz.
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533308"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920075"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Szerepkörök és engedélyek Azure Container Registry
 
-A Azure Container Registry szolgáltatás olyan [beépített Azure-szerepköröket](../role-based-access-control/built-in-roles.md) támogat, amelyek különböző szintű engedélyekkel rendelkeznek az Azure Container registryben. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) használatával konkrét engedélyeket rendelhet a felhasználókhoz, a szolgáltatásokhoz vagy más identitásokhoz, amelyeknek a beállításjegyzékkel kell működniük. 
+A Azure Container Registry szolgáltatás olyan [beépített Azure-szerepköröket](../role-based-access-control/built-in-roles.md) támogat, amelyek különböző szintű engedélyekkel rendelkeznek az Azure Container registryben. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával konkrét engedélyeket rendelhet a felhasználókhoz, a szolgáltatásokhoz vagy más identitásokhoz, amelyeknek a beállításjegyzékkel kell működniük. 
 
 | Szerepkör/engedély       | [Hozzáférés a Resource Managerhez](#access-resource-manager) | [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Leküldéses rendszerkép](#push-image) | [Lekéréses rendszerkép](#pull-image) | [Rendszerkép-adatok törlése](#delete-image-data) | [Szabályzatok módosítása](#change-policies) |   [Képek aláírása](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |

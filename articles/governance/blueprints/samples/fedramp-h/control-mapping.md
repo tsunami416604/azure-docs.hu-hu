@@ -3,12 +3,12 @@ title: FedRAMP nagy terv-minta vezérlők
 description: A FedRAMP magas tervrajzi minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: ae534248196dec30c087ff4b529e699ef082426e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1b5be2a4dbc6c54e4d8aa69f6be7bc7c60b9a73d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484232"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926008"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP magas tervrajzi minta leképezésének vezérlése
 
@@ -32,7 +32,7 @@ Ez a terv segít áttekinteni azokat a fiókokat, amelyek esetleg nem felelnek m
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Fiókkezelés | Szerepköralapú sémák
 
-Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-access-control/overview.md) (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. A terv emellett egy Azure Policy definíciót rendel hozzá az egyéni RBAC-szabályok használatának naplózásához. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak.
+Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg, amellyel kezelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. A terv emellett egy Azure Policy definíciót rendel hozzá az egyéni RBAC-szabályok használatának naplózásához. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak.
 
 - Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni
 - Egyéni RBAC-szabályok használatának naplózása
@@ -63,7 +63,7 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 ## <a name="ac-6-7-least-privilege--review-of-user-privileges"></a>AC-6 (7) legalacsonyabb jogosultság | Felhasználói jogosultságok áttekintése
 
-Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-access-control/overview.md) (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni. A fiókokra vonatkozó mutatók áttekintésével meggyőződhet arról, hogy a minimális jogosultsági szintű vezérlők implementálva vannak.
+Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg, amellyel kezelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni. A fiókokra vonatkozó mutatók áttekintésével meggyőződhet arról, hogy a minimális jogosultsági szintű vezérlők implementálva vannak.
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza

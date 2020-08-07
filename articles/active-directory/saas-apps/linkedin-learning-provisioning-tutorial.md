@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7035a4f6e3fe8a3c104568697fcf323e4c0bd2c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fcde2ed4986b367e35965f6524e7d7727eaa07c9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098323"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926773"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn learning beállítása a felhasználók automatikus kiépítési felállításához
 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók kiépítése**lehetőséget.
 
@@ -122,7 +122,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |címek [típus EQ "work"]. helység|Sztring|
    |cím|Sztring|
    |e-mailek [type EQ "work"]. Value|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Hivatkozás|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
 
 10. A **leképezések** szakaszban válassza ki a **Azure Active Directory csoportok kiépítése**lehetőséget.
@@ -132,7 +132,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
     |Attribútum|Típus|Szűréshez támogatott|
     |---|---|---|
     |displayName|Sztring|&check;|
-    |tagok|Hivatkozás|
+    |tagok|Referencia|
     |externalId|Sztring|
 
 12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
@@ -155,7 +155,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
 1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
-2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="additional-resources"></a>További források

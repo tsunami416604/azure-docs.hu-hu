@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9aa97595f9a6ab2a866a8c8ebccde7e53854dbd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016318"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924546"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: a tartalékidő konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a slackhez**lehetőséget.
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
    |Attribútum|Típus|
    |---|---|
-   |Active|Logikai érték|
+   |Active|Logikai|
    |externalId|Sztring|
    |displayName|Sztring|
    |név. familyName|Sztring|
@@ -131,7 +131,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
    |timezone|Sztring|
    |userType|Sztring|
    |urn: scim: sémák: bővítmény: Enterprise: 1.0. Department|Sztring|
-   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Manager|Hivatkozás|
+   |urn: scim: sémák: bővítmény: Enterprise: 1.0. Manager|Referencia|
    |urn: scim: sémák: bővítmény: Enterprise: 1.0. employeeNumber|Sztring|
    |urn: scim: sémák: bővítmény: Enterprise: 1.0. costCenter|Sztring|
    |urn: scim: sémák: bővítmény: Enterprise: 1.0. szervezet|Sztring|
@@ -144,7 +144,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
       |Attribútum|Típus|
       |---|---|
       |displayName|Sztring|
-      |tagok|Hivatkozás|
+      |tagok|Referencia|
 
 14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -166,7 +166,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
 1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
-2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek

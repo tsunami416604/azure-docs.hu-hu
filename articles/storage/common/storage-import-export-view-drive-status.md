@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905720"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923611"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Az Azure Import/Export-feladatok állapotának megtekintése
 
@@ -31,7 +31,7 @@ A következő feladatok egyike jelenik meg attól függően, hogy a meghajtó ho
 | Feladatok állapota | Leírás |
 |:--- |:--- |
 | Létrehozás | A feladatok létrehozása után az állapota a **Létrehozás**értékre van állítva. Amíg a feladatsor **létrehozza** az állapotot, az importálási/exportálási szolgáltatás feltételezi, hogy a meghajtókat nem szállították el az adatközpontba. A feladatok akár két hétig is maradhatnak ebben az állapotban, ami után a szolgáltatás automatikusan törli azt. |
-| Shipping | A csomag szállítása után frissítenie kell a követési információkat a Azure Portal.  Ez a feladatot **szállítási** állapotba kapcsolja. A feladatok legfeljebb két hétig maradnak a **szállítási** állapotban. 
+| Szállítás | A csomag szállítása után frissítenie kell a követési információkat a Azure Portal.  Ez a feladatot **szállítási** állapotba kapcsolja. A feladatok legfeljebb két hétig maradnak a **szállítási** állapotban. 
 | Megérkezett | Miután az összes meghajtó beérkezett az adatközpontba, a feladatsor értéke **fogadott**. |
 | Átadó | Ha legalább egy meghajtó megkezdte a feldolgozást, a feladattípus az **átvitelre**van beállítva. További információért lépjen a [meghajtó állapota](#view-drive-status)elemre. |
 | Csomagolás | Miután az összes meghajtó befejezte a feldolgozást, a rendszer **csomagolási** állapotba helyezi a feladatot, amíg a meghajtókat vissza nem szállítja. |
@@ -73,10 +73,10 @@ Az importálási/exportálási feladatok feldolgozásához szükséges idő szá
 -  A másolandó adatok feladattípusa és mérete
 -  Egy adott feladatokban található lemezek száma. 
 
-Az importálási/exportálási szolgáltatás nem rendelkezik SLA-val, de a szolgáltatás arra törekszik, hogy a másolást 7 – 10 nappal a lemezek fogadása után végezze el. Az Azure Portalon közzétett állapot mellett a REST API-k a feladatok előrehaladásának nyomon követésére is használhatók. A [feladatok listázása](/previous-versions/azure/dn529083(v=azure.100)) művelet API-hívásának százalékos készültségi paramétere a másolási folyamat százalékos arányát adja meg.
+Az importálási/exportálási szolgáltatás nem rendelkezik SLA-val, de a szolgáltatás arra törekszik, hogy a másolást 7 – 10 nappal a lemezek fogadása után végezze el. A Azure Portal közzétett állapot mellett a REST API-k segítségével nyomon követheti a feladatok előrehaladását. A [feladatok listázása](/previous-versions/azure/dn529083(v=azure.100)) művelet API-hívásának százalékos készültségi paramétere a másolási folyamat százalékos arányát adja meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
 * [Adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md)

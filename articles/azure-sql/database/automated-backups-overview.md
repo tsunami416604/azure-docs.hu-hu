@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810272"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921945"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -111,7 +111,7 @@ A biztonsági mentési tárterület-felhasználás legfeljebb az adatbázis maxi
 
 - Csökkentse a [biztonsági másolatok megőrzési időtartamát](#change-the-pitr-backup-retention-period-by-using-the-azure-portal) az igényeinek megfelelő minimálisra.
 - Kerülje a nagyméretű írási műveleteket, például az index újraépítését, gyakrabban, mint amennyire szüksége van.
-- Nagyméretű adatterhelési műveletek esetén érdemes lehet [fürtözött oszlopcentrikus indexeket](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) használni, és a kapcsolódó [ajánlott eljárásokat](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)követni, és/vagy csökkenteni a nem fürtözött indexek számát.
+- Nagyméretű adatterhelési műveletek esetén érdemes lehet [fürtözött oszlopcentrikus indexeket](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) használni, és a kapcsolódó [ajánlott eljárásokat](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)követni, és/vagy csökkenteni a nem fürtözött indexek számát.
 - A általános célú szolgáltatási szinten a kiépített adattárolás olcsóbb, mint a biztonsági mentési tár ára. Ha folyamatosan nagy mennyiségű biztonsági mentési tárolási költséggel rendelkezik, érdemes lehet növelni az adattárolást a biztonsági mentési tárolón való mentéshez.
 - Az ideiglenes eredmények és/vagy átmeneti adatmennyiségek tárolásához az alkalmazás logikájában állandó táblák helyett használjon TempDB.
 - Helyileg redundáns biztonsági mentési tárterület használata, ha lehetséges (például fejlesztési/tesztelési környezetek)

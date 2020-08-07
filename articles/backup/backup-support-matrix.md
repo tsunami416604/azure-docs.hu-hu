@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531880"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922316"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -32,8 +32,8 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 **Funkció** | **Részletek**
 --- | ---
 **Tárolók az előfizetésben** | Akár 500 Recovery Services-tároló egyetlen előfizetésben.
-**Tárolóban lévő gépek** | Akár 1 000 Azure-beli virtuális gép egyetlen tárolóban.<br/><br/> Akár 50 MABS-kiszolgáló is regisztrálható egyetlen tárolóban.
-**Adatforrások** | Egy egyedi [adatforrás](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) maximális mérete 54 400 GB. Ez a korlát nem vonatkozik az Azure-beli virtuális gépek biztonsági mentésére. A tárolóba visszaállítható teljes adatmennyiségre nem vonatkoznak korlátok.
+**Tárolóban lévő gépek** | Az összes számítási feladat (például Azure-beli virtuális gépek, SQL Server VM, MABS-kiszolgálók stb.) esetében akár 2000 adatforrás is védhető egyetlen tárolóban.<br><br>Akár 1 000 Azure-beli virtuális gép egyetlen tárolóban.<br/><br/> Akár 50 MABS-kiszolgáló is regisztrálható egyetlen tárolóban.
+**Adatforrások** | Egy egyedi [adatforrás](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) maximális mérete 54 400 GB. Ez a korlát nem vonatkozik az Azure-beli virtuális gépek biztonsági másolatára. A tárolóba visszaállítható teljes adatmennyiségre nem vonatkoznak korlátok.
 **Biztonsági mentések a tárba** | **Azure-beli virtuális gépek:** Naponta egyszer.<br/><br/>**DPM/MABS által védett gépek:** Naponta kétszer.<br/><br/> **A közvetlenül a Mars-ügynök használatával biztonsági mentést készít a gépekről:** Naponta háromszor.
 **Tárolók közötti biztonsági másolatok** | A biztonsági mentés egy régión belül található.<br/><br/> Minden olyan Azure-régióban szüksége van egy tárolóra, amely tartalmazza a biztonsági mentésre használni kívánt virtuális gépeket. Nem lehet biztonsági másolatot készíteni egy másik régióra.
 **Tárolók áthelyezése** | A tárolókat [áthelyezheti](./backup-azure-move-recovery-services-vault.md) előfizetések között, illetve az azonos előfizetésben található erőforráscsoportok között is. A tárolók különböző régiók közötti áthelyezése azonban nem támogatott.
@@ -85,7 +85,7 @@ Ha a Linux rendszerű gépek biztonsági mentését kívánja végezni, a követ
 
 ## <a name="daylight-saving-time-support"></a>Nyári időtakarékosság támogatása
 
-Az Azure-beli virtuális gépek biztonsági mentései esetében a Azure Backup nem támogatja az automatikus időzítő beállítását a nyári időszámításhoz. Nem irányítja át a biztonsági mentés óráját előre vagy visszafelé. Ha biztosítani szeretné, hogy a biztonsági mentés a kívánt időpontban fusson, módosítsa a biztonsági mentési szabályzatokat manuálisan, igény szerint.
+Az Azure-beli virtuális gépek biztonsági mentései esetében a Azure Backup nem támogatja az automatikus időzítő beállítását a nyári időszámításhoz. Nem továbbítja a biztonsági mentés óráját vagy visszafelé. Ha biztosítani szeretné, hogy a biztonsági mentés a kívánt időpontban fusson, módosítsa a biztonsági mentési szabályzatokat manuálisan, igény szerint.
 
 ## <a name="disk-deduplication-support"></a>Lemezes deduplikálás támogatása
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328313"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921266"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját
 
@@ -56,7 +56,7 @@ Az első lépésekhez kövesse az [új alkalmazások regisztrálásának](https:
 
 Ha le szeretné kérdezni a Microsoft Graph API- [t, konfigurálja az új alkalmazást a webes API-k eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Ha kijelöli az alkalmazás API-engedélyeit, a felhasználó alapértelmezett értéke **. az olvasás** elég ahhoz, hogy alapvető információkat gyűjtsön a vevőről, hogy a bevezetési folyamat zökkenőmentes és automatikus legyen. Ne igényeljen **rendszergazdai**jogosultsággal jelölt API-engedélyeket, mivel ez letiltja a nem rendszergazda felhasználók számára a Kezdőlap meglátogatását.
 
-Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési folyamat részeként, vegye fontolóra az Azure AD [növekményes hozzájárulási](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis) funkcióinak használatát, hogy a piactéren eljuttatott összes vevő képes legyen a kezdeti kommunikációra a kezdőlapon.
+Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési folyamat részeként, vegye fontolóra az Azure AD [növekményes hozzájárulási](https://aka.ms/incremental-consent) funkcióinak használatát, hogy a piactéren eljuttatott összes vevő képes legyen a kezdeti kommunikációra a kezdőlapon.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Mintakód használata kiindulási pontként
 
@@ -90,16 +90,7 @@ Az alkalmazás SaaS-teljesítési API-kkal történő hitelesítéséhez hozzáf
 
 ### <a name="call-the-resolve-endpoint"></a>A feloldási végpont meghívása
 
-A SaaS-teljesítési API-k implementálják a [megoldás](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) végpontját, amely meghívja a Piactéri jogkivonat érvényességének megerősítését és az előfizetésre vonatkozó információk visszaküldését, beleértve az ebben a táblázatban látható értékeket is.
-
-| Érték | Leírás |
-| ------------ | ------------- |
-| Id | Ehhez az előfizetéshez tartozó egyedi azonosító (GUID). Erre az értékre szüksége lesz a SaaS-teljesítési API-k jövőbeli hívásakor. |
-| subscriptionName | Annak az előfizetésnek a neve, amely akkor lett beállítva, amikor az ajánlatot hozzáadták a partner központhoz. |
-| offerId | Az adott ajánlat azonosítója (az ajánlat hozzáadásakor van beállítva). |
-| planId | Az ajánlathoz tartozó adott csomag azonosítója (az ajánlat hozzáadásakor van beállítva). |
-| Mennyiség | A vásárló által a vásárlás során felhasznált mennyiség. |
-|||
+A SaaS-teljesítési API-k implementálják a [feloldási](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) végpontot, amely meghívható a Piactéri token érvényességének megerősítéséhez és az előfizetés adatainak visszaküldéséhez.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Az azonosító jogkivonatban kódolt jogcímek adatainak beolvasása
 

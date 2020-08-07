@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361489"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926178"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
@@ -68,7 +68,7 @@ Az **adatbázis-felhasználók** olyan ügyfélalkalmazások használatával csa
 
 ![Hozzáférés-vezérlés Azure Portal](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Az ezen a szinten lévő szerepkörök azokra a felhasználókra vagy fiókokra vonatkoznak, amelyeknek a portálon vagy Azure Resource Manager-sablonok használatával végezhető feladatokat kell végrehajtaniuk. További információ: [szerepköralapú Access Control](../role-based-access-control/overview.md). 
+Az ezen a szinten lévő szerepkörök azokra a felhasználókra vagy fiókokra vonatkoznak, amelyeknek a portálon vagy Azure Resource Manager-sablonok használatával végezhető feladatokat kell végrehajtaniuk. További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="database-roles"></a>Adatbázis-szerepkörök
 
@@ -76,9 +76,9 @@ Az ezen a szinten lévő szerepkörök azokra a felhasználókra vagy fiókokra 
   
  Alapértelmezés szerint, amikor új táblázatos modell-projektet hoz létre, a modell projektnek nincsenek szerepkörei. A szerepkörök a Visual Studióban a szerepkör-kezelő párbeszédpanel használatával definiálhatók. Ha a szerepkörök a modell tervezése során vannak meghatározva, csak a modell munkaterület-adatbázisra lesznek alkalmazva. A modell telepítésekor ugyanazok a szerepkörök lesznek alkalmazva az üzembe helyezett modellre. A modell telepítése után a kiszolgáló-és adatbázis-rendszergazdák a SSMS használatával kezelhetik a szerepköröket és a tagokat. További információ: az [adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md).
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory csoportokkal](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  
 [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)  
-[Szerepköralapú Access Control](../role-based-access-control/overview.md)  
+[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)  

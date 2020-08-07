@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk – hibaelhárítás | Microsoft Docs
-description: Ez a cikk az Azure Data Box Disk szolgáltatásban jelentkező hibák elhárítását írja le.
+description: Ismerje meg, hogyan használhatók a naplók a Azure Data Box Disk üzembe helyezése során esetlegesen felmerülő érvényesítési problémák elhárításához.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565004"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925542"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
 
@@ -73,7 +73,7 @@ Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt 
 
 A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfelelő javasolt műveletekkel.
 
-| Hibakód| Description                       | Ajánlott műveletek               |
+| Hibakód| Leírás                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Az adatellenőrzés sikeresen megtörtént. | Semmit nem kell tenni. |
 | `InvalidXmlCharsInPath` |Nem sikerült létrehozni a jegyzékfájlt, mert a fájl elérési útja érvénytelen karaktereket tartalmaz. | A folytatáshoz távolítsa el ezeket a karaktereket.  |

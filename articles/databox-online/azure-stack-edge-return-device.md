@@ -1,6 +1,6 @@
 ---
 title: Az Azure Stack Edge-eszköz visszaküldése | Microsoft Docs
-description: Az Azure Stack Edge-eszköz visszaküldését ismerteti.
+description: Megtudhatja, hogyan törölheti az adatait, és visszaküldheti Azure Stack Edge-eszközét, majd törölheti az eszközhöz hozzárendelt erőforrást.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283860"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923951"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Az Azure Stack Edge-eszköz visszaküldése
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve ütemezhet egy felvételt.
 5. Helyezze az Azure-ból kapott szállítási címkét a csomagba.
 6. Egyeztessen egy csomagfelvételi időpontot helyi szolgáltatójával. Ha visszaadja az eszközt az USA-ban, akkor a fuvarozó a UPS vagy a FedEx lehet. Felvétel beosztása a UPS-sel:
 
-    1. Hívja fel a helyi UPS-t (ország-/régióspecifikus ingyenes szám).
+    1. Hívja fel a helyi UPS-t (országtól/régiótól függően ingyenes szám).
     2. A hívásban adja meg a fordított szállítólevél nyomon követésének számát a nyomtatott címkén látható módon.
     3. Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek további díjat kell fizetnie a felvétel során.
 

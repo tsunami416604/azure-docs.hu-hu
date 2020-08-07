@@ -3,12 +3,12 @@ title: SWIFT CSP – CSCF v2020 terv minta vezérlők
 description: A SWIFT CSP-CSCF v2020 tervezetének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 10c46b11fc3c4243914c48629f082ad83db8d138
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0ef53a570190afa2b27193bdc741e70bad5554a4
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657071"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926637"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020 Blueprint-minta leképezésének vezérlése
 
@@ -31,7 +31,7 @@ Ez a terv segít áttekinteni azokat a fiókokat, amelyek esetleg nem felelnek m
 
 ## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2,6, 5,1, 6,4 és 6.5 A fiókok kezelése | Szerepköralapú sémák
 
-Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-access-control/overview.md) (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. A terv emellett egy Azure Policy definíciót rendel hozzá az egyéni RBAC-szabályok használatának naplózásához. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak.
+Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg, amellyel kezelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. A terv emellett egy Azure Policy definíciót rendel hozzá az egyéni RBAC-szabályok használatának naplózásához. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak.
 
 - Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni
 - Egyéni RBAC-szabályok használatának naplózása
@@ -54,7 +54,7 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 ## <a name="13-51-and-64-least-privilege--review-of-user-privileges"></a>1,3, 5,1 és 6,4 legalacsonyabb jogosultság | Felhasználói jogosultságok áttekintése
 
-Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-access-control/overview.md) (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni. A fiókokra vonatkozó mutatók áttekintésével meggyőződhet arról, hogy a minimális jogosultsági szintű vezérlők implementálva vannak.
+Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg, amellyel kezelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni. A fiókokra vonatkozó mutatók áttekintésével meggyőződhet arról, hogy a minimális jogosultsági szintű vezérlők implementálva vannak.
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
@@ -292,7 +292,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a SWIFT CSP-CSCF v2020 tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, és bemutatja, hogyan helyezheti üzembe a mintát:
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 08/06/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b8a95687b1567eb6e063ccc871a4a130c5f2db69
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bdacd752ab549d0caed4d3579ac8d0c3b2606477
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290358"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925702"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
 
@@ -56,7 +56,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[1. lehetőség (alapértelmezett): Load Balancer létrehozása (standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[1. lehetőség (alapértelmezett): nyilvános Load Balancer létrehozása (standard SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
@@ -219,7 +219,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Virtuális hálózat és Azure Bastion-gazdagép létrehozása
 
 Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
@@ -228,124 +228,56 @@ Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/mo
 * **MyBackendSubnet**nevű alhálózat.
 * Virtuális hálózat **10.0.0.0/16**.
 * Alhálózat **10.0.0.0/24**.
+* Megerősített alhálózat **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
+$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
+$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
-## Create subnet config ##
+
+## Create backend subnet config ##
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
+## Create Bastion subnet config ##
+$bassubnetConfig =
+New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
+
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
 ```
-### <a name="create-public-ip-addresses-for-the-vms"></a>Nyilvános IP-címek létrehozása a virtuális gépekhez
+Hozza létre a megerősített gazdagépet a [New-AzBastion](/powershell/module/az.network/new-azbastion):
 
-A virtuális gépek RDP-kapcsolaton keresztüli eléréséhez nyilvános IP-címekre van szükség a virtuális gépek számára. 
-
-A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával szabványos nyilvános IP-címeket hozhat létre a következőhöz:
-
-#### <a name="vm1"></a>VM1
-
-* Elnevezett **myVMPubIP1**.
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A **eastus** helyen.
-* **Szabványos** SKU.
-* **Statikus** kiosztás az IP-címhez.
+* Elnevezett **myBastionHost**.
+* **MyBastionIP**nyilvános IP-címe.
 
 ```azurepowershell-interactive
-## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
-$ip1 = 'myVMPubIP1'
-$sku = 'Standard'
-$all = 'static'
+$bas = 'myBastionHost'
+$basip = 'myBastionIP'
+$all = 'Static'
+$sku 'Standard'
 
-$RdpPubIP1 = 
-New-AzPublicIpAddress -Name $ip1 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
+## Create public IP address for Bastion host ##
+$baspubip = 
+New-AzPublicIPAddress -ResourceGroupName $rg -Name $basip -Location $loc -AllocationMethod $all -Sku $sku
+
+## Create the bastion host using the $vnet variable from previous step ##
+New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $baspubip -VirtualNetwork $vnet
 ```
-
-#### <a name="vm2"></a>VM2
-
-* Elnevezett **myVMPubIP2**.
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A **eastus** helyen.
-* **Szabványos** SKU.
-* **Statikus** kiosztás az IP-címhez. 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip2 = 'myVMPubIP2'
-$sku = 'Standard'
-$all = 'static'
-
-$RdpPubIP2 = 
-New-AzPublicIpAddress -Name $ip2 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
-
-#### <a name="vm3"></a>VM3
-
-* Elnevezett **myVMPubIP3**.
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A **eastus** helyen.
-* **Szabványos** SKU.
-* **Statikus** kiosztás az IP-címhez. 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip3 = 'myVMPubIP3'
-$sku = 'Standard'
-$all = 'static'
-
-$RdpPubIP3 = 
-New-AzPublicIpAddress -Name $ip3 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
+Néhány percet is igénybe vehet, amíg a megerősített gazdagép üzembe lesz helyezve a virtuális hálózaton.
 
 ### <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
-
-#### <a name="create-a-network-security-group-rule-for-port-3389"></a>Hálózati biztonságicsoport-szabály létrehozása a 3389-es porhoz
-
-Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
-
-* Elnevezett **myNSGRuleRDP**.
-* Az **RDP-engedélyezés**leírása.
-* Hozzáférés **engedélyezése**.
-* **TCP**protokoll.
-* Irány **bejövő**.
-* **1000**prioritás.
-* Az **Internet**forrása.
-* A **(*)** forrásport tartománya.
-* A **(*)** célcím előtagja.
-* **3389**-as célport.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleRDP'
-$des = 'Allow RDP'
-$acc = 'Allow'
-$pro = 'Tcp'
-$dir = 'Inbound'
-$pri = '1000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '3389'
-
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
-```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Hálózati biztonságicsoport-szabály létrehozása a 80-as porhoz
 Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
@@ -374,7 +306,7 @@ $spr = '*'
 $dpfx = '*'
 $dpr = '80'
 
-$rule2 = 
+$rule1 = 
 New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
 ```
 
@@ -393,9 +325,9 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
-## $rule1 and $rule2 are variables with configuration information from the previous steps. ##
+## $rule1 contains configuration information from the previous steps. ##
 $nsg = 
-New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1,$rule2
+New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1
 ```
 
 ### <a name="create-network-interfaces"></a>Hálózati adapterek létrehozása
@@ -418,17 +350,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
-$ip1 = 'myVMPubIP1'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM1 ##
-$pub1 = 
-Get-AzPublicIPAddress -Name $ip1 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -440,7 +367,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM1 ##
 $nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -PublicIpAddress $pub1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-2"></a>VM 2
@@ -459,17 +386,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
-$ip2 = 'myVMPubIP2'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM2 ##
-$pub2 = 
-Get-AzPublicIPAddress -Name $ip2 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -481,7 +403,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM2 ##
 $nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -PublicIpAddress $pub2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-3"></a>3. VIRTUÁLIS GÉP
@@ -500,17 +422,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic3 = 'myNicVM3'
 $vnt = 'myVNet'
-$ip3 = 'myVMPubIP3'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM3 ##
-$pub3 = 
-Get-AzPublicIPAddress -Name $ip3 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -522,7 +439,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM3 ##
 $nicVM3 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -PublicIpAddress $pub3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -631,8 +548,6 @@ New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -Comp
 ## Create the virtual machine ##
 New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 ```
-
-A három virtuális gép létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ## <a name="create-outbound-rule-configuration"></a>Kimenő szabály konfigurációjának létrehozása
 A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális gépek kimenő forrásának hálózati címfordítását (SNAT) konfigurálja. 
@@ -763,7 +678,7 @@ $nic =
 Get-AzNetworkInterface -Name $nic1 -ResourceGroupName $rg
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
 ```
 
 #### <a name="vm2"></a>VM2
@@ -789,7 +704,7 @@ $nic =
 Get-AzNetworkInterface -Name $nic2 -ResourceGroupName $rg
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
 ```
 
 #### <a name="vm3"></a>VM3
@@ -815,11 +730,11 @@ $nic =
 Get-AzNetworkInterface -Name $nic3 -ResourceGroupName $rg
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
 
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. lehetőség: terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[2. lehetőség: nyilvános terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
@@ -970,7 +885,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Virtuális hálózat és Azure Bastion-gazdagép létrehozása
 
 Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
@@ -979,124 +894,53 @@ Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/mo
 * **MyBackendSubnet**nevű alhálózat.
 * Virtuális hálózat **10.0.0.0/16**.
 * Alhálózat **10.0.0.0/24**.
+* Megerősített alhálózat **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
+$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
+$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
-## Create subnet config ##
+
+## Create backend subnet config ##
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
+## Create Bastion subnet config ##
+$bassubnetConfig =
+New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
+
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
 ```
-### <a name="create-public-ip-addresses-for-the-vms"></a>Nyilvános IP-címek létrehozása a virtuális gépekhez
+Hozza létre a megerősített gazdagépet a [New-AzBastion](/powershell/module/az.network/new-azbastion):
 
-A virtuális gépek RDP-kapcsolaton keresztüli eléréséhez nyilvános IP-címekre van szükség a virtuális gépek számára. 
-
-A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával szabványos nyilvános IP-címeket hozhat létre a következőhöz:
-
-#### <a name="vm1"></a>VM1
-
-* Elnevezett **myVMPubIP1**.
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A **eastus** helyen.
-* **Szabványos** SKU.
-* **Statikus** kiosztás az IP-címhez.
+* Elnevezett **myBastionHost**.
+* **MyBastionIP**nyilvános IP-címe.
 
 ```azurepowershell-interactive
-## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
-$ip1 = 'myVMPubIP1'
-$sku = 'Basic'
-$all = 'static'
+$bas = 'myBastionHost'
+$basip = 'myBastionIP'
 
-$RdpPubIP1 = 
-New-AzPublicIpAddress -Name $ip1 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
+## Create public IP address for Bastion host ##
+$basip = 
+New-AzPublicIPAddress -ResourceGroupName $rg -Location $loc
 
-#### <a name="vm2"></a>VM2
-
-* Elnevezett **myVMPubIP2**.
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A **eastus** helyen.
-* **Szabványos** SKU.
-* **Statikus** kiosztás az IP-címhez. 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip2 = 'myVMPubIP2'
-$sku = 'Basic'
-$all = 'static'
-
-$RdpPubIP2 = 
-New-AzPublicIpAddress -Name $ip2 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
-
-#### <a name="vm3"></a>VM3
-
-* Elnevezett **myVMPubIP3**.
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A **eastus** helyen.
-* **Szabványos** SKU.
-* **Statikus** kiosztás az IP-címhez. 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip3 = 'myVMPubIP3'
-$sku = 'Basic'
-$all = 'static'
-
-$RdpPubIP2 = 
-New-AzPublicIpAddress -Name $ip3 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
+## Create the bastion host using the $vnet variable from previous step ##
+New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $basip -VirtualNetwork $vnet
 ```
 
 ### <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
-
-#### <a name="create-a-network-security-group-rule-for-port-3389"></a>Hálózati biztonságicsoport-szabály létrehozása a 3389-es porhoz
-
-Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
-
-* Elnevezett **myNSGRuleRDP**.
-* Az **RDP-engedélyezés**leírása.
-* Hozzáférés **engedélyezése**.
-* **TCP**protokoll.
-* Irány **bejövő**.
-* **1000**prioritás.
-* Az **Internet**forrása.
-* A **(*)** forrásport tartománya.
-* A **(*)** célcím előtagja.
-* **3389**-as célport.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleRDP'
-$des = 'Allow RDP'
-$acc = 'Allow'
-$pro = 'Tcp'
-$dir = 'Inbound'
-$pri = '1000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '3389'
-
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
-```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Hálózati biztonságicsoport-szabály létrehozása a 80-as porhoz
 Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
@@ -1169,17 +1013,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
-$ip1 = 'myVMPubIP1'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM1 ##
-$pub1 = 
-Get-AzPublicIPAddress -Name $ip1 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -1191,7 +1030,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM1 ##
 $nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -PublicIpAddress $pub1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-2"></a>VM 2
@@ -1210,17 +1049,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
-$ip2 = 'myVMPubIP2'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM2 ##
-$pub2 = 
-Get-AzPublicIPAddress -Name $ip2 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -1232,7 +1066,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM2 ##
 $nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -PublicIpAddress $pub2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-3"></a>3. VIRTUÁLIS GÉP
@@ -1251,17 +1085,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic3 = 'myNicVM3'
 $vnt = 'myVNet'
-$ip3 = 'myVMPubIP3'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM3 ##
-$pub3 = 
-Get-AzPublicIPAddress -Name $ip3 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -1273,7 +1102,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM3 ##
 $nicVM3 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -PublicIpAddress $pub3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 ### <a name="create-availability-set-for-virtual-machines"></a>Rendelkezésre állási csoport létrehozása a virtuális gépekhez
@@ -1405,70 +1234,55 @@ A három virtuális gép létrehozása és konfigurálása néhány percet vesz 
 
 ---
 
-### <a name="install-iis-with-a-custom-web-page"></a>Az IIS telepítése egyéni weboldallal
+## <a name="install-iis"></a>Az IIS telepítése
 
-Telepítse az IIS-t egy egyéni weboldallal mindkét háttérbeli virtuális gépen a következőképpen:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Szerezze be a három virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress)használatával.
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza ki a **myVM1** , amely a **myresourcegrouplb erőforráscsoportban** erőforráscsoporthoz található.
 
-   ```azurepowershell-interactive
-   ## Variables for commands. ##
-   $rg = 'myResourceGroupLB'
-   $ip1 = 'myVMPubIP1'
-   $ip2 = 'myVMPubIP2'
-   $ip3 = 'myVMPubIP3'
+3. Az **Áttekintés** lapon válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
 
-   ## VM1 ##
-   (Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ip1).IpAddress
+4. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-   ## VM2 ##
-   (Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ip2).IpAddress
+5. Kattintson a **Csatlakozás** gombra.
 
-   ## VM3 ##
-   (Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ip3).IpAddress
-   ```
-   
-2. Hozzon létre távoli asztali kapcsolatokat a **myVM1**, a **MyVM2**és a **myVM3** használatával a virtuális gépek nyilvános IP-címeivel.
+6. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök**  >  **Windows PowerShell**elemre.
 
-3. Adja meg az egyes virtuális gépek hitelesítő adatait az RDP-munkamenet elindításához.
+7. A PowerShell ablakban futtassa a következő parancsokat:
 
-4. Indítsa el a Windows PowerShellt az egyes virtuális gépeken, és az alábbi parancsokkal telepítse az IIS-kiszolgálót, és frissítse az alapértelmezett htm-fájlt.
+    * Az IIS-kiszolgáló telepítése
+    * Az alapértelmezett iisstart.htm fájl eltávolítása
+    * Adjon hozzá egy új iisstart.htm fájlt, amely megjeleníti a virtuális gép nevét:
 
    ```powershell
-   # Install IIS
-   Install-WindowsFeature -name Web-Server -IncludeManagementTools
-
-   # Remove default htm file
-   remove-item  C:\inetpub\wwwroot\iisstart.htm
     
-   #Add custom htm file
-   Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from host " + $env:computername)
+    # install IIS server role
+     Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     Remove-Item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
+8. A megerősített munkamenet lezárása a **myVM1**.
 
-5. Az RDP-kapcsolatok lezárása a **myVM1**, a **MyVM2**és a **myVM3**.
-
+9. Ismételje meg az 1 – 8. lépést az IIS és a frissített iisstart.htm fájl **myVM2** és **myVM3**történő telepítéséhez.
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
-A terheléselosztó nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
 
-* Elnevezett **myPublicIP**
-* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
+1. A Azure Portal keresse meg a terheléselosztó nyilvános IP-címét az **Áttekintés** képernyőn. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd válassza a **myPublicIP**lehetőséget.
 
-```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'myResourceGroupLB'
-$ipn = 'myPublicIP'
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
-Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ipn | select IpAddress
-```
+   ![IIS-webkiszolgáló](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
+Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
 
-![Terheléselosztó tesztelése](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és az összes 
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és a többi erőforrás.
 
 ```azurepowershell-interactive
 ## Variable for command. ##
@@ -1488,4 +1302,6 @@ Ebben a rövid útmutatóban
 
 Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [mi Azure Load Balancer?](load-balancer-overview.md) és [Load Balancer a gyakori kérdések](load-balancer-faqs.md)című témakört.
 
-További információ a [Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).
+* További információ a [Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).
+* További információ az Azure Bastion-ről: [Mi az az Azure Bastion?](https://docs.microsoft.com/azure/bastion/bastion-overview).
+

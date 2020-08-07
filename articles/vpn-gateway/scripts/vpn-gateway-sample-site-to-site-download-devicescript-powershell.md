@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – Eszközkonfigurációs sablon letöltése | Microsoft Docs
-description: Eszközkonfigurációs sablon letöltése.
+description: Ez a PowerShell-parancsfájl letölti a VPN-eszköz sablonját az Azure-beli kapcsolathoz. A szkript összes parancsmagjának megismerése.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
-ms.openlocfilehash: 8c0be71f5ffe82f6b6e1cb607baf070c499bd46f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77e5291010767368600ef3032306867556181373
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077247"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926229"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>VPN-eszközsablon letöltése a PowerShell használatával
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [Get-AzVirtualNetworkGatewaySupportedVpnDevice](/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | Felsorolja az összes elérhető VPN-eszközmodellt és verziót. |
 | [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](/powershell/module/az.network/Get-azVirtualNetworkGatewayConnectionVpnDeviceConfigScript) | Letölti a kapcsolat konfigurációs sablonját. |

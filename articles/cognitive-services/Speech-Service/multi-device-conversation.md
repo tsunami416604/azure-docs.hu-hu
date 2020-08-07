@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401049"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921418"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Mi a multi-Device beszélgetés (előzetes verzió)?
 
@@ -60,7 +60,7 @@ A valós idejű átírás és a fordítás segíthet a különböző nyelveket b
 Emellett feliratok is megadhatók a bemutatók és előadások számára a képernyőn és a célközönség tagjainak saját eszközein is. Miután a célközönség csatlakozott a beszélgetési kódhoz, a saját eszközén láthatják a átiratot a kívánt nyelven.
 
 > [!NOTE]
-> Ha szeretné megtekinteni egy példát, tekintse meg a [bemutató fordítót](https://www.microsoft.com/translator/apps/presentation-translator/), amely egy PowerPoint-bővítmény, amely a multi-Device beszélgetési szolgáltatást használja. A fájlt [innen](https://www.microsoft.com/download/details.aspx?id=55024) töltheti le.
+> Ha szeretné megtekinteni egy példát, tekintse meg a [bemutató fordítót](https://www.microsoft.com/translator/apps/presentation-translator/), amely egy PowerPoint-bővítmény, amely a multi-Device beszélgetési szolgáltatást használja. A fájlt [innen](https://download.cnet.com/s/powerpoint-add-in/) töltheti le.
 
 ## <a name="how-it-works"></a>Működés
 

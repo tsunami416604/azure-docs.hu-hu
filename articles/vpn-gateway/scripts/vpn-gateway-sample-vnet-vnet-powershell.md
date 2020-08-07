@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – Virtuális hálózatok közötti VPN konfigurálása | Microsoft Docs
-description: Helyek közötti VPN konfigurálása.
+description: Ez a PowerShell-parancsfájl két Azure-beli virtuális hálózatot csatlakoztat a VNet – VNet kapcsolat típus használatával. A szkript összes parancsmagjának megismerése.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 5a69df3893a3bf32ca2af1be62744991346ee048
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f35f4e097f6b7848c19d1d926e0896d870f3f64
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068360"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926947"
 ---
 # <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>VNet-VNet VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -148,7 +148,7 @@ Remove-AzResourceGroup -Name TestRG2
 
 A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hozzáad egy alhálózati konfigurációt. Ez a konfiguráció a virtuális hálózat létrehozására szolgál. |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekérdezi egy virtuális hálózat részleteit. |

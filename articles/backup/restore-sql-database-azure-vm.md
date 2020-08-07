@@ -3,12 +3,12 @@ title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054579"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921146"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -30,6 +30,7 @@ Az adatbázis visszaállítása előtt vegye figyelembe a következőket:
 - Az adatbázist visszaállíthatja egy SQL Server egy példányára ugyanabban az Azure-régióban.
 - A célkiszolgálón regisztrálni kell a forrással megegyező tárolóban.
 - Ha egy TDE-titkosított adatbázist szeretne visszaállítani egy másik SQL Serverre, először [vissza kell állítania a tanúsítványt a célkiszolgálóra](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
+- A [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) -kompatibilis adatbázisok [visszaállítását a fájlok visszaállítása](#restore-as-files) lehetőség használatával kell visszaállítani.
 - A "Master" adatbázis visszaállítása előtt indítsa el az SQL Server példányt egy egyfelhasználós módban az indítási lehetőség **– m AzureWorkloadBackup**használatával.
   - A **-m** érték az ügyfél neve.
   - A kapcsolatok csak a megadott ügyfél nevével nyithatók meg.
@@ -129,7 +130,7 @@ Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsá
     >- A Backup-tárolóban lévő fájlok visszaállításának elindítási `\\<storageacct>.file.core.windows.net\<filesharename>` útja<BR>
     A PsExec letöltése a [Sysinternals](/sysinternals/downloads/psexec) lapról végezhető el.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Válassza a visszaállítás fájlokként lehetőséget.](./media/backup-azure-sql-database/restore-as-files.png)
 

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3441a540cb00dc9b85de54543484b1723fa4226e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080766"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922642"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -65,7 +65,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
    [![Alkalmazás keresése a felhasználó kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Válassza ki a szerepkört. Válassza ki az **olvasót** az adatlekérdezéshez vagy a **közreműködőhöz** az adatgyűjtés és a hivatkozási adatváltozások lekérdezéséhez. Kattintson az **OK** gombra.
+1. Válassza ki a szerepkört. Válassza ki az **olvasót** az adatlekérdezéshez vagy a **közreműködőhöz** az adatgyűjtés és a hivatkozási adatváltozások lekérdezéséhez. Válassza az **OK** lehetőséget.
 
    [![Válasszon olvasót vagy közreműködőt a felhasználói szerepkör kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
@@ -84,7 +84,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
    1. A C# nyelvben a következő kód az alkalmazás nevében tudja beszerezni a jogkivonatot. Az adatok Gen1-környezetből való lekérdezésének teljes mintáját a [lekérdezési adatok a C# használatával](time-series-insights-query-data-csharp.md)című témakörben olvashatja.
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
+        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
    1. Ezután a jogkivonat átadható a `Authorization` fejlécben, amikor az alkalmazás meghívja a Azure Time Series INSIGHTS API-t.
 
@@ -109,7 +109,7 @@ Ha hitelesített lekérdezéseket szeretne végrehajtani a [Azure Time Series IN
 
 Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 
-| Kötelező kérelem fejléce | Description |
+| Kötelező kérelem fejléce | Leírás |
 | --- | --- |
 | Engedélyezés | Azure Time Series Insights használatával történő hitelesítéshez érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az **engedélyezési** fejlécben. |
 
@@ -120,7 +120,7 @@ Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 
 Az opcionális kérések fejlécei alább olvashatók.
 
-| Választható kérelemfejléc | Description |
+| Választható kérelemfejléc | Leírás |
 | --- | --- |
 | Content-Type | csak `application/json` a támogatott. |
 | x-MS-Client-Request-ID | Egy ügyfél-kérelem azonosítója. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi, hogy a szolgáltatás nyomkövetési műveletet végez a szolgáltatások között. |
@@ -129,7 +129,7 @@ Az opcionális kérések fejlécei alább olvashatók.
 
 Nem kötelező, de az ajánlott válasz fejlécek az alábbiakban olvashatók.
 
-| Válasz fejléce | Description |
+| Válasz fejléce | Leírás |
 | --- | --- |
 | Content-Type | Csak `application/json` a támogatott. |
 | x-MS-Request-ID | Kiszolgáló által generált kérelem azonosítója. Felhasználható arra, hogy felvegye a kapcsolatot a Microsofttal egy kérelem kivizsgálására. |

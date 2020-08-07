@@ -1,6 +1,6 @@
 ---
 title: VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
-description: Konfiguráljon VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez.
+description: Megtudhatja, hogyan konfigurálhatja az átjárók átvitelét a virtuális hálózati kapcsolatok esetében, ami zökkenőmentesen két Azure-beli virtuális hálózatot csatlakoztat.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66380fb7c8b9e3d88fe1c814042b51323ff3160a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982892"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925889"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
 
@@ -57,10 +57,10 @@ A dokumentumban szereplő példához az alábbi erőforrásokat kell létrehozni
 
 A virtuális hálózatok közötti társviszony létrehozásához használt fiókoknak rendelkezniük kell a megfelelő szerepkörökkel és engedélyekkel. Az alábbi példában, ha a Hub-RM (központi RM-alapú) és a Spoke-Classic (küllőn elhelyezkedő klasszikus) nevű virtuális hálózatokat kapcsolja össze, a fióknak az alábbi szerepkörökkel vagy engedélyekkel kell rendelkeznie az egyes virtuális hálózatokon:
     
-|Virtuális hálózat|Üzemi modell|Szerepkör|Engedélyek|
+|Virtuális hálózat|Üzembehelyezési modell|Role|Engedélyek|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N.A.|
+| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
 |Spoke-Classic|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 

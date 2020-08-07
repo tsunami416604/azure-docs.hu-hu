@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041317"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921214"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ A Azure Portal használatával olyan teljesítménnyel kapcsolatos javaslatokat 
 
 ## <a name="viewing-recommendations"></a>Javaslatok megtekintése
 
-A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) engedélyekre van szükség az Azure-ban. Az **olvasó**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
+A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek az Azure-ban. Az **olvasó**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
 
 A következő lépések végrehajtásával találhat teljesítménnyel kapcsolatos javaslatokat a Azure Portal:
 
@@ -39,9 +39,9 @@ A teljesítménnyel kapcsolatos javaslatok az alábbi ábrán láthatóhoz hason
 
 A javaslatok a következő kategóriákba sorolhatók a teljesítményre gyakorolt lehetséges hatás szerint:
 
-| Hatás | Description |
+| Hatás | Leírás |
 |:--- |:--- |
-| Magasság |A nagy hatású ajánlásoknak meg kell adniuk a legjelentősebb teljesítményre gyakorolt hatást. |
+| Magas |A nagy hatású ajánlásoknak meg kell adniuk a legjelentősebb teljesítményre gyakorolt hatást. |
 | Közepes |A közepes hatású javaslatoknak javítaniuk kell a teljesítményt, de lényegében nem. |
 | Alacsony |Az alacsony hatású javaslatok jobb teljesítményt biztosítanak, mint a nélkül, de előfordulhat, hogy a fejlesztés nem jelentős. |
 
@@ -132,7 +132,7 @@ Előfordulhat, hogy egy javaslat alkalmazása nem történik meg azonnal. A port
 | Függőben |A javaslat alkalmazása parancs beérkezett, és végrehajtásra van ütemezve. |
 | Végrehajtása |A javaslat alkalmazása folyamatban van. |
 | Érvényesítése |Az ajánlás alkalmazása sikeresen megtörtént, és a szolgáltatás az előnyöket méri. |
-| Sikeres |Az ajánlás alkalmazása sikeresen megtörtént, és a rendszer kiértékelte az előnyöket. |
+| Success |Az ajánlás alkalmazása sikeresen megtörtént, és a rendszer kiértékelte az előnyöket. |
 | Hiba |Hiba történt a javaslat alkalmazásának folyamata során. Ez lehet átmeneti probléma, vagy lehetséges, hogy a séma módosul a táblán, és a parancsfájl már nem érvényes. |
 | Visszatérés |A javaslat alkalmazása megtörtént, de nem megfelelőnek minősül, és a rendszer automatikusan visszaállította. |
 | Visszatért |Az ajánlás visszavonásra került. |
@@ -172,4 +172,4 @@ Figyelje a javaslatokat, és alkalmazza őket a teljesítmény pontosítására.
 
 * [Lekérdezéstár](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)

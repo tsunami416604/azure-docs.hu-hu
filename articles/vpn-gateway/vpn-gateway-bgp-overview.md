@@ -1,6 +1,6 @@
 ---
 title: 'BGP és Azure VPN Gateway: áttekintés'
-description: Ez a cikk bemutatja, hogyan használható a BGP az Azure VPN Gateway megoldással együtt.
+description: Ismerkedjen meg az Azure VPN Gateway támogatja a Border Gateway Protocolt, az útválasztási és elérhetőségi információk cseréjére használt szabványos útválasztási protokollt.
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f514c2708c3a81ff56c6029d5e43df43ad503036
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708093"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924699"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>A BGP és az Azure VPN Gateway
 Ez a cikk az Azure VPN Gateway BGP (Border Gateway Protocol) támogatásának áttekintését tartalmazza.

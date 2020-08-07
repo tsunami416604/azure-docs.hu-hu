@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 902dfc924fdac28c0aed46745604c5d4d19f084b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292668"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920330"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C használatával #
 
@@ -25,7 +25,7 @@ Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni a [Gen2 adatelérési 
 > [!TIP]
 > A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
@@ -71,7 +71,7 @@ Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www
 
 ## <a name="c-sample-code"></a>C# mintakód
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
 > * A kód mintát az alapértelmezett környezeti változók módosítása nélkül lehet végrehajtani.

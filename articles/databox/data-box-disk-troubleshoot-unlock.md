@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk a lemezek feloldásával kapcsolatos problémák elhárítása | Microsoft Docs
-description: Ez a cikk az Azure Data Box Disk szolgáltatásban jelentkező hibák elhárítását írja le.
+description: Ismerje meg a munkafolyamatokat, amelyekkel elháríthatja a feloldó eszközt a Azure Data Box Disk használatával. Tekintse meg Data Box Disk feloldási eszköz hibáit.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 61f6da7df09f9569af1746563dc3be2922f4e2c1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833567"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925561"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Hibák elhárítása a lemezek Azure Data Box Diskban való feloldásával kapcsolatban
 
@@ -71,6 +71,6 @@ Telepítheti a [Windows PowerShell v 5,0](https://www.microsoft.com/download/det
  
 Ha továbbra sem tudja feloldani a kötetek zárolását, másolja a naplófájlokat a Data Box Disk-feloldási eszközt tartalmazó mappából, és [vegye fel a kapcsolatot Microsoft ügyfélszolgálata](data-box-disk-contact-microsoft-support.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató az [érvényesítési problémák elhárításához](data-box-disk-troubleshoot.md).

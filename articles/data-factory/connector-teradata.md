@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418031"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926892"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Adatok másolása a Teradata Vantage-ból Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 >
 > * [1-es verzió](v1/data-factory-onprem-teradata-connector.md)
@@ -63,7 +64,7 @@ A Teradata társított szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot **Teradata**értékre kell beállítani. | Igen |
 | connectionString | Meghatározza az Teradata-példányhoz való kapcsolódáshoz szükséges adatokat. Tekintse át a következő mintákat.<br/>A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. | Igen |
-| felhasználónév | Adja meg a Teradata való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
+| username | Adja meg a Teradata való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Azt is megteheti, hogy [hivatkozik Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). <br>A Windows-hitelesítés használatakor, vagy az alapszintű hitelesítéshez Key Vault jelszóra hivatkozik. | Nem |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
@@ -71,6 +72,7 @@ További kapcsolatok tulajdonságai az adott esetben a kapcsolatok karakterlánc
 
 | Tulajdonság | Leírás | Alapértelmezett érték |
 |:--- |:--- |:--- |
+| UseDataEncryption | Meghatározza, hogy a Teradata-adatbázissal folytatott összes kommunikáció titkosítva legyen-e. Az engedélyezett értékek: 0 vagy 1.<br><br/>- **0 (letiltva, alapértelmezett)**: csak a hitelesítési adatok titkosítása.<br/>- **1 (engedélyezve)**: titkosítja az illesztőprogram és az adatbázis között átadott összes adathalmazt. | Nem |
 | CharacterSet | A munkamenethez használandó karakterkészlet Például: `CharacterSet=UTF16` .<br><br/>Ez az érték lehet felhasználó által definiált karakterkészlet, vagy a következő előre definiált karakterkészletek egyike: <br/>– ASCII<br/>-UTF8<br/>– UTF16<br/>– LATIN1252_0A<br/>– LATIN9_0A<br/>– LATIN1_0A<br/>-SHIFT-JIS (Windows, DOS-kompatibilis, KANJISJIS_0S)<br/>-EUC (UNIX-kompatibilis, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>– KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>– SCHINESE936_6R0<br/>– TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>– HANGUL949_7R0<br/>– ARABIC1256_6A0<br/>– CYRILLIC1251_2A0<br/>– HEBREW1255_5A0<br/>– LATIN1250_1A0<br/>– LATIN1254_7A0<br/>– LATIN1258_8A0<br/>– THAI874_4A0 | Az alapértelmezett érték: `ASCII` . |
 | MaxRespSize |Az SQL-kérelmekre vonatkozó válasz puffer maximális mérete (kilobájtban) (Tudásbázis). Például: `MaxRespSize=‭10485760‬` .<br/><br/>A Teradata-adatbázis 16,00-es vagy újabb verziójához a maximális érték a 7361536. A korábbi verziókat használó kapcsolatok esetében a maximális érték 1048576. | Az alapértelmezett érték: `65536` . |
 
@@ -150,9 +152,9 @@ Az adatok Teradata történő másolásához a következő tulajdonságok támog
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát be kell állítani `TeradataTable` . | Igen |
 | adatbázis | Az Teradata-példány neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
-| tábla | A Teradata-példányban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| table | A Teradata-példányban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -206,7 +208,7 @@ Az adatok Teradata történő másolásához a másolási tevékenység **forrá
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva táblázat az adatkészletben) |
 | partitionOptions | Meghatározza az adatok Teradata való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **none** (alapértelmezett), **kivonat** -és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), akkor a Teradata származó adatok párhuzamos betöltésének fokát a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításai vezérlik. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció beállítása nem `None` . | Nem |
-| partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amelyet a tartomány partíció vagy a kivonatoló partíció használ a párhuzamos másoláshoz. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges indexét, és a partíciós oszlopként használja. <br>Akkor alkalmazza, ha a partíció beállítás értéke `Hash` vagy `DynamicRange` . Ha lekérdezést használ a forrásadatok, a Hook `?AdfHashPartitionCondition` vagy `?AdfRangePartitionColumnName` a WHERE záradék beolvasásához. Lásd: példa [párhuzamos másolással a Teradata](#parallel-copy-from-teradata) szakaszból. | Nem |
+| partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amelyet a tartomány partíció vagy a kivonatoló partíció használ a párhuzamos másoláshoz. Ha nincs megadva, a rendszer automatikusan felismeri a tábla elsődleges indexét, és a partíciós oszlopként használja. <br>Akkor alkalmazza, ha a partíció beállítás értéke `Hash` vagy `DynamicRange` . Ha lekérdezést használ a forrásadatok, a Hook `?AdfHashPartitionCondition` vagy `?AdfRangePartitionColumnName` a WHERE záradék beolvasásához. Lásd: példa [párhuzamos másolással a Teradata](#parallel-copy-from-teradata) szakaszból. | Nem |
 | partitionUpperBound | Az adatmásolásra szolgáló partíciós oszlop maximális értéke. <br>Akkor alkalmazza, ha a partíció lehetőség van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához, `?AdfRangePartitionUpbound` a WHERE záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát. | Nem |
 | partitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához, `?AdfRangePartitionLowbound` a WHERE záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát. | Nem |
 
@@ -304,7 +306,7 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | CLOB |Sztring |
 | Dátum |DateTime |
 | Decimal |Decimal |
-| Double |Double |
+| Dupla |Dupla |
 | Grafikus |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Egész szám |Int32 |
 | Intervallum napja |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
@@ -320,7 +322,7 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | Másodperc intervalluma |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Intervallum éve |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Év és hónap közötti időszak |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Szám |Double |
+| Szám |Dupla |
 | Időszak (dátum) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időszak (idő) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időtartam (idő zónával) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
@@ -329,7 +331,7 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | SmallInt |Int16 |
 | Idő |időtartam |
 | Időzónával ellátott idő |időtartam |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | Időbélyeg időzónával |DateTime |
 | VarByte |Bájt [] |
 | VarChar |Sztring |

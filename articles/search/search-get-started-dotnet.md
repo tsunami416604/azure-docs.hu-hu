@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: b621b16d789e16a6f44536a6e8c18b5aa3690d74
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905448"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922268"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
 
 Az új [Azure.Search.Documents (11-es verzió) ügyféloldali kódtár](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) használatával létrehozhat egy .net Core Console-alkalmazást a C#-ban, amely egy keresési indexet hoz létre, tölt be és kérdez le.
 
-[Töltse le a forráskódot](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart-v11) , hogy a kész projekttel kezdődjön, vagy kövesse a cikk lépéseit saját létrehozásához.
+[Töltse le a forráskódot](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11) , hogy a kész projekttel kezdődjön, vagy kövesse a cikk lépéseit saját létrehozásához.
 
 > [!NOTE]
 > Korábbi verziót keres? Lásd: [keresési index létrehozása a Microsoft. Azure. Search v10 használatával](search-get-started-dotnet-v10.md) .
@@ -183,13 +183,17 @@ Dokumentumok feltöltésekor [IndexDocumentsBatch](https://docs.microsoft.com/do
 
     Console.WriteLine("{0}", "Loading index...\n");
     qryclient.IndexDocuments(batch, idxoptions);
+    ```
 
+    Miután elvégezte a [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektum inicializálását, a [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) objektum [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) meghívásával elküldheti az indexbe.
+
+1. Mivel ez egy olyan konzolos alkalmazás, amely egymás után futtatja az összes parancsot, adjon meg egy 2 másodperces várakozási időt az indexelés és a lekérdezések között.
+
+    ```csharp
     // Wait 2 seconds for indexing to complete before starting queries (for demo and console-app purposes only)
     Console.WriteLine("Waiting for indexing...\n");
     System.Threading.Thread.Sleep(2000);
     ```
-
-    Miután elvégezte a [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektum inicializálását, a [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) objektum [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) meghívásával elküldheti az indexbe.
 
     A 2 másodperces késleltetés kompenzálja az indexelést, amely aszinkron módon történik, így minden dokumentum indexelhető a lekérdezések végrehajtása előtt. A késések kódolása jellemzően csak demók, tesztek és példák esetében szükséges.
 
@@ -283,7 +287,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a C# rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Az olvashatóság és a megértés érdekében a kód leegyszerűsítése különböző fázisokban volt. Ha Ön az alapvető fogalmakkal is rendelkezik, javasoljuk, hogy a következő cikkből megtudhatja, milyen alternatív megközelítésekre és fogalmakra van szükség, amelyek elmélyítik az Ön ismereteit. 
 

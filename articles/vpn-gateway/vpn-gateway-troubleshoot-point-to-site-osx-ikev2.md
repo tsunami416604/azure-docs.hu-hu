@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: pont – hely kapcsolatok hibakeresése: Mac OS X-ügyfelek'
-description: A P2S hibaelhárításának lépései Mac OS X VPN-ügyfélkapcsolatok
+description: 'A pont – hely kapcsolat hibakeresése Mac OS X-ről. a következő beállítások ellenőrzése: kiszolgáló címe, távoli azonosító, helyi azonosító, hitelesítési beállítások és operációs rendszer verziója.'
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 8dbed35659e409e5e3bcad74b378dba1f71b1f29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae7ca9ad69bc5bea20fc959f86e41439bd01cd5c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998493"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920755"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Pont – hely típusú VPN-kapcsolatok hibakeresése Mac OS X VPN-ügyfelektől
 

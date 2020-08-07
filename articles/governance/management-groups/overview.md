@@ -3,12 +3,12 @@ title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányí
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529347"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920160"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
@@ -25,7 +25,7 @@ A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozás
 
 Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ez a szabályzat minden olyan Nagyvállalati Szerződés (EA) előfizetésre vonatkozik, amely az adott felügyeleti csoport leszármazottait képezi, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
-A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetéshez szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést. Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
+A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetéshez szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez át a felügyeleti csoportba, létrehozhat egy [Azure-szerepkör-hozzárendelést](../../role-based-access-control/overview.md) a felügyeleti csoportban, amely örökli az összes előfizetéshez való hozzáférést. Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
 
 ### <a name="important-facts-about-management-groups"></a>A felügyeleti csoportokkal kapcsolatos fontos tudnivalók
 

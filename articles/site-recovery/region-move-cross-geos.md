@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134017"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927300"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government- és nyilvános régiók között 
 
@@ -53,7 +53,7 @@ Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gé
 Győződjön meg arról, hogy az Azure-fiókja rendelkezik a virtuális gépek Azure-ba történő replikálásához szükséges engedélyekkel.
 
 - Tekintse át a gépek Azure-ba való replikálásához szükséges [engedélyeket](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) .
-- [Szerepköralapú hozzáférési](../role-based-access-control/role-assignments-portal.md) engedélyek ellenőrzése és módosítása. 
+- Ellenőrizze és módosítsa az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) engedélyeit. 
 
 ### <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
@@ -187,7 +187,7 @@ A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. A
 1. Kattintson az **alkalmazás**  >  **forrásának**replikálása elemre.
 2. A **Forrás** mezőben válassza ki a konfigurációs kiszolgálót.
 3. A **gép típusa**területen válassza a **fizikai gépek**lehetőséget.
-4. Válassza ki a Process Server (a konfigurációs kiszolgáló) elemet. Ezt követően kattintson az **OK** gombra.
+4. Válassza ki a Process Server (a konfigurációs kiszolgáló) elemet. Ezután kattintson az **OK** gombra.
 5. A **cél**mezőben válassza ki azt az előfizetést és erőforráscsoportot, amelyben létre szeretné hozni az Azure-beli virtuális gépeket a feladatátvételt követően. Válassza ki az Azure-ban használni kívánt üzembe helyezési modellt (klasszikus vagy erőforrás-kezelés).
 6. Válassza ki az adatok replikálásához használni kívánt Azure-tárfiókot. 
 7. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak.

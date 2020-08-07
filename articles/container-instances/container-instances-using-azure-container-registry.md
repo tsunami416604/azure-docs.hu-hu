@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169612"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927436"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés az Azure Container Instancesben az Azure Container Registryből
 
@@ -25,7 +25,7 @@ ms.locfileid: "86169612"
 
 ## <a name="configure-registry-authentication"></a>Regisztrációs adatbázis hitelesítésének konfigurálása
 
-Olyan éles környezetben, ahol hozzáférést biztosít a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, javasoljuk, hogy konfigurálja a beállításjegyzék-hozzáférést egy [egyszerű szolgáltatásnév](../container-registry/container-registry-auth-service-principal.md)használatával. Az egyszerű szolgáltatás lehetővé teszi, hogy [szerepköralapú hozzáférés-vezérlést](../container-registry/container-registry-roles.md) biztosítson a tároló lemezképéhez. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
+Olyan éles környezetben, ahol hozzáférést biztosít a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, javasoljuk, hogy konfigurálja a beállításjegyzék-hozzáférést egy [egyszerű szolgáltatásnév](../container-registry/container-registry-auth-service-principal.md)használatával. Az egyszerű szolgáltatás lehetővé teszi, hogy [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../container-registry/container-registry-roles.md) biztosítson a tárolói lemezképekhez. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
 A Azure Container Registry további [hitelesítési lehetőségeket](../container-registry/container-registry-authentication.md)biztosít.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835918"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925311"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -68,7 +68,7 @@ Az Azure AD az [Identitáskezelés teljes funkcionalitását](/azure/security/se
 - [Önkiszolgáló jelszókezelés](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Önkiszolgáló csoport kezelése](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Kiemelt jogosultságú fiókok felügyelete](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview)
+- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)
 - [Alkalmazás-használat figyelése](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Gazdag naplózás](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Biztonsági monitorozás és riasztások](/azure/operations-management-suite/oms-security-responding-alerts)

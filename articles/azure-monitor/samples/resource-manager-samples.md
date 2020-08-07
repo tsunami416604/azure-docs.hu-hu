@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 4446eef481e8370f7457311f6eae6ce40f9e6727
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab869fc8577d4d1934be96404ded5a2051237bbf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539261"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922728"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor
 
@@ -49,7 +49,7 @@ az deployment group create \
 - Riasztások
   - [Riasztási szabályok naplózása](resource-manager-alerts-log.md) – riasztások naplózási lekérdezésekről és az Azure-tevékenység naplója.
   - [Metrikus riasztási szabályok](resource-manager-alerts-metric.md) – a metrikák különböző típusú logikát használó riasztásai.
-- Application Insights – hamarosan elérhető lesz.
+- [Application Insights](resource-manager-app-resource.md)
 - [Diagnosztikai beállítások](resource-manager-diagnostic-settings.md) – diagnosztikai beállítások létrehozása a naplók és a metrikák továbbítására különböző erőforrástípusok alapján.
 - [Naplók lekérdezése](resource-manager-log-queries.md) – mentett naplózási lekérdezések létrehozása egy log Analytics munkaterületen.
 - [Log Analytics munkaterület](resource-manager-workspace.md) – log Analytics munkaterület létrehozása és különböző adatforrások gyűjteményének konfigurálása log Analytics-ügynökből.
@@ -59,6 +59,6 @@ az deployment group create \
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Resource Manager-sablonokról](../../azure-resource-manager/templates/overview.md)

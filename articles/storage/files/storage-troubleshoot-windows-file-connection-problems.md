@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901742"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927215"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -305,27 +305,27 @@ A probléma megoldásához módosítsa a **DirectoryCacheEntrySizeMax** beállí
  
 Beállíthatja például a 0x100000, és megtekintheti, hogy a teljesítmény jobb legyen.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hiba történt a (z) Azure Files "Azure Active Directory tartományi szolgáltatás (HRE DS) hitelesítésének engedélyezése során a (z)" nem találja a (z) HRE bérlői azonosítóval rendelkező aktív bérlőket "AadDsTenantNotFound
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hiba történt a (z) Azure Active Directory tartományi szolgáltatás (Azure AD DS) hitelesítésének engedélyezésekor a (z) Azure Files "nem találja a (z) HRE bérlői azonosítóval rendelkező aktív bérlőket" AadDsTenantNotFound
 
 ### <a name="cause"></a>Ok
 
-Hiba történt abban az esetben, ha a [Azure Active Directory Domain Services (Azure AD DS) hitelesítését](storage-files-identity-auth-active-directory-domain-service-enable.md) olyan AadDsTenantNotFound próbálja meg engedélyezni Azure Filesn, ahol a [HRE tartományi szolgáltatás (HRE DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre a társított előfizetés HRE-bérlője számára.  
+Hiba történt a AadDsTenantNotFound, amikor az Azure [AD tartományi szolgáltatást (azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem a társított előfizetés Azure ad-bérlője számára való [Azure Active Directory Domain Services (Azure AD DS) hitelesítésre próbálja engedélyezni Azure Filesn](storage-files-identity-auth-active-directory-domain-service-enable.md) .  
 
 ### <a name="solution"></a>Megoldás
 
-Engedélyezze a HRE DS szolgáltatást annak az előfizetésnek a HRE-bérlőn, amelyre a Storage-fiók telepítve van. Felügyelt tartomány létrehozásához rendszergazdai jogosultsággal kell rendelkeznie a HRE-bérlőhöz. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót, amely [lehetővé teszi Azure Active Directory Domain Services használatát a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Engedélyezze az Azure AD DS azon előfizetés Azure AD-bérlőn, amelyre a Storage-fiókja telepítve van. Felügyelt tartomány létrehozásához rendszergazdai jogosultsággal kell rendelkeznie az Azure AD-bérlőben. Ha nem az Azure AD-bérlő rendszergazdája, lépjen kapcsolatba a rendszergazdával, és kövesse a lépésenkénti útmutatót, amely [lehetővé teszi Azure Active Directory Domain Services használatát a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt a (z) Azure Active Directory Domain Service (HRE DS) hitelesítéssel rendelkező fájlmegosztás SMB-hozzáférése esetén
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt a (z) Azure Active Directory tartományi szolgáltatás (Azure AD DS) hitelesítéssel rendelkező fájlmegosztás SMB-hozzáférése esetén
 
 ### <a name="cause"></a>Ok
 
-Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt, amikor a HRE DS-hitelesítéssel próbál csatlakozni a fájlmegosztást a HRE DS-ben, és a tartomány DNS-neve egy numerikus karakterrel kezdődik. Ha például a HRE DS-tartomány DNS-neve "1domain", akkor ezt a hibaüzenetet fogja kapni, amikor a HRE hitelesítő adatokkal próbál csatlakoztatni a fájlmegosztást. 
+Hiba történt a (z) 1359 rendszerhiba miatt. Belső hiba történt, amikor az Azure-AD DS hitelesítéssel próbál csatlakozni a fájlmegosztást az Azure-AD DS, amelynek tartomány DNS-neve egy numerikus karakterrel kezdődik. Ha például az Azure AD DS tartomány DNS-neve "1domain", akkor ez a hibaüzenet jelenik meg, amikor az Azure AD-beli hitelesítő adatokkal próbálja meg csatlakoztatni a fájlmegosztást. 
 
 ### <a name="solution"></a>Megoldás
 
-Jelenleg a HRE DS újratelepítését egy új tartományi DNS-névvel végezheti el, amely az alábbi szabályokra vonatkozik:
+Jelenleg az alábbi szabályok alapján érdemes megfontolni az Azure-AD DS újbóli üzembe helyezését egy új tartományi DNS-névvel:
 - A nevek nem kezdődhetnek numerikus karakterrel.
 - A névnek 3 – 63 karakter hosszúnak kell lennie.
 

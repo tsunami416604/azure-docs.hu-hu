@@ -12,17 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504067"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920126"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-A tranzakciós replikáció az Azure SQL felügyelt SQL Server példányának egyik funkciója, amely lehetővé teszi az adatok replikálását az Azure SQL felügyelt példányain lévő táblákból vagy egy SQL Server-példányból a távoli adatbázisokra helyezett táblákba. Ez a funkció lehetővé teszi több tábla szinkronizálását különböző adatbázisokban.
+A tranzakciós replikáció az Azure SQL felügyelt SQL Server példányának egyik funkciója, amely lehetővé teszi az adatok replikálását az Azure SQL felügyelt példányain lévő táblákból vagy egy SQL Server-példányból a távoli adatbázisokra helyezett táblákba. Ez a funkció lehetővé teszi több tábla szinkronizálását különböző adatbázisokban. 
+
+A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -41,7 +43,7 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 
 ![replikálás SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Role | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nem | Igen |
 | **Terjesztő** | Nem | Igen|
@@ -188,7 +190,7 @@ Ha a Geo-replikáció engedélyezve van egy feladatátvételi csoport **előfize
 - Adatvesztéssel rendelkező feladatátvétel esetén a replikáció is működik. A rendszer újra replikálja az elveszett módosításokat.
 - Adatvesztéssel rendelkező feladatátvétel esetén az adatvesztés azonban a terjesztési adatbázis megőrzési idején kívül esik, az SQL felügyelt példányának rendszergazdájának újra kell inicializálnia az előfizetés-adatbázist.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 
@@ -197,7 +199,7 @@ A tranzakciós replikáció konfigurálásával kapcsolatos további informáci�
 - [Hozzon létre egy kiadványt](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 - [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks**). )
 
-## <a name="see-also"></a>Lásd még  
+## <a name="see-also"></a>További információ  
 
 - [Replikálás SQL felügyelt példánnyal és feladatátvételi csoporttal](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replikáció az SQL Database-be](../database/replication-to-sql-database.md)

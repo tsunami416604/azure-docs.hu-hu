@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül'
-description: Megtudhatja, hogyan másolhat adatok a Azure Data Box Heavy blob Storage-ba REST API-k használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat Azure Data Box blob Storage-hoz a REST API-k használatával http-vagy https-kapcsolaton keresztül, majd az adatok Azure Data Box Heavyból való másolásával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849419"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921163"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül  
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box Heavy beállítása](data-box-heavy-deploy-set-up.md).
+1. Az [ Az Azure Data Box Heavy beállítása](data-box-heavy-deploy-set-up.md) című oktatóanyagot.
 2. Megkapta a Data Box Heavyt, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Áttekintette [Data Box blob Storage rendszerkövetelményeit](data-box-system-requirements-rest.md) , és ismeri az API-k, SDK-k és eszközök támogatott verzióit.
 4. Olyan gazdagéphez fér hozzá, amely a Data Box Heavyba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:
@@ -143,7 +143,7 @@ Több, például Ubuntu és Debian is használja az `update-ca-certificates` par
 A RHEL, Fedora és CentOS legújabb verziói a parancsot használják `update-ca-trust` .
 
 - Másolja a tanúsítványfájl-fájlt a `/etc/pki/ca-trust/source/anchors` könyvtárba.
-- Futtassa az `update-ca-trust` parancsot.
+- A `update-ca-trust` parancs futtatása.
 
 A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f1786123808371601467926c2a114c676e898330
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 161722d1f80e4bada35548b4e2b4e903c56215ec
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668627"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926691"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -74,7 +74,7 @@ Az elérhető SQL Server on Linux virtuálisgép-lemezképek megjelenítéséhez
 > [!NOTE]
 > Mostantól lehetőség van a díjköteles használati SQL Server VM licencelési modelljének módosítására saját licenc használatára. További információ: [a SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-### <a name="bring-your-own-license"></a><a id="BYOL"></a> Saját licenc használata
+### <a name="bring-your-own-license"></a><a id="BYOL"></a>Saját licenc használata
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md#byol).
 
 Ha saját licencet szeretne létrehozni, lehetősége van a használatban lévő használati SQL Server VM átalakítására, vagy egy rendszerképet is üzembe helyezhet a következővel: **{BYOL}**. A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
@@ -132,7 +132,7 @@ Részletes információ:
 Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogatott operációs rendszer, verzió és kiadás kombináció számára. Ez azt jelenti, hogy a rendszer folyamatosan frissíti a rendszerképeket, a régebbi rendszerképek pedig el lesznek távolítva. További információkért tekintse meg az [SQL Server virtuális gépek GYIK](frequently-asked-questions-faq.md#images) dokumentumának **Rendszerképek** című szakaszát.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)
-A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement).
+A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://docs.microsoft.com/sql/sql-server/sql-server-privacy).
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek

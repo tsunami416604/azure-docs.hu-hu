@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti és konfigurálhatja az ultra-l
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 46be67a415f67e260262e5b80e5a1dad534aea79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531604"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926739"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Az Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)
 
@@ -97,7 +97,7 @@ A meglévő fürtökön engedélyezheti az ultravékony lemezeket, ha új csomó
 
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 Ha új csomópont-készleteket szeretne létrehozni az ultra-lemezek támogatása nélkül, ezt az egyéni paraméter kihagyása mellett teheti meg `--aks-custom-headers` .
@@ -229,7 +229,7 @@ Events:
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az ultra Disks [szolgáltatásról: Azure Ultra Disks használata](../virtual-machines/linux/disks-enable-ultra-ssd.md).
 - További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-storage]

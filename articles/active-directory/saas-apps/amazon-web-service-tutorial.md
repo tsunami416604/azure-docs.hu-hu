@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 07/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e16fdaed8ce7e73718569652e88e66844850175
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 79e23f516fe31b4a21232f75286540e6c0d9019d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416567"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922990"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -81,7 +81,7 @@ Amazon Web Services (AWS) Azure AD-be való integrálásának konfigurálásáho
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Amazon Web Services (AWS)** kifejezést a keresőmezőbe.
 1. Válassza az **Amazon Web Services (AWS)** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése Amazon Web Serviceshoz (AWS)
+## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>Azure AD SSO konfigurálása és tesztelése Amazon Web Serviceshoz (AWS)
 
 Konfigurálja és tesztelje az Azure AD SSO-t Amazon Web Services (AWS) egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között Amazon Web Services (AWS).
 
@@ -120,7 +120,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | Név  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
-    | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
+    | Role            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  `https://aws.amazon.com/SAML/Attributes` |
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** (3. lépés) párbeszédpanelen válassza a **tanúsítvány hozzáadása**elemet.
@@ -133,7 +133,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](./media/amazon-web-service-tutorial/certificate.png)
 
 1. A **Amazon Web Services beállítása (AWS)** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 

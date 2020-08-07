@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113320"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924030"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -95,8 +95,8 @@ Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
 - Dátum
-- Állapot
-- Műveletek
+- status
+- Művelet
 
 
 ![Szűrő](./media/concept-provisioning-logs/default-filter.png "Szűrés")
@@ -118,8 +118,8 @@ Amikor kiválaszt egy egyéni időkeretet, beállíthatja a kezdési és a befej
 
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
-- Mind
-- Sikeres
+- Az összes
+- Success
 - Hiba
 - Kimarad
 
@@ -224,7 +224,7 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban esetlegesen felmerülő hibák. A hiányzó hibakódok esetében küldjön visszajelzést az oldal alján található hivatkozás használatával. 
 
-|Hibakód|Description|
+|Hibakód|Leírás|
 |---|---|
 |Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban, vagy tekintse át a megfelelő attribútum-konfigurációt, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. Az egyeztetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át az alábbi [dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
 |TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést fogad. Semmi teendő. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|
@@ -245,7 +245,7 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A felhasználó kiépítési állapotának megtekintése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
+* [A felhasználó kiépítési állapotának megtekintése](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
 
 

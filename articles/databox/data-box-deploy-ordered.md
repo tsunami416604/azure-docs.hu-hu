@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag a Azure Data Box rendeléséhez | Microsoft Docs
-description: Megismerheti az Azure Data Box üzembe helyezési követelményeit és a megrendelésének folyamatát
+description: Ebben az oktatóanyagban megismerheti a Azure Data Box, egy hibrid megoldást, amely lehetővé teszi a helyszíni információk importálását az Azure-ba, valamint a Azure Data Box sorrendjét.
 services: databox
 author: priestlg
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: v-grpr
-ms.openlocfilehash: fd841dee5f3a845d793255f5e13b416fb1add4f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f742af1a3c9ede4857e329697eb959a5a51dc95
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007395"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926365"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -89,7 +89,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 
 **A Azure Data Box CLI bővítmény telepítése**
 
-A Azure Data Box CLI-parancsok használata előtt telepítenie kell a bővítményt. Az Azure CLI-bővítmények hozzáférést biztosítanak olyan kísérleti és előzetes kiadású parancsokhoz, amelyeket még nem szállítottak el az alapszintű CLI részeként. További információ a bővítményekről: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+A Azure Data Box CLI-parancsok használata előtt telepítenie kell a bővítményt. Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva. További információ a bővítményekről: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
 
 A Azure Data Box-bővítmény telepítéséhez futtassa a következő `az extension add --name databox` parancsot:
 
@@ -217,7 +217,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
    ![Azure Data Box kiválasztása](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
    ![Azure Data Box kiválasztása](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
@@ -227,7 +227,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |---------|---------|
     |Átvitel típusa     | Válassza az **Importálás az Azure-ba** lehetőséget.        |
     |Előfizetés     | Válasszon egy EA-, CSP- vagy Azure Sponsorship-előfizetést a Data Box szolgáltatáshoz. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
-    |Resource Group (Erőforráscsoport) | Válasszon ki egy meglévő erőforráscsoportot. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. |
+    |Erőforráscsoport | Válasszon ki egy meglévő erőforráscsoportot. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. |
     |Forrásország/-régió    |    Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat. <br> További információt a [regionális elérhetőséget](data-box-overview.md#region-availability) tárgyaló témakörben talál.            |
 
@@ -301,7 +301,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
 
 1. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor a CLI-parancs futtatásával hozza létre a Data Box sorrendet. A következő táblázat a paraméterek beállításait tartalmazza `az databox job create` :
 
-   | Beállítás (paraméter) | Description |  Mintaérték |
+   | Beállítás (paraméter) | Leírás |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |name| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -420,7 +420,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
 
 2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
 
-    | Beállítás (paraméter) | Description |  Mintaérték |
+    | Beállítás (paraméter) | Leírás |  Mintaérték |
     |---|---|---|
     |ResourceGroupName [kötelező]| Meglévő erőforráscsoport használata. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
     |Név [kötelező]| A létrehozandó rendelés neve. | "mydataboxorder"|

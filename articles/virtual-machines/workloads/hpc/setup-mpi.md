@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1b2d707569221a79ad53f04bcc379f5067ed9b04
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926518"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Üzenet küldési felületének beállítása HPC-hez
 
@@ -95,11 +95,24 @@ Tekintse meg a fentiekben említett partíciós kulcsot.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Töltse le az Intel MPI](https://software.intel.com/mpi-library/choose-download)-t.
+Töltse le az [Intel MPI](https://software.intel.com/mpi-library/choose-download)választható verzióját. Módosítsa a I_MPI_FABRICS környezeti változót a verziótól függően. Az Intel MPI 2018 esetében használja a `I_MPI_FABRICS=shm:ofa` és a for 2019 használatát `I_MPI_FABRICS=shm:ofi` .
 
-Módosítsa a I_MPI_FABRICS környezeti változót a verziótól függően. Az Intel MPI 2018 esetében használja a `I_MPI_FABRICS=shm:ofa` és a for 2019 használatát `I_MPI_FABRICS=shm:ofi` .
+### <a name="non-sr-iov-vms"></a>Nem SR-IOV virtuális gépek
+A nem SR-IOV virtuális gépek esetében az 5. x futtatókörnyezet [ingyenes próbaverziójának](https://registrationcenter.intel.com/en/forms/?productid=1740) letöltésére példa a következő:
+```bash
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+```
+A telepítési lépésekért tekintse meg az [Intel MPI-könyvtár telepítési útmutatóját](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
+Szükség esetén érdemes lehet engedélyezni a ptrace a nem gyökérszintű, nem hibakereső folyamatokhoz (az Intel MPI legújabb verzióihoz szükséges).
+```bash
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
-A folyamat kitűzése alapértelmezés szerint 15, 30 és 60 PPN megfelelően működik.
+### <a name="suse-linux"></a>SUSE Linux
+SUSE Linux Enterprise Server VM-lemezképfájlok esetében – SLES 12 SP3 a HPC számára, SLES 12 SP3 a HPC-hoz (prémium), SLES 12 SP1 HPC-hez, SLES 12 SP1 HPC-hez (prémium), SLES 12 SP4 és SLES 15, a RDMA illesztőprogramok telepítve vannak, és az Intel MPI-csomagok terjesztése a virtuális gépen történik. Telepítse az Intel MPI-t a következő parancs futtatásával:
+```bash
+sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+```
 
 ## <a name="mpich"></a>MPICH
 
@@ -225,7 +238,7 @@ chmod 644 /home/$USER/.ssh/config
 
 A fenti szintaxis azt feltételezi, hogy egy megosztott kezdőkönyvtár, más. ssh könyvtárat kell átmásolni az egyes csomópontokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [InfiniBand-t támogató](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépekről
 - Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.

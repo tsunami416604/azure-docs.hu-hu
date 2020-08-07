@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1d7b29bbd508223888c6f205e25008c0b29fecea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903527"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922934"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -72,10 +72,12 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 
 | Eset | A riasztáshoz használandó metrika |
 |-|-|
-| Kiszolgálói végpont állapota a portálon = hiba | Szinkronizálási munkamenet eredménye |
+| A kiszolgáló végpontjának állapota hibát jelez a portálon | Szinkronizálási munkamenet eredménye |
 | A fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal | Nem szinkronizált fájlok |
 | A regisztrált kiszolgáló nem tud kommunikálni a Storage Sync szolgáltatással | Kiszolgáló online állapota |
 | A Felhőbeli rétegek felidézésének mérete túllépte a 500GiB egy napon belül  | Felhőbeli rétegek felidézésének mérete |
+
+Az ilyen forgatókönyvekhez tartozó riasztások létrehozásával kapcsolatos utasításokért lásd a [riasztási példák](#alert-examples) szakaszt.
 
 ## <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
 
@@ -110,7 +112,7 @@ A regisztrált kiszolgáló állapotának, a kiszolgálói végpont állapotána
 
 ## <a name="windows-server"></a>Windows Server
 
-A Windows Serveren megtekintheti a felhő-előállítók, a regisztrált kiszolgálók és a szinkronizálás állapotát.
+Azon a Windows-kiszolgálón, amelyen telepítve van a Azure File Sync ügynök, megtekintheti a felhő-előállítók, a regisztrált kiszolgálók és a szinkronizálás állapotát.
 
 ### <a name="event-logs"></a>Eseménynaplók
 
@@ -163,7 +165,101 @@ A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesí
 | AFS Sync Operations\Uploaded-szinkronizálási fájlok/mp | A feltöltött fájlok száma másodpercenként. |
 | AFS Sync Operations\Total szinkronizálási művelet/mp | A szinkronizált fájlok teljes száma (feltöltés és letöltés). |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="alert-examples"></a>Riasztási példák
+Ez a szakasz néhány példát mutat be Azure File Syncra.
+
+  > [!Note]  
+  > Ha riasztást hoz létre, és túl zajos, állítsa be a küszöbértéket és a riasztási logikát.
+  
+### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Riasztás létrehozása, ha a kiszolgálói végpont állapota hibát jelez a portálon
+
+1. A **Azure Portal**navigáljon a megfelelő **Storage Sync szolgáltatáshoz**. 
+2. Nyissa meg a **figyelés** szakaszt, és kattintson a **riasztások**elemre. 
+3. Új riasztási szabály létrehozásához kattintson az **+ új riasztási szabály** elemre. 
+4. Konfigurálja a feltételt a **feltétel kiválasztása**lehetőségre kattintva.
+5. A **jel logikájának konfigurálása** panelen kattintson a jel neve alatt található **szinkronizálási munkamenet eredménye** elemre.  
+6. Válassza ki a következő dimenzió-konfigurációt: 
+    - Dimenzió neve: **kiszolgálói végpont neve**  
+    - Üzemeltető**=** 
+    - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
+7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
+    - Küszöbérték **statikusra** állítva 
+    - Operátor: **kisebb, mint** 
+    - Összesítés típusa: **maximum**  
+    - Küszöbérték: **1** 
+    - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
+    - Kattintson a **Kész gombra.** 
+8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
+
+### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>Riasztás létrehozása, ha a fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal
+
+1. A **Azure Portal**navigáljon a megfelelő **Storage Sync szolgáltatáshoz**. 
+2. Nyissa meg a **figyelés** szakaszt, és kattintson a **riasztások**elemre. 
+3. Új riasztási szabály létrehozásához kattintson az **+ új riasztási szabály** elemre. 
+4. Konfigurálja a feltételt a **feltétel kiválasztása**lehetőségre kattintva.
+5. A **jel logikájának konfigurálása** panelen kattintson a **nem szinkronizált fájlok** elemre a jel neve alatt.  
+6. Válassza ki a következő dimenzió-konfigurációt: 
+     - Dimenzió neve: **kiszolgálói végpont neve**  
+     - Üzemeltető**=** 
+     - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
+7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
+     - Küszöbérték **statikusra** állítva 
+     - Operátor: **nagyobb, mint** 
+     - Összesítés típusa: **összesen**  
+     - Küszöbérték: **100** 
+     - Értékelés alapja: aggregációs részletesség = **5 perc** | Értékelés gyakorisága = **5 percenként** 
+     - Kattintson a **Kész gombra.** 
+8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
+
+### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>Riasztás létrehozása, ha egy regisztrált kiszolgáló nem tud kommunikálni a Storage Sync szolgáltatással
+
+1. A **Azure Portal**navigáljon a megfelelő **Storage Sync szolgáltatáshoz**. 
+2. Nyissa meg a **figyelés** szakaszt, és kattintson a **riasztások**elemre. 
+3. Új riasztási szabály létrehozásához kattintson az **+ új riasztási szabály** elemre. 
+4. Konfigurálja a feltételt a **feltétel kiválasztása**lehetőségre kattintva.
+5. A **jel logikájának konfigurálása** panelen kattintson a **kiszolgáló online állapota** lehetőségre a jel neve alatt.  
+6. Válassza ki a következő dimenzió-konfigurációt: 
+     - Dimenzió neve: **kiszolgáló neve**  
+     - Üzemeltető**=** 
+     - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
+7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
+     - Küszöbérték **statikusra** állítva 
+     - Operátor: **kisebb, mint** 
+     - Összesítés típusa: **maximum**  
+     - Küszöbérték (bájt): **1** 
+     - Értékelés alapja: aggregációs részletesség = **1 óra** | Értékelés gyakorisága = **30 percenként** 
+     - Kattintson a **Kész gombra.** 
+8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
+
+### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>Riasztás létrehozása, ha a Felhőbeli rétegek felidézésének mérete túllépte a 500GiB egy napon belül
+
+1. A **Azure Portal**navigáljon a megfelelő **Storage Sync szolgáltatáshoz**. 
+2. Nyissa meg a **figyelés** szakaszt, és kattintson a **riasztások**elemre. 
+3. Új riasztási szabály létrehozásához kattintson az **+ új riasztási szabály** elemre. 
+4. Konfigurálja a feltételt a **feltétel kiválasztása**lehetőségre kattintva.
+5. A **jel logikájának konfigurálása** panelen kattintson a **Felhőbeli rétegek felidézésének mérete** lehetőségre a jel neve alatt.  
+6. Válassza ki a következő dimenzió-konfigurációt: 
+     - Dimenzió neve: **kiszolgáló neve**  
+     - Üzemeltető**=** 
+     - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
+7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
+     - Küszöbérték **statikusra** állítva 
+     - Operátor: **nagyobb, mint** 
+     - Összesítés típusa: **összesen**  
+     - Küszöbérték (bájt): **67108864000** 
+     - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
+    - Kattintson a **Kész gombra.** 
+8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
+
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754394"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922676"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
@@ -75,8 +75,8 @@ Kövesse az alábbi irányelveket a avere vFXT-fürt hálózati infrastruktúrá
   |----------|-----------|----------|
   | Erőforráscsoport | Igen, ha üres | Üresnek kell lennie|
   | Tárfiók | **Igen** , ha a fürt létrehozása után csatlakoztat egy meglévő BLOB-tárolót <br/>  **Nem** , ha új BLOB-tárolót hoz létre a fürt létrehozása során | A meglévő blob-tárolónak üresnek kell lennie <br/> &nbsp; |
-  | Virtuális hálózat | Yes | Új Azure Blob-tároló létrehozásakor tartalmaznia kell egy tárolási szolgáltatási végpontot |
-  | Alhálózat | Yes | Nem szerepelhet más erőforrás |
+  | Virtuális hálózat | Igen | Új Azure Blob-tároló létrehozásakor tartalmaznia kell egy tárolási szolgáltatási végpontot |
+  | Alhálózat | Igen | Nem szerepelhet más erőforrás |
 
 ## <a name="ip-address-requirements"></a>IP-címekre vonatkozó követelmények
 
@@ -103,7 +103,7 @@ A fürtcsomópontokként szolgáló virtuális gépek határozzák meg a gyorsí
 
 Minden vFXT-csomópont azonos lesz. Ez azt eredményezi, hogy ha három csomópontos fürtöt hoz létre, akkor három azonos típusú és méretű virtuális géppel kell rendelkeznie.
 
-| Példány típusa | vCPU-k | Memory (Memória)  | Helyi SSD-tároló  | Adatlemezek max. száma | Nem gyorsítótárazott lemez sebessége | Hálózati adapter (darabszám) |
+| Példány típusa | vCPU-k | Memória  | Helyi SSD-tároló  | Adatlemezek max. száma | Nem gyorsítótárazott lemez sebessége | Hálózati adapter (darabszám) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51 200 IOPS <br/> 768 MBps | 16 000 MBps (8)  |
 
@@ -166,7 +166,7 @@ A fürt létrehozásakor megadhatja, hogy létre kell-e hozni egy nyilvános IP-
 
 ## <a name="vm-access-roles"></a>VIRTUÁLIS gépek hozzáférési szerepkörei
 
-Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) használatával engedélyezi a fürt virtuális gépei számára bizonyos feladatok elvégzését. A fürthöz tartozó virtuális gépek létrehozásához és konfigurálásához például engedélyeznie kell a fürtöt. A fürtcsomópontok számára lehetővé kell tenni az IP-címek hozzárendelését vagy más fürtcsomópontok számára való hozzárendelését.
+Az Azure az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával engedélyezi a fürt virtuális gépei számára bizonyos feladatok elvégzését. A fürthöz tartozó virtuális gépek létrehozásához és konfigurálásához például engedélyeznie kell a fürtöt. A fürtcsomópontok számára lehetővé kell tenni az IP-címek hozzárendelését vagy más fürtcsomópontok számára való hozzárendelését.
 
 A avere vFXT virtuális gépek két beépített Azure-szerepkört használnak:
 

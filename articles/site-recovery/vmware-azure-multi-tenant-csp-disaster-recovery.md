@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292830"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924580"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A VMware vész-helyreállítás beállítása több-bérlős környezetben a Cloud Solution Provider (CSP) program keretében
 
@@ -98,7 +98,7 @@ Három fő több-bérlős modell létezik:
 Az ebben a cikkben leírtak szerint a bérlői előfizetések beállításával gyorsan megkezdheti az ügyfelek engedélyezését a kapcsolódó több-bérlős modellekben. További információt a különböző több-bérlős modellekről és a helyszíni hozzáférés-vezérlések engedélyezéséről [itt](vmware-azure-multi-tenant-overview.md)talál.
 
 ## <a name="next-steps"></a>További lépések
-- További információ a [szerepköralapú hozzáférés-vezérlésről](site-recovery-role-based-linked-access-control.md) Azure site Recovery központi telepítések kezeléséhez.
+- További információ az [Azure szerepköralapú hozzáférés-vezérlésről (Azure RBAC)](site-recovery-role-based-linked-access-control.md) Azure site Recovery üzemelő példányok kezeléséhez.
 - További információ a VMware – Azure [replikálási architektúráról](vmware-azure-architecture.md).
 - [Tekintse át a](vmware-azure-tutorial.md) VMWare virtuális gépek Azure-ba történő replikálására vonatkozó oktatóanyagot.
 További információ a VMware virtuális gépek Azure-ba történő replikálásához használható [több-bérlős környezetekről](vmware-azure-multi-tenant-overview.md) .
