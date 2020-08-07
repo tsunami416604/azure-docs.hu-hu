@@ -94,7 +94,7 @@
               href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
             - name: Használati adatok vállalati ügyfelek esetén
               href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: Számlázással kapcsolatos terminológia
+        - name: Számlázás
           items:
             - name: Egyéni előfizetés – használattal kapcsolatos kifejezések
               href: understand/understand-usage.md
@@ -108,6 +108,8 @@
               href: manage/mca-understand-pricesheet.md
             - name: Microsoft-partnerszerződés – számlával kapcsolatos kifejezések
               href: understand/mpa-invoice-terms.md
+            - name: Az egyéni számlázás frissített fiókjában bekövetkezett változások
+              href: understand/mosp-new-customer-experience.md
             - name: A Microsoft ügyfélszerződés számlázási fiókjai
               href: understand/mca-overview.md
             - name: A Microsoft Partnerszerződés számlázási fiókjai

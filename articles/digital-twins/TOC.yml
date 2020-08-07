@@ -92,6 +92,8 @@
           href: troubleshoot-metrics.md
         - name: Diagnosztikai naplók engedélyezése
           href: troubleshoot-diagnostics.md
+        - name: Riasztások engedélyezése
+          href: troubleshoot-alerts.md
         - name: Ismert problémák
           href: troubleshoot-known-issues.md
         - name: Problémamegoldás

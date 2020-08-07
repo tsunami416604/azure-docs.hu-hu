@@ -209,14 +209,14 @@
       items:
         - name: Adat-előállítók vizuális létrehozása
           href: author-visually.md
+        - name: Iteratív fejlesztés és hibakeresés
+          href: iterative-development-debugging.md
         - name: Felügyeleti központ
           href: author-management-hub.md
         - name: Verziókövetés
           href: source-control.md
         - name: Folyamatos integráció és teljesítés
           href: continuous-integration-deployment.md
-        - name: Iteratív fejlesztés és hibakeresés
-          href: iterative-development-debugging.md
     - name: Összekötők
       items:
         - name: Összekötők áttekintése
@@ -562,6 +562,8 @@
       items:
         - name: Társított szolgáltatások paraméterezése
           href: parameterize-linked-services.md
+        - name: Globális paraméterek
+          href: author-global-parameters.md
         - name: Kifejezés nyelve
           href: control-flow-expression-language-functions.md
         - name: Rendszerváltozók

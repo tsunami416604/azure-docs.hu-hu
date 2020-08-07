@@ -171,7 +171,7 @@ Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:
 * [*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)

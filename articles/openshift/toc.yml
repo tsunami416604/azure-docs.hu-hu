@@ -28,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (portál)
           href: configure-azure-ad-ui.md
+    - name: Biztonsági mentés létrehozása és alkalmazás visszaállítása a Veleróval
+      items:
+        - name: Fürtalkalmazás biztonsági mentése a Veleróval
+          href: howto-create-a-backup.md
+        - name: Fürtalkalmazás visszaállítása a Veleróval
+          href: howto-create-a-restore.md
     - name: Monitorozás és naplózás az Azure Red Hat OpenShift 4-hez
       items:
         - name: Azure Monitor az Azure Red Hat OpenShift 4-ben lévő tárolókhoz (előzetes verzió)

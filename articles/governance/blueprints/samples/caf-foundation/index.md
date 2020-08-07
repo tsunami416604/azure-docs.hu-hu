@@ -3,12 +3,12 @@ title: A felhőbevezetési keretrendszer alaprendszerének tervmintája – Átt
 description: Az Azure Foundationhöz készült felhőbevezetési keretrendszer tervmintájának áttekintése és architektúrája.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901305"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852344"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszerhez tartozó tervminta áttekintése
 
@@ -35,7 +35,7 @@ Ez az implementálás több Azure-szolgáltatást foglal magába a biztonságos,
   - Az Azure Storage-fiók biztonságos átvitele titkosításának megkövetelése
   - Erőforrástípusok tiltása (válassza ki az üzembe helyezés során)  
 - Kezdeményezések
-  - Monitorozás engedélyezése az Azure Security Centerben (89 szabályzat)
+  - Monitorozás engedélyezése az Azure Security Centerben (több mint 100 szabályzatdefiníció)
 
 A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitektúrákkal foglalkozó részében](/azure/architecture/reference-architectures/) közzétett, bevált módszerek követelményeit.
 

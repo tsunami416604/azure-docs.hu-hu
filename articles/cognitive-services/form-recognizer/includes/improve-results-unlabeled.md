@@ -12,7 +12,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75379291"
 ---
-Vizsgálja meg `"confidence"` az egyes kulcsok/értékek eredményének értékét a `"pageResults"` csomópont alatt. Tekintse meg a `"readResults"` csomópontban található megbízhatósági pontszámokat is, amelyek a szöveges olvasási műveletnek felelnek meg. Az olvasási eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
+Vizsgálja `"confidence"` meg az egyes kulcsok/értékek eredményének értékét a `"pageResults"` csomópont alatt. Tekintse meg a csomópontban található megbízhatósági pontszámokat is `"readResults"` , amelyek a szöveges olvasási műveletnek felelnek meg. Az olvasási eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
 * Ha az olvasási művelet megbízhatósági pontszáma alacsony, próbálja meg javítani a bemeneti dokumentumok minőségét (lásd a [bemeneti követelményeket](../overview.md#input-requirements)).
 * Ha a kulcs/érték kibontási műveletének megbízhatósági pontszáma alacsony, ügyeljen arra, hogy az elemzett dokumentumok ugyanolyan típusúak legyenek, mint a betanítási készletben használt dokumentumok. Ha a betanítási készlet dokumentumaiban változások vannak kialakítva, érdemes lehet különböző mappákba bontani őket, és minden egyes változathoz egy modellt betanítani.
 

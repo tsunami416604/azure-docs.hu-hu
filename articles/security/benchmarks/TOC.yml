@@ -59,6 +59,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Az Azure Databricks biztonsági alapkonfigurációja
       href: ../../azure-databricks/security-baseline.md
+    - name: Az Azure Firewall biztonsági alapkonfigurációja
+      href: ../../firewall/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja
       href: ../../azure-functions/security-baseline.md
     - name: Az Azure Policy biztonsági alapkonfigurációja
@@ -83,6 +85,8 @@
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: A Data Lake Analytics biztonsági alapkonfigurációja
       href: ../../data-lake-analytics/security-baseline.md
+    - name: A DDoS Protection biztonsági alapkonfigurációja
+      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: Az Event Hubs biztonsági alapkonfigurációja
       href: ../../event-hubs/security-baseline.md
     - name: Az ExpressRoute biztonsági alapkonfigurációja
@@ -95,6 +99,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: A Network Watcher biztonsági alapkonfigurációja
       href: ../../network-watcher/security-baseline.md
+    - name: A Security Center alapkonfigurációja
+      href: ../../security-center/security-baseline.md
     - name: A Service Fabric alapkonfigurációja
       href: ../../service-fabric/security-baseline.md
     - name: A Stream Analytics alapkonfigurációja

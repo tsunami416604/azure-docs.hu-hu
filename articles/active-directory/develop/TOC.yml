@@ -13,10 +13,10 @@
       items:
         - name: Alkalmazás regisztrálása
           href: quickstart-register-app.md
-        - name: Alkalmazás konfigurálása webes API-k elérésére
-          href: quickstart-configure-app-access-web-apis.md
         - name: Alkalmazás konfigurálása webes API-k felfedésére
           href: quickstart-configure-app-expose-web-apis.md
+        - name: Alkalmazás konfigurálása webes API-k elérésére
+          href: quickstart-configure-app-access-web-apis.md
         - name: Alkalmazás által támogatott fiókok módosítása
           href: quickstart-modify-supported-accounts.md
         - name: Alkalmazás eltávolítása

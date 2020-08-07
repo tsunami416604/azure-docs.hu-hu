@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: Naplók streamelése egy eseményközpontba
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Log Analytics-varázsló
+      href: tutorial-log-analytics-wizard.md
 - name: Alapelvek
   items:
     - name: Jelentéskészítési és monitorozási környezet tervezése

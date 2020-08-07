@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Megoldások Azure-beli virtuális gépeken
       href: oracle-vm-solutions.md
-    - name: WebLogic Server Azure-alkalmazások
+    - name: Mi az Azure-on futó Oracle WebLogic Server?
       href: oracle-weblogic.md
     - name: Megoldások az OCI-vel
       href: oracle-oci-overview.md

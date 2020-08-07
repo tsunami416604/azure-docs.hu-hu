@@ -7,6 +7,8 @@
 - name: Rövid útmutatók
   expanded: true
   items:
+    - name: NSG-folyamat naplóinak konfigurálása ARM-sablonnal
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – PowerShell
