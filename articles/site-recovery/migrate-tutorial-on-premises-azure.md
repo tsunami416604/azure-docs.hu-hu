@@ -1,18 +1,17 @@
 ---
-title: Helyszíni gépek migrálása Azure Site Recovery
-description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Azure-ba az Azure Site Recovery használatával.
-author: rayne-wiselman
+title: Helyszíni gépek migrálása Azure Migrate
+description: Ez a cikk összefoglalja, hogyan telepítheti át a helyszíni gépeket az Azure-ba, és hogyan ajánlja Azure Migrate.
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285356"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847312"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -20,7 +19,7 @@ Ez a cikk a helyszíni gépek Azure-ba történő áttelepítésének lehetősé
 
 ## <a name="migrate-with-azure-migrate"></a>Migrálás Azure Migrate
 
-Javasoljuk, hogy telepítse át a gépeket az Azure-ba a [Azure Migrate](../migrate/migrate-services-overview.md) szolgáltatás használatával. A Azure Migrate központosított hubot biztosít a helyszíni gépek Azure-ba történő értékeléséhez és áttelepítéséhez Azure Migrate, más Azure-szolgáltatások és harmadik féltől származó eszközök használatával.
+Javasoljuk, hogy telepítse át a gépeket az Azure-ba a [Azure Migrate](../migrate/migrate-services-overview.md) szolgáltatás használatával. A Azure Migrate a kiszolgáló áttelepítéséhez készült. Azure Migrate központosított hubot biztosít a helyszíni gépek Azure-ba való felderítéséhez, értékeléséhez és áttelepítéséhez.
 
 Az alábbi hivatkozásokat követve telepítse át Azure Migrate:
 
@@ -40,7 +39,7 @@ Ha már használja a Azure Site Recoveryt, és továbbra is szeretné használni
 > [!NOTE]
 > Ha feladatátvételt futtat a vész-helyreállításhoz, a feladatátvétel utolsó lépéseként véglegesíti a tranzakciót. A helyszíni gépek áttelepítésekor a **véglegesítés** lehetőség nem érvényes. Ehelyett válassza a **teljes áttelepítési** lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tekintse át](../migrate/resources-faq.md) a Azure Migrateával kapcsolatos gyakori kérdéseket.

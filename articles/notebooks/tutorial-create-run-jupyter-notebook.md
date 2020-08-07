@@ -3,13 +3,13 @@ title: Oktatóanyag – Jupyter-jegyzetfüzet létrehozása és futtatása – A
 description: Megtudhatja, hogyan hozhat létre és futtathat Jupyter jegyzetfüzeteket Azure Notebooks előzetes verzióban, amely bemutatja az adatelemzési folyamat lineáris regressziós folyamatát.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.custom: tracking-python
-ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85834131"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846912"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása Python-val
 
@@ -154,7 +154,7 @@ A menüparancsok csoportjai a következők:
 
 | Menü | Leírás |
 | --- | --- |
-| Fájl | A jegyzetfüzet-fájl kezelésére szolgáló parancsok, beleértve a jegyzetfüzetek létrehozásához és másolásához, a nyomtatási előnézet megjelenítéséhez és a jegyzetfüzet különböző formátumokban való letöltéséhez szükséges parancsokat is. |
+| File | A jegyzetfüzet-fájl kezelésére szolgáló parancsok, beleértve a jegyzetfüzetek létrehozásához és másolásához, a nyomtatási előnézet megjelenítéséhez és a jegyzetfüzet különböző formátumokban való letöltéséhez szükséges parancsokat is. |
 | Szerkesztés | A cellák kivágását, másolását és beillesztését, az értékek megkeresését és cseréjét, a cellák mellékleteinek kezelését és a képek beszúrását jellemző parancsok.  |
 | Nézet | A Jupyter felhasználói felületének különböző részeinek láthatóságát vezérlő parancsok. |
 | Beszúrás | Parancsok új cella az aktuális cella fölé vagy alá való beszúrásához. Ezeket a parancsokat gyakran használja jegyzetfüzetek létrehozásakor. |
@@ -421,7 +421,7 @@ További információ: Jupyter- [Jegyzetfüzet hibakeresése](https://code.visua
 
 Lásd még: a [Visual Studio Code-Jupyter támogatása](https://code.visualstudio.com/docs/python/jupyter-support) a Visual Studio Code további szolgáltatásaihoz a Jupyter notebookokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 

@@ -1,6 +1,7 @@
 ---
-title: 'Rövid útmutató: az App web API-k elérése – Microsoft Identity platform | Azure'
-description: Ebben a rövid útmutatóban egy Microsoft Identity platformmal regisztrált alkalmazást konfigurálhat az átirányítási URI-k, a hitelesítő adatok vagy a webes API-k eléréséhez szükséges engedélyek belefoglalásához.
+title: 'Gyors útmutató: alkalmazás konfigurálása webes API-hoz való hozzáféréshez | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebben a rövid útmutatóban egy Microsoft Identity platformmal regisztrált alkalmazást konfigurál az átirányítási URI-k, a hitelesítő adatok vagy a webes API-k eléréséhez szükséges engedélyek befoglalásához.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c91c3dfc23c0a8a9dffb38788f3a8fea08096f5c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82082322"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825055"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
 Ebben a rövid útmutatóban átirányítási URI-kat, hitelesítő adatokat vagy engedélyeket ad hozzá az alkalmazás webes API-jai eléréséhez. Egy webes vagy bizalmas ügyfélalkalmazás biztonságos hitelesítő adatokat kell létrehoznia ahhoz, hogy részt vegyen a hitelesítést igénylő engedélyezési folyamatokban. Az Azure Portal által támogatott alapértelmezett hitelesítési módszer egy ügyfél-azonosítót és egy titkos kulcsot igényel. Az alkalmazás egy hozzáférési jogkivonatot kap a folyamat során.
 
@@ -27,15 +28,14 @@ Ahhoz, hogy az ügyfél hozzáférhessen egy erőforrás-alkalmazás által elé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A rövid útmutató befejezése [: az alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md).
-* Az engedélyek és a hozzájárulások áttekintése [a Microsoft Identity platform végpontján](v2-permissions-and-consent.md).
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* A rövid útmutató befejezése [: az alkalmazás konfigurálása webes API-k megjelenítéséhez](quickstart-configure-app-expose-web-apis.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban. Állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
-1. Keresse meg és válassza ki az **Azure Active Directoryt**. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kiválasztotta az alkalmazást, megjelenik az alkalmazás **áttekintése** vagy a fő regisztrációs oldal.
 
 Az alábbi eljárások segítségével konfigurálhatja az alkalmazást a webes API-k eléréséhez.
@@ -50,7 +50,7 @@ Egyéni átirányítási URI-k és javasolt átirányítási URI-k is hozzáadha
 1. Adja meg alkalmazása átirányítási URI-ját.
 
    * Webalkalmazások esetében az alkalmazás alap URL-címét adja meg. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
-   * Nyilvános alkalmazások esetében azt az URI-t adja meg, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adja meg az alkalmazáshoz tartozó értéket, például: `https://MyFirstApp`.
+   * Nyilvános alkalmazások esetében azt az URI-t adja meg, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adja meg az alkalmazáshoz tartozó értéket, például: `https://MyFirstApp` .
 1. Kattintson a **Mentés** gombra.
 
 A nyilvános ügyfelek javasolt átirányítási URI-azonosítóinak kiválasztásához kövesse az alábbi lépéseket:
@@ -109,11 +109,11 @@ Az Alkalmazásbeállítások a platform vagy az eszköz alapján történő konf
    |-------------------------|-----------------------------------|
    | **Web**              | Adja meg az alkalmazás **átirányítási URI-ját** . |
    | **iOS/macOS**              | Adja meg az alkalmazáscsomag **azonosítóját**, amelyet az info. plist fájlban találhat, vagy létrehozhat beállításokat a Xcode. A köteg-azonosító hozzáadása automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz. |
-   | **Android**          | Adja meg az **alkalmazáscsomag nevét**, amelyet a AndroidManifest. xml fájlban talál.<br/>Adja meg és írja be az **aláírási kivonatot**. Az aláírási kivonat hozzáadásakor a rendszer automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz.  |
-   | **Mobil-és asztali alkalmazások**  | Választható. Válassza a javasolt **átirányítási URI** -k egyikét, ha asztali és eszközökhöz készült alkalmazásokat készít.<br/>Választható. Adjon meg egy **Egyéni átirányítási URI**-t, amely azt a helyet használja, ahol az Azure ad átirányítja a felhasználókat a hitelesítési kérésekre adott válaszként. Például olyan .NET Core-alkalmazásokhoz, ahol az interakciót szeretné `http://localhost`használni, használja a következőt:. |
+   | **Android**          | Adja meg az **alkalmazáscsomag nevét**, amely a AndroidManifest.xml fájlban található.<br/>Adja meg és írja be az **aláírási kivonatot**. Az aláírási kivonat hozzáadásakor a rendszer automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz.  |
+   | **Mobil-és asztali alkalmazások**  | Választható. Válassza a javasolt **átirányítási URI** -k egyikét, ha asztali és eszközökhöz készült alkalmazásokat készít.<br/>Választható. Adjon meg egy **Egyéni átirányítási URI**-t, amely azt a helyet használja, ahol az Azure ad átirányítja a felhasználókat a hitelesítési kérésekre adott válaszként. Például olyan .NET Core-alkalmazásokhoz, ahol az interakciót szeretné használni, használja a következőt: `http://localhost` . |
 
    > [!NOTE]
-   > Active Directory összevonási szolgáltatások (AD FS) (AD FS) és Azure AD B2C esetén a portszámot is meg kell adni.  Például: `http://localhost:1234`. 
+   > Active Directory összevonási szolgáltatások (AD FS) (AD FS) és Azure AD B2C esetén a portszámot is meg kell adni.  Példa: `http://localhost:1234`.
 
    > [!IMPORTANT]
    > Olyan mobileszközök esetében, amelyek nem a legújabb Microsoft-hitelesítési függvénytárat (MSAL) használják, vagy nem használ közvetítőt, konfigurálnia kell az alkalmazások átirányítási URI-azonosítóit az asztali és az **eszközökön**.
@@ -198,18 +198,9 @@ A beleegyezés kérése lehetőséget biztosít az **elfogadás** vagy a **Vissz
 > [!NOTE]
 > A rendszergazdai jóváhagyás megadása a jóváhagyás megadásával, valamint a portálon megjelenő rendszergazdai jóváhagyás állapotával **kapcsolatos késleltetés** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan teheti elérhetővé a webes API-kat.
+Folytassa a következő rövid útmutatóval, amelyből megtudhatja, hogyan konfigurálhatja, hogy mely fióktípus férhet hozzá az alkalmazáshoz. Előfordulhat például, hogy korlátozni szeretné a hozzáférést csak a szervezetben lévő felhasználókra (egybérlős), vagy más Azure AD-bérlők (több-bérlős) és személyes Microsoft-fiókkal (MSA) rendelkező felhasználók számára.
+
 > [!div class="nextstepaction"]
-> [Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez](quickstart-configure-app-expose-web-apis.md)
-
-* Ha szeretne többet megtudni a regisztrált alkalmazásokat jelölő két Azure AD-objektumról és azok kapcsolatáról, tekintse meg az [alkalmazás- és szolgáltatásnév-objektumokat](app-objects-and-service-principals.md) ismertető szakaszt.
-
-* Ha szeretne többet megtudni az Azure Active Directoryt használó alkalmazások fejlesztése során alkalmazandó védjegyzési irányelvekről, tekintse meg az [alkalmazások védjegyzési irányelveit](howto-add-branding-in-azure-ad-apps.md) ismertető szakaszt.
-
-* [Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)
-
-* [Gyors útmutató: alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
-
-* [Rövid útmutató: a Microsoft Identity platformmal regisztrált alkalmazások eltávolítása](quickstart-remove-app.md)
+> [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)

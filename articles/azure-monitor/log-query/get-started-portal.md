@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075331"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874231"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: Log Analytics lekérdezések első lépései
 
@@ -32,7 +32,7 @@ A naplók lekérdezésével kapcsolatos részletes oktatóanyagért lásd: az [e
 ## <a name="open-log-analytics"></a>Log Analytics megnyitása
 Log Analytics használatához be kell jelentkeznie egy Azure-fiókba. Ha nem rendelkezik Azure-fiókkal, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-A jelen oktatóanyagban ismertetett lépések többségének végrehajtásához használhatja [ezt a bemutató környezetet](https://portal.loganalytics.io/demo), amely számos mintaadatok beszámítását is magában foglalja. A bemutató környezettel nem mentheti a lekérdezéseket, és nem rögzítheti az eredményeket az irányítópulton.
+A jelen oktatóanyagban ismertetett lépések többségének végrehajtásához használhatja [ezt a bemutató környezetet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), amely számos mintaadatok beszámítását is magában foglalja. A bemutató környezettel nem mentheti a lekérdezéseket, és nem rögzítheti az eredményeket az irányítópulton.
 
 Használhatja a saját környezetét is, ha a Azure Monitor használatával gyűjti be a naplózási adatokat legalább egy Azure-erőforráson. Log Analytics munkaterület megnyitásához a Azure Monitor bal oldali navigációs sávján válassza a **naplók**lehetőséget. 
 
@@ -120,7 +120,7 @@ A lekérdezés eredményeinek szűrése a `Event` **hibák** eseményeire a lek�
    
 1. Válassza a **szűrő**lehetőséget.
    
-   ![Szűrő](media/get-started-portal/filter.png)
+   ![Szűrés](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Oszlopok rendezése, csoportosítása és kiválasztása
 Ha a lekérdezési eredményeket egy adott oszlop szerint szeretné rendezni (például **TimeGenerated [UTC]**), válassza az oszlop fejlécét. A növekvő és a csökkenő sorrend közötti váltáshoz válassza újra a fejlécet.
@@ -191,7 +191,7 @@ Lekérdezés mentése:
    
 1. Ha Log Analytics munkaterületen található, adjon meg egy **kategóriát** a lekérdezési **tallózó** számára a lekérdezéshez. (A kategóriák nem érhetők el az Applications-lekérdezések lekérdezéséhez)
    
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
    
    ![Függvény mentése](media/get-started-portal/save-function.png)
 
@@ -209,7 +209,7 @@ A következő videó bemutatja, hogyan integrálhatja Log Analytics az Excelben.
 
 Ha egy lekérdezésre mutató hivatkozást szeretne megosztani, válassza a felső sávon a **hivatkozás másolása** lehetőséget, majd válassza a **hivatkozás másolása lekérdezéshez**, a **lekérdezési szöveg másolása**vagy a **lekérdezési eredmények** másolása lehetőséget a vágólapra másoláshoz. A lekérdezési hivatkozást elküldheti másoknak is, akik ugyanahhoz a munkaterülethez férnek hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan lehet Azure Monitor napló lekérdezéseit írni.
 > [!div class="nextstepaction"]

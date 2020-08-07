@@ -6,44 +6,33 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a0ed747ea0c894214a633bdbc8141e95e95b5fb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050135"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830036"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
-Az Azure-alkalmazás konfigurációja kulcs-érték párokként tárolja a konfigurációs értékeket. A kulcs-érték párok a fejlesztők által használt alkalmazások beállításainak egyszerű és rugalmas ábrázolása.
+Az Azure-alkalmazás konfigurációja kulcs-értékként tárolja a konfigurációs adatait. A kulcs-érték a fejlesztők által használt alkalmazások beállításainak egyszerű és rugalmas ábrázolása.
 
 ## <a name="keys"></a>Kulcsok
 
-A kulcsok azonosítóként szolgálnak a kulcs-érték párokhoz, és a megfelelő értékek tárolására és lekérésére használatosak. Gyakori eljárás a kulcsok hierarchikus névtérbe rendezése egy karakter elválasztójának használatával, például `/` vagy `:` . Az alkalmazáshoz legjobban illeszkedő konvenciót használjon. Az alkalmazás konfigurációja a kulcsokat teljes egészében kezeli. Nem elemzi a kulcsokat, hogy megtudja, hogyan épülnek fel a nevük, és hogyan kényszerítenek rájuk.
+A kulcsok azonosítóként szolgálnak a kulcs-értékekhez, és a megfelelő értékek tárolására és lekérésére használatosak. Gyakori eljárás a kulcsok hierarchikus névtérbe rendezése egy karakter elválasztójának használatával, például `/` vagy `:` . Az alkalmazáshoz legjobban illeszkedő konvenciót használjon. Az alkalmazás konfigurációja a kulcsokat teljes egészében kezeli. Nem elemzi a kulcsokat, hogy megtudja, hogyan épülnek fel a nevük, és hogyan kényszerítenek rájuk.
 
-Íme két példa a hierarchiában strukturált kulcsnévre:
-
-* A Component Services alapján
+Íme egy példa a hierarchiában a Komponensszolgáltatások alapján strukturált kulcsok nevére:
 
 ```aspx
-        AppName:Service1:ApiEndpoint
-        AppName:Service2:ApiEndpoint
+    AppName:Service1:ApiEndpoint
+    AppName:Service2:ApiEndpoint
 ```
 
-* Központi telepítési régiók alapján
-
-```aspx
-        AppName:Region1:DbEndpoint
-        AppName:Region2:DbEndpoint
-```
-
-A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizonyos elnevezési sémákat határozhat meg a kulcsok értékeihez. A Java Spring Cloud Framework például olyan erőforrásokat határoz meg, `Environment` amelyek a Spring Application beállításait adják meg.  Ezek az *alkalmazás nevét* és *profilját*tartalmazó változók paraméterei. A tavaszi felhőhöz kapcsolódó konfigurációs adatok kulcsai általában a két elem elválasztó karakterrel kezdődnek.
+A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizonyos elnevezési sémákat határozhat meg a kulcs-értékekhez. A Java Spring Cloud Framework például olyan erőforrásokat határoz meg, `Environment` amelyek a Spring Application beállításait adják meg.  Ezek az *alkalmazás nevét* és *profilját*tartalmazó változók paraméterei. A tavaszi felhőhöz kapcsolódó konfigurációs adatok kulcsai általában a két elem elválasztó karakterrel kezdődnek.
 
 Az alkalmazás konfigurációjában tárolt kulcsok kis-és nagybetűket megkülönböztető, Unicode-alapú karakterláncok. Az *App1* és a *App1* kulcsok eltérnek az alkalmazás konfigurációs tárolójában. Ne feledje, hogy ha a konfigurációs beállításokat egy alkalmazáson belül használja, mert egyes keretrendszerek kis-és nagybetűk nélkül kezelik a konfigurációs kulcsokat. A kulcsok megkülönböztetésére nem ajánlott a Case használata.
 
-A kulcsok neveiben bármilyen Unicode-karaktert használhat, a, a és a kivételével `*` `,` `\` .  Ha fel kell vennie a fenntartott karakterek egyikét, a használatával kell elmenekülnie `\{Reserved Character}` . 
-
-A kulcs-érték párokban egy összesített méretkorlát 10 KB. Ez a korlát a kulcs, a hozzá tartozó érték és az összes hozzá tartozó opcionális attribútum összes karakterét tartalmazza. Ezen a korláton belül számos hierarchikus szintet is megadhat a kulcsokhoz.
+Bármilyen Unicode-karaktert használhat a kulcsok neveiben, kivéve a következőt: `%` . A kulcs neve nem lehet `.` vagy `..` sem. A kulcs-érték együttes mérete legfeljebb 10 KB lehet. Ez a korlát a kulcs, a hozzá tartozó érték és az összes hozzá tartozó opcionális attribútum összes karakterét tartalmazza. Ezen a korláton belül számos hierarchikus szintet is megadhat a kulcsokhoz.
 
 ### <a name="design-key-namespaces"></a>Tervezési kulcs névterei
 
@@ -57,27 +46,28 @@ Az alkalmazások konfigurációjában többféleképpen rendezheti a kulcsokat. 
 
 ### <a name="label-keys"></a>Címkék kulcsai
 
-Az alkalmazás konfigurációjában a kulcs értékei opcionálisan rendelkezhetnek Label attribútummal is. A címkék használatával a kulcs értékeit ugyanazzal a kulccsal lehet megkülönböztetni. Az *a* és *B* címkével ellátott *App1* két különálló kulcsot alkotnak az alkalmazás konfigurációs tárolójában. Alapértelmezés szerint a kulcs értéke nem rendelkezik címkével. Ha címkével nem rendelkező kulcsot szeretne explicit módon hivatkozni, használja a `\0` (URL-cím `%00` ) értéket.
+Az alkalmazás konfigurációjának kulcs-értékeit opcionálisan címkéző attribútummal is elvégezheti. A címkék használatával megkülönböztethető a kulcs-érték ugyanazzal a kulccsal. Az *a* és *B* címkével ellátott *App1* két különálló kulcsot alkotnak az alkalmazás konfigurációs tárolójában. Alapértelmezés szerint a kulcs-érték nem rendelkezik címkével. Ha címkével nem rendelkező kulcsot szeretne explicit módon hivatkozni, használja a `\0` (URL-cím `%00` ) értéket.
 
 A Label kényelmes módszert biztosít a kulcsok változatának létrehozásához. A címkék gyakori használata több környezet megadására szolgál ugyanahhoz a kulcshoz:
 
-```aspx
+```
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
 ```
 
-### <a name="version-key-values"></a>Verzió kulcsának értékei
+### <a name="version-key-values"></a>Verzió kulcs-értékei
 
-Az alkalmazás konfigurációja nem a kulcs értékeit automatikusan. Használjon címkéket úgy, hogy a kulcs értékének több verzióját hozza létre. Megadhat például egy alkalmazás verziószámát vagy egy git commit ID-t a címkékben egy adott szoftver-összeállításhoz társított kulcsok azonosításához.
+Használjon címkéket úgy, hogy a kulcs-érték több verzióját hozza létre. Megadhat például egy alkalmazás verziószámát vagy egy git commit ID-t a címkékben az adott szoftveres buildhez társított kulcs-értékek azonosításához.
 
-A címkéken bármilyen Unicode-karaktert használhat, a, a és a kivételével `*` `,` `\` . Ezek a karakterek le vannak foglalva. Egy fenntartott karakter belefoglalásához a használatával kell elmenekülnie `\{Reserved Character}` .
+> [!NOTE]
+> Ha változási verziókat keres, az alkalmazás konfigurációja megtartja a kulcs-érték összes módosítását az elmúlt bizonyos időszakban automatikusan. További részletekért tekintse meg az [időponthoz kapcsolódó pillanatképet](./concept-point-time-snapshot.md) .
 
-### <a name="query-key-values"></a>Lekérdezési kulcs értékei
+### <a name="query-key-values"></a>Lekérdezési kulcs – értékek
 
-Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy címke, amely lehet `null` . A kulcsok értékeit egy minta megadásával kérdezheti le. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
+Minden kulcs-érték egyedileg azonosítható a kulcsa és a címkéje, amely lehet `\0` . Egy alkalmazás-konfigurációs tárolót kérdez le a kulcs-értékekhez egy minta megadásával. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs-értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
 
-| Kulcs | Description |
+| Kulcs | Leírás |
 |---|---|
 | `key`nincs megadva vagy`key=*` | Az összes kulcs egyezése |
 | `key=abc` | Pontosan megfelel az **ABC** -kulcs nevének |
@@ -86,21 +76,26 @@ Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy cí
 
 A következő címke mintákat is tartalmazhatja:
 
-| Címke | Description |
+| Címke | Leírás |
 |---|---|
-| `label`nincs megadva vagy`label=*` | Megfelel bármely címkének, amely tartalmazza a következőket`null` |
-| `label=%00` | Egyezések `null` címkéje |
+| `label`nincs megadva vagy`label=*` | Megfelel bármely címkének, amely tartalmazza a következőket`\0` |
+| `label=%00` | Egyezések `\0` címkéje |
 | `label=1.0.0` | Pontosan megfelel a Label **1.0.0** -nak |
 | `label=1.0.*` | Az 1,0 karakterrel kezdődő címkéket tartalmazza **.** |
-| `label=%00,1.0.0` | A címkékre `null` vagy a **1.0.0**-ra korlátozódik, legfeljebb öt CSV |
+| `label=%00,1.0.0` | A címkékre `\0` vagy a **1.0.0**-ra korlátozódik, legfeljebb öt CSV |
+
+> [!NOTE]
+> `*`a, a `,` és `\` a a lekérdezésekben foglalt karakterek. Ha foglalt karaktert használ a kulcsok neveiben vagy címkéjén, el kell menekülnie a `\{Reserved Character}` lekérdezésekben.
 
 ## <a name="values"></a>Értékek
 
-A kulcsokhoz rendelt értékek szintén Unicode karakterláncok. Az értékekhez az összes Unicode-karakter használható. Az egyes értékekhez nem kötelező, felhasználó által definiált tartalomtípus van társítva. Ezzel az attribútummal adatokat tárolhat egy olyan értékről, amely segít az alkalmazásnak megfelelően feldolgozni.
+A kulcsokhoz rendelt értékek szintén Unicode karakterláncok. Az értékekhez az összes Unicode-karakter használható.
 
-Az alkalmazás-konfigurációs tárolóban tárolt konfigurációs adatok titkosítva maradnak a nyugalmi állapotban és az átvitel során. A kulcsok nincsenek titkosítva a nyugalmi állapotban. Az alkalmazás konfigurációja nem helyettesítő megoldás a Azure Key Vault. Ne tárolja az alkalmazás titkos kulcsait.
+### <a name="use-content-type"></a>Tartalom típusának használata
+Az alkalmazás konfigurációjában minden kulcs-érték egy Content-Type attribútummal rendelkezik. Ezt az attribútumot igény szerint tárolhatja egy olyan kulcs-érték típusú értékről, amely segít az alkalmazásnak megfelelően feldolgozni. Bármilyen formátumot használhat a Content-Type típushoz. Az alkalmazás konfigurációja [adathordozó-típusokat]( https://www.iana.org/assignments/media-types/media-types.xhtml) (más néven MIME-típusokat) használ a beépített adattípusokhoz, például a szolgáltatás-jelzők, a Key Vault referenciák és a JSON-kulcsok értékeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Adott időpontban készült pillanatképek](./concept-point-time-snapshot.md)  
-* [Funkciókezelés](./concept-feature-management.md)  
+* [Adott időpontban készült pillanatképek](./concept-point-time-snapshot.md)
+* [Funkciókezelés](./concept-feature-management.md)
+* [Eseménykezelés](./concept-app-configuration-event.md)

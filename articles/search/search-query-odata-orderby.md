@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/05/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203119"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903782"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
 
@@ -50,7 +50,9 @@ Az interaktív szintaxis diagram is elérhető:
 > [!NOTE]
 > Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-Az egyes záradékok rendezési feltételekkel rendelkeznek, opcionálisan egy rendezési irány után ( `asc` növekvő vagy `desc` csökkenő sorrendben). Ha nem ad meg irányt, az alapértelmezett érték a növekvő. A rendezési feltétel lehet egy mező elérési útja `sortable` vagy a [`geo.distance`](search-query-odata-geo-spatial-functions.md) vagy a függvények egyik hívása is [`search.score`](search-query-odata-search-score-function.md) .
+Az egyes záradékok rendezési feltételekkel rendelkeznek, opcionálisan egy rendezési irány után ( `asc` növekvő vagy `desc` csökkenő sorrendben). Ha nem ad meg irányt, az alapértelmezett érték a növekvő. Ha a mezőben null értékek vannak, akkor először a null értékek jelennek meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` .
+
+A rendezési feltétel lehet egy mező elérési útja `sortable` vagy a [`geo.distance`](search-query-odata-geo-spatial-functions.md) vagy a függvények egyik hívása is [`search.score`](search-query-odata-search-score-function.md) .
 
 Ha több dokumentumra ugyanazok a rendezési feltételek tartoznak, és a `search.score` függvény nincs használatban (például ha egy numerikus mező alapján rendezi a sort, `Rating` és a három dokumentum minősítése 4), a kapcsolatok a dokumentum pontszáma szerint csökkenő sorrendben lesznek megszakítva. Ha a dokumentumok pontszámai megegyeznek (például ha nincs megadva teljes szöveges keresési lekérdezés a kérelemben), akkor a kötött dokumentumok relatív sorrendje nem kötelező.
 
@@ -86,7 +88,7 @@ A szállodákat csökkenő sorrendbe rendezheti kereséssel. pontszám és ért�
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

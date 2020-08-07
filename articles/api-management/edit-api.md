@@ -1,6 +1,6 @@
 ---
 title: API szerkesztése az Azure Portal használatával  | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan lehet egy API-t szerkeszteni az API Management (APIM) szolgáltatással.
+description: Ismerje meg, hogyan szerkesztheti az API-t a API Management (APIM) használatával. Hozzáadhat, törölhet vagy átnevezhet műveleteket a APIM-példányban, vagy szerkesztheti az API-k hencegő felületét.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70072156"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905159"
 ---
 # <a name="edit-an-api"></a>API szerkesztése
 
@@ -61,8 +61,8 @@ A háttérrendszer API-ját frissítheti az Azure Portalról. Ehhez tegye a köv
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A APIM Policy Samples](policy-samples.md)
-> [a közzétett API-k átalakítása és biztosítása](transform-api.md)
+> [APIM szabályzat mintái](policy-samples.md) 
+>  [Közzétett API átalakítása és védelemmel](transform-api.md) való ellátása

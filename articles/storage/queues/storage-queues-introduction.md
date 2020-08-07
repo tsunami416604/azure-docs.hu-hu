@@ -1,6 +1,6 @@
 ---
 title: Bevezetés az Azure Queues használatába – Azure Storage
-description: Az Azure Queues bemutatása
+description: Tekintse meg az Azure Queues szolgáltatás bevezetését, amely nagy mennyiségű üzenet tárolására szolgál. A várólista-szolgáltatás URL-formátumot, Storage-fiókot, üzenetsor-t és üzenetet tartalmaz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/18/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805127"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826500"
 ---
 # <a name="what-are-azure-queues"></a>Mik az Azure-üzenetsorok?
 
@@ -39,7 +39,7 @@ A Queue szolgáltatás az alábbi összetevőkből áll:
 
 * **Üzenet:** Egy legfeljebb 64 KB méretű, tetszőleges méretű üzenet. Az 2017-07-29-es verzió előtt az engedélyezett maximális élettartam hét nap. A 2017-07-29-es vagy újabb verzió esetén a maximális élettartam lehet bármilyen pozitív szám, vagy-1, amely azt jelzi, hogy az üzenet nem jár le. Ha a paraméter nincs megadva, az alapértelmezett élettartam hét nap.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tárfiók létrehozása](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 * [A Queues használatának első lépései a .NET használatával](storage-dotnet-how-to-use-queues.md)

@@ -1,6 +1,7 @@
 ---
-title: JavaScript egyoldalas alkalmazás oktatóanyaga – Microsoft Identity platform | Azure
-description: Hogyan hívhatják meg a JavaScript SPA-alkalmazások olyan API-t, amelyhez hozzáférési jogkivonatok szükségesek Azure Active Directory v 2.0 végponttal
+title: JavaScript egyoldalas alkalmazás oktatóanyaga | Azure
+titleSuffix: Microsoft identity platform
+description: Ebből az oktatóanyagból megtudhatja, hogyan hívhat meg egy olyan API-t, amely a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat igényel.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 303caf36b613e4bcd6a5c48317710b69a3ffbc0a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129678"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875217"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -25,8 +26,8 @@ Ez az útmutató bemutatja, hogyan használható a JavaScript egyoldalas alkalma
 - Hozzáférési jogkivonat beszerzése
 - Hívja meg az Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft Identity platform végpontján*
 
->[!NOTE]
-> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [bejelentkezési felhasználókat, és szerezzen be egy hozzáférési jogkivonatot egy JavaScript Spa-](quickstart-v2-javascript.md)útmutatóban.
+>[!TIP]
+> Ez az oktatóanyag a MSAL.js v1. x verzióját használja, amely az egylapos alkalmazások implicit engedélyezési folyamatának használatára korlátozódik. Javasoljuk, hogy az összes új alkalmazást használja, [MSAL.js 2. x-et, az engedélyezési kódot pedig PKCE és CORS](tutorial-v2-javascript-auth-code.md) támogatással.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 
@@ -278,7 +279,7 @@ A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
 >
@@ -415,7 +416,7 @@ Az útmutató által létrehozott SPA a `acquireTokenSilent` `acquireTokenPopup`
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Erre példák a következők:
+A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák erre vonatkozóan:
 
 - A felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszó lejárt.
 - Az alkalmazás hozzáférést kér egy erőforráshoz, és szüksége van a felhasználó belefoglalására.

@@ -1,18 +1,19 @@
 ---
 title: Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálása a FHIR készült Azure API-hoz
 description: Ez a cikk azt ismerteti, hogyan konfigurálható az Azure RBAC az Azure API-hoz a FHIR-adatsíkon
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: 8e4b5fdecfc5b9fcb2deb68a482b084a6e6ed6d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: matjazl
+ms.reviewer: dseven
+ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496168"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845937"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Az Azure-RBAC konfigurálása a FHIR 
 
@@ -51,7 +52,7 @@ A **kiválasztás** mezőben keresse meg azt a felhasználót, szolgáltatásnev
 
 A FHIR készült Azure API akár 5 percig is gyorsítótárazza a döntéseket. Ha hozzáférést biztosít a FHIR-kiszolgálóhoz az engedélyezett objektumazonosítók listájához való hozzáadásával, vagy eltávolíthatja őket a listáról, akkor várhatóan akár öt percet is igénybe vehet, amíg a módosítások érvénybe lépnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan rendelhet Azure-szerepköröket a FHIR adatsíkon. További információ a FHIR készült Azure API további beállításairól:
  

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373691"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905496"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -131,7 +131,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 
     Azt is megteheti, hogy init-parancsfájlokat használ, ha a Python-kódtárakkal együtt tartja a telepítési problémákat. Ez a megközelítés nem támogatott hivatalosan. További információ: [fürtökre kiterjedő init-parancsfájlok](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks-importálási hiba: a (z) "Timedelta" név nem importálható a következőből: "pandák. _libs. tslibs"**: Ha az automatikus gépi tanulás használatakor ezt a hibaüzenetet látja, futtassa az alábbi két sort a jegyzetfüzetben:
+* **Databricks-importálási hiba: a név nem importálható `Timedelta` innen `pandas._libs.tslibs` **: Ha az automatikus gépi tanulást használja, futtassa a következő két sort a jegyzetfüzetben:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -219,7 +219,7 @@ Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
     | Kategorikus | karakterlánc, bool, int, float | A szolgáltatásban található egyedi értékek száma kevesebb, mint 100, és a sorok száma kevesebb, mint 5%. | A Null érték a saját kategóriája. | 
     | Numerikus | int, float | A szolgáltatás értékei numerikus adattípussal rendelkeznek, és nem felelnek meg a kategorikus funkció feltételének. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
 
-* Ha [létrehozott egy datadrift-figyelőt](how-to-monitor-datasets.md) , de nem látja az adatokat a Azure Machine learning Studio **adatkészlet-figyelők** lapján, próbálkozzon a következőkkel.
+* Ha [létrehozott egy adatdrift-figyelőt](how-to-monitor-datasets.md) , de nem látja az adatokat a Azure Machine learning Studio **adatkészlet-figyelők** lapján, próbálkozzon a következőkkel.
 
     1. Ellenőrizze, hogy a megfelelő dátumtartomány van-e kiválasztva az oldal tetején.  
     1. Az **adatkészlet-figyelők** lapon válassza a kísérlet hivatkozást a Futtatás állapotának vizsgálatához.  Ez a hivatkozás a tábla jobb szélén található.
@@ -283,7 +283,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
-* **TensorFlow**: az SDK-ból származó 1.5.0-es verziótól kezdve az automatikus gépi tanulás nem telepíti a TensorFlow-modelleket alapértelmezés szerint. A tensorflow telepítéséhez és az automatikus ML-kísérletekhez való használatához telepítse a tensorflow = = 1.12.0-et a CondaDependecies-n keresztül. 
+* **TensorFlow**: az SDK-ból származó 1.5.0-es verziótól kezdve az automatikus gépi tanulás nem telepíti a TensorFlow-modelleket alapértelmezés szerint. A TensorFlow telepítéséhez és az automatikus ML-kísérletekhez való használatához telepítse a TensorFlow = = 1.12.0-et a CondaDependecies-n keresztül. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -375,12 +375,12 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 
 * [A Docker üzembe helyezésének hibaelhárítása Azure Machine Learning](how-to-troubleshoot-deployment.md)
 * [Gépi tanulási folyamatok hibakeresése](how-to-debug-pipelines.md)
 * [A ParallelRunStep osztály hibakeresése az Azure Machine Learning SDK-val](how-to-debug-parallel-run-step.md)
-* [Machine learning számítási példány interaktív hibakeresése a VS Code-ban](how-to-set-up-vs-code-remote.md)
+* [Machine learning számítási példány interaktív hibakeresése a VS Code-ban](how-to-debug-visual-studio-code.md)
 * [A Application Insights használata a gépi tanulási folyamatok hibakereséséhez](how-to-debug-pipelines-application-insights.md)

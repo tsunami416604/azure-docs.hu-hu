@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be80ff95cc03f8cf2a08e9ce92146fe5028dcb9c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275272"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846309"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -117,7 +117,7 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 - [A gyűjteményből hozzáadott alkalmazások](../manage-apps/add-application-portal.md)
 - [A katalógusban nem szereplő egyéni alkalmazások](../manage-apps/add-non-gallery-app.md)
 - [Az App Delivery Controllers és Networks szolgáltatáson keresztül közzétett örökölt alkalmazások](../manage-apps/secure-hybrid-access.md)
-- [Jelszó-alapú egyszeri Singet](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) használó alkalmazások
+- [Jelszó alapú egyszeri bejelentkezést](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) használó alkalmazások
 
 > [!NOTE]
 > Mivel a feltételes hozzáférési házirend olyan szolgáltatáshoz való hozzáférés követelményeit állítja be, amely nem alkalmazható az ügyfél (nyilvános/natív) alkalmazásra. Más szóval a házirend nincs beállítva közvetlenül egy ügyfélen (nyilvános/natív) alkalmazáson, de a rendszer akkor alkalmazza, amikor egy ügyfél meghívja a szolgáltatást. A SharePoint szolgáltatásban beállított házirendek például a SharePoint szolgáltatást hívó ügyfelekre érvényesek. Az Exchange-ben beállított házirend az e-mailek Outlook-ügyfél használatával való elérésére tett kísérletre vonatkozik. Ezért nem érhetők el az ügyfél (nyilvános/natív) alkalmazások a Cloud apps választóban való kiválasztáshoz, és a feltételes hozzáférés beállítás nem érhető el a bérlőben regisztrált ügyfél (nyilvános/natív) alkalmazás Alkalmazásbeállítások esetében. 
@@ -127,7 +127,7 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 
 A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégezhetnek. Az egyetlen jelenleg támogatott művelet a **biztonsági információk regisztrálása**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzat kikényszerítse azokat a felhasználókat, akik a kombinált regisztrációhoz engedélyezve vannak a biztonsági információik regisztrálásához. További információt a következő cikkben talál: [kombinált biztonsági információk regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: feltételek](concept-conditional-access-conditions.md)
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999304"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903323"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldásmintái
 
@@ -86,17 +86,12 @@ A speciális felhasználók számára, akik az online képzést és a pontozást
 
 ![ASA Machine Learning alkalmazás](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>Közel valós idejű adattárház
+## <a name="real-time-data-warehousing"></a>Valós idejű adattárház
 
-Egy másik gyakori minta a valós idejű adattárház, más néven adatfolyam-adattárház. Az Event Hubs és IoT Hub az alkalmazásból érkező eseményeken kívül a IoT Edge- [on futó Azure stream Analytics](stream-analytics-edge.md) az adatok megtisztítását, az adatok csökkentését, valamint az adattár és a továbbítási igények teljesítését is felhasználhatja. A IoT Edge-on futó Stream Analytics könnyedén képes kezelni a sávszélesség korlátozását és a kapcsolati problémákat a rendszeren. Az SQL kimeneti adapter a SQL Data Warehouseba való kimenetre használható. a maximális átviteli sebesség azonban 10 MB/s-ra van korlátozva.
+Egy másik gyakori minta a valós idejű adattárház, más néven adatfolyam-adattárház. Az Event Hubs és IoT Hub az alkalmazásból érkező eseményeken kívül a IoT Edge- [on futó Azure stream Analytics](stream-analytics-edge.md) az adatok megtisztítását, az adatok csökkentését, valamint az adattár és a továbbítási igények teljesítését is felhasználhatja. A IoT Edge-on futó Stream Analytics könnyedén képes kezelni a sávszélesség korlátozását és a kapcsolati problémákat a rendszeren. A Stream Analytics az Azure szinapszis Analytics szolgáltatásba való írás során akár 200 MB/s sebességű átviteli sebességet is támogat.
 
 ![ASA-adattárház](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-Az átviteli sebesség és a késések növelésének egyik módja az, hogy archiválja az eseményeket az Azure Blob Storage-ba, majd [importálja őket a SQL Data Warehouseba a Base](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)használatával. [Az adatok időbélyegzővel való archiválásával és az](stream-analytics-custom-path-patterns-blob-storage-output.md) importálás időszakonkénti elküldésével manuálisan össze kell fűzve a stream Analyticsból a blob Storage-ba és a blob Storage-ból SQL Data Warehouse való adatbevitelt.
-
-Ebben a használati mintában a rendszer a közel valós idejű ETL-motorként használja Azure Stream Analytics. Az újonnan érkező eseményeket a rendszer folyamatosan átalakítja és tárolja az alsóbb rétegbeli elemzési szolgáltatások felhasználásához.
-
-![ASA nagy adatátviteli adattárház](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Valós idejű adatelemzések archiválása
 
@@ -185,7 +180,7 @@ Nem nehéz elképzelni, hogy az összes fent említett megoldási minta egyesít
 
 A legfontosabb, hogy megtervezze a rendszert a kiépíthető mintákban, így az egyes alrendszerek egymástól függetlenül létrehozhatók, vizsgálhatók, frissíthetők és helyreállíthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mostantól számos megoldási mintát látott Azure Stream Analytics használatával. Ezután megismerheti a részleteket, és létrehozhatja első Stream Analytics-feladatát:
 

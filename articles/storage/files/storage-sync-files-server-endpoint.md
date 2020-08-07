@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync kiszolgáló-végpont hozzáadása/eltávolítása | Microsoft Docs
-description: Megtudhatja, mit érdemes figyelembe venni Azure Files központi telepítés tervezésekor.
+description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el egy kiszolgálói végpontot Azure File Sync használatával. A kiszolgálói végpont a regisztrált kiszolgálók egy adott helye, például a kiszolgáló kötetén található mappa.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509472"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905057"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync kiszolgálói végpont hozzáadása/eltávolítása
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -71,7 +71,7 @@ A kiszolgálói végpont eltávolítása:
 
     ![Kiszolgálói végpont eltávolítása egy szinkronizálási csoportból](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Kiszolgáló regisztrálása/regisztrációjának törlése Azure File Sync](storage-sync-files-server-registration.md)
-- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
+- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

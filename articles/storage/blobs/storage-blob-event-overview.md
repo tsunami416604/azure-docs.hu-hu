@@ -1,6 +1,6 @@
 ---
 title: Reagálás az Azure Blob Storage-eseményekre | Microsoft Docs
-description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
+description: Azure Event Grid használata a blob Storage-eseményekre való előfizetéshez és reagáláshoz. Ismerje meg az esemény modelljét, az események szűrését és az események felhasználásának gyakorlatát.
 author: normesta
 ms.author: normesta
 ms.date: 04/06/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62cd31ab6f63aec5ddeb675bca3621a329ab1f2b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809073"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826568"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob Storage-eseményekre
 
@@ -105,7 +105,7 @@ A blob Storage-eseményeket kezelő alkalmazásoknak néhány ajánlott eljárá
 > * Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje a `CopyBlob` , vagy a `PutBlob` `PutBlockList` `FlushWithClose` REST API hívások eseményeit. Ezek az API-hívások csak azt követően indítják el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adatgyűjtés teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Event Gridről és a blob Storage-események kiosztásáról:
 

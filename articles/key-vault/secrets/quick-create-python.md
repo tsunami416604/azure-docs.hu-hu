@@ -7,13 +7,13 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: tracking-python
-ms.openlocfilehash: 135ad450f7b0491200aeafd470e7a551d577e96a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-python
+ms.openlocfilehash: b31f22f9a3909df308fdcfa994833887828f2539
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285551"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876359"
 ---
 # <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>Gyors útmutató: Azure Key Vault Secrets ügyféloldali kódtár a Pythonhoz
 
@@ -135,7 +135,7 @@ A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=az
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
 
@@ -188,7 +188,7 @@ client.delete_secret(secretName)
 print(" done.")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

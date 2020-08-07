@@ -7,14 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 03/24/2020
+ms.custom: references_regions
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8c02b22d27fbae0465ed3b8c97622544256854e0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482190"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905618"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure arc for Servers (előzetes verzió)?
 
@@ -28,10 +29,15 @@ Ahhoz, hogy ezt a szolgáltatást az Azure-on kívül üzemeltetett hibrid gépe
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-Az Azure arc for Servers (előzetes verzió) a következő forgatókönyveket támogatja a csatlakoztatott gépekkel kapcsolatban:
+Ha a számítógépet az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolja, lehetővé teszi a következő konfigurációs felügyeleti feladatok végrehajtását:
 
 - Az Azure Virtual Machines szolgáltatáshoz tartozó szabályzat-hozzárendeléssel megegyező módon rendeljen hozzá [Azure Policy vendég konfigurációkat](../../governance/policy/concepts/guest-configuration.md) .
-- A Log Analytics ügynök által összegyűjtött adatokat, amelyeket a rendszer a Log Analytics munkaterületen tárol, a gép regisztrálva van. A hibrid gépről származó adatok mostantól a gépre jellemző tulajdonságokat, például egy erőforrás-azonosítót is tartalmaznak, amely az [erőforrás-környezet](../../azure-monitor/platform/design-logs-deployment.md#access-mode) naplózási hozzáférésének támogatásához használható.
+
+- Figyelheti a csatlakoztatott számítógép vendég operációs rendszerének teljesítményét, és felderítheti az alkalmazás-összetevőket, hogy a folyamatait és függőségeit a [Azure monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)használatával kommunikáló más erőforrásokkal figyelje.
+
+- Egyszerűsítse az üzembe helyezést más Azure-szolgáltatásokkal, például az Azure Automation állapot-konfigurációval és Azure Monitor Log Analytics munkaterülettel a nem Azure-beli Windows-vagy Linux-alapú gépek támogatott Azure virtuálisgép- [bővítményeivel](manage-vm-extensions.md) Ez magában foglalja az üzembe helyezés utáni konfiguráció vagy a Szoftvertelepítés egyéni parancsfájl-bővítmény használatával végzett telepítését is.
+
+A hibrid gépről Log Analytics munkaterületen gyűjtött és tárolt adatok naplózása mostantól a géppel kapcsolatos tulajdonságokat is tartalmaz, például egy erőforrás-azonosítót. Ezt az [erőforrás-környezet](../../azure-monitor/platform/design-logs-deployment.md#access-mode) naplózási hozzáférésének támogatásához használhatja.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -42,12 +48,12 @@ Az Azure arc for Servers (előzetes verzió) használata esetén csak bizonyos r
 - WestEurope
 - SoutheastAsia
 
-A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. A nyugalmi állapotban lévő adatok tárolása az Ön által megadott régiót tartalmazó Azure földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régiót, amelyhez a gép csatlakoztatva van, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de az Azure-t használó felügyeleti műveletek nem lehetnek teljesek. Regionális leállás esetén a rugalmasság érdekében, ha több olyan hellyel rendelkezik, amelyek földrajzilag redundáns szolgáltatást biztosítanak, akkor a legjobb, ha a gépeket az egyes helyszíneken egy másik Azure-régióhoz kapcsolja.
+A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. A nyugalmi állapotban lévő adatok tárolása az Ön által megadott régiót tartalmazó Azure földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régiót, amelyhez a gép csatlakoztatva van, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de az Azure-t használó felügyeleti műveletek nem lehetnek teljesek. Regionális leállás esetén, ha több olyan hellyel rendelkezik, amelyek földrajzilag redundáns szolgáltatást biztosítanak, akkor a legjobb, ha a gépeket egy másik Azure-régióhoz köti.
 
 ### <a name="agent-status"></a>Ügynök állapota
 
 A csatlakoztatott gépi ügynök egy normál szívverésű üzenetet küld a szolgáltatásnak 5 percenként. Ha a szolgáltatás nem tudja fogadni ezeket a szívverési üzeneteket a gépről, a gép offline állapotba kerül, és a rendszer 15 – 30 percen belül automatikusan **megszakítja a kapcsolatot** a portálon. Amikor egy későbbi szívverési üzenetet kap a csatlakoztatott számítógép ügynökéről, az állapota automatikusan **csatlakoztatva**lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kiszolgálók (előzetes verzió) több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gépi ügynök áttekintő](agent-overview.md) cikkét, hogy megtudja, mi szükséges, az ügynök technikai részleteit és a telepítési módszereket.

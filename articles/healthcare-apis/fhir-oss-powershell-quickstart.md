@@ -2,30 +2,30 @@
 title: 'PowerShell: FHIR-kiszolgáló üzembe helyezése az Azure-ban – Azure API a FHIR-hez'
 description: Ez a rövid útmutató azt ismerteti, hogyan helyezhető üzembe a Microsoft nyílt forráskódú FHIR-kiszolgáló a PowerShell használatával.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: f959b884f67f354599b99bb6dd24918b28d13382
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: matjazl
+ms.openlocfilehash: c133a309cc85ffcfb69be2ae7bbb614cbb540f2e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "84820179"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847126"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-powershell"></a>Gyors útmutató: nyílt forráskódú FHIR-kiszolgáló üzembe helyezése a PowerShell használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan helyezheti üzembe a nyílt forráskódú Microsoft FHIR-kiszolgálót az Azure-hoz a PowerShell használatával.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Válassza ki az erőforráscsoport nevét, amely a kiépített erőforrásokat fogja tartalmazni, és hozza létre:
 
@@ -60,7 +60,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforráscsoportot
 Remove-AzResourceGroup -Name $rg.ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezte az Azure-hoz készült Microsoft nyílt forráskódú FHIR-kiszolgálót az előfizetésében. Ha szeretné megtudni, hogyan érheti el a FHIR API-t a Poster használatával, folytassa a Poster-oktatóanyaggal.
  
