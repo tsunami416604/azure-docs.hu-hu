@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124558"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827328"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
@@ -18,7 +18,7 @@ Ezután állítson be egy példa ügyfélalkalmazás-alkalmazást, amely az Azur
 
 Navigáljon a letöltött fájlhoz a gépen, és csomagolja ki.
 
-A kibontott mappán belül navigáljon a _AdtSampleApp/_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
+Miután a kibontott mappában található, navigáljon a _AdtSampleApp_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
 
 A Visual Studióban a *megoldáskezelő* ablaktáblán hozza létre a _SampleClientApp >serviceConfig.jsmásolatát **. SABLONFÁJL** _ (a másoláshoz és a beillesztéshez használhatja a jobb gombbal kiválasztható menüket). Nevezze át a *serviceConfig.js*másolását. Ez egy előre beállított JSON-fájlként fog szolgálni a projekt futtatásához szükséges konfigurációs változók használatával.
 
@@ -31,6 +31,8 @@ Válassza ki a fájl *serviceConfig.jsét* , és nyissa meg a szerkesztési abla
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 Mentse és zárja be a fájlt. 
 

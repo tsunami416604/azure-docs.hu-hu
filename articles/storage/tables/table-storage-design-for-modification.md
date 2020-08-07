@@ -1,6 +1,6 @@
 ---
 title: Az Azure Table Storage tervezése adatmódosításra | Microsoft Docs
-description: Tervezze meg az Azure Table Storage adatmódosítási táblázatait.
+description: Tervezze meg az Azure Table Storage adatmódosítási táblázatait. A beszúrási, frissítési és törlési műveletek optimalizálása. Gondoskodjon a tárolt entitások konzisztenciájáról.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f48cbf198e8a12d4f35293b285e6cb09bef29a1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75771546"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826466"
 ---
 # <a name="design-for-data-modification"></a>Tervezés adatmódosításhoz
 Ez a cikk a lapkák, frissítések és törlések optimalizálására vonatkozó tervezési szempontokat ismerteti. Bizonyos esetekben ki kell értékelnie a kiértékelést olyan formatervezési minták között, amelyek optimalizálják az adatmódosításra optimalizált kialakításokat, ugyanúgy, mint a viszonyítási adatbázisok tervezésekor (bár a tervezési kompromisszumok kezelésének módszerei eltérőek a kapcsolati adatbázisokban). A tábla kialakítási mintái a Table service részletes tervezési mintáit ismertetik, és kiemelik ezeket a kompromisszumokat. A gyakorlatban azt tapasztalja, hogy számos, az entitások lekérdezésére optimalizált terv is jól működik az entitások módosításához.  

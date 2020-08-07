@@ -2,18 +2,18 @@
 title: Támogatott FHIR-funkciók az Azure-ban – Azure API a FHIR-hez
 description: Ez a cikk ismerteti a FHIR-specifikáció azon funkcióit, amelyek a FHIR készült Azure API-ban lettek implementálva
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 7f92395f19d84f904493af458d1334f8013fd263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85808029"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843504"
 ---
 # <a name="features"></a>Szolgáltatások
 
@@ -29,22 +29,22 @@ A korábbi verziók jelenleg is támogatottak:`3.0.2`
 
 | API                            | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| olvasni                           | Igen       | Igen       | Igen       |                                                     |
+| olvasás                           | Igen       | Igen       | Igen       |                                                     |
 | vread                          | Igen       | Igen       | Igen       |                                                     |
 | update                         | Igen       | Igen       | Igen       |                                                     |
 | frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
 | frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
-| delete                         | Igen       | Igen       | Igen       |                                                     |
+| törlés                         | Igen       | Igen       | Igen       |                                                     |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
 | létrehozás (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | keresés                         | Részleges   | Részleges   | Részleges   | Lásd lent                                           |
-| láncolt keresés                 | No        | Yes       | No        |                                           |
+| láncolt keresés                 | Nem        | Igen       | Nem        |                                           |
 | fordított láncolt keresés         | Nem        | Nem        | Nem        |                                            |
 | képességek                   | Igen       | Igen       | Igen       |                                                     |
 | kötegelt                          | Igen       | Igen       | Igen       |                                                     |
-| tranzakció                    | No        | Yes       | No        |                                                     |
+| tranzakció                    | Nem        | Igen       | Nem        |                                                     |
 | előzmények                        | Igen       | Igen       | Igen       |                                                     |
 | lapozófájl                         | Részleges   | Részleges   | Részleges   | `self`és `next` támogatottak                     |
 | közvetítők                 | Nem        | Nem        | Nem        |                                                     |
@@ -59,7 +59,7 @@ Az összes keresési paraméter típusa támogatott.
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
 | Sztring                | Igen       | Igen       | Igen       |         |
 | Jogkivonat                 | Igen       | Igen       | Igen       |         |
-| Hivatkozás             | Igen       | Igen       | Igen       |         |
+| Referencia             | Igen       | Igen       | Igen       |         |
 | Kompozit             | Igen       | Igen       | Igen       |         |
 | Mennyiség              | Igen       | Igen       | Igen       |         |
 | URI                   | Igen       | Igen       | Igen       |         |
@@ -102,7 +102,7 @@ Az összes keresési paraméter típusa támogatott.
 | `_score`                | Nem        | Nem        | Nem        |         |
 | `_count`                | Igen       | Igen       | Igen       |         |
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count`támogatott |
-| `_include`              | No        | Yes       | Nem        |         |
+| `_include`              | Nem        | Igen       | Nem        |         |
 | `_revinclude`           | Nem        | Nem        | Nem        |         |
 | `_contained`            | Nem        | Nem        | Nem        |         |
 | `_elements`             | Nem        | Nem        | Nem        |         |
@@ -121,7 +121,7 @@ A FHIR-kiszolgáló [Azure Active Directory](https://azure.microsoft.com/service
 
 Jelenleg az adott szerepkörre vonatkozó engedélyezett műveletek *globálisan* lesznek alkalmazva az API-ra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a FHIR készült Azure API támogatott FHIR szolgáltatásairól olvashat. Ezután telepítse az Azure API-t a FHIR-hez.
  

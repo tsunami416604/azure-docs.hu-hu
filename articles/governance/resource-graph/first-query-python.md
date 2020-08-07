@@ -3,13 +3,13 @@ title: 'Rövid útmutató: az első Python-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Pythonhoz készült Resource Graph-függvénytárat, és futtathatja az első lekérdezést.
 ms.date: 07/15/2020
 ms.topic: quickstart
-ms.custom: tracking-python
-ms.openlocfilehash: f7ca6ce5fab687e26007949898ad72c75d036782
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511919"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873670"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Python használatával
 
@@ -19,7 +19,7 @@ A folyamat végén hozzáadta a kódtárakat a Python-telepítéshez, és futtat
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

@@ -2,24 +2,24 @@
 title: 'Azure Portal: nyílt forráskódú FHIR-kiszolgáló üzembe helyezése az Azure-hoz – Azure API a FHIR-hez'
 description: Ez a rövid útmutató azt ismerteti, hogyan helyezhetők üzembe a Microsoft nyílt forráskódú FHIR-kiszolgáló a Azure Portal használatával.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 5109c9a7c6432e42c6841b89cc28bde3e92c74aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: matjazl
+ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "84820185"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843487"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>Gyors útmutató: nyílt forráskódú FHIR-kiszolgáló üzembe helyezése Azure Portal használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy nyílt forráskódú FHIR-kiszolgálót az Azure-ban a Azure Portal használatával. Az egyszerű üzembe helyezési hivatkozásokat a [nyílt forráskódú tárházban](https://github.com/Microsoft/fhir-server) fogjuk használni
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="github-open-source-repository"></a>GitHub nyílt forráskódú adattár
 
@@ -47,7 +47,7 @@ Az üzembe helyezés befejezése után rámutathat a böngészőre, `https://SER
 
 Ha már nincs rá szükség, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a kiépített erőforrásokat tartalmazó erőforráscsoportot, válassza az **erőforráscsoport törlése**elemet, és erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezte az Azure-hoz készült Microsoft nyílt forráskódú FHIR-kiszolgálót az előfizetésében. Ha szeretné megtudni, hogyan érheti el a FHIR API-t a Poster használatával, folytassa a Poster-oktatóanyaggal.
  

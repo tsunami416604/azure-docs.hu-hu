@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f91e130bfa83c6a9b116c05d7293aa70945e2dc2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259869"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903544"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
-A partnerek a Windows rendszerű virtuális asztali Linux SDK használatával létrehozhatnak egy önálló Windowsos virtuális asztali ügyfelet. Azt is megteheti, hogy lehetővé teszi a Windows rendszerű virtuális asztali támogatás használatát az ügyfélalkalmazás számára. Ez a rövid útmutató ismerteti, hogy mi a Linux SDK, és hogyan kezdheti meg a használatát.
+A Linux-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a következő támogatott ügyfelekkel, amelyeket a Linux rendszerű, vékony ügyfél partnereink biztosítanak. Számos partnerrel dolgozunk, hogy a támogatott Windowsos virtuális asztali ügyfelek több Linux-alapú operációs rendszeren és eszközön is elérhetők legyenek. Ha azt szeretné, hogy a Windows rendszerű virtuális asztali támogatás olyan linuxos platformon is használható legyen, amely nem szerepel itt, kérjük, tudassa velünk a [UserVoice oldalon](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
 
 ## <a name="connect-with-your-linux-device"></a>A Linux-eszköz csatlakoztatása
 
@@ -29,14 +29,7 @@ A következő partnerek jóváhagyták a Windows rendszerű virtuális asztali �
 
 ## <a name="what-is-the-linux-sdk"></a>Mi a Linux SDK?
 
-Az SDK API-k segítségével lekérheti az erőforrás-hírcsatornákat, csatlakozhat asztali vagy távoli alkalmazás-munkamenetekhez, és számos olyan átirányítást használhat, amelyet az első féltől származó ügyfelek támogatnak.
-
-> [!NOTE]
-> Az SDK jelenleg fejlesztés alatt áll. Ezt a dokumentumot az általánosan elérhető SDK-hoz való hozzáférésre vonatkozó utasításokkal frissítjük.
-
-### <a name="supported-linux-distributions"></a>Támogatott Linux-disztribúciók
-
-Az SDK az Ubuntu 18,04-es vagy újabb verzióján alapuló legtöbb operációs rendszerrel kompatibilis. Ha más Linux-disztribúcióval rendelkezik, segítünk Önnek az igényeinek legmegfelelőbb támogatásban.
+A Linux-alapú vékony ügyfelek a Windows rendszerű virtuális asztali linuxos SDK API-kkal lekérhetik az erőforrás-hírcsatornákat, csatlakozhatnak asztali vagy távoli alkalmazás-munkamenetekhez, és számos átirányítást használhatnak, amelyeket az első féltől származó ügyfelek támogatnak. Az SDK az Ubuntu 18,04-es vagy újabb verzióján alapuló legtöbb operációs rendszerrel kompatibilis.
 
 ### <a name="feature-support"></a>Szolgáltatások támogatása
 
@@ -57,13 +50,6 @@ Az SDK több kapcsolatot is támogat az asztali és a távoli alkalmazás-munkam
 Az SDK emellett több figyelő megjelenítési konfigurációt is támogat, feltéve, hogy a munkamenethez kiválasztott figyelők összefüggőek.
 
 Frissítjük a dokumentumot az új funkciók és átirányítások támogatásának hozzáadásakor. Ha új szolgáltatásokat és egyéb fejlesztési funkciókat szeretne javasolni, látogasson el a [UserVoice oldalára](https://go.microsoft.com/fwlink/?linkid=2116523).
-
-## <a name="get-started-with-the-linux-sdk"></a>Ismerkedés a Linux SDK-val
-
-A Linux-ügyfél Windows rendszerű virtuális asztali környezethez való fejlesztése előtt a következőket kell tennie:
-
-1. Windows rendszerű virtuális asztali környezet létrehozása és üzembe helyezése teszteléshez vagy éles környezetben való használatra.
-2. Tesztelje az elérhető első féltől származó ügyfeleket a Windows rendszerű virtuális asztali felhasználói élmény megismeréséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

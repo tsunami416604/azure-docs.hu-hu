@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323111"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824987"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Munkaterület-alapú Application Insights erőforrások (előzetes verzió)
 
@@ -19,7 +19,7 @@ A munkaterület-alapú erőforrások a Application Insights és Log Analytics k�
 Ez lehetővé teszi a közös szerepköralapú Access Control (RBAC) használatát az erőforrások között, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
 
 > [!NOTE]
-> A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a Log Analytics munkaterületen történik, ahol az adatok találhatók. [További]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
+> A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a Log Analytics munkaterületen történik, ahol az adatok találhatók. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
 
 Az új felület teszteléséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre egy Application Insights erőforrást:
 
@@ -195,7 +195,7 @@ A Application Insights erőforrás ablaktáblán válassza a **Tulajdonságok** 
 
 A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-alapú erőforrások esetében. Ehelyett válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás** lehetőséget a Application Insights erőforráson belül. Kiválaszthatja az összes táblát vagy a táblák egy részhalmazát, hogy archiválja a Storage-fiókba, vagy egy Azure Event hub-ba továbbítson.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)
@@ -204,4 +204,3 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

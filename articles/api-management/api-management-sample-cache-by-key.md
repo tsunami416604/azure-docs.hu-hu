@@ -1,6 +1,6 @@
 ---
 title: Egyéni gyorsítótárazás az Azure API Managementben
-description: Megtudhatja, hogyan gyorsítótárazhat elemeket kulcs szerint az Azure-ban API Management
+description: Megtudhatja, hogyan gyorsítótárazhatja az elemeket kulcs szerint az Azure API Managementban. A kulcsot a kérelem fejlécek használatával módosíthatja.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249716"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903442"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazás az Azure API Managementben
-Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a tulajdonságok használatával módosítható a kérelem fejlécében `vary-by` . Ez a teljes HTTP-válaszok gyorsítótárazásakor hasznos (más néven a reprezentációk), de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](./api-management-caching-policies.md#GetFromCacheByKey) és [cache-Store-Value](./api-management-caching-policies.md#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](./api-management-advanced-policies.md#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.
+Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a tulajdonságok használatával módosítható a kérelem fejlécében `vary-by` . Ez a teljes HTTP-válaszok (más néven képviseletek) gyorsítótárazására hasznos, de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](./api-management-caching-policies.md#GetFromCacheByKey) és [cache-Store-Value](./api-management-caching-policies.md#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](./api-management-advanced-policies.md#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.
 
 ## <a name="architecture"></a>Architektúra
 API Management a szolgáltatás egy megosztott, bérlői adatgyorsítótárat használ, így ha több egységre is kiterjed, továbbra is hozzáférhet ugyanahhoz a gyorsítótárazott információhoz. Ha azonban többrégiós telepítéssel dolgozik, az egyes régiókban külön gyorsítótárak találhatók. Fontos, hogy a gyorsítótárat ne kezelje adattárként, mert az egyetlen adat forrása. Ha ezt tette, és később úgy döntött, hogy kihasználja a többrégiós telepítést, akkor az utazást használó felhasználók nem férhetnek hozzá a gyorsítótárazott adathoz.
@@ -276,5 +276,5 @@ Nagyobb méretű, több-bérlős üzembe helyezések esetén egyes vállalatok k
 
 Ahelyett, hogy az API előnyben részesített verzióját adja vissza az egyes előfizetési kulcsokhoz, olyan azonosítót ad vissza, amely egy bérlőhöz kapcsolódik a hozzárendelt hardver csoporthoz. Ez az azonosító használható a megfelelő háttérbeli URL-cím létrehozásához.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management cache bármilyen típusú adat tárolására való használatának szabadsága lehetővé teszi a konfigurációs adathoz való hatékony hozzáférést, amely hatással lehet a bejövő kérelmek feldolgozásának módjára. Emellett olyan adattöredékek tárolására is használható, amelyek a háttérben futó API által visszaadott válaszokat is kiterjeszthetik.

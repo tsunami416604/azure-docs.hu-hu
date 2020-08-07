@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.custom: tracking-python
-ms.openlocfilehash: 525417bd83a1d30479fd3effbce690ed04d9af73
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: 2c5469aba87fe06afc7308d6bd1e52cd4d87f22a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608000"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873483"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Szöveg-beszéd átalakítás a Python használatával
 
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     app.save_audio()
 ```
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Ekkor készen áll a szöveg-beszéd minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
 
@@ -169,7 +169,7 @@ Ha a rendszer kéri, írja be a szöveget, amit szeretne szöveggé konvertálni
 > [!div class="nextstepaction"]
 > [Python-minták megismerése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Szöveg – beszéd API-hivatkozás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [A Python és a Speech SDK használata szöveg-beszéd átalakításra](quickstarts/speech-to-text-from-microphone.md)

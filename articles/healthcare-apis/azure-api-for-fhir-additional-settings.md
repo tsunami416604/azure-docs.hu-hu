@@ -4,16 +4,16 @@ description: A FHIR készült Azure API-hoz kapcsolódó további beállítások
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 64bdc60f8f9e291c4dc084b23f8ec5054cdc528f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845901"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>További beállítások a FHIR készült Azure API-hoz
 
@@ -49,7 +49,7 @@ A különböző típusú információk rögzítéséhez egyéni fejléceket hasz
 
 Ha ezeket az adatnaplókat szeretné felvenni a naplókba, tekintse meg az [egyéni HTTP-fejlécek használata az adatgyűjtés naplózása a naplókhoz](use-custom-headers.md) útmutató című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban további beállításokat állíthat be a FHIR készült Azure API-hoz.
 

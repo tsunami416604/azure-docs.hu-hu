@@ -3,18 +3,18 @@ title: Az Azure API FHIR-hez Azure Active Directory identitás-konfigurációja
 description: Ismerje meg az Azure FHIR-kiszolgálók identitásának, hitelesítésének és engedélyezésének elveit.
 services: healthcare-apis
 author: caitlinv39
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: 53adf974a3af4a2cc3e5c89156fe4b50571c7b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871728"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846020"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Az Azure API FHIR-hez Azure Active Directory identitás-konfigurációja
 
@@ -106,7 +106,7 @@ Az Azure AD dokumentációjának megfelelő fejezetei a következők:
 
 A token beszerzéséhez más változatok is tartoznak (például a flow nevében). A részletekért olvassa el az Azure AD dokumentációját. Ha a FHIR készült Azure API-t használja, az [Azure CLI](get-healthcare-apis-access-token-cli.md)-vel egy hozzáférési token (hibakeresési célú) beszerzésére is van néhány parancsikon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan biztosíthatja az Azure API-hoz való hozzáférés biztosítását az Azure AD-vel való FHIR. Ha meg szeretné tudni, hogyan helyezheti üzembe az Azure API FHIR-példányát, folytassa az üzembe helyezési útmutatóval.
 

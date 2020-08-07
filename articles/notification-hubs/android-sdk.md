@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
-ms.openlocfilehash: 292f7b65528c13d23d4f2b72467538c43c6ad75e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d8c61c90456607d73fc0e8abc24709d901328ecf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172493"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829526"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK-Preview1 használatával
 
@@ -71,7 +71,7 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
    2. Válassza az **alkalmazás regisztrálása**lehetőséget.
 
-4. Válassza a **Google-Services. JSON letöltése**lehetőséget, mentse a fájlt a projekt **alkalmazás**   mappájába, majd válassza a **tovább**lehetőséget.
+4. Válassza a **letöltés google-services.jsbe**lehetőséget, mentse a fájlt a projekt **alkalmazás**   mappájába, majd válassza a **tovább**lehetőséget.
 
    :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google-szolgáltatás letöltése":::
 
@@ -79,7 +79,7 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
    :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projekt beállításai":::
 
-6. Ha még nem töltötte le a **Google-Services. JSON** fájlt a **app**   Android Studio-projekt alkalmazás mappájába, ezt a lapon teheti meg.
+6. Ha nem töltötte le a **google-services.js** fájlt a Android Studio projekt **alkalmazás**   mappájába, ezt megteheti ezen a lapon.
 
 7. Váltson a **Cloud Messaging (Felhőbeli üzenetkezelés**   ) lapra.
 
@@ -228,7 +228,7 @@ Az értesítési központ már konfigurálva van a Firebase Cloud Messaging szol
    }
    ```
 
-3. Android Studio a menüsávon válassza a **Létrehozás**, majd a **projekt újraépítése**lehetőséget, hogy ellenőrizze, nincsenek   -e hibák a kódban. Ha hibaüzenetet kap a **ic_launcher**   ikonról, távolítsa el a következő utasítást a AndroidManifest. XML fájlból:
+3. Android Studio a menüsávon válassza a **Létrehozás**, majd a **projekt újraépítése**lehetőséget, hogy ellenőrizze, nincsenek   -e hibák a kódban. Ha hibaüzenetet kap a **ic_launcher**   ikonról, távolítsa el a következő utasítást a AndroidManifest.xml fájlból:
 
    ```xml
    android:icon="@mipmap/ic_launcher"
@@ -278,7 +278,7 @@ Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta a
 
 Az alábbi lista felsorolja az értesítések küldésére vonatkozó egyéb oktatóanyagokat:
 
-- Azure Mobile Apps: a [leküldéses értesítések hozzáadása iOS-alkalmazáshoz](/azure/app-service-mobile/app-service-mobile-ios-get-started-push)című témakörből megtudhatja, hogyan küldhet értesítéseket az Notification Hubs-vel integrált Mobile apps háttérből.
+- Azure Mobile Apps: a [leküldéses értesítések hozzáadása iOS-alkalmazáshoz](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)című témakörből megtudhatja, hogyan küldhet értesítéseket az Notification Hubs-vel integrált Mobile apps háttérből.
 
 - ASP.NET: [a Notification Hubs használatával leküldéses értesítéseket küldhet a felhasználóknak](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 

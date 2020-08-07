@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554536"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873721"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
-A biztonság kezelése nehéz lehet az identitással kapcsolatos gyakori támadásokkal, például a jelszó-permetezéssel, a visszajátszás és az adathalászat egyre népszerűbbebb. A biztonsági alapértékek segítségével az előre konfigurált biztonsági beállításokkal könnyebben megvédheti szervezetét ezektől a támadásoktól:
+A biztonság kezelése nehéz lehet az identitással kapcsolatos gyakori támadásokkal, például a jelszó-spray, a visszajátszás és az adathalászat egyre népszerűbbvé válásával. A biztonsági alapértékek segítségével az előre konfigurált biztonsági beállításokkal könnyebben megvédheti szervezetét ezektől a támadásoktól:
 
 - Az összes felhasználónak regisztrálnia kell az Azure Multi-Factor Authentication.
 - A többtényezős hitelesítés végrehajtásának megkövetelése a rendszergazdától.
@@ -122,7 +122,7 @@ A következő további szempontok a biztonsági Alapértelmezések telepítésé
 
 Ezek az ingyenes biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
 
-| Metódus | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
+| Módszer | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
 | --- | --- | --- |
 | Értesítés a Mobile App használatával | X | X |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből | X * * | X |
@@ -145,9 +145,9 @@ A feltételes hozzáférés használatával a biztonsági alapértékekhez hason
 
 Az alábbiakban részletes útmutatók láthatók arról, hogy a feltételes hozzáférés hogyan konfigurálható a biztonsági alapértékek által engedélyezett szabályzatoknak megfelelő házirendekkel:
 
-- [MFA megkövetelése rendszergazdák számára](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [MFA megkövetelése a rendszergazdáktól](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [MFA megkövetelése az Azure-beli felügyelethez](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Örökölt hitelesítés tiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Régi hitelesítési folyamat letiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [MFA megkövetelése minden felhasználótól](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Azure MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – a prémium szintű Azure AD P2 Azure ad Identity Protection részét igényli.
 
@@ -175,6 +175,6 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem**értékre.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Általános feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
+[Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
