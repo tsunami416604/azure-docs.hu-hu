@@ -60,7 +60,7 @@
           href: how-tos/create-locate-anchors-cpp-winrt.md
     - name: Durva helyzet-újrameghatározás használata a közeli horgonyok felderítéséhez
       items:
-        - name: 'A C#/Unityben'
+        - name: A C#/Unityben
           href: how-tos/set-up-coarse-reloc-unity.md
         - name: Az Objective-C-ben
           href: how-tos/set-up-coarse-reloc-objc.md
@@ -72,6 +72,12 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: A C++/WinRT-ben
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: Projekt beállítása
+      items:
+        - name: C++/WinRT
+          href: how-tos/setup-cpp-winrt-project.md
+        - name: Unity
+          href: how-tos/setup-unity-project.md
 - name: Példák
   items:
     - name: Azure Spatial Anchors-példák (GitHub)

@@ -171,10 +171,14 @@
         - name: Azure-beli virtuális gépek monitorozása
           href: insights/monitor-vm-azure.md
           displayname: VM
+    - name: Üzembe helyezés
+      items:
+        - name: Az Azure Monitor üzembe helyezése
+          href: deploy.md
+        - name: Nagy léptékű üzembe helyezés
+          href: deploy-scale.md
     - name: Kezelés és konfigurálás
       items:
-        - name: Nagy léptékű üzembe helyezés
-          href: platform/deploy-scale.md
         - name: Szerepköri engedélyek és biztonság
           href: platform/roles-permissions-security.md
         - name: IP-címek

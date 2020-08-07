@@ -471,7 +471,7 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Tár csatlakoztatása Linuxról NFS használatával
+            - name: Tárterület csatlakoztatása az NFS használatával
               href: network-file-system-protocol-support-how-to.md
             - name: Tár csatlakoztatása Linuxról blobfuse használatával
               href: storage-how-to-mount-container-linux.md
@@ -560,6 +560,8 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: A Storage Explorer hibaelhárítása
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A Storage Explorer biztonsági beállításai
+              href: ../common/storage-explorer-security.md
             - name: A Storage Explorer támogatási szabályzata és életciklusa
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Storage Explorer – kisegítő lehetőségek
@@ -744,7 +746,7 @@
                 - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
-              href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Adatok átvitele a DistCp eszközzel
               href: data-lake-storage-use-distcp.md
             - name: Adatok átvitele az adatátviteli kódtárral
@@ -834,6 +836,10 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: A Storage Explorer hibaelhárítása
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A Storage Explorer biztonsági beállításai
+              href: ../common/storage-explorer-security.md
+            - name: A Storage Explorer támogatási szabályzata és életciklusa
+              href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Storage Explorer – kisegítő lehetőségek
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Microsoft Q&A kérdések oldala

@@ -70,8 +70,6 @@
           href: how-to-create-azure-function.md
         - name: Az ikergráf lekérdezése
           href: how-to-query-graph.md
-        - name: Metrikák megtekintése az Azure Monitorban
-          href: how-to-view-metrics.md
     - name: Bemenet csatlakoztatása
       items:
         - name: Telemetria betöltése az IoT Hubról
@@ -79,13 +77,19 @@
     - name: Kimenet csatlakoztatása
       items:
         - name: Végpontok és útvonalak kezelése
-          href: how-to-manage-routes.md
+          items:
+            - name: API-k és CLI-verziók
+              href: how-to-manage-routes-apis-cli.md
+            - name: Portálverzió
+              href: how-to-manage-routes-portal.md
         - name: Integrálás az Azure Mapsszel
           href: how-to-integrate-maps.md
         - name: Integrálás az Azure Time Series Insights szolgáltatással
           href: how-to-integrate-time-series-insights.md
     - name: Hibaelhárítás
       items:
+        - name: Metrikák megtekintése az Azure Monitorban
+          href: troubleshoot-metrics.md
         - name: Diagnosztikai naplók engedélyezése
           href: troubleshoot-diagnostics.md
         - name: Ismert problémák

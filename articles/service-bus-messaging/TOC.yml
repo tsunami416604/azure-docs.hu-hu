@@ -7,6 +7,8 @@
     - name: Üzenetküldő szolgáltatások összehasonlítása
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: A Service Bus használata a Java Message Service (JMS) 2.0-val (előzetes verzió)
+      href: how-to-use-java-message-service-20.md
 - name: Rövid útmutatók
   items:
     - name: Service Bus-üzenetsorok
@@ -127,6 +129,8 @@
           items:
             - name: 'Queues, topics, and subscriptions'
               href: service-bus-queues-topics-subscriptions.md
+            - name: Java Message Service (JMS) 2.0-entitások (előzetes verzió)
+              href: java-message-service-20-entities.md
             - name: 'Üzenetek, hasznos adatforgalom és szerializáció'
               href: service-bus-messages-payloads.md
             - name: 'Üzenetek átvitele, zárolása és elszámolása'
