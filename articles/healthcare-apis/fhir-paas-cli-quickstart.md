@@ -2,19 +2,19 @@
 title: 'Gyors útmutató: Azure API üzembe helyezése FHIR az Azure CLI használatával'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe Azure API-t az Azure FHIR az Azure CLI használatával.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: mihansen
+ms.author: matjazl
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2fdd4c4298946d943ee8a806ebc53966c8dd624
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e1aa3362217a4edcfcf547c69b9effde00459f7e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500895"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850559"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>Gyors útmutató: Azure API üzembe helyezése FHIR az Azure CLI használatával
 
@@ -58,7 +58,7 @@ Szerezzen be egy képesség-utasítást a FHIR API-val a következővel:
 curl --url "https://nameoffhiraccount.azurehealthcareapis.com/metadata"
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az erőforráscsoportot az alábbi lépésekkel:
 
@@ -66,7 +66,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforráscsoportot
 az group delete --name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezte a FHIR készült Azure API-t az előfizetésében. Ha további beállításokat szeretne megadni a FHIR készült Azure API-ban, folytassa a további beállítások útmutatóval.
 

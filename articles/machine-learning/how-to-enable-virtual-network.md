@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: how-to, contperfq4, devx-track-python
+ms.openlocfilehash: 9d49ea99b97411e15d3f264057c865219e4d63c4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420532"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853500"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Az [Azure privát hivatkozását is engedélyezheti](how-to-configure-private-li
 > [!TIP]
 > A virtuális hálózat és a magánhálózati kapcsolat összekapcsolható a munkaterület és az egyéb Azure-erőforrások közötti kommunikáció védelme érdekében. Bizonyos kombinációk azonban nagyvállalati kiadási munkaterületet igényelnek. A következő táblázat segítségével megismerheti, hogy milyen forgatókönyvek szükségesek a vállalati kiadáshoz:
 >
-> | Forgatókönyv | Enterprise</br>Edition | Alapszintű</br>Edition |
+> | Eset | Enterprise</br>Edition | Alapszintű</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Nincs virtuális hálózat vagy privát hivatkozás | ✔ | ✔ |
 > | Privát hivatkozás nélküli munkaterület. Egyéb erőforrások (a Azure Container Registry kivételével) egy virtuális hálózaton | ✔ | ✔ |

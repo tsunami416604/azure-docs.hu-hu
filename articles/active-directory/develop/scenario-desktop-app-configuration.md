@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 9388ef4aa320147815bec79c2fa4b90bce3cdac1
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558845"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846139"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó asztali alkalmazás: kód konfigurálása
 
@@ -26,7 +26,7 @@ Most, hogy létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a k
 
 A következő Microsoft Authentication librarys (MSALs) támogatja az asztali alkalmazásokat.
 
-  Microsoft Authentication Library | Description
+  Microsoft Authentication Library | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások több platformon, például a Linux, a Windows és a macOS rendszerben történő létrehozását.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását.
@@ -103,7 +103,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Tudjon meg többet
+### <a name="learn-more"></a>További információk
 
 További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 
@@ -259,7 +259,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Jogkivonat beszerzése asztali alkalmazáshoz](scenario-desktop-acquire-token.md)

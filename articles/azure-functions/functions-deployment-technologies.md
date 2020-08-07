@@ -4,22 +4,36 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562939"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905125"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
-Néhány különböző technológiával üzembe helyezheti Azure Functions-projekt kódját az Azure-ban. Ez a cikk részletes listát nyújt ezekről a technológiákról, leírja, hogy mely technológiák érhetők el, amelyekben elérhetők a függvények, és ismerteti, hogy mi történik az egyes módszerek használatakor, és javaslatokat tesz a legjobb módszer használatára a különböző helyzetekben. A Azure Functions üzembe helyezését támogató különféle eszközök a környezetük alapján a megfelelő technológiára vannak hangolva. Általánosságban elmondható, hogy a zip-telepítés a Azure Functions ajánlott központi telepítési technológiája.
+Néhány különböző technológiával üzembe helyezheti Azure Functions-projekt kódját az Azure-ban. Ez a cikk áttekintést nyújt az Ön számára elérhető üzembe helyezési módszerekről, és javaslatokat tartalmaz a legjobb módszer a különböző helyzetekben történő használathoz. Emellett részletes listát nyújt a underlyng üzembe helyezési technológiákról és a legfontosabb adatokról. 
+
+## <a name="deployment-methods"></a>Üzembe helyezési módszerek
+
+A kód Azure-ba történő közzétételéhez használt üzembe helyezési technológiát általában az alkalmazás közzétételének módja határozza meg. A megfelelő üzembe helyezési módszert a konkrét igények és a fejlesztési ciklus pontja határozza meg. A fejlesztés és a tesztelés során például közvetlenül a fejlesztői eszközről, például a Visual Studio Code-ból lehet telepíteni. Ha az alkalmazás éles környezetben van, akkor nagyobb valószínűséggel tesz közzé folyamatosan a verziókövetés vagy egy automatikus közzétételi folyamat használatával, amely további ellenőrzéseket és tesztelést is tartalmaz.  
+
+A következő táblázat a Function projekthez elérhető üzembe helyezési módszereket ismerteti.
+
+| Központi telepítés &nbsp; típusa | Metódusok | A legmegfelelőbb a következőhöz:... |
+| -- | -- | -- |
+| Eszközök-alapú | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; publish](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio – közzététel](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Alapvető eszközök közzététele](functions-run-local.md#publish) | Üzembe helyezés a fejlesztés és az egyéb ad-Hock-telepítések során. A központi telepítéseket az eszközök helyileg kezelik. | 
+| App Service által felügyelt| &bull;&nbsp;[Központi telepítési &nbsp; központ &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Tárolók &nbsp; üzembe helyezése](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Folyamatos üzembe helyezés (CI/CD) a forrás vezérlőelemből vagy egy tároló-beállításjegyzékből. A központi telepítéseket a App Service platform (kudu) kezeli.|
+| Külső folyamatok|&bull;&nbsp;[DevOps-folyamatok](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-műveletek](functions-how-to-github-actions.md) | A további ellenőrzési, tesztelési és egyéb műveleteket tartalmazó üzemi és DevOps folyamatokat az automatikus telepítés részeként kell futtatni. A központi telepítéseket a folyamat kezeli. |
+
+Míg az adott függvények központi telepítései a környezetük alapján a legjobb technológiát használják, a legtöbb üzembe helyezési módszer a [zip-telepítésen](#zip-deploy)alapul.
 
 ## <a name="deployment-technology-availability"></a>Üzembe helyezési technológia rendelkezésre állása
 
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
-+ [Használat](functions-scale.md#consumption-plan)
++ [Felhasználás](functions-scale.md#consumption-plan)
 + [Prémium szintű](functions-scale.md#premium-plan)
 + [Dedikált (App Service)](functions-scale.md#app-service-plan)
 

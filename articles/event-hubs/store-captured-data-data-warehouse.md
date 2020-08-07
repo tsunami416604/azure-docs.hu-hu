@@ -4,12 +4,12 @@ description: 'Oktatóanyag: ez az oktatóanyag bemutatja, hogyan rögzíthet az 
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039497"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833725"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatSQL Data Warehousek migrálása a Event Grid és Azure Functions használatával
 
@@ -117,7 +117,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Cél függvényalkalmazás](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Kattintson az **OK** gombra.
+1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Válassza az **OK** lehetőséget.
 
    ![Függvényalkalmazás kiválasztása](./media/store-captured-data-data-warehouse/select-function-app.png)
 
@@ -142,7 +142,7 @@ A függvény közzététele után feliratkozhat a rögzítés eseményre az Even
 
    ![Előfizetés hozzáadása](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Adja meg az Event Grid-előfizetés nevét. Eseménytípusként használja az **Event Hubs-névterek** típust. Adja meg az értékeket az Event Hubs-névtér példányának kiválasztásához. A feliratkozó végpontjánál hagyja meg a megadott értéket. Kattintson a **Létrehozás** gombra.
+1. Adja meg az Event Grid-előfizetés nevét. Eseménytípusként használja az **Event Hubs-névterek** típust. Adja meg az értékeket az Event Hubs-névtér példányának kiválasztásához. A feliratkozó végpontjánál hagyja meg a megadott értéket. Válassza a **Létrehozás** lehetőséget.
 
    ![Előfizetés létrehozása](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
@@ -175,7 +175,7 @@ Beállította az eseményközpontot, az SQL-adattárházat, az Azure-függvénya
 ## <a name="verify-captured-data-in-data-warehouse"></a>A rögzített adatok ellenőrzése az adattárházban
 Néhány perc elteltével kérdezze le az SQL adattárház tábláját. Megfigyelheti, hogy a rendszer a WindTurbineDataGenerator által létrehozott adatokat az Event Hubra streamelte, rögzítette egy Azure Storage-tárolóban, majd migrálta az Azure-függvény SQL Data Warehouse táblájába.  
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ha gyakorlatban is használható elemzésekre vágyik, használjon hatékony adatvizualizációs eszközöket az adattárházával.
 
-Ez a cikk bemutatja a [Power BI és SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) használatát
+Ez a cikk bemutatja a [Power BI és SQL Data Warehouse](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) használatát

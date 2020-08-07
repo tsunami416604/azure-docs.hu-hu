@@ -3,12 +3,12 @@ title: Azure Functions IP-címei
 description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-címeket a Function apps számára, és hogy mi okoz változást.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656771"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874078"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
 
@@ -49,12 +49,13 @@ Az elérhető kimenő IP-címek keresésének másik módja a [Cloud Shell](../c
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> Ha a használati [csomagon](functions-scale.md#consumption-plan) futó Function alkalmazás skálázható, a kimenő IP-címek új tartománya is hozzárendelhető. A használati terv futtatásakor előfordulhat, hogy a teljes adatközpontot kell megadnia.
+> Ha a használati [csomagon](functions-scale.md#consumption-plan) futó Function alkalmazás skálázható, a kimenő IP-címek új tartománya is hozzárendelhető. A használati terv futtatásakor előfordulhat, hogy a teljes adatközpontot hozzá kell adnia egy engedélyezési listához.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Az adatközpont kimenő IP-címei
 
-Ha meg kell adnia a Function apps által használt kimenő IP-címeket, egy másik lehetőség a Function apps adatközpontjának (Azure Region) engedélyezési listájának engedélyezése. [Letöltheti az összes Azure-adatközpont IP-címeit felsoroló JSON-fájlt](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ezután keresse meg azt a JSON-kódrészletet, amely arra a régióra vonatkozik, amelyen a Function alkalmazás fut.
+Ha hozzá kell adnia a Function apps által használt kimenő IP-címeket egy engedélyezési listához, egy másik lehetőség, hogy hozzáadja az alkalmazások adatközpontját (Azure Region) az engedélyezési listához. [Letöltheti az összes Azure-adatközpont IP-címeit felsoroló JSON-fájlt](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ezután keresse meg azt a JSON-kódrészletet, amely arra a régióra vonatkozik, amelyen a Function alkalmazás fut.
 
 A Nyugat-európai JSON-töredék például a következőhöz hasonló lehet:
 
@@ -128,6 +129,6 @@ az webapp show --resource-group <group_name> --name <app_name> --query sku --out
 
 A App Service Environment `sku` `Isolated` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az IP-változások gyakori oka az alkalmazások méretezésének változásai. [További információ a Function app skálázásról](functions-scale.md).

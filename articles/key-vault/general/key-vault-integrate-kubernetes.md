@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921571"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901997"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 * Az oktatóanyag elindítása előtt telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
 
@@ -71,7 +71,7 @@ Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI ha
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId**, a **clientId**, a **subscriptionId**és a **nodeResourceGroup** a későbbi használatra.
+1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId**, a **clientId**, a **subscriptionId**és a **nodeResourceGroup** a későbbi használatra. Ha a KÉRDÉSes fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** null értékű lesz. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ Az alábbi képen az az kulcstartó **show--Name contosoKeyVault5** konzol kimen
 
 ### <a name="assign-a-service-principal"></a>Egyszerű szolgáltatás hozzárendelése
 
-Ha egyszerű szolgáltatást használ, adjon meg engedélyeket a kulcstartó eléréséhez és a titkok beolvasásához. Rendelje hozzá az *olvasó* szerepkört, és adja meg az egyszerű szolgáltatásnév számára a kulcsok *beszerzéséhez* szükséges engedélyeket a következő módon:
+Ha egyszerű szolgáltatást használ, adjon meg engedélyeket a kulcstartó eléréséhez és a titkok beolvasásához. Rendelje hozzá az *olvasó* szerepkört, és adja meg az egyszerű szolgáltatásnév számára a kulcsok a kulcstartóból való *beszerzéséhez* szükséges engedélyeket a következő paranccsal:
 
 1. Rendelje hozzá a szolgáltatásnevet a meglévő kulcstartóhoz. A **$AZURE _CLIENT_ID** paraméter az a **AppID** , amelyet az egyszerű szolgáltatásnév létrehozása után másolt.
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket a létrehozott AK-fürthöz. 
 
-1. Felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához vagy olvasásához az AK-fürtnek hozzá kell rendelnie a [felügyelt identitás közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkört. Győződjön meg arról, hogy a **$clientId** a Kubernetes-fürt clientId.
+1. Felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához vagy olvasásához az AK-fürtnek hozzá kell rendelnie a [felügyelt identitás-kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkört. Győződjön meg arról, hogy a **$clientId** a Kubernetes-fürt clientId. A hatókör esetében az Azure-előfizetési szolgáltatás alatt lesz, különösen az AK-fürt létrehozásakor létrejött csomópont-erőforráscsoport. Ez a hatókör gondoskodik arról, hogy csak az adott csoportba tartozó erőforrásokat érinti az alábbi szerepkörök. 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
@@ -339,7 +339,7 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]

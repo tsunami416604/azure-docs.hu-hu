@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7ae54d1d1c649da510c9653acbd7f118069d366c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987815"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833912"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával
 
@@ -289,7 +289,7 @@ Nyissa meg a fájlt egy PHP-kompatibilis böngészőben. Az alábbihoz hasonló 
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a képen látható emberi arcok észleléséhez használt Face APIekkel, körzet határának kijelölésében az arcokat a téglalapokkal, és olyan attribútumokat ad vissza, mint például az Age és a gender.
 

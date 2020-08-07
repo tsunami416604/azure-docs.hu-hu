@@ -145,7 +145,11 @@
         - name: Felhasználók létrehozása
           href: howto-create-users.md
         - name: Kapcsolati sztringek
-          href: howto-connection-string.md
+          items:
+            - name: Alkalmazások csatlakoztatása
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: Az SSL konfigurálása
           href: howto-configure-ssl.md
         - name: TLS konfigurálása

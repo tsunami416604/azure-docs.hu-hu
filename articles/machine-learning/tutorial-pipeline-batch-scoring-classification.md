@@ -10,13 +10,13 @@ author: lobrien
 ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 0585f19f92936daa3a2dc316168fe9f61c2d2c42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq4, devx-track-python
+ms.openlocfilehash: 4cd0ab588e921eb41c5ccc9800e8fe807d3e8108
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047670"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852378"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
 
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Folyamat létrehozása, futtatása és közzététele
 > * REST-végpont engedélyezése a folyamat számára
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -445,7 +445,7 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a Machine learning-folyamatok oktatóanyagában a következő feladatokat végezte el:
 

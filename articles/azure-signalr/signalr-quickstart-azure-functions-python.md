@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
-ms.custom: tracking-python
-ms.openlocfilehash: d77faf8cf4f859c0ef933d28119bd024ace86ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 1a044569c39ae2667c83ac881f1908b1d7b27cab
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832491"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848366"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Gyors útmutató: csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Python használatával
 
@@ -96,7 +96,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 

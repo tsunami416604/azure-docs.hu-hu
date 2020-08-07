@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 86c2bc86a4eeea8b04c4f22c20edade2eac2a811
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439024"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829985"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java-IoT Edge modul létrehozása Linux-eszközökhöz
 
@@ -62,7 +62,7 @@ IoT Edge modul javában történő fejlesztéséhez telepítse a következő tov
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
-   >A Java és a Maven környezeti változói a telepítési folyamat során lesznek hozzáadva. Újra kell indítania a Visual Studio Code Terminal, a PowerShell vagy a parancssori példányokat, amelyeket a környezeti változók hozzáadásakor nyitott meg. Ezzel biztosíthatja, hogy ezek a segédprogramok a Java és a Maven parancsait is felismerjék.
+   >A Java és a Maven telepítési folyamata környezeti változókat ad hozzá a rendszerhez. A telepítés befejezése után indítsa újra a Visual Studio Code Terminal, a PowerShell vagy a parancssori példányok bármelyikét. Ez a lépés biztosítja, hogy ezek a segédprogramok fel tudják ismerni a Java-és Maven-parancsokat.
 
 ## <a name="create-a-module-project"></a>Modul-projekt létrehozása
 
@@ -296,7 +296,7 @@ A JavaModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos 
 
 6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 

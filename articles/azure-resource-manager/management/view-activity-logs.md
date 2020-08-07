@@ -3,12 +3,12 @@ title: Azure-Tevékenységnaplók megtekintése az erőforrások figyeléséhez
 description: A felhasználói műveletek és hibák áttekintéséhez használja a tevékenység naplóit. Azure Portal PowerShellt, az Azure CLI-t és a REST-t jeleníti meg.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75478135"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827061"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Tevékenységek naplóinak megtekintése az erőforrásokon végzett műveletek figyeléséhez
 
@@ -188,10 +188,10 @@ Az erőforrások változási előzményeit az erőforrás-gráf használatával 
 
 A tevékenységnaplóval végzett munka REST-műveletei az [Insights REST API](/rest/api/monitor/) részét képezik. A tevékenységnapló eseményeinek lekérésével kapcsolatban lásd: [A felügyeleti események listázása egy előfizetésben](/rest/api/monitor/activitylogs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-Tevékenységnaplók a Power BI használatával nagyobb információkhoz juthatnak az előfizetése műveleteivel kapcsolatban. További információ: Azure-beli [tevékenységek naplóinak megtekintése és elemzése Power bi](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* A biztonsági szabályzatok beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md).
+* A biztonsági szabályzatok beállításával kapcsolatos további tudnivalókért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)című témakört.
 * Az alkalmazásoknak az infrastruktúra-rétegből való módosításaival kapcsolatos további részletekért tekintse meg az alkalmazások telepítésének az [alkalmazás-módosítási elemzés használata a Azure monitorban](../../azure-monitor/app/change-analysis.md)című témakört.
 * Az üzembe helyezési műveletek megtekintésére szolgáló parancsokról az [üzembe helyezési műveletek megtekintése](../templates/deployment-history.md)című témakörben olvashat bővebben.
 * Ha meg szeretné tudni, hogyan akadályozza meg az erőforrások törlését az összes felhasználó számára, tekintse meg [az erőforrások zárolása Azure Resource Manager](lock-resources.md)használatával című témakört.

@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: bd7619f000d16a55e1cfb31cc3b9cfb3b6d33502
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432617"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827673"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségben lévő elhelyezési csoportokban futó Azure-beli virtuális gépek replikálása egy másik régióba
 
@@ -42,7 +42,7 @@ Egy tipikus forgatókönyv esetében előfordulhat, hogy a virtuális gépek egy
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Virtual Machines Site Recovery beállítása a közelségi elhelyezési csoportban
 
 > [!NOTE]
-> Győződjön meg arról, hogy a cél közelségi csoportok egyedi azonosítója kéznél van. Ha új Proximity-elhelyezési csoportot hoz létre, akkor [itt](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) tekintse meg [a parancsot,](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)és ha meglévő közelségi elhelyezési csoportot használ, használja a parancsot.
+> Győződjön meg arról, hogy a cél közelségi csoportok egyedi azonosítója kéznél van. Ha új Proximity-elhelyezési csoportot hoz létre, akkor [itt](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) tekintse meg [a parancsot,](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)és ha meglévő közelségi elhelyezési csoportot használ, használja a parancsot.
 
 ### <a name="azure-to-azure"></a>Azure – Azure
 

@@ -1,6 +1,6 @@
 ---
-title: Telepítse át a Windows Server 2008-kiszolgálókat az Azure-ba Azure Site Recovery
-description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni Windows Server 2008-gépek az Azure-ba az Azure Site Recovery használatával.
+title: Telepítse át a Windows Server 2008-kiszolgálókat az Azure-ba Azure Migrate/Site Recovery
+description: Ez a cikk bemutatja, hogyan telepítheti át a helyszíni Windows Server 2008 rendszerű gépeket az Azure-ba, és javasolja a Azure Migrate használatát.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503820"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845561"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
@@ -31,9 +31,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="migrate-with-azure-migrate"></a>Migrálás Azure Migrate
 
-Javasoljuk, hogy telepítse át a gépeket az Azure-ba a [Azure Migrate](../migrate/migrate-services-overview.md) szolgáltatás használatával. A Azure Migrate központosított hubot biztosít a helyszíni gépek Azure-ba történő értékeléséhez és áttelepítéséhez Azure Migrate, más Azure-szolgáltatások és harmadik féltől származó eszközök használatával. Azure Site Recovery csak vész-helyreállításra kell használni, és nem kell áttelepítenie.
+Javasoljuk, hogy telepítse át a gépeket az Azure-ba a [Azure Migrate](../migrate/migrate-services-overview.md) szolgáltatás használatával. 
 
-Azure Migrate támogatja a Windows Server 2008 rendszert futtató kiszolgálók áttelepítését.
+- A Azure Migrate a kiszolgáló áttelepítéséhez készült.
+- Azure Migrate központosított hubot biztosít a helyszíni gépek Azure-ba való felderítéséhez, értékeléséhez és áttelepítéséhez. Azure Site Recovery csak vész-helyreállításra kell használni, és nem kell áttelepítenie.
+- Azure Migrate támogatja a Windows Server 2008 rendszert futtató kiszolgálók áttelepítését.
 
 
 ## <a name="migrate-with-site-recovery"></a>Migrálás Site Recovery
@@ -174,6 +176,6 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 > [!WARNING]
 > **Ne szakítsa meg a folyamatban lévő feladatátvételt**: a kiszolgáló replikációja leáll a feladatátvétel elindítása előtt. Ha megszakít egy folyamatban lévő feladatátvételt, a feladatátvétel leáll, de a kiszolgáló nem fog tovább replikálni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Tekintse át](../migrate/resources-faq.md) a Azure Migrateával kapcsolatos gyakori kérdéseket.

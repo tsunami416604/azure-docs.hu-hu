@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5016191bb4f647c0bbfa71144bb4b4b554b080f4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734331"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834337"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Az alkalmazás használatával betaníthatja Custom Vision projektjét.
 > * Az alkalmazás segítségével valós időben lehet új képeket kipróbálni, és elküldeni az eredményeket az Azure-ba.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -134,7 +134,7 @@ Törölje a Custom Vision projektet, ha már nem szeretné karbantartani. A [Cus
 
 ![Képernyőfelvétel az új projekttel ellátott panelről a Kuka ikon használatával](./media/csharp-tutorial/delete_project.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan alkalmazást állít be és futtatott, amely észleli a vizualizációs állapotinformációkat egy IoT-eszközön, és elküldi az eredményeket a IoT Hubnak. Ezután vizsgálja meg a forráskódot, vagy hajtsa végre az alábbi, javasolt módosításokat.
 
