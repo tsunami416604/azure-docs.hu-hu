@@ -3,13 +3,13 @@ title: Azure Service Fabric Container-alkalmazás létrehozása
 description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban. Hozzon létre egy Docker-rendszerképet egy Python-alkalmazással, küldje le a lemezképet egy tároló-beállításjegyzékbe, majd hozza létre és telepítse a tárolót az Azure Service Fabricba.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.custom: tracking-python
-ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247404"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844439"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -323,7 +323,7 @@ Mentse az összes módosítást, és hozza létre az alkalmazást. Az alkalmazá
 
 A **Kapcsolati végpont** területen adja meg a fürt kezelési végpontját, Például: `containercluster.westus2.cloudapp.azure.com:19000`. Az ügyfél csatlakozási végpontját a fürt Áttekintés lapján találja az [Azure Portalon](https://portal.azure.com).
 
-Kattintson a **Publish** (Közzététel) gombra.
+Kattintson a **Közzététel** gombra.
 
 A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) egy webalapú eszköz az alkalmazások és csomópontok vizsgálatához és kezeléséhez a Service Fabric-fürtökben. Nyisson meg egy böngészőt, lépjen a `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` helyre, és kövesse az alkalmazás üzembe helyezését. Az alkalmazás üzembe lesz helyezve, azonban hibaállapotban van, amíg a rendszerkép le nem töltődik a fürtcsomópontokra (ez a rendszerkép méretétől függően némi időt vehet igénybe): ![Hiba][1]
 

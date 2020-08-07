@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072822"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901980"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -48,7 +48,7 @@ A gépen belül a vendég konfigurációs ügyfél helyi eszközöket használ a
 
 Az alábbi táblázat felsorolja az egyes támogatott operációs rendszereken használt helyi eszközöket. Beépített tartalom esetén a vendég konfigurációja automatikusan betölti ezeket az eszközöket.
 
-|Operációs rendszer|Érvényesítési eszköz|Jegyzetek|
+|Operációs rendszer|Érvényesítési eszköz|Megjegyzések|
 |-|-|-|
 |Windows|[PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| A rendszer csak az Azure Policy által használt mappába betöltve. Nem ütközik a Windows PowerShell DSC-vel. A PowerShell Core nincs hozzáadva a rendszer elérési útjához.|
 |Linux|[Chef Inspect](https://www.chef.io/inspec/)| Telepíti a Chef Inspect verzió 2.2.61 az alapértelmezett helyen, és hozzáadja a rendszer elérési útjához. Az inspec-csomag függőségei, például a Ruby és a Python is telepítve vannak. |
@@ -62,7 +62,7 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure piactéren elérhető operációs rendszerek régebbi verziói kizárva lesznek, ha a vendég konfigurációs ügynök nem kompatibilis.
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Name|Verziók|
+|Publisher|Név|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|
@@ -74,7 +74,26 @@ Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek
 
 Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirendek támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
 
-## <a name="guest-configuration-extension-network-requirements"></a>A vendég konfigurációs bővítmény hálózati követelményei
+## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
+Az Azure-beli virtuális gépek a helyi hálózati adaptert vagy egy privát hivatkozást is használhatnak a vendég konfigurációs szolgáltatással való kommunikációhoz.
+
+Az Azure arc-gépek a helyszíni hálózati infrastruktúrával csatlakozva érhetik el az Azure-szolgáltatásokat, és bejelenthetik a megfelelőségi állapotot.
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>Kommunikáció az Azure-beli virtuális hálózatokkal
+
+A virtuális hálózatokat használó virtuális gépek számára a porton elérhető Azure-adatközpontokhoz kimenő hozzáférésre lesz szükség `443` . Ha az Azure-ban olyan magánhálózati virtuális hálózatot használ, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a hálózati biztonsági csoport szabályaival. A "GuestAndHybridManagement" szolgáltatási címke használható a vendég konfigurációs szolgáltatásra való hivatkozáshoz.
+
+### <a name="communicate-over-private-link-in-azure"></a>Kommunikáció privát kapcsolaton keresztül az Azure-ban
+
+A virtuális gépek [privát hivatkozást](../../../private-link/private-link-overview.md) is használhatnak a vendég konfigurációs szolgáltatással való kommunikációhoz. Alkalmazza a címkét a név `EnablePrivateNeworkGC` és az érték `TRUE` használatával a funkció engedélyezéséhez. A címkét a rendszer a számítógépre vonatkozó vendég-konfigurációs házirendek előtt vagy után is alkalmazhatja.
+
+A forgalmat az Azure [virtuális nyilvános IP-címével](../../../virtual-network/what-is-ip-address-168-63-129-16.md) irányítjuk, hogy biztonságos, hitelesített csatornát hozzon létre az Azure platform erőforrásaival.
+
+### <a name="azure-arc-connected-machines"></a>Azure arc-csatlakoztatott gépek
+
+Az Azure arc-on kívül található csomópontok a vendég konfigurációs szolgáltatáshoz való kapcsolódást igénylik.
+Az [Azure arc dokumentációjában](../../../azure-arc/servers/overview.md)megadott hálózati és proxy-követelmények részletei.
 
 Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha egy Azure-beli hálózat nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoportokra](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) vonatkozó szabályokkal. A "GuestAndHybridManagement" [szolgáltatási címke](../../../virtual-network/service-tags-overview.md) használható a vendég konfigurációs szolgáltatásra való hivatkozáshoz.
 
@@ -178,7 +197,7 @@ A vendég konfiguráció beépített házirendjének mintái a következő helys
 - [Beépített kezdeményezések – vendég konfigurációja](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan tekintheti meg az egyes beállításokat a [vendég konfiguráció megfelelősége nézetből](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

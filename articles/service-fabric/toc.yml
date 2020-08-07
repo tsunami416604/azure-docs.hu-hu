@@ -635,7 +635,7 @@
             - name: A folyamatos integráció beállítása az Azure Pipelinesszal
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Linuxos alkalmazások üzembe helyezése a Jenkins használatával
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: Fordított proxy telepítése és konfigurálása
       items:
         - name: Fordított proxy telepítése és konfigurálása

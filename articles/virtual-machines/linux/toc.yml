@@ -45,9 +45,9 @@
     - name: 13 – Virtuális gépek biztonságának kezelése
       href: tutorial-azure-security.md
     - name: 14a – Buildelés a Jenkins használatával
-      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
+      href: /azure/developer/jenkins/pipeline-with-github-and-docker
     - name: 14b – A Jenkins integrálása az Azure DevOpsszal
-      href: ../../jenkins/tutorial-build-deploy-jenkins.md
+      href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
     - name: 15a – Működés közbeni üzembehelyezési stratégia konfigurálása
       href: tutorial-devops-azure-pipelines-classic.md
     - name: 15b – Kanári üzembehelyezési stratégia konfigurálása
@@ -190,7 +190,7 @@
     - name: Virtuálisgép-típusok és -méretek
       items:
         - name: A virtuális gépek mérete
-          href: sizes.md
+          href: ../sizes.md
         - name: 2. generációs virtuális gépek
           href: generation-2.md
         - name: Általános célú
@@ -806,13 +806,13 @@
                 - name: Monitorozás engedélyezésének áttekintése
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Engedélyezés egyetlen Azure-beli virtuális gépen
-                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: Engedélyezés az Azure Policyval
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: Engedélyezés az Azure PowerShell-lel
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: Engedélyezés hibrid környezetben
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Függőségek feltérképezése
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Teljesítmény figyelése
@@ -850,11 +850,11 @@
         - name: Ansible
           items:
             - name: Telepítés és konfigurálás
-              href: ansible-install-configure.md
+              href: /azure/developer/ansible/install-on-linux-vm
             - name: Linux rendszerű virtuális gép létrehozása
-              href: ansible-create-vm.md
+              href: /azure/developer/ansible/vm-configure
             - name: Linux rendszerű virtuális gép kezelése
-              href: ansible-manage-linux-vm.md
+              href: /azure/developer/ansible/vm-manage
         - name: Terraform
           items:
             - name: Telepítés és konfigurálás

@@ -8,18 +8,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4443c92fad2510b6bc4bc1214840aca5553556a5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553461"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831022"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Forgatókönyv: a virtuális hálózatok egyéni elkülönítése
 
 A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. A virtuális hálózatok egyéni elkülönítési forgatókönyvében a cél annak megakadályozása, hogy a virtuális hálózatok adott készlete képes legyen a virtuális hálózatok más konkrét készletének elérésére. A virtuális hálózatok azonban az összes ág (VPN/ER/User VPN) eléréséhez szükséges. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
-## <a name="scenario-design"></a><a name="design"></a>Forgatókönyv kialakítása
+## <a name="design"></a><a name="design"></a>Tervezés
 
 Ha szeretné kideríteni, hogy hány útválasztási táblázatra van szükség, létrehozhat egy kapcsolati mátrixot. Ennél a forgatókönyvnél a következőhöz hasonlóan fog kinézni, ahol minden cella azt jelöli, hogy egy forrás (sor) tud-e kommunikálni egy célhoz (oszlophoz):
 
@@ -53,7 +53,7 @@ Az ágaknak mind a vörös, mind a kék virtuális hálózatok meg kell ismerni�
 
 További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
-## <a name="scenario-workflow"></a><a name="architecture"></a>Forgatókönyv-munkafolyamat
+## <a name="workflow"></a><a name="architecture"></a>Munkafolyamat
 
 Az **1. ábrán**kék és piros VNet kapcsolatok találhatók.
 

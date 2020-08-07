@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801427"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874061"
 ---
-# <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés az Azure Monitor-naplólekérdezésekkel
 
 > [!NOTE]
-> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://portal.loganalytics.io/demo), amely rengeteg mintavételi adatmennyiséget tartalmaz.  Ha már tudja, hogyan lehet lekérdezni a KQL-ben, de csak az erőforrás típusa (i) alapján kell gyorsan létrehoznia hasznos lekérdezéseket, tekintse meg a [mentett példákat tartalmazó ablaktáblát](saved-queries.md).
+> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), amely rengeteg mintavételi adatmennyiséget tartalmaz.  Ha már tudja, hogyan lehet lekérdezni a KQL-ben, de csak az erőforrás típusa (i) alapján kell gyorsan létrehoznia hasznos lekérdezéseket, tekintse meg a [mentett példákat tartalmazó ablaktáblát](saved-queries.md).
 
 Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monitor. A következőket fogja megtanítani:
 
@@ -111,8 +111,8 @@ A szűrési feltételek írásakor a következő kifejezéseket használhatja:
 |:---|:---|:---|
 | == | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `Level == 8` |
 | =~ | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =,  <> | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
-| *és*, *vagy* | Feltételek között szükséges| `Level == 16 or CommandLine != ""` |
+| !=, <> | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
+| *and*, *or* | Feltételek között használandó| `Level == 16 or CommandLine != ""` |
 
 Ha több feltételt szeretne szűrni, **használhatja a következőt:**
 
@@ -242,7 +242,7 @@ A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szere
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a sztringek használatával végzett naplózási lekérdezésekben a karakterláncok használata [Azure monitor a naplók lekérdezésében](string-operations.md).
 - További információ az adatösszesítések naplózási lekérdezésekben való összesítéséről [Azure monitor log-lekérdezések speciális összesítései között](advanced-aggregations.md).

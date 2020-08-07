@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797890"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904513"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -56,12 +56,12 @@ Tekintse át a következő erőforrásokat, amikor előkészíti az Azure-alkalm
 
 Az Azure Marketplace-hez készült videó- [létrehozási megoldási sablonok és a felügyelt alkalmazások](https://channel9.msdn.com/Events/Build/2018/BRK3603) átfogó bevezetést biztosítanak az Azure-alkalmazás ajánlatának típusára:
 
-* Milyen ajánlati típusok érhetők el;
-* Milyen technikai eszközök szükségesek;
-* Azure Resource Manager sablon létrehozása;
-* Az alkalmazás felhasználói felületének fejlesztése és tesztelése;
-* Az alkalmazás ajánlatának közzététele;
-* Az alkalmazás felülvizsgálati folyamata.
+* Milyen ajánlati típusok érhetők el
+* Milyen technikai eszközökre van szükség
+* Azure Resource Manager sablon létrehozása
+* Az alkalmazás felhasználói felületének fejlesztése és tesztelése
+* Az alkalmazás ajánlatának közzététele
+* Az alkalmazás-felülvizsgálati folyamat
 
 ### <a name="suggested-tools"></a>Javasolt eszközök
 
@@ -247,15 +247,14 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti.
-
-A lista különböző helyein való használathoz mindhárom embléma mérete szükséges:
+Adja meg az ajánlat emblémájának PNG-fájlját a következő három pixeles méretben:
 
 - **Kicsi** (48 x 48)
 - **Közepes** (90 x 90)
-- **Nagy** (216 x 216 és 350 x 350 között)
+- **Nagyméretű** (216 x 216)
+- **Széles** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Mindhárom emblémát meg kell adni, és a lista különböző helyein használják.
 
 #### <a name="screenshots"></a>Képernyőképek
 
@@ -283,7 +282,7 @@ Az előnézeti közönséget az Azure-előfizetés AZONOSÍTÓjának GUID azonos
 Adjon hozzá legalább egy Azure-előfizetési azonosítót egyenként (legfeljebb 10) vagy egy CSV-fájl feltöltésével (legfeljebb 100). Az előfizetés-azonosítók hozzáadásával meghatározhatja, hogy ki láthatja el az ajánlatot az élő közzététel előtt. Ha az ajánlata már élő, akkor is megadhatja az előnézeti célközönséget az ajánlat változásainak vagy frissítéseinek teszteléséhez.
 
 > [!NOTE]
-> Az előzetes verzió célközönsége különbözik a privát közönségtől. Az előnézeti közönség elérheti az ajánlatát, _mielőtt_ élőben közzétette a piactéren. Megtekinthetik és ellenőrizhetik az összes csomagot, beleértve azokat is, amelyek csak a privát közönség számára lesznek elérhetők, miután az ajánlata teljes mértékben közzé lett téve a piactéren. A saját célközönség (a csomag **díjszabása és rendelkezésre állása** lapon van meghatározva) kizárólagos hozzáféréssel rendelkezik egy adott csomaghoz.
+> Az előzetes verzió célközönsége különbözik a privát közönségtől. Az előnézeti közönség elérheti az ajánlatát, *mielőtt* élőben közzétette a piactéren. Megtekinthetik és ellenőrizhetik az összes csomagot, beleértve azokat is, amelyek csak a privát közönség számára lesznek elérhetők, miután az ajánlata teljes mértékben közzé lett téve a piactéren. A saját célközönség (a csomag **díjszabása és rendelkezésre állása** lapon van meghatározva) kizárólagos hozzáféréssel rendelkezik egy adott csomaghoz.
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -324,7 +323,7 @@ A **terv áttekintésében** elérhető **műveletek** a csomag aktuális állap
 
 ***Csomag azonosítója*** – hozzon létre egy egyedi díjcsomag-azonosítót az ajánlat egyes terveihez. Ez az azonosító a termék URL-címében szereplő ügyfelek számára jelenik meg.  Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon. Ehhez a csomag-AZONOSÍTÓhoz legfeljebb 50 karakter adható meg. Ez az azonosító nem módosítható a létrehozás kiválasztása után.
 
-***Csomag neve*** – az ügyfelek ezt a nevet fogják látni, amikor dönti el, hogy melyik tervet kívánja kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például az ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
+***Csomag neve*** – az ügyfelek ezt a nevet fogják látni, amikor azt döntik el, hogy melyik csomagot kell kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például az ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -335,7 +334,7 @@ Válassza ki az ajánlathoz tartozó csomag típusát. A **megoldás sablonjait*
 
 #### <a name="re-use-technical-configuration"></a>Technikai konfiguráció újbóli használata
 
-Ha több azonos típusú csomaggal rendelkezik, és a csomagok azonosak egymás között, akkor kiválaszthatja, hogy a **terv újrahasznosítsa a csomagokat egy másik**csomagból.  Ha ezt a beállítást választja, az ajánlathoz tartozó más csomagok közül választhatja ki a csomagokat. 
+Ha több azonos típusú csomaggal rendelkezik, és a csomagok azonosak egymás között, akkor kiválaszthatja, hogy a **terv újrahasznosítsa a csomagokat egy másik**csomagból.  Ha ezt a beállítást választja, az ajánlathoz tartozó más csomagok közül választhatja ki a csomagokat.
 
 >[!Note]
 >Ha egy másik csomagból újrahasznál csomagokat, a teljes technikai konfiguráció lap eltűnik ebből a csomagból. A csomagra vonatkozó technikai konfiguráció részleteit, beleértve a jövőbeli frissítéseket is, a tervhez is használni fogjuk.<br><br>Ez a beállítás a terv közzététele után nem módosítható.
@@ -416,9 +415,9 @@ Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és e
 
 Adja meg a csomag havi árát.  Ez az ár a megoldás által központilag üzembe helyezett erőforrások esetében felmerülő bármely Azure-infrastruktúra vagy utólagos elszámolású szoftver költségein felül van.
 
-A havi díj mellett a nem standard egységek fogyasztásának díjszabását is megadhatja [mért számlázás](./azure-app-metered-billing.md)használatával.  Ha kívánja, a havonta megadott árat nulla értékre állíthatja, és kizárólag a mért számlázást kell fizetnie. 
+A havi díj mellett a nem standard egységek fogyasztásának díjszabását is megadhatja [mért számlázás](./azure-app-metered-billing.md)használatával.  Ha kívánja, a havonta megadott árat nulla értékre állíthatja, és kizárólag a mért számlázást kell fizetnie.
 
-Az USD-ben beállított árak (USD = Egyesült Államok dollár) az összes kiválasztott piac helyi pénznemére lesznek átalakítva, az aktuális árfolyamok alapján, a mentéskor. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. 
+Az USD-ben beállított árak (USD = Egyesült Államok dollár) az összes kiválasztott piac helyi pénznemére lesznek átalakítva, az aktuális árfolyamok alapján, a mentéskor. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot.
 
 >[!Note]
 >Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását.
@@ -442,8 +441,7 @@ Ha a csomag magánjellegű, adjon meg egy **Azure-előfizetési azonosítót** �
 >[!Note]
 >A privát ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített Azure-előfizetések esetében.
 
-
-### <a name="technical-configuration"></a>Technikai konfiguráció 
+### <a name="technical-configuration"></a>Technikai konfiguráció
 
 Ezen a lapon töltheti fel a központi telepítési csomagot, amely lehetővé teszi az ügyfelek számára a terv üzembe helyezését.
 
@@ -501,15 +499,15 @@ Adjon meg egy HTTPS-webhook-végpontot, hogy értesítést kapjon a csomag felü
 
 #### <a name="customize-allowed-customer-actions"></a>Engedélyezett felhasználói műveletek testreszabása
 
-Ezzel a beállítással adhatja meg, hogy az ügyfelek milyen műveleteket hajthatnak végre a felügyelt erőforrásokon a " `*/read` " alapértelmezés szerint elérhető műveletek mellett. 
+Ezzel a beállítással adhatja meg, hogy az ügyfelek milyen műveleteket hajthatnak végre a felügyelt erőforrásokon a " `*/read` " alapértelmezés szerint elérhető műveletek mellett.
 
-Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](../../role-based-access-control/deny-assignments.md).  Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket.
+Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](../../role-based-access-control/deny-assignments.md). Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket.
 
 #### <a name="global-azure--azure-government-cloud"></a>Globális Azure/Azure Government felhő
 
-Adja meg, hogy ki kell-e kezelni a felügyelt alkalmazáshoz tartozó felügyeleti hozzáférést minden támogatott felhőben. Azokat a felhasználókat, csoportokat vagy alkalmazásokat, amelyeket a felügyelt erőforráscsoport számára engedélyezni kíván, Azure Active Directory (HRE) identitások használatával azonosíthatók.
+Adja meg, hogy ki kell-e kezelni a felügyelt alkalmazáshoz tartozó felügyeleti hozzáférést minden támogatott felhőben. Azokat a felhasználókat, csoportokat vagy alkalmazásokat, amelyeket a felügyelt erőforráscsoport számára engedélyezni kíván, Azure Active Directory (AD) identitások használatával azonosíthatók.
 
-**Azure Active Directory bérlő azonosítója** – a HRE bérlői azonosító (más néven CÍMTÁR-azonosító), amely tartalmazza azon felhasználók, csoportok vagy alkalmazások identitását, amelyekhez engedélyeket szeretne adni. Az HRE-bérlő AZONOSÍTÓját a Azure Portal [Azure Active Directory tulajdonságainál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)találja.
+**Azure Active Directory bérlő azonosítója** – az Azure ad-bérlő azonosítója (más néven CÍMTÁR-azonosító), amely tartalmazza azon felhasználók, csoportok vagy alkalmazások identitását, amelyekhez engedélyeket kíván adni. Az Azure AD-bérlő AZONOSÍTÓját a [Azure Active Directory tulajdonságainál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)találja a Azure Portal.
 
 **Engedélyek** – adja meg annak a felhasználónak, csoportnak vagy alkalmazásnak az Azure Active Directory-objektumazonosítóát, amelyhez engedélyeket szeretne adni a felügyelt erőforráscsoport számára. Azonosítsa a felhasználót a résztvevő azonosítója alapján, amely a [Azure Portal Azure Active Directory felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)paneljén található.
 
@@ -580,8 +578,8 @@ Ha befejezte az ajánlat összes szükséges szakaszt, válassza a **felülvizsg
 
 Tekintse át az ajánlat egyes szakaszainak befejezési állapotát.
     - *Nincs elindítva* – azt jelenti, hogy a szakasz nem lett megérintve, és el kell végezni.
-    - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
-    - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
+    - *Hiányos* – ez azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információra van szüksége. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
+    - *Complete (kész* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 
 Ha első alkalommal teszi közzé ezt az ajánlatot, megadhatja a minősítési csapat tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazások megértéséhez szükséges kiegészítő megjegyzések mellett.
 
@@ -595,6 +593,6 @@ A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat �
 
 Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa ki azokat az ajánlat ismételt közzététele előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

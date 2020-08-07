@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534583"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849981"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -106,6 +106,7 @@ Rendelje hozzá a felügyelt identitást a Storage- **blob adattulajdonosi** sze
 | `<RESOURCEGROUPNAME>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |
 | `<MANAGEDIDENTITYNAME>` | Annak a felügyelt identitásnak a neve, amely engedélyt kap a Azure Data Lake Storage Gen2-fiókra. |
 | `<STORAGEACCOUNTNAME>` | A létrehozandó új Azure Data Lake Storage Gen2 fiók. |
+| `<FILESYSTEMNAME>`  | Annak a fájlrendszernek a neve, amelyet a fürtnek használnia kell a Storage-fiókban. |
 | `<CLUSTERNAME>` | A HDInsight-fürt neve. |
 | `<PASSWORD>` | Az SSH-val és a Ambari-irányítópulttal a fürtbe való bejelentkezéshez választott jelszava. |
 
@@ -138,7 +139,8 @@ az storage account create --name <STORAGEACCOUNTNAME> \
 
 Ezután jelentkezzen be a portálra. Adja hozzá az új felhasználó által hozzárendelt felügyelt identitást a Storage-beli **blob adatközreműködői** szerepkörhöz a Storage-fiókban. Ez a lépés a [Azure Portal használata](hdinsight-hadoop-use-data-lake-storage-gen2.md)című témakör 3. lépésében található.
 
-Miután hozzárendelte a szerepkört a felhasználóhoz rendelt felügyelt identitáshoz, a következő kódrészlet használatával telepítse a sablont.
+ > [!IMPORTANT]
+ > Győződjön meg arról, hogy a Storage-fiókja rendelkezik a felhasználó által hozzárendelt identitással a **Storage blob adatközreműködői** szerepkörének engedélyeivel, ellenkező esetben a fürt létrehozása sikertelen lesz.
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
@@ -254,7 +256,7 @@ LOCATION 'abfs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight-integráció Data Lake Storage Gen2 előzetes verzióval – ACL és biztonsági frissítés](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Bevezetés a Azure Data Lake Storage Gen2ba](../storage/blobs/data-lake-storage-introduction.md)

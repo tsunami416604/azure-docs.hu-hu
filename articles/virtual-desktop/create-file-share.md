@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027392"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842909"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -31,7 +31,7 @@ Először be kell állítania egy Azure Files Storage-fiókot.
 
 Storage-fiók beállítása:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg a **Storage-fiókot** a keresősáv alatt.
 
@@ -39,7 +39,7 @@ Storage-fiók beállítása:
 
 4. Adja meg a következő információkat a **Storage-fiók létrehozása** lapon:
 
-    - Hozzon létre egy új erőforráscsoportot.
+    - Új erőforráscsoport létrehozása.
     - Adja meg a tárfiók egyedi nevét.
     - A **helyhez**azt javasoljuk, hogy ugyanazt a helyet adja meg, mint a Windows rendszerű virtuális asztali alkalmazáskészlet.
     - A **Teljesítmény** mezőben válassza a **Standard** lehetőséget. (A IOPS követelményeitől függően. További információ: [Storage Options for FSLogix Profile containers in Windows Virtual Desktop](store-fslogix-profile.md).)
@@ -56,7 +56,7 @@ Ezután létre kell hoznia egy Azure-fájlmegosztást.
 
 Fájlmegosztás létrehozása:
 
-1. Válassza **az Ugrás erőforráshoz**lehetőséget.
+1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
 2. Az Áttekintés lapon válassza a **fájlmegosztás**lehetőséget.
 
@@ -133,7 +133,7 @@ A következőképpen kérheti le az UNC elérési utat:
     - Cserélje le a Forward perjelet a `/` vissza perjelre `\` .
     - Adja hozzá az [Azure-fájlmegosztás létrehozása](#create-an-azure-file-share) az UNC végéhez létrehozott fájlmegosztás nevét.
 
-        Például:`\\customdomain.file.core.windows.net\<fileshare-name>`
+        Például: `\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>A tárfiókkulcs lekérése
 
@@ -190,8 +190,6 @@ Az NTFS-engedélyek konfigurálása:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-5. Kattintson az **Alkalmaz** gombra.
-
 ## <a name="configure-fslogix-on-session-host-vms"></a>FSLogix konfigurálása a munkamenet-gazdagépen futó virtuális gépeken
 
 Ez a szakasz bemutatja, hogyan konfigurálhatók a virtuális gépek az FSLogixszal. Ezeket az utasításokat mindig követnie kell, amikor munkamenetgazdát konfigurál. A konfigurálás megkezdése előtt kövesse a [FSLogix letöltése és telepítése](/fslogix/install-ht)című témakör utasításait. Számos lehetőség áll rendelkezésre annak biztosítására, hogy beállításkulcsok beállítása mindegyik munkamenetgazdán megtörténjen. Ezeket a beállításokat megadhatja egy rendszerképben, vagy konfigurálhat csoportszabályzatot.
@@ -236,6 +234,6 @@ A munkamenet engedélyeinek ellenőrzését:
 
 További teszteléshez kövesse a következő témakör utasításait: Ellenőrizze, [hogy a profil működik](create-profile-container-adds.md#make-sure-your-profile-works)-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A FSLogix hibaelhárításához tekintse meg [ezt a hibaelhárítási útmutatót](/fslogix/fslogix-trouble-shooting-ht).
