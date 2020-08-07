@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373470"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986899"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -25,7 +25,7 @@ ms.locfileid: "87373470"
 
 A Text Analytics for Health egy olyan tárolós szolgáltatás, amely a strukturálatlan szövegektől, például az orvos megjegyzései, a mentesítési összefoglalók, a klinikai dokumentumok és az elektronikus egészségügyi jelentések alapján kinyeri és felcímkézi a kapcsolódó egészségügyi adatokat.  
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az állapot-tároló Text Analyticsa jelenleg elnevezett entitások felismerése, kapcsolat kibontása, entitások kivonása és az angol nyelvű szöveghez kapcsolódó entitások összekapcsolása a saját fejlesztési környezetében, amely megfelel az adott biztonsági és adatirányítási követelményeknek.
 
@@ -90,7 +90,7 @@ Az Azure [Web App for containers](https://azure.microsoft.com/services/app-servi
 > [!NOTE]
 > Az Azure Web App használatával automatikusan egy tartományt fog kapni`<appservice_name>.azurewebsites.net`
 
-Futtassa ezt a PowerShell-szkriptet az Azure CLI használatával egy Web App for Containers létrehozásához, az előfizetése és a tároló-rendszerkép használatával a HTTPS protokollon keresztül. Várjon, amíg a parancsfájl befejeződik (körülbelül 20 perc) az első kérelem elküldése előtt.
+Futtassa ezt a PowerShell-szkriptet az Azure CLI használatával egy Web App for Containers létrehozásához, az előfizetése és a tároló-rendszerkép használatával a HTTPS protokollon keresztül. Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -120,7 +120,8 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Az üzembe helyezést az Azure Container instance (ACI) használatával is egyszerűbbé teheti. Az ACI egy olyan erőforrás, amely lehetővé teszi a Docker-tárolók igény szerinti futtatását egy felügyelt, kiszolgáló nélküli Azure-környezetben. 
 
-Lásd: a [Azure Container instances használata](text-analytics-how-to-use-container-instances.md) az ACI-erőforrások Azure Portal használatával történő üzembe helyezésének lépéseihez. Az Azure CLI-vel az alábbi PowerShell-szkriptet is használhatja, amely egy ACI-t hoz létre az előfizetésében a tároló képe alapján.  Várjon, amíg a parancsfájl befejeződik (körülbelül 20 perc) az első kérelem elküldése előtt.
+Lásd: a [Azure Container instances használata](text-analytics-how-to-use-container-instances.md) az ACI-erőforrások Azure Portal használatával történő üzembe helyezésének lépéseihez. Az Azure CLI-vel az alábbi PowerShell-szkriptet is használhatja, amely egy ACI-t hoz létre az előfizetésében a tároló képe alapján.  Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.  Az ACI-erőforrások maximális számának korlátozása miatt ne jelölje be ezt a beállítást, ha várhatóan több mint 5 nagy dokumentumot (körülbelül 5000 karaktert) kíván elküldeni.
+A rendelkezésre állással kapcsolatos információkért tekintse meg az [ACI regionális támogatási](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) cikkét. 
 
 > [!NOTE] 
 > Azure Container Instances nem tartalmaz HTTPS-támogatást a beépített tartományokhoz. Ha HTTPS-re van szüksége, manuálisan kell konfigurálnia, beleértve a tanúsítvány létrehozását és a tartomány regisztrálását. Ezt az alábbi, NGINX-mel kapcsolatos utasításokat követve teheti meg.
@@ -143,7 +144,7 @@ $DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-h
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 5 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```
@@ -404,7 +405,7 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
     ...
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Elnevezett entitások kategóriái](../named-entity-types.md)

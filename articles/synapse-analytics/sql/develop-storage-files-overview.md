@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483552"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986950"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Külső tárterület elérése a szinapszis SQL-ben (igény szerint)
 
@@ -25,11 +25,7 @@ Ez a dokumentum azt ismerteti, hogyan olvasható be a felhasználó az Azure Sto
 
 A felhasználó [különböző hitelesítési módszereket](develop-storage-files-storage-access-control.md) használhat, például az Azure ad áteresztő hitelesítést (az alapértelmezett Azure ad-rendszerbiztonsági tag esetében) és az SAS-hitelesítést (az SQL-rendszerbiztonsági tag esetében alapértelmezés szerint).
 
-## <a name="openrowset"></a>OPENROWSET
-
-A [OpenRowset](develop-openrowset.md) függvény lehetővé teszi a felhasználó számára, hogy beolvassa a fájlokat az Azure Storage-ból.
-
-### <a name="query-files-using-openrowset"></a>Fájlok lekérdezése a OPENROWSET használatával
+## <a name="query-files-using-openrowset"></a>Fájlok lekérdezése a OPENROWSET használatával
 
 A OPENROWSET lehetővé teszi a felhasználók számára az Azure Storage-beli külső fájlok lekérdezését, ha azok hozzáférnek a tárolóhoz. A szinapszis SQL igény szerinti végponthoz csatlakozó felhasználónak a következő lekérdezéssel kell elolvasnia az Azure Storage-ban tárolt fájlok tartalmát:
 
@@ -40,8 +36,10 @@ SELECT * FROM
 
 A felhasználók a következő hozzáférési szabályok használatával férhetnek hozzá a tárolóhoz:
 
-- Az Azure AD User-OPENROWSET a hívó Azure AD-identitását fogja használni az Azure Storage vagy a hozzáférés-tárolók névtelen hozzáféréssel való eléréséhez.
-- SQL-felhasználó – a OPENROWSET névtelen hozzáféréssel fogja elérni a tárolót.
+- Azure AD-felhasználó – a `OPENROWSET` hívó Azure ad-identitásával fér hozzá az Azure Storage szolgáltatáshoz, vagy hozzáférhet a tárhelyhez a névtelen hozzáféréssel.
+- SQL-felhasználó – `OPENROWSET` a tárolót a névtelen hozzáféréssel érheti el, vagy megszemélyesítheti az SAS-jogkivonat vagy a munkaterület felügyelt identitása használatával.
+
+### <a name="impersonation"></a>[Megszemélyesítési](#tab/impersonation)
 
 Az SQL-rendszerbiztonsági tag a OPENROWSET használatával közvetlenül is lekérdezheti az SAS-tokenekkel vagy a munkaterület felügyelt identitásával védett fájlokat. Ha egy SQL-felhasználó végrehajtja ezt a függvényt, az engedéllyel rendelkező Kiemelt felhasználónak `ALTER ANY CREDENTIAL` létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely megfelel a függvényben lévő URL-címnek (a tároló nevét és tárolóját használva), és hivatkozásokat kapott a hitelesítő adatokhoz a OpenRowset függvény hívója számára:
 
@@ -56,10 +54,17 @@ GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<co
 
 Ha nincs olyan kiszolgálói szintű HITELESÍTő adat, amely megfelel az URL-címnek vagy az SQL-felhasználónak nincs hivatkozása erre a hitelesítő adatra, a rendszer a hibaüzenetet adja vissza. Az SQL-rendszerbiztonsági tag nem tud megszemélyesíteni néhány Azure AD-identitást.
 
+### <a name="direct-access"></a>[Közvetlen hozzáférés](#tab/direct-access)
+
+Nincs szükség további beállításra ahhoz, hogy az Azure AD-felhasználók identitásuk alapján hozzáférjenek a fájlokhoz.
+Bármely felhasználó hozzáférhet az Azure Storage szolgáltatáshoz, amely engedélyezi a névtelen hozzáférést (további beállításra nincs szükség).
+
+---
+
 > [!NOTE]
 > A OPENROWSET ezen verziója az alapértelmezett hitelesítéssel történő gyors és egyszerű adatelemzéshez készült. A megszemélyesítés vagy a felügyelt identitás kihasználása érdekében használja a következő szakaszban ismertetett adatforrással rendelkező OPENROWSET.
 
-### <a name="query-data-sources-using-openrowset"></a>Adatforrások lekérdezése az OPENROWSET használatával
+## <a name="query-data-sources-using-openrowset"></a>Adatforrások lekérdezése az OPENROWSET használatával
 
 A OPENROWSET lehetővé teszi a felhasználó számára, hogy lekérdezze a külső adatforráson elhelyezett fájlokat:
 
@@ -70,9 +75,18 @@ SELECT * FROM
  FORMAT= 'parquet') as rows
 ```
 
-Az adatbázis-VEZÉRLÉSi engedéllyel rendelkező felhasználónak létre kell hoznia egy adatbázis-HATÓKÖRű HITELESÍTő adatot, amelyet a rendszer a tároló és a külső ADATFORRÁS eléréséhez fog használni, amely megadja az adatforrás és a hitelesítő adatok URL-címét:
+A lekérdezést végrehajtó felhasználónak képesnek kell lennie hozzáférni a fájlokhoz. A felhasználókat az [sas-jogkivonat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) vagy a [munkaterület felügyelt identitása](develop-storage-files-storage-access-control.md?tabs=managed-identity) használatával kell megszemélyesíteni, ha nem tudnak közvetlenül hozzáférni a fájlokhoz az [Azure ad-identitás](develop-storage-files-storage-access-control.md?tabs=user-identity) vagy a [Névtelen hozzáférés](develop-storage-files-storage-access-control.md?tabs=public-access)használatával.
+
+### <a name="impersonation"></a>[Megszemélyesítési](#tab/impersonation)
+
+`DATABASE SCOPED CREDENTIAL`Megadja, hogy miként lehet hozzáférni a hivatkozott adatforrásban található fájlokhoz (jelenleg SAS és felügyelt identitás). Az engedéllyel rendelkező energiaellátási felhasználónak `CONTROL DATABASE` létre kell hoznia `DATABASE SCOPED CREDENTIAL` ezt a tároló eléréséhez, `EXTERNAL DATA SOURCE` amely a használandó adatforrás és hitelesítő adatok URL-címét adja meg:
 
 ```sql
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
 CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
  SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
@@ -82,16 +96,14 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
  CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-Az ADATBÁZIShoz kötődő HITELESÍTő adatok a hivatkozott adatforráson (jelenleg SAS és felügyelt identitás) lévő fájlok elérését határozzák meg.
-
 A hívónak a következő engedélyek egyikével kell rendelkeznie a OPENROWSET függvény végrehajtásához:
 
 - A OPENROWSET végrehajtásának egyik engedélye:
   - `ADMINISTER BULK OPERATIONS`engedélyezi a bejelentkezést a OPENROWSET függvény végrehajtásához.
   - `ADMINISTER DATABASE BULK OPERATIONS`lehetővé teszi, hogy az adatbázis hatókörű felhasználója OPENROWSET-függvényt hajtson végre.
-- HIVATKOZik az adatbázis HATÓKÖRön belüli HITELESÍTő ADATAIra a külső adatforrásban hivatkozott hitelesítő adathoz.
+- `REFERENCES DATABASE SCOPED CREDENTIAL`a-ben hivatkozott hitelesítő adathoz `EXTERNAL DATA SOURCE` .
 
-#### <a name="access-anonymous-data-sources"></a>Névtelen adatforrások elérése
+### <a name="direct-access"></a>[Közvetlen hozzáférés](#tab/direct-access)
 
 A felhasználó létrehozhat külső adatforrást olyan HITELESÍTő adatok nélkül, amely a nyilvános elérésű tárolóra hivatkozik, vagy az Azure AD átadó hitelesítést használja:
 
@@ -99,7 +111,7 @@ A felhasználó létrehozhat külső adatforrást olyan HITELESÍTő adatok nél
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
  WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
 ```
-
+---
 ## <a name="external-table"></a>KÜLSŐ TÁBLA
 
 A táblázat olvasására jogosult felhasználók külső fájlokat is elérhet az Azure Storage-mappák és-fájlok készletén létrehozott külső tábla használatával.
@@ -117,9 +129,18 @@ FILE_FORMAT = TextFileFormat
 ) ;
 ```
 
-A CONTROL DATABASE engedéllyel rendelkező felhasználónak létre kell hoznia egy adatbázis-HATÓKÖRű HITELESÍTő adatot, amelyet a rendszer a tároló és a külső ADATFORRÁS eléréséhez fog használni, amely megadja az adatforrás és a hitelesítő adatok URL-címét:
+A táblából adatokat olvasó felhasználónak el kell tudnia érni a fájlokat. A felhasználókat az [sas-jogkivonat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) vagy a [munkaterület felügyelt identitása](develop-storage-files-storage-access-control.md?tabs=managed-identity) használatával kell megszemélyesíteni, ha nem tudnak közvetlenül hozzáférni a fájlokhoz az [Azure ad-identitás](develop-storage-files-storage-access-control.md?tabs=user-identity) vagy a [Névtelen hozzáférés](develop-storage-files-storage-access-control.md?tabs=public-access)használatával.
+
+### <a name="impersonation"></a>[Megszemélyesítési](#tab/impersonation)
+
+Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok a hivatkozott adatforráson lévő fájlok elérését határozzák meg. A CONTROL DATABASE engedéllyel rendelkező felhasználónak létre kell hoznia egy adatbázis-HATÓKÖRű HITELESÍTő adatot, amelyet a rendszer a tároló és a külső ADATFORRÁS eléréséhez fog használni, amely megadja az adatforrás és a hitelesítő adatok URL-címét:
 
 ```sql
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
 CREATE DATABASE SCOPED CREDENTIAL cred
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
  SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
@@ -130,7 +151,15 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
  ) ;
 ```
 
-Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok a hivatkozott adatforráson lévő fájlok elérését határozzák meg.
+### <a name="direct-access"></a>[Közvetlen hozzáférés](#tab/direct-access)
+
+A felhasználó létrehozhat külső adatforrást olyan HITELESÍTő adatok nélkül, amely a nyilvános elérésű tárolóra hivatkozik, vagy az Azure AD átadó hitelesítést használja:
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+```
+---
 
 ### <a name="read-external-files-with-external-table"></a>Külső fájlok beolvasása külső TÁBLÁZATtal
 
@@ -167,14 +196,14 @@ Most már készen áll a folytatásra a következő cikkekkel:
 
 - [CSV-fájl lekérdezése](query-single-csv-file.md)
 
-- [Mappák és több fájl lekérdezése](query-folders-multiple-csv-files.md)
-
-- [Adott fájlok lekérdezése](query-specific-files.md)
-
 - [Parquet-fájlok lekérdezése](query-parquet-files.md)
 
-- [Beágyazott típusok lekérdezése](query-parquet-nested-types.md)
-
 - [JSON-fájlok lekérdezése](query-json-files.md)
+
+- [Mappák és több fájl lekérdezése](query-folders-multiple-csv-files.md)
+
+- [Particionálási és metaadat-függvények használata](query-specific-files.md)
+
+- [Beágyazott típusok lekérdezése](query-parquet-nested-types.md)
 
 - [Nézetek létrehozása és használata](create-use-views.md)

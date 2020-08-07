@@ -5,26 +5,25 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050298"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985682"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Eltávolított App Service-alkalmazás visszaállítása a PowerShell használatával
 
 Ha véletlenül törölte az alkalmazást Azure App Serviceban, visszaállíthatja az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)parancsainak használatával.
 
 > [!NOTE]
-> A törölt alkalmazások a kezdeti törlés után 30 nappal törlődnek a rendszerből. Az alkalmazás kiürítése után nem állítható helyre.
->
-
-> [!NOTE]
-> A redelete funkció nem támogatott a használati tervben.
+> - A törölt alkalmazások a kezdeti törlés után 30 nappal törlődnek a rendszerből. Az alkalmazások törlése után nem állítható helyre.
+> - A redelete funkció nem támogatott a használati tervben.
+> - A App Service Environmenton futó app Service-alkalmazások nem támogatják a pillanatképeket. Ezért a törlési funkció és a klónozási funkció nem támogatott a App Service Environment futó App Service alkalmazások esetében.
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service erőforrás-szolgáltató újbóli regisztrálása
+
 Egyes ügyfelek olyan problémákkal találkozhatnak, ahol a törölt alkalmazások listájának beolvasása meghiúsul. A probléma megoldásához futtassa a következő parancsot:
 
 ```powershell
@@ -52,6 +51,7 @@ A részletes információk a következők:
 - **Törlés időpontja**: Mikor lett törölve az alkalmazás  
 
 ## <a name="restore-deleted-app"></a>Törölt alkalmazás visszaállítása
+
 >[!NOTE]
 > `Restore-AzDeletedWebApp`function apps esetében nem támogatott.
 
@@ -73,7 +73,7 @@ A következő parancs bemenetei:
 Alapértelmezés szerint az `Restore-AzDeletedWebApp` alkalmazás konfigurációját és tartalmát is visszaállítja. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
 
 > [!NOTE]
-> Ha az alkalmazás futott, majd törölve lett egy App Service Environment, akkor csak akkor állítható vissza, ha a megfelelő App Service Environment továbbra is létezik.
+> Ha az alkalmazás futott, majd törölve lett egy App Service Environment, akkor csak akkor állítható vissza, ha a megfelelő App Service Environment még létezik.
 >
 
 A teljes parancsmagot-hivatkozást itt találja: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

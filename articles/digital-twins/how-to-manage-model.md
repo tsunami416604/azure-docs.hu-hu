@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281361"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987324"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -67,9 +67,7 @@ Ezt a módszert követve megadhatja a kórházi részleg, a zónák vagy a kórh
 
 ### <a name="validate-syntax"></a>Szintaxis ellenőrzése
 
-Létezik egy ügyféloldali kódtár, amely a DTDL elemzéséhez és érvényesítéséhez használható. Létrehoz egy C#-objektummodell a DTDL-tartalomból, amely modellen alapuló fejlesztési forgatókönyvekben használható, például felhasználói felületi elemek létrehozásához. Ezt a kódtárat is használhatja annak biztosítására, hogy a modellek ne legyenek szintaktikai hibák a feltöltésük előtt. 
-
-További információ erről a könyvtárról és a DTDL-érvényesítő számára készült mintához való hozzáférésről [*: útmutató: a modellek elemzése és érvényesítése*](how-to-use-parser.md).
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="manage-models-with-apis"></a>Modellek kezelése API-kkal.
 
@@ -86,7 +84,7 @@ A következő részben bemutatjuk, hogyan végezheti el a különböző modell-k
 A modellek létrehozása után feltöltheti őket az Azure Digital Twins-példányba.
 
 > [!TIP]
-> Javasoljuk, hogy az Azure Digital Twins-példányba való feltöltés előtt ellenőrizze a modelleket offline állapotba. Használhatja a [DTDL ügyféloldali elemző függvénytárát](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) és a [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) a következő témakörben ismertetett módon [*: útmutató: elemzési és érvényesítési modellek*](how-to-use-parser.md) a modellek ellenőrzése előtt a szolgáltatásba való feltöltés előtt.
+> Javasoljuk, hogy az Azure Digital Twins-példányba való feltöltés előtt ellenőrizze a modelleket offline állapotba. Használhatja a [DTDL ügyféloldali elemző függvénytárát](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) és a [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) a következő témakörben ismertetett módon [*: útmutató: elemzési és érvényesítési modellek*](how-to-parse-models.md) a modellek ellenőrzése előtt a szolgáltatásba való feltöltés előtt.
 
 Ha készen áll a modell feltöltésére, használja a következő kódrészletet:
 

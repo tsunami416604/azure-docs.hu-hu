@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850252"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987256"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -149,7 +149,7 @@ Azure Functions használatakor a példányoknak a meglévő [irányelveket](../a
 
 **Tartalom válaszának letiltása írási műveleteken**
 
-A Kiemelt adatmennyiségeket használó munkaterhelések esetén a EnableContentResponseOnWrite kérelem beállítása false (hamis) lehet. A szolgáltatás többé nem fogja visszaadni a létrehozott vagy frissített erőforrást az SDK-nak. Általában az alkalmazás hozza létre az objektumot, így nincs szükség a szolgáltatás visszaküldésére. A fejléc értékei továbbra is elérhetők, mint a kérelmek díja. Ez javíthatja a teljesítményt, mert az SDK-nak többé nem kell memóriát lefoglalnia vagy szerializálnia a válasz törzsét. Ez csökkenti a hálózati sávszélesség-használatot is, hogy további segítséget nyújtson a teljesítményhez.  
+A nagy mennyiségű létrehozási adattartalommal rendelkező munkaterhelések esetén a EnableContentResponseOnWrite-kérés beállítása false (hamis) lehet. A szolgáltatás többé nem fogja visszaadni a létrehozott vagy frissített erőforrást az SDK-nak. Általában az alkalmazás hozza létre az objektumot, így nincs szükség a szolgáltatás visszaküldésére. A fejléc értékei továbbra is elérhetők, mint a kérelmek díja. Ez javíthatja a teljesítményt, mert az SDK-nak többé nem kell memóriát lefoglalnia vagy szerializálnia a válasz törzsét. Ez csökkenti a hálózati sávszélesség-használatot is, hogy további segítséget nyújtson a teljesítményhez.  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
@@ -214,7 +214,7 @@ Container container = await this.cosmosDatabase.CreateContainerAsync(containerPr
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**

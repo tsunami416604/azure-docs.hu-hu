@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 064a62b030a1fd9f3c875fce646ad8553b75d513
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799361"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986627"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -25,11 +25,7 @@ Ez a dokumentum egy olyan új megközelítést mutat be, amely lehetővé teszi 
 
 Az Azure-ból származó Kubernetes-erőforrások RBAC kezelése lehetővé teszi, hogy az Azure-ban vagy a natív Kubernetes-mechanizmusok használatával kezelhesse a RBAC. Ha ez a beállítás engedélyezve van, az Azure AD-rendszerbiztonsági tag kizárólag az Azure RBAC lesz érvényesítve, míg a normál Kubernetes-felhasználók és-szolgáltatásfiókok a Kubernetes-RBAC által kizárólag érvényesítve vannak. A hitelesítéssel, az engedélyezéssel és a RBAC kapcsolatos további információkért lásd [itt](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
 
-> [!IMPORTANT]
-> Az AK előzetes verziójának funkciói az önkiszolgáló, a választható lehetőségek alapján érhetők el. Az előzetes verziók az "adott állapotban" és "elérhetőként" jelennek meg, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A (z) és az ügyfél-támogatási szolgálatok a lehető leghatékonyabban fedezik az előzetes verziókat. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért lásd a következő támogatási cikkeket:
->
-> - [AK-támogatási szabályzatok](support-policies.md)
-> - [Azure-támogatás – gyakori kérdések](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Előfeltételek 
 - Regisztráljon az előzetes verzióra <https://aka.ms/aad-rbac-sign-up-form> .

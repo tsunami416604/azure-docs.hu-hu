@@ -2,24 +2,22 @@
 title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248981"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986508"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
 Minden alkalommal, amikor telepít egy sablont, a központi telepítésre vonatkozó információkat az üzembe helyezési előzményekbe írja a rendszer. Az egyes erőforráscsoportok az üzembe helyezési előzményekben legfeljebb 800 üzemelő példányra korlátozódnak.
 
-A Azure Resource Manager hamarosan automatikusan elindítja az előzményekből való üzembe helyezések törlését a korlát közelében. Az automatikus törlés a korábbi viselkedés változása. Korábban a telepítési előzményekből manuálisan kellett törölni a központi telepítéseket, hogy elkerülje a hiba beolvasását. **Ez a funkció még nem lett hozzáadva az Azure-hoz. Értesítjük Önt erről a közelgő változásról arra az esetre, ha ki szeretne jelentkezni.**
+Azure Resource Manager automatikusan törli az előzményekből a korlát közelében lévő központi telepítéseket. Az automatikus törlés a korábbi viselkedés változása. Korábban a telepítési előzményekből manuálisan kellett törölni a központi telepítéseket, hogy elkerülje a hiba beolvasását. **Ez a változás a 2020-es augusztus 6-án lett implementálva.**
 
 > [!NOTE]
 > Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
->
-> Ha egy [CanNotDelete zárolva](../management/lock-resources.md) van, az adott erőforráscsoport központi telepítése nem törölhető. A zárolást el kell távolítania, hogy kihasználhassa az automatikus törlés előnyeit az üzembe helyezési előzményekben.
 
 ## <a name="when-deployments-are-deleted"></a>Központi telepítések törlésekor
 
@@ -35,6 +33,24 @@ A rendszer az előzményekből törli az üzembe helyezéseket, amikor eléri a 
 Az üzemelő példányokon kívül a törléseket is aktiválhatja a [művelet](template-deploy-what-if.md) végrehajtásakor vagy a központi telepítés ellenőrzésekor.
 
 Ha a központi telepítéshez ugyanazt a nevet adja, mint az előzményekben, akkor alaphelyzetbe állítja a helyet az előzményekben. Az üzembe helyezés az előzmények legutóbbi helyére kerül. Alaphelyzetbe állít egy központi telepítést is, ha egy hiba után visszaállítja az [adott központi telepítésre](rollback-on-error.md) .
+
+## <a name="remove-locks-that-block-deletions"></a>Törléseket blokkoló zárolások eltávolítása
+
+Ha egy [CanNotDelete zárolva](../management/lock-resources.md) van, az adott erőforráscsoport központi telepítése nem törölhető. A zárolást el kell távolítania, hogy kihasználhassa az automatikus törlés előnyeit az üzembe helyezési előzményekben.
+
+Ha egy zárolás törléséhez a PowerShellt szeretné használni, futtassa a következő parancsokat:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName lockedRG).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Ha a zárolás törléséhez az Azure CLI-t szeretné használni, futtassa a következő parancsokat:
+
+```azurecli-interactive
+lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
+az lock delete --ids $lockid
+```
 
 ## <a name="opt-out-of-automatic-deletions"></a>Automatikus törlés engedélyezése
 
@@ -100,6 +116,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az üzembe helyezési előzmények megtekintésével kapcsolatos további tudnivalókért lásd: az [üzembe helyezési előzmények megtekintése Azure Resource Manager](deployment-history.md)használatával.

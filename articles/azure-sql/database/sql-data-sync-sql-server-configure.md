@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bd1362db2e70d4f9f46d80b00805856e08aedac4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963954"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987341"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és SQL Server adatbázisai között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,11 +55,11 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásának módjáról: 
 
    Az **adatszinkronizálási csoport létrehozása** lapon módosítsa a következő beállításokat:
 
-   | Beállítás                        | Description |
+   | Beállítás                        | Leírás |
    | ------------------------------ | ------------------------------------------------- |
    | **Szinkronizálási csoport neve** | Adja meg az új szinkronizálási csoport nevét. Ez a név nem azonos az adatbázis nevével. |
    | **Metaadat-adatbázis szinkronizálása** | Válassza az adatbázis létrehozása (javasolt) lehetőséget, vagy egy meglévő adatbázis használatát.<br/><br/>Ha az **új adatbázis**lehetőséget választja, válassza az **új adatbázis létrehozása lehetőséget.** Ezután a **SQL Database** lapon nevezze el és konfigurálja az új adatbázist, és kattintson **az OK gombra**.<br/><br/>Ha a **meglévő adatbázis használata**lehetőséget választja, válassza ki az adatbázist a listából. |
-   | **Automatikus szinkronizálás** | Válassza **a** be vagy **ki**lehetőséget.<br/><br/>Ha **a be**lehetőséget választja, adjon meg egy számot, és válassza a **másodperc**, **perc**, **óra**vagy **nap** lehetőséget a **szinkronizálás gyakorisága** szakaszban. |
+   | **Automatikus szinkronizálás** | Válassza **a** be vagy **ki**lehetőséget.<br/><br/>Ha **a be**lehetőséget választja, adjon meg egy számot, és válassza a **másodperc**, **perc**, **óra**vagy **nap** lehetőséget a **szinkronizálás gyakorisága** szakaszban.<br/> Az első szinkronizálás akkor kezdődik el, amikor a kiválasztott intervallum eltelik a konfiguráció mentésekor.|
    | **Ütközés feloldása** | Válassza a **hub Win** vagy a **tag Win**lehetőséget.<br/><br/>A **hub-Win** azt jelenti, hogy ütközések esetén a központi adatbázisban lévő adatai felülírják a tag adatbázisában található ütköző adatforrásokat.<br/><br/>A **tag Win** azt jelenti, hogy ütközések esetén a tag adatbázisában lévő adatai felülírják az ütköző adatforrásokat a központi adatbázisban. |
 
    > [!NOTE]
@@ -83,7 +83,7 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy adatbázist a Azu
 
   A **Azure SQL Database konfigurálása** lapon módosítsa a következő beállításokat:
 
-  | Beállítás                       | Description |
+  | Beállítás                       | Leírás |
   | ----------------------------- | ------------------------------------------------- |
   | **Szinkronizálási tag neve** | Adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. |
   | **Előfizetés** | Válassza ki a társított Azure-előfizetést számlázási célokra. |

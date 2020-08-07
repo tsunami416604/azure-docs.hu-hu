@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142367"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986814"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok
 <a name="data-limits"></a>
@@ -36,12 +36,9 @@ Ebből a cikkből megtudhatja, hogy mekkora a mérete, és milyen arányban kül
 
 Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt API-verziótól és szolgáltatástól függ.
 
-#### <a name="version-3"></a>[3-as verzió](#tab/version-3)
+#### <a name="version-3"></a>[3\. verzió](#tab/version-3)
 
-> [!NOTE]
-> Ha a V3 API-kérelem meghaladja ezeket a korlátokat, de a v2 határértékeken belül van, akkor a rendszer figyelmeztetést ad vissza az API-válaszban. 7/15/2020-től kezdődően a rendszer 400 hibakódot ad vissza. 
-
-A következő korlátok módosultak az API v3-as verziójában. Az alábbi határértékek meghaladása esetén a rendszer figyelmeztetést hoz majd az API-válaszban.
+A következő korlátok módosultak az API v3-as verziójában. Az alábbi korlátok túllépése a HTTP 400 hibakódot eredményezi.
 
 
 | Funkció | Dokumentumok maximális száma kérelem szerint | 
@@ -64,7 +61,7 @@ A következő korlátok módosultak az API v3-as verziójában. Az alábbi hatá
 
 ---
 
-## <a name="rate-limits"></a>Díjszabási korlátok
+## <a name="rate-limits"></a>Sebességkorlátok
 
 A díjszabási korlátja az Ön [díjszabási szintjétől](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)függ. Ezek a korlátok ugyanazok, mint az API mindkét verziójában.
 
@@ -80,7 +77,7 @@ A díjszabási korlátja az Ön [díjszabási szintjétől](https://azure.micros
 A kérelmeket külön kell mérni az egyes Text Analytics szolgáltatásokhoz. Elküldheti például az árképzési szintjére vonatkozó kérések maximális számát az egyes szolgáltatásokhoz, egyszerre.  
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Text Analytics API](../overview.md)
 * [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)

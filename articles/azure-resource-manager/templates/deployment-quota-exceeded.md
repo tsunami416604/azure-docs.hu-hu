@@ -2,20 +2,27 @@
 title: Az üzembe helyezési kvóta túllépve
 description: Ismerteti, hogyan oldható fel a több mint 800 üzemelő példány hibája az erőforráscsoport előzményeiben.
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391179"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987052"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Hiba elhárítása, ha a központi telepítés száma meghaladja a 800
 
 Az egyes erőforráscsoportok az üzembe helyezési előzményekben legfeljebb 800 üzemelő példányra korlátozódnak. Ez a cikk azt a hibát ismerteti, amikor egy központi telepítés meghiúsul, mert túllépi az engedélyezett 800 üzemelő példányokat. A hiba megoldásához törölje az üzemelő példányokat az erőforráscsoport előzményeiből. Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
 
-> [!NOTE]
-> A Azure Resource Manager hamarosan automatikusan elindítja az előzményekből való üzembe helyezések törlését a korlát közelében. Ez a hiba akkor is megjelenhet, ha az automatikus törlést választotta. További információ: [automatikus törlések az üzembe helyezési előzményekből](deployment-history-deletions.md).
+Azure Resource Manager automatikusan törli az előzményekből a korlát közelében lévő központi telepítéseket. Ezt a hibát a következő okok egyike miatt is megtekintheti:
+
+1. Van egy CanNotDelete zárolása az erőforráscsoporthoz, amely megakadályozza a törlést az üzembe helyezési előzményekből.
+1. Az automatikus törlést választotta.
+1. Nagy számú üzemelő példány fut egyszerre, és az automatikus törlések nem elég gyorsan feldolgozni a teljes szám csökkentése érdekében.
+
+További információ a zárolás eltávolításáról vagy az automatikus törlésekről: [automatikus törlés az üzembe helyezési előzményekből](deployment-history-deletions.md).
+
+Ez a cikk azt ismerteti, hogyan lehet manuálisan törölni a központi telepítéseket az előzményekből.
 
 ## <a name="symptom"></a>Hibajelenség
 

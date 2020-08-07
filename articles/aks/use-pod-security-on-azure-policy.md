@@ -5,22 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 5677cb3d240381e06c76ed73354981f782bdb0dd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830223"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987358"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Biztonságos hüvely a Azure Policy (előzetes verzió)
 
 Az AK-fürt biztonságának növelése érdekében megadhatja, hogy a rendszer milyen függvényeket biztosítson, és ha a vállalat szabályzata minden esetben működik. Ez a hozzáférés az AK-hoz készült [Azure Policy-bővítmény][kubernetes-policy-reference]által biztosított beépített házirendekkel van meghatározva. Azáltal, hogy további szabályozást biztosít a pod specifikációjának (például a legfelső szintű jogosultságok) biztonsági szempontjai felett, lehetővé teszi a szigorúbb biztonsági betartást és láthatóságot a fürtben üzembe helyezett környezetekben. Ha egy pod nem felel meg a szabályzatban meghatározott feltételeknek, Azure Policy letilthatja a hüvelyt a szabálysértés elindításához vagy megjelöléséhez. Ez a cikk bemutatja, hogyan használhatók a Azure Policy a hüvelyek az AK-ban való üzembe helyezésének korlátozására.
 
-> [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért tekintse meg a következő támogatási cikkeket:
->
-> * [AK-támogatási szabályzatok][aks-support-policies]
-> * [Azure-támogatás – gyakori kérdések][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -283,7 +279,7 @@ Az alábbiakban összefoglaljuk a pod biztonsági házirend és a Azure Policy v
 |Telepítés|A pod biztonsági házirend funkció engedélyezése |Azure Policy bővítmény engedélyezése
 |Szabályzatok telepítése| Pod biztonsági házirend-erőforrás üzembe helyezése| Rendeljen Azure-szabályzatokat az előfizetés vagy az erőforráscsoport hatóköréhez. A Kubernetes erőforrás-alkalmazásaihoz a Azure Policy bővítmény szükséges.
 | Alapértelmezett házirendek | Ha a pod biztonsági házirend engedélyezve van az AK-ban, a rendszer az alapértelmezett privilegizált és korlátlan szabályzatokat alkalmazza. | A Azure Policy bővítmény engedélyezésével nincsenek alkalmazva alapértelmezett házirendek. Explicit módon engedélyeznie kell a házirendeket Azure Policy.
-| Kik hozhatnak létre és rendelhetnek szabályzatokat | A fürt rendszergazdája létrehoz egy Pod biztonsági házirend-erőforrást | A felhasználóknak a "tulajdonos" vagy az "erőforrás-házirend közreműködői" engedélyekkel kell rendelkezniük az AK fürterőforrás-csoportban. – Az API-n keresztül a felhasználók szabályzatokat rendelhetnek az AK-fürt erőforrás-hatókörében. A felhasználónak legalább a "tulajdonos" vagy az "erőforrás-házirend közreműködői" engedélyekkel kell rendelkeznie az AK-fürt erőforrásán. -Az Azure Portalon a házirendek a felügyeleti csoport/előfizetés/erőforráscsoport szintjén rendelhetők hozzá.
+| Kik hozhatnak létre és rendelhetnek szabályzatokat | A fürt rendszergazdája létrehoz egy Pod biztonsági házirend-erőforrást | A felhasználóknak a "tulajdonos" vagy az "erőforrás-házirend közreműködői" engedélyekkel kell rendelkezniük az AK fürterőforrás-csoportban. – Az API-n keresztül a felhasználók szabályzatokat rendelhetnek az AK-fürt erőforrás-hatókörében. A felhasználónak legalább a "tulajdonos" vagy az "erőforrás-házirend közreműködői" engedélyekkel kell rendelkeznie az AK-fürt erőforrásán. – A Azure Portal a szabályzatokat a felügyeleti csoport/előfizetés/erőforráscsoport szintjén lehet hozzárendelni.
 | Szabályzatok engedélyezése| A felhasználók és a szolgáltatásfiókok kifejezetten engedélyeket igényelnek a pod biztonsági szabályzatok használatához. | A házirendek engedélyezéséhez nincs szükség további hozzárendelésre. Miután a házirendek hozzá vannak rendelve az Azure-ban, a fürt összes felhasználója használhatja ezeket a házirendeket.
 | Házirend alkalmazhatósága | A rendszergazda felhasználó megkerüli a pod biztonsági szabályzatok kényszerítését. | Minden felhasználó (rendszergazda & nem rendszergazda) ugyanazokat a szabályzatokat látja. A felhasználókon alapuló különleges ház nem található. A házirend-alkalmazás nem zárható ki a névtér szintjén.
 | Házirend hatóköre | A pod biztonsági szabályzatok nem névterek | Az Azure Policy által használt korlátozási sablonok nem névterek.

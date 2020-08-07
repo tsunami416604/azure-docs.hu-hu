@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534770"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987137"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
@@ -81,12 +81,13 @@ Az alábbi táblázatban az elérhető engedélyezési típusok találhatók:
 
 Az engedélyezési és az Azure Storage-típusok következő kombinációit használhatja:
 
-|                     | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
+| Engedélyezés típusa  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *SAS*               | Támogatott      | Nem támogatott   | Támogatott     |
-| *Felügyelt identitás* | Támogatott      | Támogatott        | Támogatott     |
-| *Felhasználói identitás*    | Támogatott      | Támogatott        | Támogatott     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Támogatott\*      | Nem támogatott   | Támogatott\*     |
+| [Felügyelt identitás](?tabs=managed-identity#supported-storage-authorization-types) | Támogatott      | Támogatott        | Támogatott     |
+| [Felhasználói identitás](?tabs=user-identity#supported-storage-authorization-types)    | Támogatott\*      | Támogatott\*        | Támogatott\*     |
 
+\*Az SAS-token és az Azure AD-identitás használható olyan tárolók eléréséhez, amelyek nem védettek a tűzfallal.
 
 > [!IMPORTANT]
 > A tűzfallal védett tárterület elérésekor csak a felügyelt identitás használható. Engedélyeznie kell a [megbízható Microsoft-szolgáltatásokat... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)az adott erőforrás [-példány rendszerhez rendelt felügyelt identitásának](../../active-directory/managed-identities-azure-resources/overview.md) beállítása és explicit módon történő [hozzárendelése](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt Azure-szerepkörnek.
@@ -177,27 +178,46 @@ Az adatbázis-hatókörrel rendelkező hitelesítő adatok lehetővé teszik az 
 
 Az Azure AD-felhasználók hozzáférhetnek az Azure Storage-ban található összes fájlhoz, ha legalább `Storage Blob Data Owner` , `Storage Blob Data Contributor` vagy `Storage Blob Data Reader` szerepkörrel rendelkeznek. Az Azure AD-felhasználók nem igényelnek hitelesítő adatokat a tárolóhoz való hozzáféréshez.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 Az SQL-felhasználók nem használhatják az Azure AD-hitelesítést a tárolóhoz való hozzáféréshez.
 
 ### <a name="shared-access-signature"></a>[Közös hozzáférésű jogosultságkód](#tab/shared-access-signature)
 
-A következő szkript létrehoz egy hitelesítő adatot, amely a hitelesítő adatokban megadott SAS-jogkivonat használatával fér hozzá a fájlokhoz a tárolóban.
+A következő szkript létrehoz egy hitelesítő adatot, amely a hitelesítő adatokban megadott SAS-jogkivonat használatával fér hozzá a fájlokhoz a tárolóban. A szkript létrehoz egy külső adatforrást, amely ezt az SAS-tokent használja a tároló eléréséhez.
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[Felügyelt identitás](#tab/managed-identity)
 
-Az alábbi szkript egy adatbázis-hatókörű hitelesítő adatot hoz létre, amellyel megszemélyesítheti a jelenlegi Azure AD-felhasználót a szolgáltatás felügyelt identitásával. 
+Az alábbi szkript egy adatbázis-hatókörű hitelesítő adatot hoz létre, amellyel megszemélyesítheti a jelenlegi Azure AD-felhasználót a szolgáltatás felügyelt identitásával. A szkript létrehoz egy külső adatforrást, amely munkaterület-identitást használ a tároló eléréséhez.
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 Az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatoknak nem kell megegyezniük a Storage-fiók nevével, mert explicit módon lesz használva a Storage helyét meghatározó adatforrásban.
@@ -206,6 +226,11 @@ Az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatoknak nem ke
 
 Az adatbázis-hatókörrel rendelkező hitelesítő adatok nem szükségesek a nyilvánosan elérhető fájlokhoz való hozzáférés engedélyezéséhez. [Adatbázis-hatókörű hitelesítő adatok nélküli adatforrás](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) létrehozása az Azure Storage-ban nyilvánosan elérhető fájlok eléréséhez.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 Az adatbázishoz kötődő hitelesítő adatok külső adatforrásokban vannak használatban annak megadásához, hogy milyen hitelesítési módszert fog használni a tároló eléréséhez:

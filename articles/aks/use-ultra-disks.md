@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti és konfigurálhatja az ultra-l
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926739"
+ms.locfileid: "87986831"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Az Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)
 
@@ -49,11 +49,7 @@ Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szo
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért tekintse meg a következő támogatási cikkeket:
->
-> - [AK-támogatási szabályzatok](support-policies.md)
-> - [Azure-támogatás – gyakori kérdések](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 
@@ -95,9 +91,8 @@ Ha olyan fürtöket szeretne létrehozni, amelyek nem támogatják az ultra Disk
 
 A meglévő fürtökön engedélyezheti az ultravékony lemezeket, ha új csomópont-készletet ad hozzá a fürthöz, amely támogatja az ultra-lemezeket. Konfigurálja az új csomópont-készletet a gazdagép-alapú titkosítás használatára a `--aks-custom-headers` jelző használatával.
 
-
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 Ha új csomópont-készleteket szeretne létrehozni az ultra-lemezek támogatása nélkül, ezt az egyéni paraméter kihagyása mellett teheti meg `--aks-custom-headers` .

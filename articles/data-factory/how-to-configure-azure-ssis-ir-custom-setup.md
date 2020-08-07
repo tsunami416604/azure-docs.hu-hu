@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8b29708dbcc6bbb0d127b4277fd4b2d962da6e6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184344"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986389"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -129,11 +129,11 @@ A Azure-SSIS IR expressz egyéni telepítésekkel való kiépítéséhez vagy ú
 
    * Ha bejelöli a **licencelt összetevő** típusának telepítése lehetőséget, az **összetevő neve** legördülő listában kiválaszthatja az ISV-partnereinkből származó integrált összetevőt:
 
-     * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez írja be a **licenc kulcs** mezőjében megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2019.4.3**.
+     * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez írja be a **licenc kulcs** mezőjében megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020.1.3**.
 
-     * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. ](https://hedda.io/ssis-component/)A szolgáltatás megvásárlása után IO-adatminőség/-tisztító összetevő a Azure-SSIS IR oh22. Az aktuálisan integrált verzió a **1.0.13**.
+     * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. ](https://hedda.io/ssis-component/)A szolgáltatás megvásárlása után IO-adatminőség/-tisztító összetevő a Azure-SSIS IR oh22. Az aktuálisan integrált verzió a **1.0.14**.
 
-     * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.43**.
+     * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.45**.
 
      * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing-felhő stb Azure-SSIS IR. számára, és a **licenc kulcs** mezőjébe írja be a számukra megvásárolt termékkulcsot. Az aktuálisan integrált verzió a **2019,2**.
 

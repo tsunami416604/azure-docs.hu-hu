@@ -3,16 +3,16 @@ title: Hibaelhárítás Azure Cosmos DB HTTP 408 vagy időtúllépési hibák a 
 description: .NET SDK-kérelmek időtúllépési kivételének diagnosztizálása és kijavítása
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417607"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987409"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Azure Cosmos DB .NET SDK-kérelem időtúllépésének diagnosztizálása és megoldása
 A HTTP 408-hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az időtúllépési korlát megkezdése előtt.
@@ -45,9 +45,12 @@ Az SDK-t használó ügyfélalkalmazás méretezését fel kell mérni.
 Az Azure-ban való futtatáskor a .NET SDK-t használó ügyfelek elérhetik az Azure SNAT (PAT) portjának kimerülését.
 
 #### <a name="solution-1"></a>1. megoldás:
-Kövesse a [SNAT-porthoz tartozó kimerültség útmutatóját](troubleshoot-dot-net-sdk.md#snat).
+Ha Azure-beli virtuális gépeken fut, kövesse a [SNAT-portok kimerülésének útmutatóját](troubleshoot-dot-net-sdk.md#snat).
 
 #### <a name="solution-2"></a>2. megoldás:
+Ha Azure App Serviceon fut, kövesse a [csatlakoztatási hibák hibaelhárítási útmutatóját](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) , és [használja a app Service diagnosztikát](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
+
+#### <a name="solution-3"></a>3. megoldás:
 Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK-ban konfigurált kapcsolatok számát `ConnectionPolicy` .
 Ellenkező esetben a csatlakoztatási problémákkal szembesül.
 
@@ -81,6 +84,6 @@ Az alkalmazásnak képesnek kell lennie az átmeneti hibák kezelésére, és sz
 ### <a name="8-failure-rate-is-violating-the-cosmos-db-sla"></a>8. a meghibásodási arány sérti a Cosmos DB SLA-t
 Vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md)
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md) teljesítményével kapcsolatos irányelvek ismertetése

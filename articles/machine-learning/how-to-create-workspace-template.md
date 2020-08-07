@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 06ab819065f96508bcc4ebd26371c743c89b9220
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87487802"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986562"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -750,6 +750,32 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
+
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>A virtuális hálózat nem kapcsolódik a magánhálózati DNS-zónához
+
+Ha privát végponttal hoz létre munkaterületet, a sablon létrehoz egy __privatelink.API.azureml.MS__nevű saját DNS zónát. A rendszer automatikusan hozzáadja a __virtuális hálózati kapcsolatot__ ehhez a magánhálózati DNS-zónához. A hivatkozás csak az első munkaterülethez és egy erőforráscsoporthoz létrehozott privát végponthoz lesz hozzáadva. Ha egy másik virtuális hálózatot és munkaterületet hoz létre egy privát végponttal ugyanabban az erőforráscsoportban, előfordulhat, hogy a második virtuális hálózat nem kerül be a magánhálózati DNS-zónába.
+
+A magánhálózati DNS-zónához már meglévő virtuális hálózati kapcsolatok megtekintéséhez használja az alábbi Azure CLI-parancsot:
+
+```azurecli
+az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
+```
+
+Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálózat hozzáadásához kövesse az alábbi lépéseket:
+
+1. A hozzáadni kívánt hálózat virtuális hálózati AZONOSÍTÓjának megkereséséhez használja a következő parancsot:
+
+    ```azurecli
+    az network vnet show --name myvnet --resource-group myresourcegroup --query id
+    ```
+    
+    Ez a parancs a "/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet" értékhez hasonló értéket ad vissza. Mentse ezt az értéket, és használja a következő lépésben.
+
+2. A privatelink.api.azureml.ms saját DNS zónához tartozó virtuális hálózati kapcsolat hozzáadásához használja az alábbi parancsot. A `--virtual-network` paraméterhez használja az előző parancs kimenetét:
+
+    ```azurecli
+    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>További lépések

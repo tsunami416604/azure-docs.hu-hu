@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 337ecc6069211942a809f2bf3d793c5bccc08387
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277230"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986368"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
@@ -126,7 +126,7 @@ Az összekötővel használható lekérdezésekkel kapcsolatos további informá
 
 Microsoft Graph támogatja az [*előfizetéseket*](/graph/api/resources/subscription)vagy [*webhookokat*](/graph/api/resources/webhooks). Az előfizetések lekéréséhez, frissítéséhez vagy törléséhez adja meg a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](/graph/query-parameters) a Microsoft Graph entitás-létrehozáshoz, és adja meg a `security/alerts` ODATA-lekérdezés által követett paramétereket. *Ne adja* meg az alap URL-címet, például: `https://graph.microsoft.com/v1.0` . Ehelyett használja az ebben a példában szereplő formátumot:
 
-`security/alerts?$filter=status eq 'New'`
+`security/alerts?$filter=status eq 'NewAlert'`
 
 | Művelet | Leírás |
 |--------|-------------|

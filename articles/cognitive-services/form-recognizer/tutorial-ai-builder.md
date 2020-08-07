@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 16869ab3a1961879cfcda1eaa383073cd2309a01
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6ea1504f5cb3ae405ccd22774204f898484e6876
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433662"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987120"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legalább öt, azonos típusú, a képzéshez/teszteléshez használt űrlapból álló készlet. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekkel kapcsolatban lásd: [képzési adatkészlet létrehozása](./build-training-data-set.md) . Ebben a rövid útmutatóban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2128080) **vonattal** mappában található fájlokat.
-* Power apps vagy Power automatizáló licenc – tekintse meg a [licencelési útmutatót](https://go.microsoft.com/fwlink/?linkid=2085130). A licencnek tartalmaznia kell a [Dataflex Pro](https://powerplatform.microsoft.com/en-us/common-data-service/)-t.
+* Power apps vagy Power automatizáló licenc – tekintse meg a [licencelési útmutatót](https://go.microsoft.com/fwlink/?linkid=2085130). A licencnek tartalmaznia kell a [Common adatszolgáltatást](https://powerplatform.microsoft.com/en-us/common-data-service/).
 * AI Builder [-bővítmény vagy próbaverzió](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409).
 
 
@@ -131,7 +131,7 @@ Ha elégedett a modellel, válassza a **Közzététel** lehetőséget a közzét
 
 Miután közzétette az űrlap-feldolgozási modellt, használhatja azt egy [Power apps vászon alkalmazásban](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) vagy a [Power gyorsbüféban](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az űrlap-feldolgozási modell használatához kövesse a mesterséges intelligencia-szerkesztő dokumentációját.
 

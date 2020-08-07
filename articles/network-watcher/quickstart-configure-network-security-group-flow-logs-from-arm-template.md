@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/22/2020
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: fd0f295fbc47a8e461885916dbe48f7604e182c3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7d8cb89b1187bb15e7b361e1b6b9505400c612b5
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854655"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986317"
 ---
 # <a name="quickstart-configure-nsg-flow-logs-from-arm-template"></a>Gyors útmutató: NSG-adatforgalmi naplók konfigurálása ARM-sablonból
 
@@ -69,6 +69,7 @@ Ha első alkalommal használja Azure Resource Manager-sablonokat, további infor
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
 * [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
 
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create) közül származik.
 
 Az alábbi példában a teljes sablon a NSG-naplók beállításához megadott minimális paraméterekkel rendelkező legegyszerűbb verzió. További példákért látogasson el erre a [hivatkozásra](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager).
 
@@ -137,7 +138,7 @@ Azt is megteheti, hogy az alábbi lépések alapján letilthatja a NSG-flow napl
 5. A **flow-naplók beállításai**alatt állítsa be a folyamatok naplójának állapota **kikapcsolva** értéket.
 6. Görgessen le, és válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban engedélyezte a NSG folyamat naplóit. Most meg kell tanulnia, hogyan jelenítheti meg a NSG folyamat adatait a következő használatával: 
 
