@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315445"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921091"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
 
@@ -40,7 +40,7 @@ A szolgáltatói rendszergazdák kétféleképpen férhetnek hozzá egy Log Anal
 
 Az elosztott architektúra előnyei a következők:
 
-* Az ügyfél megerősítheti bizonyos szintű engedélyeket az [Azure-beli delegált erőforrás-kezelési](../../lighthouse/concepts/azure-delegated-resource-management.md)szolgáltatáson keresztül, vagy a saját [szerepköralapú hozzáférésével](../../role-based-access-control/overview.md)kezelheti a naplóhoz való hozzáférést.
+* Az ügyfél megerősítheti bizonyos szintű engedélyeket az [Azure-beli delegált erőforrás-kezelésen](../../lighthouse/concepts/azure-delegated-resource-management.md)keresztül, vagy a saját [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)használatával kezelheti a naplóhoz való hozzáférést.
 * A naplók bármilyen típusú erőforrásból gyűjthetők, nem csak az ügynök-alapú virtuálisgép-adatok. Például az Azure naplók.
 * Minden ügyfél különböző beállításokkal rendelkezhet a munkaterülethez, például a megőrzéshez és az adatkorláthoz.
 * Az ügyfelek közötti elkülönítés szabályozási és kompatibilitás.
@@ -90,4 +90,3 @@ A naplók központi helyen történő megvalósításának két lehetősége van
 * Összegző jelentések előállítása [Power bi](./powerbi.md) használatával
 
 * Ügyfelek bevonása az Azure-beli [delegált erőforrás-felügyeletbe](../../lighthouse/concepts/azure-delegated-resource-management.md).
-

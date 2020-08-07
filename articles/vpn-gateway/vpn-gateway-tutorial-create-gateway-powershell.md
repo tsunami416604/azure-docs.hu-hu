@@ -1,18 +1,18 @@
 ---
 title: Oktatóanyag – átjáró létrehozása és kezelése az Azure VPN Gateway használatával
-description: Oktatóanyag – Windows rendszerű VPN-átjáró létrehozása és felügyelete az Azure PowerShell-modullal
+description: Ezzel az Oktatóanyaggal üzembe helyezhet egy Azure-beli VPN-átjárót az ügyfél és az Azure közötti kapcsolat biztosításához. VPN-átjáró megtekintése, átméretezése és alaphelyzetbe állítása.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f423ed5ea9017d510639bbe7046a12d320cd5c7d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79137177"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920568"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
@@ -72,7 +72,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Először az erőforráscsoportot kell létrehozni. A következő példában egy *TestRG1* nevű erőforráscsoportot hozunk létre az *USA keleti régiójában*:
 
@@ -164,7 +164,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 
 További információ: [VPN-átjáró alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a [következő oktatóanyagra](vpn-gateway-tutorial-vpnconnection-powershell.md)készül, érdemes megtartania ezeket az erőforrásokat, mert ezek az előfeltételek.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1de6af0f30453d40348e9e836b2a5989652f49f1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170428"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925096"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SuccessFactors
 
@@ -116,7 +116,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a SuccessFactors ügyfélszolgálati [csapatához](https://www.successfactors.com/content/ssf-site/en/support.html) .
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a SuccessFactors ügyfélszolgálati [csapatához](https://www.sap.com/support.html) .
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -227,7 +227,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a SuccessFactors, a SuccessFactors kell kiépíteni őket. SuccessFactors esetén a kiépítés manuális feladat.
 
-A SuccessFactors-ben létrehozott felhasználók beszerzéséhez kapcsolatba kell lépnie a [SuccessFactors-támogatási csapattal](https://www.successfactors.com/content/ssf-site/en/support.html).
+A SuccessFactors-ben létrehozott felhasználók beszerzéséhez kapcsolatba kell lépnie a [SuccessFactors-támogatási csapattal](https://www.sap.com/support.html).
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

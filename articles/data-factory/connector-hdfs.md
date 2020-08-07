@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43ab59f109e311d9d7312b77d34321fa98a952d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087758"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926807"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Adatok másolása a HDFS-kiszolgálóról Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Válassza ki a használni kívánt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-hdfs-connector.md)
 > * [Aktuális verzió](connector-hdfs.md)
@@ -59,12 +60,12 @@ A HDFS társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A *Type* tulajdonságot *Hdfs*értékre kell beállítani. | Yes |
-| url |A HDFS URL-címe |Yes |
-| authenticationType | Az engedélyezett értékek: *Névtelen* vagy *Windows*. <br><br> A helyszíni környezet beállításához tekintse meg a Kerberos- [hitelesítés használata a HDFS-összekötőhöz](#use-kerberos-authentication-for-the-hdfs-connector) című szakaszt. |Yes |
+| típus | A *Type* tulajdonságot *Hdfs*értékre kell beállítani. | Igen |
+| url |A HDFS URL-címe |Igen |
+| authenticationType | Az engedélyezett értékek: *Névtelen* vagy *Windows*. <br><br> A helyszíni környezet beállításához tekintse meg a Kerberos- [hitelesítés használata a HDFS-összekötőhöz](#use-kerberos-authentication-for-the-hdfs-connector) című szakaszt. |Igen |
 | userName (Felhasználónév) |A Windows-hitelesítéshez használt Felhasználónév. Kerberos-hitelesítés esetén a ** \<username> @ \<domain> . com**kiterjesztést kell megadni. |Igen (Windows-hitelesítéshez) |
 | jelszó |A Windows-hitelesítés jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja azt az adatgyárban, vagy [hivatkozzon az Azure Key vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen (Windows-hitelesítéshez) |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További információt az [Előfeltételek](#prerequisites) című szakaszban talál. Ha nincs megadva az Integration Runtime, a szolgáltatás az alapértelmezett Azure Integration Runtime használja. |No |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További információt az [Előfeltételek](#prerequisites) című szakaszban talál. Ha nincs megadva az Integration Runtime, a szolgáltatás az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa: Névtelen hitelesítés használata**
 
@@ -120,11 +121,11 @@ A HDFS a következő tulajdonságokat támogatja a `location` Format-alapú adat
 
 | Tulajdonság   | Leírás                                                  | Kötelező |
 | ---------- | ------------------------------------------------------------ | -------- |
-| típus       | Az *type* `location` adatkészletben található Type tulajdonságot *HdfsLocation*értékre kell állítani. | Yes      |
-| folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és határozza meg az elérési utat a tevékenység forrásának beállításai között. | No       |
-| fileName   | A megadott folderPath tartozó fájlnév. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és adja meg a fájl nevét a tevékenység forrásának beállításaiban. | No       |
+| típus       | Az *type* `location` adatkészletben található Type tulajdonságot *HdfsLocation*értékre kell állítani. | Igen      |
+| folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és határozza meg az elérési utat a tevékenység forrásának beállításai között. | Nem       |
+| fileName   | A megadott folderPath tartozó fájlnév. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és adja meg a fájl nevét a tevékenység forrásának beállításaiban. | Nem       |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -162,23 +163,23 @@ A következő tulajdonságok támogatottak a HDFS a `storeSettings` Format-alap�
 
 | Tulajdonság                 | Leírás                                                  | Kötelező                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| típus                     | A *Type* tulajdonságot a `storeSettings` **HdfsReadSettings**értékre kell állítani. | Yes                                           |
+| típus                     | A *Type* tulajdonságot a `storeSettings` **HdfsReadSettings**értékre kell állítani. | Igen                                           |
 | ***A másolandó fájlok megkeresése*** |  |  |
 | 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott mappa vagy fájl elérési útját. Ha az összes fájlt egy mappából szeretné másolni, azt is meg kell adnia `wildcardFileName` `*` . |  |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). A használatával `^` elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a Escape-karakterrel rendelkezik-e. <br>További példákat a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)című témakörben talál. | No                                            |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`  További példákat a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)című témakörben talál. | Yes |
-| 3. lehetőség: a fájlok listája<br>- fileListPath | Egy megadott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját (egy-egy fájl soronként, az adatkészletben konfigurált elérési út relatív elérési útjával).<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat itt talál: [fájllista példák](#file-list-examples). |No |
+| 2. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). A használatával `^` elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a Escape-karakterrel rendelkezik-e. <br>További példákat a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)című témakörben talál. | Nem                                            |
+| 2. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`  További példákat a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)című témakörben talál. | Igen |
+| 3. lehetőség: a fájlok listája<br>- fileListPath | Egy megadott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját (egy-egy fájl soronként, az adatkészletben konfigurált elérési út relatív elérési útjával).<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat itt talál: [fájllista példák](#file-list-examples). |Nem |
 | ***További beállítások*** |  | |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha `recursive` a értéke *true (igaz* ), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát. <br>Az engedélyezett értékek: *true* (alapértelmezett) és *false (hamis*).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
-| modifiedDatetimeStart    | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. <br>A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
-| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No                                            |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha `recursive` a értéke *true (igaz* ), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát. <br>Az engedélyezett értékek: *true* (alapértelmezett) és *false (hamis*).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |Nem |
+| modifiedDatetimeStart    | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. <br>A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | Nem                                            |
+| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | Nem                                            |
 | ***DistCp-beállítások*** |  | |
-| distcpSettings | A HDFS DistCp használatakor használandó tulajdonságérték. | No |
+| distcpSettings | A HDFS DistCp használatakor használandó tulajdonságérték. | Nem |
 | resourceManagerEndpoint | A fonal (még egy erőforrás-egyeztető) végpontja | Igen, ha DistCp használ |
 | tempScriptPath | Mappa elérési útja, amely a temp DistCp parancs parancsfájljának tárolására szolgál. A parancsfájlt a Data Factory hozza létre, és a másolási feladatok befejezése után el lesz távolítva. | Igen, ha DistCp használ |
-| distcpOptions | A DistCp parancshoz megadott további beállítások. | No |
+| distcpOptions | A DistCp parancshoz megadott további beállítások. | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -229,9 +230,9 @@ Ez a szakasz az eredményül kapott viselkedést ismerteti, ha helyettesítő ka
 | folderPath | fileName             | rekurzív | A forrás mappa szerkezete és a szűrő eredménye (a **félkövérrel szedett** fájlok beolvasása) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | (üres, alapértelmezett használata) | hamis     | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | (üres, alapértelmezett használata) | igaz      | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (üres, alapértelmezett használata) | true      | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | hamis     | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | igaz      | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | true      | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>Példák a fájllista
 
@@ -253,10 +254,10 @@ Ahhoz, hogy a DistCp a fájlok másolását a HDFS-ből az Azure Blob Storage-ba
 
 * A MapReduce és a FONALas szolgáltatások engedélyezve vannak.  
 * A fonal verziója 2,5 vagy újabb.  
-* A HDFS-kiszolgáló integrálva van a tároló adattárával: az Azure Blob Storage vagy az Azure-beli adatközpont-tárolója:  
+* A HDFS-kiszolgáló integrálva van a tároló adattárával: **Azure Blob Storage** vagy **Azure Data Lake Store (ADLS Gen1)**: 
 
     - Az Azure Blob-fájlrendszer natív módon támogatott a Hadoop 2,7 óta. A Hadoop környezeti konfigurációban csak a JAR elérési utat kell megadnia.
-    - Azure Data Lake Store fájlrendszer a Hadoop 3.0.0-alfa1-től kezdve van csomagolva. Ha a Hadoop-fürt verziója korábbi ennél a verziónál, manuálisan kell importálnia Azure Data Lake Storage Gen2 kapcsolódó JAR-csomagokat (Azure-datalake-Store. jar) a fürtbe innen [, és](https://hadoop.apache.org/releases.html)meg kell adnia a jar-fájl elérési útját a Hadoop környezeti konfigurációjában.
+    - Azure Data Lake Store fájlrendszer a Hadoop 3.0.0-alfa1-től kezdve van csomagolva. Ha a Hadoop-fürt verziója korábbi ennél a verziónál, manuálisan kell importálnia Azure Data Lake Store kapcsolódó JAR-csomagokat (Azure-datalake-Store. jar) a fürtbe innen [, és](https://hadoop.apache.org/releases.html)meg kell adnia a jar-fájl elérési útját a Hadoop környezeti konfigurációjában.
 
 * Készítse elő a Temp mappát a HDFS-ben. Ez a temp mappa egy DistCp-rendszerhéj-parancsfájl tárolására szolgál, így KB szintű helyet foglal le.
 * Győződjön meg arról, hogy a HDFS társított szolgáltatásban megadott felhasználói fiók rendelkezik a következő engedélyekkel:
@@ -438,18 +439,18 @@ További információ a keresési tevékenység tulajdonságairól: [keresési t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet *Type* tulajdonságát *fájlmegosztás* értékre kell beállítani. |Yes |
-| folderPath | A mappa elérési útja. Helyettesítő karakteres szűrő használata támogatott. Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (a nulla vagy egyetlen karakternek felelnek meg); `^` Ha a tényleges fájlnév helyettesítő karaktere vagy a escape-karakter található, akkor Escape-karaktert kell használnia. <br/><br/>Példák: gyökérmappa/almappa/, további példák a [mappák és a fájlok szűrése példákban](#folder-and-file-filter-examples). |Yes |
-| fileName |  A megadott "folderPath" fájlhoz tartozó fájlok neve vagy helyettesítő karakteres szűrője. Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A Filter (szűrő) esetében megengedett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (nulla vagy egyetlen karakter).<br/>– 1. példa:`"fileName": "*.csv"`<br/>– 2. példa:`"fileName": "???20180427.txt"`<br/>A használatával `^` elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a Escape-karakterrel rendelkezik-e. |No |
-| modifiedDatetimeStart | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC-időzónára alkalmazza a *2018-12-01T05:00:00Z*formátumban. <br/><br/> Vegye figyelembe, hogy az adatáthelyezés általános teljesítményét a rendszer a beállítás engedélyezésével fogja érinteni, ha nagy számú fájlra kívánja alkalmazni a fájlmegosztást. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
-| modifiedDatetimeEnd | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC-időzónára alkalmazza a *2018-12-01T05:00:00Z*formátumban. <br/><br/> Vegye figyelembe, hogy az adatáthelyezés általános teljesítményét a rendszer a beállítás engedélyezésével fogja érinteni, ha nagy számú fájlra kívánja alkalmazni a fájlmegosztást. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
+| típus | Az adatkészlet *Type* tulajdonságát *fájlmegosztás* értékre kell beállítani. |Igen |
+| folderPath | A mappa elérési útja. Helyettesítő karakteres szűrő használata támogatott. Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (a nulla vagy egyetlen karakternek felelnek meg); `^` Ha a tényleges fájlnév helyettesítő karaktere vagy a escape-karakter található, akkor Escape-karaktert kell használnia. <br/><br/>Példák: gyökérmappa/almappa/, további példák a [mappák és a fájlok szűrése példákban](#folder-and-file-filter-examples). |Igen |
+| fileName |  A megadott "folderPath" fájlhoz tartozó fájlok neve vagy helyettesítő karakteres szűrője. Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A Filter (szűrő) esetében megengedett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (nulla vagy egyetlen karakter).<br/>– 1. példa:`"fileName": "*.csv"`<br/>– 2. példa:`"fileName": "???20180427.txt"`<br/>A használatával `^` elkerülheti, hogy a tényleges mappanév helyettesítő karakterrel vagy a Escape-karakterrel rendelkezik-e. |Nem |
+| modifiedDatetimeStart | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC-időzónára alkalmazza a *2018-12-01T05:00:00Z*formátumban. <br/><br/> Vegye figyelembe, hogy az adatáthelyezés általános teljesítményét a rendszer a beállítás engedélyezésével fogja érinteni, ha nagy számú fájlra kívánja alkalmazni a fájlmegosztást. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| Nem |
+| modifiedDatetimeEnd | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC-időzónára alkalmazza a *2018-12-01T05:00:00Z*formátumban. <br/><br/> Vegye figyelembe, hogy az adatáthelyezés általános teljesítményét a rendszer a beállítás engedélyezésével fogja érinteni, ha nagy számú fájlra kívánja alkalmazni a fájlmegosztást. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| Nem |
 | formátumban | Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni, a következő fájlformátum-típusok támogatottak: *Szövegformátum*, *JsonFormat*, *AvroFormat*, *OrcFormat*, *ParquetFormat*. A *Type (típus* ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információ: [szöveg formátuma](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nem (csak bináris másolási forgatókönyv esetén) |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a következők: *gzip*, *deflate*, *bzip2*és *ZipDeflate*.<br/>A támogatott szintek a következők: *optimális* és *leggyorsabb*. |No |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a következők: *gzip*, *deflate*, *bzip2*és *ZipDeflate*.<br/>A támogatott szintek a következők: *optimális* és *leggyorsabb*. |Nem |
 
 >[!TIP]
 >Egy mappa összes fájljának másolásához csak a **folderPath** kell megadni.<br>Egy megadott névvel rendelkező fájl másolásához adja meg a **folderPath** és a **fájlnév nevű fájlnevet** .<br>Ha egy mappában lévő fájlok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **filename** paramétert a helyettesítő karakteres szűrővel.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -483,13 +484,13 @@ További információ a keresési tevékenység tulajdonságairól: [keresési t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának *Type* tulajdonságát *HdfsSource*értékre kell állítani. |Yes |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE ( *igaz* ), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát.<br/>Az engedélyezett értékek: *true* (alapértelmezett) és *false (hamis*). | No |
-| distcpSettings | A HDFS DistCp használatakor használt tulajdonság. | No |
+| típus | A másolási tevékenység forrásának *Type* tulajdonságát *HdfsSource*értékre kell állítani. |Igen |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE ( *igaz* ), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát.<br/>Az engedélyezett értékek: *true* (alapértelmezett) és *false (hamis*). | Nem |
+| distcpSettings | A HDFS DistCp használatakor használt tulajdonság. | Nem |
 | resourceManagerEndpoint | A FONÁL Resource Manager-végpont | Igen, ha DistCp használ |
 | tempScriptPath | Mappa elérési útja, amely a temp DistCp parancs parancsfájljának tárolására szolgál. A parancsfájlt a Data Factory hozza létre, és a másolási feladatok befejezése után el lesz távolítva. | Igen, ha DistCp használ |
-| distcpOptions | A DistCp parancs további beállításokkal is rendelkezik. | No |
-| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No |
+| distcpOptions | A DistCp parancs további beállításokkal is rendelkezik. | Nem |
+| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | Nem |
 
 **Példa: HDFS forrás a másolási tevékenységben a DistCp használatával**
 

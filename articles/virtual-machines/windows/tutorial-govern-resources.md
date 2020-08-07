@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 33a32623e49212579619abc3ab839868882856ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723eaeb6eb8946473b31b447e817a0a3b696f1cc
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028107"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926569"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: a Windows rendszerű virtuális gépek felügyeletének megismerése Azure PowerShell
 
@@ -41,7 +41,7 @@ Az erőforráscsoport jelenleg üres.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Győződjön meg arról, hogy az intézmény felhasználói megfelelő hozzáférési szinttel rendelkeznek ezekhez az erőforrásokhoz. Nem ajánlott korlátlan hozzáférést nyújtania a felhasználóknak, de fontos biztosítania, hogy el tudják végezni a munkájukat. A [Szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md) kezelheti, hogy az egyes hatókörökben mely felhasználók hajthatnak végre adott műveleteket.
+Győződjön meg arról, hogy az intézmény felhasználói megfelelő hozzáférési szinttel rendelkeznek ezekhez az erőforrásokhoz. Nem ajánlott korlátlan hozzáférést nyújtania a felhasználóknak, de fontos biztosítania, hogy el tudják végezni a munkájukat. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével felügyelheti, hogy mely felhasználók jogosultak meghatározott műveletek végrehajtására egy hatókörben.
 
 A szerepkör-hozzárendelések létrehozásához és eltávolításához a felhasználóknak `Microsoft.Authorization/roleAssignments/*` hozzáféréssel kell rendelkezniük. Ez a hozzáférés a tulajdonosi vagy a felhasználói hozzáférés rendszergazdájának szerepkörével adható meg.
 

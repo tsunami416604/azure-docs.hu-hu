@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 07/20/2020
+ms.date: 08/06/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: b2667e63f7cac5d1e3ad8475501ff909e8f6f3c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fe9ec46050ad831430239b960a7f528af7f4dc2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102079"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924325"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -53,7 +53,7 @@ Ezek a beállítások alább láthatók.
    New-AzTemplateSpec `
      -ResourceGroupName templateSpecRG `
      -Name storageSpec `
-     -Version "1.0.0.0" `
+     -Version "1.0" `
      -Location westus2 `
      -TemplateJsonFile "c:\Templates\azuredeploy.json"
    ```
@@ -86,7 +86,7 @@ Ezek a beállítások alább láthatók.
                    {
                        "type": "versions",
                        "apiVersion": "2019-06-01-preview",
-                       "name": "1.0.0.1",
+                       "name": "1.0",
                        "location": "westus2",
                        "dependsOn": [ "storageSpec" ],
                        "properties": {
@@ -195,7 +195,7 @@ Most már üzembe helyezheti a sablon specifikációját. a sablon specifikáci�
 1. Szerezze be a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját.
 
    ```azurepowershell
-   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0.0.0").Version.Id
+   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
    ```
 
 1. Telepítse a sablon specifikációját.
@@ -203,7 +203,16 @@ Most már üzembe helyezheti a sablon specifikációját. a sablon specifikáci�
    ```azurepowershell
    New-AzResourceGroupDeployment `
      -TemplateSpecId $id `
-     -ResourceGroupName demoRG
+     -ResourceGroupName storageRG
+   ```
+
+1. A paramétereket pontosan úgy adja meg, mint egy ARM-sablonhoz. Telepítse újra a sablon specifikációját a Storage-fiók típusának megfelelő paraméterrel.
+
+   ```azurepowershell
+   New-AzResourceGroupDeployment `
+     -TemplateSpecId $id `
+     -ResourceGroupName storageRG `
+     -StorageAccountType Standard_GRS
    ```
 
 # <a name="arm-template"></a>[ARM-sablon](#tab/azure-resource-manager)
@@ -224,7 +233,7 @@ Most már üzembe helyezheti a sablon specifikációját. a sablon specifikáci�
                "name": "demo",
                "properties": {
                    "templateLink": {
-                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0.0.0')]"
+                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
                    },
                    "parameters": {
                    },

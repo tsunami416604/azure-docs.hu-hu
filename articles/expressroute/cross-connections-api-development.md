@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77187012"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921622"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-fejlesztés és-integráció
 
@@ -30,7 +30,7 @@ A expressRouteCrossConnections-erőforrásra való áttérés előnyei:
 
 * A ExpressRoute-partnerek jövőbeni továbbfejlesztései elérhetővé válnak a ExpressRouteCrossConnection-erőforráson.
 
-* A partnerek [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) alkalmazhatnak a expressRouteCrossConnection erőforrásra. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
+* A partnerek [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) alkalmazhatnak a expressRouteCrossConnection-erőforrásra. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
 * A expressRouteCrossConnection erőforrás olyan API-kat tesz elérhetővé, amelyek segíthetnek a ExpressRoute-kapcsolatok hibaelhárításában. Ide tartozik az ARP-tábla, a BGP-útválasztási táblázat összefoglalása és a BGP-útválasztási táblázat részletei. Ezt a képességet a klasszikus üzembe helyezési API-k nem támogatják.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 46ebb122b0165d469b1c40871d5939e50a8595c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c43d3dd0c8a0d9f6d31d8e379fd195adfd7873f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016315"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925413"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Oktatóanyag: a hópehely konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -119,7 +119,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
    |Attribútum|Típus|
    |---|---|
-   |Active|Logikai érték|
+   |Active|Logikai|
    |displayName|Sztring|
    |e-mailek [type EQ "work"]. Value|Sztring|
    |userName (Felhasználónév)|Sztring|
@@ -135,7 +135,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |Attribútum|Típus|
       |---|---|
       |displayName|Sztring|
-      |tagok|Hivatkozás|
+      |tagok|Referencia|
 
 13. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -157,7 +157,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
 1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
-2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai

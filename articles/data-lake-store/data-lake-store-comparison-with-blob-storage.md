@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9a03b5636af4a60c4abf563e073e22c970b8a02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075044"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921777"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 
@@ -33,7 +33,7 @@ A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és
 | Adatműveletek – engedélyezés |POSIX Access Control listák (ACL-ek).  A Azure Active Directory identitások alapján megadott ACL-ek a fájl-és mappa szintjén állíthatók be. |Fiók szintű engedélyezés – [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) használata<br>Fiók, tároló vagy blob engedélyezése esetén – [közös hozzáférésű aláírási kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) használata |
 | Adatműveletek – naplózás |Elérhető. További [információ:.](data-lake-store-diagnostic-logs.md) |Elérhető |
 | Inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
-| Felügyeleti műveletek (például fiók létrehozása) |Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez |Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez |
+| Felügyeleti műveletek (például fiók létrehozása) |[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) a fiókok felügyeletéhez |[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) a fiókok felügyeletéhez |
 | Fejlesztői SDK-k |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, go, Android, iOS |
 | Elemzési számítási feladatok teljesítménye |Optimalizált teljesítmény párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebesség és IOPS. |Optimalizált teljesítmény párhuzamos elemzési számítási feladatokhoz. |
 | Méretkorlát |Nincs korlátozás a fiók méretére, a fájlméretre vagy a fájlok számára |A konkrét korlátokat lásd: [a standard Storage-fiókok méretezhetőségi célpontjai](../storage/common/scalability-targets-standard-account.md) , valamint [a blob Storage méretezhetőségi és teljesítményi céljai](../storage/blobs/scalability-targets.md). Nagyobb fiókokra vonatkozó korlátozások érhetők el, ha kapcsolatba lép az [Azure ügyfélszolgálatával](https://azure.microsoft.com/support/faq/) |
@@ -41,5 +41,3 @@ A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és
 | Szolgáltatás állapota |Általánosan elérhető |Általánosan elérhető |
 | Régiónkénti rendelkezésre állás |Lásd [itt](https://azure.microsoft.com/regions/#services) |Minden Azure-régióban elérhető |
 | Ár |[Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/) megtekintése |[Díjszabás](https://azure.microsoft.com/pricing/details/storage/) megtekintése |
-
-

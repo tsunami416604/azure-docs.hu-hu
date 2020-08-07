@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533049"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923866"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Kötetek szolgáltatásszintjének dinamikus módosítása
 
@@ -33,8 +33,7 @@ Az a kapacitási készlet, amelyre át szeretné helyezni a kötetet, már léte
 
 * Miután a kötetet áthelyezte egy másik kapacitási készletbe, már nem fog tudni hozzáférni az előző mennyiségi tevékenység naplóihoz és a mennyiségi metrikához. A kötet új tevékenység-naplókkal és metrikákkal fog kezdődni az új kapacitási készlet alatt.
 
-* Ha egy kötetet magasabb szolgáltatási szint (például a *standard* és a *prémium* vagy *Ultra* szolgáltatási szint) kapacitási készletére helyez át, akkor legalább hét nappal azelőtt meg kell várnia, hogy a kötetet egy alacsonyabb szolgáltatási szint kapacitási készletére helyezze át (például az *Ultra* -ról a *prémium* vagy a *standard*szintre).  
-Ez a várakozási időszak nem érvényes, ha a kötetet egy olyan kapacitási készletbe helyezi, amely azonos szolgáltatási szinttel vagy alacsonyabb szolgáltatási szinttel rendelkezik.
+* Ha egy kötetet magasabb szolgáltatási szint (például a *standard* és a *prémium* vagy *Ultra* szolgáltatási szint) kapacitási készletére helyez át, akkor legalább hét nappal azelőtt meg kell várnia *a kötetet, hogy az* alacsonyabb szolgáltatási szint (például az *Ultra* – *prémium* vagy a *standard*) kapacitási készletére váltson.  
 
 ## <a name="register-the-feature"></a>A szolgáltatás regisztrálása
 

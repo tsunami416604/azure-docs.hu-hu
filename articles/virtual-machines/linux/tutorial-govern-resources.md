@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 487342fdacfcf8e321bb2a65b6bd6577fc67be36
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 890afadc82acc90ab0324058e07aa5c4d34d04e0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497953"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926161"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
 
@@ -43,7 +43,7 @@ Az erőforráscsoport jelenleg üres.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Győződjön meg arról, hogy az intézmény felhasználói megfelelő hozzáférési szinttel rendelkeznek ezekhez az erőforrásokhoz. Nem ajánlott korlátlan hozzáférést nyújtania a felhasználóknak, de fontos biztosítania, hogy el tudják végezni a munkájukat. A [Szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md) kezelheti, hogy az egyes hatókörökben mely felhasználók hajthatnak végre adott műveleteket.
+Győződjön meg arról, hogy az intézmény felhasználói megfelelő hozzáférési szinttel rendelkeznek ezekhez az erőforrásokhoz. Nem ajánlott korlátlan hozzáférést nyújtania a felhasználóknak, de fontos biztosítania, hogy el tudják végezni a munkájukat. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével felügyelheti, hogy mely felhasználók jogosultak meghatározott műveletek végrehajtására egy hatókörben.
 
 A szerepkör-hozzárendelések létrehozásához és eltávolításához a felhasználóknak `Microsoft.Authorization/roleAssignments/*` hozzáféréssel kell rendelkezniük. Ez a hozzáférés a tulajdonosi vagy a felhasználói hozzáférés rendszergazdájának szerepkörével adható meg.
 
@@ -202,7 +202,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 [!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához kérje le a zárolások azonosítóit, és adja meg őket az [az lock delete](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) parancsban:
 

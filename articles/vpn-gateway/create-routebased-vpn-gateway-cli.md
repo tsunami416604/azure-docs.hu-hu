@@ -1,30 +1,30 @@
 ---
 title: 'Route-alapú Azure-VPN Gateway létrehozása: parancssori felület'
-description: Gyorsan megtudhatja, hogyan hozhat létre VPN Gateway a parancssori felület használatával
+description: Ismerje meg, hogyan hozhat létre egy Route-alapú Azure VPN-átjárót az Azure CLI használatával. A helyszíni hálózathoz való csatlakozáshoz használjon VPN-átjárót.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c207d2c5b2817bacd75ffcd12c9b4c43fe86f55
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987697"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923322"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Route-alapú VPN-átjáró létrehozása a parancssori felület használatával
 
 Ez a cikk segítséget nyújt egy Route-alapú Azure VPN-átjáró gyors létrehozásához az Azure CLI használatával. VPN-átjárót a helyszíni hálózathoz való VPN-kapcsolat létrehozásakor használ a rendszer. VPN-átjárót is használhat a virtuális hálózatok összekapcsolásához.
 
-A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhálózatot és egy Route-alapú VPN-átjárót (virtuális hálózati átjárót) hoznak létre. A virtuális hálózati átjárók létrehozása akár 45 percet is igénybe vehet. Miután az átjáró létrehozása befejeződött, létrehozhat kapcsolatokat. Ezeknek a lépéseknek Azure-előfizetésre van szükségük. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhálózatot és egy Route-alapú VPN-átjárót (virtuális hálózati átjárót) hoznak létre. A virtuális hálózati átjárók létrehozása akár 45 percet is igénybe vehet. Miután az átjáró létrehozása befejeződött, létrehozhat kapcsolatokat. Ezeknek a lépéseknek Azure-előfizetésre van szükségük. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 9d49ea99b97411e15d3f264057c865219e4d63c4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7684933a7671f1f3d573cb8195551a56ebc27947
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853500"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925821"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,7 +129,7 @@ Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehe
 
 A RBAC és a POSIX stílusú hozzáférés-vezérlési listákat (ACL-eket) is használhatja a virtuális hálózaton belüli adatelérés szabályozására.
 
-A RBAC használatához adja hozzá a munkaterület felügyelt identitását a [blob-Adatolvasó](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) szerepkörhöz. További információ: [szerepköralapú hozzáférés-vezérlés](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control).
+A RBAC használatához adja hozzá a munkaterület felügyelt identitását a [blob-Adatolvasó](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) szerepkörhöz. További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control).
 
 Az ACL-ek használatához a munkaterület által felügyelt identitás ugyanúgy rendelhető hozzá, mint bármely más biztonsági elv. További információ: hozzáférés- [vezérlési listák a fájlokon és könyvtárakon](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
@@ -820,7 +820,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

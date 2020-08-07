@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1d157e7d2880761fb6559723bdc1d6c34baffb09
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903204"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926246"
 ---
 # <a name="design-for-querying"></a>Tervezés lekérdezéshez
 Table service megoldások intenzív, írásos vagy a kettő kombinációját is beolvashatja. Ez a cikk azokat a dolgokat ismerteti, amelyeket figyelembe kell vennie, amikor megtervezi a Table service az olvasási műveletek hatékony támogatásához. Az olvasási műveleteket hatékonyan támogató kialakítás általában írási műveletek esetén is hatékony. Azonban további szempontokat is figyelembe kell vennie az írási műveletek támogatásának tervezésekor, a cikk az [adatok módosítására szolgáló tervezési tervében](table-storage-design-for-modification.md)tárgyalt.
@@ -81,7 +81,7 @@ További szempontokat is figyelembe kell vennie a **PartitionKey** , amelyek az 
 ## <a name="optimizing-queries-for-the-table-service"></a>A Table service lekérdezések optimalizálása
 A Table service automatikusan indexeli az entitásokat egy fürtözött indexben lévő **PartitionKey** és **RowKey** értékekkel, ezért az az oka, hogy a pontok lekérdezései a leghatékonyabbak. A **PartitionKey** és a **RowKey**fürtözött indexén azonban nincsenek indexek.
 
-Számos tervnek meg kell felelnie az entitások több feltételen alapuló keresésének engedélyezéséhez szükséges követelményeknek. Például az alkalmazotti entitások az e-mailek, az alkalmazotti azonosítók vagy a vezetéknév alapján vannak megkeresve. A [táblázatos tervezési mintákban](table-storage-design-patterns.md) leírt mintázatok az ilyen típusú követelményekkel foglalkoznak, és leírják, hogy a Table Service milyen módszereket biztosít a másodlagos indexek eléréséhez:  
+Számos tervnek meg kell felelnie az entitások több feltételen alapuló keresésének engedélyezéséhez szükséges követelményeknek. Például az alkalmazotti entitások az e-mailek, az alkalmazotti AZONOSÍTÓk vagy a vezetéknév alapján vannak megkeresve. A [táblázatos tervezési mintákban](table-storage-design-patterns.md) leírt mintázatok az ilyen típusú követelményekkel foglalkoznak, és leírják, hogy a Table Service milyen módszereket biztosít a másodlagos indexek eléréséhez:  
 
 * [Partíción belüli másodlagos index minta](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző **RowKey** -értékekkel (ugyanabban a partícióban) a gyors és hatékony keresési és alternatív rendezési sorrendek eltérő **RowKey** -értékek használatával történő engedélyezéséhez.  
 * [Partíciók közötti másodlagos index minta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző **RowKey** -értékekkel külön partíciókban vagy külön táblákban, hogy a gyors és hatékony keresési és alternatív rendezési sorrendet a különböző **RowKey** értékek használatával engedélyezze.  
@@ -96,7 +96,7 @@ Számos alkalmazás rendelkezik a különböző megrendelésekben tárolt adatok
 * [Partíciók közötti másodlagos index minta](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – az egyes entitások több példányának tárolása különböző RowKey-értékekkel különálló partíciókban külön táblákban, amelyek lehetővé teszik a gyors és hatékony keresési és alternatív rendezési sorrendek használatát a különböző RowKey értékek használatával.
 * [Naplóbeli farok minta](table-storage-design-patterns.md#log-tail-pattern) – a partícióhoz legutóbb hozzáadott *n* entitások beolvasása egy **RowKey** értékkel, amely fordított dátum és idő sorrendbe rendezi.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Táblatervezési minták](table-storage-design-patterns.md)
 - [Kapcsolatok modellezése](table-storage-design-modeling.md)

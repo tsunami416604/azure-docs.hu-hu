@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080675"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920721"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights Gen1-környezetből C használatával #
 
@@ -25,7 +25,7 @@ Ez a C# példa azt szemlélteti, hogyan használható a [Gen1 lekérdezési API]
 > [!TIP]
 > A C#-Gen1 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
@@ -75,10 +75,11 @@ Azt is megteheti, hogy hozzáadja a csomagokat a [NuGet 2.12 +](https://www.nuge
 
 ## <a name="c-sample-code"></a>C# mintakód
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
 ## <a name="next-steps"></a>További lépések
 
 - A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
 - Olvassa el, hogyan [csatlakozhat egy JavaScript-alkalmazást az ügyfél-SDK](https://github.com/microsoft/tsiclient) -val Time Series Insights.
+Azure-Samples/Azure-Time-Series-bepillantást/gen1-Sample/csharp-ÁME-gen1-Sample/program. cs

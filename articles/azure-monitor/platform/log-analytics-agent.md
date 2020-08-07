@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446531"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925787"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -70,7 +70,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. Az alábbi táblázat az egyes módszereket ismerteti, amelyekkel meghatározhatja, hogy melyik működik a legjobban a szervezetében.
 
-|Forrás | Metódus | Leírás|
+|Forrás | Módszer | Leírás|
 |-------|-------------|-------------|
 |Azure VM| [Manuálisan a Azure Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | A Log Analytics munkaterületről telepítendő virtuális gépek meghatározása. |
 | | Log Analytics virtuálisgép-bővítmény Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) az Azure CLI használatával vagy egy Azure Resource Manager sablonnal | A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Azure Monitor-munkaterületre regisztrálja őket. |
@@ -122,11 +122,19 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
  - Ubuntu, Debian:`apt-get install -y python2`
  - SUSE`zypper install -y python2`
 
-A python2 végrehajtható fájljának a "Python" aliashoz kell tartoznia a következő parancs használatával:
+A python2 végrehajtható fájlját a következő eljárással kell a *Pythonhoz* aliasként használni:
 
-```
-alternatives --set python `which python2`
-```
+1. A következő parancs futtatásával megtekintheti az aktuális Python-aliasokat, ha van ilyen. Ha igen, jegyezze fel a következő lépés prioritását.
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. Futtassa az alábbi parancsot. Cserélje le *\<priority\>* a értéket a meglévő hivatkozás prioritása fölé, vagy 1, ha jelenleg nem található hivatkozás.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>Támogatott disztribúciók
 
@@ -194,7 +202,7 @@ A következő táblázat a Linux-és Windows-ügynökök Azure Monitor naplókka
 |*.blob.core.windows.net |443-es port |Kimenő|Igen |
 |*.azure-automation.net |443-es port |Kimenő|Igen |
 
-A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). 
+A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 
 Ha azt tervezi, hogy a Azure Automation Hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztrálja az runbookok-vagy felügyeleti megoldásokat a környezetben, hozzá kell férnie a portszámhoz és a [hálózat konfigurálása a hibrid Runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című témakörben leírt URL-címekhez. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077507"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922948"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
@@ -54,5 +54,4 @@ Egy meglévő kiszolgáló módosításakor a [frissítés](https://docs.microso
 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  
-[Szerepköralapú Access Control](../role-based-access-control/overview.md)  
-
+[Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)  

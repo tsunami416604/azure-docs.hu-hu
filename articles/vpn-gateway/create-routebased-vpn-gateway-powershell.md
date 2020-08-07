@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: Route-alapú átjáró létrehozása: PowerShell'
-description: Route-alapú VPN Gateway gyors létrehozása a PowerShell használatával
+description: Ismerje meg, hogyan hozhat létre egy Route-alapú Azure VPN-átjárót a PowerShell használatával. A helyszíni hálózathoz való csatlakozáshoz használjon VPN-átjárót.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e6c8ec12927afbabd6c6d41ab348bad9814e82c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987648"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923203"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Route-alapú VPN-átjáró létrehozása a PowerShell használatával
 
@@ -20,13 +20,13 @@ Ez a cikk segítséget nyújt egy Route-alapú Azure VPN-átjáró gyors létreh
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhálózatot és egy Route-alapú VPN-átjárót (virtuális hálózati átjárót) hoznak létre. Miután az átjáró létrehozása befejeződött, létrehozhat kapcsolatokat. Ezeknek a lépéseknek Azure-előfizetésre van szükségük. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhálózatot és egy Route-alapú VPN-átjárót (virtuális hálózati átjárót) hoznak létre. Miután az átjáró létrehozása befejeződött, létrehozhat kapcsolatokat. Ezeknek a lépéseknek Azure-előfizetésre van szükségük. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot. Ha helyileg futtatja a PowerShellt, nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és kapcsolódjon az Azure-hoz a `Connect-AzAccount` parancs használatával.
 
