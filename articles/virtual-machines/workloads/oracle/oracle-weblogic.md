@@ -1,5 +1,5 @@
 ---
-title: Oracle WebLogic Server Azure-alkalmazások | Microsoft Docs
+title: Mi az az Azure-beli Oracle WebLogic Server?
 description: Ismerje meg, hogyan futtathatja az Oracle WebLogic Servert Microsoft Azureon.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,42 +13,44 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2020
 ms.author: edburns
-ms.openlocfilehash: 9ba4e3a66ae8ef71b39aa26fd54048381237c2fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe247e75040f658beb94a66176f802993268a7d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83665214"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851858"
 ---
-# <a name="oracle-weblogic-server-azure-applications"></a>Oracle WebLogic Server Azure-alkalmazások
+# <a name="what-is-oracle-weblogic-server-on-azure"></a>Mi az az Azure-beli Oracle WebLogic Server?
 
-## <a name="oracle-weblogic-server-is-a-scalable-enterprise-ready-java-ee-application-server"></a>Az Oracle WebLogic Server egy skálázható, nagyvállalati használatra kész, Java EE-alapú alkalmazáskiszolgáló.
+Ez az oldal a WebLogic-kiszolgáló (WLS) Azure Virtual Machines-on való futtatásának megoldásait ismerteti.  Ezeket a megoldásokat az Oracle és a Microsoft közösen fejleszti ki.
 
-Az Oracle WebLogic Server a világ első Felhőbeli natív, nagyvállalati Java platform-kiszolgálója a többrétegű elosztott vállalati alkalmazások fejlesztéséhez és üzembe helyezéséhez. Az Azure WebLogic Server lehetővé teszi a felhő-számítástechnika megtartását azáltal, hogy nagyobb választékot és rugalmasságot biztosít a WebLogic áttelepítéséhez, beleértve a Java EE-alkalmazások az Azure-felhőbe való áthelyezését és a lehető legnagyobb hatást. Az ajánlatok lehetővé teszik az üzleti alkalmazások gyors elindítását a virtuális hálózat, a tárolás és a Linux-erőforrások automatikus üzembe helyezésével, a WebLogic-kiszolgáló telepítésével, a biztonság beállításával egy hálózati biztonsági csoporttal, a terheléselosztást az Azure app Gateway szolgáltatással, a hitelesítés Azure Active Directory és az adatbázis-kapcsolat enyhítésével.
+Az Oracle WebLogic Server a világ első Felhőbeli natív, nagyvállalati Java platform-kiszolgálója a többrétegű elosztott vállalati alkalmazások fejlesztéséhez és üzembe helyezéséhez. Az Azure WebLogic Server lehetővé teszi a felhő-számítástechnika megölelését.  Nagyobb választékot és rugalmasságot biztosít a WebLogic áttelepítéshez, beleértve a Java EE-alkalmazások Azure-felhőbe való átemelését és átváltását.   A WLS az Azure-ban nagy hatással van egy kis erőfeszítésre. Az ajánlatok lehetővé teszik az üzletági (LOB) alkalmazások gyors elindítását.  Minden ajánlat automatikusan kiépíti a virtuális hálózati, a tárolási és a Linux-erőforrásokat.  A WebLogic-kiszolgáló a nulla erőfeszítéssel van telepítve.  A WLS az Azure-ban egy hálózati biztonsági csoporttal, a terheléselosztás az Azure app Gateway szolgáltatással, a hitelesítés és a Azure Active Directory használatával automatikusan csatlakozik a meglévő adatbázishoz.
 
-A különböző forgatókönyvek teljesítéséhez négy ajánlat áll rendelkezésre: egyetlen csomópont rendszergazdai kiszolgáló nélkül, egyetlen csomópont rendszergazdai kiszolgálóval, fürttel és dinamikus fürttel.  Próbálja ki, hogy az ajánlatok díjmentesen elérhetők legyenek.
+:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="Az Azure Portalon üzembe helyezheti a WebLogic-kiszolgálót az Azure-ban":::
 
-_Ezek az ajánlatok saját licencet kapnak_. Feltételezik, hogy már beszerzett egy Oracle-licenccel rendelkező megfelelő licencet, és a megfelelő licenccel rendelkezik az ajánlatok futtatásához Microsoft Azure.
+A különböző forgatókönyvek teljesítéséhez négy ajánlat áll rendelkezésre: egyetlen csomópont rendszergazdai kiszolgáló nélkül, egyetlen csomópont rendszergazdai kiszolgálóval, fürttel és dinamikus fürttel.  Próbálja ki az ajánlatokat, ingyenesen elérhetők.
 
-_Ha azt szeretné, hogy az áttelepítési forgatókönyvek szorosan működjenek az ezen ajánlatokat fejlesztő mérnöki csapattal, [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) csak_ az [Azure piactéren](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)lépjen kapcsolatba velem gombra. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és elindítják az együttműködést!
+_Ezek az ajánlatok saját licencet kapnak_. Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok futtatásához Microsoft Azure.
 
-### <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server – egyetlen csomópont
+_Ha az áttelepítési forgatókönyveket az ezen ajánlatokat fejlesztő mérnöki csapattal szorosan szeretné használni, válassza az [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) _ [Azure piactéren](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)a kapcsolatfelvétel gombot. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és elkezdik az együttműködést!
 
-Ez az ajánlat egyetlen virtuális gépet foglal le, és telepíti az Oracle WebLogic Servert. Nem hoz létre tartományt, vagy nem indítja el a felügyeleti kiszolgálót. Ez olyan forgatókönyvek esetén hasznos, amelyek nagyvállalati konfigurációval rendelkeznek.
+## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server – egyetlen csomópont
 
-### <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic-kiszolgáló felügyeleti kiszolgálóval
+Ez az ajánlat egyetlen virtuális gépet foglal le, és telepíti a WLS. Nem hoz létre tartományt, vagy nem indítja el a felügyeleti kiszolgálót. Az önálló csomópontok olyan helyzetekben hasznosak, amelyek nagyvállalati konfigurációval rendelkeznek.
 
-Ez az ajánlat egyetlen virtuális gépet foglal le, és telepíti az Oracle WebLogic Servert. Létrehoz egy tartományt, és elindítja a felügyeleti kiszolgálót, amely lehetővé teszi a tartomány kezelését.
+## <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic-kiszolgáló felügyeleti kiszolgálóval
 
-### <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server-fürt
+Ez az ajánlat egyetlen virtuális gépet foglal le, és telepíti a WLS. Létrehoz egy tartományt, és elindítja a felügyeleti kiszolgálót, amely lehetővé teszi a tartomány kezelését.
 
-Ez az ajánlat egy magasan elérhető Oracle WebLogic Server Virtual Machines-fürtöt hoz létre. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló el van indítva, amely lehetővé teszi a tartomány kezelését.
+## <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server-fürt
 
-### <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server dinamikus fürt
+Ez az ajánlat egy magasan elérhető WLS virtuális gépekből álló fürtöt hoz létre. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló el van indítva, amely lehetővé teszi a tartomány kezelését.
 
-Ez az ajánlat egy magasan elérhető és méretezhető dinamikus fürtöt hoz létre az Oracle WebLogic Server Virtual Machines szolgáltatásban. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló el van indítva, amely lehetővé teszi a tartomány kezelését.
+## <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server dinamikus fürt
 
-## <a name="next-steps"></a>További lépések
+Ez az ajánlat egy magasan elérhető és méretezhető dinamikus fürtöt hoz létre a WLS virtuális gépekhez. Alapértelmezés szerint a felügyeleti kiszolgáló és az összes felügyelt kiszolgáló el van indítva, amely lehetővé teszi a tartomány kezelését.
+
+## <a name="next-steps"></a>Következő lépések
 
 Fedezze fel az ajánlatokat az Azure piactéren.
 

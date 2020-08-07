@@ -3,13 +3,13 @@ title: Azure Notebooks előzetes verziójának konfigurálása és kezelése
 description: Megtudhatja, hogyan kezelheti a projekt metaadatait, a projektfájlok, a projekt környezetét és a telepítési lépéseket a Azure Notebooks felhasználói felületen és a közvetlen terminál-hozzáférésen keresztül.
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834080"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852803"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projektek kezelése és konfigurálása Azure Notebooks előzetes verzióban
 
@@ -38,7 +38,7 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 
 A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza az **információ** fület, amely tartalmazza a projekt metaadatait a következő táblázatban leírtak szerint. Bármikor módosíthatja a projekt metaadatait.
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | --- | --- |
 | Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: ""Helló világ!"alkalmazás a Pythonban". |
 | Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik. Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
@@ -57,7 +57,7 @@ A projekt irányítópultja a projekt mappa rendszerének tartalmát jeleníti m
 
 Az **+ új** parancs (billentyűparancs: n) új fájlokat vagy mappákat hoz létre. A parancs használatakor először válassza ki a létrehozandó elem típusát:
 
-| Elemtípus | Description | Parancs viselkedése |
+| Elemtípus | Leírás | Parancs viselkedése |
 | --- | --- | --- |
 | **Jegyzetfüzet** | Egy Jupyter notebook | Megjeleníti azt a felugró ablakot, amelyben megadja a notebook fájlnevét és nyelvét. |
 | **Mappa** | Egy almappa | Létrehoz egy szerkesztési mezőt a projekt fájljának listájában, amelyben megadja a mappa nevét. |
@@ -74,7 +74,7 @@ A projekthez tartozó fájllista minden eleme parancsokat biztosít a jobb gombb
 
 ![Parancsok egy fájl helyi menüjében](media/project-file-commands.png)
 
-| Parancs | Billentyűparancsok | Műveletek |
+| Parancs | Billentyűparancsok | Művelet |
 | --- | --- | --- |
 | Futtatás | r (vagy kattintson a) | Egy jegyzetfüzet-fájlt futtat. A rendszer megnyit más fájltípusokat a megtekintéshez.  |
 | Hivatkozás másolása | é | A fájlra mutató hivatkozást másol a vágólapra. |
@@ -92,7 +92,7 @@ Egy fájl vagy jegyzetfüzet előnézete a tartalom írásvédett nézete. a jeg
 
 Az előnézet oldalon számos, billentyűparancsokkal ellátott eszköztár-parancs támogatott:
 
-| Parancs | Billentyűparancsok | Műveletek |
+| Parancs | Billentyűparancsok | Művelet |
 | --- | --- | --- |
 | Megosztás | s | Megjeleníti a megosztási felugró ablakát, amelyből megszerezhet egy hivatkozást, megoszthatja a közösségi médiát, HTML-t szerezhet be beágyazáshoz, és e-mailt küldhet. |
 | Klónozás | c  | A notebook klónozása a fiókjába. |
@@ -187,7 +187,7 @@ A parancsot egy Python-jegyzetfüzetben található kód cellából is használh
 !cat .nb.log
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)
 - [Felhőbeli adatok elérése egy jegyzetfüzetben](access-data-resources-jupyter-notebooks.md)

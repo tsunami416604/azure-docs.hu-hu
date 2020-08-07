@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: Javaslatok használata a biztonság növelése érdekében
           href: security-center-using-recommendations.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Fenyegetésvédelem és biztonsági riasztások
       items:
         - name: Fenyegetésvédelem áttekintése a Security Centerben

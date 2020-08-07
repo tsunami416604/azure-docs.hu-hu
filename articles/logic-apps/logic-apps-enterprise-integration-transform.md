@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072423"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832739"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Leképezések létrehozása, amelyek az XML-t különböző formátumokká alakítják át az Azure Logic Appsben az Enterprise Integration Packkel
 
@@ -36,7 +36,7 @@ A **következő lépésekkel végezheti el a transzformáció használatát**:
 
 Most, hogy elvégezte az előfeltételeket, ideje létrehozni a logikai alkalmazást:  
 
-1. Hozzon létre egy logikai alkalmazást, és [csatolja azt a térképet tartalmazó integrációs fiókhoz](../logic-apps/logic-apps-enterprise-integration-accounts.md "Integrációs fiók összekapcsolása logikai alkalmazással") .
+1. Hozzon létre egy logikai alkalmazást, és [csatolja azt a térképet tartalmazó integrációs fiókhoz](./logic-apps-enterprise-integration-create-integration-account.md "Integrációs fiók összekapcsolása logikai alkalmazással") .
 2. **Kérelem** -trigger hozzáadása a logikai alkalmazáshoz  
    ![Képernyőkép a "Microsoft felügyelt API-k megjelenítése" legördülő listáról a kérelem trigger kiválasztásával. A legördülő lista a Visual Studio Vállalati integráció SDK használatával létrehozott logikai alkalmazásban található.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Az **átalakítási XML-** művelet hozzáadásához először válassza a **művelet hozzáadása** lehetőséget.   
@@ -133,7 +133,6 @@ Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karak
 
 
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>További információk
 * [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
 * [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md "További tudnivalók a vállalati integrációs térképekről")  
-

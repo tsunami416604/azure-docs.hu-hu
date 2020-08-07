@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324097"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849019"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
+
 > [!WARNING]
-> 
-> Ez a cikk a **klasszikus metrikai riasztások** Resource Manager-sablonok használatával történő létrehozását ismerteti. A klasszikus riasztások 2019 augusztusában lettek kivezetve, és a beállítás értéke teljes mértékben elavulttá válik a 2020 júniusában. Nem hozhat létre új klasszikus riasztásokat a nyilvános Azure-ban. Előfordulhat, hogy az Azure egyes regionális verziói még mindig rendelkeznek a lehetőséggel, de javasoljuk, hogy hozzon létre [újabb metrikai riasztásokat](./alerts-metric-near-real-time.md) a sablonok használatával, ha ez egyáltalán lehetséges. [Ez a cikk](alerts-metric-create-templates.md) a részleteket ismerteti.
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat.
 >
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) a klasszikus Azure metrikus riasztások konfigurálásához. Ez lehetővé teszi a riasztások automatikus beállítását az erőforrásokon a létrehozásuk során, így biztosítva, hogy az összes erőforrás megfelelően legyen figyelve.

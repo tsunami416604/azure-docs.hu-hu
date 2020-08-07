@@ -1,7 +1,7 @@
 ---
 title: Fejlesztői fiókok kezelése az Azure-beli csoportok használatával API Management
 titleSuffix: Azure API Management
-description: Ismerje meg, hogyan kezelheti a fejlesztői fiókokat az Azure-beli csoportok használatával API Management
+description: Ismerje meg, hogyan kezelheti a fejlesztői fiókokat a csoportok használatával az Azure API Managementban. Hozzon létre csoportokat, majd társítsa őket termékekhez vagy fejlesztőhöz.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250532"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851222"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Csoportok létrehozása és használata fejlesztői fiókok kezeléséhez az Azure API Managementben
 

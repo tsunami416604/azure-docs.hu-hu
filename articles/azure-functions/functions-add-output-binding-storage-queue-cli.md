@@ -3,14 +3,14 @@ title: Azure Functions összekötése az Azure Storage-hoz a parancssori eszköz
 description: Megtudhatja, hogyan csatlakoztathatja a Azure Functionst egy Azure Storage-várólistához egy kimeneti kötés hozzáadásával a parancssori projekthez.
 ms.date: 02/07/2020
 ms.topic: quickstart
-ms.custom: tracking-python
+ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8a5f9cd42d13b7cfb4bc6e95809112a3b7045fe4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560104"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852633"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Azure Functions összekötése az Azure Storage-hoz a parancssori eszközök használatával
 
@@ -127,7 +127,7 @@ az group delete --name AzureFunctionsQuickstart-rg
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények parancssorból való fejlesztéséről a Core Tools és az Azure CLI használatával:
 
-+ [Azure Functions Core Tools használata](functions-run-local.md)  
++ [Az Azure Functions Core Tools használata](functions-run-local.md)  
 
 ::: zone pivot="programming-language-csharp"  
 + [Példák a teljes körű függvények projektjeire a C#-ban](/samples/browse/?products=azure-functions&languages=csharp).

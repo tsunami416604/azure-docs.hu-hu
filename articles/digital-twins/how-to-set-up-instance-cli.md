@@ -1,5 +1,5 @@
 ---
-title: Példány és hitelesítés beállítása (CLI)
+title: Példány és hitelesítés beállítása (parancssori felület)
 titleSuffix: Azure Digital Twins
 description: 'Lásd: az Azure Digital Twins szolgáltatás egy példányának beállítása a parancssori felület használatával'
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ba03acabb3325045a71d55f583343a26b4d121ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408288"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832346"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure digitális Twins-példány és-hitelesítés beállítása (CLI)
 
@@ -46,7 +46,7 @@ A példány létrehozásához használja ezeket az értékeket a következő par
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>Sikeres ellenőrzés
+### <a name="verify-success-and-collect-important-values"></a>Sikeres ellenőrzés és fontos értékek összegyűjtése
 
 Ha a példány létrehozása sikeresen megtörtént, a Cloud Shell eredmény a következőképpen néz ki: a létrehozott erőforrással kapcsolatos információk kihelyezése:
 
@@ -71,12 +71,16 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel kapcsolatos információ.
 
-> [!TIP]
-> Ha a *400: BadRequest* hiba jelenik meg, futtassa a következő parancsot a felhasználó *ObjectId* lekéréséhez:
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> Ezután ismételje meg a szerepkör-hozzárendelési parancsot az e-mail-cím helyett a felhasználó *objektum-azonosítójával* .
+> [!NOTE]
+> Ha a parancs hibát ad vissza, ami azt jelzi, hogy a parancssori **felület nem találja a felhasználó vagy az egyszerű szolgáltatásnév kifejezést a Graph adatbázisban**:
+>
+> Az e-mail-cím helyett használja a felhasználó *objektum-azonosítóját* . Ez akkor fordulhat elő, ha a felhasználók személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkeznek. 
+>
+> [Azure Active Directory felhasználók Azure Portal oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) válassza ki a felhasználói fiókot, és nyissa meg a részleteit. A felhasználó *ObjectId*másolása:
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="A felhasználó oldalának nézete Azure Portal kiemelve a GUID azonosítót az "objektumazonosító" mezőben" lightbox="media/includes/user-id.png":::
+>
+> Ezután ismételje meg a szerepkör-hozzárendelési lista parancsát a felhasználó *objektum-azonosítójának* használatával az e-mail helyett.
 
 ### <a name="verify-success"></a>Sikeres ellenőrzés
 
@@ -117,7 +121,7 @@ Nyissa meg az imént létrehozott *manifest.js* , és nyomja meg a "Megnyitás" 
 Ezután futtassa a következő parancsot egy alkalmazás regisztrációjának létrehozásához (szükség szerint cserélje le a helyőrzőket):
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 Íme a parancs kimenetének részlete, amely a létrehozott regisztrációval kapcsolatos információkat jeleníti meg:

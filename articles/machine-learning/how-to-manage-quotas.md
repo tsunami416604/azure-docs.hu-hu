@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372943"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846734"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,13 +46,9 @@ Itt látható az Azure-előfizetésben lévő különböző erőforrástípusok 
 > A korlátozások változhatnak. A legújabbak mindig az összes Azure szolgáltatási szintű kvóta [dokumentumában](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) találhatók.
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-Az egyes Azure-előfizetések esetében korlátozott számú virtuális gép érhető el a szolgáltatásban vagy önálló rendszeren. Ez a korlát a teljes magokon, valamint a családon belül is a régió szintjén érhető el.
-
-A virtuális gépek magjai a regionális teljes korláttal és a (Dv2, F stb.) korláttal rendelkeznek, és mindkettő külön kényszerített. Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés üzembe helyezhet 30 A1 virtuális gépet, 30 D1 virtuális gépet, vagy a kettő valamilyen kombinációját, amely nem haladja meg az összesen 30 magot (pl. 10 A1 virtuális gép és 20 D1 virtuális gép).
+Az egyes Azure-előfizetések esetében korlátozva van a virtuális gépek száma a szolgáltatásokban vagy az önálló szolgáltatások között. A virtuális gépek magjai a regionális teljes korláttal és a (Dv2, F stb.) korláttal rendelkeznek, és mindkettő külön kényszerített. Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés üzembe helyezhet 30 A1 virtuális gépet, 30 D1 virtuális gépet, vagy a kettő valamilyen kombinációját, amely nem haladja meg az összesen 30 magot (pl. 10 A1 virtuális gép és 20 D1 virtuális gép).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-A kvóta korlátainak részletesebb és naprakész listáját az [Azure-ra kiterjedő kvóta című cikkben](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)találja.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 [Azure Machine learning számítás](concept-compute-target.md#azure-machine-learning-compute-managed)esetében az előfizetések régiónként legfeljebb a magok számának és az egyes régiókban engedélyezett egyedi számítási erőforrások számának az alapértelmezett kvótája. Ez a kvóta különbözik a fenti virtuálisgép-alapkvótatől, és az alapvető korlátok nincsenek megosztva a két erőforrástípus között, mivel a AmlCompute egy felügyelt szolgáltatás, amely erőforrásokat helyez üzembe egy szolgáltatott modellben.
@@ -84,16 +80,10 @@ Rendelkezésre álló erőforrások:
 - A folyamatokban engedélyezett lépések maximális száma 30 000
 - Az ütemezett futtatások és a blob-lekérések összegének maximális száma az előfizetéshez tartozó közzétett folyamatokra vonatkozóan, havonta 100 000
 
-> [!NOTE]
-> Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
-
 ### <a name="container-instances"></a>Tárolópéldányok
 
 Az adott időszakban (óránkénti hatókörben) vagy a teljes előfizetésen belül elforgatható tároló-példányok száma is korlátozott.
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-A kvóta korlátainak részletesebb és naprakész listáját az Azure-ra vonatkozó kvóta [című cikkben találja](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
+A korlátokat lásd: [Container instances korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Storage
 A Storage-fiókok száma régiónként és egy adott előfizetésben is korlátozott. Az alapértelmezett korlát 250, és a standard és a Premium Storage fiókot is tartalmazza. Ha egy adott régióban több mint 250 Storage-fiókra van szüksége, az [Azure támogatási szolgálatán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül teheti meg a kérést. Az Azure Storage csapata áttekinti az üzleti ügyeit, és akár 250 Storage-fiókot is jóváhagyhat egy adott régióban.
@@ -126,7 +116,7 @@ Azure Machine Learning a számításokat az előfizetésében lévő többi Azur
 1. Válasszon egy előfizetést a kvóta korlátainak megtekintéséhez. Ne felejtse el szűrni az Önt érdeklő régiót.
 
 1. Mostantól válthat egy előfizetési szint nézet és egy munkaterület szintű nézet között:
-    + **Előfizetési nézet:** Ez lehetővé teszi, hogy megtekintse az alapszintű kvóta használatát a virtuálisgép-család számára, bővítse azt munkaterületen, és bővítse azt a tényleges fürt nevével. Ez a nézet optimális megoldást nyújt az adott virtuálisgép-család alapvető használatának részleteire, így a munkaterületek által felhasználható munkaterületek és a mögöttes fürtök is megjelennek. A nézet általános egyezménye (használat/kvóta), ahol a használat a Felskálázási magok aktuális száma, a kvóta pedig az erőforrás által méretezhető magok logikai maximális száma. Az egyes **munkaterületek**esetében a kvóta a munkaterület szintjének kvóta (a fentebb leírtak szerint), amely az adott virtuálisgép-család számára méretezhető magok maximális számát jelöli. A **fürthöz** hasonlóan a kvóta valójában a fürt által a max_nodes tulajdonság által definiált csomópontok maximális számának megfelelő magok mérete.
+    + **Előfizetési nézet:** Megjeleníti az alapszintű kvóta használatát a virtuálisgép-család számára, kibővíti a munkaterületet, és bővíti azt a tényleges fürt nevével. Gyorsan megismerheti az adott virtuálisgép-család alapszintű használatának részleteit, és megtekintheti az egyes munkaterületek alapjául szolgáló fürtök felbomlását. A nézet általános egyezménye (használat/kvóta), ahol a használat a Felskálázási magok aktuális száma, a kvóta pedig az erőforrás által méretezhető magok logikai maximális száma. Az egyes **munkaterületek**esetében a kvóta a munkaterület szintjének kvóta (a fentebb leírtak szerint), amely az adott virtuálisgép-család számára méretezhető magok maximális számát jelöli. A **fürthöz** hasonlóan a kvóta valójában a fürt által a max_nodes tulajdonság által definiált csomópontok maximális számának megfelelő magok mérete.
 
     + **Munkaterület nézet:** Így megtekintheti az alapszintű kvóta használatát a munkaterület alapján, kiterjesztheti a virtuálisgép-családot, és tovább bővítheti a tényleges fürt neve alapján. Ez a nézet optimális megoldást nyújt arra, hogy gyorsan bejusson egy adott munkaterülethez tartozó alapvető használat részleteibe, hogy láthassa a virtuálisgép-családok felbomlását, valamint az egyes családokhoz tartozó mögöttes fürtöket.
 
@@ -147,10 +137,6 @@ Ha a kvóta megnövekedését kéri, ki kell választania azt a szolgáltatást,
 > [!NOTE]
 > Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](../billing/billing-upgrade-azure-subscription.md) utólagos elszámolású és az [ingyenes próbaverziós előfizetésre vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 
-## <a name="next-steps"></a>További lépések
-
-További információ ezekről a cikkekről:
+## <a name="next-steps"></a>Következő lépések
 
 + [A Azure Machine Learning költségeinek megtervezése & kezeléséhez](concept-plan-manage-cost.md)
-
-+ [A kvóta növelésének módja](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).

@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346044"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851986"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Felügyeleti központ Azure Data Factory
 
@@ -52,13 +52,19 @@ Ha szeretné felülbírálni a létrehozott Resource Manager-sablon paraméterei
 
 ## <a name="manage-authoring"></a>Szerzői műveletek kezelése
 
-### <a name="triggers"></a>Triggerek
+### <a name="triggers"></a>Eseményindítók
 
 Az eseményindítók határozzák meg, hogy a folyamat mikor fusson. Az eseményindítók jelenleg egy falióra-ütemezéssel, rendszeres időközönként működnek, vagy egy eseménytől függenek. További információért olvassa el az [trigger-végrehajtást](concepts-pipeline-execution-triggers.md#trigger-execution)ismertető témakört. A felügyeleti központban létrehozhat, szerkeszthet, törölhet vagy megtekintheti az trigger aktuális állapotát.
 
 ![Egyéni paraméterek kezelése](media/author-management-hub/management-hub-triggers.png)
 
-## <a name="next-steps"></a>További lépések
+### <a name="global-parameters"></a>Globális paraméterek
+
+A globális paraméterek állandók egy olyan adatelőállítón keresztül, amelyet bármely kifejezésben felhasználhat egy folyamat. További információért olvassa el a [globális paramétereket](author-global-parameters.md).
+
+![Globális paraméterek létrehozása](media/author-global-parameters/create-global-parameter-3.png)
+
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [konfigurálhat git-tárházat](source-control.md) az ADF-hez
 

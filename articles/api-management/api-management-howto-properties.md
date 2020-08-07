@@ -1,6 +1,6 @@
 ---
 title: Nevesített értékek használata az Azure API Management-házirendekben
-description: Megtudhatja, hogyan használhatja a nevesített értékeket az Azure API Management-házirendekben.
+description: Megtudhatja, hogyan használhatja a nevesített értékeket az Azure API Management-házirendekben. A nevesített értékek literál karakterláncokat és házirend-kifejezéseket tartalmazhatnak.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243477"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852191"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
@@ -29,7 +29,7 @@ Minden API Management Service-példányhoz kulcs/érték párok gyűjteménye ta
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | sztring          | A megnevezett értékre hivatkozik a szabályzatokban. Egy 256 karakterből álló karakterlánc. Csak betűket, számokat, pontokat és kötőjeleket lehet engedélyezni. |
 | `Value`        | sztring          | Tényleges érték. Nem lehet üres, és nem állhat csak szóközökből. Legfeljebb 4096 karakter hosszú lehet.                                        |
-| `Secret`       | logikai         | Meghatározza, hogy az érték titkos-e, és hogy titkosítva legyen-e.                                                               |
+| `Secret`       | boolean         | Meghatározza, hogy az érték titkos-e, és hogy titkosítva legyen-e.                                                               |
 | `Tags`         | sztringek tömbje | A megnevezett értékek listájának szűrésére szolgál. Legfeljebb 32 címkével.                                                                                    |
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
@@ -40,7 +40,7 @@ A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket
 | ---------- | -------------------------- | ------ | ------------- |
 | Érték      | 42                         | Hamis  | létfontosságú számok |
 | Hitelesítő adat | ••••••••••••••••••••••     | Igaz   | biztonság      |
-| Kifejezés | @ (DateTime. Now. ToString ()) | Hamis  |               |
+| Expression | @ (DateTime. Now. ToString ()) | Hamis  |               |
 
 > [!NOTE]
 > Egy API Management szolgáltatásban tárolt névvel ellátott értékek helyett a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) szolgáltatásban tárolt értékeket használhatja, ahogy azt a [példa](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)mutatja.

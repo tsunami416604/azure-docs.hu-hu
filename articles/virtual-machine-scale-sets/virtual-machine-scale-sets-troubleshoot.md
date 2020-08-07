@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029433"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830682"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Az automatikus méretezés hibaelhárítása a Virtual Machine Scale Sets használatával
 **Probléma** – a Azure Resource Manager a virtuálisgép-méretezési csoportok használatával létrehozott egy automatikus skálázási infrastruktúrát, például egy sablon üzembe helyezésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – a méretezési szabályok definiálva vannak, és nagyszerűen működik, kivéve, ha a virtuális gépeken elhelyezett terhelések mennyisége nem automatikus méretezés.
@@ -23,7 +23,7 @@ ms.locfileid: "87029433"
 Néhány megfontolandó szempont:
 
 * Hány vCPU rendelkezik az egyes virtuális gépek, és betölti az egyes vCPU?
-  Az előző minta Azure rövid útmutató sablon egy do_work. php szkripttel rendelkezik, amely egyetlen vCPU tölt be. Ha olyan virtuális gépet használ, amely egy vCPU virtuálisgép-méretnél nagyobb, mint Standard_A1 vagy D1, akkor többször is futtatnia kell ezt a terhelést. Az [Azure-beli Windows rendszerű virtuális gépek méretének](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) áttekintésével győződjön meg arról, hogy hány vCPU rendelkezik a virtuális gépekhez
+  Az előző minta Azure rövid útmutató sablon egy do_work. php szkripttel rendelkezik, amely egyetlen vCPU tölt be. Ha olyan virtuális gépet használ, amely egy vCPU virtuálisgép-méretnél nagyobb, mint Standard_A1 vagy D1, akkor többször is futtatnia kell ezt a terhelést. Az [Azure-beli Windows rendszerű virtuális gépek méretének](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) áttekintésével győződjön meg arról, hogy hány vCPU rendelkezik a virtuális gépekhez
 * Hány virtuális gépet használnak a virtuálisgép-méretezési csoportokban?
   
     A kibővített esemény csak akkor zajlik le, ha egy méretezési csoportba tartozó **összes** virtuális gép átlagos CPU-értéke meghaladja a küszöbértéket az autoskálázási szabályokban definiált belső idő során.

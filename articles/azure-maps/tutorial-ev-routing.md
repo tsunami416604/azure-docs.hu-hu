@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: f341179d121af2fa4e5b198aeee2ea65bc6c378c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133316"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850168"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -89,7 +89,7 @@ A kód a jegyzetfüzetben való futtatásához a következő lépések végrehaj
     a. Az első legördülő listában válassza a **Requirements.txt**lehetőséget.  
     b. A második legördülő listában válassza ki a *requirements.txt* fájlt.  
     c. A harmadik legördülő listában válassza ki a **Python 3,6** -es verzióját.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Csomagok telepítése](./media/tutorial-ev-routing/install-packages.png)
 
@@ -387,7 +387,7 @@ display(Image(staticMapImage))
 
 ![Az útvonalat ábrázoló Térkép](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hívhatja közvetlenül a Azure Maps REST API-kat, és hogyan jelenítheti meg Azure Maps-adatok a Python használatával.
 

@@ -6,13 +6,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/12/2019
-ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044566"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901691"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Az események rendezésére vonatkozó szabályzatok konfigurálása Azure Stream Analyticshoz
 
@@ -76,6 +76,11 @@ Ez az üzenet tájékoztat arról, hogy a bemenetben legalább egy partíció ü
 1. Győződjön meg arról, hogy az Event hub/IoT Hub összes partíciója fogadja a bemenetet. 
 2. A lekérdezésben használja a Partition by PartitionID záradékot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Miért látok 5 másodperces késleltetést akkor is, ha a késői érkezési szabályzat értéke 0?
+Ez akkor történik meg, ha van olyan bemeneti partíció, amely soha nem kapott semmilyen bemenetet. A bemeneti metrikákat a partíció alapján ellenőrizheti a viselkedés ellenőrzéséhez. 
+
+Ha egy partícióhoz nem tartozik több, mint a beállított késői érkezési küszöbérték, a stream Analytics az alkalmazás időbélyegét az esemény rendezési szempontjai című szakaszban ismertetett módon részletezi. Ehhez a becsült érkezési időt kell megbecsülni. Ha a partíció soha nem tartalmazott semmilyen adatforrást, a stream Analytics *helyi idő szerint (5 másodperc*) megbecsüli az érkezési időt. Az olyan partíciók miatt, amelyek soha nem voltak adatai, 5 másodperces vízjel-késleltetést mutatnak.  
+
+## <a name="next-steps"></a>Következő lépések
 * [Időkezelési megfontolások](stream-analytics-time-handling.md)
 * [Stream Analytics elérhető metrikák](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)

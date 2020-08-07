@@ -1,6 +1,6 @@
 ---
 title: Gyakori, ritka elérésű és archív hozzáférési szintek Blobok számára – Azure Storage
-description: További információ az Azure Blob Storage-hoz készült gyakori, ritka elérésű és archív hozzáférési szintekről. Tekintse át a rétegek használatát támogató Storage-fiókokat. A blokkolási blog tárolási lehetőségeinek összehasonlítása.
+description: További információ az Azure Blob Storage-hoz készült gyakori, ritka elérésű és archív hozzáférési szintekről. Tekintse át a rétegek használatát támogató Storage-fiókokat. A blob tárolási beállításainak összehasonlítása.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 17df78f846d8422c0200ce5fc75b4722d21d35df
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828272"
+ms.locfileid: "87849726"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek
 
@@ -274,7 +274,7 @@ Az Azure Portal, a PowerShell, valamint a parancssori felület eszközei, illetv
 
 Az adattárolás és más korlátok a fiók szintjén vannak megadva, nem pedig hozzáférési szinten. Választhat, hogy az összes korlátot egy vagy mindhárom szinten használja-e. További információ: [a méretezhetőség és a teljesítményre vonatkozó célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GPv2-és blob Storage-fiókok gyors, ritka és archív verzióinak kiértékelése
 

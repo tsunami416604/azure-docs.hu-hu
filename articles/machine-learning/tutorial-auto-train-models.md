@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 2e22ac4601384508869ff43d473dd191f405cd43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: c88d4b682fef0b21161e6ff2738626892405ee55
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851409"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,8 +107,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,88</td>
       <td>40,84</td>
       <td>– 73,94</td>
@@ -131,8 +131,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,96</td>
       <td>40,81</td>
       <td>– 73,96</td>
@@ -155,8 +155,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,92</td>
       <td>40,76</td>
       <td>– 73,91</td>
@@ -179,8 +179,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,81</td>
       <td>40,70</td>
       <td>– 73,82</td>
@@ -203,8 +203,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,92</td>
       <td>40,76</td>
       <td>– 73,92</td>
@@ -227,8 +227,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1.10</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,96</td>
       <td>40,72</td>
       <td>– 73,95</td>
@@ -251,8 +251,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,88</td>
       <td>40,76</td>
       <td>– 73,87</td>
@@ -275,8 +275,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,96</td>
       <td>40,72</td>
       <td>– 73,91</td>
@@ -299,8 +299,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,94</td>
       <td>40,71</td>
       <td>– 73,95</td>
@@ -323,8 +323,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,94</td>
       <td>40,71</td>
       <td>– 73,94</td>
@@ -399,8 +399,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,88</td>
       <td>40,84</td>
       <td>– 73,94</td>
@@ -423,8 +423,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,96</td>
       <td>40,81</td>
       <td>– 73,96</td>
@@ -447,8 +447,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,92</td>
       <td>40,76</td>
       <td>– 73,91</td>
@@ -471,8 +471,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,81</td>
       <td>40,70</td>
       <td>– 73,82</td>
@@ -495,8 +495,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,92</td>
       <td>40,76</td>
       <td>– 73,92</td>
@@ -519,8 +519,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1.10</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,96</td>
       <td>40,72</td>
       <td>– 73,95</td>
@@ -543,8 +543,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,88</td>
       <td>40,76</td>
       <td>– 73,87</td>
@@ -567,8 +567,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,96</td>
       <td>40,72</td>
       <td>– 73,91</td>
@@ -591,8 +591,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,94</td>
       <td>40,71</td>
       <td>– 73,95</td>
@@ -615,8 +615,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Nincs</td>
-      <td>Nincs</td>
+      <td>Nincsenek</td>
+      <td>Nincsenek</td>
       <td>– 73,94</td>
       <td>40,71</td>
       <td>– 73,94</td>
@@ -865,7 +865,7 @@ A modellek automatikus betanításához hajtsa végre a következő lépéseket:
 
 A kísérlet paraméter és a modell beállításainak megadása a betanításhoz. Tekintse meg a [Beállítások](how-to-configure-auto-train.md)teljes listáját. Ha a kísérletet ezekkel az alapértelmezett beállításokkal küldi el, a rendszer körülbelül 5-20 percig tart, de ha rövidebb futási időt szeretne, csökkentse a `experiment_timeout_hours` paramétert.
 
-|Tulajdonság| Az oktatóanyagban szereplő érték |Description|
+|Tulajdonság| Az oktatóanyagban szereplő érték |Leírás|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Az egyes iterációk időkorlátja percben kifejezve. Csökkentse ezt az értéket a teljes futtatókörnyezet csökkentése érdekében.|
 |**experiment_timeout_hours**|0.3|A kísérlet megszakítása előtt az összes iteráció együttes elvégzése ennyi idő alatt elvégezhető.|
@@ -1054,7 +1054,7 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a következő feladatokat hajtotta végre:
 

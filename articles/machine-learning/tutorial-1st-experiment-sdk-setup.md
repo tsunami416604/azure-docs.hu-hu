@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 8ba6141bddd60c2bdc2fdf17845e8f470dd6ef55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520527"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852718"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         + A névnek betűvel kell kezdődnie (nem szám vagy kötőjel karakter).
         + Ha a kötőjel karaktert használja, a kötőjel után legalább egy betűt kell követnie. Példa: test-, test-0, test-01 érvénytelen, míg a test-a0, test-0a érvényes példányok.
 
-    1.  Válassza ki a virtuális gép méretét a rendelkezésre álló lehetőségek közül.
+    1.  Válassza ki a virtuális gép méretét a rendelkezésre álló lehetőségek közül. Az oktatóanyagok esetében az alapértelmezett virtuális gép jó választás.
 
     1. Ezután válassza a **Létrehozás** elemet. A virtuális gép beállítása körülbelül 5 percet vesz igénybe.
 

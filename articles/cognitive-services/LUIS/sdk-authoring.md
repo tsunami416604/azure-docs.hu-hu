@@ -3,14 +3,14 @@ title: 'Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódt
 description: Ismerkedjen meg a LUIS ügyféloldali függvénytárával ebben a rövid útmutatóban. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: e5fc21ed42d3704cf102a820cebb64c09aff23ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 124cfbac897be76365710ffd505dee18af7adcec
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369429"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876971"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódtár készítése
 
@@ -28,7 +28,7 @@ Ismerkedjen meg a Language Understanding (LUIS) ügyféloldali kódtár használ
 [!INCLUDE [Get intent with Python SDK](./includes/sdk-python-authoring.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Az SDK használata az előrejelzési végpont lekérdezéséhez](sdk-query-prediction-endpoint.md)

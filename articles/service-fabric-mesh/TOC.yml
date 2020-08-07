@@ -5,13 +5,13 @@
   items:
     - name: A Service Fabric Mesh névjegye
       href: service-fabric-mesh-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: A Hello World üzembe helyezése
       href: service-fabric-mesh-quickstart-deploy-container.md
     - name: Webalkalmazás létrehozása a Visual Studióval
       href: service-fabric-mesh-quickstart-dotnet-core.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Mesh-alkalmazás buildelése és üzembe helyezése a Visual Studióval
       items:
@@ -82,11 +82,9 @@
     - name: A Service Fabric Mesh parancssori felületével kapcsolatos referencia
       href: /cli/azure/ext/mesh
     - name: Service Fabric ügyfél-erőforrás REST API-k
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Service Fabric Maven parancssori felületével kapcsolatos referencia
       href: service-fabric-mesh-reference-maven.md
-    - name: Resource Manager-sablon
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
 - name: További források
   items:
     - name: Gyakori kérdések

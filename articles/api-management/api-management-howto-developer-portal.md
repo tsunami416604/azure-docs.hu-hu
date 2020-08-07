@@ -1,7 +1,7 @@
 ---
 title: Az Azure API Management fejlesztői portál áttekintése
 titleSuffix: Azure API Management
-description: Ismerje meg API Management fejlesztői portálját.
+description: Ismerje meg API Management fejlesztői portálját. A fejlesztői portálon a felhasználók megtalálják az API-kat.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373147"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852157"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -222,7 +222,7 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az új fejlesztői portálról:
 
