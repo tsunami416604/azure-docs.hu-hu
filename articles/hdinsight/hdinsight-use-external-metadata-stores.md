@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085905"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873092"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadattárak használata az Azure HDInsightban
 
@@ -38,10 +38,10 @@ Alapértelmezés szerint a HDInsight létrehoz egy metaadattár minden fürt tí
 
 * Az alapértelmezett metaadattár nem oszthatók meg más fürtökkel.
 
-* Az alapértelmezett metaadattár az alapszintű Azure SQL Database, amely öt DTU (adatbázis-tranzakciós egység) korlátot használ.
-Ez az alapértelmezett metaadattár jellemzően viszonylag egyszerű számítási feladatokhoz használatos. Olyan munkaterhelések, amelyek nem igényelnek több fürtöt, és nem kell megőrizniük a fürt életciklusán túli metaadatokat.
+* Az alapértelmezett metaadattár csak egyszerű munkaterhelések esetén ajánlott. Olyan munkaterhelések, amelyek nem igényelnek több fürtöt, és nem kell megőrizniük a fürt életciklusán túli metaadatokat.
 
-* Éles számítási feladatokhoz ajánlott áttelepíteni egy külső metaadattár. További részletekért tekintse meg az alábbi szakaszt.
+> [!IMPORTANT]
+> Az alapértelmezett metaadattár egy **alapszintű 5 DTU-korláttal (nem frissíthető)** rendelkező Azure SQL Database biztosít. Alapvető tesztelési célokra alkalmas. Nagyméretű vagy éles számítási feladatokhoz ajánlott áttelepíteni egy külső metaadattár.
 
 ## <a name="custom-metastore"></a>Egyéni metaadattár
 
@@ -81,9 +81,8 @@ A fürtöt egy korábban létrehozott Azure SQL Databasere irányíthatja bármi
 
 ## <a name="hive-metastore-guidelines"></a>Hive-metaadattár irányelvek
 
-* Ha lehetséges, használjon egyéni metaadattár, hogy elkülönítse a számítási erőforrásokat (a futó fürtöt) és a metaadatokat (a metaadattár tárolva).
-
-* Első lépésként egy S2 szintű, amely 50 DTU és 250 GB tárterületet biztosít. Ha szűk keresztmetszet jelenik meg, az adatbázis felskálázása felfelé is elvégezhető.
+> [!NOTE]
+> Ha lehetséges, használjon egyéni metaadattár, hogy elkülönítse a számítási erőforrásokat (a futó fürtöt) és a metaadatokat (a metaadattár tárolva). Kezdje az S2-vel, amely 50 DTU és 250 GB tárterületet biztosít. Ha szűk keresztmetszet jelenik meg, az adatbázis felskálázása felfelé is elvégezhető.
 
 * Ha több HDInsight-fürthöz is szeretne hozzáférni, használjon külön adatbázist az egyes fürtök metaadattár. Ha több HDInsight-fürtön keresztül oszt meg egy metaadattár, az azt jelenti, hogy a fürtök ugyanazokat a metaadatokat és a mögöttes felhasználói adatfájlokat használják.
 
@@ -111,6 +110,6 @@ A Oozie-metaadattár Azure SQL Database használatával történő létrehozás�
 
 Ha saját külső adatbázist szeretne használni az Apache Ambari a HDInsight-on, tekintse meg az [Egyéni Apache Ambari-adatbázist](hdinsight-custom-ambari-db.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával](./hdinsight-hadoop-provision-linux-clusters.md)

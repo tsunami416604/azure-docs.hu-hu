@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8bbdf984311883006fcd6af16f42d7f7972cc169
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323315"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832654"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítések Android-eszközökre az Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
+# <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -98,6 +98,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
+
 2. A **dependencies** (függőségek) szakasz után vegye fel az alábbi tárhelyet.
 
     ```gradle
@@ -121,6 +122,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         </intent-filter>
     </service>
     ```
+
 2. Miután az alkalmazás megkapta a GCM regisztrációs jogkivonatot a példányazonosító API-tól, végrehajtja az [Azure Notification Hub-regisztrációt](notification-hubs-push-notification-registration-management.md) a jogkivonattal. A regisztráció egy `RegistrationIntentService` nevű `IntentService` használatával zajlik a háttérben. Ez a szolgáltatás a [GCM regisztrációs jogkivonat frissítését](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) is el fogja végezni.
 
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható tényleges csomagnévre.
@@ -131,6 +133,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         android:exported="false">
     </service>
     ```
+
 3. Határozzon meg egy fogadót az értesítések fogadásához. Adja hozzá az alábbi fogadódefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható tényleges csomagnévre.
 
     ```xml
@@ -142,9 +145,10 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         </intent-filter>
     </receiver>
     ```
-4. Az `</application>` címke alatt vegye fel az alábbi kötelező GCM-engedélyeket. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható csomagnévre.
 
-    További információk ezekről az engedélyekről: [GCM-ügyfélalkalmazás beállítása Androidhoz](https://developers.google.com/cloud-messaging/).
+4. Az `<application>` címke alatt vegye fel az alábbi kötelező GCM-engedélyeket. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható csomagnévre.
+
+    További információ ezekről az engedélyekről: [GCM-ügyfélalkalmazás beállítása Androidhoz](https://developers.google.com/cloud-messaging/).
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -165,7 +169,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     Frissítse ezt a három helyőrzőt a `NotificationSettings` osztály alábbi kódjában:
 
    * `SenderId`: A [Google Cloud Console](https://cloud.google.com/console)-ban korábban beszerzett projekt száma.
-   * `HubListenConnectionString`: A `DefaultListenAccessSignature` hub kapcsolatok karakterlánca. Ez a kapcsolati sztring az [Azure portal] a központ **Beállítások** paneljének **Hozzáférési szabályzatok** elemére kattintva másolható át.
+   * `HubListenConnectionString`: A hub **DefaultListenAccessSignature** -kapcsolatok karakterlánca. Ez a kapcsolati sztring az [Azure portal] a központ **Beállítások** paneljének **Hozzáférési szabályzatok** elemére kattintva másolható át.
    * `HubName`: A [Azure Portal]központ lapján megjelenő értesítési központ nevét használja.
 
      `NotificationSettings` kód:
@@ -177,6 +181,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         public static String HubListenConnectionString = "<Your default listen connection string>";
      }
      ```
+
 2. Adjon hozzá egy másik, `MyInstanceIDService` nevű új osztályt. Ez az osztály a Példányazonosító figyelőszolgáltatás megvalósítása.
 
     Ennek az osztálynak a kódja meghívja az `IntentService` szolgáltatást a [GCM-jogkivonat frissítésére](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a háttérben.
@@ -200,7 +205,8 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         }
     };
     ```
-3. Adjon hozzá a projekthez egy másik új, `RegistrationIntentService` nevű osztályt. Ez az osztály megvalósítja az `IntentService` szolgáltatást, amely [a GCM-jogkivonat frissítését](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) és [az értesítési központon történő regisztrációt](notification-hubs-push-notification-registration-management.md) kezeli.
+
+3. Adjon hozzá egy másik új osztályt a projekthez `RegistrationIntentService` . Ez az osztály megvalósítja az `IntentService` szolgáltatást, amely [a GCM-jogkivonat frissítését](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) és [az értesítési központon történő regisztrációt](notification-hubs-push-notification-registration-management.md) kezeli.
 
     Ehhez az osztályhoz az alábbi kódokat használja.
 
@@ -270,6 +276,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         }
     }
     ```
+
 4. A `MainActivity` osztályban adja hozzá az alábbi `import` utasításokat az osztály elején.
 
     ```java
@@ -282,6 +289,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     import android.widget.Toast;
     import android.content.Intent;
     ```
+
 5. Adja hozzá az alábbi privát tagokat az osztály felső részén. Ez a kód ellenőrzi a [Google Play-szolgáltatások rendelkezésre állását a Google által javasolt módon.](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)
 
     ```java
@@ -291,6 +299,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
     ```
+
 6. A `MainActivity` osztályban adja hozzá az alábbi metódust a Google Play-szolgáltatások rendelkezésre állásához.
 
     ```java
@@ -316,6 +325,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         return true;
     }
     ```
+
 7. A `MainActivity` osztályban adja hozzá az alábbi kódot, amellyel a Google Play-szolgáltatások még azelőtt ellenőrizhetők, mielőtt az `IntentService` meghívásával beszerezné a GCM regisztrációs jogkivonatát, illetve regisztrálna az értesítési központban.
 
     ```java
@@ -330,6 +340,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         }
     }
     ```
+
 8. A `MainActivity` osztály `OnCreate` metódusában vegye fel az alábbi kódot, ha el kívánja indítani a regisztrációt a tevékenység létrehozásakor.
 
     ```java
@@ -343,6 +354,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         registerWithNotificationHubs();
     }
     ```
+
 9. Az alkalmazás állapotának ellenőrzéséhez és az alkalmazásban történő állapotjelentéshez adja hozzá ezeket a további metódusokat a `MainActivity` osztályhoz.
 
     ```java
@@ -381,12 +393,15 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         });
     }
     ```
+
 10. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. Az activity_main.xml elrendezésben vegye fel az alábbi azonosítót ehhez a vezérlőhöz.
 
     ```xml
     android:id="@+id/text_hello"
     ```
+
 11. Ezután adja hozzá az AndroidManifest.xml fájlban meghatározott fogadó alosztályát. Adjon hozzá a projekthez egy másik új, `MyHandler` nevű osztályt.
+
 12. Vegye fel a következő importálási utasításokat a `MyHandler.java` felső részén:
 
     ```java
@@ -400,7 +415,8 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     import android.net.Uri;
     import android.media.RingtoneManager;
     ```
-13. Vegye fel az alábbi, `MyHandler` osztályhoz tartozó kódot, amely így a `com.microsoft.windowsazure.notifications.NotificationsHandler` alosztálya lesz.
+
+13. Adja hozzá a következő kódot az `MyHandler` osztályhoz, ami egy alosztálya `com.microsoft.windowsazure.notifications.NotificationsHandler` .
 
     Ez a kód felülírja az `OnReceive` metódust, így a kezelő jelentést küld a kapott értesítésekről. A kezelő az Android-értesítéskezelőnek is elküldi a leküldéses értesítést a `sendNotification()` metódus használatával. A `sendNotification()` metódust akkor kell végrehajtani, ha az alkalmazás nem fut, és értesítés érkezik.
 
@@ -447,6 +463,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         }
     }
     ```
+
 14. A menüsávon Android Studio kattintson a **Build**újjáépített projekt elemre,  >  **Rebuild Project** és győződjön meg arról, hogy a kódban nincsenek hibák.
 
 ## <a name="testing-your-app"></a>Az alkalmazás tesztelése
@@ -508,12 +525,14 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
+
 2. Android Studio Project nézetben bontsa ki az **app**  >  **src**  >  **fő**  >  **res**  >  **értékeit**. Nyissa meg a `strings.xml` fájlt, és adja hozzá a `Button` és az `EditText` vezérlő által hivatkozott sztringértékeket. A fájl alján, közvetlenül a `</resources>` rész előtt adja hozzá az alábbi sorokat.
 
     ```xml
     <string name="send_button">Send Notification</string>
     <string name="notification_message_hint">Enter notification message text</string>
     ```
+
 3. A `NotificationSetting.java` fájlban adja hozzá az alábbi beállítást a `NotificationSettings` osztályhoz.
 
     Frissítse a `HubFullAccess` fájlt a központ **DefaultFullSharedAccessSignature** kapcsolati sztringjével. Ez a kapcsolati sztring az [Azure Portalon] az értesítési központ **Beállítások** oldalának **Hozzáférési szabályzatok** elemére kattintva másolható át.
@@ -521,6 +540,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
     ```
+
 4. A `MainActivity.java` fájlban adja hozzá a következő `import` utasításokat a fájl elejéhez.
 
     ```java
@@ -537,6 +557,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     import android.view.View;
     import android.widget.EditText;
     ```
+
 5. A `MainActivity.java` fájlban adja hozzá az alábbi tagokat az `MainActivity` osztály felső részén.
 
     ```java
@@ -544,7 +565,8 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Az értesítési központba történő üzenetküldéshez hozzon létre egy Software Access Signature (SaS)-jogkivonatot, amely hitelesíti a POST-kéréseket. Elemezze a kapcsolati sztring legfontosabb adatait, majd az SaS-jogkivonat létrehozását, ahogyan az az [általánosan használt fogalmakat ismertető](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API-referenciában szerepel. Az alábbi kód egy megvalósítási példát szemléltet.
+
+6. Hozzon létre egy közös hozzáférési aláírási (SaS-) tokent a POST-kérések hitelesítéséhez, amely üzeneteket küld az értesítési központnak. Elemezze a kapcsolati sztring legfontosabb adatait, majd az SaS-jogkivonat létrehozását, ahogyan az az [általánosan használt fogalmakat ismertető](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API-referenciában szerepel. Az alábbi kód egy megvalósítási példát szemléltet.
 
     A `MainActivity.java` fájlban adja hozzá a `MainActivity` osztályhoz az alábbi metódust a kapcsolati sztring elemzéséhez.
 
@@ -575,6 +597,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
         }
     }
     ```
+
 7. A `MainActivity.java` fájlban adja hozzá a `MainActivity` osztályhoz az alábbi metódust egy SaS hitelesítési jogkivonat létrehozásához.
 
     ```java
@@ -630,6 +653,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
         return token;
     }
     ```
+
 8. A `MainActivity.java` fájlban adja hozzá az alábbi metódust a `MainActivity` osztályhoz a **Send Notification** (Értesítés küldése) gomb kezeléséhez, és küldje el a leküldéses értesítési üzenetet a beépített REST API használatával.
 
     ```java
@@ -712,7 +736,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált Android-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott Android-eszközökre, lépjen tovább a következő oktatóanyagra:  
 
@@ -738,7 +762,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [31]: ./media/notification-hubs-android-get-started/notification-hubs-android-studio-add-ui.png
 
 <!-- URLs. -->
-[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

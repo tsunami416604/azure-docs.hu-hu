@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503047"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831498"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Tudnivalók a virtuálisgép-méretezési csoport sablonjairól
 Az [Azure Resource Manager-sablonok](../azure-resource-manager/templates/overview.md#template-deployment-process) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Ez az oktatóanyag-sorozat bemutatja, hogyan hozható létre egy alapszintű méretezési csoport sablonja, és hogyan módosítható a sablon különböző helyzetekben. Az összes példa ebből a [GitHub-adattárból](https://github.com/gatneil/mvss)származik.
@@ -115,7 +115,7 @@ Ebben az esetben csak egy elem szerepel a listán, a virtuális hálózat az el�
 ## <a name="specify-scale-set-properties"></a>Méretezési csoport tulajdonságainak megadása
 A méretezési csoportok számos tulajdonsággal rendelkeznek a méretezési csoportba tartozó virtuális gépek testreszabásához. A tulajdonságok teljes listájáért tekintse meg a [sablonra vonatkozó referenciát](/azure/templates/microsoft.compute/virtualmachinescalesets). Ebben az oktatóanyagban csak néhány gyakran használt tulajdonság van beállítva.
 ### <a name="supply-vm-size-and-capacity"></a>Adja meg a virtuális gép méretét és kapacitását
-A méretezési csoportnak tudnia kell, hogy a létrehozandó virtuális gép mekkora mérete ("SKU Name") és hány ilyen virtuális gép hozható létre ("SKU Capacity"). Ha szeretné megtudni, hogy mely virtuálisgép-méretek érhetők el, tekintse meg a [VM-méretek dokumentációját](../virtual-machines/windows/sizes.md).
+A méretezési csoportnak tudnia kell, hogy a létrehozandó virtuális gép mekkora mérete ("SKU Name") és hány ilyen virtuális gép hozható létre ("SKU Capacity"). Ha szeretné megtudni, hogy mely virtuálisgép-méretek érhetők el, tekintse meg a [VM-méretek dokumentációját](../virtual-machines/sizes.md).
 
 ```json
        "sku": {

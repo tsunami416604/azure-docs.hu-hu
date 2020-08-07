@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Python-
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.custom: mvc, seodec18, devx-track-python
+ms.openlocfilehash: 0a0422dadd1c9b59e63da00b27a22fc7020bff93
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905620"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849964"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
-1. Futtassa az `pip install -r requirements.txt` parancsot.
+1. A `pip install -r requirements.txt` parancs futtatása.
 1. Ha a *Manage.py* a tárház gyökerében található, futtassa a *Manage.py collectstatic*. Ha azonban a értékre `DISABLE_COLLECTSTATIC` van állítva `true` , ez a lépés kimarad.
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
@@ -193,7 +193,7 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 - [A log stream elérése](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

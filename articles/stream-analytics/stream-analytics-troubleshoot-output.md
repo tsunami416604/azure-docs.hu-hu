@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037069"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903187"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -24,7 +24,7 @@ Ez a cikk a Azure Stream Analytics kimeneti kapcsolataival és a kimeneti probl�
 1. Ellenőrizze a kimenetek kapcsolatát az egyes kimenetek **kapcsolat tesztelése** gombjának használatával.
 1. Tekintse meg a [figyelési metrikákat](stream-analytics-monitoring.md) a **figyelés** lapon. Mivel az értékek összesítve vannak, a metrikák néhány perc késéssel lesznek késleltetve.
 
-   * Ha a **bemeneti események** értékének értéke nullánál nagyobb, a feladatnak a bemeneti adatokat is el kell olvasnia. Ha a **bemeneti események** értéke nem nagyobb nullánál, akkor probléma van a feladathoz megadott bemenettel. További információért lásd a [bemeneti kapcsolatok hibakeresését](stream-analytics-troubleshoot-input.md) ismertető témakört.
+   * Ha a **bemeneti események** értékének értéke nullánál nagyobb, a feladatnak a bemeneti adatokat is el kell olvasnia. Ha a **bemeneti események** értéke nem nagyobb nullánál, akkor probléma van a feladathoz megadott bemenettel. További információért lásd a [bemeneti kapcsolatok hibakeresését](stream-analytics-troubleshoot-input.md) ismertető témakört. Ha a feladatra hivatkozó adatok szerepelnek, a **bemeneti események** metrikájának megtekintésekor alkalmazza a logikai név szerinti felosztást. Ha a hivatkozási adatokból nincsenek bemeneti események, akkor ez valószínűleg azt jelenti, hogy a bemeneti forrás nem megfelelően van konfigurálva a megfelelő hivatkozási adatkészlet beolvasásához.
    * Ha az **Adatátalakítási hibák** értéke nagyobb, mint a nulla és a hegymászás, tekintse meg az Adatátalakítási hibákkal kapcsolatos részletes információkat a [Azure stream Analytics adathibák](data-errors.md) című részben.
    * Ha a **futásidejű hibák** értéke nullánál nagyobb, akkor a feladatsor adatokhoz jut, de hibákat generál a lekérdezés feldolgozásakor. A hibák megkereséséhez nyissa meg a [naplókat](../azure-resource-manager/management/view-activity-logs.md), majd szűrje a **hibás** állapotot.
    * Ha a **bemeneti események** értékének nullánál nagyobbnak kell lennie, és a **kimeneti események** értéke nulla, a következő utasítások egyike igaz:
@@ -91,7 +91,7 @@ Az eredeti kompatibilitási szint (1,0) használatakor Azure Stream Analytics az
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

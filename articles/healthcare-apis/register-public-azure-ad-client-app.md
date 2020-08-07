@@ -2,18 +2,18 @@
 title: Nyilvános ügyfélalkalmazás regisztrálása az Azure AD-ben – Azure API a FHIR-hez
 description: Ez a cikk azt ismerteti, hogyan regisztrálhat egy nyilvános ügyfélalkalmazás Azure Active Directoryban, a FHIR API Azure-beli üzembe helyezésének előkészítése során.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 5aa9e5a33dbe66e3ebd787decfa3a520454fc6f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: df1e6159baafc11c4b73c33feaf936784c05469e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871791"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853041"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Nyilvános ügyfélalkalmazás regisztrálása Azure Active Directory
 
@@ -59,7 +59,7 @@ Ha a cikkben regisztrált alkalmazás és a FHIR-kiszolgáló ugyanabban az Azur
 
 Ha az ügyfélalkalmazás egy másik Azure AD-bérlőben van konfigurálva a FHIR-kiszolgálóról, akkor frissítenie kell a **szolgáltatót**. A FHIR készült Azure API-ban a szolgáltatót a beállítások – > hitelesítés területen állíthatja be. Állítsa be a szolgáltatót a következőre: **https://login.microsoftonline.com/\<TENANT-ID>** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy nyilvános ügyfélalkalmazás Azure Active Directoryban. Ezt követően tesztelje a hozzáférést a FHIR-kiszolgálóhoz a Poster használatával.
  

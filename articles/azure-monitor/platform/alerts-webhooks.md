@@ -6,14 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073582"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852106"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
+
+> [!WARNING]
+> Ez a cikk a régebbi klasszikus metrikai riasztások használatát ismerteti. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat.
+>
 
 A webhookok használatával átirányíthat egy Azure-riasztási értesítést más rendszerekre a feldolgozás utáni vagy egyéni műveletekhez. A riasztások segítségével egy webhook használatával átirányíthatja azt a szolgáltatásba, amely SMS-üzeneteket küld, a hibák naplózása, a csapat csevegési vagy üzenetküldési szolgáltatásokon keresztüli értesítése, illetve egyéb műveletek esetén. 
 
@@ -68,7 +72,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 ```
 
 
-| Mező | Kötelező | Rögzített értékek halmaza | Jegyzetek |
+| Mező | Kötelező | Rögzített értékek halmaza | Megjegyzések |
 |:--- |:--- |:--- |:--- |
 | status |Y |Aktiválva, megoldva |A riasztás állapota a beállított feltételek alapján. |
 | összefüggésben |Y | |A riasztás kontextusa. |
@@ -99,7 +103,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az Azure-beli riasztásokról és webhookokról a videóban az [Azure-riasztások integrálása a PagerDuty](https://go.microsoft.com/fwlink/?LinkId=627080)-mel.
 * Megtudhatja, hogyan [hajthat végre Azure Automation szkripteket (runbookok) az Azure-riasztásokon](https://go.microsoft.com/fwlink/?LinkId=627081).
 * Ismerje meg, hogyan [KÜLDHET SMS-üzenetet a logikai alkalmazással egy Azure-riasztásból a Twilio-on keresztül](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).

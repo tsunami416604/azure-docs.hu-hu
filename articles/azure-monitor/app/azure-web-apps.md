@@ -2,14 +2,14 @@
 title: Az Azure app Services teljesítményének figyelése | Microsoft Docs
 description: Az alkalmazások teljesítményének figyelése az Azure app Servicesben. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373164"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876393"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -397,6 +397,12 @@ Ennek az az oka, hogy a APPINSIGHTS_JAVASCRIPT_ENABLED alkalmazás beállítása
 
 A Application Insights ügynökkel/bővítménnyel kapcsolatos legfrissebb információkért tekintse meg a [kibocsátási megjegyzéseket](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>A Web Apps szolgáltatással telepített alapértelmezett webhely nem támogatja az automatikus ügyféloldali figyelést
+
+Amikor létrehoz egy webalkalmazást az `ASP.NET` Azure-ban vagy a Runtimes szolgáltatásban, `.NET Core` app Services egyetlen statikus HTML-oldalt helyez üzembe kezdő webhelyként. A statikus weblap egy .NET-alapú felügyelt kijelzőt is betölt az IIS-ben. Ez lehetővé teszi a kód nélküli kiszolgálóoldali figyelés tesztelését, de nem támogatja az automatikus ügyféloldali figyelést.
+
+Ha szeretné kipróbálni a kód nélküli kiszolgálót és az ügyféloldali figyelést a ASP.NET vagy ASP.NET Core egy Azure App Services-webalkalmazásban, javasoljuk, hogy kövesse az [ASP.net Core-webalkalmazás létrehozásához](../../app-service/app-service-web-get-started-dotnet.md) és a [ASP.NET-keretrendszer webalkalmazás létrehozásához](../../app-service/app-service-web-get-started-dotnet-framework.md) szükséges hivatalos útmutatókat, majd kövesse az aktuális cikkben található utasításokat a figyelés engedélyezéséhez.
+
 ### <a name="php-and-wordpress-are-not-supported"></a>A PHP és a WordPress nem támogatott
 
 A PHP-és a WordPress-webhelyek nem támogatottak. Jelenleg nincs hivatalosan támogatott SDK/ügynök a számítási feladatok kiszolgálóoldali figyeléséhez. A PHP-vagy WordPress-webhelyen lévő ügyféloldali tranzakciók manuális kiépítéséhez azonban az ügyféloldali JavaScriptet a [JavaScript SDK](./javascript.md)használatával lehet elérni a weblapokon.
@@ -405,7 +411,7 @@ A PHP-és a WordPress-webhelyek nem támogatottak. Jelenleg nincs hivatalosan t�
 
 Ha kód nélküli figyelést használ, csak a kapcsolódási karakterláncra van szükség. Azonban továbbra is javasoljuk a kialakítási kulcs beállítását, hogy megőrizze a visszamenőleges kompatibilitást az SDK régebbi verzióival, ha manuális rendszerállapotot végez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](./profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
 * [Engedélyezze az Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.

@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
+    - name: A DDoS Protection biztonsági alapkonfigurációja
+      href: ddos-protection-security-baseline.md
     - name: Értékhiányos DNS és altartomány-átvétel
       href: subdomain-takeover.md
     - name: Biztonságos hibrid hálózati architektúra

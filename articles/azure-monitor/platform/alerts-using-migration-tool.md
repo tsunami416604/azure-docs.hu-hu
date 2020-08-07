@@ -6,19 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114253"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852123"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>A klasszikus riasztási szabályok áttelepítéséhez használja az önkéntes áttelepítési eszközt
 
-Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai 2019 szeptemberében megszűnnek (eredetileg 2019. július). Az áttelepítési eszköz a Azure Portalban olyan ügyfelek számára érhető el, akik klasszikus riasztási szabályokat használnak, és magukat a migrációt szeretnék elindítani. Ez a cikk azt ismerteti, hogyan használható az áttelepítési eszköz a klasszikus riasztási szabályok önkéntes áttelepítéséhez, mielőtt az automatikus áttelepítés 2019 szeptemberében megkezdődik.
-
-> [!NOTE]
-> Az áttelepítési eszköz késése miatt a klasszikus riasztások áttelepítésének lejárati dátuma [2019 augusztus 31-ig](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) , az eredetileg bejelentett, 2019. június 30-ig.
+Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak, de továbbra is korlátozott mértékben használják azokat az erőforrásokat, amelyek még nem támogatják az új riasztásokat. Áttelepítési eszköz volt elérhető a Azure Portalban a klasszikus riasztási szabályokat használó ügyfelek számára, akik maguknak szeretnék elindítani az áttelepítést. Ez a cikk azt ismerteti, hogyan használható az áttelepítési eszköz, amely a további bejelentéseken függőben lévő riasztások esetében is használatos.
 
 ## <a name="benefits-of-new-alerts"></a>Az új riasztások előnyei
 
@@ -37,7 +34,7 @@ Az áttelepítési folyamat a klasszikus riasztási szabályokat új, egyenért�
 
 - Az értesítési hasznos adatok formátuma és az új riasztási szabályok létrehozásához és kezeléséhez szükséges API-k eltérnek a klasszikus riasztási szabályoktól, mivel azok több funkciót is támogatnak. [Ismerje meg, hogyan készítheti elő az áttelepítést](alerts-prepare-migration.md).
 
-- Néhány klasszikus riasztási szabály nem telepíthető át az eszköz használatával. [Megtudhatja, hogy mely szabályok nem telepíthetők át, és mire használhatók](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+- Néhány klasszikus riasztási szabály nem telepíthető át az eszköz használatával. [Megtudhatja, hogy mely szabályok nem telepíthetők át, és mire használhatók](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
     > [!NOTE]
     > Az áttelepítési folyamat nem befolyásolja a klasszikus riasztási szabályok kiértékelését. A rendszer továbbra is futtatja és riasztásokat küld, amíg át nem telepíti őket, és az új riasztási szabályok érvénybe lépnek.
@@ -96,7 +93,7 @@ Az áttelepítés a legtöbb előfizetéshez egy órán belül befejeződik. Nyo
 
 Az áttelepítés során esetlegesen felmerülő problémákkal kapcsolatos segítségért tekintse meg a [hibaelhárítási útmutatót](alerts-understand-migration.md#common-problems-and-remedies) . Ha bármilyen műveletre van szükség az áttelepítés befejezéséhez, értesítést kap az eszköz beállításakor megadott e-mail-címekről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Előkészületek a migráláshoz](alerts-prepare-migration.md)
 - [A migrálási eszköz működésének ismertetése](alerts-understand-migration.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327395"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799922"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>SaaS-ajánlat létrehozási ellenőrzőlistája a partner Centerben
 
@@ -79,9 +79,9 @@ A Tulajdonságok lapon megadhatja az ajánlatnak a piactéren való csoportosít
 A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket láthassanak, amikor megtekintik az ajánlatát a piactéren. 
 
 | **Mezőnév**    | **Megjegyzések**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | Név  | Kötelező, Max 50 karakter. |
-| Összegzés  | Kötelező, Max 100 karakter. | 
+| Összefoglalás  | Kötelező, Max 100 karakter. |
 | Leírás  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
@@ -91,7 +91,7 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 | Hasznos hivatkozások címe + URL-cím  | Választható. |
 | Támogató dokumentumok cím + fájl  | Kötelező, minimum 1 és Max 3. PDF-fájlformátumnak kell lennie. |
 | Képernyőképek  | Kötelező, min. 1 képernyőfelvétel és max. 5; négy vagy több ajánlott. PNG formátumban 1280 X 720 értéknek kell lennie. |
-| Emblémák tárolása (kicsi, közepes, nagy, széles)  | Kicsi (48 X 48) és nagy (216 X 216) szükséges; Egyéb méretek nem kötelező, de ajánlott: közepes (90 x 90), széles (255 x 115). A-ben kell lennie. PNG-formátum. |
+| Emblémák tárolása (kicsi, közepes, nagy)  | A nagyméretű embléma (216 x 216) megadása kötelező. A partner Center ezt fogja használni egy kis (48 x 48 képpont) és egy közepes (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti. Az emblémának PNG formátumúnak kell lennie. |
 | Videók neve + URL + miniatűr  | Opcionális, ajánlott, legfeljebb 4 videó. A miniatűr 1280 x 720 PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
 | Névjegyek (CSP program, mérnöki, támogatás)  | Mérnöki és támogatási Kapcsolatfelvétel szükséges (név, e-mail és telefonszám); A CSP program elérhetősége nem kötelező, de ajánlott. |
 | Támogatási URL-cím  | Kötelező. |
@@ -100,11 +100,11 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 
 Az Előnézet lapon megadhatja, hogy az ajánlat előzetes verziójához milyen célközönség férhet hozzá, így ellenőrizheti, hogy az ajánlat megfelel-e az összes követelménynek az azonnali működéshez. 
 
-| **Mezőnév**    | **Megjegyzések**   | 
-| :---------------- | :-----------| 
+| **Mezőnév**    | **Megjegyzések**   |
+| :---------------- | :-----------|
 | HRE/MSA e-mail és leírás | Kötelező, minimum 1 és legfeljebb 10, ha manuálisan van megadva, vagy legfeljebb 20, ha CSV-fájlt tölt fel. |
 
-## <a name="technical-configuration-page"></a>Technikai konfiguráció lap 
+## <a name="technical-configuration-page"></a>Technikai konfiguráció lap
 
 A technikai konfiguráció lapon megadhatja a Microsoft által az ajánlathoz való kapcsolódáshoz használt technikai részleteket. Ez az oldal nem látható, ha úgy döntött, hogy nem értékesíti a Microsoftot.
 
@@ -165,6 +165,6 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 | :---------------- | :-----------| 
 | A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

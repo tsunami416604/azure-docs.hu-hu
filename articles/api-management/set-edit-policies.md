@@ -1,6 +1,6 @@
 ---
 title: Azure API Management-házirendek beállítása vagy szerkesztése | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan állíthatja be vagy szerkesztheti az Azure API Management szabályzatait.
+description: Ismerje meg, hogyan állíthatja be vagy szerkesztheti az Azure API Management szabályzatait. Ezek a házirendek olyan XML-dokumentumok, amelyek a bejövő és kimenő utasítások sorát írják le.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252793"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848009"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management-szabályzatok beállítása és szerkesztése
 

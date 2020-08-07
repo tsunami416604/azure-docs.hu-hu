@@ -14,13 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
-ms.custom: tracking-python
-ms.openlocfilehash: 311d882814c45b3b001fde2a4f3f9027e879f29c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-python
+ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919878"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851511"
 ---
 # <a name="use-service-management-from-python"></a>A Service Management használata a Pythonból
 Ez az útmutató bemutatja, hogyan hajthat végre általános szolgáltatás-felügyeleti feladatokat a Pythonból. A [Pythonhoz készült Azure SDK](https://github.com/Azure/azure-sdk-for-python) **ServiceManagementService** osztálya támogatja a programozott hozzáférést a [Azure Portalban][management-portal]elérhető szolgáltatás-felügyeleti funkciók nagy része számára. Ezt a funkciót használhatja a Cloud Services, az üzemelő példányok, az adatkezelési szolgáltatások és a virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a funkció hasznos lehet olyan alkalmazások létrehozásához, amelyeknek programozott hozzáférésre van szükségük a Service Management szolgáltatáshoz.
@@ -30,7 +30,7 @@ Az Azure Service Management API programozott hozzáférést biztosít a [Azure P
 
 A Service Management API használatához [létre kell hoznia egy Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="concepts"></a><a name="Concepts"> </a>Fogalmak
+## <a name="concepts"></a><a name="Concepts"> </a>Alapelvek
 A Pythonhoz készült Azure SDK becsomagolja a [Service Management API][svc-mgmt-rest-api], amely egy REST API. Minden API-művelet a TLS protokollon keresztül történik, és az X. 509 v3 tanúsítványok használatával kölcsönösen hitelesítve van. A kezelési szolgáltatás az Azure-ban futó szolgáltatáson belülről érhető el. Emellett közvetlenül az interneten keresztül is elérhető bármely olyan alkalmazásból, amely képes HTTPS-kéréseket küldeni és HTTPS-válaszokat fogadni.
 
 ## <a name="installation"></a><a name="Installation"> </a>Telepítés
@@ -450,7 +450,7 @@ A Linux rendszerű virtuális gépek klasszikus üzemi modellben való rögzít�
 
 A Windows rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép rögzítése](../virtual-machines/windows/classic/capture-image-classic.md).
 
-## <a name="next-steps"></a><a name="What's Next"> </a>További lépések
+## <a name="next-steps"></a><a name="What's Next"> </a>Következő lépések
 Most, hogy megismerte a Service Management alapjait, elérheti az [Azure PYTHON SDK-hoz készült teljes API-dokumentációt](https://azure-sdk-for-python.readthedocs.org/) , és a Python-alkalmazások felügyeletére szolgáló összetett feladatokat is könnyedén elvégezheti.
 
 További információ: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/).

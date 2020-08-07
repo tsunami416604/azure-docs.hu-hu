@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099357"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829050"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>InfiniBand-illesztőprogram-bővítmény Linux rendszerhez
 
 Ez a bővítmény telepíti a InfiniBand OFED-illesztőprogramokat a InfiniBand és az SR-IOV-Enabled ("r" méretek) [H-sorozat](../sizes-hpc.md) és a Linux rendszerű [N sorozatú](../sizes-gpu.md) virtuális gépek számára. A virtuálisgép-családtól függően a bővítmény telepíti a megfelelő illesztőprogramokat a csatlakozási-X hálózati adapterhez.
 
-A OFED-illesztőprogramok manuális telepítésére vonatkozó utasítások [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed)érhetők el.
+A OFED-illesztőprogramok manuális telepítésére vonatkozó utasítások [itt](../workloads/hpc/enable-infiniband.md#manual-installation)érhetők el.
 
 A Windows rendszerű [virtuális gépek](hpc-compute-infiniband-windows.md)InfiniBand-illesztőprogramjainak telepítéséhez egy bővítmény is elérhető.
 
@@ -69,7 +69,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name | Érték/példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
@@ -78,7 +78,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Telepítés
 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon 
@@ -186,7 +186,7 @@ A következő táblázat a bővítmény telepítési folyamatának kilépési k�
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként az [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/)is bejelentkezhet támogatási incidensek. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az InfiniBand-kompatibilis ("r" méretekről): [H-sorozatú](../sizes-hpc.md) és [N sorozatú](../sizes-gpu.md) virtuális gépek.
 
 > [!div class="nextstepaction"]

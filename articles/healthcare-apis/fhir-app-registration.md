@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.reviewer: mihansen
+ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d46280c5009769a9a1962cc0bbb489872a815556
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 22f31cf3911b5ea24e8798fb226e389071fadd0b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "84820215"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848978"
 ---
 # <a name="register-the-azure-active-directory-apps-for-azure-api-for-fhir"></a>Az Azure API-hoz készült Azure Active Directory-alkalmazások regisztrálása a FHIR-hez
 
@@ -35,7 +35,7 @@ Az *ügyfélalkalmazások* a jogkivonatokat kérő ügyfelek regisztrációi. Az
 1. **Nyilvános ügyfelek**. Ezek olyan ügyfelek, amelyek nem tudnak titkos kulcsot tárolni. Ez általában egy mobileszköz-alkalmazás vagy egy egyoldalas JavaScript-alkalmazás, amelyben egy felhasználó felfedezheti az ügyfél titkos kulcsát. A nyilvános ügyfelek az engedélyezési kód folyamatát is használják, de a token beszerzése során nem jelenhetnek meg titkos kódok, és előfordulhat, hogy rövidebb élettartamú tokenekkel rendelkeznek, és nincs frissítési jogkivonat. Olvassa el a [nyilvános ügyfél regisztrálásának](register-public-azure-ad-client-app.md)részleteit.
 1. Szolgáltatás-ügyfelek. Ezek az ügyfelek saját maguk nevében (nem a felhasználó nevében) kapják meg a jogkivonatokat az [ügyfél hitelesítő adatainak](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)használatával. Ezek jellemzően olyan alkalmazásokat jelentenek, amelyek nem interaktív módon férnek hozzá a FHIR-kiszolgálóhoz. Erre példa a betöltési folyamat. Szolgáltatás-ügyfél használata esetén nem szükséges elindítani egy jogkivonat lekérésének folyamatát a végpontra irányuló hívással `/authorize` . A szolgáltatás-ügyfelek közvetlenül a végponthoz juthatnak, `/token` és megszerezhetik az ügyfél-azonosítót és az ügyfél titkos kulcsát a jogkivonat beszerzéséhez. A [szolgáltatás-ügyfél regisztrálásának](register-service-azure-ad-client-app.md) részletei
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az áttekintésben elvégezte a FHIR API-k használatához szükséges alkalmazás-regisztrációk típusait.
 

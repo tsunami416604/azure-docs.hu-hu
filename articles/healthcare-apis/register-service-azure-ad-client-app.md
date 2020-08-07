@@ -2,18 +2,18 @@
 title: Szolgáltatási alkalmazás regisztrálása az Azure AD-ben – Azure API a FHIR-hez
 description: Megtudhatja, hogyan regisztrálhat egy szolgáltatásbeli ügyfélalkalmazás Azure Active Directoryban, amely a jogkivonatok hitelesítésére és beszerzésére használható.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 83514ea13ca51e6980a1b4b60d4555974db5a240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871847"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853024"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Szolgáltatásbeli ügyfélalkalmazás regisztrálása a Azure Active Directoryban
 
@@ -67,7 +67,7 @@ A szolgáltatás ügyfelének szüksége van egy titkos kulcsra (jelszóra), ame
 
 4. Miután létrejött, csak egyszer jelenik meg a portálon. Jegyezze fel, és tárolja biztonságosan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy szolgáltatás-ügyfélalkalmazás Azure Active Directoryban. Ezután helyezzen üzembe egy FHIR API-t az Azure-ban.
  

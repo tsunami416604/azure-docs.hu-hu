@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080097"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830410"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
 
@@ -121,7 +121,7 @@ Az információk megtekintéséhez válasszon ki egy riasztást. Megjelenik pél
 
 ![RDP-támadás](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekintette a virtuális gépek Security Centerben való kezelését. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
@@ -133,4 +133,4 @@ Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekinte
 Lépjen tovább a következő oktatóanyagra, amelyből többet is megtudhat a CI-/CD-folyamat Jenkins, GitHub és Docker használatával való létrehozásáról.
 
 > [!div class="nextstepaction"]
-> [CI-/CD-infrastruktúra létrehozása a Jenkins, a GitHub és a Docker használatával](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
+> [CI-/CD-infrastruktúra létrehozása a Jenkins, a GitHub és a Docker használatával](/azure/developer/jenkins/pipeline-with-github-and-docker)
