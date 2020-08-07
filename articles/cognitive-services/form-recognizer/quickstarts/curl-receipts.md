@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: b24449f68365e7a784469c8b097ef74d5bfb293c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9c733c3c21d76ea6b9b13ac19c349c26b1ea1b4a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027375"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902156"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a cURL használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a cURL használatával kinyerheti és azonosíthatja az USA-beli értékesítési nyugták fontos adatait.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ A nyugták elemzésének megkezdéséhez hívja meg az **[elemzés visszaigazol�
 1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
 ```
 
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő karakterlánc a `operations/` művelet azonosítója.

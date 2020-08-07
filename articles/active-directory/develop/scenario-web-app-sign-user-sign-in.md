@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 28bbe1432777e9e15ae625fb9788f9182495bd66
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026152"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845085"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
 
@@ -430,7 +430,7 @@ A Python rövid útmutatójában a kijelentkezés utáni átirányítási URI cs
 
 Ha többet szeretne megtudni a kijelentkezésről, olvassa el az [Open ID csatlakozással](./v2-protocols-oidc.md)elérhető protokoll dokumentációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Átállás éles üzemre](scenario-web-app-sign-user-production.md)

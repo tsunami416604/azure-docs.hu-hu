@@ -7,12 +7,12 @@ ms.author: v-lakast
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7786f970f612d2856948e2286ed234e2b0895072
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d563c7706529c6f3e280f7d138c0d6ba0dfc849
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836962"
+ms.locfileid: "87902197"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
@@ -129,44 +129,49 @@ Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elkül
 
 ### <a name="create-an-event-route"></a>Esemény útvonalának létrehozása 
 
-Az események útvonalának definíciója a következő elemeket tartalmazza:
-* A használni kívánt útvonal-azonosító
+Az események útvonalának definíciója az alábbi elemeket tartalmazza:
+* A használni kívánt útvonal neve
 * A használni kívánt végpont neve
 * Egy szűrő, amely meghatározza, hogy mely eseményeket küldi a rendszer a végpontnak.
+    - Ha le szeretné tiltani az útvonalat, hogy ne küldjön eseményeket, használja a`false`
+    - Ha olyan útvonalat szeretne engedélyezni, amely nem rendelkezik adott szűréssel, használja a szűrő értékét`true`
+    - A más típusú szűrők részleteiről az alábbi, az [*Események szűrése*](#filter-events) című szakaszban olvashat.
 
-Ha nincs útvonal-azonosító, a rendszer nem irányítja át az üzeneteket az Azure digitális Twins szolgáltatáson kívül.
-Ha van egy útvonal-azonosító, és a szűrő `true` , az összes üzenet a végponthoz lesz irányítva.
-Ha van egy útvonal-azonosító, és egy másik szűrő van hozzáadva, az üzenetek a szűrő alapján lesznek szűrve.
-
-Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus kijelölését.
+Egyetlen útvonalon több értesítés és eseménytípus is kijelölhető.
 
 Az esemény-útvonal létrehozásához nyissa meg az Azure Digital Twins-példány részletek lapját a [Azure Portalban](https://portal.azure.com) (a példány megkereséséhez írja be a nevét a portál keresési sávjába).
 
 A példány menüben válassza az _esemény útvonalak_elemet. Ezután az alábbi *esemény-útvonalak* lapon válassza az *+ esemény-útvonal létrehozása*lehetőséget. 
 
-A megnyíló *esemény-útvonal létrehozása* oldalon válassza ki az útvonal nevét a _név_ mezőben, és válassza ki azt a _végpontot_ , amelyet az útvonal létrehozásához használni szeretne a legördülő listából.
+A megnyíló *esemény-útvonal létrehozása* oldalon válassza a minimum:
+* A _név_ mezőben adja meg az útvonal nevét.
+* Az útvonal létrehozásához használni kívánt _végpont_ 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Képernyőkép a példányhoz tartozó esemény-útvonal létrehozásáról.":::
+Ahhoz, hogy az útvonal engedélyezve legyen, legalább **egy esemény-útválasztási szűrőt is hozzá** kell adnia `true` . (Az alapértelmezett érték kihagyása `false` esetén az útvonalat hozza létre, de a rendszer nem küldi el az eseményeket.) Ehhez állítsa be a kapcsolót a _speciális szerkesztő_ számára az engedélyezéshez, majd írja `true` be a *szűrőt a szűrő* mezőbe.
+
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Képernyőkép a példányhoz tartozó esemény-útvonal létrehozásáról." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 Ha elkészült, nyomja meg a _Save (Mentés_ ) gombot az esemény útvonalának létrehozásához.
 
 ### <a name="filter-events"></a>Események szűrése
 
-Szűrés nélkül a végpontok számos eseményt kapnak az Azure Digital ikrektől:
+A fentiekben leírtak szerint az útvonalak **szűrő** mezővel rendelkeznek. Ha az útvonalon található szűrő értéke, a rendszer `false` nem küld eseményeket a végpontnak. 
+
+A minimális szűrő engedélyezése után a `true` végpontok számos eseményt kapnak az Azure Digital ikrekből:
 * Az Azure Digital Twins szolgáltatás API-ját használó [digitális Twins](concepts-twins-graph.md) telemetria
 * A Twin Property változási értesítései az Azure Digital Twins-példányon található bármelyik Twin tulajdonság változásakor
 * Életciklussal kapcsolatos események, az ikrek vagy kapcsolatok létrehozásakor vagy törlésekor
 * Modell-változási események, az Azure digitális Twins-példányban konfigurált [modellek](concepts-models.md) hozzáadása vagy törlése
 
-Az elküldött eseményeket úgy korlátozhatja, hogy hozzáad egy **szűrőt** egy végponthoz az esemény-útvonalhoz.
+Megadhatja az elküldött események típusát egy konkrétabb szűrő definiálásával.
 
-Ha egy esemény-útvonal létrehozásakor szűrőt szeretne felvenni, használja az esemény útvonalának *létrehozása* lap _esemény-útválasztási szűrő hozzáadása_ szakaszát. 
+Ha esemény-útvonal létrehozása közben szeretne hozzáadni egy eseményt, az esemény útvonalának *létrehozása* lap _esemény útvonalának szűrése_ szakaszát használhatja. 
 
 Kiválaszthat néhány alapszintű általános szűrési lehetőséget, vagy a speciális szűrési beállítások használatával írhat saját egyéni szűrőket is.
 
 #### <a name="use-the-basic-filters"></a>Az egyszerű szűrők használata
 
-Az alapszintű szűrők használatához bontsa ki az _eseménytípus_ lehetőséget, és jelölje be a szűrni kívánt eseményekhez tartozó jelölőnégyzeteket. 
+Az alapszintű szűrők használatához bontsa ki az _eseménytípus_ lehetőséget, majd jelölje be a végpontnak elküldeni kívánt eseményekhez tartozó jelölőnégyzeteket. 
 
 :::row:::
     :::column:::
@@ -206,7 +211,7 @@ Itt láthatók a támogatott útválasztási szűrők. A *szűrési szöveg sém
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

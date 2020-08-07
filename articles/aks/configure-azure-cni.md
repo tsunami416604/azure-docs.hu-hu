@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan konfigurálhatja az Azure CNI (Advanced) háló
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416851"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872429"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -63,7 +63,7 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
-| Portál | 110 | 30 | No |
+| Portál | 110 | 30 | Nem |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
 
@@ -87,7 +87,7 @@ A csomópontok maximális számaként megadott minimális érték kényszerítve
 
 ### <a name="configure-maximum---existing-clusters"></a>Maximálisan meglévő fürtök konfigurálása
 
-Az új maxPod létrehozásakor a Node (csomópontok száma) beállítás is meghatározható. Ha a maxPod egy meglévő fürtön kell megnövelni, adjon hozzá egy új csomópont-készletet az új kívánt maxPod-számhoz. Miután elvégezte a hüvelyek új készletbe való áttelepítését, törölje a régi készletet. A fürtben lévő bármelyik régebbi készlet törléséhez győződjön meg arról, hogy a csomópont-készlet üzemmódját a [rendszercsomópont-készlet dokumentumrendszer[-csomópont-készletek]pontban meghatározottak szerint állítja be.
+Az új maxPod létrehozásakor a Node (csomópontok száma) beállítás is meghatározható. Ha a maxPod egy meglévő fürtön kell megnövelni, adjon hozzá egy új csomópont-készletet az új kívánt maxPod-számhoz. Miután elvégezte a hüvelyek új készletbe való áttelepítését, törölje a régi készletet. A fürtben lévő bármelyik régebbi készlet törléséhez győződjön meg arról, hogy a [rendszercsomópont-készletek dokumentumban][system-node-pools]meghatározott módon állítja be a csomópont-készlet módjait.
 
 ## <a name="deployment-parameters"></a>Központi telepítési paraméterek
 
@@ -171,7 +171,7 @@ Az alábbi kérdések és válaszok az **Azure CNI** hálózati konfigurációra
 
   Nem ajánlott, de ez a konfiguráció lehetséges. A szolgáltatási címtartomány a virtuális IP-címek (VIP) készlete, amelyet a Kubernetes a fürt belső szolgáltatásaihoz rendel hozzá. Az Azure hálózatkezelésének nincs láthatósága a Kubernetes-fürt szolgáltatási IP-címének tartományán. A fürt szolgáltatási címtartomány láthatóságának hiánya miatt később létrehozhat egy új alhálózatot a fürt virtuális hálózatában, amely átfedésben van a szolgáltatási címtartomány használatával. Ha átfedés történik, a Kubernetes hozzárendelhet egy olyan IP-címet, amelyet már egy másik erőforrás használ az alhálózatban, ami kiszámíthatatlan működést vagy hibát okoz. Annak biztosításával, hogy a fürt virtuális hálózatán kívüli címtartományt használjon, elkerülheti ezt az átfedési kockázatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről az AK-ban a következő cikkekben található:
 
@@ -214,4 +214,4 @@ Az AK-motorral létrehozott Kubernetes-fürtök támogatják a [kubenet][kubenet
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
-[rendszercsomópont-készletek]: use-system-pools.md
+[system-node-pools]: use-system-pools.md

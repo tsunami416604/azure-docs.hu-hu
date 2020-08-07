@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121945"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800398"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -134,7 +134,7 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 9. Leírás
 10. Képernyőképek/videók
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -180,15 +180,19 @@ A **támogatási kapcsolattartó** szakaszban meg kell adnia azt a **támogatás
 
 Adjon meg legalább egy (és legfeljebb három) kapcsolódó marketing-dokumentumot, például a tanulmányokat, a brosúrákat, a feladatlistákat és a bemutatókat. A dokumentumoknak. pdf formátumúnak kell lenniük.
 
-### <a name="marketplace-images"></a>Marketplace-rendszerképek
+### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlathoz tartozó emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. Töltse fel az ajánlat emblémáját két méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) méretű embléma létrehozásához. Ezt másik képpel is lecserélheti.
 
-* **Kicsi** (48 x 48 képpont)
-* **Nagyméretű** (216 x 216 képpont)
+Mindkét embléma mérete szükséges a lista különböző helyein való használathoz:
+
+- **Kicsi** (48 x 48)
+- **Nagy** (216 x 216 és 350 x 350 között)
 
 >[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a `https://upload.xboxlive.com` partner központ által használt szolgáltatást.
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 

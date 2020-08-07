@@ -2,16 +2,15 @@
 title: Az Azure AD használata az Azure Kubernetes szolgáltatásban
 description: Ismerje meg, hogyan használhatja az Azure AD-t az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-manager: gwallace
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448126"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799857"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -36,11 +35,6 @@ Az AK által felügyelt Azure Active Directory integráció olyan nyilvános ré
 * a nem RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt HRE-integrációhoz
 * Az AK által felügyelt HRE-integrációhoz társított Azure AD-bérlő módosítása nem támogatott
 
-> [!IMPORTANT]
-> Az AK előzetes verziójának funkciói az önkiszolgáló, a választható lehetőségek alapján érhetők el. Az előzetes verziók az "adott állapotban" és "elérhetőként" jelennek meg, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A (z) és az ügyfél-támogatási szolgálatok a lehető leghatékonyabban fedezik az előzetes verziókat. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért lásd a következő támogatási cikkeket: 
-> - [AK-támogatási szabályzatok](support-policies.md) 
-> - [Azure-támogatás – gyakori kérdések](faq.md)
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure CLI verziója 2.9.0 vagy újabb verzió
@@ -57,22 +51,6 @@ kubectl version --client
 ```
 
 [Ezeket az utasításokat](https://kubernetes.io/docs/tasks/tools/install-kubectl/) más operációs rendszerekhez használhatja.
-
-```azurecli-interactive 
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService    
-``` 
-
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg: 
-
-```azurecli-interactive 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"    
-``` 
-
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:    
-
-```azurecli-interactive 
-az provider register --namespace Microsoft.ContainerService 
-``` 
 
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -190,7 +168,7 @@ Ha el szeretné érni a fürtöt, kövesse az alábbi [lépéseket.][access-clus
 
 Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. [`kubelogin`](https://github.com/Azure/kubelogin)A paranccsal hozzáférhet a fürthöz nem interaktív egyszerű szolgáltatás-bejelentkezéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Azure RBAC-integrációról a Kubernetes-hitelesítéshez][azure-rbac-integration]
 * Ismerje meg az [Azure ad-integrációt a KUBERNETES RBAC][azure-ad-rbac].

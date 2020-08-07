@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: eff5f68569d1878e1b802f2db4151d246bcc07c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026424"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799599"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webes API: kód konfigurálása
 
@@ -83,7 +83,7 @@ public class Startup
   {
    // ...
    services.AddMicrosoftWebApiAuthentication(Configuration)
-           .AddMicrosoftWebApiCallsWebApi()
+           .AddMicrosoftWebApiCallsWebApi(Configuration)
            .AddInMemoryTokenCaches();
   // ...
   }
@@ -178,7 +178,7 @@ Megtekintheti az OBO flow megvalósításának példáját is [Node.js és Azure
 
 További információ az OBO protokollról: [Microsoft Identity platform és OAuth 2,0 on-Half-of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md)

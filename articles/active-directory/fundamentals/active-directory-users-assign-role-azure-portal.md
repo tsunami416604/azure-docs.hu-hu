@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a468b5f43e8b024dd1da6e382049f8cce6de295
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797365"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902354"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory
 
@@ -28,7 +28,7 @@ További információ az elérhető Azure AD-szerepkörökről: [rendszergazdai 
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
-Az Azure AD-szerepkörök felhasználóhoz való hozzárendelésének általános módja a **hozzárendelt szerepkörök** lap egy felhasználó számára. Azt is megteheti, hogy a jogosultságot a Privileged Identity Management (PIM) használatával az adott szerepkörhöz rendeli. További információ a PIM használatáról: [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
+Az Azure AD-szerepkörök felhasználóhoz való hozzárendelésének általános módja a **hozzárendelt szerepkörök** lap egy felhasználó számára. Azt is megteheti, hogy a felhasználói jogosultságot a Privileged Identity Management (PIM) használatával egy szerepkörre emelt szintű szintre állítja be. További információ a PIM használatáról: [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 > [!Note]
 > Ha rendelkezik egy prémium szintű Azure AD P2-licenccel, és már használja a PIM-t, az összes szerepkör-felügyeleti feladatot a rendszer a [Privileged Identity Management felhasználói felületén](../users-groups-roles/directory-manage-roles-portal.md)hajtja végre.
@@ -73,7 +73,7 @@ Ha el kell távolítania a szerepkör-hozzárendelést egy felhasználótól, az
 
     Az alkalmazás-rendszergazdai szerepkör el lett távolítva az Alain Charon-ből, és már nem jelenik meg az **Alain Charon-felügyeleti szerepkörök** lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)
 

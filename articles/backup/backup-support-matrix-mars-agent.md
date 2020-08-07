@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538649"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872412"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -54,7 +54,7 @@ Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállít
 
 A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
@@ -90,6 +90,16 @@ További információkért tekintse meg a [ExpressRoute útválasztási követel
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.
 
+### <a name="private-endpoint-support"></a>Privát végpontok támogatása
+
+Mostantól privát végpontokat is használhat az adatok biztonságos biztonsági mentésére a kiszolgálókról a Recovery Services-tárolóba. Mivel Azure Active Directory jelenleg nem támogatja a privát végpontokat, az IP-címeket és a Azure Active Directory szükséges teljes tartományneveket külön kell engedélyezni a kimenő hozzáféréshez.
+
+Ha a MARS-ügynököt használja a helyszíni erőforrások biztonsági mentésére, győződjön meg arról, hogy a helyszíni hálózat (a biztonsági mentéshez szükséges erőforrásokat tartalmazza) a tárolóhoz tartozó privát végpontot tartalmazó Azure-VNet van társítva. Ezután továbbra is telepítheti a MARS-ügynököt, és konfigurálhatja a biztonsági mentést. Azonban gondoskodnia kell arról, hogy a biztonsági mentés minden kommunikációja csak a csak a hálózaton keresztül történjen.
+
+Ha a MARS-ügynök regisztrálása után eltávolítja a tárolóhoz tartozó privát végpontokat, akkor újra regisztrálnia kell a tárolót a tárolóban. Nem kell leállítania a védelmet.
+
+További információ a [Azure Backup magánhálózati végpontokról](private-endpoints.md).
+
 ### <a name="throttling-support"></a>Szabályozás támogatása
 
 **Funkció** | **Részletek**
@@ -124,7 +134,7 @@ További információ: [támogatott MABS és DPM operációs rendszerek](backup-
 
 ### <a name="operating-systems-at-end-of-support"></a>A támogatás végén lévő operációs rendszerek
 
-A következő operációs rendszerek a támogatás végén találhatók, ezért erősen ajánlott az operációs rendszer frissítése, hogy továbbra is védve maradjon.
+A következő operációs rendszerek a támogatás végén találhatók, és erősen ajánlott az operációs rendszer frissítése, hogy továbbra is védve maradjon.
 
 Ha a meglévő kötelezettségvállalások megakadályozzák az operációs rendszer frissítését, érdemes lehet áttelepíteni a Windows-kiszolgálókat az Azure-beli virtuális gépekre, és az Azure-beli virtuális gépek biztonsági mentéseit használják a védett A Windows Server áttelepítésével kapcsolatos további információkért tekintse meg az [áttelepítési oldalt](https://azure.microsoft.com/migration/windows-server/) .
 

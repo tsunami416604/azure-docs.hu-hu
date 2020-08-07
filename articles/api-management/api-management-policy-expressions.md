@@ -1,6 +1,6 @@
 ---
 title: Azure API Management házirend-kifejezések | Microsoft Docs
-description: Ismerje meg az Azure API Management házirend-kifejezéseit.
+description: Ismerje meg az Azure API Management házirend-kifejezéseit. Tekintse át a példákat, és tekintse meg a további elérhető erőforrásokat
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249818"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844240"
 ---
 # <a name="api-management-policy-expressions"></a>API Management házirend-kifejezések
 Ez a cikk a házirend-kifejezések szintaxisát ismerteti a C# 7-es verziójában. Mindegyik kifejezés rendelkezik hozzáféréssel a implicit módon megadott [környezeti](api-management-policy-expressions.md#ContextVariables) változóhoz, valamint a .NET-keretrendszer engedélyezett [részhalmazához](api-management-policy-expressions.md#CLRTypes) .
@@ -76,141 +76,141 @@ A következő táblázat a .NET-keretrendszer típusait és azok tagjait sorolja
 
 |Típus|Támogatott tagok|
 |--------------|-----------------------|
-|Newtonsoft.Jsbekapcsolva. Formázási|Mind|
+|Newtonsoft.Jsbekapcsolva. Formázási|Az összes|
 |Newtonsoft.Json.JsonConvert|Serializeobject elem, DeserializeObject|
-|Newtonsoft.Jsbekapcsolva. LINQ. Extensions|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JArray|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JConstructor|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JContainer|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JObject|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JProperty|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JRaw|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JToken|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JTokenType|Mind|
-|Newtonsoft.Jsbekapcsolva. LINQ. JValue|Mind|
-|System. Array|Mind|
-|System. BitConverter|Mind|
-|System. Boolean|Mind|
-|System. byte|Mind|
-|System. char|Mind|
-|System. Collections. Generic. Dictionary<TKey, TValue>|Mind|
-|System. Collections. Generic. HashSet\<T>|Mind|
-|System. Collections. Generic. ICollection illesztőfelületet\<T>|Mind|
-|System. Collections. Generic. IDictionary<TKey, TValue>|Mind|
-|System. Collections. Generic. IEnumerable\<T>|Mind|
-|System. Collections. Generic. IEnumerator\<T>|Mind|
-|System. Collections. Generic. IList\<T>|Mind|
-|System. Collections. Generic. IReadOnlyCollection\<T>|Mind|
-|System. Collections. Generic. IReadOnlyDictionary<TKey, TValue>|Mind|
-|System. Collections. Generic. ISet\<T>|Mind|
-|System. Collections. Generic. KeyValuePair<TKey, TValue>|Mind|
-|System. Collections. Generic. list\<T>|Mind|
-|System. Collections. Generic. üzenetsor\<T>|Mind|
-|System. Collections. Generic. stack\<T>|Mind|
-|System. Convert|Mind|
+|Newtonsoft.Jsbekapcsolva. LINQ. Extensions|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JArray|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JConstructor|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JContainer|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JObject|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JProperty|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JRaw|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JToken|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JTokenType|Az összes|
+|Newtonsoft.Jsbekapcsolva. LINQ. JValue|Az összes|
+|System. Array|Az összes|
+|System. BitConverter|Az összes|
+|System. Boolean|Az összes|
+|System. byte|Az összes|
+|System. char|Az összes|
+|System. Collections. Generic. Dictionary<TKey, TValue>|Az összes|
+|System. Collections. Generic. HashSet\<T>|Az összes|
+|System. Collections. Generic. ICollection illesztőfelületet\<T>|Az összes|
+|System. Collections. Generic. IDictionary<TKey, TValue>|Az összes|
+|System. Collections. Generic. IEnumerable\<T>|Az összes|
+|System. Collections. Generic. IEnumerator\<T>|Az összes|
+|System. Collections. Generic. IList\<T>|Az összes|
+|System. Collections. Generic. IReadOnlyCollection\<T>|Az összes|
+|System. Collections. Generic. IReadOnlyDictionary<TKey, TValue>|Az összes|
+|System. Collections. Generic. ISet\<T>|Az összes|
+|System. Collections. Generic. KeyValuePair<TKey, TValue>|Az összes|
+|System. Collections. Generic. list\<T>|Az összes|
+|System. Collections. Generic. üzenetsor\<T>|Az összes|
+|System. Collections. Generic. stack\<T>|Az összes|
+|System. Convert|Az összes|
 |System. DateTime|(Konstruktor), Hozzáadás, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, dátum, nap, DayOfWeek, DayOfYear, DaysInMonth, óra, IsDaylightSavingTime, IsLeapYear, MaxValue, ezredmásodperc, perc, MinValue, hónap, most, elemzés, második, kivonás, kullancsok, TimeOfDay, ma, ToString, UtcNow, év|
 |System. DateTimeKind|UTC|
-|System. DateTimeOffset|Mind|
-|System. decimális|Mind|
-|System. Double|Mind|
-|System. Exception|Mind|
-|System. GUID|Mind|
-|System. Int16|Mind|
-|System. Int32|Mind|
-|System. Int64|Mind|
-|System. IO. StringReader|Mind|
-|System. IO. StringWriter|Mind|
-|System. LINQ. enumerable|Mind|
-|System. Math|Mind|
-|System. MidpointRounding|Mind|
-|System .net. websegédprogram|Mind|
-|System. Nullható|Mind|
-|System. Random|Mind|
-|System. sbyte érték|Mind|
-|System. Security. kriptográfia. AsymmetricAlgorithm|Mind|
-|System. Security. kriptográfia. titkosítási|Mind|
-|System. Security. kriptográfia. HashAlgorithm|Mind|
-|System. Security. kriptográfia. HashAlgorithmName|Mind|
-|System. Security. kriptográfia. HMAC|Mind|
-|System. Security. kriptográfia. HMACMD5|Mind|
-|System. Security. kriptográfia. HMACSHA1|Mind|
-|System. Security. kriptográfia. HMACSHA256|Mind|
-|System. Security. kriptográfia. HMACSHA384|Mind|
-|System. Security. kriptográfia. HMACSHA512|Mind|
-|System. Security. kriptográfia. KeyedHashAlgorithm|Mind|
-|System. Security. kriptográfia. MD5|Mind|
-|System. Security. kriptográfia. OID|Mind|
-|System. Security. kriptográfia. PaddingMode|Mind|
-|System. Security. kriptográfia. RNGCryptoServiceProvider|Mind|
-|System. Security. kriptográfia. RSA|Mind|
-|System. Security. kriptográfia. RSAEncryptionPadding|Mind|
-|System. Security. kriptográfia. RSASignaturePadding|Mind|
-|System. Security. kriptográfia. SHA1|Mind|
-|System. Security. kriptográfia. SHA1Managed|Mind|
-|System. Security. kriptográfia. SHA256|Mind|
-|System. Security. kriptográfia. SHA256Managed|Mind|
-|System. Security. kriptográfia. SHA384|Mind|
-|System. Security. kriptográfia. SHA384Managed|Mind|
-|System. Security. kriptográfia. SHA512|Mind|
-|System. Security. kriptográfia. SHA512Managed|Mind|
-|System. Security. kriptográfia. SymmetricAlgorithm|Mind|
-|System. Security. kriptográfia. X509Certificates. PublicKey|Mind|
-|System. Security. kriptográfia. X509Certificates. RSACertificateExtensions|Mind|
+|System. DateTimeOffset|Az összes|
+|System. decimális|Az összes|
+|System. Double|Az összes|
+|System. Exception|Az összes|
+|System. GUID|Az összes|
+|System. Int16|Az összes|
+|System. Int32|Az összes|
+|System. Int64|Az összes|
+|System. IO. StringReader|Az összes|
+|System. IO. StringWriter|Az összes|
+|System. LINQ. enumerable|Az összes|
+|System. Math|Az összes|
+|System. MidpointRounding|Az összes|
+|System .net. websegédprogram|Az összes|
+|System. Nullható|Az összes|
+|System. Random|Az összes|
+|System. sbyte érték|Az összes|
+|System. Security. kriptográfia. AsymmetricAlgorithm|Az összes|
+|System. Security. kriptográfia. titkosítási|Az összes|
+|System. Security. kriptográfia. HashAlgorithm|Az összes|
+|System. Security. kriptográfia. HashAlgorithmName|Az összes|
+|System. Security. kriptográfia. HMAC|Az összes|
+|System. Security. kriptográfia. HMACMD5|Az összes|
+|System. Security. kriptográfia. HMACSHA1|Az összes|
+|System. Security. kriptográfia. HMACSHA256|Az összes|
+|System. Security. kriptográfia. HMACSHA384|Az összes|
+|System. Security. kriptográfia. HMACSHA512|Az összes|
+|System. Security. kriptográfia. KeyedHashAlgorithm|Az összes|
+|System. Security. kriptográfia. MD5|Az összes|
+|System. Security. kriptográfia. OID|Az összes|
+|System. Security. kriptográfia. PaddingMode|Az összes|
+|System. Security. kriptográfia. RNGCryptoServiceProvider|Az összes|
+|System. Security. kriptográfia. RSA|Az összes|
+|System. Security. kriptográfia. RSAEncryptionPadding|Az összes|
+|System. Security. kriptográfia. RSASignaturePadding|Az összes|
+|System. Security. kriptográfia. SHA1|Az összes|
+|System. Security. kriptográfia. SHA1Managed|Az összes|
+|System. Security. kriptográfia. SHA256|Az összes|
+|System. Security. kriptográfia. SHA256Managed|Az összes|
+|System. Security. kriptográfia. SHA384|Az összes|
+|System. Security. kriptográfia. SHA384Managed|Az összes|
+|System. Security. kriptográfia. SHA512|Az összes|
+|System. Security. kriptográfia. SHA512Managed|Az összes|
+|System. Security. kriptográfia. SymmetricAlgorithm|Az összes|
+|System. Security. kriptográfia. X509Certificates. PublicKey|Az összes|
+|System. Security. kriptográfia. X509Certificates. RSACertificateExtensions|Az összes|
 |System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Név|
-|System. Security. kriptográfia. X509Certificates. X509|Mind|
-|System. Security. kriptográfia. X509Certificates. X509certificate2)|Mind|
-|System. Security. kriptográfia. X509Certificates. X509ContentType|Mind|
-|System. Security. kriptográfia. X509Certificates. X509NameType|Mind|
-|System. Single|Mind|
-|System. String|Mind|
-|System. StringComparer|Mind|
-|System. Stringcomparison argumentummal|Mind|
-|System. StringSplitOptions|Mind|
-|System. Text. Encoding|Mind|
+|System. Security. kriptográfia. X509Certificates. X509|Az összes|
+|System. Security. kriptográfia. X509Certificates. X509certificate2)|Az összes|
+|System. Security. kriptográfia. X509Certificates. X509ContentType|Az összes|
+|System. Security. kriptográfia. X509Certificates. X509NameType|Az összes|
+|System. Single|Az összes|
+|System. String|Az összes|
+|System. StringComparer|Az összes|
+|System. Stringcomparison argumentummal|Az összes|
+|System. StringSplitOptions|Az összes|
+|System. Text. Encoding|Az összes|
 |System. Text. RegularExpressions. Capture|Index, hossz, érték|
 |System. Text. RegularExpressions. CaptureCollection|Darabszám, elem|
 |System. Text. RegularExpressions. Group|Rögzítés, sikeres|
 |System. Text. RegularExpressions. GroupCollection|Darabszám, elem|
 |System. Text. RegularExpressions. Match|Üres, csoportok, eredmény|
 |System. Text. RegularExpressions. regex|(Konstruktor), IsMatch, egyezés, egyezés, csere, felszabadulás, felosztás|
-|System. Text. RegularExpressions. RegexOptions|Mind|
-|System. Text. StringBuilder|Mind|
-|System. TimeSpan|Mind|
-|System. TimeZone|Mind|
-|System. TimeZoneInfo. AdjustmentRule|Mind|
-|System. TimeZoneInfo. TransitionTime|Mind|
-|System. TimeZoneInfo|Mind|
-|System. rekord|Mind|
-|System. UInt16|Mind|
-|System. UInt32|Mind|
-|System. UInt64|Mind|
-|System. URI|Mind|
-|System. UriPartial|Mind|
-|System.Xml. LINQ. Extensions|Mind|
-|System.Xml. LINQ. XAttribute|Mind|
-|System.Xml. LINQ. XCData|Mind|
-|System.Xml. LINQ. XComment|Mind|
-|System.Xml. LINQ. XContainer|Mind|
-|System.Xml. LINQ. XDeclaration|Mind|
+|System. Text. RegularExpressions. RegexOptions|Az összes|
+|System. Text. StringBuilder|Az összes|
+|System. TimeSpan|Az összes|
+|System. TimeZone|Az összes|
+|System. TimeZoneInfo. AdjustmentRule|Az összes|
+|System. TimeZoneInfo. TransitionTime|Az összes|
+|System. TimeZoneInfo|Az összes|
+|System. rekord|Az összes|
+|System. UInt16|Az összes|
+|System. UInt32|Az összes|
+|System. UInt64|Az összes|
+|System. URI|Az összes|
+|System. UriPartial|Az összes|
+|System.Xml. LINQ. Extensions|Az összes|
+|System.Xml. LINQ. XAttribute|Az összes|
+|System.Xml. LINQ. XCData|Az összes|
+|System.Xml. LINQ. XComment|Az összes|
+|System.Xml. LINQ. XContainer|Az összes|
+|System.Xml. LINQ. XDeclaration|Az összes|
 |System.Xml. LINQ. XDocument|Az összes, a kivételével: Load|
-|System.Xml. LINQ. XDocumentType|Mind|
-|System.Xml. LINQ. XElement|Mind|
-|System.Xml. LINQ. XName|Mind|
-|System.Xml. LINQ. XNamespace|Mind|
-|System.Xml. LINQ. XNode|Mind|
-|System.Xml. LINQ. XNodeDocumentOrderComparer|Mind|
-|System.Xml. LINQ. XNodeEqualityComparer|Mind|
-|System.Xml. LINQ. XObject|Mind|
-|System.Xml. LINQ. XProcessingInstruction|Mind|
-|System.Xml. LINQ. XText|Mind|
-|System.Xml.XmlNodeType|Mind|
+|System.Xml. LINQ. XDocumentType|Az összes|
+|System.Xml. LINQ. XElement|Az összes|
+|System.Xml. LINQ. XName|Az összes|
+|System.Xml. LINQ. XNamespace|Az összes|
+|System.Xml. LINQ. XNode|Az összes|
+|System.Xml. LINQ. XNodeDocumentOrderComparer|Az összes|
+|System.Xml. LINQ. XNodeEqualityComparer|Az összes|
+|System.Xml. LINQ. XObject|Az összes|
+|System.Xml. LINQ. XProcessingInstruction|Az összes|
+|System.Xml. LINQ. XText|Az összes|
+|System.Xml.XmlNodeType|Az összes|
 
 ## <a name="context-variable"></a><a name="ContextVariables"></a>Környezeti változó
 Egy nevű változó `context` implicit módon elérhető minden házirend- [kifejezésben](api-management-policy-expressions.md#Syntax). A tagjai a szolgáltatással kapcsolatos információkat biztosítanak `\request` . Az összes `context` tag csak olvasható.
 
 |Környezeti változó|Engedélyezett metódusok, tulajdonságok és paraméterek értékei|
 |----------------------|-------------------------------------------------------|
-|összefüggésben|[API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Üzembe helyezés](#ref-context-deployment)<br /><br /> Eltelt idő: TimeSpan időköz az időbélyegző és az aktuális idő értéke között<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Művelet](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [Kérés](#ref-context-request)<br /><br /> Kérelemazonosító: GUID – egyedi kérelem azonosítója<br /><br /> [Válasz](#ref-context-response)<br /><br /> [Előfizetés](#ref-context-subscription)<br /><br /> Időbélyeg: dátum és idő – a kérés fogadásakor időpontra<br /><br /> Nyomkövetés: bool – jelzi, hogy a nyomkövetés be van-e kapcsolva <br /><br /> [Felhasználó](#ref-context-user)<br /><br /> [Változók](#ref-context-variables): IReadOnlyDictionary<sztring, objektum><br /><br /> void nyomkövetés (üzenet: karakterlánc)|
+|összefüggésben|[API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Telepítés](#ref-context-deployment)<br /><br /> Eltelt idő: TimeSpan időköz az időbélyegző és az aktuális idő értéke között<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Művelet](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [Kérés](#ref-context-request)<br /><br /> Kérelemazonosító: GUID – egyedi kérelem azonosítója<br /><br /> [Válasz](#ref-context-response)<br /><br /> [Előfizetés](#ref-context-subscription)<br /><br /> Időbélyeg: dátum és idő – a kérés fogadásakor időpontra<br /><br /> Nyomkövetés: bool – jelzi, hogy a nyomkövetés be van-e kapcsolva <br /><br /> [Felhasználó](#ref-context-user)<br /><br /> [Változók](#ref-context-variables): IReadOnlyDictionary<sztring, objektum><br /><br /> void nyomkövetés (üzenet: karakterlánc)|
 |<a id="ref-context-api"></a>összefüggésben. API|Azonosító: karakterlánc<br /><br /> IsCurrentRevision: bool<br /><br />  Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Változat: karakterlánc<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verzió: karakterlánc |
 |<a id="ref-context-deployment"></a>összefüggésben. Telepítési|Régió: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Tanúsítványok: IReadOnlyDictionary<sztring, X509certificate2)>|
 |<a id="ref-context-lasterror"></a>összefüggésben. LastError|Forrás: karakterlánc<br /><br /> Ok: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> Szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetről. LastError lásd: [hibakezelés](api-management-error-handling-policies.md).|

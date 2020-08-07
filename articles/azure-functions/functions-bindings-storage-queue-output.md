@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 1141186a262676fc47b0727c47e682dfe95ba6fb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055914"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844881"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -311,11 +311,11 @@ A jegyzethez társított paraméter `QueueOutput` [OutputBinding \<T\> ](https:/
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Queue` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `queue` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `out` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -383,7 +383,7 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Hivatkozás |
+| Kötés |  Referencia |
 |---|---|
 | Üzenetsor | [Üzenetsor-hibakódok](/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -413,7 +413,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|A várólista-lekérdezések közötti maximális időköz. Minimum 00:00:00.100 (100 MS), és legfeljebb 00:01:00 (1 perc) értékkel növekszik.  Az 1. x adattípusa ezredmásodperc, a 2. x és a magasabb érték pedig egy TimeSpan.|
 |visibilityTimeout|00:00:00|Az újrapróbálkozások között eltelt idő az üzenet feldolgozásakor. |
@@ -421,7 +421,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.|
 |newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása üzenetsor-tárolási adatváltozásként (trigger)](./functions-bindings-storage-queue-trigger.md)
 

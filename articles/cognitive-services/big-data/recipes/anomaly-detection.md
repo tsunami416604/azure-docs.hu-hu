@@ -10,13 +10,13 @@ ms.subservice: anomaly-detector
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.custom: tracking-python
-ms.openlocfilehash: d872e4486bdc8fcd3629feb452b0d436872c70d8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-python
+ms.openlocfilehash: b29fa17c21b2cdb2e764c905af3819142d8c341e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189419"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844065"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktív karbantartás a nagy adatmennyiséggel rendelkező Cognitive Services
 
@@ -149,6 +149,6 @@ Ha a művelet sikeres, a kimenet a következőképpen fog kinézni:
 
 ![Anomália-detektor ábrázolása](../media/anomaly-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan végezheti el a prediktív karbantartást az Azure Cognitive Services, az Azure szinapszis Analytics és az Azure CosmosDB használatával. További információ: teljes minta a [githubon](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT).

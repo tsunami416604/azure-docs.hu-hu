@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Tárolók törlése előtag alapján | Microsoft Docs
-description: Azure Storage-blobtárolók törlése a nevük előtagja alapján.
+description: 'Törölje az Azure Storage blob-tárolókat a tároló neve előtag alapján, majd szüntesse meg az üzembe helyezést. Lásd: a parancsfájlban használt parancsokhoz tartozó súgó hivatkozásai.'
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66869b7dc38e11b614ebc89538c2c195122b5bb3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aeccf255004cd4512fbc591942324341504b20f7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479557"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901878"
 ---
 # <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Tárolók törlése Azure CLI-parancsfájl használatával
 
@@ -41,7 +41,7 @@ az group delete --name myResourceGroup
 
 A szkript a következő parancsokat használja a tárolók a nevük előtagja alapján történő törléséhez. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account) | Létrehoz egy Azure Storage-fiókot a megadott erőforráscsoportban. |
@@ -49,7 +49,7 @@ A szkript a következő parancsokat használja a tárolók a nevük előtagja al
 | [az storage container list](/cli/azure/storage/container) | Felsorolja egy Azure Storage-fiók tárolóit. |
 | [az storage container delete](/cli/azure/storage/container) | Törli egy Azure Storage-fiók tárolóit. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

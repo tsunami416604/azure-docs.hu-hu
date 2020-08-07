@@ -13,7 +13,7 @@ ms.locfileid: "79486101"
 ---
 A dokumentumtérkép bejegyzései a `deploymentconfig.json` [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
-| JSON-entitás | Metódus paramétere | Description |
+| JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
 | `computeType` | NA | A számítási cél. Az AK esetében az értéknek a következőnek kell lennie: `aks` . |
 | `autoScaler` | NA | Az automatikus skálázás konfigurációs elemeit tartalmazza. Tekintse meg az autoskálázási táblázatot. |

@@ -2,7 +2,7 @@
 title: Licencek kiosztása vagy eltávolítása – Azure Active Directory | Microsoft Docs
 description: Útmutatás Azure Active Directory licencek felhasználókhoz vagy csoportokhoz való hozzárendeléséről és eltávolításáról.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542110"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797083"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licencek kiosztása vagy eltávolítása a Azure Active Directory portálon
 
@@ -140,7 +140,7 @@ A licenceket eltávolíthatja egy felhasználó Azure AD-felhasználó oldalár�
     > [!NOTE]
     > Ha egy Azure AD-val szinkronizált helyszíni felhasználói fiók a szinkronizálás hatókörén kívül esik, vagy ha a szinkronizálás el lett távolítva, a felhasználó az Azure AD-ben nem törlődik. Ha ez történik, a felhasználóhoz közvetlenül vagy csoportos licencelésen keresztül hozzárendelt licencek nem **töröltként**lesznek **felfüggesztve** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A licencek hozzárendelése után a következő folyamatokat végezheti el:
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53e8586486d9a9ebf870de350d5607f58977c0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 340fcd723442a53ca72d3af0461226be737eb7a5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844201"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>A Key Vault-titkok állapotának változásairól szóló e-mailek fogadása Logic Apps használatával
 
@@ -26,8 +26,9 @@ A Azure Key Vault/Azure Event Grid integrációjának áttekintését lásd: [a 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Azure Logic Apps által támogatott e-mail-szolgáltatótól származó e-mail-fiók (például Office 365 Outlook). Ez az e-mail-fiók küldi majd az eseményértesítéseket. A támogatott Logic Apps-összekötők teljes listáját az [összekötők áttekintésében](/connectors) találja.
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Egy kulcstartó az Azure-előfizetésében. Az Azure CLI használatával gyorsan létrehozhat egy új kulcstartót az [Azure Key Vault titkos kód beállítása és lekérése](../secrets/quick-create-cli.md)a következő lépésekkel.
+- Regisztrált Event Grid erőforrás-szolgáltatóként: erőforrás- [szolgáltatók regisztrációja](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Logikai alkalmazás létrehozása Event Grid használatával
 
@@ -58,8 +59,8 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
    ![Logic app Designer – e-mail hozzáadása](../media/eventgrid-logicappdesigner3.png)
 
 1. Hozza létre az e-mail sablonját:
-    - Ide **:** Adja meg az e-mail-címet az értesítő e-mailek fogadásához. Ehhez az oktatóanyaghoz használjon egy olyan e-mail-fiókot, amelyet a tesztelés során el tud majd érni.
-    - **Tárgy** és **törzs**: Írja be az e-mail szövegét. A választóeszközben a megfelelő JSON-tulajdonságok kiválasztásával az eseményadatokon alapuló dinamikus tartalmakat szúrhat be. Az esemény adatai a használatával `@{triggerBody()?['Data']}`kérhetők le.
+    - Ide **:** Adja meg az e-mail-címet az értesítő e-mailek fogadásához. Ehhez az oktatóanyaghoz olyan e-mail-fiókot használjon, amelyhez hozzáfér majd a tesztelés során.
+    - **Tárgy** és **törzs**: Írja be az e-mail szövegét. A választó eszközről választott JSON-tulajdonságokkal az esemény adataira alapuló dinamikus tartalmat illeszthet be. Az esemény adatai a használatával kérhetők le `@{triggerBody()?['Data']}` .
 
     Az e-mail-sablon az alábbi példához hasonló lehet.
 
@@ -84,7 +85,7 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 
 A titkos kulcs létrehozásakor a rendszer egy e-mailt fog kapni a konfigurált címeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)
 - Útmutató: [Key Vault-értesítések átirányítása a Azure Automationba](event-grid-tutorial.md).

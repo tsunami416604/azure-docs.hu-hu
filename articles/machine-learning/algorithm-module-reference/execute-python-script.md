@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.custom: tracking-python
+ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d07681798cadf1d983942d681b910e26ea48d6d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e3e14001758cadc8df5af3c82cb4386659a59d6a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285934"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843725"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -144,7 +144,7 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
     Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A beágyazott Python-kód alapján történő számítások eredményeit a következőként kell megadni `pandas.DataFrame` , amely automatikusan a Azure Machine learning adatkészlet formátumára lesz konvertálva. Ezután az eredményeket a folyamat más moduljaival is használhatja.
 
@@ -266,6 +266,6 @@ Az előre telepített csomagok a következők:
 -    Werkzeug = = 0.16.1
 -    Wheel = = 0.34.2
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

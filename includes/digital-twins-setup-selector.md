@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: fájl belefoglalása az Azure Digital Twins telepítési cikke verziójának kiválasztásához
 services: digital-twins
 author: baanders

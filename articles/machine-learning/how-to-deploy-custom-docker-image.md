@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 3ffc3883fb4a0d0b725239711bc0163f50998713
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541050"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843215"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Ez a dokumentum két részre oszlik:
 * Egyéni alaprendszerkép létrehozása: információt nyújt a rendszergazdáknak és a DevOps az egyéni rendszerkép létrehozásával és a hitelesítés konfigurálásával Azure Container Registry az Azure CLI és a Machine Learning parancssori felület használatával.
 * Modell üzembe helyezése egyéni alapképpel: az adatszakértők és a DevOps/ML-mérnökök számára biztosítanak egyéni rendszerképeket, amikor a Python SDK-ból vagy a ML CLI-ből helyez üzembe egy betanított modellt.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning munkacsoport. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
@@ -326,7 +326,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 A modellek ML parancssori felülettel történő üzembe helyezésével kapcsolatos további információkért tekintse meg [Azure Machine learning cikk CLI-bővítményének](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) "modell regisztrálása, profilkészítés és központi telepítése" szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [telepítéséről és a módjáról](how-to-deploy-and-where.md).
 * Ismerje meg, hogyan lehet [gépi tanulási modelleket betanítani és üzembe helyezni az Azure-folyamatok használatával](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

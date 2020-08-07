@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 7352fe220e302730f2683d335de5d32ca13d9add
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026339"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845170"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -27,7 +27,7 @@ Megtudhatja, hogyan konfigurálhatja a webalkalmazáshoz tartozó kódot, amely 
 <!-- This section can be in an include for web app and web APIs -->
 A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a következők:
 
-| Platform | Kódtár | Description |
+| Platform | Kódtár | Leírás |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. A gyakorlatban a bonyolultság a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) könyvtárban van beágyazva. |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
@@ -338,7 +338,7 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkben megtudhatja, hogyan aktiválhatja a bejelentkezést és a kijelentkezést.
 

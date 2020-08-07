@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: f0ac64fa184382f3939530565caa93f87da0fbf6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 09d82c4834e50e0dff74edb5ccd14287736b937e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321479"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844473"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,7 @@ További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.
 
 ## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
 
-Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t. Íme egy példa:
+Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t. Bemutatunk egy példát:
 
 1. Ha még nincs telepítve, töltse le és telepítse az [anacondat](https://www.anaconda.com/distribution/#download-section) (Python 3,7 verzió).
 
@@ -386,7 +386,7 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
     Ez a kód a konfigurációs fájlt a *. azureml/config.js* fájlba írja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése

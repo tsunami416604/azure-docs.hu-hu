@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 5dd51f7bcaaa876285f6f514ea98603ff28e7ffa
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560795"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872599"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamat ütemezett futtatását futtató trigger létrehozása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -317,17 +317,17 @@ A következő JSON-definíció bemutatja, hogyan hozhat létre ütemezési és i
 >  A **paraméterek** tulajdonság a **folyamatok** elem kötelező tulajdonsága. Ha a folyamat nem használ paramétert, akkor is vegyen fel egy üres JSON-definíciót a **paraméterek** tulajdonságba.
 
 
-### <a name="schema-overview"></a>Séma áttekintése
+### <a name="schema-overview"></a>A séma áttekintése
 Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
-| JSON-tulajdonság | Description |
+| JSON-tulajdonság | Leírás |
 |:--- |:--- |
 | **startTime** | Dátum-idő érték. Egyszerű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. |
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. Ez a tulajdonság nem kötelező. |
 | **timeZone** | Az időzóna. Jelenleg csak az UTC időzóna támogatott. |
 | **megismétlődésének** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. A recurrence objektum a **frequency**, **interval**, **endTime**, **count** és **schedule** elemeket támogatja. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
-| **frekvencia** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: „minute”, „hour”, „day”, „week”, és „month” (percenként, óránként, naponta, hetente és havonta). |
-| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **interval** 3, a **frequency** pedig „week”, az eseményindító 3 hetente ismétlődik. |
+| **frequency** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: „minute”, „hour”, „day”, „week”, és „month” (percenként, óránként, naponta, hetente és havonta). |
+| **időköz** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **interval** 3, a **frequency** pedig „week”, az eseményindító 3 hetente ismétlődik. |
 | **menetrend** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál.
 
 
@@ -335,11 +335,11 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Sztring | Yes | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **megismétlődésének** | Objektum | Yes | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Szám | No | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Sztring | Yes | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **menetrend** | Objektum | No | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | Sztring | Igen | Nincsenek | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **megismétlődésének** | Objektum | Igen | Nincsenek | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **időköz** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
+| **endTime** | Sztring | Igen | Nincsenek | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **menetrend** | Objektum | Nem | Nincsenek | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
@@ -367,7 +367,7 @@ Ha több **schedule** elem is meg van adva, a kiértékelési sorrend a legnagyo
 A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 
-| JSON-elem | Description | Érvényes értékek |
+| JSON-elem | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |
 | **perc** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
 | **óra** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
@@ -381,7 +381,7 @@ Ez a szakasz az ismétlődésütemezésekre mutat példákat, és a **schedule**
 
 Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **frequency** értéke helyes, az ütemezés meghatározása szerint. Nem lehet például a **frequency** értéke „day”, ha a **schedule** objektum „monthDays” értékre lett módosítva. Ez és az ehhez hasonló korlátozások az előző szakaszban található táblázatban szerepelnek.
 
-| Példa | Description |
+| Példa | Leírás |
 |:--- |:--- |
 | `{"hours":[5]}` | Minden nap 05:00-kor fut le. |
 | `{"minutes":[15], "hours":[5]}` | Minden nap 05:15-kor fut le. |
@@ -411,5 +411,5 @@ Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **freq
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).

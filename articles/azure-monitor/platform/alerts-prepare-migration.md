@@ -6,19 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539549"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843385"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
-Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai 2019 szeptemberében megszűnnek (eredetileg 2019. július). Az áttelepítési eszköz a Azure Portalban olyan ügyfelek számára érhető el, akik klasszikus riasztási szabályokat használnak, és magukat a migrációt szeretnék elindítani.
-
 > [!NOTE]
-> Az áttelepítési eszköz késése miatt a klasszikus riasztások áttelepítésének lejárati dátuma 2019 augusztus 31-ig, az eredetileg bejelentett, 2019. június 30-ig.
+> Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak, de továbbra is korlátozott mértékben használják azokat az erőforrásokat, amelyek még nem támogatják az új riasztásokat. A riasztások kivonulási dátuma tovább bővült. Hamarosan új dátum jelenik meg.
+>
 
 Ha úgy dönt, hogy önként áttelepíti a klasszikus riasztási szabályokat az új riasztási szabályokra, vegye figyelembe, hogy a két rendszer között van néhány különbség. Ez a cikk ismerteti ezeket a különbségeket, és azt, hogy miként lehet előkészíteni a változást.
 

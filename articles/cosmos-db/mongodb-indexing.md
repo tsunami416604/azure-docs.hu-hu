@@ -1,20 +1,20 @@
 ---
 title: Az indexelés kezelése Azure Cosmos DB API-MongoDB
-description: Ez a cikk áttekintést nyújt Azure Cosmos DB indexelési képességeiről a MongoDB API használatával.
+description: Ez a cikk áttekintést nyújt a Azure Cosmos DB indexelési képességeiről a Azure Cosmos DB API-MongoDB való használatával
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761161"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843810"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -315,7 +315,7 @@ Az index előrehaladásának részletei az aktuális indexelési művelet előre
    }
    ```
 
-### <a name="background-index-updates"></a>Háttérben futó index frissítései
+## <a name="background-index-updates"></a>Háttérben futó index frissítései
 
 A **háttérbeli** index tulajdonsághoz megadott értéktől függetlenül az index frissítése mindig a háttérben történik. Mivel az index frissítései alacsonyabb prioritással használják a kérelmek egységeit, mint a többi adatbázis-műveletnél, az index módosításai nem eredményeznek semmilyen állásidőt az írási, frissítési és törlési műveletekhez.
 
@@ -355,7 +355,7 @@ Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat
 
 Ha helyettesítő karaktert szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)

@@ -3,7 +3,7 @@ title: A csoportok &-alkalmazások hozzáférési felülvizsgálatának befejez�
 description: Megtudhatja, hogyan végezheti el a csoporttagok vagy alkalmazások hozzáférési felülvizsgálatát Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251ca1dc2b288d3448cdcda0f28335a92c54b431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078860"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798834"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>A csoportok és alkalmazások hozzáférési felülvizsgálatának befejezése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -86,7 +86,7 @@ A hozzáférési felülvizsgálat összes eredményének lekéréséhez kattints
 
  Alapértelmezés szerint a törölt felhasználók 30 napig töröltek maradnak az Azure AD-ban, amely idő alatt szükség esetén egy rendszergazda visszaállíthatja őket.  A felhasználók 30 nap után véglegesen törlődnek.  Emellett a Azure Active Directory portál használatával a globális rendszergazda explicit módon [véglegesen törölheti a nemrég törölt felhasználókat](../fundamentals/active-directory-users-restore.md) az adott időszak elérésekor.  Egy felhasználó végleges törlése után a felhasználó későbbi adatai el lesznek távolítva az aktív hozzáférési felülvizsgálatokból.  A törölt felhasználókkal kapcsolatos naplózási információk az auditnaplóban maradnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
 - [Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
