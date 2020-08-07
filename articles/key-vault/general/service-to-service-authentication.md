@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6edb6f026f3062dfb2beafd863cf090519f6b66a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427979"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875983"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
 > [!NOTE]
-> A **Microsoft. Azure. Services. AppAuthentication** elavult. A rendszer felváltotta az új Azure Identity Library **DefaultAzureCredentials** .net-, Java-, írógéppel-és Python-szolgáltatásokhoz, és minden új fejlesztéshez használható. További információt itt talál: [hitelesítés és az Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
+> A **Microsoft. Azure. Services. AppAuthentication** már nem ajánlott az új Key Vault SDK-val való használatra. A rendszer felváltotta az új Azure Identity Library **DefaultAzureCredentials** .net-, Java-, írógéppel-és Python-szolgáltatásokhoz, és minden új fejlesztéshez használható. További információt itt talál: [hitelesítés és az Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
 
 A Azure Key Vault való hitelesítéshez szüksége van egy Azure Active Directory (Azure AD) hitelesítő adatra, vagy egy közös titkos kulcsra vagy egy tanúsítványra.
 
@@ -235,7 +235,7 @@ Alapértelmezés szerint `AzureServiceTokenProvider` a a következő hitelesít�
 
 A folyamat szabályozásához használjon a konstruktornak átadott, `AzureServiceTokenProvider` vagy a *AzureServicesAuthConnectionString* környezeti változóban megadott kapcsolatot megadó karakterláncot.  A következő lehetőségek támogatottak:
 
-| A kapcsolatok karakterláncának beállítása | Forgatókönyv | Megjegyzések|
+| A kapcsolatok karakterláncának beállítása | Eset | Megjegyzések|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | `AzureServiceTokenProvider`a AzureCli használatával kérdezi le a tokent. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | `AzureServiceTokenProvider`a Visual studiót használja a jogkivonat lekéréséhez. |

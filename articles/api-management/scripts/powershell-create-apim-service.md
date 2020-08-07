@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – APIM-szolgáltatás létrehozása | Microsoft Docs
-description: Azure PowerShell-példaszkript – APIM-szolgáltatás létrehozása
+description: Megtudhatja, hogyan hozhat létre API Management (APIM) szolgáltatást. Tekintse meg a minta parancsfájlt, és tekintse meg a további rendelkezésre álló erőforrásokat.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: d0d375f3f60c4a6e544489fc333492586f8d921b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cfa643d8949f80e8dcf99c2c8e64cf20588b928
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008954"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851001"
 ---
 # <a name="create-an-api-management-service"></a>API Management szolgáltatás létrehozása
 
@@ -41,7 +41,7 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

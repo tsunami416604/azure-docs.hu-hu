@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131735"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827331"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Hozzon létre egy végpontok közötti megoldást
 
@@ -95,6 +95,20 @@ A következő lépés egy [Azure functions alkalmazás](../azure-functions/funct
 
 Ebben a szakaszban közzé fogja tenni az előre megírt Function alkalmazást, és gondoskodjon arról, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, Azure Active Directory (Azure AD) identitás hozzárendelésével. Ezeknek a lépéseknek a végrehajtása lehetővé teszi, hogy az oktatóanyag további részében a functions alkalmazásban lévő függvények is használhatók legyenek. 
 
+Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitva, a Function alkalmazás a _**SampleFunctionsApp**_ projektfájl alatt található. A *megoldáskezelő* ablaktáblán tekinthető meg.
+
+### <a name="update-dependencies"></a>Frissítési függőségek
+
+Az alkalmazás közzététele előtt érdemes meggyőződni arról, hogy a függőségek naprakészek, így biztos lehet benne, hogy rendelkezik az összes mellékelt csomag legújabb verziójával.
+
+A *megoldáskezelő* ablaktáblán bontsa ki a *SampleFunctionsApp > függőségek*elemet. Kattintson a jobb gombbal a *csomagok* elemre, és válassza a *NuGet-csomagok kezelése...* lehetőséget.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: NuGet-csomagok kezelése a SampleFunctionsApp projekthez" border="false":::
+
+Ekkor megnyílik a NuGet Package Manager. Válassza a *frissítések* fület, és ha vannak olyan csomagok, amelyeket frissíteni szeretne, jelölje be a jelölőnégyzetet az *összes csomag kiválasztásához*. Ezután nyomja meg a *frissítés*.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: a NuGet csomagkezelő összes csomagjának frissítésének kiválasztása":::
+
 ### <a name="publish-the-app"></a>Az alkalmazás közzététele
 
 Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitva, a *megoldáskezelő* ablaktáblán kattintson a jobb gombbal a _**SampleFunctionsApp**_ -projektfájl elemre, majd kattintson a **Közzététel**elemre.
@@ -134,19 +148,21 @@ A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződ
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Azure-függvény közzététele a Visual Studióban: közzététel":::
 
 > [!NOTE]
-> A következőhöz hasonló előugró ablak jelenhet meg: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Az Azure-függvény közzététele a Visual Studióban: hitelesítő adatok közzététele" border="false":::
-> Ha igen, válassza **a kísérlet a hitelesítő adatok lekérése az Azure-ból és a** **Mentés**lehetőséget.
+> Ha a következőhöz hasonló előugró ablak jelenik meg: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Az Azure-függvény közzététele a Visual Studióban: hitelesítő adatok közzététele" border="false":::
+> Válassza a **kísérlet a hitelesítő adatok lekérése az Azure-ból és a** **Mentés**lehetőséget.
 >
-> Ha egy figyelmeztetés jelenik meg, hogy a *functions Runtime verziója nem egyezik az Azure-ban futó verzióval*, kövesse az utasításokat a legújabb Azure functions Runtime verzióra való frissítéshez. Ez a probléma akkor fordulhat elő, ha a Visual Studio egy régebbi verzióját használja, mint az oktatóanyag elején az *Előfeltételek* szakaszban ajánlott.
+> Ha a *functions verziójának frissítése az Azure* -ban vagy a *functions Runtime verziója nem egyezik az Azure-ban futó verzióval*:
+>
+> Az utasításokat követve frissítsen a legújabb Azure Functions futtatókörnyezet-verzióra. Ez a probléma akkor fordulhat elő, ha a Visual Studio egy régebbi verzióját használja, mint az oktatóanyag elején az *Előfeltételek* szakaszban ajánlott.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
 
-Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés az alkalmazás beállításainak konfigurálása, a rendszer által felügyelt Azure AD-identitás kiosztása, valamint az identitás *tulajdonosi* engedélyeinek megadása az Azure Digital Twins-példányban.
+Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés egy Alkalmazásbeállítások konfigurálása, az alkalmazás a rendszer által felügyelt Azure AD-identitás kiosztása, és az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkör megadása az Azure Digital Twins-példányban. Ez a szerepkör minden olyan felhasználóhoz vagy függvényhez szükséges, amely sok adatsík-tevékenységet szeretne végrehajtani a példányon. A biztonsággal és a szerepkör-hozzárendelésekkel kapcsolatos további információkért tekintse meg a [*következő fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md).
 
-Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás a digitális Twins-példányra való hivatkozáshoz fog használni.
+Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet *principalId* mezőjét.
@@ -155,7 +171,7 @@ A rendszerfelügyelt identitás létrehozásához használja a következő paran
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-A következő parancs *principalId* értékének használatával rendelje hozzá a Function alkalmazás identitását az Azure Digital Twins-példány *tulajdonosi* szerepköréhez:
+Használja az alábbi parancs kimenetében található *principalId* értéket, hogy a Function alkalmazás identitását az Azure Digital *Twins tulajdonos (előzetes verzió)* szerepkörhöz rendelje az Azure Digital Twins-példányhoz:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -171,7 +187,7 @@ Ebben a lépésben egy szimulált termosztátos eszközt fog összekötni [IoT h
 
 Ez a végpontok közötti forgatókönyv (**B nyíl**) ezen részén történik:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a B nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a "B" nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
 
 Az eszköz kapcsolódásának beállításához a következő műveleteket kell végrehajtania:
 1. Hozzon létre egy IoT hub-t, amely a szimulált eszközt felügyeli
@@ -339,7 +355,7 @@ Azt is ellenőrizheti, hogy a végpont létrehozása sikeres volt-e a következ�
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-Keresse meg a `provisioningState` kimenetben a mezőt, és ellenőrizze, hogy az érték "sikeres".
+Keresse meg a `provisioningState` kimenetben a mezőt, és ellenőrizze, hogy az érték "sikeres". Azt is megteheti, hogy "kiépítés", ami azt jelenti, hogy a végpont létrehozása még folyamatban van. Ebben az esetben várjon néhány másodpercet, és futtassa újra a parancsot, és győződjön meg arról, hogy a művelet sikeresen befejeződött.
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="A végpont-lekérdezés eredménye, amely a sikeres provisioningState rendelkező végpontot mutatja":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 A parancs kimenete néhány információ a létrehozott útvonalról.
+
+>[!NOTE]
+>A végpontokat (az előző lépésből) be kell fejezni a kiépítés előtt, hogy be lehessen állítani az azokat használó esemény-útvonalat. Ha az útvonal létrehozása sikertelen, mert a végpontok nem állnak készen, várjon néhány percet, majd próbálkozzon újra.
 
 #### <a name="connect-the-function-to-event-grid"></a>A függvény összekötése Event Grid
 
@@ -410,7 +429,7 @@ Itt látható az oktatóanyagban kiépített forgatókönyv áttekintése.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
@@ -431,7 +450,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 5dd5cd1ac0463c6c07496e4ea49edd08178a5a54
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987871"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834388"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > - Az alkalmazás összekötése az Azure Computer Vision és Custom Vision használatával.
 > - Hozzon létre egy Azure-beli egyszerű fiókot az Azure-szolgáltatások alkalmazásból való üzembe helyezéséhez.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/). 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -177,7 +177,7 @@ Ha követte a forgatókönyv összes lépését, és az alkalmazást használta 
 
 Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes előfizetése csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt**területen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy teljes funkcionalitású Xamarin. Forms-alkalmazást állít be és vizsgál meg, amely a Custom Vision szolgáltatást használja a mobil kamera-lemezképekben található emblémák észlelésére. Következő lépésként Ismerkedjen meg a Custom Vision-modell létrehozásával kapcsolatos ajánlott eljárásokkal, hogy a saját alkalmazásaihoz hozzon létre egyet, így hatékony és pontos lehet.
 

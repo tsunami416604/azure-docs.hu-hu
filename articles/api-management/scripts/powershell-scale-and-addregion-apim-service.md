@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – A szolgáltatáspéldány skálázása | Microsoft Docs
-description: Azure PowerShell-példaszkript – A szolgáltatáspéldány skálázása
+description: Ismerje meg, hogyan méretezheti és adhatja hozzá a régiókat a API Management Service-példányhoz. Tekintse meg a minta parancsfájlt, és tekintse meg a további rendelkezésre álló erőforrásokat.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a880bf617f4d1d81b73fda1fbe27d2dd803619a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec54f1dcf3f7f28415646a58c057453985d450f0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008829"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902269"
 ---
 # <a name="scale-the-service-instance"></a>A szolgáltatáspéldány skálázása
 
@@ -41,7 +41,7 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

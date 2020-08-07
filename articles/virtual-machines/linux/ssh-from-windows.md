@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: dcb5277773be1fc45a3d2b0901cf9fda177b7054
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825565"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
@@ -45,7 +45,7 @@ A Windows 10-es legújabb verziói az [OpenSSH-ügyfélprogramok](https://blogs.
 
 A virtuális géphez való kapcsolódáshoz a [Azure Cloud Shell](../../cloud-shell/overview.md) bash is használható. Az [Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)használatával [webböngészőben](https://shell.azure.com/bash), a [Azure Portal](https://portal.azure.com)vagy a Visual Studio Code-ban található terminálként is használhatja a Cloud shell.
 
-A [Linux Windows alrendszerét](https://docs.microsoft.com/windows/wsl/about) is telepítheti a virtuális géphez SSH-n keresztül, és más natív Linux-eszközöket is használhat a bash-rendszerhéjon belül.
+A [Linux Windows alrendszerét](/windows/wsl/about) is telepítheti a virtuális géphez SSH-n keresztül, és más natív Linux-eszközöket is használhat a bash-rendszerhéjon belül.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 
@@ -88,7 +88,7 @@ Ha a kulcspárt a kulcspár létrehozásakor konfigurálta, írja be a jelszót,
 Ha a virtuális gép az igény szerinti hozzáférési szabályzatot használja, a virtuális géphez való kapcsolódáshoz a hozzáférést kell kérnie. Az igény szerinti szabályzattal kapcsolatos további információkért lásd: [virtuális gépek hozzáférésének kezelése az igény szerinti házirend használatával](../../security-center/security-center-just-in-time.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Portal SSH-kulcsaival kapcsolatos információkért lásd: az [ssh-kulcsok létrehozása és tárolása](../ssh-keys-portal.md) a portálon a virtuális gépek létrehozásához használt Azure Portal.
 

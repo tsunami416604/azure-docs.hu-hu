@@ -7,13 +7,13 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.custom: tracking-python
-ms.openlocfilehash: 439e645369cd063e3084b5d975b3d1672e20a73e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python
+ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554014"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848185"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Azure Storage-minták a V12 Python ügyféloldali kódtárak használatával
 
@@ -470,7 +470,7 @@ A következő táblázatok áttekintést nyújtanak a minták tárházáról és
    :::column-end:::
 :::row-end:::
 
-### <a name="queue"></a>Várólista
+### <a name="queue"></a>Üzenetsor
 
 :::row:::
    :::column span="":::
@@ -593,5 +593,5 @@ További információ a mintákról más nyelveken:
 
 * .NET: [Azure Storage-minták .NET használatával](storage-samples-dotnet.md)
 * Java: [Azure Storage-minták Java használatával](storage-samples-java.md)
-* JavaScript/Node. js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
+* JavaScript/Node.js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

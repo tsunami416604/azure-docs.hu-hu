@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure Static Web Apps?
+title: Mi az Azure Static Web Apps?
 description: Az Azure statikus Web Apps legfontosabb funkciói és funkciói.
 services: static-web-apps
 author: craigshoemaker
@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488919"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835782"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
 
@@ -22,11 +22,11 @@ Az Azure statikus Web Apps egy olyan szolgáltatás, amely automatikusan létreh
 
 Az Azure statikus Web Apps munkafolyamata egy fejlesztői napi munkafolyamatra van szabva. Az alkalmazásokat a GitHub-interakciók alapján építették és helyezik üzembe.
 
-Amikor létrehoz egy Azure statikus Web Apps-erőforrást, az Azure beállítja a GitHub-műveletek munkafolyamatot az alkalmazás forráskód-tárházában, amely figyeli a választott ágat. Minden alkalommal, amikor leküldi vagy fogadja a lekéréses kérelmeket a figyelt ágra, a GitHub-művelet automatikusan létrehozza és telepíti az alkalmazást és az API-ját az Azure-ba.
+Amikor létrehoz egy Azure Static Web Apps-erőforrást, az Azure beállít egy GitHub Actions-munkafolyamatot az alkalmazás forráskódjának adattárában, amely figyeli a kiválasztott ágat. Minden alkalommal, amikor leküldi vagy fogadja a lekéréses kérelmeket a figyelt ágra, a GitHub-művelet automatikusan létrehozza és telepíti az alkalmazást és az API-ját az Azure-ba.
 
-A statikus webalkalmazások általában könyvtárak és keretrendszerek használatával készültek, mint például a szögletes, a reakciós, a karcsú vagy a Vue. Ezek az alkalmazások az alkalmazást alkotó HTML-, CSS-, JavaScript-és képobjektumokat tartalmazzák. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
+A statikus webalkalmazásokat gyakran hozzák létre olyan könyvtárak és keretrendszerek használatával, mint például az Angular, a React, a Svelte vagy a Vue. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
 
-A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól választja el, és helyette a világ földrajzilag elosztott pontjairól szolgálnak. Ez a terjesztés sokkal gyorsabban teszi lehetővé a fájlok kiszolgálását, mivel a fájlok fizikailag közelebb vannak a végfelhasználók számára. Emellett az API-végpontok [kiszolgáló nélküli architektúrával](../azure-functions/functions-overview.md)vannak tárolva, így elkerülhető, hogy a teljes háttér-kiszolgálót egyszerre kelljen használni.
+A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól választja el, és helyette a világ földrajzilag elosztott pontjairól szolgálnak. Ez az elosztás a fájlok sokkal gyorsabb szolgáltatását teszi lehetővé, mivel a fájlok fizikailag közelebb vannak a végfelhasználókhoz. Emellett az API-végpontok [kiszolgáló nélküli architektúrával](../azure-functions/functions-overview.md)vannak tárolva, így elkerülhető, hogy a teljes háttér-kiszolgálót egyszerre kelljen használni.
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
@@ -44,9 +44,9 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Mit tehet a statikus Web Apps
 
-- **Modern JavaScript-alkalmazásokat készíthet** olyan keretrendszerekkel és tárakkal, mint például a [szögletes](https://angular.io/), a [reakciós](https://reactjs.org/), a [karcsú](https://svelte.dev/), a [Vue](https://vuejs.org/) [Azure functions](https://azure.microsoft.com/services/functions/) háttérrel.
+- **Modern JavaScript-alkalmazásokat készíthet** olyan keretrendszerekkel és tárakkal, mint például a [szögletes](getting-started.md#tabpanel_CeZOj-G++Q_angular), a [reakciós](getting-started.md#tabpanel_CeZOj-G++Q_react), a [karcsú](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) [Azure functions](apis.md) háttérrel.
 - **Statikus helyeket tehet közzé** olyan keretrendszerekkel, mint például a [Gatsby](publish-gatsby.md), a [Hugo](publish-hugo.md), a [VuePress](publish-vuepress.md).
-- **Webalkalmazások üzembe helyezése** olyan keretrendszerekkel, mint a [Next. js](deploy-nextjs.md) és a [Nuxt. js](deploy-nuxtjs.md).
+- **Webalkalmazások üzembe helyezése** olyan keretrendszerekkel, mint a [Next.js](deploy-nextjs.md) és a [Nuxt.js](deploy-nuxtjs.md).
 
 \*Az előzetes verzióban nem támogatott a APEX-tartomány regisztrációja.
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc, tracking-python
+ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0dfdb324013a246010c12d36a50c80b4fbef503e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607091"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873925"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Oktatóanyag: Apache Spark Machine learning-alkalmazás létrehozása az Azure HDInsight
 
@@ -21,7 +21,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy [Apache Spark](
 
 A [MLlib](https://spark.apache.org/docs/latest/ml-guide.html) a Spark adaptív gépi tanulási könyvtára, amely közös tanulási algoritmusokat és segédprogramokat tartalmaz. (Besorolás, regresszió, fürtözés, együttműködési szűrés és dimenzióját csökkentése. Emellett a mögöttes optimalizálási primitívek is.)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Apache Spark Machine learning-alkalmazás fejlesztése
 
@@ -33,7 +33,7 @@ Az oktatóanyag a következőket ismerteti:
 
 ## <a name="understand-the-data-set"></a>Az adatkészlet értelmezése
 
-Az alkalmazás alapértelmezés szerint az összes fürtön elérhető minta **HVAC. csv** -adatkészletet használja. A fájl a következő helyen található: `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Megjósolhatja, hogy egy adott épületben melegebb vagy hidegebb állapotú-e a megcélzott hőmérséklet, a rendszerazonosító és a rendszer kora alapján.
+Az alkalmazás alapértelmezés szerint az összes fürtön elérhető minta **HVAC.csv** -adatelemzést használja. A fájl a következő helyen található: `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Megjósolhatja, hogy egy adott épületben melegebb vagy hidegebb állapotú-e a megcélzott hőmérséklet, a rendszerazonosító és a rendszer kora alapján.
 
 ![A Spark Machine learning-példához használt adatok pillanatképe](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "A Spark Machine learning-példához használt adatok pillanatképe")
 
