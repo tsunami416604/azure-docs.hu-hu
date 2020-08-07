@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés a Storage Explorerrel | Microsoft Docs
-description: Azure Storage-erőforrások kezelése Storage Explorer
+description: Az Azure Storage-erőforrások kezelésének megkezdése Storage Explorerokkal. Töltse le és telepítse a Azure Storage Explorert, kapcsolódjon egy Storage-fiókhoz vagy szolgáltatáshoz, és így tovább.
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905346"
 ---
 # <a name="get-started-with-storage-explorer"></a>A Storage Explorer használatának első lépései
 
@@ -133,7 +133,7 @@ A Storage Explorer több módon is csatolhat erőforrásokhoz:
 
 A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatolt**  >  **Storage**  >  **-fiókok (csatolt tárolók)**  >  **blob-tárolók**területen jelenik meg. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
-#### <a name="use-a-connection-string"></a>A kapcsolatok karakterláncának használata
+#### <a name="use-a-connection-string"></a>Kapcsolati sztring használata
 
 1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás**megnyitásához.
 
@@ -147,7 +147,7 @@ A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást je
 
 A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatolt**  >  **Storage-fiókok**területen jelenik meg. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
-#### <a name="use-a-shared-access-signature-uri"></a>Közös hozzáférésű aláírási URI használata
+#### <a name="use-a-shared-access-signature-uri"></a>Közös hozzáférésű jogosultságkód URI-jának használata
 
 1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás**megnyitásához.
 
@@ -179,7 +179,7 @@ A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást je
 
 A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatolt**  >  **Storage-fiókok**területen jelenik meg. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
-#### <a name="attach-to-a-local-emulator"></a>Csatolás helyi emulátorhoz
+#### <a name="attach-to-a-local-emulator"></a>Csatlakoztatás helyi emulátorhoz
 
 Storage Explorer jelenleg két hivatalos tároló-emulátort támogat:
 
@@ -266,7 +266,7 @@ Amikor szöveget ír be a keresőmezőbe, Storage Explorer megjeleníti az össz
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Blob Storage-erőforrások kezelése Storage Explorer](vs-azure-tools-storage-explorer-blobs.md)
 * [Adatok kezelése az Azure Storage Explorerrel](./cosmos-db/storage-explorer.md)

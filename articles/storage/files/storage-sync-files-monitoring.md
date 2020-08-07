@@ -1,18 +1,18 @@
 ---
 title: Figyelő Azure File Sync | Microsoft Docs
-description: A Azure File Sync figyelése.
+description: Tekintse át, hogyan figyelheti Azure File Sync üzemelő példányát a Azure Monitor, a Storage Sync Service és a Windows Server használatával.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832620"
+ms.locfileid: "87903527"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan figyelheti Azure File Sync üzembe helyezését 
 Ebben az útmutatóban a következő forgatókönyvek jelennek meg: 
 - Azure Monitor Azure File Sync metrikáinak megtekintése.
 - Riasztásokat hozhat létre a Azure Monitorban, hogy proaktívan értesítse Önt a kritikus feltételekről.
-- Azure File Sync központi telepítés állapotának figyelése a Azure Portal használatával.
+- Azure File Sync központi telepítés állapotának megtekintése a Azure Portal használatával.
 - Az eseménynaplók és a teljesítményszámlálók használata a Windows-kiszolgálókon a Azure File Sync üzemelő példány állapotának figyeléséhez. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -34,7 +34,9 @@ A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) haszn
 
 A Azure File Sync metrikái alapértelmezés szerint engedélyezve vannak, és 15 percenként Azure Monitor küldik őket.
 
-Azure Monitor Azure File Sync metrikáinak megtekintéséhez válassza ki a **Storage Sync Services** erőforrástípust.
+**A Azure Monitor Azure File Sync metrikáinak megtekintése**
+- Nyissa meg a **Storage Sync szolgáltatást** a **Azure Portalban** , és kattintson a **metrikák**elemre.
+- Kattintson a **metrika** legördülő listára, és válassza ki a megtekinteni kívánt metrikát.
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
@@ -82,7 +84,7 @@ A regisztrált kiszolgáló állapotának, a kiszolgálói végpont állapotána
 ### <a name="registered-server-health"></a>Regisztrált kiszolgáló állapota
 
 - Ha a **regisztrált kiszolgáló** állapota **online**, a kiszolgáló sikeresen kommunikál a szolgáltatással.
-- Ha a **regisztrált kiszolgáló** állapota **kapcsolat nélküli üzemmódban jelenik meg**, ellenőrizze, hogy a kiszolgálón fut-e a Storage Sync monitor (AzureStorageSyncMonitor.exe) folyamata. Ha a kiszolgáló tűzfal vagy proxy mögött található, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) a tűzfal és a proxy konfigurálásához.
+- Ha a **regisztrált kiszolgáló** állapota **kapcsolat nélküli üzemmódban jelenik meg**, a tárolási szinkronizálási figyelő folyamata (AzureStorageSyncMonitor.exe) nem fut, vagy a kiszolgáló nem fér hozzá a Azure file Sync szolgáltatáshoz. Útmutatásért tekintse meg a [hibaelhárítási dokumentációt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
 ### <a name="server-endpoint-health"></a>Kiszolgálói végpont állapota
 
@@ -121,11 +123,13 @@ Szinkronizálás állapota:
   > [!Note]  
   > Időnként a szinkronizálási munkamenetek nem teljesek, vagy nem nulla PerItemErrorCount rendelkeznek. Azonban továbbra is előrehaladást végeznek, és néhány fájl szinkronizálása sikeresen megtörtént. Ezt az alkalmazott mezőkben láthatja, például AppliedFileCount, AppliedDirCount, AppliedTombstoneCount és AppliedSizeBytes. Ezek a mezők tájékoztatják, hogy a munkamenet mennyivel járt sikerrel. Ha úgy látja, hogy egy sorban több szinkronizálási munkamenet is meghibásodik, és egyre nagyobb mértékben vannak alkalmazva, a támogatási jegy megnyitása előtt adja meg a szinkronizálási időt.
 
+- Az 9121-as AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után minden egyes eseti hiba esetén be van jelentkezve. Ennek az eseménynek a segítségével meghatározhatja, hogy hány fájlt nem lehet szinkronizálni ezzel a hibával (**PersistentCount** és **TransientCount**). A rendszer kideríti az elemek állandó hibáit, lásd: Hogyan, hogy vannak-e olyan [fájlok vagy mappák, amelyek nem szinkronizálhatók?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+
 - Az 9302-as AZONOSÍTÓJÚ esemény 5 – 10 percenként van naplózva, ha aktív szinkronizálási munkamenet van. Ezzel az eseménysel megállapíthatja, hogy az aktuális szinkronizálási munkamenet folyamatban van-e (**AppliedItemCount > 0**). Ha a szinkronizálás nem végez előrehaladást, a szinkronizálási munkamenetnek végül sikertelennek kell lennie, és a 9102-es AZONOSÍTÓJÚ esemény lesz naplózva a hibával. További információt a [szinkronizálási folyamat dokumentációjában](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)talál.
 
 Regisztrált kiszolgáló állapota:
 
-- Az 9301-as AZONOSÍTÓJÚ esemény 30 másodpercenként van naplózva, amikor egy kiszolgáló lekérdezi a szolgáltatást a feladatokhoz. Ha a GetNextJob a **status = 0**értékkel végződik, a kiszolgáló képes kommunikálni a szolgáltatással. Ha a GetNextJob hibával zárul, útmutatásért olvassa el a [hibaelhárítási dokumentációt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+- Az 9301-as AZONOSÍTÓJÚ esemény 30 másodpercenként van naplózva, amikor egy kiszolgáló lekérdezi a szolgáltatást a feladatokhoz. Ha a GetNextJob a **status = 0**értékkel végződik, a kiszolgáló képes kommunikálni a szolgáltatással. Ha a GetNextJob hibával zárul, útmutatásért olvassa el a [hibaelhárítási dokumentációt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
 Felhő-rétegek állapota:
 
@@ -159,7 +163,7 @@ A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesí
 | AFS Sync Operations\Uploaded-szinkronizálási fájlok/mp | A feltöltött fájlok száma másodpercenként. |
 | AFS Sync Operations\Total szinkronizálási művelet/mp | A szinkronizált fájlok teljes száma (feltöltés és letöltés). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

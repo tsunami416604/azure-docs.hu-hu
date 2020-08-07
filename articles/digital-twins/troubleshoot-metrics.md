@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: cc270ebb12b27c6461b00a4f7042bc3c829d02ef
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812300"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905201"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -32,9 +32,14 @@ A metrikák alapértelmezés szerint engedélyezve vannak. Az Azure digitális T
 
     Ez az oldal az Azure Digital Twins-példány metrikáit jeleníti meg. A metrikák egyéni nézeteit is létrehozhatja a listából megjeleníteni kívánt elemek kiválasztásával.
     
-3. Kiválaszthatja, hogy a metrikák adatait egy Event Hubs-végpontba vagy egy Azure Storage-fiókba küldje el, ehhez kattintson a **diagnosztika beállítások** elemre a menüben, majd **adja hozzá a diagnosztikai beállítást**.
+3. Kiválaszthatja, hogy a metrikák adatait egy Event Hubs-végpontba vagy egy Azure Storage-fiókba küldje el a **diagnosztika beállításainak** kiválasztásával a menüből, majd **adja hozzá a diagnosztikai**beállításokat.
 
-    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép":::
+
+    A folyamattal kapcsolatos további információkért lásd [*: Hibaelhárítás: a diagnosztika beállítása*](troubleshoot-diagnostics.md).
+
+4. A metrikák adataira vonatkozó riasztásokat úgy is beállíthatja, hogy a menüben kiválasztja a **riasztások** lehetőséget, majd az **+ új riasztási szabályt**.
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="A riasztások oldal és a hozzáadni kívánt gomb képernyőképe":::
 
     A folyamattal kapcsolatos további információkért lásd [*: Hibaelhárítás: a diagnosztika beállítása*](troubleshoot-diagnostics.md).
 
@@ -102,6 +107,6 @@ A dimenziók segítenek azonosítani a metrikák további részleteit. Az útvá
 | Állapotkód osztálya | 2xx, 4xx, 5xx stb. |
 | Állapot szövege | Belső kiszolgálóhiba, nem található, és így tovább. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure Digital Twins rögzített metrikáinak kezelésével kapcsolatban, tekintse meg a [*Hibaelhárítás: diagnosztika beállítása*](troubleshoot-diagnostics.md)című témakört.

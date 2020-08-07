@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c967e32836586c39131069407fc4808a5f91ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9db22c6876294c9ffba33eab3d27900bf294e886
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609127"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873840"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken lévő Azure-erőforrásokhoz REST API hívások használatával
 
@@ -79,12 +79,12 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Kérések fejlécei**
+   **Kérésfejlécek**
    
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
    
    **Kérelem törzse**
 
@@ -162,18 +162,18 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
    > Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt felügyelt identitásokat: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Ha a válaszban szereplő értékben azonosított, felhasználó által hozzárendelt felügyelt identitások vannak hozzárendelve a virtuális géphez `identity` , ugorjon a 3. lépésre, amely bemutatja, hogyan őrzi meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben engedélyezheti a rendszerhez rendelt felügyelt identitást a virtuális gépen.
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
    
    **Kérelem törzse**
     
@@ -194,18 +194,18 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
    **API-VERZIÓ 2018-06-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -228,19 +228,19 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
    **API-VERZIÓ 2017-12-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
     
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -272,18 +272,18 @@ Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuá
    > Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt felügyelt identitásokat: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Ha a válaszban szereplő értékben azonosított, felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik `identity` , ugorjon a 3. lépésre, amely bemutatja, hogyan őrizze meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben letiltja a rendszerhez rendelt felügyelt identitást a virtuális gépen.
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -337,12 +337,12 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -418,12 +418,12 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -509,11 +509,11 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    ```HTTP
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.
 
     Ha a virtuális géphez a válaszban megadott módon azonosított felhasználó-vagy rendszerszintű felügyelt identitásokkal rendelkezik `identity` , ugorjon az 5. lépésre, amely bemutatja, hogyan őrizze meg a rendszer által hozzárendelt felügyelt identitást, miközben hozzáad egy felhasználóhoz rendelt felügyelt identitást a virtuális géphez.
 
@@ -524,18 +524,18 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    **API-VERZIÓ 2018-06-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
  
    **Kérelem törzse**
 
@@ -555,19 +555,19 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    **API-VERZIÓ 2017-12-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
    
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -591,19 +591,19 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez van rendelve, és hozzá szeretné adni a felhasználó által hozzárendelt felügyelt identitást `ID2` :
 
    ```bash
-   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -630,19 +630,19 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez van rendelve, és hozzá szeretné adni a felhasználó által hozzárendelt felügyelt identitást `ID2` : 
 
    ```bash
-   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -678,12 +678,12 @@ A felhasználó által hozzárendelt identitás egy virtuális géphez való elt
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.
  
    Ha felügyelt identitások vannak hozzárendelve a virtuális géphez, azok szerepelnek az érték válaszában `identity` .
 
@@ -694,19 +694,19 @@ A felhasználó által hozzárendelt identitás egy virtuális géphez való elt
    Adja hozzá `null` az eltávolítani kívánt felhasználóhoz rendelt felügyelt identitást:
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -726,19 +726,19 @@ A felhasználó által hozzárendelt identitás egy virtuális géphez való elt
    Csak azokat a felhasználó által hozzárendelt felügyelt identitásokat őrizze meg, amelyeket meg szeretne őrizni a `identityIds` tömbben:
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérések fejlécei**
+   **Kérésfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-   |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        | 
 
    **Kérelem törzse**
 
@@ -756,19 +756,19 @@ A felhasználó által hozzárendelt identitás egy virtuális géphez való elt
 Ha a virtuális gépen a rendszerhez hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás is van, akkor a következő paranccsal távolíthatja el az összes felhasználó által hozzárendelt felügyelt identitást úgy, hogy csak a rendszerhez rendelt felügyelt identitás használatára váltson:
 
 ```bash
-curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
 ```
 
 ```HTTP
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérések fejlécei**
+**Kérésfejlécek**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
 |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-|*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva. | 
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva. | 
 
 **Kérelem törzse**
 
@@ -790,12 +790,12 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérések fejlécei**
+**Kérésfejlécek**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
 |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-|*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.| 
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.| 
 
 **Kérelem törzse**
 
@@ -807,7 +807,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználó által hozzárendelt felügyelt identitások REST használatával történő létrehozásával, listázásával vagy törlésével kapcsolatos információkért lásd:
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083372"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874027"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
 
@@ -25,7 +25,7 @@ A Azure Portal egy webalapú felügyeleti eszköz a Microsoft Azure felhőben ü
 
 A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resource Manager sablonok használatával számos részletet elolvashat. További információ: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
@@ -39,7 +39,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
 ![HDInsight létrehozása a fürt alapjaival](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Új fürt létrehozása a Azure Portalban")
 
@@ -86,6 +86,9 @@ Nem kötelező: válassza az **Azure Storage hozzáadása** lehetőséget a für
 
 Nem kötelező: megadhat egy meglévő SQL Database a fürtön kívüli Apache Hive, Apache Oozie és, vagy Apache Ambari-metaadatok mentéséhez. A metaadattár használt Azure SQL Databasenak engedélyeznie kell más Azure-szolgáltatásokhoz való kapcsolódást, beleértve az Azure HDInsight-t is. Metaadattár létrehozásakor ne adjon meg kötőjeleket vagy kötőjeleket tartalmazó adatbázist. Ezek a karakterek a fürt létrehozási folyamatának sikertelenségét okozhatják.
 
+> [!IMPORTANT]
+> A metaadattárak támogató fürtök alakzatai esetében az alapértelmezett metaadattár egy **alapszintű 5 DTU-korláttal (nem frissíthető)** rendelkező Azure SQL Database biztosít. Alapvető tesztelési célokra alkalmas. Nagyméretű vagy éles számítási feladatokhoz ajánlott áttelepíteni egy külső metaadattár.
+
 Válassza a **Tovább: biztonság és hálózatkezelés >>** a következő lapra való továbblépés előtt.
 
 ## <a name="security--networking"></a>Biztonság és hálózatkezelés
@@ -121,7 +124,7 @@ A **konfiguráció + díjszabás** lapon adja meg a következő információkat:
 
 Válassza a **felülvizsgálat + >>létrehozása** elemet a fürtkonfiguráció ellenőrzéséhez és a végső lapra való haladáshoz.
 
-## <a name="review--create"></a>Felülvizsgálat + létrehozás
+## <a name="review--create"></a>Ellenőrzés és létrehozás
 
 ![HDInsight-fürt összesítésének létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Fürtcsomópontok számának meghatározása")
 
@@ -152,7 +155,7 @@ Lásd: [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI 
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen létrehozott egy HDInsight-fürtöt. Most megtudhatja, hogyan dolgozhat a fürttel.
 

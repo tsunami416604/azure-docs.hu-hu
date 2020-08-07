@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccacef6f9557bdcf683973c2ad5141b6066347b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176209"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904309"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Tárolók kezelése az Azure független felhőkben a PowerShell használatával
 
@@ -84,7 +84,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Ez a parancs a következő eredményeket adja vissza.
 
-| Name| StorageEndpointSuffix|
+| Név| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -101,7 +101,7 @@ Az eredmények a következő értékekhez hasonlóak:
 
 |Tulajdonság neve|Érték|
 |----|----|
-| Name (Név) | `AzureGermanCloud` |
+| Név | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
 | GalleryURL | `https://gallery.cloudapi.de/` |
@@ -112,6 +112,7 @@ Az eredmények a következő értékekhez hasonlóak:
 | SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
 | **StorageEndpointSuffix** | `core.cloudapi.de` |
 | ... | ... |
+
 Ha csak a Storage Endpoint utótag tulajdonságot szeretné lekérni, kérje le az adott felhőt, és kérjen rá egy tulajdonságot.
 
 ```powershell
@@ -162,7 +163,7 @@ Ha létrehozott egy új erőforráscsoportot és egy Storage-fiókot ehhez a gya
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználói bejelentkezések megőrzése a PowerShell-munkamenetek között](/powershell/azure/context-persistence)
 * [Azure Government Storage](../../azure-government/documentation-government-services-storage.md)

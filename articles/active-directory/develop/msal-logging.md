@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558673"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846224"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
 
-|Szint  |Description |
+|Szint  |Leírás |
 |---------|---------|
 | `MSALLogLevelNothing`| Az összes naplózás letiltása |
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
 
-|Szint  |Description |
+|Szint  |Leírás |
 |---------|---------|
 | `MSALLogLevelNothing`| Az összes naplózás letiltása |
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |

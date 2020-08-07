@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive, tracking-python
-ms.openlocfilehash: 9bb27d1dd9c7bc5f067fa3d84f451537882150c5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
+ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087673"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874758"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben
 
@@ -592,7 +592,7 @@ A rendszer a hiba adatait (STDERR) és a feladatok eredményét (STDOUT) is napl
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 Ha olyan Python-modulokat kell betölteni, amelyek alapértelmezés szerint nem találhatók meg, tekintse meg [a modul üzembe helyezése az Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)című témakört.
 

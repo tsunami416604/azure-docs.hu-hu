@@ -1,26 +1,29 @@
 ---
-title: Az Azure Cognitive Search használata a .NET-ben
+title: A Microsoft. Azure. Search (v10) használata a .NET-ben
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg, hogyan használható az Azure Cognitive Search egy .NET-alkalmazásban a C# és a .NET SDK használatával. A kód alapú feladatok közé tartozik a szolgáltatáshoz való kapcsolódás, a tartalom indexelése és az index lekérdezése.
+description: Megtudhatja, hogyan hozhat létre és kezelhet a .NET-alkalmazásokban lévő keresési objektumokat egy C# és a .NET SDK 10-es verziójának használatával. A kódrészletek a szolgáltatáshoz való csatlakozást, indexek és lekérdezések létrehozását mutatják be.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/05/2020
+ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146917"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905423"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Az Azure Cognitive Search használata .NET-alkalmazásokból
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>A Microsoft. Azure. Search (v10) használata .NET-alkalmazásokban
 
-Ebből a cikkből megtudhatja, hogyan hozhatja létre és futtathatja az [Azure Cognitive Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-t. Az Azure Cognitive Search használatával a .NET SDK-val széles körű keresési élményt valósíthat meg az alkalmazásban.
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet keresési objektumokat a C# és az [Azure Cognitive Search (v10) .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)használatával. A 10-es verzió a Microsoft. Azure. Search csomag utolsó verziója. Az új funkciók továbbítása az Azure SDK csapata [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) történik.
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Az Azure Cognitive Search SDK bemutatása
+Ha már rendelkezik meglévő vagy fedélzeti fejlesztési projektekkel, folytassa a 10-es verzió használatát. Új projektek esetén vagy új funkciók használatához érdemes áttérnie egy meglévő keresési megoldásra az új könyvtárba.
+
+## <a name="whats-in-version-10"></a>A 10-es verzió ismertetése
+
 Az SDK néhány ügyféloldali kódtárat tartalmaz, amelyek lehetővé teszik az indexek, az adatforrások, az indexelő és a szinonimák leképezésének kezelését, valamint dokumentumok feltöltését és kezelését, valamint lekérdezések végrehajtását anélkül, hogy a HTTP-és JSON-adatokkal kellene foglalkoznia. Ezek az ügyféloldali kódtárak mind NuGet-csomagként vannak elosztva.
 
 A fő NuGet-csomag `Microsoft.Azure.Search` , amely egy olyan meta-csomag, amely tartalmazza az összes többi csomagot függőségként. Akkor használja ezt a csomagot, ha csak most kezdi el, vagy ha tudja, hogy az alkalmazásnak szüksége lesz az Azure Cognitive Search összes funkciójának használatára.
@@ -765,7 +768,7 @@ WriteDocuments(results);
 
 Ez a lépés befejezi az oktatóanyagot, de nem áll le itt. * * A következő lépések további forrásokat biztosítanak az Azure Cognitive Search megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.
 * Tekintse át az [elnevezési konvenciókat](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) a különböző objektumok elnevezési szabályainak megismeréséhez.
 * Tekintse át az Azure Cognitive Search [támogatott adattípusait](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) .

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 706ae5a6c93468da9a65293c1bb4eefb136b938d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553274"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829679"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -34,7 +34,7 @@ Az oktatóanyag elvégzéséhez:
 - Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t.
 
 > [!NOTE]
-> Az irányítópultok használatához szükséges engedélyeket az [irányítópultok hozzáférés-vezérlésének megismerését ismertető](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboard-share-access#understanding-access-control-for-dashboards)cikkben tárgyaljuk.
+> Az irányítópultok használatához szükséges engedélyeket az [irányítópultok hozzáférés-vezérlésének megismerését ismertető](../../azure-portal/azure-portal-dashboard-share-access.md#understanding-access-control-for-dashboards)cikkben tárgyaljuk.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -131,4 +131,3 @@ Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekint
 
 > [!div class="nextstepaction"]
 > [Részletes diagnosztika](../app/devops.md)
-

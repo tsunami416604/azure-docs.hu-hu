@@ -3,12 +3,12 @@ title: Azure Migrate GYIK
 description: Választ kaphat a Azure Migrate szolgáltatással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090008"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847465"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
 
@@ -19,7 +19,7 @@ Ez a cikk a Azure Migrateával kapcsolatos gyakori kérdésekre ad választ. Ha 
 
 ## <a name="what-is-azure-migrate"></a>Mi az az Azure Migrate?
 
-Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információ](migrate-services-overview.md).
+Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információk](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Mire használhatom a Azure Migrate?
 
@@ -29,7 +29,13 @@ A Azure Migrate használatával felderítheti, elemezheti és áttelepítheti a 
 
 A [Azure Migrate](migrate-services-overview.md) központosított hubot biztosít az Azure-ba történő értékeléshez és áttelepítéshez. 
 
-[Azure site Recovery](../site-recovery/site-recovery-overview.md) vész-helyreállítási megoldás. 
+- A Azure Migrate használata lehetővé teszi a Azure Migrate eszközökkel, más Azure-szolgáltatásokkal és harmadik féltől származó eszközökkel való együttműködés és jövőbeni bővíthetőség biztosítását.
+- A Azure Migrate: a kiszolgáló áttelepítési eszköze az Azure-ba történő kiszolgáló-áttelepítéshez készült. Áttelepítésre van optimalizálva. Nem kell megismernie az áttelepítéshez közvetlenül nem kapcsolódó fogalmakat és forgatókönyveket. 
+- A 180 napos áttelepítéshez nem tartoznak eszköz-használati díjak a virtuális gépek replikálásának időpontjában. Ez időt biztosít az áttelepítés befejezésére. Csak a replikációhoz használt tárolási és hálózati erőforrásokért, valamint a tesztelési áttelepítések során felhasznált számítási díjakért kell fizetnie.
+- A Azure Migrate a Site Recovery által támogatott összes áttelepítési forgatókönyvet támogatja. Emellett a VMware virtuális gépek esetében a Azure Migrate ügynök nélküli áttelepítési lehetőséget biztosít.
+- Új áttelepítési funkciókat rangsorolunk a Azure Migrate: csak a kiszolgáló áttelepítését szolgáló eszközhöz. Ezek a szolgáltatások nem célozzák meg Site Recovery.
+
+[Azure site Recovery](../site-recovery/site-recovery-overview.md) csak vész-helyreállításra használható.
 
 A Azure Migrate: a kiszolgáló áttelepítési eszköze néhány háttér-Site Recovery funkciót használ néhány helyszíni gép áttelepítésének áttelepítéséhez.
 
@@ -74,6 +80,6 @@ Az áttelepítési utat nyomon követheti a Azure Migrate projekt, az Azure és 
 
 További információ a [projektek törléséről](how-to-delete-project.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

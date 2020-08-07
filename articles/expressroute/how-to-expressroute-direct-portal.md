@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765441"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903595"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre közvetlen ExpressRoute a Azure Portal használatával.
 A ExpressRoute Direct szolgáltatással közvetlenül kapcsolódhat a Microsoft globális hálózatához a világ minden pontján elérhető, stratégiai módon elosztott helyen. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+
+Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrálva van-e az előfizetésében. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre.
+
+1. Nyissa meg az előfizetési beállításokat az [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md)című témakörben leírtak szerint.
+1. Az előfizetésben az **erőforrás-szolgáltatóknál**ellenőrizze, hogy a **Microsoft. Network** szolgáltató **regisztrált** állapotot jelenít meg. Ha a Microsoft. Network erőforrás-szolgáltató nem szerepel a regisztrált szolgáltatók listáján, adja hozzá.
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. ExpressRoute közvetlen létrehozása
 
@@ -102,6 +109,6 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
 1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

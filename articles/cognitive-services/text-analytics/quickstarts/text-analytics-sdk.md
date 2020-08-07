@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 4aba103bcb3593d9baef256ce04a9ab6754ed900
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ba53b4a4765a2b3db0aa048a990a0a48f74682d0
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407667"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874979"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -83,11 +83,11 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 | Nyelv | Elérhető verzió | 
 |----------|------------------------|
 | Ruby     | [2,1-es verzió](ruby-sdk.md) | 
-| Go       | [2,1-es verzió](go-sdk.md) | 
+| Indítás       | [2,1-es verzió](go-sdk.md) | 
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

@@ -3,19 +3,19 @@ title: Beszéd és szöveg közötti API-referenciák (REST) – beszédfelismer
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan használhatja a beszéd – szöveg REST API. Ebben a cikkben megismerheti az engedélyezési lehetőségeket, a lekérdezési lehetőségeket, a kérések strukturálása és a válasz fogadását.
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 4b1548efe942cbef842498035d6e0b0d11a91d00
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537969"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905244"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 

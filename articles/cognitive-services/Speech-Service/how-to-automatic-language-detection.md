@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3a648b11e795a7d5c8680ac8c3df95e7d0c6bb7d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c1d2613661421ae95c34edef3caafe4c6fb3d4a9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406775"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905074"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Beszédfelismerés automatikus nyelvfelismerés a szöveghez
 
@@ -26,7 +26,7 @@ Az automatikus nyelvfelismerés segítségével megállapítható, hogy a beszé
 Ebből a cikkből megtudhatja, hogyan hozhat `AutoDetectSourceLanguageConfig` létre egy `SpeechRecognizer` objektumot, és hogyan kérheti le az észlelt nyelvet.
 
 > [!IMPORTANT]
-> Ez a funkció csak a Speech SDK-hoz, C#, C++, Java, Python és Objective-C nyelven érhető el.
+> Ez a funkció csak a Speech SDK-hoz, C#, C++, Java, Python, JavaScript és Objective-C nyelven érhető el.
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a Speech SDK-val
 
@@ -240,4 +240,24 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Speech SDK dokumentációja](speech-sdk.md)
+::: zone pivot="programming-language-csharp"
+* A GitHubon megtekintheti a [mintakód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) automatikus nyelvfelismerés
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+* A GitHubon megtekintheti a [mintakód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) automatikus nyelvfelismerés
+::: zone-end
+
+::: zone pivot="programming-language-java"
+* A GitHubon megtekintheti a [mintakód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) automatikus nyelvfelismerés
+::: zone-end
+
+::: zone pivot="programming-language-python"
+* A GitHubon megtekintheti a [mintakód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) automatikus nyelvfelismerés
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+* A GitHubon megtekintheti a [mintakód](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) automatikus nyelvfelismerés
+::: zone-end
+
+* [A Speech SDK dokumentációja](speech-sdk.md)

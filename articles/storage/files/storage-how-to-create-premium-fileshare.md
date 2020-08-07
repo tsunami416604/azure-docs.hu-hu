@@ -1,6 +1,6 @@
 ---
 title: Prémium szintű Azure-fájlmegosztás létrehozása
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre prémium szintű Azure-fájlmegosztást.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre prémium szintű Azure-fájlmegosztást a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497630"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903816"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
 A prémium szintű fájlmegosztás a SSD-tárolóeszközökön érhető el, és hasznos az IO-igényes számítási feladatokhoz, beleértve az üzemeltetési adatbázisokat és a nagy teljesítményű számítástechnikai (HPC) szolgáltatásokat. A prémium szintű fájlmegosztás a FileStorage-fióknak nevezett, speciális célú Storage-fiókban van tárolva. A prémium fájlmegosztás nagy teljesítményű és nagyvállalati szintű alkalmazásokhoz lett tervezve, amelyek konzisztens, alacsony késésű, magas IOPS és nagy átviteli sebességű megosztásokat biztosítanak.
@@ -71,7 +71,7 @@ A Storage-fiók erőforrásának létrehozása után navigáljon hozzá.
 
    ![Prémium szintű fájlmegosztás létrehozása](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha meg szeretné tisztítani a cikkben létrehozott erőforrásokat, egyszerűen törölheti az erőforráscsoportot. Az erőforráscsoport törlésével a társított Storage-fiók, valamint az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
@@ -136,7 +136,7 @@ New-AzStorageShare `
    -Context $storageAcct.Context
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új Storage-fiókot is, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
@@ -202,7 +202,7 @@ az storage share create \
     --name "myshare" 
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
 
@@ -210,7 +210,7 @@ Az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforrá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy prémium szintű fájlmegosztást hozott létre. Ha többet szeretne megtudni a fiók által kínált teljesítményről, folytassa a tervezési útmutató teljesítményszint szakaszával.
 

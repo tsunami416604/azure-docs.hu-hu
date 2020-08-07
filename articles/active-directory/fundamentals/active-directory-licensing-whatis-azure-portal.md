@@ -3,7 +3,7 @@ title: Mi az a csoport alapú licencelés – Azure Active Directory | Microsoft
 description: Ismerkedjen meg Azure Active Directory csoportos licenceléssel, beleértve a működését és az ajánlott eljárásokat.
 services: active-directory
 keywords: Az Azure AD licencelése
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ce0d543f11a1dcc61616d8a386176272ab44aee
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561561"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797270"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mi a Azure Active Directory csoportos licencelése?
 
@@ -61,7 +61,7 @@ A csoportalapú licencelés fő funkciói az alábbiak:
 
 Ha visszajelzést vagy szolgáltatási kérést használ, ossza meg velünk az [Azure ad felügyeleti Fórumával](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 

@@ -7,15 +7,15 @@ ms.service: notification-hubs
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sethm
-ms.date: 05/15/2020
+ms.date: 08/04/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: a1e947c80ae48ae507d0712e62084538165918be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9fe363da0fa5e451aaee83e895d539a0741a174
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022446"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830733"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Gyors útmutató: értesítési központ létrehozása ARM-sablonnal
 
@@ -31,7 +31,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
@@ -66,10 +66,10 @@ az notification-hub show --resource-group ContosoNotificationsGroup --namespace-
 az notification-hub namespace show --resource-group ContosoNotificationsGroup --name nhtestns123
 ```
 
-```
+---
 The output looks similar to: null
 ':::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::': null
-```
+---
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
@@ -81,7 +81,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

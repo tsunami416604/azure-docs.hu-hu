@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 9407e388a44ec78fa1e089542fc5ea3ef9387d60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073757"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874197"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -61,7 +61,7 @@ A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalo
    
    ![Alkalmazás-szabály hozzáadása][1]
    
-1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban az IP-címek területen adjon meg egy nevet, válasszon ki egy **tetszőleges**ptocol, állítsa be a forrás-és célcím beállítást, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását. 
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban az IP-címek területen adjon meg egy nevet, válasszon ki egy **tetszőleges**protokollt, állítsa be a forrás és a cél címet, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását. 
 
    ![NTP hálózati szabály hozzáadása][3]
    

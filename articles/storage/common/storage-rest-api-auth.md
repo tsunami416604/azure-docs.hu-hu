@@ -1,6 +1,6 @@
 ---
 title: REST API műveletek meghívása megosztott kulcsos hitelesítéssel
-titleSuffix: Azure Storage
+titleSuffix: Discover how to call Azure Storage REST API operations with Shared Key authorization. Get detailed information about each step of the sample operation.
 description: Használja az Azure Storage REST APIt a blob Storage-hoz való kérelem megosztott kulcsos hitelesítéssel történő elvégzésére.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: 237ad3215ef0330fed8662d987b1b72eca4aec81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509183"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905380"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API műveletek meghívása megosztott kulcsos hitelesítéssel
 
@@ -27,7 +27,7 @@ A minta alkalmazás a Storage-fiók blob-tárolóit sorolja fel. A cikkben szere
 
 - Telepítse a [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) -et az **Azure-fejlesztési** számítási feladattal.
 
-- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 - Általános célú Storage-fiók. Ha még nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](storage-account-create.md)című témakört.
 
@@ -567,7 +567,7 @@ Content-Length: 1135
 
 Ebből a cikkből megtudhatta, hogyan lehet kérelmet készíteni a blob Storage-REST API. A kérelem segítségével lekérheti a tárolók listáját vagy a Blobok listáját. Megtanulta, hogyan hozhatja létre az engedélyezési aláírást a REST API híváshoz, és hogyan használhatja azt a REST-kérelemben. Végezetül megtanulta, hogyan vizsgálhatja meg a választ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Blob szolgáltatás REST API-ja](/rest/api/storageservices/blob-service-rest-api)
 - [A File szolgáltatás REST API-ja](/rest/api/storageservices/file-service-rest-api)

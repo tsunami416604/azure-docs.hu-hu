@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563099"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874622"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
@@ -32,7 +32,7 @@ A tár hitelesítő adatai 10 nap után lejárnak. Ha a hitelesítő adatok fáj
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>Milyen karakterek engedélyezettek a jelszóban?
 
-A jelszónak az ASCII karakterkészletből származó karaktereket kell használnia, és az ASCII-értékek értéke nem lehet kisebb, mint 127.
+A jelszónak az ASCII karakterkészletből származó karaktereket kell használnia, és az [ASCII-értékek értéke nem lehet kisebb, mint 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127).
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Milyen meghajtókon tudok biztonsági másolatot készíteni a fájlokról és mappákról?
 

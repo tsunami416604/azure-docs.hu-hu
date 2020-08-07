@@ -3,7 +3,7 @@ title: A jogosultságok kezelésének gyakori forgatókönyvei – Azure AD
 description: Ismerkedjen meg a Azure Active Directory jogosultságok kezelésének gyakori eseteivel kapcsolatos magas szintű lépésekkel.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19bf54e6289472fe36dbf6b029f959545a65d1c8
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077798"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796608"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Gyakori forgatókönyvek az Azure AD-jogosultságok kezelésében
 
@@ -156,7 +156,7 @@ Több módon is konfigurálhatja a jogosultságok kezelését a szervezet szám�
 
 Microsoft Graph használatával is kezelheti a hozzáférési csomagokat, a katalógusokat, a szabályzatokat, a kérelmeket és a hozzárendeléseket.  Egy megfelelő szerepkörrel rendelkező felhasználó, aki a delegált engedéllyel rendelkező alkalmazással rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja a [jogosultsági felügyeleti API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Delegálás és szerepkörök](entitlement-management-delegate.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

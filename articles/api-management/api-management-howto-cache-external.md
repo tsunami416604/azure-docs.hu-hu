@@ -1,6 +1,6 @@
 ---
 title: Külső gyorsítótár használata az Azure API Managementban | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat és használhat külső gyorsítótárat az Azure API Managementban.
+description: Megtudhatja, hogyan konfigurálhat és használhat külső gyorsítótárat az Azure API Managementban. A külső gyorsítótár használata lehetővé teszi a beépített gyorsítótár bizonyos korlátainak leküzdését.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f1f3d0fd0164a37c8011dc82a95337c89e103df
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250634"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904955"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Külső Redis-kompatibilis gyorsítótár használata az Azure-ban API Management
 
