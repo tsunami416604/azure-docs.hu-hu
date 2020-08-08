@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 9de31ba30c4599393d9127c7852cb567cf0258ef
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542076"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002683"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
@@ -41,7 +41,7 @@ A cikk a következő alapvető Azure Identity Management-képességekre összpon
 * Egyszeri bejelentkezés
 * Fordított proxy
 * Multi-Factor Authentication
-* Szerepköralapú hozzáférés-vezérlés (RBAC)
+* Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 * Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 * Felhasználói identitás és hozzáférés-kezelés
 * Eszközregisztráció
@@ -87,9 +87,9 @@ További információ:
 * [Mi az az Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
 * [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure-RBAC
 
-Az RBAC az Azure Resource Managerre épülő engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt az Azure-beli erőforrásokhoz. A RBAC lehetővé teszi a felhasználók által használt hozzáférés szintjének részletes szabályozását. Például korlátozhatja, hogy egy felhasználó csak a virtuális hálózatokat és egy másik felhasználót kezelje az erőforráscsoport összes erőforrásának kezeléséhez. Az Azure számos beépített szerepkört biztosít, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
+Az Azure RBAC egy Azure Resource Managerra épülő engedélyezési rendszer, amely részletes hozzáférés-kezelést biztosít az Azure-beli erőforrásokhoz. Az Azure RBAC segítségével részletesen szabályozhatja a felhasználók hozzáférésének szintjét. Például korlátozhatja, hogy egy felhasználó csak a virtuális hálózatokat és egy másik felhasználót kezelje az erőforráscsoport összes erőforrásának kezeléséhez. Az Azure számos beépített szerepkört biztosít, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
 
 - [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is. 
 - [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.

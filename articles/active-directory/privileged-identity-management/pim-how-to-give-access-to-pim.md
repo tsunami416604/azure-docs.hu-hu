@@ -10,27 +10,27 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17847546ace558d367aed6d935db0fed6d817f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742198"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009562"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Hozzáférés biztosítása más rendszergazdáknak a Privileged Identity Management kezeléséhez
+# <a name="delegate-access-to-privileged-identity-management"></a>Privileged Identity Managementhoz való hozzáférés delegálása
 
-A szervezet Privileged Identity Management (PIM) szolgáltatását engedélyező globális rendszergazda automatikusan beolvassa a szerepkör-hozzárendeléseket, és hozzáférést biztosít Privileged Identity Managementhoz. A Azure Active Directory-(Azure AD-) szervezetben senki más nem kap írási hozzáférést alapértelmezés szerint, beleértve a többi globális rendszergazdát is. A többi globális rendszergazda, biztonsági rendszergazda és biztonsági olvasó csak olvasási hozzáféréssel rendelkezik a Privileged Identity Managementhoz. A Privileged Identity Managementhoz való hozzáférés biztosítása érdekében az első felhasználó hozzárendelheti másokat a **Kiemelt szerepkörű rendszergazda** szerepkörhöz.
+Privileged Identity Management (PIM) elérésének delegálásához a globális rendszergazda más felhasználókat is hozzárendelhet a Kiemelt szerepkörű rendszergazda szerepkörhöz. Alapértelmezés szerint a biztonsági rendszergazdák és a biztonsági olvasók csak olvasási hozzáféréssel rendelkeznek a Privileged Identity Managementhoz. A Privileged Identity Managementhoz való hozzáférés biztosítása érdekében az első felhasználó hozzárendelheti másokat a **Kiemelt szerepkörű rendszergazda** szerepkörhöz. A Kiemelt szerepkörű rendszergazda szerepkör csak az Azure AD-szerepkörök kezeléséhez szükséges. A Kiemelt szerepkörű rendszergazdai jogosultságok nem szükségesek az Azure-erőforrások beállításainak kezeléséhez.
 
 > [!NOTE]
-> A Privileged Identity Management kezeléséhez Azure Multi-Factor Authentication szükséges. Mivel a Microsoft-fiókok nem regisztrálhatnak az Azure Multi-Factor Authenticationre, a Microsoft-fiókba bejelentkező felhasználók nem férhetnek hozzá Privileged Identity Managementhoz.
+> A Privileged Identity Management kezeléséhez Azure Multi-Factor Authentication szükséges. Mivel a Microsoft-fiókok nem regisztrálhatnak az Azure Multi-Factor Authenticationre, a Microsoft-fiókt bejelentkező felhasználók nem férhetnek hozzá a Privileged Identity Managementhoz.
 
 Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemelt szerepkörű rendszergazda szerepkörben, ha az egyik felhasználó ki van zárva, vagy a fiókja törölve lett.
 
-## <a name="grant-access-to-manage-pim"></a>Hozzáférés biztosítása a PIM kezeléséhez
+## <a name="delegate-access-to-manage-pim"></a>Hozzáférés delegálása a PIM kezeléséhez
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -46,9 +46,9 @@ Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemel
 
     ![Kiemelt szerepkörű rendszergazda – tagok](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Válassza a **tag hozzáadása** elemet a felügyelt Tagok hozzáadása ablaktábla megnyitásához.
+1. Válassza a **tag hozzáadása** elemet a **felügyelt Tagok hozzáadása** ablaktábla megnyitásához.
 
-1. Válassza a **Tagok kiválasztása** lehetőséget a tagok kiválasztása panel megnyitásához.
+1. Válassza a **Tagok kiválasztása** lehetőséget a **Tagok kiválasztása** panel megnyitásához.
 
     ![Kiemelt szerepkörű rendszergazda – tagok kiválasztása](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 

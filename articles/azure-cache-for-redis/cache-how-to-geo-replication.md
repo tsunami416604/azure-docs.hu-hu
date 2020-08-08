@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184973"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003695"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
 
@@ -24,7 +24,7 @@ A Geo-replikáció lehetővé teszi két prémium szintű Azure cache összekapc
 
 Két gyorsítótár közötti földrajzi replikálás konfigurálásához a következő előfeltételek teljesülése szükséges:
 
-- Mindkét gyorsítótár [prémium szintű](cache-premium-tier-intro.md) gyorsítótár.
+- Mindkét gyorsítótár [prémium szintű](cache-overview.md#service-tiers) gyorsítótár.
 - Mindkét gyorsítótár ugyanahhoz az Azure-előfizetéshez tartozik.
 - A másodlagos csatolt gyorsítótár a gyorsítótár mérete vagy a gyorsítótár nagyobb mérete, mint az elsődleges csatolt gyorsítótár.
 - Mindkét gyorsítótár létre van hozva, és futó állapotban van.
@@ -186,5 +186,6 @@ Az Azure-régiók közötti automatikus feladatátvétel nem támogatott a föld
 Az ügyfél által kezdeményezett feladatátvétel elindításához először a gyorsítótárak leválasztása szükséges. Ezután módosítsa a Redis-ügyfelet a (korábban csatolt) másodlagos gyorsítótár kapcsolati végpontjának használatára. Ha a két gyorsítótár le van csatolva, a másodlagos gyorsítótár egy normál olvasási írási gyorsítótárba kerül, és közvetlenül a Redis-ügyfelektől fogadja a kéréseket.
 
 ## <a name="next-steps"></a>További lépések
+További információ az Azure cache Redis szolgáltatásairól.
 
-További információ az [Redis prémium szintű Azure cache](cache-premium-tier-intro.md)-ről.
+* [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)

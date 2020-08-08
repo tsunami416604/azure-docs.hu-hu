@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 554724c334cb6c51b8744de0eedd4d6815d707b5
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172580"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009579"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrálás az Azure Cache for Redisbe
 Ez a cikk számos módszert ismertet a helyszíni vagy egy másik felhőalapú szolgáltatásban futó meglévő Redis-gyorsítótár áttelepítése érdekében az Azure cache for Redis számára.
@@ -51,7 +51,7 @@ A beállítás megvalósításának általános lépései a következők:
 
 ### <a name="export-data-to-an-rdb-file-and-import-it-into-azure-cache-for-redis"></a>Az adatexportálás RDB-fájlba, és az Azure gyorsítótárba való importálása az Redis-be
 
-A nyílt forráskódú Redis egy standard mechanizmust határoz meg a gyorsítótár memóriában tárolt adatkészletének pillanatképének elkészítéséhez és fájlba mentéséhez. Ezt a fájlt (RDB néven) egy másik Redis-gyorsítótár is olvashatja. [Az Redis prémium szintű Azure cache](cache-premium-tier-intro.md) támogatja az adatimportálást a gyorsítótár-PÉLDÁNYba RDB-fájlok használatával. Egy RDB-fájl használatával átviheti az adatok egy meglévő gyorsítótárból az Azure cache-be a Redis.
+A nyílt forráskódú Redis egy standard mechanizmust határoz meg a gyorsítótár memóriában tárolt adatkészletének pillanatképének elkészítéséhez és fájlba mentéséhez. Ezt a fájlt (RDB néven) egy másik Redis-gyorsítótár is olvashatja. [Az Redis prémium szintű Azure cache](cache-overview.md#service-tiers) támogatja az adatimportálást a gyorsítótár-PÉLDÁNYba RDB-fájlok használatával. Egy RDB-fájl használatával átviheti az adatok egy meglévő gyorsítótárból az Azure cache-be a Redis.
 
 > [!IMPORTANT]
 > A RDB fájlformátuma változhat a Redis-verziók között, és előfordulhat, hogy nem tartja vissza a visszamenőleges kompatibilitást. A Redis exportált gyorsítótár verziószáma nem lehet kisebb, mint az Azure cache által a Redis számára biztosított verzió.
@@ -114,5 +114,5 @@ A beállítás megvalósításának általános lépései a következők:
 ## <a name="next-steps"></a>További lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
-* [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)
+* [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)
 * [Adatimportálás](cache-how-to-import-export-data.md#import)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101523"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007373"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a kimenő forgalommal
 
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A kimenő forgalom támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 * A kimenő forgalom **csak időben támogatja a** felhasználók üzembe helyezését
-* A kimenő forgalom konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A kimenő forgalom konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-egress-from-the-gallery"></a>Kimenő forgalom hozzáadása a katalógusból
 
@@ -130,7 +130,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Hajtsa végre a következő lépéseket a következő lapon.
 
-    ![Kimenő konfiguráció](./media/egress-tutorial/configure1.PNG)
+    ![Kimenő konfiguráció](./media/egress-tutorial/configure-1.PNG)
 
     a. A bal oldali menüben kattintson az SSO- **konfiguráció**elemre.
 
@@ -150,11 +150,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **felhasználók meghívása** elemre a bal oldali menüben, és kattintson az **egyetlen felhasználó meghívása** lehetőségre a felhasználó hozzáadásához.
 
-    ![Kimenő felhasználói teszt létrehozása](./media/egress-tutorial/createuser1.PNG)
+    ![Kimenő felhasználói teszt létrehozása](./media/egress-tutorial/create-user-1.PNG)
 
 1. Töltse ki a kötelező mezőket, és kattintson a **meghívás**elemre.
 
-    ![Kimenő felhasználói teszt létrehozása](./media/egress-tutorial/createuser2.PNG)
+    ![Kimenő felhasználói teszt létrehozása](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

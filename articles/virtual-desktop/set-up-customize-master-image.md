@@ -1,19 +1,17 @@
 ---
 title: Fő VHD-rendszerkép előkészítése és testreszabása – Azure
 description: Windows rendszerű virtuális asztali rendszerképek előkészítése, testreszabása és feltöltése az Azure-ba.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832525"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009511"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -140,7 +138,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>További nyelvi támogatás
 
-Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információért tekintse át a következő cikkeket:
+Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információkért tekintse át a következő cikkeket:
 
 - [Nyelvek hozzáadása Windows-lemezképekhez](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [Igény szerinti szolgáltatások](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)

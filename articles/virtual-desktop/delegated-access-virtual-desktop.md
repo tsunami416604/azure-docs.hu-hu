@@ -1,19 +1,17 @@
 ---
 title: Delegált hozzáférés a Windows rendszerű virtuális asztalon – Azure
 description: Felügyeleti képességek delegálása Windows rendszerű virtuális asztali környezetben, például példákkal.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4e63ec864da9a6e7ce5448b322e0452503e2493c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853432"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010055"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegált hozzáférés a Windows Virtual Desktopon
 
@@ -40,21 +38,21 @@ A Windows virtuális asztal delegált hozzáférése a következő értékeket t
 
 Mielőtt elkezdené, kövesse a [PowerShell-modul beállítása](powershell-module.md) a Windows rendszerű virtuális asztali PowerShell-modul beállítására vonatkozó útmutatást, ha még nem tette meg.
 
-A Windows virtuális asztal Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ az alkalmazások felhasználói vagy felhasználói csoportok számára való közzétételekor. Az asztali virtualizálási felhasználói szerepkör hozzá van rendelve a felhasználóhoz vagy a felhasználói csoporthoz, és a hatókör az alkalmazás csoportja. Ez a szerepkör a felhasználó számára speciális adatelérést biztosít az alkalmazás csoportjának.  
+A Windows virtuális asztal Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ az alkalmazások felhasználói vagy felhasználói csoportok számára való közzétételekor. Az asztali virtualizálási felhasználói szerepkör hozzá van rendelve a felhasználóhoz vagy a felhasználói csoporthoz, és a hatókör az alkalmazás csoportja. Ez a szerepkör a felhasználó számára speciális adatelérést biztosít az alkalmazás csoportjának.
 
 A következő parancsmag futtatásával Azure Active Directory felhasználókat adhat hozzá egy alkalmazás-csoporthoz:
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 A következő parancsmag futtatásával Azure Active Directory felhasználói csoportot adhat hozzá egy alkalmazás-csoporthoz:
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyes szerepkörök által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referenciát](/powershell/windows-virtual-desktop/overview).
 

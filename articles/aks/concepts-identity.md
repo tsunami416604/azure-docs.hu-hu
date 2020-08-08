@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498123"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007080"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -19,17 +19,17 @@ A hitelesítés, a hozzáférés/engedélyezés és a biztonságos Kubernetes-f�
 
 Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-beli engedélyek hitelesítéséhez és hozzárendeléséhez:
 
-- [Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)](#kubernetes-role-based-access-controls-rbac)
+- [Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)](#kubernetes-role-based-access-control-rbac)
   - [Szerepkörök és ClusterRoles](#roles-and-clusterroles)
   - [RoleBindings és ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes-szolgáltatásfiókok](#kubernetes-service-accounts)
 - [Azure Active Directory-integráció](#azure-active-directory-integration)
-- [Azure-RBAC](#azure-role-based-access-controls-rbac)
+- [Azure-RBAC](#azure-role-based-access-control-azure-rbac)
   - [Azure-RBAC az AK-erőforráshoz való hozzáférés engedélyezéséhez](#azure-rbac-to-authorize-access-to-the-aks-resource)
   - [Azure RBAC for Kubernetes-engedélyezés (előzetes verzió)](#azure-rbac-for-kubernetes-authorization-preview)
 
 
-## <a name="kubernetes-role-based-access-controls-rbac"></a>Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)
+## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)
 
 A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) használ. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat *szerepköröket* az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
 
@@ -95,7 +95,7 @@ Ahogy az a fenti ábrán is látható, az API-kiszolgáló meghívja az AK webho
  
 **Ismerje meg, hogyan integrálhatja az AK-t [a HRE-](managed-aad.md)mel.**
 
-## <a name="azure-role-based-access-controls-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
 Az Azure RBAC egy [Azure Resource Managerra](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer, amely részletes hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz.
 
@@ -107,7 +107,7 @@ További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés
 
 Az AK-fürtök teljes körű működtetéséhez két hozzáférési szint szükséges: 
 1. [Hozzáférés az AK-erőforráshoz az Azure-előfizetésében](#azure-rbac-to-authorize-access-to-the-aks-resource). Ezzel a folyamattal vezérelheti a fürtök méretezését vagy frissítését az AK API-k használatával, valamint a kubeconfig lekérésével.
-2. Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférést a [KUBERNETES RBAC](#kubernetes-role-based-access-controls-rbac) (hagyományos) vagy az [Azure RBAC és a Kubernetes-hitelesítés integrálásával](#azure-rbac-for-kubernetes-authorization-preview) vezérelheti
+2. Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférést a [KUBERNETES RBAC](#kubernetes-role-based-access-control-rbac) (hagyományos) vagy az [Azure RBAC és a Kubernetes-hitelesítés integrálásával](#azure-rbac-for-kubernetes-authorization-preview) vezérelheti
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure-RBAC az AK-erőforráshoz való hozzáférés engedélyezéséhez
 

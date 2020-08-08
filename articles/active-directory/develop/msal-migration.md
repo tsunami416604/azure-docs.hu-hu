@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/16/2020
+ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922489"
+ms.locfileid: "88005754"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Alkalmazások migrálása a Microsoft hitelesítési tárba (MSAL)
 
@@ -52,13 +52,13 @@ A következő cikkek segítséget nyújtanak a MSAL való Migrálás során:
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
 __K: a ADAL elavult?__  
-V: Igen. 2020. június 30-ig a továbbiakban nem fogunk új funkciókat hozzáadni a ADAL-hez. A kritikus biztonsági javításokat továbbra is a ADAL, 2022. június 30-ig fogjuk hozzáadni. Ezt követően a ADAL-t használó alkalmazások működni fognak, de javasoljuk, hogy a legújabb funkciók kihasználása érdekében frissítsen a MSAL-re, és maradjon biztonságban.
+V: Igen. 2020. június 30-ig a továbbiakban nem fogunk új funkciókat hozzáadni a ADAL-hez. A kritikus biztonsági javításokat továbbra is a ADAL, 2022. június 30-ig fogjuk hozzáadni. Ezen időpont után a ADAL-t használó alkalmazások továbbra is működőképesek maradnak, de javasoljuk, hogy a legújabb funkciók kihasználásához és a biztonság fenntartása érdekében ajánlott a MSAL-re való frissítés.
+
+__K: a meglévő ADAL-alkalmazások működése leáll?__  
+V: Nem. A meglévő alkalmazásai módosítás nélkül továbbra is működőképesek maradnak. Ha azt tervezi, hogy 2022 június 30-ig tart, érdemes frissítenie az alkalmazásokat a MSAL, hogy azok biztonságosak maradjanak, de a MSAL való Migrálás nem szükséges a meglévő funkciók fenntartásához.
 
 __K: Hogyan tudni, hogy mely alkalmazások használják a ADAL-t?__  
 A: Ha az alkalmazás forráskódját használja, a fenti áttelepítési útmutatók alapján meghatározhatja, hogy az alkalmazás melyik függvénytárat és hogyan telepítse át az MSAL-re. Ha egy ISV-t társít, javasoljuk, hogy a MSAL való áttelepítésének megismeréséhez közvetlenül érje el azokat. Ha nincs hozzáférése az alkalmazás forráskódhoz, [megnyithat egy támogatási kérést](developer-support-help-options.md#open-a-support-request) a regisztrált alkalmazások listájának beszerzéséhez és az egyes alkalmazások által használt könyvtárhoz.
-
-__K: a meglévő ADAL-alkalmazások továbbra is működni fognak?__  
-A: a meglévő alkalmazásai módosítás nélkül továbbra is működőképesek lesznek. Ha azt tervezi, hogy 2022. június 30-án továbbra is megtartja őket, érdemes frissíteni őket a MSAL, hogy biztonságban maradjanak, de a MSAL való Migrálás nem szükséges a meglévő funkciók fenntartása érdekében.
 
 __K: Miért érdemes befektetni a MSAL-re?__  
 A: a MSAL olyan új szolgáltatásokat tartalmaz, amelyek nem a ADAL, beleértve a növekményes belefoglalást, az egyszeri bejelentkezést és a jogkivonat-gyorsítótárazási kezelést. A ADAL-től eltérően a MSAL a 2022. június 30-ig továbbra is a biztonsági javításokat fogja kapni. [További információk](msal-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507464"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011060"
 ---
 Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. A hibakeresési módot a parancssori felület `--debug` és a PowerShell-lel rendelkező kapcsoló átadásával aktiválja `-Debug` . A hiba megtalálása után kövesse ezt a dokumentumot a hibák elhárításához.
 
@@ -88,7 +88,7 @@ Ellenőrizze, hogy a virtuális gép vagy virtuálisgép-méretezési csoport l�
 
 ## <a name="unable-to-share-resources"></a>Az erőforrások nem oszthatók meg
 
-A megosztott képgyűjtemény, a képdefiníciós és a képverziós erőforrások megosztása az előfizetések között a [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) használatával engedélyezett. 
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)használatával megoszthatja a megosztott képtárat, a képdefiníciót és a rendszerkép verziójának erőforrásait az előfizetések között. 
 
 ## <a name="replication-is-slow"></a>A replikálás lassú
 

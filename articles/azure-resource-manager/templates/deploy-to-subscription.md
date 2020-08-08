@@ -3,16 +3,16 @@ title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321768"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002789"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
-Az erőforrások kezelésének egyszerűbbé tételéhez Azure Resource Manager sablonnal (ARM-sablon) használhatja az erőforrásokat az Azure-előfizetése szintjén. Telepítheti például a [szabályzatokat](../../governance/policy/overview.md) és a [szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/overview.md) az előfizetéshez, amely az előfizetésre vonatkozik. Az előfizetéshez tartozó erőforráscsoportokat is létrehozhat, és erőforrásokat helyezhet üzembe az előfizetésben lévő erőforráscsoportok számára.
+Az erőforrások kezelésének egyszerűbbé tételéhez Azure Resource Manager sablonnal (ARM-sablon) használhatja az erőforrásokat az Azure-előfizetése szintjén. Telepítheti például a [szabályzatokat](../../governance/policy/overview.md) és az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) az előfizetésre, amely az előfizetésen belül érvényes. Az előfizetéshez tartozó erőforráscsoportokat is létrehozhat, és erőforrásokat helyezhet üzembe az előfizetésben lévő erőforráscsoportok számára.
 
 > [!NOTE]
 > Az előfizetések szintjén üzembe helyezhetők 800 különböző erőforráscsoportok.
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
+A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [Azure szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 
 Az alábbi példa létrehoz egy erőforráscsoportot, egy zárolást alkalmaz rá, és hozzárendel egy szerepkört egy rendszerbiztonsági tag számára.
 

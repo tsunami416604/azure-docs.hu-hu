@@ -1,6 +1,6 @@
 ---
 title: Szimbólum-réteg hozzáadása térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan szabhatja testre a szimbólumokat a Symbol réteggel, és hogyan adhat hozzá szimbólumokat a térképen a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogyan adhat hozzá testreszabott szimbólumokat, például szöveget vagy ikonokat a térképekhez. Tekintse meg, hogyan használhatók az adatforrások és a szimbólumok rétegei a Azure Maps web SDK-ban erre a célra.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c10e47ea10939b60c6c334229fb18ec2702af11f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d705a43da2b2db37c6601f5865ad6e569688b2a7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286927"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010191"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Szimbólum réteg hozzáadása térképhez
 

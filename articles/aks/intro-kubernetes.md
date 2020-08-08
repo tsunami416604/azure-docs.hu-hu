@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 810f887c43b5653513d6848e9b7dd2e7ced070ab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f4c1e96a0603caa8e026f1968299fa24b8755a42
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251331"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003201"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Az első lépésekhez végezze el az AKS rövid útmutatójában leírtakat a [M
 
 ## <a name="access-security-and-monitoring"></a>Hozzáférés, biztonság és monitoring
 
-A továbbfejlesztett biztonság és felügyelet érdekében az AKS lehetővé teszi a Microsoft Azure Active Directoryval történő integrációt és a Kubernetes szerepköralapú hozzáférés-vezérlésének használatát. A fürtje és az erőforrásai állapotát is monitorozhatja.
+A jobb biztonság és felügyelet érdekében az AK lehetővé teszi az integrációt a Azure Active Directory és a Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) használatával. A fürtje és az erőforrásai állapotát is monitorozhatja.
 
 ### <a name="identity-and-security-management"></a>Identitás és biztonsági felügyelet
 
@@ -110,7 +110,7 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információ: [az Microsoft Azure megfelelőségének áttekintése][compliance-doc].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS üzembe helyezéséről és felügyeletéről.
 
@@ -140,6 +140,6 @@ Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS ü
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md

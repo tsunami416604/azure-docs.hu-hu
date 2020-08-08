@@ -1,24 +1,24 @@
 ---
-title: Windows rendszerű virtuális gépek rendszerképeinek létrehozása a csomagoló használatával
-description: Ismerje meg, hogyan hozhat létre lemezképeket Windows rendszerű virtuális gépekről az Azure-ban a csomagoló használatával
+title: PowerShell – virtuálisgép-rendszerképek létrehozása a csomagoló használatával
+description: Ismerje meg, hogyan hozhat létre lemezképeket az Azure-ban a csomagoló és a PowerShell használatával
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 02/22/2019
+ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 1597d249899756ac0d43d2dcd90019179b81bb3b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284659"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003835"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows rendszerű virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
+# <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Windows-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure Marketplace számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb operációsrendszer-és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) használatával.
 
-Ez a cikk az 2/21/2019-es, a [PowerShell-modul](/powershell/azure/install-az-ps) Version 1.3.0 és a [Packer](https://www.packer.io/docs/install) Version 1.3.4 használatával tesztelte utoljára.
+Ez a cikk az 8/5/2020-es, a [csomagoló](https://www.packer.io/docs/install) 1.6.1-es verziójának használatával volt utoljára tesztelve.
 
 > [!NOTE]
 > Az Azure-ban már van egy szolgáltatás, egy Azure Image Builder (előzetes verzió), amellyel meghatározhatja és létrehozhatja saját egyéni rendszerképeit. Az Azure rendszerkép-szerkesztő a Csomagolón alapul, így a meglévő csomagoló rendszerhéj-szkripteket is használhatja. Az Azure rendszerkép-szerkesztő megkezdéséhez tekintse meg [a Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel](image-builder.md)című témakört.
@@ -26,10 +26,10 @@ Ez a cikk az 2/21/2019-es, a [PowerShell-modul](/powershell/azure/install-az-ps)
 ## <a name="create-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
 A kiépítési folyamat során a csomagoló ideiglenes Azure-erőforrásokat hoz létre, mivel létrehozza a forrás virtuális gépet. Ahhoz, hogy a forrás virtuális gép lemezképként használható legyen, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló-összeállítási folyamat kimenetét.
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myPackerGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurepowershell
-$rgName = "myResourceGroup"
+$rgName = "myPackerGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -37,13 +37,12 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 A csomagoló az Azure-ban egy egyszerű szolgáltatásnév használatával hitelesíti magát. Az Azure egyszerű szolgáltatás olyan biztonsági identitás, amely az alkalmazásokkal, szolgáltatásokkal és automatizálási eszközökkel, például a csomagoló eszközzel használható. Ön szabályozhatja és meghatározhatja az engedélyeket az Azure-ban az egyszerű szolgáltatás által elvégezhető műveletekhez.
 
-Hozzon létre egy egyszerű szolgáltatást [új AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) , és rendeljen engedélyeket az egyszerű szolgáltatásnév számára, hogy erőforrásokat hozzon létre és kezeljen a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)használatával. Az értéknek `-DisplayName` egyedinek kell lennie; szükség esetén cserélje le a értéket a saját értékére.  
+Hozzon létre egy egyszerű szolgáltatásnevet a [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal). Az értéknek `-DisplayName` egyedinek kell lennie; szükség esetén cserélje le a értéket a saját értékére.  
 
 ```azurepowershell
-$sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
+$sp = New-AzADServicePrincipal -DisplayName "PackerSP$(Get-Random)"
 $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
 $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
 Ezután írja be a jelszót és az alkalmazás AZONOSÍTÓját.
@@ -112,7 +111,6 @@ Hozzon létre egy *windows.js* nevű fájlt, és illessze be a következő tarta
     "inline": [
       "Add-WindowsFeature Web-Server",
       "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
-      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
       "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"

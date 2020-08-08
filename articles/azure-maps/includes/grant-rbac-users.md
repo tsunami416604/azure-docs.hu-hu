@@ -9,16 +9,16 @@ ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8dfc3714362b082168c32ba73e234e9b5fb43525
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 816e4e439bb98ced8bbc5b5d8a7d38ef65aee33f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545110"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011041"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a felhasználók számára a Azure Maps
 
-*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít egy Azure ad-csoport vagy rendszerbiztonsági tag egy vagy több Azure Maps hozzáférés-vezérlési szerepkör-definícióhoz való hozzárendelésével. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
+Azure *szerepköralapú hozzáférés-vezérlést (Azure RBAC)* biztosít egy Azure ad-csoport vagy rendszerbiztonsági tag egy vagy több Azure Maps szerepkör-definícióhoz való hozzárendelésével. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
 
 * Az [Azure ad-csoportokkal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)hatékonyan kezelhet nagy mennyiségű felhasználói hozzáférést Azure Mapshoz.
 * Ahhoz, hogy a felhasználók hitelesíteni tudják az alkalmazást, a felhasználókat létre kell hozni az Azure AD-ben. Lásd: [felhasználók hozzáadása vagy törlése az Azure ad-](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)vel.
@@ -27,7 +27,7 @@ További információk az [Azure ad](https://docs.microsoft.com/azure/active-dir
 
 1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés**elemet.
 
-    ![RBAC megadása](../media/how-to-manage-authentication/how-to-grant-rbac.png)
+    ![Hozzáférés biztosítása az Azure RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. Válassza ki a résztvevőt név alapján. Ez után válassza a **Mentés** lehetőséget.
 

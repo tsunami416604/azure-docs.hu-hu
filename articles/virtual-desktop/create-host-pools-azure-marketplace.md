@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali címkészlet Azure Portal – Azure
 description: Windows rendszerű virtuális asztali címkészlet létrehozása a Azure Portal használatával.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291445"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002670"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -61,7 +59,7 @@ Az új címkészlet létrehozásának megkezdéséhez:
 6. Adjon egyedi nevet a gazdagép-készletnek.
 
 7. A hely mezőben válassza ki azt a régiót, ahol létre szeretné hozni az alkalmazáskészletet a legördülő menüből.
-   
+
    A kiválasztott régiókkal társított Azure földrajz a gazdagép-készlet és a hozzá kapcsolódó objektumok metaadatait fogja tárolni. Győződjön meg arról, hogy a földrajzi helyen belüli régiókat választja, amelyekben a szolgáltatás metaadatait tárolni szeretné.
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
     > [!div class="mx-imgBorder"]
     > ![A biztonsági csoport oldalának képernyőképe, amely megjeleníti az elérhető portok listáját a legördülő menüben.](media/available-ports.png)
-    
+
     Ha a **speciális**lehetőséget választja, válasszon ki egy már konfigurált, meglévő hálózati biztonsági csoportot.
 
 10. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen**lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Hozzáadhat egy adott szervezeti egységet is, amelyben a virtuális gépeket be szeretné állítani.
@@ -153,7 +151,7 @@ Ezzel készen áll arra, hogy elindítsa a gazdagép készletének következő f
 
 ## <a name="workspace-information"></a>Munkaterület-információk
 
-A gazdagép-készlet telepítési folyamata alapértelmezés szerint létrehoz egy asztali alkalmazáscsoport-csoportot. Ahhoz, hogy a gazdagép a kívánt módon működjön, közzé kell tennie ezt az erőforráscsoportot felhasználók vagy felhasználói csoportok számára, és regisztrálnia kell az alkalmazást egy munkaterületen. 
+A gazdagép-készlet telepítési folyamata alapértelmezés szerint létrehoz egy asztali alkalmazáscsoport-csoportot. Ahhoz, hogy a gazdagép a kívánt módon működjön, közzé kell tennie ezt az erőforráscsoportot felhasználók vagy felhasználói csoportok számára, és regisztrálnia kell az alkalmazást egy munkaterületen.
 
 Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
@@ -167,10 +165,10 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
     Itt hozzáadhat címkéket, így a metaadatokkal csoportosíthatja az objektumokat, hogy könnyebb legyen a rendszergazdák számára.
 
-4. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet. 
+4. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
 
      >[!NOTE]
-     >A felülvizsgálat + ellenőrzési folyamat nem ellenőrzi, hogy a Jelszó megfelel-e a biztonsági szabványoknak, vagy ha az architektúra helyes, ezért az ilyen dolgok bármelyikével kapcsolatos problémákat meg kell vizsgálnia. 
+     >A felülvizsgálat + ellenőrzési folyamat nem ellenőrzi, hogy a Jelszó megfelel-e a biztonsági szabványoknak, vagy ha az architektúra helyes, ezért az ilyen dolgok bármelyikével kapcsolatos problémákat meg kell vizsgálnia.
 
 5. Tekintse át az üzemelő példány adatait, és győződjön meg róla, hogy minden helyesnek tűnik. Ha elkészült, válassza a **Létrehozás** lehetőséget. Ez elindítja a telepítési folyamatot, amely a következő objektumokat hozza létre:
 

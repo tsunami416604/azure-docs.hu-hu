@@ -5,15 +5,15 @@ services: app-service
 author: ggailey777
 ms.service: app-service
 ms.topic: include
-ms.date: 02/19/2019
+ms.date: 06/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 82e5221daefaecb687ad9feb79305e546d4ec17e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c255be53a1809bf5dd3fc6b184852767dfec9c66
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68424155"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009767"
 ---
 > [!NOTE]
-> A webalkalmazások 20 perc inaktivitás után időtúllépést okozhatnak. Csak a tényleges webalkalmazásnak küldött kérések állítják vissza az időzítőt. Ha megtekinti az alkalmazás konfigurációját a Azure Portalban, vagy kéréseket tesz a speciális eszközök helyének ( `https://<app_name>.scm.azurewebsites.net` ), ne állítsa alaphelyzetbe az időzítőt. Ha az alkalmazás folyamatos vagy ütemezett (időzítő trigger) webjobs-feladatokat futtat, engedélyezze a **mindig be** lehetőséget a webjobs megbízható működésének biztosításához. Ez a funkció csak az alapszintű, a standard és a prémium [szintű díjszabásban](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)érhető el.
+> A webalkalmazások 20 perc inaktivitás után időtúllépést okozhatnak. és csak a tényleges webalkalmazásnak küldött kérések állíthatják alaphelyzetbe az időzítőt. Az alkalmazás konfigurációjának megtekintése a Azure Portal, vagy a speciális eszközök webhelyre irányuló kérések ( `https://<app_name>.scm.azurewebsites.net` ) nem állítja alaphelyzetbe az időzítőt. Ha úgy állítja be a webalkalmazást, hogy folyamatos vagy ütemezett (időzítő-trigger) webjobs-feladatokat futtasson, engedélyezze az **Always On** beállítást a webalkalmazás Azure **konfigurációs** lapján, hogy a webjobs megbízhatóan fusson. Ez a funkció csak az alapszintű, a standard és a prémium [szintű díjszabásban](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)érhető el.

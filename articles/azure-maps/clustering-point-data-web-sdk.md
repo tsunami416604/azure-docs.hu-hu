@@ -1,6 +1,6 @@
 ---
 title: A csoportosítási pontra vonatkozó adatelemek | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan teheti a fürtöket, és hogyan jelenítheti meg egy térképen a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogyan hozhatja ki a térképes fürtöket. Tekintse meg, hogyan használhatja a Azure Maps web SDK-t a fürtök adatainak kezeléséhez, reagáljon a fürtökre, és megjelenjenek a fürt összesítései.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 05e21e63b104a21757c63b9ad8d2954ed778d4b8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285747"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009052"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Az alábbiakban az osztály által a `DataSource` fürtözéshez biztosított további módszerek érhetők el:
 
-| Metódus | Visszatérési típus | Leírás |
+| Módszer | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: szám) | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | getClusterExpansionZoom (clusterId: szám) | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |

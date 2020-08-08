@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4e62fd43c062d9d33292eac36a16d809bc926c98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445210"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009834"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines Azure biztonsági alapterve
 
@@ -556,11 +556,11 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Felelősség**: ügyfél
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: szerepköralapú hozzáférés-vezérlés (RBAC) használatával elkülönítheti a feladatait a csapaton belül, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférés mennyiségét. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A Azure Portal a virtuális gép hozzáférés-vezérlését az Azure CLI, a orAzure PowerShell használatával konfigurálhatja.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával elkülönítheti a munkatársain belüli feladatokat, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A Azure Portal a virtuális gép hozzáférés-vezérlését az Azure CLI, a orAzure PowerShell használatával konfigurálhatja.
 
-* [Szerepköralapú hozzáférés-vezérlés (RBAC) Azure-erőforrásokhoz](../../role-based-access-control/overview.md)
+* [Azure-RBAC](../../role-based-access-control/overview.md)
 
 * [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
@@ -913,11 +913,11 @@ A legtöbb esetben a Microsoft Base VM-sablonok a Azure Automation kívánt áll
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: Ha egyéni lemezképeket (például virtuális merevlemezt) használ, az Azure szerepköralapú hozzáférés-vezérlés használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató**: Ha egyéni lemezképeket (például virtuális merevlemezt) használ, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
-* [A RBAC megismerése az Azure-ban](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Az Azure RBAC ismertetése](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [A RBAC konfigurálása az Azure-ban](../../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Az Azure RBAC konfigurálása](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center figyelés**: nem érhető el
 

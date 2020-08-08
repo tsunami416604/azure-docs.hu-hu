@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali FSLogix-profilok fájljai – Azure
 description: Ez a cikk a Windows rendszerű virtuális asztali és az Azure Files FSLogix-profilok tárolóit ismerteti.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611976"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002391"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -57,7 +55,7 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 #### <a name="performance"></a>Teljesítmény
 
-A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.  
+A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.
 
 #### <a name="cost"></a>Költségek
 

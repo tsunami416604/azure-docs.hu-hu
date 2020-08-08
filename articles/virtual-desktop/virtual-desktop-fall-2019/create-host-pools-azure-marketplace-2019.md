@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet Azure Marketplace – Azure
 description: Windows rendszerű virtuális asztali (klasszikus) címkészlet létrehozása az Azure Marketplace használatával.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291300"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008593"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Oktatóanyag: gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -52,13 +50,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Az Azure Marketplace ajánlatának futtatása új címkészlet kiépítéséhez:
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 1. A piactér keresési ablakában adja meg a **Windows virtuális asztal** kifejezést.
 1. Válassza **a Windows virtuális asztal – címkészlet kiépítése**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
 Ezután kövesse a következő szakaszban található utasításokat a megfelelő lapokra vonatkozó információk megadásához.
 
-### <a name="basics"></a>Alapvető beállítások
+### <a name="basics"></a>Alapbeállítások
 
 Az **alapok** lapon a következő műveleteket végezheti el:
 

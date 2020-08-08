@@ -2,13 +2,14 @@
 title: Privát végpontok használata Azure Batch-fiókokkal
 description: Megtudhatja, hogyan csatlakozhat egy Azure Batch-fiókhoz privát végpontok használatával.
 ms.topic: how-to
-ms.date: 06/12/2020
-ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.custom: references_regions
+ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754482"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004242"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privát végpontok használata Azure Batch-fiókokkal
 
@@ -16,16 +17,11 @@ Alapértelmezés szerint a [Azure batch fiókok](accounts.md) nyilvános végpon
 
 Az [Azure Private link](../private-link/private-link-overview.md)használatával [privát végponton](../private-link/private-endpoint-overview.md)keresztül csatlakozhat egy Azure batch fiókhoz. A magánhálózati végpont a virtuális hálózaton belüli alhálózat magánhálózati IP-címeinek halmaza. Ezután korlátozhatja a hozzáférést egy Azure Batch fiókhoz magánhálózati IP-címeken keresztül.
 
-A privát hivatkozás lehetővé teszi, hogy a felhasználók a virtuális hálózatról vagy bármely társ virtuális hálózatról hozzáférjenek Azure Batch fiókhoz. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az [Azure-ExpressRoute](../expressroute/expressroute-introduction.md)keresztül is elérhetők a helyszínen keresztül.
+A privát hivatkozás lehetővé teszi, hogy a felhasználók a virtuális hálózatról vagy bármely társ virtuális hálózatról hozzáférjenek Azure Batch fiókhoz. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az [Azure-ExpressRoute](../expressroute/expressroute-introduction.md)keresztül is elérhetők a helyszínen keresztül. Az [automatikus vagy manuális jóváhagyási módszer](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)használatával csatlakozhat egy privát kapcsolattal konfigurált Azure batch-fiókhoz.
 
-Az [automatikus vagy manuális jóváhagyási módszer](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)használatával csatlakozhat egy privát kapcsolattal konfigurált Azure batch-fiókhoz.
+A Azure Batch-beli magánhálózati kapcsolat támogatása jelenleg a következő Azure-régiókban érhető el: az USA nyugati középső régiója, az USA 2. nyugati régiója, az USA keleti régiója, az USA déli középső régiója, US Gov Virginia, US Gov Arizona, Kelet-Ázsia, Franciaország és Egyesült Királyság déli régiója.
 
 Ez a cikk azt ismerteti, hogyan hozható létre egy privát batch-fiók, és hogyan férhet hozzá egy privát végponton keresztül.
-
-> [!IMPORTANT]
-> A Azure Batch privát kapcsolatainak támogatása jelenleg nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában, az USA 2. nyugati régiójában, az USA keleti régiójában, az USA déli középső régiójában, US Gov Virginia és US Gov Arizona régióban.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -49,7 +45,7 @@ A következő lépésekkel hozzon létre egy privát batch-fiókot a Azure Porta
 
 A magánhálózati végpont kiépítés után a Batch-fiókot a privát végpont használatával is elérheti ugyanazon a virtuális hálózaton lévő virtuális gépekről. A Azure Portal IP-címének megtekintése:
 
-1. Válassza az **Összes erőforrás** elemet.
+1. Válassza a **Minden erőforrás** elemet.
 2. Keresse meg a korábban létrehozott privát végpontot.
 3. A DNS-beállítások és az IP-címek megtekintéséhez válassza az **Áttekintés** lapot.
 

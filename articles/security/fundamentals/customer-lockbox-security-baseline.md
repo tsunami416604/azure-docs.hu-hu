@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485671"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007879"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Az Azure biztonsági alapkonfigurációja Ügyfélszéf for Microsoft Azure
 
@@ -222,13 +222,13 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: a Ügyfélszéf-kérelmekhez rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. A szerepköralapú hozzáférés-vezérlés (RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (IAM) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Azure Active Directoryban.
+**Útmutató**: a Ügyfélszéf-kérelmekhez rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal identitás és hozzáférés-vezérlés (IAM) paneljét az előfizetéséhez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Azure Active Directoryban.
 
 Az ügyfél szervezetében az Azure-előfizetéshez tartozó tulajdonosi szerepkörrel rendelkező felhasználó e-mailt kap a Microsofttól, hogy értesítést kapjon a függőben lévő hozzáférési kérelmekről. Ügyfélszéf kérelmek esetében ez a személy a kijelölt jóváhagyó.
 
 * [Egyéni szerepkörök ismertetése](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [A RBAC konfigurálása a munkafüzetek számára](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Az Azure RBAC konfigurálása a munkafüzetek számára](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Hozzáférési kérelmek engedélyeinek megismerése Ügyfélszéf](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -527,7 +527,7 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 * [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Az Azure szerepköralapú hozzáférés-vezérlésének ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure szerepköralapú hozzáférés-vezérlésének ismertetése (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

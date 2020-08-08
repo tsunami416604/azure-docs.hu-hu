@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132364"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008882"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Automatizált feladatok, folyamatok és munkafolyamatok létrehozása az Azure Logic Apps használatával – Visual Studio
 
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). Ha Azure Government-előfizetéssel rendelkezik, kövesse ezeket a további lépéseket a [Visual Studio Azure Government-felhőhöz való beállításához](#azure-government).
 
 * Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket:
 
@@ -51,12 +51,6 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
   
     Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](/visualstudio/ide/finding-and-using-visual-studio-extensions). Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
 
-  * Ha Azure Government-előfizetéseket szeretné használni a Visual Studióval, tekintse meg a következő témaköröket a további telepítéshez:
-
-    * Visual Studio 2019: gyors útmutató [: Kapcsolódás a Azure Governmenthoz a Visual Studióval](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017: [Az Azure Environment választó Visual Studio bővítmény bemutatása](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), amelyet a [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)-en tölthet le és telepíthet.
-
 * Internet-hozzáférés a beágyazott Logikaialkalmazás-tervező használatakor.
 
   A tervezőnek internetkapcsolatra van szüksége az erőforrások létrehozásához az Azure-ban, illetve a logikai alkalmazásban található összekötők tulajdonságainak és adatainak olvasásához.
@@ -65,6 +59,34 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
 
   > [!IMPORTANT]
   > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Visual Studio beállítása az Azure Governmenthez
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+Használhatja az [Azure Environment választó Visual Studio bővítményt](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), amelyet a [Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)tölthet le és telepíthet.
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+A Azure Logic Apps Azure Government-előfizetésekkel való együttműködéshez [hozzá kell adnia egy felderítési végpontot a Azure Government Cloud a Visual studióhoz](../azure-government/documentation-government-connect-vs.md). Mielőtt azonban *bejelentkezne a Visual studióba a Azure Government-fiókjával*, át kell neveznie a felderítési végpont hozzáadása után generált JSON-fájlt a következő lépések végrehajtásával:
+
+1. Zárjuk be a Visual studiót.
+
+1. Keresse meg a létrehozott JSON-fájlt `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` ezen a helyen:
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. Nevezze át a JSON-fájlt a következőre: `AadProvider.Configuration.json` .
+
+1. Indítsa újra a Visual Studiót.
+
+1. Folytassa a Azure Government-fiókkal való bejelentkezés lépéseivel.
+
+A telepítés visszavonásához törölje a JSON-fájlt a következő helyen, majd indítsa újra a Visual studiót:
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 
@@ -91,9 +113,9 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -projektjét. Válassza a **Tovább** lehetőséget.
 
-   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Kattintson a **Létrehozás** gombra.
+   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Válassza a **Létrehozás** lehetőséget.
 
-1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Kattintson az **OK** gombra.
+1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Válassza az **OK** lehetőséget.
 
    ![Logikaialkalmazás-sablon kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -118,7 +140,7 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
 
    ![Azure-előfizetés, erőforráscsoport és erőforrás helyének kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Beállítás | Példaérték | Description |
+   | Beállítás | Példaérték | Leírás |
    | ------- | ------------- | ----------- |
    | Felhasználói fiók | Fabrikam <br> sophia-owen@fabrikam.com | A fiók, amelyet a Visual studióba való bejelentkezéskor használt |
    | **Előfizetés** | Utólagos, használatalapú fizetés <br> (sophia-owen@fabrikam.com) | Az Azure-előfizetés és a társított fiók neve |

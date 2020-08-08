@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856994"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004332"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
 Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be adatok exportálását egy Azure cache for Redis Database (RDB) pillanatkép importálásával és exportálásával egy Azure Storage-fiókban található blobba.
@@ -24,7 +24,7 @@ Az Importálás/exportálás lehetővé teszi, hogy áttelepítse a különböz�
 Ez a cikk útmutatást nyújt az Azure cache-sel való adatimportáláshoz és-exportáláshoz az Redis-hez, és megadja a válaszokat a gyakran ismételt kérdésekre.
 
 > [!IMPORTANT]
-> Az import/export csak a [prémium szintű](cache-premium-tier-intro.md) csomagok gyorsítótárai esetében érhető el.
+> Az import/export csak a [prémium szintű](cache-overview.md#service-tiers) csomagok gyorsítótárai esetében érhető el.
 >
 >
 
@@ -152,6 +152,6 @@ Ennek megoldásához indítsa el az importálási vagy exportálási műveletet 
 Az Exportálás csak a RDB tárolt fájlok esetében működik. Más blob-típusok jelenleg nem támogatottak, beleértve a gyors és a lassú elérésű csomagokat tartalmazó blob Storage-fiókokat is. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
 
 ## <a name="next-steps"></a>További lépések
-További információ a prémium szintű gyorsítótár-funkciók használatáról.
+További információ az Azure cache Redis szolgáltatásairól.
 
-* [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)
+* [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)
