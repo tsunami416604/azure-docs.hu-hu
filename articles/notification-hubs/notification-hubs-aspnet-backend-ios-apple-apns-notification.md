@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530172"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004180"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs
 
@@ -50,7 +50,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 1. Nyissa meg a [leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs oktatóanyag használatával](ios-sdk-get-started.md) létrehozott Egyoldalas nézet alkalmazást.
 
    > [!NOTE]
-   > Ez a szakasz azt feltételezi, hogy a projekt üres nevű szervezettel van konfigurálva. Ha nem, meg kell adnia a szervezet nevét az összes osztály nevéhez.
+   > Ez a szakasz azt feltételezi, hogy a projekt üres nevű szervezettel van konfigurálva. Ha nem, adja meg a szervezet nevét az összes osztály nevéhez.
 
 2. A `Main.storyboard` fájlban adja hozzá az objektum könyvtárából a képernyőképen látható összetevőket.
 
@@ -66,7 +66,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 
      Néhány összetevőt hozzáadtak a [leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs oktatóanyag használatával](ios-sdk-get-started.md) .
 
-3. A **CTRL billentyűt lenyomva** lévő összetevőkből húzza a mutatót az `ViewController.h` új kivezetések hozzáadásához.
+3. A **CTRL billentyűt lenyomva** tartva adja hozzá a kívánt összetevőket az `ViewController.h` alábbi új lehetőségek eléréséhez:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. A alkalmazásban `ViewController.h` adja hozzá a következőt az `#define` importálási utasítások után. Helyettesítse be a `<Enter Your Backend Endpoint>` helyőrzőt az alkalmazás-backend az előző szakaszban való üzembe helyezéséhez használt célként megadott URL-címmel. Például: `http://your_backend.azurewebsites.net`.
+4. A alkalmazásban `ViewController.h` adja hozzá a következőt az `#define` importálási utasítások után. Helyettesítse be a `<Your backend endpoint>` helyőrzőt az alkalmazás-backend az előző szakaszban való üzembe helyezéséhez használt célként megadott URL-címmel. Például `http://your_backend.azurewebsites.net` :
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. A projektben hozzon létre egy nevű új kakaó Touch osztályt a `RegisterClient` ASP.net felülettel, amelyet Ön hozott létre. Hozza létre az osztály öröklését `NSObject` . Ezután adja hozzá a következő kódot a alkalmazásban `RegisterClient.h` .
+5. A projektben hozzon létre egy nevű új kakaó Touch osztályt a `RegisterClient` ASP.net felülettel, amelyet Ön hozott létre. Hozza létre az osztály öröklését `NSObject` . Ezután adja hozzá a következő kódot a alkalmazásban `RegisterClient.h` :
 
     ```objc
     @interface RegisterClient : NSObject
@@ -492,9 +492,9 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 
     ![iOS-teszt címkézett értesítése][4]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra: 
+Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]
 >[Helyalapú leküldéses értesítések küldése](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

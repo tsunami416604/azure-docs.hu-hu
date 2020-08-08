@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836938"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009654"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -24,27 +24,13 @@ A cikk jelen verziója ezeket a lépéseket manuálisan, egyenként, a Azure Por
 * Ha ezeket a lépéseket manuálisan szeretné használni a parancssori felületről, tekintse meg a jelen cikk CLI-verzióját: [*útmutató: példány és hitelesítés (CLI) beállítása*](how-to-set-up-instance-cli.md).
 * Ha az üzembe helyezési parancsfájl mintájának használatával szeretne automatikus telepítést végezni, tekintse meg a jelen cikk parancsfájlokkal ellátott verzióját: [*útmutató: példány és hitelesítés beállítása (megírt)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-Ezután jelentkezzen be a [Azure Portalba](https://ms.portal.azure.com/) a hitelesítő adataival.
-
-## <a name="prerequisites-permission-requirements"></a>Előfeltételek: engedélyezési követelmények
-
-A cikkben szereplő összes lépés végrehajtásához az Azure-előfizetésében tulajdonosként kell besorolni. 
-
-A Azure Portal [előfizetések lapján](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) megtekintheti a jogosultsági szintet (ezt a hivatkozást használhatja, vagy megkeresheti az *előfizetéseket* a portál keresősáv használatával). Keresse meg az Ön által használt előfizetés nevét, és tekintse meg a szerepkörét a *saját szerepkör* oszlopban. Ha Ön tulajdonosa, ez az érték a *tulajdonos*:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="A Azure Portal előfizetések lapja, amely tulajdonosként jeleníti meg a felhasználót" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-Ha úgy találja, hogy az érték *közreműködő* vagy valamilyen más, mint a *tulajdonos*, a következő módokon léphet tovább:
-* Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg a tulajdonost, hogy hajtsa végre a cikkben szereplő lépéseket az Ön nevében.
-* Vegye fel a kapcsolatot az előfizetés tulajdonosával vagy valakivel a felhasználói hozzáférés rendszergazdai szerepkörrel az előfizetésben, és kérje meg, hogy az előfizetés tulajdonosaként emelje a tulajdonost az előfizetésben, hogy jogosult legyen a folytatásra. Attól függően, hogy ez megfelelő-e, a szervezettől és a benne lévő szerepkörtől függ.
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Az Azure Digital Twins-példány létrehozása
 
-Ebben a szakaszban az **Azure Digital Twins új példányát fogja létrehozni** a Azure Portal használatával.
+Ebben a szakaszban az **Azure Digital Twins új példányát fogja létrehozni** a [Azure Portal](https://ms.portal.azure.com/)használatával. Lépjen a portálra, és jelentkezzen be a hitelesítő adataival.
 
-Miután bejelentkezett [Azure Portalba](https://ms.portal.azure.com/), először válassza az _erőforrás létrehozása_ lehetőséget az Azure-szolgáltatások kezdőlapjának menüjében.
+A portálon először kattintson az _erőforrás létrehozása_ elemre az Azure-szolgáltatások Kezdőlap menüjében.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Válassza az erőforrás létrehozása lehetőséget a Azure Portal kezdőlapján.":::
 
@@ -87,7 +73,7 @@ Először nyissa meg az Azure Digital Twins-példány oldalát a Azure Portal. A
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Szerepkör-hozzárendelés hozzáadásának kiválasztása a "hozzáférés-vezérlés (IAM)" lapról":::
 
-Az alábbi *szerepkör-hozzárendelés hozzáadása* lapon adja meg az értékeket (az Azure-előfizetés tulajdonosaként kell befejeznie):
+Az alábbi *szerepkör-hozzárendelés hozzáadása* lapon adja meg az értékeket (az Azure-előfizetéshez [megfelelő engedélyekkel](#prerequisites-permission-requirements) rendelkező felhasználónak kell elvégeznie):
 * **Szerepkör**: válassza az *Azure Digital Twins-tulajdonos (előzetes verzió)* lehetőséget a legördülő menüből
 * **Hozzáférés kiosztása**: válassza ki az *Azure ad-felhasználó,-csoport vagy-szolgáltatásnév* elemet a legördülő menüből
 * **Válassza**a következőt: keresse meg a hozzárendelni kívánt felhasználó nevét vagy e-mail-címét. Az eredmény kiválasztásakor a felhasználó megjelenik a *kiválasztott tagok* szakaszban.
@@ -171,7 +157,7 @@ Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:
 * [*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)

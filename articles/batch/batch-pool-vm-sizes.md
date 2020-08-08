@@ -2,14 +2,14 @@
 title: Válasszon virtuálisgép-méreteket a készletekhez
 description: Az elérhető virtuálisgép-méretek közül választhat a Azure Batch készletekben lévő számítási csomópontok számára
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 08/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143538"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005147"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -35,12 +35,12 @@ A virtuálisgép-konfigurációban található batch-készletek szinte minden VM
 | DC | Nincsenek |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
-| <sup>1</sup> . Dav4 | Nincs – még nem érhető el |
-| <sup>1</sup> . Dasv4 | Minden méret, kivéve a Standard_D48as_v4, Standard_D64as_v4, Standard_D96as_v4 |
+| <sup>1</sup> . Dav4 | Minden méret |
+| <sup>1</sup> . Dasv4 | Minden méret |
 | Ddv4, Ddsv4 |  Nincs – még nem érhető el |
 | Ev3, Esv3 | Minden méret E64is_v3 és E64i_v3 kivételével |
-| <sup>1</sup> . Eav4 | Minden méret, kivéve a Standard_E48a_v4, Standard_E64a_v4, Standard_E96a_v4 |
-| <sup>1</sup> . Easv4 | Minden méret, kivéve a Standard_E48as_v4, Standard_E64as_v4, Standard_E96as_v4 |
+| <sup>1</sup> . Eav4 | Minden méret |
+| <sup>1</sup> . Easv4 | Minden méret |
 | Edv4, Edsv4 |  Nincs – még nem érhető el |
 | F, FS | Minden méret |
 | Fsv2 | Minden méret |

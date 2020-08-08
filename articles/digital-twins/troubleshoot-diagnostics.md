@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 0376a57e3f2c1158e9da97fb291a28c99ce2463c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903959"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003585"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
@@ -38,6 +38,8 @@ Az alábbi módon engedélyezheti az Azure Digital Twins-példány diagnosztikai
         - ModelsOperation
         - QueryOperation
         - AllMetrics
+        
+        További információ ezekről a beállításokról: [*Kategória részletei*](#category-details) szakasz.
      * **Célhely részletei**: válassza ki, hová szeretné elküldeni a naplókat. A három lehetőség bármely kombinációját kiválaszthatja:
         - Küldés a Log Analyticsnek
         - Archiválás tárfiókba
@@ -51,7 +53,48 @@ Az alábbi módon engedélyezheti az Azure Digital Twins-példány diagnosztikai
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezután a naplók megjelennek a konfigurált célhelyen a példány **diagnosztikai beállítások** lapján. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="category-details"></a>Kategória részletei
+
+A diagnosztikai beállítások beállításakor a **Kategória részletei** szakaszban kiválaszthatja a naplózási kategóriák részleteit.
+
+| Naplókategória | Leírás |
+| --- | --- |
+| ADTModelsOperation | A modellekre vonatkozó összes API-hívás naplózása |
+| ADTQueryOperation | A lekérdezésekre vonatkozó összes API-hívás naplózása |
+| ADTEventRoutesOperation | Naplózza az esemény-útvonalakra vonatkozó összes API-hívást, valamint az Azure Digital Twins-ból érkező eseményeket egy olyan végponti szolgáltatáshoz, mint például a Event Grid, a Event Hubs és a Service Bus |
+| ADTDigitalTwinsOperation | Az Azure digitális Twins-hoz tartozó összes API-hívás naplózása |
+
+Minden naplózási kategória írási, olvasási, törlési és művelet-műveletből áll.  Ezek a leképezések a következőképpen REST API hívásokat:
+
+| Eseménytípus | REST API műveletek |
+| --- | --- |
+| Írás | PUT és PATCH |
+| Olvasás | GET |
+| Törlés | DELETE |
+| Művelet | POST |
+
+Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](https://docs.microsoft.com/rest/api/azure-digitaltwins/) a különböző kategóriákba bejelentkezett hívások részletes listája. 
+
+>[!NOTE]
+> Minden naplózási kategória több művelet/REST API hívást tartalmaz. Az alábbi táblázatban minden naplózási kategória az összes művelet/REST API hívására vonatkozik, amíg meg nem jelenik a következő napló kategóriája. 
+
+| Naplókategória | Művelet | Hívások és egyéb események REST API |
+| --- | --- | --- |
+| ADTModelsOperation | Microsoft. DigitalTwins/modellek/írás | Digital Twin models frissítési API |
+|  | Microsoft. DigitalTwins/modellek/olvasás | Az id és a List API-k által lekérdezett digitális kettős modellek |
+|  | Microsoft. DigitalTwins/models/delete | Digital Twin models – API törlése |
+|  | Microsoft. DigitalTwins/modellek/művelet | Digitális kettős modellek API hozzáadása |
+| ADTQueryOperation | Microsoft. DigitalTwins/lekérdezés/művelet | Az ikrek API lekérdezése |
+| ADTEventRoutesOperation | Microsoft. DigitalTwins/eventroutes/Write | Event Routes API hozzáadása |
+|  | Microsoft. DigitalTwins/eventroutes/READ | Azonosító és lista API-k által beolvasott esemény-útvonalak |
+|  | Microsoft. DigitalTwins/eventroutes/delete | Esemény-útvonalak törlése API |
+|  | Microsoft. DigitalTwins/eventroutes/művelet | Esemény kilépése egy végponti szolgáltatásba (nem API-hívás) |
+| ADTDigitalTwinsOperation | Microsoft. DigitalTwins/DigitalTwins/Write | Digitális ikrek hozzáadása, kapcsolat hozzáadása, frissítés, összetevő frissítése |
+|  | Microsoft. DigitalTwins/DigitalTwins/READ | Digitális ikrek által beolvasott azonosító, összetevő beolvasása, kapcsolat beolvasása azonosító alapján, bejövő kapcsolatok listázása, kapcsolatok listázása |
+|  | Microsoft. DigitalTwins/DigitalTwins/delete | Digitális ikrek törlése, kapcsolat törlése |
+|  | Microsoft. DigitalTwins/DigitalTwins/művelet | Digitális Twins – összetevő telemetria küldése, telemetria küldése |
+
+## <a name="next-steps"></a>További lépések
 
 * A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [*adatok gyűjtése és felhasználása az Azure-erőforrásokból*](../azure-monitor/platform/platform-logs-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).

@@ -1,19 +1,17 @@
 ---
 title: Bérlő létrehozása a Windows Virtual Desktopban (klasszikus) – Azure
 description: Útmutató a Windows rendszerű virtuális asztali (klasszikus) bérlők beállításához a Azure Active Directoryban.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286359"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005618"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -82,12 +80,12 @@ A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
    > ![Képernyőkép a nagyvállalati alkalmazások kereséséről a Azure Portal](../media/azure-portal-enterprise-applications.png)
 
 2. A **vállalati alkalmazásokban**keresse meg a **Windows rendszerű virtuális asztal**kifejezést. Ekkor megjelenik a két, az előző szakaszban megadott beleegyezett alkalmazás. A két alkalmazás közül válassza a **Windows virtuális asztal**lehetőséget.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a keresési eredményekről, amikor a "Windowsos virtuális asztal" kifejezést keres a "vállalati alkalmazások" kifejezésben. A "Windows virtuális asztal" nevű alkalmazás ki van emelve.](../media/tenant-enterprise-app.png)
 
 3. Válassza a **Felhasználók és csoportok** elemet. Láthatja, hogy az alkalmazáshoz beleegyezett jogosultsággal rendelkező rendszergazda már szerepel a hozzárendelt **alapértelmezett hozzáférési** szerepkörben. Ez nem elég a Windows rendszerű virtuális asztali bérlő létrehozásához. Kövesse az alábbi utasításokat a **TenantCreator** szerepkör felhasználóhoz való hozzáadásához.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a "Windows Virtual Desktop" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat.](../media/tenant-default-access.png)
 
@@ -126,13 +124,13 @@ A Azure Active Directory bérlői AZONOSÍTÓjának (vagy a **könyvtár azonos�
 
 Az Azure-előfizetés AZONOSÍTÓjának megkeresése:
 1. Ugyanebben a [Azure Portal](https://portal.azure.com) -munkamenetben keresse meg és válassza ki az **előfizetéseket**.
-   
+
    > [!div class="mx-imgBorder"]
    > ![A Azure Portal "Azure Active Directory" keresési eredményeinek képernyőképe. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve.](../media/tenant-search-subscription.png)
 
 2. Válassza ki azt az Azure-előfizetést, amelyet a Windows rendszerű virtuális asztali szolgáltatás értesítéseinek fogadásához használni kíván.
 3. Keresse meg az **előfizetés azonosítóját**, majd vigye a kurzort az érték fölé, amíg meg nem jelenik a vágólap ikonja. Válassza a vágólap ikont, és illessze be egy praktikus helyre, hogy később a **AzureSubscriptionId** értékeként is használhassa.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép az Azure-előfizetés tulajdonságairól. Az egérmutatót a vágólap ikon fölé helyezi a másoláshoz és beillesztéshez az "előfizetés azonosítója" elemnél.](../media/tenant-subscription-id.png)
 

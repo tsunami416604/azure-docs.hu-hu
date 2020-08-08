@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534736"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002331"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -35,7 +35,7 @@ Az Azure AD-hitelesítés számos előnnyel jár az Azure-beli linuxos virtuáli
   - Az Azure Virtual Machines szolgáltatásba való bejelentkezés további biztonságossá tételéhez konfigurálhatja a többtényezős hitelesítést.
   - A Linux rendszerű virtuális gépekre való bejelentkezés lehetősége Azure Active Directory is működik az [összevonási szolgáltatásokat](../../active-directory/hybrid/how-to-connect-fed-whatis.md)használó ügyfelek számára.
 
-- **Zökkenőmentes együttműködés:** Szerepköralapú Access Control (RBAC) használatával megadhatja, hogy ki tud bejelentkezni egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználók csatlakoznak vagy elhagyják a csapatot, frissítheti a virtuális gép RBAC-szabályzatát, hogy a megfelelő módon biztosítson hozzáférést. Ez a felhasználói élmény sokkal egyszerűbb, mint a virtuális gépek felesleges SSH nyilvános kulcsainak eltávolításához. Ha az alkalmazottak elhagyják a szervezetét, és a felhasználói fiókja le van tiltva vagy el lett távolítva az Azure AD-ből, már nem férnek hozzá az erőforrásaihoz.
+- **Zökkenőmentes együttműködés:** Az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) megadhatja, hogy ki tud bejelentkezni egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználók csatlakoznak vagy elhagynak egy csapatot, frissítheti a virtuális gép Azure RBAC-szabályzatát, hogy a megfelelő módon biztosítson hozzáférést. Ez a felhasználói élmény sokkal egyszerűbb, mint a virtuális gépek felesleges SSH nyilvános kulcsainak eltávolításához. Ha az alkalmazottak elhagyják a szervezetét, és a felhasználói fiókja le van tiltva vagy el lett távolítva az Azure AD-ből, már nem férnek hozzá az erőforrásaihoz.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Támogatott Azure-régiók és Linux-disztribúciók
 
@@ -121,7 +121,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) házirend határ
 > [!NOTE]
 > Annak engedélyezéséhez, hogy a felhasználó SSH-kapcsolaton keresztül jelentkezzen be a virtuális gépre, hozzá kell rendelnie a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét. Egy virtuális géphez hozzárendelt *tulajdonosi* vagy *közreműködői* szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan bejelentkezni a virtuális gépre SSH-kapcsolaton keresztül.
 
-Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a *virtuális gép rendszergazdai bejelentkezési* szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a *hatókör* pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
+Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a *virtuális gép rendszergazdai bejelentkezési* szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a *hatókör* pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a szokásos Azure RBAC öröklési engedélyek is érvényesek. További információ: [Azure RBAC](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiók objektumazonosítóát a *--megbízott-Object-ID azonosítóval*, nem csak a-- *megbízott*felhasználónevet. A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
 
-Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért lásd az [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)használatát ismertető témakört.
+Az Azure-előfizetési erőforrásokhoz való hozzáférés az Azure RBAC való kezelésével kapcsolatos további információkért lásd az [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)használatát ismertető témakört.
 
 Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure multi-Factor Authentication a felhőben](../../active-directory/authentication/howto-mfa-getstarted.md).
 
@@ -185,7 +185,7 @@ Az Azure AD-beli hitelesítő adatokkal való SSH-val való próbálkozáskor el
 
 ### <a name="access-denied-azure-role-not-assigned"></a>Hozzáférés megtagadva: az Azure-szerepkör nincs hozzárendelve
 
-Ha a következő hibaüzenet jelenik meg az SSH-parancssorban, ellenőrizze, hogy konfigurálta-e a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét biztosító RBAC házirendeket a virtuális géphez:
+Ha a következő hibaüzenet jelenik meg az SSH-parancssorban, ellenőrizze, hogy konfigurálta-e az Azure RBAC-házirendeket a virtuális géphez, amely a felhasználónak vagy a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét biztosítja:
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

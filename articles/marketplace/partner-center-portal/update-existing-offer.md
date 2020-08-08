@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 113808a3e2bab6c4cb9d2ea5f155a027abf1b5bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086336"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006791"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
@@ -43,7 +43,7 @@ Ha készen áll a frissített ajánlat közzétételére, válassza a **felülvi
 
 1. Ha megnyitotta az ajánlat **Áttekintés** lapját, nyissa meg a **terv áttekintés** lapot, és válassza az **új csomag létrehozása**lehetőséget.
 1. Hozzon létre egy új tervet az [irányelvek](./create-new-saas-offer.md#plan-overview) alapján a **meglévő csomagok díjszabási modelljének**használatával.
-1. A terv nevének módosítása után válassza a **Piszkozat mentése** lehetőséget. 
+1. A terv nevének módosítása után válassza a **Piszkozat mentése** lehetőséget.
 1. Válassza a **Közzététel** lehetőséget, amikor készen áll a frissítések közzétételére. Megnyílik a **[felülvizsgálat és közzététel](#review-and-publish-an-updated-offer)** lap, amely a frissítések befejezési állapotát biztosítja.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Csomag frissítése egy meglévő ajánlaton belül
@@ -55,6 +55,24 @@ Ha módosítani kíván egy csomagot egy meglévő, már közzétett ajánlaton 
 1. A terv nevének, leírásának vagy a célközönség rendelkezésre állásának módosítása után válassza a **Piszkozat mentése** elemet.
 1. Válassza a **felülvizsgálat és közzététel** lehetőséget, amikor készen áll a frissítések közzétételére. Megnyílik a **[felülvizsgálat és közzététel](#review-and-publish-an-updated-offer)** lap, amely a frissítések befejezési állapotát biztosítja.
 1. Küldje el a frissített tervet a közzétételhez a **Közzététel**lehetőség kiválasztásával. E-mailben küldünk Önnek, ha a frissített ajánlat előzetes verziója elérhető az áttekintéshez és a kijelentkezéshez.
+
+## <a name="offer-a-virtual-machine-plan-at-a-new-price"></a>Új díj a virtuálisgép-csomaghoz
+
+A virtuálisgép-csomag közzétételét követően a díjszabása nem módosítható. Ha ugyanezt a csomagot eltérő áron szeretné ajánlani, el kell rejtenie a csomagot, és létre kell hoznia egy újat a frissített árral. Először is rejtse el a csomagot a módosítani kívánt árral:
+
+1. Ha megnyitotta az ajánlat **Áttekintés** lapját, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **terv áttekintő** listájában, válassza a **minden csomag megtekintése**lehetőséget.
+1. Jelölje be a **terv elrejtése** jelölőnégyzetet. A folytatás előtt mentse a piszkozatot.
+
+Most, hogy eltakarta a tervet a régi árral, hozzon létre egy másolatot a tervről a frissített árral:
+
+1. A partner Centerben lépjen vissza a **terv áttekintés**elemre.
+2. Válassza az **új csomag létrehozása**lehetőséget. Adja meg a **csomag azonosítóját** és a **csomag nevét**, majd válassza a **Létrehozás**lehetőséget.
+1. Ha újra szeretné használni a technikai konfigurációt a rejtett csomagból, jelölje be a **technikai konfiguráció újrafelhasználása** jelölőnégyzetet. További információért olvassa el a [terv áttekintése című témakört](azure-vm-create-offer.md#plan-overview) .
+    > [!IMPORTANT]
+    > Ha azt választja, hogy a **terv újrahasznosítja egy másik csomag technikai konfigurációját**, később nem fogja tudni leállítani a fölérendelt terv értékesítését. Ne használja ezt a beállítást, ha le szeretné állítani a fölérendelt terv értékesítését.
+3. Fejezze be az új csomaghoz szükséges összes szakaszt, beleértve az új árat is.
+1. Válassza a **Piszkozat mentése** lehetőséget.
+1. Miután elvégezte az összes szükséges szakaszt az új csomaghoz, válassza a **felülvizsgálat és közzététel**lehetőséget. Ez áttekintésre és közzétételre küldi az ajánlatot. További részletekért olvassa el [a kereskedelmi piactérre vonatkozó ajánlat áttekintését és közzétételét](../review-publish-offer.md) .
 
 ## <a name="compare-changes-to-marketplace-offers"></a>A Piactéri ajánlatok változásainak összehasonlítása
 

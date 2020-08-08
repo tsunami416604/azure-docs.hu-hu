@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali FSLogix-profil tárolójának megosztása – Azure
 description: FSLogix-profilok tárolójának beállítása egy Windows rendszerű virtuális asztali készlethez virtuális gépi alapú fájlmegosztás használatával.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211833"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002599"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
 
@@ -66,7 +64,7 @@ A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a követ
 6. Hozzon létre egy **profilok**nevű kulcsot.
 7. Hozza létre a következő értékeket a profilok kulcshoz:
 
-| Name                | Típus               | Az adatértékek/értékek                        |
+| Név                | Típus               | Az adatértékek/értékek                        |
 |---------------------|--------------------|-----------------------------------|
 | Engedélyezve             | DWORD              | 1                                 |
 | VHDLocations        | Több karakterláncos érték | "Fájlmegosztás hálózati elérési útja"     |

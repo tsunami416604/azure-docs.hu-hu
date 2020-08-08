@@ -1,6 +1,6 @@
 ---
 title: Vonal rétegének hozzáadása térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy vonal réteget egy térképhez a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogyan adhat hozzá vonalakat a térképekhez. Tekintse meg a Azure Maps web SDK-t használó példákat, amelyekkel vonalakat adhat hozzá a térképekhez, és testreszabhatja a vonalakat szimbólumokkal és színátmenetekkel.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 366de0d17a1cdd62b95d39b1ad04b9bc76bec52c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c834ae6061fce6f2fc2f4cd7c4d80e036775b156
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286940"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010208"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Vonal rétegének hozzáadása a térképhez
 

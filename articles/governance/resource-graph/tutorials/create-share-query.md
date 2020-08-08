@@ -3,16 +3,16 @@ title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
 description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970586"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005170"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
-Az Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portal mentse az erőforrás-gráf lekérdezéseit. Kétféle lekérdezés létezik: _magán_ -és _megosztott_. A rendszer a Azure Portal beállításokban menti a privát lekérdezést. Míg a megosztott lekérdezés olyan Azure Resource Manager erőforrás, amely szerepköralapú hozzáférés-vezérléssel (RBAC) felügyelhető és erőforrás-zárolásokkal védett. Mindkét típusú lekérdezés titkosítva van a nyugalmi állapotban.
+Az Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portal mentse az erőforrás-gráf lekérdezéseit. Kétféle lekérdezés létezik: _magán_ -és _megosztott_. A rendszer a Azure Portal beállításokban menti a privát lekérdezést. Míg a megosztott lekérdezés olyan Azure Resource Manager erőforrás, amely az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) felügyelhető és erőforrás-zárolásokkal védett. Mindkét típusú lekérdezés titkosítva van a nyugalmi állapotban.
 
 A lekérdezéseknek a Azure Portalban való mentésével megtakaríthatja a kedvenc vagy gyakran használt lekérdezések keresésének időpontját. A lekérdezések megosztásakor segít a csapatnak megvalósítani a konzisztencia és a hatékonyság célkitűzéseit az ismétlődéssel.
 
@@ -60,7 +60,7 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
 
 ## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
 
-Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoporthoz lesz mentve, felügyelhető és vezérelhető a RBAC, és az erőforrás-zárolásokkal is védhető. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt.
+Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoport számára lesz mentve, felügyelhető és szabályozható az Azure RBAC, és az erőforrás-zárolásokkal is védelmet biztosíthat. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt.
 Új megosztott lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
 1. A portál menüjében válassza a **minden szolgáltatás**lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt, és válassza ki az **Erőforrásgrafikon-kezelőt**.

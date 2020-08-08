@@ -1,19 +1,17 @@
 ---
 title: A Windows rendszerű virtuális asztali portál alkalmazás-csoportjainak kezelése – Azure
 description: Windows rendszerű virtuális asztali alkalmazás-csoportok kezelése a Azure Portal.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283401"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010089"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Azure Portal
 
@@ -49,16 +47,16 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
     > ![Képernyőkép a Azure Portal alapjai lapról.](media/basics-tab.png)
 
 6. Ha az alkalmazás-csoportokat hozzá szeretné adni a gazdagéphez, a képernyő bal oldalán található menüben válassza a **gazdagép-készletek** lehetőséget.
-   
+
     Ezután válassza ki annak az állomásnak a nevét, amelyhez alkalmazáscsoport hozzáadására van szüksége.
-   
+
     Ezután válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán található menüből, majd válassza a **+ Hozzáadás**lehetőséget.
 
     Végül válassza ki azt az előfizetési csoportot és erőforráscsoportot, amelyben az alkalmazás-csoportot létre szeretné hozni. Kiválaszthatja egy meglévő erőforráscsoport nevét a legördülő menüből, vagy az **új létrehozása** lehetőségre kattintva újat hozhat létre.
 
       >[!NOTE]
       >Amikor alkalmazás-csoportokat ad hozzá a gazdagéphez, az alkalmazáscsoport kapcsolódó alkalmazáskészlete már ki van választva, mert az alkalmazásból navigált.
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![Az alapbeállítások lap képernyőképe az előválasztott gazdagép készletével.](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
 12.  Válassza az **alkalmazások** fület, majd válassza az **+ Alkalmazások hozzáadása**lehetőséget.
 
-13.  Alkalmazás hozzáadása a Start menüből: 
+13.  Alkalmazás hozzáadása a Start menüből:
 
       - Nyissa meg az **alkalmazás forrását** , és válassza a **Start menü** lehetőséget a legördülő menüből. Ezután nyissa meg az **alkalmazást** , és válassza ki az alkalmazást a legördülő menüből.
 
@@ -99,7 +97,7 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
       - Adja meg az alkalmazás adatait az **alkalmazás neve**, a **megjelenítendő név**, az **ikon elérési útja**és az **ikon index** mezőiben.
 
-      - Válassza a **Mentés** lehetőséget.
+      - Kattintson a **Mentés** gombra.
 
      > [!div class="mx-imgBorder"]
      > ![Az alkalmazás hozzáadása oldal képernyőképe a kijelölt fájl elérési útjával.](media/add-app-file.png)
@@ -111,7 +109,7 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 16.  Ha egy munkaterületre szeretné regisztrálni az erőforráscsoportot, lépjen az **alkalmazáscsoport regisztrálása** elemre, és válassza az **Igen**lehetőséget. Ha inkább egy későbbi időpontban regisztrálja az alkalmazást, válassza a **nem**lehetőséget.
 
 17.  Ha az **Igen**lehetőséget választja, kiválaszthat egy meglévő munkaterületet, amellyel regisztrálhatja az alkalmazás csoportját.
-       
+
        >[!NOTE]
        >Az alkalmazáscsoport csak abban a helyen létrehozott munkaterületekre regisztrálható, ahol a gazdagép található. Is. Ha korábban már regisztrált egy másik alkalmazást ugyanabból a készletből, mint az új alkalmazáscsoport egy munkaterületre, akkor azt a rendszer kijelöli, és nem szerkesztheti. Egy adott alkalmazáskészletben lévő összes alkalmazás-csoportot regisztrálni kell ugyanahhoz a munkaterülethez.
 

@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) való elkülönít
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077764"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003111"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök elkülönítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -42,7 +42,7 @@ Logikai elkülönítéssel egyetlen AK-beli fürt használható több számítá
 
 A fürtök logikai elkülönítése általában nagyobb Pod-sűrűséget biztosít, mint a fizikailag elszigetelt fürtök. Kevesebb felesleges számítási kapacitás áll rendelkezésre, amely üresjáratban van a fürtben. A Kubernetes-fürt autoskálázásával kombinálva a csomópontok számát felfelé vagy lefelé méretezheti, hogy megfeleljen az igényeknek. Az automatikus skálázással kapcsolatos ajánlott eljárás lehetővé teszi, hogy csak a szükséges csomópontok számát futtassa, és minimálisra csökkentse a költségeket.
 
-A Kubernetes-környezetek (ak-ban vagy máshol) nem teljesen biztonságosak az ellenséges, több-bérlős használatra. Több-bérlős környezetben több bérlő dolgozik közös, megosztott infrastruktúrán. Ennek eredményeképpen, ha az összes bérlő nem megbízható, további tervezést kell végeznie annak elkerülésére, hogy egy bérlő kihathat egy másik biztonsági és szolgáltatási szolgáltatására. További biztonsági funkciók, például a *Pod biztonsági házirend* és a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) nehezebbé teszik a kiaknázást. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia.
+A Kubernetes-környezetek (ak-ban vagy máshol) nem teljesen biztonságosak az ellenséges, több-bérlős használatra. Több-bérlős környezetben több bérlő dolgozik közös, megosztott infrastruktúrán. Ennek eredményeképpen, ha az összes bérlő nem megbízható, további tervezést kell végeznie annak elkerülésére, hogy egy bérlő kihathat egy másik biztonsági és szolgáltatási szolgáltatására. További biztonsági funkciók, mint például a *Pod biztonsági házirend* és a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) nehezebbé teszik a kihasználat. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia.
 
 ## <a name="physically-isolate-clusters"></a>Fürtök fizikai elkülönítése
 

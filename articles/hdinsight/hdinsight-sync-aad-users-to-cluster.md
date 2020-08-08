@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085973"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004423"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
-[Enterprise Security Package (ESP) HDInsight-fürtök](hdinsight-domain-joined-introduction.md) erős hitelesítést használhatnak Azure Active Directory (Azure ad) felhasználókkal, valamint *szerepköralapú hozzáférés-vezérlési* (RBAC) házirendek használatával. Amikor felhasználókat és csoportokat AD hozzá az Azure AD-hez, szinkronizálhatja azokat a felhasználókat, akiknek a fürthöz hozzáféréssel kell rendelkezniük.
+[Enterprise Security Package (ESP) HDInsight-fürtök](hdinsight-domain-joined-introduction.md) erős hitelesítést használhatnak Azure Active Directory (Azure ad) felhasználókkal, valamint az *Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)* házirendjeit. Amikor felhasználókat és csoportokat AD hozzá az Azure AD-hez, szinkronizálhatja azokat a felhasználókat, akiknek a fürthöz hozzáféréssel kell rendelkezniük.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -146,7 +146,7 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 Amikor az új felhasználó (vagy bármely más tartományi felhasználó) bejelentkezik a Ambari-ba, a teljes Azure AD-felhasználónevet és tartományi hitelesítő adatokat használják.  A Ambari megjelenít egy felhasználói aliast, amely a felhasználó megjelenítendő neve az Azure AD-ben.
 Az új példában szereplő felhasználó neve `hiveuser3@contoso.com` . A Ambari-ben ez az új felhasználó úgy jelenik meg, ahogy `hiveuser3` a felhasználó bejelentkezik a Ambari-ba `hiveuser3@contoso.com` .
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Apache Hive házirendek konfigurálása a HDInsight-ben ESP-vel](hdinsight-domain-joined-run-hive.md)
 * [HDInsight-fürtök az ESP-vel való kezelése](hdinsight-domain-joined-manage.md)

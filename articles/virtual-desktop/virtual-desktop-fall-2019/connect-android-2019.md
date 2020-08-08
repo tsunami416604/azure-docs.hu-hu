@@ -1,19 +1,17 @@
 ---
 title: Kapcsolódás Windowsos virtuális asztalhoz (klasszikus) Androidról – Azure
 description: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az Android-ügyfél használatával.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c83d243a24fb0cacdf032dfa77e9bb17fdf5e824
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0fadcc592f5dd52bf1b72dc9d5658866ffba7f4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383800"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008474"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az Android-ügyféllel
 
@@ -48,6 +46,6 @@ A feliratkozást követően a kapcsolatok középpontjában meg kell jelennie a 
 
 Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Android-ügyfél használatáról, tekintse meg [az Android-ügyfél használatának első lépéseit](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)ismertető témakört.

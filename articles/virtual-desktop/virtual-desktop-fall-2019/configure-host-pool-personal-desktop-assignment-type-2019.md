@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali (klasszikus) személyes asztali hozzárendelés típusa – Azure
 description: A Windows rendszerű virtuális asztali (klasszikus) személyes asztali címkészlet hozzárendelési típusának konfigurálása.
-services: virtual-desktop
-author: HeidiLohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271042"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008508"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>A személyes asztali címkészlet hozzárendelési típusának konfigurálása a Windows rendszerű virtuális asztali gépekhez (klasszikus)
 

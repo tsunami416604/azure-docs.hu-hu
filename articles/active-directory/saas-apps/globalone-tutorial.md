@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a GlobalOne-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és GlobalOne között.
+title: 'Oktatóanyag: Azure Active Directory integráció az EY GlobalOne | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az EY GlobalOne között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,24 +11,23 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14eac7240c183911fba763bf21c37077107cc275
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a86bb8d2a9785aca3317924ce2a1edc41dfc8a70
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944922"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008678"
 ---
-# <a name="tutorial-integrate-globalone-with-azure-active-directory"></a>Oktatóanyag: a GlobalOne és a Azure Active Directory integrálása
+# <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>Oktatóanyag: az EY GlobalOne integrálása Azure Active Directory
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a GlobalOne a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az GlobalOne-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a EY GlobalOne az Azure Active Directory (Azure AD) szolgáltatással. Ha az Azure AD-vel integrálja az EY GlobalOne-t, a következőket teheti:
 
-* A GlobalOne-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a GlobalOne az Azure AD-fiókjával.
+* Vezérlőelem az Azure AD-ben, aki hozzáfér az EY GlobalOne.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az EY GlobalOne az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -38,41 +37,44 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* GlobalOne egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* EY GlobalOne egyszeri bejelentkezéses (SSO) engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. **A GlobalOne az** **SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja, és a felhasználói üzembe helyezést is támogatja.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+* A EY GlobalOne támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t 
+* A EY GlobalOne **csak időben támogatja a** felhasználók üzembe helyezését.
+* Az EY GlobalOne konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-globalone-from-the-gallery"></a>GlobalOne hozzáadása a gyűjteményből
+## <a name="adding-ey-globalone-from-the-gallery"></a>EY GlobalOne hozzáadása a katalógusból
 
-A GlobalOne Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a GlobalOne a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az EY GlobalOne az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az EY GlobalOne a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **GlobalOne** kifejezést a keresőmezőbe.
-1. Válassza ki a **GlobalOne** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **ey GlobalOne** a keresőmezőbe.
+1. Válassza ki a **ey GlobalOne** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-ey-globalone"></a>Azure AD SSO konfigurálása és tesztelése az EY GlobalOne
 
-Konfigurálja és tesztelje az Azure AD SSO-t a GlobalOne a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a GlobalOne-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a EY GlobalOne egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az EY GlobalOne.
 
-Az Azure AD SSO és a GlobalOne konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO az EY GlobalOne való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
-2. **[Konfigurálja a GlobalOne](#configure-globalone)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre GlobalOne-tesztelési felhasználót](#create-globalone-test-user)** , hogy a GlobalOne B. Simon párja legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
-6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+    * **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Konfigurálja a ey GlobalOne](#configure-ey-globalone)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    * **[Hozzon létre egy GlobalOne-tesztelési felhasználót](#create-ey-globalone-test-user)** , hogy a B. Simon egy, a felhasználó Azure ad-képviseletéhez kapcsolódó GlobalOne.
+1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **GlobalOne** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **ey GlobalOne** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
@@ -80,13 +82,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
-1. A GlobalOne alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. A EY GlobalOne alkalmazás meghatározott formátumban várja az SAML-kijelentéseket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-1. A fentieken kívül a GlobalOne alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+1. A fentieken kívül a EY GlobalOne alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
@@ -109,19 +111,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
-1. A **GlobalOne beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. Az **ey GlobalOne beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-### <a name="configure-globalone"></a>GlobalOne konfigurálása
-
-Az egyszeri bejelentkezés **GlobalOne** -oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portal a [GlobalOne támogatási csapatának](mailto:globalone.support@ey.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -131,16 +129,16 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B. Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B. Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a GlobalOne.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az EY GlobalOne való hozzáférés biztosításával.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **GlobalOne**lehetőséget.
+1. Az alkalmazások listában válassza ki a **ey GlobalOne**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
@@ -153,13 +151,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-globalone-test-user"></a>GlobalOne-tesztelési felhasználó létrehozása
+## <a name="configure-ey-globalone"></a>Az EY GlobalOne konfigurálása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a GlobalOne-ben. A GlobalOne támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a GlobalOne-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Az egyszeri bejelentkezés az **ey GlobalOne** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt URL-címeket Azure Portalról a [ey GlobalOne támogatási csapatának](mailto:globalone.support@ey.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="create-ey-globalone-test-user"></a>EY GlobalOne-teszt felhasználó létrehozása
 
-Amikor kiválasztja a GlobalOne csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a GlobalOne, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre az EY GlobalOne. A EY GlobalOne támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az EY GlobalOne, a hitelesítés után létrejön egy új.
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+
+Ha a hozzáférési panelen kiválasztja a EY GlobalOne csempét, automatikusan be kell jelentkeznie az EY GlobalOne, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

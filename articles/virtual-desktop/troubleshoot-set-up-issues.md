@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali környezetbeli gazdagép-készlet létrehozása – Azure
 description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali környezet telepítése során.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a36e21d346e08ebe09f8c4b34f6af529d2a0f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292564"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006162"
 ---
 # <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
@@ -37,13 +35,13 @@ A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg 
 > [!div class="mx-imgBorder"]
 > ![Az "ingyenes fiók létrehozása" üzenetet megjelenítő Azure Portal ábrázoló kép](media/create-new-account.png)
 
-**OK**: nincsenek aktív előfizetések abban a fiókban, amelybe bejelentkezett az Azure-ba, vagy a fiók nem rendelkezik az előfizetések megtekintéséhez szükséges engedélyekkel. 
+**OK**: nincsenek aktív előfizetések abban a fiókban, amelybe bejelentkezett az Azure-ba, vagy a fiók nem rendelkezik az előfizetések megtekintéséhez szükséges engedélyekkel.
 
 **Javítás**: Jelentkezzen be az előfizetésbe, ahol a munkamenet-gazdagép virtuális gépei (VM-EK) egy olyan fiókkal telepíthetők, amely legalább közreműködői szintű hozzáféréssel rendelkezik.
 
 ### <a name="error-exceeding-quota-limit"></a>Hiba: "túllépte a kvóta korlátját"
 
-Ha a művelet túllépi a kvóta korlátját, a következő műveletek közül választhat: 
+Ha a művelet túllépi a kvóta korlátját, a következő műveletek közül választhat:
 
 - Hozzon létre egy új címkészletet ugyanazzal a paraméterekkel, de kevesebb virtuális géppel és virtuálisgép-maggal.
 
@@ -119,9 +117,9 @@ A probléma megoldásához tegye a következőket:
 Nyers hiba – példa:
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
@@ -138,10 +136,10 @@ Nyers hiba – példa:
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -162,7 +160,7 @@ Nyers hiba – példa:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

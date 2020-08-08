@@ -1,14 +1,14 @@
 ---
 title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373759"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003506"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -130,10 +130,16 @@ A fenti előfeltételként szükséges lépések elvégzése után telepítse a 
 
   1. A Főoldalon kattintson a **bővítmény engedélyezése** gombra.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="A Azure Policy engedélyezése az AK-bővítményhez" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="A Azure Policy engedélyezése az AK-bővítményhez":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. Ha a **bővítmény letiltása** gomb engedélyezve van, és az áttelepítés figyelmeztetése v2 üzenet jelenik meg, a Gatekeepver v2 továbbra is telepítve van, ezért el kell távolítani.
+     > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. Ha a **bővítmény letiltása** gomb engedélyezve van, és az áttelepítési figyelmeztetés v2 üzenet jelenik meg, a v1 bővítmény telepítve van, és a v2 házirend-definíciók kiosztása előtt el kell távolítani. Az _elavult_ v1 bővítményt a rendszer automatikusan lecseréli a v2 bővítmény 2020. augusztus 24-én kezdődően. Ezután hozzá kell rendelni a házirend-definíciók új v2-verzióit. A frissítéshez kövesse az alábbi lépéseket:
+     > 
+     > 1. Ellenőrizze, hogy az AK-fürtön telepítve van-e a v1-bővítmény, ha meglátogatja a **szabályzatok (előzetes verzió)** lapot az AK-fürtön, és az "aktuális fürt a Azure Policy bővítmény v1-es verzióját használja..." üzenetet.
+     > 1. [Távolítsa el a bővítményt](#remove-the-add-on-from-aks).
+     > 1. Kattintson a **bővítmény engedélyezése** gombra a bővítmény v2-verziójának telepítéséhez.
+     > 1. [A v1 beépített szabályzat-definíciók v2 verziójának kiosztása](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 

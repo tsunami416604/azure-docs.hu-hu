@@ -1,19 +1,17 @@
 ---
 title: Adatterületek a Windows rendszerű virtuális asztali környezethez (klasszikus) – Azure
 description: Röviden áttekintheti, hogy a Windows rendszerű virtuális asztali (klasszikus) adatok és metaadatok mely helyei vannak tárolva.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e12e17914374a64ecd2d17a8e73c6ebf20328d9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 869defde657c9cb4c8bea6bbacebb9458e5a2b96
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270039"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008814"
 ---
 # <a name="data-locations-for-windows-virtual-desktop-classic"></a>Adatterületek a Windows rendszerű virtuális asztali környezethez (klasszikus)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171805"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009001"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Az Azure Resource Graph biztonsági alapterve az Azure biztonsági teljesítményteszthez
 
@@ -26,7 +26,7 @@ Ez a biztonsági alapkonfiguráció az Azure-beli [biztonsági teljesítménytes
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: az Azure Resource Graph a szerepköralapú hozzáférés-vezérlés (RBAC) alapján hozzáférést biztosít az erőforrás-típusokhoz és a tulajdonságokhoz. Rendszeresen naplózza és áttekintheti a rendszerbiztonsági tag (felhasználók, csoportok és szolgáltatásfiókok) számára biztosított hozzáférést, így biztosítva, hogy a lekérdezések a megfelelő erőforrások eredményét adják vissza.
+**Útmutató**: az Azure Resource Graph az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján biztosít hozzáférést az erőforrás-típusokhoz és a tulajdonságokhoz. Rendszeresen naplózza és áttekintheti a rendszerbiztonsági tag (felhasználók, csoportok és szolgáltatásfiókok) számára biztosított hozzáférést, így biztosítva, hogy a lekérdezések a megfelelő erőforrások eredményét adják vissza.
 
 * [Engedélyek az Azure Resource Graphban](../overview.md#permissions-in-azure-resource-graph)
 

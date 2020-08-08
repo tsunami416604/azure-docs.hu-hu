@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836547"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002229"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -66,7 +66,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning műveletek
 
-Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. Teljes listát az [Azure erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)című témakörben talál.
+Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. A teljes listát lásd: az [Azure erőforrás-szolgáltató műveletei](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="create-custom-role"></a>Egyéni szerepkör létrehozása
 
@@ -382,9 +382,9 @@ Ezek az [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control
 Ahhoz, hogy egy felhasználóhoz hozzárendelt identitást rendeljen a Amlcompute-fürtökhöz, az egyiknek írási engedéllyel kell rendelkeznie a számítási és [felügyelt identitás-kezelői szerepkör](/azure/role-based-access-control/built-in-roles#managed-identity-operator)létrehozásához. A felügyelt identitásokkal történő RBAC kapcsolatos további információkért olvassa el a [felhasználóhoz rendelt identitás kezelése](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) című témakört.
 
 
-### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>K. Támogatjuk a szerepköralapú hozzáférés-vezérlést a Studio portálon?
+### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>K. Támogatjuk a szerepköralapú hozzáférés-vezérlést a Studio portálon?
 
-A Azure Machine Learning Studio támogatja a szerepköralapú hozzáférés-vezérlést. 
+Azure Machine Learning Studio támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC). 
 
 > [!IMPORTANT]
 > Miután hozzárendelt egy adott engedélyekkel rendelkező egyéni szerepkört a munkaterületen lévő adattudóshoz, a megfelelő műveletek (például a számítási gomb hozzáadása) automatikusan el lesznek rejtve a felhasználók elől. Az elemek elrejtésével megakadályozhatja, hogy a rendszer ne észlelje az olyan vezérlőket, amelyek a használat során jogosulatlan hozzáférési értesítést adnak vissza a szolgáltatástól.

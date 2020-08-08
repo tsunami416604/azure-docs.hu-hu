@@ -5,13 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
+ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251314"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003171"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -226,6 +227,8 @@ A Azure Firewall egy Azure Kubernetes szolgáltatás ( `AzureKubernetesService` 
 
 > [!NOTE]
 > A teljes tartománynév címke tartalmazza az összes fent felsorolt teljes tartománynevet, és a rendszer automatikusan naprakészen tartja.
+>
+> Azt javasoljuk, hogy üzemi helyzetekben legalább 20 előtérbeli IP-címet használjon a Azure Firewall, hogy elkerülje az SNAT-portok kimerülésével kapcsolatos problémákat.
 
 Az alábbi példa az üzemelő példány architektúráját mutatja be:
 
@@ -364,7 +367,7 @@ Hozzon létre egy üres útválasztási táblázatot, amely egy adott alhálóza
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -409,7 +412,7 @@ Most már van egy AK-fürt üzembe helyezése a meglévő virtuális hálózatba
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Egyszerű szolgáltatásnév létrehozása a meglévő virtuális hálózatban való üzembe helyezéshez
 
-Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehozásához. A létrehozáskor átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például tárolási erőforrások, IP-címek és az AK-k által használt Load Balancerek létrehozásához használható (Ehelyett [felügyelt identitást](use-managed-identity.md) is használhat). Ha nem kapta meg az alábbi megfelelő engedélyeket, nem fogja tudni kiépíteni az AK-fürtöt.
+Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehozásához. A létrehozáskor átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például a tárolási erőforrások, az IP-címek és a terheléselosztó által használt terheléselosztó létrehozásához használható (Ehelyett [felügyelt identitást](use-managed-identity.md) is használhat). Ha nem kapta meg az alábbi megfelelő engedélyeket, nem fogja tudni kiépíteni az AK-fürtöt.
 
 ```azure-cli
 # Create SP and Assign Permission to Virtual Network
@@ -482,14 +485,14 @@ Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz a következő 
 CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
-az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
 
  Az `kubectl` újonnan létrehozott Kubernetes-fürthöz való kapcsolódáshoz használja az [az AK Get-hitelesítő adatok] [az-AK-Get-hitelesítőadats] parancsot. 
 
  ```azure-cli
- az aks get-credentials -g $RG -n $AKS_NAME
+ az aks get-credentials -g $RG -n $AKSNAME
  ```
 
 ### <a name="deploy-a-public-service"></a>Nyilvános szolgáltatás üzembe helyezése
@@ -765,7 +768,7 @@ Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tű
 ![AK – szavazás](media/limit-egress-traffic/aks-vote.png)
 
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
 
@@ -773,7 +776,7 @@ Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törl
 az group delete -g $RG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogy milyen portokat és címeket kell engedélyezni, ha szeretné korlátozni a kimenő forgalmat a fürt számára. Azt is láthatja, hogyan védheti meg a kimenő forgalmat Azure Firewall használatával. 
 

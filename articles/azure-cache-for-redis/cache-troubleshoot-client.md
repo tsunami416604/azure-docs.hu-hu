@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506434"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008967"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Az Azure Cache for Redis ügyféloldali hibáinak elhárítása
 
@@ -53,7 +53,7 @@ Az előző kivételben számos érdekes probléma van:
 - Figyelje meg, hogy a `IOCP` szakasz és a `WORKER` szakasz értéke nagyobb, `Busy` mint az `Min` érték. Ez a különbség azt jelenti, hogy a `ThreadPool` beállításokat módosítani kell.
 - A következőt is megtekintheti: `in: 64221` . Ez az érték azt jelzi, hogy az ügyfél kernel szoftvercsatorna rétegében 64 211 bájt érkezett, de az alkalmazás nem olvasta el. Ez a különbség általában azt jelenti, hogy az alkalmazás (például a StackExchange. Redis) nem olvas be adatokat a hálózatról olyan gyorsan, ahogy a kiszolgáló elküldi Önnek.
 
-[A `ThreadPool` Beállítások konfigurálásával](cache-faq.md#important-details-about-threadpool-growth) megadhatja, hogy a szál készlete gyors legyen a burst forgatókönyvek alatt.
+[A `ThreadPool` Beállítások konfigurálásával](cache-management-faq.md#important-details-about-threadpool-growth) megadhatja, hogy a szál készlete gyors legyen a burst forgatókönyvek alatt.
 
 ## <a name="high-client-cpu-usage"></a>Magas ügyféloldali CPU-használat
 
@@ -109,4 +109,4 @@ A nagyméretű válaszok méretének felbontása változó, azonban a következ�
 ## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
-- [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

@@ -1,19 +1,17 @@
 ---
 title: Grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása Távoli asztal – Azure
 description: Ez a cikk azt ismerteti, hogyan használhatók a távoli asztali protokoll munkameneteiben lévő távoli grafikus számlálók a Windows rendszerű virtuális asztalban található grafikákkal kapcsolatos teljesítményproblémák diagnosztizálásához.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79127559"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007166"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
 
@@ -78,7 +76,7 @@ Mivel az RDP a 33 ms-os átlagos kódolási időt támogatja, a bemeneti képkoc
 
 A keret minőségével kapcsolatos problémák diagnosztizálásához használja a frame Quality számlálót. Ez a számláló a forrás keret minőségének százalékában kifejezi a kimeneti keret minőségét. A minőség elvesztése a távoli elérés oka lehet, vagy a grafikus forrás velejárója lehet. Ha a távoli a minőségi adatvesztést okozta, a probléma oka lehet a hálózati vagy a kiszolgálói erőforrások hiánya, hogy jobb minőségű tartalmat küldjön.
 
-## <a name="mitigation"></a>Kezelés
+## <a name="mitigation"></a>Kockázatcsökkentés
 
 Ha a kiszolgáló erőforrásai a szűk keresztmetszetet okozzák, próbálkozzon az alábbi módszerek egyikével a teljesítmény javítása érdekében:
 

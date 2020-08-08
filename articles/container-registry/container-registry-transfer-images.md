@@ -4,12 +4,12 @@ description: Lemezképek vagy más összetevők gyűjteményének átvitele egy 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259450"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009154"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -47,7 +47,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
   TARGET_SA="<target-storage-account>"
   ```
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
 A következő három folyamat-erőforrást hozza létre a kibocsátásiegység-forgalmi jegyzékek közötti képátvitelhez. Mindegyik a PUT műveletek használatával jön létre. Ezek az erőforrások a *forrás* -és a *cél* -nyilvántartásokban és a Storage-fiókokban működnek. 
 
@@ -234,6 +234,8 @@ Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.para
 |targetName     |  A forrás-Storage-fiókba exportált összetevők blobjának neve, például *myblob*
 |leletek | Az átvinni kívánt forrásoldali összetevők tömbje címkék vagy jegyzékfájl-kivonatok formájában<br/>Például: `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
+Ha azonos tulajdonságokkal rendelkező PipelineRun-erőforrást telepít újra, akkor a [forceUpdateTag](#redeploy-pipelinerun-resource) tulajdonságot is használni kell.
+
 Futtassa az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot a PipelineRun-erőforrás létrehozásához. A következő példa az üzembe helyezési *exportPipelineRun*nevezi át.
 
 ```azurecli
@@ -291,6 +293,8 @@ Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.para
 |pipelineResourceId     |  Az importálási folyamat erőforrás-azonosítója.<br/>Például: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  Az exportált összetevők meglévő blobjának neve a Storage-fiókban, például *myblob*
 
+Ha azonos tulajdonságokkal rendelkező PipelineRun-erőforrást telepít újra, akkor a [forceUpdateTag](#redeploy-pipelinerun-resource) tulajdonságot is használni kell.
+
 Futtassa az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot az erőforrás futtatásához.
 
 ```azurecli
@@ -304,6 +308,23 @@ Az üzembe helyezés sikeres befejezése után ellenőrizze az összetevők impo
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>PipelineRun-erőforrás újbóli üzembe helyezése
+
+Ha *azonos tulajdonságokkal*rendelkező PipelineRun-erőforrást telepít újra, ki kell használnia a **forceUpdateTag** tulajdonságot. Ez a tulajdonság azt jelzi, hogy a PipelineRun-erőforrást újra létre kell hozni, még akkor is, ha a konfiguráció nem változott. Győződjön meg arról, hogy a forceUpdateTag minden alkalommal más, amikor újratelepíti a PipelineRun-erőforrást. Az alábbi példa újból létrehoz egy PipelineRun az exportáláshoz. Az aktuális datetime érték a forceUpdateTag beállítására szolgál, így biztosítva, hogy ez a tulajdonság mindig egyedi legyen.
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>Folyamat erőforrásainak törlése
@@ -342,7 +363,7 @@ az deployment group delete \
   * Az egyéb folyamatokkal kapcsolatos problémák esetén adja meg az Exportálás futtatásának vagy importálásának a Azure Container Registry csapatnak való futtatásához szükséges telepítési [korrelációs azonosítót](../azure-resource-manager/templates/deployment-history.md) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha egyetlen tároló lemezképét szeretné importálni egy Azure Container registrybe egy nyilvános beállításjegyzékből vagy egy másik privát beállításjegyzékből, tekintse meg az az [ACR import][az-acr-import] parancs-referenciát.
 

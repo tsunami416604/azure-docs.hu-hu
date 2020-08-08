@@ -5,31 +5,35 @@ services: app-service
 author: ggailey777
 ms.service: app-service
 ms.topic: include
-ms.date: 02/19/2019
+ms.date: 06/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 4860532e59227618ce819772887556719ecb53fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e208b52c67f173bd0d289715b63562df656b1ec9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76020958"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009768"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-1. A **Közzététel** párbeszédpanelen válassza a **Microsoft Azure app Service**lehetőséget, válassza az **új létrehozása**lehetőséget, majd válassza a **Közzététel**lehetőséget.
+1. A **Közzététel** párbeszédpanelen válassza az **Azure** a **cél**számára lehetőséget, majd kattintson a **tovább**gombra. 
+
+1. Válassza ki az **adott cél** **Azure WebJobs** , majd válassza a **tovább**lehetőséget.
+
+1. Válassza **az új Azure-Webjobs létrehozása**lehetőséget.
 
    ![Közzététel célhelyének kiválasztása](./media/webjobs-publish-netcore/pick-publish-target.png)
 
-1. A **app Service létrehozása** párbeszédpanelen a rendszerkép alatti táblázatban megadott üzemeltetési beállításokat használhatja:
-
-    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/webjobs-publish-netcore/app-service-dialog.png)
+1. A **app Service (Windows)** párbeszédpanelen használja az alábbi táblázat üzemeltetési beállításait.
 
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. |
+    | **Név** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. |
     | **Előfizetés** | Válassza ki az előfizetését | A használandó előfizetés. |
     | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** | myResourceGroup |  Az erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Válassza az **Új** elemet egy új erőforráscsoport létrehozásához.|
-    | **[Üzemeltetési csomag](../articles/app-service/overview-hosting-plans.md)** | App Service-csomag | Az alkalmazást tároló webkiszolgálófarm helyét, méretét és funkcióit egy [App Service-csomag](../articles/app-service/overview-hosting-plans.md) határozza meg. Költségeket takaríthat meg, ha beállítja, hogy a webalkalmazások egyetlen közös App Service-csomag használatával több alkalmazást tároljanak. App Service csomagok határozzák meg a régiót, a példány méretét, a méretezési darabszámot és az SKU-t (ingyenes, közös, alapszintű, standard vagy prémium). Új App Service terv létrehozásához válassza az **új** lehetőséget. |
+    | **[Szolgáltatási csomag](../articles/app-service/overview-hosting-plans.md)** | App Service-csomag | Az alkalmazást tároló webkiszolgálófarm helyét, méretét és funkcióit egy [App Service-csomag](../articles/app-service/overview-hosting-plans.md) határozza meg. Költségeket takaríthat meg, ha beállítja, hogy a webalkalmazások egyetlen közös App Service-csomag használatával több alkalmazást tároljanak. App Service csomagok határozzák meg a régiót, a példány méretét, a méretezési darabszámot és az SKU-t (ingyenes, közös, alapszintű, standard vagy prémium). Új App Service terv létrehozásához válassza az **új** lehetőséget. |
 
-1. A **Létrehozás** gombra kattintva létrehozhat egy webjobs és kapcsolódó erőforrásokat az Azure-ban ezekkel a beállításokkal és a projekt kódjának üzembe helyezésével.
+    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/webjobs-publish-netcore/app-service-dialog.png)
+
+1. Válassza a **Létrehozás** lehetőséget, ha webjobs és kapcsolódó erőforrásokat szeretne létrehozni az Azure-ban ezekkel a beállításokkal és a projekt kódjának üzembe helyezésével.

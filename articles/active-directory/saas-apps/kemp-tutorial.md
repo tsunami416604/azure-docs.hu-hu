@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a0afdecfcab9cc1ab3903429b197fe859d40a7f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cd436462d157a7e416f0f6a468edd33520ccec7d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424833"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009928"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Oktatóanyag: Azure Active Directory SSO-integráció a Kemp LoadMaster Azure AD-integrációval
 
@@ -44,7 +44,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Kemp LoadMaster Azure AD-integrációja támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
-* Miután konfigurálta a Kemp LoadMaster az Azure AD-integrációt, kikényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Miután konfigurálta a Kemp LoadMaster az Azure AD-integrációt, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Kemp-LoadMaster hozzáadása az Azure AD-integrációhoz a katalógusból
 
@@ -313,11 +313,11 @@ A nem hitelesített hozzáférés helyett a bérlőhöz tartozó bejelentkezési
 
 1. Nyissa meg újra a felhasználó tulajdonságai ablakot, és a Delegálás lap elérhetővé válik. 
 
-1. Kattintson a Delegálás lapra.
+1. Válassza a Delegálás lapot.
 
     ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-11.png)
 
-    a. Válassza a felhasználó meghatalmazása delegáláshoz csak a megadott szolgáltatások számára lehetőséget.
+    a. Válassza A felhasználóval csak megadott szolgáltatások delegálhatók lehetőséget.
 
     b. Válassza a Bármely hitelesítési protokoll lehetőséget.
 

@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali PowerShell – Azure
 description: A PowerShell hibáinak elhárítása a Windows rendszerű virtuális asztali környezet beállításakor.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd34fa2bc4c1083d4bd4dda7d118e0348a1a7fd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288722"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002267"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop – PowerShell
 
@@ -33,10 +31,10 @@ Ez a szakasz azokat a PowerShell-parancsokat sorolja fel, amelyek a Windows rend
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Hiba: New-AzRoleAssignment: a megadott információ nem AD-objektum-AZONOSÍTÓra van leképezve
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**OK:** A *-SignInName* paraméter által megadott felhasználó nem található a Windows rendszerű virtuális asztali környezethez kötött Azure Active Directoryban. 
+**OK:** A *-SignInName* paraméter által megadott felhasználó nem található a Windows rendszerű virtuális asztali környezethez kötött Azure Active Directoryban.
 
 **Javítás:** Győződjön meg arról, hogy az alábbi dolgok vannak.
 
@@ -46,7 +44,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Hiba: New-AzRoleAssignment: "a (z) azonosítójú ügyfél nem rendelkezik a hatókörön belüli művelet végrehajtásához szükséges engedéllyel (kód: AuthorizationFailed)"
 
-**1. ok:** A használt fiók nem rendelkezik tulajdonosi engedélyekkel az előfizetéshez. 
+**1. ok:** A használt fiók nem rendelkezik tulajdonosi engedélyekkel az előfizetéshez.
 
 **1. javítás:** A tulajdonosi engedélyekkel rendelkező felhasználónak végre kell hajtania a szerepkör-hozzárendelést. Azt is megteheti, hogy a felhasználót hozzá kell rendelnie a felhasználói hozzáférés rendszergazdai szerepkörhöz, hogy egy felhasználót rendeljen hozzá egy alkalmazás-csoportjához.
 
@@ -57,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Hiba: New-AzWvdHostPool--a hely nem érhető el az erőforrás típusaként
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 Ok: a Windows virtuális asztal támogatja a gazdagépek, az alkalmazáscsoport és a munkaterületek helyének kiválasztását a szolgáltatási metaadatok bizonyos helyszíneken való tárolásához. A lehetőségek csak a funkció elérhetőségére korlátozódnak. Ez a hiba azt jelenti, hogy a szolgáltatás nem érhető el a kiválasztott helyen.

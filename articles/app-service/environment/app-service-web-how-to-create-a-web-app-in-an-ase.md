@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220694"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007063"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása App Service Environment v1-ben
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. 
     Ha több előfizetéssel is rendelkezik, akkor a környezet létrehozásakor használt előfizetést kell használnia, hogy létrehozzon egy alkalmazást a App Service Environmentban. 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
    
-    Az *erőforráscsoportok* lehetővé teszik a kapcsolódó Azure-erőforrások egységként való kezelését, és hasznosak lehetnek az alkalmazások *szerepköralapú hozzáférés-vezérlési* (RBAC) szabályainak létrehozásakor. További információk: [Azure Resource Manager overview][ResourceGroups] (Az Azure Resource Manager áttekintése). 
+    Az *erőforráscsoportok* lehetővé teszik a kapcsolódó Azure-erőforrások egységként való kezelését, és hasznosak lehetnek az alkalmazások *Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC-)* szabályainak létrehozásakor. További információt [Az Azure Resource Manager áttekintésében][ResourceGroups] találhat. 
 4. Válassza ki vagy hozzon létre egy App Service-csomagot.
    
     A *app Service csomagok* a webalkalmazások felügyelt készletei.  Általában a díjszabás kiválasztásakor a díjat az egyes alkalmazások helyett a App Servicei csomagra kell alkalmazni. Egy olyan előfizetésben, amelyet a központhoz rendelt számítási példányok kell fizetnie, és nem az ASP-vel megjelenő.  A webalkalmazások példányai számának vertikális felskálázásához felskálázást végez a App Service terv példányain, és az adott csomagban található összes webalkalmazásra hatással van.  Bizonyos funkciók, például a tárolóhelyek vagy a VNET-integráció a csomagon belül mennyiségi korlátozásokkal is rendelkeznek.  További információ: [Azure app Service csomagok áttekintése](../overview-hosting-plans.md)

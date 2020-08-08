@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali munkamenetgazda – Azure
 description: A Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek konfigurálásakor felmerülő problémák megoldása.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f0665aa8427371fa458039d73297fa0e02b4eb4d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286376"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005231"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -138,8 +136,8 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 **Javítás:** Az ügynök beállításjegyzékbeli hibájának kijavításához kövesse az alábbi utasításokat.
 
-1. Ha már van regisztrációs jogkivonat, távolítsa el a Remove-AzWvdRegistrationInfo. 
-2. Új jogkivonat létrehozásához futtassa a **New-AzWvdRegistrationInfo** parancsmagot. 
+1. Ha már van regisztrációs jogkivonat, távolítsa el a Remove-AzWvdRegistrationInfo.
+2. Új jogkivonat létrehozásához futtassa a **New-AzWvdRegistrationInfo** parancsmagot.
 3. Győződjön meg arról, hogy a *-ExpriationTime* paraméter értéke 3 nap.
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Hiba: a Windows rendszerű virtuális asztali ügynök nem jelentett szívverést a Get-AzWvdSessionHost futtatásakor
@@ -305,7 +303,7 @@ Ha rendszergazdai fiókkal jelentkezik be a Windows 10-es nagyvállalati munkame
 
 Ha lejár az időkorlát, megjelenik egy hibaüzenet, amely azt jelzi, hogy "a távoli munkamenet le lett választva, mert nincs elérhető Távoli asztal ügyfél-hozzáférési licenc ehhez a számítógéphez."
 
-Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek telepítve a legújabb Windows-frissítések, vagy a csoportházirenden keresztül állítja be a Távoli asztal licencelési módot. A következő szakaszokban ismertetett lépéseket követve ellenőrizheti a csoportházirend-beállítást, azonosíthatja a Windows 10 Enterprise több munkamenet verzióját, és telepítheti a megfelelő frissítést.  
+Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek telepítve a legújabb Windows-frissítések, vagy a csoportházirenden keresztül állítja be a Távoli asztal licencelési módot. A következő szakaszokban ismertetett lépéseket követve ellenőrizheti a csoportházirend-beállítást, azonosíthatja a Windows 10 Enterprise több munkamenet verzióját, és telepítheti a megfelelő frissítést.
 
 >[!NOTE]
 >A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](/windows-server/remote/remote-desktop-services/rds-client-access-license/)című témakört.

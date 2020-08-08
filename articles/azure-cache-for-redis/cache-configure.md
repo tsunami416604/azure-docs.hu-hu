@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010307"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009613"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -45,13 +45,13 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
     * [Frissítések ütemezése](#schedule-updates)
     * [Georeplikáció](#geo-replication)
     * [Virtual Network](#virtual-network)
-    * [Firewall](#firewall)
+    * [Tűzfal](#firewall)
     * [Tulajdonságok](#properties)
-    * [Zárak](#locks)
+    * [Zárolások](#locks)
     * [Automation-szkript](#automation-script)
 * Felügyelet
     * [Adatimportálás](#importexport)
-    * [Adatexportálás](#importexport)
+    * [Adatok exportálása](#importexport)
     * [Újraindítás](#reboot)
 * [Figyelés](#monitoring)
     * [Redis metrikák](#redis-metrics)
@@ -97,9 +97,9 @@ A **Settings (beállítások** ) szakasz a gyorsítótár következő beállít�
 * [Frissítések ütemezése](#schedule-updates)
 * [Georeplikáció](#geo-replication)
 * [Virtual Network](#virtual-network)
-* [Firewall](#firewall)
+* [Tűzfal](#firewall)
 * [Tulajdonságok](#properties)
-* [Zárak](#locks)
+* [Zárolások](#locks)
 * [Automation-szkript](#automation-script)
 
 
@@ -185,12 +185,12 @@ Az egyes díjszabási szintek eltérő korlátokkal rendelkeznek az ügyfélkapc
 
 | Azure cache a Redis metrikához | További információ |
 | --- | --- |
-| Hálózatisávszélesség-felhasználás |[Gyorsítótár teljesítményének rendelkezésre álló sávszélessége](cache-faq.md#cache-performance) |
+| Hálózatisávszélesség-felhasználás |[Gyorsítótár teljesítményének rendelkezésre álló sávszélessége](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | Csatlakoztatott ügyfelek |[Alapértelmezett Redis-kiszolgáló konfigurációja – MaxClients](#maxclients) |
 | Kiszolgáló terhelése |[Használati diagramok – Redis-kiszolgáló terhelése](cache-how-to-monitor.md#usage-charts) |
-| Memóriahasználat |[Gyorsítótár teljesítményének mérete](cache-faq.md#cache-performance) |
+| Memóriahasználat |[Gyorsítótár teljesítményének mérete](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-A gyorsítótár frissítéséhez kattintson a **Frissítés most** lehetőségre a díjszabási csomag módosításához és a gyorsítótár [skálázásához](#scale) . Az árképzési szintek kiválasztásával kapcsolatos további információkért tekintse meg [Az Azure cache Redis-ajánlat és-méret használatát](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) ismertető témakört.
+A gyorsítótár frissítéséhez kattintson a **Frissítés most** lehetőségre a díjszabási csomag módosításához és a gyorsítótár [skálázásához](#scale) . További információ az árképzési szintek kiválasztásáról: [a megfelelő csomag kiválasztása](cache-overview.md#choosing-the-right-tier)
 
 
 ### <a name="scale"></a>Méretezés
@@ -291,7 +291,7 @@ A **felügyelet** szakaszban található beállítások lehetővé teszik a köv
 ![Felügyelet](./media/cache-configure/redis-cache-administration.png)
 
 * [Adatimportálás](#importexport)
-* [Adatexportálás](#importexport)
+* [Adatok exportálása](#importexport)
 * [Újraindítás](#reboot)
 
 
@@ -386,7 +386,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 >
 
-| Beállítás | Alapértelmezett érték | Description |
+| Beállítás | Alapértelmezett érték | Leírás |
 | --- | --- | --- |
 | `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0, a és a közötti kapcsolaton keresztül választhat egy másikat `connection.GetDatabase(dbid)` `dbid` `0` `databases - 1` . |
 | `maxclients` |A<sup>2</sup> . árképzési szinttől függ |Ez az érték a csatlakoztatott ügyfelek által egyszerre engedélyezett maximális szám. Ha elérte a korlátot, a Redis lezárja az összes új kapcsolatot, és "az ügyfelek maximális száma elérte a hibát" hibaüzenetet adja vissza. |
@@ -414,7 +414,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
   * P4 (53 GB-530 GB) – legfeljebb 64 adatbázis
   * Minden prémium szintű gyorsítótár a Redis-fürtön engedélyezve – a Redis-fürt csak az adatbázis 0 használatát támogatja, így a `databases` Redis-fürtön engedélyezve lévő prémium gyorsítótárak maximális száma hatékonyan 1, a [Select](https://redis.io/commands/select) parancs használata nem engedélyezett. További információkért lásd: [az ügyfélalkalmazás használatának módosítása a fürtözéshez?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-Az adatbázisokkal kapcsolatos további információkért lásd: [Mik a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases)
+Az adatbázisokkal kapcsolatos további információkért lásd: [Mik a Redis-adatbázisok?](cache-development-faq.md#what-are-redis-databases)
 
 > [!NOTE]
 > A `databases` beállítás csak akkor konfigurálható a gyorsítótár létrehozásakor, ha csak a PowerShell, a CLI vagy más felügyeleti ügyfeleket használja. A `databases` gyorsítótár létrehozásakor a PowerShell használatával történő konfigurálásra példát a [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)című témakörben talál.
@@ -505,4 +505,4 @@ A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés**gombr
 További információ az erőforrások egyik erőforráscsoporthoz egy másikra való áthelyezéséről, illetve az egyik előfizetésről a másikra: [erőforrások áthelyezése új erőforrás-csoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>További lépések
-* További információ a Redis-parancsok használatáról: [Hogyan futtathatók a Redis parancsok?](cache-faq.md#how-can-i-run-redis-commands)
+* További információ a Redis-parancsok használatáról: [Hogyan futtathatók a Redis parancsok?](cache-development-faq.md#how-can-i-run-redis-commands)

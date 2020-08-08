@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 6ea1504f5cb3ae405ccd22774204f898484e6876
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987120"
+ms.locfileid: "88003356"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legalább öt, azonos típusú, a képzéshez/teszteléshez használt űrlapból álló készlet. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekkel kapcsolatban lásd: [képzési adatkészlet létrehozása](./build-training-data-set.md) . Ebben a rövid útmutatóban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2128080) **vonattal** mappában található fájlokat.
-* Power apps vagy Power automatizáló licenc – tekintse meg a [licencelési útmutatót](https://go.microsoft.com/fwlink/?linkid=2085130). A licencnek tartalmaznia kell a [Common adatszolgáltatást](https://powerplatform.microsoft.com/en-us/common-data-service/).
+* Power apps vagy Power automatizáló licenc – tekintse meg a [licencelési útmutatót](https://go.microsoft.com/fwlink/?linkid=2085130). A licencnek tartalmaznia kell [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/).
 * AI Builder [-bővítmény vagy próbaverzió](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409).
 
 

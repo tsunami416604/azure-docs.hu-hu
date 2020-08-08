@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagép – Azure
 description: A Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagép virtuális gépei konfigurálásával kapcsolatos problémák elhárítása.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291254"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008627"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazda virtuális gép konfigurációja
 
@@ -311,7 +309,7 @@ Ha rendszergazdai fiókkal jelentkezik be a Windows 10-es nagyvállalati munkame
 
 Ha lejár az időkorlát, megjelenik egy hibaüzenet, amely azt jelzi, hogy "a távoli munkamenet le lett választva, mert nincs elérhető Távoli asztal ügyfél-hozzáférési licenc ehhez a számítógéphez."
 
-Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek telepítve a legújabb Windows-frissítések, vagy a csoportházirenden keresztül állítja be a Távoli asztal licencelési módot. A következő szakaszokban ismertetett lépéseket követve ellenőrizheti a csoportházirend-beállítást, azonosíthatja a Windows 10 Enterprise több munkamenet verzióját, és telepítheti a megfelelő frissítést.  
+Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek telepítve a legújabb Windows-frissítések, vagy a csoportházirenden keresztül állítja be a Távoli asztal licencelési módot. A következő szakaszokban ismertetett lépéseket követve ellenőrizheti a csoportházirend-beállítást, azonosíthatja a Windows 10 Enterprise több munkamenet verzióját, és telepítheti a megfelelő frissítést.
 
 >[!NOTE]
 >A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](/windows-server/remote/remote-desktop-services/rds-client-access-license/)című témakört.

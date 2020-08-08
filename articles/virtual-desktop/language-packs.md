@@ -1,19 +1,17 @@
 ---
 title: Nyelvi csomagok telepítése Windows 10 rendszerű virtuális gépekre a Windows Virtual Desktopban – Azure
 description: Windows 10 rendszerű, többmunkamenetes virtuális gépek nyelvi csomagjainak telepítése a Windows Virtual Desktopban.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361302"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008763"
 ---
 # <a name="install-language-packs"></a>Nyelvi csomagok telepítése
 
@@ -41,7 +39,7 @@ Nyelvi csomagok telepítése:
 
 5. Ezután válassza a **Language (nyelv**), majd **a nyelv hozzáadása**lehetőséget. Válassza ki a listából a telepíteni kívánt nyelvet, majd kattintson a **tovább**gombra.
 6. Amikor megnyílik a **nyelvi szolgáltatások telepítése** ablak, jelölje be a **nyelvi csomag telepítése és beállítása a Windows megjelenítési nyelvként**jelölőnégyzetet.
-7. Válassza a **Telepítés** gombot.
+7. Válassza a **Telepítés** lehetőséget.
 8. Ha egyszerre több nyelvet szeretne felvenni, válassza a **nyelv hozzáadása**lehetőséget, majd ismételje meg a folyamatot, és adjon hozzá egy nyelvet az 5. és 6. lépésben. Ismételje meg ezt a folyamatot minden telepíteni kívánt nyelvnél. Egyszerre azonban csak egy nyelvet állíthat be megjelenítési nyelvként.
 
     Futtassunk egy gyors vizuális bemutatót. Az alábbi képek bemutatják, hogyan telepítheti a francia és holland nyelvi csomagokat, majd beállíthatja a franciát megjelenítési nyelvként.

@@ -1,18 +1,16 @@
 ---
 title: A GPU konfigurálása a Windows rendszerű virtuális asztali környezethez – Azure
 description: A GPU-gyorsított renderelés és a kódolás engedélyezése a Windows Virtual Desktopban.
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a80e9940aff69d351fde7512cfc38a12d6029f74
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291487"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007776"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>A grafikus processzor (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztalhoz
 
@@ -58,7 +56,7 @@ Alapértelmezés szerint a többmunkamenetes konfigurációkban futó alkalmazá
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-gyorsított keret kódolásának konfigurálása
 
 Távoli asztal kódolja az alkalmazások és az asztali számítógépek által megjelenített összes grafikát (akár GPU-val, akár CPU-val) a Távoli asztal ügyfeleknek való továbbításhoz. Ha a képernyő egy részét gyakran frissítik, a képernyő ezen része egy videó kodekkel (H. 264/AVC) van kódolva. Alapértelmezés szerint a Távoli asztal nem használ elérhető GPU-ket ehhez a kódoláshoz. Konfigurálja Csoportházirend a munkamenet-gazdagép számára a GPU-gyorsított keret kódolásának engedélyezéséhez. Folytassa a fenti lépéseket:
- 
+
 >[!NOTE]
 >A GPU-gyorsított keret kódolása nem érhető el a NVv4 sorozatú virtuális gépeken.
 

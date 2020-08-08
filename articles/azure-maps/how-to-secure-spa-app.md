@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531345"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006417"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Egyoldalas alkalmazások biztonságossá tétele nem interaktív bejelentkezéssel
 
@@ -100,14 +100,14 @@ Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős a
         });
     ```
 
-## <a name="grant-role-based-access"></a>Szerepkör-alapú hozzáférés engedélyezése
+## <a name="grant-role-based-access"></a>Szerepköralapú hozzáférés biztosítása
 
-*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít a rendszerhez rendelt identitás hozzárendelésével egy vagy több Azure-szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
+Az Azure *szerepköralapú hozzáférés-vezérlés (Azure RBAC)* hozzáférését úgy biztosíthatja, hogy a rendszer által hozzárendelt identitást hozzárendeli egy vagy több Azure-beli szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
 
 1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés**elemet.
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC megadása](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. **A hozzáférés társítása**területen válassza a **függvényalkalmazás**lehetőséget. Válassza ki a résztvevőt név alapján. Ez után válassza a **Mentés** lehetőséget.
 

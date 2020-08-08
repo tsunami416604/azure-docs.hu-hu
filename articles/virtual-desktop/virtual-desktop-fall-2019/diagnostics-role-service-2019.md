@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali (klasszikus) problémák diagnosztizálása – Azure
 description: A Windows rendszerű virtuális asztali (klasszikus) diagnosztika funkció használata a problémák diagnosztizálásához.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285050"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009341"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Problémák azonosítása és diagnosztizálása a Windows Virtual Desktopban (klasszikus)
 
@@ -25,7 +23,7 @@ A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltat
 * Hírcsatorna-előfizetési tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni a hírcsatornához Microsoft Távoli asztal alkalmazásokon keresztül.
 * Kapcsolódási tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni egy asztali vagy RemoteApp-hoz Microsoft Távoli asztal alkalmazáson keresztül.
 * Felügyeleti tevékenységek: a rendszergazda elindítja ezeket a tevékenységeket, amikor felügyeleti műveleteket végez a rendszeren, például a gazdagépek létrehozása, a felhasználók hozzárendelése az alkalmazás-csoportokhoz és a szerepkör-hozzárendelések létrehozása.
-  
+
 Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelennek meg a diagnosztikai eredményekben, mert maga a diagnosztikai szerepkör-szolgáltatás a Windows virtuális asztal része. A Windows rendszerű virtuális asztali kapcsolattal kapcsolatos problémák akkor fordulnak elő, ha a végfelhasználó hálózati kapcsolati problémákba ütközik.
 
 Első lépésként [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 A Windows rendszerű virtuális asztali diagnosztika csak egy PowerShell-parancsmagot használ, de számos opcionális paramétert tartalmaz, amelyek segítenek a problémák szűkítéséhez és elkülönítésében. A következő részben azokat a parancsmagokat sorolja fel, amelyeket a problémák diagnosztizálásához futtathat. A legtöbb szűrő együtt is alkalmazható. A zárójelben felsorolt értékeket (például `<tenantName>` ) az adott helyzetre érvényes értékekkel kell helyettesíteni.
 
 >[!IMPORTANT]
->A diagnosztikai funkció az egyfelhasználós hibaelhárításhoz használható. A PowerShellt használó összes lekérdezésnek tartalmaznia kell a *-username* vagy a *-tevékenységazonosító* paramétert. A figyelési képességekhez használja a Log Analytics. A diagnosztikai adatok munkaterületre való küldésével kapcsolatos további információkért tekintse meg [a log Analytics használata a diagnosztikai szolgáltatáshoz](diagnostics-log-analytics-2019.md) című témakört. 
+>A diagnosztikai funkció az egyfelhasználós hibaelhárításhoz használható. A PowerShellt használó összes lekérdezésnek tartalmaznia kell a *-username* vagy a *-tevékenységazonosító* paramétert. A figyelési képességekhez használja a Log Analytics. A diagnosztikai adatok munkaterületre való küldésével kapcsolatos további információkért tekintse meg [a log Analytics használata a diagnosztikai szolgáltatáshoz](diagnostics-log-analytics-2019.md) című témakört.
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Diagnosztikai tevékenységek szűrése felhasználó szerint
 

@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali biztonságos URL-címek listája – Azure
 description: A feloldani kívánt URL-címek listája, hogy a Windows rendszerű virtuális asztali környezet a kívánt módon működjön.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075611"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009477"
 ---
 # <a name="safe-url-list"></a>Biztonságos URL-címek listája
 
@@ -30,10 +28,10 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |*.core.windows.net|443|Ügynök forgalma|AzureCloud|
 |*.servicebus.windows.net|443|Ügynök forgalma|AzureCloud|
 |prod.warmpath.msftcloudes.com|443|Ügynök forgalma|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
 |kms.core.windows.net|1688|A Windows aktiválása|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
-| 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | n.a. |
+| 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | N/A |
 
 >[!IMPORTANT]
 >A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
@@ -44,13 +42,13 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 
 |Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
 |---|---|---|---|
-|*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|Nincs|
-|*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincs|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
-|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|Nincs|
-|*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|Nincs|
-|*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincs|
+|*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|Nincsenek|
+|*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincsenek|
+|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincsenek|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
+|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|Nincsenek|
+|*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|Nincsenek|
+|*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincsenek|
 
 >[!NOTE]
 >A Windows virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, amelyekkel engedélyezhető a hálózati forgalom. Jelenleg csak bizonyos URL-címek blokkolását támogatjuk.
@@ -69,12 +67,12 @@ A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a k
 
 |Cím|Kimenő TCP-port|Cél|Ügyfél (ek)|
 |---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|
-|*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|
-|aka.ms|443|Microsoft URL-rövidített|Mind|
-|docs.microsoft.com|443|Dokumentáció|Mind|
-|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|
+|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Az összes|
+|*.servicebus.windows.net|443|Hibaelhárítási hibák|Az összes|
+|go.microsoft.com|443|Microsoft-Fwlinkek|Az összes|
+|aka.ms|443|Microsoft URL-rövidített|Az összes|
+|docs.microsoft.com|443|Dokumentáció|Az összes|
+|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Az összes|
 |query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|
 
 >[!IMPORTANT]

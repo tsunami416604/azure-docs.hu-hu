@@ -8,18 +8,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9c05753b44b0c644b121eb3ccd3316633f9e5964
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009528"
 ---
-# <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Ajánlat áttekintése és közzététele kereskedelmi piactéren
+# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
 Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánlat előzetes verzióra való beküldésére, az ajánlat előzetes megtekintésére, majd közzétételére a Microsoft kereskedelmi piactéren. Azt is bemutatjuk, hogyan ellenőrizheti a közzétételi állapotot a közzétételi lépések végrehajtásával. Már létre kell hoznia egy ajánlatot, amelyet közzé szeretne tenni.
 
-## <a name="go-to-your-offer-in-commercial-marketplace"></a>A kereskedelmi piactéren elérhető ajánlat
+## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Látogasson el az ajánlatra a kereskedelmi piactéren
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 1. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánla
  
     | Állapot | Leírás |
     | ------------ | ------------- |
-    | Vázlat | Az ajánlat létre lett hozva, de nincs közzétéve. |
+    | Draft | Az ajánlat létre lett hozva, de nincs közzétéve. |
     | Közzététel folyamatban | Az ajánlat a közzétételi folyamaton keresztül működik. |
     | Figyelem szükséges | Egy kritikus problémát észlelt a minősítés vagy egy másik közzétételi fázis során. |
     | Előnézet | Igazoljuk az ajánlatot, amely most már a közzétevő általi végleges ellenőrzést várja. Válassza az **élő** indítás lehetőséget az ajánlat élő közzétételéhez. |

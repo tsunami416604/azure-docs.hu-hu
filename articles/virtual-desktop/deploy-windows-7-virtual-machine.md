@@ -1,19 +1,17 @@
 ---
 title: Windows 7 rendszerű virtuális gép üzembe helyezése – Azure
 description: Windows 7 rendszerű virtuális gépek konfigurálása és központi telepítése Windows rendszerű virtuális asztalon.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285153"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007573"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -24,7 +22,7 @@ Windows 7 rendszerű virtuális gép (VM) Windows rendszerű virtuális asztalon
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) használatával című témakör utasításait a gazdagépek létrehozásához. Ha a portált használja, kövesse az [alkalmazáskészlet létrehozása a Azure Portal használatával](create-host-pools-azure-marketplace.md)című szakaszának 1 – 9. lépésében ismertetett utasításokat. Ezután válassza a **felülvizsgálat + létrehozás** lehetőséget egy üres alkalmazáskészlet létrehozásához. 
+Mielőtt elkezdené, kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) használatával című témakör utasításait a gazdagépek létrehozásához. Ha a portált használja, kövesse az [alkalmazáskészlet létrehozása a Azure Portal használatával](create-host-pools-azure-marketplace.md)című szakaszának 1 – 9. lépésében ismertetett utasításokat. Ezután válassza a **felülvizsgálat + létrehozás** lehetőséget egy üres alkalmazáskészlet létrehozásához.
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 rendszerű virtuális gép konfigurálása
 
@@ -49,9 +47,9 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
      ```
 
 12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) található utasításokat.
-      
+
       - Ha inkább a Azure Portal használja, megtekintheti annak a gazdagépnek az Áttekintés lapját is, amelyhez hozzá szeretné adni a virtuális gépet, és létre kell hoznia egy jogkivonatot.
-  
+
 13. [Töltse le a Windows 7 rendszerhez készült Windows Virtual Desktop Agent ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Töltse le a Windows virtuális asztali ügynök kezelőjét a Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)rendszerhez.
 15. Nyissa meg a Windows rendszerű virtuális asztali ügynök telepítőjét, és kövesse az utasításokat. Ha a rendszer kéri, adja meg a 12. lépésben létrehozott regisztrációs kulcsot.

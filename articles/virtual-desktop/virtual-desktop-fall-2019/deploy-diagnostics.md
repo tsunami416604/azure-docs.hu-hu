@@ -1,19 +1,17 @@
 ---
 title: A Windows rendszerű virtuális asztali környezet (klasszikus) diagnosztikai eszközének üzembe helyezése – Azure
 description: A diagnosztikai UX eszköz üzembe helyezése a Windows rendszerű virtuális asztali gépeken (klasszikus).
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285101"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009188"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) diagnosztika eszköz üzembe helyezése
 
@@ -193,7 +191,7 @@ Az átirányítási URI beállítása:
 4.  A bal oldali panel kezelés területén válassza a **hitelesítés**lehetőséget.
 5.  Adja meg a kívánt átirányítási URI-t az **átirányítási URI** szövegmezőbe, majd kattintson a menü bal felső sarkában található **Mentés** elemre.
 6. A típus alatt válassza a **web** lehetőséget a legördülő menüben.
-7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Például: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Példa: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Az átirányítási URI-lap](../media/redirect-uri-page.png)

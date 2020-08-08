@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fde142c76c71aa7155fd39d90f7a6c8120538141
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022429"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008661"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -102,6 +102,9 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 4. A **tanúsítványok, azonosítók & profilok**   lapon az **azonosítók**területen keresse meg az imént létrehozott app ID sort, és válassza ki annak sorát az **alkalmazás-azonosító konfigurációjának szerkesztése**   képernyő megjelenítéséhez.
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Tanúsítvány létrehozása Notification Hubshoz
+
+> [!NOTE]
+> Az iOS 13 kiadása miatt csak a jogkivonat-alapú hitelesítés használatával fogadhat csendes értesítéseket. Ha tanúsítványalapú hitelesítést használ a APNS hitelesítő adataihoz, a jogkivonat-alapú hitelesítés használatára kell váltania.
 
 Egy tanúsítványra van szükség ahhoz, hogy az értesítési központ működjön a **APNS**. Ezt kétféleképpen teheti meg:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075085"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005119"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics Azure biztonsági alapterve
 
@@ -256,7 +256,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: a Data Lake Analytics nem rendelkezik az alapértelmezett jelszavak fogalmával, mivel a hitelesítés a Azure Active Directory és a szerepköralapú hozzáférés-vezérlés (RBAC) által védett.
+**Útmutató**: a Data Lake Analytics nem rendelkezik az alapértelmezett jelszavak fogalmával, mivel a hitelesítés Azure Active Directory és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) által biztosított.
 
 * [Azure Data Lake Analytics áttekintése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
 
