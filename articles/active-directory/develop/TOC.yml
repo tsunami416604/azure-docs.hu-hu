@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET-mag
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -298,6 +298,9 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: Egy- és többfiókos nyilvános ügyfélalkalmazások
               href: single-multi-account.md
+            - name: Hibák és kivételek kezelése
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile'
             - name: Naplózás
               href: msal-logging.md?tabs=android
         - name: iOS és macOS

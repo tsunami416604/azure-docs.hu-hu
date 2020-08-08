@@ -55,7 +55,7 @@
         - name: Egyéni modellek kezelése
           href: how-to-manage-model.md
         - name: Modellek elemzése és ellenőrzése
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: Címkék hozzáadása
           href: how-to-use-tags.md
     - name: Élő végrehajtási környezet használata
