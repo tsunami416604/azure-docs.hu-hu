@@ -3,12 +3,12 @@ title: Congigure IP-tűzfal Azure Relay névtérhez
 description: Ez a cikk azt ismerteti, hogyan használhatók a tűzfalszabályok az adott IP-címekről Azure Relay névterekhez való csatlakozás engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b8d1adef30eea0af9efdb51c31390c33a14b62e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533053"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009018"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-tűzfal konfigurálása Azure Relay névtérhez
 Alapértelmezés szerint a továbbítási névterek elérhetők az internetről, feltéve, hogy a kérelem érvényes hitelesítést és engedélyezést tartalmaz. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -33,7 +33,6 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfal
 1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokra és IP-címekre, válassza a **kiválasztott hálózatok** lehetőséget. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
     1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
     2. A **címtartomány**mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
-    3. Itt adhatja meg, hogy szeretné- **e engedélyezni a megbízható Microsoft-szolgáltatások számára a tűzfal megkerülését**. 
 
         ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.

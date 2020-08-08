@@ -3,46 +3,43 @@ title: Notification Hubs integráció a App Service Mobile Apps
 description: Ismerje meg, hogyan működik az Azure Notification Hubs Azure App Service Mobile Apps.
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-documentationcenter: ''
-ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 08/06/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 647c5f40c7b02b8d9b488ce0812f27c0c0dde1a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7042be7e407e8e0827e142ba6878dfff812e1f6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022140"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004063"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps-integráció
 
-A különböző Azure-szolgáltatásokon elérhető zökkenőmentes és egységes élmény érdekében az [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) a leküldéses értesítések beépített támogatását nyújtja a Notification Hubs használatával. Az [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) jól skálázható, világszerte elérhető, vállalati fejlesztők és rendszerintegrátorok számára készült mobilalkalmazás-fejlesztő platform, amely számos lehetőséget kínál a mobilos fejlesztésekhez.
+Az Azure-szolgáltatások zökkenőmentes és egységesített élményének megkönnyítése érdekében [app Service Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) beépített támogatást nyújt az Azure Notification Hubst használó értesítések számára. A [app Service Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) egy nagyvállalati fejlesztőknek és rendszerintegrátoroknak szánt, rugalmasan méretezhető, globálisan elérhető mobileszköz-fejlesztési platform, amely számos képességet biztosít a mobil fejlesztők számára.
 
-A Mobile Apps-fejlesztők a következő munkafolyamatoknál használhatják a Notification Hubs szolgáltatást:
+Mobile Apps fejlesztők a következő munkafolyamattal használhatják a Notification Hubst:
 
-1. Eszköz PNS-leírójának lekérése
-2. Eszközök regisztrálása a Notification Hubsban a Mobile Apps-ügyfél kényelmesen használható SDK-regisztrációs API-ján keresztül
+1. Eszköz PNS-leírójának beolvasása.
+2. Az eszköz regisztrálása a Notification Hubs Mobile Apps ügyféloldali SDK regisztrációs API-k használatával.
 
     > [!NOTE]
     > Vegye figyelembe, hogy a Mobile Apps biztonsági okokból eltávolítja az összes regisztrációs címkét. Közvetlenül a háttérrendszerről használhatja a Notification Hubst a címkék és eszközök társításához.
 
-3. Értesítések küldése az alkalmazás háttérrendszeréből a Notification Hubs használatával
+3. Értesítések küldése az alkalmazás hátteréből Notification Hubs.
 
-Íme néhány hasznos szolgáltatás a fejlesztők számára, amelyeket ez az integráció tett elérhetővé:
+Az integráció előnyei a következők:
 
-- **Mobile Apps-ügyfél SDK-k**: Ezek a többplatformos SDK-k egyszerű API-kat biztosítanak a regisztrációhoz, illetve a mobilalkalmazáshoz automatikusan kapcsolódó értesítési központtal való kommunikációhoz. A fejlesztőknek nem kell átrágniuk magukat a Notification Hubs hitelesítő adatain, és egy másik szolgáltatást használniuk.
-  - *Leküldés felhasználónak*: Az SDK-k automatikusan felcímkézik az adott eszközt a Mobile Apps által hitelesített felhasználói azonosítóval, így lehetővé teszik a felhasználóknak küldött leküldéses értesítéseket.
-  - *Leküldés eszközre*: Az SDK-k a Mobile Apps telepítési azonosítót automatikusan GUID-ként használják a Notification Hubsban való regisztrációhoz, így a fejlesztőknek nem kell több szolgáltatásbeli GUID azonosítót fenntartaniuk.
-- **Telepítési modell**: A Mobile Apps a Notification Hubs legújabb leküldési modelljével mutatja be az eszközök leküldéses tulajdonságait egy JSON-telepítésben, amely egyszerűen használható, és igazodik a leküldéses értesítési szolgáltatásokhoz.
+- **Mobile apps ügyfél SDK**-k: ezek a többplatformos SDK-k API-kat biztosítanak a regisztrációhoz, és kommunikálnak a Mobile App szolgáltatással összekapcsolt értesítési központtal. Nincs szükség Notification Hubs hitelesítő adatokra, vagy egy további szolgáltatással kell dolgoznia.
+  - *Leküldés a felhasználónak*: az SDK-k automatikusan címkézik a megadott eszközt egy Mobile apps hitelesített felhasználói azonosítóval a "leküldéses felhasználó" forgatókönyv engedélyezéséhez.
+  - *Leküldés az eszközre*: az SDK-k automatikusan a Mobile apps telepítési azonosítót használják GUID-ként a Notification Hubshoz való regisztráláshoz, így nem kell több szolgáltatás-GUID-t fenntartania.
+- **Telepítési modell**: a Mobile apps együttműködik a Notification Hubs legújabb leküldéses modellel, amely az eszközhöz társított összes leküldéses tulajdonságot megjeleníti egy olyan JSON-telepítésben, amely a leküldéses Notification Serviceshoz igazodik, és könnyen használható.
 - **Rugalmasság**: A fejlesztők mindig választhatják a Notification Hubs közvetlen használatát, még az integráció megvalósítása után is.
-- **Integrált élmény az [Azure Portalon](https://portal.azure.com)**: A leküldési funkció vizuálisan megjelenik a Mobile Appsban, és a fejlesztők könnyedén használhatják a kapcsolódó értesítési központtal a Mobile Appson keresztül.
+- **A [Azure Portal](https://portal.azure.com)integrált felhasználói felülete**: a leküldéses funkció a Mobile apps vizuálisan ábrázolja, a fejlesztők pedig könnyedén dolgozhatnak a kapcsolódó értesítési központtal a Mobile Appson keresztül.

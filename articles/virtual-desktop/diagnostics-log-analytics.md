@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali diagnosztika log Analytics – Azure
 description: A log Analytics használata a Windows rendszerű virtuális asztali diagnosztika szolgáltatással.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292600"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005106"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -82,7 +80,7 @@ Log Analytics beállítása egy új objektumhoz:
 
 5. Adja meg a beállítások konfigurációjának nevét, majd kattintson a **küldés log Analytics**lehetőségre. A használt névnek nem tartalmazhat szóközt, és meg kell felelnie az [Azure elnevezési konvencióinak](../azure-resource-manager/management/resource-name-rules.md). A naplók részeként kiválaszthatja a Log Analyticsba felvenni kívánt beállításokat, például az ellenőrzőpontot, a hibát, a felügyeletet és így tovább.
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 >Log Analytics lehetővé teszi az adatok adatfolyamként való továbbítását [Event Hubs](../event-hubs/event-hubs-about.md) vagy archiválását egy Storage-fiókba. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Azure monitoring-adatok továbbítása az Event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) -ba és az Azure-beli [erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md)című
@@ -134,7 +132,7 @@ Az Azure Monitor Log Analytics felhasználói felületén keresztül érheti el 
 1. Lépjen a Log Analytics munkaterületre, majd válassza a **naplók**lehetőséget. A példaként szolgáló lekérdezés felhasználói felülete automatikusan megjelenik.
 1. Módosítsa a szűrőt **kategóriára**.
 1. Válassza a **Windows virtuális asztal** lehetőséget az elérhető lekérdezések áttekintéséhez.
-1. Válassza a **Futtatás** lehetőséget a kijelölt lekérdezés futtatásához. 
+1. Válassza a **Futtatás** lehetőséget a kijelölt lekérdezés futtatásához.
 
 További információ a [Azure Monitor log Analytics mentett lekérdezésekben](../azure-monitor/log-query/saved-queries.md)található minta lekérdezési felületről.
 

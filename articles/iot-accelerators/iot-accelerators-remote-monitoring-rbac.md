@@ -1,6 +1,6 @@
 ---
 title: Távoli figyelés hozzáférés-vezérlése – Azure | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC) a távoli figyelési megoldás-gyorsító szolgáltatásban
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a szerepköralapú hozzáférés-vezérlés (RBAC) a távoli figyelési megoldás-gyorsító szolgáltatásban
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,16 +9,16 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920725"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008984"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a távoli figyelési megoldás gyorssegédében
+# <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a távoli figyelési megoldás-gyorsító szolgáltatásban
 
-Ez a cikk azt ismerteti, hogyan lehet szerepköralapú hozzáférés-vezérlést konfigurálni a távoli figyelési megoldás gyorsító szolgáltatásában. A szerepköralapú hozzáférés-vezérlés lehetővé teszi az egyes felhasználók hozzáférésének korlátozását a megoldás bizonyos funkcióihoz.
+Ez a cikk a szerepköralapú hozzáférés-vezérlés konfigurálását ismerteti a távoli figyelési megoldás-gyorsító szolgáltatásban. A szerepköralapú hozzáférés-vezérlés lehetővé teszi az egyes felhasználók hozzáférésének korlátozását a megoldás bizonyos funkcióihoz.
 
 ## <a name="default-settings"></a>Alapértelmezett beállítások
 
@@ -29,19 +29,19 @@ A **rendszergazdai** szerepkör bármely felhasználója teljes hozzáféréssel
 | Engedély            | Rendszergazda | Csak olvasási engedély |
 |----------------       |-------|-----------|
 | Megoldás megtekintése         | Igen   | Igen       |
-| Riasztások frissítése         | Yes   | Nem        |
-| Riasztások törlése         | Yes   | Nem        |
-| Eszközök létrehozása        | Yes   | Nem        |
-| Eszközök frissítése        | Yes   | Nem        |
-| Eszközök törlése        | Yes   | Nem        |
-| Erőforráscsoportok létrehozása  | Yes   | Nem        |
-| Eszközbeállítások frissítése  | Yes   | Nem        |
-| Eszközbeállítások törlése  | Yes   | Nem        |
-| Szabályok létrehozása          | Yes   | Nem        |
-| Frissítési szabályok          | Yes   | Nem        |
-| Szabályok törlése          | Yes   | Nem        |
-| Feladatok létrehozása           | Yes   | Nem        |
-| SIM-kezelés frissítése | Yes   | Nem        |
+| Riasztások frissítése         | Igen   | Nem        |
+| Riasztások törlése         | Igen   | Nem        |
+| Eszközök létrehozása        | Igen   | Nem        |
+| Eszközök frissítése        | Igen   | Nem        |
+| Eszközök törlése        | Igen   | Nem        |
+| Erőforráscsoportok létrehozása  | Igen   | Nem        |
+| Eszközbeállítások frissítése  | Igen   | Nem        |
+| Eszközbeállítások törlése  | Igen   | Nem        |
+| Szabályok létrehozása          | Igen   | Nem        |
+| Frissítési szabályok          | Igen   | Nem        |
+| Szabályok törlése          | Igen   | Nem        |
+| Feladatok létrehozása           | Igen   | Nem        |
+| SIM-kezelés frissítése | Igen   | Nem        |
 
 Alapértelmezés szerint a megoldást telepítő felhasználó automatikusan hozzárendeli a **rendszergazdai** szerepkört, és egy Azure Active Directory alkalmazás tulajdonosa. Az alkalmazás tulajdonosaként a Azure Portalon keresztül rendelhet hozzá szerepköröket más felhasználókhoz. Ha azt szeretné, hogy egy másik felhasználó szerepköröket rendeljen a megoldáshoz, akkor azt is be kell állítani a Azure Portal alkalmazás-tulajdonosként.
 
@@ -244,7 +244,7 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan implementálják a szerepköralapú hozzáférés-vezérlést a távoli figyelési megoldás gyorsító eszközében.
+Ebből a cikkből megtudhatta, hogyan valósítja meg a szerepköralapú hozzáférés-vezérlést a távoli figyelési megoldás gyorsítása során.
 
 Lásd: a [Time Series Insights Explorer hozzáférés-vezérlésének konfigurálása](iot-accelerators-remote-monitoring-rbac-tsi.md) a távoli figyelési megoldás-gyorsító Time Series Insights Explorer elérésének kezelésével kapcsolatos információkért.
 

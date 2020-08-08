@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698078"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008916"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása
 
@@ -76,7 +76,7 @@ Az olyan helyzetek enyhítése, amikor a hálózati sávszélesség-használat a
 ## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
-- [Milyen Azure cache-t használ a Redis-ajánlat és-méret használatához?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [A megfelelő szint kiválasztása](cache-overview.md#choosing-the-right-tier)
+- [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Az Azure cache figyelése a Redis](cache-how-to-monitor.md)
-- [Hogyan Futtathatok Redis-parancsokat?](cache-faq.md#how-can-i-run-redis-commands)
+- [Hogyan Futtathatok Redis-parancsokat?](cache-development-faq.md#how-can-i-run-redis-commands)

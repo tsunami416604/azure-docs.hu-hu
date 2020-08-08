@@ -3,16 +3,16 @@ title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3fbf869e371f385a335e4a154bc811a6fc8cab97
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922523"
+ms.locfileid: "88002774"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
 
-Ha a szervezete megérett, előfordulhat, hogy az Azure AD-bérlőn belül meg kell adnia és hozzá kell rendelnie a [szabályzatokat](../../governance/policy/overview.md) vagy a [szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/overview.md) . A bérlői szintű sablonok használatával a szabályzatok deklaratív alkalmazása és a szerepkörök globális szinten való hozzárendelését végezheti el.
+A szervezete leállása esetén előfordulhat, hogy az Azure AD-bérlőn belül meg kell adnia és hozzá kell rendelnie a [szabályzatokat](../../governance/policy/overview.md) vagy az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) . A bérlői szintű sablonok használatával a szabályzatok deklaratív alkalmazása és a szerepkörök globális szinten való hozzárendelését végezheti el.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
@@ -251,5 +251,5 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="next-steps"></a>További lépések
 
-* A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
+* A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [Azure szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 * A sablonokat [előfizetési szinten](deploy-to-subscription.md) vagy [felügyeleti csoport szintjén](deploy-to-management-group.md)is üzembe helyezheti.

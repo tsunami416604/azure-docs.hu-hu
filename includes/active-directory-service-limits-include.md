@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: active-directory
 author: curtand
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375355"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011032"
 ---
 Az alábbiakban az Azure Active Directory (Azure AD) szolgáltatás használati és egyéb szolgáltatási korlátai olvashatóak.
 
@@ -30,4 +30,4 @@ Az alábbiakban az Azure Active Directory (Azure AD) szolgáltatás használati 
 | Hozzáférési panel |A hozzáférési panelen látható alkalmazások száma nincs korlátozva a hozzárendelt licencek függetlenül.  |
 | Jelentések | A jelentésekben legfeljebb 1000 sort lehet megtekinteni vagy letölteni. A további adatokat a rendszer csonkolja. |
 | Felügyeleti egységek | Egy Azure AD-erőforrás legfeljebb 30 felügyeleti egység tagja lehet. |
-| Rendszergazdai szerepkörök és engedélyek | <ul><li>Egy csoport nem adható hozzá [tulajdonosként](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Egy csoport nem rendelhető hozzá [szerepkörhöz](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>A felhasználók más felhasználói címtáradatokat nem lehet letiltani az Azure AD-szervezetre kiterjedő kapcsolón kívül az összes nem rendszergazda felhasználó hozzáférésének letiltásához az összes címtár-információhoz (nem ajánlott). További információ az alapértelmezett engedélyekről [itt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Akár 15 percet is igénybe vehet, vagy ki-és bejelentkezhet, mielőtt a rendszergazdai szerepkör tagságának kiegészítése és visszavonása érvénybe lép.</li></ul> |
+| Rendszergazdai szerepkörök és engedélyek | <ul><li>Egy csoport nem adható hozzá [tulajdonosként](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>A felhasználók más felhasználói címtáradatokat nem lehet letiltani az Azure AD-szervezetre kiterjedő kapcsolón kívül az összes nem rendszergazda felhasználó hozzáférésének letiltásához az összes címtár-információhoz (nem ajánlott). További információ az alapértelmezett engedélyekről [itt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Akár 15 percet is igénybe vehet, vagy ki-és bejelentkezhet, mielőtt a rendszergazdai szerepkör tagságának kiegészítése és visszavonása érvénybe lép.</li></ul> |

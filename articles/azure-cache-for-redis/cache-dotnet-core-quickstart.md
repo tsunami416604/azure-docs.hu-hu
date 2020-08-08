@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 2c02f6858711173a2ddd2217bbb9e241a5a2109d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 55b704fec6722209aebc03979cfa348b08e8af5c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201468"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003774"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Gyors útmutató: az Azure cache használata a Redis .NET Core-alkalmazással
 
@@ -194,7 +194,7 @@ static void Main(string[] args)
 
 Mentse a *Program.cs* fájlt.
 
-A Redis-hez készült Azure cache egy konfigurálható (alapértelmezett 16) adatbázist tartalmaz, amelyekkel logikailag elkülöníthető az Azure-gyorsítótárban lévő Redis. A kód az alapértelmezett adatbázishoz csatlakozik (DB 0). További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration).
+A Redis-hez készült Azure cache egy konfigurálható (alapértelmezett 16) adatbázist tartalmaz, amelyekkel logikailag elkülöníthető az Azure-gyorsítótárban lévő Redis. A kód az alapértelmezett adatbázishoz csatlakozik (DB 0). További információ: [Mik azok a Redis-adatbázisok?](cache-development-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration).
 
 A gyorsítótárelemek a `StringSet` és a `StringGet` metódussal tárolhatók és kérhetők le.
 
@@ -284,7 +284,7 @@ dotnet run
 ![Kész konzolalkalmazás](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

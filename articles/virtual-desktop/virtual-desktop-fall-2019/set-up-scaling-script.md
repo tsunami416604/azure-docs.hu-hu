@@ -1,19 +1,17 @@
 ---
 title: A munkamenet-gazdagépek méretezése Azure Automation Windows Virtual Desktop (klasszikus) – Azure
 description: A Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagépek automatikus méretezése Azure Automation használatával.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288644"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005584"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -94,7 +92,7 @@ Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook f
     ```powershell
     Login-AzAccount
     ```
-    
+
     >[!NOTE]
     >A fióknak közreműködői jogosultságokkal kell rendelkeznie azon az Azure-előfizetésen, ahol a skálázási eszközt telepíteni szeretné.
 
@@ -119,7 +117,7 @@ Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook f
          "Location"              = "<Azure_region_for_deployment>"
          "WorkspaceName"         = "<Log_analytics_workspace_name>"       # Optional. If specified, Log Analytics will be used to configure the custom log table that the runbook PowerShell script can send logs to
     }
-    
+
     .\CreateOrUpdateAzAutoAccount.ps1 @Params
     ```
 
@@ -208,23 +206,23 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
     # Set-RdsContext -TenantGroupName "<Tenant_Group_Name>"
     ```
 
-5. A következő PowerShell-szkript futtatásával hozza létre az Azure Logic app-alkalmazást és a futtatási ütemtervet a gazdagép készletéhez 
+5. A következő PowerShell-szkript futtatásával hozza létre az Azure Logic app-alkalmazást és a futtatási ütemtervet a gazdagép készletéhez
 
     >[!NOTE]
     >Ezt a parancsfájlt minden olyan gazdagéphez futtatnia kell, amelyet szeretne használni az autoskálázáshoz, de csak egy Azure Automation fiókra van szüksége.
 
     ```powershell
     $AADTenantId = (Get-AzContext).Tenant.Id
-    
+
     $AzSubscription = Get-AzSubscription | Out-GridView -OutputMode:Single -Title "Select your Azure Subscription"
     Select-AzSubscription -Subscription $AzSubscription.Id
-    
+
     $ResourceGroup = Get-AzResourceGroup | Out-GridView -OutputMode:Single -Title "Select the resource group for the new Azure Logic App"
-    
+
     $RDBrokerURL = (Get-RdsContext).DeploymentUrl
     $WVDTenant = Get-RdsTenant | Out-GridView -OutputMode:Single -Title "Select your WVD tenant"
     $WVDHostPool = Get-RdsHostPool -TenantName $WVDTenant.TenantName | Out-GridView -OutputMode:Single -Title "Select the host pool you'd like to scale"
-    
+
     $LogAnalyticsWorkspaceId = Read-Host -Prompt "If you want to use Log Analytics, enter the Log Analytics Workspace ID returned by when you created the Azure Automation account, otherwise leave it blank"
     $LogAnalyticsPrimaryKey = Read-Host -Prompt "If you want to use Log Analytics, enter the Log Analytics Primary Key returned by when you created the Azure Automation account, otherwise leave it blank"
     $RecurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
@@ -237,12 +235,12 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
     $LimitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, any session host VM that has user sessions, will be left untouched"
     $LogOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
     $LogOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-    
+
     $AutoAccount = Get-AzAutomationAccount | Out-GridView -OutputMode:Single -Title "Select the Azure Automation account"
     $AutoAccountConnection = Get-AzAutomationConnection -ResourceGroupName $AutoAccount.ResourceGroupName -AutomationAccountName $AutoAccount.AutomationAccountName | Out-GridView -OutputMode:Single -Title "Select the Azure RunAs connection asset"
-    
+
     $WebhookURIAutoVar = Get-AzAutomationVariable -Name 'WebhookURI' -ResourceGroupName $AutoAccount.ResourceGroupName -AutomationAccountName $AutoAccount.AutomationAccountName
-    
+
     $Params = @{
          "AADTenantId"                   = $AADTenantId                             # Optional. If not specified, it will use the current Azure context
          "SubscriptionID"                = $AzSubscription.Id                       # Optional. If not specified, it will use the current Azure context
@@ -267,7 +265,7 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
          "LogOffMessageBody"             = $LogOffMessageBody                       # Optional. Default: "Your session will be logged off. Please save and close everything."
          "WebhookURI"                    = $WebhookURIAutoVar.Value
     }
-    
+
     .\CreateOrUpdateAzLogicApp.ps1 @Params
     ```
 

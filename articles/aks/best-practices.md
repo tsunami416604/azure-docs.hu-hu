@@ -4,12 +4,12 @@ description: A Fürtfelügyelő és a fejlesztői ajánlott eljárások gyűjtem
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77596317"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008780"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürtözési és fejlesztői ajánlott eljárások az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások létrehozásához és kezeléséhez
 
@@ -21,7 +21,7 @@ Ezek az ajánlott eljárások és fogalmi cikkek az AK termékcsoport, a mérnö
 
 A fürt operátorai együttműködnek az alkalmazás-tulajdonosokkal és a fejlesztővel, hogy megértsék az igényeiket. Ezután az alábbi ajánlott eljárásokat követve igény szerint konfigurálhatja az AK-fürtöket.
 
-**Több-bérlős rendszer**
+**Több-bérlős üzemmód**
 
 * [Ajánlott fürtelkülönítési eljárások](operator-best-practices-cluster-isolation.md)
     * A több-bérlős alapvető összetevőket és a névterek logikai elkülönítését foglalja magában.
@@ -30,7 +30,7 @@ A fürt operátorai együttműködnek az alkalmazás-tulajdonosokkal és a fejle
 * [Ajánlott eljárások a Scheduler speciális funkcióihoz](operator-best-practices-advanced-scheduler.md)
     * Magában foglalja a szennyező elemek használatát és a tolerancia, a csomópont-választókat és az affinitást, valamint a több-Pod affinitást és az affinitást.
 * [Ajánlott hitelesítési és engedélyezési eljárások](operator-best-practices-identity.md)
-    * Magában foglalja a Azure Active Directory integrációját a szerepköralapú hozzáférés-vezérlés (RBAC) és a pod-identitások használatával.
+    * A Azure Active Directory integrációját is magában foglalja a szerepköralapú hozzáférés-vezérlés (RBAC) és a pod-identitások használatával.
 
 **Biztonság**
 

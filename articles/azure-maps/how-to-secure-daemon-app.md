@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531371"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006638"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon-alkalmazás biztonságossá tétele
 
 Az alábbi útmutató a megbízható és biztonságos környezetben üzemeltetett háttérbeli folyamatokra, időzítőekre és feladatokra szolgál. Ilyenek például az Azure web Jobs, az Azure Function apps, a Windows-szolgáltatások és bármely más megbízható háttérrendszer.
 
 > [!Tip]
-> A Microsoft a Azure Active Directory (Azure AD) és a szerepköralapú hozzáférés-vezérlés (RBAC) megvalósítását javasolja éles alkalmazásokhoz. A fogalmak áttekintését lásd: [Azure Maps hitelesítés](./azure-maps-authentication.md).
+> A Microsoft azt javasolja, hogy éles alkalmazásokhoz Azure Active Directory (Azure AD) és Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) implementáljon. A fogalmak áttekintését lásd: [Azure Maps hitelesítés](./azure-maps-authentication.md).
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ A folyamat a következő lépésekből áll:
 > [!Tip]
 > Ha az alkalmazást az Azure-környezetben üzemelteti, egy felügyelt identitást kell megvalósítani, hogy csökkentse a Azure Key Vault-hitelesítéshez szükséges titkos kód kezelésének költségeit és összetettségét. Tekintse meg a következő Azure Key Vault [oktatóanyagot a felügyelt identitáson keresztül történő kapcsolódáshoz](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app).
 
-A démon alkalmazás feladata a megosztott kulcs biztonságos tárolóból való beolvasása. A Azure Key Vault megvalósításához az Azure AD-n keresztül történő hitelesítésre van szükség a titok eléréséhez. Ehelyett azt javasoljuk, hogy a megosztott kulcsos hitelesítéssel kapcsolatos további összetettségi és üzemeltetési követelmények eredményeképpen Azure Maps közvetlen Azure AD-RBAC hitelesítést.
+A démon alkalmazás feladata a megosztott kulcs biztonságos tárolóból való beolvasása. A Azure Key Vault megvalósításához az Azure AD-n keresztül történő hitelesítésre van szükség a titok eléréséhez. Ehelyett azt javasoljuk, hogy a megosztott kulcsos hitelesítéssel kapcsolatos további összetettségi és üzemeltetési követelmények eredményeképpen Azure Maps közvetlen Azure AD-hitelesítést.
 
 > [!IMPORTANT]
 > A kulcs újragenerálásának egyszerűbbé tétele érdekében javasoljuk, hogy az alkalmazások egyszerre egy kulcsot használjanak. Az alkalmazások ezután újra létrehozhatják a fel nem használt kulcsot, és az új újragenerált kulcsot egy biztonságos titkos tárolóba (például Azure Key Vault) helyezhetik üzembe.
@@ -107,9 +107,9 @@ A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezér
         > [!div class="mx-imgBorder"]
         > ![Ügyfél titkos kulcsának hozzáadása](./media/how-to-manage-authentication/add-key.png)
 
-### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a démon alkalmazás számára a Azure Maps
+### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a Daemon-alkalmazáshoz Azure Maps
 
-*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít a létrehozott felügyelt identitás vagy az egyszerű szolgáltatásnév hozzárendelésével egy vagy több Azure Maps hozzáférés-vezérlési szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
+Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozott felügyelt identitás vagy az egyszerű szolgáltatásnév hozzárendelésével adhatja meg egy vagy több Azure Maps szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
 
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -117,7 +117,7 @@ A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezér
 1. Nyissa meg **Azure Maps-fiókját**. Válassza a **Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelések** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC megadása](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. A **szerepkör-hozzárendelések** lapon **adjon hozzá** egy szerepkör-hozzárendelést. 
     

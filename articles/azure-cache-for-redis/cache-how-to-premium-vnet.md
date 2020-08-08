@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: bf9ddc78caa1e19d35ad7e96af76dc0303a8a67c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184769"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004729"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.
@@ -20,8 +20,6 @@ A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalma
 > A Redis készült Azure cache a klasszikus és a Resource Manager virtuális hálózatok is támogatja.
 > 
 > 
-
-További információ a prémium szintű gyorsítótár-funkciókról: [Bevezetés az Azure cache for Redis Premium](cache-premium-tier-intro.md)csomagba.
 
 ## <a name="why-vnet"></a>Miért VNet?
 Az [azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure cache Redis, valamint az alhálózatok, hozzáférés-vezérlési házirendek és egyéb funkciók számára a hozzáférés további korlátozásához.
@@ -237,9 +235,9 @@ A felhasználó által megadott útvonalakon található háttér-információk 
 További információ a ExpressRoute: a [ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md).
 
 ## <a name="next-steps"></a>További lépések
-További információ a prémium szintű gyorsítótár-funkciók használatáról.
+További információ az Azure cache Redis szolgáltatásairól.
 
-* [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)
+* [Azure cache a Redis prémium szintű szolgáltatási szintjeihez](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

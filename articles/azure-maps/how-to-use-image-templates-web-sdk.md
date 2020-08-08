@@ -1,6 +1,6 @@
 ---
 title: Képsablonok a Azure Maps web SDK-ban | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan használhatók a képsablonok HTML-jelölővel és különböző rétegekkel a Microsoft Azure Maps web SDK-ban.
+description: Megtudhatja, hogyan adhat hozzá képikonokat és mintázattal kitöltött sokszögeket a Maps-hez a Azure Maps web SDK használatával. Tekintse meg a rendelkezésre álló képet és a kitöltési minta sablonokat.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285679"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004663"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529109"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005023"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -174,7 +174,7 @@ Néhány pillanat elteltével a rendszerbiztonsági tag a kiválasztott hatókö
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>A Azure Cloud Shell felület használata
 
-Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../virtual-machines/linux/login-using-aad.md).
+Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a szokásos Azure RBAC öröklési engedélyek is érvényesek. További információ: [Bejelentkezés egy linuxos virtuális gépre az Azure-ban Azure Active Directory hitelesítés használatával](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -189,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > Ha a HRE tartomány és a bejelentkezési Felhasználónév tartománya nem egyezik, meg kell adnia a felhasználói fiókjához tartozó objektumazonosítót `--assignee-object-id` , nem csak a felhasználónevét `--assignee` . A felhasználói fiókhoz tartozó objektumazonosítót az [az ad User List](/cli/azure/ad/user#az-ad-user-list)paranccsal kérheti le.
 
-Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
+Az Azure-RBAC az Azure-előfizetési erőforrásokhoz való hozzáférés kezeléséhez való használatáról a következő cikkekben talál további információt:
 
-- [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](/azure/role-based-access-control/role-assignments-cli)
-- [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
-- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](/azure/role-based-access-control/role-assignments-cli)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](/azure/role-based-access-control/role-assignments-powershell).
 
 ## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
 

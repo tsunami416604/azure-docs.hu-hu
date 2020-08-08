@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828625"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008090"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -27,9 +27,9 @@ Ez a részletes útmutató ismerteti, hogyan tervezhető meg a Privileged Identi
 
 > [!TIP]
 > Ebben a cikkben a következőként megjelölt elemeket fogja látni:
-> 
+>
 > : heavy_check_mark: a **Microsoft javasolja**
-> 
+>
 > Ezek általános javaslatok, és csak akkor kell megvalósítani, ha az adott vállalati igényekre vonatkoznak.
 
 ## <a name="learn-about-privileged-identity-management"></a>Tudnivalók a Privileged Identity Management
@@ -142,9 +142,9 @@ Az alábbi lépések végrehajtásával kényszerítheti ki az Azure AD-szerepk�
 
 1. A szerepkörök részletességének megismeréséhez olvassa el és ismerkedjen meg az [elérhető Azure ad-rendszergazdai szerepkörökkel](../users-groups-roles/directory-assign-admin-roles.md#available-roles). Az Azure AD-ben Ön és csapata is hivatkozhat a [rendszergazdai szerepkörökre az Azure ad-ben](../users-groups-roles/roles-delegate-by-task.md), amely ismerteti a legkevésbé Kiemelt szerepkört az adott feladatokhoz.
 
-1. A szervezete Kiemelt szerepkörrel rendelkező szerepköreinek listázása. A [Privileged Identity Management varázslóval](pim-security-wizard.md#run-the-wizard) a következőhöz hasonló oldalhoz juthat.
+1. A szervezete Kiemelt szerepkörrel rendelkező szerepköreinek listázása. A Privileged Identity Management [felderítési és](pim-security-wizard.md) adatellenőrzési (előzetes verzió) segítségével megtekintheti a következőhöz hasonló oldalt.
 
-    ![Kiemelt szerepkörök felderítése ablaktábla, amely kiemelt szerepkörökkel rendelkezik](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Felderítési és észlelési (előzetes) lap, amellyel csökkentheti az expozíciót a Kiemelt szerepkörök használatával](./media/pim-deployment-plan/new-preview-page.png)
 
 1. A szervezet összes globális rendszergazdája számára Ismerje meg, hogy miért van szükségük a szerepkörre. A korábbi dokumentáció elolvasása alapján, ha a személy feladatát egy vagy több részletes rendszergazdai szerepkörrel is elvégezheti, távolítsa el őket a globális rendszergazdai szerepkörből, és ennek megfelelően végezze el a hozzárendeléseket Azure Active Directoryban (hivatkozás: a Microsoft jelenleg csak a globális rendszergazdai szerepkörrel rendelkező 10 rendszergazdával rendelkezik. Ismerje meg, [hogyan használja a Microsoft a Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 

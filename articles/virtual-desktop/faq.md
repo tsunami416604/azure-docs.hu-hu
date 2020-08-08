@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali GYIK – Azure
 description: Gyakori kérdések és ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504415"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007488"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
@@ -25,7 +23,7 @@ Ha gazdagép-készleteket és egyéb objektumokat szeretne létrehozni, hozzá k
 
 Ahhoz, hogy a felhasználók vagy felhasználói csoportok számára alkalmazás-csoportokat lehessen közzétenni, hozzá kell rendelnie a felhasználói hozzáférés rendszergazdai szerepkört egy alkalmazás-csoporthoz.
 
-Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkameneteket kezelje, például üzeneteket küldjön a felhasználóknak, kijelentkezzen a felhasználókat, és így tovább, létrehozhat egyéni szerepköröket is. Például: 
+Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkameneteket kezelje, például üzeneteket küldjön a felhasználóknak, kijelentkezzen a felhasználókat, és így tovább, létrehozhat egyéni szerepköröket is. Például:
 
 ```powershell
 "actions": [
@@ -116,7 +114,7 @@ Miután létrehozta a gazdagépet, a típusa nem módosítható. Áthelyezheti a
 
 A FSLogix korlátozásai vagy kvótái a felhasználói profil VHD (X) fájlok tárolására használt tárolási hálótól függenek.
 
-A következő táblázat példát mutat be arra, hogy a FSLogix-profiloknak milyen erőforrásokra van szükségük az egyes felhasználók támogatásához. A követelmények a felhasználótól, az alkalmazástól és az egyes profilokon végzett tevékenységtől függően eltérőek lehetnek. 
+A következő táblázat példát mutat be arra, hogy a FSLogix-profiloknak milyen erőforrásokra van szükségük az egyes felhasználók támogatásához. A követelmények a felhasználótól, az alkalmazástól és az egyes profilokon végzett tevékenységtől függően eltérőek lehetnek.
 
 | Erőforrás | Követelmény |
 |---|---|

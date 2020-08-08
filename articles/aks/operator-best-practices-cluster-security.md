@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) a fürt biztonság
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c4f56cf4e04b9df31c8c4204d396ead8073ec526
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244208"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003053"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök biztonságához és frissítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -19,7 +19,7 @@ A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során a munk
 Ebből a cikkből megtudhatja, hogyan védheti meg az AK-fürtöt. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Az API Server-hozzáférés biztonságossá tétele Azure Active Directory és szerepköralapú hozzáférés-vezérléssel
+> * Az API Server-hozzáférés biztonságossá tétele Azure Active Directory és szerepköralapú hozzáférés-vezérléssel (RBAC)
 > * Biztonságos tároló hozzáférése a csomópont erőforrásaihoz
 > * AK-fürt frissítése a legújabb Kubernetes-verzióra
 > * A csomópontok naprakészen tartása és a biztonsági javítások automatikus alkalmazása
@@ -207,7 +207,7 @@ Ha az újraindítások során finomabb gabona-szabályozásra van szükség, `ku
 
 A csomópont-újraindítások kezelésével kapcsolatos további információkért lásd: [biztonsági és kernel-frissítések alkalmazása a csomópontokra az AK-ban][aks-kured].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk az AK-fürt biztonságossá tételére koncentrál. Ezen területek némelyikének megvalósításához tekintse meg a következő cikkeket:
 

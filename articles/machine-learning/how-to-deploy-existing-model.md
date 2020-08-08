@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fc3c03fa3368d87857ed91c720a92aacecf6eb89
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843164"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008202"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>A meglévő modell üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ A cikkben szereplő fogalmakkal és kifejezésekkel kapcsolatos további inform�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Azure Machine Learning munkaterület](how-to-manage-workspace.md)
-  + A Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva.
+  + A Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva. A munkaterülethez való kapcsolódással kapcsolatos további információkért tekintse meg a [Pythonhoz készült Azure Machine learning SDK dokumentációját](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace).
   
   + A CLI-példák a és a helyőrzőit használják `myworkspace` `myresourcegroup` , amelyeket a munkaterület nevével és az azt tartalmazó erőforráscsoporthoz kell cserélni.
 
@@ -293,7 +293,7 @@ print(response.json())
 
 Az üzembe helyezett szolgáltatás használatáról további információt az [ügyfél létrehozása](how-to-consume-web-service.md)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

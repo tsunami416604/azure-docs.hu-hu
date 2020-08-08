@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet szolgáltatás frissítései – Azure
 description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 448f02990798869e3dd5a804d1b0e0038b810a24
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f5a8d925a9875187358dc96b1770916974d1c6bd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288671"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007131"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>Oktatóanyag: a szolgáltatás frissítéseinek ellenőrzéséhez szükséges gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -60,12 +58,12 @@ Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
 A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinéznie:
 
 ```
-    TenantName          : contoso 
+    TenantName          : contoso
     TenantGroupName     : Default Tenant Group
     HostPoolName        : contosoHostPool
     FriendlyName        :
     Description         :
-    Persistent          : False 
+    Persistent          : False
     CustomRdpProperty    : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
@@ -79,7 +77,7 @@ A szolgáltatás frissítései havonta történnek. Jelentős problémák eseté
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére. 
+Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére.
 
 > [!div class="nextstepaction"]
 > [Szolgáltatásriasztások beállítása](set-up-service-alerts-2019.md)

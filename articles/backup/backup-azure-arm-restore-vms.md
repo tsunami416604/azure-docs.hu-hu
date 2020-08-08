@@ -4,12 +4,12 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809184"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006332"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -45,7 +45,7 @@ A Storage-fiókok részletei:
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Ha egy virtuális gépet szeretne visszaállítani (hozzon létre egy új virtuális gépet), győződjön meg arról, hogy megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) [engedélyekkel](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) rendelkezik a virtuális gép visszaállítása művelethez.
+Egy virtuális gép visszaállításához (hozzon létre egy új virtuális gépet) ellenőrizze, hogy rendelkezik-e a megfelelő Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) [engedélyekkel](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) a virtuális gép visszaállítása művelethez.
 
 Ha nem rendelkezik megfelelő engedélyekkel, [visszaállíthat egy lemezt](#restore-disks), majd a lemez visszaállítása után a visszaállítási művelet részeként létrehozott [sablont használhatja](#use-templates-to-customize-a-restored-vm) új virtuális gép létrehozásához.
 
@@ -173,7 +173,7 @@ A másodlagos régió visszaállítási felhasználói felülete hasonló lesz a
 >
 >- A visszaállítás elindítása és az adatátviteli fázisban a visszaállítási feladatot nem lehet megszakítani.
 >- A régiók közötti visszaállítás funkció visszaállítja a CMK (ügyfél által felügyelt kulcsokat) az Azure-beli virtuális gépeket, amelyek nem készülnek biztonsági mentésre Recovery Services tárolóban, mert nem CMK engedélyezett virtuális gépek a másodlagos régióban.
->- A RBAC (szerepköralapú hozzáférés-vezérlés) a másodlagos régióban való visszaállításhoz szükséges szerepkörök ugyanazok, mint az elsődleges régióban.
+>- A másodlagos régióban való visszaállításhoz szükséges Azure-szerepkörök ugyanazok, mint az elsődleges régióban.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Másodlagos régió visszaállítási feladatainak figyelése
 

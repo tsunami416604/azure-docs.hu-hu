@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856938"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004875"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -141,14 +141,14 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Name |A gyorsítótár neve | |
+| Név |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | ResourceGroupName |Az erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat | |
 | Méret |A gyorsítótár mérete Érvényes értékek: P1, P2, P3, P4, c0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Azon szegmensek száma, amelyeket létre kell hozni a prémium szintű gyorsítótár létrehozásakor, ha a fürtözés engedélyezve van. Az érvényes értékek: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | Termékváltozat |A gyorsítótár SKU-jának meghatározása. Az érvényes értékek a következők: alapszintű, standard, prémium |Standard |
 | RedisConfiguration |Meghatározza a Redis konfigurációs beállításait. Az egyes beállításokkal kapcsolatos részletekért tekintse meg a következő [RedisConfiguration-tulajdonságok](#redisconfiguration-properties) táblázatot. | |
-| EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL-port. |False (Hamis) |
+| EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL-port. |Hamis |
 | MaxMemoryPolicy |Ez a paraméter elavult – használja helyette a RedisConfiguration. | |
 | StaticIP |A gyorsítótár egy VNET való üzemeltetése esetén a gyorsítótárban egy egyedi IP-címet ad meg az alhálózatban. Ha nincs megadva, az egyiket az alhálózatból választjuk ki. | |
 | Alhálózat |A gyorsítótár VNET való üzemeltetése esetén annak az alhálózatnak a nevét adja meg, amelyben a gyorsítótárat telepíteni szeretné. | |
@@ -156,7 +156,7 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 | KeyType |Megadja, hogy melyik hozzáférési kulcsot kell újragenerálni a hozzáférési kulcsok megújításakor. Az érvényes értékek a következők: elsődleges, másodlagos | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration tulajdonságai
-| Tulajdonság | Description | Árképzési szintek |
+| Tulajdonság | Leírás | Árképzési szintek |
 | --- | --- | --- |
 | RDB – biztonsági mentés engedélyezve |Annak megadása, hogy engedélyezve van-e a [Redis adatmegőrzés](cache-how-to-premium-persistence.md) |Csak prémium |
 | RDB-Storage – kapcsolatok – sztring |A [Redis adatmegőrzéshez](cache-how-to-premium-persistence.md) használt Storage-fiókhoz tartozó kapcsolódási karakterlánc |Csak prémium |
@@ -169,7 +169,7 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 | set-Max-intset-bejegyzések |A [memória optimalizálásának](https://redis.io/topics/memory-optimization) beállítása kis aggregált adattípusokhoz |Standard és prémium |
 | zset-Max-ZipList-bejegyzések |A [memória optimalizálásának](https://redis.io/topics/memory-optimization) beállítása kis aggregált adattípusokhoz |Standard és prémium |
 | zset-Max-ZipList-Value |A [memória optimalizálásának](https://redis.io/topics/memory-optimization) beállítása kis aggregált adattípusokhoz |Standard és prémium |
-| adatbázisok |Az adatbázisok számának beállítása. Ezt a tulajdonságot csak a gyorsítótár létrehozásakor lehet konfigurálni. |Standard és prémium |
+| adatbázisokban |Az adatbázisok számának beállítása. Ezt a tulajdonságot csak a gyorsítótár létrehozásakor lehet konfigurálni. |Standard és prémium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Azure cache létrehozása a Redis-hez
 A [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) parancsmaggal hozhatók létre új Azure cache a Redis-példányokhoz.
@@ -655,7 +655,7 @@ A következő példában a nevű gyorsítótár `myCache` el lesz távolítva.
 A parancsmag használatával importálhat egy Azure-gyorsítótárba az Redis-példányokat `Import-AzRedisCache` .
 
 > [!IMPORTANT]
-> Az import/export csak a [prémium szintű](cache-premium-tier-intro.md) csomagok gyorsítótárai esetében érhető el. Az importálással/exportálással kapcsolatos további információkért lásd: [adatok importálása és exportálása az Azure cache-ben a Redis-hez](cache-how-to-import-export-data.md).
+> Az import/export csak a [prémium szintű](cache-overview.md#service-tiers) csomagok gyorsítótárai esetében érhető el. Az importálással/exportálással kapcsolatos további információkért lásd: [adatok importálása és exportálása az Azure cache-ben a Redis-hez](cache-how-to-import-export-data.md).
 > 
 > 
 
@@ -719,7 +719,7 @@ A következő parancs a SAS URI által megadott blob adatait importálja az Azur
 Az adatok az Redis-példány Azure cache-ből exportálhatók a `Export-AzRedisCache` parancsmag használatával.
 
 > [!IMPORTANT]
-> Az import/export csak a [prémium szintű](cache-premium-tier-intro.md) csomagok gyorsítótárai esetében érhető el. Az importálással/exportálással kapcsolatos további információkért lásd: [adatok importálása és exportálása az Azure cache-ben a Redis-hez](cache-how-to-import-export-data.md).
+> Az import/export csak a [prémium szintű](cache-overview.md#service-tiers) csomagok gyorsítótárai esetében érhető el. Az importálással/exportálással kapcsolatos további információkért lásd: [adatok importálása és exportálása az Azure cache-ben a Redis-hez](cache-how-to-import-export-data.md).
 > 
 > 
 
@@ -784,7 +784,7 @@ A következő parancs a Redis példány Azure cache-ből származó adatait expo
 A parancsmag használatával újraindíthatja az Azure cache-t a Redis-példányhoz `Reset-AzRedisCache` .
 
 > [!IMPORTANT]
-> Az újraindítás csak a [prémium szintű](cache-premium-tier-intro.md) gyorsítótárak esetében érhető el. A gyorsítótár újraindításával kapcsolatos további információkért lásd: [gyorsítótár-felügyelet – újraindítás](cache-administration.md#reboot).
+> Az újraindítás csak a [prémium szintű](cache-overview.md#service-tiers) gyorsítótárak esetében érhető el. A gyorsítótár újraindításával kapcsolatos további információkért lásd: [gyorsítótár-felügyelet – újraindítás](cache-administration.md#reboot).
 > 
 > 
 

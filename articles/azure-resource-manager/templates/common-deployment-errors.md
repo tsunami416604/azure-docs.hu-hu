@@ -3,21 +3,19 @@ title: Gyakori üzembehelyezési hibák elhárítása
 description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrásokat helyez üzembe az Azure-ban Azure Resource Manager használatával.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: dad80cf4230c3c6b4d7d97b21d155f6e755c2ab9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/07/2020
+ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446606"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008168"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
 Ez a cikk néhány gyakori Azure-telepítési hibát ismertet, és információt nyújt a hibák megoldásához. Ha nem találja az üzembehelyezési hiba hibakódját, tekintse meg [a hibakód megkeresését](#find-error-code) segítő témakört.
 
 Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz információt, tudassa velünk. A lap alján elhagyhatja a visszajelzést. A visszajelzéseket a GitHub-problémák követik nyomon.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>Hibakódok
 
@@ -76,6 +74,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | StorageAccountAlreadyTaken | Adjon meg egy egyedi nevet a tárfióknak. | [A Storage-fiók nevének feloldása](error-storage-account-name.md) |
 | StorageAccountNotFound | Tekintse meg az előfizetést, az erőforráscsoportot és a használni kívánt Storage-fiók nevét. | |
 | SubnetsNotInSameVnet | A virtuális gépeknek csak egy virtuális hálózata lehet. Több hálózati adapter telepítésekor győződjön meg arról, hogy ugyanahhoz a virtuális hálózathoz tartoznak. | [Több hálózati adapter](../../virtual-machines/windows/multiple-nics.md) |
+| SubscriptionNotFound | Nem érhető el a központi telepítéshez megadott előfizetés. Lehet, hogy az előfizetés-azonosító helytelen, a sablont telepítő felhasználó nem rendelkezik megfelelő engedélyekkel az előfizetéshez való üzembe helyezéshez, vagy az előfizetés-azonosító formátuma helytelen. Ha beágyazott központi telepítéseket használ a [hatókörök közötti központi](cross-scope-deployment.md)telepítéshez, adja meg az előfizetés GUID azonosítóját. | |
 | SubscriptionNotRegistered | Hálózati erőforrások telepítésekor a Microsoft. Network erőforrás-szolgáltató automatikusan regisztrálva van az előfizetésben. Előfordulhat, hogy az automatikus regisztráció nem fejeződött be időben. Az időszakos hiba elkerüléséhez regisztrálja a Microsoft. Network erőforrás-szolgáltatót az üzembe helyezés előtt. | [Regisztráció feloldása](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | Az erőforráscsoportok számának csökkentése egyetlen központi telepítéshez. | [Több hatókörű központi telepítés](cross-scope-deployment.md) |

@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali partner-integrációk – Azure
 description: Ismerje meg a Windows rendszerű virtuális asztalok partnereit és a velük való integrációval kapcsolatos dokumentációt.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5431a0844a418ddcdbd595546253c1d03fda35c0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075760"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006570"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -69,9 +67,9 @@ A Automai lehetővé teszi, hogy ugyanazokat a szkripteket használja a teljesí
 
 ![Cloudhouse embléma](./media/partners/cloudhouse.png)
 
-A Cloudhouse egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely olyan kulcsrakész alkalmazás-áttelepítési szolgáltatást kínál az ügyfeleknek, amely az összes olyan alkalmazást áthelyezi, amely nem kompatibilis a modern Windows operációs rendszerekkel, a Windows rendszerű virtuális asztali környezetbe, így az ügyfelek valóban használhatják a több munkamenetből álló Windows 10 rendszert. 
+A Cloudhouse egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely olyan kulcsrakész alkalmazás-áttelepítési szolgáltatást kínál az ügyfeleknek, amely az összes olyan alkalmazást áthelyezi, amely nem kompatibilis a modern Windows operációs rendszerekkel, a Windows rendszerű virtuális asztali környezetbe, így az ügyfelek valóban használhatják a több munkamenetből álló Windows 10 rendszert.
 
-A bevált Cloudhouse tárolókra bontás technológiával a Cloudhouse szolgáltatás minden alkalmazást végrehajt, beleértve a Windows XP, a Windows 7 vagy a Windows 8 rendszerhez tervezett alkalmazásokat, és egy modern Windowsos virtuális asztalra telepíti azokat anélkül, hogy programkódot kellene megváltoztatnia vagy a felhasználói élményt befolyásolná. A Cloudhouse tovább bővíti a Windows virtuális asztal értékét a mögöttes operációs rendszerből származó alkalmazások elkülönítésével, így lehetővé téve a Windows karbantartási frissítéseinek kivonását anélkül, hogy ez hatással lenne a tároló alkalmazásra. 
+A bevált Cloudhouse tárolókra bontás technológiával a Cloudhouse szolgáltatás minden alkalmazást végrehajt, beleértve a Windows XP, a Windows 7 vagy a Windows 8 rendszerhez tervezett alkalmazásokat, és egy modern Windowsos virtuális asztalra telepíti azokat anélkül, hogy programkódot kellene megváltoztatnia vagy a felhasználói élményt befolyásolná. A Cloudhouse tovább bővíti a Windows virtuális asztal értékét a mögöttes operációs rendszerből származó alkalmazások elkülönítésével, így lehetővé téve a Windows karbantartási frissítéseinek kivonását anélkül, hogy ez hatással lenne a tároló alkalmazásra.
 
 - [Lépjen a partner webhelyére](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
@@ -111,9 +109,9 @@ A Wyse vékony ügyfelek a korlátozott támadási felülettel, a biztonsági me
 
 ![deviceTRUST embléma](./media/partners/devicetrust.png)
 
-a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely contextualizes a vállalati vállalatot. Lehetővé teszi a felhasználók számára, hogy bárhonnan, bármilyen hálózaton keresztül hozzáférjenek a Windows rendszerű virtuális asztalhoz, miközben az informatikai részlegek az irányítási követelmények teljesítéséhez szükséges információkat és szabályozást biztosítják. 
+a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely contextualizes a vállalati vállalatot. Lehetővé teszi a felhasználók számára, hogy bárhonnan, bármilyen hálózaton keresztül hozzáférjenek a Windows rendszerű virtuális asztalhoz, miközben az informatikai részlegek az irányítási követelmények teljesítéséhez szükséges információkat és szabályozást biztosítják.
 
-a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek. 
+a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek.
 
 - [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
 
@@ -121,7 +119,7 @@ a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a k�
 
 ![Ekran-rendszerembléma](./media/partners/ekran.png)
 
-A Ekran System egy Windows rendszerű virtuális asztali érték – partner hozzáadása, amely lehetővé teszi, hogy a csapatok az összes távoli felhasználói tevékenységet figyelik Microsoft Azure virtuális gépeken. A Ekran rendszer használatával a közzétett alkalmazásokban vagy virtuális asztalokon lévő összes felhasználói munkamenethez rögzítheti a képernyőn megjelenő tevékenységeket, a kontextusban gazdag metaadatok, például az alkalmazások neve, az aktív ablak címei, a felkeresett URL-címek és a billentyűleütések széles körének begyűjtése során. A speciális funkciók részletes láthatóságot és gyors incidenseket biztosítanak, így a Ekran rendszer hatékony belső veszélyforrások kezelésére és megfelelőségi megoldásra tesz szert.  
+A Ekran System egy Windows rendszerű virtuális asztali érték – partner hozzáadása, amely lehetővé teszi, hogy a csapatok az összes távoli felhasználói tevékenységet figyelik Microsoft Azure virtuális gépeken. A Ekran rendszer használatával a közzétett alkalmazásokban vagy virtuális asztalokon lévő összes felhasználói munkamenethez rögzítheti a képernyőn megjelenő tevékenységeket, a kontextusban gazdag metaadatok, például az alkalmazások neve, az aktív ablak címei, a felkeresett URL-címek és a billentyűleütések széles körének begyűjtése során. A speciális funkciók részletes láthatóságot és gyors incidenseket biztosítanak, így a Ekran rendszer hatékony belső veszélyforrások kezelésére és megfelelőségi megoldásra tesz szert.
 
 A Ekran rendszer ügyfeleinek egyedi, lebegőpontos licencelése automatikusan támogatja a dinamikusan változó virtuális asztalok használatát. A Ekran rendszer lehetővé teszi, hogy automatikusan törölje a licencek hozzárendelését a törölt nem állandó virtuális asztalokról, és távolítsa el azokat az adatbázisból. A Ekranrendszer zökkenőmentesen integrálható a Azure Active Directory és az Azure Sentinel szolgáltatással.
 
@@ -144,7 +142,7 @@ Amikor egy felhasználó bejelentkezik a virtuális asztalra, a FabulaTech szoft
 ![Flexxible IT-embléma](./media/partners/flexxible.png)
 
 A Flexxible egy Windows rendszerű virtuális asztali érték – partner hozzáadása, amely lehetővé teszi a szervezetek számára a Windows virtuális asztal és a Citrix Workspace-infrastruktúra gyors méretezését, monitorozását és hatékony kezelését. Flexxible | A SUITE lehetővé teszi a rendszergazdák számára, hogy a helyszíni és az Azure-ban üzemeltetett Windows rendszerű virtuális asztali számítási feladatokat intelligens módon tudják kiépíteni és kezelni.
- 
+
 A Flexxible technológiája kiterjeszti a natív Windows-alapú virtuális asztali és Citrix munkaterület értékét a gyakori folyamatok automatizálásával az infrastruktúra-konfiguráció, az asztali üzembe helyezés és a napi felügyelet egyszerűsítése érdekében. A SUITE összetett PowerShell-parancsfájlok vagy időigényes manuális folyamatok nélkül biztosít méretezhető asztali telepítést, kiterjedt figyelést és jelentéskészítést, valamint biztonságos delegált felügyeletet. Ezek a funkciók lehetővé teszik a fejlett szolgáltatási szintek és a minőségi Windowsos virtuális asztali környezet kialakítását a felhasználók számára.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
@@ -165,7 +163,7 @@ Ahogy a HP az iparági trendek, az ügyfelek kihívásai és a fejlesztési foly
 ![IGEL embléma](./media/partners/igel.png)
 
 A IGEL a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltatások jóváhagyott és ellenőrzött partnere. A IGEL a IGEL operációs rendszert, a Felhőbeli munkaterületekhez készült Next-Gen Edge operációs rendszert, amely a virtuális alkalmazások, az asztali számítógépek és a Felhőbeli munkaterületek elérését teszi lehetővé egy könnyű, egyszerű és biztonságos Linux-alapú végponttal. A platform-független szoftveres megoldás, a IGEL operációs rendszer és a kiszolgáló-alapú felügyeleti és vezérlési szoftver, az IGEL Universal Management Suite (UMS) egy olyan végpont-felügyeleti és vezérlési megoldás, amely a vállalatok számára teljes mértékben kihasználja az Azure-alapú felhőalapú példányokat és a Windowsos virtuális asztali asztalokat, beleértve a gazdaságos többmunkamenetes Windows virtuális asztalt, miközben csökkenti
- 
+
 A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, asztali gépeket és Felhőbeli munkaterület-protokollt támogatja a Citrixtől, a Microsofttól és a VMware-től. Integrált technológiákat tartalmaz a 85 perifériás, Interface és Protocol partnerektől, hogy a szervezetek gyorsan fogadjanak el Windowsos virtuális asztali szolgáltatásokat a saját egyedi felhasználói környezetében. A IGEL operációs rendszer írásvédett, moduláris végpont operációs rendszer, amely segít a védelemben. Emellett egy teljes "megbízhatósági láncot" is tartalmaz, amely ellenőrzi a végponton futó legfontosabb főbb folyamatok integritását, a végponti hardvertől (néhány kiválasztott modelltől), vagy az UEFI folyamattól egészen az Azure Cloud és a Windows Virtual Desktop szolgáltatásokhoz. A IGEL operációs rendszerrel a vállalatok az Azure-felhőből előfizethetnek a Windows rendszerű virtuális asztalra, így teljes körű megbízhatósággal rendelkeznek a felhasználói végpont eszközeinek integritásában, biztonságában és kezelhetőségében.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
@@ -175,9 +173,9 @@ A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, aszta
 
 ![Ivanti embléma](./media/partners/ivanti.png)
 
-A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti lehetővé teszi, hogy a felhasználók összetett projekteket, például a Windows 10 rendszerbe való áttelepítést, a Microsoft 365 bevezetését vagy a szolgáltatások felhőbe való áthelyezését. 
+A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti lehetővé teszi, hogy a felhasználók összetett projekteket, például a Windows 10 rendszerbe való áttelepítést, a Microsoft 365 bevezetését vagy a szolgáltatások felhőbe való áthelyezését.
 
-A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok felszámolását. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát. 
+A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok felszámolását. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát.
 
 - [Lépjen a partner webhelyére](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -237,9 +235,9 @@ A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megk�
 
 ![Numecent embléma](./media/partners/numecent.png)
 
-A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a felhasználók által igényelt konfiguráció mennyiségét, csökkenti az alkalmazások frissítéseit, és leegyszerűsíti az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
+A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a felhasználók által igényelt konfiguráció mennyiségét, csökkenti az alkalmazások frissítéseit, és leegyszerűsíti az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található.
 
-A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést, ha a Windows rendszerű virtuális asztali környezetekben valós időben szükség szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
+A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést, ha a Windows rendszerű virtuális asztali környezetekben valós időben szükség szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével.
 
 - [Lépjen a partner webhelyére](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
@@ -247,9 +245,9 @@ A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging
 
 ![PolicyPak embléma](./media/partners/policypak.png)
 
-A PolicyPak szoftver egy Windows rendszerű virtuális asztali partner, amely az alkalmazások, az asztal, a böngészők, a Java és a biztonsági beállítások teljes körű felügyeletét végzi. A PolicyPak biztosítja az asztali, a rendszerszintű és a biztonsági beállítások megfelelőségét. A PolicyPak a Windows rendszerű virtuális asztalok értékét a Windows beépített felügyeletét javító összetevők hozzáadásával fokozza. A meglévő Active Directory Csoportházirend és/vagy a Windows Intune használatával biztosíthatja a PolicyPak beállításait, és növelheti a rendszergazdák számára a Windows 10-es gépek felügyeletének képességét. 
+A PolicyPak szoftver egy Windows rendszerű virtuális asztali partner, amely az alkalmazások, az asztal, a böngészők, a Java és a biztonsági beállítások teljes körű felügyeletét végzi. A PolicyPak biztosítja az asztali, a rendszerszintű és a biztonsági beállítások megfelelőségét. A PolicyPak a Windows rendszerű virtuális asztalok értékét a Windows beépített felügyeletét javító összetevők hozzáadásával fokozza. A meglévő Active Directory Csoportházirend és/vagy a Windows Intune használatával biztosíthatja a PolicyPak beállításait, és növelheti a rendszergazdák számára a Windows 10-es gépek felügyeletének képességét.
 
-A PolicyPak leggyakrabban a helyi rendszergazdai jogosultságok eltávolítására és az UAC-kérések letiltására, a ransomware, a több böngésző kezelésére, az Internet Explorer vállalati és kompatibilitási módjaira, a csoportházirend-objektumok számának csökkentésére, a Windows 10 fájltársítások kezelésére, a Windows 10 Start menüjének és a tálcára, valamint a Windows 10 szolgáltatásainak és választható szolgáltatásainak kezelésére használhatók.  
+A PolicyPak leggyakrabban a helyi rendszergazdai jogosultságok eltávolítására és az UAC-kérések letiltására, a ransomware, a több böngésző kezelésére, az Internet Explorer vállalati és kompatibilitási módjaira, a csoportházirend-objektumok számának csökkentésére, a Windows 10 fájltársítások kezelésére, a Windows 10 Start menüjének és a tálcára, valamint a Windows 10 szolgáltatásainak és választható szolgáltatásainak kezelésére használhatók.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Lépjen a partner webhelyére](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
@@ -258,9 +256,9 @@ A PolicyPak leggyakrabban a helyi rendszergazdai jogosultságok eltávolításá
 
 ![PrinterLogic embléma](./media/partners/printerlogic.png)
 
-A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatói platform, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és egy magasan elérhető kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztali környezet és az Azure értékét, így könnyen kezelhető a nyomtatók központi telepítése és üzembe helyezése bármely nyomtatón vagy végponti operációs rendszeren. 
+A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatói platform, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és egy magasan elérhető kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztali környezet és az Azure értékét, így könnyen kezelhető a nyomtatók központi telepítése és üzembe helyezése bármely nyomtatón vagy végponti operációs rendszeren.
 
-A SaaS vagy webes veremként elérhető PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkeznek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
+A SaaS vagy webes veremként elérhető PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkeznek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását.
 
 - [Lépjen a partner webhelyére](https://www.printerlogic.com).
 
@@ -279,8 +277,8 @@ A nyomtatás alapvető feladat minden irodai és kisméretű üzleti környezetb
 
 ![RDPSoft embléma](./media/partners/rdpsoft.png)
 
-A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatékony és költséges monitorozási, felügyeleti és jelentéskészítési megoldásokat kínál. A Távoli asztal Commander-ajánlatok lehetővé teszik az informatikai szakemberek számára, hogy betekintést kapjanak a Windows rendszerű virtuális asztali környezetek állapotával, teljesítményével, felhasználói tevékenységével, licencelésével és biztonságával. 
- 
+A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatékony és költséges monitorozási, felügyeleti és jelentéskészítési megoldásokat kínál. A Távoli asztal Commander-ajánlatok lehetővé teszik az informatikai szakemberek számára, hogy betekintést kapjanak a Windows rendszerű virtuális asztali környezetek állapotával, teljesítményével, felhasználói tevékenységével, licencelésével és biztonságával.
+
 A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményéről és terheléséről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL Database-példányra felülvizsgálat céljából. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
 
 - [Lépjen a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
@@ -322,7 +320,7 @@ A ThinPrint ezeep-megoldása a meglévő vállalati nyomtatási infrastruktúrá
 
 ![Tricerat embléma](./media/partners/tricerat.png)
 
-A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuális asztali és egyéb asztali platformokhoz. A Tricerat szoftver robusztus funkcionalitással rendelkezik, és jobb felhasználói élményt nyújt mind a felhasználók, mind a rendszergazdák számára. A rendszergazdák a teljes illesztőprogram-felügyelettel, a nyomtatási várólisták egyszerűsített üzembe helyezésével és a hibrid platformok közötti konzisztens felügyelettel szereznek hatékonyságot. A felhasználói élmény a felhasználók, az eszközök és a hálózati hely alapján történő intelligens nyomtatási várólisták, valamint a gyors nyomtató kiválasztására szolgáló önkiszolgáló lehetőségek révén növeli a bejelentkezési időt. 
+A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuális asztali és egyéb asztali platformokhoz. A Tricerat szoftver robusztus funkcionalitással rendelkezik, és jobb felhasználói élményt nyújt mind a felhasználók, mind a rendszergazdák számára. A rendszergazdák a teljes illesztőprogram-felügyelettel, a nyomtatási várólisták egyszerűsített üzembe helyezésével és a hibrid platformok közötti konzisztens felügyelettel szereznek hatékonyságot. A felhasználói élmény a felhasználók, az eszközök és a hálózati hely alapján történő intelligens nyomtatási várólisták, valamint a gyors nyomtató kiválasztására szolgáló önkiszolgáló lehetőségek révén növeli a bejelentkezési időt.
 
 A Tricerat esetében a nyomtatás zökkenőmentes a Windows rendszerű virtuális asztal és azon kívül is. A Tricerat szoftver lehetővé teszi a rendszergazdák számára a helyszíni nyomtatók egyszerű összekapcsolását a felhővel, a hagyományos környezetek vállalati nyomtatási felügyeletének bővítését új, modern munkaterületekre.
 
@@ -344,7 +342,7 @@ a uberAgent egy figyelési és elemzési termék, amely a végfelhasználói sz�
 
 A munkaterület 365 minden információt (üzleti adatokat, dokumentumokat, kommunikációs és Micro alkalmazásokat) egyesít, és hozzáférést biztosít bármely helyi, webes vagy üzemeltetett alkalmazáshoz egy munkaterületen. A szolgáltatás automatikusan alkalmazkodik a szerepkörhöz, a helyhez, az eszközhöz és a böngészőhöz, és így személyre szabott munkaterületet biztosít. A felhasználók egyszerűsített és konzisztens élményt nyújtanak, függetlenül attól, hogy milyen technológiák vannak a felszín alatt. Integrálhatja jelenlegi megoldásait, például az RDP-, a Citrix-és az örökölt alkalmazásokat, és áthelyezheti őket a Windows rendszerű virtuális asztalra, miközben megtartja ugyanazt a felhasználói élményt. Emellett egyetlen dokumentumkezelő alkalmazásban is integrálhatja az összes fájl helyét, például a SharePoint, a OneDrive, a Teams és a fájlkiszolgálók szolgáltatásait.
 
-A (z) 365 munkaterületen a rendszergazdák a Windows rendszerű virtuális asztali alkalmazások számára elérhetővé tehetik a felhasználók számára az engedélyek alapján elérhetővé tett alkalmazásokat. A rendszergazda ezután hozzáadhatja ezeket az alkalmazásokat egy megosztott alkalmazáscsoport számára. Ha a Windows rendszerű virtuális asztali alkalmazás látható a 365 munkaterületen, a felhasználók a munkaterületről is megnyithatják azt anélkül, hogy újra be kellene jelentkezniük. 
+A (z) 365 munkaterületen a rendszergazdák a Windows rendszerű virtuális asztali alkalmazások számára elérhetővé tehetik a felhasználók számára az engedélyek alapján elérhetővé tett alkalmazásokat. A rendszergazda ezután hozzáadhatja ezeket az alkalmazásokat egy megosztott alkalmazáscsoport számára. Ha a Windows rendszerű virtuális asztali alkalmazás látható a 365 munkaterületen, a felhasználók a munkaterületről is megnyithatják azt anélkül, hogy újra be kellene jelentkezniük.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
 - [Lépjen a partner webhelyére](https://workspace365.net/product-tour/hybrid-workspace-365/).

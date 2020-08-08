@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9bd0f1cbe1f4797a0187952b94ca48077bb3134c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854300"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004481"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Security Center Azure biztonsági alapterve
 
@@ -190,7 +190,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a Azure Security Cen
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket az Azure CLI-vel, a Azure PowerShellsal vagy a Azure Portal eszközzel leltározott vagy lekérdezheti. A Azure Security Center beépített szerepkörökkel rendelkezik a biztonsági olvasó vagy a biztonsági Admin', amely lehetővé teszi a felhasználóknak a biztonsági házirendek olvasását vagy frissítését, valamint a riasztások és javaslatok elutasítását.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrásokhoz való hozzáférés kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket az Azure CLI-vel, a Azure PowerShellsal vagy a Azure Portal eszközzel leltározott vagy lekérdezheti. A Azure Security Center beépített szerepkörökkel rendelkezik a biztonsági olvasó vagy a biztonsági Admin', amely lehetővé teszi a felhasználóknak a biztonsági házirendek olvasását vagy frissítését, valamint a riasztások és javaslatok elutasítását.
 
 - [Engedélyek az Azure Security Centerben](security-center-permissions.md)
 
@@ -344,7 +344,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató**: az elkülönítés megvalósítása különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférés szabályozása Azure Active Directory RBAC keresztül végezhető el.
+**Útmutató**: az elkülönítés megvalósítása különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure RBAC segítségével szabályozhatja.
 
 Alapértelmezés szerint a rendszer a Security Center háttér-szolgáltatásban tárolja Azure Security Center az adattárolást. Ha a szervezet a saját erőforrásaiban tárolja ezeket az adattárakat, konfigurálhat egy Log Analytics munkaterületet Security Center adatai, riasztásai és javaslatai tárolására. Ha saját munkaterületet használ, további elkülönítést is hozzáadhat a különböző munkaterületek konfigurálásával aszerint, hogy az adott környezet milyen környezetben származik.
 
@@ -376,15 +376,15 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-controls-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához 
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC 
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés használata a Azure Security Center kapcsolódó adatokhoz és erőforrásokhoz való hozzáférés kezeléséhez. A Azure Security Center beépített szerepkörökkel rendelkezik a biztonsági olvasó vagy a biztonsági Admin', amely lehetővé teszi a felhasználóknak a biztonsági házirendek olvasását vagy frissítését, valamint a riasztások és javaslatok elutasítását. A Security Center által gyűjtött adatokat tároló Log Analytics munkaterület olyan beépített szerepkörökkel is rendelkezik, mint például a "Log Analytics Reader", a "Log Analytics közreműködő" és mások. Rendelje hozzá a felhasználók számára a szükséges feladatok elvégzéséhez szükséges legkevésbé megengedő szerepkört. Például rendelje hozzá az olvasó szerepkört azokhoz a felhasználókhoz, akik csak az erőforrások biztonsági állapotával kapcsolatos információkat szeretnének megtekinteni, de nem végeznek műveleteket, például javaslatok alkalmazása vagy szerkesztési szabályzatok.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával kezelheti a Azure Security Center kapcsolódó adatokhoz és erőforrásokhoz való hozzáférést. A Azure Security Center beépített szerepkörökkel rendelkezik a biztonsági olvasó vagy a biztonsági Admin', amely lehetővé teszi a felhasználóknak a biztonsági házirendek olvasását vagy frissítését, valamint a riasztások és javaslatok elutasítását. A Security Center által gyűjtött adatokat tároló Log Analytics munkaterület olyan beépített szerepkörökkel is rendelkezik, mint például a "Log Analytics Reader", a "Log Analytics közreműködő" és mások. Rendelje hozzá a felhasználók számára a szükséges feladatok elvégzéséhez szükséges legkevésbé megengedő szerepkört. Például rendelje hozzá az olvasó szerepkört azokhoz a felhasználókhoz, akik csak az erőforrások biztonsági állapotával kapcsolatos információkat szeretnének megtekinteni, de nem végeznek műveleteket, például javaslatok alkalmazása vagy szerkesztési szabályzatok.
 
 - [Azure Log Analytics-munkaterület engedélyei](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
 - [Engedélyek az Azure Security Centerben](security-center-permissions.md)
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -772,7 +772,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

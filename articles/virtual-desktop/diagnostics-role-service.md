@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali problémák diagnosztizálása – Azure
 description: A Windows rendszerű virtuális asztali diagnosztika szolgáltatás használata a problémák diagnosztizálásához.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1e3d8eb9cb40d46ae0624be9d37fd199accd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288760"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005098"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>A Windows rendszerű virtuális asztali problémák azonosítása és diagnosztizálása
 
@@ -63,7 +61,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 |14|UnexpectedNetworkDisconnect|A hálózattal létesített kapcsolódás megszakadt. Kérje meg a felhasználót, hogy kapcsolódjon újra.|
 |24|ReverseConnectFailed|A gazdagép virtuális gépe nem rendelkezik közvetlen RD-átjárói vonallal. Győződjön meg arról, hogy az átjáró IP-címe oldható fel.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Windows rendszerű virtuális asztali szerepkörökkel kapcsolatos további információkért lásd: [Windows rendszerű virtuális asztali környezet](environment-setup.md).
 

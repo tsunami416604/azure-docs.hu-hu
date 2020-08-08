@@ -3,15 +3,15 @@ title: Fürtkonfiguráció az Azure Kubernetes Servicesben (ak)
 description: Megtudhatja, hogyan konfigurálhat fürtöt az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252011"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008797"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 Ha normál Gen1-csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` .
 
+
+## <a name="ephemeral-os-preview"></a>Ideiglenes operációs rendszer (előzetes verzió)
+
+Alapértelmezés szerint az Azure-beli virtuális gépek operációsrendszer-lemezét a rendszer automatikusan replikálja az Azure Storage-ba, így elkerülhető, hogy a virtuális gépnek másik gazdagépre kell áthelyeznie az adatvesztést. Mivel azonban a tárolók nem rendelkeznek helyi állapottal, ez a viselkedés korlátozott értéket kínál, miközben némi hátrányt biztosít, beleértve a csomópontok kiosztását és az olvasási/írási késleltetést.
+
+Ezzel szemben az elmúló operációsrendszer-lemezeket csak a gazdagép tárolja, ugyanúgy, mint egy ideiglenes lemezzel. Ez alacsonyabb olvasási/írási késést biztosít, valamint a csomópontok gyorsabb skálázását és a fürtök frissítését.
+
+Az ideiglenes lemezhez hasonlóan a virtuális gép ára is tartalmaz egy időszakos operációsrendszer-lemezt, így további tárolási költségek nem merülnek fel.
+
+Regisztrálja a `EnableEphemeralOSDiskPreview` szolgáltatást:
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+A következő Azure CLI-parancsokkal telepítheti az AK-előnézeti CLI-bővítményt:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítményt:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Ideiglenes operációs rendszer használata új fürtökön (előzetes verzió)
+
+Konfigurálja úgy a fürtöt, hogy az elmúló operációsrendszer-lemezeket használja a fürt létrehozásakor. A `--aks-custom-headers` jelzővel állíthatja be az ideiglenes operációs rendszert az új fürt operációsrendszer-lemezének típusaként.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+Ha a hálózatra csatlakoztatott operációsrendszer-lemezekkel szeretne normál fürtöt létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` . Azt is megteheti, hogy az alábbi módon további elmúló operációsrendszer-csomópont-készleteket ad hozzá.
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Ideiglenes operációs rendszer használata meglévő fürtökön (előzetes verzió)
+Új csomópont-készlet beállítása az ideiglenes operációsrendszer-lemezek használatára. Használja a `--aks-custom-headers` jelzőt az operációsrendszer-lemez típusaként az adott csomópont operációsrendszer-lemezének típusaként.
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> Az elmúló operációs rendszerrel a virtuális gépek és a példányok rendszerképeinek üzembe helyezése a virtuális gép gyorsítótárának méretétől függetlenül végezhető el. Az AK esetében az alapértelmezett csomópont operációsrendszer-lemez konfigurációja 100GiB használ, ami azt jelenti, hogy olyan virtuálisgép-méretre van szüksége, amelynek a gyorsítótára nagyobb, mint 100 GiB. Az alapértelmezett Standard_DS2_v2 gyorsítótárának mérete 86 GiB, ami nem elég nagy. A Standard_DS3_v2 gyorsítótárának mérete 172 GiB, ami elég nagy. A használatával csökkentheti az operációsrendszer-lemez alapértelmezett méretét is `--node-osdisk-size` . Az AK-lemezképek minimális mérete 30GiB. 
+
+Ha hálózattal csatlakoztatott operációsrendszer-lemezekkel rendelkező csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` .
+
 ## <a name="custom-resource-group-name"></a>Egyéni erőforráscsoport neve
 
 Ha Azure Kubernetes Service-fürtöt helyez üzembe az Azure-ban, a rendszer létrehoz egy második erőforráscsoportot a munkavégző csomópontokhoz. Alapértelmezés szerint az AK a csomópont erőforráscsoportot nevezi el `MC_resourcegroupname_clustername_location` , de a saját nevét is megadhatja.
@@ -253,12 +314,13 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 - A csomópont erőforráscsoporthoz tartozó felügyelt erőforrások nevének megadása.
 - Módosíthatja vagy törölheti az Azure-ban létrehozott, felügyelt erőforrások címkéit a csomópont-erőforráscsoporton belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan `Kured` [alkalmazhatja a biztonsági és a kernel-frissítéseket a fürt Linux-csomópontjaira](node-updates-kured.md) .
 - Lásd: [Azure Kubernetes Service-(ak-) fürt frissítése](upgrade-cluster.md) , amelyből megtudhatja, hogyan frissítheti a fürtöt a Kubernetes legújabb verziójára.
 - További információ [ `containerd` és Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - Tekintse meg az [AK-val kapcsolatos gyakori kérdések](faq.md) listáját, ahol válaszokat talál a gyakori AK-kérdésekre.
+- További információ az [elmúló operációsrendszer-lemezekről](../virtual-machines/ephemeral-os-disks.md).
 
 
 <!-- LINKS - internal -->

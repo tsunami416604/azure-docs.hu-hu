@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan használhatja Azure Active Directory csoporttag
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 646b1b5fb5079f0b959aaa2337c1dbab09ff4134
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057337"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006842"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>A fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitásokkal az Azure Kubernetes szolgáltatásban
 
@@ -410,5 +410,5 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

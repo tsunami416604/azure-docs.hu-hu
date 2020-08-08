@@ -6,48 +6,46 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/30/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: dd7a8b94aefbf389afef30b327ffaa367a30dd51
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2349c92fb74b546eaa929752f3d2343b9c97e6d1
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108496"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010949"
 ---
 > [!NOTE]
 > A `PHI` (védett állapottal kapcsolatos) adatok észleléséhez használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
 >
-> Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
  
 A rendszer a következő entitás-kategóriákat adja vissza a végpontra irányuló kérelmek küldésekor `/v3.1-preview.1/entities/recognition/pii` .
 
-| Kategória   | Subcategory | Leírás                          | Modell verziójának indítása | Jegyzetek |
+| Kategória   | Alkategória | Leírás                          | Modell verziójának indítása | Megjegyzések |
 |------------|-------------|--------------------------------------|------------------------|---|
-| Személy     | N.A.         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
-| PersonType | N.A.         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
-| PhoneNumber | N.A. | Telefonszámok (csak az USA-beli és az EU-telefonszámok). | `2019-10-01` | Visszaadott érték`domain=phi` |
-|Szervezet  | N.A. | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek.  | `2019-10-01` | A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.  |
-|Szervezet | Orvosi | Orvosi vállalatok és csoportok. | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-|Szervezet | Értéktőzsde | Tőzsdei csoportok. | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| Szervezet | Sport | Sporttal kapcsolatos szervezetek. | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| Cím | N.A. | Teljes levelezési címek.  | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| EU GPS-koordináták | N.A. | GPS-koordináták az Európai Unión belüli helyszínekhez.  | `2019-10-01` |  |
-| E-mail | N.A. | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
-| URL-cím | N.A. | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| IP | N.A. | Hálózati IP-címek. | `2019-10-01` | |
-| DateTime | N.A. | Dátum és napszakok. | `2019-10-01` |  | 
+| Személy     | N/A         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
+| PersonType | N/A         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
+| PhoneNumber | N/A | Telefonszámok (csak az USA-beli és az EU-telefonszámok). | `2019-10-01` | Visszaadott érték`domain=phi` |
+|Szervezet  | N/A | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek.  | `2019-10-01` | A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.  |
+|Szervezet | Orvosi | Orvosi vállalatok és csoportok. | `2020-04-01` |  |
+|Szervezet | Értéktőzsde | Tőzsdei csoportok. | `2020-04-01` |  |
+| Szervezet | Sport | Sporttal kapcsolatos szervezetek. | `2020-04-01` |  |
+| Cím | N/A | Teljes levelezési címek.  | `2020-04-01` | Szintén visszaadott `domain=phi` . |
+| EU GPS-koordináták | N/A | GPS-koordináták az Európai Unión belüli helyszínekhez.  | `2019-10-01` |  |
+| E-mail | N/A | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
+| URL-cím | N/A | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
+| IP | N/A | Hálózati IP-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
+| DateTime | N/A | Dátum és napszakok. | `2019-10-01` |  | 
 | DateTime | Dátum | Naptári dátumok. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| Mennyiség | N.A. | Számok és numerikus mennyiségek. | `2019-10-01` |  |
+| Mennyiség | N/A | Számok és numerikus mennyiségek. | `2019-10-01` |  |
 | Mennyiség | Kor | Alábbi korhatárt szabja. | `2019-10-01` | | |
-| Betegségek nemzetközi osztályozása (ICD-9-CM) | N.A. | A betegségek nemzetközi besorolásával, a kilencedik változattal kapcsolatos entitások.   | `2020-04-01` | |
-| Betegségek nemzetközi osztályozása (ICD-10-CM) | N.A. | A betegségek nemzetközi besorolásával, tizedik változatával kapcsolatos entitások.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure-információk
 
 Az entitás kategóriája tartalmaz egy azonosítható Azure-információt, beleértve a hitelesítési adatokat és a kapcsolatok karakterláncait. A modell verziójától kezdődően érhető el `2019-10-01` . A paraméterrel nem tért vissza `domain=phi` .
 
-| Subcategory                           | Leírás                                                                 |
+| Alkategória                           | Leírás                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB-hitelesítési kulcs             | Egy Azure DocumentDB-kiszolgáló engedélyezési kulcsa.                           |
 | Azure IAAS adatbázis-kapcsolatok karakterlánca és Azure SQL-kapcsolatok karakterlánca | Az Azure infrastruktúra-szolgáltatás (IaaS) adatbázisának és az SQL-kapcsolatok karakterláncának a kapcsolatainak karakterlánca. |

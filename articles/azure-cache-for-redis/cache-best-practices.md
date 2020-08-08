@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008319"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007913"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
 Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
@@ -55,7 +55,7 @@ A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net munkamenet-szolgáltató](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [ASP.NET munkamenet-szolgáltató](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>Mikor biztonságos az Újrapróbálkozás?
@@ -73,13 +73,13 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis cache-példánynak.
  * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
- * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Példa PowerShell-parancsfájlra:
+ * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Példa a PowerShell parancsprogramra:
      >PowerShell-ExecutionPolicy korlátozás nélküli engedélyezés-NetAdapterRSS-Name (Get-NetAdapter). név 
      
  * **Érdemes lehet prémium szintű Redis-példányokat használni**.  Ezek a gyorsítótár-méretek jobb hálózati késést és átviteli sebességet biztosítanak, mivel a processzor és a hálózat számára is jobb hardveren futnak.
  
      > [!NOTE]
-     > A megfigyelt teljesítmény eredményei [itt jelennek](cache-faq.md#azure-cache-for-redis-performance) meg a referenciában.   Ügyeljen arra is, hogy az SSL/TLS felvesz némi terhelést, így eltérő késést és/vagy átviteli sebességet érhet el, ha átviteli titkosítást használ.
+     > A megfigyelt teljesítmény eredményei [itt jelennek](cache-planning-faq.md#azure-cache-for-redis-performance) meg a referenciában.   Ügyeljen arra is, hogy az SSL/TLS felvesz némi terhelést, így eltérő késést és/vagy átviteli sebességet érhet el, ha átviteli titkosítást használ.
  
 ### <a name="redis-benchmark-examples"></a>Redis – teljesítményteszt-példák
 **Tesztelés előtti beállítás**: Készítse elő a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.

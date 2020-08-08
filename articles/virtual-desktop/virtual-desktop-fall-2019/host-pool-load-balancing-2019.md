@@ -1,19 +1,17 @@
 ---
 title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet terheléselosztása – Azure
 description: Gazdagépek terheléselosztási módszerei a Windows rendszerű virtuális asztali környezetekhez.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 940863b983b00dbb3c4af590d75868665372f818
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284999"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002308"
 ---
 # <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Gazdagépek terheléselosztási módszerei a Windows Virtual Desktopban (klasszikus)
 

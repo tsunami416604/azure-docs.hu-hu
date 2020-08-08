@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825140"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006604"
 ---
 # <a name="configure-and-optimize-vms"></a>Virtuális gépek konfigurálása és optimalizálása
 
@@ -27,9 +27,18 @@ Ez a cikk ismert technikákat használ a InfiniBand-kompatibilis [H-sorozat](../
 ## <a name="vm-images"></a>VM-lemezképek
 A InfiniBand-kompatibilis virtuális gépeken a megfelelő illesztőprogramok szükségesek a RDMA engedélyezéséhez. Linux rendszeren a piactéren elérhető CentOS-HPC virtuálisgép-lemezképek előre konfigurálva vannak a megfelelő illesztőprogramokkal. Az Ubuntu-alapú virtuálisgép-lemezképek a megfelelő illesztőprogramokkal konfigurálhatók az [itt leírt utasítások](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)alapján. Azt is javasoljuk, hogy hozzon létre egyéni virtuálisgép- [rendszerképeket](../../linux/tutorial-custom-images.md) a megfelelő illesztőprogramokkal és konfigurációval, és használja azokat ismétlődően.
 
+> [!NOTE]
+> A GPU-t használó [N sorozatú](../../sizes-gpu.md) virtuális gépeken a megfelelő GPU-illesztőprogramokat is meg kell adni, amelyek hozzáadhatók a virtuálisgép- [bővítményekben](../../extensions/hpccompute-gpu-linux.md) vagy [manuálisan](../../linux/n-series-driver-setup.md). A piactéren néhány virtuálisgép-rendszerkép is előre telepítve van az NVIDIA GPU-illesztőprogramokkal.
+
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM-rendszerképek
+
+#### <a name="non-sr-iov-enabled-vms"></a>Nem SR-IOV-kompatibilis virtuális gépek
 A RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances), a CentOS-HPC 6,5-es vagy újabb verziójának használata esetén a piactéren legfeljebb 7,5-ig használhatók a piactéren. A [H16 sorozatú virtuális gépek](../../h-series.md)esetében például a 7,1 és a 7,5 verziók használata javasolt. Ezek a virtuálisgép-rendszerképek előre be vannak töltve a RDMA és az Intel MPI 5,1-es verziójának közvetlen hálózati illesztőprogramjaival.
 
+> [!NOTE]
+> Ezen CentOS-alapú HPC-rendszerképeken a nem SR-IOV-kompatibilis virtuális gépeken a kernel frissítései le vannak tiltva a **yum** konfigurációs fájlban. Ennek az az oka, hogy a NetworkDirect Linux RDMA-illesztőprogramok RPM-csomagként vannak elosztva, és előfordulhat, hogy az illesztőprogram frissítései nem működnek, ha a kernel frissül.
+
+#### <a name="sr-iov-enabled-vms"></a>SR-IOV-kompatibilis virtuális gépek
   Az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances), a [CentOS-HPC 7,6-es vagy újabb](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verziójú virtuálisgép-lemezképek alkalmasak a piactéren. Ezek a virtuálisgép-rendszerképek optimalizáltak és előre betöltve vannak a OFED-illesztőprogramokkal a RDMA és a különböző gyakran használt MPI-kódtárak és tudományos számítástechnikai csomagok számára, és a legegyszerűbb módszer a kezdéshez.
 
   Példa a CentOS-HPC 7,6-es és újabb verziójú virtuálisgép-lemezképek létrehozásához használt parancsfájlokra a [azhpc-lemezképek](https://github.com/Azure/azhpc-images/tree/master/centos)tárházában.

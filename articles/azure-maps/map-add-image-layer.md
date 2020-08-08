@@ -1,6 +1,6 @@
 ---
 title: Képréteg hozzáadása térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan fedi le a képeket a térképeken a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogyan adhat hozzá képeket a térképekhez. Tekintse meg, hogyan szabhatja testre a képrétegeket és az átfedésben lévő rendszerképeket a Azure Maps web SDK használatával a koordináták rögzített csoportjain.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 6ffec1afc44c6b920a64b4b92b384b6ce3829488
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a804272a92d98156122397ee7427dcb467fbdf0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286958"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010225"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Képréteg hozzáadása térképhez
 

@@ -1,19 +1,17 @@
 ---
 title: Mit takar a Windows Virtual Desktop? – Azure
 description: A Windows rendszerű virtuális asztal áttekintése.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386573"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002372"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
@@ -133,13 +131,13 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 multi-session, 1809-es verzió|Igen|Igen|No|Nem|
+|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|
 |Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|No|Nem|
-|Windows 7 Enterprise|Igen|Igen|No|Nem|
-|Windows Server 2019|Igen|Igen|No|Nem|
+|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|
+|Windows 7 Enterprise|Igen|Igen|Nem|Nem|
+|Windows Server 2019|Igen|Igen|Nem|Nem|
 |Windows Server 2016|Igen|Igen|Igen|Igen|
-|Windows Server 2012 R2|Igen|Igen|No|Nem|
+|Windows Server 2012 R2|Igen|Igen|Nem|Nem|
 
 ## <a name="next-steps"></a>Következő lépések
 

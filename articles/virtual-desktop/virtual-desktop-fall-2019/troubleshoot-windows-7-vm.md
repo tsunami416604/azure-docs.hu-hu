@@ -1,19 +1,17 @@
 ---
 title: Windows 7 rendszerű virtuális gépek Windows Virtual Desktop (klasszikus) – Azure
 description: Windows 7 rendszerű virtuális gépek (VM-EK) problémáinak megoldása Windowsos virtuális asztali (klasszikus) környezetben.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286342"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005414"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows 7 rendszerű virtuális gépek hibáinak megoldása a Windows Virtual Desktopban (klasszikus)
 
@@ -47,7 +45,7 @@ A hiba elhárításához vegye fel a felhasználót a Távoli asztal felhasznál
 2. Válassza ki azt a virtuális gépet, amelyen a hibaüzenet jelenik meg.
 3. Válassza **a parancs futtatása**lehetőséget.
 4. Futtassa a következő parancsot, és a `<username>` helyére írja be a hozzáadni kívánt felhasználó nevét:
-   
+
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add
    ```

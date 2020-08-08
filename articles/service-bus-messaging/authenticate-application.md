@@ -3,15 +3,15 @@ title: Alkalmazás hitelesítése Azure Service Bus entitásokhoz való hozzáf�
 description: Ez a cikk a Azure Service Bus entitások (várólisták, témakörök stb.) eléréséhez Azure Active Directoryekkel való hitelesítéssel kapcsolatos információkat tartalmaz.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f5142e59e1711d9bf63a7badc2d0947fd86f49f4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d18772dfa9cf444dc55d5e4cef6f31dd6c0d669
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835969"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006264"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
-Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a Service Bus entitások (várólisták, témakörök, előfizetések vagy szűrők) kérésének engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
+Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a Service Bus entitások (várólisták, témakörök, előfizetések vagy szűrők) kérésének engedélyezéséhez. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket biztosíthat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Áttekintés
 Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) egy Service Bus entitáshoz próbál hozzáférni, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
@@ -27,12 +27,12 @@ A Service Busra irányuló kérelmeket használó natív alkalmazások és webal
 
 
 ## <a name="assigning-azure-roles-for-access-rights"></a>Azure-szerepkörök kiosztása hozzáférési jogosultságokhoz
-Azure Active Directory (Azure AD) az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Azure Service Bus az Azure beépített szerepköreinek készletét határozza meg, amelyek magukban foglalják a Service Bus entitásokhoz való hozzáféréshez használt engedélyek közös készleteit, és egyéni szerepköröket is meghatározhat az adatok eléréséhez.
+Azure Active Directory (Azure AD) engedélyezi a hozzáférési jogokat az [Azure RBAC](../role-based-access-control/overview.md)keresztül a biztonságos erőforrásokhoz. Azure Service Bus az Azure beépített szerepköreinek készletét határozza meg, amelyek magukban foglalják a Service Bus entitásokhoz való hozzáféréshez használt engedélyek közös készleteit, és egyéni szerepköröket is meghatározhat az adatok eléréséhez.
 
 Ha az Azure-szerepköröket egy Azure AD-rendszerbiztonsági tag számára rendeli hozzá, az Azure hozzáférést biztosít az adott rendszerbiztonsági tag erőforrásaihoz. A hozzáférés az előfizetés, az erőforráscsoport vagy a Service Bus névtér szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>Az Azure beépített szerepkörei Azure Service Bus
-Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API segítségével való kezelése már védett a *szerepköralapú hozzáférés-vezérlési* (RBAC) modell használatával. Az Azure az alábbi beépített Azure-szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
+Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API-val való kezelése már védett az Azure RBAC-modell használatával. Az Azure az alábbi beépített Azure-szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
 
 - [Azure Service Bus adattulajdonos](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): lehetővé teszi az adathozzáférést Service Bus névterek és az entitások számára (várólisták, témakörök, előfizetések és szűrők)
 - [Azure Service Bus adatfeladó](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): ezt a szerepkört használva hozzáférést biztosíthat a Service Bus névtérhez és az entitásokhoz.
@@ -55,7 +55,7 @@ További információ a beépített szerepkörök meghatározásáról: a [szere
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával  
-Ha többet szeretne megtudni az Azure-erőforrásokhoz való hozzáférés kezeléséről a RBAC és a Azure Portal használatával, tekintse meg [ezt a cikket](..//role-based-access-control/role-assignments-portal.md). 
+Ha többet szeretne megtudni az Azure-erőforrásokhoz való hozzáférés kezeléséről az Azure RBAC és a Azure Portal használatával, tekintse meg [ezt a cikket](..//role-based-access-control/role-assignments-portal.md). 
 
 Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navigáljon az adott erőforráshoz a Azure Portal. Jelenítse meg az erőforrás hozzáférés-vezérlési (IAM) beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
 
@@ -150,16 +150,16 @@ A konzol alkalmazás futtatásakor a rendszer kéri, hogy válasszon ki egy forg
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
+- További információ az Azure RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
 - Az Azure-beli szerepkör-hozzárendelések Azure PowerShell, az Azure CLI vagy a REST API használatával történő hozzárendeléséről és kezeléséről a következő cikkekben talál további információt:
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése az Azure CLI-vel](../role-based-access-control/role-assignments-cli.md)
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése a REST API](../role-based-access-control/role-assignments-rest.md)
-    - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure Resource Manager-sablonokkal](../role-based-access-control/role-assignments-template.md)
+    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](../role-based-access-control/role-assignments-cli.md)
+    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](../role-based-access-control/role-assignments-rest.md)
+    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure Resource Manager sablonok használatával](../role-based-access-control/role-assignments-template.md)
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
-- [Service Bus RBAC-minták](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
+- [Azure RBAC-minták Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
 - [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 - [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 - [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)

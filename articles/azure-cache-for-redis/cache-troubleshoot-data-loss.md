@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184531"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008950"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Az Azure Cache for Redis adatvesztéssel járó hibáinak elhárítása
 
@@ -119,6 +119,6 @@ A standard és a prémium szintű gyorsítótárak sokkal nagyobb rugalmasságot
 ## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
-- [Milyen Azure cache-t használ a Redis-ajánlat és-méret használatához?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [A megfelelő szint kiválasztása](cache-overview.md#choosing-the-right-tier)
 - [Az Azure cache figyelése a Redis](cache-how-to-monitor.md)
-- [Hogyan Futtathatok Redis-parancsokat?](cache-faq.md#how-can-i-run-redis-commands)
+- [Hogyan Futtathatok Redis-parancsokat?](cache-development-faq.md#how-can-i-run-redis-commands)

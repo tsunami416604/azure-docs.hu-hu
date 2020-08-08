@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483924"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008525"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>IoT-adatexportálás a célhelyekre az Azure-ban
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>IoT-adatexportálás a célhelyekre az Azure-ban az adatexportálás használatával (örökölt)
 
-*Ez a témakör a rendszergazdákra vonatkozik.*
+> [!Note]
+> A IoT Centralban lévő adatexportálás új módon történik. Az új adatexportálás használatával szűrheti és bővítheti az exportált adatait, és exportálhatja azokat új célhelyekre, például webhook-végpontokra. Az új adatexportálásról [itt](./howto-use-data-export.md)tájékozódhat. Az új adatexportálás és az örökölt adatexportálás közötti különbségek megismeréséhez tekintse meg az [összehasonlító táblázatot](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export).
 
 Ez a cikk az Azure IoT Central adatexportálási funkciójának használatát ismerteti. Ezzel a szolgáltatással folyamatosan exportálhatja az adatait az **azure Event Hubsba**, **Azure Service Busba**vagy **Azure Blob Storage** -példányba. Az adatexportálás JSON-formátumot használ, és tartalmazhatja a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
 

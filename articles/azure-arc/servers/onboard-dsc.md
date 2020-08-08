@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6448a2d449f86e93630d9d555e101291aa84c71e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809612"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003881"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott gép ügynökének telepítése a Windows PowerShell DSC használatával
 
@@ -49,7 +49,7 @@ A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/get
 
 Az ebben a modulban található erőforrások úgy vannak kialakítva, hogy kezelhesse az Azure-beli csatlakoztatott gép ügynökének konfigurációját. A tartalmaz egy PowerShell-parancsfájlt is `AzureConnectedMachineAgent.ps1` , amely a `AzureConnectedMachineDsc\examples` mappában található. Közösségi erőforrásokat használ a letöltés és a telepítés automatizálásához, és kapcsolatot létesíteni az Azure arc használatával. Ez a szkript a [hibrid gépek az Azure-ba való összekapcsolásához a Azure Portal](onboard-portal.md) cikkben ismertetett hasonló lépéseket hajtja végre.
 
-Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, az [itt](onboard-portal.md#configure-the-agent-proxy-setting)ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy` . A parancs manuális futtatása helyett a [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modul használatával elvégezheti ezt a lépést a DSC-vel.
+Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, az [itt](manage-agent.md#update-or-remove-proxy-settings)ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy` . A parancs manuális futtatása helyett a [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) modul használatával elvégezheti ezt a lépést a DSC-vel.
 
 >[!NOTE]
 >A DSC futtatásának engedélyezéséhez a Windows rendszert úgy kell konfigurálni, hogy a localhost konfigurációjának futtatásakor is megkapja a PowerShell távoli parancsait. A környezet megfelelő konfigurálásához egyszerűen futtasson `Set-WsManQuickConfig -Force` egy emelt szintű PowerShell-terminált.

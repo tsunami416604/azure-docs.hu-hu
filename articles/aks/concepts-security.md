@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: a210098652a18959debfeabe36b390d1bdfca7fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e5f137808bb5e4c6876206bca7950117edb85aab
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287461"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005669"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai
 
@@ -36,7 +36,7 @@ Az AK-ban a Kubernetes fő összetevői a Microsoft által biztosított felügye
 
 Alapértelmezés szerint a Kubernetes API-kiszolgáló egy nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgáló végpontjának hozzáférését az [engedélyezett IP-címtartományok][authorized-ip-ranges]alapján korlátozhatja. Létrehozhat egy teljesen [privát fürtöt][private-clusters] is az API-kiszolgáló virtuális hálózathoz való hozzáférésének korlátozásához.
 
-Az API-kiszolgálóhoz való hozzáférést az Kubernetes szerepköralapú hozzáférés-vezérlés és a Azure Active Directory használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
+Az API-kiszolgáló hozzáférését az Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) és a Azure Active Directory használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
 
 ## <a name="node-security"></a>Csomópont biztonsága
 
@@ -50,7 +50,7 @@ A csomópontok magánhálózati virtuális hálózati alhálózatba vannak telep
 
 A tárolók biztosításához a csomópontok az Azure Managed Disks használják. A virtuálisgép-csomópontok többségének mérete esetén ezek a nagy teljesítményű SSD-k által támogatott prémium lemezek. A felügyelt lemezeken tárolt adatok automatikusan titkosítva maradnak az Azure platformon belül. A redundancia javítása érdekében ezeket a lemezeket az Azure-adatközpontban is biztonságosan replikálja a rendszer.
 
-A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, mint például a *Pod biztonsági szabályzatok*, vagy a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) is nehezítik a kiaknázást. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
+A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, mint például a *Pod biztonsági szabályzatok*, vagy a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) is nehezebbé teszik a kiaknázást. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
 
 ### <a name="compute-isolation"></a>Számítási elkülönítés
 
