@@ -39,11 +39,11 @@
       items:
         - name: A Spring Boot Initializer használata
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: A gyorsítótárazás és a ranglisták együttes használata
+    - name: Ranglisták létrehozása
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: Kezelés az Azure PowerShell-lel
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: Kezelés az Azure CLI-vel
       href: cli-samples.md
 - name: Alapelvek
   items:
@@ -65,7 +65,7 @@
     - name: Felkészülés
       items:
         - name: Gyorsítótárszint kiválasztása
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: A gyorsítótár elosztása klaszterezéssel
           href: cache-how-to-premium-clustering.md
         - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával
@@ -82,6 +82,12 @@
           href: cache-migration-guide.md
         - name: Migrálás a Managed Cache Service-ből (elavult)
           href: cache-migrate-to-redis.md
+        - name: Tervezés – GYIK
+          href: cache-planning-faq.md
+    - name: Létrehozás
+      items:
+        - name: Fejlesztés – GYIK
+          href: cache-development-faq.md
     - name: Automatizálás
       items:
         - name: Üzembe helyezés és kezelés az Azure PowerShell használatával
@@ -106,12 +112,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: A TLS 1.0 és 1.1 eltávolítása
           href: cache-remove-tls-10-11.md
+        - name: Kezelés – GYIK
+          href: cache-management-faq.md
     - name: Figyelés
       items:
         - name: Monitorozás az Azure Portalon
           href: cache-how-to-monitor.md
         - name: Riasztások beállítása kivételekhez
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: Monitorozás – GYIK
+          href: cache-monitor-troubleshoot-faq.md
+    - name: Méretezés
+      items:
+        - name: Módosítás más méretre és szintre
+          href: cache-how-to-scale.md
+        - name: Vertikális és horizontális leskálázás Redis-fürttel
+          href: cache-how-to-premium-clustering.md
     - name: Diagnosztika és hibaelhárítás
       items:
         - name: Redis-kiszolgáló hibaelhárítása
@@ -122,12 +138,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: Adatvesztés elhárítása
           href: cache-troubleshoot-data-loss.md
-    - name: Méretezés
-      items:
-        - name: Módosítás más méretre és szintre
-          href: cache-how-to-scale.md
-        - name: Vertikális és horizontális leskálázás Redis-fürttel
-          href: cache-how-to-premium-clustering.md
+        - name: Hibaelhárítás – GYIK
+          href: cache-monitor-troubleshoot-faq.md
 - name: Referencia
   items:
     - name: Azure Cache for Redis-minták
@@ -152,7 +164,7 @@
       href: 'https://redis.io/commands#'
 - name: További források
   items:
-    - name: Azure Cache for Redis – Gyakori kérdések
+    - name: Azure Cache for Redis – GYIK
       href: cache-faq.md
     - name: Videók
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'

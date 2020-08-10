@@ -105,8 +105,10 @@
           href: howto-run-a-job.md
     - name: Átalakítás
       items:
-        - name: Adatok exportálása Azure-célhelyekre
+        - name: Adatok exportálása Azure-célhelyekre (örökölt)
           href: howto-export-data.md
+        - name: Adatok exportálása felhőbeli célhelyekre (előzetes verzió)
+          href: howto-use-data-export.md
         - name: Szabályokra vonatkozó webhookok létrehozása
           href: howto-create-webhooks.md
         - name: Munkafolyamatok használata más szolgáltatásokkal való integráláshoz

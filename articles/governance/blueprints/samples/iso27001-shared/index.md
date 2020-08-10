@@ -3,12 +3,12 @@ title: ISO 27001 Megosztott szolgáltatások tervminta – Áttekintés
 description: Az ISO 27001 Megosztott szolgáltatások tervmintájának áttekintése és architektúrája. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az ISO 27001 adott vezérlőit.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072868"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927351"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Azure Blueprints Megosztott szolgáltatások tervmintájának áttekintése
 
@@ -25,7 +25,7 @@ A VDC referenciaarchitektúrák, automatizáló eszközök és bevonási modelle
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabványokon alapuló, biztonságos, teljes körűen monitorozott, vállalati használatra kész megosztottszolgáltatás-infrastruktúrát biztosít. A környezet összetevői:
 
-- [Szerepköralapú hozzáférés-vezérlési](../../../../role-based-access-control/overview.md) (RBAC) szerepkör, amellyel a feladatkörök elkülöníthetők a vezérlősík szempontjából. Az infrastruktúra üzembe helyezését megelőzően a következő három szerepkör lett meghatározva:
+- A feladatkörök vezérlősík szempontjából való elkülönítésére használható [Azure-szerepkörök](../../../../role-based-access-control/overview.md). Az infrastruktúra üzembe helyezését megelőzően a következő három szerepkör lett meghatározva:
   - A NetOps szerepkör a hálózati környezet, például a tűzfalbeállítások, NSG-beállítások, útválasztás és egyéb hálózatkezelési funkciók kezeléséhez rendelkezik jogosultsággal
   - A SecOps szerepkör az [Azure Security Center](../../../../security-center/security-center-intro.md) kezeléséhez és üzembe helyezéséhez, [Azure-szabályzatok](../../../policy/overview.md) meghatározásához szükséges jogosultsággal, illetve egyéb, biztonsághoz kapcsolódó jogosultságokkal is rendelkezik
   - A SysOps szerepkör az egyéb működési jogosultságok mellett az [Azure-szabályzatok](../../../policy/overview.md) előfizetésen belüli meghatározásához, valamint a [Log Analytics](../../../../azure-monitor/overview.md) teljes környezetre kiterjedő kezeléséhez szükséges jogosultságokkal is rendelkezik

@@ -8,7 +8,7 @@
   items:
     - name: Licenckövetelmények
       href: subscription-requirements.md
-    - name: Nem kezelhető szerepkörök
+    - name: A PIM-mel nem kezelhető szerepkörök
       href: pim-roles.md
     - name: Biztonságos emelt szintű hozzáférés
       href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -18,7 +18,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: E-mail-értesítések
       href: pim-email-notifications.md
-    - name: Microsoft Graph API-k
+    - name: Microsoft Graph API és PIM
       href: pim-apis.md
 - name: Útmutatók
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: Az Azure-erőforrások felfedezése
           href: pim-resource-roles-discover-resources.md
-        - name: Hozzáférés biztosítása mások számára a PIM kezeléséhez
+        - name: PIM hozzáférésének delegálása
           href: pim-how-to-give-access-to-pim.md
         - name: Hozzáférési jogosultságszint emelése az összes előfizetés kezeléséhez
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json

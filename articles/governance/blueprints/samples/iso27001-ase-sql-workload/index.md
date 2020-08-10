@@ -3,12 +3,12 @@ title: Az ISO 27001 ASE/SQL-számításifeladat tervmintája – Áttekintés
 description: Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése és architektúrája.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 71044ae1754cf4bdfc42be7b6585a1905dce426c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536833"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926093"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 
@@ -28,7 +28,7 @@ Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintá
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabványokon alapuló, biztonságos, teljes körűen monitorozott, vállalati használatra kész számításifeladat-infrastruktúrát biztosít. A környezet összetevői:
 
-- A DevOps nevű [szerepköralapú hozzáférés-vezérlési](../../../../role-based-access-control/overview.md) (RBAC) szerepkör erőforrások üzembe helyezéséhez és kezeléséhez rendelkezik jogosultsággal a tervmintával üzembe helyezett [Azure App Service Environment-környezetekben](../../../../app-service/environment/intro.md)
+- A DevOps nevű [Azure-szerepkör](../../../../role-based-access-control/overview.md), amely jogosultsággal rendelkezik az erőforrások üzembe helyezéséhez és kezeléséhez a tervmintával üzembe helyezett [Azure App Service Environment-környezetekben](../../../../app-service/environment/intro.md)
 - [Azure-szabályzatok](../../../policy/overview.md), amelyekkel rögzíthető, hogy mely szolgáltatások helyezhetők üzembe a környezetben, illetve megtagadható a nyilvános IP-cím- (PIP-) erőforrások létrehozása
 - Egyetlen alhálózatot tartalmazó virtuális hálózat, amely egy már meglévő [megosztott szolgáltatási](../iso27001-shared/index.md)környezethez van társítva, és arra kényszeríti a teljes adatforgalmat, hogy a [megosztott szolgáltatások](../iso27001-shared/index.md) tűzfalán haladjon át. A virtuális hálózaton a következő erőforrások találhatók:
   - Egy vagy több webalkalmazás, webes API vagy funkció üzemeltetésére használható [Azure App Service Environment-környezet](../../../../app-service/environment/intro.md)

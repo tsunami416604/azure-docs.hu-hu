@@ -60,7 +60,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Tárolás
+    - name: Storage
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: Távoli csatlakozás
           href: rdp.md
-        - name: Ismert korlátozások
-          href: windows-node-limitations.md
+        - name: Windows Server-tárolók – GYIK
+          href: windows-faq.md
         - name: A Kubernetes-irányítópult használata
           href: kubernetes-dashboard.md
         - name: Docker-fájlok létrehozása Windows Server-tárolók számára

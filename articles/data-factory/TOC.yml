@@ -620,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: Saját üzemeltetésű integrációs modul automatizálási szkriptjei
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: Saját üzemeltetésű integrációs modul futtatása a Windows-tárolóban
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
         - name: SSIS-csomagok futtatása az Azure-ban az SSDT-ből
