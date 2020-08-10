@@ -3,17 +3,17 @@ title: Ismerkedés a partnerek számára készült Azure Cost Management szolgá
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372144"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563942"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -140,7 +140,7 @@ Ha a szabályzat**Nem** értékre van állítva, az Azure Cost Management nem é
 
 Ha a szabályzat**Igen** értékre van állítva, az előfizetés az ügyfélbérlőhöz társított felhasználói megtekinthetik a felhasználási díjakat, használatalapú díjszabás mellett.
 
-Ha a költségek láthatóságára vonatkozó szabályzat engedélyezve van, az összes, előfizetés-felhasználással rendelkező szolgáltatás a használatalapú díjszabás szerint mutatja a költségeket. A foglalások felhasználása a tényleges és az amortizált költségekre vonatkozóan nulla költséggel jelenik meg. A vásárlások és jogosultságok nem konkrét előfizetésekhez vannak társítva. Így a vásárlások nem jelennek meg az előfizetés hatókörében.
+Ha a költségek láthatóságára vonatkozó szabályzat engedélyezve van, az összes, előfizetés-felhasználással rendelkező szolgáltatás a használatalapú díjszabás szerint mutatja a költségeket. A foglalások felhasználása a tényleges és az amortizált költségekre vonatkozóan nulla költséggel jelenik meg. A vásárlások és jogosultságok nem konkrét előfizetésekhez vannak társítva. Így a vásárlások nem jelennek meg az előfizetés hatókörében. Egy közvetlen partner vagy közvetett szolgáltató globális rendszergazdája/rendszergazdai ügynöke az [Update Customer API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer)-t is használhatja az ügyfelek költségei láthatóságára vonatkozó szabályzatának nagy léptékű beállításához.
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Az előfizetési költségek megtekintése az ügyfélbérlőben
 

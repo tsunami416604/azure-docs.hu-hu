@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 services: storage
 author: tamram
 ms.service: storage

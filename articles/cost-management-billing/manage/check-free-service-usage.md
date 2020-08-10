@@ -1,18 +1,18 @@
 ---
 title: Az ingyenes Azure-szolgáltatás használatának monitorozása és nyomon követése
-description: Tudja meg, hogyan ellenőrizheti az ingyenes szolgáltatások használatát az Azure Portalon.
+description: Tudja meg, hogyan ellenőrizheti az ingyenes szolgáltatások használatát az Azure Portalon. Az ingyenes fiók szolgáltatásainak használata díjmentes, kivéve, ha túllépi a szolgáltatás korlátait.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0a62deecc6f70bb21059ae3ddda9eea173de65fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03efb7e4d0aa06e4c33a94f15621d58330e52e50
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199806"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461867"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Tekintse meg az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használati adatait
 
@@ -38,9 +38,9 @@ Az ingyenes Azure-fiókjához tartozó ingyenes szolgáltatásokat díjmentesen 
 * **Használat/korlát:** A mérőszám aktuális havi használata és korlátja.
 * **Állapot:** A szolgáltatás használati állapota. A használati adatai alapján a következő állapotok egyike lehet:
   * **Nincs használatban:** Nem használta a mérőt, vagy a mérő használata nem érte el a számlázási rendszer szintjét.
-  * **Túllépés időpontja: \<dátum>:** A megadott \<dátumon> túllépte a mérőszám korlátját.
+  * **Túllépés időpontja: \<Date>:** A megadott \<Date> dátumon túllépte a mérőszám korlátját.
   * **Valószínűleg nem lépi túl:** Valószínűleg nem fogja túllépni a mérőszám korlátját.
-  * **Túllépés: \<dátum>:** Valószínűleg a megadott \<dátumon> túl fogja lépni a mérőszám korlátját.
+  * **Túllépés időpontja: \<Date>:** Valószínűleg a megadott \<Date> dátumon túl fogja lépni a mérőszám korlátját.
 
 > [!IMPORTANT]
 >

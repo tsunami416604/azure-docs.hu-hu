@@ -3,18 +3,18 @@ title: SaaS-ajánlat, Azure Marketplace és Microsoft AppSource létrehozása
 description: Az Azure piactéren elérhető, a Microsoft kereskedelmi piactér program használatával, az Azure Marketplace-en vagy a Cloud Solution Provider (CSP) programon keresztüli szolgáltatásként Microsoft AppSource nyújtott szoftveres (SaaS-) ajánlat létrehozása a Microsoft partner Centerben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800336"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031030"
 ---
-# <a name="create-a-saas-offer"></a>SaaS-ajánlat létrehozása
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
 Ha a kereskedelmi piactéren szeretné megkezdeni a szolgáltatott szoftver-(SaaS-) ajánlatokat, először [létre kell hoznia egy partner Center-fiókot](./create-account.md) , és meg kell nyitnia a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), ahol az **Áttekintés** lapon be van jelölve.
 
@@ -62,7 +62,7 @@ Az **ajánlat áttekintő** menüjében az ajánlaton végrehajtott műveletekre
 
 Ez az oldal az alábbi információkat kéri.
 
-- **Szeretné eladni a Microsoftot?** (Igen/nem)
+- **Szeretné eladni a Microsoftot?** (Igen/Nem)
   - **Igen**, szeretnék eladni a Microsofton keresztül, és Microsoft Host-tranzakciókat használok az Ön nevében
   - **Nem**szeretném, hogy csak az ajánlatom legyen felsorolva a piactéren, és a tranzakciókat egymástól függetlenül dolgozzák fel.
 
@@ -83,7 +83,7 @@ A kiadó Azure-előfizetésében futó SaaS-megoldásokkal az ügyfelek által k
 
 Az SaaS a mért számlázási szolgáltatással havi vagy éves számlázási támogatást biztosít, amely átalány, felhasználónkénti vagy használati díj alapján történik. A Microsoft kereskedelmi piactére egy ügynökségi modellen működik, amelynek során a kiadók díjszabást, Microsoft-számlákat és Microsoft-számlázást fizetnek a kiadónak, miközben az ügynökség díját is megtartják.
 
-Ez egy példa a költségek és a kifizetések lebontására az Ügynökség modelljének bemutatására (a felsorolt árak kizárólag a célokat szolgálják, és nem tükrözik a tényleges költségeket):
+Ez egy példa a költségek és a kifizetések megoszlására az Ügynökség modelljének bemutatásához (a felsorolt árak például csak a célokat szolgálják, és nem a tényleges költségeket mutatják):
 
 |**A licenc díja**|**$100/hó**|
 |:---|:---|
@@ -134,7 +134,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -257,7 +257,7 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Kulcsszavak keresése** – adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek az ajánlat megtalálására használhatnak a piactéren.
 - **Első lépéseket ismertető utasítások** (kötelező) – magyarázza el, hogyan konfigurálhatja és indíthatja el az alkalmazás használatát a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 A mező kitöltése kötelező.
 
@@ -282,16 +282,18 @@ A mező kitöltése kötelező.
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
 - **Dokumentumok** (kötelező) – kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz, PDF formátumban, legalább egy és legfeljebb három dokumentumhoz.
-- **Képek** (kötelező) – több hely is van, ahol az ajánlat emblémájának képei az egész piactéren megjelenhetnek. Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti. **Széles** embléma hozzáadása nem kötelező.
+- **Képek** – emblémaként szolgáló képek feltöltése PNG formátumban:
 
-    A lista különböző helyein három embléma mérete szükséges. egy nem kötelező:
+  - **Kicsi** (48 x 48 képpont, kötelező)
+  - **Közepes** (90 x 90 képpont, kötelező)
+  - **Nagyméretű** (216 x 216 képpont, kötelező)
+  - **Széles** (255 x 115 képpont) (nem kötelező)
 
-    - **Kicsi** (48 x 48)
-    - **Közepes** (90 x 90)
-    - **Nagy** (216 x 216 és 350 x 350 között)
-    - **Széles** (255 x 115), nem *kötelező*
+   Ezt a három embléma-méretet a kirakatok különböző helyein használják:
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   A kis embléma (48 x 48 képpont) megjelenik az Azure piactér keresési eredményei között, valamint a Microsoft AppSource főoldalon és a keresési eredmények oldalon. 
+   -   A közepes embléma (90 x 90 képpont) akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
+   -   A nagyméretű embléma (216 x 216 és 350 x 350 képpont között) megjelenik az ajánlati lista lapján az Azure Marketplace-en és a Microsoft AppSourceban.
 
 - **Képernyőképek** (kötelező) – adjon meg legfeljebb öt képernyőképet, amely az ajánlatát mutatja be, a mérete 1280 x 720 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező) – az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.

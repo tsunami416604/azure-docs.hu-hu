@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843810"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030503"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -40,7 +40,7 @@ Az egyik lekérdezés több egymezős indexet használ, ahol elérhető. Egy tá
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Összetett indexek (MongoDB-kiszolgáló 3,6-es verzió)
 
-A MongoDB Azure Cosmos DB API-ját a 3,6-os átviteli protokollt használó fiókok összetett indexeit támogatja. Akár nyolc mezőt is hozzáadhat egy összetett indexben. A MongoDB eltérően csak akkor érdemes összetett indexet létrehozni, ha a lekérdezésnek egyszerre több mezőn kell rendeznie. Több olyan szűrővel rendelkező lekérdezések esetén, amelyek nem szükségesek a rendezéshez, egyetlen összetett index helyett hozzon létre több egymezős indexet.
+A MongoDB Azure Cosmos DB API-ját a 3,6-os átviteli protokollt használó fiókok összetett indexeit támogatja. Akár nyolc mezőt is hozzáadhat egy összetett indexben. **A MongoDB eltérően csak akkor érdemes összetett indexet létrehozni, ha a lekérdezésnek egyszerre több mezőn kell rendeznie.** Több olyan szűrővel rendelkező lekérdezések esetén, amelyek nem szükségesek a rendezéshez, egyetlen összetett index helyett hozzon létre több egymezős indexet.
 
 A következő parancs létrehoz egy összetett indexet a mezőkön `name` , és `age` :
 
@@ -57,6 +57,9 @@ Az előző összetett index használatával a lekérdezéseket az összes mező 
 Az összetett indexben lévő elérési utak sorrendjének azonban pontosan egyeznie kell a lekérdezéssel. Az alábbi példa egy olyan lekérdezést mutat be, amely további összetett indexet igényel:
 
 `db.coll.find().sort({age:1,name:1})`
+
+> [!NOTE]
+> Beágyazott tulajdonságokon vagy tömbökön nem hozhatók létre összetett indexek.
 
 ### <a name="multikey-indexes"></a>Multikey indexek
 
@@ -355,7 +358,7 @@ Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat
 
 Ha helyettesítő karaktert szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)

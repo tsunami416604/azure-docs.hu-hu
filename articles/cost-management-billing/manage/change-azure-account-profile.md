@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286597"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553478"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>Az Azure-fiókban megadott kapcsolattartási adatok módosítsa
 
@@ -24,7 +24,7 @@ Ez a cikk a fiókban megadott kapcsolattartási adatoknak az Azure Portalon tör
 
 *Számlázási cím* – A számlázási cím annak a szervezetnek vagy magánszemélynek a címe és kapcsolattartási adatai, amely vagy aki a számlázási fiók számára létrehozott számlákért felelős. A Microsoft Online Services Programhoz (MOSP) tartozó számlázási fiókok esetén egy számlázási cím van, amely a fiók számára létrehozott számlák mindegyikén látható. A Microsoft-ügyfélszerződéshez (MCA) tartozó számlázási fiókok esetén minden számlázási profilhoz tartozik egy számlázási cím, amely a számlázási profil számára létrehozott számlán látható.
 
-*Kapcsolattartási e-mail-cím a szolgáltatási és marketingcélú e-mailekhez* – Megadhat a bejelentkezéshez használt e-mail-címtől eltérő e-mail-címet, amellyel az Azure-fiókkal kapcsolatos fontos számlázási, szolgáltatási és ajánlási értesítéseket fogadhat.  
+*Kapcsolattartási e-mail-cím a szolgáltatási és marketingcélú e-mailekhez* – Megadhat a bejelentkezéshez használt e-mail-címtől eltérő e-mail-címet, amellyel az Azure-fiókkal kapcsolatos fontos számlázási, szolgáltatási és ajánlási értesítéseket fogadhat. A szolgáltatással kapcsolatos értesítő e-maileket, például a sürgős biztonsági problémákkal, az árváltozásokkal vagy a fiókja által használt szolgáltatások kompatibilitástörő változásaival kapcsolatos értesítéseket a rendszer mindig a bejelentkezési címére küldi.
 
 ## <a name="update-an-mosp-billing-account-address"></a>MOSP számlázási fiók címének frissítése
 

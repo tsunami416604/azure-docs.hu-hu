@@ -1,17 +1,17 @@
 ---
 title: További Azure-előfizetés létrehozása
-description: Megtudhatja, hogyan vehet fel új Azure-előfizetést az Azure Portalon.
+description: Megtudhatja, hogyan vehet fel új Azure-előfizetést az Azure Portalon. A számlázási fiók űrlapjaival kapcsolatos információk és további elérhető erőforrások megtekintése.
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200846"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460966"
 ---
 # <a name="create-an-additional-azure-subscription"></a>További Azure-előfizetés létrehozása
 
@@ -33,7 +33,7 @@ A következő engedélyekre van szüksége az előfizetések létrehozásához:
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Előfizetés létrehozása az Azure Portalon
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá az **Előfizetések** kifejezésre.
 
    ![Képernyőkép az előfizetés kifejezés kereséséről a portálon](./media/create-subscription/billing-search-subscription-portal.png)
@@ -59,7 +59,7 @@ A következő engedélyekre van szüksége az előfizetések létrehozásához:
 |---------|---------|
 |Számlázási profil     | Az előfizetés díjai a kiválasztott számlázási profilra lesznek kiszámlázva. Ha csak egy előfizetéshez rendelkezik hozzáféréssel, a választási lehetőség ki van szürkítve.     |
 |Számlázási szakasz     | Az előfizetés díjai a számlázási profil e számlázási szakaszán fognak megjelenni. Ha csak egy számlázási szakaszhoz rendelkezik hozzáféréssel, a választási lehetőség ki van szürkítve.  |
-|Csomag     | Ha az előfizetést fejlesztésre vagy számítási feladatok tesztelésére szeretné használni, válassza a fejlesztéshez és teszteléshez készült Microsoft Azure-csomagot, minden más esetben használja a Microsoft Azure-csomag lehetőséget. Ha csak egy csomag van engedélyezve a számlázási profilhoz, a választási lehetőség ki van szürkítve.  |
+|Felkészülés     | Ha az előfizetést fejlesztésre vagy számítási feladatok tesztelésére szeretné használni, válassza a fejlesztéshez és teszteléshez készült Microsoft Azure-csomagot, minden más esetben használja a Microsoft Azure-csomag lehetőséget. Ha csak egy csomag van engedélyezve a számlázási profilhoz, a választási lehetőség ki van szürkítve.  |
 |Name (Név)     | A megjelenítendő név segítségével egyszerűen beazonosíthatja az előfizetést az Azure Portalon.  |
 
 **Microsoft-partnerszerződés**
@@ -74,7 +74,7 @@ A következő engedélyekre van szüksége az előfizetések létrehozásához:
 
 További előfizetéseket programozott módon is létrehozhat. További információért tekintse meg [az Azure-előfizetések programozott módon történő létrehozását](../../azure-resource-manager/management/programmatically-create-subscription.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](add-change-subscription-administrator.md)
 - [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md)

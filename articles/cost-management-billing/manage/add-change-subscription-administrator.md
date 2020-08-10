@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126125"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530010"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása
 
@@ -33,7 +33,7 @@ További információt [az Azure Resource Manager-alapú és a klasszikus üzeme
 
 ## <a name="assign-a-subscription-administrator"></a>Előfizetés-adminisztrátor hozzárendelése
 
-Ha egy felhasználót egy Azure-előfizetés adminisztrátorává szeretne megtenni, ahhoz a meglévő adminisztrátornak hozzá kell rendelnie a [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkört (RBAC-szerepkör) az előfizetés hatókörében. A Tulajdonos szerepkör teljes hozzáférést biztosít a felhasználónak az előfizetés összes erőforrásához, beleértve a hozzáférés mások számára való delegálásának jogát is. Ez ugyanúgy történik, mint bármely más szerepkör-hozzárendelés esetében.
+Ha egy felhasználót egy Azure-előfizetés adminisztrátorává szeretne megtenni, ahhoz a meglévő adminisztrátornak hozzá kell rendelnie a [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkört (Azure-szerepkör) az előfizetés hatókörében. A Tulajdonos szerepkör teljes hozzáférést biztosít a felhasználónak az előfizetés összes erőforrásához, beleértve a hozzáférés mások számára való delegálásának jogát is. Ez ugyanúgy történik, mint bármely más szerepkör-hozzárendelés esetében.
 
 Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, az alábbi lépésekkel kiderítheti.
 

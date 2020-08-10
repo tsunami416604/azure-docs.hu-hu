@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure-számlák befizetése | Microsoft Docs
-description: A cikk a számlák az Azure Portalon történő befizetését ismerteti
+description: Megismerheti a számlák Azure Portalon történő befizetésének módját. A portálon történő fizetéshez egy számlázási profil tulajdonosának, közreműködőjének vagy számlakezelőjének kell lennie.
 keywords: számlázás, késedelem, egyenleg, azonnali fizetés,
 author: banders
 ms.reviewer: judupont
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 8db50a25d98f5e4dc2ae96c708a5da49709f9ed5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bb3c9686ca734bb800f090af44f56643e07c6833
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200146"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459300"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>A Microsoft Azure-számlák befizetésének módja
 
@@ -30,7 +30,7 @@ Ha az alapértelmezett fizetési mód a hitelkártya, a számla létrejöttét k
 
 Az Azure Portalon történő fizetéshez egy számlázási profil tulajdonosának, közreműködőjének vagy számlakezelőjének kell lennie.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 1. A bal oldali menüben válassza a Számlázás területen lévő **Számlák** elemet.
 1. Ha a számlák bármelyike esedékes vagy lejárt, akkor az adott számlához megjelenik egy kék **Azonnali fizetés** hivatkozás. Válassza **Azonnali fizetés** lehetőséget.

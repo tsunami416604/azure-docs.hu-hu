@@ -1,17 +1,17 @@
 ---
 title: Ingyenes szolgáltatások létrehozása ingyenes Azure-fiókkal
-description: Megtudhatja, hogyan hozhatja létre az ingyenes fiókhoz tartozó szolgáltatásokat.
+description: Megtudhatja, hogyan hozhatja létre az ingyenes fiókhoz tartozó szolgáltatásokat. Ezeket a szolgáltatásokat bármely olyan régióban létrehozhatja, ahol elérhetők.
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 1d2c4ed141aeff97f5987b0b23ff1e6201e53c6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 540988892a5f5f650a8594b74792e45d25ca9036
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200880"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460949"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ingyenes Azure-fiókhoz tartozó szolgáltatások létrehozása
 
@@ -34,6 +34,6 @@ Több szolgáltatáspéldányt is létrehozhat ingyenesen, ha a használat össz
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg [az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használata ellenőrzésének](check-free-service-usage.md) módját.
 - Tudja meg, [hogyan kerülheti el, hogy díjak merüljenek fel ingyenes Azure-fiókja használatakor](avoid-charges-free-account.md).

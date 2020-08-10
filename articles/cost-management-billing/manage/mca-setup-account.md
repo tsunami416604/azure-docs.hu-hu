@@ -1,18 +1,18 @@
 ---
 title: Számlázás beállítása a Microsoft-ügyfélszerződéshez – Azure
-description: Megtudhatja, hogyan állíthatja be számlázási fiókját egy Microsoft-ügyfélszerződéshez.
+description: Megtudhatja, hogyan állíthatja be számlázási fiókját egy Microsoft-ügyfélszerződéshez. A telepítési előfeltételek és a további elérhető erőforrások megtekintése.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: 2b8ef67366df7c8a6ba76d2cdc693b36229b861b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80258056"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461850"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Számlázási fiók beállítása Microsoft-ügyfélszerződéshez
 

@@ -144,7 +144,7 @@ Rendszerkép rögzítése:
    > [!div class="mx-imgBorder"]
    > ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 5. Várjon néhány percet, amíg a rögzítési folyamat befejeződik. Ha a rendszerkép elkészült, egy üzenet jelenik meg az értesítési központban, amely értesíti, hogy a rendszerkép rögzítése megtörténik.
 

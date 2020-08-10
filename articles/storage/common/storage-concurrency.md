@@ -1,7 +1,7 @@
 ---
 title: Az egyidejűség kezelése
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan kezelheti a blob, a üzenetsor, a tábla és a Fájlszolgáltatások egyidejűségét.
+description: Ismerje meg, hogyan kezelheti a párhuzamosságot az Azure Storage-ban a blob-, üzenetsor-, tábla-és Fájlszolgáltatások esetében. Ismerje meg a három fő adatpárhuzamossági stratégiát.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504287"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030384"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Egyidejűség kezelése a Microsoft Azure Storage szolgáltatásban
 
@@ -90,13 +90,13 @@ A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek 
 
 | Művelet | A tároló ETag értékét adja vissza. | Feltételes fejlécek elfogadása |
 |:--- |:--- |:--- |
-| Tároló létrehozása |Yes |No |
-| Tároló tulajdonságainak beolvasása |Yes |No |
-| Tároló metaadatainak beolvasása |Yes |No |
+| Tároló létrehozása |Igen |Nem |
+| Tároló tulajdonságainak beolvasása |Igen |Nem |
+| Tároló metaadatainak beolvasása |Igen |Nem |
 | Tároló metaadatainak beállítása |Igen |Igen |
-| Tároló ACL lekérése |Yes |No |
+| Tároló ACL lekérése |Igen |Nem |
 | Tároló ACL beállítása |Yes |Igen (*) |
-| Tároló törlése |No |Yes |
+| Tároló törlése |Nem |Igen |
 | Bérlet tárolója |Igen |Igen |
 | Blobok listázása |Nem |Nem |
 
@@ -116,10 +116,10 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 | Snapshot Blob |Igen |Igen |
 | Copy Blob |Yes |Igen (a forrás és a cél blob esetében) |
 | BLOB másolásának megszakítása |Nem |Nem |
-| Delete Blob |No |Yes |
+| Delete Blob |Nem |Igen |
 | Put blokk |Nem |Nem |
 | Tiltási lista |Igen |Igen |
-| Tiltási lista lekérése |Yes |No |
+| Tiltási lista lekérése |Igen |Nem |
 | Oldal elhelyezése |Igen |Igen |
 | Oldalak tartományának beolvasása |Igen |Igen |
 
@@ -195,7 +195,7 @@ A következő tároló-műveletek használhatnak címbérleteket a pesszimista E
 * Tároló ACL beállítása
 * Bérlet tárolója  
 
-További információkért lásd:  
+További információ:  
 
 * [Feltételes fejlécek megadása Blob Service-műveletekhez](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Bérlet tárolója](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -244,19 +244,19 @@ Az alábbi táblázat összefoglalja, hogyan használják a tábla entitások a 
 
 | Művelet | ETag értéket ad vissza. | A-Match kérelem fejlécének megadását igényli |
 |:--- |:--- |:--- |
-| Lekérdezési entitások |Yes |Nem |
-| Entitás beszúrása |Yes |Nem |
+| Lekérdezési entitások |Igen |Nem |
+| Entitás beszúrása |Igen |Nem |
 | Entitás frissítése |Igen |Igen |
 | Entitás egyesítése |Igen |Igen |
-| Entitás törlése |Nem |Yes |
-| Entitás beszúrása vagy cseréje |Yes |Nem |
-| Entitás beszúrása vagy egyesítése |Yes |Nem |
+| Entitás törlése |Nem |Igen |
+| Entitás beszúrása vagy cseréje |Igen |Nem |
+| Entitás beszúrása vagy egyesítése |Igen |Nem |
 
 Vegye figyelembe, hogy a **INSERT vagy replace entitás** és az **INSERT vagy Merge entitás** műveletek *nem* végeznek Egyidejűség-ellenőrzéseket, mert nem küldenek ETAG értéket a Table szolgáltatásnak.  
 
 A táblázatokat használó általános fejlesztőknek optimista párhuzamosságot kell alkalmazniuk a méretezhető alkalmazások fejlesztésekor. Ha pesszimista zárolásra van szükség, az egyik módszer a fejlesztők számára is igénybe vehet, ha a táblákhoz való hozzáféréskor egy kijelölt blobot rendel hozzá az egyes táblákhoz, és a táblán való működés előtt megpróbál bérletet készíteni a blobon. Ehhez a megközelítéshez az alkalmazásnak meg kell győződnie arról, hogy az összes adatelérési útvonal beszerezze a bérletet a táblán való működés előtt. Azt is vegye figyelembe, hogy a minimális bérleti idő 15 másodperc, ami alapos megfontolást igényel a méretezhetőség érdekében.  
 
-További információkért lásd:  
+További információ:  
 
 * [Entitások műveletei](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,7 +266,7 @@ Egy olyan forgatókönyv, amelyben a párhuzamosság a várólista-kezelési szo
 
 A várólista-szolgáltatás nem támogatja az optimista vagy a pesszimista párhuzamosságot, és emiatt az ügyfelek várólistából beolvasott üzenetek feldolgozásával biztosítaniuk kell, hogy az üzenetek idempotens módon legyenek feldolgozva. A legutóbbi író WINS-stratégia olyan frissítési műveletekhez használható, mint például a SetQueueServiceProperties, a SetQueueMetaData, a SetQueueACL és a UpdateMessage.  
 
-További információkért lásd:  
+További információ:  
 
 * [A Queue szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Üzenetek beolvasása](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -277,7 +277,7 @@ A file Service két különböző protokoll-végponttal (SMB és REST) érhető 
 
 Amikor egy SMB-ügyfél egy fájlt nyit meg a törléshez, az a fájlt függőben lévő törlésként jelöli meg, amíg az összes többi SMB-ügyfél nem nyitja meg a fájlt. Míg a fájl függőben lévő törlésként van megjelölve, a fájl REST művelete a 409 (ütközés) állapotkódot fogja visszaadni a hibakód SMBDeletePending. Az 404-as állapotkód (nem található) nem lesz visszaadva, mert lehetséges, hogy az SMB-ügyfél el szeretné távolítani a függőben lévő törlési jelzőt a fájl bezárása előtt. Más szóval a 404 (nem található) állapotkód csak a fájl eltávolításakor várt. Vegye figyelembe, hogy amíg egy fájl egy, az SMB függőben lévő törlési állapotban van, nem fog szerepelni a fájlok listájának eredményei között. Azt is vegye figyelembe, hogy a REST delete fájl-és REST-törlési műveleteit a rendszer atomian véglegesíti, és nem eredményez függőben lévő törlési állapotot.  
 
-További információkért lásd:  
+További információ:  
 
 * [Fájlok zárolásának kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

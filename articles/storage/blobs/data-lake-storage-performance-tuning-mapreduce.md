@@ -1,6 +1,6 @@
 ---
 title: 'Teljesítmény hangolása: MapReduce, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 MapReduce teljesítményének finomhangolására vonatkozó irányelvek
+description: A Térkép teljesítményének hangolásához szükséges irányelvek ismertetése a Azure Data Lake Storage Gen2on.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106220"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030520"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 

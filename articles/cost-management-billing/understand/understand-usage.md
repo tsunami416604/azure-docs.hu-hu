@@ -1,6 +1,6 @@
 ---
 title: A részletes használati adatok és díjak ismertetése | Microsoft Docs
-description: Ismerje meg, hogyan olvashatók le és értelmezhetők a részletes használati adatok és díjak
+description: Megtudhatja, hogyan olvashatók le és értelmezhetők a részletes használati adatokat és díjakat tartalmazó fájl. A fájlban használt kifejezések és leírások listájának megtekintése.
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065641"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460286"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése
 
@@ -56,7 +56,7 @@ CostCenter<sup>1</sup> | EA, MCA | Az előfizetésben a költségek nyomon köve
 Költségek | EA, PAYG | Lásd: CostInBillingCurrency.
 CostInBillingCurrency | MCA | A díj költsége a számlázási pénznemben számítva, kreditek és adók nélkül.
 CostInPricingCurrency | MCA | A díj költsége a díjszabási pénznemben számítva, kreditek és adók nélkül.
-Currency (Pénznem) | EA, PAYG | Lásd: BillingCurrency.
+Pénznem | EA, PAYG | Lásd: BillingCurrency.
 Date<sup>1</sup> | Összes | A díjhoz tartozó használati vagy vásárlási dátum.
 EffectivePrice | Összes | Az időszakra vonatkozó kevert egységár. A kevert árak átlagolással csökkentik az egységár bármely ingadozását, például a fokozatos szintbeállítás esetében, amely csökkenti az árat, ahogy a mennyiség az idő múlásával növekszik.
 ExchangeRateDate | MCA | Az átváltási árfolyam hatályba lépésének dátuma.

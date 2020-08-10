@@ -4,19 +4,19 @@ description: Ismerkedjen meg Azure Cosmos DB API-MongoDB (3,6 verzió) támogato
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076839"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030541"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-jával a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-jával a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB-hez készült Azure Cosmos DB API a MongoDB [vonalprotokolljának](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) követésével lehetővé teszi a meglévő ügyfélillesztők használatát.
 
 A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt MongoDB előnyeit, és az összes olyan vállalati funkciót, amelyet a Cosmos DB biztosít: [globális elosztás](distribute-data-globally.md), [automatikus](partition-data.md)horizontális felskálázás, rendelkezésre állási és késési garanciák, titkosítás nyugalmi állapotban, biztonsági mentések és sok más.
 
@@ -36,7 +36,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|törlés | Yes |
+|delete | Yes |
 |find | Yes     |
 |findAndModify | Yes  |
 |getLastError|   Yes |
@@ -336,7 +336,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Tömb    |Yes    |
 |Bináris adatértékek    |Yes|    
 |ObjectId    |Yes    |
-|Logikai érték    |Yes    |
+|Logikai    |Yes    |
 |Dátum    |Yes    |
 |Null    |Yes    |
 |32 bites egész szám (int)    |Yes    |
@@ -495,10 +495,10 @@ $nearSphere |  Yes |
 $geometry |  Yes |
 $minDistance | Yes |
 $maxDistance | Yes |
-$center | Yes |
-$centerSphere | Yes |
-$box | Yes |
-$polygon |  Yes |
+$center | No |
+$centerSphere | No |
+$box | No |
+$polygon |  No |
 
 ## <a name="cursor-methods"></a>Kurzormetódusok
 

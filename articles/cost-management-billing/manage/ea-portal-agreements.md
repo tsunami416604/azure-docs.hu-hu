@@ -3,16 +3,16 @@ title: Azure nagyvállalati szerződések és a módosításaik
 description: Ez a cikk azt ismerteti, hogy milyen hatással vannak az Azure nagyvállalati szerződések és a módosításaik az Azure EA Portal használatára.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537799"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563483"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan milyen hatással lehetnek az Azure nagyvállalati sz
 
 ## <a name="enrollment-provisioning-status"></a>Regisztráció kiépítési állapota
 
-Az új Azure-előrefizetés kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztül leadott Azure-előrefizetési megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha az Azure-előrefizetés megrendelését egy másik régióban dolgozzák fel. A https://www.explore.ms webhelyen található megrendelésen az érvényesség kezdő dátuma az Azure-előrefizetés kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor az Azure-előrefizetés megjelenik az Azure EA Portalon.
+Az új Azure-előrefizetés kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztül leadott Azure-előrefizetési megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha az Azure-előrefizetés megrendelését egy másik régióban dolgozzák fel. A megrendelésen az érvényesség kezdő dátuma az Azure-előrefizetés kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor az Azure-előrefizetés megjelenik az Azure EA Portalon.
 
 ## <a name="support-for-enterprise-customers"></a>Vállalati ügyfelek támogatása
 
@@ -43,7 +43,7 @@ A regisztrációk az alábbi állapotértékek egyikével rendelkeznek. Ezek az 
 
 **Lejárt** – Ha az EA-regisztráció eléri a nagyvállalati szerződés záró dátumát, a regisztráció lejár. Az EA-ügyfél nem kérte az időtartam meghosszabbítását, ezért az összes szolgáltatása le van tiltva.
 
-2019. augusztus 1-től a rendszer nem fogadja el az új lemondási űrlapokat az Azure kereskedelmi ügyfelek esetében. Ehelyett a regisztrációk határozatlan időre meg lesznek hosszabbítva. Ha abba szeretné hagyni az Azure-szolgáltatások használatát, szüntesse meg az előfizetését az [Azure Portalon](https://portal.azure.com). A partnere is benyújthat egy felmondási kérelmet a https://www.explore.ms webhelyen. A kormányzati szerződéstípussal rendelkező ügyfelek esetén nincs változás.
+2019. augusztus 1-től a rendszer nem fogadja el az új lemondási űrlapokat az Azure kereskedelmi ügyfelek esetében. Ehelyett a regisztrációk határozatlan időre meg lesznek hosszabbítva. Ha abba szeretné hagyni az Azure-szolgáltatások használatát, szüntesse meg az előfizetését az [Azure Portalon](https://portal.azure.com). A partnere is benyújthat felmondási kérelmet. A kormányzati szerződéstípussal rendelkező ügyfelek esetén nincs változás.
 
 **Átvitt** – Az Átvitt állapotot a rendszer azokra a regisztrációkra alkalmazza, amelyeknek a társított fiókjait és szolgáltatásait átvitték egy új regisztrációba. A regisztrációk nem kerülnek át automatikusan, ha a megújítás során új regisztrációs szám jön létre. Az előző regisztrációs számnak szerepelnie kell az ügyfél automatikus átvitelre vonatkozó megújítási kérelmén.
 

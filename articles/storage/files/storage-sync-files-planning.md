@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync központi telepítésének tervezése | Microsoft Docs
-description: Megtudhatja, mit érdemes figyelembe venni Azure Files központi telepítés tervezésekor.
+description: Tervezze meg a Azure File Sync-vel történő telepítést, amely lehetővé teszi egy számú Azure-fájlmegosztás gyorsítótárba helyezését egy helyszíni Windows Server-vagy felhőalapú virtuális gépen.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036794"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030668"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -245,7 +245,7 @@ Bár a közvetlenül az Azure-fájlmegosztást érintő módosítások hosszabb 
 > [!Important]  
 > A Storage-fiók Active Directoryhoz való csatlakoztatása nem szükséges a Azure File Sync sikeres telepítéséhez. Ez egy szigorúan opcionális lépés, amely lehetővé teszi az Azure-fájlmegosztás számára a helyszíni ACL-ek kényszerítését, amikor a felhasználók közvetlenül csatlakoztatják az Azure-fájlmegosztást.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 A Azure File Sync ügynök kommunikál a Storage Sync szolgáltatással és az Azure-fájlmegosztás használatával a Azure File Sync REST protokoll és a legtitkosítási protokoll segítségével, amely mindkét esetben HTTPS protokollt használ a 443-as porton keresztül. Az SMB soha nem használja fel az adatok feltöltését és letöltését a Windows Server és az Azure-fájlmegosztás között. Mivel a legtöbb szervezet engedélyezi a HTTPS-forgalmat az 443-as porton keresztül, a legtöbb webhely felkeresésének követelménye, a speciális hálózati konfiguráció általában nem szükséges a Azure File Sync telepítéséhez.
 
 A szervezet házirendje vagy az egyedi szabályozási követelmények alapján több korlátozó kommunikációra lehet szükség az Azure-ban, így a Azure File Sync számos mechanizmust biztosít a hálózatkezelés konfigurálásához. A követelmények alapján a következőket teheti:
@@ -314,7 +314,7 @@ Azure File Sync a következő régiókban érhető el:
 | Nyilvános | Európa | Nyugat-Európa | `westeurope` |
 | Nyilvános | Franciaország | Közép-Franciaország | `francecentral` |
 | Nyilvános | Franciaország | Dél-Franciaország * | `francesouth` |
-| Nyilvános | India | Közép-India | `centralindia` |
+| Nyilvános | India | Central India | `centralindia` |
 | Nyilvános | India | Dél-India | `southindia` |
 | Nyilvános | Japán | Kelet-Japán | `japaneast` |
 | Nyilvános | Japán | Nyugat-Japán | `japanwest` |
@@ -348,7 +348,7 @@ A csillaggal jelölt régiók esetében kapcsolatba kell lépnie az Azure támog
 > [!Important]  
 > A Geo-redundáns és a Geo-zónás redundáns tárolás lehetővé tenné a tárolók manuális feladatátvételét a másodlagos régióba. Azt javasoljuk, hogy az adatvesztés nagyobb valószínűsége miatt ne hajtsa végre ezt a katasztrófán kívül, ha Azure File Sync használ. Abban az esetben, ha a tároló manuális feladatátvételét szeretné elindítani, meg kell nyitnia egy támogatási esetet a Microsofttal, hogy Azure File Sync a másodlagos végponttal való szinkronizálás folytatásához.
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 Ha van meglévő Windows-fájlkiszolgáló, Azure File Sync közvetlenül is telepíthető, anélkül, hogy át kellene helyeznie az adatátvitelt egy új kiszolgálóra. Ha a Azure File Sync bevezetésének részeként új Windows-fájlkiszolgálón kíván áttelepítést végezni, több lehetséges módszer áll rendelkezésre az adatáthelyezéshez:
 
 - Hozzon létre kiszolgálói végpontokat a régi fájlmegosztás és az új fájlmegosztás számára, és hagyja, hogy Azure File Sync szinkronizálja az adatokat a kiszolgálói végpontok között. Ennek a megközelítésnek az az előnye, hogy nagyon egyszerűen előfizethet az új fájlkiszolgálón lévő tárterületre, mivel Azure File Sync a Felhőbeli rétegek számára. Ha elkészült, a végfelhasználókat átvágja az új kiszolgálón található fájlmegosztás fölé, és eltávolíthatja a régi fájlmegosztás kiszolgálói végpontját.
@@ -385,5 +385,5 @@ Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a bizto
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 * [Az Azure Files üzembe helyezése](storage-files-deployment-guide.md)
-* [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
+* [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
 * [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

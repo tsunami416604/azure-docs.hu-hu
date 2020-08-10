@@ -1,6 +1,6 @@
 ---
 title: A Azure Data Lake Storage Gen2 hozzáférés-vezérlésének áttekintése | Microsoft Docs
-description: Ismerje meg, hogyan működik a hozzáférés-vezérlés Azure Data Lake Storage Gen2
+description: Ismerje meg, hogyan működik a hozzáférés-vezérlés a Azure Data Lake Storage Gen2ban. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a POSIX-hez hasonló ACL-ek támogatottak.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 54867278b583124473b5b41c164714bf91f2f631
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543299"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030486"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
@@ -95,7 +95,7 @@ A hozzáférési ACL-ek és az alapértelmezett ACL-ek azonos struktúrával ren
 
 A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás**és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
 
-|            |    File     |   Címtár |
+|            |    Fájl     |   Címtár |
 |------------|-------------|----------|
 | **Olvasás (R)** | Olvashatja a fájl tartalmát | **Olvasás** és **végrehajtás** szükséges a könyvtár tartalmának listázásához |
 | **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | **Írás** és **végrehajtás** szükséges az alárendelt elemek létrehozásához egy címtárban |
@@ -347,6 +347,6 @@ Az ACL-ek nem öröklik az öröklést. Az alapértelmezett ACL-ek azonban az al
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Azure Data Lake Storage Gen2 áttekintése](../blobs/data-lake-storage-introduction.md)

@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824562"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030962"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -129,6 +129,15 @@ Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metr
               ]
         }
 ```
+
+## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Metrikai riasztási szabály ARM-sablonjának exportálása a Azure Portal használatával
+
+A metrikai riasztási szabály ARM-sablonjának exportálása segít megérteni a JSON-szintaxist és-tulajdonságokat, és automatizálhatja a jövőbeli telepítéseket.
+1. Navigáljon az **erőforráscsoportok** szakaszhoz a portálon, és válassza ki a szabályt tartalmazó erőforráscsoportot.
+2. Az Áttekintés szakaszban jelölje be a **rejtett típusok megjelenítése** jelölőnégyzetet.
+3. A **típus** szűrőben válassza a *Microsoft. bepillantások/metricalerts*lehetőséget.
+4. A részletek megtekintéséhez válassza ki a megfelelő riasztási szabályt.
+5. A **Beállítások**területen válassza a **sablon exportálása**lehetőséget.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>A metrika riasztási szabályainak kvótája túl kicsi
 

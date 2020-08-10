@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800298"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030756"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat létrehozása
 
@@ -143,10 +143,10 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
 9. Összefoglalás
-10. Leírás
+10. Description
 11. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -160,7 +160,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -202,19 +202,20 @@ Adjon meg legalább egy három kapcsolódó marketing dokumentumot PDF formátum
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a `https://upload.xboxlive.com` partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) méretű embléma létrehozásához. Ezt másik képpel is lecserélheti.
-
-Mindkét embléma mérete szükséges a lista különböző helyein való használathoz:
-
+Adja meg az ajánlat emblémájának PNG-fájlját két képpontos méretben:
 - **Kicsi** (48 x 48)
-- **Nagy** (216 x 216 és 350 x 350 között)
+- **Nagyméretű** (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Mindkét emblémát meg kell adni, és a piactér-lista különböző helyein használják.
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 

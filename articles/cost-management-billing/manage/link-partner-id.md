@@ -7,28 +7,28 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281786"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529910"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
 A Microsoft-partnerek olyan szolgáltatásokat biztosítanak, amelyek segítségével az ügyfelek a Microsoft termékeinek használatával elérhetik üzleti és stratégiai célkitűzéseiket. Ha egy ügyfél nevében az Azure-szolgáltatásokat kezeli, konfigurálja és támogatja, akkor a partnerfelhasználóknak hozzá kell férniük az ügyfél környezetéhez. A partnerrendszergazdai hivatkozás (Partner Admin Link, PAL) használatával a partnerek társítani tudják a partnerhálózati azonosítójukat a szolgáltatás teljesítéséhez használt hitelesítő adatokkal.
 
-A PAL lehetővé teszi, hogy a Microsoft azonosítsa és felismerje az Azure-ügyfelek sikerességért felelős partnereket. A Microsoft a fiók engedélyei (RBAC-szerepkör) és a hatókör (előfizetés, erőforráscsoport, erőforrás) alapján biztosíthat a szervezet számára befolyást, illetve az Azure által felhasznált bevételt.
+A PAL lehetővé teszi, hogy a Microsoft azonosítsa és felismerje az Azure-ügyfelek sikerességért felelős partnereket. A Microsoft a fiók engedélyei (Azure-szerepkör) és a hatókör (előfizetés, erőforráscsoport, erőforrás) alapján biztosíthat a szervezet számára befolyást, illetve az Azure által felhasznált bevételt.
 
 ## <a name="get-access-from-your-customer"></a>Hozzáférés kérése az ügyféltől
 
 A partnerazonosító csatolása előtt ügyfelének hozzáférést kell adnia Önnek az Azure-erőforrásokhoz a következő lehetőségek valamelyikének használatával:
 
-- **Vendégfelhasználó**: Ügyfele hozzáadhatja Önt vendégfelhasználóként, és bármilyen szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört hozzárendelhet. További információkért tekintse meg a [Vendégfelhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) szakaszt.
+- **Vendégfelhasználó**: Ügyfele hozzáadhatja Önt vendégfelhasználóként, és bármilyen Azure-szerepkört hozzárendelhet. További információkért tekintse meg a [Vendégfelhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) szakaszt.
 
-- **Címtárfiók**: Az ügyfél létrehozhat egy felhasználói fiókot az Ön számára a saját címtárában, és bármilyen RBAC-szerepkört hozzárendelhet.
+- **Címtárfiók**: Az ügyfél létrehozhat egy felhasználói fiókot az Ön számára a saját címtárában, és bármilyen Azure-szerepkört hozzárendelhet.
 
-- **Egyszerű szolgáltatás**: Az ügyfél a címtárában hozzáadhat az Ön szervezetéből származó alkalmazást vagy szkriptet, és hozzárendelhet bármilyen RBAC-szerepkört. Az alkalmazás vagy szkript identitása szolgáltatásnévként ismert.
+- **Egyszerű szolgáltatás**: Az ügyfél a címtárában hozzáadhat az Ön szervezetéből származó alkalmazást vagy szkriptet, és hozzárendelhet bármilyen Azure-szerepkört. Az alkalmazás vagy szkript identitása szolgáltatásnévként ismert.
 
 - **Azure Lighthouse**: Ügyfele delegálhat egy előfizetést (vagy erőforráscsoportot), így a felhasználói képesek használni a bérlőjéből. További információkért lásd az [Azure által delegált erőforrás-kezelést](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
@@ -168,9 +168,8 @@ A partnerrendszergazdai hivatkozás (PAL) lehetővé teszi, hogy a Microsoft azo
 
 **Milyen adatokat gyűjt a PAL?**
 
-A PAL meglévő hitelesítő adatokkal történő társítása nem küld új ügyféladatokat a Microsoftnak. Egyszerűen a telemetriát biztosítja a Microsoft számára, amelyben a partner aktívan jelen van az ügyfél Azure-környezetében. A Microsoft az ügyfél által a partner számára biztosított fiókengedélyek (RBAC-szerepkör) és hatókör (felügyeleti csoport, előfizetés, erőforráscsoport, erőforrás) alapján biztosíthat a partnerszervezet számára befolyást és az Azure által felhasznált bevételt az ügyfélkörnyezetből. 
+A PAL meglévő hitelesítő adatokkal történő társítása nem küld új ügyféladatokat a Microsoftnak. Egyszerűen a telemetriát biztosítja a Microsoft számára, amelyben a partner aktívan jelen van az ügyfél Azure-környezetében. A Microsoft az ügyfél által a partner számára biztosított fiókengedélyek (Azure-szerepkör) és hatókör (felügyeleti csoport, előfizetés, erőforráscsoport, erőforrás) alapján biztosíthat a partnerszervezet számára befolyást és az Azure által felhasznált bevételt az ügyfélkörnyezetből. 
 
 **Ez hatással van az ügyfél Azure-környezetének biztonságára?**
 
-A PAL társítása csak a partner MPN-azonosítóját adja hozzá a már konfigurált hitelesítő adatokhoz, és nem módosítja az engedélyeket (RBAC-szerepkört), valamint nem biztosít az Azure-szolgáltatással kapcsolatos további információkat a partner vagy a Microsoft számára. 
-
+A PAL társítása csak a partner MPN-azonosítóját adja hozzá a már konfigurált hitelesítő adatokhoz, és nem módosítja az engedélyeket (Azure-szerepkört), valamint nem biztosít az Azure-szolgáltatással kapcsolatos további információkat a partner vagy a Microsoft számára. 

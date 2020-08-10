@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a48e4b594b82f6e910db26fc2319032fbef30b6b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044990"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446001"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A költségvetések az Azure-fiókok és -hatókörök következő típusai esetén támogatottak:
 
-- Azure szerepköralapú hozzáférés-vezérlési hatókörök
+- Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) hatókörök
     - Felügyeleti csoportok
     - Előfizetés
 - A Nagyvállalati Szerződés hatókörei

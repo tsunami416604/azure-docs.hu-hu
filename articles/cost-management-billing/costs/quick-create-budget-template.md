@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 70408a3ed6638ec76af113c24cc3c8190a44f55c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385779"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445998"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Gyorsútmutató: Költségvetés létrehozása ARM-sablonnal
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A költségvetések az Azure-fiókok és -hatókörök következő típusai esetén támogatottak:
 
-- Azure szerepköralapú hozzáférés-vezérlési hatókörök
+- Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) hatókörök
     - Felügyeleti csoportok
     - Előfizetés
 - A Nagyvállalati Szerződés hatókörei

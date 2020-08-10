@@ -1,6 +1,6 @@
 ---
 title: Regisztrálás a Microsoft 365-be Azure-fiókkal
-description: Tudnivalók Microsoft 365-előfizetés létrehozásáról egy Azure-fiók használatával
+description: Tudnivalók Microsoft 365-előfizetés létrehozásáról egy Azure-fiók használatával. A meglévő Azure és Microsoft 365-fiókokat társíthatja is egymással.
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
@@ -8,14 +8,14 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: banders
-ms.openlocfilehash: 006f8edc81ec19647ff6173a4c786c6d7e93fadc
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 050bd9c420ccecdb91a6c438782d9be1c6c23b88
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810380"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461884"
 ---
-# <a name="sign-up-for-a-microsoft--365-subscription-with-your-azure-account"></a>Regisztrálás Microsoft 365-előfizetésre Azure-fiókkal
+# <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Regisztrálás Microsoft 365-előfizetésre Azure-fiókkal
 
 Ha Ön Azure-előfizető, akkor Azure-fiókjával regisztrálhat Microsoft 365-előfizetésre. Ha Ön egy Azure-előfizetéssel rendelkező szervezet tagja, akkor a meglévő Azure Active Directory (Azure AD) felhasználói számára létrehozhat Microsoft 365-előfizetéseket. Olyan fiókkal regisztráljon a Microsoft 365-be, amely globális rendszergazdai vagy számlázási rendszergazdai engedélyekkel rendelkezik az Azure Active Directory-bérlőben. További információkért lásd [az Azure AD-ben a fiókengedélyek ellenőrzését](#RoleInAzureAD) és [az Azure Active Directoryban a rendszergazdai szerepkörök hozzárendelését](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) ismertető cikket.
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure használati adatainak és díjainak megtekintése és letöltése
-description: A cikk azt ismerteti, hogyan töltheti le vagy tekintheti meg az Azure használati adatait és díjait.
+description: Megismerheti, hogyan töltheti le vagy tekintheti meg az Azure napi használati adatait és díjait, és tekinthet meg további elérhető erőforrásokat.
 keywords: számlázási használat, használati díjak, használat letöltése, használat megtekintése, azure számla, azure használat
 author: bandersmsft
 ms.author: banders
@@ -8,12 +8,12 @@ tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322030"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460507"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Az Azure használati adatainak és díjainak megtekintése és letöltése
 

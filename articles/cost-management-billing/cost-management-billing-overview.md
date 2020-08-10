@@ -1,23 +1,36 @@
 ---
-title: Az Azure Cost Management and Billing áttekintése | Microsoft Docs
-description: Az Azure Cost Management and Billing szolgáltatásaival a számlázáshoz kapcsolódó adminisztrációs feladatokat hajthat végre, és kezelheti a költségekhez való számlázási célú hozzáférést. Használhatja az Azure-kiadások monitorozására és szabályozására, valamint az erőforrások használatának optimalizálására szolgáló szolgáltatásait is.
+title: Az Azure Cost Management + Billing áttekintése
+description: Az Azure Cost Management + Billing szolgáltatásaival a számlázáshoz kapcsolódó adminisztrációs feladatokat hajthat végre, és kezelheti a költségekhez való számlázási célú hozzáférést. Használhatja az Azure-kiadások monitorozására és szabályozására, valamint az Azure-erőforrások használatának optimalizálására szolgáló szolgáltatásokat is.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 07/29/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 76121dd8126922de2843e430a4e01cae1c7c0d53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879088"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413000"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>Mi az az Azure Cost Management and Billing?
+# <a name="what-is-azure-cost-management--billing"></a>Mi az az Azure Cost Management + Billing?
 
-Az Azure-termékek és -szolgáltatások esetén a fizetés használat alapján történik. Amikor Azure-erőforrásokat hoz létre és használ, díjat kell fizetnie az erőforrásokért. Az Azure Cost Management and Billing szolgáltatásaival a számlázáshoz kapcsolódó adminisztrációs feladatokat hajthat végre, és kezelheti a költségekhez való számlázási célú hozzáférést. Használhatja az Azure-kiadások monitorozására és szabályozására, valamint az erőforrások használatának optimalizálására szolgáló szolgáltatásait is.
+A Microsoft Cloud használatával jelentősen növelheti az üzleti számítási feladatok teljesítményét. Emellett a szervezet eszközeinek kezeléséhez szükséges fenntartási költségeket is csökkenti. Ez az üzleti lehetőség azonban kockázatot is jelenthet, mivel pazarlást és hatékonysági hiányosságokat okozhat a felhőben üzemelő példányokban. Az Azure Cost Management + Billing a Microsoft által biztosított eszközök csomagja, amely a számítási feladatok költségeinek elemzéséhez, kezeléséhez és a számítási feladatok költségeinek optimalizálásához nyújt segítséget. A csomag használata segít biztosítani, hogy a szervezet kihasználja a felhő által kínált előnyöket.
+
+Az Azure számítási feladatai felfoghatók úgy, mint a világítás egy házban. Ha napközben elhagyja a házat, felkapcsolva hagyja a lámpákat? Szívesen használna olyan izzókat, amelyek segítenek csökkenteni a havi energiaköltségeket? A szükségesnél több lámpa van egy szobában? Az Azure Cost Management + Billing használatával ehhez hasonló módon közelítheti meg a szervezet által használt számítási feladatokat.
+
+Az Azure-termékek és -szolgáltatások esetén a fizetés használat alapján történik. Amikor Azure-erőforrásokat hoz létre és használ, díjat kell fizetnie az erőforrásokért. Az új erőforrások üzembe helyezésének egyszerűsége miatt a számítási feladatok költségei megfelelő elemzés és monitorozás nélkül jelentősen megnőhetnek. Az Azure Cost Management + Billing funkcióival az alábbiakat teheti:
+
+- Számlázási és adminisztratív feladatok végrehajtása, például a számlák befizetése
+- Költségekhez való számlázási hozzáférés kezelése
+- A havi számlák kiállításához használt költség- és használati adatok letöltése
+- A költségek proaktív adatelemzése
+- Költségküszöbök beállítása
+- A számítási feladatok költségoptimalizáló módosítási lehetőségeinek azonosítása
+
+Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](./costs/cost-mgt-best-practices.md).
 
 ## <a name="understand-azure-billing"></a>Az Azure Billing ismertetése
 
@@ -45,7 +58,6 @@ A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet
 |Számlázási fiók     | Egy vagy több Azure-előfizetés önálló tulajdonosát (fiókadminisztrátorát) jelöli. A fiókadminisztrátor jogosult elvégezni bizonyos számlázási feladatokat, például az előfizetések létrehozását, a számlák megtekintését vagy az előfizetések számlázásának módosítását.  |
 |Előfizetés     |  Adott Azure-erőforrások csoportja. A számla létrehozása az előfizetés hatókörben történik. Saját fizetési módokkal rendelkezik, amelyek a számlák kiegyenlítésére szolgálnak.|
 
-
 #### <a name="enterprise-agreement"></a>Nagyvállalati Szerződés
 
 |Hatókör  |Meghatározás  |
@@ -53,7 +65,6 @@ A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet
 |Számlázási fiók    | Egy Nagyvállalati Szerződésre való regisztrációt jelöl. A számla létrehozása a számlázási fiók hatókörben történik. A struktúráját a bevont részlegek és regisztrált fiókok határozzák meg.  |
 |Részleg     |  Regisztrált fiókok opcionális csoportja.      |
 |Regisztrációs fiók     |  Egyetlen fióktulajdonost jelöl. Az Azure-előfizetések létrehozása a regisztrációs fiók hatókörben történik.  |
-
 
 #### <a name="microsoft-customer-agreement"></a>Microsoft-ügyfélszerződés
 
@@ -63,19 +74,17 @@ A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet
 |Számlázási profil     |  Egy számlát és annak fizetési módjait jelöli. Ebben a hatókörben történik számlakiállítás. A számlázási profil több számlázási szakaszt is magában foglalhat.      |
 |Számlázási szakasz     |   Egy költségcsoportot jelöl a számlán belül. Az előfizetések és más vásárlások a számlázási szakasz hatókörhöz vannak társítva.    |
 
-
 ## <a name="understand-azure-cost-management"></a>Az Azure Cost Management ismertetése
-A költségkezelés az a folyamat, amely során hatékonyan megtervezi és szabályozza az üzleti költségeket. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Az Azure Cost Management + Billing segítségével a szervezetek költségtudatosan tervezhetnek. Továbbá támogatást nyújt a költségek hatékony elemzéséhez, és a felhőköltségek optimalizálásának kezdő lépéseihez. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](./costs/cost-mgt-best-practices.md).
+
+Habár kapcsolódik hozzá, a számlázás eltér a költségkezeléstől. A számlázás a számlák kiállításának folyamata az ügyfelek részére árucikkekről vagy szolgáltatásokról, valamint a kereskedelmi kapcsolat kezelése.
+
+A Cost Management rámutat szervezete költség- és a felhasználási mintáira, bővített analitikával. A Cost Management jelentései az Azure-szolgáltatások és a külső Marketplace-ajánlatok használatán alapuló költségeket jelenítik meg. A költségek a megegyezés szerinti árakon alapulnak, figyelembe véve a foglalási és Azure Hybrid Benefit-kedvezményeket. A jelentések együttesen kimutatják a belső és külső használati költségeket, valamint az Azure Marketplace-díjakat. Az egyéb díjak, például a foglalások, a támogatási díjak és az adók még nem látszanak a jelentésekben. A jelentések segítenek értelmezni a kiadásokat és az erőforrások felhasználtságát, továbbá könnyebben fellelhet esetleges rendellenességeket kiadásaiban. Ezen felül prediktív elemzések is elérhetők. A Cost Management Azure-beli felügyeleti csoportok, költségvetések és javaslatok használatával egyértelműen megmutatja, hogyan vannak rendszerezve költségei, és hogyan csökkenthetné azokat.
+
+Az Azure Portal vagy pedig a különféle API-k használatával automatizálhatja az adatexportálást, hogy integrálhassa a költségadatokat külső rendszerekbe és folyamatokba. Emellett lehetősége van a számlázási adatok automatikus exportálására és jelentések ütemezésére is.
 
 Az [Azure Cost Management áttekintését ismertető videó](https://www.youtube.com/watch?v=el4yN5cHsJ0) megtekintésével gyors képet alkothat arról, hogyan segíthet az Azure Cost Management az Azure-ban felmerülő költségek csökkentésében. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
-
-Habár kapcsolódik hozzá, a számlázás eltér a költségkezeléstől. A számlázás a számlák kiállításának folyamata az ügyfelek részére árucikkekről vagy szolgáltatásokról, valamint a kereskedelmi kapcsolat kezelése.
-
-A Cost Management rámutat szervezete költség- és a felhasználási mintáira, bővített analitikával. A Cost Management jelentései az Azure-szolgáltatások és a külső Marketplace-ajánlatok használatán alapuló költségeket jelenítik meg. A költségek a megegyezés szerinti árakon alapulnak, figyelembe véve a foglalási és Azure Hybrid Benefit-kedvezményeket. A jelentések együttesen kimutatják a belső és külső használati költségeket, valamint az Azure Marketplace-díjakat. Az egyéb díjak, mint például a foglalások, támogatási díjak és az adók, még nem látszanak a jelentésekben. A jelentések segítenek értelmezni a kiadásokat és az erőforrások felhasználtságát, továbbá könnyebben fellelhet esetleges rendellenességeket kiadásaiban. Ezen felül prediktív elemzések is elérhetők. A Cost Management Azure-beli felügyeleti csoportok, költségvetések és javaslatok használatával egyértelműen megmutatja, hogyan vannak rendszerezve költségei, és hogyan csökkenthetné azokat.
-
-Az Azure Portal vagy pedig a különféle API-k használatával automatizálhatja az adatexportálást, hogy integrálhassa a költségadatokat külső rendszerekbe és folyamatokba. Emellett lehetősége van a számlázási adatok automatikus exportálására és jelentések ütemezésére is.
 
 ### <a name="plan-and-control-expenses"></a>Költségtervezés és -irányítás
 
@@ -99,17 +108,16 @@ Az [Azure Cost Management és a Cloudyn videója](https://www.youtube.com/watch?
 
 ### <a name="additional-azure-tools"></a>További Azure-eszközök
 
-Az Azure más olyan eszközökkel is rendelkezik, amelyek képezik az Azure Cost Management and Billing szolgáltatásainak a részét. Fontos szerepet játszanak azonban a költségkezelési folyamatban. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
+Az Azure más olyan eszközökkel is rendelkezik, amelyek nem képezik az Azure Cost Management + Billing szolgáltatásainak a részét. Fontos szerepet játszanak azonban a költségkezelési folyamatban. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
 
 - [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) – segítségével becslést végezhet kezdeti felhőköltségeiről.
 - [Azure Migrate](../migrate/migrate-overview.md) – felmérheti adatközpontja jelenlegi számítási feladatait, így betekintést nyerhet abba, hogy mit várjon el egy Azure helyettesítő megoldástól.
 - [Azure Advisor](../advisor/advisor-overview.md) - azonosíthatja használaton kívüli virtuális gépeit, és javaslatokat kaphat Azure fenntartott példányok vásárlásával kapcsolatban.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) – használja az aktuális helyszíni Windows Server- vagy SQL Server-licenceit az Azure-beli virtuális gépeken a költségek csökkentése érdekében.
 
-
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerkedett a Cost Management and Billinggel, a következő lépés a szolgáltatás használatának a megkezdése.
+Most, hogy megismerkedett a Cost Management + Billinggel, a következő lépés a szolgáltatás használatának a megkezdése.
 
 - Használja az Azure Cost Managementet [költségeinek elemzésére](./costs/quick-acm-cost-analysis.md).
 - További információért megtekintheti az [Azure Cost Management ajánlott eljárásait](./costs/cost-mgt-best-practices.md).
