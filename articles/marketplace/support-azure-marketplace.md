@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121503"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037507"
 ---
-# <a name="support-for-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piactér támogatása
+# <a name="support-for-the-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piactér támogatása
 
 Kérdése van a Microsoft kereskedelmi Piactéri közzétevővel kapcsolatos első lépések kapcsán? Az alábbi lista a kereskedelmi piactér támogatási lehetőségeit sorolja fel. A következő erőforrásokon kívül a [C + AI közösségi fórum Marketplace-csatornáján](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)is választ kaphat kérdéseire.  
 
@@ -28,7 +28,7 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 |:--- |:--- |:--- |  
 | Segítségért látogasson el az incidens létrehozása lapra, amely a [piactér-támogatásban](https://aka.ms/marketplacepublishersupport) található.</li> </ul> | A partner Center támogatása. | A támogatás 24x5 van megadva. |  
 
-## <a name="technical"></a>Műszaki  
+## <a name="technical"></a>Technikai  
 
 | Támogatási csatorna | Leírás |  
 |:--- |:--- |  
@@ -43,7 +43,7 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 | E-mail[gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  
 | E-mail[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémákkal és-arculattal kapcsolatos használati kérdésekre. |  |  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Látogasson el a [kereskedelmi piactér közzétevői útmutató oldalára](index.yml).
 * További információ [a kereskedelmi piactér program támogatásáról a partner Centerben](partner-center-portal/support.md).

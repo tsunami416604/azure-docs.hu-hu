@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: geokerítésen létrehozása és eszközök nyomon követése Microsoft Azure térképen'
-description: Megtudhatja, hogyan állíthat be geokerítésen, és hogyan követheti nyomon az eszközöket a geokerítésen képest a Microsoft Azure Maps térbeli szolgáltatás használatával.
+description: Ismerje meg, hogyan állíthat be geokerítésen. Tekintse meg, hogyan követheti nyomon az eszközöket a geokerítésen viszonyítva a Azure Maps térbeli szolgáltatás használatával.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1044348e50f4208038739975e7355fb6f4873454
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517404"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037643"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
 
@@ -254,7 +254,7 @@ Az alábbi lépéseket követve hozzon létre egy esemény-előfizetést a geoke
 
     :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps események előfizetés részletei":::
 
-4. Kattintson a **Létrehozás** lehetőségre.
+4. Kattintson a **Create** (Létrehozás) gombra.
 
 5. Ismételje meg a 1-4. lépést az előző szakaszban létrehozott Logic app kilépő végponthoz. A 3. lépésnél ügyeljen arra, hogy válassza ki `Geofence Exited` az esemény típusát.
 
@@ -469,7 +469,7 @@ A következő részekben a HTTP GET Geokerítések API-kérelmek a berendezés �
 
 4. A fenti GeoJSON-válaszban a berendezés kilépett a fő hely geokerítésen. Ennek eredményeképpen a paraméter a (z `isEventPublished` ) értékre van állítva, `true` és a Operations Manager e-mailben értesítést kap arról, hogy a berendezés kilépett egy geokerítésen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tartalomtípusok kezelése Azure Logic Appsban](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)

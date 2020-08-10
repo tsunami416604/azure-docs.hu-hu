@@ -1,6 +1,6 @@
 ---
 title: A helymeghatározáshoz lefedettsége Microsoft Azure Maps keresési szolgáltatásban
-description: Ebből a cikkből megtudhatja, hogy Microsoft Azure Maps helymeghatározáshoz lefedettsége különböző országokban/régiókban.
+description: Megtudhatja, hogy mely régiókban Azure Maps a keresés. A helymeghatározáshoz-kategóriák közé tartoznak a címek, a házszámok, az utcai szint, a városi szint és az érdekes pontok.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386911"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037439"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps helymeghatározáshoz lefedettsége
 
@@ -297,7 +297,7 @@ Az országokban/régiókban való geocode az helymeghatározáshoz szolgáltatá
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Maps helymeghatározáshoz:
 > [!div class="nextstepaction"]

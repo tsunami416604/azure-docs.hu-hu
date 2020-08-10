@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f5a8a87d4ac4936f25e7ece2a34b518c09a063
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674591"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037626"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -76,7 +76,7 @@ Mindkét módszer megnyithatja a tárház beállításainak konfigurációs pane
 
 A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai láthatók:
 
-| Beállítás | Description | Érték |
+| Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
 | **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
@@ -211,11 +211,11 @@ Ekkor megnyílik egy oldalsó ablaktábla, ahol megerősítheti, hogy a közzét
 
 ### <a name="permissions"></a>Engedélyek
 
-Általában nem szeretné, hogy minden csapattag rendelkezzen a gyár frissítéséhez szükséges engedélyekkel. A következő engedélyek használata ajánlott:
+Általában nem szeretné, hogy minden csapattag rendelkezzen a Data Factory frissítéséhez szükséges engedélyekkel. A következő engedélyek használata ajánlott:
 
-*   Az összes csapattagnak olvasási engedéllyel kell rendelkeznie az adatelőállítóhoz.
-*   A gyárban csak a kiválasztott személyek adhatók közzé. Ehhez rendelkeznie kell a **Data Factory közreműködő** szerepkörrel azon az erőforráson, amelyen a gyár található. Az engedélyekkel kapcsolatos további információkért lásd: [szerepkörök és engedélyek a Azure Data Factoryhoz](concepts-roles-permissions.md).
-   
+*   Az összes csapattagnak olvasási engedéllyel kell rendelkeznie a Data Factoryhoz.
+*   Csak a személyek kiválasztott csoportja számára engedélyezett a közzététel a Data Factory. Ehhez a Data Factoryt tartalmazó **erőforráscsoporthoz** **Data Factory közreműködő** szerepkörrel kell rendelkeznie. Az engedélyekkel kapcsolatos további információkért lásd: [szerepkörök és engedélyek a Azure Data Factoryhoz](concepts-roles-permissions.md).
+
 Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműködési ágban. Ez a korlátozás segít megakadályozni a hibákat, mivel minden bejelentkezés a [szolgáltatási ágak létrehozása](source-control.md#creating-feature-branches)című témakörben leírt lekéréses kérelem-felülvizsgálati folyamaton halad át.
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Jelszavak használata Azure Key Vault

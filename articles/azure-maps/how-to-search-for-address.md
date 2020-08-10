@@ -1,6 +1,6 @@
 ---
 title: Hely keresése Azure Maps Search Services használatával
-description: Ebből a cikkből megtudhatja, hogyan kereshet egy helyet a Microsoft Azure Maps keresési API-k használatával a helymeghatározáshoz, a fordított helymeghatározáshoz, a zavaros kereséshez és a fordított kereszt utca kereséséhez.
+description: További információ a Azure Maps Search szolgáltatásról. Tekintse meg, hogyan használhatók ezen API-k a helymeghatározáshoz, a fordított helymeghatározáshoz, a zavaros keresések és a fordított keresztek közötti keresésekhez.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 51ee2bb66adedc310f65b2d3b430023ae7767df6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126621"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037779"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
 

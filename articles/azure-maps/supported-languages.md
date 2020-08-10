@@ -1,6 +1,6 @@
 ---
 title: Honosítási támogatás | Microsoft Azure térképek
-description: Ebből a cikkből megismerheti a Microsoft Azure Maps szolgáltatásainak támogatott nyelveit.
+description: Megtudhatja, hogy mely régiókat Azure Maps támogatja olyan szolgáltatásokkal, mint a Maps, a Search, az routing, az időjárási és a forgalmi incidensek. Megtudhatja, hogyan állíthatja be a View paramétert.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127893"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037694"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
 
@@ -110,37 +110,37 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 > 2019. augusztus 1-től a **View** paraméter meghatározza a visszaadott leképezési tartalmat a fent felsorolt új régiókban/országokban. Azure Maps **View** paraméter (más néven "felhasználói régió paramétere") egy kétbetűs ISO-3166 országkód, amely az adott országhoz/régióhoz tartozó megfelelő térképeket jeleníti meg, amelyek meghatározzák, hogy a geopolitikai módon vitatott tartalom mely készletét adja vissza Azure Maps szolgáltatásokon keresztül, beleértve a térképen megjelenített szegélyeket és címkéket. 
 
 Ügyeljen arra, hogy a **View** paramétert a REST API-k és a szolgáltatások által használt SDK-k számára szükséges módon állítsa be.
->  
->
->  **REST API-k:**
->  
->  Győződjön meg arról, hogy szükség szerint beállította a View paramétert. A View paraméter azt határozza meg, hogy a rendszer mely geopolitikai jogvitás tartalmat adja vissza Azure Maps szolgáltatásokon keresztül. 
->
->  Érintett Azure Maps REST-szolgáltatások:
->    
->    * Térkép lekérése csempe
->    * Térkép-rendszerkép lekérése 
->    * Keresés – fuzzy
->    * Keresési célobjektum beolvasása
->    * Keresési célobjektum kategóriájának beolvasása
->    * Keresés a közelben
->    * Keresési címek beolvasása
->    * Felépített keresési címek beolvasása
->    * Fordított keresési címek lekérése
->    * A keresési címek fordított kereszt utcájának beolvasása
->    * Keresés közzététele a geometrián belül
->    * A Search-címek batch-előnézetének közzététele
->    * Keresési címe fordított batch előzetes verziójának közzététele
->    * Keresés közzététele az útvonal mentén
->    * A Search fuzzy batch előzetes verziójának közzététele
->
->    
->  **SDK**
->
->  Győződjön meg arról, hogy szükség szerint állította be a **View** paramétert, és a web SDK és az Android SDK legújabb verziója van telepítve. Érintett SDK-k:
->
->    * Azure Maps web SDK
->    * Azure Maps Android SDK
+  
+
+### <a name="rest-apis"></a>REST API-k
+  
+Győződjön meg arról, hogy szükség szerint beállította a View paramétert. A View paraméter azt határozza meg, hogy a rendszer mely geopolitikai jogvitás tartalmat adja vissza Azure Maps szolgáltatásokon keresztül. 
+
+Érintett Azure Maps REST-szolgáltatások:
+    
+ * Térkép lekérése csempe
+ * Térkép-rendszerkép lekérése 
+ * Keresés – fuzzy
+ * Keresési célobjektum beolvasása
+ * Keresési célobjektum kategóriájának beolvasása
+ * Keresés a közelben
+ * Keresési címek beolvasása
+ * Felépített keresési címek beolvasása
+ * Fordított keresési címek lekérése
+ * A keresési címek fordított kereszt utcájának beolvasása
+ * Keresés közzététele a geometrián belül
+ * A Search-címek batch-előnézetének közzététele
+ * Keresési címe fordított batch előzetes verziójának közzététele
+ * Keresés közzététele az útvonal mentén
+ * A Search fuzzy batch előzetes verziójának közzététele
+
+ 
+### <a name="sdks"></a>SDK-k
+
+Győződjön meg arról, hogy szükség szerint állította be a **View** paramétert, és a web SDK és az Android SDK legújabb verziója van telepítve. Érintett SDK-k:
+
+ * Azure Maps web SDK
+ * Azure Maps Android SDK
 
 Alapértelmezés szerint a View paraméter **egyesített**értékre van állítva, még akkor is, ha még nem adta meg a kérésben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyen. Másik lehetőségként megadhatja a "View = automatikus" értéket, amely a kérés IP-címe alapján visszaadja a térképi adatmennyiséget.  Azure Mapsban a **View** paramétert a vonatkozó törvényeknek megfelelően kell használni, beleértve azokat az országokat/régiókat, amelyekben a Maps, a images és más adatokat, valamint a harmadik féltől származó, a Azure Maps-on keresztül való hozzáférésre jogosult külső tartalmat is elérhetővé teszi.
 

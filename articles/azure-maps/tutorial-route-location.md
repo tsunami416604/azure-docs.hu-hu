@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: útvonal megkeresése egy helyhez | Microsoft Azure térképek'
-description: Ebből az oktatóanyagból megtudhatja, hogyan teheti át az útvonalat egy adott helyre (érdekes hely) a Microsoft Azure Maps útválasztási szolgáltatás használatával.
+description: 'Megtudhatja, hogyan találhatja meg az útvonalat egy érdekes pontra. Lásd: a címek koordinátáinak beállítása és a Azure Maps útvonal-szolgáltatás lekérdezése a pont irányára.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0ff604e920ca3e0708fc21a1cadfe61646f4e30b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287410"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037575"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Oktatóanyag: egy hasznos ponthoz való továbbítás Azure Maps használatával
 

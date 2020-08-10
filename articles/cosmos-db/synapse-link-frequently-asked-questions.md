@@ -1,17 +1,17 @@
 ---
 title: Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 description: Válaszok a szinapszis-hivatkozással kapcsolatos gyakori kérdésekre a Azure Cosmos DB olyan területeken, mint például a számlázás, az analitikus tárolás, a biztonság, az elemzési tár élettartama.
-author: srchi
-ms.author: srchi
+author: Rodrigossz
+ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e65838074260a4d4a9c9668fa6ac4aa2a403929b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921198"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037558"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
@@ -108,7 +108,7 @@ Az analitikai tárolóval való hitelesítés megegyezik a tranzakciós tároló
 |---------|---------|
 |Szinapszis Spark-készletek | Olvasás, írás (tranzakciós tárolón keresztül), tábla, ideiglenes nézet |
 |Szinapszis SQL Server nélküli    | Olvasás, megtekintés (megtekintett előzetes verzió)  |
-|A szinapszis SQL kiépítve   |  Nem érhető el |
+|A szinapszis SQL kiépítve   |  Nem elérhető |
 
 ### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Hogyan szinkronizálhatók a szinapszis Spark-táblái a szinapszis SQL Server nélküli tábláival, ugyanúgy, mint a Azure Data Lake?
 Ez a funkció jelenleg nem érhető el.

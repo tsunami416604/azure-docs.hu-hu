@@ -1,6 +1,6 @@
 ---
 title: Azure Storage-tábla adatai titkosítása | Microsoft Docs
-description: Tudnivalók az Azure Storage-beli táblázatos adattitkosításról.
+description: Tudnivalók az Azure Storage-beli táblázatos adattitkosításról. A .NET Azure Storage ügyféloldali kódtára lehetővé teszi a karakterlánc-entitások titkosítását a INSERT és a Replace műveletekhez.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec213b9d7429714beb948f061445fd37d698624
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60326003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037490"
 ---
 # <a name="encrypt-table-data"></a>Tábla adatai titkosítása
 A .NET Azure Storage ügyféloldali kódtára támogatja a karakterlánc-entitások tulajdonságainak az INSERT és a Replace műveletekhez való titkosítását. A titkosított karakterláncok a szolgáltatásban bináris tulajdonságokként tárolódnak, és a visszafejtés után vissza lesznek konvertálva karakterlánccá.    

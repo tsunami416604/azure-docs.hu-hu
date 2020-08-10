@@ -1,6 +1,6 @@
 ---
 title: Kategóriák keresése | Microsoft Azure térképek
-description: Ebben a cikkben megismerheti a Microsoft Azure Maps támogatott keresési kategóriáit.
+description: A Azure Maps által támogatott keresési kategóriák megismerése. Megtekintheti az összes támogatott kategóriát, valamint az egyesek által reprezentált érdekes pontok típusait.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4975a5842ef23b54444663f653f43bb8dbd1d2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9e910c38000fc4dbc454b68b752925df9145837
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745987"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037677"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps támogatott kategóriák
 
