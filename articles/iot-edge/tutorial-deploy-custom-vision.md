@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439736"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042802"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
@@ -74,10 +74,10 @@ A képosztályozó létrehozása és betanítása után exportálhatja azt Docke
 
    | Mező | Érték |
    | ----- | ----- |
-   | Név | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
-   | Description | Választható projektleírás. |
+   | Name (Név) | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
+   | Leírás | Választható projektleírás. |
    | Erőforrás | Válasszon ki egy Custom Vision Service erőforrást tartalmazó Azure-erőforráscsoportot, vagy **hozzon létre újat** , ha még nem adott hozzá egyet. |
-   | Project Types (Projekttípusok) | **Besorolás** |
+   | Project Types (Projekttípusok) | **Osztályozás** |
    | Classification Types (Osztályozási típusok) | **Többosztályos (egyetlen címke/rendszerkép)** |
    | Tartományok | **General (compact)** (Általános (kompakt)) |
    | Exportálási képességek | **Alapszintű platformok (Tensorflow, CoreML, ONNX,...)** |
@@ -433,9 +433,9 @@ Ha az eszközön tekinti meg az eredményeket, tekintse meg a cameraCapture modu
 A Visual Studio Code-ból kattintson a jobb gombbal a IoT Edge eszköz nevére, és válassza a **figyelés beépített esemény végpontjának indítása**lehetőséget. 
 
 > [!NOTE]
-> Kezdetben előfordulhat, hogy a cameraCapture-modul kimenetében megjelenik néhány kapcsolatfelvételi hiba. Ennek oka az üzembe helyezett modulok közötti késés.
+> Kezdetben előfordulhat, hogy a cameraCapture modul kimenetében hibaüzenetek jelennek meg. Ennek oka az üzembe helyezett modulok közötti késés.
 >
-> A cameraCapture modul automatikusan újrapróbálkozik a kapcsolódással, amíg a művelet sikertelen lesz. Ezt követően érdemes megtekinteni az alább ismertetett rendszerkép-besorolási üzeneteket.
+> A cameraCapture modul automatikusan újrapróbálkozik a kapcsolódással, amíg a művelet nem sikerült. A sikeres Kapcsolatfelvétel után a rendszer az alább ismertetett rendszerkép-besorolási üzeneteket fogja látni.
 
 A Custom Vision-modul eredményei, amelyek a cameraCapture modulból üzenetekként lettek elküldve, rendelkeznek azzal a valószínűséggel, hogy a kép egy hemlokfenyőt vagy egy cseresznyefát ábrázol. Mivel a kép egy hemlokfenyőt ábrázol, a valószínűségnek 1,0 értéket kell mutatnia.
 
@@ -447,7 +447,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban betanított egy Custom Vision-modellt, és modulként üzembe helyezte azt egy IoT Edge-eszközön. Ezután létrehozott egy modult, amely le tudja kérdezni a képosztályozási szolgáltatást, és visszajelzést tud küldeni az eredményekről az IoT Hubnak. 
 

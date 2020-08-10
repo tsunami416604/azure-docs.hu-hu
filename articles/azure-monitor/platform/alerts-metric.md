@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan hozhatja létre, tekintheti meg és kezelheti a
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/10/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321122"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042734"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
 
@@ -88,6 +88,7 @@ A metrika riasztási szabályai a riasztások alatt a szabályok kezelése panel
 
 6. A módosítások mentéséhez kattintson a **kész** gombra.
 
+
 ## <a name="with-azure-cli"></a>Az Azure CLI-vel
 
 Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal használatával. Ez a szakasz azt írja le, hogyan végezheti el ugyanezt a platformfüggetlen [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával. Az Azure CLI használatának leggyorsabb módja a [Azure Cloud Shellon](../../cloud-shell/overview.md?view=azure-cli-latest)keresztül. Ebben a cikkben a Cloud Shell fogjuk használni.
@@ -133,6 +134,14 @@ Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet m
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>A PowerShell-lel
+
+A metrikus riasztási szabályokhoz dedikált PowerShell-parancsmagok érhetők el:
+
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): új metrikai riasztási szabályt hoz létre, vagy frissít egy meglévőt.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): egy vagy több metrikai riasztási szabályt kap.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): a metrika riasztási szabályának eltávolítása.
 
 ## <a name="next-steps"></a>További lépések
 

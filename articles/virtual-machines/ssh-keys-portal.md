@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39dbf7d9ad933dd47f0a566f02b5e276e4b615a3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514322"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041748"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>SSH-kulcsok generálása és tárolása a Azure Portal
 
@@ -22,17 +22,17 @@ Létrehozhat egy SSH-kulcsot, amikor először hoz létre egy virtuális gépet,
 
 Ha rendelkezik meglévő kulcsokkal, és egyszerűbbé szeretné őket használni a portálon, feltöltheti őket, és tárolhatja őket az Azure-ban újbóli használatra.
 
-Az SSH-kulcsok Linux rendszerű virtuális gépekkel való létrehozásával és használatával kapcsolatos részletesebb információkért lásd: (SSH-kulcsok használata Linux rendszerű virtuális gépekhez való kapcsolódáshoz) [./Linux/SSH-from-Windows.MD].
+Az SSH-kulcsok Linux rendszerű virtuális gépekkel való létrehozásával és használatával kapcsolatos részletesebb információkért lásd: [ssh-kulcsok használata a Linux rendszerű virtuális gépekhez való kapcsolódáshoz](./linux/ssh-from-windows.md).
 
 ## <a name="generate-new-keys"></a>Új kulcsok generálása
 
-1. Nyissa meg a következőt: [Azure Portal] ( https://portal.azure.com .
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 1. A lap tetején írja be az *SSH* kifejezést a kereséshez. A **piactér*területen válassza az **ssh-kulcsok**elemet.
 
 1. Az **SSH-kulcs** lapon válassza a **Létrehozás**lehetőséget.
 
-:::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Új erőforráscsoport létrehozása és SSH-kulcspár létrehozása":::
+   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Új erőforráscsoport létrehozása és SSH-kulcspár létrehozása":::
 
 1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és hozzon létre egy új erőforráscsoportot a kulcsok tárolásához. Adja meg az erőforráscsoport nevét, majd kattintson **az OK gombra**.
 
@@ -48,7 +48,7 @@ Az SSH-kulcsok Linux rendszerű virtuális gépekkel való létrehozásával és
 
 1. Ekkor megjelenik egy előugró ablak, válassza a **titkos kulcs letöltése és az erőforrás létrehozása**lehetőséget. Ezzel letölti az SSH-kulcsot. PEM-fájlként.
 
-:::image type="content" source="./media/ssh-keys/download-key.png" alt-text="A titkos kulcs letöltése. PEM-fájlként":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="A titkos kulcs letöltése. PEM-fájlként":::
 
 1. Ha letöltötte a. PEM-fájlt, előfordulhat, hogy valahol a számítógépén szeretné áthelyezni, ahol könnyen rámutathat az SSH-ügyfélre.
 
@@ -66,15 +66,15 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 
 ## <a name="upload-an-ssh-key"></a>SSH-kulcs feltöltése
 
-Feltöltheti az Azure-ban tárolt nyilvános SSH-kulcsot is. Az SSH-kulcspár létrehozásával kapcsolatos információkért lásd: SSH- [kulcsok használata a Linux rendszerű virtuális gépekhez való kapcsolódáshoz ](./linux/ssh-from-windows.md).
+Feltöltheti az Azure-ban tárolt nyilvános SSH-kulcsot is. Az SSH-kulcspár létrehozásával kapcsolatos információkért lásd: SSH- [kulcsok használata a Linux rendszerű virtuális gépekhez való kapcsolódáshoz](./linux/ssh-from-windows.md).
 
-1. Nyissa meg a következőt: [Azure Portal] ( https://portal.azure.com .
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 1. A lap tetején írja be az *SSH* kifejezést a kereséshez. A **piactér*területen válassza az **ssh-kulcsok**elemet.
 
 1. Az **SSH-kulcs** lapon válassza a **Létrehozás**lehetőséget.
 
-:::image type="content" source="./media/ssh-keys/upload.png" alt-text="Az Azure-ban tárolandó nyilvános SSH-kulcs feltöltése":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Az Azure-ban tárolandó nyilvános SSH-kulcs feltöltése":::
 
 1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és hozzon létre egy új erőforráscsoportot a kulcsok tárolásához. Adja meg az erőforráscsoport nevét, majd kattintson **az OK gombra**.
 
@@ -92,4 +92,4 @@ A kulcs feltöltése után dönthet úgy, hogy a virtuális gép létrehozásako
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az SSH-kulcsok Azure-beli virtuális gépekkel való használatáról: (SSH-kulcsok használata Linux rendszerű virtuális gépekhez való kapcsolódáshoz) [./Linux/SSH-from-Windows.MD].
+További információ az SSH-kulcsok Azure-beli virtuális gépekkel való használatáról: [ssh-kulcsok használata a Linux rendszerű virtuális gépekhez való kapcsolódáshoz](./linux/ssh-from-windows.md).

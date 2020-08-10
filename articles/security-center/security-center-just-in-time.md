@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 611124a113a0cce3ab1fb8db5969a6ab6f5f6658
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419852"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041949"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>A felügyeleti portok védelme az igény szerinti hozzáféréssel
 
@@ -31,21 +31,14 @@ Ezen az oldalon megtudhatja, hogyan veheti fel a JIT-t a biztonsági programba. 
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-- Kiadási állapot: **általánosan elérhető**
-- Díjszabás: **standard szint**. [További információk a díjszabásról](/azure/security-center/security-center-pricing).
-- Szükséges szerepkörök és engedélyek:
-    - Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.
-    - Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit) című témakörben.
-    - Ha olyan felhasználók számára szeretne legkevesebb jogosultsági szintű szerepkört létrehozni, akiknek JIT-hozzáférést kell kérniük egy virtuális géphez, és nem kell más JIT-műveletet végezniük, használja a Security Center GitHub közösségi oldalain található [set-JitLeastPrivilegedRole szkriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) .
-- Támogatott virtuális gépek: 
-    - ✔ Azure Resource Manager használatával üzembe helyezett virtuális gépek.
-    - A klasszikus üzembe helyezési modellel üzembe helyezett ✘ virtuális gépek. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).
-    - A [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)által vezérelt Azure-tűzfalak által védett virtuális gépek ✘.
-- Felhők 
-    - ✔ Kereskedelmi felhők
-    - ✔ National/Sovereign (US Gov, Kína gov, other gov)
-
-
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általános elérhetőség|
+|Árképzési|Standard csomag|
+|Támogatott virtuális gépek:|![Igen, ](./media/icons/yes-icon.png) Azure Resource Manager használatával üzembe helyezett virtuális gépek.<br>![](./media/icons/yes-icon.png)A klasszikus üzembe helyezési modellel rendelkező virtuális gépeket nem. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).<br>![Nem ](./media/icons/yes-icon.png) [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) által vezérelt Azure-tűzfalak által védett virtuális gépek|
+|Szükséges szerepkörök és engedélyek:|Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.<br>Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)című témakörben.<br>Ha olyan felhasználók számára szeretne legkevesebb jogosultsági szintű szerepkört létrehozni, akiknek JIT-hozzáférést kell kérniük egy virtuális géphez, és nem kell más JIT-műveletet végezniük, használja a Security Center GitHub közösségi oldalain található [set-JitLeastPrivilegedRole szkriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) .|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|||
 
 
 ## <a name="enable-jit-vm-access"></a>JIT virtuális gép hozzáférésének engedélyezése<a name="jit-configure"></a>
@@ -370,7 +363,7 @@ A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenysége
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan telepítheti és használhatja az igény szerinti virtuális gépekhez való hozzáférést. A JIT használatának okának megismeréséhez olvassa el a következő témakört:
 

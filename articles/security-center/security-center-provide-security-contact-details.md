@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534634"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042275"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail-értesítések beállítása biztonsági riasztásokhoz 
 
@@ -34,9 +34,15 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-- Kiadás állapota: **általánosan elérhető**
-- Szükséges szerepkörök: **biztonsági rendszergazda** vagy **előfizetés tulajdonosa** 
-- Felhők: ✔ kereskedelmi felhők ✔ US Gov (részleges) ✘ nemzeti/szuverén (kínai gov, other gov)
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általánosan elérhető|
+|Árképzési|Ingyenes szint|
+|Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazda**<br>**Előfizetés tulajdonosa** |
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov (részleges)<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Értesítő e-mail-értesítések beállítása<a name="email"></a>
@@ -53,7 +59,7 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szere
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés**lehetőséget.
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Biztonsági riasztások – útmutató](alerts-reference.md) a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez

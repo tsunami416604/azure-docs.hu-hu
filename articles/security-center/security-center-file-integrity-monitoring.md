@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519337"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042666"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritás monitorozása az Azure Security Centerben
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
@@ -26,12 +26,16 @@ Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FI
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-- Kiadás állapota: **általánosan elérhető**
-- Szükséges szerepkörök: a **munkaterület tulajdonosa** engedélyezheti vagy letilthatja a FIM-t (További információ: [Azure-szerepkörök log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)). Az **olvasó** megtekintheti az eredményeket.
-- Felhők
-    - ✔ Kereskedelmi felhők
-    - ✔ US Gov felhő
-    - ✘ China gov/egyéb gov
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általánosan elérhető|
+|Árképzési|Standard csomag|
+|Szükséges szerepkörök és engedélyek:|A **munkaterület tulajdonosa** engedélyezheti vagy letilthatja a FIM-t (További információ: [log Analytics Azure-szerepkörök](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>Az **olvasó** megtekintheti az eredményeket.|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|||
+
+
+
 
 
 ## <a name="what-is-fim-in-security-center"></a>Mi az a FIM in Security Center?
@@ -219,7 +223,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Beállítás engedélyezve hamis értékre][19]
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Mappa és elérési út figyelése helyettesítő karakterek használatával
 
@@ -240,7 +244,7 @@ A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a körny
 
 4. A letiltáshoz válassza az **Eltávolítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figyelését (FIM) a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Biztonsági házirendek beállítása](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.

@@ -2,13 +2,13 @@
 title: Azure App Service erőforrások áthelyezése
 description: A Azure Resource Manager használatával áthelyezheti App Service erőforrásait egy új erőforráscsoporthoz vagy előfizetésbe.
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655775"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042057"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Útmutató a App Service-erőforrások áthelyezéséhez
 
@@ -23,7 +23,8 @@ Ha egy webalkalmazást az előfizetések között helyez át, a következő útm
     - App Service-csomagok
     - Feltöltött vagy importált TLS/SSL-tanúsítványok
     - App Service-környezetek
-- Az erőforráscsoporthoz tartozó összes App Service-erőforrást együtt kell áthelyezni. Vegye figyelembe, hogy App Service környezetek nem helyezhetők át új erőforrás-csoportba, és nem új előfizetésre.
+- Az erőforráscsoporthoz tartozó összes App Service-erőforrást együtt kell áthelyezni.
+- App Service környezetek nem helyezhetők át új erőforráscsoporthoz vagy előfizetésbe. Egy webalkalmazást és egy app Service-csomagot azonban áthelyezhet egy új előfizetésre anélkül, hogy áthelyezi a App Service Environment. Az áthelyezést követően a webalkalmazás már nem fut a App Service Environmentban.
 - A tanúsítványokat a TLS-kötések törlése nélkül helyezheti át a web-re, ha a tanúsítványt az erőforráscsoport összes többi erőforrásával áthelyezi.
 - App Service erőforrásokat csak abban az erőforráscsoporthoz lehet áthelyezni, amelyben eredetileg létrehozták őket. Ha egy App Service erőforrás már nem szerepel az eredeti erőforráscsoporthoz, helyezze vissza az eredeti erőforráscsoporthoz. Ezután helyezze át az erőforrást az előfizetések között.
 

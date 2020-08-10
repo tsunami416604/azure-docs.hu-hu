@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1875c9147f62619d8961096adb6a0f3986496b41
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459441"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041527"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -117,7 +117,7 @@ A technikai profil a jogcímeket is visszaadja, amelyeket az identitás-szolgál
 | ServiceUrl | Igen | Az REST API végpont URL-címe |
 | AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None` ,,, `Basic` `Bearer` vagy `ClientCertificate` . Az `None` érték azt jelzi, hogy a REST API névtelen. Az `Basic` érték azt jelzi, hogy a REST API a http alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (javasolt) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatát használva korlátozza a hozzáférést. |
 | AllowInsecureAuthInProduction| Nem| Azt jelzi, hogy a beállítható `AuthenticationType` `none` -e éles környezetben ( `DeploymentMode` a [TrustFrameworkPolicy](trustframeworkpolicy.md) beállítása `Production` , vagy nincs megadva). Lehetséges értékek: true vagy FALSE (alapértelmezett). |
-| SendClaimsIn | Nem | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form` , `Header` , vagy `QueryString` . Az `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&" tagolt kulcs értékének formátumában. Az `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. Az `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
+| SendClaimsIn | Nem | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form` , `Header` , `Url` vagy `QueryString` . Az `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&" tagolt kulcs értékének formátumában. Az `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. Az `Url` érték az URL-címben eljuttatott bemeneti jogcím, például https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. Az `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 | ClaimUsedForRequestPayload| Nem | Egy olyan karakterlánc-jogcím neve, amely a REST API küldendő adattartalmat tartalmazza. |
 | DebugMode | Nem | A technikai profilt hibakeresési módban futtatja. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Hibakeresési módban a REST API további információkat adhat vissza. Lásd a [visszatérési hibaüzenet](#returning-validation-error-message) szakaszt. |

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836802"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041986"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -114,12 +114,13 @@ App Service csomagokkal kapcsolatos további információkért lásd: [app Servi
 
 ### <a name="availability"></a>Rendelkezésre állás
 
-- Kiadási állapot: **általánosan elérhető**
-- Szükséges szerepkörök: a **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat. A **biztonsági olvasó** megtekintheti az eredményeket.
-- Felhők<br>
-    ✔ Kereskedelmi felhők<br>
-    ✘ US Gov<br>
-    ✘ China gov, egyéb gov
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általánosan elérhető|
+|Árképzési|Standard csomag|
+|Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat.<br>A **biztonsági olvasó** megtekintheti az eredményeket.|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -150,14 +151,13 @@ További információ:
 
 ### <a name="availability"></a>Rendelkezésre állás
 
-- Kiadás állapota:
-    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)
-    - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (előzetes verzió)
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (előzetes verzió)
-- Felhők<br>
-    ✔ Kereskedelmi felhők<br>
-    ✔ US Gov<br>
-    ✘ China gov, egyéb gov
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (előzetes verzió)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (előzetes verzió)|
+|Árképzési|Standard csomag|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|||
+
 
 ### <a name="whats-protected"></a>Mi a védett?
 

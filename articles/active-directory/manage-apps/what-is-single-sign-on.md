@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0928cb264dcff43cc0a3e45a8417dcd1e23a1ed3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387540"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042598"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
@@ -42,11 +42,11 @@ Az alábbi táblázat összefoglalja az egyszeri bejelentkezés módszereit, és
 
 | Egyszeri bejelentkezési módszer | Alkalmazástípusok | A következő esetekben használja |
 | :------ | :------- | :----- |
-| [OpenID Connect és OAuth](#openid-connect-and-oauth) | csak felhő | Az OpenID Connect és a OAuth használata új alkalmazás fejlesztésekor. Ez a protokoll leegyszerűsíti az alkalmazások konfigurációját, és könnyen használható SDK-kat használ, és lehetővé teszi az alkalmazás számára az MS Graph használatát.
+| [OpenID Connect és OAuth](#openid-connect-and-oauth) | Felhőbeli és helyszíni | Az OpenID Connect és a OAuth használata új alkalmazás fejlesztésekor. Ez a protokoll leegyszerűsíti az alkalmazások konfigurációját, és könnyen használható SDK-kat használ, és lehetővé teszi az alkalmazás számára az MS Graph használatát.
 | [SAML](#saml-sso) | Felhőbeli és helyszíni | Válassza ki az SAML-t, amikor lehetséges olyan meglévő alkalmazások esetében, amelyek nem használnak OpenID connectet vagy OAuth. Az SAML olyan alkalmazások esetében működik, amelyek az egyik SAML protokoll használatával végzik a hitelesítést.|
 | [Jelszó-alapú](#password-based-sso) | Felhőbeli és helyszíni | Válassza a jelszó-alapú lehetőséget, ha az alkalmazás hitelesíti magát a felhasználónévvel és a jelszóval. A jelszó-alapú egyszeri bejelentkezés lehetővé teszi a biztonságos alkalmazások jelszavainak tárolását és a visszajátszás használatát webböngészős bővítmény vagy mobil alkalmazás használatával. Ez a módszer az alkalmazás által biztosított meglévő bejelentkezési folyamatot használja, de lehetővé teszi a rendszergazdák számára a jelszavak kezelését. |
 | [Csatolt](#linked-sign-on) | Felhőbeli és helyszíni | Válassza a csatolt bejelentkezés lehetőséget, ha az alkalmazás az egyszeri bejelentkezéshez van konfigurálva egy másik identitás-szolgáltatói szolgáltatásban. Ez a beállítás nem ad hozzá egyszeri bejelentkezést az alkalmazáshoz. Előfordulhat azonban, hogy az alkalmazás már rendelkezik egy másik szolgáltatás, például Active Directory összevonási szolgáltatások (AD FS) használatával történő egyszeri bejelentkezéssel.|
-| [Disabled](#disabled-sso) | Felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
+| [Letiltva](#disabled-sso) | Felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
 | [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | Az [integrált Windows-hitelesítést (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)vagy jogcímbarát alkalmazásokat használó alkalmazások esetében válassza az IWA egyszeri bejelentkezés lehetőséget. A IWA esetében az alkalmazásproxy-összekötők a Kerberos által korlátozott delegálás (KCD) használatával hitelesítik a felhasználókat az alkalmazásban. |
 | [Fejléc-alapú](#header-based-sso) | csak helyszíni | A fejléc-alapú egyszeri bejelentkezést akkor használja, ha az alkalmazás fejléceket használ a hitelesítéshez. A fejléc-alapú egyszeri bejelentkezéshez az Azure AD PingAccess van szükség. Az alkalmazásproxy az Azure AD használatával hitelesíti a felhasználót, majd az összekötő szolgáltatáson keresztül továbbítja a forgalmat.  |
 

@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562412"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042105"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -31,6 +31,9 @@ Ez az oldal válaszol a Azure Active Directory (Azure AD) alkalmazásproxy gyako
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>Milyen licencre van szükség az Azure AD Application Proxy használatához?
 
 Az Azure AD Application Proxy használatához rendelkeznie kell egy prémium szintű Azure AD P1 vagy P2 licenccel. További információ a licencelésről: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>Mi történik az Azure AD Application Proxy a bérlőn, ha a licenc lejár?
+Ha a licenc lejár, az alkalmazásproxy automatikusan le lesz tiltva. Az alkalmazás adatai egy évig lesznek mentve.
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>Miért szürkén jelenik meg az "alkalmazásproxy engedélyezése" gomb?
 

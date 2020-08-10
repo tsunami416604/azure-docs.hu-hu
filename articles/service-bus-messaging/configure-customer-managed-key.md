@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475985"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041563"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
@@ -21,7 +21,7 @@ A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben
 > [!NOTE]
 > Az ügyfél által felügyelt kulcs a szolgáltatás oldalának titkosítására vonatkozik. 
 >   * Ezt a funkciót [Azure Service Bus prémium](service-bus-premium-messaging.md) szint támogatja. A standard szintű Service Bus névterek esetében nem engedélyezhető.
->   * A titkosítás csak új vagy üres névterekhez engedélyezhető. Ha a névtér tartalmaz egy adatkészletet, akkor a titkosítási művelet sikertelen lesz.
+>   * A titkosítás csak új vagy üres névterekhez engedélyezhető. Ha a névtér bármely várólistát vagy témakört tartalmaz, a titkosítási művelet sikertelen lesz.
 
 A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulcshasználat. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 

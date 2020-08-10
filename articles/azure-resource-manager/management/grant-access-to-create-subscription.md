@@ -6,12 +6,12 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824494"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042071"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához (előzetes verzió)
 
@@ -180,7 +180,7 @@ A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programm
 
 Az ezen az API-n keresztül létrehozott előfizetések nyomon követéséhez használja a [bérlői tevékenység log API](/rest/api/monitor/tenantactivitylogs)-ját. Az előfizetés létrehozásának nyomon követéséhez jelenleg nem használható a PowerShell, a CLI vagy a Azure Portal.
 
-1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../role-based-access-control/elevate-access-global-admin.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
+1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../role-based-access-control/elevate-access-global-admin.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben. Ez a hozzáférés az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkörben, a [figyelő közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) szerepkörben vagy egy [Egyéni szerepkörben](../../role-based-access-control/custom-roles.md)érhető el.
 1. A naplózási felhasználóként hívja meg a [bérlői tevékenység naplójának API](/rest/api/monitor/tenantactivitylogs) -ját az előfizetés-létrehozási tevékenységek megtekintéséhez. Példa:
 
     ```

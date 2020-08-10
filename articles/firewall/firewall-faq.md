@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 1ba8977272817d41334ccf0d9ad01d4d751bfb17
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439221"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041697"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -26,9 +26,9 @@ Azure Firewall szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi a Azure Firewall általános telepítési modellje?
 
-A Azure Firewall bármely virtuális hálózaton üzembe helyezhető, de az ügyfelek jellemzően központi virtuális hálózaton telepítik, és más virtuális hálózatokon keresztül, egy sugaras modellben. Ezután megadhatja az alapértelmezett útvonalat a virtuális hálózatok között, hogy erre a központi tűzfal virtuális hálózatra mutasson. A globális VNet-társítás támogatott, de a lehetséges teljesítmény-és késési problémák miatt nem ajánlott a régiók között. A legjobb teljesítmény érdekében régiónként helyezzen üzembe egy tűzfalat.
+Az Azure Firewall bármely virtuális hálózaton üzembe helyezhető, de az ügyfelek jellemzően központi virtuális hálózaton helyezik üzembe, és más virtuális hálózatokat társítanak hozzá küllős modellben. Ezután megadhatja az alapértelmezett útvonalat a virtuális hálózatok között, hogy erre a központi tűzfal virtuális hálózatra mutasson. A globális VNet-társítás támogatott, de a lehetséges teljesítmény-és késési problémák miatt nem ajánlott a régiók között. A legjobb teljesítmény érdekében régiónként egy tűzfalat helyezzen üzembe.
 
-Ennek a modellnek az előnye, hogy a különböző előfizetésekben található több küllős virtuális hálózatok esetében központilag szabályozható a szabályozás. A költségmegtakarításhoz nem kell külön tűzfalat telepítenie az egyes VNet. A költségmegtakarítást az ügyfél-forgalmi szokások alapján kell mérni, és a társítási társítás költségeit is meg kell határozni.
+Ennek a modellnek az előnye, hogy a különböző előfizetésekben található többküllős virtuális hálózatok esetében központilag gyakorolható a vezérlés. A költségmegtakarításhoz nem kell külön tűzfalat telepítenie az egyes VNet. A költségmegtakarítást az ügyfélforgalmi mintázatok alapján kell mérni a kapcsolódó társítási költséghez viszonyítva.
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Hogyan telepíthetem a Azure Firewall?
 
@@ -123,7 +123,7 @@ A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tool
 
 A kényszerített bújtatás akkor támogatott, ha új tűzfalat hoz létre. A kényszerített bújtatáshoz nem konfigurálhat meglévő tűzfalat. További információ: [Azure Firewall kényszerített bújtatás](forced-tunneling.md). 
 
-Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
+Az Azure Firewallnak közvetlen internetkapcsolatra van szüksége. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 
 Ha a konfigurációhoz kényszerített bújtatás szükséges egy helyszíni hálózathoz, és meghatározhatja a célként megadott IP-előtagokat az internetes célhelyekhez, akkor ezeket a tartományokat a helyszíni hálózattal is konfigurálhatja a következő ugrásként a AzureFirewallSubnet felhasználó által megadott útvonalán keresztül. Vagy a BGP használatával is meghatározhatja ezeket az útvonalakat.
 
@@ -137,11 +137,13 @@ Nem. A NAT-szabályok implicit módon hozzáadnak egy megfelelő hálózati szab
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hogyan működnek a helyettesítő karakterek egy alkalmazás-szabályban célként megadott FQDN-ben?
 
+A helyettesítő karakterek használata jelenleg csak a teljes tartománynév bal oldalán lehetséges. Például: ***. contoso.com** és ***contoso.com**.
+
 Ha a ***. contoso.com**konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent a *kiépítési állapot: nem sikerült* ?
 
-Ha egy konfigurációs változást alkalmaz, Azure Firewall megkísérli frissíteni az összes mögöttes háttér-példányt. Ritka esetekben előfordulhat, hogy az egyik ilyen háttérbeli példány nem tud frissíteni az új konfigurációval, és a frissítési folyamat leáll sikertelen kiépítési állapottal. A Azure Firewall továbbra is működőképes, de az alkalmazott konfiguráció inkonzisztens állapotba kerülhet, ahol egyes példányok esetében az előző konfiguráció szerepel, ahol mások rendelkeznek a frissített szabálykészlet megadásával. Ha ez történik, próbálja meg még egyszer frissíteni a konfigurációt, amíg a művelet nem sikerül, és a tűzfal *sikeres* kiépítési állapotban van.
+Az Azure Firewall minden konfigurációs változás alkalmazásakor megkísérli frissíteni az összes alapul szolgáló háttérpéldányt. Ritka esetekben előfordulhat, hogy az egyik ilyen háttérbeli példány nem tud frissíteni az új konfigurációval, és a frissítési folyamat leáll sikertelen kiépítési állapottal. Az Azure Firewall továbbra is működőképes, de az alkalmazott konfiguráció inkonzisztens állapotba kerülhet, így egyes példányoknál az előző konfiguráció van érvényben, másoknál pedig a frissített szabálykészlet. Ha ez történik, próbálja meg még egyszer frissíteni a konfigurációt, amíg a művelet nem sikerül, és a tűzfal *sikeres* kiépítési állapotban van.
 
 ## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Hogyan kezeli a Azure Firewall a tervezett karbantartást és a nem tervezett hibákat?
 A Azure Firewall egy aktív-aktív konfigurációban számos háttér-csomópontból áll.  A tervezett karbantartáshoz a csomópontok zökkenőmentes frissítéséhez a kapcsolatok kiürítése szükséges.  A frissítések az egyes Azure-régiók esetében nem munkaidőn kívüli időpontokban vannak megtervezve, így tovább korlátozható a megszakadás kockázata.  A nem tervezett problémák esetén egy új csomópontot hozunk létre a meghibásodott csomópont cseréjéhez.  Az új csomóponthoz való csatlakozás általában a hiba időpontjától számított 10 másodpercen belül újra létrejön.

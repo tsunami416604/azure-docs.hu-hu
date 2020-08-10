@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058617"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041459"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -74,7 +74,7 @@ Az alábbi példa azt szemlélteti, hogy milyen műveleteket `appRoles` lehet ho
 ```
 
 > [!NOTE]
->A `displayName` nem tartalmazhat szóközt.
+>A tartalmazhat `displayName` szóközt.
 
 Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` vagy mindkettőt. Ha elérhető, az alkalmazás `applications` szerepkörei a **kezelés** szakaszban > API-engedélyek területen jelennek meg, **> > engedély hozzáadása a saját API-kkal > válasszon API > alkalmazási engedélyeket**. Az alábbi példa egy alkalmazás-szerepkört mutat be a felé `Application` .
 

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089940"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042500"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center fenyegetések elleni védelemből származó riasztások letiltása
 
@@ -21,9 +21,15 @@ Ez az oldal azt ismerteti, hogyan használhatók a riasztások letiltási szabá
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-- Kiadási állapot: **előzetes** verzió
-- Szükséges szerepkörök: a **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat. A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.
-- Felhők: ✔ kereskedelmi felhők ✔ National/Sovereign (US Gov, Kína gov, other gov)
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Előnézet|
+|Árképzési|Ingyenes szint<br>(A legtöbb biztonsági riasztás csak a standard szint esetében használható)|
+|Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat.<br>A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>Mik azok a letiltási szabályok?
@@ -32,9 +38,9 @@ Azure Security Center veszélyforrások elleni védelmi összetevői észlelnek 
 
 Ha egyetlen riasztás nem érdekes vagy releváns, akkor manuálisan is elvégezheti. Azt is megteheti, hogy a letiltási szabályok funkció használatával automatikusan elveti a hasonló riasztásokat a jövőben. Általában letiltási szabályt kell használnia a következőkhöz:
 
-- hamis pozitívként azonosított riasztások letiltása
+- Hamis pozitívként azonosított riasztások letiltása
 
-- a túl gyakran kiváltott riasztások mellőzése
+- A túl gyakran kiváltott riasztások mellőzése
 
 A letiltási szabályok határozzák meg azokat a feltételeket, amelyek esetében a riasztásokat automatikusan el kell utasítani.
 

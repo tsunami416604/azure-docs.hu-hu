@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: b66969b26a801e6bd9aacf999c1c1ef9179ef1bd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534668"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042312"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Security Center Azure Container Registry képvizsgálat
 
@@ -27,17 +27,16 @@ Ha Azure Security Center standard szintű csomaggal rendelkezik, hozzáadhatók 
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-- Kiadási állapot: **általánosan elérhető**
-- Szükséges szerepkörök: **biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- Támogatott nyilvántartások és lemezképek:
-    - ✔ Linux rendszerű, a nyilvános internetről elérhető és a rendszerhéj-hozzáférést biztosító ACR-jegyzékeket.
-    - ✘ Windows által üzemeltetett ACR-jegyzékek.
-    - A "privát" ✘-Security Center megköveteli, hogy a kibocsátásiegység-forgalmi jegyzékek elérhetők legyenek a nyilvános internetről. Security Center jelenleg nem tud csatlakozni a szolgáltatáshoz, vagy beolvasni azokat a beállításjegyzékeket, amelyekhez hozzáférés van korlátozva tűzfallal, szolgáltatási végponttal vagy privát végpontokkal, például az Azure Private-hivatkozással.
-    - A ✘ olyan Super minimalista képeket, például [Docker](https://hub.docker.com/_/scratch/) -rendszerképeket vagy "eltérítetlen" lemezképeket tartalmaz, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.
-- Felhők 
-    - ✔ Kereskedelmi felhők
-    - ✘ Egyesült államokbeli kormányzati felhő
-    - ✘ Kínai kormányzati felhő, egyéb kormányzati felhők
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általános elérhetőség|
+|Árképzési|Standard csomag|
+|Támogatott nyilvántartások és lemezképek:|![Igen, ](./media/icons/yes-icon.png) a nyilvános internetről elérhető és a rendszerhéj elérését biztosító, a Linux által üzemeltetett ACR-nyilvántartások.<br>![Nem található a ](./media/icons/yes-icon.png) Windows által üzemeltetett ACR-jegyzék.<br>![Nincsenek ](./media/icons/yes-icon.png) "privát" beállításjegyzékek – Security Center megköveteli, hogy a kibocsátásiegység-forgalmi jegyzékek elérhetők legyenek a nyilvános internetről. Security Center jelenleg nem tud csatlakozni a szolgáltatáshoz, vagy beolvasni azokat a beállításjegyzékeket, amelyekhez hozzáférés van korlátozva tűzfallal, szolgáltatási végponttal vagy privát végpontokkal, például az Azure Private-hivatkozással.<br>![Nincsenek olyan ](./media/icons/yes-icon.png) Super minimalista képek, mint például a [Docker](https://hub.docker.com/_/scratch/) -lemezképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.|
+|Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|||
+
+
 
 
 ## <a name="when-are-images-scanned"></a>Mikor vannak beolvasva a képek?

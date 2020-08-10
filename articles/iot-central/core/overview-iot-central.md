@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337177"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042717"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -34,10 +34,10 @@ Ez a cikk IoT Central:
 
 Az IoT Central dokumentációja négy olyan személyre utal, akik IoT Central alkalmazással működnek:
 
-- A _megoldás-szerkesztő_ feladata, hogy meghatározza az alkalmazáshoz kapcsolódó eszközök típusát, és testreszabja az alkalmazást az operátor számára.
-- Az _operátor_ kezeli az alkalmazáshoz csatlakoztatott eszközöket.
+- A _megoldás-szerkesztő_ feladata, hogy meghatározza az alkalmazáshoz kapcsolódó [eszközök típusát](howto-set-up-template.md) , és testreszabja az alkalmazást az operátor számára.
+- A _kezelő_ [felügyeli az](howto-manage-devices.md) alkalmazáshoz csatlakoztatott eszközöket.
 - A _rendszergazdák_ felelősek az olyan felügyeleti feladatokért, mint például a [felhasználói szerepkörök és engedélyek](howto-administer.md) kezelése az alkalmazáson belül.
-- Az _eszközök fejlesztői_ létrehozzák az alkalmazáshoz csatlakoztatott eszközön vagy IoT Edge modulon futó kódot.
+- Az _eszközök fejlesztői_ [létrehozzák az](concepts-telemetry-properties-commands.md) alkalmazáshoz csatlakoztatott eszközön vagy [IoT Edge modulon](concepts-iot-edge.md) futó kódot.
 
 ## <a name="create-your-iot-central-application"></a>A IoT Central-alkalmazás létrehozása
 
@@ -55,7 +55,7 @@ Megoldás-szerkesztőként a webalapú eszközök használatával hozzon létre 
 - Azok az eszköztulajdonságok, amelyeket az eszköz állít be, és az alkalmazásban csak olvashatók.
 - A tulajdonságok, amelyeket az operátor állít be, amelyek meghatározzák az eszköz viselkedését.
 
-Ez az eszköz a következőket tartalmazza:
+Ez az [eszköz](howto-set-up-template.md) a következőket tartalmazza:
 
 - Egy _eszköz-képesség modell_ , amely leírja az eszköz által megvalósított képességeket, például az általa küldött telemetria és az általa jelentett tulajdonságokat.
 - Az eszközön nem tárolt Felhőbeli tulajdonságok.
@@ -83,13 +83,13 @@ Megoldás-szerkesztőként testreszabhatja a IoT Central alkalmazás felhasznál
 
 ## <a name="manage-your-devices"></a>Eszközök kezelése
 
-Kezelőként a IoT Central alkalmazással felügyelheti az eszközöket a IoT Central-megoldásban. A kezelők az alábbiakhoz hasonló feladatokat végzik el:
+Kezelőként a IoT Central alkalmazással [felügyelheti az eszközöket](howto-manage-devices.md) a IoT Central-megoldásban. A kezelők az alábbiakhoz hasonló feladatokat végzik el:
 
 - Az alkalmazáshoz csatlakoztatott eszközök monitorozása.
 - Az eszközök hibáinak keresése és elhárítása.
 - Új eszközök üzembe helyezése.
 
-Megoldás-szerkesztőként olyan egyéni szabályokat és műveleteket adhat meg, amelyek a csatlakoztatott eszközökről végeznek adatátvitelt. Az operátor eszközszinten engedélyezheti vagy letilthatja ezeket a szabályokat, az alkalmazáson belüli feladatok vezérlése és automatizálása céljából.
+Megoldás-szerkesztőként olyan [Egyéni szabályokat és műveleteket adhat meg](howto-configure-rules.md) , amelyek a csatlakoztatott eszközökről végeznek adatátvitelt. Az operátor eszközszinten engedélyezheti vagy letilthatja ezeket a szabályokat, az alkalmazáson belüli feladatok vezérlése és automatizálása céljából.
 
 A nagy léptékű működésre tervezett IoT-megoldások esetében fontos az eszközkezelés strukturált megközelítése. Nem elég egyszerűen csatlakoztatni az eszközöket a felhőhöz, és az eszközöket csatlakoztatni és kifogástalan állapotba kell hozni. Az operátorok az alábbi IoT Central képességekkel kezelhetik eszközeiket az alkalmazások életciklusa során:
 

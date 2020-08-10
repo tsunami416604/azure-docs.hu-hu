@@ -3,17 +3,17 @@ title: Leküldéses értesítések küldése iOS-re az Azure Notification Hubs �
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure Notification Hubs és az Apple push Notification szolgáltatás leküldéses értesítések küldésére iOS-eszközökre.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: fde142c76c71aa7155fd39d90f7a6c8120538141
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008661"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042445"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -104,7 +104,7 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 ## <a name="create-a-certificate-for-notification-hubs"></a>Tanúsítvány létrehozása Notification Hubshoz
 
 > [!NOTE]
-> Az iOS 13 kiadása miatt csak a jogkivonat-alapú hitelesítés használatával fogadhat csendes értesítéseket. Ha tanúsítványalapú hitelesítést használ a APNS hitelesítő adataihoz, a jogkivonat-alapú hitelesítés használatára kell váltania.
+> Az iOS 13 kiadásával csak a jogkivonat-alapú hitelesítés használatával fogadhat csendes értesítéseket. Ha tanúsítványalapú hitelesítést használ a APNS hitelesítő adataihoz, a jogkivonat-alapú hitelesítés használatára kell váltania.
 
 Egy tanúsítványra van szükség ahhoz, hogy az értesítési központ működjön a **APNS**. Ezt kétféleképpen teheti meg:
 

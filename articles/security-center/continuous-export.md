@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519697"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042322"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok exportálása
 
@@ -31,12 +31,14 @@ Az alábbi eszközöket használhatja:
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-- Kiadás állapota: **általánosan elérhető**
-- Szükséges szerepkörök és engedélyek:
-    - Az exportálási konfigurációt tartalmazó előfizetés **olvasója**
-    - **Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)
-    - A cél erőforráshoz is írási engedéllyel kell rendelkeznie
-- Felhők: ✔ kereskedelmi felhők ✔ US Gov ✘ China gov, other gov
+|Szempont|Részletek|
+|----|:----|
+|Kiadás állapota:|Általánosan elérhető|
+|Árképzési|Ingyenes szint|
+|Szükséges szerepkörök és engedélyek:|Az exportálási konfigurációt tartalmazó előfizetés **olvasója**<br>**Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>Folyamatos exportálás beállítása
@@ -131,7 +133,7 @@ A riasztások vagy javaslatok CSV-jelentésének letöltéséhez nyissa meg a **
 > [!NOTE]
 > Ezek a jelentések riasztásokat és javaslatokat tartalmaznak az aktuálisan kijelölt előfizetésekben lévő erőforrásokra vonatkozóan.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 

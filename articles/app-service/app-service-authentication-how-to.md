@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424256"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042615"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -469,7 +469,68 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Alkalmazás rögzítése egy adott hitelesítési futtatókörnyezet-verzióra
+
+A hitelesítés/engedélyezés engedélyezésekor a platform middleware-t a [szolgáltatás áttekintése](overview-authentication-authorization.md#how-it-works)című témakörben leírtak szerint fecskendezik be a http-kérési folyamatba. Ezt a platformot rendszeresen frissítik a platform legújabb frissítéseinek részeként új funkciókkal és újdonságokkal. Alapértelmezés szerint a web vagy Function alkalmazás a platform middleware legújabb verziójában fog futni. Ezek az automatikus frissítések mindig visszafelé kompatibilisek. Azonban abban a ritka esetben, ha ez az automatikus frissítés futásidejű problémát jelent a web vagy Function alkalmazás számára, átmenetileg visszaállíthatja az előző middleware-verziót. Ez a cikk azt ismerteti, hogyan lehet ideiglenesen PIN-kódot rögzíteni az alkalmazások számára a hitelesítési middleware egy adott verziójához.
+
+### <a name="automatic-and-manual-version-updates"></a>Az automatikus és a manuális verzió frissítései 
+
+Az alkalmazást az alkalmazás egy beállításának beállításával rögzítheti a platform middleware egy adott verziójához `runtimeVersion` . Az alkalmazás mindig a legújabb verzión fut, kivéve, ha úgy dönt, hogy kifejezetten egy adott verzióra szeretné rögzíteni. Egyszerre csak néhány támogatott verzió érhető el. Ha egy érvénytelen, már nem támogatott verzióra rögzít, az alkalmazás a legújabb verziót fogja használni. A legújabb verzió mindig futtatásához állítsa a következőt: `runtimeVersion` ~ 1. 
+
+### <a name="view-and-update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának megtekintése és frissítése
+
+Módosíthatja az alkalmazás által használt futtatókörnyezet verzióját. Az új futtatókörnyezet verziója az alkalmazás újraindítása után lép érvénybe. 
+
+#### <a name="view-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának megtekintése
+
+Megtekintheti a platform-hitelesítés middleware aktuális verzióját az Azure CLI használatával vagy az alkalmazás egyik built0 HTTP-végpontján keresztül.
+
+##### <a name="from-the-azure-cli"></a>Az Azure CLI-ből
+
+Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) paranccsal.
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+Ebben a kódban cserélje le az `<my_app_name>` alkalmazást az alkalmazás nevére. Az `<my_resource_group>` alkalmazáshoz tartozó erőforráscsoport nevét is cserélje le.
+
+Ekkor megjelenik a `runtimeVersion` CLI kimenetben lévő mező. A következő példához hasonló kimenetet fog hasonlítani, amelyet az egyértelműség érdekében csonkolt: 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>A verzió végpontján
+
+Egy alkalmazás/.auth/Version-végpontját is elérheti, ha meg szeretné tekinteni az alkalmazás által futó aktuális middleware-verziót. A következő példához hasonló kimenetet fog kinézni:
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának frissítése
+
+Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+A helyére írja `<my_app_name>` be az alkalmazás nevét. Az `<my_resource_group>` alkalmazáshoz tartozó erőforráscsoport nevét is cserélje le. Továbbá cserélje le az értékét az `<version>` 1. x futtatókörnyezet érvényes verziójára vagy `~1` a legújabb verzióra. A kibocsátási megjegyzéseket a különböző futtatókörnyezet-verziókban találja ([ide]) (a https://github.com/Azure/app-service-announcements) rögzítéshez használt verzió meghatározásához.
+
+Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](https://docs.microsoft.com/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](https://docs.microsoft.com/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: felhasználók teljes körű hitelesítése és engedélyezése (Windows)](app-service-web-tutorial-auth-aad.md) 

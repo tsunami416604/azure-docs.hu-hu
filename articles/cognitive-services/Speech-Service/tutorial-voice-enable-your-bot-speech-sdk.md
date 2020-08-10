@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758940"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041784"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -38,6 +38,7 @@ Az oktatóanyagban elvégezhető hang-kompatibilis csevegési robot a következ�
 1. A rendszer a felismert szöveget robot-keretrendszerbeli tevékenységként továbbítja az ECHO robotnak.
 1. A szöveg-beszéd (TTS) szolgáltatás a válaszüzenetet a hanganyagba helyezi, és a lejátszáshoz az ügyfélalkalmazás felé áramlik.
 
+<!-- svg src in User Story 1754106 -->
 ![diagram – címke](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "A beszédfelismerési csatorna folyamata")
 
 > [!NOTE]
@@ -73,7 +74,7 @@ Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltat
    * Adja meg az **erőforráscsoport**nevét. Javasoljuk, hogy **SpeechEchoBotTutorial-ResourceGroup**.
    * A régió legördülő menüben válassza az **USA nyugati** **régiója** lehetőséget.
 1. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-1. Kattintson a **Létrehozás** lehetőségre. Az erőforráscsoport létrehozása eltarthat néhány percig.
+1. Kattintson a **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
 1. Az oktatóanyag későbbi részében létrehozott erőforrásokhoz hasonlóan érdemes ezt az erőforráscsoportot az irányítópultra rögzíteni az egyszerű hozzáférés érdekében. Ha rögzíteni szeretné ezt az erőforráscsoportot, kattintson az erőforráscsoport nevének jobb oldalán lévő rögzítés ikonra.
 
 ### <a name="choosing-an-azure-region"></a>Azure-régió kiválasztása
@@ -123,7 +124,7 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
    * A régió területen válassza az **USA nyugati** **régiója**lehetőséget.
    * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie. Ha nem, ügyeljen arra, hogy az operációs rendszert a fent ismertetett módon állítsa be a **Windows** **rendszerre** .
 5. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-6. Kattintson a **Létrehozás** lehetőségre. Az erőforráscsoport létrehozása eltarthat néhány percig.
+6. Kattintson a **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
 
 Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoBotTutorial-ResourceGroup**) két erőforrással rendelkezik:
 
@@ -200,7 +201,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
    * Az **előfizetés**beállításnál állítsa az **ingyenes próbaverzióra**
    * **Erőforráscsoport**esetében válassza az **SpeechEchoBotTutorial-ResourceGroup** elemet.
    * Az **üzemeltetési csomag**esetében válassza az **SpeechEchoBotTutorial-AppServicePlan**
-1. Kattintson a **Létrehozás** lehetőségre. A varázsló utolsó képernyőjén kattintson a **Befejezés**gombra.
+1. Kattintson a **Create** (Létrehozás) gombra. A varázsló utolsó képernyőjén kattintson a **Befejezés**gombra.
 1. A közzétételi képernyő jobb oldalán kattintson a **publish (közzététel** ) elemre. A Visual Studio üzembe helyezi a robotot az Azure-ban.
 1. A Visual Studio kimeneti ablakában a következőhöz hasonló üzenetnek kell megjelennie:
 
@@ -471,7 +472,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 > [!div class="nextstepaction"]
 > [Saját ügyfélalkalmazás létrehozása a Speech SDK-val](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * Üzembe helyezés egy [közel található Azure-régióban](https://azure.microsoft.com/global-infrastructure/locations/) a bot válaszideje fejlesztéséhez
 * [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices) üzembe helyezése

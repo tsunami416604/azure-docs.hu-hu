@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800483"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042649"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
 
-Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használható. Az [**Event Routes**](concepts-route-events.md)használatával az Azure Digital Twins olyan felsőbb rétegbeli szolgáltatásokból származó adatokhoz jut, mint például a [IoT hub](../iot-hub/about-iot-hub.md), amely a telemetria és az értesítések továbbítására szolgál. Az Azure Digital Twins a tárolás, a munkafolyamat-integráció, az elemzés és más felhasználás céljából is továbbíthatja az adattovábbítást a későbbi szolgáltatásokhoz. 
+Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használható. Az [**Event Routes**](concepts-route-events.md)használatával az Azure Digital Twins olyan felsőbb rétegbeli szolgáltatásokból származó adatokhoz jut, mint például a [IoT hub](../iot-hub/about-iot-hub.md), amely a telemetria és az értesítések továbbítására szolgál. 
+
+Az Azure Digital Twins az olyan alsóbb rétegbeli szolgáltatásokhoz is irányíthatja az adattovábbítást, mint például a Azure Maps ([*útmutató: az Azure Digital Twins használata az Azure Maps beltéri Térkép frissítéséhez*](how-to-integrate-maps.md)) és Time Series Insights ([*How-to:*](how-to-integrate-time-series-insights.md)integrate Time Series Insights), a tárolás, a munkafolyamat-integráció, az elemzés és egyebek. 
 
 ## <a name="data-ingress"></a>Bejövő adatforgalom
 

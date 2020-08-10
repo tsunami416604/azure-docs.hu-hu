@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985877"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042632"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -36,8 +36,8 @@ Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen ver
 A modell definícióján belül a legfelső szintű kódrészlet egy **illesztőfelület**. Ez magában foglalja a teljes modellt, a modell többi része pedig az illesztőfelületen belül van definiálva. 
 
 A DTDL-modell illesztőfelülete nulla, egy vagy több műveletet is tartalmazhat a következő mezők közül:
-* **Tulajdonság** – a tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (például a tulajdonságok számos objektumorientált programozási nyelven). A telemetria eltérően, amely egy időkorláttal rendelkező adat-esemény, a tulajdonságok biztonsági mentést végeznek, és bármikor olvashatók.
-* Az **telemetria** -telemetria mezők mérési értékeket vagy eseményeket képviselnek, és gyakran használják az eszköz-érzékelők beolvasását. A telemetria nem digitális Twin tárolóban van tárolva. többek között az adatstreamek elküldésére készen állnak. 
+* **Tulajdonság** – a tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (például a tulajdonságok számos objektumorientált programozási nyelven). A tulajdonságok biztonsági mentést végeznek, és bármikor olvashatók.
+* Az **telemetria** -telemetria mezők mérési értékeket vagy eseményeket képviselnek, és gyakran használják az eszköz-érzékelők beolvasását. A tulajdonságoktól eltérően a telemetria nem digitális Twin-ben van tárolva; az időkorlátot tartalmazó adatesemények sorozata. A tulajdonság és a telemetria közötti különbségekről további információt a tulajdonságok és a [*telemetria*](#properties-vs-telemetry) című szakaszban talál.
 * **Összetevő** – az összetevők lehetővé teszik, hogy a modell felületét más felületek szerelvényként hozza létre, ha szeretné. Egy összetevő például egy *frontCamera* felület (és egy másik összetevő-illesztőfelület *backCamera*), amely a modellnek a *telefonhoz*való definiálásához használatos. Először meg kell határoznia egy felületet a *frontCamera* , mintha a saját modellje lenne, majd a *telefon*definiálásakor hivatkozhat rá.
 
     Egy összetevővel leírhatja, hogy a megoldás szerves részét képezi-e, de nem igényel külön identitást, és nem kell egymástól függetlenül létrehozni, törölni vagy átrendezni a különálló gráfban. Ha azt szeretné, hogy az entitások a Twin gráfban független létezéssel rendelkezzenek, akkor a *kapcsolatok* (lásd a következő felsorolást) külön digitális twinsként képviseljék őket.
@@ -47,7 +47,25 @@ A DTDL-modell illesztőfelülete nulla, egy vagy több műveletet is tartalmazha
 * **Kapcsolat** – a kapcsolatok lehetővé teszik, hogy egy digitális Twin-et más digitális ikrek is felvegyen. A kapcsolatok különböző szemantikai jelentéseket jelenthetnek, például a következőt: *tartalmaz* ("a padló tartalmaz szobát"), *a (z) ("* HVAC Coolers Room"), a *isBilledTo* ("kompresszor számlázása felhasználó") stb. A kapcsolatok lehetővé teszik a megoldás számára az egymással összefüggő entitások gráfjának megadását.
 
 > [!NOTE]
-> A DTDL specifikációja olyan **parancsokat**is definiál, amelyek olyan metódusok, amelyek a digitális twin (például egy alaphelyzetbe állítási parancs, vagy a ventilátor be-és kikapcsolására szolgáló parancs) esetében hajthatók végre. *A parancsok azonban jelenleg nem támogatottak az Azure Digital Twins-ben.*
+> A [DTDL specifikációja](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) olyan **parancsokat**is definiál, amelyek olyan metódusok, amelyek a digitális twin (például egy alaphelyzetbe állítási parancs, vagy a ventilátor be-és kikapcsolására szolgáló parancs) esetében hajthatók végre. *A parancsok azonban jelenleg nem támogatottak az Azure Digital Twins-ben.*
+
+### <a name="properties-vs-telemetry"></a>Tulajdonságok és telemetria
+
+Íme néhány további útmutatás a DTDL **tulajdonság** és a **telemetria** mezők megkülönböztetéséhez az Azure digitális Twins-ban.
+
+Az Azure digitális ikrek modelljeinek tulajdonságai és telemetria közötti különbség a következő:
+* A **tulajdonságokat** a rendszer a tárolók biztonsági mentésére vár. Ez azt jelenti, hogy bármikor beolvashat egy tulajdonságot, és lekérheti annak értékét. Ha a tulajdonság írható, egy értéket is tárolhat a tulajdonságban.  
+* A **telemetria** több, mint az események streamje; Ez a rövid élettartamú adatüzenetek halmaza. Ha nem állítja be az esemény figyelését, és ha ez történik, akkor az eseményt nem lehet egy későbbi időpontban nyomon követni. Nem térhet vissza, és később is elolvashatja. 
+  - A C# kifejezésekben a telemetria olyan, mint egy C# esemény. 
+  - A IoT feltételeiben a telemetria általában egyetlen, az eszköz által eljuttatott mérték.
+
+A **telemetria** gyakran használják a IoT-eszközökhöz, mert számos eszköz nem képes vagy érdekli a általa generált mérési értékek tárolása. Csak a "telemetria" események streamjét küldik el rájuk. Ebben az esetben a telemetria mező legújabb értékének megkérdezése nem lehetséges az eszközön. Ehelyett meg kell hallgatni az eszközön lévő üzeneteket, és el kell végeznie a műveleteket az üzenetek érkezésekor. 
+
+Ennek eredményeképpen, amikor modelleket tervez az Azure Digital Twinsban, valószínűleg a legtöbb esetben a **tulajdonságokat** fogja használni az ikrek modellezéséhez. Ez lehetővé teszi a biztonsági mentést, valamint az adatmezők olvasását és lekérdezését.
+
+A telemetria és a tulajdonságok gyakran együtt működnek az eszközökről érkező adatforgalom kezelésére. Mivel az Azure Digital Twins-ba való belépés az [API](how-to-use-apis-sdks.md)-kon keresztül történik, általában a bemenők függvényt használja az eszközökről származó telemetria-vagy tulajdonság-események olvasására, és válaszként a ADT tulajdonságot kell beállítania. 
+
+Telemetria eseményt is közzétehet az Azure digitális Twins API-ból. Akárcsak más telemetria, ez egy rövid életű esemény, amelyhez figyelőt kell kezelni.
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure digitális Twins DTDL implementációs sajátosságai
 
