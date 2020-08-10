@@ -3,16 +3,16 @@ title: Azure IoT Edge modul létrehozása az Azure Marketplace-en a partner cent
 description: Megtudhatja, hogyan hozhat létre, konfigurálhat és tehet közzé IoT Edge modul-ajánlatokat az Azure piactéren a partner Center használatával.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/07/2020
+ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876631"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032832"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -131,7 +131,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 > [!NOTE]
 > Az ajánlat részleteit nem kötelező angol nyelven megadni, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -194,6 +194,8 @@ Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókér
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
@@ -207,6 +209,8 @@ Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles m
 - **Széles (255 x 115)**
 
 Mind a négy emblémát kötelező megadni, és a piactér-lista különböző helyein használatos.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 
@@ -229,7 +233,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 3. Támogatási címe (hivatkozás)
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
-6. Név
+6. Name (Név)
 7. Összefoglalás
 8. Leírás
 9. Hasznos hivatkozások
@@ -312,7 +316,7 @@ A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek ezt a nevet látj
 > [!NOTE]
 > A terv azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
-Válassza a **Létrehozás** lehetőséget.
+Kattintson a **Létrehozás** gombra.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -445,14 +449,14 @@ Ha például a modul ContosoModule figyeli a ContosoInput és a kimeneti adatok 
 - Név #2: FromContosoModuleToCloud
 - Érték #2:/messages/modules/ContonsoModule/outputs/ContosoOutput-ből $upstream
 
-**Alapértelmezett modul – Twin kívánt tulajdonságok**. A Twin modul egy JSON-dokumentum a IoT Hubban, amely egy modul-példány állapotinformációkat tárolja, beleértve a kívánt tulajdonságokat is. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok között is fogadhatja a módosítási értesítéseket. A kívánt tulajdonságok legfeljebb öt név/érték párokkal hozhatók létre, és minden alapértelmezett értéknek 512 karakternél rövidebbnek kell lennie. Legfeljebb öt név/érték Twin kívánt tulajdonságot adhat meg. A Twin kívánt tulajdonságok értékének érvényes JSON-nek kell lennie, és nem Escape-ként kell lennie, és nem szabad olyan tömbök nélkül lennie, amelyek maximális beágyazott hierarchiája négy szinten Olyan esetekben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert. A Twin kívánt tulajdonságokkal kapcsolatos további tudnivalókért lásd a [kívánt tulajdonságok meghatározása vagy frissítése](../../iot-edge/module-composition.md#define-or-update-desired-properties)című témakört.
+**Alapértelmezett modul – Twin kívánt tulajdonságok**. A Twin modul egy JSON-dokumentum a IoT Hubban, amely egy modul-példány állapotinformációkat tárolja, beleértve a kívánt tulajdonságokat is. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok között is fogadhatja a módosítási értesítéseket. A kívánt tulajdonságok legfeljebb öt név/érték párok használatával jönnek létre, és minden alapértelmezett értéknek 512 karakternél rövidebbnek kell lennie. Legfeljebb öt név/érték Twin kívánt tulajdonságot adhat meg. A Twin kívánt tulajdonságok értékének érvényes JSON-nek kell lennie, és nem Escape-ként kell lennie, és nem szabad olyan tömbök nélkül lennie, amelyek maximális beágyazott hierarchiája négy szinten Olyan esetekben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert. A Twin kívánt tulajdonságokkal kapcsolatos további tudnivalókért lásd a [kívánt tulajdonságok meghatározása vagy frissítése](../../iot-edge/module-composition.md#define-or-update-desired-properties)című témakört.
 
 Ha például egy modul támogatja a dinamikusan konfigurálható frissítési sebességet Twin kívánt tulajdonságok használatával, érdemes megadnia a következő alapértelmezett dupla kívánt tulajdonságot:
 
 - Név #1: RefreshRate
 - Érték #1:60
 
-**Alapértelmezett környezeti változók**. A környezeti változók kiegészítő információkat biztosítanak a konfigurációs folyamatot segítő modulhoz. A környezeti változók név/érték párok használatával jönnek létre. Az alapértelmezett környezeti változók nevének és értékének kisebbnek kell lennie, mint 512 karakter, és legfeljebb öt adható meg. Ha az alapértelmezett értékhez egy paraméter szükséges (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert.
+**Alapértelmezett környezeti változók**. A környezeti változók kiegészítő információkat biztosítanak a konfigurációs folyamatot segítő modulhoz. A környezeti változók név/érték párok használatával jönnek létre. Az alapértelmezett környezeti változók nevének és értékének 512 karakternél rövidebbnek kell lennie, és legfeljebb öt adható meg. Ha az alapértelmezett értékhez egy paraméter szükséges (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert.
 
 Ha például egy modulnak el kell fogadnia a használati feltételeket az indítás előtt, megadhatja a következő környezeti változót:
 
@@ -483,6 +487,6 @@ Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**l
 
 Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer)

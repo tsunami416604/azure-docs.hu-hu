@@ -1,18 +1,18 @@
 ---
 title: Az adatáttelepítés Azure File Syncba Azure Data Box
-description: A tömeges adatátvitelt olyan módon telepítse át, amely kompatibilis a Azure File Syncával.
+description: A Azure File Syncsal kompatibilis, a tömeges adatátvitelt offline állapotba helyezheti át. A szinkronizálás engedélyezése után kerülje a fájlok ütközéseit, és őrizze meg a fájl-és mappák ACL-jeit és időbélyegeit.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827894"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034345"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
 A tömeges adatmennyiségeket kétféleképpen is áttelepítheti Azure File Syncba:

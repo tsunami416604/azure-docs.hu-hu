@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 01/23/2019
+ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: b10bf18fde850223bda80a597f448747558113f1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752202"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031797"
 ---
 ## <a name="push-image-to-registry"></a>Rendszerkép leküldése a beállításjegyzékbe
 
@@ -23,13 +23,20 @@ Ahhoz, hogy rendszerképet tudjon küldeni egy Azure Container Registry tároló
 docker pull hello-world
 ```
 
-Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie a beállításjegyzék bejelentkezési kiszolgálójának teljes nevével. A bejelentkezési kiszolgáló nevét a következő formátumban kell megadni: * \<registry-name\> . azurecr.IO* (mind kisbetűs), például *mycontainerregistry007.azurecr.IO*.
+Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie a beállításjegyzék bejelentkezési kiszolgálójának teljes nevével. A bejelentkezési kiszolgáló nevét a következő formátumban kell megadni: * \<registry-name\> . azurecr.IO* (mind kisbetűs), például *mycontainerregistry.azurecr.IO*.
 
 Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Helyettesítse be az `<login-server>` helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
 
 ```
 docker tag hello-world <login-server>/hello-world:v1
 ```
+
+Példa:
+
+```
+docker tag hello-world mycontainerregistry.azurecr.io/hello-world:v1
+```
+
 
 Végül a [Docker push][docker-push] paranccsal küldje le a rendszerképet a beállításjegyzék-példányra. Cserélje le a helyére `<login-server>` a beállításjegyzék-példány bejelentkezési kiszolgálójának nevét. Ez a példa a **Hello-World** tárházat hozza létre, amely tartalmazza a `hello-world:v1` képet.
 

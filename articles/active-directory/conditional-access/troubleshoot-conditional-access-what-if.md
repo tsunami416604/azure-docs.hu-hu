@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d3b8d94148e3db163411c21cccf39c7630c6b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83737639"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032914"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Feltételes hozzáférés hibaelhárítása a What If eszköz használatával
 
@@ -67,7 +67,7 @@ Számos szervezet hálózati helyen alapuló házirendeket hoz létre, lehetőv�
 
 Annak ellenőrzéséhez, hogy a konfiguráció megfelelően lett-e elvégezve, a rendszergazda a What If eszközzel utánozhatja a hozzáférést, egy olyan helyről, amelyet engedélyezni kell, és olyan helyről, amelyet meg kell tagadni.
 
-![What If eszköz, amely blokkolja a hozzáférést](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[![What if eszköz, amely blokkolja a hozzáférést](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 Ebben az esetben a felhasználónak le kell tiltania a felhőalapú alkalmazásokhoz való hozzáférését Észak-Koreában, mivel a contoso letiltotta a hozzáférést az adott helyről.
 
@@ -75,7 +75,7 @@ Ez a teszt kiterjeszthető úgy, hogy más adatpontokat is egyesítse a hatókö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az a feltételes hozzáférés?](overview.md)
+* [Mit jelent a feltételes hozzáférés?](overview.md)
 * [Mi az az Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Mi az az eszközidentitás?](../devices/overview.md)
 * [Az Azure Multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md)

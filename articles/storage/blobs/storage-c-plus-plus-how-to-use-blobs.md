@@ -1,18 +1,18 @@
 ---
 title: Az Object (blob) tároló használata a C++-ról – Azure | Microsoft Docs
-description: Strukturálatlan adat tárolása a felhőben az Azure Blob (Object) tárolóval.
+description: Ismerje meg, hogyan tárolhat strukturálatlan adattárakat (blobokat) a felhőben az Azure Blob (Object) tárolóval a C++ használatával.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: d21d37e366e0f34c896d76ee53c49c4ca30a18db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021137"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033631"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>BLOB Storage használata a C++-ból
 

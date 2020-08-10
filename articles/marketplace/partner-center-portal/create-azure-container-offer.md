@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799174"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032781"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Container-ajánlat létrehozása az Azure Marketplace-en
 
@@ -133,7 +133,7 @@ Ezen a lapon megadhatja a kereskedelmi piactéren megjelenő ajánlat részletei
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -190,20 +190,23 @@ Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókér
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti.
-
-A lista különböző helyein való használathoz mindhárom embléma mérete szükséges:
+ Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles méretben:
 
 - **Kicsi** (48 x 48)
-- **Közepes** (90 x 90)
-- **Nagy** (216 x 216 és 350 x 350 között)
+- **Közepes** (90 X 90)
+- **Nagyméretű** (216 x 216)
+- **Széles** (255 X 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Mind a négy emblémát kötelező megadni, és a piactér-lista különböző helyein használatos.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway alaphelyzetbe állítása az IPsec-alagút újralétesítéséhez
-description: Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure VPN Gateway az IPsec-alagutak visszaállítását. A cikk a klasszikus és a Resource Manager-alapú üzemi modellekben található VPN-átjárók esetében is érvényes.
+description: Az Azure-VPN Gateway alaphelyzetbe állításával visszaállíthatja az IPsec-alagutakat a klasszikus és a Resource Manager-alapú üzemi modellben található VPN-átjárók számára.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982883"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033053"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 

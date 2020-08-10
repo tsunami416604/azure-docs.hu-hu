@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065803"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031285"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -45,7 +45,7 @@ A GUID azonosító egy egyedi hivatkozási azonosító, amelynek 32 hexadecimál
 
 Javasoljuk, hogy hozzon létre egyedi GUID azonosítót minden ajánlathoz és terjesztési csatornához az egyes termékekhez. Dönthet úgy, hogy egyetlen GUID azonosítót használ a termék több terjesztési csatornához, ha nem szeretné, hogy a jelentés szét legyen osztva.
 
-Ha egy terméket sablon alapján telepít, és az Azure piactéren és a GitHubon is elérhető, két különálló GUID-t hozhat létre és regisztrálhat:
+Ha egy terméket egy sablon használatával telepít, és az Azure piactéren és a GitHubon is elérhető, két különböző GUID azonosítót hozhat létre és regisztrálhat:
 
 - Az A termék az Azure piactéren
 - A termék a GitHubon
@@ -61,7 +61,7 @@ A GUID azonosítókat regisztrálni kell a partner Centerben, hogy lehetővé v�
 Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID azonosítót a partner Centerben, a rendszer nyomon követi a jövőbeli központi telepítéseket.
 
 > [!NOTE]
-> Ha az [Azure-alkalmazást](./partner-center-portal/create-new-azure-apps-offer.md) a partner centeren keresztül teszi közzé az Azure piactéren, a sablonban használt új GUID azonosító automatikusan regisztrálva lesz a partner Center-profilban a sablon feltöltésekor.  
+> Ha a partner centeren keresztül teszi közzé [Azure-alkalmazásait](./partner-center-portal/create-new-azure-apps-offer.md) az Azure Marketplace-en, a sablonban használt új GUID azonosító automatikusan regisztrálva lesz a partner Center-profilban a sablon feltöltésekor.  
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
 
@@ -79,10 +79,10 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
 
 1. Egynél több GUID-azonosító regisztrálásához válassza ismét a **nyomkövetési GUID hozzáadása** elemet. Az oldalon további mezők jelennek meg.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
-Számos partneri megoldás Azure Resource Manager-sablonok használatával van üzembe helyezve. Ha van olyan Resource Manager-sablonja, amely elérhető az Azure Marketplace-en, a GitHubon vagy egy rövid útmutatóban, a sablon módosításának folyamata, amely lehetővé teszi az ügyfél-használati jóváírást, azonnal továbbítsa.
+Számos partneri megoldás Azure Resource Manager-sablonok használatával van üzembe helyezve. Ha van olyan Resource Manager-sablonja, amely elérhető az Azure Marketplace-en, a GitHubon vagy egy rövid útmutatóként, a sablon módosításának folyamata, amely lehetővé teszi az ügyfél-használati jóváírást, azonnal továbbítsa.
 
 > [!NOTE]
 > A megoldási sablonok létrehozásával és közzétételével kapcsolatos további információkért lásd:
@@ -275,7 +275,7 @@ Ha a piactér bevezetéséhez és/vagy az ügyfelek használati feladataihoz ál
 
 1. Válassza a **kezdési kérelem**lehetőséget.
 
-1. A következő lapon adja meg a szükséges értékeket. Válassza a **Folytatás** elemet.
+1. A következő lapon adja meg a szükséges értékeket. Válassza a **Folytatás**lehetőséget.
 
 1. A következő lapon adja meg a szükséges értékeket.
 

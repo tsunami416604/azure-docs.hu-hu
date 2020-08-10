@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283010"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032084"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
 
@@ -36,8 +36,8 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
    1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy műveletek**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
    1. Válassza a **Kész** lehetőséget.
-1. Az **Conditions**  >  **ügyfélalkalmazások (előzetes verzió)** feltételek alatt **válassza ki azokat az ügyfélalkalmazások, amelyekre ez a szabályzat vonatkozik**:
-   1. Csak a **Mobile apps és az asztali ügyfelek**  >  **egyéb ügyfeleinek**bejelölése.
+1. A **feltételek**  >  **ügyfélalkalmazások**területen állítsa az **Configure** **Igen**értékre.
+   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése.
    1. Válassza a **Kész** lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget.
    1. Válassza a **Kiválasztás** lehetőséget.

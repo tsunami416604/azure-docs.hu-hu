@@ -1,6 +1,6 @@
 ---
 title: Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
-description: Adatok migrálása helyszíni HDFS-tárolóból az Azure Storage-ba
+description: Az adatok áttelepíthetők egy helyszíni HDFS-tárolóból az Azure Storage-ba (blob Storage vagy Data Lake Storage Gen2) egy Data Box eszköz használatával.
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 6c5f2a041f03d53e1ea7c3f981683f4b70d3963b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466000"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032560"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
 
@@ -323,7 +323,7 @@ Néhány könyvtárat ki kell zárnia a DisCp feladatokból. Kizárhatja példá
 
 Hozzon létre egy fájlt azon a helyszíni Hadoop-fürtön, ahol el szeretné indítani a DistCp-feladatot. a kizárni kívánt könyvtárak listáját meghatározó fájl létrehozása.
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```
 .*ranger/audit.*

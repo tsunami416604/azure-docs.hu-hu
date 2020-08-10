@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798222"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032594"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -101,7 +101,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Elemzés
     - Alkalmazások modernizálása
     - Archívum
-    - AI + Machine Learning
+    - Mesterséges intelligencia és gépi tanulás
     - Backup
     - Big Data
     - Adatplatform
@@ -110,7 +110,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Vészhelyreállítás
     - Identitás
     - Eszközök internetes hálózata
-    - Migrálás
+    - Áttelepítés
     - Hálózatkezelés
     - Biztonság
     - Tárolás
@@ -160,7 +160,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 8. Képernyőképek/videók
 9. Dokumentumok
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -202,19 +202,22 @@ Akár három (de legalább egy) támogató PDF-dokumentumot is hozzáadhat az aj
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) méretű embléma létrehozásához. Ezt másik képpel is lecserélheti.
+Adja meg az ajánlat emblémájának PNG-fájlját a következő képpont méretek mindegyikében:
 
-Mindkét embléma mérete szükséges a lista különböző helyein való használathoz:
+- **Kicsi (48 x 48)**
+- **Nagyméretű (216 x 216)**
 
-- **Kicsi** (48 x 48)
-- **Nagy** (216 x 216 és 350 x 350 között)
+Az összes emblémát meg kell adni, és a Piactéri lista különböző helyein használják.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   A kis embléma (48 x 48 képpont) megjelenik az Azure piactér keresési eredményei között, valamint a Microsoft AppSource főoldalon és a keresési eredmények oldalon. 
+-   A nagyméretű embléma (216 x 216 és 350 x 350 képpont között) megjelenik az ajánlati lista lapján az Azure Marketplace-en és a Microsoft AppSourceban.
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

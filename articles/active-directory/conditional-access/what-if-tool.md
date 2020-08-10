@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253137"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032883"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
 
@@ -24,7 +24,7 @@ A [feltételes hozzáférés](../active-directory-conditional-access-azure-porta
 
 Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférési szabályzatok teszteléséhez.
 
-## <a name="what-it-is"></a>Mi ez?
+## <a name="what-it-is"></a>Leírás
 
 A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a feltételes hozzáférési szabályzatok környezetre gyakorolt hatásának megismerését. Ahelyett, hogy tesztelje a szabályzatokat több bejelentkezés manuális elvégzésével, ez az eszköz lehetővé teszi egy felhasználó szimulált bejelentkezésének kiértékelését. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem csak az alkalmazott feltételes hozzáférési szabályzatokat sorolja fel, hanem a [klasszikus szabályzatokat](policy-migration.md#classic-policies) is, ha vannak ilyenek.    
 
@@ -62,7 +62,7 @@ Ez a szakasz a szimulációs futtatási beállításokkal kapcsolatos informáci
 
 Csak egy felhasználót választhat ki. Ez az egyetlen kötelező mező.
 
-### <a name="cloud-apps"></a>Felhőalapú alkalmazások
+### <a name="cloud-apps"></a>Felhőalkalmazások
 
 A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás**. Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
 
@@ -76,7 +76,7 @@ Ez a beállítás az [eszköz platformjának feltételeit](concept-conditional-a
 
 ### <a name="client-apps"></a>Ügyfélalkalmazások
 
-Ez a beállítás a [Client apps-feltételt](concept-conditional-access-conditions.md#client-apps-preview)utánozza.
+Ez a beállítás a [Client apps-feltételt](concept-conditional-access-conditions.md#client-apps)utánozza.
 Alapértelmezés szerint ez a beállítás az összes olyan házirend kiértékelését okozza, amelyeken a **böngésző** vagy a **Mobile apps, illetve az asztali ügyfelek** egyenként vagy mindkettőben vannak kiválasztva. Emellett észleli azokat a házirendeket, amelyek kikényszerítik az **Exchange ActiveSync (EAS)** szolgáltatást. Ezt a beállítást a következő lehetőség kiválasztásával szűkítheti le:
 
 - **Böngésző** az összes olyan házirend kiértékeléséhez, amelynél legalább **böngésző** van kiválasztva. 

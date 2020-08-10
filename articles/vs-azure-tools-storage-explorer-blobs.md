@@ -1,6 +1,6 @@
 ---
 title: Az Azure Blob Storage-erőforrások kezelése Storage Explorerokkal | Microsoft Docs
-description: Azure Blob-tárolók és Blobok kezelése Storage Explorer
+description: Az Azure Blob Storage-erőforrások kezelése Storage Explorerokkal. BLOB-tárolót hozhat létre, megtekintheti a blob-tároló tartalmát, törölheti vagy másolhatja a BLOB-tárolót, és így tovább.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298123"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033614"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése Storage Explorer
 
@@ -205,7 +205,7 @@ A következő lépések bemutatják, hogyan kezelhetők a Blobok (és mappák) a
      1. Válassza ki a letölteni kívánt blobot.
      2. A fő ablaktábla eszköztárán válassza a **Letöltés** elemet.
      3. A **letöltött blob mentési** helyének megadása párbeszédpanelen adja meg azt a helyet, ahol a blobot le szeretné tölteni, majd adja meg a kívánt nevet.  
-     4. Kattintson a **Mentés** gombra.
+     4. Válassza a **Mentés** lehetőséget.
    * **BLOB megnyitása a helyi számítógépen**
 
      1. Válassza ki a megnyitni kívánt blobot.

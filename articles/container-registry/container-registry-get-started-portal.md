@@ -1,17 +1,17 @@
 ---
 title: Rövid útmutató – beállításjegyzék létrehozása a portálon
-description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Docker-beállításjegyzéket a Azure Container Registry a Azure Portal.
+description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Azure Container registryt a Azure Portal használatával.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752868"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031798"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rövid útmutató: saját tároló-beállításjegyzék létrehozása a Azure Portal használatával
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Gyors útmutató: Azure Container Registry létrehozása a Azure Portal használatával
 
 Az Azure Container Registry egy privát Docker-beállításjegyzék az Azure-ban, ahol tárolhatja és kezelheti a privát Docker-tárolók lemezképeit és a kapcsolódó összetevőket. Ebben a rövid útmutatóban létrehozhat egy tároló-beállításjegyzéket az Azure Portallal. Ezután a Docker-parancsokkal leküldheti a tárolók rendszerképét a beállításjegyzékbe, és végül lekérdezheti és futtathatja a rendszerképet a beállításjegyzékből.
 
@@ -23,13 +23,13 @@ A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekk
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry**elemet.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="A tároló beállításjegyzékének navigálása a portálon":::
 
-Az **alapvető beállítások** lapon adja meg az **erőforráscsoport** és a **beállításjegyzék nevének**értékét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget.
+Az **alapvető beállítások** lapon adja meg az **erőforráscsoport** és a **beállításjegyzék nevének**értékét. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Tároló-beállításjegyzék létrehozása a portálon":::
 
@@ -41,14 +41,20 @@ Amikor megjelenik az **üzembe helyezés sikeres** üzenet, válassza ki a táro
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="A tároló beállításjegyzékének áttekintése a portálon":::
 
-Jegyezze fel a **bejelentkezési kiszolgáló**értékét. Ezt az értéket a következő lépésekben hajtja végre a képek Docker használatával történő leküldésekor és lekérése során.
+Jegyezze fel a beállításjegyzék nevét és a **bejelentkezési kiszolgáló**értékét. Ezeket az értékeket a következő lépésekben hajthatja végre, amikor a Docker használatával leküldi és lekéri a lemezképeket.
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-A tároló-lemezképek leküldése és húzása előtt be kell jelentkeznie a beállításjegyzék-példányba. [Jelentkezzen be az Azure CLI][get-started-with-azure-cli] -be a helyi gépen, majd futtassa az az [ACR login][az-acr-login] parancsot. (Csak a beállításjegyzék nevét adja meg az Azure CLI-vel való bejelentkezéskor. Ne adja meg a "azurecr.io" utótagot.)
+A tároló-lemezképek leküldése és húzása előtt be kell jelentkeznie a beállításjegyzék-példányba. [Jelentkezzen be az Azure CLI][get-started-with-azure-cli] -be a helyi gépen, majd futtassa az az [ACR login][az-acr-login] parancsot. (Csak a beállításjegyzék nevét adja meg az Azure CLI-vel való bejelentkezéskor. Ne adja meg a "azurecr.io" tartományi utótagot.)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Példa:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött. 

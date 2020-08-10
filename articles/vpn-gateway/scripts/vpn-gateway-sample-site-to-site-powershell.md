@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-példaszkript – Helyek közötti VPN konfigurálása | Microsoft Docs
-description: Ez a PowerShell-parancsfájl egy Route-alapú VPN Gateway hoz létre, és a helyek közötti konfigurációt is hozzáadja. A szkript összes parancsmagjának megismerése.
+description: A PowerShell használatával hozzon létre egy Route-alapú VPN-átjárót, és konfigurálja a VPN-eszközt a helyek közötti kapcsolat hozzáadásához.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
-ms.openlocfilehash: e3629fd605b74edc0a274fa887f56295dcb0ab77
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fab1f4862cd1f2907d9bdc9f989fe24f1730002c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926971"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032441"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>VPN-átjáró létrehozása és helyek közötti kapcsolat hozzáadása a PowerShell használatával
 
@@ -93,7 +93,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hozzáad egy alhálózati konfigurációt. Ez a konfiguráció a virtuális hálózat létrehozására szolgál. |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekérdezi egy virtuális hálózat részleteit. |

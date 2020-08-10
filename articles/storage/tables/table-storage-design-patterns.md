@@ -1,6 +1,6 @@
 ---
 title: Az Azure Storage tábla kialakítási mintái | Microsoft Docs
-description: Használjon mintákat az Azure Table Service-megoldásokhoz.
+description: Tekintse át az Azure Table service-megoldásokkal való használatra alkalmas tervezési mintákat. A más cikkekben tárgyalt problémák és kompromisszumok.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 32904044cf6dcecf19b1a78eb4236dc02555bb86
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081230"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034197"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk a Table service-megoldásokkal való használatra alkalmas mintákat ismerteti. Azt is megtudhatja, hogyan lehet gyakorlatilag a más Table Storage-kialakítási cikkekben tárgyalt problémák és kompromisszumok kezelésére. A következő ábra összefoglalja a különböző minták közötti kapcsolatokat:  
@@ -729,7 +729,7 @@ Az Table service egy *séma nélküli tábla-* áruház, amely azt jelenti, hogy
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Időbélyeg</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -821,7 +821,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Időbélyeg</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -838,7 +838,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Employee (Alkalmazott)</td>
+<td>Alkalmazott</td>
 <td></td>
 <td></td>
 <td></td>
@@ -860,7 +860,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Employee (Alkalmazott)</td>
+<td>Alkalmazott</td>
 <td></td>
 <td></td>
 <td></td>
@@ -901,7 +901,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Employee (Alkalmazott)</td>
+<td>Alkalmazott</td>
 <td></td>
 <td></td>
 <td></td>

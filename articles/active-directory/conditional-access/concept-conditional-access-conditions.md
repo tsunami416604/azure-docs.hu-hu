@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032125"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
 Egy feltételes hozzáférési szabályzaton belül a rendszergazda olyan feltételektől veheti igénybe a jeleket, mint például a kockázat, az eszköz platformja vagy a hely a szabályzatokkal kapcsolatos döntések javítása érdekében. 
 
-![Feltételes hozzáférési szabályzat definiálása és feltételek megadása](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[![Feltételes hozzáférési szabályzat definiálása és feltételek megadása](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 A részletes és a feltételes hozzáférési szabályzatok létrehozásához több feltétel is felhasználható.
 
@@ -60,21 +60,28 @@ Előfordulhat például, hogy egyes szervezetek nem igénylik a többtényezős 
 
 A helyekkel kapcsolatos további információkért tekintse meg a következő témakört: a [feltételes hozzáférés Azure Active Directory a hely feltétele](location-condition.md).
 
-## <a name="client-apps-preview"></a>Ügyfélalkalmazások (előzetes verzió)
+## <a name="client-apps"></a>Ügyfélalkalmazások
 
-A feltételes hozzáférési szabályzatok alapértelmezés szerint a modern hitelesítési protokollokat használó böngészőalapú alkalmazásokra és alkalmazásokra vonatkoznak. Ezen alkalmazások mellett a rendszergazdák dönthetnek úgy is, hogy az Exchange ActiveSync-ügyfeleket és az örökölt protokollokat használó más ügyfeleket is tartalmazzák.
+Alapértelmezés szerint az összes újonnan létrehozott feltételes hozzáférési szabályzat minden ügyfélalkalmazás-típusra érvényes lesz, még akkor is, ha az ügyfélalkalmazás feltétele nincs konfigurálva. 
 
 > [!NOTE]
-> Az igen/nincs váltógomb konfigurálása az ügyfélalkalmazások feltételében el lett távolítva, hogy könnyebb legyen megtekinteni, hogy mely ügyfélalkalmazások vannak kiválasztva. Ez nem befolyásolja, hogy mely ügyfélalkalmazások érvényesek a meglévő szabályzatokra.
+> Az ügyfélalkalmazások működésének állapota 2020 augusztusában frissült. Ha van meglévő feltételes hozzáférési szabályzata, akkor változatlan marad. Ha azonban egy meglévő szabályzatra kattint, a rendszer eltávolította a configure kapcsolót, és a házirend hatálya alá eső ügyfélalkalmazások ki vannak választva.
 
-- Böngésző
-   - Ezek közé tartoznak a webes alkalmazások, amelyek olyan protokollokat használnak, mint például az SAML, a WS-Federation, az OpenID Connect vagy a OAuth-alapú bizalmas ügyfélként regisztrált szolgáltatások.
-- Mobile apps és asztali ügyfelek
-   - Modern hitelesítési ügyfelek
-      - Ez a beállítás olyan alkalmazásokat is tartalmaz, mint például az Office asztali és a telefonos alkalmazások.
+> [!IMPORTANT]
+> Az örökölt hitelesítési ügyfelektől érkező bejelentkezések nem támogatják az MFA-t, és nem adják át az eszköz állapotadatok az Azure AD-nek, így a feltételes hozzáférés által biztosított vezérlők le lesznek tiltva, például MFA-vagy megfelelőségi eszközökre van szükségük. Ha olyan fiókkal rendelkezik, amelyeknek örökölt hitelesítést kell használniuk, ki kell zárnia ezeket a fiókokat a szabályzatból, vagy úgy kell beállítania a házirendet, hogy csak a modern hitelesítési ügyfelekre vonatkozzon.
+
+Ha az **Igen** értékre van állítva, akkor a beállítás váltógomb az ellenőrzött elemekre vonatkozik, ha a **nem** értékre van **állítva az összes** ügyfélalkalmazás, beleértve a modern és a régi hitelesítési ügyfeleket is. Ez a váltógomb nem jelenik meg az augusztus 2020. előtt létrehozott szabályzatokban.
+
+- Modern hitelesítési ügyfelek
+   - Böngésző
+      - Ezek közé tartoznak a webes alkalmazások, amelyek olyan protokollokat használnak, mint például az SAML, a WS-Federation, az OpenID Connect vagy a OAuth-alapú bizalmas ügyfélként regisztrált szolgáltatások.
+   - Mobile apps és asztali ügyfelek
+      -  Ez a beállítás olyan alkalmazásokat is tartalmaz, mint például az Office asztali és a telefonos alkalmazások.
+- Örökölt hitelesítési ügyfelek
    - Exchange ActiveSync-ügyfelek
-      - Alapértelmezés szerint ez magában foglalja az Exchange ActiveSync (EAS) protokoll használatát. A **házirend alkalmazása csak a támogatott platformokra** lehetőség választása esetén a támogatott platformok, például az iOS, az Android és a Windows rendszerre lesznek korlátozva.
+      - Ez magában foglalja az Exchange ActiveSync (EAS) protokoll használatát.
       - Ha a házirend letiltja az Exchange ActiveSync használatát, az érintett felhasználó egyetlen karanténba helyezett e-mailt fog kapni. Ez az e-mail-cím tartalmazza a blokkolásuk okát, és ha tud, szervizelési utasításokat is tartalmaz.
+      - A rendszergazdák a feltételes hozzáférési MS Graph API használatával csak a támogatott platformokra (például iOS, Android és Windows rendszerekre) alkalmazhatnak szabályzatot.
    - Más ügyfelek
       - Ez a beállítás olyan ügyfeleket tartalmaz, amelyek olyan alapszintű/örökölt hitelesítési protokollokat használnak, amelyek nem támogatják a modern hitelesítést.
          - Hitelesített SMTP – a POP és az IMAP-ügyfél által használt e-mail üzenetek küldésére használható.

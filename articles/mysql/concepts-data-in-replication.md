@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79533232"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031217"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
@@ -29,6 +29,11 @@ A felhőbe irányuló replikálás használatának főbb forgatókönyvei:
 
 ### <a name="data-not-replicated"></a>Nem replikált adatértékek
 A főkiszolgálón található [*MySQL rendszeradatbázis*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) nem replikálódik. Nem replikálódnak a fiókok és engedélyek módosításai a főkiszolgálón. Ha létrehoz egy fiókot a főkiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan hozza létre ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MySQL-kézikönyvet](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
+
+### <a name="filtering"></a>Szűrés
+A (helyszíni, virtuális gépeken üzemeltetett vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás) tábláinak replikálásának kihagyásához a (z) `replicate_wild_ignore_table` paramétert a rendszer támogatja. Ha szükséges, frissítse ezt a paramétert az Azure-ban üzemeltetett replika-kiszolgálón a [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával.
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) .
 
 ### <a name="requirements"></a>Követelmények
 - A főkiszolgáló verziójának legalább a MySQL 5,6-es verziójának kell lennie. 

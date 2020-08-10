@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy csomó
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 01f6c90f9f7d7679f5b108138e2d2318eb6b9e18
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010832"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031981"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
 Ez a cikk azt ismerteti, hogyan méretezhető egy Service Fabric-fürt elsődleges csomópontjának típusa egy további csomópont-típusnak a fürthöz való hozzáadásával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni.
@@ -62,9 +62,6 @@ New-AzResourceGroupDeployment `
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Új elsődleges csomópont-típus hozzáadása a fürthöz
 > [!Note]
 > A skálázási művelet befejezése után a következő lépésekben létrehozott erőforrások lesznek a fürt új elsődleges csomópont-típusa. Győződjön meg arról, hogy a kezdeti alhálózat, a nyilvános IP-cím, a Load Balancer, a virtuálisgép-méretezési csoport és a csomópont típusa alapján egyedi neveket használ. 
-
-> [!Note]
-> Ha már szabványos SKU nyilvános IP-címet használ, és a standard SKU LB-t használja, előfordulhat, hogy nem kell új hálózati erőforrásokat létrehoznia. 
 
 A következő lépések mindegyikével megtalálhatja a sablont: [Service Fabric – új csomópont típusú fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json). Az alábbi lépések olyan részleges erőforrás-kódrészleteket tartalmaznak, amelyek kiemelik az új erőforrások változásait.  
 
@@ -162,7 +159,40 @@ A Service Fabric-fürt most két csomópont-típussal fog rendelkezni, amikor a 
 ### <a name="remove-the-existing-node-type"></a>A meglévő csomópont típusának eltávolítása 
 Ha az erőforrások üzembe helyezése befejeződött, megkezdheti a csomópontok letiltását az eredeti csomópont-típusban. Mivel a csomópontok le vannak tiltva, a rendszerszolgáltatások a fenti lépésben üzembe helyezett új elsődleges csomópont-típusra lesznek áttelepítve.
 
-1. Tiltsa le a csomópontokat a 0. típusú csomópontban. 
+1. Állítsa hamis értékre a Service Fabric fürterőforrás elsődleges csomópont-típus tulajdonságát. 
+```json
+{
+    "name": "[variables('vmNodeType0Name')]",
+    "applicationPorts": {
+        "endPort": "[variables('nt0applicationEndPort')]",
+        "startPort": "[variables('nt0applicationStartPort')]"
+    },
+    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
+    "durabilityLevel": "Bronze",
+    "ephemeralPorts": {
+        "endPort": "[variables('nt0ephemeralEndPort')]",
+        "startPort": "[variables('nt0ephemeralStartPort')]"
+    },
+    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+    "isPrimary": false,
+    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
+    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+}
+```
+2. Telepítse a sablont a frissített isPrimary tulajdonsággal az eredeti csomópont-típuson. Az elsődleges jelzővel rendelkező sablon hamis értékre van állítva az eredeti csomópont-típusnál: [Service Fabric – elsődleges csomópont típusa false (hamis](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json)).
+
+```powershell
+# deploy the updated template files to the existing resource group
+$templateFilePath = "C:\AzureDeploy-3.json"
+$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+```
+
+3. Tiltsa le a csomópontokat a 0. típusú csomópontban. 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
     -KeepAliveIntervalInSec 10 `
@@ -196,7 +226,7 @@ foreach($node in $nodes)
 > [!Note]
 > Ez a lépés hosszabb időt is igénybe vehet. 
 
-2. Állítsa le az adattípust a 0. csomóponton. 
+4. Állítsa le az adattípust a 0. csomóponton. 
 ```powershell
 foreach($node in $nodes)
 {
@@ -208,62 +238,18 @@ foreach($node in $nodes)
   }
 }
 ```
-3. Csomópontok felszabadítása az eredeti virtuálisgép-méretezési csoportból 
+5. Csomópontok felszabadítása az eredeti virtuálisgép-méretezési csoportból 
 ```powershell
 $scaleSetName="nt1vm"
 $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
+> [!Note]
+> A 6. és 7. lépés megadása nem kötelező, ha már használ szabványos SKU nyilvános IP-címet és standard SKU Load balancert. Ebben az esetben előfordulhat, hogy több virtuálisgép-méretezési csoport vagy csomópont-típus is van ugyanazon a terheléselosztó alatt. 
 
-4. Csomópont-állapot eltávolítása a 0. típusú csomópontból
-```powershell
-foreach($node in $nodes)
-{
-  if ($node.NodeType -eq $nodeType)
-  {
-    $node.NodeName
+6. Most már törölheti az eredeti IP-címet, és Load Balancer erőforrásokat is. Ebben a lépésben a DNS-nevet is frissíti. 
 
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
-  }
-}
-```
-5. Állítsa hamis értékre a Service Fabric fürterőforrás elsődleges csomópont-típus tulajdonságát. 
-
-```json
-{
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
-    "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-}
-```
-
-5. Telepítse a sablont a frissített isPrimary tulajdonsággal az eredeti csomópont-típuson. Az elsődleges jelzővel rendelkező sablon hamis értékre van állítva az eredeti csomópont-típusnál: [Service Fabric – elsődleges csomópont típusa false (hamis](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json)).
-
-```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
-```
-
-7. Most már törölheti az eredeti IP-címet, és Load Balancer erőforrásokat is. Ebben a lépésben a DNS-nevet is frissíti. 
 ```powershell
 $lbname="LB-cluster-name-nt1vm"
 $lbResourceType="Microsoft.Network/loadBalancers"
@@ -283,11 +269,24 @@ $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
 ``` 
-6. Frissítse a fürt felügyeleti végpontját az új IP-címhez való hivatkozáshoz. 
+
+7. Frissítse a fürt felügyeleti végpontját az új IP-címhez való hivatkozáshoz. 
 ```json
   "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-7. Távolítsa el az eredeti csomópont típusú hivatkozást az ARM-sablon Service Fabric erőforrásáról. 
+8. Csomópont-állapot eltávolítása a 0. típusú csomópontból
+```powershell
+foreach($node in $nodes)
+{
+  if ($node.NodeType -eq $nodeType)
+  {
+    $node.NodeName
+
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+  }
+}
+```
+9. Távolítsa el az eredeti csomópont típusú hivatkozást az ARM-sablon Service Fabric erőforrásáról. 
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -338,13 +337,10 @@ Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban s
  } 
 }
 ```
+10. Távolítsa el az ARM-sablon eredeti csomópont-típusához kapcsolódó összes többi erőforrást. Lásd: [Service Fabric – új csomópont típusú fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) egy sablonhoz az összes ilyen eredeti erőforrás eltávolításával.
 
-8. Távolítsa el az ARM-sablon eredeti csomópont-típusához kapcsolódó összes többi erőforrást. Lásd: [Service Fabric – új csomópont típusú fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) egy sablonhoz az összes ilyen eredeti erőforrás eltávolításával.
-
-9. Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben a rendszer figyelmen kívül hagyja a forceRestart. A upgradeReplicaSetCheckTimeout paraméter határozza meg azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton. A upgradeTimeout paraméter értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
-Ezután ellenőrizze a következőket:
-
-* A portálon Service Fabric erőforrás készen áll.
+11. Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben a rendszer figyelmen kívül hagyja a forceRestart. A upgradeReplicaSetCheckTimeout paraméter határozza meg azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton. A upgradeTimeout paraméter értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
+Ezután ellenőrizze, hogy a portálon a Service Fabric erőforrás készként jelenik-e meg. 
 
 ```powershell
 # deploy the updated template files to the existing resource group
