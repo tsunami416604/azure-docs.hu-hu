@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/9/2020
-ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/7/2020
+ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206946"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037303"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási r�
 | | **Kiszolgáló nélküli számítástechnika** | **Kiépített számítás** |
 |:---|:---|:---|
 |**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. | A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
-| **Teljesítmény-felügyeleti tevékenység** |Lower|Magasabb|
+| **Teljesítmény-felügyeleti tevékenység** |Alacsonyabb|Magasabb|
 |**Számítási skálázás**|Automatikus|Kézi|
 |**Számítási rugalmasság**|Alacsonyabb az inaktív időszakok után|Azonnali|
 |**Számlázási részletesség**|Másodpercenként|/Óra|
@@ -88,7 +88,7 @@ A kiszolgáló nélküli adatbázisok memóriáját gyakrabban, mint a kiépíte
 
 #### <a name="cache-reclamation"></a>Gyorsítótár-visszanyerés
 
-A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárból származó memóriát egy kiszolgáló nélküli adatbázisból kell visszaigényelni, amikor a CPU vagy az aktív gyorsítótár kihasználtsága alacsony.  Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.
+A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárból származó memóriát egy kiszolgáló nélküli adatbázisból kell visszaigényelni, amikor a CPU vagy az aktív gyorsítótár kihasználtsága alacsony.
 
 - Az aktív gyorsítótár kihasználtsága akkor minősül alacsonynak, ha a legutóbb használt gyorsítótár-bejegyzések teljes mérete egy adott időtartam alatt egy küszöbérték alá esik.
 - A gyorsítótár-újraindításkor a cél gyorsítótárának mérete fokozatosan csökken az előző méret töredékéért, és a visszaigénylés csak akkor folytatódik, ha a használat alacsony marad.
@@ -96,6 +96,8 @@ A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárbó
 - A gyorsítótár mérete soha nem csökken a minimális memória-korlát alatt, amelyet konfigurálhat a percben megadott minimális virtuális mag.
 
 A kiszolgáló nélküli és a kiépített számítási adatbázisokban a gyorsítótár bejegyzései kizárható, ha az összes rendelkezésre álló memória használatban van.
+
+Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.  Azt is megteheti, hogy a felhasználói tevékenység leállítása után további késleltetést okoz a memória-visszanyerési művelet, mivel a korábbi felhasználói tevékenységekre válaszoló időszakos háttérben futó folyamatok időnként megtörténnek  A törlési műveletek például a törlésre kijelölt Ghost-rekordokat hoznak, de nem törlődnek fizikailag, amíg a szellemkép-tisztítási folyamat fut, ami magában foglalhatja az adatlapok gyorsítótárba való beolvasását is.
 
 #### <a name="cache-hydration"></a>Gyorsítótár-hidratáció
 
@@ -125,7 +127,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Szolgáltatás|Trigger újraindítása|
+|Funkció|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -133,7 +135,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 |Naplózás|Naplózási rekordok megtekintése.<br>Naplózási házirend frissítése vagy megtekintése.|
 |Adatmaszkolás|Az adatmaszkolási szabályok hozzáadása, módosítása, törlése vagy megtekintése|
 |Transzparens adattitkosítás|Transzparens adattitkosítás állapotának vagy állapotának megtekintése|
-|Sebezhetőségi felmérés|Ad hoc vizsgálatok és rendszeres vizsgálatok, ha engedélyezve vannak|
+|Biztonsági rések felmérése|Ad hoc vizsgálatok és rendszeres vizsgálatok, ha engedélyezve vannak|
 |Lekérdezés (teljesítmény) adattár|A lekérdezési tároló beállításainak módosítása vagy megtekintése|
 |Autotuning|Automatikus finomhangolási javaslatok alkalmazása és ellenőrzése, például automatikus indexelés|
 |Adatbázis másolása|Adatbázis létrehozása másolásként.<br>Exportálás BACPAC-fájlba.|
@@ -145,7 +147,7 @@ A fent felsorolt műveletek bármelyikét végző figyelési, felügyeleti és e
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 
@@ -254,7 +256,7 @@ A maximális vagy a minimális virtuális mag, valamint az automatikus szünetel
 A maximális vagy a minimális virtuális mag módosítása, valamint az automatikus szüneteltetés késleltetése az az [SQL db Update](/cli/azure/sql/db#az-sql-db-update) paranccsal hajtható végre az Azure CLI-ben a `capacity` , `min-capacity` , és `auto-pause-delay` argumentumokkal.
 
 
-## <a name="monitoring"></a>Monitorozás
+## <a name="monitoring"></a>Figyelés
 
 ### <a name="resources-used-and-billed"></a>Felhasznált erőforrások és számlázás
 
@@ -268,7 +270,7 @@ Az alkalmazáscsomag egy adatbázis külső erőforrás-kezelési határa, függ
 
 A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési határa, függetlenül attól, hogy az adatbázis kiszolgáló nélküli vagy kiépített számítási szinten van-e. A felhasználói erőforráskészlet hatóköre CPU és IO a DDL-lekérdezések által generált felhasználói számítási feladatokhoz, például LÉTREHOZÁSi és MÓDOSÍTÁSi, valamint DML-lekérdezések, például SELECT, INSERT, UPDATE és DELETE. Ezek a lekérdezések általában a kihasználtság legjelentősebb hányadát jelentik az alkalmazáscsomag keretében.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 

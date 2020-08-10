@@ -1,19 +1,19 @@
 ---
 title: Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 description: Megtudhatja, hogyan használhatja a MongoDB n Azure Cosmos DB API-ját az adatain végrehajtott módosítások beszerzéséhez.
-author: srchi
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/04/2020
-ms.author: srchi
+ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 845398744637d0e0092934248d4eb4533d7b9344
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415533"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036708"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 
@@ -168,7 +168,7 @@ A Change streamek használatakor a következő hibakódok és üzenetek támogat
 
 * **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a hiba helyett, `operationType Invalidate` a `NamespaceNotFound` rendszer a hibát adja vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A MongoDB Azure Cosmos DB API-ban való használatának ideje az élettartam lejáratára](mongodb-time-to-live.md)
 * [Indexelés Azure Cosmos DB API-MongoDB](mongodb-indexing.md)

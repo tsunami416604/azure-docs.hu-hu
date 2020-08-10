@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032595"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036725"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 
@@ -23,6 +23,9 @@ Használja a következő mátrixot a MABS v3 UR1:
 * MABS-telepítés – a számítógép/hely, ahová a MABS telepíteni kívánja.
 
 * Védelem és helyreállítás – felsorolja a munkaterhelésekkel kapcsolatos részletes információkat, például a támogatott tárolókat vagy a támogatott üzembe helyezést.
+
+>[!NOTE]
+>Az 32 bites védelmi ügynök támogatása elavult a MABS v3 UR1. Lásd: [32 bites védelmi ügynök elavulása](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation).
 
 ## <a name="protection-support-matrix"></a>A támogatási mátrix
 

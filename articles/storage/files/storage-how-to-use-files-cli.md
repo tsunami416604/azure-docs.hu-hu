@@ -1,6 +1,6 @@
 ---
 title: Rövid útmutató az Azure-fájlmegosztások felügyeletéhez az Azure CLI-vel
-description: Ebből a rövid útmutatóból megtudhatja, hogyan felügyelheti az Azure Files szolgáltatást az Azure CLI használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti Azure Fileseit az Azure CLI használatával. Hozzon létre egy erőforráscsoport-és Storage-fiókot, majd hozzon létre és használjon egy Azure-fájlmegosztást.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495775"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034583"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure CLI-vel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
@@ -287,7 +287,7 @@ az storage share delete \
     --output none
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha elkészült, a [`az group delete`](/cli/azure/group) parancs használatával távolíthatja el az erőforráscsoportot és az összes kapcsolódó erőforrást: 
 
 ```azurecli-interactive 

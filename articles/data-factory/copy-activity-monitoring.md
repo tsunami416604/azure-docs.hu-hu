@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249703"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036368"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
 
@@ -50,12 +50,14 @@ Az alsó **végrehajtási adatok és időtartamok** a másolási tevékenység l
 
 A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredményének**  >  **kimenete** szakaszban is megjelennek, amely a felhasználói felület figyelési nézetének megjelenítésére szolgál. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek figyeléséről általában programozott módon: Azure-beli adat- [előállító programozott figyelése](monitor-programmatically.md).
 
-| Tulajdonság neve  | Description | Kimeneti egység |
+| Tulajdonság neve  | Leírás | Kimeneti egység |
 |:--- |:--- |:--- |
 | dataRead | A forrásból beolvasott adatok tényleges mennyisége. | Int64 érték bájtban |
 | dataWritten | A fogadóba írt/elkötelezett adatok tényleges csatlakoztatása. A méret különbözhet a `dataRead` mérettől, mivel az egyes adattár az adatok tárolására szolgál. | Int64 érték bájtban |
 | filesRead | A fájl alapú forrásból beolvasott fájlok száma. | Int64 érték (egység nélkül) |
 | filesWritten | A fájl alapú fogadóba írt/véglegesített fájlok száma. | Int64 érték (egység nélkül) |
+| filesSkipped | A fájl alapú forrásból kihagyott fájlok száma. | Int64 érték (egység nélkül) |
+| dataConsistencyVerification | Az adatkonzisztencia-ellenőrzés részletei, ahol láthatja, hogy a másolt adatok konzisztensek-e a forrás-és a célhelyek között. További információ [ebben a cikkben](copy-activity-data-consistency.md#monitoring). | Tömb |
 | sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int64 érték (egység nélkül) |
 | sinkPeakConnections | A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma. | Int64 érték (egység nélkül) |
 | rowsRead | A forrásból beolvasott sorok száma. Ez a metrika nem vonatkozik arra az esetre, ha a fájlok a-ként való másolása nem történik meg, például ha a forrás-és fogadó adatkészletek bináris formátumúak, vagy más formátumúak azonos beállításokkal. | Int64 érték (egység nélkül) |
@@ -71,11 +73,13 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 | effectiveIntegrationRuntime | A tevékenység futtatásához használt integrációs modul (IR) vagy futtatókörnyezet a következő formátumban: `<IR name> (<region if it's Azure IR>)` . | Szöveg (karakterlánc) |
 | usedDataIntegrationUnits | A tényleges adatintegrációs egységek a másolás során. | Int32 érték |
 | usedParallelCopies | A tényleges parallelCopies a másolás során. | Int32 érték |
-| redirectRowPath | A tulajdonságban konfigurált blob Storage-beli kihagyott inkompatibilis sorok naplójának elérési útja `redirectIncompatibleRowSettings` . Lásd: [hibatűrés](copy-activity-overview.md#fault-tolerance). | Szöveg (karakterlánc) |
+| logPath | A blob Storage-ban a kihagyott adatkapcsolati napló elérési útja. Lásd: [hibatűrés](copy-activity-overview.md#fault-tolerance). | Szöveg (karakterlánc) |
 | executionDetails | További részletek a másolási tevékenység lépésein, valamint a megfelelő lépéseken, időtartamokon, konfigurációkon stb. Nem javasoljuk, hogy elemezze ezt a szakaszt, mert megváltozhat. Ha szeretné jobban megismerni, hogy miként segíti a másolási teljesítmény megismerését és hibakeresését, tekintse meg a [vizuális figyelés](#monitor-visually) című szakaszt. | Tömb |
 | perfRecommendation | Teljesítmény-finomhangolási tippek másolása. A részletekért lásd a [teljesítmény-hangolási tippeket](copy-activity-performance-troubleshooting.md#performance-tuning-tips) . | Tömb |
+| billingReference | Az adott futtatáshoz tartozó számlázási felhasználás. További információ a használat [figyelése tevékenység-futtatási szinten](plan-manage-costs.md#monitor-consumption-at-activity-run-level). | Objektum |
+| durationInQueue | Az üzenetsor-kezelési időtartam a másolási tevékenység végrehajtásának megkezdése előtt másodpercben. | Objektum |
 
-**Példa:**
+**Példa**
 
 ```json
 "output": {
@@ -83,6 +87,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
     "dataWritten": 1180089300500,
     "filesRead": 110,
     "filesWritten": 110,
+    "filesSkipped": 0,
     "sourcePeakConnections": 640,
     "sinkPeakConnections": 1024,
     "copyDuration": 388,
@@ -92,6 +97,11 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
     "usedDataIntegrationUnits": 128,
     "billingReference": "{\"activityType\":\"DataMovement\",\"billableDuration\":[{\"Managed\":11.733333333333336}]}",
     "usedParallelCopies": 64,
+    "dataConsistencyVerification": 
+    { 
+        "VerificationResult": "Verified", 
+        "InconsistentData": "None" 
+    },
     "executionDetails": [
         {
             "source": {

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798069"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037269"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -180,7 +180,7 @@ Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az aj
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
-#### <a name="name"></a>Név
+#### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező az ajánlat **aliasa** mezőben megadott névvel van feltöltve az ajánlat létrehozásakor. A nevet később módosíthatja. A név:
 
@@ -196,7 +196,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor használandó kapcsolattartási adatokat. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name
 - E-mail
 - Telefon
 
@@ -234,7 +234,7 @@ Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor hasz
 
 Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén használandó kapcsolattartási adatokat, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name
 - E-mail
 - Telefon
 
@@ -242,20 +242,23 @@ Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén ha
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A homályos képek miatt a rendszer elutasítja a kérelmet.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
-#### <a name="store-logos"></a>Emblémák tárolása
+#### <a name="azure-marketplace-logos"></a>Azure Marketplace-logók
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához (216 x 216 és 350 x 350 képpont). A partner Center ezt fogja használni egy **kis** (48 x 48 képpont) és egy **közepes** (90 x 90 képpont) méretű embléma létrehozásához. Ezeket különböző rendszerképekkel is lecserélheti.
+Adja meg az ajánlat emblémájának PNG-fájlját a következő négy képdimenzióval:
 
-A lista különböző helyein való használathoz mindhárom embléma mérete szükséges:
+- **Kicsi** (48 &times; 48 képpont)
+- **Közepes** (90 &times; 90 képpont)
+- **Nagyméretű** (216 &times; 216 képpont)
+- **Széles** (255 &times; 115 képpont)
 
-- **Kicsi** (48 x 48)
-- **Közepes** (90 x 90)
-- **Nagy** (216 x 216 és 350 x 350 között)
+Mind a négy emblémát meg kell adni, és különböző Azure Marketplace-listákban jelennek meg.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 
@@ -535,7 +538,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 

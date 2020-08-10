@@ -1,6 +1,6 @@
 ---
 title: Azure Maps eseményekre való reagálás Event Grid használatával
-description: Ebből a cikkből megtudhatja, hogyan reagálhat Microsoft Azure Maps-eseményekre Event Grid használatával.
+description: Ismerje meg, hogyan reagálhat a geofences-et érintő Azure Maps eseményekre. Tekintse meg, hogyan lehet megfigyelni az eseményeket, és hogyan kell használni az eseményeket az eseménykezelők átirányításához a Event Grid használatával.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/16/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: eb64634f25564abc4044364950b4d462a22608aa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 701c94237ef5348e11b5d7fbc85d4da1f20136ee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499511"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036810"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Azure Maps eseményekre való reagálás Event Grid használatával
 
@@ -77,7 +77,7 @@ Az Azure Maps geokerítésen-eseményeket kezelő alkalmazásoknak néhány ajá
 * A `X-Correlation-id` válasz fejlécében található mező segítségével megtudhatja, hogy az objektumok adatai naprakészek-e. Megtörténhet, hogy az üzenetek más sorrendben, vagy késve érkeznek.
 * Ha a Geokerítésen API-ban a GET vagy a POST kérést a (z) paraméterrel beállított Mode paraméterrel hívja `EnterAndExit` meg, akkor létrejön egy Enter vagy Exit esemény a geokerítésen minden olyan geometriájában, amelynek az állapota módosult az előző GEOKERÍTÉSEN API-hívásból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan használhatja a geokerítések-t egy építkezési helyen lévő műveletek vezérlésére, tekintse meg a következőt:
 

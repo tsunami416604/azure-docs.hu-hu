@@ -8,12 +8,12 @@ ms.date: 08/04/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 737fe4b334e60f1b51e8f60f39e8821588a6841c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51630154b77233aeb2587ac3a2d603c1da6fa4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010311"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036555"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>IoT-alapú adatexportálás a Felhőbeli célhelyekre adatexportálással (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ez a cikk az Azure IoT Central új adatexportálási funkcióinak használatát 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A IoT Central alkalmazásban rendszergazdának kell lennie, vagy az adatexportálási engedélyekkel kell rendelkeznie.
+Az adatexportálás (előzetes verzió) használatához v3 alkalmazással kell rendelkeznie, és az adatexportálási engedélyekkel kell rendelkeznie.
 
 ## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
@@ -150,15 +150,22 @@ Hozzon létre egy új célhelyet, vagy adjon hozzá egy már létrehozott célhe
 
 ## <a name="export-contents-and-format"></a>Tartalom és formátum exportálása
 
-Event Hubs és Service Bus célhelyek esetében az adatexportálás közel valós idejű. Az adattartalom az üzenet törzsében van, és JSON formátumú, UTF-8 kódolású. Példákat alább talál.
+### <a name="azure-blob-storage-destination"></a>Azure Blob Storage célhely
 
-A blob Storage esetében percenként egyszer exportálja az adatmennyiséget, és minden olyan fájlt, amely a legutóbbi exportált fájl óta módosul. Az exportált adatfájlok JSON formátumú három mappába kerülnek. A Storage-fiók alapértelmezett elérési útjai a következők:
+Az adatexportálás percenként egyszer történik, és minden olyan fájl, amely a legutóbbi exportált fájl óta megjelenő változási köteget tartalmazza. Az exportált adatfájlok JSON formátumú három mappába kerülnek. A Storage-fiók alapértelmezett elérési útjai a következők:
 
 - Telemetria: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
 - Tulajdonságok módosítása: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
 
 Az exportált fájlok tallózásához a Azure Portalban navigáljon a fájlhoz, és válassza a **blob szerkesztése** lapot.
 
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure Event Hubs és Azure Service Bus célhelyek
+
+Az adatexportálás közel valós idejű. Az adattartalom az üzenet törzsében van, és JSON formátumú, UTF-8 kódolású. 
+
+Az üzenethez tartozó jegyzetek vagy Rendszertulajdonságok táskájában megkeresheti,, és megadhatja az üzenet `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` `iotcentral-message-type` törzsének megfelelő mezőivel megegyező értékeket.
+
+### <a name="webhook-destination"></a>Webhook célhelye
 A webhookok rendeltetési helyein a rendszer közel valós időben is exportálja az adategységeket. Az üzenet törzsében lévő adatértékek formátuma megegyezik a Event Hubs és az Service Bus.
 
 
@@ -251,9 +258,10 @@ Ez egy táblázat, amely kiemeli az örökölt adatexportálás és az új adate
 | Képességek  | Örökölt adatexportálás | Új adatexportálás |
 | :------------- | :---------- | :----------- |
 | Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, tulajdonságok módosításai |
-| Szűrés | Nincsenek | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
-| Modellbővítések | Nincsenek | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
+| Szűrés | None | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
+| Modellbővítések | None | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
 | Célhelyek | Azure Event Hubs, Azure Service Bus várólisták és témakörök, Azure Blob Storage | Ugyanaz, mint a régebbi adatexportáláshoz és webhookokhoz| 
+| Támogatott alkalmazások | V2, V3 | Csak v3 |
 | Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint | 
 
 ## <a name="next-steps"></a>További lépések

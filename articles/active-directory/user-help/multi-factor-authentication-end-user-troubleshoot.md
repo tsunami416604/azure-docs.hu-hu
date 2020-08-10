@@ -9,25 +9,31 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/02/2020
+ms.date: 08/04/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 8d2e34bcfd180dfeb814dace2a496f3ac593c5bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83738608"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036674"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros hitelesítéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
 
-Ha a Azure Active Directory-(Azure AD-) szervezet bekapcsolja a kétfaktoros ellenőrzést, a munkahelyi vagy iskolai fiókhoz való bejelentkezéshez a Felhasználónév, a jelszó, valamint a mobileszköz vagy telefon kombinációja szükséges. Sokkal biztonságosabb, mint a jelszó, és a hitelesítés két formájára támaszkodik: valami, amit ismer, és Önnek is van. A kétfaktoros ellenőrzés segít megakadályozni, hogy a rosszindulatú hackerek az Ön számára legyenek, mert még ha a jelszavuk is van, az esélyek arra, hogy nem rendelkeznek az eszközzel.
+A Azure Active Directory (Azure AD) szervezet bekapcsolhatja a kétfaktoros ellenőrzést (2FV). Vannak olyan gyakori 2FV-problémák, amelyek látszólag gyakrabban fordulnak elő, mint bármelyikünk. Ezt a cikket összeállítottuk a leggyakoribb problémák javításait ismertető cikkben.
+
+Ha a 2FV be van kapcsolva, a fiókba való bejelentkezéshez a következő adatmennyiségek kombinációja szükséges:
+
+- Felhasználói név
+- Az Ön jelszava
+- Mobileszköz vagy telefon
+
+a 2FV sokkal biztonságosabb, mint a jelszó, mert a 2FV-nek szüksége _van_rá _, valamint egy_ adott dologra. Egyetlen hacker sem rendelkezik a fizikai telefonnal.
 
 <center>
 
 ![Fogalmi hitelesítési módszerek képe](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
-Vannak olyan gyakori kétfaktoros ellenőrzési problémák, amelyek gyakrabban fordulnak elő, mint bármelyikünk. Ezt a cikket összeállítottuk a leggyakoribb problémák és néhány lehetséges javítás kezelésére.
 
 >[!Important]
 >Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti Azure AD-környezetét az [Azure ad dokumentációjában](https://docs.microsoft.com/azure/active-directory).
@@ -36,7 +42,7 @@ Vannak olyan gyakori kétfaktoros ellenőrzési problémák, amelyek gyakrabban 
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Nekem nincs mobileszközom
 
-Ez történik. A mobileszköz otthon maradt, és most már nem használhatja a telefont annak ellenőrzéséhez, hogy ki vagy. Ha korábban már hozzáadott egy másik módszert a fiókjába való bejelentkezéshez, például az irodai telefonhoz, akkor ezt a metódust kell használnia. Ha soha nem adott meg további ellenőrzési módszert, lépjen kapcsolatba a szervezet ügyfélszolgálatával, és kérje meg, hogy segítsen Önnek a fiókjához való visszatérésben.
+Ez történik. A mobileszköz otthon maradt, és most már nem használhatja a telefont annak ellenőrzéséhez, hogy ki vagy. Lehet, hogy korábban már hozzáadott egy alternatív módszert a fiókjába való bejelentkezéshez, például az irodai telefonján keresztül. Ha igen, ezt az alternatív módszert használhatja most. Ha soha nem adott meg alternatív ellenőrzési módszert, segítségért forduljon a szervezet ügyfélszolgálatához.
 
 ### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>Bejelentkezés munkahelyi vagy iskolai fiókba más ellenőrzési módszer használatával
 
@@ -50,54 +56,61 @@ Ez történik. A mobileszköz otthon maradt, és most már nem használhatja a t
 
 ## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Elveszett a mobileszköz, vagy ellopták
 
-Ha elvesztette vagy elveszítette a mobileszköz ellopását, más módszerekkel is bejelentkezhet, vagy megkérheti a szervezet ügyfélszolgálatát, hogy törölje a beállításokat. Nyomatékosan javasoljuk, hogy a munkahelyi ügyfélszolgálat tudja, hogy a telefonja elveszett vagy ellopták-e, így a megfelelő frissítések elvégezhető a fiókjában. A beállítások törlése után a rendszer felszólítja, hogy regisztráljon a [kétfaktoros ellenőrzésre](multi-factor-authentication-end-user-first-time.md) a következő bejelentkezés alkalmával.
+Ha elvesztette vagy használta a mobileszköz ellopását, a következő műveletek bármelyikét elvégezheti:
 
-## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Nem kapok a mobileszközön eljuttatott ellenőrző kódot
+- Jelentkezzen be egy másik módszer használatával.
+- Kérje meg szervezete ügyfélszolgálatát, hogy törölje a beállításait.
 
-Az ellenőrző kód beszerzése nem gyakori probléma, és általában a mobileszköz és a hozzá tartozó beállításokhoz kapcsolódik. Néhány lehetséges dolog a kipróbáláshoz:
+Nyomatékosan javasoljuk, hogy a céges ügyfélszolgálat tudja, hogy a telefon elvesztése vagy ellopása megszakadt-e. Az ügyfélszolgálat megteheti a megfelelő frissítéseket a fiókjában. A beállítások törlése után a rendszer felszólítja, hogy regisztráljon a [kétfaktoros ellenőrzésre](multi-factor-authentication-end-user-first-time.md) a következő bejelentkezés alkalmával.
+
+## <a name="im-not-receiving-the-verification-code-sent-to-my-mobile-device"></a>Nem fogadom el a mobileszközön eljuttatott ellenőrző kódot
+
+Az ellenőrző kód nem érkezik gyakori probléma. A probléma általában a mobileszköz és a hozzá tartozó beállításokhoz kapcsolódik. Íme néhány művelet, amelyet kipróbálhat.
 
 Próbálja ki ezt | Útmutató információk
 --------- | ------------
-Mobil eszköz újraindítása | Előfordulhat, hogy az eszköz csak a frissítésre van szüksége. Az eszköz újraindítása véget ér minden olyan háttérben futó folyamatnak vagy szolgáltatásnak, amely éppen fut, és problémákat okozhat, valamint az eszköz alapvető összetevőinek frissítését, újraindítását, ha egy bizonyos ponton összeomlott.
+Mobil eszköz újraindítása | Előfordulhat, hogy az eszköz csak a frissítésre van szüksége. Az eszköz újraindításakor az összes háttérbeli folyamat és szolgáltatás véget ér. Az újraindítás az eszköz alapvető összetevőit is leállítja. Az eszköz újraindításakor bármely szolgáltatás vagy összetevő frissül.
 Ellenőrizze, hogy helyesek-e a biztonsági adatok | Győződjön meg arról, hogy a biztonsági ellenőrzési módszer adatai pontosak, különösen a telefonszámok. Ha helytelen telefonszámot helyez üzembe, az összes riasztás nem megfelelő számú. Szerencsére a felhasználó nem fog tudni bármit megtenni a riasztásokkal, de nem segít bejelentkezni a fiókjába. Az adatok helyességének biztosításához tekintse meg a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikket.
-Ellenőrizze, hogy be vannak-e kapcsolva az értesítések | Győződjön meg arról, hogy a mobileszköz értesítések be vannak kapcsolva, és hogy olyan értesítési módszert jelölt ki, amely lehetővé teszi a telefonhívásokat, a hitelesítési alkalmazást és az üzenetkezelési alkalmazást (szöveges üzenetek esetén), hogy látható riasztási értesítéseket küldjön a mobileszközön.
-Győződjön meg arról, hogy rendelkezik egy eszköz-és internetkapcsolattal | Győződjön meg arról, hogy a telefonhívások és a szöveges üzenetek bekerülnek a mobileszközön. Ismerőse van, és SMS-üzenetet küld Önnek, hogy mindkét fél megkapja. Ha nem, először ellenőrizze, hogy a mobileszköz be van-e kapcsolva. Ha az eszköz be van kapcsolva, de még nem kérdezi le a hívást vagy a szöveget, valószínűleg probléma van a hálózattal, és a szolgáltatóval kell kommunikálnia. Ha gyakran vannak jelekkel kapcsolatos problémák, javasoljuk, hogy telepítse és használja a [Microsoft Authenticator alkalmazást](user-help-auth-app-download-install.md) a mobileszközön. A hitelesítő alkalmazás véletlenszerű biztonsági kódokat tud létrehozni a bejelentkezéshez, és nem igényel semmilyen cellahivatkozást vagy internetkapcsolatot.
+Ellenőrizze, hogy be vannak-e kapcsolva az értesítések | Győződjön meg arról, hogy a mobileszköz értesítések bekapcsolva. Győződjön meg arról, hogy a következő értesítési módok engedélyezettek: <br/><br/> &bull;Telefonhívások <br/> &bull;A hitelesítési alkalmazás <br/> &bull;Szöveges üzenetküldési alkalmazás <br/><br/> Győződjön meg arról, hogy ezek a módok olyan riasztást hoznak létre, amely _látható_ az eszközön.
+Győződjön meg arról, hogy rendelkezik egy eszköz-és internetkapcsolattal | Győződjön meg arról, hogy a telefonhívások és a szöveges üzenetek bekerülnek a mobileszközön. Ismerőse van, és SMS-üzenetet küld Önnek, hogy mindkét fél megkapja. Ha nem kapja meg a hívást vagy a szöveget, először ellenőrizze, hogy a mobileszköz be van-e kapcsolva. Ha az eszköz be van kapcsolva, de még nem fogadja el a hívást vagy a szöveget, valószínűleg probléma van a hálózattal. A szolgáltatóval kell kommunikálnia. Ha gyakran vannak jelekkel kapcsolatos problémák, javasoljuk, hogy telepítse és használja a [Microsoft Authenticator alkalmazást](user-help-auth-app-download-install.md) a mobileszközön. A hitelesítő alkalmazás véletlenszerű biztonsági kódokat tud létrehozni a bejelentkezéshez, és nem igényel semmilyen cellahivatkozást vagy internetkapcsolatot.
 Kikapcsolás ne zavarja | Győződjön meg arról, hogy nincs bekapcsolva a mobileszköz **ne zavarja** a funkcióját. Ha ez a funkció be van kapcsolva, az értesítések nem kaphatnak riasztást a mobileszközön. A szolgáltatás kikapcsolásával kapcsolatos útmutatásért tekintse meg a mobileszköz kézikönyvét.
 Telefonszámok feloldásának feloldása | A Egyesült Államok a Microsoft hanghívásai a következő számokból származnak: + 1 (866) 539 4191, + 1 (855) 330 8653 és + 1 (877) 668 6536.
-Akkumulátorral kapcsolatos beállítások keresése | Ez úgy tűnik, hogy egy kicsit furcsa a felületen, de ha úgy állította be az akkumulátor-optimalizálást, hogy leállítsa a kevésbé használt alkalmazásokat a háttérben, akkor az értesítési rendszer valószínűleg érintett. A probléma megoldásához kapcsolja ki az akkumulátor-optimalizálást a hitelesítési alkalmazáshoz és az üzenetkezelési alkalmazáshoz, majd próbálkozzon újra a fiókba való bejelentkezéssel.
-Külső gyártótól származó biztonsági alkalmazások letiltása | Ha olyan alkalmazással rendelkezik, amely megvédi a szöveges üzeneteket vagy telefonhívásokat az ismeretlen hívók minimalizálására, akkor előfordulhat, hogy a rendszer megakadályozza az ellenőrző kód fogadását. Próbálja meg letiltani a harmadik féltől származó biztonsági alkalmazásokat a telefonján, majd kérjen egy másik ellenőrző kódot.
+Akkumulátorral kapcsolatos beállítások keresése | Ez úgy tűnik, hogy ez egy kicsit furcsa a felületen. Ha azonban úgy állította be az akkumulátor-optimalizálást, hogy leállítsa a kevésbé használt alkalmazásokat a háttérben, az értesítési rendszer valószínűleg érintett. A probléma megoldásához kapcsolja ki az akkumulátor-optimalizálást mind a hitelesítési alkalmazás, mind az üzenetkezelési alkalmazás esetében. Ezután próbáljon újra bejelentkezni a fiókjába.
+Külső gyártótól származó biztonsági alkalmazások letiltása | Néhány telefonos biztonsági alkalmazás blokkolja a szöveges üzeneteket és a telefonhívásokat a bosszantó ismeretlen hívóktól. Előfordulhat, hogy az alkalmazások nem kapják meg az ellenőrző kódot. Próbálja meg letiltani a harmadik féltől származó biztonsági alkalmazásokat a telefonján, majd kérje meg, hogy küldjön egy másik ellenőrző kódot.
 
-## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Nem kapok Rákérdezés a második ellenőrzési információra
+## <a name="im-not-being-prompted-for-my-second-verification-information"></a>Nem kapok Rákérdezés a második ellenőrzési információra
 
-Ha a felhasználónevével és jelszavával jelentkezett be a munkahelyi vagy az iskolai fiókjába, de még nem kérték a további biztonsági ellenőrzési információk megadását, akkor lehet, hogy még nem állította be az eszközt. A mobileszköz beállítását úgy kell beállítani, hogy az adott további biztonsági ellenőrzési módszerrel működjön. Győződjön meg arról, hogy bekapcsolta a mobileszköz használatát, és hogy az elérhető az ellenőrzési módszerhez. a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikkben talál további információt. Ha tudja, hogy nem állította be az eszközt vagy a fiókját, a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben ismertetett lépéseket követve teheti meg.
+A felhasználónevével és jelszavával jelentkezhet be a munkahelyi vagy iskolai fiókjába. Ezután meg kell adnia a további biztonsági ellenőrzési információkat. Ha a rendszer nem kéri, lehet, hogy még nem állította be az eszközt. A mobileszköz beállítását úgy kell beállítani, hogy az adott további biztonsági ellenőrzési módszerrel működjön.
 
-## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>Új telefonszámot kaptam, és szeretném felvenni
+Ahhoz, hogy a mobileszköz be legyen kapcsolva és elérhető legyen, tekintse meg a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikket. Ha tudja, hogy nem állította be az eszközt vagy a fiókját, a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben ismertetett lépéseket követve teheti meg.
 
-Ha új telefonszámot kaptunk, frissítenie kell a biztonsági ellenőrzési módszer részleteit, hogy az ellenőrző kérések a megfelelő helyre lépjenek. Az ellenőrzési módszer frissítéséhez kövesse a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) című cikk a **telefonszám hozzáadása vagy módosítása** című szakaszának lépéseit.
+## <a name="i-have-a-new-phone-number-and-i-want-to-add-it"></a>Új telefonszámmal rendelkezem, és szeretném felvenni
 
-## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>Új mobileszköz lettem, és szeretném felvenni
+Ha van új telefonszáma, frissítenie kell a biztonsági ellenőrzési módszer részleteit. Ez lehetővé teszi, hogy az ellenőrzési kérések a megfelelő helyre lépjenek. Az ellenőrzési módszer frissítéséhez kövesse a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) című cikk a **telefonszám hozzáadása vagy módosítása** című szakaszának lépéseit.
 
-Ha új mobileszköz van, akkor be kell állítania, hogy működjön a kétfaktoros ellenőrzéssel. Ez egy több lépésből álló megoldás:
+## <a name="i-have-a-new-mobile-device-and-i-want-to-add-it"></a>Új mobileszközön vagyok, és szeretném felvenni
 
-1. Állítsa be az eszközt a munkahelyi vagy iskolai fiókjával való együttműködéshez a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben ismertetett lépéseket követve.
+Ha van új mobileszköz, be kell állítania, hogy működjön a kétfaktoros ellenőrzéssel. Ez egy több lépésből álló megoldás:
 
-1. Frissítse a fiókját és az eszköz adatait a **további biztonsági ellenőrzés** oldalon, törölje a régi eszközt, és adja hozzá az újat. További információt a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikkben talál.
+1. Állítsa be az eszközt úgy, hogy az a fiók [beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című szakasz lépéseit követve működjön együtt a fiókjával.
+
+1. Frissítse a fiókját és az eszköz adatait a **további biztonsági ellenőrzés** oldalon. A frissítés elvégzéséhez törölje a régi eszközt, és adja hozzá az újat. További információt a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikkben talál.
 
 Nem kötelező lépések:
 
-- Töltse le, telepítse és állítsa be a Microsoft Authenticator alkalmazást a mobileszközön a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikkben ismertetett lépéseket követve.
+- Telepítse és állítsa be a Microsoft Authenticator alkalmazást a mobileszközön. A telepítéshez kövesse az [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikket.
 
-- Kapcsolja be a kétfaktoros ellenőrzést a megbízható eszközökhöz a kétfaktoros [ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) című cikk a kéttényezős ellenőrzési **kérések megbízható eszközön** című részében ismertetett lépéseket követve.
+- Kapcsolja be a kétfaktoros ellenőrzést (2FV) a megbízható eszközökhöz. Kapcsolja be a 2FV a kétfaktoros ellenőrzési [módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) című cikk **megbízható eszköz szakaszának bekapcsolása** a kétfaktoros ellenőrzési kérések című részében ismertetett lépéseket követve.
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Problémák léptek fel a mobil eszközön való bejelentkezés közben
 
-Előfordulhat, hogy a mobileszköz-alapú ellenőrzési módszer (például szöveges üzenetküldés) használata még nehezebbé válik, miközben nemzetközi helyen dolgozik. Azt is megteheti, hogy a mobileszköz barangoló díjat von maga után. Ebben az esetben javasoljuk, hogy használja a Microsoft Authenticator alkalmazást a Wi-Fi elérési ponthoz való csatlakozás lehetőségével. A Microsoft Authenticator alkalmazás mobileszközön való letöltésével, telepítésével és beállításával kapcsolatos további információkért tekintse meg a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikket.
+Előfordulhat, hogy a mobileszköz-alapú ellenőrzési módszer (például szöveges üzenetküldés) használata még nehezebbé válik, miközben nemzetközi helyen dolgozik. Azt is megteheti, hogy a mobileszköz barangoló díjat von maga után. Ebben az esetben javasoljuk, hogy használja a Microsoft Authenticator alkalmazást a Wi-Fi elérési ponthoz való csatlakozás lehetőségével. A Microsoft Authenticator alkalmazás mobileszközön való beállításával kapcsolatos további információkért tekintse meg a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikket.
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Nem tudom beolvasni az alkalmazás jelszavait
 
-Az alkalmazás jelszavai lecserélik a normál jelszót a régebbi asztali alkalmazások esetében, amelyek nem támogatják a kétfaktoros ellenőrzést. Először ellenőrizze, hogy helyesen írta-e be a jelszót. Ha ez nem oldja meg, akkor az alkalmazás jelszavainak [kezelése a kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) című cikkben ismertetett lépéseket követve hozzon létre egy új alkalmazást az alkalmazás jelszavának létrehozásához **és törléséhez** .
+Az alkalmazás jelszavai lecserélik a normál jelszót a régebbi asztali alkalmazások esetében, amelyek nem támogatják a kétfaktoros ellenőrzést. Először ellenőrizze, hogy helyesen írta-e be a jelszót. Ha ez nem oldja meg, próbálja meg létrehozni az alkalmazás új alkalmazás-jelszavát. Ehhez kövesse az alkalmazás **jelszavának létrehozása és törlése a** [kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) című cikk saját alkalmazások portálján című szakaszának lépéseit.
 
-## <a name="i-cant-turn-two-factor-verification-off"></a>Nem kapcsolhatom ki a kétfaktoros ellenőrzést
+## <a name="i-cant-turn-off-two-factor-verification"></a>Nem tudom kikapcsolni a kétfaktoros ellenőrzést
 
 Ha a kétfaktoros ellenőrzést használja munkahelyi vagy iskolai fiókjával (például alain@contoso.com ), az valószínűleg azt jelenti, hogy a szervezet úgy döntött, hogy ezt a hozzáadott biztonsági funkciót kell használnia. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja. Ha azonban a kéttényezős ellenőrzést személyes fiókkal használja, például a szolgáltatás be-és kikapcsolását alain@outlook.com is lehetővé teszi. A személyes fiókok kétfaktoros ellenőrzésének vezérlésével kapcsolatos útmutatásért lásd: [kétfaktoros ellenőrzés bekapcsolása vagy kikapcsolása a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 

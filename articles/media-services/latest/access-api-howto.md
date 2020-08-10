@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090161"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035801"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Hitelesítő adatok beszerzése Media Services API-hoz való hozzáféréshez  
 
@@ -45,7 +45,7 @@ Ez a cikk a hitelesítő adatok Media Services API-hoz való hozzáférésének 
 Az **API-hozzáférés** lapon kiválaszthatja az API-hoz való kapcsolódáshoz használni kívánt hitelesítési módszert. Az oldalon az API-hoz való kapcsolódáshoz szükséges értékeket is megadja.
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki Media Services-fiókját.
-2. Válassza ki, hogyan szeretne csatlakozni a Media Services API-hoz.
+2. Válassza ki az **API-hozzáférés (új)** panelt a bal oldali navigációs sávon.
 3. A **kapcsolódás Media Services API**-hoz területen válassza ki azt a Media Services API-verziót, amelyhez csatlakozni szeretne (v3 a szolgáltatás legújabb verziója).
 
 ### <a name="service-principal-authentication--recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)

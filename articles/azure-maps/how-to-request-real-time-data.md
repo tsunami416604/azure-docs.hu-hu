@@ -1,6 +1,6 @@
 ---
 title: Valós idejű nyilvános adatátviteli adatforgalom igénylése | Microsoft Azure térképek
-description: A Microsoft Azure Maps mobilitási szolgáltatással valós idejű nyilvános adatátvitelt igényelhet.
+description: 'Megtudhatja, hogyan kérhet valós idejű nyilvános adatátviteli információkat, például a beérkezőket egy továbbítási leállásban. Lásd: a Azure Maps mobilitási szolgáltatás használata erre a célra.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 784d6a94562e8b5a709d65abdadef46ca71de395
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71dc67d4c142f6fb84458cd6cd0b33452f2217b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505958"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037286"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással valós idejű nyilvános továbbítási adatai igényelhetők
 
@@ -111,7 +111,7 @@ A "522" a Metro ID-ként használjuk, amely a "Seattle – Tacoma – Bellevue, 
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
 

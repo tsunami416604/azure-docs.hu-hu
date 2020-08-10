@@ -3,12 +3,12 @@ title: Az Azure Backup díjszabása
 description: Megtudhatja, hogyan becsülheti meg a költségvetési Azure Backup díjszabásának költségeit.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391111"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035756"
 ---
 # <a name="azure-backup-pricing"></a>Az Azure Backup díjszabása
 
@@ -38,7 +38,7 @@ Az Azure-beli virtuális gépek vagy a helyszíni kiszolgálók Azure Backup has
 - A mérettel rendelkező kiszolgálók száma
 
 - Milyen mennyiségű adatforgalom várható a kiszolgálókon?<br>
-  A forgalom az adatváltozások mennyiségére utal. Ha például a virtuális gép 200 GB-nyi adatról készített biztonsági mentést, és ha minden nap 10 GB-nyi változás történt, a napi forgalom 5%.
+  A forgalom az adatváltozások mennyiségére utal. Ha például a virtuális gép 200 GB-nyi adatról készített biztonsági mentést, és minden nap 10 GB-ot módosít, a napi forgalom 5%.
 
   - A nagyobb adatforgalom azt jelenti, hogy több adattal kell biztonsági másolatot készíteni
 
@@ -129,6 +129,7 @@ Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backup hasz
 - Azon SAP HANA adatbázisok teljes mérete, amelyekről biztonsági mentést szeretne készíteni. Az egyes adatbázisok teljes biztonsági mentési méretének összegének kell lennie, amelyet SAP HANA jelentett.
 - A fenti mérettel rendelkező SAP HANA kiszolgálók száma
 - Mi a naplózott biztonsági másolatok várható mérete?
+  
   - A (z)% megadja az átlagos napi naplózási méretet a SAP HANA adatbázisok teljes méretének%-ában, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón
 - Milyen mennyiségű napi adatforgalom várható a kiszolgálókon?
   - A (z)% az átlagos napi adatváltozási méretet jelzi SAP HANA adatbázisok teljes méretének%-ában, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón
@@ -144,10 +145,38 @@ Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backup hasz
   - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
   - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
 - **Opcionális** – biztonsági mentési tárterület-redundancia
+  
   - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre.
 - **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
+  
   - Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslések esetében?** lehetőségre, és adja meg azokat a díjakat, amelyeknek a becsléseit futtatni kívánja.
+  
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentésével kapcsolatos költségek becslése
+
+Az Azure-fájlmegosztás biztonsági mentésének költségeit a Azure Backup által kínált [Pillanatkép-alapú biztonsági mentési megoldással](azure-file-share-backup-overview.md) lehet megbecsülni, a következő paraméterekre lesz szüksége:
+
+- Azon fájlmegosztás mérete (**GB-ban**), amelyekről biztonsági másolatot szeretne készíteni.
+
+- Ha biztonsági mentést szeretne készíteni a fájlmegosztás több Storage-fiók között, adja meg a fenti mérettel rendelkező fájlmegosztás tárolására szolgáló tárolási fiókok számát.
+
+- Az adatváltozás várható mennyisége azon fájlmegosztás esetében, amelyekről biztonsági másolatot szeretne készíteni. <br>A forgalom az adatok változásának mennyiségére utal, és közvetlenül befolyásolja a pillanatképek tárolási méretét. Ha például egy fájlmegosztás 200 GB-nyi adatról készít biztonsági mentést, és minden nap 10 GB-nyi változás történik, a napi forgalom 5%.
+  - A magasabb adatforgalom azt jelenti, hogy a fájlmegosztás tartalmának minden nap magas, és így a növekményes pillanatkép (csak az adatváltozások rögzítése) mérete is nagyobb.
+  - Válassza az alacsony (1%), a mérsékelt (3%) vagy a magas (5%) értéket a fájlmegosztás jellemzői és használata alapján.
+  - Ha ismeri a **fájlmegosztás pontos** adatforgalmát, akkor a legördülő menüből kiválaszthatja a **saját% megadása** lehetőséget. Értékek meghatározása (%) napi, heti, havi és éves adatforgalom esetén.
+
+- A Storage-fiók típusa (standard vagy prémium) és a tároló-redundancia beállítása a biztonsági másolatba mentett fájlmegosztást tároló fiók számára. <br>Az Azure-fájlmegosztás jelenlegi biztonsági mentési megoldásában a pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás. Így a pillanatképekhez kapcsolódó tárolási költség az Azure Files számla részeként kerül kiszámlázásra, a biztonsági másolatban szereplő fájlmegosztás és Pillanatképek tárolási fiókjának a fiók típusa és a redundancia beállítása alapján.
+
+- Különböző biztonsági másolatok megőrzése
+  - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
+  - Mennyi ideig tart a heti biztonsági másolatok megőrzése? (hetek)
+  - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
+  - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
+
+  Tekintse meg az [Azure file share támogatási mátrixot](azure-file-share-support-matrix.md#retention-limits) az egyes kategóriákban támogatott adatmegőrzési értékek maximális számaként.
+
+- **Opcionális** – a regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása.
+  - Az USA keleti régiója számára az alapértelmezett érték a pillanatkép-tároláshoz és a védett példányok díja a kalkulátorban. Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslésekhez?** lehetőségre, és adja meg azokat a díjakat, amelyeken a becsléseket futtatni kívánja.
 
 ## <a name="next-steps"></a>További lépések
 
-[Mi a Azure Backup szolgáltatás?](backup-overview.md)
+[Mi az az Azure App Service?](backup-overview.md)

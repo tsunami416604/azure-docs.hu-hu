@@ -1,6 +1,6 @@
 ---
 title: Tudnivalók az Azure VPN Gateway
-description: Ebben a cikkben megismerkedhet a VPN-átjárókkal, és megtudhatja, hogyan csatlakozhat VPN-átjáró segítségével az Azure virtuális hálózatokhoz. Beleértve az IPsec/IKE helyek közötti, létesítmények közötti és VNet–VNet megoldásokat, valamint a pont–hely típusú VPN-t.
+description: Megtudhatja, mi a VPN Gateway, és hogyan használható VPN Gateway az IPsec IKE-helyek közötti, a VNet és a vnet, valamint pont – hely VPN virtuális hálózatokhoz való csatlakozáshoz.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300047"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036878"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/31/2020
-ms.openlocfilehash: 339926fbd3c96f6f6c279d29676950b9915b4256
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/09/2020
+ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484159"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036589"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -23,9 +23,9 @@ Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
-## <a name="release-date-07302020"></a>Kiadás dátuma: 07/30/2020
+## <a name="release-date-08092020"></a>Kiadás dátuma: 08/09/2020
 
-Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
+Ez a kiadás csak a 4,0-es HDInsight vonatkozik. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
 
 ## <a name="new-features"></a>Új funkciók
 ### <a name="support-for-sparkcruise"></a>A SparkCruise támogatása
@@ -64,6 +64,11 @@ Az alábbi JIRAs a struktúra számára:
 * [STRUKTÚRA – 22121](https://issues.apache.org/jira/browse/HIVE-22121)
 * [STRUKTÚRA – 22136](https://issues.apache.org/jira/browse/HIVE-22136)
 * [STRUKTÚRA – 18786](https://issues.apache.org/jira/browse/HIVE-18786)
+
+Az alábbi JIRAs a HBase-re vannak portolva:
+* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
+* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
+* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)találja.

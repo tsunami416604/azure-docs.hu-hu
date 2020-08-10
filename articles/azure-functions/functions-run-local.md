@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449141"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037031"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -205,7 +205,23 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Alapértelmezés szerint a Core Tools 2. x vagy újabb verziója a .NET-futtatókörnyezethez [C#](functions-dotnet-class-library.md) -csproj (. Ezek a C#-projektek, amelyek a Visual Studióval vagy a Visual Studio Code-ban használhatók, a tesztelés során és az Azure-ba való közzétételkor vannak lefordítva. Ha ehelyett ugyanazt a C# parancsfájl-(. CSX) fájlt szeretné létrehozni és használni, amelyet az 1. x verzióban és a portálon hozott létre, akkor a `--csx` függvények létrehozásakor és telepítésekor meg kell adnia a paramétert.
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>Bővítmények regisztrálása
+
+A HTTP-és időzítő-eseményindítók kivételével a függvények kötései a 2. x vagy újabb verziókban bővítmény-csomagokként vannak implementálva. A HTTP-kötések és az időzítő-eseményindítók nem igényelnek bővítményeket. 
+
+A különböző kiterjesztési csomagok közötti inkompatibilitás csökkentése érdekében a functions lehetővé teszi, hogy a host.jsa Project fájlban hivatkozzon egy bővítményi csomagra. Ha úgy dönt, hogy nem használja a bővítmény-csomagokat, a .NET Core 2. x SDK-t helyileg kell telepítenie, és egy bővítményt kell fenntartania. a csproj a functions-projekttel.  
+
+A 2. x verzióban és a Azure Functions futtatókörnyezeten túl explicit módon regisztrálnia kell a függvényekben használt kötési típusok kiterjesztéseit. Beállíthatja, hogy a kötési bővítmények egyenként legyenek telepítve, vagy hozzáadhat egy bővítményi csomagot a Project-fájl host.js. A bővítményi csomagok több kötési típus használata esetén is megszüntetik a csomagok kompatibilitási problémáinak esélyét. A kötési bővítmények regisztrálásának ajánlott módja. A bővítményi csomagok szintén megszüntetik a .NET Core 2. x SDK telepítésének követelményét. 
+
+### <a name="use-extension-bundles"></a>Bővítmények használata
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+További információ: [Azure functions kötési bővítmények regisztrálása](functions-bindings-register.md#extension-bundles). Ahhoz, hogy a fájlhoz function.jskötéseket vegyen fel, hozzá kell adnia egy bővítményt a host.jshoz.
+
+### <a name="explicitly-install-extensions"></a>Bővítmények explicit telepítése
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
@@ -289,7 +305,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Leírás                            |
+| Argumentum     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
 | **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
@@ -512,7 +528,7 @@ A következő közzétételi beállítások csak a 2. x vagy újabb verziókban 
 | **`--nozip`** | Kikapcsolja az alapértelmezett `Run-From-Package` üzemmódot. |
 | **`--build-native-deps`** | Kihagyja a generálás. Wheels mappát a Python-függvények alkalmazásainak közzétételekor. |
 | **`--build`**, **`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. A következőket fogadja el: `remote` és `local` . |
-| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Például: `python3-dev libevent-dev`. |
+| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Példa: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos helyzetekben figyelmen kívül hagyhatja a közzététel előtti ellenőrzést. |
 | **`--csx`** | C# parancsfájl-(. CSX) projekt közzététele. |
 | **`--no-build`** | A projekt nincs felépítve a közzététel során. A Python esetében `pip install` nincs elvégezve. |

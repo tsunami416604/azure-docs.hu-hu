@@ -1,6 +1,6 @@
 ---
 title: Válassza ki a megfelelő díjszabási szintet Microsoft Azure térképekhez
-description: Ebben a cikkben a Microsoft Azure Maps által kínált díjszabási csomagokat ismerheti meg.
+description: További információ a Azure Maps díjszabási szintjeiről. Itt megtekintheti, hogy mely funkciók érhetők el, és hogyan tekintheti meg az árképzési szintek kiválasztásának legfontosabb szempontjait.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285764"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036776"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő díjszabási szintet Azure Maps
 

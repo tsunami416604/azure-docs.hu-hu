@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell-minták a VPN Gatewayhez
-description: Ezekkel a Azure PowerShell parancsfájlokkal útválasztási-alapú VPN-átjárókat, VNet és VNet kapcsolatokat hozhat létre, és letöltheti a VPN-eszközök sablonját.
+description: Ezekkel a Azure PowerShell parancsfájlokkal VPN-átjárókat hozhat létre, helyek közötti és vnet kapcsolatok hozhatók létre, és VPN-vnet is letölthetők.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: c92e3bad0e8e49ff07997dd37ed7098087c39d5e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 84aa01722a9be078f361bd482c8c95be675e6ef9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921554"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035332"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>Azure PowerShell-minták a VPN Gatewayhez
 

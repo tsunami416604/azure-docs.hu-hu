@@ -1,18 +1,18 @@
 ---
 title: A Azure Files üzembe helyezése | Microsoft Docs
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Files az elejétől a végéig.
+description: Megtudhatja, hogyan helyezheti üzembe a Azure Files az elejétől a végéig. Adatok átvitele a Azure Filesba. Automatikus csatlakoztatás szükséges számítógépeken vagy kiszolgálókon.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510794"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034498"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő SMB protokollon keresztül érhető el. Ez a cikk bemutatja, hogyan lehet gyakorlatilag üzembe helyezni Azure Files a szervezeten belül.

@@ -2,15 +2,15 @@
 title: Sablon létrehozása – Visual Studio Code
 description: A Resource Manager-sablonokon a Visual Studio Code-dal és az Azure Resource Manager-eszközök bővítményeivel dolgozhat.
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040517"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034981"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager sablonok létrehozása a Visual Studio Code-ban
 
@@ -26,7 +26,7 @@ Hozzon létre és nyisson meg egy új, *azuredeploy.js*nevű fájlt a Visual Stu
 
 Válassza ki `arm!` Az Azure-erőforráscsoport üzembe helyezéséhez hatókörrel rendelkező sablon létrehozásához.
 
-![Azure Resource Manager állványzatot ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![A kép Azure Resource Manager állványok töredékeit mutatja](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 Ez a kódrészlet létrehoz egy ARM-sablon alapszintű építőelemeit.
 
@@ -68,7 +68,7 @@ A befejezési képességek használatához távolítsa el `megaStorage` a kurzor
 
 Most hozzon létre és használjon egy paramétert a Storage-fiók nevének megadásához.
 
-Vigye a kurzort a paraméterek blokkba, adjon hozzá egy kocsivissza értéket, írja be a karaktert, `par` majd válassza ki a `arm-param-value` kódrészletet. Ezzel a művelettel egy általános paramétert adhat hozzá a sablonhoz.
+Vigye a kurzort a paraméterek blokkba, adjon hozzá egy kocsivissza értéket, írja be a karaktert, `"` majd válassza ki a `new-parameter` kódrészletet. Ezzel a művelettel egy általános paramétert adhat hozzá a sablonhoz.
 
 ![Az ARM-sablonba felvenni kívánt paramétert ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

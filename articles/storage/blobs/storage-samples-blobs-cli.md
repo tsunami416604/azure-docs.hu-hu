@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-minták a Blob Storage-hez | Microsoft Docs
-description: Azure CLI-minták az Azure Blob Storage használatához
+description: Tekintse meg az Azure CLI-mintákra mutató hivatkozásokat az Azure Blob Storage használatához, például egy Storage-fiók létrehozásához, egy adott előtaggal rendelkező tárolók törléséhez és egyebekhez.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 06/13/2017
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2efb46e0ca6408136387ca1549305ba421d23b77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503480"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035042"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure CLI-minták az Azure Blob Storage-hez
 

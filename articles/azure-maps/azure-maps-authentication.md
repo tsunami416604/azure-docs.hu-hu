@@ -1,7 +1,7 @@
 ---
 title: Hitelesítés Microsoft Azure térképekkel
 titleSuffix: Azure Maps
-description: Ebben a cikkben megismerheti a Azure Active Directory és a megosztott kulcsos hitelesítést.
+description: 'Ismerkedjen meg a kérések hitelesítésének két módszerével a Azure Maps: megosztott kulcsú hitelesítés és a Azure Active Directory (Azure AD) hitelesítésben.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922251"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036844"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
@@ -90,7 +90,7 @@ Az Azure RBAC konfigurálásakor ki kell választania egy rendszerbiztonsági ta
 
 A következő szerepkör-definíciós típusok léteznek az alkalmazási forgatókönyvek támogatásához.
 
-| Azure-szerepkör definíciója       | Leírás                                                                                              |
+| Azure-szerepkör definíciója       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Adatolvasó Azure Maps      | Hozzáférést biztosít a nem változtatható Azure Maps REST API-khoz.                                                       |
 | Azure Maps adatközreműködő | Hozzáférést biztosít a megváltoztathatatlan Azure Maps REST API-khoz. A változékonyság a műveletek: írás és törlés művelet határozza meg. |

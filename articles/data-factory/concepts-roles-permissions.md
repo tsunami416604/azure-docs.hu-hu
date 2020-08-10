@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263245"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036351"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -26,21 +26,21 @@ Ez a cikk a Azure Data Factory erőforrások létrehozásához és kezeléséhez
 
 ## <a name="roles-and-requirements"></a>Szerepkörök és követelmények
 
-Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az előfizetésben található engedélyek megtekintéséhez a Microsoft Azure Portalon kattintson a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. 
+Data Factory példányok létrehozásához az Azure-ba való bejelentkezéshez használt felhasználói fióknak a *közreműködő* szerepkör, a *tulajdonos* szerepkör vagy az Azure-előfizetés *rendszergazdája* tagjának kell lennie. Az előfizetésben található engedélyek megtekintéséhez a Microsoft Azure Portalon kattintson a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. 
 
 A Data Factory gyermekerőforrásai – beleértve az adatkészletek, társított szolgáltatások, folyamatok, eseményindítók és integrációs modulok – létrehozására és kezelésére az alábbi követelmények vonatkoznak:
-- A gyermekerőforrások Microsoft Azure Portalon való létrehozásához és kezeléséhez a **Data Factory közreműködője** szerepkörhöz kell tartoznia az erőforráscsoport szintjén vagy felette.
+- A Azure Portal alárendelt erőforrásainak létrehozásához és kezeléséhez a **Data Factory közreműködő** szerepkörhöz kell tartoznia az **erőforráscsoport** szintjén vagy felett.
 - A gyermekerőforrások PowerShell-lel vagy az SDK-val való létrehozásához és kezeléséhez a **közreműködő** szerepkör is elegendő az erőforráscsoport szintjén vagy felette.
 
 Ha szeretne példautasításokat látni arra, hogyan kell egy felhasználót a szerepkörhöz adni, olvassa el a [Szerepkörök hozzáadása](../cost-management-billing/manage/add-change-subscription-administrator.md) című cikket.
 
 ## <a name="set-up-permissions"></a>Engedélyek beállítása
 
-A Data Factory létrehozása után előfordulhat, hogy más felhasználók is használni szeretnék az adatelőállítót. Ahhoz, hogy ez a hozzáférés más felhasználók számára is elérhető legyen, hozzá kell adnia azokat a beépített **Data Factory közreműködő** szerepkörhöz az adat-előállítót tartalmazó erőforráscsoporthoz.
+A Data Factory létrehozása után előfordulhat, hogy más felhasználók is használni szeretnék az adatelőállítót. Ahhoz, hogy ez a hozzáférés más felhasználók számára is elérhető legyen, hozzá kell adnia azokat a beépített **Data Factory közreműködő** szerepkörhöz a Data Factory tartalmazó **erőforráscsoporthoz** .
 
 ### <a name="scope-of-the-data-factory-contributor-role"></a>A Data Factory közreműködő szerepkör hatóköre
 
-A **Data Factory közreműködő** szerepkör tagsága lehetővé teszi a felhasználók számára a következőket:
+A **Data Factory közreműködő** szerepkör tagsága lehetővé teszi a felhasználók számára a következő műveleteket:
 - Adat-és alárendelt erőforrások létrehozása, szerkesztése és törlése, beleértve az adatkészleteket, a társított szolgáltatásokat, a folyamatokat, az eseményindítókat és az integrációs modulokat.
 - Resource Manager-sablonok üzembe helyezése. A Resource Manager-alapú üzemelő példány a Azure Portal Data Factory által használt központi telepítési módszer.
 - Az alkalmazással kapcsolatos adatelemzési riasztások kezelése egy adatgyárban.

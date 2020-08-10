@@ -1,6 +1,6 @@
 ---
 title: Kezelő Térkép eseményei | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan készíthet interaktív webes SDK-térképet térképi eseményekkel a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogy mely események legyenek kirúgva, amikor a felhasználók a Maps szolgáltatással működnek Az összes támogatott térképi esemény listájának megtekintése. Tekintse meg, hogyan kezelheti az eseményeket az Azure Maps web SDK használatával.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 667ab684ef4a453d210af36c0221d350b25c9829
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282891"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036442"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
 

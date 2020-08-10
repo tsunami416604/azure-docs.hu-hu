@@ -1,6 +1,6 @@
 ---
 title: Térkép forgalmának megjelenítése | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi adatokat egy térképen a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogyan adhat hozzá adatforgalmi adatokat a térképekhez. Ismerje meg a flow adatait, és tekintse meg, hogyan vehet fel incidenseket és adatfolyamatokat a Maps-be a Azure Maps web SDK használatával.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 5bb088c4650cfdfec59383a7bcf8f340952e5d55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273014"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036425"
 ---
 # <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
 

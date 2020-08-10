@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés a Microsoft Azure Maps webes Térkép vezérlőelemmel
-description: Ismerje meg, hogyan használhatja a Maps és a Embedded Azure Maps funkciókat a webes vagy mobil alkalmazásba az Microsoft Azure Maps web Map Control ügyféloldali JavaScript-kódtár használatával.
+description: 'Ismerje meg, hogyan adhat hozzá térképeket webes és mobil alkalmazásokhoz a Azure Maps térképkezelés ügyféloldali JavaScript-kódtár használatával. Lásd: a térképek honosítása.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287072"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035957"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps-térképvezérlő használata
 
@@ -38,18 +38,18 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
 
     * Használja a Azure Maps web SDK globálisan üzemeltetett CDN-verzióját úgy, hogy a `<head>` HTML-fájl elemében a JavaScriptre és a stíluslapra mutató hivatkozásokat ad hozzá:
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * Töltse be az Azure Maps web SDK forráskódját helyileg az [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) NPM csomag használatával, és működtesse azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
 
-    > **NPM telepítése Azure-Maps-Control**
+      > **NPM telepítése Azure-Maps-Control**
 
     Ezután vegyen fel hivatkozásokat a Azure Maps stíluslapra a `<head>` fájl eleméhez:
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 

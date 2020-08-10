@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562446"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034957"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -36,7 +36,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hogyan módosítja a helyi gyorsítótár a App Service viselkedését
 * A _D:\home_ a helyi gyorsítótárra mutat, amely a virtuálisgép-példányon jön létre, amikor az alkalmazás elindul. A _D:\Local_ továbbra is az ideiglenes VM-specifikus tárterületre mutat.
-* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 1 GB-ra van korlátozva, de 2 GB-ra is növelhető. Vegye figyelembe, hogy mivel a gyorsítótár mérete növekszik, hosszabb időt vesz igénybe a gyorsítótár betöltése. Ha a másolt fájlok mérete meghaladja a helyi gyorsítótár méretét, App Service csendben hagyja figyelmen kívül a helyi gyorsítótárat, és olvassa el a távoli fájlmegosztást.
+* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 1 GB-ra van korlátozva, de 2 GB-ra is növelhető. Vegye figyelembe, hogy mivel a gyorsítótár mérete növekszik, hosszabb időt vesz igénybe a gyorsítótár betöltése. Ha megnövelte a helyi gyorsítótár korlátját 2 GB-ra, és a másolt fájlok mérete meghaladja a 2 GB-os maximális méretet, App Service csendben figyelmen kívül hagyja a helyi gyorsítótárat, és beolvassa a távoli fájlmegosztást. Ha nincs korlát meghatározva, vagy a korlát értéke 2 GB-nál kisebb, és a másolt fájlok mérete meghaladja a korlátot, akkor a telepítés vagy a swap hibával meghiúsulhat.
 * A helyi gyorsítótár írható-olvasható. Ha azonban az alkalmazás a virtuális gépeket helyezi át, vagy újraindul, a módosítások elvesznek. Ne használja a helyi gyorsítótárat olyan alkalmazások esetében, amelyek kritikus fontosságú adatokat tárolnak a tartalom-tárolóban.
 * A _D:\home\LogFiles_ és a _D:\home\Data_ naplófájlokat és alkalmazásadatokat tartalmaznak. A két almappát a rendszer helyileg tárolja a virtuálisgép-példányon, és rendszeres időközönként átmásolja őket a megosztott tartalom tárolójába. Az alkalmazások a naplófájlokat és az adatfájlokat a mappákba írással is megőrzik. A megosztott tartalom tárolójába való másolás azonban a legjobb megoldás, ezért lehetséges, hogy a naplófájlok és az adatmennyiség elvész a virtuálisgép-példányok hirtelen összeomlása miatt.
 * A [naplózási adatfolyamra](troubleshoot-diagnostic-logs.md#stream-logs) a legalkalmasabb másolási lehetőség vonatkozik. Akár egy percet is megfigyelheti a továbbított naplókban.

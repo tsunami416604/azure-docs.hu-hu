@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/20/2019
+ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 6f1beea12b33dcc3c0111e26d79daf096c1eedcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808433"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034720"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Service SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
 
@@ -25,9 +25,17 @@ Ez a cikk bemutatja, hogyan használhatja a Storage-fiók kulcsát egy olyan tá
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Service SAS létrehozása blob-tárolóhoz
 
-Az [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metódust a tárolóhoz tartozó szolgáltatás sas létrehozásához hívja meg.
+A következő mintakód egy tárolóhoz hoz létre SAS-t. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, akkor ez a házirend a SAS-hoz van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, a kód létrehoz egy ad hoc SAS-t a tárolón.
 
-A következő kódrészlet létrehoz egy SAS-t egy tárolón. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, akkor ez a házirend a SAS-hoz van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, a kód létrehoz egy ad hoc SAS-t a tárolón.
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+Hozzon létre egy új [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder). Ezután hívja meg a [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) az SAS-jogkivonat karakterláncának beszerzéséhez. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+
+### <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
+
+Az [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metódust a tárolóhoz tartozó szolgáltatás sas létrehozásához hívja meg.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -67,13 +75,23 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
     // Return the URI string for the container, including the SAS token.
     return container.Uri + sasContainerToken;
 }
+
 ```
+---
 
 ## <a name="create-a-service-sas-for-a-blob"></a>Szolgáltatás SAS létrehozása blobhoz
 
-Az [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metódust a blobhoz tartozó Service sas létrehozásához hívja meg.
-
 A következő kódrészlet egy blobon létrehoz egy SAS-t. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, akkor ez a házirend a SAS-hoz van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, a kód létrehoz egy ad hoc SAS-t a blobon.
+
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+Hozzon létre egy új [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder). Ezután hívja meg a [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) az SAS-jogkivonat karakterláncának beszerzéséhez. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+
+### <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
+
+Az [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metódust a blobhoz tartozó Service sas létrehozásához hívja meg.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -117,6 +135,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

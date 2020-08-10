@@ -1,6 +1,6 @@
 ---
 title: Azure Maps fiók kezelése a Azure Portalban | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan kezelheti a Microsoft Azure Maps-fiókját a Azure Portal használatával.
+description: 'Megtudhatja, hogyan kezelheti a Azure Maps-fiókokat a Azure Portal használatával. Lásd: új fiók létrehozása és meglévő fiók törlése.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/27/2020
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5717e48683234e55638393d232d931bc50cb59b1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126958"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037320"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
 A Azure Maps fiókját a Azure Portal segítségével kezelheti. A fiók létrehozása után az API-kat a webhelyén vagy a mobil alkalmazásban is megvalósíthatja.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 

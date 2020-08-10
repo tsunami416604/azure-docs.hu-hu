@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: a közeli helyszínek keresése térképen | Microsoft Azure térképek'
-description: Ebből az oktatóanyagból megtudhatja, hogyan keresheti meg a térképen Microsoft Azure térképeket használó érdekes helyeket.
+description: Megtudhatja, hogyan keresheti meg a térképekre vonatkozó érdekes helyeket. Tekintse meg, hogyan adhat hozzá keresési képességeket és interaktív előugró mezőket a térképhez a Azure Maps web SDK használatával.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281531"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035858"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps has
 > * Új weblap létrehozása a térképkezelési API használatával
 > * A Maps keresőszolgáltatásának használata egy közeli hasznos hely kereséséhez
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

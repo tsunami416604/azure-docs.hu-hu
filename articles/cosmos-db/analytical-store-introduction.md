@@ -1,17 +1,17 @@
 ---
 title: Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 description: Ismerkedjen meg Azure Cosmos DB tranzakciós (sor-alapú) és analitikai (oszlop alapú) tárolóval. A nagyméretű számítási feladatokhoz és a tranzakciós tárolóból az analitikai tárolóba történő automatikus szinkronizálás előnyei, valamint a teljesítményre gyakorolt hatás
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116026"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037099"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 

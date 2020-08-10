@@ -1,7 +1,7 @@
 ---
 title: Blobokhoz és várólistákhoz való hozzáférés engedélyezése Active Directory használatával
 titleSuffix: Azure Storage
-description: Az Azure-blobokhoz és-várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával.
+description: Az Azure-blobokhoz és-várólistákhoz való hozzáférés engedélyezése Azure Active Directory (Azure AD) használatával. Azure-szerepköröket rendelhet hozzá a hozzáférési jogosultságokhoz. Az Azure AD-fiókkal való hozzáféréshez.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3b29c5b4b1bf682e0f43a0bf9b0c8fcb40d70433
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a098d4bab4ea8cb083658b205dcb73da619fdbde
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827877"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035705"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 

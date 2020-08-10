@@ -1,6 +1,6 @@
 ---
 title: GeoJSON adatformátuma geokerítésen | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan készítse elő a geokerítésen-adatait, amelyek felhasználhatók a Microsoft Azure Maps GET és POST Geokerítésen API használatával.
+description: 'Ismerkedjen meg a Azure Maps geokerítésen-információkkal. Lásd: a Geokerítésen beolvasása és a Geokerítésen API-k használata a koordinátáknak a geokerítésen viszonyított pozíciójának beolvasásakor.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131305"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037405"
 ---
 # <a name="geofencing-geojson-data"></a>Geokerítések GeoJSON-adatbázis
 
@@ -34,8 +34,8 @@ A geokerítésen vagy geofences vonatkozó adatmennyiséget `Feature` objektum �
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | Az érvényességi időtartam kezdő dátumának időpontja. |
 | endTime   | Datetime  | true |  Az érvényességi időszak befejezési dátumának időpontja. |
-| naptárkivételhez RecurrenceType érték | sztring | hamis |   Az időszak ismétlődési típusa Az érték lehet:,, `Daily` `Weekly` `Monthly` vagy `Yearly` . Az alapértelmezett érték: `Daily` .|
-| businessDayOnly | Logikai érték | hamis |  Jelezze, hogy az adatai csak munkanapokon érvényesek-e. Az alapértelmezett érték: `false` .|
+| naptárkivételhez RecurrenceType érték | string | hamis |   Az időszak ismétlődési típusa Az érték lehet:,, `Daily` `Weekly` `Monthly` vagy `Yearly` . Az alapértelmezett érték: `Daily` .|
+| businessDayOnly | Logikai | hamis |  Jelezze, hogy az adatai csak munkanapokon érvényesek-e. Az alapértelmezett érték: `false` .|
 
 
 * Az összes koordináta-érték [hosszúság, szélesség] szerint van megadva a ben `WGS84` .

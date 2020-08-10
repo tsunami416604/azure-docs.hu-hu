@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090144"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036572"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
 Ez a cikk a kereskedelmi piactérsel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>Mi a Microsoft kereskedelmi piactér?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Mi a Microsoft kereskedelmi piactér?
 
 A kereskedelmi piactér a partnereink által készített megoldásokkal köti össze az üzleti és kormányzati szerveket. Partnereink az ajánlatokat a partner Centerben hozhatják létre és kezelhetik, és az ügyfelek a terméken belüli tapasztalatokkal, például a Microsoft AppSource, az Azure piactéren, a felhőalapú megoldás-szolgáltatói programban és az értékesítési csapatokon keresztül vásárolhatnak és vásárolhatnak megoldásokat.
 
@@ -60,7 +60,7 @@ Az ügyfelek által a kereskedelmi Marketplace-ajánlat használatának módja a
 
 - Az Ön által automatikusan biztosított megoldásokért, akár fizetős, akár saját licenccel (BYOL), akár díjmentesen, javasoljuk, hogy az ügyfelek *most kapják meg*.
 - A tesztvezetés (bemutató) támogató ajánlatok az ügyfelet a *meghajtó tesztelésére*kérik. 
-- A szolgáltatásként nyújtott szoftver (SaaS) olyan ajánlatokat kínál, amelyek a kereskedelmi piactéren kívül is biztosítanak *ingyenes próbaverziót*.
+- A kereskedelmi piactéren kívüli próbaverziót biztosító szolgáltatott szoftver (SaaS) ajánlat *ingyenes próbaverziót*biztosít.
 - Az egyszerű Listázás lehetővé teszi, hogy az ügyfél *kapcsolatba lépjen velem*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Hogyan ajánlatokat hozhat létre a kereskedelmi piactéren?
@@ -124,7 +124,7 @@ Ha nagyon alacsony áron szeretné elvégezni a vásárlást, javasoljuk, hogy a
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Mik azok a kereskedelmi piactéren található érdeklődők, és mit tegyek?
 
-Mivel az ügyfelek az ajánlatokat a Microsoft AppSource és az Azure piactéren kirakatokban használják, az adatok rögzítése megtörténik. Miután az ügyfelek elég érdeklődést mutattak, a rendszer létrehoz egy érdeklődőt, és lehetőséget kap az Ön által választott rendszerre. A kereskedelmi piactérről sikeresen megjelenő kiadók gyakran vezetnek be érdeklődőket, kapcsolatokat fejlesztenek, és a kamatot az ajánlatokra fordítjuk.
+Mivel az ügyfelek az ajánlatokat a Microsoft AppSource és az Azure piactéren kirakatokban használják, az adatok rögzítése megtörténik. Miután az ügyfelek elég érdeklődést mutattak, a rendszer létrehoz egy érdeklődőt, és lehetőséget kap az Ön által választott rendszerre. Azok a kiadók, akik sikeresek voltak a kereskedelmi piactéren, gyakran vezetnek érdeklődőket, kapcsolatokat fejlesztenek, és figyelembe veszik a kamatot.
 
 További információkért tekintse [meg a Piactéri ajánlat ügyfeleinek vezetőit](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -285,7 +285,7 @@ További információ: [fizetési küszöbértékek, metódusok és időbeli ker
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>Milyen országokban/régiókban történik az adók kezelése az Ön nevében?
 
-Az ügyfelek a világ számos pontján találhatják meg a kereskedelmi piactéren elérhető megoldásokat, és több helyen kezeljük az adókat. 
+Az ügyfelek a világ különböző pontjain találhatják meg a kereskedelmi piactéren elérhető megoldásokat, és számos helyen kezeljük az adókat. 
 
 A helyszínek teljes listájának áttekintéséhez tekintse meg a [kereskedelmi piactér-közzétevők adózási adatait](partner-center-portal/tax-details-paid-transactions.md).
 
@@ -340,7 +340,7 @@ A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [kü
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Hol tudhatok meg többet a Azure Governmentról és a Azure Government Marketplace-ről?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
-- [Microsoft adatvédelmi központ](https://www.microsoft.com/trust-center)
+- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center)
 - [Az Azure Government dokumentációja](../azure-government/index.yml)
 - [Azure Government piactér](../azure-government/documentation-government-manage-marketplace.md)
 - [Azure Government megfelelőség](../azure-government/documentation-government-plan-compliance.md)

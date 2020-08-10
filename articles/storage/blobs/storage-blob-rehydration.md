@@ -1,6 +1,6 @@
 ---
 title: BLOB-adatok rehidratálása az archív szintről
-description: Távolítsa el a blobokat az archív tárolóból, hogy hozzáférjen az adatokhoz.
+description: Távolítsa el a blobokat az archív tárolóból, hogy hozzáférhessen a blob adataihoz. Archivált blob másolása online szintre.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 9d1d663dce8791b70b9fd8679730d5681d66013a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282466"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035144"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 

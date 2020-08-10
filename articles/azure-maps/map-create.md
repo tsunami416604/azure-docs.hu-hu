@@ -1,6 +1,6 @@
 ---
 title: Térkép létrehozása Azure Mapssal | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a térképet egy weblapon a Microsoft Azure Maps web SDK használatával.
+description: Ismerje meg, hogyan adhat hozzá térképeket a weblapokhoz a Azure Maps web SDK használatával. Az animáció, a stílus, a kamera, a szolgáltatások és a felhasználói interakció lehetőségeinek megismerése.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 77eaa3e1f4390182ad210ae3aa2ce6a1427d8b0f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 9566bcc329b4d148fe9454fe70b556a9010fc4ac
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551897"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036470"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
@@ -175,7 +175,7 @@ Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, 
 
 <a id="relatedReference"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

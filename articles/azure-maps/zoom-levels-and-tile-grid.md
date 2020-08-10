@@ -1,6 +1,6 @@
 ---
 title: Nagyítási szintek és csempék rácsa Microsoft Azure térképeken
-description: Ebben a cikkben megismerheti a nagyítási szinteket és a csempéket Microsoft Azure Maps-ben.
+description: Megtudhatja, hogyan állíthatja be a nagyítási szinteket a Azure Mapsban. Megtudhatja, hogyan alakíthatja át a földrajzi koordinátákat képpontos koordinátákba, csempe koordinátáiba és quadkeys. Megtekintheti a kódok mintáit.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093051"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035875"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 

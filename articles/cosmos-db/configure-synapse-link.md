@@ -1,17 +1,17 @@
 ---
 title: Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 description: Megtudhatja, hogyan engedélyezheti az Azure Cosmos-fiókok szinapszis-hivatkozását, hogyan hozhat létre olyan tárolót, amelyeken engedélyezve van az analitikai tároló, valamint csatlakoztathatja az Azure Cosmos-adatbázist a szinapszis munkaterülethez
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 9499fe2140f4a345d48bce6ef010989cfc22c58e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262038"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037082"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az alábbi lépések végrehajtásával elemzési lekérdezéseket futtathat a A
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
 

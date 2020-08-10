@@ -1,6 +1,6 @@
 ---
 title: Egyéni adathalmazok renderelése raszteres térképeken | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan teheti elérhetővé az egyéni adatok egy raszteres térképen a Microsoft Azure Maps statikus rendszerkép-szolgáltatás használatával.
+description: Megtudhatja, hogyan adhat hozzá pushpins, címkéket és geometriai alakzatokat egy raszteres térképhez. Tekintse meg, hogyan használható a statikus rendszerkép szolgáltatás a Azure Maps erre a célra.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6eae060b2ed2b0f7d6de5ac54d92677c95fc8a89
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126873"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037371"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 

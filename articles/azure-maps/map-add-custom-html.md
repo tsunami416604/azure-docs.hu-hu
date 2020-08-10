@@ -1,6 +1,6 @@
 ---
 title: HTML-jelölő hozzáadása a térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá HTML-jelölőket térképekhez a Microsoft Azure Maps web SDK használatával.
+description: Megtudhatja, hogyan adhat hozzá HTML-jelölőket a térképekhez. Tekintse meg, hogyan szabhatja testre a jelölőket a Azure Maps web SDK használatával, és hogyan adhat hozzá előugró ablakokat és egérmutatókat a jelölőhöz.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9b7156bf5c266ccbba926a22a4afe46129ee3f1e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58954a98215fd353c5944486446dab5664e5349c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286984"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035433"
 ---
 # <a name="add-html-markers-to-the-map"></a>HTML-jelölők hozzáadása a térképhez
 

@@ -1,6 +1,6 @@
 ---
 title: Az Adatmásolás Azure Data Lake Storage Gen2 a DistCp használatával | Microsoft Docs
-description: Adatok másolása Data Lake Storage Gen2ba és a DistCp eszköz használatával
+description: Adatok másolása Azure Data Lake Storage Gen2ba és onnan a Apache Hadoop Distributed Copy Tool (DistCp) használatával.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109501"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035671"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz
 
