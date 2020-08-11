@@ -1,18 +1,18 @@
 ---
 title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
-ms.date: 05/21/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdaad59d136e89c595a6a42a9760c73523a977c0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422827"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056618"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
-Az erőforrások, erőforráscsoportok, előfizetések, felügyeleti csoportok és bérlők együttesen alkotják az erőforrás-hierarchiát. A gyökérszintű felügyeleti csoport (például az Azure egyéni szerepkörei vagy Azure Policy szabályzat-hozzárendelések) beállításai hatással lehetnek az erőforrás-hierarchiában található minden egyes erőforrásra. Fontos, hogy megvédje az erőforrás-hierarchiát olyan változásokkal szemben, amelyek negatív hatással lehetnek az összes erőforrásra.
+Az erőforrások, erőforráscsoportok, előfizetések, felügyeleti csoportok és bérlők együttesen alkotják az erőforrás-hierarchiát. A gyökérszintű felügyeleti csoport (például az Azure egyéni szerepkörei vagy Azure Policy szabályzat-hozzárendelés) beállításai befolyásolhatják az erőforrás-hierarchiában lévő összes erőforrást. Fontos, hogy megvédje az erőforrás-hierarchiát olyan változásokkal szemben, amelyek negatív hatással lehetnek az összes erőforrásra.
 
 A felügyeleti csoportok már rendelkeznek hierarchia-beállításokkal, amelyek segítségével a bérlői rendszergazda vezérelheti ezeket a viselkedéseket. Ez a cikk ismerteti az összes rendelkezésre álló hierarchia-beállítást és azok beállításának módját.
 
@@ -75,7 +75,7 @@ A beállítás konfigurálásához a [hierarchia beállításait](/rest/api/reso
 
 Ha vissza szeretné kapcsolni a beállítást, használja ugyanazt a végpontot, és állítsa a **requireAuthorizationForGroupCreation** értéket **hamis**értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

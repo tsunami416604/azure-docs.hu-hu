@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498599"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056533"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -24,6 +24,8 @@ Engedélyezheti a blob Storage verziószámozását (előzetes verzió) az objek
 A blob verziószámozása engedélyezve van a Storage-fiókban, és a Storage-fiókban lévő összes blobra érvényes. Miután engedélyezte a blob verziószámozását egy Storage-fiókhoz, az Azure Storage automatikusan megőrzi a Storage-fiókban lévő összes blob verzióját.
 
 A Microsoft azt javasolja, hogy a Blobok verziószámozásával fenntartsa a blob korábbi verzióit a kiváló adatvédelem érdekében. Ha lehetséges, a blob-Pillanatképek helyett használjon blob-verziószámozást a korábbi verziók karbantartásához. A blob-Pillanatképek hasonló funkciókat biztosítanak a Blobok korábbi verzióinak fenntartásához, de a pillanatképeket az alkalmazásnak manuálisan kell megtartania.
+
+A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 
 > [!IMPORTANT]
 > A blob verziószámozása nem segít helyreállítani egy Storage-fiók vagy-tároló véletlen törlését. A Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
@@ -179,7 +181,7 @@ Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blo
 
 | Leírás | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage blob adatközreműködői |
+| A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage-blobadatok közreműködője |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage blob-adattulajdonos |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Közös hozzáférésű aláírás (SAS) paraméterei
@@ -204,7 +206,8 @@ A blob verziószámozása a következő régiókban érhető el előzetes verzi�
 - Kelet-Kanada
 - Közép-Kanada
 
-Az előzetes verzió csak nem éles használatra készült.
+> [!IMPORTANT]
+> A blob verziószámozási előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
 
 Az Azure Storage REST API 2019-10-10-es és újabb verziója támogatja a blob verziószámozását.
 
@@ -226,7 +229,7 @@ A blob verziószámozási előzetes verziójának regisztrálásához a PowerShe
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A PowerShell-lel való regisztráláshoz hívja meg a [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) parancsot.
+A PowerShell-lel való regisztráláshoz hívja meg a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsot.
 
 ```powershell
 # Register for blob versioning (preview)
@@ -242,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Az Azure CLI-vel való regisztrációhoz hívja meg az az [Feature Register](/cli/azure/feature#az-feature-register) parancsot.
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -266,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Az Azure CLI-vel való regisztráció állapotának megtekintéséhez hívja meg az az [Feature](/cli/azure/feature#az-feature-show) parancsot.
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---
@@ -318,7 +320,7 @@ A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blo
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Blob verziószámozásának engedélyezése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: NAT-átjáró létrehozása – Azure PowerShell'
+title: NAT-átjáró létrehozása – Azure PowerShell
 titlesuffix: Azure Virtual Network NAT
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót Azure PowerShell használatával
 services: virtual-network
@@ -10,17 +10,17 @@ Customer intent: I want to create a NAT gateway for outbound connectivity for my
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1c6a9fff7b3bafc927b0d032dc7345c262f6037c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: de4e32d79cf4dfb3a5f54544c65544297a2c0232
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707480"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054136"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>Oktatóanyag: NAT-átjáró létrehozása Azure PowerShell használatával
 
@@ -33,7 +33,7 @@ Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a parancsok helyi
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest). Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -271,7 +271,7 @@ ssh azureuser@<ip-address-destination>
 
 Most már készen áll a NAT szolgáltatás használatára.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
 

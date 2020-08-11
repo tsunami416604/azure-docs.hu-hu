@@ -14,17 +14,17 @@ ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5421ea73d13683948baa1cff828cb8422668ed6d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489554"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056788"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Gyors útmutató: Virtuális hálózat létrehozása az Azure CLI-vel
 
 A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy privát módon kommunikáljanak egymással és az internettel. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután kapcsolódhat a virtuális gépekhez az internetről, és magánjellegű módon kommunikálhat az új virtuális hálózaton keresztül.
-
+## <a name="prerequisites"></a>Előfeltételek
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -127,6 +127,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Egy virtuális géphez kapcsolódott az internetről, és a két virtuális gép között magántulajdonban kommunikál. További információ a virtuális hálózatok beállításairól: [Virtuális hálózat kezelése](manage-virtual-network.md).
-
-Az Azure lehetővé teszi, hogy korlátlan privát kommunikációt biztosítson a virtuális gépek között. Alapértelmezés szerint az Azure csak a Windows rendszerű virtuális gépekről bejövő távoli asztali kapcsolatokat teszi lehetővé az internetről. Ha többet szeretne megtudni a különböző típusú virtuálisgép-hálózati kommunikációk konfigurálásáról, lépjen a [hálózati forgalom szűrése](tutorial-filter-network-traffic.md) oktatóanyagra.
+Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Egy virtuális géphez kapcsolódott az internetről, és a két virtuális gép között magántulajdonban kommunikál.
+Az Azure lehetővé teszi, hogy korlátlan privát kommunikációt biztosítson a virtuális gépek között. Alapértelmezés szerint az Azure csak a Windows rendszerű virtuális gépekről bejövő távoli asztali kapcsolatokat teszi lehetővé az internetről. A következő cikkből megtudhatja, hogyan konfigurálhat különböző típusú virtuálisgép-hálózati kommunikációt:
+> [!div class="nextstepaction"]
+> [Hálózati forgalom szűrése](tutorial-filter-network-traffic.md)

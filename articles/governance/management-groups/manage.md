@@ -1,14 +1,14 @@
 ---
 title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535008"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055139"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -65,9 +65,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 Felügyeleti csoport törléséhez a következő követelményeknek kell teljesülniük:
 
-1. A felügyeleti csoportban nincsenek alárendelt felügyeleti csoportok vagy előfizetések.
-
-   - Ha egy előfizetést vagy felügyeleti csoportot másik felügyeleti csoportba szeretne helyezni, tekintse meg [a felügyeleti csoportok és előfizetések áthelyezése a hierarchiában](#moving-management-groups-and-subscriptions)című témakört.
+1. A felügyeleti csoportban nincsenek alárendelt felügyeleti csoportok vagy előfizetések. Ha egy előfizetést vagy felügyeleti csoportot másik felügyeleti csoportba szeretne áthelyezni, tekintse meg [a felügyeleti csoportok és előfizetések áthelyezése a hierarchiába című részt](#moving-management-groups-and-subscriptions).
 
 1. Írási engedéllyel kell rendelkeznie a felügyeleti csoportra ("tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködője"). Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ az Azure-szerepkörökről:  
    [Hozzáférés és engedélyek kezelése a RBAC-](../../role-based-access-control/overview.md)mel.
@@ -200,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 A felügyeleti csoport létrehozásának egyik oka az előfizetések összevonása. Csak a felügyeleti csoportok és előfizetések hozhatók létre egy másik felügyeleti csoport gyermekeire. Egy felügyeleti csoportba áthelyezett előfizetés örökli a szülő felügyeleti csoport összes felhasználói hozzáférését és házirendjét.
 
-Ha a felügyeleti csoportot vagy az előfizetést egy másik felügyeleti csoport gyermekének kívánja áthelyezni, a három szabályt igaz értékként kell értékelni.
+Ha egy felügyeleti csoportot vagy előfizetést egy másik felügyeleti csoport gyermekének kíván áthelyezni, a három szabályt igaz értékre kell kiértékelni.
 
 Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége: 
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372365"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055037"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager üzembe helyezésének áttekintése
 
@@ -65,6 +65,8 @@ Azure Firewall Manager üzembe helyezésének több módja is van, de a követke
 > - Régiónként legfeljebb egy hub virtuális WAN-t használhat. Ennek eléréséhez azonban több virtuális WAN-t is hozzáadhat a régióhoz.
 > - A vWAN lévő hubok esetében nem lehet átfedésben lévő IP-szóközök.
 > - A hub-VNet kapcsolatainak ugyanabban a régióban kell lenniük, mint a hub-nak.
+>
+> További ismert problémák: [Mi az a Azure Firewall Manager?](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>Virtuális hálózatok konvertálása
 
@@ -73,6 +75,6 @@ Ha egy meglévő virtuális hálózatot központi virtuális hálózatra alakít
 - Ha a virtuális hálózat meglévő Azure Firewall rendelkezik, válasszon ki egy, a meglévő tűzfallal társítandó tűzfal-házirendet. A tűzfal-kiépítési állapot frissülni fog, miközben a tűzfal házirendje lecseréli a tűzfalszabályok szabályait. A kiépítési állapot során a tűzfal folytatja a forgalom feldolgozását, és nincs leállás. A meglévő szabályokat a Firewall Manager vagy a Azure PowerShell használatával importálhatja a tűzfal házirendjébe.
 - Ha a virtuális hálózat nem rendelkezik társított Azure Firewallval, a rendszer tűzfalat helyez üzembe, és a tűzfal-házirend társítva van az új tűzfallal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md)

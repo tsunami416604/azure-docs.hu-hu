@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540835"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054068"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -39,7 +39,7 @@ Az alábbi táblázat ismerteti, hogy milyen metódusok érhetők el az elsődle
 | [A Microsoft Authenticator alkalmazás](#microsoft-authenticator-app) | Igen (előzetes verzió) | MFA és SSPR |
 | [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Igen | Csak MFA |
 | [Az eskü szoftver jogkivonatai](#oath-software-tokens) | Nem | MFA |
-| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Igen | MFA |
+| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Nem | MFA |
 | [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
 | [Hanghívás](#phone-options) | Nem | MFA és SSPR |
 | [Biztonsági kérdések](#security-questions) | Nem | Csak SSPR |

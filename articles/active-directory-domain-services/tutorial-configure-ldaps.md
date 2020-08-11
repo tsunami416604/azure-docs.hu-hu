@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404174"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054340"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -234,7 +234,7 @@ Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hoz
     | Protokoll                          | TCP          |
     | Művelet                            | Engedélyezés        |
     | Prioritás                          | 401          |
-    | Név                              | AllowLDAPS   |
+    | Name (Név)                              | AllowLDAPS   |
 
 1. Ha elkészült, kattintson a **Hozzáadás** gombra a szabály mentéséhez és alkalmazásához.
 
@@ -265,7 +265,7 @@ A felügyelt tartományhoz való kapcsolódáshoz és az LDAP-alapú kereséshez
 Ezután kötést a felügyelt tartományhoz. A felhasználók (és a szolgáltatásfiókok) nem hajthatnak végre LDAP egyszerű kötéseket, ha letiltotta az NTLM-jelszó kivonatának szinkronizálását a felügyelt tartományon. Az NTLM jelszó-kivonatok szinkronizálásának letiltásával kapcsolatos további információkért lásd: [a felügyelt tartomány biztonságossá tétele][secure-domain].
 
 1. Válassza a **kapcsolatok** menüpontot, majd válassza a **kötés...** lehetőséget.
-1. Adja meg az *HRE tartományvezérlő rendszergazdák* csoportjába tartozó felhasználói fiók hitelesítő adatait, például *contosoadmin*. Adja meg a felhasználói fiók jelszavát, majd adja meg a tartományt (például *aaddscontoso.com*).
+1. Adja meg a felügyelt tartományhoz tartozó felhasználói fiók hitelesítő adatait. Adja meg a felhasználói fiók jelszavát, majd adja meg a tartományt (például *aaddscontoso.com*).
 1. A **kötés típusa**beállításnál válassza a *kötés a hitelesítő adatokkal*lehetőséget.
 1. Kattintson **az OK gombra** a felügyelt tartományhoz való kötéshez.
 

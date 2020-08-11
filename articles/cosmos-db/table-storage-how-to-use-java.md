@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: 02adda920b838e39ce713709a952a23be6dc3a0c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e28770bae9f845ae8f5edd3b67bc55175392052a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321071"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056669"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Java segítségével
 
@@ -615,14 +615,14 @@ catch (Exception e)
 
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés az Azure Table Service használatába Javában](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Javához készült Azure Storage SDK][Azure Storage SDK for Java]
 * [Azure Storage ügyféloldali SDK-referencia][Azure Storage Client SDK Reference]
 * [Azure Storage REST API][Azure Storage REST API]
-* [Azure Storage-csapat blogja] [Azure Storage-csapat blogja]
+* [Az Azure Storage csapat blogja][Azure Storage Team Blog]
 
 További információ: [Azure Java-fejlesztőknek](/java/azure).
 
@@ -631,3 +631,4 @@ További információ: [Azure Java-fejlesztőknek](/java/azure).
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Storage ügyféloldali SDK-referencia]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage Team Blog]: https://blogs.msdn.microsoft.com/windowsazurestorage/

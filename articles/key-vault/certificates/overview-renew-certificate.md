@@ -10,18 +10,21 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097007"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056278"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Tudnivalók a Azure Key Vault tanúsítvány megújításáról
 
 A Azure Key Vault lehetővé teszi a hálózat digitális tanúsítványainak üzembe helyezését, kezelését és telepítését, valamint az alkalmazások biztonságos kommunikációjának engedélyezését. A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
 
 A rövid élettartamú tanúsítvány vagy a tanúsítvány forgási gyakoriságának növelése korlátozza a támadók hatókörét.
+
+## <a name="certificate-expiration-notifications"></a>Tanúsítvány lejárati értesítései
+Először vegye fel a tanúsítványt a Key Vaulthoz, hogy értesítést kapjon, ha a tanúsítványok hamarosan lejárnak (például a PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)használatával) Másodszor konfigurálja, ha értesítést szeretne kapni a tanúsítvány lejáratáról. Az élettartam-művelet konfigurálásához [kövesse az alábbi lépéseket](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)
 
 A Key vaultban három tanúsítvány-létrehozási kategória van. Ez az útmutató segít megérteni, hogyan lehet megvalósítani a tanúsítványok megújítását.
 -   Integrált HITELESÍTÉSSZOLGÁLTATÓval (DigiCert vagy GlobalSign) létrehozott tanúsítványok
@@ -55,6 +58,10 @@ Jó hír! Az Azure Key Vaultok emellett az önaláírt tanúsítványok automati
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, folytassa a tanúsítvány művelet megtekintésével, hogy megtekinthesse a tanúsítványhoz tartozó hibaüzenetet.
+
+### <a name="frequently-asked-questions"></a>Gyakori kérdések
+A rendszer replikálja a címkéket a tanúsítvány automatikus megújítása után?
+Nem, a címkék nem replikálódnak, hacsak a felhasználó manuálisan nem másolja magát a címkéket.
 
 ### <a name="see-also"></a>Lásd még:
 *   [A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval](how-to-integrate-certificate-authority.md)

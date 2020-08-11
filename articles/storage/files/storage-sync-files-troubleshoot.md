@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034396"
+ms.locfileid: "88056261"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -47,7 +47,7 @@ Miután létrehozta a kiszolgálói végpontot a Windows Server 2012 R2-ben, a k
 meghajtóbetűjel: \ nem érhető el.  
 A paraméter helytelen.
 
-A megoldáshoz telepítse a Windows Server 2012 R2 legújabb frissítéseit, és indítsa újra a kiszolgálót.
+A probléma megoldásához telepítse a [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) , és indítsa újra a kiszolgálót. Ha a frissítés nem települ, mert egy újabb frissítés már telepítve van, lépjen a Windows Updatera, telepítse a Windows Server 2012 R2 legújabb frissítéseit, és indítsa újra a kiszolgálót.
 
 <a id="server-registration-missing-subscriptions"></a>**A kiszolgáló regisztrálása nem tartalmazza az összes Azure-előfizetést**  
 Ha ServerRegistration.exe használatával regisztrál egy kiszolgálót, az előfizetések hiányoznak, amikor rákattint az Azure-előfizetés legördülő menüjére.
@@ -338,7 +338,7 @@ Ha szeretné megtekinteni ezeket a hibákat, futtassa a **FileSyncErrorsReport.p
 | 0x80c80200 | – 2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | A fájl nem szinkronizálható, mert elérte az ütköző fájlok maximális számát. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. További információ a fájlokkal kapcsolatos ütközésekről: Azure File Sync [GYIK](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | A probléma megoldásához csökkentse az ütköző fájlok számát. A fájl szinkronizálva lesz, amint az ütköző fájlok száma kevesebb, mint 100. |
 
 #### <a name="handling-unsupported-characters"></a>Nem támogatott karakterek feldolgozása
-Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl nem támogatott karakterek miatt hibát jelez (hibakód: 0x8007007b vagy 0x80c80255), távolítsa el vagy nevezze át a hibákat a megfelelő fájlnevek alapján. A PowerShell valószínűleg kérdőjelként vagy üres téglalapként fogja kinyomtatni ezeket a karaktereket, mivel a legtöbb ilyen karakternek nincs szabványos vizualizációs kódolása. A [kiértékelési eszköz](storage-sync-files-planning.md#evaluation-cmdlet) használható a nem támogatott karakterek azonosítására.
+Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl a nem támogatott karakterek (hibakód: 0x8007007b vagy 0x80c80255) miatt egy elemes szinkronizálási hibát jelenít meg, akkor a megfelelő fájlnevek esetén el kell távolítania vagy át kell neveznie a hibás karaktereket. A PowerShell valószínűleg kérdőjelként vagy üres téglalapként fogja kinyomtatni ezeket a karaktereket, mivel a legtöbb ilyen karakternek nincs szabványos vizualizációs kódolása. A [kiértékelési eszköz](storage-sync-files-planning.md#evaluation-cmdlet) használható a nem támogatott karakterek azonosítására. Ha az adatkészlet több, érvénytelen karaktereket tartalmazó fájllal rendelkezik, a [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) parancsfájllal nevezze át azokat a fájlokat, amelyek nem támogatott karaktereket tartalmaznak.
 
 Az alábbi táblázat tartalmazza az összes Unicode-karaktert, Azure File Sync még nem támogatott.
 

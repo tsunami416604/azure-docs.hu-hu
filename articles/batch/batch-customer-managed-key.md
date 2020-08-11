@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062531"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053745"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Batch-fiókhoz Azure Key Vault és felügyelt identitással
 
@@ -82,7 +82,7 @@ A Select ( **egyszerű**) mezőben **válassza** ki a `principalId` korábban be
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Kulcs létrehozása Azure Key Vault
 
-A Azure Portal lépjen a **kulcs** szakaszban található Key Vault példányra, majd válassza a **Létrehozás/importálás**lehetőséget. Válassza ki a használandó **kulcs típusát** `RSA` és a **kulcs méretét** `2048` .
+A Azure Portal lépjen a **kulcs** szakaszban található Key Vault példányra, majd válassza a **Létrehozás/importálás**lehetőséget. Válassza ki a kívánt **kulcsot** , `RSA` és az **RSA-kulcs méretének** legalább `2048` bitenek kell lennie. `EC`a Key types jelenleg nem támogatott ügyfél által felügyelt kulcsként egy batch-fiókban.
 
 ![Kulcs létrehozása](./media/batch-customer-managed-key/create-key.png)
 
@@ -142,6 +142,7 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
   * **Támogatottak-e az ügyfél által felügyelt kulcsok a meglévő batch-fiókok esetében?** Nem. Az ügyfél által felügyelt kulcsok csak új batch-fiókok esetén támogatottak.
+  * **Kiválaszthatom az 2048 bitenél nagyobb RSA-kulcsok méretét?** Igen, az RSA-kulcsok `3072` és a `4096` BITS mérete is támogatott.
   * **Milyen műveletek érhetők el az ügyfél által felügyelt kulcs visszavonása után?** Az egyetlen engedélyezett művelet a fiók törlése, ha a Batch elveszti a hozzáférést az ügyfél által felügyelt kulcshoz.
   * **Hogyan kell visszaállítani a Batch-fiókhoz való hozzáférést, ha véletlenül törölem a Key Vault kulcsot?** Mivel a kiürítési védelem és a helyreállítható törlés engedélyezve van, visszaállíthatja a meglévő kulcsokat. További információ: [Azure Key Vault helyreállítása](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
   * **Letiltható az ügyfél által felügyelt kulcsok?** A Batch-fiók titkosítási típusát bármikor visszaállíthatja a "Microsoft Managed Key" értékre. Ezt követően ingyenesen törölheti vagy módosíthatja a kulcsot.

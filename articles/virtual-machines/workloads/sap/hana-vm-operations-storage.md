@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074030"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053439"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -321,6 +321,44 @@ Ezért érdemes lehet a ANF-kötetek hasonló átviteli sebességét üzembe hel
 > A Azure NetApp Files kötetek átméretezése dinamikusan, a kötetek szükségessége nélkül, a virtuális gépek leállításával `unmount` vagy a SAP HANA leállításával végezhető el. Ez lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás elvárásainak és a várhatóan nem várt átviteli igényeknek.
 
 A ANF szolgáltatásban üzemeltetett, a készenléti csomóponttal rendelkező SAP HANA kibővített konfiguráció üzembe helyezéséről szóló dokumentáció az [Azure-beli virtuális gépek készenléti csomópontján SAP HANA kibővítve, az Azure NetApp Files on SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md)használatával érhető el.
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Cost tudatos megoldás az Azure Premium Storage szolgáltatással
+Eddig a jelen dokumentumban ismertetett Azure Premium Storage-megoldás a [Premium Storage és az azure írásgyorsító for Azure M sorozatú virtuális gépekre vonatkozó megoldások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) című szakaszban szerepelt SAP HANA éles környezetben támogatott forgatókönyvek esetében. Az éles környezetben támogatott konfigurációk egyik jellemzője a kötetek elkülönítése SAP HANA adatok számára, és a naplózás megismétlése két különböző kötetre. Az ilyen elkülönítés oka, hogy a kötetek munkaterhelés-jellemzői eltérnek. A javasolt üzemi konfigurációk esetében azonban szükség lehet a különböző típusú gyorsítótárazásokra vagy az Azure Block-tárolók különböző típusaira. Az Azure Block Storage célját használó éles környezetben támogatott konfigurációk megfelelnek az [azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) -hoz készült egyetlen VIRTUÁLISGÉP-SLA-nak is.  A nem éles környezetekben az éles rendszerekre vonatkozó megfontolások némelyike nem alkalmazható a fejlettebb, nem éles üzemi rendszerekre. Ennek eredményeképpen a HANA-adatbázis és a naplózási kötet egyesíthető. Habár végül bizonyos bűnösökkel, például az éles rendszerekhez szükséges bizonyos átviteli vagy késési KPI-kkel nem találkoznak. Az ilyen környezetekben a költségek csökkentésének egy másik aspektusa lehet az [Azure standard SSD Storage](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)használata. Az [Azure Virtual Machineshoz tartozó egyszeri](https://azure.microsoft.com/support/legal/sla/virtual-machines/)virtuálisgép-szolgáltatói szerződés megadásának lehetősége azonban. 
+
+Az ilyen konfigurációknál a kevésbé költséges alternatíva a következőképpen néz ki:
+
+
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/Data és/Hana/log<br /> az LVM vagy a MDADM szalagos | /hana/shared | /root-kötet | /usr/sap | Megjegyzések |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| E16v3 | 128 GiB | 384 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | A virtuális gép típusa nem HANA-tanúsítvánnyal rendelkezik <br /> Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 5 000<sup>2</sup> értékre fogja korlátozni |
+| E20ds_v4 | 160 GiB | 480 MB/s | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| E32v3 | 256 GiB | 768 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | A virtuális gép típusa nem HANA-tanúsítvánnyal rendelkezik <br /> Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| E32ds_v4 | 256 GiB | 768 MBps | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| M32ls | 256 GiB | 500 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 5 000<sup>2</sup> értékre fogja korlátozni |
+| E48ds_v4 | 384 GiB | 1 152 MBps | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| E64v3 | 432 GiB | 1 200 MB/s | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| E64ds_v4 | 504 GiB | 1200 MB/s |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
+| M64ls | 512 GiB | 1 000 MB/s | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 10 000<sup>2</sup> értékre fogja korlátozni |
+| M64s | 1 000 GiB | 1 000 MB/s | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 10 000<sup>2</sup> értékre fogja korlátozni |
+| M64ms | 1 750 GiB | 1 000 MB/s | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 10 000<sup>2</sup> értékre fogja korlátozni |
+| M128s | 2 000 GiB | 2 000 MB/s |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 20 000<sup>2</sup> értékre fogja korlátozni |
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 10 000<sup>2</sup> értékre fogja korlátozni |
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 20 000<sup>2</sup> értékre fogja korlátozni |
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 10 000<sup>2</sup> értékre fogja korlátozni |
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 20 000<sup>2</sup> értékre fogja korlátozni |
+| M416ms_v2 | 11400 GiB | 2 000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 20 000<sup>2</sup> értékre fogja korlátozni |
+
+
+<sup>1</sup> az [Azure-írásgyorsító](../../linux/how-to-enable-write-accelerator.md) nem használhatók a EV4 és a Ev4 VM-családokkal. Az Azure Premium Storage használatának eredményeképpen az I/O-késés nem lesz kevesebb, mint 1ms
+
+<sup>2</sup> a virtuálisgép-család támogatja az [Azure írásgyorsító](../../linux/how-to-enable-write-accelerator.md)-t, de lehetséges, hogy az írási gyorsító IOPS korlátja korlátozhatja a lemezes konfigurációk IOPS képességeit.
+
+Ha a SAP HANA adatmennyiségét és a naplózási kötetet egyesíti, a csíkozott kötetet felépítő lemezek nem rendelkezhetnek olvasási gyorsítótárral, vagy az írási/olvasási gyorsítótár engedélyezve van.
+
+Vannak felsorolva olyan virtuálisgép-típusok, amelyek nem rendelkeznek SAP-tanúsítvánnyal, és amelyek nem szerepelnek az ún. [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Az ügyfelek visszajelzései voltak, hogy ezek a nem felsorolt virtuálisgép-típusok sikeresen használatba kerültek néhány nem üzemi feladathoz.
 
 
 ## <a name="next-steps"></a>További lépések

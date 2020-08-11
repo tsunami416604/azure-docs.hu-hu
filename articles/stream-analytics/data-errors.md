@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041047"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053150"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>AdatAzure Stream Analyticsi hibák
 
-Az adathibák olyan hibák, amelyek az adatfeldolgozás során jelentkeznek.  Ezek a hibák leggyakrabban az adatok deszerializálása, a szerializálás és az írási műveletek során fordulnak elő.  Az adathibák előfordulása esetén Stream Analytics részletes információkat és példákat ír az erőforrás-naplókba.  Bizonyos esetekben ezen információk összefoglalása is elérhető a portál értesítésein keresztül.
+Az adathibák olyan hibák, amelyek az adatfeldolgozás során jelentkeznek.  Ezek a hibák leggyakrabban az adatok deszerializálása, a szerializálás és az írási műveletek során fordulnak elő.  Az adathibák előfordulása esetén Stream Analytics részletes információkat és példákat ír az erőforrás-naplókba. A további részletek eléréséhez engedélyezze a feladatban található diagnosztikai naplókat. Bizonyos esetekben ezen információk összegzése is elérhető a portál értesítésein keresztül.
 
 Ez a cikk a bemeneti és kimeneti adatokhoz tartozó hibák különböző típusait, okát és erőforrás-naplóját ismerteti.
 

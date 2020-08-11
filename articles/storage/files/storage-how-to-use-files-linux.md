@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835714"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053167"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha létrehoz egy bejegyzést a alkalmazásban `/etc/fstab` .
@@ -26,7 +26,7 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásának ajánlott m
 | CentOS | 7 + |  7.5 + |
 | Debian | 8 + | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12+ | 12 SP2 + |
 
 Ha a fenti táblázatban nem szereplő Linux-disztribúciót használ, ellenőrizheti, hogy a Linux-disztribúció támogatja-e az SMB 3,0-et a titkosítással a Linux kernel verziójának ellenőrzésével. Az SMB 3,0 titkosítással lett hozzáadva a Linux kernel 4,11-es verziójához. A `uname` parancs a használatban lévő Linux kernel verzióját fogja visszaadni:
 

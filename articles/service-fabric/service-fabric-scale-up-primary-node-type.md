@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy csomó
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: eecf398359470f6e5e151c53eb63b3cb56efbe39
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031981"
+ms.locfileid: "88056754"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Service Fabric-fürt elsődleges csomópont-típusának vertikális felskálázása csomópont-típus hozzáadásával
 Ez a cikk azt ismerteti, hogyan méretezhető egy Service Fabric-fürt elsődleges csomópontjának típusa egy további csomópont-típusnak a fürthöz való hozzáadásával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni.
 
 A következő oktatóanyagban található minta sablonok itt találhatók: [Service Fabric elsődleges csomópont típusú méretezési minták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Primary-NodeType-Scaling-Sample)

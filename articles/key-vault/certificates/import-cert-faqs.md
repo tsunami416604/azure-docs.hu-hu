@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445789"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056346"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Gyakori kérdések – Azure Key Vault tanúsítvány importálása
 
@@ -32,6 +32,10 @@ A feltöltött védett tanúsítvány a Key vaultba való tárolás után nem fo
 ### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>Hogyan oldható fel a "hibás paraméteres hiba"? Mely tanúsítványformátumok importálását támogatja a Key Vault?
 
 A tanúsítvány importálásakor győződjön meg arról, hogy a kulcs maga is szerepel a fájlban. Ha a titkos kulccsal külön formátumban van, akkor a kulcsot össze kell kapcsolni a tanúsítvánnyal. Egyes hitelesítésszolgáltatók különböző formátumú tanúsítványokat biztosítanak, ezért a tanúsítvány importálása előtt győződjön meg arról, hogy a. PEM vagy a. pfx formátumban vannak megadva, és hogy a használt kulcs RSA vagy ECC. Tekintse át ezeket a [tanúsítványokra vonatkozó követelmények](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) és a [tanúsítványokra vonatkozó követelmények](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)áttekintéséhez.
+
+###  <a name="can-i-import-certificate-using-arm-template"></a>Tudom importálni a tanúsítványt az ARM-sablon használatával?
+
+Nem, az ARM-sablonok használatával nem lehet certifiate műveleteket végezni. Az ajánlott megkerülő megoldás az API-ban, a CLI-ben vagy a PowerShellben lévő tanúsítványalapú importálási módszerek használata. Ha rendelkezik meglévő-tanúsítvánnyal, akkor azt titkos fájlként is importálhatja.
 
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>„Hiba történt” hibaüzenet a tanúsítvány portálon keresztül történő importálásakor. Hogyan lehet további vizsgálatot végezni?
     

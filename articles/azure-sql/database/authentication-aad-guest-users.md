@@ -9,12 +9,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: b3abda9787654734b24cc27987921ef40d8070fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294203"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053762"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD-vendégfelhasználók létrehozása és beállítása Azure AD-rendszergazdaként
 
@@ -133,9 +133,9 @@ A következő lépésekkel állíthatja be az Azure AD vendég felhasználóját
 
 ## <a name="limitations"></a>Korlátozások
 
-A Azure Portal korlátozásokkal rendelkezik, amely megakadályozza az Azure AD vendég felhasználóként való kiválasztását az SQL Database, az SQL felügyelt példányának és az Azure szinapszisnak az Azure AD-rendszergazdaként. Az Azure ad-n kívüli vendég fiókok, például a * \@ Outlook.com*, a * \@ hotmail.com*, a * \@ Live.com*vagy a * \@ gmail.com*esetében az ad admin választó megjeleníti ezeket a fiókokat, de szürkén jelenik meg, és nem választható ki. Az Azure AD-rendszergazda beállításához használja a fent felsorolt [PowerShell-vagy CLI-parancsokat](#setting-a-guest-user-as-an-azure-ad-admin) . Azt is megteheti, hogy a vendég felhasználót tartalmazó Azure AD-csoport az SQL logikai kiszolgáló Azure AD-rendszergazdájaként állítható be.
+A Azure Portal korlátozással rendelkezik, amely megakadályozza az Azure AD vendég felhasználóként való kiválasztását az SQL felügyelt példányához tartozó Azure AD-rendszergazdaként. Az Azure ad-n kívüli vendég fiókok, például a * \@ Outlook.com*, a * \@ hotmail.com*, a * \@ Live.com*vagy a * \@ gmail.com*esetében az ad admin választó megjeleníti ezeket a fiókokat, de szürkén jelenik meg, és nem választható ki. Az Azure AD-rendszergazda beállításához használja a fent felsorolt [PowerShell-vagy CLI-parancsokat](#setting-a-guest-user-as-an-azure-ad-admin) . Azt is megteheti, hogy a vendég felhasználót tartalmazó Azure AD-csoport az SQL felügyelt példányának Azure AD-rendszergazdájaként állítható be.
 
-Ez a funkció a szolgáltatás általános elérhetősége előtt lesz engedélyezve a SQL Database és az Azure szinapszis számára.
+Ez a funkció a szolgáltatás általános elérhetősége előtt lesz engedélyezve az SQL felügyelt példánya számára.
 
 ## <a name="next-steps"></a>További lépések
 

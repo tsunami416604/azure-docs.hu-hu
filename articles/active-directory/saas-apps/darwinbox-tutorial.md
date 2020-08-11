@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7169d6ab1e6a63b7275b8b09e977117ca0f62750
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 783a61c8e2b6c60b81e31d7771d3237c93be92a8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902694"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055548"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Darwinbox
 
@@ -30,7 +30,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Darwinbox a Azur
 * A Darwinbox-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Darwinbox az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -39,9 +38,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * Darwinbox egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
-
 > [!NOTE]
 > Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
+
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -86,12 +85,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.darwinbox.in/`
+   1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.darwinbox.in/`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
+   1. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
 
-    > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Darwinbox ügyfélszolgálati [csapatához](https://darwinbox.com/contact-us.php) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+      > [!NOTE]
+      > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Darwinbox ügyfélszolgálati [csapatához](https://darwinbox.com/contact-us.php) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -111,7 +110,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -144,6 +143,28 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Darwinbox-ben.
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a Darwinbox csempére kattint, automatikusan be kell jelentkeznie arra a Darwinbox, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="test-sso-for-darwinbox-mobile"></a>Darwinbox-teszt (SSO) tesztelése (mobil)
+
+1. Nyissa meg a Darwinbox Mobile Application alkalmazást. Kattintson a **szervezet beírása URL-cím** beírása a szervezet URL-címére a szövegmezőbe, majd kattintson a nyíl gombra.
+
+    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+
+1. Ha több tartománya van, kattintson a tartományra.
+
+    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+
+1. Adja meg az Azure AD-beli e-mail-címét a Darwinbox alkalmazásban, és kattintson a **tovább**gombra.
+
+    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+
+1. Adja meg Azure AD-jelszavát a Darwinbox alkalmazásban, és kattintson a **Bejelentkezés**elemre.
+
+    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+
+1. Végül a sikeres bejelentkezés után megjelenik az alkalmazás kezdőlapja.
+
+    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
 ## <a name="additional-resources"></a>További források
 

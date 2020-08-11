@@ -1,6 +1,6 @@
 ---
-title: Felügyelt lemez pillanatképének másolása előfizetés-CLI-mintára
-description: Azure CLI-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között a CLI használatával
+title: Felügyelt lemez pillanatképének másolása előfizetésre – CLI minta, Windows rendszerű virtuális gép
+description: Azure CLI-parancsfájl minta – felügyelt lemez pillanatképének másolása (áthelyezése) a CLI-vel azonos vagy eltérő előfizetésre egy Windows rendszerű virtuális gépen
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 54029e2ccbf592dfcde484728fa9cb969a668edd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b73bf62bfce456e65fde153379690bc9823e6a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010095"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056737"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a CLI használatával
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli-on-a-windows-vm"></a>Felügyelt lemez pillanatképének másolása a CLI-vel megegyező vagy eltérő előfizetésre egy Windows rendszerű virtuális gépen
 
 Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. Használja ezt a parancsfájlt a következő esetekben:
 

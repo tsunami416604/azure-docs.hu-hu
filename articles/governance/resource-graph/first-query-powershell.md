@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: az első PowerShell-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Azure PowerShell Resource Graph-modult, és futtathatja az első lekérdezést.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: quickstart
-ms.openlocfilehash: e98ca5974ba46d4d908cfe6dd8c04d3f6ba33a2a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872005"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056397"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával
 
@@ -18,7 +18,7 @@ Ezen folyamatban a modult hozzáadja az Azure PowerShell-telepítéshez, és fut
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -90,7 +90,7 @@ Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetéb
 > [!NOTE]
 > Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, akkor vegye figyelembe, hogy `Search-AzGraph` a parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. Ha szeretné megtekinteni az alapértelmezett környezet részét képező előfizetési azonosítók listáját `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , akkor az összes Ön által elérhető előfizetésben megadhatja a PSDefaultParameterValues a `Search-AzGraph` parancsmag futtatásával.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha el szeretné távolítani a Resource Graph modult az Azure PowerShell-környezetből, ezt a következő paranccsal teheti meg:
 
@@ -103,7 +103,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]
-> Ezzel nem törli a korábban letöltött modulfájlt. Csak eltávolítja azt a futó PowerShell-munkamenetből.
+> Ez nem törli a korábban letöltött Module-fájlt. Csak eltávolítja azt a futó PowerShell-munkamenetből.
 
 ## <a name="next-steps"></a>További lépések
 

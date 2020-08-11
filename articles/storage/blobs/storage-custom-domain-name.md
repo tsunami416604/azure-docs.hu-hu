@@ -9,18 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465541"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053626"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
 
 Az egyéni tartományt egy blob Service-végpontra vagy egy [statikus webhely](storage-blob-static-website.md) -végpontra is leképezheti. 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Ez a leképezés csak altartományok esetén működik (például: `www.contoso.com` ). Ha azt szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például: `contoso.com` ), akkor a Azure CDNt kell használnia. Útmutatásért tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. Mivel ennek a cikknek a szakasza az egyéni tartomány legfelső szintű tartományának engedélyezéséhez szükséges, az adott szakaszon belül a HTTPS engedélyezésének lépései nem kötelező. 
@@ -177,7 +177,7 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat. A C
        
    - A jelen cikk korábbi részében a [tárolási végpont gazdagépének beolvasása](#endpoint) szakaszban beszerzett állomásnév. 
 
-     Adja hozzá az altartományt `asverify` az állomásnévhez. Példa: `asverify.mystorageaccount.blob.core.windows.net`.
+     Adja hozzá az altartományt `asverify` az állomásnévhez. Például: `asverify.mystorageaccount.blob.core.windows.net`.
 
 4. Az egyéni tartomány regisztrálásához kattintson a **Save (Mentés** ) gombra.
 

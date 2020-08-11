@@ -1,14 +1,14 @@
 ---
 title: Nagy méretű adathalmazok kezelése
 description: Megtudhatja, hogyan kérheti le, formázhatja, lapozhatja és kihagyhatja a nagyméretű adatkészletek rekordjait az Azure Resource Graph használata közben.
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681067"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056406"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -63,8 +63,8 @@ A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/reso
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
-Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**.
-a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban nem ad vissza további rekordokat. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
+Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+ **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**. a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban nem ad vissza további rekordokat. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
 
  a **resultTruncated** akkor **igaz** , ha a lapozás le van tiltva vagy nem lehetséges, mert nincs `id` oszlop, vagy ha kevesebb erőforrás érhető el, mint a lekérdezés. Ha a **resultTruncated** értéke **igaz**, a **$skipToken** tulajdonság nincs beállítva.
 

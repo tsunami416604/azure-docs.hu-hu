@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041784"
+ms.locfileid: "88056652"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -60,7 +60,7 @@ Az oktatóanyag elvégzéséhez a következőket kell elvégeznie:
 - Windows 10 rendszerű számítógép, amely egy működő mikrofonnal és beszélővel (vagy fejhallgatóval) rendelkezik
 - A [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója, amelyen telepítve van a **ASP.net és a webes fejlesztési** számítási feladat
 - [.NET-keretrendszer futtatókörnyezete 4.6.1](https://dotnet.microsoft.com/download) vagy újabb
-- Egy Azure-fiók. [Regisztráljon ingyen](https://azure.microsoft.com/free/ai/).
+- Egy Azure-fiók. [Regisztráljon ingyen](https://azure.microsoft.com/free/cognitive-services/)
 - [GitHub](https://github.com/)-fiók
 - [Git for Windows](https://git-scm.com/download/win)
 
@@ -83,7 +83,6 @@ Ha más régiót szeretne használni az oktatóanyaghoz, akkor ezek a tényezők
 
 * Győződjön meg arról, hogy [támogatott Azure-régiót](regions.md#voice-assistants)használ.
 * A közvetlen vonalas beszéd csatornája a szöveg-beszéd szolgáltatást használja, amely standard és neurális hangokat tartalmaz. A neurális hangok [bizonyos Azure-régiókra korlátozódnak](regions.md#standard-and-neural-voices).
-* Előfordulhat, hogy az ingyenes próbaverziós kulcsok egy adott régióra korlátozódnak.
 
 A régiókkal kapcsolatos további információkért lásd: Azure-beli [telephelyek](https://azure.microsoft.com/global-infrastructure/locations/).
 

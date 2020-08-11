@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902045"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053575"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -354,27 +354,27 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 
 | Területi beállítás | Nyelv | Szövegtől függő ellenőrzés | Szövegtől független ellenőrzés | Szöveg – független azonosítás |
 |----|----|----|----|----|
 | en-US | Angol (US) | igen | igen | igen |
-|zh-CN  |Kínai (mandarin, egyszerűsített)|    n.a.|    igen|    igen|
-|de-DE  |Német (Németország)   |n.a.    |igen    |igen|
-|en-GB  |Angol (Egyesült Királyság)   |n.a.    |igen    |igen|
-|fr-FR  |Francia (Franciaország)    |n.a.    |igen    |igen|
-|EN-AU  |Angol (Ausztrália)    |n.a.    |igen    |igen|
-|en-CA  |Angol (Kanada)   |n.a.|   igen|    igen|
-|fr – CA  |Francia (Kanada)    |n.a.    |igen|   igen|
-|it-IT  |Olasz|   n.a. |igen|   igen|
-|es-ES| Spanyol (Spanyolország) |n.a.    |igen|   igen|
-|es-MX  |Spanyol (Mexikó)   |n.a.|   igen|    igen|
-|ja-JP| Japán    |n.a.    |igen    |igen|
-|pt-BR| Portugál (Brazília)|    n.a.|    igen|    igen|
+|zh-CN    |Kínai (mandarin, egyszerűsített)|    n.a.|    igen|    igen|
+|de-DE    |Német (Németország)    |n.a.    |igen    |igen|
+|en-GB    |Angol (Egyesült Királyság)    |n.a.    |igen    |igen|
+|fr-FR    |Francia (Franciaország)    |n.a.    |igen    |igen|
+|EN-AU    |Angol (Ausztrália)    |n.a.    |igen    |igen|
+|en-CA    |Angol (Kanada)    |n.a.|    igen|    igen|
+|fr – CA    |Francia (Kanada)    |n.a.    |igen|    igen|
+|it-IT    |Olasz|    n.a.    |igen|    igen|
+|es-ES|    Spanyol (Spanyolország)    |n.a.    |igen|    igen|
+|es-MX    |Spanyol (Mexikó)    |n.a.|    igen|    igen|
+|ja-JP|    Japán    |n.a.    |igen    |igen|
+|pt-BR|    Portugál (Brazília)|    n.a.|    igen|    igen|
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

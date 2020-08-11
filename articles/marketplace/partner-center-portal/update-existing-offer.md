@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006791"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056142"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
 A meglévő ajánlatokat a partner Center [kereskedelmi piactér portáljának](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **Áttekintés** lapján tekintheti meg.
 
-Meglévő, jelenleg a piactéren élő ajánlat frissítése:
+Meglévő, jelenleg a kereskedelmi piactéren élő ajánlat frissítése:
 
 1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota az **előnézet**, az **élő**, **a közzététel folyamatban, a** **Vázlat**, a **Figyelem szükséges**vagy **nem érhető el** (ha korábban már kiválasztotta az ajánlat értékesítésének leállítását). A kiválasztást követően megnyílik az ajánlat **Áttekintés** lapja az ajánlathoz.
 2. Válassza a **frissítés** lehetőséget a kártyán az ajánlat áttekintése oldalon, vagy a bal oldali navigációs sávon lévő menüpontot a frissíteni kívánt területen. Előfordulhat, hogy frissíteni kívánja az **ajánlat telepítését**, a **tulajdonságokat**, az **ajánlatok listáját**, az **előzetes**verziót, a **technikai konfigurációt**, a **terv áttekintését**vagy a **tesztelési meghajtót**.
@@ -74,7 +74,7 @@ Most, hogy eltakarta a tervet a régi árral, hozzon létre egy másolatot a ter
 1. Válassza a **Piszkozat mentése** lehetőséget.
 1. Miután elvégezte az összes szükséges szakaszt az új csomaghoz, válassza a **felülvizsgálat és közzététel**lehetőséget. Ez áttekintésre és közzétételre küldi az ajánlatot. További részletekért olvassa el [a kereskedelmi piactérre vonatkozó ajánlat áttekintését és közzétételét](../review-publish-offer.md) .
 
-## <a name="compare-changes-to-marketplace-offers"></a>A Piactéri ajánlatok változásainak összehasonlítása
+## <a name="compare-changes-to-commercial-marketplace-offers"></a>Kereskedelmi Piactéri ajánlatok változásainak összehasonlítása
 
 A [közzétett](#compare-changes-to-published-offer) vagy [előnézeti](#compare-changes-to-a-preview-offer) ajánlaton végzett módosítások naplózása előtt végezze el az **összehasonlítást**.
 
@@ -161,11 +161,13 @@ Ha egy későbbi időpontban szeretné közzétenni az ajánlatot, el kell indí
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Ajánlat vagy csomag értékesítésének leállítása
 
+Számos okból dönthet úgy, hogy törli a Microsoft kereskedelmi piactéren elérhető ajánlati listáját. Az ajánlat eltávolításával biztosítható, hogy az új ügyfelek már nem tudják megvásárolni vagy üzembe helyezni az ajánlatot, de nincs hatással a meglévő ügyfelekre.
+
 Ha le szeretné állítani az ajánlat értékesítését, miután közzétette azt, válassza az **értékesítés leállítása** az **ajánlat áttekintése** oldalról lehetőséget.
 
-Miután megerősítette, hogy le szeretné állítani az ajánlat értékesítését, néhány órán belül többé nem lesz látható a piactéren, és az új ügyfelek nem tudják letölteni.
+Miután megerősítette, hogy le szeretné állítani az ajánlat értékesítését, néhány órán belül többé nem lesz látható a kereskedelmi piactéren, és az új ügyfelek nem tudják letölteni.
 
-A csomag értékesítésének leállításához válassza az **értékesítés leállítása** lehetőséget a **csomag áttekintése** lapon. A csomag értékesítésének leállítására szolgáló lehetőség csak akkor érhető el, ha az ajánlatban több csomag is található. Dönthet úgy is, hogy leállítja az egyik csomag értékesítését anélkül, hogy az ajánlaton belüli egyéb csomagokat befolyásolná. Miután megerősítette, hogy meg szeretné szüntetni a csomag értékesítését, újra közzé kell tennie az ajánlatot a módosítás érvénybe léptetéséhez. Az ajánlat újbóli közzététele után a terv többé nem lesz látható a piactéren, és az új ügyfelek nem tudják letölteni.
+A csomag értékesítésének leállításához válassza az **értékesítés leállítása** lehetőséget a **csomag áttekintése** lapon. A csomag értékesítésének leállítására szolgáló lehetőség csak akkor érhető el, ha az ajánlatban több csomag is található. Dönthet úgy is, hogy leállítja az egyik csomag értékesítését anélkül, hogy az ajánlaton belüli egyéb csomagokat befolyásolná. Miután megerősítette, hogy meg szeretné szüntetni a csomag értékesítését, újra közzé kell tennie az ajánlatot a módosítás érvénybe léptetéséhez. Az ajánlat újbóli közzététele után a csomag többé nem jelenik meg a kereskedelmi piactéren, és az új ügyfelek nem tudják letölteni.
 
 Azok az ügyfelek, akik korábban megszerezték az ajánlatot vagy a tervet, továbbra is használhatják. Újra le tudják tölteni, de nem kapják meg a frissítéseket, ha később frissítik és újra közzéteszik az ajánlatot, vagy megtervezik azokat.
 

@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073351"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055212"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az Azure SQL termékcsalád részét képező Azure SQL felügyelt példány az intelligens, méretezhető felhőalapú adatbázis-szolgáltatás, amely a legszélesebb körben SQL Server adatbázismotor kompatibilitását ötvözi a teljes körűen felügyelt és örökzöld platform szolgáltatásként nyújtott előnyökkel. Az SQL felügyelt példánya közel 100%-os kompatibilitást biztosít a legújabb SQL Server (Enterprise Edition) adatbázis-motorral, amely egy natív [virtuális hálózat (VNet)](../../virtual-network/virtual-networks-overview.md) megvalósítását biztosítja, amely az általános biztonsági kérdésekre és a meglévő SQL Server ügyfeleknek kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül. Az SQL felügyelt példánya lehetővé teszi a meglévő SQL Server ügyfelek számára, hogy a felhőbe a helyszíni alkalmazásaikat minimális alkalmazás-és adatbázis-módosításokkal emelje át. Ugyanakkor a felügyelt SQL-példányok megőrzik az összes, a felügyeleti terhelést [és a TCO](../database/high-availability-sla.md)-t drasztikusan csökkentő (automatikus javítás és verziófrissítés, [automatikus biztonsági mentés](../database/automated-backups-overview.md)) lehetőséget.
+Az Azure SQL felügyelt példánya az intelligens, méretezhető felhőalapú adatbázis-szolgáltatás, amely a legszélesebb körű SQL Server adatbázismotor-kompatibilitást ötvözi a teljes mértékben felügyelt és örökzöld platform szolgáltatásként nyújtott előnyökkel. Az SQL felügyelt példánya közel 100%-os kompatibilitást biztosít a legújabb SQL Server (Enterprise Edition) adatbázis-motorral, amely egy natív [virtuális hálózat (VNet)](../../virtual-network/virtual-networks-overview.md) megvalósítását biztosítja, amely az általános biztonsági kérdésekre és a meglévő SQL Server ügyfeleknek kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül. Az SQL felügyelt példánya lehetővé teszi a meglévő SQL Server ügyfelek számára, hogy a felhőbe a helyszíni alkalmazásaikat minimális alkalmazás-és adatbázis-módosításokkal emelje át. Ugyanakkor a felügyelt SQL-példányok megőrzik az összes, a felügyeleti terhelést [és a TCO](../database/high-availability-sla.md)-t drasztikusan csökkentő (automatikus javítás és verziófrissítés, [automatikus biztonsági mentés](../database/automated-backups-overview.md)) lehetőséget.
 
 > [!IMPORTANT]
 > Azoknak a régióknak a listájáért, amelyeken jelenleg elérhető az SQL felügyelt példány, tekintse meg a [támogatott régiók](resource-limits.md#supported-regions)című témakört.
@@ -53,15 +53,15 @@ Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban lát
 |Funkció | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
-| Felügyelt automatizált biztonsági másolatok | Yes |
-| Beépített példány-és adatbázis-figyelés és-metrikák | Yes |
-| Szoftver automatikus javítása | Yes |
-| Az adatbázismotor legújabb funkciói | Yes |
+| Felügyelt automatizált biztonsági másolatok | Igen |
+| Beépített példány-és adatbázis-figyelés és-metrikák | Igen |
+| Szoftver automatikus javítása | Igen |
+| Az adatbázismotor legújabb funkciói | Igen |
 | Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
-| VNet – Azure Resource Manager üzemelő példány | Yes |
-| VNet – klasszikus üzembe helyezési modell | No |
-| Portál támogatása | Yes|
+| VNet – Azure Resource Manager üzemelő példány | Igen |
+| VNet – klasszikus üzembe helyezési modell | Nem |
+| Portál támogatása | Igen|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) részét képezi |
 | Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
@@ -202,7 +202,7 @@ Az SQL felügyelt példánya támogatja a SQL Server 2008-adatbázisok visszamen
   
 Az alábbi ábra az SQL felügyelt példányának felületi kompatibilitását ismerteti:  
 
-![Migrálás](./media/sql-managed-instance-paas-overview/migration.png)
+![Áttelepítés](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>SQL Server helyszíni és az SQL felügyelt példány közötti fő különbségek
 

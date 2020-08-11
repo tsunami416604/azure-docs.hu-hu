@@ -1,14 +1,14 @@
 ---
 title: Az Azure-erőforrások áttekintése
 description: Ismerje meg, hogyan használhatja az erőforrás-diagram lekérdezési nyelvét, és hogyan derítheti fel, hogyan kapcsolódnak egymáshoz.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654485"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056584"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -207,8 +207,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-A lekérdezés futtatása előtt honnan tudtuk, hogy a **típusnak** most a **Microsoft. számítás/lemezek**?
-Ha megtekinti a teljes azonosítót, a **/providers/Microsoft.Compute/Disks/** a karakterlánc részeként fog megjelenni. Ez a karakterlánc-kódrészlet a keresendő típussal kapcsolatos célzást nyújt. Alternatív módszerként a korlátot a típus alapján távolíthatja el, ehelyett csak az azonosító mező alapján kereshet. Mivel az azonosító egyedi, a rendszer csak egy rekordot ad vissza, és a **Type (típus** ) tulajdonsága ezt a részletet adja meg.
+A lekérdezés futtatása előtt honnan tudtuk, hogy a **típusnak** most a **Microsoft. számítás/lemezek**? Ha megtekinti a teljes azonosítót, a **/providers/Microsoft.Compute/Disks/** a karakterlánc részeként fog megjelenni.
+Ez a karakterlánc-kódrészlet a keresendő típussal kapcsolatos célzást nyújt. Alternatív módszerként a korlátot a típus alapján távolíthatja el, ehelyett csak az azonosító mező alapján kereshet. Mivel az azonosító egyedi, a rendszer csak egy rekordot ad vissza, és a **Type (típus** ) tulajdonsága ezt a részletet adja meg.
 
 > [!NOTE]
 > Ahhoz, hogy ez a példa működjön, a saját környezetből származó eredménnyel kell helyettesítenie az azonosító mezőt.

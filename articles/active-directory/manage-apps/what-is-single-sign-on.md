@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure egyszeri bejelentkezés (SSO)?
-description: Megtudhatja, hogyan választhat egyszeri bejelentkezési módszert az alkalmazások Azure Active Directory (Azure AD-ben) való konfigurálásakor. Egyszeri bejelentkezés használata, hogy a felhasználóknak ne kelljen megemlékezniük minden alkalmazás jelszavait, és egyszerűbbé kell tenni a fiókok felügyeletének kezelését.
+description: Ismerje meg, hogy az egyszeri bejelentkezés (SSO) hogyan működik a Azure Active Directoryokkal. Egyszeri bejelentkezés használata, hogy a felhasználóknak ne kelljen megemlékezniük minden alkalmazás jelszavait. Használja az SSO-t is a fiókok felügyeletének egyszerűsítése érdekében.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,22 +12,31 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0928cb264dcff43cc0a3e45a8417dcd1e23a1ed3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 5446d945a81d2630d788a866bda00eb118382b93
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042598"
+ms.locfileid: "88053779"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
-Az egyszeri bejelentkezés (SSO) biztonsági és kényelmi funkciókat biztosít, amikor a felhasználók bejelentkeznek a Azure Active Directory (Azure AD) alkalmazásaiba. Ez a cikk az egyszeri bejelentkezés módszereit ismerteti, és segít kiválasztani a legmegfelelőbb SSO-módszert az alkalmazások konfigurálásakor.
+Az egyszeri bejelentkezés azt jelenti, hogy a felhasználóknak nem kell bejelentkezniük minden általuk használt alkalmazásba. A felhasználó egyszer jelentkezik be, és a rendszer a hitelesítő adatokat is használja más alkalmazásokhoz.
+
+Ha Ön a végfelhasználó, valószínűleg nem érdekli az egyszeri bejelentkezés részletei. Csak azokat az alkalmazásokat szeretné használni, amelyekkel hatékonyabbá teheti a jelszavát. Az alkalmazások a következő címen találhatók: https://myapps.microsoft.com .
+ 
+Ha Ön rendszergazda vagy informatikai szakember, olvassa el a következőt: További információ az SSO Azure-beli megvalósításáról.
+
+## <a name="single-sign-on-basics"></a>Egyszeri bejelentkezés alapjai
+Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók hogyan jelentkeznek be és használják az alkalmazásokat. Az egyszeri bejelentkezési alapú hitelesítési rendszereket gyakran "modern hitelesítésnek" nevezzük. Ha szeretné megtudni, hogy mi teszi lehetővé az egyszeri bejelentkezést, tekintse meg ezt a videót.
+> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+
+
+## <a name="choosing-a-single-sign-on-method"></a>Egyszeri bejelentkezés módszerének kiválasztása
 
 - **Egyszeri bejelentkezés**esetén a felhasználók egyszer jelentkeznek be egyetlen fiókkal a tartományhoz csatlakoztatott eszközök, a vállalati erőforrások, a szolgáltatott szoftver (SaaS) alkalmazások és a webalkalmazások eléréséhez. A bejelentkezést követően a felhasználó az Office 365 portálról vagy az Azure AD MyApps hozzáférési paneljéről is indíthat alkalmazásokat. A rendszergazdák központilag konfigurálhatják a felhasználói fiókok felügyeletét, és a csoporttagság alapján automatikusan hozzáadhatják vagy eltávolíthatják az alkalmazásokhoz való felhasználói hozzáférést.
 
 - **Egyszeri bejelentkezés nélkül a**felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük minden alkalmazásba. Az informatikai részlegnek az egyes alkalmazásokhoz (például az Office 365, a Box és a Salesforce) tartozó felhasználói fiókokat kell létrehoznia és frissítenie. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk arra, hogy bejelentkezzenek az egyes alkalmazásokra.
-
-## <a name="choosing-a-single-sign-on-method"></a>Egyszeri bejelentkezés módszerének kiválasztása
 
 Az egyszeri bejelentkezéshez többféleképpen is konfigurálhat egy alkalmazást. Az egyszeri bejelentkezés módszerének kiválasztása attól függ, hogy az alkalmazás hogyan van konfigurálva a hitelesítéshez.
 
@@ -197,10 +206,5 @@ Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti partneri kapcso
 
 További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
 
-## <a name="related-articles"></a>Kapcsolódó cikkek
+## <a name="next-steps"></a>További lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
-* [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](../saas-apps/tutorial-list.md)
-* [Jelszó alapú egyszeri bejelentkezés konfigurálása](configure-password-single-sign-on-non-gallery-applications.md)
-* [Csatolt bejelentkezés konfigurálása](configure-linked-sign-on.md)
-* [Az alkalmazásokhoz való hozzáférés kezelésének bemutatása](what-is-access-management.md)
-* Letöltési hivatkozás: [egyszeri bejelentkezési telepítési terv](https://aka.ms/SSODeploymentPlan).

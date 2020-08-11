@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6be6ca00b2bc5d7b35fb71437809754f129df96
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456431"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054635"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>A Speech SDK memóriahasználat használatának nyomon követése
 
@@ -40,7 +40,7 @@ Ha [a beszédfelismerési SDK naplózása engedélyezve van](how-to-use-logging.
 
 Lehetősége van figyelmeztetési küszöbértéket létrehozni, és ha túllépi a küszöbértéket (feltéve, hogy a naplózás engedélyezve van), a rendszer figyelmeztető üzenetet naplóz. A figyelmeztető üzenet tartalmazza a létezésben lévő összes objektum számát a darabszámmal együtt. Ez az információ a problémák jobb megismeréséhez használható. 
 
-A figyelmeztetési küszöbérték engedélyezéséhez meg kell adni egy `SpeechConfig` objektumot. Ezt az objektumot az új felismerő létrehozásakor ellenőrzi a rendszer. Az alábbi példákban tegyük fel, hogy létrehozta a következő `SpeechConfig` nevű `config`példányt:
+A figyelmeztetési küszöbérték engedélyezéséhez meg kell adni egy `SpeechConfig` objektumot. Ezt az objektumot az új felismerő létrehozásakor ellenőrzi a rendszer. Az alábbi példákban tegyük fel, hogy létrehozta a következő nevű példányt `SpeechConfig` `config` :
 
 ::: zone pivot="programming-language-csharp"
 
@@ -69,7 +69,7 @@ config.setProperty("SPEECH-ObjectCountWarnThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountWarnThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-A hiba küszöbértékének engedélyezéséhez meg kell adni egy `SpeechConfig` objektumot. Ezt az objektumot az új felismerő létrehozásakor ellenőrzi a rendszer. Az alábbi példákban tegyük fel, hogy létrehozta a következő `SpeechConfig` nevű `config`példányt:
+A hiba küszöbértékének engedélyezéséhez meg kell adni egy `SpeechConfig` objektumot. Ezt az objektumot az új felismerő létrehozásakor ellenőrzi a rendszer. Az alábbi példákban tegyük fel, hogy létrehozta a következő nevű példányt `SpeechConfig` `config` :
 
 ::: zone pivot="programming-language-csharp"
 
@@ -131,7 +131,7 @@ config.setProperty("SPEECH-ObjectCountErrorThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountErrorThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -145,9 +145,8 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 ::: zone-end
 
 > [!TIP]
-> Ennek a tulajdonságnak az alapértelmezett értéke az adattípusok platform-specifikus maximális `size_t` értéke. Egy tipikus felismerés 7 és 10 belső objektum között lesz használatban.
+> Ennek a tulajdonságnak az alapértelmezett értéke az adattípusok platform-specifikus maximális értéke `size_t` . Egy tipikus felismerés 7 és 10 belső objektum között lesz használatban.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](get-started.md)
-* [Megtudhatja, hogyan ismerheti fel a beszédfelismerést mikrofon használatával](quickstarts/speech-to-text-from-microphone.md)
+* [További információ a Speech SDK-ról](speech-sdk.md)

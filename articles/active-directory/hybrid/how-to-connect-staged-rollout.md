@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460609"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053221"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -84,7 +84,7 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 - Amikor először ad hozzá egy biztonsági csoportot az előkészített bevezetéshez, a rendszer 200-re korlátozza a felhasználóktól, hogy elkerülje az UX időtúllépését. A csoport hozzáadása után további felhasználókat is hozzáadhat közvetlenül hozzá, ha szükséges.
 
-- Míg a felhasználók szakaszos bevezetéssel rendelkeznek, a jelszó lejárati szabályzata 90 napra van állítva, és nincs lehetőség testreszabásra. 
+- Míg a felhasználók szakaszos bevezetéssel rendelkeznek, ha a EnforceCloudPasswordPolicyForPasswordSyncedUsers engedélyezve van, a jelszó lejárati szabályzata 90 napra van beállítva, és nincs lehetőség testreszabásra. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel

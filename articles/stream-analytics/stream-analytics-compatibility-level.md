@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087858"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056516"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -125,7 +125,7 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1,1 szint:** Az üzenet tartalma közvetlenül tartalmazza a streamet, és nem tartalmaz további címkéket. Például:`{ "SensorId":"1", "Temperature":64}`
+**1,1 szint:** Az üzenet tartalma közvetlenül tartalmazza a streamet, és nem tartalmaz további címkéket. Például: `{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>Kis-és nagybetűk megkülönböztetése a mezőnevek esetében
 
@@ -142,11 +142,11 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 
 **1,1 szint:** CREATE TABLE lehetővé teszi egy erős séma megadását. A Stream Analytics motor ellenőrzi, hogy az adathalmaz megfelel-e a sémának. Ezzel a modellel a parancs a NaN-értékekkel szűrheti az eseményeket.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatikus leküldési idő letiltása a JSON-beli datetime-karakterláncokhoz
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>A DateTime karakterláncok automatikus átalakításának letiltása a dátum/idő típusnál a JSON-ba való belépéskor
 
-**1,0 szint:** A JSON-elemző automatikusan a dátum/idő/zóna információval rendelkező karakterlánc-értékeket a DateTime típusúra konvertálja, majd átalakítja az UTC értékre. Ez a viselkedés az időzóna-információk elvesztését eredményezte.
+**1,0 szint:** A JSON-elemző automatikusan konvertálja a dátum/idő/zóna adataival rendelkező karakterlánc-értékeket a belépés időpontba, így az érték azonnal elveszíti az eredeti formázási és időzóna-információit. Mivel ez a bejövő forgalomban történik, még akkor is, ha ez a mező nem volt használatban a lekérdezésben, a rendszer UTC DateTime dátumra konvertálja.
 
-**1,1 szint:** A dátum/idő/zóna információval rendelkező karakterlánc-értékek nem rendelkeznek automatikusan DateTime típussal. Ennek eredményeképpen az időzóna-információk megmaradnak.
+**1,1 szint:** A dátum/idő/zóna információi és a DATETIME típus között nincs automatikus konverzió. Ennek eredményeképpen az időzóna-információk és az eredeti formázás is megmarad. Ha azonban a NVARCHAR (MAX) mezőt egy DATETIME kifejezés részeként használja a lekérdezésben (például), a rendszer a DATETIME típusúra konvertálja a számítást, és elveszíti az eredeti formáját.
 
 ## <a name="next-steps"></a>További lépések
 

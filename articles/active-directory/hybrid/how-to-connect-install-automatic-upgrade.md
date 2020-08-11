@@ -16,15 +16,15 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359007"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053286"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
-Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md#111050)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md#115610) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
+Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
 
 ## <a name="overview"></a>Áttekintés
 Győződjön meg arról, hogy a Azure AD Connect telepítésének mindig naprakésznek kell lennie, az **automatikus frissítési** funkcióval még soha nem volt egyszerűbb. Ez a funkció alapértelmezés szerint engedélyezve van az expressz telepítésekhez és az rSync-frissítésekhez. Új verzió kiadásakor a rendszer automatikusan frissíti a telepítést.
@@ -37,11 +37,11 @@ Az automatikus frissítés alapértelmezés szerint engedélyezve van a követke
 
 Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal lehet megtekinteni `Get-ADSyncAutoUpgrade` . A következő állapotokkal rendelkezik:
 
-| Állapot | Megjegyzés |
+| Állam | Megjegyzés |
 | --- | --- |
 | Engedélyezve |Az automatikus frissítés engedélyezve van. |
 | Felfüggesztve |Csak a rendszeren állítható be. A rendszer **jelenleg nem** jogosult automatikus frissítések fogadására. |
-| Letiltva |Az automatikus frissítés le van tiltva. |
+| Disabled (Letiltva) |Az automatikus frissítés le van tiltva. |
 
 Az **engedélyezett** és a **letiltott** érték közötti váltás a következővel: `Set-ADSyncAutoUpgrade` . Csak a rendszeren kell beállítani a **felfüggesztett**állapotot.  A 1.1.750.0 előtt a set-ADSyncAutoUpgrade parancsmag letiltja az automatikus frissítést, ha az automatikus frissítés állapota felfüggesztve értékre lett állítva. Ez a funkció mostantól megváltozott, így nem blokkolja az autoupgrade funkciót.
 
@@ -71,15 +71,15 @@ Most már láthatja az automatikus frissítés állapotával kapcsolatos esemén
 
 Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az állapotról.
 
-| Eredmény-kód előtagja | Description |
+| Eredmény-kód előtagja | Leírás |
 | --- | --- |
-| Sikeres |A telepítés frissítése sikeresen megtörtént. |
+| Success |A telepítés frissítése sikeresen megtörtént. |
 | UpgradeAborted |Egy ideiglenes feltétel leállította a frissítést. Újból próbálkozik újra, és a várt érték az, hogy később sikeres lesz. |
 | UpgradeNotSupported |A rendszer olyan konfigurációval rendelkezik, amely blokkolja a rendszer automatikus frissítését. A rendszer megpróbálja megtekinteni, hogy az állapot változik-e, de a várt érték az, hogy a rendszert manuálisan kell frissíteni. |
 
 Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, de az eredményről tájékoztató üzenetnek Egyértelműnek kell lennie a problémával kapcsolatban.
 
-| Eredmény üzenet | Description |
+| Eredmény üzenet | Leírás |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a beállításjegyzékbe. |

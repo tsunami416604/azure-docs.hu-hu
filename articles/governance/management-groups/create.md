@@ -1,14 +1,14 @@
 ---
 title: Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez – Azure-szabályozás
 description: Ismerje meg, hogyan hozhat létre Azure felügyeleti csoportokat több erőforrás kezeléséhez a portál, a Azure PowerShell és az Azure CLI használatával.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 0739eafdf4cf41195b189a8496c331ab470bbec0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971135"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056635"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez és kezeléséhez
 
@@ -18,7 +18,7 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 
 ## <a name="create-a-management-group"></a>Felügyeleti csoport létrehozása
 
-A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye hozzá lenne rendelve az adott felhasználóhoz. Ez az új felügyeleti csoport a legfelső szintű felügyeleti csoport gyermeke lesz, és a létrehozó a "tulajdonos" szerepkör-hozzárendelést kapja. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoportjához. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok létrehozását a gyökérkönyvtárban.  
+A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye hozzá lenne rendelve az adott felhasználóhoz. Ez az új felügyeleti csoport a legfelső szintű felügyeleti csoport gyermeke lesz, és a létrehozó a "tulajdonos" szerepkör-hozzárendelést kapja. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoporthoz. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok létrehozását a gyökérkönyvtárban.  
 szintű.
 
 A felügyeleti csoportot a portál, a [Azure Resource Manager sablon](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), a PowerShell vagy az Azure CLI használatával hozhatja létre.
