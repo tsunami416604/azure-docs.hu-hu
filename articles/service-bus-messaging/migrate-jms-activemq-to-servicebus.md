@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369033"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067154"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása Apache ActiveMQ-ből Azure Service Bus
 
@@ -84,7 +84,7 @@ A Service Bus támogatja a AMQP protokollon keresztüli kommunikációt. Erre a 
 
 ### <a name="set-up-enterprise-configurations"></a>Vállalati konfigurációk beállítása
 
-A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információkért lásd: 
+A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információ: 
 
   * [Virtuális hálózati szolgáltatásvégpontok](service-bus-service-endpoints.md)
   * [Tűzfal](service-bus-ip-filtering.md)
@@ -272,7 +272,7 @@ Most, hogy módosította az alkalmazást, hogy megkezdje az üzenetek küldésé
 
 ## <a name="next-steps"></a>További lépések
 
-A [Azure Service Bus JMS készült Spring boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) segítségével zökkenőmentesen integrálhatja Service Bus.
+A [Azure Service Bus JMS készült Spring boot Starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) segítségével zökkenőmentesen integrálhatja Service Bus.
 
 Az Service Bus üzenetkezeléssel és JMS kapcsolatos további tudnivalókért tekintse meg a következőt:
 

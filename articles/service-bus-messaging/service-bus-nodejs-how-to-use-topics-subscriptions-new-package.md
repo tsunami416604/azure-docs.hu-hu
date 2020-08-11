@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 531322c49a772eaf416fadf1bb4f9a5fb6bf1ff6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 5afe5eded4937631d25ab94edc1908b7ac83d383
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430601"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067477"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Node.js és az Azure/Service-Bus csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan írhat egy Node.js programot, amely üzeneteket küld egy Service Bus témakörnek, és üzeneteket fogad egy Service Bus előfizetésből az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag használatával. Ez a csomag a gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md) használja, míg a régebbi [Azure-sb-](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A mintákat JavaScript nyelven írták.
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-A Service Bus témakörrel való interakció a [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával kezdődik, és a használatával a [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) osztály létrehozásához használatos. Miután megkapta a témakör-ügyfelet, létrehozhat egy küldőt, és használhatja a [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) vagy a [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metódust az üzenetek küldéséhez.
+A Service Bus témakörrel való interakció a [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával kezdődik, és a használatával a [TopicClient](/javascript/api/@azure/service-bus/topicclient) osztály létrehozásához használatos. Miután megkapta a témakör-ügyfelet, létrehozhat egy küldőt, és használhatja a [Send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) vagy a [sendBatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metódust az üzenetek küldéséhez.
 
 1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
 2. Hozzon létre egy nevű fájlt `send.js` , és illessze be az alábbi kódot. Ez a kód 10 üzenetet küld a témakörnek.
@@ -83,7 +83,7 @@ Az üzenetek szabványos tulajdonságai, például a küldéskor megadhatók `la
 A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A témakörben tárolt üzenetek száma nincs korlátozva, de a témakörben tárolt üzenetek teljes mérete korlátozott. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. További információ a kvótákkal kapcsolatban: [Service Bus kvóták](service-bus-quotas.md).
 
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-A Service Bus-előfizetésekkel való interakció a [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával és a [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) osztály létrehozásához használattal kezdődik. Ha már rendelkezik az előfizetési ügyféllel, létrehozhat egy fogadót, és használhat [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) vagy [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metódust is az üzenetek fogadásához.
+A Service Bus-előfizetésekkel való interakció a [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával és a [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient) osztály létrehozásához használattal kezdődik. Ha már rendelkezik az előfizetési ügyféllel, létrehozhat egy fogadót, és használhat [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) vagy [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metódust is az üzenetek fogadásához.
 
 1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
 2. Hozzon létre egy nevű fájlt `recieve.js` , és illessze be az alábbi kódot. Ez a kód 10 üzenetet próbál fogadni az előfizetésből. A kapott tényleges darabszám az előfizetésben és a hálózati késésben lévő üzenetek számától függ.
@@ -121,7 +121,7 @@ A Service Bus-előfizetésekkel való interakció a [ServiceBusClient](https://d
 
 Gratulálunk! Csak Service Bus-előfizetésből érkezett üzenetek.
 
-A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) metódus egy, a `ReceiveMode` [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) és a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)értékeket tartalmazó enumerálást vesz igénybe. Ne feledje, hogy [rendezze az üzeneteket](message-transfers-locks-settlement.md#settling-receive-operations) , ha a módot használja az `PeekLock` üzenet bármelyikének, `complete()` `abandon()` `defer()` vagy `deadletter()` metódusának használatával.
+A [createReceiver](/javascript/api/@azure/service-bus/subscriptionclient#createreceiver-receivemode-) metódus egy, a `ReceiveMode` [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) és a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)értékeket tartalmazó enumerálást vesz igénybe. Ne feledje, hogy [rendezze az üzeneteket](message-transfers-locks-settlement.md#settling-receive-operations) , ha a módot használja az `PeekLock` üzenet bármelyikének, `complete()` `abandon()` `defer()` vagy `deadletter()` metódusának használatával.
 
 ## <a name="subscription-filters-and-actions"></a>Előfizetési szűrők és műveletek
 Service Bus támogatja az [előfizetések szűrőit és műveleteit](topic-filters.md), így a beérkező üzeneteket szűrheti egy előfizetésre, és szerkesztheti a tulajdonságait.
@@ -143,5 +143,3 @@ További tudnivalókat az alábbi forrásokban talál.
 - [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md)
 - Egyéb NodeJS-minták kifizetése a [githubon Service Bus](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/)
-
-

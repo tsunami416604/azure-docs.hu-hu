@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 7399bc60ffa88112fee87b429571772f634c0754
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285424"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067443"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -26,7 +26,7 @@ A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelke
 
 ## <a name="benefits"></a>Előnyök
 
-A Azure Database for MySQL adattitkosítása a következő előnyöket nyújtja:
+Az ügyfél által felügyelt kulcsokkal rendelkező Azure Database for MySQL adattitkosítás a következő előnyöket biztosítja:
 
 * Az adathozzáférést teljes mértékben a rendszer ellenőrzi, hogy el tudja-e távolítani a kulcsot, és elérhetetlenné teszi az adatbázist 
 * Teljes hozzáférés a kulcs-életciklushoz, beleértve a kulcs rotációját a vállalati házirendekkel való összehangoláshoz
@@ -49,8 +49,8 @@ A KEK titkosított DEKs külön tárolja a rendszer. Csak egy KEK-hozzáféréss
 Ahhoz, hogy egy MySQL-kiszolgáló a ADATTITKOSÍTÁSI kulcsot titkosításához Key Vaultban tárolt ügyfél által felügyelt kulcsokat használjon, a Key Vault rendszergazdája a következő hozzáférési jogosultságokat biztosítja a kiszolgálóhoz:
 
 * **beolvasás: a**Key vaultban lévő kulcs nyilvános részének és tulajdonságainak lekérése.
-* **wrapKey**: a adattitkosítási kulcsot titkosítása.
-* **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez.
+* **wrapKey**: a adattitkosítási kulcsot titkosítása. A titkosított ADATTITKOSÍTÁSI kulcsot a Azure Database for MySQL tárolja.
+* **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez. Azure Database for MySQL a visszafejtett ADATTITKOSÍTÁSI kulcsot szükséges az adattitkosításhoz/visszafejtéshez
 
 A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/key-vault-insights-overview.md)is, így később is naplózhatja őket.
 
@@ -60,16 +60,16 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 
 A Key Vault konfigurálásának követelményei a következők:
 
-* Key Vault és Azure Database for MySQL ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. Az erőforrások áthelyezését követően újra kell konfigurálnia az adattitkosítást.
+* Key Vault és Azure Database for MySQL ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. A Key Vault erőforrás áthelyezéséhez ezután újra kell konfigurálnia az adattitkosítást.
 * Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
-* Adja meg az Azure Database for MySQL hozzáférést a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel az egyedi felügyelt identitás használatával. A Azure Portalban az egyedi identitás automatikusan létrejön, ha engedélyezve van az adattitkosítás a MySQL-ben. Lásd: az [adattitkosítás konfigurálása a MySQL](howto-data-encryption-portal.md) -hez részletes, lépésenkénti útmutatás a Azure Portal használatakor.
+* Adja meg az Azure Database for MySQL hozzáférést a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel az egyedi felügyelt identitás használatával. A Azure Portal az egyedi "szolgáltatás" identitás automatikusan létrejön, ha engedélyezve van az adattitkosítás a MySQL-ben. Lásd: az [adattitkosítás konfigurálása a MySQL](howto-data-encryption-portal.md) -hez részletes, lépésenkénti útmutatás a Azure Portal használatakor.
 
 Az ügyfél által felügyelt kulcs konfigurálásának követelményei a következők:
 
 * A ADATTITKOSÍTÁSI kulcsot titkosításához használt ügyfél által felügyelt kulcs csak aszimmetrikus, RSA 2048 lehet.
 * A kulcs aktiválási dátumát (ha be van állítva) a múltban dátumnak és időpontnak kell lennie. A lejárati dátumnak (ha be van állítva) jövőbeli dátumnak és időpontnak kell lennie.
 * A kulcsnak *engedélyezett* állapotban kell lennie.
-* Ha meglévő kulcsot importál a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` ,,) meg van-e biztosítva `.byok` `.backup` .
+* Ha [meglévő kulcsot importál](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` , `.byok` ,) meg van-e biztosítva `.backup` .
 
 ## <a name="recommendations"></a>Javaslatok
 

@@ -7,16 +7,16 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336832"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067392"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Service Bus névtér létrehozása Azure Resource Manager sablon használatával
 
-Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager sablont Service Bus névtér létrehozásához. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/).
+Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager sablont Service Bus névtér létrehozásához. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager dokumentáció](../azure-resource-manager/index.yml).
 
 A következő sablonok a Service Bus névterek létrehozásához is elérhetők:
 
@@ -27,7 +27,7 @@ A következő sablonok a Service Bus névterek létrehozásához is elérhetők:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
 
@@ -60,7 +60,7 @@ Service Bus-névtér létrehozása sablon üzembe helyezésével:
 
 Az Event hub létrehozása néhány percet vesz igénybe.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 Az üzembe helyezett Service Bus-névtér megjelenítéséhez nyissa meg az erőforráscsoportot a Azure Portal, vagy használja az alábbi Azure PowerShell parancsfájlt. Ha a Cloud Shell továbbra is nyitva van, nem kell másolni/futtatnia a következő parancsfájl első és második sorát.
 
@@ -79,7 +79,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál ebben az oktatóanyag
 * [Az Azure CLI használatával](../azure-resource-manager/templates/deploy-cli.md).
 * [REST API használatával](../azure-resource-manager/templates/deploy-rest.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud Shell továbbra is nyitva van, nem kell másolni/futtatnia a következő parancsfájl első és második sorát.
 

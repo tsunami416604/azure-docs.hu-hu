@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2e18b060aabcb849fb8e17722c530d199ebdbb8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535169"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067763"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával
 
@@ -45,7 +45,7 @@ Az Azure Portalon a következő lépések végrehajtásával tölthet fel egy bl
 
 1. Az Azure Portalon lépjen az előző szakaszban létrehozott tárolóhoz.
 1. Válassza ki a tárolót a benne lévő blobok listájának megtekintéséhez. Ez a tároló új, így még nem tartalmaz blobokat.
-1. Kattintson a **feltöltés** gombra a feltöltés panel megnyitásához, és tallózással keresse meg a helyi fájlrendszert, és keresse meg a blokkoló blobként feltölteni kívánt fájlt. A speciális szakaszt kibontva a feltöltési művelet egyéb beállításait is konfigurálhatja.
+1. Kattintson a **feltöltés** gombra a feltöltés panel megnyitásához, és tallózással keresse meg a helyi fájlrendszert, és keresse meg a blokkoló blobként feltölteni kívánt fájlt. A **speciális** szakaszt kibontva a feltöltési művelet egyéb beállításait is konfigurálhatja.
 
     ![A blobok helyi meghajtóról történő feltöltését bemutató képernyőkép](media/storage-quickstart-blobs-portal/upload-blob.png)
 
@@ -59,9 +59,18 @@ A blokkblobok letölthetők a böngészőben történő megjelenítéshez vagy a
 1. Lépjen az előző szakaszban feltöltött blobok listájához.
 1. Kattintson a jobb gombbal a letölteni kívánt blobra, majd válassza a **Letöltés** elemet.
 
+    ![A Blobok letöltését bemutató képernyőkép](media/storage-quickstart-blobs-portal/download-blob.png)
+
+## <a name="delete-a-block-blob"></a>Blokkos blob törlése
+
+A blokkblobok letölthetők a böngészőben történő megjelenítéshez vagy a helyi fájlrendszerben történő mentéshez. A blokkblobok letöltéséhez kövesse az alábbi lépéseket:
+
+1. Lépjen az előző szakaszban feltöltött blobok listájához.
+1. Jelölje ki a törölni kívánt blobokat, majd a felső művelet sávján kattintson a **Törlés** elemre.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A jelen rövid útmutatóban létrehozott erőforrások eltávolításához törölje a tárolót. Ekkor a rendszer törli az adott tárolóban lévő összes blobot is.
+Az ebben a rövid útmutatóban létrehozott összes erőforrás eltávolításához egyszerűen törölheti a tárolót. Ekkor a rendszer törli az adott tárolóban lévő összes blobot is.
 
 A tároló törlése:
 

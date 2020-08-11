@@ -6,12 +6,12 @@ documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85336741"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067562"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Ruby használatával
  
@@ -62,7 +62,7 @@ A témakör-előfizetések az **Azure:: ServiceBusService** objektummal is létr
 
 Alapértelmezés szerint az előfizetések állandóak. A rendszer addig továbbra is fennáll, amíg meg nem történik, vagy a hozzájuk társított témakör törölve lett. Ha az alkalmazás logikát tartalmaz egy előfizetés létrehozásához, először ellenőrizze, hogy az előfizetés már létezik-e a getSubscription metódussal.
 
-Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)beállításával automatikusan törölheti.
+Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)beállításával automatikusan törölheti.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 Ha nincs megadva szűrő az új előfizetés létrehozásakor, a rendszer a **MatchAll** szűrőt (alapértelmezett) használja. A **MatchAll** szűrő használatakor a témakörben közzétett összes üzenet az előfizetés virtuális várólistáján lesz elhelyezve. A következő példa létrehoz egy "All-messages" nevű előfizetést, és az alapértelmezett **MatchAll** szűrőt használja.
@@ -150,7 +150,7 @@ Az előfizetésen belül zárolt üzenethez is tartozik időtúllépés, és ha 
 Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, de a `delete_subscription_message()` metódus hívása előtt, akkor az üzenet az újraindításkor újra megjelenik az alkalmazásban. Általában legalább egyszer kell meghívni *a feldolgozásra*; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez a logika gyakran az `message_id` üzenet tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek között.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-A témakörök és az előfizetések állandóak, kivéve, ha a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) be van állítva. A [Azure Portal][Azure portal] vagy programozott módon törölhetők. Az alábbi példa bemutatja, hogyan törölheti a nevű témakört `test-topic` .
+A témakörök és az előfizetések állandóak, kivéve, ha a [AutoDeleteOnIdle tulajdonság](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) be van állítva. A [Azure Portal][Azure portal] vagy programozott módon törölhetők. Az alábbi példa bemutatja, hogyan törölheti a nevű témakört `test-topic` .
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

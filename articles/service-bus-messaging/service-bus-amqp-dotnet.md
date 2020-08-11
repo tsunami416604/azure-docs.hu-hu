@@ -3,12 +3,12 @@ title: Azure Service Bus .NET-tel és AMQP 1,0 | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Service Bus egy .NET-alkalmazásból a AMQP (Advanced Messaging Queueing Protocol) használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340189"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067103"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Service Bus használata a .NET-ről a AMQP 1,0 használatával
 
@@ -52,7 +52,7 @@ A non-.NET-ügyfelekkel való együttműködés megkönnyítése érdekében csa
 
 | .NET-szövegtörzs objektumtípus | Leképezett AMQP típusa | AMQP törzs szakaszának típusa |
 | --- | --- | --- |
-| logikai |logikai |AMQP érték |
+| logikai |boolean |AMQP érték |
 | byte |ubyte |AMQP érték |
 | ushort |ushort |AMQP érték |
 | uint |uint |AMQP érték |
@@ -61,7 +61,7 @@ A non-.NET-ügyfelekkel való együttműködés megkönnyítése érdekében csa
 | rövid |rövid |AMQP érték |
 | int |int |AMQP érték |
 | hosszú |hosszú |AMQP érték |
-| lebegőpontos |lebegőpontos |AMQP érték |
+| float |float |AMQP érték |
 | double |double |AMQP érték |
 | tizedes tört |decimal128 |AMQP érték |
 | char |char |AMQP érték |
@@ -69,8 +69,8 @@ A non-.NET-ügyfelekkel való együttműködés megkönnyítése érdekében csa
 | Guid |uuid |AMQP érték |
 | bájt [] |binary |AMQP érték |
 | sztring |sztring |AMQP érték |
-| System. Collections. IList |lista |AMQP érték: a gyűjteményben szereplő elemek csak a táblázatban definiált elemekkel rendelkezhetnek. |
-| System. Array |tömb |AMQP érték: a gyűjteményben szereplő elemek csak a táblázatban definiált elemekkel rendelkezhetnek. |
+| System. Collections. IList |list |AMQP érték: a gyűjteményben szereplő elemek csak a táblázatban definiált elemekkel rendelkezhetnek. |
+| System. Array |array |AMQP érték: a gyűjteményben szereplő elemek csak a táblázatban definiált elemekkel rendelkezhetnek. |
 | System. Collections. IDictionary |map |AMQP érték: a gyűjteményben szereplő elemek csak a táblázatban definiált elemekkel rendelkezhetnek. Megjegyzés: csak karakterlánc-kulcsok támogatottak. |
 | URI |Leírt karakterlánc (lásd az alábbi táblázatot) |AMQP érték |
 | DateTimeOffset |Leírt hosszú (lásd a következő táblázatot) |AMQP érték |
@@ -109,7 +109,7 @@ Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 * [AMQP 1.0 protokoll – útmutató]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
@@ -117,4 +117,3 @@ Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md
 [AMQP 1.0 protokoll – útmutató]: service-bus-amqp-protocol-guide.md
-

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544209"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88068613"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,6 +51,58 @@ A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-
 
 `spx`A SPEECH parancssori felület súgójának megjelenítéséhez írja be a következőt:.
 
+#### <a name="docker-install"></a>[Docker-telepítés](#tab/dockerinstall)
+
+A következő lépésekkel telepítheti a Speech CLI-t egy Docker-tárolóba:
+
+1. Telepítse és futtassa [a Docker Desktopot a platformhoz](https://www.docker.com/get-started).
+1. Írja be a következő parancsot egy új parancssorba vagy terminálba:`docker pull msftspeech/spx`
+1. Írja be ezt a parancsot. A Speech CLI-vel kapcsolatos súgóban talál:`docker run -it --rm msftspeech/spx help`
+
+### <a name="mount-a-directory-in-the-container"></a>Könyvtár csatlakoztatása a tárolóhoz
+
+A Speech CLI-eszköz fájlokként menti a konfigurációs beállításokat, és minden parancs végrehajtásakor betölti ezeket a fájlokat (kivéve a Súgó parancsokat).
+Ha a Speech CLI-t egy Docker-tárolón belül használja, csatlakoztatnia kell egy helyi könyvtárat a tárolóból, így az eszköz képes tárolni vagy megkeresni a konfigurációs beállításokat, és így az eszköz képes olvasni vagy írni a parancshoz szükséges fájlokat, például hangfájlokat a beszédhez.
+
+Windows rendszeren írja be ezt a parancsot egy helyi címtár-beszédfelismerési parancssori felület létrehozásához a tárolón belül:
+
+`mkdir c:\spx-data`
+
+Vagy Linux vagy Mac rendszeren írja be ezt a parancsot egy terminálba egy könyvtár létrehozásához, és tekintse meg az abszolút elérési útját:
+
+```bash
+mkdir ~/spx-data
+cd ~/spx-data
+pwd
+```
+
+Az abszolút elérési utat fogja használni a Speech CLI hívásakor.
+
+### <a name="run-speech-cli-in-the-container"></a>A Speech CLI futtatása a tárolóban
+
+Ez a dokumentáció a `spx` nem Docker-telepítésekben használt SPEECH CLI-parancsot mutatja be.
+Amikor a `spx` parancsot egy Docker-tárolóban hívja meg, csatlakoztatnia kell egy könyvtárat a tárolóban a fájlrendszerhez, ahol a SPEECH CLI képes tárolni és megtalálni a konfigurációs értékeket, valamint a fájlok olvasását és írását.
+Windows rendszeren a parancsok a következőképpen fognak kezdődni:
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+
+Linux vagy Mac rendszeren a parancsok a következőhöz hasonlóak lesznek:
+
+`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+
+> [!NOTE]
+> Cserélje le a `/ABSOLUTE_PATH` parancsot a fenti szakaszban szereplő parancs által megjelenített abszolút elérési útra `pwd` .
+
+A `spx` tárolóban telepített parancs használatához mindig adja meg a fent látható teljes parancsot, majd a kérés paramétereit.
+Windows rendszeren például a következő parancs állítja be a kulcsot:
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+
+> [!NOTE]
+> A számítógép mikrofonját vagy hangszóróját nem használhatja, ha a Speech CLI-t egy Docker-tárolón belül futtatja.
+> Ha ezeket az eszközöket szeretné használni, adja át a hangfájlokat a és a Speech CLI-ből a Docker-tárolón kívüli rögzítéshez/lejátszáshoz.
+> A Speech CLI-eszköz elérheti a fenti lépésekben beállított helyi könyvtárat.
+
 ***
 
 ## <a name="create-subscription-config"></a>Előfizetés konfigurációjának létrehozása
@@ -58,8 +110,8 @@ A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-
 A beszédfelismerési parancssori felület használatának megkezdéséhez először meg kell adnia a beszédfelismerési előfizetési kulcs és a régió adatait. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot. Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
 
 ```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 Az előfizetés-hitelesítés mostantól a jövőbeli SPX-kérelmekhez van tárolva. Ha el kell távolítania a tárolt értékek valamelyikét, futtassa a vagy a parancsot `spx config @region --clear` `spx config @key --clear` .

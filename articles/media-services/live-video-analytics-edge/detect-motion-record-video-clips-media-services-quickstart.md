@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074396"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067660"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -29,13 +29,13 @@ Ez a cikk a [első lépések](get-started-detect-motion-emit-events-quickstart.m
 
 Az Azure-erőforrások létrehozásához szükséges lépések részeként a rendszer egy (rövid) videót másol az Azure-beli linuxos virtuális gépre, amelyet a IoT Edge eszközként használ. Ez a videofájl az oktatóanyag élő folyamának szimulálására szolgál.
 
-Használhat egy alkalmazást, például a [VLC Playert](https://www.videolan.org/vlc/), elindíthatja, lenyomhatja a CTRL + N billentyűkombinációt, majd beillesztheti [ezt](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) a lehetőséget a parkoló videóra a lejátszás megkezdéséhez. Az 5 másodperces jel körülbelül egy fehér autó halad át a parkolón.
+Használhat egy alkalmazást, például a [VLC Playert](https://www.videolan.org/vlc/), elindíthatja, megnyomhatja `Ctrl+N` és beillesztheti [a parkoló videó minta](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) hivatkozását a lejátszás megkezdéséhez. Az 5 másodperces jel körülbelül egy fehér autó halad át a parkolón.
 
 Az alábbi lépések elvégzése után élő videó-elemzéseket használt IoT Edgeon az autó mozgásának észleléséhez és az 5 másodperces megjelölés körüli videoklip rögzítéséhez. Az alábbi ábra a teljes folyamat vizuális ábrázolását mutatja be.
 
 ![Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján](./media/quickstarts/topology.png)
 
-## <a name="use-direct-methods"></a>Közvetlen metódusok használata
+## <a name="use-direct-method-calls"></a>Közvetlen metódusú hívások használata
 
 A modul segítségével közvetlen metódusok meghívásával elemezheti az élő videó streameket. A [IoT Edge élő videó-elemzések közvetlen módszereinek](direct-methods.md) olvasása a modul által biztosított közvetlen módszerek megismeréséhez. 
 
@@ -46,35 +46,35 @@ Ez a lépés az összes [gráf-topológiát](media-graph-concept.md#media-graph-
 1. Ekkor megjelenik a Visual Studio Code ablakának felső sarkában látható pop-beviteli mező. Írja be a "GraphTopologyList" kifejezést a Szerkesztés mezőbe, majd nyomja le az ENTER billentyűt.
 1. Ezután másolja és illessze be az alábbi JSON-adattartalmat a szerkesztési mezőbe, majd nyomja le az ENTER billentyűt.
     
-    ```
-    {
-        "@apiVersion" : "1.0"
-    }
-    ```
+```
+{
+    "@apiVersion" : "1.0"
+}
+```
 
-    Néhány másodpercen belül megjelenik a kimeneti ablak a Visual Studio Code felugró ablakban a következő választal
+Néhány másodpercen belül megjelenik a kimeneti ablak a Visual Studio Code felugró ablakban a következő választal
     
-    ```
-    [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
-    [DirectMethod] Response from [lva-sample-device/lvaEdge]:
-    {
-      "status": 200,
-      "payload": {
-        "value": []
-      }
-    }
-    ```
+```
+[DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
+[DirectMethod] Response from [lva-sample-device/lvaEdge]:
+{
+  "status": 200,
+  "payload": {
+    "value": []
+  }
+}
+```
     
-    A fenti válasz várható, mivel nem jött létre gráf-topológia.
+A fenti válasz várható, mivel nem jött létre gráf-topológia.
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet meghívása
 
-A GraphTopologyList meghívásakor megjelenő lépések használatával meghívhatja a GraphTopologySet-t, hogy a következő JSON- [t használja a](media-graph-concept.md#media-graph-topologies-and-instances) hasznos adattartalomként. Létrehoz egy "EVRtoAssetsOnMotionDetecion" nevű gráf-topológiát.
+A GraphTopologyList meghívásakor megjelenő lépések használatával meghívhatja a GraphTopologySet-t, hogy a következő JSON- [t használja a](media-graph-concept.md#media-graph-topologies-and-instances) hasznos adattartalomként. Létrehoz egy "EVRtoAssetsOnMotionDetection" nevű gráf-topológiát.
 
 ```
 {
     "@apiVersion": "1.0",
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -195,7 +195,7 @@ Néhány másodpercen belül a kimenet ablakban a következő válasz jelenik me
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to assets based on motion events",
       "parameters": [
@@ -312,7 +312,7 @@ A visszaadott állapot 201, ami azt jelzi, hogy egy új gráf-topológia lett l�
 
 * Indítsa újra a GraphTopologySet, és győződjön meg arról, hogy a visszaadott állapotkód 200. Az 200-as állapotkód azt jelzi, hogy egy meglévő gráf-topológia frissítése sikeresen megtörtént.
 * Indítsa újra a GraphTopologySet, de módosítsa a leíró karakterláncot. Győződjön meg arról, hogy a válaszban szereplő állapotkód 200, és a Leírás frissítve lett az új értékre.
-* Hívja meg a GraphTopologyList az előző szakaszban leírtak szerint, és ellenőrizze, hogy most már látható a "EVRtoAssetsOnMotionDetecion" gráf-topológia a visszaadott adattartalomban.
+* Hívja meg a GraphTopologyList az előző szakaszban leírtak szerint, és ellenőrizze, hogy most már látható a "EVRtoAssetsOnMotionDetection" gráf-topológia a visszaadott adattartalomban.
 
 ### <a name="invoke-graphtopologyget"></a>GraphTopologyGet meghívása
 
@@ -321,7 +321,7 @@ Most hívja meg a GraphTopologyGet-t a következő hasznos adattartalommal
 
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -337,7 +337,7 @@ Néhány másodpercen belül meg kell jelennie a következő válasznak a kimene
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -466,7 +466,7 @@ Most hívja meg a GraphInstanceSet Direct metódust a következő adattartalomma
     "@apiVersion" : "1.0",
     "name" : "Sample-Graph-2",
     "properties" : {
-        "topologyName" : "EVRtoAssetsOnMotionDetecion",
+        "topologyName" : "EVRtoAssetsOnMotionDetection",
         "description" : "Sample graph description",
         "parameters" : [
             { "name" : "rtspUrl", "value" : "rtsp://rtspsim:554/media/lots_015.mkv" }
@@ -477,7 +477,7 @@ Most hívja meg a GraphInstanceSet Direct metódust a következő adattartalomma
 
 Vegye figyelembe a következőket:
 
-* A fenti hasznos adat meghatározza azt a gráf-topológiát (EVRtoAssetsOnMotionDetecion), amelyhez a Graph-példányt létre kell hozni.
+* A fenti hasznos adat meghatározza azt a gráf-topológiát (EVRtoAssetsOnMotionDetection), amelyhez a Graph-példányt létre kell hozni.
 * A hasznos adatok a "rtspUrl" paraméter értékét tartalmazzák, amely nem rendelkezett alapértelmezett értékkel a topológiai adattartalomban.
 
 Néhány másodpercen belül a következő válasz jelenik meg a kimeneti ablakban:
@@ -496,7 +496,7 @@ Néhány másodpercen belül a következő válasz jelenik meg a kimeneti ablakb
     "properties": {
       "state": "Inactive",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -531,13 +531,13 @@ A létrehozott Media Graph a mozgásészlelési processzor csomópontot használ
     
     Néhány másodpercen belül a következő üzenet jelenik meg a kimeneti ablakban:
 
-    ```
-    [IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
-    [IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
-    ```
+```
+[IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
+[IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
+```
 
 ### <a name="invoke-graphinstanceactivate"></a>GraphInstanceActivate meghívása
 
@@ -590,7 +590,7 @@ Néhány másodpercen belül a kimenet ablakban a következő választ kell lát
     "properties": {
       "state": "Active",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -738,7 +738,7 @@ Ha azt szeretné, hogy a Graph-példány továbbra is fusson, akkor ez az üzene
 
 Ha azt szeretné, hogy a Graph-példány továbbra is fusson, az RTSP-szimulátor eléri a videofájl végét, és leállítja/leválasztja azt. Az RTSP-forrás csomópontja újra csatlakozik a szimulátorhoz, és a folyamat megismétlődik.
     
-## <a name="invoke-additional-direct-methods-to-clean-up"></a>További közvetlen metódusok meghívása a tisztításhoz
+## <a name="invoke-additional-direct-method-calls-to-clean-up"></a>További közvetlen metódusok meghívása a tisztításhoz
 
 A közvetlen metódusok meghívásával inaktiválhatja és törölheti a Graph-példányt (ebben a sorrendben).
 
@@ -801,7 +801,7 @@ Hívja meg a GraphTopologyDelete Direct metódust a következő adattartalommal:
 ```
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -845,7 +845,7 @@ Ezután használhatja a Azure Portal a rögzített videó lejátszásához.
 > [!NOTE]
 > Mivel a szimulált élő videó elindul a gráf aktiválása után, a napi értékek nem relevánsak, és nem jelennek meg a lejátszó parancsikonján keresztül. A folyamatos videofelvételek és lejátszási útmutató bemutatja, hogyan jelenítheti meg az időbélyegeket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

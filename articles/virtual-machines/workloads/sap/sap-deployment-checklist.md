@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924427"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067256"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -44,7 +44,8 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - A nagy hatású üzleti adatszolgáltatások Azure-ban való futtatásának biztonsági alapelvei. Az adatbiztonsággal kapcsolatos további információkért tekintse meg az [Azure Security dokumentációját](../../../security/index.yml).
 2.  Technikai tervezési dokumentum. Ennek a dokumentumnak a következőket kell tartalmaznia:
     - A megoldáshoz tartozó blokk diagram.
-    - A számítási, tárolási és hálózatkezelési összetevők méretezése az Azure-ban. Az Azure-beli virtuális gépek SAP-méretezéséhez lásd: [SAP-támogatás megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533).
+    - A számítási, tárolási és hálózatkezelési összetevők méretezése az Azure-ban. Az Azure-beli virtuális gépek SAP-méretezéséhez lásd: [SAP 
+    -  Megjegyzés #1928533] ( https://launchpad.support.sap.com/#/notes/1928533) .
     - Üzletmenet-folytonosság és vész-helyreállítási architektúra.
     - Részletes információk az operációs rendszer, az adatbázis, a kernel és az SAP támogatási csomagjának verzióiról. Nem feltétlenül igaz, hogy az SAP NetWeaver vagy az S/4HANA által támogatott összes operációsrendszer-kiadás támogatott az Azure-beli virtuális gépeken. Ugyanez érvényes az adatbázis-kezelői kiadások esetében is. Az SAP-és az Azure-támogatás biztosításához az alábbi forrásokból tájékozódhat, és szükség esetén frissítse az SAP-kiadásokat, az adatbázis-kezelői kiadásokat és az operációs rendszert Az SAP és az Azure által támogatott kiadási kombinációkat kell használnia az SAP és a Microsoft teljes körű támogatásához. Szükség esetén meg kell terveznie bizonyos szoftver-összetevők frissítését. A támogatott SAP-, operációsrendszer-és adatbázis-kezelő szoftverekkel kapcsolatos további részleteket a következő dokumentáció ismerteti:
         - [SAP-támogatás megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533). Ez a Megjegyzés az Azure-beli virtuális gépeken támogatott minimális operációsrendszer-kiadásokat határozza meg. Meghatározza továbbá a legtöbb nem HANA-adatbázishoz szükséges minimális adatbázis-kiadásokat is. Végezetül az SAP által támogatott Azure VM-típusok SAP-méretezését biztosítja.
@@ -56,9 +57,11 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
         - [SAP-támogatás Megjegyzés #2555629-SAP HANA 2,0 Dynamic rétegű – hypervisor és Cloud support](https://launchpad.support.sap.com/#/notes/2555629)
         - [SAP-támogatás Megjegyzés #1662610 – támogatás a SIOS Protection Suite for Linux rendszerhez](https://launchpad.support.sap.com/#/notes/1662610)
         - SAP-megjegyzések más SAP-specifikus termékekhez.     
-    - Javasoljuk, hogy az SAP éles rendszerek esetében szigorú háromrétegű kialakítást biztosítson. A ASCS és/vagy az adatbázis-kezelő és/vagy az alkalmazás-kiszolgálók egyetlen virtuális gépen való egyesítését nem javasoljuk. Az SAP Central Services több SID-alapú fürt-konfigurációjának használatával támogatott az Azure-beli Windows vendég operációs rendszerek esetében. Ez a konfiguráció azonban nem támogatott az Azure-beli Linux operációs rendszereken futó SAP központi szolgáltatások esetében. A Windows vendég operációs rendszer forgatókönyvének dokumentációja a következő cikkekben található:
+    - Az SAP Central Services több SID-alapú fürtjének konfigurációjának használatával támogatott a Windows, a SLES és a RHEL vendég operációs rendszerek használata az Azure-ban. Ne feledje, hogy a Blast-sugár növelheti a több ASCS/SCS-t, amelyet egy ilyen multi-SID fürtön helyez el. A megfelelő vendég operációs rendszerekre vonatkozó dokumentáció a következő cikkekben található:
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
+        - [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+        - [Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
     - Magas rendelkezésre állású és vész-helyreállítási architektúra.
         - A RTO és a RPO alapján határozza meg, hogy a magas rendelkezésre állást és a vész-helyreállítási architektúrát hogyan kell kinéznie.
         - Egy zónán belüli magas rendelkezésre álláshoz tekintse meg a kívánt adatbázis-kezelőt az Azure-ban. A legtöbb adatbázis-kezelő csomag szinkron módszert kínál a szinkron gyors készenléti állapothoz, amelyet az üzemi rendszerek esetében ajánlott. Tekintse meg az SAP-hez kapcsolódó dokumentációt a különböző adatbázisokhoz, az [Azure Virtual Machines adatbázis-kezelő üzembe helyezésével kapcsolatos megfontolások alapján az SAP-munkaterhelésekhez és a](./dbms_guide_general.md) kapcsolódó dokumentumokhoz.
@@ -78,7 +81,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - Erőforráscsoport-topológia.
     - [Címkézési stratégia](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - A virtuális gépek és egyéb infrastruktúra-összetevők és/vagy logikai nevek elnevezési konvenciói.
-5.  Microsoft Premier szintű támogatás szerződés. Azonosítsa a Microsoft technikai fiókkezelő (TAM) eszközét. Az SAP-támogatási követelményekkel kapcsolatban lásd: [SAP-támogatási megjegyzés #2015553](https://launchpad.support.sap.com/#/notes/2015553).
+5.  Microsoft Professional vagy Premier szintű támogatás szerződés. Ha Premier szintű támogatási szerződése van a Microsofttal, azonosítsa a Microsoft műszaki fiókkezelő (TAM) eszközét. Az SAP-támogatási követelményekkel kapcsolatban lásd: [SAP-támogatási megjegyzés #2015553](https://launchpad.support.sap.com/#/notes/2015553).
 6.  Az előfizetésekhez tartozó Azure-előfizetések és a fő kvóta száma. Az [Azure-előfizetések kvótáinak igény szerinti növeléséhez nyissa meg a támogatási kérelmeket](../../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 7.  Adatmennyiség-csökkentési és adatáttelepítési terv az SAP-beli Azure-ba való Migrálás során. Az SAP NetWeaver Systems esetében az SAP a nagy adatmennyiségek mennyiségének korlátozására vonatkozó útmutatást tartalmaz. Tekintse meg [ezt az SAP-útmutatót](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) az SAP ERP-rendszerek adatkezelésével foglalkozó témakörben. Néhány tartalom általában a NetWeaver és S/4HANA rendszerekre is vonatkozik.
 8.  Automatikus üzembe helyezési módszer. Az infrastruktúra Azure-beli üzembe helyezésének célja, hogy determinisztikus módon telepítsen, és determinisztikus eredményeket kapjon. Számos ügyfél PowerShell-vagy CLI-alapú parancsfájlokat használ. Vannak azonban olyan nyílt forráskódú technológiák, amelyek segítségével üzembe helyezheti az Azure-infrastruktúrát az SAP számára, és akár SAP-szoftvert is telepíthet. Példákat a GitHubon talál:
@@ -106,6 +109,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
            -  [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
            -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
    2. Tárterület
+        - Az [Azure Storage-beli tárolási típusok keresése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
         - Legalább az [Azure standard SSD Storage](../../windows/disks-types.md#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
         - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](../../windows/disks-types.md#standard-hdd)használatát nem javasoljuk.
         - Az [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.

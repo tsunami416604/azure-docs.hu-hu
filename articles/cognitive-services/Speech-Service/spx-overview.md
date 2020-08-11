@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501814"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067426"
 ---
 # <a name="what-is-the-speech-cli"></a>Mi az a Speech parancssori felület?
 
 A Speech CLI egy parancssori eszköz, amellyel a beszédfelismerési szolgáltatás bármilyen kód írása nélkül használható. A beszédfelismerési parancssori felület minimális beállítást igényel, és a beszédfelismerési szolgáltatás legfontosabb funkcióinak kipróbálásával azonnal megtekintheti, hogy a használati esetek teljesíthetők-e. Néhány percen belül futtathat olyan egyszerű tesztelési munkafolyamatokat, mint a Batch Speech-Recognition egy fájlból, vagy szöveges – beszéd típusú sztringek egy fájlból származó karakterláncok gyűjteményében. Az egyszerű munkafolyamatokon túl a Speech CLI éles használatra kész, és akár több folyamat futtatására is alkalmas automatizált `.bat` vagy rendszerhéj-parancsfájlok használatával.
 
-A Speech SDK elsődleges funkcióinak többsége a Speech CLI-ben érhető el, de néhány speciális funkció és testreszabás egyszerűsített a Speech CLI-ben. Az alábbi útmutatást követve döntse el, mikor kell használni a Speech CLI-t vagy a Speech SDK-t.
+A Speech SDK elsődleges funkcióinak többsége elérhető a Speech CLI-ben, és néhány speciális funkció és testreszabás egyszerűsített a Speech CLI-ben. Az alábbi útmutatást követve döntse el, mikor kell használni a Speech CLI-t vagy a Speech SDK-t.
 
 A Speech CLI használata:
 * A beszédfelismerési szolgáltatás funkcióit minimális telepítéssel szeretné kísérletezni, és nincs kód
@@ -38,13 +38,13 @@ A Speech SDK használata:
 
 * Beszédfelismerés – a szöveg és a beszéd szöveggé konvertálása szöveges fájlok bevitele vagy közvetlenül a parancssorból való bevitel használatával. [SSML-konfigurációk](speech-synthesis-markup.md), valamint [standard vagy neurális hangok](speech-synthesis-markup.md#standard-neural-and-custom-voices)használatával testreszabhatja a beszédfelismerési kimenet jellemzőit.
 
-* Beszéd fordítása – a hanganyagot nyelvre lefordíthatja a célnyelv szövegére.
+* Beszéd fordítása – a hanganyagot szövegre vagy hangra fordíthatja a célnyelv nyelvén.
 
-* Futtatás Azure számítási erőforrásokon – SPX-parancsok küldése egy Azure távoli számítási erőforráson való futtatásra a használatával `spx webjob` .
+* Futtatás Azure számítási erőforrásokon – beszédfelismerési CLI-parancsok küldése Azure távoli számítási erőforráson való futtatáshoz a használatával `spx webjob` .
 
 ## <a name="get-started"></a>Bevezetés
 
-A Speech CLI használatának megkezdéséhez tekintse meg az alapvető tudnivalókat ismertető [cikket](spx-basics.md). Ebből a cikkből megtudhatja, hogyan futtathat néhány alapszintű parancsot az SPX-vel, és hogyan jeleníti meg valamivel fejlettebb parancsokat a Batch-műveletek futtatásához a beszédfelismerés és a szöveg közötti kommunikációhoz. Az alapismeretek című cikk elolvasása után elegendő az SPX-szintaxis megismerése az egyéni parancsok írásának megkezdéséhez, illetve az egyszerű beszédfelismerési műveletek automatizálásához.
+A Speech CLI használatának megkezdéséhez tekintse meg az alapvető tudnivalókat ismertető [cikket](spx-basics.md). Ebből a cikkből megtudhatja, hogyan futtathat néhány alapszintű parancsot, és hogyan jelenítheti meg valamivel több speciális parancsot a Batch-műveletek futtatásához a beszédfelismerés és a szöveg közötti kommunikációhoz. Az alapismeretek című cikk elolvasása után meg kell ismernie a szintaxist, hogy megismerje az egyéni parancsok írását, vagy automatizálja az egyszerű beszédfelismerési szolgáltatás műveleteit.
 
 ## <a name="next-steps"></a>További lépések
 

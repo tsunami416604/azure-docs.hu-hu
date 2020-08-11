@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341014"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067528"
 ---
 # <a name="service-bus-messaging-samples"></a>Üzenetkezelési minták Service Bus
 A Service Bus üzenetkezelési minták a [Service Bus üzenetkezelés](https://azure.microsoft.com/services/service-bus/)főbb funkcióit mutatják be. Jelenleg a minták a következő helyeken találhatók:
@@ -30,5 +30,4 @@ Továbbá a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusE
 Tekintse meg a következő témaköröket a Service Bus fogalmi áttekintéséhez.
 
 * [Service Bus üzenetkezelés áttekintése](service-bus-messaging-overview.md)
-* [Service Bus-architektúra](service-bus-architecture.md)
-
+* [Service Bus-architektúra](./service-bus-messaging-overview.md)

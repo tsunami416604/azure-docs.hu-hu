@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074456"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067900"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -86,8 +86,8 @@ A IoT Edge élő videó-elemzési szolgáltatás a modul [Twin konfigurációs s
 
 ### <a name="deploy-using-the-azure-portal"></a>Üzembe helyezés az Azure Portalon
 
-A Azure Portal végigvezeti az üzembe helyezési jegyzék létrehozásán és az üzembe helyezés egy IoT Edge eszközön való továbbításának végrehajtásán.
-Eszköz kiválasztása
+A Azure Portal végigvezeti az üzembe helyezési jegyzék létrehozásán és az üzembe helyezés egy IoT Edge eszközön való továbbításának végrehajtásán.  
+#### <a name="select-your-device-and-set-modules"></a>Válassza ki az eszközt, és állítsa be a modulokat
 
 1. Jelentkezzen be a [Azure Portalba](https://ms.portal.azure.com/) , és navigáljon az IoT hubhoz.
 1. A menüből válassza a **IoT Edge** lehetőséget.
@@ -112,23 +112,12 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     > [!TIP]
     > Ne válassza a **Hozzáadás** lehetőséget, amíg meg nem adta a **modul beállításai**, a tároló- **létrehozási beállítások**és a **modul Twin-beállítások** lapjait a jelen eljárásban leírtak szerint.
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > A Azure IoT Edge a kis-és nagybetűk megkülönböztetése, amikor hívásokat kezdeményez a modulokra. Jegyezze fel a modul neveként használt pontos karakterláncot.
 
 1. Nyissa meg a **környezeti változók** lapot.
    
-   Másolja és illessze be a következő JSON-t a mezőbe, hogy megadja a felhasználói azonosítót és a csoport AZONOSÍTÓját, amelyet az alkalmazásadatok és a videók kimenetének mentéséhez kíván használni.
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   Adja hozzá a következő értékeket a beviteli mezőkben a környezeti változók megjelenítéséhez. ![](./media/deploy-iot-edge-device/environment-variables.png) 
 
 1. Nyissa meg a **tároló létrehozása beállítások** lapot.
 
@@ -201,8 +190,8 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   Az **allowUnsecuredEndpoints** Twin tulajdonsága igaz értékre van állítva az oktatóanyagok és a rövid útmutatók esetében.   
+   > [!Note]
+   > Az **allowUnsecuredEndpoints** Twin tulajdonsága igaz értékre van állítva az oktatóanyagok és a rövid útmutatók esetében.   
    Éles környezetben való futtatáskor ezt a tulajdonságot **false** értékre kell állítani. Ez biztosítja, hogy az alkalmazás letiltja az összes nem biztonságos végpontot, és a Graph-topológiák futtatásához érvényes hitelesítő adatokra lesz szükség.  
    
     Válassza a Hozzáadás lehetőséget a modul Twin tulajdonságainak hozzáadásához.
@@ -258,5 +247,7 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
     ![Az 200-es állapotú üzenet](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>További lépések
+Próbálja ki a rövid útmutató [: első lépések – élő videó Analytics IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[Gyors útmutató: első lépések – élő videó-elemzés IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> A parancsban a következőt fogja futtatni, a `device-id` helyett használja az alapértelmezett beállítást `lva-sample-device` .

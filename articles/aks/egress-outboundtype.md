@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244446"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067358"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal
 
@@ -60,7 +60,7 @@ Az alábbiakban egy olyan hálózati topológia található, amely alapértelmez
 
 Ha `userDefinedRouting` be van állítva, az AK nem konfigurálja automatikusan a kimenő útvonalakat. A kimenő telepítést Önnek kell elvégeznie.
 
-Az AK-fürtöt egy korábban konfigurált alhálózattal rendelkező meglévő virtuális hálózatba kell telepíteni, mert a standard Load Balancer (SLB) architektúrájának használatakor explicit kimenő forgalmat kell létrehoznia. Ebben az architektúrában explicit módon kell elküldeni a kimenő forgalmat egy olyan készülékre, mint például a tűzfal, az átjáró, a proxy vagy a hálózati címfordítás (NAT) a standard Load Balancerhez vagy berendezéshez rendelt nyilvános IP-cím használatával.
+Az AK-fürtöt egy korábban konfigurált alhálózattal rendelkező meglévő virtuális hálózatba kell telepíteni, mert ha nem használ standard Load Balancer (SLB) architektúrát, explicit kimenő forgalmat kell létrehoznia. Ebben az architektúrában explicit módon kell elküldeni a kimenő forgalmat egy olyan készülékre, mint például a tűzfal, az átjáró, a proxy vagy a hálózati címfordítás (NAT) a standard Load Balancerhez vagy berendezéshez rendelt nyilvános IP-cím használatával.
 
 Az AK erőforrás-szolgáltató telepíti a standard Load balancert (SLB). A terheléselosztó nincs konfigurálva semmilyen szabállyal, és [nem számítunk fel díjat a szabály elhelyezése előtt](https://azure.microsoft.com/pricing/details/load-balancer/). Az AK **nem** épít ki automatikusan nyilvános IP-címet a SLB-előtérbeli felülethez, és nem konfigurálja automatikusan a terheléselosztó-háttérrendszer-készletet.
 
@@ -73,7 +73,7 @@ Egy felhasználó által megadott útvonal használatával a kimenő típusú f�
 > Az útválasztási táblázathoz már tartozik egy alapértelmezett 0.0.0.0/0 az internetre, anélkül, hogy a nyilvános IP-cím SNAT csak ezt az útvonalat adja hozzá, a kimenő forgalom nem fog megjelenni. Az AK ellenőrzi, hogy nem hoz létre 0.0.0.0/0 útvonalat az interneten, hanem NVA vagy átjáróként, stb.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: [Azure Networking UDR – áttekintés](../virtual-network/virtual-networks-udr-overview.md).
 

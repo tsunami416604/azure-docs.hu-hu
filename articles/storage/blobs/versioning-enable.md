@@ -1,24 +1,28 @@
 ---
 title: BLOB verziószámozásának engedélyezése és kezelése (előzetes verzió)
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan engedélyezheti a Blobok verziószámozását a Azure Portal vagy egy Azure Resource Manager sablon használatával.
+description: Megtudhatja, hogyan engedélyezheti a Blobok verziószámozását (előzetes verzió) a Azure Portal vagy egy Azure Resource Manager sablon használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086047"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067273"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>BLOB-verziószámozás engedélyezése és kezelése
+# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB verziószámozásának engedélyezése és kezelése (előzetes verzió)
 
-A Storage-fiókhoz bármikor engedélyezheti vagy letilthatja a blob verziószámozását (előzetes verzió) a Azure Portal vagy egy Azure Resource Manager sablon használatával.
+Engedélyezheti a blob Storage verziószámozását (előzetes verzió) az objektumok korábbi verzióinak automatikus karbantartásához.  Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
+
+Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a Blobok verziószámozását a Storage-fiókhoz a Azure Portal vagy egy Azure Resource Manager sablon használatával.
+
+A blob verziószámozásának engedélyezése előtt regisztrálnia kell az előzetes verzióra. Ha többet szeretne megtudni a Blobok verziószámozásáról, beleértve az előzetes verzióra való regisztráció módját, lásd: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
 
 ## <a name="enable-blob-versioning"></a>Blob verziószámozásának engedélyezése
 

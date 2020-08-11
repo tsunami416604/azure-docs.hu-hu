@@ -6,12 +6,12 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0909fd95238051a6a50e582cb2543dd3bdd307bf
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337063"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067290"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions és a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
 Ebből az oktatóanyagból megtudhatja, hogyan válaszolhat a Azure Event Grid használatával fogadott Azure Service Bus eseményekre Azure Functions és Azure Logic Apps használatával. 
@@ -355,10 +355,10 @@ Ez a szakasz az üzenetek fogadását és feldolgozását ismerteti az eseménye
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók az [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.
-* További tudnivalók az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
-* További tudnivalók az [Azure App Service szolgáltatás Logic Apps funkciójáról](https://docs.microsoft.com/azure/logic-apps/).
-* További tudnivalók az [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/) szolgáltatásról.
+* További tudnivalók az [Azure Event Grid](../event-grid/index.yml) szolgáltatásról.
+* További tudnivalók az [Azure Functions](../azure-functions/index.yml) szolgáltatásról.
+* További tudnivalók az [Azure App Service szolgáltatás Logic Apps funkciójáról](../logic-apps/index.yml).
+* További tudnivalók az [Azure Service Bus](/azure/service-bus/) szolgáltatásról.
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

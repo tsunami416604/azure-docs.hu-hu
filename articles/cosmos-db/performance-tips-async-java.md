@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa55f864319146c4d3237eb9e6725da2a68035f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308984"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067610"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
 
@@ -239,28 +239,6 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
     ```
     * - nofile 100000
     ```
-
-* **Natív TLS/SSL-implementáció használata a nettó működéshez**
-
-    A nagyobb teljesítmény elérése érdekében a nettó OpenSSL a TLS implementációs veremhez is használható. A konfiguráció hiányában a rendszer visszatér a Java alapértelmezett TLS-megvalósítására.
-
-    Ubuntu rendszeren:
-    ```bash
-    sudo apt-get install openssl
-    sudo apt-get install libapr1
-    ```
-
-    adja hozzá a következő függőséget a projekt Maven-függőségeihez:
-    ```xml
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative</artifactId>
-      <version>2.0.20.Final</version>
-      <classifier>linux-x86_64</classifier>
-    </dependency>
-    ```
-
-Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasításokathttps://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Indexelési szabályzat
  

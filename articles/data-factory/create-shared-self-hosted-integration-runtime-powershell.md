@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03e906d448790be8c7494e8172d02b3fc0603673
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655734"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067953"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Megosztott, saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
 
@@ -55,14 +55,14 @@ Ha Azure PowerShell használatával szeretné létrehozni a megosztott saját ü
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) . 
+- **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. 
 
 - **Azure PowerShell**. Kövesse a következő témakör utasításait: [Install Azure PowerShell for Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). A PowerShell használatával parancsfájlt futtathat egy olyan saját üzemeltetésű integrációs modul létrehozásához, amely más adatgyárakkal is megosztható. 
 
 > [!NOTE]  
 > Azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, válassza ki azokat a régiókat, amelyek érdeklik a [régiókban elérhető termékeken](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
-### <a name="create-a-data-factory"></a>Data factory létrehozása
+### <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a Windows PowerShell integrált parancsfájlkezelési környezetet (ISE).
 
@@ -155,7 +155,7 @@ A válasz tartalmazza a saját üzemeltetésű integrációs modulhoz tartozó h
 #### <a name="create-another-data-factory"></a>Másik adatelőállító létrehozása
 
 > [!NOTE]  
-> Ez a lépés nem kötelező. Ha már rendelkezik a-vel megosztani kívánt adatelőállítóval, ugorja át ezt a lépést.
+> Ez a lépés nem kötelező. Ha már rendelkezik a-vel megosztani kívánt adatelőállítóval, ugorja át ezt a lépést. Ha azonban a más adat-előállítóhoz szerepkör-hozzárendeléseket szeretne hozzáadni vagy eltávolítani, akkor a `Microsoft.Authorization/roleAssignments/write` és az `Microsoft.Authorization/roleAssignments/delete` engedélyekkel kell rendelkeznie, például a [felhasználói hozzáférés rendszergazdájának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) vagy a [tulajdonosnak](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner).
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

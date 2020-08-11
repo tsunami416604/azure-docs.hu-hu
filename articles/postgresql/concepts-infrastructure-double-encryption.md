@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 3806135b7ed212e6eb5ea458c015ebc5810e0e80
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034866"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067494"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL infrastruktúra kettős titkosítása
 
@@ -36,7 +36,7 @@ Az infrastruktúra-rétegekben való megvalósítás a kulcsok sokféleségét i
 
 A Azure Database for PostgreSQL infrastruktúra-kettős titkosítása a következő előnyöket nyújtja:
 
-1. A **kriptográfiai megvalósítás sokfélesége** – a hardveres titkosítás tervezett áthelyezése tovább bővíti a megvalósításokat azáltal, hogy hardveres implementációt biztosít a szoftveres implementáción kívül.
+1. A **kriptográfiai megvalósítás további sokfélesége** – a hardveres titkosítás tervezett áthelyezése tovább bővíti a megvalósításokat azáltal, hogy hardveres implementációt biztosít a szoftveres implementáción kívül.
 2. **Megvalósítási hibák** – az infrastruktúra szintjén két titkosítási réteg védi a gyorsítótárazási vagy a memória-kezelés hibáit, amelyek lehetővé teszik az egyszerű szöveges adatmennyiséget. Emellett a két réteg a titkosítás megvalósításában általában is biztosítja a hibákat.
 
 Ezek kombinációja erős védelmet nyújt a titkosítás elleni támadásokkal kapcsolatos gyakori fenyegetések és gyengeségek ellen.
@@ -45,7 +45,7 @@ Ezek kombinációja erős védelmet nyújt a titkosítás elleni támadásokkal 
 
 A Azure Database for PostgreSQL által biztosított titkosítási képességek együtt használhatók. Az alábbiakban a különböző felhasználási helyzetek összegzése látható:
 
-|  ##   | Alapértelmezett titkosítás | Infrastruktúra – kettős titkosítás | Adattitkosítás az ügyfél által felügyelt kulcsokkal  |
+|  ##   | Alapértelmezett titkosítás | Infrastruktúra kettős titkosítása | Adattitkosítás az ügyfél által felügyelt kulcsokkal  |
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Igen*              | *Nem*                             | *Nem*                                         |
 | 2     | *Igen*              | *Igen*                            | *Nem*                                         |
@@ -54,7 +54,7 @@ A Azure Database for PostgreSQL által biztosított titkosítási képességek e
 |       |                    |                                  |                                              |
 
 > [!Important]
-> - A 2. és a 4. forgatókönyv jelentős teljesítménybeli hatással lesz a Azure Database for PostgreSQL-kiszolgálóra az infrastruktúra további titkosítási rétege miatt.
+> - A 2. és a 4. forgatókönyv teljesítménye hatással lesz a Azure Database for PostgreSQL-kiszolgálóra az infrastruktúra további titkosítási rétege miatt.
 > - Az infrastruktúra dupla titkosításának konfigurálása Azure Database for PostgreSQL esetén csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően a tároló titkosítása nem módosítható. Azonban továbbra is engedélyezheti az adattitkosítást az ügyfél által felügyelt kulcsokkal az infrastruktúra kettős titkosításával/nélkül létrehozott kiszolgáló esetében.
 
 ## <a name="limitations"></a>Korlátozások

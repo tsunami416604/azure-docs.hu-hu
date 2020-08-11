@@ -3,12 +3,12 @@ title: YAML-hivatkozás – ACR-feladatok
 description: Az ACR-feladatok YAML kapcsolatos feladatok definiálásának referenciája, beleértve a feladatok tulajdonságait, a lépések típusát, a lépés tulajdonságait és a beépített változókat.
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 4710afe0d10a81f2a84437a335d3a012f3bac326
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479778"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067583"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
 
@@ -77,13 +77,13 @@ A feladat tulajdonságai általában egy fájl tetején jelennek meg `acr-task.y
 
 | Tulajdonság | Típus | Választható | Leírás | Felülbírálás támogatott | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | sztring | Igen | Az `acr-task.yaml` ACR Tasks szolgáltatás által elemzett fájl verziója. Míg az ACR-feladatok a visszamenőleges kompatibilitás fenntartására törekednek, ez az érték lehetővé teszi az ACR-feladatok számára a kompatibilitás fenntartását egy meghatározott verzión belül. Ha nincs megadva, az alapértelmezett érték a legújabb verzió. | Nem | None |
+| `version` | sztring | Igen | Az `acr-task.yaml` ACR Tasks szolgáltatás által elemzett fájl verziója. Míg az ACR-feladatok a visszamenőleges kompatibilitás fenntartására törekednek, ez az érték lehetővé teszi az ACR-feladatok számára a kompatibilitás fenntartását egy meghatározott verzión belül. Ha nincs megadva, az alapértelmezett érték a legújabb verzió. | Nem | Nincs |
 | `stepTimeout` | int (másodperc) | Igen | A lépés által futtatható másodpercek maximális száma. Ha a tulajdonság meg van adva egy feladathoz, az az `timeout` összes lépés alapértelmezett tulajdonságát állítja be. Ha a `timeout` tulajdonságot egy lépésben adja meg, a felülbírálja a feladat által megadott tulajdonságot. | Igen | 600 (10 perc) |
-| `workingDirectory` | sztring | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az `workingDirectory` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `/workspace` |
-| `env` | [karakterlánc, karakterlánc,...] | Igen |  A `key=value` feladathoz tartozó környezeti változókat meghatározó karakterláncok tömbje. Ha a tulajdonság meg van adva egy feladathoz, az az `env` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, akkor felülbírálja a feladatból örökölt környezeti változókat. | Igen | None |
-| `secrets` | [titok, titkos kód,...] | Igen | [Titkos](#secret) objektumok tömbje. | Nem | None |
-| `networks` | [hálózat, hálózat,...] | Igen | [Hálózati](#network) objektumok tömbje. | Nem | None |
-| `volumes` | [kötet, kötet,...] | Igen | [Mennyiségi](#volume) objektumok tömbje. Egy lépéshez csatlakoztatni kívánt tartalommal rendelkező köteteket határozza meg. | Nem | None |
+| `workingDirectory` | sztring | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az `workingDirectory` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `c:\workspace`Windows vagy `/workspace` Linux rendszeren |
+| `env` | [karakterlánc, karakterlánc,...] | Igen |  A `key=value` feladathoz tartozó környezeti változókat meghatározó karakterláncok tömbje. Ha a tulajdonság meg van adva egy feladathoz, az az `env` összes lépés alapértelmezett tulajdonságát állítja be. Ha egy lépésben meg van adva, akkor felülbírálja a feladatból örökölt környezeti változókat. | Igen | Nincs |
+| `secrets` | [titok, titkos kód,...] | Igen | [Titkos](#secret) objektumok tömbje. | Nem | Nincs |
+| `networks` | [hálózat, hálózat,...] | Igen | [Hálózati](#network) objektumok tömbje. | Nem | Nincs |
+| `volumes` | [kötet, kötet,...] | Igen | [Mennyiségi](#volume) objektumok tömbje. Egy lépéshez csatlakoztatni kívánt tartalommal rendelkező köteteket határozza meg. | Nem | Nincs |
 
 ### <a name="secret"></a>titkos kód
 
@@ -91,9 +91,9 @@ A titkos objektum a következő tulajdonságokkal rendelkezik.
 
 | Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | sztring | No | A titok azonosítója. | None |
-| `keyvault` | sztring | Igen | A Azure Key Vault titkos URL-cím. | None |
-| `clientID` | sztring | Igen | Az Azure-erőforrások [felhasználó által hozzárendelt felügyelt identitásának ügyfél-](container-registry-tasks-authentication-managed-identity.md) azonosítója. | None |
+| `id` | sztring | No | A titok azonosítója. | Nincs |
+| `keyvault` | sztring | Igen | A Azure Key Vault titkos URL-cím. | Nincs |
+| `clientID` | sztring | Igen | Az Azure-erőforrások [felhasználó által hozzárendelt felügyelt identitásának ügyfél-](container-registry-tasks-authentication-managed-identity.md) azonosítója. | Nincs |
 
 ### <a name="network"></a>network
 
@@ -101,8 +101,8 @@ A hálózati objektum a következő tulajdonságokkal rendelkezik.
 
 | Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | sztring | No | A hálózat neve. | None |
-| `driver` | sztring | Igen | A hálózat kezelésére szolgáló illesztőprogram. | None |
+| `name` | sztring | No | A hálózat neve. | Nincs |
+| `driver` | sztring | Igen | A hálózat kezelésére szolgáló illesztőprogram. | Nincs |
 | `ipv6` | logikai | Igen | Azt jelzi, hogy engedélyezve van-e az IPv6-hálózat. | `false` |
 | `skipCreation` | logikai | Igen | Megadhatja, hogy kihagyja-e a hálózat létrehozását. | `false` |
 | `isDefault` | logikai | Igen | Azt határozza meg, hogy a hálózat az Azure Container Registry által biztosított alapértelmezett hálózat-e. | `false` |
@@ -113,8 +113,8 @@ A kötet objektum a következő tulajdonságokkal rendelkezik.
 
 | Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | sztring | No | A csatlakoztatni kívánt kötet neve. Csak alfanumerikus karaktereket, "-" és "_" karaktert tartalmazhat. | None |
-| `secret` | Térkép [karakterlánc] sztring | Nem | A Térkép minden kulcsa a köteten létrehozott és kitöltött fájl neve. Minden érték a titok karakterlánc-verziója. A titkos értékeknek Base64 kódolással kell rendelkezniük. | None |
+| `name` | sztring | No | A csatlakoztatni kívánt kötet neve. Csak alfanumerikus karaktereket, "-" és "_" karaktert tartalmazhat. | Nincs |
+| `secret` | Térkép [karakterlánc] sztring | Nem | A Térkép minden kulcsa a köteten létrehozott és kitöltött fájl neve. Minden érték a titok karakterlánc-verziója. A titkos értékeknek Base64 kódolással kell rendelkezniük. | Nincs |
 
 ## <a name="task-step-types"></a>Feladat lépésének típusai
 
@@ -375,26 +375,7 @@ az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://gi
 ```
 
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/mounts-secrets.yaml -->
-<!-- [!code-yml[task](~/acr-tasks/mounts-secrets.yaml)] -->
-
-```yml
-# This template demonstrates mounting a custom volume into a container at a CMD step
-secrets:
-  - id: sampleSecret
-    keyvault: https://myacbvault2.vault.azure.net/secrets/SampleSecret
-
-volumes:
-  - name: mysecrets
-    secret:
-      mysecret1: {{.Secrets.sampleSecret | b64enc}}
-      mysecret2: {{.Values.mysecret | b64enc}}
-
-steps:
-  - cmd: bash cat /run/test/mysecret1 /run/test/mysecret2
-    volumeMounts:
-      - name: mysecrets
-        mountPath: /run/test
-```
+[!code-yml[task](~/acr-tasks/mounts-secrets.yaml)]
 
 ## <a name="task-step-properties"></a>Feladat lépésének tulajdonságai
 
@@ -404,27 +385,26 @@ Az egyes lépésekhez tartozó típusok több, a típusához megfelelő tulajdon
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | logikai | Igen | Azt jelzi, hogy a tárolót le kell-e választani a futtatáskor. | `false` |
 | `disableWorkingDirectoryOverride` | logikai | Igen | Meghatározza, hogy le kell-e tiltani a `workingDirectory` felülbírálási funkciót. Ezzel együtt a paranccsal `workingDirectory` teljes mértékben szabályozhatja a tároló munkakönyvtárát. | `false` |
-| `entryPoint` | sztring | Igen | Felülbírálja `[ENTRYPOINT]` egy lépés tárolóját. | None |
-| `env` | [karakterlánc, karakterlánc,...] | Igen | A `key=value` lépés környezeti változóit meghatározó karakterláncok tömbje. | None |
-| `expose` | [karakterlánc, karakterlánc,...] | Igen | A tárolóból kitett portok tömbje. |  None |
+| `entryPoint` | sztring | Igen | Felülbírálja `[ENTRYPOINT]` egy lépés tárolóját. | Nincs |
+| `env` | [karakterlánc, karakterlánc,...] | Igen | A `key=value` lépés környezeti változóit meghatározó karakterláncok tömbje. | Nincs |
+| `expose` | [karakterlánc, karakterlánc,...] | Igen | A tárolóból kitett portok tömbje. |  Nincs |
 | [`id`](#example-id) | sztring | Igen | Egyedi módon azonosítja a lépést a tevékenységen belül. A feladat egyéb lépései hivatkozhatnak egy adott lépésre `id` , például a függőségi ellenőrzésre a használatával `when` .<br /><br />A a `id` futó tároló neve is. A feladat más tárolókban futó folyamatai a `id` DNS-állomásnévként, illetve a Docker-naplók [id] használatával való elérésére is hivatkozhatnak, például:. | `acb_step_%d`, ahol a a `%d` YAML-fájlban legfelüli lépés 0 alapú indexe |
 | `ignoreErrors` | logikai | Igen | Azt jelzi, hogy a lépés sikeres-e, függetlenül attól, hogy hiba történt-e a tároló végrehajtása során. | `false` |
 | `isolation` | sztring | Igen | A tároló elkülönítési szintje. | `default` |
 | `keep` | logikai | Igen | Azt határozza meg, hogy a lépés tárolóját a végrehajtás után kell-e megőrizni. | `false` |
-| `network` | object | Igen | Azonosítja azt a hálózatot, amelyben a tároló fut. | None |
-| `ports` | [karakterlánc, karakterlánc,...] | Igen | A tárolóból a gazdagépre közzétett portok tömbje. |  None |
+| `network` | object | Igen | Azonosítja azt a hálózatot, amelyben a tároló fut. | Nincs |
+| `ports` | [karakterlánc, karakterlánc,...] | Igen | A tárolóból a gazdagépre közzétett portok tömbje. |  Nincs |
 | `pull` | logikai | Igen | Azt határozza meg, hogy a tároló lekérését kényszerítse-e a gyorsítótár működésének megakadályozása érdekében. | `false` |
 | `privileged` | logikai | Igen | Azt határozza meg, hogy a tárolót emelt szintű módban kívánja-e futtatni. | `false` |
 | `repeat` | int | Igen | A tárolók végrehajtásának megismétléséhez szükséges újrapróbálkozások száma. | 0 |
 | `retries` | int | Igen | Az újrapróbálkozások száma, ha egy tároló nem tudja végrehajtani a végrehajtását. Egy újrapróbálkozás csak akkor próbálkozik, ha egy tároló kilépési kódja nem nulla. | 0 |
 | `retryDelay` | int (másodperc) | Igen | A tároló végrehajtásának újrapróbálkozásai közötti késleltetés másodpercben. | 0 |
-| `secret` | object | Igen | Azonosít egy Azure Key Vault titkos vagy [felügyelt identitást az Azure-erőforrásokhoz](container-registry-tasks-authentication-managed-identity.md). | None |
+| `secret` | object | Igen | Azonosít egy Azure Key Vault titkos vagy [felügyelt identitást az Azure-erőforrásokhoz](container-registry-tasks-authentication-managed-identity.md). | Nincs |
 | `startDelay` | int (másodperc) | Igen | A tároló végrehajtásának késleltetéséhez szükséges másodpercek száma. | 0 |
 | `timeout` | int (másodperc) | Igen | A lépés megszakítása előtt legfeljebb ennyi másodpercig futhat. | 600 |
-| [`when`](#example-when) | [karakterlánc, karakterlánc,...] | Igen | A feladat egy vagy több lépésének függőségét konfigurálja. | None |
-| `user` | sztring | Igen | Egy tároló felhasználóneve vagy UID azonosítója | None |
-| `volumeMounts` | object | Nem | [VolumeMount](#volumemount) objektumok tömbje. | None |
-| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `/workspace` |
+| [`when`](#example-when) | [karakterlánc, karakterlánc,...] | Igen | A feladat egy vagy több lépésének függőségét konfigurálja. | Nincs |
+| `user` | sztring | Igen | Egy tároló felhasználóneve vagy UID azonosítója | Nincs |
+| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `c:\workspace`Windows vagy `/workspace` Linux rendszeren |
 
 ### <a name="volumemount"></a>volumeMount
 
@@ -432,8 +412,8 @@ A volumeMount objektum a következő tulajdonságokkal rendelkezik.
 
 | Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | sztring | No | A csatlakoztatni kívánt kötet neve. Pontosan egyeznie kell a tulajdonság nevével `volumes` . | None |
-| `mountPath`   | sztring | nem | A tárolóban lévő fájlok csatlakoztatásának abszolút elérési útja.  | None |
+| `name` | sztring | No | A csatlakoztatni kívánt kötet neve. Pontosan egyeznie kell a tulajdonság nevével `volumes` . | Nincs |
+| `mountPath`   | sztring | nem | A tárolóban lévő fájlok csatlakoztatásának abszolút elérési útja.  | Nincs |
 
 ### <a name="examples-task-step-properties"></a>Példák: tevékenység lépés tulajdonságai
 
@@ -521,6 +501,10 @@ version: v1.1.0
 steps:
     - build: -t $Registry/hello-world:$ID .
 ```
+
+### <a name="runsharedvolume"></a>Futtassa a. SharedVolume
+
+Egy megosztott kötet egyedi azonosítója, amely az összes feladat lépésével elérhető. A kötet `c:\workspace` Windows vagy Linux rendszerhez van csatlakoztatva `/workspace` . 
 
 ### <a name="runregistry"></a>A. Registry futtatása
 

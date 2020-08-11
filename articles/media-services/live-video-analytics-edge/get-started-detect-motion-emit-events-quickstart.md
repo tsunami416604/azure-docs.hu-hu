@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090076"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067686"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -84,7 +84,7 @@ Ha a kapcsolatok sikeresek, megjelenik az Edge-eszközök listája. Legalább eg
 
 ![LVA – minta – eszköz csomópont](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>Közvetlen metódusok használata
+## <a name="use-direct-method-calls"></a>Közvetlen metódusú hívások használata
 
 A modul segítségével közvetlen metódusok meghívásával elemezheti az élő videó streameket. További információ: [közvetlen módszerek az élő videók elemzéséhez IoT Edgeon](direct-methods.md). 
 
@@ -675,7 +675,7 @@ Próbálkozzon a következő lépésekkel:
 1. Meghívja `GraphTopologyList` és megfigyelheti, hogy a modul nem tartalmaz gráf-topológiákat.
 1. `GraphInstanceList`Ugyanazzal a hasznos adattartalommal hivatkozhat `GraphTopologyList` . Figyelje meg, hogy a Graph-példányok felsorolása nem történik meg.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

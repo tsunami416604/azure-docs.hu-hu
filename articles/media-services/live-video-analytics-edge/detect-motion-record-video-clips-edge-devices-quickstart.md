@@ -3,12 +3,12 @@ title: A Motion & Record Videójának észlelése az Edge-eszközökön – Azur
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket az élő videó-hírcsatornák (szimulált) IP-kameráról való elemzéséhez, hogy észlelje, hogy van-e mozgás, és ha igen, jegyezzen fel egy MP4-videoklipet a peremhálózati eszköz helyi fájljába.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 796def7cad3632dd50184bea751dc9f348569216
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091861"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067692"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Rövid útmutató: mozgás észlelése és videó rögzítése a peremhálózati eszközökön
  
@@ -89,11 +89,20 @@ A rövid útmutató előfeltételeinek részeként letöltötte a mintakód egy 
 
 A [IoT Edge üzembe helyezési jegyzékfájljának előállítása és telepítése](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest) lépésben, a Visual Studio Code-ban bontsa ki a **LVA-Sample-Device** CSOMÓPONTOT az **Azure IoT hub** alatt (a bal alsó szakaszban). A következő modulokat kell látnia:
 
-* A **lvaEdge** nevű Live Video Analytics-modul
-* A **rtspsim** modul, amely egy élő videó-hírcsatorna forrásaként szolgáló RTSP-kiszolgálót szimulál
+* A (z) nevű Live Video Analytics-modul`lvaEdge`
+* A `rtspsim` modul, amely egy élő videó-hírcsatorna forrásaként szolgáló RTSP-kiszolgálót szimulál
 
   ![Modulok](./media/quickstarts/lva-sample-device-node.png)
 
+> [!NOTE]
+> Ha saját peremhálózati eszközt használ a telepítési parancsfájlból kiépített helyett, nyissa meg a peremhálózati eszközét, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal**az ehhez a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
+
+```
+mkdir /home/lvaadmin/samples
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 
 ## <a name="review---prepare-for-monitoring-events"></a>Felülvizsgálat – felkészülés a figyelési eseményekre
 Győződjön meg arról, hogy végrehajtotta az [események figyelésének előkészítéséhez](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)szükséges lépéseket.
@@ -103,56 +112,57 @@ Győződjön meg arról, hogy végrehajtotta az [események figyelésének elők
 ## <a name="run-the-sample-program"></a>A minta program futtatása
 
 1. Indítsa el a hibakeresési munkamenetet az F5 billentyű kiválasztásával. A **Terminálablak** kinyomtat néhány üzenetet.
-1. A kód *operations.js* a közvetlen metódusokat hívja `GraphTopologyList` meg `GraphInstanceList` . Ha az előző rövid útmutatók után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. Válassza ki az ENTER billentyűt.
+1. A kód *operations.js* a közvetlen metódusokat hívja `GraphTopologyList` meg `GraphInstanceList` . Ha az előző rövid útmutatók után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. Nyomja meg az Enter billentyűt.
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+  "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+  "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:
+  A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:  
+  * A következőt `GraphTopologySet` használó hívás`topologyUrl` 
+  * A `GraphInstanceSet` következő törzset használó hívás:
 
-     * A következőt `GraphTopologySet` használó hívás`topologyUrl` 
-     * A `GraphInstanceSet` következő törzset használó hívás:
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "EVRToFilesOnMotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
 
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "EVRToFilesOnMotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     * A `GraphInstanceActivate` gráf-példányt és a videó folyamatát indító hívás
-     * Egy második hívás, `GraphInstanceList` amely azt mutatja, hogy a Graph-példány fut állapotban van
-1. A **terminál** ablakban lévő kimenet a következő időpontban szünetel: `Press Enter to continue` . Ne jelölje be az ENTER billentyűt. Görgetéssel tekintse meg a meghívott közvetlen metódusok JSON-válaszának hasznos adatait.
+  * A `GraphInstanceActivate` gráf-példányt és a videó folyamatát indító hívás
+  * Egy második hívás, `GraphInstanceList` amely azt mutatja, hogy a Graph-példány fut állapotban van  
+
+3. A **terminál** ablakban lévő kimenet a következő időpontban szünetel: `Press Enter to continue` . Ne jelölje be az ENTER billentyűt. Görgetéssel tekintse meg a meghívott közvetlen metódusok JSON-válaszának hasznos adatait.
 1. Váltson a **kimeneti** ablakra a Visual Studio Code-ban. Láthatja, hogy az élő videó Analytics IoT Edge-modulon az IoT hub-ra küld üzenetet. A rövid útmutató következő szakasza ezeket az üzeneteket tárgyalja.
 
 1. A Media Graph továbbra is fut, és kinyomtatja az eredményeket. Az RTSP-szimulátor megtartja a forrás videóját. A Media Graph leállításához térjen vissza a **terminál** ablakába, és válassza az ENTER billentyűt. 
@@ -239,7 +249,7 @@ A két eseményt általában másodpercek alatt bocsátják ki.
 
 ## <a name="play-the-mp4-clip"></a>MP4-klip lejátszása
 
-Az MP4-fájlokat a peremhálózati eszköz egy olyan könyvtárába írja a rendszer, amelyet a *. env* fájlban konfigurált a OUTPUT_VIDEO_FOLDER_ON_DEVICE kulcs használatával. Ha az alapértelmezett értéket használta, akkor az eredményeknek a */Home/lvaadmin/Samples/output/* mappában kell lenniük.
+Az MP4-fájlokat a peremhálózati eszköz egy olyan könyvtárába írja a rendszer, amelyet a *. env* fájlban konfigurált a OUTPUT_VIDEO_FOLDER_ON_DEVICE kulcs használatával. Ha az alapértelmezett értéket használta, akkor az eredményeknek a */var/Media/* mappában kell lenniük.
 
 Az MP4-klip lejátszása:
 
@@ -250,14 +260,14 @@ Az MP4-klip lejátszása:
     ![VM](./media/quickstarts/virtual-machine.png)
 
 1. Jelentkezzen be az [Azure-erőforrások beállításakor](detect-motion-emit-events-quickstart.md#set-up-azure-resources)létrehozott hitelesítő adatok használatával. 
-1. A parancssorban nyissa meg a megfelelő könyvtárat. Az alapértelmezett hely a */Home/lvaadmin/Samples/output*. Ekkor megjelenik az MP4-fájlok a könyvtárban.
+1. A parancssorban nyissa meg a megfelelő könyvtárat. Az alapértelmezett hely a */var/Media*. Ekkor megjelenik az MP4-fájlok a könyvtárban.
 
     ![Kimenet](./media/quickstarts/samples-output.png) 
 
 1. A [biztonságos másolás (SCP)](../../virtual-machines/linux/copy-files-to-linux-vm-using-scp.md) használatával másolja a fájlokat a helyi gépre. 
 1. A fájlokat a [VLC Media Player](https://www.videolan.org/vlc/) vagy bármely más MP4-lejátszó használatával játssza le.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha szeretné kipróbálni a többi rövid útmutatót, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben a Azure Portal nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben a rövid útmutatót futtatta, majd törölje az összes erőforrást.
 

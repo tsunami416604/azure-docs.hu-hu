@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432016"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067171"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -49,6 +49,12 @@ A fájl tartalmának meg kell felelnie a következő JSON-sémának:
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -131,6 +137,12 @@ A `none` mód a legalacsonyabb futtatókörnyezettel rendelkezik, és valamivel 
 
 * `axis`– A koordináta rendszeregység – vektorok felülbírálása. Az alapértelmezett értékek: `["+x", "+y", "+z"]` . Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
 
+### <a name="node-meta-data"></a>Csomópont-Meta adat
+
+* `metadataKeys`– Lehetővé teszi, hogy megadhatja az átalakítás eredményében megőrizni kívánt csomópont-metaadat-tulajdonságok kulcsait. Megadhatja a pontos kulcsokat vagy a helyettesítő kulcsokat. A helyettesítő kulcsok "ABC *" formátumúak, és az "ABC" kezdetű kulcsnak felelnek meg. A támogatott metaadatok értékei a következők:,, `bool` `int` `float` és `string` .
+
+    A GLTF-fájlok esetében ezek az adatok a [csomópontok extrák objektumában](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)származnak. A FBX-fájlok esetében ezek az adatok az `Properties70` adatokból származnak `Model nodes` . További részletekért tekintse meg a 3D Asset eszköz dokumentációját.
+
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formátumban
 
 Lehetőség van a :::no-loc text="vertex"::: háló formátumának módosítására a memória megtakarításának pontossága érdekében. Az alacsonyabb memória-lábnyom lehetővé teszi nagyobb modellek betöltését vagy jobb teljesítmény elérését. Az adataitól függően azonban a helytelen formátum jelentős hatással lehet a renderelés minőségére.
@@ -182,7 +194,7 @@ Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
 A formátumok memória-lábnyomai a következők:
 
-| Formátum | Description | Bájt/:::no-loc text="vertex"::: |
+| Formátum | Leírás | Bájt/:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|két összetevő teljes lebegőpontos pontossága|8
 |16_16_FLOAT|két összetevős fél lebegőpontos pontossága|4
@@ -288,7 +300,7 @@ Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel
 A nem modellre jellemző fájlnevet használó beállítások `conversionSettings.json` továbbra is támogatottak, de elavultak.
 Ehelyett használja a modell-specifikus fájlnevet `<modelName>.ConversionSettings.json` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)
