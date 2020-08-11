@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: Kötési bővítmények regisztrálása
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: Kötési bővítmények mintái
           href: functions-bindings-expressions-patterns.md
         - name: Kötés visszaadott értékeinek használata
@@ -272,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: Futtatókörnyezet verziójának beállítása
           href: set-runtime-version.md
-        - name: Bővítmény manuális regisztrálása
-          href: install-update-binding-extensions-manual.md
         - name: Függvény letiltása
           href: disable-function.md
         - name: Geo-vészhelyreállítás

@@ -66,6 +66,8 @@
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+    - name: Terraform
+      href: samples-terraform.md
 - name: Alapelvek
   items:
     - name: App Service-csomagok
