@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 50a7fe866d236a7edb30b3cae5ef076d3ebbca56
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009715"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078512"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure digitális Twins-példány és-hitelesítés beállítása (CLI)
 
@@ -63,10 +63,10 @@ Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-A következő parancs használatával rendelje hozzá a szerepkört (az Azure-előfizetéshez [megfelelő engedélyekkel](#prerequisites-permission-requirements) rendelkező felhasználónak kell futtatnia):
+A következő parancs használatával rendelje hozzá a szerepkört (az Azure-előfizetéshez [megfelelő engedélyekkel](#prerequisites-permission-requirements) rendelkező felhasználónak kell futtatnia). A parancshoz a szerepkörhöz hozzárendelni kívánt felhasználó Azure AD-fiókjához tartozó *egyszerű* felhasználónevet kell átadnia. A legtöbb esetben ez megegyezik a felhasználó e-mail-címével az Azure AD-fiókban.
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel kapcsolatos információ.
@@ -74,13 +74,13 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 > [!NOTE]
 > Ha a parancs hibát ad vissza, ami azt jelzi, hogy a parancssori **felület nem találja a felhasználó vagy az egyszerű szolgáltatásnév kifejezést a Graph adatbázisban**:
 >
-> Az e-mail-cím helyett használja a felhasználó *objektum-azonosítóját* . Ez akkor fordulhat elő, ha a felhasználók személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkeznek. 
+> Rendelje hozzá a szerepkört a felhasználó *objektumazonosító-azonosítójával* . Ez akkor fordulhat elő, ha a felhasználók személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkeznek. 
 >
 > [Azure Active Directory felhasználók Azure Portal oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) válassza ki a felhasználói fiókot, és nyissa meg a részleteit. A felhasználó *ObjectId*másolása:
 >
 > :::image type="content" source="media/includes/user-id.png" alt-text="A felhasználó oldalának nézete Azure Portal kiemelve a GUID azonosítót az "objektumazonosító" mezőben" lightbox="media/includes/user-id.png":::
 >
-> Ezután ismételje meg a szerepkör-hozzárendelési lista parancsát a felhasználó *objektum-azonosítójának* használatával az e-mail helyett.
+> Ezután ismételje meg a szerepkör-hozzárendelési lista parancsát a felhasználó *objektumazonosító* használatával a `assignee` fenti paraméterhez.
 
 ### <a name="verify-success"></a>Sikeres ellenőrzés
 

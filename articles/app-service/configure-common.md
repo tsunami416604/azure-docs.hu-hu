@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389775"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077373"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -33,13 +33,13 @@ A ASP.NET és a ASP.NET Core fejlesztők esetében az Alkalmazásbeállítások 
 
 Más nyelvi stackekhez hasonlóan az Alkalmazásbeállítások környezeti változókként is beszerezhetők futásidőben. A nyelvspecifikus speciális lépéseiért lásd:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Egyéni tárolók](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Egyéni tárolók](configure-custom-container.md#configure-environment-variables)
 
 Az Alkalmazásbeállítások mindig titkosítva tárolódnak (titkosított – REST).
 
@@ -104,13 +104,13 @@ Futásidőben a kapcsolatok karakterláncai környezeti változókként érhető
 
 Egy *connectionstring1* nevű MySQL-kapcsolati sztring például környezeti változóként érhető el `MYSQLCONNSTR_connectionString1` . A nyelvspecifikus speciális lépéseiért lásd:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Egyéni tárolók](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Egyéni tárolók](configure-custom-container.md#configure-environment-variables)
 
 A kapcsolódási karakterláncok mindig titkosítva tárolódnak (titkosított – REST).
 
@@ -176,7 +176,7 @@ Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beá
     > [!NOTE]
     > A legtöbb modern böngésző csak a TLS protokollal támogatja a HTTP/2 protokollt, a nem titkosított forgalom pedig továbbra is HTTP/1.1-et használ. Győződjön meg arról, hogy az ügyféloldali böngészők a HTTP/2 protokollal csatlakoznak az alkalmazáshoz, és biztonságossá teszi az egyéni DNS-nevet. További információ: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
     - **ARR affinitás**: többpéldányos telepítés esetén győződjön meg arról, hogy az ügyfél ugyanahhoz a példányhoz van irányítva a munkamenet élettartama szempontjából. Ezt a beállítást **kikapcsolhatja** az állapot nélküli alkalmazások esetében.
-- **Hibakeresés**: engedélyezze a távoli hibakeresést [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.net Core](/visualstudio/debugger/remote-debugging-azure)vagy [Node.js](containers/configure-language-nodejs.md#debug-remotely) alkalmazásokhoz. Ez a beállítás 48 óra elteltével automatikusan kikapcsol.
+- **Hibakeresés**: engedélyezze a távoli hibakeresést [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.net Core](/visualstudio/debugger/remote-debugging-azure)vagy [Node.js](configure-language-nodejs.md#debug-remotely) alkalmazásokhoz. Ez a beállítás 48 óra elteltével automatikusan kikapcsol.
 - **Bejövő Ügyféltanúsítványok**: ügyféltanúsítvány megkövetelése [kölcsönös hitelesítéssel](app-service-web-configure-tls-mutual-auth.md).
 
 ## <a name="configure-default-documents"></a>Alapértelmezett dokumentumok konfigurálása
@@ -215,7 +215,7 @@ A virtuális alkalmazások és könyvtárak konfigurálásához adja meg az öss
 
 ### <a name="containerized-apps"></a>Tároló alkalmazások
 
-[A tároló alkalmazáshoz egyéni tárolót is hozzáadhat](containers/how-to-serve-content-from-azure-storage.md). A tároló alkalmazások közé tartozik az összes Linux-alkalmazás, valamint a Windows-és Linux-alapú egyéni tárolók is, amelyek a App Serviceon futnak. Kattintson az **új Azure Storage-csatlakoztatás** lehetőségre, és konfigurálja az egyéni tárolót az alábbiak szerint:
+[A tároló alkalmazáshoz egyéni tárolót is hozzáadhat](configure-connect-to-azure-storage.md). A tároló alkalmazások közé tartozik az összes Linux-alkalmazás, valamint a Windows-és Linux-alapú egyéni tárolók is, amelyek a App Serviceon futnak. Kattintson az **új Azure Storage-csatlakoztatás** lehetőségre, és konfigurálja az egyéni tárolót az alábbiak szerint:
 
 - **Name (név**): a megjelenítendő név.
 - **Konfigurációs beállítások**: **alapszintű** vagy **speciális**.
@@ -228,22 +228,22 @@ A virtuális alkalmazások és könyvtárak konfigurálásához adja meg az öss
 - **Hozzáférési kulcs**: Speciális konfiguráció esetén a hozzáférési kulcs.
 - **Csatlakoztatási útvonal**: a tároló abszolút elérési útja az egyéni tároló csatlakoztatásához.
 
-További információ: [Azure Storage-tartalom kiszolgálása a Linuxos App Service-ben](containers/how-to-serve-content-from-azure-storage.md).
+További információ: az [Azure Storage hálózati megosztásként való elérése app Service-tárolóban](configure-connect-to-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Nyelvi verem beállításainak konfigurálása
 
 Linux-alkalmazások esetén lásd:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>Egyéni tárolók konfigurálása
 
-Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](containers/configure-custom-container.md)
+Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](configure-custom-container.md)
 
 ## <a name="next-steps"></a>További lépések
 

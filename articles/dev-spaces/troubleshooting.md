@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835697"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077033"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -284,7 +284,7 @@ Például a *Windows BranchCache* szolgáltatás leállításához és letiltás
 
 Ha egy, a [felügyelt identitással](../aks/use-managed-identity.md) és a [Pod által felügyelt identitásokkal](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) rendelkező AK-fürtön futó Azure fejlesztői tárhelyekkel rendelkező szolgáltatást futtat, a folyamat nem válaszol a *diagram telepítése* lépés után. Ha megvizsgálja a *azds-injektort – webhookot* a *azds* -névtérben, akkor ezt a hibaüzenetet láthatja.
 
-Az Azure dev Spaces szolgáltatásban futó szolgáltatások a fürt felügyelt identitásával kommunikálnak az Azure dev Spaces háttér-szolgáltatásaival a fürtön kívül. A pod felügyelt identitás telepítésekor a rendszer a fürt csomópontjain konfigurálja a hálózati szabályokat, hogy átirányítsa a felügyelt identitás hitelesítő adatainak összes hívását egy, [a fürtön telepített, csomópont által felügyelt identitás (NMI) daemonset elemet](https://github.com/Azure/aad-pod-identity#node-managed-identity). Ez a NMI Daemonset elemet azonosítja a hívó Pod-t, és gondoskodik arról, hogy a pod megfelelően legyen megjelölve a kért felügyelt identitás eléréséhez. Az Azure dev Spaces nem tudja észlelni, hogy a fürt rendelkezik-e a pod Managed Identity szolgáltatással, és nem tudja végrehajtani a szükséges konfigurációt, hogy az Azure dev Spaces Services hozzáférhessen a fürt felügyelt identitásához. Mivel az Azure dev Spaces szolgáltatás nem lett konfigurálva a fürt felügyelt identitásának elérésére, a NMI Daemonset elemet nem teszi lehetővé, hogy HRE jogkivonatot szerezzen be a felügyelt identitáshoz, és nem tud kommunikálni az Azure dev Spaces háttér-szolgáltatásaival.
+Az Azure dev Spaces szolgáltatásban futó szolgáltatások a fürt felügyelt identitásával kommunikálnak az Azure dev Spaces háttér-szolgáltatásaival a fürtön kívül. A pod felügyelt identitás telepítésekor a rendszer a fürt csomópontjain konfigurálja a hálózati szabályokat, hogy átirányítsa a felügyelt identitás hitelesítő adatainak összes hívását egy, [a fürtön telepített, csomópont által felügyelt identitás (NMI) daemonset elemet](https://github.com/Azure/aad-pod-identity#node-managed-identity). Ez a NMI Daemonset elemet azonosítja a hívó Pod-t, és gondoskodik arról, hogy a pod megfelelően legyen megjelölve a kért felügyelt identitás eléréséhez. Az Azure dev Spaces nem tudja észlelni, hogy a fürt rendelkezik-e a pod Managed Identity szolgáltatással, és nem tudja végrehajtani a szükséges konfigurációt, hogy az Azure dev Spaces Services hozzáférhessen a fürt felügyelt identitásához. Mivel az Azure dev Spaces szolgáltatás nem lett konfigurálva a fürt felügyelt identitásának elérésére, a NMI Daemonset elemet nem teszi lehetővé, hogy az Azure AD-tokent beszerezzék a felügyelt identitáshoz, és nem tudnak kommunikálni az Azure dev Spaces háttér-szolgáltatásaival.
 
 A probléma megoldásához alkalmazzon egy [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) a *azds-injektor-webhookhoz* , és frissítse a hüvelyeket az Azure dev Spaces által a felügyelt identitás eléréséhez.
 
@@ -416,7 +416,7 @@ A probléma megoldásához telepítse a [vs Code-bővítményt a C#](https://mar
 
 Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő. Előfordulhat, hogy a fejlesztői gépen nincs telepítve a VS Code bővítmény az Azure dev Spaces szolgáltatáshoz.
 
-A probléma megoldásához telepítse a [vs Code-bővítményt az Azure dev Spaces szolgáltatáshoz](get-started-netcore.md).
+A probléma megoldásához telepítse a VS Code-bővítményt az Azure dev Spaces szolgáltatáshoz.
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Hiba "Érvénytelen" CWD "/src" érték. A megadott fájl nem található. " vagy a "Launch: program"/src/[a projekt bináris elérési útja] "nem létezik"
 

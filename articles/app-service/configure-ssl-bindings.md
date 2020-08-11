@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597895"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078631"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
-Ez a cikk bemutatja, hogyan védheti meg az [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) a [app Service alkalmazásban](https://docs.microsoft.com/azure/app-service/) vagy a [Function alkalmazásban](https://docs.microsoft.com/azure/azure-functions/) egy tanúsítvány kötésének létrehozásával. Ha elkészült, elérheti a App Service alkalmazást a `https://` végpontban az egyéni DNS-név (például `https://www.contoso.com`) számára. 
+Ez a cikk bemutatja, hogyan védheti meg az [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) a [app Service alkalmazásban](https://docs.microsoft.com/azure/app-service/) vagy a [Function alkalmazásban](https://docs.microsoft.com/azure/azure-functions/) egy tanúsítvány kötésének létrehozásával. Ha elkészült, elérheti a App Service alkalmazást a `https://` végpontban az egyéni DNS-név (például `https://www.contoso.com` ) számára. 
 
 ![Egyéni TLS/SSL-tanúsítvánnyal rendelkező webalkalmazás](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -52,12 +52,12 @@ A következő útmutató követése:
 
 Hajtsa végre a következő lépéseket:
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján indítsa el a **TLS/SSL kötési** párbeszédpanelt a következő lépésekkel:
 
-- **Egyéni tartományok** > kijelölése**kötés hozzáadása**
-- **TLS/SSL-beállítások** > kiválasztása**TLS/SSL-kötés hozzáadása**
+- **Egyéni tartományok**kijelölése  >  **kötés hozzáadása**
+- **TLS/SSL-beállítások**kiválasztása  >  **TLS/SSL-kötés hozzáadása**
 
 ![Kötés hozzáadása a tartományhoz](./media/configure-ssl-bindings/secure-domain-launch.png)
 
@@ -102,15 +102,15 @@ Két módosítást kell végeznie, potenciálisan:
 
     Az alkalmazás **egyéni tartomány** lapja az új, dedikált IP-címmel frissül. [Másolja ezt az IP-címet](app-service-web-tutorial-custom-domain.md#info), majd [képezze le újra az A rekordot](app-service-web-tutorial-custom-domain.md#map-an-a-record) erre az új IP-címre.
 
-- Ha SNI SSL `<app-name>.azurewebsites.net`kötése van a szolgáltatáshoz, akkor a CNAME- [hozzárendelést](app-service-web-tutorial-custom-domain.md#map-a-cname-record) újra fel kell vennie, hogy `sni.<app-name>.azurewebsites.net` a rendszer az `sni` előtagot adja meg
+- Ha SNI SSL kötése van a szolgáltatáshoz `<app-name>.azurewebsites.net` , akkor a [CNAME-hozzárendelést](app-service-web-tutorial-custom-domain.md#map-a-cname-record) újra fel kell vennie, hogy `sni.<app-name>.azurewebsites.net` a rendszer az `sni` előtagot adja meg
 
 ## <a name="test-https"></a>HTTPS tesztelése
 
-A különböző böngészőkben keresse `https://<your.custom.domain>` meg az alkalmazást, és ellenőrizze, hogy az alkalmazás elérhető-e.
+A különböző böngészőkben keresse meg az alkalmazást, és ellenőrizze, hogy az alkalmazás elérhető-e `https://<your.custom.domain>` .
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-Az alkalmazás kódja a "x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https`. 
+Az alkalmazás kódja a "x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https` . 
 
 > [!NOTE]
 > Ha az alkalmazás tanúsítvány-ellenőrzési hibákat ad, valószínűleg önaláírt tanúsítványt használ.
@@ -151,9 +151,9 @@ A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziój�
 
 ## <a name="handle-tls-termination"></a>TLS-megszakítás kezelése
 
-App Service a [TLS-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében fordul elő, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e `X-Forwarded-Proto` , vagy sem, vizsgálja meg a fejlécet.
+App Service a [TLS-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében fordul elő, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.
 
-A nyelvspecifikus konfigurációs útmutatók, például a [Linux Node. js konfigurációs](containers/configure-language-nodejs.md#detect-https-session) útmutatója bemutatja, hogyan ÉSZLELHETŐ egy https-munkamenet az alkalmazás kódjában.
+A nyelvspecifikus konfigurációs útmutatók, például a [Linux Node.js konfigurációs](configure-language-nodejs.md#detect-https-session) útmutatója bemutatja, hogyan ÉSZLELHETŐ egy https-munkamenet az alkalmazás kódjában.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

@@ -7,19 +7,19 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 817a7c132657ba0ad8910a334b571f9d05481a0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021222"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079192"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Oktatóanyag: Azure Spring Cloud-példány kiépítése a Terraform
 
 Ez az oktatóanyag egy Azure Spring Cloud-példányt hoz létre a Terraform használatával. Az eljárások végigvezetik a következő erőforrások létrehozásán:
 
 > [!div class="checklist"]
-> * Resource Group (Erőforráscsoport)
+> * Erőforráscsoport
 > * Azure Spring Cloud-példány
 > * Azure Storage Log Analytics
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag egy Azure Spring Cloud-példányt hoz létre a Terraform hasz
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#use-azure-cloud-shell).
+1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell).
 
 1. A Cloud Shell-szerkesztő elindítása:
 
@@ -155,7 +155,7 @@ Ebből a szakaszból megtudhatja, hogyan frissítheti a konfigurációt, hogy az
     terraform apply plan.out
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat.
 

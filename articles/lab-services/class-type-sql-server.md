@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444879"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079022"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Tesztkörnyezet beállítása a SQL Server kezeléséhez és fejlesztéséhez
 
@@ -20,7 +20,7 @@ Ebben a cikkben bemutatjuk, hogyan állíthat be egy virtuálisgép-sablont egy 
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Használhat meglévő labor-fiókot is.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Használhat meglévő labor-fiókot is.
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
@@ -64,8 +64,8 @@ Most, hogy a dolgok hálózatkezelési oldalát kezelik, lehetővé teszi SQL Se
 23. Kattintson az **OK** gombra.
 24. Kattintson a **Tovább gombra: további beállítások**.
 25. A **meglévő adatértékek használata** beállításnál válassza a **minta**lehetőséget.  Az adatbázis létrehozásakor a AdventureWorksLT-adatbázisból származó adatok lesznek használva.
-26. Kattintson az **Áttekintés + létrehozás** elemre.
-27. Kattintson a **Létrehozás** lehetőségre.
+26. Kattintson a **Felülvizsgálat + létrehozás** elemre.
+27. Kattintson a **Create** (Létrehozás) gombra.
 
 Miután a SQL Database üzembe helyezése sikeresen befejeződött, létrehozhatjuk a labort, és telepíthetjük a szoftvereket a tesztkörnyezet-sablon számítógépén.
 
@@ -86,7 +86,7 @@ A fenti képen a [Visual Studio 2019 közössége](https://visualstudio.microsof
 
 A Visual Studio tartalmazza az **adattárolási és-feldolgozási** eszközkészletet, amely SQL Server Data Tools (SSDT) tartalmaz.  További információ a SSDT képességeiről: [SQL Server Data Tools Overview (áttekintés](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)).  Ha ellenőrizni szeretné, hogy az osztály megosztott SQL Server kapcsolata sikeres-e, tekintse meg az [adatbázishoz való kapcsolódást és a meglévő objektumok tallózását](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)ismertető témakört. Ha a rendszer kéri, adja hozzá a sablon-számítógép IP-címét az SQL Server-példányhoz csatlakozni képes [számítógépek listájához](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure) .
 
-A Visual Studio számos számítási feladatot támogat, többek között a **Web & Cloud** és az **asztali & mobil** munkaterheléseket.  Mindkét számítási feladat támogatja az SQL Server adatforrásként. További információ a SQL Server ASP.NET Core használatával kapcsolatban: [ASP.net Core és SQL Database alkalmazás létrehozása Azure app Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb) oktatóanyagban.  A [System. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) függvénytár használatával kapcsolódjon SQL Database egy [Xamarin](https://docs.microsoft.com/xamarin) -alkalmazáshoz.
+A Visual Studio számos számítási feladatot támogat, többek között a **Web & Cloud** és az **asztali & mobil** munkaterheléseket.  Mindkét számítási feladat támogatja az SQL Server adatforrásként. További információ a SQL Server ASP.NET Core használatával kapcsolatban: [ASP.net Core és SQL Database alkalmazás létrehozása Azure app Service](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app) oktatóanyagban.  A [System. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) függvénytár használatával kapcsolódjon SQL Database egy [Xamarin](https://docs.microsoft.com/xamarin) -alkalmazáshoz.
 
 ## <a name="install-azure-data-studio"></a>Azure Data Studio telepítése
 

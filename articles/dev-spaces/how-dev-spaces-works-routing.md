@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és az Útválasztás működik
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512469"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077665"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hogyan működik az Útválasztás az Azure dev Spaces-szel
 
@@ -49,7 +49,7 @@ Az összes többi TCP-forgalom, amely nem HTTP-továbbítást hajt végre a bej�
 
 ## <a name="sharing-a-dev-space"></a>Fejlesztői terület megosztása
 
-Ha csapattal dolgozik, [megoszthat egy fejlesztői területet egy teljes csapaton belül](how-to/share-dev-spaces.md) , és származtatott fejlesztői szóközöket hozhat létre. A fejlesztői területet bárki használhatja, aki közreműködői hozzáféréssel rendelkezik a fejlesztői terület erőforráscsoporthoz.
+Ha csapattal dolgozik, megoszthat egy fejlesztői területet egy teljes csapaton belül, és származtatott fejlesztői szóközöket hozhat létre. A fejlesztői területet bárki használhatja, aki közreműködői hozzáféréssel rendelkezik a fejlesztői terület erőforráscsoporthoz.
 
 Létrehozhat egy másik fejlesztői területből származtatott új fejlesztői helyet is. Származtatott fejlesztői terület létrehozásakor a rendszer hozzáadja a *azds.IO/Parent-Space=PARENT-Space-Name* címkét a származtatott fejlesztői terület névteréhez. Emellett a szülő fejlesztői területről származó összes alkalmazás meg van osztva a származtatott fejlesztői területtel. Ha egy alkalmazás frissített verzióját telepíti a származtatott fejlesztői területre, akkor csak a származtatott fejlesztői területen fog megjelenni, és a szülő fejlesztői terület érintetlen marad. A származtatott fejlesztői szóközök és a *nagyszülő* szóközök közül legfeljebb három szint adható meg.
 
@@ -62,7 +62,7 @@ Például:
 
 Az *azureuser*használatakor a *servicea szolgáltatásnak* küldött összes kérelem a frissített verzióra lesz irányítva az *azureuser*-ben. A *serviceB* iránti kérés először a *serviceB* *azureuser* -verziójára lesz irányítva. Mivel nem létezik, a rendszer a *serviceB* *alapértelmezett* verziójára irányítja át. Ha a *servicea szolgáltatáshoz* tartozó *azureuser* verziója el lett távolítva, a *servicea* szolgáltatáshoz intézett összes kérelem vissza fog térni a *servicea* *alapértelmezett* verziójának használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtekinteni, hogyan használja az Azure dev Spaces az útválasztást a gyors iteráció és a fejlesztés érdekében, tekintse meg a [helyi folyamat és a Kubernetes működésének][how-it-works-local-process-kubernetes]módját, [a kód távoli hibakeresését az Azure dev Spaces][how-it-works-remote-debugging] [szolgáltatással és a GitHub-műveleteket & Azure Kubernetes szolgáltatást][pr-flow].
 

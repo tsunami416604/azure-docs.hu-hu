@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 595f12f9204dff58af0bfebb60402cc89ffb386a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826245"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079399"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -169,7 +169,10 @@ BTRFS | A BTRFS a 34-es [kumulatív frissítéssel](https://support.microsoft.co
 Lemez átméretezése a replikált virtuális gépen | A feladatátvétel előtt a forrás virtuális gép támogatja, közvetlenül a virtuális gép tulajdonságai között. Nincs szükség a replikáció letiltására/újbóli engedélyezésére.<br/><br/> Ha a feladatátvételt követően megváltoztatja a forrás virtuális gépet, a módosítások nem kerülnek rögzítésre.<br/><br/> Ha a feladatátvétel után megváltoztatja az Azure virtuális gépen a lemez méretét, Site Recovery egy új virtuális gépet hoz létre a frissítésekkel.
 Lemez hozzáadása a replikált virtuális gépen | Nem támogatott.<br/> Tiltsa le a virtuális gép replikációját, adja hozzá a lemezt, majd engedélyezze újra a replikációt.
 
-## <a name="network"></a>Hálózat
+> [!NOTE]
+> A lemez identitásának módosítása nem támogatott. Ha például a lemez particionálása a GPT-ról MBR-re változott, vagy fordítva, akkor ez megváltoztatja a lemez identitását. Ilyen esetben a replikálás megszakad, és egy új telepítésre lesz szükség. 
+
+## <a name="network"></a>Network (Hálózat)
 
 **Összetevő** | **Támogatott**
 --- | ---

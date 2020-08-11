@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 7e78a8dfdf902c4c2548e0521a79d67716987791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832083"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077118"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>A Node.js modulok használata az Azure alkalmazásokkal
 Ez a dokumentum útmutatást nyújt Node.js modulok használatáról az Azure-ban üzemeltetett alkalmazásokkal. Útmutatást nyújt annak biztosításához, hogy az alkalmazás a modul egy adott verzióját használja, valamint natív modulokat használjon az Azure-ban.
@@ -85,7 +85,7 @@ Ha az alkalmazás készen áll az éles környezetben való használatra, zárol
 >
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megértette, hogyan használhatja Node.js modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a Node.js verzióját](https://github.com/squillace/nodejs-microservice), hogyan [építhet ki és helyezhet üzembe egy Node.js webalkalmazást](app-service/app-service-web-get-started-nodejs.md), és [hogyan használhatja az Azure parancssori felületet Mac és Linux rendszereken](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Most, hogy megértette, hogyan használhatja Node.js modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a Node.js verzióját](https://github.com/squillace/nodejs-microservice), hogyan [építhet ki és helyezhet üzembe egy Node.js webalkalmazást](app-service/quickstart-nodejs.md), és [hogyan használhatja az Azure parancssori felületet Mac és Linux rendszereken](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 További információk: [Node.js fejlesztői központ](/azure/developer/javascript/).
 

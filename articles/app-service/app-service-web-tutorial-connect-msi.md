@@ -5,19 +5,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021228"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077730"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
 Az [App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyelt identitást](overview-managed-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyelt identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekben lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban a felügyelt identitást a következő oktatóanyagok egyikében létrehozott minta webalkalmazáshoz fogja hozzáadni: 
 
 - [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service](tutorial-dotnetcore-sqldb-app.md)
 
 Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
 
@@ -43,7 +43,7 @@ A következőket fogja megtanulni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk az [oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure](app-service-web-tutorial-dotnet-sqldatabase.md) -ban a SQL Database vagy [oktatóanyag: ASP.net Core és SQL Database alkalmazás létrehozása Azure app Service](app-service-web-tutorial-dotnetcore-sqldb.md). Ha még nem tette meg, kövesse az első két oktatóanyag egyikét. Azt is megteheti, hogy a saját .NET-alkalmazásának lépéseit a SQL Database használatával is módosíthatja.
+Ez a cikk az [oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure](app-service-web-tutorial-dotnet-sqldatabase.md) -ban a SQL Database vagy [oktatóanyag: ASP.net Core és SQL Database alkalmazás létrehozása Azure app Service](tutorial-dotnetcore-sqldb-app.md). Ha még nem tette meg, kövesse az első két oktatóanyag egyikét. Azt is megteheti, hogy a saját .NET-alkalmazásának lépéseit a SQL Database használatával is módosíthatja.
 
 Ha a háttérrendszer használatával szeretne hibakeresést végezni az alkalmazásban SQL Database, győződjön meg arról, hogy engedélyezte az ügyfélkapcsolatot a számítógépről. Ha nem, adja hozzá az ügyfél IP-címét a [kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)című témakör lépéseit követve.
 
@@ -74,14 +74,14 @@ Active Directory-rendszergazda hozzáadásával kapcsolatos további informáci�
 
 ## <a name="set-up-visual-studio"></a>A Visual Studio telepítése
 
-### <a name="windows"></a>Windows
+### <a name="windows-client"></a>Windows-ügyfél
 A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a Fiókbeállítások **kiválasztásával**  >  **Account Settings** a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
 
 Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök**  >  **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési**  >  **fiók kiválasztása**lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK**gombra.
 
 Most már készen áll az alkalmazás fejlesztésére és hibakeresésére SQL Database a háttérben, az Azure AD-hitelesítés használatával.
 
-### <a name="macos"></a>MacOS
+### <a name="macos-client"></a>macOS-ügyfél
 
 Visual Studio for Mac nincs integrálva az Azure AD-hitelesítéssel. Azonban a későbbiekben használni kívánt [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) függvénytár használhat jogkivonatokat az Azure CLI-ből. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez először [telepítenie kell az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t a helyi gépre.
 
@@ -107,7 +107,7 @@ A Visual Studióban nyissa meg a Package Manager konzolt, és adja hozzá a [Mic
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-A *web. config*fájlban a fájl elejére, és végezze el a következő módosításokat:
+A *Web.config*a fájl elejéről dolgozik, és hajtsa végre a következő módosításokat:
 
 - A alkalmazásban `<configSections>` adja hozzá a következő szakasz deklarációját:
 
@@ -142,7 +142,7 @@ A Visual Studióban nyissa meg a Package Manager konzolt, és adja hozzá a [Mic
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-A [ASP.net Core és SQL Database oktatóanyagban](app-service-web-tutorial-dotnetcore-sqldb.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appSettings. JSON*fájlban cserélje le a kapcsolatok karakterláncának értékét a alábbiakra `MyDbConnection` :
+A [ASP.net Core és SQL Database oktatóanyagban](tutorial-dotnetcore-sqldb-app.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appsettings.jsa*(z) elemnél cserélje le a következőt a `MyDbConnection` kapcsolatok karakterláncának értékére:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
@@ -210,7 +210,7 @@ A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Példa: 
+A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Például: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -229,7 +229,7 @@ Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 
 ### <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 
-Ne feledje, hogy a *web. config* vagy a *appSettings. JSON* fájlban elvégzett módosítások a felügyelt identitással működnek, így az egyetlen teendő, ha eltávolítja a meglévő kapcsolati karakterláncot app Service, amelyet a Visual Studio az alkalmazás első üzembe helyezésével hozott létre. Használja az alábbi parancsot, de a helyére írja *\<app-name>* be az alkalmazás nevét.
+Ne feledje, hogy ugyanazokat a módosításokat hajtotta végre *Web.config* vagy *appsettings.jsa* felügyelt identitással, így az egyetlen teendő, hogy eltávolítsa a meglévő kapcsolódási karakterláncot a app Serviceban, amelyet a Visual Studio az alkalmazás első üzembe helyezésével hozott létre. Használja az alábbi parancsot, de a helyére írja *\<app-name>* be az alkalmazás nevét.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection
@@ -245,7 +245,7 @@ Már csak közzé kell tennie a módosításait az Azure-ban.
 
 A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre. 
 
-**Ha [oktatóanyag: hozzon létre egy ASP.NET Core és SQL Database alkalmazást a Azure app Serviceban](app-service-web-tutorial-dotnetcore-sqldb.md)**, tegye közzé a módosításokat a git használatával a következő parancsokkal:
+**Ha [oktatóanyag: hozzon létre egy ASP.NET Core és SQL Database alkalmazást a Azure app Serviceban](tutorial-dotnetcore-sqldb-app.md)**, tegye közzé a módosításokat a git használatával a következő parancsokkal:
 
 ```bash
 git commit -am "configure managed identity"

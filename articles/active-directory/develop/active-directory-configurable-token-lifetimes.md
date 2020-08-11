@@ -13,16 +13,17 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d6b6e300a3bd799e94405af143d84cf9fdd8d4c1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552849"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077135"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
-Megadhatja a Microsoft Identity platform által kiadott jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén.
+Megadhatja a Microsoft Identity platform által kiadott jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. 
+> Vegye figyelembe, hogy jelenleg nem támogatjuk a felügyelt identitási szolgáltatások rendszerbiztonsági azonosítóinak élettartamának konfigurálását.
 
 > [!IMPORTANT]
 > Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 30-ig az új bérlők nem használhatnak konfigurálható jogkivonat-élettartamot a munkamenet-és frissítési tokenek konfigurálásához. Az elavultság több hónapon belül megtörténik, ami azt jelenti, hogy a meglévő munkamenetek tiszteletben tartását és a tokenek frissítési jogkivonatait is megszüntetjük. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.

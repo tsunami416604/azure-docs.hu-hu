@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169984"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077475"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
-Ebben a cikkben a Azure App Serviceon futó [Node-alkalmazásokkal](app-service-web-get-started-nodejs.md) kapcsolatos ajánlott eljárásokat és hibaelhárítási lépéseket ismerheti meg ( [iisnode](https://github.com/azure/iisnode)).
+Ebből a cikkből megtudhatja, hogyan tekintheti meg a [Windows Node.js-alkalmazások](quickstart-nodejs.md?pivots=platform-windows) Azure app Service-on ( [iisnode](https://github.com/azure/iisnode)) futtatott, ajánlott eljárásokat és hibaelhárítási lépéseket.
 
 > [!WARNING]
 > Körültekintően járjon el, amikor hibaelhárítási lépéseket használ az üzemi webhelyén. Javasoljuk, hogy az alkalmazást nem éles környezetben, például az átmeneti tárolóhelyen és a probléma megoldásakor, az átmeneti tárolóhelyet cserélje le az éles tárolóhelyre.
@@ -273,7 +273,7 @@ NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES` . Azure App Se
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg a Azure App Service node.js alkalmazásairól.
 
-* [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started-nodejs.md)
+* [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](quickstart-nodejs.md)
 * [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [A Node.js modulok használata az Azure alkalmazásokkal](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

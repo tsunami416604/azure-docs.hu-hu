@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások kezelése az Azure Active Directoryban | Microsoft Docs
+title: Mi az alkalmazások kezelése a Azure Active Directoryban?
 description: Áttekintés a Azure Active Directory (AD) használatáról identitás-és hozzáférés-kezelési (IAM) rendszerként a Felhőbeli és a helyszíni alkalmazásokhoz.
 services: active-directory
 author: kenwith
@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: dafd3d7805924d92354c3de6ded50f17598f80f6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386010"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078070"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
@@ -91,7 +91,7 @@ Az Azure AD-re történő átállással költségeket takarít meg és megszabad
 
 Az emberi erőforrások célzott alkalmazásai, illetve a felhasználók nagy készletével rendelkező más alkalmazások esetében az alkalmazások kiépítésének automatizálásával automatizálható a felhasználók kiépítésének és megszüntetésének folyamata, lásd: [Mi az Application kiépítés?](../app-provisioning/user-provisioning.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A gyors üzembe helyezési sorozat az alkalmazások kezelésében az Azure AD-ben](view-applications-portal.md)
 - [Ismerkedés az alkalmazások integrálásával](plan-an-application-integration.md)

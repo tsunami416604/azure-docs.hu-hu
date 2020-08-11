@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743618"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078308"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
@@ -201,7 +201,7 @@ A helyileg futó Azure Storage-emulátor nem rendelkezik a webjobs SDK által ig
 
 1. Válassza ki ugyanazt a **régiót** , amelyet Ön hozott létre a app Service alkalmazásban, vagy egy régiót a közelben.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
    ![Storage-fiók létrehozása](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -310,7 +310,7 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>App Service alkalmazás és Application Insights példány létrehozása
 
-1. Ha még nem rendelkezik olyan App Service alkalmazással, amelyet használhat, [hozzon létre egyet](app-service-web-get-started-dotnet-framework.md). Az alkalmazás létrehozásakor létrehozhat egy csatlakoztatott Application Insights-erőforrást is. Ha ezt teszi, a `APPINSIGHTS_INSTRUMENTATIONKEY` be van állítva az alkalmazásban.
+1. Ha még nem rendelkezik olyan App Service alkalmazással, amelyet használhat, [hozzon létre egyet](quickstart-dotnet-framework.md). Az alkalmazás létrehozásakor létrehozhat egy csatlakoztatott Application Insights-erőforrást is. Ha ezt teszi, a `APPINSIGHTS_INSTRUMENTATIONKEY` be van állítva az alkalmazásban.
 
 1. Ha még nem rendelkezik olyan Application Insights erőforrással, amelyet használhat, [hozzon létre egyet](../azure-monitor/app/create-new-resource.md ). Állítsa az **alkalmazás típusát** **általános**értékre, majd ugorja át a kialakítási **kulcs másolását**követő szakaszokat.
 
@@ -326,13 +326,13 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
 
 1. Adja hozzá a következő bejegyzést a **kapcsolatok karakterláncok** mezőben.
 
-   |Name  |kapcsolatok karakterlánca  |Adatbázis típusa|
+   |Name (Név)  |kapcsolatok karakterlánca  |Adatbázis típusa|
    |---------|---------|------|
    |AzureWebJobsStorage | {a korábban átmásolt tárolási kapcsolatok karakterlánca}|Egyéni|
 
 1. Ha az **Alkalmazásbeállítások** mezőhöz nem tartozik Application Insights kialakítási kulcs, adja hozzá a korábban átmásolt eszközt. (A rendszerállapot-kulcs már ott is lehet, attól függően, hogyan hozta létre a App Service alkalmazást.)
 
-   |Name  |Érték  |
+   |Name (Név)  |Érték  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentation-kulcs} |
 

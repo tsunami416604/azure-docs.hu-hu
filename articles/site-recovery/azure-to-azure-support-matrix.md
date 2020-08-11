@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 09b7fe1cc4f871d1f94844a8551479fabc0e22ff
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c8890afcdab1b6247fe072f2e34437d790185e58
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008848"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076928"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -18,7 +18,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 
 ## <a name="deployment-method-support"></a>Üzembe helyezési módszer támogatása
 
-**Telepítés** |  **Támogatás**
+**Üzembe helyezés** |  **Támogatás**
 --- | ---
 **Azure Portal** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
@@ -163,7 +163,9 @@ SUSE Linux Enterprise Server 15 és 15 SP1 | 9,32 | Alapértelmezés szerint a r
 
 * Fájlrendszerek: ext3, ext4, XFS, BTRFS
 * Volume Manager: LVM2
-* Többutas szoftver: Device Mapper
+
+> [!NOTE]
+> A többutas szoftverek nem támogatottak. 
 
 
 ## <a name="replicated-machines---compute-settings"></a>Replikált gépek – számítási beállítások

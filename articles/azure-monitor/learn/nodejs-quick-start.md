@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384786"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077305"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Gyors útmutató: Node.js webalkalmazás figyelésének megkezdése az Azure-ban Application Insights
 
@@ -46,7 +46,7 @@ A Application Insights bármely internetkapcsolattal rendelkező alkalmazásból
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve a AppInsights-adattároláshoz. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
 ## <a name="configure-appinsights-sdk"></a>A AppInsights SDK konfigurálása
 
@@ -60,7 +60,7 @@ A Application Insights bármely internetkapcsolattal rendelkező alkalmazásból
    npm install applicationinsights --save
    ```
 
-3. Szerkessze az alkalmazás első *. js* fájlját, és adja hozzá az alábbi két sort a szkript legfelső részéhez. Ha a [Node.js Gyorsindítás alkalmazást](../../app-service/app-service-web-get-started-nodejs.md)használja, akkor módosítania kell a *index.js* fájlt. Cserélje le az `<instrumentation_key>` alkalmazást az alkalmazás Instrumentation-kulcsára. 
+3. Szerkessze az alkalmazás első *. js* fájlját, és adja hozzá az alábbi két sort a szkript legfelső részéhez. Ha a [Node.js Gyorsindítás alkalmazást](../../app-service/quickstart-nodejs.md)használja, akkor módosítania kell a *index.js* fájlt. Cserélje le az `<instrumentation_key>` alkalmazást az alkalmazás Instrumentation-kulcsára. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -128,7 +128,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup**lehetőséget.
 2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Teljesítményproblémák észlelése és diagnosztizálása](../log-query/log-query-overview.md)

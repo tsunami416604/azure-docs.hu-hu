@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760974"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079297"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 
@@ -484,5 +484,5 @@ További információkért lásd a következő forrásanyagokat.
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) adattár a GitHubon.
 * [Azure for Node.js-fejlesztők](https://docs.microsoft.com/azure/developer/javascript/)
-* [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service/app-service-web-get-started-nodejs.md)
+* [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service/quickstart-nodejs.md)
 * [Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (a Windows PowerShell használatával)
