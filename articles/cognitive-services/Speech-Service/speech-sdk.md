@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610761"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056856"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -125,5 +125,5 @@ Az egyéni hangvezérelt szöveg-beszéd, más néven az egyéni hang olyan onli
 
 ## <a name="next-steps"></a>További lépések
 
-* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

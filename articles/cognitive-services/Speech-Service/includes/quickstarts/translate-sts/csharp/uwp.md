@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 04/04/2020
-ms.author: erhopf
+ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 08001aabd279b2df64635719e9ef3e0772df62e9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671838"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057762"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,31 +29,31 @@ Az első lépések előtt ügyeljen a következőre:
 
 Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-kódot, és adja hozzá a C#-kódot a megvalósítás mögött.
 
-1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
+1. A **megoldáskezelő**megnyitásához nyissa meg a t `MainPage.xaml` .
 
-1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe `<Grid>` ( `</Grid>`és között):
+1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe ( `<Grid>` és között `</Grid>` ):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml#StackPanel)]
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.)
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` . (Ez a következő alá van csoportosítva: `MainPage.xaml` .)
 
 1. Cserélje le az összes kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml.cs#code)]
 
-1. A fájl `SpeechTranslationFromMicrophone_ButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
+1. A `SpeechTranslationFromMicrophone_ButtonClicked` fájl kezelőjében keresse meg a karakterláncot `YourSubscriptionKey` , és cserélje le az előfizetési kulcsra.
 
-1. A `SpeechTranslationFromMicrophone_ButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion`, és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . (Például használja `westus` az ingyenes próbaverziós előfizetést.)
+1. A `SpeechTranslationFromMicrophone_ButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion` , és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . (Például használja `westus` az ingyenes próbaverziós előfizetést.)
 
-1. A menüsávban válassza a **fájl** > **Mentés** lehetőséget a módosítások mentéséhez.
+1. A menüsávban válassza a **fájl**  >  **Mentés** lehetőséget a módosítások mentéséhez.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
 Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
+1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az **F5**billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP fordítási alkalmazás C#-ban – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 

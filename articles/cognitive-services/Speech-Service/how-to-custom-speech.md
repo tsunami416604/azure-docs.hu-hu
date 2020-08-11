@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9ac473c3864b4be06c978e7d6a3555bb4550d2a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725533"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056839"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
@@ -48,7 +48,7 @@ Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alko
 Egy beszédfelismerési szolgáltatás előfizetése szükséges ahhoz, hogy a [Custom Speech portálon](https://speech.microsoft.com/customspeech) egyéni modellt hozzon létre. A standard Speech Service-előfizetés létrehozásához kövesse az alábbi utasításokat: [beszédfelismerési előfizetés létrehozása](get-started.md#new-resource).
 
 > [!NOTE]
-> Ügyeljen arra, hogy standard (S0) előfizetéseket hozzon létre, az ingyenes próbaverziós (F0) előfizetések nem támogatottak.
+> Ügyeljen arra, hogy standard (S0) előfizetéseket hozzon létre, az ingyenes (F0) előfizetések nem támogatottak.
 
 Miután létrehozott egy Azure-fiókot és egy Speech Service-előfizetést, be kell jelentkeznie [Custom Speech portálra](https://speech.microsoft.com/customspeech) , és hozzá kell kötnie az előfizetését.
 
@@ -66,7 +66,7 @@ Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd
 > [!IMPORTANT]
 > A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

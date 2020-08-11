@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727640"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056771"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
 
@@ -23,24 +23,9 @@ Ebben a cikkben előkészíti a környezetet a OpenShift 4 rendszerű Azure Red 
 > * Az előfeltételek beállítása és a szükséges virtuális hálózatok és alhálózatok létrehozása
 > * Fürt üzembe helyezése privát API-kiszolgálói végponttal és privát bejövő adatkezelővel
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.75 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Előkészületek
-
-### <a name="install-the-az-aro-extension"></a>Az "az ARO" bővítmény telepítése
-A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az Azure CLI használatával hozza létre, elérje és törölje az Azure Red Hat OpenShift-fürtöket.
-
-A bővítmény telepítéséhez futtassa a következő parancsot `az aro` .
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Ha már telepítette a bővítményt, a következő parancs futtatásával frissítheti azt.
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
 
 ### <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
@@ -48,21 +33,6 @@ Ezután regisztrálnia kell az `Microsoft.RedHatOpenShift` erőforrás-szolgált
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Ellenőrizze, hogy a bővítmény regisztrálva van-e.
-
-```azurecli-interactive
-az -v
-```
-
-  Az alábbihoz hasonló kimenetet kell kapnia.
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beolvasása (nem kötelező)
@@ -268,9 +238,9 @@ Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs ha
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy, a OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtöt telepítettünk. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben a cikkben egy, a OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtöt telepítettünk. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az előfeltételek beállítása és a szükséges virtuális hálózatok és alhálózatok létrehozása

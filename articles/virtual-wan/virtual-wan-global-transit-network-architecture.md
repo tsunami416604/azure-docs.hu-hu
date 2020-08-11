@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856370"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056890"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -132,6 +132,9 @@ A [Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) bizt
 ![biztonságos virtuális központ Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 **5. ábra: biztonságos virtuális központ Azure Firewall**
+
+> [!NOTE]
+> Az Inter-hub tűzfallal való használata jelenleg nem támogatott. A hubok közötti forgalom közvetlenül megkerüli a Azure Firewall az egyes csomópontokon.
 
 A virtuális WAN Azure Firewall a következő globálisan biztonságos tranzit-csatlakozási útvonalakat támogatja. A zárójelben lévő betűk az 5. ábrán láthatók.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471744"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056958"
 ---
 # <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtaján
 A következő dokumentum a bejárati ajtó működésének módját határozza meg az olyan útválasztási szabályokkal, amelyeken engedélyezve van a gyorsítótárazás. A bejárati ajtó egy modern Content Delivery Network (CDN), és a dinamikus hely gyorsításával és a terheléselosztással együtt a gyorsítótárazási viselkedést is támogatja, ugyanúgy, mint bármely más CDN.
@@ -111,6 +111,12 @@ Cache-Control Response fejlécek, amelyek azt jelzik, hogy a válasz nem lesz gy
 A következő kérések fejléceit a rendszer nem továbbítja a háttérbe gyorsítótárazás használatakor.
 - Content-Length
 - Átvitel – kódolás
+
+## <a name="cache-duration"></a>Gyorsítótár időtartama
+
+A gyorsítótár időtartama a bejárati tervezőben és a szabályok motorjában is konfigurálható. A Frontdoor Designerben beállított gyorsítótár időtartama a gyorsítótár minimális időtartama. Ez a felülbírálás nem fog működni, ha a forrás gyorsítótár-vezérlő fejléce nagyobb TTL-értékkel rendelkezik, mint a felülbírálás értéke. 
+
+A gyorsítótár időtartamának beállítása a Rules Engine használatával igaz gyorsítótár-felülbírálás, ami azt jelenti, hogy a felülbírálási értéket fogja használni, függetlenül attól, hogy mi a forrás válasz fejléce.
 
 ## <a name="next-steps"></a>További lépések
 

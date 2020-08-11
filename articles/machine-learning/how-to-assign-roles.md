@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002229"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056924"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkat
 
 Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-erőforráshoz hasonlóan az új Azure Machine Learning-munkaterületek is három alapértelmezett szerepkörrel rendelkeznek a létrehozásukkor. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
-| Role | Hozzáférési szint |
+| Szerepkör | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók listázhatja és megtekintheti az eszközöket, beleértve az [adattár](how-to-access-data.md) hitelesítő adatait is egy munkaterületen. Az olvasók nem tudják létrehozni vagy frissíteni ezeket az eszközöket. |
 | **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtatást végezhetnek és webszolgáltatásokat helyezhetnek üzembe. |
@@ -146,6 +146,8 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 | A tárterület elérése interaktív jegyzetfüzetekkel | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | Új egyéni szerepkör létrehozása | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi`Microsoft.Authorization/roleDefinitions/write` | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`/workspaces/computes/write` |
 
+> [!TIP]
+> Ha a munkaterület első alkalommal történő létrehozásakor hiba lép fel, győződjön meg arról, hogy a szerepköre engedélyezi `Microsoft.MachineLearningServices/register/action` . Ez a művelet lehetővé teszi, hogy regisztrálja az Azure Machine Learning erőforrás-szolgáltatót az Azure-előfizetésében.
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>K. Az Azure beépített szerepköreit tesszük közzé a Machine Learning szolgáltatáshoz?
 

@@ -14,17 +14,18 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: e547da3d1a26a7dcc110a8349dbae3c7e3f29e0b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f469256841bf81f5e35ebf9c4a0fe322b513153d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291943"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056975"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Virtuális hálózat létrehozása a PowerShell használatával
 
 A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek (VM-EK), a magánjellegű kommunikációt és az internetet. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozhat a virtuális gépekhez az internetről, és privát kommunikációt végez a virtuális hálózaton keresztül.
 
+## <a name="prerequisites"></a>Előfeltételek
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -155,7 +156,7 @@ mstsc /v:<publicIpAddress>
 
 1. A *myVm1*távoli asztal nyissa meg a PowerShellt.
 
-1. Írja be a következő szöveget: `ping myVm2`
+1. Írja be a következő szöveget: `ping myVm2`.
 
     A következőhöz hasonló lesz:
 
@@ -219,6 +220,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Ezután csatlakozott az internetről az egyik virtuális géphez, és privát kommunikációt folytatott egy másik virtuális géppel. További információ a virtuális hálózatok beállításairól: [Virtuális hálózat kezelése](manage-virtual-network.md).
-
-Az Azure lehetővé teszi a nem korlátozott privát kommunikációt a virtuális gépek között. Alapértelmezés szerint az Azure csak az internetről bejövő távoli asztali kapcsolatokat engedélyez a Windows rendszerű virtuális gépeken. Ha többet szeretne megtudni a különböző típusú virtuálisgép-hálózati kommunikációk konfigurálásáról, lépjen a [hálózati forgalom szűrése](tutorial-filter-network-traffic.md) oktatóanyagra.
+Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Egy virtuális géphez kapcsolódott az internetről, és a két virtuális gép között magántulajdonban kommunikál.
+Az Azure lehetővé teszi, hogy korlátlan privát kommunikációt biztosítson a virtuális gépek között. Alapértelmezés szerint az Azure csak a Windows rendszerű virtuális gépekről bejövő távoli asztali kapcsolatokat teszi lehetővé az internetről. A következő cikkből megtudhatja, hogyan konfigurálhat különböző típusú virtuálisgép-hálózati kommunikációt:
+> [!div class="nextstepaction"]
+> [Hálózati forgalom szűrése](tutorial-filter-network-traffic.md)

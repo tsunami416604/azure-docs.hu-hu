@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841868"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057757"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>A prémium szintű fájlmegosztás további korlátai
 
@@ -23,11 +23,11 @@ ms.locfileid: "87841868"
 
 #### <a name="file-level-limits"></a>Fájl szintű korlátok
 
-|Terület  |Prémium fájl  |Standard fájl |
+|Terület  |Standard fájl  |Prémium fájl  |
 |---------|---------|---------|
-|Méret                  |4 TiB         |1 TiB|
-|IOPS maximális száma     |5000         |1,000|
-|Egyidejű kezelők    |2000         |2000|
-|Kimenő forgalom  |300 MiB/mp|      Lásd a szabványos fájl átviteli sebességének értékeit|
-|Bejövő forgalom  |200 MiB/mp| Lásd a szabványos fájl átviteli sebességének értékeit|
-|Átviteli sebesség| Lásd a prémium szintű fájlok bejövő/kimenő értékeit| Akár 60 MiB/mp|
+|Méret     |1 TiB         |4 TiB         |
+|IOPS maximális száma      |1,000         |5000         |
+|Egyidejű kezelők     |2000         |2000         |
+|Kimenő forgalom     |Lásd a szabványos fájl átviteli sebességének értékeit         |300 MiB/mp         |
+|Bejövő forgalom     |Lásd a szabványos fájl átviteli sebességének értékeit         |200 MiB/mp         |
+|Átviteli sebesség     |Akár 60 MiB/mp         |Lásd a prémium szintű fájlok bejövő/kimenő értékeit         |

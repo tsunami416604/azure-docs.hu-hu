@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430811"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056907"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
  
@@ -132,7 +132,61 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="cast-string-to-json-object-to-process"></a>A feldolgozható karakterlánc a JSON-objektumba
+
+Ha olyan karakterlánc-mezővel rendelkezik, amely JSON formátumú, és egy JSON-objektumba szeretné átalakítani egy JavaScript UDF-ben történő feldolgozásra, a **JSON. Parse ()** függvénnyel LÉTREHOZHAT egy JSON-objektumot, amelyet aztán használhat.
+
+**Felhasználói JavaScript-függvény definíciója:**
+
+```javascript
+function main(x) {
+var person = JSON.parse(x);  
+return person.name;
+}
+```
+
+**Példa lekérdezésre:**
+```SQL
+SELECT
+    UDF.getName(input) AS Name
+INTO
+    output
+FROM
+    input
+```
+
+### <a name="use-trycatch-for-error-handling"></a>A hibák kezelésére szolgáló try/catch szolgáltatás használata
+
+A try/catch blokkokkal azonosíthatja a JavaScript UDF-ben átadott helytelenül formázott bemeneti adatokkal kapcsolatos problémákat.
+
+**Felhasználói JavaScript-függvény definíciója:**
+
+```javascript
+function main(input, x) {
+    var obj = null;
+
+    try{
+        obj = JSON.parse(x);
+    }catch(error){
+        throw input;
+    }
+    
+    return obj.Value;
+}
+```
+
+**Minta lekérdezés: a teljes rekord első paraméterként való átadásával visszaadható, ha hiba történt.**
+```SQL
+SELECT
+    A.context.company AS Company,
+    udf.getValue(A, A.context.value) as Value
+INTO
+    output
+FROM
+    input A
+```
+
+## <a name="next-steps"></a>További lépések
 
 * [UDF Machine Learning](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
 * [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
