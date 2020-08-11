@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520800"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080830"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
@@ -30,12 +30,12 @@ Az API-kat üzemeltetheti [Azure app Serviceon](../app-service/overview.md), egy
 > [!TIP] 
 > Habár az API-kat webalkalmazásként is üzembe helyezheti, érdemes lehet API-alkalmazásokként üzembe helyeznie az API-kat, amely megkönnyíti a feladatok elvégzését a felhőben és a helyszínen lévő API-k létrehozásakor, üzemeltetése és felhasználása során. Nem kell módosítania az API-kat, csak telepítse a kódot egy API-alkalmazásba. Például megtudhatja, hogyan hozhat létre az alábbi nyelvekkel létrehozott API-alkalmazásokat: 
 > 
-> * [ASP.net](../app-service/app-service-web-get-started-dotnet.md). 
-> * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
-> * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/containers/quickstart-python.md)
-> * [Ruby](../app-service/containers/quickstart-ruby.md)
+> * [ASP.net](../app-service/quickstart-dotnetcore.md). 
+> * [Java](../app-service/quickstart-java.md)
+> * [Node.js](../app-service/quickstart-nodejs.md)
+> * [PHP](../app-service/quickstart-php.md)
+> * [Python](../app-service/quickstart-python.md)
+> * [Ruby](../app-service/quickstart-ruby.md)
 >
 > A Logic apps-hoz készült API-alkalmazások mintáinak megtekintéséhez látogasson el a [Azure Logic apps GitHub-adattárba](https://github.com/logicappsio) vagy [blogba](https://aka.ms/logicappsblog).
 
@@ -232,7 +232,7 @@ Ahhoz, hogy az egyéni API-kat elérhetővé tegye a Logic Apps, a Power automat
 
 * Ha szeretne segíteni a Logic Apps fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hibák és kivételek kezelése](../logic-apps/logic-apps-exception-handling.md)
 * [Logikai alkalmazások hívása, triggere vagy beágyazása HTTP-végpontokkal](../logic-apps/logic-apps-http-endpoint.md)

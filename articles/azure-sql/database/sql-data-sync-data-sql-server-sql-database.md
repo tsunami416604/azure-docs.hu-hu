@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386843"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080694"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -131,6 +131,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 ### <a name="general-limitations"></a>Általános korlátozások
 
 - Egy táblának nem lehet olyan azonosító oszlopa, amely nem az elsődleges kulcs.
+- Az adatszinkronizálás használatához egy táblának fürtözött indexszel kell rendelkeznie.
 - Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, Binary, varbinary, képet, XML.
 - Legyen óvatos, ha a következő adattípusokat használja elsődleges kulcsként, mert a támogatott pontosság csak a második: Time, datetime, datetime2, DateTimeOffset.
 - Az objektumok (adatbázisok, táblák és oszlopok) nevei nem tartalmazhatják a nyomtatható karaktereket (.), a bal oldali szögletes zárójelet ([) vagy a jobb oldali szögletes zárójelet (]).
@@ -240,7 +241,7 @@ Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-
 
 A Dynamics 365 saját adatbázis-funkciója lehetővé teszi, hogy a rendszergazdák a saját Microsoft Azure SQL Database-be exportálják az alkalmazásból az adatentitásokat. Az adatszinkronizálás használatával más adatbázisokba is szinkronizálhatja ezeket az adatfájlokat, ha az adatexportálás **növekményes leküldéses** használatával történik (a teljes leküldéses funkció nem támogatott), és az **Eseményindítók engedélyezése a célként megadott adatbázisban** **Igen**értékre van állítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 

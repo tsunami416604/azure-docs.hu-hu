@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74980061"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080932"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integráció a szolgáltatási végpontokkal
 A App Service három változata van, amelyek némileg eltérő konfigurációt igényelnek az Azure Application Gateway-nal való integrációhoz. A variációk közé tartoznak a rendszeres App Service – többek között a több-bérlős, belső Load Balancer (ILB) App Service Environment (Bevezetés) és a külső betekintő is. Ez a cikk bemutatja, hogyan konfigurálhatja azt App Service (több-bérlős), és megvitathatja a ILB és a külső beadással kapcsolatos szempontokat.
@@ -33,7 +33,7 @@ A konfiguráció két részből áll, a App Service és a Application Gateway l�
 
 ## <a name="using-azure-portal"></a>Az Azure Portal használata
 A Azure Portal segítségével négy lépést követve üzembe helyezheti és konfigurálhatja a telepítőt. Ha meglévő erőforrásai vannak, akkor kihagyhatja az első lépéseket.
-1. Hozzon létre egy App Servicet a App Service dokumentációjában található rövid útmutatók valamelyikével, például: [.net Core](../../app-service/app-service-web-get-started-dotnet.md) rövid útmutató
+1. Hozzon létre egy App Servicet a App Service dokumentációjában található rövid útmutatók valamelyikével, például: [.net Core](../quickstart-dotnetcore.md) rövid útmutató
 2. Hozzon létre egy Application Gateway a [portál](../../application-gateway/quick-create-portal.md)rövid útmutatójának használatával, de hagyja ki a háttérbeli célok hozzáadása szakaszt.
 3. Konfigurálja [app Service háttérként a Application Gatewayban](../../application-gateway/configure-web-app-portal.md), de hagyja ki a hozzáférés korlátozása szakaszt.
 4. Végül hozza létre a [hozzáférési korlátozást a szolgáltatási végpontok használatával](../../app-service/app-service-ip-restrictions.md#service-endpoints).

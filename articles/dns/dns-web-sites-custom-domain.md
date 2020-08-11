@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939098"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079450"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban 
 
-Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és a felhasználók a www\.contoso.com vagy a contoso.com használatával érhetik el a teljes tartománynevet (FQDN).
+Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és a felhasználók a www contoso.com vagy a contoso.com használatával érhetik el a \. teljes tartománynevet (FQDN).
 
 > [!NOTE]
 > A jelen oktatóanyag példáiban a contoso.com szerepel. A contoso.com helyére írja be a saját tartománynevét.
@@ -48,7 +48,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Meg kell adnia egy tartománynevet, hogy tesztelni tudja, hogy Azure DNS üzemeltethető-e. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
-* [Hozzon létre egy App Service-alkalmazást](../app-service/app-service-web-get-started-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
+* [Hozzon létre egy App Service-alkalmazást](../app-service/quickstart-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
 
 * Hozzon létre egy DNS-zónát az Azure DNS-ben, majd delegálja azt az Azure DNS-be a tartománynév kezelőjénél.
 
@@ -173,7 +173,7 @@ set-AzWebApp `
 Nyissa meg valamilyen böngészőben a `http://www.<your domainname>` és a `http://<you domain name>` webhelyet.
 
 > [!NOTE]
-> Győződjön meg róla, hogy `http://` tartalmazza az előtagot, ellenkező esetben előfordulhat, hogy a böngésző megpróbál előre megjósolni egy URL-címet.
+> Győződjön meg róla, hogy tartalmazza az `http://` előtagot, ellenkező esetben előfordulhat, hogy a böngésző megpróbál előre megjósolni egy URL-címet.
 
 Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Például:
 

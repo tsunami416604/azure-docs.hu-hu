@@ -3,12 +3,12 @@ title: Azure Windows Communication Foundation-(WCF-) továbbító hibrid helysz�
 description: Megtudhatja, hogyan teheti elérhetővé a helyszíni WCF szolgáltatást a felhőben lévő webalkalmazásokban a Azure Relay használatával
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314412"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079960"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Helyszíni WCF-szolgáltatás közzététele a Felhőbeli webalkalmazásokban Azure Relay használatával
 
@@ -244,7 +244,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást hoz létre, amely a termé
     ![Hitelesítés meghatározása][18]
 
 1. **Hozzon létre egy új ASP.net-webalkalmazást**, és válassza a **Létrehozás** lehetőséget az MVC-alkalmazás létrehozásához.
-1. Azure-erőforrások konfigurálása új webalkalmazáshoz. Kövesse a [webalkalmazás közzététele](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)című témakör lépéseit. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+1. Azure-erőforrások konfigurálása új webalkalmazáshoz. Kövesse a [webalkalmazás közzététele](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)című témakör lépéseit. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 1. **Megoldáskezelő**kattintson a jobb gombbal a **modellek** elemre, **Add**majd válassza az  >  **osztály**hozzáadása elemet.
 1. Nevezze el az osztály *Product.cs*, majd válassza a **Hozzáadás**lehetőséget.
 
@@ -427,7 +427,7 @@ A következő szakasz folytatása előtt zárjunk be mindkét alkalmazást.
 
 A következő lépés az Azure-webalkalmazás **ProductsPortal** -felületének újbóli közzététele:
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **ProductsPortal** projektre, és válassza a **Közzététel**lehetőséget. A **közzétételi** lapon válassza a **Közzététel**lehetőséget.
+1. A **megoldáskezelő**kattintson a jobb gombbal a **ProductsPortal** projektre, és válassza a **Közzététel**lehetőséget. A **Közzététel** lapon válassza a **Közzététel** elemet.
 
    > [!NOTE]
    > Előfordulhat, hogy egy hibaüzenet jelenik meg a böngészőablakban, amikor a **ProductsPortal** webprojekt automatikusan elindul a telepítés után. Emiatt nem kell aggódnia, ugyanis az okozza, hogy a **ProductsServer** alkalmazás még nem fut.
@@ -449,7 +449,7 @@ A következő lépés az Azure-webalkalmazás **ProductsPortal** -felületének 
 1. Válassza **File**  >  **a fájl mentés összes mentése**lehetőséget.
 1. Válassza a **Build újjáépített**  >  **megoldás**lehetőséget.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás létrehozásához és futtatásához nyomja le az F5 billentyűt. A helyszíni kiszolgálónak, amely a **ProductsServer** -konzol alkalmazás, először el kell indulnia, majd a **ProductsPortal** alkalmazásnak egy böngészőablakban kell kezdődnie, ahogy az itt látható:
 

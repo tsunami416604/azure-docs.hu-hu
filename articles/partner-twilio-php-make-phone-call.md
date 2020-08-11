@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637323"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080558"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával az Azure-ban PHP-alkalmazásokban
 Az alábbi példa bemutatja, hogyan használhatja a Twilio-t az Azure-ban üzemeltetett PHP-weblapokról. Az eredményül kapott alkalmazás felszólítja a felhasználót a telefonhívások értékeire, ahogy az alábbi képernyőképen is látható.
@@ -104,8 +104,8 @@ A hívás elvégzése mellett a **MakeCall. php** a hívási metaadatokat is meg
 
 ![Azure-hívási válasz a Twilio és a PHP használatával][twilio_php_response]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
-A következő lépés az [alkalmazás üzembe helyezése az Azure Web Apps](app-service/app-service-web-get-started-php.md) -ben a git használatával (bár nem minden fontos információ). 
+## <a name="run-the-application"></a>Az alkalmazás futtatása
+A következő lépés az [alkalmazás üzembe helyezése az Azure Web Apps](app-service/quickstart-php.md) -ben a git használatával (bár nem minden fontos információ). 
 
 ## <a name="next-steps"></a>További lépések
 Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban a Twilio-t használják a PHP-ben. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például:

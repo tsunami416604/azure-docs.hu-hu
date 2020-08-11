@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482683"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079671"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -31,11 +31,11 @@ Ha az alkalmazás *Alapszintű*, standard vagy *prémium* *szintű*csomagban tal
 
 Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 
-| Kvóta | Description |
+| Kvóta | Leírás |
 | --- | --- |
 | **CPU (rövid)** | Az alkalmazás számára engedélyezett CPU-mennyiség 5 perces intervallumban. Ez a kvóta öt percenként alaphelyzetbe áll. |
 | **CPU (nap)** | Az alkalmazáshoz egy nap alatt engedélyezett CPU teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
-| **Memory (Memória)** | Az alkalmazás számára engedélyezett memória teljes mennyisége. |
+| **Memória** | Az alkalmazás számára engedélyezett memória teljes mennyisége. |
 | **Sávszélesség** | Az alkalmazáshoz egy nap alatt engedélyezett kimenő sávszélesség teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
 | **Fájlrendszer** | Az engedélyezett tárterület teljes mennyisége. |
 
@@ -55,7 +55,7 @@ Ha túllépte a fájlrendszer kvótáját, az írási műveletek meghiúsulnak. 
 
 Az App Service terv frissítésével növelheti vagy eltávolíthatja az alkalmazás kvótáit.
 
-## <a name="understand-metrics"></a>A metrikák ismertetése
+## <a name="understand-metrics"></a>Metrikák ismertetése
 
 > [!NOTE]
 > A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, nem számítunk fel adatokat, hacsak nem kapta meg a hozzáférést a privát előzetes verzióhoz.
@@ -64,11 +64,15 @@ Az App Service terv frissítésével növelheti vagy eltávolíthatja az alkalma
 > [!IMPORTANT]
 > Az **átlagos válaszidő** a metrikák összesítésével való összekeveredés elkerülése érdekében elavulttá válik. A **válaszidő** használata csereként.
 
+> [!NOTE]
+> Az alkalmazás metrikái az alkalmazás SCM-webhelyére (kudu) vonatkozó kéréseket tartalmazzák.  Ide tartoznak azok a kérések, amelyekkel megtekinthetők a hely logstream a kudu használatával.  A Logstream kérelmek több percet is igénybe vehetnek, ami hatással lehet a kérés időmetrikára.  A felhasználóknak tisztában kell lenniük ezzel a kapcsolattal, ha ezeket a metrikákat az autoscale Logic használatával használják.
+> 
+
 A metrikák az alkalmazással vagy a App Service terv működésével kapcsolatos információkat biztosítanak.
 
 Egy alkalmazás esetében az elérhető metrikák a következők:
 
-| Metric | Leírás |
+| Metrika | Leírás |
 | --- | --- |
 | **Válaszidő** | Az alkalmazás által a kérelmek kiszolgálásához szükséges idő (másodpercben). |
 | **Átlagos válaszidő (elavult)** | Az alkalmazásnak a kérelmek kiszolgálásához szükséges átlagos ideje másodpercben. |
@@ -112,7 +116,7 @@ App Service csomag esetében az elérhető metrikák a következők:
 > A App Service terv metrikái csak *Alapszintű*, *standard*és *prémium* szintű csomagokban érhetők el.
 > 
 
-| Metric | Leírás |
+| Metrika | Leírás |
 | --- | --- |
 | **CPU-százalék** | A csomag összes példányán használt átlagos CPU. |
 | **Memória százaléka** | A csomag összes példányán használt átlagos memória. |

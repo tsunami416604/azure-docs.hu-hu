@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770686"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081051"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
 
@@ -69,7 +69,7 @@ A App Service a tárolók számára [beépített folyamatos kézbesítést](depl
 
 ### <a name="use-github-actions"></a>GitHub-műveletek használata
 
-A tároló üzembe helyezését [a GitHub-műveletekkel](containers/deploy-container-github-action.md)is automatizálhatja.  Az alábbi munkafolyamat-fájl létrehozza és címkézi a tárolót a commit AZONOSÍTÓval, leküldi a tároló-beállításjegyzékbe, és frissíti a megadott tárolóhelyet az új rendszerkép címkével.
+A tároló üzembe helyezését [a GitHub-műveletekkel](deploy-container-github-action.md)is automatizálhatja.  Az alábbi munkafolyamat-fájl létrehozza és címkézi a tárolót a commit AZONOSÍTÓval, leküldi a tároló-beállításjegyzékbe, és frissíti a megadott tárolóhelyet az új rendszerkép címkével.
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps

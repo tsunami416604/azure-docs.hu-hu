@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat ASP.NET alkalmazást Azure App S
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1aeb243b3ff4a1e6bd2ae984510d2ec709776fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908108"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080147"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>ASP.NET-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -18,7 +18,7 @@ ms.locfileid: "84908108"
 
 A ASP.NET alkalmazásokat lefordított bináris fájlként kell telepíteni Azure App Service. A Visual Studio közzétételi eszköze létrehozza a megoldást, majd közvetlenül telepíti a lefordított bináris fájlokat, míg a App Service üzembe helyezési motor először a kódrészletet telepíti, majd lefordítja a bináris fájlokat.
 
-Ez az útmutató a ASP.NET-fejlesztők számára biztosít kulcsfontosságú fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [ASP.net](app-service-web-get-started-dotnet-framework.md) rövid útmutató és a [ASP.net SQL Database oktatóanyagot](app-service-web-tutorial-dotnet-sqldatabase.md) .
+Ez az útmutató a ASP.NET-fejlesztők számára biztosít kulcsfontosságú fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [ASP.net](quickstart-dotnet-framework.md) rövid útmutató és a [ASP.net SQL Database oktatóanyagot](app-service-web-tutorial-dotnet-sqldatabase.md) .
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>Támogatott .NET-keretrendszer futtatókörnyezet-verzióinak megjelenítése
 

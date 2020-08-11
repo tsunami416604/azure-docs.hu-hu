@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857209"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079807"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ Az oktatóanyagból a következőket sajátíthatja el:
 Ha rendelkezik a Visual Studio Ultimate-vel, a hibakereséshez használhatja a [IntelliTrace](/visualstudio/debugger/intellitrace) is. Ebben az oktatóanyagban nem szerepel a IntelliTrace.
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag a fejlesztői környezettel, a webes projekttel és App Service alkalmazással működik, amelyet a [ASP.NET-alkalmazás létrehozása](app-service-web-get-started-dotnet-framework.md)című cikkben állított be Azure app Service. A webjobs szakaszban szüksége lesz az [Azure WEBJOBS SDK-val való ismerkedéshez][GetStartedWJ]létrehozott alkalmazásra.
+Ez az oktatóanyag a fejlesztői környezettel, a webes projekttel és App Service alkalmazással működik, amelyet a [ASP.NET-alkalmazás létrehozása](quickstart-dotnet-framework.md)című cikkben állított be Azure app Service. A webjobs szakaszban szüksége lesz az [Azure WEBJOBS SDK-val való ismerkedéshez][GetStartedWJ]létrehozott alkalmazásra.
 
 Az oktatóanyagban látható mintakód egy C# MVC-webalkalmazásra mutat, de a hibaelhárítási eljárások ugyanazok Visual Basic és Web Forms alkalmazásokhoz.
 
@@ -51,7 +51,7 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
 
     További információ az Azure-erőforrásokhoz való csatlakozásról a Visual studióból: [fiókok, előfizetések és rendszergazdai szerepkörök kezelése](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 2. A **Server Explorerben**bontsa ki az **Azure** elemet, majd bontsa ki a **app Service**elemet.
-3. Bontsa ki azt az erőforráscsoportot, amely magában foglalja a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](app-service-web-get-started-dotnet-framework.md)létrehozott alkalmazást, majd kattintson a jobb gombbal az alkalmazás csomópontjára, majd kattintson a **beállítások megtekintése**elemre.
+3. Bontsa ki azt az erőforráscsoportot, amely magában foglalja a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](quickstart-dotnet-framework.md)létrehozott alkalmazást, majd kattintson a jobb gombbal az alkalmazás csomópontjára, majd kattintson a **beállítások megtekintése**elemre.
 
     ![Beállítások megtekintése a Server Explorerben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Ha a részletes hibaüzenet nem tartalmaz elegendő információt, és nem tudja
 
 A távoli hibakeresés nem működik a Visual Studio Express kiadásaiban.
 
-Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](app-service-web-get-started-dotnet-framework.md)létrehozott projekt használatával.
+Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](quickstart-dotnet-framework.md)létrehozott projekt használatával.
 
-1. Nyissa meg a [ASP.NET alkalmazás létrehozása Azure app Serviceban](app-service-web-get-started-dotnet-framework.md)létrehozott webes projektet.
+1. Nyissa meg a [ASP.NET alkalmazás létrehozása Azure app Serviceban](quickstart-dotnet-framework.md)létrehozott webes projektet.
 
 1. Nyissa meg a *Controllers\HomeController.cs*.
 
@@ -129,13 +129,13 @@ Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NE
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd kattintson a **Közzététel**elemre.
 
-1. A **profil** legördülő listában válassza ki ugyanazt a profilt, amelyet a [ASP.NET-alkalmazás létrehozásakor használt Azure app Serviceban](app-service-web-get-started-dotnet-framework.md). Ezután kattintson a beállítások elemre.
+1. A **profil** legördülő listában válassza ki ugyanazt a profilt, amelyet a [ASP.NET-alkalmazás létrehozásakor használt Azure app Serviceban](quickstart-dotnet-framework.md). Ezután kattintson a beállítások elemre.
 
 1. A **Közzététel** párbeszédpanelen kattintson a **Beállítások** fülre, majd módosítsa a **konfigurációt** **hibakeresésre**, majd kattintson a **Mentés**gombra.
 
     ![Közzététel hibakeresési módban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. Kattintson a **Publish** (Közzététel) gombra. Miután az üzembe helyezés befejeződött, és a böngésző megnyílik az alkalmazás Azure URL-címével, akkor zárjuk be a böngészőt.
+1. Kattintson a **Közzététel** gombra. Miután az üzembe helyezés befejeződött, és a böngésző megnyílik az alkalmazás Azure URL-címével, akkor zárjuk be a böngészőt.
 
 1. A **Server Explorerben**kattintson a jobb gombbal az alkalmazásra, majd kattintson a **hibakereső csatolása**parancsra.
 
@@ -264,7 +264,7 @@ A naplók az alkalmazás fájlrendszerében lévő *LogFiles* mappában találha
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>Alkalmazás-nyomkövetési naplók létrehozása és megtekintése
 Ebben a szakaszban a következő feladatokat hajtja végre:
 
-* Vegyen fel nyomkövetési utasításokat ahhoz a webes projekthez, amelyet az [Azure és a ASP.net első lépéseiben](app-service-web-get-started-dotnet-framework.md)hozott létre.
+* Vegyen fel nyomkövetési utasításokat ahhoz a webes projekthez, amelyet az [Azure és a ASP.net első lépéseiben](quickstart-dotnet-framework.md)hozott létre.
 * A naplókat a projekt helyi futtatásakor tekintheti meg.
 * Megtekintheti az Azure-ban futó alkalmazás által generált naplókat.
 
@@ -686,5 +686,5 @@ A webkiszolgáló-naplók elemzésével kapcsolatos további információkért t
 ### <a name="analyzing-failed-request-tracing-logs"></a>Sikertelen kérelmek nyomkövetési naplóinak elemzése
 A Microsoft TechNet webhely tartalmaz egy [Sikertelen kérelmek nyomkövetésének használatával](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) foglalkozó szakaszt, amely hasznos lehet a naplók használatának megismeréséhez. A dokumentáció azonban elsősorban a sikertelen kérelmek nyomkövetésének konfigurálására koncentrál az IIS-ben, amelyet nem tehet meg Azure App Serviceban.
 
-[GetStarted]: app-service-web-get-started-dotnet.md
+[GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

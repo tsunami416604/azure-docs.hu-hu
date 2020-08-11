@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053439"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080524"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -133,7 +133,7 @@ Különösen a kisebb adatbázis-kezelő rendszerek esetében, amelyekben a szá
 > Az Azure M sorozatú virtuális gépek SAP HANA minősítése kizárólag az Azure írásgyorsító a **/Hana/log** -kötethez. Ennek eredményeképpen az Azure M sorozatú virtuális gépeken SAP HANA üzemelő példányok üzembe helyezését az Azure írásgyorsító kell konfigurálni a **/Hana/log** -kötethez.  
 
 > [!NOTE]
-> Az Azure Premium Storage-t érintő forgatókönyvekben a rendszerindítási képességek bevezetését használjuk a konfigurációban. Ahogy bármilyen alakú vagy formájú tárolási tesztelési eszközt használ, tartsa szem előtt az [Azure Premium Disk burst](../../linux/disk-bursting.md) működésének módját. Az SAP-HWCCT vagy a HCMT eszközön keresztül továbbított tárolási tesztek futtatása nem várható, hogy az összes teszt átadja a feltételeket, mivel a tesztek némelyike túllépi a felhalmozódott feltört krediteket. Különösen akkor, ha a tesztek egymás után, megszakítás nélkül futnak.
+> Az Azure Premium Storage-t érintő forgatókönyvekben a rendszerindítási képességek bevezetését használjuk a konfigurációban. Ahogy bármilyen alakú vagy formájú tárolási tesztelési eszközt használ, tartsa szem előtt az [Azure Premium Disk burst](../../linux/disk-bursting.md) eszközét. Az SAP-HWCCT vagy a HCMT eszközön keresztül továbbított tárolási tesztek futtatása nem várható, hogy az összes teszt átadja a feltételeket, mivel a tesztek némelyike túllépi a felhalmozódott feltört krediteket. Különösen akkor, ha a tesztek egymás után, megszakítás nélkül futnak.
 
 
 > [!NOTE]

@@ -1,24 +1,27 @@
 ---
-title: Windows ASP.NET Core-alkalmazások konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy ASP.NET Core alkalmazást a App Service natív Windows-példányaiban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+title: ASP.NET Core alkalmazások konfigurálása
+description: Megtudhatja, hogyan konfigurálhat egy ASP.NET Core alkalmazást a natív Windows-példányokban, vagy egy előre elkészített Linux-tárolóban, Azure App Service. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5819fc5b2d6e64d1812dacd88a2a4f840f6e03c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908107"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080164"
 ---
-# <a name="configure-a-windows-aspnet-core-app-for-azure-app-service"></a>Windows ASP.NET Core-alkalmazás konfigurálása Azure App Servicehoz
+# <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>ASP.NET Core alkalmazás konfigurálása Azure App Servicehoz
 
 > [!NOTE]
 > A .NET-keretrendszer ASP.NET tekintse meg a [ASP.NET alkalmazás konfigurálása a Azure app Servicehoz](configure-language-dotnet-framework.md) című témakört.
 
-ASP.NET Core alkalmazásokat lefordított bináris fájlként kell telepíteni Azure App Service. A Visual Studio közzétételi eszköze létrehozza a megoldást, majd közvetlenül telepíti a lefordított bináris fájlokat, míg a App Service üzembe helyezési motor először a kódrészletet telepíti, majd lefordítja a bináris fájlokat. A Linux-alkalmazásokkal kapcsolatos információkért lásd: [linux ASP.net Core alkalmazás konfigurálása Azure app Servicehoz](containers/configure-language-dotnetcore.md).
+ASP.NET Core alkalmazásokat lefordított bináris fájlként kell telepíteni Azure App Service. A Visual Studio közzétételi eszköze létrehozza a megoldást, majd közvetlenül telepíti a lefordított bináris fájlokat, míg a App Service üzembe helyezési motor először a kódrészletet telepíti, majd lefordítja a bináris fájlokat.
 
-Ez az útmutató a ASP.NET Core fejlesztőknek szóló főbb fogalmakat és útmutatást tartalmazza. Ha még soha nem használta a Azure App Servicet, kövesse a [ASP.net](app-service-web-get-started-dotnet.md) rövid útmutatót, és [ASP.net Core az SQL Database oktatóanyaggal](app-service-web-tutorial-dotnetcore-sqldb.md) .
+Ez az útmutató a ASP.NET Core fejlesztőknek szóló főbb fogalmakat és útmutatást tartalmazza. Ha még soha nem használta a Azure App Servicet, először kövesse a [ASP.net Core](quickstart-dotnetcore.md) rövid útmutató és a [ASP.net Core SQL Database oktatóanyagot](tutorial-dotnetcore-sqldb-app.md) .
+
+::: zone pivot="platform-windows"  
 
 ## <a name="show-supported-net-core-runtime-versions"></a>Támogatott .NET Core Runtime-verziók megjelenítése
 
@@ -28,9 +31,69 @@ App Service a Windows-példányok már telepítve vannak az összes támogatott 
 dotnet --info
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="show-net-core-version"></a>.NET Core verzió megjelenítése
+
+Az aktuális .NET Core-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+Az összes támogatott .NET Core-verzió megjelenítéséhez futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep DOTNETCORE
+```
+
+::: zone-end
+
 ## <a name="set-net-core-version"></a>A .NET Core verziójának beállítása
 
+::: zone pivot="platform-windows"  
+
 Állítsa be a célként megadott keretrendszert a ASP.NET Core projekthez tartozó Project-fájlban. További információ: [válassza ki a](https://docs.microsoft.com/dotnet/core/versions/selection) .net Core-ban használandó verziót a .net Core dokumentációjában.
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a .net Core verzió 3,1-re való beállításához:
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>A Build Automation testreszabása
+
+Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
+
+1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
+1. Futtassa `dotnet restore` a parancsot a NuGet-függőségek visszaállításához.
+1. A futtatásával `dotnet publish` hozzon létre egy bináris fájlt éles környezetben.
+1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
+
+`PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
+
+A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+További környezeti változók a Build Automation testreszabásához: [Oryx-konfiguráció](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+A ASP.NET Core alkalmazások Linux rendszeren való futtatásáról és App Serviceáról további információt a [Oryx dokumentációjában talál: a .net Core-alkalmazások észlelése és építése](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
+
+::: zone-end
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
@@ -115,7 +178,7 @@ App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_pr
 
 - Konfigurálja a middleware-t a [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , hogy továbbítsa a `X-Forwarded-For` és a `X-Forwarded-Proto` fejléceket a alkalmazásban `Startup.ConfigureServices` .
 - Adjon hozzá magánhálózati IP-címtartományt az ismert hálózatokhoz, hogy a köztes kapcsolat megbízható legyen a App Service Load balancerben.
-- A [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus meghívása az `Startup.Configure` egyéb köztes közbenső funkciók meghívása előtt.
+- A [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus meghívása a `Startup.Configure` többi middleware meghívása előtt.
 
 A három elem együttes elhelyezésével a kód a következő példához hasonlóan néz ki:
 
@@ -146,7 +209,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolgáló és a terheléselosztó működéséhez](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
+::: zone pivot="platform-linux"
+
+## <a name="open-ssh-session-in-browser"></a>SSH-munkamenet megnyitása böngészőben
+
+[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](app-service-web-tutorial-dotnetcore-sqldb.md)
+> [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](tutorial-dotnetcore-sqldb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [App Service Linux – gyakori kérdések](faq-app-service-linux.md)
+
+::: zone-end
+

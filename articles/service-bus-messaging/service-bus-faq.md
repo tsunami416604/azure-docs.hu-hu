@@ -3,12 +3,12 @@ title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371243"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080813"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -57,7 +57,7 @@ Az alábbi lépéseket követve megkeresheti a kapcsolatok listájához hozzáad
 1. Futtassa a következő parancsot egy parancssorból: 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ez az IP-cím statikus. Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
 
@@ -66,7 +66,7 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
 1. Először futtassa az nslookupt a névtéren.
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
 

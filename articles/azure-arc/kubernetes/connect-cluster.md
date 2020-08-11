@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050091"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080490"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
@@ -64,7 +64,7 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 * TCP a 443-es porton – >`https://:443`
 * TCP a 9418-es porton – >`git://:9418`
 
-| Végpont (DNS)                                                                                               | Description                                                                                                                 |
+| Végpont (DNS)                                                                                               | Leírás                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Ahhoz szükséges, hogy az ügynök csatlakozhasson az Azure-hoz, és regisztrálja a fürtöt                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Adatsík végpontja az ügynök számára az állapot leküldéséhez és a konfigurációs adatok beolvasásához                                      |
@@ -91,7 +91,7 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Egy erőforráscsoport használatával tárolhatja a fürt metaadatait.
 
@@ -172,6 +172,41 @@ Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti.
 > [!NOTE]
 > A fürt bevezetését követően 5 – 10 percet vesz igénybe, hogy a fürt metaadatai (a fürt verziója, az ügynök verziója, a csomópontok száma) az Azure arc-kompatibilis Kubernetes-erőforrás áttekintés lapján legyenek felszínre Azure Portal.
 
+## <a name="connect-using-an-outbound-proxy-server"></a>Csatlakozás kimenő proxykiszolgáló használatával
+
+Ha a fürt egy kimenő proxykiszolgáló mögött található, az Azure CLI és az arc-kompatibilis Kubernetes-ügynököknek a kimenő proxykiszolgálón keresztül kell átirányítani a kéréseiket. Az alábbi konfiguráció segít elérni a következőt:
+
+1. A `connectedk8s` következő parancs futtatásával keresse meg a számítógépen telepített bővítmény verzióját:
+
+    ```bash
+    az -v
+    ```
+
+    A `connectedk8s` kimenő proxyval rendelkező ügynökök telepítéséhez a >= 0.2.3 kiterjesztésű verzióra van szükség. Ha a számítógépen verziója < 0.2.3, kövesse a [frissítés lépéseit](#before-you-begin) a bővítmény legújabb verziójának lekéréséhez a gépen.
+
+2. Állítsa be az Azure CLI-hez szükséges környezeti változókat:
+
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
+
+3. Futtassa a csatlakozás parancsot a megadott proxy-paraméterekkel:
+
+    ```bash
+    az connectedk8s connect -n <cluster-name> -g <resource-group> \
+    --proxy-https https://<proxy-server-ip-address>:<port> \
+    --proxy-http http://<proxy-server-ip-address>:<port> \
+    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```
+
+> [!NOTE]
+> 1. A excludedCIDR megadása a-proxy-skip-Range területen fontos annak biztosítása érdekében, hogy a fürtön belüli kommunikáció ne legyen megszakítva az ügynököknél.
+> 2. A fenti proxy-specifikációt jelenleg csak az ív-ügynökökre alkalmazza a rendszer, a sourceControlConfiguration használt fluxus-hüvelyek esetében nem. Az arc-kompatibilis Kubernetes csapata aktívan dolgozik ezen a szolgáltatáson, és hamarosan elérhető lesz.
+
+## <a name="azure-arc-agents-for-kubernetes"></a>Azure arc-ügynökök a Kubernetes
+
 Az Azure arc-kompatibilis Kubernetes üzembe helyez néhány operátort a `azure-arc` névtérben. Ezeket a központi telepítéseket és hüvelyeket itt tekintheti meg:
 
 ```console
@@ -199,8 +234,6 @@ pod/flux-logs-agent-7c489f57f4-mwqqv            2/2     Running  0       16h
 pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
-
-## <a name="azure-arc-agents-for-kubernetes"></a>Azure arc-ügynökök a Kubernetes
 
 Az Azure arc-kompatibilis Kubernetes néhány ügynököt (operátort) tartalmaz, amelyek a névtérben üzembe helyezett fürtön futnak `azure-arc` .
 

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056924"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079586"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 | Bármilyen típusú Futtatás elküldése | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
 | Folyamat végpontjának közzététele | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Regisztrált modell üzembe helyezése AK/ACI-erőforráson | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| Egy üzembe helyezett AK-végponton keresztüli pontozás | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` a következőket: (ha nem használja a HRE autht) vagy `"/workspaces/read"` (jogkivonat-hitelesítés használatakor) |
+| Egy üzembe helyezett AK-végponton keresztüli pontozás | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` a következőket: (ha nem használja Azure Active Directory auth) vagy `"/workspaces/read"` (jogkivonat-hitelesítés használatakor) |
 | A tárterület elérése interaktív jegyzetfüzetekkel | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | Új egyéni szerepkör létrehozása | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi`Microsoft.Authorization/roleDefinitions/write` | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`/workspaces/computes/write` |
 
@@ -374,10 +374,14 @@ Ezek az [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control
 Íme néhány tudnivaló az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata során:
 
 - Ha az Azure-ban hoz létre egy erőforrást, mondjuk egy munkaterületet, nem közvetlenül a munkaterület tulajdonosa. A szerepkör örökölt a legmagasabb hatókörű szerepkörtől, amelyet az adott előfizetésben engedélyez. Például ha Ön hálózati rendszergazda, és rendelkezett a Machine Learning munkaterület létrehozásához szükséges engedélyekkel, akkor a hálózati rendszergazda szerepkört a munkaterülethez kell rendelni, nem pedig a tulajdonosi szerepkörhöz.
-- Ha ugyanahhoz a HRE-felhasználóhoz két szerepkör-hozzárendelés van társítva a műveletek/kizárások ütköző fejezeteivel, akkor előfordulhat, hogy az egyik szerepkörben felsorolt műveletek nem lépnek érvénybe, ha egy másik szerepkörben is műveletként szerepelnek. Ha többet szeretne megtudni arról, hogy az Azure hogyan elemzi a szerepkör-hozzárendeléseket, olvassa el, [hogyan határozza meg, hogy a felhasználó rendelkezik-e erőforrás-hozzáféréssel az Azure RBAC](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
-- A számítási erőforrások VNet való üzembe helyezéséhez explicit módon engedélyeznie kell a "Microsoft. Network/virtualNetworks/JOIN/Action" jogosultságot a VNet-erőforráson.
-- Időnként akár 1 óráig is eltarthat, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
+- Ha két szerepkör-hozzárendelés van ugyanahhoz a Azure Active Directory-felhasználóhoz, amely ütközik a műveletek és a tevékenységek ütköző részeivel, akkor előfordulhat, hogy az egyik szerepkörtől való kizárásban felsorolt műveletek nem lépnek érvénybe, ha egy másik szerepkör Műveleteiként is szerepelnek. Ha többet szeretne megtudni arról, hogy az Azure hogyan elemzi a szerepkör-hozzárendeléseket, olvassa el, [hogyan határozza meg, hogy a felhasználó rendelkezik-e erőforrás-hozzáféréssel az Azure RBAC](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
+- A számítási erőforrások VNet való üzembe helyezéséhez explicit módon rendelkeznie kell a következő műveletekhez szükséges engedélyekkel:
+    - "Microsoft. Network/virtualNetworks/JOIN/Action" a VNet-erőforráson.
+    - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
+    
+    A hálózatkezeléssel való RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking).
 
+- Időnként akár 1 óráig is eltarthat, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>K. Milyen engedélyek szükségesek egy felhasználó által hozzárendelt felügyelt identitás használatához a Amlcompute-fürtökkel?
 

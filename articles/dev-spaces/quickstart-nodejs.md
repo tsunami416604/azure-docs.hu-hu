@@ -7,12 +7,12 @@ description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c27718cc87a1c9401b31ff8c3c77c7b7a8c52292
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7fcb60d3f020d911157735ce9632ed4157e2da4e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420379"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080419"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes a Visual Studio Code és a Node.js – Azure dev Spaces
 
@@ -162,12 +162,12 @@ A nem *démon*futtatásakor a rendszer automatikusan újraindítja a csomópont-
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
+További információ az Azure dev Spaces működéséről.
 
 > [!div class="nextstepaction"]
-> [Több tároló használata és fejlesztés csapatban](multi-service-nodejs.md)
+> [Az Azure Dev Spaces működése](how-dev-spaces-works.md)
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

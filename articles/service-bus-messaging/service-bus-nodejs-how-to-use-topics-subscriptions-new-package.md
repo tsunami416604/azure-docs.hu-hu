@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5afe5eded4937631d25ab94edc1908b7ac83d383
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067477"
+ms.locfileid: "88080626"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Node.js és az Azure/Service-Bus csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan írhat egy Node.js programot, amely üzeneteket küld egy Service Bus témakörnek, és üzeneteket fogad egy Service Bus előfizetésből az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag használatával. Ez a csomag a gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md) használja, míg a régebbi [Azure-sb-](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A mintákat JavaScript nyelven írták.
@@ -22,7 +22,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan írhat egy Node.js programot, ame
 - Ha nem rendelkezik a témával és az előfizetéssel, akkor a létrehozásához kövesse a [Use Azure Portal (Service Bus témakörök és előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) létrehozása című cikk lépéseit). Jegyezze fel a Service Bus-példányhoz tartozó kapcsolatok karakterláncát, valamint a létrehozott témakör és előfizetés nevét. Ezeket az értékeket a mintákban fogjuk használni.
 
 > [!NOTE]
-> - Ez az oktatóanyag olyan példákkal működik, amelyeket a [NodeJS](https://nodejs.org/)használatával másolhat és futtathat. Node.js alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node.js alkalmazás létrehozása és telepítése Azure-webhelyre](../app-service/app-service-web-get-started-nodejs.md), vagy [Node.js Cloud Service a Windows PowerShell használatával](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Ez az oktatóanyag olyan példákkal működik, amelyeket a [NodeJS](https://nodejs.org/)használatával másolhat és futtathat. Node.js alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node.js alkalmazás létrehozása és telepítése Azure-webhelyre](../app-service/quickstart-nodejs.md), vagy [Node.js Cloud Service a Windows PowerShell használatával](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 > - Az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag még nem támogatja a topcis és-előfizetések létrehozását. [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)Ha programozott módon szeretné létrehozni őket, használja a csomagot.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Csomag telepítése a Node Package Manager (NPM) használatával

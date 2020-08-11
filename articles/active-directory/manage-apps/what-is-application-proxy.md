@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94d120973939dd1efabee868fc75e9f6c1352bf3
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562633"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080660"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Helyszíni alkalmazások közzététele az Azure AD Application Proxy használatával távoli felhasználók számára
 
@@ -203,7 +202,7 @@ A szervezeteknek a következő előnyök kihasználásával kell megkezdeniük a
 * Automatikus frissítések a legújabb biztonsági javítások biztosításához
 * Új funkciók, mint azok kiadása; a legutóbbi támogatás az SAML egyszeri bejelentkezéshez és az alkalmazás-cookie-k részletesebb kezeléséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure AD Application Proxy tervezésével, működésével és kezelésével kapcsolatos információkért lásd: Azure-beli [ad Application proxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md).
 * Egy élő bemutató beléptetéséhez vagy az ingyenes 90 napos próbaverzió kiértékeléséhez tekintse meg a [Enterprise Mobility + Security első lépéseivel foglalkozó](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)témakört.

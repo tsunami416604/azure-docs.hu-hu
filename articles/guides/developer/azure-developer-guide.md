@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832807"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080317"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -64,11 +64,11 @@ A meglévő alkalmazásokat áttelepítheti App Servicera az [Online áttelepít
 
 > **Használat esetén**: app Service használata, amikor meglévő webalkalmazásokat telepít át az Azure-ba, és ha egy teljes körűen felügyelt üzemeltetési platformra van szüksége a Web Apps számára. App Service akkor is használhatja, ha a mobileszközök támogatásához vagy a REST API-k az alkalmazással való eléréséhez szükséges.
 >
-> Első **lépések**: app Service megkönnyíti az első [webalkalmazás](../../app-service/app-service-web-get-started-dotnet.md), a [Mobile App](../../app-service-mobile/app-service-mobile-ios-get-started.md)vagy az [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md)létrehozását és üzembe helyezését.
+> Első **lépések**: app Service megkönnyíti az első [webalkalmazás](../../app-service/quickstart-dotnetcore.md), a [Mobile App](../../app-service-mobile/app-service-mobile-ios-get-started.md)vagy az [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md)létrehozását és üzembe helyezését.
 >
 > **Próbálja ki most**: app Service lehetővé teszi egy rövid élettartamú alkalmazás kiépítését a platform kipróbálásához anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki a platformot, és [hozza létre a Azure app Service alkalmazást](https://tryappservice.azure.com/).
 
-#### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
+#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
 A IaaS-szolgáltatóként az Azure lehetővé teszi az alkalmazás üzembe helyezését vagy áttelepítését Windows vagy Linux rendszerű virtuális gépekre. Az Azure Virtual Network együtt az Azure Virtual Machines támogatja a Windows vagy Linux rendszerű virtuális gépek Azure-ba való telepítését. A virtuális gépekkel teljes mértékben vezérelheti a gép konfigurációját. Virtuális gépek használatakor az összes kiszolgáló szoftver telepítésére, konfigurálására, karbantartására és az operációs rendszerre vonatkozó javítások felelősek.
 

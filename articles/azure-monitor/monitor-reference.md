@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447320"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080864"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -61,7 +61,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Active Directory B2C | Nem | Nem | Nem |  |
 |Active Directory Domain Services | Nem | Igen | Nem |  |
 |Tevékenységnapló | Nem | Igen | Nem | |
-|Advanced Threat Protection | Nem | Nem | Nem |  |
+|Fejlett fenyegetésvédelem | Nem | Nem | Nem |  |
 |Advisor | Nem | Nem | Nem |  |
 |AI Builder | Nem | Nem | Nem |  |
 |Analysis Services | Igen | Igen | Nem |  |
@@ -87,7 +87,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Container Registry | Igen | Igen | Nem |  |
 |Content Delivery Network (CDN) | Nem | Igen | Nem |  |
 |Cosmos DB | Igen | Igen | [Igen](insights/cosmosdb-insights-overview.md) |  |
-|Cost Management | Nem | Nem | Nem |  |
+|Költségkezelés | Nem | Nem | Nem |  |
 |Data Box | Nem | Nem | Nem |  |
 |Data Catalog Gen2 | Nem | Nem | Nem |  |
 |Data Explorer | Igen | Igen | Nem |  |
@@ -111,7 +111,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |ExpressRoute | Igen | Igen | Nem |  |
 |Firewall | Igen | Igen | Nem |  |
 |Front Door | Igen | Igen | Nem |  |
-|Functions | Igen | Igen | Nem |  |
+|Függvény | Igen | Igen | Nem |  |
 |HDInsight | Nem | Igen | Nem |  |
 |HPC Cache | Nem | Nem | Nem |  |
 |Information Protection | Nem | Igen | Nem |  |
@@ -138,7 +138,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Open Datasets | Nem | Nem | Nem |  |
 |Szabályzat | Nem | Nem | Nem |  |
 |Power BI Embedded | Igen | Igen | Nem |  |
-|Private Link | Nem | Nem | Nem |  |
+|Privát kapcsolat | Nem | Nem | Nem |  |
 |Projekt-várólista kommunikációs platformja | Nem | Nem | Nem |  |
 |Red Hat OpenShift | Nem | Nem | Nem |  |
 |Redis Cache | Igen | Igen | [Igen](insights/redis-cache-insights-overview.md) | |
@@ -220,7 +220,7 @@ A Azure Monitor az Azure-on kívüli erőforrásokból is gyűjthet adatokat az 
 | Erőforrás | Metódus |
 |:---|:---|
 | Alkalmazások | Webalkalmazások monitorozása az Azure-on kívül Application Insights használatával. Lásd: [Mi az Application Insights?](./app/app-insights-overview.md) |
-| Virtual machines (Virtuális gépek) | A Log Analytics ügynök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [a naplózási adatok összegyűjtése a log Analytics ügynökkel](platform/log-analytics-agent.md). |
+| Virtual machines (Virtuális gépek) | Az ügynökök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [Azure monitor ügynökök áttekintése](platform/agents-overview.md). |
 | Ügyfél REST API | A különböző API-k képesek adatokat írni Azure Monitor naplókba és metrikába bármilyen REST API ügyfélről. Lásd: [naplófájlok küldésének Azure monitor a http](platform/data-collector-api.md) -adatgyűjtő API-val a naplókhoz, és [Egyéni metrikák küldése egy Azure-erőforrásnak a Azure monitor metrika-tárolóba](platform/metrics-store-custom-rest-api.md) a metrikák REST API használatával. |
 
 

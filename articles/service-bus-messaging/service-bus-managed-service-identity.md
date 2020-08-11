@@ -3,12 +3,12 @@ title: Felügyelt identitások az Azure-erőforrásokhoz Service Bus
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások Azure Service Bus entitások (várólisták, témakörök és előfizetések) elérésére.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b33f4e9b38d55ef3ed709df8d09f1ffd62a8bca8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066287"
+ms.locfileid: "88079858"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához használt központi telepítéshez tartozó biztonságos identitást hozzon létre. Ezután társíthatja az identitást hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket biztosítanak az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
@@ -68,7 +68,7 @@ Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuál
 - [Azure Portalra](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Engedélyek megadása felügyelt identitásnak az Azure AD-ben
@@ -79,7 +79,7 @@ Az Azure-szerepkörök hozzárendelésével kapcsolatos további információké
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Service Bus használata felügyelt identitásokkal az Azure-erőforrásokhoz
 Ha a Service Bus felügyelt identitásokkal szeretné használni, hozzá kell rendelnie a szerepkört és a megfelelő hatókört. Az ebben a szakaszban szereplő eljárás egy olyan egyszerű alkalmazást használ, amely felügyelt identitás alatt fut, és Service Bus erőforrásokhoz fér hozzá.
 
-Itt egy [Azure app Service](https://azure.microsoft.com/services/app-service/)-ban üzemeltetett minta webalkalmazást használunk. A webalkalmazások létrehozásával kapcsolatos részletes útmutatásért lásd: [ASP.net Core Webalkalmazás létrehozása az Azure-ban](../app-service/app-service-web-get-started-dotnet.md)
+Itt egy [Azure app Service](https://azure.microsoft.com/services/app-service/)-ban üzemeltetett minta webalkalmazást használunk. A webalkalmazások létrehozásával kapcsolatos részletes útmutatásért lásd: [ASP.net Core Webalkalmazás létrehozása az Azure-ban](../app-service/quickstart-dotnetcore.md)
 
 Az alkalmazás létrehozása után kövesse az alábbi lépéseket: 
 

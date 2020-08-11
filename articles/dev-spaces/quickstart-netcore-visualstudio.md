@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1855fd201d7963fdf2f1b3fa292643908bbb05a0
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007004"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079603"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -78,7 +78,7 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 1. Nevezze el a projekt *webfelületét* , és kattintson a *Létrehozás*gombra.
 1. Ha a rendszer kéri, válassza a *webalkalmazás (Model-View-Controller)* elemet a sablonhoz.
 1. Válassza a *.net Core* és a *ASP.net Core 2,1* elemet a felső részen.
-1. Kattintson a *Létrehozás* lehetőségre.
+1. Kattintson a *Create* (Létrehozás) gombra.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>A projekt összekötése a fejlesztői területtel
 
@@ -150,8 +150,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>További lépések
 
+További információ az Azure dev Spaces működéséről.
+
 > [!div class="nextstepaction"]
-> [Több tároló használata és fejlesztés csapatban](multi-service-netcore-visualstudio.md)
+> [Az Azure Dev Spaces működése](how-dev-spaces-works.md)
 
 [ingress-update]: how-dev-spaces-works-up.md#how-running-your-code-is-configured
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

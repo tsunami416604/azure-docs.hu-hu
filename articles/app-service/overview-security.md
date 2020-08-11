@@ -5,12 +5,12 @@ keywords: Azure app Service, webalkalmazás, mobil alkalmazás, API-alkalmazás,
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649028"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080300"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság a Azure App Service
 
@@ -56,7 +56,7 @@ App Service a hitelesítés és az engedélyezés több hitelesítésszolgáltat
 A háttérrendszer hitelesítése során a App Service két különböző mechanizmust biztosít a szükségestől függően:
 
 - **Szolgáltatás identitása** – jelentkezzen be a távoli erőforrásba az alkalmazás identitásával. App Service lehetővé teszi, hogy könnyen hozzon létre egy [felügyelt identitást](overview-managed-identity.md), amelyet más szolgáltatásokkal való hitelesítéshez használhat, például [Azure SQL Database](/azure/sql-database/) vagy [Azure Key Vault](/azure/key-vault/). Ennek a megközelítésnek a teljes körű oktatóanyagát lásd: [biztonságos Azure SQL Database a app Service-kapcsolatot felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md).
-- **Bejelentkezett (OBO)** – a felhasználó nevében delegált hozzáférést biztosít a távoli erőforrásokhoz. A Azure Active Directory hitelesítési szolgáltatóként a App Service alkalmazás delegált bejelentkezést hajthat végre egy távoli szolgáltatáshoz, például [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) -hoz vagy egy távoli API-alkalmazáshoz app Service. Ennek a módszernek a teljes körű oktatóanyagát lásd: a [felhasználók hitelesítése és engedélyezése a Azure app Service](app-service-web-tutorial-auth-aad.md).
+- **Bejelentkezett (OBO)** – a felhasználó nevében delegált hozzáférést biztosít a távoli erőforrásokhoz. A Azure Active Directory hitelesítési szolgáltatóként a App Service alkalmazás delegált bejelentkezést hajthat végre egy távoli szolgáltatáshoz, például [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) -hoz vagy egy távoli API-alkalmazáshoz app Service. Ennek a módszernek a teljes körű oktatóanyagát lásd: a [felhasználók hitelesítése és engedélyezése a Azure app Service](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Távoli erőforrásokhoz való kapcsolódás
 
@@ -94,7 +94,7 @@ Ne tárolja az alkalmazás-titkokat, például az adatbázis hitelesítő adatai
 
 Azt is megteheti, hogy a App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](/azure/key-vault/) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/tutorial-web-application-keyvault.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz.
 
-## <a name="network-isolation"></a>Hálózatelkülönítés
+## <a name="network-isolation"></a>Hálózati elkülönítés
 
 Az **elkülönített** díjszabási szinten kívül minden csomag a app Service megosztott hálózati infrastruktúráján futtatja az alkalmazásokat. A nyilvános IP-címek és az előtér-terheléselosztó például más Bérlővel is megoszthatók. Az **elkülönített** csomag lehetővé teszi a hálózati elkülönítést az alkalmazások dedikált [app Service környezetben](environment/intro.md)való futtatásával. App Service környezet az [Azure Virtual Network](/azure/virtual-network/)saját példányában fut. A következőkre van lehetőség: 
 

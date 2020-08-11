@@ -3,12 +3,12 @@ title: A DevTest Labs használata az Azure Pipelines buildelési és kiadási fo
 description: Ismerje meg, hogyan használhatók a Azure DevTest Labs az Azure-folyamatok létrehozásához és kiadásához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 71af1e0dfe205fe1028f7b82b41f3ed38ebefd3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483074"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080334"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>A DevTest Labs használata az Azure Pipelines buildelési és kiadási folyamataiban
 Ez a cikk azt ismerteti, hogyan használhatók az DevTest Labs az Azure-folyamatokban a folyamatok létrehozásához és kiadásához. 
@@ -26,7 +26,7 @@ Miután a Build sikeresen befejeződött, a **kiadási folyamat** a Build össze
 
 Az egyik szükséges hely az, hogy a tesztelt ökoszisztéma újbóli létrehozásához szükséges összes információ elérhető legyen a Build-összetevőkön belül, beleértve az Azure-erőforrások konfigurációját is. Az Azure-erőforrások használata esetén a vállalatok ezeket az erőforrásokat szeretnék ellenőrizni vagy nyomon követni. Bizonyos helyzetekben Azure Resource Manager az erőforrások létrehozásához és konfigurálásához használt sablonokat egy másik részleg is felügyelheti. Előfordulhat, hogy ezeket a sablonokat egy másik adattár tárolja. Érdekes helyzetet eredményez, amikor létrehoznak és tesztelnek egy buildet, és a kódot és a konfigurációt is a Build összetevőkön belül kell tárolni, hogy megfelelően újra létrehozza a rendszer éles környezetben történő létrehozását. 
 
-A DevTest Labs az összeállítási/tesztelési fázisban való használatával hozzáadhat Azure Resource Manager sablonokat és támogató fájlokat a Build forrásokhoz, így a kiadási fázisban a teszteléshez használt pontos konfiguráció üzembe helyezése éles környezetben történik. A megfelelő konfigurációval rendelkező **Azure DevTest Labs környezet létrehozása** feladat a Build összetevőkön belül menti a Resource Manager-sablonokat. Ebben a példában a kódot fogja használni az [oktatóanyag: .net Core-és SQL Database-Webalkalmazás létrehozása Azure app Serviceban](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md), a webalkalmazás üzembe helyezéséhez és teszteléséhez az Azure-ban.
+A DevTest Labs az összeállítási/tesztelési fázisban való használatával hozzáadhat Azure Resource Manager sablonokat és támogató fájlokat a Build forrásokhoz, így a kiadási fázisban a teszteléshez használt pontos konfiguráció üzembe helyezése éles környezetben történik. A megfelelő konfigurációval rendelkező **Azure DevTest Labs környezet létrehozása** feladat a Build összetevőkön belül menti a Resource Manager-sablonokat. Ebben a példában a kódot fogja használni az [oktatóanyag: .net Core-és SQL Database-Webalkalmazás létrehozása Azure app Serviceban](../app-service/tutorial-dotnetcore-sqldb-app.md), a webalkalmazás üzembe helyezéséhez és teszteléséhez az Azure-ban.
 
 ![Teljes folyamat](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -40,7 +40,7 @@ Már van néhány olyan elem, amelyet előzőleg létre kell hozni:
 A létrehozási folyamat létrehoz egy DevTest Labs-környezetet, és üzembe helyezi a kódot a teszteléshez.
 
 ## <a name="set-up-a-build-pipeline"></a>Build folyamat beállítása
-Az Azure-folyamatokban hozzon létre egy összeállítási folyamatot az [oktatóanyag használatával: .net Core-és SQL Database-Webalkalmazás létrehozása Azure app Serviceban](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Használja a **ASP.net Core** sablont, amely feltölti a szükséges feladatot a kód létrehozásához, teszteléséhez és közzétételéhez.
+Az Azure-folyamatokban hozzon létre egy összeállítási folyamatot az [oktatóanyag használatával: .net Core-és SQL Database-Webalkalmazás létrehozása Azure app Serviceban](../app-service/tutorial-dotnetcore-sqldb-app.md). Használja a **ASP.net Core** sablont, amely feltölti a szükséges feladatot a kód létrehozásához, teszteléséhez és közzétételéhez.
 
 ![ASP.NET-sablon kiválasztása](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 

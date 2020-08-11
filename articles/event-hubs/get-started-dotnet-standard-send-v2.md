@@ -3,12 +3,12 @@ title: Események küldése vagy fogadása az Azure Event Hubs .NET használatá
 description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti, amely az Azure-Event Hubs a legújabb Azure. Messaging. EventHubs csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 292e6e36337f565100c25d655882e60fa2a0bb6d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537139"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080055"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Események küldése és fogadása az Azure Event Hubs-.NET-ről (Azure. Messaging. EventHubs) 
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure. Messaging. EventHubs** .net-kódtár használatával. 
@@ -105,7 +105,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
     > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs) .
 
 ## <a name="receive-events"></a>Események fogadása
-Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amely az Event hub-ból származó üzeneteket fogad egy eseményvezérelt processzor használatával. Az esemény-feldolgozó leegyszerűsíti az események fogadását az Event hubokból az állandó ellenőrzőpontok és a párhuzamos fogadások kezelésével az adott esemény hubokból. Egy esemény-feldolgozó társítva van egy adott Event hubhoz és egy fogyasztói csoporthoz. Az Event hub több partíciójának eseményeit fogadja el, amelyek az Ön által megadott kóddal való feldolgozásra szolgálnak. 
+Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amely az Event hub-ból származó üzeneteket fogad egy eseményvezérelt processzor használatával. Az esemény-feldolgozó leegyszerűsíti az események fogadását az Event hubokból az állandó ellenőrzőpontok és a párhuzamos fogadások az adott esemény hubokból való kezelésével. Egy esemény-feldolgozó társítva van egy adott Event hubhoz és egy fogyasztói csoporthoz. Az Event hub több partíciójának eseményeit fogadja el, amelyek az Ön által megadott kóddal való feldolgozásra szolgálnak. 
 
 
 > [!NOTE]
@@ -221,7 +221,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
     Ezek az események a küldő program futtatásával korábban a következő három eseményt küldik el az Event hub számára. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a mintákat a GitHubon. 
 
 - [Event Hubs minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)

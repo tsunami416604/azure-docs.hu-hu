@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671611"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080198"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer funkciójának Azure App Service
 Ez a cikk a [Azure app Serviceon](https://go.microsoft.com/fwlink/?LinkId=529714)futó összes Windows-alkalmazás számára elérhető általános alapkonfiguráció operációs rendszer funkcióit ismerteti. Ez a funkció magában foglalja a fájl-, hálózat-és beállításjegyzék-hozzáférést, valamint a diagnosztikai naplókat és eseményeket. 
 
 > [!NOTE] 
-> A App Service [linuxos alkalmazásai](containers/app-service-linux-intro.md) saját tárolókban futnak. A gazdagép operációs rendszeréhez való hozzáférés nem engedélyezett, a tárolóhoz rendszergazdai hozzáférése van. Hasonlóképpen, a [Windows-tárolókban futó alkalmazások](app-service-web-get-started-windows-container.md)esetében rendszergazdai hozzáféréssel rendelkezik a tárolóhoz, de nem fér hozzá a gazdagép operációs rendszeréhez. 
+> A App Service [linuxos alkalmazásai](overview.md#app-service-on-linux) saját tárolókban futnak. A gazdagép operációs rendszeréhez való hozzáférés nem engedélyezett, a tárolóhoz rendszergazdai hozzáférése van. Hasonlóképpen, a [Windows-tárolókban futó alkalmazások](quickstart-custom-container.md?pivots=container-windows)esetében rendszergazdai hozzáféréssel rendelkezik a tárolóhoz, de nem fér hozzá a gazdagép operációs rendszeréhez. 
 >
 
 <a id="tiers"></a>
@@ -60,7 +60,7 @@ Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Hálózati meghajtók (más néven UNC-megosztások)
+### <a name="network-drives-unc-shares"></a>Hálózati meghajtók (UNC-megosztások)
 App Service egyik egyedi aspektusa, amely az alkalmazások üzembe helyezését és karbantartását teszi egyértelművé, hogy az összes felhasználói tartalmat egy UNC-megosztáson tárolja. Ez a modell jól mutat a különböző elosztott terhelésű kiszolgálókkal rendelkező helyszíni webüzemeltetési környezetek által használt tartalom tárolására. 
 
 App Service belül az egyes adatközpontokban létrehozott UNC-megosztások száma. Az egyes adatközpontokban lévő összes ügyfél felhasználói tartalmának százalékos aránya az egyes UNC-megosztásokhoz van lefoglalva. Emellett az egyetlen ügyfél előfizetéséhez tartozó összes fájl tartalma mindig ugyanarra az UNC-megosztásra kerül. 

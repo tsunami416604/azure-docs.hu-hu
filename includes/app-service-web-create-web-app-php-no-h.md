@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: app-service
 author: msangapu-msft
 ms.service: app-service
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: msangapu
 ms.custom: include file
-ms.openlocfilehash: 14b84c27140c7aebf83684d7c80dfbae5713850b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c32788cdf77b31c34021e0eaded6f73520fd572a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085225"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081025"
 ---
-Hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` app Service tervben. 
+Hozzon létre egy [webalkalmazást](../articles/app-service/overview.md#app-service-on-linux) a `myAppServicePlan` app Service tervben. 
 
-A Cloud Shell a [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) parancsot használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.3` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes). 
+A Cloud Shell a [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) parancsot használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.3` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) . 
 
 ```azurecli-interactive
 # Bash

@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Ismerje meg, hogyan állíthat be folyamatos integrációt/folyamatos üzembe helyezést az Azure DevOps és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229329"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080266"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>A CI/CD és az Azure Dev Spaces használata
 
@@ -24,7 +24,7 @@ Ez a cikk végigvezeti a folyamatos integráció/folyamatos üzembe helyezés (C
 Bár ez a cikk végigvezeti Önt az Azure DevOps, ugyanazok a fogalmak érvényesek a CI/CD-rendszerekre, mint például a Jenkins, a TeamCity stb.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Azure Kubernetes Service (ak) fürt az Azure dev Spaces szolgáltatással](../get-started-netcore.md)
+* Azure Kubernetes Service (ak) fürt az Azure dev Spaces szolgáltatással
 * [Azure dev Spaces CLI telepítve](upgrade-tools.md)
 * [Azure DevOps-szervezet projekttel](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
@@ -119,7 +119,7 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. Kattintson a jobb felső sarokban található **Mentés** elemre, majd **az OK gombra**.
 1. Kattintson a **+ kiadás** elemre (a Mentés gomb mellett), és **hozzon létre egy kiadást**.
 1. Az összetevők területen **ellenőrizze, hogy ki van-e**választva a build-folyamat legújabb buildje.
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 Az automatizált kiadási folyamat most elindul, üzembe helyezi a *mywebapi* és a *webfrontend* -diagramokat a Kubernetes-fürtön a _fejlesztői_ legfelső szintű helyen. A kiadás előrehaladását az Azure DevOps webes portálján követheti nyomon:
 
@@ -185,5 +185,7 @@ Bár a dev Spaces Instrumentation úgy lett kialakítva, hogy _nem_ az alkalmaz�
 
 ## <a name="next-steps"></a>További lépések
 
+További információ az Azure dev Spaces működéséről.
+
 > [!div class="nextstepaction"]
-> [Ismerje meg az Azure dev Spaces szolgáltatással való csoportmunka-fejlesztést](../team-development-netcore.md)
+> [Az Azure Dev Spaces működése](../how-dev-spaces-works.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: eeac1c3cb7f92a7e407511c6436fe9d0723b2648
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308780"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079943"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 
@@ -49,7 +49,7 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 
 * [Java fejlesztői készlet (JDK) 7+](/java/azure/jdk/?view=azure-java-stable).
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
-* [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/app-service-web-get-started-java.md)
+* [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/quickstart-java.md)
 
 Ha első alkalommal telepíti ezeket az eszközöket, a coreservlets.com végigvezeti a telepítési folyamat lépésein a gyors üzembe helyezési [útmutatóban: a TomCat7 telepítése és az Eclipse használatával](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) című cikk.
 

@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82142620"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080949"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
 Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát.  Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat.  Az Application Insightsból az alkalmazás teljesítményéről és hatékonyságáról gyűjtött információkkal tájékozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
 
-Ez a rövid útmutató bemutatja, hogyan adhatja hozzá az Application Insightst a meglévő ASP.NET-webalkalmazáshoz, és hogyan indíthatja el az élő statisztika monitorozását, amely az alkalmazás elemzésére használható számos módszer egyike. Ha nem rendelkezik ASP.NET-webalkalmazással, a [ASP.net-Webalkalmazás létrehozása](../../app-service/app-service-web-get-started-dotnet-framework.md)című rövid útmutatóban hozhat létre egyet.
+Ez a rövid útmutató bemutatja, hogyan adhatja hozzá az Application Insightst a meglévő ASP.NET-webalkalmazáshoz, és hogyan indíthatja el az élő statisztika monitorozását, amely az alkalmazás elemzésére használható számos módszer egyike. Ha nem rendelkezik ASP.NET-webalkalmazással, a [ASP.net-Webalkalmazás létrehozása](../../app-service/quickstart-dotnet-framework.md)című rövid útmutatóban hozhat létre egyet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez:
@@ -28,7 +28,7 @@ Az oktatóanyag elvégzéséhez:
     - Azure-fejlesztés
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -44,7 +44,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 4. Válassza ki előfizetését, és kattintson a **Register** (Regisztráció) gombra.
 
-5. Válassza a **projekt** > **NuGet-csomagok** > kezelése**csomag forrása: nuget.org** > **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
+5. Válassza a **projekt**  >  **NuGet-csomagok kezelése**  >  **csomag forrása: nuget.org**  >  **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
 
 6. Futtassa az alkalmazást a **Hibakeresés** menü **Hibakeresés indítása** elemének kiválasztásával vagy az F5 billentyű lenyomásával.
 
@@ -52,7 +52,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Az Application Insights a futtatás helyétől függetlenül telemetriai adatokat gyűjt az alkalmazásról. Az adatok megjelenítéséhez hajtsa végre az alábbi lépéseket.
 
-1. Application Insights **megnyitásához kattintson** -> a**más Windows** -> **Application Insights keresés**lehetőségre.  Megjelenik az aktuális munkamenetből származó telemetria.<BR><br>![Telemetria a Visual Studióban](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. Application Insights **megnyitásához kattintson a**  ->  **más Windows**  ->  **Application Insights keresés**lehetőségre.  Megjelenik az aktuális munkamenetből származó telemetria.<BR><br>![Telemetria a Visual Studióban](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. A kérés részleteinek megtekintéséhez kattintson a lista első kérésére (ebben a példában: GET Home/Index). Figyelje meg, hogy az állapotkód és a válaszidő is megtalálható a részletek között, a kérésre vonatkozó más értékes információkkal együtt.<br><br>![Válasz részletei a Visual Studióban](media/quick-monitor-portal/request-details.png)
 
@@ -68,7 +68,7 @@ Most megnyithatja az Application Insightst az Azure Portalon a futó alkalmazás
 
     ![Alkalmazástérkép](media/quick-monitor-portal/05-appmap.png)
 
-3. Az alkalmazás-összetevők egyikén ![kattintson az](media/quick-monitor-portal/app-viewinlogs-icon.png) **app Analytics** ikon alkalmazás-hozzárendelési **nézetére a naplók (Analitika)** elemre. Ekkor megnyílik a **naplók (Analitika)**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Az alkalmazás-összetevők egyikén kattintson az **app Analytics** ikon ![ alkalmazás-hozzárendelési ](media/quick-monitor-portal/app-viewinlogs-icon.png) **nézetére a naplók (Analitika)** elemre. Ekkor megnyílik a **naplók (Analitika)**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
     ![Elemzés](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -76,7 +76,7 @@ Most megnyithatja az Application Insightst az Azure Portalon a futó alkalmazás
 
     ![Élő stream](media/quick-monitor-portal/7livemetrics.png)
 
-    Ha készen áll az alkalmazás Azure-on történő üzemeltetésére, most már közzéteheti. Kövesse az [ASP.NET-webalkalmazás létrehozását ismertető rövid útmutató](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) lépéseit.
+    Ha készen áll az alkalmazás Azure-on történő üzemeltetésére, most már közzéteheti. Kövesse az [ASP.NET-webalkalmazás létrehozását ismertető rövid útmutató](../../app-service/quickstart-dotnetcore.md#update-the-app-and-redeploy) lépéseit.
 
 5. Ha a Visual Studiót használja az Application Insights-monitorozáshoz, automatikusan hozzáadhatja az ügyféloldali monitorozást. Ha egy alkalmazáshoz manuálisan szeretné hozzáadni az ügyféloldali monitorozást, adja hozzá a következő JavaScript-kódrészletet:
 

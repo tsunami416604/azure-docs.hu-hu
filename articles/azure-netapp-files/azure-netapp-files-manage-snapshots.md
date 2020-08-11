@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 271c3c9f63ee3f761826e214f3bf32a8df5f1cbe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 85990aee5143c9ccc0362a00597a748763977204
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533291"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080215"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -60,7 +60,7 @@ A **Pillanatkép-házirend** szolgáltatás jelenleg előzetes verzióban érhet
 2. A szolgáltatás regisztrálási állapotának ellenõrzése: 
 
     > [!NOTE]
-    > A **RegistrationState** a `Registering` Módosítás előtt több percig is eltarthat `Registered` . A folytatás előtt várjon, amíg az állapot **regisztrálva** lesz.
+    > A **RegistrationState** a `Registering` módosítás előtt legfeljebb 60 percig lehet `Registered` . A folytatás előtt várjon, amíg az állapot **regisztrálva** lesz.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
@@ -160,7 +160,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
 
     ![Visszaállítás új kötetre](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Létrehozás** lehetőségre.   
+4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Create** (Létrehozás) gombra.   
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 

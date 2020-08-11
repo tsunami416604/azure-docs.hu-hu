@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876580"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080898"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatainak konfigurálása
 
@@ -40,10 +40,9 @@ A hálózati szabályok érvénybe léptetése az Azure Cognitive Services össz
 
 ## <a name="supported-regions-and-service-offerings"></a>Támogatott régiók és szolgáltatási ajánlatok
 
-Az alább felsorolt Cognitive Services a kereskedelmi felhőben és US Gov felhőben lévő virtuális hálózatokat támogatják. Ha a szolgáltatás nem szerepel a listán, a virtuális hálózatok még nem támogatottak.
+A virtuális hálózatok (virtuális hálózatok) támogatottak azokon a [régiókban, ahol elérhetők a Cognitive Services](https://azure.microsoft.com/global-infrastructure/services/). Ha a kognitív szolgáltatás nem szerepel a listáján, a virtuális hálózatok jelenleg nem támogatottak.
 
 > [!div class="checklist"]
-
 > * [Anomáliadetektor](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
@@ -59,8 +58,8 @@ Az alább felsorolt Cognitive Services a kereskedelmi felhőben és US Gov felh�
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
 Cognitive Services támogatja a hálózati szabályok konfigurálásához szükséges szolgáltatási címkéket. Az alább felsorolt szolgáltatások a **CognitiveServicesManagement** szolgáltatás címkéjén találhatók.
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > * [Anomáliadetektor](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
@@ -549,7 +548,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](welcome.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

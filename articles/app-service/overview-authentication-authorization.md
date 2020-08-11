@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562378"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080728"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -56,7 +56,7 @@ A hitelesítési és engedélyezési modul egy külön tárolóban fut, amely el
 
 ### <a name="userapplication-claims"></a>Felhasználói/alkalmazási jogcímek
 
-Az összes nyelvi keretrendszer esetében a App Service a bejövő jogcímek (azaz egy hitelesített végfelhasználó vagy ügyfélalkalmazás) által a kód számára elérhető jogcímeket a kérések fejlécére szúrja be. A ASP.NET 4,6 alkalmazások esetében App Service a hitelesített felhasználó jogcímeivel tölti fel a [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) értéket, így a szabványos .net-kód mintát is használhatja, beleértve az `[Authorize]` attribútumot is. Hasonlóképpen, a PHP-alkalmazások esetében App Service feltölti a `_SERVER['REMOTE_USER']` változót. Java-alkalmazások esetén a jogcímek a [tomcat servletből érhetők el](containers/configure-language-java.md#authenticate-users-easy-auth).
+Az összes nyelvi keretrendszer esetében a App Service a bejövő jogcímek (azaz egy hitelesített végfelhasználó vagy ügyfélalkalmazás) által a kód számára elérhető jogcímeket a kérések fejlécére szúrja be. A ASP.NET 4,6 alkalmazások esetében App Service a hitelesített felhasználó jogcímeivel tölti fel a [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) értéket, így a szabványos .net-kód mintát is használhatja, beleértve az `[Authorize]` attribútumot is. Hasonlóképpen, a PHP-alkalmazások esetében App Service feltölti a `_SERVER['REMOTE_USER']` változót. Java-alkalmazások esetén a jogcímek a [tomcat servletből érhetők el](configure-language-java.md#authenticate-users-easy-auth).
 
 [Azure functions](../azure-functions/functions-overview.md)esetén a `ClaimsPrincipal.Current` .net-kód nem töltődik fel, de továbbra is megkeresheti a felhasználói jogcímeket a kérések fejlécében, vagy lekérheti az `ClaimsPrincipal` objektumot a kérelem környezetében, vagy akár egy kötési paraméteren keresztül is. További információért lásd: [az ügyfél-identitások használata](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
@@ -149,7 +149,7 @@ Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alka
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](tutorial-auth-aad.md)  
 [Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)  
 [A hitelesítés és az engedélyezés testreszabása app Service](app-service-authentication-how-to.md) 
  [Az Azure AppService EasyAuth .net Core-integrációja (harmadik fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 

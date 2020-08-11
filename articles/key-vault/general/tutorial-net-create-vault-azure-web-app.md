@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513332"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080232"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET használatával
 
@@ -140,7 +140,7 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 
 ### <a name="create-a-remote-web-app"></a>Távoli webes alkalmazás létrehozása
 
-Hozzon létre egy [Azure-webalkalmazást](../../app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` app Service tervben. 
+Hozzon létre egy [Azure-webalkalmazást](../../app-service/overview.md#app-service-on-linux) a `myAppServicePlan` app Service tervben. 
 
 > [!Important]
 > Az Key Vaulthoz hasonlóan az Azure-webalkalmazásoknak egyedi névvel kell rendelkezniük. Cserélje le a \<your-webapp-name\> nevet a webalkalmazás nevére a következő példákkal.

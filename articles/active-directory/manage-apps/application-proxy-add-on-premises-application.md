@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129032"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080762"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -114,7 +114,7 @@ A következő URL-címek elérésének engedélyezése:
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az összekötő ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
 Engedélyezheti a \* . msappproxy.net és a. servicebus.Windows.net kapcsolatait, \* Ha a tűzfal vagy a proxy lehetővé teszi a DNS-engedélyezési listák konfigurálását. Ha nem, engedélyeznie kell az [Azure IP-címtartományok és a szolgáltatás-címkék nyilvános felhőhöz](https://www.microsoft.com/download/details.aspx?id=56519)való hozzáférését. Az IP-címtartományok hetente frissülnek.
 
@@ -206,7 +206,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
     | **URL-címek lefordítása a fejlécekben** | Tartsa meg ezt az értéket **Igen** , kivéve, ha az alkalmazásnak a hitelesítési kérelemben az eredeti állomásfejléc-fejlécet kellett volna megadnia. |
     | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne **csak akkor tartsa meg, ha** hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Válassza a **Hozzáadás** elemet.
+7. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
