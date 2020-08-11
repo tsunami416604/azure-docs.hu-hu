@@ -16,17 +16,17 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357766"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061506"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. Az Office 365 munkaterheléseket, például az Exchange Online-t és a Skype vállalati alkalmazást használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
 
-Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Az alábbiakban néhány példa következik:
+Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Néhány példa:
 
 * A [multi-Azure ad címtár-topológiát](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)tervezi használni. Ezután egy szűrőt kell alkalmaznia annak szabályozására, hogy mely objektumok legyenek szinkronizálva egy adott Azure AD-címtárral.
 * Az Azure-hoz vagy az Office 365-hoz készült pilóta futtatásakor csak a felhasználók egy részhalmazát szeretné használni az Azure AD-ben. A kis pilóta esetében nem fontos, hogy a funkciók megjelenítéséhez teljes globális címlistát lehessen használni.
@@ -47,7 +47,7 @@ Mivel a szűrés egyszerre több objektumot is eltávolíthat, meg kell győződ
 
 A "[véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)" funkció alapértelmezés szerint be van kapcsolva, hogy megakadályozza a sok objektum törlését. Ha a szűrés miatt sok objektumot töröl (500 alapértelmezés szerint), akkor a cikk lépéseit követve engedélyezheti a törlést az Azure AD-be való átugráshoz.
 
-Ha november 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) előtti buildet használ, módosítsa a szűrő konfigurációját, és használja a jelszó-kivonatolási szinkronizálást, majd a konfiguráció befejezése után minden jelszó teljes szinkronizálását el kell indítania. A jelszó teljes szinkronizálásának elindítására vonatkozó lépésekért lásd: az [összes jelszó teljes szinkronizálásának elindítása](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Ha a build 1.0.9125 vagy újabb verzióját használja, akkor a normál **teljes szinkronizálási** művelet azt is kiszámítja, hogy szinkronizálva legyenek-e a jelszavak, és ha ez a további lépés már nem szükséges.
+Ha november 2015 ([1.0.9125](reference-connect-version-history.md)) előtti buildet használ, módosítsa a szűrő konfigurációját, és használja a jelszó-kivonatolási szinkronizálást, majd a konfiguráció befejezése után minden jelszó teljes szinkronizálását el kell indítania. A jelszó teljes szinkronizálásának elindítására vonatkozó lépésekért lásd: az [összes jelszó teljes szinkronizálásának elindítása](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Ha a build 1.0.9125 vagy újabb verzióját használja, akkor a normál **teljes szinkronizálási** művelet azt is kiszámítja, hogy szinkronizálva legyenek-e a jelszavak, és ha ez a további lépés már nem szükséges.
 
 Ha egy szűrési hiba miatt véletlenül törölte a **felhasználói** objektumokat az Azure ad-ben, akkor az Azure ad-ben újra létrehozhatja a felhasználói objektumokat a szűrési konfigurációk eltávolításával. Ezután szinkronizálhatja a címtárakat. Ez a művelet visszaállítja a felhasználókat a Lomtárból az Azure AD-ben. Más objektumtípusok törlését azonban nem lehet visszavonni. Ha például véletlenül töröl egy biztonsági csoportot, és az erőforrás-HOZZÁFÉRÉSre volt használva, a csoport és az ACL-ek nem állíthatók helyre.
 
@@ -202,7 +202,7 @@ A szinkronizálási motor úgy is beállítható, hogy a szűrési konfiguráci�
 Ezzel a konfigurációval a ManagedObjects alatt létrehozott új szervezeti egység nincs szinkronizálva.
 
 ## <a name="attribute-based-filtering"></a>Attribútum-alapú szűrés
-Győződjön meg arról, hogy a következő lépések végrehajtásához használja a november 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) vagy újabb buildet.
+Győződjön meg arról, hogy a következő lépések végrehajtásához használja a november 2015 ([1.0.9125](reference-connect-version-history.md)) vagy újabb buildet.
 
 > [!IMPORTANT]
 >A Microsoft azt javasolja, hogy ne módosítsa a **Azure ad Connect**által létrehozott alapértelmezett szabályokat. Ha módosítani kívánja a szabályt, majd klónozást végez, és letiltja az eredeti szabályt. Végezze el a klónozott szabály módosításait. Vegye figyelembe, hogy ezzel (az eredeti szabály letiltásával) az adott szabályon keresztül engedélyezett hibajavítások vagy funkciók hiányoznak.
@@ -279,7 +279,7 @@ Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók
 5. Az előugró ablakban válaszoljon az **Igen** gombra a szabály másolatának létrehozásához.
 6. A **Leírás** lapon módosítsa a **sorrendet** egy nem használt értékre (például 50).
 7. A bal oldali navigációs sávon kattintson a **hatókör szűrő** elemre, majd kattintson a **záradék hozzáadása**lehetőségre. Az **attribútum**területen válassza az **e-mail**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a ** \@ contoso.com**, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **userPrincipalName**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a következőt: ** \@ contoso.com**.
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 9. A konfigurálás befejezéséhez **teljes szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Módosítások alkalmazása és ellenőrzése
@@ -299,9 +299,9 @@ Hajtsa végre a következő lépéseket:
 A szinkronizálás után a rendszer az összes módosítást exportálja. Mielőtt megkezdené a módosításokat az Azure AD-ben, ellenőrizni kívánja, hogy a módosítások helyesek-e.
 
 1. Indítson el egy parancssort, és nyissa meg a következőt: `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. Futtassa az `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
+2. A `csexport "Name of Connector" %temp%\export.xml /f:x` parancs futtatása.  
    Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
-3. Futtassa az `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
+3. A `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancs futtatása.
 4. Most már van egy fájlja a (z)% Temp% megnevezett export.csvban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.
 

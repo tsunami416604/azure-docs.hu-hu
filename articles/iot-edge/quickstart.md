@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117253"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061489"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -65,20 +65,24 @@ IoT Edge-eszköz:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Az új virtuális gép létrehozása és elindítása néhány percet is igénybe vehet. Ezután letöltheti a virtuális géphez való csatlakozáskor használandó RDP-fájlt:
+  Az új virtuális gép létrehozása és elindítása néhány percet is igénybe vehet.
+
+  A virtuális gép elindítása után letöltheti a virtuális géphez való csatlakozáskor használandó RDP-fájlt:
 
   1. Navigáljon az új Windowsos virtuális géphez a Azure Portal.
-  1. Kattintson a **Csatlakozás** gombra.
+  1. Válassza a **Kapcsolódás** lehetőséget.
   1. Az **RDP** lapon válassza az **RDP-fájl letöltése**lehetőséget.
 
   Nyissa meg ezt a fájlt a Távoli asztali kapcsolat használatával a Windows rendszerű virtuális géphez való kapcsolódáshoz a paranccsal megadott rendszergazdai névvel és jelszóval `az vm create` .
 
 > [!NOTE]
+> A Windows rendszerű virtuális gép a Windows 1809-es verziójával (Build 17763) kezdődik, amely a [Windows hosszú távú támogatásának legújabb felépítése](https://docs.microsoft.com/windows/release-information/). A Windows alapértelmezés szerint minden 22 órában automatikusan ellenőrzi a frissítéseket. A virtuális gép ellenőrzését követően a Windows olyan verziófrissítést küld, amely nem kompatibilis a Windows IoT Edgeével, ami megakadályozza a IoT Edge további használatát a Windows-szolgáltatásokban. Javasoljuk, hogy a virtuális gép használatát 22 órán belül korlátozza, vagy [átmenetileg szüneteltesse a Windows-frissítéseket](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+>
 > Ez a rövid útmutató az egyszerűség kedvéért egy Windows rendszerű virtuális gépet használ. További információ arról, hogy mely Windows operációs rendszerek érhetők el általánosan az éles környezetekben: [Azure IoT Edge támogatott rendszerek](support.md).
 >
 > Ha készen áll a IoT Edgehoz tartozó saját Windows-eszköz konfigurálására, beleértve az IoT Core-ot futtató eszközöket, kövesse a [Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című témakör lépéseit.
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
@@ -232,7 +236,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
