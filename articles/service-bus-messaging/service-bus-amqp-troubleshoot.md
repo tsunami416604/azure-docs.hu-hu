@@ -3,12 +3,12 @@ title: A AMQP hibáinak elhárítása a Azure Service Busban | Microsoft Docs
 description: A Azure Service Bus használatakor esetlegesen megjelenő AMQP-hibák listáját jeleníti meg, illetve a hibák okát.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9680e930dd8c1cb8cbd062f029af9d674d62c0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337829"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064349"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>AMQP hibák a Azure Service Busban
 Ez a cikk a AMQP és a Azure Service Bus használatával kapott hibákat ismerteti. A szolgáltatás minden szabványos viselkedése. Elkerülheti őket úgy, hogy küldési/fogadási hívásokat végez a kapcsolaton/hivatkozáson, amely automatikusan újra létrehozza a kapcsolatot vagy a hivatkozást.
@@ -44,4 +44,4 @@ Ha többet szeretne megtudni a AMQP és a Service Busről, látogasson el a köv
 
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md
 [AMQP 1.0 protokoll – útmutató]: service-bus-amqp-protocol-guide.md
-[A Windows Server Service Bus AMQP]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[A Windows Server Service Bus AMQP]: /previous-versions/service-bus-archive/dn282144(v=azure.100)

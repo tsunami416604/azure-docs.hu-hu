@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Service Bus 
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341717"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066168"
 ---
 # <a name="service-bus-management-libraries"></a>A Service Bus felügyeleti könyvtárai
 
@@ -26,11 +26,11 @@ A Azure Service Bus felügyeleti kódtárak dinamikusan tudnak kiépíteni Servi
 
 A Service Bus felügyeleti kódtárak használatának megkezdéséhez hitelesítenie kell magát a Azure Active Directory (Azure AD) szolgáltatással. Az Azure AD-ben az Azure-erőforrásokhoz való hozzáférést biztosító egyszerű szolgáltatásként kell hitelesítenie magát. Az egyszerű szolgáltatásnév létrehozásával kapcsolatos információkért tekintse meg a következő cikkek egyikét:  
 
-* [A Azure Portal használatával hozzon létre Active Directory alkalmazást és egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [A Azure Portal használatával hozzon létre Active Directory alkalmazást és egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId` és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. Legalább [**Azure Service Bus adattulajdonosi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) vagy [**közreműködői**](/azure/role-based-access-control/built-in-roles#contributor) engedélyekkel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyen futtatni szeretné a szolgáltatást.
+Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId` és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. Legalább [**Azure Service Bus adattulajdonosi**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) vagy [**közreműködői**](../role-based-access-control/built-in-roles.md#contributor) engedélyekkel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyen futtatni szeretné a szolgáltatást.
 
 ## <a name="programming-pattern"></a>Programozási minta
 

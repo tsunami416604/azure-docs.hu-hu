@@ -2,13 +2,13 @@
 title: Az alkalmazás frissítése Service Fabric a PowerShell használatával
 description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helyezésének és a kód módosításának, valamint a PowerShell használatával történő frissítésének folyamatán.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/5/2020
+ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195884"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064587"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric alkalmazás frissítése a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -24,6 +24,21 @@ A leggyakrabban használt és ajánlott frissítési módszer a figyelt működ�
 A figyelt alkalmazások frissítése a felügyelt vagy a natív API-k, a PowerShell, az Azure CLI, a Java vagy a REST használatával végezhető el. A Visual Studióval végzett frissítéssel kapcsolatos utasításokért lásd: [az alkalmazás frissítése a Visual Studióval](service-fabric-application-upgrade-tutorial.md).
 
 Service Fabric figyelt működés közbeni frissítésekkel az alkalmazás rendszergazdája beállíthatja, hogy a Service Fabric milyen állapot-értékelési házirendet használ annak megállapításához, hogy az alkalmazás kifogástalan-e. Emellett a rendszergazda konfigurálhatja az állapot kiértékelésének sikertelensége esetén végrehajtandó műveletet (például automatikus visszaállítást hajt végre). Ez a szakasz végigvezeti a PowerShellt használó SDK-minták egyikének figyelt frissítésén. 
+
+> [!NOTE]
+> Az [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s nem őrződnek meg az alkalmazás verziófrissítése során. Az aktuális alkalmazás paramétereinek megőrzése érdekében a felhasználónak először le kell kérnie a paramétereket, és át kell adnia őket a frissítési API-híváshoz, például az alábbihoz:
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>1. lépés: a vizuális objektumok mintájának létrehozása és üzembe helyezése
 Hozza létre és tegye közzé az alkalmazást úgy, hogy a jobb gombbal az alkalmazás projektre, a **VisualObjectsApplication,** majd a **közzétételi** parancsra kattint.  További információ: [Service Fabric alkalmazás-frissítési oktatóanyag](service-fabric-application-upgrade-tutorial.md).  Azt is megteheti, hogy a PowerShell használatával helyezi üzembe az alkalmazást.

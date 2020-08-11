@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035417"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065981"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok elleni védelem Azure Active Directory intelligens zárolással
 
@@ -24,7 +24,7 @@ Az intelligens zárolás segít kizárni a felhasználók jelszavait kitaláló 
 
 ## <a name="how-smart-lockout-works"></a>Hogyan működik az intelligens zárolás?
 
-Alapértelmezés szerint az intelligens zárolás 10 sikertelen kísérlet után egy percen belül zárolja a fiókot a bejelentkezési kísérletekből. A fiók minden további sikertelen bejelentkezési kísérlet után ismét zárolja a műveletet, és a későbbi próbálkozások során egy percen belül megszakad.
+Alapértelmezés szerint az intelligens zárolás 10 sikertelen kísérlet után egy percen belül zárolja a fiókot a bejelentkezési kísérletekből. A fiók minden további sikertelen bejelentkezési kísérlet után ismét zárolja a műveletet, és a későbbi próbálkozások során egy percen belül megszakad. Annak érdekében, hogy a támadók milyen módon tudjanak megkerülni a viselkedést, nem adjuk ki azt a sebességet, amellyel a zárolási időszak a további sikertelen bejelentkezési kísérleteknél nő.
 
 Az intelligens zárolási szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását.
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: cebbab4045b3f8af061bfececff1af9ed70c50de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430647"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065125"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus-várólisták használata az Azure-ban Node.js és az Azure-SB csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js-alkalmazásokat az üzenetek küldéséhez és fogadásához egy Azure Service Bus-várólistából az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag használatával. A minták JavaScript nyelven íródtak, és a Node.js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja az Azure-SB-csomagot.
@@ -20,7 +20,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js-alkalmazás
 > [!IMPORTANT]
 > Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új felülettel gyorsabban hozzájuthat. 
 > 
-> Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus Queues használata Node.js és @azure/service-bus csomaggal](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)című témakört, máskülönben folytassa az olvasással, hogy az [Azure](https://www.npmjs.com/package/azure) -csomag hogyan használható.
+> Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus Queues használata Node.js és @azure/service-bus csomaggal](./service-bus-nodejs-how-to-use-queues-new-package.md)című témakört, máskülönben folytassa az olvasással, hogy az [Azure](https://www.npmjs.com/package/azure) -csomag hogyan használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
@@ -181,7 +181,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A várólistákkal kapcsolatos további tudnivalókért tekintse meg a következő forrásokat.
 
 * [Queues, topics, and subscriptions][Queues, topics, and subscriptions]

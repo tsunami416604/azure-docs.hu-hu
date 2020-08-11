@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 2ac15317fe45573805ff7f6395884f7cb101fec3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112833"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065879"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
 Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
@@ -65,12 +65,12 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | Az Egyesült Királyság déli régiója | 51.140.184.11   |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11  |
 | USA nyugati középső régiója | 13.78.145.25     |
-| Nyugat-Európa | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
-| USA nyugati régiója | 104.42.238.205, 23.99.34.75  |
-| USA nyugati régiója, 2. | 13.66.226.202  |
+| Nyugat-Európa | 40.68.37.158, 191.237.232.75, 13.69.105.208, 104.40.169.187  |
+| USA nyugati régiója | 104.42.238.205, 23.99.34.75, 13.86.216.212, 13.86.217.212 |
+| USA 2. nyugati régiója | 13.66.226.202  |
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)

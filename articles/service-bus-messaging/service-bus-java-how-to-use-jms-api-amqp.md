@@ -4,12 +4,12 @@ description: A Java Message Service (JMS) használata a Azure Service Bus és a 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799684"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065777"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>A Java Message Service (JMS) használata a Azure Service Bus és a AMQP 1,0
 
@@ -29,7 +29,7 @@ A AMQP 1,0-es verziójának támogatása a Azure Service Bus azt jelenti, hogy a
 Ez az útmutató feltételezi, hogy már rendelkezik egy nevű várólistát tartalmazó Service Bus névtérrel `basicqueue` . Ha nem, akkor a [névtér és a várólista](service-bus-create-namespace-portal.md) a [Azure Portal](https://portal.azure.com)használatával hozható létre. Service Bus névterek és várólisták létrehozásával kapcsolatos további információkért lásd: [Service Bus Queues – első lépések](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
-> A particionált várólisták és témakörök szintén támogatják a AMQP. További információ: [particionált üzenetküldési entitások](service-bus-partitioning.md) és [AMQP 1,0 támogatás Service Bus particionált várólistákhoz és témakörökhöz](service-bus-partitioned-queues-and-topics-amqp-overview.md).
+> A particionált várólisták és témakörök szintén támogatják a AMQP. További információ: [particionált üzenetküldési entitások](service-bus-partitioning.md) és [AMQP 1,0 támogatás Service Bus particionált várólistákhoz és témakörökhöz](./service-bus-amqp-protocol-guide.md).
 > 
 > 
 
@@ -380,7 +380,7 @@ Más nyelvekről is használhat Service Bus AMQP 1,0-et, beleértve a .NET, a C,
 
 ## <a name="next-steps"></a>További lépések
 * [AMQP 1,0-támogatás Azure Service Bus](service-bus-amqp-overview.md)
-* [A AMQP 1,0 használata a Service Bus .NET API-val](service-bus-dotnet-advanced-message-queuing.md)
+* [A AMQP 1,0 használata a Service Bus .NET API-val](./service-bus-amqp-dotnet.md)
 * [Service Bus AMQP 1,0 fejlesztői útmutató](service-bus-amqp-dotnet.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [Java fejlesztői központ](https://azure.microsoft.com/develop/java/)

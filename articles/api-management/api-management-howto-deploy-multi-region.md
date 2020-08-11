@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790479"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065454"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
@@ -28,6 +28,9 @@ Az új Azure API Management szolgáltatás kezdetben csak egyetlen [egységet][u
 
 > [!NOTE]
 > A rendszer csak a API Management átjáró összetevőjét telepíti minden régióra. A Service Management összetevőt és a fejlesztői portált csak az elsődleges régió tárolja. Ezért az elsődleges régió meghibásodása esetén a fejlesztői portálhoz való hozzáférés és a konfiguráció módosításának lehetősége (például az API-k hozzáadása, a házirendek alkalmazása) nem fog megjelenni, amíg az elsődleges régió újra online állapotba nem kerül. Míg az elsődleges régió offline állapotban elérhető másodlagos régiók, az API-forgalmat továbbra is az elérhető legújabb konfigurációval fogja kiszolgálni.
+
+>[!IMPORTANT]
+> Az ügyféladatok egyetlen régióban való tárolását lehetővé tevő szolgáltatás jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 

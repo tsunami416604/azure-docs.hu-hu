@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 01ed3df547a7dc02e0ca29028876eddb8be21c77
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852446"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064383"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Python használatával
 
@@ -176,12 +176,12 @@ Egy témakör törlése törli a témakör összes előfizetését. Az előfizet
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Alapértelmezés szerint a témakörök és az előfizetések állandóak, és addig léteznek, amíg nem törli őket. Ha az előfizetéseket egy bizonyos időtartam lejárta után szeretné automatikusan törölni, beállíthatja a [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) paramétert az előfizetésben. 
+Alapértelmezés szerint a témakörök és az előfizetések állandóak, és addig léteznek, amíg nem törli őket. Ha az előfizetéseket egy bizonyos időtartam lejárta után szeretné automatikusan törölni, beállíthatja a [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) paramétert az előfizetésben. 
 
 > [!TIP]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. Service Bus Explorer lehetővé teszi egy Service Bus névtérhez való kapcsolódást és az üzenetkezelési entitások egyszerű felügyeletét. Az eszköz olyan speciális funkciókat biztosít, mint például az importálási/exportálási funkciók, a témakörök, a várólisták, az előfizetések, a továbbító szolgáltatások, az értesítési központok és az Event hub-eszközök tesztelése. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál:
 
@@ -192,4 +192,4 @@ Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hiv
 [Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md 
+[Service Bus quotas]: service-bus-quotas.md

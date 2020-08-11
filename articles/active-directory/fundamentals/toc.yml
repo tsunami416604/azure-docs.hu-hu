@@ -49,6 +49,8 @@
       items:
         - name: Azure AD-architektúra
           href: active-directory-architecture.md
+        - name: Minden alkalmazás integrálása az Azure AD-vel
+          href: five-steps-to-full-application-integration-with-azure-ad.md
     - name: Üzembehelyezési útmutató
       items:
         - name: 'Üzembe helyezés 30, 90 vagy hosszabb idő alatt'

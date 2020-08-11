@@ -3,12 +3,12 @@ title: Azure Service Bus-erőforrások kezelése a PowerShell használatával | 
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet Service Bus entitásokat (névtereket, várólistákat, témákat, előfizetéseket) a Azure PowerShell modul használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341748"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065743"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus erőforrások kezelése a PowerShell használatával
 
@@ -159,8 +159,8 @@ Más entitások, például témakörök és előfizetések kiépítéséhez hasz
 
 Az Service Bus entitások kezelésének további módjai a következő blogbejegyzésekben olvashatók:
 
-* [Service Bus várólisták, témakörök és előfizetések létrehozása PowerShell-parancsfájl használatával](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-* [Service Bus névtér és az Event hub létrehozása PowerShell-parancsfájl használatával](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+* [Service Bus várólisták, témakörök és előfizetések létrehozása PowerShell-parancsfájl használatával](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [Service Bus névtér és az Event hub létrehozása PowerShell-parancsfájl használatával](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [PowerShell-parancsfájlok Service Bus](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

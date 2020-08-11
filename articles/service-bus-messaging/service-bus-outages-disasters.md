@@ -3,12 +3,12 @@ title: Azure Service Bus-alkalmazások elszigetelése az kimaradások és a kata
 description: Ez a cikk az alkalmazások lehetséges Azure Service Bus kimaradás elleni védeleméhez nyújt technikákat.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339661"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065624"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások elszigeteléséhez a Service Bus leállásaival és katasztrófáival szemben
 
@@ -57,7 +57,7 @@ A [Service Bus standard szintű][Geo-replication with Service Bus Standard Tier]
 > 
 > 
 
-### <a name="passive-replication"></a>Passzív replikálás
+### <a name="passive-replication"></a>Passzív replikáció
 A hibamentes esetben a passzív replikálás csak a két üzenetküldési entitás egyikét használja. Az ügyfél elküldi az üzenetet az aktív entitásnak. Ha az aktív entitáson végrehajtott művelet meghiúsul, és az aktív entitást futtató adatközpontot jelző hibakód nem érhető el, akkor az ügyfél az üzenet másolatát küldi el a biztonsági mentési entitásnak. Ekkor az aktív és a biztonsági mentési entitások váltanak ki szerepköröket: a küldő ügyfél úgy tekinti a régi aktív entitást, hogy az új biztonsági mentési entitás legyen, és a régi biztonsági mentési entitás az új aktív entitás. Ha mindkét küldési művelet meghiúsul, a két entitás szerepkörei változatlanok maradnak, és a rendszer hibát ad vissza.
 
 Az ügyfél mindkét várólistából fogad üzeneteket. Mivel előfordulhat, hogy a fogadó két példányban kapja meg ugyanazt az üzenetet, a fogadónak meg kell szüntetnie az ismétlődő üzeneteket. Az ismétlődéseket az aktív replikációval megegyező módon tilthatja le.
@@ -72,7 +72,7 @@ A passzív replikáció használatakor a következő esetekben az üzenetek elve
 A [Service Bus standard szintű geo-replikáció][Geo-replication with Service Bus Standard Tier] az üzenetkezelési entitások passzív replikálását mutatja be.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Továbbítási végpontok védelme adatközpont-kimaradások vagy katasztrófák ellen
-[Azure Relay](../service-bus-relay/relay-what-is-it.md) végpontok földrajzi replikálása lehetővé teszi egy olyan szolgáltatás számára, amely egy továbbító végpontot tesz elérhetővé Service Bus kimaradások jelenlétében. A földrajzi replikálás eléréséhez a szolgáltatásnak két továbbító végpontot kell létrehoznia különböző névterekben. A névtereknek különböző adatközpontokban kell lenniük, és a két végpontnak eltérő névvel kell rendelkeznie. Egy elsődleges végpont például elérhető a **contosoPrimary.servicebus.Windows.net/myPrimaryService**alatt, míg a másodlagos párja a **contosoSecondary.servicebus.Windows.net/mySecondaryService**területen érhető el.
+[Azure Relay](../azure-relay/relay-what-is-it.md) végpontok földrajzi replikálása lehetővé teszi egy olyan szolgáltatás számára, amely egy továbbító végpontot tesz elérhetővé Service Bus kimaradások jelenlétében. A földrajzi replikálás eléréséhez a szolgáltatásnak két továbbító végpontot kell létrehoznia különböző névterekben. A névtereknek különböző adatközpontokban kell lenniük, és a két végpontnak eltérő névvel kell rendelkeznie. Egy elsődleges végpont például elérhető a **contosoPrimary.servicebus.Windows.net/myPrimaryService**alatt, míg a másodlagos párja a **contosoSecondary.servicebus.Windows.net/mySecondaryService**területen érhető el.
 
 A szolgáltatás ezután mindkét végponton figyeli a szolgáltatást, és az ügyfél bármelyik végponton keresztül hívhatja a szolgáltatást. Egy ügyfélalkalmazás véletlenszerűen kiválasztja az egyik továbbítót elsődleges végpontként, és elküldi a kérést az aktív végpontnak. Ha a művelet hibakód miatt meghiúsul, ez a hiba azt jelzi, hogy a továbbítási végpont nem érhető el. Az alkalmazás megnyit egy csatornát a biztonsági mentési végponthoz, és újra kiadja a kérést. Ekkor az aktív és a biztonsági mentési végpontok kapcsolói szerepkörök: az ügyfélalkalmazás a régi aktív végpontot tekinti az új biztonsági mentési végpontnak, a régi biztonsági mentési végpont pedig az új aktív végpont lesz. Ha mindkét küldési művelet meghiúsul, a két entitás szerepkörei változatlanok maradnak, és a rendszer hibát ad vissza.
 

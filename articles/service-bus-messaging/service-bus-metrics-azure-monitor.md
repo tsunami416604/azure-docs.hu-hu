@@ -3,18 +3,18 @@ title: Azure Service Bus metrikák a Azure Monitorban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Service Bus entitások (várólisták, témakörök és előfizetések) figyelésére.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: c4bf33fc7aa21be150a1ee0d6c65df84a391565e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089685"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065012"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
 Service Bus mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével a Service Bus erőforrásainak általános állapotát, és nem csak a névtér szintjén, hanem az entitás szintjén is mérhető. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Service Bus állapotának figyelésében. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
 
-A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../monitoring-and-diagnostics/monitoring-overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
+A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../azure-monitor/overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
 
 > [!IMPORTANT]
 > Ha egy entitáshoz 2 órán keresztül nem történt interakció, a metrikák a "0" értéket fogják megmutatni, amíg az entitás már nem tétlen.
@@ -54,7 +54,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | Bejövő kérelmek| A Service Bus szolgáltatásnak megadott időszakon keresztül küldött kérések száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Sikeres kérelmek|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
@@ -72,7 +72,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 ## <a name="message-metrics"></a>Üzenet metrikái
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Bejövő üzenetek|A megadott időszakban Service Bus küldött események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Kimenő üzenetek|A Service Bus a megadott időszakban fogadott események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
@@ -91,7 +91,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Aktív kapcsolatok|A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
@@ -106,7 +106,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 > 
 > A figyelt másik mérőszám: **szabályozott kérelmek**. Nem lehet probléma, ha a névtér a memóriájában, a PROCESSZORon és a felügyelt kapcsolaton belül marad. További információ: [szabályozás Azure Service Bus Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) szinten
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |CPU-használat/névtér|A névtér százalékos CPU-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: entitás neve|
 |Memória méretének használata névtérben|A névtér százalékos memória-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: entitás neve|
@@ -115,7 +115,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-|Dimenzió neve|Description|
+|Dimenzió neve|Leírás|
 | ------------------- | ----------------- |
 |Entitás neve| Service Bus támogatja az üzenetküldési entitásokat a névtérben.|
 
@@ -159,7 +159,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     8. Az **e-mail/SMS/leküldés/hang** oldalon hajtsa végre a következő műveleteket:
         1. Válassza az **e-mail**lehetőséget. 
         2. Adja meg az **e-mail-címet**. 
-        3. Kattintson az **OK** gombra.
+        3. Válassza az **OK** lehetőséget.
 
             ![Riasztás részletei](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. A **műveleti csoport hozzáadása** lapon kattintson **az OK gombra**. 
@@ -169,9 +169,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [Azure monitor áttekintése](../monitoring-and-diagnostics/monitoring-overview.md).
+Lásd: [Azure monitor áttekintése](../azure-monitor/overview.md).
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan telepíthet át fizikai gépeket az Azu
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ff8ac55f129e7579b12e2102c0c6292e9030021c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165396"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066627"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
@@ -50,7 +50,7 @@ Az oktatóanyag elkezdése előtt:
 
 Készítse elő az Azure-t a Migrálás kiszolgáló áttelepítésével.
 
-**Feladat** | **Részletek**
+**Tevékenység** | **Részletek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
@@ -103,10 +103,13 @@ Azure Migrate: a kiszolgáló áttelepítése replikációs berendezés használ
 
 Készítse elő a berendezés központi telepítését a következőképpen:
 
-- Készítse elő a gépet a replikációs berendezés üzemeltetéséhez. [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a gép követelményeit. A készüléket nem szabad a replikálni kívánt forrásoldali gépre telepíteni.
+- Készítse elő a gépet a replikációs berendezés üzemeltetéséhez. [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a gép követelményeit.
 - A replikációs berendezés a MySQL-t használja. Tekintse át a MySQL telepítésének [lehetőségeit](migrate-replication-appliance.md#mysql-installation) a készüléken.
 - Tekintse át a replikációs berendezés számára a [nyilvános](migrate-replication-appliance.md#url-access) és a [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhők eléréséhez szükséges Azure URL-címeket.
 - Tekintse át a következőt: [port] (Migrálás-replikáció-berendezés. MD # port-Access) a replikációs berendezés hozzáférési követelményei.
+
+> [!NOTE]
+> A replikációs berendezést nem szabad olyan számítógépre telepíteni, amelyet replikálni szeretne, vagy a Azure Migrate felderítési és értékelési berendezésen, amelyre korábban már telepítve van.
 
 ## <a name="add-the-server-migration-tool"></a>A kiszolgáló áttelepítési eszközének hozzáadása
 
@@ -125,8 +128,8 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-8. Az **értékelési eszköz kiválasztása**lapon válassza **a kiértékelési eszköz hozzáadásának mellőzése most**  >  **tovább**lehetőséget.
-9. Az **áttelepítési eszköz kiválasztása**lapon válassza a **Azure Migrate: kiszolgáló áttelepítése**  >  **tovább**lehetőséget.
+8. Az **Értékelési eszköz kiválasztása** területen válassza **Az értékelési eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
+9. A **Migrálási eszköz kiválasztása** területen válassza az **Azure Migrate: Kiszolgáló migrálása** > **Tovább** lehetőséget.
 10. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
 11. Az eszköz hozzáadása után megjelenik a Azure Migrate Project > **Servers**  >  **áttelepítési eszközök**területen.
 
@@ -155,7 +158,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. A fi
     ![Szolgáltató letöltése](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 10. Másolja a berendezés telepítési fájlját és a kulcs fájlját a készülékhez létrehozott Windows Server 2016 rendszerű gépre.
-11. Futtassa a replikációs berendezés telepítési fájlját a következő eljárásban leírtak szerint. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepíti a mobilitási szolgáltatást a replikálni kívánt gépekre, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:.
+11. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:. A következő adatok megadásával hozhatja létre a "vendég" nevet a "username" névvel, a felhasználónévvel és a jelszóval a fiók jelszavaként. Ezt a dummy-fiókot fogja használni a replikálás engedélyezése szakaszban. 
 
 12. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése**lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása**területen, majd kattintson a **regisztráció véglegesítése**lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.
 
@@ -230,7 +233,7 @@ Most válassza ki a gépeket az áttelepítéshez.
 2. A **replikálás**során > a **forrásoldali beállítások**  >  **a gépek virtualizálva?**, válassza a **nem virtualizált/egyéb**lehetőséget.
 3. A helyszíni **készülék**területen válassza ki a beállított Azure Migrate berendezés nevét.
 4. A **Process Server**lapon válassza ki a replikációs berendezés nevét.
-6. A **vendég hitelesítő adataiban**meg kell adnia a mobilitási szolgáltatás manuális telepítéséhez használt dummy-fiókot (a leküldéses telepítés nem támogatott a fizikai verzióban). Ezután kattintson a **Tovább gombra: Virtual Machines**.
+6. A **vendég hitelesítő adatai**területen válassza ki a [replikálási telepítő telepítése](#download-the-replication-appliance-installer) során korábban létrehozott dummy-fiókot a mobilitási szolgáltatás manuális telepítéséhez (a leküldéses telepítés nem támogatott). Ezután kattintson a **Tovább gombra: Virtual Machines**.   
 
     ![Virtuális gépek replikálása](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 

@@ -3,15 +3,15 @@ title: A AMQP 1,0-es verziójának áttekintése Azure Service Bus
 description: Ismerje meg, hogyan támogatja a Azure Service Bus a Advanced Message Queueing Protocol (AMQP), egy nyílt szabványú protokollt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083871"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066338"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-támogatás Service Bus
-A Windows Server Azure Service Bus Cloud Service és a helyszíni [Service Bus (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) egyaránt támogatja a speciális Message Queuing PROTOKOLLT (AMQP) 1,0. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával. Az alkalmazásokat a különböző nyelvekkel és keretrendszerekkel, valamint a különböző operációs rendszereken futó összetevőkkel építheti fel. Ezek az összetevők kapcsolódhatnak a Service Bushoz, és zökkenőmentesen cserélhetik fel a strukturált üzleti üzeneteket hatékonyan és teljes hűséggel.
+A Windows Server Azure Service Bus Cloud Service és a helyszíni [Service Bus (Service Bus 1,1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) egyaránt támogatja a speciális Message Queuing PROTOKOLLT (AMQP) 1,0. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával. Az alkalmazásokat a különböző nyelvekkel és keretrendszerekkel, valamint a különböző operációs rendszereken futó összetevőkkel építheti fel. Ezek az összetevők kapcsolódhatnak a Service Bushoz, és zökkenőmentesen cserélhetik fel a strukturált üzleti üzeneteket hatékonyan és teljes hűséggel.
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Bevezetés: mi a AMQP 1,0, és miért fontos?
 A hagyományosan az üzenetsor-orientált middleware-termékek saját protokollokat használnak az ügyfélalkalmazások és a brókerek közötti kommunikációhoz. Ez azt jelenti, hogy ha kiválasztotta egy adott szállító üzenetkezelési közvetítőjét, akkor a gyártó kódtárait kell használnia az ügyfélalkalmazások ehhez a közvetítőhöz való összekapcsolásához. Ez az adott gyártótól való függőséget eredményez, mivel az alkalmazások egy másik termékhez való portolása minden csatlakoztatott alkalmazásban kód módosítását igényli. 
@@ -63,14 +63,14 @@ Jelenleg a következő ügyféloldali függvénytárak ismertek a Service Bus-ve
 | Nyelv | Kódtár |
 | --- | --- |
 | Java |Apache csontos Java Message Service (JMS) ügyfél<br/>IIT szoftver SwiftMQ Java-ügyfél |
-| C |Apache csontos-proton – C |
+| C# |Apache csontos-proton – C |
 | PHP |Apache csontos proton – PHP |
 | Python |Apache csontos proton – Python |
 | C# |AMQP .NET Lite |
 
 **2. ábra: AMQP 1,0 ügyféloldali kódtárak táblázata**
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 * A AMQP 1,0 egy nyílt, megbízható üzenetkezelési protokoll, amellyel többplatformos hibrid alkalmazások hozhatók létre. A AMQP 1,0 egy oázis standard.
 * A AMQP 1,0 támogatás mostantól elérhető Azure Service Busban, valamint Service Bus a Windows Serverhez (Service Bus 1,1). A díjszabás megegyezik a meglévő protokollokkal.
 
@@ -80,10 +80,10 @@ Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 * [Service Bus használata a .NET-ről a AMQP használatával]
 * [Service Bus használata a Java és a AMQP használatával]
 * [Az Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]
-* [A Windows Server Service Bus AMQP]
+* [AMQP Service Bus Windows Serverhez]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [Service Bus használata a .NET-ről a AMQP használatával]: service-bus-amqp-dotnet.md
-[Service Bus használata a Java és a AMQP használatával]: service-bus-amqp-java.md
-[Az Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]: service-bus-amqp-apache.md
-[A Windows Server Service Bus AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[Service Bus használata a Java és a AMQP használatával]: ./service-bus-java-how-to-use-jms-api-amqp.md
+[Az Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

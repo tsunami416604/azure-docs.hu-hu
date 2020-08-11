@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827622"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065471"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Virtuális gépek méretei az Azure-ban
 
@@ -25,7 +25,7 @@ Ez a cikk az alkalmazások és munkaterhelések futtatásához használható Azu
 | [Számításoptimalizált](sizes-compute.md) | F, FS, Fsv2 | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára. |
 | [Memóriaoptimalizált](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Magas memória-CPU arány. Ideális választások a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
 | [Tároptimalizált](sizes-storage.md) | Lsv2 | A nagy adatátviteli sebesség és az i/o ideális megoldás a Big Database, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok számára.  |
-| [GPU](sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (előzetes verzió), NV, NVv3, NVv4 | A speciális virtuális gépek nagy grafikai renderelést és videoszerkesztőt céloznak meg, valamint a képzési és következtetési (ND) modellek mély tanulással. Elérhető egy vagy több GPU-val. |
+| [GPU](sizes-gpu.md) | NC, NCv2, NCv3, NCasT4_v3 (előzetes verzió), ND, NDv2 (előzetes verzió), NV, NVv3, NVv4 | A speciális virtuális gépek nagy grafikai renderelést és videoszerkesztőt céloznak meg, valamint a képzési és következtetési (ND) modellek mély tanulással. Elérhető egy vagy több GPU-val. |
 | [Nagy teljesítményű számítás](sizes-hpc.md) | HB, HBv2, HC, H | A leggyorsabb és leghatékonyabb CPU-alapú virtuális gépek, amelyek opcionális nagy átviteli sebességű hálózati adapterrel (RDMA) rendelkeznek. |
 
 - A különböző méretek díjszabásával kapcsolatos információkért tekintse meg a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) vagy a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)díjszabási oldalait.

@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8d8b558ebc49a009548afe9a8527985b9e4f5c75
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057274"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066661"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Tárolók helyreállítható törlésének engedélyezése és kezelése (előzetes verzió)
 
 A tároló-helyreállító törlés (előzetes verzió) védi az adatok véletlen vagy helytelen módosítását vagy törlését. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, akkor a tároló és annak tartalma a megadott megőrzési időn belül visszaállítható.
 
-Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft javasolja a tárolók törlésének bekapcsolását. Ez a cikk bemutatja, hogyan engedélyezheti a tárolók Soft delete szolgáltatását. A tárolók helyreállítható törlésével kapcsolatos további információkért lásd: [a tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md).
+Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft javasolja a tárolók törlésének bekapcsolását. Ez a cikk bemutatja, hogyan engedélyezheti a tárolók Soft delete szolgáltatását. A tárolók helyreállítható törlésével kapcsolatos további részletekért, beleértve az előzetes verzió regisztrálásának módját, lásd: a [tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md).
 
 A végpontok közötti adatvédelem érdekében a Microsoft azt javasolja, hogy a blobok és a Blobok verziószámozása (előzetes verzió) esetében is engedélyezze a Soft delete használatát. A Blobok helyreállítható törlésének engedélyezéséről a [Blobok Soft delete engedélyezése és kezelése](soft-delete-blob-enable.md)című témakörben olvashat. A blob verziószámozásának engedélyezésével kapcsolatos további információkért lásd: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
 

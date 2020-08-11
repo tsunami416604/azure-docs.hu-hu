@@ -128,6 +128,8 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Belső terheléselosztó – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
+    - name: Csak kifelé irányuló terheléselosztó konfigurációja
+      href: egress-only.md
 - name: Hibaelhárítás
   items:
     - name: Az Azure Load Balancer hibaelhárítása

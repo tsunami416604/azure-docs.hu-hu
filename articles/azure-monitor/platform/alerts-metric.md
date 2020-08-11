@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan hozhatja létre, tekintheti meg és kezelheti a
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042734"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065862"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
 
@@ -139,9 +139,18 @@ Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet m
 
 A metrikus riasztási szabályokhoz dedikált PowerShell-parancsmagok érhetők el:
 
-- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): új metrikai riasztási szabályt hoz létre, vagy frissít egy meglévőt.
-- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): egy vagy több metrikai riasztási szabályt kap.
-- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): a metrika riasztási szabályának eltávolítása.
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): hozzon létre egy új metrikai riasztási szabályt, vagy frissítsen egy meglévőt.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): egy vagy több mérőszám riasztási szabályának beolvasása.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): metrikai riasztási szabály törlése.
+
+## <a name="with-rest-api"></a>A REST API-val
+
+- [Létrehozás vagy frissítés](/rest/api/monitor/metricalerts/createorupdate): hozzon létre egy új metrikai riasztási szabályt, vagy frissítsen egy meglévőt.
+- [Get](/rest/api/monitor/metricalerts/get): adott metrikai riasztási szabály beolvasása.
+- [Erőforráscsoport szerinti Listázás](/rest/api/monitor/metricalerts/listbyresourcegroup): egy adott erőforráscsoport metrika-riasztási szabályainak listája.
+- [Listázás előfizetéssel](/rest/api/monitor/metricalerts/listbysubscription): egy adott előfizetéshez tartozó metrikai riasztási szabályok listájának beolvasása.
+- [Frissítés](/rest/api/monitor/metricalerts/update): metrika riasztási szabályának frissítése.
+- [Törlés](/rest/api/monitor/metricalerts/delete): metrikai riasztási szabály törlése.
 
 ## <a name="next-steps"></a>További lépések
 

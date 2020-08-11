@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenetkezelési kivételek | Microsoft Docs
 description: Ez a cikk felsorolja az Azure Service Bus üzenetkezelési kivételeket és a kivétel bekövetkezésekor végrehajtandó javasolt műveleteket.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: dd57938c24565257aefebc89a8b070865e6791af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c648cdce87b26e6258ff8bc25506ca2ebd3bbd9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341639"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064604"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Üzenetkezelési kivételek Service Bus
 Ez a cikk a .NET-keretrendszer API-jai által generált .NET-kivételeket sorolja fel. 
@@ -16,21 +16,21 @@ Ez a cikk a .NET-keretrendszer API-jai által generált .NET-kivételeket sorolj
 ## <a name="exception-categories"></a>Kivételek kategóriái
 Az üzenetkezelési API-k olyan kivételeket állítanak elő, amelyek a következő kategóriákba sorolhatók, valamint a hozzájuk tartozó műveletekkel, amelyekkel kipróbálhatja a javítást. A kivételek jelentése és okai az üzenetkezelési entitás típusától függően eltérőek lehetnek:
 
-1. Felhasználói kódolási hiba ([System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System. Runtime. szerializálás. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Általános művelet: a folytatás előtt próbálja meg kijavítani a kódot.
-2. Telepítési/konfigurációs hiba ([Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception), [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Általános művelet: Ellenőrizze a konfigurációt, és szükség esetén módosítsa.
+1. Felhasználói kódolási hiba ([System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1), [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1), [System. Runtime. szerializálás. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)). Általános művelet: a folytatás előtt próbálja meg kijavítani a kódot.
+2. Telepítési/konfigurációs hiba ([Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception), [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1). Általános művelet: Ellenőrizze a konfigurációt, és szükség esetén módosítsa.
 3. Átmeneti kivételek ([Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Általános művelet: Próbálja megismételni a műveletet, vagy értesítse a felhasználókat. Az `RetryPolicy` ügyfél-SDK osztálya beállítható úgy, hogy automatikusan kezelje az újrapróbálkozásokat. További információ: [újrapróbálkozási útmutató](/azure/architecture/best-practices/retry-service-specific#service-bus).
-4. Egyéb kivételek ([System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. timeoutexception osztályról](https://msdn.microsoft.com/library/system.timeoutexception.aspx), [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Általános művelet: a kivétel típusára jellemző; Tekintse át a következő szakaszban található táblázatot: 
+4. Egyéb kivételek ([System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1), [System. timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1), [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Általános művelet: a kivétel típusára jellemző; Tekintse át a következő szakaszban található táblázatot: 
 
 ## <a name="exception-types"></a>Kivételek típusai
 Az alábbi táblázat az üzenetkezelési kivételek típusait, valamint azok okait és megjegyzéseit sorolja fel.
 
 | **Kivétel típusa** | **Leírás/ok/példák** | **Javasolt művelet** | **Megjegyzés automatikus/azonnali újrapróbálkozás** |
 | --- | --- | --- | --- |
-| [Timeoutexception osztályról](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |A kiszolgáló a megadott időn belül nem válaszolt a kért műveletre, amelyet a [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)vezérel. Lehet, hogy a kiszolgáló végrehajtotta a kért műveletet. Hálózati vagy más infrastrukturális késések miatt fordulhat elő. |Ellenőrizze a rendszerállapotot a konzisztencia érdekében, és szükség esetén próbálkozzon újra. Lásd: [időtúllépési kivételek](#timeoutexception). |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |A kért felhasználói művelet nem engedélyezett a kiszolgálón vagy a szolgáltatáson belül. A részletekért tekintse meg a kivételt jelző üzenetet. Például a [Complete ()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ezt a kivételt hozza létre, ha az üzenet [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) módban érkezett. |Keresse meg a kódot és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvényes. |Az újrapróbálkozás nem segít. |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Kísérlet történt egy olyan objektum műveletének meghívására, amely már be van zárva, megszakadt vagy el lett távolítva. Ritka esetekben a környezeti tranzakció már el van távolítva. |Ellenőrizze a kódot, és győződjön meg róla, hogy nem hív meg műveleteket egy eldobott objektumon. |Az újrapróbálkozás nem segít. |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektum nem tudott jogkivonatot beszerezni, a jogkivonat érvénytelen, vagy a jogkivonat nem tartalmazza a művelet végrehajtásához szükséges jogcímeket. |Győződjön meg arról, hogy a jogkivonat-szolgáltató a megfelelő értékekkel lett létrehozva. Vizsgálja meg a Access Control Service konfigurációját. |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
-| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |A metódushoz megadott egy vagy több argumentum érvénytelen.<br /> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-azonosító szegmens (eke) t tartalmaz.<br /> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy- [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-séma érvénytelen. <br />A tulajdonság értéke nagyobb, mint 32 KB. |Ellenőrizze a hívó kódját, és ellenőrizze, hogy helyesek-e az argumentumok. |Az újrapróbálkozás nem segít. |
+| [Timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1) |A kiszolgáló a megadott időn belül nem válaszolt a kért műveletre, amelyet a [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)vezérel. Lehet, hogy a kiszolgáló végrehajtotta a kért műveletet. Hálózati vagy más infrastrukturális késések miatt fordulhat elő. |Ellenőrizze a rendszerállapotot a konzisztencia érdekében, és szükség esetén próbálkozzon újra. Lásd: [időtúllépési kivételek](#timeoutexception). |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |A kért felhasználói művelet nem engedélyezett a kiszolgálón vagy a szolgáltatáson belül. A részletekért tekintse meg a kivételt jelző üzenetet. Például a [Complete ()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ezt a kivételt hozza létre, ha az üzenet [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) módban érkezett. |Keresse meg a kódot és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvényes. |Az újrapróbálkozás nem segít. |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) |Kísérlet történt egy olyan objektum műveletének meghívására, amely már be van zárva, megszakadt vagy el lett távolítva. Ritka esetekben a környezeti tranzakció már el van távolítva. |Ellenőrizze a kódot, és győződjön meg róla, hogy nem hív meg műveleteket egy eldobott objektumon. |Az újrapróbálkozás nem segít. |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) |A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektum nem tudott jogkivonatot beszerezni, a jogkivonat érvénytelen, vagy a jogkivonat nem tartalmazza a művelet végrehajtásához szükséges jogcímeket. |Győződjön meg arról, hogy a jogkivonat-szolgáltató a megfelelő értékekkel lett létrehozva. Vizsgálja meg a Access Control Service konfigurációját. |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) |A metódushoz megadott egy vagy több argumentum érvénytelen.<br /> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-azonosító szegmens (eke) t tartalmaz.<br /> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy- [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-séma érvénytelen. <br />A tulajdonság értéke nagyobb, mint 32 KB. |Ellenőrizze a hívó kódját, és ellenőrizze, hogy helyesek-e az argumentumok. |Az újrapróbálkozás nem segít. |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |A művelethez társított entitás nem létezik, vagy törölve lett. |Győződjön meg arról, hogy az entitás létezik. |Az újrapróbálkozás nem segít. |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Egy megadott sorszámú üzenet fogadására tett kísérlet. Ez az üzenet nem található. |Győződjön meg arról, hogy az üzenet már nem érkezett meg. Tekintse meg a kézbesítetlen levelek-várólistát, és ellenőrizze, hogy az üzenet el lett-e deadlettered. |Az újrapróbálkozás nem segít. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |Az ügyfél nem tud kapcsolatot létesíteni Service Bushoz. |Győződjön meg arról, hogy a megadott állomásnév helyes, és a gazdagép elérhető. |Az újrapróbálkozás akkor lehet hasznos, ha akadozó kapcsolódási problémák léptek fel. |
@@ -45,8 +45,8 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait, valamint azok ok
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.azure.servicebus.messagingentitydisabledexception) |Futásidejű művelet kérése letiltott entitáson. |Aktiválja az entitást. |Az újrapróbálkozás segíthet abban az esetben, ha az entitást ideiglenesen aktiválták. |
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |A Service Bus ezt a kivételt adja vissza, ha üzenetet küld egy olyan témakörnek, amelyen engedélyezve van az előzetes szűrés, és a szűrők egyike sem egyezik. |Győződjön meg arról, hogy legalább egy szűrő egyezik. |Az újrapróbálkozás nem segít. |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Az üzenet tartalma meghaladja az 256-KB korlátot. Az 256-KB korlát a teljes üzenet mérete, amely magában foglalhatja a rendszertulajdonságokat és a .NET-terhelést is. |Csökkentse az üzenet adattartalmát, majd próbálja megismételni a műveletet. |Az újrapróbálkozás nem segít. |
-| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |A környezeti tranzakció (*tranzakció. Current*) érvénytelen. Lehetséges, hogy a művelet befejeződött vagy meg lett szakítva. A belső kivétel további információkat is biztosíthat. | |Az újrapróbálkozás nem segít. |
-| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Egy művelet egy olyan tranzakcióra próbálkozik, amely kétséges, vagy kísérlet történt a tranzakció véglegesítére, és a tranzakció kétségbe kerül. |Az alkalmazásnak kezelnie kell ezt a kivételt (különleges esetben), mert a tranzakció már véglegesítve lett. |- |
+| [TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1) |A környezeti tranzakció (*tranzakció. Current*) érvénytelen. Lehetséges, hogy a művelet befejeződött vagy meg lett szakítva. A belső kivétel további információkat is biztosíthat. | |Az újrapróbálkozás nem segít. |
+| [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception?view=netcore-3.1) |Egy művelet egy olyan tranzakcióra próbálkozik, amely kétséges, vagy kísérlet történt a tranzakció véglegesítére, és a tranzakció kétségbe kerül. |Az alkalmazásnak kezelnie kell ezt a kivételt (különleges esetben), mert a tranzakció már véglegesítve lett. |- |
 
 ## <a name="quotaexceededexception"></a>Quotaexceededexception osztályról
 A [quotaexceededexception osztályról](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) azt jelzi, hogy egy adott entitásra vonatkozó kvóta túllépve.
@@ -83,9 +83,9 @@ Ennek a hibának két gyakori oka van: a kézbesítetlen levelek várólistája 
 2. A **fogadó leállt**. Egy fogadó leállt egy üzenetsor vagy előfizetés üzeneteinek fogadásával. Ennek azonosítására az [QueueDescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) tulajdonságot kell megtekinteni, amely az üzenetek teljes bontását mutatja. Ha a [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) tulajdonság magas vagy növekvő, akkor az üzenetek nem olvashatók be az írás során.
 
 ## <a name="timeoutexception"></a>Timeoutexception osztályról
-A [timeoutexception osztályról](https://msdn.microsoft.com/library/system.timeoutexception.aspx) azt jelzi, hogy a felhasználó által kezdeményezett művelet a művelet időkorlátja alatt hosszabb időt vesz igénybe. 
+A [timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1) azt jelzi, hogy a felhasználó által kezdeményezett művelet a művelet időkorlátja alatt hosszabb időt vesz igénybe. 
 
-Győződjön meg arról, hogy a [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) tulajdonság értéke, mivel ez a korlát is okozhat [timeoutexception osztályról](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
+Győződjön meg arról, hogy a [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1) tulajdonság értéke, mivel ez a korlát is okozhat [timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1).
 
 ### <a name="queues-and-topics"></a>Várólisták és témakörök
 A várólisták és témakörök esetében az időtúllépést a [MessagingFactorySettings. OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) tulajdonság adja meg a kapcsolati karakterlánc részeként, vagy a [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder)-n keresztül. Maga a hibaüzenet is változhat, de mindig az aktuális művelethez megadott időtúllépési értéket tartalmazza. 
@@ -101,7 +101,7 @@ Előfordulhat, hogy az üzenet zárolása különböző okok miatt lejár:
   * A zárolási időzítő lejárt az ügyfélalkalmazás megújítása előtt.
   * Az ügyfélalkalmazás megszerezte a zárolást, mentette azt egy állandó tárolóba, majd újraindította. Az újraindítást követően az ügyfélalkalmazás megtekintette a fedélzeti üzeneteket, és megpróbálta befejezni ezeket.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 **MessageLockLostException**esetén az ügyfélalkalmazás már nem tudja feldolgozni az üzenetet. Az ügyfélalkalmazás dönthet úgy is, hogy megtekinti a kivételt az elemzéshez, de az ügyfélnek *el kell* dobja az üzenetet.
 
@@ -120,7 +120,7 @@ A munkamenet zárolása számos ok miatt lejárhat –
   * A zárolási időzítő lejárt az ügyfélalkalmazás megújítása előtt.
   * Az ügyfélalkalmazás megszerezte a zárolást, mentette azt egy állandó tárolóba, majd újraindította. Az újraindítást követően az ügyfélalkalmazás megtekintette a fedélzeti munkameneteket, és megpróbálta feldolgozni az üzeneteket a munkamenetekben.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 **SessionLockLostException**esetén az ügyfélalkalmazás már nem tudja feldolgozni az üzeneteket a munkamenetben. Az ügyfélalkalmazás fontolóra veheti az elemzések kivételének naplózását, de az ügyfélnek *el kell* dobja az üzenetet.
 
@@ -136,7 +136,7 @@ A **SocketException** az alábbi esetekben dobják el:
    * Hiba történt az üzenet feldolgozásakor, vagy túllépte a távoli gazdagép időtúllépését.
    * A mögöttes hálózati erőforrás problémája.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A **SocketException** hibák azt jelzik, hogy az alkalmazásokat üzemeltető virtuális gép nem tudja átalakítani a nevet `<mynamespace>.servicebus.windows.net` a megfelelő IP-címmé. 
 
@@ -173,7 +173,7 @@ A **MessagingException** egy általános kivétel, amely különböző okok miat
 > [!NOTE]
 > A kivételek fenti listája nem teljes.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A megoldási lépések attól függnek, hogy mi okozta a **MessagingException** .
 

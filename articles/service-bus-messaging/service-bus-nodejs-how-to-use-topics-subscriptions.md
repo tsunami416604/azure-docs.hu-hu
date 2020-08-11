@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fc8b1be387446b26fca86b344a203c103068db52
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa1f6738628ed96e386186a579569170bfaac3ee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036028"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066950"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node.js és az Azure-SB csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js alkalmazásokat, hogy üzeneteket küldjön egy Service Bus témakörbe, és üzeneteket fogadjon egy Service Bus előfizetésből az [Azure-SB-](https://www.npmjs.com/package/azure-sb) csomag használatával. A minták JavaScript nyelven íródtak, és a Node.js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja a `azure-sb` csomagot.
@@ -20,7 +20,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js alkalmazás
 > [!IMPORTANT]
 > Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új csomag használatával gyorsabb élményt érhet el. 
 > 
-> Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus témakörök és előfizetések használata a Node.js és a @azure/service-bus csomagban](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)című témakört, máskülönben folytassa az [Azure](https://www.npmjs.com/package/azure) -csomag használatát ismertető témakört.
+> Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus témakörök és előfizetések használata a Node.js és a @azure/service-bus csomagban](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)című témakört, máskülönben folytassa az [Azure](https://www.npmjs.com/package/azure) -csomag használatát ismertető témakört.
 
 Az itt tárgyalt forgatókönyvek a következők:
 
@@ -142,7 +142,7 @@ A témakör-előfizetések a **ServiceBusService** objektummal is létrejönnek.
 > [!NOTE]
 > Alapértelmezés szerint az előfizetések mindaddig nem állandóak, amíg el nem végzik, sem a hozzájuk társított témakört. Ha az alkalmazás logikát tartalmaz egy előfizetés létrehozásához, először ellenőrizze, hogy létezik-e az előfizetés a `getSubscription` metódus használatával.
 >
-> Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)beállításával automatikusan törölheti.
+> Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)beállításával automatikusan törölheti.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 A **MatchAll** szűrő az előfizetés létrehozásakor használt alapértelmezett szűrő. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példában létrehozunk egy AllMessages nevű előfizetést, és az alapértelmezett **MatchAll** szűrőt használják.
@@ -306,7 +306,7 @@ Az előfizetésen belül zárolt üzenethez is tartozik időtúllépés. Ha az a
 Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik `deleteMessage` , de a metódus hívása előtt, az üzenet az újraindításkor újra megjelenik az alkalmazásban. Ezt a viselkedést gyakran *legalább egyszeri feldolgozásnak*nevezik. Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újból el lesz juttatva. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, akkor a duplikált üzenetek kézbesítésének kezeléséhez adjon hozzá logikát az alkalmazáshoz. Használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-A témakörök és az előfizetések állandóak, kivéve, ha a [autoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) be van állítva, és explicit módon törölni kell őket a [Azure Portalon][Azure portal] vagy programozottan.
+A témakörök és az előfizetések állandóak, kivéve, ha a [AutoDeleteOnIdle tulajdonság](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) be van állítva, és explicit módon törölni kell őket a [Azure Portalon][Azure portal] vagy programozottan.
 Az alábbi példa bemutatja, hogyan törölheti a nevű témakört `MyTopic` :
 
 ```javascript
@@ -345,4 +345,3 @@ Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hiv
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Node.js-alkalmazás létrehozása és üzembe helyezése Azure-webhelyen]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-

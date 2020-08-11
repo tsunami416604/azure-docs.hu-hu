@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045647"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064944"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Hozzon létre egy Azure SQL Database-adatbázist, amely a felosztási-egyesítési állapot-adatbázisként lesz felhasználva. Lépjen a [Azure Portal](https://portal.azure.com). Hozzon létre egy új **SQL Database**. Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
+1. Hozzon létre egy Azure SQL Database-adatbázist, amely a felosztási-egyesítési állapot-adatbázisként lesz felhasználva. Nyissa meg az [Azure Portalt](https://portal.azure.com). Hozzon létre egy új **SQL Database**. Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
 
 1. Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál**ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van **-e állítva.** Kattintson a Save (Mentés) ikonra.
 
@@ -68,7 +68,7 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 1. A **SplitMergeWorker** szerepkörhöz adjon meg egy érvényes kapcsolódási karakterláncot az Azure Storage-hoz az **WorkerRoleSynchronizationStorageAccountConnectionString** beállításhoz.
 
-### <a name="configure-security"></a>Biztonság konfigurálása
+### <a name="configure-security"></a>A biztonság konfigurálása
 
 A szolgáltatás biztonságának konfigurálásával kapcsolatos részletes utasításokért tekintse meg a [felosztás – egyesítés biztonsági konfigurációját](elastic-scale-split-merge-security-configuration.md).
 
@@ -108,7 +108,7 @@ Futtassa a következő parancsot ugyanabból az ablakból, amelyben a MakeCert v
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>A PFX-fájl feltöltése a Cloud Service-be
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Válassza a **Cloud Services**lehetőséget.
 3. Válassza ki a fent létrehozott felhőalapú szolgáltatást a felosztás/egyesítés szolgáltatáshoz.
 4. A felső menüben kattintson a **tanúsítványok** elemre.
@@ -173,6 +173,9 @@ Határozza meg a felosztási-egyesítési szolgáltatás webes végpontját. Ezt
 ### <a name="test-with-powershell-scripts"></a>Tesztelés PowerShell-parancsfájlokkal
 
 A központi telepítés és a környezet a mellékelt minta PowerShell-szkriptek futtatásával is tesztelhető.
+
+> [!IMPORTANT]
+> A parancsfájl a PowerShell 5,1-ben fut. Jelenleg nem futnak a PowerShell 6-os vagy újabb verzióján.
 
 A parancsfájl fájljai a következők:
 

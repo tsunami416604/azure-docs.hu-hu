@@ -3,12 +3,12 @@ title: Hitelesítés és engedélyezés Azure Service Bus | Microsoft Docs
 description: Az alkalmazások hitelesítése megosztott hozzáférés-aláírási (SAS-) hitelesítéssel Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337723"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066861"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-hitelesítés és -engedélyezés
 A Azure Service Bus-erőforrások hitelesítésének és engedélyezésének két módja van: az Azure Activity Directory (Azure AD) és a közös hozzáférésű aláírások (SAS). Ez a cikk részletesen ismerteti a két típusú biztonsági mechanizmus használatát. 
@@ -30,7 +30,7 @@ Az Azure AD-vel történő hitelesítéssel kapcsolatos további információké
 ## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 Az [sas-hitelesítés](service-bus-sas.md) lehetővé teszi a felhasználók számára, hogy hozzáférést biztosítson Service Bus erőforrásokhoz adott jogokkal. A Service Bus SAS-hitelesítése egy Service Bus erőforráson társított jogokkal rendelkező titkosítási kulcs konfigurációját foglalja magában. Az ügyfelek ezután egy SAS-token bemutatásával férhetnek hozzá ehhez az erőforráshoz, amely az elérni kívánt erőforrás-URI-t és a beállított kulccsal lejáró lejárati értéket tartalmazza.
 
-Az SAS kulcsait Service Bus névtérben is konfigurálhatja. A kulcs az adott névtéren belüli összes üzenetküldési entitásra vonatkozik. A kulcsokat Service Bus várólistákon és témakörökben is konfigurálhatja. Az SAS [Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md)is támogatott.
+Az SAS kulcsait Service Bus névtérben is konfigurálhatja. A kulcs az adott névtéren belüli összes üzenetküldési entitásra vonatkozik. A kulcsokat Service Bus várólistákon és témakörökben is konfigurálhatja. Az SAS [Azure Relay](../azure-relay/relay-authentication-and-authorization.md)is támogatott.
 
 Ha SAS-t szeretne használni, konfigurálhat egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -objektumot egy névtérben, egy várólistán vagy egy témakörben. Ez a szabály a következő elemekből áll:
 
@@ -46,7 +46,7 @@ Egy entitás eléréséhez az ügyfélnek egy adott [SharedAccessAuthorizationRu
 A Service Bus SAS-hitelesítésének támogatása az Azure .NET SDK 2,0-as és újabb verzióiban érhető el. Az SAS a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)támogatását is támogatja. Minden olyan API-t, amely a paramétert fogadja, az SAS-kapcsolatok karakterláncok támogatását tartalmazza.
 
 > [!IMPORTANT]
-> Ha Azure Active Directory Access Controlt (más néven Access Control Service vagy ACS) használ a Service Bushoz, vegye figyelembe, hogy a metódus támogatása már korlátozott, és az alkalmazást az [sas használatára kell telepítenie](service-bus-migrate-acs-sas.md) , vagy a OAuth 2,0 hitelesítést kell használnia az Azure ad-vel (ajánlott). További információ az ACS elavult használatáról: [ebben a blogbejegyzésben](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
+> Ha Azure Active Directory Access Controlt (más néven Access Control Service vagy ACS) használ a Service Bushoz, vegye figyelembe, hogy a metódus támogatása már korlátozott, és az alkalmazást az [sas használatára kell telepítenie](service-bus-migrate-acs-sas.md) , vagy a OAuth 2,0 hitelesítést kell használnia az Azure ad-vel (ajánlott). További információ az ACS elavult használatáról: [ebben a blogbejegyzésben](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces).
 
 ## <a name="next-steps"></a>További lépések
 Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:

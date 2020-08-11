@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1ec3eaac90e1d2bc24608f6cb4546d5bed859b5e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1a7511ed0e7bb1d9032331efa87f0d61a99cf5dc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033240"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065233"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -500,7 +500,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Hálózati adapter** |  |
     | Virtuális hálózat | **MyVNet** kiválasztása |
     | Alhálózat | **MyBackendSubnet** kiválasztása |
-    | Nyilvános IP-cím | Válassza az **új létrehozása** lehetőséget. </br> Adja meg a **myVM-IP** nevet a névben. </br> Kattintson **az OK gombra** |
+    | Nyilvános IP-cím | Válassza a **nincs** lehetőséget |
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
     | Hálózati biztonsági csoport konfigurálása | Válassza az **Új létrehozása** lehetőséget. </br> A **hálózati biztonsági csoport létrehozása**területen adja meg **myNSG** a myNSG **nevet**. </br> Kattintson **az OK gombra** |
     | **Terheléselosztás**  |

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 0b150491fff953434062cc583566e1113947a679
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91fecbc68efec1adcee9a2c4013dea46f6da86af
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504903"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066474"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>A Azure NetApp Files tárolási hierarchiája
 
@@ -50,15 +50,13 @@ Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolni
 - A köteteket a logikai kapacitások fogyasztása méri, és méretezhető. 
 - A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
 - Minden kötet egyetlen készlethez tartozik, de egy készlet több kötetet is tartalmazhat. 
-- A kötetek nem helyezhetők át A kapacitási készletek között. <!--Within the same NetApp account, you can move a volume across pools.  -->   
-  Például az alábbi [tárolási hierarchia fogalmi ábráján](#conceptual_diagram_of_storage_hierarchy) a kötetek nem helyezhetők át a 2. kapacitási készletből.
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>Tárhely-hierarchia fogalmi diagramja 
 Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészletek és a kötetek közötti kapcsolatokat mutatják be.   
 
 ![Tárhely-hierarchia fogalmi diagramja](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 - [Regisztrálás az Azure NetApp Filesra](azure-netapp-files-register.md)

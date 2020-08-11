@@ -3,16 +3,16 @@ title: Azure Service Bus – áttelepítés közös hozzáférésű aláírás e
 description: Tudnivalók a Azure Active Directory Access Control Service áttelepítéséről a közös hozzáférésű aláírás engedélyezésére.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340122"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064621"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – Migrálás Azure Active Directory Access Control Serviceról a közös hozzáférésű aláírás engedélyezésére
 
-Service Bus az alkalmazások korábban két különböző engedélyezési modell közül választhattak: a közvetlenül a Service Bus által biztosított [közös hozzáférésű aláírási (SAS)](service-bus-sas.md) jogkivonat-modell, valamint egy összevont modell, amelyben az engedélyezési szabályok kezelését a [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) végzi, és a rendszer átadja az ACS-től kapott jogkivonatokat a kívánt funkciókhoz való hozzáférés engedélyezéséhez Service Bus számára.
+Service Bus az alkalmazások korábban két különböző engedélyezési modell közül választhattak: a közvetlenül a Service Bus által biztosított [közös hozzáférésű aláírási (SAS)](service-bus-sas.md) jogkivonat-modell, valamint egy összevont modell, amelyben az engedélyezési szabályok kezelését a [Azure Active Directory](../active-directory/index.yml) Access Control Service (ACS) végzi, és a rendszer átadja az ACS-től kapott jogkivonatokat a kívánt funkciókhoz való hozzáférés engedélyezéséhez Service Bus számára.
 
 Az ACS engedélyezési modelljét az [sas-hitelesítés](service-bus-authentication-and-authorization.md) az előnyben részesített modellként váltotta fel, és az összes dokumentáció, útmutató és minta kizárólag az SAS-t használja. Emellett már nem lehet új Service Bus-névtereket létrehozni, amelyek az ACS-vel párosítva vannak.
 
@@ -56,4 +56,3 @@ A Service Bus hitelesítéssel kapcsolatos további tudnivalókért tekintse meg
 
 * [Service Bus-hitelesítés és -engedélyezés](service-bus-authentication-and-authorization.md)
 * [Service Bus hitelesítés közös hozzáférési aláírásokkal](service-bus-sas.md)
-

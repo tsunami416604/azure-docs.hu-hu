@@ -4,12 +4,12 @@ description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepít�
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534829"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066644"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -31,7 +31,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson teljes áttelepítést az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="discover-and-assess-aws-vms"></a>AWS virtuális gépek felderítése és értékelése  
 
@@ -99,7 +99,7 @@ Azure Migrate: a kiszolgáló áttelepítése replikációs berendezés használ
 Készítse elő a berendezés központi telepítését a következőképpen:
 
 - Állítson be egy különálló EC2 virtuális gépet a replikációs berendezés üzemeltetéséhez. Ennek a példánynak Windows Server 2012 R2 vagy Windows Server 2016 rendszernek kell futnia. [Tekintse át](./migrate-replication-appliance.md#appliance-requirements) a készülék hardver-, szoftver-és hálózati követelményeit.
-- A készüléket nem szabad olyan forrásoldali virtuális gépre telepíteni, amelyet replikálni szeretne. Ezt egy másik virtuális gépre kell telepíteni.
+- A készüléket nem szabad olyan forrásoldali virtuális gépre telepíteni, amelyet replikálni szeretne, vagy a Azure Migrate felderítési és értékelési berendezésen, amelyre korábban már telepítve van. Ezt egy másik virtuális gépre kell telepíteni.
 - Az áttelepítendő forrás AWS-beli virtuális gépeknek hálózati vonallal kell rendelkezniük a replikációs berendezéshez. Konfigurálja a szükséges biztonsági csoportok szabályait ennek engedélyezéséhez. Javasoljuk, hogy a replikációs berendezést ugyanabban a VPC-ban telepítse, mint az áttelepítendő forrásként szolgáló virtuális gépeket. Ha a replikációs berendezésnek egy másik VPC-ban kell lennie, a VPCs a VPC-kapcsolaton keresztül kell csatlakoztatni.
 - A forrás AWS-alapú virtuális gépek a replikálási felügyelet és a replikálási adatforgalom esetében a HTTPS 443 (vezérlési csatorna összehangolása) és a TCP 9443 (adatátviteli) porton keresztül kommunikálnak a replikációs berendezéssel. A replikációs berendezés a HTTPS 443 kimenő porton keresztül irányítja és küldi el a replikációs adatokat az Azure-nak. Ezeknek a szabályoknak a konfigurálásához szerkessze a biztonsági csoport bejövő/kimenő szabályait a megfelelő portokkal és a forrás IP-címmel kapcsolatos információkkal.
 
@@ -170,7 +170,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
     9,8 a **telepítés helye**területen a **tovább** gombra kattintva fogadja el az alapértelmezett értéket.  
     9,9 a **hálózat kiválasztása**területen válassza a **tovább** lehetőséget az alapértelmezett érték elfogadásához.  
     9,10 az **Összefoglalás**területen válassza a **telepítés**lehetőséget.   
-    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra.   
+    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Válassza az **OK** lehetőséget.   
     9,12 következő lépésként egy ablak egy üzenetet jelenít meg a konfigurációs kiszolgáló hozzáférési jelszavával kapcsolatban. Másolja a jelszót a vágólapra, és mentse a jelszót egy ideiglenes szövegfájlba a forrásként szolgáló virtuális gépeken. Ezt a jelszót később kell megadnia a mobilitási szolgáltatás telepítési folyamata során.
 10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:. A következő adatok megadásával hozhatja létre a "vendég" nevet a "username" névvel, a felhasználónévvel és a jelszóval a fiók jelszavaként. Ezt a dummy-fiókot fogja használni a replikálás engedélyezése szakaszban. 
 11. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése**lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása**területen, majd kattintson a **regisztráció véglegesítése**lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.

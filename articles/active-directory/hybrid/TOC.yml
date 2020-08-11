@@ -374,3 +374,5 @@
       href: reference-connect-msexchuserholdpolicies.md
     - name: Az Azure AD Connect 1.4.xx.x eszköz eltűnésének ismertetése
       href: reference-connect-device-disappearance.md
+    - name: Az Azure AD Connect verzióelőzményeinek archívuma
+      href: reference-connect-version-history-archive.md

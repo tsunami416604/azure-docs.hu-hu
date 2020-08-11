@@ -158,8 +158,10 @@
           items:
             - name: Verziókezelés
               href: versioning-overview.md
-            - name: Helyreállítható törlés
-              href: soft-delete-overview.md
+            - name: Blobok helyreállítható törlése
+              href: soft-delete-blob-overview.md
+            - name: Tárolók helyreállítható törlése
+              href: soft-delete-container-overview.md
             - name: Pillanatképek
               href: snapshots-overview.md
             - name: Csatorna módosítása
@@ -423,8 +425,10 @@
           items:
             - name: Blob verziószámozásának engedélyezése
               href: versioning-enable.md
-            - name: Helyreállítható törlés engedélyezése
-              href: soft-delete-enable.md
+            - name: Blobok helyreállítható törlésének engedélyezése
+              href: soft-delete-blob-enable.md
+            - name: Tárolók helyreállítható törlésének engedélyezése
+              href: soft-delete-container-enable.md
             - name: Pillanatképek készítése (.NET)
               href: snapshots-manage-dotnet.md
             - name: Változáscsatorna-naplók feldolgozása

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f4d90693f2cd3bdd440b7cb914e7fc037103d362
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 440007767835de4641fb828b41d572f35997acd2
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120993"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064468"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Kapcsolati architektúra a Azure Database for MySQLban
 Ez a cikk ismerteti a Azure Database for MySQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MySQL-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -65,9 +65,9 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 | Az Egyesült Királyság déli régiója | 51.140.184.11   |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11  |
 | USA nyugati középső régiója | 13.78.145.25     |
-| Nyugat-Európa | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
-| USA nyugati régiója | 104.42.238.205, 23.99.34.75  |
-| USA nyugati régiója, 2. | 13.66.226.202  |
+| Nyugat-Európa | 40.68.37.158, 191.237.232.75, 13.69.105.208 ,104.40.169.187 |
+| USA nyugati régiója | 104.42.238.205, 23.99.34.75 ,13.86.216.212, 13.86.217.212 |
+| USA 2. nyugati régiója | 13.66.226.202  |
 ||||
 
 ## <a name="connection-redirection"></a>Kapcsolatok átirányítása
@@ -81,7 +81,7 @@ Az átirányítás támogatása a Microsoft által fejlesztett PHP [mysqlnd_azur
 > [!IMPORTANT]
 > Az átirányítás támogatása a PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) bővítményben jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)

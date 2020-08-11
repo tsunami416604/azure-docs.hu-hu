@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503293"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065114"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -41,9 +41,9 @@ A Service Bus jelenleg két forgatókönyvhöz küld eseményeket.
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-Emellett a Service Bus a standard Event Grid biztonsági és [hitelesítési mechanizmusokat](https://docs.microsoft.com/azure/event-grid/security-authentication) használja.
+Emellett a Service Bus a standard Event Grid biztonsági és [hitelesítési mechanizmusokat](../event-grid/security-authentication.md) használja.
 
-További információk: [Azure Event Grid-eseménysémák](https://docs.microsoft.com/azure/event-grid/event-schema).
+További információk: [Azure Event Grid-eseménysémák](../event-grid/event-schema.md).
 
 #### <a name="active-messages-available-event"></a>Elérhető aktív üzenetek esemény
 
@@ -132,7 +132,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 ## <a name="azure-cli-instructions"></a>Azure CLI utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X**lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X**lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 Hajtsa végre a következő kódot:
 
@@ -150,7 +150,7 @@ Ha BASH-et használ
 
 ## <a name="powershell-instructions"></a>PowerShell-utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure PowerShell. [Töltse le a telepítőt](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure PowerShell. [Töltse le a telepítőt](/powershell/azure/install-Az-ps). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ Innen felfedezheti a többi beállítási lehetőséget, vagy tesztelheti az ese
 ## <a name="next-steps"></a>További lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
-* További tudnivalók az [Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.
-* További tudnivalók az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
-* További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) szolgáltatásról
-* További tudnivalók a [Service Bus](https://docs.microsoft.com/azure/service-bus/) szolgáltatásról.
+* További tudnivalók az [Event Grid](../event-grid/index.yml) szolgáltatásról.
+* További tudnivalók az [Azure Functions](../azure-functions/index.yml) szolgáltatásról.
+* További tudnivalók a [Logic Apps](../logic-apps/index.yml) szolgáltatásról
+* További tudnivalók a [Service Bus](/azure/service-bus/) szolgáltatásról.
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

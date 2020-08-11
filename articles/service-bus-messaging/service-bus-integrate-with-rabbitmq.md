@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071638"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064553"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>A RabbitMQ integrálása a Azure Service Bus használatával
 
@@ -20,7 +20,7 @@ Ebben az útmutatóban megtudhatja, hogyan küldhet üzeneteket a RabbitMQ a Azu
 
 Íme néhány forgatókönyv, amelyekben igénybe veheti ezeket a képességeket:
 
-- **Edge-beállítások**: van egy Edge-telepítőnk, amelyben üzeneteket küldünk a RabbitMQ-be, de ezeket az üzeneteket továbbra is [Azure Service Busjuk](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) további feldolgozás céljából, így az [Azure Big adatszolgáltatások számos funkcióját](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data)felhasználhatjuk.
+- **Edge-beállítások**: van egy Edge-telepítőnk, amelyben üzeneteket küldünk a RabbitMQ-be, de ezeket az üzeneteket továbbra is [Azure Service Busjuk](./service-bus-messaging-overview.md) további feldolgozás céljából, így az [Azure Big adatszolgáltatások számos funkcióját](/azure/architecture/guide/architecture-styles/big-data)felhasználhatjuk.
 - **Hibrid felhő**: a vállalat csak olyan harmadik féltől származó, amely RabbitMQ használ az üzenetkezelési igényeiknek. Más felhőben vannak. Az Azure-ba való áttérés közben már megkezdheti az adatmegosztást a RabbitMQ és a Azure Service Bus összekötésével.
 - **Harmadik féltől származó integráció**: egy harmadik fél RabbitMQ használ, és szeretné elküldeni az adatainkat, de a szervezeten kívül vannak. Az SAS-kulccsal biztosítjuk számukra, hogy hozzáférést biztosítanak számukra egy korlátozott számú Azure Service Bus-várólistához, ahol az üzeneteiket továbbítják a szolgáltatásba.
 
@@ -28,7 +28,7 @@ A lista továbbra is fennáll, de a RabbitMQ az Azure-hoz való áthidalása ré
 
 Először létre kell hoznia egy ingyenes Azure-fiókot a regisztráláshoz [here](https://azure.microsoft.com/free/)
 
-Miután bejelentkezett a fiókjába, lépjen a [Azure Portal](https://portal.azure.com/) , és hozzon létre egy új Azure Service Bus [névteret](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal). A névterek azok a hatókör-tárolók, ahol az üzenetkezelési összetevők élőak, például a várólisták és a témakörök.
+Miután bejelentkezett a fiókjába, lépjen a [Azure Portal](https://portal.azure.com/) , és hozzon létre egy új Azure Service Bus [névteret](./service-bus-create-namespace-portal.md). A névterek azok a hatókör-tárolók, ahol az üzenetkezelési összetevők élőak, például a várólisták és a témakörök.
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>Új Azure Service Bus névtér hozzáadása
 
@@ -40,7 +40,7 @@ Ezután válassza az integráció lehetőséget, majd kattintson a Azure Service
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure Service Bus kiválasztása":::
 
-A rendszer felszólítja a névtér adatainak megadására. Válassza ki a használni kívánt Azure-előfizetést. Ha nem rendelkezik [erőforráscsoporthoz](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), létrehozhat egy újat.
+A rendszer felszólítja a névtér adatainak megadására. Válassza ki a használni kívánt Azure-előfizetést. Ha nem rendelkezik [erőforráscsoporthoz](../azure-resource-manager/management/manage-resource-groups-portal.md), létrehozhat egy újat.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Névtér létrehozása":::
 
@@ -76,7 +76,7 @@ Itt az ideje, hogy lekérje a RabbitMQ az Azure-hoz való csatlakoztatásához s
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>RabbitMQ csatlakoztatása Azure Service Bushoz
 
-Létre kell hoznia egy [megosztott hozzáférési](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) szabályzatot (SAS) a várólistához, így a RabbitMQ üzeneteket tehet közzé. A SAS-szabályzat segítségével megadhatja, hogy milyen külső fél számára engedélyezett az erőforrás. Az a gondolat, hogy a RabbitMQ képes üzeneteket küldeni, de nem figyeli vagy nem kezeli a várólistát.
+Létre kell hoznia egy [megosztott hozzáférési](../storage/common/storage-sas-overview.md) szabályzatot (SAS) a várólistához, így a RabbitMQ üzeneteket tehet közzé. A SAS-szabályzat segítségével megadhatja, hogy milyen külső fél számára engedélyezett az erőforrás. Az a gondolat, hogy a RabbitMQ képes üzeneteket küldeni, de nem figyeli vagy nem kezeli a várólistát.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS-szabályzat hozzáadása":::
 

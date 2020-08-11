@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenet lejárata
 description: Ez a cikk a Azure Service Bus üzenetek érvényességének lejáratát és időpontját ismerteti. Az ilyen határidő lejárta után az üzenet már nem érkezik meg.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341197"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064723"
 ---
 # <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (élettartama)
 
@@ -27,9 +27,9 @@ Amíg az üzenet zárolva van, előfordulhat, hogy az alkalmazás lejárt üzene
 A várólistába vagy témakörbe küldött összes üzenet egy alapértelmezett lejáratra van beállítva, amely az entitás szintjén van megadva a [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) tulajdonsággal, amelyet később a portálon is beállíthat a létrehozás és a módosítás során. Az alapértelmezett lejáratot a rendszer az entitásba küldött összes üzenethez használja, ahol a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) nincs explicit módon beállítva. Az alapértelmezett lejárat a **TimeToLive** értékének felső határa is. Az alapértelmezett értéknél hosszabb **TimeToLive** lejáratú üzeneteket a rendszer a várólistán lévő előtt csendben igazítja a **defaultMessageTimeToLive** értékre.
 
 > [!NOTE]
-> A felügyelt üzenetek alapértelmezett [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) értéke [TimeSpan. max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) , ha nincs másképp megadva.
+> A felügyelt üzenetek alapértelmezett [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) értéke [TimeSpan. max](/dotnet/api/system.timespan.maxvalue) , ha nincs másképp megadva.
 >
-> Az üzenetküldési entitások (várólisták és témakörök) esetében az alapértelmezett lejárati idő a [TimeSpan. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) Service Bus a standard és a prémium szint esetében is.  Az alapszintű csomag esetében az alapértelmezett lejárati idő 14 nap.
+> Az üzenetküldési entitások (várólisták és témakörök) esetében az alapértelmezett lejárati idő a [TimeSpan. Max](/dotnet/api/system.timespan.maxvalue) Service Bus a standard és a prémium szint esetében is.  Az alapszintű csomag esetében az alapértelmezett lejárati idő 14 nap.
 
 A lejárt üzenetek a [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) tulajdonság beállításával, vagy a portál megfelelő mezőjének megadásával is áthelyezhetők egy [kézbesítetlen levelek várólistába](service-bus-dead-letter-queues.md) . Ha a beállítás le van tiltva, a rendszer elveti a lejárt üzeneteket. A kézbesítetlen levelek várólistára áthelyezett lejárt üzenetek megkülönböztetni más kézbesítetlen üzenetektől, ha kiértékeli a [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) tulajdonságot, amelyet a közvetítő tárol a felhasználó tulajdonságai szakaszban; Ebben az esetben az érték [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6151bb915298cc4f771b6d49628f39c8d27b62b4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800348"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064366"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -45,6 +45,7 @@ Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rá
     - [A HANA nagyméretű példányának támogatott forgatókönyvei](./hana-supported-scenario.md)
 - Az Azure-szolgáltatások, az Azure-beli virtuálisgép-típusok és az Azure Storage-szolgáltatások a különböző Azure-régiókban érhetők el, a helyhez tartozó [termékek pedig régiónként](https://azure.microsoft.com/global-infrastructure/services/) 
 - Támogatott-e a harmadik féltől származó keret, HA a Windows és a pacemaker is működik? Tekintse meg az [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1928533) alsó részét #1928533
+- Mi a legjobb megoldás az Azure Storage számára a forgatókönyvhöz? [Az Azure Storage-típusok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) beolvasása SAP számítási feladatokhoz
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
@@ -59,23 +60,7 @@ A dokumentáció ezen szakasza a SAP HANA különböző szempontjait ismerteti. 
  
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure-beli virtuális gépeken üzembe helyezett SAP NetWeaver
-Ez a szakasz az SAP NetWeaver és az Azure-beli Business One tervezési és üzembe helyezési dokumentációját sorolja fel. A dokumentáció az Azure-beli SAP-munkaterheléssel rendelkező, nem HANA-adatbázisok alapjaira és használatára koncentrál. A magas rendelkezésre állást biztosító dokumentumok és cikkek a HANA magas rendelkezésre állásának alapja is az Azure-ban, például:
-
-- Az [Azure tervezési útmutatója](./planning-guide.md). 
-- [SAP Business One az Azure Virtual Machines szolgáltatásban](./business-one-azure.md)
-- [Többplatformos SAP NetWeaver-alkalmazások telepítésének biztosítása Site Recovery használatával](../../../site-recovery/site-recovery-sap.md)
-- [Az Azure SAP LaMa összekötője](./lama-installation.md)
-
-Az Azure-beli SAP-munkaterhelések keretében nem HANA-adatbázisokkal kapcsolatos információkért lásd:
-
-- [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](./dbms_guide_general.md)
-- [SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára](./dbms_guide_sqlserver.md)
-- [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](./dbms_guide_oracle.md)
-- [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezés az SAP-munkaterheléshez](./dbms_guide_ibm.md)
-- [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](./dbms_guide_sapase.md)
-- [SAP-MaxDB, élő gyorsítótár és a Content Server üzembe helyezése Azure-beli virtuális gépeken](./dbms_guide_maxdb.md)
-
-További információ az Azure-beli SAP HANA adatbázisokról: "SAP HANA az Azure Virtual Machines szolgáltatásban" című rész.
+Ez a szakasz az SAP NetWeaver és az Azure-beli Business One tervezési és üzembe helyezési dokumentációját sorolja fel. A dokumentáció az Azure-beli SAP-munkaterheléssel rendelkező, nem HANA-adatbázisok alapjaira és használatára koncentrál. A magas rendelkezésre állású dokumentumok és cikkek a HANA magas rendelkezésre állásának alapja is az Azure-ban
 
 Az Azure-beli SAP-munkaterhelések magas rendelkezésre állásáról további információt a következő témakörben talál:
 
@@ -104,6 +89,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 08/10/2020: SAP HANA az Azure-beli [virtuális gépek tárolási](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) konfigurációjának költséghatékonysági SAP HANA tárolási konfigurációjának bemutatása és néhány frissítés az Azure-beli [SAP-munkaterhelésekhez: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020: változás a [pacemaker beállítása a SLES az Azure](./high-availability-guide-suse-pacemaker.md) -ban és a [PACEMAKER beállítása a RHEL az Azure-ban](./high-availability-guide-rhel-pacemaker.md) a pacemaker-fürtök megbízható névfeloldásának fontossága kihangsúlyozása érdekében
 - 08/04/2020: változás az [SAP NW ha on WFCS with fájlmegosztás](./sap-high-availability-installation-wsfc-file-share.md), [SAP NW ha a WFCS megosztott lemezzel](./sap-high-availability-installation-wsfc-shared-disk.md), [Ha az SAP NW Azure-beli virtuális GÉPEKen](./high-availability-guide.md), ha az SAP NW Azure-beli [virtuális gépeken a SLES](./high-availability-guide-suse.md)-on, [Ha az SAP NW-on Azure-beli virtuális gépeken](./high-availability-guide-suse-netapp-files.md), a ANF-on található SLES-mel, [Ha az Azure-beli virtuális gépeken elérhető SAP NW-t használja a SLES multi-SID útmutatójában](./high-availability-guide-suse-multi-sid.md), [magas rendelkezésre állást biztosít az Azure](./high-availability-guide-rhel.md)-beli virtuális gépeken futó Azure-beli virtuális gépeken a [RHEL-on](./high-availability-guide-rhel-netapp-files.md) futó Azure [-](./high-availability-guide-rhel-multi-sid.md) beli virtuális gépeken`enque/encni/set_so_keepalive`
 - 07/23/2020: a [Save on SAP HANA Large instances hozzáadva egy Azure foglalási](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) cikkből megtudhatja, hogy mit kell tudnia a SAP HANA Large instances foglalás megvásárlása és a vásárlás elvégzése előtt?

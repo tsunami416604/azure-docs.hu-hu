@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054086"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065488"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
@@ -43,14 +43,14 @@ Az alábbi táblázatban a rögzítettként megjelölt elemek a SCIM feladatokba
 | A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Igen  | December 18., 2018  | Visszalépés a customappSSO |
 | A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Igen  |  December 18., 2018  | Visszalépés a customappSSO |
 | A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Igen  |  December 18., 2018  |  Visszalépés a customappSSO |
-| A megfelelőség biztosítása érdekében frissítse a javítási viselkedést | Nem | TBD| előnézet jelző használata |
+| A javítási viselkedés frissítése a megfelelőség biztosítása érdekében (például a logikai és a megfelelő csoporttagság-eltávolítások esetén) | Nem | TBD| előnézet jelző használata |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>A SCIM viselkedését megváltoztató jelzők
 Az alapértelmezett SCIM-ügyfél működésének módosításához használja az alábbi jelzőket az alkalmazás bérlői URL-címében.
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="A SCIM jelzői a későbbi működéshez.":::
 
-* Használja a következő URL-címet a javítási viselkedés frissítéséhez és a SCIM megfelelőségének biztosításához. Ez a viselkedés jelenleg csak a jelző használatakor érhető el, de a következő néhány hónap során az alapértelmezett viselkedés lesz.
+* A következő URL-cím használatával frissítheti a javítási viselkedést, és biztosíthatja a SCIM megfelelőségét (például az aktív logikai és a megfelelő csoporttagság-eltávolítások esetén). Ez a viselkedés jelenleg csak a jelző használatakor érhető el, de a következő néhány hónap során az alapértelmezett viselkedés lesz.
   * **URL-cím (scim-kompatibilis):** AzureAdScimPatch062020
   * **SCIM RFC-referenciák:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

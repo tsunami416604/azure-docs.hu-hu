@@ -3,12 +3,12 @@ title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
 description: Ez a cikk felsorolja az Azure Service Bus üzenetkezelési kivételeket és a kivétel bekövetkezésekor végrehajtandó javasolt műveleteket.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071312"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067052"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
@@ -55,7 +55,7 @@ A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/id�
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>A szolgáltatás verziófrissítése/újraindítása esetén felmerülő problémák
 
-### <a name="symptoms"></a>Probléma
+### <a name="symptoms"></a>Hibajelenségek
 - Előfordulhat, hogy a kérelmek egy pillanatra szabályozva vannak.
 - Lehet, hogy elvesznek a bejövő üzenetek/kérelmek.
 - A naplófájl hibaüzeneteket tartalmazhat.
@@ -69,7 +69,7 @@ Ha az alkalmazás kódja SDK-t használ, az újrapróbálkozási házirend már 
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>Jogosulatlan hozzáférés: a jogcímek küldése kötelező
 
-### <a name="symptoms"></a>Probléma 
+### <a name="symptoms"></a>Hibajelenségek 
 Ez a hiba akkor fordulhat elő, amikor a Visual studióból egy, a felhasználó által hozzárendelt, a küldési engedélyekkel rendelkező felügyelt identitás használatával próbál hozzáférni egy Service Bus témakörhöz.
 
 ```bash
@@ -80,13 +80,13 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 Az identitás nem rendelkezik a Service Bus témakör eléréséhez szükséges engedélyekkel. 
 
 ### <a name="resolution"></a>Feloldás
-A hiba elhárításához telepítse a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [helyi fejlesztési hitelesítés](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
+A hiba elhárításához telepítse a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [helyi fejlesztési hitelesítés](../key-vault/general/service-to-service-authentication.md#local-development-authentication). 
 
 Ha meg szeretné tudni, hogyan rendelhet hozzá engedélyeket a szerepkörökhöz, tekintse meg [a felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások elérését](service-bus-managed-service-identity.md)ismertető témakört.
 
 ## <a name="service-bus-exception-put-token-failed"></a>Service Bus kivétel: a Put token nem sikerült
 
-### <a name="symptoms"></a>Probléma
+### <a name="symptoms"></a>Hibajelenségek
 Ha több mint 1000 üzenetet próbál elküldeni ugyanazzal a Service Bus-kapcsolatban, a következő hibaüzenet jelenik meg: 
 
 `Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
@@ -101,5 +101,4 @@ További üzenetek küldéséhez nyisson meg egy új kapcsolódást a Service Bu
 Lásd az alábbi cikkeket: 
 
 - [Azure Resource Manager kivételek](service-bus-resource-manager-exceptions.md). A Azure Service Bus a Azure Resource Manager használatával (sablonok vagy közvetlen hívások segítségével) való interakció során keletkező kivételeket sorolja fel.
-- [Üzenetküldési kivételek](service-bus-messaging-exceptions.md). A .NET-keretrendszer által Azure Service Bus által generált kivételek listáját tartalmazza. 
-
+- [Üzenetküldési kivételek](service-bus-messaging-exceptions.md). A .NET-keretrendszer által Azure Service Bus által generált kivételek listáját tartalmazza.

@@ -3,12 +3,12 @@ title: Diagnosztikai naplók Azure Service Bus | Microsoft Docs
 description: Ez a cikk a Azure Service Bus számára elérhető összes operatív és diagnosztikai napló áttekintését tartalmazza.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337531"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064434"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnosztikai naplók engedélyezése a Service Bushoz
 
@@ -25,7 +25,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva a 
 
 Az operatív napló JSON-karakterláncai közé tartoznak az alábbi táblázatban felsorolt elemek:
 
-| Name | Description |
+| Név | Leírás |
 | ------- | ------- |
 | Tevékenységazonosító | A megadott tevékenység azonosítására szolgáló belső azonosító |
 | EventName | Művelet neve |
@@ -33,7 +33,7 @@ Az operatív napló JSON-karakterláncai közé tartoznak az alábbi táblázatb
 | SubscriptionId | Előfizetés azonosítója |
 | EventTimeString | Működési idő |
 | EventProperties | Művelet tulajdonságai |
-| Állapot | Művelet állapota |
+| status | Művelet állapota |
 | Hívó | A művelet hívója (a Azure Portal vagy a felügyeleti ügyfél) |
 | Kategória | OperationalLogs |
 
@@ -65,7 +65,7 @@ Az üzemeltetési naplók a következő kezelési műveleteket rögzítik:
 | Hatókör | Művelet|
 |-------| -------- |
 | Névtér | <ul> <li> Névtér létrehozása</li> <li> Névtér frissítése </li> <li> Névtér törlése </li> <li> Névtér SharedAccess házirend frissítése </li> </ul> | 
-| Várólista | <ul> <li> Várólista létrehozása</li> <li> Üzenetsor frissítése</li> <li> Üzenetsor törlése </li> <li> Üzenetsor törlése </li> </ul> | 
+| Üzenetsor | <ul> <li> Várólista létrehozása</li> <li> Üzenetsor frissítése</li> <li> Üzenetsor törlése </li> <li> Üzenetsor törlése </li> </ul> | 
 | Témakör | <ul> <li> Témakör létrehozása </li> <li> Témakör frissítése </li> <li> Témakör törlése </li> <li> Törlési témakör autodelete </li> </ul> |
 | Előfizetés | <ul> <li> Előfizetés létrehozása </li> <li> Előfizetés frissítése </li> <li> Előfizetés törlése </li> <li> Előfizetés törlése </li> </ul> |
 
@@ -101,7 +101,7 @@ Az operatív naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai 
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. A naplók a konfigurált archiválási célpontban, a **diagnosztikai naplók** panelen jelennek meg.
 
-A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/platform/diagnostic-logs-overview.md).
+A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 

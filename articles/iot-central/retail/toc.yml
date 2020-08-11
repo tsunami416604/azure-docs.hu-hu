@@ -30,6 +30,20 @@
       items:
         - name: Mikro-teljesítési központ alkalmazásának létrehozása
           href: tutorial-micro-fulfillment-center.md
+    - name: Videóelemzés – objektum- és mozgásérzékelés
+      items:
+        - name: 1 – Videóelemzési alkalmazás létrehozása
+          href: tutorial-video-analytics-create-app.md
+        - name: 2 – IoT Edge-eszköz konfigurálása
+          items:
+            - name: Videóelemzési eszköz létrehozása a peremhálózaton (Linux VM)
+              href: tutorial-video-analytics-iot-edge-vm.md
+            - name: Videóelemzési eszköz létrehozása a peremhálózaton (Intel NUC)
+              href: tutorial-video-analytics-iot-edge-nuc.md
+        - name: 3 – Videóelemzési alkalmazás monitorozása és kezelése
+          href: tutorial-video-analytics-manage.md
+        - name: 4 – Élő videóelemzési átjárómodulok módosítása és kiépítése
+          href: tutorial-video-analytics-build-module.md
 - name: Alapelvek
   items:
     - name: Az összekapcsolt logisztikai alkalmazás sablonjának architektúrája
@@ -42,12 +56,16 @@
       href: store-analytics-architecture.md
     - name: Mikro-teljesítési központ kezelésére szolgáló alkalmazás sablonjának architektúrája
       href: architecture-micro-fulfillment-center.md
+    - name: Videóelemzési alkalmazás sablonjának architektúrája
+      href: architecture-video-analytics.md
     - name: Kapcsolatok
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Mik azok az alkalmazássablonok?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Útmutatók
   items:
+    - name: Objektum- és mozgásérzékelési alkalmazás üzembe helyezése
+      href: howto-deploy-video-analytics-template.md
     - name: Eszközök csatlakoztatása
       items:
         - name: Rigado Cascade 500 előkészítése és csatlakoztatása

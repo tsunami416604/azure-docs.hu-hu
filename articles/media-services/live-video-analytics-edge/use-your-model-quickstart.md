@@ -3,12 +3,12 @@ title: Élő videó elemzése saját modell használatával – Azure
 description: Ebben a rövid útmutatóban a számítógép jövőképét fogja alkalmazni az élő videó hírcsatornájának (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 75e18917b0d44dc33999d17360cd66a538c83d2b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170613"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065199"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Rövid útmutató: élő videó elemzése saját modell használatával
 
@@ -31,7 +31,7 @@ Ez a rövid útmutató egy Azure-beli virtuális gépet használ IoT Edge eszkö
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 Az Azure-erőforrások beállításakor a rendszer átmásolja az autópálya-forgalom rövid videóját az Azure-ban lévő, IoT Edge eszközként használt linuxos virtuális gépre. Ez a rövid útmutató egy élő stream szimulálására használja a videofájl használatával.
 
-Nyisson meg egy alkalmazást, például a [VLC Media Playert](https://www.videolan.org/vlc/). Válassza a CTRL + N billentyűkombinációt, majd illessze be a [videóra](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) mutató hivatkozást a lejátszás elindításához. Itt láthatja az autópálya-forgalomban mozgó számos jármű felvételét.
+Nyisson meg egy alkalmazást, például a [VLC Media Playert](https://www.videolan.org/vlc/). Válassza ki `Ctrl+N` , majd illessze be [az autópálya-metszeti minta videóra](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) mutató hivatkozást a lejátszás elindításához. Itt láthatja az autópálya-forgalomban mozgó számos jármű felvételét.
 
 Ebben a rövid útmutatóban élő videó-elemzéseket fog használni a IoT Edgeon az objektumok, például a gépjárművek és a személyek észleléséhez. A kapcsolódó következtetési eseményeket közzé kell tenni IoT Edge hubhoz.
 
@@ -107,9 +107,18 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 1. Amikor a rendszer rákérdez a IoT Hub eszköz kiválasztására, válassza a **LVA-Sample-Device**elemet.
 1. Körülbelül 30 másodperc elteltével frissítse az Azure IoT Hubt az ablak bal alsó sarkában. A peremhálózati eszköz mostantól a következő központilag telepített modulokat mutatja:
 
-    * A **lvaEdge** nevű Live Video Analytics-modul
-    * Az **rtspsim** modul, amely egy RTSP-kiszolgálót szimulál, és élő videó-hírcsatorna forrásaként működik
-    * A **yolov3** modul, amely a yolov3 objektum-észlelési modell, amely a számítógépekre vonatkozó jövőképet alkalmaz a lemezképekre, és több objektumtípust ad vissza.
+    * A (z) nevű Live Video Analytics-modul`lvaEdge`
+    * A `rtspsim` modul, amely egy RTSP-kiszolgálót szimulál, és élő videó-hírcsatorna forrásaként működik
+    > [!NOTE]
+    > Ha saját peremhálózati eszközt használ a telepítési parancsfájlból kiépített helyett, nyissa meg a peremhálózati eszközét, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal**az ehhez a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
+
+    ```
+    mkdir /home/lvaadmin/samples
+    mkdir /home/lvaadmin/samples/input    
+    curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+    chown -R lvaadmin /home/lvaadmin/samples/  
+    ```
+    * A `yolov3` modul, amely a YoloV3 objektum-észlelési modell, amely a számítógépeket a képekre alkalmazza, és az Objektumtípusok több osztályát adja vissza.
  
       ![A peremhálózati eszközön üzembe helyezett modulok](./media/quickstarts/yolov3.png)
 
@@ -284,7 +293,7 @@ Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott er�
 
 ## <a name="next-steps"></a>További lépések
 
-* Próbálja ki a [YOLOv3 modell biztonságos verzióját](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) , és telepítse azt az IOT Edge-eszközre. 
+* Próbálja ki a [YoloV3 modell biztonságos verzióját](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) , és telepítse azt a IoT Edge eszközre. 
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

@@ -3,12 +3,12 @@ title: Azure Service Bus témakör szűrők | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan határozhatja meg, hogy az előfizetők hogyan határozhatják meg, hogy mely üzeneteket szeretnék a témakörből a szűrők megadásával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339957"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066746"
 ---
 # <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
 
@@ -62,6 +62,4 @@ Tekintse meg a következő mintákat:
 
 - [.NET – alapszintű küldési és fogadási útmutató szűrőkkel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET – témakör szűrők](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
-
-
+- [Azure Resource Manager sablon](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

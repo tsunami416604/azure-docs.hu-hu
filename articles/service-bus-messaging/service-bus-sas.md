@@ -3,12 +3,12 @@ title: Azure Service Bus hozzáférés-vezérlés közös hozzáférési aláír
 description: A Service Bus hozzáférés-vezérlésének áttekintése a közös hozzáférési aláírások használatával – áttekintés, a SAS-engedélyezéssel kapcsolatos részletek Azure Service Bus.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460694"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066185"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -27,7 +27,7 @@ Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek
 
 A közös hozzáférésű aláírások egy egyszerű tokeneket használó jogcím-alapú engedélyezési mechanizmus. A SAS használatával a kulcsok soha nem lesznek átadva a huzalon. A kulcsok a szolgáltatás által később ellenőrizhető információk titkosítására szolgálnak. Az SAS a Felhasználónév és a jelszó sémához hasonló módon használható, ahol az ügyfél azonnal rendelkezik egy engedélyezési szabály nevével és egy hozzá tartozó kulccsal. Az SAS az összevont biztonsági modellhez hasonlóan is használható, ahol az ügyfél időkorlátos és aláírt hozzáférési jogkivonatot kap a biztonsági jogkivonat szolgáltatástól anélkül, hogy az aláírási kulcs birtokában lenne.
 
-A Service Bus SAS-hitelesítése olyan [megosztott hozzáférés-engedélyezési szabályokkal](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) van konfigurálva, amelyek hozzáférési jogosultságokkal rendelkeznek, valamint az elsődleges és másodlagos titkosítási kulcsok párja. A kulcsok 256 bites értékek Base64-ábrázolásban. Megadhatja a szabályokat a névtér szintjén [, Service Bus-továbbítókat,](../service-bus-relay/relay-what-is-it.md) [várólistákat](service-bus-messaging-overview.md#queues)és [témaköröket](service-bus-messaging-overview.md#topics).
+A Service Bus SAS-hitelesítése olyan [megosztott hozzáférés-engedélyezési szabályokkal](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) van konfigurálva, amelyek hozzáférési jogosultságokkal rendelkeznek, valamint az elsődleges és másodlagos titkosítási kulcsok párja. A kulcsok 256 bites értékek Base64-ábrázolásban. Megadhatja a szabályokat a névtér szintjén [, Service Bus-továbbítókat,](../azure-relay/relay-what-is-it.md) [várólistákat](service-bus-messaging-overview.md#queues)és [témaköröket](service-bus-messaging-overview.md#topics).
 
 A [közös hozzáférésű aláírási](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) jogkivonat tartalmazza a kiválasztott engedélyezési szabály nevét, az elérni kívánt erőforrás URI-ját, a lejárati pillanatot, valamint a HMAC-sha256 titkosítási aláírást, amely a kiválasztott engedélyezési szabály elsődleges vagy másodlagos titkosítási kulcsa alapján lett kiszámítva.
 
@@ -84,7 +84,7 @@ A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kisz
 
 Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például: `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>` ;, azaz, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
-**Az URI-nak [százalékos kódolással](https://msdn.microsoft.com/library/4fkewx0t.aspx)kell rendelkeznie.**
+**Az URI-nak [százalékos kódolással](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)kell rendelkeznie.**
 
 Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például vagy az `http://contoso.servicebus.windows.net/contosoTopics/T1` `http://contoso.servicebus.windows.net` előző példában.
 

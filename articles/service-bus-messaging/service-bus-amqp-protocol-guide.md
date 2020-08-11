@@ -3,12 +3,12 @@ title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Mi
 description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511313"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064536"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
 
@@ -73,7 +73,7 @@ A kapcsolatok, a csatornák és a munkamenetek elmúlóak. Ha az alapul szolgál
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP kimenő portokra vonatkozó követelmények
 
-A TCP protokollon keresztül AMQP-kapcsolatokat használó ügyfeleknek a helyi tűzfalon kell megnyitnia a 5671-es és a 5672-es portot. A portok mellett szükség lehet további portok megnyitására is, ha a [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) szolgáltatás engedélyezve van. `EnableLinkRedirect`a egy új üzenetkezelési funkció, amely segít az egyugrásos kihagyásban az üzenetek fogadása közben, így segítve az átviteli sebesség növelését. Az ügyfél az alábbi képen látható módon elkezdi a közvetlen kommunikációt a 104XX a porttartomány-tartományon keresztül. 
+A TCP protokollon keresztül AMQP-kapcsolatokat használó ügyfeleknek a helyi tűzfalon kell megnyitnia a 5671-es és a 5672-es portot. A portok mellett szükség lehet további portok megnyitására is, ha a [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) szolgáltatás engedélyezve van. `EnableLinkRedirect`a egy új üzenetkezelési funkció, amely segít az egyugrásos kihagyásban az üzenetek fogadása közben, így segítve az átviteli sebesség növelését. Az ügyfél az alábbi képen látható módon elkezdi a közvetlen kommunikációt a 104XX a porttartomány-tartományon keresztül. 
 
 ![Cél portok listája][4]
 
@@ -223,7 +223,7 @@ Az alkalmazás által definiált összes tulajdonságot le kell képezni a AMQP 
 | üzenet-azonosító |Az üzenet alkalmazás által definiált, szabad formátumú azonosítója. Ismétlődő észleléshez használatos. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | felhasználói azonosító |Az alkalmazás által definiált felhasználói azonosító, Service Bus nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
 | a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Hogy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| tulajdonos |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| tárgy |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Válasz címzettje |Az alkalmazás által definiált válasz-elérésiút jelző, amelyet a Service Bus nem értelmez. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | korrelációs azonosító |Az alkalmazás által definiált korrelációs azonosító Service Bus nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Content-Type |Az alkalmazás által definiált Content-Type jelző a törzshöz, amelyet a Service Bus nem értelmez. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -404,13 +404,13 @@ Ezzel a funkcióval létre kell hoznia egy küldőt, és létre kell hoznia a hi
 | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = feladó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target =**{on-Entity}**,<br/>**Properties = Térkép [( <br/> com. Microsoft: átvitel-cél-címe = <br/> {cél-entitás})]** ) | ------> | |
 | | <------ | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = fogadó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {on-Entity},<br/>tulajdonságok = Térkép [(<br/>com. Microsoft: átvitel-cél-címe =<br/>{cél-entitás})] ) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A AMQP kapcsolatos további információkért tekintse meg a következő hivatkozásokat:
 
 * [Service Bus AMQP áttekintése]
 * [AMQP 1,0 támogatás Service Bus particionált várólisták és témakörök számára]
-* [A Windows Server Service Bus AMQP]
+* [AMQP Service Bus Windows Serverhez]
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -419,5 +419,5 @@ A AMQP kapcsolatos további információkért tekintse meg a következő hivatko
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md
-[AMQP 1,0 támogatás Service Bus particionált várólisták és témakörök számára]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[A Windows Server Service Bus AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[AMQP 1,0 támogatás Service Bus particionált várólisták és témakörök számára]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

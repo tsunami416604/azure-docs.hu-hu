@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290170"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064791"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -26,7 +26,7 @@ A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelke
 
 ## <a name="benefits"></a>Előnyök
 
-Azure Database for PostgreSQL egyetlen kiszolgáló adattitkosítása a következő előnyöket biztosítja:
+Az ügyfél által felügyelt kulcsokkal rendelkező Azure Database for PostgreSQL önálló kiszolgálókon az alábbi előnyökkel jár az Adattitkosítás:
 
 * Az adathozzáférést teljes mértékben a rendszer ellenőrzi, hogy el tudja-e távolítani a kulcsot, és elérhetetlenné teszi az adatbázist 
 *    Teljes hozzáférés a kulcs-életciklushoz, beleértve a kulcs rotációját a vállalati házirendekkel való összehangoláshoz
@@ -48,8 +48,8 @@ A KEK titkosított DEKs külön tárolja a rendszer. Csak egy KEK-hozzáféréss
 Ahhoz, hogy a PostgreSQL-kiszolgáló a ADATTITKOSÍTÁSI kulcsot titkosításához Key Vaultban tárolt ügyfél által felügyelt kulcsokat használjon, a Key Vault rendszergazdája a következő hozzáférési jogosultságokat biztosítja a kiszolgálóhoz:
 
 * **beolvasás: a**Key vaultban lévő kulcs nyilvános részének és tulajdonságainak lekérése.
-* **wrapKey**: a adattitkosítási kulcsot titkosítása.
-* **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez.
+* **wrapKey**: a adattitkosítási kulcsot titkosítása. A titkosított ADATTITKOSÍTÁSI kulcsot a Azure Database for PostgreSQL tárolja.
+* **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez. Azure Database for PostgreSQL a visszafejtett ADATTITKOSÍTÁSI kulcsot szükséges az adattitkosításhoz/visszafejtéshez
 
 A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/key-vault-insights-overview.md)is, így később is naplózhatja őket.
 
@@ -59,16 +59,16 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 
 A Key Vault konfigurálásának követelményei a következők:
 
-* Key Vault és Azure Database for PostgreSQL egyetlen kiszolgálónak ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. Az erőforrások áthelyezését követően újra kell konfigurálnia az adattitkosítást.
+* Key Vault és Azure Database for PostgreSQL egyetlen kiszolgálónak ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. A Key Vault erőforrás áthelyezéséhez ezt követően újra kell konfigurálnia az adattitkosítást.
 * Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
-* Az egyedi felügyelt identitás használatával adja meg az Azure Database for PostgreSQL egyetlen kiszolgáló hozzáférését a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel. A Azure Portalban az egyedi identitás automatikusan létrejön, ha az adattitkosítás engedélyezve van a PostgreSQL-kiszolgálón. A Azure Portal használatakor részletes útmutatásért lásd: [Azure Database for PostgreSQL az egyetlen Azure Portal kiszolgáló adattitkosítása](howto-data-encryption-portal.md) .
+* Az egyedi felügyelt identitás használatával adja meg az Azure Database for PostgreSQL egyetlen kiszolgáló hozzáférését a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel. A Azure Portal az egyedi "szolgáltatás" identitás automatikusan létrejön, ha az adattitkosítás engedélyezve van a PostgreSQL-kiszolgálón. A Azure Portal használatakor részletes útmutatásért lásd: [Azure Database for PostgreSQL az egyetlen Azure Portal kiszolgáló adattitkosítása](howto-data-encryption-portal.md) .
 
 Az ügyfél által felügyelt kulcs konfigurálásának követelményei a következők:
 
 * A ADATTITKOSÍTÁSI kulcsot titkosításához használt ügyfél által felügyelt kulcs csak aszimmetrikus, RSA 2048 lehet.
 * A kulcs aktiválási dátumát (ha be van állítva) a múltban dátumnak és időpontnak kell lennie. A lejárati dátumnak (ha be van állítva) jövőbeli dátumnak és időpontnak kell lennie.
 * A kulcsnak *engedélyezett* állapotban kell lennie.
-* Ha meglévő kulcsot importál a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` ,,) meg van-e biztosítva `.byok` `.backup` .
+* Ha [meglévő kulcsot importál](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` , `.byok` ,) meg van-e biztosítva `.backup` .
 
 ## <a name="recommendations"></a>Javaslatok
 
