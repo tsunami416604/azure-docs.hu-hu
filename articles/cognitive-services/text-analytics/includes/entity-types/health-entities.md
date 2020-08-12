@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 4ac65e85e05f408b8d2f37a1d6845dc9e28e2bab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6880391fb54791fe5f597de2305d24f8c0e47ec6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373070"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122361"
 ---
 ## <a name="health-entity-categories"></a>Állapot entitások kategóriái:
 
@@ -23,46 +23,55 @@ A következő entitás-kategóriákat adja vissza a [text Analytics for Health](
 
 |Kategória  |Leírás   |
 |----------|--------------|
-| KOR | Alábbi korhatárt szabja. |
-| BODY_STRUCTURE | Az emberi törzs részei, beleértve a szerveket és más struktúrákat. | 
-| CONDITION_QUALIFIER | Feltétel szintjei, például *enyhe*, *bővített*vagy *diffúz*. | 
-| DIAGNOSZTIKAI | Egészségügyi feltételek. Például *magas vérnyomás* . | 
-| IRÁNYBA | Irányok, például *balra* vagy *anterior*. | 
-| ADAGOLÁS | A gyógyszer mérete vagy mennyisége.  | 
-| EXAMINATION_NAME | Egy vizsgálati módszer vagy eljárás. | 
-| EXAMINATION_RELATION | egy mérési egység és egy vizsgálat közötti társítás.  | 
-| EXAMINATION_UNIT | Egy mérési egység a vizsgálathoz. | 
-| EXAMINATION_VALUE | A vizsgálati mérési egység értéke. | 
-| FAMILY_RELATION | Egy családi kapcsolat, például *testvér*.  | 
-| FREKVENCIA | Gyakoriságokat.   | 
-| NEMEK | Nemek. | 
-| GÉN | Egy gén entitás, például *TP53*.   | 
-| MEDICATION_CLASS | Gyógyszeres osztályok. Például *antibiotikumok*.  | 
-| MEDICATION_NAME  | Általános és márka nevű gyógyszer.| 
-| ROUTE_OR_MODE  | A gyógyszer felügyeletének módszere. | 
-| SYMPTOM_OR_SIGN  | Megbetegedés tünetei. | 
-| TIME  | Alkalommal. Ilyen például a "8 év" vagy a "2:07:30 ma reggel" |
-| TREATMENT_NAME  | A kezelési nevek. | 
-| VARIANT  | A gén entitás genetikai változata | 
+| Kor | Alábbi korhatárt szabja. Például *30 éves*. |
+| AdministrativeEvent | Egy felügyeleti esemény. |
+| BodyStructure | Az emberi törzs részei, beleértve a szerveket és más struktúrákat. Például *ARM*vagy *Heart*. | 
+| CareEnvironment | Az a környezet, amelyben az ellátást vagy a kezelést felügyelik. Például *vészhelyzeti helyiség* | 
+| ConditionQualifier | Feltétel szintjei. Például *enyhe*, *kiterjesztett*vagy *diffúz*. | 
+| Diagnosztikai | Egészségügyi feltételek. Például *magas vérnyomás*. | 
+| Irány | Irányban. Például *balra* vagy *anterior*. | 
+| Adagolás | A gyógyszer mérete vagy mennyisége. Például *25mg*.  | 
+| ExaminationName | Egy vizsgálati módszer vagy eljárás. Például: *X-ray*. | 
+| RelationalOperator | Egy operátor, amely két entitás közötti kapcsolatot határoz meg. Például *kisebb, mint*, vagy `>=` .  | 
+| MeasurementUnit | Egy mérési egység (például százalék). | 
+| MeasurementValue | Egy mérési egység numerikus értéke. | 
+| FamilyRelation | Egy családi kapcsolat. Például: *Sister*.  | 
+| Frequency | Gyakoriságokat.   | 
+| Nem | Nemek. | 
+| Gén | Egy gén entitás, például *TP53*.   | 
+| HealthcareProfession | A gyógyszer felügyeletének módszere. Például: *szóbeli felügyelet*. | 
+| MedicationClass | Gyógyszeres osztályok. Például *antibiotikumok*.  | 
+| MedicationForm | A gyógyszert egy formája. Például: *kapszula*. | 
+| MedicationName  | Általános és márka nevű gyógyszer. Például az *ibuprofen*. | 
+| MedicationRoute | A gyógyszer felügyeletének módszere. Például: *szóbeli felügyelet*. | 
+| SymptomOrSign  | Megbetegedés tünetei. Például *fáj a torka*. | 
+| Idő | Alkalommal. Például: *8 év* , vagy *2. reggel* |
+| TreatmentName  | A kezelési nevek. Például: *terápia*. | 
+| Változat | A gén entitás genetikai változata. | 
 
 ### <a name="relation-extraction"></a>Kapcsolatok kibontása
 
 A kapcsolat kibontása azonosítja a szövegben említett fogalmak közötti értelmes kapcsolatokat. A "feltétel időpontja" típusú kapcsolatok például a feltétel nevének egy időponthoz társításával találhatók meg. Az állapot Text Analytics a következő kapcsolatokat tudja azonosítani:
 
-* DIRECTION_OF_BODY_STRUCTURE  
-* TIME_OF_CONDITION
-* QUALIFIER_OF_CONDITION  
-* DOSAGE_OF_MEDICATION 
-* FORM_OF_MEDICATION  
-* ROUTE_OR_MODE_OF_MEDICATION   
-* STRENGTH_OF_MEDICATION 
-* ADMINISTRATION_RATE_OF_MEDICATION   
-* FREQUENCY_OF_MEDICATION 
-* TIME_OF_MEDICATION 
-* TIME_OF_TREATMENT 
-* FREQUENCY_OF_TREATMENT  
-* VALUE_OF_EXAMINATION
-* UNIT_OF_EXAMINATION 
-* RELATION_OF_EXAMINATION 
-* TIME_OF_EXAMINATION  
-* RÖVIDÍTÉSE 
+|Kategória  |Leírás   |
+|----------|--------------|
+| DirectionOfBodyStructure | A törzs struktúrájának iránya. |
+| DirectionOfCondition | Egy feltétel iránya. |
+| DirectionOfExamination | Egy vizsgálat iránya. |
+| DirectionOfTreatment | A kezelés iránya. |
+| TimeOfCondition | Egy feltétel kialakulásához kapcsolódó idő. |
+| QualifierOfCondition | Egy feltétel társított minősítője. |
+| DosageOfMedication | A gyógyszer adagolása. |
+| FormOfMedication | A gyógyszert egy formája. |
+| RouteOfMedication | Egy gyógyszer fogyasztásának útvonala vagy módja. Például: *szóbeli*. |
+| FrequencyOfMedication | A gyógyszer felhasználásának gyakorisága. | 
+| ValueOfCondition | Egy feltétellel társított numerikus érték. |
+| UnitOfCondition | Egy adott feltételhez társított egység (például idő). |
+| TimeOfMedication | Az az idő, amikor a gyógyszert felhasználták. |
+| TimeOfTreatment | A kezelés felügyeletének időpontja. | 
+| FrequencyOfTreatment | A kezelés felügyeletének gyakorisága. |
+| ValueOfExamination | Egy vizsgálathoz rendelt numerikus érték. | 
+| UnitOfExamination | Egy olyan egység (például százalék), amely egy vizsgálathoz van társítva. |
+| RelationOfExamination | Egy entitás és egy vizsgálat közötti kapcsolat. | 
+| TimeOfExamination | A vizsgálathoz kapcsolódó idő. |
+| Rövidítés | Egy rövidítés.  | 

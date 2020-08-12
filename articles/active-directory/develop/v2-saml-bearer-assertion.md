@@ -12,12 +12,12 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282381"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114693"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform és OAuth 2,0 SAML-tulajdonos állítási folyamata
 A OAuth 2,0 SAML-tulajdonos állítási folyamata lehetővé teszi, hogy egy SAML-kijelentéssel igényeljen egy OAuth hozzáférési tokent, ha az ügyfélnek meglévő megbízhatósági kapcsolatot kell használnia. Az SAML-kijelentésre alkalmazott aláírás a hitelesítő alkalmazás hitelesítését biztosítja. Az SAML-jogcímek egy, az identitás-szolgáltató által kiadott és a szolgáltató által használt XML biztonsági jogkivonat. A szolgáltató a tartalomra támaszkodva azonosítja az állítás tárgyát a biztonsággal kapcsolatos célokra.
@@ -37,7 +37,7 @@ Most tudassa velünk, hogy miként lehet ténylegesen beolvasni az SAML-állít�
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre megbízhatósági kapcsolatot az engedélyezési kiszolgáló/környezet (Microsoft 365) és az identitás-szolgáltató, illetve az SAML 2,0 tulajdonosi jogcíme (ADFS) számára. Az ADFS egyszeri bejelentkezéshez és identitás-szolgáltatóként való konfigurálásához tekintse meg [ezt a cikket](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/).
+Hozzon létre megbízhatósági kapcsolatot az engedélyezési kiszolgáló/környezet (Microsoft 365) és az identitás-szolgáltató, illetve az SAML 2,0 tulajdonosi jogcíme (ADFS) számára. Az ADFS egyszeri bejelentkezéshez és identitás-szolgáltatóként való konfigurálásához tekintse meg [ezt a cikket](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365).
 
 Az alkalmazás regisztrálása a [portálon](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade):
 1. Jelentkezzen be a [portál alkalmazás-regisztráció](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) paneljére (vegye figyelembe, hogy a Graph API v 2.0-s végpontját használjuk, ezért regisztrálni kell az alkalmazást ebben a portálon. Ellenkező esetben a regisztrációkat használták az Azure Active Directoryban. 

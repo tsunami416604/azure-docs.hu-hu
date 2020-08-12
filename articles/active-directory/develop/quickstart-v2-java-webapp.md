@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 1474a8ad73f7deb9a7c321f7d7994a7b2b73d624
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87312401"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115220"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -57,7 +57,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
 >    - Adja hozzá **a** webplatform-konfigurációt.  Adja hozzá ezeket `https://localhost:8443/msal4jsample/secure/aad` és `https://localhost:8443/msal4jsample/graph/me` az **átirányítási URI-ket**.
->    - Válassza a **Mentés** lehetőséget.
+>    - Kattintson a **Mentés** gombra.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
 >
 >    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).
@@ -212,7 +212,7 @@ Ha a webes mintát a Tomcat szolgáltatásban szeretné üzembe helyezni, néhá
 
 
 > [!IMPORTANT]
-> Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel a rendszer az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a projektfájlok számára, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a [tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)című témakörben olvashat bővebben.
+> Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel a rendszer az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a projektfájlok számára, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a [tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez](./active-directory-certificate-credentials.md)című témakörben olvashat bővebben.
 
 ## <a name="more-information"></a>További információ
 
@@ -254,11 +254,11 @@ import com.microsoft.aad.msal4j.*;
 További információ az engedélyekről és a beleegyezik:
 
 > [!div class="nextstepaction"]
-> [Engedélyek és beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [Engedélyek és beleegyezik](./v2-permissions-and-consent.md)
 
 Ha többet szeretne megtudni a forgatókönyv hitelesítési folyamatáról, tekintse meg a OAuth 2,0 engedélyezési kód folyamatát:
 
 > [!div class="nextstepaction"]
-> [Engedélyezési kód OAuth folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [Engedélyezési kód OAuth folyamata](./v2-oauth2-auth-code-flow.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

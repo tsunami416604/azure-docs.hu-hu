@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204626"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120949"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
 
@@ -46,7 +46,7 @@ Ha a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexc
 
 Íme a gyakori kivételek, amelyek felmerülhetnek, és néhány lehetséges megoldás:  
 
-| Kivétel | Hibakód | Kezelés|
+| Kivétel | Hibakód | Kockázatcsökkentés|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: a felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem használja a .NET Core-ot (amely nem rendelkezik webes felhasználói felülettel), hívja a (csak egyszer) hívást `AcquireTokeninteractive` . Ha a .NET Core-ot használja, vagy nem szeretné elvégezni `AcquireTokenInteractive` a használatát, a felhasználó megkeresheti az URL-címet a beleegyezés megadásához: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . hívás `AcquireTokenInteractive` :`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: a felhasználónak a [többtényezős hitelesítés (MFA)](../authentication/concept-mfa-howitworks.md)használatára van szüksége.| Nincs megoldás. Ha az MFA konfigurálva van a bérlőhöz, és Azure Active Directory (HRE) úgy dönt, hogy kikényszeríti azt, akkor egy interaktív folyamatra kell visszaesnie, például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode` .|
@@ -76,7 +76,7 @@ A MSAL egy olyan mezőt tesz elérhetővé, amely lehetővé teszi, `Classificat
 | UserPasswordExpired | A felhasználó jelszava lejárt. | Hívja meg a AcquireTokenInteractively (), hogy a felhasználó alaphelyzetbe állíthatja a jelszavát. |
 | PromptNeverFailed| Az interaktív hitelesítés a következő paraméterrel lett meghívva: prompt = soha, kényszerítve a MSAL, hogy a böngésző cookie-kra támaszkodjon, és ne jelenjen meg a böngésző. Ez nem sikerült. | A AcquireTokenInteractively () hívása prompt nélkül. None |
 | AcquireTokenSilentFailed | A MSAL SDK nem rendelkezik elegendő információval a tokennek a gyorsítótárból való beolvasásához. Ennek oka az lehet, hogy a gyorsítótárban nincsenek tokenek, vagy nem található a fiók. A hibaüzenet további részleteket tartalmaz.  | A AcquireTokenInteractively () hívása. |
-| None    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
+| Nincs    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
 
 ## <a name="net-code-example"></a>.NET-kód – példa
 
@@ -236,7 +236,7 @@ A Pythonhoz készült MSAL a legtöbb hibát az API-hívásból visszaadott ért
 * A sikeres válasz tartalmazza a `"access_token"` kulcsot. A válasz formátumát az OAuth2 protokoll határozza meg. További információ: [5,1 sikeres válasz](https://tools.ietf.org/html/rfc6749#section-5.1)
 * A hiba a következőt tartalmazza: `"error"` és általában `"error_description"` . A válasz formátumát az OAuth2 protokoll határozza meg. További információ: 5,2-es [hiba válasza](https://tools.ietf.org/html/rfc6749#section-5.2)
 
-Ha a rendszer hibát ad vissza, a `"error_description"` kulcs egy ember által olvasható üzenetet tartalmaz, amely általában egy Microsoft Identity platform hibakódot tartalmaz. A különböző hibakódokról a [hitelesítési és engedélyezési hibakódok](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes)című témakörben olvashat bővebben.
+Ha a rendszer hibát ad vissza, a `"error_description"` kulcs egy ember által olvasható üzenetet tartalmaz, amely általában egy Microsoft Identity platform hibakódot tartalmaz. A különböző hibakódokról a [hitelesítési és engedélyezési hibakódok](./reference-aadsts-error-codes.md)című témakörben olvashat bővebben.
 
 A MSAL for Python esetében a kivételek ritkák, mivel a legtöbb hibát egy hibaérték visszaadásával kezeli a rendszer. A `ValueError` kivétel csak akkor fordul elő, ha probléma van azzal, hogy hogyan próbálja használni a kódtárat – például ha az API-paraméter (ek) helytelen formátumú.
 

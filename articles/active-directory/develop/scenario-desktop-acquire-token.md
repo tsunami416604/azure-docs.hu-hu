@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846071"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121068"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Kötelező paraméterek
 
-`AcquireTokenInteractive`csak egy kötelező paraméterrel rendelkezik, ``scopes`` amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatókörök az "engedélyek" szakaszban található egyes Microsoft Graph API-k API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](https://docs.microsoft.com/graph/api/user-list-contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`csak egy kötelező paraméterrel rendelkezik, ``scopes`` amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatókörök az "engedélyek" szakaszban található egyes Microsoft Graph API-k API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](/graph/api/user-list-contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Androidon a szülő tevékenységet is meg kell adnia a használatával, amint azt a (z `.WithParentActivityOrWindow` ), hogy a jogkivonat vissza fog térni az adott fölérendelt tevékenységhez az interakció után. Ha nem ad meg, a rendszer kivételt okoz a hívásakor `.ExecuteAsync()` .
 
@@ -278,7 +278,7 @@ A MSAL.NET csapata újraírta a felhasználói felületi teszteket, hogy ezt a b
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Nagyszerű élményt nyújt a SystemWebViewOptions
 
-A MSAL.NET 4,1-es verziójában [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) megadhatja a következőket:
+A MSAL.NET 4,1-es verziójában [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) megadhatja a következőket:
 
 - A () `BrowserRedirectError` vagy a megjelenített HTML-kódrészlet () vagy a rendszerböngészőbe való bejelentkezés vagy a hozzájuk tartozó megadási `HtmlMessageError` hibák esetén használandó URI.
 - A `BrowserRedirectSuccess` `HtmlMessageSuccess` sikeres bejelentkezés vagy beleegyezikés esetén a () vagy a megjelenítendő HTML-kódrészlet ().
@@ -433,13 +433,13 @@ Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy A
   - Vagy a bérlői rendszergazdának előzőleg meg kell adnia a bérlő összes felhasználója számára az alkalmazás használatát.
   - Más szóval:
     - A fejlesztőként a Azure Portal a **Grant (Engedélyezés** ) gombot saját maga is kiválasztva.
-    - Vagy a bérlői rendszergazda a (z) **{bérlői tartomány} gomb engedélyezés/visszavonás rendszergazdai jóváhagyása** elemét választotta az alkalmazás regisztrációjának **API-engedélyek** lapján. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis).
-    - Vagy lehetősége van arra, hogy a felhasználók beleegyezett az alkalmazásba. További információ: [egyéni felhasználói engedély kérése](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent).
-    - Vagy megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba. További információ: [rendszergazdai beleegyezett](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant).
+    - Vagy a bérlői rendszergazda a (z) **{bérlői tartomány} gomb engedélyezés/visszavonás rendszergazdai jóváhagyása** elemét választotta az alkalmazás regisztrációjának **API-engedélyek** lapján. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Vagy lehetősége van arra, hogy a felhasználók beleegyezett az alkalmazásba. További információ: [egyéni felhasználói engedély kérése](./v2-permissions-and-consent.md#requesting-individual-user-consent).
+    - Vagy megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba. További információ: [rendszergazdai beleegyezett](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 - Ez a folyamat engedélyezve van a .NET Desktop, a .NET Core és a UWP alkalmazásokhoz.
 
-További információ a beleegyező adatokról: a [Microsoft Identity platform engedélyei és beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
+További információ a beleegyező adatokról: a [Microsoft Identity platform engedélyei és beleegyezik](./v2-permissions-and-consent.md).
 
 ### <a name="learn-how-to-use-it"></a>Tudnivalók a használatáról
 
@@ -1388,7 +1388,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes API meghívása az asztali alkalmazásból](scenario-desktop-call-api.md)

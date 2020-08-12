@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: cc78df7ea904bf85f5f2561319e6fc773244e971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005213"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116699"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Gyakori kérdések (GYIK) a Azure Active Directory (AD) tartományi szolgáltatásokkal kapcsolatban
 
@@ -117,7 +117,11 @@ Nem. A sémát a Microsoft felügyeli a felügyelt tartományhoz. A Azure AD Dom
 Igen. A *HRE DC-rendszergazdák* csoport tagjai *DNS-rendszergazdai* jogosultságokat kapnak a felügyelt tartomány DNS-rekordjainak módosításához. Azok a felhasználók, akik a felügyelt tartományhoz csatlakoznak a DNS-kezelő konzolon a Windows Servert futtató gépen, a DNS-t kezelhetik. A DNS-kezelő konzol használatához telepítse a *DNS-kiszolgáló eszközöket*, amelyek a kiszolgáló *Távoli kiszolgálófelügyelet eszközei* választható funkciójának részét képezik. További információ: a [DNS felügyelete Azure ad Domain Services felügyelt tartományban](manage-dns.md).
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Mi a jelszó élettartama házirend egy felügyelt tartományon?
-Egy Azure AD Domain Services felügyelt tartomány alapértelmezett jelszójának élettartama 90 nap. A jelszó élettartama nincs szinkronizálva az Azure AD-ben konfigurált jelszó-élettartammal. Ezért előfordulhat, hogy a felhasználók jelszavai lejárnak a felügyelt tartományban, de továbbra is érvényesek az Azure AD-ben. Ilyen esetekben a felhasználóknak módosítaniuk kell a jelszavukat az Azure AD-ben, és az új jelszó szinkronizálva lesz a felügyelt tartományba. Emellett a felhasználói fiókok *jelszava nem jár le és nem jár le* , és a felhasználói fiókoknak nem *kell* szinkronizálnia a felügyelt tartományba.
+Egy Azure AD Domain Services felügyelt tartomány alapértelmezett jelszójának élettartama 90 nap. A jelszó élettartama nincs szinkronizálva az Azure AD-ben konfigurált jelszó-élettartammal. Ezért előfordulhat, hogy a felhasználók jelszavai lejárnak a felügyelt tartományban, de továbbra is érvényesek az Azure AD-ben. Ilyen esetekben a felhasználóknak módosítaniuk kell a jelszavukat az Azure AD-ben, és az új jelszó szinkronizálva lesz a felügyelt tartományba. Ha módosítani szeretné a jelszó alapértelmezett élettartamát egy felügyelt tartományban, [létrehozhat és konfigurálhat egyéni jelszóházirendek.](password-policy.md)
+
+Emellett a *DisablePasswordExpiration* Azure ad-beli jelszavas szabályzata szinkronizálva lett egy felügyelt tartományba. Ha a *DisablePasswordExpiration* az Azure ad-ben egy felhasználóra alkalmazza, a felügyelt tartományban lévő szinkronizált felhasználó *UserAccountControl* értékét *DONT_EXPIRE_PASSWORD* alkalmazta a rendszer.
+
+Amikor a felhasználók visszaállítják a jelszavukat az Azure AD-ben, a rendszer a *forceChangePasswordNextSignIn = True* attribútumot alkalmazza. A felügyelt tartomány szinkronizálja ezt az attribútumot az Azure AD-ből. Ha a felügyelt tartomány észleli a *forceChangePasswordNextSignIn* egy szinkronizált felhasználó számára az Azure ad-ből, a felügyelt tartomány *pwdLastSet* attribútuma *0*értékre van állítva, amely érvényteleníti a jelenleg beállított jelszót.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Biztosít Azure AD Domain Services AD-fiók zárolásának védelmét?
 Igen. A felügyelt tartomány 2 percen belül öt érvénytelen jelszóval próbálkozik, mert a felhasználói fiók 30 percig kizárja a felhasználót. 30 perc elteltével a felhasználói fiók automatikusan fel lesz oldva. A felügyelt tartomány jelszavas próbálkozásai érvénytelenek, az Azure AD-ben nem zárhatók ki a felhasználói fiókok. A felhasználói fiók csak a Azure AD Domain Services felügyelt tartományon belül van zárolva. További információ: [jelszó-és fiókzárolási házirendek a felügyelt tartományokon](password-policy.md).

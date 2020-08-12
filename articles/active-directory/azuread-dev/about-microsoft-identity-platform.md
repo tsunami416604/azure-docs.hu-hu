@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236300"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117770"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
@@ -49,7 +49,7 @@ A Microsoft Identity platformmal integrált összes alkalmazás kezeléséhez a 
 
 A Azure AD B2C (a közösségi vagy helyi identitások hitelesítése esetén) való integrációhoz regisztrálnia kell az alkalmazást egy Azure AD B2C-bérlőben. Ez a felhasználói élmény a Azure Portal része is.
 
-Az [Application API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) használatával programozott módon konfigurálhatja a Microsoft Identity platformmal integrált alkalmazásokat a Microsoft-identitások hitelesítéséhez.
+Az [Application API](/graph/api/resources/application?view=graph-rest-1.0) használatával programozott módon konfigurálhatja a Microsoft Identity platformmal integrált alkalmazásokat a Microsoft-identitások hitelesítéséhez.
 
 ### <a name="msal-libraries"></a>MSAL-kódtárak
 
@@ -57,7 +57,7 @@ A MSAL-kódtár használatával olyan alkalmazásokat hozhat létre, amelyek hit
 
 A MSAL-kódtárak segítségével integrálhatja az alkalmazást Azure AD B2C használatával.
 
-A webalkalmazások és webes API-k létrehozásához használható kiszolgálóoldali kódtárak általánosan elérhetők: [ASP.net](https://docs.microsoft.com/aspnet/overview) és [ASP.net Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+A webalkalmazások és webes API-k létrehozásához használható kiszolgálóoldali kódtárak általánosan elérhetők: [ASP.net](/aspnet/overview) és [ASP.net Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft Identity platform-végpont
 

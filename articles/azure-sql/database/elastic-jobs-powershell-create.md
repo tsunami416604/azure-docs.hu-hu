@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 093214241757bdc3973d88d5a0e6f3157c6178c7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 84f3bbc01d7161dd6d7002102cc006dfae3ce3e4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251131"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118161"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A [rugalmas feladatok](job-automation-overview.md#elastic-database-jobs-preview) lehetővé teszik egy vagy több Transact-SQL- (T-SQL-) szkript több adatbázisban történő, párhuzamos futtatását.
+A [rugalmas feladatok (előzetes verzió)](job-automation-overview.md#elastic-database-jobs-preview) lehetővé teszik egy vagy több Transact-SQL (T-SQL) parancsfájlok futtatását számos adatbázis párhuzamosan.
 
 Ebben az oktatóanyagban megtudhatja, hogy milyen lépéseket kell végrehajtani a lekérdezések több adatbázishoz való futtatásához:
 
@@ -288,7 +288,7 @@ A következő táblázat a lehetséges feladatok végrehajtásának állapotait 
 |**Kimarad** | A rendszer kihagyta a feladatok végrehajtását, mert ugyanazon a feladattípusnak egy másik végrehajtása már fut ugyanazon a célhelyen.|
 |**WaitingForChildJobExecutions** | A feladatok végrehajtása a gyermek végrehajtásának befejeződésére vár.|
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A jelen oktatóanyagban létrehozott erőforrásokat az erőforráscsoport törlésével távolíthatja el.
 

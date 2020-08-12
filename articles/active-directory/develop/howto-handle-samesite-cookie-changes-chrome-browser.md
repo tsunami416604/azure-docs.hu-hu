@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477804"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116971"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookie-k változásainak kezelése a Chrome böngészőben
 
@@ -59,7 +59,7 @@ Az alábbi táblázat azokat a lekéréses kérelmeket mutatja be, amelyek a Sam
 
 a SameSite-cookie-k ASP.NET és ASP.NET Core való kezelésével kapcsolatos részletekért lásd még:
 
-- [SameSite-cookie-k használata ASP.net Coreban](https://docs.microsoft.com/aspnet/core/security/samesite) .
+- [SameSite-cookie-k használata ASP.net Coreban](/aspnet/core/security/samesite) .
 - [ASP.NET blog a SameSite-probléma megoldásához](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)

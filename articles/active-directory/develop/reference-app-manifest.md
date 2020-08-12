@@ -13,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: fb536b27fe283170626ca6ffa2d21749d511f244
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923509"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115067"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
 Az alkalmazás jegyzékfájlja a Microsoft Identity platform alkalmazás-objektumának összes attribútumának definícióját tartalmazza. Az alkalmazás-objektum frissítésére szolgáló mechanizmusként is szolgál. Az alkalmazás entitásával és annak sémájával kapcsolatos további információkért tekintse meg a [Graph API alkalmazás-entitás dokumentációját](/graph/api/resources/application).
 
-Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](/graph/api/resources/application) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
+Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](/graph/api/resources/application) vagy a [PowerShell](/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
 
 * Ha az alkalmazást Azure AD több-bérlős és személyes Microsoft-fiókkal regisztrálta, a felhasználói felületen nem módosíthatja a támogatott Microsoft-fiókokat. Ehelyett az Application manifest Editort kell használnia a támogatott fióktípus módosításához.
 * Ha meg kell határoznia az alkalmazás által támogatott engedélyeket és szerepköröket, módosítania kell az alkalmazás jegyzékfájlját.
@@ -534,7 +534,7 @@ Ez a többértékű tulajdonság azon regisztrált redirect_uri értékek listá
 - `InstalledClient`
 - `Spa`
 
-További információ: [replyUrl-korlátozások és korlátozások](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+További információ: [replyUrl-korlátozások és korlátozások](./reply-url.md).
 
 Példa:
 
@@ -686,14 +686,14 @@ A következő megjegyzések szakasz a tartalom pontosítását és formázását
 [AAD-DEVELOPER-GLOSSARY]:developer-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
-[APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[APPLICATION-ENTITY-APP-ROLE]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type
+[APPLICATION-ENTITY]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity
+[APPLICATION-ENTITY-APP-ROLE]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#approle-type
+[APPLICATION-ENTITY-OAUTH2-PERMISSION]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
-[INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
-[O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
-[O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
+[INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
+[O365-PERM-DETAILS]: /graph/permissions-reference
+[O365-SERVICE-DAEMON-APPS]: /previous-versions/office/office-365-api/
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/

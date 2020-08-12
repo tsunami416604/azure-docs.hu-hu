@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771077"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120626"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
 
@@ -33,7 +33,7 @@ A feltételes hozzáférés teljes képességeivel kapcsolatos további informá
 
 Az Azure AD-alkalmazások fejlesztésére szolgáló fejlesztők számára ez a cikk bemutatja, hogyan használhatja a feltételes hozzáférést, és megtudhatja, hogy milyen hatással van az olyan erőforrásokhoz való hozzáférésre, amelyeken nem szabályozható a feltételes hozzáférési szabályzatok alkalmazása. A cikk azt is vizsgálja, hogy milyen hatással van a feltételes hozzáférés a folyamat, a webalkalmazások, a Microsoft Graph elérése és az API-k hívása során.
 
-A rendszer feltételezi az [önálló](quickstart-register-app.md) és a [több-bérlős](howto-convert-app-to-be-multi-tenant.md) alkalmazások, valamint a [gyakori hitelesítési minták](authentication-scenarios.md) ismeretét.
+A rendszer feltételezi az [önálló](quickstart-register-app.md) és a [több-bérlős](howto-convert-app-to-be-multi-tenant.md) alkalmazások, valamint a [gyakori hitelesítési minták](./authentication-vs-authorization.md) ismeretét.
 
 > [!NOTE]
 > A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges. A követelményeinek leginkább megfelelő licenc kiválasztásáról lásd [az ingyenes, alapszintű és prémium kiadások általánosan elérhető szolgáltatásait összehasonlító cikket](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -52,7 +52,7 @@ Az alábbi forgatókönyvek a feltételes hozzáférés "kihívásai" kezelésé
 * Egylapos alkalmazások MSAL.js használatával
 * Erőforrás meghívása Web Apps
 
-A feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazásra, de az alkalmazáshoz hozzáférő webes API-ra is alkalmazhatók. A feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következőt: gyors útmutató: többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../conditional-access/app-based-mfa.md).
+A feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazásra, de az alkalmazáshoz hozzáférő webes API-ra is alkalmazhatók. A feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következőt: gyors útmutató: többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../authentication/tutorial-enable-azure-mfa.md).
 
 A forgatókönyvtől függően a nagyvállalati ügyfelek bármikor alkalmazhatják és eltávolíthatják a feltételes hozzáférési szabályzatokat. Ahhoz, hogy az alkalmazás továbbra is működőképes legyen egy új házirend alkalmazása esetén, meg kell valósítania a "Challenge" kezelést. Az alábbi példák a kihívások kezelését szemléltetik.
 
@@ -93,7 +93,7 @@ A fejlesztők igénybe vehetik ezt a kihívást, és hozzáfűzik azt egy új Az
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD feltételes hozzáférés a [prémium szintű Azure ad](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)részét képező szolgáltatás. A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
+Az Azure AD feltételes hozzáférés a [prémium szintű Azure ad](../fundamentals/active-directory-whatis.md)részét képező szolgáltatás. A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
 
 ### <a name="considerations-for-specific-scenarios"></a>Bizonyos forgatókönyvek szempontjai
 
@@ -180,7 +180,7 @@ Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kó
 
 ## <a name="see-also"></a>Lásd még
 
-* A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](/azure/active-directory/conditional-access/overview)című témakört.
+* A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../conditional-access/overview.md)című témakört.
 * További Azure AD-programkódok: [minták](sample-v2-code.md).
 * További információ a MSAL SDK-ról és a dokumentációhoz való hozzáférésről: a [Microsoft hitelesítési függvénytárának áttekintése](msal-overview.md).
 * További információ a több-bérlős forgatókönyvekről: [Bejelentkezés a felhasználókba a több-bérlős minta használatával](howto-convert-app-to-be-multi-tenant.md).

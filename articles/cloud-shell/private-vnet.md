@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096923"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114659"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Cloud Shell üzembe helyezése Azure-beli virtuális hálózaton
 > [!NOTE]
@@ -103,7 +103,7 @@ Navigáljon a fenti sablonnal létrehozott továbbítóhoz, válassza a "hálóz
 > [!NOTE]
 > Ezt a lépést minden rendszergazda Cloud Shell fogja használni.
 
-A fenti lépések befejezését követően navigáljon Cloud Shell a Azure Portal vagy a következőn: https://shell.azure.com .
+A fenti lépések befejezését követően navigáljon Cloud Shell a Azure Portal vagy a következőn: https://shell.azure.com . Az egyik ilyen tapasztalatot minden alkalommal fel kell használni, amikor egy elkülönített Cloud Shell felhasználói felülethez szeretne csatlakozni.
 
 > [!NOTE]
 > Ha korábban már használta a Cloud Shell, a meglévő clouddrive le kell választania. Ha a futtatását `clouddrive unmount` aktív Cloud Shell munkamenetből szeretné elvégezni, frissítse a lapot.

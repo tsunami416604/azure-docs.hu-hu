@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 1dabadfe30a28fdae409f8452aac2cca4b765418
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313489"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115985"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
 
@@ -69,7 +69,7 @@ A fenti ábrán:
   - Egy bérlői profil `tom@live.com` létezik az egyes bérlők esetében.
 - A más bérlők Tom és Bob szolgáltatásával kapcsolatos információk eltérhetnek a rekordból. Eltérőek lehetnek az attribútumok, például a beosztás, az iroda helye stb. Az egyes szervezetekben (Azure Active Directory bérlőn) belüli csoportok és/vagy szerepkörök tagjai lehetnek. Ezt az információt a bob@contoso.com bérlői profilként tekintjük át.
 
-A diagramon a bob@contoso.com tom@live.com különböző Azure Active Directory bérlők erőforrásaihoz férhet hozzá. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+A diagramon a bob@contoso.com tom@live.com különböző Azure Active Directory bérlők erőforrásaihoz férhet hozzá. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../external-identities/add-users-administrator.md).
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Fiókok és egyszeri bejelentkezés (SSO)
 
@@ -118,10 +118,10 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> A fiók objektumból elérhető jogcímek listájának megtekintéséhez tekintse meg a [jogcímek egy id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
+> A fiók objektumból elérhető jogcímek listájának megtekintéséhez tekintse meg a [jogcímek egy id_token](./id-tokens.md#claims-in-an-id_token)
 
 > [!TIP]
-> Ha további jogcímeket szeretne felvenni a id_tokenba, tekintse meg a választható jogcímek dokumentációját a [útmutató: opcionális jogcímek megadása az Azure ad-alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
+> Ha további jogcímeket szeretne felvenni a id_tokenba, tekintse meg a választható jogcímek dokumentációját a [útmutató: opcionális jogcímek megadása az Azure ad-alkalmazáshoz](./active-directory-optional-claims.md)
 
 ### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
 

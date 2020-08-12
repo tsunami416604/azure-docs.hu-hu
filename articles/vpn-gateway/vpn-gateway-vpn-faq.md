@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708926"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121476"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 
@@ -126,6 +126,10 @@ Hitelesítésként csak az előmegosztott kulcsok (PSK-k) használhatók.
 ### <a name="can-i-configure-force-tunneling"></a>Konfigurálhatok kényszerített bújtatást?
 
 Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forced-tunneling.md).
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Használhatom a NAT-T-T a VPN-kapcsolatokon?
+
+Igen, a NAT-bejárás (NAT-T) támogatott. Az Azure VPN Gateway nem hajtja végre a NAT-hoz hasonló funkciókat a belső csomagokon az IPsec-alagutak között.  Ebben a konfigurációban ellenőrizze, hogy a helyszíni eszköz kezdeményezi-e az IPSec-alagutat.
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Üzembe helyezhetem a saját VPN-kiszolgálómat az Azure-ban, és csatlakozhatok vele a helyszíni hálózatomhoz?
 

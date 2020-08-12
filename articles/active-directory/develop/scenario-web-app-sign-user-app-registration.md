@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026251"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118671"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -41,7 +41,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 > A használni kívánt portál eltérő lehet attól függően, hogy az alkalmazás a Microsoft Azure nyilvános felhőben, vagy egy nemzeti vagy szuverén felhőben fut-e. További információ: [National felhők](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával. Másik lehetőségként jelentkezzen be a nemzeti felhőhöz [választott Azure Portal](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) .
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával. Másik lehetőségként jelentkezzen be a nemzeti felhőhöz [választott Azure Portal](./authentication-national-cloud.md#app-registration-endpoints) .
 2. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban. Ezután állítsa be a portál munkamenetét a kívánt Azure Active Directory (Azure AD) bérlőre.
 3. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 
@@ -68,7 +68,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Válassza a **hitelesítés** menüt.
 1. A **Speciális beállítások**  |  **implicit támogatás** szakaszban válassza az **azonosító tokenek**elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -91,7 +91,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 
    1. Adja meg a kulcs leírását.
    1. Válassza ki a kulcs időtartamát **1 évben**.
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
    1. Ha a kulcs értéke megjelenik, másolja később. Ez az érték nem jelenik meg újra, vagy bármilyen más módon lekérdezhető.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -107,7 +107,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 
    1. Adja meg a kulcs leírását.
    1. Adja **meg az 1 év**kulcsának időtartamát.
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
    1. Ha a kulcs értéke megjelenik, másolja. Erre később még szüksége lesz.
 ---
 
@@ -119,7 +119,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 > - MyOrg (csak ebben a szervezeti könyvtárban lévő fiókok)
 > - AnyOrg (fiókok bármely szervezeti címtárban)
 >
-> Létrehozhat egy olyan alkalmazást, amely a felhasználók személyes Microsoft-fiókjait (például Skype, Xbox vagy Outlook.com) is aláírja. Először hozzon létre egy több-bérlős alkalmazást. A támogatott fióktípus bármely szervezeti címtárban található fiókok. Ezután módosítsa a [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) tulajdonságot **2** értékre, a [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) tulajdonságot pedig az `AzureADandPersonalMicrosoftAccount` [alkalmazás jegyzékfájljában](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) a Azure Portal. További információ: 1,3. [lépés](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) a ASP.net Core oktatóanyagban. Ezt a lépést bármilyen nyelven általánosíthatja a Web Apps szolgáltatásban.
+> Létrehozhat egy olyan alkalmazást, amely a felhasználók személyes Microsoft-fiókjait (például Skype, Xbox vagy Outlook.com) is aláírja. Először hozzon létre egy több-bérlős alkalmazást. A támogatott fióktípus bármely szervezeti címtárban található fiókok. Ezután módosítsa a [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) tulajdonságot **2** értékre, a [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) tulajdonságot pedig az `AzureADandPersonalMicrosoftAccount` [alkalmazás jegyzékfájljában](./reference-app-manifest.md) a Azure Portal. További információ: 1,3. [lépés](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) a ASP.net Core oktatóanyagban. Ezt a lépést bármilyen nyelven általánosíthatja a Web Apps szolgáltatásban.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026730"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115033"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai
 
@@ -49,7 +49,7 @@ Hatálybalépés **dátuma**: május 5. (Befejezés 2020. június)
 
 2018. június 1-jén a Azure Government hivatalos Azure Active Directory (HRE) hatósága a verzióról a verzióra változott `https://login-us.microsoftonline.com` `https://login.microsoftonline.us` . Ez a változás a Microsoft 365 GCC High és a DoD szolgáltatásra is vonatkozik, amely Azure Government HRE is. Ha egy Egyesült államokbeli kormányzati bérlőn belül egy alkalmazás tulajdonosa, akkor frissítenie kell az alkalmazást, hogy aláírja a felhasználókat a `.us` végponton.  
 
-Május 5. után az Azure AD megkezdi a végpont változásának érvényesítését, és blokkolja a kormányzati felhasználókat a nyilvános végpont () használatával az USA kormányzati bérlői által üzemeltetett alkalmazásokba való bejelentkezéskor `microsoftonline.com` .  Az érintett alkalmazások megkezdik a hibát `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Ez a hiba azt jelzi, hogy az alkalmazás egy Egyesült államokbeli kormányzati felhasználót próbál bejelentkezni a nyilvános Felhőbeli végponton. Ha az alkalmazás egy nyilvános Felhőbeli bérlőn van, és az USA kormányzati felhasználóinak támogatására szolgál, [frissítenie kell az alkalmazást, hogy explicit módon támogassa őket](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Ehhez szükség lehet új alkalmazás-regisztráció létrehozására az USA kormányzati felhőben. 
+Május 5. után az Azure AD megkezdi a végpont változásának érvényesítését, és blokkolja a kormányzati felhasználókat a nyilvános végpont () használatával az USA kormányzati bérlői által üzemeltetett alkalmazásokba való bejelentkezéskor `microsoftonline.com` .  Az érintett alkalmazások megkezdik a hibát `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Ez a hiba azt jelzi, hogy az alkalmazás egy Egyesült államokbeli kormányzati felhasználót próbál bejelentkezni a nyilvános Felhőbeli végponton. Ha az alkalmazás egy nyilvános Felhőbeli bérlőn van, és az USA kormányzati felhasználóinak támogatására szolgál, [frissítenie kell az alkalmazást, hogy explicit módon támogassa őket](./authentication-national-cloud.md). Ehhez szükség lehet új alkalmazás-regisztráció létrehozására az USA kormányzati felhőben. 
 
 Ennek a változásnak a kényszerítése egy fokozatos bevezetéssel történik, attól függően, hogy az Egyesült államokbeli kormányzati Felhőbeli felhasználók milyen gyakran jelentkeznek be az USA kormányzati felhasználóinak az alkalmazásba való bejelentkezéshez. A kényszerítést arra várjuk, hogy az összes alkalmazásban az 2020-es verzióban befejeződjön. 
 
@@ -98,7 +98,7 @@ Hatálybalépés **dátuma**: szeptember 2., 2019
 
 Érintett **végpontok**: v 1.0 és v 2.0
 
-Érintett **protokoll**: bárhol a post használatban van ([ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [engedélyezési kód beváltása](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)és [frissítési jogkivonat beváltása](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+Érintett **protokoll**: bárhol a post használatban van ([ügyfél-hitelesítő adatok](./v2-oauth2-client-creds-grant-flow.md), [engedélyezési kód beváltása](./v2-oauth2-auth-code-flow.md), [ROPC](./v2-oauth-ropc.md), [OBO](./v2-oauth2-on-behalf-of-flow.md)és [frissítési jogkivonat beváltása](./v2-oauth2-auth-code-flow.md#refresh-the-access-token))
 
 A 9/2-as hét elindításával a POST metódust használó hitelesítési kérelmek szigorúbb HTTP-szabványokkal lesznek érvényesítve.  A szóközök és a kettős idézőjelek (") nem lesznek eltávolítva a kérelmek űrlapjának értékeiből. Ezeknek a változásoknak nem kell megszüntetniük a meglévő ügyfeleket, és biztosítaniuk kell, hogy az Azure AD-nek küldött kérelmeket minden alkalommal megbízhatóan kezelje a rendszer. A jövőben (lásd fent) Azt tervezzük, hogy az ismétlődő paramétereket is elutasítjuk, és figyelmen kívül hagyják az ANYAGJEGYZÉKet a kérések között.
 
@@ -113,9 +113,9 @@ Napjainkban a `?e=    "f"&g=h` értelmezése azonos módon történik `?e=f&g=h`
 
 **Hatálybalépés dátuma**: július 26., 2019
 
-Érintett **végpontok**: [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) és [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+Érintett **végpontok**: [v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) és [v 2.0](./v2-oauth2-client-creds-grant-flow.md)
 
-Érintett **protokoll**: [ügyfél-hitelesítő adatok (csak alkalmazásbeli tokenek)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+Érintett **protokoll**: [ügyfél-hitelesítő adatok (csak alkalmazásbeli tokenek)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 A biztonsági változások élőben július 26-án mentek át, és az alkalmazáshoz tartozó jogkivonatok (az ügyfél hitelesítő adatainak megadása révén) megváltoznak. Korábban az alkalmazások jogkivonatokat kérhetnek a más alkalmazások meghívására, függetlenül attól, hogy az adott alkalmazáshoz hozzájárultak-e a bérlő vagy a szerepkörök.  Ez a viselkedés úgy frissült, hogy az erőforrások (más néven webes API-k) egybérlős (alapértelmezett) legyenek, az ügyfélalkalmazás léteznie kell az erőforrás-bérlőn belül.  Vegye figyelembe, hogy az ügyfél és az API közötti meglévő hozzájárulás még nem szükséges, és az alkalmazásoknak továbbra is saját engedélyezési ellenőrzéseket kell végezniük annak biztosításához, hogy a `roles` jogcímek jelen legyenek, és tartalmazzák az API várt értékét.
 

@@ -11,22 +11,21 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9b84f2eace9ec268c6ff0942d19b47402e19bde
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80883890"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120728"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Engedélyek kiválasztása egy adott API-hoz 
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-- További információ arról, hogyan használják az ügyfélalkalmazások a [delegált és az alkalmazásokra vonatkozó engedélyeket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) az erőforrásokhoz való hozzáféréshez.
-- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) részletes ismertetését lásd:.
-- További részletekért tekintse meg, hogy az erőforrás-alkalmazások hogyan teszik elérhetővé a [hatóköröket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) és az [alkalmazási szerepköröket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek. 
+- További információ arról, hogyan használják az ügyfélalkalmazások a [delegált és az alkalmazásokra vonatkozó engedélyeket](./developer-glossary.md#permissions) az erőforrásokhoz való hozzáféréshez.
+- Az [ügyfélalkalmazások engedélyeire vonatkozó kérelmek konfigurálásának](./quickstart-register-app.md) részletes ismertetését lásd:.
+- További részletekért tekintse meg, hogy az erőforrás-alkalmazások hogyan teszik elérhetővé a [hatóköröket](./developer-glossary.md#scopes) és az [alkalmazási szerepköröket](./developer-glossary.md#roles) az ügyfélalkalmazások számára, amelyek a Azure Portal delegált és alkalmazási engedélyekkel rendelkeznek. 
 
 ## <a name="next-steps"></a>További lépések
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-

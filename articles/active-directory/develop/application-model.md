@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584310"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117481"
 ---
 # <a name="application-model"></a>Alkalmazásmodell
 
@@ -86,4 +86,4 @@ További információ az alkalmazás modelljéről:
 
 * Ismerje meg, [Hogyan és miért adja hozzá az alkalmazásokat az Azure ad](active-directory-how-applications-are-added.md) -hez, ha további információt szeretne a Microsoft Identity platform alkalmazás-és egyszerű szolgáltatásairól.
 * Az egybérlős alkalmazásokkal és a több-bérlős alkalmazásokkal kapcsolatos további információkért tekintse meg a [bérleti Azure Active Directory](single-and-multi-tenant-apps.md) .
-* A [Azure Active Directory B2C dokumentációjában](https://docs.microsoft.com/azure/active-directory-b2c) talál további információt arról, hogy az Azure ad hogyan is biztosít Azure Active Directory B2C, hogy a szervezetek a felhasználók, jellemzően ügyfelek, közösségi identitások, például Google-fiók használatával jelentkezzenek be.
+* A [Azure Active Directory B2C dokumentációjában](../../active-directory-b2c/index.yml) talál további információt arról, hogy az Azure ad hogyan is biztosít Azure Active Directory B2C, hogy a szervezetek a felhasználók, jellemzően ügyfelek, közösségi identitások, például Google-fiók használatával jelentkezzenek be.

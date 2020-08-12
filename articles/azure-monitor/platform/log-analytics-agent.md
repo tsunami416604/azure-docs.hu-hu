@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925787"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121527"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -70,7 +70,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. Az alábbi táblázat az egyes módszereket ismerteti, amelyekkel meghatározhatja, hogy melyik működik a legjobban a szervezetében.
 
-|Forrás | Módszer | Leírás|
+|Forrás | Metódus | Leírás|
 |-------|-------------|-------------|
 |Azure VM| [Manuálisan a Azure Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | A Log Analytics munkaterületről telepítendő virtuális gépek meghatározása. |
 | | Log Analytics virtuálisgép-bővítmény Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) az Azure CLI használatával vagy egy Azure Resource Manager sablonnal | A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Azure Monitor-munkaterületre regisztrálja őket. |
@@ -174,7 +174,7 @@ Annak érdekében, hogy az adatforgalom biztonsága Azure Monitor naplóba kerü
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>SHA-2 kód aláírásának támogatási követelménye Windows esetén
-A Windows-ügynök a 2020-as augusztus 17-én kizárólag az SHA-2 aláírást fogja használni. Ez a változás hatással lesz az ügyfelekre az Azure-szolgáltatások (Azure Monitor, Azure Automation, Azure Update Management, Azure Change Tracking, Azure Security Center, Azure Sentinel, Windows Defender ATP) részeként egy örökölt operációs rendszert használó Log Analytics ügynökkel. A módosítás nem követeli meg az ügyfelek beavatkozását, kivéve, ha az ügynököt örökölt operációsrendszer-verzióra (Windows 7, Windows Server 2008 R2 és Windows Server 2008) futtatja. Az örökölt operációsrendszer-verzión futó ügyfeleknek a következő műveleteket kell végrehajtaniuk a gépen, mielőtt augusztus 17-én, 2020-es vagy az ügynökük leállítja az adatok küldését az Log Analytics munkaterületekre:
+A Windows-ügynök kizárólag az SHA-2 aláírást fogja használni 2020 november 2-án. Ez a változás hatással lesz az ügyfelekre az Azure-szolgáltatások (Azure Monitor, Azure Automation, Azure Update Management, Azure Change Tracking, Azure Security Center, Azure Sentinel, Windows Defender ATP) részeként egy örökölt operációs rendszert használó Log Analytics ügynökkel. A módosítás nem követeli meg az ügyfelek beavatkozását, kivéve, ha az ügynököt örökölt operációsrendszer-verzióra (Windows 7, Windows Server 2008 R2 és Windows Server 2008) futtatja. A korábbi operációsrendszer-verziókban futó ügyfeleknek a következő műveleteket kell végrehajtaniuk a gépen, 2020 november 2. előtt, vagy az ügynökök nem fogják tudni elküldeni az adatokat a Log Analytics munkaterületekre:
 
 1. Telepítse az operációs rendszerének legújabb szervizcsomagját. A szervizcsomag szükséges verziói a következők:
     - Windows 7 SP1

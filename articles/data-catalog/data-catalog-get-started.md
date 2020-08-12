@@ -1,17 +1,17 @@
 ---
-title: Azure Data Catalog létrehozása
+title: 'Gyors útmutató: Azure Data Catalog létrehozása'
 description: Ez a rövid útmutató azt ismerteti, hogyan hozható létre Azure Data Catalog a Azure Portal használatával.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860987"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118790"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Azure Data Catalog létrehozása
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 A kezdéshez a következőkre lesz szüksége:
 
-* [Microsoft Azure](https://azure.microsoft.com/) előfizetés.
+* Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetéssel.
 * Saját [Azure Active Directory Bérlővel](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)kell rendelkeznie.
 
 Data Catalog beállításához az Azure-előfizetés tulajdonosának vagy tulajdonosának kell lennie.
@@ -41,7 +41,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 
     ![Azure Data Catalog létrehozás gomb](media/data-catalog-get-started/data-catalog-create.png)
 
-2. Adja meg a adatkatalógus **nevét** , a használni kívánt **előfizetést** , a katalógus **helyét** és az **árképzési szintet**. Ezután válassza a **Létrehozás**lehetőséget.
+2. Adja meg a adatkatalógus **nevét** , a használni kívánt **előfizetést** , a katalógus **helyét** és az **árképzési szintet**. Ezután válassza a **Létrehozás** elemet.
 
 3. Nyissa meg az [Azure Data Catalog kezdőlapját](http://azuredatacatalog.com), és kattintson az **Adatok közzététele** elemre.
 
