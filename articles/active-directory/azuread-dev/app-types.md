@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154950"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116444"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazások típusai a v 1.0-ban
 
@@ -41,7 +41,7 @@ Az Azure AD az alábbi öt elsődleges alkalmazási forgatókönyvet támogatja:
 Kövesse a hivatkozásokat, és ismerkedjen meg az egyes alkalmazási típusokkal, és ismerkedjen meg a magas szintű forgatókönyvekkel a kód használatának megkezdése előtt. Azt is megismerheti, hogy milyen különbségek szükségesek a 1.0-s vagy a v 2.0-s végponttal működő adott alkalmazás írásakor.
 
 > [!NOTE]
-> A v 2.0-végpont nem támogatja az összes Azure AD-forgatókönyvet és-funkciót. Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a 2.0-s [verzióra vonatkozó korlátozásokat](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+> A v 2.0-végpont nem támogatja az összes Azure AD-forgatókönyvet és-funkciót. Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a 2.0-s [verzióra vonatkozó korlátozásokat](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json).
 
 Az itt ismertetett alkalmazások és forgatókönyvek az egyes nyelveken és platformokon is kidolgozhatók. Mindegyiket a Code Samples útmutatóban elérhető, a kód mintái: [v 1.0 Code Samples by forgatókönyv](sample-v1-code.md) és a [v 2.0 Code Samples by forgatókönyv szerint](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)támogatja. A kód mintáit közvetlenül a megfelelő [GitHub-minta tárházból](https://github.com/Azure-Samples?q=active-directory)is letöltheti.
 

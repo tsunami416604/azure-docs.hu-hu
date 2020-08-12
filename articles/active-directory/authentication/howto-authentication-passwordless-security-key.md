@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550420"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116597"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ez a dokumentum a biztonsági kulcson alapuló jelszavas hitelesítés engedély
 ## <a name="requirements"></a>Követelmények
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md)
+- A [kombinált biztonsági információk regisztrációjának előzetes](concept-registration-mfa-sspr-combined.md) verziójának engedélyezése
 - Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
 - A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli * *
 

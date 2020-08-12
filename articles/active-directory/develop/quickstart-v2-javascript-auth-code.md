@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311942"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115186"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
 Ebben a rövid útmutatóban egy kódrészletet fog futtatni, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatának használatával. A kód minta azt is bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot a webes API meghívásához, ebben az esetben a Microsoft Graph API-t. Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
-Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folyamatával. A MSAL.js 1,0-et az implicit folyamattal használó gyors útmutató: gyors üzembe helyezés a [felhasználók között JavaScript egyoldalas alkalmazásokban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folyamatával. A MSAL.js 1,0-et az implicit folyamattal használó gyors útmutató: gyors üzembe helyezés a [felhasználók között JavaScript egyoldalas alkalmazásokban](./quickstart-v2-javascript.md).
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
@@ -152,7 +152,7 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here`a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). Az országos felhők Microsoft Graphával kapcsolatos további információkért lásd: [országos Felhőbeli üzembe helyezés](https://docs.microsoft.com/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here`a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). Az országos felhők Microsoft Graphával kapcsolatos további információkért lásd: [országos Felhőbeli üzembe helyezés](/graph/deployments).
 >
 > `graphMeEndpoint`Ha a `graphMailEndpoint` fő (globális) Microsoft Graph API-szolgáltatást használja, a *graphConfig.js* fájlban a következőhöz hasonló értéknek kell szerepelnie:
 >
@@ -202,4 +202,4 @@ npm install @azure/msal-browser
 Az ebben a rövid útmutatóban használt alkalmazás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag a bejelentkezéshez és az MS Graph meghívásához >](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
+> [Oktatóanyag a bejelentkezéshez és az MS Graph meghívásához >](./tutorial-v2-javascript-auth-code.md)

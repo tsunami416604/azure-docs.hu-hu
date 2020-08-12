@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82593165"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115645"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -154,9 +154,9 @@ Bizonyos forgatókönyvek, például az eszköz-AZONOSÍTÓhoz vagy az eszközö
 További információt a [webes API-kat meghívó Mobile App](scenario-mobile-overview.md)című témakörben talál.
 
 > [!NOTE]
-> MSAL. iOS, MSAL használó mobil alkalmazás. Az androidos vagy a Xamarin-alapú MSAL.NET az alkalmazásra vonatkozó védelmi szabályzatok is alkalmazhatók. Előfordulhat például, hogy a házirendek megakadályozhatják a felhasználó számára a védett szöveg másolását. A Mobile alkalmazást az Intune felügyeli, és az Intune felügyelt alkalmazásként ismeri fel. További információ: [Microsoft Intune app SDK – áttekintés](https://docs.microsoft.com/intune/app-sdk).
+> MSAL. iOS, MSAL használó mobil alkalmazás. Az androidos vagy a Xamarin-alapú MSAL.NET az alkalmazásra vonatkozó védelmi szabályzatok is alkalmazhatók. Előfordulhat például, hogy a házirendek megakadályozhatják a felhasználó számára a védett szöveg másolását. A Mobile alkalmazást az Intune felügyeli, és az Intune felügyelt alkalmazásként ismeri fel. További információ: [Microsoft Intune app SDK – áttekintés](/intune/app-sdk).
 >
-> Az [Intune app SDK](https://docs.microsoft.com/intune/app-sdk-get-started) elkülöníti a MSAL-kódtárakat, és saját maga kezeli az Azure ad-t.
+> Az [Intune app SDK](/intune/app-sdk-get-started) elkülöníti a MSAL-kódtárakat, és saját maga kezeli az Azure ad-t.
 
 ### <a name="protected-web-api"></a>Védett webes API
 
@@ -192,7 +192,7 @@ A jogkivonatok beszerzését érintő forgatókönyvek a OAuth 2,0 hitelesítés
 
 <table>
  <thead>
-  <tr><th>Eset</th> <th>Részletes forgatókönyv – útmutató</th> <th>OAuth 2,0 flow és Grant</th> <th>Célközönség</th></tr>
+  <tr><th>Forgatókönyv</th> <th>Részletes forgatókönyv – útmutató</th> <th>OAuth 2,0 flow és Grant</th> <th>Célközönség</th></tr>
  </thead>
  <tbody>
   <tr>
@@ -291,7 +291,7 @@ Az alkalmazások létrehozásához különböző nyelveket is használhat.
 
 A következő táblázat Windows oszlopában a .NET-keretrendszer minden alkalommal megemlíti a .NET-keretrendszert is. Az utóbbi elhagyja a tábla zsúfoltságának elkerülését.
 
-|Eset  | Windows | Linux | Mac | iOS | Android
+|Forgatókönyv  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [Egyoldalas alkalmazás](scenario-spa-overview.md) <br/>[![Egyoldalas alkalmazás](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [Felhasználót bejelentkeztető webalkalmazás](scenario-web-app-sign-user-overview.md) <br/>[![Webes alkalmazás, amely bejelentkezik a felhasználók számára](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
@@ -305,5 +305,5 @@ További információ: Microsoft által [támogatott könyvtárak operációs re
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [hitelesítés alapjairól](authentication-scenarios.md) és [a hozzáférési jogkivonatokról a Microsoft Identity platformon](access-tokens.md).
+* További információ a [hitelesítés alapjairól](./authentication-vs-authorization.md) és [a hozzáférési jogkivonatokról a Microsoft Identity platformon](access-tokens.md).
 * További információ a [IoT-alkalmazásokhoz való hozzáférés biztonságossá tételéről](/azure/architecture/example-scenario/iot-aad/iot-aad).

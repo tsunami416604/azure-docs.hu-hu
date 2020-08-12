@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7654de8bf26c3eaa3c93c8efcf99577fe88e6f24
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540342"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116320"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>A Azure Active Directory minősítésének beszerzése a AppSource
 
@@ -47,7 +47,7 @@ A több-bérlős alkalmazással kapcsolatos további információkért lásd: [H
 
 Az *egybérlős alkalmazások* olyan alkalmazások, amelyek csak egy meghatározott Azure ad-példány felhasználóitól fogadnak bejelentkezéseket. A külső felhasználók (beleértve a más szervezetektől származó munkahelyi vagy iskolai fiókokat, vagy a személyes fiókok) bejelentkezhetnek egy egybérlős alkalmazásba az egyes felhasználók vendég fiókként való hozzáadása után az Azure AD-példányhoz, amelyet az alkalmazás regisztrál. 
 
-A felhasználókat az Azure ad [B2B-együttműködésen](../b2b/what-is-b2b.md) keresztül is hozzáadhatja vendég fiókként az Azure ad-hez, és ezt [programozott](../../active-directory-b2c/code-samples.md)módon is elvégezheti. A B2B használatakor a felhasználók létrehozhatnak olyan önkiszolgáló portált, amelyhez nem szükséges meghívót bejelentkezni. További információ: [önkiszolgáló portál az Azure ad B2B Collaboration-regisztrációhoz](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+A felhasználókat az Azure ad [B2B-együttműködésen](../external-identities/what-is-b2b.md) keresztül is hozzáadhatja vendég fiókként az Azure ad-hez, és ezt [programozott](../../active-directory-b2c/code-samples.md)módon is elvégezheti. A B2B használatakor a felhasználók létrehozhatnak olyan önkiszolgáló portált, amelyhez nem szükséges meghívót bejelentkezni. További információ: [önkiszolgáló portál az Azure ad B2B Collaboration-regisztrációhoz](../external-identities/self-service-portal.md).
 
 Az egybérlős alkalmazások lehetővé teszik a *kapcsolatfelvételt* , de ha engedélyezni szeretné a AppSource által javasolt egyszeres vagy ingyenes próbaverziót, engedélyezze a többszörös kihelyezés használatát az alkalmazásban.
 
@@ -108,7 +108,7 @@ A AppSource-próbaverzióval kapcsolatos további információkért tekintse meg
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
+- Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](./v1-authentication-scenarios.md).
 - A SaaS-alkalmazás AppSource való listázásával kapcsolatos információkért lásd: AppSource- [partner adatai](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>Támogatás kérése

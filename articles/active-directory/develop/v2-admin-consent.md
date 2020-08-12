@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868667"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119606"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Rendszergazdai engedély a Microsoft Identity platformon
 
@@ -45,7 +45,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Paraméter     | Állapot     | Description                                                                               |
+| Paraméter     | Feltétel     | Leírás                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A GUID vagy a felhasználóbarát név formátumban adható meg, vagy `organizations` a példában látható módon általános hivatkozással. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlői azonosítót, ha lehetséges. |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
@@ -88,5 +88,5 @@ A sikeres válaszban látható paraméterekhez való hozzáadáskor a hiba param
 ## <a name="next-steps"></a>További lépések
 - Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
 - Ismerje meg [, hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll szintjén az engedélyezési kód engedélyezése során](v2-oauth2-auth-code-flow.md#request-an-authorization-code).
-- Ismerje meg, [Hogyan használhatják a több-bérlős alkalmazások a](active-directory-devhowto-multi-tenant-overview.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, ami fejlettebb többrétegű alkalmazási mintákat is támogat.
+- Ismerje meg, [Hogyan használhatják a több-bérlős alkalmazások a](./howto-convert-app-to-be-multi-tenant.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, ami fejlettebb többrétegű alkalmazási mintákat is támogat.
 - Az [Azure ad-alkalmazáshoz való beleegyezési tapasztalatok](application-consent-experience.md) ismertetése

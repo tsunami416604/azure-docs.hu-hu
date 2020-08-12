@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: b3e8c2c8a5e95cc5c862112410f5073a5e600651
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 7d008dc0f7ed90397ac07e12320d861b107f0f46
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986763"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120932"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>A modell verziószámozása a Text Analytics API
 
-A Text Analytics API 3. verziója lehetővé teszi, hogy kiválassza a modell azon verzióját, amelyet az adatain használni fog. A választható `model-version` paraméter használatával kiválaszthatja a modell verzióját az API-kérelmekben. Példa: `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`. Ha ez a paraméter nincs megadva, az API alapértelmezés szerint a legújabb stabil verziót fogja megadni. 
+A Text Analytics API 3. verziója lehetővé teszi, hogy kiválassza a modell azon verzióját, amelyet az adatain használni fog. A választható `model-version` paraméter használatával kiválaszthatja a modell verzióját az API-kérelmekben. Például: `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`. Ha ez a paraméter nincs megadva, az API alapértelmezés szerint a legújabb stabil verziót fogja megadni. 
 
 ## <a name="available-versions"></a>Elérhető verziók
 
@@ -44,9 +44,11 @@ Az [állapot](../how-tos/text-analytics-for-health.md) -tároló Text Analytics 
 
 | Végpont                        | Tároló képcímkéje                     | Modell verziója |
 |---------------------------------|-----------------------------------------|---------------|
-| `/domains/health`               | `1.1.012640001-amd64-preview`vagy legújabb | `2020-05-08`  |
+| `/domains/health`               | `1.1.013150001-amd64-preview`vagy legújabb | `2020-07-24`  |
+| `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-07-24`  |
 
 
 

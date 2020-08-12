@@ -1,5 +1,5 @@
 ---
-title: Kapcsolat a MySQL Workbench használatával – Azure Database for MariaDB
+title: 'Gyors útmutató: a MySQL Workbench összekapcsolásának Azure Database for MariaDB'
 description: Ez a rövid útmutató bemutatja, hogyan csatlakozhat az Azure Database for MariaDB-hez a MySQL Workbench használatával, és hogyan kérdezhet le adatokat.
 author: ajlam
 ms.author: andrela
@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "79529000"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121884"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Csatlakozás és adatlekérdezés a MySQL Workbench használatával
+# <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Gyors útmutató: Azure Database for MariaDB: a MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez
 
 Ez a rövid útmutató azt szemlélteti, hogyan lehet a MySQL Workbench használatával csatlakozni egy Azure Database for MariaDB-példányhoz. 
 
@@ -57,7 +57,7 @@ Csatlakozás az Azure Database for MariaDB-kiszolgálóhoz a MySQL Workbench has
    | Kapcsolati módszer | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
    | Gazdanév | *kiszolgáló neve* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgálónév értékét. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (\*.mariadb.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.  |
    | Port | **3306** | Az Azure Database for MariaDB-hez való csatlakozáskor mindig a 3306-os portot használja. |
-   | Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgáló-rendszergazdai bejelentkezési felhasználónevet. A példában szereplő Felhasználónév a **myadmin\@mydemoserver**. Ha nem emlékszik a kiszolgáló-rendszergazdai bejelentkezési névre, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat. A formátum a *username\@servername*.
+   | Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgáló-rendszergazdai bejelentkezési felhasználónevet. A példában szereplő Felhasználónév a **myadmin \@ mydemoserver**. Ha nem emlékszik a kiszolgáló-rendszergazdai bejelentkezési névre, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat. A formátum a *username \@ servername*.
    | Jelszó | *a jelszó* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
 
    ![Új kapcsolat beállítása](./media/connect-workbench/2-setup-new-connection.png)

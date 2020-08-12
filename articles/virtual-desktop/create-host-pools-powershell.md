@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali alkalmazáskészlet létrehozása P
 description: Hogyan hozhat létre egy gazdagépet a Windows rendszerű virtuális asztalon PowerShell-parancsmagokkal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3e4b326b5a78f4b14bdd87e842d8ca485f56831
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002603"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121153"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Windows rendszerű virtuális asztali címkészlet létrehozása a PowerShell-lel
 
@@ -116,6 +116,32 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md). Javasoljuk továbbá, hogy a virtuális gépeket ne rendeljen nyilvános IP-címekhez.
+
+## <a name="update-the-agent"></a>Az ügynök frissítése
+
+Ha a következő esetek valamelyike van, frissítenie kell az ügynököt:
+
+- Előzőleg regisztrált munkamenetet szeretne áttelepíteni egy új gazdagépre
+- Frissítés után a munkamenet-gazdagép nem jelenik meg a gazdagép-készletben
+
+Az ügynök frissítése:
+
+1. Jelentkezzen be rendszergazdaként a virtuális gépre.
+2. Lépjen a **szolgáltatások**elemre, majd állítsa le a **Rdagent** és **Távoli asztal ügynök** betöltési folyamatait.
+3. Ezután keresse meg az ügynököt és a rendszerbetöltő rendszercsomagok. Ezek a **C:\DeployAgent** mappában vagy a telepítéskor mentett helyükön találhatók.
+4. Keresse meg a következő fájlokat, és távolítsa el őket:
+     
+     - Microsoft. RDInfra. RDAgent. Installer-x64-verx. x. x
+     - Microsoft. RDInfra. RDAgentBootLoader. Installer-x64
+
+   A fájlok eltávolításához kattintson a jobb gombbal az egyes fájlokra, majd válassza az **Eltávolítás**lehetőséget.
+5. Igény szerint a következő beállításjegyzék-beállításokat is eltávolíthatja:
+     
+     - Számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
+     - Számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. Miután eltávolította ezeket az elemeket, az összes társítást el kell távolítania a régi gazdagép-készlettel. Ha szeretné újra regisztrálni a gazdagépet a szolgáltatásban, kövesse a [virtuális gépek regisztrálása a WIndows rendszerű virtuális asztali alkalmazáskészletbe](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)című témakör utasításait.
+
 
 ## <a name="next-steps"></a>További lépések
 

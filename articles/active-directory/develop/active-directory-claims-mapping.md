@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8923cb19c24b0e392026dc0f4b8f67c31956894a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902473"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115934"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -413,12 +413,12 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |
-| ExtractMailPrefix | Nincsenek |
+| ExtractMailPrefix | Nincs |
 | Csatlakozás | A csatlakoztatott utótagnak az erőforrás-bérlő ellenőrzött tartományának kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
 
-A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a Azure PowerShell parancsmaggal `new-azureadapplicationkeycredential` hozhat létre szimmetrikus kulcsú hitelesítő adatokat az alkalmazás objektumához. További információ erről a Azure PowerShell parancsmagról: [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a Azure PowerShell parancsmaggal `new-azureadapplicationkeycredential` hozhat létre szimmetrikus kulcsú hitelesítő adatokat az alkalmazás objektumához. További információ erről a Azure PowerShell parancsmagról: [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, a jogkivonat-aláíró kulcsokat az `appid={client_id}` [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell: 
 
@@ -530,7 +530,7 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - Ha szeretné megtudni, hogyan szabhatja testre az SAML-jogkivonatban kiállított jogcímeket a Azure Portalon keresztül, tekintse meg a következő témakört [: útmutató: az SAML-jogkivonatban kiállított](active-directory-saml-claims-customization.md)
 - További információ a bővítmény attribútumairól: a [jogcímek címtár-séma bővítmény attribútumainak használata](active-directory-schema-extensions.md).

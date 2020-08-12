@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81533989"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119437"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -40,7 +40,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy megfelel az előfeltételekne
 
 ### <a name="choose-the-appropriate-identities"></a>A megfelelő identitások kiválasztása
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/) alkalmazások használhatják az Azure ad Government-identitásokat és az Azure ad nyilvános identitásait a felhasználók hitelesítéséhez. Mivel ezen identitások bármelyikét felhasználhatja, el kell döntenie, hogy melyik szolgáltatói végpontot válassza ki a forgatókönyvhöz:
+[Azure Government](../../azure-government/index.yml) alkalmazások használhatják az Azure ad Government-identitásokat és az Azure ad nyilvános identitásait a felhasználók hitelesítéséhez. Mivel ezen identitások bármelyikét felhasználhatja, el kell döntenie, hogy melyik szolgáltatói végpontot válassza ki a forgatókönyvhöz:
 
 - Nyilvános Azure AD: gyakran használt, ha a szervezete már rendelkezik Azure AD nyilvános Bérlővel az Office 365 (Public vagy GCC) vagy más alkalmazás támogatásához.
 - Azure AD Government: gyakran használt, ha a szervezete már rendelkezik Azure AD Government-Bérlővel az Office 365 (GCC High vagy DoD) támogatásához, vagy egy új bérlőt hoz létre az Azure AD Governmentben.
@@ -49,7 +49,7 @@ Miután eldöntötte, hogy elvégezte az alkalmazás regisztrálását, külön 
 
 ### <a name="get-an-azure-government-subscription"></a>Azure Government előfizetés beszerzése
 
-Azure Government előfizetés beszerzéséhez tekintse meg az [előfizetésének kezelése és csatlakoztatása Azure Government-ban](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions)című témakört.
+Azure Government előfizetés beszerzéséhez tekintse meg az [előfizetésének kezelése és csatlakoztatása Azure Government-ban](../../azure-government/documentation-government-manage-subscriptions.md)című témakört.
 
 Ha nem rendelkezik Azure Government-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/global-infrastructure/government/request/) a Kezdés előtt.
 
@@ -79,7 +79,7 @@ MSAL.js alkalmazásának engedélyezése a szuverén felhők esetében:
 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 1. A **támogatott fiókok típusai**területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot** , és állítsa az értéket az alkalmazás URL-címére a webkiszolgáló alapján. A következő részekben megtudhatja, hogyan állíthatja be és kérheti le az átirányítási URL-címet a Visual Studióban és a csomópontban.
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
 1. Ez az oktatóanyag megköveteli az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)engedélyezését. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
@@ -127,14 +127,14 @@ Ebben a kódban:
     - Ha az alkalmazás támogatja a **szervezeti címtárban lévő fiókokat**, cserélje le ezt az értéket a BÉRLŐi azonosítóra vagy a bérlő nevére (például contoso.microsoft.com).
     - Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket a következőre: `organizations` .
 
-    Az összes országos felhőhöz tartozó hitelesítési végpontok megkereséséhez tekintse meg az [Azure ad-hitelesítési végpontokat](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    Az összes országos felhőhöz tartozó hitelesítési végpontok megkereséséhez tekintse meg az [Azure ad-hitelesítési végpontokat](./authentication-national-cloud.md#azure-ad-authentication-endpoints).
 
     > [!NOTE]
     > A személyes Microsoft-fiókok nem támogatottak az országos felhőkben.
 
 - `graphEndpoint`a Microsoft Cloud az Egyesült Államok kormányának Microsoft Graph végpontja.
 
-   Az összes országos felhők Microsoft Graph végpontjának megkereséséhez lásd: [Microsoft Graph végpontok az országos felhőkben](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   Az összes országos felhők Microsoft Graph végpontjának megkereséséhez lásd: [Microsoft Graph végpontok az országos felhőkben](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -150,7 +150,7 @@ A MSAL Python-alkalmazás szuverén felhőkhöz való engedélyezése:
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- A Microsoft Graph meghívásához egy adott gráf-végpont URL-címe szükséges, amely attól függ, hogy melyik felhőt használja. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- A Microsoft Graph meghívásához egy adott gráf-végpont URL-címe szükséges, amely attól függ, hogy melyik felhőt használja. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
     Íme egy példa egy gráf-végpontra, hatókörrel:
 
@@ -173,7 +173,7 @@ Példa a szolgáltatóra:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- A Microsoft Graph meghívásához egy adott gráf-végpont URL-címe szükséges, amely attól függ, hogy melyik felhőt használja. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- A Microsoft Graph meghívásához egy adott gráf-végpont URL-címe szükséges, amely attól függ, hogy melyik felhőt használja. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 Íme egy példa egy gráf-végpontra, hatókörrel:
 
@@ -225,6 +225,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 További információk:
 
 - [Hitelesítés az országos felhőkben](authentication-national-cloud.md)
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Germany](https://docs.microsoft.com/azure/germany/)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Germany](../../germany/index.yml)

@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554058"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115254"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -101,12 +101,12 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
-> 1. Ha az [Azure ad nemzeti felhőkhöz](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)hoz létre alkalmazást, cserélje le a sort a "Let kGraphEndpoint" és a "Let kAuthority" kifejezésre a megfelelő végpontokkal. Globális hozzáférés esetén használja az alapértelmezett értékeket:
+> 1. Ha az [Azure ad nemzeti felhőkhöz](/graph/deployments#app-registration-and-token-service-root-endpoints)hoz létre alkalmazást, cserélje le a sort a "Let kGraphEndpoint" és a "Let kAuthority" kifejezésre a megfelelő végpontokkal. Globális hozzáférés esetén használja az alapértelmezett értékeket:
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
-> 1. A többi végpontot [itt](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)dokumentálja. Ha például a gyors üzembe helyezést az Azure AD Germany használatával szeretné futtatni, használja a következőt:
+> 1. A többi végpontot [itt](/graph/deployments#app-registration-and-token-service-root-endpoints)dokumentálja. Ha például a gyors üzembe helyezést az Azure AD Germany használatával szeretné futtatni, használja a következőt:
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
@@ -173,7 +173,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Az elemek magyarázata: | Leírás |
+> |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `clientId` | A *portal.azure.com* webhelyen regisztrált alkalmazásból származó alkalmazásazonosító |
 > | `authority` | A Microsoft Identity platform végpontja. Ez a legtöbb esetben *https<span/>://login.microsoftonline.com/common* |
@@ -225,7 +225,7 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: token beszerzése interaktív módon
 
-Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való interakcióra van szükségük. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás engedélyeit. Példa:
+Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való interakcióra van szükségük. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás engedélyeit. Például:
 
 * Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
 * Ha a felhasználó alaphelyzetbe állítja a jelszavát, meg kell adnia a hitelesítő adataikat
@@ -237,7 +237,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Az elemek magyarázata:| Leírás |
+> |Ebben a példában:| Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 
@@ -257,7 +257,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Az elemek magyarázata: | Leírás |
+> |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a jogkivonat-kérelmekhez a `accountsFromDeviceForParameters:completionBlock:` és a megfelelő érték beadásával.`accountIdentifier` |
@@ -269,6 +269,6 @@ Próbálja ki az iOS és macOS rendszerhez készült oktatóanyagot, amely rész
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Ismerje meg, hogyan hozhatja létre az ebben a rövid útmutatóban használt alkalmazást
 
 > [!div class="nextstepaction"]
-> [Az iOS és a macOS Graph API oktatóanyagának meghívása](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [Az iOS és a macOS Graph API oktatóanyagának meghívása](./tutorial-v2-ios.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

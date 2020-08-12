@@ -3,18 +3,18 @@ title: 'Oktatóanyag: áruházbeli lokátor alkalmazás létrehozása Azure Maps
 description: Ismerje meg, hogyan hozhat létre tároló-lokátor webalkalmazásokat. A Azure Maps web SDK használatával létrehozhat egy weblapot, lekérdezheti a keresési szolgáltatást, és megjelenítheti az eredményeket egy térképen.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 08/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: e69385d174cfb2ea3aa37867d65e0ac9eb5eaff0
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080796"
+ms.locfileid: "88121255"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
@@ -31,25 +31,24 @@ Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásána
 
 <a id="Intro"></a>
 
-Ugorjon az [élő áruház kereső példájának](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) vagy [forráskódjának](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)a fölé. 
+Ugorjon az [élő áruház kereső példájának](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) vagy [forráskódjának](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)a fölé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+1. [Azure Maps-fiók létrehozása az S1 díjszabási szintjével](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
+
+A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Tervezés
 
 A kód beugrása előtt érdemes megkezdeni a kialakítást. Az áruház lokátora lehet olyan egyszerű vagy összetett, amennyire csak szeretné. Ebben az oktatóanyagban egy egyszerű tároló-lokátort hozunk létre. Néhány tippet is tartalmaz, amely segítséget nyújt bizonyos funkciók kibővítéséhez, ha úgy dönt, hogy a lehetőséget választja. A contoso Coffee nevű kitalált vállalathoz hozzunk létre egy áruházbeli lokátort. Az alábbi ábrán az oktatóanyagban felépített áruházi lokátor általános elrendezését láthatja:
 
-<center>
-
-![A contoso Coffee Shop helyeihez tartozó áruházi lokátor alkalmazás drótváza](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![A contoso Coffee Shop helyeihez tartozó áruházi lokátor alkalmazás drótváza](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)
 
 Az áruház kereső hasznosságának maximalizálása érdekében olyan rugalmas elrendezést is tartalmazunk, amely akkor módosítható, ha a felhasználó képernyő szélessége kisebb, mint 700 képpont. A rugalmas elrendezés megkönnyíti az áruházbeli lokátor használatát egy kis képernyőn, például egy mobileszközön. Íme egy kis képernyős elrendezés drótváza:  
 
-<center>
-
-![A contoso Coffee Store lokátor alkalmazásának drótváza mobileszközön](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![A contoso Coffee Store lokátor alkalmazásának drótváza mobileszközön](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</
 
 A drótváz egy meglehetősen egyszerű alkalmazást mutat be. Az alkalmazás tartalmaz egy keresőmezőt, a közeli áruházak listáját, valamint egy olyan térképet, amely tartalmaz jelölőket, például szimbólumokat. Emellett megjelenik egy előugró ablak, amely további információkat jelenít meg, amikor a felhasználó kiválaszt egy jelölőt. Részletesebben itt láthatók a következő oktatóanyagban az áruház-lokátorban felépített funkciók:
 
@@ -71,45 +70,36 @@ A drótváz egy meglehetősen egyszerű alkalmazást mutat be. Az alkalmazás ta
 
 Az áruházbeli lokátor alkalmazás fejlesztése előtt létre kell hoznia egy adatkészletet a térképen megjelenítendő áruházakból. Ebben az oktatóanyagban egy contoso Coffee nevű fiktív Coffee Shop adatkészletét használjuk. Az egyszerű tároló-lokátor adatkészlete egy Excel-munkafüzetben van kezelve. Az adatkészlet 10 213 contoso Coffee Coffee Shop-helyet tartalmaz kilenc ország/régió között: a Egyesült Államok, Kanadában, az Egyesült Királyságban, Franciaországban, Németországban, Olaszországban, Hollandiában, Dániában és Spanyolországban. Itt látható egy képernyőkép arról, hogy az adatnézet milyen módon néz ki:
 
-<center>
+![Képernyőfelvétel az áruházbeli lokátorról egy Excel-munkafüzetben](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)
 
-![Képernyőfelvétel az áruházbeli lokátorról egy Excel-munkafüzetben](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
-
-[Letöltheti az Excel-munkafüzetet](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
+[Letöltheti az Excel-munkafüzetet](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data).
 
 Az alábbi észrevételeket követve megtekintheti az adatképernyőképet:
-    
+
 * A helyadatok tárolása a **AddressLine**, a **város**, az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
 * A **szélesség** és **hosszúság** oszlop az egyes contoso Coffee Coffee Shop-helyek koordinátáit tartalmazza. Ha nem rendelkezik koordináta-információkkal, a Azure Maps keresési szolgáltatásaival meghatározhatja a hely koordinátáit.
 * Néhány további oszlop a kávézókkal kapcsolatos metaadatokat tartalmaz: egy telefonszámot, egy logikai oszlopot, valamint a nyitó és a záró időpontot 24 órás formátumban. A logikai oszlopok a Wi-Fi és a kerekesszékes hozzáférhetőség számára készültek. Létrehozhat saját oszlopokat is, amelyek a tartózkodási hely adataihoz kapcsolódó metaadatokat tartalmaznak.
 
-> [!Note]
-> Azure Maps megjeleníti az adatokat a gömb Mercator-kivetítés "EPSG: 3857" elemben, de a WGS84 datumt használó "EPSG: 4325" adatokat olvas be. 
+> [!NOTE]
+> Azure Maps megjeleníti az adatokat a gömb Mercator-kivetítés "EPSG: 3857" elemben, de a WGS84 datumt használó "EPSG: 4325" adatokat olvas be.
 
-Számos módon teheti elérhetővé az adatkészletet az alkalmazás számára. Az egyik módszer az, ha az adatbázist egy adatbázisba tölti be, és olyan webszolgáltatást tesz elérhetővé, amely lekérdezi az adatforrást Ezután elküldheti az eredményeket a felhasználó böngészőjébe. Ez a lehetőség nagy adathalmazok vagy gyakran frissített adatkészletek esetén ideális. Ez a lehetőség azonban nagyobb fejlesztési munkát igényel, és magasabb a díjszabása. 
+Számos módon teheti elérhetővé az adatkészletet az alkalmazás számára. Az egyik módszer az, ha az adatbázist egy adatbázisba tölti be, és olyan webszolgáltatást tesz elérhetővé, amely lekérdezi az adatforrást Ezután elküldheti az eredményeket a felhasználó böngészőjébe. Ez a lehetőség nagy adathalmazok vagy gyakran frissített adatkészletek esetén ideális. Ez a lehetőség azonban nagyobb fejlesztési munkát igényel, és magasabb a díjszabása.
 
 Egy másik módszer az adatkészlet átalakítása egy egyszerű szövegfájlba, amelyet a böngésző könnyen elemez. Maga a fájl a többi alkalmazással is üzemeltethető. Ez a lehetőség egyszerűen megtartja a dolgokat, de ez a lehetőség csak kisebb adatkészletek esetében hasznos, mert a felhasználó letölti az összes adatát. Ehhez az adatkészlethez az egyszerű szövegfájlt használjuk, mert az adatfájl mérete kisebb, mint 1 MB.  
 
-Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként**lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt*. 
+Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként**lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt*.
 
-<center>
-
-![Képernyőfelvétel a fájltípus párbeszédpanelről](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+![Képernyőfelvétel a fájltípus párbeszédpanelről](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
 Ha a Jegyzettömbben megnyitja a szövegfájlt, az a következő ábrához hasonlóan néz ki:
 
-<center>
-
-![Képernyőfelvétel egy tabulátorral tagolt adatkészletet megjelenítő Jegyzettömb-fájlról](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
-
+![Képernyőfelvétel egy tabulátorral tagolt adatkészletet megjelenítő Jegyzettömb-fájlról](./media/tutorial-create-store-locator/StoreDataTabFile.png)
 
 ## <a name="set-up-the-project"></a>A projekt beállítása
 
 A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index.html*, *index. css*és *index.js*. Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy *adatmappa nevű mappát* , és adja hozzá *ContosoCoffee.txt* a mappához. Hozzon létre egy másik mappát a *képek*nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
 
-<center>
-
-![Az egyszerű tároló-lokátor projekt mappájának képernyőképe](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![Az egyszerű tároló-lokátor projekt mappájának képernyőképe](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>A felhasználói felület létrehozása
 
@@ -922,23 +912,17 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
 
 Most már van egy teljesen működőképes tároló-lokátora. A böngészőben nyissa meg az *index.html* fájlt az áruház lokátora számára. Ha a fürtök megjelennek a térképen, a keresőmező használatával kereshet egy helyet a saját hely gomb kiválasztásával, egy fürt kiválasztásával, vagy a Térkép nagyításával az egyes helyek megjelenítéséhez.
 
-Amikor a felhasználó először kiválasztja a saját hely gombot, a böngésző egy biztonsági figyelmeztetést jelenít meg, amely engedélyt kér a felhasználó tartózkodási helyének elérésére. Ha a felhasználó beleegyezik, hogy megosztja a helyüket, a Térkép nagyítja a felhasználó helyét, és megjelenik a közeli kávézók. 
+Amikor a felhasználó először kiválasztja a saját hely gombot, a böngésző egy biztonsági figyelmeztetést jelenít meg, amely engedélyt kér a felhasználó tartózkodási helyének elérésére. Ha a felhasználó beleegyezik, hogy megosztja a helyüket, a Térkép nagyítja a felhasználó helyét, és megjelenik a közeli kávézók.
 
-<center>
-
-![Képernyőfelvétel a böngésző azon kérelméről, amely hozzáfér a felhasználó helyéhez](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![Képernyőfelvétel a böngésző azon kérelméről, amely hozzáfér a felhasználó helyéhez](./media/tutorial-create-store-locator/GeolocationApiWarning.png)
 
 Ha egy Coffee Shop-hellyel rendelkező területen közelíti meg a nagyítást, a fürtök különálló helyekre vannak osztva. Válassza ki az egyik ikont a térképen, vagy válasszon egy elemet az oldalsó panelen az előugró ablak megjelenítéséhez. Az előugró ablak a kiválasztott hely információit jeleníti meg.
 
-<center>
+![A befejezett tároló-lokátor képernyőképe](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)
 
-![A befejezett tároló-lokátor képernyőképe](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy egy mobileszközön nyitja meg az alkalmazást, az elrendezés úgy változik, hogy jobban megfeleljen a kisebb képernyőknek.
 
-Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy egy mobileszközön nyitja meg az alkalmazást, az elrendezés úgy változik, hogy jobban megfeleljen a kisebb képernyőknek. 
-
-<center>
-
-![Képernyőkép az áruházi lokátor kis képernyős verziójáról](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![Képernyőkép az áruházi lokátor kis képernyős verziójáról](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
 ## <a name="next-steps"></a>További lépések
 

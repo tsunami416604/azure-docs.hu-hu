@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali GYIK – Azure
 description: Gyakori kérdések és ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007488"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121119"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
@@ -47,8 +47,6 @@ Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkamenete
 Amikor egy felhasználó hozzá van rendelve egy alkalmazás-csoporthoz, a szolgáltatás egyszerű Azure-szerepkör-hozzárendelést végez. Ennek eredményeképpen a felhasználó Azure Active Directory (AD) és az alkalmazás csoportjának Azure AD-nek ugyanazon a helyen kell lennie. Az összes szolgáltatási objektumnak, például a gazdagép-készleteknek, az alkalmazás-csoportoknak és a munkaterületeknek is ugyanabban az Azure AD-ben kell lennie, mint a felhasználónak.
 
 A virtuális gépeket egy másik Azure AD-ben is létrehozhatja, ha a Active Directoryt a felhasználó Azure AD-vel szinkronizálja ugyanazon a virtuális hálózaton (VNET).
-
-Az Azure Lighthouse nem támogatja teljes mértékben a Windows rendszerű virtuális asztali környezet kezelését. Mivel a világítótorony jelenleg nem támogatja az Azure AD-bérlői felhasználók felügyeletét, a világítótorony ügyfeleinek továbbra is be kell jelentkezniük az Azure AD-be, amelyet az ügyfelek a felhasználók kezeléséhez használnak.
 
 ## <a name="what-are-location-restrictions"></a>Mik a helyek korlátozásai?
 
@@ -132,3 +130,11 @@ Ezek a tényezők befolyásolhatják a gazdagép-készletek méretezési korlát
 - Az egyes régiókban és előfizetésekben létrehozható magok száma korlátozott. Ha például Nagyvállalati Szerződés-előfizetéssel rendelkezik, 350 magot hozhat létre. A 350-et a virtuális gépek alapértelmezett számával vagy a saját alapvető korláttal kell elosztania, hogy meghatározza, hány virtuális gépet hozhat létre a sablon minden egyes futtatásakor. További információ: [Virtual Machines Limits-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager).
 
 - A virtuális gép előtagjának neve és a virtuális gépek száma kevesebb, mint 15 karakter. További információ: [Az Azure-erőforrások elnevezési szabályai és korlátozásai](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Kezelhetem a Windows rendszerű virtuális asztali környezeteket az Azure Lighthouse használatával?
+
+Az Azure Lighthouse nem támogatja teljes mértékben a Windows rendszerű virtuális asztali környezetek kezelését. Mivel a világítótorony jelenleg nem támogatja az Azure AD-bérlői felhasználók felügyeletét, a világítótorony ügyfeleinek továbbra is be kell jelentkezniük az Azure AD-be, amelyet az ügyfelek a felhasználók kezeléséhez használnak.
+
+A CSP-előfizetések nem használhatók a Windows rendszerű virtuális asztali szolgáltatással. További információ: [Integration sandbox Account](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+
+Végül, ha engedélyezte az erőforrás-szolgáltatót a CSP tulajdonosi fiókjából, a CSP-ügyfél fiókjai nem tudják módosítani az erőforrás-szolgáltatót.

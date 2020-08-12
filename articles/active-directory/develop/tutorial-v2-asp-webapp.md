@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058291"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118229"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -40,7 +40,7 @@ A létrehozott minta alkalmazás egy olyan forgatókönyvön alapul, ahol a bön
 
 Ez az útmutató a következő könyvtárakat használja:
 
-|Kódtár|Description|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára az OpenIdConnect hitelesítésre való használatát|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenetek cookie-k használatával történő fenntartását|
@@ -179,7 +179,7 @@ Ha új vezérlőt szeretne létrehozni a bejelentkezéshez és a kijelentkezési
 
 1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a **Add**  >  **vezérlő**hozzáadása elemet.
 2.  Válassza az **MVC (.NET version) Controller – Empty** (MVC (.NET verzió) vezérlő – Üres) elemet.
-3.  Válassza a **Hozzáadás** elemet.
+3.  Válassza a **Hozzáadás** lehetőséget.
 4.  Nevezze el **HomeController** , majd válassza a **Hozzáadás**lehetőséget.
 5.  OWIN-hivatkozások hozzáadása a osztályhoz:
 
@@ -264,14 +264,14 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezési gomb hozzá
     ```
 
 ### <a name="more-information"></a>További információ
- Ez a lap hozzáad egy SVG formátumú bejelentkezés gombot, fekete háttérrel:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [branding (védjegyezés) irányelvre](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Védjegyzési útmutató").
+ Ez a lap hozzáad egy SVG formátumú bejelentkezés gombot, fekete háttérrel:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [branding (védjegyezés) irányelvre](./howto-add-branding-in-azure-ad-apps.md "Védjegyzési útmutató").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Vezérlő hozzáadása a felhasználói jogcímek megjelenítéséhez
 Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]` attribútummal. Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a hozzáférést a vezérlőhöz. A következő kód az attribútum használatával jeleníti meg a bejelentkezés részeként beolvasott felhasználói jogcímeket:
 
 1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza **Add**a  >  **vezérlő**hozzáadása elemet.
 2.  Válassza az **MVC {version} Controller – Empty** (MVC {verzió} vezérlő – Üres) elemet.
-3.  Válassza a **Hozzáadás** elemet.
+3.  Válassza a **Hozzáadás** lehetőséget.
 4.  Adja neki a **ClaimsController** nevet.
 5.  Cserélje le a vezérlő osztály kódját a következő kódra. Ezzel hozzáadja az `[Authorize]` attribútumot a osztályhoz:
 
@@ -403,7 +403,7 @@ A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési 
 - Az alkalmazás fejlesztője olyan további engedélyeket ad hozzá, amelyekhez **rendszergazdai**jogosultság szükséges.
 - Vagy a bérlő konfigurálva van (a **vállalati alkalmazások – > felhasználói beállítások**), ahol a felhasználók nem engedélyezhetik az alkalmazások számára a vállalati adatok elérését a nevükben.
 
-További információkért tekintse meg [a Microsoft Identity platform végpontjának engedélyeit és](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)a hozzá tartozó hozzájárulásukat.
+További információkért tekintse meg [a Microsoft Identity platform végpontjának engedélyeit és](./v2-permissions-and-consent.md)a hozzá tartozó hozzájárulásukat.
 
 ### <a name="view-application-results"></a>Alkalmazás eredményeinek megtekintése
 
@@ -424,7 +424,7 @@ A vezérlő nézet megkeresése után a felhasználó alapszintű tulajdonságai
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül|
 |**Bérlőazonosító** |Guid | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID**|
 
-Emellett meg kell jelennie a hitelesítési kérelemben szereplő összes jogcím táblájának. További információ: [azonosító jogkivonatban található jogcímek listája](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Emellett meg kell jelennie a hitelesítési kérelemben szereplő összes jogcím táblájának. További információ: [azonosító jogkivonatban található jogcímek listája](./id-tokens.md).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Hozzáférés tesztelése egy engedélyező attribútummal rendelkező metódushoz (nem kötelező)
 
@@ -484,6 +484,6 @@ További információ a webes API-kat hívó Microsoft Identity platformmal rend
 Megtudhatja, hogyan hozhat létre Microsoft Graph hívó webalkalmazásokat:
 
 > [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET-oktatóanyag](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Microsoft Graph ASP.NET-oktatóanyag](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

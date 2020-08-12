@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108710"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122513"
 ---
 ### <a name="verify-that-a-container-is-running"></a>Annak ellenőrzése, hogy a tároló fut-e
 
@@ -29,12 +29,12 @@ ms.locfileid: "86108710"
 
 Több URL-címet is használhat annak ellenőrzéséhez, hogy a tároló fut-e.
 
-|Kérés|Szerep|
+|Kérés|Cél|
 |--|--|
-|`http://localhost:5000/`|A tároló egy kezdőlapot biztosít.|
+|`http://localhost:5000/`|A tároló egy kezdőlappal rendelkezik.|
 |`http://localhost:5000/ready`|A GET használatával a rendszer ellenőrzi, hogy a tároló készen áll-e a modellre irányuló lekérdezés elfogadására. Ez a kérelem az Kubernetes [és készültségi](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)tesztekhez használható.|
 |`http://localhost:5000/status`|A GET, a/Ready végponthoz hasonlóan a rendszer ellenőrzi, hogy a tároló fut-e, és nincs-e lekérdezés a modellen. Ez a kérelem az Kubernetes [és készültségi](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)tesztekhez használható.|
 |`http://localhost:5000/swagger`|Ezen az URL-címen a tároló teljes körű dokumentációt biztosít a végpontokhoz és a `Try it now` szolgáltatásokhoz. Ezzel a funkcióval megadhatja a beállításokat egy webalapú HTML-űrlapon, és anélkül teheti meg a lekérdezést, hogy kódot kellene írnia. A lekérdezés visszaadása után egy példa CURL-parancs van megadva a szükséges HTTP-fejlécek és-szövegtörzs bemutatásához. |
 |`http://localhost:5000/demo`| Böngészőn keresztül igényelt, ez a funkció interaktív vizualizációt biztosít a bemeneti szöveges minták vagy egy Ön által megadott lekérdezések eredményeiről.  |
 
-A kérelem URL-címének használata – `http://localhost:5000/text/analytics/v3.0-preview.1/domains/health` egy lekérdezés küldése a tárolónak.
+A kérelem URL-címének használata – `http://localhost:5000/text/analytics/v3.2-preview.1/entities/health` egy lekérdezés küldése a tárolónak.

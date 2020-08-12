@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b43029f9c955b69e91ea3a65c2b62391ec1da5b4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478858"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114625"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt a WebAPI-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)
 
@@ -31,7 +31,7 @@ További információ a csatlakoztatott szolgáltatás használatáról: [első 
 
 Hatással van a (*. NET-referenciák) projektfájl és a `packages.config` (NuGet-hivatkozások) fájlra.
 
-| Típus | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | Microsoft. Owin |
 | NET NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -44,7 +44,7 @@ Hatással van a (*. NET-referenciák) projektfájl és a `packages.config` (NuGe
 
 További hivatkozások ha a címtár- **adatok olvasása** lehetőséget választotta:
 
-| Típus | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (csak Visual Studio 2015) |
@@ -58,7 +58,7 @@ További hivatkozások ha a címtár- **adatok olvasása** lehetőséget válasz
 
 A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio 2015-as verziójában):
 
-| Típus | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | Microsoft. AspNet. Identity. Core |
 | NET NuGet | Microsoft. AspNet. Identity. EntityFramework |
@@ -127,5 +127,5 @@ A csatlakoztatott szolgáltatás hozzáadásakor a Visual Studio 2015 biztonság
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
+- [Hitelesítési forgatókönyvek Azure Active Directory](./authentication-vs-authorization.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

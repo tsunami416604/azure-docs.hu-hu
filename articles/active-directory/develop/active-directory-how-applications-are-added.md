@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884273"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115764"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
 
@@ -74,7 +74,7 @@ Az Application Objects szolgáltatáshoz hasonlóan az egyszerű szolgáltatáso
   * Amikor előfizet az Office 365-re, vagy megkezdi a próbaverziót, egy vagy több egyszerű szolgáltatásnév jön létre a címtárban, amely az Office 365-hoz kapcsolódó összes funkció kiszolgálásához használt különböző szolgáltatásokat jelképezi.
   * Néhány Office 365-szolgáltatás, például a SharePoint, az egyszerű szolgáltatás létrehozása, amely lehetővé teszi az összetevők közötti biztonságos kommunikációt, beleértve a munkafolyamatokat is.
 * Amikor egy rendszergazda felvesz egy alkalmazást az alkalmazás-gyűjteményből (ez egy mögöttes alkalmazás-objektumot is létrehoz)
-* Alkalmazás hozzáadása az [Azure ad Application proxy](/azure/active-directory/manage-apps/application-proxy) használatához
+* Alkalmazás hozzáadása az [Azure ad Application proxy](../manage-apps/application-proxy.md) használatához
 * Alkalmazás összekapcsolása egyszeri bejelentkezéshez SAML vagy jelszó egyszeri bejelentkezés (SSO) használatával
 * Programozott módon a Microsoft Graph API vagy a PowerShell használatával
 
@@ -104,8 +104,8 @@ A saját maga által hozzáadott alkalmazások (amelyek a diagramon az **alkalma
   * Jogcím-átalakítási szabályok
   * Attribútum-hozzárendelések (felhasználói kiépítés)
 * Az egyszerű szolgáltatással és az alkalmazás-objektumokkal kapcsolatos részletes információkért tekintse meg a Microsoft Graph API-dokumentációt:
-  * [Alkalmazás](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Egyszerű szolgáltatásnév](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Alkalmazás](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Egyszerű szolgáltatásnév](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Az alkalmazások hogyan integrálhatók az Azure AD-vel?
 

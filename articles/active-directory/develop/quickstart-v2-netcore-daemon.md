@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: f2be5a4ffb239b445381b5e7c84de15c0bcea371
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b060b1b36edf0bf92f7aac9687b1e833c79a4062
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553919"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120490"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan írhat olyan .NET Core-alkalmazást, amely hozzáférési tokent tud beolvasni az alkalmazás saját identitásával, majd meghívja a Microsoft Graph API-t a címtárban lévő [felhasználók listájának](https://docs.microsoft.com/graph/api/user-list) megjelenítéséhez. Ez a forgatókönyv olyan helyzetekben hasznos, amikor a fej, felügyelet nélküli feladatot vagy egy Windows-szolgáltatást alkalmazás-identitással kell futtatni a felhasználó identitása helyett. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
+Ebből a rövid útmutatóból megtudhatja, hogyan írhat olyan .NET Core-alkalmazást, amely hozzáférési tokent tud beolvasni az alkalmazás saját identitásával, majd meghívja a Microsoft Graph API-t a címtárban lévő [felhasználók listájának](/graph/api/user-list) megjelenítéséhez. Ez a forgatókönyv olyan helyzetekben hasznos, amikor a fej, felügyelet nélküli feladatot vagy egy Windows-szolgáltatást alkalmazás-identitással kell futtatni a felhasználó identitása helyett. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -95,7 +95,7 @@ Ehhez a rövid útmutatóhoz a [.net Core 2,2](https://www.microsoft.com/net/dow
 >    "ClientId": "Enter_the_Application_Id_Here",
 >    "ClientSecret": "Enter_the_Client_Secret_Here"
 >    ```
->   Az elemek magyarázata:
+>   Ebben a példában:
 >   - `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 >   - `Enter_the_Tenant_Id_Here`– cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
 >   - `Enter_the_Client_Secret_Here`– cserélje le ezt az értéket az 1. lépésben létrehozott ügyfél-titkos kulcsra.
@@ -131,7 +131,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Az elemek magyarázata:
+>> Ebben a példában:
 >> * `Enter_the_Tenant_Id_Here`– cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
 >> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 
@@ -151,7 +151,7 @@ cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
-> Az elemek magyarázata:
+> Ebben a példában:
 > * *{ProjectFolder}* az a mappa, ahová kibontotta a zip-fájlt. Példa **C:\Azure-Samples\active-Directory-dotnetcore-Daemon-v2**
 
 Ennek eredményeképpen meg kell jelennie az Azure AD-címtárban található felhasználók listájának.
@@ -198,13 +198,13 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Az elemek magyarázata: | Leírás |
+> | Ebben a példában: | Leírás |
 > |---------|---------|
 > | `config.ClientSecret` | Az Azure Portalon az alkalmazáshoz létrehozott ügyfél-titkos kulcs. |
 > | `config.ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 > | `config.Authority`    | Választható A hitelesítéshez a felhasználó STS-végpontja. A nyilvános felhő esetében általában a (z) <https://login.microsoftonline.com/{tenant}> {bérlő} a bérlő vagy a bérlői azonosító neve.|
 
-További információkért tekintse [meg `ConfidentialClientApplication` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) a következő dokumentációt:
+További információkért tekintse [meg `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) a következő dokumentációt:
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
@@ -215,11 +215,11 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata:| Leírás |
+> |Ebben a példában:| Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében a hasonló formátumot kell használnia, hogy `{Application ID URI}/.default` jelezze, hogy a kért hatókörök az Azure Portalon beállított app Object (Microsoft Graph, `{Application ID URI}` pont –) számára statikusan meghatározottak `https://graph.microsoft.com` . Az egyéni webes API- `{Application ID URI}` k esetében az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
 
-További információkért tekintse [meg `AcquireTokenForClient` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) a következő dokumentációt:
+További információkért tekintse [meg `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) a következő dokumentációt:
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

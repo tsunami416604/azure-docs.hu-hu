@@ -1,20 +1,15 @@
 ---
 title: Hibrid gépek összekötése az Azure-ba a Azure Portal
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakozhat a gépekhez az Azure-ba az Azure arc for Servers (előzetes verzió) használatával a Azure Portal.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007999"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120983"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -24,7 +19,7 @@ Ehhez a módszerhez rendszergazdai jogosultságokkal kell rendelkeznie a gépen 
 
 Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>A telepítési parancsfájl létrehozása a Azure Portal
 

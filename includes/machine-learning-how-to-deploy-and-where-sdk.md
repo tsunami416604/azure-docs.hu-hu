@@ -6,14 +6,14 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 624824f5b6b8f7154ccd7b50da49f3f4bb179bb9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 97f0412141f15ad0a72c02b92cfcf089b61db0cf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542784"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120344"
 ---
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](../articles/machine-learning/how-to-manage-workspace.md).
 - Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
@@ -100,12 +100,11 @@ További információkért tekintse meg a [modell osztály](https://docs.microso
 
 A Azure Machine Learningon kívül betanított modellek használatáról a következő témakörben talál további információt: [meglévő modell üzembe helyezése](../articles/machine-learning/how-to-deploy-existing-model.md).
 
-
 ## <a name="define-an-entry-script"></a>Bejegyzési parancsfájl definiálása
 
 [!INCLUDE [write entry script](machine-learning-entry-script.md)]
 
-## <a name="define-an-inference-configuration"></a>Következtetési konfiguráció definiálása
+## <a name="define-an-inferenceconfig"></a>InferenceConfig definiálása
 
 A következtetések konfigurálásával megtudhatja, hogyan állíthatja be a modellt tartalmazó webes szolgáltatást. Ezt később, a modell telepítésekor használják.
 
@@ -162,12 +161,9 @@ További információ a konfigurációval kapcsolatban: [InferenceConfig](https:
 
 ## <a name="choose-a-compute-target"></a>Számítási cél kiválasztása
 
-
 [!INCLUDE [aml-compute-target-deploy](aml-compute-target-deploy.md)]
 
-
-
-## <a name="define-a-deployment-configuration"></a>Telepítési konfiguráció definiálása
+## <a name="define-a-deploymentconfiguration"></a>DeploymentConfiguration definiálása
 
 A modell üzembe helyezése előtt meg kell határoznia a telepítési konfigurációt. *A központi telepítési konfiguráció a webszolgáltatást futtató számítási célra vonatkozik.* Ha például helyileg helyez üzembe egy modellt, meg kell adnia azt a portot, ahol a szolgáltatás fogadja a kérelmeket. A telepítési konfiguráció nem része a belépési parancsfájlnak. A rendszer a modell és a beléptetési parancsfájlt futtató számítási cél jellemzőinek meghatározására szolgál.
 
@@ -187,7 +183,6 @@ A helyi, Azure Container Instances és AK webszolgáltatásokhoz tartozó osztá
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-
 ## <a name="deploy-your-model"></a>A modell üzembe helyezése
 
 Most már készen áll a modell üzembe helyezésére. Az alábbi példa egy helyi telepítést mutat be. A szintaxis az előző lépésben kiválasztott számítási céltól függően változhat.
@@ -203,11 +198,9 @@ print(service.state)
 
 További információkért tekintse meg a [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)és a [webszolgáltatások](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)dokumentációját.
 
-
 ## <a name="delete-resources"></a>Erőforrások törlése
 
 Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 Regisztrált modell törléséhez használja a következőt: `model.delete()` .
 
 További információ: a [webszolgáltatások dokumentációja. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) és [Model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
-

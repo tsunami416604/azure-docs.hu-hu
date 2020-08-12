@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563312"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120966"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Védett webes API: hatókörök és alkalmazás-szerepkörök ellenőrzése
 
@@ -88,7 +88,7 @@ A `VerifyUserHasAnyAcceptedScope` metódus a következő lépésekhez hasonló:
 
 #### <a name="verify-the-scopes-more-globally"></a>A hatókörök ellenőrzése globálisan
 
-Az ajánlott módszer a webes API részletes hatókörének meghatározása és a hatókörök ellenőrzése az egyes vezérlő műveletekben. A hatóköröket azonban az alkalmazás vagy a vezérlő szintjén is ellenőrizheti ASP.NET Core használatával. Részletekért lásd: [jogcím-alapú hitelesítés](https://docs.microsoft.com/aspnet/core/security/authorization/claims) a ASP.net Core dokumentációjában.
+Az ajánlott módszer a webes API részletes hatókörének meghatározása és a hatókörök ellenőrzése az egyes vezérlő műveletekben. A hatóköröket azonban az alkalmazás vagy a vezérlő szintjén is ellenőrizheti ASP.NET Core használatával. Részletekért lásd: [jogcím-alapú hitelesítés](/aspnet/core/security/authorization/claims) a ASP.net Core dokumentációjában.
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,7 +96,7 @@ A ASP.NET esetében csak cserélje le a `HttpContext.User` `ClaimsPrincipal.Curr
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>Az alkalmazás szerepköreinek ellenőrzése Daemon-alkalmazások által hívott API-kon
 
-Ha a webes API-t egy [Daemon-alkalmazás](scenario-daemon-overview.md)hívja meg, akkor az alkalmazásnak a webes API-hoz szükséges alkalmazási engedéllyel kell rendelkeznie. Ahogy az az [alkalmazás engedélyeinek](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)kifejtése című ábrán látható, az API elérhetővé teszi az ilyen engedélyeket. Az egyik példa az `access_as_application` alkalmazás szerepkör.
+Ha a webes API-t egy [Daemon-alkalmazás](scenario-daemon-overview.md)hívja meg, akkor az alkalmazásnak a webes API-hoz szükséges alkalmazási engedéllyel kell rendelkeznie. Ahogy az az [alkalmazás engedélyeinek](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles)kifejtése című ábrán látható, az API elérhetővé teszi az ilyen engedélyeket. Az egyik példa az `access_as_application` alkalmazás szerepkör.
 
 Most az API-nak ellenőriznie kell, hogy a kapott jogkivonat tartalmazza-e a `roles` jogcímet, és hogy a jogcím a várt értékkel rendelkezik-e. Az ellenőrző kód hasonló a delegált engedélyeket ellenőrző kódhoz, kivéve, hogy a vezérlő műveleti teszteket végez a hatókörök helyett a szerepkörökhöz:
 
@@ -150,7 +150,7 @@ bool isAppOnlyToken = oid == sub;
 
 Az inverz feltétel ellenőrzése lehetővé teszi, hogy csak azok az alkalmazások jelentkezzenek be az API-ra, amelyek bejelentkeznek a felhasználókba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Átállás éles üzemre](scenario-protected-web-api-production.md)

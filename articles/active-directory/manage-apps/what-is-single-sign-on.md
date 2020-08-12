@@ -11,13 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5446d945a81d2630d788a866bda00eb118382b93
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 6f3c6351a7bcd87ae25dfae53cb17f634bbef146
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053779"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121510"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
@@ -31,6 +30,14 @@ Ha Ön rendszergazda vagy informatikai szakember, olvassa el a következőt: Tov
 Az egyszeri bejelentkezés lehetővé teszi, hogy a felhasználók hogyan jelentkeznek be és használják az alkalmazásokat. Az egyszeri bejelentkezési alapú hitelesítési rendszereket gyakran "modern hitelesítésnek" nevezzük. Ha szeretné megtudni, hogy mi teszi lehetővé az egyszeri bejelentkezést, tekintse meg ezt a videót.
 > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
 
+## <a name="understanding-where-an-app-is-hosted"></a>Az alkalmazás üzemeltetésének megismerése
+Az alkalmazások egyszeri bejelentkezésének megvalósítása sok mindent megtesz az alkalmazás üzemeltetésének helyétől. Üzemeltetési ügyek, mert a hálózati forgalom át van irányítva az alkalmazás eléréséhez. Ha egy alkalmazás a helyi hálózaton keresztül érhető el, és egy helyszíni alkalmazásnak nevezi el, akkor nincs szükség arra, hogy a felhasználók hozzáférhessenek az internethez az alkalmazás használatához. Ha az alkalmazás a felhőben üzemeltetett alkalmazásban fut, akkor a felhasználóknak az alkalmazás használatához el kell érniük az internetet.
+
+> [!TIP]
+> A Cloud Apps szolgáltatást szolgáltatásként szolgáló (SaaS) alkalmazásoknak is nevezik. 
+
+> [!TIP]
+> A felhő és az Internet kifejezések gyakran használhatók felcserélhetővé. Ennek oka a hálózati diagramok használata. Gyakori, hogy egy diagramon a Felhőbeli alakzattal rendelkező nagyméretű számítógép-hálózatokat jelöli, mert nem lehetséges az összes összetevő rajzolása. Az Internet a legismertebb hálózat, így könnyen használhatók a feltételek. A számítógépek hálózata azonban megalkotható egy felhőben is.
 
 ## <a name="choosing-a-single-sign-on-method"></a>Egyszeri bejelentkezés módszerének kiválasztása
 
@@ -55,7 +62,7 @@ Az alábbi táblázat összefoglalja az egyszeri bejelentkezés módszereit, és
 | [SAML](#saml-sso) | Felhőbeli és helyszíni | Válassza ki az SAML-t, amikor lehetséges olyan meglévő alkalmazások esetében, amelyek nem használnak OpenID connectet vagy OAuth. Az SAML olyan alkalmazások esetében működik, amelyek az egyik SAML protokoll használatával végzik a hitelesítést.|
 | [Jelszó-alapú](#password-based-sso) | Felhőbeli és helyszíni | Válassza a jelszó-alapú lehetőséget, ha az alkalmazás hitelesíti magát a felhasználónévvel és a jelszóval. A jelszó-alapú egyszeri bejelentkezés lehetővé teszi a biztonságos alkalmazások jelszavainak tárolását és a visszajátszás használatát webböngészős bővítmény vagy mobil alkalmazás használatával. Ez a módszer az alkalmazás által biztosított meglévő bejelentkezési folyamatot használja, de lehetővé teszi a rendszergazdák számára a jelszavak kezelését. |
 | [Csatolt](#linked-sign-on) | Felhőbeli és helyszíni | Válassza a csatolt bejelentkezés lehetőséget, ha az alkalmazás az egyszeri bejelentkezéshez van konfigurálva egy másik identitás-szolgáltatói szolgáltatásban. Ez a beállítás nem ad hozzá egyszeri bejelentkezést az alkalmazáshoz. Előfordulhat azonban, hogy az alkalmazás már rendelkezik egy másik szolgáltatás, például Active Directory összevonási szolgáltatások (AD FS) használatával történő egyszeri bejelentkezéssel.|
-| [Letiltva](#disabled-sso) | Felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
+| [Disabled](#disabled-sso) | Felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
 | [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | Az [integrált Windows-hitelesítést (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)vagy jogcímbarát alkalmazásokat használó alkalmazások esetében válassza az IWA egyszeri bejelentkezés lehetőséget. A IWA esetében az alkalmazásproxy-összekötők a Kerberos által korlátozott delegálás (KCD) használatával hitelesítik a felhasználókat az alkalmazásban. |
 | [Fejléc-alapú](#header-based-sso) | csak helyszíni | A fejléc-alapú egyszeri bejelentkezést akkor használja, ha az alkalmazás fejléceket használ a hitelesítéshez. A fejléc-alapú egyszeri bejelentkezéshez az Azure AD PingAccess van szükség. Az alkalmazásproxy az Azure AD használatával hitelesíti a felhasználót, majd az összekötő szolgáltatáson keresztül továbbítja a forgalmat.  |
 

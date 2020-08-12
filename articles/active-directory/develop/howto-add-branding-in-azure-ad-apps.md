@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478195"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117294"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -61,7 +61,7 @@ Az alkalmazása eltérően működhet regisztráció és bejelentkezés esetén.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Vizuális útmutató az alkalmazásbeszerzéshez
 
-Az „Alkalmazás beszerzése” hivatkozás átirányítja a felhasználót az Azure AD hozzáférési megadása (engedélyezés) oldalra, hogy a szervezet rendszergazdája engedélyezhesse, hogy az alkalmazás hozzáférhessen a szervezet Microsoft által szolgáltatott adataihoz. További részletek a hozzáférés kéréséről az [Alkalmazások integrálása az Azure Active Directoryval](quickstart-v1-integrate-apps-with-azure-ad.md) cikkben találhatók.
+Az „Alkalmazás beszerzése” hivatkozás átirányítja a felhasználót az Azure AD hozzáférési megadása (engedélyezés) oldalra, hogy a szervezet rendszergazdája engedélyezhesse, hogy az alkalmazás hozzáférhessen a szervezet Microsoft által szolgáltatott adataihoz. További részletek a hozzáférés kéréséről az [Alkalmazások integrálása az Azure Active Directoryval](./quickstart-register-app.md) cikkben találhatók.
 
 Miután a rendszergazdák beleegyeznek az alkalmazásba, választhatják, hogy hozzáadják a felhasználók Office 365 app Launcher-felületéhez (elérhető a Waffle és a verzióból [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
 

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e758c69f91fb60a83dfcc119b2c7f7aba44384ca
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e210c19f40ed77bd7c1bc1dcfc2f2787e3ea2087
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054661"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120286"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
@@ -37,7 +37,7 @@ Ez a cikk a .NET-hez készült Microsoft Authentication Library (MSAL.NET) és a
 
 A legtöbb esetben a MSAL.NET és a Microsoft Identity platform végpontját kívánja használni, amely a Microsoft hitelesítési kódtárainak legújabb generációja. Az MSAL.NET használatával az Azure AD-vel (munkahelyi és iskolai fiókokkal), a Microsoft-fiókokkal (MSA) és a Azure AD B2Cekkel bejelentkezett felhasználók jogkivonatait is beszerezheti az alkalmazásba.
 
-Ha már ismeri az Azure AD for Developers (v 1.0) végpontot (és a ADAL.NET), érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](active-directory-v2-compare.md).
+Ha már ismeri az Azure AD for Developers (v 1.0) végpontot (és a ADAL.NET), érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Azonban továbbra is szükség van a ADAL.NET használatára, ha az alkalmazásnak a [Active Directory összevonási szolgáltatások (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)korábbi verzióival kell bejelentkeznie a felhasználókba. További információ: ADFS- [támogatás](https://aka.ms/msal-net-adfs-support).
 
@@ -161,7 +161,7 @@ További információ a 1.0-s és a v 2.0-tokenekről: [Azure Active Directory h
 
 ## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 
-A OAuth2 engedélyek olyan jogosultsági hatókörök, amelyeket egy v 1.0 web API-(erőforrás-) alkalmazás tesz elérhetővé az ügyfélalkalmazások számára. A jogosultsági hatókörök az ügyfélalkalmazások számára is megadhatók a hozzájárulás során. Tekintse meg a [Azure Active Directory Application manifest](active-directory-application-manifest.md)oauth2Permissions című szakaszát.
+A OAuth2 engedélyek olyan jogosultsági hatókörök, amelyeket egy v 1.0 web API-(erőforrás-) alkalmazás tesz elérhetővé az ügyfélalkalmazások számára. A jogosultsági hatókörök az ügyfélalkalmazások számára is megadhatók a hozzájárulás során. Tekintse meg a [Azure Active Directory Application manifest](./reference-app-manifest.md)oauth2Permissions című szakaszát.
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>A v 1.0 alkalmazás adott OAuth2 engedélyeihez való hozzáférést kérő hatókörök
 

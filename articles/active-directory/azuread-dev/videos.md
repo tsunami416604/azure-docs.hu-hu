@@ -13,12 +13,12 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
-ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7865fbe758b35ae9ff1ffe526da5e7100e83c966
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77202059"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117549"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory fejlesztői platform – videók
 
@@ -73,4 +73,4 @@ Ismerje meg az új Microsoft Identity platformot, és hogyan telepítheti át az
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az új [Microsoft Identity platformról](https://docs.microsoft.com/azure/active-directory/develop)
+További információ az új [Microsoft Identity platformról](../develop/index.yml)

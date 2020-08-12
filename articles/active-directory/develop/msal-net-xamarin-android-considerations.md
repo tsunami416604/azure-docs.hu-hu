@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d244bbbe96bcea45da5c0860e4af52409123fb7f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652672"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118688"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>A Xamarin Android és a MSAL.NET használatának szempontjai
 Ez a cikk azt ismerteti, hogy milyen szempontokat kell figyelembe vennie, amikor a Xamarin Androidot használja a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
@@ -56,7 +56,7 @@ var pca = PublicClientApplicationBuilder
 ## <a name="ensure-that-control-returns-to-msal"></a>Győződjön meg arról, hogy a vezérlő visszaadja a MSAL 
 Ha a hitelesítési folyamat interaktív része lejár, győződjön meg arról, hogy a vezérlő visszakerül a MSAL. Az Android rendszeren írja felül a `OnActivityResult` metódust `Activity` . Ezután hívja meg a `SetAuthenticationContinuationEventArgs` `AuthenticationContinuationHelper` MSAL osztály metódusát. 
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -92,7 +92,7 @@ A *AndroidManifest.xml* fájlnak a következő értékeket kell tartalmaznia:
 
 Helyettesítse be a Azure Portalban regisztrált csomag nevét az `android:host=` értékhez. Helyettesítse be a Azure Portalban regisztrált kulcs kivonatát az `android:path=` értékhez. Az aláírási kivonat *nem* lehet URL-kódolású. Győződjön meg arról, hogy a kezdő perjel ( `/` ) megjelenik az aláírás kivonatának elején.
 
-Azt is megteheti, [hogy a tevékenységet programkódban hozza létre](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) ahelyett, hogy manuálisan szerkeszti a *AndroidManifest.xml*. A tevékenység kódban való létrehozásához először hozzon létre egy osztályt, amely tartalmazza az `Activity` attribútumot és az `IntentFilter` attribútumot. 
+Azt is megteheti, [hogy a tevékenységet programkódban hozza létre](/xamarin/android/platform/android-manifest#the-basics) ahelyett, hogy manuálisan szerkeszti a *AndroidManifest.xml*. A tevékenység kódban való létrehozásához először hozzon létre egy osztályt, amely tartalmazza az `Activity` attribútumot és az `IntentFilter` attribútumot. 
 
 Az alábbi példa egy olyan osztályra mutat, amely az XML-fájl értékeit jelöli:
 

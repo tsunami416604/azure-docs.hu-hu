@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 303caf36b613e4bcd6a5c48317710b69a3ffbc0a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875217"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118195"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -323,7 +323,7 @@ Hozzon létre egy nevű új. js fájlt `authConfig.js` , amely tartalmazza a hit
 
  Ebben a példában:
  - *\<Enter_the_Application_Id_Here>* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
- - *\<Enter_the_Cloud_Instance_Id_Here>* Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz egyszerűen írja be a következőt: *https://login.microsoftonline.com* . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+ - *\<Enter_the_Cloud_Instance_Id_Here>* Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz egyszerűen írja be a következőt: *https://login.microsoftonline.com* . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).
  - *\<Enter_the_Tenant_info_here>* az a következő lehetőségek egyikére van beállítva:
    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
@@ -447,7 +447,7 @@ A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a to
    ```
 
    Ebben a példában:
-   - *\<Enter_the_Graph_Endpoint_Here>* az MS Graph API példánya. A globális MS Graph API végpont esetében egyszerűen cserélje le ezt a karakterláncot a következőre: `https://graph.microsoft.com` . A nemzeti Felhőbeli üzembe helyezések esetében tekintse meg [Graph API dokumentációját](https://docs.microsoft.com/graph/deployments).
+   - *\<Enter_the_Graph_Endpoint_Here>* az MS Graph API példánya. A globális MS Graph API végpont esetében egyszerűen cserélje le ezt a karakterláncot a következőre: `https://graph.microsoft.com` . A nemzeti Felhőbeli üzembe helyezések esetében tekintse meg [Graph API dokumentációját](/graph/deployments).
 
 1. Ezután hozzon létre egy nevű. js `graph.js` -fájlt, amely Rest-hívást hajt végre Microsoft Graph API-nak, és adja hozzá a következő kódot:
 

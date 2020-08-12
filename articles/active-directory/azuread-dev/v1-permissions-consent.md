@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154474"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117617"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Engedélyek és belefoglalt engedély a Azure Active Directory v 1.0-végponton
 
@@ -33,8 +33,8 @@ Az *engedélyek*– más néven *hatókörök*– lehetővé teszik az erőforr�
 
 Az Azure AD kétféle engedélyt határoz meg:
 
-* **Delegált engedélyek** – Olyan alkalmazások használják, amelyeken bejelentkezett felhasználó szerepel. Ezekben az alkalmazásokban a felhasználó vagy egy rendszergazda elfogadja az alkalmazás által kért engedélyeket, és az alkalmazáshoz engedély van delegálva, amely szerint az alkalmazás a bejelentkezett felhasználóként viselkedik, amikor API-t hív. Az API-tól függően előfordulhat, hogy a felhasználó nem tud közvetlenül hozzájárulni az API-hoz, és ehelyett a [rendszergazdának meg kell adnia a "rendszergazdai jóváhagyást"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
-* **Alkalmazásengedélyek** – Olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például háttérszolgáltatásokként vagy démonokként futó alkalmazások. Az alkalmazás engedélyeit csak a [rendszergazdák](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) vehetik igénybe, mivel általában hatékonyak, és lehetővé teszik az adathozzáférést a felhasználói határok között, illetve olyanokat, amelyek egyébként a rendszergazdákra korlátozódnak. Azok a felhasználók, akik az erőforrás-alkalmazás tulajdonosaként vannak definiálva (azaz az engedélyeket közzétevő API), a saját API-k számára is jogosultak az alkalmazás engedélyeinek megadására.
+* **Delegált engedélyek** – Olyan alkalmazások használják, amelyeken bejelentkezett felhasználó szerepel. Ezekben az alkalmazásokban a felhasználó vagy egy rendszergazda elfogadja az alkalmazás által kért engedélyeket, és az alkalmazáshoz engedély van delegálva, amely szerint az alkalmazás a bejelentkezett felhasználóként viselkedik, amikor API-t hív. Az API-tól függően előfordulhat, hogy a felhasználó nem tud közvetlenül hozzájárulni az API-hoz, és ehelyett a [rendszergazdának meg kell adnia a "rendszergazdai jóváhagyást"](../develop/howto-convert-app-to-be-multi-tenant.md).
+* **Alkalmazásengedélyek** – Olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például háttérszolgáltatásokként vagy démonokként futó alkalmazások. Az alkalmazás engedélyeit csak a [rendszergazdák](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) vehetik igénybe, mivel általában hatékonyak, és lehetővé teszik az adathozzáférést a felhasználói határok között, illetve olyanokat, amelyek egyébként a rendszergazdákra korlátozódnak. Azok a felhasználók, akik az erőforrás-alkalmazás tulajdonosaként vannak definiálva (azaz az engedélyeket közzétevő API), a saját API-k számára is jogosultak az alkalmazás engedélyeinek megadására.
 
 A hatályos engedélyek olyan engedélyek, amelyekkel az alkalmazás rendelkezik, amikor kéréseket küld egy API-nak. 
 
@@ -60,7 +60,7 @@ Az Azure AD-ben az engedélyek rendelkeznek néhány tulajdonsággal, amelyek se
 | Tulajdonság neve | Leírás | Példa |
 | --- | --- | --- |
 | `ID` | Ez az engedélyt egyedi módon azonosító GUID-érték. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
-| `IsEnabled` | Jelzi, hogy ez az engedély használható-e. | igaz |
+| `IsEnabled` | Jelzi, hogy ez az engedély használható-e. | true |
 | `Type` | Jelzi, hogy ez az engedély a felhasználó vagy a rendszergazda jóváhagyását igényli-e. | Felhasználó |
 | `AdminConsentDescription` | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő leírás. | Lehetővé teszi, hogy az alkalmazás elolvassa a felhasználók postafiókjában lévő e-maileket. |
 | `AdminConsentDisplayName` | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő rövid név. | Felhasználók levelezésének olvasása |
@@ -75,12 +75,12 @@ Az Azure AD-ben lévő alkalmazások a jóváhagyásokra támaszkodnak a szüks�
 * **Statikus felhasználói jóváhagyás** – Automatikusan történik az [OAuth 2.0 engedélyezési folyamat](v1-protocols-oauth-code.md#request-an-authorization-code) során, amikor megadja az erőforrást, amellyel az alkalmazás kommunikálni szeretne. Statikus felhasználói jóváhagyás használata esetén az alkalmazáshoz már korábban meg kellett adni az összes szükséges engedélyt az Azure Portalon, az alkalmazás konfigurációjában. Ha a felhasználó (vagy helyzettől függően a rendszergazda) nem adta a jóváhagyását ehhez az alkalmazáshoz, akkor az Azure AD megkéri a felhasználót, hogy most egyezzen bele. 
 
     További információ az API-k statikus készletének hozzáférését kérő Azure AD-alkalmazások regisztrálásáról.
-* **Dinamikus felhasználói jóváhagyás** – Ez a v2 Azure AD alkalmazásmodell egyik funkciója. Ebben az esetben az alkalmazás a [v2-alkalmazások OAuth 2.0 engedélyezési folyamatához](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) szükséges engedélyeket kér. Ha a felhasználó még nem hagyta jóvá, a rendszer most kéri erre. [További információ a dinamikus jóváhagyásról](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dinamikus felhasználói jóváhagyás** – Ez a v2 Azure AD alkalmazásmodell egyik funkciója. Ebben az esetben az alkalmazás a [v2-alkalmazások OAuth 2.0 engedélyezési folyamatához](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent) szükséges engedélyeket kér. Ha a felhasználó még nem hagyta jóvá, a rendszer most kéri erre. [További információ a dinamikus jóváhagyásról](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
     > [!IMPORTANT]
     > A dinamikus jóváhagyás kényelmes lehet, de nagy kihívást jelent a rendszergazdai jóváhagyást igénylő engedélyek számára, mert a rendszergazdai jóváhagyás használatakor ezek az engedélyek ismeretlenek a jóváhagyáskor. Ha rendszergazdai jogosultsági szintű engedélyekre van szüksége, vagy ha az alkalmazás dinamikus beleegyezik, akkor regisztrálnia kell az összes engedélyt a Azure Portal (nem csak a rendszergazdai jogosultságokat igénylő engedélyek részhalmaza). Ez lehetővé teszi a bérlői rendszergazdák számára, hogy az összes felhasználó nevében hozzájárulásukat adjanak.
   
-* **Rendszergazdai jóváhagyás** – Akkor szükséges, amikor az alkalmazásnak hozzáférésre van szüksége bizonyos magas szintű jogosultságokkal rendelkező engedélyekhez. A rendszergazdai jóváhagyás biztosítja, hogy a rendszergazdák további vezérlőkkel rendelkezzenek, mielőtt engedélyeznék, hogy az alkalmazások vagy felhasználók magas jogosultságú adatokat érjenek el a cégben. [További információ a rendszergazdai jóváhagyás megadásáról](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Rendszergazdai jóváhagyás** – Akkor szükséges, amikor az alkalmazásnak hozzáférésre van szüksége bizonyos magas szintű jogosultságokkal rendelkező engedélyekhez. A rendszergazdai jóváhagyás biztosítja, hogy a rendszergazdák további vezérlőkkel rendelkezzenek, mielőtt engedélyeznék, hogy az alkalmazások vagy felhasználók magas jogosultságú adatokat érjenek el a cégben. [További információ a rendszergazdai jóváhagyás megadásáról](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

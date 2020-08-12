@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231675"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119555"
 ---
 # <a name="microsoft-identity-platform-overview"></a>A Microsoft Identity platform áttekintése
 
@@ -49,7 +49,7 @@ Válassza ki a létrehozni kívánt [alkalmazási forgatókönyvet](authenticati
 - [Webes API-kat hívó webes API](scenario-web-api-call-api-overview.md)
 - [Asztali alkalmazás](scenario-desktop-overview.md)
 - [Démonalkalmazások](scenario-daemon-overview.md)
-- [Mobilalkalmazás](scenario-mobile-overview.md)
+- [mobilalkalmazás](scenario-mobile-overview.md)
 
 Amikor együttműködik a Microsoft Identity platformmal az alkalmazások hitelesítésének és engedélyezésének integrálásához, tekintse át ezt a rendszerképet, amely az alkalmazás leggyakoribb forgatókönyveit és identitás-összetevőit ismerteti. Válassza ki a képet a teljes méret megtekintéséhez.
 
@@ -59,7 +59,7 @@ Amikor együttműködik a Microsoft Identity platformmal az alkalmazások hitele
 
 Ismerje meg, hogyan vonatkoznak az alapszintű hitelesítés és az Azure AD-fogalmak a Microsoft Identity platformra ebben az ajánlott cikkben:
 
-- [Hitelesítési alapok](authentication-scenarios.md)
+- [Hitelesítési alapok](./authentication-vs-authorization.md)
 - [Alkalmazás-és egyszerű szolgáltatások](app-objects-and-service-principals.md)
 - [Közönség](v2-supported-account-types.md)
 - [Engedélyek és jóváhagyás](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Ismerje meg, hogyan vonatkoznak az alapszintű hitelesítés és az Azure AD-fog
 
 [Azure ad B2C](../../active-directory-b2c/overview.md) – ügyfelek által elérhető alkalmazások létrehozása a felhasználók bejelentkezhetnek a közösségi fiókjaik, például a Facebook vagy a Google használatával, vagy e-mail-címmel és jelszóval.
 
-[Azure ad B2B](../b2b/what-is-b2b.md) – külső felhasználók meghívása az Azure ad-bérlőbe "vendég" felhasználóként, valamint engedélyek kiosztása a hitelesítéshez a meglévő hitelesítő adataik használata közben.
+[Azure ad B2B](../external-identities/what-is-b2b.md) – külső felhasználók meghívása az Azure ad-bérlőbe "vendég" felhasználóként, valamint engedélyek kiosztása a hitelesítéshez a meglévő hitelesítő adataik használata közben.
 
 > [!TIP]
 > *Azure Active Directory fejlesztői platform (v 1.0)* dokumentációját keresi? Tekintse [meg a fejlesztőknek szóló Azure Active Directory (v 1.0) – áttekintés](../azuread-dev/v1-overview.md).

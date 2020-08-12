@@ -12,16 +12,16 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808371"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117889"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése
 
-Az Azure AD használatának első lépései a szervezet által használt alkalmazások identitás-és hozzáférés-kezelési (IAM) rendszereként. Ebben a rövid útmutatóban megtekintheti az alkalmazásokat, más néven alkalmazásokat, amelyek már be vannak állítva az Azure AD-bérlő használatára az identitás-szolgáltatóként.
+Az Azure AD használatának első lépései a szervezet által használt alkalmazások identitás-és hozzáférés-kezelési (IAM) rendszereként. Ebben a rövid útmutatóban megtekintheti az alkalmazásokat, más néven alkalmazásokat, amelyek már úgy vannak beállítva, hogy az Azure AD-bérlőt használják identitás-szolgáltatóként (identitásszolgáltató).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

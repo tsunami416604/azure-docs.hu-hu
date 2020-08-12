@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2da2755af4b44c0b17550676845c38c1a93cf801
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac438b42f25fc82a0a5dd5384205e809e45ff57a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845187"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120085"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 Ha szeretné jobban megismerni a jogkivonat-gyorsítótárat, tekintse meg a [jogkivonat-gyorsítótár szerializálási beállításai](#token-cache) című témakört.
 
 > [!NOTE]
-> Az itt található programkódok teljes megértéséhez ismernie kell [ASP.net Core alapjait](https://docs.microsoft.com/aspnet/core/fundamentals), és különösen a [függőségi befecskendezést](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) és a [beállításokat](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+> Az itt található programkódok teljes megértéséhez ismernie kell [ASP.net Core alapjait](/aspnet/core/fundamentals), és különösen a [függőségi befecskendezést](/aspnet/core/fundamentals/dependency-injection) és a [beállításokat](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -268,7 +268,7 @@ Az ügyfél-kijelentések használata egy speciális forgatókönyv, amely rész
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A ASP.NET Core oktatóanyag függőségi befecskendezést használ, hogy eldöntse a jogkivonat-gyorsítótár megvalósítását az alkalmazás Startup.cs-fájljában. A Microsoft. Identity. Web előre elkészített jogkivonat-gyorsítótárazási szerializálók szerepelnek a [jogkivonat-gyorsítótár szerializálása](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)című témakörben. Érdekes lehetőség a ASP.NET Core [elosztott memória-gyorsítótárak](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)kiválasztása:
+A ASP.NET Core oktatóanyag függőségi befecskendezést használ, hogy eldöntse a jogkivonat-gyorsítótár megvalósítását az alkalmazás Startup.cs-fájljában. A Microsoft. Identity. Web előre elkészített jogkivonat-gyorsítótárazási szerializálók szerepelnek a [jogkivonat-gyorsítótár szerializálása](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)című témakörben. Érdekes lehetőség a ASP.NET Core [elosztott memória-gyorsítótárak](/aspnet/core/performance/caching/distributed#distributed-memory-cache)kiválasztása:
 
 ```csharp
 // Use a distributed token cache by adding:
@@ -392,7 +392,7 @@ def _build_msal_app(cache=None):
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen a ponton, amikor a felhasználó bejelentkezik, a rendszer a jogkivonat-gyorsítótárban tárolja a tokent. Lássuk, hogyan használják majd a webalkalmazás más részeiben.
 

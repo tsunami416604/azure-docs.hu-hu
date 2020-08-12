@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8d22e86a37ca386d41374cf0b4811943108d293b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553856"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114557"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
@@ -88,7 +88,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
 >
-> Az elemek magyarázata:
+> Ebben a példában:
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 > - `Enter_the_Tenant_Info_Here` – az alábbi lehetőségek egyike lesz:
 >   - Ha az alkalmazás **az adott szervezeti címtárban lévő fiókokat** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
@@ -128,7 +128,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Az elemek magyarázata: | Leírás |
+> |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
@@ -150,7 +150,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata:| Leírás |
+> |Ebben a példában:| Leírás |
 > |---------|---------|
 > | `_scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 
@@ -165,7 +165,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata: | Leírás |
+> |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 > | `firstAccount` | A gyorsítótár első felhasználóját határozza meg (az MSAL több felhasználót támogat egy alkalmazásban). |
@@ -177,4 +177,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 
 > [!div class="nextstepaction"]
-> [A Graph API meghívása – oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
+> [A Graph API meghívása – oktatóanyag](./tutorial-v2-windows-desktop.md)

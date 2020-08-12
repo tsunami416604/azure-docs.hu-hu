@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: d6b6e300a3bd799e94405af143d84cf9fdd8d4c1
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077135"
+ms.locfileid: "88115866"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -551,4 +551,4 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes és Prémium kiadások általánosan elérhető funkcióinak összehasonlítását](https://azure.microsoft.com/pricing/details/active-directory/)ismertető témakört.
 
-A [Microsoft 365 vállalati verzió licenccel](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
+A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.

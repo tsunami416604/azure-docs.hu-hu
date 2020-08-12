@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129185"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115237"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
@@ -47,7 +47,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 >
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz fér hozzá, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
-> 1. Kövesse az utasításokat [egy egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) a Azure Portal.
+> 1. Kövesse az utasításokat [egy egyoldalas alkalmazás regisztrálásához](./scenario-spa-app-registration.md) a Azure Portal.
 > 1. Vegyen fel egy új platformot az alkalmazás regisztrációjának **hitelesítés** ablaktábláján, és regisztrálja az átirányítási URI-t: `http://localhost:4200/` .
 > 1. Ez a rövid útmutató az [implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md)használja. Adja meg az **azonosító jogkivonatok** és a **hozzáférési tokenek** **implicit engedélyezési** beállításait. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazás bejelentkezik a felhasználókba, és meghívja az API-t.
 
@@ -96,10 +96,10 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 >
 > Cserélje le ezeket az értékeket:
 >
->|Érték neve|Description|
+>|Érték neve|Leírás|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
->|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+>|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).|
 >|Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com**). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
 >|Enter_the_Redirect_Uri_Here|Cserélje le a-t **http://localhost:4200** .|
 >|cacheLocation  | Választható Állítsa be a böngésző tárterületét a hitelesítési állapothoz. Az alapértelmezett érték a **sessionStorage**.   |
@@ -142,5 +142,4 @@ Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehető
 Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
 
 > [!div class="nextstepaction"]
-> [Szögletes oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Szögletes oktatóanyag](./tutorial-v2-angular.md)

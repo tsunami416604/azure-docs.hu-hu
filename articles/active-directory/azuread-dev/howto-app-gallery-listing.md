@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcb8f709bc75fdf9fe80ee26497acb78cc023327
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383869"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116342"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -99,7 +99,7 @@ Egy alkalmazás az Azure AD-katalógusban való listázásához először meg ke
     * Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katalógusban szereplő listára, válassza az **OpenID connect & OAuth 2,0** lehetőséget a képen látható módon.
     * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **Saml 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül is integrálhatja azt egy Azure ad-Bérlővel az [egyéni alkalmazások hozzáadásához szükséges utasítások](../active-directory-saas-custom-apps.md)követésével.
+- **Saml 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül is integrálhatja azt egy Azure ad-Bérlővel az [egyéni alkalmazások hozzáadásához szükséges utasítások](../manage-apps/view-applications-portal.md)követésével.
 
   ![SAML 2,0 vagy WS-fed alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 

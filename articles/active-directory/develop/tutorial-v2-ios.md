@@ -12,12 +12,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 61a3884ce4d1075dbcac61a0c202c3a393d2d943
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904762"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118144"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -64,7 +64,7 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 5. Állítsa a **nyelvet** a **Swift** értékre, és válassza a **tovább**lehetőséget.
 6. Válasszon egy mappát az alkalmazás létrehozásához, majd kattintson a **Létrehozás**gombra.
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 1. Ugrás a [Azure Portal](https://aka.ms/MobileAppReg)
 2. Nyissa meg a Alkalmazásregisztrációk panelt, és kattintson az **+ új regisztráció**elemre.
@@ -75,7 +75,7 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 
 7. Kattintson a képernyő felső részén található **új felület** lehetőségre az új alkalmazás regisztrációs felületének megnyitásához, majd kattintson az **+ új regisztráció**  >  **+ platform hozzáadása**  >  **iOS/MacOS**elemre.
     - Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, akkor ez a következő: `com.microsoft.identitysample.MSALiOS` . Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
-8. Kattintson `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő **MSAL-konfigurációt** , így megadhatja, amikor később konfigurálja az alkalmazást.  Kattintson a **Done** (Kész) gombra.
+8. Kattintson `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő **MSAL-konfigurációt** , így megadhatja, amikor később konfigurálja az alkalmazást.  Kattintson a **Kész** gombra.
 
 ## <a name="add-msal"></a>MSAL hozzáadása
 
@@ -149,7 +149,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-Az egyetlen módosítani kívánt érték az `kClientID` [alkalmazás-azonosítóhoz](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)rendelt érték. Ez az érték azon MSAL-konfigurációs adatmennyiség részét képezi, amelyet az oktatóanyag elején a lépés során mentett, hogy regisztrálja az alkalmazást a Azure Portalban.
+Az egyetlen módosítani kívánt érték az `kClientID` [alkalmazás-azonosítóhoz](./developer-glossary.md#application-id-client-id)rendelt érték. Ez az érték azon MSAL-konfigurációs adatmennyiség részét képezi, amelyet az oktatóanyag elején a lépés során mentett, hogy regisztrálja az alkalmazást a Azure Portalban.
 
 ## <a name="configure-xcode-project-settings"></a>Xcode-projekt beállításainak konfigurálása
 
@@ -842,4 +842,4 @@ A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph vég
 
 ## <a name="get-help"></a>Segítség kérése
 
-Ha problémája van az Oktatóanyaggal vagy a Microsoft Identity platformmal, látogasson el a [Súgó és támogatás](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) webhelyre.
+Ha problémája van az Oktatóanyaggal vagy a Microsoft Identity platformmal, látogasson el a [Súgó és támogatás](./developer-support-help-options.md) webhelyre.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb7c4a4417d64e039793bd96141c965f6437414
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e09ad2991d552cb9886911ac75ea23c690204a71
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050926"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116648"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>A helyszíni Azure AD-beli jelszavas védelem betartatása Active Directory tartományi szolgáltatások
 
@@ -87,6 +87,9 @@ A helyszíni Azure AD jelszavas védelem összetevői a következőképpen műk�
 Az Azure AD jelszavas védelem AD DS erdőben való üzembe helyezéséhez az adott erdőnek az Azure AD-vel való regisztrációja szükséges. Az üzembe helyezett proxy szolgáltatásoknak is regisztrálva kell lenniük az Azure AD-ben. Ezek az erdő-és proxy-regisztrációk egy adott Azure AD-bérlőhöz vannak társítva, amely implicit módon azonosítható a regisztráció során használt hitelesítő adatokkal.
 
 Az erdőben lévő AD DS erdőt és az összes telepített proxy szolgáltatást ugyanahhoz a bérlőhöz kell regisztrálni. Nem támogatott, hogy AD DS erdőben vagy bármely proxy szolgáltatásban legyen regisztrálva az adott erdőben különböző Azure AD-bérlők számára. Az ilyen helytelenül konfigurált központi telepítés tünetei közé tartozik a jelszóházirendek letöltésének képtelensége.
+
+> [!NOTE]
+> Azoknak az ügyfeleknek, amelyeknek több Azure AD-Bérlővel kell rendelkezniük, az egyes erdők Azure AD-beli jelszavas védelemhez való regisztrálásához egy megkülönböztető bérlőt kell választaniuk.
 
 ## <a name="download"></a>Letöltés
 

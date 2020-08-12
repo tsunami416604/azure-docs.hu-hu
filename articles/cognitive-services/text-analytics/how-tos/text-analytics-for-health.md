@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986899"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121578"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
+
+> [!NOTE]
+> Az állapot-tároló Text Analytics nemrég frissült. A legutóbbi módosításokkal kapcsolatos további információkért tekintse [meg](../whats-new.md) a újdonságokat. Ne felejtse el lekérni a legújabb tárolót a felsorolt frissítések használatára.
 
 > [!IMPORTANT] 
 > A Text Analytics for Health egy előzetes verzió, amely az "adott állapotban" és "minden HIBÁval" érhető el. Ennek megfelelően a **text Analytics for Health (előzetes verzió) nem valósítható meg, és nem helyezhető üzembe semmilyen éles használatban.** Az egészségügyi Text Analytics nem az orvosi eszközként, klinikai támogatásként, diagnosztikai eszközként vagy más olyan technológiával való használatra készültek, amelyet a diagnosztika, a gyógyítás, a mérséklés, a kezelés vagy más feltételek megelőzéséhez, illetve más feltételekhez való felhasználáshoz kíván használni, és a Microsoft semmilyen jogot nem biztosít erre a képességre ilyen célra. Ezt a képességet nem úgy tervezték, hogy az orvosi szakorvosok vagy egészségügyi szakvélemények, diagnózis, kezelés vagy az egészségügyi szakemberek klinikai ítélete helyett ne legyenek implementálva, és ne legyenek használhatók. Az ügyfél kizárólag a Text Analytics for Health szolgáltatásért felelős. A Microsoft nem garantálja, hogy az állapotra vagy a képességgel kapcsolatban biztosított bármely anyagra vonatkozó Text Analytics bármely egészségügyi célra elegendő, vagy bármely személy egészségügyi vagy orvosi követelményeinek kielégítése érdekében. 
@@ -229,7 +232,7 @@ A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt.
 Az alábbi példában szereplő cURL-kérelem használatával küldjön le egy lekérdezést arra a tárolóra, amelyet telepített, majd a `serverURL` megfelelő értékkel cserélje le a változót.
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -269,8 +272,8 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -283,8 +286,8 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -292,8 +295,8 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -339,50 +342,35 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> A tagadás észlelésével bizonyos esetekben egyetlen tagadási időszak több feltételt is tartalmazhat egyszerre. Egy felismert entitás tagadását a rendszer a JSON-kimenetben a jelző logikai értékével jeleníti meg `isNegated` :
+### <a name="negation-detection-output"></a>Tagadási észlelés kimenete
+
+A tagadás észlelésének használatakor bizonyos esetekben egyetlen tagadási időszak egyszerre több kifejezést is felhasználhat. Egy felismert entitás tagadását a rendszer a JSON-kimenetben a jelző logikai értékével jeleníti meg `isNegated` :
 
 ```json
 {
@@ -390,7 +378,7 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -405,7 +393,34 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
     ...
 ```
 
-## <a name="see-also"></a>További információ
+### <a name="relation-extraction-output"></a>A kapcsolatok kinyerésének kimenete
+
+A kapcsolat extrakciós kimenete a kapcsolat *forrására* és *CÉLJÁra*vonatkozó URI-hivatkozásokat tartalmaz. A társított szerepkörrel rendelkező entitások `ENTITY` hozzá vannak rendelve a `target` mezőhöz. A társított szerepkörrel rendelkező entitások `ATTRIBUTE` hozzá vannak rendelve a `source` mezőhöz. A rövidítések kapcsolata kétirányú `source` és `target` mezőket tartalmaz, és a következőre lesz `bidirectional` beállítva: `true` . 
+
+```json
+"relations": [
+  {
+      "relationType": "DosageOfMedication",
+      "score": 1.0,
+      "bidirectional": false,
+      "source": "#/documents/2/entities/0",
+      "target": "#/documents/2/entities/1",
+      "entities": [
+          {
+              "id": "0",
+              "role": "ATTRIBUTE"
+          },
+          {
+              "id": "1",
+              "role": "ENTITY"
+          }
+      ]
+  },
+...
+]
+```
+
+## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Elnevezett entitások kategóriái](../named-entity-types.md)

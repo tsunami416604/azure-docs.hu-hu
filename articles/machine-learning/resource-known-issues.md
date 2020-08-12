@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/06/2020
-ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905496"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120762"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup sikertelen**: 
+    * Windows rendszeren futtasson automl_setup egy Anaconda-parancssorból. A Miniconda telepítéséhez kattintson [ide](https://docs.conda.io/en/latest/miniconda.html).
+    * A parancs futtatásával győződjön meg arról, hogy a 64 bites Conda telepítve van, és nem 32 bites `conda info` . A legyen `platform` `win-64` Windows vagy Mac rendszerű `osx-64` .
+    * Győződjön meg arról, hogy a Conda 4.4.10 vagy újabb verziója telepítve van. A verziót a paranccsal lehet megtekinteni `conda -V` . Ha telepítve van egy korábbi verziója, a paranccsal frissítheti a parancsot: `conda update conda` .
+    * Linux`gcc: error trying to exec 'cc1plus'`
+      *  Ha a `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` hiba előfordul, telepítse a Build Essentials-t a ther parancs használatával `sudo apt-get install build-essential` .
+      * Új Conda-környezet létrehozásához adjon meg egy új nevet az első paraméterként automl_setup. Megtekintheti a meglévő Conda-környezeteket `conda env list` , és eltávolíthatja őket a használatával `conda env remove -n <environmentname>` .
+      
+* a **automl_setup_linux. sh sikertelen**: ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
+  1. Győződjön meg arról, hogy a 53-es és a 80-es kimenő portok engedélyezve vannak. Egy Azure-beli virtuális gépen ezt megteheti az Azure Portalon, ha kiválasztja a virtuális gépet, majd a hálózat lehetőségre kattint.
+  2. Futtassa a parancsot:`sudo apt-get update`
+  3. Futtassa a parancsot:`sudo apt-get install build-essential --fix-missing`
+  4. Futtatás `automl_setup_linux.sh` újra
+
+* a **Configuration. ipynb sikertelen**:
+  * A helyi Conda esetében először győződjön meg arról, hogy a automl_setup susccessfully fut.
+  * Győződjön meg arról, hogy a subscription_id helyes. Keresse meg az subscription_id az Azure Portalon a minden szolgáltatás, majd az előfizetések lehetőség kiválasztásával. A (z) "<" és a ">" karakterek nem szerepelhetnek a subscription_id értékben. Például `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` érvényes a formátuma.
+  * Győződjön meg arról, hogy a közreműködő vagy a tulajdonos hozzáférése van az előfizetéshez.
+  * Győződjön meg arról, hogy a régió a támogatott régiók egyike:,,,,,, `eastus2` `eastus` `westcentralus` `southeastasia` `westeurope` `australiaeast` `westus2` , `southcentralus` .
+  * Győződjön meg arról, hogy az Azure Portalon keresztül férhet hozzá a régióhoz.
+  
+* **sikertelen volt az importálás AutoMLConfig**: a Machine learning 1.0.76-verziójában módosult a csomag, amely az új verzióra való frissítés előtt el kell távolítani a korábbi verziót. Ha a `ImportError: cannot import name AutoMLConfig` rendszer a v 1.0.76 v 1.0.76 vagy újabb verzióra történő frissítés után észlelt, hárítsa el a hibát a következő parancs futtatásával: `pip uninstall azureml-train automl` és `pip install azureml-train-auotml` . A automl_setup. cmd parancsfájl ezt automatikusan elvégzi. 
+
+* **munkaterület. from_config sikertelen**: Ha a WS = workspace. from_config () metódus hívása sikertelen –
+  1. Győződjön meg arról, hogy a Configuration. ipynb jegyzetfüzet sikeresen futott.
+  2. Ha a jegyzetfüzet olyan mappából fut, amely nem a `configuration.ipynb` futtatott mappában található, másolja a aml_config mappát, és a fájl config.jsaz új mappába. Munkaterület. from_config beolvassa a config.jsa jegyzetfüzet mappájába vagy a szülőmappa mappájába.
+  3. Ha új előfizetést, erőforráscsoportot, munkaterületet vagy régiót használ, győződjön meg arról, hogy a `configuration.ipynb` jegyzetfüzetet újra futtatja. config.jsközvetlen módosítása csak akkor működik, ha a munkaterület már létezik a megadott erőforrás-csoportban a megadott előfizetésben.
+  4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create`a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
+  
+* A **minta jegyzetfüzet sikertelen**: Ha egy minta jegyzetfüzet hibát jelez, a metódus vagy a könyvtár nem létezik:
+  * Győződjön meg arról, hogy a correctcorrect kernel ki van választva a jupyter jegyzetfüzetben. A kernel a notebook oldal jobb felső sarkában jelenik meg. Az alapértelmezett érték azure_automl. Vegye figyelembe, hogy a rendszer a rendszermagot a jegyzetfüzet részeként menti. Ha tehát új Conda-környezetre vált, ki kell választania az új kernelt a jegyzetfüzetben.
+      * Azure Notebooks esetén a Python 3,6-es értéknek kell lennie. 
+      * Helyi Conda-környezetek esetén az automl_setup-ben megadott Conda-envioronment kell lennie.
+  * Győződjön meg arról, hogy a jegyzetfüzet a használt SDK-verzióhoz készült. Az SDK verziójának ellenőrzéséhez futtassa a `azureml.core.VERSION` jupyter jegyzetfüzet-cellát. A minta jegyzetfüzetek előző verzióját a GitHubról töltheti le, ha a `Branch` gombra kattint, majd kiválasztja a `Tags` fület, majd kiválasztja a verziót.
+
+* A **NumPy importálása sikertelen a Windows**rendszerben: egyes Windows-környezetek a NumPy betöltésével kapcsolatos hibát látnak a legújabb Python-verzió 3.6.8. Ha ezt a problémát látja, próbálkozzon a Python-verzió 3.6.7.
+
+* A **NumPy importálása sikertelen**: az automatikus ml Conda-környezetben keresse meg a tensorflow verzióját. A támogatott verziók a következők: < 1,13. Távolítsa el a tensorflow a környezetből, ha a verziószáma >= 1,13 a tensorflow és az Eltávolítás verzióját a következőképpen is megtekintheti:
+  1. Indítsa el a parancssort, aktiválja a Conda-környezetet, amelyben az automatikus ml-csomagok telepítve vannak.
+  2. Adja meg `pip freeze` és keresse meg `tensorflow` , ha található, a felsorolt verziónak < 1,13
+  3. Ha a felsorolt verzió nem támogatott verzió, a `pip uninstall tensorflow` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
 
 ## <a name="deploy--serve-models"></a>Modellek üzembe helyezése és kiszolgálása
 
@@ -375,7 +416,7 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

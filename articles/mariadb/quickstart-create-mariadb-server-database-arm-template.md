@@ -1,18 +1,18 @@
 ---
-title: MariaDB Azure-adatbázis létrehozása ARM-sablonnal
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Database for MariaDB-kiszolgálót egy Azure Resource Manager sablon használatával.
+title: 'Rövid útmutató: Azure-adatbázis létrehozása MariaDB-ARM-sablonhoz'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Database for MariaDB-kiszolgálót egy Azure Resource Manager sablon használatával.
 author: mgblythe
 ms.service: mariadb
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: fd560658a20a5b58d582332a88bf031d0e56ac91
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cc79002adef4555a7a159238b7087ba7c20be7a1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134108"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120269"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
 
@@ -20,7 +20,7 @@ A Azure Database for MariaDB felügyelt szolgáltatás, amellyel a felhőben fut
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
@@ -46,7 +46,7 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](htt
 
 Az Azure Database for MariaDB-kiszolgálót számítási és tárolási erőforrások egy meghatározott készletével együtt fogja létrehozni. További információ: [Azure Database for MariaDB díjszabási szintek](concepts-pricing-tiers.md). A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-managed-mariadb-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 
@@ -175,7 +175,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
@@ -207,7 +207,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 

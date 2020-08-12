@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886432"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118246"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Oktatóanyag: megosztott eszköz üzemmód használata Android-alkalmazásokban
 
@@ -28,11 +28,11 @@ ms.locfileid: "80886432"
 
 ## <a name="developer-guide"></a>Fejlesztői útmutató
 
-Ez az útmutató fejlesztői útmutatást nyújt a megosztott eszköz üzemmódjának megvalósításához egy Android-alkalmazásban a Microsoft Authentication Library (MSAL) használatával. Tekintse meg a [MSAL Android-oktatóanyagot](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) , amelyből megtudhatja, hogyan integrálhatja a MSAL az Android-alkalmazással, hogyan jelentkezhet be egy felhasználó, meghívhatja a Microsoft Graphot, és kijelentkezhet
+Ez az útmutató fejlesztői útmutatást nyújt a megosztott eszköz üzemmódjának megvalósításához egy Android-alkalmazásban a Microsoft Authentication Library (MSAL) használatával. Tekintse meg a [MSAL Android-oktatóanyagot](./tutorial-v2-android.md) , amelyből megtudhatja, hogyan integrálhatja a MSAL az Android-alkalmazással, hogyan jelentkezhet be egy felhasználó, meghívhatja a Microsoft Graphot, és kijelentkezhet
 
 ### <a name="download-the-sample"></a>A minta letöltése
 
-A [minta alkalmazás](https://github.com/Azure-Samples/ms-identity-android-java/) klónozása a githubról. A minta [egy vagy több fiókos módban](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)is működhet.
+A [minta alkalmazás](https://github.com/Azure-Samples/ms-identity-android-java/) klónozása a githubról. A minta [egy vagy több fiókos módban](./single-multi-account.md)is működhet.
 
 ### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>A MSAL SDK hozzáadása a helyi Maven-tárházhoz
 
@@ -46,13 +46,13 @@ dependencies{
 
 ### <a name="configure-your-app-to-use-shared-device-mode"></a>Az alkalmazás konfigurálása megosztott eszköz üzemmód használatára
 
-A konfigurációs fájl beállításával kapcsolatos további információkért tekintse meg a [konfigurációs dokumentációt](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) .
+A konfigurációs fájl beállításával kapcsolatos további információkért tekintse meg a [konfigurációs dokumentációt](./msal-configuration.md) .
 
-`true` Állítsa be a beállítást `"shared_device_mode_supported"` a MSAL konfigurációs fájljába.
+Állítsa be a beállítást a `"shared_device_mode_supported"` `true` MSAL konfigurációs fájljába.
 
-Előfordulhat, hogy nem tervezi több fiókos üzemmód használatát. Ez akkor lehet lehetséges, ha nem megosztott eszközt használ, és a felhasználó egyszerre több fiókkal is bejelentkezhet az alkalmazásba. Ha igen, állítsa `"account_mode"` a `"SINGLE"`következőre:. Ez garantálja, hogy az alkalmazás mindig megkapja `ISingleAccountPublicClientApplication`az alkalmazást, és jelentősen leegyszerűsíti a MSAL-integrációt. Az alapértelmezett értéke `"account_mode"` `"MULTIPLE"`, ezért fontos, hogy módosítsa ezt az értéket a konfigurációs fájlban, ha a módot használja `"single account"` .
+Előfordulhat, hogy nem tervezi több fiókos üzemmód használatát. Ez akkor lehet lehetséges, ha nem megosztott eszközt használ, és a felhasználó egyszerre több fiókkal is bejelentkezhet az alkalmazásba. Ha igen, állítsa a következőre: `"account_mode"` `"SINGLE"` . Ez garantálja, hogy az alkalmazás mindig megkapja az alkalmazást `ISingleAccountPublicClientApplication` , és jelentősen leegyszerűsíti a MSAL-integrációt. Az alapértelmezett értéke `"account_mode"` `"MULTIPLE"` , ezért fontos, hogy módosítsa ezt az értéket a konfigurációs fájlban, ha a `"single account"` módot használja.
 
-Íme egy példa arra a auth_config. JSON fájlra, amely szerepel **app**>a minta alkalmazás**fő**>**res**>**RAW** könyvtárában:
+Íme egy példa arra a auth_config.jsfájlra, amelyet a minta alkalmazás **alkalmazás** > **fő** > **res** > **RAW** könyvtára tartalmaz:
 
 ```json
 {
@@ -78,9 +78,9 @@ Előfordulhat, hogy nem tervezi több fiókos üzemmód használatát. Ez akkor 
 
 A megosztott eszköz mód lehetővé teszi, hogy az Android-eszközöket több alkalmazott számára is meg lehessen osztani, miközben biztosítja az eszköz Microsoft Identity-alapú felügyeletét. Az alkalmazottak bejelentkezhetnek az eszközökre, és gyorsan hozzáférhetnek az ügyfelek adataihoz. Ha végzett a váltással vagy a feladattal, egyetlen kattintással kijelentkezhetnek a megosztott eszközön lévő összes alkalmazásból, és az eszköz azonnal készen áll a következő alkalmazott használatára.
 
-Ezzel `isSharedDevice()` a paranccsal megállapíthatja, hogy egy alkalmazás egy megosztott eszköz módban lévő eszközön fut-e. Az alkalmazás ennek a jelzőnek a használatával állapíthatja meg, hogy ennek megfelelően kell-e módosítania az UX-t.
+Ezzel a paranccsal `isSharedDevice()` megállapíthatja, hogy egy alkalmazás egy megosztott eszköz módban lévő eszközön fut-e. Az alkalmazás ennek a jelzőnek a használatával állapíthatja meg, hogy ennek megfelelően kell-e módosítania az UX-t.
 
-Az alábbi kódrészletből megtudhatja, hogyan használhatja `isSharedDevice()`.  Ez a minta alkalmazás `SingleAccountModeFragment` osztálya:
+Az alábbi kódrészletből megtudhatja, hogyan használhatja `isSharedDevice()` .  Ez a `SingleAccountModeFragment` minta alkalmazás osztálya:
 
 ```Java
 deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
@@ -88,7 +88,7 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 
 ### <a name="initialize-the-publicclientapplication-object"></a>A PublicClientApplication objektum inicializálása
 
-Ha a MSAL `"account_mode":"SINGLE"` konfigurációs fájlban be van állítva, akkor a visszaadott alkalmazás objektumát biztonságosan elvégezheti `ISingleAccountPublicCLientApplication`.
+Ha `"account_mode":"SINGLE"` a MSAL konfigurációs fájlban be van állítva, akkor a visszaadott alkalmazás objektumát biztonságosan elvégezheti `ISingleAccountPublicCLientApplication` .
 
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -202,20 +202,20 @@ A következő lépések leírják, hogyan állíthatja be az alkalmazást a Azur
 
 ### <a name="register-your-application-in-azure-active-directory"></a>Az alkalmazás regisztrálása a Azure Active Directoryban
 
-Először regisztráljon az alkalmazást a szervezeti bérlőn belül. Ezután adja meg ezeket az értékeket a auth_config. JSON fájlban, hogy az alkalmazás megfelelően fusson.
+Először regisztráljon az alkalmazást a szervezeti bérlőn belül. Ezután adja meg az alábbi értékeket auth_config.json, hogy az alkalmazás megfelelően fusson.
 
-Ennek módjáról az [alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)című témakörben olvashat bővebben.
+Ennek módjáról az [alkalmazás regisztrálása](./tutorial-v2-android.md#register-your-application)című témakörben olvashat bővebben.
 
 > [!NOTE]
-> Az alkalmazás regisztrálása után a bal oldalon a gyors üzembe helyezési útmutatóban válassza az **Android**lehetőséget. Ez egy olyan oldalra mutat, amelyben meg kell adnia az alkalmazáshoz tartozó **csomag nevét** és **aláírási kivonatát** . Ezek nagyon fontosak annak biztosításához, hogy az alkalmazás konfigurációja működni fog. Ekkor megjelenik egy olyan konfigurációs objektum, amelyet az alkalmazáshoz használhat, amelyet a auth_config. JSON fájlba kivágja és beilleszt.
+> Az alkalmazás regisztrálása után a bal oldalon a gyors üzembe helyezési útmutatóban válassza az **Android**lehetőséget. Ez egy olyan oldalra mutat, amelyben meg kell adnia az alkalmazáshoz tartozó **csomag nevét** és **aláírási kivonatát** . Ezek nagyon fontosak annak biztosításához, hogy az alkalmazás konfigurációja működni fog. Ekkor megjelenik egy olyan konfigurációs objektum, amelyet használhat az alkalmazáshoz, amelyet a fájlra kivágja és beilleszt a auth_config.jsba.
 
-![Az alkalmazás regisztrációs](media/tutorial-v2-shared-device-mode/register-app.png) képernyőjén válassza a **módosítás elvégzése nekem** lehetőséget, majd adja meg, hogy a rövid útmutató milyen értékeket kér a Azure Portal. Ha elkészült, a rendszer létrehozza az összes szükséges konfigurációs fájlt.
+![Az alkalmazás regisztrációs képernyőjén ](media/tutorial-v2-shared-device-mode/register-app.png) válassza a **módosítás elvégzése nekem** lehetőséget, majd adja meg, hogy a rövid útmutató milyen értékeket kér a Azure Portal. Ha elkészült, a rendszer létrehozza az összes szükséges konfigurációs fájlt.
 
 ![Az alkalmazás konfigurációs adatai képernyő](media/tutorial-v2-shared-device-mode/config-info.png)
 
 ## <a name="set-up-a-tenant"></a>Bérlő beállítása
 
-Tesztelési célból állítsa be a következőt a bérlőben: legalább két alkalmazott, egy felhőalapú eszköz rendszergazdája és egy globális rendszergazda. A Azure Portalban állítsa be a felhőalapú eszköz rendszergazdáját a szervezeti szerepkörök módosításával. A Azure Portal a szervezeti szerepköröket a **Azure Active Directory** > **szerepkörök és rendszergazdák** > **Felhőbeli eszköz rendszergazdája**lehetőség kiválasztásával érheti el. Adja hozzá azokat a felhasználókat, akik számára az eszköz megosztott módba helyezhető.
+Tesztelési célból állítsa be a következőt a bérlőben: legalább két alkalmazott, egy felhőalapú eszköz rendszergazdája és egy globális rendszergazda. A Azure Portalban állítsa be a felhőalapú eszköz rendszergazdáját a szervezeti szerepkörök módosításával. A Azure Portal a szervezeti szerepköröket a **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **Felhőbeli eszköz rendszergazdája**lehetőség kiválasztásával érheti el. Adja hozzá azokat a felhasználókat, akik számára az eszköz megosztott módba helyezhető.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Android-eszköz beállítása megosztott módban
 

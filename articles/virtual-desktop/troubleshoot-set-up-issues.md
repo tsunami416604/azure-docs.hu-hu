@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali környezetbeli gazdagép-készlet l
 description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali környezet telepítése során.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006162"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121374"
 ---
 # <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
@@ -252,6 +252,12 @@ the VM.\\\"
 **OK:** Ezt a hibát egy statikus útvonal, tűzfalszabály vagy NSG okozza, amely blokkolja a Azure Resource Manager sablonhoz kötött zip-fájl letöltését.
 
 **Javítás:** Távolítsa el a statikus útvonal, a tűzfalszabály vagy a NSG blokkolását. Szükség esetén megnyithatja a Azure Resource Manager sablon JSON-fájlját egy szövegszerkesztőben, megtekintheti a zip-fájlra mutató hivatkozást, és letöltheti az erőforrást egy engedélyezett helyre.
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>Hiba: a virtuális gép törlése után nem lehet törölni egy munkamenet-gazdagépet a gazdagépről
+
+**OK:** A virtuális gép törlése előtt törölnie kell a munkamenet-gazdagépet.
+
+**Javítás:** Helyezze a munkamenet-gazdagépet kiürítési módba, jelentkezzen ki az összes felhasználót a munkamenet-gazdagépről, majd törölje a gazdagépet.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696521"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119878"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Az Android rendszerhez készült MSAL használata B2C-vel
 
-A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára, hogy [Azure Active Directory B2C (Azure ad B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)használatával hitelesítsék a felhasználókat a közösségi és a helyi identitásokkal. Azure AD B2C egy Identitáskezelés szolgáltatás. Ezzel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják.
+A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára, hogy [Azure Active Directory B2C (Azure ad B2C)](../../active-directory-b2c/index.yml)használatával hitelesítsék a felhasználókat a közösségi és a helyi identitásokkal. Azure AD B2C egy Identitáskezelés szolgáltatás. Ezzel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Ismert hatóságok és átirányítási URI konfigurálása
 
@@ -54,7 +54,7 @@ Az alkalmazás konfigurációs fájlja kettőt deklarál `authorities` . Egyet a
 }
 ```
 
-A `redirect_uri` -t regisztrálni kell az alkalmazás konfigurációjában, valamint a-ben az `AndroidManifest.xml` átirányítás támogatásához az [engedélyezési kód engedélyezése folyamat](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)során.
+A `redirect_uri` -t regisztrálni kell az alkalmazás konfigurációjában, valamint a-ben az `AndroidManifest.xml` átirányítás támogatásához az [engedélyezési kód engedélyezése folyamat](../../active-directory-b2c/authorization-code-flow.md)során.
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication inicializálása
 
@@ -153,7 +153,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Jelszó-módosítási házirendek kezelése
 
-A helyi fiók regisztrálása vagy bejelentkezési felhasználói folyamata egy "**elfelejtett jelszót**" mutat be hivatkozás. Ha erre a hivatkozásra kattint, nem indítja el automatikusan a jelszó-visszaállítás felhasználói folyamatát.
+A helyi fiók regisztrálása vagy bejelentkezési felhasználói folyamata egy "**elfelejtett jelszót**" mutat be hivatkozással. Ha erre a hivatkozásra kattint, nem indítja el automatikusan a jelszó-visszaállítás felhasználói folyamatát.
 
 Ehelyett a hibakódot a `AADB2C90118` rendszer visszaadja az alkalmazásnak. Az alkalmazásnak ezt a hibakódot egy adott felhasználói folyamat futtatásával kell kezelnie, amely alaphelyzetbe állítja a jelszót.
 
@@ -227,7 +227,7 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken jogcímek
 
-A IdToken visszaadott jogcímeket a biztonsági jogkivonat szolgáltatás (STS) tölti fel, nem pedig a MSAL. A használt identitásszolgáltató függően előfordulhat, hogy egyes jogcímek hiányoznak. Egyes IDP jelenleg nem nyújtják be a `preferred_username` jogcímet. Mivel ezt a jogcímet a MSAL használja a gyorsítótárazáshoz, a `MISSING FROM THE TOKEN RESPONSE` rendszer helyőrző értéket használ a helyén. A B2C-IdToken jogcímeivel kapcsolatos további információkért lásd: [a jogkivonatok áttekintése Azure Active Directory B2Cban](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
+A IdToken visszaadott jogcímeket a biztonsági jogkivonat szolgáltatás (STS) tölti fel, nem pedig a MSAL. A használt identitásszolgáltató függően előfordulhat, hogy egyes jogcímek hiányoznak. Egyes IDP jelenleg nem nyújtják be a `preferred_username` jogcímet. Mivel ezt a jogcímet a MSAL használja a gyorsítótárazáshoz, a `MISSING FROM THE TOKEN RESPONSE` rendszer helyőrző értéket használ a helyén. A B2C-IdToken jogcímeivel kapcsolatos további információkért lásd: [a jogkivonatok áttekintése Azure Active Directory B2Cban](../../active-directory-b2c/tokens-overview.md#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Fiókok és házirendek kezelése
 
@@ -239,4 +239,4 @@ Amikor megújítja a Szabályzathoz tartozó jogkivonatokat `acquireTokenSilent`
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Azure Active Directory B2Cról (Azure AD B2C) a [mi Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+További információ a Azure Active Directory B2Cról (Azure AD B2C) a [mi Azure Active Directory B2C?](../../active-directory-b2c/overview.md)

@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828931"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117226"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -178,7 +178,7 @@ Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmaz�
    ![Másolja a titkos értéket, mert később nem lehet beolvasni](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Hozzáférési szabályzatok konfigurálása az erőforrásokon
-Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás számára szükséges erőforrásokhoz. A [Key Vault hozzáférési házirendjeit is frissítenie](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.  
+Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás számára szükséges erőforrásokhoz. A [Key Vault hozzáférési házirendjeit is frissítenie](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.  
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok**lehetőséget.  
 1. Válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd válassza ki az alkalmazáshoz használni kívánt kulcs-, titkos és tanúsítvány-engedélyeket.  Válassza ki a korábban létrehozott szolgáltatásnevet.

@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 0ba348bc9c97ba8be415cac2e5fd7d102d850568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041459"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117073"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -95,7 +95,7 @@ Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` va
 "availableToOtherTenants": false,
 ```
 
-A definiált szerepkörök száma hatással van az alkalmazás jegyzékfájljának korlátaira. A [jegyzékfájlok korlátai](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) oldalon részletesen ismertetjük őket.
+A definiált szerepkörök száma hatással van az alkalmazás jegyzékfájljának korlátaira. A [jegyzékfájlok korlátai](./reference-app-manifest.md#manifest-limits) oldalon részletesen ismertetjük őket.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Felhasználók és csoportok társítása szerepkörökhöz
 
@@ -128,6 +128,6 @@ Ha a különböző alkalmazás-szerepkörökhöz hozzárendelt felhasználók be
 - [Engedélyezés hozzáadása az alkalmazás szerepköreinek & a szerepkörök jogcímeinek használata egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Engedélyezés alkalmazása az alkalmazásokban a Microsoft Identity platformmal (videó)](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory-alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory-alkalmazás jegyzékfájlja](./reference-app-manifest.md)
 - [HRE hozzáférési jogkivonatok](access-tokens.md)
 - [HRE`id_tokens`](id-tokens.md)

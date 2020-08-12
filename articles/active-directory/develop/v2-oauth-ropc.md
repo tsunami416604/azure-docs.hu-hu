@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83770976"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118620"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
 
@@ -33,7 +33,7 @@ A Microsoft Identity platform támogatja a [OAuth 2,0 erőforrás-tulajdonosi je
 > * Az Azure AD-bérlők számára meghívott személyes fiókok nem használhatják a ROPC.
 > * Azok a fiókok, amelyeknek nincsenek jelszavai, nem jelentkezhetnek be a ROPC-on keresztül. Ennél a forgatókönyvnél azt javasoljuk, hogy ehelyett használjon egy másik folyamatot az alkalmazáshoz.
 > * Ha a felhasználóknak [többtényezős hitelesítést (MFA)](../authentication/concept-mfa-howitworks.md) kell használniuk az alkalmazásba való bejelentkezéshez, a rendszer letiltja a helyet.
-> * A ROPC nem támogatott [hibrid identitás-összevonási](/azure/active-directory/hybrid/whatis-fed) forgatókönyvekben (például az Azure ad és a helyszíni fiókok hitelesítéséhez használt ADFS). Ha a felhasználók teljes körűen átirányítják a helyszíni identitás-szolgáltatókat, az Azure AD nem tudja tesztelni a felhasználónevet és a jelszót az identitás-szolgáltatón. Az [átmenő hitelesítés](/azure/active-directory/hybrid/how-to-connect-pta) a ROPC esetében is támogatott.
+> * A ROPC nem támogatott [hibrid identitás-összevonási](../hybrid/whatis-fed.md) forgatókönyvekben (például az Azure ad és a helyszíni fiókok hitelesítéséhez használt ADFS). Ha a felhasználók teljes körűen átirányítják a helyszíni identitás-szolgáltatókat, az Azure AD nem tudja tesztelni a felhasználónevet és a jelszót az identitás-szolgáltatón. Az [átmenő hitelesítés](../hybrid/how-to-connect-pta.md) a ROPC esetében is támogatott.
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Paraméter | Állapot | Description |
+| Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy értékre `consumers` , de beállítható a következőre: `organizations` . |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
@@ -90,7 +90,7 @@ A következő példa egy sikeres jogkivonat-választ mutat be:
 }
 ```
 
-| Paraméter | Formátum | Description |
+| Paraméter | Formátum | Leírás |
 | --------- | ------ | ----------- |
 | `token_type` | Sztring | Mindig állítsa be a következőt: `Bearer` . |
 | `scope` | Szóközzel tagolt karakterláncok | Ha egy hozzáférési jogkivonatot adott vissza, akkor ez a paraméter felsorolja azokat a hatóköröket, amelyekhez a hozzáférési jogkivonat érvényes. |
@@ -105,12 +105,12 @@ A frissítési jogkivonattal új hozzáférési jogkivonatok szerezhetők be, é
 
 Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy az ügyfél nem kapta meg a kért beleegyezett, a hitelesítés sikertelen lesz.
 
-| Hiba | Description | Ügyfél művelete |
+| Hiba | Leírás | Ügyfél művelete |
 |------ | ----------- | -------------|
 | `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva, a rendszer `consent_required` hibaüzenetet küld. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
 | `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a `/common` vagy a `/consumers` hitelesítési környezetekben.  `/organizations`Ehelyett használjon vagy egy bérlői azonosítót. |
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 * Próbálja ki a ROPC a [minta konzol alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)használatával.
-* Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.
+* Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](../azuread-dev/azure-ad-endpoint-comparison.md)ismertetőt.

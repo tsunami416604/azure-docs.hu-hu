@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 65726a1b43cdbcb5a36d4a6d3f3df97669e1028f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a3e6d918f4ab94c4533e930ea73b5267deb53a4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027244"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115526"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban
 
@@ -91,12 +91,12 @@ Ebben a példában a következő forgatókönyvben:
 ## <a name="next-steps"></a>További lépések
 
 - Az alkalmazás és a szolgáltatás egyszerű objektumainak lekérdezéséhez használhatja a [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) is.
-- Az alkalmazás alkalmazás-objektumát a Microsoft Graph API, a [Azure Portal][AZURE-Portal] Application manifest Editor vagy az [Azure ad PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0)segítségével érheti el, ahogyan azt a OData [alkalmazási entitása][MS-Graph-App-Entity]képviseli.
-- A Microsoft Graph API-n vagy az [Azure ad PowerShell-parancsmagokon](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0)keresztül elérheti egy alkalmazás egyszerű szolgáltatásának objektumát, amelyet a OData [ServicePrincipal-entitása][MS-Graph-Sp-Entity]is képvisel.
+- Az alkalmazás alkalmazás-objektumát a Microsoft Graph API, a [Azure Portal][AZURE-Portal] Application manifest Editor vagy az [Azure ad PowerShell-parancsmagok](/powershell/azure/?view=azureadps-2.0)segítségével érheti el, ahogyan azt a OData [alkalmazási entitása][MS-Graph-App-Entity]képviseli.
+- A Microsoft Graph API-n vagy az [Azure ad PowerShell-parancsmagokon](/powershell/azure/?view=azureadps-2.0)keresztül elérheti egy alkalmazás egyszerű szolgáltatásának objektumát, amelyet a OData [ServicePrincipal-entitása][MS-Graph-Sp-Entity]is képvisel.
 
 <!--Image references-->
 
 <!--Reference style links -->
-[MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
-[MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
+[MS-Graph-App-Entity]: /graph/api/resources/application
+[MS-Graph-Sp-Entity]: /graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

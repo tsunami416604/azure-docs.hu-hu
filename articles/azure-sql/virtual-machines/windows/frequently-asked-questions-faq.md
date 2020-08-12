@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955675"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121442"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Gyakori kérdések az Azure-beli virtuális gépek SQL Serveréről
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
 1. **Telepíthetem a SQL Server egy második példányát ugyanarra a virtuális gépre? Megváltoztathatom az alapértelmezett példány telepített funkcióit?**
 
-   Igen. A SQL Server telepítési adathordozó a **C** meghajtó egyik mappájában található. **Setup.exe** futtatása az adott helyről új SQL Server példányok hozzáadásához vagy a SQL Server egyéb telepített szolgáltatásainak módosításához a gépen. Vegye figyelembe, hogy egyes funkciók, például az automatikus biztonsági mentés, az automatikus javítás és a Azure Key Vault integráció, csak az alapértelmezett példányon vagy egy megfelelően konfigurált megnevezett példányon működnek (lásd a 3. kérdést). 
+   Igen. A SQL Server telepítési adathordozó a **C** meghajtó egyik mappájában található. **Setup.exe** futtatása az adott helyről új SQL Server példányok hozzáadásához vagy a SQL Server egyéb telepített szolgáltatásainak módosításához a gépen. Vegye figyelembe, hogy egyes funkciók, például az automatikus biztonsági mentés, az automatikus javítás és a Azure Key Vault integráció, csak az alapértelmezett példányon vagy egy megfelelően konfigurált megnevezett példányon működnek (lásd a 3. kérdést). [A Azure Hybrid Benefiton](licensing-model-azure-hybrid-benefit-ahb-change.md) vagy az utólagos **elszámolású licencelési** modellen keresztül használó ügyfelek a SQL Server több példányát is telepíthetik a virtuális gépre anélkül, hogy további licencelési költségekkel kellene számolniuk. A további SQL Server példányok esetében a rendszererőforrások nem megfelelően vannak konfigurálva. 
 
 1. **Eltávolíthatom az SQL Server alapértelmezett példányát?**
 
@@ -225,7 +225,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    
     Igen. A helyi DTC SQL Server 2016 SP2 és újabb rendszereken támogatott. Az Always On rendelkezésre állási csoportok használatakor azonban meg kell vizsgálni az alkalmazásokat, mivel a feladatátvétel során a repülés során végzett tranzakciók sikertelenek lesznek, és újra kell próbálkozni. A fürtözött DTC a Windows Server 2019-től kezdődően érhető el. 
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 **Windows rendszerű virtuális gépek**:
 

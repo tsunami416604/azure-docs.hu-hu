@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75b6559117420ad75b79c58b219400690b25b4cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185831"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117872"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
 
@@ -38,7 +38,7 @@ Ezek a következőket teszik lehetővé:
 
 - Egyszeri bejelentkezés.
 - A [feltételes hozzáférési szabályzatok](../conditional-access/overview.md)által igényelt eszköz azonosítása. További információ: [eszközkezelés](../conditional-access/concept-conditional-access-conditions.md#device-platforms).
-- Az alkalmazás azonosításának ellenőrzése, amely bizonyos vállalati helyzetekben is szükséges. További információ: az [Intune Mobile Application Management (MAM)](https://docs.microsoft.com/intune/mam-faq).
+- Az alkalmazás azonosításának ellenőrzése, amely bizonyos vállalati helyzetekben is szükséges. További információ: az [Intune Mobile Application Management (MAM)](/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>Migrálás a ADAL-ből a MSAL-be
 
@@ -159,7 +159,7 @@ A(z)
 
 előtagként, amelyet a`CFBundleURLName`
 
-Például:`$"msauth.(BundleId")`
+Például: `$"msauth.(BundleId")`
 
 ```csharp
  <key>CFBundleURLTypes</key>
@@ -241,4 +241,4 @@ További információ az átirányítási URI-portálon való regisztrálásár�
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [, hogyan Xamarin az iOS-specifikus szempontokat a MSAL.net](msal-net-xamarin-ios-considerations.md). 
+Ismerje meg [, hogyan Xamarin az iOS-specifikus szempontokat a MSAL.net](msal-net-xamarin-ios-considerations.md).

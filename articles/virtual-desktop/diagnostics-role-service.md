@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali problémák diagnosztizálása – 
 description: A Windows rendszerű virtuális asztali diagnosztika szolgáltatás használata a problémák diagnosztizálásához.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005098"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121408"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>A Windows rendszerű virtuális asztali problémák azonosítása és diagnosztizálása
 
@@ -60,6 +60,14 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 |8|ConnectionBroken|Az ügyfél és az átjáró vagy a kiszolgáló közötti kapcsolat megszakadt. Nincs szükség beavatkozásra, kivéve, ha váratlanul történik.|
 |14|UnexpectedNetworkDisconnect|A hálózattal létesített kapcsolódás megszakadt. Kérje meg a felhasználót, hogy kapcsolódjon újra.|
 |24|ReverseConnectFailed|A gazdagép virtuális gépe nem rendelkezik közvetlen RD-átjárói vonallal. Győződjön meg arról, hogy az átjáró IP-címe oldható fel.|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>Hiba: nem lehet felhasználói hozzárendeléseket felvenni egy alkalmazás-csoportba
+
+Miután hozzárendelt egy felhasználót egy alkalmazás csoportjához, a Azure Portal egy figyelmeztetést jelenít meg, amely szerint a "munkamenet vége" vagy a "hitelesítési problémák – kiterjesztés Microsoft_Azure_WVD." üzenet jelenik meg. A hozzárendelési lap nem töltődik be, és ezt követően a lapok nem töltődnek le a Azure Portalon (például Azure Monitor, Log Analytics, Service Health stb.).
+
+**OK:** Probléma merült fel a feltételes hozzáférési szabályzattal kapcsolatban. A Azure Portal a SharePoint Online-tól függő Microsoft Graph-token beszerzését kísérli meg. Az ügyfél "Microsoft Office 365 adattárolási használati feltételei" nevű feltételes hozzáférési szabályzattal rendelkezik, amely megköveteli, hogy a felhasználók elfogadják a használati feltételeket az adattárolás eléréséhez. Azonban még nem jelentkezett be, így a Azure Portal nem tudja lekérni a jogkivonatot.
+
+**Javítás:** Mielőtt bejelentkeznek a Azure Portalba, a rendszergazdának először be kell jelentkeznie a SharePointba, és el kell fogadnia a használati feltételeket. Ezután be kell jelentkezniük a Azure Portalba, például a normális kerékvágásba.
 
 ## <a name="next-steps"></a>További lépések
 

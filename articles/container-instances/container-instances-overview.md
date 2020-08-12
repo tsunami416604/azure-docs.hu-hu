@@ -2,14 +2,14 @@
 title: Kiszolgáló nélküli tárolók az Azure-ban
 description: A Azure Container Instances szolgáltatás az elkülönített tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját kínálja anélkül, hogy virtuális gépeket kellene kezelnie, és nem kell magasabb szintű Orchestrator alkalmaznia.
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498684"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121663"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
@@ -35,10 +35,15 @@ A Azure Container Instances támogatja egy parancs futtatását egy futó tárol
 > [!IMPORTANT]
 > 2020. január 13-án Azure Container Instances a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
 
-## <a name="hypervisor-level-security"></a>Hipervizorszintű biztonság
+## <a name="compliant-deployments"></a>Megfelelő központi telepítések
+
+### <a name="hypervisor-level-security"></a>Hipervizorszintű biztonság
 
 Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülönítési és erőforrás-szabályozási funkciót, azonban nem voltak eléggé megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. Az Azure Container Instances használatakor az alkalmazások ugyanannyira el vannak különítve a tárolóban, mintha egy virtuális gépen futnának.
 
+### <a name="customer-data"></a>Ügyféladatok
+
+Az ACI szolgáltatás tárolja azokat a minimális ügyféladatokat, amelyek szükségesek ahhoz, hogy a tároló-csoportok a várt módon fussanak. Az ügyféladatok egyetlen régióban való tárolása jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a [geo](https://azure.microsoft.com/global-infrastructure/geographies/)tárolja. További információért vegye fel velünk a kapcsolatot az Azure-támogatással.
 
 ## <a name="custom-sizes"></a>Egyéni méretek
 

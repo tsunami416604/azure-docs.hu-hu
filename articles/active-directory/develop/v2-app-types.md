@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682279"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121170"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -83,7 +83,7 @@ A felhasználó identitását úgy ellenőrizheti, hogy az azonosító tokent a 
 
 Ha ezt a forgatókönyvet működés közben szeretné látni, próbálja ki a webalkalmazás bejelentkezési kódjának mintáit a [Microsoft Identity platform első lépések](v2-overview.md#getting-started) szakaszában.
 
-Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alkalmazásnak hozzá kell férnie egy másik webszolgáltatáshoz, például egy REST API. Ebben az esetben a webkiszolgáló alkalmazás egy kombinált OpenID Connect és OAuth 2,0 flow-t alkalmaz a [OAuth 2,0 engedélyezési kód folyamatával](v2-oauth2-auth-code-flow.md). További információ erről a forgatókönyvről: [Ismerkedés a Web Apps szolgáltatással és a webes API-](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)kkal.
+Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alkalmazásnak hozzá kell férnie egy másik webszolgáltatáshoz, például egy REST API. Ebben az esetben a webkiszolgáló alkalmazás egy kombinált OpenID Connect és OAuth 2,0 flow-t alkalmaz a [OAuth 2,0 engedélyezési kód folyamatával](v2-oauth2-auth-code-flow.md). További információ erről a forgatókönyvről: [Ismerkedés a Web Apps szolgáltatással és a webes API-](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)kkal.
 
 
 ## <a name="web-apis"></a>Webes API-k

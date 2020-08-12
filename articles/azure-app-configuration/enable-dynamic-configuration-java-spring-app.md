@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327922"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121561"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Oktatóanyag: dinamikus konfiguráció használata Java Spring-alkalmazásokban
 
@@ -36,7 +36,7 @@ Ezután nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adjon hozz�
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -46,11 +46,33 @@ Ezután nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adjon hozz�
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-Mentse a fájlt, majd a szokásos módon hozza létre és futtassa az alkalmazást.
+## <a name="run-and-test-the-app-locally"></a>Az alkalmazás helyi futtatása és tesztelése
+
+1. Állítsa össze a Spring Boot-alkalmazást a Mavennel, és futtassa.
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. Nyisson meg egy böngészőablakot, és lépjen a következő URL-címre: `http://localhost:8080` .  Ekkor megjelenik a kulcshoz tartozó üzenet. 
+
+    Az alkalmazás teszteléséhez a *curl* is használható, például: 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. A dinamikus konfiguráció teszteléséhez nyissa meg az alkalmazáshoz társított Azure app Configuration Portalt. Válassza a **Configuration Explorer**lehetőséget, és frissítse a megjelenített kulcs értékét, például:
+    | Kulcs | Érték |
+    |---|---|
+    | alkalmazás/config. Message | Hello – frissítve |
+
+1. Az új üzenet megjelenítéséhez frissítse a böngésző lapját.
 
 ## <a name="next-steps"></a>További lépések
 

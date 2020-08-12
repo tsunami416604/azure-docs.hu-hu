@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5a74f1ca8d1055885561a35dbd18899193d3924d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984137"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121425"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
 > 
@@ -43,7 +43,7 @@ Ellenőrizze a következő elemeket:
 * A VNet virtuális hálózati átjárója Útvonalalapú. Ha házirendalapú VPN-átjáróval rendelkezik, törölnie kell a virtuális hálózati átjárót, és létre kell hoznia egy új VPN-átjárót Útvonalalapú.
 * A címtartományok egyike sem fedi át a virtuális hálózatok, amelyhez ez a VNet csatlakozik.
 * Kompatibilis a VPN-eszközzel, és valaki, aki be tudja állítani. Lásd: [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Tudnivalók a VPN-eszközökről). Ha nem jártas a VPN-eszköz konfigurálásában, vagy nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, együtt kell működnie valakivel, aki ezeket az adatokat megadhatja Önnek.
-* A VPN-eszközhöz külsőleg megtekintett nyilvános IP-címet kell megnéznie. Ez az IP-cím nem lehet NAT mögötti.
+* A VPN-eszközhöz külsőleg megtekintett nyilvános IP-címet kell megnéznie.
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>1. rész – kapcsolat konfigurálása
 1. Egy böngészőből keresse fel az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.

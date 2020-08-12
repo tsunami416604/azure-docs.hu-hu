@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282993"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118450"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | --- | --- | --- |
 | ID | Kötelező | Az Azure AD ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
 | Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
-| IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](https://msdn.microsoft.com/library/az4se3k1.aspx)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
+| IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](/dotnet/standard/base-types/standard-date-and-time-format-strings)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
 | AssertionConsumerServiceUrl | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie az `RedirectUri` Azure ad-ban található felhőalapú szolgáltatással. |
 | ForceAuthn | Választható | Ez egy logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak újra hitelesítenie kell magát, még akkor is, ha az Azure AD-vel érvényes munkamenetük van. |
 | IsPassive | Választható | Ez egy logikai érték, amely azt határozza meg, hogy az Azure AD-nak csendes felhasználói beavatkozás nélkül kell-e hitelesítenie a felhasználót a munkamenet-cookie-val, ha van ilyen. Ha ez igaz, az Azure AD megkísérli hitelesíteni a felhasználót a munkamenet-cookie használatával. |
@@ -104,7 +104,7 @@ Ha meg van adni, ne adja meg az `ProxyCount` attribútumot `IDPListOption` vagy 
 ### <a name="subject"></a>Tárgy
 Ne tartalmazzon egy `Subject` elemet. Az Azure AD nem támogatja a kérelem tárgyának megadását, és hibaüzenetet ad vissza, ha van ilyen.
 
-## <a name="response"></a>Reagálás
+## <a name="response"></a>Válasz
 Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a Cloud Service-nek. A sikeres bejelentkezési kísérletre adott válasz az alábbi példához hasonlóan néz ki:
 
 ```
@@ -150,7 +150,7 @@ Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a C
 </samlp:Response>
 ```
 
-### <a name="response"></a>Reagálás
+### <a name="response"></a>Válasz
 
 Az `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azure AD beállítja `ID` az `Version` elemet és az `IssueInstant` értékeket a `Response` elemben. A következő attribútumokat is beállítja:
 
