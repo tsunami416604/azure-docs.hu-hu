@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET-mag
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -468,13 +468,13 @@
     - name: A felhasználók automatikus átadása (SCIM)
       items:
         - name: Mi az automatikus felhasználóátadás?
-          href: /azure/active-directory/app-provisioning/user-provisioning
+          href: ../app-provisioning/user-provisioning.md
         - name: SCIM-végpont fejlesztése és integrálása
-          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
         - name: Gyakori üzembehelyezési helyzetek
-          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+          href: ../app-provisioning/scim-graph-scenarios.md
         - name: Automatikus konfigurálás az MS Graph használatával
-          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+          href: ../app-provisioning/application-provisioning-configure-api.md
     - name: Az Azure Portal súgótémakörei
       items:
         - name: A jogkivonatok alapértelmezett élettartama egyéni fejlesztésű alkalmazások esetében
@@ -630,7 +630,7 @@
         - name: Közzététel az Azure AD alkalmazáskatalógusban
           href: v2-howto-app-gallery-listing.md
         - name: Közzététel az Office 365 Értékesítői információközpontban
-          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
 - name: Referencia
   items:
     - name: Alkalmazásjegyzék
@@ -642,7 +642,7 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: A Microsoft Graph identitási és hozzáférési API-jai
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
+      href: /graph/api/resources/azure-ad-overview
     - name: Hitelesítés és hitelesítési hibakódok
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
@@ -663,7 +663,7 @@
     - name: Próbálja ki a Microsofttal való bejelentkezést
       href: 'https://azure.microsoft.com/develop/identity/signin/'
     - name: Azure-erőforrások felügyelt identitásai
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md
     - name: Segítség kérése
       displayName: 'support, help options'
       href: developer-support-help-options.md
