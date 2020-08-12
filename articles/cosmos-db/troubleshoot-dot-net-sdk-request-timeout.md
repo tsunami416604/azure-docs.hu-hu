@@ -7,12 +7,12 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 09442e01fa160d3851169a51230fa4cbef7e0980
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987409"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118569"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Azure Cosmos DB .NET SDK-kérelem időtúllépésének diagnosztizálása és megoldása
 A HTTP 408-hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az időtúllépési korlát megkezdése előtt.
@@ -51,6 +51,9 @@ Ha Azure-beli virtuális gépeken fut, kövesse a [SNAT-portok kimerülésének 
 Ha Azure App Serviceon fut, kövesse a [csatlakoztatási hibák hibaelhárítási útmutatóját](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) , és [használja a app Service diagnosztikát](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
 
 #### <a name="solution-3"></a>3. megoldás:
+Ha Azure Functionson fut, ellenőrizze, hogy az összes érintett szolgáltatáshoz (beleértve a Cosmos DB-hoz) tartozó különálló/statikus ügyfelek fenntartására vonatkozó [Azure functions ajánlást](../azure-functions/manage-connections.md#static-clients) követi-e, és ellenőrizze a [szolgáltatási korlátokat](../azure-functions/functions-scale.md#service-limits) a függvényalkalmazás üzemeltetésének típusa és mérete alapján.
+
+#### <a name="solution-4"></a>4. megoldás:
 Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK-ban konfigurált kapcsolatok számát `ConnectionPolicy` .
 Ellenkező esetben a csatlakoztatási problémákkal szembesül.
 

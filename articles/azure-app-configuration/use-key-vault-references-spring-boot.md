@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371158"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121595"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault-referenciák használata Java Spring-alkalmazásokban
 
@@ -61,7 +61,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     * A **Key Vault neve mezőben**egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2**.
     * A **régió** legördülő listából válassza ki a kívánt helyet.
 1. Hagyja meg a többi **create Key Vault** -beállítást az alapértelmezett értékekkel.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére.
 
@@ -78,7 +78,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     * **Név**: írja be az **üzenetet**.
     * **Érték**: adja meg **a Hello értéket Key Vault**.
 1. Hagyja a másik **titkos** tulajdonságot az alapértelmezett értékekkel.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
 
@@ -102,7 +102,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
     A művelet a kulcs/érték párok sorozatát adja vissza:
 
-    ```console
+    ```json
     {
     "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
@@ -118,31 +118,51 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 1. A következő parancs futtatásával engedélyezheti, hogy az egyszerű szolgáltatásnév hozzáférjen a kulcstartóhoz:
 
-    ```console
+    ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
 1. Futtassa az alábbi parancsot az Object-ID beszerzéséhez, majd adja hozzá az alkalmazás konfigurációjához.
 
-    ```console
+    ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Hozza létre az alábbi környezeti változókat az előző lépésben megjelenő szolgáltatásnév értékeinek használatával:
+1. Hozza létre a környezeti változókat **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET**és **AZURE_TENANT_ID**. Használja az előző lépésekben megjelenő szolgáltatásnév értékeit. A parancssorban futtassa a következő parancsokat, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
-    * **AZURE_CLIENT_ID**: *clientId*
-    * **AZURE_CLIENT_SECRET**: *clientSecret*
-    * **AZURE_TENANT_ID**: *tenantId*
+    ```cmd
+    setx AZURE_CLIENT_ID "clientId"
+    setx AZURE_CLIENT_SECRET "clientSecret"
+    setx AZURE_TENANT_ID "tenantId"
+    ```
+
+    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
+
+    ```azurepowershell
+    $Env:AZURE_CLIENT_ID = "clientId"
+    $Env:AZURE_CLIENT_SECRET = "clientSecret"
+    $Env:AZURE_TENANT_ID = "tenantId"
+    ```
+
+    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
+
+    ```cmd
+    export AZURE_CLIENT_ID ='clientId'
+    export AZURE_CLIENT_SECRET ='clientSecret'
+    export AZURE_TENANT_ID ='tenantId'
+    ```
+
 
 > [!NOTE]
 > Ezek a Key Vault hitelesítő adatok csak az alkalmazáson belül használatosak.  Az alkalmazás közvetlenül a Key Vault használatával hitelesíti ezeket a hitelesítő adatokat az alkalmazás konfigurációs szolgáltatásának bevonása nélkül.  A Key Vault a kulcsok megosztása vagy kihelyezése nélkül biztosítja az alkalmazás és az alkalmazás konfigurációs szolgáltatásának hitelesítését.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>A kód frissítése Key Vault-hivatkozás használatára
 
-1. Hozzon létre egy **APP_CONFIGURATION_ENDPOINT**nevű környezeti változót. Állítsa az értékét a végpontra az alkalmazás konfigurációs tárolójában. A végpontot a Azure Portal **hozzáférési kulcsok** paneljén találja.
+1. Hozzon létre egy **APP_CONFIGURATION_ENDPOINT**nevű környezeti változót. Állítsa be az értékét az alkalmazás konfigurációs tárolójának végpontján. A végpontot a Azure Portal **hozzáférési kulcsok** paneljén találja. A módosítás érvénybe léptetéséhez indítsa újra a parancssort. 
 
-1. Nyissa meg a *bootstrap. properties* mappát az *erőforrások* mappában. Módosítsa a fájlt úgy, hogy az alkalmazás konfigurációs végpontját használja, nem pedig egy kapcsolódási karakterláncot.
+
+1. Nyissa meg a *bootstrap. properties* mappát az *erőforrások* mappában. Frissítse ezt a fájlt a **APP_CONFIGURATION_ENDPOINT** érték használatára. Távolítsa el a fájlban lévő kapcsolódási sztringre mutató hivatkozásokat. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -218,7 +238,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     }
     ```
 
-1. Hozzon létre egy új fájlt az erőforrások META-INF könyvtárában, a *Spring. Factorys* néven, és vegye fel.
+1. Hozzon létre egy új fájlt a sources META-INF könyvtárban, a *Spring. Factorys* néven, és adja hozzá az alábbi kódot.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
@@ -244,7 +264,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy alkalmazás-konfigurációs kulcsot, amely a Key Vaultban tárolt értékre hivatkozik. Ha szeretné megtudni, hogyan használhatja a Feature Flags szolgáltatást a Java Spring-alkalmazásban, folytassa a következő oktatóanyaggal.
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc23a61c88337c152a764cc0ec90ddbbad25cef1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479113"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114727"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt az MVC-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)?
 
@@ -31,7 +31,7 @@ További információ a csatlakoztatott szolgáltatás használatáról: [első 
 
 Hatással van a projektfájl (*. NET-referenciák) és a `packages.config` (NuGet-hivatkozások) elemre.
 
-| Típus | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | Microsoft. IdentityModel. Protocol. Extensions |
 | NET NuGet | Microsoft. Owin |
@@ -46,7 +46,7 @@ Hatással van a projektfájl (*. NET-referenciák) és a `packages.config` (NuGe
 
 További hivatkozások ha a címtár- **adatok olvasása** lehetőséget választotta:
 
-| Típus | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (csak Visual Studio 2015) |
@@ -60,7 +60,7 @@ További hivatkozások ha a címtár- **adatok olvasása** lehetőséget válasz
 
 A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio 2015-as verziójában):
 
-| Típus | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | Microsoft. AspNet. Identity. Core |
 | NET NuGet | Microsoft. AspNet. Identity. EntityFramework |
@@ -162,5 +162,5 @@ A csatlakoztatott szolgáltatás hozzáadásakor a Visual Studio 2015 biztonság
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
+- [Hitelesítési forgatókönyvek Azure Active Directory](./authentication-vs-authorization.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

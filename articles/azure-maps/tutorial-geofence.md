@@ -3,18 +3,18 @@ title: 'Oktatóanyag: geokerítésen létrehozása és eszközök nyomon követ�
 description: Ismerje meg, hogyan állíthat be geokerítésen. Tekintse meg, hogyan követheti nyomon az eszközöket a geokerítésen viszonyítva a Azure Maps térbeli szolgáltatás használatával.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1044348e50f4208038739975e7355fb6f4873454
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037643"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121238"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag végigvezeti a Azure Maps Geokerítésen-szolgáltatások lé
 A Azure Maps számos szolgáltatást biztosít a fenti forgatókönyvben az építkezési terület bevezetését és onnan való kilépését támogató berendezések nyomon követésének támogatásához. Ebben az oktatóanyagban a következőket ismertetjük:
 
 > [!div class="checklist"]
-> * Töltse fel az [Geoencing GeoJSON-adatok](geofence-geojson.md) körét, amelyek meghatározzák a figyelni kívánt építkezési területeket. Az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) -val a geofences-t sokszög-koordinátákként kell feltölteni a Azure Maps-fiókjába.
+> * Töltse fel az [Geokerítések GeoJSON-adatok](geofence-geojson.md) körét, amelyek meghatározzák a figyelni kívánt építkezési területeket. Az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) -val a geofences-t sokszög-koordinátákként kell feltölteni a Azure Maps-fiókjába.
 > * Állítson be két [logikai alkalmazást](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , amely a indításakor elküldi az e-mailes értesítéseket az építkezési helynek Operations Manager amikor a berendezés belép és kilép a geokerítésen területről.
 > * A [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) előfizethet Azure Maps geokerítésen-be és-kilépési eseményekre. Beállítunk két webhook esemény-előfizetést, amely meghívja a két Logic Appsban definiált HTTP-végpontokat. A Logic Apps ezután elküldi a szükséges, a geokerítésen meghaladó vagy oda áthelyezett berendezések megfelelő e-mail-értesítéseit.
 > * A [Search Geokerítésen Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) -val értesítéseket kaphat, amikor egy berendezés kilép, és belép a geokerítésen területekre.

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696418"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120898"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>A MSAL JS és a ADAL JS közötti különbségek
 
@@ -30,7 +30,7 @@ Ez a cikk a javascripthez készült Microsoft Authentication Library (MSAL.js) �
 
 A legtöbb esetben a Microsoft Identity platformot és MSAL.js-t szeretné használni, amely a Microsoft-hitelesítési kódtárak legújabb generációja. A MSAL.js használatával az Azure AD-vel (munkahelyi és iskolai fiókokkal), a Microsoft (személyes) fiókokkal (MSA) vagy a Azure AD B2Cekkel bejelentkezett felhasználók számára tokeneket kell beszerezni az alkalmazásba.
 
-Ha már ismeri a v 1.0-s végpontot (és ADAL.js), érdemes elolvasnia, hogy [Mi a különbség a v 2.0-végpontról?](active-directory-v2-compare.md).
+Ha már ismeri a v 1.0-s végpontot (és ADAL.js), érdemes elolvasnia, hogy [Mi a különbség a v 2.0-végpontról?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Azonban továbbra is ADAL.js kell használnia, ha az alkalmazásnak a [Active Directory összevonási szolgáltatások (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)korábbi verzióival kell bejelentkeznie a felhasználókba.
 
@@ -96,4 +96,4 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
     ```
 
 ## <a name="next-steps"></a>További lépések
-További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](active-directory-v2-compare.md)ismertető témakört.
+További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakört.

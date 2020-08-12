@@ -1,16 +1,16 @@
 ---
-title: Ügyfél beléptetése az Azure Lighthouse-be
+title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133487"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118875"
 ---
-# <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél beléptetése az Azure Lighthouse-be
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
 Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe egy ügyfelet az Azure Lighthouse szolgáltatásban. Ha így tesz, az ügyfél delegált erőforrásai (előfizetések és/vagy erőforráscsoportok) a saját Azure Active Directory (Azure AD) bérlőn keresztül érhetők el és kezelhetők az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)használatával.
 
@@ -86,7 +86,7 @@ Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhaszn
 (Get-AzADUser -UserPrincipalName '<yourUPN>').id
 
 # To retrieve the objectId for an SPN
-(Get-AzADApplication -DisplayName '<appDisplayName>').objectId
+(Get-AzADApplication -DisplayName '<appDisplayName>' | Get-AzADServicePrincipal).Id
 
 # To retrieve role definition IDs
 (Get-AzRoleDefinition -Name '<roleName>').id
@@ -116,7 +116,7 @@ az role definition list --name "<roleName>" | grep name
 
 Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](../../azure-resource-manager/index.yml) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára, amikor a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) megtekinti az ajánlat részleteit.
 
-|Mező  |Definíció  |
+|Mező  |Meghatározás  |
 |---------|---------|
 |**mspOfferName**     |A definíciót leíró név. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként.         |
 |**mspOfferDescription**     |Az ajánlat rövid leírása (például "contoso VM Management ajánlat").      |
@@ -254,7 +254,7 @@ Ha az ügyfél-előfizetés sikeresen bekerült az Azure Lighthouse-be, a szolg�
 A szolgáltató bérlője:
 
 1. Navigáljon a [saját ügyfelek oldalra](view-manage-customers.md).
-2. Válassza az **ügyfelek**lehetőséget.
+2. Válassza az **Ügyfelek** lehetőséget.
 3. Győződjön meg arról, hogy az előfizetés (ok) a Resource Manager-sablonban megadott ajánlat nevével jelenik meg.
 
 > [!IMPORTANT]
@@ -263,7 +263,7 @@ A szolgáltató bérlője:
 Az ügyfél bérlője:
 
 1. Navigáljon a szolgáltatók [lapra](view-manage-service-providers.md).
-2. Válassza ki a **szolgáltatói ajánlatokat**.
+2. Válassza a **Szolgáltatói ajánlatok** lehetőséget.
 3. Győződjön meg arról, hogy az előfizetés (ok) a Resource Manager-sablonban megadott ajánlat nevével jelenik meg.
 
 > [!NOTE]
@@ -285,7 +285,7 @@ Get-AzContext
 az account list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

@@ -12,12 +12,12 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: c2673552638c1829b1640724634e365dc6595703
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284421"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118263"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egyszeri kijelentkezési SAML protokoll
 
@@ -42,7 +42,7 @@ Az `LogoutRequest` Azure ad-nak eljuttatott elem a következő attribútumokat i
 
 * `ID`-Ez azonosítja a kijelentkezési kérést. A értéke `ID` nem kezdődhet számmal. A tipikus eljárás egy GUID **azonosítójának** hozzáfűzése a GUID karakterlánc-ábrázolásához.
 * `Version`– Az elem értékét állítsa **2,0**-ra. Kötelezően megadandó érték.
-* `IssueInstant`– Ez egy, az `DateTime` egyezményes világidő (UTC) és az [oda-és visszaút formátuma ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)karakterlánc. Az Azure AD egy ilyen típusú értéket vár, de nem kényszeríti ki.
+* `IssueInstant`– Ez egy, az `DateTime` egyezményes világidő (UTC) és az [oda-és visszaút formátuma ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)karakterlánc. Az Azure AD egy ilyen típusú értéket vár, de nem kényszeríti ki.
 
 ### <a name="issuer"></a>Kiállító
 Az `Issuer` a elemnek `LogoutRequest` pontosan egyeznie kell az Azure ad felhőalapú szolgáltatásának egyik **ServicePrincipalNames** . Ez általában az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI-ra** van beállítva.

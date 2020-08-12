@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067630"
+ms.locfileid: "88120643"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -105,7 +105,9 @@ Az Azure Storage egy adatbázis összes adatfájlját tartalmazza. Az oldal-kisz
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-A biztonsági másolatok a fájl-pillanatkép-alapúak, és így szinte azonnal megtalálhatók. A tárolási és a számítási elkülönítés lehetővé teszi a biztonsági mentési/visszaállítási művelet lenyomását a tárolási rétegre, hogy csökkentse az elsődleges számítási replika feldolgozási terhelését. Ennek eredményeképpen az adatbázis biztonsági mentése nem befolyásolja az elsődleges számítási csomópont teljesítményét. Hasonlóképpen, a visszaállítások a fájl-Pillanatképek visszavonásával is elvégezhető, így az nem az adatműveletek mérete. A visszaállítás egy állandó idejű művelet, és akár több terabájtos adatbázis is visszaállítható óra vagy nap helyett percek alatt. Új adatbázisok létrehozása egy meglévő biztonsági másolat visszaállításával is kihasználhatja ezt a funkciót: adatbázis-másolatok létrehozása fejlesztési vagy tesztelési célokra, akár terabájt méretű adatbázisok esetén is, percek alatt megvalósítható.
+A biztonsági másolatok a fájl-pillanatkép-alapúak, és így szinte azonnal megtalálhatók. A tárolási és a számítási elkülönítés lehetővé teszi a biztonsági mentési/visszaállítási művelet lenyomását a tárolási rétegre, hogy csökkentse az elsődleges számítási replika feldolgozási terhelését. Ennek eredményeképpen az adatbázis biztonsági mentése nem befolyásolja az elsődleges számítási csomópont teljesítményét. Hasonlóképpen, az időponthoz való helyreállítás (PITR) a fájl-Pillanatképek visszaállításával történik, és ez nem az adatműveletek mérete. Az ugyanabban az Azure-régióban található nagy kapacitású-adatbázisok visszaállítása állandó művelet, és akár több terabájtos adatbázis is visszaállítható óra vagy nap helyett percek alatt. Új adatbázisok létrehozása egy meglévő biztonsági másolat visszaállításával is kihasználhatja ezt a funkciót: adatbázis-másolatok létrehozása fejlesztési vagy tesztelési célokra, akár terabájt méretű adatbázisok esetén is, percek alatt megvalósítható.
+
+A nagy kapacitású adatbázisok geo-visszaállításával kapcsolatban lásd: [nagy kapacitású-adatbázis visszaállítása egy másik régióba](#restoring-a-hyperscale-database-to-a-different-region).
 
 ## <a name="scale-and-performance-advantages"></a>Méretezési és teljesítménybeli előnyök
 
@@ -156,7 +158,7 @@ A nagy kapacitású SLA esetében lásd: [Azure SQL Database SLA](https://azure.
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Vész-helyreállítási nagy kapacitású-adatbázisokhoz
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Nagy kapacitású-adatbázis visszaállítása más földrajzi helyekre
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>Nagy kapacitású-adatbázis visszaállítása egy másik régióba
 
 Ha Azure SQL Database egy nagy kapacitású-adatbázist kell visszaállítani egy olyan régióba, amely nem a jelenleg üzemeltetett, akkor a vész-helyreállítási művelet vagy a részletezés, az áthelyezés vagy más ok miatt az elsődleges módszer az adatbázis geo-visszaállításának elvégzése. Ez pontosan ugyanazokat a lépéseket foglalja magában, mint amelyeket a SQL Database más adatbázisainak egy másik régióba való visszaállításához használ:
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552781"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115611"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>A Directory sémakezelő bővítmény attribútumainak használata a jogcímek között
 
@@ -34,7 +34,7 @@ A Directory sémakezelő bővítmény attribútumának azonosítója *Extension_
 ## <a name="registering-and-using-directory-schema-extensions"></a>A címtár-séma bővítményeinek regisztrálása és használata
 A címtár-séma bővítményeinek attribútumai kétféleképpen regisztrálhatók és tölthetők fel:
 
-- Az AD-kapcsolódás konfigurálásával létrehozhatók és szinkronizálhatók az adatok a helyszíni AD-ből. Lásd: [Azure ad Connect Sync Directory Extensions](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions).
+- Az AD-kapcsolódás konfigurálásával létrehozhatók és szinkronizálhatók az adatok a helyszíni AD-ből. Lásd: [Azure ad Connect Sync Directory Extensions](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
 - A Microsoft Graph használatával regisztrálhat, beállíthatja a (z) értékeket, és beolvashatja a címtár-séma bővítmény attribútumait a címtár-séma [bővítményeiből | ](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) [A AzureAD PowerShell-parancsmagokkal Graph API a](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)fogalmakat és/vagy a PowerShellt és a bővítmény-attribútumok kezelését.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Jogcímek kibocsátása az AD-kapcsolattal létrehozott címtár-séma bővítmény attribútumaiból származó adatokkal
@@ -71,6 +71,6 @@ Ahol a *xxxxxxx* annak az alkalmazásnak az azonosítója, amelyben a bővítmé
 >
 > A beépített címtár attribútumaihoz használt "id" paraméter a "ExtensionID" a címtár-bővítmény attribútumaihoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [adhat hozzá egyéni vagy további jogcímeket a SAML 2,0 és a JSON web tokens (JWT) jogkivonatokhoz](active-directory-optional-claims.md). 
 - Megtudhatja, hogyan [szabhatja testre a jogkivonatokban kibocsátott jogcímeket egy adott alkalmazáshoz](active-directory-claims-mapping.md).

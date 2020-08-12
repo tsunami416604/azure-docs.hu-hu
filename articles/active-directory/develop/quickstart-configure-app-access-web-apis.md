@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: c91c3dfc23c0a8a9dffb38788f3a8fea08096f5c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825055"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120864"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
@@ -60,7 +60,7 @@ A nyilvános ügyfelek javasolt átirányítási URI-azonosítóinak kiválaszt�
 1. Válasszon ki egy vagy több átirányítási URI-t az alkalmazáshoz. Egyéni átirányítási URI-t is megadhat. Ha nem tudja, mit kell használni, tekintse meg a könyvtár dokumentációját.
 1. Kattintson a **Mentés** gombra.
 
-Bizonyos korlátozások vonatkoznak az átirányítási URI-k használatára. További információ: az [átirányítási URI/válasz URL-címekre vonatkozó korlátozások és korlátozások](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+Bizonyos korlátozások vonatkoznak az átirányítási URI-k használatára. További információ: az [átirányítási URI/válasz URL-címekre vonatkozó korlátozások és korlátozások](./reply-url.md).
 
 > [!NOTE]
 > Próbálja ki az új **hitelesítési** beállításokat, ahol konfigurálhatja az alkalmazás beállításait a célként használni kívánt platform vagy eszköz alapján.
@@ -113,7 +113,7 @@ Az Alkalmazásbeállítások a platform vagy az eszköz alapján történő konf
    | **Mobil-és asztali alkalmazások**  | Választható. Válassza a javasolt **átirányítási URI** -k egyikét, ha asztali és eszközökhöz készült alkalmazásokat készít.<br/>Választható. Adjon meg egy **Egyéni átirányítási URI**-t, amely azt a helyet használja, ahol az Azure ad átirányítja a felhasználókat a hitelesítési kérésekre adott válaszként. Például olyan .NET Core-alkalmazásokhoz, ahol az interakciót szeretné használni, használja a következőt: `http://localhost` . |
 
    > [!NOTE]
-   > Active Directory összevonási szolgáltatások (AD FS) (AD FS) és Azure AD B2C esetén a portszámot is meg kell adni.  Példa: `http://localhost:1234`.
+   > Active Directory összevonási szolgáltatások (AD FS) (AD FS) és Azure AD B2C esetén a portszámot is meg kell adni.  Például: `http://localhost:1234`.
 
    > [!IMPORTANT]
    > Olyan mobileszközök esetében, amelyek nem a legújabb Microsoft-hitelesítési függvénytárat (MSAL) használják, vagy nem használ közvetítőt, konfigurálnia kell az alkalmazások átirányítási URI-azonosítóit az asztali és az **eszközökön**.
@@ -198,7 +198,7 @@ A beleegyezés kérése lehetőséget biztosít az **elfogadás** vagy a **Vissz
 > [!NOTE]
 > A rendszergazdai jóváhagyás megadása a jóváhagyás megadásával, valamint a portálon megjelenő rendszergazdai jóváhagyás állapotával **kapcsolatos késleltetés** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő rövid útmutatóval, amelyből megtudhatja, hogyan konfigurálhatja, hogy mely fióktípus férhet hozzá az alkalmazáshoz. Előfordulhat például, hogy korlátozni szeretné a hozzáférést csak a szervezetben lévő felhasználókra (egybérlős), vagy más Azure AD-bérlők (több-bérlős) és személyes Microsoft-fiókkal (MSA) rendelkező felhasználók számára.
 

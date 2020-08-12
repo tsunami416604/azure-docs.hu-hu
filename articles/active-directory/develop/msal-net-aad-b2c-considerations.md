@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5cc53d909ed090e152af84da49c8e87907f6bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883226"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120609"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -134,7 +134,7 @@ A Felhasználónév/jelszó használatával ROPC-folyamatokban több dolgot is f
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>A ROPC folyamat konfigurálása Azure AD B2C
 
-A Azure AD B2C-bérlőben hozzon létre egy új felhasználói folyamatot, és válassza a **Bejelentkezés a ROPC használatával** lehetőséget a felhasználói folyamat ROPC engedélyezéséhez. További információ: [az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása](/azure/active-directory-b2c/configure-ropc).
+A Azure AD B2C-bérlőben hozzon létre egy új felhasználói folyamatot, és válassza a **Bejelentkezés a ROPC használatával** lehetőséget a felhasználói folyamat ROPC engedélyezéséhez. További információ: [az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása](../../active-directory-b2c/configure-ropc.md).
 
 `IPublicClientApplication`a `AcquireTokenByUsernamePassword` metódust tartalmazza:
 
@@ -182,7 +182,7 @@ Egy ilyen forgatókönyv tünete az, hogy a MSAL.NET akkor adja vissza, `Missing
 
 A javasolt Áthidaló megoldás a korábban leírt [szabályzat gyorsítótárazásának](#acquire-a-token-to-apply-a-policy) használata.
 
-Másik lehetőségként használhatja a `tid` jogcímet, ha [egyéni házirendeket](../../active-directory-b2c/custom-policy-get-started.md) használ a Azure ad B2Cban. Az egyéni szabályzatok a [jogcím-átalakítás](/azure/active-directory-b2c/claims-transformation-technical-profile)használatával további jogcímeket adhatnak vissza az alkalmazáshoz.
+Másik lehetőségként használhatja a `tid` jogcímet, ha [egyéni házirendeket](../../active-directory-b2c/custom-policy-get-started.md) használ a Azure ad B2Cban. Az egyéni szabályzatok a [jogcím-átalakítás](../../active-directory-b2c/claims-transformation-technical-profile.md)használatával további jogcímeket adhatnak vissza az alkalmazáshoz.
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>A "hiányzó jogkivonat-válasz" megoldásának enyhítése
 
@@ -190,7 +190,7 @@ Az egyik lehetőség a jogcím használata a `name` helyett `preferred_username`
 
 A felhasználói folyamatok által visszaadott jogcímek meghatározásával kapcsolatos további információkért lásd [: oktatóanyag: felhasználói folyamatok létrehozása Azure ad B2Cban](../../active-directory-b2c/tutorial-create-user-flows.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 

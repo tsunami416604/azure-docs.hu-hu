@@ -12,14 +12,14 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256696"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120813"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: bérlő beállítása
+# <a name="quickstart-set-up-a-tenant"></a>Gyorsútmutató: Bérlő beállítása
 
 A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft Identity platform használatának megkezdéséhez hozzá kell férnie egy olyan környezethez (más néven Azure AD-bérlőhöz), amely képes regisztrálni és kezelni az alkalmazásokat, hozzáférni Microsoft 365 adatokhoz, és üzembe helyezi az egyéni feltételes hozzáférési és bérlői korlátozásokat.
 
@@ -69,8 +69,8 @@ Ha még nem rendelkezik Azure AD-Bérlővel, vagy létre szeretne hozni egy úja
 
 A közösségi és helyi fiók bejelentkeztetésére szolgáló alkalmazások létrehozásának megkezdéséhez egy Azure AD B2C-bérlőt kell létrehoznia. A létrehozást az [Azure AD B2C-bérlők létrehozását ismertető](../../active-directory-b2c/tutorial-create-tenant.md) témakör utasításait követve kezdheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazás regisztrálása](quickstart-register-app.md) és integrálása a Microsoft Identity platformmal. 
-* Ismerje meg a [hitelesítés alapjait](authentication-scenarios.md).
+* Ismerje meg a [hitelesítés alapjait](./authentication-vs-authorization.md).
 * Az előfizetések és az Azure AD-bérlők közötti kapcsolat részleteiért tekintse meg az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md) című témakört.

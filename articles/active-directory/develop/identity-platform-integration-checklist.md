@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9a1f86a78eaac96f2a6202b4ec29e99a0a978ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554377"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116801"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -25,12 +25,12 @@ Ez a cikk az ajánlott eljárásokat, javaslatokat és általános áttekintése
 
 Ha most ismerkedik az első lépésekkel, tekintse meg a [Microsoft Identity platform dokumentációját](index.yml) , ahol megismerheti a hitelesítési alapismereteket, az alkalmazás forgatókönyveit a Microsoft Identity platformon, és így tovább.
 
-Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás hatékonyan legyen integrálva a [Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/).
+Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás hatékonyan legyen integrálva a [Microsoft Identity platformmal](./index.yml).
 
 > [!TIP]
 > A Azure Portal *integrációs asszisztense* segíthet az ajánlott eljárások és javaslatok alkalmazásában. Válassza ki a Azure Portal valamelyik [alkalmazás-regisztrációját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , majd a Segéd megkezdéséhez válassza az **Integration Assistant (előzetes verzió)** menüpontot.
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
 ![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) beolvasása és a [Microsoft-Platform házirendjeinek](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)megismerése. Győződjön meg arról, hogy az alkalmazás megfelel a felhasználók és a platform elleni védelemhez tervezett feltételeknek.
 
@@ -38,7 +38,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) Győződjön meg arról, hogy az alkalmazások regisztrálásához és kezeléséhez használt fiókhoz tartozó információk naprakészek.
 
-## <a name="branding"></a>Védjegyezés
+## <a name="branding"></a>Arculat
 
 ![a jelölőnégyzet be van jelölve ](./media/active-directory-integration-checklist/checkbox-two.svg) az [alkalmazások védjegyezési irányelveinek](howto-add-branding-in-azure-ad-apps.md).
 
@@ -58,17 +58,17 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 ![Jelölje be a ](./media/active-directory-integration-checklist/checkbox-two.svg) Felhasználónév/jelszó fölé. Ne használja az [erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](v2-oauth-ropc.md), amely közvetlenül kezeli a felhasználók jelszavát. Ennek a folyamatnak magas fokú megbízhatóságra és felhasználói expozícióra van szüksége, és csak akkor használható, ha más, biztonságosabb, a folyamatok nem használhatók. Erre a folyamatra továbbra is szükség van bizonyos helyzetekben (például DevOps), de ügyeljen arra, hogy a használatával korlátozásokat fog alkalmazni az alkalmazására.  A modernebb megközelítésekhez olvassa el a [hitelesítési folyamatokat és az alkalmazás forgatókönyveit](authentication-flows-app-scenarios.md).
 
-![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) : a webalkalmazások, a webes API-k és a Daemon-alkalmazások bizalmas alkalmazásbeli hitelesítő adatainak védelme és kezelése. [Tanúsítvány hitelesítő adatainak](active-directory-certificate-credentials.md)használata, nem a jelszó hitelesítő adatai (az ügyfél titkos kulcsa). Ha jelszó-hitelesítő adatokat kell használnia, ne állítsa be manuálisan. Ne tárolja a hitelesítő adatokat a kódban vagy a konfigurációban, és soha ne engedélyezze őket emberek általi kezelésre. Ha lehetséges, használjon [felügyelt identitásokat az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) vagy [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) a hitelesítő adatok tárolásához és rendszeres elforgatásához.
+![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) : a webalkalmazások, a webes API-k és a Daemon-alkalmazások bizalmas alkalmazásbeli hitelesítő adatainak védelme és kezelése. [Tanúsítvány hitelesítő adatainak](active-directory-certificate-credentials.md)használata, nem a jelszó hitelesítő adatai (az ügyfél titkos kulcsa). Ha jelszó-hitelesítő adatokat kell használnia, ne állítsa be manuálisan. Ne tárolja a hitelesítő adatokat a kódban vagy a konfigurációban, és soha ne engedélyezze őket emberek általi kezelésre. Ha lehetséges, használjon [felügyelt identitásokat az Azure-erőforrásokhoz](../managed-identities-azure-resources/overview.md) vagy [Azure Key Vault](../../key-vault/general/basic-concepts.md) a hitelesítő adatok tárolásához és rendszeres elforgatásához.
 
-![Jelölje be a jelölőnégyzetet, és ](./media/active-directory-integration-checklist/checkbox-two.svg) Győződjön meg arról, hogy az alkalmazás a legkevésbé megfelelő jogosultságokat kéri Csak olyan engedélyeket kérjen, amelyeket az alkalmazásnak teljesen szüksége van, és csak akkor, amikor szüksége van rájuk. Ismerje meg a különböző [típusú engedélyeket](v2-permissions-and-consent.md#permission-types). Csak szükség esetén használja az alkalmazás engedélyeit; Ha lehetséges, használjon delegált engedélyeket. Az Microsoft Graph engedélyek teljes listájáért tekintse meg ezt az [engedélyeket](https://docs.microsoft.com/graph/permissions-reference)ismertető témakört.
+![Jelölje be a jelölőnégyzetet, és ](./media/active-directory-integration-checklist/checkbox-two.svg) Győződjön meg arról, hogy az alkalmazás a legkevésbé megfelelő jogosultságokat kéri Csak olyan engedélyeket kérjen, amelyeket az alkalmazásnak teljesen szüksége van, és csak akkor, amikor szüksége van rájuk. Ismerje meg a különböző [típusú engedélyeket](v2-permissions-and-consent.md#permission-types). Csak szükség esetén használja az alkalmazás engedélyeit; Ha lehetséges, használjon delegált engedélyeket. Az Microsoft Graph engedélyek teljes listájáért tekintse meg ezt az [engedélyeket](/graph/permissions-reference)ismertető témakört.
 
 ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) Ha a Microsoft Identity platform használatával biztosít API-t, alaposan gondolja át, hogy milyen engedélyekkel kell rendelkeznie. Gondolja át, hogy mi a megfelelő részletesség a megoldáshoz, és hogy a jogosultság (ok) rendszergazdai hozzájárulást igényel. Az engedélyezési döntések meghozatala előtt keresse meg a várt engedélyeket a bejövő jogkivonatokban.
 
-## <a name="implementation"></a>Megvalósítás
+## <a name="implementation"></a>Implementálás
 
 ![](./media/active-directory-integration-checklist/checkbox-two.svg)a jelölőnégyzet modern hitelesítési megoldásokat használ (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) a felhasználók biztonságos bejelentkezéséhez.
 
-![](./media/active-directory-integration-checklist/checkbox-two.svg)a jelölőnégyzet nem közvetlenül olyan protokollok ellen, mint a OAuth 2,0 és az Open id. Ehelyett használja a [Microsoft hitelesítési függvénytárát (MSAL)](msal-overview.md). A MSAL-kódtárak biztonságos módon csomagolják a biztonsági protokollokat egy könnyen használható könyvtárban, és beépített támogatást biztosít a [feltételes hozzáférési](/azure/active-directory/conditional-access/overview) forgatókönyvek, az eszközre érvényes [egyszeri bejelentkezés (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)és a beépített jogkivonat-gyorsítótárazás támogatásához. További információkért tekintse meg a Microsoft által támogatott [ügyféloldali kódtárak](reference-v2-libraries.md#microsoft-supported-client-libraries) és a [köztes kódtárak](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) listáját, valamint a [kompatibilis, harmadik féltől származó ügyféloldali kódtárak](reference-v2-libraries.md#compatible-client-libraries)listáját.<br/><br/>Ha meg kell adnia a hitelesítési protokollok kódját, olyan módszertant kell követnie, mint például a [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Ügyeljen arra, hogy az egyes protokollokra vonatkozó szabványok részletes leírásában a biztonsági szempontokat kell figyelembe venni.
+![](./media/active-directory-integration-checklist/checkbox-two.svg)a jelölőnégyzet nem közvetlenül olyan protokollok ellen, mint a OAuth 2,0 és az Open id. Ehelyett használja a [Microsoft hitelesítési függvénytárát (MSAL)](msal-overview.md). A MSAL-kódtárak biztonságos módon csomagolják a biztonsági protokollokat egy könnyen használható könyvtárban, és beépített támogatást biztosít a [feltételes hozzáférési](../conditional-access/overview.md) forgatókönyvek, az eszközre érvényes [egyszeri bejelentkezés (SSO)](../manage-apps/what-is-single-sign-on.md)és a beépített jogkivonat-gyorsítótárazás támogatásához. További információkért tekintse meg a Microsoft által támogatott [ügyféloldali kódtárak](reference-v2-libraries.md#microsoft-supported-client-libraries) és a [köztes kódtárak](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) listáját, valamint a [kompatibilis, harmadik féltől származó ügyféloldali kódtárak](reference-v2-libraries.md#compatible-client-libraries)listáját.<br/><br/>Ha meg kell adnia a hitelesítési protokollok kódját, olyan módszertant kell követnie, mint például a [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Ügyeljen arra, hogy az egyes protokollokra vonatkozó szabványok részletes leírásában a biztonsági szempontokat kell figyelembe venni.
 
 ![Jelölje ](./media/active-directory-integration-checklist/checkbox-two.svg) be a meglévő alkalmazások migrálása [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) szolgáltatásból a [Microsoft hitelesítési könyvtárra](msal-overview.md)jelölőnégyzetet. A MSAL a Microsoft legújabb Identity platform-megoldása, és a ADAL előnyben részesített. A szolgáltatás .NET, JavaScript, Android, iOS, macOS rendszeren érhető el, és a Python és a Java nyilvános előzetes verziójában is elérhető. További információ a [ADAL.net](msal-net-migration.md), a [ADAL.js](msal-compare-msal-js-and-adal-js.md)és a [ADAL.net és az iOS Broker-](msal-net-migration-ios-broker.md) alkalmazások áttelepítéséről.
 

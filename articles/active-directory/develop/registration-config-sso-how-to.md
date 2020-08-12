@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890467"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120677"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Egyszeri bejelentkezés konfigurálása alkalmazáshoz
 
@@ -26,20 +26,20 @@ Az összevont egyszeri bejelentkezés (SSO) engedélyezése az alkalmazásban au
 
 * Ha Mobile-alkalmazást készít, további konfigurációkra lehet szükség a közvetített vagy nem felügyelt egyszeri bejelentkezés engedélyezéséhez.
 
-Android esetén lásd: a [Cross app SSO engedélyezése Androidon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+Android esetén lásd: a [Cross app SSO engedélyezése Androidon](../azuread-dev/howto-v1-enable-sso-android.md).<br>
 
-IOS esetén lásd: a [Cross app SSO engedélyezése iOS-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+IOS esetén lásd: a [Cross app SSO engedélyezése iOS-ben](../azuread-dev/howto-v1-enable-sso-ios.md).
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO](../manage-apps/what-is-single-sign-on.md)<br>
 
-[A Cross app SSO engedélyezése Androidon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[A Cross app SSO engedélyezése Androidon](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[A Cross app SSO engedélyezése iOS-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[A Cross app SSO engedélyezése iOS-ben](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[Alkalmazások integrálása a AzureAD-be](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Alkalmazások integrálása a AzureAD-be](./quickstart-register-app.md)<br>
 
-[Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján](./v2-permissions-and-consent.md)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

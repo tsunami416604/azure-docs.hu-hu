@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035485"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116461"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Hibakeresés: helyszíni Azure AD jelszavas védelem
 
@@ -72,7 +72,20 @@ Az Azure AD jelszavas védelme kritikus függőséggel rendelkezik a Microsoft K
 
    A Windows Server 2016 olyan KDS-biztonsági javítást vezetett be, amely módosítja a KDS titkosított pufferek formátumát; Ezek a pufferek néha nem lesznek visszafejtve a Windows Server 2012 és a Windows Server 2012 R2 rendszeren. A fordított irány rendben van – a Windows Server 2012-es és a Windows Server 2012 R2-KDS titkosított pufferek a Windows Server 2016-es és újabb verzióiban mindig sikeresen visszafejtik. Ha a Active Directory tartományban lévő tartományvezérlők ezen operációs rendszerek kombinációját futtatják, akkor előfordulhat, hogy az Azure AD jelszavas védelemének esetleges visszafejtési hibáit is jelenteni kell. A biztonsági javítás jellegéből adódóan nem lehet pontosan megjósolni a hibák időzítését vagy tüneteit, és mivel nem determinisztikus, hogy melyik Azure AD jelszavas védelmet biztosító tartományvezérlő ügynöke fogja titkosítani az adatait egy adott időpontban.
 
-   A Microsoft a probléma javítását vizsgálja, de még nem érhető el az ETA. Addig is ezt a problémát nem lehet megkerülő megoldás, mint hogy nem futtatja a nem kompatibilis operációs rendszerek kombinációját a Active Directory tartomány (ok) ban. Ez azt jelenti, hogy csak Windows Server 2012 és Windows Server 2012 R2 rendszerű tartományvezérlőket kell futtatnia, vagy csak Windows Server 2016 vagy újabb rendszerű tartományvezérlőket kell futtatnia.
+   Ezt a problémát nem lehet megkerülő megoldás, mert nem a Active Directory tartomány (ok) ban lévő nem kompatibilis operációs rendszerek kombinációját futtatja. Ez azt jelenti, hogy csak Windows Server 2012 és Windows Server 2012 R2 rendszerű tartományvezérlőket kell futtatnia, vagy csak Windows Server 2016 vagy újabb rendszerű tartományvezérlőket kell futtatnia.
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>A DC Agent azt gondolja, hogy az erdő nincs regisztrálva
+
+Ennek a hibának a tünete a 30016-as számú, a DC Agent\Admin csatornán bejelentkezett esemény, amely az alábbi részben látható:
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+Ennek a hibának két lehetséges oka van.
+
+1. Az erdő valóban nincs regisztrálva. A probléma megoldásához futtassa a Register-AzureADPasswordProtectionForest parancsot a [központi telepítési követelményekben](howto-password-ban-bad-on-premises-deploy.md)leírtak szerint.
+1. Az erdő regisztrálva van, de a tartományvezérlő ügynöke nem tudja visszafejteni az erdő regisztrációs információit. Ebben az esetben ugyanaz az alapvető ok, mint a fentiekben felsorolt #2 a [DC Agent nem tudja titkosítani vagy visszafejteni a jelszóházirend-fájlokat](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Az elmélet megerősítésének egyszerű módja, hogy ezt a hibaüzenetet csak a Windows Server 2012 vagy a Windows Server 2012R2 rendszerű tartományvezérlők esetében fogja látni, míg a Windows Server 2016-es és újabb rendszerű tartományvezérlők által futtatott tartományvezérlői ügynökök rendben vannak. A megkerülő megoldás ugyanaz: frissítse az összes tartományvezérlőt a Windows Server 2016-es vagy újabb verziójára.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>A rendszer nem fogadja el a gyenge jelszavakat, de nem feltétlenül kell
 

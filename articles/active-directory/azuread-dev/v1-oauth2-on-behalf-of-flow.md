@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845459"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117736"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
 
@@ -264,7 +264,7 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 - **SubjectConfirmationData egy OBO-hívásból származó SAML-kijelentéshez**: Ha a célalkalmazás a **SubjectConfirmationData**-ben a címzett értékét igényli, akkor az értéknek nem helyettesítő karakteres válasz URL-címnek kell lennie az erőforrás-alkalmazás konfigurációjában.
 - **A SubjectConfirmationData csomópont**: a csomópont nem tartalmazhat **InResponseTo** attribútumot, mert nem része SAML-válasznak. Az SAML-tokent fogadó alkalmazásnak képesnek kell lennie arra, hogy elfogadja az SAML-jogkivonatot **InResponseTo** attribútum nélkül.
 
-- **Beleegyező engedély**: a OAuth-folyamaton felhasználói adatmennyiséget tartalmazó SAML-token fogadásához meg kell adni a beleegyező jogosultságot. Az engedélyekkel és a rendszergazdai jogosultság beszerzésével kapcsolatos információkért tekintse meg [a Azure Active Directory 1.0-s verziójának engedélyeit és](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)a hozzájuk tartozó hozzájárulásukat.
+- **Beleegyező engedély**: a OAuth-folyamaton felhasználói adatmennyiséget tartalmazó SAML-token fogadásához meg kell adni a beleegyező jogosultságot. Az engedélyekkel és a rendszergazdai jogosultság beszerzésével kapcsolatos információkért tekintse meg [a Azure Active Directory 1.0-s verziójának engedélyeit és](./v1-permissions-consent.md)a hozzájuk tartozó hozzájárulásukat.
 
 ### <a name="response-with-saml-assertion"></a>SAML-kijelentéssel kapcsolatos válasz
 
@@ -291,7 +291,7 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 
 A helyettesítő karakteres válasz URL-címekkel rendelkező nyilvános ügyfelek nem használhatják az `id_token` OBO-folyamatokat. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a OAuth 2,0 protokollról és egy másik módszer az ügyfél-hitelesítő adatokat használó szolgáltatás-szolgáltatás hitelesítés végrehajtásához:
 

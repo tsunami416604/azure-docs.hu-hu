@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551722"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117787"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
@@ -59,7 +59,7 @@ Az összes STS-és felügyeleti művelettel folytatott kommunikáció ezen az UR
 
 Ez alól kivételt jelent a szolgáltatásra irányuló forgalom `https://accounts.accesscontrol.windows.net` . Az erre az URL-címre irányuló forgalmat már egy másik szolgáltatás kezeli, és **nem** érinti a Access Control elavulttá. 
 
-További információ a Access Controlről: [Access Control Service 2,0 (archivált)](https://msdn.microsoft.com/library/hh147631.aspx).
+További információ a Access Controlről: [Access Control Service 2,0 (archivált)](/previous-versions/azure/azure-services/hh147631(v=azure.100)).
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Megtudhatja, hogy mely alkalmazásokra lesz hatással
 
@@ -129,13 +129,13 @@ Minden olyan Microsoft Cloud Service, amely elfogadja a Access Control által ki
 
 | Szolgáltatás | Útmutató |
 | ------- | -------- |
-| Azure Service Bus | [Migrálás megosztott hozzáférési aláírásokra](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus Relay | [Migrálás megosztott hozzáférési aláírásokra](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure Managed cache | [Migrálás az Azure cache-be a Redis-hez](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure-DataMarket | [Migrálás a Cognitive Services API-kba](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Migrálás a Azure App Service Logic Apps szolgáltatására](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure Service Bus | [Migrálás megosztott hozzáférési aláírásokra](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus Relay | [Migrálás megosztott hozzáférési aláírásokra](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure Managed cache | [Migrálás az Azure Cache for Redisbe](../../azure-cache-for-redis/cache-faq.md) |
+| Azure-DataMarket | [Migrálás a Cognitive Services API-kba](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk Services | [Migrálás a Azure App Service Logic Apps szolgáltatására](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Áttelepítés Azure AD-hitelesítésre](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [A Azure Backup-ügynök frissítése](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure Backup | [A Azure Backup-ügynök frissítése](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -148,12 +148,12 @@ Minden olyan Microsoft Cloud Service, amely elfogadja a Access Control által ki
 
 A SharePoint 2013, a 2016 és a SharePoint Online ügyfelei hosszú ideig használják az ACS-t a felhőben, a helyszínen és a hibrid forgatókönyvekben használt hitelesítési célokra. A SharePoint egyes funkcióit és használati eseteit az ACS-nyugdíjazás fogja érinteni, míg mások nem. Az alábbi táblázat az ACS-t használó legnépszerűbb SharePoint-funkciók áttelepítési Útmutatóját foglalja össze:
 
-| Szolgáltatás | Útmutató |
+| Funkció | Útmutató |
 | ------- | -------- |
-| Felhasználók hitelesítése az Azure AD-ből | Korábban az Azure AD nem támogatta a SharePoint által a hitelesítéshez szükséges SAML 1,1-tokeneket, és az ACS-t olyan közvetítőként használták, amely az Azure AD-tokenek formátumával kompatibilis a SharePoint rendszerrel. Mostantól [közvetlenül kapcsolódhat a sharepointhoz az Azure ad-hez az Azure ad alkalmazás Gallery SharePoint helyszíni alkalmazás használatával](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
-| [Alkalmazás-hitelesítés & kiszolgáló – kiszolgáló hitelesítés a helyszíni SharePointban](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. | 
-| [Alacsony megbízhatósági hozzáférés engedélyezése a SharePoint-bővítményekhez (az üzemeltetett és a SharePoint által üzemeltetett szolgáltató)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. |
-| [SharePoint Cloud Hybrid-keresés](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. |
+| Felhasználók hitelesítése az Azure AD-ből | Korábban az Azure AD nem támogatta a SharePoint által a hitelesítéshez szükséges SAML 1,1-tokeneket, és az ACS-t olyan közvetítőként használták, amely az Azure AD-tokenek formátumával kompatibilis a SharePoint rendszerrel. Mostantól [közvetlenül kapcsolódhat a sharepointhoz az Azure ad-hez az Azure ad alkalmazás Gallery SharePoint helyszíni alkalmazás használatával](../saas-apps/sharepoint-on-premises-tutorial.md). |
+| [Alkalmazás-hitelesítés & kiszolgáló – kiszolgáló hitelesítés a helyszíni SharePointban](/SharePoint/security-for-sharepoint-server/authentication-overview) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. | 
+| [Alacsony megbízhatósági hozzáférés engedélyezése a SharePoint-bővítményekhez (az üzemeltetett és a SharePoint által üzemeltetett szolgáltató)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. |
+| [SharePoint Cloud Hybrid-keresés](/archive/blogs/spses/cloud-hybrid-search-service-application) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Passzív hitelesítést használó webalkalmazások
 
@@ -214,7 +214,7 @@ A következő táblázat összehasonlítja az Azure AD-ban elérhető szolgálta
 
 Ha úgy dönt, hogy az Azure AD az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, akkor az alkalmazás Azure AD-vel való integrálásának két módját kell figyelembe vennie.
 
-Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is használható legyen, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)című témakörben ismertetett megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
+Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is használható legyen, javasoljuk, hogy kövesse az [összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)című témakörben ismertetett megközelítést. A cikk az Azure AD és az SAML-alapú egyszeri bejelentkezés konfigurálására vonatkozik, de a WS-Federation konfigurálására is használható. Ezt a módszert követve prémium szintű Azure AD licencre van szükség. Ennek a megközelítésnek két előnye van:
 
 - Az Azure AD-jogkivonat testreszabásának teljes rugalmassága. Testreszabhatja az Azure AD által kiállított jogcímeket, hogy azok megfeleljenek az Access Control által kiadott jogcímeknek. Ez különösen magában foglalja a felhasználói azonosító vagy a név-azonosító jogcímet. Ahhoz, hogy a felhasználók a technológiák módosítása után is konzisztens felhasználói azonosítókat kapjanak, győződjön meg arról, hogy az Azure AD által kiállított felhasználói azonosítók megegyeznek a Access Control által kiállított azonosítókkal.
 - Az alkalmazásra jellemző jogkivonat-aláíró tanúsítvány, valamint az Ön által vezérelt élettartam is konfigurálható.
@@ -224,7 +224,7 @@ Ahhoz, hogy a WS-Federation vagy a WIF az Azure AD-vel való integráláshoz is 
 
 Egy másik módszer a [kód](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)követése, amely némileg eltérő útmutatást ad a WS-Federation beállításához. Ez a mintakód nem használ WIF, hanem a ASP.NET 4,5 OWIN middleware-t. Az alkalmazás regisztrálására vonatkozó utasítások azonban érvényesek a WIF-t használó alkalmazások esetében, és nem igényelnek prémium szintű Azure AD licencet. 
 
-Ha ezt a módszert választja, az Azure AD-ben meg kell ismernie az [aláíró kulcsok átváltását](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a módszer az Azure AD globális aláíró kulcsát használja a jogkivonatok kibocsátására. Alapértelmezés szerint a WIF nem frissíti automatikusan az aláíró kulcsokat. Ha az Azure AD elforgatja globális aláíró kulcsait, a WIF megvalósítását elő kell készíteni a módosítások elfogadásához. További információ: [fontos információk az Azure ad-ban az aláíró kulcsok átváltásáról](https://msdn.microsoft.com/library/azure/dn641920.aspx).
+Ha ezt a módszert választja, az Azure AD-ben meg kell ismernie az [aláíró kulcsok átváltását](../develop/active-directory-signing-key-rollover.md). Ez a módszer az Azure AD globális aláíró kulcsát használja a jogkivonatok kibocsátására. Alapértelmezés szerint a WIF nem frissíti automatikusan az aláíró kulcsokat. Ha az Azure AD elforgatja globális aláíró kulcsait, a WIF megvalósítását elő kell készíteni a módosítások elfogadásához. További információ: [fontos információk az Azure ad-ban az aláíró kulcsok átváltásáról](/previous-versions/azure/dn641920(v=azure.100)).
 
 Ha integrálni tudja az Azure AD-t az OpenID Connect vagy a OAuth protokollok használatával, azt javasoljuk. Részletes dokumentációt és útmutatást talál arról, hogyan integrálhatja az Azure AD-t az [Azure ad fejlesztői útmutatójában](https://aka.ms/aaddev)elérhető webalkalmazásba.
 
@@ -265,8 +265,8 @@ A következő táblázat összehasonlítja a webalkalmazásokhoz kapcsolódó Ac
 
 Ha úgy dönt, hogy Azure AD B2C az alkalmazások és szolgáltatások legjobb áttelepítési útvonala, kezdje a következő erőforrásokkal:
 
-- [Azure AD B2C dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Egyéni szabályzatok Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Azure AD B2C dokumentáció](../../active-directory-b2c/overview.md)
+- [Egyéni szabályzatok Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
 - [Díjszabás Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Áttelepítés a ping Identity vagy Auth0

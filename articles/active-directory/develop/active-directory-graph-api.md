@@ -12,19 +12,19 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 73cdac1a372b42df5a8f52ea09f04ecc40031698
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885718"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115798"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy az Azure AD Graph API helyett az [Microsoft Graph](https://developer.microsoft.com/graph) használja az Azure Active Directory (Azure ad) erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott számú forgatókönyv áll rendelkezésre, amelyek esetében az Azure AD Graph API továbbra is megfelelő lehet; További információkért tekintse meg az [Microsoft Graph vagy az Azure ad Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blogbejegyzését, és [telepítse át az Azure ad Graph-alkalmazásokat a Microsoft Graphra](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> Azt javasoljuk, hogy az Azure AD Graph API helyett az [Microsoft Graph](https://developer.microsoft.com/graph) használja az Azure Active Directory (Azure ad) erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott számú forgatókönyv áll rendelkezésre, amelyek esetében az Azure AD Graph API továbbra is megfelelő lehet; További információkért tekintse meg az [Microsoft Graph vagy az Azure ad Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blogbejegyzését, és [telepítse át az Azure ad Graph-alkalmazásokat a Microsoft Graphra](/graph/migrate-azure-ad-graph-overview).
 
-Ez a cikk az Azure AD Graph APIre vonatkozik. A Microsoft Graph API-val kapcsolatos hasonló információk: [a Microsoft Graph API használata](https://docs.microsoft.com/graph/use-the-api).
+Ez a cikk az Azure AD Graph APIre vonatkozik. A Microsoft Graph API-val kapcsolatos hasonló információk: [a Microsoft Graph API használata](/graph/use-the-api).
 
 Az Azure Active Directory Graph API programozás alapú hozzáférést biztosít az Azure AD-hez REST API-végpontokon keresztül. Az alkalmazások az Azure AD Graph API használatával hozhatnak létre, olvashat, frissíthetnek és törölhetnek (szifilisz) műveleteket a címtáradatokat és az objektumokat. Például az Azure AD Graph API a következő általános műveleteket támogatja egy felhasználói objektumhoz:
 
@@ -36,23 +36,23 @@ Az Azure Active Directory Graph API programozás alapú hozzáférést biztosít
 
 Emellett hasonló műveleteket is végrehajthat más objektumokon, például csoportokon és alkalmazásokon. Az Azure AD-Graph API címtárban való meghívásához az alkalmazást regisztrálni kell az Azure AD-ben. Az alkalmazásnak hozzáférést kell biztosítania az Azure AD Graph APIhoz is. Ez a hozzáférés általában egy felhasználói vagy rendszergazdai beleegyező folyamaton keresztül érhető el.
 
-Az Azure Active Directory Graph API használatának megkezdéséhez tekintse meg az [Azure ad Graph API rövid útmutatóját](active-directory-graph-api-quickstart.md), vagy tekintse meg az [interaktív Azure ad Graph API dokumentációját](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
+Az Azure Active Directory Graph API használatának megkezdéséhez tekintse meg az [Azure ad Graph API rövid útmutatóját](./microsoft-graph-intro.md), vagy tekintse meg az [interaktív Azure ad Graph API dokumentációját](/previous-versions/azure/ad/graph/api/api-catalog).
 
 ## <a name="features"></a>Szolgáltatások
 
 Az Azure AD Graph API a következő funkciókat biztosítja:
 
-* **REST API végpontok**: az Azure ad Graph API egy REST-alapú szolgáltatás, amely a szabványos HTTP-kérések segítségével elérhető végpontokból áll. Az Azure AD Graph API támogatja az XML-vagy JavaScript-objektumok (JSON) tartalomtípusát a kérelmekhez és a válaszokhoz. További információ: az [Azure ad Graph REST API referenciája](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-* **Hitelesítés az Azure ad-vel**: az azure ad Graph API minden kérését hitelesíteni kell egy JSON web token (JWT) a kérelem engedélyezési fejlécében való hozzáfűzésével. Ezt a jogkivonatot az Azure AD jogkivonat-végpontjának kérésével, valamint érvényes hitelesítő adatok megadásával szerezték be. Használhatja a OAuth 2,0 ügyfél-hitelesítő adatok folyamatát, vagy az engedélyezési kód lehetővé teszi a flow számára, hogy megszerezze a tokent a gráf meghívásához. További információ [: OAuth 2,0 az Azure ad-ben](https://msdn.microsoft.com/library/azure/dn645545.aspx).
-* **Szerepköralapú hitelesítés (RBAC)**: a biztonsági csoportok használatával végezhető el a RBAC az Azure AD-Graph API. Ha például meg szeretné állapítani, hogy egy felhasználó rendelkezik-e hozzáféréssel egy adott erőforráshoz, az alkalmazás meghívhatja a csoporttagság [(tranzitív)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) műveletet, amely igaz vagy hamis értéket ad vissza.
-* **Különbözeti lekérdezés**: a különbözeti lekérdezés lehetővé teszi egy könyvtár változásainak nyomon követését két időszak között anélkül, hogy gyakori lekérdezéseket kellene végeznie az Azure AD-Graph API. Ez a típusú kérelem csak az előző különbözeti lekérdezési kérelem és a jelenlegi kérelem közötti módosításokat adja vissza. További információ: [Azure AD Graph API különbözeti lekérdezés](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
-* **Directory-bővítmények**: egyéni tulajdonságokat adhat hozzá a címtár-objektumokhoz külső adattár megkövetelése nélkül. Ha például az alkalmazás minden felhasználóhoz egy Skype ID tulajdonságot igényel, akkor regisztrálhatja az új tulajdonságot a címtárban, és minden felhasználói objektumon használható lesz. További információ: [Azure AD Graph API Directory sémakezelő bővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
+* **REST API végpontok**: az Azure ad Graph API egy REST-alapú szolgáltatás, amely a szabványos HTTP-kérések segítségével elérhető végpontokból áll. Az Azure AD Graph API támogatja az XML-vagy JavaScript-objektumok (JSON) tartalomtípusát a kérelmekhez és a válaszokhoz. További információ: az [Azure ad Graph REST API referenciája](/previous-versions/azure/ad/graph/api/api-catalog).
+* **Hitelesítés az Azure ad-vel**: az azure ad Graph API minden kérését hitelesíteni kell egy JSON web token (JWT) a kérelem engedélyezési fejlécében való hozzáfűzésével. Ezt a jogkivonatot az Azure AD jogkivonat-végpontjának kérésével, valamint érvényes hitelesítő adatok megadásával szerezték be. Használhatja a OAuth 2,0 ügyfél-hitelesítő adatok folyamatát, vagy az engedélyezési kód lehetővé teszi a flow számára, hogy megszerezze a tokent a gráf meghívásához. További információ [: OAuth 2,0 az Azure ad-ben](/previous-versions/azure/dn645545(v=azure.100)).
+* **Szerepköralapú hitelesítés (RBAC)**: a biztonsági csoportok használatával végezhető el a RBAC az Azure AD-Graph API. Ha például meg szeretné állapítani, hogy egy felhasználó rendelkezik-e hozzáféréssel egy adott erőforráshoz, az alkalmazás meghívhatja a csoporttagság [(tranzitív)](/previous-versions/azure/ad/graph/api/functions-and-actions#checkMemberGroups) műveletet, amely igaz vagy hamis értéket ad vissza.
+* **Különbözeti lekérdezés**: a különbözeti lekérdezés lehetővé teszi egy könyvtár változásainak nyomon követését két időszak között anélkül, hogy gyakori lekérdezéseket kellene végeznie az Azure AD-Graph API. Ez a típusú kérelem csak az előző különbözeti lekérdezési kérelem és a jelenlegi kérelem közötti módosításokat adja vissza. További információ: [Azure AD Graph API különbözeti lekérdezés](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-differential-query).
+* **Directory-bővítmények**: egyéni tulajdonságokat adhat hozzá a címtár-objektumokhoz külső adattár megkövetelése nélkül. Ha például az alkalmazás minden felhasználóhoz egy Skype ID tulajdonságot igényel, akkor regisztrálhatja az új tulajdonságot a címtárban, és minden felhasználói objektumon használható lesz. További információ: [Azure AD Graph API Directory sémakezelő bővítmények](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 * **Védettek az engedélyek hatókörei**: az azure ad Graph API olyan jogosultsági hatóköröket tesz elérhetővé, amelyek lehetővé teszik az Azure ad-adatelérést az OAuth 2,0 használatával. Számos ügyfélalkalmazás-típust támogat, többek között a következőket:
   
   * azok a felhasználói felületek, amelyek a bejelentkezett felhasználó hitelesítése útján kapnak hozzáférést az adatokhoz (delegált)
   * a háttérben működő Service/Daemon-alkalmazások bejelentkezett felhasználó nélkül, és az alkalmazás által meghatározott szerepköralapú hozzáférés-vezérlés használata
     
-    A delegált és az alkalmazásra vonatkozó engedélyek egyaránt az Azure AD-Graph API által közzétett jogosultságot jelentenek, és az ügyfélalkalmazások a [Azure Portal](https://portal.azure.com)alkalmazás-regisztrációs engedélyek funkciói által igényelhetők. Az [Azure AD Graph API engedély-hatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) az ügyfélalkalmazás által használható információkról nyújtanak információt.
+    A delegált és az alkalmazásra vonatkozó engedélyek egyaránt az Azure AD-Graph API által közzétett jogosultságot jelentenek, és az ügyfélalkalmazások a [Azure Portal](https://portal.azure.com)alkalmazás-regisztrációs engedélyek funkciói által igényelhetők. Az [Azure AD Graph API engedély-hatókörök](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes) az ügyfélalkalmazás által használható információkról nyújtanak információt.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -65,5 +65,5 @@ Az Azure AD Graph API számos alkalmazási forgatókönyvet tesz lehetővé. A l
 
 A Azure Active Directory Graph API használatának megkezdéséhez tekintse meg a következő témaköröket:
 
-* [Azure AD Graph API rövid útmutató](active-directory-graph-api-quickstart.md)
-* [Azure AD Graph – REST dokumentáció](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
+* [Azure AD Graph API rövid útmutató](./microsoft-graph-intro.md)
+* [Azure AD Graph – REST dokumentáció](/previous-versions/azure/ad/graph/api/api-catalog)

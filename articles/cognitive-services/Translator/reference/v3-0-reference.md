@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592270"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121017"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -147,11 +147,11 @@ A hitelesítési jogkivonat 10 percig érvényes. A tokent újra fel kell haszn�
 
 ## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása
 
-A Translator Service mostantól a korlátozott régiókban (,,,,,) Virtual Network képességekkel érhető el `WestUS2` `EastUS` `SouthCentralUS` `WestUS` `CentralUSEUAP` `global` . Virtual Network engedélyezéséhez tekintse meg az [Azure Cognitive Services Virtual Networks konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)című témakört. 
+A Translator Service mostantól Virtual Network (VNET) képességekkel érhető el az Azure nyilvános felhő összes régiójában. Virtual Network engedélyezéséhez tekintse meg az [Azure Cognitive Services Virtual Networks konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)című témakört. 
 
 Ha bekapcsolta ezt a funkciót, az egyéni végpontot kell használnia a fordító meghívásához. A globális Translator Endpoint ("api.cognitive.microsofttranslator.com") nem használható, és nem végezhető el a hitelesítés egy hozzáférési jogkivonattal.
 
-Az egyéni végpontot a [Translator erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)létrehozása után találhatja meg.
+Az egyéni végpontot a [fordítói erőforrások](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) létrehozása után, valamint a kiválasztott hálózatokból és privát végpontokból való hozzáférés engedélyezése után találja meg.
 
 |Fejlécek|Leírás|
 |:-----|:----|

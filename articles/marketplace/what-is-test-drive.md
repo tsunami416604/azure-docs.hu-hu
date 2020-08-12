@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229448"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121867"
 ---
 # <a name="what-is-a-test-drive"></a>Mit jelent a tesztverzió?
 
@@ -44,7 +44,17 @@ A tesztelési meghajtók egyikének konfigurálásával kapcsolatos részleteké
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
-Ez a központi telepítési sablon tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják. Ez az egyetlen tesztvezetés lehetőség a virtuális gépekhez vagy az Azure-alkalmazások ajánlatához.
+Ez a központi telepítési sablon tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják. A Azure Resource Manager tesztelési meghajtó elérhető az alábbi típusú ajánlatokhoz: 
+
+- Azure-alkalmazások
+- Dynamics 365 for Business Central
+- Dynamics 365 a Customer engagement & PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- Virtual machines (Virtuális gépek)
+
+>[!NOTE]
+>Ez az egyetlen tesztelési mód a virtuális gépekhez és az Azure-alkalmazások ajánlatához.
 
 ### <a name="hosted-test-drive"></a>Szolgáltatott tesztelési meghajtó
 

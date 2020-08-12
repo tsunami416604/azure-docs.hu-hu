@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8895e52209622025f943aaa6a4261b68a7e2899c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034839"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116298"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Fejlesztői útmutató a Azure Active Directory feltételes hozzáférési szolgáltatáshoz
 
@@ -90,7 +90,7 @@ A fejlesztők igénybe vehetik ezt a kihívást, és hozzáfűzik azt egy új Az
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD feltételes hozzáférés a [prémium szintű Azure ad](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)részét képező szolgáltatás. A licencelési követelményekről a [licenc nélküli használat jelentésében](../active-directory-conditional-access-unlicensed-usage-report.md)olvashat bővebben. A fejlesztők csatlakozhatnak a [Microsoft fejlesztői hálózatához](https://msdn.microsoft.com/dn308572.aspx), amely magában foglalja a nagyvállalati mobilitási csomagra való ingyenes előfizetést, amely magában foglalja a prémium szintű Azure ad.
+Az Azure AD feltételes hozzáférés a [prémium szintű Azure ad](../fundamentals/active-directory-whatis.md)részét képező szolgáltatás. A licencelési követelményekről a [licenc nélküli használat jelentésében](../reports-monitoring/overview-reports.md)olvashat bővebben. A fejlesztők csatlakozhatnak a [Microsoft fejlesztői hálózatához](/), amely magában foglalja a nagyvállalati mobilitási csomagra való ingyenes előfizetést, amely magában foglalja a prémium szintű Azure ad.
 
 ### <a name="considerations-for-specific-scenarios"></a>Bizonyos forgatókönyvek szempontjai
 
@@ -177,7 +177,7 @@ Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kó
 
 ## <a name="see-also"></a>Lásd még
 
-* A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md)című témakört.
+* A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../conditional-access/overview.md)című témakört.
 * További Azure AD-kódrészletek: a [Code Samples GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)-tárháza.
 * A ADAL SDK-val kapcsolatos további információkért és a dokumentációhoz való hozzáféréshez tekintse meg a [könyvtári útmutató](active-directory-authentication-libraries.md)című témakört.
 * További információ a több-bérlős forgatókönyvekről: [Bejelentkezés a felhasználókba a több-bérlős minta használatával](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541906"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121085"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>A webes API-kat meghívó mobil alkalmazások jogkivonatának beolvasása
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`csak egy kötelező paraméterrel rendelkezik: `scopes` . A `scopes` paraméter enumerálja azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatóköröket az egyes Microsoft Graph API-k API-referenciájában találja. A hivatkozásban lépjen az "engedélyek" szakaszra.
 
-Ha például [a felhasználó névjegyeit szeretné listázni](https://docs.microsoft.com/graph/api/user-list-contacts), használja a "user. Read", a "Contacts. Read" hatókört. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Ha például [a felhasználó névjegyeit szeretné listázni](/graph/api/user-list-contacts), használja a "user. Read", a "Contacts. Read" hatókört. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Androidon megadhatja a szülő tevékenységet, amikor a használatával hozza létre az alkalmazást `PublicClientApplicationBuilder` . Ha az adott időpontban nem határozza meg a fölérendelt tevékenységet, később megadhatja azt `.WithParentActivityOrWindow` a következő szakaszban látható módon. Ha a szülő tevékenységet adja meg, akkor a jogkivonat az interakció után visszakerül a fölérendelt tevékenységbe. Ha nem adja meg, akkor a `.ExecuteAsync()` hívás kivételt jelez.
 
@@ -234,7 +234,7 @@ Az osztály a következő konstansokat határozza meg:
 - `ForceLogin`lehetővé teszi a szolgáltatás számára a hitelesítő adatok megadását a felhasználónak, még akkor is, ha a kérés nem szükséges.
 
     Ez a beállítás akkor lehet hasznos, ha a jogkivonat-beszerzés sikertelen, és engedélyezni szeretné a felhasználó számára a bejelentkezést. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Érdemes lehet ezt a lehetőséget használni a biztonsággal irányított alkalmazásokban, ahol a szervezet irányításához a felhasználónak minden alkalommal be kell jelentkeznie, amikor az alkalmazás egyes részeihez hozzáférnek.
-- `Never`csak a .NET 4,5 és a Windows-futtatókörnyezet (WinRT) esetében érhető el. Ez a konstans nem kéri a felhasználót, de megpróbálja használni a rejtett beágyazott webes nézetben tárolt cookie-t. További információ: [webböngészők használata a MSAL.net](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
+- `Never`csak a .NET 4,5 és a Windows-futtatókörnyezet (WinRT) esetében érhető el. Ez a konstans nem kéri a felhasználót, de megpróbálja használni a rejtett beágyazott webes nézetben tárolt cookie-t. További információ: [webböngészők használata a MSAL.net](./msal-net-web-browsers.md).
 
     Ha ez a beállítás sikertelen, akkor `AcquireTokenInteractive` kivételt jelez, hogy a felhasználói felületi interakcióra van szükség. Ezután egy másik paramétert kell használnia `Prompt` .
 - `NoPrompt`nem küld üzenetet az identitás-szolgáltatónak.

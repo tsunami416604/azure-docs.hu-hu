@@ -1,5 +1,5 @@
 ---
-title: Áttelepítés új Elastic Database-feladatokra
+title: Áttelepítés új Elastic Database feladatokra (előzetes verzió)
 description: Migrálás az új Elastic Database feladatokba.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: bb5f7c441ae25e24857d0709b32e17931c3c63a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f9e392ddb7b5a79b01459925fe711707db97b5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050127"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121187"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrálás az új rugalmas adatbázis-feladatok
+# <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>Áttelepítés az új rugalmas adatbázis-feladatokra (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A [Elastic Database feladatok](elastic-jobs-overview.md) frissített verziója érhető el.
@@ -89,7 +89,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 Most, hogy a régi és az új rugalmas feladatok parancsmag is inicializálva van, telepítse át a feladat hitelesítő adatait, céljait és feladatait az új *feladat-adatbázisba*.
 

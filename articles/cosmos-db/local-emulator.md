@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028249"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119521"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -42,7 +42,7 @@ Mivel az Azure Cosmos Emulator a helyi fejlesztői munkaállomáson futó, emul�
 * Ha az Azure Cosmos Emulatort használja, alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat létre (csak Azure Cosmos DB SDK-k használatával támogatott), vagy 5 korlátlan tárolót az Azure Cosmos Emulator használatával. Az érték módosításáról további információért lásd: [A PartitionCount érték beállítása](#set-partitioncount).
 * Az emulátor támogatja a maximális azonosító tulajdonság 254 karakteres méretét.
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 Az Azure Cosmos Emulator az alábbi hardver-és szoftver-követelményekkel rendelkezik:
 
@@ -296,7 +296,7 @@ Az Azure Cosmos Emulatorban elérhető tárolók számának módosításához fu
 2. A mappában lévő összes Emulator-érték törlése `%LOCALAPPDATA%\CosmosDBEmulator` .
 3. Az összes nyitott példány bezárásához kattintson a jobb gombbal a rendszertálcán lévő **Azure Cosmos DB Emulator** ikonra, majd kattintson a **Kilépés** lehetőségre. Az összes példány bezárása egy percig is eltarthat.
 4. Telepítse az [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator)legújabb verzióját.
-5. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Példa: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
+5. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Például: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Az emulátor vezérlése
 
@@ -507,6 +507,8 @@ Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatb
 - Ha kapcsolódási problémába ütközik, [Gyűjtse össze a nyomkövetési fájlokat](#trace-files), tömörítse őket, és nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com).
 
 - Ha **A szolgáltatás nem érhető el** üzenetet kap, előfordulhat, hogy az emulátor nem tudja elindítani a hálózati vermet. Ellenőrizze, hogy telepítve van-e a Pulse Secure ügyfél vagy a Juniper Networks ügyfél, mert ezek hálózatszűrő illesztőprogramjai okozhatják a problémát. A külső gyártótól származó hálózatszűrő illesztőprogramok eltávolítása általában kijavítja a problémát. Azt is megteheti, hogy elindítja az emulátort a/DisableRIO, amely átváltja az emulátor hálózati kommunikációját a normál Winsock-ra. 
+
+- Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése**. Ez a várakozási idő jelenleg a Cosmos Emulator esetében csak a TLS 1,2 protokollt fogadja el és működik. Az ajánlott megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló műveletet hajthat végre a webböngésző számára a "beállítások" lehetőség használatával.
 
 - Amennyiben az emulátor futtatása közben a számítógép alvó állapotba lép vagy frissül az operációs rendszere, a **Szolgáltatás jelenleg nem érhető el** üzenet jelenik meg. Állítsa alaphelyzetbe az emulátort, és kattintson a jobb gombbal a Windows értesítési tálcán megjelenő ikonra, és válassza az **adatvisszaállítás**lehetőséget.
 

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6a20bbeef83072b6fb76bd4e9214e63f094736a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b76e77d6d8575fa086f74c956594a344076f7c74
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172583"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118841"
 ---
 # <a name="add-your-application-to-the-azure-active-directory-application-gallery"></a>Alkalmazás hozzáadása a Azure Active Directory alkalmazás-katalógushoz
 
@@ -89,14 +89,14 @@ A vendég felhasználó összevonása egy otthoni Bérlővel, amely egyben Azure
 
 Egy alkalmazás az Azure AD-katalógusban való listázásához először meg kell valósítania az Azure AD által támogatott alábbi összevonási protokollok egyikét. Emellett el kell fogadnia az Azure AD Application Gallery használati feltételeit is. Olvassa el [ezen a webhelyen](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)az Azure ad Application Gallery használati feltételeit.
 
-- **OpenID Connect**: az alkalmazás Azure ad-val való integrálásához az Open ID Connect protokoll használatával kövesse a [fejlesztők utasításait](v1-authentication-scenarios.md).
+- **OpenID Connect**: az alkalmazás Azure ad-val való integrálásához az Open ID Connect protokoll használatával kövesse a [fejlesztők utasításait](../azuread-dev/v1-authentication-scenarios.md).
 
     ![OpenID Connect-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/openid.png)
 
     * Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katalógusban szereplő listára, válassza az **OpenID connect & OAuth 2,0** lehetőséget a képen látható módon.
     * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **Saml 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül is integrálhatja azt egy Azure ad-Bérlővel az [egyéni alkalmazások hozzáadásához szükséges utasítások](../active-directory-saas-custom-apps.md)követésével.
+- **Saml 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül is integrálhatja azt egy Azure ad-Bérlővel az [egyéni alkalmazások hozzáadásához szükséges utasítások](../manage-apps/view-applications-portal.md)követésével.
 
   ![SAML 2,0 vagy WS-fed alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 

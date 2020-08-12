@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085176"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119929"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Alkalmazások migrálása MSAL iOS és macOS rendszerű eszközökre
 
@@ -45,7 +45,7 @@ A Microsoft Identity platform néhány fő különbséggel rendelkezik a Azure A
 * A Azure Active Directory v 1.0 végpont megköveteli, hogy az alkalmazás regisztrációja során minden engedélyt előre be kell jelenteni. Ez azt jelenti, hogy ezek az engedélyek statikusak.
 * A Microsoft Identity platform lehetővé teszi, hogy dinamikusan kérjen engedélyeket. Az alkalmazások csak szükség szerint igényelhetnek engedélyeket, és az alkalmazás igényeinek megfelelően több kérést is kérhetnek.
 
-A Azure Active Directory v 1.0 és a Microsoft Identity platform közötti különbségekről további információt a [Microsoft Identity platform (v 2.0) frissítése](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)című témakörben talál.
+A Azure Active Directory v 1.0 és a Microsoft Identity platform közötti különbségekről további információt a [Microsoft Identity platform (v 2.0) frissítése](../azuread-dev/azure-ad-endpoint-comparison.md)című témakörben talál.
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL és MSAL könyvtárbeli különbségek
 
@@ -75,9 +75,9 @@ A MSAL kétféleképpen biztosítható hatókörök:
 
 Ez az összes alkalmazás beépített hatóköre. Az alkalmazás regisztrálásakor konfigurált engedélyek statikus listájára vonatkozik. A viselkedése hasonló a következőhöz: `resource` . Ez akkor lehet hasznos, ha az áttelepítés során a rendszer megőrzi a hatókörök és a felhasználói élmény hasonló készletét.
 
-A hatókör használatához `/.default` fűzze hozzá `/.default` az erőforrás-azonosítót. Példa: `https://graph.microsoft.com/.default`. Ha az erőforrás perjel () karakterrel végződik `/` , akkor továbbra is hozzá kell fűzni `/.default` , beleértve a kezdő perjelet is, ami egy olyan hatókört eredményez, amely egy dupla továbbítási perjelgel ( `//` ) rendelkezik.
+A hatókör használatához `/.default` fűzze hozzá `/.default` az erőforrás-azonosítót. Például: `https://graph.microsoft.com/.default`. Ha az erőforrás perjel () karakterrel végződik `/` , akkor továbbra is hozzá kell fűzni `/.default` , beleértve a kezdő perjelet is, ami egy olyan hatókört eredményez, amely egy dupla továbbítási perjelgel ( `//` ) rendelkezik.
 
-További információt a "/.default" hatókör használatáról [itt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) talál
+További információt a "/.default" hatókör használatáról [itt](./v2-permissions-and-consent.md#the-default-scope) talál
 
 ### <a name="supporting-different-webview-types--browsers"></a>Különböző webnézet-típusok támogatása & böngészőkben
 
@@ -207,7 +207,7 @@ Az iOS-MSAL két más típusú SSO-típust is támogat:
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
 
-Az [INTUNE MAM SDK](https://docs.microsoft.com/intune/app-sdk-get-started) támogatja a MSAL for iOS verziót a [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) verziótól kezdődően
+Az [INTUNE MAM SDK](/intune/app-sdk-get-started) támogatja a MSAL for iOS verziót a [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) verziótól kezdődően
 
 ## <a name="msal-and-adal-in-the-same-app"></a>MSAL és ADAL ugyanabban az alkalmazásban
 

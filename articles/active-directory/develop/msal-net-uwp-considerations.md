@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 502bbe65cdc0aef768ff4f017b1f6a920815b001
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652698"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118858"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>A Univerzális Windows-platform és a MSAL.NET használatának szempontjai
 A MSAL.NET-t (UWP) Univerzális Windows-platform használó alkalmazások fejlesztőinek figyelembe kell venniük a jelen cikkben ismertetett fogalmakat.
@@ -56,7 +56,7 @@ A probléma elkerüléséhez győződjön meg arról, hogy a WAB (a mögöttes W
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-További információ: [web Authentication Broker-Hegedűs](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
+További információ: [web Authentication Broker-Hegedűs](/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>További lépések
 A következő minták további információkat nyújtanak.

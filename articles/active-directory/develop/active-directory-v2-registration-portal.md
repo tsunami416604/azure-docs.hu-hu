@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552713"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115577"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
 
@@ -26,7 +26,7 @@ Ez a dokumentum a Azure Portal [Alkalmazásregisztrációk](https://aka.ms/appre
 
 ## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy konvergens alkalmazások
 
-Ez a lista tartalmazza az összes, a Microsoft Identity platform (v 2.0) végponttal való használatra regisztrált alkalmazást. Ezek az alkalmazások személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókokkal is bejelentkezhetnek a felhasználóktól Azure Active Directory. További információ az Identity platform végpontról: [v 2.0 – Áttekintés](active-directory-appmodel-v2-overview.md). Ezek az alkalmazások a Microsoft-fiók hitelesítési végponttal való integrálásra is használhatók `https://login.live.com` .
+Ez a lista tartalmazza az összes, a Microsoft Identity platform (v 2.0) végponttal való használatra regisztrált alkalmazást. Ezek az alkalmazások személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókokkal is bejelentkezhetnek a felhasználóktól Azure Active Directory. További információ az Identity platform végpontról: [v 2.0 – Áttekintés](./v2-overview.md). Ezek az alkalmazások a Microsoft-fiók hitelesítési végponttal való integrálásra is használhatók `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Csak Azure AD-alkalmazások
 

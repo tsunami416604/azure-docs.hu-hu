@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080726"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121323"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Helyettesítő kulcsok létrehozása identitás használatával a szinapszis SQL-készletben
 
@@ -24,7 +24,9 @@ Ebben a cikkben javaslatokat és példákat talál arra, hogy az IDENTITY tulajd
 
 ## <a name="what-is-a-surrogate-key"></a>Mi az a helyettesítő kulcs?
 
-A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Adatmodellek, például helyettesítő kulcsok létrehozása a tábláiban az adatraktár-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt. Az IDENTITY tulajdonsághoz a [create Table-(Transact-SQL-) identitásban (tulajdonság)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)részletezett korlátozások vonatkoznak. Az identitás egyik korlátja, hogy nem garantált egyedi. Az identitás beállításának kikapcsolásával és az identitás értékének kivetésével a rendszer több egyedi értéket fog eredményezni, de nem garantálja az egyediséget minden helyzetben. Ha az identitás korlátozásai miatt nem használhat identitási értékeket, hozzon létre egy külön táblázatot, amely egy aktuális értéket tárol, és kezelje a tábla és a szám hozzárendelésének hozzáférését az alkalmazással. 
+A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Adatmodellek, például helyettesítő kulcsok létrehozása a tábláiban az adatraktár-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt.
+> [!NOTE]
+> A szinapszis SQL-ben az IDENTITY érték nem garantált, hogy egyedi, ha a felhasználó explicit módon beszúr egy ismétlődő értéket a "SET IDENTITY_INSERT ON" vagy a reseeds IDENTITY. Részletekért lásd: [create Table (Transact-SQL) Identity (tulajdonság)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tábla létrehozása azonosító oszloppal
 

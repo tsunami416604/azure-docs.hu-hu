@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807621"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119708"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása Univerzális Windows-platform alkalmazásból (XAML)
 
@@ -27,7 +27,7 @@ Ez az útmutató azt ismerteti, hogyan kérhető le egy natív Univerzális Wind
 Az útmutató végén az alkalmazás személyes fiókok használatával meghívja a védett API-t. Ilyenek például a outlook.com, a live.com és mások. Az alkalmazás a munkahelyi és iskolai fiókokat is meghívja bármely olyan vállalattól vagy szervezettől, amely Azure Active Directory (Azure AD).
 
 >[!NOTE]
-> Ehhez az útmutatóhoz telepíteni kell a Visual studiót Univerzális Windows-platform-fejlesztéssel. A Visual Studio Univerzális Windows-platform alkalmazások fejlesztéséhez való letöltésével és konfigurálásával kapcsolatos utasításokért tekintse [meg a bevezetés beállítása](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)című témakört.
+> Ehhez az útmutatóhoz telepíteni kell a Visual studiót Univerzális Windows-platform-fejlesztéssel. A Visual Studio Univerzális Windows-platform alkalmazások fejlesztéséhez való letöltésével és konfigurálásával kapcsolatos utasításokért tekintse [meg a bevezetés beállítása](/windows/uwp/get-started/get-set-up)című témakört.
 
 >[!NOTE]
 > Ha most ismerkedik a Microsoft Identity platformmal, kezdje a [Microsoft Graph API meghívásával egy univerzális Windows-platform (UWP) alkalmazás](quickstart-v2-uwp.md)rövid útmutatójában.
@@ -336,7 +336,7 @@ private async Task DisplayMessageAsync(string message)
      }
 ```
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 Most regisztrálnia kell az alkalmazást:
 

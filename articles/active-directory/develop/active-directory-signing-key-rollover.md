@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552764"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115594"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
 Ez a cikk azt ismerteti, hogy mit kell tudni a Microsoft Identity platform által a biztonsági jogkivonatok aláírásához használt nyilvános kulcsokról. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként, és vészhelyzetben azonnal összeállíthatók. A Microsoft Identity platformot használó összes alkalmazásnak képesnek kell lennie programozott módon kezelni a kulcs-átváltási folyamatot, vagy létre kell hoznia egy rendszeres manuális átváltási folyamatot. Folytassa az olvasással, hogy megtudja, hogyan működik a kulcsok működése, hogyan állapítható meg a rollover hatása az alkalmazásra, illetve hogyan lehet frissíteni az alkalmazást, vagy létre kell hozni egy rendszeres manuális átütemezési folyamatot a kulcsok átváltásához, ha szükséges.
@@ -148,7 +148,7 @@ Ha webes API-alkalmazást hozott létre a Visual Studio 2013-ben a webes API-sab
 
 Ha a hitelesítést manuálisan konfigurálta, kövesse az alábbi utasításokat, amelyből megtudhatja, hogyan konfigurálhatja a webes API-t a legfontosabb információk automatikus frissítéséhez.
 
-A következő kódrészlet bemutatja, hogyan kérheti le a legújabb kulcsokat az összevonási metaadat-dokumentumból, majd az [JWT jogkivonat-kezelővel](https://msdn.microsoft.com/library/dn205065.aspx) érvényesítheti a jogkivonatot. A kódrészlet feltételezi, hogy saját gyorsítótárazási mechanizmust használ a kulcs megőrzéséhez a Microsoft Identity platform jövőbeli jogkivonatának érvényesítéséhez, függetlenül attól, hogy az adatbázis, a konfigurációs fájl vagy máshol található.
+A következő kódrészlet bemutatja, hogyan kérheti le a legújabb kulcsokat az összevonási metaadat-dokumentumból, majd az [JWT jogkivonat-kezelővel](/previous-versions/dotnet/framework/security/json-web-token-handler) érvényesítheti a jogkivonatot. A kódrészlet feltételezi, hogy saját gyorsítótárazási mechanizmust használ a kulcs megőrzéséhez a Microsoft Identity platform jövőbeli jogkivonatának érvényesítéséhez, függetlenül attól, hogy az adatbázis, a konfigurációs fájl vagy máshol található.
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Az erőforrásokat védő és a Visual Studio 2012-mel létrehozott webalkalmazások
-Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identitás-és elérési eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kibocsátói név érvényesítése (VINR) bejegyzést](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR feladata a megbízható identitás-szolgáltatók (Microsoft Identity platform) adatainak és az általuk kiállított jogkivonatok ellenőrzéséhez használt kulcsok fenntartásáért felelős. A VINR emellett megkönnyíti a Web.config fájlban tárolt kulcsok automatikus frissítését a címtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, amely ellenőrzi, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség szerint frissítse az alkalmazást az új kulcs használatára.
+Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identitás-és elérési eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kibocsátói név érvényesítése (VINR) bejegyzést](/previous-versions/dotnet/framework/security/validating-issuer-name-registry)használja. A VINR feladata a megbízható identitás-szolgáltatók (Microsoft Identity platform) adatainak és az általuk kiállított jogkivonatok ellenőrzéséhez használt kulcsok fenntartásáért felelős. A VINR emellett megkönnyíti a Web.config fájlban tárolt kulcsok automatikus frissítését a címtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, amely ellenőrzi, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség szerint frissítse az alkalmazást az új kulcs használatára.
 
 Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemutató-dokumentáció használatával hozta létre, akkor a projektben már szerepel a kulcs átváltási logikája. Megfigyelheti, hogy az alábbi kód már létezik a projektben. Ha az alkalmazás még nem rendelkezik ezzel a logikával, kövesse az alábbi lépéseket a hozzáadásához és annak ellenőrzéséhez, hogy megfelelően működik-e.
 
@@ -288,14 +288,14 @@ Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a kulcs átváltá
 Ha létrehoz egy alkalmazást a WIF 1.0-s verziójában, nincs megadva olyan mechanizmus, amely automatikusan frissíti az alkalmazás konfigurációját egy új kulcs használatára.
 
 * *Legegyszerűbb módszer* Használja a WIF SDK-ban található FedUtil-eszközt, amely beolvashatja a legfrissebb metaadat-dokumentumot, és frissítheti a konfigurációt.
-* Frissítse alkalmazását a .NET 4,5-es verzióra, amely tartalmazza a System névtérben található WIF legújabb verzióját. Ezután használhatja az [érvényesítési kiállítói név beállításjegyzékét (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) az alkalmazás konfigurációjának automatikus frissítéséhez.
+* Frissítse alkalmazását a .NET 4,5-es verzióra, amely tartalmazza a System névtérben található WIF legújabb verzióját. Ezután használhatja az [érvényesítési kiállítói név beállításjegyzékét (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) az alkalmazás konfigurációjának automatikus frissítéséhez.
 * Hajtson végre manuális átváltást az útmutató dokumentum végén található utasítások alapján.
 
 Útmutató a FedUtil a konfiguráció frissítéséhez való használatához:
 
 1. Ellenőrizze, hogy telepítve van-e a WIF v 1.0 SDK a Visual Studio 2008-es vagy 2010-es verziójának fejlesztői gépére. [Innen letöltheti](https://www.microsoft.com/en-us/download/details.aspx?id=4451) innen, ha még nem telepítette.
 2. A Visual Studióban nyissa meg a megoldást, majd kattintson a jobb gombbal a megfelelő projektre, és válassza az **összevonási metaadatok frissítése**lehetőséget. Ha ez a beállítás nem érhető el, a FedUtil és/vagy a WIF v 1.0 SDK nincs telepítve.
-3. A parancssorból válassza a **frissítés** lehetőséget az összevonási metaadatok frissítésének megkezdéséhez. Ha rendelkezik hozzáféréssel az alkalmazást futtató kiszolgálói környezethez, igény szerint használhatja a FedUtil [automatikus metaadat-frissítési ütemező](https://msdn.microsoft.com/library/ee517272.aspx)eszközét is.
+3. A parancssorból válassza a **frissítés** lehetőséget az összevonási metaadatok frissítésének megkezdéséhez. Ha rendelkezik hozzáféréssel az alkalmazást futtató kiszolgálói környezethez, igény szerint használhatja a FedUtil [automatikus metaadat-frissítési ütemező](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))eszközét is.
 4. A frissítési folyamat befejezéséhez kattintson a **Befejezés** gombra.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webalkalmazások/API-k, amelyek bármely más kódtár használatával védik az erőforrásokat, vagy manuálisan implementálják a támogatott protokollokat

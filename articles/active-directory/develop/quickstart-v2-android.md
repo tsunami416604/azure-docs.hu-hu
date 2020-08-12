@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 9afb5b7602b220c25d919f8fe0773d5cfa143d89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991194"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115271"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -102,15 +102,15 @@ A kód töredékekre van rendezve, amelyek bemutatják, hogyan írhat egyetlen �
 | MSGraphRequestWrapper  | A Microsoft Graph API meghívása a MSAL által biztosított jogkivonat használatával |
 | MultipleAccountModeFragment  | Inicializál egy többfiókos alkalmazást, betölti a felhasználói fiókot, és lekéri a tokent a Microsoft Graph API meghívásához |
 | SingleAccountModeFragment | Inicializál egy egyfiókos alkalmazást, betölti a felhasználói fiókot, és lekéri a tokent a Microsoft Graph API meghívásához |
-| res/auth_config_multiple_account. JSON  | A több fiók konfigurációs fájlja |
-| res/auth_config_single_account. JSON  | Az egyetlen fiók konfigurációs fájlja |
+| res/auth_config_multiple_account.jsbekapcsolva  | A több fiók konfigurációs fájlja |
+| res/auth_config_single_account.jsbekapcsolva  | Az egyetlen fiók konfigurációs fájlja |
 | Gradle-parancsfájlok/Build. Range (modul: alkalmazás) | A MSAL-függvénytár függőségei itt lesznek hozzáadva |
 
 Most megtekintjük ezeket a fájlokat részletesebben, és megvizsgáljuk a MSAL-specifikus kódokat.
 
 ### <a name="adding-msal-to-the-app"></a>MSAL hozzáadása az alkalmazáshoz
 
-A MSAL ([com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Gradle 3.0 + telepíti a könyvtárat, amikor hozzáadja a következőt a **Gradle-szkriptek** > **Build. Gradle (modul: alkalmazás)** alatt a **függőségek**területen:
+A MSAL ([com. microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Gradle 3.0 + telepíti a könyvtárat, amikor hozzáadja a következőt a **Gradle-szkriptek**  >  **Build. Gradle (modul: alkalmazás)** alatt a **függőségek**területen:
 
 ```gradle  
 implementation 'com.microsoft.identity.client:msal:1.+'
@@ -130,7 +130,7 @@ Ez arra utasítja a Gradle, hogy töltsön le és építsen MSAL a Maven Central
 
 ### <a name="msal-imports"></a>MSAL-importálások
 
-A MSAL-könyvtárhoz kapcsolódó importálások `com.microsoft.identity.client.*`.  Láthatja `import com.microsoft.identity.client.PublicClientApplication;` például, hogy melyik a `PublicClientApplication` osztály névtere, amely a nyilvános ügyfélalkalmazás.
+A MSAL-könyvtárhoz kapcsolódó importálások `com.microsoft.identity.client.*` .  Láthatja például, hogy `import com.microsoft.identity.client.PublicClientApplication;` melyik a `PublicClientApplication` osztály névtere, amely a nyilvános ügyfélalkalmazás.
 
 ### <a name="singleaccountmodefragmentjava"></a>SingleAccountModeFragment. Java
 
@@ -140,7 +140,7 @@ Az egyfiókos alkalmazásokat csak egyetlen felhasználó használja.  Előfordu
 
 #### <a name="single-account-msal-initialization"></a>Egy fiók MSAL inicializálása
 
-`auth_config_single_account.json`A-ben `onCreateView()`a-ben egyetlen `PublicClientApplication` fiók jön létre a `auth_config_single_account.json` fájlban tárolt konfigurációs adatok használatával.  Így inicializálhatja a MSAL-függvénytárat egy egyfiókos MSAL-alkalmazásban való használatra:
+A-ben a-ben `auth_config_single_account.json` `onCreateView()` egyetlen fiók `PublicClientApplication` jön létre a fájlban tárolt konfigurációs adatok használatával `auth_config_single_account.json` .  Így inicializálhatja a MSAL-függvénytárat egy egyfiókos MSAL-alkalmazásban való használatra:
 
 ```java
 ...
@@ -167,9 +167,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 #### <a name="sign-in-a-user"></a>Bejelentkezés felhasználóként
 
-`SingleAccountModeFragment.java`A-ben a felhasználónak `initializeUI()`bejelentkezni kívánt kód a kattintson a `signInButton` kezelő elemre.
+A-ben `SingleAccountModeFragment.java` a felhasználónak bejelentkezni kívánt kód a `initializeUI()` `signInButton` kattintson a kezelő elemre.
 
-A `signIn()` tokenek beszerzésére tett kísérlet előtt hívja meg a hívást. `signIn()`úgy viselkedik, mintha `acquireToken()` a meghívásra kerül, ami interaktív kérést eredményez a felhasználónak a bejelentkezéshez.
+`signIn()`A tokenek beszerzésére tett kísérlet előtt hívja meg a hívást. `signIn()`úgy viselkedik, mintha a `acquireToken()` meghívásra kerül, ami interaktív kérést eredményez a felhasználónak a bejelentkezéshez.
 
 A felhasználó bejelentkezése aszinkron művelet. A rendszer visszahívást küld, amely meghívja a Microsoft Graph API-t, és a felhasználó bejelentkezése után frissíti a felhasználói FELÜLETET:
 
@@ -179,7 +179,7 @@ mSingleAccountApp.signIn(getActivity(), null, getScopes(), getAuthInteractiveCal
 
 #### <a name="sign-out-a-user"></a>Felhasználó kijelentkezése
 
-A `SingleAccountModeFragment.java`alkalmazásban a felhasználó `initializeUI()`kijelentkezésére szolgáló kód a kattintson a `signOutButton` kezelő elemre.  A felhasználó aláírása aszinkron művelet. A felhasználó aláírása törli a fiókhoz tartozó jogkivonat-gyorsítótárat is. A felhasználói fiók kijelentkezése után a rendszer visszahívást hoz létre a felhasználói felület frissítéséhez:
+A alkalmazásban `SingleAccountModeFragment.java` a felhasználó kijelentkezésére szolgáló kód a `initializeUI()` `signOutButton` kattintson a kezelő elemre.  A felhasználó aláírása aszinkron művelet. A felhasználó aláírása törli a fiókhoz tartozó jogkivonat-gyorsítótárat is. A felhasználói fiók kijelentkezése után a rendszer visszahívást hoz létre a felhasználói felület frissítéséhez:
 
 ```java
 mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
@@ -198,7 +198,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 
 #### <a name="get-a-token-interactively-or-silently"></a>Jogkivonat interaktív vagy csendes beszerzése
 
-Ha a lehető legkevesebb kérést szeretné bemutatni a felhasználónak, akkor a rendszer általában csendes esetben lekérdezi a tokent. Ha hiba merül fel, próbálja meg interaktív módon beolvasni a tokent. Az alkalmazás `signIn()`első meghívásakor az hatékonyan hívja a `acquireToken()`-t, amely felszólítja a felhasználót a hitelesítő adatok megadására.
+Ha a lehető legkevesebb kérést szeretné bemutatni a felhasználónak, akkor a rendszer általában csendes esetben lekérdezi a tokent. Ha hiba merül fel, próbálja meg interaktív módon beolvasni a tokent. Az alkalmazás első meghívásakor az `signIn()` hatékonyan hívja a `acquireToken()` -t, amely felszólítja a felhasználót a hitelesítő adatok megadására.
 
 Bizonyos esetekben előfordulhat, hogy a felhasználónak meg kell adnia a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás által kért engedélyeket:
 
@@ -209,7 +209,7 @@ Bizonyos esetekben előfordulhat, hogy a felhasználónak meg kell adnia a fiók
 * Ha az alkalmazás első alkalommal kér hozzáférést egy erőforráshoz
 * Ha MFA-vagy más feltételes hozzáférési szabályzatokra van szükség
 
-A jogkivonat interaktív beszerzéséhez használt kód, amely a felhasználót érintő felhasználói FELÜLETtel rendelkezik, a (z) `SingleAccountModeFragment.java`, `initializeUI()`a (z) `callGraphApiInteractiveButton` kezelője elemre kattintva:
+A jogkivonat interaktív beszerzéséhez használt kód, amely a felhasználót érintő felhasználói FELÜLETtel rendelkezik, a (z), a (z) `SingleAccountModeFragment.java` `initializeUI()` `callGraphApiInteractiveButton` kezelője elemre kattintva:
 
 ```java
 /**
@@ -224,7 +224,7 @@ A jogkivonat interaktív beszerzéséhez használt kód, amely a felhasználót 
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetővé teszi az alkalmazások számára, hogy a jogkivonatokat `initializeUI()`csendes módon igényeljenek, a `callGraphApiSilentButton` Click Handler:
+Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetővé teszi az alkalmazások számára, hogy a jogkivonatokat csendes módon igényeljenek `initializeUI()` , a `callGraphApiSilentButton` Click Handler:
 
 ```java
 /**
@@ -236,7 +236,7 @@ Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetőv
 
 #### <a name="load-an-account"></a>Fiók betöltése
 
-A fiók betöltésére szolgáló kód a `SingleAccountModeFragment.java` következő `loadAccount()`címen található:.  A felhasználó fiókjának betöltése aszinkron művelet, ezért a fiók betöltésének, módosításának vagy hibájának beolvasásakor visszahívást kell adni a MSAL.  A következő kód is kezeli `onAccountChanged()`, amely akkor fordul elő, ha egy fiókot eltávolítanak, a felhasználó egy másik fiókra vált, és így tovább.
+A fiók betöltésére szolgáló kód a `SingleAccountModeFragment.java` következő címen található: `loadAccount()` .  A felhasználó fiókjának betöltése aszinkron művelet, ezért a fiók betöltésének, módosításának vagy hibájának beolvasásakor visszahívást kell adni a MSAL.  A következő kód is kezeli `onAccountChanged()` , amely akkor fordul elő, ha egy fiókot eltávolítanak, a felhasználó egy másik fiókra vált, és így tovább.
 
 ```java
 private void loadAccount() {
@@ -266,7 +266,7 @@ private void loadAccount() {
 
 #### <a name="call-microsoft-graph"></a>Hívás Microsoft Graph
 
-Ha egy felhasználó be van jelentkezve, a Microsoft Graph hívása egy HTTP-kérésen keresztül történik `callGraphAPI()` , amely a ben `SingleAccountModeFragment.java`van definiálva. Ez a függvény egy burkoló, amely leegyszerűsíti a mintát olyan feladatok elvégzésével, mint például a hozzáférési jogkivonat `authenticationResult` lekérése és a hívás MSGraphRequestWrapper való becsomagolása, valamint a hívás eredményének megjelenítése.
+Ha egy felhasználó be van jelentkezve, a Microsoft Graph hívása egy HTTP-kérésen keresztül történik, `callGraphAPI()` amely a ben van definiálva `SingleAccountModeFragment.java` . Ez a függvény egy burkoló, amely leegyszerűsíti a mintát olyan feladatok elvégzésével, mint például a hozzáférési jogkivonat lekérése `authenticationResult` és a hívás MSGraphRequestWrapper való becsomagolása, valamint a hívás eredményének megjelenítése.
 
 ```java
 private void callGraphAPI(final IAuthenticationResult authenticationResult) {
@@ -290,13 +290,13 @@ private void callGraphAPI(final IAuthenticationResult authenticationResult) {
 }
 ```
 
-### <a name="auth_config_single_accountjson"></a>auth_config_single_account. JSON
+### <a name="auth_config_single_accountjson"></a>auth_config_single_account.jsbekapcsolva
 
 Ez egy olyan MSAL-alkalmazás konfigurációs fájlja, amely egyetlen fiókot használ.
 
 A mezők magyarázatát az [androidos MSAL konfigurációs fájljának megismerése](msal-configuration.md) című részben találja.
 
-Figyelje meg a jelenlétét `"account_mode" : "SINGLE"`, amely az alkalmazást egyetlen fiók használatára konfigurálja.
+Figyelje meg a jelenlétét `"account_mode" : "SINGLE"` , amely az alkalmazást egyetlen fiók használatára konfigurálja.
 
 `"client_id"`előre konfigurálva van, hogy a Microsoft által fenntartott alkalmazás-objektum regisztrációját használja.
 `"redirect_uri"`előre konfigurálva van, hogy a kód mintájában megadott aláíró kulcsot használja.
@@ -328,7 +328,7 @@ Egy több fiókból álló alkalmazás például egy olyan levelező alkalmazás
 
 #### <a name="multiple-account-msal-initialization"></a>Több fiók MSAL inicializálása
 
-A `MultipleAccountModeFragment.java` fájlban `onCreateView()`a alkalmazásban egy több Account app Object (`IMultipleAccountPublicClientApplication`) jön létre a következő helyen tárolt konfigurációs adatokkal: `auth_config_multiple_account.json file`
+A fájlban a alkalmazásban `MultipleAccountModeFragment.java` `onCreateView()` egy több Account app Object ( `IMultipleAccountPublicClientApplication` ) jön létre a következő helyen tárolt konfigurációs adatokkal `auth_config_multiple_account.json file` :
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_multiple_account.json
@@ -352,7 +352,7 @@ A létrehozott `MultipleAccountPublicClientApplication` objektum egy Class tag-v
 
 #### <a name="load-an-account"></a>Fiók betöltése
 
-A több fiókból származó `getAccounts()` alkalmazások általában a MSAL-műveletekhez használandó fiókot hívják meg. A fiók betöltéséhez szükséges kód a következő `MultipleAccountModeFragment.java` `loadAccounts()`fájlban található:.  A felhasználó fiókjának betöltése aszinkron művelet. Így a visszahívás a fiók betöltését, változásait vagy hiba esetén felmerülő helyzeteket kezeli.
+A több fiókból származó alkalmazások általában `getAccounts()` a MSAL-műveletekhez használandó fiókot hívják meg. A fiók betöltéséhez szükséges kód a `MultipleAccountModeFragment.java` következő fájlban található: `loadAccounts()` .  A felhasználó fiókjának betöltése aszinkron művelet. Így a visszahívás a fiók betöltését, változásait vagy hiba esetén felmerülő helyzeteket kezeli.
 
 ```java
 /**
@@ -390,7 +390,7 @@ Bizonyos esetekben előfordulhat, hogy a felhasználónak meg kell adnia a fiók
 * Ha az alkalmazás első alkalommal kér hozzáférést egy erőforráshoz
 * Ha MFA-vagy más feltételes hozzáférési szabályzatokra van szükség
 
-A több fiókból álló alkalmazások általában interaktív módon szerzik be `acquireToken()`a jogkivonatokat, amely a felhasználót tartalmazó felhasználói felülettel van ellátva.  A jogkivonat interaktív beolvasásához szükséges kód a `MultipleAccountModeFragment.java` fájljában `initializeUI()`, a `callGraphApiInteractiveButton` Click Handler:
+A több fiókból álló alkalmazások általában interaktív módon szerzik be a jogkivonatokat, amely a felhasználót tartalmazó felhasználói FELÜLETtel van ellátva `acquireToken()` .  A jogkivonat interaktív beolvasásához szükséges kód a `MultipleAccountModeFragment.java` fájljában `initializeUI()` , a `callGraphApiInteractiveButton` Click Handler:
 
 ```java
 /**
@@ -407,7 +407,7 @@ A több fiókból álló alkalmazások általában interaktív módon szerzik be
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Az alkalmazásoknak nem kell minden alkalommal bejelentkezniük, amikor jogkivonatot kérnek. Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetővé teszi, hogy az alkalmazások a felhasználó értesítése nélkül igényeljenek jogkivonatokat `MultipleAccountModeFragment.java` a fájlban látható`initializeUI()` módon, `callGraphApiSilentButton` a kattintson a kezelőben:
+Az alkalmazásoknak nem kell minden alkalommal bejelentkezniük, amikor jogkivonatot kérnek. Ha a felhasználó már be van jelentkezve, `acquireTokenSilentAsync()` lehetővé teszi, hogy az alkalmazások a felhasználó értesítése nélkül igényeljenek jogkivonatokat a fájlban látható módon `MultipleAccountModeFragment.java` , a `initializeUI()` kattintson a `callGraphApiSilentButton` kezelőben:
 
 ```java
 /**
@@ -424,7 +424,7 @@ mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
 
 #### <a name="remove-an-account"></a>Fiók eltávolítása
 
-A fiók eltávolításához és a fiókhoz tartozó gyorsítótárazott jogkivonatokhoz tartozó kód a fiók eltávolítása `MultipleAccountModeFragment.java` gomb kezelőjének fájljában `initializeUI()` található. Mielőtt eltávolít egy fiókot, szüksége lesz egy fiók objektumra, amelyet a (z `getAccounts()` ) és `acquireToken()`a MSAL metódusokból szerezhet be. Mivel a fiókok eltávolítása aszinkron művelet, a `onRemoved` visszahívás a felhasználói felület frissítésére szolgál.
+A fiók eltávolításához és a fiókhoz tartozó gyorsítótárazott jogkivonatokhoz tartozó kód a `MultipleAccountModeFragment.java` `initializeUI()` fiók eltávolítása gomb kezelőjének fájljában található. Mielőtt eltávolít egy fiókot, szüksége lesz egy fiók objektumra, amelyet a (z) és a MSAL metódusokból szerezhet be `getAccounts()` `acquireToken()` . Mivel a fiókok eltávolítása aszinkron művelet, a visszahívás a `onRemoved` felhasználói felület frissítésére szolgál.
 
 ```java
 /**
@@ -446,13 +446,13 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
         });
 ```
 
-### <a name="auth_config_multiple_accountjson"></a>auth_config_multiple_account. JSON
+### <a name="auth_config_multiple_accountjson"></a>auth_config_multiple_account.jsbekapcsolva
 
 Ez egy olyan MSAL-alkalmazás konfigurációs fájlja, amely több fiókot használ.
 
 Az [androidos MSAL konfigurációs fájljának megismeréséhez](msal-configuration.md) tekintse meg a különböző mezők magyarázatát.
 
-A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurációs fájllal ellentétben ez a konfigurációs fájl nem `"account_mode" : "MULTIPLE"` azért van `"account_mode" : "SINGLE"` , mert ez egy több fiókból álló alkalmazás.
+A konfigurációs fájl [auth_config_single_account.jstól](#auth_config_single_accountjson) eltérően ez a konfigurációs fájl nem `"account_mode" : "MULTIPLE"` `"account_mode" : "SINGLE"` azért van, mert ez egy több fiókból álló alkalmazás.
 
 `"client_id"`előre konfigurálva van, hogy a Microsoft által fenntartott alkalmazás-objektum regisztrációját használja.
 `"redirect_uri"`előre konfigurálva van, hogy a kód mintájában megadott aláíró kulcsot használja.
@@ -483,7 +483,7 @@ A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurá
 Próbálja ki a [bejelentkezési felhasználókat, és hívja meg a Microsoft Graph egy Android-alkalmazásról](tutorial-v2-android.md) szóló oktatóanyagban egy lépésenkénti útmutatót egy olyan Android-alkalmazás létrehozásához, amely hozzáférési jogkivonatot kap, és azt használja a Microsoft Graph API meghívásához.
 
 > [!div class="nextstepaction"]
-> [A Graph API meghívása – oktatóanyag Androidhoz](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [A Graph API meghívása – oktatóanyag Androidhoz](./tutorial-v2-android.md)
 
 ### <a name="msal-for-android-library-wiki"></a>Androidhoz készült MSAL-kódtár – wiki
 

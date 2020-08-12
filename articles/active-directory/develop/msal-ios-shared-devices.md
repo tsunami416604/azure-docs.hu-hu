@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80550252"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114914"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Megosztott eszköz mód iOS-eszközökhöz
 
@@ -67,7 +67,7 @@ Az eszközt úgy kell konfigurálni, hogy támogassa a megosztott eszköz üzemm
       - Típus: Boolean
       - Érték: true
 
-    Az Intune-nal való konfigurálással kapcsolatos további információkért tekintse meg az [Intune konfigurációs dokumentációját](https://docs.microsoft.com/intune/configuration/ios-device-features-settings).
+    Az Intune-nal való konfigurálással kapcsolatos további információkért tekintse meg az [Intune konfigurációs dokumentációját](/intune/configuration/ios-device-features-settings).
 
 1. Ezután konfigurálja úgy a MDM, hogy az MDM-profilon keresztül leküldje a Microsoft Authenticator alkalmazást az eszközre.
 

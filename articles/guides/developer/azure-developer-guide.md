@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080317"
+ms.locfileid: "88120575"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -35,7 +35,7 @@ Ez az útmutató az alkalmazások fejlesztői számára készült Azure platform
 
 Az Azure által kínált összes szolgáltatással megfélemlítő feladat lehet a megoldás architektúrájának támogatásához szükséges szolgáltatások kitalálása. Ez a szakasz a fejlesztők által gyakran használt Azure-szolgáltatásokat emeli ki. Az összes Azure-szolgáltatás listáját az [Azure dokumentációjában](../../index.yml)találja.
 
-Először is el kell döntenie, hogyan üzemelteti az alkalmazást az Azure-ban. A teljes infrastruktúrát virtuális gépnek (VM) kell kezelnie. Használhatja az Azure által biztosított platform-felügyeleti szolgáltatásokat? Lehet, hogy kiszolgáló nélküli keretrendszerre van szüksége a kód futtatásához?
+Először is el kell döntenie, hogyan üzemelteti az alkalmazást az Azure-ban. A teljes infrastruktúrát virtuális gépnek (VM) kell kezelnie? Használhatja az Azure által biztosított platform-felügyeleti szolgáltatásokat? Lehet, hogy kiszolgáló nélküli keretrendszerre van szüksége a kód futtatásához?
 
 Az alkalmazásnak Felhőbeli tárhelyre van szüksége, amelyet az Azure számos lehetőséget kínál. Igénybe veheti az Azure vállalati hitelesítését. A felhőalapú fejlesztéshez és monitorozáshoz is vannak eszközök, és a legtöbb üzemeltetési szolgáltatás DevOps-integrációt biztosít.
 

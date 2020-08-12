@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682424"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120779"
 ---
 # <a name="publisher-verification-preview"></a>Közzétevő ellenőrzése (előzetes verzió)
 
@@ -42,13 +42,13 @@ A kiadói ellenőrzéshez néhány előfeltétel van, amelyek némelyikét már 
 
 -  Egy olyan érvényes [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiók MPN-azonosítója, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot. Az MPN-fióknak a szervezete [partner globális fiókjának (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) kell lennie. 
 
--  Egy DNS által ellenőrzött [Egyéni tartománnyal](/azure/active-directory/fundamentals/add-custom-domain)rendelkező Azure ad-bérlő. Az egyéni tartománynak meg kell egyeznie az előző lépésben az ellenőrzés során használt e-mail-cím tartományával. 
+-  Egy DNS által ellenőrzött [Egyéni tartománnyal](../fundamentals/add-custom-domain.md)rendelkező Azure ad-bérlő. Az egyéni tartománynak meg kell egyeznie az előző lépésben az ellenőrzés során használt e-mail-cím tartományával. 
 
 -  Egy Azure AD-bérlőben regisztrált alkalmazás, amelynek [közzétevő-tartománya](howto-configure-publisher-domain.md) a korábban használttal megegyező tartománnyal van konfigurálva. 
 
 -  Az ellenőrzést végző felhasználó számára engedélyezni kell, hogy az Azure AD-ben és az MPN-fiókban is módosíthassa az alkalmazások regisztrációját. 
 
-    -  Az Azure AD-ben a felhasználónak vagy az alkalmazás tulajdonosának kell lennie, vagy a következő [szerepkörök](/azure/active-directory/users-groups-roles/directory-assign-admin-roles)egyikével kell rendelkeznie: Application admin, Cloud Application admin, globális rendszergazda. 
+    -  Az Azure AD-ben a felhasználónak vagy az alkalmazás tulajdonosának kell lennie, vagy a következő [szerepkörök](../users-groups-roles/directory-assign-admin-roles.md)egyikével kell rendelkeznie: Application admin, Cloud Application admin, globális rendszergazda. 
 
     -  A partner Centerben ennek a felhasználónak a következő [szerepkörökkel](/partner-center/permissions-overview)kell rendelkeznie: MPN-rendszergazda, fiókok rendszergazdája vagy globális rendszergazda (ez az Azure ad-ben elsajátított megosztott szerepkör).
     
@@ -67,7 +67,7 @@ Az alábbiakban néhány gyakori kérdést talál a közzétevő ellenőrzési p
 
   A Microsoft 365t is integráló fejlesztők további előnyöket kaphatnak a programoktól. További információkért tekintse meg [Microsoft 365 közzétevői igazolást](/microsoft-365-app-certification/docs/attestation) és [Microsoft 365 alkalmazás minősítését](/microsoft-365-app-certification/docs/certification). 
 
-- **Ugyanaz, mint az Azure AD Application Gallery?** Nem – a közzétevő ellenőrzése egy kiegészítő, de különálló program a [Azure Active Directory alkalmazás-gyűjteményben](/azure/active-directory/azuread-dev/howto-app-gallery-listing). A fenti feltételeknek megfelelő fejlesztőknek a programban való részvételtől függetlenül kell befejezniük a közzétevő ellenőrzési folyamatát. 
+- **Ugyanaz, mint az Azure AD Application Gallery?** Nem – a közzétevő ellenőrzése egy kiegészítő, de különálló program a [Azure Active Directory alkalmazás-gyűjteményben](../azuread-dev/howto-app-gallery-listing.md). A fenti feltételeknek megfelelő fejlesztőknek a programban való részvételtől függetlenül kell befejezniük a közzétevő ellenőrzési folyamatát. 
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [jelölheti meg az alkalmazást közzétevőként](mark-app-as-publisher-verified.md).

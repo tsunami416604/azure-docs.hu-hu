@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848757"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117022"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
@@ -110,6 +110,11 @@ Kövesse az [azure multi-Factor Authentication használatának első lépései a
 Miután engedélyezte a fiók engedélyezését az MFA-ban, nem tud bejelentkezni az MFA-szabályzat hatálya alá tartozó erőforrásokra egészen addig, amíg sikeresen konfigurálta a megbízható eszközt a második hitelesítési tényezőhöz, és a hitelesítés a kétlépéses ellenőrzés használatával történt.
 
 Kövesse a [Mit jelent az Azure multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) című témakörben ismertetett lépéseket a felhasználói fiókkal kapcsolatos MFA-eszközök megismeréséhez és megfelelő konfigurálásához.
+
+> [!IMPORTANT]
+> Távoli asztali átjáró bejelentkezési viselkedése nem teszi lehetővé, hogy az Azure Multi-Factor Authentication használatával ellenőrző kódot adjon meg. A felhasználói fiókot a telefonos ellenőrzéshez vagy a Microsoft Authenticator alkalmazáshoz kell konfigurálni leküldéses értesítésekkel.
+>
+> Ha a két hitelesítési módszer egyike nincs konfigurálva egy felhasználóhoz, nem fog tudni befejezni az Azure Multi-Factor Authentication Challenge-et, és be kell jelentkeznie a Távoli asztali átjáróba.
 
 ## <a name="install-and-configure-nps-extension"></a>Az NPS bővítmény telepítése és konfigurálása
 

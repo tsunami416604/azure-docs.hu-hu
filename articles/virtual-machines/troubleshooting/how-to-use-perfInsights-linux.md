@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526799"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121391"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -78,7 +78,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - Profilkészítési rögzítés a PROCESSZORon és a CPU-használat feldolgozása 5 másodperces intervallumban
   - Profilkészítés – a folyamatok memória-használatának 5 másodperces intervallumon belüli rögzítése
 
-- Hálózatkezelés  
+- Hálózat  
   - Adapterek statisztikáit tartalmazó hálózati adapterek listája
   - Hálózati útválasztási táblázat
   - Nyitott portok és állapot
@@ -99,6 +99,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/Sysstat vagy/var/log/SA [ `**` ]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -112,7 +113,9 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
 - [Azure virtuálisgép-példány metaadatainak](../windows/instance-metadata-service.md)
 
 >[!Note]
->[ `*` ] A PCI-információk gyűjtése még nem történt meg a Debian és a SLES disztribúcióban
+>[ `*` ] A PCI-adatok még nincsenek összegyűjtve a Debian és a SLES-disztribúciók esetében.
+> 
+>[ `**` ] a/var/log/Sysstat vagy a/var/log/SA tartalmazza a Sysstat-csomag által gyűjtött Rendszertevékenységi jelentés (SAR) fájljait. Ha a Sysstat-csomag nincs telepítve a virtuális gépen, a PerfInsights eszköz javaslatot tesz a telepítésére.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>A PerfInsights Linux futtatása a virtuális gépen
 
@@ -121,7 +124,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
 #### <a name="tool-requirements"></a>Eszközre vonatkozó követelmények
 
 - Ezt az eszközt a teljesítménnyel kapcsolatos problémát biztosító virtuális gépen kell futtatni.
-- A Python 2,7-et telepíteni kell a virtuális gépre.
+- A virtuális gépre telepíteni kell a Python 3. x vagy a Python 2,7-es verzióját.
 
 - A következő eloszlások jelenleg támogatottak:
 
@@ -244,7 +247,7 @@ A **Linux** lapon a virtuális gépen futó hardverre és operációs rendszerre
 
 ![A Linux lap képernyőképe](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. Ha a Microsoft ügyfélszolgálata munkatársaival dolgozik, kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 

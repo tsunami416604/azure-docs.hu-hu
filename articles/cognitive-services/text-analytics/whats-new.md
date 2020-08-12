@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986298"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121850"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -23,9 +23,45 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 
 ## <a name="august-2020"></a>Augusztus 2020
 
+### <a name="general-api-updates"></a>Általános API-frissítések
+
 * Modell verziója `2020-07-01` a v3 `/keyphrases` és a `/pii` `/languages` végpontok számára, amely a következőket adja:
     * További kormányzati és ország-specifikus [entitások kategóriái](named-entity-types.md?tabs=personal) a nevesített entitások felismeréséhez.
 * A rendszer mostantól HTTP 400-es hibát ad vissza az olyan V3 API-kérelmek esetében, amelyek túllépik a közzétett [adatkorlátot](concepts/data-limits.md). 
+
+### <a name="text-analytics-for-health-container-august-updates"></a>Az állapot-tárolók augusztus Text Analytics frissítései
+
+A következő frissítések csak az Text Analytics az állapotfigyelő tárolóra vonatkozó augusztusi kiadására vonatkoznak.
+
+* Új modell – a Text Analytics for Health verziója:`2020-07-24`
+* Új URL-cím Text Analytics küldéséhez az állapotadatok kéréséhez:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+
+A JSON-válasz következő tulajdonságai módosultak:
+
+* A `type` új nevet kapott: `category` 
+* A `score` új nevet kapott: `confidenceScore`
+* `category`A JSON-kimenet mezőjében szereplő entitások mostantól Pascal-ügyben vannak. A következő entitások lettek átnevezve:
+    * `EXAMINATION_RELATION`átnevezve: `RelationalOperator` .
+    * `EXAMINATION_UNIT`átnevezve: `MeasurementUnit` .
+    * `EXAMINATION_VALUE`átnevezve: `MeasurementValue` .
+    * `ROUTE_OR_MODE`átnevezve `MedicationRoute` .
+    * A relációs entitás `ROUTE_OR_MODE_OF_MEDICATION` át lett nevezve a következőre: `RouteOfMedication` .
+
+A következő entitások lettek hozzáadva:
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* Kapcsolatok kibontása
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [További információ a Text Analytics az állapotfigyelő tárolóról](how-tos/text-analytics-for-health.md)
 
 ## <a name="july-2020"></a>2020. július 
 
@@ -39,10 +75,6 @@ A tároló a következő funkciókat kínálja:
 * Kapcsolatok kibontása
 * Entitás összekapcsolása
 * Negáció
-
-
-> [!div class="nextstepaction"]
-> [További információ a Text Analytics az állapotfigyelő tárolóról](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020. május
 
@@ -107,7 +139,7 @@ További entitás-típusok mostantól elérhetők az elnevezett entitás-felisme
 
 * A következő általános entitás-típusok felismerése (csak angol nyelven):
     * PersonType
-    * Termék
+    * Product
     * Esemény
     * Geopolitikai entitás (GPE) a hely alatt altípusként
     * Ügyességi

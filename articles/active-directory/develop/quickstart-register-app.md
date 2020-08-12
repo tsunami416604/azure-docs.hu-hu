@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81309510"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115356"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -34,7 +34,7 @@ Az alkalmazás integrálva van a Microsoft Identity platformmal, és regisztrál
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban. Állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
-1. Keresse meg és válassza ki az **Azure Active Directoryt**. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza az **új regisztráció**lehetőséget.
 1. Az **alkalmazás regisztrálása**területen adja meg a felhasználók számára megjelenítendő, értelmezhető alkalmazás nevét.
 1. A következőképpen adhatja meg, hogy ki használhatja az alkalmazást:
@@ -50,7 +50,7 @@ Az alkalmazás integrálva van a Microsoft Identity platformmal, és regisztrál
     * Webalkalmazás esetében adja meg alkalmazás alap URL-címét. A `https://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
     * Nyilvános ügyfélalkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg az alkalmazáshoz tartozó értéket, például: `myapp://auth`.
 
-    Webalkalmazásokra vagy natív alkalmazásokra vonatkozó példákért tekintse meg a gyors útmutatókat a [Microsoft Identity platformon](https://docs.microsoft.com/azure/active-directory/develop).
+    Webalkalmazásokra vagy natív alkalmazásokra vonatkozó példákért tekintse meg a gyors útmutatókat a [Microsoft Identity platformon](./index.yml).
 
 1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 
@@ -70,7 +70,7 @@ Az Azure AD egy egyedi alkalmazást vagy ügyfelet rendel hozzá az alkalmazásh
 
 * A támogatott fiókok kezeléséhez tekintse meg a rövid útmutató [: alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)című témakört.
 
-* Az alkalmazások létrehozásához és a funkciók hozzáadásához tekintse meg a gyors útmutatókat a [Microsoft Identity platformon](https://docs.microsoft.com/azure/active-directory/develop).
+* Az alkalmazások létrehozásához és a funkciók hozzáadásához tekintse meg a gyors útmutatókat a [Microsoft Identity platformon](./index.yml).
 
 * Ha szeretne többet megtudni a regisztrált alkalmazásokat jelölő két Azure AD-objektumról és azok kapcsolatáról, tekintse meg az [alkalmazás- és szolgáltatásnév-objektumokat](app-objects-and-service-principals.md) ismertető szakaszt.
 
