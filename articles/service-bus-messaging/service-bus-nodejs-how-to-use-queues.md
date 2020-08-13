@@ -181,7 +181,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A várólistákkal kapcsolatos további tudnivalókért tekintse meg a következő forrásokat.
 
 * [Queues, topics, and subscriptions][Queues, topics, and subscriptions]

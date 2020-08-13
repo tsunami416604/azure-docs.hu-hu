@@ -6,13 +6,13 @@ metadata:
   description: Webhelyek, webalkalmazások, RESTful API-k és mobil-háttéralkalmazások az Azure App Service-ben. Gyorsútmutatók, oktatóanyagok és minták keresése az App Service használatához.
   ms.topic: landing-page
   ms.service: app-service
-  ms.date: 02/26/2020
-  ms.openlocfilehash: e8dcbe7288fb72fb5084f210bf38f7fa55f969a2
-  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 3fc31095ec0d8e1ecdbe44c0751c55164d20e088
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/18/2020
-  ms.locfileid: "84987962"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080028"
 landingContent:
 - title: Az App Service ismertetése
   linkLists:
@@ -20,8 +20,6 @@ landingContent:
     links:
     - text: Mi az App Service?
       url: overview.md
-    - text: App Service Linux rendszeren
-      url: /azure/app-service/containers/
     - text: App Service-környezetek
       url: environment/intro.md
     - text: Az üzemeltetési lehetőségek összehasonlítása
@@ -35,19 +33,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Első ASP.NET Core-alkalmazás
-      url: app-service-web-get-started-dotnet.md
-    - text: Első ASP.NET-alkalmazás
-      url: app-service-web-get-started-dotnet-framework.md
+      url: quickstart-dotnetcore.md
+    - text: Első ASP.NET-alkalmazás (csak Windowson)
+      url: quickstart-dotnet-framework.md
     - text: Első Node.js-alkalmazás
-      url: app-service-web-get-started-nodejs.md
+      url: quickstart-nodejs.md
     - text: Első PHP-alkalmazás
-      url: app-service-web-get-started-php.md
+      url: quickstart-php.md
     - text: Első Java-alkalmazás
-      url: app-service-web-get-started-java.md
-    - text: Első Python-alkalmazás (Linuxon)
-      url: containers/quickstart-python.md
-    - text: Első Ruby-alkalmazás (Linuxon)
-      url: containers/quickstart-ruby.md
+      url: quickstart-java.md
+    - text: Első Python Flask-alkalmazás (csak Linuxon)
+      url: quickstart-python.md
+    - text: Első Ruby-alkalmazás (csak Linuxon)
+      url: quickstart-ruby.md
 - title: Gyakori feladatok
   linkLists:
   - linkListType: tutorial
@@ -62,6 +60,8 @@ landingContent:
     links:
     - text: Diagnosztikai naplók engedélyezése
       url: troubleshoot-diagnostic-logs.md
+    - text: Kapcsolódás Linux-tárolóhoz SSH-n keresztül
+      url: configure-linux-open-ssh-session.md
     - text: Aktív tartomány migrálása az App Service-be
       url: manage-custom-dns-migrate-domain.md
 - title: CRUD-alkalmazás adatbázissal
@@ -71,11 +71,17 @@ landingContent:
     - text: ASP.NET-alkalmazás és SQL Database
       url: app-service-web-tutorial-dotnet-sqldatabase.md
     - text: ASP.NET Core-alkalmazás SQL Database-zel
-      url: app-service-web-tutorial-dotnetcore-sqldb.md
+      url: tutorial-dotnetcore-sqldb-app.md
     - text: PHP- (Laravel-) alkalmazás Azure MySQL-lel
-      url: app-service-web-tutorial-php-mysql.md
+      url: tutorial-php-mysql-app.md
     - text: Node.js- (MEAN.js-) alkalmazás MongoDB-vel
-      url: app-service-web-tutorial-nodejs-mongodb-app.md
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Java- (Spring Boot-) alkalmazás Cosmos DB-vel
+      url: tutorial-java-spring-cosmosdb.md
+    - text: Python- (Django-) alkalmazás PostgreSQL-lel
+      url: tutorial-python-postgresql-app.md
+    - text: Ruby- (Rails-) alkalmazás PostgreSQL-lel
+      url: tutorial-ruby-postgres-app.md
 - title: Kód vagy tartalom feltöltése
   linkLists:
   - linkListType: deploy
@@ -90,20 +96,28 @@ landingContent:
       url: deploy-content-sync.md
     - text: CI/CD GitHub, BitBucket stb. használatával
       url: deploy-continuous-deployment.md
-- title: Tárolóalapú Windows-alkalmazások futtatása
+    - text: Futtatás csomagból
+      url: deploy-run-package.md
+- title: Egyéni tárolók futtatása
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Egyéni Windows-tároló futtatása
-      url: app-service-web-get-started-windows-container.md
+    - text: Egyéni tároló futtatása
+      url: quickstart-custom-container.md
   - linkListType: tutorial
     links:
-    - text: Windows-tárolóban lévő régebbi alkalmazások migrálása az Azure-ba
-      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+    - text: Docker Compose-alkalmazás futtatása (csak Linuxon)
+      url: tutorial-multi-container-app.md
+    - text: Egyéni szoftver migrálása az Azure-ba tárolóban
+      url: tutorial-custom-container.md
   - linkListType: how-to-guide
     links:
+    - text: CI/CD egy egyéni tárolóhoz
+      url: deploy-ci-cd-custom-container.md
     - text: Tároló csatlakoztatása a Storage-fájlokhoz
       url: configure-connect-to-azure-storage.md
+    - text: Üzembe helyezés GitHub-műveletekkel
+      url: deploy-container-github-action.md
 - title: Felügyelet és integráció
   linkLists:
   - linkListType: concept
@@ -115,7 +129,7 @@ landingContent:
     - text: Erőforrások biztonságos elérése felügyelt identitásokkal
       url: app-service-web-tutorial-connect-msi.md
     - text: Felhasználók hitelesítése
-      url: app-service-web-tutorial-auth-aad.md
+      url: tutorial-auth-aad.md
     - text: CORS-támogatással rendelkező RESTful API üzemeltetése
       url: app-service-web-tutorial-rest-api.md
     - text: CDN hozzáadása az alkalmazáshoz

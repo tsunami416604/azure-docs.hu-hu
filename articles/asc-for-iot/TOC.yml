@@ -31,6 +31,8 @@
       href: quickstart-create-security-twin.md
     - name: Egyéni biztonsági riasztások létrehozása
       href: quickstart-create-custom-alerts.md
+    - name: Biztonsági riasztások vizsgálata
+      href: quickstart-investigate-security-alerts.md
 - name: Alapelvek
   items:
     - name: Biztonsági ügynök hitelesítése

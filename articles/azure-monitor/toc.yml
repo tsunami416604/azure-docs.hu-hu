@@ -196,7 +196,21 @@
               href: app/pricing.md
             - name: Adathasználat és -költségek naplózása
               href: platform/manage-cost-storage.md
-        - name: Log Analytics-munkaterületek
+    - name: Platformnaplók
+      items:
+        - name: Áttekintés
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Tevékenységnapló
+          href: platform/activity-log.md
+        - name: Erőforrásnaplók
+          href: platform/resource-logs.md
+        - name: Diagnosztikai beállítások
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: Log Analytics
+      items:
+        - name: Munkaterületek
           items:
             - name: Munkaterület üzembe helyezésének megtervezése
               href: platform/design-logs-deployment.md
@@ -218,119 +232,6 @@
               href: platform/service-providers.md
             - name: Hozzáférés kezelése
               href: platform/manage-access.md
-        - name: Virtuális gépek ügynökei
-          items:
-            - name: Áttekintés
-              href: platform/agents-overview.md
-            - name: GYIK
-              href: faq.md#agents
-            - name: Azure Diagnostics bővítmény
-              items:
-                - name: Áttekintés
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: Telepítés és konfigurálás
-                      items:
-                        - name: Telepítési lehetőségek
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Resource Manager-sablon
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: Küldés az Azure Monitor-metrikákba
-                      items:
-                        - name: Virtuális gép
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: Virtuálisgép-méretezési csoport
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: Klasszikus virtuális gép
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: Felhőszolgáltatás
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Küldés az Event Hubsba
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Küldés a naplókba
-                      href: platform/diagnostics-extension-logs.md
-                    - name: Küldés az Application Insightsba
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Verzióelőzmények
-                      href: platform/diagnostics-extension-versions.md
-                    - name: Hibaelhárítás
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: Áttekintés
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: Metrikák gyűjtése a Telegraf használatával
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics-ügynök
-              items:
-                - name: Áttekintés
-                  href: platform/log-analytics-agent.md
-                - name: Windows-ügynökök
-                  href: platform/agent-windows.md
-                - name: Linux-ügynökök
-                  href: platform/agent-linux.md
-                - name: Virtuálisgép-bővítmény Windowshoz
-                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-                - name: Virtuálisgép-bővítmény Linuxhoz
-                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-                - name: Log Analytics-átjáró
-                  href: platform/gateway.md
-                - name: Ügynökkezelés
-                  href: platform/agent-manage.md
-                - name: Az ügynök állapota
-                  href: insights/solution-agenthealth.md
-                - name: Adatforrások
-                  items:
-                    - name: Áttekintés
-                      href: platform/agent-data-sources.md
-                    - name: Windows-események
-                      href: platform/data-sources-windows-events.md
-                    - name: Egyéni JSON-adatok
-                      href: platform/data-sources-json.md
-                    - name: A CollectD teljesítményadatai
-                      href: platform/data-sources-collectd.md
-                    - name: Rendszernapló
-                      href: platform/data-sources-syslog.md
-                    - name: Teljesítményszámlálók
-                      href: platform/data-sources-performance-counters.md
-                    - name: Linux-alkalmazások teljesítménye
-                      href: platform/data-sources-linux-applications.md
-                    - name: IIS-naplók
-                      href: platform/data-sources-iis-logs.md
-                    - name: Egyéni naplók
-                      href: platform/data-sources-custom-logs.md
-                    - name: Egyéni mezők
-                      href: platform/custom-fields.md
-            - name: Hibaelhárítás
-              items:
-                - name: A Log Analytics virtuálisgép-bővítménye
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Log Analytics Windows-ügynök
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: A Log Analytics Linux-ügynöke
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-    - name: Platformnaplók
-      items:
-        - name: Áttekintés
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: Tevékenységnapló
-          href: platform/activity-log.md
-        - name: Erőforrásnaplók
-          href: platform/resource-logs.md
-        - name: Diagnosztikai beállítások
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
         - name: Naplólekérdezések áttekintése
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
@@ -424,6 +325,135 @@
           href: platform/metric-chart-samples.md
         - name: Metrikadiagramok hibaelhárítása
           href: platform/metrics-troubleshoot.md
+    - name: Adatgyűjtés
+      items:
+        - name: Adatgyűjtési szabályok
+          href: platform/data-collection-rule-overview.md
+        - name: Egyéni metrikák
+          items:
+            - name: Egyéni metrikák
+              href: platform/metrics-custom-overview.md
+            - name: Metrikák REST API-ja
+              href: platform/metrics-store-custom-rest-api.md
+        - name: Egyéni naplók
+          items:
+            - name: Log Analytics Data Collector API
+              href: platform/data-collector-api.md
+            - name: Példa Log Analytics Data Collector API-folyamatra
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
+          items:
+            - name: Azure Monitor-naplók összekötője
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights-összekötő
+              href: app/automate-with-logic-apps.md
+    - name: Ügynökök
+      items:
+        - name: Áttekintés
+          href: platform/agents-overview.md
+        - name: GYIK
+          href: faq.md#agents
+        - name: Azure Monitor-ügynök
+          items:
+            - name: Áttekintés
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-overview.md
+            - name: Adatgyűjtés
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Azure Diagnostics bővítmény
+          items:
+            - name: Áttekintés
+              href: platform/diagnostics-extension-overview.md
+            - name: Windows
+              displayname: diagnostics extension
+              items:
+                - name: Telepítés és konfigurálás
+                  items:
+                    - name: Telepítési lehetőségek
+                      href: platform/diagnostics-extension-windows-install.md
+                    - name: PowerShell
+                      href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                    - name: Resource Manager-sablon
+                      href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                - name: Küldés az Azure Monitor-metrikákba
+                  items:
+                    - name: Virtuális gép
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                    - name: Virtuálisgép-méretezési csoport
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                    - name: Klasszikus virtuális gép
+                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                    - name: Felhőszolgáltatás
+                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                - name: Küldés az Event Hubsba
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: Küldés a naplókba
+                  href: platform/diagnostics-extension-logs.md
+                - name: Küldés az Application Insightsba
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: Verzióelőzmények
+                  href: platform/diagnostics-extension-versions.md
+                - name: Hibaelhárítás
+                  href: platform/diagnostics-extension-troubleshooting.md
+            - name: Linux
+              displayname: diagnostics extension
+              items:
+                - name: Áttekintés
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: Metrikák gyűjtése a Telegraf használatával
+                  href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: Log Analytics-ügynök
+          items:
+            - name: Áttekintés
+              href: platform/log-analytics-agent.md
+            - name: Windows-ügynökök
+              href: platform/agent-windows.md
+            - name: Linux-ügynökök
+              href: platform/agent-linux.md
+            - name: Virtuálisgép-bővítmény Windowshoz
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Virtuálisgép-bővítmény Linuxhoz
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics-átjáró
+              href: platform/gateway.md
+            - name: Ügynökkezelés
+              href: platform/agent-manage.md
+            - name: Az ügynök állapota
+              href: insights/solution-agenthealth.md
+            - name: Adatforrások
+              items:
+                - name: Áttekintés
+                  href: platform/agent-data-sources.md
+                - name: Windows-események
+                  href: platform/data-sources-windows-events.md
+                - name: Egyéni JSON-adatok
+                  href: platform/data-sources-json.md
+                - name: A CollectD teljesítményadatai
+                  href: platform/data-sources-collectd.md
+                - name: Rendszernapló
+                  href: platform/data-sources-syslog.md
+                - name: Teljesítményszámlálók
+                  href: platform/data-sources-performance-counters.md
+                - name: Linux-alkalmazások teljesítménye
+                  href: platform/data-sources-linux-applications.md
+                - name: IIS-naplók
+                  href: platform/data-sources-iis-logs.md
+                - name: Egyéni naplók
+                  href: platform/data-sources-custom-logs.md
+                - name: Egyéni mezők
+                  href: platform/custom-fields.md
+        - name: Hibaelhárítás
+          items:
+            - name: A Log Analytics virtuálisgép-bővítménye
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/vmext-troubleshoot.md
+            - name: Log Analytics Windows-ügynök
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-windows-troubleshoot.md
+            - name: A Log Analytics Linux-ügynöke
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-linux-troubleshoot.md
     - name: Automatikus méretezés
       items:
         - name: Áttekintés
@@ -1148,29 +1178,6 @@
               href: log-query/dashboard-upgrade.md
         - name: Adatok küldése a Grafana számára
           href: platform/grafana-plugin.md
-    - name: Egyéni adatgyűjtés és -elemzés
-      items:
-        - name: Egyéni metrikák
-          items:
-            - name: Egyéni metrikák
-              href: platform/metrics-custom-overview.md
-            - name: Metrikák REST API-ja
-              href: platform/metrics-store-custom-rest-api.md
-        - name: Egyéni naplók
-          items:
-            - name: Log Analytics Data Collector API
-              href: platform/data-collector-api.md
-            - name: Példa Log Analytics Data Collector API-folyamatra
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Logic Apps
-          items:
-            - name: Azure Monitor-naplók összekötője
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights-összekötő
-              href: app/automate-with-logic-apps.md
-        - name: REST API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
     - name: System Center-integráció
       items:
         - name: Az Operations Manager csatlakoztatása
@@ -1274,6 +1281,9 @@
           href: /rest/api/monitor/
         - name: Azure Monitor-naplók
           href: /rest/api/loganalytics
+        - name: A REST API útmutatója
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: Resource Manager-sablonok
       items:
         - name: Azure Monitor

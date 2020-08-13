@@ -49,6 +49,8 @@
       items:
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+    - name: Adattárolási hely
+      href: data-residency.md
 - name: Útmutatók
   items:
     - name: A Network Watcher konfigurálása

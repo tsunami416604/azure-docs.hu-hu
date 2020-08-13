@@ -4,8 +4,6 @@
   items:
     - name: Tudnivalók a Web Appsról
       href: overview.md
-    - name: Tudnivalók a Linux rendszeren futó App Service-ről
-      href: containers/app-service-linux-intro.md
     - name: Tudnivalók az App Service-környezetekről
       href: environment/intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
@@ -13,34 +11,50 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: .NET Core-alkalmazás létrehozása
-      href: app-service-web-get-started-dotnet.md
-    - name: .NET-keretrendszerre épülő alkalmazás létrehozása
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: Node.js-alapú alkalmazás létrehozása
-      href: app-service-web-get-started-nodejs.md
-    - name: PHP-alkalmazás létrehozása
-      href: app-service-web-get-started-php.md
-    - name: Java-alkalmazás létrehozása
-      href: app-service-web-get-started-java.md
-    - name: Statikus HTML-webhely létrehozása
-      href: app-service-web-get-started-html.md
-    - name: Windows-tárolók futtatása
-      href: app-service-web-get-started-windows-container.md
+    - name: .NET Core
+      href: quickstart-dotnetcore.md
+    - name: .NET-keretrendszer
+      href: quickstart-dotnet-framework.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: PHP
+      href: quickstart-php.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Python
+      href: quickstart-python.md
+    - name: Ruby
+      href: quickstart-ruby.md
+    - name: Statikus HTML-webhely
+      href: quickstart-html.md
+    - name: Egyéni tároló
+      href: quickstart-custom-container.md
+    - name: Többtárolós alkalmazás
+      href: quickstart-multi-container.md
 - name: Oktatóanyagok
   items:
     - name: Adatbázist használó alkalmazás
       items:
         - name: .NET Core és SQL-adatbázis
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
+          href: tutorial-dotnetcore-sqldb-app.md
         - name: .NET-keretrendszer és SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP és MySQL
-          href: app-service-web-tutorial-php-mysql.md
+          href: tutorial-php-mysql-app.md
         - name: Node.js és MongoDB
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-    - name: A Windows testre szabása (tároló)
-      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+          href: tutorial-nodejs-mongodb-app.md
+        - name: Ruby és Postgres
+          href: tutorial-ruby-postgres-app.md
+        - name: Python és Postgres
+          href: tutorial-python-postgresql-app.md
+        - name: Java és Spring Data
+          href: tutorial-java-spring-cosmosdb.md
+    - name: Egyéni tárolók
+      items:
+        - name: Üzembe helyezés az ACR-ből
+          href: tutorial-custom-container.md
+        - name: Többtárolós alkalmazás
+          href: tutorial-multi-container-app.md
     - name: Az SQL DB biztonságos elérése
       href: app-service-web-tutorial-connect-msi.md
     - name: RESTful API üzemeltetése
@@ -52,9 +66,11 @@
     - name: CDN hozzáadása
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Felhasználók hitelesítése
-      href: app-service-web-tutorial-auth-aad.md
+      href: tutorial-auth-aad.md
     - name: E-mail/tweet küldése
       href: tutorial-send-email.md
+    - name: Hibák elhárítása
+      href: tutorial-troubleshoot-monitor.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -125,8 +141,14 @@
           href: configure-language-nodejs.md
         - name: A PHP konfigurálása
           href: configure-language-php.md
+        - name: A Python konfigurálása
+          href: configure-language-python.md
         - name: A Java konfigurálása
           href: configure-language-java.md
+        - name: A Ruby konfigurálása
+          href: configure-language-ruby.md
+        - name: Egyéni Linux-tároló konfigurálása
+          href: configure-custom-container.md
         - name: Csatlakozás helyszíni erőforrásokhoz
           href: web-sites-integrate-with-vnet.md
         - name: Azure Storage konfigurálása (tároló)
@@ -145,10 +167,14 @@
               href: deploy-content-sync.md
             - name: Folyamatos üzembe helyezés
               href: deploy-continuous-deployment.md
+            - name: Egyéni CI/CD-tárolók
+              href: deploy-ci-cd-custom-container.md
             - name: Üzembe helyezés a helyi Gitből
               href: deploy-local-git.md
-            - name: Üzembe helyezés GitHub-műveletekkel
+            - name: GitHub-művelet
               href: deploy-github-actions.md
+            - name: GitHub-művelet a tárolókhoz
+              href: deploy-container-github-action.md
             - name: Üzembe helyezés sablon használatával
               href: deploy-complex-application-predictably.md
         - name: Telepítési hitelesítő adatok beállítása
@@ -215,6 +241,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Erőforrás-események lekérése
           href: get-resource-events.md
+        - name: SSH-munkamenet megnyitása Linux-tárolóra
+          href: configure-linux-open-ssh-session.md
     - name: Alkalmazás kezelése
       items:
         - name: Az üzemeltetési csomag kezelése

@@ -7,7 +7,7 @@
 - name: Első lépések
   items:
     - name: Web Apps
-      href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html'
+      href: 'https://docs.microsoft.com/azure/app-service/quickstart-html'
     - name: Virtual machines (Virtuális gépek)
       items:
         - name: Linux
@@ -29,9 +29,9 @@
         - name: .NET és SQL DB
           href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase'
         - name: Node.js és MongoDB
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app'
+          href: 'https://docs.microsoft.com/azure/app-service/tutorial-nodejs-mongodb-app'
         - name: PHP és MySQL
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-php-mysql'
+          href: 'https://docs.microsoft.com/azure/app-service/tutorial-php-mysql-app'
         - name: Java és MySQL
           href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-java-mysql'
     - name: Összetett virtuálisgép-sablonok üzembe helyezése

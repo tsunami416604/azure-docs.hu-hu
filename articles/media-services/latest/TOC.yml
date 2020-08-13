@@ -290,12 +290,16 @@
                   href: customize-encoder-presets-how-to.md
                 - name: Átfedési átalakítás létrehozása
                   href: how-to-create-overlay.md
+                - name: Miniatűrök létrehozása .NET használatával
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: Parancssori felülettel
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: A REST-tel
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: Miniatűrök létrehozása REST használatával
+              href: media-services-generate-thumbnails-rest.md
         - name: Részklipkészítés videóból
           items:
             - name: .NET-tel
