@@ -232,7 +232,7 @@ Ahhoz, hogy az egyéni API-kat elérhetővé tegye a Logic Apps, a Power automat
 
 * Ha szeretne segíteni a Logic Apps fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hibák és kivételek kezelése](../logic-apps/logic-apps-exception-handling.md)
 * [Logikai alkalmazások hívása, triggere vagy beágyazása HTTP-végpontokkal](../logic-apps/logic-apps-http-endpoint.md)

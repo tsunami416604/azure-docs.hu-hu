@@ -6,12 +6,12 @@ metadata:
   title: A Microsoft Azure-tárolószolgáltatások dokumentációja | Microsoft Docs
   description: Útmutató az Azure-tárolószolgáltatások használatához felhőalapú tárolóalkalmazások kezeléséhez és fejlesztéséhez.
   ms.topic: hub-page
-  ms.openlocfilehash: 7618bedf711554fbd4428ceb6c88817477b82e6d
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87031881"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080847"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -61,7 +61,7 @@ conceptualContent:
     - url: ../app-service/configure-ssl-bindings.md
       itemType: tutorial
       text: Egyéni tartománynév védelme SSL-kötéssel
-    - url: ../app-service/app-service-web-get-started-windows-container.md
+    - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: Egyéni Windows-tároló futtatása
     - url: ../app-service/containers/quickstart-docker.md
