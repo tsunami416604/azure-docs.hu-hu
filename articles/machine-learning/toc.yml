@@ -161,8 +161,11 @@
             - name: Felhasználók és szerepkörök kezelése
               href: how-to-assign-roles.md
             - name: Virtuális hálózatok használata
-              displayName: 'vnet, blob, private endpoint, private link'
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
+            - name: Privát kapcsolat használata
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
             - name: Webszolgáltatások biztonságossá tétele TLS használatával
               displayName: ssl
               href: how-to-secure-web-service.md

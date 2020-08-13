@@ -6,6 +6,8 @@
       items:
         - name: Mi az a Translator?
           href: translator-info-overview.md
+        - name: Nyelvi támogatás
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Rövid útmutatók
       items:
         - name: Szöveg lefordítása
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: Példák
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: Az N számú legjobb fordítás visszaadása
               href: return-n-best-translations.md
+        - name: Kérelmekre vonatkozó korlátok
+          href: request-limits.md
     - name: További források
       items:
         - name: Kódminták a GitHubon
           href: 'https://aka.ms/TranslatorGitHub'
         - name: GYIK
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Nyelvi támogatás
-          href: language-support.md
         - name: Díjszabás
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Régiónkénti rendelkezésre állás
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Megfelelőség
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Kérelmekre vonatkozó korlátok
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: További források
       items:
-        - name: Nyelvi támogatás
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: Szószedet
           href: custom-translator/glossary.md
         - name: GYIK

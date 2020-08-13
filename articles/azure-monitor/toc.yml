@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Asztali Windows
               href: app/windows-desktop.md
+        - name: Egyéb eszközök
+          items:
+            - name: Elemzés módosítása
+              href: app/change-analysis.md
     - name: Azure Monitor virtuális gépekhez
       items:
         - name: Áttekintés
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: Megállapítások hibaelhárítása
           href: insights/troubleshoot-workbooks.md
-    - name: Elemzés módosítása
-      items:
-        - name: Elemzés módosítása
-          href: app/change-analysis.md
     - name: Megoldások
       items:
         - name: Áttekintés
