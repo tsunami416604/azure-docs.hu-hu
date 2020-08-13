@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760794"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167028"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
 A blob Storage-tárolók egy Windows-vagy Linux-alapú Azure-beli virtuális gépről (VM) vagy olyan Windows-vagy Linux-rendszerből is csatlakoztathatók, amely a helyszínen fut az NFS 3,0 protokoll használatával. Ez a cikk lépésről lépésre haladó útmutatót tartalmaz. Ha többet szeretne megtudni az NFS 3,0 protokoll támogatásáról a blob Storage-ban, tekintse meg a következőt: [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md).
 
 > [!NOTE]
-> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el, és a következő régiókban érhető el: USA keleti régiója, USA középső régiója és Közép-Kanada.
+> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el, és a következő régiókban érhető el: USA keleti régiója, USA középső régiója, USA nyugati középső régiója, Délkelet-Ausztrália, Észak-Európa, Egyesült Királyság nyugati régiója, Korea középső régiója, Dél-Korea és Közép-Kanada
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>1. lépés: az NFS 3,0 protokoll szolgáltatás regisztrálása az előfizetéssel
 
@@ -92,7 +92,7 @@ A fiók konfigurálásakor válassza ki a következő értékeket:
 
 |Beállítás | Érték|
 |----|---|
-|Hely|A következő régiók egyike: USA keleti régiója, USA középső régiója és Közép-Kanada |
+|Hely|A következő régiók egyike: USA keleti régiója, USA középső régiója, USA nyugati középső régiója, Délkelet-Ausztrália, Észak-Európa, Egyesült Királyság nyugati régiója, Korea középső régiója, Dél-Korea és Közép-Kanada |
 |Teljesítmény|Prémium|
 |Fiók altípusa|BlockBlobStorage|
 |Replikáció|Helyileg redundáns tárolás (LRS)|
@@ -163,7 +163,7 @@ Hozzon létre egy könyvtárat a Windows-vagy Linux-rendszeren, majd csatlakozta
 |`Access denied by server while mounting`|Győződjön meg arról, hogy az ügyfél támogatott alhálózatot futtat. Tekintse meg a [támogatott hálózati telephelyeket](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Győződjön meg arról, hogy a csatlakoztatni kívánt tároló a funkció regisztrálásának ellenőrzése után jött létre. Lásd: [2. lépés: annak ellenőrzése, hogy a szolgáltatás regisztrálva van-e](#step-2-verify-that-the-feature-is-registered). Győződjön meg arról is, hogy a mount parancsot írja be, és a paramétereket közvetlenül a terminálon adja meg. Ha a parancs bármely részét egy másik alkalmazásból másolja és illeszti be a terminálba, a beillesztett információ rejtett karakterei is okozhatják ezt a hibát.|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md)
 

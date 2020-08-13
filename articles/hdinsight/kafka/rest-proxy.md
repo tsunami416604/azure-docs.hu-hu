@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 660e200b673da53af1ee00e4de1e2ce3298e861d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 57c2fb125547149a7fea6643a483e29f5fecb495
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876444"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167045"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -88,9 +88,9 @@ A következő Python-kóddal használhatja a Kafka-fürt REST-proxyját. A kód 
     |Bérlőazonosító|Az Azure-bérlő, ahol az előfizetése van.|
     |Ügyfél-azonosító|A biztonsági csoportban regisztrált alkalmazás azonosítója.|
     |Titkos ügyfélkulcs|A biztonsági csoportban regisztrált alkalmazás titka.|
-    |Kafkarest_endpoint|Szerezze be ezt az értéket a fürt áttekintése **Tulajdonságok** lapján, az [üzembe helyezés részben](#create-a-kafka-cluster-with-rest-proxy-enabled)leírtak szerint. A következő formátumúnak kell lennie:`https://<clustername>-kafkarest.azurehdinsight.net`|
+    |Kafkarest_endpoint|Szerezze be ezt az értéket a fürt áttekintése **Tulajdonságok** lapján, az [üzembe helyezés részben](#create-a-kafka-cluster-with-rest-proxy-enabled)leírtak szerint. A következő formátumúnak kell lennie: `https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. A parancssorból hajtsa végre a Python-fájlt a következő végrehajtásával:`sudo python3 <filename.py>`
+1. A parancssorból hajtsa végre a Python-fájlt a következő végrehajtásával: `sudo python3 <filename.py>`
 
 Ez a kód a következő műveleteket hajtja végre:
 
@@ -104,6 +104,7 @@ A Python OAuth-jogkivonatok beszerzésével kapcsolatos további információké
 #pip3 install msal
 
 import msal
+import requests
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -140,7 +141,7 @@ getstatus = "/v1/metadata/topics"
 request_url = kafkarest_endpoint + getstatus
 
 # sending get request and saving the response as response object
-response = requests.get(request_url, headers={'Authorization': accessToken})
+response = requests.get(request_url, headers={'Authorization': 'Bearer ' + 'accessToken})
 print(response.content)
 ```
 
@@ -150,6 +151,6 @@ Az alábbi minta alapján megtalálhatja, hogyan szerezhet be tokent az Azure fo
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Kafka REST proxy API-dokumentációja](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)

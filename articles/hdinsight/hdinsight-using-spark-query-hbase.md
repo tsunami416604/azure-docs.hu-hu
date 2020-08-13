@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087486"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166943"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
-Az Apache HBase általában az alacsony szintű API-val (vizsgálatok, lekérések és a beolvasás) vagy egy SQL-szintaxissal, Apache Phoenix használatával kérdezi le. Az Apache a Apache Spark HBase-összekötőt is biztosítja. Az összekötő egy kényelmes és nagy teljesítményű alternatíva a HBase által tárolt adatok lekérdezésére és módosítására.
+Az Apache HBase általában az alacsony szintű API-val (vizsgálatok, lekérések és a beolvasás) vagy egy SQL-szintaxissal, Apache Phoenix használatával kérdezi le. Az Apache a Apache Spark HBase-összekötőt is biztosítja. Az összekötő kényelmes és hatékony alternatíva a HBase által tárolt Adatlekérdezési és-módosítási lehetőségekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,11 +27,10 @@ Az Apache HBase általában az alacsony szintű API-val (vizsgálatok, lekérés
 
 ## <a name="overall-process"></a>Teljes folyamat
 
-A Spark-fürt a HDInsight-fürt lekérdezésére való engedélyezésének magas szintű folyamata a következő:
+A Spark-fürt a HBase-fürt lekérdezésére való engedélyezésének magas szintű folyamata a következő:
 
 1. Készítse elő a mintaadatok némelyikét a HBase-ben.
-2. Szerezze be a hbase-site.xml fájlt a HBase-fürt konfigurációs mappájából (/etc/hbase/conf).
-3. Helyezzen egy másolatot hbase-site.xml a Spark 2 konfigurációs mappájába (/etc/spark2/conf).
+2. Szerezze be a hbase-site.xml fájlt a HBase-fürt konfigurációs mappájából (/etc/hbase/conf), és helyezzen el egy másolatot hbase-site.xml a Spark 2 konfigurációs mappájába (/etc/spark2/conf). (Nem kötelező: a HDInsight csapata által biztosított parancsfájl használatával automatizálhatja ezt a folyamatot)
 4. Futtassa a `spark-shell` Spark HBase-összekötőre hivatkozót a Maven koordinátáival a `packages` beállításban.
 5. Definiáljon egy katalógust, amely leképezi a sémát a Spark és a HBase között.
 6. A HBase adatai a RDD vagy a DataFrame API-k használatával működnek.
@@ -76,36 +75,77 @@ Ebben a lépésben létrehoz és feltölt egy táblázatot az Apache HBase, amel
     ```hbase
     exit
     ```
+    
+## <a name="run-scripts-to-set-up-connection-between-clusters"></a>Parancsfájlok futtatása a fürtök közötti kapcsolat beállításához
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>hbase-site.xml másolása a Spark-fürtbe
+A fürtök közötti kommunikáció beállításához kövesse az alábbi lépéseket, hogy két parancsfájlt futtasson a fürtökön. Ezek a parancsfájlok automatizálják az alábbi "a kommunikáció manuális beállítása" című szakaszban ismertetett fájlmásolás folyamatát. 
 
-Másolja a hbase-site.xml a helyi tárolóból a Spark-fürt alapértelmezett tárolójának gyökerébe.  Szerkessze az alábbi parancsot, hogy tükrözze a konfigurációt.  Ezután a megnyitott SSH-munkamenetből a HBase-fürtbe írja be a következő parancsot:
+* A HBase-fürtből futtatott szkript feltölti `hbase-site.xml` és HBase az IP-megfeleltetési adatokat a Spark-fürthöz csatolt alapértelmezett tárolóba. 
+* A Spark-fürtből futtatott parancsfájl két, a segítő parancsfájlok rendszeres futtatására szolgáló cron-feladatot állít be:  
+    1.  HBase cron-feladatok – új `hbase-site.xml` fájlok letöltése és HBase IP-megfeleltetés a Spark alapértelmezett Storage-fiókjából a helyi csomópontba
+    2.  Spark cron-feladatok – ellenőrzi, hogy a Spark skálázás történt-e, és hogy a fürt biztonságos-e. Ha igen, szerkessze úgy, `/etc/hosts` hogy a helyileg tárolt HBase IP-megfeleltetést is tartalmazza
 
-| Szintaxis értéke | Új érték|
-|---|---|
-|[URI-séma](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Módosítsa a tárolót.  Az alábbi szintaxis a biztonságos átvitelt engedélyező blob Storage.|
-|`SPARK_STORAGE_CONTAINER`|Cserélje le a értéket a Spark-fürthöz használt alapértelmezett Storage-tároló nevére.|
-|`SPARK_STORAGE_ACCOUNT`|Cserélje le a értéket a Spark-fürthöz használt alapértelmezett Storage-fiók nevére.|
+__Megjegyzés__: a továbblépés előtt győződjön meg róla, hogy a Spark-fürt Storage-fiókját másodlagos Storage-fiókként adta hozzá a HBase-fürthöz. Győződjön meg arról, hogy a parancsfájlok az alább jelzett sorrendben vannak megadva.
 
-```bash
-hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
-```
 
-Ezután lépjen ki az SSH-kapcsolatban a HBase-fürttel.
+1. A HBase-fürtön a [parancsfájl művelettel](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) alkalmazza a módosításokat a következő szempontok alapján: 
 
-```bash
-exit
-```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>hbase-site.xml elhelyezése a Spark-fürtön
+    |Tulajdonság | Érték |
+    |---|---|
+    |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
+    |Csomópont típusa (i)|Régió|
+    |Paraméterek|`-s SECONDARYS_STORAGE_URL`|
+    |Kitartott|igen|
 
-1. Kapcsolódjon a Spark-fürt fő csomópontjához az SSH használatával. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `SPARKCLUSTER` Spark-fürt nevét, majd beírja a következő parancsot:
+    * `SECONDARYS_STORAGE_URL`a Spark oldal alapértelmezett tárolójának URL-címe. Példa paraméterre:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+
+
+2.  A következő szempontok alapján alkalmazza a módosításokat a Spark-fürtön a parancsfájl művelet használatával:
+
+    |Tulajdonság | Érték |
+    |---|---|
+    |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
+    |Csomópont típusa (i)|Head, Worker, Zookeeper|
+    |Paraméterek|`-s "SPARK-CRON-SCHEDULE"`(nem kötelező) `-h "HBASE-CRON-SCHEDULE"` választható|
+    |Kitartott|igen|
+
+
+    * Megadhatja, milyen gyakran szeretné, hogy a fürt automatikusan ellenőrizze a frissítést. Alapértelmezett:-s "*/1 * * * *"-h 0 (ebben a példában a Spark cron percenként fut, míg a HBase cron nem fut)
+    * Mivel a HBase cron alapértelmezés szerint nincs beállítva, újra kell futtatnia ezt a parancsfájlt a HBase-fürt méretezésének végrehajtásakor. Ha a HBase-fürt gyakran méretezhető, dönthet úgy, hogy automatikusan beállítja a HBase cron-feladatot. Például: `-h "*/30 * * * *"` úgy konfigurálja a parancsfájlt, hogy 30 percenként végezzen ellenőrzéseket. Ez rendszeresen futtatja a HBase cron-ütemtervet, hogy automatizálja az új HBase-információk letöltését a közös Storage-fiókból a helyi csomópontra.
+    
+    
+
+## <a name="set-up-communication-manually-optional-if-provided-script-in-above-step-fails"></a>A kommunikáció manuális beállítása (nem kötelező, ha a fenti lépésben megadott parancsfájl sikertelen)
+
+__Megjegyzés:__ Ezeket a lépéseket minden alkalommal végre kell hajtania, amikor az egyik fürt egy skálázási tevékenységet végez.
+
+1. Másolja a hbase-site.xml a helyi tárolóból a Spark-fürt alapértelmezett tárolójának gyökerébe.  Szerkessze az alábbi parancsot, hogy tükrözze a konfigurációt.  Ezután a megnyitott SSH-munkamenetből a HBase-fürtbe írja be a következő parancsot:
+
+    | Szintaxis értéke | Új érték|
+    |---|---|
+    |[URI-séma](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Módosítsa a tárolót.  Az alábbi szintaxis a biztonságos átvitelt engedélyező blob Storage.|
+    |`SPARK_STORAGE_CONTAINER`|Cserélje le a értéket a Spark-fürthöz használt alapértelmezett Storage-tároló nevére.|
+    |`SPARK_STORAGE_ACCOUNT`|Cserélje le a értéket a Spark-fürthöz használt alapértelmezett Storage-fiók nevére.|
+
+    ```bash
+    hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+    ```
+
+2. Ezután lépjen ki az SSH-kapcsolatban a HBase-fürttel.
+
+    ```bash
+    exit
+    ```
+
+
+3. Kapcsolódjon a Spark-fürt fő csomópontjához az SSH használatával. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `SPARKCLUSTER` Spark-fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Adja meg az alábbi parancsot a `hbase-site.xml` Spark-fürt alapértelmezett tárolójának a Spark 2 konfigurációs mappájába való másolásához a fürt helyi tárolójában:
+4. Adja meg az alábbi parancsot a `hbase-site.xml` Spark-fürt alapértelmezett tárolójának a Spark 2 konfigurációs mappájába való másolásához a fürt helyi tárolójában:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -125,7 +165,7 @@ Az alábbi táblázat a HDInsight csapat által jelenleg használt két verziót
     |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2 – 1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
     |      2,4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1 – s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. Tartsa nyitva a Spark Shell-példányt, és folytassa a [katalógus és a lekérdezés definiálásával](#define-a-catalog-and-query). Ha nem találja azokat a tégelyeket, amelyek megfelelnek a SHC Core adattár lévő verzióinak, folytassa az olvasást. 
+2. Tartsa nyitva a Spark Shell-példányt, és folytassa a [katalógus és a lekérdezés definiálásával](#define-a-catalog-and-query). Ha nem találja azokat a tégelyeket, amelyek megfelelnek a SHC Core adattárban található verzióinak, folytassa az olvasást. 
 
 Az üvegeket közvetlenül a [Spark-hbase-Connector GitHub-](https://github.com/hortonworks-spark/shc) ág alapján hozhatja létre. Ha például a Spark 2,3-as és a HBase 1,1-as verzióját futtatja, hajtsa végre a következő lépéseket:
 
