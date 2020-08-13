@@ -170,6 +170,8 @@
         - name: Az AKS üzembe helyezése Terraform használatával
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: A Kubernetes erőforrás-megjelenítőjének használata (Előzetes verzió)
+          href: kubernetes-portal.md
         - name: A Kubernetes-irányítópult használata
           href: kubernetes-dashboard.md
     - name: Adatkötetek konfigurálása

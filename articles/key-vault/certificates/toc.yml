@@ -46,6 +46,8 @@
       href: how-to-integrate-certificate-authority.md
     - name: Hibaelhárítás – Tanúsítványok importálása
       href: import-cert-faqs.md
+    - name: Tanúsítványok exportálása a Key Vaultból
+      href: how-to-export-certificate.md
 - name: Referencia
   items:
     - name: Azure PowerShell

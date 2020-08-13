@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Azure StorSimple és a Cloud Solutions program áttekintése | Microsoft Docs
-description: Áttekintés a StorSimple-partnerek StorSimple és CSP-ről.
+description: Ismerje meg a StorSimple-partnerek StorSimple és Cloud Solutions programjának (CSP) bevezető információit.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 358399426798ac20897d207c93a8874357e8b781
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60628659"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182000"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Mi a StorSimple a Cloud Solutions Providers programhoz?
 
@@ -40,7 +40,7 @@ A CSP StorSimple az összes olyan piacon elérhető, ahol a StorSimple jelenleg 
 
 További információkért látogasson el a [StorSimple virtuális tömb üzembe helyezése és kezelése a CSP-hez](storsimple-partner-csp-deploy.md)című témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további kérdései vannak a CSP StorSimple kapcsolatban, keresse fel a [StorSimple for CSP: gyakori kérdések](storsimple-partner-csp-faq.md)című részt.
 - Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-hez](storsimple-partner-csp-deploy.md)című lépésre.

@@ -2,13 +2,13 @@
 title: Több virtuális gépre kiterjedő környezetek létrehozása sablonokkal
 description: Megtudhatja, hogyan hozhat létre több virtuális gépre kiterjedő környezeteket és a Azure DevTest Labst egy Azure Resource Manager sablonból
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: bab107257a6233543cecfb664b3a6d313dd0e538
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481425"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182408"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal
 
@@ -85,7 +85,7 @@ A tárház létrehozása és konfigurálása után a Azure Portal a következő 
      - Ha szeretné lekérni a tokent a githubról, a profil alatt válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **személyes hozzáférési jogkivonatok**lehetőséget.
    - **Mappa elérési útjai**: adja meg az összetevő-definíciók vagy a Azure Resource Manager-sablon definíciói számára a git-klón URI-hoz viszonyított mappa elérési útját.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    ![Új tárház hozzáadása](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
@@ -203,10 +203,10 @@ A következő minta-szkript létrehoz egy környezetet a laborban. A megjegyzés
    Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
 
    # Get information about the user, specifically the user ID, which is used later in the script.  
-   $UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
+   $UserId = $((Get-AzADUser -UserPrincipalName ((Get-AzContext).Account).Id).Id)
 
    # Get information about the lab, such as lab location.
-   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName
+   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName
    if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." }
 
    # Get information about the repository in the lab.
@@ -282,7 +282,7 @@ Előfordulhat például, hogy egy olyan labor-szabályzattal rendelkezik, amely 
 
   - A prémium szintű lemezek száma tesztkörnyezetben felhasználónként
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Miután létrehozta a virtuális gépet, a virtuális gép felügyeleti paneljén a **Kapcsolódás** lehetőségre kattintva csatlakozhat a virtuális géphez.
 - A környezet erőforrásainak megtekintéséhez és kezeléséhez válassza ki a környezetet a **saját virtuális gépek** listájában a laborban.
 - Ismerkedjen meg a [Azure Resource Manager-sablonokkal az Azure Gyorsindítás sablon-galériájában](https://github.com/Azure/azure-quickstart-templates).

@@ -1,6 +1,6 @@
 ---
 title: A StorSimple 5000-7000-es sorozatba tartozó adatáttelepítés 8000 sorozatú eszközre | Microsoft Docs
-description: Áttekintést nyújt az áttelepítési funkció előfeltételeiről.
+description: Ismerje meg, hogyan telepíthet át StorSimple 5000-7000-es adatsorozatok adatait az 8000 Series eszközre, és hogy milyen előfeltételekre van az áttelepítési folyamat.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 721dffcaea64e949ac7a5230e24f3aa37261fa9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206477"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184295"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból az 8000 Series eszközre
 
@@ -149,5 +149,5 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
 5.  Megjelenik a StorSimple áttelepítési eszköz felhasználói felülete.
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Töltse le az [adatok StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre történő áttelepítésének](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)lépésenkénti útmutatóját.

@@ -1,6 +1,6 @@
 ---
 title: A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
-description: Áttekintés a StorSimple-partnerek StorSimple és CSP-ről.
+description: Megtudhatja, hogy a CSP-partner hogyan adhat hozzá egy ügyfelet vagy új előfizetést egy meglévő ügyfélhez, majd létrehozhat egy szolgáltatást a StorSimple virtuális tömb telepítéséhez a CSP-ben.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77466909"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182221"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
 
@@ -83,7 +83,7 @@ Bizonyos esetekben előfordulhat, hogy van egy meglévő ügyfele, és hozzá ke
                               
 2. A bal oldali ablaktáblán kattintson az **ügyfelek**elemre. Keresse meg vagy Navigáljon arra az ügyfélre, amelyhez előfizetést szeretne hozzáadni. A ![ kibontási pipa ikonra kattintva ](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) kibonthatja az ügyfélhez tartozó vállalat nevét. A Részletek területen kattintson az **előfizetések hozzáadása**lehetőségre.
 
-    ![Ügyfelek](./media/storsimple-partner-csp-deploy/image10.png)
+    ![Az ügyfelek](./media/storsimple-partner-csp-deploy/image10.png)
 
 3. Jelölje be a **Microsoft Azure** az előfizetésben szereplő **legjobb ajánlatokat** , majd kattintson a **Submit (Küldés**) gombra. Ez létrehoz egy új előfizetést.
 
@@ -101,7 +101,7 @@ Bizonyos esetekben előfordulhat, hogy van egy meglévő ügyfele, és hozzá ke
 
     ![StorSimple-Eszközkezelő szolgáltatás létrehozása](./media/storsimple-partner-csp-deploy/image8.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további kérdései vannak a CSP-StorSimple kapcsolatban, lépjen a [StorSimple a CSP-ben: gyakori kérdések](storsimple-partner-csp-faq.md).
 - Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-ben](storsimple-partner-csp-deploy.md)című lépésre.

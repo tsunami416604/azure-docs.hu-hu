@@ -188,6 +188,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: Az Apache Kafka Connect integrálása központokkal (előzetes verzió)
           href: event-hubs-kafka-connect-tutorial.md
+        - name: Az Apache Kafka Connect (előzetes verzió) integrálása a Debeziummal
+          href: event-hubs-kafka-connect-debezium.md
         - name: Az Akka Streams csatlakoztatása eseményközponthoz
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: GYIK – Kafkához készült Event Hubs

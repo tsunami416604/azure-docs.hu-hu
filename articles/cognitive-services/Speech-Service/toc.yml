@@ -117,30 +117,16 @@
   items:
     - name: A Szövegfelolvasás dokumentációja
       href: index-text-to-speech.yml
-    - name: Áttekintés
-      items:
-        - name: Mi az a szövegfelolvasás?
-          href: text-to-speech.md
-        - name: A szövegfelolvasás alapjai
-          href: text-to-speech-basics.md
-    - name: Első lépések
-      items:
-        - name: Beszédszintézis hangszóróra
-          href: quickstarts/text-to-speech.md
-        - name: Beszédszintézis egy hangfájlba
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: Beszédszintézis hosszú formátumú hangokkal
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: Mi az a szövegfelolvasás?
+      href: text-to-speech.md
+    - name: Szövegfelolvasás – gyorsútmutató
+      href: get-started-text-to-speech.md
     - name: Útmutatók
       items:
         - name: Szintézis javítása az SSML-lel
           href: speech-synthesis-markup.md
         - name: Beszédszintézis a Long Audio API-val
           href: long-audio-api.md
-        - name: Hangok listájának lekérése a REST (Python) használatával
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: Szöveg átalakítása beszéddé a REST (Python) használatával
-          href: quickstart-python-text-to-speech.md
     - name: Testreszabás
       items:
         - name: Felelős üzembe helyezés

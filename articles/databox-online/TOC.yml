@@ -117,10 +117,14 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: A PowerShell-lel
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: Hibaelhárítás
-          href: azure-stack-edge-troubleshoot.md
-        - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
-          href: azure-stack-edge-contact-microsoft-support.md
+            - name: Hibaelhárítás
+              items:
+                - name: Naplókon keresztül
+                  href: azure-stack-edge-troubleshoot.md
+                - name: Rendelési problémák
+                  href: azure-stack-edge-troubleshoot-ordering.md
+                - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+                  href: azure-stack-edge-contact-microsoft-support.md
         - name: Figyelés
           href: azure-stack-edge-monitor.md
         - name: Eszköz visszaadása

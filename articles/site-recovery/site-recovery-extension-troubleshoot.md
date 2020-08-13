@@ -5,17 +5,20 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133753"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184618"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuálisgép-bővítményekkel kapcsolatos problémák elhárítása
 
 Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megoldhatja a virtuálisgép-ügynökkel és-bővítménysel kapcsolatos Azure Site Recovery hibákat.
 
+## <a name="low-system-resources"></a>Alacsony rendszererőforrások
+
+Ez a probléma akkor fordul elő, ha a rendszer alacsony rendelkezésre állású memóriával rendelkezik, és nem tud memóriát lefoglalni a mobilitási szolgáltatás telepítéséhez. Győződjön meg arról, hogy a telepítés folytatásához és sikeres befejezéséhez elegendő memória van kiszabadítva.
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery bővítmény időtúllépése  
 
@@ -103,7 +106,7 @@ A bővítmény eltávolítása:
 
 1. A [Azure Portal](https://portal.azure.com/)lépjen a biztonsági mentési hibát észlelő virtuális gépre.
 1. Válassza a **Beállítások** lehetőséget.
-1. Válassza a **bővítmények**lehetőséget.
+1. Válassza a **Bővítmények** lehetőséget.
 1. Válassza ki **site Recovery bővítményt**.
 1. Válassza az **Eltávolítás** lehetőséget.
 

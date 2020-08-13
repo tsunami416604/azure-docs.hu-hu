@@ -1,5 +1,5 @@
 ---
-title: Elosztott táblák létrehozása – nagy kapacitású (Citus) – Azure Database for PostgreSQL
+title: 'Gyors útmutató: elosztott táblák létrehozása – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
 description: Gyors útmutató elosztott táblák létrehozásához és lekérdezéséhez Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c17018e0f2f3a7c1c23d176a441842abcf5521f4
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135623"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183921"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-nagy kapacitású (Citus) létrehozása a Azure Portal
 
@@ -104,7 +104,7 @@ Itt az ideje, hogy a szórakoztató rész ténylegesen futtasson néhány lekér
 SELECT count(*) from github_events;
 ```
 
-Ez szépen működött. Egy kicsit vissza fogunk térni erre a fajta összesítésre, de most nézzük meg néhány más lekérdezést. A JSONB `payload` oszlopon belül van egy jó kis mennyiség, de az esemény típusa alapján változhat. `PushEvent`az események olyan méretet tartalmaznak, amely tartalmazza a leküldés különböző véglegesítő feltételeit. A felhasználható, hogy megkeresse az óránkénti véglegesítés teljes számát:
+Ez szépen működött. Egy kicsit vissza fogunk térni erre a fajta összesítésre, de most nézzük meg néhány más lekérdezést. A JSONB `payload` oszlopon belül van egy jó kis mennyiség, de az esemény típusa alapján változhat. `PushEvent` az események olyan méretet tartalmaznak, amely tartalmazza a leküldés különböző véglegesítő feltételeit. A felhasználható, hogy megkeresse az óránkénti véglegesítés teljes számát:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,

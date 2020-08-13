@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure StorSimple Data Manager felhasználói felület
-description: Útmutató StorSimple Data Manager szolgáltatás felhasználói felületének használatához
+description: Ebből a témakörből megtudhatja, hogyan alakíthatja át a StorSimple 8000 Series-eszközökön található adatStorSimple Data Manager felhasználói felületét.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496440"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184535"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>A StorSimple Data Manager szolgáltatás kezelése Azure Portal
 
@@ -48,7 +48,7 @@ StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alább
     
    5. Ha a szolgáltatásra mutató hivatkozást szeretne kapni az irányítópulton, válassza a **rögzítés az irányítópulton**lehetőséget.
     
-   6. Kattintson a **Létrehozás** lehetőségre.
+   6. Kattintson a **Create** (Létrehozás) gombra.
 
       ![StorSimple Data Manager szolgáltatás létrehozása 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -157,6 +157,6 @@ A feladatok befejezése után megtekintheti a feladatok állapotát. A feladatok
 A mappában két CSV-fájl látható. A **copiedfilelist..** . kezdetű összes fájl tartalmazni fogja a fájlok sikeres másolásának listáját. A **failedfilelist...** értékkel kezdődő összes fájl olyan fájlokat tartalmaz, amelyek nem másolhatók, valamint hibaüzenetet tartalmaznak.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [StorSimple Data Manager feladatok elindításához használja a .net SDK-t](storsimple-data-manager-dotnet-jobs.md).

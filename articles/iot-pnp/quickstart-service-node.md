@@ -3,17 +3,17 @@ title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes ver
 description: A Node.js használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT-Plug and Play előnézeti eszközhöz, és együttműködhet velük.
 author: elhorton
 ms.author: elhorton
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 511a61fb1069ce10e94e24ecd3ba6d60470ca40f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424443"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184754"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rövid útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play előnézeti eszköz használata (Node.js)
 
@@ -33,12 +33,6 @@ A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejles
 node --version
 ```
 
-Telepítse a [Node Service SDK-t a IoT Plug and Play-támogatással](https://www.npmjs.com/package/azure-iot-digitaltwins-service) a következő parancs futtatásával:
-
-```cmd/sh
-npm i azure-iot-digitaltwins-service
-```
-
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 Futtassa a következő parancsot a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez. Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később a rövid útmutatóban fog használni:
@@ -53,15 +47,19 @@ A következő parancs futtatásával lekérheti a hubhoz felvett eszközhöz tar
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
 ```
 
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Az SDK-tárház klónozása a mintakód használatával
+
+A Service SDK előzetes verzióban érhető el, ezért a mintákat a [Node SDK előzetes verziójú ágának](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)kell megadnia. Nyisson meg egy terminál-ablakot tetszőleges mappában. Futtassa a következő parancsot a Node.jsGitHub-adattárhoz készült [Microsoft Azure IOT SDK](https://github.com/Azure/azure-iot-sdk-node) **PnP-előnézet-frissítési** ágának klónozásához:
+
+```cmd/sh
+git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+```
+
 ## <a name="run-the-sample-device"></a>A minta eszköz futtatása
 
 Ebben a rövid útmutatóban a IoT Plug and Play eszközként Node.jsban írt minta termosztát-eszközt használhat. A minta eszköz futtatása:
 
-1. Nyisson meg egy terminál-ablakot tetszőleges mappában. Futtassa az alábbi parancsot a Node.jsGitHub-tárház [Microsoft Azure IOT SDK-nak](https://github.com/Azure/azure-iot-sdk-node) a következő helyre való klónozásához:
-
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node
-    ```
+1. Nyisson meg egy terminál-ablakot, és navigáljon ahhoz a helyi mappához, amely a GitHubról klónozott Node.js adattárhoz tartozó Microsoft Azure IoT SDK-t tartalmazza.
 
 1. A rendszer ezt a terminált használja az **eszköz** -terminálként. Lépjen a klónozott adattár mappájába, és lépjen a */Azure-IOT-SDK-Node/Device/Samples/PnP* mappára. Telepítse az összes függőséget a következő parancs futtatásával:
 
@@ -90,10 +88,10 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node.jsban, hog
 1. Nyisson meg egy másik Terminálablak **szolgáltatást a szolgáltatás** -terminálként való használatra. A Service SDK előzetes verzióban érhető el, ezért a mintákat a [Node SDK előzetes verziójú ágának](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)kell megadnia:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b public-preview-pnp
+    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     ```
 
-1. Lépjen a klónozott adattár-ág mappájába, és navigáljon a */Azure-IOT-Samples-Node/Digital-Twins/Samples/Service/JavaScript* mappára. Telepítse az összes függőséget a következő parancs futtatásával:
+1. Lépjen a klónozott adattár-ág mappájába, és navigáljon a */Azure-IOT-SDK-Node/digitaltwins/Samples/Service/JavaScript* mappára. Telepítse az összes függőséget a következő parancs futtatásával:
 
     ```cmd/sh
     npm install
@@ -144,14 +142,14 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 
 ### <a name="update-a-writable-property"></a>Írható tulajdonság frissítése
 
-1. Nyissa meg a *update_digital_twin_property.js* fájlt a kódszerkesztő programban.
+1. Nyissa meg a *update_digital_twin.js* fájlt a kódszerkesztő programban.
 
 1. Tekintse át a mintakód. Megtudhatja, hogyan hozhat létre JSON-javítást az eszköz digitális Twin-fájljának frissítéséhez. Ebben a példában a kód a termosztát hőmérsékletét a 42 értékkel helyettesíti:
 
     ```javascript
     const patch = [{
         op: 'add',
-        path: 'targetTemperature',
+        path: '/targetTemperature',
         value: '42'
       }]
     ```
@@ -159,43 +157,23 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 1. A **szolgáltatás** -terminálon futtassa a következő parancsot a minta futtatásához a tulajdonság frissítéséhez:
 
     ```cmd/sh
-    node update_digital_twin_property.js
-    ```
-
-1. A **szolgáltatás** -terminál kimenete a frissített eszköz információit jeleníti meg. Görgessen az `thermostat1` összetevőhöz az új `targetTemperature` 42 érték megjelenítéséhez:
-
-    ```json
-    "modelId": "dtmi:com:example:Thermostat;1",
-        "version": 12,
-        "properties": {
-            "desired": {
-                "targetTemperature": "42",
-                "$metadata": {
-                    "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                    "$lastUpdatedVersion": 5,
-                    "targetTemperature": {
-                        "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                        "$lastUpdatedVersion": 5
-                    }
-                },
-                "$version": 5
-            },
-            "reported": {
-                "serialNumber": "123abc",
-                "maxTempSinceLastReboot": 32.279942997143785,
-                "targetTemperature": {
-                    "value": "42",
-                    "ac": 200,
-                    "ad": "Successfully executed patch for targetTemperature",
-                    "av": 2
-                },
+    node update_digital_twin.js
     ```
 
 1. Az **eszköz** -terminálon láthatja, hogy az eszköz a következő frissítést kapta:
 
     ```cmd/sh
-    Received an update for targetTemperature: 42
+    The following properties will be updated for root interface:
+    {
+      targetTemperature: {
+        value: 42,
+        ac: 200,
+        ad: 'Successfully executed patch for targetTemperature',
+        av: 2
+      }
+    }
     updated the property
+    Properties have been reported for component
     ```
 
 1. A **szolgáltatás** -terminálban futtassa a következő parancsot a tulajdonság frissítésének megerősítéséhez:
@@ -207,15 +185,7 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 1. A **szolgáltatás** -terminál kimenetében, az összetevő alatt a digitális dupla válaszban a `thermostat1` frissített célként jelzett hőmérséklet látható. Eltarthat egy ideig, amíg az eszköz befejezi a frissítést. Ismételje meg ezt a lépést, amíg az eszköz fel nem dolgozza a tulajdonság frissítését:
 
     ```json
-    "$model": "dtmi:com:example:Thermostat;1",
-    "targetTemperature": {
-      "desiredValue": 42,
-      "desiredVersion": 4,
-      "ackVersion": 4,
-      "ackCode": 200,
-      "ackDescription": "Successfully executed patch for targetTemperature",
-      "lastUpdateTime": "2020-07-09T13:55:30.5062641Z"
-    }
+    targetTemperature: 42,
     ```
 
 ### <a name="invoke-a-command"></a>Parancs meghívása
@@ -225,6 +195,8 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 1. Nyissa meg a **szolgáltatás** terminálját. A következő parancs használatával futtassa a mintát a parancs meghívásához:
 
     ```cmd/sh
+    set IOTHUB_COMMAND_NAME=getMaxMinReport
+    set IOTHUB_COMMAND_PAYLOAD=commandpayload
     node invoke_command.js
     ```
 
@@ -245,7 +217,7 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 1. Az **eszköz** -terminálon láthatja, hogy a parancs meg van-e ismerve:
 
     ```cmd/sh
-    MaxMinReport [object Object]
+    MaxMinReport commandpayload
     Response to method 'getMaxMinReport' sent successfully.
     ```
 

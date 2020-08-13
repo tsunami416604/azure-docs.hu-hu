@@ -49,14 +49,8 @@
           href: developer-guidance-for-integrating-applications.md
     - name: Egyszeri bejelentkezés
       items:
-        - name: Az SSO engedélyezése több-bérlős alkalmazások esetében
-          href: isv-sso-content.md
-        - name: Azure-bérlő létrehozása több-bérlős alkalmazások esetében
-          href: isv-tenant-multi-tenant-app.md
-        - name: Több-bérlős összevonás kiválasztása
-          href: isv-choose-multi-tenant-federation.md
-        - name: Több-bérlős alkalmazás dokumentációjának létrehozása
-          href: isv-create-sso-documentation.md
+        - name: Az egyszeri bejelentkezés beállításai
+          href: sso-options.md
         - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
           href: plan-sso-deployment.md
         - name: Egykattintásos SSO
@@ -97,6 +91,16 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Távelérési megoldások összehasonlítása
           href: application-proxy-migration.md
+    - name: Alkalmazás piacra juttatása
+      items:
+        - name: Az SSO engedélyezése több-bérlős alkalmazások esetében
+          href: isv-sso-content.md
+        - name: Azure-bérlő létrehozása több-bérlős alkalmazások esetében
+          href: isv-tenant-multi-tenant-app.md
+        - name: Több-bérlős összevonás kiválasztása
+          href: isv-choose-multi-tenant-federation.md
+        - name: Több-bérlős alkalmazás dokumentációjának létrehozása
+          href: isv-create-sso-documentation.md
 - name: Útmutatók
   expanded: false
   items:

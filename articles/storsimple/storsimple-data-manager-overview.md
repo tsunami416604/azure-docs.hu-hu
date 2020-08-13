@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Data Manager áttekintése | Microsoft Docs
-description: Áttekintést nyújt a StorSimple Data Manager szolgáltatásról
+description: Tudjon meg többet a StorSimple Data Manager megoldásról, és arról, hogyan használhatja ezt a szolgáltatást a StorSimple-és egyéb Azure-szolgáltatásokat használó alkalmazások írásához.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67876107"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183496"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager megoldás áttekintése
 
@@ -50,7 +50,7 @@ A StorSimple Data Manager a következő 7 régióban érhető el:
  - Délkelet-Ázsia
  - USA keleti régiója
  - USA nyugati régiója
- - USA nyugati régiója, 2.
+ - USA 2. nyugati régiója
  - USA nyugati középső régiója
  - Észak-Európa
  - Nyugat-Európa
@@ -96,6 +96,6 @@ A szolgáltatás jelenleg a következő korlátozásokkal rendelkezik:
 - Ez a szolgáltatás csak NTFS-kötetekkel működik.
 - A fájl elérési útjának hosszának 256 karakternél rövidebbnek kell lennie, mert a feladat sikertelen lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az adatátalakításhoz használja StorSimple Data Manager felhasználói felületét](storsimple-data-manager-ui.md).

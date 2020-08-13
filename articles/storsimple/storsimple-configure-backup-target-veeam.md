@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 sorozat biztonsági mentési célként a Veeam | Microsoft Docs
-description: Ismerteti a StorSimple biztonsági mentési cél konfigurációját a Veeam.
+description: Ismerje meg a StorSimple biztonsági mentési céljának konfigurációját a Veeam és az ajánlott eljárásokkal mindkét megoldás integrálásához.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077890"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183979"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple biztonsági mentési célként a Veeam
 
@@ -94,17 +94,17 @@ Az alábbi táblázatok az eszköz modell-architektúra kezdeti útmutatóját m
 
 | Tárkapacitás | 8100 | 8600 |
 |---|---|---|
-| Helyi tárolási kapacitás | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Felhőalapú tárolási kapacitás | &gt;200 TiB\* | &gt;500 TiB\* |
+| Helyi tárolási kapacitás | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Felhőalapú tárolási kapacitás | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*A tárterület mérete feltételezi, hogy nincs ismétlődés vagy tömörítés.
+\* A tárterület mérete feltételezi, hogy nincs ismétlődés vagy tömörítés.
 
 **StorSimple kapacitások elsődleges és másodlagos biztonsági mentésekhez**
 
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
 | Elsődleges biztonsági mentés  | A helyi tárterületen tárolt legutóbbi biztonsági másolatok a helyreállítási időkorlát (RPO) kielégítése érdekében a gyors helyreállítás érdekében | A biztonsági mentési előzmények (RPO) a Felhőbeli kapacitásban is elférnek |
-| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | n.a.  |
+| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N/A  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple elsődleges biztonsági mentési célként
 
@@ -266,7 +266,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 | GFS követelmény |   | 38 |   |
 | További kvóta  | 4  |   | 42 teljes GFS-követelmény  |
 
-\*A GFS-szorzó a védelemhez szükséges másolatok száma, és megtartja a biztonsági mentési szabályzat követelményeinek teljesítését.
+\* A GFS-szorzó a védelemhez szükséges másolatok száma, és megtartja a biztonsági mentési szabályzat követelményeinek teljesítését.
 
 ## <a name="set-up-veeam-storage"></a>Veeam-tároló beállítása
 
@@ -386,7 +386,7 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 | Évenként megtelt |StorSimple lemez (hosszú távú) | 1 | 1 | 1 |
 |GFS-kötetek méretére vonatkozó követelmény |  |  |  | 18|
 
-\*A teljes kapacitás magában foglalja a 17 TiB StorSimple-lemezeket és 1 TiB helyi RAID-kötetet.
+\* A teljes kapacitás magában foglalja a 17 TiB StorSimple-lemezeket és 1 TiB helyi RAID-kötetet.
 
 
 ### <a name="gfs-example-schedule"></a>GFS – példa
@@ -507,7 +507,7 @@ A katasztrófák számos tényezőt okozhatnak. A következő táblázat az ált
 | A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 
@@ -516,7 +516,7 @@ Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 - [GPT-meghajtók használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Árnyékmásolatok beállítása megosztott mappákhoz](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [biztonságimásolat-készletből való visszaállításról](storsimple-restore-from-backup-set-u2.md).
 - További információ az [eszközök feladatátvételének és a vész-helyreállításnak](storsimple-device-failover-disaster-recovery.md)a végrehajtásáról.

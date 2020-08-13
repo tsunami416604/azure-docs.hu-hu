@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: Az Azure Arc-kompatibilis kiszolgálók ismertetése
       href: ./servers/overview.md
+- name: Rövid útmutatók
+  items:
+    - name: A kiszolgálói Arc ügynökének engedélyezése
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: Oktatóanyagok
+  items:
+    - name: Szabályzat hozzárendelése a megfelelőség kiértékeléséhez
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: Gép monitorozása
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: Példák
   items:
     - name: Az Azure Policy beépített elemei

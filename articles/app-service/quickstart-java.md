@@ -10,16 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8289b21da5009459d2eb7ddc8d26b549f0920317
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085167"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182697"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t a [Mavenhez készült Azure Web App beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
+
+> [!NOTE]
+> Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Ugyanezt a népszerű ide-ket, például a IntelliJ és az Eclipse-et is megteheti. Tekintse meg a hasonló dokumentumokat a [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) rövid útmutatóban vagy [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)gyors útmutatóban.
@@ -53,12 +56,12 @@ Az alábbi Maven-parancs futtatásával konfigurálhatja az üzemelő példányt
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows"  
+::: zone pivot="platform-windows" 
 A rendszer felkéri, hogy válasszon 
 * **Operációs rendszer (alapértelmezett: `linux` )**
 * **Java-verzió (alapértelmezett: `1.8` )**
 * **Webes tároló (alapértelmezett: `tomcat 8.5` )** 
-
+ 
 Ügyeljen arra, hogy a **`2`** **Windows** operációs rendszer első lépéseként válassza ki a kívánt adatokat. A többi konfiguráció az **ENTER**billentyű lenyomásával hagyható el. Végül nyomja meg **`Y`** a **Confirm (i/N)** promptot a konfigurálás befejezéséhez.
 
 Egy mintavételi folyamat A következőképpen néz ki:
@@ -137,6 +140,13 @@ Confirm (Y/N)? :
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"  
+
+A rendszer felkéri, hogy válasszon 
+* **Operációs rendszer (alapértelmezett: `linux` )**
+* **Java-verzió (alapértelmezett: `Java 8` )**
+* **Webes tároló (alapértelmezett: `Tomcat 8.5` )** 
+
+Az alapértelmezett beállítások az **ENTER billentyű**lenyomásával maradhatnak le. Végül nyomja meg **`Y`** a **Confirm (i/N)** promptot a konfigurálás befejezéséhez.
 Egy mintavételi folyamat A következőképpen néz ki:
 
 ```cmd
@@ -174,16 +184,7 @@ Confirm (Y/N)? : Y
 ```
 ::: zone-end
 
-> [!NOTE]
-> Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
-
-`pom.xml`A frissített konfiguráció megjelenítéséhez nyissa meg a következőt:.
-
-```bash
-code pom.xml
-```
-
-Szükség esetén közvetlenül a Pom-fájlban módosíthatja a App Service konfigurációit, néhány gyakori érték az alábbiak szerint jelenik meg:
+Ha szükséges, a App Service konfigurációit közvetlenül is módosíthatja `pom.xml` , néhány gyakori érték alább látható:
 
  Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
@@ -195,11 +196,8 @@ Szükség esetén közvetlenül a Pom-fájlban módosíthatja a App Service konf
 `<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)tekintheti meg. | 0.1.0 +
 `<deployment>` | true | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)láthatja a részleteket. | 0.1.0 +
 
-::: zone pivot="platform-windows"
 Ügyeljen arra, hogy a `<appName>` és a `<resourceGroup>` ( `helloworld-1590394316693` és `helloworld-1590394316693-rg` ennek megfelelően a bemutatóban) értékeit később is használni fogjuk.
-::: zone-end
-::: zone pivot="platform-linux"
-::: zone-end
+
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=quickstart-java&step=config)
 
@@ -216,21 +214,11 @@ Ezután az alábbi paranccsal telepítheti a Java-alkalmazást az Azure-ba:
 mvn package azure-webapp:deploy
 ```
 
-::: zone pivot="platform-windows"
 Az üzembe helyezés befejezése után az alkalmazás készen áll `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` a bemutatóban). Nyissa meg az URL-címet a helyi webböngészővel, és tekintse meg a következőt:
 
-![Azure App Service futó minta alkalmazás](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Azure App Service futó minta alkalmazás](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gratulálunk!** Üzembe helyezte az első Java-alkalmazást, hogy App Service Windows rendszeren.
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-::: zone-end
-::: zone pivot="platform-linux"
-Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a webböngészőjében a következő URL-cím használatával, például: `http://<webapp>.azurewebsites.net`. 
-
-![Azure App Service futó minta alkalmazás](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Gratulálunk!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
+**Gratulálunk!** Az első Java-alkalmazás üzembe helyezése App Service.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -244,21 +232,8 @@ az group delete --name <your resource group name; for example: helloworld-155840
 ```
 
 A parancs futtatása egy percig is eltarthat.
-::: zone-end
 
-Az üzembe helyezés befejezése után az alkalmazás készen áll `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` a bemutatóban). Nyissa meg az URL-címet a helyi webböngészővel, és tekintse meg a következőt:
-
-![Azure App Service futó minta alkalmazás](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Gratulálunk!** Az első Java-alkalmazás üzembe helyezése App Service.
-
-> [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/javae2e?quickstart-java&step=deploy)
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure SQL Database Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 

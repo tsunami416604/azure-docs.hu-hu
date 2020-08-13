@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a48e598680ee969f3823dee6699c8c981dff392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833400"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182476"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Tároló tulajdonságainak és metaadatainak kezelése a .NET-tel
 
@@ -29,7 +29,7 @@ A metaadatok neve/értéke párok érvényes HTTP-fejlécek, ezért meg kell fel
 
 ## <a name="retrieve-container-properties"></a>Tároló tulajdonságainak lekérése
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 A tároló tulajdonságainak lekéréséhez hívja a következő módszerek egyikét:
 
@@ -40,7 +40,7 @@ A következő mintakód egy tároló rendszertulajdonságait olvassa be, és biz
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 A blob Storage-erőforrások tulajdonság-és metaadat-értékeinek beolvasása kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat a **FetchAttributes** vagy a **FetchAttributesAsync** metódus meghívásával. A szabály alól kivételt képez, hogy a **létező** és a **ExistsAsync** metódusok a borító alatt meghívja a megfelelő **FetchAttributes** metódust. Ha meghívja az egyik módszert, nem kell meghívnia a **FetchAttributes**.
 
@@ -80,7 +80,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>Metaadatok beállítása és lekérése
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat egy [IDictionary](/dotnet/api/system.collections.idictionary) objektumhoz, majd hívja meg az alábbi módszerek egyikét az értékek írásához:
 
@@ -102,7 +102,7 @@ Ezután olvassa el az értékeket az alábbi példában látható módon.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat az erőforrás **metaadat** -gyűjteményéhez, majd hívja meg az alábbi módszerek egyikét az értékek írásához:
 

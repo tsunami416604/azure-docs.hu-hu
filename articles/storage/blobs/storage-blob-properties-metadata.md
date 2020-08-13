@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan állíthatja be és kérheti le a rendszertulaj
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/09/2019
+ms.date: 08/12/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 3d86b6e39d6199d2f0268070cfa5456e512daa49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29fae4ffb08aba6a45a3879ffe28bf6b90f28a0e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465881"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182391"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-tulajdonságok és-metaadatok kezelése a .NET-tel
 
@@ -26,18 +26,21 @@ A bennük található adatokon kívül a Blobok támogatják a rendszer tulajdon
 - **Felhasználó által definiált metaadatok**: a felhasználó által definiált metaadatok egy vagy több, a blob Storage-erőforráshoz megadott név-érték párokból állnak. A metaadatok használatával további értékeket is tárolhat az erőforrással. A metaadatok értéke csak saját célra szolgál, és nem befolyásolja az erőforrás működésének módját.
 
 > [!NOTE]
-> A blob index címkéi lehetővé teszik a felhasználó által definiált kulcs/érték attribútumoknak a blob Storage-erőforrással együtt történő tárolását is. A metaadatokhoz hasonlóan csak a blob-indexek indexelése automatikusan történik, és a natív blob szolgáltatás lekérdezi őket. A metaadatokat nem lehet natív módon indexelni és lekérdezni, hacsak nem használ külön szolgáltatást, például Azure Search.
+> A blob index címkéi lehetővé teszik a felhasználó által definiált kulcs/érték attribútumoknak az Azure Blob Storage-erőforrással együtt történő tárolását is. Míg a metaadatokhoz hasonló, csak a blob index címkéi automatikusan indexelve lesznek, és a natív blob szolgáltatás kereshetővé tesz. A metaadatokat nem lehet indexelni és lekérdezni, hacsak nem használ külön szolgáltatást, például Azure Search.
 >
-> A szolgáltatással kapcsolatos további információkért lásd: az [Azure Blob Storage adatainak kezelése és keresése a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md).
-
-A blob Storage-erőforrások metaadatainak és tulajdonságértékek beolvasása egy kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat a vagy metódus meghívásával `FetchAttributes` `FetchAttributesAsync` . A szabály alól kivételt képez, hogy a `Exists` és a `ExistsAsync` metódusok a megfelelő módszert hívják meg `FetchAttributes` a borítók alatt. Ha meghívja az egyik módszert, nem kell meghívnia a következőt: `FetchAttributes` .
-
-> [!IMPORTANT]
-> Ha azt tapasztalja, hogy a tárolási erőforráshoz tartozó tulajdonság vagy metaadatok értéke nem lett feltöltve, ellenőrizze, hogy a kód meghívja-e a `FetchAttributes` vagy a `FetchAttributesAsync` metódust.
+> A szolgáltatással kapcsolatos további információkért lásd: az [Azure Blob Storage-beli adatkezelés és-keresés a blob-indexszel (előzetes verzió)](storage-manage-find-blobs.md).
 
 ## <a name="set-and-retrieve-properties"></a>Tulajdonságok beállítása és lekérése
 
 A következő kódrészlet a és a `ContentType` `ContentLanguage` rendszer tulajdonságait állítja be egy blobon.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+A Blobok tulajdonságainak beállításához hívja meg a [SetHttpHeaders](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheaders) vagy a [SetHttpHeadersAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheadersasync). A nem explicit módon beállított tulajdonságok törlődnek. A következő kódrészlet először beolvassa a blob meglévő tulajdonságait, majd ezeket használja fel a nem frissítendő fejlécek feltöltéséhez.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_SetBlobProperties":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -64,8 +67,22 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
     }
 }
 ```
+---
 
-A blob tulajdonságainak lekéréséhez hívja meg a (z) `FetchAttributes` vagy `FetchAttributesAsync` metódust a blobon a tulajdonság feltöltéséhez `Properties` . A következő kódrészlet a blob rendszertulajdonságait jeleníti meg, és megjeleníti az egyes értékeket:
+A következő kódrészlet a blob rendszertulajdonságait és az egyes értékeket jeleníti meg.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobProperties":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+A blob Storage-erőforrások metaadatainak és tulajdonságértékek beolvasása egy kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat a vagy metódus meghívásával `FetchAttributes` `FetchAttributesAsync` . A szabály alól kivételt képez, hogy a `Exists` és a `ExistsAsync` metódusok a megfelelő módszert hívják meg `FetchAttributes` a borítók alatt. Ha meghívja az egyik módszert, nem kell meghívnia a következőt: `FetchAttributes` .
+
+> [!IMPORTANT]
+> Ha azt tapasztalja, hogy a tárolási erőforráshoz tartozó tulajdonság vagy metaadatok értéke nem lett feltöltve, ellenőrizze, hogy a kód meghívja-e a `FetchAttributes` vagy a `FetchAttributesAsync` metódust.
+
+A blob tulajdonságainak lekéréséhez hívja meg a (z) `FetchAttributes` vagy `FetchAttributesAsync` metódust a blobon a tulajdonság feltöltéséhez `Properties` .
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -91,19 +108,34 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
     }
 }
 ```
+---
 
 ## <a name="set-and-retrieve-metadata"></a>Metaadatok beállítása és lekérése
 
 A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat az `Metadata` erőforrás gyűjteményéhez. Ezután hívja meg az alábbi módszerek egyikét az értékek írásához:
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.setmetadataasync)
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
+---
 
 A metaadatok neve/értéke párok érvényes HTTP-fejlécek, és meg kell felelniük a HTTP-fejléceket szabályozó összes korlátozásnak. A metaadatok nevének érvényes HTTP-fejléc-névnek és érvényes C#-azonosítónak kell lennie, csak ASCII-karaktereket tartalmazhat, és a kis-és nagybetűket nem megkülönböztetőként kell kezelni. [Base64-kódolás](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) vagy [URL-cím –](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) nem ASCII karaktereket tartalmazó metaadat-értékek kódolása.
 
 A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik a létrehozásuk során használt esetet, de a kis-és nagybetűk nem különböznek a beállítás vagy a beolvasás során. Ha legalább két metaadat-fejlécet használ ugyanazzal a névvel, az Azure Blob Storage a 400-as HTTP-hibakódot (hibás kérés) adja vissza.
 
 A következő kódrészlet a Blobok metaadatait állítja be. Egy érték van beállítva a gyűjtemény `Add` metódusának használatával. A másik érték az implicit kulcs/érték szintaxis használatával van beállítva.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddBlobMetadata":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -129,6 +161,17 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
     }
 }
 ```
+---
+
+A következő kódrészlet egy blob metaadatait olvassa be.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+A metaadatok lekéréséhez hívja meg a [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) vagy a [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) metódust a blobon vagy a tárolón a [metaadatok](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) gyűjteményének feltöltéséhez, majd olvassa el az értékeket az alábbi példában látható módon.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 A metaadatok lekéréséhez hívja `FetchAttributes` meg a vagy a `FetchAttributesAsync` metódust a blobon vagy a tárolón a gyűjtemény feltöltéséhez `Metadata` , majd olvassa el az értékeket az alábbi példában látható módon.
 
@@ -160,6 +203,7 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
     }
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

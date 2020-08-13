@@ -1,10 +1,11 @@
-- name: Data Catalog – dokumentáció
+- name: Data Catalog-dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
     - name: Mi a Data Catalog?
       href: overview.md
 - name: Rövid útmutatók
+  expanded: true
   items:
     - name: Azure Data Catalog létrehozása
       href: data-catalog-get-started.md
@@ -20,8 +21,6 @@
       href: data-catalog-dsr.md
     - name: Az Azure Data Catalog bevezetése
       href: data-catalog-adopting-data-catalog.md
-    - name: Előfeltételek
-      href: data-catalog-prerequisites.md
     - name: GYIK
       href: data-catalog-frequently-asked-questions.md
 - name: Útmutató

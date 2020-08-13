@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer-specifikációk | Microsoft Docs
-description: Az Azure FXT Edge Filer-hardver fizikai és környezeti előírásai
+description: Ismerje meg az Microsoft Azure FXT Edge Filer-hardver fizikai és környezeti specifikációit.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231299"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184686"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Az Azure FXT Edge Filer-specifikációi
 

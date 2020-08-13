@@ -185,3 +185,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Frissítés a 3.0-ás verzióra a 2.0-ás vagy 2.1-es verzióról
+      href: upgrade-api-versions.md

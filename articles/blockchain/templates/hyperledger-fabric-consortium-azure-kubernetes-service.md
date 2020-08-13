@@ -1,15 +1,15 @@
 ---
 title: Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 description: A Hyperledger Fabric Consortium Network üzembe helyezése és konfigurálása az Azure Kubernetes Service-ben
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533427"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184210"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
@@ -26,7 +26,7 @@ A cikk elolvasása után:
 
 A megoldási sablon használata előtt hasonlítsa össze a forgatókönyvet az elérhető Azure Blockchain-beállítások gyakori felhasználási eseteivel.
 
-Lehetőség | Szolgáltatási modell | Gyakori használati eset
+Beállítás | Szolgáltatási modell | Gyakori használati eset
 -------|---------------|-----------------
 Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](/answers/topics/azure-blockchain-workbench.html) .
 [Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Használja az Azure Blockchain szolgáltatást a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakció adatvédelmet igénylő megoldásokhoz.
@@ -350,10 +350,22 @@ Kövesse az alábbi lépéseket:
 A társ ügyfélalkalmazás alkalmazásban futtassa az alábbi parancsot a chaincode a csatornán való létrehozásához.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 A (z) és a (z) és a (z) és a (z) argumentumának átadása az `<instantiateFunc>` `<instantiateFuncArgs>` Például chaincode_example02. go chaincode-ben a chaincode a következőre van állítva: "a" " `<instantiateFunc>` `init` `<instantiateFuncArgs>` 2000" "b" "1000".
+
+A gyűjtemények konfigurációs JSON-fájlját a jelző használatával is átadhatja `--collections-config` . Vagy állítsa be az átmeneti argumentumokat a `-t` jelző használatával a privát tranzakciókhoz használt chaincode példányának létrehozásakor.
+
+Például:
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+A a \<collectionConfigJSONFilePath\> személyes adatchaincode példányához definiált gyűjteményeket tartalmazó JSON-fájl elérési útja. A azhlfTool könyvtárhoz viszonyított minta gyűjtemények konfigurációs JSON-fájl a következő elérési úton található: `./samples/chaincode/src/private_marbles/collections_config.json` .
+\<transientArgs\>Érvényes JSON-formátumban adja át a karakterláncot. Escape bármely speciális karakter. Például: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől. Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a chaincode a csatorna összes társ-csomópontján lévő összes társ-csomóponton példányba kerül.  
@@ -377,8 +389,12 @@ Adja meg a függvény nevét és az argumentumok szóközzel tagolt listáját �
 Futtassa az alábbi parancsot a chaincode lekérdezéséhez:  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
+A társak jóváhagyása olyan társak, ahol a chaincode telepítve van, és a rendszer a tranzakciók végrehajtásához hívja. A \<endorsingPeers\> társ-csomópontok nevét az aktuális társ-szervezetből kell beállítania. Sorolja fel a megadott chaincode és csatorna-kombinációk számára szóközökkel elválasztott támogató partnereket. Például: `-p "peer1" "peer3"`.
+
+Ha a azhlfTool-t használja a chaincode telepítéséhez, adja át a társ-csomópontok nevét a jóváhagyó társ argumentum értékeként. A chaincode az adott szervezet minden társ-csomópontjára telepítve van. 
+
 Adja át a lekérdezési függvény nevét és az argumentumok szóközzel tagolt listáját  `<queryFunction>`    `<queryFuncArgs>`   . A chaincode_example02. go chaincode-ként a "a" értéket kell megtekintenie a globális állapotban lévő "a" érték lekéréséhez  `<queryFunction>`    `query`  `<queryArgs>` .  
 
 ## <a name="troubleshoot"></a>Hibaelhárítás

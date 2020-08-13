@@ -1,5 +1,5 @@
 ---
-title: A Java-Azure Database for PostgreSQL – egyetlen kiszolgálóval való kapcsolat
+title: 'Gyors útmutató: kapcsolat Java-Azure Database for PostgreSQL – egyetlen kiszolgálóval'
 description: Ez a rövid útmutató egy Java-kódrészletet tartalmaz, amellyel összekapcsolhatók és lekérhető Azure Database for PostgreSQL-kiszolgálóról származó adatok lekérdezése.
 author: rachel-msft
 ms.author: raagyema
@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 8b11147c5266be17d188e915bf73a999ea157d24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e73cf35634b29409f8316080952e46825dd1a0d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321411"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182850"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Java használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -387,6 +387,6 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

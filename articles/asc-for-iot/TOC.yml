@@ -29,6 +29,8 @@
       href: quickstart-configure-your-solution.md
     - name: Azure Security Center for IoT-ikermodul létrehozása
       href: quickstart-create-security-twin.md
+    - name: Biztonsági javaslatok vizsgálata
+      href: quickstart-investigate-security-recommendations.md
     - name: Egyéni biztonsági riasztások létrehozása
       href: quickstart-create-custom-alerts.md
     - name: Biztonsági riasztások vizsgálata

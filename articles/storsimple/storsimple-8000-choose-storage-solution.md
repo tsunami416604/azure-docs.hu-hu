@@ -1,18 +1,18 @@
 ---
 title: Az Azure-ba irányuló adatátviteli lehetőségek a készülék használatával | Microsoft Docs
-description: Megtudhatja, hogyan választhatja ki a megfelelő készüléket az adatok Azure-ba történő átviteléhez
+description: Megtudhatja, hogyan választhatja ki a megfelelő készüléket az Azure-ba irányuló helyszíni adatátvitelhez Data Box Edge, Azure File Sync és a StorSimple 8000 sorozat között.
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203982"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183275"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>A StorSimple összehasonlítása az Azure File Synckel és a Data Box Edge adatátviteli lehetőségeivel 
 
@@ -33,11 +33,11 @@ Ez a dokumentum áttekintést nyújt a helyszíni adatátviteli lehetőségekrő
 |**Peremhálózati számítás** |Nem érhető el |Nem érhető el |Támogatja a futó tárolókat Azure IoT Edge    |
 |**Űrlap tényező**  |Fizikai eszköz   |A Windows Serverre telepített ügynök |Fizikai eszköz   |
 |**Hardver**     |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz | Ügyfél által megadott |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz  |
-|**Adatformátum**  |Egyéni formátum   |Fájlok         |Blobok vagy fájlok    |
+|**Adatformátum**  |Egyéni formátum   |Files         |Blobok vagy fájlok    |
 |**Protokolltámogatás** |iSCSI          |SMB, NFS    | SMB vagy NFS      |
 |**Díjszabás**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) és a [Azure Data Box Gateway](/azure/databox-online/data-box-gateway-overview) ismertetése
 - Tudnivalók a [Azure file Sync](/azure/storage/files/storage-sync-files-deployment-guide)

@@ -1,6 +1,6 @@
 ---
 title: Virtuális tömb biztonsági mentésének Microsoft Azure StorSimple oktatóanyaga | Microsoft Docs
-description: Útmutatás a StorSimple virtuális tömbök és kötetek biztonsági mentéséhez.
+description: Ütemezett és manuális biztonsági mentéseket hozhat létre Microsoft Azure StorSimple virtuális tömbhöz, és elemszintű helyreállítást hajthat végre a törölt fájlok virtuális tömbön való visszaállításához.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26bf018d8823495c00b09af3a40b39315dadb31c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513676"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183224"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömbben lévő megosztások vagy kötetek biztonsági mentése
 
@@ -58,7 +58,7 @@ A StorSimple Virtual Array egy alapértelmezett biztonsági mentési szabályzat
    
     ![Navigáljon a biztonsági mentési szabályzatokhoz](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="take-a-manual-backup"></a>Manuális biztonsági mentés készítése
 
@@ -82,7 +82,7 @@ Az ütemezett biztonsági mentések mellett bármikor manuálisan (igény szerin
    
     ![biztonsági mentési feladatok létrehozva](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. A biztonsági másolatok állapotának nyomon követéséhez és a feladatok részleteinek megtekintéséhez kattintson az értesítésre. Ezzel elvégzi a **feladatok részleteit**.
+3. A biztonsági másolatok állapotának nyomon követéséhez és a feladatok részleteinek megtekintéséhez kattintson az értesítésre. Ezzel elvégzi a  **feladatok részleteit**.
    
      ![biztonsági mentési feladatok részletei](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
@@ -112,7 +112,7 @@ A meglévő biztonsági másolatok megtekintéséhez hajtsa végre a következő
    
     ![Frissített biztonsági mentési katalógus](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

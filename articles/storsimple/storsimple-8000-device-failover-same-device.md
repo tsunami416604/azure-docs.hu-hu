@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – feladatátvétel a StorSimple fizikai eszközön ugyanarra az eszközre
-description: Megtudhatja, hogyan hajthat végre feladatátvételt a StorSimple-eszközön ugyanarra az eszközre.
+description: Megtudhatja, hogy milyen lépések szükségesek ahhoz, hogy a StorSimple 8000 sorozatú fizikai eszköz feladatátvétele megtörténjen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511759"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184329"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Feladatátvétel a StorSimple fizikai eszközön ugyanarra az eszközre
 
@@ -79,7 +79,7 @@ Hajtsa végre az alábbi lépéseket, ha ugyanarra az eszközre kell átadnia a 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A feladatátvétel elvégzése után szükség lehet [a StorSimple-eszköz inaktiválására vagy törlésére](storsimple-8000-deactivate-and-delete-device.md).
 * További információ a StorSimple Eszközkezelő szolgáltatás használatáról: [a StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).

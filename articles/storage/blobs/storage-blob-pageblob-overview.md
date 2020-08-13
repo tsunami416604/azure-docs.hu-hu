@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 270461ad0ba5c77f845af13d7cd4a24d0c098b31
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518707"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182459"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -50,13 +50,13 @@ A következő ábra a fiók, a tárolók és a Blobok közötti általános kapc
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Egy megadott méretű üres oldal blobjának létrehozása
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Először szerezzen be egy hivatkozást egy tárolóra. Az oldal blobjának létrehozásához hívja meg a [GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) metódust, és hívja meg a [PageBlobClient. Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) metódust. Adja meg a blob létrehozásához szükséges maximális méretet. Ennek a méretnek 512 bájtos többszörösének kell lennie.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Az oldal blobjának létrehozásához először hozzon létre egy **CloudBlobClient** objektumot a Storage-fiók blob Storage-hoz való hozzáféréséhez szükséges alap URI-val (*pbaccount* az 1. ábrán) a **StorageCredentialsAccountAndKey** objektummal együtt, az alábbi példában látható módon. A példa ezután egy **CloudBlobContainer** objektumra mutató hivatkozást hoz létre, majd létrehozza a tárolót (*testvhds*), ha még nem létezik. Ezután a **CloudBlobContainer** objektum használatával hozzon létre egy **CloudPageBlob** objektumra mutató hivatkozást úgy, hogy megadhatja az oldal blobjának nevét (OS4. vhd) az eléréséhez. Az oldal blobjának létrehozásához hívja meg a [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), és adja meg a blob létrehozásához szükséges maximális méretet. A *blobSize* 512 bájtos többszörösének kell lennie.
 
@@ -87,13 +87,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 #### <a name="resizing-a-page-blob"></a>Oldal blobjának átméretezése
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Ha a létrehozás után át szeretné méretezni az oldal blobját, használja az [átméretezési](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) módszert. A kért méretnek 512 bájtos többszörösnek kell lennie.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Ha a létrehozás után át szeretné méretezni az oldal blobját, használja az [átméretezési](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) módszert. A kért méretnek 512 bájtos többszörösnek kell lennie.
 
@@ -105,13 +105,13 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 #### <a name="writing-pages-to-a-page-blob"></a>Lapok megírása egy oldal blobba
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Lapok írásához használja a [PageBlobClient. UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) metódust.  
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Lapok írásához használja a [CloudPageBlob. WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) metódust.  
 
@@ -134,13 +134,13 @@ Az alábbi ábrán két különálló írási művelet látható:
 
 #### <a name="reading-pages-from-a-page-blob"></a>Lapok beolvasása egy oldal blobból
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Lapok olvasásához használja a [PageBlobClient. download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) metódust, hogy az oldal blobján belül beolvassa a bájtok egy tartományát. 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Lapok olvasásához használja a [CloudPageBlob. DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) metódust, hogy az oldal blobjában lévő bájtok egy tartományát olvassa. 
 
@@ -159,13 +159,13 @@ Az alábbi ábrán egy olvasási művelet látható, amelynek eltolása 256, a t
 
 Ha ritkán feltöltött blobtal rendelkezik, érdemes letöltenie az érvényes oldal régióit, hogy elkerülje a nulla bájtos egressing és a letöltési késés csökkentését.  
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Az [PageBlobClient. GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)használatával megállapíthatja, hogy mely oldalakról készül biztonsági másolat. Ezután enumerálhatja a visszaadott tartományokat, és letöltheti az egyes tartományokban lévő összes értéket. 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Az [CloudPageBlob. GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges)használatával megállapíthatja, hogy mely oldalakról készül biztonsági másolat. Ezután enumerálhatja a visszaadott tartományokat, és letöltheti az egyes tartományokban lévő összes értéket. 
 

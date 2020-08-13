@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager sablon minták – Azure bejárati ajtó
-description: Az Azure-beli bejárati ajtóhoz Azure Resource Manager sablon mintái
+description: Ismerje meg a Resource Manager-sablonok Azure-beli bejárati mintákat, beleértve az alapszintű bejárati ajtó létrehozásához és a bejárati ajtó sebességének korlátozásához szükséges sablonokat
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: sharadag
-ms.openlocfilehash: 47db565288d1bfe1f98c58536e726eb7ec55d0a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14f9cb33ce298b97ead0f6d7fbec0ad77e79a1ee
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084636"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182187"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Azure Resource Managerbeli üzembe helyezési modellek sablonjai a Front Doorhoz
 
@@ -36,7 +36,7 @@ Az alábbi táblázat az Azure-beli előtérben elérhető üzembe helyezési mo
 | [A bejárati ajtó sebességének korlátozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-rate-limiting)| Úgy konfigurál egy Frontdoort, hogy az korlátozza egy adott előtérbeli gazdagép bejövő forgalmának sebességét. |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

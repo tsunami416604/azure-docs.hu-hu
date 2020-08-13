@@ -91,8 +91,6 @@
           href: concept-customer-managed-keys.md
         - name: A konfigurációs adattár védelme privát végpontok használatával
           href: concept-private-endpoint.md
-        - name: Integráció az Azure Managed Identityvel
-          href: howto-integrate-azure-managed-service-identity.md
         - name: Hozzáférés engedélyezése az Azure Active Directoryval
           href: concept-enable-rbac.md
         - name: Azure Managed Identity hozzárendelése
@@ -115,6 +113,8 @@
       href: howto-app-configuration-event.md
     - name: A konfigurációs tár automatikus biztonsági mentése
       href: howto-backup-config-store.md
+    - name: Felügyelt identitások használata az App Configuration eléréséhez
+      href: howto-integrate-azure-managed-service-identity.md
 - name: Referencia
   items:
     - name: Konfiguráció

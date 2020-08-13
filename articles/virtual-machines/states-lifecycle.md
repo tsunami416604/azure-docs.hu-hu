@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 127604264850f9845846d0bb6a2768cac23cdc8c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169134"
+ms.locfileid: "88182943"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Virtuális gépek életciklusa és állapota
 
@@ -23,134 +23,192 @@ Az Azure Virtual Machines (VM-EK) különböző állapotokon haladnak át, amely
 
 A Power állapot a virtuális gép utolsó ismert állapotát jelöli.
 
-![Virtuális gép energiagazdálkodási állapotának diagramja](./media/vm-power-states.png)
+![Virtuális gép energiagazdálkodási állapotának diagramja](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
 A következő táblázat ismerteti az egyes példányok állapotát, és azt jelzi, hogy a példány használatban van-e, vagy sem.
 
-<table>
-<tr>
-<th>
-Állam
-</th>
-<th>
-Leírás
-</th>
-<th>
-Példány használati számlázása
-</th>
-</tr>
-<tr>
-<td>
-<p><b>Indítás</b></p>
-</td>
-<td>
-<p>A virtuális gép elindul.</p>
-<code>"statuses": [<br>
-   {<br>
-      "code": "PowerState/starting",<br>
-       "level": "Info",<br>
-        "displayStatus": "VM starting"<br>
-    }<br>
-    ]</code><br>
-</td>
-<td>
-<p><b>Nem számlázott</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Futó</b></p>
-</td>
-<td>
-<p>Virtuális gép normál működésének állapota</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/running",<br>
- "level": "Info",<br>
- "displayStatus": "VM running"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Számlázása</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Leállítás</b></p>
-</td>
-<td>
-<p>Ez egy átmeneti állapot. Ha elkészült, a rendszer **Leállítottként**jeleníti meg.</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopping",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopping"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Számlázása</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Leállítva</b></p>
-</td>
-<td>
-<p>A virtuális gép le lett állítva a vendég operációs rendszerből, vagy az erő API-k használatával.</p>
-<p>A hardver továbbra is a virtuális gép számára van lefoglalva, és a gazdagépen marad. </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopped",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopped"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Számlázott&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Felszabadítás</b></p>
-</td>
-<td>
-<p>Átmeneti állapot. Ha elkészült, a virtuális gép fel lesz **töltve.**</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocating",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocating"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Nem számlázott&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Felszabadítva</b></p>
-</td>
-<td>
-<p>A virtuális gép sikeresen leállt, és el lett távolítva a gazdagépről. </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocated",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocated"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Nem számlázott</b></p>
-</td>
-</tr>
-</tbody>
-</table>
+:::row:::
+   :::column span="":::
+
+   **Állapot**
+   
+   :::column-end:::
+   :::column span="":::
+
+   **Leírás**
+
+   :::column-end:::
+   :::column span="":::
+
+   **Példány-használat számlázása**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Indítás**
+
+   :::column-end:::
+   :::column span="":::
+
+   A virtuális gép elindul.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/starting",
+    "level": "Info",
+    "displayStatus": "VM starting"
+    }
+   ]
+   ```
+   :::column-end:::
+   :::column span="":::
+
+   **Nem számlázott**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Futó**
+
+   :::column-end:::
+   :::column span="":::
+
+   Virtuális gép normál működésének állapota
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/running",
+    "level": "Info",
+    "displayStatus": "VM running"
+    }
+  ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Számlázása**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Leállítás**
+
+   :::column-end:::
+   :::column span="":::
+
+   Ez egy átmeneti állapot. Ha elkészült, a rendszer **Leállítottként**jeleníti meg.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopping",
+    "level": "Info",
+    "displayStatus": "VM stopping"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Számlázása**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Leállítva**
+
+   :::column-end:::
+   :::column span="":::
+
+   A virtuális gép le lett állítva a vendég operációs rendszerből, vagy az erő API-k használatával.
+
+   A hardver továbbra is a virtuális gép számára van lefoglalva, és a gazdagépen marad.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopped",
+    "level": "Info",
+    "displayStatus": "VM stopped"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Számlázása***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Felszabadítás**
+
+   :::column-end:::
+   :::column span="":::
+
+   Átmeneti állapot. Ha elkészült, a virtuális gép fel lesz **töltve.**
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocating",
+    "level": "Info",
+    "displayStatus": "VM deallocating"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Nem számlázott***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Felszabadítva**
+
+   :::column-end:::
+   :::column span="":::
+
+   A virtuális gép sikeresen leállt, és el lett távolítva a gazdagépről.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocated",
+    "level": "Info",
+    "displayStatus": "VM deallocated"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Nem számlázott**
+
+   :::column-end:::
+:::row-end:::
 
 
 Bizonyos Azure-erőforrások, például a lemezek és a hálózatkezelés &#42;ért díjat számítunk fel. A példányon lévő szoftverlicenc-licencek nem számítanak fel díjat.
@@ -171,86 +229,159 @@ A kiépítési állapot a felhasználó által kezdeményezett, vezérlő-sík m
 
 Az alábbi átmeneti művelet azt jelzi, hogy a platform elfogadta a felhasználó által kezdeményezett műveletet:
 
-<br>
+:::row:::
+   :::column span="":::
 
-<table>
-<tbody>
-<tr>
-<td width="162">
-<p><b>Állapotok</b></p>
-</td>
-<td width="366">
-<p>Leírás</p>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Létrehozás</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating",<br>
- "level": "Info",<br>
- "displayStatus": "Creating"<br>
- }</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Frissítése</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/updating",<br>
- "level": "Info",<br>
- "displayStatus": "Updating"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Törlés</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/deleting",<br>
- "level": "Info",<br>
- "displayStatus": "Deleting"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>OPERÁCIÓSRENDSZER-kiépítési állapotok</b></p>
-</td>
-<td width="366">
-<p>Ha egy virtuális gépet operációs rendszer rendszerképével hoztak létre, és nem speciális képpel, akkor a következő alállapotok figyelhetők meg:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; A virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. <p /> 
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning In progress"<br>
- }<br>
-]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; Rövid életű állapot. A virtuális gép gyorsan átvált a **sikerre** , kivéve, ha a bővítményeket telepíteni kell. A bővítmények telepítése időt vehet igénybe. <br />
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning Complete"<br>
- }<br>
-]</code><br>
-<p><b>Megjegyzés</b>: az operációs rendszer üzembe helyezése **sikertelen** állapotra vált, ha az operációs rendszer meghibásodása miatt nem sikerül időben telepíteni az operációs rendszert. Az ügyfeleket az infrastruktúrában az üzembe helyezett virtuális gép számlázása alapján számítjuk fel.</p>
-</td>
-</tr>
-</table>
+   **Állapot**
+   
+   :::column-end:::
+   :::column span="2":::
 
+   **Leírás**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Létrehozás**
+
+   :::column-end:::
+   :::column span="2":::
+
+  ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating",
+    "level": "Info",
+    "displayStatus": "Creating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Frissítése**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/updating",
+    "level": "Info",
+    "displayStatus": "Updating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Törlés**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/deleting",
+    "level": "Info",
+    "displayStatus": "Deleting"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OPERÁCIÓSRENDSZER-kiépítési állapotok**
+   
+   :::column-end:::
+   :::column span="2":::
+
+   **Leírás**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+
+
+   :::column-end:::
+   :::column span="2":::
+
+   Ha egy virtuális gépet operációs rendszer rendszerképével hoztak létre, és nem speciális képpel, akkor a következő alállapotok figyelhetők meg:
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningInprogress**
+
+   :::column-end:::
+   :::column span="2":::
+
+   A virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van.
+ 
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningInprogress",
+    "level": "Info",
+    "displayStatus": "OS Provisioning In progress"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningComplete**
+
+   :::column-end:::
+   :::column span="2":::
+   
+   Rövid életű állapot. A virtuális gép gyorsan átvált a **sikerre** , kivéve, ha a bővítményeket telepíteni kell. A bővítmények telepítése időt vehet igénybe.
+   
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningComplete",
+    "level": "Info",
+    "displayStatus": "OS Provisioning Complete"
+    }
+   [
+   ```
+   
+   **Megjegyzés**: az operációs rendszer üzembe helyezése **sikertelen** állapotra vált, ha az operációs rendszer meghibásodása miatt nem sikerül időben telepíteni az operációs rendszert. Az ügyfeleket az infrastruktúrában az üzembe helyezett virtuális gép számlázása alapján számítjuk fel.
+
+   :::column-end:::
+
+:::row-end:::
 
 A művelet befejezését követően a virtuális gép a következő állapotok egyikére vált:
 
@@ -293,6 +424,6 @@ Az Azure Resources Explorer egyszerű KEZELŐFELÜLETet biztosít a virtuális g
 
 A kiépítési állapotok a virtuális gép tulajdonságai és a példány nézetében láthatók. A Power állapotok a virtuális gép példány nézetében érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuális gép figyeléséről: [Virtual Machines in Azure (virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)).

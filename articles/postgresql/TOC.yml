@@ -169,14 +169,16 @@
               href: howto-move-regions-portal.md
     - name: Rugalmas skálázás (Citus)
       items:
-        - name: Csomópontok
-          href: concepts-hyperscale-nodes.md
         - name: Elosztott adatok
-          href: concepts-hyperscale-distributed-data.md
-        - name: Elosztási oszlop kiválasztása
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: Tábla közös elhelyezése
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: Csomópontok és táblák
+              href: concepts-hyperscale-nodes.md
+            - name: Alkalmazás típusának meghatározása
+              href: concepts-hyperscale-app-type.md
+            - name: Elosztási oszlop kiválasztása
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: Tábla közös elhelyezése
+              href: concepts-hyperscale-colocation.md
         - name: Adathozzáférés és -biztonság
           items:
             - name: Tűzfalszabályok
@@ -341,12 +343,16 @@
       items:
         - name: Felhasználók létrehozása
           href: howto-hyperscale-create-users.md
-        - name: Méretezés
+        - name: Kiszolgálócsoport mérete
           href: howto-hyperscale-scaling.md
         - name: Tűzfal kezelése
           items:
             - name: Azure Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Elosztott adatok
+          items:
+            - name: Táblák elosztása és módosítása
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: Magas rendelkezésre állás
           href: howto-hyperscale-high-availability.md
         - name: Figyelés
@@ -361,12 +367,22 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Referencia
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager-sablon
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Egyetlen kiszolgáló
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: Resource Manager-sablon
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Rugalmas skálázás (Citus)
+      items:
+        - name: SQL API-függvények
+          href: reference-hyperscale-functions.md
+        - name: Kiszolgálóparaméterek
+          href: reference-hyperscale-parameters.md
+        - name: Rendszertáblák
+          href: reference-hyperscale-metadata.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

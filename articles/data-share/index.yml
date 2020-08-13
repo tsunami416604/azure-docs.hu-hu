@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
-  ms.date: 09/13/2019
-  ms.openlocfilehash: 66350050a84617b789c6a73c38170dc25dad331d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/11/2020
+  ms.openlocfilehash: 43de19b3caa87bf410ad30a237c2c9e91beba63f
+  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73802903"
+  ms.lasthandoff: 08/12/2020
+  ms.locfileid: "88136371"
 landingContent:
 - title: Tudnivalók az Azure Data Share-ről
   linkLists:
@@ -24,13 +24,17 @@ landingContent:
     links:
     - text: Mi az az Azure Data Share?
       url: overview.md
+    - text: Támogatott adattárak
+      url: supported-data-stores.md
   - linkListType: concept
     links:
-    - text: Az Azure Data Share alapelvei
+    - text: Az Azure Data Share terminológiája
       url: terminology.md
     - text: Az Azure Data Share szerepkörei és követelményei
       url: concepts-roles-permissions.md
-- title: Adatok megosztása
+    - text: A díjszabás ismertetése
+      url: concepts-pricing.md
+- title: Adatok megosztása és fogadása
   linkLists:
   - linkListType: tutorial
     links:
@@ -40,21 +44,25 @@ landingContent:
       url: subscribe-to-data-share.md
   - linkListType: how-to-guide
     links:
-    - text: Adathalmaz-leképezések konfigurálása
-      url: how-to-configure-mapping.md
     - text: Adathalmazok hozzáadása
       url: how-to-add-datasets.md
+    - text: Adathalmaz-leképezések konfigurálása
+      url: how-to-configure-mapping.md
 - title: Monitorozás és kezelés
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Az Azure Data Share monitorozása
+    - text: A megosztás monitorozása
       url: how-to-monitor.md
     - text: Gyakori problémák megoldása
       url: data-share-troubleshoot.md
-    - text: Adathalmazok hozzáadása
-      url: how-to-add-datasets.md
+    - text: Címzettek hozzáadása
+      url: how-to-add-recipients.md
     - text: Meghívó törlése
       url: how-to-delete-invitation.md
     - text: Megosztási előfizetés visszavonása
       url: how-to-revoke-share-subscription.md
+    - text: Az Azure Data Share biztonsági áttekintése
+      url: security.md
+    - text: Vészhelyreállítás
+      url: disaster-recovery.md

@@ -1,19 +1,19 @@
 ---
 title: A .NET SDK használata Microsoft Azure StorSimple Data Manager feladatokhoz
-description: Megtudhatja, hogyan indíthat el StorSimple Data Manager feladatokat a .NET SDK használatával
+description: Megtudhatja, hogyan használhatja a .NET SDK-t a StorSimple Data Manager szolgáltatáson belül a StorSimple-eszközökre vonatkozó adatátalakításhoz.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514891"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183648"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Az adatátalakítás kezdeményezése a .NET SDK használatával
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>A .NET SDK használata adatátalakítás kezdeményezéséhez
 
 ## <a name="overview"></a>Áttekintés
 
@@ -192,6 +192,6 @@ Az alábbi lépések végrehajtásával indítson el egy adat-átalakítási fel
 
     ![Teljes kódrészlet a .NET-feladatok elindításához](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az adatátalakításhoz használja StorSimple Data Manager felhasználói felületét](storsimple-data-manager-ui.md).
