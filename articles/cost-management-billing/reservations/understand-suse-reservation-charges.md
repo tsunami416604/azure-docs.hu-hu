@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/06/2020
 ms.author: banders
-ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8e4c4188b0a3b862715a2e4eec2f31dd3f55ac9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200231"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902065"
 ---
 # <a name="azure-software-plan-discount"></a>Azure-szoftvercsomag-kedvezmények
 
@@ -98,32 +98,6 @@ Azure Portal Marketplace-en szereplő nevek:
 |SLES for SAP Priority, 3–4 virtuális processzor |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
 |SLES for SAP Priority, 5 vagy több virtuális processzor |18ae79cd-dfce-48c9-897b-ebd3053c6058|2,41176|D8s_v3|
 
-### <a name="suse-linux-enterprise-server-priority"></a>SUSE Linux Enterprise Server Priority
-
-Azure Portal Marketplace-en szereplő nevek:
-
-- SLES 15 (PRIORITY)
-- SLES 12 SP3 (Priority)
-- SLES 11 SP4 (Priority)
-
-|SUSE rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
-| ------- |------------------------| --- |--- |
-|SLES, 1 virtuális processzor|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
-|SLES, 2–4 virtuális processzor |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
-|SLES, 2–4 virtuális processzor |60b3ae9d-e77a-46b2-9cdf-92fa87407969|2|D4s_v3|
-|SLES, 6 virtuális processzor |e8862232-6131-4dbe-bde4-e2ae383afc6f|3||
-|SLES, 8 virtuális processzor |e11331a8-fd32-4e71-b60e-4de2a818c67a|3,2|D8s_v3|
-|SLES, 12 magos virtuális processzor |a5afd00d-d3ef-4bcd-8b42-f158b2799782|3,2||
-|SLES, 16 virtuális processzor |bb21066f-fe46-46d3-8006-b326b1663e52|3,2| D16s_v3|
-|SLES, 20 virtuális processzor |c5228804-1de6-4bd4-a61c-501d9003acc8|3,2| |
-|SLES, 24 magos virtuális processzor |-005d-4075-ac11-822ccde9e8f6|3,2| ND24s|
-|SLES, 32 virtuális processzor |180c1a0a-b0a5-4de3-a032-f92925a4bf90|3,2| D32s_v3|
-|SLES, 40 magos virtuális processzor |a161d3d3-0592-4956-9b64-6829678b6506|3,2||
-|SLES, 64 virtuális processzor |7f5a36ed-d5b5-4732-b6bb-837dbf0fb9d8|3,2| D64s_v3|
-|SLES, 72 magos virtuális processzor |93329a72-24d7-4faa-93d9-203f367ed334|3,2|F72s_v2|
-|SLES, 96 magos virtuális processzor |2018c3a8-ff13-41f8-b64d-9558c5206547|3,2||
-|SLES, 128 magos virtuális processzor |ac27e4d7-44b5-4fee-bc1a-78ac5b4abaf7|3,2| M128ms|
-
 ### <a name="suse-linux-enterprise-server-standard"></a>SUSE Linux Enterprise Server Standard
 
 Azure Portal Marketplace-en szereplő nevek:
@@ -142,7 +116,7 @@ Azure Portal Marketplace-en szereplő nevek:
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A foglalással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
