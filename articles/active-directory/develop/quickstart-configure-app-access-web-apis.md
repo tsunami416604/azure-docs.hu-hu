@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120864"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140802"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
@@ -148,7 +148,7 @@ Ha hitelesítő adatokat szeretne felvenni a webalkalmazásba, adjon hozzá egy 
 
 ## <a name="add-permissions-to-access-web-apis"></a>Webes API-k elérésére vonatkozó engedélyek hozzáadása
 
-Alapértelmezés szerint a [Graph API bejelentkezés és a felhasználói profil olvasása engedély](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) van kiválasztva. Az egyes webes API-k esetében [két típusú engedély](developer-glossary.md#permissions) közül választhat:
+Alapértelmezés szerint a [Graph API bejelentkezés és a felhasználói profil olvasása engedély](/graph/permissions-reference#user-permissions) van kiválasztva. Az egyes webes API-k esetében [két típusú engedély](developer-glossary.md#permissions) közül választhat:
 
 * **Alkalmazás engedélyei**. Az ügyfélalkalmazás a webes API-t közvetlenül saját maga, felhasználói környezet nélkül kell elérnie. Az ilyen típusú engedélyekhez rendszergazdai hozzájárulás szükséges. Ez az engedély asztali és mobil ügyfélalkalmazások esetén nem érhető el.
 * **Delegált engedélyek**. Az ügyfélalkalmazás a webes API-t a bejelentkezett felhasználóként kell elérnie, de a hozzáférést a kiválasztott engedély korlátozza. Az ilyen típusú engedély megadható a felhasználó által, hacsak nem igényel rendszergazdai hozzájárulást.
@@ -198,7 +198,7 @@ A beleegyezés kérése lehetőséget biztosít az **elfogadás** vagy a **Vissz
 > [!NOTE]
 > A rendszergazdai jóváhagyás megadása a jóváhagyás megadásával, valamint a portálon megjelenő rendszergazdai jóváhagyás állapotával **kapcsolatos késleltetés** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő rövid útmutatóval, amelyből megtudhatja, hogyan konfigurálhatja, hogy mely fióktípus férhet hozzá az alkalmazáshoz. Előfordulhat például, hogy korlátozni szeretné a hozzáférést csak a szervezetben lévő felhasználókra (egybérlős), vagy más Azure AD-bérlők (több-bérlős) és személyes Microsoft-fiókkal (MSA) rendelkező felhasználók számára.
 

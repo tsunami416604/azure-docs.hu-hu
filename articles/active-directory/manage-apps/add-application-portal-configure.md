@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808405"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135487"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -48,37 +48,24 @@ Az alkalmazás tulajdonságainak szerkesztése:
     - **Engedélyezve van a felhasználók számára a bejelentkezés?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz hozzárendelt felhasználók.
     - **Felhasználói hozzárendelés szükséges?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz nem rendelt felhasználók.
     - **Látható a felhasználók számára?** meghatározza, hogy az alkalmazáshoz rendelt felhasználók láthatják-e a [hozzáférési panelen](https://myapps.microsoft.com) és az Office 365 app launcherben. (Lásd az Office 365 vagy Microsoft 365 webhely bal felső sarkában található Waffle menüt.)
-4. Az alábbi táblázatok segítségével kiválaszthatja az igényeinek legmegfelelőbb beállításokat.
+    
+    > [!TIP]
+    > A felhasználók kiosztása a navigáció **felhasználók és csoportok** szakaszában történik.
 
-   - Működés *hozzárendelt* felhasználók esetében:
+    A három lehetőség egymástól függetlenül válthatók, és az eredményül kapott viselkedés nem mindig nyilvánvaló. Itt látható egy táblázat, amely segítségére lehet:
+    
+    | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Az alkalmazáshoz rendelt vagy nem használt felhasználók viselkedése. |
+    |---|---|---|---|
+    | Igen | Igen | Igen | A hozzárendelt felhasználók láthatják az alkalmazást, és bejelentkezhetnek.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Igen | Igen | Nem  | A hozzárendelt felhasználások nem látják az alkalmazást, de be tudnak jelentkezni.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Igen | Nem  | Igen | A hozzárendelt felhasználók láthatják az alkalmazást, és bejelentkezhetnek.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, de jelentkezhetnek be. |
+    | Igen | Nem  | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, de be tudnak jelentkezni.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, de jelentkezhetnek be. |
+    | Nem  | Igen | Igen | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Nem  | Igen | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Nem  | Nem  | Igen | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Nem  | Nem  | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
 
-       | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Felhasználói élmény – hozzárendelt felhasználók | Felhasználói élmény – hozzárendelt felhasználók |
-       |---|---|---|---|---|
-       | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a hozzárendelt felhasználók? | Látható az alkalmazás a hozzárendelt felhasználók számára?* |
-       | Igen | Igen | Igen | Igen | Igen  |
-       | Igen | Igen | Nem  | Igen | Nem   |
-       | Igen | Nem  | Igen | Igen | Igen  |
-       | Igen | Nem  | Nem  | Igen | Nem   |
-       | Nem  | Igen | Igen | Nem  | Nem   |
-       | Nem  | Igen | Nem  | Nem  | Nem   |
-       | Nem  | Nem  | Igen | Nem  | Nem   |
-       | Nem  | Nem  | Nem  | Nem  | Nem   |
-
-   - Működés *nem hozzárendelt* felhasználók esetében:
-
-       | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Felhasználói élmény – nem hozzárendelt felhasználók | Felhasználói élmény – nem hozzárendelt felhasználók |
-       |---|---|---|---|---|
-       | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
-       | Igen | Igen | Igen | Nem  | Nem   |
-       | Igen | Igen | Nem  | Nem  | Nem   |
-       | Igen | Nem  | Igen | Igen | Nem   |
-       | Igen | Nem  | Nem  | Igen | Nem   |
-       | Nem  | Igen | Igen | Nem  | Nem   |
-       | Nem  | Igen | Nem  | Nem  | Nem   |
-       | Nem  | Nem  | Igen | Nem  | Nem   |
-       | Nem  | Nem  | Nem  | Nem  | Nem   |
-
-     *Látható az alkalmazás a felhasználó számára a hozzáférési panelen és az Office 365 alkalmazás indítójában?
+4. Ha elkészült, válassza a **Mentés**lehetőséget.
 
 ## <a name="use-a-custom-logo"></a>Egyéni embléma használata
 
@@ -102,7 +89,7 @@ Egyéni embléma használata:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
+Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő törléséhez. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e1076c7bb480a52c9436e336a49169953d0d8285
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206100"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135770"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 
@@ -78,9 +78,9 @@ Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét
 Ha a szerepkört az Azure CLI használatával szeretné hozzárendelni, használja a következő parancsokat:
 
 ```azurecli-interactive
-$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+scope=$(az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id)
 
-$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId)
 
 az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
 ```
@@ -212,7 +212,7 @@ namespace Monitor
 
 Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/functions-create-first-function-vs-code.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tanúsítványalapú hitelesítés Azure Cosmos DB és Azure Active Directory](certificate-based-authentication.md)
 * [Azure Cosmos DB kulcsok védelme Azure Key Vault használatával](access-secrets-from-keyvault.md)

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5f0d66a515ed13f96645e5916af2b01841950375
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846598"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135742"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
 
@@ -49,6 +49,9 @@ ms.locfileid: "87846598"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 – buildek
+
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* A rendszer hozzáadta a címbérlet-tárolót a [v3 SDK](sql-api-sdk-dotnet-standard.md) -val, amely lehetővé teszi a gyors áttelepítési Az alkalmazások áttelepíthetők a v3 SDK-ba, és visszatérhetnek a módosítási hírcsatorna-feldolgozó tárba anélkül, hogy bármilyen állapotot elveszítenék.
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
 * Kijavítva egy esetet `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` , ha a Bezárás oka `FeedProcessing.IChangeFeedObserver.CloseAsync` nem található, vagy ha a cél replika nem naprakész az olvasási munkamenettel. Ezekben az esetekben `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` és a `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` Bezárás oka már használatban van.
@@ -193,6 +196,7 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |Augusztus 11., 2020 |--- |
 | [2.3.1](#2.3.1) |Július 30., 2020 |--- |
 | [2.3.0](#2.3.0) |2020. április 2. |--- |
 | [2.2.8](#2.2.8) |Október 28., 2019 |--- |
@@ -215,6 +219,6 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

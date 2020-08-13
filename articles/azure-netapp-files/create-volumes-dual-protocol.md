@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 8/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 61e8c56e75e82bc28ddb2abf231d9a5e919691b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535393"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134581"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -36,6 +36,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMBv3 vagy 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
 * Győződjön meg arról, hogy megfelel a [Active Directory kapcsolatok követelményeinek](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot a névkeresési zónában található AD-gazdagéphez. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
 * Győződjön meg arról, hogy az NFS-ügyfél naprakész, és futtatja az operációs rendszer legújabb frissítéseit.
 
 ## <a name="create-a-dual-protocol-volume"></a>Kettős protokollú kötet létrehozása
@@ -135,7 +136,7 @@ Az Active Directory felhasználók és számítógépek MMC beépülő modullal 
 
 Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) című témakör útmutatását.  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Dual-Protocol – gyakori kérdések](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) 
+* [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md) 

@@ -1,22 +1,22 @@
 ---
-title: Hitelesítés az Azure felügyelt identitások használatával
+title: Felügyelt identitások használata az alkalmazások konfigurációjának eléréséhez
 titleSuffix: Azure App Configuration
-description: Hitelesítés az Azure-alkalmazások konfigurációjában az Azure által felügyelt identitások használatával
+description: Hitelesítés az Azure-alkalmazások konfigurációjában a felügyelt identitások használatával
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056843"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135470"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integrálás az Azure felügyelt identitásokkal
+# <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az alkalmazások konfigurációjának eléréséhez
 
-Azure Active Directory [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) egyszerűbbé teszik a Felhőbeli alkalmazások titkok kezelését. Felügyelt identitás esetén a kód a szolgáltatásban futtatott Azure-szolgáltatáshoz létrehozott egyszerű szolgáltatásnevet is használhatja. A felügyelt identitást nem külön hitelesítő adat, hanem Azure Key Vault vagy helyi kapcsolatok karakterlánca tárolja. 
+Azure Active Directory [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) egyszerűbbé teszik a Felhőbeli alkalmazások titkok kezelését. Felügyelt identitás esetén a kód a szolgáltatásban futtatott Azure-szolgáltatáshoz létrehozott egyszerű szolgáltatásnevet is használhatja. A felügyelt identitást nem külön hitelesítő adat, hanem Azure Key Vault vagy helyi kapcsolatok karakterlánca tárolja.
 
 Az Azure app Configuration és a .NET Core, a .NET Framework és a Java Spring-ügyfél kódtárai felügyelt identitás-támogatással rendelkeznek. Habár nem szükséges a használatához, a felügyelt identitás szükségtelenné teszi a titkos kulcsokat tartalmazó hozzáférési token használatát. A kód csak a szolgáltatási végpont használatával férhet hozzá az alkalmazás konfigurációs tárolójához. Ezt az URL-címet közvetlenül a kódban ágyazhatja be, és nem teheti közzé a titkos kódot.
 
@@ -84,7 +84,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Keresse meg az alkalmazás konfigurációs tárolójához tartozó végpontot. Ez az URL-cím a Azure Portal tárolójának **hozzáférési kulcsok** lapján jelenik meg.
 
-1. Nyissa meg *appsettings.jsa on*, és adja hozzá a következő szkriptet. Cserélje le *\<service_endpoint>* , beleértve a zárójeleket is, az alkalmazás konfigurációs tárolójának URL-címével. 
+1. Nyissa meg *appsettings.jsa on*, és adja hozzá a következő szkriptet. Cserélje le *\<service_endpoint>* , beleértve a zárójeleket is, az alkalmazás konfigurációs tárolójának URL-címével.
 
     ```json
     "AppConfig": {
@@ -183,6 +183,9 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
     Mostantól ugyanúgy érheti el Key Vault hivatkozásokat, mint bármely más alkalmazás-konfigurációs kulcshoz. A konfigurációs szolgáltató a `KeyVaultClient` hitelesítést úgy konfigurálta, hogy Key Vault és beolvassa az értéket.
 
+> [!NOTE]
+> `ManagedIdentityCredential`csak a felügyelt identitások hitelesítését támogatja. Helyi környezetekben nem működik. Ha helyileg szeretné futtatni a kódot, érdemes lehet a `DefaultAzureCredential` szolgáltatást használni, amely támogatja a szolgáltatás egyszerű hitelesítését is. A részletekért olvassa el a [hivatkozást](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) .
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>Üzembe helyezés a helyi Gitből
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Felügyelt identitás használata más nyelveken
 
-A .NET-keretrendszer és a Java Spring alkalmazás-konfigurációs szolgáltatói beépített támogatást is biztosítanak a felügyelt identitásokhoz. Az áruház URL-végpontját a teljes kapcsolati karakterlánca helyett használhatja a szolgáltatók egyikének konfigurálásakor. 
+A .NET-keretrendszer és a Java Spring alkalmazás-konfigurációs szolgáltatói beépített támogatást is biztosítanak a felügyelt identitásokhoz. Az áruház URL-végpontját a teljes kapcsolati karakterlánca helyett használhatja a szolgáltatók egyikének konfigurálásakor.
 
 Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer konzol alkalmazást a következő beállítások megadásához a *App.config* fájlban:
 
@@ -264,11 +267,11 @@ Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer kon
     </appSettings>
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy Azure által felügyelt identitást adott hozzá, amellyel egyszerűbbé válik az alkalmazások konfigurációjának elérése, és javítható a hitelesítő adatok kezelése az alkalmazásban. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]

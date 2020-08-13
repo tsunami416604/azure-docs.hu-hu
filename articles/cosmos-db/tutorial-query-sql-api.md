@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921118"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135997"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
 
@@ -113,7 +113,7 @@ A fenti minta családi dokumentum miatt a következő SQL-lekérdezés azokat a 
 
 ## <a name="example-query-2"></a>2. példalekérdezés
 
-A következő lekérdezés az összes olyan gyermek nevét adja vissza a családban, amelynek AZONOSÍTÓjának egyezését a `WakefieldFamily` besorolásuk szerint rendezi.
+A következő lekérdezés a családban található azon gyermekek nevét adja vissza, amelyek AZONOSÍTÓjának egyeznie kell `WakefieldFamily` .
 
 **Lekérdezés**
 
@@ -138,7 +138,7 @@ A következő lekérdezés az összes olyan gyermek nevét adja vissza a család
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

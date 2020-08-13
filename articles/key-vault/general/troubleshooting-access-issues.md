@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.openlocfilehash: e52fe8e738f2a35204078b27019ea3742c608560
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f775a0e1dcb82afc9a458ce4ee608a52ec06dc4c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122171"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135912"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -36,6 +36,9 @@ Ha helyszíni alkalmazást hoz létre, helyi fejlesztést végez, vagy más mód
 Adja meg az AD-csoport engedélyeit a kulcstartónak az Azure CLI az Key Vault set-Policy parancs vagy a Azure PowerShell set-AzKeyVaultAccessPolicy parancsmag használatával. Példaként tekintse át [az alkalmazás, az Azure ad-csoport vagy a Key Vault felhasználói hozzáférése lehetőséget](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps#give-the-principal-access-to-your-key-vault).
 
 Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt identitás-és hozzáférés-kezelési (IAM) szerepkörre is. Ellenkező esetben nem fog tudni bejelentkezni, és nem lesz megfelelő jogosultsága az előfizetéshez való hozzáféréshez. A felügyelt identitásokkal rendelkező Azure AD-csoportok a token frissítéséhez és a 8hr szükségesek lehetnek.
+
+### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Hogyan telepíthetem újra Key Vault az ARM-sablonnal a meglévő hozzáférési szabályzatok törlése nélkül?
+Jelenleg Key Vault ARM-redopleyment törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A hozzáférési szabályzatok megőrzéséhez Key Vault a meglévő hozzáférési szabályzatokat Key Vault és az ARM-sablon feltöltésével kell kitöltenie az adott házirendekkel, hogy elkerülje a hozzáférés kimaradását.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>A következő típusú hibák ajánlott hibaelhárítási lépései
 * HTTP 401: nem hitelesített kérelem – [hibaelhárítási lépések](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes#http-401-unauthenticated-request)

@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás a CloudSimple által – CloudSimple szolgáltatás létrehozása
-description: Útmutató a CloudSimple szolgáltatás létrehozásához a Azure Portal
+description: Ismerje meg, hogyan hozhatja létre a CloudSimple szolgáltatást a Azure Portalban. Mielőtt elkezdené, tekintse át a szükséges konfigurációt.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024823"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140547"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Az Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
 
@@ -45,7 +45,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Létrejön a szolgáltatás, és hozzá lesz adva a szolgáltatások listájához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [csomópontok](create-nodes.md) kiépítéséről
 * Megtudhatja, hogyan [hozhat létre saját felhőt](create-private-cloud.md)

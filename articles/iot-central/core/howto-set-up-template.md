@@ -7,13 +7,13 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: contperfq1
+ms.openlocfilehash: a75fbeb9a12f61f827411e56c57ff6a4460ab083
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041595"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136269"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -168,7 +168,7 @@ A következő táblázat a parancs funkciójának konfigurációs beállításai
 | Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
 | Leírás | A parancs funkciójának leírása. |
 | Kérés | Ha engedélyezve van, a kérelem paraméterének definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
-| Válasz | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
+| Reagálás | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 
 ## <a name="manage-an-interface"></a>Illesztőfelület kezelése
 
@@ -257,6 +257,6 @@ Az eszköz közzétételéhez nyissa meg az eszköz sablonját, és válassza a 
 
 Miután közzétett egy sablont, az operátor megkeresheti az **eszközök** lapot, és hozzáadhat akár valódi, akár szimulált eszközöket, amelyek az eszköz sablonját használják. A módosítások végrehajtása során továbbra is módosíthatja és mentheti az eszköz sablonját. Ha ezeket a módosításokat a kezelőben a **Devices (eszközök** ) lapon szeretné megtekinteni, ki kell választania a **közzétételi** időt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, javasolt következő lépésként olvassa el az [eszköz sablon verziószámozását](./howto-version-device-template.md)ismertető témakört.

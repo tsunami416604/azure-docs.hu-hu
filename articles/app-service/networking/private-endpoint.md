@@ -4,17 +4,17 @@ description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoi
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068301"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135385"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
@@ -122,12 +122,14 @@ Az előzetes verzió ideje alatt a rendszer csak az üzemi tárolóhelyet teszi 
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha privát végpontot szeretne telepíteni a webalkalmazáshoz a portálon keresztül, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás a portálon][howtoguide1] című témakört.
 - Ha privát végpontot szeretne üzembe helyezni a webalkalmazáshoz az Azure CLI használatával, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás az Azure CLI-vel][howtoguide2] című témakört.
 - Privát végpont üzembe helyezése a webalkalmazáshoz a PowerShell használatával: [webalkalmazáshoz való privát kapcsolódás a PowerShell][howtoguide3] -lel
 - Privát végpont üzembe helyezése a webalkalmazáshoz az Azure-sablonnal: [hogyan csatlakozhat egy webalkalmazáshoz az Azure template][howtoguide4] használatával.
+- Végpontok közötti példa: előtér-webalkalmazások biztonságos háttér-webalkalmazáshoz való összekötése VNet-befecskendezéssel és saját végponttal [az ARM][howtoguide5] sablonnal
+- Végpontok közötti példa: előtér-webalkalmazások biztonságos háttér-webalkalmazáshoz való összekötése VNet-befecskendezéssel és privát végponttal a Terraform-vel – lásd ez a [minta][howtoguide6]
 
 
 <!--Links-->
@@ -144,3 +146,5 @@ Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
 [howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

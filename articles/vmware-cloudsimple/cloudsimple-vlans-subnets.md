@@ -1,6 +1,6 @@
 ---
 title: VLAN-ok és alhálózatok az Azure VMware megoldásban a CloudSimple
-description: További tudnivalók a CloudSimple privát felhőben található VLAN-okra és alhálózatokról
+description: Ismerje meg a CloudSimple-beli VLAN-okat és alhálózatokat, valamint azt a hálózatot, amelyet a CloudSimple biztosít a CloudSimple szolgáltatás üzembe helyezéséhez.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3235b394f739e8af846f30dfe51705d0926c843
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024891"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140666"
 ---
 # <a name="vlans-and-subnets-overview"></a>VLAN-ok és alhálózatok áttekintése
 
@@ -80,6 +80,6 @@ Példa:
 | NSX – T Edge-Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
 | NSX – T Edge-uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Virtuális helyi hálózatok és alhálózatok létrehozása és kezelése](create-vlan-subnet.md)

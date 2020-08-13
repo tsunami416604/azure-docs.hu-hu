@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás CloudSimple-alapú VPN-átjárók használatával
-description: Tudnivalók a helyek közötti VPN-és pont – hely VPN-fogalmak CloudSimple
+description: Ismerje meg a helyek közötti és pont – hely típusú VPN-átjárók CloudSimple, amelyek a CloudSimple-régió és más erőforrások közötti titkosított forgalom küldésére szolgálnak.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024857"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140632"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók – áttekintés
 
@@ -60,7 +60,7 @@ A helyek közötti VPN-kapcsolat a következő alapértelmezett titkosítási pa
 |-----------|------------|------------|------------|
 | Titkosítás | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | None | None | None |
+| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | Nincsenek | Nincsenek | Nincsenek |
 | Üzemidő | 1 800 másodperc | 1 800 másodperc | 1 800 másodperc |
 | Adatméret | 4 GB | 4 GB | 4 GB |
 
@@ -72,6 +72,6 @@ A helyek közötti VPN-kapcsolat a következő alapértelmezett titkosítási pa
 
 A pont – hely típusú VPN a CloudSimple-régió hálózata és az ügyfélszámítógép közötti titkosított forgalom elküldésére szolgál.  A saját felhőalapú hálózatának, például a saját felhőalapú vCenter és a számítási feladatok virtuális gépei elérésének legegyszerűbb módja a pont – hely VPN.  Pont – hely típusú VPN-kapcsolat használata, ha távolról csatlakozik a privát felhőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VPN-átjáró beállítása](vpn-gateway.md)

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799956"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135436"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
@@ -41,34 +41,24 @@ Az alábbi videó végigvezeti az útválasztási platform naplófájljainak a d
 
 
 ## <a name="destinations"></a>Célhelyek
-
-A platform naplói és metrikái a következő táblázatban található célhelyekre küldhetők. Az alábbi táblázatban szereplő hivatkozásokra kattintva megtekintheti az adatok erre a célra történő küldésének részleteit.
+A platform naplói és metrikái a következő táblázatban található célhelyekre küldhetők. 
 
 | Cél | Leírás |
 |:---|:---|
-| [Log Analytics munkaterület](#log-analytics-workspace) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
-| [Event Hubs](#event-hub) | A naplók és metrikák küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra. |
-| [Azure Storage-fiók](#azure-storage) | A naplók és mérőszámok Azure Storage-fiókba való archiválása hasznos lehet a naplózás, a statikus elemzés vagy a biztonsági mentés során. Azure Monitor naplókhoz és egy Log Analytics munkaterülethez képest az Azure Storage kevésbé költséges, és a naplók határozatlan ideig tarthatók. |
+| [Log Analytics munkaterület](design-logs-deployment.md) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
+| [Event Hubs](/azure/event-hubs/) | A naplók és metrikák küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.  |
+| [Azure Storage-fiók](/azure/storage/blobs/) | A naplók és mérőszámok Azure Storage-fiókba való archiválása hasznos lehet a naplózás, a statikus elemzés vagy a biztonsági mentés során. Azure Monitor naplókhoz és egy Log Analytics munkaterülethez képest az Azure Storage kevésbé költséges, és a naplók határozatlan ideig tarthatók.  |
 
 
-## <a name="prerequisites"></a>Előfeltételek
-A diagnosztikai beállításhoz tartozó célhelyeket a szükséges engedélyekkel kell létrehozni. Az egyes célállomásokra vonatkozó előfeltételekre vonatkozó követelmények az alábbi részekben találhatók.
+### <a name="destination-requirements"></a>Célhelyre vonatkozó követelmények
 
-### <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
-[Hozzon létre egy új munkaterületet](../learn/quick-create-workspace.md) , ha még nem rendelkezik ilyennel. A munkaterületnek nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
+A diagnosztikai beállítások létrehozása előtt létre kell hozni a diagnosztikai beállítás célhelyeit. A célhelynek nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik. Az alábbi táblázat az egyes rendeltetési helyekre vonatkozó egyedi követelményeket tartalmazza, beleértve a regionális korlátozásokat is.
 
-### <a name="event-hub"></a>Eseményközpont
-[Hozzon létre egy Event hub](../../event-hubs/event-hubs-create.md) -t, ha még nem rendelkezik ilyennel. A Event Hubs névtérnek nem kell ugyanabban az előfizetésben lennie, mint a naplókat kibocsátó előfizetésnek, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik, és mindkét előfizetés ugyanahhoz a bérlőhöz tartozik.
-
-A névtérhez tartozó megosztott hozzáférési házirend határozza meg az adatfolyam-mechanizmushoz tartozó engedélyeket. A Event Hubs való folyamatos átvitelhez a kezelés, a Küldés és a figyelés engedélyek szükségesek. A megosztott hozzáférési szabályzatokat a Event Hubs névtér configure (Konfigurálás) lapján lehet létrehozni vagy módosítani a Azure Portal. Ha szeretné frissíteni a diagnosztikai beállítást, hogy a folyamatos átvitelt is tartalmazza, rendelkeznie kell a ListKey engedéllyel az adott Event Hubs engedélyezési szabályhoz. 
-
-
-### <a name="azure-storage"></a>Azure Storage tárterület
-Ha még nem rendelkezik [Azure Storage-fiókkal, hozzon létre](../../storage/common/storage-account-create.md) egyet. A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
-
-Ne használjon olyan meglévő Storage-fiókot, amely más, nem monitorozási adattárolási információkkal rendelkezik, így jobban szabályozhatja az adathozzáférést. Ha a tevékenység naplóját és az erőforrás-naplókat együtt archiválja, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adattal egy központi helyen maradjon.
-
-Ha nem módosítható tárolóba szeretné elküldeni az adattárolást, állítsa be a Storage-fiók megváltoztathatatlan házirendjét a [blob Storage módosíthatatlansági szabályzatok beállítása és kezelése](../../storage/blobs/storage-blob-immutability-policies-manage.md)című témakörben leírtak szerint. A cikkben ismertetett lépéseket kell követnie, beleértve a védett hozzáfűzési Blobok írásának engedélyezését is.
+| Cél | Követelmények |
+|:---|:---|
+| Log Analytics-munkaterület | A munkaterületnek nem kell ugyanabban a régióban lennie, mint a figyelt erőforrás.|
+| Event Hubs | A névtérhez tartozó megosztott hozzáférési házirend határozza meg az adatfolyam-mechanizmushoz tartozó engedélyeket. A Event Hubs való folyamatos átvitelhez a kezelés, a Küldés és a figyelés engedélyek szükségesek. Ha szeretné frissíteni a diagnosztikai beállítást, hogy a folyamatos átvitelt is tartalmazza, rendelkeznie kell a ListKey engedéllyel az adott Event Hubs engedélyezési szabályhoz.<br><br>Az Event hub-névtérnek ugyanabban a régióban kell lennie, mint a figyelt erőforrás, ha az erőforrás regionális. |
+| Azure Storage-fiók | Ne használjon olyan meglévő Storage-fiókot, amely más, nem monitorozási adattárolási információkkal rendelkezik, így jobban szabályozhatja az adathozzáférést. Ha a tevékenység naplóját és az erőforrás-naplókat együtt archiválja, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adattal egy központi helyen maradjon.<br><br>Ha nem módosítható tárolóba szeretné elküldeni az adattárolást, állítsa be a Storage-fiók megváltoztathatatlan házirendjét a [blob Storage módosíthatatlansági szabályzatok beállítása és kezelése](../../storage/blobs/storage-blob-immutability-policies-manage.md)című témakörben leírtak szerint. A cikkben ismertetett lépéseket kell követnie, beleértve a védett hozzáfűzési Blobok írásának engedélyezését is.<br><br>A Storage-fióknak ugyanabban a régióban kell lennie, mint a figyelt erőforrás, ha az erőforrás regionális. |
 
 > [!NOTE]
 > Az Azure Data Lake Storage Gen2-fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelyeként, még akkor sem, ha az Azure Portalon esetleg érvényes lehetőségként vannak felsorolva.

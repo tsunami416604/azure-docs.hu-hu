@@ -1,23 +1,23 @@
 ---
-title: Azure Portal – az importálási/exportálási hozzáférés korlátozása privát hivatkozásokkal rendelkező felügyelt lemezekhez (előzetes verzió)
-description: Engedélyezze a felügyelt lemezekhez Azure Portal a privát hivatkozásokat (előzetes verzió). Lehetővé teszi, hogy biztonságosan exportálja és importálja a lemezeket csak a virtuális hálózaton belül.
+title: Azure Portal – a felügyelt lemezekre vonatkozó importálási/exportálási hozzáférés korlátozása privát hivatkozásokkal
+description: Privát hivatkozások engedélyezése a felügyelt lemezekhez Azure Portal, jelenleg előzetes verzióban. Lehetővé teszi, hogy biztonságosan exportálja és importálja a virtuális hálózaton lévő lemezeket.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 75b5ba995ff87649ec8a7a96a7c816bf2bec7e44
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535760"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135844"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure Portal – az importálási/exportálási hozzáférés korlátozása privát hivatkozásokkal rendelkező felügyelt lemezekhez (előzetes verzió)
+# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal
 
-Létrehozhat egy idő kötött közös hozzáférésű aláírás (SAS) URI-t a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez az adat más régióba való exportálásához a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzéshez szükséges információk beolvasása érdekében. A SAS URI-val közvetlenül is feltöltheti a VHD-t egy üres lemezre a helyszíni környezetből.  Most már kihasználhatja a [privát hivatkozásokat](../private-link/private-link-overview.md) (előzetes verzió), amelyekkel korlátozható az Exportálás és az importálás Managed Disks csak az Azure-beli virtuális hálózatról. Ezen kívül biztos lehet abban, hogy az adatok soha nem a nyilvános interneten haladnak át, és mindig a biztonságos Microsoft gerinces hálózaton utaznak, amikor privát hivatkozásokat használ. 
+A felügyelt lemezek privát hivatkozásai jelenleg előzetes verzióban érhetők el, és lehetővé teszi a felügyelt lemezek exportálásának és importálásának korlátozását úgy, hogy az csak az Azure-beli virtuális hálózaton belül történjen. Létrehozhat egy idő kötött közös hozzáférésű aláírás (SAS) URI-t a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez az adat más régióba való exportálásához a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzéshez szükséges információk beolvasása érdekében. A SAS URI-val közvetlenül is feltöltheti a VHD-t egy üres lemezre a helyszíni környezetből. A virtuális hálózaton és a felügyelt lemezeken lévő ügyfelek közötti hálózati forgalom csak a virtuális hálózaton keresztül halad át, a Microsoft gerinc hálózatán pedig egy privát kapcsolaton keresztül, ami kiküszöböli a nyilvános internetre való kitettséget.
 
 Létrehozhat egy lemez-hozzáférési erőforrást, és összekapcsolhatja azt a virtuális hálózattal ugyanabban az előfizetésben egy privát végpont létrehozásával. Az adatok magánhálózati kapcsolaton keresztüli exportálásához és importálásához egy lemez vagy pillanatképet kell rendelni. Emellett a lemez NetworkAccessPolicy tulajdonságát vagy a pillanatképet is be kell állítania `AllowPrivate` . 
 
@@ -46,7 +46,7 @@ Fel kell jegyeznie azt a virtuális GÉPET, amelyhez a lemezek csatlakoztatva va
 
 1. Válassza a **+ Hozzáadás** lehetőséget egy új lemez-hozzáférési erőforrás létrehozásához.
 1. A létrehozás panelen válassza ki az előfizetést, egy erőforráscsoportot, adjon meg egy nevet, és válasszon ki egy régiót.
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
@@ -83,7 +83,7 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
     > Ha a kiválasztott alhálózathoz engedélyezve van egy hálózati biztonsági csoport (minősítések), akkor az csak ezen az alhálózaton található privát végpontok esetében le lesz tiltva. Az alhálózaton található egyéb erőforrásoknak továbbra is NSG-kényszerítéssel kell rendelkezniük.
 
 1. Válassza ki a megfelelő alhálózatot
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Képernyőkép a privát végpont létrehozási munkafolyamatáról, a harmadik panelről. A virtuális hálózat és az alhálózat kiemelten van kiemelve.":::
 
@@ -92,7 +92,7 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
 1. Navigáljon ahhoz a lemezhez, amelyet konfigurálni szeretne
 1. **Hálózatkezelés** kiválasztása
 1. Válassza ki a **privát végpontot (a lemezes hozzáférésen keresztül)** , és válassza ki a korábban létrehozott lemez-hozzáférést.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Képernyőkép a felügyelt lemez hálózatkezelés paneljéről. Kiemelve a privát végpontok kijelölését, valamint a kiválasztott lemezes hozzáférést. Ennek a beállításnak a mentésekor a lemez erre a hozzáférésre van konfigurálva.":::
 

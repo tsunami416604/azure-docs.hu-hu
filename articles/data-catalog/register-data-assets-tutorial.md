@@ -1,23 +1,23 @@
 ---
-title: Adategységek regisztrálása az Azure Data Catalogban
+title: 'Oktatóanyag: adategységek regisztrálása a Azure Data Catalogban'
 description: Ez az oktatóanyag leírja, hogyan regisztrálhat adategységeket a Azure Data Catalogban.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255194"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135878"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Oktatóanyag: adategységek regisztrálása a Azure Data Catalogban
 
 Ebben az oktatóanyagban a regisztrációs eszközzel regisztrálja az adategységeket az adatbázis mintából a katalógus használatával. A regisztráció az a folyamat, amelynek során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Adategységek regisztrálása 
 > * Adategységek keresése
@@ -67,31 +67,31 @@ Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket a
 
 6. Regisztrálja az adategység metaadatait. Ebben a példában a **termék** objektumait regisztrálja a minta névterből:
 
-    1. A **kiszolgálói hierarchia** fáján bontsa ki az adatbázis mintát, és válassza a **SalesLT**lehetőséget.
+   1. A **kiszolgálói hierarchia** fáján bontsa ki az adatbázis mintát, és válassza a **SalesLT**lehetőséget.
 
-    2. Válassza a **termék**, a **ProductCategory**, a **ProductDescription**és a **ProductModel** lehetőséget a CTRL + Select billentyűkombinációval.
+   2. Válassza a **termék**, a **ProductCategory**, a **ProductDescription**és a **ProductModel** lehetőséget a CTRL + Select billentyűkombinációval.
 
-    3. Válassza a **mozgatás kijelölt nyilat** ( **>** ). Ez a művelet az összes kiválasztott objektumot áthelyezi az **Objects to be registered** (Regisztrálandó objektumok) listára.
+   3. Válassza a **mozgatás kijelölt nyilat** ( **>** ). Ez a művelet az összes kiválasztott objektumot áthelyezi az **Objects to be registered** (Regisztrálandó objektumok) listára.
 
-          ![Azure Data Catalog oktatóanyag – objektumok megkeresése és kiválasztása](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
+      ![Azure Data Catalog oktatóanyag – objektumok megkeresése és kiválasztása](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
-    4. Ha szeretne pillanatképes előnézetet is hozzáadni az adatokról, jelölje be az **Előnézet belefoglalása** jelölőnégyzetet. A pillanatkép legfeljebb 20 rekordot tartalmaz az egyes táblákból, és a katalógusba másolja.
+   4. Ha szeretne pillanatképes előnézetet is hozzáadni az adatokról, jelölje be az **Előnézet belefoglalása** jelölőnégyzetet. A pillanatkép legfeljebb 20 rekordot tartalmaz az egyes táblákból, és a katalógusba másolja.
 
-    5. Ha szeretné, hogy az adatprofil objektumstatisztikáit (például: minimális, maximális és átlagos értékek az oszlopban, sorok száma) bemutató pillanatképet is tartalmazza a katalógus, válassza az **Adatprofil belefoglalása** lehetőséget.
+   5. Ha szeretné, hogy az adatprofil objektumstatisztikáit (például: minimális, maximális és átlagos értékek az oszlopban, sorok száma) bemutató pillanatképet is tartalmazza a katalógus, válassza az **Adatprofil belefoglalása** lehetőséget.
 
-    6. A **Címkék hozzáadása** mezőben adja meg a **Sales, a Product, az Azure SQL**értéket. Ez a művelet hozzáadja az adategységekhez a keresési címkéket. A címkék nagy segítséget nyújtanak abban, hogy a felhasználók megtaláljanak egy bizonyos regisztrált adatforrást.
+   6. A **Címkék hozzáadása** mezőben adja meg a **Sales, a Product, az Azure SQL**értéket. Ez a művelet hozzáadja az adategységekhez a keresési címkéket. A címkék nagy segítséget nyújtanak abban, hogy a felhasználók megtaláljanak egy bizonyos regisztrált adatforrást.
 
-    7. Adja meg az adatokhoz kapcsolódó **szakértő** nevét (kihagyható).
+   7. Adja meg az adatokhoz kapcsolódó **szakértő** nevét (kihagyható).
 
-          ![Azure Data Catalog oktatóanyag – regisztrálandó objektumok](media/register-data-assets-tutorial/data-catalog-objects-register.png)
+      ![Azure Data Catalog oktatóanyag – regisztrálandó objektumok](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Válassza a **regisztráció**lehetőséget. Az Azure Data Catalog regisztrálja a kiválasztott objektumokat. Ebben a gyakorlatban az adatbázis mintából kiválasztott objektumok regisztrálva vannak. A regisztrációs eszköz kinyeri a metaadatokat az adategységből, majd az Azure Data Catalogba másolja az adatokat. Az adatmennyiség marad, ahol jelenleg is marad. Az adat a forrásrendszer rendszergazdáinak és házirendjeinek felügyelete alatt marad.
+   8. Válassza a **regisztráció**lehetőséget. Az Azure Data Catalog regisztrálja a kiválasztott objektumokat. Ebben a gyakorlatban az adatbázis mintából kiválasztott objektumok regisztrálva vannak. A regisztrációs eszköz kinyeri a metaadatokat az adategységből, majd az Azure Data Catalogba másolja az adatokat. Az adatmennyiség marad, ahol jelenleg is marad. Az adat a forrásrendszer rendszergazdáinak és házirendjeinek felügyelete alatt marad.
 
-          ![Azure Data Catalog – regisztrált objektumok](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
+      ![Azure Data Catalog – regisztrált objektumok](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
     9. A regisztrált adatforrás-objektumok megtekintéséhez válassza a **portál megtekintése**lehetőséget. A Azure Data Catalog-portálon győződjön meg arról, hogy mind a négy tábla, mind az adatbázis megjelenik a rács nézetben (ellenőrizze, hogy a keresősáv üres-e).
 
-        ![Objektumok az Azure Data Catalog-portálon](media/register-data-assets-tutorial/data-catalog-view-portal.png)
+       ![Objektumok az Azure Data Catalog-portálon](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
 Ebben a gyakorlatban a Azure SQL Database adatbázis-mintájában regisztrált objektumokat, hogy azok könnyen felismerhetők legyenek a felhasználók számára a szervezeten belül.
 
@@ -119,19 +119,20 @@ Az alapszintű kereséssel egy vagy több keresőkifejezést megadva végezhet k
 
 2. A keresőmezőbe írja be a `product` kifejezést, majd nyomja le az **ENTER** billentyűt.
 
-    ![Azure Data Catalog – alapszintű szöveges keresés](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
+   ![Azure Data Catalog – alapszintű szöveges keresés](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
 3. Győződjön meg arról, hogy az eredmények között mind a négy tábla, mind az adatbázis megjelenik. A **rács nézet** és a **listanézet** közötti váltáshoz válassza az eszköztár gombjait, ahogy az alábbi képen is látható. Figyelje meg, hogy a kereséshez használt kulcsszót a rendszer kijelöli a találatok között. Ez azért van, mert a **Kiemelés** funkció **BE** értékre van állítva. Megadhatja az **eredmények száma oldalanként** beállítás értékét is.
 
-    ![Azure Data Catalog – alapszintű szöveges keresés, találatok](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
+   ![Azure Data Catalog – alapszintű szöveges keresés, találatok](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 
-    A **Keresések** panel bal oldalon, a **Tulajdonságok** panel jobb oldalon található. A **Keresések** panelen módosíthatja a keresési feltételeket, valamint szűrheti a találatokat. A **Tulajdonságok** panelen láthatja a rácsban vagy a listában kiválasztott objektum tulajdonságait.
+   A **Keresések** panel bal oldalon, a **Tulajdonságok** panel jobb oldalon található. A **Keresések** panelen módosíthatja a keresési feltételeket, valamint szűrheti a találatokat. A **Tulajdonságok** panelen láthatja a rácsban vagy a listában kiválasztott objektum tulajdonságait.
 
-4. a keresési eredmények között válassza a **Product (termék** ) lehetőséget. Válassza ki az **előnézet**, az **oszlopok**, **az adatprofil**és a **dokumentáció** lapokat, vagy a nyílra kattintva bontsa ki az alsó ablaktáblát.  
+4. A keresési eredmények között válassza a **Product (termék** ) lehetőséget. Válassza ki az **előnézet**, az **oszlopok**, **az adatprofil**és a **dokumentáció** lapokat, vagy a nyílra kattintva bontsa ki az alsó ablaktáblát.  
 
-    ![Azure Data Catalog – alsó panel](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
+   ![Azure Data Catalog – alsó panel](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
-    A **Preview** (Előnézet) lapon a **Product** táblában szereplő adatok előnézete látható.  
+   A **Preview** (Előnézet) lapon a **Product** táblában szereplő adatok előnézete látható.
+
 5. Válassza az **oszlopok** fület az adategységben található oszlopok (például a **név** és **az adattípus**) részleteinek megtekintéséhez.
 
 6. Válassza az **adatprofil** fület, és tekintse meg az adategységben található adatprofilkészítést (például: sorok száma, az adatmennyiség vagy az oszlop minimális értéke).
@@ -146,13 +147,13 @@ A tulajdonságértékekben való keresés segítségével megkeresheti azokat az
 
 3. Győződjön meg róla, hogy a táblák és az adatbázis megjelenik az eredmények között.  
 
-    ![Data Catalog – tulajdonságértékekben való keresés, találatok](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
+   ![Data Catalog – tulajdonságértékekben való keresés, találatok](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
 
 ### <a name="save-the-search"></a>A keresés mentése
 
 1. **A keresések ablaktáblán** az **aktuális keresés** szakaszban adja meg a keresés nevét, majd válassza a **Mentés**lehetőséget.
 
-    ![Azure Data Catalog – keresés mentése](media/register-data-assets-tutorial/data-catalog-save-search.png)
+   ![Azure Data Catalog – keresés mentése](media/register-data-assets-tutorial/data-catalog-save-search.png)
 
 2. Ellenőrizze, hogy a mentett keresés megjelent-e a **Mentett keresések** menüben.
 
@@ -166,7 +167,7 @@ Zárójelek segítségével csoportosítva különböző logikai egységekre bon
 
 2. Ellenőrizze, hogy a találatok között csak a **Product** tábla jelent-e meg.
 
-    ![Azure Data Catalog – keresések csoportosítása](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
+   ![Azure Data Catalog – keresések csoportosítása](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
 
 ### <a name="comparison-operators"></a>Összehasonlító operátorok
 
@@ -176,11 +177,11 @@ Az összehasonlító operátorok segítségével a szám és adat adattípusú t
 
 2. Az **Objektumtípus** szűrő **Tábla** beállításánál törölje az oda korábban esetleg beírt értéket.
 
-3. Nyomja le az **ENTER** billentyűt.
+3. Nyomja le az **ENTER**billentyűt.
 
 4. Ellenőrizze, hogy megjelenik-e a **termék**, a **ProductCategory**és a **ProductDescription** tábla, valamint a keresési eredmények között regisztrált SQL-adatbázis.
 
-    ![Azure Data Catalog – összehasonlító találatok](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
+   ![Azure Data Catalog – összehasonlító találatok](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
 Az adategységek felderítésével kapcsolatos részletes információkért tekintse [meg az adategységek észlelését](data-catalog-how-to-discover.md) ismertető témakört. A keresési szintaxissal kapcsolatos további információkért lásd: [Data Catalog keresési szintaxis referenciája](/rest/api/datacatalog/#search-syntax-reference).
 
@@ -192,7 +193,7 @@ Ebben a gyakorlatban egyetlen adategységet (ProductPhoto) fogunk dekorációkka
 
 1. Nyissa meg a [Azure Data Catalog kezdőlapját](https://www.azuredatacatalog.com) , és keresse meg a t a `tags:product` regisztrált adategységek kereséséhez.
 
-2. a keresési eredmények között válassza a **ProductModel** lehetőséget.  
+2. A keresési eredmények között válassza a **ProductModel** lehetőséget.  
 
 3. A **Rövid név** mezőbe írja be: **Product images**, a **Leírás** mezőbe pedig a következőt: **Product photos for marketing materials**.
 
@@ -233,23 +234,23 @@ Ebben a gyakorlatban a kapcsolatadatok segítségével az adategységeket egy in
 
 1. A találatok közül válassza ki a **Product** elemet. Válassza az eszköztár **Megnyitás elemét** , majd válassza az **Excel**lehetőséget.
 
-    ![Azure Data Catalog – csatlakozás adategységhez](media/register-data-assets-tutorial/data-catalog-connect1.png)
+   ![Azure Data Catalog – csatlakozás adategységhez](media/register-data-assets-tutorial/data-catalog-connect1.png)
 
 2. Válassza a **Megnyitás** lehetőséget a letöltési előugró ablakban. Ez böngészőnként eltérően jelenhet meg.
 
 3. A **Microsoft Excel biztonsági figyelmeztetési** ablakban válassza az **Engedélyezés**lehetőséget.
 
-    ![Azure Data Catalog – Excel biztonsági előugró ablak](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
+   ![Azure Data Catalog – Excel biztonsági előugró ablak](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
 
 4. Tartsa meg az alapértelmezett értékeket az **adatimportálás** párbeszédpanelen, majd kattintson **az OK gombra**.
 
-    ![Azure Data Catalog – Excel, adatok beolvasása](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
+   ![Azure Data Catalog – Excel, adatok beolvasása](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
 
 5. Tekintse meg az adatforrást az Excelben.
 
-    ![Azure Data Catalog – terméktábla az Excelben](media/register-data-assets-tutorial/data-catalog-connect2.png)
+   ![Azure Data Catalog – terméktábla az Excelben](media/register-data-assets-tutorial/data-catalog-connect2.png)
 
-### <a name="sql-server-management-studio"></a>SQL Server Management Studio
+### <a name="sql-server-management-studio"></a>Az SQL Server Management Studio
 
 Ebben a gyakorlatban az Azure Data Catalog segítségével felderített adategységekhez fog csatlakozni. Az Azure Data Catalog-portál segítségével közvetlenül, a **Open in** (Megnyitás a következőben) menüben elérhető integrált ügyfélalkalmazásokkal végezheti el a csatlakozást. Ezenfelül tetszőleges alkalmazáshoz csatlakozhat az adategység metaadataiban szereplő csatlakozási helyadatok segítségével. Használhatja például a SQL Server Management Studiot a Azure SQL Databasehoz való kapcsolódáshoz az ebben az oktatóanyagban regisztrált adategységekben lévő adatok eléréséhez.
 
@@ -259,7 +260,7 @@ Ebben a gyakorlatban az Azure Data Catalog segítségével felderített adategys
 
 3. Adja meg az adategység eléréséhez szükséges megfelelő hitelesítési és bejelentkezési adatokat. Ha nincs hozzáférése, használja a **Hozzáférés kérése** mezőben szereplő adatokat, és kérjen hozzáférést.
 
-    ![Azure Data Catalog – hozzáférés kérése](media/register-data-assets-tutorial/data-catalog-request-access.png)
+   ![Azure Data Catalog – hozzáférés kérése](media/register-data-assets-tutorial/data-catalog-request-access.png)
 
 A **kapcsolódási karakterláncok megtekintése** lehetőség kiválasztásával megtekintheti és átmásolhatja a vágólapra az alkalmazásban használandó ADO.net, ODBC és OLEDB kapcsolódási karakterláncokat.
 
@@ -299,24 +300,28 @@ Az Azure Data Catalogban az adategységek egyesével és csoportosan is törölh
 
 3. Válasszon ki egy elemet az eredmények listájában, és válassza a **Törlés** lehetőséget az eszköztáron az alábbi ábrán látható módon:
 
-    ![Azure Data Catalog – rácselem törlése](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
+   ![Azure Data Catalog – rácselem törlése](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
 
-    Ha a listanézet használatát használja, a jelölőnégyzet az elem bal oldalán látható, az alábbi képen látható módon:
+   Ha a listanézet használatát használja, a jelölőnégyzet az elem bal oldalán látható, az alábbi képen látható módon:
 
-    ![Azure Data Catalog – listaelem törlése](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
+   ![Azure Data Catalog – listaelem törlése](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
 
-    Ahogy az az alábbi képen is látható, egyszerre több adategységet is kiválaszthat:
+   Ahogy az az alábbi képen is látható, egyszerre több adategységet is kiválaszthat:
 
-    ![Azure Data Catalog – több adategység törlése](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
+   ![Azure Data Catalog – több adategység törlése](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
 
 > [!NOTE]
 > A katalógus alapértelmezett viselkedése szerint bármely felhasználó regisztrálhat bármilyen adatforrást, és bármely felhasználó törölhet bármilyen regisztrált adatforrást. Az Azure Data Catalog Standard kiadásának felügyeleti lehetőségei további lehetőségeket nyújtanak, amelyekkel az adategységek saját tulajdonba vehetők, és korlátozható az adategységeket felderíteni és törölni jogosult felhasználók köre.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Kövesse az [adategységek eltávolítása](#remove-data-assets) lépéseit az oktatóanyag követése során esetlegesen használt eszközök törléséhez.
 
 ## <a name="summary"></a>Összefoglalás
 
 Ebben az oktatóanyagban bemutattuk az Azure Data Catalog alapvető funkcióit, például a regisztrálást, a dekorálást, a felderítést és a vállalati adategységek felügyeletét. Most, hogy teljesítette az oktatóprogramot, ideje megkezdeni a használatot. Regisztrálja az adatforrásokat, amelyeket a csapatával használ, és hívja fel a munkatársai figyelmét is a katalógus használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Támogatott adatforrások](data-catalog-dsr.md)

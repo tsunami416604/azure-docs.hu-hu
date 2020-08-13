@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/12/2020
+ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289941"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140683"
 ---
 # <a name="time-series-model-variables"></a>Idősorozat-modell változói
 
@@ -27,14 +27,14 @@ Az alábbi táblázat az egyes változókhoz tartozó tulajdonságokat mutatja b
 
 [![Idősorozat-modell változó táblázata](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
-#### <a name="numeric-variables"></a>Numerikus változók
+## <a name="numeric-variables"></a>Numerikus változók
 
 | Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek, vagy az idősorozat-kifejezések használatával alakíthatók át. A numerikus típusú változóknak *dupla*típusúnak kell lenniük.|
 | Változó interpoláció | A interpoláció azt adja meg, hogyan lehet a jeleket újradefiniálni a meglévő adatforgalom használatával. A *Step* és a *lineáris* interpolációs beállítások a numerikus változókhoz érhetők el. |
-| Változó összesítése | Számítások végrehajtása a támogatott [aggregációs függvények segítségével numerikus változó típusú változók esetén](https://docs.microsoft.com/rest/api/time-series-insights/preview#numeric-variable-kind-1). |
+| Változó összesítése | Számítások végrehajtása a támogatott [aggregációs függvények segítségével numerikus változó típusú változók esetén](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind). |
 
 A változók megfelelnek a következő JSON-példának:
 
@@ -57,7 +57,7 @@ A változók megfelelnek a következő JSON-példának:
 }
 ```
 
-#### <a name="categorical-variables"></a>Kategorikus változók
+## <a name="categorical-variables"></a>Kategorikus változók
 
 | Változó tulajdonság | Leírás |
 | --- | ---|
@@ -73,7 +73,7 @@ A változók megfelelnek a következő JSON-példának:
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "$event.Status.Long" 
+     "tsx": "$event.Status.Long"
 },
   "interpolation": {
     "kind": "step",
@@ -97,12 +97,12 @@ A változók megfelelnek a következő JSON-példának:
 }
 ```
 
-#### <a name="aggregate-variables"></a>Összesített változók
+## <a name="aggregate-variables"></a>Összesített változók
 
 | Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
-| Változó összesítése | Számításokat hajthat végre a támogatott [összesítési függvényekben az összesített változó típusokhoz](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1). |
+| Változó összesítése | Számításokat hajthat végre a támogatott [összesítési függvényekben az összesített változó típusokhoz](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |
 
 A változók megfelelnek a következő JSON-példának:
 
@@ -118,9 +118,8 @@ A változók megfelelnek a következő JSON-példának:
 
 A változók egy idősorozat-modell definíciójában tárolódnak, és az API-kon keresztül is elérhetők a tárolt definíció felülbírálásához vagy kiegészítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Time Series-modellről](./concepts-model-overview.md).
 
 * További információ a változók definiálásáról a [lekérdezési API](./concepts-query-overview.md)-k használatával.
-

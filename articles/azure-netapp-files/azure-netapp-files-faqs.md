@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533138"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134496"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -177,6 +177,11 @@ A kettős protokollú kötetek az NFS-és az SMB-protokollokat is támogatják. 
 
 Az "engedély megtagadva" probléma elkerüléséhez győződjön meg arról, hogy a Windows Active Directory tartalmazza `pcuser` a csatlakoztatási pont elérését. Ha az `pcuser` "engedély megtagadva" problémával találkozik, várjon 24 órát a gyorsítótár-bejegyzés törlésére a hozzáférés ismételt megkísérlése előtt.
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Amikor megpróbálok létrehozni egy kettős protokollú kötetet, miért nem sikerült a létrehozási folyamat végrehajtása a következő hibával: "az LDAP-konfiguráció ellenőrzése sikertelen volt, próbálkozzon újra az LDAP-konfiguráció javítása után"?  
+
+Lehet, hogy a DNS-kiszolgálón hiányzik az AD Host Machine mutató (PTR) rekordja. Létre kell hoznia egy névkeresési zónát a DNS-kiszolgálón, majd hozzá kell adnia egy PTR-rekordot az adott névkeresési zónában.
+
+Tegyük fel például, hogy az AD-gép IP-címe `1.1.1.1` , az ad-gép állomásneve (a parancs használatával megtalált `hostname` ) `AD1` , és a tartománynév `myDomain.com` .  A névkeresési zónához hozzáadott PTR-rekordnak a következőnek kell lennie: `1.1.1.1`  ->  `AD1.myDomain.com` .
 
 ## <a name="capacity-management-faqs"></a>A kapacitások kezelésével kapcsolatos gyakori kérdések
 
@@ -249,7 +254,7 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

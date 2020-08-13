@@ -2,19 +2,19 @@
 title: Azure Key Vault – a Soft delete használata a CLI használatával
 description: Példa a CLI-kódrészletek használatával történő törlésre példákkal
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385738"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135929"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -33,7 +33,7 @@ A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault-r
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Description | Felhasználói engedély |
+| Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Új kulcstartó
 
-Az új kulcstartó törlésének engedélyezése a létrehozáskor történik, ha hozzáadja a Soft-delete Enable jelzőt a Create parancshoz.
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+Alapértelmezés szerint minden kulcstartón automatikusan engedélyezve van a Soft delete szolgáltatás. December 31-ig az 2020-as számú új kulcstartó nem hozható létre, ha nincs engedélyezve a helyreállítható törlés.
 
 ### <a name="verify-soft-delete-enablement"></a>Helyreállítható törlési engedélyezés ellenőrzése
 

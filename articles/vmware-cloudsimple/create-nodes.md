@@ -1,6 +1,6 @@
 ---
 title: Csomópontok kiépítése VMware-megoldáshoz az Azure-CloudSimple
-description: Ismerje meg, hogyan adhat hozzá csomópontokat a VMWare-hez a CloudSimple üzembe helyezésével
+description: Ismerje meg, hogyan adhat csomópontokat a VMWare-ben a CloudSimple-telepítéssel a Azure Portal. Az utólagos elszámolású kapacitást a saját felhőalapú környezetéhez is beállíthatja.
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024806"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140734"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Csomópontok kiépítése az Azure VMware-megoldáshoz CloudSimple szerint
 
@@ -44,8 +44,8 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 11. Válassza ki a kiépíteni kívánt csomópontok számát.
 12. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 13. Tekintse át a beállításokat. A beállítások módosításához kattintson az **előző**gombra.
-14. Válassza a **Létrehozás** lehetőséget.
+14. Kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Privát felhő létrehozása](create-private-cloud.md)

@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902099"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136337"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -20,7 +20,7 @@ ms.locfileid: "87902099"
 
 A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben végezhetők el. A következő táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
+|   Ország/régió neve               |   ISO-2   |   Pénznem   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -179,11 +179,7 @@ Ha bármilyen árat szeretne módosítani a közzététel előtt, csak exportál
 > [!NOTE]
 > Miután közzétette a csomag egy piacának árát, később nem módosítható. Annak érdekében, hogy a közzététel előtt a díjak megfelelőek legyenek, exportálja a díjszabási táblázatot, és tekintse át az árakat az egyes piacokon.
 
-## <a name="rate-changes"></a>Díjszabási változások
-
-A helyi árak kiszámításához használt díjszabás naponta frissül. Ez a számítás akkor történik meg, amikor az ISV menti a lapot, és a közzététel előtt az árak exportálásával és áttekintésével áttekintheti az összes díjat.
-
-### <a name="retrieving-currency-information-by-api"></a>Pénznem információinak beolvasása API szerint
+## <a name="retrieving-currency-information-by-api"></a>Pénznem információinak beolvasása API szerint
 
 Az egyes árakat (amelyeknek a beállításaik attól függően, hogy milyen beállítások vonatkoznak rájuk) az API-k használatával lehet beolvasni az árfolyamok alapján. a pénznem adatai nem.
 

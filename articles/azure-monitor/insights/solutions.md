@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824783"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135529"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
-A figyelési megoldások kihasználják az Azure szolgáltatásait, hogy további elemzéseket nyújtsanak egy adott alkalmazás vagy szolgáltatás működéséről. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről. A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek.
+A Azure Monitor figyelési megoldásai egy adott Azure-alkalmazás vagy-szolgáltatás működésének elemzését teszik lehetővé. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről. A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek.
 
 ## <a name="use-monitoring-solutions"></a>Monitorozási megoldások használata
 
-Nyissa meg Azure Monitor **Áttekintés** lapját, és jelenítse meg a munkaterületen telepített összes megoldás csempéjét.
+Azure Monitor a megoldások **áttekintése** oldal megjeleníti a log Analytics munkaterületre telepített összes megoldás csempéjét. A lap megnyitásához nyissa meg a **Azure monitor** a [Azure Portal](https://ms.portal.azure.com). Az **áttekintések** menüben válassza a **továbbiak** lehetőséget az **áttekintési központ**megnyitásához, majd kattintson **log Analytics munkaterületek**elemre.
 
-1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com). Keresse meg és válassza a **figyelő**elemet.
-1. Az **áttekintések** menüben válassza a **továbbiak**lehetőséget.
-1. A képernyő felső részén található legördülő listák használatával módosíthatja a munkaterületet vagy a csempék időtartományát.
-1. Kattintson a csempére egy megoldás megnyitásához, amely részletesebb elemzést tartalmaz az összegyűjtött adatokról.
+[![Bepillantást biztosító központ](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![Áttekintés](media/solutions/overview.png)
+
+A képernyő felső részén található legördülő listák használatával módosíthatja a munkaterületet vagy a csempék időtartományát. Kattintson a csempére egy megoldás megnyitásához, amely részletesebb elemzést tartalmaz az összegyűjtött adatokról.
+
+[![Áttekintés](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, és a megoldáshoz tartozó összes erőforrást ugyanúgy megtekintheti, mint bármely más erőforrást. Például a megoldásban szereplő összes naplózási lekérdezés megjelenik a [lekérdezési](../log-query/get-started-portal.md#load-queries) lekérdezésekben a **megoldás-lekérdezések** területen, ha ad hoc elemzést végez a [naplók](../log-query/log-query-overview.md)lekérdezésével.
 
@@ -101,9 +101,9 @@ A Közösség tagjai felügyeleti megoldásokat küldhetnek az Azure Gyorsindít
 
    - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
 
-1. Bejelentkezés lehetőséget.
+1. Jelentkezzen be.
 
-   Ha a parancssori felület helyi telepítését használja, jelentkezzen be az az [login](/cli/azure/reference-index#az-login) parancs használatával.  A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+   Ha a parancssori felület helyi telepítését használja, jelentkezzen be az az [login](/cli/azure/reference-index#az-login) parancs használatával.  A terminálon megjelenő utasítások alapján végezze el a hitelesítési folyamatot.
 
     ```azurecli
     az login
@@ -190,7 +190,7 @@ az monitor log-analytics solution delete --name
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Szerezze be a [Microsoft figyelési megoldásainak listáját](../monitor-reference.md).
 * Megtudhatja, hogyan [hozhat létre lekérdezéseket](../log-query/log-query-overview.md) a figyelési megoldások által gyűjtött adatok elemzéséhez.

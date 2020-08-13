@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás CloudSimple – privát felhők
-description: Ismerje meg a privát felhők és fogalmak CloudSimple.
+description: Ismerje meg a CloudSimple kapcsolatos fogalmakat és előnyöket, beleértve a teljes VMware működés folytonosságát, a meglévő eszközökkel való kompatibilitást, a képességeket és a folyamatokat.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024948"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140717"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple – a privát felhő áttekintése
 
@@ -132,7 +132,7 @@ A következő táblázat felsorolja a privát felhő erőforrásaihoz tartozó c
 | A privát felhőben lévő csomópontok maximális száma | 64 |
 | Csomópontok minimális száma egy új fürtön | 3 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [hozhat létre saját felhőt](create-private-cloud.md)
 * Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)

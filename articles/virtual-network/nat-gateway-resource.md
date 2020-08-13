@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424068"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135827"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -96,7 +96,7 @@ Tekintse át ezt a szakaszt, és ismerkedjen meg a virtuális hálózatok NAT-be
 1. [Cost Optimization](#cost-optimization)
 1. [A bejövő és a kimenő együttes létezése](#coexistence-of-inbound-and-outbound)
 2. [Alapszintű erőforrások kezelése](#managing-basic-resources)
-3. [Rendelkezésre állási zónák](#availability-zones)
+3. [Availability Zones](#availability-zones)
 
 ### <a name="cost-optimization"></a>Költségoptimalizálás
 
@@ -237,7 +237,7 @@ Az egyes NAT-átjárók a hozzárendelt kimenő IP-címek alapján 64 000-es kap
 
 A forrás hálózati címfordítás (SNAT) egy másik IP-címről származó folyamat forrását írja le.  A NAT-átjáró erőforrásai a SNAT gyakran hivatkoznak a port címfordítás (PAT) használatára. A PAT újraírja a forrás és a forrás portját. A SNAT nem rendelkezik rögzített kapcsolattal a privát címek száma és a lefordított nyilvános címek között.  
 
-### <a name="fundamentals"></a>Alapismeretek
+### <a name="fundamentals"></a>Alapok
 
 Lássunk egy példát négy folyamatra, hogy megismertesse az alapvető koncepciót.  A NAT-átjáró a nyilvános IP-cím erőforrás-65.52.0.2 használja.
 
@@ -322,7 +322,6 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 
 - A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
 - Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
-- A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 - A NAT nem tud több virtuális hálózatot kifogni.
 
 ## <a name="suggestions"></a>Javaslatok

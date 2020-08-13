@@ -1,23 +1,23 @@
 ---
-title: Azure CLI – a felügyelt lemezekre vonatkozó importálási/exportálási hozzáférés korlátozása privát hivatkozásokkal (előzetes verzió)
-description: Privát hivatkozások (előzetes verzió) engedélyezése a felügyelt lemezekhez az Azure CLI-vel. Lehetővé teszi, hogy biztonságosan exportálja és importálja a lemezeket csak a virtuális hálózaton belül.
+title: Azure CLI – a felügyelt lemezekre vonatkozó importálási/exportálási hozzáférés korlátozása privát hivatkozásokkal
+description: Privát hivatkozások engedélyezése a felügyelt lemezekhez az Azure CLI-vel. Lehetővé teszi, hogy biztonságosan exportálja és importálja a lemezeket csak a virtuális hálózaton belül.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420284"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136405"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal (előzetes verzió)
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal
 
-A [privát végpontok](../../private-link/private-endpoint-overview.md) (előzetes verzió) használatával korlátozhatja a felügyelt lemezek exportálását és importálását, valamint az adatok biztonságos elérését az Azure-beli virtuális hálózatban lévő ügyfelektől származó [privát kapcsolaton](../../private-link/private-link-overview.md) keresztül. A magánhálózati végpont IP-címet használ a Managed Disks szolgáltatáshoz tartozó virtuális hálózati címtartomány alapján. A virtuális hálózat és a felügyelt lemezek ügyfelei közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán lévő privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. 
+A felügyelt lemezekkel rendelkező privát hivatkozások támogatása jelenleg előzetes verzióban érhető el. A [privát végpontok](../../private-link/private-endpoint-overview.md) használatával korlátozhatja a felügyelt lemezek exportálását és importálását, valamint az adatok biztonságos elérését az Azure-beli virtuális hálózatban lévő ügyfelektől származó [privát kapcsolaton](../../private-link/private-link-overview.md) keresztül. A magánhálózati végpont IP-címet használ a Managed Disks szolgáltatáshoz tartozó virtuális hálózati címtartomány alapján. A virtuális hálózaton és a felügyelt lemezeken lévő ügyfelek közötti hálózati forgalom csak a virtuális hálózaton keresztül halad át, a Microsoft gerinc hálózatán pedig egy privát kapcsolaton keresztül, ami kiküszöböli a nyilvános internetről való kitettséget.
 
 Ha privát hivatkozásokat szeretne használni a felügyelt lemezek exportálásához/importálásához, először hozzon létre egy lemez-hozzáférési erőforrást, és csatolja azt egy adott előfizetésben található virtuális hálózathoz egy privát végpont létrehozásával. Ezután rendeljen hozzá egy lemezt vagy egy pillanatképet a lemezes hozzáférés egy példányához. Végül állítsa be a lemez NetworkAccessPolicy tulajdonságát vagy a pillanatképet a következőre: `AllowPrivate` . Ez korlátozni fogja a virtuális hálózat elérését. 
 

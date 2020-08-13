@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 93ce3b02ef8963a33e485b6560516e1d2b9c1ef5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424017"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135810"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -153,7 +153,6 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
 
 * A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival. Az alapszintű erőforrások, például az alapszintű Load Balancer és az ezekből származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
 * Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
-* A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 * A NAT nem tud több virtuális hálózatot kifogni.
 
 ## <a name="next-steps"></a>Következő lépések

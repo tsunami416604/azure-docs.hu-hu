@@ -3,15 +3,15 @@ title: Távoli asztal-ügyfél Windows rendszerű virtuális asztalának hibáin
 description: Az ügyfélkapcsolatok Windows virtuális asztali bérlői környezetben való beállításakor felmerülő problémák megoldása.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009392"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134479"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Az Távoli asztal-ügyfél hibáinak megoldása
 
@@ -41,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 Próbáljon meg csatlakozni egy másik ügyfélhez, például Távoli asztal Windows 7 vagy Windows 10 rendszerű ügyfélhez, és ellenőrizze, hogy meg tudja-e nyitni a webes ügyfelet.
 
-### <a name="opening-another-site-fails"></a>Egy másik hely megnyitása sikertelen
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>Nem lehet megnyitni más webhelyeket a webes ügyfélhez való csatlakozás közben.
 
-Ezt általában hálózati kapcsolódási problémák vagy hálózati kimaradás okozza. Javasoljuk, hogy forduljon a hálózati ügyfélszolgálathoz.
+Ha más webhelyeket nem tud megnyitni a webes ügyfélhez való csatlakozás közben, hálózati kapcsolati problémák vagy hálózati leállás fordulhat elő. Javasoljuk, hogy forduljon a hálózati ügyfélszolgálathoz.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Az nslookup nem tudja feloldani a nevet
+### <a name="nslookup-cant-resolve-the-name"></a>Az nslookup nem tudja feloldani a nevet
 
-Ezt általában hálózati kapcsolódási problémák vagy hálózati kimaradás okozza. Javasoljuk, hogy forduljon a hálózati ügyfélszolgálathoz.
+Ha az nslookup nem tudja feloldani a nevet, lehet, hogy hálózati kapcsolódási problémák vagy hálózati kimaradás történt. Javasoljuk, hogy forduljon a hálózati ügyfélszolgálathoz.
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>Az ügyfél nem tud kapcsolatot létesíteni, de a hálózaton lévő többi ügyfél csatlakozhat
 
@@ -58,11 +58,13 @@ Ha a böngésző a webes ügyfél használata közben elindul vagy leáll, köve
 3. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
 4. Nyissa meg a böngészőt privát módban.
 
-## <a name="web-client-does-not-show-my-resources"></a>A webes ügyfél nem jeleníti meg az erőforrásokat
+## <a name="client-doesnt-show-my-resources"></a>Az ügyfél nem jeleníti meg az erőforrásokat
 
-Először tekintse meg az Ön által használt Azure Active Directory fiókot. Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Windowsos virtuális asztalhoz kíván használni, akkor vagy jelentkezzen be, vagy használjon privát böngészőablakot.
+Először tekintse meg az Ön által használt Azure Active Directory fiókot. Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Windowsos virtuális asztalhoz kíván használni, akkor ki kell jelentkeznie, vagy egy privát böngészőablakot kell használnia.
 
-Ha a Windows rendszerű virtuális asztalt (klasszikus) használja, a [jelen cikkben](./virtual-desktop-fall-2019/connect-web-2019.md) található webes ügyfél hivatkozásra kattintva csatlakozhat az erőforrásokhoz.
+Ha a Windowsos virtuális asztalt (klasszikus) használja, a [cikk](./virtual-desktop-fall-2019/connect-web-2019.md) webes ügyfélprogram hivatkozásával csatlakozhat az erőforrásokhoz.
+
+Ha ez nem működik, győződjön meg arról, hogy az alkalmazáscsoport társítva van egy munkaterülethez.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>A webes ügyfél nem válaszol vagy bontja a kapcsolatot
 
@@ -78,11 +80,11 @@ Ha a webes ügyfél a hitelesítő adatok megadását kéri, kövesse az alábbi
 
 1. Ellenőrizze, hogy helyes-e a webes ügyfél URL-címe.
 2. Győződjön meg arról, hogy az Ön által használt hitelesítő adatok az URL-címhez kötött Windowsos virtuális asztali környezethez tartoznak.
-3. Böngészőbeli cookie-k törlése. További részletek: [cookie-fájlok törlése az Internet Explorerben](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Törölje a böngésző-gyorsítótár tartalmát. További részletekért lásd: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
+3. Böngészőbeli cookie-k törlése. További információ: [cookie-fájlok törlése az Internet Explorerben](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Törölje a böngésző-gyorsítótár tartalmát. További információ: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
 5. Nyissa meg a böngészőt privát módban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört
