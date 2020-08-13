@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault – a Soft delete használata a CLI használatával
-description: Példa a CLI-kódrészletek használatával történő törlésre példákkal
+description: Ismerje meg, hogyan használhatja az Azure CLI-t a Azure Key Vault Soft-delete funkciójának használatára, amely lehetővé teszi a kulcstartók és a kulcstartó-objektumok helyreállítását.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3c114d3624f8cc153e8516340d474302d8655bbc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135929"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191589"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -33,7 +33,7 @@ A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault-r
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Leírás | Felhasználói engedély |
+| Művelet | Description | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|

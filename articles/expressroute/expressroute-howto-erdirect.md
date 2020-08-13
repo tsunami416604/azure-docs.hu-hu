@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: a ExpressRoute közvetlen konfigurálása'
-description: Ez az oldal segítséget nyújt a közvetlen ExpressRoute konfigurálásához.
+description: Megtudhatja, hogyan konfigurálhatja a Azure PowerShellt az Azure ExpressRoute Direct használatára, hogy közvetlenül kapcsolódjon a Microsoft globális hálózatához a világ különböző pontjain.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42803cbc7901be01c88145e2d98f2982434710a1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736254"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192768"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>A ExpressRoute Direct konfigurálása
 
@@ -275,6 +275,6 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

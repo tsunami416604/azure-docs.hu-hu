@@ -1,6 +1,6 @@
 ---
 title: Nagyméretű fájlok letöltésének optimalizálása Azure CDN
-description: Ez a cikk azt ismerteti, hogyan optimalizálható a nagyméretű fájlok letöltése.
+description: Ismerje meg, hogyan optimalizálható a nagyméretű fájlok letöltése az Azure Content Delivery Networkban. Ez a cikk számos forgatókönyvet tartalmaz.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206711"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192635"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Nagyméretű fájlok letöltésének optimalizálása Azure CDN
 
@@ -122,7 +122,7 @@ Ha a kapcsolat időtúllépés miatt megszakad, a CDN többször próbálkozik, 
 
 A következő táblázat felsorolja a nagyméretű fájl-optimalizáláshoz teljesítendő feltételek készletét:
 
-Feltétel | Érték 
+Feltétel | Értékek 
 --- | --- 
 Támogatott fájltípusok | 3g2, 3GP, ASF, AVI, BZ2, DMG, exe, F4V, FLV, <br> GZ, HDP, ISO, jxr, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pkg, QT, RM, SWF, Tar, <br> tgz, WDP, WebM, WebP, WMA, WMV, zip  
 Minimális fájlméret | 10 MB 

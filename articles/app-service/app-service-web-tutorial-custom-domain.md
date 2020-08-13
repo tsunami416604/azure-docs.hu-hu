@@ -5,14 +5,14 @@ keywords: app service, azure app service, tartomány-hozzárendelés, tartomány
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543561"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190055"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -125,11 +125,11 @@ Ha a-től eltérő altartománnyal rendelkezik `www` , cserélje le az `www` alt
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (ahol az az `<app_name>.azurewebsites.net` `<app_name>` alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
+Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (ahol az az `<app-name>.azurewebsites.net` `<app-name>` alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
 
 | Rekordtípus | Gazda | Érték | Megjegyzések |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
 | TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
 
 A CNAME és TXT rekordok hozzáadása után a DNS-rekordok oldal a következő példához hasonlóan néz ki:
@@ -210,7 +210,7 @@ Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfel
 > | Rekordtípus | Gazda | Érték |
 > | - | - | - |
 > | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 A rekordok hozzáadása után a DNS-rekordok oldala a következő példához hasonlóan jelenik meg:
@@ -262,9 +262,14 @@ Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-neve
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Adjon hozzá egy CNAME-rekordot a helyettesítő karakter nevének az alkalmazás alapértelmezett tartománynevéhez () való leképezéséhez `<app_name>.azurewebsites.net` .
+Rendelje hozzá a helyettesítő karaktert `*` az alkalmazás alapértelmezett tartománynevéhez ( `<app-name>.azurewebsites.net` ahol az az `<app-name>` alkalmazás neve). A helyettesítő karakter nevének leképezéséhez hozzon létre két rekordot:
 
-A `*.contoso.com` tartomány példájában a CNAME rekord a `*` előtagot a `<app_name>.azurewebsites.net` elemre képezi le.
+| Rekordtípus | Gazda | Érték | Megjegyzések |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
+| TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
+
+A `*.contoso.com` tartomány példájában a CNAME rekord a `*` előtagot a `<app-name>.azurewebsites.net` elemre képezi le.
 
 A CNAME hozzáadása után a DNS-rekordok oldala a következő példához hasonlóan jelenik meg:
 
@@ -272,7 +277,7 @@ A CNAME hozzáadása után a DNS-rekordok oldala a következő példához hasonl
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>A CNAME rekord hozzárendelésének engedélyezése az alkalmazásban
 
-Most már bármilyen altartományt hozzáadhat az alkalmazáshoz, amely megfelel a helyettesítő karaktert tartalmazó névnek (például a `sub1.contoso.com` és a `sub2.contoso.com` megfelel a `*.contoso.com` névnek).
+Mostantól hozzáadhat bármely olyan altartományt, amely megfelel a helyettesítő karakteres névnek (például `sub1.contoso.com` és `sub2.contoso.com` mindkét egyezés `*.contoso.com` ).
 
 Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet.
 
@@ -342,7 +347,7 @@ A következő parancs konfigurált egyéni DNS-nevet ad hozzá egy App Service-a
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ A következő parancs konfigurált egyéni DNS-nevet ad hozzá egy App Service-a
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 További információ: [Egyéni tartomány hozzárendelése egy webalkalmazáshoz](scripts/powershell-configure-custom-domain.md).

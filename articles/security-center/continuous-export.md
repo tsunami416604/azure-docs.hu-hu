@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d101acd3e72e68efd9198cb273fd352967a0cd54
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042322"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192365"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok exportálása
 
@@ -35,7 +35,7 @@ Az alábbi eszközöket használhatja:
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető|
 |Árképzési|Ingyenes szint|
-|Szükséges szerepkörök és engedélyek:|Az exportálási konfigurációt tartalmazó előfizetés **olvasója**<br>**Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie|
+|Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
@@ -133,7 +133,7 @@ A riasztások vagy javaslatok CSV-jelentésének letöltéséhez nyissa meg a **
 > [!NOTE]
 > Ezek a jelentések riasztásokat és javaslatokat tartalmaznak az aktuálisan kijelölt előfizetésekben lévő erőforrásokra vonatkozóan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 

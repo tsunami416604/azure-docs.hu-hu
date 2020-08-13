@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault áttekintése – Azure Key Vault | Microsoft Docs
-description: Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik.
+description: A Azure Key Vault egy biztonságos titkos kulcsokat tároló eszköz, amely a hardveres biztonsági modulok által támogatott titkokat, kulcsokat és tanúsítványokat biztosít.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216323"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190546"
 ---
 # <a name="about-azure-key-vault"></a>Információk az Azure Key Vaultról
 
@@ -78,7 +78,7 @@ Az Azure-beli Biztonságos tár Key Vault a következő forgatókönyvek egyszer
 
 A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-certificates.md)
 - [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](../secrets/quick-create-cli.md)

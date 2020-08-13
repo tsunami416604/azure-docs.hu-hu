@@ -1,18 +1,18 @@
 ---
 title: 'Hálózati partnerek: Azure Networking | Microsoft Docs'
-description: Ez a cikk az MSP hálózati partnerek listáját tartalmazza
+description: Ismerje meg az Azure hálózatkezelési szolgáltatással felügyelt szolgáltatói partner programját, és keresse meg a felhőalapú és a hibrid hálózatkezelési szolgáltatásokat kínáló partnerek listáját.
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 841c4d85dee829eeebaef17e6ff12343d9940d03
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282109"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192041"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 

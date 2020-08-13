@@ -3,20 +3,20 @@ title: Ismert problémák & hibaelhárítás során
 titleSuffix: Azure Machine Learning
 description: Segítség kérése a Azure Machine Learning hibák vagy hibák kereséséhez és javításához. Ismerje meg az ismert problémákat, a hibaelhárítást és a megkerülő megoldásokat.
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120762"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190503"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -203,7 +203,7 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
 |Képek áttekintésekor az újonnan címkézett képek nem jelennek meg.     |   Az összes címkézett kép betöltéséhez válassza az **első** gombot. Az **első** gomb a lista elejére kerül, de az összes címkével ellátott adattal betöltődik.      |
 |Az ESC billentyű lenyomásával az objektumok észlelése során a rendszer nulla méretű címkét hoz létre a bal felső sarokban. Az ebben az állapotban lévő címkék elküldése sikertelen.     |   Törölje a címkét a mellette lévő kereszt jelre kattintva.  |
 
-### <a name="data-drift-monitors"></a><a name="data-drift"></a>Adatdrift figyelők
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> Adatdrift figyelők
 
 Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
 
@@ -248,6 +248,27 @@ A modell adatgyűjtője akár 10 percet is igénybe vehet, amíg az adatok megé
 ```python
 import time
 time.sleep(600)
+```
+
+* **Valós idejű végpontok naplója:**
+
+A valós idejű végpontok naplófájljai a vásárlói adatmennyiség. A valós idejű végpontok hibaelhárításához a következő kódot használhatja a naplók engedélyezéséhez. 
+
+További részletek a webszolgáltatási végpontok figyeléséről [ebben a cikkben](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models).
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+Ha több Bérlővel rendelkezik, előfordulhat, hogy a következő hitelesítő kódot kell megadnia, mielőtt `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>Modellek betanítása
@@ -306,14 +327,14 @@ time.sleep(600)
     * Windows rendszeren futtasson automl_setup egy Anaconda-parancssorból. A Miniconda telepítéséhez kattintson [ide](https://docs.conda.io/en/latest/miniconda.html).
     * A parancs futtatásával győződjön meg arról, hogy a 64 bites Conda telepítve van, és nem 32 bites `conda info` . A legyen `platform` `win-64` Windows vagy Mac rendszerű `osx-64` .
     * Győződjön meg arról, hogy a Conda 4.4.10 vagy újabb verziója telepítve van. A verziót a paranccsal lehet megtekinteni `conda -V` . Ha telepítve van egy korábbi verziója, a paranccsal frissítheti a parancsot: `conda update conda` .
-    * Linux`gcc: error trying to exec 'cc1plus'`
+    * Linux `gcc: error trying to exec 'cc1plus'`
       *  Ha a `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` hiba előfordul, telepítse a Build Essentials-t a ther parancs használatával `sudo apt-get install build-essential` .
       * Új Conda-környezet létrehozásához adjon meg egy új nevet az első paraméterként automl_setup. Megtekintheti a meglévő Conda-környezeteket `conda env list` , és eltávolíthatja őket a használatával `conda env remove -n <environmentname>` .
       
 * a **automl_setup_linux. sh sikertelen**: ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
   1. Győződjön meg arról, hogy a 53-es és a 80-es kimenő portok engedélyezve vannak. Egy Azure-beli virtuális gépen ezt megteheti az Azure Portalon, ha kiválasztja a virtuális gépet, majd a hálózat lehetőségre kattint.
-  2. Futtassa a parancsot:`sudo apt-get update`
-  3. Futtassa a parancsot:`sudo apt-get install build-essential --fix-missing`
+  2. Futtassa a parancsot: `sudo apt-get update`
+  3. Futtassa a parancsot: `sudo apt-get install build-essential --fix-missing`
   4. Futtatás `automl_setup_linux.sh` újra
 
 * a **Configuration. ipynb sikertelen**:
@@ -329,7 +350,7 @@ time.sleep(600)
   1. Győződjön meg arról, hogy a Configuration. ipynb jegyzetfüzet sikeresen futott.
   2. Ha a jegyzetfüzet olyan mappából fut, amely nem a `configuration.ipynb` futtatott mappában található, másolja a aml_config mappát, és a fájl config.jsaz új mappába. Munkaterület. from_config beolvassa a config.jsa jegyzetfüzet mappájába vagy a szülőmappa mappájába.
   3. Ha új előfizetést, erőforráscsoportot, munkaterületet vagy régiót használ, győződjön meg arról, hogy a `configuration.ipynb` jegyzetfüzetet újra futtatja. config.jsközvetlen módosítása csak akkor működik, ha a munkaterület már létezik a megadott erőforrás-csoportban a megadott előfizetésben.
-  4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create`a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
+  4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create` a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
   
 * A **minta jegyzetfüzet sikertelen**: Ha egy minta jegyzetfüzet hibát jelez, a metódus vagy a könyvtár nem létezik:
   * Győződjön meg arról, hogy a correctcorrect kernel ki van választva a jupyter jegyzetfüzetben. A kernel a notebook oldal jobb felső sarkában jelenik meg. Az alapértelmezett érték azure_automl. Vegye figyelembe, hogy a rendszer a rendszermagot a jegyzetfüzet részeként menti. Ha tehát új Conda-környezetre vált, ki kell választania az új kernelt a jegyzetfüzetben.
@@ -352,7 +373,7 @@ Tegye a következő hibákat a műveletekhez:
 |---------|---------|
 |Rendszerkép-létrehozási hiba a webszolgáltatás telepítésekor     |  A "pynacl = = 1.2.1" hozzáadása pip-függőségként a Conda-fájlhoz a rendszerkép-konfigurációhoz       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   A központi telepítésben használt virtuális gépek SKU-jának módosítása több memóriával. |
-|FPGA hiba     |  A modelleket nem fogja tudni telepíteni a FPGA, amíg nem kérelmezi és nem hagyta jóvá a FPGA-kvótát. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot:https://aka.ms/aml-real-time-ai       |
+|FPGA hiba     |  A modelleket nem fogja tudni telepíteni a FPGA, amíg nem kérelmezi és nem hagyta jóvá a FPGA-kvótát. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai       |
 
 ### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Azure Machine Learning összetevők frissítése az AK-fürtben
 
@@ -416,7 +437,7 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

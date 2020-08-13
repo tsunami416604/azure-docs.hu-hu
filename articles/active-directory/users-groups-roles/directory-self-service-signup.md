@@ -10,40 +10,44 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: overview
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015867"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192707"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi a Azure Active Directory önkiszolgáló regisztrációja?
 
 Ez a cikk azt ismerteti, hogyan használhatja az önkiszolgáló regisztrációt Azure Active Directory (Azure AD) szervezetének feltöltéséhez. Ha egy nem felügyelt Azure AD-szervezetből szeretne tartománynevet átvenni, tekintse meg a nem [felügyelt címtár átvétele rendszergazdaként](domains-admin-takeover.md)című témakört.
 
 ## <a name="why-use-self-service-sign-up"></a>Miért érdemes önkiszolgáló regisztrációt használni?
+
 * Az ügyfeleket gyorsabban szeretnék lekérni
 * E-mail-alapú ajánlatok létrehozása szolgáltatáshoz
 * Hozzon létre e-mail-alapú regisztrációs folyamatokat, amelyekkel gyorsan engedélyezheti a felhasználók számára, hogy identitásokat hozzanak létre a könnyen megjegyezhető munkahelyi e-mail Aliasok használatával
 * Az önkiszolgáló által létrehozott Azure AD-címtár olyan felügyelt címtárba kapcsolható, amely más szolgáltatásokhoz is használható
 
 ## <a name="terms-and-definitions"></a>Feltételek és definíciók
+
 * **Önkiszolgáló regisztráció**: ez az a módszer, amellyel a felhasználó feliratkozik egy felhőalapú szolgáltatásra, és az Azure ad-ben automatikusan létrejön egy identitás az e-mail tartományuk alapján.
 * Nem **felügyelt Azure ad-címtár**: ez az a könyvtár, amelyben a rendszer létrehozta az identitást. A nem felügyelt könyvtárak olyan könyvtárak, amelyeknek nincs globális rendszergazdája.
 * E- **mailben ellenőrzött felhasználó**: ez az Azure ad-beli felhasználói fiók. Az önkiszolgáló ajánlatra való regisztráció után automatikusan létrehozott identitással rendelkező felhasználó e-mailben ellenőrzött felhasználó néven ismert. Az e-mailek által ellenőrzött felhasználók a creationmethod = EmailVerified címkével ellátott címtár szabályos tagja.
 
 ## <a name="how-do-i-control-self-service-settings"></a>Hogyan szabályozhatja az önkiszolgáló beállításokat?
+
 A rendszergazdáknak jelenleg két önkiszolgáló vezérlője van. Megadhatják, hogy:
 
 * A felhasználók e-mailben csatlakozhatnak a címtárhoz
 * A felhasználók licenccel rendelkezhetnek az alkalmazásokhoz és szolgáltatásokhoz
 
 ### <a name="how-can-i-control-these-capabilities"></a>Hogyan szabályozható ezek a képességek?
+
 A rendszergazdák a következő Azure AD-parancsmagok Msolcompanysettings parancsmagjával paramétereinek használatával konfigurálhatják ezeket a képességeket:
 
 * A **AllowEmailVerifiedUsers** szabályozza, hogy egy felhasználó létrehozhat-e vagy csatlakozhat-e egy címtárhoz. Ha úgy állítja be ezt a paramétert, hogy $false, akkor az e-mailek által ellenőrzött felhasználók nem csatlakozhatnak a címtárhoz.
@@ -57,7 +61,7 @@ A AllowEmailVerifiedUsers és a AllowAdHocSubscriptions olyan címtár-szintű b
 
 Ha az előző feltételek teljesülnek, akkor a rendszer létrehoz egy tagot a kezdőlapon, és létrehoz egy B2B vendég felhasználót a meghívó címtárban.
 
-A flow és a PowerApps próbaverzióját nem a **AllowAdHocSubscriptions** beállítás vezérli. További információkért tekintse át a következő cikkeket:
+A flow-és a PowerApps-regisztrációval kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Hogyan gátolható meg, hogy a meglévő felhasználók elkezdjék használni a Power BI-t?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [A Flow a munkahelyen – kérdések és válaszok](https://docs.microsoft.com/flow/organization-q-and-a)
@@ -75,7 +79,7 @@ A következő folyamatábra ismerteti a paraméterek különböző kombinációi
 
 További információt és példákat a paraméterek használatáról a [set-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
 * [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)

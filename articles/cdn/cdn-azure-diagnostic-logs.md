@@ -1,7 +1,7 @@
 ---
 title: Diagnosztikai naplók
 titleSuffix: Azure Content Delivery Network
-description: Az ügyfél engedélyezheti Azure CDN naplózási elemzését.
+description: Ismerje meg, hogyan használhatja az Azure diagnosztikai naplókat az alapvető elemzések mentéséhez, amely lehetővé teszi a használati metrikák exportálását az Azure Content Delivery Network-végpontból.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: dbaba67a163bb0f948de5ba2ebbdba5497ad5ff9
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116976"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191286"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnosztikai naplók – Azure Content Delivery Network
 
@@ -221,7 +221,7 @@ Az alapvető elemzések eléréséhez meg kell adni az eszközhöz tartozó mint
 
 A következőképpen használhatja az eszközt:
 
-1.  Látogasson el a GitHub-hivatkozásra:[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Látogasson el a GitHub-hivatkozásra: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Töltse le a kódot.
 3.  A fordításhoz és a konfiguráláshoz kövesse az utasításokat.
 4.  Futtassa az eszközt.
@@ -257,16 +257,16 @@ Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen elté
 | RequestCountHttpStatus4xx | Az 4xx HTTP-kódot eredményező kérések száma (például 400, 404). | Igen | Igen |Igen |
 | RequestCountHttpStatus5xx | Az 5xx HTTP-kódot eredményező kérések száma (például 500, 504). | Igen | Igen |Igen |
 | RequestCountHttpStatusOthers | Az összes többi HTTP-kód száma (a 2xx-5xx kívül). | Igen | Igen |Igen |
-| RequestCountHttpStatus200 | Az 200 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
-| RequestCountHttpStatus206 | Az 206 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
-| RequestCountHttpStatus302 | Az 302 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
-| RequestCountHttpStatus304 | Az 304 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
-| RequestCountHttpStatus404 | Az 404 HTTP-kód válaszát eredményező kérések száma. | Yes | Nem  |Yes |
+| RequestCountHttpStatus200 | Az 200 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus206 | Az 206 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus302 | Az 302 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus304 | Az 304 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus404 | Az 404 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
 | RequestCountCacheHit | A gyorsítótárban találatot eredményező kérések száma. Az eszköz közvetlenül a POP-ból a-ügyfélhez lett kézbesítve. | Igen | Igen | Nem  |
 | RequestCountCacheMiss | A gyorsítótárból kihagyott összes kérelem száma. A gyorsítótár-kihagyás azt jelenti, hogy az eszköz nem található az ügyfélhez legközelebb lévő POP-ban, és a forrásból lett beolvasva. | Igen | Igen | Nem |
 | RequestCountCacheNoCache | Az eszközre irányuló, a peremhálózati felhasználói konfiguráció miatt nem gyorsítótárazott kérelmek száma. | Igen | Igen | Nem |
 | RequestCountCacheUncacheable | Azon eszközökre irányuló kérelmek száma, amelyeket az eszköz gyorsítótár-vezérlése nem gyorsítótárazhat, és a fejlécek lejárnak. Ez a szám azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
-| RequestCountCacheOthers | Az összes olyan kérelem száma, amelynél a gyorsítótár állapota nem szerepel a fentiekben. | Nem | Yes | Nem  |
+| RequestCountCacheOthers | Az összes olyan kérelem száma, amelynél a gyorsítótár állapota nem szerepel a fentiekben. | Nem | Igen | Nem  |
 | EgressTotal | Kimenő adatforgalom GB-ban | Igen |Igen |Igen |
 | EgressHttpStatus2xx | Kimenő adatátvitel * a 2xx HTTP-állapotkódok GB-ban való kitöltéséhez. | Igen | Igen | Nem  |
 | EgressHttpStatus3xx | Kimenő adatforgalom a 3xx HTTP-állapotkódot tartalmazó válaszok esetében GB-ban. | Igen | Igen | Nem  |
@@ -277,7 +277,7 @@ Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen elté
 | EgressCacheMiss. | Kimenő adatforgalom a legközelebbi POP-kiszolgálón nem található válaszok esetében, és a rendszer lekéri a forrás-kiszolgálóról. | Igen | Igen | Nem |
 | EgressCacheNoCache | A kimenő adatforgalom olyan eszközök esetében, amelyek a peremhálózat felhasználói konfigurációja miatt nem gyorsítótárazva vannak. | Igen | Igen | Nem |
 | EgressCacheUncacheable | Kimenő adatforgalom olyan eszközökön, amelyeket az objektum cache-Control és a fejlécek lejárta miatt nem gyorsítótárazhat. Azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
-| EgressCacheOthers | Kimenő adatforgalom más gyorsítótár-forgatókönyvekhez. | Nem | Yes | Nem |
+| EgressCacheOthers | Kimenő adatforgalom más gyorsítótár-forgatókönyvekhez. | Nem | Igen | Nem |
 
 * A kimenő adatátvitel a CDN POP-kiszolgálókról az ügyfélnek továbbított forgalomra utal.
 

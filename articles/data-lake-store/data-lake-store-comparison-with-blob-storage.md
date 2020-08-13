@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 összehasonlítása blob Storage-val
-description: A Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségek összegzését tartalmazza.
+description: Ismerkedjen meg a Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségekkel big data feldolgozás néhány kulcsfontosságú aspektusával kapcsolatban.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: f9a03b5636af4a60c4abf563e073e22c970b8a02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6662beec47d663f92e453f52d190e41518108b0d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921777"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191479"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 

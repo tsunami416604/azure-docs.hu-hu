@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/12/2020
+ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536215"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192746"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Wide and Deep ajánló pontozása
 
@@ -33,7 +33,7 @@ Az utóbbi típusú előrejelzések létrehozásakor akár *üzemi módban* , ak
 
 - A **kiértékelési mód** a felhasználók vagy a kiértékelhető elemek csökkentett készletén működik, és általában a kísérletezés során használatos.
 
-A széles körű és részletes ajánló és a mögöttes elmélet további részletei a megfelelő kutatási dokumentumban olvashatók: [széles körű & az ajánló rendszerek mélyreható megismerése](https://arxiv.org/pdf/1606.07792.pdf).  
+A széles körű és részletes ajánló és a mögöttes elmélet további részletei a megfelelő kutatási dokumentumban olvashatók:  [széles körű & az ajánló rendszerek mélyreható megismerése](https://arxiv.org/pdf/1606.07792.pdf).  
 
 ## <a name="how-to-configure-score-wide-and-deep-recommender"></a>A pontszám széles és mély ajánlójának konfigurálása
 
@@ -147,9 +147,6 @@ A **pontszám széles és részletes ajánlója** által visszaadott pontozásos
 
 - Az első oszlop tartalmazza a felhasználói azonosítókat.
 - Számos további oszlop jön létre, attól függően, hogy milyen értékre van beállítva a **felhasználó számára ajánlott elemek maximális száma**. Minden oszlop egy javasolt (azonosítóval rendelkező) tételt tartalmaz. Az ajánlásokat a felhasználó-elem affinitása alapján rendezi a rendszer, a legmagasabb affinitású elemmel pedig az **1. tételt**.
-
-> [!WARNING]
-> Ezt a pontszámmal rendelkező adatkészletet nem lehet kiértékelni a [kiértékelést ajánló](evaluate-recommender.md) modul használatával.
 
 ##  <a name="technical-notes"></a>Technikai megjegyzések
 

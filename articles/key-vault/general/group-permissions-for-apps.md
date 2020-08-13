@@ -1,6 +1,6 @@
 ---
 title: Engedélyek megadása az alkalmazásoknak az Azure Key Vault eléréséhez – Azure Key Vault | Microsoft Docs
-description: Megtudhatja, hogyan biztosíthat engedélyt számos alkalmazás számára egy kulcstartó eléréséhez
+description: Megtudhatja, hogyan regisztrálhat egy egyszerű szolgáltatást manuálisan, és hogyan biztosíthat hozzáférést a Azure Key Vaulthoz egy hozzáférés-vezérlési házirend használatával, amely bizonyos esetekben szükséges lehet.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1b3f03458211e57f51c39cb5ca8da83943280aa8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406248"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192005"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 

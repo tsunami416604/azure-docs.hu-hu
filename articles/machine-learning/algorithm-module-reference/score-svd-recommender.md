@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455978"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189813"
 ---
 # <a name="score-svd-recommender"></a>SVD-ajánló pontozása
 
@@ -108,9 +108,6 @@ A score SVD ajánló által visszaadott pontozásos adatkészlet felsorolja az e
 - Az első oszlop tartalmazza a felhasználói azonosítókat.
 - Számos további oszlop jön létre, attól függően, hogy milyen értékre van beállítva a **felhasználó számára ajánlott elemek maximális száma**. Minden oszlop egy javasolt (azonosítóval rendelkező) tételt tartalmaz. A javaslatok a felhasználó-tétel affinitás szerint vannak rendezve. A legmagasabb affinitású tétel az **1**. oszlopba kerül.
 
-> [!WARNING]
-> Ezt a pontozásos adatkészletet a [kiértékelést ajánló](evaluate-recommender.md) modul használatával nem értékelheti ki.
-
 
 ##  <a name="technical-notes"></a>Technikai megjegyzések
 
@@ -121,6 +118,6 @@ A kiértékeléshez a definíció szerint olyan előrejelzések szükségesek, a
 A modell működővé tenni az előrejelzési módot általában úgy módosítja, hogy az összes lehetséges elem alapján javaslatokat tegyen, hogy a lehető legjobb előrejelzések legyenek. Ezen előrejelzések nagy része nem rendelkezik megfelelő indokokkal. Így az ajánlás pontossága nem ellenőrizhető ugyanúgy, mint a folyamat műveletei során.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

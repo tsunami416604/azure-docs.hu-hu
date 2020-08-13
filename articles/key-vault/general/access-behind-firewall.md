@@ -1,6 +1,6 @@
 ---
 title: Hozzáférés Key Vault tűzfal mögött – Azure Key Vault | Microsoft Docs
-description: Megtudhatja, hogyan lehet elérni a tűzfal mögötti Azure Key Vaultot egy alkalmazásból
+description: Ismerje meg azokat a portokat, gazdagépeket vagy IP-címeket, amelyek lehetővé teszik a Key Vault-ügyfélalkalmazások tűzfal mögötti alkalmazását a kulcstartó eléréséhez.
 services: key-vault
 author: amitbapat
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 273579fb3dee1e941e9f464a1956189c8808c694
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834322"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190469"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault elérése tűzfal mögött
 
@@ -72,6 +72,6 @@ A Key Vault szolgáltatás egyéb Azure-erőforrásokat is használ, amilyen pé
 
 A Hitelesítés és identitás (Azure Active Directory) egy globális szolgáltatás, és előfordulhat, hogy értesítés nélkül ad át feladatot más régióknak vagy helyez át forgalmat. Ebben a forgatókönyvben minden, a [Hitelesítés és identitás – IP-címek](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) szakaszban felsorolt IP-tartományt hozzá kell adni a tűzfalhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van a Key Vaultval kapcsolatban, látogasson el a [Microsoft Q&a Azure Key Vault kérdéseit tartalmazó oldalra](https://docs.microsoft.com/answers/topics/azure-key-vault.html).

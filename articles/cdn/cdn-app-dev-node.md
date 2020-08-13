@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés a Node.js Azure CDN SDK-val | Microsoft Docs
-description: Megtudhatja, hogyan írhat Node.js-alkalmazásokat a Azure CDN kezelésére.
+description: Megtudhatja, hogyan hozhat létre egy egyszerű Node.js Console-alkalmazást, amely bemutatja, hogyan automatizálható Azure CDN profilok és végpontok létrehozása és kezelése.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 96dc7e8d9fb647779fc2188fe36fe9fbced2e53c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387489"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190711"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "87387489"
 > 
 > 
 
-A [Node.jsAzure CDN SDK](https://www.npmjs.com/package/azure-arm-cdn) -val a CDN-profilok és-végpontok létrehozásának és kezelésének automatizálására használható.  Ez az oktatóanyag végigvezeti egy egyszerű Node.js Console-alkalmazás létrehozásán, amely számos elérhető műveletet mutat be.  Ez az oktatóanyag nem ismerteti részletesen a Azure CDN SDK Node.js összes aspektusát.
+A [Node.jsAzure CDN SDK ](https://www.npmjs.com/package/azure-arm-cdn) -val a CDN-profilok és-végpontok létrehozásának és kezelésének automatizálására használható.  Ez az oktatóanyag végigvezeti egy egyszerű Node.js Console-alkalmazás létrehozásán, amely számos elérhető műveletet mutat be.  Ez az oktatóanyag nem ismerteti részletesen a Azure CDN SDK Node.js összes aspektusát.
 
 Az oktatóanyag elvégzéséhez már [Node.js](https://www.nodejs.org) **4. x. x** vagy újabb verzió van telepítve és konfigurálva.  Használhat bármely szövegszerkesztőt, amelyben létre kívánja hozni a Node.js alkalmazást.  Az oktatóanyag írásához a [Visual Studio Code](https://code.visualstudio.com)-ot használtuk.  
 
@@ -345,7 +345,7 @@ function cdnDelete() {
 Most már a kedvenc hibakeresőnk vagy a konzolon is végrehajtjuk Node.js programot.
 
 > [!TIP]
-> Ha hibakeresőként használja a Visual Studio Code-ot, be kell állítania a környezetét, hogy az átadja a parancssori paramétereket.  A Visual Studio Code ezt a fájl **launch.js** .  Keresse meg az **argumentumok** nevű tulajdonságot, és adjon hozzá karakterlánc-értékeket a paraméterekhez, hogy az a következőhöz hasonlóan néz ki: `"args": ["list", "profiles"]` .
+> Ha hibakeresőként használja a Visual Studio Code-ot, be kell állítania a környezetét, hogy az átadja a parancssori paramétereket.  A Visual Studio Code ezt a fájl **launch.js** .  Keresse meg az **argumentumok** nevű tulajdonságot, és adjon hozzá karakterlánc-értékeket a paraméterekhez, hogy az a következőhöz hasonlóan néz ki:  `"args": ["list", "profiles"]` .
 > 
 > 
 

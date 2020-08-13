@@ -1,18 +1,18 @@
 ---
 title: Tudnivalók az Azure ExpressRoute Directről
-description: Ez az oldal áttekintést nyújt a ExpressRoute Directről
+description: Ismerje meg az Azure ExpressRoute Direct főbb funkcióit, valamint azokat az információkat, amelyek a közvetlen ExpressRoute, például az elérhető SKU-hoz és a technikai követelményekhez szükségesek.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083606"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192345"
 ---
 # <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
 
@@ -91,6 +91,6 @@ A ExpressRoute Direct a QinQ és a Dot1Q VLAN-címkézést is támogatja.
 
 A ExpressRoute Direct a Microsoft globális hálózatának aktív/aktív redundáns kapcsolataival azonos nagyvállalati szintű SLA-t biztosít. A ExpressRoute-infrastruktúra redundáns és a Microsoft globális hálózattal való kapcsolat redundáns és sokrétű, és ennek megfelelően méretezhető az ügyfelek igényei szerint. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az ExpressRoute Direct konfigurálása](expressroute-howto-erdirect.md)

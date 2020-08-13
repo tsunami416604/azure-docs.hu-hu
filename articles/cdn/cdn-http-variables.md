@@ -1,6 +1,6 @@
 ---
 title: A Azure CDN Rules Engine HTTP-változói | Microsoft Docs
-description: A HTTP-változók lehetővé teszik a HTTP-kérések és a válasz metaadatainak beolvasását.
+description: További információ a HTTP-változókról, amelyek lehetővé teszik a HTTP-kérések és a válaszok metaadatainak beolvasását bizonyos szabályokhoz. Metaadatok használata kérelem/válasz megváltoztatásához.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203572"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192673"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabályok motorjának HTTP-változói
 A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beolvasására szolgáló eszközöket. Ez a metaadatok ezután a kérések és válaszok dinamikus módosítására használhatók. A HTTP-változók használata a következő szabályok motor-funkcióihoz korlátozódik:
@@ -34,7 +34,7 @@ A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beo
 A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer üres értéket ad vissza, ha a GEO-metaadatok (például postai kód) nem érhetők el egy adott kéréshez.
 
 
-| Név | Változó | Leírás | Mintaérték |
+| Name | Változó | Leírás | Mintaérték |
 | ---- | -------- | ----------- | ------------ |
 | ASN (kérelmező) | % {geo_asnum} | Megadja a kérelmező AS-számát. <br /><br />**Elavult:** % {virt_dst_asnum}. <br />Ez a változó a (z)% {geo_asnum} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | AS15133 |
 | Város (kérelmező) | % {geo_city} | A kérelmező városát jelzi. | Los Angeles |
@@ -42,7 +42,7 @@ A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer �
 | Cookie értéke | % {cookie_Cookie} | A cookie-kifejezés által azonosított cookie-kulcsnak megfelelő értéket adja vissza. | Minta használata: <br />% {cookie__utma}<br /><br />Minta értéke:<br />111662281.2.10.1222100123 |
 | Ország/régió (kérelmező) | % {geo_country} | Azt jelzi, hogy a kérelmező országa/régiója az ország/régió kódja alapján van-e. <br />**Elavult:** % {virt_dst_country}. <br /><br />Ez a változó a (z)% {geo_country} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | USA |
 | Kijelölt piaci térség (kérelmező) | % {geo_dma_code} |A kérelmező adathordozó-piacát jelzi a régió kódja alapján. <br /><br />Ez a mező csak a Egyesült Államokból származó kérelmekre vonatkozik.| 745 |
-| HTTP-kérelem módszere | % {request_method} | A HTTP-kérés módszerét jelzi. | GET |
+| HTTP-kérési metódus | % {request_method} | A HTTP-kérés módszerét jelzi. | GET |
 | HTTP-állapotkód | % {Status} | Megadja a válasz HTTP-állapotkódot. | 200 |
 | IP-cím (kérelmező) | % {virt_dst_addr} | A kérelmező IP-címét jelzi. | 192.168.1.1 |
 | Földrajzi szélesség (kérelmező) | % {geo_latitude} | A kérelmező szélességét jelzi. | 34,0995 |
@@ -69,10 +69,10 @@ A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer �
 Az alábbi táblázat a HTTP-változó megadásának megfelelő szintaxisát ismerteti.
 
 
-| Syntax | Példa | Leírás |
+| Szintaxis | Példa | Description |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {gazdagép} | Használja ezt a szintaxist a megadott HTTPVariable megfelelő teljes érték beolvasásához &lt; &gt; . |
-| % { &lt; HTTPVariableDelimiter &gt; } | % {gazdagép,} | Ezzel a szintaxissal állíthatja be a megadott HTTPVariableDelimiter megfelelő teljes értékhez tartozó esetet &lt; &gt; . |
+| % { &lt; HTTPVariableDelimiter &gt; } | % {gazdagép,} | Ezzel a szintaxissal állíthatja be a megadott HTTPVariableDelimiter megfelelő teljes értékhez tartozó esetet  &lt; &gt; . |
 | % { &lt; HTTPVariableDelimiterExpression &gt; } | % {Host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | Használjon reguláris kifejezést a &lt; &gt; http-változó értékének lecserélése, törlése és módosítása HTTPVariableDelimiterExpression. |
 
 A HTTP-változók nevei csak betűket és aláhúzást támogatnak. A nem támogatott karakterek konvertálása aláhúzásra.
@@ -92,7 +92,7 @@ Ha egy HTTP-változó a következő hatások bármelyikét elérheti, elválaszt
 
 Az elhatárolókat az alábbi táblázat ismerteti.
 
-| Elválasztó | Leírás |
+| Elválasztó | Description |
 | --------- | ----------- |
 | := | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha a következők valamelyike: <br />-Hiányzó <br />-NULL értékűre van állítva. |
 | :+ | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha hozzá van rendelve egy érték. |
@@ -125,7 +125,7 @@ Egy alapértelmezett érték rendelhető hozzá egy fejléchez, ha az megfelel a
 
 Az alábbi táblázat leírja, hogyan határozhat meg alapértelmezett értéket.
 
-| Feltétel | Syntax | Példa | Leírás |
+| Feltétel | Szintaxis | Példa | Description |
 | --------- | ------ | --------| ----------- |
 | Állítsa be az alapértelmezett érték fejlécét, ha az megfelel a következő feltételek bármelyikének: <br /><br />-Hiányzó fejléc <br /><br />– A fejléc értéke NULL értékre van állítva.| % {Változó: = érték} | % {http_referrer: = meghatározatlan} | A hivatkozó fejléc csak akkor lesz *meghatározatlan* , ha hiányzik vagy NULL értékűre van állítva. Ha be van állítva, semmilyen művelet nem kerül sor. |
 | Ha hiányzik, állítsa be a fejlécet az alapértelmezett értékre. | % {Változó = érték} | % {http_referrer = meghatározatlan} | A hivatkozó fejléc csak akkor lesz *meghatározatlan* értékre állítva, ha hiányzik. Ha be van állítva, semmilyen művelet nem kerül sor. |
@@ -174,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Minta eltávolítása
 Egy adott mintázatnak megfelelő szöveg eltávolítható egy változó értékének elejéről vagy végéről.
 
-| Syntax | Művelet |
+| Szintaxis | Művelet |
 | ------ | ------ |
 | % {Változó # minta} | Szöveg eltávolítása, ha a megadott minta a változó értékének elején található. |
 | % {Változó% Pattern} | A szöveg eltávolítása, ha a megadott minta a változó értékének végén található. |
@@ -187,7 +187,7 @@ Ebben a példában a *REQUEST_URI* változó a következőre van beállítva:
 
 A következő táblázat bemutatja, hogyan működik ez a szintaxis.
 
-| Minta szintaxisa | Eredmények | Leírás |
+| Minta szintaxisa | Results (Eredmények) | Description |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Mivel a változó a mintával kezdődik, lecserélték. |
 | % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Mivel a változó nem a mintával végződik, nem történt változás.|
@@ -195,7 +195,7 @@ A következő táblázat bemutatja, hogyan működik ez a szintaxis.
 ### <a name="find-and-replace"></a>Keresés és csere
 A Find és a Replace szintaxist az alábbi táblázat ismerteti.
 
-| Syntax | Művelet |
+| Szintaxis | Művelet |
 | ------ | ------ |
 | % {Változó/Keresés/csere} | A megadott minta első előfordulásának megkeresése és cseréje. |
 | % {Változó//Keresés/csere} | A megadott minta összes előfordulásának megkeresése és cseréje. |
@@ -207,7 +207,7 @@ A Find és a Replace szintaxist az alábbi táblázat ismerteti.
 ### <a name="find-and-rewrite"></a>Keresés és újraírás
 A keresés és csere megváltoztatásához használja a megadott mintának megfelelő szöveget az újraíráskor. A keresés és az újraírás szintaxisát az alábbi táblázat ismerteti.
 
-| Syntax | Művelet |
+| Szintaxis | Művelet |
 | ------ | ------ |
 | % {Változó/= keresés/újraírás} | A megadott minta összes előfordulásának megkeresése, másolása és újraírása. |
 | % {Változó/^ keresés/újraírás} | A megadott minta megkeresése, másolása és újraírása a változó elején. |

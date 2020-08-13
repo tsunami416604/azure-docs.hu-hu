@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8032e8809f7849ab7497da7821788c017adff12d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212054"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192314"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrás-osztályok átalakítása munkaterhelés-csoportokra
 
@@ -44,13 +44,13 @@ Mivel a munkaterhelés-csoportok a teljes rendszererőforrások százalékos ar�
 
 Az ismertnél a munkaterhelés `REQUEST_MIN_RESOURCE_GRANT_PERCENT` -csoport létrehozása <link> szintaxissal hozhatja létre a munkaterhelés csoportot.  Megadhat egy `MIN_PERCENTAGE_RESOURCE` nullánál nagyobb értéket is, ha el szeretné különíteni a munkaterhelés-csoport erőforrásait.  Azt is megteheti, `CAP_PERCENTAGE_RESOURCE` hogy a munkaterhelési csoport által felhasznált erőforrások mennyiségének korlátozásához a 100-nál kisebb értéket is megadhat.  
 
-Az alábbi példa azt állítja be, hogy a rendszer a rendszererőforrások 9,6%-át felhasználja, `MIN_PERCENTAGE_RESOURCE` `wgDataLoads` és garantálja, hogy az egyik lekérdezés minden alkalommal képes lesz futni.  Emellett a `CAP_PERCENTAGE_RESOURCE` 38,4% értékre van állítva, és a számítási feladatnak négy egyidejű kérésre van korlátozva.  `QUERY_EXECUTION_TIMEOUT_SEC`Ha a paramétert 3600-ra állítja, a rendszer minden olyan lekérdezést automatikusan megszakít, amely 1 óránál hosszabb ideig fut.
+A mediumrc használata példaként az alábbi kód azt állítja be, hogy a `MIN_PERCENTAGE_RESOURCE` rendszererőforrások 10%-át fordítsa el, `wgDataLoads` és garantálja, hogy az egyik lekérdezés mindig képes legyen futni.  Emellett a `CAP_PERCENTAGE_RESOURCE` 40% értékre van állítva, és a számítási feladatnak négy egyidejű kérésre van korlátozva.  `QUERY_EXECUTION_TIMEOUT_SEC`Ha a paramétert 3600-ra állítja, a rendszer minden olyan lekérdezést automatikusan megszakít, amely 1 óránál hosszabb ideig fut.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 
@@ -59,7 +59,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 Korábban a lekérdezéseknek az erőforrás-osztályokra való leképezése [sp_addrolemembertel](resource-classes-for-workload-management.md#change-a-users-resource-class)történt.  Ha ugyanazokat a funkciókat és leképezési kérelmeket szeretné elérni a munkaterhelés-csoportokhoz, használja a [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxist.  A sp_addrolemember használata csak akkor engedélyezett, ha egy bejelentkezési azonosító alapján leképezi az erőforrásokat egy kérelemre.  Az osztályozó a bejelentkezés mellett további lehetőségeket is biztosít, például a következőket:
     - címke
     - munkamenet
-    - Az alábbi példa arra az esetre, ha a bejelentkezéshez olyan lekérdezéseket rendel, `AdfLogin` amelyeken a [beállítás felirata](sql-data-warehouse-develop-label.md) is be van állítva `factloads` a fent létrehozott munkaterhelés-csoportra `wgDataLoads` .
+    - Az alábbi példa arra az esetre, ha a bejelentkezéshez olyan lekérdezéseket rendel, `AdfLogin` amelyeken a [beállítás felirata](sql-data-warehouse-develop-label.md)  is be van állítva `factloads` a fent létrehozott munkaterhelés-csoportra `wgDataLoads` .
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  
@@ -86,7 +86,7 @@ SELECT request_id, [label], classifier_name, group_name, command
   ORDER BY submit_time DESC
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Munkaterhelés elkülönítése](sql-data-warehouse-workload-isolation.md)
 - [Útmutató: munkaterhelés-csoport létrehozása](quickstart-configure-workload-isolation-tsql.md)

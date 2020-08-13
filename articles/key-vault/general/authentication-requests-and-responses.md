@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés, kérelmek és válaszok
-description: Hitelesítés az AD-ben a Key Vault használatával
+description: Ismerje meg, hogyan használja a Azure Key Vault JSON-formátumú kérelmeket és válaszokat, valamint a Key Vault használatához szükséges hitelesítést.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430889"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191783"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -28,15 +28,15 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 
  A Azure Key Vault objektumainak működéséhez az alábbi URL-címek használhatók:  
 
-- HOZZon létre egy TESTKEY nevű kulcsot egy Key Vault use-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- HOZZon létre egy TESTKEY nevű kulcsot egy Key Vault use- `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- IMPORTEDKEY nevű kulcs importálása Key Vault használatára –`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORTEDKEY nevű kulcs importálása Key Vault használatára – `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- KERESÉSI KIFEJEZÉSKÉNT nevű titkos kód beszerzése egy Key Vault-alkalmazásban –`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- KERESÉSI KIFEJEZÉSKÉNT nevű titkos kód beszerzése egy Key Vault-alkalmazásban – `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Kivonat aláírása egy TESTKEY nevű kulccsal Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Kivonat aláírása egy TESTKEY nevű kulccsal Key Vault use- `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  A Key Vaultra irányuló kérések szolgáltatója mindig a következő:`https://{keyvault-name}.vault.azure.net/`  
+  A Key Vaultra irányuló kérések szolgáltatója mindig a következő:  `https://{keyvault-name}.vault.azure.net/`  
 
   A kulcsok mindig a/Keys útvonalon tárolódnak, a titkokat a rendszer mindig a/Secrets elérési út alatt tárolja.  
 

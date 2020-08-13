@@ -1,6 +1,6 @@
 ---
 title: A Azure CDN számlázás ismertetése | Microsoft Docs
-description: Ez a GYIK leírja, hogyan működik a Azure CDN számlázás.
+description: Ismerje meg az Azure Content Delivery Network által üzemeltetett tartalmak számlázási struktúráját, beleértve a számlázási régiókat, a kézbesítési díjakat és a költségek kezelését.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254565"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191168"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -92,7 +92,7 @@ Ha a következő Azure-szolgáltatások egyikét használja CDN-forrásként, ne
 
 - Azure Storage
 - Azure Media Services
-- Azure-alapú virtuális gépek
+- Azure Virtual Machines
 - Virtual Network
 - Load Balancer
 - Application Gateway

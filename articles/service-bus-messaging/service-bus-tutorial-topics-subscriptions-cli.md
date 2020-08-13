@@ -1,349 +1,104 @@
 ---
-title: 'Oktatóanyag: a kiskereskedelmi leltári választék frissítése a közzétételi/előfizetési csatornák és a témakör-szűrők használatával az Azure CLI-vel'
-description: 'Oktatóanyag: ebben az oktatóanyagban megtudhatja, hogyan küldhet és fogadhat üzeneteket egy témakörből és előfizetésből, valamint hogyan adhat hozzá és használhat szűrési szabályokat az Azure CLI használatával'
+title: Service Bus témakörök és előfizetések létrehozása az Azure CLI használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus témakört és előfizetéseket az adott témakörhöz az Azure CLI használatával
 ms.date: 06/23/2020
-ms.topic: tutorial
+ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2526559a8b88309c098e59e8cc6d0ffd2793984f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067596"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189796"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése parancssori felület és témakörök/előfizetések használatával
+# <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Az Azure CLI használata Service Bus témakör és előfizetések létrehozásához a témakörben
+Ebben a rövid útmutatóban az Azure CLI használatával hozzon létre egy Service Bus témakört, majd hozzon létre előfizetéseket ehhez a témakörhöz. 
 
-A Microsoft Azure Service Bus egy több-bérlős felhőalapú üzenetkezelési szolgáltatás, amely információkat küld alkalmazások és szolgáltatók között. Az aszinkron műveletek rugalmas, közvetítőalapú üzenettovábbítást, valamint strukturált, érkezési sorrendben történő üzenetkiküldést tesznek lehetővé. Emellett közzétételi vagy előfizetési lehetőségeket is biztosítanak. Ebből az oktatóanyagból megtudhatja, hogyan használhatók a Service Bus-témakörök és -előfizetések kereskedelmi leltárazási forgatókönyvekben az Azure parancssori felületet és Javát használó közzétételi/előfizetési csatornákkal.
+## <a name="what-are-service-bus-topics-and-subscriptions"></a>Mik azok a Service Bus-üzenettémák és -előfizetések?
+A Service Bus-üzenettémák és -előfizetések *közzétételi/előfizetési* modellt biztosítanak az üzenettovábbításhoz. Üzenettémák és előfizetések használata esetén az elosztott alkalmazások összetevői nem közvetlenül egymással kommunikálnak, hanem egy közvetítőként szolgáló üzenettémakörön keresztül.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-> [!div class="checklist"]
-> * Service Bus-témakör és egy vagy több hozzá tartozó előfizetés létrehozása az Azure parancssori felület használatával
-> * Témakörszűrők hozzáadása az Azure parancssori felület használatával
-> * Két különböző tartalmú üzenet létrehozása
-> * Az üzenetek elküldése és annak ellenőrzése, hogy megérkeztek-e a megfelelő előfizetésekbe
-> * Üzenet fogadása az előfizetésektől
+![Az üzenettémakörök alapfogalmai](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-Erre a forgatókönyvre egy példa, amikor több kiskereskedelmi üzletben frissül a leltárválaszték. Ebben az esetben minden egyes üzlet vagy üzletcsoport megkapja a neki szánt üzeneteket a választéka frissítéséről. Ez az oktatóanyag bemutatja, hogyan valósítható meg a forgatókönyv előfizetések és szűrők használatával. Először hozzon létre egy témakört 3 előfizetéssel, adjon hozzá szabályokat és szűrőket, majd küldjön és fogadjon üzeneteket a témaköröktől és az előfizetésektől.
+Service Bus várólistákkal ellentétben, amelyekben az egyes üzeneteket egyetlen fogyasztó dolgozza fel, a témakörök és az előfizetések egy-a-több kommunikációt biztosítanak a közzétételi/előfizetési minta használatával. Egy üzenettémakörhöz több előfizetést is lehet regisztrálni. Ha egy üzenetet elküldenek egy témakörbe, az összes előfizetés számára elérhetővé válik, amelyek egymástól függetlenül kezelhetik és dolgozhatják fel az üzenetet. Az egyes témakörökre való előfizetés egy virtuális üzenetsorra hasonlít, amely minden, a témakörnek elküldött üzenetről kap egy másolatot. Igény szerint regisztrálhat egy témakörhöz tartozó szűrési szabályokat, amelyekkel szűrheti vagy korlátozhatja, hogy mely üzeneteket kapjanak a témakör előfizetései.
 
-![témakör](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
-
-Ha nem rendelkezik Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot][] .
+Service Bus témakörök és előfizetések lehetővé teszik nagy mennyiségű üzenet feldolgozását nagy számú felhasználó és alkalmazás között.
 
 ## <a name="prerequisites"></a>Előfeltételek
+Ha nem rendelkezik Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot][free account] .
 
-Ha Service Bus-alkalmazást szeretne létrehozni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
+Ebben a rövid útmutatóban Azure Cloud Shelleket fog használni, amelyeket a Azure Portalba való bejelentkezés után indíthat el. A Azure Cloud Shellről további részleteket a [Azure Cloud Shell áttekintése](../cloud-shell/overview.md)című témakörben talál. A Azure PowerShell a gépen is [telepítheti](/cli/azure/install-azure-cli) és használhatja. 
 
-- [Java fejlesztői készlet](https://aka.ms/azure-jdks), legújabb verzió.
-- [Azure CLI](/cli/azure)
-- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
-
-## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-témakörök és -előfizetések
-
+## <a name="create-a-service-bus-topic-and-subscriptions"></a>Service Bus-témakör és előfizetések létrehozása
 Minden egyes [témakörre való előfizetés](service-bus-messaging-overview.md#topics) másolatot kaphat az összes üzenetről. A témakörök teljes protokoll és szemantika szempontjából is teljesen kompatibilisek a Service Bus-üzenetsorokkal. A Service Bus-témakörök számos különféle kiválasztási szabályt támogatnak szűrőfeltételekkel, illetve az üzenet tulajdonságait beállító vagy módosító választható műveletekkel. Minden szabályegyezéskor létrejön egy üzenet. A szabályokról, szűrőkről és műveletekről ezen a [hivatkozáson](topic-filters.md) talál további információt.
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Indítsa el Azure Cloud Shell az alábbi képen látható ikon kiválasztásával. Váltson **bash** módra, ha a Cloud Shell **PowerShell** módban van. 
 
-A parancssori felület telepítése után nyisson meg egy parancssort, és a következő parancsok végrehajtásával jelentkezzen be az Azure-ba. Ezek a lépések nem szükségesek, ha Cloud Shellt használ:
+    :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell elindítása":::
+3. Futtassa az alábbi parancsot egy Azure-erőforráscsoport létrehozásához. Ha kívánja, frissítse az erőforráscsoport nevét és a helyét. 
 
-1. Ha az Azure parancssori felületet helyileg használja, az alábbi parancs futtatásával jelentkezzen be az Azure-ba. Erre a bejelentkezési lépésre nincs szükség, ha ezeket a parancsokat a Cloud Shellben futtatja:
+    ```azurecli-interactive
+    az group create --name MyResourceGroup --location eastus
+    ```
+4. A következő parancs futtatásával hozzon létre egy Service Bus üzenetküldési névteret. Frissítse a névtér nevét egyedire. 
 
-   ```azurecli-interactive
-   az login
-   ```
+    ```azurecli-interactive
+    namespaceName=MyNameSpace$RANDOM
+    az servicebus namespace create --resource-group MyResourceGroup --name $namespaceName --location eastus
+    ```
+5. A következő parancs futtatásával hozzon létre egy témakört a névtérben. 
 
-2. Állítsa az aktuális előfizetési környezetet a használni kívánt Azure-előfizetésre:
-
-   ```azurecli-interactive
-   az account set --subscription Azure_subscription_name
-   ```
-
-## <a name="use-cli-to-provision-resources"></a>A parancssori felület használata erőforrások kiosztásához
-
-Hajtsa végre az alábbi parancsokat a Service Bus-erőforrások üzembe helyezéséhez. Ne felejtse el lecserélni az összes helyőrzőt a megfelelő értékre:
-
-```azurecli-interactive
-# Create a resource group
-az group create --name myResourcegroup --location eastus
-
-# Create a Service Bus messaging namespace with a unique name
-namespaceName=myNameSpace$RANDOM
-az servicebus namespace create \
-   --resource-group myResourceGroup \
-   --name $namespaceName \
-   --location eastus
-
-# Create a Service Bus topic
-az servicebus topic create --resource-group myResourceGroup \
-   --namespace-name $namespaceName \
-   --name myTopic
-
-# Create subscription 1 to the topic
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S1
-
-# Create filter 1 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"
-
-# Create filter 2 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"
-
-# Create subscription 2
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S2
-
-# Create filter 3 - use message header properties via IN list and 
-# combine with custom properties.
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MyFilter --filter-sql-expression "sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'"
-
-# Create subscription 3
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S3
-
-# Create filter 4 - Get everything except messages for subscription 1 and 2. 
-# Also modify and add an action; in this case set the label to a specified value. 
-# Assume those stores might not be part of your main store, so you only add 
-# specific items to them. For that, you flag them specifically.
-az servicebus rule create --resource-group DemoGroup --namespace-name DemoNamespaceSB --topic-name tutorialtest1
- --subscription-name S3 --name MyFilter --filter-sql-expression "sys.To NOT IN ('Store1','Store2','Store3','Store4','Sto
-re5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Stor
-e8')" --action-sql-expression "SET sys.Label = 'SalesEvent'"
-
-# Get the connection string
-connectionString=$(az servicebus namespace authorization-rule keys list \
-   --resource-group myResourceGroup \
-   --namespace-name  $namespaceName \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString --output tsv)
-```
-
-Az utolsó parancs futtatása után másolja ki és illessze be a kapcsolati sztringet és a kiválasztott üzenetsor nevét egy átmeneti helyre, például a Jegyzettömbbe. A következő lépésben szüksége lesz ezekre.
-
-## <a name="create-filter-rules-on-subscriptions"></a>Szűrési szabályok létrehozása előfizetésekhez
-
-Miután kiépítette a névteret és a témakört/előfizetéseket, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az előfizetések szűrési szabályainak létrehozására, majd az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
-
-## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
-
-1. Győződjön meg róla, hogy a Cloud Shell nyitva van, és a Bash-parancssort jeleníti meg.
-
-2. Klónozza a [Service Bus GitHub-adattárát](https://github.com/Azure/azure-service-bus/) a következő paranccsal:
-
-   ```shell
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
-
-2. Lépjen a következő mintamappához: `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`. Ne feledje, hogy a Bash-felületen a parancsok megkülönböztetik a kis- és nagybetűket, és útvonal-elválasztóként perjelet kell használni.
-
-3. Az alkalmazás létrehozásához adja ki az alábbi parancsot:
-   
-   ```shell
-   mvn clean package -DskipTests
-   ```
-4. A program futtatásához adja ki az alábbi parancsot. Ne felejtse lecserélni a helyőrzőket az előző lépésben beszerzett kapcsolati sztringre és a témakör nevére:
-
-   ```shell
-   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
-   ```
-
-   Figyeljen meg 10 üzenetet, amelyeket a rendszer elküld a témakörnek, majd az egyéni előfizetésektől fogadja őket:
-
-   ![a program kimenete](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Az alábbi paranccsal eltávolítható az erőforráscsoport, a névtér és az összes kapcsolódó erőforrás:
-
-```azurecli-interactive
-az group delete --resource-group my-resourcegroup
-```
-
-## <a name="understand-the-sample-code"></a>A mintakód értelmezése
-
-Ez a szakasz a mintakód működésének további részleteit ismerteti.
-
-### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
-
-A kód először meghatározza azokat a változókat, amelyek a program további végrehajtását vezérlik:
-
-```java
-    public String ConnectionString = null;
-    public String TopicName = null;
-    static final String[] Subscriptions = {"S1","S2","S3"};
-    static final String[] Store = {"Store1","Store2","Store3","Store4","Store5","Store6","Store7","Store8","Store9","Store10"};
-    static final String SysField = "sys.To";
-    static final String CustomField = "StoreId";
-    int NrOfMessagesPerStore = 1; // Send at least 1.
-```
-
-Csak a kapcsolati sztring és a témakör neve olyan érték, amelyet parancssori paramétereken keresztül ad hozzá, illetve ad át a `main()` metódusnak. A tényleges kódvégrehajtást a `run()` metódus indítja el, amely elküldi, majd fogadja az üzeneteket a témakörből:
-
-```java
-public static void main(String[] args) {
-    TutorialTopicsSubscriptionsFilters app = new TutorialTopicsSubscriptionsFilters();
-        try {
-            app.runApp(args);
-            app.run();
-        } catch (Exception e) {
-            System.out.printf("%s", e.toString());
-        }
-        System.exit(0);
-    }
-}
-
-public void run() throws Exception {
-    // Send sample messages.
-    this.sendMessagesToTopic();
-
-    // Receive messages from subscriptions.
-    this.receiveAllMessages();
-}
-```
-
-### <a name="create-topic-client-to-send-messages"></a>Témakörügyfél létrehozása az üzenetek küldéséhez
-
-Az üzenetek küldéséhez és fogadásához a `sendMessagesToTopic()` metódus létrehoz egy témakörügyfél-példányt, amely felhasználja a kapcsolati sztringet és a témakör nevét, majd meghív egy másik metódust az üzenetek elküldéséhez:
-
-```java
-public void sendMessagesToTopic() throws Exception, ServiceBusException {
-    // Create client for the topic.
-    TopicClient topicClient = new TopicClient(new ConnectionStringBuilder(ConnectionString, TopicName));
-
-    // Create a message sender from the topic client.
-
-    System.out.printf("\nSending orders to topic.\n");
-
-    // Now we can start sending orders.
-    CompletableFuture.allOf(
-            SendOrders(topicClient,Store[0]),
-            SendOrders(topicClient,Store[1]),
-            SendOrders(topicClient,Store[2]),
-            SendOrders(topicClient,Store[3]),
-            SendOrders(topicClient,Store[4]),
-            SendOrders(topicClient,Store[5]),
-            SendOrders(topicClient,Store[6]),
-            SendOrders(topicClient,Store[7]),
-            SendOrders(topicClient,Store[8]),
-            SendOrders(topicClient,Store[9])
-    ).join();
-
-    System.out.printf("\nAll messages sent.\n");
-}
-
-    public CompletableFuture<Void> SendOrders(TopicClient topicClient, String store) throws Exception {
-
-        for(int i = 0;i<NrOfMessagesPerStore;i++) {
-            Random r = new Random();
-            final Item item = new Item(r.nextInt(5),r.nextInt(5),r.nextInt(5));
-            IMessage message = new Message(GSON.toJson(item,Item.class).getBytes(UTF_8));
-            // We always set the Sent to field
-            message.setTo(store);
-            final String StoreId = store;
-            Double priceToString = item.getPrice();
-            final String priceForPut = priceToString.toString();
-            message.setProperties(new HashMap<String, String>() {{
-                // Additionally we add a customer store field. In reality you would use sys.To or a customer property but not both.
-                // This is just for demo purposes.
-                put("StoreId", StoreId);
-                // Adding more potential filter / rule and action able fields
-                put("Price", priceForPut);
-                put("Color", item.getColor());
-                put("Category", item.getItemCategory());
-            }});
-
-            System.out.printf("Sent order to Store %s. Price=%f, Color=%s, Category=%s\n", StoreId, item.getPrice(), item.getColor(), item.getItemCategory());
-            topicClient.sendAsync(message);
-        }
-
-        return new CompletableFuture().completedFuture(null);
-    }
-```
-
-### <a name="receive-messages-from-the-individual-subscriptions"></a>Üzenetek fogadása az egyéni előfizetésekből
-
-A `receiveAllMessages()` metódus meghívja a `receiveAllMessageFromSubscription()` metódust, amely ezután hívásonként létrehoz egy előfizetési ügyfelet, illetve fogadja az üzeneteket az egyéni előfizetésektől:
-
-```java
-public void receiveAllMessages() throws Exception {
-    System.out.printf("\nStart Receiving Messages.\n");
-
-    CompletableFuture.allOf(
-            receiveAllMessageFromSubscription(Subscriptions[0]),
-            receiveAllMessageFromSubscription(Subscriptions[1]),
-            receiveAllMessageFromSubscription(Subscriptions[2])
-            ).join();
-}
-
-public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscription) throws Exception {
-
-    int receivedMessages = 0;
-
-    // Create subscription client.
-    IMessageReceiver subscriptionClient = ClientFactory.createMessageReceiverFromConnectionStringBuilder(new ConnectionStringBuilder(ConnectionString, TopicName+"/subscriptions/"+ subscription), ReceiveMode.PEEKLOCK);
-
-    // Create a receiver from the subscription client and receive all messages.
-    System.out.printf("\nReceiving messages from subscription %s.\n\n", subscription);
-
-    while (true)
-    {
-        // This will make the connection wait for N seconds if new messages are available.
-        // If no additional messages come we close the connection. This can also be used to realize long polling.
-        // In case of long polling you would obviously set it more to e.g. 60 seconds.
-        IMessage receivedMessage = subscriptionClient.receive(Duration.ofSeconds(1));
-        if (receivedMessage != null)
-        {
-            if ( receivedMessage.getProperties() != null ) {
-                System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));
-                
-                // Show the label modified by the rule action
-                if(receivedMessage.getLabel() != null)
-                    System.out.printf("Label=%s\n", receivedMessage.getLabel());
-            }
-            
-            byte[] body = receivedMessage.getBody();
-            Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
-            System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());
-            
-            subscriptionClient.complete(receivedMessage.getLockToken());
-            receivedMessages++;
-        }
-        else
-        {
-            // No more messages to receive.
-            subscriptionClient.close();
-            break;
-        }
-    }
-    System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
+    ```azurecli-interactive
+    az servicebus topic create --resource-group MyResourceGroup   --namespace-name $namespaceName --name MyTopic
+    ```
+6. Az első előfizetés létrehozása a témakörben
     
-    return new CompletableFuture().completedFuture(null);
-}
-```
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S1    
+    ```
+6. A második előfizetés létrehozása a témakörhöz
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S2    
+    ```
+6. A harmadik előfizetés létrehozása a témakörhöz
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S3    
+    ```
+7. Hozzon létre egy szűrőt az első előfizetéshez egy szűrővel egyéni tulajdonságok használatával (az egyik:, `StoreId` `Store1` `Store2` és `Store3` ).
 
-> [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"    
+    ```
+8. Szűrő létrehozása a második előfizetéshez az ügyfél tulajdonságai ( `StoreId = Store4` ) használatával
 
-## <a name="next-steps"></a>További lépések
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"    
+    ```
+9. Hozzon létre egy szűrőt a harmadik előfizetésen egy szűrő használatával az ügyfél tulajdonságaival ( `StoreId` nem a `Store1` ,, `Store2` `Store3` vagy `Store4` ).
 
-Ebben az oktatóanyagban erőforrásokat osztott ki az Azure parancssori felület használatával, majd üzeneteket küldött és fogadott egy Service Bus-témakörből és annak előfizetéseiből. Megtanulta végrehajtani az alábbi műveleteket:
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    ```
+10. Futtassa a következő parancsot a névtér elsődleges kapcsolódási karakterláncának lekéréséhez. Ezt a kapcsolati karakterláncot használja a várólistához való kapcsolódáshoz, valamint az üzenetek küldéséhez és fogadásához. 
 
-> [!div class="checklist"]
-> * Service Bus-témakör és egy vagy több hozzá tartozó előfizetés létrehozása az Azure Portal használatával
-> * Témakörszűrők hozzáadása .NET-kód használatával
-> * Két különböző tartalmú üzenet létrehozása
-> * Az üzenetek elküldése és annak ellenőrzése, hogy megérkeztek-e a megfelelő előfizetésekbe
-> * Üzenet fogadása az előfizetésektől
+    ```azurecli-interactive
+    az servicebus namespace authorization-rule keys list --resource-group MyResourceGroup --namespace-name $namespaceName --name RootManageSharedAccessKey --query primaryConnectionString --output tsv    
+    ```
 
-Az üzenetküldéssel és -fogadással kapcsolatos további példákért tekintse meg a [Service Bus-mintákat a GitHubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted).
+    Jegyezze fel a kapcsolatok sztringjét és a témakör nevét. Ezek az üzenetek küldésére és fogadására használhatók. 
+    
 
-Folytassa a következő oktatóanyaggal, ha szeretne többet megtudni a Service Bus közzétételi/előfizetési funkcióiról.
+## <a name="next-steps"></a>Következő lépések
+Az alábbi cikkből megtudhatja, hogyan küldhet üzeneteket egy témakörbe, és hogyan fogadhat üzeneteket az előfizetésen keresztül: válassza ki a programozási nyelvet a TARTALOMJEGYZÉKben. 
 
 > [!div class="nextstepaction"]
-> [Leltár frissítése a PowerShell és témakörök/előfizetések használatával](service-bus-tutorial-topics-subscriptions-portal.md)
+> [Üzenetek közzététele és feliratkozás rájuk](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[ingyenes fiók]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

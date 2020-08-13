@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute: VNet csatolása egy áramkörhöz: Azure Portal'
-description: Csatlakoztasson egy VNet egy Azure ExpressRoute-áramkörhöz. Útmutató lépései.
+description: Megtudhatja, hogyan hozhat létre kapcsolatot egy virtuális hálózat Azure ExpressRoute-áramkörhöz való összekapcsolásához a Azure Portal használatával.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737070"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190929"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Virtuális hálózat összekapcsolása ExpressRoute-kapcsolatcsoporttal a portálon
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -135,5 +135,5 @@ Az engedélyezést a ExpressRoute áramkört a virtuális hálózathoz összekö
 
 Törölheti a kapcsolatot, és leválaszthatja a VNet egy ExpressRoute-áramkörhöz úgy, hogy a kapcsolat lapján a **Törlés** ikonra kattint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.

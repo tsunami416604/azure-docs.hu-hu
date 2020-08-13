@@ -1,17 +1,17 @@
 ---
 title: Adatok rögzítése Event Hubsból Azure Data Lake Storage Gen1
-description: Azure Data Lake Storage Gen1 használatával rögzítheti az Azure Event Hubs által fogadott adatmennyiséget.
+description: Megtudhatja, hogyan rögzíthet Azure Data Lake Storage Gen1 az Azure Event Hubs által fogadott adatgyűjtéshez. Először ellenőrizze az előfeltételeket.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515766"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190282"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Adatok rögzítése a Azure Data Lake Storage Gen1 használatával Event Hubs
 
@@ -48,7 +48,7 @@ Ebben a szakaszban egy mappát hoz létre azon a fiókon belül, ahová az Event
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Engedélyek kiosztása a Data Lake Storage Gen1 gyökeréhez")
     
-    Kattintson a **Kiválasztás** gombra.
+    Kattintson a **Kiválasztás** elemre.
 
     c. Az **engedélyek kiosztása**területen kattintson az **engedélyek kiválasztása**elemre. Állítsa be az **engedélyeket** a **végrehajtáshoz**. A **Hozzáadás** ehhez a **mappához és az összes gyermekhez**beállítás megadása. Adja meg a **Hozzáadás másként** **lehetőséget egy hozzáférési engedély bejegyzéséhez és egy alapértelmezett engedély bejegyzéshez**.
 
@@ -69,7 +69,7 @@ Ebben a szakaszban egy mappát hoz létre azon a fiókon belül, ahová az Event
 
     ![Engedélyek kiosztása a Data Lake Storage Gen1 mappához](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Engedélyek kiosztása a Data Lake Storage Gen1 mappához")
     
-    Kattintson a **Kiválasztás** gombra.
+    Kattintson a **Kiválasztás** elemre.
 
     c. Az **engedélyek kiosztása**területen kattintson az **engedélyek kiválasztása**elemre. **Olvasási, írási** és **végrehajtási** **engedélyek** beállítása. A **Hozzáadás** ehhez a **mappához és az összes gyermekhez**beállítás megadása. Végül állítsa a **Hozzáadás másként** **lehetőséget egy hozzáférési engedély bejegyzéséhez és egy alapértelmezett engedély bejegyzéshez**.
 
@@ -99,7 +99,7 @@ Ebben a szakaszban egy Event Hubs névtéren belül hoz létre egy Event hubot. 
 
     e. Hagyja meg a **minta rögzítési fájlnevének formátumát** az alapértelmezett értékre. Ezzel a beállítással szabályozható a rögzítési mappa alatt létrehozott mappastruktúrát.
 
-    f. Kattintson a **Létrehozás** lehetőségre.
+    f. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="test-the-setup"></a>A telepítés tesztelése
 

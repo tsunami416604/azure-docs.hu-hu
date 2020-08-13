@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: 28fa3fdfdb8915d528d0765bd1fded8128621208
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166518"
+ms.locfileid: "88192731"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez (előzetes verzió)
 
@@ -39,7 +39,7 @@ Az Azure Private link segítségével privát végponton keresztül csatlakozhat
 > [!IMPORTANT]
 > Jelenleg csak az új Azure Machine Learning munkaterület létrehozásakor támogatjuk a privát végpontok engedélyezését.
 
-A használható olyan [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) munkaterület létrehozásához, amely privát végponttal rendelkezik.
+A (z) sablon használatával [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) létrehozhat egy privát végponttal rendelkező munkaterületet.
 
 További információ a sablon használatáról, beleértve a privát végpontokat is: [Azure Resource Manager sablon használata munkaterületek létrehozásához Azure Machine Learninghoz](how-to-create-workspace-template.md).
 
@@ -134,6 +134,6 @@ A virtuális hálózaton belüli Azure Container Registry biztonságossá tétel
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning munkaterület biztonságossá tételével kapcsolatos további információkért tekintse meg a [nagyvállalati biztonsági](concept-enterprise-security.md) cikket.

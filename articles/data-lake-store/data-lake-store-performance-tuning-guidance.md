@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 – teljesítmény finombeállítása
-description: Útmutató a Azure Data Lake Storage Gen1 teljesítményének finomhangolásához.
+description: Ismerje meg, hogyan használható az összes rendelkezésre álló átviteli sebesség Azure Data Lake Storage Gen1 a legjobb teljesítmény eléréséhez a lehető legtöbb olvasást és írást kell végrehajtania.
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281735"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190247"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 teljesítményének hangolása
 
@@ -131,7 +131,7 @@ A fenti általános irányelvek mellett minden alkalmazás különböző paramé
 | [MapReduce a HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Ismerkedés az Azure Data Lake Analytics szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

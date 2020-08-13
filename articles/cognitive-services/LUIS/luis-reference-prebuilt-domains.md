@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d41ec3abfa2e562d5a6e11dd9ed0fcbcffead5c6
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270615"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191978"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Előre elkészített tartományi referenciák a LUIS-alkalmazáshoz
 Ez a hivatkozás az [előre elkészített tartományokra](luis-how-to-use-prebuilt-domains.md)vonatkozó információkat tartalmaz, amelyek a Luis által kínált szándékok és entitások előre összeépített gyűjteményei.
 
 Az [Egyéni tartományok](luis-how-to-start-new-app.md)ezzel szemben a nem szándékok és modellek használatával kezdődnek. Hozzáadhat bármilyen előre elkészített tartományi leképezéseket és entitásokat egy egyéni modellhez.
 
-## <a name="custom-domains-per-language"></a>Egyéni tartományok nyelv szerint
+## <a name="prebuilt-domains-per-language"></a>Előre összeépített tartományok/nyelv
 
 Az alábbi táblázat összefoglalja a jelenleg támogatott tartományokat. Az angol nyelvű támogatás általában teljesebb, mint mások.
 
@@ -33,7 +33,7 @@ Az alábbi táblázat összefoglalja a jelenleg támogatott tartományokat. Az a
 |Kommunikáció  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | E-mail     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Megjegyzések     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Jegyzetek     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Helyek   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | RestaurantReservation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -47,6 +47,6 @@ Az előre elkészített tartományok **nem támogatottak** a ben:
 * Hindi
 * Spanyol mexikói
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az [egyszerű entitást](reference-entity-simple.md).

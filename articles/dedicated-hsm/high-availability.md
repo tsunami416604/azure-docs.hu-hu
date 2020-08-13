@@ -1,6 +1,6 @@
 ---
 title: Magas rendelkezésre állás – Azure dedikált HSM | Microsoft Docs
-description: Azure dedikált HSM – magas rendelkezésre állás – példa és alapvető szempontok
+description: Ismerje meg az Azure dedikált HSM magas rendelkezésre állásának alapvető szempontjait. Ez a cikk egy példát tartalmaz.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70882247"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189848"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure dedikált HSM – magas rendelkezésre állás
 
@@ -25,13 +25,13 @@ Az Azure dedikált HSM-et a Microsoft által biztosított, magasan elérhető ad
 
 ## <a name="high-availability-example"></a>Magas rendelkezésre állási példa
 
-A HSM-eszközök magas rendelkezésre álláshoz való konfigurálásáról a szoftver szintjén a "Gemalto Luna Network HSM felügyeleti útmutató" című cikk nyújt tájékoztatást. Ez a dokumentum a [GEMALTO HSM lapon](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)érhető el.
+A HSM-eszközök magas rendelkezésre álláshoz való konfigurálásáról a szoftver szintjén a "Gemalto Luna Network HSM felügyeleti útmutató" című cikk nyújt tájékoztatást. Ez a dokumentum a  [GEMALTO HSM lapon](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)érhető el.
 
 A következő ábra egy magasan elérhető architektúrát mutat be. Több eszközt használ a régióban, és több eszköz is párosítva van egy külön régióban. Ez az architektúra legalább négy HSM-eszközt és virtuális hálózatkezelési összetevőt használ.
 
 ![Magas rendelkezésre állási diagram](media/high-availability/high-availability.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot is jól megértse az eszköz kiépítése és az alkalmazások tervezése vagy üzembe helyezése előtt.
 További fogalmi szintű témakörök:

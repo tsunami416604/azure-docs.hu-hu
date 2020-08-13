@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault – a Soft-delete használata a PowerShell használatával
-description: Példák a helyreállítható törlésre a PowerShell-kódrészletek használatával
+description: Megtudhatja, hogyan használhatja a Azure PowerShell a Azure Key Vault Soft-delete funkciójának használatára, amely lehetővé teszi a kulcstartók és a Key Vault-objektumok helyreállítását.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 094eb784244f74fe75bf456b01c9a85457b28ba3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136473"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191522"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
 
@@ -40,7 +40,7 @@ A PowerShell-hez Key Vault konkrét referenciáért lásd: [Azure Key Vault Powe
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Leírás | Felhasználói engedély |
+| Művelet | Description | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|

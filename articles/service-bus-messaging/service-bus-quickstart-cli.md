@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4b4ce8a19d03a0323af934eac3868fdcc8d50ff
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182500"
+ms.locfileid: "88191262"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Service Bus névtér és üzenetsor létrehozása az Azure CLI használatával
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Service Bus névteret és üzenetsor-kezelést az Azure CLI használatával. Azt is bemutatjuk, hogyan kérheti le az olyan engedélyezési hitelesítő adatokat, amelyeket az ügyfélalkalmazás használhat a várólistára irányuló üzenetek küldéséhez/fogadásához. 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban Azure Cloud Shelleket fog használni, amelyeket a A
 
 ## <a name="provision-resources"></a>Erőforrások kiosztása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Indítsa el Azure Cloud Shell az alábbi képen látható ikon kiválasztásával: 
+2. Indítsa el Azure Cloud Shell az alábbi képen látható ikon kiválasztásával. Váltson **bash** módra, ha a cloudshellben **PowerShell** módban van. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell elindítása":::
 3. Futtassa az alábbi parancsot egy Azure-erőforráscsoport létrehozásához. Ha kívánja, frissítse az erőforráscsoport nevét és a helyét. 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban Azure Cloud Shelleket fog használni, amelyeket a A
     ```azurecli-interactive
     az servicebus namespace create --resource-group ContosoRG --name ContosoSBusNS --location eastus
     ```
-5. A következő parancs futtatásával hozzon létre egy várólistát az előző lépésben létrehozott névtérben. Ebben a példában az az `ContosoRG` erőforráscsoport, amelyet az előző lépésben hozott létre. `ContosoSBusNS`az adott erőforráscsoporthoz létrehozott Service Bus névtér neve. 
+5. A következő parancs futtatásával hozzon létre egy várólistát az előző lépésben létrehozott névtérben. Ebben a példában az az `ContosoRG` erőforráscsoport, amelyet az előző lépésben hozott létre. `ContosoSBusNS` az adott erőforráscsoporthoz létrehozott Service Bus névtér neve. 
 
     ```azurecli-interactive
     az servicebus queue create --resource-group ContosoRG --namespace-name ContosoSBusNS --name ContosoOrdersQueue

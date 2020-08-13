@@ -1,6 +1,6 @@
 ---
 title: Gyakori kérdések – Azure dedikált HSM | Microsoft Docs
-description: Gyakori kérdések az Azure dedikált HSM különböző témaköreiről
+description: Válaszok az Azure dedikált hardveres biztonsági modullal kapcsolatos gyakori kérdésekre, például az alapszintű információkra, az együttműködésre, a magas rendelkezésre állásra és a támogatásra.
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310385"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189865"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -69,7 +69,7 @@ Március 2019-én a dedikált HSM az alább felsorolt 14 régióban érhető el.
 * USA keleti régiója
 * USA 2. keleti régiója
 * USA nyugati régiója
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 * USA déli középső régiója
 * Délkelet-Ázsia
 * Kelet-Ázsia

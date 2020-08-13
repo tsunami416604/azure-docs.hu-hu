@@ -1,6 +1,6 @@
 ---
 title: Tanúsítvány-létrehozási módszerek
-description: A tanúsítvány létrehozásának módjai Key Vaultban.
+description: Ismerje meg, hogyan hozhat létre vagy importálhat Key Vault-tanúsítványt a Azure Key Vaultban. Több módon is létrehozhat egy Key Vault-tanúsítványt.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866256"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189976"
 ---
 # <a name="certificate-creation-methods"></a>Tanúsítvány-létrehozási módszerek
 

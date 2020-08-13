@@ -3,12 +3,12 @@ title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
 description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542855"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192303"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
@@ -24,10 +24,13 @@ Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissí
 
 Ez a cikk végigvezeti egy példa-fürt elsődleges csomópont-típusának a felügyelt lemezek használatára való frissítésének lépésein, és a fürt leállásának elkerülésével (lásd az alábbi megjegyzést). A példaként szolgáló tesztelési fürt kezdeti állapota egy [ezüst tartósságú](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)csomópontból áll, amely egyetlen, öt csomóponttal rendelkező méretezési csoporttal rendelkezik.
 
+> [!NOTE]
+> Egy alapszintű SKU Load Balancer korlátai megakadályozzák a további méretezési csoport hozzáadását. Javasoljuk, hogy Ehelyett használja a standard SKU Load balancert. További információ: [a két SKU összevetése](/azure/load-balancer/skus).
+
 > [!CAUTION]
 > Ezt az eljárást csak akkor fogja tapasztalni, ha a fürt DNS-függőségeivel rendelkezik (például [Service Fabric Explorerhoz](service-fabric-visualizing-your-cluster.md)való hozzáféréskor). Az [előtér-szolgáltatásokra vonatkozó ajánlott eljárás](/azure/architecture/microservices/design/gateway) az, hogy a csomópontok típusai előtt valamilyen [terheléselosztó](/azure/architecture/guide/technology-choices/load-balancing-overview) legyen elérhető, hogy leállás nélkül lehessen lecserélni a csomópontokat.
 
-Az alábbi [sablonok és parancsmagok](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a frissítési forgatókönyv elvégzéséhez használni kívánt Azure Resource Manager. A sablon módosításait a [frissített méretezési csoport üzembe helyezése az alábbi elsődleges csomópont-típushoz című](#deploy-an-upgraded-scale-set-for-the-primary-node-type) részben találja.
+Az alábbi [sablonok és parancsmagok](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a frissítési forgatókönyv elvégzéséhez használni kívánt Azure Resource Manager. A sablon módosításait a [frissített méretezési csoport üzembe helyezése az alábbi elsődleges csomópont-típushoz című](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  részben találja.
 
 ## <a name="set-up-the-test-cluster"></a>A tesztelési fürt beállítása
 
@@ -44,7 +47,7 @@ A következő parancsok végigvezetik egy új önaláírt tanúsítvány létreh
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Önaláírt tanúsítvány létrehozása és a fürt üzembe helyezése
 
-Először rendelje hozzá az Service Fabric-fürt üzembe helyezéséhez szükséges változókat. Módosítsa a, a, a és a értékét az `resourceGroupName` `certSubjectName` `parameterFilePath` `templateFilePath` adott fiókhoz és környezethez:
+Először rendelje hozzá az Service Fabric-fürt üzembe helyezéséhez szükséges változókat. Módosítsa a, a, a és a értékét az `resourceGroupName`  `certSubjectName` `parameterFilePath` `templateFilePath` adott fiókhoz és környezethez:
 
 ```powershell
 # Assign deployment variables
@@ -165,7 +168,7 @@ Az alábbi, az eredeti fürt központi telepítési sablonjának szakasz – sza
 
 #### <a name="parameters"></a>Paraméterek
 
-Adjon hozzá egy paramétert az új méretezési csoport példányának nevéhez. Vegye figyelembe, hogy az `vmNodeType1Name` új méretezési csoport egyedi, míg a darabszám és a méret érték megegyezik az eredeti méretezési csoporttal.
+Paraméterek hozzáadása az új méretezési csoport példányának nevéhez, darabszámához és méretéhez. Vegye figyelembe, hogy az `vmNodeType1Name` új méretezési csoport egyedi, míg a darabszám és a méret érték megegyezik az eredeti méretezési csoporttal.
 
 **Sablonfájl**
 
@@ -174,7 +177,18 @@ Adjon hozzá egy paramétert az új méretezési csoport példányának nevéhez
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-}
+},
+"nt1InstanceCount": {
+    "type": "int",
+    "defaultValue": 5,
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType1Size": {
+    "type": "string",
+    "defaultValue": "Standard_D2_v2"
+},
 ```
 
 **Parameters fájl**
@@ -182,6 +196,12 @@ Adjon hozzá egy paramétert az új méretezési csoport példányának nevéhez
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
+},
+"nt1InstanceCount": {
+    "value": 5
+},
+"vmNodeType1Size": {
+    "value": "Standard_D2_v2"
 }
 ```
 
@@ -195,17 +215,17 @@ A központi telepítési sablon `variables` szakaszban adja meg az új méretez�
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
 ```
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Erőforrások
 
 A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva ezeket a dolgokat:
 
-* Az új méretezési csoport az új csomópont-típusra hivatkozik:
+* Az új méretezési csoport ugyanarra a csomópont-típusra hivatkozik, mint az eredeti:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* Az új méretezési csoport ugyanarra a terheléselosztó háttérbeli címére és alhálózatára hivatkozik, mint az eredeti, de egy másik terheléselosztó bejövő NAT-készletet használ:
+* Az új méretezési csoport ugyanarra a terheléselosztó háttérbeli címére és alhálózatra hivatkozik (de egy másik terheléselosztó bejövő NAT-készletet használ):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -236,33 +256,6 @@ A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új vi
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
-
-Ezután adjon hozzá egy bejegyzést a `nodeTypes` *Microsoft. ServiceFabric/Clusters* erőforrás listájához. Használja ugyanazokat az értékeket, mint az eredeti Node Type bejegyzés, kivéve a esetében `name` , amely az új csomópont típusra (*vmNodeType1Name*) hivatkozik.
-
-```json
-"nodeTypes": [
-    {
-        "name": "[parameters('vmNodeType0Name')]",
-        ...
-    },
-    {
-        "name": "[parameters('vmNodeType1Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt0applicationEndPort')]",
-            "startPort": "[parameters('nt0applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt0ephemeralEndPort')]",
-            "startPort": "[parameters('nt0ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-    }
-],
-```
 
 Miután végrehajtotta a sablon és a paraméterek fájljaiban történt összes változást, folytassa a következő szakasszal a Key Vault referenciáinak beolvasásához és a frissítések fürtön való telepítéséhez.
 
@@ -366,7 +359,7 @@ foreach($name in $nodeNames){
 
 ![Service Fabric Explorer a hibás állapotú csomópontok eltávolításakor](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan frissíthet egy Service Fabric-fürt virtuálisgép-méretezési csoportjait a felügyelt lemezek használatára, miközben elkerüli a szolgáltatás leállását a folyamat során. A kapcsolódó témakörökkel kapcsolatos további információkért tekintse meg az alábbi forrásokat.
 

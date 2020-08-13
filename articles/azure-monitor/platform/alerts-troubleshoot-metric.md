@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114897"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190675"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -130,9 +130,9 @@ Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metr
         }
 ```
 
-## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Metrikai riasztási szabály ARM-sablonjának exportálása a Azure Portal használatával
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Metrikus riasztási szabály Azure Resource Manager sablonjának exportálása a Azure Portal használatával
 
-A metrikai riasztási szabály ARM-sablonjának exportálása segít megérteni a JSON-szintaxist és-tulajdonságokat, és automatizálhatja a jövőbeli telepítéseket.
+A metrikai riasztási szabály Resource Manager-sablonjának exportálása segít megérteni a JSON-szintaxist és-tulajdonságokat, és automatizálhatja a jövőbeli központi telepítéseket.
 1. Navigáljon az **erőforráscsoportok** szakaszhoz a portálon, és válassza ki a szabályt tartalmazó erőforráscsoportot.
 2. Az Áttekintés szakaszban jelölje be a **rejtett típusok megjelenítése** jelölőnégyzetet.
 3. A **típus** szűrőben válassza a *Microsoft. bepillantások/metricalerts*lehetőséget.
@@ -207,7 +207,7 @@ Győződjön meg arról, hogy a megfelelő CLI-parancsokat használja a metrikai
 
    - Platform metrika esetén: Ügyeljen arra, hogy a **metrika** nevét [a Azure monitor támogatott metrikák lapról](./metrics-supported.md)használja, nem a **metrika megjelenítendő nevét** .
 
-   - Egyéni metrika esetén: Győződjön meg arról, hogy a metrika már el van bocsátva (nem hozható létre riasztási szabály egy olyan egyéni metrika esetében, amely még nem létezik), és hogy Ön megadja az egyéni metrika névterét (lásd az ARM- [sablon példáját](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric))
+   - Egyéni metrika esetén: Győződjön meg arról, hogy a metrika már ki van bocsátva (nem hozható létre riasztási szabály egy olyan egyéni metrika esetében, amely még nem létezik), és hogy az egyéni metrika névterét biztosítja (lásd a Resource Manager- [sablon példáját](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric))
 
 - Ha [metrikus riasztásokat hoz létre a naplókon](./alerts-metric-logs.md), győződjön meg arról, hogy a megfelelő függőségek szerepelnek benne. Itt találhat egy [mintasablont](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
@@ -253,6 +253,6 @@ Például:
     - Mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája támogatja a **ApiName** -dimenziót, mindkét feltételt frissíteni kell, és mindkettőnek meg kell adnia a **ApiName** dimenziót *"GetBlob"* értékkel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

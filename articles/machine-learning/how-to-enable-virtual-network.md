@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 16065b45a6afea25615b985d3c89445dee48bd1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167725"
+ms.locfileid: "88192396"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,6 +32,13 @@ A __virtuális hálózat__ biztonsági határként működik, és az Azure-erőf
 + Az [Azure Virtual Network szolgáltatás](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és az [IP-hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)általános munkaismerete.
 
 + Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használathoz.
+
++ Ha erőforrásokat szeretne telepíteni egy virtuális hálózatba vagy alhálózatba, a felhasználói fióknak rendelkeznie kell a következő műveletekhez szükséges engedélyekkel az Azure szerepköralapú hozzáférés-vezérlés (RBAC) szolgáltatásban:
+
+    - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
+    - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
+
+    A hálózatkezeléssel való RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepkörei](/azure/role-based-access-control/built-in-roles#networking) című témakört.
 
 ## <a name="private-endpoints"></a>Privát végpontok
 
@@ -97,7 +104,7 @@ Miután hozzáadta a munkaterületet és a Storage-szolgáltatásfiókot a virtu
 
 1. Új adattár létrehozásához válassza az __+ új adattár__lehetőséget. Egy meglévő frissítéséhez válassza ki az adattárt, és válassza a __hitelesítő adatok frissítése__lehetőséget.
 
-1. Az adattár beállításainál válassza az __Igen__ lehetőséget a __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__.
+1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__.
 
 > [!NOTE]
 > A módosítások érvénybe léptetése akár 10 percet is igénybe vehet.
@@ -263,7 +270,7 @@ Ha [felügyelt Azure Machine learning __számítási célt__ ](concept-compute-t
 > Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) vonatkoznak.
 
 
-### <a name="required-ports"></a><a id="mlcports"></a>Szükséges portok
+### <a name="required-ports"></a><a id="mlcports"></a> Szükséges portok
 
 Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a nyilvános internetre irányuló hálózati forgalmat, engedélyeznie kell a bejövő kommunikációt a Azure Batch szolgáltatástól.
 
@@ -294,7 +301,7 @@ A Azure Portal NSG-szabályának konfigurációja az alábbi képeken látható:
 
 ![A Machine Learning Compute kimenő NSG szabályai](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
-### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a>A virtuális hálózat kimenő kapcsolatának korlátozása
+### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> A virtuális hálózat kimenő kapcsolatának korlátozása
 
 Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlátozni szeretné a virtuális hálózat kimenő hozzáférését, kövesse az alábbi lépéseket:
 
@@ -820,7 +827,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

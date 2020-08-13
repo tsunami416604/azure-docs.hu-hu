@@ -1,6 +1,6 @@
 ---
 title: Eszközök előzetes betöltése egy Azure CDN végponton | Microsoft Docs
-description: Megtudhatja, hogyan tölthető be előre a gyorsítótárazott tartalom egy Azure CDN végponton.
+description: Megtudhatja, hogyan tölthető be előre a gyorsítótárazott tartalom egy Azure Content Delivery Network-végponton. Ez a funkció a termék bizonyos verzióiban érhető el.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887571"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192568"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Eszközök előzetes betöltése Azure CDN-végponton
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -50,8 +50,8 @@ Ez az oktatóanyag végigvezeti a gyorsítótárazott tartalom előzetes betölt
    > A szöveg bevitelének megkezdése után a további **tartalom elérési útja** szövegmezők lehetővé teszik, hogy több eszköz listáját is felépítse. Ha törölni szeretné az eszközöket a listából, válassza a három pontot (...), majd kattintson a **Törlés**gombra.
    > 
    > Minden tartalom elérési útjának relatív URL-címnek kell lennie, amely megfelel a következő [reguláris kifejezéseknek](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
-   > - Egyetlen fájl elérési útjának betöltése:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Egyetlen fájl betöltése lekérdezési karakterlánccal:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - Egyetlen fájl elérési útjának betöltése: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - Egyetlen fájl betöltése lekérdezési karakterlánccal: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > Mivel minden eszköznek saját elérési útnak kell lennie, nincs helyettesítő karakter a betöltés előtti eszközökhöz.
    > 

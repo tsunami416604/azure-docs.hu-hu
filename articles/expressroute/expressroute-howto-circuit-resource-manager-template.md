@@ -1,23 +1,23 @@
 ---
 title: 'Azure ExpressRoute-sablon: ExpressRoute-áramkör létrehozása'
-description: ExpressRoute-áramkör létrehozása, kiépítése, törlése és megszüntetése.
+description: Ismerje meg, hogyan hozhat létre egy Azure ExpressRoute-áramkört egy Azure Resource Manager-sablonnak a Azure PowerShell használatával történő üzembe helyezésével.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: charwen
-ms.openlocfilehash: 336337c0860ba19095665310d2c797cf10ba183f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78318726a658b6e0dc966288f386c65ee4c6f0e4
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736305"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190443"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
@@ -100,7 +100,7 @@ $resourceGroupName = "${circuitName}rg"
 Remove-AzExpressRouteCircuit -ResourceGroupName $resourceGroupName -Name $circuitName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áramkör létrehozása után folytassa a következő lépésekkel:
 

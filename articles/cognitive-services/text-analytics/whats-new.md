@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121850"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192026"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -33,18 +33,18 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 
 A következő frissítések csak az Text Analytics az állapotfigyelő tárolóra vonatkozó augusztusi kiadására vonatkoznak.
 
-* Új modell – a Text Analytics for Health verziója:`2020-07-24`
-* Új URL-cím Text Analytics küldéséhez az állapotadatok kéréséhez:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* Új modell – a Text Analytics for Health verziója: `2020-07-24`
+* Új URL-cím az Text Analytics küldéséhez az állapotadatok kéréséhez: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (vegye figyelembe, hogy a böngésző gyorsítótárának törlésére lesz szükség az új tároló-rendszerképben található bemutató webalkalmazás használatához)
 
 A JSON-válasz következő tulajdonságai módosultak:
 
 * A `type` új nevet kapott: `category` 
 * A `score` új nevet kapott: `confidenceScore`
 * `category`A JSON-kimenet mezőjében szereplő entitások mostantól Pascal-ügyben vannak. A következő entitások lettek átnevezve:
-    * `EXAMINATION_RELATION`átnevezve: `RelationalOperator` .
-    * `EXAMINATION_UNIT`átnevezve: `MeasurementUnit` .
-    * `EXAMINATION_VALUE`átnevezve: `MeasurementValue` .
-    * `ROUTE_OR_MODE`átnevezve `MedicationRoute` .
+    * `EXAMINATION_RELATION` átnevezve: `RelationalOperator` .
+    * `EXAMINATION_UNIT` átnevezve: `MeasurementUnit` .
+    * `EXAMINATION_VALUE` átnevezve: `MeasurementValue` .
+    * `ROUTE_OR_MODE` átnevezve `MedicationRoute` .
     * A relációs entitás `ROUTE_OR_MODE_OF_MEDICATION` át lett nevezve a következőre: `RouteOfMedication` .
 
 A következő entitások lettek hozzáadva:
@@ -82,7 +82,7 @@ A tároló a következő funkciókat kínálja:
 
 A Text Analysis API v3 mostantól általánosan elérhető a következő frissítésekkel:
 
-* Modell verziója`2020-04-01`
+* Modell verziója `2020-04-01`
 * Új [adatkorlátok](concepts/data-limits.md) az egyes szolgáltatásokhoz
 * Frissítve a [Hangulatelemzés (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md) [nyelvi támogatása](language-support.md)
 * Különálló végpont az entitás összekapcsolásához 
@@ -98,13 +98,13 @@ A Text Analysis API v3 mostantól általánosan elérhető a következő frissí
    * Esemény – sport
 
 A JSON-válaszban a következő tulajdonságok lettek hozzáadva:
-   * `SentenceText`Hangulatelemzés
-   * `Warnings`minden dokumentumhoz 
+   * `SentenceText` Hangulatelemzés
+   * `Warnings` minden dokumentumhoz 
 
 A JSON-válaszban a következő tulajdonságok nevei módosultak, ahol lehetséges:
 
 * A `score` új nevet kapott: `confidenceScore`
-    * `confidenceScore`két tizedesjegy pontossággal rendelkezik. 
+    * `confidenceScore` két tizedesjegy pontossággal rendelkezik. 
 * A `type` új nevet kapott: `category`
 * A `subtype` új nevet kapott: `subcategory`
 
@@ -139,7 +139,7 @@ További entitás-típusok mostantól elérhetők az elnevezett entitás-felisme
 
 * A következő általános entitás-típusok felismerése (csak angol nyelven):
     * PersonType
-    * Product
+    * Termék
     * Esemény
     * Geopolitikai entitás (GPE) a hely alatt altípusként
     * Ügyességi
@@ -187,11 +187,11 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)
-* [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
-* [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Kulcskifejezések kinyerése](how-tos/text-analytics-how-to-keyword-extraction.md)

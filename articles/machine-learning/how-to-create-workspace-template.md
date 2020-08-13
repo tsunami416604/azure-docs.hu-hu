@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986562"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192329"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -380,7 +380,7 @@ Az adatai számára további konfigurációt adhat meg, ha a **confidential_data
 Ha a társított erőforrások nem egy virtuális hálózat mögött találhatók, a **privateEndpointType** paramétert beállíthatja úgy, hogy `AutoAproval` `ManualApproval` a munkaterületet egy privát végpont mögött helyezze üzembe. Ezt az új és a meglévő munkaterületek esetében is megteheti. Meglévő munkaterület frissítésekor adja meg a sablon paramétereit a meglévő munkaterületről származó információkkal.
 
 > [!IMPORTANT]
-> Az üzembe helyezés csak a privát végpontokat támogató régiókban érvényes.
+> Az Azure Private link használatával létrehozhat egy privát végpontot Azure Machine Learning munkaterület számára, jelenleg nyilvános előzetes verzióban érhető el. Ez a funkció csak az **USA keleti** és az **USA 2. nyugati** régiójában érhető el. Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -648,7 +648,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
+1. Válassza a __Felülvizsgálat + létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -778,7 +778,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

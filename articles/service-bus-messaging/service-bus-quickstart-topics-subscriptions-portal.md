@@ -5,14 +5,14 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: fc84b9ec9cc71d35e31a5c11ae0dd0d2228621da
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341062"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191538"
 ---
-# <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rövid útmutató: a Azure Portal használatával létrehozhat egy Service Bus témakört és előfizetéseket a témakörbe
+# <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Service Bus-témakör és -előfizetések létrehozása a témakörhöz az Azure Portal használatával
 Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Service Bus témakört, majd előfizetéseket hozhat létre ehhez a témakörhöz. 
 
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>Mik azok a Service Bus-üzenettémák és -előfizetések?
@@ -31,7 +31,7 @@ Service Bus témakörök és előfizetések lehetővé teszik nagy mennyiségű 
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi cikkből megtudhatja, hogyan küldhet üzeneteket egy témakörbe, és hogyan fogadhat üzeneteket az előfizetésen keresztül: válassza ki a programozási nyelvet a TARTALOMJEGYZÉKben. 
 
 > [!div class="nextstepaction"]

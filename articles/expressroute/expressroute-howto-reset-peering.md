@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: áramkör-társítások alaphelyzetbe állítása'
-description: ExpressRoute-áramköri kapcsolatok letiltása és engedélyezése.
+description: Megtudhatja, hogyan tilthatja le és engedélyezheti az Azure ExpressRoute áramköri szolgáltatásait Azure PowerShell használatával. A társítások konfigurálásakor a rendszer alapértelmezés szerint engedélyezi őket.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e576fe2f08d54d2642603e3b7974e00feec8ce93
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735251"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192186"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-áramköri társítások alaphelyzetbe állítása
 
@@ -141,7 +141,7 @@ Van néhány olyan forgatókönyv, ahol hasznos lehet a ExpressRoute-társítás
    ```
    A társításnak beállított állapotban kell lennie. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha segítségre van szüksége egy ExpressRoute-probléma elhárításához, tekintse meg a következő cikkeket:
 * [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
 * [A hálózati teljesítmény hibaelhárítása](expressroute-troubleshooting-network-performance.md)

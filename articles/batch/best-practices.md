@@ -1,14 +1,14 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474903"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191814"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -56,6 +56,10 @@ A készlet-foglalási hibák az első kiosztáskor vagy az azt követő átmére
 Lehetséges, hogy a Batch-készletek az Azure-ban leállási eseményeket tapasztalnak. Ne feledje, hogy a Batch-forgatókönyvek vagy munkafolyamatok tervezésekor és fejlesztésekor vegye figyelembe a problémát.
 
 Abban az esetben, ha egy csomópont meghibásodik, a Batch automatikusan megkísérli helyreállítani ezeket a számítási csomópontokat az Ön nevében. Ez a helyreállított csomóponton futó feladatok újraütemezését eredményezheti. A megszakított feladatokkal kapcsolatos további tudnivalókért tekintse meg [az újrapróbálkozások tervezése](#design-for-retries-and-re-execution) című témakört.
+
+### <a name="custom-image-pools"></a>Egyéni rendszerkép-készletek
+
+Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. A készletet egy támogatott Azure Marketplace-lemezképpel is létrehozhatja, vagy [létrehozhat egy egyéni rendszerképet is egy megosztott képtárat](batch-sig-images.md)tartalmazó képpel. Míg a [felügyelt lemezkép](batch-custom-images.md) használatával egyéni képkészletet is létrehozhat, javasoljuk, hogy amikor csak lehet, hozzon létre egyéni lemezképeket a megosztott képtárat használva. A megosztott képkatalógus segítségével gyorsabban kiépítheti a készleteket, méretezheti nagyobb mennyiségű virtuális gépet, és növelheti a megbízhatóságot a virtuális gépek kiépítésekor.
 
 ### <a name="third-party-images"></a>Harmadik féltől származó rendszerképek
 
@@ -169,7 +173,7 @@ Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tan
 
 A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Hálózati kapcsolat
 
 Tekintse át a következő útmutatást, amikor a Batch-megoldások kapcsolatát fontolgatja.
 

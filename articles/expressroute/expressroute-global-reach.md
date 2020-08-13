@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: Kapcsolódás a Microsoft Cloudhoz Global Reach használatával'
-description: Ez a cikk a ExpressRoute Global Reach ismerteti.
+description: Ismerje meg, hogy az Azure ExpressRoute Global Reach hogyan kapcsolhat össze ExpressRoute-áramköröket a helyszíni hálózatok közötti magánhálózat létrehozása érdekében.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c747253a56476b0fd9431311294d487ef336e69
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636733"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190757"
 ---
 # <a name="expressroute-global-reach"></a>Az ExpressRoute Global Reach
 A ExpressRoute egy privát és rugalmas módszer a helyi hálózatok Microsoft Cloudhoz való összekapcsolására. Számos Microsoft Cloud Services, például az Azure és az Office 365 is elérhető a privát adatközpontból vagy a vállalati hálózatból. Előfordulhat például, hogy egy San Francisco-beli fiókirodában egy ExpressRoute áramkör található a Szilícium-völgyben és egy másik fiókirodában Londonban, és egy ExpressRoute-áramkör található ugyanabban a városban. Mindkét fiókirodában nagy sebességű kapcsolat lehet az USA nyugati és Egyesült Királyság déli régiója Azure-erőforrásaival. A fiókirodák azonban nem tudnak közvetlenül átcserélni az adatcserét. Más szóval a 10.0.1.0/24 képes az 10.0.3.0/24 és a 10.0.4.0/24 adatküldésre, de nem a 10.0.2.0/24 értékre.
@@ -50,7 +50,7 @@ A ExpressRoute Global Reach jelenleg a következő helyeken támogatottak.
 
 A ExpressRoute-áramköröket a fenti országokban vagy régióban található ExpressRoute-összevonási [helyeken](expressroute-locations.md) kell létrehozni. Ahhoz, hogy a ExpressRoute Global Reach a [különböző geopolitikai régiók](expressroute-locations.md)között, az áramkörnek prémium SKU-nak kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 1. [A Global Reach GYIK megtekintése](expressroute-faqs.md#globalreach)
 2. [További információ a Global Reach engedélyezéséről](expressroute-howto-set-global-reach.md)
 3. [Megtudhatja, hogyan kapcsolhat ExpressRoute-áramkört a virtuális hálózathoz](expressroute-howto-linkvnet-arm.md)

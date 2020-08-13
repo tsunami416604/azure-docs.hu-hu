@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 148b22e7abc4fca7b9cb104f3616562b74c73004
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ed1104293aabdebd0e31c0c6ec0197fe10b64f06
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084509"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191012"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service
 
@@ -155,7 +155,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 A parancs használatával szerezze be a kapcsolatok karakterláncát [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) .
 
 ```azurecli-interactive
-az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
+az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
 ```
 
 A parancs kimenetében cserélje le a és a parancsot *\<username>* *\<password>* a korábban használt adatbázis-rendszergazdai hitelesítő adatokkal.
@@ -503,7 +503,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jelen
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

@@ -1,17 +1,17 @@
 ---
 title: Vész-helyreállítási útmutató a Azure Data Lake Storage Gen1hoz | Microsoft Docs
-description: Útmutató a magas rendelkezésre álláshoz és a vész-helyreállításhoz Azure Data Lake Storage Gen1
+description: Megtudhatja, hogyan teheti meg az adatok az egész régióra kiterjedő leállások vagy véletlen törlések további védelme érdekében a Azure Data Lake Storage Gen1 helyileg redundáns tárolásán túl.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: ebcdeed608a5b9dc6202071869c4df1dcfd327a8
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b124f828c4a6a019c45243528ed2d957e3f781f3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512754"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191413"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Magas rendelkezésre állású és vész-helyreállítási útmutatás a Data Lake Storage Gen1
 
@@ -40,7 +40,7 @@ A [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) is engedélyez
 
 Megpróbálhatja visszaállítani a törölt elemeket az az [. data lake store](https://docs.microsoft.com/powershell/module/az.datalakestore/) Azure PowerShell modullal az 1. generációs Data Lake Storage. Pontosabban lásd a [Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem) parancsot. A parancs használatának megkezdése előtt ellenőrizze a [Leírás](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description) szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

@@ -1,17 +1,17 @@
 ---
 title: Performance tuning – struktúra Azure Data Lake Storage Gen1
-description: Teljesítmény-finomhangolási irányelvek a HdInsight és a Azure Data Lake Storage Gen1 struktúrához.
+description: Ismerje meg a HdInsight és a Azure Data Lake Storage Gen1 struktúrájának finomhangolását. Nagy I/O-igényű lekérdezések esetén a struktúra finomhangolásával jobb teljesítményt érhet el.
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 9e05773955fb79007a5d5899babf8680c69aa654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d10b1811257e14238cb04a79ff184cee57aab471
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281718"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189956"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage Gen1 struktúrához
 

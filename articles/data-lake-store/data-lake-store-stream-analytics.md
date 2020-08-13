@@ -1,17 +1,17 @@
 ---
 title: Stream-adatok Stream Analyticsról Data Lake Storage Gen1ra – Azure
-description: A Azure Stream Analytics használatával továbbíthatja az adatátvitelt a Azure Data Lake Storage Gen1ba.
+description: Megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 kimenetként egy Azure Stream Analytics feladatokhoz egy egyszerű forgatókönyvvel, amely egy Azure Storage-blobból olvassa be az adatokat.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515170"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192153"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok továbbítása Azure Storage Blobról Azure Data Lake Storage Gen1 a Azure Stream Analytics használatával
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 kimenetként egy Azure Stream Analytics feladatokhoz. Ez a cikk egy egyszerű forgatókönyvet mutat be, amely beolvassa az adatokat egy Azure Storage-blobból (bemenet), és az adatokat a Data Lake Storage Gen1ba (output) írja.
@@ -58,7 +58,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
    * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
    * A **kódoláshoz**válassza az **UTF-8**elemet.
 
-     Kattintson a **Létrehozás** lehetőségre. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
+     Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Data Lake Storage Gen1 kimenet létrehozása a feladatokhoz
@@ -86,7 +86,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
    * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
    * A **kódoláshoz**válassza az **UTF-8**elemet.
     
-     Kattintson a **Létrehozás** lehetőségre. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
+     Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 

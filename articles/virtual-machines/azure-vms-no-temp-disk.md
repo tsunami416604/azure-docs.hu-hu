@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288550"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191149"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-beli virtuálisgép-méretek helyi ideiglenes lemezzel nem 
 Ez a cikk olyan Azure-beli virtuálisgép-méretekkel kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz, amelyek nem rendelkeznek helyi ideiglenes lemezzel (azaz nincs helyi Temp lemez). A virtuálisgép-méretekkel kapcsolatos további információkért tekintse meg a [DV4 és Dsv4-sorozat (általános célú munkaterhelések)](dv4-dsv4-series.md) , illetve [a Ev4 és a Esv4-sorozat (memória-optimalizált számítási feladatok)](ev4-esv4-series.md)specifikációit ismertető témakört.
@@ -55,8 +55,8 @@ Ha az egyéni operációsrendszer-lemezkép a helyi ideiglenes lemezre mutat, le
 ## <a name="have-questions-or-feedback"></a>Kérdése van, vagy visszajelzést küldene?
 Töltse ki a [visszajelzési űrlapot]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u). 
 
-## <a name="next-steps"></a>További lépések 
-Ebben a dokumentumban többet tudhat meg az Azure-beli virtuális gépekkel kapcsolatos leggyakoribb kérdésekről a helyi ideiglenes lemezzel. További információt ezekről a virtuálisgép-méretekről a következő cikkekben talál:
+## <a name="next-steps"></a>Következő lépések 
+Ebben a dokumentumban többet tudhat meg az Azure-beli virtuális gépekkel kapcsolatos leggyakoribb kérdésekre, amelyek helyi Temp-lemez nélkül találhatók. További információt ezekről a virtuálisgép-méretekről a következő cikkekben talál:
 
 - [A DV4 és a Dsv4 sorozat specifikációi (általános célú munkaterhelés)](dv4-dsv4-series.md)
 - [A Ev4 és a Esv4 sorozat specifikációi (memória-optimalizált számítási feladatok)](ev4-esv4-series.md)

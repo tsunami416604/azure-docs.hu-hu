@@ -1,6 +1,6 @@
 ---
 title: Ajánlott eljárások a Key Vault-Azure Key Vault használatához | Microsoft Docs
-description: Ez a dokumentum a Key Vault használatának ajánlott eljárásait ismerteti.
+description: Ismerje meg a Azure Key Vault ajánlott eljárásait, beleértve a hozzáférés szabályozását, a különböző kulcstartók használatát, a biztonsági mentést, a naplózást és a helyreállítási lehetőségeket.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386231"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189884"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Ajánlott eljárások a Key Vault használatához
 

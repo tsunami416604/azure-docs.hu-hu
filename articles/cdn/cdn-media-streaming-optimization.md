@@ -1,6 +1,6 @@
 ---
 title: Médiaadatfolyam-továbbítás optimalizálása Azure CDN
-description: Adatfolyam-fájlok optimalizálása zökkenőmentes kézbesítéshez
+description: Ismerje meg az Azure-Content Delivery Network adatfolyam-továbbítási lehetőségeit, például a részleges gyorsítótár-megosztást és a gyorsítótár kitöltésének várakozási idejét.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206700"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192604"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Médiaadatfolyam-továbbítás optimalizálása Azure CDN 
  

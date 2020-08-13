@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault-Azure Key Vault virtuális hálózati szolgáltatásbeli végpontok | Microsoft Docs
-description: A Key Vault virtuális hálózati szolgáltatási végpontjának áttekintése
+description: Megtudhatja, hogyan korlátozhatja a virtuális hálózati szolgáltatás végpontját Azure Key Vault lehetővé teszi a hozzáférést egy adott virtuális hálózathoz, beleértve a használati forgatókönyveket is.
 services: key-vault
 author: amitbapat
 ms.author: ambapat
@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 891ea69dc6d53370f5f73f8bb3072a9795f07635
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090484"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190591"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -85,7 +85,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Key Vault biztonságossá tétele](secure-your-key-vault.md))
 * [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](network-security.md)

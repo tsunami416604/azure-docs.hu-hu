@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fcefdfd163bcbd9cd2adfcba6bf6711b9bee18
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9229137c999157d2cea112ebb5e6e8b169eed96
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041671"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192785"
 ---
 # <a name="workflow-automation"></a>Munkafolyamat-automatizálás
 
@@ -32,7 +32,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető|
 |Árképzési|Ingyenes szint|
-|Szükséges szerepkörök és engedélyek:|Az exportálási konfigurációt tartalmazó előfizetés **olvasója**<br>**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
+|Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
@@ -44,7 +44,8 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
     [![Munkafolyamat-automatizálások listája](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.  
+    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
+
 1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása**lehetőségre. 
 
     Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
@@ -86,9 +87,9 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 ## <a name="manually-trigger-a-logic-app"></a>Logikai alkalmazás manuális elindítása
 
-Logic Apps manuálisan is futtathatja a biztonsági riasztások megtekintésekor vagy a [gyors javítási szervizelést](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation)biztosító javaslatokban.
+Logic Apps manuálisan is futtathatja a biztonsági riasztások és javaslatok megtekintésekor.
 
-Egy logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy egy olyan javaslatot, amely támogatja a gyors javítási szervizelést, és kattintson a **logikai alkalmazás indítása**lehetőségre:
+Logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy javaslatot, és kattintson a **logikai alkalmazás elindítása**lehetőségre:
 
 [![Logikai alkalmazás manuális elindítása](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
@@ -96,7 +97,7 @@ Egy logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy
 
 A logikai alkalmazás-példánynak átadott biztonsági riasztások vagy javaslatok eseményeinek nyers esemény-sémáit a munkafolyamat- [automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)között tekintheti meg. Ez olyan esetekben lehet hasznos, amikor nem használja a fent említett Security Center beépített logikai alkalmazás-összekötőit, de ehelyett a Logic app általános HTTP-összekötőjét használja – az Event JSON-sémával manuálisan elemezheti azt, ahogy jónak látja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozhat létre Logic Apps, hogyan automatizálhatja a végrehajtást a Security Centerban, és hogyan futtathatja őket manuálisan. 
 

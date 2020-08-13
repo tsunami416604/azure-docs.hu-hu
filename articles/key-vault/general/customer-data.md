@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault ügyféladatok funkciói – Azure Key Vault | Microsoft Docs
-description: Ismerkedjen meg a Key Vault vásárlói adatait
+description: Ismerje meg a vásárlók adatait, amelyeket a tárolók, kulcsok, titkok, tanúsítványok és felügyelt Storage-fiókok létrehozása vagy frissítése során Azure Key Vault fogad.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81617891"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189924"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Az ügyféladatok funkcióinak Azure Key Vault
 
@@ -50,7 +50,7 @@ Azure Key Vault hozzáférés naplózása egy opcionális funkció, amely bekapc
 
 Azure Key Vault személyes adatokat tartalmazó diagnosztikai naplókat az exportálási kérelem a felhasználói adatvédelmi portálon történő beolvasásával lehet lekérni. Ezt a kérelmet a bérlői rendszergazdának kell elvégeznie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Key Vault naplózás](logging.md))
 

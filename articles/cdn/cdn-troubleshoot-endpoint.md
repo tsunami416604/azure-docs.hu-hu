@@ -1,6 +1,6 @@
 ---
 title: Azure CDN-végpontok hibaelhárítása – 404 állapotkód
-description: Azure CDN-végpontokkal kapcsolatos 404-hibakódok megoldása.
+description: Ismerje meg, hogy miként lehet elhárítani az Azure Content Delivery Network-végpontokkal kapcsolatos problémákat, amelyek 404 HTTP-válasz állapotkódot adnak vissza.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888684"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192480"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 állapotkódot visszaadó Azure CDN-végpontok hibaelhárítása
 Ez a cikk lehetővé teszi az Azure Content Delivery Network-(CDN-) végpontokkal kapcsolatos hibák elhárítását, amelyek a 404 HTTP-válasz állapotkódot adják vissza.
@@ -102,5 +102,5 @@ Végül ellenőrizzük a **forrás elérési útját**.  Alapértelmezés szerin
 
 A példában azt akartuk, hogy a Storage-fiók összes erőforrása elérhető legyen, ezért a **forrás elérési útja** üres marad.  Ez azt jelenti, hogy a https: \/ /cdndocdemo.azureedge.net/publicblob/-re irányuló kérelem lorem.txt a végpontról a/publicblob/- *lorem.txt*kérelmeket kérő cdndocdemo.Core.Windows.net eredményez.  Hasonlóképpen, a https: \/ /cdndocdemo.azureedge.net/donotcache/status.png a forrástól érkező */donotcache/-status.png* kérő végpontot eredményez.
 
-Mi a teendő, ha nem szeretné a CDN-t használni a forrás minden elérési útjához?  Tegyük fel, hogy csak a *publicblob* elérési útját akarta kitenni.  Ha a **forrás elérési útja** mezőben a */publicblob* értéket adja meg, akkor a végpontot a rendszer beilleszti a */publicblob* , mielőtt minden kérelem bekerül a forrásba.  Ez azt jelenti, hogy a https: \/ /cdndocdemo.azureedge.net/publicblob/lorem.txt iránti kérelem mostantól az URL-cím, a */publicblob/lorem.txt*és a */publicblob* hozzáfűzését is végrehajtja az elejéhez. Ez a forrástól *lorem.txt/publicblob/publicblob/* kérelmet eredményez.  Ha az elérési út nem a tényleges fájlra van feloldva, a forrás 404 állapotot ad vissza.  Ebben a példában a lorem.txt beolvasásához szükséges helyes URL-cím valójában https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Vegye figyelembe, hogy a */publicblob* elérési útja egyáltalán nem szerepel, mert az URL-cím kérésének része */lorem.txt* , és a végpont hozzáadja a */publicblob*-t, ami azt eredményezi, hogy a */publicblob/lorem.txt* a kérést a forrásnak.
+Mi a teendő, ha nem szeretné a CDN-t használni a forrás minden elérési útjához?  Tegyük fel, hogy csak a *publicblob* elérési útját akarta kitenni.  Ha a **forrás elérési útja** mezőben a */publicblob* értéket adja meg, akkor a végpontot a rendszer beilleszti a */publicblob* , mielőtt minden kérelem bekerül a forrásba.  Ez azt jelenti, hogy a https: \/ /cdndocdemo.azureedge.net/publicblob/lorem.txt iránti kérelem mostantól az URL-cím, a */publicblob/lorem.txt*és a */publicblob* hozzáfűzését is végrehajtja az elejéhez. Ez a forrástól *lorem.txt/publicblob/publicblob/ * kérelmet eredményez.  Ha az elérési út nem a tényleges fájlra van feloldva, a forrás 404 állapotot ad vissza.  Ebben a példában a lorem.txt beolvasásához szükséges helyes URL-cím valójában https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Vegye figyelembe, hogy a */publicblob* elérési útja egyáltalán nem szerepel, mert az URL-cím kérésének része */lorem.txt* , és a végpont hozzáadja a */publicblob*-t, ami azt eredményezi, hogy a */publicblob/lorem.txt* a kérést a forrásnak.
 

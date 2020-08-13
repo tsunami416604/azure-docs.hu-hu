@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0bb454897a8dfa340a3586c22619723464d5ca73
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185570"
+ms.locfileid: "88192435"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 - Egy vagy több IP-címtartomány ügyfélszámítógépekhez (ha szükséges).
 
 > [!NOTE]
-> Csak Németország esetében Microsoft Cloud Power BI Premium esetén az adatimportálás (frissítés) és a többoldalas jelentés kapcsolatai jelenleg nem támogatottak, ha engedélyezve van egy tűzfal, még akkor is, ha a hozzáférés engedélyezése a Power BI beállítás engedélyezve van.
+> A Microsoft Cloud németországi Power BI Premium adatimportálási (frissítési) és többoldalas jelentési kapcsolatai jelenleg nem támogatottak, ha a tűzfal engedélyezve van, még akkor is, ha a hozzáférés engedélyezése Power BI beállítás be értékre van állítva.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra 
 
@@ -34,7 +34,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 1. Kattintson a kiszolgálóra az Áttekintés oldal megnyitásához. 
 2. A **Beállítások**  >  **tűzfala**tűzfal  >  **engedélyezése**területen válassza **a be**lehetőséget.
-3. Ha Power BI és Power BI Premium összes kapcsolattípus engedélyezését szeretné engedélyezni, a **hozzáférés engedélyezése a Power BIból**területen válassza **a be**lehetőséget.  
+3. A Power BI és Power BI Premium közötti kapcsolatok engedélyezéséhez a **Power bi hozzáférés engedélyezése lehetőségnél**válassza **a be**lehetőséget.  
 4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. A tűzfalszabály nevét 128 karakterre kell korlátozni, és csak nagybetűket, kisbetűket, számokat, aláhúzást és kötőjelet tartalmazhatnak. Üres szóközök és egyéb speciális karakterek használata nem engedélyezett.
 5. Kattintson a **Mentés** gombra.
 

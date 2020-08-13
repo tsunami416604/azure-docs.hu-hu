@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: figyelés, mérőszámok és riasztások'
-description: Ez az oldal a ExpressRoute figyelésével kapcsolatos információkat tartalmaz
+description: Ismerje meg az Azure ExpressRoute-figyelést, metrikákat és riasztásokat a Azure Monitor használatával, amely az Azure-ban az összes mérőszámot, riasztást és diagnosztikai naplót használja.
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6622a6e9f6865dbbafa145d6773440599b0c2777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49e5acb7fc0cfe947d846f2943fb5071d6554ea5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738906"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192477"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
@@ -134,7 +134,7 @@ A **riasztási feltételek**között kiválaszthatja a jel típusa **tevékenys�
 
   ![másik](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ExpressRoute-kapcsolat konfigurálása.
   

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75891252"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192289"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure Signaler szolgáltatás – gyakori kérdések
 
@@ -50,15 +50,15 @@ Az ügyfél és az alkalmazáskiszolgáló közötti leképezés csak akkor mara
 A signaler szolgáltatás figyeli a szívveréseket az alkalmazás-kiszolgálókról.
 Ha a szívverések nem érkeznek meg egy megadott ideig, az alkalmazáskiszolgáló offline állapotba kerül. A rendszer leválasztja az ehhez az alkalmazáskiszolgáló számára leképezett összes ügyfélkapcsolatot.
 
-## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Miért van az egyéni `IUserIdProvider` dobási kivétel a ASP.net Core Signal SDK-ról az Azure Signaler Service SDK-ra való váltáskor?
+## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Miért van az egyéni `IUserIdProvider` dobási kivétel a ASP.net Core Signal SDK-ról az Azure signaler Service SDK-ra való váltáskor?
 
-A paraméter `HubConnectionContext context` különbözik a ASP.net Core signaler SDK és az Azure Signaler Service SDK `IUserIdProvider` között, ha a hívása megtörténik.
+A paraméter `HubConnectionContext context` különbözik a ASP.net Core signaler SDK és az Azure signaler Service SDK között `IUserIdProvider` , ha a hívása megtörténik.
 
-ASP.NET Core a jelzőben `HubConnectionContext context` a fizikai ügyfélkapcsolat környezete az összes tulajdonság érvényes értékeivel.
+ASP.NET Core a jelzőben a `HubConnectionContext context` fizikai ügyfélkapcsolat környezete az összes tulajdonság érvényes értékeivel.
 
-Az Azure Signaler Service SDK `HubConnectionContext context` -ban a logikai ügyfélkapcsolat kontextusa. A fizikai ügyfélkapcsolat a Signaler szolgáltatás példányához van csatlakoztatva, így csak korlátozott számú tulajdonság van megadva.
+Az Azure Signaler Service SDK-ban `HubConnectionContext context` a logikai ügyfélkapcsolat kontextusa. A fizikai ügyfélkapcsolat a Signaler szolgáltatás példányához van csatlakoztatva, így csak korlátozott számú tulajdonság van megadva.
 
-Egyelőre csak `HubConnectionContext.GetHttpContext()` a és `HubConnectionContext.User` a hozzáféréshez érhető el.
+Egyelőre csak a `HubConnectionContext.GetHttpContext()` és a `HubConnectionContext.User` hozzáféréshez érhető el.
 [Itt](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)megtekintheti a forráskódot.
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Konfigurálható a Signaler szolgáltatásban elérhető átvitelek a kiszolgálóoldali ASP.NET Core jelzővel való konfigurálásához? Letilthatja például a WebSocket Transport szolgáltatást?
@@ -68,3 +68,39 @@ Nem.
 Az Azure Signaler szolgáltatás mindhárom olyan átvitelt biztosít, amelyet a ASP.NET Core a szignáló alapértelmezés szerint támogat. Nem konfigurálható. A signaler szolgáltatás minden ügyfélkapcsolat esetében kezeli a kapcsolatokat és a szállításokat.
 
 Az ügyféloldali átvitelek az [itt](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)dokumentált módon konfigurálhatók.
+
+## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-showed-in-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Mit jelent a mérőszámok, például az üzenetek száma vagy a kapcsolatok száma Azure Portalban? Milyen típusú összesítési típust válasszon?
+
+[Itt](signalr-concept-messages-and-connections.md)találja a mérőszámok kiszámításának részleteit.
+
+Az Azure Signal Service-erőforrások áttekintés paneljén már kiválasztottuk a megfelelő összesítési típust. Ha pedig a metrikák panelre lép, az összesítési [típust is használhatja](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr) hivatkozásként.
+
+## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Mit jelent a szolgáltatási mód `Default` / `Serverless` / `Classic` ? Hogyan választhatok?
+
+Módok
+* `Default` a mód használatához a központi kiszolgáló **szükséges** . Ha nincs elérhető kiszolgálói kapcsolat a központhoz, az ügyfél megpróbál csatlakozni ehhez a hubhoz.
+* `Serverless` a Mode **nem** engedélyezi a kiszolgálók kapcsolatát, azaz elutasítja az összes kiszolgálói kapcsolatot, minden ügyfélnek kiszolgáló nélküli módban kell lennie.
+* `Classic` a mód vegyes állapotú. Ha egy hubhoz kiszolgálói csatlakozás van, az új ügyfél a központi kiszolgálóra lesz irányítva, ha nem, akkor az ügyfél kiszolgáló nélküli módba lép.
+
+  Ez némi problémát okozhat, például az összes kiszolgálói kapcsolat elvész egy pillanatra, egyes ügyfelek kiszolgáló nélküli módba lépnek, nem a központi kiszolgálóra való továbbítás helyett.
+
+Kiválasztása
+1. Nincs központi kiszolgáló, válassza a lehetőséget `Serverless` .
+1. Az összes hubhoz van hub-kiszolgáló, válassza a lehetőséget `Default` .
+1. Egyes hubok rendelkeznek hub-kiszolgálókkal, mások nem, választhatnak, `Classic` de ez némi problémát okozhat, a jobb módszer két példány létrehozása, az egyik a `Serverless` másik a `Default` .
+
+## <a name="any-feature-differences-when-using-azure-signalr-for-aspnet-signalr"></a>Az Azure Signaler ASP.NET-jelzővel való használata során felmerülő bármilyen eltérés?
+Az Azure-jelző használatakor a ASP.NET-jelző egyes API-jai és funkciói már nem támogatottak:
+- Az Azure-jelző használata nem támogatott az ügyfelek és a központ (gyakran hívott) közötti tetszőleges állapotának `HubState` átadásához.
+- `PersistentConnection` az osztály még nem támogatott az Azure-jelző használatakor
+- A **Forever frame Transport** nem támogatott az Azure-jelző használata esetén
+- Az Azure-jelző már nem játssza le az ügyfélnek küldött üzeneteket, amikor az ügyfél offline állapotban van
+- Az Azure-jelző használatakor a rendszer mindig az egyik ügyfélkapcsolat forgalmát irányítja át (aka. **Sticky**) egy app Server-példányra a kapcsolódás időtartamára
+
+A ASP.NET-jelző támogatása a kompatibilitásra összpontosít, így nem minden új funkció támogatott a ASP.NET Core-jelzővel. Például a **MessagePack**, a **streaming**stb., csak ASP.net Core signaler-alkalmazásokhoz érhetők el.
+
+A signaler szolgáltatás különböző szolgáltatási módhoz konfigurálható: `Classic` / `Default` / `Serverles` s. Ebben a ASP.NET-támogatásban a `Serverless` mód nem támogatott. Az adatsík REST API is nem támogatott.
+
+## <a name="where-do-my-data-reside"></a>Hol találhatók az adataim?
+
+Az Azure Signaler szolgáltatás adatfeldolgozó szolgáltatásként működik. A terv nem tárolja az ügyfél tartalmát és az adattárolást. Ha az Azure Signaler szolgáltatást más Azure-szolgáltatásokkal, például az Azure Storage for Diagnostics szolgáltatással együtt használja, tekintse [meg az Azure](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) -régiókban tárolt adattárolással kapcsolatos útmutatást.

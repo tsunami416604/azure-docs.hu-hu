@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy alapszintű 
 services: container-service
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a34649bba275fa4b11a4c5a0c0084235d83fd4a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927051"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190776"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Bejövő adatvezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -27,7 +27,7 @@ További lehetőségek:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk a [Helm 3][helm] használatával telepíti az NGINX beáramló vezérlőt.
+Ez a cikk a [Helm 3][helm] használatával telepíti az NGINX beáramló vezérlőt. Győződjön meg arról, hogy a Helm legújabb kiadását használja, és hozzáfér a *stabil* Helm-tárházhoz.
 
 Ehhez a cikkhez az Azure CLI 2.0.64 vagy újabb verzióját is futtatnia kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -226,7 +226,7 @@ Most adja hozzá a */Hello-World-Two* elérési útját az IP-címhez, például
 
 ![A bejövő vezérlő mögött futó második alkalmazás](media/ingress-basic/app-two.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a cikk a beáramló összetevők és a minta alkalmazások telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -276,7 +276,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

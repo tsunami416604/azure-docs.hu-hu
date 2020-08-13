@@ -3,12 +3,12 @@ title: A Microsoft Azure Backup Server újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032442"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190845"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
 
@@ -25,7 +25,7 @@ A MABS v2 [modern biztonsági másolati tárhely](backup-mabs-add-storage.md) (M
 
 Az MB-os méretezés és teljesítmény elérése érdekében javasoljuk, hogy a Flash Storage (SSD) kis százalékát (a teljes tárterület 4%-át) használja a MABS v3 UR1, a DPM HDD-tárolóval együtt. A MABS v3 UR1 és a többplatformos tárolás 50-70%-kal gyorsabb biztonsági mentést biztosít. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a DPM ( [MB) beállítását a Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
 
-### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>ReFS-kötetek és ReFS-kötetek támogatása a deduplikálás engedélyezésével
+### <a name="support-for-refs-volumes"></a>ReFS-kötetek támogatása
 
 A MABS v3 UR1 segítségével biztonsági mentést készíthet a ReFS köteten telepített ReFS-kötetekről és munkaterhelésekről. A ReFS-köteteken üzembe helyezett következő számítási feladatok biztonsági mentését végezheti el:
 
@@ -36,6 +36,8 @@ A MABS v3 UR1 segítségével biztonsági mentést készíthet a ReFS köteten t
 
 >[!NOTE]
 > A ReFS-köteten tárolt Hyper-V virtuális gépek biztonsági mentését a MABS v3 támogatja
+
+>FONTOS Azonosítottank néhány problémát a deduplikált ReFS-kötetek biztonsági mentésével kapcsolatban. Dolgozunk a kijavításán, és ezt a szakaszt azonnal frissítjük, amint elérhetővé tettük a javítást. Addig is eltávolítjuk a deduplikált ReFS-kötetek biztonsági mentésének támogatását a MABSv3-UR1.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware-megoldás védelme – támogatás
 
@@ -121,7 +123,7 @@ További információ [a MABS telepítési](./backup-azure-microsoft-azure-backu
 >
 > A MABS ugyanazzal a kóddal rendelkezik, mint a System Center Data Protection Manager. A MABS v3 egyenértékű a Data Protection Manager 1807-vel. A MABS v3 UR1 egyenértékű a Data Protection Manager 2019 UR1.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelés védelmét:
 

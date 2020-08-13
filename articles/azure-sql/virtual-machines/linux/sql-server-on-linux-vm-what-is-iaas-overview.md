@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 721f30f5b17b078f3a3905204f6be56db25adead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b74ed713485679576fdf7f4f0df54803b56caa
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669477"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192109"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ Az Azure Virtual Machines SQL Server lehetővé teszi a felhőalapú SQL Server 
 
 Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/windows/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Ez számos különböző SQL Server számítási feladatra teszi alkalmassá a virtuális gépeket. 
 
-## <a name="get-started-with-sql-server-vms"></a><a id="create"></a>Ismerkedés a SQL Server virtuális gépekkel
+## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> Ismerkedés a SQL Server virtuális gépekkel
 
 Első lépésként válassza ki a megfelelő verziójú, kiadású és operációs rendszerű SQL Server virtuális gép rendszerképét. Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez.
 
@@ -38,6 +38,9 @@ Első lépésként válassza ki a megfelelő verziójú, kiadású és operáci�
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
+| **SQL Server 2019** | Ubuntu 18.04 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ubuntu1804enterprise-ARM), [standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ubuntu1804standard-ARM), [web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ubuntu1804web-ARM), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ubuntu1804sqldev-ARM) | 
+| **SQL Server 2019** | Red Hat Enterprise Linux (RHEL) 8 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-rhel8enterprise-ARM), [standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-rhel8standard-ARM), [web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-rhel8web-ARM), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-rhel8sqldev-ARM)|
+| **SQL Server 2019** | SUSE Linux Enterprise Server (SLES) V12 SP5 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-sles12sp5enterprise-ARM), [standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-sles12sp5standard-ARM), [web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-sles12sp5web-ARM), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-sles12sp5sqldev-ARM)|
 | **SQL Server 2017** | Red Hat Enterprise Linux (RHEL) 7.4 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonRedHatEnterpriseLinux74), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonRedHatEnterpriseLinux74), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonRedHatEnterpriseLinux74), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonRedHatEnterpriseLinux74), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonRedHatEnterpriseLinux74) |
 | **SQL Server 2017** | SUSE Linux Enterprise Server (SLES) v12 SP2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonSLES12SP2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonSLES12SP2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonSLES12SP2), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2) |
 | **SQL Server 2017** | Ubuntu 16.04 LTS |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) |
@@ -51,8 +54,8 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 
 | Disztribúció | [Adatbázismotor](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Eszközök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server ügynök](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Teljes szöveges keresés](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [Magas rendelkezésreállási bővítmény](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) |
-| SLES | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) |
+| RHEL | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| SLES | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nem](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
 | Ubuntu | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![igen](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
@@ -76,7 +79,7 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 * [SQL Server on Linux dokumentáció](https://docs.microsoft.com/sql/linux)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a SQL Server on Linux Virtual Machines szolgáltatással:
 
