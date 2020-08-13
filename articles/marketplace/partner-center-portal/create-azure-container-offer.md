@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032781"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166739"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Container-ajánlat létrehozása az Azure Marketplace-en
 
@@ -252,9 +252,11 @@ Adjon hozzá legalább egy Azure-előfizetési azonosítót egyenként (legfelje
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-### <a name="plan-overview"></a>A terv áttekintése
+## <a name="plan-overview"></a>A terv áttekintése
 
 Ezen a lapon különböző csomag-beállításokat adhat meg ugyanazon az ajánlaton belül. A (korábban SKU-nak nevezett) csomagok eltérhetnek az elérhető felhőktől, például a globális felhőktől, a kormányzati felhőktől és a csomag által hivatkozott képpel. Ha ajánlatát szeretné kilistázni a kereskedelmi piactéren, be kell állítania legalább egy csomagot.
+
+Az egyes ajánlatokhoz legfeljebb 100 csomagot hozhat létre: ezek közül legfeljebb 45 lehet privát. További információ a [Microsoft kereskedelmi piactéren](../private-offers.md)elérhető privát csomagokról.
 
 A csomagok létrehozása után a **terv áttekintése** lap a következőket jeleníti meg:
 
@@ -269,7 +271,7 @@ A terv áttekintésében elérhető műveletek a csomag aktuális állapotától
 - **Piszkozat törlése** – ha a terv állapota vázlat.
 - **Eladási terv leállítása** – ha a csomag állapota élőben van közzétéve.
 
-#### <a name="create-new-plan"></a>Új csomag létrehozása
+### <a name="create-new-plan"></a>Új csomag létrehozása
 
 Válassza az **új csomag létrehozása**lehetőséget. Megjelenik az **új terv** párbeszédpanel.
 
@@ -301,7 +303,7 @@ Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és
 
 A programok minősítésének megjelenítéséhez akár 100 hivatkozást is megadhat, amely leírja azokat. Ezek a program közvetlenül vagy a saját webhelyére mutató hivatkozásokat is magukban foglalhatnak. Ezek a hivatkozások csak Azure Government ügyfelek számára láthatók.
 
-## <a name="plan-listing"></a>Csomag listázása
+### <a name="plan-listing"></a>Csomag listázása
 
 Ezen a lapon az aktuális ajánlaton belüli különböző csomagokra vonatkozó információk láthatók.
 
@@ -331,7 +333,7 @@ Ezek a Azure Portal terv részletei:
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="A Azure Portal tervének részleteit mutatja be.":::
 
-## <a name="plan-availability"></a>A rendelkezésre állás megtervezése
+### <a name="plan-availability"></a>A rendelkezésre állás megtervezése
 
 Ha el szeretné rejteni a közzétett ajánlatot, így az ügyfelek nem kereshetik meg, nem tallózhatják vagy nem vásárolhatják meg a piactéren, a **rendelkezésre állás** lapon jelölje be a **terv elrejtése** jelölőnégyzetet.
 

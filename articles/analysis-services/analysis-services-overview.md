@@ -4,16 +4,16 @@ description: Ismerkedjen meg Azure Analysis Servicesával, amely egy teljes kör
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/24/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918943"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164308"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -46,7 +46,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 |D1    |    20     |    3     |
 
 
-### <a name="basic-tier"></a>Alapszintű csomag
+### <a name="basic-tier"></a>Alapszint
 
 Ez a csomag kisebb táblázatos modellekkel, korlátozott felhasználói párhuzamosságtal és egyszerű adatfrissítési követelményekkel rendelkező éles megoldások esetében ajánlott. A lekérdezési replika méretezése *nem érhető el* ehhez a réteghez. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
 
@@ -88,6 +88,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |USA 2. keleti régiója     |     S8, S9, S8v2, S9v2   |    1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA középső régiója     |    S8v2, S9v2     |    1     |
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |

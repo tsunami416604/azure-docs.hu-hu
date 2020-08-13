@@ -15,16 +15,16 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763431"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164988"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Útmutató: a hozzáférési panel bővítményének üzembe helyezése az Internet Explorer csoportházirend használatával
 
-Ez az oktatóanyag bemutatja, hogyan használható a csoportházirend az Internet Explorerhez készült hozzáférési panel távoli telepítésére a felhasználói gépeken. Ez a bővítmény olyan Internet Explorer-felhasználók számára szükséges, akiknek a [jelszó-alapú egyszeri bejelentkezéssel](what-is-single-sign-on.md#password-based-sso)konfigurált alkalmazásokba kell bejelentkezniük.
+Ez az oktatóanyag bemutatja, hogyan használható a csoportházirend az Internet Explorerhez készült hozzáférési panel távoli telepítésére a felhasználói gépeken. Ez a bővítmény olyan Internet Explorer-felhasználók számára szükséges, akiknek a [jelszó-alapú egyszeri bejelentkezéssel](sso-options.md#password-based-sso)konfigurált alkalmazásokba kell bejelentkezniük.
 
 Javasoljuk, hogy a rendszergazdák automatizálják ennek a bővítménynek a telepítését. Ellenkező esetben a felhasználóknak le kell tölteniük és telepíteniük kell a bővítményt, ami a felhasználói hibákra van kitéve, és rendszergazdai engedélyekkel kell rendelkeznie. Ez az oktatóanyag a szoftverek központi telepítésének a csoportházirend használatával történő automatizálásának egyik módszerét ismerteti. [További információ a csoportházirendről.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -91,7 +91,7 @@ Először el kell helyeznie a telepítőcsomagot egy olyan hálózati helyre, am
 
     ![Válassza ki a telepítőcsomagot a megosztott mappából.](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. A **szoftver központi telepítése** parancssorban válassza a **hozzárendelve** lehetőséget a telepítési módszerhez. Ezt követően kattintson az **OK** gombra.
+1. A **szoftver központi telepítése** parancssorban válassza a **hozzárendelve** lehetőséget a telepítési módszerhez. Ezután kattintson az **OK** gombra.
 
 A bővítmény mostantól a kiválasztott szervezeti egységre van telepítve. [További információ a Csoportházirend-alapú szoftvertelepítésról.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
@@ -166,7 +166,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy a bővítmény központi te
 
    ![Annak ellenőrzése, hogy a hozzáférési panel bővítmény telepítve és engedélyezve van-e](./media/deploy-access-panel-browser-extension/verify-install.png)
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 * [Alkalmazás-hozzáférés és egyszeri bejelentkezés Azure Active Directory](what-is-single-sign-on.md)
 * [Az Internet Explorerhez készült hozzáférési panel bővítmény hibaelhárítása](manage-access-panel-browser-extension.md)

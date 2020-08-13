@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 422ef08995a74b172271e165c0ec7be5010969b4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170540"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164779"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
 
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 * A GitHub támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
 * A GitHub támogatja a felhasználók automatikus kiépítését [ **Automated** (a szervezeti meghívókat)](github-provisioning-tutorial.md)
-* A GitHub konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A GitHub konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>A GitHub hozzáadása a gyűjteményből
 
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -138,8 +138,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. Ha az SAML-kijelentésben bármilyen szerepkör értékére vár, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+
+    ![felhasználói szerepkör](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > **Válassza ki a szerepkör** lehetőséget, és a kiválasztott felhasználó alapértelmezett szerepköre a felhasználó lesz.
+
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-github-sso"></a>GitHub SSO konfigurálása
 
@@ -147,11 +153,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Navigáljon a **beállításokhoz** , és kattintson a **Biztonság** elemre.
 
-    ![Beállítások](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![Beállítások](./media/github-tutorial/security.png)
 
 3. Jelölje be az **SAML-hitelesítés engedélyezése** jelölőnégyzetet, amely az egyszeri bejelentkezés konfigurációs mezőit mutatja be. hajtsa végre a következő lépéseket:
 
-    ![Beállítások](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![Beállítások](./media/github-tutorial/saml-sso.png)
 
     a. Másolja az **egyszeri bejelentkezési URL-címet** , és illessze be ezt az értéket a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfigurációjában** .
     
@@ -159,7 +165,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Konfigurálja a következő mezőket:
 
-    ![Beállítások](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![Beállítások](./media/github-tutorial/configure.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portal másolt.
 
@@ -175,9 +181,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 5. Kattintson a **SAML-konfiguráció tesztelése** elemre annak ellenőrzéséhez, hogy nincs-e érvényesítési hiba vagy hiba az egyszeri bejelentkezés során.
 
-    ![Beállítások](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![Beállítások](./media/github-tutorial/test.png)
 
-6. Kattintson a **Mentés** gombra
+6. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az egyszeri bejelentkezés a GitHubon egy adott szervezetbe történik a GitHubon, és nem helyettesíti a GitHub hitelesítését. Ezért ha a felhasználó github.com-munkamenete lejárt, előfordulhat, hogy az egyszeri bejelentkezés során a GitHub AZONOSÍTÓját/jelszavát kell hitelesítenie.
@@ -192,21 +198,21 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a GitH
 
 2. Kattintson a **személyek**elemre.
 
-    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![People](./media/github-tutorial/people.png "People")
 
 3. Kattintson a **tag meghívása**elemre.
 
-    ![Felhasználók meghívása](./media/github-tutorial/tutorial_github_config_github_09.png "Felhasználók meghívása")
+    ![Felhasználók meghívása](./media/github-tutorial/invite-member.png "Felhasználók meghívása")
 
 4. A **tag meghívása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     a. Az **e-mail** szövegmezőbe írja be a Britta Simon-fiók e-mail-címét.
 
-    ![Személyek meghívása](./media/github-tutorial/tutorial_github_config_github_10.png "Személyek meghívása")
+    ![Személyek meghívása](./media/github-tutorial/email-box.png "Személyek meghívása")
 
     b. Kattintson a **Meghívás küldése**gombra.
 
-    ![Személyek meghívása](./media/github-tutorial/tutorial_github_config_github_11.png "Személyek meghívása")
+    ![Személyek meghívása](./media/github-tutorial/send-invitation.png "Személyek meghívása")
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve erősítse meg a fiókját, mielőtt az aktívvá válna.

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e546c6eac77c4952a0d32d360f49d4251d49d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909701"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165209"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>API-összekötők használata az önkiszolgáló regisztráció testreszabásához és kiterjesztéséhez 
 
@@ -30,7 +30,7 @@ Fejlesztőként vagy rendszergazdaként az API-összekötők használatával int
 <!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
 - **Egyéni üzleti logikát futtathat**. Leküldéses értesítések küldéséhez, a vállalati adatbázisok frissítéséhez, az engedélyek kezeléséhez, a naplózási adatbázisokhoz és egyéb egyéni műveletek elvégzéséhez aktiválhatja az alárendelt eseményeket a felhőalapú rendszerekben.
 
-Az API-összekötők az Azure AD és egy API-végpont közötti szerződést jelölik a HTTP-végpont, a hitelesítés, a kérelem és a várt válasz definiálásával. Az API-összekötők konfigurálása után engedélyezheti azt egy adott lépéshez a felhasználói folyamatokban. Ha a felhasználó eléri ezt a lépést a regisztrációs folyamat során, az API-összekötőt a rendszer HTTP POST kérelemként hívja meg, és a kiválasztott jogcímeket kulcs-érték párokként küldi el egy JSON-törzsben. Az API-válasz hatással lehet a felhasználói folyamat végrehajtására. Az API-válasz például blokkolhatja egy felhasználó regisztrációját, megkérheti a felhasználót, hogy írja be újra az adatokat, vagy írja felül a felhasználói attribútumok felülírását és hozzáfűzését.
+Az API-összekötők Azure Active Directory biztosítanak az API-végpont meghívásához szükséges információkkal a HTTP-végpont URL-címének és hitelesítésének definiálásával. Az API-összekötők konfigurálása után engedélyezheti azt egy adott lépéshez a felhasználói folyamatokban. Ha a felhasználó eléri ezt a lépést a regisztrációs folyamat során, az API-összekötőt meghívja, és HTTP POST-kérésként megvalósul az API-hoz, a felhasználói adatokat ("jogcímeket") pedig egy JSON-törzsben kulcs-érték párokként küldi el. Az API-válasz hatással lehet a felhasználói folyamat végrehajtására. Az API-válasz például blokkolhatja egy felhasználó regisztrációját, megkérheti a felhasználót, hogy írja be újra az adatokat, vagy írja felül a felhasználói attribútumok felülírását és hozzáfűzését.
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>Az API-összekötők felhasználói folyamatokban való engedélyezése
 
@@ -39,7 +39,8 @@ A felhasználói folyamatoknak két helye van, ahol engedélyezheti az API-össz
 - Az identitás-szolgáltatóval való bejelentkezés után
 - A felhasználó létrehozása előtt
 
-Mindkét esetben az API-összekötőket a rendszer a regisztráció során hívja meg, nem pedig a bejelentkezéshez.
+> [!IMPORTANT]
+> Mindkét esetben az API-összekötőket a rendszer a felhasználói **regisztráció**során hívja meg, nem pedig bejelentkezik.
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Az identitás-szolgáltatóval való bejelentkezés után
 
@@ -60,6 +61,6 @@ A regisztrációs folyamat ezen lépésében található API-összekötőt a ren
 <!-- > [!IMPORTANT]
 > If an invalid response is returned or another error occurs (for example, a network error), the user will be redirected to the app with the error re -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Útmutató [API-összekötők felhasználói folyamathoz való hozzáadásához](self-service-sign-up-add-api-connector.md)
 - Ismerje meg, hogyan [adhat hozzá egyéni jóváhagyási rendszereket önkiszolgáló regisztrációhoz](self-service-sign-up-add-approvals.md)

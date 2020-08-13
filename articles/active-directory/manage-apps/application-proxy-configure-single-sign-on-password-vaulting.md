@@ -14,18 +14,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764774"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165039"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Jelszó-tároló egyszeri bejelentkezéshez alkalmazásproxy
 
 Azure Active Directory Application Proxy segít a hatékonyság növelésében a helyszíni alkalmazások közzétételével, így a távoli alkalmazottak is biztonságosan férhetnek hozzájuk. A Azure Portal az egyszeri bejelentkezést (SSO) is beállíthatja ezekhez az alkalmazásokhoz. A felhasználóknak csak az Azure AD-ben kell hitelesíteniük magukat, és nem kell újból bejelentkezniük a vállalati alkalmazásba.
 
-Az alkalmazásproxy számos [egyszeri bejelentkezési módot](what-is-single-sign-on.md#choosing-a-single-sign-on-method)támogat. A jelszó alapú bejelentkezés olyan alkalmazások számára készült, amelyek Felhasználónév/jelszó kombinációt használnak a hitelesítéshez. Ha a jelszó-alapú bejelentkezést az alkalmazáshoz konfigurálja, a felhasználóknak egyszer be kell jelentkezniük a helyszíni alkalmazásba. Ezután a Azure Active Directory tárolja a bejelentkezési adatokat, és automatikusan megadja azt az alkalmazásnak, amikor a felhasználók távolról érik el.
+Az alkalmazásproxy számos [egyszeri bejelentkezési módot](sso-options.md#choosing-a-single-sign-on-method)támogat. A jelszó alapú bejelentkezés olyan alkalmazások számára készült, amelyek Felhasználónév/jelszó kombinációt használnak a hitelesítéshez. Ha a jelszó-alapú bejelentkezést az alkalmazáshoz konfigurálja, a felhasználóknak egyszer be kell jelentkezniük a helyszíni alkalmazásba. Ezután a Azure Active Directory tárolja a bejelentkezési adatokat, és automatikusan megadja azt az alkalmazásnak, amikor a felhasználók távolról érik el.
 
 Az alkalmazást már közzétette és tesztelte az Application proxyval. Ha nem, kövesse az [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md) című témakör lépéseit, majd térjen vissza ide.
 

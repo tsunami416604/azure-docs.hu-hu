@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 828c8a33315f5a76eea780705e2cdf3c2871bd14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc4c39cf26f3ab8d1037222f967789bfbeca05ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012807"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166773"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Mik azok a Azure Machine Learning környezetek?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Annak megállapításához, hogy fel kell-e használni a gyorsítótárazott ké
  * Python-csomagok listája a Conda-definícióban
  * A Spark-definícióban található csomagok listája 
 
-A kivonat nem függ a környezet nevétől vagy verziójától – Ha átnevezi a környezetet, vagy új környezetet hoz létre egy meglévő tulajdonságok és csomagok alapján, akkor a kivonatoló érték változatlan marad. A környezeti definíció módosításait, például a Python-csomagok hozzáadását vagy eltávolítását, vagy a csomag verziójának módosítását, a kivonat értékének módosítását okozhatja. Fontos megjegyezni, hogy a kurátori környezet változásai érvénytelenítik a kivonatot, és egy új "nem kiszolgált" környezetet eredményeznek.
+A kivonat nem függ a környezet nevétől vagy verziójától – Ha átnevezi a környezetet, vagy új környezetet hoz létre egy meglévő tulajdonságok és csomagok alapján, akkor a kivonatoló érték változatlan marad. A környezeti definíció módosításait, például a Python-csomagok hozzáadását vagy eltávolítását, vagy a csomag verziójának módosítását, a kivonat értékének módosítását okozhatja. Egy adott környezetben a függőségek vagy a csatornák sorrendjének módosítása új környezetet eredményez, és így új rendszerkép-buildre van szükség. Fontos megjegyezni, hogy a kurátori környezet változásai érvénytelenítik a kivonatot, és egy új "nem kiszolgált" környezetet eredményeznek.
 
 A számított kivonatoló értéket a munkaterület és a globális ACR (vagy a helyi futtatások számítási céljának) összehasonlítja. Ha egyezés van, akkor a gyorsítótárazott képet kihúzta a rendszer, ellenkező esetben a rendszerkép kiépítése aktiválódik. A gyorsítótárazott képek lekérésének időtartama magában foglalja a letöltési időt, míg az újonnan létrehozott rendszerképek lekérésének időtartama magában foglalja a fordítási időt és a letöltési időt is. 
 
@@ -105,7 +105,7 @@ A következő ábra három környezeti definíciót mutat be. Közülük kettő 
 >[!IMPORTANT]
 > Ha például olyan környezetet hoz létre, amely nem rögzített csomag-függőséggel rendelkezik, például a környezet a ```numpy``` _környezet létrehozásakor_telepített csomag verziószámát fogja használni. Emellett a megfelelő definícióval rendelkező jövőbeli környezetek továbbra is a régi verziót használják. 
 
-A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez, például: ```numpy==1.18.1``` . A rendszer telepíti az új függőségeket, beleértve a beágyazottkat is, amelyek megszakítják a korábban működő forgatókönyvet.
+A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez, például: ```numpy==1.18.1``` . A rendszer telepíti az új függőségeket, beleértve a beágyazottkat is, amelyek megszakítják a korábban működő forgatókönyvet. 
 
 > [!WARNING]
 >  A [környezet. a Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.

@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031494"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166688"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -315,6 +315,8 @@ A technikai konfiguráció meghatározza a szolgáltatás azonosításához hasz
 ## <a name="plan-overview"></a>A terv áttekintése
 
 Ezen a lapon megadhatja a különböző csomagokra vonatkozó lehetőségeket ugyanazon az ajánlaton belül. Ezek a csomagok (korábbi nevén SKU) a csomag típusa (a megoldás sablonja vagy a felügyelt alkalmazás), a monetizálása vagy a célközönség szempontjából eltérőek lehetnek. Állítson be legalább egy csomagot az ajánlat a piactéren való listázásához.
+
+Az egyes ajánlatokhoz legfeljebb 100 csomagot hozhat létre: ezek közül legfeljebb 45 lehet privát. További információ a [Microsoft kereskedelmi piactéren](../private-offers.md)elérhető privát csomagokról.
 
 A létrehozást követően megtekintheti a csomag neveit, azonosítóit, a csomag típusát, a rendelkezésre állást (nyilvános vagy magánjellegű), az aktuális közzétételi állapotot és a lapon elérhető összes műveletet.
 

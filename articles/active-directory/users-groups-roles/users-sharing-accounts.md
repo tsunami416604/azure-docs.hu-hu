@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386945"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164223"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure AD-vel
 
@@ -55,7 +55,7 @@ Az Azure AD támogatja a megosztott fiókokat bármely nagyvállalati mobilitás
 
 A fiókok megosztását engedélyező Azure AD-funkciók a következők:
 
-* [Jelszó egyszeri bejelentkezés](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [Jelszó egyszeri bejelentkezés](../manage-apps/sso-options.md#password-based-sso)
 * Egyszeri bejelentkezési ügynök jelszava
 * [Csoport-hozzárendelés](groups-self-service-management.md)
 * Egyéni jelszavas alkalmazások
@@ -74,7 +74,7 @@ Ha az Azure AD-t egy fiók megosztására szeretné használni, a következőket
 
 A megosztott fiókot Multi-Factor Authentication (MFA) biztonságosabbá teheti (További információ az [alkalmazások az Azure ad-vel való biztonságossá](../authentication/concept-mfa-whichversion.md)tételéről), és delegálhatja azt a képességet, hogy az [Azure ad](groups-self-service-management.md) önkiszolgáló csoport kezelésével Hogyan férhet hozzá az alkalmazáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazáskezelés az Azure Active Directory használatával](../manage-apps/what-is-application-management.md)
 * [Alkalmazások védelme feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)

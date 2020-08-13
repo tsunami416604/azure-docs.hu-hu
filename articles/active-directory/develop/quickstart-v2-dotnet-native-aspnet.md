@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 62cebb4e774e2f86ed6a4a17edd6da71f7c7cd9f
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
+ms.openlocfilehash: 0fc31fd397f8206f7c6f0509dd03495631dde609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141329"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165634"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET web API meghívása
 
@@ -66,11 +66,11 @@ Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a 
    - Válassza **a hatókör hozzáadása** elemet.
    - fogadja el a javasolt alkalmazás-azonosító URI-t (API://{clientId}) a **Mentés és folytatás** lehetőség kiválasztásával
    - Adja meg a következő paramétereket:
-     - a **hatókör neve** használata `access_as_user`
+     - a **hatókör neve** használata`access_as_user`
      - Győződjön meg arról, hogy **ki engedélyezheti** a **rendszergazdák és a felhasználók** beállítást
-     - a **rendszergazdai engedély megjelenítendő neve** mezőbe írja be a következőt: `Access TodoListService as a user`
-     - a **rendszergazdai engedély leírása** mezőbe írja be a következőt: `Accesses the TodoListService web API as a user`
-     - a **felhasználó beleegyezik megjelenítendő neve** mezőbe írja be a következőt: `Access TodoListService as a user`
+     - a **rendszergazdai engedély megjelenítendő neve** mezőbe írja be a következőt:`Access TodoListService as a user`
+     - a **rendszergazdai engedély leírása** mezőbe írja be a következőt:`Accesses the TodoListService web API as a user`
+     - a **felhasználó beleegyezik megjelenítendő neve** mezőbe írja be a következőt:`Access TodoListService as a user`
      - **felhasználói beleegyezett Leírás** típusa`Accesses the TodoListService web API as a user`
      - **Állapot** megtartása **engedélyezettként**
      - **Hatókör hozzáadása** lehetőség kiválasztása
@@ -107,11 +107,11 @@ Ebben a lépésben a *TodoListClient* -projektet úgy konfigurálja, hogy regisz
    > [!NOTE]
    > A *TodoListClient* projekt **app.config**alapértelmezett értéke a következő: `ida:Tenant` `common` .
    >
-   > `common` azt jelenti, hogy munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal tud bejelentkezni (mivel a **fiókokat bármely szervezeti címtárban**kiválasztotta).
+   > `common`azt jelenti, hogy munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal tud bejelentkezni (mivel a **fiókokat bármely szervezeti címtárban**kiválasztotta).
    >
-   > `organizations` azt jelenti, hogy munkahelyi vagy iskolai fiók használatával tud bejelentkezni.
+   > `organizations`azt jelenti, hogy munkahelyi vagy iskolai fiók használatával tud bejelentkezni.
    >
-   > `consumers` azt jelenti, hogy csak személyes Microsoft-fiókkal tud bejelentkezni.
+   > `consumers`azt jelenti, hogy csak személyes Microsoft-fiókkal tud bejelentkezni.
    >
    
 1. Az alkalmazás áttekintés lapján válassza a **hitelesítés** szakaszt.
@@ -172,7 +172,7 @@ A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Microsoft Identity platform által támogatott védett webes API-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Védett webes API-forgatókönyv](scenario-protected-web-api-overview.md)

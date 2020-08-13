@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 6902e69ecfd0738a74e6d492b8ed4d2b2d525eaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026883"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165770"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -48,7 +48,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 >    - Az **átirányítási URI**-k lapon adja hozzá a `https://localhost:44321/signin-oidc` elemet, majd válassza a **Mentés**lehetőséget.
 >    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:44321/signout-oidc` .
 >    - Az **Implicit engedély** területen jelölje be az **azonosító jogkivonatok** elemet.
->    - Válassza a **Mentés** lehetőséget.
+>    - Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
@@ -90,8 +90,8 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 
 > [!div renderon="docs"]
 > Ebben a példában:
-> - `Enter_the_Application_Id_here`– az **alkalmazás (ügyfél) azonosítója** a Azure Portal regisztrált alkalmazáshoz. Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
-> - `Enter_the_Tenant_Info_Here`-a következő lehetőségek egyike:
+> - `Enter_the_Application_Id_here` – az **alkalmazás (ügyfél) azonosítója** a Azure Portal regisztrált alkalmazáshoz. Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
+> - `Enter_the_Tenant_Info_Here` -a következő lehetőségek egyike:
 >   - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
 >   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
 >   - Ha az alkalmazás **minden Microsoft-fiókfelhasználót** támogat, ezt az értéket a `common` értékre cserélje le
@@ -145,7 +145,7 @@ A metódus `AddAuthentication` úgy konfigurálja a szolgáltatást, hogy cookie
 
 A sort tartalmazó vonal `.AddAzureAd` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt követően a rendszer a Microsoft Identity platform-végpont használatával történő bejelentkezésre van konfigurálva.
 
-> |Ahol | Description |
+> |Ahol | Leírás |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) azonosítója a Azure Portal regisztrált alkalmazásban. |
 > | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
@@ -156,7 +156,7 @@ A sort tartalmazó vonal `.AddAzureAd` hozzáadja a Microsoft Identity platform 
 > A beállítás a rövid útmutató `ValidateIssuer = false` egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
 > Ennek megértéséhez tekintse meg a mintákat.
 >
-> Jegyezze fel azt a `Configure` metódust is, amely két fontos módszert tartalmaz: `app.UseCookiePolicy()` és`app.UseAuthentication()`
+> Jegyezze fel azt a `Configure` metódust is, amely két fontos módszert tartalmaz: `app.UseCookiePolicy()` és `app.UseAuthentication()`
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

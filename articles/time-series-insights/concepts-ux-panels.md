@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53e29734095506a3f55593f938c2d9aba5903771
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099107"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164155"
 ---
 # <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Explorer
 
@@ -28,7 +28,7 @@ A Azure Time Series Insights Gen2 Explorer megkezdéséhez a következőket kell
 * Azure Time Series Insights Gen2-környezet van kiépítve. További információ a példányok üzembe helyezéséről: [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) oktatóanyag.
 * Adja meg a fiókhoz létrehozott Azure Time Series Insights Gen2-környezet [adathozzáférését](./time-series-insights-data-access.md) . Mások számára is biztosíthat hozzáférést.
 * Adjon hozzá egy eseményforrás a Azure Time Series Insights Gen2-környezethez az adatküldés a környezetbe:
-  * További információ az [Event hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-eventhub.md) 
+  * További információ az [Event hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * További információ az [IoT hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
 ## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Ismerkedés a Azure Time Series Insights Gen2 Explorerrel
@@ -44,7 +44,6 @@ A Azure Time Series Insights Gen2 Explorer a következő hét elemből áll:
 1. [Diagram panel](#5-chart-panel): az aktuális munkadiagramot jeleníti meg.
 1. [Idősor](#6-time-editor-panel): lehetővé teszi a munkaidő-tartomány módosítását.
 1. [Alkalmazás-sáv](#7-app-bar): a felhasználói felügyeleti beállításokat (például az aktuális bérlőt) tartalmazza, és lehetővé teszi a módosítását és a nyelvi beállításokat.
-
 
 ## <a name="1-environment-panel"></a>1. környezeti panel
 
@@ -79,19 +78,19 @@ Az idősorozat modelljével kapcsolatos további információkért olvassa el a 
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hierarchia faszerkezete és keresési panelje
 
-A hierarchia faszerkezetének és a keresési paneljének segítségével könnyedén keresheti meg és navigálhatja az [Idősorozat-modell](./concepts-model-overview.md) hierarchiáját, hogy megkeresse a diagramon megjeleníteni kívánt idősorozat-példányokat. Ha kiválasztja a példányokat, azok nem csak az aktuális diagramhoz lesznek hozzáadva, hanem az adatterülethez is hozzáadódnak. 
+A hierarchia faszerkezetének és a keresési paneljének segítségével könnyedén keresheti meg és navigálhatja az [Idősorozat-modell](./concepts-model-overview.md) hierarchiáját, hogy megkeresse a diagramon megjeleníteni kívánt idősorozat-példányokat. Ha kiválasztja a példányokat, azok nem csak az aktuális diagramhoz lesznek hozzáadva, hanem az adatterülethez is hozzáadódnak.
 
 [![Hierarchia faszerkezete és keresési panelje](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 A keresési eredmények ablaktábla azt is lehetővé teszi, hogy megtekintse az eredményeket egy hierarchia nézetben vagy egy listanézet segítségével, így könnyen megtalálhatja a megjeleníteni kívánt példányokat.
- 
+
 ## <a name="4-time-series-well"></a>4. idősorozat – Well
 
-A jól jeleníti meg a példányok mezőit és a kiválasztott idősorozat-modell példányaihoz társított egyéb metaadatokat. A jobb oldalon található jelölőnégyzetek bejelölésével elrejtheti vagy megjelenítheti az aktuális diagram adott példányait. 
+A jól jeleníti meg a példányok mezőit és a kiválasztott idősorozat-modell példányaihoz társított egyéb metaadatokat. A jobb oldalon található jelölőnégyzetek bejelölésével elrejtheti vagy megjelenítheti az aktuális diagram adott példányait.
 
   [![A Gen2 is](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-A jelenlegi adatokból is eltávolíthat bizonyos adatelemeket, ha kiválasztja a vörös **Törlés** (kuka) vezérlőt az elem bal oldalán. A jól szabályozza azt is, hogy az egyes elemek hogyan jelenjenek meg a diagramon. Dönthet úgy, hogy felveszi a min/max árnyékot, az adatpontokat, átváltja az elemet, és láthatóvá teszi a példányt egy lépcsőzetes módon. 
+A jelenlegi adatokból is eltávolíthat bizonyos adatelemeket, ha kiválasztja a vörös **Törlés** (kuka) vezérlőt az elem bal oldalán. A jól szabályozza azt is, hogy az egyes elemek hogyan jelenjenek meg a diagramon. Dönthet úgy, hogy felveszi a min/max árnyékot, az adatpontokat, átváltja az elemet, és láthatóvá teszi a példányt egy lépcsőzetes módon.
 
 Emellett a feltárások vezérlőelem lehetővé teszi, hogy könnyedén hozza létre az időeltolódásokat és a scatter-ábrákat.  
 
@@ -104,7 +103,7 @@ Emellett a feltárások vezérlőelem lehetővé teszi, hogy könnyedén hozza l
 
 ## <a name="5-chart-panel"></a>5. diagram panel
 
-A diagram lehetővé teszi, hogy a Time Series-példányokat vonalakként jelenítse meg. A diagram méretének növeléséhez a webes vezérlőkre kattintva összecsukhatja a környezeti panelt, az adatmodellt és az időtartományt. 
+A diagram lehetővé teszi, hogy a Time Series-példányokat vonalakként jelenítse meg. A diagram méretének növeléséhez a webes vezérlőkre kattintva összecsukhatja a környezeti panelt, az adatmodellt és az időtartományt.
 
   [![Gen2 diagram – áttekintés](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
@@ -149,7 +148,7 @@ Azure Time Series Insights Gen2 használatakor először ki kell választania eg
 > [!TIP]
 > Az idősor egy része sárga vagy narancssárga színnel van kiemelve, hogy jelezze a meleg tárban elérhető adatmennyiséget.
 
-A következő webes vezérlők Azure Time Series Insights Gen2 érhetők el a munkaidő-tartomány kiválasztásához. 
+A következő webes vezérlők Azure Time Series Insights Gen2 érhetők el a munkaidő-tartomány kiválasztásához.
 
   [![Kutatási és ellenőrzési lehetőségek](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
@@ -205,7 +204,7 @@ Azure Time Series Insights Gen2 Explorer két témát támogat:
 
 ### <a name="gen2-terms-panel"></a>Gen2 feltételek panel
 
-Ez a szakasz csak azokra a meglévő, 1. generációs környezetekre vonatkozik, amelyek a frissített felhasználói felületen a Explorer használatát kísérlik meg. Érdemes lehet az 1. generációs termék-és Gen2 használni. Felvettünk néhány funkciót a meglévő felhasználói felületről a frissített Explorerbe, de az új Azure Time Series Insights Gen2 Explorerben megtekintheti az 1. generációs környezet teljes felhasználói felületi élményét. 
+Ez a szakasz csak azokra a meglévő, 1. generációs környezetekre vonatkozik, amelyek a frissített felhasználói felületen a Explorer használatát kísérlik meg. Érdemes lehet az 1. generációs termék-és Gen2 használni. Felvettünk néhány funkciót a meglévő felhasználói felületről a frissített Explorerbe, de az új Azure Time Series Insights Gen2 Explorerben megtekintheti az 1. generációs környezet teljes felhasználói felületi élményét.
 
 A hierarchia helyett megjelenik a Azure Time Series Insights Gen2 terms panel. A feltételek panel lehetővé teszi lekérdezések definiálását a környezetben. Az adathalmaz alapján is szűrheti az adatszűrést.
 
@@ -222,7 +221,7 @@ A Azure Time Series Insights Gen2 feltételek szerkesztő panelje a következő 
 | `IN` | Karakterlánc, bool, Double, DateTime, TimeSpan, NULL | Az összes operandusnak azonos típusúnak vagy NULL konstansnak kell lennie. |
 | `HAS` | Sztring | A jobb oldalon csak konstans karakterlánc-literálok engedélyezettek. Üres karakterlánc és NULL érték nem engedélyezett. |
 
-Ha többet szeretne megtudni a támogatott lekérdezési műveletekről és az adattípusokról, olvassa el a [Time Series kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)című témakört.
+Ha többet szeretne megtudni a támogatott lekérdezési műveletekről és az adattípusokról, olvassa el a [Time Series kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)című témakört.
 
 ### <a name="examples-of-where-clauses"></a>Példák a WHERE záradékokra
 
@@ -240,10 +239,10 @@ A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a lá
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók az [adatfeldolgozásról](./concepts-ingestion-overview.md) a környezetbe.
+* Tudnivalók az [adatfeldolgozásról](./concepts-ingestion-overview.md) a környezetbe.
 
-- Tekintse meg a cikket a [Storage](concepts-storage.md)szolgáltatásban.
+* Tekintse meg a cikket a [Storage](concepts-storage.md)szolgáltatásban.
 
-- További információ az [adatmodellezésről](./concepts-model-overview.md) Azure Time Series Insights Gen2.
+* További információ az [adatmodellezésről](./concepts-model-overview.md) Azure Time Series Insights Gen2.
 
-- Ismerje meg, [Hogyan diagnosztizálhatja és elháríthatja](./time-series-insights-update-how-to-troubleshoot.md) a környezetét.
+* Ismerje meg, [Hogyan diagnosztizálhatja és elháríthatja](./time-series-insights-update-how-to-troubleshoot.md) a környezetét.

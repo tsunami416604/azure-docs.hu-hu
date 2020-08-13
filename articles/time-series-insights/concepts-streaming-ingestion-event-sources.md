@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491969"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163968"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-esemény forrásai
 
@@ -33,34 +33,34 @@ Egy eseményforrás összekapcsolásakor a Azure Time Series Insights Gen2-körn
 
 > [!IMPORTANT]
 >
-> * Előfordulhat, hogy magas kezdeti késést tapasztal, amikor egy eseményforrás az Azure Time Series Insights Gen2-környezethez van csatolva.
-> Az eseményforrás késése az IoT Hub vagy az Event hub aktuális eseményeinek számától függ.
-> * A magas késleltetés az eseményforrás-adat első betöltését követően fog megjelenni. Ha folyamatos, magas késést tapasztal, küldjön támogatási jegyet a Azure Portalon keresztül.
+> - Előfordulhat, hogy magas kezdeti késést tapasztal, amikor egy eseményforrás az Azure Time Series Insights Gen2-környezethez van csatolva.
+> - Az eseményforrás késése az IoT Hub vagy az Event hub aktuális eseményeinek számától függ.
+> - A magas késleltetés az eseményforrás-adat első betöltését követően fog megjelenni. Ha folyamatos, magas késést tapasztal, küldjön támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="streaming-ingestion-best-practices"></a>Az adatfolyamok betöltésének ajánlott eljárásai
 
-* Mindig hozzon létre egy egyedi fogyasztói csoportot a Azure Time Series Insights Gen2-környezet számára az eseményforrás adatainak felhasználásához. A fogyasztói csoportok újbóli használata véletlenszerű leválasztást eredményezhet, ami adatvesztést eredményezhet.
+- Mindig hozzon létre egy egyedi fogyasztói csoportot a Azure Time Series Insights Gen2-környezet számára az eseményforrás adatainak felhasználásához. A fogyasztói csoportok újbóli használata véletlenszerű leválasztást eredményezhet, ami adatvesztést eredményezhet.
 
-* Konfigurálja Azure Time Series Insights Gen2-környezetét és a IoT Hub és/vagy Event Hubs ugyanabban az Azure-régióban. Bár az eseményforrás egy különálló régióban is konfigurálható, ez a forgatókönyv nem támogatott, és nem garantálható a magas rendelkezésre állás.
+- Konfigurálja Azure Time Series Insights Gen2-környezetét és a IoT Hub és/vagy Event Hubs ugyanabban az Azure-régióban. Bár az eseményforrás egy különálló régióban is konfigurálható, ez a forgatókönyv nem támogatott, és nem garantálható a magas rendelkezésre állás.
 
-* Ne lépje túl a környezet [átviteli sebességének korlátját](./concepts-streaming-ingress-throughput-limits.md) vagy a partíciós korlátot.
+- Ne lépje túl a környezet [átviteli sebességének korlátját](./concepts-streaming-ingress-throughput-limits.md) vagy a partíciós korlátot.
 
-* A késési [riasztások](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts) beállításával értesítést kaphat, ha a környezete problémákat tapasztal az adatfeldolgozás során.
+- A késési [riasztások](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) beállításával értesítést kaphat, ha a környezete problémákat tapasztal az adatfeldolgozás során.
 
-* A streaming betöltést csak a közel valós idejű és a legutóbbi adatmennyiségek esetében használja, a folyamatos adatátvitelek nem támogatottak.
+- A streaming betöltést csak a közel valós idejű és a legutóbbi adatmennyiségek esetében használja, a folyamatos adatátvitelek nem támogatottak.
 
-* Ismerje meg, hogy a rendszer hogyan fogja kikerülni a tulajdonságokat és a JSON [-adatgyűjtést és-tárolást.](./concepts-json-flattening-escaping-rules.md)
+- Ismerje meg, hogy a rendszer hogyan fogja kikerülni a tulajdonságokat és a JSON [-adatgyűjtést és-tárolást.](./concepts-json-flattening-escaping-rules.md)
 
-* Az eseményforrás-kapcsolati karakterláncok megadásakor kövesse a legalacsonyabb jogosultsági szint elvét. Event Hubs esetében csak a *küldési* jogcímet konfigurálja, és a IoT hub csak a *szolgáltatás csatlakozási* engedélyét használja.
+- Az eseményforrás-kapcsolati karakterláncok megadásakor kövesse a legalacsonyabb jogosultsági szint elvét. Event Hubs esetében csak a *küldési* jogcímet konfigurálja, és a IoT hub csak a *szolgáltatás csatlakozási* engedélyét használja.
 
 ### <a name="historical-data-ingestion"></a>Korábbi adatfeldolgozás
 
 Azure Time Series Insights Gen2 jelenleg nem támogatja az adatfolyam-továbbítási folyamat használatát a korábbi adatimportáláshoz. Ha a korábbi adatait importálnia kell a környezetbe, kövesse az alábbi irányelveket:
 
-* Ne továbbítsa párhuzamosan az élő és a korábbi adatforrásokat. A lekéréses adatmennyiség miatt a lekérdezés teljesítménye csökken.
-* A legjobb teljesítmény érdekében időben berendezheti a múltbeli adatmennyiséget.
-* Maradjon az alábbi betöltési átviteli sebességre vonatkozó korlátok között.
-* Ha az adatok régebbiek, mint a meleg tárolási megőrzési időszak, tiltsa le a meleg tárolást.
+- Ne továbbítsa párhuzamosan az élő és a korábbi adatforrásokat. A lekéréses adatmennyiség miatt a lekérdezés teljesítménye csökken.
+- A legjobb teljesítmény érdekében időben berendezheti a múltbeli adatmennyiséget.
+- Maradjon az alábbi betöltési átviteli sebességre vonatkozó korlátok között.
+- Ha az adatok régebbiek, mint a meleg tárolási megőrzési időszak, tiltsa le a meleg tárolást.
 
 ## <a name="event-source-timestamp"></a>Eseményforrás időbélyege
 
@@ -82,10 +82,6 @@ Az időzóna-eltolást a következők egyikének kell megformáznia:
 
 ## <a name="next-steps"></a>További lépések
 
-* Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események. 
+- Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 
-* A környezet [adatátviteli korlátainak](./concepts-streaming-ingress-throughput-limits.md) megismerése
-
-
-
-
+- A környezet [adatátviteli korlátainak](./concepts-streaming-ingress-throughput-limits.md) megismerése

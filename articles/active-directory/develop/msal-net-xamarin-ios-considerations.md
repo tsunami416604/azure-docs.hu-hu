@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 73303d64d7ebeb94290819226e5e5944f95f6e42
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652655"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165702"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>A Xamarin iOS és a MSAL.NET használatának szempontjai
 Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltatást használja a Xamarin iOS-ben, akkor a következőket kell tennie: 
@@ -31,7 +31,7 @@ Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltat�
 
 ## <a name="implement-openurl"></a>OpenUrl megvalósítása
 
-A `OpenUrl` `FormsApplicationDelegate` származtatott osztály és a hívás metódusának felülbírálása `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` . Íme egy példa:
+A `OpenUrl` `FormsApplicationDelegate` származtatott osztály és a hívás metódusának felülbírálása `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` . Bemutatunk egy példát:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)

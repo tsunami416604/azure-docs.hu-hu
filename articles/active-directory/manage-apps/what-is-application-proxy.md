@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080660"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164580"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Helyszíni alkalmazások közzététele az Azure AD Application Proxy használatával távoli felhasználók számára
 
@@ -99,7 +99,7 @@ Az App proxy a következő hitelesítési protokollokat is támogatja harmadik f
 * [**Űrlap-vagy jelszó-alapú hitelesítés**](application-proxy-configure-single-sign-on-password-vaulting.md). Ezzel a hitelesítési módszerrel a felhasználók először jelentkeznek be az alkalmazásba egy felhasználónévvel és jelszóval az első alkalommal, amikor hozzáférnek hozzá. Az első bejelentkezés után az Azure AD megadja a felhasználónevet és a jelszót az alkalmazáshoz. Ebben az esetben a hitelesítést az Azure AD kezeli.
 * [**SAML-hitelesítés**](application-proxy-configure-single-sign-on-on-premises-apps.md). Az SAML-alapú egyszeri bejelentkezés az SAML 2,0 vagy a WS-Federation protokollt használó alkalmazások esetében támogatott. Az SAML egyszeri bejelentkezéssel az Azure AD hitelesíti az alkalmazást a felhasználó Azure AD-fiókjának használatával.
 
-További információ a támogatott módszerekről: [egyszeri bejelentkezés módszerének kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+További információ a támogatott módszerekről: [egyszeri bejelentkezés módszerének kiválasztása](sso-options.md#choosing-a-single-sign-on-method).
 
 ### <a name="security-benefits"></a>Biztonsági előnyök
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772046"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165821"
 ---
 # <a name="using-web-browsers-msalnet"></a>Böngészők használata (MSAL.NET)
 
@@ -47,13 +47,13 @@ A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kódda
 
 | Keretrendszer        | Beágyazott | Rendszer | Alapértelmezett |
 | ------------- |-------------| -----| ----- |
-| Klasszikus .NET     | Yes | Igen ^ | Beágyazott |
-| .NET Core     | No | Igen ^ | Rendszer |
-| .NET Standard | No | Igen ^ | Rendszer |
-| UWP | Yes | Nem | Beágyazott |
+| Klasszikus .NET     | Igen | Igen ^ | Beágyazott |
+| .NET Core     | Nem | Igen ^ | Rendszer |
+| .NET Standard | Nem | Igen ^ | Rendszer |
+| UWP | Igen | Nem | Beágyazott |
 | Xamarin.Android | Igen | Igen  | Rendszer |
 | Xamarin.iOS | Igen | Igen  | Rendszer |
-| Xamarin. Mac| Yes | Nem | Beágyazott |
+| Xamarin. Mac| Igen | Nem | Beágyazott |
 
 ^ A következőt igényli: " http://localhost " átirányítási URI
 

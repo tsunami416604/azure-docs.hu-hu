@@ -4,19 +4,19 @@ description: API-összekötők hozzáadása egyéni jóváhagyási munkafolyamat
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909191"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165240"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -65,7 +65,7 @@ Ezután [létrehozza az API-összekötőket](self-service-sign-up-add-api-connec
 
   ![A jóváhagyási állapot API-összekötő konfigurációjának engedélyezése](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Kérelem jóváhagyása** – ha a felhasználó befejezte az attribútum-gyűjtemény lapot, de a felhasználói fiók létrehozása előtt meghívja a jóváhagyást, küldjön egy hívást a jóváhagyási rendszernek. A jóváhagyási kérést automatikusan megadhatja vagy manuálisan is áttekintheti. Példa a "kérelem jóváhagyása" API-összekötőre. Válassza ki azokat a **jogcímeket, amelyeket el szeretne küldeni** , hogy a jóváhagyási rendszernek jóváhagyási döntést kell hoznia.
+- **Kérelem jóváhagyása** – ha a felhasználó befejezte az attribútum-gyűjtemény lapot, de a felhasználói fiók létrehozása előtt meghívja a jóváhagyást, küldjön egy hívást a jóváhagyási rendszernek. A jóváhagyási kérést automatikusan megadhatja vagy manuálisan is áttekintheti. Példa a "kérelem jóváhagyása" API-összekötőre. 
 
   ![Kérelem-jóváhagyási API-összekötő konfigurálása](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -90,28 +90,33 @@ Most adja hozzá az API-összekötőket önkiszolgáló bejelentkezési felhaszn
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>A regisztrációs folyamat kezelése API-válaszokkal
 
-A jóváhagyási rendszer a két API-végpont [API-Response típusait](self-service-sign-up-add-api-connector.md#expected-response-types-from-the-web-api) használhatja a regisztrációs folyamat vezérléséhez.
+A jóváhagyási rendszere a saját válaszait használhatja a regisztrációs folyamat vezérlésére. 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>Kérelmek és válaszok a "jóváhagyás állapotának engedélyezése" API-összekötőhöz
 
 Példa az API által a "jóváhagyás állapotának ellenőrzéséhez" API-összekötőtől kapott kérelemre:
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
      "issuerAssignedId":"0123456789"
      }
  ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
  "ui_locales":"en-US"
 }
 ```
+
+Az API-nak küldött pontos jogcímek attól függnek, hogy az identitás-szolgáltató milyen információkat biztosít. az "e-mail" küldése mindig elküldve.
 
 #### <a name="continuation-response-for-check-approval-status"></a>Folytatási válasz a "jóváhagyás állapotának ellenőrzését"
 
@@ -169,12 +174,12 @@ Content-type: application/json
 Példa az API által a "kérelem jóváhagyása" API-összekötőtől kapott HTTP-kérelemre:
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -182,11 +187,21 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "city": "Redmond",
- "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+
+Az API-nak küldött pontos jogcímek attól függnek, hogy milyen adatokat gyűjt a rendszer a felhasználótól, vagy amelyet az identitás szolgáltatója biztosít.
 
 #### <a name="continuation-response-for-request-approval"></a>Folytatási válasz a "kérés jóváhagyása"
 
@@ -257,7 +272,7 @@ A manuális jóváhagyás beszerzését követően az egyéni jóváhagyási ren
 
 Ha a felhasználó Google-vagy Facebook-fiókkal jelentkezett be, használhatja a [felhasználói létrehozási API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)-t.
 
-1. A jóváhagyási rendszer a HTTP-kérést a felhasználói folyamattól kapja meg.
+1. A jóváhagyási rendszer a felhasználói folyamattól fogadja a HTTP-kérést.
 
 ```http
 POST <Approvals-API-endpoint>
@@ -371,7 +386,7 @@ Content-type: application/json
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.
 - Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows). 
