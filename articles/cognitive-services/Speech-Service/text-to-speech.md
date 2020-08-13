@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399501"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167708"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -41,13 +41,7 @@ A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi
 
 ## <a name="get-started"></a>Bevezetés
 
-A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md)-n keresztül érhető el. Számos gyakori forgatókönyv érhető el, különböző nyelveken és platformokon:
-
-* [Beszédszintézis egy hangfájlba](quickstarts/text-to-speech-audio-file.md)
-* [Beszédszintézis hangszóróra](quickstarts/text-to-speech.md)
-* [A hosszú formátumú hang aszinkron szintetizálása](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-Ha szeretné, a szöveg és a beszéd közötti szolgáltatás a [Rest](rest-text-to-speech.md)-on keresztül érhető el.
+Tekintse [meg az első lépéseket a szöveg](get-started-text-to-speech.md) és a beszéd megismeréséhez. A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md), a [REST API](rest-text-to-speech.md)és a [Speech CLI](spx-overview.md) használatával érhető el.
 
 ## <a name="sample-code"></a>Mintakód
 
@@ -65,7 +59,7 @@ A standard és a neurális hangokon kívül egyéni hangokat is létrehozhat és
 A szöveg-beszéd típusú szolgáltatás használatakor a rendszer minden, a beszédre konvertált karakter után számláz, beleértve a központozást is. Míg maga a SSML-dokumentum nem számlázható, a szöveg átalakításának módjára, például a fonémák és a Pitch formátumára szolgáló opcionális elemek számlázandó karakternek számítanak. Az alábbi lista tartalmazza a számlázható tartalmakat:
 
 - A kérelem SSML törzsében a szöveg-beszéd szolgáltatásnak átadott szöveg
-- A kérelem törzsének összes jelölése a SSML formátumban, a `<speak>` és `<voice>` a címkék kivételével
+- A kérelem törzsének összes jelölése a SSML formátumban, a `<speak>` és a `<voice>` címkék kivételével
 - Betűk, írásjelek, szóközök, tabulátorok, jelölések és minden fehér szóköz
 - Minden Unicode-ban definiált kód pont
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056465"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167810"
 ---
 # <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
 
@@ -87,7 +87,7 @@ Ha az egyik előfizetésből egy másikra szeretne váltani, például ha az ing
 
 ## <a name="about-regions"></a>A régiókról
 
-- Ha az alkalmazás egy [SPEECH SDK](speech-sdk.md)-t használ, akkor adja meg a régiókódot `westus` (például) a beszédfelismerési konfiguráció létrehozásakor.
+- Ha az alkalmazás egy [SPEECH SDK](speech-sdk.md)-t használ, akkor adja meg a régió azonosítóját, például a `westus` beszédfelismerési konfiguráció létrehozásakor.
 - Ha az alkalmazás a beszédfelismerési szolgáltatás [REST API](rest-apis.md)-jának egyikét használja, akkor a régió a kérések végrehajtásakor használt végponti URI része.
 - A régióhoz létrehozott kulcsok csak az adott régióban érvényesek. A más régiókkal való használatának megkísérlése hitelesítési hibákat eredményez.
 

@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922642"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168031"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -46,6 +46,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 > A Azure Time Series Insights biztonsági házirend konfigurálásakor kövesse az alábbi, a fenti forgatókönyvben ismertetett **problémáinak elkülönítésének** elvét.
 
 > [!NOTE]
+
 > * A cikk egy egybérlős alkalmazásra koncentrál, amelyben az alkalmazás csak egy szervezeten belül fut.
 > * Általában egybérlős alkalmazásokat fog használni a szervezetében futó üzletági alkalmazásokhoz.
 
@@ -115,6 +116,7 @@ Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 
 > [!IMPORTANT]
 > A jogkivonatot pontosan az erőforráshoz kell kiadni `https://api.timeseries.azure.com/` (más néven a token célközönsége).
+
 > * A [Poster](https://www.getpostman.com/) **AuthURL** ezért a következő lesz:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
 > * `https://api.timeseries.azure.com/`érvényes, de `https://api.timeseries.azure.com` nem.
 
@@ -155,7 +157,7 @@ A nem kötelező URL-lekérdezési karakterlánc paraméterei közé tartozik a 
 
 | Választható lekérdezési paraméter | Leírás | Verzió |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Kiszolgálóoldali időtúllépés a HTTP-kérelmek végrehajtásához. Csak a [környezeti események beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) és a [környezeti összesítések API-k beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) esetén alkalmazható. Az időtúllépési értéknek ISO 8601 időtartam formátumúnak kell lennie, például a tartományon belül kell lennie `"PT20S"` `1-30 s` . Az alapértelmezett érték: `30 s` . | Gen1 |
+| `timeout=<timeout>` | Kiszolgálóoldali időtúllépés a HTTP-kérelmek végrehajtásához. Csak a [környezeti események beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) és a [környezeti összesítések API-k beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) esetén alkalmazható. Az időtúllépési értéknek ISO 8601 időtartam formátumúnak kell lennie, például a tartományon belül kell lennie `"PT20S"` `1-30 s` . Az alapértelmezett érték: `30 s` . | Gen1 |
 | `storeType=<storeType>` | A meleg tárolást engedélyező Gen2 környezetek esetén a lekérdezés a vagy a rendszeren is végrehajtható `WarmStore` `ColdStore` . A lekérdezésben szereplő paraméter határozza meg, hogy a lekérdezés melyik tárolóban legyen végrehajtva. Ha nincs meghatározva, a rendszer végrehajtja a lekérdezést a hűtőházi tárolón. A meleg tároló lekérdezéséhez be kell állítani a **storeType** `WarmStore` . Ha nincs meghatározva, a rendszer végrehajtja a lekérdezést a hűtőházi tárolón. | Gen2 |
 
 ## <a name="next-steps"></a>További lépések
@@ -164,6 +166,6 @@ A nem kötelező URL-lekérdezési karakterlánc paraméterei közé tartozik a 
 
 * A Gen2 Azure Time Series Insights API-kód mintáit meghívó mintakód a C# használatával olvassa be a [lekérdezési Gen2](./time-series-insights-update-query-data-csharp.md).
 
-* Az API-referenciákkal kapcsolatos információkért olvassa el a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) dokumentációját.
+* Az API-referenciákkal kapcsolatos információkért olvassa el a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api) dokumentációját.
 
 * Megtudhatja, hogyan [hozhat létre egyszerű szolgáltatásnevet](../active-directory/develop/howto-create-service-principal-portal.md).

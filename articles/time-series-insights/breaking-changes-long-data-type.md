@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: dpalled
-ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446628"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167997"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hosszú adattípusok támogatásának hozzáadása a Azure Time Series Insights Gen2
 
@@ -66,7 +66,7 @@ Ha jelenleg az egész telemetria adatait küldi el, az adatai két oszlopba lesz
 
 Az egész számú adatot a **propertyValue_longba**írja. A korábban betöltött (és a jövőben betöltött) numerikus adatot **propertyValue_double** nem másolja át a rendszer.
 
-Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretné lekérdezni az adatait, akkor az **Egyesítés ()** skaláris függvényt kell használnia a TSX. A függvény elfogadja az azonos **adattípusú** argumentumokat, és az első nem null értéket adja vissza az argumentumok listájában. További információ: [Azure Time Series Insights Gen2 adatelérési fogalmai](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions).
+Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretné lekérdezni az adatait, akkor az **Egyesítés ()** skaláris függvényt kell használnia a TSX. A függvény elfogadja az azonos **adattípusú** argumentumokat, és az első nem null értéket adja vissza az argumentumok listájában. További információ: [Azure Time Series Insights Gen2 adatelérési fogalmai](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>Változó definíciója a TSX – numerikus
 
@@ -78,7 +78,7 @@ Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretn
 
 [![Új változó definíciója](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Beágyazott változó definíciója a TSX lekérdezési API-k használatával – numerikus
 
@@ -126,7 +126,7 @@ Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulaj
 }
 ```
 
-Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyeket érdemes használni. Ezen helyek közé tartozik a Time Series-modell, a mentett lekérdezések és az Power BI-összekötő lekérdezései.
@@ -147,7 +147,7 @@ Ha jelenleg olyan kategorikus változókat használ, amelyek egész értékeket 
 
 Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében.](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Beágyazott változó definíciója a TSX Query API-k használatával – kategorikus
 
@@ -227,7 +227,7 @@ A kategorikus változók esetében az értéknek egész típusúnak kell lennie.
 }
 ```
 
-A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyeket érdemes használni. Ezen helyek közé tartozik a Time Series-modell, a mentett lekérdezések és az Power BI-összekötő lekérdezései.

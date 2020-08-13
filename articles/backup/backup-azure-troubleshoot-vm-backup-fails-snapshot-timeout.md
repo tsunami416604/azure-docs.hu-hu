@@ -4,12 +4,12 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809765"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167929"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -23,7 +23,7 @@ A leggyakoribb biztonsági mentési hibák a következő hibaelhárítási lép�
 
 ### <a name="step-1-check-azure-vm-health"></a>1. lépés: az Azure-beli virtuális gép állapotának keresése
 
-- Győződjön meg arról, hogy az Azure-beli **virtuális gép kiépítési állapota "fut"**: Ha a [virtuális gép kiépítési állapota](../virtual-machines/windows/states-lifecycle.md#provisioning-states) **leállított/nem lefoglalt/frissítési** állapotban van, akkor az nem fog tudni a biztonsági mentési művelettel. Nyissa meg *Azure Portal > virtuálisgép-> áttekintés >* , és ellenőrizze a virtuális gép állapotát, és győződjön meg róla, hogy **fut** , és próbálkozzon újra a biztonsági mentési művelettel
+- Győződjön meg arról, hogy az Azure-beli **virtuális gép kiépítési állapota "fut"**: Ha a [virtuális gép kiépítési állapota](../virtual-machines/states-lifecycle.md#provisioning-states) **leállított/nem lefoglalt/frissítési** állapotban van, akkor az nem fog tudni a biztonsági mentési művelettel. Nyissa meg *Azure Portal > virtuálisgép-> áttekintés >* , és ellenőrizze a virtuális gép állapotát, és győződjön meg róla, hogy **fut** , és próbálkozzon újra a biztonsági mentési művelettel
 - **Tekintse át a függőben lévő operációs rendszer frissítéseit vagy újraindítását**: Győződjön meg arról, hogy nincs függőben lévő operációsrendszer-frissítés vagy függőben lévő újraindítás a virtuális gépen.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>2. lépés: az Azure VM Guest Agent szolgáltatás állapotának keresése
@@ -101,7 +101,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **Hibakód**: UserErrorVmProvisioningStateFailed<br>
 **Hibaüzenet**: a virtuális gép sikertelen kiépítési állapotban van<br>
 
-Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e. További információ: [kiépítési állapotok](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
+Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e. További információ: [kiépítési állapotok](../virtual-machines/states-lifecycle.md#provisioning-states).
 
 - Ha a VMSnapshot-bővítmény hibás állapotban van, kattintson a jobb gombbal a sikertelen bővítményre, és távolítsa el. Igény szerinti biztonsági mentés indítása. Ez a művelet újratelepíti a bővítményeket, majd futtatja a biztonsági mentési feladatot.  <br>
 - Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.

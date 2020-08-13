@@ -4,14 +4,14 @@ description: Választ kaphat a Table APIával kapcsolatos gyakori kérdésekre A
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392352"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167589"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Table APIról Azure Cosmos DB
 
@@ -274,7 +274,7 @@ A Azure Cosmos DB globálisan elosztott, SLA-alapú rendszernek van kialakítva,
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Soha nem kaptam meg a kvóta teljes "értesítését (amely azt jelzi, hogy a partíció megtelt), amikor az Azure Table Storage-ba tölt be adatot. A Table API a következő üzenet jelenik meg:. Ez az ajánlat korlátozza a szolgáltatást, és kényszeríti a meglévő alkalmazás módosítását?
 
-Azure Cosmos DB egy SLA-alapú rendszer, amely korlátlan léptéket biztosít, és garantálja a késést, az átviteli sebességet, a rendelkezésre állást és a konzisztenciát. A prémium szintű garantált teljesítmény biztosításához ellenőrizze, hogy az adatméret és az index kezelhető és méretezhető-e. Az entitások vagy elemek számának 10 GB-os korlátozása a partíciós kulcson alapul, így biztosítva, hogy nagy keresési és lekérdezési teljesítményt biztosítunk. Annak biztosítása érdekében, hogy az alkalmazás megfelelően méretezhető legyen, még az Azure Storage esetében is, javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt.
+Azure Cosmos DB egy SLA-alapú rendszer, amely korlátlan léptéket biztosít, és garantálja a késést, az átviteli sebességet, a rendelkezésre állást és a konzisztenciát. A prémium szintű garantált teljesítmény biztosításához ellenőrizze, hogy az adatméret és az index kezelhető és méretezhető-e. Az entitások vagy elemek számának 20 GB-os korlátozása a partíciós kulcson alapul, így biztosítva, hogy nagy keresési és lekérdezési teljesítményt biztosítunk. Annak biztosítása érdekében, hogy az alkalmazás megfelelően méretezhető legyen, még az Azure Storage esetében is, javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt.
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Így PartitionKey és RowKey is szükség van a Table API?
 

@@ -4,14 +4,14 @@ description: Választ kaphat a Azure Cosmos DB Cassandra APIával kapcsolatos gy
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449736"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167606"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
 
@@ -79,13 +79,13 @@ A diagnosztikai naplókat a [Azure Cosmos db diagnosztikai naplózási](logging.
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Az elsődleges kulcs a Azure Cosmos DB partíciós kulcsának fogalmát képezi?
 
-Igen, a partíciós kulcs az entitás megfelelő helyen történő elhelyezésére szolgál. Azure Cosmos DB a fizikai partíción tárolt megfelelő logikai partíció megtalálására szolgál. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben. A lényeges elvihetőség az, hogy a logikai partíciók nem haladják meg a 10 GB-os korlátot.
+Igen, a partíciós kulcs az entitás megfelelő helyen történő elhelyezésére szolgál. Azure Cosmos DB a fizikai partíción tárolt megfelelő logikai partíció megtalálására szolgál. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben. A lényeges elvihetőség az, hogy a logikai partíciók nem haladnak át a 20 GB-os korláton.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Mi történik, ha értesítést kapok, hogy egy partíció megtelt?
 
 Azure Cosmos DB a szolgáltatói szerződésen (SLA) alapuló rendszer. Korlátlan méretű, a késés, az átviteli sebesség, a rendelkezésre állás és a konzisztencia garanciáit biztosítja. Ez a korlátlan tárterület a horizontálisan kibővített adatmennyiségen alapul, és a particionálást a legfontosabb koncepcióként használja. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben.
 
-Az entitások vagy elemek számának 10 GB-os korlátját kell betartania logikai partíciók esetében. Annak érdekében, hogy az alkalmazás jól méretezhető legyen, azt javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt. Ez a hiba csak akkor jön el, ha az adatai elferdítve vannak: ez egy partíciós kulcs (több mint 10 &nbsp; GB). Az adateloszlás a Storage Portal használatával található. A hiba kijavításának módja a tábla újbóli létrehozása és a részletes elsődleges (partíciós kulcs) kiválasztása, amely lehetővé teszi az adatelosztást.
+Be kell tartania a 20 GB-os korlátot az entitások számának és a logikai partíciók száma alapján. Annak érdekében, hogy az alkalmazás jól méretezhető legyen, azt javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt. Ez a hiba csak akkor jön el, ha az adatai elferdítve vannak: ez egy partíciós kulcs (több mint 20 GB). Az adateloszlás a Storage Portal használatával található. A hiba kijavításának módja a tábla újbóli létrehozása és a részletes elsődleges (partíciós kulcs) kiválasztása, amely lehetővé teszi az adatelosztást.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Használhatom a Cassandra API a Key Value Store-ban millió vagy több milliárd partíciós kulccsal?
 

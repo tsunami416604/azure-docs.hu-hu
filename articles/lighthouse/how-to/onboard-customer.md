@@ -1,30 +1,30 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 05/26/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118875"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167317"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
 Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe egy ügyfelet az Azure Lighthouse szolgáltatásban. Ha így tesz, az ügyfél delegált erőforrásai (előfizetések és/vagy erőforráscsoportok) a saját Azure Active Directory (Azure AD) bérlőn keresztül érhetők el és kezelhetők az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)használatával.
 
-Ezt a folyamatot megismételheti, ha több ügyfél erőforrásait kezeli. Ezután, amikor egy jogosult felhasználó bejelentkezik a bérlőbe, a felhasználó jogosult lehet az ügyfél-kihelyező hatókörökre a felügyeleti műveletek végrehajtásához anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
+> [!TIP]
+> Bár a jelen témakörben a szolgáltatók és az ügyfelek számára is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják az Azure Lighthouse beállításához és a kezelési élmény megszilárdításához.
 
-Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Vegye figyelembe, hogy ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, és hogy az olvasó hozzáférést biztosítson az összes felhasználóhoz. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](../../cost-management-billing/manage/link-partner-id.md). 
+A bevezetési folyamat több ügyfél számára is megismételhető. Ha a megfelelő engedélyekkel rendelkező felhasználó bejelentkezik a kezelő bérlőbe, a felhasználó az ügyfél-kihelyezés hatókörén belül jogosult a felügyeleti műveletek végrehajtására, anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
+
+Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, és hogy az olvasó hozzáférést biztosítson az összes felhasználóhoz. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](../../cost-management-billing/manage/link-partner-id.md).
 
 > [!NOTE]
-> Az ügyfelek az Azure világítótoronyba is bejelentkezhetnek, ha az Azure Marketplace-en közzétett felügyelt szolgáltatásokat (nyilvános vagy privát) vásárolnak. További információ: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-](publish-managed-services-offers.md)en. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlattal együtt is használhatja.
+> Az ügyfelek az Azure világítótoronyba is bejelentkezhetnek, ha az [Azure Marketplace](publish-managed-services-offers.md)-en közzétett felügyelt szolgáltatási ajánlatot (nyilvános vagy privát) vásárolnak. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlatok mellett is használhatja.
 
 A bevezetési folyamathoz a szolgáltató bérlője és az ügyfél bérlője között végrehajtandó műveletek szükségesek. A fenti lépéseket a cikk ismerteti.
-
-> [!TIP]
-> Bár a jelen témakörben a szolgáltatókra és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják az Azure Lighthouse beállításához és a kezelési élmény megszilárdításához.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Bérlői és előfizetési adatok összegyűjtése
 
@@ -65,9 +65,11 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Szerepkörök és engedélyek definiálása
 
-Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. Annyi jogosultságot is megadhat, amennyi szükséges ahhoz, hogy [szerepköralapú hozzáférés-vezérlési (RBAC) szerepköröket](../../role-based-access-control/built-in-roles.md) rendeljen a bérlő felhasználói számára.
+Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. A megfelelő [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](../../role-based-access-control/built-in-roles.md) a bérlőben lévő felhasználókhoz való hozzárendeléséhez tetszőleges számú engedélyt adhat meg.
 
-A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az egyes szerepkörökhöz, ami lehetővé teszi az egyes felhasználók hozzáadását vagy eltávolítását, nem pedig közvetlenül az adott felhasználóhoz rendel hozzá engedélyeket. Az is előfordulhat, hogy szerepköröket szeretne hozzárendelni egy egyszerű szolgáltatáshoz. Ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. A támogatott szerepkörökkel kapcsolatos javaslatokért és információkért lásd: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
+A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az egyes szerepkörökhöz. Ez rugalmasságot biztosít az egyes felhasználók hozzáadásához vagy eltávolításához a hozzáféréssel rendelkező csoport számára, így nem kell megismételni a bevezetési folyamatot a felhasználói módosítások elvégzéséhez. A szerepköröket hozzárendelhet egy egyszerű szolgáltatáshoz, ami automatizálási forgatókönyvekhez hasznos lehet.
+
+Az engedélyek meghatározásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. A támogatott szerepkörökkel kapcsolatos irányelvek és információk: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
 
 > [!IMPORTANT]
 > Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusának** **biztonsági** és nem **Office 365**-nek kell lennie. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -109,12 +111,13 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+
 > [!TIP]
 > Javasoljuk, hogy a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) a felhasználó bevezetéséhez rendelje hozzá, hogy a bérlő felhasználói szükség esetén később is [el tudják távolítani a delegáláshoz való hozzáférést](remove-delegation.md) . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager sablon létrehozása
 
-Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](../../azure-resource-manager/index.yml) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára, amikor a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) megtekinti az ajánlat részleteit.
+Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](../../azure-resource-manager/index.yml) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) .
 
 |Mező  |Meghatározás  |
 |---------|---------|
@@ -196,9 +199,7 @@ A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a 
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>A Azure Resource Manager-sablonok üzembe helyezése
 
-A paramétert tartalmazó fájl frissítése után az ügyfél bérlője a Azure Resource Manager sablont a bérlőn belül, előfizetési szintű telepítésként kell telepítenie. Külön üzembe helyezésre van szükség minden olyan előfizetéshez, amelyet be szeretne készíteni a bevezetéshez (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz).
-
-Mivel ez egy előfizetési szintű telepítés, nem indítható el a Azure Portalban. A központi telepítés a PowerShell vagy az Azure CLI használatával végezhető el, az alább látható módon.
+A paramétert tartalmazó fájl frissítése után az ügyfél bérlője a Azure Resource Manager sablont a bérlőn belül, előfizetési szintű telepítésként kell telepítenie. Külön üzembe helyezésre van szükség minden olyan előfizetéshez, amelyet be szeretne készíteni a bevezetéshez (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz). A központi telepítés a PowerShell vagy az Azure CLI használatával végezhető el, az alább látható módon.
 
 > [!IMPORTANT]
 > Ezt az előfizetési szintű üzembe helyezést egy nem vendég fióknak kell végrehajtania az ügyfél bérlője számára, aki az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).

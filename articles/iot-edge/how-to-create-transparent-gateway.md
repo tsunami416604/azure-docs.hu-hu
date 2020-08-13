@@ -4,19 +4,19 @@ description: Azure IoT Edge-eszköz használata transzparens átjáróként, ame
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782585"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167402"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
@@ -93,15 +93,19 @@ A következő fájlok készen állnak:
    * Windows`Restart-Service iotedge`
    * Linux`sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub üzembe helyezése az átjárón
+## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub üzembe helyezése és az üzenetek továbbítása
 
-Amikor először telepíti a IoT Edget egy eszközön, a rendszer csak egy rendszermodult kezd automatikusan: a IoT Edge-ügynököt. Miután létrehozta az első központi telepítést egy eszközhöz, a második rendszermodul, az IoT Edge hub is elindul.
+Az alsóbb rétegbeli eszközök telemetria és üzeneteket küldenek az átjáró eszköznek, ahol az IoT Edge hub-modul felelős az adatok más modulokhoz való átirányításához vagy IoT Hubához. Az átjáró-eszköz ehhez a függvényhez való előkészítéséhez győződjön meg az alábbiakról:
 
-Az IoT Edge hub feladata, hogy fogadja a bejövő üzeneteket az alárendelt eszközökről, és átirányítsa azokat a következő célhelyre. Ha a **edgeHub** modul nem fut az eszközön, hozzon létre egy kezdeti központi telepítést az eszköz számára. Az üzemelő példány üresen jelenik meg, mert nem ad hozzá modulokat, de gondoskodni fog arról, hogy mindkét rendszer-modul fusson.
+* Az IoT Edge hub modul telepítve van az eszközön.
 
-Megtekintheti, hogy mely modulok futnak az eszközön, ha megtekinti az eszköz adatait a Azure Portalban, megtekinti az eszköz állapotát a Visual Studióban vagy a Visual Studio Code-ban, vagy maga az eszközön futtatja a parancsot `iotedge list` .
+  Amikor először telepíti a IoT Edget egy eszközön, a rendszer csak egy rendszermodult kezd automatikusan: a IoT Edge-ügynököt. Miután létrehozta az első központi telepítést egy eszközhöz, a második rendszermodul, az IoT Edge hub is elindul. Ha a **edgeHub** modul nem fut az eszközön, hozzon létre egy központi telepítést az eszköz számára.
 
-Ha a **edgeAgent** modul a **edgeHub** modul nélkül fut, kövesse az alábbi lépéseket:
+* Az IoT Edge hub-modul útvonalakat állított be, amelyekkel az alárendelt eszközökről érkező üzeneteket kezelhet.
+
+  Az átjáró-eszköznek rendelkeznie kell egy olyan útvonallal, amely a alsóbb rétegbeli eszközökön lévő üzenetek kezelésére alkalmas, különben az üzenetek nem lesznek feldolgozva. Az üzeneteket elküldheti a moduloknak az átjáró eszközén, vagy közvetlenül a IoT Hub.
+
+Az IoT Edge hub modul üzembe helyezéséhez és az alsóbb rétegbeli eszközökről bejövő üzenetek kezelésére szolgáló útvonalakkal való konfigurálásához kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon keresse meg az IoT-központot.
 
@@ -109,13 +113,27 @@ Ha a **edgeAgent** modul a **edgeHub** modul nélkül fut, kövesse az alábbi l
 
 3. Válassza a **modulok beállítása**lehetőséget.
 
-4. Válassza a **Tovább: útvonalak**lehetőséget.
+4. A **modulok** lapon hozzáadhat bármely olyan modult, amelyet központilag szeretne telepíteni az átjáró-eszközre. Ebben a cikkben a edgeHub modul konfigurálására és üzembe helyezésére koncentrálunk, amelyet nem kell explicit módon beállítani ezen az oldalon.
 
-5. Az **útvonalak** lapon olyan alapértelmezett útvonalon kell lennie, amely minden üzenetet küld, akár modulból, akár egy alsóbb rétegbeli eszközről, hogy IoT hub. Ha nem, adjon hozzá egy új útvonalat a következő értékekkel, majd válassza a **felülvizsgálat + létrehozás**lehetőséget:
-   * **Név**:`route`
-   * **Érték**:`FROM /messages/* INTO $upstream`
+5. Válassza a **Tovább: útvonalak**lehetőséget.
 
-6. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
+6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Például:
+
+   * Egy olyan útvonal, amely minden üzenetet elküld egy modulból vagy egy alsóbb rétegbeli eszközről a IoT Hubba:
+       * **Név**:`allMessagesToHub`
+       * **Érték**:`FROM /messages/* INTO $upstream`
+
+   * Az összes alsóbb rétegbeli eszközről a IoT Hubre küldött összes üzenetet küldő útvonal:
+      * **Név**:`allDownstreamToHub`
+      * **Érték**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      Ez az útvonal azért működik, mert a IoT Edge modulokból származó üzenetektől eltérően az alárendelt eszközöktől érkező üzenetek nem rendelkeznek a hozzájuk társított modul-AZONOSÍTÓval. Az útvonal **Where** záradékának használata lehetővé teszi, hogy az adott System tulajdonsággal rendelkező üzeneteket kiszűrje.
+
+      Az üzenetek útválasztásával kapcsolatos további információkért lásd: [modulok üzembe helyezése és útvonalak létrehozása](./module-composition.md#declare-routes).
+
+7. Az útvonal vagy az útvonalak létrehozása után válassza a **felülvizsgálat + létrehozás**lehetőséget.
+
+8. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
 
 ## <a name="open-ports-on-gateway-device"></a>Portok megnyitása átjáró eszközön
 
@@ -128,25 +146,6 @@ Az átjáró-forgatókönyvek működéséhez az IoT Edge hub által támogatott
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="route-messages-from-downstream-devices"></a>Üzenetek továbbítása az alárendelt eszközökről
-
-A IoT Edge futtatókörnyezet képes továbbítani az alárendelt eszközökről küldött üzeneteket ugyanúgy, mint a modulok által küldött üzenetek. Ez a funkció lehetővé teszi az elemzést az átjárón futó modulban, mielőtt adatokat küldene a felhőbe.
-
-Jelenleg az alárendelt eszközök által küldött üzenetek továbbításának módja a modulok által küldött üzenetektől való megkülönböztetés. A modulok által küldött üzenetek tartalmazzák a **connectionModuleId** nevű rendszertulajdonságot, de az alárendelt eszközök által küldött üzenetek nem. Az útvonal WHERE záradékával kizárhatja az adott System tulajdonságot tartalmazó üzeneteket.
-
-Az alábbi útvonal egy példa arra, hogy bármely alsóbb rétegbeli eszközről üzeneteket küldjön egy nevű modulba `ai_insights` , majd a `ai_insights` IoT hub.
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-Az üzenetek útválasztásával kapcsolatos további információkért lásd: [modulok üzembe helyezése és útvonalak létrehozása](./module-composition.md#declare-routes).
 
 ## <a name="enable-extended-offline-operation"></a>Kiterjesztett offline művelet engedélyezése
 

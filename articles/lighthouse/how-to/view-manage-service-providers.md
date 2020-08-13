@@ -1,18 +1,21 @@
 ---
 title: Szolgáltatók megtekintése és kezelése
 description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273778"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167164"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
-Az ügyfelek a Azure Portal **szolgáltatók** lapján tekinthetik meg [Azure portal](https://portal.azure.com) a szolgáltatók és a szolgáltatói ajánlatok részleteit, adott erőforrások delegálását az [Azure Lighthouse](../overview.md)szolgáltatásba, és az új szolgáltatói ajánlatokat is vásárolhatnak. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
+Az ügyfelek a Azure Portal **szolgáltatók** lapján tekinthetik meg [Azure portal](https://portal.azure.com) a szolgáltatók és a szolgáltatói ajánlatok részleteit, adott erőforrások delegálását az [Azure Lighthouse](../overview.md)szolgáltatásba, és az új szolgáltatói ajánlatokat is vásárolhatnak.
+
+> [!TIP]
+> Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
 
 A Azure Portal **szolgáltatók** lapjának eléréséhez az ügyfél kiválaszthatja az **összes szolgáltatást**, majd kereshet **a szolgáltatók között, és kiválaszthatja** azt. Azt is megtalálják, hogy beírja a "szolgáltatók" vagy az "Azure Lighthouse" kifejezést a Azure Portal tetején található keresőmezőbe.
 
@@ -77,7 +80,7 @@ Egy [Azure Policy beépített szabályzat-definíciót](../../governance/policy/
 
 A szabályzatok hozzárendeléséről és a megfelelőségi állapot eredményeinek megjelenítéséről a rövid útmutató [: szabályzat-hozzárendelés létrehozása](../../governance/policy/assign-policy-portal.md)című témakörben olvashat bővebben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Lighthouse](../overview.md)-ról.
 - Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján.

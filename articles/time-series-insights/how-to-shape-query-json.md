@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7a88e0db38f399dc47c030f3b97f6b26f4da07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077657"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168235"
 ---
 # <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>A JSON formázása a lekérdezési teljesítmény maximalizálása érdekében a Gen1-környezetben
 
@@ -24,7 +24,7 @@ Ez a cikk útmutatást nyújt a JSON formázásához a Azure Time Series Insight
 
 ### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Ajánlott eljárások a JSON alakításához a tárolási igények kielégítése érdekében.</br>
 
-> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
+> [!VIDEO <https://www.youtube.com/embed/b2BD5hwbg5I>]
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -60,7 +60,6 @@ A következő példában egyetlen Azure IoT Hub üzenet jelenik meg, amelyben a 
 
 Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-felhőbe való küldéskor JSON-ként szerializált [IoT-üzenetet](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) küld a Azure Time Series Insights GA-környezetnek:
 
-
 ```JSON
 [
     {
@@ -90,14 +89,14 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
 ]
 ```
 
-* A (z) **deviceId**Key tulajdonsággal rendelkező hivatkozási adattábla:
+- A (z) **deviceId**Key tulajdonsággal rendelkező hivatkozási adattábla:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | LINE \_ -ADATsorok | EU |
    | FYYY | LINE \_ -ADATsorok | USA |
 
-* Azure Time Series Insights Event Table az összeolvasztás után:
+- Azure Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | messageId | deviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
    | --- | --- | --- | --- | --- | --- |
@@ -106,6 +105,7 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
    | FYYY | LINE \_ -ADATsorok | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
+
 > - A **deviceId** oszlop a flotta különböző eszközeinek oszlop fejlécét szolgálja. A **deviceId** értékének kiszámításához a saját tulajdonságnév korlátozza a teljes eszközt 595 (S1 környezet esetén) vagy 795 (S2 környezet esetén) a másik öt oszloppal.
 > - A felesleges tulajdonságok elkerülhetők (például a gyártmány és a modell adatai). Mivel a tulajdonságok nem lesznek lekérdezve a jövőben, így a jobb hálózati és tárolási hatékonyságot is lehetővé teszi.
 > - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál. A **messageId** és a **deviceLocation** két attribútum a Key tulajdonság **deviceId**használatával csatlakozik. Ezek az adatforgalom a telemetria-és a bejövő adatforgalom időpontjában szerepelnek, és a lekérdezés Azure Time Series Insights tárolja őket.
@@ -160,7 +160,7 @@ Példa JSON-adattartalomra:
 ]
 ```
 
-* A Key Properties **deviceId** és a **Series. tagId**kulcsot tartalmazó hivatkozási adattábla:
+- A Key Properties **deviceId** és a **Series. tagId**kulcsot tartalmazó hivatkozási adattábla:
 
    | deviceId | adatsorozat. tagId | messageId | deviceLocation | típus | egység |
    | --- | --- | --- | --- | --- | --- |
@@ -169,18 +169,19 @@ Példa JSON-adattartalomra:
    | FYYY | pumpRate | LINE \_ -ADATsorok | USA | Áramlási sebesség | FT3/s |
    | FYYY | oilPressure | LINE \_ -ADATsorok | USA | Motor olajnyomás | psi |
 
-* Azure Time Series Insights Event Table az összeolvasztás után:
+- Azure Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | adatsorozat. tagId | messageId | deviceLocation | típus | egység | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
    | FXXX | oilPressure | LINE \_ -ADATsorok | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | pumpRate | LINE \_ -ADATsorok | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
    | FXXX | oilPressure | LINE \_ -ADATsorok | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49,2 |
    | FYYY | pumpRate | LINE \_ -ADATsorok | USA | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | FYYY | oilPressure | LINE \_ -ADATsorok | USA | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
+
 > - A **deviceId** és a **Series. tagId** oszlopok a különböző eszközök és címkék oszlopaiként szolgálnak a flottában. A saját attribútumaik használatával a lekérdezés a 594 (S1 környezetek esetén) vagy a 794 (S2 környezet esetén) értékre van korlátozva a többi hat oszloppal rendelkező összes eszköz esetében.
 > - A szükségtelen tulajdonságokat a rendszer az első példában hivatkozott okból nem tudta elkerülni.
 > - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál a **messageId** és a **deviceLocation**egyedi párosításához használt **deviceId**bevezetésével. Az összetett Key **sorozat. tagId** a **típus** és az **egység**egyedi párosítására szolgál. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és a **Series. tagId** pár négy értékre hivatkozzon: **messageId, deviceLocation, Type** és **Unit**. Ezek az adatforgalom a telemetria-adatforgalom időpontjában vannak csatlakoztatva. Ezt követően a lekérdezés Azure Time Series Insights tárolja.
@@ -190,13 +191,13 @@ Példa JSON-adattartalomra:
 
 A nagy mennyiségű lehetséges értéket tartalmazó tulajdonság esetében érdemes egyetlen oszlopon belül külön értékként elküldeni az egyes értékek új oszlopának létrehozása helyett. Az előző két példából:
 
-  - Az első példában néhány tulajdonság több értékkel rendelkezik, ezért célszerű külön tulajdonságokat készíteni.
-  - A második példában a mértékek nem egyedi tulajdonságokként vannak megadva. Ehelyett az értékek vagy mértékek tömbje a Common Series tulajdonság alatt van. Az új kulcs **tagId** el lesz küldve, amely létrehozza az új oszlopdiagram **. tagId** az összeolvasztott táblában. Az új tulajdonságok **típusát** és **egységét** a rendszer a hivatkozási adatai alapján hozza létre, így a tulajdonság korlátja nem érhető el.
+- Az első példában néhány tulajdonság több értékkel rendelkezik, ezért célszerű külön tulajdonságokat készíteni.
+- A második példában a mértékek nem egyedi tulajdonságokként vannak megadva. Ehelyett az értékek vagy mértékek tömbje a Common Series tulajdonság alatt van. Az új kulcs **tagId** el lesz küldve, amely létrehozza az új oszlopdiagram **. tagId** az összeolvasztott táblában. Az új tulajdonságok **típusát** és **egységét** a rendszer a hivatkozási adatai alapján hozza létre, így a tulajdonság korlátja nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
 - További információ [a IoT hub eszköz üzeneteinek a felhőbe való](../iot-hub/iot-hub-devguide-messages-construct.md)küldéséről.
 
-- A Azure Time Series Insights adatelérési REST API lekérdezési szintaxisával kapcsolatos további információért olvassa el [Azure Time Series Insights lekérdezési szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
+- A Azure Time Series Insights adatelérési REST API lekérdezési szintaxisával kapcsolatos további információért olvassa el [Azure Time Series Insights lekérdezési szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax) .
 
 - Megtudhatja [, hogyan alakíthat ki eseményeket](./time-series-insights-send-events.md).

@@ -1,44 +1,62 @@
 ---
 title: Optikai karakterfelismerés (OCR) – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Az optikai karakterfelismeréssel (OCR) kapcsolatos fogalmak a képekből és dokumentumokból nyomtatott és kézzel írott szöveggel a Computer Vision API használatával.
+description: A képek és dokumentumok optikai karakterfelismeréssel (OCR) kapcsolatos fogalmak a kinyomtatott és kézzel írott szöveggel a Computer Vision API használatával.
 services: cognitive-services
-author: msbbonsu
+author: PatrickFarley
 manager: netahw
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.author: t-bebon
+ms.date: 08/11/2020
+ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2b3f9b0a4bec76f1f5f9b1f42ec33fdf5e2678bf
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e2226f70ed3318bb370f0afee003fd9f91153a45
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760158"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167868"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
-A Microsoft Computer Vision API olyan optikai karakterfelismerési (OCR) képességeket tartalmaz, amelyek nyomtatott vagy kézírásos szövegeket nyernek ki képekből és PDF-dokumentumokból. Az OCR API-k az analóg dokumentumok (képek, beolvasott dokumentumok) és a digitalizált dokumentumok szövegét is kinyerik. Szöveget is kinyerheti a képekből a vadonban, például a lemezekről vagy a sorozatszámokkal rendelkező tárolók, valamint a dokumentumok – számlák, számlák, pénzügyi jelentések, cikkek és egyebek között. Az új olvasási OCR API a felügyelt szolgáltatás részeként érhető el a felhőben vagy a helyszínen (tárolókban). Emellett támogatja a virtuális hálózatokat és a magánhálózati végpontokat a vállalati szintű megfelelőségi és adatvédelmi igények kielégítése érdekében.
+Az Azure Computer Vision API olyan optikai karakterfelismerési (OCR) képességeket tartalmaz, amelyek kinyerik a képekből nyomtatott vagy kézírásos szöveget. Kinyerheti a képeket a képekből, például a licenccel rendelkező, a sorozatszámokkal, a dokumentumokból, a számlákból, a pénzügyi jelentésekről, a cikkekről és egyéb cikkekből származó képekből is. 
 
 ## <a name="read-api"></a>API olvasása 
 
-A Computer Vision [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) a Microsoft legújabb OCR-technológiája, amely a nyomtatott szövegeket több nyelven, kézírásos szövegben (csak angol nyelven), számjegyeket és pénznem szimbólumokat gyűjti a képekből és a többoldalas PDF-dokumentumokból. Ez a funkció úgy van optimalizálva, hogy szövegből kinyert szöveg-és többoldalas PDF-dokumentumokból, vegyes nyelvekkel. Támogatja a nyomtatott és a kézírásos szöveg (csak angol nyelven) észlelését ugyanabban a képen vagy dokumentumban. Tekintse meg az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) teljes listáját tartalmazó oldalt.
-
-### <a name="how-ocr-works"></a>Az OCR működése
-
-Az [OLVASÁSI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) legfeljebb 2000 oldalas szöveget támogat, és így aszinkron módon hajtható végre. Az első lépés az olvasási művelet meghívása. Az olvasási művelet egy képet vagy PDF-dokumentumot vesz fel bemenetként, és visszaadja a művelet AZONOSÍTÓját. 
-
-A második lépés az [eredmények lekérése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) művelet meghívása. Ez a művelet a művelet AZONOSÍTÓját veszi át, amelyet az olvasási művelet hozott létre. Ezután visszaadja a kinyert szöveges tartalmat a rendszerképből vagy a dokumentumból JSON formájában. A JSON-válasz a felismert szavak eredeti sorát tárolja. Magában foglalja a kinyert szöveg sorait és a hozzájuk tartozó mezők koordinátáit. Minden szöveges sor tartalmazza az összes kinyert szót a koordinátáikkal és a megbízhatósági pontszámokkal.
-
-Ha szükséges, olvassa el a felismert lap rotációs eltolásának kiírása a következő ábrán látható módon, a vízszintes képtengelyre vonatkozó fokban megadva.
+A Computer Vision [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) az Azure legújabb OCR-technológiája, amely Kinyeri a nyomtatott szöveget (több nyelven), a kézírásos szövegeket (csak angol nyelven), számjegyeket és pénznem szimbólumokat a képekből és a többoldalas PDF-dokumentumokból. A szolgáltatás úgy van optimalizálva, hogy szövegből származó képekből és többoldalas PDF-dokumentumokból kinyerje a kevert nyelveket. Támogatja mind a nyomtatott, mind a kézírásos szöveg észlelését ugyanabban a képen vagy dokumentumban.
 
 ![Hogyan alakítja át az OCR a képeket és a dokumentumokat strukturált kimenetre a kinyert szöveggel](./Images/how-ocr-works.svg)
 
-### <a name="sample-ocr-output"></a>Minta OCR-kimenet
+Az olvasási API két művelet – **olvasás** és **olvasási eredmények**– használatával biztosít OCR-képességeket.
 
-A sikeres választ a JSON-formátumban adja vissza a következő példában látható módon:
+## <a name="the-read-operation"></a>Az olvasási művelet
+
+Az [olvasási művelet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) egy képet vagy PDF-dokumentumot használ a bemenetként, és aszinkron módon Kinyeri a szöveget. A hívás visszatérési értéke egy nevű válasz fejléc mező `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó műveleti azonosítót tartalmazza.
+
+|Válasz fejléce| Eredmény URL-címe |
+|:-----|:----|
+|Művelet – hely | https://cognitiveservice/vision/v3.0-preview/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f |
+
+## <a name="the-get-read-results-operation"></a>Az olvasási eredmények lekérése művelet
+
+A második lépés az [olvasási eredmények lekérése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) művelet meghívása. Ez a művelet az olvasási művelet által létrehozott műveleti azonosító bemenetét veszi át. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A másodpercenkénti kérések (RPS) mértékének meghaladása érdekében használjon 1 – 2 másodperces intervallumot.
+
+|Mező| Típus | Lehetséges értékek |
+|:-----|:----:|:----|
+|status | sztring | notStarted: a művelet nem indult el. |
+| |  | fut: a művelet feldolgozása folyamatban van. |
+| |  | sikertelen: a művelet sikertelen volt. |
+| |  | sikeres: a művelet sikeresen befejeződött. |
+
+> [!NOTE]
+> Az ingyenes szintek percenként 20 hívásra korlátozzák a kérelmek sebességét. A fizetős csomag másodpercenként 10 másodpercenkénti kérést (RPS) tesz lehetővé. Az Azure támogatási csatornájának vagy a fiókja csapatának használatával nagyobb kérést igényelhet másodpercenként (RPS).
+
+Ha az **állapot** mező értéke **sikeres** , a JSON-válasz a rendszerképből vagy dokumentumból kinyert szöveges tartalmat tartalmazza. A JSON-válasz a felismert szavak eredeti sorát tárolja. Magában foglalja a kinyert szöveg sorait és a hozzájuk tartozó mezők koordinátáit. Minden szöveges sor tartalmazza az összes kinyert szót a koordinátáikkal és a megbízhatósági pontszámokkal.
+
+### <a name="sample-json-output"></a>Példa JSON-kimenetre
+
+Tekintse meg a sikeres JSON-válasz következő példáját:
 
 ```json
 {
@@ -94,57 +112,78 @@ A sikeres választ a JSON-formátumban adja vissza a következő példában lát
 
 Kövesse a [nyomtatott és a kézzel írt szöveg kinyerése](./QuickStarts/CSharp-hand-text.md) az OCR a C# és a REST API használatával történő megvalósításához című témakört.
 
-### <a name="input-requirements"></a>Bemeneti követelmények
+## <a name="input-requirements"></a>Bemeneti követelmények
 
-Az olvasási API a következő bemeneteket veszi át:
+A bemeneti képek és dokumentumok a következő követelményekkel rendelkeznek:
 * Támogatott fájlformátumok: JPEG, PNG, BMP, PDF és TIFF
 * A PDF és a TIFF esetében akár 2000 oldal is feldolgozható. Ingyenes szintű előfizetők esetében csak az első két oldal lesz feldolgozva.
 * A fájl méretének 50 MB-nál kisebbnek kell lennie, és legalább 50 x 50 képpont és legfeljebb 10000 x 10000 képpont méretűnek kell lennie.
 * A PDF-méreteknek legfeljebb 17 x 17 hüvelyknek kell lenniük, amely a jogi vagy az A3-as papírméretnek felel meg, és kisebb.
 
+> [!NOTE]
+> **Nyelvi bevitel** 
+>
+> Az [olvasási művelethez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) választható lekérdezési paraméter tartozik a nyelvhez. Ez a dokumentum szövegének BCP-47 nyelvi kódja. Az olvasás támogatja az automatikus nyelvi azonosítást és a többnyelvű dokumentumokat, ezért csak akkor adjon meg egy nyelvi kódot, ha a dokumentumot adott nyelven szeretné feldolgozni.
+
+## <a name="language-support"></a>Nyelvi támogatás
+
+### <a name="printed-text"></a>Nyomtatott szöveg
+Az [olvasási 3,0 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) támogatja a nyomtatott szövegek angol, spanyol, német, francia, olasz, portugál és holland nyelvű kinyerését. 
+
+A [Read 3,1 API nyilvános előzetes verziója](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) támogatja az egyszerűsített kínai verziót. Ha a forgatókönyv további nyelvek támogatását igényli, tekintse meg az [OCR API](#ocr-api) című szakaszt. 
+
+Az OCR által támogatott nyelvek teljes listájáért tekintse meg a [támogatott nyelveket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+
+### <a name="handwritten-text"></a>Kézírásos szöveg
+Az olvasási művelet jelenleg kizárólag angol nyelven támogatja a kézzel írt szöveg kinyerését.
+
+## <a name="integration-options"></a>Integrációs lehetőségek
+
+### <a name="use-the-rest-api-or-client-sdk"></a>Az REST API vagy az ügyféloldali SDK használata
+Az [olvasás 3. x REST API](./QuickStarts/CSharp-hand-text.md) az előnyben részesített lehetőség a legtöbb ügyfél számára, mivel a könnyű integráció és a gyors termelékenység a box-ban. Az Azure és a Computer Vision szolgáltatás kezeli a méretezést, a teljesítményt, az adatbiztonságot és a megfelelőségi igényeket, miközben az ügyfelek igényeinek kielégítésére koncentrál.
+
+### <a name="use-containers-for-on-premise-deployment"></a>Tárolók használata helyi telepítéshez
+Az [olvasási 2,0 Docker-tároló (előzetes verzió)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) lehetővé teszi az új OCR-képességek üzembe helyezését a saját helyi környezetében. A tárolók az adott biztonsági és adatirányítási követelményekhez is kiválóak.
+
+## <a name="read-ocr-examples"></a>OCR-példák olvasása
+
 ### <a name="text-from-images"></a>Képekből származó szöveg
 
-A következő olvasási API-kimenet megjeleníti a kinyert szöveges vonalakat és szavakat egy olyan képből, amely különböző nézőpontokból, színekről és betűtípusokról tartalmaz szöveget.
+A következő olvasási API-kimenet egy olyan képből származó kinyert szöveget jelenít meg, amely különböző szöveges nézőpontokkal, színekkel és betűtípusokkal rendelkezik.
 
-![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/text-from-images-example.png)
+![Több, különböző színnel és nézőpontból álló szó képe, a kinyert szöveggel](./Images/text-from-images-example.png)
 
 ### <a name="text-from-documents"></a>Dokumentumokból származó szöveg
 
-A képeken kívül az olvasási API bemenetként fogad egy PDF-dokumentumot.
+Az olvasási API bemenetként is készíthet PDF-dokumentumokat.
 
-![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/text-from-documents-example.png)
+![Egy számlázási dokumentum, amely a kinyert szöveggel szerepel](./Images/text-from-pdf-example.png)
 
+### <a name="handwritten-text"></a>Kézírásos szöveg
 
-### <a name="handwritten-text-in-english"></a>Kézírásos szöveg angol nyelven
+Az olvasási művelet beolvassa a kézzel írt szöveget a képekből (jelenleg csak angol nyelven).
 
-Jelenleg az olvasási művelet támogatja a kézzel írt szöveg kinyerését kizárólag angol nyelven.
+![Egy kézzel írott jegyzet képe, a kinyert szöveggel](./Images/handwritten-example.png)
 
-![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/handwritten-example.png)
+### <a name="printed-text"></a>Nyomtatott szöveg
 
-### <a name="printed-text-in-supported-languages"></a>Kinyomtatott szöveg a támogatott nyelveken
+Az olvasási művelet több különböző nyelven is kinyerheti a nyomtatott szöveget.
 
-Az olvasási 3,0 API támogatja a nyomtatott szövegek angol, spanyol, német, francia, olasz, portugál és holland nyelvű kinyerését. Az 3,1-os [API nyilvános előzetes verziója](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) támogatja az egyszerűsített kínai verziót. Ha a forgatókönyv további nyelvek támogatását igényli, tekintse meg a jelen dokumentum OCR API áttekintése című témakörét. Tekintse meg az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) listáját
+![Egy spanyol tankönyv képe, amelyben a kinyert szöveg szerepel](./Images/supported-languages-example.png)
 
-![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/supported-languages-example.png)
+### <a name="mixed-language-documents"></a>Vegyes nyelvi dokumentumok
 
-### <a name="mixed-languages-support"></a>Vegyes nyelvek támogatása
+Az olvasási API olyan képeket és dokumentumokat támogat, amelyek több különböző nyelvet tartalmaznak, gyakran más néven kevert nyelvi dokumentumokat. Úgy működik, hogy a dokumentumban lévő egyes szöveges vonalakat a szöveg tartalmának kibontása előtt osztályozza az észlelt nyelvre.
 
-Az olvasási API támogatja a több nyelvet tartalmazó képeket és dokumentumokat, amelyek gyakran más néven vegyes nyelvi dokumentumok. Ezt úgy végezheti el, hogy a szöveg tartalmának kibontása előtt osztályozza a dokumentumban lévő egyes szöveges vonalakat az észlelt nyelvre.
-
-![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/mixed-language-example.png)
-
-### <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
-
-Akárcsak az összes kognitív szolgáltatás esetében, az olvasási szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a [Microsoft adatvédelmi Központjának](https://www.microsoft.com/en-us/trust-center/product-overview) Cognitive Services lapját.
-
-### <a name="containers-for-on-premise-deployment"></a>Helyszíni üzembe helyezéshez használható tárolók
-
-Az olvasás a Docker-tárolóként (előzetes verzió) is elérhető, amely lehetővé teszi az új OCR-képességek üzembe helyezését a saját környezetében. A tárolók az adott biztonsági és adatirányítási követelményekhez is kiválóak. Lásd: [olvasási tárolók telepítése és futtatása.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
-
+![Több nyelven írt mondatok képe, a kinyert szöveggel](./Images/mixed-language-example.png)
 
 ## <a name="ocr-api"></a>OCR API
 
-Az [OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) egy régebbi felismerési modellt használ, csak a képeket támogatja, és szinkron módon hajtja végre az észlelt szöveggel való azonnali visszatérést. Tekintse meg az [OCR által támogatott nyelveket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) , mint az olvasási API.
+Az [OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) egy régebbi felismerési modellt használ, csak a képeket támogatja, és szinkron módon hajtja végre az észlelt szöveggel való azonnali visszatérést. Lásd az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) , majd az API olvasása című témakört.
+
+## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
+
+Akárcsak az összes kognitív szolgáltatás esetében, az olvasási/OCR szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a [Microsoft adatvédelmi Központjának](https://www.microsoft.com/trust-center/product-overview) Cognitive Services lapját.
 
 ## <a name="next-steps"></a>További lépések
 

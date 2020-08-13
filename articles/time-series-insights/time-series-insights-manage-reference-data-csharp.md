@@ -9,30 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2a33c701278a900e502da9e6d9520ea213ce4c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059217"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168099"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>A Azure Time Series Insights 1. generációs környezetek hivatkozási adatai C használatával kezelhetők #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Azure Time Series Insights 1. generációs környezethez tartozó referenciák kezelése C Sharp használatával
 
-Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights Gen 1 [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
+Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights Gen 1 [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)-hoz.
 
 > [!TIP]
-> A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
+> A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
 * Hozzáférési jogkivonat beszerzése a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**használatával.
-* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek az 1. generációs [hivatkozási adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
-* Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
-    
+* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek az 1. generációs [hivatkozási adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)-hoz.
+* Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling).
+
     A Reference adatkezelés API egyenként dolgozza fel az egyes elemeket, és egy adott elemmel kapcsolatos hiba miatt nem akadályozza meg, hogy a többi sikeres befejezést hajtson végre. Ha például a kérelem 100 elemet tartalmaz, és egy elem hibát tartalmaz, akkor a 99-es elemek írása megtörténik, és a rendszer elutasítja az egyiket.
 
 ## <a name="prerequisites-and-setup"></a>Előfeltételek és beállítás
@@ -46,7 +46,7 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 
    | Kulcs neve | Típus |
    | --- | --- |
-   | uuid | Sztring | 
+   | uuid | Sztring |
 
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. Használja `http://localhost:8080/` **ÁTirányítási URI**-ként.
 
@@ -54,7 +54,7 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 
 1. Szerkessze az alábbi mintakód összes **#PLACEHOLDER #** helyére a megfelelő környezeti azonosítóval.
 
-1. A `dotnet run` projekt gyökérkönyvtárában fut. Ha a rendszer kéri, használja a felhasználói profilját az Azure-ba való bejelentkezéshez. 
+1. A `dotnet run` projekt gyökérkönyvtárában fut. Ha a rendszer kéri, használja a felhasználói profilját az Azure-ba való bejelentkezéshez.
 
 ## <a name="project-dependencies"></a>Projekt függőségei
 
@@ -92,6 +92,7 @@ Vagy
       </ItemGroup>
     </Project>
     ```
+
 1. Ez után futtassa a `dotnet restore` parancsot.
 
 ## <a name="c-sample-code"></a>C# mintakód
@@ -114,7 +115,7 @@ namespace CsharpTsiMsalGaSample
     {
         /**
          * Review the product documentation for detailed configuration steps or skip ahead and configure your environment settings.
-         * 
+         *
          * https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
          */
 
@@ -138,7 +139,7 @@ namespace CsharpTsiMsalGaSample
 
             /**
              * MSAL.NET configuration. Review the product documentation for more information about MSAL.NET authentication options.
-             * 
+             *
              * https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/
              */
 
@@ -174,7 +175,7 @@ namespace CsharpTsiMsalGaSample
                 Path = $"referencedatasets/{EnvironmentReferenceDataSetName}/$batch",
                 Query = "api-version=2016-12-12"
              }.Uri;
-                
+
              Console.WriteLine("Making HTTP POST to URI: {0}", uri);
              Console.WriteLine("");
 
@@ -202,7 +203,7 @@ namespace CsharpTsiMsalGaSample
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
 
-            {   
+            {
                 // CREATE reference data
                 Console.WriteLine("CREATE reference data example...");
                 Console.WriteLine("");
@@ -309,4 +310,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el az 1. generációs [referenciát adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) -dokumentációt.
+* Olvassa el az 1. generációs [referenciát adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) -dokumentációt.

@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420107"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168014"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privát ajánlatok a Microsoft kereskedelmi piactéren
 
@@ -35,7 +35,7 @@ Mostantól elérhetők a virtuális gépek, az Azure-alkalmazások (megoldás-sa
 
 ## <a name="creating-private-offers-using-plans"></a>Privát ajánlatok létrehozása csomagok használatával
 
-A *csomagokkal rendelkező új vagy meglévő ajánlatok*esetében a kiadók egyszerűen létrehozhatnak új, privát változatokat új csomagok (korábbi nevén SKU) létrehozásával és magánjellegűként való megjelölésével.  
+A *csomagokkal rendelkező új vagy meglévő ajánlatok*esetében a kiadók egyszerűen létrehozhatnak új, privát változatokat új csomagok (korábbi nevén SKU) létrehozásával és magánjellegűként való megjelölésével. Minden ajánlat legfeljebb 45 privát csomaggal rendelkezhet.
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
 

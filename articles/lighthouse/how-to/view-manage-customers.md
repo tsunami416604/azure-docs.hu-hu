@@ -1,18 +1,21 @@
 ---
 title: Ügyfelek és delegált erőforrások megtekintése és kezelése
-description: Az Azure Lighthouse szolgáltatást használó szolgáltatóként megtekintheti az összes delegált ügyfél-erőforrást és-előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
-ms.date: 07/06/2020
+description: Az Azure Lighthouse-t használó szolgáltatóként vagy nagyvállalatként megtekintheti az összes delegált erőforrást és előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133273"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167198"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
-Az [Azure Lighthouse](../overview.md) szolgáltatást használó szolgáltatók használhatják a [Azure Portal](https://portal.azure.com) **saját ügyfelek** lapját a delegált ügyfelek erőforrásainak és előfizetésének megtekintéséhez. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
+Az [Azure Lighthouse](../overview.md) szolgáltatást használó szolgáltatók használhatják a [Azure Portal](https://portal.azure.com) **saját ügyfelek** lapját a delegált ügyfelek erőforrásainak és előfizetésének megtekintéséhez. 
+
+> [!TIP]
+> Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
 
 Ha a Azure Portal **saját ügyfelek** lapját szeretné elérni, válassza a **minden szolgáltatás**lehetőséget, majd keresse meg az **ügyfeleket** , és válassza ki azt. Azt is megteheti, hogy beírja az "ügyfelek" kifejezést a Azure Portal tetején található keresőmezőbe.
 
@@ -42,7 +45,7 @@ Az alábbi adatokat tekintheti meg erről az oldalról:
 
 ## <a name="view-and-manage-delegations"></a>Delegálások megtekintése és kezelése
 
-A delegálások a delegált előfizetést/erőforráscsoportot, valamint a hozzájuk tartozó felhasználókat és engedélyeket jelenítik meg. Az adatok megtekintéséhez válassza a **saját ügyfelek** lap bal oldalán található **delegálások** lehetőséget.
+A delegálások a delegált előfizetést vagy erőforráscsoportot, valamint a hozzájuk tartozó felhasználókat és engedélyeket jelenítik meg. Az adatok megtekintéséhez válassza a **saját ügyfelek** lap bal oldalán található **delegálások** lehetőséget.
 
 A lap tetején található szűrők segítségével rendezheti és csoportosíthatja a hozzáférés-hozzárendelési adatokat, illetve szűrheti az egyes ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
@@ -68,7 +71,7 @@ Ha ezt követően olyan szolgáltatáshoz fér hozzá, amely támogatja a [több
 
 A delegált előfizetésekhez vagy erőforráscsoportokhöz kapcsolódó funkciókat a több-bérlős felügyeletet támogató szolgáltatásokon belül is elérheti, ha kijelöli az előfizetést vagy az erőforráscsoportot a szolgáltatáson belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - Ismerje meg, hogy az ügyfelek hogyan [tekinthetik meg és kezelhetik a szolgáltatókat](view-manage-service-providers.md) a Azure Portalban **található szolgáltatók** használatával.

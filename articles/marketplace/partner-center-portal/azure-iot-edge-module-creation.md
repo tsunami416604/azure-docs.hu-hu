@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032832"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167181"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -288,9 +288,11 @@ Adjon hozzá legalább egy Azure-előfizetési azonosítót egyenként (legfelje
 
 A következő szakaszra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget, majd a terv áttekintését.
 
-### <a name="plan-overview"></a>A terv áttekintése
+## <a name="plan-overview"></a>A terv áttekintése
 
 Ezen a lapon különböző csomag-beállításokat adhat meg a partner Center ugyanazon ajánlatán belül. A (korábban SKU-nak nevezett) csomagok eltérhetnek az elérhető felhőktől, például a globális felhőktől, a kormányzati felhőktől és a csomag által hivatkozott képpel. Az ajánlat a piactéren való listázásához be kell állítania legalább egy csomagot.
+
+Az egyes ajánlatokhoz legfeljebb 100 csomagot hozhat létre: ezek közül legfeljebb 45 lehet privát. További információ a [Microsoft kereskedelmi piactéren](../private-offers.md)elérhető privát csomagokról.
 
 A csomagok létrehozása után a **terv áttekintése** lap a következőket jeleníti meg:
 
@@ -305,7 +307,7 @@ A terv áttekintésében elérhető műveletek a csomag aktuális állapotától
 - **Piszkozat törlése**: Ha a terv állapota vázlat.
 - **Eladási terv leállítása**: Ha a csomag állapota élőben van közzétéve.
 
-#### <a name="create-new-plan"></a>Új csomag létrehozása
+### <a name="create-new-plan"></a>Új csomag létrehozása
 
 Válassza az **új csomag létrehozása**lehetőséget. Megjelenik az **új terv** párbeszédpanel.
 
@@ -337,7 +339,7 @@ Ez a beállítás csak akkor látható, ha **Azure Government** az **Azure-régi
 
 Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és követelmények hatálya alá eső adatmennyiséget. Például: FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS. A programok minősítésének megismeréséhez akár 100 hivatkozást is megadhat, amelyek a minősítéseket írják le. Ezek a program közvetlenül vagy a saját webhelyére mutató hivatkozásokat is magukban foglalhatnak. Ezek a hivatkozások csak Azure Government ügyfelek számára láthatók.
 
-## <a name="plan-listing"></a>Csomag listázása
+### <a name="plan-listing"></a>Csomag listázása
 
 Ezen a lapon az adott ajánlaton belüli különböző csomagokra vonatkozó információk láthatók.
 
@@ -377,7 +379,7 @@ A mezők befejezése után válassza a **Piszkozat mentése** lehetőséget.
 2. Csomag neve
 3. Csomag leírása
 
-## <a name="availability"></a>Rendelkezésre állás
+### <a name="availability"></a>Rendelkezésre állás
 
 Ha el szeretné rejteni a közzétett ajánlatot, így az ügyfelek nem kereshetik meg, nem tallózhatják vagy nem vásárolhatják meg a piactéren, a rendelkezésre állás lapon jelölje be a **terv elrejtése** jelölőnégyzetet.
 

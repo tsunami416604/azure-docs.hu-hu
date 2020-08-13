@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708824"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167980"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Az Azure SQL felügyelt példányának tartalmi referenciája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,9 +75,17 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 - [Kiterjesztett események tárolása egy esemény-fájlba](../database/xevent-code-event-file.md)
 - [Kiterjesztett események tárolása gyűrűs pufferbe](../database/xevent-code-ring-buffer.md)
 
+### <a name="alerting"></a>Riasztások kezelése
+
+- [Riasztások létrehozása a felügyelt példányon](alerts-create.md)
+
+## <a name="operations"></a>Műveletek
+
+- [Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon](user-initiated-failover.md)
+
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 
-- [Kapcsolódás](../database/connect-query-content-reference-guide.md#libraries)
+- [Kapcsolatok](../database/connect-query-content-reference-guide.md#libraries)
 - [Spark-összekötő használata](../../cosmos-db/spark-connector.md)
 - [Alkalmazás hitelesítése](../database/application-authentication-get-client-id-keys.md)
 - [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](../performance-improve-use-batching.md)
@@ -99,8 +107,6 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 - [SaaS-kialakítási minták](../database/saas-tenancy-app-design-patterns.md)
 - [SaaS-videóindexelő](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
-
-
 
 ## <a name="next-steps"></a>További lépések
 

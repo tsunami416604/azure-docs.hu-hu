@@ -9,16 +9,16 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495074"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168082"
 ---
-# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Események küldése egy Azure Time Series Insights Gen1-környezetbe az Event hub használatával
+# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Események küldése egy Azure Time Series Insights Gen1-környezetbe az Event hub használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az Azure Event Hubsban. Azt is leírja, hogyan futtathat egy minta alkalmazást, hogy leküldéses eseményeket Azure Time Series Insights a Event Hubsról. Ha van egy meglévő Event hub JSON formátumú eseményekkel, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetét [Azure Time Series Insightsban](./time-series-insights-update-create-environment.md).
 
@@ -55,9 +55,9 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights-példány hozzáadása
 
-A 2. Azure Time Series Insights-ben az idősorozat-modell (TSM) használatával felveheti a kontextusbeli adataikat a bejövő telemetria. A TSM-ben a címkék vagy a jelek a példányok *,* és a kontextusban tárolt adat is tárolható *.* Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni az adattárolásról a példány mezőiben, olvassa el az [Idősorozat-modell](./concepts-model-overview.md) áttekintését.
+Azure Time Series Insights Gen2 az idősorozat-modell (TSM) használatával a bejövő telemetria is hozzáadhat kontextusbeli adataikat. A TSM a címkéket vagy jeleket *példányoknak nevezzük,* és a kontextusban tárolt adatait is tárolhatja a *példány mezőiben.* Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni az adattárolásról a példány mezőiben, olvassa el az [Idősorozat-modell](./concepts-model-overview.md) áttekintését.
 
-### <a name="create-a-azure-time-series-insights-event-source"></a>Azure Time Series Insights eseményforrás létrehozása
+### <a name="create-an-azure-time-series-insights-event-source"></a>Azure Time Series Insights eseményforrás létrehozása
 
 1. Ha még nem hozott létre egy eseményforrás, hajtsa végre az [eseményforrás létrehozásához](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)szükséges lépéseket.
 
@@ -73,15 +73,15 @@ A 2. Azure Time Series Insights-ben az idősorozat-modell (TSM) használatával 
 
     [![Az elsődleges kulcshoz tartozó kapcsolási karakterlánc értékének másolása](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Nyissa meg a következőt: https://tsiclientsample.azurewebsites.net/windFarmGen.html. Az URL-cím szimulált szélmalom-eszközöket hoz létre és futtat.
+1. Nyissa meg a következőt: <https://tsiclientsample.azurewebsites.net/windFarmGen.html>. Az URL-cím szimulált szélmalom-eszközöket hoz létre és futtat.
 1. A weblap **esemény hub kapcsolati sztring** mezőjébe illessze be a [szélmalom beviteli mezőjébe](#push-events-to-windmills-sample)másolt kapcsolati karakterláncot.
   
     [![Illessze be az elsődleges kulcs kapcsolati karakterláncát az Event hub kapcsolati sztring mezőjébe](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. Válassza **a Start gombra**. 
+1. Válassza **a Start gombra**.
 
     > [!TIP]
-    > A szélmalom-szimulátor emellett olyan JSON-t is létrehoz, amelyet hasznos adattartalomként használhat a [Azure Time Series INSIGHTS GA lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)-kkal.
+    > A szélmalom-szimulátor emellett olyan JSON-t is létrehoz, amelyet hasznos adattartalomként használhat a [Azure Time Series INSIGHTS GA lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)-kkal.
 
     > [!NOTE]
     > A szimulátor továbbra is küldi az adatküldést, amíg be nem zárul a böngésző lapja.
@@ -201,8 +201,8 @@ A 2. Azure Time Series Insights-ben az idősorozat-modell (TSM) használatával 
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|nyomás|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Tekintse meg a környezetet](https://insights.timeseries.azure.com) a Azure Time Series Insights Explorerben.
+* [Tekintse meg a környezetet](https://insights.timeseries.azure.com) a Azure Time Series Insights Explorerben.
 
-- További információ a [IoT hub eszköz üzeneteiről](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)
+* További információ a [IoT hub eszköz üzeneteiről](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

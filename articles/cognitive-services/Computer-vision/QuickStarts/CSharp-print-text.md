@@ -1,29 +1,29 @@
 ---
-title: 'Gyors útmutató: nyomtatott szöveg kinyerése (OCR) – REST, C #'
+title: 'Gyors útmutató: szöveg kinyerése a Computer Vision OCR REST API és C #'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API és a C# használatával.
+description: Ebben a rövid útmutatóban szöveget nyer ki egy képből a Computer Vision REST API OCR-művelettel a C# használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ecc0ddbfa48669cad7f486e181fcdb6dbc80851e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835391"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167793"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és C használatával #
+# <a name="quickstart-extract-text-using-the-computer-vision-ocr-rest-api-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision OCR REST API és C használatával #
 
-> [!NOTE]
-> Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)használni. [C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) gyors útmutató érhető el. 
+> [!IMPORTANT]
+> Angol, holland, francia, német, olasz, portugál, spanyol vagy egyszerűsített kínai (előzetes verzió) szöveg kinyerése esetén azt javasoljuk, hogy használja az újabb [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). [C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) gyors útmutató érhető el. 
 
-Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségével Kinyeri a nyomtatott szöveget az Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) szolgáltatással felderítheti a képeken található nyomtatott szöveget, és kinyerheti a felismert karaktereket egy gépi használatú adatfolyamba.
+Ebben a rövid útmutatóban Kinyeri a nyomtatott szöveget egy képből a Computer Vision REST API [OCR-művelet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) funkció használatával. Ezzel a művelettel észlelhetők a képeken lévő kinyomtatott szövegek, és kinyerhetik a felismert karaktereket egy gépi használatú adatfolyamba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -244,7 +244,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerjen meg egy alapszintű Windows-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le.
 

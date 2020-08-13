@@ -1,14 +1,14 @@
 ---
 title: Delegáláshoz való hozzáférés eltávolítása
 description: Ismerje meg, hogyan távolíthatja el az Azure Lighthouse szolgáltatáshoz delegált erőforrásokhoz való hozzáférést.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111728"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167227"
 ---
 # <a name="remove-access-to-a-delegation"></a>Delegáláshoz való hozzáférés eltávolítása
 
@@ -16,7 +16,10 @@ Ha az ügyfél előfizetése vagy erőforráscsoport delegálása megtörtént a
 
 A delegálás eltávolítását az ügyfél vagy a szolgáltató bérlője felhasználója hajthatja végre, amennyiben a felhasználó rendelkezik a megfelelő engedélyekkel.
 
-## <a name="customers"></a>Ügyfelek
+> [!TIP]
+> Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják.
+
+## <a name="customers"></a>Az ügyfelek
 
 Azok a felhasználók, akik az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkeznek az ügyfél bérlője számára, eltávolíthatják az adott előfizetéshez tartozó szolgáltatói hozzáférést (vagy az adott előfizetéshez tartozó erőforráscsoportokat). Ehhez az ügyfél bérlője hozzáférhet a Azure Portal [szolgáltatói oldalához](view-manage-service-providers.md#add-or-remove-service-provider-offers) , keresse meg az ajánlatot a **szolgáltatói ajánlatok** képernyőn, és válassza ki az ajánlat sorában látható Kuka ikont.
 

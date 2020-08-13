@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515380"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167895"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -99,7 +99,7 @@ Ezután mentse a hitelesítő adatait a projekt `App.config` fájljába. A **meg
 ```
 
 > [!NOTE]
-> Az Azure Storage Emulator legújabb verziója nem támogatja az Azure Filest. A kapcsolati sztringnek egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
+> Az Azure Storage Emulator legújabb verziója nem támogatja a Azure Files. A kapcsolati sztringnek egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
@@ -487,14 +487,14 @@ További információ a Azure Filesről:
 ### <a name="conceptual-articles-and-videos"></a>Elméleti cikkek és videók
 
 * [Azure Files: zökkenőmentes felhőalapú SMB-fájlrendszer Windows és Linux rendszerekhez](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Az Azure Files használata Linux rendszerrel](storage-how-to-use-files-linux.md)
+* [Az Azure Files használata Linux rendszeren](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage-eszköztámogatás
 
 * [Bevezetés az AzCopy használatába](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Files-problémák hibaelhárítása Windowson](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Hivatkozás
+### <a name="reference"></a>Referencia
 
 * [Azure Storage API-k a .NET-hez](/dotnet/api/overview/azure/storage)
 * [A File szolgáltatás REST API-ja](/rest/api/storageservices/File-Service-REST-API)

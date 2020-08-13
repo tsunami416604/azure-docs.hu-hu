@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826227"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167470"
 ---
 # <a name="what-is-opc-twin"></a>Mi az OPC Twin?
 
@@ -29,7 +29,7 @@ Az OPC Twin lehetővé teszi, hogy a gyári operátorok beszkennelik a gyári h�
 Az OPC Twin lehetővé teszi, hogy a gyári operátorok reagálni tudjanak az eseményekre, és a felhőből automatikusan, vagy menet közben újra konfigurálhatják a gyári padló gépeket. Az OPC Twin olyan REST API-kat biztosít, amelyekkel szolgáltatásokat hívhat meg az OPC UA-kiszolgálón, böngészheti a címtartomány, valamint az írási/olvasási változók és a metódusok végrehajtása. A kazán például hőmérsékleti KPI-t használ az üzemi vonal szabályozására. A hőmérséklet-érzékelő közzéteszi az adatváltozást az OPC-közzétevő használatával. A gyári operátor fogadja a riasztást, hogy a hőmérséklet elérte a küszöbértéket. Az üzemi sor automatikusan lehűti az OPC Twin-en keresztül. A gyári operátor értesítést kap a lehűtésről.
 
 ## <a name="authentication"></a>Hitelesítés
-Az OPC Twin egyszerű hitelesítésre és egyszerű fejlesztői élményre is használható.
+Az OPC Twin egyszerű hitelesítéshez és egyszerű fejlesztői élményhez is használható.
 
 ### <a name="simple-authentication"></a>Egyszerű hitelesítés 
 Az OPC Twin Azure Active Directory (HRE) alapú hitelesítést és naplózást használ teljes körűen. Az OPC Twin például lehetővé teszi, hogy az alkalmazás az OPC Twin-re legyen építve, hogy meghatározza, milyen műveletet hajtottak végre a gépen. A gép oldalán az OPC UA-naplózást hajtja végre. A felhős oldalon egy nem módosítható ügyfél-naplózási napló és HRE hitelesítés tárolása a REST API.

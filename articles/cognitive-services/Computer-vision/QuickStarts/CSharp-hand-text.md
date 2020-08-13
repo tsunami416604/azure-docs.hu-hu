@@ -1,26 +1,26 @@
 ---
-title: 'Gyors útmutató: Computer Vision 2,1 és 3,0 – nyomtatott és kézzel írt szöveg kinyerése – REST, C #'
+title: 'Rövid útmutató: a nyomtatott és a kézírásos szöveg OCR-je a Computer Vision 3,0 REST API olvasási művelettel és C használatával #'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézzel írott szöveget a Computer Vision API a C# használatával.
+description: Ebben a rövid útmutatóban a Computer Vision 3,0 REST API olvasási művelet és a C# használatával alkalmazzon OCR-t egy képre.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 52cba173f7d3fe4c4d65d538fac3ef850f0491e2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 36f149019e37949445189045a8a71489f0f26418
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835408"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167827"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision 3,0 REST API és C használatával #
+# <a name="quickstart-ocr-for-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Rövid útmutató: a nyomtatott és a kézírásos szöveg OCR-je a Computer Vision 3,0 REST API olvasási művelettel és C használatával #
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával Kinyeri a nyomtatott és a kézírásos szöveget egy képből. Az [olvasás](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) és [olvasás eredményének](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) megadására szolgáló metódusokkal azonosíthatja a képek szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba. 
+Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a rendszerképből a Computer Vision 3,0 REST API részeként elérhető új OCR-technológia használatával. Az új [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) és [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) -metódusok használatával a képeken lévő szövegeket és a felismert karaktereket gépi olvasásra képes adatfolyamként lehet kinyerni. 
 
 > [!IMPORTANT]
 > Az [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` Válasz fejléc mezőjének értékeként. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API beolvasása lehetőséget jelöli, és az olvasási metódus hívásának eredményét is megtekintheti.
@@ -401,11 +401,11 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fedezzen fel egy alapszintű Windows-alkalmazást, amely Computer Visiont használ az optikai karakterfelismerés (OCR) végrehajtásához. Intelligens vágású miniatűrök létrehozása; Emellett vizuális funkciók (például arcok) észlelése, kategorizálása, címkézése és leírása a képen.
 
