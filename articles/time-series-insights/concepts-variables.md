@@ -29,7 +29,7 @@ Az alábbi táblázat az egyes változókhoz tartozó tulajdonságokat mutatja b
 
 ## <a name="numeric-variables"></a>Numerikus változók
 
-| Változó tulajdonság | Leírás |
+| Változó tulajdonság | Description |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek, vagy az idősorozat-kifejezések használatával alakíthatók át. A numerikus típusú változóknak *dupla*típusúnak kell lenniük.|
@@ -59,7 +59,7 @@ A változók megfelelnek a következő JSON-példának:
 
 ## <a name="categorical-variables"></a>Kategorikus változók
 
-| Változó tulajdonság | Leírás |
+| Változó tulajdonság | Description |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek. A kategorikus típus változóinak vagy *hosszúnak* vagy *sztringnek*kell lenniük. |
@@ -99,7 +99,7 @@ A változók megfelelnek a következő JSON-példának:
 
 ## <a name="aggregate-variables"></a>Összesített változók
 
-| Változó tulajdonság | Leírás |
+| Változó tulajdonság | Description |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó összesítése | Számításokat hajthat végre a támogatott [összesítési függvényekben az összesített változó típusokhoz](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |
