@@ -1,18 +1,18 @@
 ---
 title: A Azure Data Lake Storage Gen1 biztonságának áttekintése | Microsoft Docs
-description: Ismerje meg, hogyan Azure Data Lake Storage Gen1 a biztonságos big data áruház
+description: Ismerje meg Azure Data Lake Storage Gen1 biztonsági képességeit, beleértve a hitelesítést, az engedélyezést, a hálózati elkülönítést, az adatvédelmet és a naplózást.
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926280"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192830"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság a Azure Data Lake Storage Gen1
 
@@ -20,7 +20,7 @@ Számos vállalat kihasználja a big data Analytics for Business-elemzéseket, a
 
 * Hitelesítés
 * Engedélyezés
-* Hálózati elkülönítés
+* Hálózatelkülönítés
 * Adatvédelem
 * Naplózás
 
@@ -53,7 +53,7 @@ Vegye figyelembe, hogy bár a szerepkörök hozzá vannak rendelve a fiókok fel
 | Szerepkörök | Felügyeleti jogosultságok | Adathozzáférési jogosultságok | Magyarázat |
 | --- | --- | --- | --- |
 | Nincs hozzárendelt szerepkör |Nincsenek |Az ACL szabályozza |A felhasználó nem használhatja a Azure Portal vagy Azure PowerShell parancsmagot a Data Lake Storage Gen1 tallózásához. A felhasználó csak parancssori eszközöket tud használni. |
-| Tulajdonos |Az összes |Az összes |A tulajdonosi szerepkör a rendszergazda. Ez a szerepkör mindent tud kezelni, és teljes hozzáféréssel rendelkezik az összes adathoz. |
+| Tulajdonos |Mind |Mind |A tulajdonosi szerepkör a rendszergazda. Ez a szerepkör mindent tud kezelni, és teljes hozzáféréssel rendelkezik az összes adathoz. |
 | Olvasó |Csak olvasható |Az ACL szabályozza |Az olvasó szerepkör mindent megtekinthet a fiókok kezelésével kapcsolatban, például azt, hogy melyik felhasználóhoz van hozzárendelve a szerepkör. Az olvasó szerepkör nem végezhet módosításokat. |
 | Közreműködő |A Szerepkörök hozzáadása és eltávolítása kivételével |Az ACL szabályozza |A közreműködői szerepkör a fiókok bizonyos aspektusait képes kezelni, például a központi telepítéseket, valamint a riasztások létrehozását és kezelését. A közreműködő szerepkör nem tudja hozzáadni vagy eltávolítani a szerepköröket. |
 | Felhasználói hozzáférés rendszergazdája |Szerepkörök hozzáadása és eltávolítása |Az ACL szabályozza |A felhasználói hozzáférés rendszergazdai szerepköre kezelheti a felhasználói hozzáférést a fiókokhoz. |
@@ -68,7 +68,7 @@ Azt javasoljuk, hogy a [biztonsági csoportok](../active-directory/fundamentals/
 
 ![Hozzáférési engedélyek listázása](./media/data-lake-store-security-overview/adl.acl.2.png "Hozzáférési engedélyek listázása")
 
-## <a name="network-isolation"></a>Hálózati elkülönítés
+## <a name="network-isolation"></a>Hálózatelkülönítés
 
 A Data Lake Storage Gen1 segítségével szabályozhatja az adattárhoz való hozzáférést a hálózati szinten. Tűzfalat hozhat létre, és meghatározhatja a megbízható ügyfelek IP-címtartományt. Az IP-címtartomány csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak Data Lake Storage Gen1hoz.
 
@@ -117,7 +117,7 @@ A nagyvállalati ügyfelek egy biztonságos és könnyen használható adatelemz
 
 Ha a Data Lake Storage Gen1 új funkcióit szeretné megtekinteni, küldje el nekünk visszajelzését a [Data Lake Storage Gen1 UserVoice fórumban](https://feedback.azure.com/forums/327234-data-lake).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)

@@ -1,17 +1,17 @@
 ---
 title: Az Azure Data Lake Storage Gen1-Power BIban lévő adatelemzés
-description: A Power BI segítségével elemezheti a Azure Data Lake Storage Gen1 tárolt adatelemzést.
+description: Ismerje meg, hogyan elemezheti és jelenítheti meg a Azure Data Lake Storage Gen1ban tárolt adatPower BI Desktopokat.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504933"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192858"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
 Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Data Lake Storage Gen1ban tárolt információkat a Power BI Desktop használatával.
@@ -23,7 +23,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ez a cikk azt feltételezi, hogy már létrehozott egy **myadlsg1**nevű Data Lake Storage Gen1 fiókot, és feltöltött egy minta adatfájlt (**Drivers.txt**). Ez a mintakód [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)tölthető le.
 * **Power BI Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
-## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés létrehozása a Power BI Desktopban
+## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés készítése a Power BI Desktopban
 1. Power BI Desktop elindítása a számítógépen.
 2. A **Kezdőlap** menüszalagon kattintson az **adatok lekérése**elemre, majd kattintson a továbbiak elemre. Az **adatlekérdezés** párbeszédpanelen kattintson az **Azure**elemre, majd a **Azure Data Lake Store**elemre, végül a **kapcsolat**elemre.
    

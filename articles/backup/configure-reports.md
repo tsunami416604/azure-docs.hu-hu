@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: bbb42643e23020742cab66812f58f78f4529fe07
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388054"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192852"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -30,7 +30,7 @@ A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely 
 - Az adatbiztonsági mentési jelentések jelenleg legfeljebb 100 Log Analytics munkaterületen (a bérlők között) jeleníthetők meg.
 - A naplók biztonsági mentési feladatai jelenleg nem jelennek meg a jelentésekben.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A jelentések használatának megkezdéséhez kövesse az alábbi lépéseket.
 
@@ -106,11 +106,11 @@ A nézet használatával azonosíthatja azokat a biztonsági másolati elemeket,
 
 Az inaktív erőforrások megtekintéséhez navigáljon az **optimalizálás** lapra, és kattintson az **inaktív erőforrások** csempére. A csempére kattintva megjelenítheti a kiválasztott hatókörben található összes inaktív erőforrás részleteit tartalmazó rácsot. Alapértelmezés szerint a rács olyan elemeket jelenít meg, amelyek nem rendelkeznek helyreállítási ponttal az elmúlt 7 napban. Egy másik időtartomány inaktív erőforrásainak megkereséséhez módosíthatja az **időtartomány** szűrőt a lap tetején.
 
-Ha azonosított egy inaktív erőforrást, a probléma további vizsgálatához lépjen a biztonsági mentési elem irányítópultra vagy az adott erőforráshoz tartozó Azure-erőforrás panelre (ahol alkalmazható). A forgatókönyvtől függően dönthet úgy, hogy leállítja a gép biztonsági mentését (ha az már nem létezik), így a védett példányok költségeit is megtakaríthatja, vagy javíthatja a számítógép hibáit a biztonsági mentések megbízhatóvé tételének biztosításához.
+Ha azonosított egy inaktív erőforrást, a probléma további vizsgálatához lépjen a biztonsági mentési elem irányítópultra vagy az adott erőforráshoz tartozó Azure-erőforrás panelre (ahol alkalmazható). A forgatókönyvtől függően dönthet úgy, hogy leállítja a gép biztonsági mentését (ha az már nem létezik), és törli a szükségtelen biztonsági mentéseket, így a költségek megtakarítását, vagy kijavíthatja a számítógép hibáit, hogy a biztonsági mentések megbízhatóak legyenek.
 
 ![Optimalizálás lap – inaktív erőforrások](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
-###### <a name="backup-items-with-a-large-retention-duration"></a>Nagy adatmegőrzési időtartammal rendelkező biztonsági másolati elemek
+###### <a name="backup-items-with-a-large-retention-duration"></a>Hosszú adatmegőrzési időtartamú biztonsági másolati elemek
 Ezen nézet használatával azonosíthatja azokat az elemeket, amelyeken a biztonsági másolatok hosszabb ideig tartanak, mint a szervezete számára szükségesek. 
 
 Ha a **házirend-optimalizálások** csempére kattint, a **megőrzési optimalizálások** csempe pedig az összes olyan biztonsági mentési elemet tartalmazó rácsot jeleníti meg, amelynél a napi, heti, havi vagy éves adatmegőrzési pont (RP) megtartása nagyobb, mint a megadott érték. Alapértelmezés szerint a rács az összes biztonsági mentési elemet megjeleníti a kijelölt hatókörben. A szűrőket használhatja a napi, heti, havi és éves RP-megőrzéshez a rács szűréséhez, és azonosíthatja azokat az elemeket, amelyek esetében előfordulhat, hogy a biztonsági mentési tárolási költségek miatt csökkenhet a megőrzés.
@@ -119,7 +119,7 @@ Vegye figyelembe, hogy az adatbázis-munkaterhelések, például az SQL és a SA
 
 ![A TAB-megőrzés optimalizálásának optimalizálása](./media/backup-azure-configure-backup-reports/optimize-retention.png)
 
-###### <a name="databases-configured-for-daily-full-backup"></a>A napi teljes biztonsági mentéshez konfigurált adatbázisok
+###### <a name="databases-configured-for-daily-full-backup"></a>Napi rendszerességű teljes biztonsági mentéshez beállított adatbázisok 
 Ebben a nézetben azonosíthatja a napi teljes biztonsági mentéshez konfigurált adatbázis-munkaterheléseket. A napi különbözeti biztonsági mentést és a heti teljes biztonsági mentést gyakran költséghatékonyan használhatja. 
 
 A házirend- **optimalizálások** csempére kattintva, majd a **biztonsági mentési ütemterv optimalizálása** csempén egy, a napi teljes biztonsági mentési házirenddel rendelkező összes adatbázist tartalmazó rács jelenik meg. Dönthet úgy is, hogy egy adott biztonsági mentési elemre navigál, és módosítja a szabályzatot a napi különbözeti biztonsági mentés heti teljes biztonsági mentéssel való használatára.
