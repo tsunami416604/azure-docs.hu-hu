@@ -14,12 +14,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bbc90776ca007b84d5f67c50f8550ee9c881c7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506042"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141669"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>A rendszerjogosultságú hozzáférési csoport hozzárendeléseinek (előzetes verzió) naplózása a Privileged Identity Management
 
@@ -36,7 +36,9 @@ Az **erőforrás-naplózás** a Kiemelt hozzáférési csoportokhoz társított 
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza a **privilegizált hozzáférés (előzetes verzió)** lehetőséget.
+1. Válassza a **privilegizált hozzáférési csoportok (előzetes verzió)** lehetőséget.
+
+1. Válassza ki azt a Kiemelt jogosultságú hozzáférési csoportot, amelyre vonatkozóan meg szeretné tekinteni a naplózási előzményeket.
 
 1. A **tevékenység**területen válassza az **erőforrás-naplózás**lehetőséget.
 
@@ -46,21 +48,21 @@ Az **erőforrás-naplózás** a Kiemelt hozzáférési csoportokhoz társított 
 
 ## <a name="view-my-audit"></a>Saját naplózás megtekintése
 
-A saját audit lehetővé teszi a személyes szerepkör-tevékenységek megtekintését.
+A **saját audit** lehetővé teszi, hogy megtekintse a személyes szerepkör tevékenységeit egy emelt szintű hozzáférési csoport számára.
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza a **privilegizált hozzáférés (előzetes verzió)** lehetőséget.
+1. Válassza a **privilegizált hozzáférési csoportok (előzetes verzió)** lehetőséget.
 
-1. Válassza ki azt a tagot vagy csoportot, amelyre vonatkozóan meg szeretné tekinteni a naplózási előzményeket.
+1. Válassza ki azt a Kiemelt jogosultságú hozzáférési csoportot, amelyre vonatkozóan meg szeretné tekinteni a naplózási előzményeket.
 
-1. Válassza **a saját naplózás**lehetőséget.
+1. A **tevékenység**területen válassza **a saját naplózás**lehetőséget.
 
 1. Az előzmények szűrése előre megadott dátummal vagy egyéni tartománnyal.
 
     ![Az aktuális felhasználó naplózási listája](media/azure-pim-resource-rbac/my-audit-time.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoporttagság és tulajdonjog kiosztása Privileged Identity Management](groups-assign-member-owner.md)
 - [Jogosultsági szintű hozzáférési csoportokra vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben](groups-approval-workflow.md)

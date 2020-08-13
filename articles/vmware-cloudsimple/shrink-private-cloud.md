@@ -1,6 +1,6 @@
 ---
 title: Az Azure VMware-megoldás csökkentése a CloudSimple privát felhővel
-description: Útmutatás a CloudSimple-alapú privát felhők lekicsinyítéséhez.
+description: Ismerje meg, hogy miként lehet dinamikusan zsugorodni egy CloudSimple egy meglévő vSphere-fürtből vagy egy teljes fürt eltávolításával.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77014266"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141737"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő zsugorítása
 
@@ -60,7 +60,7 @@ A privát felhő zsugorodása megkezdődik.  Nyomon követheti a feladatok előr
 > 2. Ha bármely DRS-szabály megsértése történik, a rendszer nem távolítja el a csomópontot a fürtből, és a feladat leírása azt mutatja, hogy a csomópontok eltávolítása megsérti a fürt DRS-szabályait.    
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

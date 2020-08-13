@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318334"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142407"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -138,7 +138,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Részletek
+További információ
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -183,6 +183,16 @@ A OpsGenie az Azure által generált riasztások kiosztóként működik. A OpsG
 A PagerDuty, a vezető incidensek kezelési megoldásának első osztályú támogatást biztosított az Azure-riasztásokhoz a metrikák esetében. A PagerDuty az Azure-szolgáltatásokra vonatkozó értesítéseket Azure Monitor riasztások, az autoscale Notifications, a műveletnapló eseményei és a platform szintű mérőszámok esetében támogatja. Ezek a fejlesztések nagyobb láthatóságot biztosítanak az alapszintű Azure platformon. A valós idejű válaszhoz teljes mértékben kihasználhatja a PagerDuty incidens-kezelési képességeit. A kibővített Azure-integráció webhookokon keresztül valósítható meg. A webhookok segítségével gyorsan és egyszerűen állíthatja be és szabhatja testre a megoldást.
 
 [Nyissa meg a dokumentációt.][pagerduty-doc]
+
+## <a name="promitor"></a>A
+
+![A bejelentkező emblémája](./media/partners/promitor.png)
+
+A Atlassian Statuspage, a Prometheus és a statd olyan rendszerekben érhető el, amelyekben elérhetők a metrikák. Azure Monitor
+
+Az összes mérőszámot leküldheti Azure Monitorre, és felhasználhatja őket, ahol szüksége van rájuk.
+
+[Részletek][promitor-doc]
 
 ## <a name="qradar"></a>QRadar
 
@@ -266,7 +276,7 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 [Részletek][turbonomic-doc]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a Azure Monitor](../overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
@@ -293,6 +303,7 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 [newrelic-doc]: https://newrelic.com/azure "A NewRelic dokumentációja."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "A OpsGenie dokumentációja."
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "A PagerDuty dokumentációja."
+[promitor-doc]: https://promitor.io/ "A beolvasás dokumentációja."
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "A QRadar dokumentációja."
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "A ScienceLogic dokumentációja."
 [serverless360-doc]: https://docs.serverless360.com/docs/ "A Serverless360 dokumentációja."

@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117311"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141550"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory jóváhagyási keretrendszere
 
@@ -28,7 +28,7 @@ A keretrendszer egy olyan felhasználó vagy rendszergazda számára, aki beleeg
 
 A hozzájárulási keretrendszer a OAuth 2,0-ra és annak különböző folyamataira épül, például az engedélyezési kód engedélyezésére és az ügyfél hitelesítő adataira a nyilvános vagy bizalmas ügyfelek használatával. Az OAuth 2,0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazás (például telefon, tábla, kiszolgáló vagy webalkalmazás) kiépítését, és hozzáférést biztosít a szükséges erőforrásokhoz.
 
-További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v2-oauth2-auth-code-flow.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](./authentication-vs-authorization.md)használatával. További információ az Office 365-hez való jogosult hozzáférésről Microsoft Graphon keresztül: az [alkalmazás hitelesítése Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)használatával.
+További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v2-oauth2-auth-code-flow.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](./authentication-vs-authorization.md)használatával. További információ az Office 365-hez való jogosult hozzáférésről Microsoft Graphon keresztül: az [alkalmazás hitelesítése Microsoft Graph](/graph/)használatával.
 
 ## <a name="consent-experience---an-example"></a>Beleegyező felhasználói élmény – példa
 
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
    > [!IMPORTANT]
    > A explicit beleegyezés megadása az **engedélyek megadása** gomb használata jelenleg szükséges a ADAL.js használó egyoldalas alkalmazásokhoz (Spa). Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
 * További részletekért tekintse meg, [Hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll-rétegben az engedélyezési kód engedélyezése folyamat során.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)

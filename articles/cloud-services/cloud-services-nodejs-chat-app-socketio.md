@@ -1,6 +1,6 @@
 ---
 title: Alkalmazás Node.js Socket.io használatával – Azure
-description: Ismerje meg, hogyan használhatja a socket.io az Azure-ban üzemeltetett node.js-alkalmazásokban.
+description: Ebből az oktatóanyagból megtudhatja, hogyan üzemeltetheti a szoftvercsatornát. IO-alapú csevegési alkalmazás az Azure-ban. A Socket.IO valós idejű kommunikációt biztosít egy node.js-kiszolgáló és-ügyfél számára.
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8029c243052114b9a0932e5372301be84440cf85
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386587"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142468"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Node.js csevegési alkalmazás létrehozása Azure Cloud Service-Socket.IO
 

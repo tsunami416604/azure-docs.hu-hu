@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan távolíthat el egy csomópont-típust egy Azur
 author: inputoutputcode
 manager: sridmad
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 08/11/2020
 ms.author: chrpap
-ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247234"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163577"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric csomópont típusának eltávolítása
 Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt egy meglévő csomópont-típus fürtből való eltávolításával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt egy csomópont-típus (virtuálisgép-méretezési csoport) és annak összes csomópontjának eltávolításával.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -59,7 +59,7 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     - A fürt állapota Kifogástalan.
     - A csomópont-típushoz tartozó csomópontok egyike sincs megjelölve mag-csomópontként.
 
-4. Tiltsa le a csomópont típusának adatait.
+4. Tiltsa le a csomópont típusának minden csomópontját.
 
     Kapcsolódjon a fürthöz a PowerShell használatával, majd futtassa a következő lépést.
     
@@ -98,8 +98,20 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     ```
     
     Várjon, amíg a csomópontok minden csomópontja meg van jelölve.
+
+6. Csomópontok felszabadítása az eredeti virtuálisgép-méretezési csoportból
     
-6. Távolítsa el a csomópont típusának adatait.
+    Jelentkezzen be az Azure-előfizetésbe, ahol a méretezési csoport üzembe lett állítva, és távolítsa el a virtuálisgép-méretezési csoportját. 
+
+    ```powershell
+    $scaleSetName="myscaleset"
+    $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+    
+    Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
+    ```
+
+    
+7. Távolítsa el a csomópont típusának adatait.
 
     Kapcsolódjon a fürthöz a PowerShell használatával, majd futtassa a következő lépést.
     
@@ -117,7 +129,7 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
 
     Várjon, amíg a rendszer eltávolítja az összes csomópontot a fürtből. A csomópontok nem jelennek meg az SFX-ben.
 
-7. Csomópont típusának eltávolítása Service Fabric szakaszból.
+8. Csomópont típusának eltávolítása Service Fabric szakaszból.
 
     - Keresse meg az üzembe helyezéshez használt Azure Resource Manager sablont.
     - Keresse meg a csomópont típusával kapcsolatos szakaszt a Service Fabric szakaszban.
@@ -165,7 +177,7 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     Ezután ellenőrizze a következőket:
     - A portálon Service Fabric erőforrás készen áll.
 
-8. Távolítsa el a csomópont-típussal kapcsolatos összes erőforrásra mutató hivatkozást.
+9. Távolítsa el az ARM-sablon csomópont-típusára vonatkozó összes hivatkozást.
 
     - Keresse meg az üzembe helyezéshez használt Azure Resource Manager sablont.
     - Távolítsa el a virtuálisgép-méretezési csoport és a csomópont típusához kapcsolódó egyéb erőforrásokat a sablonból.
@@ -173,8 +185,15 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
 
     Ezután:
     - Várjon, amíg a telepítés befejeződik.
+    
+10. Távolítsa el a már nem használt csomópont-típushoz kapcsolódó erőforrásokat. Példa Load Balancer és nyilvános IP-címekre. 
 
-## <a name="next-steps"></a>Következő lépések
+    - Az erőforrások eltávolításához használhatja ugyanazt a PowerShell-parancsot, amelyet a 6. lépésben az adott erőforrástípus és API-verzió megadásakor használt. 
+
+> [!Note]
+> Ez a lépés nem kötelező, ha ugyanaz a Load Balancer, és az IP-cím a csomópontok típusai között újra használatban van.
+
+## <a name="next-steps"></a>További lépések
 - További információ a fürt [tartóssági jellemzőiről](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
 - További információ a [csomópontok típusairól és Virtual Machine Scale sets](service-fabric-cluster-nodetypes.md).
 - További információ a [Service Fabric-fürt skálázásáról](service-fabric-cluster-scaling.md).

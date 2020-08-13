@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507141"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162677"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -53,7 +53,7 @@ A VHD-k Azure-ba történő átviteléről a [parancssori](../articles/virtual-m
 
 ### <a name="private-links"></a>Privát hivatkozások
 
-A felügyelt lemezek támogatják a privát hivatkozások használatával a felügyelt lemez belső hálózatra történő importálását vagy exportálását. A magánhálózati hivatkozások lehetővé teszik, hogy egy idő kötött közös hozzáférésű aláírás (SAS) URI-t állítson elő a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez, amelyek segítségével exportálhatja az egyéb régiókba a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzés céljából. A SAS URI használatával közvetlenül is feltölthet egy virtuális merevlemezt egy üres lemezre a helyszínen. Most már felhasználhatja a [privát hivatkozásokat](../articles/private-link/private-link-overview.md) a felügyelt lemezek exportálásának és importálásának korlátozására, hogy az csak az Azure-beli virtuális hálózaton belül is megtörténjen. A privát hivatkozások segítségével biztosíthatja, hogy az adatai csak a biztonságos Microsoft gerinc-hálózatban legyenek elérhetők.
+A felügyelt lemezek privát hivatkozásának támogatása jelenleg előzetes verzióban érhető el, és a felügyelt lemez belső hálózatra történő importálására és exportálására használható. A magánhálózati hivatkozások lehetővé teszik, hogy egy idő kötött közös hozzáférésű aláírás (SAS) URI-t állítson elő a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez, amelyek segítségével exportálhatja az egyéb régiókba a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzés céljából. A SAS URI használatával közvetlenül is feltölthet egy virtuális merevlemezt egy üres lemezre a helyszínen. Most már felhasználhatja a [privát hivatkozásokat](../articles/private-link/private-link-overview.md) a felügyelt lemezek exportálásának és importálásának korlátozására, hogy az csak az Azure-beli virtuális hálózaton belül is megtörténjen. A privát hivatkozások segítségével biztosíthatja, hogy az adatai csak a biztonságos Microsoft gerinc-hálózatban legyenek elérhetők.
 
 A felügyelt lemezek importálására és exportálására szolgáló privát hivatkozások engedélyezéséről a [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) -vagy [portál](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) cikkeiben talál további információt.
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843504"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142519"
 ---
 # <a name="features"></a>Szolgáltatások
 
@@ -21,9 +21,9 @@ A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztos�
 
 ## <a name="fhir-version"></a>FHIR verziója
 
-A legújabb verzió támogatott:`4.0.1`
+A legújabb verzió támogatott: `4.0.1`
 
-A korábbi verziók jelenleg is támogatottak:`3.0.2`
+A korábbi verziók jelenleg is támogatottak: `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
@@ -35,7 +35,7 @@ A korábbi verziók jelenleg is támogatottak:`3.0.2`
 | frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
 | frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
-| törlés                         | Igen       | Igen       | Igen       |                                                     |
+| delete                         | Igen       | Igen       | Igen       |                                                     |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
 | létrehozás (feltételes)           | Igen       | Igen       | Igen       |                                                     |
@@ -46,7 +46,7 @@ A korábbi verziók jelenleg is támogatottak:`3.0.2`
 | kötegelt                          | Igen       | Igen       | Igen       |                                                     |
 | tranzakció                    | Nem        | Igen       | Nem        |                                                     |
 | előzmények                        | Igen       | Igen       | Igen       |                                                     |
-| lapozófájl                         | Részleges   | Részleges   | Részleges   | `self`és `next` támogatottak                     |
+| lapozófájl                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
 | közvetítők                 | Nem        | Nem        | Nem        |                                                     |
 
 ## <a name="search"></a>Keresés
@@ -72,14 +72,14 @@ Az összes keresési paraméter típusa támogatott.
 |`:exact`               | Igen       | Igen       | Igen       |         |
 |`:contains`            | Igen       | Igen       | Igen       |         |
 |`:text`                | Igen       | Igen       | Igen       |         |
-|`:in`jogkivonat          | Nem        | Nem        | Nem        |         |
-|`:below`jogkivonat       | Nem        | Nem        | Nem        |         |
-|`:above`jogkivonat       | Nem        | Nem        | Nem        |         |
-|`:not-in`jogkivonat      | Nem        | Nem        | Nem        |         |
-|`:[type]`referencia  | Nem        | Nem        | Nem        |         |
-|`:below`URI         | Igen       | Igen       | Igen       |         |
+|`:in` jogkivonat          | Nem        | Nem        | Nem        |         |
+|`:below` jogkivonat       | Nem        | Nem        | Nem        |         |
+|`:above` jogkivonat       | Nem        | Nem        | Nem        |         |
+|`:not-in` jogkivonat      | Nem        | Nem        | Nem        |         |
+|`:[type]` referencia  | Nem        | Nem        | Nem        |         |
+|`:below` URI         | Igen       | Igen       | Igen       |         |
 |`:not`                 | Nem        | Nem        | Nem        |         |
-|`:above`URI         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` URI         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Gyakori keresési paraméter | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------| ----------| ----------| ----------|---------|
@@ -101,9 +101,9 @@ Az összes keresési paraméter típusa támogatott.
 | `_sort`                 | Nem        | Nem        | Nem        |         |
 | `_score`                | Nem        | Nem        | Nem        |         |
 | `_count`                | Igen       | Igen       | Igen       |         |
-| `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count`támogatott |
+| `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
 | `_include`              | Nem        | Igen       | Nem        |         |
-| `_revinclude`           | Nem        | Nem        | Nem        |         |
+| `_revinclude`           | Nem        | Igen       | Nem        | A tartalmazott elemek 100-re korlátozódnak. |
 | `_contained`            | Nem        | Nem        | Nem        |         |
 | `_elements`             | Nem        | Nem        | Nem        |         |
 

@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846734"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141125"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,24 +107,26 @@ Ha a kvótákat a munkaterület szintjén szeretné beállítani, lépjen az el�
 
 ## <a name="view-your-usage-and-quotas"></a>A használat és a kvóták megtekintése
 
-Azure Machine Learning a számításokat az előfizetésében lévő többi Azure-erőforrás-kvótától külön kezelik. A kvóta megtekintéséhez le kell bontania Machine Learning szolgáltatásokat.  
+Az előfizetéshez Azure Machine Learning számítási kvótát a többi Azure-erőforrás kvótától függetlenül kezeljük. A kvóta megtekintéséhez le kell bontania Machine Learning szolgáltatásokat.  
 
 1. A bal oldali ablaktáblán válassza a **Machine learning szolgáltatás** lehetőséget, majd válassza ki a kívánt munkaterületet a listából.
 
-1. A következő **panelen a támogatás + hibaelhárítás szakaszban** válassza a **használat + kvóták** lehetőséget a jelenlegi kvóta-korlátok és-használat megtekintéséhez.
+2. A következő **panelen a támogatás + hibaelhárítás szakaszban** válassza a **használat + kvóták** lehetőséget a jelenlegi kvóta-korlátok és-használat megtekintéséhez.
 
-1. Válasszon egy előfizetést a kvóta korlátainak megtekintéséhez. Ne felejtse el szűrni az Önt érdeklő régiót.
+3. Válasszon egy előfizetést a kvóta korlátainak megtekintéséhez. Ne felejtse el szűrni az Önt érdeklő régiót.
 
-1. Mostantól válthat egy előfizetési szint nézet és egy munkaterület szintű nézet között:
-    + **Előfizetési nézet:** Megjeleníti az alapszintű kvóta használatát a virtuálisgép-család számára, kibővíti a munkaterületet, és bővíti azt a tényleges fürt nevével. Gyorsan megismerheti az adott virtuálisgép-család alapszintű használatának részleteit, és megtekintheti az egyes munkaterületek alapjául szolgáló fürtök felbomlását. A nézet általános egyezménye (használat/kvóta), ahol a használat a Felskálázási magok aktuális száma, a kvóta pedig az erőforrás által méretezhető magok logikai maximális száma. Az egyes **munkaterületek**esetében a kvóta a munkaterület szintjének kvóta (a fentebb leírtak szerint), amely az adott virtuálisgép-család számára méretezhető magok maximális számát jelöli. A **fürthöz** hasonlóan a kvóta valójában a fürt által a max_nodes tulajdonság által definiált csomópontok maximális számának megfelelő magok mérete.
-
+4. Mostantól válthat egy előfizetési szint nézet és egy munkaterület szintű nézet között:
+    + **Előfizetési nézet:** Ez lehetővé teszi, hogy megtekintse az alapszintű kvóta használatát a virtuálisgép-család számára, bővítse azt munkaterületen, és bővítse azt a tényleges fürt nevével. Ez a nézet optimális megoldást nyújt az adott virtuálisgép-család alapvető használatának részleteire, így a munkaterületek által felhasználható munkaterületek és a mögöttes fürtök is megjelennek. A nézet általános egyezménye (használat/kvóta), ahol a használat a Felskálázási magok aktuális száma, a kvóta pedig az erőforrás által méretezhető magok logikai maximális száma. Az egyes **munkaterületek**esetében a kvóta a munkaterület szintjének kvóta (a fentebb leírtak szerint), amely az adott virtuálisgép-család számára méretezhető magok maximális számát jelöli. A **fürthöz** hasonlóan a kvóta valójában a fürt által a max_nodes tulajdonság által definiált csomópontok maximális számának megfelelő magok mérete.
+    
     + **Munkaterület nézet:** Így megtekintheti az alapszintű kvóta használatát a munkaterület alapján, kiterjesztheti a virtuálisgép-családot, és tovább bővítheti a tényleges fürt neve alapján. Ez a nézet optimális megoldást nyújt arra, hogy gyorsan bejusson egy adott munkaterülethez tartozó alapvető használat részleteibe, hogy láthassa a virtuálisgép-családok felbomlását, valamint az egyes családokhoz tartozó mögöttes fürtöket.
 
 A kvóta megtekinthető a különböző Azure-erőforrások, például a Virtual Machines, a tárterület, a hálózat és a Azure Portal használatával.
 
 1. A bal oldali ablaktáblán válassza a **minden szolgáltatás** lehetőséget, majd az általános kategóriában válassza az **előfizetések** lehetőséget.
 
-1. Az előfizetések listájából válassza ki azt az előfizetést, amelynek a kvótáját keresi.
+2. Az előfizetések listájából válassza ki azt az előfizetést, amelynek a kvótáját keresi.
+
+3. Válassza a **használat + kvóták** lehetőséget a jelenlegi kvóták korlátainak és használatának megtekintéséhez. A szűrők használatával válassza ki a szolgáltatót és a helyet. 
 
 ## <a name="request-quota-increases"></a>Kvótanövelések kérése
 

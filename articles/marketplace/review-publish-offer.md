@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/05/2020
-ms.openlocfilehash: 9c05753b44b0c644b121eb3ccd3316633f9e5964
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 08/12/2020
+ms.openlocfilehash: 53e5331ab36d5466bd5cdb495ac505dae29e57bf
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009528"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142298"
 ---
 # <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
@@ -22,9 +22,9 @@ Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánla
 ## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Látogasson el az ajánlatra a kereskedelmi piactéren
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-1. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
-1. Az **Áttekintés** lap **ajánlatok**területén az alábbi állapotjelzők egyike jelenik meg az egyes ajánlatok **állapot** oszlopában.
- 
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az **Áttekintés** lap **ajánlatok**területén az alábbi állapotjelzők egyike jelenik meg az egyes ajánlatok **állapot** oszlopában.
+
     | Állapot | Leírás |
     | ------------ | ------------- |
     | Draft | Az ajánlat létre lett hozva, de nincs közzétéve. |
@@ -42,9 +42,11 @@ Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánla
 
 1. Ha szeretné elküldeni az ajánlatát az előzetes verzióra, válassza a **felülvizsgálat és közzététel** lehetőséget a portál jobb felső sarkában. Megjelenik a **felülvizsgálat és közzététel** oldal.
 1. Győződjön meg arról, hogy az egyes lapok **állapot** oszlopa **befejeződött**. A három lehetséges állapot a következő:
-   - **Nincs elindítva** – a lap nem lett megérintve, és el kell végezni.
+
+   - **Nincs elindítva** – a lap hiányos.
    - **Hiányos** – a lap nem tartalmaz szükséges információkat, vagy hibákat kell rögzítenie. Vissza kell lépnie az oldalra, és frissítenie kell.
    - **Befejezés** – a lap elkészült. Minden szükséges információ meg lett adta, és nincsenek hibák.
+
 1. Ha bármelyik oldal állapota nem **fejeződött**be, az **oldal** oszlopban válassza ki az oldal nevét, javítsa ki a problémát, mentse a lapot, majd válassza a **felülvizsgálat és közzététel** újra lehetőséget, hogy visszatérjen ehhez a laphoz.
 1. Az összes oldal befejezése után a **tanúsítványok megjegyzései** mezőben adja meg a minősítési csapat tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve. Az alkalmazás megértéséhez hasznos kiegészítő megjegyzéseket is megadhat.
 1. Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**lehetőséget. Megjelenik az **ajánlat áttekintése** lap, és megjeleníti a közzétételi állapotot.
@@ -53,63 +55,70 @@ Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánla
 
 Miután kiválasztotta a **Közzététel**lehetőséget, az érvényesítési és a közzétételi folyamatok sorrendben jelennek meg. A leggyakoribb közzétételi folyamat a következő táblázatban látható:
 
-| Fázis | Mi történik | 
+| Fázis | Mi történik |
 | ------------ | ------------- | ------------- |
-| Automatikus ellenőrzés | Az automatizált érvényesítések egy készletét dolgozzák fel. | 
-| Tanúsítvány | Manuális érvényesítést végezünk. | 
-| Előnézet létrehozása | Az ajánlat előzetes verziójának listázási lapja mindenki számára elérhető, aki rendelkezik az előzetes verziójú hivatkozással. Ha az ajánlatát a Microsoft (transactd) alapján értékesíti, akkor csak az ajánlat **előnézeti célközönsége** oldalon megadott célközönség vásárolhat és érheti el az ajánlatot tesztelésre. | 
-| Közzétevő PM | Egy e-mailt küldünk Önnek, amely az ajánlat előzetes megtekintését és jóváhagyását kéri. | 
-| Közzététel | Egy sor lépést futtatunk annak ellenőrzéséhez, hogy az előzetes ajánlat közzé van-e téve élőben a kereskedelmi piactéren. | 
+| Automatikus ellenőrzés | Az automatizált érvényesítések egy készletét dolgozzák fel. |
+| Tanúsítvány | Manuális érvényesítést végezünk. |
+| Előnézet létrehozása | Az ajánlat előzetes verziójának listázási lapja mindenki számára elérhető, aki rendelkezik az előzetes verziójú hivatkozással. Ha az ajánlatát a Microsoft (transactd) alapján értékesíti, akkor csak az ajánlat **előnézeti célközönsége** oldalon megadott célközönség vásárolhat és érheti el az ajánlatot tesztelésre. |
+| Közzétevő kijelentkezése | Egy e-mailt küldünk Önnek, amely az ajánlat előzetes megtekintését és jóváhagyását kéri. |
+| Közzététel | Egy sor lépést futtatunk annak ellenőrzéséhez, hogy az előzetes ajánlat közzé van-e téve élőben a kereskedelmi piactéren. |
 |||
 
 ## <a name="automated-validation-phase"></a>Automatizált ellenőrzési fázis
 
-A közzétételi folyamat első lépése az automatikus érvényesítések halmaza. Az egyes ellenőrzési lépések az ajánlat létrehozásakor kiválasztott szolgáltatásnak felelnek meg. Minden érvényesítési ellenőrzést végre kell hajtani, mielőtt az ajánlat továbblép a közzétételi folyamat következő lépésére.
+A közzétételi folyamat első lépése az automatikus érvényesítések halmaza. Az egyes ellenőrzési lépések az ajánlat létrehozásakor kiválasztott szolgáltatásnak felelnek meg. Minden ellenőrzésnek teljesnek kell lennie, mielőtt az ajánlat továbblép a közzétételi folyamat következő lépésére.
 
-- **Ajánlat-megvásárlási folyamat beállítása (<10 perc)**
+- **Ajánlat-megvásárlási folyamat beállítása** (<10 perc)
 
-   Ebben a lépésben biztosítjuk, hogy az Ön ajánlata teljesíthető legyen, ha az ügyfelek megvásárolták a Azure Portalon keresztül. Ez a lépés csak a Microsofton keresztül eladott ajánlatokra vonatkozik.
-- **Tesztvezetés adatellenőrzése (~ 5 perc)**
+   Gondoskodunk arról, hogy az Ön ajánlata teljesíthető legyen, ha az ügyfelek megvásárolták a Azure Portalon keresztül. Ez a lépés csak a Microsofton keresztül eladott ajánlatokra vonatkozik.
 
-   Ebben a lépésben érvényesítjük az ajánlat technikai konfigurációs oldalán megadott adatmennyiséget. A test Drive funkció tesztelése és jóváhagyása megtörténik. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
+- **Tesztvezetés adatellenőrzése** (~ 5 perc)
 
--   **Tesztelési meghajtó üzembe helyezése (~ 30 perc)**
+   Érvényesítjük az ajánlat technikai konfigurációs oldalán megadott adatmennyiséget. Teszteljük és jóváhagyjuk a test Drive funkciót. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-    Ebben a lépésben az előző lépésben a tesztelési meghajtó adatai és funkcióinak ellenőrzése után a rendszer üzembe helyezi és replikálja a tesztvezetés példányait, hogy azok használatra készek legyenek az ügyfelek számára. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
+- **Tesztelési meghajtó üzembe** helyezése (~ 30 perc)
 
--   **Vezető felügyelet ellenőrzése és regisztráció (<15 perc)**
+    Miután ellenőrizte az előző lépésben a tesztvezetés adatait és funkcióit, üzembe helyezheti és replikálhatja a tesztvezetés példányait, hogy azok használatra készek legyenek az ügyfelek számára. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-    Ebben a lépésben megerősítjük, hogy az érdeklődői felügyeleti rendszer az **ajánlat beállítása** lapon megadott részletek alapján fogadja az ügyfelektől érkező érdeklődőket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
+- **Vezető felügyelet ellenőrzése és regisztráció** (<15 perc)
+
+    Megerősítjük, hogy a vezető felügyeleti rendszer az **ajánlat beállítása** oldalon megadott részletek alapján fogadja az ügyfelektől érkező érdeklődőket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
 
 ## <a name="certification-phase"></a>Minősítési fázis
 
-Közzététel előtt a kereskedelmi piactérnek küldött ajánlatokat hitelesíteni kell. Az elküldött ajánlatok szigorú tesztelésen mennek keresztül, és néhány automatizált és egyéb manuális. További információért tekintse át a [kereskedelmi piactér minősítési házirendjeit](https://aka.ms/commercial-marketplace-certification-policies) .
+A kereskedelmi piactérnek küldött ajánlatokat a közzététel előtt hitelesíteni kell. Az ajánlatok szigorú tesztelésen mennek keresztül, és néhány automatizált és egyéb manuális. További információ: [kereskedelmi piactér – minősítési szabályzatok](https://aka.ms/commercial-marketplace-certification-policies).
 
 ### <a name="types-of-validation-that-take-place-during-certification"></a>A minősítés során megkerülő érvényesítési típusok
+
 Az egyes elküldött ajánlatok esetében három ellenőrzési szint szerepel a minősítési folyamatban.
--   Kiadói üzleti jogosultság
--   Tartalom érvényesítése
--   Technikai ellenőrzés
+
+- Kiadói üzleti jogosultság
+- Tartalom érvényesítése
+- Technikai ellenőrzés
 
 #### <a name="publisher-business-eligibility"></a>Kiadói üzleti jogosultság
-Minden ajánlat típusa ellenőrzi, hogy a közzétevőnek milyen alapszintű jogosultsági feltételeket kell teljesítenie. A jogosultsági feltételek magukban foglalhatják a közzétevő MPN-állapotát, a kompetenciákat, a kompetenciás szinteket stb.
+
+Minden ajánlat típusa a szükséges alap jogosultsági feltételek készletét ellenőrzi. Ez a feltétel magában foglalhatja a közzétevő MPN-állapotát, a megőrzött kompetenciákat, a kompetenciás szinteket és így tovább.
 
 #### <a name="content-validation"></a>Tartalom érvényesítése
 
 Az ajánlat létrehozásakor megadott adatokat a minőség és a relevancia alapján ellenőrzi a rendszer. Ezek az ellenőrzések áttekintik a piactér-lista részleteit, a díjszabást, a rendelkezésre állást, a társított csomagokat és így tovább. Az Azure Marketplace és a Microsoft AppSource listázási feltételeinek teljesítése érdekében a következőket érvényesítjük:
--   Az ajánlatot pontosan leíró cím
--   Jól megírt leírások, amelyek átfogó áttekintést és értéket biztosítanak
--   Minőségi képernyőképek és videók
--   Annak magyarázata, hogy az ajánlat hogyan használja a Microsoft platformokat és eszközöket.
+
+- Az ajánlatot pontosan leíró cím
+- Jól megírt leírások, amelyek átfogó áttekintést és értéket biztosítanak
+- Minőségi képernyőképek és videók
+- Annak magyarázata, hogy az ajánlat hogyan használja a Microsoft platformokat és eszközöket.
 
 A tartalom-ellenőrzési feltételekkel kapcsolatos további információkért olvassa el az [általános listázási szabályzatot](https://aka.ms/commercial-marketplace-certification-policies#100-general).
 
 #### <a name="technical-validation"></a>Technikai ellenőrzés
+
 A technikai ellenőrzés során az ajánlat (csomag vagy bináris) a következő ellenőrzéseken megy keresztül.
--   Kártevő szoftverek vizsgálata
--   Figyelt hálózati hívások
--   Elemzett csomag
--   Az ajánlat funkcióinak alapos vizsgálata
+
+- Kártevő szoftverek vizsgálata
+- Figyelt hálózati hívások
+- Elemzett csomag
+- Az ajánlat funkcióinak alapos vizsgálata
 
 Az ajánlat a különböző platformokon és verziókon tesztelve biztosítja a robusztus működést.
 
@@ -124,50 +133,59 @@ Ez a jelentés a sikertelen házirendek leírásait tartalmazza, valamint a fel�
 Az előzetes verziójú létrehozási fázisban az ajánlat egy olyan verzióját hozunk létre, amely csak az ajánlat **előnézeti közönség** lapján megadott célközönség számára érhető el, ha van ilyen. Az ajánlat előzetes verziója nem érhető el mindenki számára az előnézeti közönségen kívül, amíg nem teszi közzé az ajánlatot élőben.
 
 > [!NOTE]
-> Ne használja az előzetes verzió célközönségét, hogy a szervezeten kívüli személyek is láthassanak egy ajánlatot. Használja helyette a privát ajánlat lehetőséget. Ezen a ponton az ajánlat nem lett teljes körűen tesztelve és érvényesítve, és nem áll készen a külső terjesztésre. 
+> Ne használja az előzetes verzió célközönségét, hogy a szervezeten kívüli személyek is láthassanak egy ajánlatot. Használja helyette a privát ajánlat lehetőséget. Ezen a ponton az ajánlat nem lett teljes körűen tesztelve és érvényesítve, és nem áll készen a külső terjesztésre.
 
-## <a name="publisher-signoff-phase"></a>Közzétevő PM fázisa
+## <a name="publisher-sign-off-phase"></a>Közzétevő kijelentkezési fázisa
 
-Ha az ajánlat készen áll arra, hogy áttekintse és PM, küldjön Önnek egy e-mailt, amely kéri, hogy tekintse át és hagyja jóvá az ajánlat előzetes verzióját. Az **ajánlat áttekintés** lapját is frissítheti a böngészőben, és megtekintheti, hogy az ajánlat elérte-e a kiadói PM fázist. Ha igen, a **Go Live** gomb és az előzetes verziójú hivatkozások is elérhetők lesznek.
+Ha az ajánlat készen áll arra, hogy áttekintse és kijelentkezzen, küldjön Önnek egy e-mailt, amely kéri, hogy tekintse át és hagyja jóvá az ajánlat előzetes verzióját. Az **ajánlat áttekintés** lapját is frissítheti a böngészőben, és megtudhatja, hogy az ajánlat elérte-e a közzétevő kijelentkezési fázisát. Ha igen, a **Go Live** gomb és az előzetes verziójú hivatkozások is elérhetők lesznek.
 
 Az alábbi képernyőképen egy SaaS-ajánlat **ajánlat áttekintése** lapja látható. Az ezen az oldalon látható ellenőrzési lépések az ajánlat típusától és az ajánlat létrehozásakor létrehozott beállításoktól függően változnak.
 
 ![A partneri központban elérhető ajánlat áttekintés lapját mutatja be. Megjelenik a Go Live gomb és az előzetes verzió hivatkozásai.](./partner-center-portal/media/publish-status-publisher-signoff.png)
 
-**Az ajánlat és a PM előzetes verziójának megtekintése**
+### <a name="to-preview-your-offer-and-sign-off"></a>Az ajánlat előnézetének megtekintése és a kijelentkezés
+
 1. Az ajánlat **áttekintése** lapon az ajánlat előnézetének megtekintéséhez válassza a **Go Live (ugrás** ) gomb alatt található hivatkozást.
+
    > [!NOTE]
    > A AppSource előzetes verziójához, az Azure Marketplace előzetes verziójához vagy mindkettőhöz az ajánlat létrehozásakor választott beállításoktól függően lesz hivatkozás. Ha úgy dönt, hogy az ajánlatot a Microsofton keresztül értékesíti, akkor bárki, aki hozzá lett adva az előzetes verzió célközönségéhez, tesztelheti az ajánlat beszerzését és üzembe helyezését, hogy az megfeleljen a jelen szakaszban foglalt követelményeknek.
 
 1. Ha módosítani kívánja az ajánlat előnézetét, szerkesztheti és újraküldheti az új előzetes verzió közzétételét. További információ: [meglévő ajánlat frissítése a kereskedelmi piactéren](./partner-center-portal/update-existing-offer.md).
 
 1. Miután jóváhagyta az előnézetét, az ajánlat élőben is elérhetővé tehető a kereskedelmi piactéren. Válassza az **élő indítás**lehetőséget.
+
    > [!TIP]
    > Ha az ajánlata már él és elérhető a piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go Live**lehetőséget választja.
 
 ## <a name="publish-phase"></a>Közzétételi fázis
 
-Most, hogy úgy döntött, hogy az ajánlatával él, így elérhetővé válik a kereskedelmi piactéren, számos végső ellenőrzési ellenőrzéssel gondoskodunk arról, hogy az élő ajánlat ugyanúgy legyen konfigurálva, mint az ajánlat előzetes verziója.
+Most, hogy úgy döntött, hogy az ajánlatával él, ami elérhetővé teszi a kereskedelmi piactéren, egy sor végső ellenőrzési ellenőrzést végzünk, hogy az élő ajánlat ugyanúgy legyen konfigurálva, mint az ajánlat előzetes verziója.
 
--   **Ajánlat-megvásárlási folyamat beállítása (>10 perc)**
+- **Ajánlat-megvásárlási folyamat beállítása** (>10 perc)
 
-    Ebben a lépésben biztosítjuk, hogy az Ön ajánlata teljesíthető legyen, ha az ügyfelek megvásárolták a Azure Portalon keresztül. Ez a lépés csak a Microsofton keresztül eladott ajánlatokra vonatkozik.
--   **Tesztvezetés adatellenőrzése (~ 5 perc)**
+    Gondoskodunk arról, hogy az Ön ajánlata teljesíthető legyen, ha az ügyfelek megvásárolták a Azure Portalon keresztül. Ez a lépés csak a Microsofton keresztül eladott ajánlatokra vonatkozik.
 
-    Ebben a lépésben érvényesítjük az ajánlat technikai konfigurációs oldalán megadott adatmennyiséget. A test Drive funkció tesztelése és jóváhagyása megtörténik. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
+- **Tesztvezetés adatellenőrzése** (~ 5 perc)
 
--   **Tesztelési meghajtó üzembe helyezése (~ 30 perc)**
+    Érvényesítjük az ajánlat technikai konfigurációs oldalán megadott adatmennyiséget. Teszteljük és jóváhagyjuk a test Drive funkciót. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
-      Ebben a lépésben üzembe helyezi és replikálja a tesztvezetés példányait, hogy azok használatra készek legyenek az ügyfelek számára. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
--   **Vezető felügyelet ellenőrzése és regisztráció (>15 perc)**
+- **Tesztelési meghajtó üzembe** helyezése (~ 30 perc)
 
-    Ebben a lépésben megerősítjük, hogy a vezető felügyeleti rendszer az ajánlat **telepítési** lapján megadott részletek alapján fogadja az ügyfeleket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
+    Üzembe helyezi és replikálja a tesztvezetés példányait, hogy azok használatra készek legyenek az ügyfelek számára. Ez a lépés csak olyan ajánlatokra alkalmazható, amelyeken engedélyezve van a tesztelési meghajtó.
 
--   **Végső közzététel (>30 perc)**
+- **Vezető felügyelet ellenőrzése és regisztráció** (>15 perc)
 
-    Ebben a lépésben biztosítjuk, hogy az ajánlat nyilvánosan elérhetővé válik a piactéren.
+    Megerősítjük, hogy a vezető felügyeleti rendszer az **ajánlat beállítása** oldalon megadott részletek alapján fogadja az ügyfél-érdeklődőket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
+
+- **Végső közzététel (>30 perc)**
+
+    Garantáljuk, hogy az ajánlat nyilvánosan elérhetővé válik a piactéren.
 
 Az ellenőrzés befejezése után az ajánlat a piactéren lesz elérhető.
+
+### <a name="reporting-usage-of-preview-and-other-internal-usage"></a>Az előzetes verzió és egyéb belső használat jelentéskészítésének jelentése
+
+A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat.
 
 ## <a name="next-step"></a>Következő lépés
 

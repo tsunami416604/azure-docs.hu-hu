@@ -1,7 +1,7 @@
 ---
 title: Virtuális gépek – áttekintés
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Ismerje meg a CloudSimple virtuális gépeket és azok előnyeit.
+description: Ismerje meg a CloudSimple virtuális gépeket és azok előnyeit. A VMware virtuális gépeket a Azure Portal kezelheti.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9be035978667287b8b88ec1bb64b3882b0f929
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024908"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141976"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple Virtual Machines – áttekintés
 
@@ -35,7 +35,7 @@ A Azure Portal CloudSimple virtuális gépei olyan önkiszolgáló mechanizmust 
   * Virtuális gép alaphelyzetbe állítása
 * Virtuális gép törlése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan használhatja [a VMWare virtuális gépeket az Azure](quickstart-create-vmware-virtual-machine.md) -ban
 * Ismerje meg, hogyan [képezhető le Azure-előfizetése](azure-subscription-mapping.md)

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289960"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141720"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -26,7 +26,7 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modellek A
 > * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
 > * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights Gen2 Explorer használatával.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Hagyományosan a IoT-eszközökről összegyűjtött adatok nem rendelkeznek környezetfüggő információkkal, ami megnehezíti az érzékelők gyors megtalálását és elemzését. Az idősorozat-modell fő motivációja a IoT és az idősoros adatok megkeresésének és elemzésének egyszerűbbé tétele. Ezt a célt úgy éri el, hogy lehetővé teszi a Time Series-adatokat a kurátorok, a karbantartás és az idősorozat-adathalmazok gazdagítása érdekében, hogy előkészítse a felhasználók számára kész adatkészleteket
 
@@ -75,7 +75,7 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Idősorozat-modell áttekintő diagramja](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Egy idősorozat-modell hozható létre és kezelhető a [Azure Time Series Insights Gen2 Explorerben](/azure/time-series-insights/concepts-model-overview). Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)használatával kezelhetők.
+Egy idősorozat-modell hozható létre és kezelhető a [Azure Time Series Insights Gen2 Explorerben](/azure/time-series-insights/concepts-model-overview). Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
@@ -129,7 +129,7 @@ A példányok a következő JSON-ábrázolással rendelkeznek:
 ```
 
 > [!TIP]
-> Például az API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Például az API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Idősorozat-modell hierarchiái
 
@@ -186,7 +186,7 @@ Az előző JSON-példában:
 * `ManufactureDate`szülővel és gyermekgel rendelkező hierarchia definiálása `year` `month` . Mindegyiknek `ManufactureDate` több is lehet `years` , ami viszont több is lehet `months` .
 
 > [!TIP]
-> A hierarchia API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> A hierarchia API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Példahierarchia
 
@@ -231,7 +231,7 @@ A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/p
 [![Példa az idősorozat-modell típusára](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Az API-k létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [Type API Rest dokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Az API-k létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [Type API Rest dokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api).
 
 ### <a name="type-properties"></a>Típus tulajdonságai
 
@@ -286,9 +286,9 @@ A típusok megfelelnek a következő JSON-példának:
 
 Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken. További információ az [idősorozat-modell változók definiálásáról](./concepts-variables.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) Reference dokumentációját.
+* A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
 
 * Az [idősorozat-modell változókkal](./concepts-variables.md) létrehozott képletek és számítások megismerése
 

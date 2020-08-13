@@ -1,6 +1,6 @@
 ---
 title: Diagnosztika engedélyezése az Azure-ban Cloud Services a PowerShell használatával | Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti a diagnosztika szolgáltatást a Cloud Serviceshez a PowerShell használatával
+description: Megtudhatja, hogyan használhatja a PowerShellt a diagnosztikai adatok Azure Cloud Service-ből való gyűjtésének engedélyezéséhez a Azure Diagnostics bővítménnyel.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: 02f63af9c34424ed83ba01424c832334639f46c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092677"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141074"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával
 A Azure Diagnostics-bővítmény használatával diagnosztikai adatokat gyűjthet, például az alkalmazás naplóit, a teljesítményszámlálókat stb. a felhőalapú szolgáltatásokból. Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Diagnostics bővítmény a Cloud Service-hez a PowerShell használatával.  Tekintse meg, [hogyan telepítheti és konfigurálhatja a Azure PowerShell](/powershell/azure/) a cikkhez szükséges előfeltételekhez.

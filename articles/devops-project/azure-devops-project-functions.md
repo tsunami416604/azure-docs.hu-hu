@@ -8,12 +8,13 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233164"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163679"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Üzembe helyezés Azure Functions a DevOps Starter használatával
 
@@ -34,7 +35,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 >* A CI-folyamat vizsgálata
 >* A CD-folyamat vizsgálata
 >* Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
->* Erőforrások felszabadítása
+>* Az erőforrások eltávolítása
 
 A függvények támogatott futtatókörnyezetei jelenleg a **.net** és a **Node.js**. Használjuk. Az oktatóanyaghoz tartozó NET Runtime a Azure Functions üzembe helyezéséhez. 
 
@@ -46,7 +47,7 @@ A függvények támogatott futtatókörnyezetei jelenleg a **.net** és a **Node
 
 A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Projects Azure-erőforrásokat (például IoTHub) is létrehoz az Ön által választott Azure-előfizetésben.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
 1. A keresőmezőbe írja be a **DevOps Starter**kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
 
@@ -94,7 +95,7 @@ A DevOps Starter automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-
 
 1. Kattintson a **Létrehozás**alatt található hivatkozásra. Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
 
-    ![Felépítés](_img/azure-devops-project-functions/build.png)
+    ![Létrehozás](_img/azure-devops-project-functions/build.png)
 
 1. Válassza a **Szerkesztés** elemet. Ezen az ablaktáblán ellenőrizheti a felépítési folyamat különféle feladatait. A build különböző feladatokat hajt végre, mint például a forráskód beolvasása a git-tárházból, az alkalmazás létrehozása, az egységhez tartozó tesztek futtatása, valamint az üzembe helyezéshez használt kimenetek közzététele.
 
@@ -149,7 +150,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
      Néhány pillanat elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Starter irányítópultján vagy a böngészőben az Azure DevOps-szervezettel.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -164,5 +165,5 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 

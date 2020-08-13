@@ -1,41 +1,42 @@
 ---
-title: Mi az az Azure Lighthouse?
+title: Mi az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-ms.date: 05/28/2020
+ms.date: 08/12/2020
 ms.topic: overview
-ms.openlocfilehash: 119f1465c9fdf03779f28a46967c30d899ae37d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f65411c03725058e8aa6491245ffd94987efa6c9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131373"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163220"
 ---
-# <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
+# <a name="what-is-azure-lighthouse"></a>Mi az Azure Lighthouse?
 
-Az Azure Lighthouse egyetlen vezérlőt kínál a szolgáltatók számára az Azure megtekintésére és kezelésére az összes ügyfeleik számára, magasabb szintű automatizálással, méretezéssel és fokozott irányítással. Az Azure Lighthouse használatával a szolgáltatók a felügyelt szolgáltatásokat az Azure platformon beépített átfogó és robusztus felügyeleti eszközökkel biztosíthatják. Ez az ajánlat olyan vállalati IT-szervezeteket is használhat, amelyek több bérlőn keresztül kezelik az erőforrásokat.
+Az Azure Lighthouse egyetlen vezérlőt biztosít az Azure-erőforrások több bérlőn belüli megtekintésére és kezelésére, magasabb szintű automatizálással, méretezéssel és fokozott irányítással. Az Azure Lighthouse használatával a szolgáltatók a felügyelt szolgáltatásokat az Azure platformon beépített átfogó és robusztus felügyeleti eszközökkel biztosíthatják. Ez az ajánlat olyan vállalati IT-szervezeteket is használhat, amelyek több bérlőn keresztül kezelik az erőforrásokat.
 
 ![Az Azure Lighthouse áttekintési ábrája](media/azure-lighthouse-overview.jpg)
 
 ## <a name="benefits"></a>Előnyök
 
-Az Azure Lighthouse segítségével nyereségesen és hatékonyan hozhat létre és kezelhet felügyelt szolgáltatásokat ügyfelei számára. Ez a következő előnyöket nyújtja:
+Az Azure Lighthouse segítségével nyereségesen és hatékonyan hozhat létre és kezelhet felügyelt szolgáltatásokat. Ez a következő előnyöket nyújtja:
 
-- Nagy **léptékű felügyelet**: az ügyfelek bevonása és a felhasználói erőforrások kezelésének életciklusa egyszerűbbé és méretezhető. A meglévő API-k, felügyeleti eszközök és munkafolyamatok a delegált ügyfelek erőforrásaival is használhatók, függetlenül attól, hogy mely régiókban találhatók.
+- Nagy **léptékű felügyelet**: az ügyfelek bevonása és a felhasználói erőforrások kezelésének életciklusa egyszerűbbé és méretezhető. A meglévő API-k, felügyeleti eszközök és munkafolyamatok a delegált erőforrásokkal is használhatók, függetlenül attól, hogy mely régiókban találhatók.
 - **Nagyobb láthatóság és pontosság az ügyfelek számára**: az ügyfelek jobban megtekinthetik a műveleteiket, és pontosan szabályozzák a felügyeletre delegált hatókört, beleértve a hozzáférés teljes eltávolításának lehetőségét is, az IP-cím megőrzése mellett.
 - **Átfogó és egységes platform-eszközök**: az eszközökön a legfontosabb szolgáltatói forgatókönyvek, többek között az EA, a CSP és az utólagos elszámolású licencelési modellek is elérhetők. Az új funkciók a meglévő eszközökkel, API-kkal, licencelési modellekkel és partneri programokkal, például a [felhőalapú megoldás-szolgáltatói programmal (CSP)](/partner-center/csp-overview)működnek. Az Azure Lighthouse integrálható a meglévő munkafolyamataiba és alkalmazásaiba, és nyomon követheti az ügyfelek bevonásával kapcsolatos hatásokat a [partner azonosítójának összekapcsolásával](../cost-management-billing/manage/link-partner-id.md).
 
-Az Azure Lighthouse használata nem jár további költségekkel az ügyfelek Azure-erőforrásainak kezeléséhez. Bármely Azure-ügyfél vagy-partner használhatja az Azure Lighthouse-t.
+Az Azure világítótorony az Azure-erőforrások kezeléséhez való használata nem jár további költségekkel. Bármely Azure-ügyfél vagy-partner használhatja az Azure Lighthouse-t.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
-Az Azure Lighthouse több módszert is kínál az ügyfelek részvételének és felügyeletének megkönnyítésére:
+Az Azure Lighthouse több módszert is kínál az elkötelezettség és a felügyelet egyszerűsítéséhez:
 
 - **Azure-beli delegált erőforrás-kezelés**: a saját bérlőn belül biztonságosan kezelheti ügyfelei Azure-erőforrásait anélkül, hogy a kontextust és a vezérlési síkokat kellene váltania. Az előfizetések és az erőforráscsoportok delegálása a megadott felhasználók és szerepkörök számára a bérlő kezelése lehetőséggel lehetséges, hogy szükség esetén el kell távolítani a hozzáférést. További információ: Azure-beli [delegált erőforrás-kezelés](concepts/azure-delegated-resource-management.md).
-- **Új Azure Portali tapasztalatok**: a több-bérlős adatok megtekintése a [Azure Portal](https://portal.azure.com)új **ügyfelek** lapján. A megfelelő **szolgáltatói** panel lehetővé teszi az ügyfelek számára a szolgáltatói hozzáférés megtekintését és kezelését. További információ: [ügyfelek megtekintése és kezelése](./how-to/view-manage-customers.md) , [szolgáltatók megtekintése és kezelése](how-to/view-manage-service-providers.md).
-- **Azure Resource Manager sablonok**: könnyebben elvégezheti a felügyeleti feladatokat, beleértve az Azure-beli delegált erőforrás-kezeléshez szükséges ügyfelek bevezetését. További információkért tekintse meg a [minták](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) tárházát, és helyezze üzembe az [ügyfelet az Azure-beli delegált erőforrás-kezelésben](how-to/onboard-customer.md).
-- **Felügyelt szolgáltatási ajánlatok az Azure Marketplace-** en: a szolgáltatásokat magán-vagy nyilvános ajánlatokon keresztül kínálja fel ügyfeleinek, és automatikusan előkészíti azokat az Azure-beli delegált erőforrás-kezelésre, mint a Azure Resource Manager-sablonok használatával történő bevezetést. További információ: [felügyelt szolgáltatások ajánlatai az Azure Marketplace-](concepts/managed-services-offers.md)en.
+- **Új Azure Portal tapasztalatok**: a bérlői információk megtekintése a Azure Portal [ **saját ügyfelek** lapján](./how-to/view-manage-customers.md) . A kapcsolódó [ **szolgáltatók** lapon](how-to/view-manage-service-providers.md) megtekintheti és kezelheti a szolgáltatói hozzáférését.
+- **Azure Resource Manager sablonok**: a sablonok segítenek a több-bérlős felügyeleti feladatok elvégzésében és a delegált felhasználói erőforrások bevezetésében. További információkért tekintse meg a [minták](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) tárházát, és az ügyfél bevezetését [Az Azure világítótoronyba](how-to/onboard-customer.md).
+- **Felügyelt szolgáltatási ajánlatok az Azure Marketplace-** en: a szolgáltatásokat privát vagy nyilvános ajánlatokon keresztül kínálja ügyfeleinek, és automatikusan bekerülnek az Azure világítótoronyba. További információ: [felügyelt szolgáltatások ajánlatai az Azure Marketplace-](concepts/managed-services-offers.md)en.
 
 ## <a name="next-steps"></a>További lépések
 
 - Megismerheti az [Azure által delegált erőforrás-kezelés](concepts/azure-delegated-resource-management.md) részleteit.
-- További információ a [bérlők közötti felügyeleti élményekről](concepts/cross-tenant-management-experience.md).
+- Fedezze fel a [bérlők közötti felügyeleti tapasztalatokat](concepts/cross-tenant-management-experience.md).
+- Ismerje meg, hogyan [használhatja az Azure Lighthouse-t egy vállalaton belül](concepts/enterprise.md).

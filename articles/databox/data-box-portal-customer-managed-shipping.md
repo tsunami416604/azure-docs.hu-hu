@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box önfelügyelt szállítás | AdatMicrosoft Docs
 description: A Azure Data Box eszközök önfelügyelt szállítási munkafolyamatát ismerteti
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608587"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142536"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>A Azure Portal Azure Data Box önfelügyelt szállítás használata
 
@@ -28,18 +28,20 @@ Az önfelügyelt szállítás a [Azure Data Box megrendelése](data-box-deploy-o
 * Japán
 * Szingapúr
 * Dél-Korea
+* India
+* Dél-afrikai Köztársaság
 
 ## <a name="use-self-managed-shipping"></a>Önállóan felügyelt szállítás használata
 
 Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt szállítási lehetőséget.
 
 1. A Azure Data Boxi sorrendben a **kapcsolattartási adatok**területen válassza a **+ szállítási címek hozzáadása**elemet.
-   ![Saját üzemeltetésű szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Önállóan felügyelt szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. A szállítási típus kiválasztásakor válassza az **önfelügyelt szállítási** lehetőséget. Ez a beállítás csak akkor érhető el, ha az előfeltételek szakaszban leírtak szerint támogatott régióban van.
 
 3. Miután megadta a szállítási címet, ellenőriznie kell, és el kell végeznie a rendelést.
-   ![Saját üzemeltetésű szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Önállóan felügyelt szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Ha az eszköz elkészült, és e-mailben értesítést kap, beütemezhet egy felvételt.
 
@@ -84,6 +86,6 @@ Data Box rendelés elhelyezésekor kiválaszthatja az önállóan felügyelt sz�
 
 11. Az eszköz fogadása után az Adatmásolás folytatódni fog. A másolás befejezésekor a rendelés elkészült.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés az Azure Data Boxszal](data-box-quickstart-portal.md)

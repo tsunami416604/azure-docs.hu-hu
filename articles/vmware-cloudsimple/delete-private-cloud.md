@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás törlése a CloudSimple privát felhővel
-description: Útmutató CloudSimple privát felhő törléséhez.
+description: Megtudhatja, hogyan törölhet CloudSimple saját felhőt. Ha töröl egy privát felhőt, az összes fürt törölve lesz.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024755"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142230"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő törlése
 
@@ -56,6 +56,6 @@ A privát felhő törlésre van megjelölve.  A törlési folyamat három óra e
 > [!CAUTION]
 > A csomópontokat törölni kell a saját felhő törlése után.  A csomópontok mérése folytatódni fog, amíg a csomópontok törlődnek az előfizetésből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Csomópontok törlése](delete-nodes.md)

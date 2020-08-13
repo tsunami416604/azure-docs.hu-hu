@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321989"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141925"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -35,7 +35,7 @@ A Azure Machine Learning különböző számítási erőforrásokon keresztül e
 
 További információ [a számítási cél beállításáról és használatáról a modell betanításához](how-to-set-up-training-targets.md).
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Telepítési célok
+## <a name="deployment-targets"></a><a name="deploy"></a>Üzembehelyezési célhelyek
 
 A modell központi telepítésének üzemeltetéséhez a következő számítási erőforrások használhatók.
 
@@ -82,17 +82,19 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| D | Nincs |
-| Dv2 | Nincs |  
-| DSv2 | Nincs |  
-| FSv2 | Nincs |  
+| D | Nincsenek |
+| Dv2 | Nincsenek |  
+| DSv2 | Nincsenek |  
+| FSv2 | Nincsenek | 
+| HBv2 | Jóváhagyást igényel |  
+| HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel |  
 | M | Jóváhagyást igényel |
-| NC | Nincs |    
+| NC | Nincsenek |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | Nincs |
+| NV | Nincsenek |
 | NVv3 | Jóváhagyást igényel | 
 
 
@@ -102,7 +104,7 @@ Habár a Azure Machine Learning támogatja ezeket a virtuálisgép-sorozatokat, 
 
 A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 * [Számítási cél beállítása a modell betanításához](how-to-set-up-training-targets.md)

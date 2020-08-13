@@ -1,5 +1,5 @@
 ---
-title: Automatizált SaaS-alkalmazások felhasználó általi üzembe helyezése az Azure AD-ben
+title: Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése
 description: Bevezetés az Azure AD használatával a felhasználói fiókok automatikus kiosztására, kiépítésére és folyamatos frissítésére több külső SaaS-alkalmazás között.
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56243e4d754f33b17238b64df2ba56ade162b3a2
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781090"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163781"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>A felhasználók üzembe helyezésének automatizálása és az Azure AD-vel való kiépítés
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése?
 
 Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez[SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
@@ -94,11 +94,8 @@ A katalógusban felsorolt előre integrált alkalmazások esetében az automatik
 Az SCIM 2,0-et támogató egyéb alkalmazások esetében kövesse a [scim-végpont létrehozása és a felhasználók kiépítésének konfigurálása](use-scim-to-provision-users-and-groups.md)című cikkben ismertetett lépéseket.
 
 
-## <a name="related-articles"></a>Kapcsolódó cikkek
+## <a name="next-steps"></a>További lépések
 
 - [Az SaaS-alkalmazások integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md)
 - [Attribútum-hozzárendelések testreszabása a felhasználók üzembe helyezéséhez](customize-application-attributes.md)
-- [Kifejezések írása attribútum-hozzárendelésekhez](../app-provisioning/functions-for-customizing-application-data.md)
-- [Felhasználói kiépítési szűrők hatóköre](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](use-scim-to-provision-users-and-groups.md)
-- [Az Azure AD szinkronizációs API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Felhasználói kiépítési szűrők hatóköre](define-conditional-rules-for-provisioning-user-accounts.md)

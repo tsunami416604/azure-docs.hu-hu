@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás CloudSimple-szolgáltatással
-description: Áttekintést nyújt a CloudSimple szolgáltatásról és fogalmakról.
+description: Ismerje meg a CloudSimple szolgáltatást az áttekintésével. A szolgáltatás létrehozása lehetővé teszi a csomópontok megvásárlását, a csomópontok fenntartását és a privát felhők létrehozását.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec77209c0995bf5aec0957c8d4d2269f27d743bc
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024953"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142128"
 ---
 # <a name="cloudsimple-service-overview"></a>A CloudSimple szolgáltatás áttekintése
 
@@ -23,6 +23,6 @@ A CloudSimple szolgáltatás lehetővé teszi, hogy a CloudSimple az Azure VMwar
 
 Az átjáró-alhálózatok CloudSimple szolgáltatáshoz szükségesek, és egyediek ahhoz a régióhoz, amelyben létrehozták. Az átjáró-alhálózat a peremhálózati hálózat létrehozásakor használatos, és egy/28 CIDR blokkot igényel.  Az átjáró alhálózatának címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal. A CloudSimple-mel kommunikáló hálózatok közé tartoznak a helyszíni hálózatok és az Azure Virtual Network.  Az átjáró-alhálózat nem törölhető A létrehozásuk után.  Az átjáró-alhálózat törlődik a szolgáltatás törlésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhat létre CloudSimple szolgáltatást az Azure](quickstart-create-cloudsimple-service.md)-ban.

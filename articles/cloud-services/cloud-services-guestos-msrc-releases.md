@@ -1,6 +1,6 @@
 ---
 title: Az Azure vendég operációs rendszerre alkalmazott frissítések listája | Microsoft Docs
-description: A vendég operációs rendszer kiadásaira alkalmazott frissítések listája
+description: Ez a cikk a Microsoft Security Response Center különböző Azure vendég operációs rendszerre vonatkozó frissítéseit sorolja fel. Ellenőrizze, hogy az Ön által használt vendég operációs rendszerre vonatkozik-e frissítés.
 services: cloud-services
 documentationcenter: na
 author: yohaddad
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/11/2020
 ms.author: yohaddad
-ms.openlocfilehash: a8755c593f4009d4cacc3d411eb1bc1cb8ddc50d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079158"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142349"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.

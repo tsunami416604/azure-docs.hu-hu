@@ -3,12 +3,12 @@ title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105268"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163237"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
@@ -17,6 +17,9 @@ Szolgáltatóként több ügyfél-bérlőt is felkészített az [Azure világít
 Az Azure Sentinel biztonsági elemzési és veszélyforrási intelligenciát biztosít, így egyetlen megoldást nyújt a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra. Az Azure Lighthouse használatával több Azure Sentinel-munkaterületet is kezelhet a bérlők között a skálán. Ez olyan forgatókönyveket tesz lehetővé, mint például a lekérdezések futtatása több munkaterületen, illetve munkafüzetek létrehozása a csatlakoztatott adatforrásokból származó adatok megjelenítéséhez és figyeléséhez. Az IP-címek, például a lekérdezések és a forgatókönyvek megmaradnak a kezelő bérlőben, de az ügyfél-bérlők biztonsági felügyeletét is elvégezheti.
 
 Ez a témakör áttekintést nyújt arról, hogyan használható az [Azure Sentinel](../../sentinel/overview.md) skálázható módon a több-bérlős láthatóság és a felügyelt biztonsági szolgáltatások számára.
+
+> [!TIP]
+> Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, ez az útmutató az [Azure Lighthouse-t használó vállalatoknak is vonatkozik több bérlő kezelésére](../concepts/enterprise.md).
 
 ## <a name="architectural-considerations"></a>Építészeti megfontolások
 
@@ -76,7 +79,7 @@ Az Automation használatával több Azure Sentinel-munkaterület is kezelhető, 
 
 Vegye figyelembe, hogy egyes funkciók [jelenleg nem támogatottak több munkaterületen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure sentinelről](../../sentinel/overview.md).
 - Tekintse át az [Azure Sentinel díjszabási oldalát](https://azure.microsoft.com/pricing/details/azure-sentinel/).

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121068"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141295"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Kötelező paraméterek
 
-`AcquireTokenInteractive`csak egy kötelező paraméterrel rendelkezik, ``scopes`` amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatókörök az "engedélyek" szakaszban található egyes Microsoft Graph API-k API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](/graph/api/user-list-contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive` csak egy kötelező paraméterrel rendelkezik, ``scopes`` amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatókörök az "engedélyek" szakaszban található egyes Microsoft Graph API-k API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](/graph/api/user-list-contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. További információ: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
 Androidon a szülő tevékenységet is meg kell adnia a használatával, amint azt a (z `.WithParentActivityOrWindow` ), hogy a jogkivonat vissza fog térni az adott fölérendelt tevékenységhez az interakció után. Ha nem ad meg, a rendszer kivételt okoz a hívásakor `.ExecuteAsync()` .
 
@@ -183,7 +183,7 @@ Androidon a szülő tevékenységet is meg kell adnia a használatával, amint a
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive`egy adott opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ.
+A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive` egy adott opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ.
 
 ```csharp
 // net45
@@ -211,17 +211,17 @@ Megjegyzéseket tartalmazó
 
 #### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()`a a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával.
+`WithPrompt()` a a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával.
 
 ![A prompt struktúrában található mezőket ábrázoló kép. Ezek az állandó értékek vezérlik a felhasználót a WithPrompt () metódus által megjelenített kérdés típusának meghatározásával.](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 Az osztály a következő konstansokat határozza meg:
 
-- ``SelectAccount``arra kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely azokat a fiókokat tartalmazza, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazás fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ezzel a beállítással a MSAL küldheti ``prompt=select_account`` az identitás-szolgáltatónak. Ez az alapértelmezett beállítás. Jó munkát biztosít a lehető legjobb élmény biztosításához a rendelkezésre álló információk, például a felhasználói munkamenetek fiókja és jelenléte alapján. Csak akkor módosítsa, ha nincs megfelelő oka.
-- ``Consent``lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót, hogy kérjen beleegyező engedélyt, még akkor is, ha az engedélyt megadták. Ebben az esetben a MSAL elküldi `prompt=consent` az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor a belefoglalt engedély párbeszédablakban legyen látható.
-- ``ForceLogin``lehetővé teszi, hogy az alkalmazás fejlesztője megkérje a felhasználótól a hitelesítő adatok megadását, még akkor is, ha ez a felhasználói kérdés esetleg nem szükséges. Ez a beállítás akkor lehet hasznos, ha a felhasználó újra bejelentkezik, ha a jogkivonat beszerzése meghiúsul. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Időnként olyan biztonsági irányultságú alkalmazásokban használják, ahol a szervezet irányítása megköveteli, hogy a felhasználó minden alkalommal újra aláírja az alkalmazást, amikor az alkalmazás egyes részeihez hozzáférnek.
-- ``Never``(csak a .NET 4,5 és a WinRT esetében) nem fogja kérni a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni. További információ: webes nézetek a MSAL.NET-ben. Ez a beállítás sikertelen lehet. Ebben az esetben kivételt jelez, hogy `AcquireTokenInteractive` a felhasználói felületi interakcióra van szükség. Egy másik paramétert kell használnia `Prompt` .
-- ``NoPrompt``a rendszer nem küld figyelmeztetést az identitás-szolgáltatónak. Ez a beállítás csak Azure Active Directory (Azure AD) B2C-szerkesztési profil házirendjének esetében hasznos. További információ: [Azure ad B2C sajátosságok](https://aka.ms/msal-net-b2c-specificities).
+- ``SelectAccount`` arra kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely azokat a fiókokat tartalmazza, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazás fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ezzel a beállítással a MSAL küldheti ``prompt=select_account`` az identitás-szolgáltatónak. Ez az alapértelmezett beállítás. Jó munkát biztosít a lehető legjobb élmény biztosításához a rendelkezésre álló információk, például a felhasználói munkamenetek fiókja és jelenléte alapján. Csak akkor módosítsa, ha nincs megfelelő oka.
+- ``Consent`` lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót, hogy kérjen beleegyező engedélyt, még akkor is, ha az engedélyt megadták. Ebben az esetben a MSAL elküldi `prompt=consent` az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor a belefoglalt engedély párbeszédablakban legyen látható.
+- ``ForceLogin`` lehetővé teszi, hogy az alkalmazás fejlesztője megkérje a felhasználótól a hitelesítő adatok megadását, még akkor is, ha ez a felhasználói kérdés esetleg nem szükséges. Ez a beállítás akkor lehet hasznos, ha a felhasználó újra bejelentkezik, ha a jogkivonat beszerzése meghiúsul. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Időnként olyan biztonsági irányultságú alkalmazásokban használják, ahol a szervezet irányítása megköveteli, hogy a felhasználó minden alkalommal újra aláírja az alkalmazást, amikor az alkalmazás egyes részeihez hozzáférnek.
+- ``Never`` (csak a .NET 4,5 és a WinRT esetében) nem fogja kérni a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni. További információ: webes nézetek a MSAL.NET-ben. Ez a beállítás sikertelen lehet. Ebben az esetben kivételt jelez, hogy `AcquireTokenInteractive` a felhasználói felületi interakcióra van szükség. Egy másik paramétert kell használnia `Prompt` .
+- ``NoPrompt`` a rendszer nem küld figyelmeztetést az identitás-szolgáltatónak. Ez a beállítás csak Azure Active Directory (Azure AD) B2C-szerkesztési profil házirendjének esetében hasznos. További információ: [Azure ad B2C sajátosságok](https://aka.ms/msal-net-b2c-specificities).
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
@@ -253,7 +253,7 @@ A gazdagép `end Url` mindig `redirectUri` . Az elfogáshoz `end Url` tegye a k�
 
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>A WithCustomWebUi egy bővíthetőségi pont
 
-`WithCustomWebUi`a egy bővíthetőségi pont, amellyel saját felhasználói felületet biztosíthat a nyilvános ügyfélalkalmazások számára. Azt is megteheti, hogy a felhasználó áthalad az/Authorize végpontján, és lehetővé teszi, hogy jelentkezzen be és hagyja jóvá. A MSAL.NET ezután beválthatják a hitelesítési kódot, és megkapják a jogkivonatot. A Visual Studióban például az elektron-alkalmazások (például a Visual Studio-visszajelzések) biztosítják a webes interakciót, de a munka nagy része nem MSAL.NET el. Akkor is használhatja, ha a felhasználói felület automatizálását szeretné megadni. A nyilvános ügyfélalkalmazások esetében a MSAL.NET a Code Exchange (PKCE) szabványának igazolási kulcsát használja annak biztosítására, hogy a biztonság tiszteletben legyen. A kódot csak a MSAL.NET lehet beváltani. További információ: [RFC 7636-Proof kulcs a Code Exchange számára nyilvános ügyfelek OAuth](https://tools.ietf.org/html/rfc7636).
+`WithCustomWebUi` a egy bővíthetőségi pont, amellyel saját felhasználói felületet biztosíthat a nyilvános ügyfélalkalmazások számára. Azt is megteheti, hogy a felhasználó áthalad az/Authorize végpontján, és lehetővé teszi, hogy jelentkezzen be és hagyja jóvá. A MSAL.NET ezután beválthatják a hitelesítési kódot, és megkapják a jogkivonatot. A Visual Studióban például az elektron-alkalmazások (például a Visual Studio-visszajelzések) biztosítják a webes interakciót, de a munka nagy része nem MSAL.NET el. Akkor is használhatja, ha a felhasználói felület automatizálását szeretné megadni. A nyilvános ügyfélalkalmazások esetében a MSAL.NET a Code Exchange (PKCE) szabványának igazolási kulcsát használja annak biztosítására, hogy a biztonság tiszteletben legyen. A kódot csak a MSAL.NET lehet beváltani. További információ: [RFC 7636-Proof kulcs a Code Exchange számára nyilvános ügyfelek OAuth](https://tools.ietf.org/html/rfc7636).
 
   ```csharp
   using Microsoft.Identity.Client.Extensions;
@@ -1161,8 +1161,8 @@ Ha a .NET-keretrendszer és a .NET Core esetében nem csinál semmit, a memóri�
 A jogkivonat-gyorsítótár szerializálásakor részt vevő osztályok és felületek a következők:
 
 - ``ITokenCache``, amely a jogkivonat-gyorsítótár szerializálási kéréseire előfizetett eseményeket, valamint a gyorsítótár szerializálására vagy deszerializálására szolgáló metódusokat határozza meg különböző formátumokban (ADAL v 3.0, MSAL 2. x és MSAL 3. x = ADAL v 5.0).
-- ``TokenCacheCallback``az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú argumentumokkal hívja meg őket ``TokenCacheNotificationArgs`` .
-- ``TokenCacheNotificationArgs``csak az alkalmazást és annak a felhasználónak a hivatkozását adja meg, ``ClientId`` amelyhez a jogkivonat elérhető.
+- ``TokenCacheCallback`` az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú argumentumokkal hívja meg őket ``TokenCacheNotificationArgs`` .
+- ``TokenCacheNotificationArgs`` csak az alkalmazást és annak a felhasználónak a hivatkozását adja meg, ``ClientId`` amelyhez a jogkivonat elérhető.
 
   ![Jogkivonat-gyorsítótár szerializálási diagramja](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
@@ -1388,7 +1388,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API meghívása az asztali alkalmazásból](scenario-desktop-call-api.md)

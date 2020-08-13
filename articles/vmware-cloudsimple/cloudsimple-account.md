@@ -1,6 +1,6 @@
 ---
 title: CloudSimple-fiók kezelése – Azure
-description: Tudnivalók a CloudSimple-fiókok kezeléséről
+description: Ismerje meg, hogyan kezelheti a CloudSimple szolgáltatással együtt létrehozott CloudSimple-fiókot, és az Azure-előfizetéséhez van társítva.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68ddea6c58bfff5e82643acc947ac1e7de76d699
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025112"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141040"
 ---
 # <a name="account-management-overview"></a>A fiókkezelés áttekintése
 
@@ -34,7 +34,7 @@ A CloudSimple-portálhoz való hozzáférést a szolgáltatási műveletek szem�
 
 Az előfizetéshez tartozó **tulajdonosi** és **közreműködő** szerepkörrel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  Amikor hozzáfér a portálhoz, a rendszer létrehozza a felhasználót a CloudSimple-fiókban.  Letilthatja a hozzáférést a CloudSimple-portálhoz adott felhasználók számára a fiókok lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fiók összegzésének megtekintése](account.md)
 * [Felhasználói lista megtekintése](users.md)

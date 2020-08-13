@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077218"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163730"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>A fürt rendelkezésre állásának figyelése Azure Monitor naplókkal a HDInsight-ben
 
@@ -30,6 +30,8 @@ A portál HDInsight-fürterőforrás lapján válassza a **Azure monitor**lehet�
 
 ![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+Alapértelmezés szerint a OMS-ügynököt az összes fürtcsomóponton telepíti az Edge-csomópontok kivételével. Mivel a OMS-ügynök nem lett telepítve a fürt peremhálózati csomópontjain, alapértelmezés szerint nincs Log Analytics az Edge-csomópontok telemetria.
+
 ## <a name="query-metrics-and-logs-tables"></a>Mérőszámok és naplók táblázatának lekérdezése
 
 Azure Monitor naplózási integráció engedélyezése után (ez eltarthat néhány percig), navigáljon a **log Analytics munkaterület** -erőforráshoz, és válassza a **naplók**lehetőséget.
@@ -38,7 +40,7 @@ Azure Monitor naplózási integráció engedélyezése után (ez eltarthat néh�
 
 A naplók számos példa típusú lekérdezést listáznak, például:
 
-| Lekérdezés neve                      | Description                                                               |
+| Lekérdezés neve                      | Leírás                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | A számítógépek rendelkezésre állása ma    | A naplókat küldő számítógépek számának diagramja óránként                     |
 | Szívverések listázása                 | Az összes számítógép szívverésének listázása az elmúlt órában                           |
@@ -46,7 +48,7 @@ A naplók számos példa típusú lekérdezést listáznak, például:
 | Nem elérhető számítógépek           | Az összes olyan ismert számítógép listázása, amely nem küldött szívverést az elmúlt 5 órában |
 | Rendelkezésre állási arány               | Az egyes csatlakoztatott számítógépek rendelkezésre állási arányának kiszámítása                |
 
-Futtassa például a **rendelkezésre állási arány** mintájának lekérdezését a lekérdezés **futtatásának** kiválasztásával, ahogy az a fenti képernyőképen is látható. Ez a fürt egyes csomópontjainak rendelkezésre állási arányát fogja megjeleníteni százalékban. Ha több HDInsight-fürtön is engedélyezte a metrikák küldését ugyanarra a Log Analytics munkaterületre, megjelenik a fürt összes csomópontjának rendelkezésre állási sebessége.
+Futtassa például a **rendelkezésre állási arány** mintájának lekérdezését a lekérdezés **futtatásának** kiválasztásával, ahogy az a fenti képernyőképen is látható. Ez a fürt egyes csomópontjainak rendelkezésre állási arányát fogja megjeleníteni százalékban. Ha több HDInsight-fürtön is engedélyezte a metrikák küldését ugyanarra a Log Analytics munkaterületre, akkor a megjelenő fürtökben megjelenik az összes csomópont (az Edge-csomópontok kivételével) rendelkezésre állási sebessége.
 
 ![Log Analytics munkaterület "rendelkezésre állási arány" mintájának lekérdezése](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 

@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
-description: A felügyelt szolgáltatás lehetővé teszi, hogy a szolgáltatók erőforrás-kezelési ajánlatokat értékesítsenek az ügyfeleknek az Azure piactéren.
+description: A felügyelt szolgáltatás lehetővé teszi, hogy erőforrás-kezelési ajánlatokat értékesítsen az ügyfeleknek az Azure Marketplace-en.
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406860"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163322"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 
@@ -18,7 +18,7 @@ Ez a cikk a **felügyelt szolgáltatások** ajánlatának típusát mutatja be a
 
 A felügyelt szolgáltatás megkönnyíti az ügyfelek Azure világítótoronyba való bevezetésének folyamatát. Amikor egy ügyfél ajánlatot vásárol az Azure Marketplace-en, meg tudják határozni, hogy mely előfizetéseket és/vagy erőforráscsoportokat kell előkészíteni.
 
-Ezt követően a szervezet felhasználóinak az Azure-beli [delegált erőforrás-kezelésen](azure-delegated-resource-management.md)keresztül képesek lesznek működni ezen az erőforrásokon a szervezeti bérlőn keresztül, az ajánlat létrehozásakor meghatározott hozzáférésnek megfelelően. Ez egy olyan jegyzékfájlon keresztül történik, amely megadja az ügyfelek erőforrásaihoz hozzáférő Azure Active Directory (Azure AD) felhasználókat, csoportokat és egyszerű szolgáltatásokat, valamint a hozzáférési szintet meghatározó szerepköröket. Ha az engedélyeket egy Azure AD-csoporthoz rendeli hozzá, nem pedig egyéni felhasználói vagy alkalmazási fiókokat, hozzáadhat vagy eltávolíthat egyes felhasználókat a hozzáférési követelmények változásakor.
+Ezt követően a cégen belüli felhasználók az ajánlat létrehozásakor meghatározott hozzáférésnek megfelelően az Azure-beli [delegált erőforrás-kezelésen](azure-delegated-resource-management.md)keresztül képesek lesznek dolgozni ezen erőforrásokon. Ez egy olyan jegyzékfájlon keresztül történik, amely megadja az ügyfelek erőforrásaihoz hozzáférő Azure Active Directory (Azure AD) felhasználókat, csoportokat és egyszerű szolgáltatásokat, valamint a hozzáférési szintet meghatározó szerepköröket. Ha az engedélyeket egy Azure AD-csoporthoz rendeli hozzá, nem pedig egyéni felhasználói vagy alkalmazási fiókokat, hozzáadhat vagy eltávolíthat egyes felhasználókat a hozzáférési követelmények változásakor.
 
 ## <a name="public-and-private-offers"></a>Nyilvános és privát ajánlatok
 
@@ -40,7 +40,7 @@ Ha szükséges, a nyilvános és a saját csomagok is felhasználhatók ugyanabb
 
 A felügyelt szolgáltatások ajánlatának közzétételével kapcsolatos további információkért lásd: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace](../how-to/publish-managed-services-offers.md)-en.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg az Azure-beli [delegált erőforrás-kezelést](azure-delegated-resource-management.md) és a [több-bérlős felügyeleti tapasztalatokat](cross-tenant-management-experience.md).
 - [Felügyelt szolgáltatások ajánlatának közzététele](../how-to/publish-managed-services-offers.md) az Azure Marketplace-en.

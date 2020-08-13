@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285866"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142179"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -93,7 +93,7 @@ A *szolgáltatás állapota* arra a memóriára vagy lemezen tárolt adatra utal
 
 Az állapot lehet külsőleg, vagy elhelyezhető a kóddal, amely az állapotot kezeli. Az állapotot általában egy olyan adatbázis vagy más adattár használatával Externalize, amely a hálózaton keresztül különböző gépeken fut, vagy amelyeken a folyamaton kívül fut ugyanazon a gépen.
 
-A tárolók és a szolgáltatások a legtöbb esetben rugalmasak, ha a bennük futó folyamatok nem őrzik meg az állapotot. Mivel az alkalmazások szinte mindig tartalmaznak valamilyen állapotot, olyan Pásti-megoldást használhatnak, mint például a Azure Database for MySQL, a Azure Database for PostgreSQL vagy a Azure SQL Database.
+A tárolók és a szolgáltatások a legtöbb esetben rugalmasak, ha a bennük futó folyamatok nem őrzik meg az állapotot. Mivel az alkalmazások szinte mindig tartalmaznak valamilyen állapotot, olyan Pásti-megoldást használhatnak, mint például a Azure Cosmos DB, a Azure Database for PostgreSQL, a Azure Database for MySQL vagy a Azure SQL Database.
 
 A hordozható alkalmazások létrehozásához tekintse meg a következő irányelveket:
 
@@ -130,7 +130,7 @@ A Kubernetes jelenleg nem biztosít natív implementációt az alkalmazás-alap�
 
 ![Alkalmazás-alapú aszinkron replikáció](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az üzleti folytonossággal és a vész-helyreállítási megfontolásokkal foglalkozik az AK-fürtök esetében. Az AK-beli fürtök műveleteivel kapcsolatos további információkért tekintse meg az ajánlott eljárásokról szóló cikket:
 

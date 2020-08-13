@@ -1,6 +1,6 @@
 ---
 title: Cloud Services és felügyeleti tanúsítványok | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és használhat tanúsítványokat Microsoft Azure
+description: Tudnivalók a Cloud Services-tanúsítványok létrehozásáról és üzembe helyezéséről, valamint az Azure-beli felügyeleti API-k hitelesítéséről.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024608"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142366"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 A tanúsítványok az Azure for Cloud Services ([szolgáltatás-tanúsítványok](#what-are-service-certificates)) és a felügyeleti API ([felügyeleti tanúsítványok](#what-are-management-certificates)) használatával történő hitelesítéshez használatosak. Ez a témakör általános áttekintést nyújt mindkét tanúsítvány típusáról, valamint arról, hogyan [hozhatja létre](#create) és helyezheti üzembe őket az Azure-ban.
@@ -88,7 +88,7 @@ Az interneten sok oldal található, amely az IIS használatával foglalkozik. [
 ### <a name="linux"></a>Linux
 [Ez a](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) cikk bemutatja, hogyan hozhat létre a tanúsítványokat SSH-val.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Töltse fel a szolgáltatási tanúsítványt a Azure Portalba](cloud-services-configure-ssl-certificate-portal.md).
 
 Töltsön fel egy [felügyeleti API-tanúsítványt](../azure-api-management-certs.md) a Azure Portalba.

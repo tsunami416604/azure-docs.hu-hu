@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b23bed8163ffed6a610eda7677099989e966a646
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298762"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163815"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával
 
@@ -42,7 +42,7 @@ Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást re
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Átirányítási URI hozzáadása (válasz URL-címe)
 
-Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
@@ -85,16 +85,16 @@ A következő két projekt szerepel a minta megoldásban:
 * **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja és bejelentkezik a felhasználók számára.
 * **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.
 
-A mintát úgy változtathatja meg, hogy a bérlőben regisztrált alkalmazást használja, beleértve az alkalmazás AZONOSÍTÓját és a korábban rögzített kulcsot is. A létrehozott felhasználói folyamatokat is konfigurálhatja. A minta a konfigurációs értékeket a *web. config* fájlban megadott beállításokként határozza meg.
+A mintát úgy változtathatja meg, hogy a bérlőben regisztrált alkalmazást használja, beleértve az alkalmazás AZONOSÍTÓját és a korábban rögzített kulcsot is. A létrehozott felhasználói folyamatokat is konfigurálhatja. A minta a konfigurációs értékeket a *Web.config* fájlban megadott beállításokként határozza meg.
 
-Frissítse a web. config fájlban lévő beállításokat a felhasználói folyamattal való együttműködéshez:
+Frissítse a Web.config fájl beállításait a felhasználói folyamattal való együttműködéshez:
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
-1. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt.
+1. A **TaskWebApp** projektben nyissa meg a **Web.config** fájlt.
     1. Frissítse a és a értékét a `ida:Tenant` `ida:AadInstance` létrehozott Azure ad B2C bérlő nevével. Például cserélje le a következőt: `fabrikamb2c` `contoso` .
     1. Cserélje le a értéket a `ida:TenantId` címtár-azonosítóra, amelyet az Azure B2C-bérlő tulajdonságainál talál (a Azure Portal a **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár azonosítója**alatt).
     1. Cserélje le a értékét `ida:ClientId` a rögzített alkalmazás-azonosítóra.
-    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ha az ügyfél titkos kulcsa bármely előre definiált XML-entitást tartalmaz, például kisebb, mint (), nagyobb, mint (), `<` `>` vagy a `&` dupla idézőjel ( `"` ), akkor a karaktereket a web. config fájlhoz való hozzáadása előtt el kell kerülnie az ügyfél titkos kódjának kódolásával.
+    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ha az ügyfél titkos kulcsa bármely előre definiált XML-entitást tartalmaz, például kisebb, mint ( `<` ), nagyobb, mint (), vagy a `>` `&` Double quote ( `"` ), akkor el kell kerülnie ezeket a karaktereket az ügyfél titkos kódjának a Web.configba való hozzáadása előtt.
     1. Cserélje le a értékét a értékre `ida:SignUpSignInPolicyId` `b2c_1_signupsignin1` .
     1. Cserélje le a értékét a értékre `ida:EditProfilePolicyId` `b2c_1_profileediting1` .
     1. Cserélje le a értékét a értékre `ida:ResetPasswordPolicyId` `b2c_1_passwordreset1` .

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 61c969bc0c0ac9731ae35e445b82db633c3c5191
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486794"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163169"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérdezése Azure Time Series Insights Gen2
 
@@ -27,7 +27,7 @@ A Azure Time Series Insights Gen2 három elsődleges API-kategória érhető el:
 * **Idősorozat-modell – Query (TSM-Q) API-k**: lehetővé teszi a létrehozási, olvasási, frissítési és törlési (szifilisz) műveleteket a környezet idősorozat-modelljében tárolt metaadatokon. Ezek a példányok, típusok és hierarchiák eléréséhez és szerkesztéséhez használhatók.
 * **Idősorozat-lekérdezés (TSQ) API-k**: lehetővé teszi a telemetria és az események adatainak lekérését a forrás szolgáltató által rögzített módon, és lehetővé teszi a teljesítménybeli számítások és összesítések használatát az adatokhoz a speciális skaláris és összesítő függvények használatával.
 
-Azure Time Series Insights a Gen2 egy Rich string-alapú kifejezési nyelvet, [idősorozat-kifejezést (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használ az [Idősorozat-változókhoz](./concepts-variables.md)tartozó számítások kifejezésére.
+Azure Time Series Insights a Gen2 egy Rich string-alapú kifejezési nyelvet, [idősorozat-kifejezést (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)használ az [Idősorozat-változókhoz](./concepts-variables.md)tartozó számítások kifejezésére.
 
 ## <a name="azure-time-series-insights-gen2-apis-overview"></a>Azure Time Series Insights Gen2 API-k áttekintése
 
@@ -37,7 +37,7 @@ A következő alapvető API-k támogatottak.
 
 ## <a name="environment-apis"></a>Környezeti API-k
 
-* [Környezetek beolvasása API](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
+* [Környezetek beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
 * [Környezetek rendelkezésre állási API-k beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): az események számának eloszlását adja vissza az esemény időbélyegén `$ts` . Ez az API segít meghatározni, hogy van-e olyan esemény a környezetben, amely az események számát időintervallumra bontva adja vissza, ha vannak ilyenek.
 * [Event Schema API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): egy adott keresési span esemény-séma metaadatainak beolvasása. Ez az API segít beolvasni a sémában elérhető összes metaadatot és tulajdonságot a megadott keresési tartományhoz.
 
@@ -45,10 +45,10 @@ A következő alapvető API-k támogatottak.
 
 Ezen API-k többsége támogatja a Batch-végrehajtási műveletet, hogy több idősorozatos modell entitáson engedélyezze a Batch-SZIFILISZi műveleteket:
 
-* [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/preview#model-settings-api): a *Get* és a *patch* engedélyezése az alapértelmezett típus és a környezet modellje számára.
-* [Típusok API](https://docs.microsoft.com/rest/api/time-series-insights/preview#types-api): lehetővé teszi a szifilisz használatát az idősorozat-típusoknál és a hozzájuk társított változóknál.
-* [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/preview#hierarchies-api): lehetővé teszi a szifilisz használatát az idősorozat-hierarchiákban és a hozzájuk tartozó mezők elérési útjain.
-* [Példányok API](https://docs.microsoft.com/rest/api/time-series-insights/preview#instances-api): lehetővé teszi a szifilisz használatát a Time Series-példányokon és a hozzájuk társított példány mezőin. A példányok API emellett a következő műveleteket is támogatja:
+* [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis): a *Get* és a *patch* engedélyezése az alapértelmezett típus és a környezet modellje számára.
+* [Típusok API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api): lehetővé teszi a szifilisz használatát az idősorozat-típusoknál és a hozzájuk társított változóknál.
+* [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api): lehetővé teszi a szifilisz használatát az idősorozat-hierarchiákban és a hozzájuk tartozó mezők elérési útjain.
+* [Példányok API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api): lehetővé teszi a szifilisz használatát a Time Series-példányokon és a hozzájuk társított példány mezőin. A példányok API emellett a következő műveleteket is támogatja:
   * [Keresés](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search): lekéri a találatok részleges listáját az idősorozat-példányok keresésekor a példány attribútumai alapján.
   * [Javaslat](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest): megkeresi és javasolja a találatok részleges listáját az idősorozat-példányok a példány attribútumai alapján történő keresésekor.
 
@@ -56,20 +56,21 @@ Ezen API-k többsége támogatja a Batch-végrehajtási műveletet, hogy több i
 
 Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (meleg és hideg) érhetők el. A lekérdezés URL-paramétereinek használatával megadható, hogy a lekérdezés milyen [típusú tárolási típust](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) hajtson végre:
 
-* [Események beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): lehetővé teszi a nyers események lekérdezését és beolvasását, valamint a hozzájuk tartozó esemény-időbélyegeket, ahogy azokat a forrás szolgáltató Azure Time Series Insights Gen2 rögzíti. Ez az API lehetővé teszi a nyers események lekérését egy adott idősorozat-azonosító és keresési tartomány számára. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához. 
+* [Események beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): lehetővé teszi a nyers események lekérdezését és beolvasását, valamint a hozzájuk tartozó esemény-időbélyegeket, ahogy azokat a forrás szolgáltató Azure Time Series Insights Gen2 rögzíti. Ez az API lehetővé teszi a nyers események lekérését egy adott idősorozat-azonosító és keresési tartomány számára. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához.
 
   > [!IMPORTANT]
+
   > * A [JSON-összeolvasztási és-Escape-szabályok közelgő változásainak](https://docs.microsoft.com/azure/time-series-insights/ingestion-rules-update)részeként a tömbök **dinamikus** típusúak lesznek tárolva. Az ebben a típusban tárolt hasznos adatok tulajdonságai **csak a Get Events API-n keresztül érhetők**el.
 
-* [Series API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): lehetővé teszi a kiszámított értékek lekérdezését és lekérését, valamint a kapcsolódó esemény időbélyegét a változók által a nyers eseményeken definiált számítások alkalmazásával. Ezek a változók az idősorozat-modellben definiálhatók, vagy a lekérdezésben beágyazottan is elérhetők. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához. 
+* [Series API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): lehetővé teszi a kiszámított értékek lekérdezését és lekérését, valamint a kapcsolódó esemény időbélyegét a változók által a nyers eseményeken definiált számítások alkalmazásával. Ezek a változók az idősorozat-modellben definiálhatók, vagy a lekérdezésben beágyazottan is elérhetők. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához.
 
-* [Összesítő sorozat API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries): lehetővé teszi az összesített értékek lekérdezését és lekérését, valamint a hozzájuk tartozó intervallum-időbélyegeket a változók által a nyers eseményeken definiált számítások alkalmazásával. Ezek a változók az idősorozat-modellben definiálhatók, vagy a lekérdezésben beágyazottan is elérhetők. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához. 
+* [Összesítő sorozat API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries): lehetővé teszi az összesített értékek lekérdezését és lekérését, valamint a hozzájuk tartozó intervallum-időbélyegeket a változók által a nyers eseményeken definiált számítások alkalmazásával. Ezek a változók az idősorozat-modellben definiálhatók, vagy a lekérdezésben beágyazottan is elérhetők. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához.
   
   A megadott keresési időtartam és intervallum esetében ez az API egy idősorozat-AZONOSÍTÓhoz tartozó változó időszakonkénti összesített választ adja vissza. A válasz adatkészletben lévő intervallumok számának kiszámítása a következő időpontok számlálásával történik (a UNIX EPOCH óta eltelt ezredmásodpercek száma – január 1., 1970), és az osztásjelek osztása a lekérdezésben megadott intervallum-tartomány méretével.
 
-  A válaszban visszaadott időbélyegek a bal oldali intervallumok, nem pedig az intervallumban szereplő események. 
+  A válaszban visszaadott időbélyegek a bal oldali intervallumok, nem pedig az intervallumban szereplő események.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [idősorozat-modellben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)definiálható különböző változókról.
-- További információ az adatok lekérdezéséről a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* További információ az [idősorozat-modellben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)definiálható különböző változókról.
+* További információ az adatok lekérdezéséről a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

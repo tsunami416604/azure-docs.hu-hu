@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121085"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141278"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>A webes API-kat meghívó mobil alkalmazások jogkivonatának beolvasása
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`csak egy kötelező paraméterrel rendelkezik: `scopes` . A `scopes` paraméter enumerálja azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatóköröket az egyes Microsoft Graph API-k API-referenciájában találja. A hivatkozásban lépjen az "engedélyek" szakaszra.
 
-Ha például [a felhasználó névjegyeit szeretné listázni](/graph/api/user-list-contacts), használja a "user. Read", a "Contacts. Read" hatókört. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Ha például [a felhasználó névjegyeit szeretné listázni](/graph/api/user-list-contacts), használja a "user. Read", a "Contacts. Read" hatókört. További információ: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
 Androidon megadhatja a szülő tevékenységet, amikor a használatával hozza létre az alkalmazást `PublicClientApplicationBuilder` . Ha az adott időpontban nem határozza meg a fölérendelt tevékenységet, később megadhatja azt `.WithParentActivityOrWindow` a következő szakaszban látható módon. Ha a szülő tevékenységet adja meg, akkor a jogkivonat az interakció után visszakerül a fölérendelt tevékenységbe. Ha nem adja meg, akkor a `.ExecuteAsync()` hívás kivételt jelez.
 
@@ -292,7 +292,7 @@ client_id=<CLIENT_ID>
 &grant_type=authorization_code
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API hívása](scenario-mobile-call-api.md)

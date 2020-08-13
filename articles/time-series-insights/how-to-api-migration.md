@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423949"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163951"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Áttelepítés új Azure Time Series Insights Gen2 API-verzióra
 
@@ -23,7 +23,7 @@ ms.locfileid: "87423949"
 
 Ha a nyilvános előzetes verzióban (2020. július 16. előtt) létrehozott egy Azure Time Series Insights Gen2-környezetet, frissítse az ÁME-környezetet, hogy az új, általánosan elérhető API-kat használja a jelen cikkben ismertetett lépéseket követve.
 
-Az új API-verzió a `2020-07-31` és a frissített [idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használja.
+Az új API-verzió a `2020-07-31` és a frissített [idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)használja.
 
 A felhasználóknak át kell telepíteniük a környezetük [idősorozat-modellezési változóit](./concepts-variables.md), a mentett lekérdezéseket, Power bi lekérdezéseket és az API-végpontokat meghívó egyéni eszközöket. Ha bármilyen kérdése vagy problémája van az áttelepítési folyamattal kapcsolatban, küldjön egy támogatási jegyet a Azure Portal, és nevezze el ezt a dokumentumot.
 
@@ -81,7 +81,7 @@ Ha az egyéni alkalmazás a következő REST-végpontokra hívja fel a hívást,
 
 - Idősorozat-modell API-k
   - Modell beállítások API-k
-    - [Lekérés](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Get](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Frissítés](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - Példány API-k
     - [Az összes batch-művelet](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
@@ -95,7 +95,7 @@ Ha az egyéni alkalmazás a következő REST-végpontokra hívja fel a hívást,
     - [Törlés, műveletek beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [Lista](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-A következő REST-végpontok esetében frissítenie kell az API-verziót `2020-07-31` az URI-ban, és ellenőrizze, hogy a tulajdonság összes előfordulása `tsx` a frissített [Idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használja-e.
+A következő REST-végpontok esetében frissítenie kell az API-verziót `2020-07-31` az URI-ban, és ellenőrizze, hogy a tulajdonság összes előfordulása `tsx` a frissített [Idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)használja-e.
 
 - Típusok API-k
   - [Put művelet](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -355,7 +355,7 @@ Másik lehetőségként a is lehetséges `value` `coalesce($event['Temp'].Double
 
 #### <a name="invalidinput"></a>InvalidInput
 
-Ha a következő hibaüzenet jelenik meg, akkor az új API-verziót () használja, `2020-07-31` de a TSX szintaxisa nem frissült. Tekintse át az [Idősorozat kifejezésének szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) és az áttelepítési példákat. `tsx`Az API-kérelem újraküldése előtt győződjön meg arról, hogy az összes tulajdonság megfelelően frissül.
+Ha a következő hibaüzenet jelenik meg, akkor az új API-verziót () használja, `2020-07-31` de a TSX szintaxisa nem frissült. Tekintse át az [Idősorozat kifejezésének szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) és az áttelepítési példákat. `tsx`Az API-kérelem újraküldése előtt győződjön meg arról, hogy az összes tulajdonság megfelelően frissül.
 
 ```JSON
 {

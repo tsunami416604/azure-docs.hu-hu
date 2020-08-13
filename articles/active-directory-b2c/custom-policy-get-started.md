@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169429"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163186"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 1. A **név**mezőben adja meg a nevet `TokenSigningKeyContainer` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-the-encryption-key"></a>A titkosítási kulcs létrehozása
 
@@ -54,7 +54,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 1. A **név**mezőben adja meg a nevet `TokenEncryptionKeyContainer` . Lehetséges, hogy az `B2C_1A` _ előtag automatikusan hozzá van adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-the-facebook-key"></a>A Facebook-kulcs létrehozása
 
@@ -65,7 +65,7 @@ Adja hozzá a Facebook-alkalmazás [titkos](identity-provider-facebook.md) kulcs
 1. A **név**mezőbe írja be a következőt: `FacebookSecret` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **Secret (titkos**kód) mezőben adja meg a Facebook-alkalmazás *titkos* kódját a Developers.Facebook.com. Ez az érték a titok, nem az alkalmazás azonosítója.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework-alkalmazások regisztrálása
 
@@ -90,9 +90,9 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 1. A bal oldali menüben a **kezelés**alatt válassza ki **az API közzététele**lehetőséget.
 1. Válassza a **hatókör hozzáadása**lehetőséget, majd válassza a mentés lehetőséget, majd fogadja el az alapértelmezett alkalmazás-azonosító URI **-** t.
 1. Adja meg a következő értékeket egy olyan hatókör létrehozásához, amely lehetővé teszi az egyéni szabályzatok végrehajtását a Azure AD B2C bérlőben:
-    * **Hatókör neve**:`user_impersonation`
-    * **Rendszergazdai engedély megjelenítendő neve**:`Access IdentityExperienceFramework`
-    * **Rendszergazdai engedély leírása**:`Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+    * **Hatókör neve**: `user_impersonation`
+    * **Rendszergazdai engedély megjelenítendő neve**: `Access IdentityExperienceFramework`
+    * **Rendszergazdai engedély leírása**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
 1. **Hatókör hozzáadása** lehetőség kiválasztása
 
 * * *
@@ -112,7 +112,7 @@ Ezután határozza meg, hogy az alkalmazást nyilvános ügyfélként kell kezel
 
 1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **hitelesítés**lehetőséget.
 1. A **Speciális beállítások**területen engedélyezze az **alkalmazás kezelése nyilvános ügyfélként** (válassza az **Igen**lehetőséget). Győződjön meg arról, hogy a **"allowPublicClient": true** érték van beállítva az alkalmazás jegyzékfájljában. 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Most adja meg a *IdentityExperienceFramework* -regisztráció során korábban közzétett API-hatókörre vonatkozó engedélyeket:
 
@@ -213,6 +213,6 @@ Az [Előfeltételek](#prerequisites)értelmében a Facebook *nem* szükséges eg
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután próbálkozzon Azure Active Directory (Azure AD) identitás-szolgáltatóként való hozzáadásával. Az első lépéseket ismertető útmutatóban használt alapfájl már tartalmazza a más személyazonossági szolgáltatók (például az Azure AD) hozzáadásához szükséges tartalmakat.
+Ezután próbálkozzon Azure Active Directory (Azure AD) identitás-szolgáltatóként való hozzáadásával. Az első lépéseket ismertető útmutatóban használt alapfájl már tartalmazza a más személyazonossági szolgáltatók (például az Azure AD) hozzáadásához szükséges tartalmakat. Az Azure AD identitás-szolgáltatóként való beállításával kapcsolatos információkért tekintse meg a következő témakört: [regisztráció és bejelentkezés Azure Active Directory fiókkal Active Directory B2C egyéni házirendek használatával](identity-provider-azure-ad-single-tenant-custom.md). 
 
-Az Azure AD-t és az identitás-szolgáltató beállításával kapcsolatos információkért tekintse [meg a regisztrálás és bejelentkezés beállítása Azure Active Directory fiókkal Active Directory B2C egyéni házirendek használatával](identity-provider-azure-ad-single-tenant-custom.md)című témakört.
+A [partneri galériában](partner-gallery.md) tájékozódhat arról, hogyan valósítja meg az ISV-integrációt egyéni szabályzatok használatával. 

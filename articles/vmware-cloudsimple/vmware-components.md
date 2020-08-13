@@ -1,7 +1,7 @@
 ---
 title: Private Cloud VMware-összetevők
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Leírja, hogyan vannak telepítve a VMware-összetevők a privát felhőben
+description: Ismerje meg, hogy a CloudSimple szolgáltatás lehetővé teszi, hogy natív módon telepítse a VMware-et az Azure-beli helyszíneken. A privát felhők integrálva vannak az Azure-felhő többi részébe.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702822"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142502"
 ---
 # <a name="private-cloud-vmware-components"></a>Private Cloud VMware-összetevők
 
@@ -117,6 +117,6 @@ A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérh
 
 A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [CloudSimple-karbantartás és-frissítések](cloudsimple-maintenance-updates.md)

@@ -1,6 +1,6 @@
 ---
 title: A VMware-megoldás csomópontjainak törlése a CloudSimple által – Azure
-description: Ismerje meg, hogyan törölhet csomópontokat VMWare-ről a CloudSimple-telepítéssel
+description: Ismerje meg, hogyan törölhet csomópontokat VMWare-ről a CloudSimple-telepítéssel. A CloudSimple-csomópontok mérése megtörténik. Törölje a Azure Portal nem használt csomópontokat.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024738"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142264"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Csomópontok törlése az Azure VMware-megoldásból a CloudSimple használatával
 
@@ -47,6 +47,6 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 > [!NOTE]
 > Csak azokat a csomópontokat lehet törölni, amelyek nem részei a privát felhőnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Private Cloud](cloudsimple-private-cloud.md) megismerése

@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dd3ede40582e8f2c71c0424df025d06ff7f0f79
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728367"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141601"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
-Az Azure Active Directory (Azure AD) szolgáltatásban létrehozhat összetett attribútum-alapú szabályokat a csoportok dinamikus tagságának engedélyezéséhez. A dinamikus csoporttagság csökkenti a felhasználók hozzáadásának és eltávolításának adminisztratív terheit. Ez a cikk részletesen ismerteti a tulajdonságokat és a szintaxist, hogy dinamikus tagsági szabályokat hozzon létre a felhasználók és az eszközök számára. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
+Az Azure Active Directory (Azure AD) szolgáltatásban létrehozhat összetett attribútum-alapú szabályokat a csoportok dinamikus tagságának engedélyezéséhez. A dinamikus csoporttagság csökkenti a felhasználók hozzáadásának és eltávolításának adminisztratív terheit. Ez a cikk részletesen ismerteti a tulajdonságokat és a szintaxist, hogy dinamikus tagsági szabályokat hozzon létre a felhasználók és az eszközök számára. Beállíthat egy szabályt a dinamikus tagsághoz a biztonsági csoportokban vagy a Mikroszkóp 365-csoportokban.
 
 Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer kiértékeli az összes dinamikus csoportosítási szabályt egy adott könyvtárban, hogy megtekintse, hogy a módosítás aktiválja-e az összes csoportot Hozzáadás vagy eltávolítás. Ha egy felhasználó vagy eszköz megfelel egy adott csoportra vonatkozó szabálynak, akkor a csoport tagjaként adja hozzá őket. Ha már nem felelnek meg a szabálynak, azok el lesznek távolítva. Nem lehet manuálisan hozzáadni vagy eltávolítani egy dinamikus csoport tagjait.
 
@@ -43,7 +43,7 @@ Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és
 - Szabály ötnél több kifejezéssel
 - A közvetlen jelentések szabálya
 - [Operátor prioritásának](groups-dynamic-membership.md#operator-precedence) beállítása
-- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például:`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például: `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
@@ -69,7 +69,7 @@ A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabál
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 
 - Tulajdonság
-- Művelet
+- Operátor
 - Érték
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
@@ -114,7 +114,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Irányítószám |Bármilyen sztring vagy *Null* érték |(User. irányítószám – EQ "érték") |
 | preferredLanguage |ISO 639-1 kód |(User. preferredLanguage – EQ "en-US") |
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
-| state |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
+| állapot |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
 | surname |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
@@ -127,7 +127,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőt tartalmazza: " alias@domain ") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses – az "SMTP: alias@domain " érték szerepel) |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses – az "SMTP: alias@domain " érték szerepel) |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
 
@@ -252,7 +252,7 @@ A többértékű tulajdonságok azonos típusú objektumok gyűjteményei. Felha
 | Tulajdonságok | Értékek | Használat |
 | --- | --- | --- |
 | assignedPlans | A gyűjtemény minden objektuma a következő karakterlánc-tulajdonságokat teszi elérhetővé: capabilityStatus, Service, servicePlanId |User. assignedPlans – any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-és assignedPlan. capabilityStatus-EQ "engedélyezve") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -tartalmazza a "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any ( \_ -tartalmazza a "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>A-any és az-All operátorok használata
 
@@ -269,7 +269,7 @@ a assignedPlans egy többértékű tulajdonság, amely felsorolja a felhasznál�
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Az ilyen szabályok például az összes olyan felhasználó csoportosítására használhatók, akik számára engedélyezve van az Office 365 (vagy más Microsoft Online Service) képesség. Ezután alkalmazhat szabályzatokat a csoportra.
+Az ilyen szabályok például az összes olyan felhasználó csoportosítására használhatók, akik számára engedélyezve van egy Microsoft 365 (vagy más Microsoft Online Service) képesség. Ezután alkalmazhat szabályzatokat a csoportra.
 
 #### <a name="example-2"></a>2\. példa
 
@@ -395,7 +395,7 @@ A következő eszköz-attribútumok használhatók.
 > [!Note]  
 > Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

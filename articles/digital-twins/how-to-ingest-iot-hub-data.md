@@ -2,273 +2,246 @@
 title: Telemetria betöltése az IoT Hubról
 titleSuffix: Azure Digital Twins
 description: 'Lásd: az eszköz telemetria üzeneteinek betöltése IoT Hubról.'
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131565"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163615"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
 Az Azure digitális Twins a IoT-eszközökről és más forrásokból származó adatokon alapul. Az Azure Digital Twins szolgáltatásban használható eszköz-adatforrások közös forrása [IoT hub](../iot-hub/about-iot-hub.md).
 
-Az előzetes verzióban az adatok Azure digitális Ikrekbe való betöltésének folyamata egy külső számítási erőforrás, például egy [Azure-függvény](../azure-functions/functions-overview.md)beállítása, amely fogadja az adatok fogadását, és a [DigitalTwins API](how-to-use-apis-sdks.md) -kkal állítja be a Tulajdonságok vagy a telemetria események [digitális ikrekre](concepts-twins-graph.md) való beállítását. 
+Az adatok Azure digitális Ikrekbe való betöltésének folyamata egy külső számítási erőforrás, például egy [Azure-függvény](../azure-functions/functions-overview.md)beállítása, amely fogadja az adatok fogadását, és a [DigitalTwins API](how-to-use-apis-sdks.md) -kkal állítja be a Tulajdonságok vagy a telemetria események [digitális ikrekre](concepts-twins-graph.md) való beállítását. 
 
 Ez a dokumentum végigvezeti egy olyan Azure-függvény írására szolgáló folyamaton, amely képes a telemetria betöltésére IoT Hub.
-
-## <a name="example-telemetry-scenario"></a>Példa telemetria forgatókönyvre
-
-Ez a útmutató ismerteti, hogyan küldhet üzeneteket IoT Hubról Azure digitális Twins-ra egy Azure-függvény használatával. Számos lehetséges konfiguráció és megfelelő stratégia használható ehhez, de a cikk példája a következő részeket tartalmazza:
-* Egy IoT Hub hőmérő eszköz, egy ismert eszköz azonosítójával.
-* Egy digitális Twin, amely az eszközt a megfelelő AZONOSÍTÓval jelöli
-* Egy szobát jelölő digitális Twin
-
-> [!NOTE]
-> Ez a példa egy egyszerű azonosító egyezést használ az eszköz azonosítója és a hozzá tartozó digitális Twin azonosító között, de az eszközről a Twin (például egy leképezési táblával) kifinomultabb leképezések is megadhatók.
-
-Amikor a hőmérő eszköz elküld egy hőmérsékleti telemetria eseményt, a Twin *Room* *hőmérséklet* tulajdonságának frissítenie kell. Ennek elvégzéséhez egy eszközön egy telemetria-eseményről kell leképezni egy, a digitális Twin-ben lévő tulajdonságot. A Twin [gráf](concepts-twins-graph.md) topológiával kapcsolatos információkat fog használni, hogy megkeresse a Twin *Room* -t, majd megadhatja a Twin tulajdonságot. Más esetekben előfordulhat, hogy a felhasználók a megfelelő twin (ebben a példában az *123*-es azonosítójú Twin) tulajdonságot szeretnék beállítani. Az Azure Digital Twins sok rugalmasságot biztosít annak eldöntéséhez, hogy hogyan telemetria az adatleképezések az ikrekbe. 
-
-Ezt a forgatókönyvet az alábbi ábrán ismertetjük:
-
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Az IoT Hub-eszközök hőmérséklet-telemetria küldenek IoT Hub, Event Grid vagy rendszertémakörök között egy Azure-függvénynek, amely frissíti a hőmérséklet-tulajdonságot az ikrekben az Azure digitális Twins-ban." border="false":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A példa folytatása előtt végre kell hajtania a következő előfeltételeket.
-1. Hozzon létre egy IoT hubot. Útmutatásért tekintse meg a [IoT hub](../iot-hub/quickstart-send-telemetry-cli.md) útmutató *IoT hub létrehozása* című szakaszát.
-2. Hozzon létre legalább egy Azure-függvényt az események IoT Hubból való feldolgozásához. [*Útmutató: Azure-függvény beállítása az adatok feldolgozásához*](how-to-create-azure-function.md) egy olyan alapszintű Azure-függvény létrehozásához, amely csatlakozhat az Azure Digital Twins-hoz, és meghívja az Azure digitális Twins API-funkcióit. Ennek a funkciónak a többi része fog kiépíteni.
-3. Esemény célhelyének beállítása a hub-adatként. A [Azure Portal](https://portal.azure.com/)navigáljon a IoT hub-példányhoz. Az *események*területen hozzon létre egy előfizetést az Azure-függvényhez. 
+* **Egy IoT hub**. Útmutatásért tekintse meg a [IoT hub](../iot-hub/quickstart-send-telemetry-cli.md) útmutató *IoT hub létrehozása* című szakaszát.
+* **Egy Azure-függvény** , amely megfelelő engedélyekkel rendelkezik a digitális kettős példány meghívásához. Útmutató [*: Azure-függvény beállítása az információk feldolgozásához*](how-to-create-azure-function.md) utasításokért. 
+* **Egy digitális Twins-példány** , amely az eszköz telemetria fogja fogadni. [ *Útmutató: Azure digitális Twins-példány és-hitelesítés beállítása*](./how-to-set-up-instance-portal.md) 
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure Portal: esemény-előfizetés hozzáadása":::
+### <a name="example-telemetry-scenario"></a>Példa telemetria forgatókönyvre
 
-4. Az *esemény-előfizetés létrehozása* lapon töltse ki a mezőket a következőképpen:
-   * Az *esemény-előfizetés részletei*területen nevezze el az előfizetést, amire szeretné
-   * Az *eseménytípus*területen válassza ki az *eszköz telemetria* elemet a szűrni kívánt esemény típusaként.
-      - Ha szeretné, adja hozzá a szűrőket más típusú eseményekhez.
-   * A *VÉGPONT részletei*területen válassza ki az Azure-függvényt végpontként
+Ez a útmutató ismerteti, hogyan küldhet üzeneteket IoT Hubról Azure digitális Twins-ra egy Azure-függvény használatával. Számos lehetséges konfiguráció és megfelelő stratégia használható ehhez, de a cikk példája a következő részeket tartalmazza:
+* Egy IoT Hub hőmérő eszköz, egy ismert eszköz azonosítójával.
+* Egy digitális Twin, amely az eszközt a megfelelő AZONOSÍTÓval jelöli
 
-## <a name="create-an-azure-function-in-visual-studio"></a>Azure-függvény létrehozása a Visual Studióban
+> [!NOTE]
+> Ez a példa egy egyszerű azonosító egyezést használ az eszköz azonosítója és a hozzá tartozó digitális Twin azonosító között, de az eszközről a Twin (például egy leképezési táblával) kifinomultabb leképezések is megadhatók.
+
+Ha a hőmérő eszköz egy hőmérséklet-telemetria eseményt küld, a digitális iker *hőmérséklet* tulajdonságát frissíteni kell. Ezt a forgatókönyvet az alábbi ábrán ismertetjük:
+
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hub egy Azure-függvénynek, amely egy, az Azure-beli digitális Ikrekben található Twin értékre frissíti a hőmérséklet-tulajdonságot." border="false":::
+
+## <a name="add-a-model-and-twin"></a>Modell hozzáadása és Twin
+
+Az IoT hub-információkkal együtt kell frissítenie.
+
+A modell így néz ki:
+```JSON
+{
+  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+  "@type": "Interface",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
+
+A **modell az ikrek-példányba való feltöltéséhez**nyissa meg az Azure CLI-t, és futtassa a következő parancsot:
+```azurecli-interactive
+az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
+```
+
+Ezután **létre kell hoznia egy IKeret a modell használatával**. A következő parancs használatával hozzon létre egy dupla értéket, és állítsa be a 0,0 kezdeti hőmérsékleti értékként.
+```azurecli-interactive
+az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+```
+
+A sikeres Twin Create parancs kimenetének a következőhöz hasonlóan kell kinéznie:
+```json
+{
+  "$dtId": "thermostat67",
+  "$etag": "W/\"0000000-9735-4f41-98d5-90d68e673e15\"",
+  "$metadata": {
+    "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+    "Temperature": {
+      "ackCode": 200,
+      "ackDescription": "Auto-Sync",
+      "ackVersion": 1,
+      "desiredValue": 0.0,
+      "desiredVersion": 1
+    }
+  },
+  "Temperature": 0.0
+}
+```
+
+## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
 Ez a szakasz ugyanazokat a Visual Studio-indítási lépéseket és az Azure Function csontvázát használja a [*útmutató: Azure-függvény beállítása az adatok feldolgozásához*](how-to-create-azure-function.md). A csontváz kezeli a hitelesítést, és létrehoz egy szolgáltatási ügyfelet, amely készen áll arra, hogy feldolgozza az adatfeldolgozást, és az Azure Digital Twins API-kat hívja 
 
-A csontváz függvény szíve a következő:
-
-```csharp
-namespace FunctionSample
-{
-    public static class FooFunction
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("Foo")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            DigitalTwinsClient client = null;
-            try
-            {
-                ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-                DigitalTwinsClientOptions opts = 
-                    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-                                                
-                log.LogInformation($"ADT service client connection created.");
-            }
-            catch (Exception e)
-            {
-                log.LogError($"ADT service client connection failed. " + e.ToString());
-                return;
-            }
-            log.LogInformation(eventGridEvent.Data.ToString());
-        }
-    }
-}
-```
-
 Az alábbi lépéseket követve hozzá kell adnia egy adott kódot a IoT telemetria-események feldolgozásához IoT Hub.  
 
-## <a name="add-telemetry-processing"></a>Telemetria-feldolgozás hozzáadása
-
+### <a name="add-telemetry-processing"></a>Telemetria-feldolgozás hozzáadása
+    
 A telemetria események üzenetek formájában érkeznek az eszközről. A telemetria-feldolgozási kód hozzáadásának első lépéseként kinyeri az üzenet megfelelő részét az Event Grid eseményből. 
 
-A különböző eszközök eltérő módon strukturálják az üzeneteiket, így a lépéshez tartozó kód a csatlakoztatott eszköztől függ. 
+A különböző eszközök eltérő módon strukturálják az üzeneteiket, így a lépéshez tartozó kód a **csatlakoztatott eszköztől függ.** 
 
-A következő kód példát mutat be egy egyszerű eszközre, amely a telemetria JSON-ként küldi el. A minta kibontja az üzenetet küldő eszköz AZONOSÍTÓját, valamint a hőmérséklet értékét.
+A következő kód példát mutat be egy egyszerű eszközre, amely a telemetria JSON-ként küldi el. Ez a minta teljes körűen fel van derítve az [*oktatóanyagban: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md). A következő kód megkeresi az üzenetet elküldő eszköz AZONOSÍTÓját, valamint a hőmérséklet értékét.
 
 ```csharp
-JObject job = eventGridEvent.Data as JObject;
-string devid = (string)job["systemProperties"].ToObject<JObject>().Property("IoT-hub-connection-device-ID").Value;
-double temp = (double)job["body"].ToObject<JObject>().Property("temperature").Value;
+JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+var temperature = deviceMessage["body"]["Temperature"];
 ```
 
-Ne felejtse el, hogy a gyakorlat célja egy *helyiség* hőmérsékletének frissítése a Twin gráfon belül. Ez azt jelenti, hogy az üzenet célja nem az ehhez az eszközhöz társított digitális Twin, de a Twin *szoba* , amely a szülője. A szülő IKeret az telemetria-üzenetből a fenti kóddal kinyert eszköz-azonosító érték használatával találja.
-
-Ehhez használja az Azure Digital Twins API-kat, hogy hozzáférjenek az eszközhöz tartozó "Twin" kapcsolatokhoz (amelyek ebben az esetben ugyanazzal az AZONOSÍTÓval rendelkeznek). A bejövő kapcsolatból megkeresheti a szülő AZONOSÍTÓját az alábbi kódrészlettel.
-
-Az alábbi kódrészlet azt mutatja be, hogyan lehet lekérdezni a kettős kapcsolatok bejövő kapcsolatait:
+A következő mintakód az azonosító és a hőmérséklet értékét veszi fel, és a "javítás" (a frissítések elvégzése) elemre használja a Twin.
 
 ```csharp
-AsyncPageable<IncomingRelationship> res = client.GetIncomingRelationshipsAsync(twin_id);
-await foreach (IncomingRelationship irel in res)
-{
-    Log.Ok($"Relationship: {irel.RelationshipName} from {irel.SourceId} | {irel.RelationshipId}");
-}
-```
-
-A Twin szülője a kapcsolat *SourceId forrásazonosító* tulajdonságában található.
-
-Meglehetősen gyakori, ha egy különálló modell egy olyan eszközt jelöl, amely csak egyetlen bejövő kapcsolattal rendelkezik. Ebben az esetben választhatja az első (és csak a) kapcsolat eredményét. Ha a modellek több típusú kapcsolatot is lehetővé tesznek ehhez a Twin típushoz, előfordulhat, hogy további, több bejövő kapcsolat közül kell megadnia. Ennek egyik leggyakoribb módja a kapcsolat kiválasztása `RelationshipName` . 
-
-Ha már rendelkezik a *szobát*jelképező szülő-iker azonosítóval, akkor a "javítás" (a frissítés a következőre) a Twin. Ehhez használja a következő kódot:
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", temp);
-try
-{
-    await client.UpdateDigitalTwinAsync(twin_id, uou.Serialize());
-    Log.Ok($"Twin '{twin_id}' updated successfully!");
-}
+//Update twin using device temperature
+var uou = new UpdateOperationsUtility();
+uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 ...
 ```
 
-### <a name="full-azure-function-code"></a>Teljes Azure-függvény kódja
+### <a name="update-your-azure-function-code"></a>Azure-függvény kódjának frissítése
 
-A korábbi mintákból származó kód használatával itt látható a teljes Azure-függvény a kontextusban:
+Most, hogy megértette a kódot a korábbi mintákból, nyissa meg a Visual studiót, és cserélje le az Azure Function kódját ezzel a mintakód-kódra.
 
 ```csharp
-[FunctionName("ProcessHubToDTEvents")]
-public async void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+using System;
+using System.Net.Http;
+using Azure.Core.Pipeline;
+using Azure.DigitalTwins.Core;
+using Azure.DigitalTwins.Core.Serialization;
+using Azure.Identity;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace IotHubtoTwins
 {
-    // After this is deployed, in order for this function to be authorized on Azure Digital Twins APIs,
-    // you'll need to turn the Managed Identity Status to "On", 
-    // grab the Object ID of the function, and assign the "Azure Digital Twins Owner (Preview)" role to this function identity.
+    public class IoTHubtoTwins
+    {
+        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+        private static readonly HttpClient httpClient = new HttpClient();
 
-    DigitalTwinsClient client = null;
-    //log.LogInformation(eventGridEvent.Data.ToString());
-    // Authenticate on Azure Digital Twins APIs
-    try
-    {
-        
-        ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-        client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-        log.LogInformation($"ADT service client connection created.");
-    }
-    catch (Exception e)
-    {
-        log.LogError($"ADT service client connection failed. " + e.ToString());
-        return;
-    }
-
-    if (client != null)
-    {
-        try
+        [FunctionName("IoTHubtoTwins")]
+        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
         {
-            if (eventGridEvent != null && eventGridEvent.Data != null)
+            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
+
+            try
             {
-                #region Open this region for message format information
-                // Telemetry message format
-                //{
-                //  "properties": { },
-                //  "systemProperties": 
-                // {
-                //    "iothub-connection-device-id": "thermostat1",
-                //    "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-                //    "iothub-connection-auth-generation-id": "637199981642612179",
-                //    "iothub-enqueuedtime": "2020-03-18T18:35:08.269Z",
-                //    "iothub-message-source": "Telemetry"
-                //  },
-                //  "body": "eyJUZW1wZXJhdHVyZSI6NzAuOTI3MjM0MDg3MTA1NDg5fQ=="
-                //}
-                #endregion
-
-                // Reading deviceId from message headers
-                log.LogInformation(eventGridEvent.Data.ToString());
-                JObject job = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                string deviceId = (string)job["systemProperties"]["iothub-connection-device-id"];
-                log.LogInformation($"Found device: {deviceId}");
-
-                // Extracting temperature from device telemetry
-                byte[] body = System.Convert.FromBase64String(job["body"].ToString());
-                var value = System.Text.ASCIIEncoding.ASCII.GetString(body);
-                var bodyProperty = (JObject)JsonConvert.DeserializeObject(value);
-                var temperature = bodyProperty["Temperature"];
-                log.LogInformation($"Device Temperature is:{temperature}");
-
-                // Update device Temperature property
-                await AdtUtilities.UpdateTwinProperty(client, deviceId, "/Temperature", temperature, log);
-
-                // Find parent using incoming relationships
-                string parentId = await AdtUtilities.FindParent(client, deviceId, "contains", log);
-                if (parentId != null)
+                //Authenticate with Digital Twins
+                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+                DigitalTwinsClient client = new DigitalTwinsClient(
+                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
+                    { Transport = new HttpClientTransport(httpClient) });
+                log.LogInformation($"ADT service client connection created.");
+            
+                if (eventGridEvent != null && eventGridEvent.Data != null)
                 {
-                    await AdtUtilities.UpdateTwinProperty(client, parentId, "/Temperature", temperature, log);
-                }
+                    log.LogInformation(eventGridEvent.Data.ToString());
 
+                    // Reading deviceId and temperature for IoT Hub JSON
+                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+                    var temperature = deviceMessage["body"]["Temperature"];
+                    
+                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
+
+                    //Update twin using device temperature
+                    var uou = new UpdateOperationsUtility();
+                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                }
+            }
+            catch (Exception e)
+            {
+                log.LogError($"Error in ingest function: {e.Message}");
             }
         }
-        catch (Exception e)
-        {
-            log.LogError($"Error in ingest function: {e.Message}");
-        }
     }
 }
 ```
 
-A (z) funkció a bejövő kapcsolatok kereséséhez:
-```csharp
-public static async Task<string> FindParent(DigitalTwinsClient client, string child, string relname, ILogger log)
+## <a name="connect-your-function-to-iot-hub"></a>A függvény összekapcsolásával IoT Hub
+
+1. Esemény célhelyének beállítása a hub-adatként. A [Azure Portal](https://portal.azure.com/)navigáljon a IoT hub-példányhoz. Az **események**területen hozzon létre egy előfizetést az Azure-függvényhez. 
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Képernyőkép az esemény-előfizetés hozzáadását bemutató Azure Portalról.":::
+
+2. Az **esemény-előfizetés létrehozása** lapon töltse ki a mezőket a következőképpen:
+    1. A **név**mezőben adja meg az előfizetés nevét.
+    2. Az **esemény sémája**területen válassza ki **Event Grid sémát**.
+    3. A **Rendszertéma neve**területen válasszon egy egyedi nevet.
+    4. Az **eseménytípus**területen válassza az **eszköz telemetria** lehetőséget a szűrendő esemény típusaként.
+    5. A **végpont részletei**területen válassza ki az Azure-függvényt végpontként.
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="Az esemény-előfizetés részleteit megjelenítő Azure Portal képernyőképe":::
+
+## <a name="send-simulated-iot-data"></a>Szimulált IoT-adatgyűjtés küldése
+
+Az új beáramlási funkció teszteléséhez használja az eszköz-szimulátort az [*oktatóanyag: végpontok közötti megoldás csatlakoztatása*](./tutorial-end-to-end.md). Ezt az oktatóanyagot C# nyelven írt minta projekt vezérli. A mintakód itt található: [Azure digitális Twins-minták](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). A **DeviceSimulator** projektet a tárházban fogja használni.
+
+A végpontok közötti oktatóanyagban hajtsa végre a következő lépéseket:
+1. [*A szimulált eszköz regisztrálása IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [*A szimuláció konfigurálása és futtatása*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+
+## <a name="validate-your-results"></a>Az eredmények ellenőrzése
+
+A fenti eszköz-szimulátor futtatásakor a rendszer megváltoztatja a digitális iker hőmérséklet-értékét. Az Azure CLI-ben futtassa a következő parancsot a hőmérséklet értékének megtekintéséhez.
+
+```azurecli-interactive
+az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+```
+
+A kimenetnek az alábbihoz hasonló hőmérsékleti értéket kell tartalmaznia:
+
+```json
 {
-    // Find parent using incoming relationships
-    try
+  "result": [
     {
-        AsyncPageable<IncomingRelationship> rels = client.GetIncomingRelationshipsAsync(child);
-
-        await foreach (IncomingRelationship ie in rels)
-        {
-            if (ie.RelationshipName == relname)
-                return (ie.SourceId);
+      "$dtId": "thermostat67",
+      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$metadata": {
+        "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+        "Temperature": {
+          "ackCode": 200,
+          "ackDescription": "Auto-Sync",
+          "ackVersion": 1,
+          "desiredValue": 69.75806974934324,
+          "desiredVersion": 1
         }
+      },
+      "Temperature": 69.75806974934324
     }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error in retrieving parent:{exc.Status}:{exc.Message}");
-    }
-    return null;
+  ]
 }
 ```
 
-És a Utility függvény a Twin javításához:
-```csharp
-public static async Task UpdateTwinProperty(DigitalTwinsClient client, string twinId, string propertyPath, object value, ILogger log)
-{
-    // If the twin does not exist, this will log an error
-    try
-    {
-        // Update twin property
-        UpdateOperationsUtility uou = new UpdateOperationsUtility();
-        uou.AppendAddOp(propertyPath, value);
-        await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
-    }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error:{exc.Status}/{exc.Message}");
-    }
-}
-```
-
-Most már rendelkezik egy Azure-függvénnyel, amely a IoT Hubból érkező forgatókönyv-adatok olvasására és értelmezésére van felszerelve.
-
-## <a name="debug-azure-function-apps-locally"></a>Az Azure Function apps helyi hibakeresése
-
-Az Azure functions hibakeresése helyileg Event Grid triggerrel lehetséges. További információ erről: [*Event Grid trigger helyi hibakeresése*](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Az érték változásának megtekintéséhez futtassa többször a fenti lekérdezési parancsot.
 
 ## <a name="next-steps"></a>További lépések
 

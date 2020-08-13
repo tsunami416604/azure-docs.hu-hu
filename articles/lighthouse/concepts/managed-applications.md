@@ -1,24 +1,27 @@
 ---
 title: Azure Lighthouse és Azure Managed Applications
-description: Az Azure Lighthouse és az Azure által felügyelt alkalmazások...
-ms.date: 05/01/2020
+description: Ismerje meg, hogy az Azure Lighthouse és az Azure által felügyelt alkalmazások hogyan segíthetnek a különböző forgatókönyvek engedélyezésében, és hogyan használhatók együtt.
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121605"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163424"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
 
 Az Azure Managed Applications és az Azure Lighthouse is működik azáltal, hogy lehetővé teszi a szolgáltató számára az ügyfél bérlője által használt erőforrások elérését. Hasznos lehet megérteni a különbségeket a működésük módjában, valamint azokat a forgatókönyveket, amelyekkel a szolgáltatás lehetővé teszi, valamint hogy hogyan használhatók együtt.
 
+> [!TIP]
+> Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](enterprise.md) ugyanazokat a folyamatokat és eszközöket használhatják.
+
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Az Azure Lighthouse és az Azure által felügyelt alkalmazások összehasonlítása
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
-Az [Azure Lighthouse](../overview.md)használatával a szolgáltatók számos felügyeleti feladatot végezhetnek el közvetlenül az ügyfél előfizetésén (vagy erőforráscsoporthoz). Ez a hozzáférés egy logikai kivetítésen keresztül érhető el, amely lehetővé teszi a szolgáltatók számára, hogy bejelentkezzenek a saját bérlőbe, és hozzáférhessenek az ügyfél bérlőhöz tartozó erőforrásokhoz. Az ügyfél meghatározhatja, hogy mely előfizetések vagy erőforráscsoportok legyenek delegálva a szolgáltatónak, és az ügyfél teljes hozzáférést tart fenn ezekhez az erőforrásokhoz. A szolgáltató hozzáférését bármikor el is távolíthatja.
+Az [Azure Lighthouse](../overview.md)használatával a szolgáltatók számos felügyeleti feladatot végezhetnek el közvetlenül az ügyfél előfizetésében (vagy erőforráscsoporthoz). Ez a hozzáférés egy logikai kivetítésen keresztül érhető el, amely lehetővé teszi a szolgáltatók számára, hogy bejelentkezzenek a saját bérlőbe, és hozzáférhessenek az ügyfél bérlőhöz tartozó erőforrásokhoz. Az ügyfél meghatározhatja, hogy mely előfizetések vagy erőforráscsoportok legyenek delegálva a szolgáltatónak, és az ügyfél teljes hozzáférést tart fenn ezekhez az erőforrásokhoz. A szolgáltató hozzáférését bármikor el is távolíthatja.
 
 Az Azure Lighthouse használatához az Azure-beli erőforrás- [kezelést](azure-delegated-resource-management.md) az ARM-sablonok vagy egy [felügyelt szolgáltatási ajánlat Azure Marketplace-](managed-services-offers.md)en való [üzembe helyezésével](../how-to/onboard-customer.md) lehet előkészíteni. A [partnerek azonosítójának összekapcsolásával](../../cost-management-billing/manage/link-partner-id.md)nyomon követheti az ügyfelek bevonásának hatásait.
 
@@ -44,7 +47,7 @@ Előfordulhat például, hogy egy ügyfél a szolgáltató által az Azure Vilá
 
 Előfordulhat, hogy az ügyfelek több szolgáltató által felügyelt alkalmazások is érdeklik, függetlenül attól, hogy a felügyelt szolgáltatásokat is használják-e az Azure Lighthouse-n keresztül ezen szolgáltatók bármelyikén. Emellett a Cloud Solution Provider (CSP) program partnerei olyan felügyelt alkalmazásokat is megadhatnak, amelyeket az Azure Lighthouse-n keresztül támogatnak más ISV-ket. Számos lehetőség közül a szolgáltatók kiválaszthatják a megfelelő egyensúlyt az ügyfelek igényeinek kielégítéséhez, miközben szükség esetén korlátozzák az erőforrásokhoz való hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure által felügyelt alkalmazásokról](../../azure-resource-manager/managed-applications/overview.md).
 - Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure Lighthouse](../how-to/onboard-customer.md)szolgáltatásba.

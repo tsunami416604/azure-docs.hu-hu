@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 280a59d8c378de6b3667560a4eb2b1cf95041f8d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298788"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163883"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
@@ -40,7 +40,7 @@ Hajtsa végre a következő lépéseket és előfeltételeket az [oktatóanyagba
 
 A webes API-erőforrásokat regisztrálni kell a bérlőn, mielőtt azok elfogadják és reagálni tudják a védett erőforrásokra vonatkozó kéréseket olyan ügyfélalkalmazások számára, amelyek hozzáférési jogkivonatot mutatnak be.
 
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
@@ -50,7 +50,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. Adja meg az alkalmazás **nevét** . Például: *webapi1*.
 1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a következőt: `https://localhost:44332` .
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
@@ -63,7 +63,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 6. A **Web App/web API belefoglalásához**válassza az **Igen**lehetőséget.
 7. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a következőt: `https://localhost:44332` .
 8. Az **alkalmazás-azonosító URI-ja**mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Create** (Létrehozás) gombra.
 10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 * * *
@@ -94,7 +94,7 @@ Két projekt szerepel a mintául szolgáló megoldásban:
 ### <a name="configure-the-web-application"></a>A webalkalmazás konfigurálása
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
-1. A **TaskWebApp** projektben nyissa meg a **web. config**fájlt.
+1. A **TaskWebApp** projektben nyissa meg **Web.config**.
 1. Az API helyi futtatásához használja az **api:TaskServiceUrl** localhost-beállítást. Az alábbiak szerint módosítsa a Web.config fájlt:
 
     ```csharp
@@ -111,7 +111,7 @@ Két projekt szerepel a mintául szolgáló megoldásban:
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
-1. A **TaskService** projektben nyissa meg a **web. config**fájlt.
+1. A **TaskService** projektben nyissa meg **Web.config**.
 1. Konfigurálja az API-t a bérlő használatához.
 
     ```csharp
@@ -147,7 +147,7 @@ A **TaskWebApp** és a **TaskService** projektet is futtatnia kell.
 1. Mindkét projektnél módosítsa a **Művelet** értékét **Indításra**.
 1. A konfiguráció mentéséhez kattintson **az OK** gombra.
 1. Nyomja le az **F5** gombot mindkét alkalmazás futtatásához. Minden alkalmazás saját böngészőablakban nyílik meg.
-    * `https://localhost:44316/`a webalkalmazás.
+    * `https://localhost:44316/` a webalkalmazás.
     * `https://localhost:44332/` a webes API.
 
 1. A webalkalmazásban válassza a **regisztráció/bejelentkezés** lehetőséget a webalkalmazásba való bejelentkezéshez. Használja a korábban létrehozott fiókot.

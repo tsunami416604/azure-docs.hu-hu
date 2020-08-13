@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – virtuális gép lemezének visszaállítása Azure Backup
+title: Oktatóanyag – virtuális gép visszaállítása az Azure CLI-vel
 description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan hozhat létre és állíthat helyre egy virtuális gépet az Azure-ban a Backup és a Recovery Services használatával.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289470"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141346"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
+# <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI-vel
 
 Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép parancssori felülettel való visszaállításának módját ismerteti. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -25,7 +25,7 @@ További információért a PowerShell a lemez visszaállításhoz és egy helyr
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Ehhez az oktatóanyaghoz olyan Linux rendszerű virtuális gépre van szükség,
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
-Amikor az Azure biztonsági mentést kezdeményez, a virtuális gépen futó biztonsági mentési bővítmény időponthoz kötött pillanatképet készít. A biztonsági mentési bővítmény az első biztonsági mentés kérésekor települ a virtuális gépre. Az Azure Backup akkor is tud pillanatképet készíteni az alapul szolgáló tárolóról, ha a virtuális gép a biztonsági mentés közben nem fut.
+Amikor az Azure biztonsági mentést kezdeményez, a virtuális gépen futó biztonsági mentési bővítmény időponthoz kötött pillanatképet készít. A biztonsági mentési bővítmény az első biztonsági mentés kérésekor települ a virtuális gépre. Azure Backup az alapul szolgáló tárterületről is készíthet pillanatképet, ha a virtuális gép nem fut a biztonsági mentés során.
 
 Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít. Amikor az Azure Backup elkészítette a pillanatképet, az adatok átkerülnek a helyreállítási tárba. A maximális hatékonyság érdekében az Azure Backup csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
@@ -204,7 +204,7 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>A központi telepítési sablon beolvasása
 
-A sablon nem érhető el közvetlenül, mert az ügyfél Storage-fiókja és a megadott tároló alatt található. Ehhez a sablonhoz a teljes URL-címet (valamint egy ideiglenes SAS-tokent) kell elérni.
+A sablon nem érhető el közvetlenül, mert az ügyfél Storage-fiókja és a megadott tároló alatt van. Ehhez a sablonhoz a teljes URL-címet (valamint egy ideiglenes SAS-tokent) kell elérni.
 
 Először bontsa ki a sablon blob URI-ját a feladatok részletei közül.
 
@@ -224,7 +224,7 @@ A sablon blob URI-ja ebben a formátumban lesz, és Kinyeri a sablon nevét.
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-Így a fenti példában szereplő sablon neve lesz, ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` a tároló neve pedig```myVM-daa1931199fd4a22ae601f46d8812276```
+Így a fenti példában szereplő sablon neve lesz, ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` a tároló neve pedig ```myVM-daa1931199fd4a22ae601f46d8812276```
 
 Most szerezze be a tárolóhoz és a sablonhoz tartozó SAS-tokent az [itt](../azure-resource-manager/templates/secure-template-with-sas-token.md?tabs=azure-cli#provide-sas-token-during-deployment) részletezett módon.
 
@@ -264,7 +264,7 @@ Ha ellenőrizni szeretné, hogy létrejött-e a virtuális gép a helyreállíto
 az vm list --resource-group myResourceGroup --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban visszaállított egy lemezt a helyreállítási pontról, és létrehozott egy virtuális gépet a lemezről. Megtanulta végrehajtani az alábbi műveleteket:
 

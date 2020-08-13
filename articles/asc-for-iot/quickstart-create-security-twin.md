@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310862"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142247"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
 
@@ -59,7 +59,7 @@ Ha manuálisan szeretne létrehozni egy új _azureiotsecurity_ -modult egy eszk�
 1. Kattintson az eszközre, majd a **modul identitásának hozzáadása**elemre.
 1. A **modul identitásának neve** mezőbe írja be a **azureiotsecurity**nevet.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="verify-creation-of-a-module-twin"></a>Modul létrehozásának ellenőrzése
 
@@ -74,9 +74,9 @@ Annak ellenőrzése, hogy van-e különálló biztonsági modul egy adott eszkö
 
 Ha többet szeretne megtudni az IoT-modulok Azure Security Center tulajdonságainak testreszabásáról, tekintse meg az [ügynök konfigurálása](how-to-agent-configuration.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan konfigurálhat egyéni riasztásokat...
+A következő cikkből megtudhatja, hogyan vizsgálhatja meg a biztonsági javaslatokat...
 
 > [!div class="nextstepaction"]
-> [Egyéni riasztások konfigurálása](quickstart-create-custom-alerts.md)
+> [Biztonsági javaslatok vizsgálata](quickstart-investigate-security-recommendations.md)

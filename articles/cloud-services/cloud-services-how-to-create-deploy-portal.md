@@ -1,6 +1,6 @@
 ---
 title: Felhőalapú szolgáltatás létrehozása és üzembe helyezése | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe felhőalapú szolgáltatásokat a Azure Portal használatával.
+description: Megtudhatja, hogyan hozhat létre felhőalapú szolgáltatást a gyors létrehozás módszer használatával, és hogyan töltheti fel a Cloud Service-csomagok feltöltését és üzembe helyezését az Azure-ban.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811339"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142383"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Felhőalapú szolgáltatás létrehozása és üzembe helyezése
 A Azure Portal kétféle módszert biztosít a felhőalapú szolgáltatások létrehozására és üzembe helyezésére: *gyors létrehozás* és *Egyéni létrehozás*.
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan használható a gyors létrehozás módszer egy 
 >
 >
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 Az Azure-ban az alkalmazások felhőalapú szolgáltatásként való üzembe helyezéséhez három összetevő szükséges:
 
 * **Szolgáltatás definíciója**  
@@ -86,7 +86,7 @@ Ha a központi telepítési csomag [tanúsítvány használatára lett konfigur�
 
 [TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
 * [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).
