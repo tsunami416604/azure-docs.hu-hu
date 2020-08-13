@@ -22,6 +22,8 @@
   items:
     - name: Alkalmazás manuális skálázása
       href: spring-cloud-tutorial-scale-manual.md
+    - name: Alkalmazások automatikus skálázása
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Riasztások és műveletcsoportok
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: IntelliJ használata alkalmazások üzembe helyezéséhez
@@ -38,8 +40,6 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: A Key Vault összekapcsolása egy Azure Spring Cloud-alkalmazással felügyelt identitás segítségével
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Automatikus skálázás beállítása mikroszolgáltatás-alkalmazásokhoz
-      href: spring-cloud-tutorial-setup-autoscale.md
 - name: Példák
   items:
     - name: Az Azure Policy beépített elemei

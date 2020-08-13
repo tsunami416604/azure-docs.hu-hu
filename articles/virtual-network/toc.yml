@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: Virtuális hálózat létrehozása – Azure CLI
       href: quick-create-cli.md
+    - name: Virtuális hálózat létrehozása – ARM-sablon
+      href: quick-create-template.md
   expanded: true
 - name: Oktatóanyagok
   items:

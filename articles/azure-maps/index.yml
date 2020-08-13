@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure Maps dokumentációja
-summary: 'A Microsoft Azure Maps hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Ezek a térinformatikai funkciók a legfrissebb térképadatokat használják. Az Azure Maps a webes és mobilalkalmazások számára is elérhető. Az Azure Maps egy Azure One API-kompatibilis REST API-készlet. A következők csak az Azure Maps által ajánlott szolgáltatok magas szintű áttekintését jelentik: Maps, Search, Routing, Traffic, Mobility, Weather, Time Zones, Geolocation, Geofencing, Map Data és Spatial Operations. A webes és Android SDK-k révén a fejlesztés egyszerűen, rugalmasan és különböző platformokon is kivitelezhető.'
+summary: 'A Microsoft Azure Maps hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Ezek a térinformatikai funkciók a legfrissebb térképadatokat használják. Az Azure Maps a webes és mobilalkalmazások számára is elérhető. Az Azure Maps egy Azure One API-kompatibilis REST API-készlet. A következő csak az Azure Maps szolgáltatásainak magas szintű áttekintése: Maps, Search, Routing, Traffic, Mobility, Weather, Time Zones, Geolocation, Geofencing, Map Data, Creator és Spatial Operations. A webes és Android SDK-k révén a fejlesztés egyszerűen, rugalmasan és különböző platformokon is kivitelezhető.'
 metadata:
   title: Az Azure Maps dokumentációja | Microsoft Docs
   description: Tudnivalók az Azure Mapsről és annak használatáról térinformatikai szolgáltatások nyújtásához web- vagy mobilalkalmazások esetében.
@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 0760dce9e64560c8ecb593f41b2d611bd059a639
-  ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+  ms.openlocfilehash: 4e95d7d9afb77dcf8e168a04c9e0f4fc3b266807
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87461748"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88121646"
 landingContent:
 - title: Tudnivalók az Azure Mapsről
   linkLists:

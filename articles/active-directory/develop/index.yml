@@ -3,18 +3,18 @@ title: Microsoft-identitásplatform – dokumentáció
 summary: A Microsoft-identitásplatform hitelesítési szolgáltatást, nyílt forráskódú kódtárakat és alkalmazáskezelő eszközöket foglal magában. Gyorsútmutatóink, oktatóanyagaink és kódmintáink segítségével megtudhatja, hogyan hozhat létre modern, szabványalapú hitelesítési megoldásokat. Olyan alkalmazásokat fejleszthet, amelyekbe a felhasználók Microsoft-identitásukkal vagy közösségi fiókjukkal jelentkeznek be, és engedélyezheti a hozzáférést az Ön által létrehozott API-khoz vagy az olyan Microsoft API-khoz, mint a Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 07/13/2020
-  author: CelesteDG
-  ms.author: celested
+  ms.date: 08/11/2020
+  author: mmacy
+  ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: e17e6195d629238c9c719d8e34780593129ae244
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: d978cc0f2b59cdb1cd41b0cf5e23851ad5165558
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87027070"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88116733"
 landingContent:
 - title: A Microsoft identitásplatformja
   linkLists:
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET-mag
-      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: /samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -91,7 +91,7 @@ landingContent:
     - text: A Microsoft Graph API használata
       url: microsoft-graph-intro.md
     - text: A Microsoft Graph-hitelesítés áttekintése
-      url: https://docs.microsoft.com/graph/auth/
+      url: /graph/auth/
 - title: Protokollok
   linkLists:
   - linkListType: overview
@@ -116,3 +116,13 @@ landingContent:
       url: ../managed-identities-azure-resources/overview.md
     - text: Felügyelt identitások és Azure-beli virtuális gépek
       url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
+- title: A dokumentumok újdonságai
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Hibák és kivételek kezelése – Android
+      url: msal-android-handling-exceptions.md
+    - text: Könyvtárséma bővítményattribútumai jogcímekben
+      url: active-directory-schema-extensions.md
+    - text: MSAL.js 2.0 hitelesítési kód, PKCE és CORS
+      url: quickstart-v2-javascript-auth-code.md

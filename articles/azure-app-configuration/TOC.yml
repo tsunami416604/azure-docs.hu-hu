@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: Konfigurációs adatok importálása vagy exportálása
       href: howto-import-export-data.md
+    - name: JSON tartalomtípus használata kulcsértékekhez
+      href: howto-leverage-json-content-type.md
     - name: Események átirányítása egyéni végponthoz
       href: howto-app-configuration-event.md
     - name: A konfigurációs tár automatikus biztonsági mentése

@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: Az alkalmazásról
               href: howto-get-app-info.md
+            - name: X.509-tanúsítványok összegzése
+              href: how-to-roll-x509-certificates.md
         - name: Kezelés más helyekről
           items:
             - name: Kezelés az Azure Portalról

@@ -11,7 +11,11 @@
           expanded: true
           items:
             - name: Beállítás - Azure Portal
-              href: data-box-quickstart-portal.md
+              items:
+                - name: Importáláshoz
+                  href: data-box-quickstart-portal.md
+                - name: Exportáláshoz
+                  href: data-box-quickstart-export.md
         - name: Oktatóanyagok
           items:
             - name: Adatok importálása az Azure-ba

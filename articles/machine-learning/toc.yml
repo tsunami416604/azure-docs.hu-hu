@@ -161,11 +161,8 @@
             - name: Felhasználók és szerepkörök kezelése
               href: how-to-assign-roles.md
             - name: Virtuális hálózatok használata
-              displayName: 'vnet, blob'
+              displayName: 'vnet, blob, private endpoint, private link'
               href: how-to-enable-virtual-network.md
-            - name: Privát kapcsolat használata
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
             - name: Webszolgáltatások biztonságossá tétele TLS használatával
               displayName: ssl
               href: how-to-secure-web-service.md
@@ -457,8 +454,8 @@
         - name: Folyamatok hibakeresése és hibaelhárítása
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Folyamatok hibakeresése az Application Insightsban
-          href: how-to-debug-pipelines-application-insights.md
+        - name: Folyamatadatok naplózása az Application Insightsba
+          href: how-to-log-pipelines-application-insights.md
         - name: Párhuzamos futtatási lépés használata
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
