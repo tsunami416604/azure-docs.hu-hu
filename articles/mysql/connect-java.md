@@ -1,5 +1,5 @@
 ---
-title: Kapcsolat a Java-Azure Database for MySQL használatával
+title: 'Gyors útmutató: kapcsolat a Java használatával – Azure Database for MySQL'
 description: Ez a rövid útmutató egy olyan Java-kódrészletet tartalmaz, amellyel csatlakozhat egy Azure Database for MySQL adatbázisból, és lekérdezheti azokat.
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, devx-track-ja
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 5/26/2020
-ms.openlocfilehash: 4da7efc40177937aad8f1a97e909d90c4cf5f466
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b6f928aba1c3abda57a8ed329c0ad4e7cdb5e881
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322856"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185893"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Java használatával csatlakozhat a Azure Database for MySQLhoz, és lekérdezheti azokat
 
@@ -354,7 +354,7 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)

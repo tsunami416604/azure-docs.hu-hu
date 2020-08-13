@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031081"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185621"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -70,7 +70,7 @@ A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Eset | A riasztáshoz használandó metrika |
+| Forgatókönyv | A riasztáshoz használandó metrika |
 |-|-|
 | A kiszolgáló végpontjának állapota hibát jelez a portálon | Szinkronizálási munkamenet eredménye |
 | A fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal | Nem szinkronizált fájlok |
@@ -135,7 +135,7 @@ A kiszolgáló telemetria-eseménynaplójának használatával figyelheti a regi
 
 Szinkronizálás állapota
 
-- A 9102-es AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után van naplózva. Ezzel az eseménnyel megállapíthatja, hogy a szinkronizálási munkamenetek sikeresek-e (**HResult = 0**), és hogy vannak-e az egyes elemek szinkronizálási hibái. További információ: [Sync Health](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és [per-Item errors](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentáció.
+- A 9102-es AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után van naplózva. Ezzel az eseménnyel megállapíthatja, hogy a szinkronizálási munkamenetek sikeresek-e (**HResult = 0**), és hogy vannak-e az egyes elemek szinkronizálási hibái. További információ: [Sync Health](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és  [per-Item errors](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentáció.
 
   > [!Note]  
   > Időnként a szinkronizálási munkamenetek nem teljesek, vagy nem nulla PerItemErrorCount rendelkeznek. Azonban továbbra is előrehaladást végeznek, és néhány fájl szinkronizálása sikeresen megtörtént. Ezt az alkalmazott mezőkben láthatja, például AppliedFileCount, AppliedDirCount, AppliedTombstoneCount és AppliedSizeBytes. Ezek a mezők tájékoztatják, hogy a munkamenet mennyivel járt sikerrel. Ha úgy látja, hogy egy sorban több szinkronizálási munkamenet is meghibásodik, és egyre nagyobb mértékben vannak alkalmazva, a támogatási jegy megnyitása előtt adja meg a szinkronizálási időt.
@@ -156,12 +156,13 @@ Felhő-rétegek állapota
   - A 9016-es azonosítójú esemény a kötetek szellemképes eredményeit biztosítja. Például: a szabad terület százalékos értéke, a munkamenetben felkészült fájlok száma, és a fájlok száma nem sikerült.
   - A 9029-as AZONOSÍTÓJÚ esemény a kiszolgálói végpontok szellemkép-információit biztosítja. Például: a munkamenetben megkísérelt fájlok száma, a munkamenetben leírtak száma és a már lépcsőzetesen megadott fájlok száma.
   
-- A kiszolgálón található visszahívás-tevékenységek figyeléséhez használja a 9005, 9006, 9009 és 9059 azonosítójú eseményazonosítót a telemetria eseménynaplójában, amely Eseménynapló az *alkalmazások és a Services\Microsoft\FileSync\Agent*területen található.
+- A kiszolgálón található visszahívás-tevékenységek figyeléséhez használja a 9005, 9006, 9009, 9059 és 9071 azonosítójú eseményazonosítót a telemetria eseménynaplójában, amely Eseménynapló az *alkalmazások és a Services\Microsoft\FileSync\Agent*területen található.
 
   - Az 9005-as AZONOSÍTÓJÚ esemény egy kiszolgálói végpontra vonatkozó visszahívás megbízhatóságot biztosít. Például: összes elért egyedi fájl, valamint a sikertelen hozzáféréssel rendelkező egyedi fájlok teljes száma.
   - Az 9006-as AZONOSÍTÓJÚ esemény a kiszolgálói végpontok visszahívási hibáinak eloszlását biztosítja. Például: összes sikertelen kérelem és ErrorCode. A rendszer egy eseményt naplóz egy hibakód alapján.
   - Az 9009-as AZONOSÍTÓJÚ esemény egy kiszolgálói végpontra vonatkozó visszahívás-munkamenet-információkat biztosít. Például: DurationSeconds, CountFilesRecallSucceeded és CountFilesRecallFailed.
   - Az 9059-as AZONOSÍTÓJÚ esemény egy kiszolgálói végpont alkalmazás-visszahívási eloszlását biztosítja. Például: ShareId, alkalmazásnév és TotalEgressNetworkBytes.
+  - A 9071-es azonosítójú esemény biztosítja a felhőalapú rétegek hatékonyságát a kiszolgálói végpontok számára. Például: TotalDistinctFileCountCacheHit, TotalDistinctFileCountCacheMiss, TotalCacheHitBytes és TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>Teljesítményszámlálók
 
@@ -195,7 +196,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 5. A **jel logikájának konfigurálása** panelen kattintson a jel neve alatt található **szinkronizálási munkamenet eredménye** elemre.  
 6. Válassza ki a következő dimenzió-konfigurációt: 
     - Dimenzió neve: **kiszolgálói végpont neve**  
-    - Üzemeltető**=** 
+    - Üzemeltető **=** 
     - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
 7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
     - Küszöbérték **statikusra** állítva 
@@ -217,7 +218,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 5. A **jel logikájának konfigurálása** panelen kattintson a **nem szinkronizált fájlok** elemre a jel neve alatt.  
 6. Válassza ki a következő dimenzió-konfigurációt: 
      - Dimenzió neve: **kiszolgálói végpont neve**  
-     - Üzemeltető**=** 
+     - Üzemeltető **=** 
      - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
 7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
      - Küszöbérték **statikusra** állítva 
@@ -239,7 +240,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 5. A **jel logikájának konfigurálása** panelen kattintson a **kiszolgáló online állapota** lehetőségre a jel neve alatt.  
 6. Válassza ki a következő dimenzió-konfigurációt: 
      - Dimenzió neve: **kiszolgáló neve**  
-     - Üzemeltető**=** 
+     - Üzemeltető **=** 
      - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
 7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
      - Küszöbérték **statikusra** állítva 
@@ -261,7 +262,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 5. A **jel logikájának konfigurálása** panelen kattintson a **Felhőbeli rétegek felidézésének mérete** lehetőségre a jel neve alatt.  
 6. Válassza ki a következő dimenzió-konfigurációt: 
      - Dimenzió neve: **kiszolgáló neve**  
-     - Üzemeltető**=** 
+     - Üzemeltető **=** 
      - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
 7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
      - Küszöbérték **statikusra** állítva 
@@ -274,7 +275,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

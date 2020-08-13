@@ -9,21 +9,23 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544617"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185485"
 ---
 # <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
 
 A nem kód modellek üzembe helyezése jelenleg előzetes verzióban érhető el, és a következő Machine learning-keretrendszereket támogatja:
 
-## <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel formátuma
-A Tensorflow-modelleket **SavedModel formátumban** kell regisztrálni, hogy a kód nélküli üzembe helyezéssel működjön.
+## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel formátuma
+A TensorFlow-modelleket **SavedModel formátumban** kell regisztrálni, hogy a kód nélküli üzembe helyezéssel működjön.
 
 A SavedModel létrehozásával kapcsolatos információkért tekintse meg [ezt a hivatkozást](https://www.tensorflow.org/guide/saved_model) .
+
+A DockerHub-t [kiszolgáló TensorFlow](https://registry.hub.docker.com/r/tensorflow/serving/tags)a "címkék" területen felsorolt bármely TensorFlow-verziót támogatjuk.
 
 ```python
 from azureml.core import Model
@@ -124,7 +126,7 @@ print(output)
     - scipy
     - sklearn_pandas
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)

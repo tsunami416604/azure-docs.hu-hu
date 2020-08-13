@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer-egység leállítása
-description: Az Azure FXT Edge Filer-csomópont indítási és biztonságos leállítási eljárásai
+description: Ismerje meg az Azure FXT Edge Filer-csomópont indítási és biztonságos leállítási eljárásait a fürt Vezérlőpult szoftverének használatával.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506412"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184873"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Az Azure FXT Edge Filer-Hardver biztonságos kikapcsolása
 
@@ -33,7 +33,7 @@ Kövesse ezeket az utasításokat az Azure FXT Edge Filer-csomópontjának bizto
 1. A fürtcsomópontok listájában keresse meg azt, amelyet le szeretne állítani. Kattintson a **kikapcsolás** gombra a **műveletek** oszlopban. 
 1. Várjon néhány percet. A csomópont leáll, és ki is kapcsolhatja magát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az állapotjelző LED-eket és az [Azure FXT Edge Filer-hardver állapotának figyelésére](fxt-monitor.md)szolgáló egyéb indikátorokat.
 * További információk az Azure FXT Edge Filer tápegységek [csatlakoztatásával](fxt-network-power.md#connect-power-cables)kapcsolatban.

@@ -1,17 +1,17 @@
 ---
 title: 'Oktatóanyag: hardver inicializálása – Azure FXT Edge Filer'
-description: Kezdeti jelszó beállítása az Azure FXT Edge Filer-csomópontjain
+description: Ismerje meg, hogyan csatlakozhat a hardveres csomóponthoz, és hogyan állítható be a kezdeti jelszó az Azure FXT Edge Filer-csomópontokon.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fae7795cdd61e3eb465285163bcd6c0dd9f7db2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75550891"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184924"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Oktatóanyag: hardveres jelszavak beállítása
 
@@ -80,7 +80,7 @@ A beírt jelszó két dolgot használ:
 
 * Ez az Azure FXT Edge Filer-csomópontjának ideiglenes legfelső szintű jelszava. 
 
-  Ez a jelszó akkor változik, amikor létrehoz egy fürtöt a csomópont használatával, vagy ha hozzáadja ezt a csomópontot a fürthöz. A fürt felügyeleti jelszava (a felhasználóhoz ``admin``társítva) a fürt összes csomópontjának legfelső szintű jelszava is.
+  Ez a jelszó akkor változik, amikor létrehoz egy fürtöt a csomópont használatával, vagy ha hozzáadja ezt a csomópontot a fürthöz. A fürt felügyeleti jelszava (a felhasználóhoz társítva ``admin`` ) a fürt összes csomópontjának legfelső szintű jelszava is.
 
 * Ez a iDRAC/IPMI hardveres felügyeleti port hosszú távú jelszava.
 
@@ -98,7 +98,7 @@ A jelszó megadása után a rendszer folytatja a rendszerindítást. Amikor befe
 
 ## <a name="sign-in-as-root"></a>Bejelentkezés root-ként
 
-``root`` Jelentkezzen be az imént beállított jelszóval. 
+Jelentkezzen be ``root`` az imént beállított jelszóval. 
 
 ```
 login: root
@@ -107,7 +107,7 @@ Password:**********
 
 Miután bejelentkezett a gyökérként, a hálózati portok aktívak, és az IP-címekhez felveszik a kapcsolatot a DHCP-kiszolgálóval. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csomópont készen áll a fürt egy részének beosztására. Ezzel létrehozhatja az Azure FXT Edge Filer-fürtöt, vagy [hozzáadhatja egy meglévő fürthöz](fxt-add-nodes.md). 
 

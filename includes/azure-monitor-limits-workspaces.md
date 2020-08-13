@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 864b37c9e59786546ad2c29faf8457cfc3a21f6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161168"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186381"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -33,7 +33,7 @@ ms.locfileid: "82161168"
 | Ingyenes szint  | 10 | Ez a korlát nem növelhető. |
 | Az összes többi szintje | Korlátlan | Az erőforráscsoport erőforrásainak száma és az egyes előfizetésekhez tartozó erőforráscsoportok száma korlátozza. |
 
-**Azure Portalra**
+**Azure Portal**
 
 | Kategória | Korlát | Megjegyzések |
 |:---|:---|:---|
@@ -54,7 +54,7 @@ ms.locfileid: "82161168"
 | Egyetlen lekérdezésben visszaadott rekordok maximális száma | 500 000 | |
 | Visszaadott adatmennyiség maximális mérete | 64 000 000 bájt (~ 61 MiB)| |
 | Lekérdezés maximális futási ideje | 10 perc | További részletek: [időtúllépések](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
-| Kérelmek maximális száma | 200 kérelem/30 másodperc/HRE felhasználó vagy ügyfél IP-címe | Részletekért lásd a [díjszabási korlátokat](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
+| Kérelmek maximális száma | 200 kérés/30 másodperc/Azure AD-felhasználó vagy ügyfél IP-címe | Részletekért lásd a [díjszabási korlátokat](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
 **Általános munkaterület korlátai**
 
@@ -66,19 +66,25 @@ ms.locfileid: "82161168"
 
 **Adatfeldolgozási kötetek aránya**
 
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát arra törekszik, hogy Azure Monitor ügyfelet a hirtelen betöltési tüskékkel bérlős-környezetben. Az alapértelmezett betöltési mennyiség 500 MB (tömörített) a munkaterületekre vonatkozik, ami körülbelül **6 GB/perc** tömöríthető – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. Ez a küszöbérték az Azure-erőforrásokból a [diagnosztikai beállítások](../articles/azure-monitor/platform/diagnostic-settings.md), [az adatgyűjtő API vagy az](../articles/azure-monitor/platform/data-collector-api.md) ügynökök használatával elküldhető összes betöltött adatot érinti.
 
-A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az Azure-erőforrásokból a [diagnosztikai beállítások](../articles/azure-monitor/platform/diagnostic-settings.md) használatával elküldett adatokra vonatkozó alapértelmezett adatfeldolgozási sebesség legfeljebb **6 GB/perc/** munkaterület. Ez egy hozzávetőleges érték, mivel a tényleges méret eltérő lehet az adattípusok között a napló hosszától és a tömörítési aránytól függően. Ez a korlát nem vonatkozik az ügynököktől vagy adatgyűjtő [API](../articles/azure-monitor/platform/data-collector-api.md)-ból továbbított adatokra.
+Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan elérheti azt, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt a munkaterületen. 
 
-Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség továbbra is meghaladja a díjszabási korlátot, vagy a közeljövőben várhatóan nem ér véget, akkor a munkaterület növelését kérheti e-mailben LAIngestionRate@microsoft.com vagy egy támogatási kérelem megnyitásával.
- 
-Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [naplózási riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékű eredmények száma értékkel.
+Ha értesítést szeretne kapni a munkaterületen lévő eseményről, hozzon létre egy [riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékkel rendelkező, 5 perces értékelési időszak és 5 perc gyakorisága alapján.
 
-``` Kusto
+A betöltési mennyiség elérte a küszöbérték 80%-át:
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
 
+A betöltési mennyiség elérte a küszöbértéket:
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 >[!NOTE]
 >Attól függően, hogy mennyi ideig használta a Log Analytics, lehet, hogy hozzáfér a régi díjszabási csomagokhoz. További információ a [log Analytics korábbi díjszabási szintjeiről](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

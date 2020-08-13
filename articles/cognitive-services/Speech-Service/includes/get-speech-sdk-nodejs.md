@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0c48116c285ee5b9f0de0d9333a49d5f8ac183af
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a8c61b526f0f0292909cc1b90391dbae2166ccaa
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425191"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186265"
 ---
 :::row:::
     :::column span="3":::
-        A JavaScripthez készült Speech SDK NPM-csomagként érhető el, lásd: <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Microsoft-cognitiveservices-Speech <span class="docon docon-navigate-external x-hidden-focus"></span> -SDK</a> , és a The Companion GitHub repository <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">kognitív-Services-Speech- <span class="docon docon-navigate-external x-hidden-focus"></span> SDK-js </a>.
+        A JavaScripthez készült Speech SDK NPM-csomagként érhető el: a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Microsoft-cognitiveservices-Speech- <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> és a hozzá tartozó GitHub <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">-adattár kognitív-Services-Speech- <span class="docon docon-navigate-external x-hidden-focus"></span> SDK-js </a>.
     :::column-end:::
     :::column:::
         <br>

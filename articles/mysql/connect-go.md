@@ -1,5 +1,5 @@
 ---
-title: Kapcsolat a go-Azure Database for MySQL használatával
+title: 'Gyors útmutató: kapcsolat a go-Azure Database for MySQL használatával'
 description: Ez a rövid útmutató több Go-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
 author: ajlam
 ms.author: andrela
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1a6942364e6f77c97c93903b25bffa130222cd59
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 154c41c6799bb251f30991fde05f6eacc5de57da
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869877"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185944"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>MySQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go használatával
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: kapcsolódás és adatlekérdezés a go Language használatával Azure Database for MySQL
+
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for MySQL-hez Windows, Ubuntu Linux és Apple macOS platformról [Go](https://golang.org/) nyelven írt kóddal. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Go használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -351,6 +352,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

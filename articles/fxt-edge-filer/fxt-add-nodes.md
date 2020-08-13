@@ -1,17 +1,17 @@
 ---
 title: 'Oktatóanyag: csomópontok hozzáadása egy Azure FXT Edge Filer-fürthöz'
-description: Csomópontok hozzáadása az Azure FXT Edge Filer Storage cache-hez
+description: Ismerje meg, hogyan adhat hozzá fürtcsomópontok az Azure FXT Edge Filer Storage cache-hez, és engedélyezheti a magas rendelkezésre állású (HA) szolgáltatást.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b62927930212fc7e59fc4329a29ceecbe2815e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551947"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185332"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: fürtcsomópontok hozzáadása egy Azure FXT Edge Filer-fürthöz
 
@@ -68,7 +68,7 @@ A **műveletek** oszlop olyan gombokkal rendelkezik, amelyek lehetővé teszik a
 
 A fürt összes csomópontjának az operációs rendszer azonos verzióját kell használnia, de a csomópont hozzáadása előtt nem szükséges frissítenie a szoftvereket. Miután rákattintott az **Engedélyezés a csatlakozásra** gombra, a fürt csatlakoztatási folyamata automatikusan ellenőrzi és telepíti a fürt verziójának megfelelő operációsrendszer-szoftvert.
 
-Ha többet szeretne megtudni az ezen a lapon található beállításokról, olvassa el a fürt [ **Cluster** > FXT csomópontjait](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) a fürt konfigurációs útmutatójában.
+Ha többet szeretne megtudni az ezen a lapon található beállításokról, olvassa el a fürt [ **Cluster**  >  **FXT csomópontjait** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) a fürt konfigurációs útmutatójában.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. kattintson a "csatlakozás engedélyezése" gombra 
 
@@ -108,7 +108,7 @@ Az **irányítópulton** megjelenik egy riasztás, amely megerősíti, hogy a ha
 ![A "HA most már teljesen konfigurált" üzenetet megjelenítő irányítópult-táblázat](media/fxt-cluster-config/ha-configured-alert.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután hozzáadta az összes csomópontot a fürthöz, a fürt hosszú távú tárolásának konfigurálásával folytassa a telepítést.
 

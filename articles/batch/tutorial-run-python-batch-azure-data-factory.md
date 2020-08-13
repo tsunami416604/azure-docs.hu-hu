@@ -4,15 +4,15 @@ description: Oktatóanyag – megtudhatja, hogyan futtathat Python-parancsfájlo
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 9b58aa06b67f01cf9ce0b30cef0326185124306c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853313"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185111"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
@@ -58,7 +58,7 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre az Azure-beli a
     1. Az **adatelemzés**területen válassza a **Windows Dsvm** operációs rendszerként lehetőséget.
     1. Válassza ki `Standard_f2s_v2` a virtuális gép méretét.
     1. Engedélyezze az indítási feladatot, és adja hozzá a parancsot `cmd /c "pip install pandas"` . A felhasználói identitás az alapértelmezett **készlet felhasználója**maradhat.
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
 ## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
 
@@ -67,8 +67,7 @@ Itt olyan blob-tárolókat hoz létre, amelyek a bemeneti és kimeneti fájljait
 1. Jelentkezzen be Storage Explorer Azure-beli hitelesítő adataival.
 1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)című témakör lépéseit követve.
     * Ebben a példában a bemeneti tárolót `input` és a kimeneti tárolót hívjuk `output` .
-1. Töltse `main.py` fel [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) a és a beviteli tárolót a `input` Storage Explorer használatával a [Blobok blob-tárolóban történő kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
-
+1. Töltse fel a [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) beviteli tárolóba a `input` Storage Explorer használatával a [Blobok blob-tárolóban való kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
 
 ## <a name="develop-a-script-in-python"></a>Parancsfájl fejlesztése a Pythonban
 

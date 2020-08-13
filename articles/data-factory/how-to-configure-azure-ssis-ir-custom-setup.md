@@ -11,27 +11,27 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 8b29708dbcc6bbb0d127b4277fd4b2d962da6e6a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 08/11/2020
+ms.openlocfilehash: 3bc8458aa009920f183b076d12185295ef294e07
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986389"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186080"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A Azure Data Factory (ADF) Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) egyéni beállítása felületet biztosít a saját lépéseinek hozzáadásához a Azure-SSIS IR üzembe helyezése vagy újrakonfigurálása során. 
+Az Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) a Azure Data Factoryban (ADF) egyéni telepítők használatával testreszabható. Lehetővé teszik saját lépések hozzáadását a Azure-SSIS IR üzembe helyezése vagy újrakonfigurálása során. 
 
-Az egyéni telepítéssel megváltoztathatja az alapértelmezett működési konfigurációt vagy környezetet, például megkezdheti a további Windows-szolgáltatásokat, megtarthatja a fájlmegosztás hozzáférési hitelesítő adatait, vagy használhat erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2). Vagy további egyéni/külső féltől származó összetevőket is telepíthet, például szerelvényeket, illesztőprogramokat vagy bővítményeket a Azure-SSIS IR minden egyes csomópontján. A beépített/előre telepített összetevőkkel kapcsolatos további információkért lásd: [beépített/előre telepített összetevők Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+Az egyéni beállítások használatával módosíthatja a Azure-SSIS IR alapértelmezett működési konfigurációját vagy környezetét. Ha például további Windows-szolgáltatásokat szeretne elindítani, megőrzi a fájlmegosztás hozzáférési hitelesítő adatait, vagy használjon erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2). További összetevőket, például szerelvényeket, illesztőprogramokat vagy bővítményeket is telepíthet a Azure-SSIS IR minden egyes csomópontján. Egyéni, nyílt forráskódú vagy harmadik féltől származó összetevőket is használhatnak. A beépített/előre telepített összetevőkkel kapcsolatos további információkért lásd: [beépített/előre telepített összetevők Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
 
 A Azure-SSIS IR kétféleképpen végezheti el az egyéni telepítéseket: 
 * **Standard egyéni telepítő parancsfájl**használatával: Készítse elő a parancsfájlt és a hozzá tartozó fájlokat, és töltse fel őket az Azure Storage-fiókban található blob-tárolóba. Ezután meg kell adnia egy közös hozzáférési aláírás (SAS) Uniform Resource Identifier (URI) a tárolóhoz a Azure-SSIS IR beállításakor vagy újrakonfigurálásakor. A Azure-SSIS IR mindegyik csomópontja letölti a parancsfájlt és a hozzá tartozó fájlokat a tárolóból, és az Egyéni telepítést emelt szintű engedélyekkel futtatja. Ha az egyéni telepítés elkészült, minden egyes csomópont feltölti a végrehajtás és más naplók szabványos kimenetét a tárolóba.
 * **Expressz egyéni beállítás parancsfájl nélkül**: Futtasson néhány gyakori rendszerkonfigurációt és Windows-parancsot, vagy telepítsen néhány népszerű vagy ajánlott további összetevőt a parancsfájlok használata nélkül.
 
-Telepítheti az ingyenes, a licenc nélküli összetevőket és a fizetős licenceket, valamint a standard és expressz egyéni beállításokat is. Ha Ön független szoftvergyártó (ISV), tekintse meg [a fizetett vagy licencelt összetevők fejlesztése a Azure-SSIS IRhoz](how-to-develop-azure-ssis-ir-licensed-components.md)című témakört.
+Az ingyenes (licenc nélküli) és a fizetős (licencelt) összetevőket is telepítheti standard és expressz egyéni telepítéssel. Ha Ön független szoftvergyártó (ISV), tekintse meg [a fizetett vagy licencelt összetevők fejlesztése a Azure-SSIS IRhoz](how-to-develop-azure-ssis-ir-licensed-components.md)című témakört.
 
 > [!IMPORTANT]
 > A jövőbeli fejlesztések előnyeinek kihasználása érdekében javasoljuk, hogy az egyéni telepítéssel a Azure-SSIS IR v3-as vagy újabb csomópontjait használja.
@@ -66,12 +66,12 @@ A Azure-SSIS IR az ADF felhasználói felületén egyéni beállításokkal is k
 
 ### <a name="standard-custom-setup"></a>Szabványos egyéni telepítés
 
-A Azure-SSIS IR szabványos egyéni telepítésekkel való kiépítéséhez vagy újrakonfigurálásához hajtsa végre az alábbi lépéseket.
+Az alábbi lépéseket követve kiépítheti vagy újrakonfigurálhatja az Azure-SSIS IR szabványos egyéni telepítésekkel az ADF felhasználói felületén.
 
 1. Készítse elő az egyéni telepítési parancsfájlt és a hozzá tartozó fájlokat (például. bat,. cmd,. exe,. dll,. msi vagy. ps1 fájlok).
 
    * Rendelkeznie kell egy *Main. cmd*nevű parancsfájl-fájllal, amely az egyéni telepítés belépési pontja.  
-   * Annak érdekében, hogy a parancsfájlt csendesen lehessen végrehajtani, javasoljuk, hogy először tesztelje a helyi gépen.  
+   * A parancsfájl csendes végrehajtásának biztosításához először tesztelje a helyi gépen.  
    * Ha más eszközök (például *msiexec.exe*) által generált további naplókat szeretne feltölteni a tárolóba, adja meg az előre definiált környezeti változót, `CUSTOM_SETUP_SCRIPT_LOG_DIR` mint a parancsfájlok log mappáját (például *msiexec/i xxx.msi/quiet/lv% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
 
 1. [Azure Storage Explorer](https://storageexplorer.com/)letöltése, telepítése és megnyitása.
@@ -92,7 +92,7 @@ A Azure-SSIS IR szabványos egyéni telepítésekkel való kiépítéséhez vagy
 
       ![Blobtároló létrehozása](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   e. Válassza ki az új tárolót, és töltse fel az egyéni telepítési parancsfájlt és a hozzá tartozó fájlokat. Ügyeljen arra, hogy a *Main. cmd* fájlt a tároló legfelső szintjén töltse fel, nem pedig egyetlen mappában sem. Győződjön meg arról is, hogy a tároló csak a szükséges egyéni telepítőfájlokat tartalmazza, így a Azure-SSIS IR későbbi letöltés nem hosszabb időt is igénybe veheti. Az egyéni beállítások maximális időtartama jelenleg 45 percen belül megtörténik, mielőtt időtúllépés történik. Ide tartozik az összes fájl letöltésének ideje a tárolóból, és a Azure-SSIS IR telepítése. Ha a telepítőnek több időre van szüksége, egy támogatási jegyet kell felhívnia.
+   e. Válassza ki az új tárolót, és töltse fel az egyéni telepítési parancsfájlt és a hozzá tartozó fájlokat. Ügyeljen arra, hogy a *Main. cmd* fájlt a tároló legfelső szintjén töltse fel, nem pedig egyetlen mappában sem. A tárolónak csak a szükséges egyéni telepítőfájlokat kell tartalmaznia, ezért a Azure-SSIS IR későbbi letöltés nem hosszú időt vehet igénybe. Az egyéni beállítások maximális időtartama jelenleg 45 percen belül megtörténik, mielőtt időtúllépés történik. Ide tartozik az összes fájl letöltésének ideje a tárolóból, és a Azure-SSIS IR telepítése. Ha a telepítőnek több időre van szüksége, egy támogatási jegyet kell felhívnia.
 
       ![Fájlok feltöltése a blob-tárolóba](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -100,7 +100,7 @@ A Azure-SSIS IR szabványos egyéni telepítésekkel való kiépítéséhez vagy
 
       ![A tároló közös hozzáférési aláírásának beolvasása](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-   : Hozza létre a tároló SAS URI-JÁT elég hosszú lejárati idővel és olvasási/írási/listázási engedéllyel. Az egyéni telepítési parancsfájl és a hozzá tartozó fájlok letöltéséhez és futtatásához szükség van az SAS URI-ra, amikor a Azure-SSIS IR bármely csomópontja rendszerképe vagy újraindítása megtörténik. Írási engedéllyel kell rendelkeznie a telepítési végrehajtási naplók feltöltéséhez.
+   : Hozza létre a tároló SAS URI-JÁT elég hosszú lejárati idővel és olvasási/írási/listázási engedéllyel. Az egyéni telepítési parancsfájl és a hozzá tartozó fájlok letöltéséhez és futtatásához szüksége lesz az SAS URI-ra. Ez akkor fordul elő, amikor a Azure-SSIS IR bármelyik csomópontját újra rendszerképbe állítja vagy újraindította. Írási engedéllyel is kell rendelkeznie a telepítési végrehajtási naplók feltöltéséhez.
 
       > [!IMPORTANT]
       > Győződjön meg arról, hogy a SAS URI-ja nem jár le, és az egyéni beállítási erőforrások mindig elérhetők a Azure-SSIS IR teljes életciklusa során, a létrehozástól a törlésig, különösen akkor, ha az adott időszakban rendszeresen leállítja és elindítja a Azure-SSIS IR.
@@ -111,35 +111,49 @@ A Azure-SSIS IR szabványos egyéni telepítésekkel való kiépítéséhez vagy
 
       ![A megosztott hozzáférés aláírásának másolása és mentése](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-1. Ha az ADF felhasználói felületen kiépíti vagy konfigurálja újra a Azure-SSIS IRt, jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációkkal/összetevő-telepítésekkel** jelölőnégyzetet az **Integration Runtime telepítési** paneljének **Speciális beállítások** lapján, és adja meg a tároló sas URI-ját az **egyéni telepítési tároló sas URI-ja** mezőben.
+1. Jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációkkal/összetevő-telepítésekkel** jelölőnégyzetet az **Integration Runtime telepítési** paneljének **Speciális beállítások** lapján. Ezután adja meg a tároló SAS URI-JÁT az **egyéni telepítési tároló sas URI** -szövege szövegmezőben.
 
    ![Speciális beállítások egyéni telepítésekkel](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
 
+A normál egyéni telepítés befejezése és a Azure-SSIS IR elindítása után megtalálhatja az összes egyéni telepítési naplót a tároló *fő. cmd. log* mappájába. Ezek tartalmazzák a *Main. cmd* és más végrehajtási naplók szabványos kimenetét.
+
 ### <a name="express-custom-setup"></a>Expressz egyéni beállítás
 
-A Azure-SSIS IR expressz egyéni telepítésekkel való kiépítéséhez vagy újrakonfigurálásához hajtsa végre az alábbi lépéseket.
+A következő lépések végrehajtásával kiépítheti vagy újrakonfigurálhatja a Azure-SSIS IR Express Custom setups használatával az ADF felhasználói felületén.
 
-1. Ha az ADF felhasználói felületén kiépít vagy újrakonfigurálja a Azure-SSIS IR, jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációkkal/összetevő-telepítésekkel** jelölőnégyzetet az **Integration Runtime telepítési** paneljének **Speciális beállítások** lapján. 
+1. Jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációkkal/összetevő-telepítésekkel** jelölőnégyzetet az **Integration Runtime telepítési** paneljének **Speciális beállítások** lapján. 
 
-1. Az **új** elemre kattintva nyissa meg az **expressz egyéni telepítés hozzáadása** panelt, majd válasszon egy típust az **expressz egyéni telepítés típusa** legördülő listában:
+1. Az **új** elemre kattintva nyissa meg az **expressz egyéni telepítés hozzáadása** panelt, majd válasszon egy típust az **expressz egyéni telepítés típusa** legördülő listában. Jelenleg a cmdkey parancs futtatására, környezeti változók hozzáadására, Azure PowerShell telepítésére és licencelt összetevők telepítésére vonatkozó expressz egyéni beállításokat kínálunk.
 
-   * Ha a **Futtatás cmdkey parancs** típusát választja, megtarthatja a fájlmegosztás vagy a Azure Files megosztások hozzáférési hitelesítő adatait Azure-SSIS IR a megjelenő számítógép nevének vagy tartománynevének, a fiók nevének vagy felhasználónevének, valamint a fiók kulcsának vagy jelszavának megadásával az **/Add**, **/User**és **/pass** mezőkben. Ez hasonló a Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) parancs helyi gépen való futtatásához.
-   
-   * Ha a **környezeti változó hozzáadása** lehetőséget választja, akkor a Azure-SSIS IR futtatott csomagjaiban a környezeti változó nevének és értékének megadásával adhat hozzá Windows környezeti változókat a változók **neve** és **változó érték** mezőibe. Ez hasonló a Windows [set](https://docs.microsoft.com/windows-server/administration/windows-commands/set_1) parancs helyi számítógépen való futtatásához.
+#### <a name="running-cmdkey-command"></a>Cmdkey parancs futtatása
 
-   * Ha bejelöli a **licencelt összetevő** típusának telepítése lehetőséget, az **összetevő neve** legördülő listában kiválaszthatja az ISV-partnereinkből származó integrált összetevőt:
+Ha az expressz egyéni telepítéshez a **cmdkey futtatása parancsot** választja, akkor futtathatja a Windows cmdkey parancsot a Azure-SSIS IR. Ehhez adja meg a célként megadott számítógép nevét vagy tartománynevét, felhasználónevét vagy fiókjának nevét, valamint a jelszó vagy a fiók kulcsát az **/Add**, **/User**és **/pass** szövegmezőben. Ez lehetővé teszi az SQL-kiszolgálók,-fájlmegosztás vagy-Azure Files hozzáférési hitelesítő adatainak megőrzését a Azure-SSIS IR. A Azure Fileshoz való hozzáféréshez például megadhatja `YourAzureStorageAccountName.file.core.windows.net` a `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` következőt:, és az **/Add**, a **/User**és a **/pass**. Ez hasonló a Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) parancs helyi gépen való futtatásához.
 
-     * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez írja be a **licenc kulcs** mezőjében megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020.1.3**.
+#### <a name="adding-environment-variables"></a>Környezeti változók hozzáadása
 
-     * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. ](https://hedda.io/ssis-component/)A szolgáltatás megvásárlása után IO-adatminőség/-tisztító összetevő a Azure-SSIS IR oh22. Az aktuálisan integrált verzió a **1.0.14**.
+Ha az expressz egyéni telepítéshez a **környezeti változó hozzáadása** lehetőséget választja, hozzáadhat egy Windows környezeti változót a Azure-SSIS IR. Ehhez adja meg a környezeti változó nevét és értékét a **változó neve** és a **változó értéke** szövegmezőben. Ez lehetővé teszi a környezeti változó használatát Azure-SSIS IRon futó csomagoknál, például parancsfájl-összetevőkben vagy feladatokban. Ez hasonló a Windows [set](https://docs.microsoft.com/windows-server/administration/windows-commands/set_1) parancs helyi számítógépen való futtatásához.
 
-     * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.45**.
+#### <a name="installing-azure-powershell"></a>Azure PowerShell telepítése
 
-     * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing-felhő stb Azure-SSIS IR. számára, és a **licenc kulcs** mezőjébe írja be a számukra megvásárolt termékkulcsot. Az aktuálisan integrált verzió a **2019,2**.
+Ha a **telepítés Azure PowerShell** típusát adja meg az expressz egyéni telepítéshez, akkor az az Module of PowerShellt telepítheti a Azure-SSIS IR. Ehhez írja be az az modul verziószámát (x. y. z), amelyet a [támogatottak listájáról](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)szeretne használni. Ez lehetővé teszi Azure PowerShell parancsmagok/parancsfájlok futtatását a csomagokba az Azure-erőforrások, például a [Azure Analysis Services (AAS)](https://docs.microsoft.com/azure/analysis-services/analysis-services-powershell)kezelésére.
 
-     * Ha a **KINGSWAYSOFT SSIS Productivity Pack** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagját](https://www.kingswaysoft.com/products/ssis-productivity-pack) telepítheti a Azure-SSIS IR a KingswaySoft-ből a **licenc kulcs** mezőjébe, ha beírja a tőlük vásárolt termékkulcsot. Az aktuálisan integrált verzió a **10,0**.
+#### <a name="installing-licensed-components"></a>Licencelt összetevők telepítése
 
-     * Ha kijelöli a **Theobald szoftver xtract** összetevőt, a **License file** [xtract az](https://theobald-software.com/en/xtract-is/) SAP-rendszer (ERP, s/4HANA, BW) összekötői is telepíthetők a Azure-SSIS IR a Theobald szoftverrel, & eldobásával/feltöltésével. Az aktuálisan integrált verzió a **6.1.1.3**.
+Ha bejelöli a **licencelt összetevő** típusának telepítése az expressz egyéni telepítőhöz lehetőséget, akkor az **összetevő neve** legördülő listában kiválaszthatja az ISV-partnereink integrált összetevőjét:
+
+   * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020.1.3**.
+
+   * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. IO](https://hedda.io/ssis-component/) adatminőség/tisztító összetevő a oh22 a Azure-SSIS IR. Ehhez előre kell megvásárolnia a szolgáltatást. Az aktuálisan integrált verzió a **1.0.14**.
+
+   * Ha a **oh22's SQLPhonetics.net** összetevőt választja, telepítheti a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét a oh22 a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **1.0.45**.
+
+   * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, akkor a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing Cloud stb. számára a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2019,2**.
+
+   * Ha a **KINGSWAYSOFT SSIS hatékonyságnövelő csomag** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagjának](https://www.kingswaysoft.com/products/ssis-productivity-pack) összetevőit telepítheti a KingswaySoft a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **10,0**.
+
+   * Ha kijelöli a **Theobald szoftver xtract** összetevőt, a [xtract az](https://theobald-software.com/en/xtract-is/) SAP-rendszerek (ERP, s/4HANA, BW) összekötői is telepíthetők a Theobald szoftverből a Azure-SSIS IR. Ehhez húzza a & eldobás/Feltöltés lehetőségre a **licencet** , amelyet korábban megvásárolt a licencfájl beviteli mezőjébe. Az aktuálisan integrált verzió a **6.1.1.3**.
+
+   * Ha a **AecorSoft integrációs szolgáltatásának** összetevőjét választja, akkor az Salesforce-hez tartozó Azure-SSIS IR AecorSoft-k [integrációs szolgáltatási](https://www.aecorsoft.com/en/products/integrationservice) csomagját telepítheti az SAP és a rendszerekhez. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **3.0.00**.
 
 A hozzáadott expressz egyéni telepítések a **Speciális beállítások** lapon jelennek meg. Ha el szeretné távolítani őket, jelölje be a jelölőnégyzeteket, majd válassza a **Törlés**lehetőséget.
 
@@ -157,7 +171,7 @@ Ha az egyéni beállításokkal Azure PowerShell használatával szeretné kiép
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -181,6 +195,11 @@ Ha az egyéni beállításokkal Azure PowerShell használatával szeretné kiép
            $variableName = "YourVariableName"
            $variableValue = "YourVariableValue"
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.EnvironmentVariableSetup($variableName, $variableValue)
+       }
+       if($ExpressCustomSetup -eq "InstallAzurePowerShell")
+       {
+           $moduleVersion = "YourAzModuleVersion"
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.AzPowerShellSetup($moduleVersion)
        }
        if($ExpressCustomSetup -eq "SentryOne.TaskFactory")
        {
@@ -214,6 +233,11 @@ Ha az egyéni beállításokkal Azure PowerShell használatával szeretné kiép
            $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
        }
+       if($ExpressCustomSetup -eq "AecorSoft.IntegrationService")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -229,8 +253,6 @@ Ha az egyéni beállításokkal Azure PowerShell használatával szeretné kiép
        -Force
    ```
 
-1. A normál egyéni telepítés befejezése és a Azure-SSIS IR elindítása után megtalálhatja a *Main.* cmd és más végrehajtási naplók standard kimenetét a tároló *fő. cmd. log* mappájába.
-
 ### <a name="standard-custom-setup-samples"></a>Standard egyéni telepítési minták
 
 A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafelhasználásához hajtsa végre az alábbi lépéseket.
@@ -241,7 +263,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
       ![Kapcsolódás az Azure Storage-hoz a közös hozzáférési aláírással](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
-   b. Válassza a **sas URI használata** lehetőséget, majd az **URI** mezőbe írja be a következő sas URI-t:
+   b. Válassza a **sas URI használata** lehetőséget, majd az **URI** szövegmezőbe írja be a következő sas URI-t:
 
       `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
@@ -259,27 +281,27 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
    e. A következő elemek megkereséséhez kattintson duplán a *UserScenarios* mappára:
 
-      * A *.NET-keretrendszer 3,5* mappája, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a .NET-keretrendszer egy korábbi verziójának telepítéséhez, amelyre szükség lehet az egyéni összetevőkhöz a Azure-SSIS IR egyes csomópontjain.
+      * A *.NET-keretrendszer 3,5* mappája, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a .NET-keretrendszer egy korábbi verziójának telepítéséhez a Azure-SSIS IR mindegyik csomópontján. Előfordulhat, hogy ezt a verziót egyes egyéni összetevők igénylik.
 
-      * Egy *BCP* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a SQL Server parancssori segédeszközök (*MsSqlCmdLnUtils.msi*) telepítéséhez, beleértve a tömeges másolási programot (*BCP*) a Azure-SSIS IR egyes csomópontjain.
+      * Egy *BCP* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy SQL Server parancssori segédeszközöket (*MsSqlCmdLnUtils.msi*) telepítsen a Azure-SSIS IR egyes csomópontjaira. Ezen segédprogramok egyike a tömeges másolási program (*BCP*).
 
-      * Egy *Excel* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a C#-szerelvények és-kódtárak telepítéséhez, amelyeket parancsfájl-feladatokban használhat a Azure-SSIS IR összes csomópontján lévő Excel-fájlok dinamikus olvasásához és írásához. 
+      * Egy *Excel* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a C#-szerelvények és-tárak telepítéséhez a Azure-SSIS IR egyes csomópontjain. A szkriptek feladataiban felhasználhatja az Excel-fájlok dinamikus olvasását és írását. 
       
-        Először töltse le [*ExcelDataReader.dll*](https://www.nuget.org/packages/ExcelDataReader/) és [*DocumentFormat.OpenXml.dll*](https://www.nuget.org/packages/DocumentFormat.OpenXml/), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba. Ha csak a szabványos Excel-kapcsolatkezelő, az Excel-forrás és az Excel-célhelyet szeretné használni, a szükséges hozzáférés-Újraterjeszthető csomag már telepítve van a Azure-SSIS IR, így nincs szükség egyéni telepítésre.
+        Először töltse le [*ExcelDataReader.dll*](https://www.nuget.org/packages/ExcelDataReader/) és [*DocumentFormat.OpenXml.dll*](https://www.nuget.org/packages/DocumentFormat.OpenXml/), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba. Ha csak a szabványos Excel-összekötőket (a Csatlakozáskezelő, a forrás és a célhelyet) szeretné használni, akkor az azokat tartalmazó hozzáférés-Újraterjeszthető csomag már telepítve van a Azure-SSIS IR, így nincs szükség egyéni telepítésre.
       
-      * Egy *MySQL ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a MySQL ODBC-illesztőprogramok telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ezzel a beállítással a MySQL-kiszolgálóhoz való kapcsolódáshoz használhatja az ODBC-kapcsolatkezelő, a forrás és a cél lehetőséget. 
+      * Egy *MySQL ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a MySQL ODBC-illesztőprogramok telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy az ODBC-összekötőket (a Csatlakozáskezelő, a forrás és a cél) használja a MySQL-kiszolgálóhoz való csatlakozáshoz. 
      
         Először [töltse le a MySQL ODBC illesztőprogram-telepítők legújabb 64 bites és 32 bites verzióit](https://dev.mysql.com/downloads/connector/odbc/) (például *mysql-connector-odbc-8.0.13-winx64.msi* és *mysql-connector-odbc-8.0.13-win32.msi*), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba.
 
       * Egy *Oracle Enterprise* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és csendes telepítési konfigurációs fájlt (*Client. RSP*) tartalmaz az Oracle-összekötők és a OCI-illesztőprogram telepítéséhez a Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy az Oracle-Csatlakozáskezelő, a forrás és a cél használatával kapcsolódjon az Oracle-kiszolgálóhoz. 
       
-        Először töltse le az Oracle-hez készült Microsoft Connectors v 5.0-s verzióját (*AttunitySSISOraAdaptersSetup.msi* és *AttunitySSISOraAdaptersSetup64.msi*) a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb oracle-ügyfélprogramból (például *winx64_12102_client.zip*) az [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)-ből, majd töltse fel őket a *Main. cmd* és az *Client. RSP* fájllal együtt a tárolóba. Ha a TNS használatával csatlakozik az Oracle-hez, le kell töltenie a *tnsnames. ora*fájlt, szerkesztenie kell, és fel kell töltenie a tárolóba, hogy a telepítés során átmásolható legyen az Oracle telepítési mappájába.
+        Először töltse le a Microsoft Connectors v 5.0 for Oracle (*AttunitySSISOraAdaptersSetup.msi* és *AttunitySSISOraAdaptersSetup64.msi*) [alkalmazást a Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb oracle-ügyfélprogramból (például *winx64_12102_client.zip*) az [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)-ből. Ezután töltse fel őket a *Main. cmd* és az *Client. RSP* együtt a tárolóba. Ha a TNS használatával csatlakozik az Oracle-hez, le kell töltenie a *tnsnames. ora*fájlját, szerkesztenie kell, és fel kell töltenie a tárolóba. Így a telepítés során a rendszer átmásolhatja az Oracle telepítési mappájába.
 
       * Egy *Oracle STANDARD ADO.net* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az Oracle ODP.net-illesztőprogram telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy a ADO.NET Csatlakozáskezelő, forrás és cél használatával kapcsolódjon az Oracle-kiszolgálóhoz. 
       
         Először [töltse le a legújabb Oracle ODP.net-illesztőprogramot](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (például *ODP.NET_Managed_ODAC122cR1.zip*), majd töltse fel a *Main. cmd fájllal* együtt a tárolóba.
        
-      * *Oracle standard ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az Oracle ODBC-illesztőprogram telepítéséhez és az adatforrás nevének (DSN) konfigurálásához a Azure-SSIS IR mindegyik csomópontján. Ezzel a beállítással az ODBC-kapcsolatkezelő, a forrás és a cél, illetve a Power Query Csatlakozáskezelő és a forrás használható az Oracle-kiszolgálóhoz való kapcsolódáshoz az ODBC-adatforrás típusával. 
+      * Egy *Oracle standard ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az Oracle ODBC-illesztőprogram telepítéséhez a Azure-SSIS IR minden egyes csomópontján. A parancsfájl az adatforrás nevét (DSN) is konfigurálja. Ezzel a beállítással az ODBC-kapcsolatkezelő, a forrás és a cél, illetve a Power Query Csatlakozáskezelő és a forrás használható az Oracle-kiszolgálóhoz való kapcsolódáshoz az ODBC-adatforrás típusával. 
       
         Először töltse le a legújabb Oracle Instant-ügyfelet (alapszintű csomag vagy alapszintű Lite-csomag) és az ODBC-csomagot, majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba:
         * [64 bites csomagok letöltése](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (alapszintű csomag: *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip*; Alapszintű Lite-csomag: *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip*; ODBC-csomag: *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip*) 
@@ -293,19 +315,19 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
      
         Először [töltse le a POSTGRESQL ODBC illesztőprogram-telepítők legújabb 64 bites és 32 bites verzióit](https://www.postgresql.org/ftp/odbc/versions/msi/) (például *psqlodbc_x64.msi* és *psqlodbc_x86.msi*), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba.
 
-      * Egy *SAP BW* mappát, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az SAP .net-összekötő szerelvény (*librfc32.dll*) telepítéséhez az Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ezzel a beállítással az SAP Business Warehouse (BW) Csatlakozáskezelő, a forrás és a cél használatával csatlakozhat a SAP BW-kiszolgálóhoz. 
+      * Egy *SAP BW* mappát, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az SAP .net-összekötő szerelvény (*librfc32.dll*) telepítéséhez az Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ez a telepítő lehetővé teszi, hogy a SAP BW Csatlakozáskezelő, forrás és cél használatával kapcsolódjon a SAP BW-kiszolgálóhoz. 
       
         Először töltse fel az 64-bites vagy a 32-bites *librfc32.dll* verzióját az SAP telepítési mappájából, a *Main. cmd fájllal* együtt a tárolóba. A szkript ezután átmásolja az SAP-szerelvényt a *%windir%\syswow64 mappában* vagy a *%windir%\System32* mappába a telepítés során.
 
-      * Egy *Storage* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a Azure PowerShell telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy [Az Azure Storage-fiók kezeléséhez PowerShell-parancsfájlokat](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)futtató SSIS-csomagokat telepítsen és futtasson. 
+      * Egy *Storage* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a Azure PowerShell telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a telepítő lehetővé teszi, hogy [Azure PowerShell parancsmagokat/parancsfájlokat](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)futtató SSIS-csomagokat helyezzen üzembe és futtasson az Azure Storage kezeléséhez. 
       
-        Másolja a *Main. cmd*fájlt, egy mintát *AzurePowerShell.msi* (vagy használja a legújabb verziót), és *storage.ps1* a tárolóba. A *PowerShell. dtsx* sablonként használhatja a csomagokat. A Package sablon kombinálja az [Azure Blob letöltési feladatát](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), amely letölti *storage.ps1* módosítható PowerShell-parancsfájlként, valamint egy [végrehajtási folyamat feladatot](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), amely végrehajtja a parancsfájlt az egyes csomópontokon.
+        Másolja a *Main. cmd*fájlt, egy mintát *AzurePowerShell.msi* (vagy használja a legújabb verziót), és *storage.ps1* a tárolóba. A *PowerShell. dtsx* sablonként használhatja a csomagokat. A Package sablon egy [Azure Blob letöltési feladatot](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)egyesít, amely letölt egy módosítható PowerShell-parancsfájlt (*storage.ps1*) és egy [végrehajtási folyamat feladatot](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), amely végrehajtja a parancsfájlt az egyes csomópontokon.
 
       * Egy *TERADATA* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*), a hozzá tartozó fájlt (*install. cmd*) és a telepítő csomagokat (*. msi*) tartalmaz. Ezek a fájlok telepítik a Teradata-összekötőket, a Teradata párhuzamos Transporter (TPT) API-t és az ODBC-illesztőt a Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy a Teradata Csatlakozáskezelő, forrás és cél használatával kapcsolódjon a Teradata-kiszolgálóhoz. 
       
         Először [töltse le a Teradata-eszközök és-segédprogramok 15. x zip-fájlját](http://partnerintelligence.teradata.com) (például *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*), majd töltse fel a korábban említett *. cmd* és *. msi* fájlokkal együtt a tárolóba.
 
-      * Egy *tls 1,2* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2) használjon, és letiltja a régebbi SSL/TLS-verziókat a Azure-SSIS IR minden egyes csomópontján.
+      * Egy *tls 1,2* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy erős titkosítást és biztonságosabb hálózati protokollt (TLS 1,2) használjon a Azure-SSIS IR mindegyik csomópontján. A parancsfájl letiltja a régebbi SSL/TLS-verziókat is.
 
       * Egy *ZULU OPENJDK* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és egy PowerShell-fájlt (*install_openjdk.ps1*) tartalmaz a Zulu-OPENJDK telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy Azure Data Lake Store és rugalmas fájl-összekötőket használjon az ork és a Parquet fájlok feldolgozásához. További információ: [Az Azure Feature Pack az integrációs szolgáltatásokhoz](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
       
@@ -315,13 +337,13 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
    f. Ha újra szeretné használni ezeket a szabványos egyéni telepítési mintákat, másolja a kiválasztott mappa tartalmát a tárolóba.
 
-1. Ha az ADF felhasználói felületen kiépíti vagy konfigurálja újra a Azure-SSIS IRt, jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációkkal/összetevő-telepítésekkel** jelölőnégyzetet az **Integration Runtime telepítési** paneljének **Speciális beállítások** lapján, és adja meg a tároló sas URI-ját az **egyéni telepítési tároló sas URI-ja** mezőben.
+1. Ha az ADF felhasználói felületén kiépít vagy újrakonfigurálja a Azure-SSIS IR, jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációkkal/összetevő-telepítésekkel** jelölőnégyzetet az **Integration Runtime telepítési** paneljének **Speciális beállítások** lapján. Ezután adja meg a tároló SAS URI-JÁT az **egyéni telepítési tároló sas URI** -szövege szövegmezőben.
    
 1. Ha Azure PowerShell használatával állítja be vagy konfigurálja újra a Azure-SSIS IR, állítsa le, ha már elindult/fut, futtassa a `Set-AzDataFactoryV2IntegrationRuntime` parancsmagot a tároló sas URI-jaként a paraméter értékeként `SetupScriptContainerSasUri` , majd indítsa el a Azure-SSIS IR.
 
-1. A normál egyéni telepítés befejezése és a Azure-SSIS IR elindítása után megtalálhatja a *Main.* cmd és más végrehajtási naplók standard kimenetét a tároló *fő. cmd. log* mappájába.
+1. A normál egyéni telepítés befejezése és a Azure-SSIS IR elindítása után megtalálhatja az összes egyéni telepítési naplót a tároló *fő. cmd. log* mappájába. Ezek tartalmazzák a *Main. cmd* és más végrehajtási naplók szabványos kimenetét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-SSIS IR Enterprise kiadásának beállítása](how-to-configure-azure-ssis-ir-enterprise-edition.md)
 - [Fizetett vagy licencelt összetevők fejlesztése a Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086432"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185808"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
@@ -39,7 +39,7 @@ Skálázási típus kiválasztásakor vegye figyelembe a következő tényezőke
 
 Az autoscale folyamatosan figyeli a fürtöt, és a következő metrikákat gyűjti össze:
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |---|---|
 |Függőben lévő CPU összesen|Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges magok teljes száma.|
 |Függőben lévő memória összesen|Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges teljes memória (MB).|
@@ -72,7 +72,7 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
-| Verzió | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Verzió | Spark | Hive | LLAP | A HBase | Kafka | Vihar | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
@@ -133,7 +133,7 @@ További információ a HDInsight-fürtök létrehozásáról a Azure Portal has
 
 #### <a name="load-based-autoscaling"></a>Load-alapú automatikus skálázás
 
-Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával, ha hozzáad egy `autoscale` csomópontot a `computeProfile`  >  `workernode` szakaszhoz a tulajdonságok segítségével, `minInstanceCount` és az `maxInstanceCount` alábbi JSON-kódrészletben látható.
+Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával, ha hozzáad egy `autoscale` csomópontot a `computeProfile`  >  `workernode` szakaszhoz a tulajdonságok segítségével, `minInstanceCount` és az `maxInstanceCount` alábbi JSON-kódrészletben látható. A teljes Resource Manager-sablonhoz lásd [: gyors üzembe helyezési sablon: Spark-fürt üzembe helyezése az Loadbased autoscale enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)utasítással.
 
 ```json
 {
@@ -161,7 +161,7 @@ Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terhelése
 
 #### <a name="schedule-based-autoscaling"></a>Ütemterv-alapú automatikus skálázás
 
-HDInsight-fürtöt úgy hozhat létre, `autoscale` hogy a `computeProfile`  >  szakaszhoz hozzáad egy csomópontot a Azure Resource Manager-sablonhoz `workernode` . A `autoscale` csomópont tartalmaz egy `recurrence` -t, `timezone` `schedule` amely leírja, hogy mikor kerül sor a módosításra.
+HDInsight-fürtöt úgy hozhat létre, `autoscale` hogy a `computeProfile`  >  szakaszhoz hozzáad egy csomópontot a Azure Resource Manager-sablonhoz `workernode` . A `autoscale` csomópont tartalmaz egy `recurrence` -t, `timezone` `schedule` amely leírja, hogy mikor kerül sor a módosításra. A teljes Resource Manager-sablonokkal kapcsolatban lásd: [Spark-fürt üzembe helyezése az ütemterven alapuló autoscale engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
 
 ```json
 {
@@ -227,7 +227,7 @@ Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet
 
 | Fürt állapota | Description |
 |---|---|
-| Fut | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
+| Futó | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
 | HDInsight-konfiguráció  | Egy fürt vertikális fel-vagy leskálázási művelete folyamatban van.  |
 | Frissítési hiba  | A HDInsight az automatikus skálázási konfiguráció frissítése során teljesülnek. Az ügyfelek dönthetnek úgy, hogy megpróbálják megismételni a frissítést vagy letiltani az autoskálázást.  |
@@ -259,6 +259,6 @@ A futó feladatok továbbra is folytatódnak. A függőben lévő feladatok a ke
 
 Ne méretezze a fürtöt kevesebb, mint három csomópontra. Ha a fürtöt kevesebb mint három csomópontra szeretné méretezni, azt eredményezheti, hogy a fájlreplikációs szolgáltatás nem elegendő a biztonságos módban.  További információ: [beragadás csökkentett módban](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók a fürtök méretezési [útmutatóinak](hdinsight-scaling-best-practices.md) manuális skálázásához

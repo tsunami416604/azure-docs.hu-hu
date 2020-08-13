@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a2474b491abd31b750a15aad7860666c7bd02e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84124362"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186327"
 ---
 Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és a vész-helyreállítást (DR) az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
 
 Első lépésként az Azure platform beépített hibatűrési képességei is bemutatják, amelyek segítenek a helyi hibák elleni védelemben. Ezután megbeszéljük azokat a katasztrófa-forgatókönyveket, amelyek nem teljes mértékben fedik a beépített funkciókat. Emellett több példát is mutatunk a munkaterhelés-forgatókönyvekre, amelyekben különböző biztonsági mentési és DR-megfontolások alkalmazhatók. Ezután áttekintjük a DR IaaS-lemezek lehetséges megoldásait.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Az Azure platform különféle módszereket használ a redundancia és a hibatűrés érdekében, hogy segítsen az ügyfeleknek a honosított hardverhiba elleni védelemben. A helyi hibák olyan Azure Storage Server-géppel kapcsolatos problémákat okozhatnak, amelyek az adott kiszolgálón lévő virtuális lemez vagy az SSD-k vagy HDD-k hibáinak egy részét tárolják. Az ilyen elszigetelt hardver-összetevők meghibásodása a normál műveletek során fordulhat elő.
 
@@ -33,7 +33,7 @@ Mielőtt megnézzük a biztonsági mentési és a DR-beállításokat, a honosí
 
 ### <a name="azure-iaas-resiliency"></a>Az Azure IaaS rugalmassága
 
-A *rugalmasság* a hardveres összetevőkben előforduló normál hibákra vonatkozó tűréshatárra utal. A rugalmasság lehetővé teszi a hibák helyreállítását, és folytathatja a működést. Nem a hibák elkerülését jelenti, hanem a hibákra adott olyan válaszokat, amelyek kiküszöbölik az állásidőt és az adatveszteséget. A rugalmasság célja, hogy az alkalmazás egy hibát követően teljesen működőképes állapotba térjen vissza. Az Azure-beli virtuális gépek és lemezek úgy vannak kialakítva, hogy rugalmasak legyenek a gyakori hardveres hibákhoz. Nézzük meg, hogyan biztosítja ezt a rugalmasságot az Azure IaaS platform.
+A *rugalmasság* a hardveres összetevőkben előforduló normál hibákra vonatkozó tűréshatárra utal. A rugalmasság lehetővé teszi a hibák helyreállítását, és folytathatja a működést. Nem a hibák elkerülését jelenti, hanem a hibákra adott olyan válaszokat, amelyek kiküszöbölik az állásidőt és az adatveszteséget. A rugalmasság célja, hogy az alkalmazás a hibát követően teljesen működőképes állapotba térjen vissza. Az Azure-beli virtuális gépek és lemezek úgy vannak kialakítva, hogy rugalmasak legyenek a gyakori hardveres hibákhoz. Nézzük meg, hogyan biztosítja ezt a rugalmasságot az Azure IaaS platform.
 
 A virtuális gépek főleg két részből állnak: egy számítási kiszolgálóból és az állandó lemezből. Mindkettő befolyásolja a virtuális gépek hibatűrését.
 
@@ -109,7 +109,7 @@ A nem felügyelt lemezek esetében használhatja a helyileg redundáns tárolás
 
 | Forgatókönyv | Automatikus replikáció | DR megoldás |
 | --- | --- | --- |
-| Premium SSD-lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Prémium SSD-lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Felügyelt lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nem felügyelt helyileg redundáns tároló lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nem felügyelt geo-redundáns tárolási lemezek | Régiók közötti ([geo-redundáns tárolás](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzisztens Pillanatképek](#alternative-solution-consistent-snapshots) |
@@ -178,7 +178,7 @@ A pillanatkép egy objektum egy adott időpontban való ábrázolását jelöli.
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>Pillanatképek létrehozása a virtuális gép futása közben
 
-Bár a virtuális gép futása közben bármikor elkészítheti a pillanatképet, a rendszer továbbra is továbbít egy lemezt a lemezekre. A pillanatképek olyan részleges műveleteket is tartalmazhatnak, amelyek repülés közben voltak. Ha több lemez is van, akkor előfordulhat, hogy a különböző lemezek pillanatképei különböző időpontokban jelentkeztek. Ezek a forgatókönyvek azt eredményezhetik, hogy a pillanatképek nem lesznek összehangolva. A közös koordináció hiánya különösen olyan csíkozott kötetek esetében fordul elő, amelyek sérültek lehetnek, ha a biztonsági mentés során módosultak a fájlok.
+Bár a virtuális gép futása közben bármikor elkészítheti a pillanatképet, a rendszer továbbra is továbbít egy lemezt a lemezekre. A pillanatképek olyan részleges műveleteket is tartalmazhatnak, amelyek repülés közben voltak. Ha több lemez is van, akkor előfordulhat, hogy a különböző lemezek pillanatképei különböző időpontokban jelentkeztek. Ezek a forgatókönyvek azt eredményezhetik, hogy a pillanatképek nem lesznek összehangolva. Ez a koordináció hiánya különösen olyan csíkozott kötetek esetében fordul elő, amelyek sérültek lehetnek, ha a biztonsági mentés során módosultak a fájlok.
 
 A probléma elkerülése érdekében a biztonsági mentési folyamatnak a következő lépéseket kell végrehajtania:
 
@@ -257,9 +257,6 @@ A földrajzi redundáns tárolás és az olvasási hozzáférésű geo-redundán
 Ha úgy tűnik, hogy jelentős leállás következik be, az Azure-csapat elindíthat egy földrajzi feladatátvételt, és az elsődleges DNS-bejegyzéseket módosíthatja úgy, hogy a másodlagos tárterületre mutasson. Ezen a ponton, ha a Geo-redundáns tárolás vagy az olvasási hozzáférésű geo-redundáns tárterület engedélyezve van, hozzáférhet a másodlagosként használt régióban található információkhoz. Más szóval, ha a Storage-fiók földrajzilag redundáns tárolást tartalmaz, és probléma van, akkor csak akkor férhet hozzá a másodlagos tárolóhoz, ha van földrajzi feladatátvétel.
 
 További információk: [Mi a Mi a teendő az Azure Storage leállása esetén](../articles/storage/common/storage-disaster-recovery-guidance.md).
-
->[!NOTE] 
->A Microsoft szabályozza, hogy történik-e feladatátvétel. A feladatátvétel nincs szabályozva Storage-fiókkal, ezért az egyes ügyfelek nem döntenek. Bizonyos tárolási fiókok vagy virtuálisgép-lemezek vész-helyreállításának megvalósításához a cikkben korábban ismertetett technikákat kell használnia.
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

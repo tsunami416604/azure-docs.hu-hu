@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c9c267097f681a78ba940283096b2c18d692e9cc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903765"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185366"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Tárolt hozzáférési szabályzat létrehozása a .NET-tel
 
@@ -41,7 +41,7 @@ A tárolt hozzáférési szabályzat létrehozásához használt mögöttes REST
 
 A következő kódrészletek például egy tárolt hozzáférési szabályzatot hoznak létre egy tárolón. A hozzáférési házirend segítségével megadhatja a tárolón vagy annak blobján lévő szolgáltatás SAS-korlátozásait.
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Ha tárolt hozzáférési szabályzatot szeretne létrehozni az Azure Storage-hoz készült .NET ügyféloldali kódtár 12-es verziójával rendelkező tárolón, hívja a következő módszerek egyikét:
 
@@ -92,7 +92,7 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 }
 ```
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Ha tárolt hozzáférési szabályzatot szeretne létrehozni az Azure Storage-hoz készült .NET ügyféloldali kódtár 12-es verziójával rendelkező tárolón, hívja a következő módszerek egyikét:
 
@@ -125,7 +125,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)
 - [Tárolt hozzáférési szabályzat meghatározása](/rest/api/storageservices/define-stored-access-policy)

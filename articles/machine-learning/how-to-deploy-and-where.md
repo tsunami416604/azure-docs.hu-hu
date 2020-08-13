@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e8aa87eecc29a5b664520cb1be2cbc5e65b2969e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134547"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185417"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,13 +39,13 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 - Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
-- A [Machine learning szolgáltatás Azure parancssori felületének (CLI) bővítménye](reference-azure-machine-learning-cli.md)
+- Az [Azure parancssori felület (CLI) bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 - Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
-- A [Pythonhoz készült Azure Machine learning szoftverfejlesztői készlet (SDK)](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- A [Pythonhoz készült Azure Machine learning szoftverfejlesztői készlet (SDK)](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 ---
 
@@ -242,7 +242,7 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
-A Python-környezetek Azure Machine Learning használatával történő használatának és testreszabásának részletes ismertetését a következő témakörben tekintheti meg: [& szoftveres környezetek használata a Azure Machine learning](how-to-use-environments.md)
+A Python-környezetek Azure Machine Learning használatával történő használatának és testreszabásának részletes ismertetését a következő témakörben tekintheti meg: [&-környezetek használata a Azure Machine Learningban](how-to-use-environments.md).
 
 További információ a következtetési konfigurációval rendelkező egyéni Docker-rendszerképek használatáról: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
@@ -348,7 +348,7 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Leírás | Végső állapot?
+| Webszolgáltatás állapota | Description | Végső állapot?
 | ----- | ----- | ----- |
 | Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
 | Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
@@ -373,7 +373,7 @@ Telepített webszolgáltatás törléséhez használja a következőt: `az ml se
 
 Ha törölni szeretne egy regisztrált modellt a munkaterületről, használja a következőt:`az ml model delete <model id>`
 
-További információ a [webszolgáltatások törléséről](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) és [a modellek törléséről](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)
+További információ a [webszolgáltatások törléséről](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) és [a modellek törléséről](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete).
 
 # <a name="python"></a>[Python](#tab/python)
 

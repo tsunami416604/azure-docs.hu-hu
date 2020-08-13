@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133534"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185213"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>A mobilitási szolgáltatás leküldéses telepítésének hibáinak megoldása
 
@@ -257,6 +257,10 @@ Az 9,20-es [verziótól](https://support.microsoft.com/help/4478871/update-rollu
 ## <a name="insufficient-space-errorid-95524"></a>Nincs elég hely (ErrorID: 95524)
 
 Ha a mobilitási ügynököt a forrásoldali gépre másolja, legalább 100 MB szabad terület szükséges. Győződjön meg arról, hogy a forrásszámítógép rendelkezik a szükséges szabad területtel, majd próbálja megismételni a műveletet.
+
+## <a name="low-system-resources"></a>Alacsony rendszererőforrások
+
+Ez a probléma akkor fordul elő, ha a rendszer alacsony rendelkezésre állású memóriával rendelkezik, és nem tud memóriát lefoglalni a mobilitási szolgáltatás telepítéséhez. Győződjön meg arról, hogy a telepítés folytatásához és sikeres befejezéséhez elegendő memória van kiszabadítva.
 
 ## <a name="vss-installation-failures"></a>VSS-telepítési hibák
 

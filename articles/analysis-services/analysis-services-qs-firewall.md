@@ -4,15 +4,15 @@ description: Ez a rövid útmutató segítséget nyújt a tűzfal konfigurálás
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 48618815519fad31bff5d6a8d2d2edc82535f437
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 0bb454897a8dfa340a3586c22619723464d5ca73
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697896"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185570"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
 
@@ -22,8 +22,9 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 - Analysis Services-kiszolgáló az előfizetésben. További tudnivalókért lásd: [Rövid útmutató: Kiszolgáló létrehozása – Portál](analysis-services-create-server.md) vagy [Rövid útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
 - Egy vagy több IP-címtartomány ügyfélszámítógépekhez (ha szükséges).
-- Előfordulhat, hogy a Power BI Premium Azure Analysis Serviceshoz, például az adatimportáláshoz (frissítéshez) és a többoldalas jelentésekhez való kapcsolódáskor jelenleg nem támogatottak, még akkor is, ha engedélyezve van a hozzáférés engedélyezése a Power BI. A Power BI Premium élő kapcsolat használatának leggyakoribb forgatókönyve támogatott. Az összes Power BI Pro-forgatókönyv támogatott.
 
+> [!NOTE]
+> Csak Németország esetében Microsoft Cloud Power BI Premium esetén az adatimportálás (frissítés) és a többoldalas jelentés kapcsolatai jelenleg nem támogatottak, ha engedélyezve van egy tűzfal, még akkor is, ha a hozzáférés engedélyezése a Power BI beállítás engedélyezve van.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra 
 
@@ -32,14 +33,14 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 ## <a name="configure-a-firewall"></a>Tűzfal konfigurálása
 
 1. Kattintson a kiszolgálóra az Áttekintés oldal megnyitásához. 
-2. A **Beállítások**  >  **tűzfalon**  >  **engedélyezze a tűzfalat**, kattintson **a be**gombra.
-3. A DirectQuery-hozzáférés a Power BI szolgáltatásból történő engedélyezéséhez a **Hozzáférés engedélyezése Power BI-ból** területen kattintson a **Be** lehetőségre.  
-4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. A tűzfalszabály nevét 128 karakterre kell korlátozni, és csak nagybetűket, kisbetűket, számokat, aláhúzást és kötőjelet tartalmazhatnak. Szóközök és egyéb speciális karakterek használata nem engedélyezett.
-5. Kattintson a **Save** (Mentés) gombra.
+2. A **Beállítások**  >  **tűzfala**tűzfal  >  **engedélyezése**területen válassza **a be**lehetőséget.
+3. Ha Power BI és Power BI Premium összes kapcsolattípus engedélyezését szeretné engedélyezni, a **hozzáférés engedélyezése a Power BIból**területen válassza **a be**lehetőséget.  
+4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. A tűzfalszabály nevét 128 karakterre kell korlátozni, és csak nagybetűket, kisbetűket, számokat, aláhúzást és kötőjelet tartalmazhatnak. Üres szóközök és egyéb speciális karakterek használata nem engedélyezett.
+5. Kattintson a **Mentés** gombra.
 
      ![Tűzfalbeállítások](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az IP-címtartományokat, vagy tiltsa le a tűzfalat.
 

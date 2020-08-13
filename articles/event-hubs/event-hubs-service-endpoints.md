@@ -3,12 +3,12 @@ title: Virtual Network szolgáltatási végpontok – Azure Event Hubs | Microso
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. EventHub szolgáltatási végpontot egy virtuális hálózathoz.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: cb0d9a9c4d5e2503e68620ec4e6386d8e05d471c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554073"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185067"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Azure Event Hubs-névterek elérésének engedélyezése adott virtuális hálózatokból 
 
@@ -16,26 +16,22 @@ Event Hubs és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] inte
 
 Ha úgy van konfigurálva, hogy legalább egy virtuális hálózati alhálózat szolgáltatási végpontra legyen kötve, a megfelelő Event Hubs névtér többé nem fogadja el a forgalmat bárhonnan, de a virtuális hálózatokban engedélyezett alhálózatokat. A virtuális hálózat szempontjából a Event Hubs névterek egy szolgáltatás-végponthoz kötése egy elkülönített hálózati alagutat állít be a virtuális hálózat alhálózatáról az üzenetküldési szolgáltatásba. 
 
-Az eredmény az alhálózathoz és a megfelelő Event Hubs névtérhez kötött munkaterhelések közötti privát és elkülönített kapcsolat, annak ellenére, hogy az üzenetküldési szolgáltatás végpontjának megfigyelhető hálózati címe egy nyilvános IP-tartományban van. Ez a viselkedés kivételt jelent. A szolgáltatás végpontjának engedélyezése alapértelmezés szerint engedélyezi a `denyall` szabályt a virtuális hálózathoz társított [IP-tűzfalon](event-hubs-ip-filtering.md) . Adott IP-címeket adhat hozzá az IP-tűzfalon az Event hub nyilvános végponthoz való hozzáférés engedélyezéséhez. 
+Az eredmény az alhálózathoz és a megfelelő Event Hubs névtérhez kötött munkaterhelések közötti privát és elkülönített kapcsolat, annak ellenére, hogy az üzenetküldési szolgáltatás végpontjának megfigyelhető hálózati címe egy nyilvános IP-tartományban van. Kivételt jelent ez a viselkedés. A szolgáltatás végpontjának engedélyezése alapértelmezés szerint engedélyezi a `denyall` szabályt a virtuális hálózathoz társított [IP-tűzfalon](event-hubs-ip-filtering.md) . Adott IP-címeket adhat hozzá az IP-tűzfalon az Event hub nyilvános végponthoz való hozzáférés engedélyezéséhez. 
 
->[!WARNING]
-> A virtuális hálózatok integrálásának megvalósításával megakadályozható, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
+>[!IMPORTANT]
+> A virtuális hálózatok a **standard** és a **dedikált** Event Hubsban támogatottak. Az alapszintű **csomag** nem támogatja.
 >
-> A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
+> A tűzfalszabályok bekapcsolása a Event Hubs névtérben alapértelmezés szerint blokkolja a bejövő kérelmeket, hacsak a kérelmek nem az engedélyezett virtuális hálózatokról származó szolgáltatásból származnak. A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. 
 >
-> Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
+> Íme néhány olyan szolgáltatás, amely nem fér hozzá Event Hubs erőforrásokhoz, ha a virtuális hálózatok engedélyezve vannak. Vegye figyelembe, hogy a lista **nem** teljes.
+>
 > - Azure Stream Analytics
 > - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
+> - Azure Event Grid
+> - Azure Monitor (diagnosztikai beállítások)
 >
-> A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
-> - Azure-webalkalmazások
-> - Azure Functions
-> - Azure Monitor (diagnosztikai beállítás)
-
-
-> [!IMPORTANT]
-> A virtuális hálózatok a **standard** és a **dedikált** Event Hubsban támogatottak. Az alapszintű **csomag** nem támogatja.
+> Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Event Hubs erőforrásaihoz, még akkor is, ha a virtuális hálózatok engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>A VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
@@ -49,7 +45,7 @@ Ez azt jelenti, hogy a biztonsági szempontból bizalmas Felhőbeli megoldások 
 
 A **virtuális hálózati szabályok** a tűzfal biztonsági funkciója, amely azt szabályozza, hogy az Azure Event Hubs-névtér fogadjon-e kapcsolatokat egy adott virtuális hálózati alhálózatból.
 
-Egy Event Hubs névtér egy virtuális hálózathoz kötése kétlépéses folyamat. Először létre kell hoznia egy **virtuális hálózati szolgáltatás végpontját** egy virtuális hálózat alhálózatán, és engedélyeznie kell azt a **Microsoft. EventHub** számára a [szolgáltatási végpont áttekintése című][vnet-sep] cikkben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Event Hubs névteret egy **virtuális hálózati szabállyal**kell kötnie.
+Egy Event Hubs névtér egy virtuális hálózathoz kötése kétlépéses folyamat. Először létre kell hoznia egy **virtuális hálózati szolgáltatás végpontját** egy virtuális hálózat alhálózatán, és engedélyeznie kell azt a **Microsoft. EventHub** számára a [szolgáltatási végpont áttekintése című][vnet-sep] cikkben leírtak szerint. A szolgáltatás-végpont hozzáadása után a Event Hubs névteret egy **virtuális hálózati szabállyal**kell kötnie.
 
 A virtuális hálózati szabály a Event Hubs névtér egy virtuális hálózati alhálózattal való társítása. Amíg a szabály létezik, az alhálózathoz kötött összes munkaterhelés hozzáférést kap a Event Hubs névtérhez. Event Hubs maga soha nem hoz létre kimenő kapcsolatokat, nem kell elérnie a hozzáférést, ezért a szabály engedélyezésével soha nem kap hozzáférést az alhálózathoz.
 
@@ -57,12 +53,10 @@ A virtuális hálózati szabály a Event Hubs névtér egy virtuális hálózati
 Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózati szolgáltatásbeli végpont hozzáadására. A hozzáférés korlátozásához integrálnia kell a virtuális hálózati szolgáltatás végpontját ehhez a Event Hubs névtérhez.
 
 1. Navigáljon a **Event Hubs névtérhez** a [Azure Portal](https://portal.azure.com).
-4. A bal oldali menü **Beállítások** területén válassza a **hálózatkezelés** lehetőséget. 
+4. A bal oldali menü **Beállítások** területén válassza a **hálózatkezelés** lehetőséget. A **hálózatkezelés** lap csak a **standard** vagy a **dedikált** névtér esetében jelenik meg. 
 
     > [!NOTE]
-    > A **hálózatkezelés** lap csak a **standard** vagy a **dedikált** névtér esetében jelenik meg. 
-
-    Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad meg IP-tűzfalszabály-szabályt, vagy nem ad hozzá virtuális hálózatot ezen a lapon, a névtér az összes hálózatról elérhető, beleértve a nyilvános internetet is (a hozzáférési kulccsal). 
+    > Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva, ahogy az az alábbi képen is látható. Ha nem ad meg IP-tűzfalszabály-szabályt, vagy nem ad hozzá virtuális hálózatot ezen a lapon, a névtér a **nyilvános interneten** keresztül érhető el (a hozzáférési kulccsal). 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Hálózatok lap – kiválasztott hálózatok lehetőség" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -83,12 +77,15 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 
     > [!NOTE]
     > Ha nem tudja engedélyezni a szolgáltatási végpontot, a Resource Manager-sablonnal figyelmen kívül hagyhatja a hiányzó virtuális hálózati szolgáltatás végpontját. Ez a funkció nem érhető el a portálon.
+5. Itt adhatja meg, hogy szeretné- **e engedélyezni a megbízható Microsoft-szolgáltatások számára a tűzfal megkerülését**. További részletekért lásd a [megbízható Microsoft-szolgáltatások](#trusted-microsoft-services) című témakört. 
 6. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.
 
     ![Hálózat mentése](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
     > [!NOTE]
     > A megadott IP-címekre vagy tartományokra való hozzáférés korlátozásához tekintse meg a [hozzáférés engedélyezése adott IP-címekről vagy tartományokról](event-hubs-ip-filtering.md)című témakört.
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
 

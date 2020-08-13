@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d558b414bfa27b387a559ff6c8fdb5ada32730fc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964498"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185638"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -25,7 +25,7 @@ Az Azure Key Vault-felhasználók közvetlenül a Key Vault hozhatnak DigiCert-t
 
 A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](/azure/key-vault/certificates/about-certificates).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +61,7 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
     -   **Fiókazonosító**: adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
     -   **Fiók jelszava**: adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
     -   **Szervezet azonosítója**: adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
-    -   Kattintson a **Létrehozás** lehetőségre.
+    -   Kattintson a **Create** (Létrehozás) gombra.
    
 6.  Látni fogja, hogy a DigicertCA már hozzá lett adva a hitelesítésszolgáltatók listájában.
 
@@ -132,7 +132,17 @@ Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, 
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+- Létrehozhatok Digicert helyettesítő tanúsítványt a kulcstartón keresztül? 
+   Igen. Ez attól függ, hogyan konfigurálta a Digicert-fiókját.
+- Ha létrehozunk egy EV-tanúsítványt, hogyan adjuk meg? 
+   Tanúsítvány létrehozásakor kattintson a speciális házirend-konfiguráció elemre, majd adja meg a tanúsítvány típusát. Támogatott értékek: OV-SSL, EV-SSL
+- Van-e késés a Digicert-tanúsítványnak az integrációval való létrehozása és a tanúsítvány Digicert keresztüli közvetlen beszerzése révén?
+   Nem. A tanúsítvány létrehozásakor a rendszer ellenőrzi, hogy az ellenőrzés folyamata hosszabb időt is igénybe vehet, és az ellenőrzés a folyamat DigiCert függ.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

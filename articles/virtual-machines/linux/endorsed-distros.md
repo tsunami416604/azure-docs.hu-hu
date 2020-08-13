@@ -3,7 +3,7 @@ title: Az Azure-ban támogatott Linux-disztribúciók
 description: Ismerje meg az Azure által támogatott disztribúciók Linuxját, beleértve az Ubuntu, a CentOS, az Oracle és a SUSE útmutatásait.
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: fd21170c4edc1ed0587ea4d4e067e61590530623
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283316"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184992"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 
@@ -74,6 +74,14 @@ A Microsoft két (2) csatornát használ a CoreOS-felhasználók áttelepítés�
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 A Credativ egy független tanácsadói és szolgáltatási cég, amely a professzionális megoldások fejlesztésére és megvalósítására specializálódott ingyenes szoftverek használatával. A vezető nyílt forráskódú szakemberek a Credativ nemzetközi elismeréssel rendelkeznek, és számos informatikai részleggel rendelkeznek, amelyek támogatják a támogatást. A Microsofttal együtt a Credativ jelenleg a megfelelő Debian-rendszerképeket készíti elő a Debian 8 (Jessie) és a Debian 7-es verziójában (zihálás). Mindkét rendszerkép kifejezetten az Azure-ban való futtatásra készült, és könnyen kezelhető a platformon keresztül. A Credativ az Azure-hoz készült Debian-rendszerképek hosszú távú karbantartását és frissítését is támogatja a nyílt forráskódú támogatási központjain keresztül.
+
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+A Kinvolk a Flatcar Container Linux mögötti cég, amely az eredeti CoreOS-jövőképet folytatja a tároló alkalmazások minimális, nem módosítható és automatikusan frissülő alapjaihoz. Minimális disztribúcióként a Flatcar csak azokat a csomagokat tartalmazza, amelyek a tárolók üzembe helyezéséhez szükségesek. A nem módosítható fájlrendszer garantálja a következetességet és a biztonságot, az automatikus frissítési képességek pedig lehetővé teszik, hogy mindig naprakészek legyenek a legújabb biztonsági javításokkal. 
+
+A Flatcar-tároló linuxos biztonsági mentése a Kinvolk globális csapata, amely olyan opcionális kereskedelmi támogatási előfizetést kínál, amely nonstop választ, biztonsági és technikai riasztásokat, valamint exkluzív, Azure-ra optimalizált rendszerképeket tartalmaz, beleértve a hosszú távú támogatási csatornát.
+
 
 ### <a name="oracle"></a>Oracle
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463535"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185281"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>BLOB-pillanatkép létrehozása és kezelése a .NET-ben
 
@@ -24,7 +24,7 @@ További információ az Azure Storage-beli blob-pillanatképekről: [blob-pilla
 
 ## <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
-# <a name="net-version-12x"></a>[.NET Version 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Ha a .NET-hez készült Azure Storage ügyféloldali kódtára 12. x verziójával szeretne pillanatképet készíteni a blokk blobról, használja a következő módszerek egyikét:
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET 11-es verzió. x](#tab/v11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Ha a .NET-hez készült Azure Storage ügyféloldali kódtára 11. x verziójával szeretné létrehozni a blokk blob pillanatképét, használja az alábbi módszerek egyikét:
 
@@ -126,11 +126,11 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 BLOB törléséhez először törölnie kell a blob összes pillanatképét. A pillanatképeket egyenként is törölheti, vagy megadhatja, hogy a rendszer az összes pillanatképet törli a forrás blob törlésekor. Ha olyan blobot próbál törölni, amely még tartalmaz pillanatképeket, akkor a hiba eredménye.
 
-# <a name="net-version-12x"></a>[.NET Version 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Ha törölni szeretne egy blobot és annak pillanatképeit az Azure Storage .NET-hez készült ügyféloldali kódtár 12. x verziójával, használja az alábbi módszerek egyikét, és foglalja bele a [DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) enumerálást:
 
-- [Szabályzat](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.delete)
+- [Törlés](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.delete)
 - [DeleteAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteasync)
 - [Deleteifexists paranccsal](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
@@ -141,11 +141,11 @@ A következő mintakód bemutatja, hogyan törölhet egy blobot és annak pillan
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET 11-es verzió. x](#tab/v11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Ha törölni szeretne egy blobot és annak pillanatképeit az Azure Storage .NET-hez készült ügyféloldali kódtár 11. x verziójával, használja a következő blob-törlési módszerek egyikét, és foglalja bele a [DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) enumerálást:
 
-- [Szabályzat](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
+- [Törlés](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteasync)
 - [Deleteifexists paranccsal](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
@@ -158,8 +158,8 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [BLOB-Pillanatképek](snapshots-overview.md)
 - [BLOB-verziók (előzetes verzió)](versioning-overview.md)
-- [A Blobok Soft delete](storage-blob-soft-delete.md)
+- [Blobok helyreállítható törlése](storage-blob-soft-delete.md)

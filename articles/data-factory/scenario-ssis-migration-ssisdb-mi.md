@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c91731d70d5db59ecf5daa726fd42ee42c58f51e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6de08faee78deeb86117084b420eb5043153f62d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116314"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186046"
 ---
 # <a name="ssis-migration-with-azure-sql-managed-instance-as-the-database-workload-destination"></a>SSIS Migrálás az Azure SQL felügyelt példányával az adatbázis-munkaterhelés céljaként
 
@@ -32,7 +32,9 @@ A SSISDB áttelepítését a DMS használatával végezheti el a következő cik
 
 ## <a name="ssis-jobs-to-sql-managed-instance-agent"></a>SSIS feladatok SQL felügyelt példány-ügynökhöz
 
-A felügyelt SQL-példányok natív, első osztályú ütemező szolgáltatással rendelkeznek, akárcsak SQL Server Agent a helyszínen.  Mivel a SSIS-feladatokhoz tartozó áttelepítési eszköz még nem érhető el, a SQL Server Agent a helyszínen át kell telepíteni az SQL felügyelt példány ügynökéhez parancsfájlok/manuális másolás útján.
+A felügyelt SQL-példányok natív, első osztályú ütemező szolgáltatással rendelkeznek, akárcsak SQL Server Agent a helyszínen.  A [SSIS-csomagokat az Azure SQL felügyelt példány-ügynök használatával futtathatja](how-to-invoke-ssis-package-managed-instance-agent.md).
+
+Mivel a SSIS-feladatokhoz tartozó áttelepítési eszköz még nem érhető el, a SQL Server Agent a helyszínen át kell telepíteni az SQL felügyelt példány ügynökéhez parancsfájlok/manuális másolás útján.
 
 ## <a name="additional-resources"></a>További források
 
@@ -42,7 +44,7 @@ A felügyelt SQL-példányok natív, első osztályú ütemező szolgáltatássa
 - [Hálózati topológiák az SQL felügyelt példányainak a DMS használatával történő áttelepítéséhez](https://docs.microsoft.com/azure/dms/resource-network-topologies)
 - [SSIS-csomagok migrálása egy felügyelt SQL-példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapcsolódás a SSISDB az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
 - [Az Azure-ban üzembe helyezett SSIS-csomagok futtatása](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)

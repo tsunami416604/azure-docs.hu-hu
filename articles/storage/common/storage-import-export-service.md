@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512426"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185383"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
 
@@ -120,14 +120,15 @@ Az Azure import/export szolgáltatás lehetővé teszi az adatok másolását az
 
 |Ország/régió  |Ország/régió  |Ország/régió  |Ország/régió  |
 |---------|---------|---------|---------|
-|USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
+|USA keleti régiója    | Észak-Európa        | Central India        |US Gov Iowa         |
 |USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
 |USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD – Középső régió        |
-|USA nyugati régiója, 2.     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
+|USA 2. nyugati régiója     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
 |USA középső régiója     | Kelet-Ausztrália        | Kelet-Kanada        | Észak-Kína        |
 |USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Az Egyesült Királyság déli régiója        |
 |USA déli középső régiója     | Nyugat-Japán        |Dél-Korea középső régiója         | Közép-Németország        |
 |USA nyugati középső régiója     |  Kelet-Japán       | USA-beli államigazgatás – Virginia        | Északkelet-Németország        |
+|Dél-Afrika nyugati régiója   |  Dél-Afrika északi régiója |
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
@@ -157,7 +158,7 @@ Ha meghajtókat szállít az Azure-ba, a szállítási költséget a szállítá
 
 A [standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) az importálás során és az adatexportálás során is érvényes. Az Azure Storage-ból származó adatok exportálásakor a standard szintű kimenő költségek is érvényesek a tárolási tranzakciós költségekkel együtt. A kimenő költségekkel kapcsolatos további információkért lásd az [adatátviteli díjszabást.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja az import/export szolgáltatást a következőhöz:
 

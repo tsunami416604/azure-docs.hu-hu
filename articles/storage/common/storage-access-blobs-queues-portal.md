@@ -1,23 +1,23 @@
 ---
-title: A blob-vagy üzenetsor-információ elérésének Azure Portal használata
+title: Válassza ki, hogyan engedélyezze a hozzáférést a blobhoz vagy az üzenetsor-kezeléshez a Azure Portal
 titleSuffix: Azure Storage
 description: Ha a Azure Portal használatával fér hozzá a blobhoz vagy a várólistához, a portálon az Azure Storage-ba irányuló kérések is elérhetők. Az Azure Storage-ba érkező kérések hitelesítése és engedélyezése az Azure AD-fiók vagy a Storage-fiók elérési kulcsa alapján lehetséges.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/14/2020
+ms.date: 08/12/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 27c5b166565dd8f0803f3bca05d137e643325368
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534175"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185740"
 ---
-# <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-információ elérésének Azure Portal használata
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a hozzáférést a blobhoz vagy az üzenetsor-kezeléshez a Azure Portal
 
 Ha a [Azure Portal](https://portal.azure.com)használatával fér hozzá a blobhoz vagy a várólistához, a portálon az Azure Storage-ba irányuló kérések is elérhetők. Az Azure Storage-ba irányuló kérelem az Azure AD-fiók vagy a Storage-fiók hozzáférési kulcsa alapján engedélyezhető. A portál jelzi, hogy melyik módszert használja, és lehetővé teszi a kettő közötti váltást, ha rendelkezik a megfelelő engedélyekkel.  
 
@@ -113,7 +113,7 @@ A blob-feltöltési műveletek engedélyezésének megadásához kövesse az al�
 
     :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="A blob-feltöltés engedélyezési módjának módosítását bemutató képernyőkép":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md)
 - [Hozzáférés biztosítása az Azure-tárolók és-várólisták számára a Azure Portal RBAC](storage-auth-aad-rbac-portal.md)

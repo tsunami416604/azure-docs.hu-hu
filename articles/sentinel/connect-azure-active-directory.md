@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 37106517c47c86f4a4a562eebd6d120e31e22334
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a19ced1cb9496bddd1f9aa7ea9e3eb58ba7eea3d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564524"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185689"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Adatok összekötése Azure Active Directoryról (Azure AD)
 
@@ -30,7 +30,7 @@ Az Azure Sentinel lehetővé teszi az adatok összegyűjtését [Azure Active Di
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha a bejelentkezési adatait az Azure AD-ből szeretné exportálni, rendelkeznie kell Azure AD P1 vagy P2 licenccel.
+- Minden Azure AD-licenc (ingyenes/O365/P1/P2) integrálható a Azure Monitorba, és betöltheti a bejelentkezési naplókat az Azure Sentinelbe. A Azure Monitor és az Azure Sentinel esetében további GB-os díjak is érvényesek.
 
 - A globális rendszergazdai vagy biztonsági rendszergazdai jogosultsággal rendelkező felhasználó, aki a naplókat továbbítani szeretné a bérlőn.
 
@@ -52,7 +52,7 @@ Az Azure Sentinel lehetővé teszi az adatok összegyűjtését [Azure Active Di
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Active Directory az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

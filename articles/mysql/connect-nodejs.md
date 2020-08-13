@@ -1,5 +1,5 @@
 ---
-title: Kapcsolat Node.js-Azure Database for MySQL használatával
+title: 'Gyors útmutató: kapcsolat Node.js használatával – Azure Database for MySQL'
 description: Ez a rövid útmutató számos Node.js-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423184"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185927"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: Node.js használata az adatAzure Database for MySQLhoz való kapcsolódáshoz és adatlekérdezéshez
 
@@ -33,7 +33,7 @@ Ez a témakör azt feltételezi, hogy már ismeri a fejlesztést a Node.js haszn
 
 A platformtól függően kövesse a megfelelő szakaszban található utasításokat a [Node.js](https://nodejs.org)telepítéséhez. A NPM használatával telepítse a [MySQL](https://www.npmjs.com/package/mysql) -csomagot és annak függőségeit a projekt mappájába.
 
-### <a name="windows"></a>**Windows**
+### <a name="windows"></a>Windows
 
 1. Látogasson el a [Node.js letöltési oldalára](https://nodejs.org/en/download/), majd válassza ki a kívánt Windows-telepítési lehetőséget.
 2. Hozzon létre egy helyi projektmappát, például: `nodejsmysql`. 
@@ -48,7 +48,7 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
 
 5. Ellenőrizze a telepítést a `npm list` kimeneti szöveg ellenőrzésével. Új javítások kiadásakor a verziószám változhat.
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. A **Node.js** és az **npm**, a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
 
@@ -66,7 +66,7 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
    ```
 3. Ellenőrizze a telepítést a NPM-lista kimeneti szövegének ellenőrzésével. Új javítások kiadásakor a verziószám változhat.
 
-### <a name="mac-os"></a>**Mac OS**
+### <a name="mac-os"></a>Mac OS
 
 1. A **brew**, egy Mac OS X-szel és a **Node.js**-vel kompatibilis, egyszerűen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
 

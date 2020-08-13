@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b5ce74e680d79cfee006cb8cade6c22bff3c055f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81eab2f3c5748c4edf7e09e5147a178a08bc546b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202958"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185706"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
@@ -25,14 +25,14 @@ Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez kész
 
 A Storage-fiókban lévő Blobok listázásához hívja a következő módszerek egyikét:
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 - [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
 - [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
 - [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
 - [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 - [CloudBlobClient. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -84,11 +84,11 @@ Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy egyszer�
 
 Ha engedélyezte a hierarchikus névtér funkciót a fiókjában, a címtárak nem virtuálisak. Ehelyett konkrét, független objektumok. Így a címtárak nulla hosszúságú blobként jelennek meg a listában.
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -150,7 +150,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 Ha hierarchikusan hívja meg a listázási műveletet, az Azure Storage a hierarchia első szintjén adja vissza a virtuális könyvtárakat és blobokat. Az egyes virtuális könyvtárak [előtag](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) tulajdonsága úgy van beállítva, hogy egy rekurzív hívásban továbbítsa az előtagot a következő könyvtár lekéréséhez.
 
-# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 A Blobok hierarchikus listázásához hívja meg a [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)vagy a [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) metódust.
 
@@ -158,7 +158,7 @@ Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy hierarch
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 A Blobok hierarchikus listázásához állítsa a `useFlatBlobListing` listázási metódus paraméterét **hamis**értékre.
 
@@ -243,7 +243,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Blobok listázása](/rest/api/storageservices/list-blobs)
 - [BLOB-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)

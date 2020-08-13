@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850440"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185655"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 A kódrészlet egy gyakran használt kifejezést mutat be `AutoMLConfig` . A több folyadékot (hiperparaméter-ish) tartalmazó argumentumok külön szótárban vannak megadva, míg a kisebb valószínűséggel módosuló értékek közvetlenül a `AutoMLConfig` konstruktorban vannak megadva. Ebben az esetben az `automl_settings` adja meg a rövid futtatást: a Futtatás csak 2 iteráció vagy 15 perc elteltével áll le, attól függően, hogy melyik következik be először.
@@ -346,7 +347,7 @@ A `automl_settings` szótárt a rendszer a kwargs adja át a `AutoMLConfig` kons
 `AutoMLStep`Maga a és a `AutoMLConfig` kimenete is a `PipelineData` mérőszámok és a modell adatainak tárolására létrehozott objektumok. 
 
 >[!Important]
-> Meg kell adnia `passthru_automl_config` , hogy az `False` `AutoMLStep` `PipelineOutputTabularDataset` objektum a bemenethez van-e használva.
+> A és a értékeit csak akkor kell beállítania, `enable_default_model_output` `enable_default_metrics_output` `False` Ha használja `AutoMLStep` .
 
 Ebben a példában az automatikus ML folyamat kereszt-érvényesítést hajt végre a on `training_data` . Az argumentummal megadhatja a kereszthivatkozások számát `n_cross_validations` . Ha már kiosztotta a betanítási adatait az adatelőkészítési lépések részeként, beállíthatja a `validation_data` sajátját `Dataset` .
 

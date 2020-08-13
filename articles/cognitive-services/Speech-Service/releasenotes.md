@@ -11,14 +11,47 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415023"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185315"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
+
+## <a name="new-speech-to-text-locales-2020-august-release"></a>Új beszéd-szöveg területi beállítások: 2020 – augusztus kiadás
+Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusban: 2 európai nyelv CS-CZ és hu-HU, 5 angol területi beállítás és 19 spanyol területi beállítás, amely a legtöbb Dél-amerikai országot fedi le. Az alábbi lista az új területi beállítások listáját tartalmazza. A teljes nyelvi listát [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)találja.
+
+| Területi beállítás  | Nyelv                          |
+|---------|-----------------------------------|
+| `cs-CZ` | Cseh (Cseh Köztársaság)            | 
+| `en-HK` | Angol (Hongkong)               | 
+| `en-IE` | Angol (Írország)                 | 
+| `en-PH` | Angol (Fülöp-szigetek)             | 
+| `en-SG` | Angol (Szingapúr)               | 
+| `en-ZA` | Angol (Dél-Afrika)            | 
+| `es-AR` | Spanyol (Argentína)               | 
+| `es-BO` | Spanyol (Bolívia)                 | 
+| `es-CL` | Spanyol (Chile)                   | 
+| `es-CO` | Spanyol (Kolumbia)                | 
+| `es-CR` | Spanyol (Costa Rica)              | 
+| `es-CU` | Spanyol (Kuba)                    | 
+| `es-DO` | Spanyol (Dominikai Köztársaság)      | 
+| `es-EC` | Spanyol (Ecuador)                 | 
+| `es-GT` | Spanyol (Guatemala)               | 
+| `es-HN` | Spanyol (Honduras)                | 
+| `es-NI` | Spanyol (Nicaragua)               | 
+| `es-PA` | Spanyol (Panama)                  | 
+| `es-PE` | Spanyol (perui)                    | 
+| `es-PR` | Spanyol (Puerto Rico)             | 
+| `es-PY` | Spanyol (Paraguay)                | 
+| `es-SV` | Spanyol (Salvador)             | 
+| `es-US` | Spanyol (USA)                     | 
+| `es-UY` | Spanyol (Uruguay)                 | 
+| `es-VE` | Spanyol (Venezuela)               | 
+| `hu-HU` | Magyar (Magyarország)               | 
+
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0:2020 – júliusi kiadás
 
@@ -246,7 +279,7 @@ Egészségesek maradjanak!
 - JavaScript: további támogatás a `FromHost API` helyszíni tárolók és a szuverén felhők használatának megkönnyítéséhez. [Itt](speech-container-howto.md)találja a dokumentációt.
 - JavaScript: `NODE_TLS_REJECT_UNAUTHORIZED` Köszönjük, hogy hozzájárult a [orgads](https://github.com/orgads). Tekintse meg [a részleteket.](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - `OpenSSL`frissítve lett a b 1.1.1-es verzióra, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok `OpenSSL` nem lettek telepítve a `/usr/lib/ssl` rendszeren lévő könyvtárba. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
 - Módosítottuk a C#-tól a-ig visszaadott adattípust, `WordLevelTimingResult.Offset` `int` `long` hogy engedélyezzék a hozzáférést, `WordLevelTimingResults` Ha a beszédfelismerési adatok 2 percnél hosszabbak.
@@ -287,7 +320,7 @@ Egészségesek maradjanak!
 - `KeywordRecognizer`A Windows (UWP), az Android és az iOS támogatása a NuGet-és Unity-csomagokon keresztül
 - Távoli beszélgetési Java API hozzáadva a beszélgetések átírásához aszinkron kötegekben.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - A beszélgetési átirat funkciói a névtér alatt lettek áthelyezve `Microsoft.CognitiveServices.Speech.Transcription` .
 - A beszélgetési átirat módszereinek egy része új `Conversation` osztályba kerül.
@@ -594,7 +627,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - Az Objective-C támogatása iOS rendszeren. Tekintse meg [az iOS-hez készült Objective-C](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)rövid útmutatót.
 - JavaScript-támogatás a böngészőben. Tekintse meg a [JavaScript](quickstart-js-browser.md)rövid útmutatót.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - Ebben a kiadásban számos megszakított változást vezetünk be.
   További részletekért olvassa el [ezt a lapot](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -613,7 +646,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 
 - További hibák részletes információinak közzététele a csatlakoztatási hibákról.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - Java (Android) esetén a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvénynek már nincs szüksége elérésiút-paraméterre. A rendszer mostantól automatikusan észleli az elérési utat az összes támogatott platformon.
 - A Java-és C#-beli tulajdonság get-accesser `EndpointUrl` eltávolítása megtörtént.
@@ -642,7 +675,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - A felismerési eredmény több mezőt tartalmaz. Ezek a felismert szöveg és a felismerési állapotot jelképező további értékek (például a kullancsok) és az azokhoz tartozó további értékek (például: és) eltolása `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Támogatási AuthorizationToken a gyári példányok létrehozásához.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - Felismerési események: `NoMatch` az esemény típusa egyesítve lett az `Error` eseménybe.
 - A C# nyelvben lévő SpeechOutputFormat átnevezték, `OutputFormat` hogy a C++ nyelvre legyen igazítva.

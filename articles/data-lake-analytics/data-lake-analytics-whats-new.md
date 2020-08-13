@@ -1,19 +1,17 @@
 ---
 title: Legutóbbi módosítások Data Lake Analytics
 description: Ez a cikk a Data Lake Analytics legutóbbi változásainak listáját tartalmazza.
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0afd37a9f80fd2778f2b7206f58cec6ff423763e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476331"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184958"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>A Data Lake Analytics újdonságai
 
@@ -59,7 +57,7 @@ Annak megismeréséhez, hogy miként lehet elhárítani a .NET-frissítést a [.
 A legutóbbi frissítés részleteiért tekintse meg a [Azure Data Lake Analytics kibocsátási megjegyzését](https://github.com/Azure/AzureDataLake/tree/master/docs/Release_Notes).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedés a Data Lake Analytics [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md) használatával
 
