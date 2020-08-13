@@ -1,6 +1,6 @@
 ---
 title: Gyakori kérdések – Azure VMware-megoldás a CloudSimple
-description: Gyakori kérdések az Azure VMware-megoldásról a CloudSimple
+description: 'Ezek a gyakori kérdések az Azure VMware-megoldással kapcsolatban: kapcsolat, hálózatkezelés, biztonság, tárolás, Azure-integráció és egyéb CloudSimple.'
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025061"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140887"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Gyakori kérdések a VMware-megoldásról a CloudSimple
 
@@ -150,7 +150,7 @@ A CloudSimple nem hajtja végre a privát felhőre telepített alkalmazások fri
 
 **Mely Azure-szolgáltatások támogatottak?**
 
-A CloudSimple Azure-beli ExpressRoute-kapcsolódást biztosít az Azure-előfizetéshez.  Az előfizetésben futó összes szolgáltatás kapcsolódhat a saját felhőhöz.  Példák:
+A CloudSimple Azure-beli ExpressRoute-kapcsolódást biztosít az Azure-előfizetéshez.  Az előfizetésben futó összes szolgáltatás kapcsolódhat a saját felhőhöz.  Példák erre vonatkozóan:
 
 * **Azure Active Directory** identitás forrásaként a CloudSimple-vCenter.
 * **Azure Storage** biztonsági másolatok, képek és egyéb adatok tárolására a saját felhőből.

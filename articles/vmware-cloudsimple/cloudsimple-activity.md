@@ -1,7 +1,7 @@
 ---
 title: CloudSimple-tevékenységek kezelése
 titleSuffix: Azure VMware Solution by CloudSimple
-description: A CloudSimple VMware-megoldásának tevékenység-fogalmait ismerteti
+description: Ismerje meg a tevékenységek oldalait, amelyek összegzik a tevékenységeket, és lehetővé teszik a további részletek megkeresését. A tevékenységek közé tartoznak a riasztások, az események, a feladatok és a naplózási tevékenységek.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77e996e83819b78bb9ab4484b9a1d3653a97560
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025095"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140972"
 ---
 # <a name="activity-management-overview"></a>A tevékenységek kezelése – áttekintés
 
@@ -36,6 +36,6 @@ A feladatok minden olyan felhasználói műveletet nyomon követhetnek, amely 30
 
 A naplók nyomon követhetik a felhasználói műveleteket. A naplók tartalmazzák a felhasználó által a művelethez megadott paramétereket.  A naplók segítségével figyelheti a felhasználói tevékenységeket az összes felhasználó számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fiók összegzésének megtekintése](account.md)

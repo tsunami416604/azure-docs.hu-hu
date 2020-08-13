@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-megoldás CloudSimple – a csomópontok áttekintése
-description: Ismerje meg a CloudSimple-csomópontokat és-fogalmakat.
+description: Ismerje meg a CloudSimple-fogalmakat, például a csomópontokat, a kiépített csomópontokat, a privát felhőket és a VMware-megoldásokat CloudSimple-csomópontok SKU-ban.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024925"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140836"
 ---
 # <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
 
@@ -56,7 +56,7 @@ A következő csomópont-korlátok a privát felhőkre vonatkoznak.
 | A privát felhőben lévő csomópontok maximális száma | 64 |
 | Csomópontok minimális száma egy új fürtön | 3 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [csomópontok](create-nodes.md) kiépítéséről
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)
