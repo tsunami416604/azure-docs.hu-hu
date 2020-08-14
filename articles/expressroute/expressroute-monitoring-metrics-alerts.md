@@ -134,7 +134,7 @@ A **riasztási feltételek**között kiválaszthatja a jel típusa **tevékenys�
 
   ![másik](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ExpressRoute-kapcsolat konfigurálása.
   

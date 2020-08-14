@@ -95,7 +95,7 @@ A CDN-és Traffic Manager-profilok beállítása után kövesse az alábbi lép�
  
 A lépések elvégzése után a többszörös CDN szolgáltatás a feladatátvételi képességekkel együtt be van állítva az Azure Traffic Manager. Elérheti az egyéni tartományának tesztelési URL-címeit. A funkció teszteléséhez tiltsa le az elsődleges CDN-végpontot, és ellenőrizze, hogy a kérés megfelelően át lett-e helyezve a másodlagos CDN-végpontra. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Más útválasztási módszereket is beállíthat, például a földrajzi, a különböző CDN-végpontok közötti terhelés kiegyenlítéséhez. További információ: [a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
 

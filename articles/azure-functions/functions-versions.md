@@ -194,7 +194,7 @@ A következő táblázat bemutatja, hogy az egyes futásidejű verziók milyen k
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

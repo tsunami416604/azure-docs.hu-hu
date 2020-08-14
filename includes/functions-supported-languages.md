@@ -21,10 +21,10 @@ ms.locfileid: "81007850"
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET-keretrendszer 4,7)|GA (.NET Core 2,2)| GA (.NET Core 3,1) |
 |[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (6. csomópont)|GA (csomópont 8 & 10)| GA (10. csomópont & 12) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET-keretrendszer 4,7)|GA (.NET Core 2,2)| GA (.NET Core 3,1) |
-|[Java](../articles/azure-functions/functions-reference-java.md)|N.A.|GA (Java 8)| GA (Java 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |N.A.|GA (PowerShell mag 6)| GA (PowerShell mag 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|N.A.|GA (Python 3,6 & 3,7)| GA (Python 3,6, 3,7, & 3,8)|
-|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |N.A.|GA<sup>1</sup>| GA<sup>1</sup> |
+|[Java](../articles/azure-functions/functions-reference-java.md)|N/A|GA (Java 8)| GA (Java 8)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |N/A|GA (PowerShell mag 6)| GA (PowerShell mag 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|N/A|GA (Python 3,6 & 3,7)| GA (Python 3,6, 3,7, & 3,8)|
+|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |N/A|GA<sup>1</sup>| GA<sup>1</sup> |
 
 
 <sup>1</sup> A transpiling-en keresztül támogatott a JavaScripthez.

@@ -50,5 +50,5 @@ A Migrálás megtervezése során megfontolandó további fontos információk:
 
 * **A analitikai szolgáltatások helye**. A legjobb teljesítmény érdekében az elemzési szolgáltatások, például az Azure Data Lake Analytics vagy az Azure-HDInsight ugyanabban a régióban kell lenniük, mint az adatai.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

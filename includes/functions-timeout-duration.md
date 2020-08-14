@@ -21,9 +21,9 @@ A függvény alkalmazásának időtúllépési időtartamát a `functionTimeout`
 
 | Felkészülés | Futtatókörnyezet verziója | Alapértelmezett | Maximum |
 |------|---------|---------|---------|
-| Használat | 1. x | 5 | 10 |
-| Használat | 2. x | 5 | 10 |
-| Használat | 3. x | 5 | 10 |
+| Felhasználás | 1. x | 5 | 10 |
+| Felhasználás | 2. x | 5 | 10 |
+| Felhasználás | 3. x | 5 | 10 |
 | Prémium | 1. x | 30 | Korlátlan |
 | Prémium | 2. x | 30 | Korlátlan |
 | Prémium | 3. x | 30 | Korlátlan |

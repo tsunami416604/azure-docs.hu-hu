@@ -1,4 +1,4 @@
-- name: Data Catalog-dokumentáció
+- name: Az Azure Data Catalog dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -23,7 +23,7 @@
       href: data-catalog-adopting-data-catalog.md
     - name: GYIK
       href: data-catalog-frequently-asked-questions.md
-- name: Útmutató
+- name: Útmutatók
   items:
     - name: Adatforrások regisztrálása
       href: data-catalog-how-to-register.md

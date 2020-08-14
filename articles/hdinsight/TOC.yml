@@ -1,3 +1,5 @@
+- name: Azure HDInsight – dokumentáció
+  href: index.yml
 - name: HDInsight szolgáltatás
   expanded: true
   items:
@@ -74,7 +76,7 @@
               href: overview-data-lake-storage-gen1.md
             - name: Az Azure Data Lake Storage Gen2 áttekintése
               href: overview-data-lake-storage-gen2.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Fürtök létrehozása
           items:
@@ -342,7 +344,7 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: Migrálás a Spark 2.3-as vagy 2.4-es verziójába
           href: ./spark/migrate-versions.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Eszközök használata
           items:
@@ -471,7 +473,7 @@
           href: ./hdinsight-hadoop-create-linux-clusters-adf.md
         - name: Apache Hadoop-feladatok elküldése
           href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Eszközök használata
           items:
@@ -616,7 +618,7 @@
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Kafka – gyakori kérdések
           href: ./kafka/kafka-faq.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Fejlesztés
           items:
@@ -667,7 +669,7 @@
       items:
         - name: Az Apache HBase használata a HDInsightban
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Fejlesztés
           items:
@@ -746,7 +748,7 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Méretezési irányelvek
           href: ./interactive-query/sizing-guidelines.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Fejlesztés
           items:
@@ -843,7 +845,7 @@
           href: ./r-server/ml-services-tutorial-spark-compute.md
         - name: Az R Tools for Visual Studio használata
           href: ./r-server/r-server-submit-jobs-r-tools-vs.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Fejlesztés
           items:
@@ -875,7 +877,7 @@
           href: ./storm/apache-storm-write-data-lake-store.md
         - name: Apache Kafka és Apache Storm (Java)
           href: ./hdinsight-apache-storm-with-kafka.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Storm migrálása a Sparkba
           href: ./storm/migrate-storm-to-spark.md
@@ -943,7 +945,7 @@
           href: ./disk-encryption.md
         - name: LDAP-szinkronizálás a Ranger és az Apache Ambari szolgáltatásban
           href: ./domain-joined/ldap-sync.md
-    - name: Útmutató
+    - name: Útmutatók
       items:
         - name: Identitásközvetítő használata a hitelesítő adatok kezeléséhez
           href: ./domain-joined/identity-broker.md

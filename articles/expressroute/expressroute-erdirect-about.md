@@ -91,6 +91,6 @@ A ExpressRoute Direct a QinQ és a Dot1Q VLAN-címkézést is támogatja.
 
 A ExpressRoute Direct a Microsoft globális hálózatának aktív/aktív redundáns kapcsolataival azonos nagyvállalati szintű SLA-t biztosít. A ExpressRoute-infrastruktúra redundáns és a Microsoft globális hálózattal való kapcsolat redundáns és sokrétű, és ennek megfelelően méretezhető az ügyfelek igényei szerint. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az ExpressRoute Direct konfigurálása](expressroute-howto-erdirect.md)

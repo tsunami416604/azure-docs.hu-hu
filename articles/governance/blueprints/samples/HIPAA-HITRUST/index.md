@@ -1,14 +1,14 @@
 ---
 title: HIPAA HITRUST-tervminta – Áttekintés
 description: A HIPAA HITRUST-tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az adott HIPAA HITRUST-vezérlőket.
-ms.date: 12/3/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: ebe907053b37ebe0ff99248aa181a480c045d533
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9f8b304dc04164cd65ea9568afa260aa63af5b8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75470066"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213348"
 ---
 # <a name="overview-of-the-hipaa-hitrust-blueprint-sample"></a>A HIPAA HITRUST-tervminta áttekintése
 
@@ -18,7 +18,7 @@ A HIPAA HITRUST-tervminta az [Azure Policy](../../../policy/overview.md) segíts
 
 Ez a tervminta segít az ügyfeleknek egy alapvető szabályzatkészlet üzembe helyezésében bármilyen olyan architektúrához, amely az Azure-ban van üzembe helyezve, és a HITRUST HIPAA keretrendszerre vonatkozó akkreditációt vagy megfelelőséget igényel. A [vezérlőelem-leképezésről](./control-mapping.md) szóló szakasz részletesen ismerteti a kezdeményezésben található szabályzatokat, és hogy ezek hogyan segítik elő a HITRUST HIPAA keretrendszer által meghatározott különböző vezérlőknek való megfelelést. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte a HIPAA HITRUST-tervminta áttekintését. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 
