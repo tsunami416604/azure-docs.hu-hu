@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542670"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225818"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ez a cikk részletes erőforrás-korlátokat biztosít a Azure SQL Databaseban lévő, a DTU beszerzési modellt használó rugalmas készleten belüli adatbázisokhoz.
 
-* Az Azure SQL Database DTU beszerzési modellre vonatkozó korlátozásait lásd: a [DTU erőforrás-korlátai – Azure SQL Database](resource-limits-vcore-elastic-pools.md).
+* Az Azure SQL Database DTU beszerzési modellre vonatkozó korlátozásait lásd: a [DTU erőforrás-korlátai – Azure SQL Database](resource-limits-dtu-single-databases.md).
 * A virtuális mag erőforrás-korlátaival kapcsolatban lásd: virtuális mag-erőforrás korlátai [– Azure SQL Database](resource-limits-vcore-single-databases.md) és [virtuális mag erőforrás-korlátok – rugalmas készletek](resource-limits-vcore-elastic-pools.md).
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Rugalmas készlet: a tárolási méretek és a számítási méretek

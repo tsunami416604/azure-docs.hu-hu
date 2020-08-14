@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2f8e95826a7da3caa3edfe8ec23a6e0725b6bcba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213222"
+ms.locfileid: "88224713"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -37,7 +37,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 
 ## <a name="set-up-feature-management"></a>A szolgáltatások kezelésének beállítása
 
-Adjon hozzá egy hivatkozást a `Microsoft.FeatureManagement` NuGet-csomaghoz a .net Core Feature Manager használatához.
+Vegyen fel egy hivatkozást a `Microsoft.FeatureManagement.AspNetCore` és a `Microsoft.FeatureManagement` NuGet-csomagokra a .net Core Feature Manager használatához.
     
 A .NET Core Feature Manager `IFeatureManager` lekéri a keretrendszer natív konfigurációs rendszerének funkcióit. Ennek eredményeképpen meghatározhatja az alkalmazás funkciójának jelzőit a .NET Core által támogatott bármely konfigurációs forrás használatával, beleértve a fájl-vagy környezeti változók helyi *appsettings.jsét* is. `IFeatureManager` a .NET Core függőségi injekcióra támaszkodik. A szolgáltatás-felügyeleti szolgáltatásokat szabványos konvenciók használatával regisztrálhatja:
 
@@ -206,6 +206,8 @@ public class HomeController : Controller
 Az MVC-vezérlőkben az `FeatureGate` attribútum segítségével szabályozhatja, hogy a teljes vezérlő osztály vagy egy adott művelet engedélyezve van-e. A `HomeController` `FeatureA` vezérlő osztályt tartalmazó művelet végrehajtása előtt *a következő* vezérlőnek kell futnia:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -216,6 +218,8 @@ public class HomeController : Controller
 A következő `Index` művelet végrehajtása szükséges a `FeatureA` futtatásához: *on*
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
@@ -287,7 +291,7 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan implementálhatja a szolgáltatás-jelzőket a ASP.NET Core alkalmazásban a `Microsoft.FeatureManagement` kódtárak használatával. A ASP.NET Core és az alkalmazások konfigurációjának funkció-kezelési támogatásáról az alábbi forrásokban talál további információt:
 

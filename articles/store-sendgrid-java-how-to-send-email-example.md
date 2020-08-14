@@ -1,6 +1,6 @@
 ---
 title: Store-sendgrid-Java-How-to-Send-e-mail – példa
-description: E-mailek küldése a SendGrid a Java használatával Azure-beli üzemelő példányban
+description: E-mail küldése a SendGrid-ből Java-ban Azure-környezetben. Az eredményül kapott alkalmazás felszólítja a felhasználót az e-mail-értékekre.
 services: ''
 documentationcenter: java
 author: thinkingserious
@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d35937f813fb10a0c39b724b97014c02fee99f1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304156"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225954"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>E-mailek küldése a SendGrid a Java használatával Azure-beli üzemelő példányban
 Az alábbi példa bemutatja, hogyan küldhet e-maileket az Azure-ban üzemeltetett weblapokról a SendGrid használatával. Az eredményül kapott alkalmazás felszólítja a felhasználót az e-mail-értékekre, ahogy az alábbi képernyőképen is látható.
@@ -214,7 +214,7 @@ Az e-mailek elküldése mellett emailform.jsp a felhasználó eredményét is me
 
 ![E-mail eredményének küldése][emailresult]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Telepítse az alkalmazást a Compute Emulatorre, és egy böngészőben futtassa emailform.jsp-t, írja be az értékeket az űrlapba, kattintson az **E-mail küldése**elemre, majd tekintse meg az eredményeket sendemail.jsp.
 
 Ez a kód azt mutatja be, hogy miként használható a SendGrid az Azure-ban Java-ban. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például: 

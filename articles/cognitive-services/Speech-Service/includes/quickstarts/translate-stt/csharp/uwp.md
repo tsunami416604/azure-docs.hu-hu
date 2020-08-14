@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 08da79afa14d883c6fe21ead7b3bca5f1aac5538
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cdc1bfcc7c2ea0cc51fe830c5218cf10cae7d990
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771125"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226194"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-k�
 
 1. A `SpeechTranslationFromMicrophone_ButtonClicked` fájl kezelőjében keresse meg a karakterláncot `YourSubscriptionKey` , és cserélje le az előfizetési kulcsra.
 
-1. A `SpeechTranslationFromMicrophone_ButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion` , és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . (Például használja `westus` az ingyenes próbaverziós előfizetést.)
+1. A `SpeechTranslationFromMicrophone_ButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion` , és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) .
 
 1. A menüsávban válassza a **fájl**  >  **Mentés** lehetőséget a módosítások mentéséhez.
 
@@ -64,6 +64,6 @@ Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
    ![Beszéd fordítás felhasználói felülete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

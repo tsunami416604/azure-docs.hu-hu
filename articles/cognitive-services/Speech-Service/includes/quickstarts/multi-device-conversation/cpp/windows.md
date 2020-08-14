@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 015986ffa687142cf20ca18cff175ac6c5952a11
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1999100be3dd65518db7b5496ad5aaa1a407ee9e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671884"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226455"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -199,17 +199,17 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) .
 
-1. A menüsávban válassza a **fájl** > **Mentés összes mentése**elemet.
+1. A menüsávban válassza a **fájl**  >  **Mentés összes mentése**elemet.
 
 ## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Az alkalmazás felépítése és futtatása új beszélgetés létrehozásához
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1.  > A **HelloWorld** alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az <kbd>F5</kbd>billentyűt).
+1. **Debug**  >  A **HelloWorld** alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az <kbd>F5</kbd>billentyűt).
 
-1. Amint megjelenik az üzenet `Started transcribing` , megkezdheti a beszédet. Láthatja, hogy az átiratok úgy jelennek meg, ahogy beszél
+1. Amint megjelenik az `Started transcribing` üzenet, megkezdheti a beszédet. Láthatja, hogy az átiratok úgy jelennek meg, ahogy beszél
     - Ha a beszélgetési kódot másokkal is megosztja, és a beszélgetéshez csatlakoznak, az átiratokat is látni fogja.
 
 1. Ha elkészült, nyomja le a <kbd>CTRL + C</kbd> billentyűkombinációt a billentyűzeten a hangrögzítés leállításához.
@@ -221,7 +221,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 ## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Az alkalmazás létrehozása és futtatása egy meglévő beszélgetéshez való csatlakozáshoz
 
-1. Másolja és illessze be a következő függvényt a **HelloWorld. cpp** -be `int main()` közvetlenül a függvény előtt:
+1. Másolja és illessze be a következő függvényt a **HelloWorld. cpp** -be közvetlenül a `int main()` függvény előtt:
 
     ```cpp
     void JoinExistingConversation(const std::string& conversationId)
@@ -274,7 +274,7 @@ Az első lépések előtt ügyeljen a következőre:
     }
     ```
 
-2. Cserélje `StartNewConversation();` le a `int main()` függvényben a következőket:
+2. Cserélje le a `StartNewConversation();` `int main()` függvényben a következőket:
 
     ```cpp
     // Set this to the conversation you want to join
@@ -283,13 +283,13 @@ Az első lépések előtt ügyeljen a következőre:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Lépjen vissza a Visual studióba, `YourConversationId` és cserélje `int main()` le a függvényben az előző lépésben szereplő beszélgetési azonosítóra.
+4. Lépjen vissza a Visual studióba, és cserélje le a `YourConversationId` `int main()` függvényben az előző lépésben szereplő BESZÉLGETÉSi azonosítóra.
 
-5. Az alkalmazás létrehozásához a menüsávon válassza a Build **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül kell végbe mennie.
+5. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül kell végbe mennie.
 
-6.  > A **HelloWorld** alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az <kbd>F5</kbd>billentyűt).
+6. **Debug**  >  A **HelloWorld** alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az <kbd>F5</kbd>billentyűt).
 
-7. Amint megjelenik az üzenet `Started transcribing` , megkezdheti a beszédet. Ekkor megjelenik az átiratok, ahogy beszél.
+7. Amint megjelenik az `Started transcribing` üzenet, megkezdheti a beszédet. Ekkor megjelenik az átiratok, ahogy beszél.
     - Ha visszatér a böngészőbe, az átírásokat is látni fogja, ahogy beszél.
 
 8.  Ha elkészült, nyomja le a <kbd>CTRL + C</kbd> billentyűkombinációt a hangrögzítés leállításához és a beszélgetés befejezéséhez.

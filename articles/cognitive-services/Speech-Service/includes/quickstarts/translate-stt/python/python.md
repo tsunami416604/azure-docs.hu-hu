@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: e869a6581ac29ac234c075d258b59dbd45045ee2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d8128d02409072b2c43fb2c0de3766e7c8ed63d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925998"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226417"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,9 +76,9 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](../../../../regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióra](../../../../regions.md) .
 
-1. Mentse a végrehajtott módosításokat `quickstart.py`.
+1. Mentse a végrehajtott módosításokat `quickstart.py` .
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 

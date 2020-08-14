@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031122"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224781"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
 
@@ -31,7 +31,7 @@ A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a k
 |C# Class Library a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
 |C# Class Library a Visual Studio Code használatával|N/A|[A .NET Core parancssori felülete használata](#vs-code)|
 
-<sup>*</sup>A portál bővítmény-csomagokat használ.
+<sup>*</sup> A portál bővítmény-csomagokat használ.
 
 ## <a name="extension-bundles"></a><a name="extension-bundles"></a>Kiterjesztési csomagok
 
@@ -53,9 +53,9 @@ A bővítmények használatához frissítse a fájl *host.jsét* , hogy tartalma
 
 ## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet-csomagok
 
-A C# szintű függvénytár-alapú függvények projekt esetében a bővítmények telepítése kifejezetten olyan projektekhez készült, amelyek nem osztály 
+A C# szintű függvénytár-alapú függvények projekthez közvetlenül kell telepíteni a bővítményeket. A bővítmény-csomagokat kifejezetten olyan projektekhez tervezték, amelyek nem rendelkeznek C# szintű függvénytár-alapú.
 
-### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# osztályú könyvtár a Visual Studióval
+### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a> C \# osztályú könyvtár a Visual Studióval
 
 A **Visual Studióban**a Package Manager konzolon telepítheti a csomagokat az [Install-Package](/nuget/tools/ps-ref-install-package) paranccsal, ahogy az alábbi példában is látható:
 
@@ -69,7 +69,7 @@ Cserélje le a `<TARGET_VERSION>` példát a csomag egy adott verziójára, pél
 
 Ha `Install-Package` egy kötésre mutató hivatkozást használ, nem kell használni a [bővítmény-csomagokat](#extension-bundles). Ez a megközelítés kifejezetten a Visual Studióban létrehozott osztályok könyvtáraira vonatkozik.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>C# szintű függvénytár a Visual Studio Code-ban
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C# szintű függvénytár a Visual Studio Code-ban
 
 A **Visual Studio Code**-ban telepítsen egy C# Class Library-projekthez tartozó csomagokat a parancssorból a a .net Core parancssori felülete a [csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancs használatával. Az alábbi példa bemutatja, hogyan adhat hozzá kötéseket:
 

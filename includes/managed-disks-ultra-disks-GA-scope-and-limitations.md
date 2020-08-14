@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85448739"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225196"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -26,23 +26,32 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 
 |Régiók  |Az ultra-lemezeket támogató rendelkezésre állási zónák száma  |
 |---------|---------|
-|USA-beli államigazgatás – Virginia     |None         |
-|USA déli középső régiója     |None         |
+|USA-beli államigazgatás – Virginia     |Nincsenek         |
+|USA-beli államigazgatás – Arizona     |Nincsenek         |
+|USA déli középső régiója     |Nincsenek         |
 |USA középső régiója     |Három zóna         |
-|USA nyugati régiója     |None         |
-|USA nyugati régiója, 2.    |Három zóna         |
+|USA nyugati régiója     |Nincsenek         |
+|USA 2. nyugati régiója    |Három zóna         |
 |USA keleti régiója     |Három zóna         |
-|USA 2. keleti régiója     |Két zóna         |
+|USA 2. keleti régiója     |Három zóna         |
 |Délkelet-Ázsia     |Három zóna         |
+|Kelet-Ázsia     |Nincsenek         |
 |Észak-Európa     |Három zóna          |
 |Nyugat-Európa     |Három zóna          |
 |Az Egyesült Királyság déli régiója     |Három zóna          |
-|Kelet-Japán     |Két zóna         |
+|Kelet-Japán     |Három zóna         |
 |Közép-Franciaország    |Két zóna        |
+|Dél-Brazília    |Nincsenek        |
+|Kelet-Ausztrália    |Három zóna        |
+|Közép-Kanada *    |Három zóna        |
 
+\* Vegye fel a kapcsolatot az Azure támogatási szolgálatával, hogy hozzáférhessen a régió Availability Zoneséhez.
 
 - Csak a következő virtuálisgép-sorozatokban támogatott:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [Easv4](../articles/virtual-machines/eav4-easv4-series.md#easv4-series)
+    - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
+    - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)

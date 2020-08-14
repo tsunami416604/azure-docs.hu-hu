@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530374"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225733"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -118,7 +118,7 @@ A [SQL Database másolása másik kiszolgálóra](#copy-to-a-different-server) s
 > A [Azure Portal](https://portal.azure.com), a PowerShell és az Azure CLI nem támogatja az adatbázis másolását egy másik előfizetésre.
 
 > [!TIP]
-> A T-SQL használatával történő adatbázis-másolás támogatja az adatbázisok egy másik Azure-bérlőben való másolását.
+> A T-SQL használatával történő adatbázis-másolás támogatja az adatbázisok egy másik Azure-bérlőben való másolását. Ez csak akkor támogatott, ha SQL-hitelesítési bejelentkezéssel jelentkezik be a célkiszolgálóra.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 

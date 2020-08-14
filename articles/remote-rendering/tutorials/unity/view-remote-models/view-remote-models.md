@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e9c29edb28700d0f2d3411925c0985adc0f53e92
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231904"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225801"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -220,11 +220,28 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
     // For most people '<region>' is either 'westus2' or 'westeurope'
-    public string AccountDomain = "westus2.mixedreality.azure.com";
+    [SerializeField]
+    private string accountDomain = "westus2.mixedreality.azure.com";
+    public string AccountDomain
+    {
+        get => accountDomain.Trim();
+        set => accountDomain = value;
+    }
 
     [Header("Development Account Credentials")]
-    public string AccountId = "<enter your account id here>";
-    public string AccountKey = "<enter your account key here>";
+    [SerializeField]
+    private string accountId = "<enter your account id here>";
+    public string AccountId {
+        get => accountId.Trim();
+        set => accountId = value;
+    }
+
+    [SerializeField]
+    private string accountKey = "<enter your account key here>";
+    public string AccountKey {
+        get => accountKey.Trim();
+        set => accountKey = value;
+    }
 
     // These settings are important. All three should be set as low as possible, while maintaining a good user experience
     // See the documentation around session management and the technical differences in session VM size
@@ -237,7 +254,12 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     [Header("Other Configuration")]
 
     [Tooltip("If you have a known active SessionID, you can fill it in here before connecting")]
-    public string sessionIDOverride;
+    [SerializeField]
+    private string sessionIDOverride;
+    public string SessionIDOverride {
+        get => sessionIDOverride.Trim();
+        set => sessionIDOverride = value;
+    }
 
     // When Automatic Mode is true, the coordinator will attempt to automatically proceed through the process of connecting and loading a model
     public bool automaticMode = true;
@@ -313,8 +335,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     {
         get
         {
-            if (!string.IsNullOrEmpty(sessionIDOverride))
-                return sessionIDOverride;
+            if (!string.IsNullOrEmpty(SessionIDOverride))
+                return SessionIDOverride;
 
             if (PlayerPrefs.HasKey("LastUsedSessionID"))
                 return PlayerPrefs.GetString("LastUsedSessionID");
@@ -582,7 +604,7 @@ A második lépés egy távoli renderelési munkamenet létrehozása vagy csatla
 
 ![ARR verem 2](./media/remote-render-stack-2.png)
 
-A távoli munkamenetben a modellek lesznek megjelenítve. A **JoinRemoteSession ()** metódus megpróbál csatlakozni egy meglévő munkamenethez, nyomon követve a **LastUsedSessionID** tulajdonsággal, vagy ha van hozzárendelve aktív munkamenet-azonosító a **sessionIDOverride**-on. a **sessionIDOverride** kizárólag hibakeresési célokra szolgál, csak akkor használható, ha ismeri a munkamenetet, és szeretne explicit módon csatlakozni hozzá.
+A távoli munkamenetben a modellek lesznek megjelenítve. A **JoinRemoteSession ()** metódus megpróbál csatlakozni egy meglévő munkamenethez, nyomon követve a **LastUsedSessionID** tulajdonsággal, vagy ha van hozzárendelve aktív munkamenet-azonosító a **SessionIDOverride**-on. A **SessionIDOverride** kizárólag hibakeresési célokra szolgál, csak akkor használható, ha ismeri a munkamenetet, és szeretne explicit módon csatlakozni hozzá.
 
 Ha nem áll rendelkezésre munkamenet, új munkamenet jön létre. Egy új munkamenet létrehozása azonban időigényes művelet. Ezért csak szükség esetén kell létrehoznia a munkameneteket, és ha lehetséges, újra fel kell használni őket (lásd: [kereskedelmi használatra kész: munkamenet-készletezés, ütemezés és ajánlott eljárások](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) a munkamenetek kezelésével kapcsolatban).
 
@@ -620,8 +642,8 @@ public async void JoinRemoteSession()
     {
         //The session should be ready or starting, if it's not, something went wrong
         await ARRSessionService.StopSession();
-        if(LastUsedSessionID == sessionIDOverride)
-            sessionIDOverride = "";
+        if(LastUsedSessionID == SessionIDOverride)
+            SessionIDOverride = "";
         CurrentCoordinatorState = RemoteRenderingState.NoSession;
     }
 }
@@ -816,7 +838,7 @@ Most már minden kód szükséges a távolról renderelt modell megtekintéséhe
 > [!NOTE]
 > A távoli modell soha nem jelenik meg a jelenet nézetben, csak a játék nézetben. Ennek az az oka, hogy az ARR a képkockákat távolról teszi elérhetővé a game View kamera szempontjából, és nem ismeri a szerkesztői kamerát (a jelenet nézet megjelenítéséhez használatos).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ![Modell betöltve](./media/test-model-rendered.png)
 

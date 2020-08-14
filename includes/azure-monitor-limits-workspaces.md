@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186381"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226350"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -64,7 +64,7 @@ ms.locfileid: "88186381"
 | Oszlop nevének maximális száma | 500 | |
 | Adatexportálás | Jelenleg nem érhető el | Az Azure Function vagy a Logic App használatával összesítheti és exportálhatja az adatokat. | 
 
-**Adatfeldolgozási kötetek aránya**
+**<a name="data-ingestion-volume-rate">Adatfeldolgozási kötetek aránya</a>**
 
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát arra törekszik, hogy Azure Monitor ügyfelet a hirtelen betöltési tüskékkel bérlős-környezetben. Az alapértelmezett betöltési mennyiség 500 MB (tömörített) a munkaterületekre vonatkozik, ami körülbelül **6 GB/perc** tömöríthető – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. Ez a küszöbérték az Azure-erőforrásokból a [diagnosztikai beállítások](../articles/azure-monitor/platform/diagnostic-settings.md), [az adatgyűjtő API vagy az](../articles/azure-monitor/platform/data-collector-api.md) ügynökök használatával elküldhető összes betöltött adatot érinti.
 

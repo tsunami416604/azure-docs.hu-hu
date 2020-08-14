@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829288"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225274"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
@@ -36,7 +36,7 @@ Tekintse meg ezt a gyors iramú videót a biztonsági architektúra és az egyes
 
 Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel kezdődik, és a lemezen tárolt tartalomra terjed ki. A nyilvános interneten található keresési szolgáltatások esetében az Azure Cognitive Search a 443-es HTTPS-portot figyeli. Az összes ügyfél és szolgáltatás közötti kapcsolat TLS 1,2 titkosítást használ. A korábbi verziók (1,0 vagy 1,1) nem támogatottak.
 
-A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-atrest.md#data-encryption-models)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
+A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-models.md)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
 | Modell | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
 |------------------|-------|-------------|--------------|------------|
@@ -54,7 +54,7 @@ Az ügyfél által felügyelt kulcsokhoz további számlázható szolgáltatásr
 
 <a name="double-encryption"></a>
 
-### <a name="double-encryption"></a>Dupla titkosítás 
+### <a name="double-encryption"></a>Dupla titkosítás
 
 Az Azure Cognitive Search a kettős titkosítás a CMK kiterjesztése. A rendszer úgy értelmezi, hogy az adatlemezre írt, hosszú távú tárolást, valamint az ideiglenes lemezekre írt rövid távú tárolást (a CMK egyszer, egyszer a szolgáltatás által felügyelt kulcsok alapján), valamint átfogó hatókörrel rendelkezik. A CMK közötti különbség a 1 2020 augusztusa előtt, illetve azt követően, és mi teszi a CMK egy dupla titkosítási funkciót az Azure Cognitive Search-ban, az adatok további titkosítása az ideiglenes lemezeken.
 
@@ -74,7 +74,7 @@ A bejövő biztonsági funkciók a keresési szolgáltatás végpontját a bizto
 
 ### <a name="public-access-using-api-keys"></a>Nyilvános hozzáférés API-kulcsok használatával
 
-Alapértelmezés szerint a keresési szolgáltatás a nyilvános felhőn keresztül érhető el, kulcs alapú hitelesítéssel, rendszergazdai vagy lekérdezési hozzáféréssel a keresési szolgáltatás végpontja számára. Az API-Key egy véletlenszerűen generált számokból és betűkből álló karakterlánc. A kulcs típusa (rendszergazda vagy lekérdezés) határozza meg a hozzáférési szintet. Az érvényes kulcs beküldése igazolja, hogy a kérelem megbízható entitásból származik. 
+Alapértelmezés szerint a keresési szolgáltatás a nyilvános felhőn keresztül érhető el, kulcs alapú hitelesítéssel, rendszergazdai vagy lekérdezési hozzáféréssel a keresési szolgáltatás végpontja számára. Az API-Key egy véletlenszerűen generált számokból és betűkből álló karakterlánc. A kulcs típusa (rendszergazda vagy lekérdezés) határozza meg a hozzáférési szintet. Az érvényes kulcs beküldése igazolja, hogy a kérelem megbízható entitásból származik.
 
 A keresési szolgáltatásnak két hozzáférési szintje van, amelyeket a következő API-kulcsok engedélyeznek:
 
@@ -92,15 +92,15 @@ Minden kérelem esetében hitelesítésre van szükség, amelyben minden kérele
 
 A keresési szolgáltatáshoz való hozzáférés további szabályozásához olyan bejövő tűzfalszabályok hozhatók létre, amelyek lehetővé teszik az adott IP-cím vagy IP-címtartomány elérését. Az összes ügyfélkapcsolatot egy engedélyezett IP-címen keresztül kell elvégezni, vagy a kapcsolat megtagadva.
 
-A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md). 
+A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md).
 
-Másik lehetőségként használhatja a felügyeleti REST API-kat is. Az 2020-03-13-es API-verzió a [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) paraméterrel lehetővé teszi a szolgáltatáshoz való hozzáférés korlátozását úgy, hogy az IP-címeket, egyenként vagy egy tartományon belül azonosítja, hogy hozzáférést kíván biztosítani a keresési szolgáltatáshoz. 
+Másik lehetőségként használhatja a felügyeleti REST API-kat is. Az 2020-03-13-es API-verzió a [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) paraméterrel lehetővé teszi a szolgáltatáshoz való hozzáférés korlátozását úgy, hogy az IP-címeket, egyenként vagy egy tartományon belül azonosítja, hogy hozzáférést kíván biztosítani a keresési szolgáltatáshoz.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Magánhálózati végpont (nincs internetes forgalom)
 
-Az Azure Cognitive Search [privát végpontja](../private-link/private-endpoint-overview.md) lehetővé teszi, hogy egy [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) lévő ügyfél biztonságosan hozzáférhessen egy keresési indexben lévő adathoz egy [privát hivatkozáson](../private-link/private-link-overview.md)keresztül. 
+Az Azure Cognitive Search [privát végpontja](../private-link/private-endpoint-overview.md) lehetővé teszi, hogy egy [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) lévő ügyfél biztonságosan hozzáférhessen egy keresési indexben lévő adathoz egy [privát hivatkozáson](../private-link/private-link-overview.md)keresztül.
 
-A magánhálózati végpont a virtuális hálózati címtartomány IP-címét használja a keresési szolgáltatáshoz való kapcsolódáshoz. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A VNET lehetővé teszi az erőforrások, a helyszíni hálózat és az Internet közötti biztonságos kommunikációt. 
+A magánhálózati végpont a virtuális hálózati címtartomány IP-címét használja a keresési szolgáltatáshoz való kapcsolódáshoz. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A VNET lehetővé teszi az erőforrások, a helyszíni hálózat és az Internet közötti biztonságos kommunikációt.
 
 Habár ez a megoldás a legbiztonságosabb, a további szolgáltatások használata további költségeket jelent, ezért ügyeljen arra, hogy egyértelművé váljon a kimerülés előtti előnyök. a költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/private-link/). Ha többet szeretne megtudni arról, hogy ezek az összetevők hogyan működnek együtt, tekintse meg a cikk tetején található videót. A privát végponti beállítás lefedettsége 5:48-kor kezdődik a videóban. A végpont beállításával kapcsolatos útmutatásért lásd: [privát végpont létrehozása az Azure Cognitive Searchhoz](service-create-private-endpoint.md).
 
@@ -140,11 +140,11 @@ Az Azure Cognitive Search a nyilvános felhő és a Azure Government esetében t
 
 A megfelelőség érdekében a [Azure Policy](../governance/policy/overview.md) segítségével megvalósíthatja az [Azure biztonsági teljesítményteszt](../security/benchmarks/introduction.md)magas biztonsággal kapcsolatos ajánlott eljárásait. Az Azure Security benchmark olyan biztonsági javaslatok gyűjteménye, amelyek a szolgáltatásokra és az adatmennyiségre vonatkozó fenyegetések enyhítése érdekében a biztonsági ellenőrzésekben foglaltak szerint vannak leképezve. Jelenleg 11 biztonsági vezérlő van, beleértve a [hálózati biztonságot](../security/benchmarks/security-control-network-security.md), a [naplózást és a figyelést](../security/benchmarks/security-control-logging-monitoring.md), és az [Adatvédelem](../security/benchmarks/security-control-data-protection.md) csak néhányat említsünk.
 
-A Azure Policy az Azure-ba épített képesség, amely lehetővé teszi több szabvány megfelelőségének kezelését, beleértve az Azure biztonsági teljesítménytesztet is. A jól ismert referenciaértékek esetében Azure Policy olyan beépített definíciókat biztosít, amelyek mindkét feltételt, valamint a nem megfelelőséggel kapcsolatos, végrehajtható választ biztosítanak. 
+A Azure Policy az Azure-ba épített képesség, amely lehetővé teszi több szabvány megfelelőségének kezelését, beleértve az Azure biztonsági teljesítménytesztet is. A jól ismert referenciaértékek esetében Azure Policy olyan beépített definíciókat biztosít, amelyek mindkét feltételt, valamint a nem megfelelőséggel kapcsolatos, végrehajtható választ biztosítanak.
 
 Az Azure Cognitive Search esetében jelenleg egy beépített definíció van. Diagnosztikai naplózásra szolgál. A beépített használatával olyan házirendet rendelhet hozzá, amely azonosítja a diagnosztikai naplózásból hiányzó keresési szolgáltatásokat, majd bekapcsolja azt. További információ: [Azure Policy Azure Cognitive Search szabályozási megfelelőségi szabályozása](security-controls-policy.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Azure-biztonság – Alapismeretek](../security/fundamentals/index.yml)
 + [Azure-biztonság](https://azure.microsoft.com/overview/security)

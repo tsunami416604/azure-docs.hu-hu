@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419716"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225921"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,11 +113,11 @@ Az alábbi lépések segítségével megbecsülheti, hogy a készlet költségha
 
 DTU-alapú vásárlási modell esetén:
 
-MAX (<*adatbázisok* *átlagos DTU-kihasználtsága (db* ->), <*száma egyidejű, maximális méretű adatbázisok* maximális DTU- *kihasználtsága/db*)
+MAX (<*teljes számú adatbázisok* x *átlagos DTU-kihasználtsága (db* ->), <*az egyidejű, maximális adatbázisok* maximális *DTU kihasználtsága db*>)
 
 Virtuális mag-alapú vásárlási modell esetén:
 
-MAX (<*adatbázisok* *átlagos virtuális mag-kihasználtsága (db* ->), <*száma egyidejű, maximális méretű adatbázisok* maximális virtuális mag- *kihasználtsága/db*)
+MAX (<*teljes számú adatbázisok* x *átlagos virtuális mag-kihasználtsága (db* ->), <*az egyidejű, maximális adatbázisok* maximális *virtuális mag kihasználtsága db*>)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
 3. A DTU-alapú vásárlási modell esetében az 1. és a 2. lépésben szereplő eDTU-becslések nagyobb mennyiségét kell megbecsülni. A virtuális mag-alapú vásárlási modell esetében az 1. lépés alapján végezze el a virtuális mag becslését.
@@ -143,7 +143,7 @@ A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az 
 
   Az időponthoz való visszaállítás az adatbázis automatikus biztonsági mentését használja a készletben lévő adatbázisok egy adott időpontra történő helyreállításához. Lásd: [Időponthoz kötött visszaállítás](recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-visszaállítás**
+- **Georedundáns visszaállítás**
 
   A Geo-visszaállítás az alapértelmezett helyreállítási beállítást adja meg, ha egy adatbázis nem érhető el, mert az adatbázist futtató régióban egy incidens található. Lásd: [Azure SQL Database vagy feladatátvétel visszaállítása másodlagosra](disaster-recovery-guidance.md)
 
@@ -219,7 +219,7 @@ További információ: [SQL Database riasztások létrehozása Azure Portalokban
 
    A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A díjszabással kapcsolatos információkért lásd a [rugalmas készlet díjszabását](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Rugalmas készletek méretezése: [rugalmas készletek skálázása](elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/monitor-and-scale-pool-powershell.md)

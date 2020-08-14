@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903850"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226046"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -74,7 +74,7 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
 
    - Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. **Próbálja** meg megnyitni Azure Cloud shell, de nem másolja automatikusan a kódot Cloud shellre.
 
-   - Nyissa meg Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+   - Nyissa meg Cloud Shell [https://shell.azure.com](https://shell.azure.com)
 
    - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
 
@@ -415,16 +415,19 @@ A **Kiszolgálói végpont felvétele** panelen adja meg a következő informác
 - **Elérési út**: a szinkronizálási csoport részeként szinkronizálandó Windows Server-elérési út.
 - **Felhőbeli rétegek**: a felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. A felhő-előállítók esetében a ritkán használt vagy a hozzáfért fájlok Azure Files.
 - **Kötet szabad területe**: a kiszolgáló végpontját tartalmazó köteten foglalható szabad terület. Ha például a kötet szabad területe 50%-ra van állítva egy olyan köteten, amely egyetlen kiszolgálói végponttal rendelkezik, az adatmennyiség nagyjából fele lesz a Azure Files. Függetlenül attól, hogy engedélyezve van-e a felhőalapú rétegek használata, az Azure-fájlmegosztás mindig a szinkronizálási csoportban lévő összes adattal rendelkezik.
+- **Kezdeti letöltési mód**: ez egy opcionális lehetőség, amely az ügynök 11-es verziójától kezdve hasznos lehet, ha az Azure-fájlmegosztás fájljai vannak, de a kiszolgálón nem. Ilyen helyzet létezhet például, ha létrehoz egy kiszolgálói végpontot egy másik fiókirodai kiszolgáló egy szinkronizálási csoportba való felvételéhez, vagy egy hibás kiszolgáló meghibásodása esetén. Ha a felhő-rétegek engedélyezve vannak, az alapértelmezés szerint csak a névteret kell visszahívnia, kezdetben nincs fájl tartalma. Ez akkor hasznos, ha úgy gondolja, hogy a felhasználói hozzáférési kérelmeknek el kell dönteniük, hogy milyen fájlokra hívja fel a rendszer a kiszolgálót. Ha a felhő-réteg le van tiltva, az alapértelmezett érték az, hogy a rendszer először letölti a névteret, majd a rendszer visszahívja a fájlokat a legutóbbi módosítás időbélyegzője alapján, amíg el nem éri a helyi kapacitást. A kezdeti letöltési mód azonban csak a névtérre módosítható. A harmadik mód csak akkor használható, ha a Felhőbeli rétegek letiltva ezen a kiszolgálói végponton. Ez a mód elkerüli a névtér visszahívását. A fájlok csak akkor jelennek meg a helyi kiszolgálón, ha teljes mértékben le lettek letöltve. Ez a mód akkor lehet hasznos, ha például egy alkalmazásnak teljes fájlokra van szüksége, és nem tudja elviselni a rétegű fájlokat a névtérben.
 
 A kiszolgálói végpont hozzáadásához válassza a **Létrehozás**lehetőséget. A fájlok most már szinkronban vannak az Azure-fájlmegosztás és a Windows Server között. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-A kiszolgálói végpont létrehozásához hajtsa végre a következő PowerShell-parancsokat, és `<your-server-endpoint-path>` a kívánt értékekkel cserélje le a és a `<your-volume-free-space>` értéket.
+Hajtsa végre a következő PowerShell-parancsokat a kiszolgálói végpont létrehozásához, és `<your-server-endpoint-path>` `<your-volume-free-space>` a kívánt értékekkel, majd ellenőrizze a választható kezdeti letöltési szabályzat választható beállítását.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -441,14 +444,16 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
@@ -460,23 +465,24 @@ Hozzon létre egy új kiszolgálói végpontot az az [storagesync Sync-Group Ser
 # Create a new sync group server endpoint 
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
                                                  --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
                                                  --server-local-path d:\myPath
                                                  --storage-sync-service myStorageSyncServiceNAme
                                                  --sync-group-name mySyncGroupName
 
 # Create a new sync group server endpoint with additional optional parameters
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
-                                                 --server-local-path d:\myPath \
                                                  --storage-sync-service myStorageSyncServiceName \
                                                  --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
                                                  --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
-                                                 --tier-files-older-than-days 15 \
-                                                 --volume-free-space-percent 85 \
 
 ```
 
@@ -568,6 +574,40 @@ A köteten tárolt VSS-Pillanatképek alapértelmezett maximális száma (64), v
 Ha max. 64 VSS-Pillanatképek/kötetek nem a megfelelő beállítás az Ön számára, [ezt az értéket egy beállításkulcs segítségével módosíthatja](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Az új korlát érvénybe léptetéséhez újra kell futtatnia a parancsmagot a korábbi verziók kompatibilitásának engedélyezéséhez minden korábban engedélyezett köteten, a-Force jelzővel, hogy a köteten lévő VSS-Pillanatképek maximális számát figyelembe vegye. Ennek eredményeképpen egy újonnan számított számú kompatibilis nap fog megjelenni. Vegye figyelembe, hogy ez a változás csak az újonnan létrehozott fájlokra lép érvénybe, és felülírja az esetlegesen elvégzett VSS-ütemterv testreszabásait.
 
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>Új és módosított fájlok proaktív felidézése egy Azure-fájlmegosztás alapján
+
+Az ügynök 11-es verziójában az új mód elérhetővé válik egy kiszolgálói végponton. Ez a mód lehetővé teszi a globálisan elosztott vállalatok számára, hogy a kiszolgálói gyorsítótárat egy előre kitöltött távoli régióban is használják, még mielőtt a helyi felhasználók hozzáférjenek a fájlokhoz. Ha engedélyezve van egy kiszolgálói végponton, ez a mód azt eredményezi, hogy a kiszolgáló felidézi az Azure-fájlmegosztás során létrehozott vagy módosított fájlokat.
+
+### <a name="scenario"></a>Forgatókönyv
+
+A globálisan elosztott vállalatok fiókirodái az Egyesült Államokban és Indiában találhatóak. A délelőtti (amerikai idő) információkkal dolgozó szakemberek új mappát és új fájlokat hoznak létre egy új projekthez, és egész nap dolgozhatnak hozzájuk. Azure File Sync fogja szinkronizálni a mappát és a fájlokat az Azure-fájlmegosztás (Felhőbeli végpont) számára. Az indiai információs szakemberek továbbra is a projekten dolgoznak a saját időzónájában. Amikor reggel érkeznek, az indiai helyi Azure File Sync-kiszolgáló számára elérhetővé kell tennie ezeket az új fájlokat helyileg, így az indiai csapat hatékonyan dolgozhat ki helyi gyorsítótárból. Ha engedélyezi ezt a módot, azzal megakadályozza, hogy az igény szerinti visszahívás miatt a kezdeti fájlhoz való hozzáférés lassabb legyen, és lehetővé teszi a kiszolgáló számára, hogy az Azure-fájlmegosztás módosításakor vagy létrehozásakor proaktív módon felidézze a fájlokat.
+
+> [!IMPORTANT]
+> Fontos tisztában lenni azzal, hogy az Azure-fájlmegosztás azon változásainak nyomon követése, amelyek szorosan a kiszolgálón vannak, növelheti a kimenő forgalmat és az Azure-ból származó számlát. Ha a fájlok visszahívása a kiszolgálóra nincs ténylegesen szükség helyileg, akkor a kiszolgálóra való szükségtelen visszahívás negatív következményekkel járhat. Akkor használja ezt a módot, ha tudja, hogy a felhőben lévő legutóbbi módosításokkal rendelkező kiszolgáló gyorsítótárának előzetes kitöltése pozitív hatással lesz a kiszolgálón található fájlokat használó felhasználókra vagy alkalmazásokra.
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>Kiszolgálói végpont engedélyezése az Azure-fájlmegosztás változásának proaktív felidézésére
+
+# <a name="portal"></a>[Portál](#tab/proactive-portal)
+
+1. A [Azure Portal](https://portal.azure.com/)nyissa meg a Storage Sync szolgáltatást, válassza ki a megfelelő szinkronizálási csoportot, majd azonosítsa azt a kiszolgálói végpontot, amelyhez szorosan nyomon szeretné követni az Azure-fájlmegosztás (Felhőbeli végpont) módosításait.
+1. A felhő-rétegek szakaszban keresse meg az "Azure fájlmegosztás letöltése" témakört. Ekkor megjelenik a jelenleg kijelölt mód, és módosíthatja azt az Azure-fájlmegosztás változásainak alaposabb nyomon követéséhez, és proaktív módon felhívhatja őket a kiszolgálóra.
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="Egy olyan kép, amely az Azure fájlmegosztás letöltési viselkedését mutatja be egy jelenleg érvényben lévő kiszolgálói végponton, és egy gombot egy olyan menü megnyitásához, amely lehetővé teszi a módosítását.":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+A kiszolgálói végpont tulajdonságait a PowerShellben módosíthatja a [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) parancsmag használatával.
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
+
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Elosztott fájlrendszer replikációs szolgáltatása (DFS-R) telepítésének áttelepítése Azure File Syncre
 DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
@@ -584,7 +624,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

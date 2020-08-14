@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 951ae2c48bcdd92f640a37ddbb6430ca62a3b816
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e2302c92cf723b1ab28611d46769290ed54df43c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275229"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226496"
 ---
 > [!NOTE]
 > Az Unity Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64)
@@ -35,7 +35,7 @@ Ha már megtette ezt, remek. Folytasd a munkát.
 1. Nyissa meg az egységet. Ha első alkalommal használja az egységet, megjelenik az **Unity hub** *<version number>* ablak. (Az Unity hub-t közvetlenül is megnyithatja az ablak megnyitásához.)
 
    [![Unity hub ablak](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png#lightbox)
-1. Válassza az **új**lehetőséget. Megjelenik az **új projekt létrehozása egységgel** *<version number>* ablak.
+1. Válassza az **Új** lehetőséget. Megjelenik az **új projekt létrehozása egységgel** *<version number>* ablak.
 
    [![Új projekt létrehozása az Unity hub-ban](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png#lightbox)
 1. A **Project Name (projekt neve**) mezőben adja meg a **csharp-Unity**értéket.
@@ -51,7 +51,7 @@ Egy kis idő elteltével megjelenik az Unity Editor ablak.
 
 Most vegyünk fel egy minimális felhasználói felületet a színtérbe. Ez a felhasználói felület egy gombból áll, amely elindítja a beszédfelismerést és egy szöveges mezőt az eredmény megjelenítéséhez. A [ **hierarchia** ablakban](https://docs.unity3d.com/Manual/Hierarchy.html)megjelenik egy minta jelenet, amely az új projekttel létrehozott egységet mutatja.
 
-1. A **hierarchia** ablak tetején válassza a**felhasználói felület** >  **létrehozása** > **gombot**.
+1. A **hierarchia** ablak tetején válassza a **Create**  >  **felhasználói felület**létrehozása  >  **gombot**.
 
    Ez a művelet három játék objektumot hoz létre, amelyek a **hierarchia** ablakban láthatók: egy **gomb** objektum, egy **vászon** objektum, amely tartalmazza a gombot, valamint egy **EventSystem** objektumot.
 
@@ -61,7 +61,7 @@ Most vegyünk fel egy minimális felhasználói felületet a színtérbe. Ez a f
 
 1. A [ **felügyelő** ablakban](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldalon) állítsa a **POS X** és a **POS Y** tulajdonságokat **0-ra**, így a gomb középre van állítva a vászon közepén.
 
-1. A **hierarchia** ablakban válassza a**felhasználói felület** >  **létrehozása** > **szöveg** lehetőséget egy **szöveges** objektum létrehozásához.
+1. A **hierarchia** ablakban válassza a **Create**  >  **felhasználói felület**létrehozása  >  **szöveg** lehetőséget egy **szöveges** objektum létrehozásához.
 
 1. A **felügyelő** ablakban állítsa a **POS X** és a **pos Y** tulajdonságokat **0** és **120**értékre, majd állítsa a **szélesség** és a **magasság** tulajdonságokat **240** és **120**értékre. Ezek az értékek biztosítják, hogy a szöveg mező és a gomb ne legyen átfedésben.
 
@@ -73,23 +73,23 @@ Ha elkészült, a **jelenet** nézetnek a következő képernyőképhez hasonló
 
 A következő lépésekkel adhatja hozzá a minta parancsfájl kódját az Unity projekthez:
 
-1. A [projekt ablakban](https://docs.unity3d.com/Manual/ProjectView.html)válassza a**c#-parancsfájl** **létrehozása** > lehetőséget egy új C#-szkript hozzáadásához.
+1. A [projekt ablakban](https://docs.unity3d.com/Manual/ProjectView.html)válassza a c#- **Create**  >  **parancsfájl** létrehozása lehetőséget egy új C#-szkript hozzáadásához.
 
    [![Projekt ablak az Unity Editorban](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png#lightbox)
-1. Adja meg a `HelloWorld`parancsfájl nevét.
+1. Adja meg a parancsfájl nevét `HelloWorld` .
 
-1. Kattintson ide `HelloWorld` duplán az újonnan létrehozott parancsfájl szerkesztéséhez.
+1. Kattintson ide duplán `HelloWorld` az újonnan létrehozott parancsfájl szerkesztéséhez.
 
    > [!NOTE]
-   > Ha úgy szeretné beállítani a Kódszerkesztő használatát, hogy az Unity a szerkesztéshez használja, válassza a**Beállítások** **szerkesztése** > lehetőséget, majd lépjen a **külső eszközök** beállításaihoz. További információ: [Unity felhasználói kézikönyv](https://docs.unity3d.com/Manual/Preferences.html).
+   > Ha úgy szeretné beállítani a Kódszerkesztő használatát, hogy az Unity a szerkesztéshez **Edit**használja, válassza a  >  **Beállítások**szerkesztése lehetőséget, majd lépjen a **külső eszközök** beállításaihoz. További információ: [Unity felhasználói kézikönyv](https://docs.unity3d.com/Manual/Preferences.html).
 
 1. Cserélje le a meglévő parancsfájlt a következő kódra:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Keresse meg és cserélje le `YourSubscriptionKey` a karakterláncot a Speech Service előfizetési kulcsával.
+1. Keresse meg és cserélje le a karakterláncot a `YourSubscriptionKey` Speech Service előfizetési kulcsával.
 
-1. Keresse meg és cserélje le `YourServiceRegion` a karakterláncot az előfizetéséhez [tartozó régió](https://aka.ms/speech/sdkregion) - **azonosítóval** . Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
+1. Keresse meg és cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) - **azonosítóval** .
 
 1. Mentse a parancsfájl módosításait.
 
@@ -101,7 +101,7 @@ Most térjen vissza az Unity Editorhoz, és adja hozzá a parancsfájlt összete
 
    [![Ellenőr ablak az Unity Editorban](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-inspector-window.png#lightbox)
 
-1. A legördülő listában keresse meg a `HelloWorld` fent létrehozott parancsfájlt, és adja hozzá. A **"Helló világ!" alkalmazás (szkript)** szakasz a **felügyelő** ablakban jelenik meg, amely két nem inicializált tulajdonságot, a **kimeneti szöveget** és a **kiindulási gombot**tartalmazza. Ezek az egység-összetevők tulajdonságai megegyeznek az `HelloWorld` osztály nyilvános tulajdonságaival.
+1. A legördülő listában keresse meg a `HelloWorld` fent létrehozott parancsfájlt, és adja hozzá. A **"Helló világ!" alkalmazás (szkript)** szakasz a **felügyelő** ablakban jelenik meg, amely két nem inicializált tulajdonságot, a **kimeneti szöveget** és a **kiindulási gombot**tartalmazza. Ezek az egység-összetevők tulajdonságai megegyeznek az osztály nyilvános tulajdonságaival `HelloWorld` .
 
 1. Jelölje be a kiválasztó **gomb** tulajdonság objektumának kiválasztása (a tulajdonság jobb oldalán lévő kis kör ikon), és válassza ki a korábban létrehozott **gomb** objektumot.
 
@@ -122,7 +122,7 @@ Most már készen áll az alkalmazás futtatására az Unity Editoron belül.
 
    [![Játék nézet az Unity Editorban](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 
-1. A hibakeresési üzenetekért tekintse meg a [ **konzol** ablakát](https://docs.unity3d.com/Manual/Console.html) . Ha a **konzolablak** nem jelenik meg, nyissa meg a menüsávot, és válassza ki az **ablak** > **általános** > **konzolját** a megjelenítéshez.
+1. A hibakeresési üzenetekért tekintse meg a [ **konzol** ablakát](https://docs.unity3d.com/Manual/Console.html) . Ha a **konzolablak** nem jelenik meg, nyissa meg a menüsávot, és válassza ki az **ablak**  >  **általános**  >  **konzolját** a megjelenítéshez.
 
 1. Ha elvégezte a beszédfelismerést, válassza a **Lejátszás** gombot az Unity Editor eszköztárán az alkalmazás leállításához.
 

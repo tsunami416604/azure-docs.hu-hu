@@ -4,12 +4,12 @@ description: A Application Insights számára elérhető nyelvek, platformok és
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 35dc6c5146edd13309a42702d1bc247333ff0fd7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d3bb1473d94db04d1dedf2b09e19b83197cc6e0e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322448"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225104"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 
@@ -37,6 +37,8 @@ ms.locfileid: "87322448"
 * [Python](./opencensus-python.md)
 * [Univerzális Windows-alkalmazás](../learn/mobile-center-quickstart.md) (App Center)
 * [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](./windows-desktop.md)
+* [React](./javascript-react-plugin.md)
+* [React Native](./javascript-react-native-plugin.md)
 
 ## <a name="logging-frameworks"></a>Naplózási keretrendszerek
 * [ILogger](./ilogger.md)

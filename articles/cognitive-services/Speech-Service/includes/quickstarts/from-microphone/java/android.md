@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 2641464e52b80c59b6c6b5a123ad1605c1d41495
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274955"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226271"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Most létrehozunk egy alapszintű felhasználói felületet az alkalmazáshoz. K
 
 * Válassza ki a TextView elemet. Módosítsa a jobb felső sarokban található ID (azonosító) attribútumot a következőre: `hello`.
 
-* Az `activity_main.xml` ablak bal felső részén található palettáról húzzon egy gombot a szöveg feletti üres helyre.
+* Az ablak bal felső részén található palettáról `activity_main.xml` húzzon egy gombot a szöveg feletti üres helyre.
 
 * A gomb attribútumai jobb oldalon láthatók. Az `onClick` attribútum értékét állítsa a következőre: `onSpeechButtonClicked`. Ezen a néven írni fogunk később egy metódust, amely kezelni fogja a gombeseményt. Módosítsa a jobb felső sarokban található ID (azonosító) attribútumot a következőre: `button`.
 
@@ -58,15 +58,15 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Továbbá cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez [tartozó régió](https://aka.ms/speech/sdkregion) - **azonosítóra** . Használja `westus` például az ingyenes próbaverziós előfizetést.
+1. Továbbá cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) - **azonosítóra** .
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 1. Csatlakoztassa az Android-eszközt a fejlesztői számítógéphez. Győződjön meg arról, hogy engedélyezve van a [fejlesztési mód és az USB-hibakeresés](https://developer.android.com/studio/debug/dev-options) az eszközön.
 
-1. Az alkalmazás létrehozásához válassza a CTRL + F9 billentyűkombinációt, vagy válassza a menüsávon a **Létrehozás** > a**projekthez** lehetőséget.
+1. Az alkalmazás létrehozásához válassza a CTRL + F9 billentyűkombinációt, **Build**vagy válassza  >  a menüsávon a létrehozás a**projekthez** lehetőséget.
 
-1. Az alkalmazás indításához válassza a SHIFT + F10 lehetőséget, **vagy válassza** > az**alkalmazás futtatása**parancsot.
+1. Az alkalmazás indításához válassza a SHIFT + F10 lehetőséget, **vagy válassza az**  >  **alkalmazás futtatása**parancsot.
 
 1. A megjelenő központi telepítési cél ablakban válassza ki az Android-eszközét.
 

@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375581"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226298"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként használja azt.
 
-Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../get-started.md) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
+Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../get-started.md) -fiókra van szükség.
 
 A minta alkalmazás forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -126,7 +126,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
    Új kulcsszó használatához frissítse a következő két sort a `MainActivity.java` alkalmazásban, és másolja a kulcsszó-csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag kws-machine.zip:
 
-   - Másolja a kulcsszó-csomagot a "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" mappába.
+   - Másolja a Kulcsszóválasztó csomagot a "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets" mappába \" .
    - Frissítse a `MainActivity.java` kulcsszót és a csomag nevét:
 
      ```java
@@ -145,12 +145,12 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
    | Változó | Értelmezés | Elérhető értékek |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Fizikai MIC-konfiguráció | Körkörös fejlesztői csomag esetén:`Circular6+1` |
-   |          |         | Lineáris fejlesztői csomag esetén:`Linear4` |
-   | `SelectedGeometry` | Szoftveres MIC-konfiguráció | Az összes mikrofont használó körkörös fejlesztői csomag esetén:`Circular6+1` |
-   |          |         | Négy mikrofont használó körkörös fejlesztői csomag esetén:`Circular3+1` |
-   |          |         | Az összes mikrofont használó lineáris fejlesztői csomaghoz:`Linear4` |
-   |          |         | Két mikrofont használó lineáris fejlesztői csomag esetén:`Linear2` |
+   | `DeviceGeometry` | Fizikai MIC-konfiguráció | Körkörös fejlesztői csomag esetén: `Circular6+1` |
+   |          |         | Lineáris fejlesztői csomag esetén: `Linear4` |
+   | `SelectedGeometry` | Szoftveres MIC-konfiguráció | Az összes mikrofont használó körkörös fejlesztői csomag esetén: `Circular6+1` |
+   |          |         | Négy mikrofont használó körkörös fejlesztői csomag esetén: `Circular3+1` |
+   |          |         | Az összes mikrofont használó lineáris fejlesztői csomaghoz: `Linear4` |
+   |          |         | Két mikrofont használó lineáris fejlesztői csomag esetén: `Linear2` |
 
 1. Az alkalmazás létrehozásához a **Futtatás** menüben válassza az alkalmazás **futtatása**lehetőséget. Megjelenik a **központi telepítési cél kiválasztása** párbeszédpanel.
 

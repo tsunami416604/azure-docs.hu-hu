@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319898"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225374"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémák és megoldások a virtuális gépek minősítése során 
 
@@ -294,7 +294,7 @@ Ha az Azure Marketplace-ről származó összes lemezképet újra fel kell haszn
 
 * **Linux rendszeren**a következő folyamat általánosítja a Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre.
 
-  Az SSH ablakban adja meg a következő parancsot:`sudo waagent -deprovision+user`
+  Az SSH ablakban adja meg a következő parancsot: `sudo waagent -deprovision+user`
 
 * **Windows**esetén a használatával általánosíthatja a Windows-lemezképeket `sysreptool` .
 
@@ -314,6 +314,57 @@ Az adatlemezzel kapcsolatos hibák megoldásához használja az alábbi tábláz
 Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállítás, akkor ez a hibaüzenet jelenik meg. 
 
 Az RDP-hozzáférés engedélyezése a Windows-rendszerképekhez a beküldése előtt.
+
+## <a name="bash-history-failed"></a>A bash előzményei nem sikerültek
+
+Ez a hiba akkor jelenik meg, ha az elküldött rendszerképben lévő bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra van korlátozva, így biztosítható, hogy a rendszer ne rögzítse az esetlegesen bizalmas adatokat a bash-előzmények fájljában.
+
+Alább láthatók a "bash-előzmények" törlésének lépései.
+
+1. lépés Telepítse a virtuális gépet, és kattintson a "parancs futtatása" lehetőségre Azure Portal.
+![Parancs futtatása Azure Portal](./media/vm-certification-issues-solutions-3.png)
+
+2. lépés Válassza az első "RunShellScript" lehetőséget, és futtassa az alábbi parancsot.
+
+Parancs: "Cat/dev/null eszközre > ~/. bash_history && History-c" ![ bash History parancs on Azure Portal](./media/vm-certification-issues-solutions-4.png)
+
+3. lépés A parancs sikeres végrehajtása után indítsa újra a virtuális gépet.
+
+4. lépés: Általánosítsa a virtuális gépet, végezze el a rendszerkép VHD-jét, és állítsa le a virtuális gépet.
+
+5. lépés     Küldje el újra az általánosított képet.
+
+## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Kivételek (egyéni sablonok) kérelmezése a virtuálisgép-rendszerképeken szelektív tesztek esetén
+
+A kiadók a virtuális gépek minősítése során végrehajtott tesztek alól kivételeket is kérhetnek. A kivételeket rendkívül ritka esetekben kell megadnia, amikor a kiadó bizonyítékot szolgáltat a kérés támogatásához.
+A minősítési csapat fenntartja a jogot arra, hogy bármikor megtagadja vagy jóváhagyja a kivételeket.
+
+Az alábbi részekben olyan főbb forgatókönyvekkel fogunk foglalkozni, amikor a rendszer kivételeket kér, és hogyan kérhet kivételt.
+
+Kivételek forgatókönyvei
+
+Három forgatókönyv/eset van, ahol a kiadók általában a kivételeket kérik. 
+
+* **Kivétel egy vagy több tesztelési eset esetében:** A kiadók a [Piactéri támogatási](https://aka.ms/marketplacepublishersupport) kérelmekre vonatkozó kivételeket is elérnek a tesztelési esetekhez. 
+
+* **Zárolt virtuális gépek/nincs gyökérszintű hozzáférés:** Néhány közzétevőnek van olyan forgatókönyve, amelyben a virtuális gépeket zárolni kell, mert olyan szoftverekkel rendelkeznek, mint például a virtuális gépre telepített tűzfalak. 
+       Ebben az esetben a kiadók itt tölthetik le a [Certified test Tool eszközt](https://aka.ms/AzureCertificationTestTool) , és megadhatják a jelentést a [Marketplace Publisher támogatási szolgálatában](https://aka.ms/marketplacepublishersupport)
+
+
+* **Egyéni sablonok:** Egyes közzétevők olyan virtuálisgép-rendszerképeket tesznek közzé, amelyekhez egyéni ARM-sablon szükséges a virtuális gépek telepítéséhez. Ebben az esetben a kiadóknak meg kell adniuk az egyéni sablonokat a [piactér-közzétevő támogatásában](https://aka.ms/marketplacepublishersupport) , így a minősítési csapat is használhatja az ellenőrzést. 
+
+### <a name="information-to-provide-for-exception-scenarios"></a>Kivételi forgatókönyvek megadására szolgáló információk
+
+A kiadóknak el kell érniük a támogatási szolgálatot a [Marketplace kiadó támogatásában](https://aka.ms/marketplacepublishersupport) a fenti forgatókönyvhöz tartozó kivételek kérelmezéséhez a további következő információkkal:
+
+   1.   Közzétevő azonosítója – közzétevő azonosítója a partner Center portálon
+   2.   Ajánlat azonosítója/neve – az ajánlat azonosítója/neve, amelyre a kivételt kérték 
+   3.   SKU/csomag azonosítója – a virtuálisgép-ajánlathoz tartozó csomag azonosítója/SKU, amelyre a kivételt kérték
+   4.    Verzió – annak a virtuálisgép-ajánlatnak a verziója, amelyre a kivételt kérték
+   5.   Kivétel típusa – tesztek, zárolt virtuális gép, egyéni sablonok
+   6.   Kérelem oka – a kivétel oka, valamint az arra vonatkozó információk, hogy milyen teszteket kell kizárni 
+   7.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
+
 
 ## <a name="next-steps"></a>További lépések
 

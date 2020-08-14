@@ -1,18 +1,18 @@
 ---
 title: Mi az Azure Cloud Services | Microsoft Docs
-description: Ismerje meg, mi az Azure Cloud Services.
+description: Ismerje meg, hogy mi az Azure Cloud Services, különösen úgy, hogy olyan alkalmazásokat támogasson, amelyek méretezhető, megbízható és olcsó működést biztosítanak.
 services: cloud-services
 author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386850"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224288"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Az Azure Cloud Services áttekintése
 Az Azure Cloud Services a [szolgáltatásként szolgáló platform](https://azure.microsoft.com/overview/what-is-paas/) (Péter) példája. A [Azure app Servicehoz](../app-service/overview.md)hasonlóan ez a technológia a méretezhető, megbízható és olcsó működést támogató alkalmazások támogatására szolgál. Ugyanúgy, ahogy a App Service a virtuális gépeken (VM) üzemel, így az Azure Cloud Services is. Azonban nagyobb mértékben szabályozhatja a virtuális gépeket. Telepítheti saját szoftvereit az Azure Cloud Servicest használó virtuális gépeken, és távolról is elérheti őket.

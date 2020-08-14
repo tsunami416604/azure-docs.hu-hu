@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038545"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226012"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Habár az ingyenes szint korlátozott biztonságot nyújt az Azure-erőforrások számára, a standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
@@ -34,7 +34,8 @@ Az előfizetés standard szintre való frissítéséhez hozzá kell rendelnie az
 ## <a name="enable-your-azure-subscription"></a>Azure-előfizetés engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **Security Center – az Áttekintés** megnyílik.
+
+1. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **Security Center – az Áttekintés** megnyílik.
 
    ![Security Center – Áttekintés][2]
 
@@ -49,21 +50,25 @@ A Security Center első indítása után néhány percen belül a következők j
 
 A Security Center teljes körű kihasználása érdekében az alábbi lépéseket kell elvégeznie a standard szintre való frissítéshez és a Log Analytics-ügynök telepítéséhez.
 
-## <a name="upgrade-to-the-standard-pricing-tier"></a>Frissítés a standard díjszabási szintre
-A Security Center útmutatókat és oktatóanyagokat a standard szintre kell frissítenie. Security Center Standard ingyenes próbaverziót is rendelkezésre áll. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
 
-1. A Security Center főmenüjében válassza az **Első lépések** elemet.
+## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
+
+A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Security Center Standard ingyenes próbaverziót is rendelkezésre áll. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
+
+1. Az Security Center oldalsávján válassza az **első lépések**lehetőséget.
  
-   ![Bevezetés][4]
+   ![Első lépések](./media/security-center-get-started/get-started-upgrade-tab.png)
 
-2. A **Frissítés** területen a Security Center felsorolja az előkészítésre jogosult előfizetéseket és munkaterületeket. 
-   - A **Próbaverzió alkalmazása** elemre kattintva megtekintheti előfizetéseinek és munkaterületeinek listáját, valamint a próbaidőszakkal kapcsolatos jogosultsági állapotukat.
-   -    Frissítheti azokat az előfizetéseket és munkaterületeket, amelyek nem jogosultak a próbaidőszakra.
-   -    A próbaidőszak elkezdéséhez válassza ki az erre jogosult munkaterületeket és előfizetéseket.
-3. A **Próbaverzió indítása** gombbal elindítja a próbaidőszakot a kiválasztott előfizetéseken.
+    A **frissítés** lap felsorolja a bevezetésre jogosult előfizetéseket és munkaterületeket.
+
+1. A **válassza ki a munkaterületek lehetőséget a standard szint** bekapcsolásához a listában válassza ki a frissítendő munkaterületeket.
 
 
-  ![Biztonsági riasztások][9]
+    > [!TIP]
+    > Ha olyan munkaterületet választ, amely jogosult az ingyenes próbaverzióra, a következő lépés egy próbaverziót indít el. Ha a munkaterületek nem jogosultak a próbaverzióra, a rendszer frissíti, és megkezdi a díjakat.
+
+1. Válassza a **frissítés** lehetőséget a kiválasztott munkaterületek standard szintre való frissítéséhez.
+
 
 ## <a name="automate-data-collection"></a>Adatgyűjtés automatizálása
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések megfigyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Alapértelmezés szerint a Security Center létre fog hozni egy új munkaterületet.
@@ -73,9 +78,9 @@ Ha engedélyezve van az automatikus kiépítés, Security Center telepíti a Log
 Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 1. A Security Center Főmenüben válassza a **díjszabás & beállítások**lehetőséget.
-2. Az előfizetés sorában kattintson arra az előfizetésre, amelyre módosítani szeretné a beállításokat.
-3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést****Be** értékre.
-4. Válassza a **Mentés** lehetőséget.
+1. Az előfizetés sorában kattintson arra az előfizetésre, amelyre módosítani szeretné a beállításokat.
+1. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést****Be** értékre.
+1. Válassza a **Mentés** lehetőséget.
 ---
   ![Automatikus kiépítés engedélyezése][6]
 
@@ -83,7 +88,7 @@ Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Sec
 
   ![Javaslatok][8]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, folytassa a standard szint futtatását és az automatikus kiépítés engedélyezését. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
 1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.

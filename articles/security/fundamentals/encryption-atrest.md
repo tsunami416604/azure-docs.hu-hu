@@ -4,8 +4,7 @@ description: Ez a cikk áttekintést nyújt a REST-alapú adattitkosításról, 
 services: security
 documentationcenter: na
 author: msmbaldwin
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2020
+ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529284"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224492"
 ---
-# <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
+# <a name="azure-data-encryption-at-rest"></a>Inaktív adatok titkosítása az Azure-ban
 
 Microsoft Azure olyan eszközöket tartalmaz, amelyek a vállalat biztonsági és megfelelőségi igényeinek megfelelően védik az adatvédelmet. A tanulmány a következőkre összpontosít:
 
@@ -49,7 +48,7 @@ A inaktív adatok titkosítása adatvédelmet biztosít a tárolt adatok számá
 
 A inaktív adatok titkosítása úgy lett kialakítva, hogy a támadók ne férhessenek hozzá a titkosítatlan adatokhoz, mivel a lemezeken titkosítva vannak az adatok. Ha egy támadó titkosított adattal rendelkező merevlemezt szerez be, de nem a titkosítási kulcsokat, a támadónak le kell győznie a titkosítást az információk olvasásához. Ez a támadás sokkal összetettebb és erőforrás-felhasználást igényel, mint a titkosítatlan adatok merevlemezen való elérése. Emiatt a inaktív adatok titkosítása erősen ajánlott, és nagy prioritású követelmény számos szervezet számára.
 
-A munkahelyen történő titkosításhoz a szervezetnek adatirányítási és megfelelőségi erőfeszítésekre is szüksége lehet. Az iparági és kormányzati rendeletek, például a HIPAA, a PCI és a FedRAMP, az adatvédelem és a titkosítási követelményekkel kapcsolatos konkrét óvintézkedéseket határoznak meg. A inaktív adatok titkosítása egy kötelező mérték, amely megfelel ezeknek a szabályozásoknak. További információ a Microsoft FIPS 140-2-hitelesítéssel kapcsolatos megközelítéséről: [Federal Information Processing standard (FIPS) kiadvány 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2). 
+A munkahelyen történő titkosításhoz a szervezetnek adatirányítási és megfelelőségi erőfeszítésekre is szüksége lehet. Az iparági és kormányzati rendeletek, például a HIPAA, a PCI és a FedRAMP, az adatvédelem és a titkosítási követelményekkel kapcsolatos konkrét óvintézkedéseket határoznak meg. A inaktív adatok titkosítása egy kötelező mérték, amely megfelel ezeknek a szabályozásoknak. További információ a Microsoft FIPS 140-2-hitelesítéssel kapcsolatos megközelítéséről: [Federal Information Processing standard (FIPS) kiadvány 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2).
 
 A megfelelőségi és szabályozási követelmények teljesítése mellett a inaktív titkosítás a védelem részletes védelmét is biztosítja. A Microsoft Azure megfelelő platformot biztosít a szolgáltatások, az alkalmazások és az adatkezeléshez. Emellett átfogó lehetőséget és fizikai biztonságot, adathozzáférés-vezérlést és auditálást is biztosít. Azonban fontos, hogy további "átfedésben" biztonsági intézkedéseket adjanak abban az esetben, ha az egyik másik biztonsági intézkedés meghibásodik, és a titkosítás inaktív állapotban van.
 
@@ -76,130 +75,7 @@ A REST-implementációban egynél több titkosítási kulcs van használatban. A
 - **Adattitkosítási kulcs (adattitkosítási kulcsot)** – egy partíció vagy adatblokk titkosításához használt szimmetrikus AES256-kulcs.  Egyetlen erőforrás több partícióval és számos adattitkosítási kulccsal is rendelkezhet. Az egyes adatblokkok egy másik kulccsal való titkosítása nehezebbé teszi a titkosítási elemzési támadásokat. A DEKs való hozzáférésre az erőforrás-szolgáltató vagy az alkalmazás-példány szükséges, amely egy adott blokk titkosítását és visszafejtését végzi. Ha egy ADATTITKOSÍTÁSI kulcsot egy új kulccsal van lecserélve, csak a hozzá tartozó blokkban lévő adatmennyiséget kell újra titkosítani az új kulccsal.
 - **Kulcs titkosítási kulcsa (KEK)** – az adattitkosítási kulcsok titkosításához használt titkosítási kulcs. Olyan kulcs-titkosítási kulcs használata, amely soha nem hagy Key Vault lehetővé teszi, hogy az adattitkosítási kulcsok titkosítva és szabályozva legyenek. Előfordulhat, hogy a KEK-hez hozzáférő entitás nem azonos a ADATTITKOSÍTÁSI kulcsot igénylő entitással. Az entitások a ADATTITKOSÍTÁSI kulcsot való hozzáférést az egyes ADATTITKOSÍTÁSI kulcsot adott partícióhoz való hozzáférésének korlátozására használhatják. Mivel a KEK a DEKs visszafejtéséhez szükséges, a KEK gyakorlatilag egyetlen pont, amellyel a DEKs hatékonyan törölhető a KEK törlésével.
 
-A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer külön tárolja, és csak a kulcs titkosítási kulcshoz hozzáféréssel rendelkező entitások tudják visszafejteni ezeket az adattitkosítási kulcsokat. A Key Storage különböző modelljei támogatottak. Az egyes modelleket a következő szakasz későbbi részében részletesebben ismertetjük.
-
-## <a name="data-encryption-models"></a>Adattitkosítási modellek
-
-A különböző titkosítási modellek és azok előnyeinek és hátrányainak megértése elengedhetetlen ahhoz, hogy a különböző Azure-beli erőforrás-szolgáltatók hogyan implementálják a titkosítást a nyugalmi állapotban. Ezek a definíciók az Azure összes erőforrás-szolgáltatóján megoszthatók a közös nyelv és taxonómia biztosítása érdekében.
-
-A kiszolgálóoldali titkosításnak három forgatókönyve van:
-
-- Kiszolgálóoldali titkosítás a szolgáltatás által felügyelt kulcsokkal
-  - Az Azure-erőforrás-szolgáltatók végzik a titkosítási és a visszafejtési műveleteket
-  - A Microsoft kezeli a kulcsokat
-  - Teljes körű Felhőbeli funkciók
-
-- Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsok használatával Azure Key Vault
-  - Az Azure-erőforrás-szolgáltatók végzik a titkosítási és a visszafejtési műveleteket
-  - Az ügyfelek Azure Key Vaulton keresztül vezérlik a kulcsokat
-  - Teljes körű Felhőbeli funkciók
-
-- Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsokkal az ügyfél által vezérelt hardveren
-  - Az Azure-erőforrás-szolgáltatók végzik a titkosítási és a visszafejtési műveleteket
-  - Az ügyfél által vezérelt hardveren az ügyfelek vezérlik a kulcsokat
-  - Teljes körű Felhőbeli funkciók
-
-Ügyféloldali titkosítás esetén vegye figyelembe a következőket:
-
-- Az Azure-szolgáltatások nem látják a visszafejtett információt
-- Az ügyfelek a helyszínen (vagy más biztonságos áruházakban) kezelhetik és tárolják a kulcsokat. A kulcsok nem érhetők el az Azure-szolgáltatások számára
-- Csökkentett Felhőbeli funkciók
-
-Az Azure-ban támogatott titkosítási modellek két fő csoportra oszlanak: az "ügyfél-titkosítás" és a "kiszolgálóoldali titkosítás", ahogy korábban említettük. A REST-modellben használt titkosítástól függetlenül az Azure-szolgáltatások mindig a biztonságos átvitel, például a TLS vagy a HTTPS használatát ajánlják. Ezért a átvitel titkosítását az átviteli protokollnak kell megcéloznia, és nem lehet jelentős tényező annak meghatározásában, hogy melyik titkosítást használja a REST-modell.
-
-### <a name="client-encryption-model"></a>Ügyfél-titkosítási modell
-
-Az ügyfél-titkosítási modell az erőforrás-szolgáltatón vagy az Azure-on kívül a szolgáltatás vagy a hívó alkalmazás által végrehajtott titkosításra utal. A titkosítás az Azure-beli szolgáltatásalkalmazás vagy az ügyfél adatközpontjában futó alkalmazások által végezhető el. Mindkét esetben a titkosítási modell kihasználása esetén az Azure erőforrás-szolgáltató titkosított blobot kap az adattitkosítás bármilyen módon történő visszafejtése és a titkosítási kulcsok elérésének lehetősége nélkül. Ebben a modellben a kulcskezelő szolgáltatást/alkalmazást a Calling Service/Application végzi el, és az nem átlátható az Azure szolgáltatásban.
-
-![Ügyfél](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
-
-### <a name="server-side-encryption-model"></a>Kiszolgálóoldali titkosítási modell
-
-A kiszolgálóoldali titkosítási modellek az Azure-szolgáltatás által végrehajtott titkosításra vonatkoznak. Ebben a modellben az erőforrás-szolgáltató végrehajtja a titkosítási és a visszafejtési műveletet. Előfordulhat például, hogy az Azure Storage egyszerű szöveges műveletekben fogadja az adatgyűjtést, és belsőleg fogja végrehajtani a titkosítást és a visszafejtést. Előfordulhat, hogy az erőforrás-szolgáltató a Microsoft vagy az ügyfél által kezelt titkosítási kulcsokat használja a megadott konfigurációtól függően.
-
-![Kiszolgáló](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
-
-### <a name="server-side-encryption-key-management-models"></a>Kiszolgálóoldali titkosítási kulcsok kezelési modelljei
-
-A kiszolgálóoldali titkosítás a REST-modellekben a kulcskezelő megkülönböztető jellemzőit foglalja magában. Ide tartozik a titkosítási kulcsok létrehozásának helye és módja, valamint a hozzáférési modellek és a kulcsfontosságú rotációs eljárások.
-
-#### <a name="server-side-encryption-using-service-managed-keys"></a>Kiszolgálóoldali titkosítás a szolgáltatás által felügyelt kulcsokkal
-
-Sok ügyfél esetében az alapvető követelmény az, hogy az adatok titkosítva legyenek, amikor nyugalmi állapotban van. A szolgáltatás által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás lehetővé teszi ezt a modellt azáltal, hogy lehetővé teszi az ügyfeleknek az adott erőforrás (Storage-fiók, SQL-adatbázis stb.) megjelölését a titkosításhoz, és elhagyják az összes kulcsfontosságú felügyeleti szempontot, mint például a kulcs kiadása, a rotáció és a biztonsági mentés A REST titkosítást támogató legtöbb Azure-szolgáltatás általában támogatja ezt a modellt, amellyel kiszervezheti a titkosítási kulcsok kezelését az Azure-ba. Az Azure erőforrás-szolgáltató létrehozza a kulcsokat, elhelyezi őket a biztonságos tárolóban, és szükség esetén lekéri őket. Ez azt jelenti, hogy a szolgáltatásnak teljes hozzáférése van a kulcsokhoz, és a szolgáltatás teljes körű vezérléssel rendelkezik a hitelesítő adatok életciklusának kezelése során.
-
-![felügyelt](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
-
-A szolgáltatás által felügyelt kulcsokat használó kiszolgálóoldali titkosítás ezért gyors megoldást jelent a titkosítás nyugalmi állapotba való bevezetésének szükségessége az ügyfél számára alacsony terheléssel. Amikor egy ügyfél elérhetővé válik, általában megnyitja a cél-előfizetés és az erőforrás-szolgáltató Azure Portalét, és bejelöl egy mezőt, amely azt jelzi, hogy az adattitkosítást szeretné. Egyes erőforrás-kezelők kiszolgálóoldali titkosítása szolgáltatás által felügyelt kulcsokkal beállítás alapértelmezés szerint be van kapcsolva.
-
-A Microsoft által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás azt jelenti, hogy a szolgáltatás teljes hozzáféréssel rendelkezik a kulcsok tárolásához és kezeléséhez. Előfordulhat, hogy egyes ügyfelek kezelhetik a kulcsokat, mivel úgy érzik, hogy nagyobb biztonságot nyújtanak, a modell kiértékelése során figyelembe kell venni az egyéni kulcsú tárolási megoldáshoz kapcsolódó költségeket és kockázatokat. Sok esetben a szervezet megállapíthatja, hogy az erőforrás-megszorítások vagy egy helyszíni megoldás kockázata nagyobb lehet, mint a REST-kulcsok titkosításának Felhőbeli felügyeletének kockázata.  Előfordulhat azonban, hogy ez a modell nem elegendő ahhoz, hogy olyan szervezetek rendelkezzenek, amelyek a titkosítási kulcsok létrehozását vagy életciklusát szabályozzák, vagy hogy a különböző személyzet kezelje a szolgáltatás titkosítási kulcsait, mint a szolgáltatás felügyeletét (azaz a szolgáltatás általános felügyeleti modelljéből származó kulcskezelő elkülönítését).
-
-##### <a name="key-access"></a>Kulcs elérése
-
-A szolgáltatás által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás használata esetén a kulcs létrehozása, tárolása és a szolgáltatáshoz való hozzáférés mind a szolgáltatás által felügyelt. Az alapszintű Azure-erőforrás-szolgáltatók jellemzően az adattitkosítási kulcsokat tárolják egy olyan tárolóban, amely az adatforráshoz közeledik, és gyorsan elérhető és hozzáférhető, miközben a kulcs titkosítási kulcsait egy biztonságos belső tároló tárolja.
-
-**Előnyök**
-
-- Egyszerű beállítás
-- A Microsoft a legfontosabb rotációt, biztonsági mentést és redundanciát kezeli
-- Az ügyfél nem rendelkezik a megvalósítással vagy egy egyéni kulcskezelő séma kockázatával.
-
-**Hátrányok**
-
-- A titkosítási kulcsok (a kulcs specifikációja, az életciklus, a visszavonás stb.) nem adhatók meg az ügyfelek felett.
-- Nincs lehetőség a kulcsfontosságú felügyelet elkülönítésére a szolgáltatás általános felügyeleti modelljéből
-
-#### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsok használatával Azure Key Vault
-
-Olyan esetekben, amikor a követelmény az inaktív adatok titkosítása és a titkosítási kulcsok használata, a felhasználók a Key Vault felügyelt kulcsaival használhatják a kiszolgálóoldali titkosítást. Egyes szolgáltatások csak a legfelső szintű kulcs titkosítási kulcsát tárolhatják Azure Key Vaultban, és a titkosított adattitkosítási kulcsot egy belső helyen tárolják, amely közelebb áll az adatforgalomhoz. Ebben az esetben az ügyfelek saját kulcsaikat hozhatnak Key Vault (BYOK – Bring Your Own Key), vagy újakat generálnak, és a kívánt erőforrások titkosítására használhatják őket. Amíg az erőforrás-szolgáltató végrehajtja a titkosítási és a visszafejtési műveleteket, a konfigurált kulcs titkosítási kulcsát használja az összes titkosítási művelet legfelső szintű kulcsaként.
-
-A kulcs titkosítási kulcsainak elvesztése adatvesztést jelent. Emiatt a kulcsokat nem szabad törölni. A kulcsok létrehozásakor vagy elforgatásakor biztonsági mentést kell készíteni. A helyreállítható [törlést](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) engedélyezni kell minden olyan tárolón, amely a kulcs titkosítási kulcsait tárolja. A kulcs törlése helyett állítsa a beállítást hamis értékre, vagy állítsa be a lejárati dátumot.
-
-##### <a name="key-access"></a>Kulcs elérése
-
-A Azure Key Vault ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítási modell magában foglalja a kulcsoknak a titkosításhoz és a visszafejtéshez szükséges hozzáférését a szolgáltatáshoz. A REST kulcsok titkosítása hozzáférés-vezérlési házirend segítségével érhető el a szolgáltatás számára. Ez a szabályzat biztosítja, hogy a szolgáltatás identitása hozzáférjen a kulcs fogadásához. Egy társított előfizetés nevében futó Azure-szolgáltatás konfigurálható identitással az előfizetésben. A szolgáltatás elvégezheti Azure Active Directory hitelesítését, és olyan hitelesítési tokent kap, amely magát az előfizetés nevében működő szolgáltatásként azonosítja. Ezt a tokent ezután megtekintheti Key Vault egy olyan kulcs beszerzéséhez, amelyhez hozzáférést kapott.
-
-A titkosítási kulcsokat használó műveletek esetében a szolgáltatás identitása a következő műveletek bármelyikéhez biztosítható: visszafejtés, titkosítás, unwrapKey, wrapKey, ellenőrzés, aláírás, beolvasás, Listázás, frissítés, létrehozás, importálás, törlés, biztonsági mentés és visszaállítás.
-
-Az adatok titkosítása vagy visszafejtése során használt kulcs beszerzéséhez a Resource Manager-szolgáltatás példányának futtatásához szükséges UnwrapKey (a visszafejtési kulcs lekérése) és a WrapKey (kulcs behelyezése a Key vaultba új kulcs létrehozásakor).
-
->[!NOTE]
->Az Key Vault engedélyezésével kapcsolatos további információkért tekintse meg a [Azure Key Vault dokumentációjában](../../key-vault/general/secure-your-key-vault.md)a Key Vault biztonságossá tétele című oldalt.
-
-**Előnyök**
-
-- A használt kulcsok teljes körű vezérlése – a titkosítási kulcsok kezelése az ügyfél Key Vault az ügyfél vezérlése alatt történik.
-- Több szolgáltatás titkosításának lehetősége egyetlen főkiszolgálóra
-- A szolgáltatás általános felügyeleti modelljéből elkülönítheti a kulcskezelő szolgáltatást
-- Meghatározhatja a szolgáltatás és a kulcs helyét a régiók között
-
-**Hátrányok**
-
-- Az ügyfél teljes felelősséggel rendelkezik a kulcs-hozzáférés kezeléséhez
-- Az ügyfél teljes felelősséggel rendelkezik a fő életciklus-felügyelethez
-- További beállítás & konfiguráció terhelése
-
-#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsokkal az ügyfél által vezérelt hardverben
-
-Egyes Azure-szolgáltatások lehetővé teszik a saját kulcsú (HYOK) kulcskezelő modell üzemeltetését. Ez a felügyeleti mód olyan forgatókönyvekben hasznos, ahol szükség van az inaktív adatok titkosítására és a Microsoft vezérlőn kívüli védett adattárban található kulcsok kezelésére. Ebben a modellben a szolgáltatásnak egy külső helyről kell lekérnie a kulcsot. A teljesítményre és a rendelkezésre állásra vonatkozó garanciák hatással vannak, és a konfiguráció összetettebb. Továbbá, mivel a szolgáltatás a titkosítási és a visszafejtési műveletek során is hozzáfér a ADATTITKOSÍTÁSI kulcsot, a modell általános biztonsági garanciái hasonlóak ahhoz, amikor a kulcsokat ügyfél által felügyelik Azure Key Vaultban.  Ennek eredményeképpen ez a modell nem felel meg a legtöbb szervezet számára, kivéve, ha meghatározott kulcskezelő követelményekkel rendelkeznek. A korlátozások miatt a legtöbb Azure-szolgáltatás nem támogatja a kiszolgálóoldali titkosítást a kiszolgáló által felügyelt kulcsok használatával az ügyfél által vezérelt hardverben.
-
-##### <a name="key-access"></a>Kulcs elérése
-
-Ha az ügyfél által vezérelt hardverben a szolgáltatás által felügyelt kulcsokat használó kiszolgálóoldali titkosítást használja, a rendszer a kulcsokat az ügyfél által konfigurált rendszeren tartja karban. A modellt támogató Azure-szolgáltatások biztosítják a biztonságos kapcsolódást az ügyfél által megadott kulcstárolóhoz.
-
-**Előnyök**
-
-- Teljes hozzáférés a használt legfelső szintű kulcshoz – a titkosítási kulcsokat egy ügyfél által biztosított tároló kezeli
-- Több szolgáltatás titkosításának lehetősége egyetlen főkiszolgálóra
-- A szolgáltatás általános felügyeleti modelljéből elkülönítheti a kulcskezelő szolgáltatást
-- Meghatározhatja a szolgáltatás és a kulcs helyét a régiók között
-
-**Hátrányok**
-
-- A kulcsok tárolásának, biztonságának, teljesítményének és rendelkezésre állásának teljes felelőssége
-- A kulcsok hozzáférés-kezelésének teljes felelőssége
-- A fő életciklus-felügyelet teljes felelőssége
-- Jelentős telepítési, konfigurálási és folyamatos karbantartási költségek
-- A hálózat rendelkezésre állásának növelése az ügyfél-adatközpont és az Azure-adatközpontok között.
+A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer külön tárolja, és csak a kulcs titkosítási kulcshoz hozzáféréssel rendelkező entitások tudják visszafejteni ezeket az adattitkosítási kulcsokat. A Key Storage különböző modelljei támogatottak. További információért lásd az [adattitkosítási modelleket](encryption-models.md) .
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Inaktív adatok titkosítása a Microsoft Cloud Servicesben
 
@@ -223,7 +99,7 @@ Az infrastruktúra-szolgáltatás (IaaS) ügyfelei számos szolgáltatást és a
 
 #### <a name="encrypted-storage"></a>Titkosított tároló
 
-A Pástihoz hasonlóan a IaaS-megoldások más Azure-szolgáltatásokat is használhatnak, amelyek a nyugalmi állapotban titkosított adatok tárolására használhatók. Ezekben az esetekben engedélyezheti a titkosítást az összes felhasznált Azure-szolgáltatás által biztosított Rest-támogatásban. Az alábbi táblázat felsorolja a főbb tárolási, szolgáltatás-és alkalmazás-platformokat, valamint a REST titkosítású modellt. 
+A Pástihoz hasonlóan a IaaS-megoldások más Azure-szolgáltatásokat is használhatnak, amelyek a nyugalmi állapotban titkosított adatok tárolására használhatók. Ezekben az esetekben engedélyezheti a titkosítást az összes felhasznált Azure-szolgáltatás által biztosított Rest-támogatásban. Az alábbi táblázat felsorolja a főbb tárolási, szolgáltatás-és alkalmazás-platformokat, valamint a REST titkosítású modellt.
 
 #### <a name="encrypted-compute"></a>Titkosított számítás
 
@@ -243,7 +119,7 @@ Az Azure-alapú infrastruktúra-szolgáltatás (IaaS) funkcióit használó bár
 
 #### <a name="azure-storage"></a>Azure Storage tárterület
 
-Az összes Azure Storage-szolgáltatás (blob Storage, üzenetsor-tárolás, Table Storage és Azure Files) támogatja a kiszolgálóoldali titkosítást a nyugalmi állapotban; néhány szolgáltatás emellett az ügyfél által felügyelt kulcsokat és az ügyféloldali titkosítást is támogatja. 
+Az összes Azure Storage-szolgáltatás (blob Storage, üzenetsor-tárolás, Table Storage és Azure Files) támogatja a kiszolgálóoldali titkosítást a nyugalmi állapotban; néhány szolgáltatás emellett az ügyfél által felügyelt kulcsokat és az ügyféloldali titkosítást is támogatja.
 
 - Kiszolgálóoldali: minden Azure Storage-szolgáltatás alapértelmezés szerint a szolgáltatás által felügyelt kulcsok használatával engedélyezi a kiszolgálóoldali titkosítást, amely transzparens az alkalmazás számára. További információ: [Azure Storage Service encryption for](../../storage/common/storage-service-encryption.md)inaktív adatok. Az Azure Blob Storage és a Azure Files támogatja az RSA 2048 bites ügyfél által felügyelt kulcsokat Azure Key Vault. További információ: [Storage Service encryption ügyfél által felügyelt kulcsok használata Azure Key Vaultban](../../storage/common/storage-encryption-keys-portal.md).
 - Ügyféloldali: az Azure-Blobok,-táblák és-várólisták támogatják az ügyféloldali titkosítást. Az ügyféloldali titkosítás használatakor az ügyfelek titkosítják az adataikat, és feltöltik az adataikat titkosított blobként. A kulcskezelőt az ügyfél végzi. További információ: [ügyféloldali titkosítás és Azure Key Vault Microsoft Azure Storagehoz](../../storage/common/storage-client-side-encryption.md).
@@ -256,107 +132,11 @@ A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosí
 
 A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) funkción keresztül. A Always Encrypted az ügyfél által létrehozott és tárolt kulcsot használja. Az ügyfelek a főkulcsot egy Windows tanúsítványtárolóban, Azure Key Vaultban vagy egy helyi hardveres biztonsági modulban tárolhatják. A SQL Server Management Studio használatával az SQL-felhasználók kiválaszthatják, hogy milyen kulcsot szeretnének használni az oszlop titkosításához.
 
-#### <a name="encryption-model-and-key-management-table"></a>Titkosítási modell és kulcskezelő tábla
-
-| Termék, szolgáltatás vagy szolgáltatás | Kiszolgálóoldali szolgáltatás által felügyelt kulcs használata   | Ügyfél által felügyelt kulcs kiszolgálóoldali használata | Ügyfél által felügyelt kulcs ügyféloldali használata  |
-|----------------------------------|--------------------|-----------------------------------------|--------------------|
-| **Mesterséges intelligencia és gépi tanulás**      |                    |                    |                    |
-| Azure Cognitive Search           | Igen                | Igen                | -                  |
-| Azure Cognitive Services         | Igen                | Igen                | -                  |
-| Azure Machine Learning           | Igen                | Igen                | -                  |
-| Azure Machine Learning Studio    | Igen                | Előzetes verzió, RSA 2048 bites | -               |
-| Content Moderator                | Igen                | Igen                | -                  |
-| Face                             | Igen                | Igen                | -                  |
-| Language Understanding           | Igen                | Igen                | -                  |
-| Personalizer                     | Igen                | Igen                | -                  |
-| QnA Maker                        | Igen                | Igen                | -                  |
-| Beszédszolgáltatások                  | Igen                | Igen                | -                  |
-| Translator Text                  | Igen                | Igen                | -                  |
-| Power BI                         | Igen                | Előzetes verzió, RSA 2048 bites | -                  |
-| **Elemzés**                    |                    |                    |                    |
-| Azure Stream Analytics           | Igen                | n.a.\*            | -                  |
-| Event Hubs                       | Igen                | Igen, az összes RSA-hossz. | -                  |
-| Függvények                        | Igen                | Igen, az összes RSA-hossz. | -                  |
-| Azure Analysis Services          | Igen                | -                  | -                  |
-| Azure Data Catalog               | Igen                | -                  | -                  |
-| Azure HDInsight                  | Igen                | Mind                | -                  |
-| Azure Monitor Application Insights | Igen                | Igen                | -                  |
-| Azure Monitor Log Analytics      | Igen                | Igen                | -                  |
-| Azure Data Explorer              | Igen                | Igen                | -                  |
-| Azure Data Factory               | Igen                | Igen                | -                  |
-| Azure Data Lake Store            | Igen                | Igen, RSA 2048-bit  | -                  |
-| **Containers**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Igen                | Igen                | -                  |
-| Container Instances              | Igen                | Igen                | -                  |
-| Container Registry               | Igen                | Igen                | -                  |
-| **Számítás**                      |                    |                    |                    |
-| Virtual Machines                 | Igen                | Igen, RSA 2048-bit  | -                  |
-| Virtuálisgép-méretezési csoport        | Igen                | Igen, RSA 2048-bit  | -                  |
-| SAP HANA                         | Igen                | Igen, RSA 2048-bit  | -                  |
-| App Service                      | Igen                | igen\*\*            | -                  |
-| Automation                       | Igen                | igen\*\*            | -                  |
-| Azure Functions                  | Igen                | igen\*\*            | -                  |
-| Azure Portal                     | Igen                | igen\*\*            | -                  |
-| Logic Apps                       | Igen                | Igen                | -                  |
-| Azure Managed Applications       | Igen                | igen\*\*            | -                  |
-| Service Bus                      | Igen                | Igen                | -                  |
-| Site Recovery                    | Igen                | Igen                | -                  |
-| **Adatbázisok**                    |                    |                    |                    |
-| SQL Server on Virtual Machines   | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Azure SQL Database               | Igen                | Igen, RSA 2048-bit  | Igen                |
-| MariaDB Azure SQL Database   | Igen                | -                  | -                  |
-| MySQL-Azure SQL Database     | Igen                | Igen                | -                  |
-| Azure SQL Database PostgreSQL-hez | Igen               | Igen                | -                  |
-| Azure Synapse Analytics          | Igen                | Igen, RSA 2048-bit  | -                  |
-| SQL Server Stretch Database      | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Table Storage                    | Igen                | Igen                | Igen                |
-| Azure Cosmos DB                  | Igen                | Igen                | -                  |
-| Azure Databricks                 | Igen                | Igen                | -                  |
-| Azure Database Migration Service | Igen                | n.a.\*              | -                  |
-| **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Igen                | -                  | Igen                |
-| Azure Repos                      | Igen                | -                  | Igen                |
-| **Identitás**                     |                    |                    |                    |
-| Azure Active Directory           | Igen                | -                  | -                  |
-| Azure Active Directory Domain Services | Igen          | Igen, RSA 2048-bit  | -                  |
-| **Integráció**                  |                    |                    |                    |
-| Service Bus                      | Igen                | Igen                | Igen                |
-| Event Grid                       | Igen                | -                  | -                  |
-| API Management                   | Igen                | -                  | -                  |
-| **IoT szolgáltatások**                 |                    |                    |                    |
-| IoT Hub                          | Igen                | Igen                | Igen                |
-| IoT Hub Device Provisioning      | Igen                | Igen                | -                  |
-| **Felügyelet és cégirányítás**    |                    |                    |                    |
-| Azure Site Recovery              | Igen                | -                  | -                  |
-| Azure Migrate                    | Igen                | Igen                | -                  |
-| **Média**                        |                    |                    |                    |
-| Media Services                   | Igen                | -                  | Igen                |
-| **Biztonság**                     |                    |                    |                    |
-| Azure Security Center for IoT    | Igen                | Igen                | -                  |
-| Azure Sentinel                   | Igen                | Igen                | -                  |
-| **Storage-fiók**                      |                    |                    |                    |
-| Blob Storage                     | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Prémium Blob Storage             | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Disk Storage                     | Igen                | Igen                | -                  |
-| Ultra Disk Storage               | Igen                | Igen                | -                  |
-| Felügyelt Disk Storage             | Igen                | Igen                | -                  |
-| File Storage                     | Igen                | Igen, RSA 2048-bit  | -                  |
-| Fájl Premium Storage             | Igen                | Igen, RSA 2048-bit  | -                  |
-| File Sync                         | Igen                | Igen, RSA 2048-bit  | -                  |
-| Queue Storage                    | Igen                | Igen                | Igen                |
-| Avere vFXT                       | Igen                | -                  | -                  |
-| Azure Cache for Redis            | Igen                | n.a.\*              | -                  |
-| Azure NetApp Files               | Igen                | Igen                | -                  |
-| Archive Storage                  | Igen                | Igen, RSA 2048-bit  | -                  |
-| StorSimple                       | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Azure Backup                     | Igen                | Igen                | Igen                |
-| Data Box                         | Igen                | -                  | Igen                |
-| Data Box Edge                    | Igen                | Igen                | -                  |
-
-\*Ez a szolgáltatás nem tart fenn adatmegőrzést. Az átmeneti gyorsítótárak, ha vannak ilyenek, Microsoft-kulccsal vannak titkosítva.
-
-\*\*Ez a szolgáltatás támogatja az adattárolást a saját Key Vaultban, a Storage-fiókban vagy más olyan adatmegőrzési szolgáltatásban, amely már támogatja a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulccsal.
-
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 
 Az Azure-szolgáltatásokon belül tárolt ügyféladatok védelme kiemelkedő fontosságú a Microsoft számára. Az összes Azure-beli üzemeltetett szolgáltatás elkötelezett amellett, hogy titkosítást biztosítson a REST-beállításokban. Az Azure-szolgáltatások a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat vagy az ügyféloldali titkosítást támogatják. Az Azure-szolgáltatások széles körben javítják a titkosítást a REST rendelkezésre állása során, és az új lehetőségek az előzetes verzióra és az általános elérhetőségre vannak tervezve a következő hónapokban.
+
+## <a name="next-steps"></a>További lépések
+
+- A szolgáltatás által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adattitkosítási modelleket](encryption-models.md) .
+- Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.

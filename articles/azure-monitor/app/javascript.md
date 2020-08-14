@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905825"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224852"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -150,10 +150,10 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Név | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Leírás |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -217,8 +217,8 @@ A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az 
 
 | Bővítmények |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
 
 ## <a name="correlation"></a>Korreláció
 
@@ -235,7 +235,7 @@ Az ügyfél és a kiszolgálóoldali korreláció **nem támogatott** a `GET` é
 
 A kiszolgálóoldali `Access-Control-Allow-Headers` konfigurációtól függően gyakran szükséges a kiszolgálóoldali lista kiterjesztése a és a manuális hozzáadásával `Request-Id` `Request-Context` .
 
-Hozzáférés-vezérlés engedélyezése – fejlécek: `Request-Id` , `Request-Context` ,`<your header>`
+Hozzáférés-vezérlés engedélyezése – fejlécek: `Request-Id` , `Request-Context` , `<your header>`
 
 Ha az ügyfél által kommunikáló külső kiszolgálók közül bármelyik nem fogadja el a és a `Request-Id` `Request-Context` fejlécet, és nem tudja frissíteni a konfigurációját, akkor a konfigurációs tulajdonsággal kell őket egy kizárási listára helyeznie `correlationHeaderExcludeDomains` . Ez a tulajdonság támogatja a helyettesítő karaktereket.
 
@@ -302,7 +302,7 @@ A Application Insights-erőforrást saját Azure Blob Storage-tárolóhoz csatol
 ### <a name="drag-and-drop"></a>Drag and drop
 
 1. Válasszon ki egy kivételt telemetria elemet a Azure Portal a "végpontok közötti tranzakció részletei" megtekintéséhez.
-2. Azonosítsa, hogy mely forrás-térképek felelnek meg ehhez a hívási veremnek. A forrás-hozzárendelésnek egyeznie kell egy verem-keret forrásfájljait, de utótagja`.map`
+2. Azonosítsa, hogy mely forrás-térképek felelnek meg ehhez a hívási veremnek. A forrás-hozzárendelésnek egyeznie kell egy verem-keret forrásfájljait, de utótagja `.map`
 3. Húzza a forrás leképező térképeket a hívási verembe a Azure Portal ![ egy animált képet, amely bemutatja, hogyan húzhatja át a forrás-leképezési fájlokat egy Build mappából a Azure Portal hívási verem ablakába.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights webes alapszintű
@@ -377,7 +377,7 @@ A Application Insights JavaScript SDK nyílt forráskódú a forráskód megteki
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a> További lépések
 * [Használat követése](usage-overview.md)
 * [Egyéni események és a mérőszámok](api-custom-events-metrics.md)
 * [Összeállítás, mérés, tanulás](usage-overview.md)

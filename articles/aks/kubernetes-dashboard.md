@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499865"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225988"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +20,7 @@ A Kubernetes tartalmaz egy webes irányítópultot, amely alapszintű felügyele
 A Kubernetes-irányítópulttal kapcsolatos további információkért lásd: [Kubernetes webes felhasználói felület irányítópultja][kubernetes-dashboard]. Az AK a 2,0-es és újabb verziójú nyílt forráskódú irányítópultot használja.
 
 > [!WARNING]
-> **Az AK-irányítópult bővítmény az elavultság beállítására van beállítva.** 
+> **Az AK-irányítópult bővítmény az elavultság beállítására van beállítva. Ehelyett használja a [Azure Portal (előzetes verzió) Kubernetes erőforrás nézetét][kubernetes-portal] .** 
 > * A Kubernetes irányítópultja alapértelmezés szerint engedélyezve van a 1,18-nál kisebb Kubernetes-verziót futtató fürtök esetében.
 > * Az irányítópult-bővítmény alapértelmezés szerint le lesz tiltva az 1,18-es vagy újabb Kubernetes létrehozott összes új fürt esetében. 
  > * Az előzetes verzióban az Kubernetes 1,19-es verziójától kezdve az AK többé nem támogatja a felügyelt Kube-irányítópult-bővítmény telepítését. 
@@ -54,8 +54,8 @@ Ez a parancs létrehoz egy proxyt a fejlesztői rendszer és a Kubernetes API k�
 
 > [!NOTE]
 > Ha nem látja az irányítópultot, akkor `http://127.0.0.1:8001` manuálisan is átirányíthatja a következő címekre. A 1,16-es vagy újabb fürtökön HTTPS protokollt használnak, és külön végpontot igényelnek.
-> * K8s 1,16 vagy újabb:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1,15 és alacsonyabb:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
+> * K8s 1,16 vagy újabb: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1,15 és alacsonyabb: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -117,7 +117,7 @@ A kezdeti képernyőn egy kubeconfig vagy token szükséges. Mindkét beállít�
 
 Az Azure AD-t és a nem Azure AD-t használó fürtök esetében a kubeconfig is átadható. Győződjön meg arról, hogy a hozzáférési jogkivonatok érvényesek, ha a tokenek lejártak, a kubectl-on keresztül frissítheti a jogkivonatokat.
 
-1. A rendszergazdai kubeconfig beállítása a`az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. A rendszergazdai kubeconfig beállítása a `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
 1. Válassza ki `Kubeconfig` , majd kattintson `Choose kubeconfig file` a fájl-választó megnyitásához
 1. Válassza ki a kubeconfig-fájlt (az alapértelmezett érték a $HOME/.Kube/config)
 1. Kattintson a következőre: `Sign In`
@@ -190,7 +190,7 @@ Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy r
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a [Kubernetes webes felhasználói felületének irányítópultját][kubernetes-dashboard].
 
@@ -209,3 +209,4 @@ A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse 
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

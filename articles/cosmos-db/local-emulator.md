@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119521"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225971"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -114,12 +114,13 @@ Ha az első alkalommal szeretné engedélyezni a hálózati hozzáférést, a fe
 
 ### <a name="sql-api"></a>SQL API
 
-Miután futtatta az Azure Cosmos Emulatort az asztalon, bármilyen támogatott [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -t vagy a [Azure Cosmos db Rest APIt](/rest/api/cosmos-db/) használhatja az emulátorral való kommunikációhoz. Az Azure Cosmos Emulator olyan beépített Adatkezelő is tartalmaz, amely lehetővé teszi a tárolók létrehozását az SQL API Cosmos DB-hoz vagy a Mongo adatbázis-API-hoz, valamint a kódok írása nélkül megtekintheti és szerkesztheti az elemeket.
+Miután futtatta az Azure Cosmos Emulatort az asztalon, bármilyen támogatott [Azure Cosmos db SDK](sql-api-sdk-dotnet-standard.md) -t vagy a [Azure Cosmos db Rest APIt](/rest/api/cosmos-db/) használhatja az emulátorral való kommunikációhoz. Az Azure Cosmos Emulator olyan beépített Adatkezelő is tartalmaz, amely lehetővé teszi a tárolók létrehozását az SQL API Cosmos DB-hoz vagy a Mongo adatbázis-API-hoz, valamint a kódok írása nélkül megtekintheti és szerkesztheti az elemeket.
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
-DocumentClient client = new DocumentClient(
-   new Uri("https://localhost:8081"), "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+CosmosClient client = new CosmosClient(
+   "https://localhost:8081", 
+    "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 ```
 
@@ -182,7 +183,7 @@ Indítsa el az emulátort egy rendszergazdai parancssorból a "/EnableCassandraE
 
 ### <a name="gremlin-api"></a>Gremlin API
 
-Indítsa el az emulátort egy rendszergazdai parancssorból a "/EnableGremlinEndpoint" paranccsal. Másik lehetőségként beállíthatja a környezeti változót is`AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+Indítsa el az emulátort egy rendszergazdai parancssorból a "/EnableGremlinEndpoint" paranccsal. Másik lehetőségként beállíthatja a környezeti változót is `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
 * Az [Apache-tinkerpop-Gremlin-Console-3.3.4 telepítése](https://archive.apache.org/dist/tinkerpop/3.3.4).
 
@@ -274,7 +275,7 @@ A beállítások listájának megtekintéséhez írja be a `Microsoft.Azure.Cosm
 | NoUI | Az emulátor felhasználói felületének megjelenítése nélkül. | Microsoft.Azure.Cosmos.Emulator.exe/NoUI | |
 | NoExplorer | Az adatkezelő nem jelenik meg az indításkor. |Microsoft.Azure.Cosmos.Emulator.exe/NoExplorer | | 
 | PartitionCount | A particionált tárolók maximális számát határozza meg. További információt [a tárolók számának módosítása](#set-partitioncount) című témakörben talál. | Microsoft.Azure.Cosmos.Emulator.exe/PartitionCount =\<partitioncount\> | \<partitioncount\>: Engedélyezett egyetlen partíciós tárolók maximális száma. Az alapértelmezett érték 25. Maximálisan 250 engedélyezett.|
-| DefaultPartitionCount| Meghatározza egy particionált tároló partícióinak alapértelmezett számát. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\>Az alapértelmezett érték 25.|
+| DefaultPartitionCount| Meghatározza egy particionált tároló partícióinak alapértelmezett számát. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\> Az alapértelmezett érték 25.|
 | AllowNetworkAccess | Hozzáférést nyújt az emulátorhoz egy hálózaton keresztül. \<key_string\> \<file_name\> A hálózati hozzáférés engedélyezéséhez a/Key = vagy a/keyfile = kapcsolót is át kell adnia. | Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/Key = \<key_string\> vagy Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/keyfile =\<file_name\>| |
 | NoFirewall | Ne módosítsa a tűzfalszabályok használatát, ha a/AllowNetworkAccess beállítás van használatban. |Microsoft.Azure.Cosmos.Emulator.exe/NoFirewall | |
 | GenKeyFile | Új engedélyezési kulcsot készít, és a megadott fájlba menti azt. A létrehozott kulcs a /Key vagy a /KeyFile lehetőséggel használható. | Microsoft.Azure.Cosmos.Emulator.exe/GenKeyFile =\<path to key file\> | |
@@ -317,7 +318,7 @@ Itt láthatja az emulátor PowerShellből való vezérlésére szolgáló paranc
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntax**
+**Szintaxis**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -327,7 +328,7 @@ Ezen ServiceControllerStatus értékek egyikét adja vissza: ServiceControllerSt
 
 ### `Start-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -337,7 +338,7 @@ Elindítja az emulátort. Alapértelmezés szerint a parancs addig vár, amíg a
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -347,7 +348,7 @@ Leállítja az emulátort. Alapértelmezés szerint ez a parancs addig vár, am�
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -428,7 +429,7 @@ Ha a .NET-ügyfélalkalmazás Linux Docker-tárolón fut, és ha egy gazdagépen
 
 ## <a name="running-on-mac-or-linux"></a>Futtatás Mac vagy Linux rendszeren<a id="mac"></a>
 
-Jelenleg a Cosmos emulatort csak Windows rendszeren lehet futtatni. A Mac vagy Linux operációs rendszert futtató felhasználók futtathatják az emulátort egy Windows rendszerű virtuális gépen, amely olyan Hypervisort üzemeltet, mint a Parallels vagy a VirtualBox. A következő lépésekkel engedélyezheti ezt.
+Jelenleg a Cosmos emulatort csak Windows rendszeren lehet futtatni. A Mac vagy Linux operációs rendszert futtató felhasználók futtathatják az emulátort egy olyan Windowsos virtuális gépen, amely egy olyan Hypervisort futtat, mint a Parallels vagy a VirtualBox. A következő lépésekkel engedélyezheti ezt.
 
 A Windows rendszerű virtuális gépen futtassa az alábbi parancsot, és jegyezze fel az IPv4-címeket.
 
@@ -444,7 +445,36 @@ A következő lépés a Windows rendszerű virtuális gépen belül a következ�
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-Végezetül importálnia kell az emulátor HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát a Linux vagy a Mac környezetbe.
+Végül fel kell oldania a tanúsítvány megbízhatósági folyamatát a Linux vagy Mac környezetben futó alkalmazás és az emulátor között. Két lehetőség közül választhat:
+
+1. Tiltsa le az SSL-érvényesítést az alkalmazásban:
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+
+   A .NET Standard 2,1-as vagy újabb verzióval kompatibilis keretrendszerben futó alkalmazások esetében a következőket tudjuk használni `CosmosClientOptions.HttpClientFactory` :
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2,0](#tab/ssl-netstd20)
+
+   Bármely, a .NET Standard 2,0-kompatibilis keretrendszerben futó alkalmazás esetében a következőket tudjuk használni `CosmosClientOptions.HttpClientFactory` :
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+
+   Node.js alkalmazások esetében a fájl módosításával `package.json` beállíthatja az `NODE_TLS_REJECT_UNAUTHORIZED` alkalmazás indításának idejét:
+
+   ```json
+   "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
+   ```
+
+--- 
+
+> [!NOTE]
+> Az SSL-ellenőrzés letiltása csak fejlesztési célokra javasolt, ezért nem végezhető el éles környezetben való futtatáskor.
+
+2. Importálja az emulátor HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát a linuxos vagy Mac környezetbe:
 
 ### <a name="linux"></a>Linux
 

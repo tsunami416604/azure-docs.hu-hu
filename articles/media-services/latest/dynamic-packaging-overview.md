@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
+ms.date: 08/13/2020
 ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4f0e8822d734d3c1147eb6d5cbbc8f26a7410a01
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489775"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224067"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -80,8 +80,10 @@ A folyamatos átviteli ügyfél a következő Smooth Streaming formátumokat adh
 
 Az alábbi lépések egy közös Media Services streaming-munkafolyamatot mutatnak be, amelyben a dinamikus csomagolás a Azure Media Services standard kódolóval együtt használható.
 
-1. Töltsön fel egy bemeneti fájlt, például egy QuickTime-/MOV-vagy MXF-fájlt. Ezt a fájlt a köztes vagy a forrásfájl is nevezik. A támogatott formátumok listáját lásd: [a standard kódoló által támogatott formátumok](media-encoder-standard-formats.md).
+1. [Töltsön fel egy bemeneti fájlt](manage-asset-concept.md) , például MP4, QuickTime/MOV vagy más támogatott fájlformátumot. Ezt a fájlt a köztes vagy a forrásfájl is nevezik. A támogatott formátumok listáját lásd: [a standard kódoló által támogatott formátumok](media-encoder-standard-formats.md).
 1. A köztes fájl [kódolása](#encode-to-adaptive-bitrate-mp4s) egy H. 264/AAC MP4 adaptív sávszélesség-készletbe.
+
+    Ha már rendelkezik kódolt fájlokkal, és csak a fájlok másolását és továbbítását szeretné használni, használja a következőt: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) és [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API-k. Ennek eredményeképpen létrejön egy adatfolyam-jegyzékfájlt (. ISM fájlt) tartalmazó új MP4-fájl.
 1. Tegye közzé az adaptív sávszélességű MP4-készletet tartalmazó kimeneti eszközt. Egy [adatfolyam-kereső](streaming-locators-concept.md)létrehozásával teheti közzé.
 1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-címeket hozhat létre. A *folyamatos átviteli végpont* gondoskodik a megfelelő jegyzékfájl és kérések kiszolgálásáról a különböző formátumokhoz.
     

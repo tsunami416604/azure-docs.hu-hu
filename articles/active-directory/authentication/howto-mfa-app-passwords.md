@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489792"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224917"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Az Azure Multi-Factor Authentication engedélyezése és használata az alkalmazás jelszavait használó örökölt alkalmazásokkal
 
@@ -41,6 +41,8 @@ Az alkalmazás jelszavainak használatakor a következő szempontokat kell figye
 * A jelszavakat gyorsítótárazó és a helyszíni helyzetekben használatos alkalmazások sikertelenek lehetnek, mert az alkalmazás jelszava nem ismert a munkahelyi vagy iskolai fiókon kívül. Példa erre a forgatókönyvre a helyszíni Exchange-e-mailek, de az archivált levelek a felhőben vannak. Ebben az esetben ugyanez a jelszó nem működik.
 * Ha az Azure Multi-Factor Authentication engedélyezve van egy felhasználói fiókban, az alkalmazás jelszavai a legtöbb nem böngészővel rendelkező ügyféllel használhatók, mint az Outlook és a Microsoft Skype vállalati verzió. A rendszergazdai műveletek azonban nem hajthatók végre az alkalmazások jelszavainak használatával a nem böngészőalapú alkalmazásokon, például a Windows PowerShellen keresztül. A műveletek akkor sem hajthatók végre, ha a felhasználó rendelkezik rendszergazdai fiókkal.
     * A PowerShell-parancsfájlok futtatásához hozzon létre egy erős jelszót tartalmazó szolgáltatásfiókot, és ne engedélyezze a fiókot kétlépéses ellenőrzéshez.
+* Ha azt gyanítja, hogy egy felhasználói fiók sérült, és visszavonja/alaphelyzetbe állítja a fiók jelszavát, akkor az alkalmazás jelszavait is frissíteni kell. Az alkalmazás jelszavai nem vonhatók automatikusan vissza a felhasználói fiók jelszavának visszavonása/alaphelyzetbe állítása során. A felhasználónak törölnie kell a meglévő alkalmazás jelszavát, és újakat kell létrehoznia.
+   * További információ: [alkalmazások jelszavainak létrehozása és törlése a további biztonsági ellenőrzés lapról](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
 
 >[!WARNING]
 > Az alkalmazások jelszavai nem működnek olyan hibrid környezetekben, ahol az ügyfelek a helyszíni és a Felhőbeli automatikus észlelési végpontokkal kommunikálnak. A helyi hitelesítéshez tartományi jelszavak szükségesek. A felhővel való hitelesítéshez az alkalmazás jelszavai szükségesek.

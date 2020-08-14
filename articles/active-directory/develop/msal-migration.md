@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fd19b451638eacbf0d6174154a2688b3523ca4d2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183870"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224356"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Alkalmazások migrálása a Microsoft hitelesítési tárba (MSAL)
 
@@ -63,6 +63,9 @@ A: Ha az alkalmazás forráskódját használja, a fenti áttelepítési útmuta
 __K: Miért érdemes befektetni a MSAL-re?__  
 A: a MSAL olyan új szolgáltatásokat tartalmaz, amelyek nem a ADAL, beleértve a növekményes belefoglalást, az egyszeri bejelentkezést és a jogkivonat-gyorsítótárazási kezelést. A ADAL-től eltérően a MSAL a 2022. június 30-ig továbbra is a biztonsági javításokat fogja kapni. [További információk](msal-overview.md).
 
+__K: a Microsoft frissíteni fogja a saját alkalmazásait a MSAL?__  
+Igen. A Microsoft folyamatban van az alkalmazások MSAL általi áttelepítésének folyamata, így biztosítva, hogy a MSAL folyamatos biztonsági és szolgáltatás-fejlesztései hasznosak legyenek.
+
 __K: olyan eszközt fog kibocsátani, amely segít áthelyezni az alkalmazásokat a ADAL-ből a MSAL-be?__  
 V: Nem. A kódtárak közötti különbségek szükségessé teszik az erőforrások kiépítését az eszköz fejlesztésére és karbantartására, amelyeket egyébként a MSAL javításával kellene elkölteni. Azonban biztosítjuk az előző áttelepítési útmutatókat, amelyekkel elvégezheti a szükséges módosításokat az alkalmazásban.
 
@@ -72,7 +75,7 @@ A: a MSAL.NET bizonyos forgatókönyveket támogat a AD FS 2019-es hitelesítés
 __K: Hogyan segítséget nyújt az alkalmazás áttelepítéséhez?__  
 Válasz: Tekintse meg a jelen cikk [áttelepítési útmutató](#migration-guidance) című szakaszát. Ha az alkalmazás platformjának elolvasása után további kérdései vannak, Stack Overflow közzéteheti a címkével, `[adal-deprecation]` vagy megnyithatja a problémát a könyvtár GitHub-tárházában. Az egyes könyvtárak tárházára mutató hivatkozásokat az MSAL áttekintését ismertető cikk [nyelvek és keretrendszerek](msal-overview.md#languages-and-frameworks) című szakaszában találja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazások frissítése a Microsoft Authentication Library és a Microsoft Graph API használatára](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
 - [A Microsoft Identity platform áttekintése](v2-overview.md)
