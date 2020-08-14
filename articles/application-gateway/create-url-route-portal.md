@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8d48ea133aaabbe9fd44bda545d672e68c93c08d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312198"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205578"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása elérésiút-alapú útválasztási szabályokkal a Azure Portal használatával
 
@@ -29,13 +29,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ![URL-útválasztási példa](./media/application-gateway-create-url-route-portal/scenario.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="prerequisites"></a>Előfeltételek
 
-Jelentkezzen be a Azure Portal[https://portal.azure.com](https://portal.azure.com)
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -163,7 +163,7 @@ A **konfiguráció** lapon összekapcsolja az útválasztási szabály használa
 
 6. A megnyíló **http-beállítás hozzáadása** ablakban írja be a *MyHTTPSetting* nevet a **http-beállítás neveként**. Fogadja el az alapértelmezett értékeket a további beállításokhoz a **http-beállítás hozzáadása** ablakban, majd válassza a **Hozzáadás** lehetőséget az **útválasztási szabály hozzáadása** ablakhoz való visszatéréshez.
 7. Az **elérésiút-alapú útválasztás**területen válassza **a több cél hozzáadása lehetőséget egy elérésiút-alapú szabály létrehozásához**.
-8. Az **elérési út**mezőbe írja be a következőt: */images/*\*.
+8. Az **elérési út**mezőbe írja be a következőt: */images/* \* .
 9. Az **Elérésiút-szabály neve**mezőbe írja be a *képek*nevet.
 10. **Http-beállítás**esetén válassza a **myHTTPSetting** lehetőséget.
 11. A **háttérbeli cél**beállításnál válassza a **lemezképek**lehetőséget.
@@ -173,7 +173,7 @@ A **konfiguráció** lapon összekapcsolja az útválasztási szabály használa
 15. Válassza a **Next (tovább** ) gombot, majd a **következőt: felülvizsgálat + létrehozás**.
 
 > [!NOTE]
-> Az alapértelmezett esetek kezeléséhez nem szükséges egyéni */** elérésiút-szabályt hozzáadnia. Ezt automatikusan az alapértelmezett háttérrendszer-készlet kezeli.
+> Az */* alapértelmezett esetek kezeléséhez nem szükséges egyéni * elérésiút-szabályt hozzáadnia. Ezt automatikusan az alapértelmezett háttérrendszer-készlet kezeli.
 
 ### <a name="review--create-tab"></a>Felülvizsgálat + Létrehozás lap
 
@@ -186,25 +186,29 @@ Tekintse át a **felülvizsgálat + létrehozás** lapon található beállítá
 
     ![Alkalmazásátjáró nyilvános IP-címének rögzítése](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például, http:\//52.188.72.175:8080.
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például, http: \/ /52.188.72.175:8080.
 
     ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
    Az 8080-as porton lévő figyelő a kérést az alapértelmezett háttér-készletre irányítja.
 
-3. Módosítsa az URL-címet a *http://&lt;IP&gt;-cím: 8080/images/test.htm*értékre,&gt; és cserélje &lt;le az IP-címet az IP-címére, és az alábbi példához hasonlóan kell megjelennie:
+3. Módosítsa az URL-címet a *http:// &lt; IP-cím &gt; : 8080/images/test.htm*értékre, és cserélje le az IP-címet az IP-címére &lt; &gt; , és az alábbi példához hasonlóan kell megjelennie:
 
     ![Tesztképek URL-címe az alkalmazásátjáróban](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
    A 8080-es porton lévő figyelő továbbítja ezt a kérést a *lemezképek* háttér-készletének.
 
-4. Módosítsa az URL-címet a *http://&lt;IP&gt;-cím: 8080/video/test.htm*értékre,&gt; és cserélje &lt;le az IP-címet az IP-címére, és az alábbi példához hasonlóan kell megjelennie:
+4. Módosítsa az URL-címet a *http:// &lt; IP-cím &gt; : 8080/video/test.htm*értékre, és cserélje le az IP-címet az IP-címére &lt; &gt; , és az alábbi példához hasonlóan kell megjelennie:
 
     ![Tesztvideó URL-címe az alkalmazásátjáróban](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
    A 8080-es porton lévő figyelő továbbítja ezt a kérést a *video* backend-készletnek.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-## <a name="next-steps"></a>További lépések
+Ha már nincs rá szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-- [Végpontok közötti TLS engedélyezése az Azure Application Gateway](application-gateway-backend-ssl.md)
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"]
+> [Végpontok közötti TLS engedélyezése az Azure-Application Gateway](application-gateway-backend-ssl.md)

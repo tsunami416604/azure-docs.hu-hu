@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 824520e04bd4a98b1a00c8369848163a38bcf54b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908512"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206282"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -72,7 +72,7 @@ A külső felhasználók csak a "hozzárendelt" vagy "biztonsági" csoportokba v
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>A külső felhasználó nem kapott e-mailt a beváltáshoz
 
-A meghívás az INTERNETSZOLGÁLTATÓval vagy a levélszemét szűrővel ellenőrizze, hogy a következő címek engedélyezettek-e:Invites@microsoft.com
+A meghívás az INTERNETSZOLGÁLTATÓval vagy a levélszemét szűrővel ellenőrizze, hogy a következő címek engedélyezettek-e: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Megfigyelhető, hogy az egyéni üzenet nem jelenik meg a Meghívási üzenetekben időnként
 
@@ -93,7 +93,7 @@ A vendég fiókkal rendelkező felhasználók nem jelentkezhetnek be, és a köv
 
 A felhasználó rendelkezik Azure-beli felhasználói fiókkal, és olyan vírusos bérlő, aki el lett hagyva vagy nem felügyelt. Emellett a bérlő nem rendelkezik globális vagy vállalati rendszergazdákkal.
 
-A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a nem [felügyelt címtár átvétele rendszergazdaként Azure Active Directory-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)című témakört. Az internetre irányuló DNS-t a szóban forgó tartományi utótaghoz is el kell érni ahhoz, hogy közvetlen bizonyítékot szolgáltasson a névtér irányításához. Ha a bérlőt visszaküldi a felügyelt állapotba, beszéljen az ügyféllel, hogy a felhasználók és az ellenőrzött tartománynév a legjobb megoldás-e a szervezet számára.
+A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a nem  [felügyelt címtár átvétele rendszergazdaként Azure Active Directory-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)című témakört. Az internetre irányuló DNS-t a szóban forgó tartományi utótaghoz is el kell érni ahhoz, hogy közvetlen bizonyítékot szolgáltasson a névtér irányításához. Ha a bérlőt visszaküldi a felügyelt állapotba, beszéljen az ügyféllel, hogy a felhasználók és az ellenőrzött tartománynév a legjobb megoldás-e a szervezet számára.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Egy igény szerinti vagy "vírusos" Bérlővel rendelkező vendég felhasználó nem tudja alaphelyzetbe állítani a jelszavát
 
@@ -109,4 +109,4 @@ Az Amerikai Egyesült Államok kormányzati felhője keretében a B2B-együttmű
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Támogatás kérése B2B-együttműködéshez](/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md)
+[Támogatás kérése B2B-együttműködéshez](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)

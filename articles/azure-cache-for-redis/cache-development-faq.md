@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 1a0bcfadb79d6d2cb13c67b3ebadfcba97bc1fb9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010299"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211313"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure cache a Redis-fejlesztéssel kapcsolatos gyakori kérdések
 
@@ -44,7 +45,7 @@ Ha még nem rendelkezik Azure-fiókkal, a következőket teheti:
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Mi a StackExchange. Redis konfigurációs beállításai?
 A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyakori beállításról beszél. További információ a StackExchange. Redis beállításokról: [StackExchange. Redis konfiguráció](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Leírás | Javaslat |
+| ConfigurationOptions | Description | Javaslat |
 | --- | --- | --- |
 | AbortOnConnectFail |Ha igaz értékre van állítva, a kapcsolat hálózati hiba után nem fog újracsatlakozni. |Állítsa hamis értékre, és hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik. |
 | ConnectRetry |A kapcsolódási kísérletek megismétlésének száma a kezdeti csatlakozás során. |Útmutatásért tekintse meg az alábbi megjegyzéseket. |
@@ -125,7 +126,7 @@ Igen, ha a Redis-hez készült Azure cache-t PHP-munkamenet-gyorsítótárként 
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Ha a kulcs nem kódolt URL-cím, a következőhöz hasonló üzenet jelenhet meg:`Failed to parse session.save_path`
+> Ha a kulcs nem kódolt URL-cím, a következőhöz hasonló üzenet jelenhet meg: `Failed to parse session.save_path`
 >
 
 További információ az Azure cache Redis való használatáról a PhpRedis-ügyféllel PHP-munkamenet-gyorsítótárként: [php-munkamenet kezelője](https://github.com/phpredis/phpredis#php-session-handler).
@@ -139,6 +140,6 @@ A Redis-adatbázisok csak az azonos Redis-példányon belüli adatmennyiségek l
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [Az Azure cache Redis-ről – gyakori kérdések](cache-faq.md).

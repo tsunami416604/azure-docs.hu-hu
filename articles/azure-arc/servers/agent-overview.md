@@ -1,18 +1,18 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
-description: Ez a cikk részletes áttekintést nyújt az Azure arc for Servers (előzetes verzió) ügynökről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
+description: Ez a cikk részletes áttekintést nyújt az Azure arc használatára képes kiszolgálók (előzetes verzió) ügynökről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121833"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212985"
 ---
-# <a name="overview-of-azure-arc-for-servers-preview-agent"></a>Az Azure arc for Servers (előzetes verzió) ügynökének áttekintése
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) ügynökének áttekintése
 
-Az Azure arc for Servers (előzetes verzió) csatlakoztatott gépi ügynök lehetővé teszi, hogy felügyelje az Azure-on kívül üzemeltetett Windows-és Linux-gépeket a vállalati hálózaton vagy más felhőalapú szolgáltatón. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint a különböző üzembe helyezési módszerekről.
+Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynök lehetővé teszi az Azure-on kívül üzemeltetett Windows-és Linux-gépek felügyeletét a vállalati hálózaton vagy más felhőalapú szolgáltatón. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint a különböző üzembe helyezési módszerekről.
 
 ## <a name="agent-component-details"></a>Ügynök-összetevő részletei
 
@@ -65,7 +65,7 @@ A Windows és a Linux operációs rendszer következő verziói hivatalosan tám
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
 
-Mielőtt a gépeket az Azure arc for Servers (előzetes verzió) értékre konfigurálja, tekintse át a Azure Resource Manager [előfizetési korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) és az [erőforráscsoport korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , hogy megtervezze a csatlakoztatni kívánt gépek számát.
+Mielőtt a gépeket az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió) konfigurálja, tekintse át a Azure Resource Manager [előfizetési korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) és az [erőforráscsoport korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , hogy megtervezze a csatlakoztatni kívánt gépek számát.
 
 ### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1,2 protokoll
 
@@ -76,7 +76,7 @@ Az Azure-ba irányuló adatátvitel biztonságának biztosítása érdekében ha
 |Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához. | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
 | Windows Server 2012 R2 és újabb | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings)használja.|
 
-### <a name="networking-configuration"></a>Hálózati konfiguráció
+### <a name="networking-configuration"></a>Hálózatkezelési konfiguráció
 
 A Linux és a Windows rendszerhez csatlakoztatott gépi ügynök a 443-as TCP-porton keresztül kommunikál az Azure-beli ív felé. Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, tekintse át az alábbi követelményeket a hálózati konfigurációs követelmények megismeréséhez.
 
@@ -89,7 +89,7 @@ Szolgáltatás címkéi:
 
 URLs
 
-| Ügynök erőforrása | Leírás |
+| Ügynök erőforrása | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -105,7 +105,7 @@ Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-cím
 
 ### <a name="register-azure-resource-providers"></a>Azure-erőforrás-szolgáltatók regisztrálása
 
-Az Azure arc for Servers (előzetes verzió) az előfizetés alábbi Azure-erőforrás-szolgáltatói függ a szolgáltatás használatához:
+Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) az előfizetés alábbi Azure-erőforrás-szolgáltatói alapján használhatók a szolgáltatás használatához:
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**
@@ -155,7 +155,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Leírás |
+    |Mappa |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |%ProgramData%\AzureConnectedMachineAgent |Az ügynök konfigurációs fájljait tartalmazza.|
@@ -167,21 +167,21 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök telepítése során a következő Windows-szolgáltatások jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |A kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, a vendég házirend megvalósítására szolgáló kód.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Name (Név) |Alapértelmezett érték |Leírás |
+    |Name |Alapértelmezett érték |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Leírás |
+    |Napló |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -206,7 +206,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Leírás |
+    |Mappa |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |/opt/azcmagent/ |
@@ -218,14 +218,14 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során a következő démonok jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez az Azure-ban a kívánt State Configuration (DSC v2) kód, amely a vendég házirend megvalósítására szolgál.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Leírás |
+    |Napló |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |/var/opt/azcmagent/log/azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -236,7 +236,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name (Név) |Alapértelmezett érték |Leírás |
+    |Name |Alapértelmezett érték |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -246,6 +246,6 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha meg szeretné kezdeni a kiszolgálók Azure-ív kiértékelését (előzetes verzió), kövesse a [hibrid gépek az Azure-hoz való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
+Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-hoz való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).

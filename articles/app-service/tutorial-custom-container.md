@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
-ms.custom: mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c589ceecdd946b9c9ff17dd459654d066a1167e4
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084630"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212953"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
@@ -462,8 +462,8 @@ Azure App Service tároló üzembe helyezéséhez először létre kell hoznia e
     ```
 
     Cserélje le a következő értékeket:
-    - `<principal-id>`a szolgáltatás egyszerű azonosítója a `az webapp identity assign` parancsból
-    - `<registry-name>`a tároló-beállításjegyzék nevével
+    - `<principal-id>` a szolgáltatás egyszerű azonosítója a `az webapp identity assign` parancsból
+    - `<registry-name>` a tároló-beállításjegyzék nevével
     - `<subscription-id>`a parancsból beolvasott előfizetés-AZONOSÍTÓval `az account show`
 
 További információ ezekről az engedélyekről: [Mi az Azure szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview) és 
@@ -618,7 +618,7 @@ Az ebben a cikkben létrehozott erőforrások folyamatos költségeket okozhatna
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

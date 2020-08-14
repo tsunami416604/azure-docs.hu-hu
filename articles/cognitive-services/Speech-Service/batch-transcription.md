@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053916"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214044"
 ---
 # <a name="what-is-batch-transcription"></a>Mi a Batch-átírás?
 
@@ -63,7 +63,7 @@ Ha azt tervezi, hogy testreszabja a modelleket, kövesse az [akusztikai Testresz
 
 A Batch transzkripciós API a következő formátumokat támogatja:
 
-| Formátum | Codec | Sávszélességű | Mintavételezési arány                     |
+| Formátum | Codec | Bit/minta | Mintavételezési arány             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
 | MP3    | PCM   | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
@@ -333,7 +333,7 @@ A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezut
 
 Az előző hívásokkal kapcsolatos részletes információkért tekintse meg a [hencegő dokumentumot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). Az itt látható teljes minta esetében lépjen a [githubra](https://aka.ms/csspeech/samples) az `samples/batch` alkönyvtárban.
 
-Jegyezze fel a hang-és átírási állapot küldésének aszinkron beállítását. A létrehozott ügyfél egy .NET HTTP-ügyfél. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére, valamint az `GetTranscriptions` állapotok fogadására szolgáló metódusra. `PostTranscriptions`egy leírót ad vissza, és a `GetTranscriptions` használatával létrehoz egy leírót az átirat állapotának lekéréséhez.
+Jegyezze fel a hang-és átírási állapot küldésének aszinkron beállítását. A létrehozott ügyfél egy .NET HTTP-ügyfél. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére, valamint az `GetTranscriptions` állapotok fogadására szolgáló metódusra. `PostTranscriptions` egy leírót ad vissza, és a `GetTranscriptions` használatával létrehoz egy leírót az átirat állapotának lekéréséhez.
 
 Az aktuális mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt használja a fájl vagy fájlok átírásához. A modell megadásához ugyanezt a módszert kell átadni az egyéni modellhez tartozó modell-referenciára.
 
@@ -344,6 +344,6 @@ Az aktuális mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodel
 
 A mintát a `samples/batch` [GitHub-minta adattárában](https://aka.ms/csspeech/samples)található könyvtárban találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Beszéd a Text V3 API-hoz – dokumentáció](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

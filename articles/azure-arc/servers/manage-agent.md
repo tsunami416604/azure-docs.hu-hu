@@ -1,18 +1,18 @@
 ---
-title: Az Azure arc for Servers (előzetes verzió) ügynökének kezelése
-description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában a kiszolgálók csatlakoztatott számítógép-ügynökének Azure-ív életciklusa során fog elvégezni.
+title: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) ügynökének kezelése
+description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott számítógép-ügynök életciklusa során fog elvégezni.
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121289"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213126"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
-Az Azure arc for Servers (előzetes verzió) csatlakoztatott gépi ügynök Windows vagy Linux rendszerre való kezdeti üzembe helyezését követően újra kell konfigurálnia az ügynököt, frissítenie vagy eltávolítania a számítógépről, ha elérte a nyugdíjazási szakaszt az életciklusában. Ezeket a rutin karbantartási feladatokat manuálisan vagy Automation használatával egyszerűen kezelheti, ami csökkenti a működési hibákat és a költségeket is.
+Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) Windows vagy Linux rendszerhez csatlakoztatott gépi ügynökének kezdeti üzembe helyezését követően újra kell konfigurálnia az ügynököt, frissítenie vagy eltávolítania a számítógépről, ha elérte a nyugdíjazási szakaszt az életciklusában. Ezeket a rutin karbantartási feladatokat manuálisan vagy Automation használatával egyszerűen kezelheti, ami csökkenti a működési hibákat és a költségeket is.
 
 ## <a name="upgrading-agent"></a>Ügynök frissítése
 
@@ -120,7 +120,7 @@ A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például
 
 ## <a name="about-the-azcmagent-tool"></a>Tudnivalók a Azcmagent eszközről
 
-A Azcmagent eszköz (Azcmagent.exe) segítségével konfigurálható az Azure arc for Servers (előzetes verzió) csatlakoztatott gépi ügynök a telepítés során, vagy az ügynök kezdeti konfigurációját a telepítés után módosíthatja. A Azcmagent.exe parancssori paramétereket biztosít az ügynök testreszabásához és az állapotának megtekintéséhez:
+A Azcmagent eszköz (Azcmagent.exe) az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynökének konfigurálására szolgál a telepítés során, vagy az ügynök kezdeti konfigurációját a telepítés után módosíthatja. A Azcmagent.exe parancssori paramétereket biztosít az ügynök testreszabásához és az állapotának megtekintéséhez:
 
 * **Kapcsolódás** – a gép és az Azure-ív összekapcsolásához
 
@@ -136,7 +136,7 @@ A Azcmagent eszköz (Azcmagent.exe) segítségével konfigurálható az Azure ar
 
 * **-v vagy--verbose** – részletes naplózás engedélyezése
 
-A **csatlakozást**, a **leválasztást**és az **újracsatlakozást** manuálisan is végrehajthatja interaktív módon, vagy automatizálhatja ugyanazzal a szolgáltatással, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatának](../../active-directory/develop/access-tokens.md)használatával használ. Ha nem használ egyszerű szolgáltatásnevet a számítógép Azure arc for Servers (előzetes verzió) szolgáltatáshoz való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
+A **csatlakozást**, a **leválasztást**és az **újracsatlakozást** manuálisan is végrehajthatja interaktív módon, vagy automatizálhatja ugyanazzal a szolgáltatással, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatának](../../active-directory/develop/access-tokens.md)használatával használ. Ha nem használ egyszerű szolgáltatásnevet a gép Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió) való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
 
 >[!NOTE]
 >A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
@@ -145,7 +145,7 @@ A **csatlakozást**, a **leválasztást**és az **újracsatlakozást** manuális
 
 Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet az Azure-ban hozza létre. Az erőforrás a megadott előfizetésben és erőforráscsoporthoz van megadva, és a gép adatait a beállítás által megadott Azure-régióban tárolja a rendszer `--location` . Ha nincs megadva, az alapértelmezett erőforrás neve a gép állomásneve.
 
-A rendszer a gép rendszerszintű identitásához tartozó tanúsítványt letölti és helyileg tárolja. A lépés elvégzése után az Azure Connected Machine Metadata Service és a vendég konfigurációs ügynök megkezdi a szinkronizálást az Azure arc for Servers (előzetes verzió) szolgáltatással.
+A rendszer a gép rendszerszintű identitásához tartozó tanúsítványt letölti és helyileg tárolja. A lépés elvégzése után az Azure Connected Machine Metadata Service és a vendég konfigurációs ügynök megkezdi a szinkronizálást az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió).
 
 Egy egyszerű szolgáltatásnév használatával történő kapcsolódáshoz futtassa a következő parancsot:
 
@@ -161,7 +161,7 @@ Ha a rendszergazda jogú bejelentkezett hitelesítő adataival szeretne csatlako
 
 ### <a name="disconnect"></a>Leválasztás
 
-Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet jelképezi az Azure-ban. Nem törli az ügynököt a gépről, ezt külön lépésként kell elvégezni. Ha a gép le van választva, ha újra szeretné regisztrálni az Azure arc for Servers szolgáltatásban (előzetes verzió), akkor az `azcmagent connect` Azure-ban létrehoz egy új erőforrást.
+Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet jelképezi az Azure-ban. Nem törli az ügynököt a gépről, ezt külön lépésként kell elvégezni. Ha a gép le van választva, ha újra szeretné regisztrálni az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió), akkor a rendszer az `azcmagent connect` Azure-ban létrehoz egy új erőforrást.
 
 Az egyszerű szolgáltatásnév használatával történő leválasztáshoz futtassa a következő parancsot:
 
@@ -180,7 +180,7 @@ Az emelt szintű bejelentkezett hitelesítő adatokkal (interaktív) való levá
 > [!WARNING]
 > A `reconnect` parancs elavult, és nem használható. A parancs el lesz távolítva egy jövőbeli ügynök-kiadásban, és a meglévő ügynökök nem tudják befejezni az újrakapcsolódási kérelmet. Ehelyett [válassza le](#disconnect) a gépet, majd [csatlakoztassa](#connect) újra.
 
-Ez a paraméter újracsatlakoztatja a már regisztrált vagy csatlakoztatott gépet az Azure arc for Servers (előzetes verzió) szolgáltatáshoz. Erre akkor lehet szükség, ha a gép ki van kapcsolva legalább 45 nappal, hogy a tanúsítványa lejár. Ez a paraméter a megadott hitelesítési beállítások használatával kéri le az új hitelesítő adatokat, amelyek megfelelnek a gépet jelképező Azure Resource Manager erőforrásnak.
+Ez a paraméter újracsatlakoztatja a már regisztrált vagy csatlakoztatott gépet az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió). Erre akkor lehet szükség, ha a gép ki van kapcsolva legalább 45 nappal, hogy a tanúsítványa lejár. Ez a paraméter a megadott hitelesítési beállítások használatával kéri le az új hitelesítő adatokat, amelyek megfelelnek a gépet jelképező Azure Resource Manager erőforrásnak.
 
 Ehhez a parancshoz magasabb jogosultságok szükségesek, mint az Azure-beli [csatlakoztatott gép](agent-overview.md#required-permissions) bevezetési szerepköre.
 
@@ -198,7 +198,7 @@ Ha újra szeretne csatlakozni a rendszergazda jogú bejelentkezett hitelesítő 
 
 ## <a name="remove-the-agent"></a>Az ügynök eltávolítása
 
-Az alábbi módszerek egyikével távolíthatja el a Windows vagy Linux rendszerű csatlakoztatott gépi ügynököt a gépről. Az ügynök eltávolításakor a rendszer nem törli a gép regisztrációját a kiszolgálókon (előzetes verzió), ez egy külön folyamat, amelyet akkor hajt végre, ha már nincs szüksége a gép felügyeletére az Azure-ban.
+Az alábbi módszerek egyikével távolíthatja el a Windows vagy Linux rendszerű csatlakoztatott gépi ügynököt a gépről. Az ügynök eltávolítása nem törli a gép regisztrációját az arc-kompatibilis kiszolgálókkal (előzetes verzió), ez egy külön folyamat, amelyet akkor kell végrehajtania, ha már nincs szüksége a gép felügyeletére az Azure-ban.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
@@ -267,9 +267,9 @@ A Linux-ügynök eltávolításához a használni kívánt parancs a Linux oper�
 
 ## <a name="unregister-machine"></a>Számítógép regisztrációjának törlése
 
-Ha azt tervezi, hogy leállítja a gép felügyeletét az Azure-ban támogató szolgáltatásokkal, hajtsa végre a következő lépéseket a gép az arc for Servers (előzetes verzió) kiszolgálóval való regisztrációjának megszüntetéséhez. Ezeket a lépéseket megelőzően vagy azt követően is elvégezheti, hogy eltávolította a csatlakoztatott gépi ügynököt a gépről.
+Ha azt tervezi, hogy leállítja a gép felügyeletét az Azure-ban támogató szolgáltatásokkal, hajtsa végre a következő lépéseket a gép regisztrációjának megszüntetéséhez az arc-kompatibilis kiszolgálókkal (előzetes verzió). Ezeket a lépéseket megelőzően vagy azt követően is elvégezheti, hogy eltávolította a csatlakoztatott gépi ügynököt a gépről.
 
-1. Nyissa meg az Azure arc for Servers (előzetes verzió) lehetőséget a [Azure Portal](https://aka.ms/hybridmachineportal).
+1. Nyissa meg az Azure arc-kompatibilis kiszolgálókat (előzetes verzió) a [Azure Portal](https://aka.ms/hybridmachineportal).
 
 2. Válassza ki a gépet a listából, válassza a három pontot (**..**.), majd válassza a **Törlés**lehetőséget.
 
@@ -313,7 +313,7 @@ Ha úgy szeretné konfigurálni az ügynököt, hogy a proxykiszolgáló haszná
 sudo azcmagent_proxy remove
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 

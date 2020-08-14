@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e2226f70ed3318bb370f0afee003fd9f91153a45
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167868"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207221"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -28,7 +28,18 @@ A Computer Vision [READ API](https://westcentralus.dev.cognitive.microsoft.com/d
 
 ![Hogyan alakítja át az OCR a képeket és a dokumentumokat strukturált kimenetre a kinyert szöveggel](./Images/how-ocr-works.svg)
 
-Az olvasási API két művelet – **olvasás** és **olvasási eredmények**– használatával biztosít OCR-képességeket.
+## <a name="input-requirements"></a>Bemeneti követelmények
+Az olvasási API **olvasási** művelete a képeket és a dokumentumokat veszi fel bemenetként. A követelmények a következők:
+
+* Támogatott fájlformátumok: JPEG, PNG, BMP, PDF és TIFF
+* A PDF és a TIFF esetében akár 2000 oldal is feldolgozható. Ingyenes szintű előfizetők esetében csak az első két oldal lesz feldolgozva.
+* A fájl méretének 50 MB-nál kisebbnek kell lennie, és legalább 50 x 50 képpont és legfeljebb 10000 x 10000 képpont méretűnek kell lennie.
+* A PDF-méreteknek legfeljebb 17 x 17 hüvelyknek kell lenniük, amely a jogi vagy az A3-as papírméretnek felel meg, és kisebb.
+
+> [!NOTE]
+> **Nyelvi bevitel** 
+>
+> Az [olvasási művelethez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) választható lekérdezési paraméter tartozik a nyelvhez. Ez a dokumentum szövegének BCP-47 nyelvi kódja. Az olvasás támogatja az automatikus nyelvi azonosítást és a többnyelvű dokumentumokat, ezért csak akkor adjon meg egy nyelvi kódot, ha a dokumentumot adott nyelven szeretné feldolgozni.
 
 ## <a name="the-read-operation"></a>Az olvasási művelet
 
@@ -36,7 +47,7 @@ Az [olvasási művelet](https://westcentralus.dev.cognitive.microsoft.com/docs/s
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
-|Művelet – hely | https://cognitiveservice/vision/v3.0-preview/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f |
+|Művelet – hely | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-read-results-operation"></a>Az olvasási eredmények lekérése művelet
 
@@ -112,19 +123,6 @@ Tekintse meg a sikeres JSON-válasz következő példáját:
 
 Kövesse a [nyomtatott és a kézzel írt szöveg kinyerése](./QuickStarts/CSharp-hand-text.md) az OCR a C# és a REST API használatával történő megvalósításához című témakört.
 
-## <a name="input-requirements"></a>Bemeneti követelmények
-
-A bemeneti képek és dokumentumok a következő követelményekkel rendelkeznek:
-* Támogatott fájlformátumok: JPEG, PNG, BMP, PDF és TIFF
-* A PDF és a TIFF esetében akár 2000 oldal is feldolgozható. Ingyenes szintű előfizetők esetében csak az első két oldal lesz feldolgozva.
-* A fájl méretének 50 MB-nál kisebbnek kell lennie, és legalább 50 x 50 képpont és legfeljebb 10000 x 10000 képpont méretűnek kell lennie.
-* A PDF-méreteknek legfeljebb 17 x 17 hüvelyknek kell lenniük, amely a jogi vagy az A3-as papírméretnek felel meg, és kisebb.
-
-> [!NOTE]
-> **Nyelvi bevitel** 
->
-> Az [olvasási művelethez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) választható lekérdezési paraméter tartozik a nyelvhez. Ez a dokumentum szövegének BCP-47 nyelvi kódja. Az olvasás támogatja az automatikus nyelvi azonosítást és a többnyelvű dokumentumokat, ezért csak akkor adjon meg egy nyelvi kódot, ha a dokumentumot adott nyelven szeretné feldolgozni.
-
 ## <a name="language-support"></a>Nyelvi támogatás
 
 ### <a name="printed-text"></a>Nyomtatott szöveg
@@ -185,7 +183,10 @@ Az [OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815
 
 Akárcsak az összes kognitív szolgáltatás esetében, az olvasási/OCR szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a [Microsoft adatvédelmi Központjának](https://www.microsoft.com/trust-center/product-overview) Cognitive Services lapját.
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> A vison 2,0 RecognizeText művelet folyamatban van a jelen cikkben ismertetett új olvasási API Javához. A meglévő ügyfeleknek [át kell térniük az olvasási műveletek használatára](upgrade-api-versions.md).
+
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási 3,0 Rest APIról](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
 - Ismerkedjen meg az [olvasási 3,1 nyilvános előzetes](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) verziójával REST API az egyszerűsített kínai támogatásával.

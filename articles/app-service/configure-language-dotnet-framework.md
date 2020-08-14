@@ -2,14 +2,15 @@
 title: ASP.NET-alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhat ASP.NET alkalmazást Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080147"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211861"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>ASP.NET-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -104,7 +105,7 @@ Trace.TraceInformation("GET /Home/Index"); // Information trace
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md)

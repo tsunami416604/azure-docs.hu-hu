@@ -3,14 +3,15 @@ title: Azure Functions-kötések Mobile Apps
 description: Ismerje meg, hogyan használhatók az Azure Mobile Apps-kötések a Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506332"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212233"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions-kötések Mobile Apps 
 
@@ -134,7 +135,7 @@ További információ a konfigurálható attribútumok tulajdonságairól: [a k�
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `MobileTable` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa**| n.a. | "MobileTable" értékre kell állítani|
 | **irányba**| n.a. |"In" értékre kell állítani|
@@ -292,7 +293,7 @@ Teljes példa: [output-C# példa](#output---c-example).
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `MobileTable` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa**| n.a. | "MobileTable" értékre kell állítani|
 | **irányba**| n.a. |"Out" értékre kell állítani|
@@ -310,9 +311,9 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 A C#-parancsfájlok függvények esetében a `out object` kimeneti rekord eléréséhez használja a Type nevű kimeneti paramétert. A C# osztályok könyvtáraiban az `MobileTable` attribútum a következő típusok bármelyikével használható:
 
-* `ICollector<T>`vagy `IAsyncCollector<T>` , ahol vagy `T` `JObject` bármilyen típusú `public string Id` tulajdonsággal rendelkezik.
+* `ICollector<T>` vagy `IAsyncCollector<T>` , ahol vagy `T` `JObject` bármilyen típusú `public string Id` tulajdonsággal rendelkezik.
 * `out JObject`
-* `out T`vagy `out T[]` , ahol `T` bármilyen típusú `public string Id` tulajdonsággal rendelkezik.
+* `out T` vagy `out T[]` , ahol `T` bármilyen típusú `public string Id` tulajdonsággal rendelkezik.
 
 Node.js függvényekben a használatával `context.bindings.<name>` férhet hozzá a kimeneti rekordhoz.
 

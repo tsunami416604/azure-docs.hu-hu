@@ -3,13 +3,14 @@ title: PowerShell fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell használatával.
 author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506128"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207407"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -113,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding`a a következőhöz megadott érték alapján viselkedik `-Name` :
+`Push-OutputBinding` a a következőhöz megadott érték alapján viselkedik `-Name` :
 
 * Ha a megadott név nem oldható fel érvényes kimeneti kötésre, akkor hiba történik.
 
@@ -121,11 +122,11 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * Ha a kimeneti kötés csak egyszeres értéket fogad el, akkor `Push-OutputBinding` a második alkalommal hibát jelez.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`Szintaxis
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` Szintaxis
 
 A következő érvényes paraméterek használhatók a híváshoz `Push-OutputBinding` :
 
-| Név | Típus | Pozíció | Leírás |
+| Név | Típus | Pozíció | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sztring | 1 | A beállítani kívánt kimeneti kötés neve. |
 | **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a rendszer a folyamat ByValue fogad el. |
@@ -175,7 +176,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Leküldéses OutputBinding – példa: várólista kimeneti kötése
 
-`Push-OutputBinding`az adatokat kimeneti kötésekre küldi, például egy [Azure üzenetsor-tároló kimeneti kötését](functions-bindings-storage-queue-output.md). A következő példában a várólistára írt üzenet "output #1" értékkel rendelkezik:
+`Push-OutputBinding` az adatokat kimeneti kötésekre küldi, például egy [Azure üzenetsor-tároló kimeneti kötését](functions-bindings-storage-queue-output.md). A következő példában a várólistára írt üzenet "output #1" értékkel rendelkezik:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -195,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 A várólistába íráskor az üzenet a következő négy értéket tartalmazza: "output #1," output #2 "," output #3 "és" output #4 ".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`parancsmag
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` parancsmag
 
 A `Get-OutputBinding` parancsmag segítségével beolvashatja a kimeneti kötésekhez jelenleg beállított értékeket. Ez a parancsmag egy olyan szórótábla kérdez le, amely tartalmazza a kimeneti kötések nevét a megfelelő értékekkel. 
 
@@ -212,7 +213,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding`egy nevű paramétert is tartalmaz `-Name` , amely a visszaadott kötés szűrésére használható, ahogy az alábbi példában is látható:
+`Get-OutputBinding` egy nevű paramétert is tartalmaz `-Name` , amely a visszaadott kötés szűrésére használható, ahogy az alábbi példában is látható:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -296,14 +297,14 @@ A parancsfájlba átadott kérelem-objektum típusa a `HttpRequestContext` köve
 
 | Tulajdonság  | Leírás                                                    | Típus                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. `Body`a a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | object |
+| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. `Body` a a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | object |
 | **`Headers`** | A kérések fejléceit tartalmazó szótár.                | Szótár<karakterlánc, karakterlánc><sup>*</sup> |
 | **`Method`** | A kérelem HTTP-metódusa.                                | sztring                    |
 | **`Params`**  | Egy objektum, amely a kérelem útválasztási paramétereit tartalmazza. | Szótár<karakterlánc, karakterlánc><sup>*</sup> |
 | **`Query`** | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  | Szótár<karakterlánc, karakterlánc><sup>*</sup> |
 | **`Url`** | A kérelem URL-címe.                                        | sztring                    |
 
-<sup>*</sup>Az összes `Dictionary<string,string>` kulcs megkülönbözteti a kis-és nagybetűket.
+<sup>*</sup> Az összes `Dictionary<string,string>` kulcs megkülönbözteti a kis-és nagybetűket.
 
 #### <a name="response-object"></a>Válaszobjektum
 
@@ -394,7 +395,7 @@ Az aktuális verziót bármely függvényből kinyomtatva láthatja `$PSVersionT
 
 ## <a name="dependency-management"></a>Függőségkezelés
 
-A functions lehetővé teszi a [PowerShell-Galéria](https://www.powershellgallery.com) kihasználása a függőségek kezeléséhez. Ha engedélyezve van a függőségek kezelése, a rendszer a requirements.psd1 fájlt használja a szükséges modulok automatikus letöltéséhez. Ezt a viselkedést úgy engedélyezheti, ha a `managedDependency` tulajdonságot a `true` [fájlhost.js](functions-host-json.md)gyökérkönyvtárában állítja be, ahogy az alábbi példában is látható:
+A functions lehetővé teszi a [PowerShell-Galéria](https://www.powershellgallery.com) kihasználása a függőségek kezeléséhez. Ha engedélyezve van a függőségek kezelése, a rendszer a requirements.psd1 fájlt használja a szükséges modulok automatikus letöltéséhez. Ezt a viselkedést úgy engedélyezheti, ha a `managedDependency` tulajdonságot a `true` [ fájlhost.js](functions-host-json.md)gyökérkönyvtárában állítja be, ahogy az alábbi példában is látható:
 
 ```json
 {
@@ -420,11 +421,11 @@ Ha frissíti a requirements.psd1 fájlt, a rendszer újraindítást követően t
 
 A következő Alkalmazásbeállítások segítségével megváltoztathatja a felügyelt függőségek letöltésének és telepítésének módját. Az alkalmazás frissítése a-n belül elindul `MDMaxBackgroundUpgradePeriod` , és a frissítési folyamat körülbelül a-ban fejeződik be `MDNewSnapshotCheckPeriod` .
 
-| függvényalkalmazás beállítás              | Alapértelmezett érték             | Leírás                                         |
+| függvényalkalmazás beállítás              | Alapértelmezett érték             | Description                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 nap)     | Minden PowerShell-munkavégző folyamat kezdeményezi a modul frissítéseinek ellenőrzését a PowerShell-galéria a folyamat indításakor, majd minden `MDMaxBackgroundUpgradePeriod` után. Ha egy új modul verziója elérhető a PowerShell-galériaban, a rendszer telepíti a fájlrendszerre, és elérhetővé teszi őket a PowerShell-feldolgozók számára. Ennek az értéknek a csökkentése lehetővé teszi, hogy a Function alkalmazás hamarabb lekérje a modul újabb verzióit, de az alkalmazás erőforrás-használatát is növeli (hálózati I/O-, CPU-és tárolási). Az érték növelése csökkenti az alkalmazás erőforrás-használatát, de az új modulok verzióinak az alkalmazásba való kézbesítése is késleltethető. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 óra)       | Miután telepítette az új modul-verziókat a fájlrendszerbe, minden PowerShell-munkavégző folyamatot újra kell indítani. A PowerShell-feldolgozók újraindítása hatással van az alkalmazás rendelkezésre állására, mivel ez megszakíthatja az aktuális függvény végrehajtását. Amíg az összes PowerShell-munkavégző folyamat újra nem indul, a függvény meghívása a régi vagy az új modul verzióját is használhatja. Az összes PowerShell-feldolgozó újraindítása a alkalmazáson belül `MDNewSnapshotCheckPeriod` . Az érték növelésével csökken a megszakítások gyakorisága, de az is előfordulhat, hogy a függvény meghívásakor a régi vagy az új modul nem determinisztikus módon verzióját használja. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`(1 nap)     | A gyakori munkavégző újraindítások esetén a modul frissítéseinek figyelése nem történik meg, ha bármelyik feldolgozó már kezdeményezte a legutóbbi ellenőrzést `MDMinBackgroundUpgradePeriod` . |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 nap)     | Minden PowerShell-munkavégző folyamat kezdeményezi a modul frissítéseinek ellenőrzését a PowerShell-galéria a folyamat indításakor, majd minden `MDMaxBackgroundUpgradePeriod` után. Ha egy új modul verziója elérhető a PowerShell-galériaban, a rendszer telepíti a fájlrendszerre, és elérhetővé teszi őket a PowerShell-feldolgozók számára. Ennek az értéknek a csökkentése lehetővé teszi, hogy a Function alkalmazás hamarabb lekérje a modul újabb verzióit, de az alkalmazás erőforrás-használatát is növeli (hálózati I/O-, CPU-és tárolási). Az érték növelése csökkenti az alkalmazás erőforrás-használatát, de az új modulok verzióinak az alkalmazásba való kézbesítése is késleltethető. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 óra)       | Miután telepítette az új modul-verziókat a fájlrendszerbe, minden PowerShell-munkavégző folyamatot újra kell indítani. A PowerShell-feldolgozók újraindítása hatással van az alkalmazás rendelkezésre állására, mivel ez megszakíthatja az aktuális függvény végrehajtását. Amíg az összes PowerShell-munkavégző folyamat újra nem indul, a függvény meghívása a régi vagy az új modul verzióját is használhatja. Az összes PowerShell-feldolgozó újraindítása a alkalmazáson belül `MDNewSnapshotCheckPeriod` . Az érték növelésével csökken a megszakítások gyakorisága, de az is előfordulhat, hogy a függvény meghívásakor a régi vagy az új modul nem determinisztikus módon verzióját használja. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 nap)     | A gyakori munkavégző újraindítások esetén a modul frissítéseinek figyelése nem történik meg, ha bármelyik feldolgozó már kezdeményezte a legutóbbi ellenőrzést `MDMinBackgroundUpgradePeriod` . |
 
 A saját egyéni moduljainak kihasználása kicsit eltér a megszokott módon.
 
@@ -517,7 +518,7 @@ A Azure PowerShell egyes _folyamat-szintű_ kontextusokat és állapotot haszná
 
 Az Azure PowerShell-ben óriási érték van, mivel néhány művelet jelentős időt vehet igénybe. Azonban körültekintően kell eljárnia. Ha azt gyanítja, hogy a verseny feltételét tapasztalja, állítsa a PSWorkerInProcConcurrencyUpperBound az alkalmazásra, `1` és Ehelyett használja a [nyelvi feldolgozói folyamat szintjének elkülönítését](functions-app-settings.md#functions_worker_process_count) a párhuzamossághoz.
 
-## <a name="configure-function-scriptfile"></a>Függvény konfigurálása`scriptFile`
+## <a name="configure-function-scriptfile"></a>Függvény konfigurálása `scriptFile`
 
 Alapértelmezés szerint a rendszer egy PowerShell-függvényt hajt végre `run.ps1` , egy olyan fájlt, amely ugyanazt a szülő könyvtárat osztja meg a megfelelővel `function.json` .
 
@@ -595,7 +596,7 @@ A PowerShell-függvények használatakor vegye figyelembe az alábbi részekben 
 
 Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-scale.md#consumption-plan)való fejlesztésekor a hideg indítás a valóság. A *hűtőházi kezdés* azt az időtartamot jelenti, ameddig a Function alkalmazásnak futnia kell a kérelem feldolgozásához. A hidegindító folyamat gyakrabban fordul elő a fogyasztási tervben, mert a Function alkalmazás leáll az inaktivitási időszakok során.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Köteg modulok használata helyett`Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Köteg modulok használata helyett `Install-Module`
 
 A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
 

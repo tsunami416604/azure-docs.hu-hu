@@ -1,24 +1,24 @@
 ---
-title: Virtuálisgép-bővítmények kezelése az Azure arc-kiszolgálókkal
-description: Az Azure arc for Servers (előzetes verzió) képes felügyelni a virtuálisgép-bővítmények telepítését, amelyek a telepítés utáni konfigurációs és automatizálási feladatokat biztosítják a nem Azure-beli virtuális gépekhez.
+title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
+description: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) segítségével kezelhetők a virtuálisgép-bővítmények központi telepítése, amelyek a nem Azure-beli virtuális gépeken üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121306"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213122"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Virtuálisgép-bővítmények kezelése az Azure arc for Servers szolgáltatással (előzetes verzió)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
 
 A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha egy virtuális gépen például szoftver telepítésére, vírusvédelemre vagy egy szkript futtatására van szükség, erre felhasználható egy virtuálisgép-bővítmény.
 
-Az Azure arc for Servers (előzetes verzió) szolgáltatással Azure virtuálisgép-bővítményeket telepíthet a nem Azure-beli Windows-és Linux-alapú virtuális gépekre, így egyszerűbbé válik a helyszíni, peremhálózati és más felhőalapú környezetek kezelése a saját életciklusa során.
+Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) segítségével Azure virtuálisgép-bővítményeket telepíthet a nem Azure-beli Windows-és Linux-alapú virtuális gépekre, így egyszerűbbé válik a helyszíni, peremhálózati és más felhőalapú környezetek kezelése a saját életciklusa során.
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
-Az Azure arc for Servers (előzetes verzió) virtuálisgép-bővítmények támogatása a következő főbb előnyöket nyújtja:
+Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) virtuálisgép-bővítmények támogatása a következő főbb előnyöket nyújtja:
 
 * [Azure Automation állapot konfigurációjának](../../automation/automation-dsc-overview.md) használatával központilag tárolhatja a konfigurációkat, és megtarthatja a DSC virtuálisgép-bővítményen keresztül engedélyezett hibrid csatlakoztatott gépek kívánt állapotát.
 
@@ -47,7 +47,7 @@ Ebben az előzetes verzióban a következő virtuálisgép-bővítményeket tám
 |Log Analytics-ügynök |Linux |Microsoft. EnterpriseCloud. monitoring |[A Linux rendszerhez készült virtuálisgép-bővítmény Log Analytics](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft függőségi ügynök | Linux |Microsoft.Compute | [Függőségi ügynök linuxos virtuálisgép-bővítménye](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-A virtuálisgép-bővítmények Azure Resource Manager-sablonokkal, a Azure Portal, Azure PowerShell illetve az arc for Servers (előzetes verzió) által felügyelt hibrid kiszolgálókon is futtathatók.
+A virtuálisgép-bővítmények Azure Resource Manager-sablonokkal, a Azure Portal, Azure PowerShell illetve az arc-kompatibilis kiszolgálók (előzetes verzió) által felügyelt hibrid kiszolgálókon is futtathatók.
 
 Ha többet szeretne megtudni az Azure-beli csatlakoztatott gépi ügynök csomagról és a bővítmény ügynök összetevőjéről, tekintse meg az [ügynök áttekintése](agent-overview.md#agent-component-details)című témakört.
 
@@ -98,7 +98,7 @@ A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók a 
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Az arc for Servers (előzetes verzió) által támogatott virtuálisgép-bővítmények segítségével a Azure PowerShell használatával telepítheti a támogatott virtuálisgép-bővítményt Linux vagy Windows rendszerű gépekre. Az alábbi példákban egy sablonfájl és egy, a sablonhoz adni kívánt minta értékekkel rendelkező Parameters fájl szerepel.
+A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Az arc-kompatibilis kiszolgálók (előzetes verzió) által támogatott virtuálisgép-bővítmények segítségével a Azure PowerShell használatával telepítheti a támogatott virtuálisgép-bővítményt Linux vagy Windows rendszerű gépekre. Az alábbi példákban egy sablonfájl és egy, a sablonhoz adni kívánt minta értékekkel rendelkező Parameters fájl szerepel.
 
 >[!NOTE]
 >Habár több bővítmény kötegelt feldolgozását és feldolgozását is elvégezheti, a rendszer sorosan telepíti őket. Az első bővítmény telepítésének befejezése után a rendszer a következő bővítmény telepítését kísérli meg.
@@ -223,7 +223,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 Az egyéni szkriptek bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri az egyéni szkriptek bővítményét, tekintse meg a [Windowshoz készült egyéni szkriptek bővítményét](../../virtual-machines/extensions/custom-script-windows.md) vagy a [Linuxhoz készült egyéni szkriptek bővítményét](../../virtual-machines/extensions/custom-script-linux.md). A bővítmény hibrid gépekkel való használata során több különböző jellemzővel is tisztában kell lennie:
 
-* Az Azure VM Custom script bővítménnyel rendelkező támogatott operációs rendszerek listája nem alkalmazható az Azure arc for Servers szolgáltatásra. [Itt](agent-overview.md#supported-operating-systems)találhatja meg a kiszolgálók számára támogatott OSS-t a kiszolgálókhoz.
+* Az Azure VM Custom script bővítménnyel rendelkező támogatott operációs rendszerek listája nem alkalmazható az Azure arc-kompatibilis kiszolgálókra. Az arc-kompatibilis kiszolgálókhoz támogatott OSs listája [itt](agent-overview.md#supported-operating-systems)található.
 
 * Az Azure Virtual Machine Scale Sets vagy klasszikus virtuális gépekre vonatkozó konfigurációs adatok nem alkalmazhatók.
 
@@ -379,7 +379,7 @@ Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsf
 
 A PowerShell DSC bővítmény használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri a PowerShell DSC-bővítményt, tekintse meg a [DSC-kezelő bővítményének áttekintése](../../virtual-machines/extensions/dsc-overview.md)című témakört. A bővítmény hibrid gépekkel való használata során több különböző jellemzővel is tisztában kell lennie:
 
-* Az Azure VM PowerShell DSC bővítménnyel rendelkező támogatott operációs rendszerek listája nem alkalmazható az Azure arc for Servers szolgáltatásra. [Itt](agent-overview.md#supported-operating-systems)találhatja meg a kiszolgálók számára támogatott OSS-t a kiszolgálókhoz.
+* Az Azure VM PowerShell DSC bővítménnyel rendelkező támogatott operációs rendszerek listája nem alkalmazható az Azure arc-kompatibilis kiszolgálókra. Az arc-kompatibilis kiszolgálókhoz támogatott OSs listája [itt](agent-overview.md#supported-operating-systems)található.
 
 * Ha a gépeken kívülről kell letöltenie egy parancsfájlt, és csak proxykiszolgálón keresztül tud kommunikálni, akkor [konfigurálnia kell a csatlakoztatott számítógép ügynököt](manage-agent.md#update-or-remove-proxy-settings) a proxykiszolgáló környezeti változójának beállításához.
 
@@ -721,7 +721,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 4. Tekintse meg a rendszernaplókat. Keresse meg azokat a műveleteket, amelyek esetleg zavart okozhattak a bővítménnyel, például egy olyan alkalmazás hosszú futású telepítését, amely kizárólagos csomagkezelő-hozzáférést igényelt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 

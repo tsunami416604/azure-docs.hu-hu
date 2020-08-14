@@ -4,38 +4,41 @@ description: Azure IoT Edge tanúsítvány használatával ellenőrzi az eszköz
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247013"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210596"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
 
 IoT Edge a tanúsítványokat a modulok és az alsóbb rétegbeli IoT eszközök használják az [IoT Edge hub](iot-edge-runtime.md#iot-edge-hub) Runtime modul identitásának és törvényességének ellenőrzéséhez. Ezek az ellenőrzések lehetővé teszik a TLS (Transport Layer Security) biztonságos kapcsolatot a futtatókörnyezet, a modulok és a IoT eszközök között. A IoT Hubhoz hasonlóan a IoT Edgenak biztonságos és titkosított kapcsolatra van szüksége a IoT alsóbb rétegbeli (vagy levél) eszközök és IoT Edge modulok esetében. A biztonságos TLS-kapcsolat létrehozásához az IoT Edge hub modul egy kiszolgálói tanúsítványláncot jeleníti meg az ügyfelek csatlakoztatásához, hogy azok személyazonosságát ellenőrizzék.
 
+>[!NOTE]
+>Ez a cikk azokat a tanúsítványokat ismerteti, amelyek a IoT Edge eszköz különböző összetevői és egy IoT Edge eszköz és a levél eszközei közötti kapcsolatok biztonságossá tételére szolgálnak. Tanúsítványokat is használhat a IoT Edge-eszköz IoT Hub való hitelesítéséhez. Ezek a hitelesítési tanúsítványok eltérnek, és nem jelennek meg ebben a cikkben. Az eszköz tanúsítványokkal történő hitelesítésével kapcsolatos további információkért lásd: [IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványokkal](how-to-auto-provision-x509-certs.md).
+
 Ez a cikk azt ismerteti, hogy IoT Edge tanúsítványok hogyan működhetnek üzemi, fejlesztési és tesztelési helyzetekben. Míg a parancsfájlok különbözőek (PowerShell vagy bash), a fogalmak ugyanazok, mint a Linux és a Windows között.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-tanúsítványok
 
-A gyártók általában nem a IoT Edge eszköz végfelhasználói. Előfordulhat, hogy az egyetlen kapcsolat a kettő között, amikor a végfelhasználó vagy a kezelő a gyártó által készített általános eszközt vásárol. Máskor a gyártó szerződés szerint működik, hogy egyéni eszközt hozzon létre a kezelőhöz. A IoT Edge-tanúsítvány kialakítása mindkét forgatókönyvet megkísérli figyelembe venni.
-
-> [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát. Ez a korlátozás az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, a megbízhatósági csomagban található összes tanúsítványra, valamint az X. 509 létesítési módszerekhez használt eszköz-azonosító tanúsítványokra vonatkozik.
+A tanúsítványok IoT Edge eszközön való beállításának két gyakori forgatókönyve van. Előfordulhat, hogy egy eszköz végfelhasználója vagy kezelője vásárol egy, a gyártó által készített általános eszközt, majd maga kezeli a tanúsítványokat. Máskor a gyártó úgy működik, hogy létrehoz egy egyéni eszközt a kezelőhöz, és az eszköz kiosztása előtt aláír néhány kezdeti tanúsítványt. A IoT Edge-tanúsítvány kialakítása mindkét forgatókönyvet megkísérli figyelembe venni.
 
 Az alábbi ábra a tanúsítványok IoT Edge használatát mutatja be. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa között nulla, egy vagy több köztes aláíró tanúsítvány lehet az érintett entitások számától függően. Itt egy esetet mutatunk be.
 
 ![Jellemző tanúsítványok kapcsolatainak diagramja](./media/iot-edge-certs/edgeCerts-general.png)
 
+> [!NOTE]
+> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát. Ez a korlátozás az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, a megbízhatósági csomagban található összes tanúsítványra, valamint az X. 509 létesítési módszerekhez használt eszköz-azonosító tanúsítványokra vonatkozik.
+
 ### <a name="certificate-authority"></a>Hitelesítésszolgáltató
 
-A hitelesítésszolgáltató vagy a "CA" rövid, egy olyan entitás, amely digitális tanúsítványokat bocsát ki. A hitelesítésszolgáltató megbízható harmadik félként működik a tulajdonos és a tanúsítvány fogadója között. A digitális tanúsítvány tanúsítja, hogy a tanúsítvány fogadója a nyilvános kulcs tulajdonosát. A megbízhatósági tanúsítványlánc először a főtanúsítvány kiállítását végzi, amely a hatóság által kiadott összes tanúsítvány megbízhatóságának alapja. Ezt követően a tulajdonos a főtanúsítvány használatával további köztes tanúsítványokat ("Leaf" tanúsítványokat) adhat ki.
+A hitelesítésszolgáltató vagy a "CA" rövid, egy olyan entitás, amely digitális tanúsítványokat bocsát ki. A hitelesítésszolgáltató megbízható harmadik félként működik a tanúsítvány tulajdonosa és fogadója között. A digitális tanúsítvány tanúsítja, hogy a tanúsítvány fogadója a nyilvános kulcs tulajdonosát. A megbízhatósági tanúsítványlánc először a főtanúsítvány kiállítását végzi, amely a hatóság által kiadott összes tanúsítvány megbízhatóságának alapja. Ezt követően a tulajdonos a főtanúsítvány használatával további köztes tanúsítványokat ("Leaf" tanúsítványokat) adhat ki.
 
 ### <a name="root-ca-certificate"></a>Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány
 
@@ -59,7 +62,7 @@ Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát a folyamat végső köz
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge munkaterhelés-CA
 
-A [IoT Edge Security Manager](iot-edge-security-manager.md) létrehozza a munkaterhelés hitelesítésszolgáltatói tanúsítványát, amely a folyamat "operátor" oldalának első indításakor IoT Edge először elindul. Ezt a tanúsítványt az "eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa" hozza létre és írja alá. Ez a tanúsítvány – amely csak egy másik közbenső aláíró tanúsítvány – a IoT Edge futtatókörnyezet által használt egyéb tanúsítványok előállítására és aláírására szolgál. Napjainkban ez elsősorban az IoT Edge hub-kiszolgáló tanúsítványa, amelyet a következő szakaszban tárgyaltak, de a jövőben más tanúsítványokat is tartalmazhatnak IoT Edge összetevők hitelesítéséhez.
+A [IoT Edge Security Manager](iot-edge-security-manager.md) létrehozza a munkaterhelés hitelesítésszolgáltatói tanúsítványát, amely a folyamat "operátor" oldalának első indításakor IoT Edge először elindul. Ezt a tanúsítványt az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa hozza létre és írja alá. Ez a tanúsítvány – amely csak egy másik közbenső aláíró tanúsítvány – a IoT Edge futtatókörnyezet által használt egyéb tanúsítványok előállítására és aláírására szolgál. Napjainkban ez elsősorban az IoT Edge hub-kiszolgáló tanúsítványa, amelyet a következő szakaszban tárgyaltak, de a jövőben más tanúsítványokat is tartalmazhatnak IoT Edge összetevők hitelesítéséhez.
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge hub-kiszolgáló tanúsítványa
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505346"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207795"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 
@@ -127,11 +127,11 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="additional-configuration"></a>További konfigurálás 
 
-Az előző útmutató arról nyújt tájékoztatást, hogyan konfigurálható a (z)-ben a (z) A Grafi ügynök több mint 150 bemeneti beépülő modult támogat, néhány további konfigurációs lehetőséggel. A InfluxData közzétette a [támogatott beépülő modulok listáját](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) , és útmutatást ad a [konfigurálásához](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
+Az előző útmutató arról nyújt tájékoztatást, hogyan konfigurálható a (z)-ben a (z) A Grafi ügynök több mint 150 bemeneti beépülő modult támogat, néhány további konfigurációs lehetőséggel. A InfluxData közzétette a [támogatott beépülő modulok listáját](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/) , és útmutatást ad a [konfigurálásához](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/).  
 
 Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üzembe helyezéséhez használt virtuális géppel kapcsolatos metrikák A Grafi ügynök más erőforrásokhoz tartozó mérőszámok gyűjtőként és továbbítóként is használható. Ha szeretné megtudni, hogyan konfigurálhatja az ügynököt más Azure-erőforrások metrikáinak kibocsátására, tekintse meg a [Azure monitor egyéni metrika kimenete a következőben](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md):.  
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
 

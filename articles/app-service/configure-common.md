@@ -5,13 +5,13 @@ keywords: Azure app Service, webalkalmazás, Alkalmazásbeállítások, környez
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077373"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213582"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -96,11 +96,11 @@ Más nyelvi stackek esetében érdemes inkább az [Alkalmazásbeállítások](#c
 
 Futásidőben a kapcsolatok karakterláncai környezeti változókként érhetők el, és a következő kapcsolattípus-típusokkal vannak meghatározva:
 
-* SQLServer`SQLCONNSTR_`  
-* MySQL`MYSQLCONNSTR_` 
-* Rendszerkarbantartás`SQLAZURECONNSTR_` 
-* Egyéni`CUSTOMCONNSTR_`
-* PostgreSQL`POSTGRESQLCONNSTR_`  
+* SQLServer `SQLCONNSTR_`  
+* MySQL `MYSQLCONNSTR_` 
+* Rendszerkarbantartás `SQLAZURECONNSTR_` 
+* Egyéni `CUSTOMCONNSTR_`
+* PostgreSQL `POSTGRESQLCONNSTR_`  
 
 Egy *connectionstring1* nevű MySQL-kapcsolati sztring például környezeti változóként érhető el `MYSQLCONNSTR_connectionString1` . A nyelvspecifikus speciális lépéseiért lásd:
 
@@ -245,7 +245,7 @@ Linux-alkalmazások esetén lásd:
 
 Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](configure-custom-container.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni tartománynév konfigurálása Azure App Service]
 - [Átmeneti környezetek beállítása az Azure App Service-ben]

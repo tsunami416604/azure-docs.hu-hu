@@ -3,15 +3,16 @@ title: A webjobs SDK használata
 description: További információ a webjobs SDK kódjának írásához. Hozzon létre eseményvezérelt háttér-feldolgozási feladatokat, amelyek az Azure-ban és a külső szolgáltatásokban tárolt adatokhoz férnek hozzá.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807978"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208631"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -73,7 +74,7 @@ A helyi fejlesztés hatékonyabbá tételéhez a gazdagépet fejlesztői módban
 
 | Tulajdonság | Fejlesztési beállítás |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`a naplók kimenetének maximalizálása érdekében. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` a naplók kimenetének maximalizálása érdekében. |
 | `Queues.MaxPollingInterval`  | A várólista-metódusok azonnali indításának alacsony értéke.  |
 | `Singleton.ListenerLockPeriod` | 15 másodperc a gyors iterációs fejlesztésben való segítségnyújtáshoz. |
 
@@ -358,7 +359,7 @@ Beállíthatja egyes eseményindítók és kötések viselkedését. A konfigur�
 * **3. verzió. *x*:** állítsa be a konfigurációt, ha a `Add<Binding>` metódus hívása megtörténik `ConfigureWebJobs` .
 * **2. verzió. *x*:** konfiguráció beállítása egy olyan konfigurációs objektum tulajdonságainak beállításával, amelybe bejelentkezett `JobHost` .
 
-Ezek a kötési beállítások egyenértékűek a Azure Functionsban a [Project fájlhost.jsjának](../azure-functions/functions-host-json.md) beállításaival.
+Ezek a kötési beállítások egyenértékűek a Azure Functionsban a [ Project fájlhost.jsjának](../azure-functions/functions-host-json.md) beállításaival.
 
 A következő kötéseket állíthatja be:
 
@@ -470,7 +471,7 @@ static void Main(string[] args)
 }
 ```
 
-További részletekért tekintse [meg a v1. xhost.jsét](../azure-functions/functions-host-json-v1.md#queues)ismertető témakört.
+További részletekért tekintse [ meg a v1. xhost.jsét](../azure-functions/functions-host-json-v1.md#queues)ismertető témakört.
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid-kötési konfiguráció (3. verzió).* x*)
 
@@ -620,7 +621,7 @@ A feloldót függőségi befecskendezés használatával konfigurálhatja. Ezek 
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-A feloldót a bővítmény metódusának meghívásával adja hozzá a [`ConfigureServices`] [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) következő példához hasonlóan:
+A feloldót a bővítmény metódusának meghívásával adja hozzá a [`ConfigureServices`]  [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) következő példához hasonlóan:
 
 ```cs
 static async Task Main(string[] args)
@@ -822,17 +823,17 @@ Javasoljuk a ASP.NET fejlesztett naplózási keretrendszert. Az [első lépések
 
 ### <a name="log-filtering"></a>Naplózási szűrés
 
-A példányok által létrehozott összes naplóhoz `ILogger` társítva `Category` és `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)egy enumerálás, és az egész szám kód relatív fontosságot jelez:
+A példányok által létrehozott összes naplóhoz `ILogger` társítva `Category` és `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
 |Naplózási szint    |Code|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
-|Információ | 2 |
+|Tájékoztatás | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Nincsenek        | 6 |
 
 Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek feldolgozásához, de `Error` minden más esetében csak a magasabbra.
 
@@ -840,7 +841,7 @@ Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.
 
 3. verzió. Az SDK *x* -je a .net Core-ba épített szűrésre támaszkodik. A `LogCategories` osztály lehetővé teszi adott függvények, eseményindítók vagy felhasználók kategóriáinak definiálását. Az adott gazdagép-állapotok, például a és a szűrőit is meghatározza `Startup` `Results` . Ez lehetővé teszi a naplózási kimenet finomhangolását. Ha a megadott kategóriákban nem találhatók egyezések, a szűrő visszakerül az `Default` értékre, amikor a rendszer eldönti, hogy szűrni kívánja-e az üzenetet.
 
-`LogCategories`a következő using utasítást igényli:
+`LogCategories` a következő using utasítást igényli:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
@@ -879,7 +880,7 @@ A 2. verzióban. *x* az SDK-ban a `LogCategoryFilter` szűrés vezérléséhez h
 
 Csakúgy, mint a `LogCategories` 3. verzióban.* x*, a `CategoryLevels` tulajdonság lehetővé teszi, hogy meghatározott kategóriáknál adja meg a naplózási szinteket, így a naplózási kimenet finomhangolása is megadható. Ha a szótárban nem található egyezés `CategoryLevels` , a szűrő visszakerül az `Default` értékre, amikor a rendszer eldönti, hogy szűrni kívánja-e az üzenetet.
 
-A következő példa egy szűrőt állít össze, amely alapértelmezés szerint szűri az összes naplót a `Warning` szinten. A `Function` és a `Host.Results` Kategóriák a szinten vannak szűrve `Error` . Az `LogCategoryFilter` összehasonlítja az aktuális kategóriát az összes regisztrált értékkel `CategoryLevels` , és kiválasztja a leghosszabb egyezést. Így a `Debug` regisztrált szint megfelel a következőnek: `Host.Triggers` `Host.Triggers.Queue` `Host.Triggers.Blob` . Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
+A következő példa egy szűrőt állít össze, amely alapértelmezés szerint szűri az összes naplót a `Warning` szinten. A  `Function` és a `Host.Results` Kategóriák a szinten vannak szűrve `Error` . Az `LogCategoryFilter` összehasonlítja az aktuális kategóriát az összes regisztrált értékkel `CategoryLevels` , és kiválasztja a leghosszabb egyezést. Így a `Debug` regisztrált szint megfelel a következőnek: `Host.Triggers` `Host.Triggers.Queue` `Host.Triggers.Blob` . Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -996,7 +997,7 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a name="next-steps"></a><a id="nextsteps"></a>További lépések
+## <a name="next-steps"></a><a id="nextsteps"></a> További lépések
 
 Ez a cikk kódrészleteket adott meg, amelyek bemutatják, hogyan kezelheti a webjobs SDK-val való használat gyakori forgatókönyveit. A teljes mintákat lásd: [Azure-webjobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 

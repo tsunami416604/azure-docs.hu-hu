@@ -3,14 +3,15 @@ title: Azure Functions szignáló szolgáltatás kimeneti kötése
 description: Útmutató a szignáló szolgáltatás üzeneteinek küldéséhez Azure Functionsról.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b401ff20b553629341c5190deb4cfc54c474d789
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77530249"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212565"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>A signaler szolgáltatás kimeneti kötése Azure Functions
 
@@ -730,7 +731,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa**| n.a. | Értékre kell állítani `signalRConnectionInfo` .|
-|**direction**| n.a. | Értékre kell állítani `in` .|
+|**irányba**| n.a. | Értékre kell állítani `in` .|
 |**név**| n.a. | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**userId**|**UserId**| Nem kötelező: a hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
@@ -743,13 +744,13 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa**| n.a. | Értékre kell állítani `signalR` .|
-|**direction**| n.a. | Értékre kell állítani `out` .|
+|**irányba**| n.a. | Értékre kell állítani `out` .|
 |**név**| n.a. | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A szolgáltatási végpont URL-címének és hozzáférési jogkivonatának visszaadása (bemeneti kötés)](./functions-bindings-signalr-service-input.md)

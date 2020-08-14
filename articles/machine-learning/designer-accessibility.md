@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83646293"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210378"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata Azure Machine Learning Designer (előzetes verzió) használatához
 
@@ -65,7 +65,7 @@ A modul tulajdonságainak módosítása:
 
 Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférési kulcsokkal kapcsolatos további információkért lásd: https://en.wikipedia.org/wiki/Access_key .
 
-| Billentyűleütés | Műveletek |
+| Billentyűleütés | Művelet |
 |-|-|
 | Elérési kulcs + R | Futtatás |
 | Elérési kulcs + P | Közzététel |
@@ -77,7 +77,7 @@ Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférés
 | Elérési kulcs + U | "A következtetési folyamat frissítése" legördülő menü megnyitása |
 | Elérési kulcs + M | Továbbiak (...) legördülő lista megnyitása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Kontrasztos megjelenítés bekapcsolása és téma módosítása](../azure-portal/azure-portal-change-theme-high-contrast.md)
+- [Kontrasztos megjelenítés bekapcsolása és téma módosítása](../azure-portal/set-preferences.md#choose-a-theme-or-enable-high-contrast)
 - [Hozzáférhetőséggel kapcsolatos eszközök a Microsoftnál](https://www.microsoft.com/accessibility)

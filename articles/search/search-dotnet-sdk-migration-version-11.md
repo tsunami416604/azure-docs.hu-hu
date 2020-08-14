@@ -9,24 +9,24 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926671"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211515"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
 Ha a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)10,0-es vagy újabb verzióját használja, ez a cikk segítséget nyújt a 11-es verzióra való frissítéshez.
 
-A 11-es verzió egy teljes mértékben újratervezett ügyféloldali kódtár, amelyet az Azure SDK Fejlesztői csapata szabadít fel (az előző verziókat az Azure Cognitive Search fejlesztői csapat hozta létre). A rendszer újratervezte a kódtárat a többi Azure-ügyfélszoftverrel való nagyobb konzisztencia érdekében, az [Azure. Core](https://docs.microsoft.com/dotnet/api/azure.core) és [aSystem.Text.Js](https://docs.microsoft.com/dotnet/api/system.text.json), valamint a gyakori feladatokra vonatkozó ismerős megközelítések megvalósításával.
+A 11-es verzió egy teljes mértékben újratervezett ügyféloldali kódtár, amelyet az Azure SDK Fejlesztői csapata szabadít fel (az előző verziókat az Azure Cognitive Search fejlesztői csapat hozta létre). A rendszer újratervezte a kódtárat a többi Azure-ügyfélszoftverrel való nagyobb konzisztencia érdekében, az [Azure. Core](https://docs.microsoft.com/dotnet/api/azure.core) és [ aSystem.Text.Js](https://docs.microsoft.com/dotnet/api/system.text.json), valamint a gyakori feladatokra vonatkozó ismerős megközelítések megvalósításával.
 
 Az új verzióban megjelenő legfontosabb különbségek a következők:
 
 + Egy csomag és egy könyvtár több
 + Új csomag neve: `Azure.Search.Documents` helyett `Microsoft.Azure.Search` .
-+ Három ügyfél a kettő helyett: `SearchClient` , `SearchIndexClient` ,`SearchIndexerClient`
++ Három ügyfél a kettő helyett: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Különböző API-k és kisebb szerkezeti különbségek elnevezése az egyes feladatok egyszerűsítése érdekében
 
 ## <a name="package-and-library-consolidation"></a>Csomag-és könyvtár-konszolidáció
@@ -48,7 +48,7 @@ Ha lehetséges, az alábbi táblázat a két verzió közötti ügyféloldali k�
 | Az indexelő, az adatforrások és a szakértelmével által használt ügyfél | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**új**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> `SearchIndexClient`mindkét verzióban létezik, de különböző dolgokat támogat. A 10-es verzióban `SearchIndexClient` Indexek és egyéb objektumok hozhatók létre. A 11-es verzióban a `SearchIndexClient` meglévő indexekkel működik. A kód frissítésekor a félreértések elkerülése érdekében figyelembe kell venni, hogy milyen sorrendben frissülnek az ügyfelek hivatkozásai. A [frissítéshez szükséges lépések](#UpgradeSteps) végrehajtásával csökkentheti a karakterlánc-helyettesítési problémákat.
+> `SearchIndexClient` mindkét verzióban létezik, de különböző dolgokat támogat. A 10-es verzióban `SearchIndexClient` Indexek és egyéb objektumok hozhatók létre. A 11-es verzióban a `SearchIndexClient` meglévő indexekkel működik. A kód frissítésekor a félreértések elkerülése érdekében figyelembe kell venni, hogy milyen sorrendben frissülnek az ügyfelek hivatkozásai. A [frissítéshez szükséges lépések](#UpgradeSteps) végrehajtásával csökkentheti a karakterlánc-helyettesítési problémákat.
 
 <a name="naming-differences"></a>
 
@@ -61,7 +61,7 @@ Az ügyfél-eltérések mellett (a korábban említettek szerint) több más API
 | 10-es verzió | 11-es verzió – egyenértékű |
 |------------|-----------------------|
 | [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey`(az [előzetes verzió SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) -ban általánosan elérhető szolgáltatásként létezett) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| `EncryptionKey` (az [előzetes verzió SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) -ban általánosan elérhető szolgáltatásként létezett) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>Indexek, elemzők, szinonimák térképek
 
@@ -71,7 +71,7 @@ Az ügyfél-eltérések mellett (a korábban említettek szerint) több más API
 | [Mező](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [Adattípus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyze) (más néven `AnalyzerName` `LexicalAnalyzerName` ) |
+| [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (más néven `AnalyzerName` `LexicalAnalyzerName` ) |
 | [AnalyzeRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [StandardAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (más néven `StandardTokenizerV2` `LuceneStandardTokenizerV2` ) |
@@ -88,7 +88,7 @@ A mező-definíciók racionalizálva vannak: a [SearchableField](https://docs.mi
 | [Indexelő](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
 | [DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [Ügyességi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [Készségkészlet](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskillse) |
+| [Készségkészlet](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
 
 ### <a name="data-import"></a>Adatimportálás
@@ -153,7 +153,7 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
 
 1. A lekérdezésekhez és az adatimportáláshoz tartozó ügyfél-referenciák frissítése. A [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) példányait [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)értékre kell módosítani. A félreértések elkerülése érdekében győződjön meg arról, hogy a következő lépéshez való továbblépés előtt minden példányt elkapjon.
 
-1. Az ügyfél-referenciák frissítése index, indexelő, szinonimák leképezése és elemző objektumok számára. A [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) példányait [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchindexclient)értékre kell módosítani. 
+1. Az ügyfél-referenciák frissítése index, indexelő, szinonimák leképezése és elemző objektumok számára. A [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) példányait [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient)értékre kell módosítani. 
 
 1. A lehető legnagyobb mértékben frissítse az osztályokat, a metódusokat és a tulajdonságokat az új könyvtár API-jai használatához. Az [elnevezési különbségek](#naming-differences) szakasz elindítható, de a [módosítási naplót](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)is áttekintheti.
 
@@ -173,7 +173,7 @@ A szolgáltatási verziók esetében a 10 – 11 értékre való áttérés a k�
 
 + A null értékek [rendezett eredményei](search-query-odata-orderby.md) módosultak ebben a verzióban, és először Null érték jelenik meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` . Ha kódot írt a null értékek rendezésének kezeléséhez, tekintse át és távolítsa el ezt a kódot, ha már nincs rá szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Példák a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)

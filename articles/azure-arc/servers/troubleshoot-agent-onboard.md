@@ -1,18 +1,18 @@
 ---
-title: Az Azure-arc hibaelhárítása a kiszolgálók ügynökével kapcsolatban – problémák
-description: Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure arc for Servers szolgáltatással (előzetes verzió) felmerülő, a csatlakoztatott számítógép ügynökével kapcsolatos problémákat, amikor a szolgáltatáshoz próbál csatlakozni.
+title: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) ügynök-kapcsolataival kapcsolatos problémák elhárítása
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió) kapcsolatos problémákat a szolgáltatáshoz való kapcsolódási kísérlet során.
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118008"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213539"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>A csatlakoztatott gépi ügynök kapcsolódási problémáinak elhárítása
 
-Ez a cikk az Azure arc for Servers (előzetes verzió) Windows vagy Linux rendszerhez csatlakoztatott számítógép-ügynökkel való konfigurálására tett kísérlet során felmerülő problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. A szolgáltatáshoz való kapcsolódás konfigurálásakor az interaktív és a méretezhető telepítési módszerek is szerepelnek. Általános információk: [arc for Servers – áttekintés](./overview.md).
+Ez a cikk a Windows vagy Linux rendszerhez készült Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynök konfigurálására tett kísérlet során felmerülő problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. A szolgáltatáshoz való kapcsolódás konfigurálásakor az interaktív és a méretezhető telepítési módszerek is szerepelnek. Általános információk: az [ív használatára képes kiszolgálók áttekintése](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Ügynök részletes naplója
 
@@ -22,13 +22,13 @@ A jelen cikk későbbi részében ismertetett hibaelhárítási lépések követ
 
 A következő példa arra a parancsra mutat példát, amely lehetővé teszi a részletes naplózást a Windows csatlakoztatott számítógép-ügynökével, ha interaktív telepítést végez.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 A következő példa arra a parancsra mutat példát, amely lehetővé teszi a részletes naplózást a Windows rendszerhez csatlakoztatott számítógép-ügynökkel, ha egy egyszerű szolgáltatást végez egy egyszerű szolgáltatásnév használatával.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
   --service-principal-id "{serviceprincipalAppID}" `
   --service-principal-secret "{serviceprincipalPassword}" `
@@ -46,13 +46,13 @@ A következő példa arra a parancsra mutat példát, amely lehetővé teszi a r
 >[!NOTE]
 >A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
-```
+```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 A következő példa arra a parancsra mutat példát, amely lehetővé teszi a részletes naplózást a Linux rendszerhez készült csatlakoztatott gépi ügynökkel, amikor egy egyszerű szolgáltatásnév használatával végez méretezéses telepítést.
 
-```
+```bash
 azcmagent connect \
   --service-principal-id "{serviceprincipalAppID}" \
   --service-principal-secret "{serviceprincipalPassword}" \
@@ -81,7 +81,7 @@ A következő táblázat a hibák elhárításával és megoldásával kapcsolat
 
 <a name="footnote1"></a><sup>1</sup> Ha ez a csoportházirend-objektum engedélyezve van, és a csatlakoztatott gépi ügynökkel rendelkező gépekre vonatkozik, a törli a *himds* szolgáltatáshoz megadott beépített fiókhoz társított felhasználói profilt. Ennek eredményeképpen a a szolgáltatással való kommunikációhoz használt hitelesítési tanúsítványt is törli a helyi tanúsítványtárolóban, 30 napig. A 30 napos korlát előtt kísérlet történt a tanúsítvány megújítására. A probléma megoldásához kövesse a [számítógép regisztrációjának](manage-agent.md#unregister-machine) megszüntetéséhez szükséges lépéseket, majd regisztrálja újra a szolgáltatást futtató szolgáltatással `azcmagent connect` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

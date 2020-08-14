@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan teheti meg az Azure functions szolgáltatást a
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037031"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207447"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -189,7 +189,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`a a következő beállításokat támogatja, amelyek a 3. x/2. x-only, kivéve, ha másként jelezzük:
+`func init` a a következő beállításokat támogatja, amelyek a 3. x/2. x-only, kivéve, ha másként jelezzük:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -363,7 +363,7 @@ npm start
 > func host start
 > ```
 
-`func start`a a következő lehetőségeket támogatja:
+`func start` a a következő lehetőségeket támogatja:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -472,7 +472,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 Az 1. x verzióban a függvényt közvetlenül is meghívhatja `func run <FunctionName>` a függvénnyel, és a függvény bemeneti adatokat is megadhat. Ez a parancs hasonló egy függvény futtatásához a Azure Portal **teszt** lapján.
 
-`func run`a a következő lehetőségeket támogatja:
+`func run` a a következő lehetőségeket támogatja:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -528,7 +528,7 @@ A következő közzétételi beállítások csak a 2. x vagy újabb verziókban 
 | **`--nozip`** | Kikapcsolja az alapértelmezett `Run-From-Package` üzemmódot. |
 | **`--build-native-deps`** | Kihagyja a generálás. Wheels mappát a Python-függvények alkalmazásainak közzétételekor. |
 | **`--build`**, **`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. A következőket fogadja el: `remote` és `local` . |
-| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Példa: `python3-dev libevent-dev`. |
+| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Például: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos helyzetekben figyelmen kívül hagyhatja a közzététel előtti ellenőrzést. |
 | **`--csx`** | C# parancsfájl-(. CSX) projekt közzététele. |
 | **`--no-build`** | A projekt nincs felépítve a közzététel során. A Python esetében `pip install` nincs elvégezve. |
@@ -547,7 +547,7 @@ A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Annak a Docker-beállításjegyzéknek a neve, amelyre az aktuális felhasználó bejelentkezett. |
-| **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők`kubernetes` |
+| **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők `kubernetes` |
 | **`--name`** | Function alkalmazás neve. |
 | **`--max`**  | Igény szerint beállíthatja a alkalmazásban telepítendő Function app-példányok maximális számát. |
 | **`--min`**  | Igény szerint beállíthatja az alkalmazásban telepítendő Function app-példányok minimális számát. |
@@ -574,7 +574,7 @@ Megtekintheti a függvények által a helyi számítógépen lévő parancssori 
 Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integrációjának engedélyezése szükséges a Function alkalmazáshoz.   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).

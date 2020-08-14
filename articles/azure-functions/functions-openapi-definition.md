@@ -4,13 +4,13 @@ description: Hozzon létre egy OpenAPI definíciót, amely lehetővé teszi más
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.reviewer: sunayv
-ms.custom: mvc, cc996988-fb4f-47, references_regions
-ms.openlocfilehash: 87f7b47354d3d76d5185b1bf956fd0c422c092bd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
+ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197027"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212906"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>OpenAPI-definíció létrehozása kiszolgáló nélküli API-hoz az Azure API Management használatával
 
@@ -138,13 +138,13 @@ A OpenAPI-definíció előállítása:
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Név)** | Globálisan egyedi név | A rendszer a függvény alkalmazásának neve alapján hozza létre a nevet. |
+    | **Név** | Globálisan egyedi név | A rendszer a függvény alkalmazásának neve alapján hozza létre a nevet. |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amely alatt az új erőforrást létrehozták. |  
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  myResourceGroup | A Function alkalmazással megegyező erőforrás, amelyet be kell állítani. |
     | **Hely** | USA nyugati régiója | Válassza ki az USA nyugati régióját. |
     | **Szervezet neve** | Contoso | A fejlesztői portálon használt szervezet neve és e-mail-értesítések. |
-    | **Rendszergazdai e-mail** | e-mail-címe | A API Managementtól kapott rendszerértesítéseket tartalmazó e-mailek. |
-    | **Díjszabási csomag** | Használat | A felhasználási szintek nem érhetők el minden régióban. A díjszabással kapcsolatos részletekért tekintse meg a [API Management díjszabási oldalát](https://azure.microsoft.com/pricing/details/api-management/) . |
+    | **Rendszergazda e-mail-címe** | e-mail-címe | A API Managementtól kapott rendszerértesítéseket tartalmazó e-mailek. |
+    | **Tarifacsomag** | Felhasználás | A felhasználási szintek nem érhetők el minden régióban. A díjszabással kapcsolatos részletekért tekintse meg a [API Management díjszabási oldalát](https://azure.microsoft.com/pricing/details/api-management/) . |
 
     ![Új API Management szolgáltatás létrehozása](media/functions-openapi-definition/new-apim-service-openapi.png)
 
@@ -193,7 +193,7 @@ Ha az API a várt módon működik, letöltheti a OpenAPI-definíciót.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 API Management integrációt használt a függvények OpenAPI-definíciójának létrehozásához. Most már szerkesztheti a definíciót API Management a portálon. [További tudnivalókat a API Managementról](../api-management/api-management-key-concepts.md)is kaphat.
 

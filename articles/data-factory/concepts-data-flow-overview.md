@@ -6,36 +6,36 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.custom: references_regions
+ms.date: 08/12/2020
+ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475566"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212053"
 ---
-# <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure Data Factoryban. Az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az eredményül kapott adatfolyamatok a kibővített Apache Spark-fürtöket használó Azure Data Factory folyamatokon belüli tevékenységekként lesznek végrehajtva. Az adatfolyam-tevékenységek a meglévő Data Factory ütemezési, vezérlési, folyamat-és figyelési képességein keresztül is elvégezhetők.
+## <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
-Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nincs szükség kódolásra. Az adatfolyamatok a végrehajtási fürtön futnak a kibővíthető adatfeldolgozáshoz. Azure Data Factory kezeli az adatáramlási feladatok összes fordítását, az elérési út optimalizálását és végrehajtását.
+Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure Data Factoryban. Az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása nélkül fejlesszenek Adatátalakítási logikát. Az eredményül kapott adatfolyamatok a kibővített Apache Spark-fürtöket használó Azure Data Factory folyamatokon belüli tevékenységekként lesznek végrehajtva. Az adatfolyam-tevékenységek a meglévő Azure Data Factory ütemezési, vezérlési, folyamat-és figyelési képességek használatával is működőképesek.
 
-![Architektúra](media/data-flow/adf-data-flows.png "Architektúra")
+Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nincs szükség kódolásra. Az adatfolyamatok az ADF által felügyelt végrehajtási fürtökön futnak a kibővíthető adatfeldolgozáshoz. Azure Data Factory kezeli az adatáramlási feladatok összes fordítását, az elérési út optimalizálását és végrehajtását.
 
 ## <a name="getting-started"></a>Első lépések
 
-Az adatfolyamatok létrehozásához jelölje ki a **gyári erőforrások**területen a plusz jelre, majd válassza az **adatfolyam**lehetőséget. 
+Az adatfolyamatok a gyári erőforrások ablaktábláról jönnek létre, például a folyamatok és az adatkészletek. Adatfolyamat létrehozásához válassza ki a **gyári erőforrások**melletti pluszjelet, majd válassza az **adatfolyam**lehetőséget. 
 
-![Új adatfolyam](media/data-flow/newdataflow2.png "új adatfolyam")
+![Új adatfolyam](media/data-flow/new-data-flow.png "új adatfolyam")
 
 Ez a művelet végigvezeti az adatáramlási vászonon, ahol létrehozhatja az átalakítási logikát. A forrás-átalakítás konfigurálásának megkezdéséhez válassza a **forrás hozzáadása** lehetőséget. További információ: forrás- [átalakítás](data-flow-source.md).
 
-## <a name="data-flow-canvas"></a>Adatfolyam-vászon
+## <a name="authoring-data-flows"></a>Adatfolyamatok készítése
 
-Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
+A leképezési folyamat egy egyedi szerzői vászon, amely megkönnyíti az átalakítási logika kiépítése. Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
 
 ![Vászon](media/data-flow/canvas1.png "Vászon")
 
@@ -44,40 +44,6 @@ Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfig
 A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
 
 ![Vászon](media/data-flow/canvas2.png "Vászon")
-
-### <a name="azure-integration-runtime-data-flow-properties"></a>Az Azure Integration Runtime adatforgalmának tulajdonságai
-
-![Hibakeresés gomb](media/data-flow/debugbutton.png "Hibakeresés gomb")
-
-Amikor megkezdi az adatfolyamatok használatát az ADF-ben, be szeretné kapcsolni a "hibakeresés" kapcsolót a böngésző felhasználói felületének felső részén lévő adatfolyamatokhoz. Ez egy Spark-fürtöt hoz létre az interaktív hibakeresés, az adatelőzetesek és a folyamat-hibakeresés végrehajtásához. Az egyéni [Azure Integration Runtime](concepts-integration-runtime.md)kiválasztásával megadhatja a használni kívánt fürt méretét. A hibakeresési munkamenet a legutóbbi adatelőnézet vagy utolsó hibakeresési folyamat végrehajtása után akár 60 percig is életben marad.
-
-Ha adatáramlási tevékenységekkel működővé tenni a folyamatokat, az ADF a "Futtatás" tulajdonságban a [tevékenységhez](control-flow-execute-data-flow-activity.md) társított Azure Integration Runtime használja.
-
-Az alapértelmezett Azure Integration Runtime egy 4 magos, egyetlen feldolgozó csomópont-fürt, amely lehetővé teszi az adatmegtekintést és a hibakeresési folyamatok gyors végrehajtását minimális költségek mellett. Nagyobb Azure IR konfiguráció beállítása, ha nagyméretű adatkészleteken végez műveleteket.
-
-A fürt erőforrásainak (VM-EK) készletének fenntartásához az ADF-et kell megadnia a Azure IR adatfolyam tulajdonságai között. Ez a művelet gyorsabb feladatok végrehajtását eredményezi a későbbi tevékenységekben.
-
-#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Az Azure Integration Runtime és az adatáramlási stratégiák
-
-##### <a name="execute-data-flows-in-parallel"></a>Az adatfolyamatok párhuzamos végrehajtása
-
-Ha párhuzamosan hajtja végre az adatfolyamatokat, az ADF külön Spark-fürtöket hoz létre minden tevékenység végrehajtásához a Azure Integration Runtime az egyes tevékenységekhez csatolt beállítások alapján. Az ADF-folyamatok párhuzamos végrehajtásának kialakításához adja hozzá az adatfolyam-tevékenységeket a felhasználói felület elsőbbségi korlátozásai nélkül.
-
-Ebből a három lehetőségből ez a lehetőség valószínűleg a legrövidebb időn belül végrehajtódik. Az egyes párhuzamos adatfolyamok azonban egyidejűleg, külön fürtökön futnak, így az események rendezése nem determinisztikus.
-
-Ha a folyamatokban párhuzamosan hajtja végre az adatfolyam-tevékenységeket, azt javasoljuk, hogy ne használja az ÉLETTARTAMot. Ennek a műveletnek az az oka, hogy az adatfolyam párhuzamos végrehajtása egyidejűleg ugyanazt a Azure Integration Runtime eredményezi az adatelőállítóhoz tartozó több meleg készlet-példányt.
-
-##### <a name="overload-single-data-flow"></a>Egyetlen adatfolyam túlterhelése
-
-Ha egyetlen adatfolyamaton belül helyezi el az összes logikát, az ADF ugyanazt a feladatot végrehajtó környezetet hajtja végre egyetlen Spark-fürt példányon.
-
-Ez a lehetőség nagyobb kihívást jelenthet a követéshez és a hibakereséshez, mivel az üzleti szabályok és az üzleti logika összekeverhető. Ez a beállítás szintén nem nyújt sok újrahasználhatóságot.
-
-##### <a name="execute-data-flows-sequentially"></a>Az adatfolyamatok végrehajtása szekvenciálisan
-
-Ha a folyamat során hajtja végre az adatfolyam-tevékenységeket, és a Azure IR konfigurációban beállította a TTL-t, akkor az ADF a számítási erőforrások (VM) újrafelhasználását eredményezi, ami gyorsabb a következő végrehajtási időpontokban. Minden egyes végrehajtáshoz továbbra is új Spark-kontextust fog kapni.
-
-Ebből a három lehetőségből ez a művelet valószínűleg a leghosszabb időt vesz igénybe a végpontok végrehajtásához. Azonban a logikai műveletek tiszta elkülönítését teszi lehetővé az egyes adatfolyamok lépéseiben.
 
 ### <a name="configuration-panel"></a>Konfigurációs panel
 
@@ -111,15 +77,87 @@ Ha a hibakeresési mód be van kapcsolva, az **adatelőnézet** lap interaktív 
 
 ### <a name="top-bar"></a>Felső sáv
 
-A felső sáv olyan műveleteket tartalmaz, amelyek hatással vannak a teljes adatfolyamra, például a mentésre és az érvényesítésre. A Graph és a konfigurációs üzemmód közötti váltás a **Graph megjelenítése** és a Graph billentyűk **elrejtése** gomb használatával is lehetséges.
+A felső sáv olyan műveleteket tartalmaz, amelyek hatással vannak a teljes adatfolyamra, például a mentésre és az érvényesítésre. Az átalakítási logikában megtekintheti a mögöttes JSON-kódot és adatfolyam-parancsfájlt is. További információért olvassa el az adatfolyam- [parancsfájlt](data-flow-script.md).
 
-![Gráf elrejtése](media/data-flow/hideg.png "Gráf elrejtése")
+## <a name="available-transformations"></a>Elérhető átalakítások
 
-Ha elrejti a gráfot, az **előző** és a **következő** gombokon keresztül böngészhet az átalakítási csomópontokon.
+Az elérhető átalakítások listájának megtekintéséhez tekintse meg a [leképezési adatfolyam-átalakítás áttekintését](data-flow-transformation-overview.md) .
 
-![Előző és következő gomb](media/data-flow/showhide.png "előző és következő gomb")
+## <a name="data-flow-activity"></a>Adatfolyam-tevékenység
 
-## <a name="next-steps"></a>További lépések
+A leképezési adatfolyamatok az ADF-folyamatokon belül működnek az [adatfolyam tevékenységgel](control-flow-execute-data-flow-activity.md). Az összes felhasználónak meg kell határoznia, hogy melyik integrációs modult használja, és adja át a paraméter értékeit. További információ: az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)ismertetése.
+
+## <a name="debug-mode"></a>Hibakeresési mód
+
+A hibakeresési mód lehetővé teszi az egyes átalakítási lépések eredményének interaktív megjelenítését az adatfolyamatok létrehozásakor és hibakeresése során. A hibakeresési munkamenet az adatfolyam-logika összeállításakor és az adatfolyamatok hibakeresésének futtatásakor is használható az adatfolyam-tevékenységekkel. További információt a [hibakeresési mód dokumentációjában](concepts-data-flow-debug-mode.md)talál.
+
+## <a name="monitoring-data-flows"></a>Adatfolyamatok figyelése
+
+Az adatáramlás leképezése integrálható a meglévő Azure Data Factory Figyelési képességeivel. Az adatfolyam-figyelés kimenetének megismeréséhez lásd: a [leképezési adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
+
+A Azure Data Factory csapat létrehozta a [teljesítmény-hangolási útmutatót](concepts-data-flow-performance.md) , amellyel optimalizálhatja az Adatáramlások végrehajtási idejét az üzleti logikája kiépítése után.
+
+## <a name="available-regions"></a>Elérhető régiók
+
+Az adatfolyamatok leképezése a következő régiókban érhető el:
+
+| Azure-régió | Adatfolyamatok az ADF-ben | Adatforgalom a szinapszis Studióban |
+| ------------ | ----------------- | ---------------------------- |
+|  Ausztrália középső régiója | | |  
+| Ausztrália 2. középső régiója | | |
+| Kelet-Ausztrália | ✓ |  ✓ |
+| Délkelet-Ausztrália   | ✓ | ✓ |
+| Dél-Brazília  | ✓ |  |
+| Közép-Kanada | ✓ |  |
+| Central India | ✓ |   ✓ |
+| USA középső régiója    | ✓ |   ✓ |
+| Kelet-Kína |      | ✓ |
+| Kelet-Kína 2  |   |    |
+| Kína nem regionális | | |
+| Észak-Kína |     | |
+| Észak-Kína 2 | |  |
+| Kelet-Ázsia | ✓ | |
+| USA keleti régiója   | ✓ | ✓ |
+| USA 2. keleti régiója | ✓ | ✓ |
+| Közép-Franciaország | ✓ | ✓ |
+| Dél-Franciaország  | | |
+| Közép-Németország (szuverén) | | |
+| Németország – régiófüggetlen (szuverén) | | |
+| Észak-Németország (nyilvános) | | |
+| Északkelet-Németország (szuverén) | | |
+| Középnyugat-Németország (nyilvános) |  | ✓ |
+| Kelet-Japán | ✓ |  |
+| Nyugat-Japán |  | |
+| Dél-Korea középső régiója | ✓ |  |
+| Dél-Korea déli régiója | | |
+| USA északi középső régiója  | ✓ | ✓ |
+| Észak-Európa  | ✓ |    |
+| Kelet-Norvégia | | |
+| Norvégia nyugati régiója | | |
+| Dél-Afrika északi régiója    | ✓ | |
+| Dél-Afrika nyugati régiója |  |    |
+| USA déli középső régiója  | | ✓ |
+| Dél-India | | |
+| Délkelet-Ázsia    | ✓ | ✓ |
+| Észak-Svájc |   |  |
+| Nyugat-Svájc | | |
+| UAE középső régiója | | |
+| Észak-Egyesült Arab |  |    |
+| Az Egyesült Királyság déli régiója  | ✓ |   | ✓ |
+| Az Egyesült Királyság nyugati régiója |     | ✓ |
+| US DoD – Középső régió | |  |
+| US DoD – Kelet | |  |
+| USA-beli államigazgatás – Arizona |      |  |
+| US Gov – régiófüggetlen | |  |
+| USA-beli államigazgatás – Texas | |  |
+| USA-beli államigazgatás – Virginia |     |  |
+| USA nyugati középső régiója |     | ✓ |
+| Nyugat-Európa   | ✓ |   ✓ |
+| Nyugat-India | | |
+| USA nyugati régiója   | ✓ |   |
+| USA 2. nyugati régiója | ✓ |   ✓ | 
+
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre [forrás-átalakítást](data-flow-source.md).
 * Megtudhatja, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md).

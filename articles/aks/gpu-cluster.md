@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatók a GPU-k nagy teljesítményű sz
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244293"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213192"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -52,7 +52,7 @@ Kérje le az AK-fürt hitelesítő adatait az az az [AK Get-hitelesítőadats][a
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>NVIDIA-illesztőprogramok telepítése
+## <a name="install-nvidia-device-plugin"></a>Az NVIDIA-eszköz beépülő moduljának telepítése
 
 Mielőtt a csomópontokon a GPU-k használhatók legyenek, telepítenie kell egy Daemonset elemet az NVIDIA-eszköz beépülő modulhoz. Ez a Daemonset elemet minden csomóponton futtat egy Pod-t, hogy megadja a GPU-k számára szükséges illesztőprogramokat.
 
@@ -188,7 +188,7 @@ A GPU működés közbeni megtekintéséhez ütemezzen egy GPU-t használó munk
 Hozzon létre egy *Samples-TF-mnist-demo. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. A következő feladattípus egy erőforrás-korlátot tartalmaz `nvidia.com/gpu: 1` :
 
 > [!NOTE]
-> Ha az eszközillesztők meghívásakor hibaüzenetet kap, például a CUDA-illesztőprogram verziószáma nem elegendő a CUDA futtatókörnyezet verziójához, tekintse át az NVIDIA illesztőprogram-mátrix kompatibilitási diagramját –[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Ha az eszközillesztők meghívásakor hibaüzenetet kap, például a CUDA-illesztőprogram verziószáma nem elegendő a CUDA futtatókörnyezet verziójához, tekintse át az NVIDIA illesztőprogram-mátrix kompatibilitási diagramját – [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1

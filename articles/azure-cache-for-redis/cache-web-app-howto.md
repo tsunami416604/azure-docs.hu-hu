@@ -6,13 +6,13 @@ ms.service: cache
 ms.topic: quickstart
 ms.date: 06/18/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: c9dfc7c9b396ec6ecd27891298ba0b0f1fc3e186
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 8bf301413abaa090682f14d1e7a6f9fa7096bd66
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117844"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209211"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: az Azure cache használata a Redis ASP.NET-webalkalmazással 
 
@@ -41,7 +41,7 @@ Ebben a rövid útmutatóban a Visual Studio 2019 segítségével hozhat létre 
 
     e. A **Name** (Név) mezőben nevezze el a projektet. Ebben a példában a **ContosoTeamStats** nevet használtunk.
 
-    f. Válassza az **OK** lehetőséget.
+    f. Kattintson az **OK** gombra.
    
 3. A projekt típusaként válassza az **MVC** lehetőséget.
 
@@ -89,7 +89,7 @@ Ebben a szakaszban frissíti az alkalmazást egy olyan új nézet támogatásáh
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>A web.config fájl frissítése egy gyorsítótárhoz tartozó alkalmazásbeállítással
 
-Amikor helyileg futtatja az alkalmazást, a *CacheSecrets.configban* található információk az Azure cache Redis-példányhoz való kapcsolódásához használatosak. Később ezt az alkalmazást fogja üzembe helyezni az Azure-ban. Ekkor konfigurálni fog egy alkalmazásbeállítást az Azure-ban, amelyet az alkalmazás a fájl helyett fog használni a gyorsítótár kapcsolati információinak lekéréséhez. 
+Amikor helyileg futtatja az alkalmazást, a *CacheSecrets.configban * található információk az Azure cache Redis-példányhoz való kapcsolódásához használatosak. Később ezt az alkalmazást fogja üzembe helyezni az Azure-ban. Ekkor konfigurálni fog egy alkalmazásbeállítást az Azure-ban, amelyet az alkalmazás a fájl helyett fog használni a gyorsítótár kapcsolati információinak lekéréséhez. 
 
 Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alkalmazással együtt, csak akkor fogja használni, amikor helyben teszteli az alkalmazást. Ezt az információt a lehető legbiztonságosabb módon kell tárolni, hogy mások ne férhessenek hozzá károkozási szándékkal a gyorsítótárazott adatokhoz.
 
@@ -101,7 +101,7 @@ Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alk
 2. A *web.config* fájlban keresse meg az `<appSetting>` elemet. Ezután adja hozzá a következő `file` attribútumot. Ha más fájlnevet vagy helyet használ, cserélje le a példában látható értékeket.
 
 * Előtte: `<appSettings>`
-* Után`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Után  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Amikor üzembe helyezi a webalkalmazást az Azure-ban, a *CacheSecrets.config* fájl nincs telepítve.
 
@@ -324,7 +324,7 @@ A gyorsítótár-hozzáférés teszteléséhez válassza a navigációs sávon a
 
 ![Egyszerű teszt eredménye – Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -345,7 +345,7 @@ A rendszer az erőforráscsoport törlésének megerősítését kéri. A meger�
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyagban az Azure cache-t a Redis reálisabb forgatókönyvben használhatja az alkalmazások teljesítményének növelése érdekében. Frissíti az alkalmazást, hogy gyorsítótárazza egy ranglista eredményeit a gyorsítótár-feltöltési minta, az ASP.NET és egy adatbázis együttes használatával.
 

@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844082"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212160"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions Azure Service Bus kimeneti kötése
 
@@ -276,11 +276,11 @@ A `ServiceBusQueueOutput` és a `ServiceBusTopicOutput` jegyzetek elérhetők eg
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBus` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -300,12 +300,12 @@ Azure Functions 1. x esetén a futtatókörnyezet létrehozza a várólistát, h
 
 A kimeneti kötéshez használja a következő paramétereket:
 
-* `out T paramName` - `T`bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null, ha a függvény kilép, a függvény Null objektummal hozza létre az üzenetet.
-* `out string`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
-* `out byte[]`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
-* `out BrokeredMessage`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (az 1. x függvények esetében)
-* `out Message`– Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x és újabb függvények esetében).
-* `ICollector<T>`vagy `IAsyncCollector<T>` (aszinkron módszerekhez) – több üzenet létrehozásához. A metódus meghívásakor létrejön egy üzenet `Add` .
+* `out T paramName` - `T` bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null, ha a függvény kilép, a függvény Null objektummal hozza létre az üzenetet.
+* `out string` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out byte[]` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out BrokeredMessage` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (az 1. x függvények esetében)
+* `out Message` – Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x és újabb függvények esetében).
+* `ICollector<T>` vagy `IAsyncCollector<T>` (aszinkron módszerekhez) – több üzenet létrehozásához. A metódus meghívásakor létrejön egy üzenet `Add` .
 
 C#-függvények használata esetén:
 
@@ -317,12 +317,12 @@ C#-függvények használata esetén:
 
 A kimeneti kötéshez használja a következő paramétereket:
 
-* `out T paramName` - `T`bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null, ha a függvény kilép, a függvény Null objektummal hozza létre az üzenetet.
-* `out string`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
-* `out byte[]`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
-* `out BrokeredMessage`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (az 1. x függvények esetében)
-* `out Message`– Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x és újabb függvények esetében).
-* `ICollector<T>`vagy `IAsyncCollector<T>` – több üzenet létrehozásához. A metódus meghívásakor létrejön egy üzenet `Add` .
+* `out T paramName` - `T` bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null, ha a függvény kilép, a függvény Null objektummal hozza létre az üzenetet.
+* `out string` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out byte[]` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out BrokeredMessage` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (az 1. x függvények esetében)
+* `out Message` – Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x és újabb függvények esetében).
+* `ICollector<T>` vagy `IAsyncCollector<T>` – több üzenet létrehozásához. A metódus meghívásakor létrejön egy üzenet `Add` .
 
 C#-függvények használata esetén:
 
@@ -346,7 +346,7 @@ A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](../s
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Referencia |
+| Kötés | Hivatkozás |
 |---|---|
 | Service Bus | [Service Bus hibakódok](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md) |
@@ -358,7 +358,7 @@ A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](../s
 Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. Az alábbi példában szereplő host.jscsak a kötés beállításait tartalmazza. A globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [host.jsAzure functions verzióra vonatkozó hivatkozás](functions-host-json.md).
 
 > [!NOTE]
-> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [Azure functions 1. x](functions-host-json-v1.md)esetében.
+> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [ Azure functions 1. x](functions-host-json-v1.md)esetében.
 
 ```json
 {
@@ -384,7 +384,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 
 Ha a értékre van `isSessionsEnabled` állítva `true` , a `sessionHandlerOptions` rendszer tiszteletben tartja a következőt:.  Ha a értékre van `isSessionsEnabled` állítva `false` , a `messageHandlerOptions` rendszer tiszteletben tartja a következőt:.
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |prefetchCount|0|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg igényelhető üzenetek számát.|
 |maxAutoRenewDuration|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.|

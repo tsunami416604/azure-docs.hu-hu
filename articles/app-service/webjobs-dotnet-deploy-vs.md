@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan fejlesztheti Azure WebJobs a Visual Studióban,
 author: ggailey777
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.topic: conceptual
-ms.custom: vs-azure
+ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: f6ebb20eb66e2449f6627b3c6ce45fd88b8640aa
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 14bb693ccaa1b1d16a1d07b7ee1cdeb4493960f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009772"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212875"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studióval
 
@@ -57,7 +57,7 @@ Saját maga is üzembe helyezhet egy projektet Webjobs, vagy összekapcsolhatja 
 
 Telepítse a Visual Studio 2017 vagy a Visual Studio 2019 alkalmazást az [Azure-fejlesztési](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)számítási feladattal.
 
-### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a>Webjobs-telepítés engedélyezése meglévő konzolos alkalmazás projekthez
+### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> Webjobs-telepítés engedélyezése meglévő konzolos alkalmazás projekthez
 
 Erre két lehetősége van:
 
@@ -69,7 +69,7 @@ Erre két lehetősége van:
 
   Konfiguráljon egy meglévő konzolos alkalmazás-projektet úgy, hogy saját maga Webjobs, webes projektre mutató hivatkozás nélkül. Akkor használja ezt a beállítást, ha saját maga szeretné futtatni a Webjobs egy webalkalmazásban, és a webalkalmazásban nem fut a webes alkalmazás. Előfordulhat, hogy a webalkalmazás-erőforrásoktól függetlenül szeretné méretezni a Webjobs-erőforrásokat.
 
-#### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a>Automatikus webjobs-telepítés engedélyezése webes projekttel
+#### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Automatikus webjobs-telepítés engedélyezése webes projekttel
 
 1. Kattintson a jobb gombbal a webes projektre **megoldáskezelő**, majd válassza **Add**a  >  **meglévő projekt hozzáadása Azure webjobs**lehetőséget.
    
@@ -81,7 +81,7 @@ Erre két lehetősége van:
     ![A projekt kiválasztása az Azure Webjobs hozzáadása párbeszédpanelen](./media/webjobs-dotnet-deploy-vs/aaw1.png)
 3. Fejezze be az [Azure-Webjobs hozzáadása](#configure) párbeszédpanelt, majd kattintson **az OK gombra**. 
 
-#### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a>Webjobs-telepítés engedélyezése webes projekt nélkül
+#### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> Webjobs-telepítés engedélyezése webes projekt nélkül
 1. Kattintson a jobb gombbal a Console app-projektre **megoldáskezelő**, majd válassza a **Közzététel Azure webjobs**lehetőséget. 
    
     ![Közzététel Azure-Webjobs](./media/webjobs-dotnet-deploy-vs/paw.png)
@@ -106,12 +106,12 @@ Erre két lehetősége van:
 > 
 > 
 
-#### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a>A webjobs új-Project sablonjának használata egy független Webjobs
+#### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a> A webjobs új-Project sablonjának használata egy független Webjobs
 1. Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. A **Crete a New Project (új projekt** ) párbeszédpanelen keresse meg és válassza ki a C# nyelvhez tartozó **Azure webjobs (.NET-keretrendszer)** elemet.
    
 2. Kövesse az előző útmutatást, hogy [a Console app Project egy független webjobs-projekt legyen](#convertnolink).
 
-#### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a>A webjobs új-Project sablonjának használata webes projekthez kapcsolódó Webjobs
+#### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> A webjobs új-Project sablonjának használata webes projekthez kapcsolódó Webjobs
 1. Kattintson a jobb gombbal a webes projektre **megoldáskezelő**, majd válassza **Add**az  >  **új Azure webjobs-projekt**hozzáadása lehetőséget.
    
     ![Új Azure Webjobs projekt menü bejegyzés](./media/webjobs-dotnet-deploy-vs/nawj.png)
@@ -120,7 +120,7 @@ Erre két lehetősége van:
 2. Fejezze be az [Azure-Webjobs hozzáadása](#configure) párbeszédpanelt, majd kattintson **az OK gombra**.
 
 
-### <a name="webjob-publish-settingsjson-file"></a><a id="publishsettings"></a>Fájlwebjob-publish-settings.js
+### <a name="webjob-publish-settingsjson-file"></a><a id="publishsettings"></a> Fájlwebjob-publish-settings.js
 Ha a webjobs-telepítéshez konfigurál egy konzol alkalmazást, a Visual Studio telepíti a [Microsoft. Web. Webjobss. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomagot, és az ütemezési információkat a webjobs-projekt Project *Properties* mappájában található fájl *webjob-publish-settings.js* tárolja. Íme egy példa erre a fájlra:
 
 ```json
@@ -137,7 +137,7 @@ Ha a webjobs-telepítéshez konfigurál egy konzol alkalmazást, a Visual Studio
 
 Ezt a fájlt közvetlenül szerkesztheti, a Visual Studio pedig IntelliSense-t is biztosít. A fájl sémája a (z) helyen található [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) , és itt tekinthető meg.  
 
-### <a name="webjobs-listjson-file"></a><a id="webjobslist"></a>Fájlwebjobs-list.js
+### <a name="webjobs-listjson-file"></a><a id="webjobslist"></a> Fájlwebjobs-list.js
 Amikor webjobs-kompatibilis projektet kapcsol össze egy webes projekthez, a Visual Studio a webes projekt *Tulajdonságok* mappájában tárolja *webjobs-list.jsa* webjobs-projekt nevét. A lista több webjobs-projektet is tartalmazhat, ahogy az alábbi példában is látható:
 
 ```json
@@ -218,10 +218,10 @@ A webjobs a következő beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Az összes | Lehetővé teszi a Webjobs futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Mind | Lehetővé teszi a Webjobs futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A Webjobs csak egy példányon futtatja, ha a méretezés ki van kapcsolva. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egyszeriként. |
 | `schedule` | Kiváltott | Futtassa a Webjobs egy CRON-alapú ütemterven. További információ: NCRONTAB- [kifejezések](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Az összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Mind | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ### <a name="continuous-execution"></a>Folyamatos végrehajtás
 
@@ -239,7 +239,7 @@ Ha **engedélyezve van az Azure** -ban, a Visual Studióval is megváltoztathatj
 
 1. A **Közzététel** **lapon válassza a közzététel lehetőséget** a webjobs újbóli közzétételéhez a frissített beállításokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a webjobs SDK-ról](webjobs-sdk-how-to.md)

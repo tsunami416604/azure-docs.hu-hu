@@ -9,14 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038426"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208755"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
+
+![Indexelő szakaszai](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "indexelő szakaszai")
 
 Az Azure Cognitive Search indexelő használatakor előfordulhat, hogy a bemeneti adatok nem egyeznek meg a célként megadott index sémájával. Ezekben az esetekben a **mező-hozzárendelések** segítségével átalakíthatja az adatait az indexelési folyamat során.
 
@@ -212,7 +214,7 @@ A következő táblázat a karakterlánc különböző Base64 kódolásait hason
 | Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
 | Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
 | URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
-| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincs | Nincs |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincsenek | Nincsenek |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -275,9 +277,9 @@ Ez a függvény egy karakterlánc kódolására használható, hogy az "URL-bizt
 
 #### <a name="example---document-key-lookup"></a>Példa – dokumentum kulcsának keresése
 
-`urlEncode`a függvény a függvény alternatívájaként is használható `base64Encode` , ha csak a nem biztonságos URL-címeket szeretné átalakítani, miközben más karaktereket is tart.
+`urlEncode` a függvény a függvény alternatívájaként is használható `base64Encode` , ha csak a nem biztonságos URL-címeket szeretné átalakítani, miközben más karaktereket is tart.
 
-Tegyük fel, hogy a bemeneti karakterlánc `<hello>` – a típusú cél mező a következő `(Edm.String)` értékkel lesz feltöltve:`%3chello%3e`
+Tegyük fel, hogy a bemeneti karakterlánc `<hello>` – a típusú cél mező a következő `(Edm.String)` értékkel lesz feltöltve: `%3chello%3e`
 
 Ha a beolvasott kulcsot keresési időpontban kéri le, a függvény használatával beolvashatja `urlDecode` az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
 

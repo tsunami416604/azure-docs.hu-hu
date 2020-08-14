@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 3fcf26670ec03b1d3a496574e58ae706acdf5c53
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 02f5399e89900a438fb94f973c497a54dc05cfee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853291"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210162"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -26,7 +26,7 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 | Section | Feladatok |
 | ------- | ----- |
 | **Hitelesítés** | <ol><li>Adjon meg egy egyszerű szolgáltatásnevet.</li><li>Közzétételi profil letöltése.</li><li>Hozzon létre egy GitHub-titkot.</li></ol>|
-| **Építeni** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
+| **Létrehozás** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
 | **Telepítés** | <ol><li>Telepítse a Function alkalmazást.</li></ol>|
 
 > [!NOTE]
@@ -119,7 +119,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet ha
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a `actions/setup-java` környezet beállításához:
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a  `actions/setup-java` környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'

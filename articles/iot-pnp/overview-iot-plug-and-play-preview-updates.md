@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: 94cec26d883c29eb4d43d2f244a9a2b8f7aea9dd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c415ffdaa2eb3ad6a76cd48c3a895b6618dd3986
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183173"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208065"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT Plug and Play előzetes verziójának frissítése
 
@@ -45,7 +45,7 @@ Az összetettebb eszközök különböző felületeken telemetria, parancsokat �
 
 ## <a name="registration-and-discovery"></a>Regisztráció és felderítés
 
-Ebben a kiadásban az eszközök bejelentik a **modell azonosítóját** IoT hub minden kapcsolatban. IoT Hub gyorsítótárazza a **modell azonosítóját** , amely lehetővé teszi a háttér-megoldások számára a **modell azonosítójának** lekérését a Device Twin `modelId` tulajdonság használatával. A **modell azonosítóját** a rendszer a digitális Twin-ből is beolvashatja `$metadata.$model` .
+Ebben a kiadásban az eszközök bejelentik a **modell azonosítóját** IoT hub minden kapcsolatban. IoT Hub gyorsítótárazza a **modell azonosítóját** , amely lehetővé teszi a háttér-megoldások számára a **modell azonosítójának** lekérését a Device Twin `modelId` tulajdonság használatával. A **modell azonosítóját** a rendszer a digitális Twin-ből is beolvashatja  `$metadata.$model` .
 
 ## <a name="microsoft-defined-interfaces"></a>Microsoft által definiált felületek
 
@@ -80,7 +80,7 @@ Azok az eszközök, amelyek nem használnak összetevőket, minimális programk�
 
 ### <a name="service-sdks"></a>Szolgáltatási SDK-k
 
-A Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/pnp-preview-refresh/digitaltwins/service/readme.md) és [Python](https://github.com/Azure/azure-iot-sdk-python/blob/digitaltwins-preview/azure-iot-hub/README.md)nyelven érhető el.
+A Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digitaltwins-preview/digitaltwins/service/readme.md) és [Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/README.md)nyelven érhető el.
 
 ## <a name="vs-code-extension"></a>VS Code-bővítmény
 

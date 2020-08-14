@@ -3,16 +3,17 @@ title: Szolgáltatás-szűrők használata a szolgáltatások egy részhalmaza s
 titleSuffix: Azure App Configuration
 description: Ismerje meg, hogyan használhatók a funkciók a felhasználók egy részhalmaza számára a funkciók használatával
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b2eb942581f6e4163012b0f767d04c02689bb7b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80057003"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206772"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Szolgáltatás-szűrők használata a szolgáltatások egy részhalmaza számára történő engedélyezéséhez
 
@@ -22,8 +23,8 @@ Ezzel szemben a _feltételes funkciók jelzője_ lehetővé teszi, hogy a szolg�
 
 A `Microsoft.FeatureManagement` függvénytár két szolgáltatási szűrőt tartalmaz:
 
-- `PercentageFilter`engedélyezi a szolgáltatás jelölőjét a százalék alapján.
-- `TimeWindowFilter`engedélyezi a szolgáltatás jelölőjét egy adott időszakban.
+- `PercentageFilter` engedélyezi a szolgáltatás jelölőjét a százalék alapján.
+- `TimeWindowFilter` engedélyezi a szolgáltatás jelölőjét egy adott időszakban.
 
 Létrehozhat egy saját szolgáltatáskészlet-szűrőt is, amely megvalósítja a [Microsoft. FeatureManagement. IFeatureFilter felületet](/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
 
@@ -85,7 +86,7 @@ A szolgáltatás jelző hatásainak megtekintéséhez indítsa el az alkalmazás
 > [!div class="mx-imgBorder"]
 > ![PercentageFilter működés közben](./media/feature-flags-percentagefilter.gif)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A szolgáltatások kezelése – áttekintés](./concept-feature-management.md)

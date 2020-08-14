@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: A kód Azure Kubernetes Service-ben való futtatásának folyamatait ismerteti az Azure dev Spaces szolgáltatással
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: c343c32f0817cc922784bb25283290dc9ed88d29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072953"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208691"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>A kód futtatása az Azure dev Spaces működésével
 
@@ -130,7 +130,7 @@ A *install. set* tulajdonság lehetővé teszi egy vagy több lecserélni kívá
 
 A fenti példában az *install. set. replicaCount* tulajdonság azt jelzi, hogy az alkalmazás hány példánya fut a fejlesztői térben. A forgatókönyvtől függően növelheti ezt az értéket, de hatással lehet a hibakereső az alkalmazás Pod-ra való csatolására. További információ: [hibaelhárítási cikk][troubleshooting].
 
-A generált Helm diagramon a tároló képe a következőre van beállítva: *{{. Values. rendszerkép. adattár}}: {{. Values. rendszerkép. tag}}*. A `azds.yaml` fájl az *install. set. file. tag* tulajdonságot a *$ (címke)* értékként adja meg alapértelmezés szerint, amelyet a rendszer a *{{értékeként használ. Values. rendszerkép. tag}}*. Az *install. set. rendszerkép. tag* tulajdonság beállításával így az alkalmazáshoz tartozó tároló-rendszerkép az Azure dev Spaces futtatásakor eltérő módon címkézhető. Ebben a konkrét esetben a rendszerkép a következőként van megjelölve * \<value from image.repository> : $ (tag)*. A *$ (tag)* változót a *install. set. rendszerkép. tag* értékként kell használni a fejlesztői szóközök felismeréséhez, és meg kell keresnie a tárolót az AK-fürtben.
+A generált Helm diagramon a tároló képe a következőre van beállítva: *{{. Values. rendszerkép. adattár}}: {{. Values. rendszerkép. tag}}*. A `azds.yaml` fájl az *install. set. file. tag* tulajdonságot a *$ (címke)* értékként adja meg alapértelmezés szerint, amelyet a rendszer a *{{értékeként használ. Values. rendszerkép. tag}}*. Az *install. set. rendszerkép. tag* tulajdonság beállításával így az alkalmazáshoz tartozó tároló-rendszerkép az Azure dev Spaces futtatásakor eltérő módon címkézhető. Ebben a konkrét esetben a rendszerkép a következőként van megjelölve * \<value from image.repository> : $ (tag)*. A *$ (tag)* változót a   *install. set. rendszerkép. tag* értékként kell használni a fejlesztői szóközök felismeréséhez, és meg kell keresnie a tárolót az AK-fürtben.
 
 A fenti példában az `azds.yaml` *install. set. beáramló. hosts*. A *install. set. beáramló. hosts* tulajdonság a nyilvános végpontok állomásnév-formátumát határozza meg. Ez a tulajdonság a *$ (spacePrefix)*, a *$ (rootSpacePrefix)* és a *$ (hostSuffix)* értéket is használja, amely a vezérlő által megadott érték.
 
@@ -195,19 +195,11 @@ ingress:
   enabled: true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről és a kérelmek az Azure dev Spaces szolgáltatásban való továbbításáról: [Hogyan működik az Útválasztás az Azure dev Spaces][how-it-works-routing]használatával.
 
 Ha többet szeretne megtudni arról, hogyan használható az Azure dev Spaces a gyors iteráció és a fejlesztés érdekében, tekintse meg a [helyi folyamat és a Kubernetes működését][how-it-works-local-process-kubernetes] , valamint [a kód Azure dev Spaces használatával történő távoli hibakeresését][how-it-works-remote-debugging].
-
-Az Azure dev Spaces a projekt futtatásához való használatának megkezdéséhez tekintse meg az alábbi rövid útmutatókat:
-
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és Node.js][quickstart-node]
-* [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
-* [Alkalmazás fejlesztése a Kubernetes-on a CLI használatával][quickstart-cli]
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured
@@ -216,10 +208,5 @@ Az Azure dev Spaces a projekt futtatásához való használatának megkezdéséh
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

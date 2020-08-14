@@ -3,16 +3,16 @@ title: Oktatóanyag – hibrid gép figyelése Azure Monitor for VMs
 description: Megtudhatja, hogyan gyűjthet és elemezheti az adatokat egy hibrid gépről Azure Monitorban.
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.openlocfilehash: 9747a3facb25e90b788f5ee5c3dd6c71353f04e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 76df7d403fdce6fc3ac77c0b24849aedffb57ce0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88172919"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213162"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Oktatóanyag: hibrid gép monitorozása Azure Monitor for VMs
 
-A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a hibrid virtuális gépekről egy log Analytics-munkaterületre, amely részletes elemzést és korrelációt biztosít. Ez általában a [log Analytics ügynök](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) telepítését vonja maga után parancsfájl, manuálisan vagy automatizált metódus használatával a konfiguráció-felügyeleti szabványok alapján. Az arc for Servers (előzetes verzió) a közelmúltban bevezetett támogatást a Log Analytics és a függőségi ügynök virtuálisgép- [bővítményeinek](../manage-vm-extensions.md) telepítéséhez a Windows és a Linux rendszerhez, amely lehetővé teszi a Azure monitor számára, hogy a nem Azure-beli virtuális gépekről gyűjt
+A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a hibrid virtuális gépekről egy log Analytics-munkaterületre, amely részletes elemzést és korrelációt biztosít. Ez általában a [log Analytics ügynök](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) telepítését vonja maga után parancsfájl, manuálisan vagy automatizált metódus használatával a konfiguráció-felügyeleti szabványok alapján. Az arc-kompatibilis kiszolgálók (előzetes verzió) a közelmúltban vezették be a Log Analytics és a függőségi ügynök virtuálisgép- [bővítményeinek](../manage-vm-extensions.md) telepítését a Windows és a Linux rendszerhez, ami lehetővé teszi, hogy az Azure monitor a nem Azure-beli virtuális gépekről gyűjt adatokat
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat és gyűjthet adatokat a Linux vagy Windows rendszerű virtuális gépekről, ha a Azure Monitor for VMs egy egyszerűsített lépések követésével egyszerűsíti a felhasználói élményt, és rövidebb időt vesz igénybe.  
 
@@ -34,7 +34,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Indítsa el az Azure arc szolgáltatást a Azure Portal a **minden szolgáltatás**elemre kattintva, majd a gépek keresése és kiválasztása **– Azure arc**.
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="A kiszolgálók ív keresése az összes szolgáltatásban" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Az ív használatára képes kiszolgálók keresése az összes szolgáltatásban" border="false":::
 
 1. A **Machines – Azure arc** lapon válassza ki a rövid [útmutató cikkben létrehozott](quick-enable-hybrid-vm.md) csatlakoztatott gépet.
 
@@ -66,7 +66,7 @@ Bontsa ki a virtuális gép folyamatait. Válassza ki az egyik folyamatot a rés
 
 Válassza újra a virtuális gépet, majd válassza a **naplózási események**lehetőséget. A virtuális gép Log Analytics munkaterületén tárolt táblák listája látható. A lista eltérő lehet attól függően, hogy Windows vagy Linux rendszerű virtuális gépet használ-e. Válassza ki az **Event** táblát. Az **Event** tábla tartalmazza a Windows Eseménynapló összes eseményét. Log Analytics megnyílik egy egyszerű lekérdezéssel az összegyűjtött Eseménynapló-bejegyzések lekéréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Monitorről, tekintse meg a következő cikket:
 

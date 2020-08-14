@@ -1,19 +1,19 @@
 ---
 title: 'Architektúra: globális átviteli hálózati architektúra'
 titleSuffix: Azure Virtual WAN
-description: Ismerje meg a Virtual WAN-hoz készült globális átviteli hálózati architektúrát
+description: Ismerje meg, hogy az Azure Virtual WAN hogyan teszi lehetővé a globális átviteli hálózatok architektúráját a felhőalapú munkaterhelések közötti teljes körű és bármilyen kapcsolódási kapcsolat engedélyezésével.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056890"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212714"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -171,7 +171,7 @@ Ha a virtuális központ már megtanulta egy alapértelmezett útvonalat (a BGP-
 > Jelenleg nincs lehetőség a helyszíni tűzfal vagy a Azure Firewall (és a megbízható biztonsági szolgáltató) kiválasztására a virtuális hálózatok, ágakból vagy felhasználókból származó, interneten keresztül kötött forgalomhoz. Az Azure Firewall Manager beállításban megismert alapértelmezett útvonal mindig előnyben részesített az egyik ág által megismert alapértelmezett útvonalon.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy virtuális WAN-kapcsolaton keresztüli kapcsolatokat, és telepítse a Azure Firewallt az VWAN hub (ok) ban.
 

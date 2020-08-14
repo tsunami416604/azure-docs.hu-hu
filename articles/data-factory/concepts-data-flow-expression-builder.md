@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/20/2020
-ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: f522812f762b55ec61794101e6cd1ec15fb171ca
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126161"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212105"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
@@ -134,6 +134,6 @@ Az előző kifejezés végén lévő "l" záró érték hosszú típusra, beágy
 
 toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' éééé-hh-nn óó: PP: mm. ÉER) *) * 1000
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Adatátalakítási kifejezések létrehozásának megkezdése](data-flow-expression-functions.md)

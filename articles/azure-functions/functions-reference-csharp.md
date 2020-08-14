@@ -3,14 +3,15 @@ title: Azure Functions C# parancsfájl-fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti Azure Functions C# parancsfájl használatával.
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 177e9fcd872c594fbfb5f29077235113c6342860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506146"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205434"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
 
@@ -210,9 +211,9 @@ public class Order
 
 Relatív elérési utat is használhat a `#load` direktívával:
 
-* `#load "mylogger.csx"`betölti a Function mappában található fájlt.
-* `#load "loadedfiles\mylogger.csx"`betölt egy fájlt a függvény mappájában található mappában.
-* `#load "..\shared\mylogger.csx"`egy mappában található fájlt tölt be, amely a Function mappával azonos szinten van, közvetlenül a *wwwroot*alatt.
+* `#load "mylogger.csx"` betölti a Function mappában található fájlt.
+* `#load "loadedfiles\mylogger.csx"` betölt egy fájlt a függvény mappájában található mappában.
+* `#load "..\shared\mylogger.csx"` egy mappában található fájlt tölt be, amely a Function mappával azonos szinten van, közvetlenül a *wwwroot*alatt.
 
 Az `#load` irányelv csak. *cs* fájlokkal használható *. CSX* -fájlokkal működik.
 
@@ -459,7 +460,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`a a kötést definiáló .NET-attribútum, amely az `T` adott kötési típus által támogatott bemeneti vagy kimeneti típus. `T`nem lehet `out` paraméter típusa (például `out JObject` ). A Mobile Apps tábla kimeneti kötése például [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de csak a [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) -t vagy a-t használhatja [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) `T` .
+`BindingTypeAttribute` a a kötést definiáló .NET-attribútum, amely az `T` adott kötési típus által támogatott bemeneti vagy kimeneti típus. `T` nem lehet `out` paraméter típusa (például `out JObject` ). A Mobile Apps tábla kimeneti kötése például [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de csak a [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) -t vagy a-t használhatja [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) `T` .
 
 ### <a name="single-attribute-example"></a>Példa egyetlen attribútumra
 

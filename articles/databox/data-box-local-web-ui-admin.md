@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372014"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206163"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
@@ -53,7 +53,7 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
 ## <a name="shut-down-or-restart-your-device"></a>Az eszköz leállítása és újraindítása
 
-Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
+Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Így a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
 
 Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
@@ -62,7 +62,7 @@ Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
     ![A Data Box leállítása – 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. Ha a rendszer megerősítést kér, kattintson az **OK** gombra a folytatáshoz.
+3. Ha a rendszer megerősítést kér, kattintson **az OK gombra** a folytatáshoz.
 
     ![A Data Box leállítása – 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -81,33 +81,32 @@ A Data Box újraindításához hajtsa végre az alábbi lépéseket.
 
 ## <a name="download-bom-or-manifest-files"></a>ANYAGJEGYZÉK-vagy manifest-fájlok letöltése
 
-Az anyagjegyzék (AJ) vagy a manifest-fájlok tartalmazzák a Data Box vagy Data Box Heavyba másolt fájlok listáját. Ezeket a fájlokat a rendszer importálási sorrendben hozza létre, amikor előkészíti az eszközt a szállításra.
+Az AJ vagy a manifest-fájlok tartalmazzák a Data Box vagy Data Box Heavyba másolt fájlok listáját. Ezeket a fájlokat a rendszer importálási sorrendben hozza létre, amikor előkészíti az eszközt a szállításra.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az eszköz elvégezte **szállításra való előkészítés** lépést. Az alábbi lépéseket követve letöltheti az importálási sorrendhez tartozó ANYAGJEGYZÉK-vagy jegyzékfájl-fájlokat:
+Mielőtt elkezdené, kövesse az alábbi lépéseket az importálási sorrendhez tartozó AJ-vagy manifest-fájlok letöltéséhez:
 
-1. Nyissa meg az eszköz helyi webes FELÜLETét. Látni fogja, hogy az eszköz befejezte a felkészülést a szállításra. Az eszköz előkészítésének befejezése után az eszköz állapota a **szállításra kész**állapotban jelenik meg.
+1. Nyissa meg az eszköz helyi webes FELÜLETét. Ellenőrizze, hogy az eszköz befejezte-e a **szállításra való előkészítés** lépést. Az eszköz előkészítésének befejezése után az eszköz állapota a **szállításra kész**állapotban jelenik meg.
 
-    ![Az eszköz szállításra kész](media/data-box-portal-admin/ready-to-ship.png)
+    ![Az eszköz szállításra kész](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
 2. Válassza a **fájlok listájának letöltése** lehetőséget a Data Box másolt fájlok listájának letöltéséhez.
 
-    ![Válassza a fájlok listájának letöltése lehetőséget.](media/data-box-portal-admin/download-list-of-files.png)
+    <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
 3. A Fájlkezelőben láthatja, hogy az eszközhöz való kapcsolódáshoz használt protokolltól és a használt Azure Storage-típustól függően a fájlok külön listája jön létre.
 
-    ![Tárolási típus és kapcsolati protokoll fájljai](media/data-box-portal-admin/files-storage-connection-type.png)
+    <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
+    ![Tárolási típus és kapcsolati protokoll fájljai](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
 
    Az alábbi táblázat a fájlneveket az Azure Storage-típusra és a használt kapcsolati protokollra képezi le.
 
     |Fájlnév  |Azure Storage-típus  |Használt kapcsolati protokoll |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob.txt     |Blokkblobok         |SMB/NFS         |
-    |databoxe2etest_PageBlob.txt     |Lapblobok         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM.txt     |Lapblobok         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blokkblobok         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Felügyelt lemez         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Felügyelt lemez         |SMB/NFS         |
+    |utSAC1_202006051000_BlockBlob-BOM.txt     |Blokkblobok         |SMB/NFS         |
+    |utSAC1_202006051000_PageBlob-BOM.txt     |Lapblobok         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |utsac1_PageBlock_Rest-BOM.txt     |Lapblobok         |REST        |
+    |utsac1_BlockBlock_Rest-BOM.txt    |Blokkblobok         |REST         |
 
 Ezt a listát használhatja az Azure Storage-fiókba feltöltött fájlok ellenőrzéséhez, miután a Data Box visszatér az Azure-adatközpontba. Alább látható egy minta manifest-fájl.
 
@@ -209,7 +208,7 @@ Alapértelmezés szerint a Azure Data Box Transport Layer Security (TLS) 1,2 tit
 
 A TLS-vel kapcsolatos további információkért lásd: [Azure Data Box Gateway biztonság](../databox-online/data-box-gateway-security.md).
 
-A TLS 1,1 engedélyezése Azure-eszközön:
+A TLS 1,1 engedélyezése az Azure-eszközön:
 
 1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
 
@@ -223,6 +222,6 @@ A TLS 1,1 engedélyezése Azure-eszközön:
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).

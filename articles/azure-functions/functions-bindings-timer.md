@@ -6,13 +6,13 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 49bbc2199c7dc3040a24071b8eb5a91929d88e08
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849242"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206643"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -168,7 +168,7 @@ public void keepAlive(
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Az attribútum konstruktora egy CRON kifejezést vagy egy-t használ `TimeSpan` . Csak akkor használható, `TimeSpan` Ha a Function alkalmazás egy app Service csomagon fut. `TimeSpan`Fogyasztási vagy rugalmas prémium szintű függvények esetében nem támogatott.
+Az attribútum konstruktora egy CRON kifejezést vagy egy-t használ `TimeSpan` . Csak akkor használható, `TimeSpan` Ha a Function alkalmazás egy app Service csomagon fut. `TimeSpan` Fogyasztási vagy rugalmas prémium szintű függvények esetében nem támogatott.
 
 A következő példa egy CRON-kifejezést mutat be:
 
@@ -213,11 +213,11 @@ public void keepAlive(
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TimerTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -314,7 +314,7 @@ Ha a Storage-fiókokat az App Service-be nem telepített functions-alkalmazások
 
 | Függvények verziója | Beállítás                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2. x (és újabb)  | `AzureFunctionsWebHost__hostid`környezeti változó |
+| 2. x (és újabb)  | `AzureFunctionsWebHost__hostid` környezeti változó |
 | 1. x               | `id`*host.jsbekapcsolva*                                  |
 
 Kihagyhatja az azonosító értéket, vagy manuálisan állíthatja be az egyes functions-alkalmazások azonosítási konfigurációját egy másik értékre.

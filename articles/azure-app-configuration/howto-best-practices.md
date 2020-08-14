@@ -11,13 +11,13 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: d97626d5eed96a3debb41c86f6dab6fbaf1953cd
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500300"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206686"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -42,7 +42,7 @@ A *címkék* a kulcsok attribútumai. Egy kulcs változatának létrehozásához
 
 Az alkalmazás konfigurációja a vele együtt tárolt összes kulcsot független entitásként kezeli. Az alkalmazás konfigurációja nem kísérli meg a kulcsok közötti kapcsolat következtetését, illetve a kulcs értékének öröklését a hierarchiájuk alapján. A kulcsok több készletét is összesítheti, ha az alkalmazás kódjában a megfelelő konfiguráció halmozásával párosított címkéket használ.
 
-Lássunk erre egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
+Lássunk egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
 
 A kódban először le kell kérnie a kulcs értékeit címkék nélkül, majd a "fejlesztés" címkével megegyező számú kulcs-értéket kell lekérnie. Ha a második alkalommal kéri le az értékeket, a kulcsok korábbi értékei felül lesznek írva. A .NET Core konfigurációs rendszer lehetővé teszi, hogy az egymásra épülő konfigurációs adat több készletét "verem". Ha egy kulcs egynél több készletben található, az azt tartalmazó utolsó készletet használja. A modern programozási keretrendszer, például a .NET Core esetében ez a halmozási képesség ingyenesen elérhető, ha natív konfigurációs szolgáltatót használ az alkalmazás konfigurálásához. A következő kódrészlet azt mutatja be, hogyan valósítható meg a halmozás egy .NET Core-alkalmazásban:
 
@@ -91,6 +91,6 @@ Az alkalmazás konfigurációja lehetőséget biztosít a konfigurációs beáll
 
 Az alkalmazás konfigurációja regionális szolgáltatás. Régiónként eltérő konfigurációval rendelkező alkalmazások esetén a konfigurációk egyetlen példányban való tárolása egyetlen meghibásodási pontot is létrehozhat. Egy alkalmazás-konfigurációs példányok régiónként több régióban való üzembe helyezése jobb megoldás lehet. Segíthet a regionális katasztrófa-helyreállításban, a teljesítményben és a biztonsági silóban. A régió szerinti konfigurálás Emellett javítja a késést, és elválasztott szabályozási kvótákat használ, mivel a szabályozás egy példányon alapul. A vész-helyreállítási enyhítés alkalmazásához [több konfigurációs tárolót](./concept-disaster-recovery.md)is használhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kulcsok és értékek](./concept-key-value.md)

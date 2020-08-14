@@ -2,13 +2,14 @@
 title: Azure Functions futtatókörnyezet-verziók áttekintése
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogy miben különböznek egymástól, és hogyan választhatja ki az Önnek legmegfelelőbbet.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081678"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208102"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -59,7 +60,7 @@ A 2. x verzióban a következő módosítások történtek:
 
 * A figyelés javítása érdekében a webjobs-irányítópultot a portálon, amely a beállítást használta, az [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) Azure Application Insights, amely a [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) beállítást használja. További információ: [Azure functions figyelése](functions-monitoring.md).
 
-* A Function alkalmazás összes függvényének ugyanazt a nyelvet kell megosztania. Function-alkalmazás létrehozásakor ki kell választania egy futásidejű veremet az alkalmazáshoz. A futásidejű verem [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) értékét az Alkalmazásbeállítások értéke határozza meg. Ez a követelmény a lábnyom és az indítási idő javítására lett hozzáadva. Helyi fejlesztés esetén ezt a beállítást a [fájllocal.settings.js](functions-run-local.md#local-settings-file)is tartalmaznia kell.
+* A Function alkalmazás összes függvényének ugyanazt a nyelvet kell megosztania. Function-alkalmazás létrehozásakor ki kell választania egy futásidejű veremet az alkalmazáshoz. A futásidejű verem [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) értékét az Alkalmazásbeállítások értéke határozza meg. Ez a követelmény a lábnyom és az indítási idő javítására lett hozzáadva. Helyi fejlesztés esetén ezt a beállítást a [ fájllocal.settings.js](functions-run-local.md#local-settings-file)is tartalmaznia kell.
 
 * Egy App Service csomagban lévő függvények alapértelmezett időtúllépése 30 percre módosul. Manuálisan is módosíthatja az időtúllépést a host.js[functionTimeout](functions-host-json.md#functiontimeout) beállításával.
 
@@ -193,7 +194,7 @@ A következő táblázat bemutatja, hogy az egyes futásidejű verziók milyen k
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

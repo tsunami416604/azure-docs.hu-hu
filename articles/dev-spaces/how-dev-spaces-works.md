@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 40125b07029c78b4e8858d54058aabe038109057
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837414"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212545"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
 
@@ -46,7 +46,6 @@ A GitHub-műveleteket az Azure dev Spaces használatával is használhatja, ha a
 
 A helyi fejlesztési számítógép AK-fürthöz való csatlakoztatásának megkezdéséhez lásd: [a fejlesztői számítógép csatlakoztatása egy AK-fürthöz][connect].
 
-Az Azure dev Spaces for Team Development használatának megkezdéséhez tekintse meg a [csapat fejlesztését az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
@@ -55,5 +54,4 @@ Az Azure dev Spaces for Team Development használatának megkezdéséhez tekints
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [routing]: #team-development

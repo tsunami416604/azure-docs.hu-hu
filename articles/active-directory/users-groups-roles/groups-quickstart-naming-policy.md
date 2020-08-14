@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582834"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213685"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rövid útmutató: Elnevezési szabályzat az Azure Active Directoryban lévő csoportokhoz
 
-Ebben a rövid útmutatóban a felhasználó által létrehozott Office 365-csoportok elnevezési szabályzatát fogja beállítani a Azure Active Directory (Azure AD) szervezetében, hogy segítsen rendezni és keresni a szervezet csoportjait. Az elnevezési szabályzatot például a következőkre használhatja:
+Ebben a rövid útmutatóban a felhasználó által létrehozott Microsoft 365 csoportok elnevezési szabályzatát fogja beállítani a Azure Active Directory (Azure AD) szervezetében, hogy segítsen rendezni és keresni a szervezet csoportjait. Az elnevezési szabályzatot például a következőkre használhatja:
 
 * Tájékoztatást adhat a csoport funkciójáról, tagságáról, földrajzi régiójáról vagy a csoport létrehozójáról.
 * Segíthet a csoportok a címtárban való besorolásában.
 * Letilthatja bizonyos szavak használatát a csoportnevekben és aliasokban.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>A csoport elnevezési szabályzatának konfigurálása a Azure Portalban
 
@@ -64,7 +64,7 @@ Ennyi az egész. Beállította az elnevezési szabályzatot és hozzáadta az eg
 1. Az **elnevezési házirend** lapon válassza a **házirend törlése**lehetőséget.
 1. A Törlés megerősítése után a rendszer eltávolítja az elnevezési házirendet, beleértve az összes előtag-utótag elnevezési házirendet és az egyéni letiltott szavakat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan állíthatja be az Azure AD-szervezet elnevezési házirendjét a Azure Portal használatával.
 

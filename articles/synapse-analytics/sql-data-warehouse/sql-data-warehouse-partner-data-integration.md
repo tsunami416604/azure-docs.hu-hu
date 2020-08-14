@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 354e51d529c504bd04ed40f64b3db14a06384c98
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296389"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210576"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Az Azure szinapszis Analytics adatintegrációs partnerei
 
@@ -43,9 +43,9 @@ Az adattárház-megoldás létrehozásához az Azure szinapszis szinapszis SQL-k
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>A StreamSets adatintegrációs platformot biztosít a DataOps számára. A operationalizes az Azure szinapszis-adattárházba való integrálásának teljes körű, üzembe helyezési életciklusát is tartalmazza. Gyorsan betöltheti és integrálhatja az adatait a raktárba, a folyamatos átvitel, a Batch vagy a módosított adatok rögzítése adattovábbítási módszerek segítségével. Emellett biztosíthatja a folyamatos műveleteket olyan intelligens adatfolyamatokkal, amelyek teljes körű adatáramlást és rugalmasságot biztosítanak.|[Termék lap](https://streamsets.com/partners/microsoft)|
 | ![Tehetség](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Tehetség-felhő**<br>A tehetség Cloud egy nagyvállalati adatintegrációs platform, amely a felhőben vagy a helyszínen lévő összes adatkapcsolathoz, hozzáféréshez és átalakításhoz biztosít hozzáférést. Ez egy szolgáltatásként nyújtott integrációs platform (iPaaS), amely széles körű kapcsolódást, beépített adatminőséget és natív támogatást nyújt a legújabb big data és felhőalapú technológiákhoz. |[Termék lap](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>A TimeXtender felderítési központja lehetővé teszi a vállalatok számára, hogy egy integrált adatkezelési platformot biztosítanak a modern adatközpontok létrehozásához, amely akár 10 alkalommal gyorsítja fel az adatelemzési időt. A mindennapi kinyerési, átalakítási és betöltési (ETL) vagy kinyerési, betöltési és átalakítási (ELT-) funkciókon túl az adathozzáférés, az adatmodellezés és a megfelelőség egyetlen platformon történő biztosításával. A felderítési központ egy egységes adathálót biztosít a felhőalapú méretezési elemzésekhez, így lehetővé teszi a különböző adatsilók, katalógusok, modellek, áthelyezési és dokumentumok adatainak összekapcsolását az elemzéshez és a mesterséges intelligenciához. | [Termék lap](https://www.timextender.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
-| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> A Trifacta segítségével a magánszemélyek és a szervezetek is megismerhetik és összekapcsolhatók különböző adatelemzési adataikkal. A Trifacta Wrangler úgy van kialakítva, hogy kezelje az olyan huzavona-munkaterheléseket, amelyeknek a nagy mennyiségű felhasználót kell támogatniuk.|[Termék lap](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview) |
+| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> A Trifacta segítségével a magánszemélyek és a szervezetek is megismerhetik és összekapcsolhatók különböző adatelemzési adataikkal. A Trifacta Wrangler úgy van kialakítva, hogy kezelje az olyan huzavona-munkaterheléseket, amelyeknek a nagy mennyiségű felhasználót kell támogatniuk.|[Termék lap](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape piros**<br> A WhereScape RED egy IDE, amely automatizálási eszközökkel segíti a csapatok számára az ETL-munkafolyamatok egyszerűsítését. Az IDE ajánlott eljárás, optimalizált natív kód a népszerű adatcélokhoz. A WhereScape RED használatával csökkentheti az adatinfrastruktúra fejlesztéséhez, üzembe helyezéséhez és üzemeltetéséhez szükséges időt.|[Termék lap](https://www.wherescape.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia partnerekkel](sql-data-warehouse-partner-business-intelligence.md), [adatkezelés partnerekkel](sql-data-warehouse-partner-data-management.md) és [Machine Learningekkel és AI-partnerekkel](sql-data-warehouse-partner-machine-learning-ai.md)foglalkozó részt.

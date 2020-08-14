@@ -2,13 +2,13 @@
 title: Entity types – LUIS
 description: Egy entitás kinyeri az adatait a felhasználótól az előrejelzési futtatókörnyezetben. Egy _opcionális_, másodlagos cél a szándék vagy más entitások előrejelzésének növelése az entitás szolgáltatásként való használatával.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 08/06/2020
+ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337619"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207747"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
 
@@ -30,7 +30,7 @@ Az entitásokat következetesen kell megcímkézni a modell minden egyes szánd�
 
  Megadhatja saját entitásait, vagy az előre elkészített entitások használatával időt takaríthat meg a gyakori fogalmak, például a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [sorszám](luis-reference-prebuilt-ordinal.md), az [e-mail](luis-reference-prebuilt-email.md)és a [telefonszámok](luis-reference-prebuilt-phonenumber.md)számára.
 
-|Beszédelem|Entitás|Adatok|
+|Kimondott szöveg|Entitás|Adatok|
 |--|--|--|
 |3 jegy vásárlása a New Yorkba|Előre elkészített szám<br>Cél|3<br>New York|
 
@@ -49,7 +49,7 @@ Az entitás egy adatkoncepciót képvisel _a teljes_kifejezésen belül. A cél 
 
 Vegye figyelembe a következő négy hosszúságú kimondott szöveg:
 
-|Beszédelem|Előre jelzett szándék|Kinyert entitások|Magyarázat|
+|Kimondott szöveg|Előre jelzett szándék|Kinyert entitások|Magyarázat|
 |--|--|--|--|
 |Súgó|segítség|-|Nincs kibontva.|
 |Küldés valami|sendSomething|-|Nincs kibontva. A modell nem rendelkezik a kinyeréséhez szükséges funkcióval `something` , és nincs megadva címzett.|
@@ -140,14 +140,21 @@ A minta. any csak egy [mintában](luis-concept-patterns.md)érhető el.
 
 Ha a [korlátnál](luis-limits.md#model-limits)nagyobbra van szüksége, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön részletes információkat a rendszeréről, lépjen a [Luis](luis-reference-regions.md#luis-website) webhelyére, és válassza a **támogatás**lehetőséget. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához.
 
-## <a name="entity-prediction-status"></a>Entitás-előrejelzés állapota
+## <a name="entity-prediction-status-and-errors"></a>Entitás-előrejelzési állapot és hibák
 
-A LUIS-portál azt mutatja be, hogy az entitás eltérő egyed-előrejelzéssel rendelkezik, mint a kiválasztáshoz kiválasztott entitás. Ez a különböző pontszám az aktuálisan betanított modellen alapul. Ezekkel az információkkal a következő műveleteket hajthatja végre a betanítási hibák elhárításához:
+A LUIS-portál azt mutatja be, hogy az entitás eltérő egyed-előrejelzéssel rendelkezik, mint a kiválasztáshoz kiválasztott entitás. Ez a különböző pontszám az aktuálisan betanított modellen alapul. 
+
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="A LUIS-portál azt mutatja be, hogy az entitás eltérő egyed-előrejelzéssel rendelkezik, mint a kiválasztáshoz kiválasztott entitás.":::
+
+A hibát jelző szöveg kiemelve jelenik meg a példán belül, és a példában szereplő kifejezés a jobbra mutató hibaüzenetet jeleníti meg, piros háromszögként megjelenítve. 
+
+Ezekkel az információkkal az alábbi műveleteket hajthatja végre az entitások hibáinak elhárításához:
+* A Kiemelt szöveg téves címkével van ellátva. A javításhoz, felülvizsgálathoz, javításhoz és újratanításhoz. 
 * Hozzon létre egy [szolgáltatást](luis-concept-feature.md) az entitás számára az entitás koncepciójának azonosítása érdekében
 * További [példa hosszúságú kimondott szöveg](luis-concept-utterance.md) és címke hozzáadása az entitáshoz
 * [Tekintse át az aktív tanulási javaslatokat](luis-concept-review-endpoint-utterances.md) az előrejelzési végponton fogadott bármely hosszúságú kimondott szöveg, amely segíthet az entitás koncepciójának azonosításában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a jó [hosszúságú kimondott szöveg](luis-concept-utterance.md)kapcsolatos fogalmakat.
 

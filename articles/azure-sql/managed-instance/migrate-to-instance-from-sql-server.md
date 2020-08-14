@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087571"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209485"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Az adatbázis-áttelepítési folyamat magas szinten a következőképpen néz k
 
 Először határozza meg, hogy az SQL felügyelt példány kompatibilis-e az alkalmazás adatbázis-követelményeivel. Az SQL felügyelt példánya úgy lett kialakítva, hogy a SQL Servert használó meglévő alkalmazások többsége számára könnyen áthelyezhető legyen a lift és a váltás. Előfordulhat azonban, hogy esetenként olyan szolgáltatásokat vagy képességeket igényel, amelyek még nem támogatottak, és a megkerülő megoldás megvalósításának díja túl magas.
 
-A [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) használatával észlelheti a Azure SQL Databaseon az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat. Ha néhány blokkolt blokkolási probléma van, előfordulhat, hogy fontolóra kell vennie egy másik lehetőséget, például [SQL Server az Azure virtuális gépen](https://azure.microsoft.com/services/virtual-machines/sql-server/). Az alábbiakban néhány példa következik:
+A [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) használatával észlelheti a Azure SQL Databaseon az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat. Ha néhány blokkolt blokkolási probléma van, előfordulhat, hogy fontolóra kell vennie egy másik lehetőséget, például [SQL Server az Azure virtuális gépen](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
 
 - Ha közvetlen hozzáférésre van szüksége az operációs rendszerhez vagy a fájlrendszerhez, például a külső gyártótól származó vagy az egyéni ügynököket ugyanarra a virtuális gépre telepíti SQL Server.
 - Ha olyan funkciókkal rendelkezik, amelyek még nem támogatottak, például a FileStream/leválasztható, a bázisterület és a több példány tranzakciója.
@@ -162,7 +162,7 @@ Az adatbázisok felügyelt példányra történő áttelepítése az esetek töb
 Előfeltételként ellenőrizze, hogy végrehajtotta-e a következő tevékenységeket:
 
 - A felügyelt példány beállításainak igazítása a forrás SQL Server példány beállításaival a különböző példányok, adatbázisok, tempdb-beállítások és konfigurációk vizsgálatával. Győződjön meg arról, hogy nem módosította a beállításokat, például a kompatibilitási szinteket vagy a titkosítást az első teljesítmény-összehasonlítás futtatása előtt, vagy fogadja el azt a kockázatot, hogy az Ön által engedélyezett új funkciók némelyike bizonyos lekérdezésekre is hatással lehet. Az áttelepítési kockázatok csökkentése érdekében csak a teljesítmény figyelése után módosítsa az adatbázis kompatibilitási szintjét.
-- Az [általános célúre vonatkozó ajánlott eljárások](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)bevezetése, például a fájlok méretének előzetes lefoglalása a jobb teljesítmény érdekében.
+- Az [általános célúre vonatkozó ajánlott eljárások](https://techcommunity.microsoft.com)bevezetése, például a fájlok méretének előzetes lefoglalása a jobb teljesítmény érdekében.
 - Ismerje meg azokat a [kulcsfontosságú környezeti különbségeket, amelyek a felügyelt példányok és a SQL Server közötti teljesítménybeli különbségeket okozhatják](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/), és azonosíthatja azokat a kockázatokat, amelyek hatással lehetnek a teljesítményre.
 - Győződjön meg arról, hogy a felügyelt példányon megtartja az engedélyezett lekérdezési tárolót és az automatikus finomhangolást. Ezek a funkciók lehetővé teszik a számítási feladatok teljesítményének mérését és a lehetséges teljesítménybeli problémák automatikus kijavítását. Ismerje meg, hogyan használhatja a Query Store-t optimális eszközként a munkaterhelés teljesítményének az adatbázis-kompatibilitási szint változása előtt és után történő beolvasásához, ahogy az a [teljesítmény stabilitásának fenntartása a frissítés során újabb SQL Server verzióra](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 Miután előkészítette a környezetet, amely a lehető legnagyobb mértékben összehasonlítható a helyszíni környezettel, megkezdheti a számítási feladatok futtatását és a teljesítmény mérését. A mérési folyamatnak meg kell egyeznie a megadott paraméterekkel, amelyeket a számítási feladatoknak a [forrás SQL Server-példányon való kiindulási teljesítményének létrehozásakor](#create-a-performance-baseline)mért.
@@ -202,7 +202,7 @@ A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory 
 
 A speciális felügyeleti és biztonsági funkciók mellett a felügyelt példányok olyan speciális eszközöket biztosítanak, amelyek segítségével [figyelheti és beállíthatja a számítási feladatokat](../database/monitor-tune-overview.md). [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) lehetővé teszi a felügyelt példányok nagy készletének figyelését és a nagy számú példány és adatbázis figyelését. A felügyelt példányok [automatikus finomhangolása](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) folyamatosan FIGYELI az SQL-terv végrehajtási statisztikáinak teljesítményét, és automatikusan kijavítja az azonosított teljesítménnyel kapcsolatos problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure SQL felügyelt példányáról: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A biztonsági másolatból történő visszaállítást tartalmazó oktatóanyagért tekintse meg [a felügyelt példány létrehozása](instance-create-quickstart.md)című témakört.
