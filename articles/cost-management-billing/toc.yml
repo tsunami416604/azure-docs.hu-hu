@@ -1,474 +1,474 @@
 - name: Az Azure Cost Management + Billing dokumentációja
   href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Cost Management and Billing?
+      href: cost-management-billing-overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Költségelemzés indítása
+      href: costs/quick-acm-cost-analysis.md
+    - name: Költségvetés létrehozása – ARM-sablon
+      href: costs/quick-create-budget-template.md
+      displayName: 'ARM template, resource manager template'
+- name: Oktatóanyagok
+  items:
+    - name: Az egyéni fiókhoz tartozó számla áttekintése
+      href: understand/review-individual-bill.md
+    - name: A nagyvállalati szerződéshez tartozó számla áttekintése
+      href: understand/review-enterprise-agreement-bill.md
+    - name: A Microsoft-ügyfélszerződéshez tartozó számla áttekintése
+      href: understand/review-customer-agreement-bill.md
+    - name: A Microsoft-partnerszerződéshez tartozó számla áttekintése
+      href: understand/review-partner-agreement-bill.md
+    - name: Költségvetések létrehozása és kezelése
+      href: costs/tutorial-acm-create-budgets.md
+    - name: Adatok exportálása
+      href: costs/tutorial-export-acm-data.md
+    - name: Javaslatok végrehajtása
+      href: costs/tutorial-acm-opt-recommendations.md
+- name: Alapelvek
+  items:
+    - name: Cost Management
+      items:
+        - name: Az Azure Cost Management ajánlott eljárásai
+          href: costs/cost-mgt-best-practices.md
+        - name: A Cost Management adatainak értelmezése
+          href: costs/understand-cost-mgt-data.md
+        - name: A hatókörök ismertetése és használata
+          href: costs/understand-work-scopes.md
+        - name: Csoportosítási és szűrési lehetőségek
+          href: costs/group-filter.md
+        - name: Költségek kezelése automatizálással
+          href: costs/manage-automation.md
+        - name: Cost Management partnerek számára
+          href: costs/get-started-partners.md
+        - name: Választás a Cost Management és a Cloudyn között
+          href: costs/choose-between-azure-cost-management-cloudyn.md
+    - name: Lefoglalások
+      items:
+        - name: Mi az az Azure Reservations?
+          href: reservations/save-compute-costs-reservations.md?toc=/azure/cost-management-billing/toc.json
+        - name: Foglalási javaslatok létrehozása
+          href: reservations/reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/toc.json
+        - name: A kedvezmény alkalmazásának módja
+          items:
+            - name: Az Azure-beli foglalási kedvezmény alkalmazása
+              href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
+            - name: App Service
+              href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Cache for Redis
+              href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Cosmos DB
+              href: reservations/understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Database for MariaDB
+              href: reservations/understand-reservation-charges-mariadb.md?toc=/azure/cost-management-billing/toc.json
+            - name: Database for MySQL
+              href: reservations/understand-reservation-charges-mysql.md?toc=/azure/cost-management-billing/toc.json
+            - name: Database for PostgreSQL
+              href: reservations/understand-reservation-charges-postgresql.md?toc=/azure/cost-management-billing/toc.json
+            - name: Databricks
+              href: reservations/reservation-discount-databricks.md
+            - name: Data Explorer
+              href: reservations/understand-azure-data-explorer-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Dedikált gazdagépek
+              href: reservations/billing-understand-dedicated-hosts-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Disk Storage
+              href: reservations/understand-disk-reservations.md?toc=/azure/cost-management-billing/toc.json
+            - name: Red Hat Linux Enterprise
+              href: reservations/understand-rhel-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Szoftvercsomagok
+              href: reservations/understand-suse-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Storage
+              href: reservations/understand-storage-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: SQL Database
+              href: reservations/understand-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Synapse Analytics
+              href: reservations/reservation-discount-azure-sql-dw.md?toc=/azure/cost-management-billing/toc.json
+            - name: Virtual machines (Virtuális gépek)
+              href: manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+        - name: A Windows és az SQL költségeit nem tartalmazza
+          href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
+        - name: Használati adatok egyéni előfizetések esetén
+          href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
+        - name: Használati adatok vállalati ügyfelek esetén
+          href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
+    - name: Számlázás
+      items:
+        - name: Egyéni előfizetés – használattal kapcsolatos kifejezések
+          href: understand/understand-usage.md
+        - name: Egyéni előfizetés – számlával kapcsolatos kifejezések
+          href: understand/understand-invoice.md
+        - name: Microsoft-ügyfélszerződés – használattal kapcsolatos kifejezések
+          href: understand/mca-understand-your-usage.md
+        - name: Microsoft-ügyfélszerződés – számlával kapcsolatos kifejezések
+          href: understand/mca-understand-your-invoice.md
+        - name: Microsoft-ügyfélszerződés – az árlistán szereplő kifejezések
+          href: manage/mca-understand-pricesheet.md
+        - name: Microsoft-partnerszerződés – számlával kapcsolatos kifejezések
+          href: understand/mpa-invoice-terms.md
+        - name: Az egyéni számlázás frissített fiókjában bekövetkezett változások
+          href: understand/mosp-new-customer-experience.md
+        - name: A Microsoft ügyfélszerződés számlázási fiókjai
+          href: understand/mca-overview.md
+        - name: A Microsoft Partnerszerződés számlázási fiókjai
+          href: understand/mpa-overview.md
+- name: Útmutatók
+  items:
+    - name: Azure Cost Management + Billing konfigurálása
+      items:
+        - name: Fiókok adminisztrálása
+          items:
+            - name: Fiókadminisztrátori feladatok
+              href: manage/account-admin-tasks.md
+            - name: Profil szerkesztése
+              href: manage/change-azure-account-profile.md
+            - name: Késedelmes egyenleg kezelése
+              href: manage/resolve-past-due-balance.md
+            - name: Hozzáférés biztosítása a számlázáshoz
+              href: manage/manage-billing-access.md
+            - name: A Microsoft ügyfélszerződések szerepkörei az Azure-ban
+              href: manage/understand-mca-roles.md
+            - name: Hivatkozás partnerazonosítóra
+              href: manage/link-partner-id.md
+        - name: Előfizetések adminisztrálása
+          items:
+            - name: Hozzáférések hozzárendelése költségkezelési adatokhoz
+              href: costs/assign-access-acm-data.md
+            - name: Előfizetési állapotok
+              href: manage/subscription-states.md
+            - name: Előfizetés újraaktiválása
+              href: manage/subscription-disabled.md
+            - name: Azure Student-előfizetés újbóli aktiválása
+              href: manage/azurestudents-subscription-disabled.md
+            - name: Tulajdonjogok átadása
+              href: manage/billing-subscription-transfer.md
+            - name: Tulajdonjog kérelmezése – Microsoft-ügyfélszerződés
+              href: manage/mca-request-billing-ownership.md
+            - name: Tulajdonjog kérelmezése – Microsoft-partnerszerződés
+              href: manage/mpa-request-ownership.md
+            - name: AWS-integráció beállítása és konfigurálása
+              href: costs/aws-integration-set-up-configure.md
+    - name: Kulcsfontosságú számlázási adminisztrációs feladatok elvégzése
+      items:
+        - name: Fiókok kezelése
+          items:
+            - name: Számlázási fiókok megtekintése
+              href: manage/view-all-accounts.md
+            - name: Költségek rendszerezése számlaszakaszokkal
+              href: manage/mca-section-invoice.md
+            - name: Számlázási fiók beállítása a Microsoft-ügyfélszerződéshez
+              href: manage/mca-setup-account.md
+            - name: Regisztráció Microsoft 365-fiókkal
+              href: manage/microsoft-365-account-for-azure-subscription.md
+            - name: Regisztrálás a Microsoft 365-be Azure-fiókkal
+              href: manage/azure-account-for-microsoft-365-subscription.md
+            - name: Fizetés erős ügyfél-hitelesítéssel
+              href: manage/open-banking-strong-customer-authentication.md
+        - name: Előfizetések kezelése
+          items:
+            - name: Számlás fizetés
+              href: manage/pay-by-invoice.md
+            - name: További előfizetések létrehozása
+              href: manage/create-subscription.md
+            - name: Előfizetési adatok exportálása
+              href: manage/export-subscriptions.md
+            - name: Hitelkártya módosítása
+              href: manage/change-credit-card.md
+            - name: Rendszergazda módosítása
+              href: manage/add-change-subscription-administrator.md
+            - name: Váltás előfizetési ajánlatok között
+              href: manage/switch-azure-offer.md
+            - name: CSP-előfizetések átvitele
+              href: manage/transfer-subscriptions-subscribers-csp.md
+            - name: Előfizetés lemondása
+              href: manage/cancel-azure-subscription.md
+        - name: Nagyvállalati szerződéses előfizetések kezelése
+          items:
+            - name: Első lépések a nagyvállalati szerződéses Azure Portalon
+              href: manage/ea-portal-get-started.md
+            - name: Nagyvállalati szerződéses szerepkörök az Azure-ban
+              href: manage/understand-ea-roles.md
+            - name: A nagyvállalati szerződéses Azure Portal adminisztrációja
+              href: manage/ea-portal-administration.md
+            - name: Azure EA portál adminisztrációja a partnerek számára
+              href: manage/ea-partner-portal-administration.md
+            - name: Azure Enterprise-átvitelek
+              href: manage/ea-transfers.md
+            - name: A Microsoft ügyfélszerződés EA-feladatai
+              href: manage/mca-enterprise-operations.md
+            - name: Azure nagyvállalati szerződések és a módosításaik
+              href: manage/ea-portal-agreements.md
+            - name: Nagyvállalati regisztrációs számlák
+              href: manage/ea-portal-enrollment-invoices.md
+            - name: Az Azure EA díjszabása
+              href: manage/ea-pricing-overview.md
+            - name: Azure Enterprise REST API-k
+              href: manage/ea-portal-rest-apis.md
+            - name: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
+              href: manage/ea-portal-vm-reservations.md
+            - name: Azure Piactér
+              href: manage/ea-azure-marketplace.md
+        - name: Költségekkel és számlázással kapcsolatos információ letöltése
+          items:
+            - name: A számla befizetése
+              href: understand/pay-bill.md
+            - name: Az Azure-számla megtekintése és letöltése
+              href: understand/download-azure-invoice.md
+            - name: Az Azure használati adatainak és díjainak megtekintése és letöltése
+              href: understand/download-azure-daily-usage.md
+            - name: A számla és a napi használati adatok letöltése
+              href: manage/download-azure-invoice-daily-usage-date.md
+            - name: Adózási dokumentumok megtekintése és letöltése
+              href: understand/mca-download-tax-document.md
+            - name: A külső Azure-szolgáltatási díjak megtekintése
+              href: understand/understand-azure-marketplace-charges.md
+            - name: A cég vagy intézmény díjszabásának megtekintése és letöltése
+              href: manage/ea-pricing.md
+        - name: Ingyenes fiók
+          items:
+            - name: Ingyenes szolgáltatások létrehozása
+              href: manage/create-free-services.md
+            - name: Díjak elkerülése
+              href: manage/avoid-charges-free-account.md
+            - name: Használat ellenőrzése
+              href: manage/check-free-service-usage.md
+            - name: Ingyenes fiók bővítése
+              href: manage/upgrade-azure-subscription.md
+    - name: Kulcsfontosságú költségkezelési feladatok elvégzése
+      items:
+        - name: Váratlan költségek megelőzése
+          href: manage/getting-started.md
+        - name: Díjszabás kiszámítása
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Gyakori műveletek költségelemzése
+          href: costs/cost-analysis-common-uses.md
+        - name: Költségvetéssel kapcsolatos műveletek automatizálása
+          href: manage/cost-management-budget-scenario.md
+        - name: Költségriasztások használata
+          href: costs/cost-mgt-alerts-monitor-usage-spending.md
+        - name: Kapcsolódás Power BI Desktoppal
+          href: /power-bi/desktop-connect-azure-cost-management
+        - name: Az Azure költségeinek elemzése a Power BI-sablonalkalmazással
+          href: costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
+        - name: Az AWS költségeinek és használatának felügyelete
+          href: costs/aws-integration-manage.md
+        - name: A költségkeret ismertetése
+          href: manage/spending-limit.md
+        - name: A Microsoft ügyfélszerződés jóváírásainak nyomon követése
+          href: manage/mca-check-azure-credits-balance.md
+        - name: Migrálás EA-ról MCA API-kra
+          href: costs/migrate-cost-management-api.md
+    - name: Foglalások vásárlása és adminisztrálása
+      items:
+        - name: 'Kiválaszthatja, hogy mit szeretne megvásárolni'
+          items:
+            - name: A megvásárolni kívánt foglalás kiválasztása
+              href: reservations/determine-reservation-purchase.md?toc=/azure/cost-management-billing/toc.json
+        - name: Foglalások vásárlása
+          items:
+            - name: Azure-foglalás vásárlása
+              href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
+            - name: App Service
+              href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Cache for Redis-foglalás
+              href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
+            - name: Cosmos DB
+              href: /azure/data-explorer
+            - name: Databricks
+              href: reservations/prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Data Explorer
+              href: /azure/data-explorer/pricing-reserved-capacity
+            - name: Disk Storage
+              href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Dedikált gazdagép
+              href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
+            - name: Szoftvercsomagok
+              href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Storage
+              href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Database for PostgreSQL
+              href: ../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Database for MySQL
+              href: ../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Database for MariaDB
+              href: ../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+            - name: SAP HANA nagyméretű példányok
+              href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: SQL Database
+              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Synapse Analytics
+              href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Virtual machines (Virtuális gépek)
+              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+        - name: 'Megtekintés, kezelés és optimalizálás a vásárlás után'
+          items:
+            - name: Foglalások és kihasználtság megtekintése
+              href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+            - name: Foglalások megtekintése CSP-ként
+              href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
+            - name: Foglalások kezelése
+              href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
+            - name: Cserére és visszatérítésre vonatkozó foglalások
+              href: reservations/exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/toc.json
+        - name: Jelentési költségek
+          items:
+            - name: Foglalási tranzakciók megtekintése
+              href: reservations/view-purchase-refunds.md?toc=/azure/cost-management-billing/toc.json
+            - name: Foglalási költségek visszatérítése
+              href: reservations/charge-back-usage.md?toc=/azure/cost-management-billing/toc.json
+        - name: Foglalások megújítása
+          items:
+            - name: Foglalás megújítása
+              href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
+    - name: Hibaelhárítás
+      items:
+        - name: Nem található előfizetés
+          href: manage/no-subscriptions-found.md
+        - name: Fizetési problémák
+          href: manage/billing-troubleshoot-azure-payment-issues.md
+        - name: Elutasított kártya
+          href: manage/troubleshoot-declined-card.md
+        - name: Azure-fiók regisztrációjával kapcsolatos problémák
+          href: manage/troubleshoot-azure-sign-up.md
+        - name: Bejelentkezéssel kapcsolatos problémák az előfizetésben
+          href: manage/troubleshoot-sign-in-issue.md
+        - name: Vállalati költségek nézet letiltva
+          href: manage/enterprise-mgmt-grp-troubleshoot-cost-view.md
+        - name: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
+          href: manage/ea-portal-troubleshoot.md
+        - name: Kapcsolatfelvétel a támogatási szolgáltatással
+          href: ../azure-portal/supportability/how-to-create-azure-support-request.md
+- name: Referencia
+  items:
+    - name: Azure Cost Management REST API
+      href: 'https://docs.microsoft.com/rest/api/cost-management'
+    - name: Azure használati REST API
+      href: 'https://docs.microsoft.com/rest/api/consumption'
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.consumption/budgets
+    - name: Cost Management REST API-minták
+      href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: Számlázásautomatizálási forgatókönyvek
+      href: manage/cost-management-automation-scenarios.md
+    - name: Az Azure számlázási API áttekintése
+      href: manage/usage-rate-card-overview.md
+    - name: Azure számlázási REST API
+      href: 'https://docs.microsoft.com/rest/api/billing'
+    - name: Azure használati API áttekintése
+      href: manage/consumption-api-overview.md
+    - name: Azure használati REST API
+      href: 'https://docs.microsoft.com/rest/api/consumption'
+    - name: RateCard REST API
+      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+    - name: Használati REST API
+      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+    - name: A vállalati jelentéskészítés áttekintése
+      href: manage/enterprise-api.md
+    - name: Vállalati jelentéskészítési REST API
+      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+    - name: Lefoglalások
+      items:
+        - name: Reservations REST API
+          href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
+        - name: Reservations – Azure PowerShell
+          href: /powershell/module/azurerm.reservations
+        - name: Reservations – parancssori felület
+          href: /cli/azure/reservations/reservation
+        - name: Cost Management – Consumption Usage Details REST API
+          href: /rest/api/consumption/usagedetails
+        - name: Cost Management – Consumption Reservations Details REST API
+          href: /rest/api/consumption/reservationsdetails
+- name: További források
+  items:
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      href: /learn/browse/?products=azure-cost-management
+    - name: Cost Management visszajelzési fóruma
+      href: 'https://feedback.azure.com/forums/906772-cost-management'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+- name: Példák
+  items:
+    - name: REST API
+      items:
+        - name: A vállalati költségek áttekintése
+          href: manage/review-enterprise-billing.md
+        - name: Az előfizetés használatának áttekintése
+          href: manage/review-subscription-billing.md
+        - name: Az erőforrás-használat áttekintése
+          href: manage/review-service-usage-api.md
+    - name: .NET-minták
+      items:
+        - name: Számlázási API kódmintája
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Használati API kódmintája
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API kódmintája
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+- name: Cloudyn
   items:
     - name: Áttekintés
       items:
-        - name: Mi a Cost Management and Billing?
-          href: cost-management-billing-overview.md
+        - name: Mi az a Cloudyn?
+          href: cloudyn/overview.md
     - name: Rövid útmutatók
       items:
-        - name: Költségelemzés indítása
-          href: costs/quick-acm-cost-analysis.md
-        - name: Költségvetés létrehozása – ARM-sablon
-          href: costs/quick-create-budget-template.md
-          displayName: 'ARM template, resource manager template'
+        - name: Költségadatok megtekintése
+          href: cloudyn/quick-register-azure-sub.md
+        - name: Költségadatok megtekintése – EA
+          href: cloudyn/quick-register-ea.md
+        - name: Költségadatok megtekintése – CSP
+          href: cloudyn/quick-register-csp.md
     - name: Oktatóanyagok
       items:
-        - name: Az egyéni fiókhoz tartozó számla áttekintése
-          href: understand/review-individual-bill.md
-        - name: A nagyvállalati szerződéshez tartozó számla áttekintése
-          href: understand/review-enterprise-agreement-bill.md
-        - name: A Microsoft-ügyfélszerződéshez tartozó számla áttekintése
-          href: understand/review-customer-agreement-bill.md
-        - name: A Microsoft-partnerszerződéshez tartozó számla áttekintése
-          href: understand/review-partner-agreement-bill.md
-        - name: Költségvetések létrehozása és kezelése
-          href: costs/tutorial-acm-create-budgets.md
-        - name: Adatok exportálása
-          href: costs/tutorial-export-acm-data.md
-        - name: Javaslatok végrehajtása
-          href: costs/tutorial-acm-opt-recommendations.md
+        - name: A használat és a költségek áttekintése
+          href: cloudyn/tutorial-review-usage.md
+        - name: Kiadások előrejelzése
+          href: cloudyn/tutorial-forecast-spending.md
+        - name: Költségek kezelése
+          href: cloudyn/tutorial-manage-costs.md
+        - name: Fenntartott példányok optimalizálása
+          href: cloudyn/tutorial-optimize-reserved-instances.md
+        - name: Az adatok hozzáférésének szabályozása
+          href: cloudyn/tutorial-user-access.md
     - name: Alapelvek
       items:
-        - name: Cost Management
-          items:
-            - name: Az Azure Cost Management ajánlott eljárásai
-              href: costs/cost-mgt-best-practices.md
-            - name: A Cost Management adatainak értelmezése
-              href: costs/understand-cost-mgt-data.md
-            - name: A hatókörök ismertetése és használata
-              href: costs/understand-work-scopes.md
-            - name: Csoportosítási és szűrési lehetőségek
-              href: costs/group-filter.md
-            - name: Költségek kezelése automatizálással
-              href: costs/manage-automation.md
-            - name: Cost Management partnerek számára
-              href: costs/get-started-partners.md
-            - name: Választás a Cost Management és a Cloudyn között
-              href: costs/choose-between-azure-cost-management-cloudyn.md
-        - name: Lefoglalások
-          items:
-            - name: Mi az az Azure Reservations?
-              href: reservations/save-compute-costs-reservations.md?toc=/azure/cost-management-billing/toc.json
-            - name: Foglalási javaslatok létrehozása
-              href: reservations/reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/toc.json
-            - name: A kedvezmény alkalmazásának módja
-              items:
-                - name: Az Azure-beli foglalási kedvezmény alkalmazása
-                  href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
-                - name: App Service
-                  href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Cache for Redis
-                  href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Cosmos DB
-                  href: reservations/understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Database for MariaDB
-                  href: reservations/understand-reservation-charges-mariadb.md?toc=/azure/cost-management-billing/toc.json
-                - name: Database for MySQL
-                  href: reservations/understand-reservation-charges-mysql.md?toc=/azure/cost-management-billing/toc.json
-                - name: Database for PostgreSQL
-                  href: reservations/understand-reservation-charges-postgresql.md?toc=/azure/cost-management-billing/toc.json
-                - name: Databricks
-                  href: reservations/reservation-discount-databricks.md
-                - name: Data Explorer
-                  href: reservations/understand-azure-data-explorer-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Dedikált gazdagépek
-                  href: reservations/billing-understand-dedicated-hosts-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Disk Storage
-                  href: reservations/understand-disk-reservations.md?toc=/azure/cost-management-billing/toc.json
-                - name: Red Hat Linux Enterprise
-                  href: reservations/understand-rhel-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Szoftvercsomagok
-                  href: reservations/understand-suse-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Storage
-                  href: reservations/understand-storage-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: SQL Database
-                  href: reservations/understand-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Synapse Analytics
-                  href: reservations/reservation-discount-azure-sql-dw.md?toc=/azure/cost-management-billing/toc.json
-                - name: Virtual machines (Virtuális gépek)
-                  href: manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-            - name: A Windows és az SQL költségeit nem tartalmazza
-              href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
-            - name: Használati adatok egyéni előfizetések esetén
-              href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-            - name: Használati adatok vállalati ügyfelek esetén
-              href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: Számlázás
-          items:
-            - name: Egyéni előfizetés – használattal kapcsolatos kifejezések
-              href: understand/understand-usage.md
-            - name: Egyéni előfizetés – számlával kapcsolatos kifejezések
-              href: understand/understand-invoice.md
-            - name: Microsoft-ügyfélszerződés – használattal kapcsolatos kifejezések
-              href: understand/mca-understand-your-usage.md
-            - name: Microsoft-ügyfélszerződés – számlával kapcsolatos kifejezések
-              href: understand/mca-understand-your-invoice.md
-            - name: Microsoft-ügyfélszerződés – az árlistán szereplő kifejezések
-              href: manage/mca-understand-pricesheet.md
-            - name: Microsoft-partnerszerződés – számlával kapcsolatos kifejezések
-              href: understand/mpa-invoice-terms.md
-            - name: Az egyéni számlázás frissített fiókjában bekövetkezett változások
-              href: understand/mosp-new-customer-experience.md
-            - name: A Microsoft ügyfélszerződés számlázási fiókjai
-              href: understand/mca-overview.md
-            - name: A Microsoft Partnerszerződés számlázási fiókjai
-              href: understand/mpa-overview.md
+        - name: A költségjelentések értelmezése
+          href: cloudyn/understanding-cost-reports.md
     - name: Útmutatók
       items:
-        - name: Azure Cost Management + Billing konfigurálása
-          items:
-            - name: Fiókok adminisztrálása
-              items:
-                - name: Fiókadminisztrátori feladatok
-                  href: manage/account-admin-tasks.md
-                - name: Profil szerkesztése
-                  href: manage/change-azure-account-profile.md
-                - name: Késedelmes egyenleg kezelése
-                  href: manage/resolve-past-due-balance.md
-                - name: Hozzáférés biztosítása a számlázáshoz
-                  href: manage/manage-billing-access.md
-                - name: A Microsoft ügyfélszerződések szerepkörei az Azure-ban
-                  href: manage/understand-mca-roles.md
-                - name: Hivatkozás partnerazonosítóra
-                  href: manage/link-partner-id.md
-            - name: Előfizetések adminisztrálása
-              items:
-                - name: Hozzáférések hozzárendelése költségkezelési adatokhoz
-                  href: costs/assign-access-acm-data.md
-                - name: Előfizetési állapotok
-                  href: manage/subscription-states.md
-                - name: Előfizetés újraaktiválása
-                  href: manage/subscription-disabled.md
-                - name: Azure Student-előfizetés újbóli aktiválása
-                  href: manage/azurestudents-subscription-disabled.md
-                - name: Tulajdonjogok átadása
-                  href: manage/billing-subscription-transfer.md
-                - name: Tulajdonjog kérelmezése – Microsoft-ügyfélszerződés
-                  href: manage/mca-request-billing-ownership.md
-                - name: Tulajdonjog kérelmezése – Microsoft-partnerszerződés
-                  href: manage/mpa-request-ownership.md
-                - name: AWS-integráció beállítása és konfigurálása
-                  href: costs/aws-integration-set-up-configure.md
-        - name: Kulcsfontosságú számlázási adminisztrációs feladatok elvégzése
-          items:
-            - name: Fiókok kezelése
-              items:
-                - name: Számlázási fiókok megtekintése
-                  href: manage/view-all-accounts.md
-                - name: Költségek rendszerezése számlaszakaszokkal
-                  href: manage/mca-section-invoice.md
-                - name: Számlázási fiók beállítása a Microsoft-ügyfélszerződéshez
-                  href: manage/mca-setup-account.md
-                - name: Regisztráció Microsoft 365-fiókkal
-                  href: manage/microsoft-365-account-for-azure-subscription.md
-                - name: Regisztrálás a Microsoft 365-be Azure-fiókkal
-                  href: manage/azure-account-for-microsoft-365-subscription.md
-                - name: Fizetés erős ügyfél-hitelesítéssel
-                  href: manage/open-banking-strong-customer-authentication.md
-            - name: Előfizetések kezelése
-              items:
-                - name: Számlás fizetés
-                  href: manage/pay-by-invoice.md
-                - name: További előfizetések létrehozása
-                  href: manage/create-subscription.md
-                - name: Előfizetési adatok exportálása
-                  href: manage/export-subscriptions.md
-                - name: Hitelkártya módosítása
-                  href: manage/change-credit-card.md
-                - name: Rendszergazda módosítása
-                  href: manage/add-change-subscription-administrator.md
-                - name: Váltás előfizetési ajánlatok között
-                  href: manage/switch-azure-offer.md
-                - name: CSP-előfizetések átvitele
-                  href: manage/transfer-subscriptions-subscribers-csp.md
-                - name: Előfizetés lemondása
-                  href: manage/cancel-azure-subscription.md
-            - name: Nagyvállalati szerződéses előfizetések kezelése
-              items:
-                - name: Első lépések a nagyvállalati szerződéses Azure Portalon
-                  href: manage/ea-portal-get-started.md
-                - name: Nagyvállalati szerződéses szerepkörök az Azure-ban
-                  href: manage/understand-ea-roles.md
-                - name: A nagyvállalati szerződéses Azure Portal adminisztrációja
-                  href: manage/ea-portal-administration.md
-                - name: Azure EA portál adminisztrációja a partnerek számára
-                  href: manage/ea-partner-portal-administration.md
-                - name: Azure Enterprise-átvitelek
-                  href: manage/ea-transfers.md
-                - name: A Microsoft ügyfélszerződés EA-feladatai
-                  href: manage/mca-enterprise-operations.md
-                - name: Azure nagyvállalati szerződések és a módosításaik
-                  href: manage/ea-portal-agreements.md
-                - name: Nagyvállalati regisztrációs számlák
-                  href: manage/ea-portal-enrollment-invoices.md
-                - name: Az Azure EA díjszabása
-                  href: manage/ea-pricing-overview.md
-                - name: Azure Enterprise REST API-k
-                  href: manage/ea-portal-rest-apis.md
-                - name: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
-                  href: manage/ea-portal-vm-reservations.md
-                - name: Azure Piactér
-                  href: manage/ea-azure-marketplace.md
-            - name: Költségekkel és számlázással kapcsolatos információ letöltése
-              items:
-                - name: A számla befizetése
-                  href: understand/pay-bill.md
-                - name: Az Azure-számla megtekintése és letöltése
-                  href: understand/download-azure-invoice.md
-                - name: Az Azure használati adatainak és díjainak megtekintése és letöltése
-                  href: understand/download-azure-daily-usage.md
-                - name: A számla és a napi használati adatok letöltése
-                  href: manage/download-azure-invoice-daily-usage-date.md
-                - name: Adózási dokumentumok megtekintése és letöltése
-                  href: understand/mca-download-tax-document.md
-                - name: A külső Azure-szolgáltatási díjak megtekintése
-                  href: understand/understand-azure-marketplace-charges.md
-                - name: A cég vagy intézmény díjszabásának megtekintése és letöltése
-                  href: manage/ea-pricing.md
-            - name: Ingyenes fiók
-              items:
-                - name: Ingyenes szolgáltatások létrehozása
-                  href: manage/create-free-services.md
-                - name: Díjak elkerülése
-                  href: manage/avoid-charges-free-account.md
-                - name: Használat ellenőrzése
-                  href: manage/check-free-service-usage.md
-                - name: Ingyenes fiók bővítése
-                  href: manage/upgrade-azure-subscription.md
-        - name: Kulcsfontosságú költségkezelési feladatok elvégzése
-          items:
-            - name: Váratlan költségek megelőzése
-              href: manage/getting-started.md
-            - name: Díjszabás kiszámítása
-              href: 'https://azure.microsoft.com/pricing/calculator/'
-            - name: Gyakori műveletek költségelemzése
-              href: costs/cost-analysis-common-uses.md
-            - name: Költségvetéssel kapcsolatos műveletek automatizálása
-              href: manage/cost-management-budget-scenario.md
-            - name: Költségriasztások használata
-              href: costs/cost-mgt-alerts-monitor-usage-spending.md
-            - name: Kapcsolódás Power BI Desktoppal
-              href: /power-bi/desktop-connect-azure-cost-management
-            - name: Az Azure költségeinek elemzése a Power BI-sablonalkalmazással
-              href: costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
-            - name: Az AWS költségeinek és használatának felügyelete
-              href: costs/aws-integration-manage.md
-            - name: A költségkeret ismertetése
-              href: manage/spending-limit.md
-            - name: A Microsoft ügyfélszerződés jóváírásainak nyomon követése
-              href: manage/mca-check-azure-credits-balance.md
-            - name: Migrálás EA-ról MCA API-kra
-              href: costs/migrate-cost-management-api.md
-        - name: Foglalások vásárlása és adminisztrálása
-          items:
-            - name: 'Kiválaszthatja, hogy mit szeretne megvásárolni'
-              items:
-                - name: A megvásárolni kívánt foglalás kiválasztása
-                  href: reservations/determine-reservation-purchase.md?toc=/azure/cost-management-billing/toc.json
-            - name: Foglalások vásárlása
-              items:
-                - name: Azure-foglalás vásárlása
-                  href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
-                - name: App Service
-                  href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Cache for Redis-foglalás
-                  href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
-                - name: Cosmos DB
-                  href: /azure/data-explorer
-                - name: Databricks
-                  href: reservations/prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Data Explorer
-                  href: /azure/data-explorer/pricing-reserved-capacity
-                - name: Disk Storage
-                  href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Dedikált gazdagép
-                  href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
-                - name: Szoftvercsomagok
-                  href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Storage
-                  href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Database for PostgreSQL
-                  href: ../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Database for MySQL
-                  href: ../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Database for MariaDB
-                  href: ../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
-                - name: SAP HANA nagyméretű példányok
-                  href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: SQL Database
-                  href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Synapse Analytics
-                  href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Virtual machines (Virtuális gépek)
-                  href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
-            - name: 'Megtekintés, kezelés és optimalizálás a vásárlás után'
-              items:
-                - name: Foglalások és kihasználtság megtekintése
-                  href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
-                - name: Foglalások megtekintése CSP-ként
-                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
-                - name: Foglalások kezelése
-                  href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
-                - name: Cserére és visszatérítésre vonatkozó foglalások
-                  href: reservations/exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/toc.json
-            - name: Jelentési költségek
-              items:
-                - name: Foglalási tranzakciók megtekintése
-                  href: reservations/view-purchase-refunds.md?toc=/azure/cost-management-billing/toc.json
-                - name: Foglalási költségek visszatérítése
-                  href: reservations/charge-back-usage.md?toc=/azure/cost-management-billing/toc.json
-            - name: Foglalások megújítása
-              items:
-                - name: Foglalás megújítása
-                  href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
-        - name: Hibaelhárítás
-          items:
-            - name: Nem található előfizetés
-              href: manage/no-subscriptions-found.md
-            - name: Fizetési problémák
-              href: manage/billing-troubleshoot-azure-payment-issues.md
-            - name: Elutasított kártya
-              href: manage/troubleshoot-declined-card.md
-            - name: Azure-fiók regisztrációjával kapcsolatos problémák
-              href: manage/troubleshoot-azure-sign-up.md
-            - name: Bejelentkezéssel kapcsolatos problémák az előfizetésben
-              href: manage/troubleshoot-sign-in-issue.md
-            - name: Vállalati költségek nézet letiltva
-              href: manage/enterprise-mgmt-grp-troubleshoot-cost-view.md
-            - name: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
-              href: manage/ea-portal-troubleshoot.md
-            - name: Kapcsolatfelvétel a támogatási szolgáltatással
-              href: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - name: Referencia
-      items:
-        - name: Azure Cost Management REST API
-          href: 'https://docs.microsoft.com/rest/api/cost-management'
-        - name: Azure használati REST API
-          href: 'https://docs.microsoft.com/rest/api/consumption'
-        - name: Resource Manager-sablon
-          href: /azure/templates/microsoft.consumption/budgets
-        - name: Cost Management REST API-minták
-          href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-        - name: Számlázásautomatizálási forgatókönyvek
-          href: manage/cost-management-automation-scenarios.md
-        - name: Az Azure számlázási API áttekintése
-          href: manage/usage-rate-card-overview.md
-        - name: Azure számlázási REST API
-          href: 'https://docs.microsoft.com/rest/api/billing'
-        - name: Azure használati API áttekintése
-          href: manage/consumption-api-overview.md
-        - name: Azure használati REST API
-          href: 'https://docs.microsoft.com/rest/api/consumption'
-        - name: RateCard REST API
-          href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
-        - name: Használati REST API
-          href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
-        - name: A vállalati jelentéskészítés áttekintése
-          href: manage/enterprise-api.md
-        - name: Vállalati jelentéskészítési REST API
-          href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
-        - name: Lefoglalások
-          items:
-            - name: Reservations REST API
-              href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-            - name: Reservations – Azure PowerShell
-              href: /powershell/module/azurerm.reservations
-            - name: Reservations – parancssori felület
-              href: /cli/azure/reservations/reservation
-            - name: Cost Management – Consumption Usage Details REST API
-              href: /rest/api/consumption/usagedetails
-            - name: Cost Management – Consumption Reservations Details REST API
-              href: /rest/api/consumption/reservationsdetails
+        - name: Azure-előfizetések és -fiókok aktiválása
+          href: cloudyn/activate-subs-accounts.md
+        - name: Kiterjesztett metrikák hozzáadása a virtuális gépekhez
+          href: cloudyn/azure-vm-extended-metrics.md
+        - name: Google-fiók csatlakoztatása
+          href: cloudyn/connect-google-account.md
+        - name: AWS-fiók csatlakoztatása
+          href: cloudyn/connect-aws-account.md
+        - name: Tárfiókok konfigurálása
+          href: cloudyn/storage-accounts.md
+        - name: A Cloudyn jelentéseinek használata
+          href: cloudyn/use-reports.md
+        - name: Irányítópultok használata
+          href: cloudyn/dashboards.md
+        - name: Költségvetések kezelése
+          href: cloudyn/manage-budgets.md
     - name: További források
       items:
-        - name: Fejlessze a készségeit a Microsoft Learnnel
-          href: /learn/browse/?products=azure-cost-management
-        - name: Cost Management visszajelzési fóruma
-          href: 'https://feedback.azure.com/forums/906772-cost-management'
+        - name: Cloudyn-videók
+          href: cloudyn/ref-videos.md
         - name: Azure-ütemterv
           href: 'https://azure.microsoft.com/roadmap/'
-        - name: Díjszabás
+        - name: A Cloudyn díjszabása
           href: 'https://azure.microsoft.com/pricing/details/cost-management'
-        - name: Régiónkénti rendelkezésre állás
+        - name: A Cloudyn régiónkénti rendelkezésre állása
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: Példák
-      items:
-        - name: REST API
-          items:
-            - name: A vállalati költségek áttekintése
-              href: manage/review-enterprise-billing.md
-            - name: Az előfizetés használatának áttekintése
-              href: manage/review-subscription-billing.md
-            - name: Az erőforrás-használat áttekintése
-              href: manage/review-service-usage-api.md
-        - name: .NET-minták
-          items:
-            - name: Számlázási API kódmintája
-              href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-            - name: Használati API kódmintája
-              href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-            - name: RateCard API kódmintája
-              href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
-    - name: Cloudyn
-      items:
-        - name: Áttekintés
-          items:
-            - name: Mi az a Cloudyn?
-              href: cloudyn/overview.md
-        - name: Rövid útmutatók
-          items:
-            - name: Költségadatok megtekintése
-              href: cloudyn/quick-register-azure-sub.md
-            - name: Költségadatok megtekintése – EA
-              href: cloudyn/quick-register-ea.md
-            - name: Költségadatok megtekintése – CSP
-              href: cloudyn/quick-register-csp.md
-        - name: Oktatóanyagok
-          items:
-            - name: A használat és a költségek áttekintése
-              href: cloudyn/tutorial-review-usage.md
-            - name: Kiadások előrejelzése
-              href: cloudyn/tutorial-forecast-spending.md
-            - name: Költségek kezelése
-              href: cloudyn/tutorial-manage-costs.md
-            - name: Fenntartott példányok optimalizálása
-              href: cloudyn/tutorial-optimize-reserved-instances.md
-            - name: Az adatok hozzáférésének szabályozása
-              href: cloudyn/tutorial-user-access.md
-        - name: Alapelvek
-          items:
-            - name: A költségjelentések értelmezése
-              href: cloudyn/understanding-cost-reports.md
-        - name: Útmutatók
-          items:
-            - name: Azure-előfizetések és -fiókok aktiválása
-              href: cloudyn/activate-subs-accounts.md
-            - name: Kiterjesztett metrikák hozzáadása a virtuális gépekhez
-              href: cloudyn/azure-vm-extended-metrics.md
-            - name: Google-fiók csatlakoztatása
-              href: cloudyn/connect-google-account.md
-            - name: AWS-fiók csatlakoztatása
-              href: cloudyn/connect-aws-account.md
-            - name: Tárfiókok konfigurálása
-              href: cloudyn/storage-accounts.md
-            - name: A Cloudyn jelentéseinek használata
-              href: cloudyn/use-reports.md
-            - name: Irányítópultok használata
-              href: cloudyn/dashboards.md
-            - name: Költségvetések kezelése
-              href: cloudyn/manage-budgets.md
-        - name: További források
-          items:
-            - name: Cloudyn-videók
-              href: cloudyn/ref-videos.md
-            - name: Azure-ütemterv
-              href: 'https://azure.microsoft.com/roadmap/'
-            - name: A Cloudyn díjszabása
-              href: 'https://azure.microsoft.com/pricing/details/cost-management'
-            - name: A Cloudyn régiónkénti rendelkezésre állása
-              href: 'https://azure.microsoft.com/regions/services/'
-            - name: Cloudyn – gyakori kérdések
-              href: cloudyn/cost-mgt-faq.md
-            - name: Kapcsolatfelvétel a Cloudyn ügyfélszolgálatával
-              href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
+        - name: Cloudyn – gyakori kérdések
+          href: cloudyn/cost-mgt-faq.md
+        - name: Kapcsolatfelvétel a Cloudyn ügyfélszolgálatával
+          href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
