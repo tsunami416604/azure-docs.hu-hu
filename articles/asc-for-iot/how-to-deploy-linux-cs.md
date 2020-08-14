@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 460e3f3955778945600bb3a1f9762a0ac50f5805
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311149"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205924"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>C#-alapú Azure Security Center for IoT biztonsági ügynök üzembe helyezése Linuxon
 
@@ -50,7 +51,7 @@ A biztonsági ügynök üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 1. Bontsa ki a csomag tartalmát, és navigáljon a _/install_ mappára.
 
-1. Futó engedélyek hozzáadása a **InstallSecurityAgent parancsfájlhoz** futtatásával`chmod +x InstallSecurityAgent.sh`
+1. Futó engedélyek hozzáadása a **InstallSecurityAgent parancsfájlhoz** futtatásával `chmod +x InstallSecurityAgent.sh`
 
 1. Ezután futtassa a következő parancsot a **legfelső szintű jogosultságokkal**:
 
@@ -72,7 +73,7 @@ Ez a szkript a következő műveleteket hajtja végre:
 
 - A megadott hitelesítési paraméterekkel konfigurálja az ügynököt.
 
-További segítségért futtassa a parancsfájlt a – Súgó paraméterrel:`./InstallSecurityAgent.sh --help`
+További segítségért futtassa a parancsfájlt a – Súgó paraméterrel: `./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Ügynök eltávolítása
 
@@ -116,11 +117,11 @@ Az ügynök eltávolításához futtassa a parancsfájlt az – u paraméterrel:
 
    1. A hibával kapcsolatos további információkért tekintse meg a naplófájlt.
 
-       A naplófájl helye:`/var/ASCIoTAgent/IotAgentLog.log`
+       A naplófájl helye: `/var/ASCIoTAgent/IotAgentLog.log`
 
        Módosítsa a fájl helyének elérési útját a 2. lépésben a **logFilePath** választott név szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
 - További információ a IoT- [architektúra](architecture.md) Azure Security Center

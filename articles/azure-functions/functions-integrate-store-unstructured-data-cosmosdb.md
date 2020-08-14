@@ -3,13 +3,13 @@ title: Strukturálatlan adatok tárolása Azure Cosmos DB és függvények haszn
 description: Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával
 ms.topic: quickstart
 ms.date: 04/14/2020
-ms.custom: mvc
-ms.openlocfilehash: 09d9bbca7119539f31a4cea056f338cf28dfcd23
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121886"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210878"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Strukturálatlan adatok tárolása az Azure Functions és az Azure Cosmos DB használatával
 
@@ -63,7 +63,7 @@ A kimeneti kötés létrehozásához rendelkeznie kell egy SQL API-t használó 
 
 Cserélje le a meglévő függvénykódot a következő kódra a kiválasztott nyelven:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Cserélje le a meglévő C#-függvényt a következő kódra:
 
@@ -150,7 +150,7 @@ A mintakód beolvassa a HTTP-kérelem sztringjeit, és egy `taskDocument` objekt
 
     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Keressen rá a Cosmos DB szolgáltatásra." border="true":::
 
-1. Válassza ki Azure Cosmos DB-fiókját, majd válassza a **adatkezelő**lehetőséget.
+1. Válassza ki Azure Cosmos DB-fiókját, majd válassza a  **adatkezelő**lehetőséget.
 
 1. Bontsa ki a **TaskCollection** csomópontokat, válassza ki az új dokumentumot, és ellenőrizze, hogy a dokumentum tartalmazza-e a lekérdezési karakterlánc értékeit, valamint néhány további metaadatot.
 

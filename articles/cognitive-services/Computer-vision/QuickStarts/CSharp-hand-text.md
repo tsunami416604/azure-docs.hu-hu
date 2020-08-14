@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: a nyomtatott és a kézírásos szöveg OCR-je a Computer Vision 3,0 REST API olvasási művelettel és C használatával #'
+title: 'Gyors útmutató: szöveg kinyerése a Computer Vision 3,0 REST API olvasási művelet és C #'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a Computer Vision 3,0 REST API olvasási művelet és a C# használatával alkalmazzon OCR-t egy képre.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 36f149019e37949445189045a8a71489f0f26418
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167827"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210155"
 ---
-# <a name="quickstart-ocr-for-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Rövid útmutató: a nyomtatott és a kézírásos szöveg OCR-je a Computer Vision 3,0 REST API olvasási művelettel és C használatával #
+# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision 3,0 REST API olvasási művelet és C #
 
 Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a rendszerképből a Computer Vision 3,0 REST API részeként elérhető új OCR-technológia használatával. Az új [olvasási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) és [olvasási eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) -metódusok használatával a képeken lévő szövegeket és a felismert karaktereket gépi olvasásra képes adatfolyamként lehet kinyerni. 
 
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";
@@ -405,7 +405,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 
 Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezzen fel egy alapszintű Windows-alkalmazást, amely Computer Visiont használ az optikai karakterfelismerés (OCR) végrehajtásához. Intelligens vágású miniatűrök létrehozása; Emellett vizuális funkciók (például arcok) észlelése, kategorizálása, címkézése és leírása a képen.
 

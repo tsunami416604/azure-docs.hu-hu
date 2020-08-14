@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046767"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209544"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek teszteléshez és prototípusokhoz
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ Tallózással keresse meg a nyilvános adatkészletek azon listáját, amely has
 | [Repülőjegy-repülési késések és egyéb szállítási adatszolgáltatások](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Az Egyesült Államok Közlekedési Minisztériuma (DOT) Bureau of közlekedési statisztikája (BTS) nyomon követi a nagyméretű légifuvarozók által üzemeltetett belföldi járatok időbeli teljesítményét. Megjelenik az időponthoz, a késleltetett, a megszakított és a lefordított járatok számával kapcsolatos összegző információ... a webhelyen közzétett összefoglaló táblákban. | A fájlok CSV formátumúak. |
 | [Forgalomra vonatkozó halálesetek – US Fatality Analysis Reporting System (a szolgáltatás)](https://www.nhtsa.gov/FARS) | "A NHTSA-t, a Kongresszust és az amerikai közelmúltbeli adatokat, amelyek a gépjárművek forgalmának összeomlása miatt elszenvedett végzetes sérülésekkel kapcsolatosak." | "Hozzon létre saját halálozási adatait online a szolgáltatással a (z) a (z) rendszerhez. Vagy töltse le az 1975-ből származó összes, az FTP-helyről beérkező összes szolgáltatás adatait. " |
 | [Mérgező kémiai adatszolgáltatások – EPA toxicitás-előrejelző (ToxCast &trade; )](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Az EPA legutóbb frissített, nyilvánosan elérhető, nagy adatátvitelt okozó toxicitási adatok több ezer vegyi anyagban. Ezeket az adatmennyiséget az EPA ToxCast kutatási tevékenysége hozza létre. | Az adatkészletek különböző formátumokban érhetők el, többek között a táblázatok, az R-csomagok és a MySQL-adatbázisfájlok. |
-| [Mérgező vegyianyag-adat – NIH Tox21-adatkihívás 2014](https://tripod.nih.gov/tox21/challenge/) | "A 2014 Tox21 adatra vonatkozó kihívás úgy lett kialakítva, hogy segítse a tudósokat abban, hogy a 21. századi kezdeményezésben a toxikológiai módszerekkel tesztelt vegyi anyagok és összetevők milyen hatással lehetnek a toxikus hatásokra." | Az adathalmazok a SMILEs és az SDF formátumokban érhetők el. Az adatelemzési tevékenységek és a kémiai struktúrák a ~ 10 000-es vegyületek Tox21-gyűjteményében (Tox21 10K) is elérhetők. " |
+| [Mérgező vegyianyag-adat – NIH Tox21-adatkihívás 2014](https://tripod.nih.gov/tox21) | "A 2014 Tox21 adatra vonatkozó kihívás úgy lett kialakítva, hogy segítse a tudósokat abban, hogy a 21. századi kezdeményezésben a toxikológiai módszerekkel tesztelt vegyi anyagok és összetevők milyen hatással lehetnek a toxikus hatásokra." | Az adathalmazok a SMILEs és az SDF formátumokban érhetők el. Az adatelemzési tevékenységek és a kémiai struktúrák a ~ 10 000-es vegyületek Tox21-gyűjteményében (Tox21 10K) is elérhetők. " |
 | [Biotechnológiai és genom-adatok a NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Több adathalmaz, amely a génekre, a genomokra és a fehérjékre terjed ki. | Az adathalmazok szöveg, XML, BLAST és más formátumúak. A BLAST-alkalmazás elérhető. |
 
 ## <a name="other-statistical-and-scientific-data"></a>Egyéb statisztikai és tudományos adatszolgáltatások

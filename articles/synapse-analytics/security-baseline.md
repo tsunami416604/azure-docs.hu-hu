@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501950"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210896"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Az Azure biztonsági alapterve a szinapszis Analyticshez
 
@@ -1040,7 +1040,7 @@ Ha ügyfél által felügyelt kulcsot használ az adatbázis-titkosítási kulcs
 
 * [Azure Key Vault kulcsok visszaállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Meglévő SQL-készlet visszaállítása](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
 
@@ -1144,7 +1144,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

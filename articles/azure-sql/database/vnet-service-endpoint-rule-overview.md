@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 880ec24c377091173202098a3c54b5776bf69a98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836615"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210381"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,15 +106,15 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 Az Azure Storage ugyanazt a funkciót implementálta, amellyel korlátozhatja az Azure Storage-fiók kapcsolatait. Ha egy olyan Azure Storage-fiókkal próbálja használni ezt a funkciót, amelyet az Azure SQL Database használ, problémákba ütközhet. A következő lista a Azure SQL Database és Azure SQL Data Warehouse azon szolgáltatásainak listáját és megvitatását tartalmazza, amelyekre hatással van.
 
-### <a name="azure-synapse-polybase"></a>Azure szinapszis-alapanyag
+### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure szinapszis-alapanyag és-MÁSOLÁSi utasítás
 
-A rendszer általában az Azure-beli Storage-fiókokból származó adatok Azure szinapszis Analyticsbe való betöltésére használatos. Ha az Azure Storage-fiók, amelyből az adatok betöltése csak VNet-alhálózatok számára történik, akkor a rendszer az alapszintű kapcsolaton keresztül kapcsolódik a fiókhoz. Az alábbi lépéseket követve engedélyezheti a VNet által védett Azure-tárolóhoz való csatlakozást az Azure szinapszis Analytics szolgáltatással, amely a-alapú importálási és exportálási forgatókönyveket is lehetővé teszi:
+A Base és a COPY utasítást általában arra használják, hogy az Azure szinapszis-elemzéseket az Azure Storage-fiókokba töltse be a nagy átviteli sebességű adatok betöltéséhez. Ha az Azure Storage-fiók, amelyről az adatok betöltése szükséges, csak VNet-alhálózatokhoz fér hozzá, akkor a rendszer a Base és a COPY utasítást is megszakítja. Az importálási és exportálási forgatókönyvek az Azure VNet-mel védett Azure Storage-hoz való MÁSOLÁSával és létrehozásával való használatának engedélyezéséhez kövesse az alábbi lépéseket:
 
 #### <a name="prerequisites"></a>Előfeltételek
 
 - Telepítse az Azure PowerShellt a kapcsolódó [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps) alapján.
 - Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) szerint.
-- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információt ebben az [útmutatóban](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) talál.
+- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. Ennek a konfigurációnak a engedélyezése lehetővé teszi a Base és a COPY utasítás számára, hogy erős hitelesítéssel kapcsolódjon a Storage-fiókhoz, ahol a hálózati forgalom az Azure-gerincen marad. További információt ebben az [útmutatóban](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) talál.
 
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
@@ -280,7 +280,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 - [Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek

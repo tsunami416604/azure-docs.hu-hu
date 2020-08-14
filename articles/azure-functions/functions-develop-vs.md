@@ -1,15 +1,15 @@
 ---
 title: Azure-függvények fejlesztése a Visual Studióval
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseket a Visual Studio 2019 Azure Functions Tools használatával.
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0df65c4cdbf40b49bc265f4accafde67f41dafb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81de0af335e0a233ac568921b298c9bb168eb174
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731015"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209973"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure-függvények fejlesztése a Visual Studióval  
 
@@ -193,7 +193,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 -->
 
 
-## <a name="publish-to-azure"></a>Közzététel az Azure platformon
+## <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
 A Visual studióból való közzétételkor a két telepítési módszer egyikét használja:
 
@@ -235,7 +235,7 @@ A függvények végrehajtásának ajánlott figyelése a Function alkalmazás Az
 
 További információért lásd: [Azure functions figyelése](functions-monitoring.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions Core Toolsről: a [Azure functions Core Tools használata](functions-run-local.md).
 

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077033"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210832"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -55,8 +55,6 @@ Ha nem telepítette az Azure dev Spaces CLI-t, először telepítse azt a követ
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-A vezérlő újbóli létrehozása a parancssori felület vagy a Visual Studio használatával végezhető el. Példákért tekintse meg a [csapat fejlesztését](quickstart-team-development.md) , vagy [fejlesszen a .net Core](quickstart-netcore-visualstudio.md) gyors útmutatókkal.
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>A vezérlő létrehozása sikertelen a vezérlő nevének hossza miatt
 
@@ -545,7 +543,7 @@ A probléma megoldása:
 1. Ha a tároló a beépített/üzembe helyezett folyamatban van, várjon 2-3 másodpercet, és próbálja meg újra elérni a szolgáltatást. 
 1. A port konfigurációjának ellenőrzését a következő eszközökön találja:
     * ** [Helm-diagram](https://docs.helm.sh):** A és a `service.port` `deployment.containerPort` értékekben megadva. a YAML a parancs szerint van beállítva `azds prep` .
-    * Az alkalmazás kódjában megnyitott portok, például Node.js:`var server = app.listen(80, function () {...}`
+    * Az alkalmazás kódjában megnyitott portok, például Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Nem található a következő típus vagy névtér neve: "MyLibrary".
 

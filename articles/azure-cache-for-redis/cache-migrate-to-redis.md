@@ -4,15 +4,16 @@ description: Megtudhatja, hogyan telepíthet át Managed Cache Service és szere
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/23/2020
 ms.author: yegu
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: beb6014a9b6d90d1bc9a3c3236877a720a44a0c4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008559"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211113"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Áttelepítés Managed Cache Serviceról az Azure cache-be a Redis (elavult)
 Az Azure Managed Cache Servicet az Azure cache-t használó alkalmazások áttelepítése a Redis az alkalmazás minimális változásaival, a gyorsítótárazási alkalmazás által használt Managed Cache Service-funkcióktól függően valósítható meg. Habár az API-k nem pontosan ugyanazok, mint a hasonlók, és a meglévő kódok nagy része, amely a Managed Cache Servicet használja a gyorsítótár eléréséhez, a minimális módosításokkal újra felhasználhatók. Ez a cikk bemutatja, hogyan módosíthatja a szükséges konfigurációs és alkalmazás-módosításokat a Managed Cache Service-alkalmazások áttelepítéséhez az Azure cache Redis való használatához, és bemutatja, hogyan használhatók az Azure cache egyes funkciói a Redis számára a Managed Cache Service cache funkcióinak megvalósításához.
@@ -166,7 +167,7 @@ int key2 = (int)cache.StringGet("key2");
 
 A StackExchange. Redis ügyfél a `RedisKey` és a `RedisValue` típust használja a gyorsítótárban lévő elemek eléréséhez és tárolásához. Ezek a típusok a legkezdetlegesebb nyelvi típusokra mutatnak, beleértve a sztringet, és gyakran nem közvetlenül használják. A Redis karakterláncok a legalapvetőbb Redis-értékek, és számos adattípust tartalmazhatnak, beleértve a szerializált bináris adatfolyamokat, és nem közvetlenül a típust használja, hanem a nevet tartalmazó metódusokat is használni fogjuk `String` . A legkezdetlegesebb adattípusok esetében a és metódusok használatával tárolhatja és lekérheti az elemeket a gyorsítótárból `StringSet` `StringGet` , kivéve, ha gyűjtemények vagy más Redis-adattípusok tárolását tárolja a gyorsítótárban. 
 
-`StringSet`és `StringGet` hasonlóak a Managed cache Servicehoz `Put` és a `Get` metódusokhoz, és az egyik legnagyobb különbség az, hogy mielőtt beállította a .net-objektumokat a gyorsítótárba, először szerializálnia kell. 
+`StringSet` és `StringGet` hasonlóak a Managed cache Servicehoz `Put` és a `Get` metódusokhoz, és az egyik legnagyobb különbség az, hogy mielőtt beállította a .net-objektumokat a gyorsítótárba, először szerializálnia kell. 
 
 `StringGet`Ha a híváskor az objektum létezik, a rendszer visszaadja, és ha nem, akkor null értéket ad vissza. Ebben az esetben az értéket lekérheti a kívánt adatforrásból, és a gyorsítótárban tárolhatja későbbi használatra. Ezt a mintát a gyorsítótár-feltöltési mintának nevezzük.
 
@@ -181,6 +182,6 @@ A Redis készült Azure cache .NET-objektumokat és primitív adattípusokat is 
 ## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>A ASP.NET munkamenet-állapotának áttelepítése és a kimeneti gyorsítótárazás az Azure cache-be a Redis-ben
 A Redis-hez készült Azure cache a ASP.NET munkamenet-állapotához és az oldal kimeneti gyorsítótárazásához is rendelkezik szolgáltatókkal. Ha a szolgáltatók Managed Cache Service verzióját használó alkalmazást szeretné áttelepíteni, először távolítsa el a meglévő részeket a web.configról, majd konfigurálja az Azure cache-t a szolgáltatók Redis verzióihoz. Az Azure cache Redis ASP.NET-szolgáltatókhoz való használatáról további útmutatásért lásd: [ASP.NET munkamenet-szolgáltató az Azure cache-hez a Redis](cache-aspnet-session-state-provider.md) és a [ASP.NET kimeneti gyorsítótár-szolgáltatója az Azure cache for Redis](cache-aspnet-output-cache-provider.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg az Azure cache-t az oktatóanyagok, minták, videók és egyéb [Redis dokumentációjában](https://azure.microsoft.com/documentation/services/cache/) .
 

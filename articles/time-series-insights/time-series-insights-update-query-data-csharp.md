@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 902dfc924fdac28c0aed46745604c5d4d19f084b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 158715a312af5d368b6f1125a7f1acc36dbefe51
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920330"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207518"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C használatával #
 
 Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni a [Gen2 adatelérési API](https://docs.microsoft.com/rest/api/time-series-insights/preview) -k adatait Azure Time Series Insights Gen2 környezetekben.
 
 > [!TIP]
-> A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
+> A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -50,7 +50,7 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 
 1. [Gen2 Azure Time Series Insights-környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. 
-1. Futtassa a [readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) megadott [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) a Azure Time Series Insights Gen2-ügyfél függőségeinek létrehozásához.
+1. Futtassa a [readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) megadott [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) a Azure Time Series Insights Gen2-ügyfél függőségeinek létrehozásához.
 1. Nyissa meg a `TSIPreviewDataPlaneclient.sln` megoldást, és állítsa be `DataPlaneClientSampleApp` alapértelmezett projektként a Visual Studióban.
 1. Telepítse a szükséges projekt-függőségeket az [alább](#project-dependencies) ismertetett lépésekkel, és állítsa össze a példát egy végrehajtható `.exe` fájlra.
 1. A fájl futtatásához kattintson `.exe` rá duplán.
@@ -61,7 +61,7 @@ Javasoljuk, hogy a Visual Studio legújabb verzióját használja:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – 16.4.2 + verzió
 
-A mintakód több szükséges függőséggel rendelkezik, amelyek megtekinthetők a [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) fájlban.
+A mintakód több szükséges függőséggel rendelkezik, amelyek megtekinthetők a [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/packages.config) fájlban.
 
 Töltse le a csomagokat a Visual Studio 2019-ban a **Build**  >  **Build megoldás** kiválasztásával. 
 
@@ -77,7 +77,7 @@ Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www
 > * A kód mintát az alapértelmezett környezeti változók módosítása nélkül lehet végrehajtani.
 > * A kód minta egy .NET-es végrehajtható konzol alkalmazásban lesz lefordítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/preview-query).
 

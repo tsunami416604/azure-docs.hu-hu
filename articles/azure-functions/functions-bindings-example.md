@@ -3,14 +3,15 @@ title: Azure Functions-eseményindító és -kötés – példa
 description: Ismerje meg az Azure Function-kötések konfigurálását
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c95524a5de6696bd0ffe7463451d152a9d3a19b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74227244"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205971"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions-eseményindító és -kötés – példa
 
@@ -52,7 +53,7 @@ A Azure Portal *function.js* tartalmának megtekintéséhez és szerkesztéséhe
 
 ## <a name="c-script-example"></a>C# parancsfájl – példa
 
-A következő C#-szkripttel működik ezzel az triggerrel és kötéssel. Figyelje meg, hogy a várólista-üzenet tartalmát megadó paraméter neve `order` ; erre a névre van szükség, mert a `name` *function.json* tulajdonság értéke`order` 
+A következő C#-szkripttel működik ezzel az triggerrel és kötéssel. Figyelje meg, hogy a várólista-üzenet tartalmát megadó paraméter neve `order` ; erre a névre van szükség, mert a `name` *function.json* tulajdonság értéke `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -102,7 +103,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Példa az osztály könyvtárára
 
-Egy osztály-függvénytárban ugyanazokat az trigger-és kötési információs &mdash; várólistákat és táblázatokat, a Storage-fiókokat, a bemeneti és kimeneti függvények paramétereit a &mdash; fájl function.jshelyett attribútumok szolgáltatják. Íme egy példa:
+Egy osztály-függvénytárban ugyanazokat az trigger-és kötési információs &mdash; várólistákat és táblázatokat, a Storage-fiókokat, a bemeneti és kimeneti függvények paramétereit a &mdash; fájl function.jshelyett attribútumok szolgáltatják. Bemutatunk egy példát:
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -132,7 +133,7 @@ public class Person
 
 Most már van egy működő funkciója, amelyet egy Azure-üzenetsor aktivál, és az adatokat az Azure Table Storage-ba exportálja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions kötési kifejezés mintái](./functions-bindings-expressions-patterns.md)

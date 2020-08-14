@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038409"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208806"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -38,7 +38,7 @@ Az új indexelőket először előzetes verziójú funkcióként vezetjük be. A
 
 ## <a name="permissions"></a>Engedélyek
 
-Az indexelő rendszerhez kapcsolódó összes művelet, beleértve az állapot vagy a definíciók beszerzésére irányuló kéréseket, [rendszergazdai API-kulcs](search-security-api-keys.md)szükséges. 
+Az indexelő rendszerhez kapcsolódó összes művelet, beleértve az állapot vagy a definíciók beszerzésére irányuló kéréseket, [rendszergazdai API-kulcs](search-security-api-keys.md)szükséges.
 
 <a name="supported-data-sources"></a>
 
@@ -51,10 +51,47 @@ Az indexelő adattárakat térképez fel az Azure-ban.
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database és az SQL felügyelt példánya](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [SQL Server az Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
+## <a name="indexer-stages"></a>Indexelő szakaszai
+
+Ha a kezdeti futtatáskor az index üres, akkor az indexelő a táblázatban vagy a tárolóban megadott összes adattal beolvasható. A későbbi futtatások során az indexelő általában csak a módosított adatértékeket észlelheti és kérheti le. A Blobok esetében az észlelés módosítása automatikus. Más adatforrások esetében, mint például az Azure SQL vagy a Cosmos DB, engedélyezni kell az észlelés módosítását.
+
+Az indexelő minden egyes betöltött dokumentum esetében több lépést valósít meg vagy koordinál, a dokumentum lekérésével a "handoff" végső keresőmotorba az indexeléshez. Opcionálisan az indexelő is szerepet játszik a készségkészlet-végrehajtás és-kimenetek vezetésében, feltételezve, hogy készségkészlet van definiálva.
+
+![Indexelő szakaszai](./media/search-indexer-overview/indexer-stages.png "indexelő szakaszai")
+
+### <a name="stage-1-document-cracking"></a>1. lépés: a dokumentum repedése
+
+A dokumentumok repedése a fájlok megnyitásának és a tartalom kinyerésének folyamata. Az adatforrás típusától függően az indexelő megpróbál különböző műveleteket végrehajtani a potenciálisan indexelhető tartalom kinyeréséhez.  
+
+Példák:  
+
+* Ha a dokumentum egy [Azure SQL-adatforrás](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)egyik rekordja, az indexelő Kinyeri a rekord összes mezőjét.
+* Ha a dokumentum egy [Azure Blob Storage adatforrásban](search-howto-indexing-azure-blob-storage.md)található PDF-fájl, az indexelő kicsomagolja a fájl szövegét, képeit és metaadatait.
+* Ha a dokumentum egy [Cosmos db adatforrásban](search-howto-index-cosmosdb.md)lévő rekord, az indexelő kibontja a mezőket és almezőket a Cosmos db dokumentumból.
+
+### <a name="stage-2-field-mappings"></a>2. fázis: mező-hozzárendelések 
+
+Az indexelő Kinyeri a szöveget a forrás mezőből, és elküldi azt egy index vagy egy Tudásbázis célhely mezőjébe. Ha a mezők nevei és típusai egybeesnek, az elérési út üres. Előfordulhat azonban, hogy más neveket vagy típusokat szeretne használni a kimenetben, ebben az esetben meg kell adnia az indexelő számára a mező leképezését. Ez a lépés a dokumentum repedése, de az átalakítások előtt következik be, amikor az indexelő beolvassa a forrás dokumentumait. Amikor meghatároz egy [mező-hozzárendelést](search-indexer-field-mappings.md), a forrás mező értékét a rendszer a cél mezőre, módosítás nélkül továbbítja. A mező-hozzárendelések nem kötelezőek.
+
+### <a name="stage-3-skillset-execution"></a>3. fázis: Készségkészlet végrehajtás
+
+A készségkészlet-végrehajtás egy opcionális lépés, amely a beépített vagy egyéni AI-feldolgozást hívja meg. Előfordulhat, hogy az optikai karakterfelismerést (OCR) képelemzés formájában kell megadnia, vagy szükség lehet a nyelvi fordításra. Az átalakítástól függetlenül a készségkészlet-végrehajtás is az, ahol a dúsítás történik. Ha egy indexelő egy folyamat, úgy gondolhatja, hogy egy [készségkészlet](cognitive-search-defining-skillset.md) "folyamat a folyamaton belül". A készségkészlet a szaktudás nevű saját lépések sorával rendelkezik.
+
+### <a name="stage-4-output-field-mappings"></a>4. fázis: kimeneti mezők leképezése
+
+A készségkészlet kimenete valójában a dúsított dokumentumnak nevezett információk fája. A kimeneti mezők leképezése lehetővé teszi, hogy kiválassza a fa azon részeit, amelyek az index mezőibe képezhetők le. Útmutató a [kimeneti mezők leképezésének definiálásához](cognitive-search-output-field-mapping.md).
+
+Ugyanúgy, mint az olyan mező-hozzárendelések, amelyek a forrás és a cél mezőhöz tartozó Verbatim-értékeket rendelik, a kimeneti mezők leképezései azt mondják, hogy az indexelő Hogyan rendeli hozzá az átalakított értékeket a dúsított dokumentumhoz az indexben lévő cél mezőkhöz A mező-hozzárendelések eltérően, amelyek nem kötelezőnek számítanak, minden esetben meg kell adnia egy kimeneti mező leképezését minden olyan átalakított tartalomhoz, amelynek egy indexben kell lennie.
+
+A következő képen egy példa indexelő [hibakeresési munkamenetének](cognitive-search-debug-session.md) ábrázolása látható az indexelő szakaszaiban: dokumentum repedések, mező-hozzárendelések, készségkészlet-végrehajtás és kimeneti mezők leképezése.
+
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="Példa hibakeresési munkamenetre" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
+
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
@@ -130,7 +167,7 @@ A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő)
 
 A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtást tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (így a legutóbbi végrehajtás a válaszban elsőként jelenik meg).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

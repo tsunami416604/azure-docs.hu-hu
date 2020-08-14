@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75641333"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205955"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Billentyűparancsok az Azure Portalon
 
@@ -53,7 +53,7 @@ Ez a cikk a Azure Portalban mindenhol működő billentyűparancsokat sorolja fe
 |Erőforrás- **csoportok** keresése|G + R |
 |A bal oldali oldalsáv-elem megnyitása ezen a pozíción |G + szám|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Kontrasztos megjelenítés bekapcsolása és téma módosítása](azure-portal-change-theme-high-contrast.md)
-- [Támogatott böngészők és eszközök](../azure-preview-portal-supported-browsers-devices.md)
+- [Kontrasztos megjelenítés bekapcsolása és téma módosítása](set-preferences.md#choose-a-theme-or-enable-high-contrast)
+- [Támogatott böngészők és eszközök](azure-portal-supported-browsers-devices.md)

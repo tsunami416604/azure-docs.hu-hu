@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078393"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208029"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -298,6 +298,9 @@ Az Auth beállításai opcionálisan konfigurálhatók az üzemelő példány á
     2.  Beállítás értéke `isAuthFromFile` "true"
     3.  Állítsa a `authFilePath` fájl nevére (például "auth.json")
 
+> [!NOTE]
+> A `authFilePath` platformok közötti változó formátuma. Windows rendszeren a relatív és az abszolút elérési út is támogatott. A relatív érték használata javasolt. A Linux esetében jelenleg csak az abszolút elérési utak támogatottak, így a beállítás értéke "/Home/site/wwwroot/auth.json" vagy hasonló lehet.
+
 Ha elvégezte ezt a konfigurációs frissítést, a rendszer a fájl tartalmát fogja használni App Service hitelesítés/engedélyezés viselkedésének meghatározásához az adott helyen. Ha bármikor vissza szeretne térni Azure Resource Manager konfigurációhoz, a `isAuthFromFile` "false" (hamis) értékre állíthatja vissza.
 
 ### <a name="configuration-file-reference"></a>Konfigurációs fájl leírása
@@ -529,7 +532,7 @@ A helyére írja `<my_app_name>` be az alkalmazás nevét. Az `<my_resource_grou
 
 Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](https://docs.microsoft.com/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](https://docs.microsoft.com/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Felhasználók teljes körű hitelesítése és engedélyezése](tutorial-auth-aad.md)

@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76899367"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209950"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Oktatóanyag: funkció-jelzők kezelése az Azure-alkalmazás konfigurációjában
 
@@ -38,7 +38,7 @@ Az alkalmazás-konfiguráció Azure Portaljában található Feature Manager egy
 
 Új szolgáltatás jelző hozzáadása:
 
-1. Válassza a **szolgáltatás-kezelő** > **+ Hozzáadás** elemet a szolgáltatás jelző hozzáadásához.
+1. Válassza a **szolgáltatás-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatás jelző hozzáadásához.
 
     ![Szolgáltatás jelölői listája](./media/azure-app-configuration-feature-flags.png)
 
@@ -71,9 +71,9 @@ A szolgáltatás jelölője állapotának módosítása:
 
 ## <a name="access-feature-flags"></a>Hozzáférési funkciók jelzői
 
-A Feature Manager által létrehozott funkció-jelzők tárolása és lekérése normál értékként történik. Ezeket egy speciális névtér-előtagja `.appconfig.featureflag`tárolja. Az alapul szolgáló kulcs értékeit a Configuration Explorer használatával tekintheti meg. Az alkalmazás lekérheti ezeket az értékeket az alkalmazás-konfiguráció konfigurációs szolgáltatói, SDK-k, parancssori bővítmények és REST API-k használatával.
+A Feature Manager által létrehozott funkció-jelzők tárolása és lekérése normál értékként történik. Ezeket egy speciális névtér-előtagja tárolja `.appconfig.featureflag` . Az alapul szolgáló kulcs értékeit a Configuration Explorer használatával tekintheti meg. Az alkalmazás lekérheti ezeket az értékeket az alkalmazás-konfiguráció konfigurációs szolgáltatói, SDK-k, parancssori bővítmények és REST API-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezelheti a funkciók jelzőit és állapotát az alkalmazás konfigurációjának használatával. Az alkalmazás-konfiguráció és a ASP.NET Core szolgáltatás-felügyeleti támogatásáról az alábbi cikkben talál további információt:
 

@@ -2,13 +2,14 @@
 title: Azure Functions C# – fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatával.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 7c00dcd3648ef175d4e834fceef3444f7943e70b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288189"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206198"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -39,8 +40,8 @@ További információ: [Azure functions Runtime-verziók áttekintése](function
 
 A Visual Studióban a **Azure functions** Project sablon egy C# szintű függvénytár-projektet hoz létre, amely a következő fájlokat tartalmazza:
 
-* [A](functions-host-json.md) helyi vagy az Azure-ban futtatott, a projekt összes funkcióját érintő konfigurációs beállításokathost.js.
-* [Alocal.settings.jsa rendszer a](functions-run-local.md#local-settings-file) helyileg futtatott alkalmazások beállításait és a kapcsolódási karakterláncokat tárolja. Ez a fájl titkokat tartalmaz, és nincs közzétéve az Azure-beli Function alkalmazásban. Ehelyett [adja hozzá az alkalmazás beállításait a Function alkalmazáshoz](functions-develop-vs.md#function-app-settings).
+* [ A](functions-host-json.md) helyi vagy az Azure-ban futtatott, a projekt összes funkcióját érintő konfigurációs beállításokathost.js.
+* [ Alocal.settings.jsa rendszer a](functions-run-local.md#local-settings-file) helyileg futtatott alkalmazások beállításait és a kapcsolódási karakterláncokat tárolja. Ez a fájl titkokat tartalmaz, és nincs közzétéve az Azure-beli Function alkalmazásban. Ehelyett [adja hozzá az alkalmazás beállításait a Function alkalmazáshoz](functions-develop-vs.md#function-app-settings).
 
 A projekt létrehozásakor a következő példához hasonló mappastruktúrát jön létre a Build kimeneti könyvtárában:
 
@@ -57,7 +58,7 @@ A projekt létrehozásakor a következő példához hasonló mappastruktúrát j
 Ez a könyvtár az Azure-beli Function alkalmazás üzembe helyezése. A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési bővítmények a [projekthez NuGet csomagokként lesznek hozzáadva](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> A létrehozási folyamat létrehoz egy *function.js* az egyes függvények fájljában. Ezt *afunction.jsa* fájlon nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md)ismertető témakört.
+> A létrehozási folyamat létrehoz egy *function.js* az egyes függvények fájljában. Ezt * afunction.jsa* fájlon nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md)ismertető témakört.
 
 
 ## <a name="methods-recognized-as-functions"></a>Függvényekként felismert metódusok
@@ -138,7 +139,7 @@ A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában ta
 
 Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
 
-A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Íme egy példa:
+A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
 
 ```json
 {
@@ -371,7 +372,7 @@ A következő módon adjon meg egy kötelező kötést:
   }
   ```
 
-  `BindingTypeAttribute`az a .NET-attribútum, amely meghatározza a kötést, és `T` egy bemeneti vagy kimeneti típus, amelyet az adott kötési típus támogat. `T`nem lehet `out` paraméter típusa (például `out JObject` ). A Mobile Apps tábla kimeneti kötése például [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de a [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy a [ \<T> IAsyncCollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) csak kényszerített kötéssel használható.
+  `BindingTypeAttribute` az a .NET-attribútum, amely meghatározza a kötést, és `T` egy bemeneti vagy kimeneti típus, amelyet az adott kötési típus támogat. `T` nem lehet `out` paraméter típusa (például `out JObject` ). A Mobile Apps tábla kimeneti kötése például [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de a [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy a [ \<T> IAsyncCollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) csak kényszerített kötéssel használható.
 
 ### <a name="single-attribute-example"></a>Példa egyetlen attribútumra
 
@@ -429,7 +430,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

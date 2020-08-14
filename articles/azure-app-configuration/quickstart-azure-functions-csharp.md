@@ -4,15 +4,16 @@ description: Útmutató az Azure-alkalmazások konfigurálásához a Azure Funct
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bae602bd45115fa6e199e886db0539c4f47f5180
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245497"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210008"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -28,7 +29,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. A következő kulcs-érték párok hozzáadásához válassza a **Configuration Explorer** > **+ kulcs létrehozása** > **-érték** elemet:
+6. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -53,7 +54,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Adjon hozzá `static` egy nevű `Configuration` tulajdonságot a (z `IConfiguration`) egyedi példányának létrehozásához. Ezután adjon hozzá `static` egy konstruktort az alkalmazás konfigurációjához való kapcsolódáshoz `AddAzureAppConfiguration()`a hívásával. Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
+3. Adjon hozzá egy `static` nevű tulajdonságot a (z `Configuration` ) egyedi példányának létrehozásához `IConfiguration` . Ezután adjon hozzá egy `static` konstruktort az alkalmazás konfigurációjához való kapcsolódáshoz a hívásával `AddAzureAppConfiguration()` . Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -117,7 +118,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

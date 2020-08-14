@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995887"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207960"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez
 
@@ -19,8 +19,6 @@ Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétl
 ## <a name="prepare-your-aks-cluster"></a>Az AK-fürt előkészítése
 
 Az AK-fürt fejlesztői tárhelyekre való előkészítéséhez ellenőrizze, hogy az AK-fürt az [Azure dev Spaces által támogatott][supported-regions] régióban van-e, és Kubernetes 1.10.3 vagy újabb verziót futtat. A futtatásával engedélyezheti az Azure dev Spaces szolgáltatást az Azure CLI-vel `az aks use-dev-spaces` .
-
-Ha például egy AK-fürtöt kíván beállítani a fejlesztői tárhelyekhez, tekintse meg a [Team Development][quickstart-team]rövid útmutatót.
 
 Ha az Azure dev-helyek engedélyezve vannak az AK-fürtön, akkor a fürthöz telepíti a vezérlőt. A vezérlő az AK-fürtön kívül található. Az ügyféloldali eszközök és az AK-fürt közötti viselkedést és kommunikációt vezérli. Ha engedélyezve van, használhatja a vezérlőt az ügyféloldali eszközök használatával.
 
@@ -88,14 +86,12 @@ A parancs részeként használhatja az ügyféloldali eszközt a parancssorból 
 * Visual Studio Code az [Azure dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)használatával.
 * A Visual Studio és az Azure-fejlesztési számítási feladatok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az ügyféloldali eszközök használatáról a kód előkészítéséhez és a fejlesztői tárhelyen való futtatásához, tekintse meg a [projekt előkészítése az Azure dev Spaces működéséhez][how-it-works-prep]című témakört.
 
-Az Azure dev Spaces for Team Development használatának megkezdéséhez tekintse meg a [csapat fejlesztését az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

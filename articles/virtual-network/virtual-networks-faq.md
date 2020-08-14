@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924121"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205468"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -356,7 +356,7 @@ Nem, a VNet szolgáltatási végpontok használata nem jár további díjszabás
 Igen, ez lehetséges. A virtuális hálózatok és az Azure-szolgáltatási erőforrások lehetnek azonos vagy eltérő előfizetésekben. Az egyetlen követelmény, hogy a virtuális hálózatnak és az Azure-szolgáltatások erőforrásainak ugyanahhoz a Active Directory (AD) bérlőhöz kell tartozniuk.
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Be lehet kapcsolni a VNet szolgáltatási végpontokat, és be kell állítani a VNet ACL-eket, ha a virtuális hálózat és az Azure-szolgáltatás erőforrásai különböző AD-bérlők közé tartoznak?
-Nem, a VNet szolgáltatási végpontok és a VNet ACL-ek nem támogatottak az AD-bérlők között.
+Igen, az Azure Storage és a Azure Key Vault szolgáltatás-végpontok használata esetén is lehetséges. A többi szolgáltatás esetében az VNet szolgáltatási végpontok és a VNet ACL-ek nem támogatottak az AD-bérlők között.
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>A helyszíni eszköz IP-címe az Azure Virtual Network Gateway (VPN) vagy a ExpressRoute Gateway használatával csatlakozik az Azure Pásti szolgáltatáshoz a VNet szolgáltatás végpontjai felett?
 Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha engedélyezni szeretné a forgalmat a helyszíni környezetből, engedélyeznie kell a nyilvános (jellemzően NAT) IP-címeket is a helyszíni vagy ExpressRoute. Ezek az IP-címek az Azure szolgáltatási erőforrásaihoz tartozó IP-tűzfal konfigurációján keresztül adhatók hozzá.

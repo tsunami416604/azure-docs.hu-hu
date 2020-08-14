@@ -12,15 +12,16 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254588"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205511"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével
 A [API Management szolgáltatás](api-management-key-concepts.md) számos lehetőséget kínál a http API-nak küldött HTTP-kérések feldolgozásának javítására. Azonban a kérések és válaszok megléte átmeneti jellegű. A rendszer elvégzi a kérést, és a API Management szolgáltatáson keresztül áramlik a háttérbeli API-ra. Az API feldolgozza a kérést, és a válasz visszaáramlik az API-fogyasztó felé. A API Management szolgáltatás megtart néhány fontos statisztikát az API-król a Azure Portal irányítópulton való megjelenítéshez, de ezen túlmenően a részletek eltűnnek.
@@ -163,7 +164,7 @@ A `set-variable` házirend egy olyan értéket hoz létre, amely `log-to-eventhu
 Az Azure Event hub eseményei a [AMQP protokoll](https://www.amqp.org/)használatával érkeznek. A Microsoft Service Bus csapata elérhetővé tette az ügyfél-kódtárakat, hogy megkönnyítsék a megrendelői eseményeket. Két különböző megközelítés támogatott, az egyik a *közvetlen fogyasztó* , a másik pedig az `EventProcessorHost` osztályt használja. A két megközelítés példái a [Event Hubs programozási útmutatóban](../event-hubs/event-hubs-programming-guide.md)találhatók. A különbségek rövid változata, amely teljes körű irányítást biztosít, és a különböző vízmennyiségeket is végrehajtja, `Direct Consumer` `EventProcessorHost` de bizonyos feltételezéseket tesz az események feldolgozásával kapcsolatban.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-Ebben a példában a `EventProcessorHost` for egyszerűséget használjuk, de ez nem a legmegfelelőbb választás ehhez az adott forgatókönyvhöz. `EventProcessorHost`gondoskodik arról, hogy nem kell aggódnia az adott esemény-feldolgozó osztályon belül felmerülő problémákkal kapcsolatban. Ebben az esetben azonban egyszerűen konvertáljuk az üzenetet egy másik formátumba, és egy aszinkron módszerrel átadják egy másik szolgáltatásnak. Nincs szükség a megosztott állapot frissítésére, ezért nem áll fenn a szálakkal kapcsolatos problémák kockázata. A legtöbb esetben `EventProcessorHost` valószínűleg a legjobb választás, és ez természetesen a könnyebb megoldás.
+Ebben a példában a `EventProcessorHost` for egyszerűséget használjuk, de ez nem a legmegfelelőbb választás ehhez az adott forgatókönyvhöz. `EventProcessorHost` gondoskodik arról, hogy nem kell aggódnia az adott esemény-feldolgozó osztályon belül felmerülő problémákkal kapcsolatban. Ebben az esetben azonban egyszerűen konvertáljuk az üzenetet egy másik formátumba, és egy aszinkron módszerrel átadják egy másik szolgáltatásnak. Nincs szükség a megosztott állapot frissítésére, ezért nem áll fenn a szálakkal kapcsolatos problémák kockázata. A legtöbb esetben `EventProcessorHost` valószínűleg a legjobb választás, és ez természetesen a könnyebb megoldás.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
 A használatakor a központi fogalom a `EventProcessorHost` `IEventProcessor` metódust tartalmazó felület implementációjának létrehozása `ProcessEventAsync` . A metódus lényege itt látható:
@@ -305,7 +306,7 @@ A következő animált ábrán megtekintheti a fejlesztői portálon egy API-ra 
 
 ![A kérelem Runscope való továbbításának bemutatása](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management szolgáltatás ideális helyet biztosít az API-khoz érkező és onnan érkező HTTP-forgalom rögzítéséhez. Az Azure Event Hubs egy rugalmasan méretezhető, alacsony díjszabású megoldás a forgalom rögzítésére és a másodlagos feldolgozási rendszerekbe való etetésére a naplózás, figyelés és más kifinomult elemzések céljából. A harmadik féltől származó forgalom figyelési rendszereihez (például a Moesif) való csatlakozás néhány tucat sornyi kód.
 
 ## <a name="next-steps"></a>Következő lépések

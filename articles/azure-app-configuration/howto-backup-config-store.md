@@ -6,15 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b06d38d69f331df2f48637c6cdee527090955a47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830129"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207137"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Alkalmazás-konfigurációs tárolók automatikus biztonsági mentése
 
@@ -254,7 +255,7 @@ Ha azt tervezi, hogy ezzel az alkalmazás-konfigurációval és esemény-előfiz
 az group delete --name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan állíthatja be a kulcs-értékek automatikus biztonsági mentését, további információkat tudhat meg arról, hogyan növelheti az alkalmazás földrajzi rugalmasságát:
 

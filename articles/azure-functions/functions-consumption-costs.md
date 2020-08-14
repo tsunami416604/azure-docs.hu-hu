@@ -3,12 +3,12 @@ title: A fogyasztási terv költségeinek becslése Azure Functions
 description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás Azure-beli használati tervben való futtatásakor felmerülő költségeket.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083038"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207777"
 ---
 # <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
@@ -16,7 +16,7 @@ A Azure Functionsban futó alkalmazások esetében jelenleg háromféle üzemelt
 
 | Felkészülés | Description |
 | ---- | ----------- |
-| [**Használat**](functions-scale.md#consumption-plan) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
+| [**Felhasználás**](functions-scale.md#consumption-plan) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
 | [**Prémium szintű**](functions-scale.md#premium-plan) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
 | [**Dedikált (App Service)**](functions-scale.md#app-service-plan) <br/>(alapszintű vagy magasabb) | Ha dedikált virtuális gépeken vagy elszigetelten kell futnia, használjon egyéni rendszerképeket, vagy szeretné használni a felesleges App Service csomag kapacitását. A [normál app Service csomag számlázását](https://azure.microsoft.com/pricing/details/app-service/)használja. A díjak a választott díjszabási szinten alapulnak.|
 
@@ -37,6 +37,8 @@ Mivel az idő múlásával megváltozik a memóriahasználat, a számítás lén
 > [!NOTE]
 > Habár a CPU-használat nem veszi figyelembe közvetlenül a végrehajtási költségeket, hatással lehet a bekerülési időszakra, ha az hatással van a függvény végrehajtási idejére.
 
+HTTP-triggeres függvények esetén, ha hiba lép fel, mielőtt a függvény kódja megkezdi a végrehajtást, nem számítunk fel díjat. Ez azt jelenti, hogy az API-kulcs érvényesítése vagy a App Service hitelesítés/engedélyezés funkció miatt a platformtól érkező 401-válaszok nem számítanak bele a végrehajtási díjakba. Hasonlóképpen, a 5xx-állapotkód válaszai nem számítanak bele, ha a platformon a kérést feldolgozó függvény előtt jelentkeznek. A platform által a kód végrehajtásának megkezdése után generált 5xx-válasz továbbra is végrehajtásnak számít, még akkor is, ha a függvény kódja nem eredményezi a hibát.
+
 ## <a name="other-related-costs"></a>Egyéb kapcsolódó költségek
 
 A függvények bármely csomagban való futtatásának teljes díja miatt ne feledje, hogy a functions Runtime számos más Azure-szolgáltatást használ, amelyek mindegyike külön számlázható. A Function apps díjszabásának kiszámításakor a többi Azure-szolgáltatással integrálható eseményindítók és kötések a további szolgáltatások létrehozásához és fizetéséhez szükségesek. 
@@ -45,7 +47,7 @@ A használati tervben futó függvények esetében a teljes díj a függvények 
 
 A Function app és a kapcsolódó szolgáltatások általános költségeinek kiszámításához használja az [Azure díjszabási számológépét](https://azure.microsoft.com/pricing/calculator/?service=functions). 
 
-| Kapcsolódó díj | Description |
+| Kapcsolódó díj | Leírás |
 | ------------ | ----------- |
 | **Storage-fiók** | Az egyes functions-alkalmazásokhoz hozzá kell rendelni egy általános célú [Azure Storage-fiókot](../storage/common/storage-introduction.md#types-of-storage-accounts), amely [külön számlázható](https://azure.microsoft.com/pricing/details/storage/). Ezt a fiókot a functions futtatókörnyezet belsőleg használja, de a tároló-eseményindítók és-kötések esetében is használható. Ha nincs Storage-fiókja, akkor a rendszer létrehoz egyet a Function alkalmazás létrehozásakor. További információ: a [Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | A függvények a [Application Insightson](../azure-monitor/app/app-insights-overview.md) támaszkodnak, hogy nagy teljesítményű figyelési élményt nyújtsanak a Function alkalmazásai számára. Habár nem kötelező, engedélyeznie kell [Application Insights integrációt](functions-monitoring.md#enable-application-insights-integration). Minden hónapban ingyenes telemetria-adatmennyiség szerepel. További információkért tekintse meg [a Azure monitor díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/monitor/). |
@@ -206,7 +208,7 @@ performanceCounters
 
 Az eredmények a következő példához hasonlóan jelennek meg:
 
-| időbélyeg \[ UTC\]          | name          | Érték       |
+| időbélyeg \[ UTC\]          | name          | value       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 am | Saját bájtok | 209 932 288 |
 | 9/12/2019, 1:06:14 \. 994 am | Saját bájtok | 212 189 184 |
@@ -232,7 +234,7 @@ customMetrics
 | QueueTrigger MaxDurationMs | 90 \. 249                     |
 | QueueTrigger MinDurationMs | 8 \. 522                      |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a monitoring Function-alkalmazásokról](functions-monitoring.md)

@@ -1,18 +1,18 @@
 ---
 title: Hibrid gépek összekötése az Azure-on nagy méretekben
-description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc for Servers (előzetes verzió) használatával az egyszerű szolgáltatásnév használatával.
+description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc-kompatibilis kiszolgálók (előzetes verzió) használatával egy egyszerű szolgáltatásnév használatával.
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121816"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211413"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek összekötése az Azure-on nagy méretekben
 
-Az Azure arc for Servers (előzetes verzió) szolgáltatást engedélyezheti több Windows-vagy Linux-gépen a környezetben, és a követelményektől függően számos rugalmas lehetőség közül választhat. Az általunk biztosított sablon-parancsfájl segítségével automatizálhatja a telepítés minden lépését, beleértve az Azure arc-hoz való kapcsolódás létrehozását is. Azonban a parancsfájlt interaktív módon kell végrehajtani egy olyan fiókkal, amely emelt szintű engedélyekkel rendelkezik a célszámítógépen és az Azure-ban. Ahhoz, hogy a gépeket az Azure arc kiszolgálókhoz lehessen kapcsolni a kiszolgálókon, használhat egy Azure Active Directory [szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md) ahelyett, hogy a Kiemelt identitást használja a [számítógép interaktív összekapcsolásához](onboard-portal.md). Az egyszerű szolgáltatásnév egy speciális, korlátozott felügyeleti identitás, amely csak a gépek az Azure-hoz való összekapcsolásához szükséges minimális engedélyeket kapja meg a `azcmagent` parancs használatával. Ez biztonságosabb, mint egy magasabb jogosultsági szintű fiók használata, mint például egy Bérlői rendszergazda, és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárásokat követi. Az egyszerű szolgáltatás csak a bevezetéskor használatos, ezért semmilyen más célra nem használható.  
+A környezetében több Windows-vagy Linux-gépen is engedélyezheti az Azure arc-kompatibilis kiszolgálókat (előzetes verzió), és a követelményektől függően számos rugalmas lehetőség közül választhat. Az általunk biztosított sablon-parancsfájl segítségével automatizálhatja a telepítés minden lépését, beleértve az Azure arc-hoz való kapcsolódás létrehozását is. Azonban a parancsfájlt interaktív módon kell végrehajtani egy olyan fiókkal, amely emelt szintű engedélyekkel rendelkezik a célszámítógépen és az Azure-ban. Ha a gépeket az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió) szeretné összekapcsolni, használhat egy Azure Active Directory [egyszerű szolgáltatást](../../active-directory/develop/app-objects-and-service-principals.md) , ahelyett, hogy a Kiemelt identitást használja a [számítógép interaktív összekapcsolásához](onboard-portal.md). Az egyszerű szolgáltatásnév egy speciális, korlátozott felügyeleti identitás, amely csak a gépek az Azure-hoz való összekapcsolásához szükséges minimális engedélyeket kapja meg a `azcmagent` parancs használatával. Ez biztonságosabb, mint egy magasabb jogosultsági szintű fiók használata, mint például egy Bérlői rendszergazda, és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárásokat követi. Az egyszerű szolgáltatás csak a bevezetéskor használatos, ezért semmilyen más célra nem használható.  
 
 A csatlakoztatott számítógép-ügynök telepítéséhez és konfigurálásához szükséges telepítési módszerek megkövetelik, hogy a használt automatizált módszer rendszergazdai engedélyekkel rendelkezik a gépeken. Linux rendszeren a rendszergazdai fiók és a Windows rendszeren a helyi Rendszergazdák csoport tagjaként.
 
@@ -20,7 +20,7 @@ Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prere
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-A folyamat végén sikeresen csatlakoztatta a hibrid gépeket az Azure arc for Servers rendszerhez.
+A folyamat végén sikeresen csatlakoztatta a hibrid gépeket az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió).
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Egyszerű szolgáltatás létrehozása a méretezéshez
 
@@ -61,7 +61,7 @@ Az egyszerű szolgáltatásnév a PowerShell használatával történő létreho
 A következő tulajdonságok értékeit használja a rendszer a paraméternek átadott paraméterekkel `azcmagent` :
 
 * A **ApplicationId** tulajdonság értékét a rendszer a `--service-principal-id` paraméter értékéhez használja.
-* A **Password (jelszó** ) tulajdonság értéke az `--service-principal-secret` ügynök összekapcsolásához használt paraméterhez használatos.
+* A **Password (jelszó** ) tulajdonság értéke az  `--service-principal-secret` ügynök összekapcsolásához használt paraméterhez használatos.
 
 > [!NOTE]
 > Ügyeljen arra, hogy az egyszerű szolgáltatásnév **ApplicationId** tulajdonságát használja, ne az **ID** tulajdonságot.
@@ -75,11 +75,11 @@ A következő lépésekkel telepítheti és konfigurálhatja a csatlakoztatott g
 
 Az alábbi beállításokkal konfigurálhatja az `azcmagent` egyszerű szolgáltatáshoz használt parancsot.
 
-* `tenant-id`: Az egyedi azonosító (GUID), amely az Azure AD dedikált példányát jelöli.
-* `subscription-id`: Annak az Azure-előfizetésnek az előfizetés-azonosítója (GUID), amelyhez a gépeket szeretné használni.
-* `resource-group`: Az erőforráscsoport neve, ahová a csatlakoztatott gépek tartoznak.
-* `location`: Tekintse meg a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
-* `resource-name`: (Nem*kötelező*) a helyszíni gép Azure-beli erőforrás-ábrázolásához használatos. Ha nem megadja ezt az értéket, a rendszer a gép állomásnevét használja.
+* `tenant-id` : Az egyedi azonosító (GUID), amely az Azure AD dedikált példányát jelöli.
+* `subscription-id` : Annak az Azure-előfizetésnek az előfizetés-azonosítója (GUID), amelyhez a gépeket szeretné használni.
+* `resource-group` : Az erőforráscsoport neve, ahová a csatlakoztatott gépek tartoznak.
+* `location` : Tekintse meg a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
+* `resource-name` : (Nem*kötelező*) a helyszíni gép Azure-beli erőforrás-ábrázolásához használatos. Ha nem megadja ezt az értéket, a rendszer a gép állomásnevét használja.
 
 A parancssori eszközzel kapcsolatos további információkért tekintse meg `azcmagent` a [Azcmagent-hivatkozás](./manage-agent.md)áttekintését.
 
@@ -133,11 +133,11 @@ azcmagent connect \
 >[!NOTE]
 >A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
-Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
+Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz (előzetes verzió), lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 

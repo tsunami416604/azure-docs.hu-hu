@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: szöveg kinyerése a Computer Vision OCR REST API és C #'
+title: 'Gyors útmutató: szöveg kinyerése a Computer Vision 2,0 REST API OCR-művelet és C #'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget nyer ki egy képből a Computer Vision REST API OCR-művelettel a C# használatával.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ecc0ddbfa48669cad7f486e181fcdb6dbc80851e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167793"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209188"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-ocr-rest-api-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision OCR REST API és C használatával #
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision 2,0 REST API OCR-művelet és C #
 
 > [!IMPORTANT]
 > Angol, holland, francia, német, olasz, portugál, spanyol vagy egyszerűsített kínai (előzetes verzió) szöveg kinyerése esetén azt javasoljuk, hogy használja az újabb [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). [C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) gyors útmutató érhető el. 
@@ -244,7 +244,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy alapszintű Windows-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le.
 

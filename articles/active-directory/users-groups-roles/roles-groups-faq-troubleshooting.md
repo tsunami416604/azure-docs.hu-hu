@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476111"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208190"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Felhőalapú csoportokhoz rendelt szerepkörök hibaelhárítása
 
@@ -51,7 +51,7 @@ ms.locfileid: "87476111"
 
 **A:** Igen, lehet. A globális rendszergazda és a felhasználó rendszergazdája jogosult a csoportok egy hozzáférési csomagban való üzembe helyezésére. Nincs változás a globális rendszergazda számára, de a felhasználói rendszergazdai szerepkörre vonatkozó engedélyek kis mértékben módosulnak. A szerepkörhöz hozzárendelhető csoportok hozzáférési csomagba való helyezéséhez felhasználói rendszergazdának kell lennie, és a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. Az alábbi teljes táblázat azt mutatja be, hogy kik hozhatnak létre hozzáférési csomagot a vállalati licencek kezelése szolgáltatásban:
 
-Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot\* | Office 365-csoportot adhat hozzá\* | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet
+Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot\* | Hozzáadhat Microsoft 365 csoportot\* | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 Globális rendszergazda | n.a. | ✔️ | ✔️ | ✔️  | ✔️
 Felhasználói rendszergazda  | n.a.  | ✔️  | ✔️  | ✔️
@@ -98,7 +98,7 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 
 **A:** Ha egy meglévő csoportot rendel hozzá egy szerepkörhöz, a meglévő csoport tulajdonosa további tagokat adhat hozzá ehhez a csoporthoz anélkül, hogy az új tagok betartják a szerepkört. Mivel a szerepkörhöz hozzárendelhető csoportok hatékonyak, számos korlátozást teszünk elérhetővé a védelemhez. Nem kell módosítania a csoportot, amely a csoportot kezelő személy számára meglepő lenne.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](roles-groups-concept.md)
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](roles-groups-create-eligible.md)

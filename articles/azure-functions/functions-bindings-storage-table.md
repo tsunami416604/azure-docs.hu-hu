@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853058"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206702"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions Azure Table Storage-kötések
 
@@ -33,7 +33,7 @@ A Table Storage-kötések a [Microsoft. Azure. webjobs. Extensions. Storage](htt
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="input"></a>Input (Bemenet)
+## <a name="input"></a>Bevitel
 
 Egy Azure Storage-fiókban lévő tábla beolvasásához használja az Azure Table Storage bemeneti kötését.
 
@@ -94,7 +94,7 @@ public class TableStorage
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik megoldás, ha `CloudTable` metódus-paramétert használ a tábla olvasásához az Azure Storage SDK használatával. Az alábbi példa egy olyan függvényt mutat be, amely egy Azure Functions naplózási táblázatot kérdez le:
+`IQueryable` nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik megoldás, ha `CloudTable` metódus-paramétert használ a tábla olvasásához az Azure Storage SDK használatával. Az alábbi példa egy olyan függvényt mutat be, amely egy Azure Functions naplózási táblázatot kérdez le:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -249,7 +249,7 @@ public class Person : TableEntity
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`nem támogatott a [2. x vagy újabb verziók](functions-versions.md)functions futtatókörnyezetében. Egy másik megoldás, ha `CloudTable` metódus-paramétert használ a tábla olvasásához az Azure Storage SDK használatával. Az alábbi példa egy olyan függvényt mutat be, amely egy Azure Functions naplózási táblázatot kérdez le:
+`IQueryable` nem támogatott a [2. x vagy újabb verziók](functions-versions.md)functions futtatókörnyezetében. Egy másik megoldás, ha `CloudTable` metódus-paramétert használ a tábla olvasásához az Azure Storage SDK használatával. Az alábbi példa egy olyan függvényt mutat be, amely egy Azure Functions naplózási táblázatot kérdez le:
 
 ```json
 {
@@ -555,7 +555,7 @@ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-b
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Table` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `in` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
@@ -575,27 +575,27 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 * **Egy sor olvasása a következőben:**
 
-  Beállítás `partitionKey` és `rowKey` . A tábla adataihoz a metódus paraméterének használatával férhet hozzá `T <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T`általában olyan típus, amely `ITableEntity` a-ból implementál vagy származtat `TableEntity` . A `filter` és a `take` Tulajdonságok nem használatosak ebben a forgatókönyvben.
+  Beállítás `partitionKey` és `rowKey` . A tábla adataihoz a metódus paraméterének használatával férhet hozzá `T <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T` általában olyan típus, amely `ITableEntity` a-ból implementál vagy származtat `TableEntity` . A `filter` és a `take` Tulajdonságok nem használatosak ebben a forgatókönyvben.
 
 * **Egy vagy több sor olvasása**
 
-  A tábla adataihoz a metódus paraméterének használatával férhet hozzá `IQueryable<T> <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T`olyan típusnak kell lennie, amely `ITableEntity` a-ből implementál vagy származtat `TableEntity` . `IQueryable`A módszerek használatával bármilyen szűrést végezhet. A `partitionKey` , `rowKey` , `filter` és `take` tulajdonságokat nem használja ebben a forgatókönyvben.  
+  A tábla adataihoz a metódus paraméterének használatával férhet hozzá `IQueryable<T> <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T` olyan típusnak kell lennie, amely `ITableEntity` a-ből implementál vagy származtat `TableEntity` . `IQueryable`A módszerek használatával bármilyen szűrést végezhet. A `partitionKey` , `rowKey` , `filter` és `take` tulajdonságokat nem használja ebben a forgatókönyvben.  
 
   > [!NOTE]
-  > `IQueryable`nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik lehetőség egy [CloudTable paramName metódus paraméter használata](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasásához az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg kötni `CloudTable` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+  > `IQueryable` nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik lehetőség egy [CloudTable paramName metódus paraméter használata](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasásához az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg kötni `CloudTable` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
 * **Egy sor olvasása a következőben:**
 
-  Beállítás `partitionKey` és `rowKey` . A tábla adataihoz a metódus paraméterének használatával férhet hozzá `T <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T`általában olyan típus, amely `ITableEntity` a-ból implementál vagy származtat `TableEntity` . A `filter` és a `take` Tulajdonságok nem használatosak ebben a forgatókönyvben.
+  Beállítás `partitionKey` és `rowKey` . A tábla adataihoz a metódus paraméterének használatával férhet hozzá `T <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T` általában olyan típus, amely `ITableEntity` a-ból implementál vagy származtat `TableEntity` . A `filter` és a `take` Tulajdonságok nem használatosak ebben a forgatókönyvben.
 
 * **Egy vagy több sor olvasása**
 
-  A tábla adataihoz a metódus paraméterének használatával férhet hozzá `IQueryable<T> <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T`olyan típusnak kell lennie, amely `ITableEntity` a-ből implementál vagy származtat `TableEntity` . `IQueryable`A módszerek használatával bármilyen szűrést végezhet. A `partitionKey` , `rowKey` , `filter` és `take` tulajdonságokat nem használja ebben a forgatókönyvben.  
+  A tábla adataihoz a metódus paraméterének használatával férhet hozzá `IQueryable<T> <paramName>` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. `T` olyan típusnak kell lennie, amely `ITableEntity` a-ből implementál vagy származtat `TableEntity` . `IQueryable`A módszerek használatával bármilyen szűrést végezhet. A `partitionKey` , `rowKey` , `filter` és `take` tulajdonságokat nem használja ebben a forgatókönyvben.  
 
   > [!NOTE]
-  > `IQueryable`nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik lehetőség egy [CloudTable paramName metódus paraméter használata](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasásához az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg kötni `CloudTable` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+  > `IQueryable` nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik lehetőség egy [CloudTable paramName metódus paraméter használata](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasásához az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg kötni `CloudTable` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -942,7 +942,7 @@ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-b
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Table` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `out` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
@@ -992,7 +992,7 @@ Két lehetőség áll rendelkezésre a Table Storage-sorok függvényből tört�
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Referencia |
+| Kötés | Hivatkozás |
 |---|---|
 | Táblázat | [Tábla Hibakódai](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

@@ -1,27 +1,22 @@
 ---
-title: 'Azure AD Application Proxy: verziók kiadásának előzményei | Microsoft Docs'
+title: 'Azure AD Application Proxy: verziók kiadásának előzményei'
 description: Ez a cikk felsorolja az Azure AD Application Proxy összes kiadását, és ismerteti az új funkciókat és a rögzített problémákat.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-editor: ''
 ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019386"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210866"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: verziók kiadásának előzményei
 Ez a cikk a kiadott Azure Active Directory (Azure AD) alkalmazásproxy verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti az alkalmazásproxy új szolgáltatásait és funkcióit. Az alkalmazásproxy-összekötők automatikusan frissülnek, amikor megjelent egy új verzió. 
@@ -68,7 +63,7 @@ Július 17., 2020: megjelent a letöltéshez. Ez a verzió csak a letöltési ol
 Április 07., 2020: kiadva a letöltéshez
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
--   Az összekötők csak a TLS 1,2-et használják az összes kapcsolathoz. További részletekért lásd az [összekötő előfeltételei](application-proxy-add-on-premises-application.md#before-you-begin) című témakört.
+-   Az összekötők csak a TLS 1,2-et használják az összes kapcsolathoz. További részletekért lásd az [összekötő előfeltételei](application-proxy-add-on-premises-application.md#prerequisites) című témakört.
 - Továbbfejlesztett jelzés az összekötő és az Azure-szolgáltatások között. Ez magában foglalja az összekötő és az Azure-szolgáltatások közötti WCF-kommunikációt, valamint a WebSocket-kommunikáció DNS-gyorsítótárazási funkcióinak támogatását.
 - Proxy konfigurálásának támogatása az összekötő és a háttérbeli alkalmazás között. További információ: a [meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md).
 
@@ -131,6 +126,6 @@ Az összekötők kimenő kapcsolati korlátainak jobb szabályozása.
 
 Ha a 1.5.36.0-nál korábbi verziójú alkalmazásproxy-összekötőt használ, frissítsen a legújabb verzióra, és győződjön meg arról, hogy a legújabb teljes körűen támogatott funkciókkal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a helyszíni alkalmazások távoli eléréséről az Azure ad Application Proxyon keresztül](application-proxy.md).
 - Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával.

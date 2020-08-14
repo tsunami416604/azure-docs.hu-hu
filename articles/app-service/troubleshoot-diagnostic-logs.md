@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást, é
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: seodec18
-ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261341"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207537"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -62,10 +62,10 @@ Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A
 
 | Szint | Belefoglalt kategóriák |
 |-|-|
-|**Letiltva** | None |
+|**Disabled** | Nincsenek |
 |**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
-|**Információ** | Információ, figyelmeztetés, hiba, kritikus|
+|**Tájékoztatás** | Információ, figyelmeztetés, hiba, kritikus|
 |**Részletes** | Nyomkövetés, hibakeresés, információ, figyelmeztetés, hiba, kritikus (minden kategória) |
 
 Ha elkészült, válassza a **Mentés**lehetőséget.
@@ -159,8 +159,8 @@ Ha az Azure Storage-Blobok lehetőséget konfigurálja a napló típusához, sz�
 
 A App Service fájlrendszerben tárolt naplók esetében a legegyszerűbb módszer a ZIP-fájl letöltése a böngészőben a következő helyen:
 
-- Linux/Container alkalmazások:`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Windows-alkalmazások:`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/Container alkalmazások: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Windows-alkalmazások: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 A Linux/Container alkalmazások esetében a ZIP-fájl konzol kimeneti naplókat tartalmaz a Docker-gazdagéphez és a Docker-tárolóhoz is. A kibővített alkalmazások esetében a ZIP-fájl az egyes példányok egy készletét tartalmazza. A App Service fájlrendszerben ezek a naplófájlok a */Home/LogFiles* könyvtárának tartalma.
 
@@ -187,16 +187,16 @@ A következő táblázat a támogatott naplózási típusokat és leírásokat t
 
 | Napló típusa | Windows-támogatás | Linux (Docker) támogatása | Description |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Yes | Standard kimenet és standard hiba |
+| AppServiceConsoleLogs | TBA | Igen | Standard kimenet és standard hiba |
 | AppServiceHTTPLogs | Igen | Igen | Webkiszolgáló-naplók |
 | AppServiceEnvironmentPlatformLogs | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
 | AppServiceAuditLogs | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | Yes | TBD | Fájl módosítása FTP-n és kudu |
+| AppServiceFileAuditLogs | Igen | TBD | Fájl módosítása FTP-n és kudu |
 | AppServiceAppLogs | TBA | Java SE & tomcat | Alkalmazás-naplók |
 | AppServiceIPSecAuditLogs  | Igen | Igen | IP-szabályoktól érkező kérések |
-| AppServicePlatformLogs  | TBA | Yes | Tároló naplófájljai |
+| AppServicePlatformLogs  | TBA | Igen | Tároló naplófájljai |
 
-## <a name="next-steps"></a><a name="nextsteps"></a>További lépések
+## <a name="next-steps"></a><a name="nextsteps"></a> További lépések
 * [Naplók lekérdezése Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [A Azure App Service figyelése](web-sites-monitor.md)
 * [Hibaelhárítási Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md)

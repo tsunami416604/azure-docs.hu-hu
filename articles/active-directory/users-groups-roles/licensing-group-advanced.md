@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727670"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209464"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
@@ -130,7 +130,7 @@ A PowerShell-parancsfájlok segítségével ellenőrizhető, hogy a felhasznál�
 
 1. Futtassa a `connect-msolservice` parancsmagot a hitelesítéshez és a szervezethez való kapcsolódáshoz.
 
-2. `Get-MsolAccountSku`Az Azure AD-szervezet összes kiépített termék-licencének felderítésére használható.
+2. `Get-MsolAccountSku` Az Azure AD-szervezet összes kiépített termék-licencének felderítésére használható.
 
    ![A Get-Msolaccountsku parancsmag képernyőképe](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -205,7 +205,7 @@ Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátoz
 
 - A csoportalapú licenckezelés jelenleg nem támogatja az olyan csoportokat, amelyek más (beágyazott) csoportokat tartalmaznak. Ha egy beágyazott csoportra alkalmaz egy licencet, az csak a csoport közvetlen első szintű felhasználótagjaira lesz alkalmazva.
 
-- A szolgáltatás csak biztonsági csoportokkal és securityEnabled = TRUE értékű Office 365-csoportokkal használható.
+- A szolgáltatás csak biztonsági csoportokkal használható, és Microsoft 365 a securityEnabled = TRUE értékkel rendelkező csoportokat.
 
 - A [Microsoft 365 felügyeleti központ](https://admin.microsoft.com) jelenleg nem támogatja a csoport alapú licencelést. Ha a felhasználó egy csoporttól örökli a licencet, ez a licenc az Office felügyeleti portálon normál felhasználói licencként jelenik meg. Ha megpróbálja módosítani a licencet, vagy megpróbálja eltávolítani a licencet, a portál egy hibaüzenetet ad vissza. Az örökölt csoportos licencek nem módosíthatók közvetlenül a felhasználón.
 
@@ -219,7 +219,7 @@ Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátoz
 
   Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás**gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 

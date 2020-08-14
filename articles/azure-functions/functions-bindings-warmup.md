@@ -7,14 +7,15 @@ manager: gwallace
 keywords: Azure functions, functions, Event Processing, bemelegedési, Cold Start, Premium, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383715"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206584"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -107,7 +108,7 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy bemelegedési triggert mutat be egy *function.jsa* fájlon, és egy [JavaScript-függvényt](functions-reference-node.md) , amely minden új példányon futni fog, amikor az alkalmazáshoz kerül.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function.jsa* fájlon, és egy [JavaScript-függvényt](functions-reference-node.md)  , amely minden új példányon futni fog, amikor az alkalmazáshoz kerül.
 
 A függvénynek névvel kell rendelkeznie ```warmup``` (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
 

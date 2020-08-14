@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498442"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210512"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -214,7 +214,7 @@ Igen, a számítási kapacitástól függetlenül vásárolhat kiegészítő tá
 
 **Hogyan optimalizálható a tárolási teljesítmény általános célú szolgáltatási szinten?**
 
-A tárolási teljesítmény optimalizálása érdekében tekintse [meg a általános célú-tároló ajánlott eljárásai](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)című témakört.
+A tárolási teljesítmény optimalizálása érdekében tekintse [meg a általános célú-tároló ajánlott eljárásai](https://techcommunity.microsoft.com)című témakört.
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -296,7 +296,7 @@ Ez nem kötelező. [Létrehozhat egy virtuális hálózatot az Azure SQL felügy
 
 Nem. Jelenleg nem támogatott olyan felügyelt példány elhelyezése olyan alhálózatban, amely már tartalmaz más típusú erőforrásokat.
 
-## <a name="connectivity"></a>Kapcsolatok 
+## <a name="connectivity"></a>Hálózati kapcsolat 
 
 **Tudok csatlakozni a felügyelt példányhoz IP-cím használatával?**
 

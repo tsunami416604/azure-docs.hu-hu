@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033336"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205928"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
 
@@ -32,9 +32,9 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, ahol az engedélyezési
 
 Ez a táblázat a Microsoft Identity platformon az alkalmazások regisztrálásához felvehető átirányítási URI-k maximális számát jeleníti meg.
 
-| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
+| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Description |
 |--------------------------|---------------------------------|-------------|
-| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience`az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
+| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience` az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
 | Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |
 
 ## <a name="maximum-uri-length"></a>URI maximális hossza
@@ -51,7 +51,7 @@ Ha olyan HTTP-sémával rendelkező átirányítási URI-t szeretne hozzáadni, 
 
 A 8,3 és [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), valamint a "loopback" vagy "localhost" átirányítási URI-k által [8252-es szakaszban](https://tools.ietf.org/html/rfc8252#section-8.3) két speciális szempontot kell figyelembe venni:
 
-1. `http`Az URI-sémák elfogadhatók, mert az átirányítás soha nem hagyja el az eszközt. Ezért mindkettő elfogadható:
+1. `http` Az URI-sémák elfogadhatók, mert az átirányítás soha nem hagyja el az eszközt. Ezért mindkettő elfogadható:
     - `http://127.0.0.1/myApp`
     - `https://127.0.0.1/myApp`
 1. A natív alkalmazások által gyakran igényelt ideiglenes porttartomány miatt a rendszer figyelmen kívül hagyja a port összetevőjét (például `:5001` vagy `:443` ), mert az ÁTirányítási URI-t egyezteti. Ennek eredményeképpen ezek mindegyike egyenértékűnek tekintendő:
@@ -62,9 +62,9 @@ A 8,3 és [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), valamint a "lo
 
 Fejlesztési szempontból ez néhány dolgot jelent:
 
-1. Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például a `web` -, `native` -vagy `spa` -Type átirányítás) használja.
-1. Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://127.0.0.1/MyWebApp` `http://127.0.0.1/MyNativeApp` .
-1. Az RFC-útmutató alapján nem használhatja az `localhost` átirányítási URI-t. Ehelyett használja a tényleges visszacsatolási IP-címet `127.0.0.1` . Ez megakadályozza, hogy az alkalmazást hibásan konfigurált tűzfalak vagy átnevezett hálózati adapterek lehessen megszakítani.
+* Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például a `web` -, `native` -vagy `spa` -Type átirányítás) használja.
+* Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://127.0.0.1/MyWebApp` `http://127.0.0.1/MyNativeApp` .
+* Az RFC-útmutató alapján nem használhatja az `localhost` átirányítási URI-t. Ehelyett használja a tényleges visszacsatolási IP-címet `127.0.0.1` . Ez megakadályozza, hogy az alkalmazást hibásan konfigurált tűzfalak vagy átnevezett hálózati adapterek lehessen megszakítani.
 
     Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
 
@@ -93,6 +93,6 @@ Ebben a megközelítésben:
 > [!WARNING]
 > Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek meg kell védenie ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-n lévő tartománynév érvényesítésével a tokenen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazás-regisztrációs [alkalmazás jegyzékéről](reference-app-manifest.md).

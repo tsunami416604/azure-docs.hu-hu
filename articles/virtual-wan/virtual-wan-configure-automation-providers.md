@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN-partnerek automatizálási útmutatója | Microsoft Docs
-description: Ez a cikk segítséget nyújt a partnereknek az Azure Virtual WAN Automation üzembe állításában.
+description: Hozzon létre egy automatizálási környezetet egy helyszíni VPN-vagy SD-WAN CPE vagy ág-eszköz csatlakoztatásához és konfigurálásához az Azure Virtual WAN számára.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565958"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208341"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizálási irányelvek virtuális WAN-partnerekhez
 
@@ -223,7 +223,7 @@ A helyszíni SDWAN/VPN-eszköznek vagy az SD-WAN konfigurációnak meg kell egye
 
 [!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).
 

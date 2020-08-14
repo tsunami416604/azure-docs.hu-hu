@@ -4,13 +4,13 @@ description: Használja az Azure Functions szolgáltatást olyan kiszolgáló n�
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
-ms.custom: mvc
-ms.openlocfilehash: 5ae282750580ed5b4e53e78c52ca285e40365fd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 6c16aad9bb04ffb4cb4df52799d63f7ec2e19725
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122006"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210849"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -58,7 +58,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
 
 1. Frissítse a függvénykódot a függvény nyelvétől függően:
 
-    # <a name="c"></a>[C#\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Adjon hozzá egy **outputQueueItem** paramétert a metódus aláírásához, ahogy az alábbi példában is látható.
 
@@ -127,11 +127,11 @@ A Functions futtatókörnyezete egy **outqueue** nevű új üzenetsort hoz létr
 
 1. Ha újból futtatja a függvényt, egy új üzenet jelenik meg az üzenetsorban.  
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzáadott egy kimeneti kötést egy meglévő függvényhez. További információ a tárolási üzenetsor kötéséről: [Azure Functions – a tárolási üzenetsor kötései](functions-bindings-storage-queue.md).
 

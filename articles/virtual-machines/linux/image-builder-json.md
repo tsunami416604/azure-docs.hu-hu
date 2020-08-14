@@ -3,17 +3,17 @@ title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830342"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205549"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -306,7 +306,7 @@ Tulajdonságok testreszabása:
 - **scriptUri** – URI a fájl helyéhez 
 - beépített rendszerhéj-parancsok **beágyazott** tömbje, vesszővel elválasztva.
 - **sha256Checksum** – a fájl sha256-ellenőrzőösszegének értéke, ezt helyileg létrehozhatja, majd a rendszerkép-szerkesztő ellenőrzőösszeget és érvényesítést végez.
-    * A sha256Checksum létrehozása Mac/Linux rendszeren futó terminál használatával:`sha256sum <fileName>`
+    * A sha256Checksum létrehozása Mac/Linux rendszeren futó terminál használatával: `sha256sum <fileName>`
 
 
 A felügyelői jogosultságokkal futtatandó parancsokhoz előtaggal kell rendelkeznie `sudo` .
@@ -430,12 +430,13 @@ OS support: Windows
 ```
 
 Tulajdonságok testreszabása:
-- **típus** – windowsupdate.
+- **típus**  – windowsupdate.
 - **searchCriteria** – nem kötelező, meghatározza, hogy a rendszer milyen típusú frissítéseket telepítsen (ajánlott, fontos stb.), BrowseOnly = 0 és IsInstalled = 0 (ajánlott) az alapértelmezett érték.
 - **szűrők** – nem kötelező, lehetővé teszi egy szűrő megadását a frissítések belefoglalásához vagy kizárásához.
 - **updateLimit** – nem kötelező, meghatározza, hogy hány frissítést lehet telepíteni, alapértelmezett érték: 1000.
  
- 
+> [!NOTE]
+> A Windows Update-testreszabó sikertelen lehet, ha fennáll a Windows újraindítása, vagy az alkalmazás telepítése még fut, ez a hiba általában a Testreszabás. naplóban jelenhet meg `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Nyomatékosan javasoljuk, hogy vegye fel a Windows újraindítását, és/vagy engedélyezze az alkalmazások számára, hogy az [alvó] vagy a várakozási parancsokkal ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) a beágyazott parancsokban vagy parancsfájlokban a Windows Update futtatása előtt végezze el a telepítést.
 
 ### <a name="generalize"></a>Általánossá tétel 
 Alapértelmezés szerint az Azure-rendszerkép-készítő a rendszerkép testreszabási fázisának végén a "megszüntetés" kódot is futtatja, hogy "általánosítsa" a képet. Az általánosítás egy olyan folyamat, amelyben a rendszerkép be van állítva, így több virtuális gép létrehozására is felhasználható. Windows rendszerű virtuális gépek esetén az Azure rendszerkép-készítő a Sysprept használja. Linux rendszeren az Azure rendszerkép-szerkesztő "waagent"-megszüntetést futtat. 
@@ -590,7 +591,7 @@ Megosztott képtárak tulajdonságainak terjesztése:
 - **típus** – sharedImage  
 - **galleryImageId** – a megosztott rendszerkép-katalógus azonosítója, amely két formátumban adható meg:
     * Automatikus verziószámozás – a Image Builder létrehoz egy monoton verziószámot, ez akkor hasznos, ha meg szeretné őrizni a lemezképek újraépítését ugyanabból a sablonból: a formátum a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
-    * Explicit verziószámozás – a rendszerkép-készítő által használandó verziószámot átadhatja. A formátum:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+    * Explicit verziószámozás – a rendszerkép-készítő által használandó verziószámot átadhatja. A formátum: `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
@@ -675,6 +676,6 @@ az resource invoke-action \
      --action Cancel 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure rendszerkép-készítő githubon](https://github.com/danielsollondon/azvmimagebuilder)különböző forgatókönyvekhez készült minta. JSON fájlok találhatók.
