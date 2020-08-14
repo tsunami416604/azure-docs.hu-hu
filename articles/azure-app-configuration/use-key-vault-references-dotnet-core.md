@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81309054"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213255"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Oktatóanyag: Key Vault referenciák használata ASP.NET Core alkalmazásban
 
@@ -86,7 +86,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 1. Válassza a **Configuration Explorer**lehetőséget.
 
-1. Válassza a **+** > **Key Vault-hivatkozás**létrehozása lehetőséget, majd adja meg a következő értékeket:
+1. Válassza a **+**  >  **Key Vault-hivatkozás**létrehozása lehetőséget, majd adja meg a következő értékeket:
     - **Kulcs**: válassza a **TestApp: Settings: KeyVaultMessage**elemet.
     - **Címke**: hagyja üresen ezt az értéket.
     - **Előfizetés**, **erőforráscsoport**és **Key Vault**: adja meg az előző szakaszban létrehozott kulcstartóban szereplőknek megfelelő értékeket.
@@ -169,7 +169,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     using Azure.Identity;
     ```
 
-1. Frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatára a `config.AddAzureAppConfiguration` metódus meghívásával. Adja meg `ConfigureKeyVault` a kapcsolót, és adja át a helyes hitelesítő adatokat a Key Vault.
+1. Frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatára a metódus meghívásával `config.AddAzureAppConfiguration` . Adja `ConfigureKeyVault` meg a kapcsolót, és adja át a helyes hitelesítő adatokat a Key Vault.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -214,9 +214,9 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
             .UseStartup<Startup>());
     ```
 
-1. Amikor inicializálta az alkalmazás-konfigurációhoz való csatlakozást, a `ConfigureKeyVault` metódus meghívásával beállíthatja, hogy Key Vault a kapcsolat a következővel:. Az inicializálás után a Key Vault hivatkozások értékeit ugyanúgy érheti el, mint a normál alkalmazás-konfigurációs kulcsok értékeit.
+1. Amikor inicializálta az alkalmazás-konfigurációhoz való csatlakozást, a metódus meghívásával beállíthatja, hogy Key Vault a kapcsolat a következővel: `ConfigureKeyVault` . Az inicializálás után a Key Vault hivatkozások értékeit ugyanúgy érheti el, mint a normál alkalmazás-konfigurációs kulcsok értékeit.
 
-    A folyamat működés közbeni megtekintéséhez nyissa meg az *index. cshtml* mappát a **views** > **Home** mappában. Cserélje le a tartalmát a következő kódra:
+    A folyamat működés közbeni megtekintéséhez nyissa meg az *index. cshtml* mappát a **views**  >  **Home** mappában. Cserélje le a tartalmát a következő kódra:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -252,7 +252,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     dotnet run
     ```
 
-1. Nyisson meg egy böngészőablakot, és nyissa meg a következőt: `http://localhost:5000`, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+1. Nyisson meg egy böngészőablakot, és nyissa meg a következőt `http://localhost:5000` :, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
     ![Gyorsindítás – helyi alkalmazás elindítása](./media/key-vault-reference-launch-local.png)
 
@@ -260,7 +260,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy alkalmazás-konfigurációs kulcsot, amely a Key Vaultban tárolt értékre hivatkozik. A következő oktatóanyagban megismerheti, hogyan adhat hozzá olyan Azure által felügyelt szolgáltatás-identitást, amely megkönnyíti az alkalmazás-konfiguráció és a Key Vault elérését.
 

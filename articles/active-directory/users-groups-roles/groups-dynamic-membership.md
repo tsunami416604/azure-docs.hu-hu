@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd3ede40582e8f2c71c0424df025d06ff7f0f79
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141601"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213800"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
-Az Azure Active Directory (Azure AD) szolgáltatásban létrehozhat összetett attribútum-alapú szabályokat a csoportok dinamikus tagságának engedélyezéséhez. A dinamikus csoporttagság csökkenti a felhasználók hozzáadásának és eltávolításának adminisztratív terheit. Ez a cikk részletesen ismerteti a tulajdonságokat és a szintaxist, hogy dinamikus tagsági szabályokat hozzon létre a felhasználók és az eszközök számára. Beállíthat egy szabályt a dinamikus tagsághoz a biztonsági csoportokban vagy a Mikroszkóp 365-csoportokban.
+Az Azure Active Directory (Azure AD) szolgáltatásban létrehozhat összetett attribútum-alapú szabályokat a csoportok dinamikus tagságának engedélyezéséhez. A dinamikus csoporttagság csökkenti a felhasználók hozzáadásának és eltávolításának adminisztratív terheit. Ez a cikk részletesen ismerteti a tulajdonságokat és a szintaxist, hogy dinamikus tagsági szabályokat hozzon létre a felhasználók és az eszközök számára. Beállíthat egy szabályt a dinamikus tagsághoz a biztonsági csoportokban vagy Microsoft 365 csoportokban.
 
 Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer kiértékeli az összes dinamikus csoportosítási szabályt egy adott könyvtárban, hogy megtekintse, hogy a módosítás aktiválja-e az összes csoportot Hozzáadás vagy eltávolítás. Ha egy felhasználó vagy eszköz megfelel egy adott csoportra vonatkozó szabálynak, akkor a csoport tagjaként adja hozzá őket. Ha már nem felelnek meg a szabálynak, azok el lesznek távolítva. Nem lehet manuálisan hozzáadni vagy eltávolítani egy dinamikus csoport tagjait.
 
@@ -135,7 +135,7 @@ Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabál
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
-| Operátor | Syntax |
+| Operátor | Szintaxis |
 | --- | --- |
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |

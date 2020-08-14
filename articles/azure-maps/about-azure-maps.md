@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830945"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212735"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -76,7 +76,7 @@ A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [mobilit
 
 ### <a name="render-service"></a>Megjelenítő szolgáltatás
 
-A jelenleg előzetes verzióban elérhető [Render Service v2](https://docs.microsoft.com/est/api/maps/renderv2) bevezeti a [Get Map csempe v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)új verzióját. A Get Map csempe v2 API mostantól lehetővé teszi az ügyfeleknek, hogy a Azure Maps Creator használatával létrehozott Azure Maps Road csempéket, időjárási csempéket vagy Térkép csempéket kérjenek. Javasoljuk, hogy használja az új Get Map csempe v2 API-t.  
+A jelenleg előzetes verzióban elérhető [Render Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) bevezeti a [Get Map csempe v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)új verzióját. A Get Map csempe v2 API mostantól lehetővé teszi az ügyfeleknek, hogy a Azure Maps Creator használatával létrehozott Azure Maps Road csempéket, időjárási csempéket vagy Térkép csempéket kérjenek. Javasoljuk, hogy használja az új Get Map csempe v2 API-t.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Példa a render Service v2-ből származó térképre":::
 
@@ -194,7 +194,7 @@ A Maps Creator három alapvető szolgáltatást nyújt:
 
 * [WFS szolgáltatás](https://docs.microsoft.com/rest/api/maps/featurestate). A WFS szolgáltatás segítségével lekérdezheti a beltéri Térkép adatait. A WFS szolgáltatás a [nyílt TÉRINFORMATIKAI konzorcium API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) -szabványokat követi egyetlen adatkészlet lekérdezéséhez.
 
-## <a name="programming-model"></a>A programozási modell
+## <a name="programming-model"></a>Programozási modell
 
 A Azure Maps a mobilitáshoz készült, és több platformon futó alkalmazások fejlesztéséhez is segítséget nyújt. Olyan programozási modellt használ, amely az agnosztikus nyelvét használja, és támogatja a JSON-kimenetet a [REST API](https://docs.microsoft.com/rest/api/maps/)-kon keresztül.
 

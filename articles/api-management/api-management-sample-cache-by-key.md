@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
 ms.service: api-management
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903442"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213324"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazás az Azure API Managementben
 Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a tulajdonságok használatával módosítható a kérelem fejlécében `vary-by` . Ez a teljes HTTP-válaszok (más néven képviseletek) gyorsítótárazására hasznos, de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](./api-management-caching-policies.md#GetFromCacheByKey) és [cache-Store-Value](./api-management-caching-policies.md#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](./api-management-advanced-policies.md#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.

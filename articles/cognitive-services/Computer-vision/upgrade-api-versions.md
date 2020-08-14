@@ -1,7 +1,7 @@
 ---
 title: Frissítés a Computer Vision API v 3.0-ra
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan frissíthet a 2.0-s és a v 2.1-es verzióról a Computer Vision API.
+description: Megtudhatja, hogyan frissíthet a 2.0/v 2.1-es verzióra Computer Vision v 3.0 olvasási API-ra.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16add0dce88d0f809dc291d3c9de33e1a853f257
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136502"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214194"
 ---
-# <a name="upgrade-to-v30-of-computer-vision-api-from-v20-and-v21"></a>A 2.0-s és a v 2.1-es Computer Vision API frissítése a v 3.0-s verzióra
+# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>Frissítés Computer Vision v 3.0 olvasási API-ra 2.0/v 2.1
 
-Ez az útmutató bemutatja, hogyan módosíthatja a meglévő kódot a 2.0-s vagy v 2.1-es verzióról a Computer Vision APIról a v 3.0-ra a REST API felhasználói számára. 
+Ez az útmutató bemutatja, hogyan frissítheti meglévő Computer Vision v 2.0 vagy v 2.1 REST API kódját a v 3.0 olvasási műveletekre. 
 
-## <a name="upgrade-batch-read-file-to-read"></a>Frissítés `Batch Read File` erre`Read`
+## <a name="upgrade-batch-read-file-to-read"></a>Frissítés `Batch Read File` erre `Read`
 
 
 1. Módosítsa a 2. x API-elérési útját a `Batch Read File` következő módon:
@@ -57,7 +57,7 @@ Ez az útmutató bemutatja, hogyan módosíthatja a meglévő kódot a 2.0-s vag
     - Az oldal-tömb gyökerének beszerzéséhez módosítsa a JSON-hierarchiát a verzióra `"recognitionResults"` `"analyzeResult"` / `"readResults"` . Az egyoldalas sor és a JSON-hierarchia változatlan marad, ezért nincs szükség kód módosítására.
     -   A rendszer átnevezte az oldal szögét, `"clockwiseOrientation"` `"angle"` és a tartomány 0-360 fok értékről-180 értékről 180 fok értékűre módosult. A kódoktól függően előfordulhat, hogy nem kell módosítania a módosításokat, mivel a legtöbb matematikai funkció a tartomány bármelyikét képes kezelni.
     -   A v 3.0 API emellett a következő tökéletesítéseket is bevezeti:- `"createdDateTime"` és `"lastUpdatedDateTime"` hozzáadásával, így nyomon követheti a feldolgozás időtartamát. További részletekért tekintse meg a dokumentációt. 
-        - `"version"`az API-nak az eredmények létrehozásához használt verzióját mutatja be
+        - `"version"` az API-nak az eredmények létrehozásához használt verzióját mutatja be
         - A rendszer hozzáad egy szót `"confidence"` . Ez az érték úgy van kalibrálva, hogy a 0,95 érték azt jelenti, hogy a rendszer 95%-os eséllyel az elismerés helyes. A megbízhatósági pontszám használatával kiválaszthatja, hogy melyik szöveget szeretné elküldeni az emberi felülvizsgálatba. 
     
     
@@ -159,7 +159,7 @@ Ez az útmutató bemutatja, hogyan módosíthatja a meglévő kódot a 2.0-s vag
     ```
 
 ## <a name="upgrade-from-recognize-text-to-read"></a>Frissítés innen `Recognize Text``Read`
-`Recognize Text`az *előnézeti* művelet, amely a *Computer Vision API összes verziójában elavult*. Át kell térnie `Recognize Text` a `Read` (v 3.0) vagy `Batch Read File` (v 2.0, v 2.1) verzióra. a v 3.0- `Read` s verziója újabb és jobb modelleket tartalmaz a szöveges felismeréshez és a további funkciókhoz, ezért ajánlott. Frissítés a verzióról a következőre `Recognize Text` `Read` :
+`Recognize Text` az *előnézeti* művelet, amely a *Computer Vision API összes verziójában elavult*. Át kell térnie `Recognize Text` a `Read` (v 3.0) vagy `Batch Read File` (v 2.0, v 2.1) verzióra. a v 3.0- `Read` s verziója újabb és jobb modelleket tartalmaz a szöveges felismeréshez és a további funkciókhoz, ezért ajánlott. Frissítés a verzióról a következőre `Recognize Text` `Read` :
 
 1. Módosítsa a v2. x API-elérési útját a `Recognize Text` következő módon:
 
@@ -195,12 +195,12 @@ Ez az útmutató bemutatja, hogyan módosíthatja a meglévő kódot a 2.0-s vag
     - A v2. x verzióban az `"Get Read Operation Result"` OCR-felismerési JSON-t fogja visszaadni, ha az állapota `"Succeeded"` . A v 3.0-ban ez a mező a következő: `"succeeded"` .
     - Az oldal-tömb gyökerének beszerzéséhez módosítsa a JSON-hierarchiát a verzióra `"recognitionResult"` `"analyzeResult"` / `"readResults"` . Az egyoldalas sor és a JSON-hierarchia változatlan marad, ezért nincs szükség kód módosítására.
     -   A v 3.0 API emellett a következő, igény szerint hasznosítható funkciókat is bemutatja. További részleteket az API-referenciában talál: – `"createdDateTime"` és a `"lastUpdatedDateTime"` rendszer hozzáadja a feldolgozás időtartamának nyomon követéséhez. További részletekért tekintse meg a dokumentációt. 
-        - `"version"`az API-nak az eredmények létrehozásához használt verzióját mutatja be
+        - `"version"` az API-nak az eredmények létrehozásához használt verzióját mutatja be
         - A rendszer hozzáad egy szót `"confidence"` . Ez az érték úgy van kalibrálva, hogy a 0,95 érték azt jelenti, hogy a rendszer 95%-os eséllyel az elismerés helyes. A megbízhatósági pontszám használatával kiválaszthatja, hogy melyik szöveget szeretné elküldeni az emberi felülvizsgálatba. 
-        - `"angle"`a szöveg általános tájolása a megegyező irányban, fokban mérve (-180, 180].
-        -  `"width"`és `"height"` adja meg a dokumentum dimenzióit, és `"unit"` Megadja a méretek (képpont vagy hüvelyk) egységét a dokumentum típusától függően.
-        - `"page"`a többoldalas dokumentumok támogatottak
-        - `"language"`a dokumentum szövegbeviteli nyelve (a választható _nyelvi_ paraméterből)
+        - `"angle"` a szöveg általános tájolása a megegyező irányban, fokban mérve (-180, 180].
+        -  `"width"` és `"height"` adja meg a dokumentum dimenzióit, és `"unit"` Megadja a méretek (képpont vagy hüvelyk) egységét a dokumentum típusától függően.
+        - `"page"` a többoldalas dokumentumok támogatottak
+        - `"language"` a dokumentum szövegbeviteli nyelve (a választható _nyelvi_ paraméterből)
 
 
     A 2. X verzióban a kimeneti formátum a következő: 

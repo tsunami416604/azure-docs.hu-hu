@@ -1,6 +1,6 @@
 ---
 title: Csoport elnevezési szabályzatának betartatása Azure Active Directoryban | Microsoft Docs
-description: Az Office 365-csoportok elnevezési szabályzatának beállítása Azure Active Directory
+description: Microsoft 365 csoportok elnevezési szabályzatának beállítása Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 08/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497086"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213747"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése az Office 365-csoportokban Azure Active Directory
+# <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése Microsoft 365 csoportokban Azure Active Directory
 
-A felhasználók által létrehozott vagy szerkesztett Office 365-csoportok konzisztens elnevezési konvencióinak betartatásához állítson be egy csoport elnevezési szabályzatot a szervezetekhez Azure Active Directory (Azure AD). Az elnevezési házirend segítségével például a csoport, a tagság, a földrajzi régió vagy a csoport létrehozásával kommunikálhat. Használhatja az elnevezési házirendet is a címjegyzékben lévő csoportok kategorizálásához. A szabályzat használatával letilthat bizonyos szavakat a csoportok neveiben és az Aliasokban.
+A felhasználók által létrehozott vagy szerkesztett Microsoft 365 csoportok konzisztens elnevezési konvencióinak kikényszerített megadásához állítson be egy csoport elnevezési szabályzatot az Azure Active Directory (Azure AD) szervezete számára. Az elnevezési házirend segítségével például a csoport, a tagság, a földrajzi régió vagy a csoport létrehozásával kommunikálhat. Használhatja az elnevezési házirendet is a címjegyzékben lévő csoportok kategorizálásához. A szabályzat használatával letilthat bizonyos szavakat a csoportok neveiben és az Aliasokban.
 
 > [!IMPORTANT]
-> Az Office 365-csoportok Azure AD elnevezési házirendjének használata megköveteli, hogy rendelkezzen, de nem feltétlenül rendeljen hozzá egy prémium szintű Azure Active Directory P1-licencet vagy alapszintű Azure AD EDU-licencet minden olyan egyedi felhasználóhoz, amely egy vagy több Office 365-csoport tagja.
+> Az Microsoft 365-csoportok Azure AD elnevezési házirendjének használata megköveteli, hogy rendelkezzen, de ne rendeljen hozzá prémium szintű Azure Active Directory P1-licencet vagy alapszintű Azure AD EDU-licencet minden olyan egyedi felhasználóhoz, amely egy vagy több Microsoft 365 csoport tagja.
 
 A rendszer az elnevezési házirendet alkalmazza a munkaterhelések között létrehozott csoportok létrehozására vagy szerkesztésére (például Outlook, Microsoft Teams, SharePoint, Exchange vagy Planner). A csoport nevére és a csoport aliasnevére is vonatkozik. Ha az Azure AD-ben beállítja az elnevezési szabályzatot, és rendelkezik egy meglévő Exchange-csoport elnevezési házirenddel, az Azure AD elnevezési szabályzata kényszerítve lesz a szervezetében.
 
-Ha a csoport elnevezési házirend konfigurálva van, a szabályzat a végfelhasználók által létrehozott új Office 365-csoportokra lesz alkalmazva. Az elnevezési házirend nem vonatkozik bizonyos címtárbeli szerepkörökre, például a globális rendszergazda vagy a felhasználó rendszergazdájára (lásd alább a csoport elnevezési házirend alól mentesített szerepkörök teljes listáját). Meglévő Office 365-csoportok esetén a szabályzat nem vonatkozik azonnal a konfiguráció időpontjában. Miután a csoport tulajdonosa szerkeszti a csoportok nevét, a rendszer kikényszeríti a névadási házirendet.
+Ha a csoport elnevezési házirend konfigurálva van, a szabályzatot a rendszer a végfelhasználók által létrehozott új Microsoft 365 csoportokra alkalmazza. Az elnevezési házirend nem vonatkozik bizonyos címtárbeli szerepkörökre, például a globális rendszergazda vagy a felhasználó rendszergazdájára (lásd alább a csoport elnevezési házirend alól mentesített szerepkörök teljes listáját). Meglévő Microsoft 365 csoportok esetén a házirend nem vonatkozik azonnal a konfiguráció időpontjában. Miután a csoport tulajdonosa szerkeszti a csoportok nevét, a rendszer kikényszeríti a névadási házirendet.
 
 ## <a name="naming-policy-features"></a>Elnevezési házirend funkciói
 
@@ -253,18 +253,18 @@ Outlook Customer Manager (VÁLASZTHATÓÖSSZETEVŐ) | Az Outlook Customer Manage
 Tantermi alkalmazás | Az osztályterem alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek, de az elnevezési házirend nem lesz automatikusan alkalmazva, és az elnevezési szabályzat előzetes verziója nem jelenik meg a felhasználók számára az osztályterem csoport nevének megadásakor. A felhasználóknak meg kell adniuk a kényszerített osztályterem csoport nevét előtagokkal és utótagokkal. Ha nem, az osztályterem csoport létrehozás vagy szerkesztés művelete hibákkal meghiúsul.
 Power BI | Power BI munkaterületek megfelelnek az elnevezési házirendnek.    
 Yammer | Amikor egy felhasználó a Yammer-be bejelentkezett a Azure Active Directory-fiókjával, létrehoz egy csoportot, vagy szerkeszti a csoport nevét, a csoportnév megfelel az elnevezési házirendnek. Ez mind az Office 365 csatlakoztatott csoportjaira, mind a többi Yammer-csoportra vonatkozik.<br>Ha az Office 365 Connected Group létrejött az elnevezési házirend előtt, a csoport neve nem követi automatikusan a névadási házirendeket. Amikor egy felhasználó szerkeszti a csoport nevét, a rendszer kérni fogja, hogy adja hozzá az előtagot és utótagot.
-StaffHub  | A StaffHub csapatok nem követik az elnevezési szabályzatot, de az alapul szolgáló Office 365-csoport nem. A StaffHub-csoport neve nem alkalmazza az előtagokat és az utótagokat, és nem keres egyéni tiltott szavakat. A StaffHub azonban alkalmazza az előtagokat és az utótagokat, és eltávolítja a letiltott szavakat a mögöttes Office 365-csoportból.
+StaffHub  | A StaffHub csapatok nem követik az elnevezési házirendet, de az alapul szolgáló Microsoft 365 csoport nem. A StaffHub-csoport neve nem alkalmazza az előtagokat és az utótagokat, és nem keres egyéni tiltott szavakat. A StaffHub azonban alkalmazza az előtagokat és az utótagokat, és eltávolítja a letiltott szavakat az alapul szolgáló Microsoft 365 csoportból.
 Exchange PowerShell | Az Exchange PowerShell-parancsmagok megfelelnek az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési házirendet a csoport neve és a csoport aliasában (mailNickname).
 PowerShell-parancsmagok Azure Active Directory | Azure Active Directory PowerShell-parancsmagok megfelelnek az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoportok neveiben és a csoport aliasnevében.
 Exchange felügyeleti központ | Az Exchange felügyeleti központ megfelel az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoport neve és a csoport aliasában.
 Microsoft 365 felügyeleti központ | Microsoft 365 felügyeleti központ megfelel az elnevezési házirendnek. Amikor egy felhasználó létrehoz vagy szerkeszt egy csoportnevet, a rendszer automatikusan alkalmazza az elnevezési házirendet, és a felhasználók a megfelelő hibákat kapják meg, amikor egyéni tiltott szavakat hoznak létre. A Microsoft 365 felügyeleti központ még nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak az Azure AD-csoportokról.
 
 - [Meglévő csoportok megtekintése](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Az Office 365-csoportok elévülési szabályzata](groups-lifecycle.md)
+- [Microsoft 365 csoportok elévülési szabályzata](groups-lifecycle.md)
 - [Csoportbeállítások kezelése](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Csoporttagok kezelése](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [Csoporttagságok kezelése](../fundamentals/active-directory-groups-membership-azure-portal.md)

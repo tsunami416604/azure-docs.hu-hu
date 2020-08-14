@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd060972e562759fcc1071f2c6549578bd3d4ed9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58fc6726811ac01b585dd51b2086966f7a3f7c51
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015714"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213596"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
-Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure Active Directory (Azure AD) PowerShell-parancsmagok használatára vonatkozó utasításokat tartalmazza. Ez a tartalom csak az Office 365-csoportokra vonatkozik (más néven Unified groups).
+Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure Active Directory (Azure AD) PowerShell-parancsmagok használatára vonatkozó utasításokat tartalmazza. Ez a tartalom csak Microsoft 365 csoportokra vonatkozik (más néven Unified groups).
 
 > [!IMPORTANT]
 > Egyes beállításokhoz prémium szintű Azure Active Directory P1 licenc szükséges. További információt a [sablon beállításai](#template-settings) táblázatban talál.
 
 A nem rendszergazda felhasználók biztonsági csoportok létrehozásáról a set  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [-msolcompanysettings parancsmagjával](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben leírtak szerint tájékozódhat bővebben.
 
-Az Office 365-csoportok beállításait egy Setting objektummal és egy SettingsTemplate objektummal kell konfigurálni. Kezdetben a címtárban nem jelennek meg beállítások objektumok, mert a címtár az alapértelmezett beállításokkal van konfigurálva. Az alapértelmezett beállítások módosításához egy új beállítási objektumot kell létrehoznia egy beállítási sablonnal. A beállítások sablonjait a Microsoft határozza meg. Több különböző beállítási sablon is létezik. A címtárhoz tartozó Office 365-csoport beállításainak konfigurálásához használja a "Group. Unified" nevű sablont. Az Office 365-csoport beállításainak egyetlen csoportra való konfigurálásához használja a "Group. Unified. Guest" nevű sablont. Ez a sablon egy Office 365-csoport vendég-hozzáférésének kezelésére szolgál. 
+Microsoft 365 a csoportok beállításait egy Setting objektummal és egy SettingsTemplate objektummal kell konfigurálni. Kezdetben a címtárban nem jelennek meg beállítások objektumok, mert a címtár az alapértelmezett beállításokkal van konfigurálva. Az alapértelmezett beállítások módosításához egy új beállítási objektumot kell létrehoznia egy beállítási sablonnal. A beállítások sablonjait a Microsoft határozza meg. Több különböző beállítási sablon is létezik. A címtár Microsoft 365-csoport beállításainak konfigurálásához használja a "Group. Unified" nevű sablont. Microsoft 365 csoport beállításainak egyetlen csoportra való konfigurálásához használja a "Group. Unified. Guest" nevű sablont. Ez a sablon a Microsoft 365 csoporthoz való vendég-hozzáférés kezelésére szolgál. 
 
 A parancsmagok a Azure Active Directory PowerShell V2 modul részét képezik. A modul számítógépekre történő letöltéséről és telepítéséről a [PowerShell 2. verziójának Azure Active Directory](https://docs.microsoft.com/powershell/azure/active-directory/overview)cikkében talál útmutatást. A modul 2. verziójának kiadását [a PowerShell-galériából](https://www.powershellgallery.com/packages/AzureAD/)is telepítheti.
 
@@ -53,7 +53,7 @@ A parancsmagok a Azure Active Directory PowerShell V2 modul részét képezik. A
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Beállítások létrehozása a címtár szintjén
-Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a címtárban található összes Office 365-csoportra érvényesek. A Get-AzureADDirectorySettingTemplate parancsmag csak a [Graph Azure ad PowerShell előzetes verziójú moduljában](https://www.powershellgallery.com/packages/AzureADPreview)érhető el.
+Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a címtárban található összes Microsoft 365 csoportra érvényesek. A Get-AzureADDirectorySettingTemplate parancsmag csak a [Graph Azure ad PowerShell előzetes verziójú moduljában](https://www.powershellgallery.com/packages/AzureADPreview)érhető el.
 
 1. A Directorysetting objektumok-parancsmagokban meg kell adnia a használni kívánt SettingsTemplate AZONOSÍTÓját. Ha nem ismeri ezt az azonosítót, a parancsmag az összes beállítási sablon listáját adja vissza:
   
@@ -67,7 +67,7 @@ Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a 
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
-   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Office 365 group
+   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Microsoft 365 group
    16933506-8a8d-4f0d-ad58-e1db05a5b929 Company.BuiltIn     Setting templates define the different settings that can be used for the associ...
    4bc7f740-180e-4586-adb6-38b2e9024e6b Application...
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
@@ -149,20 +149,20 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
 
 | **Beállítás** | **Leírás** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Típus: Boolean<li>Alapértelmezett: true |Az a jelző, amely azt jelzi, hogy az Office 365-csoport létrehozása engedélyezve van-e a címtárban a nem rendszergazda felhasználók számára. Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Sztring<li>Alapértelmezett: "" |Annak a biztonsági csoportnak a GUID azonosítója, amelynek tagjai számára engedélyezett az Office 365-csoportok létrehozása, még akkor is, ha EnableGroupCreation = = false. |
+|  <ul><li>EnableGroupCreation<li>Típus: Boolean<li>Alapértelmezett: true |Az a jelző, amely azt jelzi, hogy a Microsoft 365 csoport létrehozása engedélyezve van-e a címtárban a nem rendszergazda felhasználók számára. Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Sztring<li>Alapértelmezett: "" |Annak a biztonsági csoportnak a GUID azonosítója, amelynek a tagjai számára engedélyezett Microsoft 365 csoportok létrehozása, még akkor is, ha EnableGroupCreation = = false. |
 |  <ul><li>UsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett: "" |A csoport használati iránymutatásaira mutató hivatkozás. |
 |  <ul><li>ClassificationDescriptions<li>Típus: Sztring<li>Alapértelmezett: "" | A besorolási leírások vesszővel tagolt listája. A ClassificationDescriptions értéke csak ebben a formátumban érvényes:<br>$setting ["ClassificationDescriptions"] = "besorolás: Leírás, besorolás: Leírás"<br>ahol a besorolás megegyezik a ClassificationList található bejegyzéssel.<br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
 |  <ul><li>DefaultClassification<li>Típus: Sztring<li>Alapértelmezett: "" | Az a besorolás, amelyet egy csoport alapértelmezett besorolásként kell használni, ha nincs megadva.<br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Sztring<li>Alapértelmezett: "" | Legfeljebb 64 karakterből álló karakterlánc, amely meghatározza az Office 365-csoportokhoz konfigurált elnevezési konvenciót. További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Típus: Sztring<li>Alapértelmezett: "" | Vesszővel tagolt karakterláncok, amelyeket a felhasználók nem használhatnak a csoportok neveiben vagy az Aliasokban. További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](groups-naming-policy.md). |
+|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Sztring<li>Alapértelmezett: "" | Legfeljebb 64 karakterből álló karakterlánc, amely meghatározza a Microsoft 365 csoportokhoz konfigurált elnevezési konvenciót. További információ: [Microsoft 365 csoportok elnevezési szabályzatának érvényesítése](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Típus: Sztring<li>Alapértelmezett: "" | Vesszővel tagolt karakterláncok, amelyeket a felhasználók nem használhatnak a csoportok neveiben vagy az Aliasokban. További információ: [Microsoft 365 csoportok elnevezési szabályzatának érvényesítése](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Típus: Boolean<li>Alapértelmezett: "false" | Ne használja
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: Boolean<li>Alapértelmezett: false | Logikai érték, amely azt jelzi, hogy a vendég felhasználó lehet-e a csoportok tulajdonosa. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy a vendég felhasználó tud-e hozzáférni az Office 365-csoportok tartalmához.  Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
+|  <ul><li>AllowGuestsToAccessGroups<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy a vendég felhasználó tud-e hozzáférni Microsoft 365 csoportok tartalmához.  Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett: "" | A vendég használati irányelvekre mutató hivatkozás URL-címe. |
 |  <ul><li>AllowToAddGuests<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy engedélyezett-e a vendégek hozzáadása a címtárhoz. <br>Ez a beállítás felülbírálható, és csak olvasható lehet, ha a *EnableMIPLabels* értéke *true (igaz* ), és a rendszer a csoporthoz rendelt érzékenységi címkével társítja a vendég szabályzatot.<br>Ha a AllowToAddGuests beállítás a szervezet szintjén hamis értékre van állítva, a rendszer figyelmen kívül hagyja a csoport szintjén található AllowToAddGuests-beállításokat. Ha csak néhány csoporthoz kívánja engedélyezni a vendég hozzáférést, a AllowToAddGuests a szervezet szintjén igaz értékre kell állítania, majd külön le kell tiltania azokat adott csoportokhoz. |
-|  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett: "" | Az Office 365-csoportokra alkalmazható érvényes besorolási értékek vesszővel tagolt listája. <br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
-|  <ul><li>EnableMIPLabels<li>Típus: Boolean<li>Alapértelmezett: "false" |Ez a jelző jelzi, hogy az Microsoft 365 megfelelőségi központban közzétett érzékenységi címkék alkalmazhatók-e az Office 365-csoportokra. További információ: [az Office 365-csoportok érzékenységi címkéjének társítása](groups-assign-sensitivity-labels.md). |
+|  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett: "" | A Microsoft 365 csoportokra alkalmazható érvényes besorolási értékek vesszővel tagolt listája. <br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
+|  <ul><li>EnableMIPLabels<li>Típus: Boolean<li>Alapértelmezett: "false" |Az a jelző, amely azt jelzi, hogy a Microsoft 365 megfelelőségi központban közzétett érzékenységi címkék alkalmazhatók-e Microsoft 365 csoportokra. További információ: [érzékenységi címkék társítása Microsoft 365 csoportokhoz](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Példa: a csoportokra vonatkozó vendég házirend konfigurálása a címtár szintjén
 1. Az összes beállítási sablon beolvasása:
@@ -255,7 +255,7 @@ Ezzel a lépéssel eltávolítja a beállításokat a címtár szintjén, amely 
    Id                                   DisplayName            Description
    --                                   -----------            -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified          ...
-   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Office 365 group
+   08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Microsoft 365 group
    4bc7f740-180e-4586-adb6-38b2e9024e6b Application            ...
    898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy Settings ...
    5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...

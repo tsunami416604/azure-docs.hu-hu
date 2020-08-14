@@ -3,14 +3,15 @@ title: Az Azure Functions tesztelése
 description: Automatizált tesztek létrehozása C#-függvényhez a Visual Studióban és a JavaScript-függvényben a VS Code-ban
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085078"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212897"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -31,7 +32,7 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 
 ![Azure Functions tesztelése a C# használatával a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Előkészületek
+### <a name="setup"></a>Telepítés
 
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
@@ -268,7 +269,7 @@ Az alábbi példa azt ismerteti, hogyan hozható létre JavaScript-függvény al
 
 ![Azure Functions tesztelése a JavaScripttel a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Előkészületek
+### <a name="setup"></a>Telepítés
 
 A környezet beállításához a futtatásával inicializáljon egy új Node.js alkalmazást egy üres mappában `npm init` .
 
@@ -380,7 +381,7 @@ A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *launch.
 
 Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5**billentyűt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan írhat automatizált teszteket a függvények számára, folytassa ezeket az erőforrásokat:
 

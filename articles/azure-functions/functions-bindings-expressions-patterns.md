@@ -3,14 +3,15 @@ title: Azure Functions kötések és minták
 description: Ismerje meg, hogyan hozhat létre különböző Azure Functions kötési kifejezéseket közös minták alapján.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261069"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212608"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions kötési kifejezés mintái
 
@@ -29,7 +30,7 @@ Kötéskifejezések típusai
 
 ## <a name="binding-expressions---app-settings"></a>Kötési kifejezések – Alkalmazásbeállítások
 
-Ajánlott eljárásként a titkokat és a kapcsolatok karakterláncait az Alkalmazásbeállítások használatával kell felügyelni, nem pedig a konfigurációs fájlokat. Ez korlátozza a hozzáférést ezekhez a titkokhoz, és biztonságos módon tárolja a fájlokat, például *afunction.jst a* nyilvános forrású vezérlő adattárakban.
+Ajánlott eljárásként a titkokat és a kapcsolatok karakterláncait az Alkalmazásbeállítások használatával kell felügyelni, nem pedig a konfigurációs fájlokat. Ez korlátozza a hozzáférést ezekhez a titkokhoz, és biztonságos módon tárolja a fájlokat, például * afunction.jst a* nyilvános forrású vezérlő adattárakban.
 
 Az Alkalmazásbeállítások akkor is hasznosak, ha módosítani szeretné a környezet alapján a konfigurációt. Tesztelési környezetben például érdemes lehet figyelni egy másik üzenetsor-vagy blob Storage-tárolót.
 
@@ -132,7 +133,7 @@ public static void Run(
 
 ```
 
-A fájlnevek részeihez is létrehozhat kifejezéseket. A következő példában a függvény csak olyan fájlneveken aktiválódik, amelyek megfelelnek a mintának:`anyname-anyfile.csv`
+A fájlnevek részeihez is létrehozhat kifejezéseket. A következő példában a függvény csak olyan fájlneveken aktiválódik, amelyek megfelelnek a mintának: `anyname-anyfile.csv`
 
 ```json
 {
@@ -155,7 +156,7 @@ Az Azure üzenetsor-tárolói trigger például a következő tulajdonságokat t
 * QueueTrigger – az üzenet tartalmának elindítása, ha érvényes karakterlánc
 * DequeueCount
 * ExpirationTime
-* Azonosító
+* Id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
@@ -318,6 +319,6 @@ A kötési kifejezés a következőhöz lesz `DateTime` feloldva: `DateTime.UtcN
 
 C#-és egyéb .NET-nyelveken a kötelező kötési mintát használhatja, szemben a *function.json* és az attribútumokban található deklaratív kötésekkel. A kényszerített kötés akkor hasznos, ha a kötési paramétereket nem a tervezési idő, hanem futásidőben kell kiszámítani. További információért lásd a [C# fejlesztői referenciáját](functions-dotnet-class-library.md#binding-at-runtime) vagy a [c# parancsfájl fejlesztői referenciáját](functions-reference-csharp.md#binding-at-runtime).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844881"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212273"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -155,7 +155,7 @@ module.exports = function(context) {
 
 Az alábbi példa bemutatja, hogyan lehet egy és több értéket kiadni a tárolási várólistáknak. A *function.jshoz* szükséges konfiguráció ugyanaz, mint az egyik módja.
 
-A tárolási várólista kötése olyanfunction.jsvan definiálva, ahol *a* *típus* értékre van állítva `queue` .
+A tárolási várólista kötése olyanfunction.jsvan definiálva, ahol * a* *típus* értékre van állítva `queue` .
 
 ```json
 {
@@ -311,11 +311,11 @@ A jegyzethez társított paraméter `QueueOutput` [OutputBinding \<T\> ](https:/
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Queue` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `queue` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `out` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -383,7 +383,7 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Referencia |
+| Kötés |  Hivatkozás |
 |---|---|
 | Üzenetsor | [Üzenetsor-hibakódok](/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -396,7 +396,7 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. Az alábbi példában szereplő host.jscsak a kötés 2. x verziójának beállításait tartalmazza. További információ a 2. x verzióban található globális konfigurációs beállításokról és azon kívül: [host.jsAzure functions](functions-host-json.md).
 
 > [!NOTE]
-> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [Azure functions 1. x](functions-host-json-v1.md)esetében.
+> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [ Azure functions 1. x](functions-host-json-v1.md)esetében.
 
 ```json
 {
@@ -413,7 +413,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|A várólista-lekérdezések közötti maximális időköz. Minimum 00:00:00.100 (100 MS), és legfeljebb 00:01:00 (1 perc) értékkel növekszik.  Az 1. x adattípusa ezredmásodperc, a 2. x és a magasabb érték pedig egy TimeSpan.|
 |visibilityTimeout|00:00:00|Az újrapróbálkozások között eltelt idő az üzenet feldolgozásakor. |

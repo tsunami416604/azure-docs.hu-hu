@@ -3,14 +3,15 @@ title: Azure Functions-kötések Microsoft Graph
 description: Megtudhatja, hogyan használhatók Microsoft Graph eseményindítók és kötések a Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9dd4067d066362f5842b504971afbc59fd0717a3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506536"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212206"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions-kötések Microsoft Graph
 
@@ -205,12 +206,12 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Token` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [hitelesítési jogkivonat bemeneti kötésének használata kódból](#token-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `token` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `in` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
 |**Erőforrás**|**erőforrás**|Kötelező – egy Azure AD-erőforrás URL-címe, amelyhez a jogkivonatot kéri.|
@@ -340,12 +341,12 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – az Excel-táblázat függvény kódjában használt változó neve. Lásd: [Excel-táblázat bemeneti kötésének használata kódból](#excel-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `excel` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `in` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
 |**elérési útja**|**Elérési út**|Kötelező – a OneDrive elérési útja az Excel-munkafüzethez.|
@@ -502,18 +503,18 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [Excel-táblázat kimeneti kötésének használata kódból](#excel-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `excel` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `out` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**UserId** |**userId** |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
 |**elérési útja**|**Elérési út**|Kötelező – a OneDrive elérési útja az Excel-munkafüzethez.|
 |**worksheetName**|**WorksheetName**|Az a munkalap, amelyben a tábla található.|
 |**tableName**|**Táblanév**|A tábla neve. Ha nincs megadva, a rendszer a munkalap tartalmát fogja használni.|
-|**Frissítés típusa**|**Frissítés típusa**|Kötelező – a táblára való váltás típusa. A következő értékek egyike lehet:<ul><li><code>update</code>– Lecseréli a tábla tartalmát a OneDrive.</li><li><code>append</code>– Új sorok létrehozásával hozzáadja a hasznos adatokat a OneDrive tábla végéhez.</li></ul>|
+|**Frissítés típusa**|**Frissítés típusa**|Kötelező – a táblára való váltás típusa. A következő értékek egyike lehet:<ul><li><code>update</code> – Lecseréli a tábla tartalmát a OneDrive.</li><li><code>append</code> – Új sorok létrehozásával hozzáadja a hasznos adatokat a OneDrive tábla végéhez.</li></ul>|
 
 <a name="excel-output-code"></a>
 ### <a name="excel-output---usage"></a>Excel-kimenet – használat
@@ -648,12 +649,12 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl bemeneti kötésének használata kódból](#onedrive-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `onedrive` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `in` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
 |**elérési útja**|**Elérési út**|Kötelező – a fájl OneDrive elérési útja.|
@@ -796,12 +797,12 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl kimeneti kötésének használata kódból](#onedrive-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `onedrive` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `out` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**UserId** |**userId** |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
 |**elérési útja**|**Elérési út**|Kötelező – a fájl OneDrive elérési útja.|
@@ -947,12 +948,12 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Outlook` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `outlook` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `out` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
 
@@ -1090,12 +1091,12 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhook` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `trigger` .|
-|**resourceType**|**ResourceType**|Kötelező – a Graph-erőforrás, amelynek a függvénynek válaszolnia kell a webhookokra. A következő értékek egyike lehet:<ul><li><code>#Microsoft.Graph.Message</code>– az Outlook-üzenetekben végrehajtott módosítások.</li><li><code>#Microsoft.Graph.DriveItem</code>– a OneDrive-gyökér elemein végrehajtott módosítások.</li><li><code>#Microsoft.Graph.Contact</code>– a személyes névjegyek módosításai az Outlookban.</li><li><code>#Microsoft.Graph.Event</code>– az Outlook naptár elemein végrehajtott módosítások.</li></ul>|
+|**resourceType**|**ResourceType**|Kötelező – a Graph-erőforrás, amelynek a függvénynek válaszolnia kell a webhookokra. A következő értékek egyike lehet:<ul><li><code>#Microsoft.Graph.Message</code> – az Outlook-üzenetekben végrehajtott módosítások.</li><li><code>#Microsoft.Graph.DriveItem</code> – a OneDrive-gyökér elemein végrehajtott módosítások.</li><li><code>#Microsoft.Graph.Contact</code> – a személyes névjegyek módosításai az Outlookban.</li><li><code>#Microsoft.Graph.Event</code> – az Outlook naptár elemein végrehajtott módosítások.</li></ul>|
 
 > [!Note]
 > A Function alkalmazásnak csak egy függvénye lehet, amely egy adott értékre van regisztrálva `resourceType` .
@@ -1242,7 +1243,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhookSubscription` .|
@@ -1383,15 +1384,15 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhookSubscription` .|
 |**irányba**| n.a. |Kötelező – a következőre kell beállítani: `out` .|
-|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code>– Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code>– Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code>-A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code>– A Function alkalmazás identitását használja.</li></ul>|
+|**identitás**|**Identitás**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – Csak http- [trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – Egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Tekintse meg a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> -A megadott jogkivonat által jelölt identitást használja. Tekintse meg a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – A Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke: `userFromId` . Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke: `userFromToken` . A Function alkalmazáshoz érvényes jogkivonat. |
-|**művelet**|**Művelet**|Kötelező – meghatározza azt a műveletet, amelyet a kötésnek végre kell hajtania. A következő értékek egyike lehet:<ul><li><code>create</code>-Új előfizetés regisztrálása.</li><li><code>delete</code>-Egy megadott előfizetés törlése.</li><li><code>refresh</code>– Frissíti a megadott előfizetést, hogy a lejárati állapotban maradjon.</li></ul>|
+|**művelet**|**Művelet**|Kötelező – meghatározza azt a műveletet, amelyet a kötésnek végre kell hajtania. A következő értékek egyike lehet:<ul><li><code>create</code> -Új előfizetés regisztrálása.</li><li><code>delete</code> -Egy megadott előfizetés törlése.</li><li><code>refresh</code> – Frissíti a megadott előfizetést, hogy a lejárati állapotban maradjon.</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|Csak akkor szükséges, ha a _művelet_ a következőre van beállítva: `create` . Meghatározza a változásokhoz figyelni kívánt Microsoft Graph erőforrást. Lásd: [webhookok használata Microsoft Graphban]. |
 |**changeType**|**ChangeType**|Csak akkor szükséges, ha a _művelet_ a következőre van beállítva: `create` . Megadja az előfizetett erőforrás változásának típusát, amely értesítést fog létrehozni. A támogatott értékek a következők: `created` , `updated` , `deleted` . Vesszővel tagolt lista használatával több érték is egyesíthető.|
 

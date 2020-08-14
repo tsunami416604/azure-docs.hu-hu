@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b3df38e8feef2a7b9bbc090e11a669164010f32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806635"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213206"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Hasonlóság és pontozás az Azure Cognitive Search
 
@@ -103,6 +103,7 @@ Egy olyan lekérdezéshez, amely a "Leírás" és a "title" mezőket célozza me
 ```
 
 Ezeket az adatpontokat [Egyéni pontozási megoldásokban](https://github.com/Azure-Samples/search-ranking-tutorial) is felhasználhatja, vagy az adatokat felhasználhatja a kereséssel kapcsolatos problémák hibakereséséhez.
+
 
 ## <a name="see-also"></a>Lásd még
 

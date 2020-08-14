@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan futtathat webalkalmazásokat Azure App Service 
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 08/01/2020
-ms.custom: mvc, devcenter, vs-azure, seodec18
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 61ab915ed709ab86e8420816b48036e915e5cfb5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085192"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212681"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -80,7 +80,7 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
 1. A **üzemeltetési tervben: hozzon létre új** párbeszédpanelt, és adja meg a következő táblázatban megadott értékeket:
 
-   | Beállítás  | Ajánlott érték | Leírás |
+   | Beállítás  | Ajánlott érték | Description |
    | -------- | --------------- | ----------- |
    | **Szolgáltatási csomag**  | *myFirstAzureWebAppPlan* | Az App Service-csomag neve. |
    | **Hely**      | *Nyugat-Európa* | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
@@ -145,7 +145,7 @@ A webalkalmazás **áttekintő** lapja olyan alapszintű felügyeleti lehetősé
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a Visual studiót használta egy ASP.NET Core webalkalmazás létrehozásához és üzembe helyezéséhez Azure App Service.
 
@@ -314,7 +314,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](tutorial-dotnetcore-sqldb-app.md)

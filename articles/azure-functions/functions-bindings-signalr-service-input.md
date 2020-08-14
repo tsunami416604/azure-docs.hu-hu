@@ -3,14 +3,15 @@ title: Azure Functions szignáló szolgáltatás bemeneti kötése
 description: Megtudhatja, hogyan adhat vissza a Signaler szolgáltatás végpontjának URL-címét és a hozzáférési tokent Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 326115a2a6cf29fcf211cdbd918edd0994fe45ed
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77530262"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212114"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>A signaler szolgáltatás bemeneti kötése Azure Functions
 
@@ -277,6 +278,6 @@ public SignalRConnectionInfo negotiate(
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szignáló szolgáltatás üzeneteinek küldése (kimeneti kötés)](./functions-bindings-signalr-service-output.md) 

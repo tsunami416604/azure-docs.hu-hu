@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
-ms.custom: seodec18
-ms.openlocfilehash: 37c98ca2fbffddd064b55192e9b5d83c948d88e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041958"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214154"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1. x Azure Cosmos DB kötései
 
@@ -1152,7 +1152,7 @@ A Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy új dokumentumot írjo
 Ez a szakasz a következő példákat tartalmazza:
 
 * Üzenetsor-trigger, egy doc írása
-* Üzenetsor-trigger, dokumentumok írása a használatával`IAsyncCollector`
+* Üzenetsor-trigger, dokumentumok írása a használatával `IAsyncCollector`
 
 A példák egy egyszerű `ToDoItem` típusra vonatkoznak:
 
@@ -1238,7 +1238,7 @@ namespace CosmosDBSamplesV1
 Ez a szakasz a következő példákat tartalmazza:
 
 * Üzenetsor-trigger, egy doc írása
-* Üzenetsor-trigger, dokumentumok írása a használatával`IAsyncCollector`
+* Üzenetsor-trigger, dokumentumok írása a használatával `IAsyncCollector`
 
 ### <a name="queue-trigger-write-one-doc"></a>Üzenetsor-trigger, egy doc írása
 
@@ -1479,7 +1479,7 @@ Alapértelmezés szerint, amikor a függvény kimeneti paraméterére ír, létr
 |---|---|
 | CosmosDB | [CosmosDB-hibakódok](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a kiszolgáló nélküli adatbázis-számítástechnika Cosmos DB](../cosmos-db/serverless-computing-database.md)
 * [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

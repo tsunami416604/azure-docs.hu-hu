@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: e7199b6d54a0150845bfc09c38e002e6cc298ee7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c7b4cf688d02ebbcb099f116c0eb7b4ebe7c6074
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066729"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212420"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -57,7 +57,7 @@ A logikai alkalmazás minden kérelem végpontja [közös hozzáférési aláír
 
 Minden URL-cím tartalmazza a `sp` , a `sv` és a `sig` lekérdezési paramétert a következő táblázatban leírtak szerint:
 
-| Lekérdezési paraméter | Leírás |
+| Lekérdezési paraméter | Description |
 |-----------------|-------------|
 | `sp` | Megadja az engedélyezett HTTP-metódusok használatának engedélyeit. |
 | `sv` | Megadja az aláírás generálásához használandó SAS-verziót. |
@@ -240,7 +240,7 @@ Ha engedélyezni szeretné az Azure AD-OAuth az ARM-sablonban a logikai alkalmaz
 ],
 ```
 
-További információ a `accessControl` szakaszról: a [bejövő IP-tartományok korlátozása Azure Resource Manager sablonban](#restrict-inbound-ip-template) és a [Microsoft. Logic munkafolyamatok sablonjának referenciája](/templates/microsoft.logic/2019-05-01/workflows).
+További információ a `accessControl` szakaszról: a [bejövő IP-tartományok korlátozása Azure Resource Manager sablonban](#restrict-inbound-ip-template) és a [Microsoft. Logic munkafolyamatok sablonjának referenciája](/azure/templates/microsoft.logic/2019-05-01/workflows).
 
 <a name="restrict-inbound-ip"></a>
 
@@ -592,7 +592,7 @@ További információ az alábbi `parameters` fejezetekről:
 
 Ez a példa több, a típust használó biztonságos paraméter-definícióval rendelkező sablont tartalmaz `securestring` :
 
-| Paraméter neve | Leírás |
+| Paraméter neve | Description |
 |----------------|-------------|
 | `TemplatePasswordParam` | A munkafolyamat-definíció paraméterének átadott jelszót fogadó sablon-paraméter `basicAuthPasswordParam` |
 | `TemplateUsernameParam` | A munkafolyamat-definíció paraméterének átadandó felhasználónevet megadó sablon-paraméter `basicAuthUserNameParam` |
@@ -786,8 +786,8 @@ A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. E
 
 Ez a táblázat az eseményindítók és műveletek által elérhető hitelesítési típusokat azonosítja, ahol kiválaszthat egy hitelesítési típust:
 
-| Hitelesítéstípus | Rendelkezésre állás |
-|---------------------|--------------|
+| Hitelesítéstípus | Támogatott eseményindítók és műveletek |
+|---------------------|--------------------------------|
 | [Basic](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
 | [Ügyféltanúsítvány](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + hencegés, HTTP webhook |
@@ -876,7 +876,7 @@ Kéréses eseményindítók esetén [Azure Active Directory nyílt hitelesítés
 | **Hitelesítés** | `type` | Igen | **Active Directory OAuth** <br>vagy <br>`ActiveDirectoryOAuth` | A használni kívánt hitelesítési típus. A Logic Apps jelenleg a [OAuth 2,0 protokollt](../active-directory/develop/v2-overview.md)követi. |
 | **Authority** | `authority` | Nem | <*URL-cím-a-Authority-token-kiállító*> | A hitelesítési jogkivonatot biztosító szolgáltató URL-címe. Alapértelmezés szerint ez az érték `https://login.windows.net` . |
 | **Bérlő** | `tenant` | Igen | <*Bérlő azonosítója*> | Az Azure AD-bérlő bérlői azonosítója |
-| **Célközönség** | `audience` | Igen | <*erőforrás-engedélyezés*> | Az engedélyezéshez használni kívánt erőforrás, például:`https://management.core.windows.net/` |
+| **Célközönség** | `audience` | Igen | <*erőforrás-engedélyezés*> | Az engedélyezéshez használni kívánt erőforrás, például: `https://management.core.windows.net/` |
 | **Ügyfél-azonosító** | `clientId` | Igen | <*ügyfél-azonosító*> | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |
 | **Hitelesítő adat típusa** | `credentialType` | Igen | Tanúsítvány <br>vagy <br>Titkos | Az ügyfél által a hitelesítés kérelmezéséhez használt hitelesítő adat típusa. Ez a tulajdonság és érték nem jelenik meg a logikai alkalmazás alapjául szolgáló definícióban, de meghatározza a kiválasztott hitelesítőadat-típushoz megjelenő tulajdonságokat. |
 | **Titkos** | `secret` | Igen, de csak a "titkos" hitelesítő adatok típusához | <*ügyfél – titok*> | Az engedélyezést kérő ügyfél titka |
@@ -952,7 +952,7 @@ Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas 
 
 ### <a name="managed-identity-authentication"></a>Felügyelt identitás hitelesítése
 
-Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) lehetőség elérhető, a logikai alkalmazás a rendszer által hozzárendelt identitást vagy *egyetlen* manuálisan létrehozott, felhasználó által hozzárendelt identitást is használhat a Azure Active Directory (Azure ad) által védett más erőforrásokhoz való hozzáférés hitelesítéséhez bejelentkezés nélkül. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem kell megadnia vagy elforgatni a titkokat. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) beállítás egy [adott triggeren vagy műveleten](#add-authentication-outbound)érhető el, a logikai alkalmazás a rendszer által hozzárendelt identitást vagy *egy manuálisan létrehozott* , felhasználó által hozzárendelt identitást használhat a Azure Active Directory (Azure ad) által védett más erőforrásokhoz való hozzáférés hitelesítése nélkül. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem kell megadnia vagy elforgatni a titkokat. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Mielőtt a logikai alkalmazás felügyelt identitást tud használni, kövesse az [Azure-erőforrásokhoz való hozzáférés hitelesítése a Azure Logic apps felügyelt identitások használatával](../logic-apps/create-managed-service-identity.md)című témakör lépéseit. Ezekkel a lépésekkel engedélyezheti a felügyelt identitást a logikai alkalmazáson, és beállíthatja az identitás hozzáférését a cél Azure-erőforráshoz.
 
@@ -1020,7 +1020,7 @@ További információt az alábbi témakörökben talál:
 * [Elkülönítés az Azure nyilvános felhőben](../security/fundamentals/isolation-choices.md)
 * [Fokozottan kényes IaaS-alkalmazások biztonsága az Azure-ban](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Logic Apps Azure biztonsági alapterve](../logic-apps/security-baseline.md)
 * [Üzembe helyezés automatizálása Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

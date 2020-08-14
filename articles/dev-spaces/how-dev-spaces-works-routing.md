@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és az Útválasztás működik
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077665"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213406"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hogyan működik az Útválasztás az Azure dev Spaces-szel
 
@@ -62,15 +62,13 @@ Például:
 
 Az *azureuser*használatakor a *servicea szolgáltatásnak* küldött összes kérelem a frissített verzióra lesz irányítva az *azureuser*-ben. A *serviceB* iránti kérés először a *serviceB* *azureuser* -verziójára lesz irányítva. Mivel nem létezik, a rendszer a *serviceB* *alapértelmezett* verziójára irányítja át. Ha a *servicea szolgáltatáshoz* tartozó *azureuser* verziója el lett távolítva, a *servicea* szolgáltatáshoz intézett összes kérelem vissza fog térni a *servicea* *alapértelmezett* verziójának használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtekinteni, hogyan használja az Azure dev Spaces az útválasztást a gyors iteráció és a fejlesztés érdekében, tekintse meg a [helyi folyamat és a Kubernetes működésének][how-it-works-local-process-kubernetes]módját, [a kód távoli hibakeresését az Azure dev Spaces][how-it-works-remote-debugging] [szolgáltatással és a GitHub-műveleteket & Azure Kubernetes szolgáltatást][pr-flow].
 
-Az Útválasztás és az Azure dev Spaces közötti együttműködés használatának megkezdéséhez tekintse meg a [csapat fejlesztése az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [troubleshooting]: troubleshooting.md

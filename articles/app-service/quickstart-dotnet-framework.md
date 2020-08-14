@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan futtathat webalkalmazásokat Azure App Service 
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 08/06/2020
-ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 55b8dabfb2f5b3deff8b8435f0121a41333fb655
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc, devcenter, seodec18
+ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085023"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212561"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
@@ -29,7 +29,7 @@ Ha már telepítette a Visual Studio 2019-et:
 - A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
 - A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások**lehetőséget.
 
-## <a name="create-an-aspnet-web-app"></a>ASP.NET-Webalkalmazás létrehozása<a name="create-and-publish-the-web-app"></a>
+## <a name="create-an-aspnet-web-app"></a>ASP.NET-Webalkalmazás létrehozása <a name="create-and-publish-the-web-app"></a>
 
 Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtásával:
 
@@ -51,7 +51,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
    ![Az alkalmazás futtatása helyileg](./media/quickstart-dotnet-framework/local-web-app.png)
 
-## <a name="publish-your-web-app"></a>Webalkalmazás közzététele<a name="launch-the-publish-wizard"></a>
+## <a name="publish-your-web-app"></a>Webalkalmazás közzététele <a name="launch-the-publish-wizard"></a>
 
 1. A **megoldáskezelő**kattintson a jobb gombbal a **myFirstAzureWebApp** projektre, és válassza a **Közzététel**lehetőséget.
 
@@ -80,7 +80,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. A **üzemeltetési terv konfigurálása** párbeszédpanelen adja meg a következő táblázat értékeit, majd kattintson az **OK gombra**.
 
-   | Beállítás | Ajánlott érték | Leírás |
+   | Beállítás | Ajánlott érték | Description |
    |-|-|-|
    | Szolgáltatási csomag| myAppServicePlan | Az App Service-csomag neve. |
    | Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
@@ -141,7 +141,7 @@ A (z) **app Service új lap létrehozása** lapon megadott alkalmazásnév URL-e
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [ASP.NET-alkalmazás és SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)

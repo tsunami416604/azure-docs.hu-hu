@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: efe175e4086d5273471c1b0451e4cfb28449c236
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008933"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213459"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis-időtúllépések hibaelhárítása
 
@@ -44,7 +45,7 @@ Ez a hibaüzenet olyan metrikákat tartalmaz, amelyek segíthetnek a probléma o
 | Mgr |A szoftvercsatorna-kezelő így tesz `socket.select` , ami azt jelenti, hogy az operációs rendszer azt kéri, hogy egy olyan szoftvercsatorna jelenjen meg, amelynek van valami teendője. Az olvasó nem olvas aktívan a hálózatról, mert nem hiszem, hogy bármi van |
 | üzenetsor |Összesen 73 folyamatban lévő művelet |
 | l |a folyamatban lévő műveletek közül 6 a nem küldött várólistában van, és még nem lett beírva a kimenő hálózatra. |
-| QS |67 a folyamatban lévő műveletek elküldése a kiszolgálónak, de a válasz még nem érhető el. A válasz lehet `Not yet sent by the server` vagy`sent by the server but not yet processed by the client.` |
+| QS |67 a folyamatban lévő műveletek elküldése a kiszolgálónak, de a válasz még nem érhető el. A válasz lehet `Not yet sent by the server` vagy `sent by the server but not yet processed by the client.` |
 | QC |a folyamatban lévő műveletek közül 0 a válaszokat észlelte, de még nem jelölték meg befejezettként, mert a befejezési hurokra várnak. |
 | WR |Aktív író van (vagyis a 6 el nem küldött kérések nincsenek figyelmen kívül hagyva) bájt/activewriters |
 | in |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
@@ -91,7 +92,7 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 1. A magas Redis-kiszolgáló terhelése időtúllépéseket eredményezhet. A kiszolgáló terhelését a `Redis Server Load` [gyorsítótár teljesítményének metrikájának](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)figyelésével figyelheti. A kiszolgálói terhelés 100 (maximális érték) azt jelzi, hogy a Redis-kiszolgáló foglalt, üresjárati idő nélkül, feldolgozási kérések. Ha szeretné megtekinteni, hogy bizonyos kérelmek elvesznek-e az összes kiszolgálói képességgel, futtassa a Slowlog parancs kimenetét parancsot az előző bekezdésben leírtak szerint. További információ: magas CPU-használat/-kiszolgáló terhelése.
 1. Történt-e olyan esemény az ügyféloldali oldalon, amely a hálózati visszavertség okozta volna? Gyakori események: az ügyfél-példányok számának felfelé vagy lefelé skálázása, az ügyfél új verziójának üzembe helyezése vagy az automatikus méretezés engedélyezve van. A tesztelés során azt találtuk, hogy az automatikus méretezés vagy a felfelé/lefelé méretezés a kimenő hálózati kapcsolat elvesztését okozhatja néhány másodpercig. Az StackExchange. Redis kód ellenáll az ilyen eseményeknek, és újracsatlakozik. Az újrakapcsolódás során a várólistán lévő összes kérelem időtúllépést okozhat.
 1. Volt egy nagy kérés, amely korábban több kisebb kérést adott a gyorsítótárnak, amely túllépte az időkorlátot? A `qs` hibaüzenetben szereplő paraméter jelzi, hogy az ügyfél hány kérelmet küldött a kiszolgálónak, de nem feldolgozott választ. Ez az érték továbbra is növekszik, mert a StackExchange. Redis egyetlen TCP-kapcsolatban használ, és egyszerre csak egy választ tud olvasni. Annak ellenére, hogy az első művelet időtúllépést okozott, nem állítja le a kiszolgálóról vagy a kiszolgálóra küldött több adatmennyiséget. A rendszer letiltja a további kérelmeket, amíg a nagyméretű kérelem be nem fejeződik, és időtúllépést okozhat. Az egyik megoldás az időtúllépések valószínűségének csökkentése azáltal, hogy a gyorsítótár elég nagy méretű a számítási feladatokhoz és a nagyméretű értékek kisebb adattömbökbe való felosztásához. Egy másik lehetséges megoldás az, hogy az ügyfélben lévő objektumok készletét használja `ConnectionMultiplexer` , és az `ConnectionMultiplexer` új kérés küldésekor válassza ki a legkevesebb betöltést. A több kapcsolati objektumba való betöltésnek meg kell akadályoznia, hogy a többi kérelem is időtúllépést okozzon.
-1. Ha használja `RedisSessionStateProvider` , győződjön meg arról, hogy az újrapróbálkozási időtúllépés megfelelően van beállítva. `retryTimeoutInMilliseconds`nagyobbnak kell lennie `operationTimeoutInMilliseconds` , mint, ellenkező esetben nem történik próbálkozás. A következő példában a `retryTimeoutInMilliseconds` 3000 értékre van állítva. További információ: [ASP.NET munkamenet-szolgáltató az Azure cache for Redis](cache-aspnet-session-state-provider.md) , valamint [a munkamenet-állapot szolgáltatójának és a kimeneti gyorsítótár-szolgáltató konfigurációs paramétereinek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+1. Ha használja `RedisSessionStateProvider` , győződjön meg arról, hogy az újrapróbálkozási időtúllépés megfelelően van beállítva. `retryTimeoutInMilliseconds` nagyobbnak kell lennie `operationTimeoutInMilliseconds` , mint, ellenkező esetben nem történik próbálkozás. A következő példában a `retryTimeoutInMilliseconds` 3000 értékre van állítva. További információ: [ASP.NET munkamenet-szolgáltató az Azure cache for Redis](cache-aspnet-session-state-provider.md) , valamint [a munkamenet-állapot szolgáltatójának és a kimeneti gyorsítótár-szolgáltató konfigurációs paramétereinek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     ```xml
     <add

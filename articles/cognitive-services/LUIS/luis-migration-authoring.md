@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145615"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212634"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -34,6 +34,7 @@ Az áttelepítést a LUIS portálról kell elvégezni. Ha például a LUIS CLI h
 
 ## <a name="note-before-you-migrate"></a>Az áttelepítés előtt vegye figyelembe a következőt:
 
+* Az authoring Experience **-et november, 2, 2020**-ig kell áttelepítenie. 
 * Az áttelepítés egy egyirányú folyamat. Az áttelepítés után nem mehet vissza.
 * Ha Ön az alkalmazás tulajdonosa, a rendszer automatikusan áttelepíti az alkalmazásokat.
 * A tulajdonos nem választhat az áttelepítendő alkalmazások egy részhalmazát, és a folyamat nem vonható vissza.
@@ -57,7 +58,7 @@ Az áttelepítést a LUIS portálról kell elvégezni. Ha például a LUIS CLI h
 * Ha Ön az alkalmazás tulajdonosa, nem kell exportálnia az alkalmazásokat, mert azok automatikusan áttelepülnek. Javasoljuk, hogy mentse az egyes alkalmazások közreműködői listáját. A listát tartalmazó e-mail-sablon opcionálisan az áttelepítési folyamat részeként is elérhető.
 
 
-|Portal|Rendeltetés|
+|Portál|Cél|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)| Hozzon létre előrejelzési és létrehozási erőforrásokat.<br> Közreműködők kiosztása erőforrásokhoz.|
 |[LUIS](https://www.luis.ai)| Migrálás új szerzői erőforrásokra.<br> Új authoring-erőforrások létrehozása az áttelepítési folyamat során.<br> Az **Manage**  >  **Azure-erőforrások** kezelése oldalon megadhatja vagy megadhatja az alkalmazások előrejelzési és szerzői erőforrásainak hozzárendelését. <br> Alkalmazások áthelyezése egy authoring-erőforrásból egy másikba.  |
@@ -244,7 +245,7 @@ Ha a következő hibaüzenet jelenik meg, akkor tekintse meg az [ajánlott lép�
 ![Hiba, amely azt mutatja, hogy az áttelepítés nem sikerült a közreműködők számára](./media/migrate-authoring-key/migration-failed-for-collab-2.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át [a szerzői és futtatókörnyezeti kulcsokkal kapcsolatos fogalmakat](luis-how-to-azure-subscription.md).
 * Tekintse át a [kulcsok hozzárendelését](luis-how-to-azure-subscription.md) és a [közreműködők hozzáadását](luis-how-to-collaborate.md)ismertető témakört.

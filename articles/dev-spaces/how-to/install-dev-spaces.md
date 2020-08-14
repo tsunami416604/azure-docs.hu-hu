@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan engedélyezheti az Azure dev Spaces szolgáltatást egy AK-fürtön, és hogyan telepítheti az ügyféloldali eszközöket.
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407897"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212429"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Az Azure dev-helyek engedélyezése egy AK-fürtön és az ügyféloldali eszközök telepítése
 
@@ -78,16 +78,14 @@ Az Azure dev Spaces szolgáltatással létrehozott névterek a számítási fela
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
+További információ az Azure dev Spaces működéséről.
 
 > [!div class="nextstepaction"]
-> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-development-qs]
+> [Az Azure Dev Spaces működése](../how-dev-spaces-works.md)
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-qs]: ../quickstart-team-development.md
-
 [az-portal]: https://portal.azure.com
 [az-portal-create-account]: https://azure.microsoft.com/free
 [cli-linux]: https://aka.ms/get-azds-linux

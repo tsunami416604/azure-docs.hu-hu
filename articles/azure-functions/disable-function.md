@@ -3,13 +3,13 @@ title: Függvények letiltása a Azure Functionsban
 description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvényeket a Azure Functionsban.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47fbd446937ea0cfd981cef2d5cdd4759f2583d4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497698"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213148"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
 
@@ -46,6 +46,21 @@ Használhatja a funkció **Áttekintés** lapján található **Engedélyezés**
 
 > [!NOTE]  
 > A portálon integrált tesztelési funkció figyelmen kívül hagyja a `Disabled` beállítást. Ez azt jelenti, hogy egy letiltott függvény továbbra is fut, amikor a portálon a **teszt** ablakból indult el. 
+
+## <a name="localsettingsjson"></a>local.settings.json
+
+A függvények a helyileg futtatott módon is letilthatók. Ha le szeretne tiltani egy nevű függvényt `HttpExample` , adjon hozzá egy bejegyzést a local.settings.jsfájljában található értékek gyűjteményéhez, a következőképpen:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
+    "AzureWebJobs.HttpExample.Disabled": "true"
+  }
+}
+``` 
 
 ## <a name="other-methods"></a>Egyéb módszerek
 
@@ -127,6 +142,6 @@ A második példában a függvény le van tiltva, ha van egy IS_DISABLED nevű a
 >A portál mostantól az Alkalmazásbeállítások használatával letiltja a v1. x függvényeket. Ha egy alkalmazás beállítása ütközik a fájl function.jsával, hiba léphet fel. A hibák elkerülése érdekében távolítsa el a `disabled` tulajdonságot a fájl function.jsból. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az automatikus eseményindítók letiltását ismerteti. További információ az eseményindítókkal kapcsolatban: [triggerek és kötések](functions-triggers-bindings.md).

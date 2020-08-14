@@ -3,15 +3,16 @@ title: Ismerkedés a webjobs SDK-val
 description: Bevezetés a webjobs SDK-val eseményvezérelt háttérbeli feldolgozásra. Ismerje meg, hogyan érheti el az Azure-szolgáltatások és a harmadik féltől származó szolgáltatások adatszolgáltatásait.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078308"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212858"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
@@ -139,7 +140,7 @@ Most hozzáadhat egy olyan függvényt, amelyet az Azure Storage-várólistába 
 
 A 3. x verziótól kezdődően explicit módon telepítenie kell a webjobs SDK által igényelt tárolási kötési bővítményt. A korábbi verziók esetében a tárolási kötések szerepeltek az SDK-ban.
 
-1. Telepítse a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-csomag (3. x verzió) legújabb stabil verzióját. 
+1. Telepítse a  [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-csomag (3. x verzió) legújabb stabil verzióját. 
 
     A **Package Manager konzol** parancsa:
 
@@ -326,19 +327,19 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
 
 1. Adja hozzá a következő bejegyzést a **kapcsolatok karakterláncok** mezőben.
 
-   |Name (Név)  |kapcsolatok karakterlánca  |Adatbázis típusa|
+   |Name  |kapcsolatok karakterlánca  |Adatbázis típusa|
    |---------|---------|------|
    |AzureWebJobsStorage | {a korábban átmásolt tárolási kapcsolatok karakterlánca}|Egyéni|
 
 1. Ha az **Alkalmazásbeállítások** mezőhöz nem tartozik Application Insights kialakítási kulcs, adja hozzá a korábban átmásolt eszközt. (A rendszerállapot-kulcs már ott is lehet, attól függően, hogyan hozta létre a App Service alkalmazást.)
 
-   |Name (Név)  |Érték  |
+   |Name  |Érték  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentation-kulcs} |
 
 1. Cserélje le a *{Instrumentation Key}* elemet a használt Application Insights erőforrás rendszerállapot-kulcsára.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Adja hozzá a Application Insights-kapcsolódást a projekthez, hogy helyileg is futtatható legyen. A fájl *appsettings.jsban* vegyen fel egy `APPINSIGHTS_INSTRUMENTATIONKEY` mezőt a következő példában látható módon:
 
@@ -545,7 +546,7 @@ A kimeneti kötések leegyszerűsítik a kódot, amely adatokat ír. Ez a példa
  
 1. Ellenőrizze a függvényt az Azure-ban, hogy ismét feltölt egy fájlt a blob-tárolóba, és hozzáad egy üzenetet a várólistához, amely a feltöltött fájl neve. Megjelenik az üzenet, amelyet a rendszer eltávolít a sorból, és a blob-tárolóban létrehozott fájl másolatát. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan hozhat létre, futtathat és helyezhet üzembe egy webjobs SDK 3. x projektet.
 

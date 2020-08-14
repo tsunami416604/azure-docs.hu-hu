@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-python
-ms.openlocfilehash: a33a739014b33303389b4f880da3687db852633e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850270"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211891"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -324,13 +324,13 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
 > | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja a "2019-08-01" vagy az újabb verziót (kivéve, ha Linux-használatot használ, amely jelenleg csak a "2017-09-01"-ot kínálja) – lásd a fenti megjegyzést.                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | Fejléc | A IDENTITY_HEADER környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.                                                                                                                                                                                                    |
 > | client_id         | Lekérdezés  | Választható A használni kívánt felhasználó által hozzárendelt identitás ügyfél-azonosítója. Nem használható olyan kérelemben, amely a következőt tartalmazza:, `principal_id` `mi_res_id` vagy `object_id` . Ha az összes azonosító paraméter ( `client_id` , `principal_id` ,, `object_id` és) ki `mi_res_id` van hagyva, a rendszer hozzárendelt identitást használja.                                             |
-> | principal_id      | Lekérdezés  | Választható A használni kívánt felhasználó által hozzárendelt identitás résztvevő-azonosítója. `object_id`egy olyan alias, amely felhasználható helyette. Nem használható olyan kérelemben, amely client_id, mi_res_id vagy object_idt tartalmaz. Ha az összes azonosító paraméter ( `client_id` , `principal_id` ,, `object_id` és) ki `mi_res_id` van hagyva, a rendszer hozzárendelt identitást használja. |
+> | principal_id      | Lekérdezés  | Választható A használni kívánt felhasználó által hozzárendelt identitás résztvevő-azonosítója. `object_id` egy olyan alias, amely felhasználható helyette. Nem használható olyan kérelemben, amely client_id, mi_res_id vagy object_idt tartalmaz. Ha az összes azonosító paraméter ( `client_id` , `principal_id` ,, `object_id` és) ki `mi_res_id` van hagyva, a rendszer hozzárendelt identitást használja. |
 > | mi_res_id         | Lekérdezés  | Választható A használni kívánt felhasználó által hozzárendelt identitás Azure-erőforrás-azonosítója. Nem használható olyan kérelemben, amely a következőt tartalmazza:, `principal_id` `client_id` vagy `object_id` . Ha az összes azonosító paraméter ( `client_id` , `principal_id` ,, `object_id` és) ki `mi_res_id` van hagyva, a rendszer hozzárendelt identitást használja.                                      |
 
 > [!IMPORTANT]
@@ -338,7 +338,7 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |

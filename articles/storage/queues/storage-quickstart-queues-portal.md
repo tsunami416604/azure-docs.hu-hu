@@ -3,17 +3,17 @@ title: 'Rövid útmutató: Azure Storage-várólisták létrehozása a portálon
 description: Üzenetsor létrehozásához használja a Azure Portal. Ezután a Azure Portal használatával vegyen fel egy üzenetet, tekintse meg az üzenet tulajdonságait, és törölje az üzenetet.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/06/2019
+ms.date: 08/13/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808970"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213494"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Gyors útmutató: várólista létrehozása és üzenet hozzáadása a Azure Portal
 
@@ -40,8 +40,8 @@ Ha várólistát szeretne létrehozni a Azure Portalban, kövesse az alábbi lé
 Ezután adjon hozzá egy üzenetet az új várólistához. Egy üzenet akár 64 KB méretű is lehet.
 
 1. Válassza ki az új várólistát a Storage-fiókban található várólisták listájából.
-1. Kattintson az **+ üzenet hozzáadása** gombra, és adjon hozzá egy üzenetet a várólistához. Adjon meg egy üzenetet az **üzenet szövege** mezőben. 
-1. Itt adhatja meg, hogy mikor járjon le az üzenet. Az a maximális időtartam, ameddig egy üzenet maradhat a várólistában, 7 nap.
+1. Kattintson az **+ üzenet hozzáadása** gombra, és adjon hozzá egy üzenetet a várólistához. Adjon meg egy üzenetet az **üzenet szövege** mezőben.
+1. Itt adhatja meg, hogy mikor járjon le az üzenet. A **lejárat** mezőben megadható érvényes értékek 1 másodperc és 7 nap közöttiek lehetnek. Válassza az **üzenet soha nem jár le** lehetőséget, hogy jelezzen egy üzenetet, amely a várólistában marad, amíg a rendszer explicit módon el nem távolítja.
 1. Jelezze, hogy Base64-ként kívánja-e kódolni az üzenetet. A bináris adatkódolási szolgáltatás használata javasolt.
 1. Az üzenet hozzáadásához kattintson az **OK** gombra.
 
@@ -61,7 +61,7 @@ A dequeuing mindig eltávolítja a legrégebbi üzenetet a várólistában.
 
 ![Az üzenetnek a portálról való eltávolítását bemutató képernyőkép](media/storage-quickstart-queues-portal/dequeue-message.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy üzenetsor, hogyan adhat hozzá egy üzenetet, megtekintheti az üzenet tulajdonságait, és elvégezheti az üzenetek elküldését a Azure Portal.
 

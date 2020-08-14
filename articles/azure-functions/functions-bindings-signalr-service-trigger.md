@@ -3,14 +3,15 @@ title: A Azure Functions jelző szolgáltatás triggerének kötése
 description: Útmutató a szignáló szolgáltatás üzeneteinek küldéséhez Azure Functionsról.
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540230"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212581"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>A signaler szolgáltatás triggerének kötése Azure Functions
 
@@ -53,7 +54,7 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 }
 ```
 
-#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>Az attribútum használatának `[SignalRParameter]` egyszerűsítése`ParameterNames`
+#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>Az attribútum használatának `[SignalRParameter]` egyszerűsítése `ParameterNames`
 
 Mivel a használata nehézkes a használathoz `ParameterNames` , `SignalRParameter` ugyanezt a célt szolgálja.
 
@@ -168,7 +169,7 @@ def main(invocation) -> None:
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa**| n.a. | Értékre kell állítani `SignalRTrigger` .|
 |**irányba**| n.a. | Értékre kell állítani `in` .|
@@ -187,7 +188,7 @@ Az trigger típusú bemeneti típust `InvocationContext` vagy egyéni típuskén
 
 A InvocationContext tartalmazza az üzenetben a Signaler szolgáltatásból küldött összes tartalmat.
 
-|Tulajdonság a InvocationContext | Leírás|
+|Tulajdonság a InvocationContext | Description|
 |------------------------------|------------|
 |Argumentumok| Az *üzenetek* kategóriához érhető el. *Argumentumokat* tartalmaz a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)|
 |Hiba| *Leválasztott* eseményhez elérhető. Ez akkor lehet üres, ha a kapcsolatok hiba nélkül lezárult, vagy a hibaüzeneteket tartalmazza.|
@@ -216,7 +217,7 @@ Ezt a két argumentumot elérheti a paraméterből, valamint hozzárendelheti a 
 
 A paraméter kötése esetén a sorrend számít. A használata esetén `ParameterNames` a sorrend `ParameterNames` megegyezik az ügyfélben meghívott argumentumok sorrendjével. Ha a C#-ban használja az attribútumot `[SignalRParameter]` , akkor az Azure Function metódusokban az argumentumok sorrendje megegyezik az ügyfelek argumentumai sorrendjével.
 
-`ParameterNames`és az attribútum `[SignalRParameter]` **nem** használható egyszerre, vagy kivételt fog kapni.
+`ParameterNames` és az attribútum `[SignalRParameter]` **nem** használható egyszerre, vagy kivételt fog kapni.
 
 ## <a name="send-messages-to-signalr-service-trigger-binding"></a>Üzenetek küldése a jelző szolgáltatás triggerének kötéséhez
 

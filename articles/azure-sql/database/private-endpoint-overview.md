@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063270"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213373"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private-hivatkozás Azure SQL Database és az Azure szinapszis Analyticshez
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztü
 > [!IMPORTANT]
 > Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL Data Warehouse) szolgáltatásra is vonatkozik. Az egyszerűség kedvéért az "adatbázis" kifejezés a Azure SQL Database és az Azure szinapszis Analytics mindkét adatbázisára vonatkozik. Hasonlóképpen, a "Server"re mutató hivatkozások a Azure SQL Database és az Azure szinapszis Analytics szolgáltatást futtató [logikai SQL Serverre](logical-servers.md) hivatkoznak. Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**.
 
-## <a name="data-exfiltration-prevention"></a>Az adatkiszűrése megelőzése
+## <a name="data-exfiltration-prevention"></a>Adatkiszivárgás megelőzése
 
 A Azure SQL Databaseban lévő adatok kiszűrése, ha egy jogosult felhasználó, például egy adatbázis-rendszergazda képes az adatok kinyerésére egy rendszerből, és a szervezeten kívül más helyre vagy rendszerre helyezi át. A felhasználó például egy harmadik fél tulajdonában lévő Storage-fiókba helyezi át az adatátvitelt.
 
@@ -175,11 +175,11 @@ A helyszíni környezet és a SQL Database-adatbázis közötti kapcsolat létes
 - [ExpressRoute áramkör](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Csatlakozás az Azure-beli szinapszis Analytics-ből az Azure Storage-ba a Base használatával
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>Csatlakozás az Azure-beli szinapszis Analytics-ből az Azure Storage-ba a Base és a COPY utasítás használatával
 
-A rendszer általában az Azure-beli Storage-fiókokból származó adatok Azure szinapszis Analyticsbe való betöltésére használatos. Ha az Azure Storage-fiók, amelyről az adatok betöltésére vonatkozó korlátozásokat csak a virtuális hálózati alhálózatok egy készletére korlátozza a magánhálózati végpontokon, a szolgáltatási végpontokon vagy az IP-alapú tűzfalakon keresztül, a rendszer megtöri a kapcsolat a fiókból a fiókba való kapcsolódását. Ha az Azure szinapszis Analytics szolgáltatással csatlakozik a virtuális hálózathoz védett Azure Storage-hoz, az importálási és exportálási forgatókönyvek is elérhetők, kövesse az [itt](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)ismertetett lépéseket. 
+A Base és a COPY utasítást általában az Azure szinapszis Analytics szolgáltatásba való betöltésére használják az Azure Storage-fiókokból. Ha az Azure Storage-fiók, amelyről az adatok betöltésére vonatkozó korlátozások vonatkoznak, csak a virtuális hálózati alhálózatok egy készletét érheti el privát végpontokon, szolgáltatási végpontokon vagy IP-alapú tűzfalakon keresztül, akkor a rendszer megszakítja a kapcsolatot a Base és a MÁSOLÁSi utasítással. Az importálási és exportálási forgatókönyvek az Azure-beli virtuális hálózathoz védett Azure Storage-hoz való csatlakozásának engedélyezéséhez kövesse az [itt](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)ismertetett lépéseket. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](connectivity-architecture.md)

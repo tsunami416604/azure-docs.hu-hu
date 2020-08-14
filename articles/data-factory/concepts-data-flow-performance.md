@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/27/2020
-ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/12/2020
+ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475329"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212028"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -87,7 +87,7 @@ Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégi
 > [!TIP]
 > A particionálási séma manuális beállítása átrendezi az adatmennyiséget, és ellensúlyozza a Spark-optimalizáló előnyeit. A legjobb megoldás, ha nem kell manuálisan beállítania a particionálást.
 
-## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>A Azure Integration Runtime optimalizálása
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> A Azure Integration Runtime optimalizálása
 
 Az adatfolyamatok olyan Spark-fürtökön futnak, amelyek futás közben forognak. A használt fürt konfigurációja a tevékenység Integration Runtime (IR) szolgáltatásában van definiálva. Az integrációs modul definiálásakor három teljesítménnyel kapcsolatos szempontot kell figyelembe venni: a fürt típusa, a fürt mérete és az élettartam.
 
@@ -274,7 +274,30 @@ Ha az adatai nem egyenletesen particionálva lettek egy átalakítás után, az 
 > [!TIP]
 > Ha újraparticionálja az adatokat, de olyan alsóbb rétegbeli átalakításokkal rendelkezik, amelyek átrendezik az adatokat, használja az összekapcsolási kulcsként használt oszlop kivonatoló particionálását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="using-data-flows-in-pipelines"></a>Adatfolyamatok használata a folyamatokban 
+
+Összetett folyamatok több adatfolyamattal való létrehozásakor a logikai folyamat nagy hatással lehet az időzítésre és a költséghatékonyságra. Ez a szakasz a különböző architektúrás stratégiák hatását tárgyalja.
+
+### <a name="executing-data-flows-in-parallel"></a>Az adatfolyamatok párhuzamos végrehajtása
+
+Ha párhuzamosan több adatfolyamot hajt végre, az ADF külön Spark-fürtöket hoz létre az egyes tevékenységekhez. Ez lehetővé teszi az egyes feladatok elkülönítését és párhuzamos futtatását, de egyszerre több fürtöt is futtatnak.
+
+Ha az adatfolyamatok párhuzamosan futnak, az ajánlott, hogy ne engedélyezze a Azure IR időt az élő tulajdonságnak, mert több nem használt meleg készletet fog eredményezni.
+
+> [!TIP]
+> Ahelyett, hogy az egyes tevékenységek esetében többször is ugyanazt az adatfolyamot futtatja, az adatait egy adattóban kell megalkotni, és helyettesítő elérési utakat kell használnia az adatfolyamatok feldolgozásához.
+
+### <a name="execute-data-flows-sequentially"></a>Az adatfolyamatok végrehajtása szekvenciálisan
+
+Ha az adatfolyam-tevékenységeket egymás után hajtja végre, akkor azt javasoljuk, hogy a Azure IR konfigurációjában állítsa be a TTL értéket. Az ADF újra felhasználja a számítási erőforrásokat, így a fürt gyorsabb indítási ideje lesz. Minden tevékenység továbbra is el lesz különítve, és minden egyes végrehajtáshoz új Spark-környezetet kap.
+
+A feladatok egymás utáni futtatása valószínűleg a leghosszabb időt vesz igénybe a végpontok végrehajtásához, de a logikai műveletek tiszta elkülönítését is lehetővé teszi.
+
+### <a name="overloading-a-single-data-flow"></a>Egy adatfolyam túlterhelése
+
+Ha egyetlen adatfolyamba helyezi az összes logikát, akkor az ADF egyetlen Spark-példányon hajtja végre a teljes feladatot. Habár ez úgy tűnhet, mint a költségek csökkentése, összekeveri a különböző logikai folyamatokat, és nehéz lehet figyelni és hibakeresést végezni. Ha egy összetevő meghibásodik, a feladat összes többi része is sikertelen lesz. Az Azure Data Factory csapat az adatfolyamatok független üzleti logikával való szervezését javasolja. Ha az adatfolyam túl nagy lesz, a különálló összetevőkre való felosztás egyszerűbbé teszi a figyelést és a hibakeresést. Habár az adatforgalomban az átalakítások száma nem korlátozott, túl sok lesz a feladatsor.
+
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 

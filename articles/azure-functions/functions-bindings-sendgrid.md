@@ -3,14 +3,15 @@ title: SendGrid-kötések Azure Functions
 description: Azure Functions SendGrid kötések hivatkozása.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697357"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212191"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -352,18 +353,18 @@ A [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/ma
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő táblázat felsorolja a *function.js* fájlon és az `SendGrid` attribútumon/jegyzeten elérhető kötési konfigurációs tulajdonságokat.
+A következő táblázat felsorolja a  *function.js* fájlon és az `SendGrid` attribútumon/jegyzeten elérhető kötési konfigurációs tulajdonságokat.
 
 | *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Description | Választható |
 |--------------------------|-------------------------------|-------------|----------|
-| típus |n.a.| Értékre kell állítani `sendGrid` .| No |
-| irány |n.a.| Értékre kell állítani `out` .| No |
-| name |n.a.| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | No |
-| apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| No |
-| erre:| Művelet | A címzett e-mail-címe. | Yes |
-| a| Feladó | A feladó e-mail-címe. |  Yes |
-| tulajdonos| Tárgy | Az e-mail tárgya. | Yes |
-| szöveg| Szöveg | Az e-mail tartalma. | Yes |
+| típus |n.a.| Értékre kell állítani `sendGrid` .| Nem |
+| irány |n.a.| Értékre kell állítani `out` .| Nem |
+| name |n.a.| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | Nem |
+| apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
+| a következőre:| Művelet | A címzett e-mail-címe. | Igen |
+| a| Forrás | A feladó e-mail-címe. |  Igen |
+| tárgy| Tárgy | Az e-mail tárgya. | Igen |
+| szöveg| Szöveg | Az e-mail tartalma. | Igen |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
 
@@ -376,7 +377,7 @@ A választható tulajdonságok rendelkezhetnek a kötésben definiált alapérte
 Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. Az alábbi példában szereplő host.jscsak a kötés 2. x verziójának beállításait tartalmazza. További információ a 2. x verzióban található globális konfigurációs beállításokról és azon kívül: [host.jsAzure functions](functions-host-json.md).
 
 > [!NOTE]
-> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [Azure functions 1. x](functions-host-json-v1.md)esetében.
+> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [ Azure functions 1. x](functions-host-json-v1.md)esetében.
 
 ```json
 {
@@ -394,7 +395,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |a|n.a.|A küldő e-mail-címe az összes függvényen belül.| 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

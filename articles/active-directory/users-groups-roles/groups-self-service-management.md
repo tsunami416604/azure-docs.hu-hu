@@ -1,6 +1,6 @@
 ---
 title: Önkiszolgáló csoport felügyeletének beállítása – Azure Active Directory | Microsoft Docs
-description: Biztonsági vagy Office 365-csoportok létrehozása és kezelése az Azure Active Directoryban, valamint biztonsági és Office 365-csoporttagság igénylése
+description: Biztonsági csoportok vagy Microsoft 365 csoportok létrehozása és kezelése Azure Active Directory és biztonsági csoport vagy Microsoft 365 csoporttagságok kérése
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,30 +10,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce5d96d3ca65efb69bf322cf4a5f5563b83d8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a32874cebcd8335967eaf8a07a56346e8ad6460
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727874"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213622"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Önkiszolgáló csoport felügyeletének beállítása Azure Active Directory 
 
-Lehetővé teheti a felhasználók számára, hogy saját biztonsági csoportokat vagy Office 365-csoportokat hozzanak létre és kezeljenek Azure Active Directoryban (Azure AD). A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoport felügyeleti funkciói nem érhetők el levelezésre képes biztonsági csoportokhoz vagy terjesztési listához.
+Engedélyezheti a felhasználók számára, hogy saját biztonsági csoportokat vagy Microsoft 365 csoportokat hozzanak létre és kezeljenek Azure Active Directory (Azure AD) szolgáltatásban. A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoport felügyeleti funkciói nem érhetők el levelezésre képes biztonsági csoportokhoz vagy terjesztési listához.
 
 ## <a name="self-service-group-membership-defaults"></a>Önkiszolgáló csoporttagság alapértelmezett értékei
 
-Ha a biztonsági csoportokat a Azure Portal vagy az Azure AD PowerShell használatával hozza létre, akkor csak a csoport tulajdonosai frissíthetik a tagságot. Az önkiszolgáló szolgáltatással létrehozott biztonsági csoportok a [hozzáférési panelen](https://account.activedirectory.windowsazure.com/r#/joinGroups) és az összes Office 365-csoport csatlakozhat az összes felhasználóhoz, akár tulajdonos által jóváhagyott, akár automatikusan jóváhagyva. A hozzáférési panelen módosíthatja a tagsági beállításokat a csoport létrehozásakor.
+Ha a biztonsági csoportokat a Azure Portal vagy az Azure AD PowerShell használatával hozza létre, akkor csak a csoport tulajdonosai frissíthetik a tagságot. Az önkiszolgáló szolgáltatással létrehozott biztonsági csoportok a [hozzáférési panelen](https://account.activedirectory.windowsazure.com/r#/joinGroups) és az összes Microsoft 365 csoport minden felhasználó számára elérhető, függetlenül attól, hogy a tulajdonos által jóváhagyott vagy automatikusan jóváhagyva van-e. A hozzáférési panelen módosíthatja a tagsági beállításokat a csoport létrehozásakor.
 
-Létrehozott csoportok | Biztonsági csoport alapértelmezett viselkedése | Office 365-csoport alapértelmezett viselkedése
+Létrehozott csoportok | Biztonsági csoport alapértelmezett viselkedése | Microsoft 365 csoport alapértelmezett viselkedése
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el a hozzáférési panelen való csatlakozáshoz | Megnyitás az összes felhasználóhoz való csatlakozáshoz
-[Azure Portalra](https://portal.azure.com) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el a hozzáférési panelen való csatlakozáshoz<br>A tulajdonos nincs automatikusan hozzárendelve a csoport létrehozásakor | Megnyitás az összes felhasználóhoz való csatlakozáshoz
+[Azure Portal](https://portal.azure.com) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el a hozzáférési panelen való csatlakozáshoz<br>A tulajdonos nincs automatikusan hozzárendelve a csoport létrehozásakor | Megnyitás az összes felhasználóhoz való csatlakozáshoz
 [Hozzáférési panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Megnyitás az összes felhasználóhoz való csatlakozáshoz<br>A tagsági beállítások megváltoztathatók a csoport létrehozásakor | Megnyitás az összes felhasználóhoz való csatlakozáshoz<br>A tagsági beállítások megváltoztathatók a csoport létrehozásakor
 
 ## <a name="self-service-group-management-scenarios"></a>Önkiszolgáló csoportos felügyeleti forgatókönyvek
@@ -47,7 +47,7 @@ Létrehozott csoportok | Biztonsági csoport alapértelmezett viselkedése | Off
 1. Válassza a **csoportok**lehetőséget, majd válassza az **általános** beállítások lehetőséget.
 1. **A tulajdonosok beállítása a hozzáférési panelen a csoporttagság-kérelmeket** **Igen**értékre állíthatja.
 1. **A hozzáférési panelen a csoportok hozzáférésének korlátozása a** **nem**értékre.
-1. Ha beállítja, hogy **a felhasználók létrehozhatnak biztonsági csoportokat az Azure-portálokon** , vagy a **felhasználók Office 365-csoportokat hozhatnak létre az Azure** Portalon
+1. Ha úgy állítja be **a felhasználókat, hogy létrehozhatnak biztonsági csoportokat az Azure** Portalon, vagy a felhasználók létrehozhatnak **Microsoft 365 csoportokat az Azure-portálokon**
 
     - **Igen**: az Azure ad-szervezetben lévő összes felhasználó létrehozhat új biztonsági csoportokat, és tagokat vehet fel ezekbe a csoportokba. Ezek az új csoportok szintén valamennyi felhasználó számára láthatóvá válnak a hozzáférési panelen. Ha a csoport házirend-beállítása lehetővé teszi, más felhasználók is létrehozhatnak kérelmeket a csoportokhoz való csatlakozáshoz
     - **Nem**: a felhasználók nem hozhatnak létre csoportokat, és nem módosíthatják azokat a meglévő csoportokat, amelyeknek tulajdonosai. Ugyanakkor továbbra is kezelhetik az ilyen csoportok tagságát, és elfogadhatják más felhasználók csoportfelvételi kéréseit.
@@ -57,9 +57,9 @@ Olyan tulajdonosokat is használhat, **akik csoport tulajdonosaként rendelnek h
 Ha a felhasználók létrehozhatnak csoportokat, a szervezet minden felhasználója létrehozhat új csoportokat, majd az alapértelmezett tulajdonosként hozzáadhat tagokat ezekhez a csoportokhoz. Nem adhat meg olyan személyeket, akik létrehozhatják saját csoportjaikat. Csak olyan személyeket adhat meg, akik egy csoport tulajdonosának egy másik csoport tagjává teszik.
 
 > [!NOTE]
-> Egy prémium szintű Azure Active Directory (P1 vagy P2) licenc szükséges ahhoz, hogy a felhasználók egy biztonsági csoporthoz vagy Office 365 csoporthoz csatlakozzanak, valamint hogy a tulajdonosok jóváhagyják vagy megtagadják a tagsági kérelmeket. Prémium szintű Azure Active Directory licenc nélkül a felhasználók továbbra is kezelhetik a Csoportjaikat a hozzáférési panelen, de nem hozhatnak létre olyan csoportot, amely a tulajdonos jóváhagyását igényli a hozzáférési panelen, és nem tudnak a csoporthoz való csatlakozásra. 
+> Prémium szintű Azure Active Directory (P1 vagy P2) licencre van szükség ahhoz, hogy a felhasználók egy biztonsági csoporthoz vagy Microsoft 365 csoporthoz csatlakozzanak, és a tulajdonosok a tagsági kérelmek jóváhagyására vagy elutasítására kérjenek. Prémium szintű Azure Active Directory licenc nélkül a felhasználók továbbra is kezelhetik a Csoportjaikat a hozzáférési panelen, de nem hozhatnak létre olyan csoportot, amely a tulajdonos jóváhagyását igényli a hozzáférési panelen, és nem tudnak a csoporthoz való csatlakozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 

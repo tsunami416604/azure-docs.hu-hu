@@ -5,13 +5,13 @@ ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.custom: seodec18
-ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079807"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211992"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
@@ -165,7 +165,7 @@ Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NE
 
      ![Az új értékkel rendelkező oldal](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a>Webjobs-feladatok távoli hibakeresése
+## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a> Webjobs-feladatok távoli hibakeresése
 Ez a szakasz azt mutatja be, hogyan lehet távolról hibakeresést végezni a projekt és az alkalmazás használatával, amelyet a [Azure WEBJOBS SDK használatának első lépéseiben](https://github.com/Azure/azure-webjobs-sdk/wiki)hozott létre.
 
 Az ebben a szakaszban látható funkciók csak a 4. vagy újabb frissítéssel rendelkező Visual Studio 2013-ben érhetők el.
@@ -556,7 +556,7 @@ A sikertelen kérelmek nyomkövetési naplói akkor hasznosak, ha meg kell ismer
 
 App Service alkalmazások ugyanazt a sikertelen kérelmek nyomkövetési funkciót használják, amely az IIS 7,0-es és újabb verzióiban érhető el. Nincs hozzáférése az IIS-beállításokhoz, amelyekkel konfigurálhatja, hogy mely hibák legyenek naplózva. Ha engedélyezi a sikertelen kérelmek nyomkövetését, az összes hiba rögzítve lesz.
 
-A sikertelen kérelmek nyomkövetését a Visual Studio használatával engedélyezheti, de a Visual Studióban nem tekintheti meg őket. Ezek a naplók XML-fájlok. Az adatfolyam-naplózási szolgáltatás csak egyszerű szöveges módban olvasható fájlokat figyeli: *. txt*, *. html*és *. log* fájlok.
+A sikertelen kérelmek nyomkövetését a Visual Studio használatával engedélyezheti, de a Visual Studióban nem tekintheti meg őket. Ezek a naplók XML-fájlok. Az adatfolyam-naplózási szolgáltatás csak egyszerű szöveges módban olvasható fájlokat figyeli:  *. txt*, *. html*és *. log* fájlok.
 
 A sikertelen kérelmek nyomkövetési naplói a böngészőben közvetlenül FTP-n keresztül vagy helyileg is megtekinthetők, miután az FTP-eszköz használatával letölti azokat a helyi számítógépre. Ebben a szakaszban közvetlenül a böngészőben tekintheti meg őket.
 

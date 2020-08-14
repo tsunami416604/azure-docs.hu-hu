@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7738582ec2839a6fddaa01ff0f9921c276c9748d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 262a6612c50148232e814befc76707989befb18b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843113"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212142"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions Azure Service Bus trigger
 
@@ -285,11 +285,11 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBusTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "ServiceBusTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -299,7 +299,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |**subscriptionName**|**SubscriptionName**|A figyelni kívánt előfizetés neve. Csak akkor állítsa be, ha egy témakör figyelése nem várólistára van állítva.|
 |**kapcsolat**|**Kapcsolat**|A kötéshez használni kívánt Service Bus kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás neve. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor csak a név hátralévő részét adhatja meg. Ha például a "MyServiceBus" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyServiceBus" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions Runtime az alapértelmezett Service Bus a "AzureWebJobsServiceBus" nevű alkalmazás-beállításban található.<br><br>A kapcsolódási karakterlánc beszerzéséhez kövesse a [felügyeleti hitelesítő adatok beolvasása](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)című cikkben ismertetett lépéseket. A kapcsolódási karakterláncnak egy Service Bus névtérhez kell tartoznia, nem csak egy adott várólistára vagy témakörre. |
 |**accessRights**|**Hozzáférés**|Hozzáférési jogosultságok a kapcsolati karakterlánchoz. Az elérhető értékek: `manage` és `listen` . Az alapértelmezett érték a `manage` , amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Ha olyan kapcsolódási karakterláncot használ, amely nem rendelkezik a **kezelés** engedéllyel, állítsa a `accessRights` "Listen" (figyelés) lehetőséget. Ellenkező esetben előfordulhat, hogy a functions futtatókörnyezete nem próbálkozik a kezelési jogosultságokat igénylő műveletekkel. A Azure Functions 2. x vagy újabb verziójában ez a tulajdonság nem érhető el, mert a Service Bus SDK legújabb verziója nem támogatja a kezelési műveleteket.|
-|**isSessionsEnabled**|**IsSessionsEnabled**|`true`Ha [munkamenet-kompatibilis](../service-bus-messaging/message-sessions.md) várólistához vagy előfizetéshez csatlakozik. `false`Ellenkező esetben ez az alapértelmezett érték.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true` Ha [munkamenet-kompatibilis](../service-bus-messaging/message-sessions.md) várólistához vagy előfizetéshez csatlakozik. `false` Ellenkező esetben ez az alapértelmezett érték.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -309,11 +309,11 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 A következő típusparaméter-típusok érhetők el a várólista vagy a témakör üzeneteihez:
 
-* `string`– Ha az üzenet szövege.
-* `byte[]`– Hasznos a bináris adattároláshoz.
+* `string` – Ha az üzenet szövege.
+* `byte[]` – Hasznos a bináris adattároláshoz.
 * Egyéni típus – ha az üzenet JSON-t tartalmaz, Azure Functions megpróbálja deszerializálni a JSON-adattípust.
-* `BrokeredMessage`-Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-Az üzenet-tárolóból érkező üzenetek fogadására és visszaigazolására használatos (kötelező, ha a értéke [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false` )
+* `BrokeredMessage` -Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -Az üzenet-tárolóból érkező üzenetek fogadására és visszaigazolására használatos (kötelező, ha a értéke [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false` )
 
 Ezek a paraméterek a Azure Functions 1. x verzióra vonatkoznak. 2. x és újabb verziók esetén használja [`Message`](/dotnet/api/microsoft.azure.servicebus.message) a helyett a következőt: `BrokeredMessage` .
 
@@ -321,10 +321,10 @@ Ezek a paraméterek a Azure Functions 1. x verzióra vonatkoznak. 2. x és újab
 
 A következő típusparaméter-típusok érhetők el a várólista vagy a témakör üzeneteihez:
 
-* `string`– Ha az üzenet szövege.
-* `byte[]`– Hasznos a bináris adattároláshoz.
+* `string` – Ha az üzenet szövege.
+* `byte[]` – Hasznos a bináris adattároláshoz.
 * Egyéni típus – ha az üzenet JSON-t tartalmaz, Azure Functions megpróbálja deszerializálni a JSON-adattípust.
-* `BrokeredMessage`-Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
+* `BrokeredMessage` -Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
 
 Ezek a paraméterek az 1. x Azure Functions-verzióra vonatkoznak. 2. x és újabb verziók esetén használja [`Message`](/dotnet/api/microsoft.azure.servicebus.message) a helyett a következőt: `BrokeredMessage` .
 
@@ -358,7 +358,7 @@ Az a `maxAutoRenewDuration` *host.json*konfigurálható, amely a [OnMessageOptio
 
 A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a tulajdonságok az [üzenet](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) osztály tagjai.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|A küldő és a fogadó által az alkalmazásspecifikus logikához használt tartalomtípus-azonosító.|
 |`CorrelationId`|`string`|A korrelációs azonosító.|

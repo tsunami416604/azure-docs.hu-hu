@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316080"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213305"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
 
@@ -92,7 +93,7 @@ Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének ért
 * **applicationName** – a kulcsok a Redis-ben tárolódnak `{<Application Name>_<Session ID>}_Data` . Ez az elnevezési séma lehetővé teszi, hogy több alkalmazás is ugyanazt a Redis-példányt használja. Ez a paraméter nem kötelező, és ha nem adja meg az alapértelmezett értéket, a rendszer nem használja.
 * **connectionTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél connectTimeout-beállítását. Ha nincs megadva, a rendszer a 5000 alapértelmezett connectTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **operationTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél syncTimeout-beállítását. Ha nincs megadva, a rendszer a 1000 alapértelmezett syncTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **redisSerializerType** – ezzel a beállítással megadhatja a Redis számára eljuttatott munkamenet-tartalmak egyéni szerializálását. A megadott típusnak meg kell valósítania `Microsoft.Web.Redis.ISerializer` , és deklarálnia kell a nyilvános paraméter nélküli konstruktort. Alapértelmezés szerint `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` használatban van.
+* **redisSerializerType** – ezzel a beállítással megadhatja a Redis számára eljuttatott munkamenet-tartalmak egyéni szerializálását. A megadott típusnak meg kell valósítania `Microsoft.Web.Redis.ISerializer` , és deklarálnia kell a nyilvános paraméter nélküli konstruktort. Alapértelmezés szerint  `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` használatban van.
 
 További információ ezekről a tulajdonságokról: az eredeti blogbejegyzés a [Redis ASP.NET munkamenet-szolgáltatójának](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)bejelentése.
 
@@ -131,6 +132,6 @@ A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos tov�
 * [NCache](https://www.alachisoft.com/ncache/session-index.html)
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [Azure Cache ASP.NET kimeneti gyorsítótár-szolgáltatóját a Redis](cache-aspnet-output-cache-provider.md).

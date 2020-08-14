@@ -8,23 +8,34 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557261"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214021"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-gazdagított mezők leképezése kereshető indexre
 
-Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. 
+![Indexelő szakaszai](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "indexelő szakaszai")
 
-A bővített dokumentumokból származó tartalomnak az indexbe való áthelyezéséhez kimeneti mezők hozzárendelése szükséges.  A dúsított dokumentum valójában az információk fája, és bár az index összetett típusai is támogatottak, időnként előfordulhat, hogy a dúsított fában lévő adatokat egy egyszerű típusra kívánja átalakítani (például karakterláncok tömbje). A kimeneti mezők leképezése lehetővé teszi az adatalakzatok átalakításának elvégzését az információk összeolvasztásával.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében.
+
+A bővített dokumentumokból származó tartalomnak az indexbe való áthelyezéséhez kimeneti mezők hozzárendelése szükséges.  A dúsított dokumentum valójában az információk fája, és bár az index összetett típusai is támogatottak, időnként előfordulhat, hogy a dúsított fában lévő adatokat egy egyszerű típusra kívánja átalakítani (például karakterláncok tömbje). A kimeneti mezők leképezése lehetővé teszi az adatalakzatok átalakításának elvégzését az információk összeolvasztásával. A kimeneti mezők leképezése mindig a készségkészlet végrehajtása után következik be, bár lehetséges, hogy ez a szakasz akkor is futtatható, ha nincs készségkészlet definiálva.
+
+Példák a kimeneti mezők leképezésére:
+
+* A készségkészlet részeként kibontotta a dokumentum egyes oldalain említett szervezetek nevét. Most le szeretné képezni ezeket a szervezeti neveket a EDM. Collection (EDM. String) típusú index egyik mezőjébe.
+
+* A készségkészlet részeként létrehozott egy új, "Document/translated_text" nevű csomópontot. Azt szeretné, hogy a csomóponton lévő információk az index egy adott mezőjére legyenek leképezve.
+
+* Nem rendelkezik készségkészlet, de egy összetett típust indexel egy Cosmos DB adatbázisból. Ehhez az összetett típushoz szeretne egy csomópontot beolvasni, és az index egy mezőjébe szeretné leképezni.
 
 > [!NOTE]
 > Nemrég engedélyezte a leképezési függvények funkcióit a kimeneti mezők hozzárendelésein. További részletek a leképezési függvényekről: [mező-hozzárendelési függvények](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata
+
 A mezők leképezéséhez adja hozzá `outputFieldMappings` az indexelő definícióját az alábbi ábrán látható módon:
 
 ```http
@@ -134,7 +145,7 @@ Ez a művelet egyszerűen "lelapul" a customEntities elemek mindegyikének egyet
   "diseases" : ["heart failure","morquio"]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután leképezte a dúsított mezőket a kereshető mezőkre, az [index definíciójának részeként](search-what-is-an-index.md)megadhatja az egyes kereshető mezőkhöz tartozó mezőtulajdonságokat.
 
 További információ a mezők hozzárendeléséről: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.

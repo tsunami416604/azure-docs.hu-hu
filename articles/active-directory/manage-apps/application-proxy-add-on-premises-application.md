@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 448910453b967fb15d342c22b81dd9733d0dfeb8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165124"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212818"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -32,7 +31,7 @@ Ez az oktatóanyag:
 > * Helyszíni alkalmazás hozzáadását az Azure AD-bérlőhöz
 > * Ellenőrzi, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
 Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szükségesek:
 
@@ -235,7 +234,11 @@ Az alkalmazásba való bejelentkezés tesztelése:
 
 Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaüzenetek](application-proxy-troubleshoot.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje az ebben az oktatóanyagban létrehozott erőforrásokat.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban előkészítette a helyszíni környezetet, hogy működjön az Application proxyval, majd telepítse és regisztrálja az alkalmazásproxy-összekötőt. Ezután hozzáadott egy alkalmazást az Azure AD-bérlőhöz. Ellenőrizte, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba.
 

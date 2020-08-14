@@ -1,19 +1,19 @@
 ---
 title: Hibrid gépek összekötése az Azure-ba a Azure Portal
-description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakozhat a gépekhez az Azure-ba az Azure arc for Servers (előzetes verzió) használatával a Azure Portal.
+description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztathatók a gépek az Azure-ba az Azure arc-kompatibilis kiszolgálók (előzetes verzió) használatával a Azure Portal.
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120983"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213511"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
-Az Azure arc for Servers (előzetes verzió) lehetővé teszi, hogy a környezetében egy vagy több Windows-vagy Linux-gép számára engedélyezze a lépéseket manuálisan. Vagy használhat automatizált metódust egy általunk biztosított sablon-parancsfájl futtatásával. Ez a szkript automatizálja mindkét ügynök letöltését és telepítését.
+Az Azure arc-kompatibilis kiszolgálókat (előzetes verzió) engedélyezheti a környezetben egy vagy több Windows-vagy Linux-gép számára, ha manuálisan hajt végre néhány lépést. Vagy használhat automatizált metódust egy általunk biztosított sablon-parancsfájl futtatásával. Ez a szkript automatizálja mindkét ügynök letöltését és telepítését.
 
 Ehhez a módszerhez rendszergazdai jogosultságokkal kell rendelkeznie a gépen az ügynök telepítéséhez és konfigurálásához. Linux rendszeren a legfelső szintű fiók, a Windows rendszeren pedig a helyi Rendszergazdák csoport tagja.
 
@@ -34,7 +34,7 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 1. A **parancsfájl létrehozása** lapon válassza ki azt az előfizetést és erőforráscsoportot, ahol a gépet az Azure-ban szeretné felügyelni. Válasszon ki egy Azure-helyet, ahol a rendszer a számítógép metaadatait tárolja.
 
     >[!NOTE]
-    >Az Azure arc for Servers (előzetes verzió) csak a következő régiókat támogatja:
+    >Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csak a következő régiókat támogatják:
     >- EastUS
     >- WestUS2
     >- WestEurope
@@ -147,11 +147,11 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure Arc csatlakozásának ellenőrzése
 
-Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal a kiszolgáló sikeres csatlakoztatásának ellenőrzéséhez. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
+Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz (előzetes verzió), lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761008"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212312"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -629,8 +629,8 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 **Útmutató:** Az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, Azure Resource Manager sablonokat és a kívánt állapotú konfigurációs parancsfájlokat. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára az Azure DevOps-vel való integráció esetén.
 
-- [Az Azure Repos git oktatóanyaga](/devops/repos/git/gitworkflow?view=azure-devops)
-- [Az engedélyek és a csoportok](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Az Azure Repos git oktatóanyaga](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [Az engedélyek és a csoportok](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
 - [Integráció a Azure DevTest Labs és az Azure DevOps munkafolyamat között](devtest-lab-dev-ops.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -885,7 +885,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

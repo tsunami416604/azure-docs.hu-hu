@@ -7,25 +7,26 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798120"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213882"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
-Ez a cikk a kereskedelmi Piactéri ajánlatok létrehozásának és folytatásának javaslatait ismerteti. Az alábbi táblázatok az ajánlati információk a partner Centerben való végrehajtásával kapcsolatos ajánlott eljárásokat ismertetik. Az ajánlatok működésének elemzéséhez nyissa meg a Marketplace elemzések [irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) a partner Centerben. 
+Ez a cikk a Microsoft kereskedelmi Marketplace-ajánlatok létrehozásának és folytatásának javaslatait ismerteti. Az alábbi táblázatok az ajánlati információk a partner Centerben való végrehajtásával kapcsolatos ajánlott eljárásokat ismertetik. Az ajánlatok működésének elemzéséhez nyissa meg a Marketplace elemzések [irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) a partner Centerben. 
 
 ## <a name="storefront-offer-details"></a>A kirakati ajánlat részletei
 
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Offer Name | Alkalmazások esetében adjon meg egy világos címet, amely tartalmazza a keresési kulcsszavakat, amelyek segítségével az ügyfelek felfedezhetik az ajánlatot. <br> <br> A tanácsadási szolgáltatások esetében kövesse az alábbi formátumot: [ajánlat neve: [időtartam] [ajánlat típusa] (például contoso: 2 hetes implementáció) <br> <br> A Brand irányelvek betartása: [a Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevének megadásával kapcsolatos releváns, termékspecifikus irányelvek követése. |
+| Offer Name | Alkalmazások esetében adjon meg egy világos címet, amely tartalmazza a keresési kulcsszavakat, amelyek segítségével az ügyfelek felfedezhetik az ajánlatot. <br> <br> A tanácsadási szolgáltatások esetében kövesse az alábbi formátumot: [ajánlat neve: [időtartam] [ajánlat típusa] (például contoso: 2 hetes implementáció) |
 | Ajánlat leírása | Adjon meg egy egyértelmű leírást, amely leírja az ajánlat értékeit az első néhány mondatban.  Ne feledje, hogy ezek a mondatok a keresőmotor eredményeiben is használhatók. Az értékek kiosztásának alapvető összetevői a következők: <ul> <li>A termék vagy megoldás leírása. </li> <li> A termék vagy megoldás előnyeit élvező felhasználói persona. </li> <li> Az ügyfélnek szüksége van a termékre vagy a megoldás címére. </li> </ul> <br> Ha lehetséges, használja az iparági szabványnak megfelelő szókincset vagy juttatáson alapuló szövegezést.  Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez.  Ehelyett a megadott értékre kell összpontosítania. <br> <br> A tanácsadási szolgáltatások listázásához egyértelműen adja meg az Ön által megadott professzionális szolgáltatást. |
 
-Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehozására és folytatására vonatkozó javaslatokat tartalmaznak. A marketing-anyagok írásához és konfigurálásához lépjen a [partner Center webhelyre](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
+> [!IMPORTANT]
+> Győződjön meg arról, hogy az ajánlat neve és az ajánlat leírása megfelel a **[Microsoft védjegy-és márkanevei iránymutatásainak](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** , valamint a Microsoft-szoftverek,-termékek és-szolgáltatások nevének és a Microsoft-szoftvereknek, termékeinek és szolgáltatásainak a nevére vonatkozó, termékspecifikus irányelveknek.
 
 ## <a name="storefront-listing-details"></a>Kirakati lista részletei
 
@@ -119,23 +120,23 @@ A kulcsszavak segítségével az ügyfelek megkereshetik az ajánlatot a keresé
 ## <a name="storefront-marketing-details"></a>A kirakati marketing részletei
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Ajánlat emblémája (PNG formátum, 216 × 216 és 350 x 350 képpont között): alkalmazás részletei lap | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat alkalmazás részletei listázási oldalára. A partner Center átméretezi a szükséges méretű emblémákat. |
-| Ajánlat emblémája (PNG formátum, 48 × 48 képpont): keresési oldal | A partner Center a feltöltött nagy embléma alapján hozza ezt az emblémát. Ezt másik képpel is lecserélheti. |
-| "További információ" dokumentumok | A "További információ" című részében szerepelnek a Sales és a marketing-eszközök támogatása, néhány példa:<ul><li>tanulmányok</li><li> brosúrák</li><li>Ellenőrzőlista vagy</li><li> PowerPoint-bemutatók</li></ul><br>Mentse az összes fájlt PDF formátumban. A cél az, hogy az ügyfeleket ne értékesítsen.<br><br>Vegyen fel egy hivatkozást az alkalmazás kezdőlapján az összes dokumentumra, és adjon hozzá URL-paramétereket a látogatók és a próbaverziók nyomon követéséhez. |
+| Ajánlat emblémája (PNG formátum, 48 &nbsp; &times; &nbsp; 48): keresési oldal | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat keresési oldalára. |
+| Ajánlat emblémája (PNG formátum, 216 &nbsp; &times; &nbsp; 216): alkalmazás részletei lap | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat alkalmazás részletei listázási oldalára. |
+| "További információ" dokumentumok | A "További információ" című részében szerepelnek a Sales és a marketing-eszközök támogatása, néhány példa: <ul> <li> tanulmányok, </li> <li> brosúrák </li> <li> Ellenőrzőlista vagy </li> <li> PowerPoint-bemutatók.</li> </ul>Mentse az összes fájlt PDF formátumban. A cél az, hogy az ügyfeleket ne értékesítsen. <br><br>Vegyen fel egy hivatkozást az alkalmazás kezdőlapján az összes dokumentumra, és adjon hozzá URL-paramétereket a látogatók és a próbaverziók nyomon követéséhez. |
 | Videók: AppSource, tanácsadási szolgáltatások és SaaS-ajánlatok | A legerősebb videók az ajánlat értékét a narratív formában közlik:<ul> <li> Tegye meg az ügyfelet, és ne a vállalata, a történet hőse. </li> <li> A videónak foglalkoznia kell a megcélzott ügyfél legfontosabb kihívásaival és céljaival. </li> <li> Javasolt hossz: 60-90 másodperc.</li> <li> A videók nevét használó legfontosabb keresési szavakat foglalja bele. </li> <li> Vegye fontolóra további videók, például útmutató, első lépések vagy vásárlói visszajelzések hozzáadását. </li> </ul> |
 | Képernyőképek (1280 &nbsp; &times; &nbsp; 720) | Legfeljebb öt képernyőkép hozzáadása:<br>A kulcsok keresési szavainak belefoglalása a fájlnevekben. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Az ajánlat lapjára mutató hivatkozás a webhelyről
 
-Ha a webhelyen lévő AppSource vagy az Azure Marketplace jelvényt a piactéren található listára csatolja, az URL-cím végén a következő lekérdezési paraméterekkel is támogathatja az erős elemzést és jelentéskészítést:
+Ha a webhelyen lévő AppSource vagy az Azure Marketplace jelvényt a kereskedelmi piactéren található listára csatolja, akkor az URL-cím végén a következő lekérdezési paraméterekkel is támogathatja az erős elemzést és jelentéskészítést:
 * **src**: adja meg azt a forrást, amelyről a forgalmat át kell irányítani a AppSource (például webhely, LinkedIn vagy Facebook).
 * **mktcmpid**: a marketing kampány azonosítója, amely akár 16 karaktert is tartalmazhat betűk, számok, aláhúzások és kötőjelek (például *blogpost_12*) tetszőleges kombinációjában.
 
-A következő példában szereplő URL-cím az előző lekérdezési paramétereket is tartalmazza:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
+A következő példában szereplő URL-cím az előző lekérdezési paramétereket is tartalmazza: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 

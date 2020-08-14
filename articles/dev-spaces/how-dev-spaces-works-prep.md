@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti a projekt előkészítését az Azure dev Spaces működésével
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241633"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213426"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projekt előkészítése az Azure dev Spaces működéséhez
 
@@ -94,21 +94,8 @@ configurations:
 
 A `azds.yaml` parancs által generált fájl `prep` célja, hogy egyszerű, egyetlen projekt-fejlesztési forgatókönyvhöz működjön. Ha az adott projektnek nagyobb a bonyolultsága, akkor előfordulhat, hogy a parancs futtatása után frissítenie kell ezt a fájlt `prep` . Előfordulhat például, hogy a projektnek a fejlesztési vagy hibakeresési igények alapján módosítania kell a Build vagy a Launch folyamatát. Több alkalmazás is lehet a projektben, amelyhez több fordítási folyamat vagy más Build-tartalom szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a kód a fejlesztői tárhelyen való futtatásáról, tekintse meg a [kód futtatása az Azure dev Spaces szolgáltatással][how-it-works-up]című témakört.
 
-Az Azure dev Spaces használatának megkezdéséhez az Azure fejlesztői tárhelyhez készült projekt előkészítéséhez tekintse meg az alábbi rövid útmutatókat:
-
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és Node.js][quickstart-node]
-* [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
-* [Alkalmazás fejlesztése a Kubernetes-on a CLI használatával][quickstart-cli]
-
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

@@ -1,18 +1,18 @@
 ---
 title: Csatlakoztatott számítógép ügynökének telepítése a Windows PowerShell DSC használatával
-description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc for Servers (előzetes verzió) használatával a Windows PowerShell DSC használatával.
+description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc-kompatibilis kiszolgálókon (előzetes verzió) a Windows PowerShell DSC használatával.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121000"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213088"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott gép ügynökének telepítése a Windows PowerShell DSC használatával
 
-A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan telepítheti a DSC-t az Azure arc for Servers Connected Machine Agent használatára a hibrid Windows rendszerű gépeken.
+A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan használható a DSC az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csatlakoztatott gépi ügynök telepítéséhez hibrid Windows rendszerű gépeken.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -20,7 +20,7 @@ A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/get
 
 - A [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC modul
 
-- Egy egyszerű szolgáltatásnév, amely nem interaktív módon csatlakozik a gépekhez az Azure-ív számára. Ha még nem hozott létre a kiszolgálókhoz arc for Servers szolgáltatást, kövesse az [egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a bevezetéshez című szakasz lépéseit.
+- Egy egyszerű szolgáltatásnév, amely nem interaktív módon csatlakozik a gépekhez az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió). Ha még nem hozott létre egy egyszerű szolgáltatásnevet az arc-kompatibilis kiszolgálókhoz (előzetes verzió), kövesse az [egyszerű szolgáltatásnév létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) című szakasz lépéseit.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>A ConnectedMachine DSC moduljának telepítése
 
@@ -76,7 +76,7 @@ A következő paraméterek a használni kívánt PowerShell-szkripthez adhatók 
 
 3. Ekkor létrejön egy `localhost.mof file` nevű új mappa `C:\dsc` .
 
-Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
+Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz (előzetes verzió), lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Hozzáadás meglévő konfigurációkhoz
 
@@ -84,7 +84,7 @@ Ezt az erőforrást hozzá lehet adni a meglévő DSC-konfigurációkhoz a gép 
 
 A PowerShell-galéria [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 

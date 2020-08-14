@@ -5,13 +5,14 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a604772a6175f17e6ebc444b6aba126e21e8346d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085103"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212516"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
 
@@ -180,7 +181,7 @@ Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe t
 - [MCR.microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
 - [MCR.microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – ez a rendszerkép a Microsoft [ASP.net Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows Nano Server rendszerképein használt alaptároló.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Áttelepítés az Azure-ban található Windows-tárolókba](tutorial-custom-container.md)
@@ -247,7 +248,7 @@ A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

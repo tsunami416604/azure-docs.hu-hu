@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 271787c47b29bc713cc923c7d27852a8e05703ef
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042547"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213929"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -19,8 +19,8 @@ A HTTP-trigger lehetővé teszi a függvények HTTP-kérelemmel való meghívás
 
 A HTTP által aktivált függvények alapértelmezett visszatérési értéke a következő:
 
-- `HTTP 204 No Content`üres törzstel a 2. x és újabb függvényeknél
-- `HTTP 200 OK`üres törzstel az 1. x függvényben
+- `HTTP 204 No Content` üres törzstel a 2. x és újabb függvényeknél
+- `HTTP 200 OK` üres törzstel az 1. x függvényben
 
 A HTTP-válasz módosításához állítson be egy [kimeneti kötést](./functions-bindings-http-webhook-output.md).
 
@@ -480,7 +480,7 @@ Teljes példaként tekintse meg az [trigger példáját](#example).
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `httpTrigger` . |
 | **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
@@ -488,7 +488,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy a függvény meghívásához szükség van-e a kulcsokra, ha vannak ilyenek. Az engedélyezési szint az alábbi értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs szükség API-kulcsra.</li><li><code>function</code>&mdash;Function-specifikus API-kulcs szükséges. Ez az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A főkulcs megadása kötelező.</li></ul> További információt az [engedélyezési kulcsok](#authorization-keys)című szakaszban talál. |
 | **módszerek** |**Metódusok** | A függvény által válaszoló HTTP-metódusok tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusra válaszol. Lásd: [a http-végpont testreszabása](#customize-the-http-endpoint). |
 | **útvonal** | **Útvonal** | Meghatározza azt az útválasztási sablont, amely azt szabályozza, hogy a függvény milyen URL-címeket válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>` . További információ: [a http-végpont testreszabása](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** | _Csak az 1. x verziójú futtatókörnyezet esetében támogatott._<br/><br/>Konfigurálja a HTTP-triggert, amely [webhook](https://en.wikipedia.org/wiki/Webhook) -fogadóként működik a megadott szolgáltatónál. `methods`Ha ezt a tulajdonságot beállítja, ne állítsa be a tulajdonságot. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpont egy adott szolgáltató logikája nélkül. Ez a beállítás csak a HTTP POST és a tartalomtípus használatával korlátozza a kérelmeket `application/json` .</li><li><code>github</code>&mdash;A függvény válaszol a [GitHub-webhookokra](https://developer.github.com/webhooks/). Ne használja a _authLevel_ tulajdonságot GitHub-webhookokkal. További információt a cikk későbbi, a GitHub-webhookok című szakaszában talál.</li><li><code>slack</code>&mdash;A függvény válaszol a [Slack webhookokra](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonságot Slack webhookokkal. További információt a cikk későbbi, a Slack webhookok című szakaszában talál.</li></ul>|
+| **webHookType** | **WebHookType** | _Csak az 1. x verziójú futtatókörnyezet esetében támogatott._<br/><br/>Konfigurálja a HTTP-triggert, amely [webhook](https://en.wikipedia.org/wiki/Webhook) -fogadóként működik a megadott szolgáltatónál. `methods`Ha ezt a tulajdonságot beállítja, ne állítsa be a tulajdonságot. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpont egy adott szolgáltató logikája nélkül. Ez a beállítás csak a HTTP POST és a tartalomtípus használatával korlátozza a kérelmeket `application/json` .</li><li><code>github</code>&mdash;A függvény válaszol a [GitHub-webhookokra](https://developer.github.com/webhooks/). Ne használja a  _authLevel_ tulajdonságot GitHub-webhookokkal. További információt a cikk későbbi, a GitHub-webhookok című szakaszában talál.</li><li><code>slack</code>&mdash;A függvény válaszol a [Slack webhookokra](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonságot Slack webhookokkal. További információt a cikk későbbi, a Slack webhookok című szakaszában talál.</li></ul>|
 
 ## <a name="payload"></a>Adattartalom
 
@@ -829,6 +829,6 @@ A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza 
 Ha a HTTP-triggert használó függvény 230 másodpercen belül nem fejeződik be, akkor a [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) időtúllépést jelez, és http 502-hibát ad vissza. A függvény továbbra is futni fog, de nem tud HTTP-választ adni. A hosszú ideig futó függvények esetében javasoljuk, hogy kövesse az aszinkron mintákat, és olyan helyet küldjön vissza, amelyben pingelheti a kérés állapotát. További információ a függvények futtatásának időtartamáról: [skálázás és üzemeltetés – fogyasztási terv](functions-scale.md#timeout).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [HTTP-válasz visszaadása függvényből](./functions-bindings-http-webhook-output.md)

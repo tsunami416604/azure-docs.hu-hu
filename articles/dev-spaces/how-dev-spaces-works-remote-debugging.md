@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti az Azure Kubernetes Service-ben az Azure dev Spaces szolgáltatással végzett távoli hibakeresés folyamatait
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241399"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213382"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>A kód távoli hibakeresése az Azure dev Spaces működésével
 
@@ -28,17 +28,9 @@ Ha a Visual Studio Code vagy a Visual Studio használatával indítja el az alka
 
 A hibakereső rendszerképét a rendszer automatikusan meghatározza az ügyféloldali eszközkészlet alapján. A futtatáskor a Docker és a Helm diagram létrehozásakor használt metódushoz hasonló módszert használ `azds prep` . Miután a hibakereső csatlakoztatva van az alkalmazás rendszerképéhez, az a használatával fut `azds exec` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure dev Spaces használatának megkezdéséhez a projekt távoli hibakereséséhez tekintse meg az alábbi rövid útmutatókat:
+További információ az Azure dev Spaces működéséről.
 
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és Node.js][quickstart-node]
-* [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Az Azure Dev Spaces működése](how-dev-spaces-works.md)

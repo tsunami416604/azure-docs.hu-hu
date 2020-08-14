@@ -7,12 +7,12 @@ description: Lekéréses kérelem módosításainak áttekintése és tesztelés
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9cb240add87a14b0d474cec17684ef65a22cc07a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421025"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212499"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -170,10 +170,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
+További információ az Azure dev Spaces működéséről.
 
 > [!div class="nextstepaction"]
-> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-quickstart]
+> [Az Azure Dev Spaces működése](../how-dev-spaces-works.md)
 
 [azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
@@ -190,4 +190,3 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
-[team-quickstart]: ../quickstart-team-development.md

@@ -2,15 +2,16 @@
 title: ASP.NET Core alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhat egy ASP.NET Core alkalmazást a natív Windows-példányokban, vagy egy előre elkészített Linux-tárolóban, Azure App Service. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080164"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211923"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>ASP.NET Core alkalmazás konfigurálása Azure App Servicehoz
 
@@ -219,7 +220,7 @@ További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolg
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](tutorial-dotnetcore-sqldb-app.md)

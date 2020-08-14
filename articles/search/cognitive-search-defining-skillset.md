@@ -8,16 +8,20 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557458"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214092"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Készségkészlet létrehozása AI-bővítési folyamatokban az Azure-ban Cognitive Search 
 
-Az AI-gazdagítás kinyeri és gazdagítja az Azure Cognitive Searchban kereshetővé tenni kívánt adatgyűjtést. A kinyerési és bővítési lépéseket a *kognitív képességek*, az indexelés során hivatkozott *készségkészlet* együtt hívjuk. A készségkészlet [beépített képességeket](cognitive-search-predefined-skills.md) vagy egyéni képességeket használhatnak (lásd [például: egyéni képesség létrehozása AI-bővítési folyamatokban](cognitive-search-create-custom-skill-example.md) további információk).
+![indexelő szakaszai](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "indexelő szakaszai")
+
+A készségkészlet meghatározza azokat a műveleteket, amelyek kinyerik és gazdagítják az adatok kereshetővé tételét. A készségkészlet a szöveg és a képek tartalmának kibontása a forrás dokumentumaiból történik, és a forrásdokumentum bármely mezője (opcionálisan) egy indexben vagy egy tudásbázisban található célhelyre van leképezve.
+
+A készségkészlet egy vagy több olyan *kognitív szaktudást* tartalmaz, amelyek egy adott dúsítási műveletet képviselnek, például szöveget fordítanak le, kinyerik a kulcsfontosságú kifejezéseket, vagy elvégezhetik az optikai karakterfelismerést egy képfájlból. A készségkészlet létrehozásához használhatja a Microsoft [beépített képességeit](cognitive-search-predefined-skills.md) , illetve az Ön által megadott modelleket vagy feldolgozási logikát tartalmazó egyéni képességeket (lásd [: példa: egyéni képesség létrehozása mesterséges intelligencia-növelési folyamatokban](cognitive-search-create-custom-skill-example.md) további információk).
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre a használni kívánt képességek bővítési folyamatát. A készségkészlet egy Azure Cognitive Search [Indexelő](search-indexer-overview.md)van csatolva. A folyamat kialakításának egyik része, amely ebben a cikkben is szerepel, a készségkészlet maga hozza létre. 
 
@@ -177,7 +181,7 @@ Nézzük meg az első szakértelmet, amely a beépített [entitás-felismerési 
   ["Microsoft", "LinkedIn"]
   ```
 
-Bizonyos helyzetekben a tömb egyes elemeinek külön való hivatkozását kell meghívni. Tegyük fel például, hogy az egyes elemeket különállóan szeretné átadni ```"/document/organizations"``` egy másik képességre (például az egyéni Bing Entity Search-gazdagabbá). A tömb egyes elemeire úgy tekintheti meg, hogy egy csillagot ad hozzá az elérési úthoz:```"/document/organizations/*"``` 
+Bizonyos helyzetekben a tömb egyes elemeinek külön való hivatkozását kell meghívni. Tegyük fel például, hogy az egyes elemeket különállóan szeretné átadni ```"/document/organizations"``` egy másik képességre (például az egyéni Bing Entity Search-gazdagabbá). A tömb egyes elemeire úgy tekintheti meg, hogy egy csillagot ad hozzá az elérési úthoz: ```"/document/organizations/*"``` 
 
 Az érzelmek kinyerésének második szaktudása ugyanaz a minta, mint az első gazdagabbá. Bemenetként fog megjelenni ```"/document/content"``` , és az egyes tartalom-példányok esetében a hangulati pontszámot adja vissza. Mivel a ```"context"``` mező explicit módon nem lett beállítva, a kimenet (mySentiment) már gyermeke ```"/document"``` .
 
@@ -275,6 +279,6 @@ Dönthet úgy, hogy a dúsított dokumentumokat táblázatként vagy a blob Stor
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md). 

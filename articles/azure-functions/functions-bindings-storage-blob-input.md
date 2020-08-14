@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7e8cb6dfd2a1983ac4a98f0be0af1fd92c902fc4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: de590af49e39832a52bf733319b86300ecab2a34
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843147"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213288"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Az Azure Blob Storage bemeneti kötése Azure Functions
 
@@ -298,11 +298,11 @@ Az `@BlobInput` attribútum hozzáférést biztosít a függvényt kiváltó blo
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Blob` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blob` . |
 |**irányba** | n.a. | Értékre kell állítani `in` . A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |

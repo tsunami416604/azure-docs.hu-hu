@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507573"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212260"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
@@ -41,6 +41,9 @@ Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tar
 * [Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
 * [Új Active Directory beállítása privát felhőben](#set-up-new-active-directory-on-a-private-cloud)
 * [Active Directory beállítása az Azure-ban](#set-up-active-directory-on-azure)
+
+> [!IMPORTANT]
+> **A Active Directory (integrált Windows-hitelesítés) nem támogatott.** Csak az LDAP-kapcsolaton keresztüli Active Directory támogatott az identitás forrásaként.
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként
 

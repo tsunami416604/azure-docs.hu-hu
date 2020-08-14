@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 4abe3a46c854e0856e4db9a60fa7cd6fc9f8b3c8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 2b44728d1f5b2a6985e7e636d9e3593b09d009ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844898"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212963"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure üzenetsor-tárolási trigger a Azure Functionshoz
 
@@ -146,7 +146,7 @@ A [használat](#usage) szakasz ismerteti `myQueueItem` , amelyet a (z `name` ) f
 
 Az alábbi példa azt szemlélteti, hogyan lehet beolvasni egy függvénynek egy trigger használatával átadott üzenetsor-üzenetet.
 
-A tárolási várólista-trigger olyanfunction.jsvan definiálva, ahol *a* *típus* értékre van állítva `queueTrigger` .
+A tárolási várólista-trigger olyanfunction.jsvan definiálva, ahol * a* *típus* értékre van állítva `queueTrigger` .
 
 ```json
 {
@@ -307,11 +307,11 @@ public class QueueTriggerDemo {
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `QueueTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a.| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba**| n.a. | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -363,7 +363,7 @@ A [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger
 
 A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tagjai.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor-üzenet tartalma egy karakterlánc, akkor a `QueueTrigger` `name` *function.js*tulajdonságban megnevezett változóval megegyező értékkel rendelkezik.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|
@@ -388,7 +388,7 @@ Az algoritmus a következő logikát használja:
 - Ha a rendszer egy üzenetet talál, a futtatókörnyezet két másodpercet vár, majd egy másik üzenetet keres.
 - Ha nem talál üzenetet, a rendszer körülbelül négy másodpercig vár, mielőtt újra próbálkozik.
 - A várakozási sor üzenetének későbbi sikertelen próbálkozásai után a várakozási idő továbbra is növekszik, amíg el nem éri a maximális várakozási időt, ami alapértelmezés szerint egy percet mutat.
-- A maximális várakozási idő a `maxPollingInterval` [fájlhost.js](functions-host-json.md#queues)tulajdonságán keresztül konfigurálható.
+- A maximális várakozási idő a `maxPollingInterval` [ fájlhost.js](functions-host-json.md#queues)tulajdonságán keresztül konfigurálható.
 
 Helyi fejlesztés esetén a maximális lekérdezési időköz alapértelmezett értéke két másodperc.
 
@@ -398,13 +398,13 @@ A számlázást illetően a futtatókörnyezet által végzett lekérdezés "ing
 
 Ha a várólista-üzenetek több várólistára várnak, a várólista-trigger lekéri az üzenetek kötegét, és egyidejűleg hívja meg a függvények feldolgozását. Alapértelmezés szerint a köteg mérete 16. Ha a feldolgozás alatt álló szám 8, a futtatókörnyezet lekéri egy másik köteget, és elindítja az üzenetek feldolgozását. Így az egyazon virtuális gépeken (VM-ben) végrehajtott, egyidejű feldolgozás alatt álló üzenetek maximális száma 24. Ez a korlát külön vonatkozik az egyes virtuális gépeken futó minden egyes üzenetsor által aktivált függvényre. Ha a függvény alkalmazása több virtuális gépre is méretezhető, minden virtuális gép megvárja az eseményindítókat, és megkísérli futtatni a függvényeket. Ha például egy függvény alkalmazás 3 virtuális gépre van kibővítve, az egy üzenetsor által aktivált függvény egyidejű példányainak alapértelmezett maximális száma 72.
 
-A Batch mérete és az új köteg beolvasásának küszöbértéke a [fájlban lévőhost.js](functions-host-json.md#queues)konfigurálható. Ha a függvény alkalmazásban a várólista által aktivált függvények párhuzamos végrehajtását szeretné csökkenteni, beállíthatja a Batch méretét 1-re. Ez a beállítás csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen (VM) fut. 
+A Batch mérete és az új köteg beolvasásának küszöbértéke a [ fájlban lévőhost.js](functions-host-json.md#queues)konfigurálható. Ha a függvény alkalmazásban a várólista által aktivált függvények párhuzamos végrehajtását szeretné csökkenteni, beállíthatja a Batch méretét 1-re. Ez a beállítás csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen (VM) fut. 
 
 A várólista-trigger automatikusan megakadályozza, hogy a függvény többször dolgozza fel a várólista-üzeneteket; a függvények nem írhatók idempotens.
 
 ## <a name="hostjson-properties"></a>Tulajdonságok host.js
 
-A [host.js](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [meg ahost.json Settings](functions-bindings-storage-queue-output.md#hostjson-settings) szakaszt.
+A [host.js](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [ meg ahost.json Settings](functions-bindings-storage-queue-output.md#hostjson-settings) szakaszt.
 
 ## <a name="next-steps"></a>Következő lépések
 
