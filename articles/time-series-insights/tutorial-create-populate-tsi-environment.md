@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020651"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245400"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Oktatóanyag: Azure Time Series Insights Gen1-környezet létrehozása
 
@@ -37,13 +37,13 @@ Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet 
 
 ## <a name="review-video"></a>Videó áttekintése
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Megtudhatja, hogyan hozhatja meg az Azure IoT-megoldási gyorssegédet az adatlétrehozáshoz és a Azure Time Series Insights első lépéseihez. </br>
+Megtudhatja, hogyan hozhatja meg az Azure IoT-megoldási gyorssegédet az adatlétrehozáshoz és a Azure Time Series Insights első lépéseihez.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>Áttekintés
 
-A Azure Time Series Insights-környezet az adatok gyűjtésének és tárolásának helye. A tárolás után a [Azure Time Series Insights Explorer](time-series-quickstart.md) és a [Azure Time Series Insights Query API](/rest/api/time-series-insights/ga-query-api) használható az adatlekérdezéshez és az elemzéshez.
+A Azure Time Series Insights-környezet az adatok gyűjtésének és tárolásának helye. A tárolás után a [Azure Time Series Insights Explorer](time-series-quickstart.md) és a [Azure Time Series Insights Query API](/rest/api/time-series-insights/gen1-query-api) használható az adatlekérdezéshez és az elemzéshez.
 
 Az Azure IoT Hub az oktatóanyagban az összes eszköz (szimulált vagy fizikai) által használt eseményforrás, amellyel biztonságosan csatlakozhat az Azure-felhőhöz, és továbbíthatja az adatokat.
 
@@ -98,7 +98,7 @@ Másodszor hozzon létre egy Azure Time Series Insights környezetet az Azure-el
 
    Paraméter|Leírás
    ---|---
-   **Környezet neve** | Válasszon egyedi nevet a Azure Time Series Insights környezet számára. A neveket a Azure Time Series Insights Explorer és a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)-k használják.
+   **Környezet neve** | Válasszon egyedi nevet a Azure Time Series Insights környezet számára. A neveket a Azure Time Series Insights Explorer és a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)-k használják.
    **Előfizetés** | Az előfizetés az Azure-erőforrások tárolója. Válasszon egy előfizetést a Azure Time Series Insights környezet létrehozásához.
    **Erőforráscsoport** | Az erőforráscsoport az Azure-erőforrások tárolója. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a Azure Time Series Insights környezeti erőforráshoz.
    **Hely** | Válasszon egy adatközpont-régiót Azure Time Series Insights-környezetéhez. A további késés elkerülése érdekében hozza létre a Azure Time Series Insights környezetet ugyanabban a régióban, mint a többi IoT-erőforrást.
@@ -175,7 +175,7 @@ Ebben a végső szakaszban ellenőrzi, hogy a telemetria-adatbázis létrejött 
 
    [![Azure Time Series Insights Explorer időtartományának szűrt nézete és eseményei](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez az oktatóanyag számos futó Azure-szolgáltatást hoz létre a Azure Time Series Insights-környezet és az eszköz-szimulációs megoldás támogatásához. Ha el szeretné távolítani őket, térjen vissza a Azure Portal.
 

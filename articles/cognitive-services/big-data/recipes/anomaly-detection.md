@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: b29fa17c21b2cdb2e764c905af3819142d8c341e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844065"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244346"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktív karbantartás a nagy adatmennyiséggel rendelkező Cognitive Services
 
@@ -30,7 +30,7 @@ Az adatokat véletlenszerű gyakorisággal lehet kiugróan értelmezni. Ezekben 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Spark-készlettel](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) konfigurált [Azure szinapszis-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
 
 ## <a name="setup"></a>Telepítés
@@ -39,7 +39,7 @@ Az adatokat véletlenszerű gyakorisággal lehet kiugróan értelmezni. Ezekben 
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a fordítónak a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)használatával. További lehetőségek:
 
-- Megtekintheti a [Azure Portal](https://portal.azure.com/)meglévő erőforrásait.
+- Megtekintheti a  [Azure Portal](https://portal.azure.com/)meglévő erőforrásait.
 
 Jegyezze fel a végpontot és az erőforrás kulcsát, ezért ebben az útmutatóban szüksége lesz rá.
 
@@ -149,6 +149,6 @@ Ha a művelet sikeres, a kimenet a következőképpen fog kinézni:
 
 ![Anomália-detektor ábrázolása](../media/anomaly-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan végezheti el a prediktív karbantartást az Azure Cognitive Services, az Azure szinapszis Analytics és az Azure CosmosDB használatával. További információ: teljes minta a [githubon](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT).

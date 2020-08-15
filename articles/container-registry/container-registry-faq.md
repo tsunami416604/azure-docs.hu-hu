@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836394"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245366"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
 Ez a cikk a Azure Container Registryával kapcsolatos gyakori kérdésekre és ismert problémákra mutat.
+
+A beállításjegyzék hibaelhárítási útmutatóját lásd:
+* [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md)
+* [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
+* [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Erőforrás-kezelés
 
@@ -261,10 +266,10 @@ Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnosztika és állapot-ellenőrzések
 
-- [Állapot-ellenõrzés`az acr check-health`](#check-health-with-az-acr-check-health)
+- [Állapot-ellenõrzés `az acr check-health`](#check-health-with-az-acr-check-health)
 - [a Docker-lekérés sikertelen a következő hibával: net/http: a kérelem megszakadt a kapcsolatra való várakozás közben (az ügyfél. időtúllépési korlátja túllépte a fejléceket)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [a Docker leküldése sikeres, de a Docker-lekérés sikertelen a következő hibával: jogosulatlan: hitelesítés szükséges](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [`az acr login`sikeres, de a Docker-parancsok sikertelenek, a következő hibával: jogosulatlan: hitelesítés szükséges](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` sikeres, de a Docker-parancsok sikertelenek, a következő hibával: jogosulatlan: hitelesítés szükséges](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [A Docker-démon hibakeresési naplóinak engedélyezése és lekérése](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Előfordulhat, hogy az új felhasználói engedélyek nem lépnek azonnal érvénybe a frissítés után](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [A hitelesítési adatok nem a megfelelő formátumban vannak megadva a közvetlen REST API hívásokban](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
@@ -274,7 +279,7 @@ Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés
 - [A tárház formátuma érvénytelen vagy nem támogatott](#repository-format-is-invalid-or-unsupported)
 - [A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Állapot-ellenõrzés`az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Állapot-ellenõrzés `az acr check-health`
 
 A gyakori környezet-és beállításjegyzék-problémák megoldásához tekintse meg [Az Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md)ismertető témakört.
 
@@ -453,8 +458,8 @@ A Tárházak elnevezési szabályainak elvégzéséhez tekintse [meg a nyílt t�
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-- Https-visszafejtés engedélyezése a hegedűsben:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Engedélyezze a Docker számára a proxy használatát a Docker felhasználói felületén:<https://docs.docker.com/docker-for-windows/#proxies>
+- Https-visszafejtés engedélyezése a hegedűsben:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Engedélyezze a Docker számára a proxy használatát a Docker felhasználói felületén: <https://docs.docker.com/docker-for-windows/#proxies>
 - Győződjön meg arról, hogy a befejezés után visszaállnak.  A Docker nem működik ezzel az engedélyezve és a Hegedűs nem fut.
 
 #### <a name="windows-containers"></a>Windows-tárolók

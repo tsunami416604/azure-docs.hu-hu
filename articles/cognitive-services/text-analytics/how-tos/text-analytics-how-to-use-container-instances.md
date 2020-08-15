@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 1dde59456126ce1221bdb71f09957c0fd3609427
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108709"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243751"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics tároló üzembe helyezése Azure Container Instances
 
@@ -23,7 +23,7 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [text Analytics][ins
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés használata. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -41,13 +41,13 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [text Analytics][ins
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-#### <a name="text-analytics-for-health"></a>[Text Analytics állapota](#tab/health)
+#### <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
 
 [!INCLUDE [Verify the health container instance](../includes/verify-health-container.md)]
 
 ***
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 * További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
 * A [text Analytics csatlakoztatott szolgáltatás](../vs-text-connected-service.md) használata

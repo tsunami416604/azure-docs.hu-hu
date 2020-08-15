@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128573"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244490"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>A Text Analytics nyelvfelismerés tároló üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -25,7 +25,7 @@ Megtudhatja, hogyan helyezheti üzembe a nyelvfelismerés-tárolót. Ez az eljá
 
 Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg kell telepíteni és futtatni. Ne használja az Azure Cloud shellt.
 
-* Azure-előfizetés használata. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd.
 * [Git](https://git-scm.com/downloads) az operációs rendszerhez, így az eljárásban használt [minta](https://github.com/Azure-Samples/cognitive-services-containers-samples) klónozása is megtörténik.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 * A [Docker-motort](https://www.docker.com/products/docker-engine) , és ellenőrizze, hogy a Docker CLI működik-e a konzol ablakban.
@@ -313,17 +313,17 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
 
     Nyelv – előtér-telepítési beállítások|Cél|
     |--|--|
-    |32. sor<br> `image`tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |44. sor<br> `name`tulajdonság|Container Registry a rendszerkép titkát, amelyet `<client-secret>` egy korábbi szakaszban is említett.|
+    |32. sor<br> `image` tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |44. sor<br> `name` tulajdonság|Container Registry a rendszerkép titkát, amelyet `<client-secret>` egy korábbi szakaszban is említett.|
 
 1. Módosítsa a nyelvi telepítési sorokat a `language.yml` következő táblázat alapján, hogy hozzáadja a saját tároló beállításjegyzék-rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
 
     |Nyelvi telepítési beállítások|Cél|
     |--|--|
-    |78. sor<br> `image`tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |95. sor<br> `name`tulajdonság|Container Registry a rendszerkép titkát, amelyet `<client-secret>` egy korábbi szakaszban is említett.|
-    |91. sor<br> `apiKey`tulajdonság|A Text Analytics-erőforrás kulcsa|
-    |92. sor<br> `billing`tulajdonság|A szöveges elemzési erőforrás számlázási végpontja.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |78. sor<br> `image` tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |95. sor<br> `name` tulajdonság|Container Registry a rendszerkép titkát, amelyet `<client-secret>` egy korábbi szakaszban is említett.|
+    |91. sor<br> `apiKey` tulajdonság|A Text Analytics-erőforrás kulcsa|
+    |92. sor<br> `billing` tulajdonság|A szöveges elemzési erőforrás számlázási végpontja.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Mivel a **apiKey** és a **Számlázási végpont** a Kubernetes-előkészítési definíció részeként van beállítva, a webhely-tárolónak nem kell tudnia ezeket, vagy át kell adnia őket a kérelem részeként. A webhely-tároló a Orchestrator neve alapján a nyelvfelismerés-tárolóra hivatkozik `language` .
 
@@ -389,7 +389,7 @@ Nyisson meg egy böngészőt, és navigáljon a tároló külső IP-címéhez `l
 
 Módosítsa a böngészőben található URL-címet a tároló külső IP-címére `language-frontend` a következő formátumban: `http://<external-ip>/helloworld` . Az angol kulturális szöveg a `helloworld` következőképpen van megjósolva: `English` .
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett a fürttel, törölje az Azure-erőforráscsoportot.
 

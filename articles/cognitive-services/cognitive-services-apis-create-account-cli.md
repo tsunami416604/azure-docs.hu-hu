@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36e21a131181831c2a87c0c6d2c24c9aa6e0acf7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317127"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245009"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
-Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)való használatának megkezdéséhez használható. A Cognitive Services az Azure-előfizetésében létrehozott Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) jelölik. Az erőforrás létrehozása után az Ön által létrehozott kulcsokkal és végponttal hitelesítheti alkalmazásait. 
+Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)való használatának megkezdéséhez használható. A Cognitive Services az Azure-előfizetésében létrehozott Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) jelölik. Az erőforrás létrehozása után az Ön által létrehozott kulcsokkal és végponttal hitelesítheti alkalmazásait.
 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan regisztrálhat az Azure Cognitive Servicesra, és hogyan hozhat létre egy olyan fiókot, amely az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)használatával egyetlen szolgáltatást vagy többszolgáltatásos előfizetéssel rendelkezik. Ezeket a szolgáltatásokat az Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)képviselik, amelyek lehetővé teszik egy vagy több azure-Cognitive Services API-khoz való kapcsolódást.
@@ -27,10 +27,10 @@ Ebből a rövid útmutatóból megtudhatja, hogyan regisztrálhat az Azure Cogni
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Érvényes Azure-előfizetés – [hozzon létre egyet](https://azure.microsoft.com/free/) ingyen.
+* Érvényes Azure-előfizetés – [hozzon létre egyet](https://azure.microsoft.com/free/cognitive-services) ingyen.
 * Az [Azure parancssori felülete (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="install-the-azure-cli-and-sign-in"></a>Az Azure CLI telepítése és bejelentkezés 
+## <a name="install-the-azure-cli-and-sign-in"></a>Az Azure CLI telepítése és bejelentkezés
 
 Telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ha be szeretné jelentkezni a CLI helyi telepítésére, futtassa az az [login](https://docs.microsoft.com/cli/azure/reference-index#az-login) parancsot:
 
@@ -39,7 +39,7 @@ az login
 ```
 
 A parancsok a böngészőben való futtatásához a zöld **kipróbálom** gombot is használhatja.
- 
+
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Új Azure Cognitive Services erőforráscsoport létrehozása
 
 Cognitive Services erőforrás létrehozása előtt rendelkeznie kell egy Azure-erőforrással, amely tartalmazza az erőforrást. Új erőforrás létrehozásakor létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
@@ -102,7 +102,7 @@ az group create \
 | Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
 | Bing – Entitáskeresés | `Bing.EntitySearch`   |
-| Bing kereső        | `Bing.Search.v7`      |
+| Bing Search        | `Bing.Search.v7`      |
 | Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Speech

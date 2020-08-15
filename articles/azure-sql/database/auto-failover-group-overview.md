@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826534"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245570"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Az automatikus feladatátvételi csoportok lehetővé teszik, hogy kezelje az adatbázisok egy csoportjának replikálását és feladatátvételét egy kiszolgálón vagy egy felügyelt példány összes adatbázisán egy másik régióban. A meglévő [aktív geo-replikálási](active-geo-replication-overview.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja az Azure-szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy súlyos hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az elsődleges régióban a SQL Database vagy az SQL felügyelt példányának teljes vagy részleges elvesztését eredményezi. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. Az automatikus feladatátvételi csoportok támogatják a csoport összes adatbázisának replikálását egyetlen másodlagos kiszolgálóra vagy példányra egy másik régióban.
+Az automatikus feladatátvételi csoportok funkció lehetővé teszi, hogy kezelje az adatbázisok egy csoportjának replikálását és feladatátvételét egy kiszolgálón vagy egy felügyelt példány összes adatbázisán egy másik régióba. A meglévő [aktív geo-replikálási](active-geo-replication-overview.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja az Azure-szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy súlyos hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az elsődleges régióban a SQL Database vagy az SQL felügyelt példányának teljes vagy részleges elvesztését eredményezi. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. Az automatikus feladatátvételi csoportok támogatják a csoport összes adatbázisának replikálását egyetlen másodlagos kiszolgálóra vagy példányra egy másik régióban.
 
 > [!NOTE]
 > Ha több Azure SQL Database formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](active-geo-replication-overview.md).
@@ -203,7 +203,7 @@ A módosítási folyamat szemléltetése érdekében feltételezzük, hogy az a 
 1. Végezzen el egy tervezett feladatátvételt az elsődleges kiszolgáló B kiszolgálóra való átváltásához. a kiszolgáló lesz az új másodlagos kiszolgáló. A feladatátvétel több perc állásidőt eredményezhet. A tényleges idő a feladatátvételi csoport méretétől függ.
 2. Hozzon létre további formátumú másodlagos zónák az egyes adatbázisokról a B kiszolgálón a C kiszolgálóra az [aktív földrajzi replikálás](active-geo-replication-overview.md)használatával. A B kiszolgálón található minden adatbázis két formátumú másodlagos zónák rendelkezik, egyet az A kiszolgálón, egy pedig a C kiszolgálón. Ez garantálja, hogy az elsődleges adatbázisok védelme az áttérés során is megmaradjon.
 3. Törölje a feladatátvételi csoportot. Ezen a ponton a bejelentkezések sikertelenek lesznek. Ennek az az oka, hogy a feladatátvételi csoport figyelőkhöz tartozó SQL-aliasok törölve lettek, és az átjáró nem ismeri fel a feladatátvételi csoport nevét.
-4. Hozza létre újra a feladatátvételi csoportot ugyanazzal a névvel az A és a C kiszolgáló között. Ezen a ponton a bejelentkezések sikertelenek lesznek.
+4. Hozza létre újra a feladatátvételi csoportot a B és a C kiszolgáló között azonos névvel. Ezen a ponton a bejelentkezések sikertelenek lesznek.
 5. Vegye fel a B kiszolgálón található összes elsődleges adatbázist az új feladatátvételi csoportba.
 6. Végezzen el egy tervezett feladatátvételt a feladatátvételi csoportban a B és C kapcsolóhoz. Most a C kiszolgáló lesz az elsődleges és a B-a másodlagos. Az A kiszolgálón lévő összes másodlagos adatbázis automatikusan a C-ben lévő elsődlegesekhez lesz társítva. Ahogy az 1. lépésben, a feladatátvétel több perc állásidőt eredményezhet.
 7. Dobja el az A kiszolgálót. Az A-ben lévő összes adatbázist automatikusan törli a rendszer.
@@ -231,7 +231,7 @@ Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példány
 > [!IMPORTANT]
 > Az alhálózatban létrehozott első felügyelt példány határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példányhoz. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.
 
-További információ a másodlagos SQL felügyelt példány létrehozásáról az elsődleges példánnyal azonos DNS-zónában: [másodlagos felügyelt példány létrehozása](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
+További információ a másodlagos SQL felügyelt példány létrehozásáról az elsődleges példánnyal azonos DNS-zónában: [másodlagos felügyelt példány létrehozása](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>A replikálási forgalom engedélyezése két példány között
 
@@ -378,10 +378,10 @@ Ezt a sorozatot kifejezetten arra a problémára érdemes elkerülni, hogy az al
 
 ## <a name="preventing-the-loss-of-critical-data"></a>A kritikus fontosságú adatmennyiség elvesztésének megakadályozása
 
-A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztője a tranzakció véglegesítése után azonnal meghívhatja a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A hívás `sp_wait_for_database_copy_sync` a hívó szálat blokkolja, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. `sp_wait_for_database_copy_sync`hatóköre egy adott folytonos másolási hivatkozásra vonatkozik. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
+A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztője a tranzakció véglegesítése után azonnal meghívhatja a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A hívás `sp_wait_for_database_copy_sync` a hívó szálat blokkolja, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. `sp_wait_for_database_copy_sync` hatóköre egy adott folytonos másolási hivatkozásra vonatkozik. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. Az `sp_wait_for_database_copy_sync` eljárási hívás által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
+> `sp_wait_for_database_copy_sync` megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. Az `sp_wait_for_database_copy_sync` eljárási hívás által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Feladatátvételi csoportok és időponthoz történő visszaállítás
 

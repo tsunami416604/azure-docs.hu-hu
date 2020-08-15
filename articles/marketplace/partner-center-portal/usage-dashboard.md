@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319915"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245332"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
 
@@ -111,6 +111,8 @@ A **mért számlázási használat** lap olyan használati adatokat jelenít meg
 - Túlterhelési **trend terv szerint**: a kiválasztott mérési dimenzió használati mennyiségének tendenciáját mutatja a csomagok alapján. A megjelenő csomagok a legjobb öt csomagot jelölik, a kiválasztott ajánlat legmagasabb kihasználtságával.
 - **Top 50-ügyfelek általi**túlterhelési Trend: az első 50-ajánlat a legmagasabb használati idővel jelenik meg a ***ranglistán*** , és az egyéni fogyasztásmérő legmagasabb használata alapján rangsorolva van. Válasszon ki egy ügyfelet a ranglistán a kiválasztott mérési dimenzió használati trendjeinak megtekintéséhez.
 - Legfelső **szintű ügyfelektől**származó túlterhelési Trend: a legfontosabb ügyfelek százalékos értékének (ek) a teljes használati értékhez való hozzájárulását mutatja be. A Top Customer percentilis az X tengely mentén jelenik meg, amelyet az ügyfél használati mennyisége határoz meg. Az Y tengely megjeleníti a használati mennyiséget. A részletek megjelenítéséhez vigye az egérmutatót a vonalak fölé a diagram mentén.
+
+Ha több egyéni mérőszámot használó ajánlata van, a mért számlázási használati jelentés az összes ajánlat használati adatait az egyéni mérési méretek alapján jeleníti meg.
 
 > [!NOTE]
 > A lap szűréséhez a használati adatok és az ezen a lapon található összes diagram meg van adva.

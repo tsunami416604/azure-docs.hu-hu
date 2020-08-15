@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584671"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244125"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
@@ -33,7 +33,7 @@ Az együttműködési célú fordítási keretrendszer (CTF) jelentéskészíté
 A CTF jelentési API végpontja https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Metódusok
-| Name | Leírás|
+| Név | Leírás|
 |:---|:---|
 | GetUserTranslationCounts metódus | A felhasználó által létrehozott fordítások számának beolvasása. |
 | GetUserTranslations metódus | A felhasználó által létrehozott fordítások beolvasása. |
@@ -76,7 +76,7 @@ Ez a metódus lekéri a felhasználó által létrehozott fordítások számát.
 | appId | **Kötelező megadni** Ha az engedélyezési fejlécet használja, hagyja üresen a AppID mezőt, és írjon be egy olyan karakterláncot, amely tartalmazza a "tulajdonos" + "+" hozzáférési tokent.|
 | uriPrefix | Nem **kötelező** A fordítás URI-azonosítóját tartalmazó karakterlánc.|
 | a | Nem **kötelező** A fordítási szöveg nyelvi kódját jelölő sztring. |
-| erre: | Nem **kötelező** A szöveg fordítására szolgáló nyelvkód jelölő sztring.|
+| a következőre: | Nem **kötelező** A szöveg fordítására szolgáló nyelvkód jelölő sztring.|
 | minRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg minimális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
 | maxRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg maximális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
 | felhasználó! | Nem **kötelező** Egy karakterlánc, amely az eredménynek a Küldés kezdeményezője alapján történő szűrésére szolgál. |
@@ -84,7 +84,7 @@ Ez a metódus lekéri a felhasználó által létrehozott fordítások számát.
 | minDateUtc| Nem **kötelező** Az a dátum, amikor a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie. |
 | maxDateUtc| Nem **kötelező** Az a dátum, ameddig a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie. |
 | kihagyása| Nem **kötelező** Az oldalon kihagyni kívánt eredmények száma. Ha például azt szeretné, hogy az eredmények és a nézet első 20 sora a huszonegyedik eredmény rekordban legyen, a 20 érték megadása ehhez a paraméterhez. A paraméter alapértelmezett értéke 0.|
-| eltarthat | Nem **kötelező** A lekérdezni kívánt eredmények száma. Az egyes kérések maximális száma 100. Az alapértelmezett érték 100.|
+| take | Nem **kötelező** A lekérdezni kívánt eredmények száma. Az egyes kérések maximális száma 100. Az alapértelmezett érték 100.|
 
 > [!NOTE]
 > A skip és a Take kérelem paraméterek nagy számú eredményhalmaz esetében lehetővé teszik a tördelést.
@@ -96,7 +96,7 @@ Az eredményhalmaz a **UserTranslationCount**tömbjét tartalmazza. Minden UserT
 | Mező | Leírás |
 |:---|:---|
 | Darabszám| A beolvasott eredmények száma|
-| Feladó | A forrás nyelve|
+| Forrás | A forrás nyelve|
 | Minősítés| A küldő által a AddTranslation () metódus hívásakor alkalmazott minősítés|
 | Művelet| A cél nyelve|
 | URI| A AddTranslation () metódus hívásakor alkalmazott URI|
@@ -113,7 +113,7 @@ Az eredményhalmaz a **UserTranslationCount**tömbjét tartalmazza. Minden UserT
 > [!NOTE]
 > A kvóta úgy módosul, hogy a szolgáltatás minden felhasználója számára igazságos legyen.
 
-**Példák a GitHib**
+**Példák a GitHubon a kód megtekintésére**
 * [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
@@ -147,7 +147,7 @@ Ezzel a módszerrel a felhasználó által létrehozott fordítások olvashatók
 | appId | **Kötelező megadni** Ha az engedélyezési fejlécet használja, hagyja üresen a AppID mezőt, és írjon be egy olyan karakterláncot, amely tartalmazza a "tulajdonos" + "+" hozzáférési tokent.|
 | uriPrefix| Nem **kötelező** A fordítás URI-azonosítóját tartalmazó karakterlánc.|
 | a| Nem **kötelező** A fordítási szöveg nyelvi kódját jelölő sztring.|
-| erre:| Nem **kötelező** A szöveg fordítására szolgáló nyelvkód jelölő sztring.|
+| a következőre:| Nem **kötelező** A szöveg fordítására szolgáló nyelvkód jelölő sztring.|
 | minRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg minimális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
 | maxRating| Nem **kötelező** Egy egész szám, amely a lefordított szöveg maximális minőségi minősítését jelképezi. Az érvényes érték:-10 és 10. Az alapértelmezett érték az 1.|
 | felhasználó!| **Választható. Egy karakterlánc, amely az eredmény szűrésére szolgál a Küldés kezdeményezője alapján**|
@@ -155,7 +155,7 @@ Ezzel a módszerrel a felhasználó által létrehozott fordítások olvashatók
 | minDateUtc| Nem **kötelező** Az a dátum, amikor a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie.|
 | maxDateUtc| Nem **kötelező** Az a dátum, ameddig a fordításokat le szeretné kérni. A dátumnak UTC formátumúnak kell lennie.|
 | kihagyása| Nem **kötelező** Az oldalon kihagyni kívánt eredmények száma. Ha például azt szeretné, hogy az eredmények és a nézet első 20 sora a huszonegyedik eredmény rekordban legyen, a 20 érték megadása ehhez a paraméterhez. A paraméter alapértelmezett értéke 0.|
-| eltarthat| Nem **kötelező** A lekérdezni kívánt eredmények száma. Az egyes kérések maximális száma 100. Az alapértelmezett érték a 50.|
+| take| Nem **kötelező** A lekérdezni kívánt eredmények száma. Az egyes kérések maximális száma 100. Az alapértelmezett érték a 50.|
 
 > [!NOTE]
 > A skip és a Take kérelem paraméterek nagy számú eredményhalmaz esetében lehetővé teszik a tördelést.
@@ -167,7 +167,7 @@ Az eredményhalmaz a **UserTranslation**tömbjét tartalmazza. Minden UserTransl
 | Mező | Leírás |
 |:---|:---|
 | CreatedDateUtc| A bejegyzés létrehozásának dátuma a AddTranslation () használatával|
-| Feladó| A forrás nyelve|
+| Forrás| A forrás nyelve|
 | OriginalText| A kérelem elküldésekor használt forrás nyelvi szövege|
 |Minősítés |A küldő által a AddTranslation () metódus hívásakor alkalmazott minősítés|
 |Művelet|    A cél nyelve|

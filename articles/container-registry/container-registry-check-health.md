@@ -3,18 +3,23 @@ title: Beállításjegyzék állapotának keresése
 description: Megtudhatja, hogyan futtathat egy gyors diagnosztikai parancsot az Azure Container Registry használata során felmerülő gyakori problémák azonosításához, beleértve a helyi Docker-konfigurációt és a beállításjegyzékhez való kapcsolódást.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456415"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245383"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry állapotának megtekintése
 
 Az Azure Container Registry használatakor időnként problémák merülhetnek fel. Előfordulhat például, hogy nem tudja lekérni a tároló rendszerképét, mert a helyi környezetben Docker-probléma van. Vagy a hálózati hiba miatt nem lehet csatlakozni a beállításjegyzékhez. 
 
 Első diagnosztikai lépésként futtassa az az [ACR renézz-Health][az-acr-check-health] parancsot a környezet állapotával kapcsolatos információk lekéréséhez és a megcélzott beállításjegyzékhez való igény szerinti hozzáféréshez. Ez a parancs az Azure CLI 2.0.67 vagy újabb verziójában érhető el. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+
+A beállításjegyzék további hibaelhárítási útmutatóját a következő témakörben talál:
+* [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md)
+* [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
+* [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Futtatás az ACR ellenõrzés-Health
 

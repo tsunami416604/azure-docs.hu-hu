@@ -3,28 +3,35 @@ title: Előnézet – a saját kulcsaival titkosított rendszerkép-verzió lét
 description: Hozzon létre egy rendszerkép-verziót egy megosztott rendszerkép-gyűjteményben az ügyfél által felügyelt titkosítási kulcsok használatával.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223584"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245553"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
 A katalógus lemezképeit felügyelt lemezként tárolja a rendszer, így azok automatikusan titkosítva lesznek a kiszolgálóoldali titkosítással. A kiszolgálóoldali titkosítás 256 bites [AES-titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ, amely az egyik legerősebb blokk titkosítási algoritmus, és az FIPS 140-2-kompatibilis. Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](/windows/desktop/seccng/cng-portal)
 
-Használhatja a platform által felügyelt kulcsokat a lemezképek titkosításához, vagy a titkosítást saját kulcsok használatával is kezelheti. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhat egy *ügyfél által felügyelt kulcsot* , amelyet a lemezképek összes lemezének titkosítására és visszafejtésére használhat. 
+Használhatja a platform által felügyelt kulcsokat a lemezképek titkosításához, saját kulcsokat használhat, vagy mindkettőt használhatja dupla titkosításhoz. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhat egy *ügyfél által felügyelt kulcsot* , amelyet a lemezképek összes lemezének titkosítására és visszafejtésére használhat. 
 
 Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás Azure Key Vaultt használ. Importálhatja az [RSA-kulcsokat](../key-vault/keys/hsm-protected-keys.md) a Key Vault, vagy LÉTREHOZHAT új RSA-kulcsokat Azure Key Vault.
 
-Ha az ügyfél által felügyelt kulcsokat szeretné használni a rendszerképekhez, először egy Azure Key Vaultra van szüksége. Ezután létrehoz egy lemezes titkosítási készletet. A rendszer ezt követően a lemez titkosítási készletét használja a lemezkép-verziók létrehozásakor.
+## <a name="prerequisites"></a>Előfeltételek
 
-A lemezes titkosítási készletek létrehozásával és használatával kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](./windows/disk-encryption.md#customer-managed-keys).
+Ehhez a cikkhez már van szükség a lemezképhez használni kívánt lemezes titkosításra.
+
+- Ha csak az ügyfél által felügyelt kulcsot szeretné használni, tekintse meg az **ügyfél által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással** a [Azure Portal](./windows/disks-enable-customer-managed-keys-portal.md) vagy a [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)használatával című témakört.
+
+- Ha a platform által felügyelt és az ügyfél által felügyelt kulcsokat is szeretné használni (dupla titkosításhoz), tekintse meg a következőt: a [Azure Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) vagy a [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)használatával **engedélyezze a kettős titkosítás** használatát.
+    > [!IMPORTANT]
+    > Ezt a hivatkozást kell használnia [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) a Azure Portal eléréséhez. A kettős titkosítás jelenleg nem látható a nyilvános Azure Portal a hivatkozás használata nélkül.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -72,7 +79,7 @@ Ha nem ad vissza `Registered` , a következő paranccsal regisztrálhatók a szo
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Ha meg szeretné adni egy lemez titkosítását a lemezkép verziójához, használja a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) `-TargetRegion` paramétert. 
+Ha meg szeretné adni egy lemez titkosítását a lemezkép verziójához, használja a  [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) `-TargetRegion` paramétert. 
 
 ```azurepowershell-interactive
 
@@ -90,7 +97,7 @@ $encryption1 = @{OSDiskImage=$osDiskImageEncryption;DataDiskImages=$dataDiskImag
 
 $region1 = @{Name='West US';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption1}
 
-$targetRegion = @{$region1}
+$targetRegion = @($region1)
 
 
 # Create the image
@@ -142,7 +149,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-A lemezkép-verzióhoz beállított lemezes titkosítás megadásához használja az az [rendszerkép-katalógus Create-lemezkép-Version](/cli/azure/sig/image-version#az-sig-image-version-create) `--target-region-encryption` paramétert. A formátuma az `--target-region-encryption` operációs rendszer és az adatlemezek titkosítására szolgáló kulcsok szóközzel tagolt listája. A következőhöz hasonlóan kell kinéznie: `<encryption set for the OS disk>,<Lun number of the data disk>, <encryption set for the data disk>, <Lun number for the second data disk>, <encryption set for the second data disk>` . 
+A lemezkép-verzióhoz beállított lemezes titkosítás megadásához használja az az  [rendszerkép-katalógus Create-lemezkép-Version](/cli/azure/sig/image-version#az-sig-image-version-create) `--target-region-encryption` paramétert. A formátuma az `--target-region-encryption` operációs rendszer és az adatlemezek titkosítására szolgáló kulcsok szóközzel tagolt listája. A következőhöz hasonlóan kell kinéznie: `<encryption set for the OS disk>,<Lun number of the data disk>, <encryption set for the data disk>, <Lun number for the second data disk>, <encryption set for the second data disk>` . 
 
 Ha az operációsrendszer-lemez forrása felügyelt lemez vagy virtuális gép, a használatával `--managed-image` adhatja meg a lemezkép verziójának forrását. Ebben a példában a forrás egy olyan felügyelt lemezkép, amely egy operációsrendszer-lemezzel, valamint egy adatlemezzel rendelkezik a 0. logikai egységben. Az operációsrendszer-lemez titkosítva lesz a DiskEncryptionSet1, és az adatlemez titkosítva lesz a DiskEncryptionSet2 szolgáltatással.
 
@@ -150,6 +157,7 @@ Ha az operációsrendszer-lemez forrása felügyelt lemez vagy virtuális gép, 
 az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
+   --location westus \
    --target-regions westus=2=standard_lrs \
    --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
    --gallery-name MyGallery \
@@ -165,11 +173,12 @@ Ebben a példában a források lemezes Pillanatképek. Létezik egy operációsr
 az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
+   --location westus\
    --target-regions westus=2=standard_lrs \
    --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
-   --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot"
-   --data-snapshot-luns 0
-   --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot"
+   --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot" \
+   --data-snapshot-luns 0 \
+   --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot" \
    --gallery-name MyGallery \
    --gallery-image-definition MyImage 
    
@@ -182,15 +191,19 @@ Létrehozhat egy virtuális gépet egy megosztott rendszerkép-gyűjteményből,
 
 ## <a name="portal"></a>Portál
 
-Amikor létrehozza a rendszerkép verzióját a portálon, a **titkosítás** lapon megadhatja a tárolási titkosítási készletekre vonatkozó adatokat.
+Amikor létrehozza a rendszerkép verzióját a portálon, a **titkosítás** lapon megadhatja a tárolási titkosítási készletek alkalmazását.
+
+> [!IMPORTANT]
+> A kettős titkosítás használatához ezt a hivatkozást kell használnia [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) a Azure Portal eléréséhez. A kettős titkosítás jelenleg nem látható a nyilvános Azure Portal a hivatkozás használata nélkül.
+
 
 1. A **rendszerkép verziójának létrehozása** lapon válassza a **titkosítás** lapot.
-2. A **titkosítás típusa**területen válassza az **ügyfél által felügyelt kulcs**melletti titkosítás lehetőséget. 
+2. A **titkosítás típusa**beállításnál válassza ki a **REST-alapú titkosítást egy ügyfél által felügyelt kulccsal** , vagy a **platform által felügyelt és az ügyfél által felügyelt kulcsokkal rendelkező dupla titkosítással**. 
 3. A rendszerkép minden egyes lemezén válassza ki a legördülő listából a használni kívánt **lemezes titkosítási beállítást** . 
 
 ### <a name="create-the-vm"></a>A virtuális gép létrehozása
 
-Létrehozhat egy virtuális gépet egy megosztott rendszerkép-gyűjteményből, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a titkosítás az **ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz**lehetőséget. Ezután kiválaszthatja a titkosítási készletet a legördülő menüből.
+Létrehozhat egy virtuális gépet a rendszerkép verziójának használatával, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a **titkosítás az ügyfél által felügyelt kulcsokkal** vagy a **kettős titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz**lehetőséget. Ezután kiválaszthatja a titkosítási készletet a legördülő menüből.
 
 ## <a name="next-steps"></a>További lépések
 

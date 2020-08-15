@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 585731212fa31be2757d5b5d4c4e0a2ef1212ca8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 86742568d8f0c7c951d872e7df23b8ce1cb0920f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980216"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244227"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és C használatával # 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és C használatával #
 
 Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észlelési módjának használatát az idősorozat-adataiban észlelt rendellenességek észlelésére. Ez a C#-alkalmazás két, JSON-formátumú idősorozat-adatokat tartalmazó API-kérelmet küld, és lekéri a válaszokat.
 
@@ -30,13 +30,13 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 - Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
     - Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 - A [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/downloads/) verziójának bármely kiadása
 - A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető. Newtonsoft.Jstelepítése NuGet-csomagként a Visual Studióban:
-    
+
     1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
     2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
     3. Keressen rá a *Newtonsoft.Jsre* , és telepítse a csomagot.
@@ -49,7 +49,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-1. A Visual Studióban hozzon létre egy új konzolos megoldást, és adja hozzá a következő csomagokat. 
+1. A Visual Studióban hozzon létre egy új konzolos megoldást, és adja hozzá a következő csomagokat.
 
     [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
 
@@ -60,7 +60,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
     |------------------------------------|--------------------------------------------------|
     | Kötegelt észlelés                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | Észlelés a legújabb adatponton | `/anomalydetector/v1.0/timeseries/last/detect`   |
-        
+
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
@@ -79,7 +79,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 2. Deszerializálja a JSON-objektumot, és írja a konzolba.
 
-3. Ha a válasz tartalmaz `code` mezőt, nyomtassa ki a hibakódot és a hibaüzenetet. 
+3. Ha a válasz tartalmaz `code` mezőt, nyomtassa ki a hibakódot és a hibaüzenetet.
 
 4. Ellenkező esetben keresse meg a rendellenességek pozícióit az adatkészletben. A válasz `isAnomaly` mezője logikai értékeket tartalmaz, amelyek mindegyike azt jelzi, hogy az adatpont egy anomália-e. Alakítsa át ezt a karakterlánc-tömbre a Response objektum `ToObject<bool[]>()` függvényével. Ismételje meg a tömböt, és nyomtassa ki bármelyik `true` érték indexét. Ezek az értékek a rendellenes adatpontok indexének felelnek meg, ha vannak ilyenek.
 
@@ -93,10 +93,10 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 2. Deszerializálja a JSON-objektumot, és írja a konzolba.
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
- 
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Töltse be az idősorozat adatait, és küldje el a kérést
 
-1. Az alkalmazás fő metódusában töltse be a JSON idősorozat-adatait az-val `File.ReadAllText()` . 
+1. Az alkalmazás fő metódusában töltse be a JSON idősorozat-adatait az-val `File.ReadAllText()` .
 
 2. Hívja meg a fent létrehozott anomália-észlelési funkciókat. Ezzel a paranccsal `System.Console.ReadKey()` megtarthatja a konzolablak megnyitását az alkalmazás futtatása után.
 

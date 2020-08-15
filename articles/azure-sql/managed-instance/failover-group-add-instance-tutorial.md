@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002991"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245782"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az al�
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1 – erőforráscsoport és elsődleges felügyelt példány létrehozása
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>Erőforráscsoport és elsődleges felügyelt példány létrehozása
 
 Ebben a lépésben létrehozza az erőforráscsoportot és a feladatátvételi csoport elsődleges felügyelt példányát a Azure Portal vagy a PowerShell használatával. 
 
@@ -384,7 +384,7 @@ Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt a 
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot.  |
 | [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre.  |
@@ -404,7 +404,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2 – másodlagos virtuális hálózat létrehozása
+## <a name="create-secondary-virtual-network"></a>Másodlagos virtuális hálózat létrehozása
 
 Ha a Azure Portal a felügyelt példány létrehozásához használja, külön kell létrehoznia a virtuális hálózatot, mivel követelmény, hogy az elsődleges és a másodlagos felügyelt példány alhálózata ne rendelkezzen átfedésben lévő tartományokkal. Ha a PowerShell segítségével konfigurálja a felügyelt példányt, ugorjon a 3. lépésre. 
 
@@ -432,7 +432,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
     | **Címtér** | A virtuális hálózat címterület, például: `10.128.0.0/16` . | 
     | **Előfizetés** | Az az előfizetés, amelyben az elsődleges felügyelt példány és az erőforráscsoport található. |
     | **Régió** | Az a hely, ahová a másodlagos felügyelt példányt telepíteni fogja. |
-    | **Alhálózat** | Az alhálózat neve. `default`Alapértelmezés szerint meg van biztosítva. |
+    | **Alhálózat** | Az alhálózat neve. `default` Alapértelmezés szerint meg van biztosítva. |
     | **Címtartomány**| Az alhálózat címtartomány. Ennek eltérőnek kell lennie, mint az elsődleges felügyelt példány virtuális hálózata által használt alhálózat-címtartomány, például: `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
 
@@ -444,7 +444,7 @@ Ez a lépés csak akkor szükséges, ha a Azure Portal használatával telepíti
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3 – másodlagos felügyelt példány létrehozása
+## <a name="create-a-secondary-managed-instance"></a>Másodlagos felügyelt példány létrehozása
 Ebben a lépésben egy másodlagos felügyelt példányt fog létrehozni a Azure Portalban, amely a két felügyelt példány közötti hálózatkezelést is konfigurálja. 
 
 A második felügyelt példánynak a következőket kell tennie:
@@ -714,7 +714,7 @@ Hozza létre a másodlagos felügyelt példányt a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot.  |
 | [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre.  |
@@ -734,9 +734,9 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4 – elsődleges átjáró létrehozása 
+## <a name="create-a-primary-gateway"></a>Elsődleges átjáró létrehozása 
 
-Két felügyelt példánynak a feladatátvételi csoportban való részvételhez ExpressRoute vagy átjárót kell konfigurálnia a két felügyelt példány virtuális hálózatai között, hogy engedélyezze a hálózati kommunikációt. Ha úgy dönt, hogy [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) konfigurálja a két VPN-átjáró csatlakoztatása helyett, ugorjon a [7. lépésre](#7---create-a-failover-group).  
+Két felügyelt példánynak a feladatátvételi csoportban való részvételhez ExpressRoute vagy átjárót kell konfigurálnia a két felügyelt példány virtuális hálózatai között, hogy engedélyezze a hálózati kommunikációt. Ha úgy dönt, hogy [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) konfigurálja a két VPN-átjáró csatlakoztatása helyett, ugorjon a [7. lépésre](#create-a-failover-group).  
 
 Ez a cikk a két VPN-átjáró létrehozásának lépéseit és azok összekapcsolását ismerteti, de a feladatátvételi csoport létrehozásához a ExpressRoute konfigurálásakor ugorjon előre. 
 
@@ -767,7 +767,6 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
     | **Termékváltozat**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
-    | **Hely**| Az elsődleges felügyelt példány és az elsődleges virtuális hálózat helye.   |
     | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-primary` . |
     | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
     | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét, például: `primary-gateway-IP` . |
@@ -817,7 +816,7 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
@@ -831,7 +830,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5 – másodlagos átjáró létrehozása 
+## <a name="create-secondary-gateway"></a>Másodlagos átjáró létrehozása 
 Ebben a lépésben a Azure Portal használatával hozza létre a másodlagos felügyelt példány virtuális hálózatának átjáróját. 
 
 
@@ -849,8 +848,7 @@ A Azure Portal használatával ismételje meg az előző szakaszban leírt lép�
    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
    | **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
    | **Termékváltozat**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
-   | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
-   | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-secondary` . |
+   | **Virtuális hálózat**| Válassza ki a virtuális hálózatot a másodlagos felügyelt példányhoz, például: `vnet-sql-mi-secondary` . |
    | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
    | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
@@ -883,7 +881,7 @@ Hozza létre a másodlagos felügyelt példány virtuális hálózatának átjá
                      -VirtualNetwork $secondaryVirtualNetwork
    $drLocation = $secondaryVirtualNetwork.Location
    
-   Write-host "Creating primary gateway..."
+   Write-host "Creating secondary gateway..."
    Write-host "This will take some time."
    $secondaryGWPublicIP = New-AzPublicIpAddress -Name $secondaryGWPublicIPAddress -ResourceGroupName $resourceGroupName `
             -Location $drLocation -AllocationMethod Dynamic
@@ -898,7 +896,7 @@ Hozza létre a másodlagos felügyelt példány virtuális hálózatának átjá
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
@@ -911,7 +909,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6 – az átjárók összekötése
+## <a name="connect-the-gateways"></a>Az átjárók összekötése
 Ebben a lépésben hozzon létre kétirányú kapcsolatot a két virtuális hálózat két átjárója között. 
 
 
@@ -929,15 +927,18 @@ Kapcsolja össze a két átjárót a Azure Portal használatával.
     1. Válassza ki az SQL felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből. 
     1. Válassza ki az elsődleges felügyelt példány helyét a legördülő menüből. 
 1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra**:
-    1. Válassza ki az **első virtuális hálózati átjáró**elsődleges hálózati átjáróját, például: `Primary-Gateway` .  
-    1. Válassza ki a **második virtuális hálózati átjáró**másodlagos hálózati átjáróját, például: `Secondary-Gateway` . 
+    1. Válassza ki az **első virtuális hálózati átjáró**elsődleges hálózati átjáróját, például: `primaryGateway` .  
+    1. Válassza ki a **második virtuális hálózati átjáró**másodlagos hálózati átjáróját, például: `secondaryGateway` . 
     1. Jelölje be a **kétirányú kapcsolat létesítése**melletti jelölőnégyzetet. 
     1. Hagyja meg az alapértelmezett elsődleges kapcsolódási nevet, vagy nevezze át tetszőleges értékre. 
     1. Adjon meg egy **megosztott kulcsot (PSK)** a kapcsolatban, például: `mi1m2psk` . 
+    1. A beállítások mentéséhez kattintson **az OK gombra** . 
 
-   ![Átjáró-kapcsolatok létrehozása](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![Átjáró-kapcsolatok létrehozása](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. Az **Összefoglalás** lapon tekintse át a kétirányú kapcsolatok beállításait, majd kattintson **az OK** gombra a kapcsolódás létrehozásához. 
+    
+
+1. A **felülvizsgálat + létrehozás** oldalon tekintse át a kétirányú kapcsolatok beállításait, majd kattintson **az OK** gombra a kapcsolódás létrehozásához. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -963,14 +964,14 @@ A két átjáró összekapcsolásához használja a PowerShellt.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Kapcsolatot hoz létre a két virtuális hálózati átjáró között.   |
 
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7 – feladatátvételi csoport létrehozása
+## <a name="create-a-failover-group"></a>Feladatátvételi csoport létrehozása
 Ebben a lépésben létrehozza a feladatátvételi csoportot, és hozzáadja a felügyelt példányokat is. 
 
 
@@ -1005,7 +1006,7 @@ Hozza létre a feladatátvételi csoportot a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Új – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Létrehoz egy új Azure SQL felügyelt példány feladatátvételi csoportot.  |
 
@@ -1013,7 +1014,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 ---
 
 
-## <a name="8---test-failover"></a>8 – feladatátvételi teszt
+## <a name="test-failover"></a>Feladatátvétel tesztelése
 Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fogja felvenni, majd a Azure Portal használatával hajtja végre a feladatokat. 
 
 
@@ -1071,7 +1072,7 @@ Feladatátvételi teszt a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Lekérdezi vagy listázza az SQL felügyelt példányának feladatátvételi csoportjait.| 
 | [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Végrehajtja az SQL felügyelt példányok feladatátvételi csoportjának feladatátvételét. | 
@@ -1080,7 +1081,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az erőforrások törléséhez először törölje a felügyelt példányokat, majd a virtuális fürtöt, majd a többi erőforrást és végül az erőforráscsoportot. 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
@@ -1103,7 +1104,7 @@ Write-host "Removing residual resources and resource group..."
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot. |
 
@@ -1116,7 +1117,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot.  |
 | [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre.  |

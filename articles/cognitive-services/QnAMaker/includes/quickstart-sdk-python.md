@@ -3,12 +3,12 @@ title: 'Rövid útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódt�
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker a Pythonhoz készült ügyféloldali kódtárat.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: 1b6990589663655c5b4518d55e42838775889671
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: d99ed657098a8046a64c10ae48433aa87c2f06f6
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114532"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246352"
 ---
 A Pythonhoz készült QnA Maker ügyféloldali kódtára a következőre használható:
 
@@ -27,7 +27,7 @@ A Pythonhoz készült QnA Maker ügyféloldali kódtára a következőre haszná
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
 * Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy [QnA Maker erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) a Azure Portal a szerzői kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz**lehetőséget.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás QnA Maker APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
@@ -167,7 +167,7 @@ A következő _setTimeout_ hívásával szimulálható az aszinkron kód. Cseré
 
 [!code-python[Monitor an operation](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=MonitorOperation&highlight=7)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési fájl Python parancsával.
 

@@ -10,12 +10,12 @@ ms.date: 8/13/2020
 ms.topic: include
 ms.custom: include file, devx-track-javascript
 ms.author: diberry
-ms.openlocfilehash: 39e0124bbfac75bcadd42f5caa987409fafd7886
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: e52aba2fe6189c8964fd6525581b0bd6ee6def48
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237392"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246568"
 ---
 A Node.jshoz használja a Language Understanding (LUIS) ügyféloldali kódtárait:
 
@@ -29,7 +29,7 @@ A Node.jshoz használja a Language Understanding (LUIS) ügyféloldali kódtára
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org)
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy Language Understanding szerzői erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
     * Szüksége lesz a [létrehozott](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) erőforrás kulcsára és végpontra az alkalmazás Language Understanding létrehozásához való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja. A szolgáltatás kipróbálásához használhatja az ingyenes díjszabási szintet ( `F0` ).
 

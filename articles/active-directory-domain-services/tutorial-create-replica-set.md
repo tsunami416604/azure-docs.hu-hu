@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506459"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245094"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: replika-készletek létrehozása és használata a rugalmassághoz vagy a földrajzi helyekhez Azure Active Directory Domain Services (előzetes verzió)
 
@@ -42,11 +42,11 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Egy Azure Active Directory Domain Services felügyelt tartomány, amely replikakészlet használatával lett létrehozva, és konfigurálva van az Azure AD-bérlőben.
+* Egy Azure Active Directory Domain Services felügyelt tartomány, amelyet a Azure Resource Manager üzembe helyezési modell használatával hoztak létre, és az Azure AD-bérlőben vannak konfigurálva.
     * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][tutorial-create-instance].
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy létrehoz egy olyan felügyelt tartományt, amely replikakészlet-csoportokat használ. Az előzetes verzió előtt létrehozott, meglévő felügyelt tartomány nem támogatja a másodpéldány-készleteket. Emellett legalább a *vállalati* SKU-t kell használnia a felügyelt tartományhoz. Ha szükséges, [módosítsa az SKU-t egy felügyelt tartományhoz][howto-change-sku].
+    > A klasszikus üzemi modell használatával létrehozott felügyelt tartományok nem használhatnak replikákat. Emellett legalább a *vállalati* SKU-t kell használnia a felügyelt tartományhoz. Ha szükséges, [módosítsa az SKU-t egy felügyelt tartományhoz][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

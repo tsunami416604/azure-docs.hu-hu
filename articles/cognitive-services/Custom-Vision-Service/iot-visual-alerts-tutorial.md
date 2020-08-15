@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5016191bb4f647c0bbfa71144bb4b4b554b080f4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834337"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244669"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Az alkalmazás használatával betaníthatja Custom Vision projektjét.
 > * Az alkalmazás segítségével valós időben lehet új képeket kipróbálni, és elküldeni az eredményeket az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -128,13 +128,13 @@ Bármikor megismételheti a betanítási lemezképek feltöltésének lépését
 
 Ha az alkalmazást egy eszközön futtatja, és újra le kell kérnie az IP-címet (például távoli kapcsolat létesítéséhez a [Windows IoT távoli ügyfélen](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)keresztül), akkor a metódust IoT hub használatával hívhatja meg `GetIpAddress` .
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölje a Custom Vision projektet, ha már nem szeretné karbantartani. A [Custom Vision webhelyén](https://customvision.ai)navigáljon a **projektekhez** , és válassza ki a szemetet az új projekt alatt.
 
 ![Képernyőfelvétel az új projekttel ellátott panelről a Kuka ikon használatával](./media/csharp-tutorial/delete_project.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy olyan alkalmazást állít be és futtatott, amely észleli a vizualizációs állapotinformációkat egy IoT-eszközön, és elküldi az eredményeket a IoT Hubnak. Ezután vizsgálja meg a forráskódot, vagy hajtsa végre az alábbi, javasolt módosításokat.
 

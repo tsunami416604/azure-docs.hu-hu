@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169816"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245536"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Elosztott hálózatnév konfigurálása a következőhöz: 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,6 +156,29 @@ A feladatátvétel teszteléséhez kövesse az alábbi lépéseket:
 A kapcsolat teszteléséhez jelentkezzen be egy másik virtuális gépre ugyanabban a virtuális hálózaton. Nyissa meg **SQL Server Management Studio** , és kapcsolódjon a SQL Server a DNN DNS-név használatával.
 
 Ha szükséges, [letöltheti SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+
+## <a name="avoid-ip-conflict"></a>Az IP-ütközés elkerülése
+
+Ez egy opcionális lépés, amellyel megakadályozható, hogy a (z)%-os erőforrás által használt virtuális IP-cím (VIP) duplikált módon legyen hozzárendelve az Azure-beli másik erőforráshoz. 
+
+Bár az ügyfelek mostantól a DNN csatlakoznak a SQL Server-es verzióhoz, a virtuális hálózat nevét (VNN) és a virtuális IP-címet nem lehet törölni, mert a szükséges összetevők a (z)%-os infrastruktúra számára. Mivel azonban már nincs olyan terheléselosztó, amely az Azure-beli virtuális IP-címet használja, fennáll a veszélye annak, hogy a virtuális hálózat egy másik erőforrása ugyanahhoz az IP-címhez lesz hozzárendelve, mint a (z) által használt virtuális IP-cím. Ez esetleg ismétlődő IP-ütközési problémát eredményezhet. 
+
+Konfiguráljon egy APIPA-címet vagy egy dedikált hálózati adaptert az IP-cím lefoglalásához. 
+
+### <a name="apipa-address"></a>APIPA-címek
+
+Az ismétlődő IP-címek használatának elkerüléséhez konfigurálja az APIPA-címeket (más néven a kapcsolat helyi címét). Ehhez futtassa az alábbi parancsot:
+
+```powershell
+Get-ClusterResource "virtual IP address" | Set-ClusterParameter 
+    –Multiple @{"Address”=”169.254.1.1”;”SubnetMask”=”255.255.0.0”;"OverrideAddressMatch"=1;”EnableDhcp”=0}
+```
+
+Ebben a parancsban a "virtuális IP-cím" a fürtözött VIP-cím erőforrás neve, a "169.254.1.1" pedig a VIP-címhez kiválasztott APIPA-cím. Válassza ki az Ön üzleti igényeinek leginkább megfelelő címeket. Állítsa be `OverrideAddressMatch=1` úgy, hogy az IP-cím bármilyen hálózaton legyen, beleértve az APIPA-címtartomány használatát is. 
+
+### <a name="dedicated-network-adapter"></a>Dedikált hálózati adapter
+
+Másik lehetőségként beállíthat egy hálózati adaptert az Azure-ban a virtuális IP-cím erőforrás által használt IP-cím lefoglalásához. Ez azonban az alhálózati címtartomány során felhasználja a címeket, és a hálózati adapter más célra való használatának biztosítása további terhelést jelent.
 
 ## <a name="limitations"></a>Korlátozások
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5d325ac8da43f020f4ab39244d2e6a7dc6ed72b7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156712"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246067"
 ---
 Ismerkedjen meg a .NET-hez készült Bing Autosuggest ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
@@ -23,7 +23,7 @@ A .NET-hez készült Bing Autosuggest ügyféloldali kódtár használatával ke
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [ingyenesen létrehozhat egyet](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [ingyenesen létrehozhat egyet](https://azure.microsoft.com/free/cognitive-services).
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -31,12 +31,12 @@ A .NET-hez készült Bing Autosuggest ügyféloldali kódtár használatával ke
 ## <a name="create-environment-variables"></a>Környezeti változók létrehozása
 
 >[!NOTE]
-> Az 2019. július 1. után létrehozott erőforrás-végpontok az alábbi egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Az 2019. július 1. után létrehozott erőforrás-végpontok az alábbi egyéni altartomány-formátumot használják. További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
 
 Ha a kulcsot és a végpontot a létrehozott erőforrás alapján hozza létre, hozzon létre két környezeti változót a hitelesítéshez:
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`: A kérések hitelesítéséhez használt erőforrás-kulcs.
-* `AUTOSUGGEST_ENDPOINT`: Az erőforrás-végpont API-kérelmek küldéséhez. A következőhöz hasonlóan kell kinéznie: `https://<your-custom-subdomain>.api.cognitive.microsoft.com` . 
+* `AUTOSUGGEST_ENDPOINT`: Az erőforrás-végpont API-kérelmek küldéséhez. A következőhöz hasonlóan kell kinéznie: `https://<your-custom-subdomain>.api.cognitive.microsoft.com` .
 
 Használja az operációs rendszerének utasításait.
 <!-- replace the below endpoint and key examples -->
@@ -72,9 +72,9 @@ A környezeti változó hozzáadását követően futtassa a `source .bash_profi
 
 ## <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. 
+Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `bing-autosuggest-quickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*. 
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `bing-autosuggest-quickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -86,7 +86,7 @@ Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az 
 dotnet build
 ```
 
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
+A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
 
 ```console
 ...

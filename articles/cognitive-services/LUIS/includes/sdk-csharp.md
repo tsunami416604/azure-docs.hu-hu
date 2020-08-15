@@ -10,12 +10,12 @@ ms.date: 8/13/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 8651b9a6b77208c87ccb57a9518dbfbc6d6de53b
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: d0ae5fa41d039be235ff0c9abb4facf95b1f3b2e
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237381"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246509"
 ---
 Használja a .NET-hez készült Language Understanding (LUIS) ügyféloldali kódtárait a következőhöz:
 * Alkalmazás létrehozása
@@ -28,7 +28,7 @@ Használja a .NET-hez készült Language Understanding (LUIS) ügyféloldali kó
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core) és a [a .net Core parancssori felülete](https://docs.microsoft.com/dotnet/core/tools/)aktuális verziója.
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy Language Understanding szerzői erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
     * Szüksége lesz a [létrehozott](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) erőforrás kulcsára és végpontra az alkalmazás Language Understanding létrehozásához való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja. A szolgáltatás kipróbálásához használhatja az ingyenes díjszabási szintet ( `F0` ).
 

@@ -3,12 +3,12 @@ title: 'Gyors útmutató: lekérdezés az előrejelzéshez a böngészővel – 
 description: Ebben a rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg a felhasználó szándékát a böngészőben a társalgási szövegben.
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769968"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245995"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Gyors útmutató: lekérdezési előrejelzési futtatókörnyezet felhasználói szöveggel
 
@@ -19,14 +19,14 @@ Ha szeretné látni, mit ad vissza egy LUIS előrejelzési végpont, tekintsen m
 Egy nyilvános alkalmazás lekérdezéséhez a következőkre lesz szüksége:
 
 * A Language Understanding (LUIS) erőforrás-információi:
-    * **Előrejelzési kulcs** – amely a Luis- [portálról](https://www.luis.ai/)szerezhető be. Ha még nem rendelkezik előfizetéssel a kulcs létrehozásához, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+    * **Előrejelzési kulcs** – amely a Luis- [portálról](https://www.luis.ai/)szerezhető be. Ha még nem rendelkezik előfizetéssel a kulcs létrehozásához, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services).
     * **Előrejelzési végpont altartománya** – az altartomány egyben a Luis-erőforrás **neve** is.
-* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás `df67dcdb-c37d-46af-88e1-8b97951ca1c2`azonosítóját. A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
+* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás AZONOSÍTÓját `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
 
 ## <a name="use-the-browser-to-see-predictions"></a>A böngésző használata az előrejelzések megjelenítéséhez
 
 1. Nyisson meg egy webböngészőt.
-1. Használja az alábbi teljes URL-címeket `YOUR-KEY` , és cserélje le a saját Luis-előrejelzési kulcsára. A kérések MEGKAPják a kérelmeket, és tartalmazzák az engedélyt a LUIS-előrejelzési kulccsal, lekérdezési karakterlánc paraméterként.
+1. Használja az alábbi teljes URL-címeket, `YOUR-KEY` és cserélje le a saját Luis-előrejelzési kulcsára. A kérések MEGKAPják a kérelmeket, és tartalmazzák az engedélyt a LUIS-előrejelzési kulccsal, lekérdezési karakterlánc paraméterként.
 
     #### <a name="v3-prediction-request"></a>[V3 előrejelzési kérelem](#tab/V3-1-1)
 
@@ -95,7 +95,7 @@ Egy nyilvános alkalmazás lekérdezéséhez a következőkre lesz szüksége:
 
     #### <a name="v3-prediction-endpoint"></a>[V3 előrejelzési végpont](#tab/V3-3-1)
 
-    Adja `show-all-intents=true` hozzá a querystring végéhez az **összes leképezés megjelenítéséhez**:
+    Adja hozzá a `show-all-intents=true` querystring végéhez az **összes leképezés megjelenítéséhez**:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
@@ -128,7 +128,7 @@ Egy nyilvános alkalmazás lekérdezéséhez a következőkre lesz szüksége:
 
     #### <a name="v2-prediction-endpoint"></a>[V2 előrejelzési végpont](#tab/V2)
 
-    Adja `verbose=true` hozzá a querystring végéhez az **összes leképezés megjelenítéséhez**:
+    Adja hozzá a `verbose=true` querystring végéhez az **összes leképezés megjelenítéséhez**:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true

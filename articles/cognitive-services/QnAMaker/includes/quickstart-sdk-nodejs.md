@@ -4,12 +4,12 @@ description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node.js QnA 
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404080"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246354"
 ---
 A Node.js a QnA Maker ügyféloldali kódtár használatával:
 
@@ -28,7 +28,7 @@ A Node.js a QnA Maker ügyféloldali kódtár használatával:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * A [Node.js](https://nodejs.org)aktuális verziója.
 * Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy [QnA Maker erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) a Azure Portalban a szerzői kulcs és az erőforrás beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz**lehetőséget.
     * Az alkalmazásnak a QnA Maker APIhoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcs-és erőforrás-nevére. A kulcs és az erőforrás nevét a rövid útmutató későbbi részében található kódra másolja.
@@ -128,9 +128,9 @@ A Tudásbázis a [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/
 * **URL-címek**esetében a karakterláncok listáját használhatja a nyilvánosan elérhető URL-címek ábrázolására.
 
 A létrehozási lépés a tudásbázishoz tartozó tulajdonságokat is tartalmazza:
-* `defaultAnswerUsedForExtraction`-Ha nem talál választ, a rendszer a visszaadott értéket adja vissza
-* `enableHierarchicalExtraction`-a kinyert QnA-párok közötti gyors kapcsolatok automatikus létrehozása
-* `language`– Amikor létrehoz egy erőforrás első tudásbázisát, állítsa be a nyelvet a Azure Search indexben való használatra.
+* `defaultAnswerUsedForExtraction` -Ha nem talál választ, a rendszer a visszaadott értéket adja vissza
+* `enableHierarchicalExtraction` -a kinyert QnA-párok közötti gyors kapcsolatok automatikus létrehozása
+* `language` – Amikor létrehoz egy erőforrás első tudásbázisát, állítsa be a nyelvet a Azure Search indexben való használatra.
 
 Hívja meg a [create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) metódust a Tudásbázis információi alapján. A Tudásbázis adatai alapvetően egy JSON-objektum.
 

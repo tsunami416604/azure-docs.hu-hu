@@ -4,12 +4,12 @@ description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 772777c48c8d16197cd8a73586f6549837d7d080
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372399"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245944"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -94,9 +94,6 @@ A Microsoft csak a szolgáltatás nyújtásához használja fel az adatgyűjtés
 ## <a name="where-is-the-data-held"></a>Hol tárolják az adattárolást?
 * Ha új Application Insights erőforrást hoz létre, akkor kiválaszthatja a helyet. További információ a Application Insights rendelkezésre állásról [régiónként.](https://azure.microsoft.com/global-infrastructure/services/?products=all)
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Ez azt jelenti, hogy az alkalmazást az USA-ban, Európában vagy Délkelet-Ázsiában kell üzemeltetni?
-* Nem. Az alkalmazás bárhol futhat, akár a saját helyszíni gazdagépeken, akár a felhőben.
-
 ## <a name="how-secure-is-my-data"></a>Mennyire biztonságos az adataim?
 Application Insights egy Azure-szolgáltatás. A biztonsági szabályzatokat az [Azure biztonsági, adatvédelmi és megfelelőségi tanulmányai](https://go.microsoft.com/fwlink/?linkid=392408)tárgyalják.
 
@@ -129,7 +126,7 @@ Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurál
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`az adatmegőrzéshez használatos. Ez a hely nem konfigurálható a konfigurációs könyvtárból, és a mappa elérésére vonatkozó engedélyek az adott felhasználóra korlátozódnak a szükséges hitelesítő adatokkal. (További információ: [implementáció](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
+`C:\Users\username\AppData\Local\Temp` az adatmegőrzéshez használatos. Ez a hely nem konfigurálható a konfigurációs könyvtárból, és a mappa elérésére vonatkozó engedélyek az adott felhasználóra korlátozódnak a szükséges hitelesítő adatokkal. (További információ: [implementáció](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
 ###  <a name="net"></a>.Net
 
@@ -214,7 +211,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](/windows-server/security/tls/tls-registry-settings) lapját.  |
 | Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | N.A.
+|Windows Vista | Nem támogatott. | N/A
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 
@@ -277,7 +274,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Ajax |HTTP-hívások a weblapokról a kiszolgálóra |
 | Kérelmek |URL-cím, időtartam, válasz kódja |
 | Függőségek |Type (SQL, HTTP,...), kapcsolatok karakterlánca, vagy URI, szinkronizálás/aszinkron, időtartam, sikeres, SQL-utasítás (Állapotmonitor) |
-| **Kivételek** |Típus, **üzenet**, hívási verem, forrásfájl, sor száma,`thread id` |
+| **Kivételek** |Típus, **üzenet**, hívási verem, forrásfájl, sor száma, `thread id` |
 | Összeomlik |`Process id`, `parent process id` , `crash thread id` ; alkalmazás-javítás, `id` , Build;  Kivétel típusa, címe, ok; eltorzított szimbólumok és regiszterek, bináris kezdő és záró címek, bináris név és elérési út, processzor típusa |
 | Nyomkövetés |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálók |Processzoridő, rendelkezésre álló memória, kérelmek gyakorisága, kivételek száma, a folyamat saját bájtjai, i/o-sebesség, kérelem időtartama, kérelmek várólistájának hossza |

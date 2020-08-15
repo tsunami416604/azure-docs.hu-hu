@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/14/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f13d0d2ba26f49daac49c4dd88f3bdf8621c4ad4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f1152eb11d3452743daa5bcb39fb593dddf94452
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121493"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245927"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -88,10 +88,11 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 08/14/2020: lemez-konfigurációs tanácsok hozzáadása a DB2-hez az [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - 08/11/2020: a RHEL 7,6 hozzáadása [kompatibilis operációs rendszerekhez a HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) számára elérhető operációs rendszerként az I típusú HLI-egységek számára
 - 08/10/2020: SAP HANA az Azure-beli [virtuális gépek tárolási](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) konfigurációjának költséghatékonysági SAP HANA tárolási konfigurációjának bemutatása és néhány frissítés az Azure-beli [SAP-munkaterhelésekhez: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020: változás a [pacemaker beállítása a SLES az Azure](./high-availability-guide-suse-pacemaker.md) -ban és a [PACEMAKER beállítása a RHEL az Azure-ban](./high-availability-guide-rhel-pacemaker.md) a pacemaker-fürtök megbízható névfeloldásának fontossága kihangsúlyozása érdekében
-- 08/04/2020: változás az [SAP NW ha on WFCS with fájlmegosztás](./sap-high-availability-installation-wsfc-file-share.md), [SAP NW ha a WFCS megosztott lemezzel](./sap-high-availability-installation-wsfc-shared-disk.md), [Ha az SAP NW Azure-beli virtuális GÉPEKen](./high-availability-guide.md), ha az SAP NW Azure-beli [virtuális gépeken a SLES](./high-availability-guide-suse.md)-on, [Ha az SAP NW-on Azure-beli virtuális gépeken](./high-availability-guide-suse-netapp-files.md), a ANF-on található SLES-mel, [Ha az Azure-beli virtuális gépeken elérhető SAP NW-t használja a SLES multi-SID útmutatójában](./high-availability-guide-suse-multi-sid.md), [magas rendelkezésre állást biztosít az Azure](./high-availability-guide-rhel.md)-beli virtuális gépeken futó Azure-beli virtuális gépeken a [RHEL-on](./high-availability-guide-rhel-netapp-files.md) futó Azure [-](./high-availability-guide-rhel-multi-sid.md) beli virtuális gépeken`enque/encni/set_so_keepalive`
+- 08/04/2020: változás az [SAP NW ha on WFCS with fájlmegosztás](./sap-high-availability-installation-wsfc-file-share.md), [SAP NW ha a WFCS megosztott lemezzel](./sap-high-availability-installation-wsfc-shared-disk.md), [Ha az SAP NW Azure-beli virtuális GÉPEKen](./high-availability-guide.md), ha az SAP NW Azure-beli [virtuális gépeken a SLES](./high-availability-guide-suse.md)-on, [Ha az SAP NW-on Azure-beli virtuális gépeken](./high-availability-guide-suse-netapp-files.md), a ANF-on található SLES-mel, [Ha az Azure-beli virtuális gépeken elérhető SAP NW-t használja a SLES multi-SID útmutatójában](./high-availability-guide-suse-multi-sid.md), [magas rendelkezésre állást biztosít az Azure](./high-availability-guide-rhel.md)-beli virtuális gépeken futó Azure-beli virtuális gépeken a [RHEL-on](./high-availability-guide-rhel-netapp-files.md) futó Azure [-](./high-availability-guide-rhel-multi-sid.md) beli virtuális gépeken `enque/encni/set_so_keepalive`
 - 07/23/2020: a [Save on SAP HANA Large instances hozzáadva egy Azure foglalási](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) cikkből megtudhatja, hogy mit kell tudnia a SAP HANA Large instances foglalás megvásárlása és a vásárlás elvégzése előtt?
 - 07/16/2020: leírja, hogyan telepítheti az SAP-hez készült új virtuálisgép-bővítményt az Azure PowerShell használatával a [telepítési útmutatóban](deployment-guide.md)
 - 7/04/2020: az [Azure monitor for SAP Solutions (előzetes verzió)](./azure-monitor-overview.md) kiadása
@@ -133,7 +134,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - Február 26., 2020: változás a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](./hana-vm-operations-storage.md) az Azure-beli HANA-beli fájlrendszer-beállítások tisztázásához
 - Február 26., 2020: változás a [magas rendelkezésre állású architektúrában és az SAP-forgatókönyvekben](./sap-high-availability-architecture-scenarios.md) , hogy tartalmazza az Azure-beli virtuális gépeken elérhető SAP NetWeaver-ra mutató HIVATKOZÁST a RHEL multi-SID útmutatóban
 - Február 26., 2020: magas rendelkezésre állás megváltozása az SAP NW-ben Azure-beli [virtuális gépeken az SLES for SAP-alkalmazásokhoz](./high-availability-guide-suse.md), [magas rendelkezésre állás az SAP NW számára az Azure-beli virtuális GÉPEKen a SLES-ben a ANF for SAP Applications](./high-availability-guide-suse-netapp-files.md), az [Azure virtuális gépek magas rendelkezésre állása a RHEL](./high-availability-guide-rhel.md) és az azure-beli [virtuális gépek magas Azure NetApp Files rendelkezésre](./high-availability-guide-rhel-netapp-files.md) állásáról
-- Február 26., 2020: az [SAP NetWeaver magas rendelkezésre állásának kiadása az Azure-beli virtuális gépeken a RHEL multi-SID útmutatóban](./high-availability-guide-rhel-multi-sid.md) a SUSE multi-SID-fürtre mutató hivatkozás hozzáadásához
+- Február 26., 2020: az  [SAP NetWeaver magas rendelkezésre állásának kiadása az Azure-beli virtuális gépeken a RHEL multi-SID útmutatóban](./high-availability-guide-rhel-multi-sid.md) a SUSE multi-SID-fürtre mutató hivatkozás hozzáadásához
 - 02/25/2020: változás a [magas rendelkezésre állású architektúrában és az SAP-forgatókönyvekben](./sap-high-availability-architecture-scenarios.md) az újabb ha-cikkekre mutató hivatkozások hozzáadásához
 - Február 25.2020: az [IBM DB2-LUW magas rendelkezésre állásának megváltozása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server és a pacemaker](./dbms-guide-ha-ibm.md) használatával olyan dokumentumra mutat, amely leírja a nyilvános végponthoz való hozzáférést a standard Azure Load balancerrel
 - Február 21., 2020: a SAP-beli [Azure Virtual Machines adatbázis-kezelő rendszer üzembe helyezése SAP-munkaterheléshez](./dbms_guide_sapase.md) című cikk teljes felülvizsgálata

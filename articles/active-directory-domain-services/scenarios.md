@@ -9,20 +9,70 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 08/14/2020
 ms.author: iainfou
-ms.openlocfilehash: ba4761a2b7893fd894f62b7e2252005d7afd1c91
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4cd6a37ad2d5081cdc587290c361fbc992c69bfb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039976"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245162"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gyakori használati esetek és forgatókönyvek Azure Active Directory Domain Services
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, a Lightweight Directory Access Protocol (LDAP) és a Kerberos/NTLM hitelesítés. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel, ami lehetővé teszi a felhasználók számára, hogy a meglévő hitelesítő adataikkal jelentkezzenek be. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja a felhőben, ami zökkenőmentesebb átállást biztosít a helyszíni erőforrások számára az Azure-ba.
 
 Ez a cikk néhány olyan gyakori üzleti forgatókönyvet mutat be, ahol az Azure AD DS értékkel rendelkezik, és megfelel ezeknek az igényeknek.
+
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>A Felhőbeli identitási megoldások nyújtásának gyakori módjai
+
+Amikor meglévő számítási feladatokat telepít át a felhőbe, a címtárat támogató alkalmazások LDAP-t használhatnak a helyszíni AD DS-címtárhoz való olvasási vagy írási hozzáféréshez. A Windows Serveren futó alkalmazások jellemzően tartományhoz csatlakoztatott virtuális gépeken (VM-EK) vannak telepítve, hogy biztonságosan felügyelhetők legyenek Csoportházirend használatával. A végfelhasználók hitelesítéséhez az alkalmazások Windows-integrált hitelesítéssel is támaszkodhatnak, például Kerberos-vagy NTLM-hitelesítéssel.
+
+A rendszergazdák gyakran használják az alábbi megoldások egyikét az Azure-ban futó alkalmazások azonosítására:
+
+* Helyek közötti VPN-kapcsolat konfigurálása az Azure-ban és egy helyszíni AD DS környezetben futó munkaterhelések között.
+    * A helyszíni tartományvezérlők ezután a VPN-kapcsolaton keresztül biztosítják a hitelesítést.
+* Hozzon létre replika tartományvezérlőket az Azure Virtual Machines (VM) használatával, hogy kiterjessze a AD DS tartományt/erdőt a helyszíni környezetből.
+    * Az Azure-beli virtuális gépeken futó tartományvezérlők hitelesítést biztosítanak, és címtáradatokat replikálnak a helyszíni AD DS környezet között.
+* Önálló AD DS-környezet üzembe helyezése az Azure-ban Azure-beli virtuális gépeken futó tartományvezérlők használatával.
+    * Az Azure-beli virtuális gépeken futó tartományvezérlők hitelesítést biztosítanak, de a helyszíni AD DS környezetből nem replikálódnak a címtáradatok.
+
+Ezekkel a megközelítésekkel a helyszíni címtárhoz való VPN-kapcsolatok sebezhetővé teszik az alkalmazásokat az átmeneti hálózati hibák és kimaradások tekintetében. Ha a tartományvezérlőket az Azure-beli virtuális gépek használatával telepíti, az informatikai csapatnak kezelnie kell a virtuális gépeket, majd biztonságossá, javítani, figyelnie, biztonsági mentést kell készítenie és elhárítani azokat.
+
+Az Azure AD DS alternatívákat biztosít a VPN-kapcsolatok helyszíni AD DS környezetbe való visszaállításához, illetve a virtuális gépek Azure-beli futtatásához és kezeléséhez az Identity Services biztosításához. Felügyelt szolgáltatásként az Azure AD DS csökkenti az összetettséget, hogy integrált identitás-megoldást hozzon létre mind a hibrid, mind a csak felhőalapú környezetekhez.
+
+> [!div class="nextstepaction"]
+> [Az Azure AD DS összehasonlítása az Azure AD-vel és az Azure-beli virtuális gépeken, illetve a helyszínen található, önállóan felügyelt AD DSekkel][compare]
+
+## <a name="azure-ad-ds-for-hybrid-organizations"></a>Azure-AD DS hibrid szervezeteknél
+
+Számos szervezet olyan hibrid infrastruktúrát futtat, amely magában foglalja a Felhőbeli és a helyszíni alkalmazások számítási feladatait is. A lift és a SHIFT stratégia részeként az Azure-ba migrált örökölt alkalmazások hagyományos LDAP-kapcsolatokat használhatnak az azonosító adatok biztosításához. A hibrid infrastruktúra támogatásához a helyszíni AD DS-környezetből származó azonosító adatokat szinkronizálhatja egy Azure AD-Bérlővel. Az Azure AD DS ezeket az örökölt alkalmazásokat az Azure-ban identitás-forrással biztosítja, anélkül, hogy konfigurálni és kezelni kellene az alkalmazások kapcsolatait a helyszíni címtárszolgáltatások számára.
+
+Tekintsük át például a Litware Corporation, egy hibrid szervezet, amely a helyszíni és az Azure-erőforrásokat is futtatja:
+
+![Azure Active Directory Domain Services a helyszíni szinkronizálást tartalmazó hibrid szervezetek számára](./media/overview/synced-tenant.png)
+
+* A tartományi szolgáltatásokat igénylő alkalmazások és kiszolgálói munkaterhelések üzembe helyezése az Azure-beli virtuális hálózaton történik.
+    * Ebbe beletartozhatnak az Azure-ba migrált örökölt alkalmazások a felvonó és a váltási stratégia részeként.
+* A helyszíni címtárból az Azure AD-bérlőre való adatszinkronizáláshoz a Litware Corporation üzembe helyezi [Azure ad Connect][azure-ad-connect].
+    * A szinkronizált azonosító adatok felhasználói fiókokat és csoporttagságokat tartalmaznak.
+* A Litware IT csapata lehetővé teszi, hogy az Azure AD DS az Azure AD-bérlője számára, vagy egy egyenrangú virtuális hálózatot.
+* Az Azure Virtual Networkben üzembe helyezett alkalmazások és virtuális gépek ezután az Azure AD DS funkcióit használhatják, például a tartományhoz való csatlakozás, az LDAP-olvasás, az LDAP-kötés, az NTLM és a Kerberos-hitelesítés, valamint a Csoportházirend.
+
+> [!IMPORTANT]
+> A Azure AD Connect csak a helyszíni AD DS környezetekkel való szinkronizálásra kell telepíteni és konfigurálni. A felügyelt tartományokban való Azure AD Connect telepítése nem támogatott az objektumok Azure AD-be való visszaszinkronizálásához.
+
+## <a name="azure-ad-ds-for-cloud-only-organizations"></a>Azure-AD DS csak felhőalapú szervezeteknek
+
+A csak felhőalapú Azure AD-bérlő nem rendelkezik helyszíni Identity forrással. A felhasználói fiókok és csoporttagságok például közvetlenül az Azure AD-ben jönnek létre és kezelhetők.
+
+Most nézzük meg a contoso egy példáját, amely egy csak felhőalapú szervezet, amely az Azure AD-t használja az identitáshoz. Az Azure AD-ben az összes felhasználói identitás, a hitelesítő adatai és a csoporttagságok is létrejönnek és kezelhetők. A helyszíni címtárból származó összes identitási információ szinkronizálása nem Azure AD Connect további konfigurációval.
+
+![Azure Active Directory Domain Services csak felhőalapú szervezet számára helyszíni szinkronizálás nélkül](./media/overview/cloud-only-tenant.png)
+
+* A tartományi szolgáltatásokat igénylő alkalmazások és kiszolgálói munkaterhelések üzembe helyezése az Azure-beli virtuális hálózaton történik.
+* A contoso informatikai csapata lehetővé teszi, hogy az Azure AD DS az Azure AD-bérlője számára, vagy egy társ virtuális hálózatot.
+* Az Azure Virtual Networkben üzembe helyezett alkalmazások és virtuális gépek ezután az Azure AD DS funkcióit használhatják, például a tartományhoz való csatlakozás, az LDAP-olvasás, az LDAP-kötés, az NTLM és a Kerberos-hitelesítés, valamint a Csoportházirend.
 
 ## <a name="secure-administration-of-azure-virtual-machines"></a>Azure-beli virtuális gépek biztonságos felügyelete
 
@@ -117,6 +167,8 @@ Első lépésként [hozzon létre és konfiguráljon egy Azure Active Directory 
 [custom-ou]: create-ou.md
 [create-gpo]: manage-group-policy.md
 [sspr]: ../active-directory/authentication/overview-authentication.md#self-service-password-reset
+[compare]: compare-identity-solutions.md
+[azure-ad-connect]: ../active-directory/hybrid/whatis-azure-ad-connect.md
 
 <!-- EXTERNAL LINKS -->
 [windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds

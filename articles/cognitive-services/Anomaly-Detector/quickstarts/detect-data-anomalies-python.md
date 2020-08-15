@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: daee5a921e25dc74d6e869ca3feb6c66d8c4ce7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851031"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245706"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és a Python használatával
 
@@ -31,7 +31,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 - Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
     - Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
@@ -85,7 +85,7 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legutóbbi adatpont anomália állapotának észlelése
 
-1. Hozzon létre egy nevű metódust `detect_latest()` annak megállapításához, hogy az idősorozat legújabb adatpontja anomália-e. Hívja `send_request()` meg a fenti metódust a végpont, az URL-cím, az előfizetési kulcs és a JSON-adatai alapján. 
+1. Hozzon létre egy nevű metódust `detect_latest()` annak megállapításához, hogy az idősorozat legújabb adatpontja anomália-e. Hívja `send_request()` meg a fenti metódust a végpont, az URL-cím, az előfizetési kulcs és a JSON-adatai alapján.
 
 2. A `json.dumps()` formázáshoz hívja meg az eredményt, és nyomtassa ki a konzolra.
 

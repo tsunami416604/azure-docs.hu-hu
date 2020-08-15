@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206863"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244771"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>A S2S VPN használata biztonsági mentésként a ExpressRoute-alapú privát partnerek számára
 
-A ExpressRoute-alapú, a vész- [helyreállítás megtervezése][DR-PP]című cikkből megbeszéltük, hogy szükség van-e a biztonsági mentési megoldásra a ExpressRoute privát kapcsolati kapcsolataihoz, és hogyan használható a Geo-redundáns ExpressRoute-áramkörök a célra. Ebből a cikkből megtudhatja, hogyan hasznosíthatja és kezelheti a helyek közötti (S2S) VPN-t a ExpressRoute privát társításának visszaállítása érdekében. 
+A ExpressRoute-alapú, a vész- [helyreállítás megtervezése][DR-PP]című cikkből megbeszéltük, hogy szükség van-e a biztonsági mentési megoldásra a ExpressRoute privát kapcsolati kapcsolataihoz, és hogyan használható a Geo-redundáns ExpressRoute-áramkörök a célra. Ebből a cikkből megtudhatja, hogyan hasznosíthatja és kezelheti a helyek közötti (S2S) VPN-t biztonsági másolatként a ExpressRoute privát társításához. 
 
 A Geo-redundáns ExpressRoute áramköröktől eltérően a ExpressRoute-VPN vész-helyreállítási kombinációja csak aktív-passzív módban használható. A passzív üzemmódban a biztonsági mentés hálózati kapcsolatának egyik fő kihívása, hogy a passzív kapcsolat az elsődleges kapcsolat mellett gyakran meghiúsul. A passzív kapcsolatok meghibásodásának gyakori oka az aktív karbantartás hiánya. Ebből a cikkből megtudhatja, hogyan ellenőrizheti és aktívan karbantarthatja a S2S VPN-kapcsolatot, amely biztonsági mentést készít egy ExpressRoute privát társáról.
 
@@ -116,7 +116,7 @@ Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
 
 ### <a name="configuring-for-symmetric-traffic-flow"></a>Konfigurálás szimmetrikus adatforgalomhoz
 
-Megjegyezték, hogy ha egy adott helyszíni útvonalat a ExpressRoute és a S2S VPN használatával hirdetnek meg, az Azure előnyben részesíti a ExpressRoute elérési útját. Ahhoz, hogy az Azure inkább a S2S VPN-elérési utat részesíti előnyben az egyidejű ExpressRoute, a VPN-kapcsolaton keresztül több konkrét útvonalat kell meghirdetni (nagyobb alhálózati maszkkal hosszabb előtaggal). A cél az, hogy a VPN-kapcsolatokat csak vissza lehessen használni. Így az Azure alapértelmezett útvonal-kiválasztási viselkedése a célunk. 
+Megjegyezték, hogy ha egy adott helyszíni útvonalat a ExpressRoute és a S2S VPN használatával hirdetnek meg, az Azure előnyben részesíti a ExpressRoute elérési útját. Ahhoz, hogy az Azure inkább a S2S VPN-elérési utat részesíti előnyben az egyidejű ExpressRoute, a VPN-kapcsolaton keresztül több konkrét útvonalat kell meghirdetni (nagyobb alhálózati maszkkal hosszabb előtaggal). A cél az, hogy a VPN-kapcsolatokat csak biztonsági mentésként használja. Így az Azure alapértelmezett útvonal-kiválasztási viselkedése a célunk. 
 
 Felelősségünk biztosítani, hogy az Azure-ba érkező, helyszíni forgalom a ExpressRoute útvonalon is előnyben részesíti a S2S VPN-t. A helyszíni telepítőben a CE-útválasztók és tűzfalak alapértelmezett helyi beállításai a 100. Tehát a 100-nál nagyobb privát ExpressRoute keresztül fogadott útvonalak helyi preferenciájának konfigurálásával (mondjuk 150) az Azure-ba irányuló forgalom a ExpressRoute áramkört stabil állapotba helyezheti.
 

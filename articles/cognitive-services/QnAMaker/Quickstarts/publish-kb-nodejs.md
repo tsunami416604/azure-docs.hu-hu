@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406095"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245587"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k Node.js
 
@@ -31,7 +31,7 @@ Használja a QnA Maker REST API-kat a Node.jshoz:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * A [Node.js](https://nodejs.org)aktuális verziója.
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 
@@ -88,8 +88,8 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 
 Állítsa be a következő környezeti értékeket:
 
-* `QNAMAKER_RESOURCE_KEY`– A **kulcs** egy 32 karakterből álló karakterlánc, amely a Azure Portal QnA Maker erőforrásban, a **gyors üzembe helyezés** lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
-* `QNAMAKER_AUTHORING_ENDPOINT`– A szerzői végpont a formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
+* `QNAMAKER_RESOURCE_KEY` – A **kulcs** egy 32 karakterből álló karakterlánc, amely a Azure Portal QnA Maker erőforrásban, a **gyors üzembe helyezés** lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
+* `QNAMAKER_AUTHORING_ENDPOINT` – A szerzői végpont a formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
@@ -159,7 +159,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)

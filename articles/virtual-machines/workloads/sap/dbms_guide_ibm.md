@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 08/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366a302e4683c74e2ba62d76c066365a3c81b045
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ea95603ea630a1320db5698092f6748e36a9934
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051871"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245757"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -30,8 +30,8 @@ Az Azure-ban megjelent SAP számítási feladatok különböző cikkei.  Javasol
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területeken:
 
-| Megjegyzés száma | Cím |
-| --- | --- |
+| Megjegyzés száma |Cím |
+| --- |--- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
 | [1999351] |Az SAP-hez készült bővített Azure monitoring hibaelhárítása |
@@ -54,10 +54,10 @@ További információ a támogatott SAP-termékekről és az Azure-beli virtuál
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 Linux-, UNIX-és Windows-konfigurációs irányelvek az Azure-beli virtuális gépeken futó SAP-telepítésekhez
 ### <a name="storage-configuration"></a>Tárolási konfiguráció
-Az összes adatbázisfájlt a közvetlenül csatlakoztatott lemezek alapján kell tárolni az NTFS fájlrendszerben. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az Azure Page BLOB Storage-ban ( <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> ) vagy Managed Disks () alapulnak <https://docs.microsoft.com/azure/storage/storage-managed-disks-overview> . Az adatbázisfájlok **nem** támogatják a különböző hálózati meghajtókat vagy távoli megosztásokat, például a következő Azure-Fájlszolgáltatások: 
+Az SAP-alapú számítási feladatokhoz használható Azure Storage-típusok áttekintéséhez tekintse meg az Azure-beli [tárolási típusok SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) -alapú számítási feladatokhoz az összes adatbázisfájlt az Azure Block Storage csatlakoztatott lemezén kell tárolni (Windows: NFFS, Linux: XFS, ext4 vagy ext3). A következő Azure-szolgáltatásokhoz hasonló hálózati meghajtók vagy távoli megosztások **nem** támogatottak az adatbázisfájlok esetében: 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+* [Microsoft Azure file Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Az Azure-beli BLOB Storage vagy a Managed Disks-alapú lemezek használatával az [azure Virtual Machines adatbázis-kezelő rendszerhez készült, az SAP számítási feladatokhoz való üzembe helyezésével kapcsolatos megfontolások](dbms_guide_general.md) a DB2 adatbázis-kezelővel együtt üzemelő példányokra vonatkoznak.
 
@@ -74,6 +74,58 @@ Azt is megteheti, hogy a Windows Storage-készleteket (csak a Windows Server 201
 A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. Windows Storage-készletek használatakor manuálisan kell létrehoznia a tárolási készleteket parancssori felületen keresztül a paraméter használatával `-LogicalSectorSizeDefault` . További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../windows/how-to-enable-write-accelerator.md).
+
+## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>Javaslat a virtuális gépekre és a lemez struktúrájára az IBM DB2 üzembe helyezéséhez
+
+Az SAP NetWeaver-alkalmazások IBM DB2-alkalmazásai az SAP-támogatási Megjegyzés [1928533]-as verziójában felsorolt bármely virtuálisgép-típus esetében támogatottak.  Az IBM DB2-adatbázis futtatásához ajánlott virtuálisgép-családok Esd_v4/Eas_v4/Es_v3 és M/M_v2 sorozat a nagyméretű, több terabájtos adatbázisok számára. Az IBM DB2 tranzakciós napló lemezének írási teljesítménye javítható az M-sorozat írásgyorsítóának engedélyezésével. 
+
+Az alábbiakban egy alapkonfigurációt használunk, amely különböző méreteket és az SAP-t használja a kis-és nagyméretű üzembe helyezéshez:
+
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Extra kis SAP-System: adatbázis mérete 50 – 200 GB: példa a megoldás-kezelőre
+| Virtuális gép neve/mérete |DB2 csatlakoztatási pont |Prémium szintű Azure-lemez |Lemezek száma |IOPS |Átviteli sebesség [MB/s] |Méret [GB] |Burst IOPS |Burst sorozat [GB] | Sáv mérete | Gyorsítótárazás |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
+|vCPU: 4 |/DB2/ <SID> /sapdata |P6 |4 |960  |200  |256  |14,000  |680  |256 KB |ReadOnly |
+|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Kis SAP-rendszerek: adatbázis mérete 200 – 750 GB: Small Business Suite
+| Virtuális gép neve/mérete |DB2 csatlakoztatási pont |Prémium szintű Azure-lemez |Lemezek száma |IOPS |Átviteli sebesség [MB/s] |Méret [GB] |Burst IOPS |Burst sorozat [GB] | Sáv mérete | Gyorsítótárazás |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4,400  |500  |1,024  |14,000  |680  |256 KB |ReadOnly |
+|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Közepes SAP-rendszerek: adatbázis mérete 500 – 1000 GB: Small Business Suite
+| Virtuális gép neve/mérete |DB2 csatlakoztatási pont |Prémium szintű Azure-lemez |Lemezek száma |IOPS |Átviteli sebesség [MB/s] |Méret [GB] |Burst IOPS |Burst sorozat [GB] | Sáv mérete | Gyorsítótárazás |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10,000  |400  |2,048  |10,000  |400  |256 KB |ReadOnly |
+|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P20 |2 |4,600  |300  |1,024  |7,000  |340  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Nagyméretű SAP-rendszerek: adatbázis mérete 750 – 2000 GB: Business Suite
+| Virtuális gép neve/mérete |DB2 csatlakoztatási pont |Prémium szintű Azure-lemez |Lemezek száma |IOPS |Átviteli sebesség [MB/s] |Méret [GB] |Burst IOPS |Burst sorozat [GB] | Sáv mérete | Gyorsítótárazás |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20,000  |800  |4,096  |20,000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P20 |4 |9,200  |600  |2,048  |14,000  |680  |64 KB ||
+| |/DB2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+
+#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>Nagyméretű, több terabájtos SAP-rendszerek: adatbázis mérete 2TB +: Global Business Suite System
+| Virtuális gép neve/mérete |DB2 csatlakoztatási pont |Prémium szintű Azure-lemez |Lemezek száma |IOPS |Átviteli sebesség [MB/s] |Méret [GB] |Burst IOPS |Burst sorozat [GB] | Sáv mérete | Gyorsítótárazás |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30,000  |1,000  |8,192  |30,000  |1,000  |256 KB |ReadOnly |
+|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4,600  |300  |1,024  |7,000  |340  |128 KB ||
+| |/DB2/ <SID> /log_dir |P30 |4 |20,000  |800  |4,096  |20,000  |800  |64 KB |WriteAccelerator |
+| |/DB2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1,024  |5,000  |200  || |
+
 
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
 A LUW IBM DB2 biztonsági mentési/helyreállítási funkciója ugyanúgy támogatott, mint a normál Windows Server operációs rendszereken és a Hyper-V-ben.
@@ -95,6 +147,15 @@ A megjelenő célok számának növeléséhez két lehetőség is használható/
 >A DB2 on Windows rendszeren nem támogatott a Windows VSS technológiája. Ennek eredményeképpen a Azure Backup szolgáltatás konzisztens virtuálisgép-biztonsági mentése nem használható olyan virtuális gépek számára, amelyeken a DB2-adatbázis telepítve van.
 
 ### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vészhelyreállítás
+
+#### <a name="linux-pacemaker"></a>Linux-pacemaker
+
+A magas rendelkezésre állású DB2-helyreállítás (HADR) a pacemakerrel együtt támogatott. A SLES és a RHEL operációs rendszerek egyaránt támogatottak. Ez a konfiguráció lehetővé teszi, hogy magas rendelkezésre állást biztosítson az IBM DB2 for SAP számára. Üzembe helyezési útmutatók:
+* SLES: [az IBM DB2-LUW magas rendelkezésre állása az Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel](dbms-guide-ha-ibm.md) 
+* RHEL: [az IBM DB2 LUW magas rendelkezésre állása Red Hat Enterprise Linux-kiszolgálón lévő Azure-beli virtuális gépeken](high-availability-guide-rhel-ibm-db2-luw.md)
+
+#### <a name="windows-cluster-server"></a>Windows-fürt kiszolgálója
+
 A Microsoft Cluster Server (MSCS) nem támogatott.
 
 A DB2 magas rendelkezésre állású vész-helyreállítási (HADR) használata támogatott. Ha a HA-konfiguráció virtuális gépei működnek a névfeloldással, az Azure-beli beállítás nem különbözik a helyszínen végzett telepítéstől. Nem ajánlott kizárólag az IP-feloldásra támaszkodni.

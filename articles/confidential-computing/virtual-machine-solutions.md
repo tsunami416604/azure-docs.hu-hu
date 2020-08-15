@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985426"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245852"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Megoldások az Azure Virtual Machines szolgáltatásban
 
 Ez a cikk az Intel [Software Guard Extension](https://software.intel.com/sgx) (Intel SGX enklávéhoz) által támogatott Intel-processzorokat futtató Azure bizalmas számítástechnikai virtuális gépek (VM-EK) üzembe helyezésével kapcsolatos információkat ismerteti. 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Azure Confidential Computing virtuális gépek mérete
+## <a name="azure-confidential-computing-vm-sizes"></a>Azure bizalmas számítástechnikai VM-méretek
 
 Az Azure bizalmas számítástechnikai virtuális gépek úgy vannak kialakítva, hogy védve legyenek az adatok és a kódok titkossága és integritása a felhőben történő feldolgozás során 
 
@@ -32,41 +32,18 @@ A gyors üzembe helyezési [útmutatót](quick-create-marketplace.md)követve me
 A rendelkezésre álló régiók és rendelkezésre állási zónák összes általánosan elérhető, bizalmas számítási virtuálisgép-méretéről a következő parancs futtatásával kérheti le az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-ben:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-Az alábbi régiókban és rendelkezésre állási zónákban a 2020-es verziótól kezdve ezek a SKU-ket vehetik igénybe:
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 A fenti méretek részletesebb megjelenítéséhez futtassa a következő parancsot:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Dedikált gazdagépekre vonatkozó követelmények
@@ -101,17 +78,17 @@ Ha virtuális gépeket használ az Azure-ban, a rendszer a magas rendelkezésre 
 
 Az Azure bizalmas számítástechnika jelenleg nem támogatja a Zone-redundanciát Availability Zoneson keresztül. A bizalmas számítástechnika legmagasabb rendelkezésre állása és redundancia érdekében használja a [rendelkezésre állási csoportokat](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy). A hardveres korlátozások miatt a bizalmas számítástechnikai példányok rendelkezésre állási csoportjainak száma legfeljebb 10 frissítési tartománnyal rendelkezhet. 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>Üzembe helyezés Azure Resource Manager sablon használatával 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>Üzembe helyezés Azure Resource Manager (ARM) sablonnal
 
 Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. Használhatja a felügyeleti szolgáltatásokat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket, hogy az üzembe helyezés után biztonságossá és rendszerezje az erőforrásokat.
 
-Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [template Deployment áttekintése](../azure-resource-manager/templates/overview.md)című témakört.
+Az ARM-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [template Deployment áttekintése](../azure-resource-manager/templates/overview.md)című témakört.
 
-A DCsv2-sorozatú virtuális gépek Azure Resource Manager-sablonban való üzembe helyezéséhez a [virtuális gép erőforrását](../virtual-machines/windows/template-description.md)fogja használni. Győződjön meg arról, hogy a megfelelő tulajdonságokat adja meg a **vmSize** és a **imageReference**.
+Ha DCsv2-sorozatú virtuális gépet szeretne üzembe helyezni egy ARM-sablonban, a [virtuális gép erőforrását](../virtual-machines/windows/template-description.md)fogja használni. Győződjön meg arról, hogy a megfelelő tulajdonságokat adja meg a **vmSize** és a **imageReference**.
 
 ### <a name="vm-size"></a>Virtuális gép mérete
 
-A virtuális gép erőforrásának Azure Resource Manager sablonjában adja meg a következő méretek egyikét. Ez a karakterlánc a tulajdonságok **vmSize** kerül **properties**.
+Adja meg a következő méretek egyikét a ARM-sablonban a virtuális gép erőforrásában. Ez a karakterlánc a tulajdonságok **vmSize** kerül **properties**.
 
 ```json
   [
@@ -153,7 +130,7 @@ A **Tulajdonságok**területen a **storageProfile**alatt lévő képre is hivatk
       }
 ```
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ebben a cikkben megtanulta a bizalmas számítástechnikai virtuális gépek létrehozásakor szükséges minősítéseket és konfigurációkat. Most már a Microsoft Azure Marketplace egy DCsv2-sorozatú virtuális gép üzembe helyezéséhez.
 

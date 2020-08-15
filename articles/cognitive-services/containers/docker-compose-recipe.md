@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878782"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244295"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>A Docker Compose használata több tároló üzembe helyezéséhez
 
@@ -29,7 +29,7 @@ Hasznos lehet több tároló lemezképének összehangolása egyetlen gazdagépe
 
 Ez az eljárás számos olyan eszközt igényel, amelyeknek helyileg kell telepítenie és futnia:
 
-* Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+* Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services) .
 * [Docker-motor](https://www.docker.com/products/docker-engine). Ellenőrizze, hogy a Docker CLI működik-e a konzol ablakban.
 * Egy megfelelő árképzési szintű Azure-erőforrás. Ebben a tárolóban csak a következő díjszabási szintek működnek:
   * Csak F0 vagy standard árképzési szinttel **Computer Vision** erőforrást.
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>Tárolók tesztelése
 
-Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a *Docker-levélírás. YAML* fájl megadott portjának http://localhost:5021/swagger/index.htmlhasználatával, például:. Az API **kipróbálás** funkciójának használatával például tesztelheti az űrlap-felismerő végpontot. Mindkét tárolónak elérhetőnek és tesztelhető kell lennie.
+Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a *Docker-levélírás. YAML* fájl megadott portjának használatával, például: http://localhost:5021/swagger/index.html . Az API **kipróbálás** funkciójának használatával például tesztelheti az űrlap-felismerő végpontot. Mindkét tárolónak elérhetőnek és tesztelhető kell lennie.
 
 ![Űrlap-felismerő tároló](media/form-recognizer-swagger-page.png)
 

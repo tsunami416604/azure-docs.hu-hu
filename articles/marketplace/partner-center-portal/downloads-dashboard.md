@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317569"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245672"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>A Letöltések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -25,11 +25,9 @@ A letöltések irányítópult eléréséhez nyissa meg az **[elemzés](https://
 
 ## <a name="downloads-dashboard"></a>Letöltések irányítópult
 
-Az **elemzés** menü **letöltések** irányítópultján minden olyan letöltésre vonatkozó kérés látható, amely több mint 1000 sort tartalmaz az ügyfél vagy a megrendelés adatait illetően.
+Az **elemzés** menü **letöltések** irányítópultján minden olyan letöltésre vonatkozó kérés látható, amely több mint 1000 sort tartalmaz az ügyfél vagy a megrendelés adatait illetően. Ezek az adatletöltések 30 napig lesznek elérhetők, majd el lesznek távolítva.
 
-Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letöltések** irányítópultra mutató hivatkozást, ha több mint 1000 sornyi adatra vonatkozó letöltést kér. Ezek az adatletöltések egy 30 napos időszakra lesznek elérhetők, majd törlődnek.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
