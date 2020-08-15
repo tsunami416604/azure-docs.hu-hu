@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203022"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234738"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -34,7 +34,7 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 - A Azure Portal navigáljon **Azure Active Directory**  >  **naplók** > szűrés **tevékenység: karanténba helyezés** , és tekintse át a karanténba helyezési előzményeket. Bár a fentiekben ismertetett folyamatjelzőn látható nézet azt mutatja, hogy a kiépítés jelenleg karanténban van-e, a naplók lehetővé teszik az alkalmazások karanténba helyezési előzményeinek megtekintését. 
 
-- Használja a Microsoft Graph kérelmet a [synchronizationJob beszerzéséhez](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) a kiépítési feladatok állapotának programozott beszerzéséhez:
+- Használja a Microsoft Graph kérelmet a [synchronizationJob beszerzéséhez](/graph/api/synchronization-synchronizationjob-get?tabs=http&view=graph-rest-beta) a kiépítési feladatok állapotának programozott beszerzéséhez:
 
 ```microsoft-graph
         GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
@@ -52,15 +52,15 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 |---|---|
 |**Scim megfelelőségi probléma:** HTTP/404 nem található válasz lett visszaadva a várt HTTP/200 OK válasz helyett. Ebben az esetben az Azure AD-kiépítési szolgáltatás kérelmet küldött a célalkalmazás számára, és váratlan választ kapott.|Tekintse meg a rendszergazdai hitelesítő adatok szakaszt, és ellenőrizze, hogy az alkalmazás a bérlői URL-cím megadását igényli-e, és hogy az URL helyes-e. Ha nem jelenik meg a probléma, forduljon az alkalmazás fejlesztői szolgálatához, és győződjön meg arról, hogy a szolgáltatásuk SCIM-kompatibilis. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Érvénytelen hitelesítő adatok:** Ha a célalkalmazás hozzáférésének engedélyezését kísérli meg, a rendszer választ kapott a célalkalmazástól, amely jelzi, hogy a megadott hitelesítő adatok érvénytelenek.|Lépjen a létesítési konfiguráció felhasználói felületének rendszergazdai hitelesítő adatok szakaszára, és engedélyezze újra a hozzáférést érvényes hitelesítő adatokkal. Ha az alkalmazás szerepel a katalógusban, tekintse át az alkalmazás konfigurációját ismertető oktatóanyagot a további szükséges lépésekhez.|
-|**Ismétlődő szerepkörök:** Az egyes alkalmazásokból (például a Salesforce és a zendesk) importált szerepköröknek egyedieknek kell lenniük. |Navigáljon az alkalmazás [jegyzékfájlhoz](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) a Azure Portalban, és távolítsa el az ismétlődő szerepkört.|
+|**Ismétlődő szerepkörök:** Az egyes alkalmazásokból (például a Salesforce és a zendesk) importált szerepköröknek egyedieknek kell lenniük. |Navigáljon az alkalmazás [jegyzékfájlhoz](../develop/reference-app-manifest.md) a Azure Portalban, és távolítsa el az ismétlődő szerepkört.|
 
  A kiépítési feladatok állapotának beolvasására Microsoft Graph kérelem a karanténba helyezés következő okát mutatja be:
 
-- `EncounteredQuarantineException`azt jelzi, hogy érvénytelen hitelesítő adatok lettek megadva. A kiépítési szolgáltatás nem tud kapcsolatot létesíteni a forrásrendszer és a célként megadott rendszer között.
+- `EncounteredQuarantineException` azt jelzi, hogy érvénytelen hitelesítő adatok lettek megadva. A kiépítési szolgáltatás nem tud kapcsolatot létesíteni a forrásrendszer és a célként megadott rendszer között.
 
-- `EncounteredEscrowProportionThreshold`azt jelzi, hogy a kiépítés túllépte a letéti küszöbértéket. Ez az állapot akkor fordul elő, ha a kiépítési események több mint 60%-a nem sikerült.
+- `EncounteredEscrowProportionThreshold` azt jelzi, hogy a kiépítés túllépte a letéti küszöbértéket. Ez az állapot akkor fordul elő, ha a kiépítési események több mint 60%-a nem sikerült.
 
-- `QuarantineOnDemand`azt jelenti, hogy az alkalmazással kapcsolatos problémát észlelt, és manuálisan beállította a karanténba helyezését.
+- `QuarantineOnDemand` azt jelenti, hogy az alkalmazással kapcsolatos problémát észlelt, és manuálisan beállította a karanténba helyezését.
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Hogyan az alkalmazás karanténba helyezését?
 
@@ -74,11 +74,10 @@ A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalma
 
 - A kiépítési feladatok újraindításához használja a Azure Portal. Az alkalmazás **kiépítési** lapján a **Beállítások**területen válassza az **állapot törlése és a szinkronizálás újraindítása** és a **kiépítési állapot** beállítása **a**következőre lehetőséget. Ez a művelet teljesen újraindítja a kiépítési szolgáltatást, amely hosszabb időt is igénybe vehet. A teljes kezdeti ciklus újra futni fog, ami törli a letéteket, eltávolítja az alkalmazást a karanténból, és törli az összes vízjelet.
 
-- [A kiépítési feladatok újraindításához használja a](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja az alábbi kérelmet:
+- [A kiépítési feladatok újraindításához használja a](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja az alábbi kérelmet:
  
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```
 
-Cserélje le az "{id}" értéket az alkalmazás-azonosító értékére, és cserélje le a (z) {jobId} kifejezést a [szinkronizálási feladatokhoz tartozó azonosítóra](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
-
+Cserélje le az "{id}" értéket az alkalmazás-azonosító értékére, és cserélje le a (z) {jobId} kifejezést a [szinkronizálási feladatokhoz tartozó azonosítóra](/graph/api/resources/synchronization-configure-with-directory-extension-attributes?tabs=http&view=graph-rest-beta#list-synchronization-jobs-in-the-context-of-the-service-principal).

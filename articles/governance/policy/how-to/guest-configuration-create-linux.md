@@ -3,12 +3,12 @@ title: A Linux rendszerhez készült vendég-konfigurációs szabályzatok létr
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet Linux rendszerhez.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026712"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236590"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>A Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozása
 
@@ -50,6 +50,10 @@ Azok az operációs rendszerek, amelyeken telepítve van a modul:
 - Linux
 - macOS
 - Windows
+
+> [!NOTE]
+> A "test-GuestConfigurationPackage" parancsmaghoz az OpenSSL 1,0-es verziója szükséges.
+> Ez hibát okoz az OpenSSL 1,1-es vagy újabb verziójával rendelkező környezetekben.
 
 A vendég konfigurációs erőforrás-modulhoz a következő szoftverek szükségesek:
 
@@ -260,6 +264,8 @@ A parancsmag paraméterei `New-GuestConfigurationPolicy` :
 - **Verzió**: szabályzat verziója.
 - **Elérési út**: a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
 - **Platform**: cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
+- A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
+- **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
 
 A következő példa egy egyéni házirend-csomagból egy megadott elérési úton hozza létre a házirend-definíciókat:
 
@@ -281,14 +287,6 @@ A következő fájlokat hozza létre `New-GuestConfigurationPolicy` :
 - **Initiative.jsbekapcsolva**
 
 A parancsmag kimenete egy olyan objektumot ad vissza, amely a házirend-fájlok kezdeményezésének megjelenítendő nevét és elérési útját tartalmazza.
-
-> [!Note]
-> A legújabb vendég konfigurációs modul új paramétereket tartalmaz:
-> - A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
->   - Tekintse meg a [vendég konfigurációs szabályzatok címkék használatával történő szűrését](#filtering-guest-configuration-policies-using-tags)ismertető szakaszt.
-> - **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
->   - Ha a paraméter nincs befoglalva, a kategória alapértelmezés szerint a vendég konfigurációt fogja tartalmazni.
-> Ezek a funkciók jelenleg előzetes verzióban érhetők el, és a vendég konfigurációs modul 1.20.1 verziója szükséges, amely a használatával telepíthető `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Végül tegye közzé a szabályzat-definíciókat a `Publish-GuestConfigurationPolicy` parancsmag használatával.
 A parancsmag csak a **path** paraméterrel rendelkezik, amely a által létrehozott JSON-fájlok helyére mutat `New-GuestConfigurationPolicy` .
@@ -404,9 +402,6 @@ Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jele
 
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Vendég konfigurációs szabályzatok szűrése címkék használatával
-
-> [!Note]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és a vendég konfigurációs modul 1.20.1 verzióját igényli, amely a használatával telepíthető `Install-Module GuestConfiguration -AllowPrerelease` .
 
 A parancsmagok által a vendég konfigurációs modulban létrehozott házirendek opcionálisan tartalmazhatnak szűrőket a címkékhez. A **-tag** paraméter a `New-GuestConfigurationPolicy` támogatja az egyéni címkéket tartalmazó szórótáblában tömbjét. A címkék hozzá lesznek adva a `If` szabályzat-definíció szakaszához, és nem módosíthatók házirend-hozzárendeléssel.
 

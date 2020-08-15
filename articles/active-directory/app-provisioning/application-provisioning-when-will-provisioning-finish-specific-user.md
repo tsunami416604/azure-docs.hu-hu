@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203012"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235060"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -30,7 +30,7 @@ Amikor először konfigurálja az automatikus kiosztást, az oldal alján talál
 - A jelenleg futó vagy utolsó befejezett kiépítési ciklus típusa (kezdeti vagy növekményes).
 - Egy **folyamatjelző sáv** , amely a befejezett kiépítési ciklus százalékos arányát mutatja. A százalékos arány a kiosztott lapok számát tükrözi. Vegye figyelembe, hogy az egyes lapok több felhasználót vagy csoportot is tartalmazhatnak, így a százalékos arány nem felel meg közvetlenül a felhasználók, csoportok vagy szerepkörök kiépített számával.
 - A **frissítés** gombra kattintva megtarthatja a nézet frissítését.
-- Az összekötő adattárában lévő **felhasználók** és **csoportok** száma. A darabszám növekszik, amikor egy objektum bekerül a kiépítés hatókörébe. A számláló nem fog lejárni, ha a felhasználó nem törölhető vagy nem törölhető, mert ez nem távolítja el az objektumot az összekötő adattárból. A rendszer újraszámítja az első szinkronizálást a CDS [alaphelyzetbe állítása](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) után. 
+- Az összekötő adattárában lévő **felhasználók** és **csoportok** száma. A darabszám növekszik, amikor egy objektum bekerül a kiépítés hatókörébe. A számláló nem fog lejárni, ha a felhasználó nem törölhető vagy nem törölhető, mert ez nem távolítja el az objektumot az összekötő adattárból. A rendszer újraszámítja az első szinkronizálást a CDS [alaphelyzetbe állítása](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) után. 
 - A **naplók megtekintése** hivatkozás, amely megnyitja az Azure ad-kiépítési naplókat a felhasználói kiépítési szolgáltatás által futtatott összes művelet részleteiről, beleértve az egyes felhasználók kiépítési állapotát is (lásd alább a [kiépítési naplók használata](#use-provisioning-logs-to-check-a-users-provisioning-status) című szakaszt).
 
 A létesítési ciklus befejezése után a **statisztikák a mai napig** szakasz megjeleníti a dátummal kiépített felhasználók és csoportok összesített számát, valamint az utolsó ciklus befejezési dátumát és időtartamát. A **tevékenység azonosítója** egyedileg azonosítja a legutóbbi kiépítési ciklust. A **feladathoz tartozó azonosító** a kiépítési feladathoz tartozó egyedi azonosító, és a bérlőn lévő alkalmazásra vonatkozik.
@@ -99,4 +99,4 @@ A **kezdeti ciklus**végrehajtásához szükséges időt befolyásoló tényező
 - Ha a teljesítmény probléma lesz, és megpróbálja kiépíteni a bérlőben lévő felhasználók és csoportok többségét, használjon hatóköri szűrőket. A hatóköri szűrők lehetővé teszik a kiépítési szolgáltatás által az Azure AD által kinyert adatok finomhangolását a felhasználók adott attribútumérték alapján történő kiszűrésével. A szűrők hatókörével kapcsolatos további információkért lásd: [attribútum-alapú alkalmazás kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>További lépések
-[A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](user-provisioning.md)
+[Felhasználók átadásának és megszüntetésének automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md)

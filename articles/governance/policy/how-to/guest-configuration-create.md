@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045127"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236539"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -106,9 +106,9 @@ A szolgáltatás az okok tulajdonságát arra használja, hogy egységesítse, h
 A szolgáltatás a tulajdonságok **kódját** és a **kifejezést** is elvárta. Egyéni erőforrás létrehozásakor állítsa be azt a szöveget (jellemzően StdOut), amelyet az erőforrás nem felel meg a **kifejezés**értékének. A **kód** meghatározott formázási követelményekkel rendelkezik, így a jelentéskészítés egyértelműen megjelenítheti az erőforrással kapcsolatos információkat a naplózás végrehajtásához. Ez a megoldás a vendég konfigurációját bővíthetővé teszi. Bármely parancs futtatható, ha a kimenet karakterlánc-értékként adható vissza a **kifejezés** tulajdonsághoz.
 
 - **Code** (string) (karakterlánc): az erőforrás neve, ismétlődő, majd egy rövid név, amely nem tartalmazhat szóközt azonosítóként az ok miatt. Ez a három érték csak kettősponttal tagolható szóközök nélkül.
-  - Példa erre`registry:registry:keynotpresent`
+  - Példa erre `registry:registry:keynotpresent`
 - **Kifejezés** (karakterlánc): ember által olvasható szöveg, amely elmagyarázza, hogy a beállítás miért nem megfelelő.
-  - Példa erre`The registry key $key is not present on the machine.`
+  - Példa erre `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -307,6 +307,8 @@ A parancsmag paraméterei `New-GuestConfigurationPolicy` :
 - **Verzió**: szabályzat verziója.
 - **Elérési út**: a célhely elérési útja, ahol a szabályzat-definíciók létrejönnek
 - **Platform**: cél platform (Windows/Linux) a vendég konfigurációs házirendhez és a tartalmi csomaghoz.
+- A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
+- **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
 
 A következő példa egy egyéni házirend-csomagból egy megadott elérési úton hozza létre a házirend-definíciókat:
 
@@ -328,14 +330,6 @@ A következő fájlokat hozza létre `New-GuestConfigurationPolicy` :
 - **Initiative.jsbekapcsolva**
 
 A parancsmag kimenete egy olyan objektumot ad vissza, amely a házirend-fájlok kezdeményezésének megjelenítendő nevét és elérési útját tartalmazza.
-
-> [!Note]
-> A legújabb vendég konfigurációs modul új paramétereket tartalmaz:
-> - A **címke** egy vagy több címkét rendel hozzá a szabályzat-definícióhoz
->   - Tekintse meg a [vendég konfigurációs szabályzatok címkék használatával történő szűrését](#filtering-guest-configuration-policies-using-tags)ismertető szakaszt.
-> - **Kategória** – a szabályzat-definícióban a kategória metaadatainak mezőjének beállítása
->   - Ha a paraméter nincs befoglalva, a kategória alapértelmezett értéke a vendég konfiguráció.
-> Ez a funkció előzetes verzióban érhető el, és a vendég konfigurációs modul 1.20.1 verziója szükséges, amely a használatával telepíthető `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Végül tegye közzé a szabályzat-definíciókat a `Publish-GuestConfigurationPolicy` parancsmag használatával. A parancsmag csak a **path** paraméterrel rendelkezik, amely a által létrehozott JSON-fájlok helyére mutat `New-GuestConfigurationPolicy` .
 
@@ -377,9 +371,6 @@ New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Vendég konfigurációs szabályzatok szűrése címkék használatával
-
-> [!Note]
-> Ez a funkció előzetes verzióban érhető el, és a vendég konfigurációs modul 1.20.1 verzióját igényli, amely a használatával telepíthető `Install-Module GuestConfiguration -AllowPrerelease` .
 
 A parancsmagok által a vendég konfigurációs modulban létrehozott szabályzat-definíciók tartalmazhatják a címkék szűrőit is. A **tag** paraméter a `New-GuestConfigurationPolicy` támogatja az egyéni címkéket tartalmazó szórótáblában tömbjét. A címkék hozzáadódnak a `If` szabályzat-definíció szakaszához, és nem módosíthatók házirend-hozzárendeléssel.
 
@@ -439,10 +430,6 @@ New-GuestConfigurationPolicy
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>A vendég konfiguráció kiterjesztése külső gyártótól származó eszközökkel
-
-> [!Note]
-> Ez a funkció előzetes verzióban érhető el, és a vendég konfigurációs modul 1.20.3 verzióját igényli, amely a használatával telepíthető `Install-Module GuestConfiguration -AllowPrerelease` .
-> A 1.20.3 verzióban ez a funkció csak a Windows rendszerű gépeket naplózó szabályzat-definíciók esetében érhető el
 
 A vendég konfigurációhoz tartozó összetevő-csomagok kiterjeszthetők a külső gyártótól származó eszközökre is.
 A vendég konfiguráció kibővítéséhez két összetevő fejlesztésére van szükség.
@@ -574,11 +561,6 @@ Ha a szabályzat frissítését szeretné kibocsátani, két, figyelmet igényl�
 - **contentHash**: ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
-
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows Csoportházirend tartalom konvertálása Azure Policy vendég konfigurációra
-
-A vendég konfigurációja a Windows rendszerű gépek naplózásakor a PowerShell desired State Configuration szintaxisának implementációja. A DSC-Közösség közzétette az exportált Csoportházirend-sablonok DSC formátumra való konvertálásának eszközét. Az eszköznek a fent ismertetett vendég konfigurációs parancsmagokkal együtt történő használatával átalakíthatja a Windows Csoportházirend tartalmát, és becsomagolhatja vagy közzéteheti a Azure Policy a naplózáshoz. További információ az eszköz használatáról [: a csoportházirend átalakítása a DSC-be](/powershell/scripting/dsc/quickstarts/gpo-quickstart)című cikk rövid útmutatója.
-A tartalom konvertálása után a fenti lépéseket követve hozzon létre egy csomagot, és tegye közzé Azure Policyként, ugyanúgy, mint bármely DSC-tartalomhoz.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Nem kötelező: a vendég konfigurációs csomagjainak aláírása
 

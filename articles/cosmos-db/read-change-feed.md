@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697349"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236794"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB-változáscsatorna olvasása
 
-A Azure Cosmos DB változási csatornát leküldéses modell vagy lekéréses modell használatával is használhatja. A leküldéses modellben az ügyfél egy kiszolgálóról kér munkát, és üzleti logikával dolgozza fel a változást. Azonban az utolsó feldolgozott változtatások állapotának ellenőrzésének és tárolásának összetettségét a kiszolgáló kezeli.
+A Azure Cosmos DB változási csatornát leküldéses modell vagy lekéréses modell használatával is használhatja. A leküldéses modellel egy kiszolgáló (a változási hírcsatorna) olyan ügyfélnek küldi a munkát, amely üzleti logikával rendelkezik a munka feldolgozásához. A kiszolgálón azonban az utolsó feldolgozott munka állapotának ellenőrzése és tárolása is bonyolult.
 
-A lekéréses modell esetében a kiszolgáló a munkát kéri, és gyakran egy központi munkavárólistából kér rá. Az ügyfél ebben az esetben nem csupán az üzleti logikával rendelkezik a változások feldolgozásához, hanem az utolsó feldolgozott változás állapotának tárolásához is, több ügyfél terheléselosztását párhuzamosan dolgozza fel, és kezeli a hibákat.
+A lekéréses modellel az ügyfélnek le kell kérnie a munkát a-kiszolgálóról. A-ügyfél ebben az esetben nem csupán az üzleti logikát dolgozza fel a feldolgozáshoz, hanem az utolsó feldolgozott munka állapotát is tárolja, így a terheléselosztás több ügyfélnél párhuzamosan működik, és hibák kezelésére is alkalmas.
 
 A Azure Cosmos DB változási hírcsatornából való olvasáskor általában ajánlott leküldéses modellt használni, mert nem kell aggódnia:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445614"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235723"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -44,7 +44,7 @@ Ha olyan alkalmazáshoz szeretne automatikus Azure AD-kiépítési összekötőt
 
 A hitelesítő adatok szükségesek ahhoz, hogy az Azure AD csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Egy alkalmazás automatikus felhasználó-kiépítési beállításakor érvényes hitelesítő adatokat kell megadnia. Az alkalmazáshoz tartozó hitelesítő adatokat és követelményeket az alkalmazásra vonatkozó oktatóanyagra utalva találja meg. A Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
 
-Ha SAML-alapú egyszeri bejelentkezést is konfigurál az alkalmazáshoz, az Azure AD belső, alkalmazáson belüli tárolási korlátja 1024 bájt. Ez a korlát magában foglalja az alkalmazás egyetlen példányához társított összes tanúsítványt, titkos jogkivonatot, hitelesítő adatokat és kapcsolódó konfigurációs adatot (más néven az Azure AD-beli egyszerű szolgáltatásnév). Ha az SAML-alapú egyszeri bejelentkezés konfigurálva van, az SAML-tokenek aláírására használt tanúsítvány gyakran a terület 50%-át használja fel. A felhasználók üzembe helyezése során megadott további elemek (titkos jogkivonatok, URI-k, értesítő e-mail-címek, felhasználónevek és jelszavak) meghaladják a tárolási korlátot. További információ: a [rendszergazdai hitelesítő adatok mentése a felhasználó üzembe helyezésének beállítása során](../manage-apps/application-provisioning-config-problem-storage-limit.md).
+Ha SAML-alapú egyszeri bejelentkezést is konfigurál az alkalmazáshoz, az Azure AD belső, alkalmazáson belüli tárolási korlátja 1024 bájt. Ez a korlát magában foglalja az alkalmazás egyetlen példányához társított összes tanúsítványt, titkos jogkivonatot, hitelesítő adatokat és kapcsolódó konfigurációs adatot (más néven az Azure AD-beli egyszerű szolgáltatásnév). Ha az SAML-alapú egyszeri bejelentkezés konfigurálva van, az SAML-tokenek aláírására használt tanúsítvány gyakran a terület 50%-át használja fel. A felhasználók üzembe helyezése során megadott további elemek (titkos jogkivonatok, URI-k, értesítő e-mail-címek, felhasználónevek és jelszavak) meghaladják a tárolási korlátot. További információ: a [rendszergazdai hitelesítő adatok mentése a felhasználó üzembe helyezésének beállítása során](./application-provisioning-config-problem-storage-limit.md).
 
 ## <a name="mapping-attributes"></a>Leképezési attribútumok
 
@@ -54,7 +54,7 @@ Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhaszná
 
 A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy az Azure AD mely felhasználói (vagy csoport-) tulajdonságait kell az alkalmazásnak megadnia. Tekintse át és konfigurálja a megfelelő tulajdonságot (az**attribútumot használó objektumok egyeztetése**), amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál.
 
-Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is. Részletekért lásd: [felhasználói üzembe helyezési attribútumok testreszabása – SaaS-alkalmazások leképezése](../manage-apps/customize-application-attributes.md).
+Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is. Részletekért lásd: [felhasználói üzembe helyezési attribútumok testreszabása – SaaS-alkalmazások leképezése](./customize-application-attributes.md).
 
 Ha egy SaaS-alkalmazásra konfigurálja az üzembe helyezést, a megadható attribútumok egyike egy kifejezés-hozzárendelés. Ezen hozzárendelések esetében olyan parancsfájl-szerű kifejezést kell írnia, amely lehetővé teszi a felhasználói adatai átalakítását olyan formátumokra, amelyek az SaaS-alkalmazás számára elfogadhatóak. Részletekért lásd: [kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md).
 
@@ -81,13 +81,13 @@ A hatókör-szűrők használatával olyan attribútum-alapú szabályokat hatá
 
 ### <a name="b2b-guest-users"></a>B2B (vendég) felhasználók
 
-Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez](../b2b/configure-saas-apps.md).
+Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez](../external-identities/configure-saas-apps.md).
 
 Vegye figyelembe, hogy a vendég felhasználóhoz tartozó userPrincipalName gyakran "alias # EXT #"-ként tárolja a rendszer @domain.com . Ha a userPrincipalName az attribútum-hozzárendelések forrása attribútumként szerepel, a #EXT # el lesz távolítva a userPrincipalName. Ha a #EXT # elemre van szüksége, cserélje le a userPrincipalName és a originalUserPrincipalName tulajdonságot a forrás attribútumként. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: kezdeti és növekményes
 
-Ha az Azure AD a forrásrendszer, a kiépítési szolgáltatás a [különbözeti lekérdezés használatával követi nyomon](https://docs.microsoft.com/graph/delta-query-overview) a felhasználók és csoportok figyelését a Microsoft Graph-adatértékeken. A kiépítési szolgáltatás kezdeti ciklust futtat a forrásrendszer és a célként megadott rendszeren, majd az időszakos növekményes ciklusok után.
+Ha az Azure AD a forrásrendszer, a kiépítési szolgáltatás a [különbözeti lekérdezés használatával követi nyomon](/graph/delta-query-overview) a felhasználók és csoportok figyelését a Microsoft Graph-adatértékeken. A kiépítési szolgáltatás kezdeti ciklust futtat a forrásrendszer és a célként megadott rendszeren, majd az időszakos növekményes ciklusok után.
 
 ### <a name="initial-cycle"></a>Kezdeti ciklus
 
@@ -154,11 +154,11 @@ Hárítsa el ezeket a hibákat úgy, hogy módosítja az érintett felhasználó
 
 ### <a name="quarantine"></a>Karantén
 
-Ha a megcélzott rendszerre irányuló hívások többsége vagy mindegyike egy hiba miatt nem sikerül (például érvénytelen rendszergazdai hitelesítő adatok), a kiépítési feladat "karantén" állapotba kerül. Ez az állapot a [kiépítési összefoglaló jelentésben](../manage-apps/check-status-user-account-provisioning.md) és e-mailben, ha az e-mailes értesítések konfigurálva vannak a Azure Portalban.
+Ha a megcélzott rendszerre irányuló hívások többsége vagy mindegyike egy hiba miatt nem sikerül (például érvénytelen rendszergazdai hitelesítő adatok), a kiépítési feladat "karantén" állapotba kerül. Ez az állapot a [kiépítési összefoglaló jelentésben](./check-status-user-account-provisioning.md) és e-mailben, ha az e-mailes értesítések konfigurálva vannak a Azure Portalban.
 
 Karantén esetén a növekményes ciklusok gyakorisága naponta egyszer csökken.
 
-A kiépítési feladatok kilépnek a karanténba helyezésből az összes jogsértő hiba kijavítása után, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva. További [információ itt található a karantén állapotáról](../manage-apps/application-provisioning-quarantine-status.md).
+A kiépítési feladatok kilépnek a karanténba helyezésből az összes jogsértő hiba kijavítása után, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva. További [információ itt található a karantén állapotáról](./application-provisioning-quarantine-status.md).
 
 ### <a name="how-long-provisioning-takes"></a>Mennyi időt vesz igénybe az átadás?
 
@@ -166,7 +166,7 @@ A teljesítmény attól függ, hogy a kiépítési feladatok kezdeti kiépítés
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Hogyan állapítható meg, hogy a felhasználók megfelelően lettek-e kiépítve
 
-A felhasználói kiépítési szolgáltatás által futtatott összes művelet rögzítve van az Azure AD- [létesítési naplókban (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). A naplók tartalmazzák a forrás-és a megcélzott rendszerekre vonatkozó összes olvasási és írási műveletet, valamint az egyes műveletek során beolvasott vagy írt felhasználói adatok tartalmát. További információ a kiépítési naplók beolvasásáról a Azure Portalban: a [kiépítési jelentési útmutató](../manage-apps/check-status-user-account-provisioning.md).
+A felhasználói kiépítési szolgáltatás által futtatott összes művelet rögzítve van az Azure AD- [létesítési naplókban (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). A naplók tartalmazzák a forrás-és a megcélzott rendszerekre vonatkozó összes olvasási és írási műveletet, valamint az egyes műveletek során beolvasott vagy írt felhasználói adatok tartalmát. További információ a kiépítési naplók beolvasásáról a Azure Portalban: a [kiépítési jelentési útmutató](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Kiépítés megszüntetése
 
@@ -190,8 +190,8 @@ Ha az IsSoftDeleted attribútumot lát, a rendszer a felhasználó állapotát h
 
 [Automatikus felhasználóátadást használó üzembe helyezés tervezése](../app-provisioning/plan-auto-user-provisioning.md)
 
-[Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében](./configure-automatic-user-provisioning-portal.md)
 
 [Hozzon létre egy SCIM-végpontot, és konfigurálja a létesítést saját alkalmazás létrehozásakor](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[A felhasználók egy alkalmazáshoz való konfigurálásával és üzembe helyezésével kapcsolatos problémák elhárítása](../manage-apps/application-provisioning-config-problem.md).
+[A felhasználók egy alkalmazáshoz való konfigurálásával és üzembe helyezésével kapcsolatos problémák elhárítása](./application-provisioning-config-problem.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 56243e4d754f33b17238b64df2ba56ade162b3a2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163781"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235400"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése?
 
@@ -59,7 +59,7 @@ Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer e
 
    ![Salesforce embléma](./media/user-provisioning/gallery-app-logos.png)
 
-   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../develop/howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
+   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../azuread-dev/howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
 
 * **Az SCIM 2,0-et támogató alkalmazások**. Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: [scim-végpont létrehozása és a felhasználók üzembe](use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
 

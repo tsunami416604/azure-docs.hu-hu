@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236828"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
 
@@ -150,9 +150,9 @@ Például a következő címről lehet hozzáférni egy blobhoz a Storage emulat
 
 A Storage Emulator szolgáltatás-végpontok a következők:
 
-* Blob service:`http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Queue szolgáltatás:`http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Table service:`http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob service: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Queue szolgáltatás: `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Table service: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>Másodlagos fiók kezelése RA-GRS
 

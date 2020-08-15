@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: kenwith
-ms.openlocfilehash: 70795c703810212c3b46d06254a0c3ebdcb418f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782041"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235224"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -108,7 +108,7 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
+- Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
 - Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
 
 > [!NOTE]
@@ -123,7 +123,7 @@ A támogatott attribútumok listájának szerkesztésekor a következő tulajdon
   - *Dátum és idő* – az attribútum egy Date karakterláncot tartalmaz.
   - Az *Integer* -attribútum egész számot tartalmaz.
   - A *Reference* -ATTRIBÚTUM olyan azonosítót tartalmaz, amely a célalkalmazás egy másik táblájában tárolt értékre hivatkozik.
-  - *Karakterlánc* – az attribútum szöveges karakterláncot tartalmaz.
+  - *Karakterlánc*  – az attribútum szöveges karakterláncot tartalmaz.
 - **Elsődleges kulcs?** – Azt határozza meg, hogy az attribútum a célobjektum sémájában elsődleges kulcs mezőként van-e definiálva.
 - **Szükséges?** – Azt határozza meg, hogy az attribútumot kötelező-e kitölteni a célalkalmazás vagy a rendszer számára.
 - **Több érték?** – Azt határozza meg, hogy az attribútum több értéket is támogat-e.

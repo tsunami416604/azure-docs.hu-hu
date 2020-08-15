@@ -1,6 +1,6 @@
 ---
 title: Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Windows rendszeren) | Microsoft Docs
-description: Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat az Azure Virtual Machines szolgáltatásban.
+description: Megtudhatja, hogyan futtathatja a Felhőbeli Virtual Machines SQL Server teljes kiadásait anélkül, hogy bármilyen helyszíni hardvert kellene kezelnie.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 161722d1f80e4bada35548b4e2b4e903c56215ec
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926691"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236369"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Első lépésként válassza ki a megfelelő verziójú, kiadású és operáci�
 > [!TIP]
 > További információ a SQL Server rendszerképek díjszabásáról: [az Virtual Machines Azure-beli SQL Server díjszabási útmutatója](pricing-guidance.md). 
 
-### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Utólagos fizetés
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a> Utólagos fizetés
 A következő táblázat a használatalapú fizetéssel elérhető SQL Server-rendszerképeket foglalja össze.
 
 | Verzió | Operációs rendszer | Kiadás |
@@ -74,7 +74,7 @@ Az elérhető SQL Server on Linux virtuálisgép-lemezképek megjelenítéséhez
 > [!NOTE]
 > Mostantól lehetőség van a díjköteles használati SQL Server VM licencelési modelljének módosítására saját licenc használatára. További információ: [a SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-### <a name="bring-your-own-license"></a><a id="BYOL"></a>Saját licenc használata
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> Saját licenc használata
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md#byol).
 
 Ha saját licencet szeretne létrehozni, lehetősége van a használatban lévő használati SQL Server VM átalakítására, vagy egy rendszerképet is üzembe helyezhet a következővel: **{BYOL}**. A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
@@ -128,7 +128,7 @@ Részletes információ:
 - [Felügyelt példány létrehozása](../../managed-instance/instance-create-quickstart.md)
 - [SQL Server virtuális gép létrehozása](sql-vm-create-portal-quickstart.md)
 
-## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a>SQL Server VM rendszerkép-frissítési szabályzat
+## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM rendszerkép-frissítési szabályzat
 Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogatott operációs rendszer, verzió és kiadás kombináció számára. Ez azt jelenti, hogy a rendszer folyamatosan frissíti a rendszerképeket, a régebbi rendszerképek pedig el lesznek távolítva. További információkért tekintse meg az [SQL Server virtuális gépek GYIK](frequently-asked-questions-faq.md#images) dokumentumának **Rendszerképek** című szakaszát.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)

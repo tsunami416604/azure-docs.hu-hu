@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
-ms.openlocfilehash: f0a5c3df2359add9f896e05af6c8c77d9e006a2a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: c690002141c6c275d90d5bae41318f9a5907fb85
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171985"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236426"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
 
@@ -85,7 +85,7 @@ Storage Table szolgáltatási ügyfél példányosításához először is rende
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-### <a name="add-a-storage-emulator-connection"></a>Storage Emulator-kapcsolat hozzáadása
+### <a name="add-a-storage-emulator-connection"></a>Storage Emulator-kapcsolatok hozzáadása
 
 Az emulátor tárolójának elérése:
 
@@ -516,7 +516,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az Azure Table Service és az Azure Cosmos DB alapjait, az alábbi hivatkozásokra kattintva tudhat meg többet.
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533543"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236301"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -85,6 +85,9 @@ A fájlok azonosítása és a helyi tárolóhelyre való másolása után távol
 A lemezek leválasztása után üzenet jelenik meg. A kapcsolatok frissítése eltarthat néhány percig, hogy el lehessen távolítani a lemezeket.
 
 A Linux rendszerben a helyreállítási ponttal létesített csatlakozás letelte után az operációs rendszer nem távolítja el automatikusan a megfelelő csatlakoztatási útvonalakat. A csatlakoztatási útvonalak "árva" kötetekként léteznek, és láthatók, de hiba történt a fájlok elérése/írása közben. Ezeket manuálisan is el lehet távolítani. A parancsfájl futtatásakor a rendszer a korábbi helyreállítási pontokból származó összes ilyen kötetet azonosítja, és jóváhagyja őket.
+
+> [!NOTE]
+> Győződjön meg arról, hogy a szükséges fájlok visszaállítása után a kapcsolatok be vannak zárva. Ez fontos, különösen abban az esetben, ha a gép, amelyben a parancsfájlt futtatja, a biztonsági mentésre is konfigurálva van. Ha a kapcsolatok továbbra is nyitva vannak, a következő biztonsági mentés sikertelen lehet, hiba: "UserErrorUnableToOpenMount". Ez azért történik, mert a csatlakoztatott meghajtók/kötetek elérhetőnek kell lenniük, és a hozzáférésük sikertelen lehet, mert a mögöttes tároló, azaz az iSCSI-célkiszolgáló nem érhető el. A kapcsolatok tisztítása eltávolítja ezeket a meghajtókat/köteteket, ezért azok nem lesznek elérhetők a biztonsági mentés során.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>A megfelelő gép kiválasztása a parancsfájl futtatásához
 
@@ -242,7 +245,7 @@ A következő parancs az összes RAID-lemez részleteit jeleníti meg:
 mdadm –detail –scan
 ```
 
- A megfelelő RAID-lemez a következőképpen jelenik meg`/dev/mdm/<RAID array name in the protected VM>`
+ A megfelelő RAID-lemez a következőképpen jelenik meg `/dev/mdm/<RAID array name in the protected VM>`
 
 Ha a RAID-lemez fizikai kötetekkel rendelkezik, használja a csatlakoztatási parancsot:
 
@@ -300,10 +303,10 @@ Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancs
 
 - `download.microsoft.com`
 - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Azure-beli nyilvános régiókban)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Az Azure China 21Vianet esetében)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Azure USA kormánya)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Az Azure Germany esetében)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure-beli nyilvános régiókban)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Az Azure China 21Vianet esetében)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure USA kormánya)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Az Azure Germany esetében)
 - Kimenő portok 53 (DNS), 443, 3260
 
 > [!NOTE]

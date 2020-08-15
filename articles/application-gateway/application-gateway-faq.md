@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810003"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236097"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -166,7 +166,7 @@ Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a hát
 
 Igen.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Application Gateway mindig virtuális hálózatban van üzembe helyezve?
 
@@ -259,7 +259,7 @@ NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Applic
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Milyen tanúsítványokat támogat a Application Gateway?
 
-Application Gateway támogatja az önaláírt tanúsítványokat, a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat, a kiterjesztett ellenőrzési (EV) tanúsítványokat és a helyettesítő tanúsítványokat.
+A Application Gateway támogatja az önaláírt tanúsítványokat, a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat, a kiterjesztett ellenőrzési (EV) tanúsítványokat, a többtartományos (SAN) tanúsítványokat és a helyettesítő tanúsítványokat.
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Milyen titkosítási csomagokat támogat a Application Gateway?
 
@@ -346,7 +346,7 @@ A hitelesítésszolgáltató (CA) böngésző tagjai a közelmúltban közzétet
 
 Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók elkezdték visszavonni a nem megfelelő CAs-t és a megfelelő hitelesítésszolgáltatókat, amelyekhez az ügyfeleknek újra ki kell állítani a tanúsítványokat.A Microsoft szorosan együttműködik ezekkel a szállítókkal, hogy csökkentse az Azure-szolgáltatásokkal kapcsolatos lehetséges hatásokat, **azonban a "saját tanúsítvány használata" (BYOC) forgatókönyvekben használt saját tanúsítványok vagy tanúsítványok továbbra is a váratlanul visszavont állapottal rendelkeznek**.
 
-Annak ellenőrzése, hogy az alkalmazás által használt tanúsítványok vissza lettek-e vonva a [DigiCert bejelentésére](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) és a [tanúsítvány-visszavonási nyomon követésre](https://misissued.com/#revoked). Ha visszavonták a tanúsítványokat, vagy visszavonják őket, új tanúsítványokat kell kérnie az alkalmazásokban használt HITELESÍTÉSSZOLGÁLTATÓI gyártótól. Ha el szeretné kerülni az alkalmazás rendelkezésre állását, mert a tanúsítványok váratlanul visszavonják a tanúsítványokat, vagy egy visszavont tanúsítvány frissítését, tekintse meg az Azure Updates-bejegyzéseket az BYOC-t támogató különféle Azure-szolgáltatások szervizelési hivatkozásaira vonatkozóan:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+Annak ellenőrzése, hogy az alkalmazás által használt tanúsítványok vissza lettek-e vonva a [DigiCert bejelentésére](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) és a [tanúsítvány-visszavonási nyomon követésre](https://misissued.com/#revoked). Ha visszavonták a tanúsítványokat, vagy visszavonják őket, új tanúsítványokat kell kérnie az alkalmazásokban használt HITELESÍTÉSSZOLGÁLTATÓI gyártótól. Ha el szeretné kerülni az alkalmazás rendelkezésre állását, mert a tanúsítványok váratlanul visszavonják a tanúsítványokat, vagy egy visszavont tanúsítvány frissítését, tekintse meg az Azure Updates-bejegyzéseket az BYOC-t támogató különféle Azure-szolgáltatások szervizelési hivatkozásaira vonatkozóan: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
 Application Gateway-specifikus információk:
 

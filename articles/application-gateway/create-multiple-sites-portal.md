@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290146"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236187"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása és konfigurálása több webhelynek a Azure Portal használatával történő üzemeltetéséhez
 
@@ -33,9 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="prerequisites"></a>Előfeltételek
 
-Jelentkezzen be a Azure Portal[https://portal.azure.com](https://portal.azure.com)
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -237,7 +237,7 @@ Az erőforráscsoport eltávolítása:
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok**lehetőséget.
 2. Az **erőforráscsoportok** lapon keresse meg a **myResourceGroupAG** a listában, majd válassza ki azt.
 3. Az **erőforráscsoport lapon**válassza az **erőforráscsoport törlése**elemet.
-4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
+4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

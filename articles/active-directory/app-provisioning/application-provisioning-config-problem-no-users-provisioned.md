@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782279"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234788"
 ---
 # <a name="no-users-are-being-provisioned"></a>Egyetlen felhasználó létrehozása sem történt meg 
 >[!NOTE]
@@ -58,13 +58,13 @@ Ha egy felhasználó "kihagyva" állapotba kerül a kiépítési naplókban, fon
 - **Egy kötelező attribútum hiányzik vagy nincs feltöltve a felhasználó számára.** A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ez a konfiguráció magában foglalja a "megfelelő tulajdonság" beállítását, amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál. A fontos folyamattal kapcsolatos további információkért lásd: a [felhasználói kiépítési attribútumok leképezésének testreszabása az SaaS-alkalmazásokhoz Azure Active Directoryban](customize-application-attributes.md).
 - **Csoportok attribútumainak hozzárendelése:** A csoport neve és a csoport adatainak kiépítés a tagokon kívül, ha egyes alkalmazások esetében támogatott. A funkció engedélyezéséhez vagy letiltásához engedélyezze vagy tiltsa le a **kiépítés** lapon megjelenő csoportosítási objektumok **leképezését** . Ha a létesítési csoportok engedélyezve vannak, tekintse át az attribútumok leképezéseit, és győződjön meg arról, hogy a megfelelő mező használatban van a "megfeleltetési azonosító" beállításnál. A megfelelő azonosító lehet a megjelenítendő név vagy az e-mail-alias. A csoport és a tagjai nincsenek kiépítve, ha a megfelelő tulajdonság üres vagy nincs feltöltve egy csoportra az Azure AD-ben.
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>Az alapértelmezett hozzáférési szerepkörhöz hozzárendelt felhasználók kiépítés
-A katalógus egyik alkalmazásának alapértelmezett szerepkörét az "alapértelmezett hozzáférés" szerepkörnek nevezzük. Az ehhez a szerepkörhöz hozzárendelt felhasználókat nem lehet kiépíteni, és a [kiépítési naplókból](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kihagyva vannak megjelölve, mivel "nem lesz ténylegesen jogosult". 
+A katalógus egyik alkalmazásának alapértelmezett szerepkörét az "alapértelmezett hozzáférés" szerepkörnek nevezzük. Az ehhez a szerepkörhöz hozzárendelt felhasználókat nem lehet kiépíteni, és a [kiépítési naplókból](../reports-monitoring/concept-provisioning-logs.md) kihagyva vannak megjelölve, mivel "nem lesz ténylegesen jogosult". 
 
 **A 04/16/2020 után létrehozott kiépítési konfigurációk viselkedése:** Az alapértelmezett hozzáférési szerepkörhöz hozzárendelt felhasználók ugyanúgy lesznek kiértékelve, mint az összes többi szerepkör. Az alapértelmezett hozzáféréshez hozzárendelt felhasználó nem lesz kihagyva "nem megfelelő jogosultsággal". 
 
 **A 04/16/2020 előtt létrehozott kiépítési konfigurációk viselkedése:** A következő 3 hónapban a viselkedés továbbra is a mai napig folytatódik. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók kimaradnak, és nem lesznek ténylegesen jogosultak. Július 2020 után a viselkedés minden alkalmazás esetében egységes lesz. Nem fogjuk kihagyni a felhasználókat az alapértelmezett hozzáférési szerepkörrel, mert "nem lehet ténylegesen jogosult". Ezt a módosítást a Microsoft végzi, és nincs szükség felhasználói beavatkozásra. Ha szeretné biztosítani, hogy ezek a felhasználók továbbra is kimaradnak, még a módosítás után is alkalmazza a megfelelő hatókörű szűrőket, vagy szüntesse meg a felhasználó hozzárendelését az alkalmazásból, hogy azok ne legyenek a hatókörön belül.  
 
-A változásokkal kapcsolatos kérdéseit a következő címen érheti el:provisioningfeedback@microsoft.com
+A változásokkal kapcsolatos kérdéseit a következő címen érheti el: provisioningfeedback@microsoft.com
 ## <a name="next-steps"></a>További lépések
 
 [Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

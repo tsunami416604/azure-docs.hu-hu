@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284642"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236607"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Felügyelt rendszerkép létrehozása általánosított Azure-beli virtuális gépből
 
@@ -39,13 +39,15 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
    
-2. Nyisson meg egy parancssori ablakot rendszergazdaként. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
+2. Nyisson meg egy parancssori ablakot rendszergazdaként. 
+
+3. Törölje a Panther könyvtárat (C:\Windows\Panther). Ezután módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
    
-3. A **rendszerelőkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása** jelölőnégyzetet, és jelölje be az **általánosítás** jelölőnégyzetet.
+4. A **rendszerelőkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása** jelölőnégyzetet, és jelölje be az **általánosítás** jelölőnégyzetet.
    
-4. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
+5. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
    
-5. Válassza az **OK** lehetőséget.
+6. Kattintson az **OK** gombra.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
 

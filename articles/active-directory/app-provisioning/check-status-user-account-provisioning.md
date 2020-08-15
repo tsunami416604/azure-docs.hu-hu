@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782007"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235077"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: jelentéskészítés a felhasználói fiókok automatikus üzembe helyezéséhez
 
-Azure Active Directory (Azure AD) olyan [felhasználói fiók létesítési szolgáltatását](user-provisioning.md) tartalmazza, amely segít automatizálni az SaaS-alkalmazásokban és más rendszerekben lévő felhasználói fiókok üzembe helyezését a teljes körű identitások életciklusának kezelése céljából. Az Azure AD az összes olyan alkalmazás és rendszer számára támogatja az előre integrált felhasználó-kiépítési összekötőket, amelyeken a felhasználók üzembe helyezésével [kapcsolatos oktatóanyagok találhatók](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list).
+Azure Active Directory (Azure AD) olyan [felhasználói fiók létesítési szolgáltatását](user-provisioning.md) tartalmazza, amely segít automatizálni az SaaS-alkalmazásokban és más rendszerekben lévő felhasználói fiókok üzembe helyezését a teljes körű identitások életciklusának kezelése céljából. Az Azure AD az összes olyan alkalmazás és rendszer számára támogatja az előre integrált felhasználó-kiépítési összekötőket, amelyeken a felhasználók üzembe helyezésével [kapcsolatos oktatóanyagok találhatók](../saas-apps/tutorial-list.md).
 
 Ez a cikk azt ismerteti, hogyan ellenőrizhető a kiépítési feladatok állapota a beállításuk után, valamint az egyes felhasználók és csoportok üzembe helyezésének hibaelhárítása.
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781956"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235808"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -94,7 +94,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
    
    j. **Greater_Than_OR_EQUALS.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum értéke nagyobb vagy egyenlő, mint az érték. A hatóköri szűrőben megadott értéknek egész számnak kell lennie, és a felhasználó attribútumának egész számnak ([0, 1, 2,...]) kell lennie. 
    
-   k. **Tartalmazza.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum tartalmazza a sztringet (kis-és nagybetűk megkülönböztetése) az [itt](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)leírt módon 
+   k. **Tartalmazza.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum tartalmazza a sztringet (kis-és nagybetűk megkülönböztetése) az [itt](/dotnet/api/system.string.contains?view=netframework-4.8)leírt módon 
 
 
 >[!IMPORTANT] 
@@ -105,7 +105,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 10. A **hatóköri szűrő címe**területen adja meg a hatókör-szűrő nevét.
 
-11. Válassza az **OK** lehetőséget.
+11. Kattintson az **OK** gombra.
 
 12. Kattintson ismét az **OK gombra** a **hatókör szűrők** képernyőjén. Szükség esetén ismételje meg a 6-11-es lépést egy másik hatókör-szűrő hozzáadásához.
 
@@ -116,7 +116,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 
 ## <a name="common-scoping-filters"></a>Gyakori hatókörű szűrők
-| Cél attribútum| Művelet | Érték | Description|
+| Cél attribútum| Operátor | Érték | Leírás|
 |----|----|----|----|
 |userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartománnyal rendelkező userPrincipal, a @domain.com kiépítés hatóköre lesz|
 |userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartománnyal rendelkező userPrincipal, ki lesz a @domain.com kiépítés hatóköre|
@@ -130,4 +130,3 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 * [Fiók kiépítési értesítései](../app-provisioning/user-provisioning.md)
 * [A SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez Azure Active Directoryról alkalmazások számára](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Az SaaS-alkalmazások integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md)
-

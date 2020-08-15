@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121459"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236573"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md).|
 | Adatfelderítés és besorolás  |További információ: [Azure SQL Database és az Azure szinapszis Analytics adatfelderítési & besorolása](data-discovery-and-classification-overview.md).|
@@ -62,7 +62,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-managed-instance"></a>[Felügyelt Azure SQL-példány](#tab/managed-instance)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket a <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső szolgáltatói utasítás létrehozási azonosítójával</a> . |
@@ -85,10 +85,10 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe helyezési modelljében a H1 2019-ben:
   - <a href="https://aka.ms/sql-mi-visual-studio-subscribers">Azure havi Kredittel</a> rendelkező előfizetések támogatása a Visual Studio-előfizetőknek és a megnövekedett [regionális korlátoknak](../managed-instance/resource-limits.md#regional-resource-limitations)megfelelően.
-  - A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">sharepoint 2016 és a sharepoint 2019</a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central támogatása.</a>
+  - A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> sharepoint 2016 és a sharepoint 2019 </a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central támogatása. </a>
   - Hozzon létre egy felügyelt példányt <a href="https://aka.ms/managed-instance-collation">példány szintű rendezéssel</a> és tetszőleges <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">időzónával</a> .
   - A felügyelt példányok már védettek a [beépített tűzfallal](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Az SQL felügyelt példányának konfigurálása [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) csatlakozás a jobb hálózati teljesítmény eléréséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , illetve a <a href="https://aka.ms/managed-instance-configurable-backup-retention">biztonsági másolatok megőrzésének beállítása akár 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#sql-managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
+  - Az SQL felügyelt példányának konfigurálása [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) csatlakozás a jobb hálózati teljesítmény eléréséhez, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuális mag a Gen5</a> , illetve a <a href="https://aka.ms/managed-instance-configurable-backup-retention">biztonsági másolatok megőrzésének beállítása akár 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#sql-managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
   - Az új funkciók lehetővé teszik, hogy az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázist egy másik adatközpontba állítsa be a PowerShell használatával</a>, az [adatbázis átnevezésével](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), a [virtuális fürt törlésével](../managed-instance/virtual-cluster-delete.md).
   - Az új beépített [példány-közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) lehetővé teszi a vám (SOD) megfelelőségének a biztonsági elvekkel való elválasztását, valamint a vállalati szabványoknak való megfelelést.
   - Az SQL felügyelt példánya a következő Azure Government régiókban érhető el a GA (US Gov Texas, US Gov Arizona), valamint a Észak-Kína 2 és Kelet-Kína 2 között. A következő nyilvános régiókban érhető el: Közép-Ausztrália, Közép-Ausztrália, Dél-Brazília, Dél-Franciaország, Egyesült Arab Emírségek, Észak-Európa, Dél-Afrika, Dél-Afrika, Nyugat-Európa.
@@ -97,6 +97,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 
 |Probléma  |Felderített dátum  |status  |Feloldás dátuma  |
 |---------|---------|---------|---------|
+|[Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV](#service-principal-cannot-access-azure-ad-and-akv)|Augusztus 2020|Megkerülő megoldás||
 |[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Feloldva|2020. június|
 |[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Feloldva|2020. június|
 |[Nem az SQL felügyelt példányára vonatkozó engedélyek vannak alkalmazva az erőforráscsoporthoz](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Feb 2020|Megkerülő megoldás||
@@ -110,7 +111,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |[Előfordulhat, hogy a üzletileg kritikus szolgáltatási szinten újra kell konfigurálni a Resource Governor a feladatátvétel után](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|Megkerülő megoldás||
 |[A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|Augusztus 2019|Megkerülő megoldás||
 |[Az Azure AD bejelentkezési típusok megszemélyesítése nem támogatott](#impersonation-of-azure-ad-login-types-is-not-supported)|Jul 2019|Nincs Áthidaló megoldás||
-|[@querya paraméter nem támogatott sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Nincs Áthidaló megoldás||
+|[@query a paraméter nem támogatott sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Nincs Áthidaló megoldás||
 |[A tranzakciós replikációt újra kell konfigurálni a Geo-feladatátvétel után](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Nincs Áthidaló megoldás||
 |[A VISSZAÁLLÍTÁSi művelet során a rendszer ideiglenes adatbázist használ](#temporary-database-is-used-during-restore-operation)||Megkerülő megoldás||
 |[A TEMPDB szerkezete és tartalma újra létrejön](#tempdb-structure-and-content-is-re-created)||Nincs Áthidaló megoldás||
@@ -124,6 +125,11 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |Az adatbázis levelezési funkciója külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával||Feloldva|TOT 2019|
 |A felügyelt SQL-példányok nem támogatják a foglalt adatbázisokat.||Feloldva|Augusztus 2019|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV
+
+Bizonyos esetekben előfordulhat, hogy probléma merült fel az Azure AD-és Azure Key Vault-(AKV-) szolgáltatások elérésére használt egyszerű szolgáltatással. Ennek eredményeképpen a probléma hatással van az Azure AD-hitelesítés és az átlátható adatbázis-titkosítás (TDE) használatára az SQL felügyelt példányával. Ez egy átmeneti kapcsolódási probléma lehet, vagy nem futtathatók olyan utasítások, mint például a LOGIN/felhasználó létrehozása külső SZOLGÁLTATÓtól, illetve a bejelentkezés/felhasználó futtatása. Előfordulhat, hogy a TDE beállítása az ügyfél által felügyelt kulccsal új, felügyelt Azure SQL-példányon bizonyos esetekben nem működik.
+
+**Áthidaló megoldás**: Ha meg szeretné akadályozni, hogy ez a probléma a frissítési parancsok végrehajtása előtt a FELÜGYELt SQL-példányon történjen, vagy ha már tapasztalta ezt a problémát, lépjen az Azure Portalra, és nyissa meg az SQL felügyelt példányának [Active Directory rendszergazdai](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)paneljét. Ellenőrizze, hogy látható-e a következő hibaüzenet: "a felügyelt példánynak szüksége van egy egyszerű szolgáltatásnév Azure Active Directory eléréséhez. Kattintson ide egy egyszerű szolgáltatásnév létrehozásához. Ha ezt a hibaüzenetet észlelte, kattintson rá, és kövesse a hiba elhárítása előtt megadott lépésenkénti útmutatót.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet
 
@@ -205,7 +211,7 @@ Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhet�
 -   Aliast használó Azure AD-felhasználók. Ebben az esetben a következő hibaüzenetet adja vissza: `15517` .
 - Azure AD-alapú bejelentkezések és felhasználók Azure AD-alkalmazásokon vagy-egyszerű szolgáltatásokon alapuló felhasználók. Ebben az esetben a következő hibaüzeneteket adja vissza: `15517` és `15406` .
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querya paraméter nem támogatott sp_send_db_mail
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query a paraméter nem támogatott sp_send_db_mail
 
 A `@query` [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) eljárásban szereplő paraméter nem működik.
 
@@ -229,7 +235,7 @@ A kezdeti fázisban a felhasználók hozzáférhetnek az üres adatbázishoz, é
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>A TEMPDB szerkezete és tartalma újra létrejön
 
-Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete nem módosítható. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá a következőhöz: `tempdb` . `Tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban lévő módosításokat `tempdb` nem őrzi meg a rendszer.
+Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete nem módosítható. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá a következőhöz: `tempdb` . `Tempdb` a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban lévő módosításokat `tempdb` nem őrzi meg a rendszer.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis méretű adatbázisfájlok esetén a tárterület nagyobb
 

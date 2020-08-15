@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743575"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234771"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Gyakori útválasztási problémák elhárítása
 
@@ -102,7 +102,7 @@ A tünet több lehetséges oka is lehet:
          - Ha például a háttérrendszer csak a HTTP-kérelmeket fogadja el, a következő konfigurációk érvényesek lesznek:
             - Az _elfogadott protokollok_ a http és a HTTPS. A _továbbítási protokoll_ http. Az egyeztetési kérelem nem fog működni, mivel a HTTPS egy engedélyezett protokoll, és ha egy kérelem HTTPS-ként jött létre, a bejárati ajtó HTTPS-kapcsolaton keresztül próbálkozik a továbbítással.
 
-            - Az _elfogadott protokollok_ a http. A _továbbítási protokoll_ vagy egyeztetési kérelem vagy HTTPS.
+            - Az _elfogadott protokollok_ a http. A _továbbítási protokoll_ vagy egyeztetési kérelem vagy http.
 
     - Az _URL-cím újraírása_ alapértelmezés szerint le van tiltva, és csak akkor használja ezt a mezőt, ha le szeretné szűkíteni az elérhetővé tenni kívánt háttérbeli erőforrások hatókörét. Ha le van tiltva, a bejárati ajtó továbbítja ugyanazt a kérési útvonalat, amelyet a rendszer kap. Lehetséges, hogy ez a mező helytelenül van konfigurálva, és a bejárati ajtó olyan erőforrást kér a háttérből, amely nem érhető el, így HTTP 404 állapotkódot ad vissza.
 

@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554350"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235978"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -38,15 +38,15 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | --- | --- | --- | --- |
 > | szolgáltatás | globális | 1-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel, és az alfanumerikus karakterrel végződik. |
 > | szolgáltatás/API-k | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/problémák | api-t | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/API-k/problémák | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/API-k/problémák/mellékletek | kérdés | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/API-k/problémák/megjegyzések | kérdés | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/műveletek | api-t | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/API-k/műveletek | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/API-k/műveletek/Címkék | művelet | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/kiadások | api-t | 1–80 | Alfanumerikus karakterek, aláhúzások és kötőjelek.<br><br>Kezdő és záró alfanumerikus vagy aláhúzással. |
-> | szolgáltatás/API-k/sémák | api-t | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/tagDescriptions | api-t | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/API-k/Címkék | api-t | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/API-k/kiadások | api | 1–80 | Alfanumerikus karakterek, aláhúzások és kötőjelek.<br><br>Kezdő és záró alfanumerikus vagy aláhúzással. |
+> | szolgáltatás/API-k/sémák | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/API-k/tagDescriptions | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/API-k/Címkék | api | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/API-Version-sets | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/authorizationServers | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/háttérrendszer | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
@@ -322,7 +322,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | kiszolgálók/firewallRules | kiszolgálók | 1-128 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
 > | kiszolgálók/virtualNetworkRules | kiszolgálók | 1-128 | Alfanumerikus karakterek és kötőjelek. |
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
@@ -392,6 +392,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
+> | actionGroups | erőforráscsoport | 1-260 | Nem használható:<br>`/` <br><br>Nem végződhet szóközzel vagy ponttal.  |
 > | összetevők | erőforráscsoport | 1-260 | Nem használható:<br>`%&\?/` <br><br>Nem végződhet szóközzel vagy ponttal.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
@@ -542,7 +543,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | megoldások | munkaterület | N.A. | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
+> | megoldások | munkaterület | N/A | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -652,7 +653,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | storageAccounts/managementPolicies | tárfiók |  | Kell lennie `default` . |
 > | blob | tároló | 1–1024 | Bármely URL-karakter, kis-és nagybetűk megkülönböztetése |
 > | üzenetsor | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Egymást követő kötőjelek nem használhatók. |
-> | tábla | tárfiók | 3-63 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
+> | table | tárfiók | 3-63 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
@@ -686,15 +687,16 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | környezetben | erőforráscsoport | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
-> | környezetek/accessPolicies | environment | 1–90 | Nem használható:<br> `'<>%&:\?/#` |
-> | környezetek/eventSources | environment | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
-> | környezetek/referenceDataSets | environment | 3-63 | Alfanumerikus karaktereket |
+> | környezetek/accessPolicies | környezet | 1–90 | Nem használható:<br> `'<>%&:\?/#` |
+> | környezetek/eventSources | környezet | 1–90 | Nem használható:<br>`'<>%&:\?/#` |
+> | környezetek/referenceDataSets | környezet | 3-63 | Alfanumerikus karaktereket |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
+> | tanúsítványok | erőforráscsoport | 1-260 | Nem használható:<br>`/` <br><br>Nem végződhet szóközzel vagy ponttal.  | 
 > | kiszolgálófarmok | erőforráscsoport | 1-40 | Alfanumerikus karakterek és kötőjelek. |
 > | helyek | globális | 2-60 | Alfanumerikus karaktereket és kötőjeleket tartalmaz.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
 > | helyek/bővítőhelyek | hely | 2-59 | Alfanumerikus karakterek és kötőjelek. |

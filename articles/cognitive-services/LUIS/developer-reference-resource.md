@@ -4,12 +4,12 @@ description: Az SDK-k, a REST API-k, a CLI, a programozási nyelvben Language Un
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a7769d04d3cf41cee9f28b49d38e80deeaddcf9
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 01cbaf5a7e8eb733680381da21a7b1f9aa5c2cea
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404990"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235995"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK, REST és CLI fejlesztői erőforrások a Language Understandinghoz (LUIS)
 
@@ -86,14 +86,14 @@ Az [alkalmazás sémája](app-schema-definition.md) importálva van, `.json` vag
 
 |Nyelv |Dokumentáció|Csomag|Rövid útmutatók|
 |--|--|--|--|
-|C#|[Tartalomkészítés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Előrejelzés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet készítése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet előrejelzése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Tartalomkészítés](sdk-authoring.md?pivots=programming-language-csharp)<br>[Lekérdezések előrejelzése](sdk-query-prediction-endpoint.md?pivots=programming-language-csharp)|
-|Go|[Szerzői műveletek és előrejelzések](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
+|C#|[Tartalomkészítés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Előrejelzés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet készítése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet előrejelzése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Tartalomkészítés](quickstart-sdk.md?pivots=programming-language-csharp)<br>[Lekérdezések előrejelzése](quickstart-sdk.md?pivots=programming-language-csharp)|
+|Indítás|[Szerzői műveletek és előrejelzések](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[Szerzői műveletek és előrejelzések](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven-készítés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-előrejelzés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Tartalomkészítés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Előrejelzés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM készítése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Tartalomkészítés](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)<br>[Előrejelzés](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)|
-|Python|[Szerzői műveletek és előrejelzések](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tartalomkészítés](sdk-authoring.md?pivots=programming-language-python)<br>[Előrejelzés](sdk-query-prediction-endpoint.md?pivots=programming-language-python)|
+|JavaScript|[Tartalomkészítés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Előrejelzés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM készítése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Tartalomkészítés](quickstart-sdk.md?pivots=programming-language-javascript)<br>[Előrejelzés](quickstart-sdk.md?pivots=programming-language-javascript)|
+|Python|[Szerzői műveletek és előrejelzések](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tartalomkészítés](quickstart-sdk.md?pivots=programming-language-python)<br>[Előrejelzés](quickstart-sdk.md?pivots=programming-language-python)|
 
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
 A Language Understanding (LUIS) egy [tárolót](luis-container-howto.md) biztosít az alkalmazás helyszíni és a benne foglalt verziói számára.
 
@@ -125,7 +125,7 @@ A bot Framework [számos eszközt](https://github.com/microsoft/botbuilder-tools
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) – egy asztali alkalmazás, amely lehetővé teszi a robot-fejlesztők számára a bot Framework SDK használatával létrehozott robotok tesztelését és hibakeresését
 * A [robot Framework zeneszerzője](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrált fejlesztői eszköz a fejlesztők és a több-fegyelmi csapatok számára a robotok és a társalgási tapasztalatok létrehozásához a Microsoft bot Framework használatával
 * [Robot Framework-minták](https://github.com/microsoft/botbuilder-samples) – #C, JavaScript, írógéppel és Python
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A gyakori http- [hibakódok](luis-reference-response-codes.md) ismertetése
 * Az API-k és SDK-k [hivatkozási dokumentációja](https://docs.microsoft.com/azure/index)

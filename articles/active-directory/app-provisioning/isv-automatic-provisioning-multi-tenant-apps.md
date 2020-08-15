@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283095"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235638"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -54,7 +54,7 @@ Az Azure AD számos integrációs elérési utat biztosít, amelyek lehetővé t
 
 * Az [Azure ad-kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) felügyeli az Azure ad-ből származó felhasználók kiépítését és megszüntetését az alkalmazásba (kimenő kiépítés) és az alkalmazásból az Azure ad-be (bejövő kiépítés). A szolgáltatás az alkalmazás által biztosított tartományok közötti Identitáskezelés (SCIM) felhasználói felügyeleti API-végpontok rendszeréhez csatlakozik.
 
-* A [Microsoft Graph](https://docs.microsoft.com/graph/)használatakor az alkalmazás az Microsoft Graph API lekérdezésével kezeli a felhasználók és csoportok bejövő és kimenő üzembe helyezését az Azure ad-ből az alkalmazásba.
+* A [Microsoft Graph](/graph/)használatakor az alkalmazás az Microsoft Graph API lekérdezésével kezeli a felhasználók és csoportok bejövő és kimenő üzembe helyezését az Azure ad-ből az alkalmazásba.
 
 * Az igény szerinti Security Assertion Markup Language (SAML JIT) felhasználói kiépítés akkor engedélyezhető, ha az alkalmazás SAML-t használ az összevonáshoz. Az SAML-jogkivonatban eljuttatott jogcímeket használja a felhasználók kiépítéséhez.
 
@@ -72,8 +72,8 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 | Támogató vendég fiókok (B2B)| √| √| √ |
 | Nem vállalati fiókok (B2C) támogatása| X| √| √ |
 
-<sup>*</sup>– Azure AD Connect telepítés szükséges a felhasználók az AD-ből az Azure AD-be való szinkronizálásához.  
-<sup>+</sup >– A SCIM használata az üzembe helyezéshez nem zárja ki, hogy az alkalmazást a MIcrosoft Graph-ban más célokra is integrálja.
+<sup>*</sup> – Azure AD Connect telepítés szükséges a felhasználók az AD-ből az Azure AD-be való szinkronizálásához.  
+<sup>+</sup >– A SCIM használata az üzembe helyezéshez nem zárja ki, hogy az alkalmazás integrálható legyen Microsoft Graph egyéb célokra.
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD kiépítési szolgáltatás (SCIM)
 
@@ -89,7 +89,7 @@ Az Azure AD kiépítési szolgáltatás felhasználói SCIM kapcsolatos további
 
 ## <a name="microsoft-graph-for-provisioning"></a>Kiépítés Microsoft Graph
 
-Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a [Microsoft Graphban](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)elérhető több száz más adatmennyiséget. 
+Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a [Microsoft Graphban](/graph/api/overview?view=graph-rest-1.0)elérhető több száz más adatmennyiséget. 
 
 Több mint 15 000 000 szervezet és a Fortune 500 90%-a az Azure AD-t használja a Microsoft Cloud Services, például az Office 365, a Microsoft Azure, a nagyvállalati mobilitási csomag vagy a Microsoft 365ra való feliratkozáskor. A Microsoft Graph használatával integrálhatja az alkalmazást a felügyeleti munkafolyamatokkal, például az alkalmazottak bevezetésével (és megszüntetésével), a profil karbantartásával és egyéb lehetőségekkel. 
 
@@ -97,9 +97,9 @@ További információ a kiépítés Microsoft Graph használatáról:
 
 * [Microsoft Graph Kezdőlap](https://developer.microsoft.com/graph)
 
-* [A Microsoft Graph áttekintése](https://docs.microsoft.com/graph/overview)
+* [A Microsoft Graph áttekintése](/graph/overview)
 
-* [Microsoft Graph hitelesítés áttekintése](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph hitelesítés áttekintése](/graph/auth/)
 
 * [A Microsoft Graph első lépései](https://developer.microsoft.com/graph/get-started)
 

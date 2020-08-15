@@ -1,19 +1,19 @@
 ---
-title: Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
+title: Integrálás az Azure Mapsszel
 titleSuffix: Azure Digital Twins
-description: Megtudhatja, hogyan hozhat létre olyan Azure-függvényt, amely a Twin Graph és az Azure digitális Twins értesítései segítségével frissíti a Azure Mapsban megjelenő információkat.
+description: Megtudhatja, hogyan hozhat létre olyan Azure-függvényt, amely a Twin gráf és az Azure Digital Twins-értesítések használatával frissítheti Azure Maps beltéri térképeit.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131412"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235910"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 

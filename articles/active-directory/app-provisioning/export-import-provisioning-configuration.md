@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781722"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235817"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Útmutató: az üzembe helyezési konfiguráció exportálása és visszavonása egy ismert megfelelő állapotba
 
@@ -39,8 +39,8 @@ A konfiguráció exportálása:
 
 A konfiguráció exportálása és mentése lehetővé teszi, hogy visszaállítsa a konfiguráció egy korábbi verzióját. Javasoljuk a kiépítési konfiguráció exportálását és későbbi használatra mentését, amikor módosítja az attribútum-hozzárendeléseket vagy a hatóköri szűrőket. Mindössze annyit kell tennie, hogy megnyitja a fenti lépésekben letöltött JSON-fájlt, másolja a JSON-fájl teljes tartalmát, cserélje le a JSON-adattartalom teljes tartalmát a sémakezelő szerkesztőben, majd mentse. Ha aktív kiépítési ciklus van, akkor a művelet befejeződik, és a következő ciklus a frissített sémát fogja használni. A következő ciklus egy kezdeti ciklus is, amely az új konfiguráció alapján újraértékeli az összes felhasználót és csoportot. Egy korábbi konfigurációra való visszalépéskor vegye figyelembe a következőket:
 
-- A rendszer ismét kiértékeli a felhasználókat annak megállapítása érdekében, hogy a hatókörük legyen-e. Ha a hatókörhöz tartozó szűrők módosítva lettek, a felhasználó nem tartozik többé, akkor azok le lesznek tiltva. Habár a legtöbb esetben ez a kívánt viselkedés, időnként előfordulhat, hogy meg szeretné akadályozni ezt, és használhatja a [hatókör törlése funkció kihagyása](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) funkciót. 
-- A kiépítési konfiguráció módosítása újraindítja a szolgáltatást, és elindítja a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental).
+- A rendszer ismét kiértékeli a felhasználókat annak megállapítása érdekében, hogy a hatókörük legyen-e. Ha a hatókörhöz tartozó szűrők módosítva lettek, a felhasználó nem tartozik többé, akkor azok le lesznek tiltva. Habár a legtöbb esetben ez a kívánt viselkedés, időnként előfordulhat, hogy meg szeretné akadályozni ezt, és használhatja a [hatókör törlése funkció kihagyása](./skip-out-of-scope-deletions.md) funkciót. 
+- A kiépítési konfiguráció módosítása újraindítja a szolgáltatást, és elindítja a [kezdeti ciklust](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental).
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>A kiépítési konfiguráció exportálása és importálása a Microsoft Graph API használatával
 

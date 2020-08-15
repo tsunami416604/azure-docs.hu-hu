@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829696"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235468"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -156,7 +156,7 @@ Az [SCIM 2,0 protokoll specifikációja](http://www.simplecloud.info/#Specificat
 
 Az Azure AD-vel való kompatibilitás érdekében kövesse az alábbi általános irányelveket a SCIM-végpontok megvalósításához:
 
-* `id`az összes erőforráshoz kötelező tulajdonság. Minden erőforrást visszaadó válasznak biztosítania kell, hogy minden erőforrás rendelkezik ezzel a tulajdonsággal, kivéve a `ListResponse` nulla taggal.
+* `id` az összes erőforráshoz kötelező tulajdonság. Minden erőforrást visszaadó válasznak biztosítania kell, hogy minden erőforrás rendelkezik ezzel a tulajdonsággal, kivéve a `ListResponse` nulla taggal.
 * A lekérdezési/szűrési kérelemre adott válasznak mindig a következőnek kell lennie: `ListResponse` .
 * A csoportok nem kötelezőek, de csak akkor támogatottak, ha a SCIM implementációja támogatja a javítási kérelmeket.
 * A javítás válaszában nem szükséges a teljes erőforrás belefoglalása.
@@ -751,7 +751,7 @@ Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.
 
 Most, hogy megtervezte a sémát, és megértette az Azure AD SCIM megvalósítását, megkezdheti az SCIM-végpont fejlesztését. Ahelyett, hogy teljesen elkezdené, és a megvalósítást teljes mértékben saját maga is kiépítheti, a SCIM-Közösség által közzétett nyílt forráskódú SCIM-könyvtárakra támaszkodhat.
 
-Az Azure AD-kiépítési csapat által közzétett nyílt forráskódú .NET Core- [hivatkozási kód](https://aka.ms/SCIMReferenceCode) egy ilyen erőforrás, amely elkezdheti a fejlesztést. Miután létrehozta a SCIM-végpontot, tesztelni kell. Használhatja a hivatkozási kód részeként megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gyűjteményét, vagy futtathatja a [fentebb](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)ismertetett minta kérelmeket/válaszokat.  
+Az Azure AD-kiépítési csapat által közzétett nyílt forráskódú .NET Core- [hivatkozási kód](https://aka.ms/SCIMReferenceCode) egy ilyen erőforrás, amely elkezdheti a fejlesztést. Miután létrehozta a SCIM-végpontot, tesztelni kell. Használhatja a hivatkozási kód részeként megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gyűjteményét, vagy futtathatja a [fentebb](#user-operations)ismertetett minta kérelmeket/válaszokat.  
 
    > [!Note]
    > A hivatkozási kód célja, hogy segítséget nyújtson a SCIM-végpont létrehozásában, és "ahogy van". A közösségi hozzájárulások szívesen segítenek felépíteni és karbantartani a kódot.
@@ -796,10 +796,10 @@ A SCIM szolgáltatásnak rendelkeznie kell egy HTTP-címen és egy kiszolgálói
 
 A .NET Core SDK tartalmaz egy HTTPS-fejlesztési tanúsítványt, amelyet a fejlesztés során használhat, a tanúsítványt a rendszer az első futtatási élmény részeként telepíti. Attól függően, hogy hogyan futtatja a ASP.NET Core webalkalmazást, egy másik portot fog hallgatni:
 
-* Microsoft. SCIM. WebHostSample:https://localhost:5001
-* IIS Express:https://localhost:44359/
+* Microsoft. SCIM. WebHostSample: https://localhost:5001
+* IIS Express: https://localhost:44359/
 
-A HTTPS-vel kapcsolatos további információkért ASP.NET Core használja a következő hivatkozást: [https betartatása ASP.net Core](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+A HTTPS-vel kapcsolatos további információkért ASP.NET Core használja a következő hivatkozást: [https betartatása ASP.net Core](/aspnet/core/security/enforcing-ssl)
 
 ### <a name="handling-endpoint-authentication"></a>Végpont hitelesítésének feldolgozása
 
@@ -1168,12 +1168,12 @@ A kezdeti ciklus elindítása után a bal oldali panelen kiválaszthatja a **ki�
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>5. lépés: az alkalmazás közzététele az Azure AD Application Galleryben
 
-Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD Application Galleryben teheti elérhetővé. Ez megkönnyíti a szervezetek számára az alkalmazás felderítését és a kiépítés konfigurálását. Az alkalmazás közzététele az Azure AD-katalógusban és a mások számára elérhető kiépítés egyszerűvé tétele. Tekintse meg a lépéseket [itt](../develop/howto-app-gallery-listing.md). A Microsoft együttműködik Önnel, hogy integrálja az alkalmazást a katalógusba, tesztelje a végpontot, és bocsásson ki a használati [dokumentációt](../saas-apps/tutorial-list.md) az ügyfelek számára. 
+Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD Application Galleryben teheti elérhetővé. Ez megkönnyíti a szervezetek számára az alkalmazás felderítését és a kiépítés konfigurálását. Az alkalmazás közzététele az Azure AD-katalógusban és a mások számára elérhető kiépítés egyszerűvé tétele. Tekintse meg a lépéseket [itt](../azuread-dev/howto-app-gallery-listing.md). A Microsoft együttműködik Önnel, hogy integrálja az alkalmazást a katalógusba, tesztelje a végpontot, és bocsásson ki a használati [dokumentációt](../saas-apps/tutorial-list.md) az ügyfelek számára. 
 
 ### <a name="gallery-onboarding-checklist"></a>Katalógus-előkészítési ellenőrzőlista
 Kövesse az alábbi feladatlistát, és győződjön meg arról, hogy az alkalmazás készen áll, és az ügyfelek zökkenőmentes üzembe helyezési tapasztalattal rendelkeznek. A katalógusba való bevezetéskor a rendszer összegyűjti az adatokat. 
 > [!div class="checklist"]
-> * [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) felhasználói és csoportos végpont támogatása (csak egy szükséges, de mindkettő ajánlott)
+> * [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) felhasználói és csoportos végpont támogatása (csak egy szükséges, de mindkettő ajánlott)
 > * Legalább 25 kérelem támogatása a bérlők számára másodpercenként (kötelező)
 > * Mérnöki és támogatási kapcsolattartók létrehozása útmutató az ügyfeleknek a katalógus bevezetéséhez (kötelező)
 > * 3 nem lejáró teszt hitelesítő adatai az alkalmazáshoz (kötelező)

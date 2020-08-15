@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009654"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234989"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -69,7 +69,7 @@ Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Először nyissa meg az Azure Digital Twins-példány oldalát a Azure Portal. A példány menüjében válassza a *hozzáférés-vezérlés (iam)* lehetőséget. Válassza a *Hozzáadás* gombot a *szerepkör-hozzárendelés hozzáadása*területen.
+Először nyissa meg az Azure Digital Twins-példány oldalát a Azure Portal. A példány menüjében válassza a *hozzáférés-vezérlés (iam)* lehetőséget. Válassza a  *Hozzáadás* gombot a *szerepkör-hozzárendelés hozzáadása*területen.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Szerepkör-hozzárendelés hozzáadásának kiválasztása a "hozzáférés-vezérlés (IAM)" lapról":::
 
@@ -126,6 +126,9 @@ Az alkalmazás regisztrációjának portál lapján válassza az API- *engedély
 Az alábbi *API-engedélyek kérése* lapon váltson a *saját szervezet által használt API* -k lapra, és keressen rá az *Azure Digital Twins*kifejezésre. Válassza az *Azure Digital Twins* lehetőséget a keresési eredmények közül, és folytassa az engedélyek hozzárendelését az Azure Digital Twins API-khoz.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Az "API-engedélyek kérése" oldal keresési eredményének megjelenítése az Azure digitális Twins":::
+
+>[!NOTE]
+> Ha már rendelkezik Azure Digital Twins-példánnyal a szolgáltatás előző nyilvános előzetes verziójából (az 2020. július előtt) még az előfizetésében, akkor az *Azure Smart Spaces szolgáltatást* kell keresnie. Ez az API-k ugyanazon készletének régebbi neve, és ez a lépés nem változtatja meg a felhasználói élményt.
 
 Ezután kiválaszthatja, hogy mely engedélyeket kell megadni ezekhez az API-khoz. Bontsa ki az **olvasási (1)** engedélyt, és jelölje be az *olvasás. írás* az alkalmazás regisztrációs olvasójának és az író engedélyének megadására szolgáló jelölőnégyzetet.
 

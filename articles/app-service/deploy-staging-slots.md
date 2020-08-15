@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073852"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236743"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
 <a name="Overview"></a>
@@ -423,7 +423,6 @@ Ha bármilyen hiba fordul elő a [tárolóhelyek cseréjekor](#AboutConfiguratio
       ...
     </conditions>
     ```
-- Egyes [IP-korlátozási szabályok](app-service-ip-restrictions.md) megakadályozhatják, hogy a swap művelet http-kérelmeket küldjön az alkalmazásnak. Azok az IPv4-címtartományok, amelyek a-val kezdődnek, `10.` és belsőek az üzemelő `100.` példányon. Engedélyezze az alkalmazáshoz való kapcsolódást.
 
 - A tárolóhelyek cseréje után az alkalmazás váratlan újraindítást tapasztalhat. Ennek az az oka, hogy a cserét követően az állomásnév-kötési konfiguráció elkerül a szinkronizálásból, ami önmagában nem okozza az újraindítást. Előfordulhat azonban, hogy bizonyos mögöttes tárolási események (például a tárolási kötetek feladatátvétele) észlelik ezeket az eltéréseket, és kényszerítik az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa az [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazás beállításait](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyre*. Ez az Alkalmazásbeállítás azonban *nem* működik Windows COMMUNICATION Foundation (WCF) alkalmazásokkal.
 

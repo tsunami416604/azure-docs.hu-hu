@@ -3,439 +3,119 @@ title: Automatizált virtuális gépek üzembe helyezése az Azure-alkalmazás k
 description: Ez a rövid útmutató azt ismerteti, hogyan használható a Azure PowerShell modul és Azure Resource Manager sablonok egy Azure-alkalmazás konfigurációs tárolójának üzembe helyezéséhez. Ezután a tárolóban lévő értékek használatával helyezzen üzembe egy virtuális gépet.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 04/14/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82137552"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235179"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Gyors útmutató: automatikus virtuálisgép-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Gyors útmutató: automatikus virtuálisgép-telepítés alkalmazás-konfigurációval és Resource Manager-sablonnal (ARM-sablon)
 
-A Azure PowerShell modul Azure-erőforrások létrehozásához és kezeléséhez használható PowerShell-parancsmagokkal vagy parancsfájlokkal. Ez a rövid útmutató bemutatja, hogyan használhatók Azure PowerShell és Azure Resource Manager sablonok az Azure-alkalmazások konfigurációs tárolójának üzembe helyezéséhez. Ezután megtudhatja, hogyan használhatja a tárolóban lévő kulcs-értékeket a virtuális gépek üzembe helyezéséhez.
-
-Az előfeltételként szükséges sablonnal létrehozhat egy alkalmazás-konfigurációs tárolót, majd a Azure Portal vagy az Azure CLI használatával adhat hozzá kulcs-értékeket az áruházhoz. Az elsődleges sablon meglévő konfigurációs tárolóból származó létező kulcs-érték konfigurációkra hivatkozik. A beolvasott értékek a sablon által létrehozott erőforrások tulajdonságainak beállítására szolgálnak, például egy virtuális gépre ebben a példában.
+Megtudhatja, hogyan használhatók Azure Resource Manager sablonok és Azure PowerShell egy Azure-alkalmazás konfigurációs tárolójának üzembe helyezéséhez, a kulcs-értékeknek az áruházba való felvételéhez, valamint a tárolóban lévő kulcs-értékek használatáról egy Azure-erőforrás, például egy Azure-beli virtuális gép üzembe helyezéséhez ebben a példában.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
+## <a name="prerequisites"></a>Előfeltételek
 
-* Ehhez a rövid útmutatóhoz a Azure PowerShell modul szükséges. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="review-the-templates"></a>A sablonok áttekintése
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és adja meg az Azure-beli hitelesítő adatait az előugró böngészőben:
+Az ebben a rövid útmutatóban használt sablonok az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/)származnak. Az [első sablon](https://azure.microsoft.comresources/templates/101-app-configuration-store/) létrehoz egy alkalmazás-konfigurációs tárolót:
 
-```azurepowershell-interactive
-# Connect to your Azure account
-Connect-AzAccount
-```
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 
-Ha egynél több előfizetéssel rendelkezik, válassza ki a rövid útmutatóhoz használni kívánt előfizetést a következő parancsmagok futtatásával. Ne felejtse el `<your subscription name>` lecserélni az előfizetés nevét:
+A sablonban egyetlen Azure-erőforrás van definiálva:
 
-```azurepowershell-interactive
-# List all available subscriptions.
-Get-AzSubscription
+- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): hozzon létre egy alkalmazás-konfigurációs tárolót.
 
-# Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
-```
+A [második sablon](https://azure.microsoft.com/resources/templates/101-app-configuration/) egy virtuális gépet hoz létre a tárolóban található kulcs-értékekkel. Ennek a lépésnek a megkezdése előtt hozzá kell adnia a kulcs-értékeket a portál vagy az Azure CLI használatával.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+## <a name="deploy-the-templates"></a>A sablonok üzembe helyezése
 
-```azurepowershell-interactive
-$resourceGroup = "StreamAnalyticsRG"
-$location = "WestUS2"
-New-AzResourceGroup `
-    -Name $resourceGroup `
-    -Location $location
-```
+### <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának üzembe helyezése
+1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy alkalmazás-konfigurációs tárolót.
 
-A kulcs-értékeknek a virtuális gépre való alkalmazása előtt rendelkeznie kell egy meglévő Azure app Configuration Store-tárolóval. Ez a szakasz részletesen ismerteti, hogyan helyezhet üzembe egy Azure-alkalmazás konfigurációs tárolóját egy Azure Resource Manager sablon használatával. Ha már rendelkezik egy alkalmazás-konfigurációs tárolóval, a cikk következő szakaszába léphet. 
+    [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-1. Másolja és illessze be a következő JSON-kódot egy új, *prereq. azuredeploy. JSON*nevű fájlba.
+1. Válassza ki vagy adja meg a következő értékeket.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "type": "string",
-        "metadata": {
-          "description": "Specifies the name of the app configuration store."
-        }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Specifies the Azure location where the app configuration store should be created."
-        }
-      },
-      "skuName": {
-        "type": "string",
-        "defaultValue": "standard",
-        "metadata": {
-          "description": "Specifies the SKU of the app configuration store."
-        }
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.AppConfiguration/configurationStores",
-        "name": "[parameters('configStoreName')]",
-        "apiVersion": "2019-10-01",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "[parameters('skuName')]"
-        }
-      }
-    ]
-   }
-   ```
+    - **előfizetés**: válassza ki az alkalmazás konfigurációs tárolójának létrehozásához használt Azure-előfizetést.
+    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához, ha nem szeretne meglévő erőforráscsoportot használni.
+    - **Régió**: válassza ki az erőforráscsoport helyét.  Például az **USA keleti**régiója.
+    - **Konfigurációs tár neve**: adjon meg egy új alkalmazás-konfigurációs tároló nevét.
+    - **Hely**: határozza meg az alkalmazás konfigurációs tárolójának helyét.  Használja az alapértelmezett értéket.
+    - **SKU neve**: adja meg az alkalmazás-konfigurációs tároló SKU-nevét. Használja az alapértelmezett értéket.
 
-1. Másolja és illessze be a következő JSON-kódot egy új, *prereq. azuredeploy. Parameters. JSON*nevű fájlba. Cserélje le a **Get-Unique** nevet a konfigurációs tároló egyedi nevére.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Győződjön meg arról, hogy a lapon az **Érvényesítés sikeres**volt, majd válassza a **Létrehozás**lehetőséget.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "value": "GET-UNIQUE"
-      }
-    }
-   }
-   ```
+Jegyezze fel az erőforráscsoport nevét és az alkalmazás konfigurációs tárolójának nevét.  Ezekre az értékekre szüksége lesz a virtuális gép telepítésekor
+### <a name="add-vm-configuration-key-values"></a>Virtuális gép konfigurációs kulcsának hozzáadása – értékek
 
-1. A PowerShell-ablakban futtassa a következő parancsot az Azure-alkalmazás konfigurációs tárolójának üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a Template paraméter fájljának elérési útját.
+Az alkalmazás-konfigurációs tároló létrehozása után a Azure Portal vagy az Azure CLI használatával adhat hozzá kulcs-értékeket a tárolóhoz.
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" `
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
-   ```
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd navigáljon az újonnan létrehozott alkalmazás-konfigurációs tárolóhoz.
+1. A bal oldali menüben válassza a **Configuration Explorer** lehetőséget.
+1. A **Létrehozás** gombra kattintva adja hozzá a következő kulcs-érték párokat:
 
-## <a name="add-vm-configuration-key-values"></a>Virtuális gép konfigurációs kulcsának hozzáadása – értékek
+   |Kulcs|Érték|Címke|
+   |-|-|-|
+   |windowsOsVersion|2019 – Datacenter|sablon|
+   |diskSizeGB|1023|sablon|
 
-Azure Resource Manager sablonnal létrehozhat egy alkalmazás-konfigurációs tárolót, de a Azure Portal vagy az Azure parancssori felület használatával is fel kell vennie a kulcs-értékeket. Ebben a rövid útmutatóban kulcs-értékeket adhat hozzá a Azure Portal használatával.
+   A **tartalom típusának** megtartása üres.
 
-1. Az üzembe helyezés befejezését követően navigáljon az újonnan létrehozott alkalmazás-konfigurációs tárolóhoz [Azure Portal](https://portal.azure.com).
+Az Azure CLI használatához lásd: [a kulcs-értékek használata az Azure-alkalmazás konfigurációs tárolójában](./scripts/cli-work-with-keys.md).
 
-1. Válassza a **Beállítások** > **hozzáférési kulcsok**elemet. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.
-
-1. Válassza a Configuration **Explorer** > **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
-
-   |Kulcs|Érték|
-   |-|-|
-   |windowsOsVersion|2019 – Datacenter|
-   |diskSizeGB|1023|
-  
-   Adja meg a **címke** *sablonját* , de hagyja üresen a **tartalom típusát** .
-
-## <a name="deploy-vm-using-stored-key-values"></a>Virtuális gép üzembe helyezése tárolt kulcs-értékek használatával
+### <a name="deploy-vm-using-stored-key-values"></a>Virtuális gép üzembe helyezése tárolt kulcs-értékek használatával
 
 Most, hogy hozzáadta a kulcs-értékeket a tárolóhoz, készen áll a virtuális gép üzembe helyezésére egy Azure Resource Manager sablon használatával. A sablon a létrehozott **windowsOsVersion** és **diskSizeGB** kulcsokra hivatkozik.
 
 > [!WARNING]
 > Az ARM-sablonok nem hivatkozhatnak olyan alkalmazás-konfigurációs tároló kulcsaira, amelyeken engedélyezve van a privát kapcsolat.
 
-1. Másolja és illessze be a következő JSON-kódot egy *azuredeploy. JSON*nevű új fájlba, vagy töltse le a fájlt az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
+1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy virtuális gépet az alkalmazás konfigurációs tárolójában tárolt kulcs-értékek használatával.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Admin user name."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "appConfigStoreName": {
-            "type": "string",
-            "metadata": {
-                "description": "App configuration store name."
-            }
-        },
-        "appConfigStoreResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the resource group for the app config store."
-            }
-        },
-        "domainNameLabel": {
-            "type": "string",
-            "metadata": {
-                "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_D2_v3",
-            "metadata": {
-                "description": "Size of the VM"
-            }
-        },
-        "vmSkuKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM windows sku"
-            }
-        },
-        "diskSizeKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM disk size"
-            }
-        },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the storage account."
-            }
-        }
-    },
-    "variables": {
-        "nicName": "myVMNic",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet",
-        "subnetPrefix": "10.0.0.0/24",
-        "publicIPAddressName": "myPublicIP",
-        "vmName": "SimpleWinVM",
-        "virtualNetworkName": "MyVNET",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-        "appConfigRef": "[resourceId(parameters('appConfigStoreResourceGroup'), 'Microsoft.AppConfiguration/configurationStores', parameters('appConfigStoreName'))]",
-        "windowsOSVersionParameters": {
-            "key": "[parameters('vmSkuKey')]",
-            "label": "template"
-        },
-        "diskSizeGBParameters": {
-            "key": "[parameters('diskSizeKey')]",
-            "label": "template"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-        },
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('domainNameLabel')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('nicName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2018-10-01",
-            "name": "[variables('vmName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "osProfile": {
-                    "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "createOption": "FromImage"
-                    },
-                    "dataDisks": [
-                        {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
-                            "lun": 0,
-                            "createOption": "Empty"
-                        }
-                    ]
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
-                    }
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "hostname": {
-            "type": "string",
-            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-        }
-    }
-   }
-   ```
+    [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
 
-1. Másolja és illessze be a következő JSON-kódot egy új, *azuredeploy. Parameters. JSON*nevű fájlba, vagy töltse le a fájlt az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json).
+1. Válassza ki vagy adja meg a következő értékeket.
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminPassword": {
-        "value": "GEN-PASSWORD"
-      },
-      "appConfigStoreName":{
-        "value": "GEN-APPCONFIGSTORE-NAME"
-      },
-      "appConfigStoreResourceGroup": {
-         "value": "GEN-APPCONFIGSTORE-RESOURCEGROUP-NAME"
-      },
-      "vmSkuKey":{
-        "value": "GEN-APPCONFIGSTORE-WINDOWSOSVERSION"
-      },
-      "diskSizeKey" :{
-         "value": "GEN-APPCONFIGSTORE-DISKSIZEGB"
-      },
-      "adminUsername":{
-        "value": "GEN-UNIQUE"
-      },
-      "storageAccountName":{
-        "value": "GEN-UNIQUE"
-      },
-      "domainNameLabel":{
-        "value": "GEN-UNIQUE"
-      }
-    }
-   }
-   ```
+    - **előfizetés**: válassza ki a virtuális gép létrehozásához használt Azure-előfizetést.
+    - **Erőforráscsoport**: adja meg ugyanazt az erőforráscsoportot, mint az alkalmazás konfigurációs tárolóját, vagy válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához.
+    - **Régió**: válassza ki az erőforráscsoport helyét.  Például az **USA keleti**régiója.
+    - **Hely**: határozza meg a virtuális gép helyét. használja az alapértelmezett értéket.
+    - Rendszergazdai **Felhasználónév**: Itt adhatja meg a virtuális gép rendszergazdai felhasználónevét.
+    - Rendszergazdai **jelszó**: a virtuális gép rendszergazdai jelszavának megadása.
+    - **Tartománynév címkéje**: adjon meg egy egyedi tartománynevet.
+    - **Storage-fiók neve**: adjon meg egy egyedi nevet a virtuális géphez társított Storage-fiókhoz.
+    - **Alkalmazás konfigurációs tárolójának erőforráscsoport**: adja meg az alkalmazás konfigurációs tárolóját tartalmazó erőforráscsoportot.
+    - **Alkalmazás-konfigurációs tár neve**: adja meg az Azure-alkalmazás konfigurációs tárolójának nevét.
+    - **VM SKU-kulcs**: a **windowsOsVersion**meghatározása.  Ez az a kulcs-érték neve, amelyet a tárolóhoz adott hozzá.
+    - **Lemez mérete kulcs**: határozza meg a **diskSizeGB**. Ez az az érték, amelyet a tárolóhoz adott hozzá.
 
-   Cserélje le a sablonban szereplő paramétereket a következő értékekre:
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Győződjön meg arról, hogy a lapon az **Érvényesítés sikeres**volt, majd válassza a **Létrehozás**lehetőséget.
 
-   |Paraméter|Érték|
-   |-|-|
-   |adminPassword|A virtuális gép rendszergazdai jelszava.|
-   |appConfigStoreName|Az Azure-alkalmazás konfigurációs tárolójának neve.|
-   |appConfigStoreResourceGroup|Az alkalmazás-konfigurációs tárolót tartalmazó erőforráscsoport.|
-   |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
-   |adminUsername|A virtuális gép rendszergazdai felhasználóneve.|
-   |storageAccountName|A virtuális géphez társított Storage-fiók egyedi neve.|
-   |Domainnamelabel értékkel|Egy egyedi tartománynév.|
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-1. A PowerShell-ablakban futtassa a következő parancsot a virtuális gép üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a Template paraméter fájljának elérési útját.
-
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>"
-       -TemplateFile "<path to azuredeploy.json>" `
-       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
-   ```
-
-Gratulálunk! Üzembe helyezett egy virtuális gépet az Azure-alkalmazás konfigurációjában tárolt konfigurációk használatával.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd navigáljon az újonnan létrehozott virtuális géphez.
+1. Válassza az **Áttekintés** lehetőséget a bal oldali menüben, és ellenőrizze, hogy az **SKU** a **2019-Datacenter**.
+1. Válassza ki a bal oldali menüből a **lemezeket** , és ellenőrizze, hogy az adatlemez mérete **2013**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

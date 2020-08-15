@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224560"
+ms.locfileid: "88236063"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Tudnivalók a Azure Key Vault tanúsítvány megújításáról
 
@@ -64,7 +64,7 @@ Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, 
   Hozzon létre egy hónap érvényességével rendelkező tanúsítványt, majd állítsa be az élettartamot 1%-ban. Ez a beállítás 7,2 órán belül elforgatja a tanúsítványt.
   
 * A rendszer replikálja a címkéket a tanúsítvány automatikus megújítása után?
-  Nem, a címkék nem replikálódnak, hacsak a felhasználó manuálisan nem másolja magát a címkéket.
+  Igen, a címkék replikálódnak az automatikus megújítás után.
 
 ### <a name="see-also"></a>Lásd még:
 *   [A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval](how-to-integrate-certificate-authority.md)

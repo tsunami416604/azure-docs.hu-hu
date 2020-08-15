@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036386"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235162"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez
 
 Ez a cikk olyan hibát ismertet, amely akkor fordulhat elő, amikor a Microsoft Azure virtuális géphez (VM) próbál csatlakozni.
 
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Nem csatlakozhat Azure-beli virtuális géphez a távoli asztal protokoll (RDP) használatával. A kapcsolatok beragadnak a "távoli konfigurálás" szakaszban, vagy a következő hibaüzenet jelenik meg:
 
@@ -55,13 +55,13 @@ Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./seri
 
 #### <a name="step-1-check-the-rdp-port"></a>1. lépés: az RDP-port keresése
 
-1. Egy PowerShell-példányban a [netstat](/windows-server/administration/windows-commands/netstat) használatával győződjön meg arról, hogy a 8080-es portot más alkalmazások használják-e:
+1. Egy PowerShell-példányban a [netstat](/windows-server/administration/windows-commands/netstat) használatával győződjön meg arról, hogy a 3389-es portot más alkalmazások használják-e:
 
     ```powershell
     Netstat -anob |more
     ```
 
-2. Ha a Termservice.exe 8080 portot használ, folytassa a 2. lépéssel. Ha a Termservice.exeon kívül más szolgáltatás vagy alkalmazás 8080 portot használ, kövesse az alábbi lépéseket:
+2. Ha a Termservice.exe 3389 portot használ, folytassa a 2. lépéssel. Ha a Termservice.exeon kívül más szolgáltatás vagy alkalmazás 3389 portot használ, kövesse az alábbi lépéseket:
 
     1. Állítsa le a szolgáltatást az 3389 szolgáltatást használó alkalmazáshoz:
 

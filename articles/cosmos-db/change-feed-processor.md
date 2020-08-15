@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119409"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236471"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 
@@ -95,11 +95,23 @@ Emellett a változási hírcsatorna processzora dinamikusan alkalmazkodik a tár
 
 A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adatáthelyezés mindig RUs-t használ. A bérleti tároló által felhasznált RUs díjait kell fizetnie.
 
+## <a name="where-to-host-the-change-feed-processor"></a>A módosítási hírcsatorna processzorának üzemeltetése
+
+A módosítási hírcsatorna processzora bármely olyan platformon üzemeltethető, amely támogatja a hosszú ideig futó folyamatokat vagy feladatokat:
+
+* Folyamatos futtatású [Azure-webjobs](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
+* Egy folyamat egy Azure-beli [virtuális gépen](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines).
+* A háttérben futó feladatok az [Azure Kubernetes szolgáltatásban](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service).
+* Egy [ASP.net által üzemeltetett szolgáltatás](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
+
+Míg a változási csatorna processzora rövid életű környezetekben futtatható, mivel a címbérleti tároló fenntartja az állapotot, a környezetek indítási és leállítási ciklusa késlelteti az értesítések fogadását (a processzor a környezet indításakor fellépő terhelés miatt).
+
 ## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [Minta alkalmazás teljes alkalmazása a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [További használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Cosmos DB workshop Labs az adatcsatornás processzor módosításához](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>További lépések
 

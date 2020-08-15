@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050879"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235298"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Helytelen jelszavak eltávolítása Azure Active Directory jelszavas védelem használatával
 
 Számos biztonsági útmutatás azt ajánlja, hogy ne használja ugyanazt a jelszót több helyen, hogy az összetett legyen, és elkerülje az egyszerű jelszavakat, például a *Password123*. A felhasználók számára [útmutatást adhat a jelszavak kiválasztásához](https://www.microsoft.com/research/publication/password-guidance), azonban a gyenge vagy nem biztonságos jelszavakat gyakran használják. Az Azure AD jelszavas védelme észleli és blokkolja az ismert gyenge jelszavakat és azok változatait, valamint blokkolhatja a szervezete számára jellemző további gyenge kifejezéseket is.
 
-Az Azure AD jelszavas védelemmel az alapértelmezett globális tiltott jelszavak listáját a rendszer automatikusan alkalmazza az összes Felhőbeli felhasználóra. Saját üzleti és biztonsági igényeinek támogatásához megadhat bejegyzéseket egy egyéni tiltott jelszavak listájában. Ha a felhasználók megváltoztatják vagy alaphelyzetbe állítják a jelszavukat, a rendszer ellenőrzi, hogy az erős jelszavak használata megtörténik-e.
+Az Azure AD jelszavas védelme esetén az alapértelmezett globális tiltott jelszavak listáját a rendszer automatikusan alkalmazza az Azure AD-bérlő összes felhasználója számára. Saját üzleti és biztonsági igényeinek támogatásához megadhat bejegyzéseket egy egyéni tiltott jelszavak listájában. Ha a felhasználók megváltoztatják vagy alaphelyzetbe állítják a jelszavukat, a rendszer ellenőrzi, hogy az erős jelszavak használata megtörténik-e.
 
 Használjon olyan további szolgáltatásokat, mint az [azure multi-Factor Authentication](concept-mfa-howitworks.md), nem csak az Azure ad jelszavas védelem által kényszerített erős jelszavakat használja. További információ a bejelentkezési események több rétegének használatáról: [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
@@ -37,7 +37,7 @@ A Azure AD Identity Protection csapat folyamatosan elemzi az Azure AD biztonság
 
 Ha egy Azure AD-bérlő bármelyik felhasználója módosít vagy visszaállít egy jelszót, a rendszer a globálisan tiltott jelszavak aktuális verzióját használja a jelszó erősségének ellenőrzéséhez. Ez az ellenőrzési ellenőrzés az összes Azure AD-ügyfél esetében erősebb jelszavakat eredményez.
 
-A globálisan tiltott jelszavak listáját a rendszer automatikusan alkalmazza az Azure AD-bérlő összes felhőalapú felhasználójára. Nincs lehetőség az engedélyezéshez vagy a konfiguráláshoz, és nem lehet letiltani.
+A rendszer automatikusan alkalmazza a globálisan tiltott jelszavak listáját egy Azure AD-bérlő összes felhasználójára. Nincs lehetőség az engedélyezéshez vagy a konfiguráláshoz, és nem lehet letiltani. A rendszer a globálisan tiltott jelszavak listáját alkalmazza a felhasználókra, amikor az Azure AD-n keresztül módosítják vagy visszaállítják saját jelszavukat.
 
 > [!NOTE]
 > A Cyber-bűnözők a támadások során hasonló stratégiákat is használnak a gyakori gyenge jelszavak és változatok azonosítására. A biztonság növelése érdekében a Microsoft nem teszi közzé a globálisan tiltott jelszavak listájának tartalmát.
@@ -99,7 +99,7 @@ Bár a globálisan tiltott lista kicsi a harmadik féltől származó tömeges l
 
 ## <a name="on-premises-hybrid-scenarios"></a>Helyszíni hibrid forgatókönyvek
 
-Számos szervezet rendelkezik olyan hibrid identitási modellel, amely helyszíni Active Directory tartományi szolgáltatások (AD DS) környezeteket is tartalmaz. Az Azure AD jelszavas védelem biztonsági előnyeinek a AD DS-környezetbe való kiterjesztéséhez a helyszíni kiszolgálókon is telepíthet összetevőket. Ezeknek az ügynököknek a helyi AD DS környezetében jelszó-módosítási eseményekre van szükség ahhoz, hogy megfeleljenek a csak felhőalapú felhasználók jelszavának.
+Számos szervezet rendelkezik olyan hibrid identitási modellel, amely helyszíni Active Directory tartományi szolgáltatások (AD DS) környezeteket is tartalmaz. Az Azure AD jelszavas védelem biztonsági előnyeinek a AD DS-környezetbe való kiterjesztéséhez a helyszíni kiszolgálókon is telepíthet összetevőket. Ezeknek az ügynököknek a helyi AD DS környezetében jelszó-módosítási eseményeket kell megkövetelni ahhoz, hogy megfeleljenek az Azure AD-ben használt jelszóházirend követelményeinek.
 
 További információ: [Az Azure ad jelszavas védelemének betartatása AD DS](concept-password-ban-bad-on-premises.md).
 

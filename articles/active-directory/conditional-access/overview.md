@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051944"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234703"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
@@ -38,7 +38,8 @@ A feltételes hozzáférési szabályzatok alkalmazásával a megfelelő hozzáf
 
 ![Fogalmi feltételes hozzáférés folyamata](./media/overview/conditional-access-overview-how-it-works.png)
 
-A feltételes hozzáférési házirendeket az első tényezős hitelesítés befejeződése után kényszeríti ki a rendszer. A feltételes hozzáférés nem a szervezet első védelmi vonala, mint például a szolgáltatásmegtagadási (DoS) támadások, de ezekből az eseményekről származó jeleket is használhatnak a hozzáférés meghatározásához.
+> [!IMPORTANT]
+> A feltételes hozzáférési házirendeket az első tényezős hitelesítés befejeződése után kényszeríti ki a rendszer. A feltételes hozzáférés nem a szervezet első védelmi vonala, például a szolgáltatásmegtagadási (DoS) támadások esetében, de ezekből az eseményekről származó jeleket is használhat a hozzáférés meghatározásához.
 
 ## <a name="common-signals"></a>Gyakori jelek
 
@@ -70,7 +71,7 @@ Azok a gyakori jelek, amelyekben a feltételes hozzáférés a szabályzat megho
       - Jóváhagyott ügyfélalkalmazás megkövetelése
       - Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)
 
-## <a name="commonly-applied-policies"></a>Általánosan alkalmazott házirendek
+## <a name="commonly-applied-policies"></a>Gyakran alkalmazott szabályzatok
 
 Számos szervezet rendelkezik olyan [általános hozzáféréssel, amelyekkel a feltételes hozzáférési szabályzatok segíthetnek](concept-conditional-access-policy-common.md) , például:
 

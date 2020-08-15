@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003235"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235672"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Útmutató: kifejezések írása az attribútum-hozzárendelésekhez az Azure AD-ben
 
@@ -49,7 +49,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
 | **utótag** |Kötelező |Sztring |A forrás érték végéhez hozzáfűzni kívánt karakterlánc. |
@@ -67,7 +67,7 @@ Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét para
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték1** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték2|
 | **érték2** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték1|
@@ -84,7 +84,7 @@ BitAnd (&HF, &HF7)
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező | kifejezés | Bármely érvényes kifejezés |
 
@@ -100,7 +100,7 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **source1 ... sourceN** | Kötelező | Sztring |Kötelező, változó számú alkalommal. Az attribútum neve általában a forrásoldali objektumban. |
 | **defaultValue** | Választható | Sztring | Az alapértelmezett érték, amelyet akkor kell használni, ha az összes forrás értéke NULL. Üres karakterlánc ("") lehet.
@@ -113,7 +113,7 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az alap 64-re konvertálandó karakterlánc|
 
@@ -129,7 +129,7 @@ A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az UTF8 hexadecimális értékre konvertálandó karakterlánc|
 
@@ -145,7 +145,7 @@ ConvertToUTF8Hex ("Helló világ!")
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |attribute |Többértékű attribútum, amely megszámolja az elemeket|
 
@@ -157,7 +157,7 @@ ConvertToUTF8Hex ("Helló világ!")
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték** |Kötelező | numerikus, hivatkozás vagy logikai | Számérték, hivatkozási attribútum vagy logikai érték lehet. |
 
@@ -173,7 +173,7 @@ A "CN = Joe, DC = contoso, DC = com" értéket adja vissza.
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték** |Kötelező | Dátum | A DateTime típusúra konvertálandó AD-dátum |
 
@@ -190,10 +190,10 @@ A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
-| **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
+| **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [/DotNet/standard/Base-types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 | **outputFormat** |Kötelező |Sztring |A kimeneti dátum formátuma. |
 
 ---
@@ -210,7 +210,7 @@ A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **feltétel** |Kötelező |Változó vagy kifejezés |Bármely érték vagy kifejezés, amelynek kiértékelése igaz vagy hamis lehet. |
 | **valueIfTrue** |Kötelező |Változó vagy karakterlánc | Ha a feltétel igaz értéket ad vissza, a visszaadott érték. |
@@ -227,7 +227,7 @@ IIF ([ország] = "USA", [ország], [részleg])
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték1** |Kötelező |Sztring |Keresendő karakterlánc |
 | **érték2** |Kötelező |Sztring |A megtalálni kívánt karakterlánc |
@@ -249,7 +249,7 @@ VbBinaryCompare ("ismétlődő", "e", 3,)
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -266,7 +266,7 @@ A függvény inverzének neve IsPresent.
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -282,7 +282,7 @@ Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlán
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -297,19 +297,19 @@ Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManag
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>Elem
 **Függvény**<br> Elem (attribútum, index)
 
 **Leírás:**<br> Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |Attribútum |Keresendő többértékű attribútum |
 | **index** |Kötelező |Egész szám | Index a Többértékű karakterlánc egyik elemébe|
@@ -327,7 +327,7 @@ Ha a forrásadatok egyike egy többértékű attribútum, akkor az adott attrib�
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **elválasztó** |Kötelező |Sztring |A forrásadatok elválasztására szolgáló karakterlánc, amely egyetlen sztringbe van fűzve. Lehet "", ha nem kötelező elválasztó. |
 | **source1 ... sourceN** |Kötelező, változó – ennyiszer |Sztring |A egyesíteni kívánt karakterlánc-értékek. |
@@ -343,7 +343,7 @@ Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **Sztring** |Kötelező |Attribútum | A karakterlánc, amelyből karaktereket kell visszaadni |
 | **NumChars** |Kötelező |Egész szám | Egy szám, amely a sztring elejétől (balra) való visszatéréshez szükséges karakterek számát azonosítja.|
@@ -360,7 +360,7 @@ A "Joh" értéket adja vissza
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában. |
 | **Start** |Kötelező |egész szám |Az index a **forrás** sztringben, ahol az alsztringnek el kell indulnia. A karakterlánc első karakterének indexe 1, a második karakter pedig a 2. indexet fogja tartalmazni. |
@@ -374,7 +374,7 @@ A "Joh" értéket adja vissza
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring | Általában utónév vagy vezetéknév attribútum. |
 
@@ -386,7 +386,7 @@ A "Joh" értéket adja vissza
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Logikai karakterlánc |A várt **források** értéke "true" vagy "false". |
 
@@ -394,11 +394,11 @@ A "Joh" értéket adja vissza
 ### <a name="numfromdate"></a>NumFromDate
 **Függvény**<br> NumFromDate (érték)
 
-**Leírás:**<br> A NumFromDate függvény egy DateTime értéket konvertál Active Directory formátumra, amely az attribútumok (például a [accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)) beállításához szükséges. Ezzel a függvénnyel a Felhőbeli HR-alkalmazásokból (például a munkanapokból és a SuccessFactors) kapott dátum-és időértékek konvertálhatók 
+**Leírás:**<br> A NumFromDate függvény egy DateTime értéket konvertál Active Directory formátumra, amely az attribútumok (például a [accountExpires](/windows/win32/adschema/a-accountexpires)) beállításához szükséges. Ezzel a függvénnyel a Felhőbeli HR-alkalmazásokból (például a munkanapokból és a SuccessFactors) kapott dátum-és időértékek konvertálhatók 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték** |Kötelező | Sztring | A dátum és idő karakterlánca támogatott formátumban. Támogatott formátumok: https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
@@ -420,7 +420,7 @@ A "Joh" értéket adja vissza
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |Többértékű attribútum |Több értékkel rendelkező attribútum, amelyből duplikált elemek lesznek eltávolítva|
 
@@ -454,7 +454,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a **forrásoldali** objektumban. |
 | **oldValue** |Választható |Sztring |A **forrásban** vagy **sablonban**cserélni kívánt érték. |
@@ -479,7 +479,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |Legalább 2 szükséges, nincs felső korlát |Sztring | A kiértékelni kívánt egyedi érték-létrehozási szabályok listája. |
 
@@ -492,7 +492,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Kötelező |Sztring |**[appRoleAssignments]** objektum. |
 
@@ -504,7 +504,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 | **elválasztókarakter** |Kötelező |Sztring |Meghatározza a karakterlánc felosztására szolgáló karaktert (példa: ",") |
@@ -517,7 +517,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 
@@ -529,7 +529,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |A frissítendő **forrás** értéke. |
 | **defaultValue** |Választható |Sztring |Az alapértelmezett érték, amelyet akkor kell használni, ha a forrás nem felel meg a kulcsoknak. Üres karakterlánc ("") lehet. |
@@ -544,7 +544,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumból |
 | **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
@@ -557,7 +557,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
 | **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
@@ -574,7 +574,7 @@ Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tart
 
 **Paraméterek**<br> 
 
-| Név | Szükséges/ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **Sztring** |Kötelező |Többértékű attribútum |Karakterlánc egy szó a következőből való visszaküldéséhez:.|
 | **WordNumber** |Kötelező | Egész szám | Az a szám, amelyből vissza kell adni a Word-számot|

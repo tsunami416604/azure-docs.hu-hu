@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313608"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235536"
 ---
 # <a name="on-demand-provisioning"></a>Igény szerinti kiépítés
 Igény szerinti kiépítés használatával másodpercek alatt kiépítheti a felhasználókat egy alkalmazásba. A funkció többek között a következőkre használható:
@@ -47,9 +47,9 @@ A kiépítési szolgáltatás megkísérli engedélyezni a hozzáférést a cél
 
 #### <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-* Győződjön meg arról, hogy érvényes hitelesítő adatokat adott meg, például a titkos jogkivonatot és a bérlői URL-címet a célalkalmazás számára. A szükséges hitelesítő adatok az alkalmazástól eltérőek. A részletes konfigurációs oktatóanyagokat az [oktatóanyag listáját](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)ismertető szakaszban tekintheti meg. 
+* Győződjön meg arról, hogy érvényes hitelesítő adatokat adott meg, például a titkos jogkivonatot és a bérlői URL-címet a célalkalmazás számára. A szükséges hitelesítő adatok az alkalmazástól eltérőek. A részletes konfigurációs oktatóanyagokat az [oktatóanyag listáját](../saas-apps/tutorial-list.md)ismertető szakaszban tekintheti meg. 
 * Győződjön meg arról, hogy a célalkalmazás támogatja a szűrést az **attribútum-hozzárendelések** ablaktáblán definiált egyező attribútumok esetében. Előfordulhat, hogy ellenőriznie kell az alkalmazás fejlesztője által biztosított API-dokumentációt a támogatott szűrők megismeréséhez.
-* A tartományok közötti Identitáskezelés-felügyeleti (SCIM) alkalmazások esetében olyan eszközt is használhat, mint például a Poster. Ezek az eszközök segítenek biztosítani, hogy az alkalmazás az Azure Active Directory (Azure AD) kiépítési szolgáltatás által várt módon válaszoljon az engedélyezési kérelmekre. Tekintsen meg egy példát a [kérelemre](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3).
+* A tartományok közötti Identitáskezelés-felügyeleti (SCIM) alkalmazások esetében olyan eszközt is használhat, mint például a Poster. Ezek az eszközök segítenek biztosítani, hogy az alkalmazás az Azure Active Directory (Azure AD) kiépítési szolgáltatás által várt módon válaszoljon az engedélyezési kérelmekre. Tekintsen meg egy példát a [kérelemre](./use-scim-to-provision-users-and-groups.md#request-3).
 
 ### <a name="step-2-import-user"></a>2. lépés: felhasználó importálása
 
@@ -76,7 +76,7 @@ A **részletek megtekintése** szakasz a forrás rendszerből (például az Azur
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>3. lépés: annak megállapítása, hogy a felhasználó hatókörben van-e
 
-Ezután a kiépítési szolgáltatás határozza meg, hogy a felhasználó a kiépítés [hatókörében](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) van-e. A szolgáltatás a következőkkel kapcsolatos szempontokat tekinti át:
+Ezután a kiépítési szolgáltatás határozza meg, hogy a felhasználó a kiépítés [hatókörében](./how-provisioning-works.md#scoping) van-e. A szolgáltatás a következőkkel kapcsolatos szempontokat tekinti át:
 
 * Azt határozza meg, hogy a felhasználó hozzá van-e rendelve az alkalmazáshoz.
 * Azt határozza meg, hogy a hatókör **szinkronizálva** van-e, vagy **az összes szinkronizálása**.
@@ -94,8 +94,8 @@ A **részletek megtekintése** szakasz a kiértékelt hatóköri feltételeket m
 
 #### <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-* Ellenőrizze, hogy érvényes hatóköri szerepkört adott-e meg. Ne használja például a [Greater_Than operátort](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) nem egész értékkel.
-* Ha a felhasználó nem rendelkezik a szükséges szerepkörrel, tekintse át az [alapértelmezett hozzáférési szerepkörhöz hozzárendelt felhasználók üzembe helyezésével kapcsolatos tippeket](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role).
+* Ellenőrizze, hogy érvényes hatóköri szerepkört adott-e meg. Ne használja például a [Greater_Than operátort](./define-conditional-rules-for-provisioning-user-accounts.md#create-a-scoping-filter) nem egész értékkel.
+* Ha a felhasználó nem rendelkezik a szükséges szerepkörrel, tekintse át az [alapértelmezett hozzáférési szerepkörhöz hozzárendelt felhasználók üzembe helyezésével kapcsolatos tippeket](./application-provisioning-config-problem-no-users-provisioned.md#provisioning-users-assigned-to-the-default-access-role).
 
 ### <a name="step-4-match-user-between-source-and-target"></a>4. lépés: a felhasználó egyeztetése a forrás és a cél között
 
@@ -129,7 +129,7 @@ A **részletek megtekintése** szakasz a célalkalmazás alkalmazásban módosí
 
 #### <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-* A módosítások exportálásának hibái nagyban változhatnak. A gyakori hibákért olvassa el az üzembe helyezési [naplók dokumentációját](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) .
+* A módosítások exportálásának hibái nagyban változhatnak. A gyakori hibákért olvassa el az üzembe helyezési [naplók dokumentációját](../reports-monitoring/concept-provisioning-logs.md#error-codes) .
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -150,4 +150,4 @@ Jelenleg van néhány ismert korlátozás az igény szerinti kiépítés során.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A kiépítés hibaelhárítása](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem)
+* [A kiépítés hibaelhárítása](./application-provisioning-config-problem.md)

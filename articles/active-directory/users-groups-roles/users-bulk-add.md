@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423609"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236556"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
 
@@ -33,6 +33,9 @@ A felhasználók tömeges létrehozásához a felügyeleti portálon globális r
 Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, amely segít az Azure AD-felhasználók tömeges létrehozásában. A letöltött CSV-sablon a következő példához hasonló lehet:
 
 ![Táblázat a feltöltéshez és a híváshoz – az egyes sorok és oszlopok céljának és értékeinek ismertetése](./media/users-bulk-add/create-template-example.png)
+
+> [!WARNING]
+> Ha csak egy bejegyzést próbál hozzáadni a CSV-sablonhoz, meg kell őriznie a 3. sort, és fel kell vennie az új bejegyzést a 4. sorba. 
 
 ### <a name="csv-template-structure"></a>CSV-sablon szerkezete
 
@@ -98,7 +101,7 @@ Látnia kell, hogy a létrehozott felhasználók szerepelnek a listáján.
 
 A felhasználók létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez legalább 50 000 felhasználó tömeges létrehozását teszi lehetővé.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználók tömeges törlése](users-bulk-delete.md)
 - [Felhasználók listájának letöltése](users-bulk-download.md)

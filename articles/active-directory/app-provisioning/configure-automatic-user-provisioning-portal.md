@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781990"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234839"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
 Ez a cikk a felhasználói fiókok automatikus üzembe helyezésének és kiépítési folyamatának általános lépéseit ismerteti az azt támogató alkalmazások esetében. A *felhasználói fiókok üzembe* helyezése a felhasználói fiókok rekordjainak létrehozása, frissítése és/vagy letiltása az alkalmazás helyi felhasználói profiljának tárolójába. A legtöbb felhőalapú és SaaS-alkalmazás a felhasználók szerepkörét és engedélyeit tárolja a felhasználó helyi felhasználói profiljának tárolójában, és az egyszeri bejelentkezéshez és a munkához való hozzáféréshez *szükség* van egy ilyen felhasználói rekord meglétét a felhasználó helyi tárolójába. A felhasználói fiókok automatikus kiépítésével kapcsolatos további információkért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](user-provisioning.md).
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak az Azure AD-vel való automatikus kiépítés során. Először meg kell keresnie az alkalmazásra vonatkozó kiépítési beállítási oktatóanyagot, amely [bemutatja, hogyan integrálható az SaaS-alkalmazások Azure Active Directory használatával](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). A kiépítési kapcsolatok létrehozásához az alkalmazás és az Azure AD konfigurálásának lépésenkénti útmutatója is várható.
+> Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak az Azure AD-vel való automatikus kiépítés során. Először meg kell keresnie az alkalmazásra vonatkozó kiépítési beállítási oktatóanyagot, amely [bemutatja, hogyan integrálható az SaaS-alkalmazások Azure Active Directory használatával](../saas-apps/tutorial-list.md). A kiépítési kapcsolatok létrehozásához az alkalmazás és az Azure AD konfigurálásának lépésenkénti útmutatója is várható.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Alkalmazások keresése a portálon
 
@@ -83,6 +83,6 @@ A **kiépítési** képernyő **Beállítások** területén elindíthatja és l
 
 Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja be a szolgáltatást úgy, hogy a **kiépítési állapotot** **a be**értékre módosítja. Ez a módosítás azt eredményezi, hogy az Azure AD-kiépítési szolgáltatás kezdeti ciklust futtat. Beolvassa a **felhasználók és csoportok** szakaszban hozzárendelt felhasználókat, lekérdezi azokat, majd futtatja az Azure ad- **leképezések** szakaszban meghatározott üzembe helyezési műveleteket. A folyamat során a kiépítési szolgáltatás tárolja a gyorsítótárazott információkat arról, hogy milyen felhasználói fiókokat kezel, ezért a nem felügyelt fiókokat a nem a hozzárendelés hatókörébe tartozó alkalmazásokon belül nem érinti a kiépítési műveletek. A kezdeti ciklust követően a kiépítési szolgáltatás 40 percenként automatikusan szinkronizálja a felhasználók és a csoportok objektumait.
 
-Állítsa a **kiépítési állapotot** **ki** értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
+Állítsa a **kiépítési állapotot** **ki**  értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
 
-**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Vegye figyelembe, hogy a kezdeti ciklus a kiértékeléshez szükséges objektumok száma miatt hosszabb időt vesz igénybe, mint a szokásos növekményes ciklus. A kezdeti és a növekményes ciklusok teljesítményéről [itt](application-provisioning-when-will-provisioning-finish-specific-user.md)olvashat bővebben. 
+**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Vegye figyelembe, hogy a kezdeti ciklus a kiértékeléshez szükséges objektumok száma miatt hosszabb időt vesz igénybe, mint a szokásos növekményes ciklus. A kezdeti és a növekményes ciklusok teljesítményéről [itt](application-provisioning-when-will-provisioning-finish-specific-user.md)olvashat bővebben.

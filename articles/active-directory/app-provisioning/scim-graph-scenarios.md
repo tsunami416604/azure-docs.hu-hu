@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781684"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235502"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 
-**Célközönség:** Ez a cikk a Azure Active Directory (Azure AD) integrálására szolgáló fejlesztők számára készült. Ha az Azure AD-vel már integrált alkalmazásokat szeretne használni, például a nagyítást, a ServiceNow és a DropBoxot, kihagyhatja ezt a cikket, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) , vagy áttekintheti [a kiépítési szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
+**Célközönség:** Ez a cikk a Azure Active Directory (Azure AD) integrálására szolgáló fejlesztők számára készült. Ha az Azure AD-vel már integrált alkalmazásokat szeretne használni, például a nagyítást, a ServiceNow és a DropBoxot, kihagyhatja ezt a cikket, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](../saas-apps/tutorial-list.md) , vagy áttekintheti [a kiépítési szolgáltatás működését](./how-provisioning-works.md).
 
-**Gyakori helyzetek**
+**Gyakori forgatókönyvek**
 
-Az Azure AD az üzembe helyezéshez és az alkalmazások kiépítéséhez használható bővíthető platformot biztosít az alkalmazásokhoz. A döntési fa azt ismerteti, hogy a fejlesztők hogyan használják a [scim](https://aka.ms/scimoverview) és a [Microsoft Graph](https://docs.microsoft.com/graph/overview) a kiépítés automatizálására. 
+Az Azure AD az üzembe helyezéshez és az alkalmazások kiépítéséhez használható bővíthető platformot biztosít az alkalmazásokhoz. A döntési fa azt ismerteti, hogy a fejlesztők hogyan használják a [scim](https://aka.ms/scimoverview) és a [Microsoft Graph](/graph/overview) a kiépítés automatizálására. 
 
 > [!div class="checklist"]
 > * Felhasználók automatikus létrehozása az alkalmazásban
@@ -97,15 +97,15 @@ Az alkalmazás a különböző erőforrásokhoz való hozzáféréshez használt
 ## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>4. forgatókönyv: az alkalmazás gyarapítása Microsoft-szolgáltatásokból, például csapatokból, Outlookból és OneDrive származó adatokkal
 Az alkalmazásom be van építve a Microsoft Teams szolgáltatásba, és az üzenetek adataira támaszkodik. Emellett a OneDrive lévő felhasználók fájljait is tároljuk. Hogyan frissíthetem az alkalmazást a szolgáltatások adataival és a Microsofton keresztül?
 
-**Javaslat:** A [Microsoft Graph](https://docs.microsoft.com/graph/) a belépési pontja a Microsoft adataihoz való hozzáféréshez. Minden munkaterhelés elérhetővé teszi az API-kat a szükséges adatokkal. A Microsoft Graph a fenti forgatókönyvek esetében a [scim kiépítés](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) mellett is használható. A SCIM segítségével alapszintű felhasználói attribútumokat helyezhet üzembe az alkalmazásban, miközben diagramon is meghívja a szükséges egyéb adatok beszerzését. 
+**Javaslat:** A [Microsoft Graph](/graph/) a belépési pontja a Microsoft adataihoz való hozzáféréshez. Minden munkaterhelés elérhetővé teszi az API-kat a szükséges adatokkal. A Microsoft Graph a fenti forgatókönyvek esetében a [scim kiépítés](./use-scim-to-provision-users-and-groups.md) mellett is használható. A SCIM segítségével alapszintű felhasználói attribútumokat helyezhet üzembe az alkalmazásban, miközben diagramon is meghívja a szükséges egyéb adatok beszerzését. 
 
 ## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>5. forgatókönyv: a Microsoft-szolgáltatások, például a csapatok, az Outlook és az Azure AD változásainak követése
 Követni kell a csapatok és az Outlook üzeneteinek változásait, és valós időben reagálni kell rájuk. Hogyan szerezhetem be ezeket a módosításokat az alkalmazásba?
 
-**Javaslat:** A Microsoft Graph a különböző erőforrások [változási értesítéseit](https://docs.microsoft.com/graph/webhooks) és a [változások nyomon követését](https://docs.microsoft.com/graph/delta-query-overview) teszi lehetővé. Vegye figyelembe a változási értesítések következő korlátozásait:
+**Javaslat:** A Microsoft Graph a különböző erőforrások [változási értesítéseit](/graph/webhooks) és a [változások nyomon követését](/graph/delta-query-overview) teszi lehetővé. Vegye figyelembe a változási értesítések következő korlátozásait:
 - Ha egy esemény fogadója tudomásul veszi az eseményt, de bármilyen okból nem sikerül rá lépni, az esemény elvész.
 - A módosítások fogadásának sorrendje nem garantált időrendben.
-- Az értesítések módosítása a fenti okok miatt nem mindig tartalmaz [erőforrásadatokat](https://docs.microsoft.com/graph/webhooks-with-resource-data) , a fejlesztők gyakran a módosítási értesítéseket használják a szinkronizálási forgatókönyvek módosítási nyomon követésével együtt. 
+- Az értesítések módosítása a fenti okok miatt nem mindig tartalmaz [erőforrásadatokat](/graph/webhooks-with-resource-data) , a fejlesztők gyakran a módosítási értesítéseket használják a szinkronizálási forgatókönyvek módosítási nyomon követésével együtt. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>6. forgatókönyv: felhasználók és csoportok kiépítése az Azure AD-ben
 Az alkalmazás egy olyan felhasználóról hoz létre információt, amelyet az ügyfeleknek az Azure AD-ben kell megadniuk. Ez lehet egy HR-alkalmazás, mint a bérbeadás kezelése, egy kommunikációs alkalmazás, amely telefonszámokat hoz létre a felhasználók számára, vagy egy másik alkalmazás, amely az Azure AD-ben értékes adatokat generál. Hogyan feltölti a felhasználói rekordot az Azure AD-ben az adatokkal? 
@@ -117,5 +117,5 @@ Az alkalmazás egy olyan felhasználóról hoz létre információt, amelyet az 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [A szinkronizálási Microsoft Graph dokumentációjának áttekintése](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [A szinkronizálási Microsoft Graph dokumentációjának áttekintése](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Egyéni SCIM-alkalmazás integrálása az Azure AD-vel](use-scim-to-provision-users-and-groups.md)

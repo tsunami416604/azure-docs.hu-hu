@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445655"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235701"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -26,7 +26,7 @@ A Azure Active Directory (Azure AD) automatikus felhasználó-kiépítés leegys
 
 A funkciók jobb megismeréséhez lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](../app-provisioning/user-provisioning.md) segítségével.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz, és javítja a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -50,7 +50,7 @@ Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetőv�
 
 Szüksége lesz az automatikusan kiépíteni kívánt alkalmazás (ok) megfelelő licencére. Beszélje meg az alkalmazás tulajdonosait, hogy az alkalmazáshoz rendelt felhasználók rendelkeznek-e a megfelelő licenccel az alkalmazás szerepköreihez. Ha az Azure AD a szerepkörök alapján felügyeli az automatikus kiosztást, az Azure AD-ben hozzárendelt szerepköröket az alkalmazás-licencekhez kell igazítani. Az alkalmazásban található helytelen licencek hibát okozhatnak a felhasználó üzembe helyezése/frissítése során.
 
-### <a name="terms"></a>Fogalmak
+### <a name="terms"></a>Kifejezések
 
 Ez a cikk a következő kifejezéseket használja:
 
@@ -70,7 +70,7 @@ Ez a cikk a következő kifejezéseket használja:
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
-| Online tanfolyamok| SkillUp online: [Identitások kezelése](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Ismerje meg, hogyan integrálhatja az Azure AD-t számos SaaS-alkalmazással, és hogyan biztosíthatja a felhasználók hozzáférését az alkalmazásokhoz. |
+| Online tanfolyamok| SkillUp online:  [Identitások kezelése](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Ismerje meg, hogyan integrálhatja az Azure AD-t számos SaaS-alkalmazással, és hogyan biztosíthatja a felhasználók hozzáférését az alkalmazásokhoz. |
 | Könyvek| [Modern hitelesítés a Azure Active Directory for web Applications (fejlesztői segédlet) első kiadása](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Ez egy mérvadó, részletes útmutató, amellyel Active Directory hitelesítési megoldásokat hozhat létre az új környezetekhez. |
 | Oktatóanyagok| Az [SaaS-alkalmazások Azure ad-vel való integrálásával](../saas-apps/tutorial-list.md)kapcsolatban tekintse meg az oktatóanyagok listáját. |
 | GYIK| [Gyakori kérdések](../app-provisioning/user-provisioning.md) az automatikus felhasználó-kiépítési folyamatról |
@@ -157,7 +157,7 @@ Az automatikus kiépítés engedélyezéséhez és konfigurálásához szükség
 
 Ha nem, kövesse az alábbi lépéseket:
 
-1. [Hozzon létre egy](../develop/howto-app-gallery-listing.md) , az előre integrált felhasználó-létesítési összekötőre vonatkozó kérelmet. Csapatunk együttműködik Önnel és az alkalmazás fejlesztővel, hogy az alkalmazást a platformon, ha az támogatja a SCIM-t.
+1. [Hozzon létre egy](../azuread-dev/howto-app-gallery-listing.md) , az előre integrált felhasználó-létesítési összekötőre vonatkozó kérelmet. Csapatunk együttműködik Önnel és az alkalmazás fejlesztővel, hogy az alkalmazást a platformon, ha az támogatja a SCIM-t.
 
 1. Használja az [BYOA scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) általános felhasználói üzembe helyezési támogatását az alkalmazáshoz. Ez a követelmény, hogy az Azure AD-ben a felhasználók az előre integrált létesítési összekötő nélkül legyenek kiépítve az alkalmazásba.
 

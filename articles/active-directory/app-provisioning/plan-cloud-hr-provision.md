@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445558"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235693"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -52,11 +52,11 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - Az Office 365 e-mail-cím használata.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
-### <a name="terms"></a>Fogalmak
+### <a name="terms"></a>Kifejezések
 
 Ez a cikk a következő kifejezéseket használja:
 
@@ -81,7 +81,7 @@ Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizet
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) az Azure ad Connect létesítési ügynök konfigurálásához.
+- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  az Azure ad Connect létesítési ügynök konfigurálásához.
 - Az Azure AD- [alkalmazás rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) szerepköre a kiépítési alkalmazás konfigurálásához a Azure Portal
 - A Cloud HR-alkalmazás tesztelési és éles példánya.
 - Rendszergazdai jogosultságok a Cloud HR alkalmazásban egy rendszerintegrációs felhasználó létrehozásához, valamint a tesztelési célú alkalmazottak ellenőrzésének megváltoztatásához.
@@ -167,7 +167,7 @@ A Cloud HR-alkalmazás és Active Directory közötti kiépítési integrációh
 - Azure AD Connect kiépítési ügynök
 - Active Directory-tartomány
 
-A Azure AD Connect kiépítési ügynök üzembe helyezési topológiája a felhőalapú HR-alkalmazások bérlői számától és az integrálni kívánt, Active Directory alárendelt tartományokból függ. Ha több Active Directory tartománya van, attól függ, hogy a Active Directory tartományok folytonos vagy [különállóak](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)-e.
+A Azure AD Connect kiépítési ügynök üzembe helyezési topológiája a felhőalapú HR-alkalmazások bérlői számától és az integrálni kívánt, Active Directory alárendelt tartományokból függ. Ha több Active Directory tartománya van, attól függ, hogy a Active Directory tartományok folytonos vagy [különállóak](/windows-server/identity/ad-ds/plan/disjoint-namespace)-e.
 
 Az Ön döntése alapján válasszon egyet a telepítési forgatókönyvek közül:
 
@@ -178,7 +178,7 @@ Az Ön döntése alapján válasszon egyet a telepítési forgatókönyvek köz�
 
 A következő éles konfigurációt javasoljuk:
 
-|Követelmény|Ajánlás|
+|Követelmény|Javaslat|
 |:-|:-|
 |Telepítendő Azure AD Connect kiépítési ügynökök száma|Kettő (a magas rendelkezésre álláshoz és a feladatátvételhez)
 |A konfigurálni kívánt kiépítési összekötő-alkalmazások száma|Egy alkalmazás/gyermektartomány|
@@ -192,7 +192,7 @@ Ez a forgatókönyv magában foglalja a felhasználókat a Cloud HR-alkalmazásb
 
 A következő éles konfigurációt javasoljuk:
 
-|Követelmény|Ajánlás|
+|Követelmény|Javaslat|
 |:-|:-|
 |A helyszíni üzembe helyezéshez Azure AD Connect kiépítési ügynökök száma|Két különálló Active Directory erdőben|
 |A konfigurálni kívánt kiépítési összekötő-alkalmazások száma|Egy alkalmazás/gyermektartomány|
@@ -313,7 +313,7 @@ Ezzel a kifejezéssel, ha a település értéke Dallas, Austin, Seattle vagy Lo
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Új felhasználói fiókok jelszavas kézbesítésének megtervezése
 
-Az összekapcsolási folyamat indításakor be kell állítania és kézbesíteni kell az új felhasználói fiókok ideiglenes jelszavát. A Felhőbeli HR és az Azure AD felhasználói üzembe helyezése esetén az Azure AD önkiszolgáló [jelszó-visszaállítási](../authentication/quickstart-sspr.md) (SSPR) képességét kivezetheti a felhasználó számára az első napon.
+Az összekapcsolási folyamat indításakor be kell állítania és kézbesíteni kell az új felhasználói fiókok ideiglenes jelszavát. A Felhőbeli HR és az Azure AD felhasználói üzembe helyezése esetén az Azure AD önkiszolgáló [jelszó-visszaállítási](../authentication/tutorial-enable-sspr.md) (SSPR) képességét kivezetheti a felhasználó számára az első napon.
 
 A SSPR egy egyszerű módja annak, hogy a rendszergazdák lehetővé tegyék a felhasználók számára a jelszavuk visszaállítását vagy a fiókok feloldását. A **Mobile Number** attribútumot kiépítheti a Cloud HR-alkalmazásból, hogy Active Directory és szinkronizálja az Azure ad-vel. Miután a **Mobile Number** attribútum az Azure ad-ben van, engedélyezheti a SSPR a felhasználói fiókhoz. Ezután az új felhasználó használhatja a regisztrált és ellenőrzött mobil számot a hitelesítéshez.
 
