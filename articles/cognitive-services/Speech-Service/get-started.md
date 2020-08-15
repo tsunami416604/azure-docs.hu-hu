@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7464d1788101eef7bdad95545056bb32e46c395
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167810"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245468"
 ---
 # <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
 
@@ -29,7 +29,7 @@ Ebben a cikkben egy olyan lehetőséget választ, amellyel ingyenesen tesztelhet
 
 Hajtsa végre a következő lépéseket egy 30 napos ingyenes próbaverzió aktiválásához és az API-kulcsok lekéréséhez. A próbaidőszak a következő lépések elvégzése után azonnal elindul.
 
-1. Lépjen a [kognitív szolgáltatás kipróbálása](https://azure.microsoft.com/try/cognitive-services/)oldalra.
+1. Lépjen a [kognitív szolgáltatás kipróbálása](https://azure.microsoft.com/free/cognitive-services)oldalra.
 1. Válassza a **beszédfelismerési API** -k fület.
 1. Válassza az **API-kulcs beolvasása**elemet.
 
