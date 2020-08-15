@@ -58,10 +58,8 @@
       href: remote-work-support.md
     - name: FQDN a hálózatszabályokban
       href: fqdn-filtering-network-rules.md
-    - name: Alapelvek
-      items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
+    - name: Biztonsági alapkonfiguráció
+      href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel

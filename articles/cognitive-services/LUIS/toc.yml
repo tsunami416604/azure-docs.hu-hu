@@ -22,11 +22,7 @@
     - name: Böngésző használata
       href: luis-get-started-get-intent-from-browser.md
     - name: SDK használata
-      items:
-        - name: Alkalmazások készítése
-          href: sdk-authoring.md
-        - name: Előrejelzési végpont lekérdezése
-          href: sdk-query-prediction-endpoint.md
+      href: quickstart-sdk.md
     - name: REST API-k használata
       items:
         - name: Szándék lekérése

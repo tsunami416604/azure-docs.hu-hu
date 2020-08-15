@@ -12,7 +12,7 @@
     - name: REST API
       expanded: true
       items:
-        - name: 'A C# használata'
+        - name: A C# használata
           href: quickstarts/csharp.md
         - name: A Java használata
           href: quickstarts/java.md
@@ -26,7 +26,7 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'A C# használata'
+        - name: A C# használata
           href: sdk-quickstart-spell-check.md
 - name: Oktatóanyagok
   items:
@@ -81,7 +81,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/bing-api'
     - name: Előfizetői azonosító
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Próbálja ki!
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: UserVoice

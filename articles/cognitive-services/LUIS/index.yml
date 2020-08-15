@@ -12,12 +12,12 @@ metadata:
   title: A Language Understanding (LUIS) dokumentációja
   titleSuffix: Azure Cognitive Services
   description: A Language Understanding (LUIS) szolgáltatás lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.
-  ms.openlocfilehash: 0d941872670a5bdd559a2760f73cda72773fc887
-  ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+  ms.openlocfilehash: 561f6ee161d2a697b8c143ee49209515f679c77b
+  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/15/2020
-  ms.locfileid: "84791588"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88236522"
 landingContent:
 - title: A Language Understanding (LUIS) bemutatása
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portál: Új LUIS-alkalmazás létrehozása'
       url: get-started-portal-build-app.md
     - text: A C# SDK használata
-      url: sdk-authoring.md?pivots=programming-language-csharp
+      url: quickstart-sdk.md?pivots=programming-language-csharp
     - text: A Python SDK használata
-      url: sdk-authoring.md?pivots=programming-language-python
+      url: quickstart-sdk.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: Új LUIS-alkalmazás létrehozása
@@ -88,7 +88,7 @@ landingContent:
     - text: 'Portál: Alkalmazás üzembe helyezése előrejelzési végponton'
       url: get-started-portal-deploy-app.md
     - text: Az SDK használata
-      url: sdk-authoring.md
+      url: quickstart-sdk.md
   - linkListType: how-to-guide
     links:
     - text: Az alkalmazás verziója
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Az SDK használata
-      url: sdk-query-prediction-endpoint.md
+      url: quickstart-sdk.md
   - linkListType: quickstart
     links:
     - text: A C# és a REST használatával
