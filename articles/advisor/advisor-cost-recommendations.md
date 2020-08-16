@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284370"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258534"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -96,6 +96,8 @@ Az [ideiglenes operációsrendszer-lemez](../virtual-machines/ephemeral-os-disks
 
 A rövid élettartamú IaaS-alapú virtuális gépekhez és az állapot nélküli számítási feladatokhoz ajánlott virtuális gépekhez érdemes elmúló operációsrendszer-lemezt használni. Az Advisor olyan erőforrásokra vonatkozó ajánlásokat tartalmaz, amelyek kihasználhatják az elmúló operációsrendszer-lemezt.
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>Az Azure Adatkezelő Table cache-időszak (Policy) csökkentése a fürt költségtakarékos optimalizálásához (előzetes verzió)
+Az Advisor azonosítja azokat az erőforrásokat, amelyekben a tábla-gyorsítótárazási házirend csökkenti az Azure Adatkezelő-fürtcsomópontok alacsony CPU-kihasználtságát, memóriáját és nagy gyorsítótár-méret konfigurációját.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>A Cost javaslatokhoz való hozzáférés Azure Advisor
 

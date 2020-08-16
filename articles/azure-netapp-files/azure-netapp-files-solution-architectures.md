@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225614"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258220"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -85,7 +85,7 @@ Ez a szakasz a virtuális asztali infrastruktúra-megoldásokra mutató hivatkoz
 
 ### <a name="windows-virtual-desktop"></a>Windows virtuális asztal
 
-* [A Windows rendszerű virtuális asztal használata a Azure NetApp Files](solutions-windows-virtual-desktop.md)
+* [A Azure NetApp Files használatának előnyei a Windows virtuális asztallal](solutions-windows-virtual-desktop.md)
 * [Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Windowsos virtuális asztal nagyvállalati szinten](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

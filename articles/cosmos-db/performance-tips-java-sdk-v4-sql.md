@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d8ad191476416bc6ced35c4086d336b7f0a926cb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327837"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258309"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Java SDK v4-hez
 
@@ -45,9 +45,9 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Ezek a kapcsolódási módok lényegében feltétele az adatsík által igényelt útvonalakat – a dokumentumok olvasását és írását – az ügyfélszámítógépről a Azure Cosmos DB háttérbe tartozó partícióknak kell elvégeznie. A legjobb teljesítmény érdekében általában a közvetlen mód az előnyben részesített megoldás, amely lehetővé teszi, hogy az ügyfél közvetlenül a Azure Cosmos DB háttérbeli partíciókkal nyissa meg a TCP-kapcsolatokat, és küldje el a *Direct*ly-t, és ne legyen közvetítő. Ezzel szemben az átjáró módban az ügyfél által kért kérelmek átirányítva egy úgynevezett "átjáró" kiszolgálóra a Azure Cosmos DB előtér-kiszolgálón, amely a Azure Cosmos DB háttérbeli megfelelő partíció (k) re küldi a kéréseit. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró mód egy további hálózati ugrást (ügyfél – átjáró és partíciós átjáró) is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
 
-    Az adatsík-kérelmek csatlakoztatási módja a *directMode ()* vagy a *gatewayMode ()* metódusok használatával van konfigurálva a Azure Cosmos db ügyfél-szerkesztőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* for *directMode ()*, *GatewayConnectionConfig* for *gatewayMode (*).)
+    Az adatsík-kérelmek csatlakoztatási módja a *directMode ()* vagy a *gatewayMode ()* metódusok használatával van konfigurálva a Azure Cosmos db ügyfél-szerkesztőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* for *directMode ()*,  *GatewayConnectionConfig* for *gatewayMode (*).)
     
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
     # <a name="async"></a>[Aszinkron](#tab/api-async)
 
@@ -65,7 +65,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     A *directMode ()* metódus további felülbírálást tartalmaz a következő ok miatt. A vezérlési sík műveletei, például az adatbázis és a Container szifilisz *mindig* az átjáró módot használják; Ha a felhasználó közvetlen módot konfigurált az adatsíkok műveleteihez, a vezérlési sík műveletei az alapértelmezett átjáró üzemmód beállításait használják. Ez a legtöbb felhasználónak megfelel. Azonban az adatsík-műveletek közvetlen üzemmódját, valamint a tunability átjáró üzemmódjának paramétereinek használatát a következő *directMode ()* felülbírálással lehet ellátni:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
     # <a name="async"></a>[Aszinkron](#tab/api-async)
 
@@ -133,7 +133,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     A következő kódrészletek bemutatják, hogyan inicializálhatja Azure Cosmos DB ügyfelet az aszinkron API-vagy szinkronizálási API-művelethez:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
     # <a name="async"></a>[Aszinkron](#tab/api-async)
 
@@ -316,7 +316,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
-    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 

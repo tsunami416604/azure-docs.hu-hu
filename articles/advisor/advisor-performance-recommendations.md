@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057579"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257469"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -20,7 +20,7 @@ Az Azure Traffic Manager profiljában használhat [élettartam (TTL) beállítá
 
 A Azure Advisor olyan Traffic Manager-profilokat azonosít, amelyekhez már van beállítva TTL. Azt javasolja, hogy az ÉLETTARTAMot 20 másodpercre vagy 60 másodpercre konfigurálja, attól függően, hogy a profil konfigurálva van-e a [Fast Failoverra](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>Az adatbázis teljesítményének javítása SQL Database Advisor használatával
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Az adatbázis teljesítményének javítása SQL Database Advisor használatával (átmenetileg letiltva)
 
 Azure Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A SQL Database Advisor integrálható az adatbázisok teljesítményének javítására vonatkozó javaslatok bevezetéséhez.SQL Database Advisor a használati előzmények elemzésével értékeli az adatbázisok teljesítményét. Ezután ajánlásokat nyújt az adatbázis tipikus számítási feladatainak futtatásához.
 
@@ -151,6 +151,22 @@ Az Advisor azonosítja Azure Cosmos DB tárolókat, amelyek az alapértelmezett 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB lekérdezési oldal méretének (MaxItemCount) beállítása a-1 értékre 
 
 A Azure Advisor a 100-es lekérdezési oldal méretét használó Azure Cosmos DB tárolókat azonosítja. Azt javasolja, hogy az oldal mérete (1) legyen a gyorsabb keresésekhez. [További információ a MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>A fürt teljesítményének növelése érdekében érdemes lehet gyorsított írási funkciót használni a HBase-fürtben
+Azure Advisor elemzi a rendszernaplókat az elmúlt 7 napban, és megállapítja, hogy a fürt a következő helyzetekben észlelt-e:
+1. A WAL-szinkronizálás időbeli késése magas 
+2. Az írási kérelmek száma magas (legalább 3 db egyórás ablak több mint 1000 átlagos_írási_kérelem/másodperc/csomópont aránnyal)
+
+Ezek a feltételek azt jelzik, hogy a fürtön nagy írási késés tapasztalható. Ennek oka lehet a fürtön végrehajtott nagy terhelés. A fürt teljesítményének növeléséhez érdemes lehet az Azure HDInsight HBase által biztosított gyorsított írási funkciót használni. A HDInsight Apache HBase-fürtök gyorsított írási funkciója felhőalapú tároló használata helyett prémium szintű, SSD-alapú felügyelt lemezeket csatol az egyes régiók kiszolgálóihoz (feldolgozó csomópontjához), ezáltal pedig alacsony írási késést és nagyobb rugalmasságot biztosít alkalmazásai számára. További információk a szolgáltatásról további [információt itt](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight) olvashat
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>A jobb teljesítmény érdekében tekintse át az Azure Adatkezelő Table cache – időszak (házirend) című szakaszát (előzetes verzió)
+Ez a javaslat felfedi az Azure Adatkezelő táblákat, amelyek nagy számú lekérdezéssel rendelkeznek, amelyek visszakeresik a beállított gyorsítótári időszakot (házirend) A fürt teljesítményének javítására javasolt művelet: a táblázat lekérdezéseit a minimálisan szükséges időtartományra korlátozza (a megadott házirenden belül). Ha a teljes időtartományból származó adatokra van szükség, növelje a gyorsítótári időszakot a javasolt értékre.
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>A teljesítmény javítása a MySQL ideiglenestábla-méretének optimalizálásával
+Az Advisor Analysis azt jelzi, hogy a MySQL-kiszolgáló szükségtelen I/O-terhelést okozhat az alacsony tábla-paraméter beállításai miatt. Ez felesleges lemezalapú tranzakciókat és alacsonyabb teljesítményt eredményezhet. Javasoljuk, hogy növelje a tmp_table_size és a max_heap_table_size paraméter értékét, ezzel csökkentve a lemezalapú tranzakciók számát. [További információ](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Adatok terjesztése a kiszolgálócsoport számára a számítási feladatok elosztása a csomópontok között
+Az Advisor azon kiszolgálócsoportok azonosítására szolgál, amelyekben az adat nem lett elosztva, de a koordinátoron marad. Ennek alapján az Advisor azt javasolja, hogy a teljes nagy kapacitású (Citus) előnyök a kiszolgálói csoportok munkavégző csomópontjain legyenek kiterjesztve. Ez javítja a lekérdezési teljesítményt úgy, hogy kihasználja a kiszolgálócsoport egyes csomópontjainak erőforrásait. [További információ](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban
 

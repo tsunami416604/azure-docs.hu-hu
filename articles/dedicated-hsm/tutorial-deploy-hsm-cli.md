@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02b15f88e05abc918100f5e6b1ad1cdd60954a9d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e4403252396aab91fa960ed7258d433e27db950a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486986"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258248"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM üzembe helyezése meglévő virtuális hálózaton a parancssori felület használatával
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag egy HSM és kötelező ExpressRoute-átjáróra koncentrál (
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban. A szolgáltatással való interakció a parancssoron keresztül vagy a PowerShell használatával történik. Ez az oktatóanyag a parancssori (CLI) felületet fogja használni a Azure Cloud Shell. Ha még nem ismeri az Azure CLI-t, kövesse az első lépéseket ismertető útmutatót itt: [Azure cli 2,0 első lépések](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban. A szolgáltatással való interakció a parancssoron keresztül vagy a PowerShell használatával történik. Ez az oktatóanyag a parancssori (CLI) felületet fogja használni a Azure Cloud Shell. Ha még nem ismeri az Azure CLI-t, kövesse az első lépéseket ismertető útmutatót itt: [Azure cli 2,0 első lépések](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
 Előfeltételek:
 
@@ -73,12 +73,12 @@ A HSM üzembe helyezése egy ügyfél virtuális hálózatában történik, így
 
 Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, hogy beszúrja az erőforrások előnyben részesített nevét. Sorok szerkesztése a "value": "" értékkel.
 
-- `namingInfix`HSM-erőforrások nevének előtagja
-- `ExistingVirtualNetworkName`A HSM használt virtuális hálózat neve
-- `DedicatedHsmResourceName1`HSM-erőforrás neve az adatközpont Stamp 1
-- `DedicatedHsmResourceName2`HSM-erőforrás neve az adatközpont Stamp 2
-- `hsmSubnetRange`Alhálózat IP-címtartomány a HSM
-- `ERSubnetRange`Alhálózat IP-címtartomány a VNET-átjáróhoz
+- `namingInfix` HSM-erőforrások nevének előtagja
+- `ExistingVirtualNetworkName` A HSM használt virtuális hálózat neve
+- `DedicatedHsmResourceName1` HSM-erőforrás neve az adatközpont Stamp 1
+- `DedicatedHsmResourceName2` HSM-erőforrás neve az adatközpont Stamp 2
+- `hsmSubnetRange` Alhálózat IP-címtartomány a HSM
+- `ERSubnetRange` Alhálózat IP-címtartomány a VNET-átjáróhoz
 
 Ilyen változások például a következők:
 

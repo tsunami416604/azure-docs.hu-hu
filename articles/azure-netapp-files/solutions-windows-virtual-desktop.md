@@ -14,22 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 376efe4c66323c9ebbe686e42fe716837b8d8d30
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: a003090fd610f2ac75895cccbf97750adbd4cfcd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227175"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258331"
 ---
-# <a name="using-windows-virtual-desktop-with-azure-netapp-files"></a>A Windows rendszerű virtuális asztal használata a Azure NetApp Files
+# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>A Azure NetApp Files használatának előnyei a Windows virtuális asztallal 
 
 Ez a cikk gyakorlati útmutatást nyújt a Windows rendszerű virtuális asztalok (WVD) Azure NetApp Files használatával történő üzembe helyezéséhez.
 
 Azure NetApp Files egy nagy teljesítményű file Storage-szolgáltatás az Azure-ból. Akár 450 000 IOPS-t és ezredmásodperces késést is biztosíthat, amely képes a Windows rendszerű virtuális asztali környezetek rendkívül nagy méretének támogatására. A sávszélességet beállíthatja, és igény szerint megváltoztathatja a Azure NetApp Files kötetek szolgáltatási szintjét az IO szüneteltetése nélkül, és megtarthatja az adatsíkok elérését. Ez a funkció lehetővé teszi, hogy egyszerűen optimalizálja a WVD üzembe helyezési léptékét a költséghatékonyság érdekében. A kötetek teljesítményének befolyásolása nélkül is létrehozhatja a tárterület-hatékony, időponthoz kötődő pillanatképeket. Ez a funkció lehetővé teszi, hogy visszaállítsa az egyes [FSLogix-tárolókat](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile) a címtárból egy másolatból `~snapshot` , vagy ha azonnal visszaállítja a teljes kötetet a kötet-visszavonási képességen keresztül.  Akár 255 (rotációs) pillanatképekkel a kötetek adatvesztéssel vagy sérüléssel szembeni védelme érdekében a rendszergazdáknak számos lehetősége van visszavonni a munkát.
 
+## <a name="sample-blueprints"></a>Minta tervezetek
+
 Az alábbi példa bemutatja a Windows rendszerű virtuális asztalok integrálását Azure NetApp Filesokkal. A készletezett asztali forgatókönyvekben a felhasználók a készletben lévő legjobb rendelkezésre álló munkamenetre (a [szélesség-első üzemmódra](https://docs.microsoft.com/azure/virtual-desktop/host-pool-load-balancing#breadth-first-load-balancing-method)) irányítják a [több munkamenetet használó virtuális gépeket](https://docs.microsoft.com/azure/virtual-desktop/windows-10-multisession-faq#what-is-windows-10-enterprise-multi-session). Másfelől a személyes asztalok olyan helyzetekben vannak fenntartva, amikor az egyes felhasználók saját virtuális géppel rendelkeznek.
 
-## <a name="pooled-desktop-scenario"></a>Készletezett asztali forgatókönyv
+### <a name="pooled-desktop-scenario"></a>Készletezett asztali forgatókönyv
 
 A készletezett forgatókönyv esetén a Windows rendszerű virtuális asztali csapat a következő útmutatást [ajánlja](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) a felhasználók számának a vCPU. Vegye figyelembe, hogy ebben a javaslatban nincs megadva virtuálisgép-méret.
 
@@ -44,7 +46,7 @@ Ha például a 62-es felhasználók száma D16as_V4 virtuális gépen, Azure Net
 
 ![Windows rendszerű virtuális asztali készletezett asztali forgatókönyv](../media/azure-netapp-files/solutions-pooled-desktop-scenario.png)   
 
-## <a name="personal-desktop-scenario"></a>Személyes asztali forgatókönyv 
+### <a name="personal-desktop-scenario"></a>Személyes asztali forgatókönyv 
 
 A személyes asztali forgatókönyvekben az alábbi ábra az általános célú építészeti javaslatot mutatja be. A felhasználók egy adott asztali hüvelyre vannak leképezve, és mindegyik Pod mindössze 1 000 virtuális gép alatt található, így a felügyeleti VNet terjedő IP-címek is helyet kapnak. A Azure NetApp Files egyszerűen kezelhet 900 + személyes asztali számítógépeket egymunkamenetes VNet, és a tényleges számú virtuális gép 1 000 mínusz a hub-VNet található felügyeleti gazdagépek száma. Ha több személyes asztalra van szükség, egyszerűen hozzáadhat több hüvelyt (gazdagép-készletet és virtuális hálózatot) az alábbi ábrán látható módon. 
 

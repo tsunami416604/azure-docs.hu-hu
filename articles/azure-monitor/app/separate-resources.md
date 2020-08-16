@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420566"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258726"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -39,9 +39,9 @@ Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a 
 - Service Fabric-alkalmazások és a klasszikus Cloud Services esetében az SDK automatikusan beolvassa az Azure szerepkör-környezetet, és beállítja ezeket. Minden más típusú alkalmazás esetében valószínűleg ezt explicit módon kell beállítania.
 -   Az élő metrikai élmény nem támogatja a szerepkör-név szerinti felosztást.
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamic Instrumentation-kulcs
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamic Instrumentation-kulcs
 
-Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot, mert a kód az éles fázisok között mozog, a konfigurációs fájl helyett a kódban állítsa be.
+Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot, mert a kód az éles fázisok között mozog, a kulcsot hardcoded/statikus érték helyett dinamikusan a kódban kell megadni.
 
 Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
@@ -139,7 +139,7 @@ Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorj
 ### <a name="release-annotations"></a>Kiadási jegyzetek
 Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Több szerepkör megosztott erőforrásai](../../azure-monitor/app/app-map.md)
 * [Telemetria inicializáló létrehozása a következő megkülönböztetéséhez | B változatok](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

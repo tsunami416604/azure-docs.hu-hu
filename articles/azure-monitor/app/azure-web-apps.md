@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245485"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258742"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -123,8 +123,6 @@ Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése
 
    * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
 
-![Az Alkalmazásbeállítások felhasználói felületének képernyőképe](./media/azure-web-apps/appinsights-javascript-enabled.png)
-
 Az ügyféloldali figyelés letiltásához távolítsa el a társított kulcs értéke párt az Alkalmazásbeállítások közül, vagy állítsa hamis értékre.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
@@ -141,8 +139,6 @@ Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
      Érték: `false`
 
    * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
-
-![Az Alkalmazásbeállítások felhasználói felületének képernyőképe](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

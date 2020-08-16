@@ -1,15 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 07/16/2020
+ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327140"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258434"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -135,12 +135,15 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Government | Kína |
+| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
-| SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
-| SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
-| Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
+| SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
+| SQL Server rugalmas készletek | **Igen** | **Igen** | **Igen** |
+| NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |
+| NetApp-fájlok kötetei | **Igen** | **Igen** | **Igen** |
+| Kulcstartók | **Igen** | **Igen** | **Igen** |
+| Adatmező peremhálózati eszközei | **Igen** | **Igen** | **Igen** |
 
 A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 

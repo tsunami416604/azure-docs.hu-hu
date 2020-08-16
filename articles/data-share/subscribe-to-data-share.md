@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512091"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258655"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Oktatóanyag: az Azure-adatmegosztás használatával fogadja el és fogadja az adatfogadást  
 
@@ -93,38 +93,35 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
    A **Beérkezett megosztás neve** mezőben hagyhatja az alapértelmezett által megadott értéket, vagy megadhat egy új nevet a fogadott megosztáshoz. 
 
-   ![Célként megadott adatmegosztási fiók](./media/target-data-share.png "Célként megadott adatmegosztási fiók") 
-
-1. Ha jóváhagyta a használati feltételeket, és megadta a megosztás helyét, válassza az *elfogadás és konfigurálás*lehetőséget. A rendszer létrehoz egy megosztási előfizetést.
-
-   A pillanatkép-alapú megosztáshoz a következő képernyő azt kéri, hogy válasszon ki egy cél Storage-fiókot az adatok másolásához. 
+   Miután jóváhagyta a használati feltételeket, és megadott egy adatmegosztási fiókot a kapott megosztás kezeléséhez, válassza az **elfogadás és konfigurálás**lehetőséget. A rendszer létrehoz egy megosztási előfizetést. 
 
    ![Elfogadás beállításai](./media/accept-options.png "Elfogadás beállításai") 
 
-   Ha azt szeretné, hogy a meghívót most is elfogadja, de később konfigurálja a célként megadott adattárt, válassza az *elfogadás és konfigurálás később*lehetőséget. A tárterület későbbi konfigurálásának folytatásához tekintse meg az [adatkészlet-hozzárendelések konfigurálása](how-to-configure-mapping.md) lapot, amely részletesen ismerteti az adatmegosztási konfiguráció folytatásának lépéseit. 
-
-   A helyszíni megosztáshoz tekintse meg az [adatkészlet-hozzárendelések konfigurálása](how-to-configure-mapping.md) lapot, amely részletesen ismerteti az adatmegosztási konfiguráció folytatásának lépéseit. 
+   Ekkor a kapott megosztás szerepel az adatmegosztási fiókban. 
 
    Ha nem szeretné elfogadni a meghívót, válassza az *elutasítás*lehetőséget. 
 
-## <a name="configure-storage"></a>A tárolás konfigurálása
-1. A tároló *beállításai*területen válassza ki azt az előfizetést, erőforráscsoportot és Storage-fiókot, amelyet az adataihoz szeretne fogadni. 
+## <a name="configure-received-share"></a>Fogadott megosztás konfigurálása
+Az alábbi lépésekkel konfigurálhatja, hogy hová kívánja fogadni az adatgyűjtést.
 
-   ![Cél tárolási beállításai](./media/target-storage-settings.png "Cél tárterülete") 
+1. Válassza az **adatkészletek** fület. jelölje be azon adatkészlet melletti jelölőnégyzetet, amelynek a célhelyét hozzá szeretné rendelni. A cél adattár kiválasztásához válassza a **+ Térkép** lehetőséget. 
 
-1. Az adatok rendszeres frissítésének engedélyezéséhez győződjön meg arról, hogy engedélyezi a pillanatkép-beállításokat. Vegye figyelembe, hogy ha az adatszolgáltató belefoglalta az adatmegosztásba, csak egy pillanatkép-beállításra vonatkozó ütemterv jelenik meg. 
+   ![Leképezés célhelyre](./media/dataset-map-target.png "Leképezés célhelyre") 
 
-   ![Pillanatkép-beállítások](./media/snapshot-settings.png "Pillanatkép-beállítások") 
+1. Válassza ki azt a célként megadott adattár-típust, amelybe az adatterületet szeretné. A célként megadott adattárban lévő adatfájlokat vagy táblákat ugyanazzal az elérési úttal és névvel írja felül a rendszer. 
 
-1. Kattintson a *Mentés* gombra. 
+   A helyi megosztáshoz válasszon egy adattárat a megadott helyen. A hely az az Azure-adatközpont, ahol az adatszolgáltató forrás-adattára található. Ha az adatkészlet le van képezve, a cél elérési úton található hivatkozásra kattintva érheti el az adatokat.
 
-> [!IMPORTANT]
-> Ha SQL-alapú adatokat kap, és ezeket az adatokat SQL-alapú forrásként szeretné fogadni, látogasson el az [adatkészlet-megfeleltetés konfigurálása](how-to-configure-mapping.md) útmutatóval, amelyből megtudhatja, hogyan konfigurálhat egy SQL Server az adatkészlet célhelyének megadásához. 
+   ![Cél Storage-fiók](./media/dataset-map-target-sql.png "Cél tárterülete") 
+
+1. Pillanatkép-alapú megosztás esetén, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez **, a pillanatkép** -ütemterv kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés**lehetőséget.
+
+   ![Pillanatkép-ütemterv engedélyezése](./media/enable-snapshot-schedule.png "Pillanatkép-ütemterv engedélyezése")
 
 ## <a name="trigger-a-snapshot"></a>Pillanatkép indítása
 Ezek a lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
 
-1. A kapott megosztások – > Részletek lapon elindíthat egy pillanatképet a **Pillanatkép indítása**lehetőség kiválasztásával. Itt aktiválhatja az adatok teljes vagy növekményes pillanatképét. Ha az első alkalommal fogadja az adatait az adatszolgáltatótól, válassza a teljes másolás lehetőséget. 
+1. A pillanatképek elindításához válassza a **részletek** lapot, majd az **trigger pillanatképét**. Itt aktiválhatja az adatok teljes vagy növekményes pillanatképét. Ha az első alkalommal fogadja az adatait az adatszolgáltatótól, válassza a teljes másolás lehetőséget. 
 
    ![Pillanatkép indítása](./media/trigger-snapshot.png "Pillanatkép indítása") 
 
@@ -133,7 +130,7 @@ Ezek a lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
    ![Fogyasztói adatkészletek](./media/consumer-datasets.png "Fogyasztói adatkészlet megfeleltetése") 
 
 ## <a name="view-history"></a>Előzmények megtekintése
-A pillanatképek előzményeinek megtekintéséhez navigáljon a fogadott megosztások – > előzmények elemre. Itt megtalálhatja az elmúlt 60 napban létrehozott összes pillanatkép előzményeit. 
+Ez a lépés csak a pillanatkép-alapú megosztásra vonatkozik. A pillanatképek előzményeinek megtekintéséhez válassza az **Előzmények** fület. Itt megtalálhatja az elmúlt 30 napban létrehozott összes pillanatkép előzményeit. 
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan fogadhat és fogadhat Azure-adatmegosztást. Ha többet szeretne megtudni az Azure-beli adatmegosztási fogalmakról, folytassa a [fogalmakkal: az Azure adatmegosztási terminológiáját](terminology.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512503"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257420"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Oktatóanyag – a HSM üzembe helyezése meglévő virtuális hálózaton a PowerShell használatával
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag egy HSM és a szükséges ExpressRoute-átjáróra koncentrá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban, ezért a szolgáltatással folytatott minden interakció parancssori vagy a PowerShell használatával történik. Ez az oktatóanyag a PowerShellt fogja használni a Azure Cloud Shellban. Ha még csak most ismerkedik a PowerShell-lel, kövesse az első lépéseket ismertető útmutatót itt: [Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)az első lépéseket.
+Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban, ezért a szolgáltatással folytatott minden interakció parancssori vagy a PowerShell használatával történik. Ez az oktatóanyag a PowerShellt fogja használni a Azure Cloud Shellban. Ha még csak most ismerkedik a PowerShell-lel, kövesse az első lépéseket ismertető útmutatót itt: [Azure PowerShell](/powershell/azure/get-started-azureps)az első lépéseket.
 
 Előfeltételek:
 
@@ -72,12 +72,12 @@ A HSM-eszközök egy ügyfél virtuális hálózatán vannak kiépítve. Ez egy 
 
 Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, hogy beszúrja az erőforrások előnyben részesített nevét. Ez azt jelenti, hogy a sorokat "value": "" értékkel kell szerkeszteni.
 
-- `namingInfix`HSM-erőforrások nevének előtagja
-- `ExistingVirtualNetworkName`A HSM használt virtuális hálózat neve
-- `DedicatedHsmResourceName1`HSM-erőforrás neve az adatközpont Stamp 1
-- `DedicatedHsmResourceName2`HSM-erőforrás neve az adatközpont Stamp 2
-- `hsmSubnetRange`Alhálózat IP-címtartomány a HSM
-- `ERSubnetRange`Alhálózat IP-címtartomány a VNET-átjáróhoz
+- `namingInfix` HSM-erőforrások nevének előtagja
+- `ExistingVirtualNetworkName` A HSM használt virtuális hálózat neve
+- `DedicatedHsmResourceName1` HSM-erőforrás neve az adatközpont Stamp 1
+- `DedicatedHsmResourceName2` HSM-erőforrás neve az adatközpont Stamp 2
+- `hsmSubnetRange` Alhálózat IP-címtartomány a HSM
+- `ERSubnetRange` Alhálózat IP-címtartomány a VNET-átjáróhoz
 
 Ilyen változások például a következők:
 
@@ -255,7 +255,7 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag lépéseinek elvégzése után a dedikált HSM-erőforrások kiépítve és elérhetővé válnak a virtuális hálózaton. Most már olyan helyzetben van, hogy ezt az üzembe helyezést az előnyben részesített üzembe helyezési architektúrához szükséges további erőforrásokkal kiegészítse. Az üzembe helyezés megtervezésével kapcsolatos további információkért tekintse meg a fogalmakat ismertető dokumentumokat. Az elsődleges régió két HSM rendelkező kialakítás az állvány szintjén kezeli a rendelkezésre állást, a másodlagos régióban pedig két HSM ajánlott. Az oktatóanyagban használt sablonfájl egyszerűen használható két HSM-telepítés alapjaként, de a hozzájuk tartozó paramétereket módosítani kell, hogy megfeleljenek a követelményeinek.
 

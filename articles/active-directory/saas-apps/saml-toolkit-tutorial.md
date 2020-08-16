@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2cae29bb4edaf7040b1cb41293c902f975a03f23
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166310"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258770"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Azure AD SAML Toolkit használatával
 
@@ -82,11 +82,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://samltoolkit.azurewebsites.net/`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://samltoolkit.azurewebsites.net/`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://samltoolkit.azurewebsites.net`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `https://samltoolkit.azurewebsites.net`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:`https://samltoolkit.azurewebsites.net/SAML/Consume`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet: `https://samltoolkit.azurewebsites.net/SAML/Consume`
 
     > [!NOTE]
     > Ezek az értékek nem valós értékek. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosító és válasz URL-értékekkel, amelyeket az oktatóanyag későbbi részében ismertet.
@@ -107,9 +107,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -139,7 +139,7 @@ Ebben a szakaszban az Azure AD SAML Toolkit elérésének biztosításával enge
 
     ![Azure AD SAML Toolkit SAML-konfiguráció](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Azure AD SAML-eszközkészlet – SSO létrehozása](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -155,13 +155,13 @@ Ebben a szakaszban az Azure AD SAML Toolkit elérésének biztosításával enge
 
     1. Kattintson a **fájl kiválasztása** elemre, és töltse fel a Azure Portalból letöltött **tanúsítvány-(RAW-)** fájlt.
 
-    1. Kattintson a **Létrehozás**gombra.
+    1. Kattintson a **Create** (Létrehozás) gombra.
 
     1. Másolja be a bejelentkezési URL-címet, az azonosítót és az ACS URL-értékeket az SAML Toolkit SSO konfigurációs lapján, és illessze be a beillesztett szövegmezőket a Azure Portal **alapszintű SAML-konfiguráció szakaszában** .
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Azure AD SAML Toolkit-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre az Azure AD SAML Toolkit-ben. Az Azure AD SAML Toolkit az igény szerinti felhasználói üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az Azure AD SAML Toolkit-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre az Azure AD SAML Toolkit-ben. Hozzon létre egy teszt felhasználót az eszközön egy új felhasználó regisztrálásával és az összes felhasználói adat megadásával. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -169,11 +169,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen az Azure AD SAML Toolkit csempére kattint, automatikusan be kell jelentkeznie az Azure AD SAML-eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055187"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257958"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -43,8 +43,9 @@ A tárolók megfelelő törléséhez az alábbi lépéseket kell követnie:
 - **3. lépés**: az alábbi három helyen ellenőrizze, hogy vannak-e védett elemek:
 
   - **Felhőalapú védett elemek**: lépjen a tároló irányítópult menüjébe > **biztonsági másolati elemek elemre**. Az itt felsorolt összes elemet el kell távolítani a biztonsági mentés **leállítása** vagy a biztonsági mentési adatok **törlése** mellett.  Ezeket a [lépéseket követve](#delete-protected-items-in-the-cloud) távolíthatja el ezeket az elemeket.
+  - **SQL Server példány**: lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**által  >  **védett kiszolgálók**elemre. A védett kiszolgálók lapon válassza ki a regisztrálni kívánt kiszolgálót. A tár törléséhez meg kell szüntetnie az összes kiszolgáló regisztrációját. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése**lehetőséget.
   - **Mars-védelemmel ellátott kiszolgálók**: lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**által  >  **védett kiszolgálók**elemre. Ha a MARS-védelemmel ellátott kiszolgálókkal rendelkezik, az itt felsorolt összes elemet törölni kell a biztonsági mentési adatokkal együtt. A MARS-védelemmel ellátott kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
-  - **MABS vagy DPM felügyeleti kiszolgálók**: lépjen a tár irányítópult menüjébe > **biztonsági mentési infrastruktúra**biztonsági  >  **mentési felügyeleti kiszolgálók**elemre. Ha DPM vagy Azure Backup Server (MABS) rendelkezik, akkor az itt felsorolt összes elemet törölni kell, vagy a biztonsági mentési adatokkal együtt meg kell szüntetni a regisztrációt. A felügyeleti kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
+   - **MABS vagy DPM felügyeleti kiszolgálók**: lépjen a tár irányítópult menüjébe > **biztonsági mentési infrastruktúra**biztonsági  >  **mentési felügyeleti kiszolgálók**elemre. Ha DPM vagy Azure Backup Server (MABS) rendelkezik, akkor az itt felsorolt összes elemet törölni kell, vagy a biztonsági mentési adatokkal együtt meg kell szüntetni a regisztrációt. A felügyeleti kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
 
 - **4. lépés**: Győződjön meg arról, hogy az összes regisztrált Storage-fiók törölve van. Lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**  >  **Storage-fiókok**elemre. Ha az itt felsorolt Storage-fiókokkal rendelkezik, törölje az összes regisztrációját. További információ a fiók regisztrációjának megszüntetéséről: [Storage-fiók regisztrációjának törlése](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -84,7 +85,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
 1. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra**elemet.
 2. A helyszíni forgatókönyvtől függően válasszon a következő lehetőségek közül:
 
-      - A MARS területen válassza a **védett kiszolgálók** elemet, majd **Azure Backup az ügynököt**. Ezután válassza ki a törölni kívánt kiszolgálót.
+      - A MARS területen válassza a **védett kiszolgálók** elemet, majd  **Azure Backup az ügynököt**. Ezután válassza ki a törölni kívánt kiszolgálót.
 
         ![A MARS lapon válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
@@ -171,7 +172,7 @@ A védelem leállításához és a biztonsági másolatok állapotának törlés
 
 #### <a name="method-2"></a>2. módszer
 
-Nyissa meg a **MABS-kezelő** vagy a **DPM felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása**területen törölje a jelet a szeretnék **online védelem** jelölőnégyzetből.
+Nyissa meg a **MABS-kezelő** vagy a **DPM felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása**területen törölje a jelet a szeretnék  **online védelem** jelölőnégyzetből.
 
   ![Válassza ki az adatvédelmi módszert.](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -235,7 +236,7 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
 
     A következő üzenet helyének megjelenítése:
 
-    *Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/>[Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"):*
+    *Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"):*
 
 - A MABS (Microsoft Azure Backup Server) vagy a DPM (System Center Data Protection Manager) által az Azure-ba védett helyszíni gépeken a következő paranccsal törölheti az Azure-ban tárolt biztonsági másolati adataikat.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835986"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258548"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -98,7 +98,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`csak a általános célú és a memória optimalizált díjszabási szintjein lehet frissíteni.
+> `innodb_file_per_table` csak a általános célú és a memória optimalizált díjszabási szintjein lehet frissíteni.
 
 A MySQL a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ban tárolja a InnoDB táblát. A [System tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
 
@@ -212,6 +212,9 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 Ha a "sor mérete túl nagy (> 8126)" hasonló hibaüzenetet kap, érdemes kikapcsolni a paramétert **innodb_strict_mode**. A (z) **innodb_strict_mode** kiszolgáló paramétert nem lehet globálisan módosítani a kiszolgáló szintjén, mert ha a sor adatmérete nagyobb, mint 8k, az adatokat a rendszer a lehetséges adatvesztéshez vezető hiba nélkül csonkolja. Azt javasoljuk, hogy módosítsa a sémát úgy, hogy az illeszkedjen az oldal méretének korlátozásához. 
 
 Ez a paraméter a használatával állítható be a munkamenet szintjén `init_connect` . Ha **innodb_strict_modet** szeretne beállítani a munkamenet szintjén, a [beállítás paraméter nem jelenik](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)meg.
+
+> [!NOTE]
+> Ha rendelkezik olvasási replika-kiszolgálóval, akkor a főkiszolgálón lévő munkamenet szintjén a **innodb_strict_mode** kikapcsolásának beállítása megszakítja a replikációt. Javasoljuk, hogy a paramétert állítsa ki, ha olvasási replikával rendelkezik.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 7/26/2020
+ms.date: 8/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: bbfbc5e92fc49e45d1d16621992dbf4483f01bb5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327157"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258440"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -30,10 +30,12 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 
 |Erőforrás típusa  |Támogatott méretek |Több erőforrásból álló riasztások| Elérhető metrikák|
 |---------|---------|-----|----------|
+|Microsoft. Aadiam/azureADMetrics | Igen | Nem | |
 |Microsoft.ApiManagement/service | Igen | Nem | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft. AppConfiguration/configurationStores |Igen | Nem | [Alkalmazás konfigurációja](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft. AppPlatform/Spring | Igen | Nem | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Microsoft. Automation/automationAccounts | Igen| Nem | [Automation-fiókok](./metrics-supported.md#microsoftautomationautomationaccounts) |
+|Microsoft. AVS/privateClouds | Nem | Nem | |
 |Microsoft.BatCH/batchAccounts | Igen | Nem | [Batch-fiókok](./metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft. cache/Redis | Igen | Nem | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
 |Microsoft. ClassicStorage/storageAccounts | Igen | Nem | [Storage-fiókok (klasszikus)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
@@ -53,11 +55,13 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. DataShare/fiókok | Igen | Nem | |
 |Microsoft. DBforMariaDB/kiszolgálók | Nem | Nem | [MariaDB-adatbázis](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. DBforMySQL/kiszolgálók | Nem | Nem |[A MySQL-hez készült adatbázis](./metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | |
 |Microsoft. DBforPostgreSQL/kiszolgálók | Nem | Nem | [PostgreSQL-hez készült adatbázis](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Nem | Nem | [A PostgreSQL v2 ADATBÁZISa](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
 |Microsoft. DBforPostgreSQL/singleservers | Nem | Nem | [PostgreSQL-adatbázis (egyetlen kiszolgáló)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
 |Microsoft. Devices/IotHubs | Igen | Nem |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Igen | Nem | [Eszközök kiépítési szolgáltatásai](./metrics-supported.md#microsoftdevicesprovisioningservices) |
+|Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | |
 |Microsoft.DocumentDB/databaseAccounts | Igen | Nem | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
 |Microsoft. EventGrid/tartományok | Igen | Nem | [Event Grid-tartományok](./metrics-supported.md#microsofteventgriddomains) |
 |Microsoft. EventGrid/systemTopics | Igen | Nem | [Event Grid rendszertémakörök](./metrics-supported.md#microsofteventgridsystemtopics) |
@@ -66,19 +70,20 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. EventHub/névterek |Igen| Nem | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
 |Microsoft. HDInsight/fürtök | Igen | Nem | [HDInsight-fürtök](./metrics-supported.md#microsofthdinsightclusters) |
 |Microsoft. bepillantások/összetevők | Igen | Nem | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
-|Microsoft. kulcstartó/tárolók | Nem |Nem |[Kulcstartók](./metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft. kulcstartó/tárolók | Igen |Igen |[Kulcstartók](./metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft. Kusto/fürtök | Igen |Nem |[Fürtök Adatkezelő](./metrics-supported.md#microsoftkustoclusters)|
+|Microsoft. Logic/integrationServiceEnvironments | Igen | Nem |[Integrációs szolgáltatási környezetek](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft. Logic/munkafolyamatok | Nem | Nem |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft. MachineLearningServices/munkaterületek | Igen | Nem | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft. Maps/fiókok | Igen | Nem | [Maps-fiókok](./metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft. Media/Mediaservices | Nem | Nem | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft. Media/Mediaservices/streamingEndpoints | Igen | Nem | [Media Services streaming-végpontok](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
-|Microsoft. NetApp/netAppAccounts/capacityPools | Igen | Nem | [Azure NetApp-kapacitási készletek](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft. NetApp/netAppAccounts/capacityPools/kötetek | Igen | Nem | [Azure NetApp-kötetek](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft. NetApp/netAppAccounts/capacityPools | Igen | Igen | [Azure NetApp-kapacitási készletek](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft. NetApp/netAppAccounts/capacityPools/kötetek | Igen | Igen | [Azure NetApp-kötetek](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | n.a. | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRouteCircuits | N/A | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways| Nem | Nem | |
 |Microsoft. Network/privateEndpoints| Nem | Nem | |

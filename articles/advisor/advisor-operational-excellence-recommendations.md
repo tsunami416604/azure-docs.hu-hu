@@ -3,12 +3,12 @@ title: Az operatív Uram fejlesztése az Advisor szolgáltatással
 description: Az Azure-előfizetések működési kiválóságának optimalizálása Azure Advisor használatával.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057643"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258475"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor használatával
 
@@ -53,6 +53,16 @@ Azure Policy egy Azure-szolgáltatás, amely szabályzatok létrehozására, hoz
 ***Felügyelt lemezeket nem használó virtuális gépek naplózása*.**
 
 **Engedélyezi *a címke öröklését az erőforráscsoportok közül*.** Ez a szabályzat az erőforrások minden létrehozásakor vagy frissítésekor hozzáadja vagy lecseréli a megadott címkét és értéket a fölérendelt erőforráscsoportból. A meglévő erőforrásokat szervizelési feladat aktiválásával javíthatja.
+
+## <a name="no-validation-environment-enabled"></a>Nincs engedélyezve ellenőrzési környezet
+Azure Advisor megállapítja, hogy a jelenlegi előfizetésben nincs engedélyezve az érvényesítési környezet. A gazdagépek létrehozásakor \" \" \" \" a Properties (Tulajdonságok) lapon a nem for érvényesítési környezet lehetőséget választotta. Ha legalább egy, engedélyezett ellenőrzési környezettel rendelkező gazdagép biztosítja az üzleti folytonosságot a Windows Virtual Desktop szolgáltatás üzemelő példányán, a lehetséges problémák korai észlelésével. [További információ](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Az üzemi (nem érvényesítési) környezet biztosítása a stabil funkciók kihasználása érdekében
+Azure Advisor észleli, hogy a gazdagép-készletek túl sok engedélyezett ellenőrzési környezettel rendelkezik. Ahhoz, hogy az ellenőrzési környezetek a legjobban kiszolgálják a céljukat, rendelkeznie kell legalább egy, de soha nem több mint fele a gazdagép-készletek érvényesítési környezetben. Ha a gazdagép-készletek és az általa letiltott ellenőrzési környezet között kifogástalan egyensúlyt biztosít, akkor a legjobb megoldás, ha kihasználja a Windows virtuális asztal által az egyes frissítésekkel elérhető többfokozatú központi telepítések előnyeit. A probléma megoldásához nyissa meg a gazdagép készletének tulajdonságait, és válassza \" a nem lehetőséget \" az \" érvényesítési környezet \" beállítása mellett.
+
+## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Traffic Analytics engedélyezése a forgalmi minták Azure-erőforrásokon keresztüli áttekintéséhez
+A Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít az Azure-beli felhasználói és alkalmazási tevékenységekben. A Traffic Analytics Network Watcher hálózati biztonsági csoport (NSG) folyamatának naplóit elemzi, hogy betekintést nyújtson a forgalom forgalmára. A Traffic Analytics segítségével megtekintheti az Azure-beli és nem Azure-beli üzemelő példányokat, megvizsgálhatja a környezet nyitott portjait, protokollait és kártékony folyamatait, és optimalizálhatja a hálózati üzembe helyezést a teljesítmény érdekében. A flow-naplókat 10 perc és 60 perc feldolgozási intervallumban dolgozhatja fel, így gyorsabb elemzést tesz lehetővé a forgalomban. Ajánlott az Azure-erőforrások Traffic Analyticsának engedélyezése. 
+
 
 ## <a name="next-steps"></a>További lépések
 

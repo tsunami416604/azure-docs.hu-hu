@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987256"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258343"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -32,7 +32,7 @@ Tehát ha javítani kívánja az adatbázis teljesítményét, vegye figyelembe 
 
 A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez. A következő típusú alkalmazások alapértelmezés szerint 32 bites gazdagép-feldolgozást használnak. Ha módosítani szeretné a gazdagép feldolgozását 64 bites feldolgozásra, kövesse az alábbi lépéseket az alkalmazás típusa alapján:
 
-- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64** értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
+- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
 - A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások**alapértelmezett processzor-architektúra x64-ként** lehetőséget.
 
@@ -71,15 +71,12 @@ Az ügyfél Azure Cosmos DBhoz való kapcsolódásának módja fontos teljesítm
      Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az adatok beolvasása vagy írása Azure Cosmos DB. Így a közvetlen mód jobb teljesítményt nyújt, mivel kevesebb hálózati ugrás van. Azt is javasoljuk, hogy az átjáró kapcsolati üzemmódja csak korlátozott számú szoftvercsatorna-kapcsolattal rendelkező környezetekben futtatott alkalmazásokat futtasson.
 
      Ha az SDK-t Azure Functionsban használja, különösen a használati [tervben](../azure-functions/functions-scale.md#consumption-plan), vegye figyelembe a [kapcsolatok jelenlegi korlátait](../azure-functions/manage-connections.md). Ebben az esetben előfordulhat, hogy az átjáró mód jobb, ha más HTTP-alapú ügyfelekkel is dolgozik a Azure Functions alkalmazáson belül.
-
-
-Az átjáró módban a Azure Cosmos DB a 443-es portot és a 10250-es, 10255-as és 10256-es portokat használja a MongoDB-hez készült Azure Cosmos DB API használatakor. A 10250-es port a Geo-replikáció nélküli alapértelmezett MongoDB-példányra mutat. A 10255-es és a 10256-es portok a Geo-replikációval rendelkező MongoDB-példányhoz képezhetők le.
      
-Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell győződnie arról, hogy a 10000 és a 20000 közötti porttartomány meg van [nyitva, mert](./how-to-configure-private-endpoints.md)Azure Cosmos db dinamikus TCP-portokat használ (közvetlen mód használata esetén a TCP-portok teljes tartománya – 0 és 65535 között – nyitva kell lennie). A portok alapértelmezés szerint a szabványos Azure-beli virtuális gép konfigurációjában nyílnak meg. Ha ezek a portok nincsenek megnyitva, és a TCP-t próbálja használni, a 503-es szolgáltatás nem érhető el hibaüzenetet kap. Ez a táblázat a különböző API-k számára elérhető csatlakozási módokat és az egyes API-khoz használt szolgáltatási portokat mutatja be:
+Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell győződnie arról, hogy a 10000 és a 20000 közötti porttartomány meg van nyitva, mert Azure Cosmos DB dinamikus TCP-portokat használ. Ha közvetlen módot használ [privát végpontokon](./how-to-configure-private-endpoints.md), a TCP-portok teljes tartományát (0 és 65535 között) nyitva kell lennie. A portok alapértelmezés szerint a szabványos Azure-beli virtuális gép konfigurációjában nyílnak meg. Ha ezek a portok nincsenek megnyitva, és a TCP-t próbálja használni, a 503-es szolgáltatás nem érhető el hibaüzenetet kap. Az alábbi táblázat a különböző API-k és az egyes API-k által használt szolgáltatási portok kapcsolati módjait mutatja be:
 
 |Kapcsolat módja  |Támogatott protokoll  |Támogatott SDK-k  |API/szolgáltatás portja  |
 |---------|---------|---------|---------|
-|Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), MongoDB (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443)    |
+|Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), MongoDB (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443) <br> Az 10250-es port a MongoDB-példány alapértelmezett Azure Cosmos DB API-ját képezi le a Geo-replikáció nélkül. Míg a 10255-es és a 10256-es port a Geo-replikációval rendelkező példányhoz rendelhető hozzá.   |
 |Direct    |     TCP    |  .NET SDK    | Nyilvános/szolgáltatási végpontok használata esetén: a 10000-as port a 20000-tartományon keresztül<br>Privát végpontok használata esetén: a 0 és 65535 közötti portok |
 
 Azure Cosmos DB egy egyszerű, nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A TCP protokoll TLS protokollt használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
@@ -167,8 +164,8 @@ Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor 
 **A particionált gyűjtemények párhuzamos lekérdezésének hangolása**
 
 Az SQL .NET SDK támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált tárolók párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy jobb lekérdezési késést és adatátviteli sebességet biztosítanak, mint a soros A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igényeinek megfelelően hangolhat: 
-- `MaxConcurrency`a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
-- `MaxBufferedItemCount`az előre lehívott eredmények számát szabályozza.
+- `MaxConcurrency` a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
+- `MaxBufferedItemCount` az előre lehívott eredmények számát szabályozza.
 
 ***Az egyidejűség finomhangolási foka***
 

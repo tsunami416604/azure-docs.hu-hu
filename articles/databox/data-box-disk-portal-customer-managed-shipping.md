@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95c0a884b335920df9803a9b468ab522646b26a1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945018"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258762"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>A Azure Portal Azure Data Box Disk önfelügyelt szállítás használata
 
@@ -28,6 +28,7 @@ Az önfelügyelt szállítás a [Azure Data Box Disk megrendelése](data-box-dis
 * Japán
 * Szingapúr
 * Dél-Korea
+* Dél-afrikai Köztársaság
 * India (előzetes verzió)
 
 ## <a name="use-self-managed-shipping"></a>Önállóan felügyelt szállítás használata
@@ -36,13 +37,13 @@ Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyel
 
 1. A Azure Data Box Diski sorrendben a **kapcsolattartási adatok**területen válassza a **+ szállítási címek hozzáadása**elemet.
 
-   ![Saját üzemeltetésű szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Önállóan felügyelt szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. A szállítási típus kiválasztásakor válassza az **önfelügyelt szállítási** lehetőséget. Ez a beállítás csak akkor érhető el, ha az előfeltételek szakaszban leírtak szerint támogatott régióban van.
 
 3. Miután megadta a szállítási címet, ellenőriznie kell, és el kell végeznie a rendelést.
 
-   ![Saját üzemeltetésű szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Önállóan felügyelt szállítás](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Ha az eszköz elkészült, és e-mailben értesítést kapott, beütemezhet egy felvételt. A Azure Data Box Diski sorrendben válassza az **Áttekintés** , majd a **felvételi ütemterv**lehetőséget.
 
@@ -52,7 +53,7 @@ Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyel
 
    ![Csomagfelvétel ütemezése](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-02c.png)
 
-6. Miután ütemezte az eszköz felvételét, megtekintheti az Azure-ban az **ütemezési feladásban**megjelenő engedélyezési kódot.
+6. Miután ütemezte az eszköz felvételét, megtekintheti az Azure-ban az  **ütemezési feladásban**megjelenő engedélyezési kódot.
 
    ![Az engedélyezési kód megtekintése](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 

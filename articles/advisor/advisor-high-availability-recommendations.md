@@ -3,31 +3,16 @@ title: Az Advisor-alkalmazás megbízhatóságának javítása
 description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057665"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258501"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
 Azure Advisor segít az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosításában és tökéletesítésében. Az Advisor megbízhatósági javaslatai az Advisor irányítópultjának **megbízhatóság** lapján olvashatók.
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>A virtuális gép hibatűrésének biztosítása
-
-Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor azonosítja azokat a virtuális gépeket, amelyek nem részei egy rendelkezésre állási csoportnak, és azt ajánlja, hogy helyezze át őket egy Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak. Dönthet úgy is, hogy létrehoz egy rendelkezésre állási készletet a virtuális géphez, vagy hozzáadja a virtuális gépet egy meglévő rendelkezésre állási csoporthoz.
-
-> [!NOTE]
-> Ha úgy dönt, hogy létrehoz egy rendelkezésre állási készletet, legalább egy virtuális gépet hozzá kell adnia. Javasoljuk, hogy egy rendelkezésre állási csoportban két vagy több virtuális gépet csoportosítson, hogy legalább egy gép elérhető legyen a leállás során.
-
-## <a name="ensure-availability-set-fault-tolerance"></a>Rendelkezésre állási csoport hibatűrésének biztosítása
-
-Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportokat azonosít, és egy vagy több virtuális gép hozzáadását javasolja.Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak.Dönthet úgy, hogy létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet ad hozzá a rendelkezésre állási csoporthoz.  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatmegbízhatóság javítása érdekében
-
-Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban találhatók, amelyekben a Storage-fiókok vagy a tárolási méretezési egységek osztoznak, nem állnak rugalmasan az egyazon tárolási skálázási egységekkel kapcsolatos hibákig. Az Advisor azonosítja ezeket a rendelkezésre állási csoportokat, és javasolja az Azure Managed Disks szolgáltatásba való áttelepítést. Ez a Migrálás biztosítja, hogy a rendelkezésre állási csoportba tartozó virtuális gépek lemezei elég elszigeteltek legyenek, hogy elkerülje az egyetlen meghibásodási pontot. 
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>A hálózati virtuális berendezés rendszerképének verziószámának keresése
 
@@ -73,6 +58,21 @@ Azure Advisor ellenőrzi az alapszintű SKU-t használó VPN-átjárókat, és a
 - Aktív-aktív konfigurációs beállítások. 
 - Egyéni IPSec/IKE-házirend. 
 - Nagyobb stabilitás és rendelkezésre állás.
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>A virtuális gép hibatűrésének biztosítása (átmenetileg letiltva)
+
+Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor azonosítja azokat a virtuális gépeket, amelyek nem részei egy rendelkezésre állási csoportnak, és azt ajánlja, hogy helyezze át őket egy Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak. Dönthet úgy is, hogy létrehoz egy rendelkezésre állási készletet a virtuális géphez, vagy hozzáadja a virtuális gépet egy meglévő rendelkezésre állási csoporthoz.
+
+> [!NOTE]
+> Ha úgy dönt, hogy létrehoz egy rendelkezésre állási készletet, legalább egy virtuális gépet hozzá kell adnia. Javasoljuk, hogy egy rendelkezésre állási csoportban két vagy több virtuális gépet csoportosítson, hogy legalább egy gép elérhető legyen a leállás során.
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Rendelkezésre állási csoport hibatűrésének biztosítása (átmenetileg letiltva)
+
+Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportokat azonosít, és egy vagy több virtuális gép hozzáadását javasolja.Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak.Dönthet úgy, hogy létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet ad hozzá a rendelkezésre állási csoporthoz.  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Felügyelt lemezek használata az adatmegbízhatóság javítására (átmenetileg letiltva)
+
+Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban találhatók, amelyekben a Storage-fiókok vagy a tárolási méretezési egységek osztoznak, nem állnak rugalmasan az egyazon tárolási skálázási egységekkel kapcsolatos hibákig. Az Advisor azonosítja ezeket a rendelkezésre állási csoportokat, és javasolja az Azure Managed Disks szolgáltatásba való áttelepítést. Ez a Migrálás biztosítja, hogy a rendelkezésre állási csoportba tartozó virtuális gépek lemezei elég elszigeteltek legyenek, hogy elkerülje az egyetlen meghibásodási pontot. 
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 

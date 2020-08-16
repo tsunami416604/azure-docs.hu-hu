@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: c6c1b30716b52554afebe39562692de181dd7d1a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3e15adcac184a0609de3197181cb8c475a962e8d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921221"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258358"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek a Azure Cosmos DB és a .NET SDK v2-hez
 
@@ -41,7 +41,7 @@ Megjelent a [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) . Ha 
 
 A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez. A következő típusú alkalmazások alapértelmezés szerint 32 bites gazdagép-feldolgozást használnak. Ha módosítani szeretné a gazdagép feldolgozását 64 bites feldolgozásra, kövesse az alábbi lépéseket az alkalmazás típusa alapján:
 
-- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64** értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
+- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
 - A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások**alapértelmezett processzor-architektúra x64-ként** lehetőséget.
 
@@ -64,7 +64,7 @@ Ha magas átviteli sebességű (több mint 50 000 RU/s) tesztelést végez, az �
 > [!NOTE] 
 > A magas CPU-használat nagyobb késést és kérelem időtúllépési kivételt okozhat.
 
-## <a name="networking"></a><a id="networking"></a>Hálózati
+## <a name="networking"></a><a id="networking"></a> Hálózati
 
 **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
 
@@ -79,14 +79,12 @@ Az ügyfél Azure Cosmos DBhoz való kapcsolódásának módja fontos teljesítm
   * Közvetlen mód
 
     A Direct mód a TCP protokollon keresztül támogatja a kapcsolódást.
-
-Az átjáró módban a Azure Cosmos DB a 443-es portot és a 10250-es, 10255-as és 10256-es portokat használja a MongoDB-hez készült Azure Cosmos DB API használatakor. A 10250-es port a Geo-replikáció nélküli alapértelmezett MongoDB-példányra mutat. A 10255-es és a 10256-es portok a Geo-replikációval rendelkező MongoDB-példányhoz képezhetők le.
      
-Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell győződnie arról, hogy a 10000 és a 20000 közötti porttartomány meg van [nyitva, mert](./how-to-configure-private-endpoints.md)Azure Cosmos db dinamikus TCP-portokat használ (közvetlen mód használata esetén a TCP-portok teljes tartománya – 0 és 65535 között – nyitva kell lennie). Ha ezek a portok nincsenek megnyitva, és a TCP-t próbálja használni, a 503-es szolgáltatás nem érhető el hibaüzenetet kap. Ez a táblázat a különböző API-k számára elérhető csatlakozási módokat és az egyes API-khoz használt szolgáltatási portokat mutatja be:
+Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell győződnie arról, hogy a 10000 és a 20000 közötti porttartomány meg van nyitva, mert Azure Cosmos DB dinamikus TCP-portokat használ. Ha közvetlen módot használ [privát végpontokon](./how-to-configure-private-endpoints.md), a TCP-portok teljes tartományát (0 és 65535 között) nyitva kell lennie. Ha ezek a portok nincsenek megnyitva, és a TCP protokollt próbálja használni, a 503 szolgáltatás nem érhető el hibaüzenetet kap. Az alábbi táblázat a különböző API-k és az egyes API-k által használt szolgáltatási portok kapcsolati módjait mutatja be:
 
 |Kapcsolat módja  |Támogatott protokoll  |Támogatott SDK-k  |API/szolgáltatás portja  |
 |---------|---------|---------|---------|
-|Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), MongoDB (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443)    |
+|Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), MongoDB (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443) <br> Az 10250-es port a MongoDB-példány alapértelmezett Azure Cosmos DB API-ját képezi le a Geo-replikáció nélkül. Míg a 10255-es és a 10256-es port a Geo-replikációval rendelkező példányhoz rendelhető hozzá.   |
 |Direct    |     TCP    |  .NET SDK    | Nyilvános/szolgáltatási végpontok használata esetén: a 10000-as port a 20000-tartományon keresztül<br>Privát végpontok használata esetén: a 0 és 65535 közötti portok |
 
 Azure Cosmos DB egy egyszerű, nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A TCP protokoll TLS protokollt használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
@@ -121,10 +119,10 @@ Olyan helyzetekben, ahol ritka hozzáférése van, és ha az átjáró mód elé
 
 **OpenAsync meghívása az első kérés indítási késésének elkerülése érdekében**
 
-Alapértelmezés szerint az első kérelem nagyobb késéssel jár, mert be kell olvasnia a címek útválasztási táblázatát. Ha az [SDK v2](sql-api-sdk-dotnet.md)-t használja, az `OpenAsync()` inicializálás során egyszer hívja meg az indítási késést az első kérelemnél. A hívás így néz ki:`await client.OpenAsync();`
+Alapértelmezés szerint az első kérelem nagyobb késéssel jár, mert be kell olvasnia a címek útválasztási táblázatát. Ha az [SDK v2](sql-api-sdk-dotnet.md)-t használja, az `OpenAsync()` inicializálás során egyszer hívja meg az indítási késést az első kérelemnél. A hívás így néz ki: `await client.OpenAsync();`
 
 > [!NOTE]
-> `OpenAsync`a a fiókban lévő összes tárolóhoz tartozó címek útválasztási táblázatának beszerzésére vonatkozó kérelmeket hoz létre. A sok tárolóval rendelkező, de az alkalmazáshoz hozzáférő fiókok esetében `OpenAsync` szükségtelen mennyiségű adatforgalmat eredményezne, ami lelassítja az inicializálást. Így előfordulhat, hogy a használata `OpenAsync` nem hasznos ebben a forgatókönyvben, mert lelassítja az alkalmazás indítását.
+> `OpenAsync` a a fiókban lévő összes tárolóhoz tartozó címek útválasztási táblázatának beszerzésére vonatkozó kérelmeket hoz létre. A sok tárolóval rendelkező, de az alkalmazáshoz hozzáférő fiókok esetében `OpenAsync` szükségtelen mennyiségű adatforgalmat eredményezne, ami lelassítja az inicializálást. Így előfordulhat, hogy a használata `OpenAsync` nem hasznos ebben a forgatókönyvben, mert lelassítja az alkalmazás indítását.
 
 **A teljesítmény érdekében az azonos Azure-régióban lévő ügyfelek rézvezetékes végezhet**
 
@@ -158,8 +156,8 @@ Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor 
 **A particionált gyűjtemények párhuzamos lekérdezésének hangolása**
 
 Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy jobb lekérdezési késést és adatátviteli sebességet biztosítanak, mint a soros A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igényeinek megfelelően hangolhat: 
-- `MaxDegreeOfParallelism`a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
-- `MaxBufferedItemCount`az előre lehívott eredmények számát szabályozza.
+- `MaxDegreeOfParallelism` a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
+- `MaxBufferedItemCount` az előre lehívott eredmények számát szabályozza.
 
 ***A párhuzamossági fok finomhangolása***
 
@@ -231,7 +229,7 @@ collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabas
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Átviteli sebesség
+## <a name="throughput"></a><a id="measure-rus"></a> Átviteli sebesség
 
 **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 

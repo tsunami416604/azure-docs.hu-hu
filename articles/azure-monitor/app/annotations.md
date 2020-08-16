@@ -2,13 +2,13 @@
 title: A Application Insights kibocsátási megjegyzései | Microsoft Docs
 description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a metrikák Explorer diagramjaihoz Application Insights.
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320663"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258409"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
@@ -68,6 +68,10 @@ Hozzon létre külön API-kulcsot az Azure-folyamatok egyes kiadási sablonjaiho
    ![Az Azure DevOps-változók lapon válassza a Hozzáadás elemet, nevezze el a ApiKey változót, majd illessze be az API-kulcsot az érték mezőbe.](./media/annotations/7-paste-api-key.png)
    
 1. A sablon mentéséhez válassza a fő kiadási sablon ablak **Mentés** elemét.
+
+
+   > [!NOTE]
+   > Az API-kulcsok korlátozásait a [REST API Rate Limits dokumentációja](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)tartalmazza.
 
 ## <a name="view-annotations"></a>Jegyzetek megtekintése
 

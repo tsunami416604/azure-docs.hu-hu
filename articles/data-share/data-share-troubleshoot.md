@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/30/2020
-ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534447"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257808"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure-adatmegosztás gyakori problémáinak elhárítása 
 
@@ -34,7 +34,7 @@ Ennek oka a következő lehet:
     1. A **Microsoft. DataShare** keresése
     1. Kattintson a **regisztráció** elemre. 
 
-    A lépések végrehajtásához a [közreműködő Azure-szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) kell rendelkeznie. 
+    A lépések elvégzéséhez az Azure- [közreműködő szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) kell rendelkeznie az Azure-előfizetéshez. 
 
 * **A meghívót az Azure bejelentkezési e-mail-címe helyett az e-mail aliasára küldi a rendszer.** Ha regisztrálta az Azure-beli adatmegosztási szolgáltatást, vagy már létrehozott egy adatmegosztási erőforrást az Azure-bérlőben, de még mindig nem látja a meghívót, akkor valószínűleg azért, mert a szolgáltató az e-mail aliasát címzettként adta meg az Azure bejelentkezési e-mail-címe helyett. Forduljon az adatszolgáltatóhoz, és győződjön meg arról, hogy elküldte a meghívót az Azure-beli bejelentkezési e-mail címre, és nem az e-mail aliasát.
 

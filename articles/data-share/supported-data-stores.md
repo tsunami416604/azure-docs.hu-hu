@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511904"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258596"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Támogatott adattárak az Azure-adatmegosztásban
 
@@ -30,7 +30,7 @@ Az alábbi táblázat az Azure-adatmegosztás támogatott adatforrásait részle
 | 2. generációs Azure Data Lake Storage |✓ ||
 | Azure SQL Database |Nyilvános előzetes verzió | |
 | Azure szinapszis Analytics (korábban Azure SQL DW) |Nyilvános előzetes verzió | |
-| Azure Data Explorer | |Nyilvános előzetes verzió |
+| Azure Data Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Adattár támogatási mátrixa
 
@@ -62,9 +62,7 @@ Az SQL-alapú forrásokból való megosztáshoz a tűzfalszabályok és az enged
 ## <a name="share-from-azure-data-explorer"></a>Megosztás az Azure Adatkezelő
 Az Azure-beli adatmegosztás lehetővé teszi az adatbázisok helyben történő megosztását az Azure Adatkezelő-fürtökön. Az adatszolgáltató megoszthatja az adatbázist vagy a fürt szintjét. Az adatbázis szintjén megosztva az adatfogyasztó csak az adatszolgáltató által megosztott adatbázis (oka) t fogja tudni elérni. A fürt szintjén megosztott adatfogyasztók a szolgáltató fürtjéből származó összes adatbázishoz hozzáférhetnek, beleértve az adatszolgáltató által létrehozott jövőbeli adatbázisokat is.
 
-A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Adatkezelő-fürtöt kell használnia. Az adatfogyasztó Azure Adatkezelő fürtjének ugyanabban az Azure-adatközpontban kell megkeresnie, mint az adatszolgáltató Azure Adatkezelő-fürtje. A megosztási kapcsolat létrehozásakor az Azure-beli adatmegosztás szimbolikus hivatkozást hoz létre a szolgáltató és a fogyasztó Azure Adatkezelő-fürtök között.
-
-Az Azure Adatkezelő kétféle adatfeldolgozási módot támogat: a Batch és a streaming. A megosztott adatbázis batch szolgáltatásból kapott adatok néhány másodperc és néhány perc között az adatfogyasztó oldalon is megjelennek. A streamingtől kapott adatok akár 24 órát is igénybe vehetnek, hogy megjelenjenek az adatfeldolgozó oldalon. 
+A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Adatkezelő-fürtöt kell használnia. Az adatfogyasztó Azure Adatkezelő fürtjének ugyanabban az Azure-adatközpontban kell megkeresnie, mint az adatszolgáltató Azure Adatkezelő-fürtje. A megosztási kapcsolat létrehozásakor az Azure-beli adatmegosztás szimbolikus hivatkozást hoz létre a szolgáltató és a fogyasztó Azure Adatkezelő-fürtök között. A Batch-módban betöltött, a forrás Azure Adatkezelő-fürtbe betöltött adatmennyiség néhány másodpercen belül, néhány percen belül megjelenik a célként megadott fürtön.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,16 +4,16 @@ description: Használjon környezeti változókat, és hozzon létre beállítá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/18/2019
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434528"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257476"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
 
@@ -82,6 +82,12 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 További részleteket a [Docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)szolgáltatásbeli létrehozási lehetőségekről talál.
+
+## <a name="encrypted-data-in-module-storage"></a>A modul Storage szolgáltatásban tárolt titkosított adatforgalom
+
+Amikor a modulok meghívja a IoT Edge démon számítási feladatok API-ját az adatok titkosítására, a titkosítási kulcs a modul azonosítója és a modul generálási azonosítója alapján történik. A rendszer egy létrehozási azonosítót használ a titkok védeleméhez, ha eltávolítanak egy modult a központi telepítésből, majd egy másik modult is telepítenek ugyanahhoz az eszközhöz. A modul generálási azonosítóját az Azure CLI parancs az [IOT hub Module-Identity show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)paranccsal tekintheti meg.
+
+Ha a több generáción belüli modulok között szeretné megosztani a fájlokat, azok nem tartalmazhatnak titkot, vagy nem lesznek visszafejtve.
 
 ## <a name="next-steps"></a>További lépések
 
