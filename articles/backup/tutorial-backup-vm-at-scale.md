@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Recove
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372552"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263418"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
@@ -156,7 +156,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
 1. A **myRecoveryServicesVault** irányítópultján **kattintson a** **biztonsági másolati elemek elemre** a biztonsági másolati elemek menü megnyitásához.
 
-    ![Biztonsági másolati elemek](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Biztonsági mentési elemek menü megnyitása](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. A **biztonsági mentési elemek** menüben válassza az **Azure-beli virtuális gép** lehetőséget a tárolóhoz társított virtuális gépek listájának megnyitásához.
 
@@ -185,11 +185,11 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
 1. Ha nincs több elem a tárolóban, válassza a **Törlés**lehetőséget.
 
-    ![A tár törléséhez válassza a biztonsági mentés leállítása lehetőséget.](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![Törlés kiválasztása](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     A tár törlése után visszatérhet a Recovery Services-tárolók listájához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 

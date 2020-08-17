@@ -1,18 +1,18 @@
 ---
 title: 'Azure Bastion-gazdagép létrehozása: portál'
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre Azure-beli megerősített gazdagépet a portál használatával
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Bastion-gazdagépet, amely RDP/SSH-kapcsolatot biztosít a virtuális hálózatban lévő összes virtuális géphez.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744272"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270750"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Azure-beli megerősített gazdagép létrehozása a portál használatával
 
@@ -30,7 +30,7 @@ A bástya a következő nyilvános Azure-régiókban érhető el:
 
 Ez a szakasz segítséget nyújt egy új Azure Bastion-erőforrás létrehozásához a Azure Portal.
 
-1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
 1. Az **új** lap *Keresés a piactéren* mezőjébe írja be a következőt: **Bastion**, majd kattintson az **ENTER** gombra a keresési eredmények eléréséhez.
 

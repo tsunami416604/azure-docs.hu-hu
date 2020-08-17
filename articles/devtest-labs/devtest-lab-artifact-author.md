@@ -1,14 +1,14 @@
 ---
 title: Egyéni összetevők létrehozása a DevTest Labs virtuális géphez | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre saját összetevőket a Azure DevTest Labs használatával.
+description: Megtudhatja, hogyan hozhat létre olyan összetevőket, amelyekkel a virtuális gép üzembe helyezése után a Azure DevTest Labs használatával telepítheti és állíthatja be az alkalmazásokat.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857014"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270682"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Egyéni összetevők létrehozása a DevTest Labs virtuális géphez
 
@@ -44,15 +44,15 @@ A következő példa egy definíciós fájl alapszerkezetét alkotó szakaszt mu
   }
 ```
 
-| Elem neve | Kötelező? | Description |
+| Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
-| $schema |No |A JSON-séma fájljának helye. A JSON-sémafájl segítségével tesztelheti a definíciós fájl érvényességét. |
-| cím |Yes |A laborban megjelenő összetevő neve. |
-| leírás |Yes |A laborban megjelenő összetevő leírása. |
-| iconUri |No |A laborban megjelenő ikon URI-ja. |
-| targetOsType |Yes |Azon virtuális gép operációs rendszere, amelyen az összetevő telepítve van. A támogatott beállítások a Windows és a Linux. |
-| paraméterek |No |Azok az értékek, amelyek akkor jelennek meg, amikor az összetevő telepítési parancsa fut a gépen. Ez segít testreszabni az összetevőt. |
-| ParancsFuttatása |Yes |A virtuális gépen végrehajtott telepítési parancs. |
+| $schema |Nem |A JSON-séma fájljának helye. A JSON-sémafájl segítségével tesztelheti a definíciós fájl érvényességét. |
+| cím |Igen |A laborban megjelenő összetevő neve. |
+| leírás |Igen |A laborban megjelenő összetevő leírása. |
+| iconUri |Nem |A laborban megjelenő ikon URI-ja. |
+| targetOsType |Igen |Azon virtuális gép operációs rendszere, amelyen az összetevő telepítve van. A támogatott beállítások a Windows és a Linux. |
+| parameters |Nem |Azok az értékek, amelyek akkor jelennek meg, amikor az összetevő telepítési parancsa fut a gépen. Ez segít testreszabni az összetevőt. |
+| ParancsFuttatása |Igen |A virtuális gépen végrehajtott telepítési parancs. |
 
 ### <a name="artifact-parameters"></a>Összetevő paramétereinek
 A definíciós fájl parameters (paraméterek) részében adja meg, hogy a felhasználó mely értékeket vihet be az összetevők telepítésekor. Ezeket az értékeket az összetevő telepítési parancsában tekintheti meg.
@@ -69,11 +69,11 @@ Paraméterek definiálásához használja az alábbi struktúrát:
   }
 ```
 
-| Elem neve | Kötelező? | Description |
+| Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
-| típus |Yes |A paraméter értékének típusa. Az engedélyezett típusok listáját az alábbi listában tekintheti meg. |
-| displayName |Yes |A tesztkörnyezetben a felhasználó számára megjelenített paraméter neve. |
-| leírás |Yes |A laborban megjelenő paraméter leírása. |
+| típus |Igen |A paraméter értékének típusa. Az engedélyezett típusok listáját az alábbi listában tekintheti meg. |
+| displayName |Igen |A tesztkörnyezetben a felhasználó számára megjelenített paraméter neve. |
+| leírás |Igen |A laborban megjelenő paraméter leírása. |
 
 Az engedélyezett típusok a következők:
 

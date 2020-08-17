@@ -1,18 +1,18 @@
 ---
 title: 'Azure Bastion: virtuális gép munkamenetének megtekintése: teljes képernyő'
-description: Ebből a cikkből megtudhatja, hogyan módosíthatja a nézetet a teljes képernyőre.
+description: Megtudhatja, hogyan módosíthatja a virtuális gép nézetét teljes képernyőre, és visszatérhet a böngészőben egy RDP-vagy SSH-kapcsolatra az Azure-ban.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744221"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270291"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Váltás a virtuális gép munkamenetének teljes képernyős nézetére: Azure Bastion
 

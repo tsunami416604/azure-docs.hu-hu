@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514169"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263265"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -44,8 +44,8 @@ DPM Hyper-V rendszerű virtuális gépen | System Center 2012 SP1 vagy újabb; S
 DPM VMware virtuális gépen | System Center 2012 R2 az 5. vagy újabb kumulatív frissítéssel.
 Összetevők | A DPM-kiszolgálónak telepítve kell lennie a Windows PowerShell és a .NET-keretrendszer 4,5-es frissítésének.
 Támogatott alkalmazások | [Ismerje meg](/system-center/dpm/dpm-protection-matrix) , hogy milyen DPM tud biztonsági másolatot készíteni.
-Támogatott fájltípusok | Ezek a fájltípusok biztonsági másolat készíthető Azure Backup: titkosított (csak teljes biztonsági mentések esetén). Tömörített (növekményes biztonsági másolatok támogatottak); Ritka (növekményes biztonsági másolatok támogatottak); Tömörítve és ritka (Ritkaként kezelve).
-Nem támogatott fájltípusok | Kis-és nagybetűket megkülönböztető fájlrendszereket tartalmazó kiszolgálók; rögzített hivatkozások (kihagyva); újraelemzési pontok (kihagyva); titkosított és tömörített (kihagyva); titkosított és ritka (kihagyott); Tömörített Stream; adatfolyam elemzése.
+Támogatott fájltípusok | Ezek a fájltípusok biztonsági mentést készíthetnek Azure Backup használatával:<br> <li>Titkosított (csak teljes biztonsági mentés)<li> Tömörített (növekményes biztonsági másolatok támogatottak) <li> Ritka (növekményes biztonsági másolatok támogatottak)<li> Tömörített és ritka (ritkán kezelt)
+Nem támogatott fájltípusok | <li>Kis-és nagybetűket megkülönböztető fájlrendszerrel rendelkező kiszolgálók<li> rögzített hivatkozások (kihagyva)<li> újraelemzési pontok (kihagyva)<li> titkosított és tömörített (kihagyva)<li> titkosított és ritka (kihagyva)<li> Tömörített Stream<li> adatfolyam elemzése
 Helyi tárhely | Minden olyan gépnek, amelyről biztonsági másolatot szeretne készíteni, rendelkeznie kell helyi szabad tárterülettel, amely a biztonsági mentés alatt álló adatmennyiség legalább 5%-a. Például a 100 GB adat biztonsági mentéséhez legalább 5 GB szabad terület szükséges a semmiből.
 Tár tárolója | A Azure Backup-tárolóba felhasználható adatmennyiségnek nincs korlátja, de az adatforrások (például virtuális gépek vagy adatbázisok) mérete nem haladhatja meg a 54 400 GB-ot.
 Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **A Microsoft-partnerekkel**válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
@@ -68,7 +68,7 @@ A tárreplikációs beállítás szerkesztése:
 
 1. Nyissa meg a tároló irányítópultját.
 
-2. A **kezelés**területen kattintson a **biztonsági mentési infrastruktúra**elemre.
+2. A **kezelés**területen válassza a **biztonsági mentési infrastruktúra**elemet.
 
 3. A **biztonsági mentés konfigurálása** menüben válassza ki a tárolóhoz tartozó tárolási beállítást.
 
@@ -91,7 +91,7 @@ A hitelesítő adatok beszerzéséhez töltse le a tároló hitelesítőadat-fá
 - Az Ön felelőssége, hogy a tár hitelesítő adatait tartalmazó fájl biztonságos legyen, és ne veszélyeztesse.
   - Ha a hitelesítő adatok ellenőrzése megszakad, a tároló hitelesítő adataival más gépek is regisztrálhatók a tárba.
   - A biztonsági mentési adatai azonban a felhasználóhoz tartozó jelszóval vannak titkosítva, így a meglévő biztonsági mentési adatai nem lehetnek biztonságban.
-- Győződjön meg arról, hogy a fájl egy olyan helyen lett mentve, amely a DPM-kiszolgálóról érhető el. Ha a fájlt egy fájlmegosztás vagy SMB tárolja, ellenőrizze a hozzáférési engedélyeket.
+- Győződjön meg arról, hogy a fájl egy olyan helyen lett mentve, amely a DPM-kiszolgálóról érhető el. Ha egy fájlmegosztási vagy SMB-fájlban van tárolva, ellenőrizze a hozzáférési engedélyeket.
 - A tár hitelesítő adatai 48 óra után lejárnak. Az új tár hitelesítő adatait igény szerint többször is letöltheti. A regisztrációs munkafolyamat során azonban csak a legújabb tár hitelesítőadat-fájl használható.
 - A Azure Backup szolgáltatás nem ismeri a tanúsítvány titkos kulcsát, és a titkos kulcs nem érhető el a portálon vagy a szolgáltatásban.
 
@@ -99,24 +99,24 @@ Töltse le a tároló hitelesítő adatait tartalmazó fájlt egy helyi gépre a
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg azt a tárolót, amelyben regisztrálni szeretné a DPM-kiszolgálót.
-3. A **Beállítások**területen kattintson a **Tulajdonságok**elemre.
+3. A **Beállítások**területen válassza a **Tulajdonságok**lehetőséget.
 
     ![A tárolók menüjének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. A **Tulajdonságok**  >  **biztonsági mentése hitelesítő adatok**területen kattintson a **Letöltés**elemre. A portál a tár hitelesítő adatait tartalmazó fájlt a tár neve és az aktuális dátum kombinációja alapján hozza létre, és letölthetővé teszi.
+4. A **Tulajdonságok**  >  **biztonsági másolatának hitelesítő adatai**területen válassza a **Letöltés**lehetőséget. A portál a tár hitelesítő adatait tartalmazó fájlt a tár neve és az aktuális dátum kombinációja alapján hozza létre, és letölthetővé teszi.
 
-    ![Letöltés](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![Hitelesítő adatok letöltése](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
-5. Kattintson a **Mentés** gombra a tár hitelesítő adatainak a mappába való letöltéséhez, vagy a **Mentés másként** lehetőségre, és a hely megadásához. A fájl generálása akár egy percet is igénybe vesz.
+5. Válassza a **Mentés** lehetőséget a tár hitelesítő adatainak a mappába való letöltéséhez, vagy a **Mentés másként lehetőségre** , és adjon meg egy helyet. A fájl generálása akár egy percet is igénybe vesz.
 
 ## <a name="install-the-backup-agent"></a>A biztonságimásolat-készítő ügynök telepítése
 
 A Azure Backup által készített biztonsági mentést végző számítógépeken telepítve kell lennie a biztonsági mentési ügynöknek (más néven Microsoft Azure Recovery Service-(MARS-) ügynöknek). Telepítse az ügynököt a DPM-kiszolgálóra a következőképpen:
 
 1. Nyissa meg azt a tárolót, amelyre regisztrálni szeretné a DPM-kiszolgálót.
-2. A **Beállítások**területen kattintson a **Tulajdonságok**elemre.
+2. A **Beállítások**területen válassza a **Tulajdonságok**lehetőséget.
 
-    ![A tárolók menüjének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![Tár beállításainak megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. A **Tulajdonságok** lapon töltse le a Azure Backup-ügynököt.
 
     ![Letöltés](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
@@ -131,7 +131,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>A DPM-kiszolgáló regisztrálása a tárolóban
 
-1. A DPM felügyeleti konzolon > a **felügyelet**elemre, majd kattintson az **online**lehetőségre. Válassza a **Regisztráció** lehetőséget. Ekkor megnyílik a kiszolgáló regisztrálása varázsló.
+1. A DPM felügyeleti konzol > **felügyelet**területén válassza az **online**lehetőséget. Válassza a **Regisztráció** lehetőséget. Ekkor megnyílik a kiszolgáló regisztrálása varázsló.
 2. A **proxy konfigurálása**területen szükség szerint határozza meg a proxybeállításokat.
 
     ![Proxy konfigurálása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
@@ -147,7 +147,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
     - Azure Backup ezt a helyet használja ideiglenes területként a helyreállított adatmennyiséghez.
     - Az Adathelyreállítás befejezése után Azure Backup törli az ezen a területen található adatvesztést.
-    - A helynek elegendő szabad hellyel kell rendelkeznie ahhoz, hogy a párhuzamosan helyreállítani kívánt elemeket tárolni lehessen.
+    - A helynek elegendő lemezterülettel kell rendelkeznie ahhoz, hogy a helyreállítani kívánt elemeket párhuzamosan lehessen tárolni.
 
     ![Helyreállítási mappa beállítása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
@@ -163,15 +163,15 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
     > Ön rendelkezik a titkosítási jelszóval, és a Microsoft nem rendelkezik a láthatósággal.
     > Ha a jelszó elveszett vagy elfelejtve; A Microsoft nem tud segítséget nyújtani a biztonsági mentési adatgyűjtés helyreállításához.
 
-7. Kattintson a **regisztráció** gombra a DPM-kiszolgáló a tárolóhoz való regisztrálásához.
+7. Válassza a **regisztráció** lehetőséget a DPM-kiszolgáló a tárolóhoz való regisztrálásához.
 
-Miután a kiszolgáló regisztrálása sikeresen megtörtént a tárolóban, és most már készen áll a Microsoft Azurere való biztonsági mentésre. A munkaterhelések Azure-ba történő biztonsági mentéséhez konfigurálnia kell a védelmi csoportot a DPM-konzolon. [További információ](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) a védelmi csoportok üzembe helyezéséről.
+Miután a kiszolgáló regisztrálása sikeresen megtörtént a tárolóban, most már készen áll a Microsoft Azurere való biztonsági mentésre. A munkaterhelések Azure-ba történő biztonsági mentéséhez konfigurálnia kell a védelmi csoportot a DPM-konzolon. [További információ](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) a védelmi csoportok üzembe helyezéséről.
 
 ## <a name="troubleshoot-vault-credentials"></a>Tár hitelesítő adatainak hibakeresése
 
 ### <a name="expiration-error"></a>Lejárati hiba
 
-A tár hitelesítő adatainak fájlja csak 48 órával érvényes (Miután letöltötte a portálról). Ha a képernyőn bármilyen hiba merül fel (például "a tár hitelesítő adatainak megadott fájlja lejárt"), jelentkezzen be a Azure Portalba, és töltse le újra a tároló hitelesítő adatait tartalmazó fájlt.
+A tár hitelesítő adatainak fájlja csak 48 órán át érvényes (Miután letöltötte a portálról). Ha a képernyőn bármilyen hiba fordul elő (például "a tár hitelesítő adatainak megadott fájlja lejárt"), jelentkezzen be a Azure Portalba, majd töltse le újra a tároló hitelesítő adatait tartalmazó fájlt.
 
 ### <a name="access-error"></a>Hozzáférési hiba
 
@@ -179,7 +179,7 @@ Győződjön meg arról, hogy a tár hitelesítő adatainak fájlja olyan helyen
 
 ### <a name="invalid-credentials-error"></a>Érvénytelen hitelesítő adatokkal kapcsolatos hiba
 
-Ha a tár hitelesítő adatai érvénytelenek (például "Érvénytelen tároló hitelesítő adatok"), a fájl vagy sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal.
+Ha a tár hitelesítő adatai érvénytelenek (például "Érvénytelen tároló hitelesítő adatok"), akkor a fájl sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal.
 
 - Próbálja megismételni a műveletet, miután letöltött egy új tároló hitelesítő adatait a portálról.
-- Ez a hiba általában akkor jelenik meg, ha a Azure Portal **Letöltés tároló hitelesítő adatai** lehetőségre kattint kétszer a gyors egymásutánban. Ebben az esetben csak a második tár hitelesítő adatait tartalmazó fájl érvényes.
+- Ez a hiba általában akkor jelenik meg, ha a tároló **hitelesítő adatainak letöltése** lehetőséget választja a Azure Portalban, kétszer a gyors egymásutánban. Ebben az esetben csak a második tár hitelesítő adatait tartalmazó fájl érvényes.

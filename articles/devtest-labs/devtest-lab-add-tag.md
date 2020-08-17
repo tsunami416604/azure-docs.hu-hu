@@ -1,14 +1,14 @@
 ---
 title: Címkék hozzáadása laborhoz a Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá címkét laborhoz Azure DevTest Labs
+description: Megtudhatja, hogyan hozhat létre egyéni címkéket a Azure DevTest Labsban, és hogyan használhat címkéket az erőforrások kategorizálásához. Az előfizetéshez tartozó összes erőforrást megtekintheti a címkével.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287587"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270733"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Címkék hozzáadása laborhoz Azure DevTest Labs
 

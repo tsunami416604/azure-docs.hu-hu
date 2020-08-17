@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84297904"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270665"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -134,7 +134,7 @@ Jelenleg nincs. Ez a funkció az ütemterven található. A tartomány ellenőrz
 
 A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket.
 
-Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
@@ -154,7 +154,7 @@ Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt v
 1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+1. Az **Áttekintés** lapon válassza a **bérlő törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
@@ -166,7 +166,7 @@ Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt v
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
-1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza **az összes alkalmazás megtekintése** lehetőséget
 1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.

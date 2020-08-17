@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c896e617346c9bab598044cedfc475b471466cd0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b89b3e2cf799e1aa182f7005d92e2c91ce4b76ce
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998850"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263078"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel
 
@@ -234,10 +234,10 @@ Start-AzVM `
 Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek felvesznek egyet. 
 
 
-| Energiaállapot | Description
+| Energiaállapot | Leírás
 |----|----|
 | Indítás | A virtuális gép indítása folyamatban van. |
-| Fut | A virtuális gép fut. |
+| Futó | A virtuális gép fut. |
 | Leállítás | A virtuális gép leállítása folyamatban van. |
 | Leállítva | A virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |
 | Felszabadítás | A virtuális gép fel van foglalva. |
@@ -261,6 +261,8 @@ Status
 ------
 PowerState/running
 ```
+
+Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
 
 ## <a name="management-tasks"></a>Felügyeleti feladatok
 

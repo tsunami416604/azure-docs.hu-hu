@@ -1,18 +1,18 @@
 ---
 title: Azure-megerősített | Microsoft Docs
-description: Az Azure Bastion megismerése
+description: Ismerje meg az Azure Bastion-t, amely biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépek számára anélkül, hogy külsőleg RDP/SSH-portokat kellene kitenni.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411102"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270342"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
