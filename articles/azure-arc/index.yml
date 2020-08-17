@@ -7,20 +7,20 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87008489"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212769"
 landingContent:
-- title: Az Azure Arc áttekintése
+- title: Az Azure Arc bemutatása
   linkLists:
   - linkListType: overview
     links:
-    - text: További információ az Azure Arcról
+    - text: Mi az az Azure Arc?
       url: https://aka.ms/Azure-Arc-Info
 - title: Gépek csatlakoztatása az Azure-hoz Azure Arc-kompatibilis kiszolgálókkal
   linkLists:
@@ -30,12 +30,18 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
+    - text: Az Arc-kompatibilis kiszolgálói ügynök engedélyezése
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
+    links:
     - text: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
       url: ./servers/onboard-portal.md
     - text: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
       url: ./servers/onboard-service-principal.md
     - text: Gépek csatlakoztatása az Azure-hoz a PowerShell DSC használatával
       url: ./servers/onboard-dsc.md
+    - text: Azure-beli virtuálisgép-bővítmények kezelése és használata
+      url: ./servers/manage-vm-extensions.md
 - title: Kubernetes-fürtök csatlakoztatása az Azure-hoz az Azure Arc használatával
   linkLists:
   - linkListType: overview

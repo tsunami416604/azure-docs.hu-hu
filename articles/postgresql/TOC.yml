@@ -1,4 +1,4 @@
-- name: Azure DB for PostgreSQL-dokumentáció
+- name: Az Azure Database for PostgreSQL dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: Logikai dekódolás
               href: concepts-logical.md
-        - name: Áthelyezés régiók között
-          items:
-            - name: Azure Portal
-              href: howto-move-regions-portal.md
     - name: Rugalmas skálázás (Citus)
       items:
         - name: Elosztott adatok
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: Olvasási replikák kezelése – Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: Áthelyezés régiók között
+          items:
+            - name: Azure Portal
+              href: howto-move-regions-portal.md
     - name: Rugalmas skálázás (Citus)
       items:
         - name: Felhasználók létrehozása

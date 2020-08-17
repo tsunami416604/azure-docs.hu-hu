@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/17/2020
 ms.locfileid: "83727175"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: a C eszközön lévő alkalmazásokkal való kommunikáció IoT Hub eszköz streamen keresztül (előzetes verzió)
@@ -26,7 +26,7 @@ Az Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azu
 
 * [Kommunikáció a C# eszköz alkalmazásaival IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-csharp.md)
 
-* [Kommunikáció az eszköz alkalmazásaival a Node. js-ben IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-nodejs.md)
+* [Kommunikáció a Node.js eszköz alkalmazásaival IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-nodejs.md)
 
 Az ebben a rövid útmutatóban található eszköz C alkalmazás a következő funkciókkal rendelkezik:
 
@@ -194,13 +194,13 @@ Ahogy azt korábban említettük, a IoT Hub C SDK csak az eszközön található
 
 * [Kommunikáció a C# eszköz alkalmazásával IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-csharp.md)
 
-* [Kommunikáció a Node. js-ben lévő eszköz-alkalmazásokkal IoT Hub eszköz streamek használatával](./quickstart-device-streams-echo-nodejs.md)
+* [Kommunikáció Node.js eszközön IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-nodejs.md)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, az eszközön lévő C-alkalmazás és a szolgáltatás oldalán egy másik alkalmazás között létrehozott egy adatfolyamot, és a stream használatával visszaküldheti az adatátvitelt az alkalmazások között.
 

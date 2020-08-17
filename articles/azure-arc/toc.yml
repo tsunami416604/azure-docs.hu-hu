@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: Rövid útmutatók
   items:
-    - name: A kiszolgálói Arc ügynökének engedélyezése
+    - name: Az Arc-kompatibilis kiszolgálói ügynök engedélyezése
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: Oktatóanyagok
   items:

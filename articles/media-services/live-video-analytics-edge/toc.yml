@@ -30,6 +30,11 @@
       href: event-based-video-recording-tutorial.md
     - name: Többnapos felvételek lejátszása
       href: playback-multi-day-recordings-tutorial.md
+    - name: Élő videó elemzése
+      items:
+        - name: Az OVMS-sel HTTP-bővítményen keresztül
+          displayName: 'intel, OpenVINO'
+          href: use-intel-openvino-tutorial.md
 - name: Példák
   items:
     - name: Az IoT Edge-en futó Live Video Analytics C#-mintái

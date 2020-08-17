@@ -19,15 +19,15 @@
       href: advisor-get-started.md
 - name: Útmutatók
   items:
-    - name: Azure-alkalmazások megbízhatóságának javítása
+    - name: Megbízhatóság
       href: advisor-high-availability-recommendations.md
-    - name: Az erőforrások biztonságosabbá tétele
+    - name: Biztonság
       href: advisor-security-recommendations.md
-    - name: Azure-alkalmazások teljesítményének javítása
+    - name: Teljesítménybeli hatékonyság
       href: advisor-performance-recommendations.md
-    - name: Szolgáltatási díjak csökkentése
+    - name: Költségoptimalizálás
       href: advisor-cost-recommendations.md
-    - name: Működésbeli kiválóság elérése
+    - name: Működésbeli kiválóság
       href: advisor-operational-excellence-recommendations.md
     - name: Javaslatok konfigurálása
       href: view-recommendations.md
@@ -35,6 +35,8 @@
       href: permissions.md
     - name: Riasztások konfigurálása javaslatokhoz
       href: advisor-alerts-portal.md
+    - name: Javaslatok konfigurálásának összegzése
+      href: advisor-recommendations-digest.md
     - name: Tömeges szervizelés javaslatokhoz
       href: advisor-quick-fix.md
     - name: Advisor-adatok az Azure Resource Graph-ban

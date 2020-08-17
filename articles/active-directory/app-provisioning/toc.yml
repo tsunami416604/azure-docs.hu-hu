@@ -57,13 +57,15 @@
           href: export-import-provisioning-configuration.md
     - name: Az alkalmazás üzembe helyezésének hibaelhárítása
       items:
-        - name: Az alkalmazások üzembe helyezésének hibaelhárítása
+        - name: Ismert problémák
+          href: known-issues.md
+        - name: Konfigurációs problémák elhárítása
           href: application-provisioning-config-problem.md
         - name: Karantén állapota
           href: application-provisioning-quarantine-status.md
         - name: Engedélyezési probléma (nem lehet menteni a rendszergazdai hitelesítési adatokat)
           href: application-provisioning-config-problem-storage-limit.md
-        - name: A felhasználók átadása nem történik meg
+        - name: Nem lettek felhasználók átadva
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: Nem a megfelelő felhasználók lettek átadva
           href: application-provisioning-config-problem-wrong-users-provisioned.md

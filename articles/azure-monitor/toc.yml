@@ -494,6 +494,8 @@
               href: platform/alerts-metric.md
             - name: Dinamikus küszöbértékek használata
               href: platform/alerts-dynamic-thresholds.md
+            - name: Egyetlen riasztás számos idősorhoz
+              href: platform/alerts-metric-multiple-time-series-single-rule.md
             - name: Metrikariasztások naplókhoz
               href: platform/alerts-metric-logs.md
             - name: Resource Manager-sablon használata

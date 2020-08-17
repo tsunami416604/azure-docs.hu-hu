@@ -1,4 +1,4 @@
-- name: Azure Data Lake Analytics – dokumentáció
+- name: A Data Lake Analytics dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -32,7 +32,7 @@
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
           href: security-baseline.md
-- name: Útmutató
+- name: Útmutatók
   items:
     - name: A Data Lake Analytics kezelése
       items:

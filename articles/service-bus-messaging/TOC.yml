@@ -44,6 +44,8 @@
           items:
             - name: Azure Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM-sablon
               href: service-bus-resource-manager-namespace-topic.md
         - name: Üzenetek közzététele és feliratkozás rájuk
@@ -62,12 +64,8 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: Oktatóanyagok
   items:
-    - name: Leltárfrissítés - PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: Leltárfrissítés – Portál
+    - name: Leltárfrissítés
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Leltárfrissítés – parancssori felület
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: Reagálás eseményekre az Event Griden keresztül
       href: service-bus-to-event-grid-integration-example.md
 - name: Példák
