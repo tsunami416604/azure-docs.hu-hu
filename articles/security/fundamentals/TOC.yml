@@ -78,12 +78,16 @@
   items:
     - name: Adatbiztonság és titkosítás
       href: encryption-overview.md
+    - name: Dupla titkosítás
+      href: double-encryption.md
     - name: Disk encryption (Lemeztitkosítás)
       items:
         - name: Ajánlott eljárások
           href: data-encryption-best-practices.md
-        - name: Inaktív adatok titkosítása
+        - name: Adat-titkosítás inaktív állapotban
           href: encryption-atrest.md
+        - name: Adattitkosítási modellek
+          href: encryption-models.md
         - name: Azure Disk Encryption virtuális gépekhez
           href: azure-disk-encryption-vms-vmss.md
     - name: Adatbázis-biztonság

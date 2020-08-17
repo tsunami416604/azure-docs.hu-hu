@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190883"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262772"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -100,6 +100,10 @@ Ha módosítja a virtuális gép vagy a virtuálisgép-erőforráscsoport eseté
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>Készíthetek biztonsági mentést vagy visszaállítani a virtuális géphez csatolt szelektív lemezeket?
 
 A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával. További információ: [szelektív lemezek biztonsági mentése és visszaállítása Azure-beli virtuális gépekhez](selective-disk-backup-restore.md).
+
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Megőrzöttek-e a felügyelt identitások, ha a bérlő változása a biztonsági mentés során történik?
+
+Ha a [bérlő megváltozik](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) , le kell tiltania és újra engedélyeznie kell a [felügyelt identitásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , hogy a biztonsági mentések újra működjenek.
 
 ## <a name="restore"></a>Visszaállítás
 

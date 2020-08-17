@@ -62,7 +62,7 @@ Például:
 
 Az *azureuser*használatakor a *servicea szolgáltatásnak* küldött összes kérelem a frissített verzióra lesz irányítva az *azureuser*-ben. A *serviceB* iránti kérés először a *serviceB* *azureuser* -verziójára lesz irányítva. Mivel nem létezik, a rendszer a *serviceB* *alapértelmezett* verziójára irányítja át. Ha a *servicea szolgáltatáshoz* tartozó *azureuser* verziója el lett távolítva, a *servicea* szolgáltatáshoz intézett összes kérelem vissza fog térni a *servicea* *alapértelmezett* verziójának használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtekinteni, hogyan használja az Azure dev Spaces az útválasztást a gyors iteráció és a fejlesztés érdekében, tekintse meg a [helyi folyamat és a Kubernetes működésének][how-it-works-local-process-kubernetes]módját, [a kód távoli hibakeresését az Azure dev Spaces][how-it-works-remote-debugging] [szolgáltatással és a GitHub-műveleteket & Azure Kubernetes szolgáltatást][pr-flow].
 

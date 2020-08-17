@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387948"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261837"
 ---
-# <a name="avs-assessments-in-azure-migrate-server-assessment"></a>AVS-értékelések Azure Migrateban: kiszolgáló értékelése
+# <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure VMware-megoldásba)
 
 [Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és munkaterhelések felderítésének, értékelésének és áttelepítésének nyomon követéséhez. Emellett nyomon követi a privát és a nyilvános Felhőbeli példányokat az Azure-ban. Az elosztó Azure Migrate eszközöket kínál az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatait.
 
@@ -259,6 +259,6 @@ Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésé
 - **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/hybrid-cloud-extension-installation.md).
 - **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy értékelést az [AVS VMWare virtuális gépekhez](how-to-create-azure-vmware-solution-assessment.md).

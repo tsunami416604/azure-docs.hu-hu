@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Kattintson az **Alkalmaz** gombra.
+7. Válassza az **Alkalmaz** lehetőséget.
 
 ## <a name="create-a-functions-app"></a>Functions-alkalmazás létrehozása
 
@@ -118,7 +118,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

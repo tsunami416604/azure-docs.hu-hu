@@ -19,7 +19,7 @@ ms.locfileid: "80876426"
 ### <a name="verify-the-language-detection-container-instance"></a>A Nyelvfelismerés tároló példányának ellenőrzése
 
 1. Válassza az **Áttekintés** lapot, és másolja ki az IP-címet.
-1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be `http://<IP-address>:5000 (http://55.55.55.55:5000`például a következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
+1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be például a `http://<IP-address>:5000 (http://55.55.55.55:5000` következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
 
     ![A tároló kezdőlapjának megtekintése annak ellenőrzéséhez, hogy fut-e](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "80876426"
     }
     ```
 
-1. **ShowStats** beállítása a `true`következőre:.
+1. **ShowStats** beállítása a következőre: `true` .
 
 1. A szöveg hangulatának meghatározásához válassza a **végrehajtás** lehetőséget.
 
@@ -127,4 +127,4 @@ ms.locfileid: "80876426"
     }
     ```
 
-Most már a megfelelő `id`módon összekapcsolhatók a válasz adattartalmának JSON-adatai és az eredeti kérelem adattartalmát tartalmazó dokumentumai. Minden dokumentumot egymástól függetlenül kezelnek, például a `characterCount` és `transactionCount`a különböző statisztikáit. Emellett minden egyes létrejövő dokumentum rendelkezik a `detectedLanguages` ( `name`, `iso6391Name`) és `score` az összes észlelt nyelv tömbével. Ha a rendszer több nyelvet észlel, `score` a a legvalószínűbb nyelv meghatározására szolgál.
+Most már a megfelelő módon összekapcsolhatók a válasz adattartalmának JSON-adatai és az eredeti kérelem adattartalmát tartalmazó dokumentumai `id` . Minden dokumentumot egymástól függetlenül kezelnek, például a és a különböző statisztikáit `characterCount` `transactionCount` . Emellett minden egyes létrejövő dokumentum rendelkezik a `detectedLanguages` `name` `iso6391Name` (,) és az `score` összes észlelt nyelv tömbével. Ha a rendszer több nyelvet észlel, a a `score` legvalószínűbb nyelv meghatározására szolgál.

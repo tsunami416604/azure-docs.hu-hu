@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services Text Analytics erőforrás létrehozása
+title: Cognitive Services Text Analytics-erőforrás létrehozása
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan hozhat létre Cognitive Services Text Analytics erőforrást.
 services: cognitive-services
@@ -16,25 +16,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876422"
 ---
-## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics erőforrás létrehozása
+## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics-erőforrás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza az **erőforrás létrehozása**lehetőséget, majd lépjen az **AI + Machine learning** > **text Analyticsra**.
+1. Válassza az **Erőforrás létrehozása** lehetőséget, majd lépjen a **Mesterséges intelligencia és gépi tanulás** > **Text Analytics** területre.
    Vagy nyissa meg a következőt: [text Analytics létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
 1. Adja meg az összes szükséges beállítást:
 
     |Beállítás|Érték|
     |--|--|
-    |Name (Név)|Adjon meg egy nevet (2-64 karakter).|
+    |Név|Adjon meg egy nevet (2–64 karakter).|
     |Előfizetés|Válassza ki a megfelelő előfizetést.|
     |Hely|Válasszon egy közeli helyet.|
-    |Tarifacsomag| Adja meg az **S**, a standard díjszabási szintet.|
-    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot.|
+    |Tarifacsomag| Adja meg az **S** betűt, amely a standard tarifacsomag jele.|
+    |Erőforráscsoport|Válasszon ki egy elérhető erőforráscsoportot.|
 
-1. Válassza a **Létrehozás**lehetőséget, és várja meg az erőforrás létrehozását. A böngésző automatikusan átirányítja az újonnan létrehozott erőforrás-oldalra.
-1. Gyűjtse össze a `endpoint` konfigurált és egy API-kulcsot:
+1. Válassza a **Létrehozás** lehetőséget, és várjon, amíg az erőforrás létrejön. A böngésző automatikusan átirányítja az újonnan létrehozott erőforrásoldalra.
+1. Gyűjtse össze a konfigurált `endpoint` és egy API-kulcsot:
 
     |Erőforrás lap a portálon|Beállítás|Érték|
     |--|--|--|
-    |**Áttekintés**|Végpont|Másolja a végpontot. A `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`következőhöz hasonlóan jelenik meg:.|
+    |**Áttekintés**|Végpont|Másolja a végpontot. A következőhöz hasonlóan jelenik meg: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0` .|
     |**Kulcsok**|API-kulcs|Másolja a két kulcs egyikét. Ez egy 32 karakterből álló alfanumerikus karakterlánc, szóköz vagy kötőjel nélkül: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|

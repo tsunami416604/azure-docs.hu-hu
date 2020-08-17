@@ -1,14 +1,14 @@
 ---
 title: Offline biztonsági mentés a Data Protection Manager (DPM) és a Microsoft Azure Backup Server (MABS) szolgáltatáshoz – korábbi verziók
-description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
+description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server korábbi verzióihoz tartozó offline biztonsági mentési munkafolyamatot ismerteti.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186945"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261922"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM és Azure Backup Server offline biztonsági mentési munkafolyamata (korábbi verziók)
 
@@ -61,7 +61,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
     | Egyesült Államok | [Hivatkozás](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | Kína | [Hivatkozás](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* A Resource Manager-alapú üzemi modellel rendelkező Azure Storage-fiók olyan előfizetésben lett létrehozva, amelyről letöltötte a közzétételi beállítások fájlját. A Storage-fiókban hozzon létre egy új BLOB-tárolót, amelyet célként kíván használni.
+* A Resource Manager-alapú üzemi modellel rendelkező Azure Storage-fiók olyan előfizetésben lett létrehozva, amelyről letöltötte a közzétételi beállítások fájlját. A Storage-fiókban hozzon létre egy új BLOB-tárolót, amely célként lesz használva.
 
   ![Storage-fiók létrehozása Resource Manager-fejlesztéssel](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
@@ -99,14 +99,14 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 A következő lépésekkel manuálisan feltöltheti az offline biztonsági mentési tanúsítványt egy korábban létrehozott Azure Active Directory alkalmazásba az offline biztonsági mentéshez.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 1. Nyissa meg **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 1. A **tulajdonban lévő alkalmazások** lapon keresse meg a megjelenítendő név formátumot tartalmazó alkalmazást `AzureOfflineBackup _<Azure User Id` .
 
     ![Alkalmazás megkeresése a birtokolt alkalmazások lapon](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
 
 1. Válassza ki az alkalmazást. A bal oldali ablaktábla **kezelés** területén lépjen a **tanúsítványok & Secrets**elemre.
-1. Meglévő tanúsítványok vagy nyilvános kulcsok keresése. Ha nincs, az alkalmazás **Áttekintés** lapján található **Törlés** gombra kattintva biztonságosan törölheti az alkalmazást. Ezután újra elvégezheti a [kiszolgáló előkészítésének lépéseit az offline biztonsági mentési](#prepare-the-server-for-the-offline-backup-process) folyamathoz, és kihagyhatja a következő lépéseket. Ellenkező esetben folytassa a következő lépésekkel a DPM-példány vagy Azure Backup-kiszolgáló, amelyen az offline biztonsági mentést szeretné konfigurálni.
+1. Előzetesen létező tanúsítványok vagy nyilvános kulcsok keresése. Ha nincs, az alkalmazás **Áttekintés** lapján található **Törlés** gombra kattintva biztonságosan törölheti az alkalmazást. Ezután újra elvégezheti a [kiszolgáló előkészítésének lépéseit az offline biztonsági mentési](#prepare-the-server-for-the-offline-backup-process) folyamathoz, és kihagyhatja a következő lépéseket. Ellenkező esetben folytassa a következő lépésekkel a DPM-példány vagy Azure Backup-kiszolgáló, amelyen az offline biztonsági mentést szeretné konfigurálni.
 1. Az **Indítás** – **Futtatás**mezőbe írja be a következőt: *Certlm. msc*. A **tanúsítványok – helyi** számítógép ablakban válassza a **tanúsítványok – helyi számítógép**  >  **személyes** lapja lehetőséget. Keresse meg a tanúsítványt a névvel `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 1. Válassza ki a tanúsítványt, kattintson a jobb gombbal a **minden feladat**elemre, majd válassza az **Exportálás**lehetőséget, titkos kulcs nélkül,. cer formátumban.
 1. Nyissa meg az Azure offline Backup alkalmazást a Azure Portal.

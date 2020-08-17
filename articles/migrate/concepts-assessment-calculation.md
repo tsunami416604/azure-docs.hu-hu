@@ -3,14 +3,14 @@ title: Azure VM-értékelések Azure Migrate Server Assessment-ben
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825990"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261854"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-értékelések Azure Migrateban: kiszolgáló értékelése
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure-beli virtuális gépekre)
 
 Ez a cikk áttekintést nyújt a [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool értékeléséről. Az eszköz képes a helyszíni VMware virtuális gépek, a Hyper-V virtuális gépek és a fizikai kiszolgálók értékelésére az Azure-ba való Migrálás céljából.
 
@@ -122,7 +122,7 @@ Itt található egy Azure-beli virtuális gép értékelése a kiszolgáló ért
 **Teljesítményelőzmények** | Teljesítmény-alapú méretezéssel használatos. A teljesítmény előzményei a teljesítményadatok kiértékeléséhez használt időtartamot határozzák meg.
 **Százalékos kihasználtság** | Teljesítmény-alapú méretezéssel használatos. A percentilis kihasználtsága meghatározza a megadásában használt teljesítmény mintájának százalékos értékét.
 **Virtuálisgép-sorozatok** | A megadásában megfontolni kívánt Azure virtuálisgép-sorozat. Ha például nem rendelkezik olyan éles környezettel, amely az Azure-beli sorozatú virtuális gépeket igényli, kizárhatja a sorozatot a sorozatok listájáról.
-**Kényelmi faktor** | Az értékelés során használt puffer. A rendszer alkalmazza a virtuális gépek processzor-, RAM-, lemez-és hálózati kihasználtsági adataira. A szolgáltatás olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat valószínű növekedése.<br/><br/> A 20%-os kihasználtságú 10 Magos virtuális gép például általában egy kétmagos virtuális gépet eredményez. Az 2,0-es kényelmi faktorral az eredmény egy négy Magos virtuális gép.
+**Kényelmi faktor** | Az értékelés során használt puffer. A rendszer a virtuális gépek processzor-, RAM-, lemez-és hálózati adatmennyiségére alkalmazza. A szolgáltatás olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat valószínű növekedése.<br/><br/> A 20%-os kihasználtságú 10 Magos virtuális gép például általában egy kétmagos virtuális gépet eredményez. Az 2,0-es kényelmi faktorral az eredmény egy négy Magos virtuális gép.
 **Ajánlat** | Az [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/) , amelyben regisztrálva van. A kiszolgáló értékelése alapján megbecsülhető az ajánlat díja.
 **Pénznem** | A fiók számlázási pénzneme.
 **Kedvezmény (%)** | Az Azure-ajánlaton felül kapott előfizetés-specifikus kedvezmények. Az alapértelmezett beállítás 0%.
@@ -151,8 +151,8 @@ Az Azure-beli virtuális gépek felmérése esetén a kiszolgáló értékelése
 Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
-**Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat a komfort tényező alkalmazása nélkül használja. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, a Azure Migrate a lefoglalt magok használatával alkalmazza a komfort tényezőt. | Készen áll, ha a magok száma a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 

@@ -218,7 +218,7 @@ Az alábbi példa a következők 1. verzióját használja `functions-action` :
         app-name: PLEASE_REPLACE_THIS_WITH_YOUR_FUNCTION_APP_NAME
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljes munkafolyamat. YAML fájl megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://aka.ms/functions-actions-samples) tárházában található, a névvel rendelkező fájlok egyikét `functionapp` . Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 

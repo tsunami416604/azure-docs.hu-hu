@@ -19,7 +19,7 @@ ms.locfileid: "80876424"
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>A Kulcsszókeresés tároló példányának ellenőrzése
 
 1. Válassza az **Áttekintés** lapot, és másolja ki az IP-címet.
-1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be `http://<IP-address>:5000 (http://55.55.55.55:5000`például a következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
+1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be például a `http://<IP-address>:5000 (http://55.55.55.55:5000` következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
 
     ![A tároló kezdőlapjának megtekintése annak ellenőrzéséhez, hogy fut-e](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "80876424"
     }
     ```
 
-1. **ShowStats** beállítása a `true`következőre:.
+1. **ShowStats** beállítása a következőre: `true` .
 
 1. A szöveg hangulatának meghatározásához válassza a **végrehajtás** lehetőséget.
 
@@ -100,4 +100,4 @@ ms.locfileid: "80876424"
     }
     ```
 
-Most már összekapcsolhatja a `id` válasz adattartalom JSON-adatainak dokumentumát az eredeti kérelem adattartalma `id`dokumentumával. Az eredményül kapott dokumentum `keyPhrases` egy tömböt tartalmaz, amely a megfelelő bemeneti dokumentumból kinyert legfontosabb kifejezések listáját tartalmazza. Emellett számos statisztika létezik, például a `characterCount` és `transactionCount` az egyes létrejövő dokumentumokhoz.
+Most már összekapcsolhatja a `id` Válasz adattartalom JSON-adatainak dokumentumát az eredeti kérelem adattartalma dokumentumával `id` . Az eredményül kapott dokumentum egy `keyPhrases` tömböt tartalmaz, amely a megfelelő bemeneti dokumentumból kinyert legfontosabb kifejezések listáját tartalmazza. Emellett számos statisztika létezik, például `characterCount` `transactionCount` a és az egyes létrejövő dokumentumokhoz.

@@ -67,7 +67,9 @@
       items:
         - name: Hitelesítés és engedélyezés
           href: time-series-insights-authentication-and-authorization.md
-        - name: Adatok lekérdezése a C# használatával
+        - name: Adatok lekérdezése a C# használatával – Gen2
+          href: time-series-insights-update-query-data-csharp.md
+        - name: Adatok lekérdezése a C# használatával – Gen1
           href: time-series-insights-query-data-csharp.md
         - name: Referenciaadatok kezelése a C#-ban
           href: time-series-insights-manage-reference-data-csharp.md

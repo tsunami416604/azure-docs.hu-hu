@@ -148,6 +148,12 @@
         - name: Hibaelhárítás
           expanded: false
           items:
+            - name: Bejelentkezési hibák elhárítása
+              href: container-registry-troubleshoot-login.md
+            - name: Hálózati problémák elhárítása
+              href: container-registry-troubleshoot-access.md
+            - name: Regisztrációs adatbázis teljesítményproblémáinak elhárítása
+              href: container-registry-troubleshoot-performance.md
             - name: Gyakori problémák észlelése
               href: container-registry-check-health.md
             - name: GYIK

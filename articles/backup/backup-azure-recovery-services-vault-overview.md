@@ -2,19 +2,17 @@
 title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
-ms.date: 08/10/2018
-ms.openlocfilehash: 0e1d061c6baf31fad2e937a604098f0baff6086d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 08/17/2020
+ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041901"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261871"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
 Ez a cikk egy Recovery Services-tároló funkcióit ismerteti. A Recovery Services-tároló egy Azure-beli tárolási entitás, amely az adattárolást. Az adatok általában adatok másolatai, vagy a virtuális gépek (VM), a munkaterhelések, a kiszolgálók és a munkaállomások konfigurációs adatai. Recovery Services-tárolók használatával a különböző Azure-szolgáltatások, például a IaaS-alapú virtuális gépek (Linux vagy Windows) és az Azure SQL Database-adatbázisok biztonsági másolatait is megtarthatja. Recovery Services-tárolók támogatják a System Center DPM, a Windows Servert, a Azure Backup Server és egyebeket. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Recovery Services-tárolók az Azure Azure Resource Manager modelljén alapulnak, amely a következő funkciókat kínálja:
-
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Recovery Services-tárolók és mentési tárolók összehasonlítása
 
 - **Továbbfejlesztett funkciók a biztonsági mentési adatokat biztonságossá tételéhez**: a Recovery Services-tárolók révén a Azure Backup biztonsági funkciókat biztosít a Felhőbeli biztonsági másolatok védelméhez. A biztonsági funkciók biztosítják, hogy biztonságban legyenek a biztonsági másolatok, és biztonságosan helyreállítsák az adatokat, még akkor is, ha a termelési és a biztonsági mentési kiszolgálók biztonsága sérül. [További információ](backup-azure-security-feature.md)
 

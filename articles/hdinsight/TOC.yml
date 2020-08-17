@@ -37,7 +37,7 @@
           href: ./hdinsight-sdk-python-samples.md
         - name: Azure-minták böngészője
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
-    - name: Fogalmak
+    - name: Alapelvek
       items:
         - name: Apache-összetevők a HDInsighton
           href: ./hdinsight-component-versioning.md
@@ -531,6 +531,8 @@
               items:
                 - name: Üres élcsomópontok használata
                   href: ./hdinsight-apps-use-edge-node.md
+                - name: Határcsomópontok használata a HiveServer2 skálázásához
+                  href: ./hdinsight-apps-install-hiveserver2.md
         - name: Hibaelhárítás
           items:
             - name: Gyakori problémák

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236301"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262670"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -32,7 +32,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 3. A biztonsági mentés irányítópult menüjében válassza a **fájl-helyreállítás**lehetőséget.
 
-    ![Fájl helyreállítása gomb](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Fájl helyreállításának kiválasztása](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     Megnyílik a **Fájl-helyreállítási** menü.
 
@@ -42,7 +42,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 5. A fájlok helyreállítási pontról történő másolásához használt szoftver letöltéséhez válassza a **végrehajtható fájl letöltése** (Windows Azure-beli virtuális gépek esetén) vagy a **parancsfájl letöltése** (Linux Azure-beli virtuális gépekhez, a Python-szkriptek létrehozása) lehetőséget.
 
-    ![Generált jelszó](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![Végrehajtható fájl letöltése](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Az Azure letölti a végrehajtható fájlt vagy a parancsfájlt a helyi számítógépre.
 
@@ -56,7 +56,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 7. Győződjön [meg arról, hogy rendelkezik a megfelelő géppel](#selecting-the-right-machine-to-run-the-script) a parancsfájl végrehajtásához. Ha a megfelelő gép ugyanazon a gépen van, ahol letöltötte a parancsfájlt, akkor folytathatja a letöltési szakaszt. A letöltési helyről (általában a *letöltések* mappából) kattintson a jobb gombbal a végrehajtható fájlra vagy a parancsfájlra, és futtassa a rendszergazdai hitelesítő adatokkal. Ha a rendszer kéri, írja be a jelszót, vagy illessze be a jelszót a memóriából, és nyomja le az **ENTER**billentyűt. Az érvényes jelszó megadása után a parancsfájl csatlakozik a helyreállítási ponthoz.
 
-    ![Fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Végrehajtható fájl kimenete](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. Linux rendszerű gépeken Python-szkript jön létre. Az egyiknek le kell töltenie a szkriptet, és át kell másolnia a megfelelő/kompatibilis Linux-kiszolgálóra. Előfordulhat, hogy módosítania kell az engedélyeket a futtatásához ```chmod +x <python file name>``` . Ezután futtassa a Python-fájlt a rel ```./<python file name>``` .
 

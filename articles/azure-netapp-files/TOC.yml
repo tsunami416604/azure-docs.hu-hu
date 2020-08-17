@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: A Windows Virtual Desktop használata az Azure NetApp Fileszal
+              href: solutions-windows-virtual-desktop.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md
 - name: Útmutatók
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: Az NFSv 4.1 alapértelmezett tartományának konfigurálása
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: Az NFSv 4.1 Kerberos-titkosításának konfigurálása
+          href: configure-kerberos-encryption.md
+        - name: NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
+          href: configure-nfs-clients.md
         - name: Exportálási szabályzat konfigurálása NFS-kötethez
           href: azure-netapp-files-configure-export-policy.md
     - name: SMB-kötet létrehozása
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Kettős protokollú kötet létrehozása
+      href: create-volumes-dual-protocol.md
     - name: Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Pillanatképek kezelése
       href: azure-netapp-files-manage-snapshots.md
     - name: A kapacitáskészlet vagy kötet átméretezése
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Kötetek szolgáltatásszintjének dinamikus módosítása
+      href: dynamic-change-volume-service-level.md
     - name: Fejlesztés
       items:
         - name: REST API

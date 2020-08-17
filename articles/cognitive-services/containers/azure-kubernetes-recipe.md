@@ -404,4 +404,4 @@ az group delete --name cogserv-container-rg
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Cognitive Services tárolók](../cognitive-services-container-support.md)
+> [Cognitive Services-tárolók](../cognitive-services-container-support.md)

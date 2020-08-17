@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182943"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261888"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Virtuális gépek életciklusa és állapota
 
@@ -31,7 +31,7 @@ A következő táblázat ismerteti az egyes példányok állapotát, és azt jel
 :::row:::
    :::column span="":::
 
-   **Állapot**
+   **Állam**
    
    :::column-end:::
    :::column span="":::
@@ -232,7 +232,7 @@ Az alábbi átmeneti művelet azt jelzi, hogy a platform elfogadta a felhasznál
 :::row:::
    :::column span="":::
 
-   **Állapot**
+   **Állam**
    
    :::column-end:::
    :::column span="2":::
@@ -424,6 +424,8 @@ Az Azure Resources Explorer egyszerű KEZELŐFELÜLETet biztosít a virtuális g
 
 A kiépítési állapotok a virtuális gép tulajdonságai és a példány nézetében láthatók. A Power állapotok a virtuális gép példány nézetében érhetők el.
 
-## <a name="next-steps"></a>Következő lépések
+Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
+
+## <a name="next-steps"></a>További lépések
 
 További információ a virtuális gép figyeléséről: [Virtual Machines in Azure (virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)).

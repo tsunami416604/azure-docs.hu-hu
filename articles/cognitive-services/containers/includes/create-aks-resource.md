@@ -20,14 +20,14 @@ ms.locfileid: "87298780"
 
 1. Nyissa meg az [Azure Kubernetes szolgáltatást](https://ms.portal.azure.com/#create/microsoft.aks), és válassza a **Létrehozás**lehetőséget.
 
-1. Az **alapvető beállítások** lapon adja meg a következő adatokat:
+1. Az **Alapvető beállítások** lapon adja meg a következőket:
 
     |Beállítás|Érték|
     |--|--|
     |Előfizetés|Válassza ki a megfelelő előfizetést.|
     |Erőforráscsoport|Válasszon ki egy elérhető erőforráscsoportot.|
     |Kubernetes-fürt neve|Adjon meg egy nevet (kisbetűs).|
-    |Régió|Válasszon egy közeli helyet.|
+    |Region|Válasszon egy közeli helyet.|
     |Kubernetes verziója|Bármilyen érték van megjelölve **(alapértelmezett)**.|
     |DNS-név előtagja|A rendszer automatikusan létrehozta, de felülbírálhatja.|
     |Csomópont mérete|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
@@ -40,7 +40,7 @@ ms.locfileid: "87298780"
     |Beállítás|Érték|
     |--|--|
     |HTTP-alkalmazások útválasztása|Nem|
-    |Hálózati konfiguráció|Alapszintű|
+    |Hálózatkezelési konfiguráció|Alapszintű|
 
 1. Az **integrációk** lapon győződjön meg arról, hogy a **tároló figyelése** **engedélyezve**értékre van állítva, és hagyja meg **log Analytics munkaterület** alapértelmezett értékeként.
 1. A **címkék** lapon hagyja üresen a név/érték párokat.

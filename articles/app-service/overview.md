@@ -54,7 +54,7 @@ A Linuxon App Service számos különböző beépített rendszerképet támogat.
 - A Azure Portal csak a Linux-alkalmazásokhoz jelenleg használható funkciókat jeleníti meg. Ha a funkciók engedélyezve vannak, azok aktiválva lesznek a portálon.
 - Beépített rendszerképekre való üzembe helyezéskor a kód és a tartalom a webes tartalomhoz tartozó tárolási kötetet foglal le, amelyet az Azure Storage támogat. A kötet lemezének késése nagyobb és változó, mint a tároló fájlrendszerének késése. Azok az alkalmazások, amelyeknek a tartalomhoz való nagy olvasási hozzáférésre van szükségük, az egyéni tároló lehetőséggel is rendelkezhetnek, amely a tartalom kötetén található fájlokat a tároló fájlrendszerében helyezi el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozza létre első webalkalmazását.
 

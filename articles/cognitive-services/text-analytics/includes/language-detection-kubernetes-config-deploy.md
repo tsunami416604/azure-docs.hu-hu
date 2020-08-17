@@ -37,7 +37,7 @@ ms.locfileid: "80877824"
     ```
 
     > [!WARNING]
-    > Ha több előfizetése is elérhető az Azure-fiókjában, és `az aks get-credentials` a parancs hibával tér vissza, egy gyakori probléma, hogy nem megfelelő előfizetést használ. Állítsa be az Azure CLI-munkamenet kontextusát úgy, hogy ugyanazt az előfizetést használja, mint amelyet az erőforrásokhoz hozott létre, és próbálkozzon újra.
+    > Ha több előfizetése is elérhető az Azure-fiókjában, és a `az aks get-credentials` parancs hibával tér vissza, egy gyakori probléma, hogy nem megfelelő előfizetést használ. Állítsa be az Azure CLI-munkamenet kontextusát úgy, hogy ugyanazt az előfizetést használja, mint amelyet az erőforrásokhoz hozott létre, és próbálkozzon újra.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
@@ -48,7 +48,7 @@ ms.locfileid: "80877824"
     code .
     ```
 
-1. A szövegszerkesztőben hozzon létre egy új, *Language. YAML*nevű fájlt, és illessze be az alábbi YAML. Ügyeljen arra, hogy `billing/value` a `apikey/value` és a saját adatait cserélje le.
+1. A szövegszerkesztőben hozzon létre egy új, *Language. YAML*nevű fájlt, és illessze be az alábbi YAML. Ügyeljen arra, hogy a `billing/value` és a `apikey/value` saját adatait cserélje le.
 
     ```yaml
     apiVersion: apps/v1beta1

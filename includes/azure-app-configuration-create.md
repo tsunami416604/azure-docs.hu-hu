@@ -17,9 +17,9 @@ ms.locfileid: "77619298"
 
 1. Válassza ki az **alkalmazás konfigurációját** a keresési eredmények közül, majd válassza a **Létrehozás**lehetőséget.
 
-    ![Létrehozás kiválasztása](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
+    ![A Létrehozás lehetőség kiválasztása](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
-1. Az **alkalmazás-konfiguráció** > **létrehozása** panelen adja meg a következő beállításokat:
+1. Az **alkalmazás-konfiguráció**  >  **létrehozása** panelen adja meg a következő beállításokat:
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
@@ -27,10 +27,10 @@ ms.locfileid: "77619298"
     | **Előfizetés** | Az Ön előfizetése | Válassza ki az alkalmazás konfigurációjának teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, akkor automatikusan ki van választva, és az **előfizetések** listája nem jelenik meg. |
     | **Erőforráscsoport** | *AppConfigTestResources* | Válasszon ki vagy hozzon létre egy erőforráscsoportot az alkalmazás konfigurációs tárolójának erőforrásához. Ez a csoport akkor lehet hasznos, ha több olyan erőforrást szeretne szervezni, amelyet az erőforráscsoport törlésével egyszerre törölni kíván. További információ: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](/azure/azure-resource-manager/resource-group-overview). |
     | **Hely** | *USA középső régiója* | A **Location (hely** ) használatával adja meg azt a földrajzi helyet, amelyben az alkalmazás konfigurációs tárolója üzemel. A legjobb teljesítmény érdekében hozza létre az erőforrást ugyanabban a régióban, mint az alkalmazás többi összetevőjét. |
-    | **Díjszabási csomag** | *Ingyenes* | Válassza ki a kívánt árképzési szintet. További részletekért tekintse meg az [alkalmazás konfigurációjának díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/app-configuration/).
+    | **Tarifacsomag** | *Ingyenes* | Válassza ki a kívánt árképzési szintet. További részletekért tekintse meg az [alkalmazás konfigurációjának díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/app-configuration/).
 
     ![Alkalmazás-konfigurációs tároló erőforrásának létrehozása](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
 1. Kattintson a **Létrehozás** gombra. Az üzembe helyezés néhány percet is igénybe vehet.
 
-1. Az üzembe helyezés befejeződése után válassza a **Beállítások** > **hozzáférési kulcsok**elemet. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.
+1. Az üzembe helyezés befejeződése után válassza a **Beállítások**  >  **hozzáférési kulcsok**elemet. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.
