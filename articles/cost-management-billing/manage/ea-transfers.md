@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: c49894c722897233afa6325def1d3e17562d2dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075097"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836853"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-átvitelek
 
@@ -98,7 +98,7 @@ Az Azure EA Portalon át lehet adni az előfizetéseket egyik fióktulajdonostó
 
 ## <a name="subscription-transfer-effects"></a>Az előfizetés-áthelyezés hatásai
 
-Ha az Azure-előfizetést ugyanazon Azure AD-bérlő egy másik fiókjába helyezi át, akkor az összes [szerepköralapú hozzáférés-vezérléssel (RBAC)](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév megtartja az erőforrások kezeléséhez való hozzáférését.
+Ha az Azure-előfizetést ugyanazon Azure Active Directory-bérlő egy másik fiókjába helyezi át, akkor az összes [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév megtartja az erőforrások kezeléséhez való hozzáférését.
 
 Az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználók megtekintése:
 

@@ -1,20 +1,20 @@
 ---
 title: Microsoft Azure Data Box Disk visszaküldésével kapcsolatos oktatóanyag | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan küldheti vissza Azure Data Box Diskjét a Microsofthoz.
+description: Ebből az oktatóanyagból megtudhatja, hogyan küldheti vissza az Azure Data Box Disket. A csomagfelvételi utasítások attól függenek, hogy hová küldi vissza az eszközt.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039463"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923781"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 
 1. Használja a kapott visszaküldési címkét, és győződjön meg arról, hogy a TAU-kód (hivatkozási szám) rá van írva. Ha a megadott szállítási címke hiányzik, vagy ha bármilyen más problémája van, küldjön e-mailt a [Data Box ázsiai részlegének](mailto:adbo@microsoft.com). Adja meg a rendelés nevét a tárgy fejlécében, valamint az észlelt probléma részleteit.
 2. Ragassza a címkét a dobozra.
-3. A hivatkozásra kattintva https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference foglaljon egy csomagfelvételt az interneten. 
+3. A https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference hivatkozásra kattintva foglaljon egy csomagfelvételt az interneten.
 
 ### <a name="japan"></a>[Japán](#tab/in-japan)
 
@@ -138,7 +138,7 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
    Ha bármilyen probléma merülne fel, forduljon a Data Box ázsiai részlegéhez a következő címen: adbo@microsoft.com. Adja meg a feladat nevét a tárgy fejlécében, valamint az észlelt problémát.
 
 3. Adja át a csomagot a futárnak.
+
+### <a name="south-africa"></a>[Dél-afrikai Köztársaság](#tab/in-sa)
+
+Végezze el a következő lépéseket, ha a Dél-afrikai Köztársaságba küldi vissza az eszközt.
+
+1. Ragassza a megadott szállítási címkét a dobozra. Ez a címke tartalmazza a nyomkövetési számot. Ha a fuvarlevélcímke hiányzik, az **Áttekintés > Fuvarlevélcímke letöltése** menüponton keresztül tölthet le egy újat.
+
+2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
+
+3. Csomagfelvétel foglalása a DHL-lel:
+
+    * Hívja fel az ügyfélszolgálat kapcsolattartási központját a + 27(0) 11 9213600 számon, válassza az 1. lehetőséget, és adja meg a fuvarlevél számát.
+    * Csomagfelvétel ütemezéséhez dél-afrikai téli idő (ZA) szerint 14 óra előtt telefonáljon.  
+    * A csomagfelvétel megszervezéséhez küldjön e-mailt a [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) címre az alábbi e-mail-sablonnal:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * Másik lehetőségként leadhatja a csomagot a legközelebbi DHL feladási ponton.
+
+4. Ha problémába ütközik, küldjön e-mailt a következő címre: [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a fuvarlevél számát. Felhívhatja a +27(0)119213902 telefonszámot is.
 
 ### <a name="china"></a>[Kína](#tab/in-china)
 
@@ -231,7 +257,3 @@ A következő oktatóanyag a Data Box Diskről az Azure Storage-tárfiókra val�
 > [Az Azure Data Box Diskről végzett adatfeltöltés ellenőrzése](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-
