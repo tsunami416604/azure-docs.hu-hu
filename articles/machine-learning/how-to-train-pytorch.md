@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7f805a702e85b897f9807eb2294e4263a0ea2d8c
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28a2d5c34da9f7996524d29a88c7969adf197b38
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876325"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270648"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>A Pytorch mély tanulási modelljeinek betanítása Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -218,7 +218,7 @@ estimator= PyTorch(source_directory=project_folder,
                       node_count=2,
                       process_count_per_node=1,
                       distributed_training=MpiConfiguration(),
-                      framework_version='1.6',
+                      framework_version='1.4',
                       use_gpu=True)
 ```
 A Horovod és a hozzá tartozó függőségek telepítve lesznek, így a következő módon importálhatja azt a betanítási parancsfájlba `train.py` :
@@ -231,7 +231,7 @@ import horovod
 
 Ha optimalizálni szeretné a következtetést a [ONNX futtatókörnyezettel](concept-onnx.md), alakítsa át a betanított PyTorch modelljét a ONNX formátumba. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. Példaként tekintse meg az [oktatóanyagot](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a PyTorch-on Azure Machine Learning-on keresztül tanult és regisztrált egy mély tanulási és neurális hálózatot. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 

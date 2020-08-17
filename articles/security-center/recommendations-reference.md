@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8038ace4469123e50d98d9296a1aecf0107efbf2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1609fc720474f92b3a3fa8c0631452164a7e4d0f
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262551"
+ms.locfileid: "88272026"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -181,6 +181,7 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |**Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni**|Kevesebb mint három előfizetés-tulajdonost jelölhet ki, hogy csökkentse a feltört tulajdonos általi illetéktelen behatolás lehetőségét.<br>(Kapcsolódó szabályzat: legfeljebb 3 tulajdonost kell kijelölni az előfizetéséhez)|Magas|N|Előfizetés|
 |**A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure Key Vault-tárolón**|Azure Security Center magában foglalja az Azure-natív, komplex veszélyforrások elleni védelmet Azure Key Vault, amely egy további biztonsági intelligenciát biztosít.<br>Fontos: szervizelését ez a javaslat a AKV-tárolók védelmének díját eredményezi. Ha nincs AKV-tárolója ebben az előfizetésben, nem számítunk fel díjat. Ha a későbbiekben bármilyen AKV-tárolót hoz létre ezen az előfizetésen, azok automatikusan védve lesznek, és a díjak ekkor megkezdődik.<br>(Kapcsolódó szabályzat: [a komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)-tárolón)|Magas|**I**|Előfizetés|
 |**A Key Vault lévő diagnosztikai naplókat engedélyezni kell**|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen.<br>(Kapcsolódó szabályzat: a Key Vault diagnosztikai naplóit engedélyezni kell)|Alacsony|**I**|Key Vault|
+|**Az egyszerű szolgáltatásokat a felügyeleti tanúsítványok helyett az előfizetések megóvására kell használni**|A felügyeleti tanúsítványok lehetővé teszik, hogy azok a felhasználók, akikkel hitelesítik magukat, felügyelik a hozzájuk társított előfizetéseket. Ha biztonságosabban szeretné felügyelni az előfizetéseket, az egyszerű szolgáltatásoknak a Resource Managerrel való használatával korlátozni kell a robbanási Sugárt a tanúsítvány veszélyeztetése esetén. Emellett automatizálja az erőforrás-kezelést.|Közepes|Nem|Előfizetés|
 ||||||
 
 

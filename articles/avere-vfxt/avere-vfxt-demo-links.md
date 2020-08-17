@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT az Azure bemutató projektjeihez
-description: hivatkozások a avere-vFXT kapcsolatos kód-bemutató oktatóanyagokra
+description: 'Ezek a minták kulcsfontosságú funkciókat és használati eseteket mutatnak az Azure-hoz készült avere-vFXT: videó megjelenítés, nagy teljesítményű számítástechnika, vFXT teljesítmény és ügyfél-beállítás.'
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153700"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271073"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT bemutató projektek
 
@@ -23,7 +23,7 @@ A [githubon](https://github.com/Azure/Avere)a minta oktatóanyagokat is elérhet
 
 * [Miért érdemes a avere-vFXT használni a rendereléshez?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Olyan bemutató, amely összehasonlítja a hálózati tárolók megjelenítési idejét a avere vFXT-fürttel és anélkül
 
-## <a name="high-performance-computing"></a>Nagy teljesítményű számítástechnika
+## <a name="high-performance-computing"></a>Nagy teljesítményű feldolgozás
 
 * [Ajánlott eljárások az Azure-beli virtuális gépek (VM) rendszerindítási idejének fejlesztéséhez](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – egy reprodukálható teszt, amely az Azure-hoz készült avere-vFXT használja a rendszerindítási idők javítására, amikor gyorsan több ezer számítási ügyfél forog
 

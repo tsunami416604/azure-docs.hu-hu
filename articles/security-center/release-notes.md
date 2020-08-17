@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: caad034c2cc3403bc88ee5f50d101702ec692c35
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192256"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272060"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -31,6 +31,30 @@ Ez az oldal rendszeresen frissül, ezért gyakran újra felkeresik. Ha hat hóna
 
 
 ## <a name="august-2020"></a>Augusztus 2020
+
+Az augusztusi frissítések a következők:
+
+- [Tárgyieszköz-leltár – az eszközök biztonsági helyzetének hatékony új nézete](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [Egyszerű szolgáltatásnév – javaslat hozzáadva](#service-principals-recommendation-added)
+- [Sebezhetőségi felmérés a virtuális gépeken – összevont javaslatok és szabályzatok](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+
+
+### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Tárgyieszköz-leltár – az eszközök biztonsági helyzetének hatékony új nézete
+
+A Security Center az eszköz leltározásával megtekintheti a Security Centerhoz csatlakoztatott erőforrások biztonsági állapotát.
+
+Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására. Ha bármilyen erőforráshoz függőben lévő javaslatok vannak, akkor azok megjelennek a leltárban.
+
+A nézet és a hozzá tartozó szűrők segítségével megvizsgálhatja a biztonsági helyzet adatait, és további műveleteket hajthat végre az eredmények alapján.
+
+További információ az [eszközök leltározásáról](asset-inventory.md).
+
+
+### <a name="service-principals-recommendation-added"></a>Egyszerű szolgáltatásnév – javaslat hozzáadva
+
+Új javaslat a Security Center ügyfelek számára, hogy felügyeleti tanúsítványokat használjanak az előfizetések kezeléséhez.
+
+Az **előfizetések felügyeleti tanúsítványok helyett a szolgáltatással való ellátására szolgáló egyszerű szolgáltatásnév** használatával biztosíthatja, hogy az előfizetések biztonságos kezeléséhez használjon egyszerű szolgáltatásokat vagy Azure Resource Manager. 
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Sebezhetőségi felmérés a virtuális gépeken – összevont javaslatok és szabályzatok
 

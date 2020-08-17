@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071285"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272654"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -42,6 +42,11 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Működik a gazdagép kiszolgálója?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
+
+## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/tartománynév
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A felhőalapú szolgáltatás üzemeltetett neve működik?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices/fiókok
 |Végrehajtott ellenőrzések|

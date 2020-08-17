@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c9f9065fdb2be86438f1517c07de1ce45f5623
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: aea7e18a7ccfb42a3ef641150d74c0ce54eaee04
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187217"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272848"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az iSAMs szolgáltatással
 
@@ -84,13 +84,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.isams.cloud/main/sso/saml2`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.isams.cloud/main/sso/saml2`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.isams.cloud/main/sso/saml2/acs`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.isams.cloud/main/sso/saml2/acs`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.isams.cloud/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.isams.cloud/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek megszerzéséhez forduljon az [isams ügyfél-támogatási csoporthoz](mailto:support@isams.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -147,21 +147,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure-beli egys
 
     ![Konfiguráció](./media/isams-tutorial/configure-isams.png)
 
-    a. A **név** szövegmezőben adjon meg egy érvényes nevet, például:`Saml2 Azure`
+    a. A **név** szövegmezőben adjon meg egy érvényes nevet, például: `Saml2 Azure` . Ez a név fog megjelenni a bejelentkezési oldalon.
 
-    b. A **bejelentkezési URL** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
+    b. A metaadatok URL-címe mezőbe írja be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
+    
+    c. Nyomja le az **Importálás**gombot.
+    
+    d. Az **engedélyezett ügyfélalkalmazások** szakaszban található **alkalmazások** listában válassza ki az összes olyan ISAM-alkalmazást, amelyet a szolgáltatónak meg kíván jeleníteni a bejelentkezési oldalán.
 
-    c. A **kiállító** szövegmezőbe illessze be a Azure Portalból másolt **entitás-azonosító** értékét.
-
-    d. Állítsa a **kényszerített hitelesítést** **hamis** értékre a legördülő listából.
-
-    e. Töltse ki a **User Attribute utasítás** szövegmezőt érvényes felhasználónévvel.
-
-    f. Nyissa meg a letöltött **tanúsítványt** a Azure Portal a Jegyzettömbben, és illessze be a tartalmat a **X509 ujjlenyomat** szövegmezőbe.
-
-    : Állítsa a **célközönség korlátozásának letiltása** **hamis** értékre a legördülő listából.
-
-    h. Kattintson a **mentés & Bezárás**gombra.
+    e. Kattintson a **mentés & Bezárás**gombra.
 
 ### <a name="create-isams-test-user"></a>ISAM-teszt felhasználó létrehozása
 
@@ -186,9 +180,9 @@ Ha a hozzáférési panelen az iSAMs csempére kattint, automatikusan be kell je
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

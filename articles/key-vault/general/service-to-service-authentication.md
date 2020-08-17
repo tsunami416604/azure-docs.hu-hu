@@ -9,17 +9,17 @@ ms.date: 08/08/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d48e9ac71ba12ecd2eaadb8ba333f5440c68af4b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 56ada47e46d788ca77f65e354836e19f4d3969d2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034787"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272756"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
 > [!NOTE]
-> A **Microsoft. Azure. Services. AppAuthentication** már nem ajánlott az új Key Vault SDK-val való használatra. A rendszer felváltotta az új Azure Identity Library **DefaultAzureCredentials** .net-, Java-, írógéppel-és Python-szolgáltatásokhoz, és minden új fejlesztéshez használható. További információt itt talál: [hitelesítés és az Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
+> A **Microsoft. Azure. Services. AppAuthentication** már nem ajánlott az új Key Vault SDK-val való használatra. A rendszer a .NET, a Java, az írógéppel és a Python számára elérhető új Azure Identity Library **DefaultAzureCredentials** váltja fel, és minden új fejlesztéshez használható. További információt itt talál: [hitelesítés és az Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
 
 A Azure Key Vault való hitelesítéshez szüksége van egy Azure Active Directory (Azure AD) hitelesítő adatra, vagy egy közös titkos kulcsra vagy egy tanúsítványra.
 
@@ -92,7 +92,7 @@ Az Azure CLI használata:
 
 1. A hozzáférés ellenőrzéséhez írja be *az az Account Get-Access-Token--Resource https: \/ /Vault.Azure.net*értéket. Ha hibaüzenetet kap, ellenőrizze, hogy megfelelően van-e telepítve az Azure CLI megfelelő verziója.
 
-   Ha az Azure CLI nem az alapértelmezett könyvtárba van telepítve, akkor előfordulhat, hogy a hibajelentés `AzureServiceTokenProvider` nem találja az Azure CLI elérési útját. Az Azure CLI telepítési mappájának definiálásához használja a **AzureCLIPath** környezeti változót. `AzureServiceTokenProvider`szükség esetén hozzáadja a **AzureCLIPath** környezeti változóban megadott könyvtárat a **path** környezeti változóhoz.
+   Ha az Azure CLI nem az alapértelmezett könyvtárba van telepítve, akkor előfordulhat, hogy a hibajelentés `AzureServiceTokenProvider` nem találja az Azure CLI elérési útját. Az Azure CLI telepítési mappájának definiálásához használja a **AzureCLIPath** környezeti változót. `AzureServiceTokenProvider` szükség esetén hozzáadja a **AzureCLIPath** környezeti változóban megadott könyvtárat a **path** környezeti változóhoz.
 
 1. Ha több fiókkal jelentkezett be az Azure CLI-be, vagy a fiókja több előfizetéshez is hozzáfér, meg kell adnia a használni kívánt előfizetést. Írja be az az *Account set--előfizetés <előfizetés-azonosító>* parancsot.
 
@@ -190,7 +190,7 @@ Az alkalmazás futtatásához három elsődleges módszer használható egyszer�
 
 1. Futtassa az alkalmazást.
 
-Ha minden megfelelően be van állítva, nincs szükség további kód módosítására. `AzureServiceTokenProvider`a környezeti változót és a tanúsítványt használja az Azure AD-ben való hitelesítéshez.
+Ha minden megfelelően be van állítva, nincs szükség további kód módosítására. `AzureServiceTokenProvider` a környezeti változót és a tanúsítványt használja az Azure AD-ben való hitelesítéshez.
 
 ### <a name="use-a-certificate-in-key-vault-to-sign-into-azure-ad"></a>Key Vault-tanúsítvány használata az Azure AD-ba való bejelentkezéshez
 
@@ -210,7 +210,7 @@ A felügyelt identitásnak vagy a fejlesztői identitásnak engedéllyel kell re
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
     ```
 
-    A tanúsítvány azonosítója egy URL-cím lesz a formátumban`https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
+    A tanúsítvány azonosítója egy URL-cím lesz a formátumban `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
 
 1. Cserélje le a `{KeyVaultCertificateSecretIdentifier}` karakterláncot a következő azonosítójú tanúsítványra:
 
@@ -235,17 +235,17 @@ Alapértelmezés szerint `AzureServiceTokenProvider` a a következő hitelesít�
 
 A folyamat szabályozásához használjon a konstruktornak átadott, `AzureServiceTokenProvider` vagy a *AzureServicesAuthConnectionString* környezeti változóban megadott kapcsolatot megadó karakterláncot.  A következő lehetőségek támogatottak:
 
-| A kapcsolatok karakterláncának beállítása | Eset | Megjegyzések|
+| A kapcsolatok karakterláncának beállítása | Forgatókönyv | Megjegyzések|
 |:--------------------------------|:------------------------|:----------------------------|
-| `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | `AzureServiceTokenProvider`a AzureCli használatával kérdezi le a tokent. |
-| `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | `AzureServiceTokenProvider`a Visual studiót használja a jogkivonat lekéréséhez. |
-| `RunAs=CurrentUser` | Helyi fejlesztés | A .NET Core-ban nem támogatott. `AzureServiceTokenProvider`Az Azure AD integrált hitelesítést használ a token beszerzéséhez. |
-| `RunAs=App` | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`felügyelt identitást használ a jogkivonat lekéréséhez. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`felhasználó által hozzárendelt identitást használ a jogkivonat lekéréséhez. |
-| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Egyéni szolgáltatások hitelesítése | `KeyVaultCertificateSecretIdentifier`a tanúsítvány titkos azonosítója. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Szolgáltatásnév | `AzureServiceTokenProvider`tanúsítvány használatával szerez tokent az Azure AD-ből. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider`tanúsítvány használatával szerez tokent az Azure AD-ből|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Szolgáltatásnév |`AzureServiceTokenProvider`a Secret használatával szerez tokent az Azure AD-ből. |
+| `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | `AzureServiceTokenProvider` a AzureCli használatával kérdezi le a tokent. |
+| `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | `AzureServiceTokenProvider` a Visual studiót használja a jogkivonat lekéréséhez. |
+| `RunAs=CurrentUser` | Helyi fejlesztés | A .NET Core-ban nem támogatott. `AzureServiceTokenProvider` Az Azure AD integrált hitelesítést használ a token beszerzéséhez. |
+| `RunAs=App` | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` felügyelt identitást használ a jogkivonat lekéréséhez. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider` felhasználó által hozzárendelt identitást használ a jogkivonat lekéréséhez. |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Egyéni szolgáltatások hitelesítése | `KeyVaultCertificateSecretIdentifier` a tanúsítvány titkos azonosítója. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Szolgáltatásnév | `AzureServiceTokenProvider` tanúsítvány használatával szerez tokent az Azure AD-ből. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider` tanúsítvány használatával szerez tokent az Azure AD-ből|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Szolgáltatásnév |`AzureServiceTokenProvider` a Secret használatával szerez tokent az Azure AD-ből. |
 
 ## <a name="samples"></a>Példák
 

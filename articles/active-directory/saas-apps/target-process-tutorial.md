@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78c702f5ea4ae403c4183a1cc311aaed94eb0c7d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089044"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Oktatóanyag: Azure Active Directory integráció a TargetProcess
 
@@ -32,7 +32,7 @@ A TargetProcess és az Azure AD integrálásával a következő előnyöket nyú
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +70,7 @@ A TargetProcess Azure AD-be való integrálásának konfigurálásához hozzá k
 
      ![TargetProcess az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TargetProcess-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TargetProcess kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
@@ -106,9 +106,9 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
     ![TargetProcess tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.tpondemand.com/`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.tpondemand.com/`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.tpondemand.com/`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a TargetProcess ügyfélszolgálati [csapatához](mailto:support@targetprocess.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -133,25 +133,27 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés TargetProcess** gombra a TargetProcess alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a TargetProcess való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés TargetProcess** gombra a TargetProcess alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a TargetProcess való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
     **Ha az alkalmazást manuálisan szeretné konfigurálni, hajtsa végre a következő lépéseket:**
 
-3. Jelentkezzen be rendszergazdaként a TargetProcess alkalmazásba.
+1. Jelentkezzen be rendszergazdaként a TargetProcess alkalmazásba.
 
-4. A felső menüben kattintson a **telepítés**elemre.
+1. A felső menüben kattintson a **telepítés**elemre.
 
     ![Telepítés](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. Kattintson a **Beállítások** fülre.
+1. Kattintson a **Beállítások** fülre.
 
     ![Beállítások](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. Kattintson az **egyszeri bejelentkezés** fülre.
+1. Kattintson az **egyszeri bejelentkezés** fülre.
 
     ![kattintson az egyszeri bejelentkezés elemre.](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-7. Az egyszeri bejelentkezés beállításai párbeszédpanelen hajtsa végre a következő lépéseket:
+1. Az egyszeri bejelentkezés beállításai párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/target-process-tutorial/tutorial_target_process_08.png)
 
@@ -163,7 +165,7 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
     d. kattintson az **JIT-kiépítés engedélyezése**lehetőségre.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -183,12 +185,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

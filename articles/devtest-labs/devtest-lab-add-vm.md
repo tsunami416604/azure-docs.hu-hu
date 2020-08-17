@@ -1,14 +1,14 @@
 ---
 title: Virtuális gép hozzáadása laborhoz Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá virtuális gépeket laborhoz Azure DevTest Labs
+description: Megtudhatja, hogyan adhat hozzá egy virtuális gépet a Azure DevTest Labshoz a Azure Portal használatával. Kiválaszthat egy olyan alapot, amely vagy egyéni rendszerkép vagy képlet.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a872fdaa3d7d5b2cf5aff17ea15d07604dc287b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483958"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270716"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása laborhoz Azure DevTest Labs
 Ha már [létrehozta az első virtuális gépet](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), akkor valószínű, hogy egy előre betöltött [Piactéri rendszerképből](devtest-lab-configure-marketplace-images.md)származik. Most, ha további virtuális gépeket szeretne hozzáadni a laborhoz, kiválaszthat egy [Egyéni rendszerképet](devtest-lab-create-template.md) vagy egy [képletet](devtest-lab-manage-formulas.md)tartalmazó *alapot* is. Ez az oktatóanyag végigvezeti a virtuális gép DevTest Labs-beli laborban való hozzáadásának Azure Portal használatával.

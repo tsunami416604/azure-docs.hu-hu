@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 718f4c0b41400ae2e35b88820b2d4154dab23111
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610080"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272824"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
 
@@ -219,19 +219,19 @@ Egy egyszerű parancssori segédprogramot tartalmazott egy Avro-fájl olvasásá
    }
    ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy vizsgálja meg a teljes körű oktatóanyag által használt erőforrásokat, várjon, amíg meg nem történik a létrehozott erőforrások tisztítása. Ellenkező esetben a következő lépésekkel törölheti őket:
 
 1. Törölje a fejlesztői virtuális gép tárolására létrehozott erőforráscsoportot (ka) t, IoT Edge VM, IoT Hub, Storage-fiók, Machine learning Workspace szolgáltatás (és létrehozott erőforrások: tároló-beállításjegyzék, Application Insights, kulcstartó, Storage-fiók).
 
-1. Törölje a Machine learning-projektet az [Azure jegyzetfüzetek](https://notebooks.azure.com)szolgáltatásban.
+1. Törölje a Machine learning-projektet [Azure Notebooksban](https://notebooks.azure.com).
 
 1. Ha helyileg klónozotta a tárházat, akkor a helyi tárházra hivatkozó PowerShell-vagy VS Code-alapú Windows-t zárjuk le, majd töröljük a tárház könyvtárat.
 
 1. Ha helyileg hozott létre tanúsítványokat, törölje a c: \\ edgeCertificates mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben azt használtuk, hogy fejlesztési virtuális gépe szimulálja az érzékelőt és a működési adatokat a IoT Edge eszközre küldött levélben. A rendszer ellenőrizte, hogy az eszköz moduljai a peremhálózati eszköz valós idejű működésének vizsgálatával és a Storage-fiókba feltöltött fájlok megtekintésével irányították, besorolták, megtartották és feltöltötték az adatforrásokat.
 

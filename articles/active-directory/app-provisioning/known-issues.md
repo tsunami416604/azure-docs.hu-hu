@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 08/12/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 127629cb0102c2736995364db9202cd837d99a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214280"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271005"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 
@@ -66,9 +66,11 @@ Az attribútum-hozzárendelési kifejezések legfeljebb 10 000 karakterből áll
 - A beágyazott csoportok kiépítés nem támogatott. 
 - A B2C-bérlők kiépítés a bérlők mérete miatt nem támogatott. 
 
+**A kiépítési intervallum rögzített** A kiépítési ciklusok közötti [idő](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) jelenleg nem konfigurálható. 
+
 **A cél alkalmazásból az Azure AD-be való áttérés nem változik**
 
-Az alkalmazás-kiépítési szolgáltatás nem ismeri a külső alkalmazásokban végrehajtott módosításokat. Így nem kerül sor a visszaállításra. Az alkalmazás-kiépítési szolgáltatás az Azure AD-ben végrehajtott módosításokra támaszkodik.  
+Az alkalmazás-kiépítési szolgáltatás nem ismeri a külső alkalmazásokban végrehajtott módosításokat. Így nem kerül sor a visszaállításra. Az alkalmazás-kiépítési szolgáltatás az Azure AD-ben végrehajtott módosításokra támaszkodik. 
 
 **A kiépítési ciklus a befejezésig folytatódik**
 
@@ -79,5 +81,5 @@ A kiépítés `enabled = off` vagy a Leállítás megszakadása esetén az aktu�
 Ha egy csoport hatókörben van, és egy tag kívül esik a hatókörön, a rendszer kiépíti a csoportot. A hatókörön kívüli felhasználó nem lesz kiépítve. Ha a tag visszatér a hatókörbe, a szolgáltatás nem ismeri fel azonnal a változást. A kiépítés újraindítása a probléma megoldásához vezet. Javasoljuk, hogy a szolgáltatás rendszeres újraindítása után ellenőrizze, hogy az összes felhasználó megfelelően van-e kiépítve.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az üzembe helyezés menete](how-provisioning-works.md)

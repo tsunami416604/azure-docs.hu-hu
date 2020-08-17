@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080728"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271022"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -77,7 +77,7 @@ A App Service beépített jogkivonat-tárolót biztosít, amely a webalkalmazás
 
 Az azonosító tokenek, a hozzáférési tokenek és a frissítési tokenek gyorsítótárazva vannak a hitelesített munkamenet számára, és csak a hozzárendelt felhasználó férhetnek hozzájuk.  
 
-Ha nem kell jogkivonatokkal dolgoznia az alkalmazásban, akkor letilthatja a jogkivonat-tárolót.
+Ha nem kell jogkivonatokkal dolgoznia az alkalmazásban, akkor letilthatja a jogkivonat-tárolót az alkalmazás **hitelesítés/engedélyezés** lapján.
 
 ### <a name="logging-and-tracing"></a>Naplózás és nyomkövetés
 

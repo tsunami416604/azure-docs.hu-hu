@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 816315ee97ac51d40bd5787cc58ef601160ba157
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905006"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Oktatóanyag: Azure Active Directory integráció a ArcGIS Enterprise-nal
 
@@ -48,8 +47,6 @@ Az Azure AD-integráció ArcGIS Enterprise-nal való konfigurálásához a köve
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
-
-
 
 * A ArcGIS Enterprise támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 * A ArcGIS Enterprise **csak időben támogatja a** felhasználók üzembe helyezését
@@ -113,15 +110,15 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![ArcGIS vállalati tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`<EXTERNAL_DNS_NAME>.portal`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `<EXTERNAL_DNS_NAME>.portal`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
     c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![ArcGIS vállalati tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [ArcGIS Enterprise ügyfél-támogatási csapatával](mailto:support@esri.com) . Ekkor megjelenik az azonosító érték az **Identity Provider beállítása szakaszban**, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -132,21 +129,30 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>ArcGIS vállalati egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a ArcGIS Enterprise vállalati webhelyre rendszergazdaként.
+1. A ArcGIS Enterprise-on belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-2. Válassza a **szervezet >beállítások szerkesztése**lehetőséget.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **ArcGIS Enterprise beállítása** elemre, és a ArcGIS Enterprise alkalmazásra irányítja. A ArcGIS Enterprise-ba való bejelentkezéshez adja meg a rendszergazdai hitelesítő adatokat. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a ArcGIS Enterprise-t, jelentkezzen be a ArcGIS Enterprise vállalati webhelyre rendszergazdaként.
+
+
+1. Válassza a **szervezet >beállítások szerkesztése**lehetőséget.
 
     ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. Válassza a **Biztonság** fület.
+1. Válassza a **Biztonság** fület.
 
     ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. Görgessen le a **vállalati bejelentkezések SAML használatával** szakaszban, és válassza a **vállalati bejelentkezés beállítása**lehetőséget.
+1. Görgessen le a **vállalati bejelentkezések SAML használatával** szakaszban, és válassza a **vállalati bejelentkezés beállítása**lehetőséget.
 
     ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. Az **identitás-szolgáltató beállítása** szakaszban hajtsa végre a következő lépéseket:
+1. Az **identitás-szolgáltató beállítása** szakaszban hajtsa végre a következő lépéseket:
 
     ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure4.png)
 
@@ -183,7 +189,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

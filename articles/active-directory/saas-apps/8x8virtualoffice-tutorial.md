@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36e29ebbdc4207c0cfe3a9967d433c6595d3fdc1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018612"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 8x8
 
@@ -48,7 +48,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * a 8x8 támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-* A 8x8 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A 8x8 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
@@ -64,7 +64,7 @@ A 8x8 Azure AD-be való integrálásának konfigurálásához hozzá kell adnia 
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **8x8** kifejezést a keresőmezőbe.
 1. Válassza ki a **8x8** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a 8x8
+## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>Azure AD SSO konfigurálása és tesztelése a 8x8-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a 8x8 a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a 8x8-ben.
 
@@ -89,9 +89,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://sso.8x8.com/saml2`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://sso.8x8.com/saml2`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:`https://sso.8x8.com/saml2`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet: `https://sso.8x8.com/saml2`
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre. A tanúsítványt később a **8X8 SSO konfigurálása** szakaszban található oktatóanyagban fogja használni.
 
@@ -111,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -139,7 +139,15 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
 ### <a name="configure-8x8-configuration-manager"></a>8x8 Configuration Manager konfigurálása
 
-1. Jelentkezzen be a 8x8 [Configuration Managerba](https://vo-cm.8x8.com/).
+1. A 8x8 belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **8X8 beállítása** elemre, majd a 8x8 alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a 8x8 való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a 8x8, jelentkezzen be a 8x8 [Configuration Manager](https://vo-cm.8x8.com/) rendszergazdaként.
 
 1. A kezdőlapon kattintson az **Identitáskezelés**elemre.
 
@@ -213,9 +221,9 @@ Ha a hozzáférési panelen a 8x8 csempére kattint, automatikusan be kell jelen
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

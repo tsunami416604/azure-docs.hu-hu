@@ -1,6 +1,6 @@
 ---
 title: Azure Network Watcher-példány létrehozása | Microsoft Docs
-description: Megtudhatja, hogyan engedélyezheti a Network Watchert egy Azure-régióban.
+description: Ismerje meg, hogyan hozhat létre Azure-Network Watcher egy Azure-régióban az Azure Portal vagy más technológiák használatával, valamint a Network Watcher törlésének módját.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846853"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272161"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher-példány létrehozása
 
@@ -125,7 +125,7 @@ New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWa
 Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy Network Watcher egy példánya van, ismerkedjen meg az elérhető funkciókkal:
 

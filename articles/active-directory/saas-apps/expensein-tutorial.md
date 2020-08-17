@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 210fc244aebf0b13a996df69e2cf84763a9adf9e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017516"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272900"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Oktatóanyag: a ExpenseIn és a Azure Active Directory integrálása
 
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.expensein.com/saml`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.expensein.com/saml`
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához, majd kattintson a **Letöltés** gombra a **tanúsítvány** letöltéséhez, és mentse a számítógépre.
 
@@ -104,7 +104,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -127,7 +127,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-expensein-sso"></a>ExpenseIn SSO konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a ExpenseIn vállalati webhelyre rendszergazdaként.
+1. A ExpenseIn belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **ExpenseIn beállítása** elemre, majd a ExpenseIn alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a ExpenseIn való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a ExpenseIn, jelentkezzen be a ExpenseIn vállalati webhelyre rendszergazdaként.
 
 1. Kattintson a **rendszergazda** elemre az oldal tetején, majd navigáljon az **egyszeri bejelentkezéshez** , és kattintson a **szolgáltató hozzáadása**parancsra.
 
@@ -147,7 +155,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. Nyissa meg a tanúsítványt (Base64) a Jegyzettömbben, másolja ki a tartalmát, és illessze be a **tanúsítvány** szövegmezőbe.
 
-    f. Kattintson a **Létrehozás** lehetőségre.
+    f. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-expensein-test-user"></a>ExpenseIn-tesztelési felhasználó létrehozása
 
@@ -171,7 +179,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ex
 
     c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `B.Simon@contoso.com` .
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

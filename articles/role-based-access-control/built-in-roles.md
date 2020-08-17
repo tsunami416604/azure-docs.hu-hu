@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448896"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271991"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -30,9 +30,9 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | Beépített szerepkör | Leírás | ID |
 > | --- | --- | --- |
 > | **Általános** |  |  |
-> | [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [Tulajdonos](#owner) | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [Olvasó](#reader) | Lehetővé teszi, hogy mindent megtekintse, de ne végezzen módosításokat. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [Közreműködő](#contributor) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ben. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Tulajdonos](#owner) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, beleértve a szerepkörök hozzárendelésének lehetőségét az Azure RBAC. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Olvasó](#reader) | Megtekintheti az összes erőforrást, de nem teszi lehetővé a módosítások elvégzését. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Felhasználói hozzáférés adminisztrátora](#user-access-administrator) | Lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Számítás** |  |  |
 > | [Klasszikus virtuális gép közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a klasszikus virtuális gépek kezelését, de nem fér hozzájuk, nem pedig a virtuális hálózati vagy a Storage-fiókhoz, amelyhez csatlakoznak. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
@@ -49,7 +49,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [saját DNS zóna közreműködője](#private-dns-zone-contributor) | Lehetővé teszi a saját DNS-zóna erőforrásainak kezelését, de nem azokhoz a virtuális hálózatokhoz, amelyekre hozzá vannak kapcsolva. | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [Traffic Manager közreműködő](#traffic-manager-contributor) | Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozását. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **Storage-fiók** |  |  |
+> | **Storage** |  |  |
 > | [Avere közreműködője](#avere-contributor) | Létrehozhat és kezelhet egy avere vFXT-fürtöt. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere operátor](#avere-operator) | A avere vFXT-fürt által használt fürt kezelése | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a Backup szolgáltatás kezelését, de nem hozhat létre tárolókat, és hozzáférést biztosíthat másoknak | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -63,7 +63,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Olvasó és adathozzáférés](#reader-and-data-access) | Lehetővé teszi az összes megtekintését, de nem engedélyezheti a Storage-fiók vagy a tárolt erőforrás törlését vagy létrehozását. Az olvasási/írási hozzáférést is lehetővé teszi a Storage-fiókban található összes, a Storage-fiók kulcsaihoz való hozzáférés útján. | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Tárfiók-közreműködő](#storage-account-contributor) | Engedélyezi a Storage-fiókok kezelését. Hozzáférést biztosít a fiók kulcsaként, amely a megosztott kulcsos hitelesítésen keresztüli hozzáféréshez használható. | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [A Storage-fiók kulcs-kezelő szolgáltatásának szerepköre](#storage-account-key-operator-service-role) | Engedélyezi a Storage-fiók hozzáférési kulcsainak listázását és újragenerálását. | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [Storage blob adatközreműködői](#storage-blob-data-contributor) | Azure Storage-tárolók és-Blobok olvasása, írása és törlése. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [Storage-blobadatok közreműködője](#storage-blob-data-contributor) | Azure Storage-tárolók és-Blobok olvasása, írása és törlése. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | [Storage blob-adattulajdonos](#storage-blob-data-owner) | Teljes hozzáférést biztosít az Azure Storage blob-tárolók és-adatkészletekhez, beleértve a POSIX hozzáférés-vezérlés hozzárendelését. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Storage blob-Adatolvasó](#storage-blob-data-reader) | Azure Storage-tárolók és-Blobok olvasása és listázása. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Storage blob-delegáló](#storage-blob-delegator) | Felhasználói delegálási kulcs beszerzése, amely az Azure AD-beli hitelesítő adatokkal aláírt tárolók vagy Blobok közös hozzáférési aláírásának létrehozásához használható. További információt a [felhasználói delegálási sas létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)című témakörben talál. | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
@@ -161,7 +161,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | **DevOps** |  |  |
 > | [DevTest Labs-felhasználó](#devtest-labs-user) | Lehetővé teszi a virtuális gépek a Azure DevTest Labs való összekapcsolását, indítását, újraindítását és leállítását. | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [Tesztkörnyezet létrehozója](#lab-creator) | Lehetővé teszi, hogy új laborokat hozzon létre az Azure Lab-fiókjaiban. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
-> | **Figyelő** |  |  |
+> | **Figyelés** |  |  |
 > | [Application Insights összetevő közreműködője](#application-insights-component-contributor) | Felügyelheti Application Insights összetevőket | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Felhasználói jogosultságot biztosít a Application Insights Snapshot Debugger gyűjtött hibakeresési Pillanatképek megtekintéséhez és letöltéséhez. Vegye figyelembe, hogy ezek az engedélyek nem szerepelnek a [tulajdonos](#owner) vagy a [közreműködő](#contributor) szerepkörben. Ha a felhasználók számára a Application Insights Snapshot Debugger szerepkört adja meg, közvetlenül a felhasználónak kell megadnia a szerepkört. A szerepkör nem ismerhető fel, ha hozzá van adva egy egyéni szerepkörhöz. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Közreműködő figyelése](#monitoring-contributor) | Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
@@ -202,12 +202,12 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 
 ### <a name="contributor"></a>Közreműködő
 
-Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. [További információ](rbac-and-directory-admin-roles.md)
+Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ben. [További információ](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -229,7 +229,7 @@ Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz va
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything except access to resources.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -256,7 +256,7 @@ Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz va
 
 ### <a name="owner"></a>Tulajdonos
 
-Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. [További információ](rbac-and-directory-admin-roles.md)
+Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, beleértve a szerepkörök hozzárendelésének lehetőségét az Azure RBAC. [További információ](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -274,7 +274,7 @@ Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything, including access to resources.",
+  "description": "Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "permissions": [
@@ -295,7 +295,7 @@ Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz
 
 ### <a name="reader"></a>Olvasó
 
-Lehetővé teszi, hogy mindent megtekintse, de ne végezzen módosításokat. [További információ](rbac-and-directory-admin-roles.md)
+Megtekintheti az összes erőforrást, de nem teszi lehetővé a módosítások elvégzését. [További információ](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -313,7 +313,7 @@ Lehetővé teszi, hogy mindent megtekintse, de ne végezzen módosításokat. [T
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view everything, but not make any changes.",
+  "description": "View all resources, but does not allow you to make any changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "permissions": [
@@ -1144,7 +1144,7 @@ Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 
 ### <a name="avere-contributor"></a>Avere közreműködője
@@ -2094,7 +2094,7 @@ Engedélyezi a Storage-fiók hozzáférési kulcsainak listázását és újrage
 }
 ```
 
-### <a name="storage-blob-data-contributor"></a>Storage blob adatközreműködői
+### <a name="storage-blob-data-contributor"></a>Storage-blobadatok közreműködője
 
 Azure Storage-tárolók és-Blobok olvasása, írása és törlése. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [További információ](../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -3026,6 +3026,7 @@ A fürt rendszergazdai hitelesítő adatainak listázása művelet. [További in
 > | --- | --- |
 > | [Microsoft. tárolószolgáltatás](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/Action | Felügyelt fürt clusterAdmin hitelesítő adatainak listázása |
 > | [Microsoft. tárolószolgáltatás](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/Action | Felügyelt fürt hozzáférési profiljának beolvasása szerepkör neve alapján a lista hitelesítő adataival |
+> | [Microsoft. tárolószolgáltatás](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/READ | Felügyelt fürt beszerzése |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -3045,7 +3046,8 @@ A fürt rendszergazdai hitelesítő adatainak listázása művelet. [További in
     {
       "actions": [
         "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
-        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action"
+        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3066,6 +3068,7 @@ Fürt felhasználói hitelesítő adatainak listázása. [További információ]
 > | Műveletek | Leírás |
 > | --- | --- |
 > | [Microsoft. tárolószolgáltatás](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | Felügyelt fürt clusterUser hitelesítő adatainak listázása |
+> | [Microsoft. tárolószolgáltatás](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/READ | Felügyelt fürt beszerzése |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -3084,7 +3087,8 @@ Fürt felhasználói hitelesítő adatainak listázása. [További információ]
   "permissions": [
     {
       "actions": [
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6811,6 +6815,8 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/AlertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/Components/* | Az adatáttekintési összetevők létrehozása és kezelése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Létrehozza, frissíti vagy beolvassa a Analysis Server diagnosztikai beállításait. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/eventtypes/* | Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. A műveletnapló kategóriáinak listázása a tevékenység naplójában. |
@@ -6860,6 +6866,8 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionRules/*",
+        "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
         "Microsoft.Insights/eventtypes/*",
         "Microsoft.Insights/LogDefinitions/*",

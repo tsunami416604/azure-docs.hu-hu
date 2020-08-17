@@ -1,17 +1,17 @@
 ---
 title: Az Azure Key Vault integrálása a Kubernetesszel
 description: Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el, és beolvashatja az Kubernetes hüvelybe való csatlakoztatáshoz a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával.
-author: taytran0
-ms.author: t-trtr
+author: rkarlin
+ms.author: rkarlin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: faf57771bceb1e107a200a508c7abcfc81328f62
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901997"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272671"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -339,7 +339,7 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]

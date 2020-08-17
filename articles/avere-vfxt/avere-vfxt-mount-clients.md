@@ -1,17 +1,17 @@
 ---
 title: A avere-vFXT csatlakoztatása – Azure
-description: Ügyfelek csatlakoztatása az Azure-hoz készült avere vFXT
+description: Megtudhatja, hogyan csatlakoztathatja az ügyfeleket a vFXT-fürthöz az Azure avere-vFXT, és hogyan lehet terheléselosztást létesíteni a fürtcsomópontok között.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229567"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272571"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása
 
@@ -64,7 +64,7 @@ A fenti függvény a [avere vFXT-példák](https://github.com/Azure/Avere#tutori
 > [!NOTE]
 > Ha nem hozott létre új BLOB-tárolót a avere vFXT-fürt létrehozásakor, adja hozzá a Storage-rendszereket a [tároló konfigurálása](avere-vfxt-add-storage.md) az ügyfelek csatlakoztatása előtt című témakörben leírtak szerint.
 
-Az ügyféltől a ``mount`` parancs leképezi a virtuális kiszolgálót (VServer) a vFXT-fürtön a helyi fájlrendszer egyik elérési útjára. A formátum``mount <vFXT path> <local path> {options}``
+Az ügyféltől a ``mount`` parancs leképezi a virtuális kiszolgálót (VServer) a vFXT-fürtön a helyi fájlrendszer egyik elérési útjára. A formátum ``mount <vFXT path> <local path> {options}``
 
 A csatlakoztatási parancsnak három eleme van:
 
@@ -76,7 +76,7 @@ A csatlakoztatási parancsnak három eleme van:
 
 A VServer elérési útja az *IP-címe* és a *névtér-elágazás*elérési útja kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amely a tárolási rendszer hozzáadásakor lett meghatározva.
 
-Ha a fürt blob Storage-sel lett létrehozva, a tárolóhoz tartozó névtér elérési útja`/msazure`
+Ha a fürt blob Storage-sel lett létrehozva, a tárolóhoz tartozó névtér elérési útja `/msazure`
 
 Például: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 

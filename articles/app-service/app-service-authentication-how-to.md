@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208029"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272314"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -146,7 +146,7 @@ A App Service speciális fejlécek használatával átadja az alkalmazásnak a f
 
 A bármely nyelven vagy keretrendszerben írt kód a fenti fejlécek által igényelt információkat kérheti le. A ASP.NET 4,6 alkalmazások esetében a **ClaimsPrincipal** automatikusan a megfelelő értékekkel van beállítva. ASP.NET Core azonban nem biztosít olyan hitelesítési middleware-t, amely App Service felhasználói jogcímekbe integrálódik. Megkerülő megoldásért tekintse meg a következőt: [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Az alkalmazás a meghívásával további részleteket is kérhet a hitelesített felhasználóról `/.auth/me` . Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile Apps Node.js SDK használata](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), valamint az Azure-hoz [készült .net backend Server SDK-val való együttműködés. Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Ha a [jogkivonat-tároló](overview-authentication-authorization.md#token-store) engedélyezve van az alkalmazáshoz, a meghívásával további részleteket is megtudhat a hitelesített felhasználóról `/.auth/me` . Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile Apps Node.js SDK használata](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), valamint az Azure-hoz [készült .net backend Server SDK-val való együttműködés. Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Jogkivonatok beolvasása az alkalmazás kódjában
 
@@ -161,14 +161,14 @@ A kiszolgáló kódjából a szolgáltatóra jellemző jogkivonatokat a rendszer
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Küldjön HTTP-kérést az ügyfél kódjából (például egy mobil alkalmazásból vagy egy böngészőből származó JavaScriptből) `GET` `/.auth/me` . A visszaadott JSON a szolgáltatóra jellemző jogkivonatokat tartalmaz.
+Az ügyfél kódjából (például egy mobil alkalmazásból vagy egy böngészőből származó JavaScriptből) küldjön HTTP- `GET` kérelmet a `/.auth/me` (jogkivonat-[tárolónak](overview-authentication-authorization.md#token-store) engedélyezve kell lennie). A visszaadott JSON a szolgáltatóra jellemző jogkivonatokat tartalmaz.
 
 > [!NOTE]
 > A hozzáférési tokenek a szolgáltatói erőforrások eléréséhez szükségesek, így csak akkor jelennek meg, ha a szolgáltatót egy ügyfél titkos kulcsával konfigurálja. A frissítési tokenek beszerzésével kapcsolatban lásd: hozzáférési tokenek frissítése.
 
 ## <a name="refresh-identity-provider-tokens"></a>Identitás-szolgáltatói tokenek frissítése
 
-Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet jogkivonata](#extend-session-token-expiration-grace-period)) lejár, újra hitelesítenie kell a felhasználót, mielőtt újra felhasználja a tokent. A jogkivonat lejáratának elkerüléséhez `GET` hívja meg az `/.auth/refresh` alkalmazás végpontját. A híváskor App Service automatikusan frissíti a hitelesített felhasználó hozzáférési jogkivonatait a jogkivonat-tárolóban. Az alkalmazás kódjának a jogkivonatokra vonatkozó későbbi kérelmei megkapják a frissített jogkivonatokat. Ahhoz azonban, hogy a jogkivonat-frissítés működjön, a jogkivonat-tárolónak tartalmaznia kell a szolgáltató [frissítési jogkivonatait](https://auth0.com/learn/refresh-tokens/) . A frissítési tokenek beszerzésének módját az egyes szolgáltatók dokumentálják, de a következő lista egy rövid összefoglalás:
+Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet jogkivonata](#extend-session-token-expiration-grace-period)) lejár, újra hitelesítenie kell a felhasználót, mielőtt újra felhasználja a tokent. A jogkivonat lejáratának elkerüléséhez `GET` hívja meg az `/.auth/refresh` alkalmazás végpontját. A híváskor App Service automatikusan frissíti a hitelesített felhasználó hozzáférési jogkivonatait a [jogkivonat-tárolóban](overview-authentication-authorization.md#token-store) . Az alkalmazás kódjának a jogkivonatokra vonatkozó későbbi kérelmei megkapják a frissített jogkivonatokat. Ahhoz azonban, hogy a jogkivonat-frissítés működjön, a jogkivonat-tárolónak tartalmaznia kell a szolgáltató [frissítési jogkivonatait](https://auth0.com/learn/refresh-tokens/) . A frissítési tokenek beszerzésének módját az egyes szolgáltatók dokumentálják, de a következő lista egy rövid összefoglalás:
 
 - **Google**: fűzze hozzá a `access_type=offline` lekérdezési karakterlánc paramétert az `/.auth/login/google` API-híváshoz. Ha a Mobile Apps SDK-t használja, hozzáadhatja a paramétert a `LogicAsync` túlterhelések egyikéhez (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: nem biztosít frissítési jogkivonatokat. A hosszú élettartamú tokenek 60 nap múlva lejárnak (lásd [a Facebook lejáratát és a hozzáférési tokenek kiterjesztését](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
@@ -532,7 +532,7 @@ A helyére írja `<my_app_name>` be az alkalmazás nevét. Az `<my_resource_grou
 
 Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](https://docs.microsoft.com/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](https://docs.microsoft.com/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Felhasználók teljes körű hitelesítése és engedélyezése](tutorial-auth-aad.md)

@@ -1,7 +1,7 @@
 ---
 title: Azure NSG flow-naplók megjelenítése – Power BI
 titleSuffix: Azure Network Watcher
-description: Ez a lap leírja, hogyan jelenítheti meg a NSG-folyamat naplóit a Power BI.
+description: Megtudhatja, hogyan jelenítheti meg Power BI a hálózati biztonsági csoport folyamatábráinak megjelenítéséhez, hogy megtekintse az Azure Network Watcher IP-forgalmával kapcsolatos információkat.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738549"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272637"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Hálózati biztonsági csoport folyamatábráinak megjelenítése Power BI
 
@@ -103,15 +103,15 @@ Ez a sablon a következő szeletelőket tartalmazza, hogy csak azokat az adattar
 
 ![Szeletelők][13]
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 
 Ebben a forgatókönyvben azt mutatták, hogy Network Watcher és Power BI által biztosított hálózati biztonsági csoport Folyamatábráinak használatával képesek vagyunk megjeleníteni és értelmezni a forgalmat. A megadott sablon használatával Power BI letölti a naplókat közvetlenül a tárolóból, és helyileg dolgozza fel őket. A sablon betöltéséhez szükséges idő a kért fájlok számától és a letöltött fájlok teljes méretétől függően változhat.
 
 Nyugodtan testreszabhatja ezt a sablont az igényeinek megfelelően. Számos módon használhatja a Power BIt a hálózati biztonsági csoport adatfolyam-naplóival. 
 
-## <a name="notes"></a>Jegyzetek
+## <a name="notes"></a>Megjegyzések
 
-* A rendszer alapértelmezés szerint a naplókat tárolja`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* A rendszer alapértelmezés szerint a naplókat tárolja `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
     * Ha más címtárban található egyéb adatkönyvtár is, a lekérdezéseket a lekéréses és az adatfeldolgozási folyamatnak módosítania kell.
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: fff032d37fa0746695736e0dbdde73c6bcaade4b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a786baf70dfd9063c635fd27d43d198b3bd89bfb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445678"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272127"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Oktatóanyag: távoli renderelés integrálása HoloLens holografikus alkalmazásba
 
@@ -58,7 +58,7 @@ A megkérdezett párbeszédpanelen keresse meg a **"Microsoft. Azure. RemoteRend
 
 majd adja hozzá a projekthez a csomag kiválasztásával, majd nyomja le a "telepítés" gombot.
 
-A NuGet csomag hozzáadja a távoli renderelési függőségeket a projekthez. Ezek a következők:
+A NuGet csomag hozzáadja a távoli renderelési függőségeket a projekthez. Ezek konkrétan a következők:
 * Hivatkozás az ügyféloldali függvénytárhoz (RemoteRenderingClient. lib).
 * A. dll-függőségek beállítása.
 * Állítsa be a beágyazási könyvtár helyes elérési útját.
@@ -99,14 +99,15 @@ Kezdjük a szükséges beágyazások hozzáadásával. Adja hozzá a következő
 #include <AzureRemoteRendering.h>
 ```
 
-... és ez a további `include` direktíva a HolographicAppMain. cpp fájlhoz:
+... és ezek a további `include` irányelvek a HolographicAppMain. cpp fájlhoz:
 
 ```cpp
 #include <AzureRemoteRendering.inl>
 #include <RemoteRenderingExtensions.h>
+#include <windows.perception.spatial.h>
 ```
 
-A kód egyszerűsége érdekében a következő névtér-parancsikont definiáljuk a HolographicAppMain. h fájl tetején a `include` direktíva után:
+A kód egyszerűsége érdekében a következő névtér-parancsikont definiáljuk a HolographicAppMain. h fájl tetején, az `include` irányelvek után:
 
 ```cpp
 namespace RR = Microsoft::Azure::RemoteRendering;
@@ -297,7 +298,7 @@ namespace HolographicApp
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
-
+        bool m_needsCoordinateSystemUpdate = true;
     }
 ```
 
@@ -420,9 +421,13 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
 
 ### <a name="per-frame-update"></a>/Keret frissítése
 
-Csak egyszer kell bejelölnie az ügyfelet egy szimuláció után. `HolographicApp1Main`Az osztály jó hookot biztosít a kereten belüli frissítésekhez. Emellett le kell kérdezni a munkamenet állapotát, és meg kell tudnia, hogy átvált-e az `Ready` állapotra. Ha sikeresen csatlakozott a csatlakozáshoz, a modell betöltését véglegesen elindítjuk a használatával `StartModelLoading` .
+Csak egyszer kell frissítenie az ügyfelet egy szimuláció után, és végre kell hajtania néhány további állapotot. `HolographicAppMain::Update`A függvény egy jó hookot biztosít a frame-alapú frissítésekhez.
 
-Adja hozzá a következő kódot a törzséhez `HolographicApp1Main::Update` :
+#### <a name="state-machine-update"></a>Állapot számítógépének frissítése
+
+Le kell kérdezni a munkamenet állapotát, és meg kell tudnia, hogy átvált-e az `Ready` állapotra. Ha sikeresen csatlakozott a csatlakozáshoz, a modell betöltését véglegesen elindítjuk a használatával `StartModelLoading` .
+
+Adja hozzá a következő kódot a törzséhez `HolographicAppMain::Update` :
 
 ```cpp
 // Updates the application state once per frame.
@@ -485,9 +490,57 @@ HolographicFrame HolographicAppMain::Update()
         }
     }
 
+    if (m_needsCoordinateSystemUpdate && m_stationaryReferenceFrame && m_graphicsBinding)
+    {
+        // Set the coordinate system once. This must be called again whenever the coordinate system changes.
+        winrt::com_ptr<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem> ptr{ m_stationaryReferenceFrame.CoordinateSystem().as<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem>() };
+        m_graphicsBinding->UpdateUserCoordinateSystem(ptr.get());
+        m_needsCoordinateSystemUpdate = false;
+    }
+
     // Rest of the body:
     ...
 }
+```
+
+#### <a name="coordinate-system-update"></a>Koordinátarendszer frissítése
+
+Meg kell egyeznie a renderelési szolgáltatással a használni kívánt koordináta-rendszeren. A használni kívánt koordináta-rendszer eléréséhez a `m_stationaryReferenceFrame` függvény végén létre kell hozni a következőt: `HolographicAppMain::OnHolographicDisplayIsAvailableChanged` .
+
+Ez a koordináta-rendszer általában nem változik, ezért ez egy egyszeri inicializálás. Az alkalmazásnak újra kell hívnia, ha az alkalmazása megváltoztatja a koordináta-számítógépet.
+
+A fenti kód a függvényen belül egyszer beállítja a koordináta-rendszerét `Update` , amint mindkettő egy hivatkozási koordináta-rendszerrel és egy csatlakoztatott munkamenettel rendelkezik.
+
+#### <a name="camera-update"></a>Kamera frissítése
+
+Frissíteni kell a kamera-klipek síkokat úgy, hogy a kiszolgáló kameráját szinkronban tartsa a helyi kamerával. Ezt a függvény legvégén tehetjük `Update` :
+
+```cpp
+    ...
+    if (m_isConnected)
+    {
+        // Any near/far plane values of your choosing.
+        constexpr float fNear = 0.1f;
+        constexpr float fFar = 10.0f;
+        for (HolographicCameraPose const& cameraPose : prediction.CameraPoses())
+        {
+            // Set near and far to the holographic camera as normal
+            cameraPose.HolographicCamera().SetNearPlaneDistance(fNear);
+            cameraPose.HolographicCamera().SetFarPlaneDistance(fFar);
+        }
+
+        // The API to inform the server always requires near < far. Depth buffer data will be converted locally to match what is set on the HolographicCamera.
+        auto settings = *m_api->CameraSettings();
+        settings->NearPlane(std::min(fNear, fFar));
+        settings->FarPlane(std::max(fNear, fFar));
+        settings->EnableDepth(true);
+    }
+
+    // The holographic frame will be used to get up-to-date view and projection matrices and
+    // to present the swap chain.
+    return holographicFrame;
+}
+
 ```
 
 ### <a name="rendering"></a>Renderelés

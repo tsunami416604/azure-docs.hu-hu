@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499381"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272348"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -25,6 +25,7 @@ A Durable Functions jelenleg a következő nyelveket támogatja:
 * **JavaScript**: csak az Azure functions futtatókörnyezet 2. x verziójára támogatott. A Durable Functions-bővítmény vagy újabb verzió 1.7.0 szükséges. 
 * **Python**: az Durable functions-bővítmény vagy egy újabb verzió 1.8.5 szükséges. 
 * **F #**: előre lefordított osztály kódtárak és F # szkript. Az F # parancsfájl csak az Azure Functions futtatókörnyezet 1. x verziójában támogatott.
+* **PowerShell**: a Durable functions támogatása jelenleg nyilvános előzetes verzióban érhető el. Csak a Azure Functions futtatókörnyezet 3. x verziójára és a PowerShell 7 verzióra támogatott. A Durable Functions-bővítmény, illetve egy újabb verzió 2.2.2-es verziójának megadását igényli. Jelenleg csak a következő minták támogatottak: [függvények láncolása](#chaining), [ventilátor-kijelentkezés/ventilátor](#fan-in-out), [aszinkron http API](#async-http)-k.
 
 Durable Functions célja az összes [Azure functions nyelv](../supported-languages.md)támogatása. További nyelvek támogatásához tekintse meg a [Durable functions problémák listáját](https://github.com/Azure/azure-functions-durable-extension/issues) a legújabb munkaállapotról.
 
@@ -119,6 +120,19 @@ Az `context` objektum használatával más függvények is meghívhatók név, p
 > [!NOTE]
 > A `context` Pythonban található objektum a koordináló környezetet jelöli. A fő Azure Functions környezet eléréséhez használja a következőt: a (z `function_context` ).
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+A `Invoke-ActivityFunction` paranccsal más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. Minden alkalommal, amikor a kód meghívja `Invoke-ActivityFunction` a `NoWait` kapcsolót anélkül, hogy az Durable functions-keretrendszer ellenőrzőpontja az aktuális függvény példányának előrehaladását. Ha a folyamat vagy a virtuális gép a végrehajtás közben újraindul, a függvény példánya az előző `Invoke-ActivityFunction` hívásból folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Minta #2: ventilátor kivezetése/ventilátor
@@ -156,7 +170,7 @@ public static async Task Run(
 }
 ```
 
-A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `Task.WhenAll`a rendszer úgy hívja, hogy várjon, amíg az összes hívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `Task.WhenAll` a rendszer úgy hívja, hogy várjon, amíg az összes hívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
 
 A híváskor megjelenő automatikus ellenőrzőpontok `await` `Task.WhenAll` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
 
@@ -182,7 +196,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.df.Task.all`Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.df.Task.all` Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
 
 A híváskor megjelenő automatikus ellenőrzőpontok `yield` `context.df.Task.all` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
 
@@ -208,9 +222,33 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.task_all`Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.task_all` Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
 
 A híváskor megjelenő automatikus ellenőrzőpontok `yield` `context.task_all` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . Jegyezze fel a kapcsoló használatát a `NoWait` `F2` függvény meghívásakor: Ez a kapcsoló lehetővé teszi, hogy a Orchestrator a `F2` tevékenység befejezése nélkül folytassa a műveletet. A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. A `Wait-ActivityFunction` parancs hívása megvárja, amíg az összes hívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+
+A híváskor megjelenő automatikus ellenőrzőpontok `Wait-ActivityFunction` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges újraindítani egy már befejezett feladatot.
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A figyelő jelenleg nem támogatott a PowerShellben.
+
 ---
 
 A kérés fogadásakor a rendszer létrehoz egy új előkészítési példányt az adott AZONOSÍTÓJÚ feladatokhoz. A példány lekérdezi az állapotot, amíg a feltétel teljesül, és a hurok ki van zárva. A tartós időzítő vezérli a lekérdezési időközt. Ezt követően több munka is elvégezhető, vagy az előkészítés véget ért. Ha `nextCheck` meghaladja `expiryTime` a t, a figyelő véget ér.
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 A tartós időzítő létrehozásához hívja a következőt: `context.create_timer` . Az értesítés fogadása: `context.wait_for_external_event` . Ezt követően el kell döntenie, hogy a `context.task_any` rendszer meghívja-e a kiterjesztést (időtúllépés történik) vagy feldolgozza a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az emberi interakció jelenleg nem támogatott a PowerShellben.
+
 ---
 
 Egy külső ügyfél a [beépített http API](durable-functions-http-api.md#raise-event)-k használatával kézbesítheti az esemény értesítését a várakozó Orchestrator függvénynek:
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az emberi interakció jelenleg nem támogatott a PowerShellben.
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 A tartós entitások jelenleg nem támogatottak a Pythonban.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Tartós entitások jelenleg nem támogatottak a PowerShellben.
+
 ---
 
 Az ügyfelek az entitás- [ügyfél kötésének](durable-functions-bindings.md#entity-client)használatával sorba helyezni *műveleteket* (más néven "jelzés").
@@ -623,6 +677,10 @@ module.exports = async function (context) {
 
 A tartós entitások jelenleg nem támogatottak a Pythonban.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Tartós entitások jelenleg nem támogatottak a PowerShellben.
+
 ---
 
 Az Entity functions a C# és a JavaScript [Durable Functions 2,0](durable-functions-versions.md) -es és újabb verziókban érhető el.
@@ -649,7 +707,7 @@ A következő, a nyelvfüggő gyors útmutatók egyikének elvégzésével megke
 
 Mindkét rövid útmutatóban helyileg létrehozhatja és tesztelheti a "Hello World" tartós funkciót. Ezután közzéteheti a függvénykódot az Azure-ban. Az Ön által létrehozott függvény összehangolja és láncokba rendezi a más függvények hívásait.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 
 Az alábbi videó a Durable Functions előnyeit mutatja be:
 

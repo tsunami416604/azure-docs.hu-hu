@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: 753ee8eef1af1dbac9c776ed0410d2143cd71735
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449073"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272043"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -24,7 +24,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 
 ## <a name="all"></a>Mind
 
-| Általános |
+| Általános kérdések |
 | --- |
 | [Microsoft. addons](#microsoftaddons) |
 | [Microsoft. Marketplace](#microsoftmarketplace) |
@@ -40,7 +40,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. CDN](#microsoftcdn) |
 | [Microsoft. ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **Storage-fiók** |
+| **Storage** |
 | [Microsoft. ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft. DataBox](#microsoftdatabox) |
 | [Microsoft. ImportExport](#microsoftimportexport) |
@@ -124,7 +124,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | **Migrate (Áttelepítés)** |
 | [Microsoft. Migrálás](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
-| **Figyelő** |
+| **Figyelés** |
 | [Microsoft. AlertsManagement](#microsoftalertsmanagement) |
 | [Microsoft. bepillantások](#microsoftinsights) |
 | [Microsoft. OperationalInsights](#microsoftoperationalinsights) |
@@ -160,7 +160,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. BingMaps](#microsoftbingmaps) |
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="microsoftaddons"></a>Microsoft. addons
 
@@ -620,12 +620,21 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/CheckNameAvailability/művelet |  |
 > | Microsoft. CDN/ValidateProbe/művelet |  |
 > | Microsoft. CDN/CheckResourceUsage/művelet |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/READ |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/írás |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/delete |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/READ |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/írás |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/delete |  |
 > | Microsoft. CDN/edgenodes/READ |  |
 > | Microsoft. CDN/edgenodes/írás |  |
 > | Microsoft. CDN/edgenodes/delete |  |
 > | Microsoft. CDN/operationresults/READ |  |
 > | Microsoft. CDN/operationresults/írás |  |
 > | Microsoft. CDN/operationresults/delete |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/READ |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/írás |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/delete |  |
 > | Microsoft. CDN/operationresults/profileresults/READ |  |
 > | Microsoft. CDN/operationresults/profileresults/írás |  |
 > | Microsoft. CDN/operationresults/profileresults/delete |  |
@@ -1299,7 +1308,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/vpnsites/delete | Törli a VPN-hely erőforrását. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/READ | VPN-hely hivatkozásának beolvasása |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -2114,6 +2123,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/connectionGateways/delete | Egy összekötő átjáró törlése. |
 > | Microsoft. Web/connectionGateways/Move/Action | Egy összekötő átjáró mozgatása. |
 > | Microsoft. Web/connectionGateways/csatlakozás/művelet | Kapcsolódási átjáróhoz csatlakozik. |
+> | Microsoft. Web/connectionGateways/Associate/művelet | Társítja egy összekötő átjáróval. |
 > | Microsoft. Web/connectionGateways/ListStatus/művelet | Egy összekötő átjáró állapotának felsorolása. |
 > | Microsoft. Web/Connections/READ | A kapcsolatok listájának beolvasása. |
 > | Microsoft. Web/Connections/Write | Létrehozza vagy frissíti a kapcsolatokat. |
@@ -2249,6 +2259,11 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/Sites/Backups/Restore/Action | Web Apps biztonsági mentések visszaállítása. |
 > | Microsoft. Web/Sites/Backups/delete | Web Apps biztonsági mentések törlése. |
 > | Microsoft. Web/Sites/Backups/Write | Web Apps biztonsági mentések frissítése. |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/READ | A webalkalmazások számára engedélyezett közzétételi módszerek listája |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/FTP/olvasás | Annak eldöntése, hogy engedélyezett-e az FTP-közzétételi hitelesítő adatok használata egy webalkalmazáshoz |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/FTP/írás | Annak frissítése, hogy engedélyezett-e az FTP-közzétételi hitelesítő adatok használata egy webalkalmazáshoz |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/SCM/READ | Megadhatja, hogy az SCM közzétételi hitelesítő adatai engedélyezve legyenek-e egy webalkalmazáshoz |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/SCM/Write | Annak frissítése, hogy az SCM-közzétételi hitelesítő adatok engedélyezve legyenek-e egy webalkalmazáshoz |
 > | Microsoft. Web/Sites/config/READ | Webalkalmazás konfigurációs beállításainak beolvasása |
 > | Microsoft. Web/Sites/config/List/Action | A webalkalmazás biztonsági szempontból bizalmas beállításainak, például a hitelesítő adatok közzétételének, az Alkalmazásbeállítások és a kapcsolati karakterláncok listázása |
 > | Microsoft. Web/Sites/config/Write | A webalkalmazás konfigurációs beállításainak frissítése |
@@ -2341,6 +2356,9 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/Sites/metrika/olvasás | Web Apps mérőszámok beolvasása. |
 > | Microsoft. Web/Sites/metricsdefinitions/READ | Web Apps mérőszámok definícióinak beolvasása. |
 > | Microsoft. Web/Sites/migratemysql/READ | A MySql Web Apps migrálása. |
+> | Microsoft. Web/Sites/networkConfig/READ | App Service hálózati konfiguráció beolvasása. |
+> | Microsoft. Web/Sites/networkConfig/Write | App Service hálózati konfiguráció frissítése. |
+> | Microsoft. Web/Sites/networkConfig/delete | App Service hálózati konfiguráció törlése. |
 > | Microsoft. Web/Sites/networktraces/operationresults/READ | Web Apps hálózati nyomkövetési művelet eredményeinek beolvasása. |
 > | Microsoft. Web/Sites/operationresults/READ | Web Apps művelet eredményeinek beolvasása. |
 > | Microsoft. Web/Sites/Operations/READ | Web Apps műveletek beolvasása. |
@@ -2349,6 +2367,10 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/Sites/premieraddons/READ | Web Apps Premier addons beszerzése. |
 > | Microsoft. Web/Sites/premieraddons/Write | Web Apps Premier addons frissítése. |
 > | Microsoft. Web/Sites/privateaccess/READ | A webhelyhez hozzáférő, a webhely elérését engedélyező és engedélyezett virtuális hálózatok körének beolvasása. |
+> | Microsoft. Web/Sites/privateEndpointConnections/Write | Privát végponti kapcsolatok jóváhagyása vagy elutasítása. |
+> | Microsoft. Web/Sites/privateEndpointConnections/READ | Szerezzen be egy privát végponti kapcsolatot vagy a privát végpontok kapcsolatainak listáját. |
+> | Microsoft. Web/Sites/privateEndpointConnections/delete | Privát végponti kapcsolatok törlése. |
+> | Microsoft. Web/Sites/privateLinkResources/READ | Magánhálózati kapcsolat erőforrásainak beolvasása. |
 > | Microsoft. Web/Sites/Process/READ | Web Apps folyamatok beolvasása. |
 > | Microsoft. Web/Sites/folyamatok/modulok/olvasás | Web Apps folyamatok moduljainak beolvasása. |
 > | Microsoft. Web/Sites/processs/Threads/READ | Web Apps folyamatok szálának beolvasása. |
@@ -2394,6 +2416,11 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/Sites/Slots/Backups/List/Action | Web Apps tárolóhelyek biztonsági másolatainak listázása. |
 > | Microsoft. Web/Sites/Slots/Backups/Restore/Action | Web Apps tárolóhelyek biztonsági másolatának visszaállítása. |
 > | Microsoft. Web/Sites/Slots/Backups/delete | Web Apps tárolóhelyek biztonsági mentésének törlése. |
+> | Microsoft. Web/Sites/Slots/basicPublishingCredentialsPolicies/READ | A webalkalmazási tárolóhelyek számára engedélyezett közzétételi hitelesítő adatok listája |
+> | Microsoft. Web/Sites/Slots/basicPublishingCredentialsPolicies/FTP/olvasás | Annak eldöntése, hogy engedélyezett-e az FTP-közzétételi hitelesítő adatok használata a webalkalmazások tárolóhelyén |
+> | Microsoft. Web/Sites/Slots/basicPublishingCredentialsPolicies/FTP/írás | Annak frissítése, hogy engedélyezett-e az FTP-közzétételi hitelesítő adatok használata a webalkalmazások tárolóhelyén |
+> | Microsoft. Web/Sites/Slots/basicPublishingCredentialsPolicies/SCM/READ | Megadhatja, hogy az SCM-közzétételi hitelesítő adatok engedélyezve legyenek-e a webalkalmazások tárolóhelyén |
+> | Microsoft. Web/Sites/Slots/basicPublishingCredentialsPolicies/SCM/írás | Annak frissítése, hogy az SCM-közzétételi hitelesítő adatok engedélyezve legyenek-e a webalkalmazások tárolóhelyén |
 > | Microsoft. Web/Sites/Slots/config/READ | Webalkalmazási tárolóhely konfigurációs beállításainak beolvasása |
 > | Microsoft. Web/Sites/Slots/config/List/Action | A webalkalmazási tárolóhely biztonsági kényes beállításainak listázása, például a hitelesítő adatok közzététele, az Alkalmazásbeállítások és a kapcsolati karakterláncok |
 > | Microsoft. Web/Sites/Slots/config/Write | A webalkalmazási tárolóhely konfigurációs beállításainak frissítése |
@@ -2514,6 +2541,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/staticSites/írás | Hozzon létre egy új statikus helyet, vagy frissítsen egy meglévőt |
 > | Microsoft. Web/staticSites/delete | Meglévő statikus hely törlése |
 > | Microsoft. Web/staticSites/createinvitation/művelet | Invitiation-hivatkozást hoz létre a statikus hely felhasználója számára a szerepkörök egy készlete számára. |
+> | Microsoft. Web/staticSites/listConfiguredRoles/művelet | A statikus helyhez konfigurált szerepkörök felsorolása. |
 > | Microsoft. Web/staticSites/listfunctionappsettings/művelet | Egy statikus hely funkció-alkalmazási beállításainak listázása |
 > | Microsoft. Web/staticSites/leválasztás/művelet | Statikus hely leválasztása a jelenleg csatolt adattárból |
 > | Microsoft. Web/staticSites/getuser/művelet | A felhasználó információinak beolvasása egy statikus helyhez |
@@ -3114,6 +3142,7 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/gyárak/sandboxpipelineruns/művelet | Lekérdezi a hibakeresési folyamat futtatását. |
 > | Microsoft. DataFactory/gyárak/querytriggers/művelet | Lekérdezi az eseményindítókat. |
 > | Microsoft. DataFactory/gyárak/getFeatureValue/művelet | A kitettség-vezérlési funkció értékének beolvasása az adott helyen. |
+> | Microsoft. DataFactory/gyárak/queryFeaturesValue/művelet | A szolgáltatások listájának beolvasása a kitettség-vezérlési szolgáltatás értékeivel |
 > | Microsoft. DataFactory/gyárak/getDataPlaneAccess/művelet | Az ADF Adatsík szolgáltatás elérésének beolvasása. |
 > | Microsoft. DataFactory/gyárak/getGitHubAccessToken/művelet | Lekéri a GitHub hozzáférési tokenjét. |
 > | Microsoft. DataFactory/gyárak/querytriggerruns/művelet | Az trigger futtatását kérdezi le. |
@@ -3133,6 +3162,8 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/gyárak/integrationruntimes/delete | Töröl minden Integration Runtime. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/Start/művelet | A Integration Runtime elindítása. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/leállítás/művelet | Leállítja a Integration Runtime. |
+> | Microsoft. DataFactory/gyárak/integrationruntimes/getconnectioninfo/művelet | A Integration Runtime a kapcsolatok adatainak beolvasása. |
+> | Microsoft. DataFactory/gyárak/integrationruntimes/listauthkeys/művelet | Felsorolja az egyes Integration Runtime hitelesítő kulcsait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/synccredentials/művelet | Szinkronizálja a megadott Integration Runtime hitelesítő adatait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/frissítés/művelet | A megadott Integration Runtime frissítése. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/createexpressshirinstalllink/művelet | Expressz telepítési hivatkozás létrehozása a saját üzemeltetésű Integration Runtimehoz. |
@@ -3141,9 +3172,7 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/gyárak/integrationruntimes/linkedIntegrationRuntime/művelet | Csatolt Integration Runtime-hivatkozás létrehozása a megadott megosztott Integration Runtime. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/getObjectMetadata/művelet | A megadott Integration Runtime SSIS Integration Runtime metaadatok beolvasása. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/refreshObjectMetadata/művelet | A megadott Integration Runtime SSIS frissítése Integration Runtime metaadatokat. |
-> | Microsoft. DataFactory/gyárak/integrationruntimes/getconnectioninfo/READ | A Integration Runtime a kapcsolatok adatainak beolvasása. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/getstatus/READ | Integration Runtime állapot beolvasása. |
-> | Microsoft. DataFactory/gyárak/integrationruntimes/listauthkeys/READ | Felsorolja az egyes Integration Runtime hitelesítő kulcsait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/monitoringdata/READ | Beolvassa az egyes Integration Runtime figyelési szolgáltatásait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/csomópontok/olvasás | A megadott Integration Runtime csomópontjának beolvasása. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/csomópontok/törlés | A megadott Integration Runtime csomópontjának törlése. |
@@ -3187,6 +3216,8 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/gyárak/eseményindítók/indítás/művelet | Elindítja az összes triggert. |
 > | Microsoft. DataFactory/gyárak/eseményindítók/leállítás/művelet | Leállítja az összes triggert. |
 > | Microsoft. DataFactory/gyárak/triggerek/triggerruns/READ | A trigger futtatásának beolvasása. |
+> | Microsoft. DataFactory/gyárak/eseményindítók/triggerruns/megszakítás/művelet | A trigger futtatásának megszakítása az adott trigger futtatási azonosítójával. |
+> | Microsoft. DataFactory/gyárak/eseményindítók/triggerruns/újrafuttatás/művelet | Futtassa újra az triggert az adott trigger futtatási azonosítójával. |
 > | Microsoft. DataFactory/Locations/configureFactoryRepo/Action | A gyári tárházat konfigurálja. |
 > | Microsoft. DataFactory/Locations/getFeatureValue/Action | A kitettség-vezérlési funkció értékének beolvasása az adott helyen. |
 > | Microsoft. DataFactory/Locations/getFeatureValue/READ | Beolvassa az expozíció-vezérlés funkció értékét az adott helyen. |
@@ -4881,12 +4912,29 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/fiókok/arc/pillanatkép/írás | Egy pillanatkép tulajdonságainak frissítése. |
 > | Microsoft. CognitiveServices/fiókok/arc/Pillanatképek/olvasás | A felhasználó összes elérhető pillanatképének listázása információkkal. * |
 > | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/Train/Action | Egyéni modell létrehozása és betanítása.<br>A betanítási kérelemnek tartalmaznia kell egy olyan forrás paramétert, amely vagy egy külsőleg elérhető Azure Storage blob-tároló URI-ja (lehetőleg egy közös hozzáférési aláírás URI-ja) vagy egy helyileg csatlakoztatott meghajtó adatmappájának érvényes elérési útja.<br>A helyi elérési utak megadásakor a Linux/Unix útvonal formátumát kell követnie, és a bemeneti csatlakoztatási konfigurációhoz tartozó abszolút elérési útnak kell lennie. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/Action | Egyéni modell létrehozása és betanítása.<br>A kérelemnek tartalmaznia kell egy olyan forrás paramétert, amely vagy egy külsőleg elérhető Azure Storage blob-tároló URI-ja (lehetőleg egy közös hozzáférési aláírás URI-ja) vagy egy helyileg csatlakoztatott meghajtó adatmappájának érvényes elérési útja.<br>A helyi elérési utak megadásakor a Linux/Unix útvonal formátumát kell követni, és a bemeneti csatlakoztatási konfiguráció értékének abszolút elérési útnak kell lennie, például ha a (z) "{mounts: input}" konfigurációs beállítás értéke "/input", akkor az érvényes forrás elérési út a következő lesz: "/input/contosodataset".<br>A képezni kívánt összes adatnak a forrás mappában vagy almappáiban kell szerepelnie.<br>A modellek a következő tartalomtípusú dokumentumokkal vannak betanítva: "Application/PDF", "képfájl/JPEG", "képfájl/png", "képfájl/TIFF".<br>A rendszer figyelmen kívül hagyja az egyéb típusú tartalmakat. |
 > | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/elemzés/művelet | A kulcs-érték párok kinyerése egy adott dokumentumból. A bemeneti dokumentumnak a támogatott tartalomtípusok egyikének kell lennie: "Application/PDF", "képfájl/JPEG" vagy "képfájl/png". A rendszer sikeres választ ad vissza a JSON-ban. |
 > | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/delete | Modell-összetevők törlése. |
-> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/READ | Modell adatainak beolvasása. Az összes betanított egyéni modell adatainak beolvasása * |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/READ | Modell adatainak beolvasása. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/copyauthorization/Action | Engedélyezési hasznos adat létrehozása egy modell másolásához a cél űrlap-felismerő erőforrásban. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/Copy/Action | Egyéni űrlap-felismerő modell másolása egyik előfizetésből a másikba.<br>A folyamat elindításához szerezze be a `modelId` tokent a cél végpontból az API és a `source=false` lekérdezési karakterlánc használatával.<br>Ezután adja át a `modelId` hivatkozást a kérelem törzsében, valamint az egyéb célként megadott erőforrás-információkat. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/elemzés/művelet | A kulcs-érték párok, táblák és szemantikai értékek kinyerése egy adott dokumentumból.<br>A bemeneti dokumentumnak a támogatott tartalomtípusok egyikének kell lennie: "Application/PDF", "képfájl/JPEG", "képfájl/png" vagy "rendszerkép/TIFF".<br>Másik lehetőségként az "Application/JSON" típus használatával adja meg az elemezni kívánt dokumentum URL-címét. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/Copy/Action | Egyéni űrlap-felismerő modell másolása egy célként megadott űrlap-felismerő erőforrásba. A művelet meghívása előtt először be kell szereznie az engedélyt a másoláshoz  |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/delete | Törlési modell megjelölése. A modell összetevőinek 48 órán belül véglegesen el lesznek távolítva. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/copyauthorization/Action | Engedélyezési adattartalom létrehozása a modell másolási műveletéhez. A művelet hívása egy célként megadott űrlap-felismerő erőforrás-végponton történik.  |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/READ | Részletes információkat kaphat egy egyéni modellről. Az összes egyéni modell adatainak beolvasása |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/analyzeresults/READ | Az elemzési űrlap műveletének aktuális állapotának és eredményének beolvasása. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/analyzeresults/READ | Az elemzési űrlap műveletének aktuális állapotának és eredményének beolvasása. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/copyresults/READ | Szerezze be az aktuális állapotot és az egyéni űrlap-modell másolási műveletének eredményét. |
+> | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/copyresults/READ | Szerezze be az aktuális állapotot és az egyéni űrlap-modell másolási műveletének eredményét. |
 > | Microsoft. CognitiveServices/accounts/FormRecognizer/Custom/models/Keys/READ | A modell kulcsainak beolvasása. |
-> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre összeépített/beérkezés/asyncbatchanalyze/művelet | Mező szövegének és szemantikai értékének kinyerése egy adott bevételezési dokumentumból. A bemeneti képdokumentumnak a támogatott tartalomtípusok egyikének kell lennie – JPEG, PNG, BMP, PDF vagy TIFF. A sikeres válasz egy olyan JSON, amely egy "Operation-Location" nevű mezőt tartalmaz, amely tartalmazza a beérkezési eredmény beolvasása művelet URL-címét az eredmények aszinkron lekéréséhez. |
-> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre összeépített/bevételezés/műveletek/művelet | Lekérdezi az állapotot, és beolvassa egy elemzés-visszaigazolási művelet eredményét. A csatoló URL-címe a visszaigazolási válaszban a "művelet – hely" fejlécből szerezhető be. |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/elrendezés/elemzés/művelet | Szöveg-és elrendezési adatok kinyerése egy adott dokumentumból.<br>A bemeneti dokumentumnak a támogatott tartalomtípusok egyikének kell lennie: "Application/PDF", "képfájl/JPEG", "képfájl/png" vagy "rendszerkép/TIFF".<br>Másik lehetőségként az "Application/JSON" típus használatával adja meg az elemezni kívánt dokumentum URL-címét. |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/elrendezés/analyzeresults/olvasás | A folyamat nyomon követése és az elemzés elrendezési művelet eredményének beolvasása |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre elkészített/névjegykártya/elemzés/művelet | Mező szövegének és szemantikai értékének kinyerése egy adott névjegykártya-dokumentumból.  |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre elkészített/névjegykártya/analyzeresults/READ | Lekérdezi az állapotot, és beolvassa a névjegykártya elemzése művelet eredményét. A csatoló URL-címe a "művelet – hely" fejlécből szerezhető be a névjegykártya elemzése válaszban. |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre összeépített/beérkezés/asyncbatchanalyze/művelet | Mező szövegének és szemantikai értékének kinyerése egy adott bevételezési dokumentumból. A bemeneti dokumentumnak a támogatottak egyikének kell lennie |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre elkészített/beérkezés/analyzeresults/olvasás | Lekérdezi az állapotot, és beolvassa egy elemzés-visszaigazolási művelet eredményét. A csatoló URL-címe a visszaigazolási válaszban a "művelet – hely" fejlécből szerezhető be. |
+> | Microsoft. CognitiveServices/fiókok/FormRecognizer/előre elkészített/bevételezés/műveletek/olvasás | Lekérdezi az állapotot, és beolvassa egy elemzés-visszaigazolási művelet eredményét. A csatoló URL-címe a visszaigazolási válaszban a "művelet – hely" fejlécből szerezhető be. |
 > | Microsoft. CognitiveServices/accounts/ImageSearch/details/Action | Egy képpel kapcsolatos elemzéseket ad vissza, például a képet tartalmazó weblapokat. |
 > | Microsoft. CognitiveServices/accounts/ImageSearch/Search/Action | Adott lekérdezéshez kapcsolódó rendszerképek beolvasása. |
 > | Microsoft. CognitiveServices/fiókok/ImageSearch/trendek/művelet | Aktuálisan növekvő rendszerképek beolvasása. |
@@ -5659,6 +5707,7 @@ Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-over
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/READ | A megrendelések listája vagy beolvasása |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/Write | Létrehozza vagy frissíti a rendeléseket |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/delete | Törli a rendeléseket |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/listDCAccessCode/Action | ArmApiDesc_action_listDCAccessCode_orders |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/operationResults/READ | A művelet eredményének megjelenítése vagy beolvasása |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/szerepkörök/olvasás | A szerepkörök listája vagy beolvasása |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/szerepkörök/olvasás | A szerepkörök listája vagy beolvasása |
@@ -5700,7 +5749,6 @@ Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-over
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/Write | A felhasználók megosztásának létrehozása vagy frissítése |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/delete | Törli a felhasználók megosztása |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/operationResults/READ | A művelet eredményének megjelenítése vagy beolvasása |
-> | Microsoft. DataBoxEdge/Operations/READ | A műveletek listája vagy beolvasása |
 > | Microsoft. DataBoxEdge/SKU/READ | Az SKU-ket listázza vagy kapja meg |
 
 ### <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
@@ -5763,6 +5811,13 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 > | Microsoft. EventGrid/operationResults/READ | Művelet eredményének beolvasása |
 > | Microsoft. EventGrid/Operations/READ | EventGrid-műveletek listázása. |
 > | Microsoft. EventGrid/operationsStatus/READ | Művelet állapotának beolvasása |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A partneri névterek diagnosztikai beállításainak beolvasása |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A partneri névterek diagnosztikai beállításainak létrehozása vagy frissítése |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. bepillantást/metricDefinitions/READ | A partneri névterek elérhető metrikáinak beolvasása |
+> | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A partneri témakörök diagnosztikai beállításainak beolvasása |
+> | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A partneri témakörök diagnosztikai beállításainak létrehozása vagy frissítése |
+> | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
 > | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. bepillantást/metricDefinitions/READ | A partneri témakörök elérhető metrikáinak beolvasása |
 > | Microsoft. EventGrid/SKU/READ | Az Event Grid-erőforrások elérhető SKU-definícióinak olvasása |
 > | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A rendszertémakörök diagnosztikai beállításainak beolvasása |
@@ -6339,6 +6394,10 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/iotSecuritySolutions/delete | IoT biztonsági megoldások törlése |
 > | Microsoft. Security/iotSecuritySolutions/READ | IoT biztonsági megoldások beolvasása |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/READ | IoT biztonsági elemzési modell beolvasása |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/READ | IoT-riasztások típusának beolvasása |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/READ | IoT-riasztások beolvasása |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/READ | A IoT-javaslatok típusának beolvasása |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/READ | IoT-javaslatok beolvasása |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/READ | IoT összesített riasztások beolvasása |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/elutasítás/művelet | Elutasítja a IoT összesített riasztásait |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedRecommendations/READ | IoT összesített javaslatainak beolvasása |
@@ -6599,6 +6658,7 @@ Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 > | Microsoft. LabServices/labAccounts/Labs/AddUsers/művelet | Felhasználók hozzáadása laborhoz |
 > | Microsoft. LabServices/labAccounts/Labs/SendEmail/művelet | E-mail-cím küldése a laborhoz tartozó regisztrációs hivatkozással |
 > | Microsoft. LabServices/labAccounts/Labs/GetLabPricingAndAvailability/művelet | Szerezze be a laborhoz tartozó díjszabást, és a rendelkezésre állást, amely azt jelzi, hogy a labor felskálázásra képes-e. |
+> | Microsoft. LabServices/labAccounts/Labs/SyncUserList/művelet | Szinkronizálja a HRE csoport módosításait a UserList |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/delete | Környezeti beállítás törlése. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/READ | Környezeti beállítások olvasása. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/Write | Környezeti beállítás hozzáadása vagy módosítása. |
@@ -6668,6 +6728,8 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrálás/assessmentprojects/delete | Az értékelési projekt törlése |
 > | Microsoft. Migrálás/assessmentprojects/assessmentOptions/READ | Az adott helyen elérhető értékelési lehetőségek beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/értékelések/olvasás | Egy projekten belüli felmérések felsorolása |
+> | Microsoft. Migrálás/assessmentprojects/assessmentsSummary/READ | A megadott helyen elérhető felmérések összegzésének beolvasása |
+> | Microsoft. Migrálás/assessmentprojects/avsAssessmentOptions/READ | A megadott helyen elérhető AVS-értékelési lehetőségek beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/csoportok/olvasás | Csoport tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/csoportok/írás | Új csoport létrehozása vagy meglévő csoport frissítése |
 > | Microsoft. Migrálás/assessmentprojects/csoportok/törlés | Csoport törlése |
@@ -6677,6 +6739,11 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrálás/assessmentprojects/csoportok/értékelések/törlés | Értékelés törlése |
 > | Microsoft. Migrálás/assessmentprojects/csoportok/értékelések/downloadurl/művelet | Egy értékelési jelentés URL-címének letöltése |
 > | Microsoft. Migrálás/assessmentprojects/csoportok/értékelések/assessedmachines/olvasás | Egy felmért gép tulajdonságainak beolvasása |
+> | Microsoft. Migrálás/assessmentprojects/groups/avsAssessments/READ | Egy AVS-értékelés tulajdonságainak beolvasása |
+> | Microsoft. Migrálás/assessmentprojects/csoportok/avsAssessments/írás | Létrehoz egy új AVS-értékelést, vagy frissíti a meglévő AVS-értékelést |
+> | Microsoft. Migrálás/assessmentprojects/groups/avsAssessments/delete | AVS-értékelés törlése |
+> | Microsoft. Migrálás/assessmentprojects/groups/avsAssessments/downloadurl/Action | Az AVS Assessment-jelentés URL-címének letöltése |
+> | Microsoft. Migrálás/assessmentprojects/groups/avsAssessments/avsassessedmachines/READ | Az AVS által felmért gép tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/hypervcollectors/READ | A HyperV-gyűjtő tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/hypervcollectors/írás | Új HyperV-gyűjtő létrehozása vagy egy meglévő HyperV-gyűjtő frissítése |
 > | Microsoft. Migrálás/assessmentprojects/hypervcollectors/delete | A HyperV-gyűjtő törlése |
@@ -6684,6 +6751,14 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrálás/assessmentprojects/importcollectors/írás | Új importálási gyűjtő létrehozása vagy meglévő importálási gyűjtő frissítése |
 > | Microsoft. Migrálás/assessmentprojects/importcollectors/delete | Az importálási gyűjtő törlése |
 > | Microsoft. Migrálás/assessmentprojects/gépek/olvasás | Egy gép tulajdonságainak beolvasása |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnectionProxies/READ | Privát végponti kapcsolatok proxyjának beolvasása |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnectionProxies/validate/Action | Privát végponti kapcsolatok proxyjának ellenőrzése |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása vagy frissítése |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnections/READ | Privát végponti kapcsolatok beszerzése |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnections/írás | Privát végponti kapcsolatok frissítése |
+> | Microsoft. Migrálás/assessmentprojects/privateEndpointConnections/delete | Privát végponti kapcsolatok törlése |
+> | Microsoft. Migrálás/assessmentprojects/privateLinkResources/READ | Privát kapcsolat erőforrásának beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/servercollectors/READ | A kiszolgáló-gyűjtő tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/assessmentprojects/servercollectors/írás | Új kiszolgáló-gyűjtő létrehozása vagy meglévő kiszolgáló-gyűjtő frissítése |
 > | Microsoft. Migrálás/assessmentprojects/vmwarecollectors/READ | A VMware Collector tulajdonságainak beolvasása |
@@ -6696,16 +6771,28 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrálás/migrateprojects/delete | Áttelepítő projekt törlése |
 > | Microsoft. Migrálás/migrateprojects/registerTool/művelet | Eszköz regisztrálása Migrálás projektbe |
 > | Microsoft. Migrálás/migrateprojects/RefreshSummary/művelet | Frissíti az áttelepíteni kívánt projekt összegzését |
+> | Microsoft. Migrálás/migrateprojects/registrationDetails/művelet | Az eszköz regisztrációjának részleteit adja meg |
 > | Microsoft. Migrálás/migrateprojects/DatabaseInstances/READ | Egy adatbázis-példány tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/migrateprojects/adatbázisok/olvasás | Egy adatbázis tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/migrateprojects/gépek/olvasás | Egy gép tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/migrateprojects/MigrateEvents/READ | Beolvassa az áttelepítés eseményeinek tulajdonságait. |
 > | Microsoft. Migrálás/migrateprojects/MigrateEvents/delete | Egy áttelepítési eseményt töröl |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnectionProxies/READ | Privát végponti kapcsolatok proxyjának beolvasása |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnectionProxies/validate/Action | Privát végponti kapcsolatok proxyjának ellenőrzése |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása vagy frissítése |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnections/READ | Privát végponti kapcsolatok beszerzése |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnections/írás | Privát végponti kapcsolatok frissítése |
+> | Microsoft. Migrálás/migrateprojects/privateEndpointConnections/delete | Privát végponti kapcsolatok törlése |
+> | Microsoft. Migrálás/migrateprojects/privateLinkResources/READ | Privát kapcsolat erőforrásának beolvasása |
 > | Microsoft. Migrálás/migrateprojects/megoldások/olvasás | Beolvassa a projekt áttelepíthető megoldásának tulajdonságait |
 > | Microsoft. Migrálás/migrateprojects/megoldások/írás | Új projekt-Áttelepítő megoldás létrehozása vagy egy meglévő Áttelepítő projekt frissítése |
 > | Microsoft. Migrálás/migrateprojects/megoldások/törlés | Egy Áttelepítő projekt-megoldás törlése |
 > | Microsoft. Migrálás/migrateprojects/Solutions/getconfig/művelet | A projekt átmigrálása megoldás konfigurációjának beolvasása |
 > | Microsoft. Migrálás/migrateprojects/Solutions/cleanupData/művelet | A Project-megoldási adatáttelepítés törlése |
+> | Microsoft. Migrálás/migrateprojects/VirtualDesktopUsers/READ | Egy virtuális asztali felhasználó tulajdonságainak beolvasása |
+> | Microsoft. Migrálás/migrateprojects/webkiszolgálók/olvasás | Egy webkiszolgáló tulajdonságainak beolvasása |
+> | Microsoft. Migrálás/migrateprojects/WebSites/olvasás | Egy webhely tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/műveletek/olvasás | A Microsoft. erőforrás-szolgáltató áttelepíthető műveleteit sorolja fel. |
 > | Microsoft. Migrálás/projektek/olvasás | Egy projekt tulajdonságainak beolvasása |
 > | Microsoft. Migrálás/projektek/írás | Új projekt létrehozása vagy meglévő projekt frissítése |
@@ -7432,6 +7519,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppPlatformLogsforSpring/olvasás | Adatok beolvasása a AppPlatformLogsforSpring táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppPlatformSystemLogs/olvasás | Adatok beolvasása a AppPlatformSystemLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppRequests/olvasás | Adatok beolvasása a AppRequests táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceAntivirusScanLogs/olvasás | Adatok beolvasása a AppServiceAntivirusScanLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceAppLogs/olvasás | Adatok beolvasása a AppServiceAppLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceAuditLogs/olvasás | Adatok beolvasása a AppServiceAuditLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceConsoleLogs/olvasás | Adatok beolvasása a AppServiceConsoleLogs táblából |
@@ -7512,6 +7600,35 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ExchangeOnlineAssessmentRecommendation/olvasás | Adatok beolvasása a ExchangeOnlineAssessmentRecommendation táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/FailedIngestion/olvasás | Adatok beolvasása a FailedIngestion táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/FunctionAppLogs/olvasás | Adatok beolvasása a FunctionAppLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightAmbariClusterAlerts/olvasás | Adatok beolvasása a HDInsightAmbariClusterAlerts táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightAmbariSystemMetrics/olvasás | Adatok beolvasása a HDInsightAmbariSystemMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightGatewayAuditLogs/olvasás | Adatok beolvasása a HDInsightGatewayAuditLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightHadoopAndYarnLogs/olvasás | Adatok beolvasása a HDInsightHadoopAndYarnLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightHadoopAndYarnMetrics/olvasás | Adatok beolvasása a HDInsightHadoopAndYarnMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightHBaseLogs/olvasás | Adatok beolvasása a HDInsightHBaseLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightHBaseMetrics/olvasás | Adatok beolvasása a HDInsightHBaseMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightHiveAndLLAPLogs/olvasás | Adatok beolvasása a HDInsightHiveAndLLAPLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightHiveAndLLAPMetrics/olvasás | Adatok beolvasása a HDInsightHiveAndLLAPMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightJupyterNotebookEvents/olvasás | Adatok beolvasása a HDInsightJupyterNotebookEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightKafkaLogs/olvasás | Adatok beolvasása a HDInsightKafkaLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightKafkaMetrics/olvasás | Adatok beolvasása a HDInsightKafkaMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightOozieLogs/olvasás | Adatok beolvasása a HDInsightOozieLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightRangerAuditLogs/olvasás | Adatok beolvasása a HDInsightRangerAuditLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSecurityLogs/olvasás | Adatok beolvasása a HDInsightSecurityLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkApplicationEvents/olvasás | Adatok beolvasása a HDInsightSparkApplicationEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkBlockManagerEvents/olvasás | Adatok beolvasása a HDInsightSparkBlockManagerEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkEnvironmentEvents/olvasás | Adatok beolvasása a HDInsightSparkEnvironmentEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkExecutorEvents/olvasás | Adatok beolvasása a HDInsightSparkExecutorEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkExtraEvents/olvasás | Adatok beolvasása a HDInsightSparkExtraEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkJobEvents/olvasás | Adatok beolvasása a HDInsightSparkJobEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkLogs/olvasás | Adatok beolvasása a HDInsightSparkLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkSQLExecutionEvents/olvasás | Adatok beolvasása a HDInsightSparkSQLExecutionEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkStageEvents/olvasás | Adatok beolvasása a HDInsightSparkStageEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkStageTaskAccumulables/olvasás | Adatok beolvasása a HDInsightSparkStageTaskAccumulables táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightSparkTaskEvents/olvasás | Adatok beolvasása a HDInsightSparkTaskEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightStormLogs/olvasás | Adatok beolvasása a HDInsightStormLogs táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightStormMetrics/olvasás | Adatok beolvasása a HDInsightStormMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightStormTopologyMetrics/olvasás | Adatok beolvasása a HDInsightStormTopologyMetrics táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/szívverés/olvasás | Adatok beolvasása a szívverési táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HuntingBookmark/olvasás | Adatok beolvasása a HuntingBookmark táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/IISAssessmentRecommendation/olvasás | Adatok beolvasása a IISAssessmentRecommendation táblából |
@@ -7527,6 +7644,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/KubeNodeInventory/olvasás | Adatok beolvasása a KubeNodeInventory táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/KubePodInventory/olvasás | Adatok beolvasása a KubePodInventory táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/KubeServices/olvasás | Adatok beolvasása a KubeServices táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/LAQueryLogs/olvasás | Adatok beolvasása a LAQueryLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/LinuxAuditLog/olvasás | Adatok beolvasása a LinuxAuditLog táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/MAApplication/olvasás | Adatok beolvasása a MAApplication táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/MAApplicationHealth/olvasás | Adatok beolvasása a MAApplicationHealth táblából |
@@ -7646,6 +7764,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/UpdateRunProgress/olvasás | Adatok beolvasása a UpdateRunProgress táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/updateSummary típusú/olvasás | Adatok beolvasása a updateSummary típusú táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/használat/olvasás | Adatok beolvasása a használati táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/UserAccessAnalytics/olvasás | Adatok beolvasása a UserAccessAnalytics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/UserPeerAnalytics/olvasás | Adatok beolvasása a UserPeerAnalytics táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/VMBoundPort/olvasás | Adatok beolvasása a VMBoundPort táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/VMComputer/olvasás | Adatok beolvasása a VMComputer táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/VMConnection/olvasás | Adatok beolvasása a VMConnection táblából |
@@ -7654,6 +7774,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/WaaSDeploymentStatus/olvasás | Adatok beolvasása a WaaSDeploymentStatus táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/WaaSInsiderStatus/olvasás | Adatok beolvasása a WaaSInsiderStatus táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/WaaSUpdateStatus/olvasás | Adatok beolvasása a WaaSUpdateStatus táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/lista/olvasás | Adatok beolvasása a listáról |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/WDAVStatus/olvasás | Adatok beolvasása a WDAVStatus táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/WDAVThreat/olvasás | Adatok beolvasása a WDAVThreat táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/WindowsClientAssessmentRecommendation/olvasás | Adatok beolvasása a WindowsClientAssessmentRecommendation táblából |
@@ -7781,6 +7902,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/overview.md), [azure R
 > | Microsoft. Authorization/policyAssignments/olvasás | Szabályzat-hozzárendelés adatainak beolvasása. |
 > | Microsoft. Authorization/policyAssignments/írás | Szabályzat-hozzárendelés létrehozása a megadott hatókörben. |
 > | Microsoft. Authorization/policyAssignments/delete | Szabályzat-hozzárendelés törlése a megadott hatókörben. |
+> | Microsoft. Authorization/policyAssignments/mentesített/művelet | Szabályzat-hozzárendelés kizárása a megadott hatókörben. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/READ | Információk beolvasása a privát kapcsolat társításával kapcsolatban. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/írás | Létrehoz vagy frissít egy magánhálózati kapcsolati társítást. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/delete | Egy privát hivatkozás társításának törlése. |
@@ -7797,6 +7919,9 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/overview.md), [azure R
 > | Microsoft. Authorization/policyDefinitions/olvasás | Házirend-definíció adatainak beolvasása. |
 > | Microsoft. Authorization/policyDefinitions/írás | Hozzon létre egy egyéni szabályzat-definíciót. |
 > | Microsoft. Authorization/policyDefinitions/delete | Házirend-definíció törlése. |
+> | Microsoft. Authorization/policyExemptions/olvasás | Házirend-kivétel információinak beolvasása. |
+> | Microsoft. Authorization/policyExemptions/írás | Házirend-kivétel létrehozása a megadott hatókörben. |
+> | Microsoft. Authorization/policyExemptions/delete | Házirend-kivétel törlése a megadott hatókörben. |
 > | Microsoft. Authorization/policySetDefinitions/olvasás | Házirend-készlet definíciójának beolvasása. |
 > | Microsoft. Authorization/policySetDefinitions/írás | Hozzon létre egy egyéni házirend-készlet definícióját. |
 > | Microsoft. Authorization/policySetDefinitions/delete | Házirend-készlet definíciójának törlése. |

@@ -1,14 +1,14 @@
 ---
 title: Megosztott képgyűjtemény konfigurálása a Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat megosztott képtárat Azure DevTest Labs
+description: Megtudhatja, hogyan konfigurálhat egy megosztott képtárat Azure DevTest Labsban, amely lehetővé teszi, hogy a felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483788"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271039"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
 A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/windows/shared-image-galleries.md) -katalógus szolgáltatást. Lehetővé teszi, hogy a labor-felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről. Emellett az egyéni felügyelt virtuálisgép-rendszerképekhez is felépítheti a struktúrát és a szervezetet. A megosztott rendszerkép-katalógus funkció a következőket támogatja:

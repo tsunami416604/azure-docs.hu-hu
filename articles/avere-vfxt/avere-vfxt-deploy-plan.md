@@ -1,17 +1,17 @@
 ---
 title: A avere vFXT-rendszerek megtervezése – Azure
-description: Az Azure-beli avere-vFXT üzembe helyezése előtti teendők megtervezése
+description: Tervezze meg az igényeinek megfelelő avere-vFXT az Azure-fürthöz. Ismerkedjen meg az Azure piactéren vagy a virtuális gépek létrehozása előtt feltett kérdésekre.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922676"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272790"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 

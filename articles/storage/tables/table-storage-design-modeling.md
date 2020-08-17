@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235961"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271192"
 ---
 # <a name="modeling-relationships"></a>Kapcsolatok modellezése
 Ez a cikk az Azure Table Storage-megoldások kialakításához segítséget nyújtó modellezési folyamatot ismerteti.
@@ -51,7 +51,7 @@ Az alábbi táblázat összefoglalja a fentiekben ismertetett megközelítések 
 <td>
 <ul>
 <li>Egyetlen művelettel frissítheti a részleg entitásait.</li>
-<li>Az EGT segítségével megtarthatja az egységességet, ha az alkalmazotti entitás frissítésekor/beszúrásakor/törlésekor követelmény, hogy módosítania kell egy részleg entitását. Ha például az egyes részlegek esetében fenntart egy részleg alkalmazottainak a darabszámát.</li>
+<li>Az Entity Group Transaction * (EGT) használatával megtarthatja az egységességet, ha egy részleg entitás módosítására van szükség, amikor az alkalmazotti entitást frissíti/behelyezi vagy törli. Ha például az egyes részlegek esetében fenntart egy részleg alkalmazottainak a darabszámát.</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ Az alábbi táblázat összefoglalja a fentiekben ismertetett megközelítések 
 </td>
 </tr>
 </table>
+
+* További információ: entitás- [csoport tranzakciói](table-storage-design.md#entity-group-transactions)  
+
 
 A lehetőségek közül választhat, és az előnyeit és hátrányait a legjelentősebb mértékben az adott alkalmazási helyzettől függ. Például azt, hogy milyen gyakran módosítja a részleg entitásait; az összes alkalmazotti lekérdezésnek szüksége van a további tanszéki információkra; Hogyan közelíti meg a partíciók skálázhatósági korlátait vagy a Storage-fiókját?  
 

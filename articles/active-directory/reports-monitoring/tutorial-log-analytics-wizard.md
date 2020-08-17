@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 337b75412751fb15e3fc1746666a8efb385a8939
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854491"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271263"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
@@ -152,7 +152,7 @@ Ellenőrizze, hogy a feltételes hozzáférés sikeres volt-e
 
 Megszámolja, hogy hány siker történt
 
-' SigninLogs | where ConditionalAccessStatus = = "sikeres" | projekt UserDisplayName, ConditionalAccessStatus | száma
+`SigninLogs | where ConditionalAccessStatus == "success" | project UserDisplayName, ConditionalAccessStatus | count`
 
 
 A sikeres bejelentkezések összesített száma a felhasználó által naponta:
@@ -216,7 +216,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
 4. A **naplók** lapon kattintson az első **lépések**elemre.
 
-5. A **Keresés** szövegmezőbe írja be a következőt:`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
+5. A **Keresés** szövegmezőbe írja be a következőt: `SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
 
 6. Kattintson a **Futtatás** elemre.  
 
@@ -268,7 +268,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     3. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
-    4. Kattintson a **Létrehozás** lehetőségre.
+    4. Kattintson a **Create** (Létrehozás) gombra.
 
 
 15. A **művelet testreszabása**területen hajtsa végre a következő lépéseket:
@@ -277,15 +277,15 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     1. Válassza ki az **e-mail tárgyát**.
 
-    2. A **Tárgy** mezőbe írja be a következőt:`Breakglass account has been used`
+    2. A **Tárgy** mezőbe írja be a következőt: `Breakglass account has been used`
 
 16. A **riasztási szabály részletei**területen hajtsa végre a következő lépéseket:
 
     ![Riasztási szabály részletei](./media/tutorial-log-analytics-wizard/alert-rule-details.png)
 
-    1. A **riasztási szabály neve** szövegmezőbe írja be a következőt:`Breakglass account`
+    1. A **riasztási szabály neve** szövegmezőbe írja be a következőt: `Breakglass account`
 
-    2. A **Leírás** szövegmezőbe írja be a következőt:`Your emergency access account has been used`
+    2. A **Leírás** szövegmezőbe írja be a következőt: `Your emergency access account has been used`
 
 17. Kattintson a **Riasztási szabály létrehozása** lehetőségre.   
 
@@ -328,7 +328,7 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
     ![Lekérdezés hozzáadása](./media/tutorial-log-analytics-wizard/add-query.png)
 
-9. A lekérdezés szövegmezőbe írja be a következőt:`SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
+9. A lekérdezés szövegmezőbe írja be a következőt: `SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
 10. Kattintson a **lekérdezés futtatása**gombra.
 
@@ -371,7 +371,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
     ![Munkafüzet-lekérdezés hozzáadása](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
-7. A lekérdezés szövegmezőbe írja be a következőt:`SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
+7. A lekérdezés szövegmezőbe írja be a következőt: `SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
 8. Kattintson a **lekérdezés futtatása**gombra.
 
@@ -392,7 +392,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

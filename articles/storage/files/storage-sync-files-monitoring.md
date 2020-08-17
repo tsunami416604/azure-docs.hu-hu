@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185621"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271056"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -40,7 +40,7 @@ A Azure File Sync metrikái alapértelmezés szerint engedélyezve vannak, és 1
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
@@ -112,7 +112,7 @@ Egy **kiszolgálói végpont** állapotának megtekintéséhez a portálon navig
 
 - A következő metrikai diagramok láthatók a Storage Sync szolgáltatás portálon:
 
-  | Metrika neve | Description | Lap neve |
+  | Metrika neve | Leírás | Lap neve |
   |-|-|-|
   | Szinkronizált bájtok száma | Átvitt adatok mérete (feltöltés és letöltés) | Szinkronizálási csoport, kiszolgálói végpont |
   | Felhőbeli rétegek felidézése | Visszahívott adatmennyiség | Regisztrált kiszolgálók |
@@ -135,7 +135,7 @@ A kiszolgáló telemetria-eseménynaplójának használatával figyelheti a regi
 
 Szinkronizálás állapota
 
-- A 9102-es AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után van naplózva. Ezzel az eseménnyel megállapíthatja, hogy a szinkronizálási munkamenetek sikeresek-e (**HResult = 0**), és hogy vannak-e az egyes elemek szinkronizálási hibái. További információ: [Sync Health](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és  [per-Item errors](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentáció.
+- A 9102-es AZONOSÍTÓJÚ esemény a szinkronizálási munkamenet befejeződése után van naplózva. Ezzel az eseménnyel megállapíthatja, hogy a szinkronizálási munkamenetek sikeresek-e (**HResult = 0**), és hogy vannak-e az egyes elemek szinkronizálási hibái (**PerItemErrorCount**). További információ: [Sync Health](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és  [per-Item errors](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentáció.
 
   > [!Note]  
   > Időnként a szinkronizálási munkamenetek nem teljesek, vagy nem nulla PerItemErrorCount rendelkeznek. Azonban továbbra is előrehaladást végeznek, és néhány fájl szinkronizálása sikeresen megtörtént. Ezt az alkalmazott mezőkben láthatja, például AppliedFileCount, AppliedDirCount, AppliedTombstoneCount és AppliedSizeBytes. Ezek a mezők tájékoztatják, hogy a munkamenet mennyivel járt sikerrel. Ha úgy látja, hogy egy sorban több szinkronizálási munkamenet is meghibásodik, és egyre nagyobb mértékben vannak alkalmazva, a támogatási jegy megnyitása előtt adja meg a szinkronizálási időt.
@@ -172,7 +172,7 @@ A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyis
 
 A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesítményfigyelőben:
 
-| Teljesítmény Object\Counter neve | Description |
+| Teljesítmény Object\Counter neve | Leírás |
 |-|-|
 | AFS bájtok Transferred\Downloaded sebessége (bájt/s) | A másodpercenként letöltött bájtok száma. |
 | AFS bájtok Transferred\Uploaded sebessége (bájt/s) | A másodpercenként feltöltött bájtok száma. |
@@ -275,7 +275,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
 - [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: c3e8299a5acd7cbd3a6fd3cd76af33f4a798ad12
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832994"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272331"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Áttekintés – helyszíni Active Directory tartományi szolgáltatások hitelesítés SMB-en keresztül az Azure-fájlmegosztás esetében
 
-[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [Hogyan működik című szakaszt](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) a authentcation megfelelő tartományi szolgáltatás kiválasztásához. A beállítás eltérő a választott tartományi szolgáltatástól függ. Ez a cikksorozat a helyszíni AD DS engedélyezésére és konfigurálására koncentrál az Azure-fájlmegosztás segítségével történő hitelesítéshez.
+[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [Hogyan működik című szakaszt](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) a authentcation megfelelő tartományi szolgáltatás kiválasztásához. A beállítás a választott tartományi szolgáltatástól függően eltérő. Ezek a cikksorozatok a helyszíni AD DS engedélyezésére és konfigurálására összpontosítanak az Azure-fájlmegosztás segítségével történő hitelesítéshez.
 
 Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olvassa el a [tervezési útmutatót](storage-files-planning.md) , mielőtt elolvassa a következő cikksorozatot.
 
@@ -27,7 +27,7 @@ Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olva
 - Támogatja a Kerberos-hitelesítést az AD-vel az RC4-HMAC titkosítással. Az AES Kerberos-titkosítás még nem támogatott.
 - Támogatja az egyszeri bejelentkezési élményt.
 - Csak a Windows 7 vagy Windows Server 2008 R2 rendszernél újabb verziójú operációs rendszert futtató ügyfelek esetében támogatott.
-- Csak a Storage-fiók által regisztrált AD-erdőben támogatott. Alapértelmezés szerint csak egyetlen erdő AD DS hitelesítő adataival érheti el az Azure-fájlmegosztást. Ha egy másik erdőből kell hozzáférnie az Azure-fájlmegosztás számára, győződjön meg arról, hogy a megfelelő erdőszintű megbízhatósági kapcsolat van konfigurálva. a részletekért tekintse meg a [gyakori kérdéseket](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) .
+- Csak azon AD-erdőben támogatott, amelyhez a Storage-fiók regisztrálva van. Alapértelmezés szerint csak egyetlen erdő AD DS hitelesítő adataival érheti el az Azure-fájlmegosztást. Ha egy másik erdőből kell hozzáférnie az Azure-fájlmegosztás számára, győződjön meg arról, hogy a megfelelő erdőszintű megbízhatósági kapcsolat van konfigurálva. a részletekért tekintse meg a [gyakori kérdéseket](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) .
 - A nem támogatja a AD DS-ben létrehozott számítógépfiókok hitelesítését. 
 
 Ha engedélyezi a AD DS az Azure-fájlmegosztás SMB protokollon keresztül történő engedélyezését, a AD DS csatlakoztatott gépek az Azure-fájlmegosztást meglévő AD DS hitelesítő adataival csatlakoztathatók. Ez a funkció AD DS környezettel engedélyezhető, amely a helyszíni gépeken vagy az Azure-ban üzemeltethető.

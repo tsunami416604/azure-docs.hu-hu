@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439378"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271277"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -49,7 +49,7 @@ Felhőerőforrások:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * Egy Azure Machine Learning-munkaterület. Kövesse a Azure Portal használatának első lépései című témakör útmutatását, és Ismerje meg, hogyan használhatja [a Azure Machine learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) .
-  * Jegyezze fel a munkaterület nevét, az erőforráscsoportot és az előfizetés AZONOSÍTÓját. Ezek az értékek a Azure Portal munkaterület áttekintésében érhetők el. Az oktatóanyag későbbi részében ezeket az értékeket fogja használni az Azure-jegyzetfüzetek munkaterület-erőforrásokhoz való összekapcsolásához.
+  * Jegyezze fel a munkaterület nevét, az erőforráscsoportot és az előfizetés AZONOSÍTÓját. Ezek az értékek a Azure Portal munkaterület áttekintésében érhetők el. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni Azure Notebooks-fájlnak a munkaterület-erőforrásokhoz való összekapcsolásához.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning modul létrehozása és üzembe helyezése
 
@@ -150,7 +150,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy, az Azure Machine Learning által működtetett IoT Edge-modult. Továbbléphet bármely másik oktatóanyagra, és megtudhatja, milyen más módokon alakíthatja jelentőséggel bíró üzleti információkká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 

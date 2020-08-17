@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534481"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272899"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -182,7 +182,7 @@ A IoT Hub az üzeneteket az ügyfél által birtokolt Storage-fiókba irányíth
 
 5. Navigáljon az **Egyéni végpontok** szakaszhoz, és kattintson a **Hozzáadás**gombra. Válassza a **tároló** lehetőséget a végpont típusaként.
 
-6. A megjelenített oldalon adja meg a végpont nevét, válassza ki a blob Storage-ban használni kívánt tárolót, adja meg a kódolást és a fájlnév formátumát. Válassza ki a **hitelesítési típusként** **hozzárendelt rendszer** elemet a tárolási végponthoz. Kattintson a **Létrehozás** gombra.
+6. A megjelenített oldalon adja meg a végpont nevét, válassza ki a blob Storage-ban használni kívánt tárolót, adja meg a kódolást és a fájlnév formátumát. Válassza az **identitás-alapú** **hitelesítési típust** a tárolási végpontnak. Kattintson a **Létrehozás** gombra.
 
 Most, hogy az egyéni tárolási végpont a hub rendszerhez rendelt identitásának használatára van beállítva, és a tűzfal korlátozásai ellenére jogosult a tárolási erőforrás elérésére. Ezt a végpontot mostantól útválasztási szabály beállításához is használhatja.
 
@@ -234,7 +234,7 @@ IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlok
 
 4. A IoT Hub erőforrás lapján navigáljon a **fájlfeltöltés** lapra.
 
-5. A megjelenő oldalon válassza ki a blob Storage-ban használni kívánt tárolót, konfigurálja a **fájl értesítési beállításait**, az **sas TTL**, az **alapértelmezett TTL**és a **maximális kézbesítések** értéket a kívánt módon. Válassza ki a **hitelesítési típusként** **hozzárendelt rendszer** elemet a tárolási végponthoz. Kattintson a **Létrehozás** gombra.
+5. A megjelenő oldalon válassza ki a blob Storage-ban használni kívánt tárolót, konfigurálja a **fájl értesítési beállításait**, az **sas TTL**, az **alapértelmezett TTL**és a **maximális kézbesítések** értéket a kívánt módon. Válassza az **identitás-alapú** **hitelesítési típust** a tárolási végpontnak. Kattintson a **Létrehozás** gombra.
 
 A file upload tárolási végpontja most úgy van beállítva, hogy a hub rendszerhez rendelt identitását használja, és a tűzfal korlátozásai ellenére jogosult a tárolási erőforrás elérésére.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9aafe6af0157ec187e787006d6c04bc1c5c8a8b0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033738"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271209"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Oktatóanyag: a Atlassian-felhő integrálása Azure Active Directory
 
@@ -77,6 +77,16 @@ Az Azure AD SSO Atlassian-felhővel való konfigurálásához és teszteléséhe
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+
+1. A Atlassian-felhőben lévő konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, a **Atlassian-felhő beállítása** elemre kattintva megnyithatja a Atlassian Cloud alkalmazást. Itt adja meg a rendszergazdai hitelesítő adatokat a Atlassian-felhőbe való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a Atlassian-felhőt, jelentkezzen be a Atlassian Cloud vállalati webhelyre rendszergazdaként, és hajtsa végre az alábbi lépéseket.
 
 1. Mielőtt elkezdené a Atlassian, és másolja/mentse a példány URL-címét
    > [!NOTE]
@@ -177,7 +187,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Míg az Azure nem tölti fel a **User. mail** attribútumot az Azure ad-bérlők által az Office 365-licencek nélkül létrehozott felhasználók számára, és az e-maileket a **userPrincipalName** attribútumban tárolja az ilyen felhasználók számára. A Atlassian Cloud elvárja, hogy a **NameIdentifier** (**egyedi felhasználói azonosító**) a felhasználó e-mail-címére legyen leképezve (**User. userPrincipalName**).  Szerkessze a **forrás attribútumot** , és módosítsa a **User. userPrincipalName**értékre. Mentse a jogcím módosításait.
+      b. Míg az Azure nem tölti fel a **User. mail** attribútumot az Azure ad-bérlők által az Office 365-licencek nélkül létrehozott felhasználók számára, és az e-maileket a **userPrincipalName** attribútumban tárolja az ilyen felhasználók számára. A Atlassian Cloud elvárja, hogy a **NameIdentifier** (**egyedi felhasználói azonosító**) a felhasználó e-mail-címére legyen leképezve (**User. userPrincipalName**).  Szerkessze a **forrás attribútumot**  , és módosítsa a **User. userPrincipalName**értékre. Mentse a jogcím módosításait.
 
       ![image](./media/atlassian-cloud-tutorial/set-email.png)
          

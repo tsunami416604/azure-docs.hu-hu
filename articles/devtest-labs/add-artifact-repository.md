@@ -1,14 +1,14 @@
 ---
 title: Összetevő hozzáadása a laborhoz Azure DevTest Labsban | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá egy műtárgy-tárházat a laborhoz az Azure DevTest Labs szolgáltatásban.
+description: Megtudhatja, hogyan adhatja meg a laborhoz tartozó saját Azure DevTest Labs, hogy az eszközök ne legyenek elérhetők a nyilvános tárolóban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013455"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270978"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
 A DevTest Labs lehetővé teszi, hogy a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után adja meg a virtuális géphez hozzáadandó összetevőt. Ez az összetevő lehet egy eszköz vagy egy alkalmazás, amelyet telepíteni kíván a virtuális gépre. Az összetevők egy GitHub vagy Azure DevOps git-tárházból betöltött JSON-fájlban vannak meghatározva.
@@ -360,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>A parancsfájlban használt PowerShell-parancsok
 
-| PowerShell-parancs | Jegyzetek |
+| PowerShell-parancs | Megjegyzések |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ezzel a paranccsal lekérheti a labor részleteit, például annak helyét. |
 | [Új – AzResource](/powershell/module/az.resources/new-azresource) | Az összetevő-Tárházak hozzáadására nincs specifikus parancs. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag végzi a feladatot. Ehhez a parancsmaghoz vagy a **ResourceId** , vagy a **resourcename** és a **resourcetype** pár szükséges a létrehozandó erőforrás típusának megismeréséhez. Ez a minta parancsfájl az erőforrás neve és az erőforrástípus pár értéket használja. <br/><br/>Figyelje meg, hogy az összetevő-tárház forrását ugyanazon a helyen hozza létre, és a laborban megegyező erőforráscsoporthoz tartozik.|

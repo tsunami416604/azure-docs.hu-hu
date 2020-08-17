@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6857fba86aebbcfd7b20326e4a4a268467e4fc3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81603828"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Azure Active Directory integráció Amazon Web Services (AWS) (örökölt oktatóanyag)
 
@@ -69,7 +69,7 @@ Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
 * Amazon Web Services (AWS) támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO-t
-* Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, így valós időben biztosíthatja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Amazon Web Services (AWS) hozzáadása a gyűjteményből
 
@@ -86,7 +86,7 @@ Amazon Web Services (AWS) Azure AD-be való integrálásának konfigurálásáho
 
     ![Amazon Web Services (AWS) az eredmények listájában](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli Amazon Web Services (AWS) egy "Britta Simon" nevű teszt felhasználó alapján.
 
@@ -126,7 +126,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name  | Forrás attribútum  | Névtér |
+    | Name (Név)  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -148,7 +148,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     f. Kattintson **az OK** gombra
 
-    : Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-fájljának** letöltéséhez és a számítógépre mentéséhez.
 
@@ -273,11 +273,11 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Ha több könyvtárat használ, akkor a következő mintát használhatja, amely az elsődleges tartománya`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több könyvtárat használ, akkor a következő mintát használhatja, amely az elsődleges tartománya  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Microsoft Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. A beolvasott egyszerű szolgáltatások listájából szerezze be a módosítandó elemet. A CTRL + F billentyűkombinációval is megkeresheti az alkalmazást az összes felsorolt ServicePrincipals. A következő lekérdezést használhatja az Azure AD tulajdonságlapról másolt **objektumazonosító** használatával, hogy megkapja a megfelelő szolgáltatásnevet.
+    f. A beolvasott egyszerű szolgáltatások listájából szerezze be a módosítandó elemet. A CTRL + F billentyűkombinációval is megkeresheti az alkalmazást az összes felsorolt ServicePrincipals. A következő lekérdezéssel az Azure AD tulajdonságlapról másolt **egyszerű szolgáltatásnév-objektum azonosítójának** használatával érheti el a megfelelő szolgáltatásnevet.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 

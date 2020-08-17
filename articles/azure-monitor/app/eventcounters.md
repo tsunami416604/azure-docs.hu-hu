@@ -3,22 +3,22 @@ title: Az Application Insightsban lévő események számlálói | Microsoft Doc
 description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324403"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272365"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
-`EventCounter`a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. [Ez](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést nyújt és `EventCounters` példákkal szolgál az alkalmazások közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
+`EventCounter` a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. [Ez](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést nyújt és `EventCounters` példákkal szolgál az alkalmazások közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
 
 Míg a felhasználók bármilyen egyéni személyt közzétehetnek az `EventCounters` igényeinek megfelelően, a .net Core 3,0 futtatókörnyezet alapértelmezés szerint közzéteszi ezeket a számlálókat. A dokumentum végigvezeti a begyűjtéséhez és megtekintéséhez `EventCounters` (rendszer által definiált vagy felhasználó által definiált) az Azure Application Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>A Application Insights használata a EventCounters gyűjtéséhez
 
-Application Insights támogatja a begyűjtést a `EventCounters` alkalmazással `EventCounterCollectionModule` , amely a [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)újonnan kiadott nuget-csomag részét képezi. `EventCounterCollectionModule`automatikusan engedélyezve van a [AspNetCore](asp-net-core.md) vagy a [WorkerService](worker-service.md)használatakor. `EventCounterCollectionModule`a nem konfigurálható adatgyűjtési gyakorisággal (60 másodperc) gyűjti a számlálókat. A EventCounters gyűjtéséhez nincs szükség különleges engedélyekre.
+Application Insights támogatja a begyűjtést a `EventCounters` alkalmazással `EventCounterCollectionModule` , amely a [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)újonnan kiadott nuget-csomag részét képezi. `EventCounterCollectionModule` automatikusan engedélyezve van a [AspNetCore](asp-net-core.md) vagy a [WorkerService](worker-service.md)használatakor. `EventCounterCollectionModule` a nem konfigurálható adatgyűjtési gyakorisággal (60 másodperc) gyűjti a számlálókat. A EventCounters gyűjtéséhez nincs szükség különleges engedélyekre.
 
 ## <a name="default-counters-collected"></a>Összegyűjtött alapértelmezett számlálók
 
@@ -45,10 +45,6 @@ A .NET Core 3,0-ben futó alkalmazások esetében az SDK automatikusan összegy�
 |`System.Runtime` | `threadpool-queue-length` |
 |`System.Runtime` | `threadpool-completed-items-count` |
 |`System.Runtime` | `active-timer-count` |
-|`Microsoft.AspNetCore.Hosting` | `requests-per-second` |
-|`Microsoft.AspNetCore.Hosting` | `total-requests` |
-|`Microsoft.AspNetCore.Hosting` | `current-requests` |
-|`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
 > A Microsoft. AspNetCore. hosting kategória számlálói csak ASP.NET Core alkalmazásokban vannak hozzáadva.
