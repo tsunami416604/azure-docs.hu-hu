@@ -4,12 +4,12 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006332"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263010"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -53,7 +53,7 @@ Ha nem rendelkezik megfelelő engedélyekkel, [visszaállíthat egy lemezt](#res
 
 1. A visszaállítani kívánt virtuális géphez társított **tárolóban**válassza az Azure-beli  >  **virtuális gép**biztonsági mentése elemet.
 1. Válasszon ki egy virtuális gépet. Alapértelmezés szerint a virtuális gép irányítópultján az utolsó 30 nap helyreállítási pontjai jelennek meg. 30 napnál régebbi helyreállítási pontokat jeleníthet meg, vagy szűréssel megkeresheti a dátumokon, időtartományokon és a pillanatkép-konzisztencia különböző típusain alapuló helyreállítási pontokat.
-1. A virtuális gép visszaállításához kattintson a **virtuális gép visszaállítása**elemre.
+1. A virtuális gép visszaállításához válassza a **virtuális gép visszaállítása**lehetőséget.
 
     ![Visszaállítási pont](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ A [visszaállítási lehetőségek](#restore-options)egyike gyorsan létrehozhat
 
 ## <a name="restore-disks"></a>Lemezek visszaállítása
 
-Az egyik [visszaállítási lehetőségként](#restore-options)létrehozhat egy lemezt egy visszaállítási pontból. Ezután a lemezzel a következők egyikét végezheti el:
+Az egyik [visszaállítási lehetőségként](#restore-options)létrehozhat egy lemezt egy visszaállítási pontból. Ezután a lemezzel a következő műveletek egyikét végezheti el:
 
 - A visszaállítási művelet során létrehozott sablon használatával testreszabhatja a beállításokat, és aktiválhatja a virtuális gépek üzembe helyezését. Szerkessze az alapértelmezett sablon beállításait, és küldje el a sablont a virtuális gép telepítéséhez.
 - [Visszaállított lemezek csatolása](../virtual-machines/windows/attach-managed-disk-portal.md) egy meglévő virtuális géphez.
@@ -95,7 +95,7 @@ Az egyik [visszaállítási lehetőségként](#restore-options)létrehozhat egy 
 1. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot a visszaállított lemezekhez, vagy hozzon létre egy újat globálisan egyedi névvel.
 1. Az **átmeneti hely**mezőben válassza ki azt a Storage-fiókot, amelyre a VHD-ket másolni szeretné. [További információk](#storage-accounts).
 
-    ![A helyreállítási konfiguráció befejeződött](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![Erőforráscsoport és előkészítési hely kiválasztása](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Válassza a **visszaállítás** lehetőséget a visszaállítási művelet elindításához.
 

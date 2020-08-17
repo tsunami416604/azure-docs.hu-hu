@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6e4f71be1dc3cdaeb01069f234531da29a7b4977
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498701"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263095"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -254,7 +254,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Energiaállapot | Leírás
 |----|----|
 | Indítás | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
-| Fut | Azt jelzi, hogy a virtuális gép fut. |
+| Futó | Azt jelzi, hogy a virtuális gép fut. |
 | Leállítás | Azt jelzi, hogy a virtuális gép leáll. | 
 | Leállítva | Azt jelzi, hogy a virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |
 | Felszabadítás | Azt jelzi, hogy a virtuális gép felszabadítása folyamatban van. |
@@ -279,6 +279,8 @@ ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
 ```
+
+Az előfizetésben lévő összes virtuális gép energiaellátási állapotának lekéréséhez használja [Virtual Machines az összes olyan API-](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) t, amelynek **statusOnly** a paraméter értéke *true (igaz*).
 
 ## <a name="management-tasks"></a>Felügyeleti feladatok
 

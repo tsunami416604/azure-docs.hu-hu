@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Micr
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78672945"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263112"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure-beli fájlok helyreállítása Windows Serverre
 
@@ -21,7 +21,7 @@ Az Azure Backup lehetővé teszi kiválasztott elemek helyreállítását a Wind
 > * Helyreállítási pont kiválasztása
 > * Elemek visszaállítása a helyreállítási pontból
 
-Ez az oktatóanyag azt feltételezi, hogy már elvégezte a [Windows Serverről az Azure-ba történő biztonsági mentés](backup-windows-with-mars-agent.md) lépéseit, és van legalább egy biztonsági másolata a Windows Server-fájlokról az Azure-ban.
+Ez az oktatóanyag feltételezi, hogy már végrehajtotta a [Windows Serverről az Azure](backup-windows-with-mars-agent.md) -ba történő biztonsági mentés lépéseit, és legalább egy biztonsági másolatot készít a Windows Server-fájljairól az Azure-ban.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Csak egyes elemek helyreállításának indítása
 
@@ -29,39 +29,39 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 
 1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
 
-    ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars.png)
+    ![Beépülő modul Microsoft Azure Backup](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
-2. A varázslóban kattintson az **Adatok helyreállítása** elemre az ügynökkonzol **Műveletek ablaktábláján**, amellyel elindíthatja az **Adatok helyreállítása** varázslót.
+2. A varázslóban válassza az **adatok helyreállítása** lehetőséget az ügynök konzoljának **műveletek paneljén** az **adatok helyreállítása** varázsló elindításához.
 
-    ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
+    ![Adatok helyreállítása elem kiválasztása](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. A **Kezdeti lépések** oldalon válassza az **Ez a kiszolgáló (kiszolgáló neve)** lehetőséget, és kattintson a **Tovább** gombra.
+3. A **első lépések** lapon válassza ki **ezt a kiszolgálót (kiszolgáló neve)** , majd kattintson a **tovább**gombra.
 
-4. A **Helyreállítási mód kiválasztása** lapon válassza az **Egyes fájlok és mappák** lehetőséget, majd kattintson a **Tovább** gombra a helyreállítási pont kiválasztásának megkezdéséhez.
+4. A **helyreállítási mód kiválasztása** lapon válassza az **egyes fájlok és mappák** lehetőséget, majd a **tovább** gombra kattintva indítsa el a helyreállítási pont kiválasztási folyamatát.
 
-5. A **Kötet és dátum kiválasztása** oldalon válassza ki a visszaállítani kívánt fájlokat vagy mappákat tartalmazó kötetet, és kattintson a **Csatlakoztatás** elemre. Válassza ki a dátumot, és válassza ki a helyreállítási pontnak megfelelő időpontot a legördülő menüből. A **félkövérrel** szedett dátumok azt jelzik, hogy legalább egy helyreállítási pont áll rendelkezésre az adott napon.
+5. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely a visszaállítani kívánt fájlokat vagy mappákat tartalmazza, majd válassza a **Csatlakoztatás**lehetőséget. Válassza ki a dátumot, és válassza ki a helyreállítási pontnak megfelelő időpontot a legördülő menüből. A **félkövérrel** szedett dátumok azt jelzik, hogy legalább egy helyreállítási pont áll rendelkezésre az adott napon.
 
-    ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
+    ![Kötet és dátum kiválasztása](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    Ha a **Csatlakoztatás** gombra kattint, az Azure Backup elérhetővé teszi a helyreállítási pontot lemezként. Keresse meg a fájlokat a lemezen, és végezze el a helyreállítást.
+    A **Csatlakoztatás**lehetőség kiválasztásakor a Azure Backup lemezként elérhetővé teszi a helyreállítási pontot. Keresse meg a fájlokat a lemezen, és végezze el a helyreállítást.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Elemek visszaállítása a helyreállítási pontból
 
-1. Ha a helyreállítási kötet csatlakoztatva van, kattintson a **Tallózás** gombra a Windows Explorer megnyitásához, és keresse meg a helyreállítani kívánt fájlokat és mappákat.
+1. A helyreállítási kötet csatlakoztatása után a **Tallózás** gombra kattintva nyissa meg a Windows Intézőt, és keresse meg a helyreállítani kívánt fájlokat és mappákat.
 
-    ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
+    ![Tallózás kiválasztása](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
     A fájlokat közvetlenül a helyreállítási kötetből is megnyithatja és ellenőrizheti.
 
-2. A Windows Explorerben másolja a fájlokat és/vagy mappákat, amelyeket vissza szeretne állítani, majd illessze be őket a kívánt helyre a kiszolgálón.
+2. A Windows Intézőben másolja a visszaállítani kívánt fájlokat és mappákat, majd illessze be őket a kiszolgálón található kívánt helyre.
 
-    ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
+    ![Fájlok és mappák másolása](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. Ha befejezte a fájlok és/vagy mappák visszaállítását, az **Adatok helyreállítása** varázsló **Fájlok tallózása és visszaállítása** oldalán kattintson a **Leválasztás** elemre.
+3. Ha befejezte a fájlok és mappák visszaállítását, az **adatok helyreállítása** varázsló **Tallózás és helyreállítási fájlok** lapján válassza a **Leválasztás**lehetőséget.
 
-    ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
+    ![Válassza a leválasztás lehetőséget](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4. Kattintson az **Igen** gombra, annak megerősítéséhez, hogy le kívánja választani a kötetet.
+4. Az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
 
     A pillanatkép leválasztása után az ügynökkonzol **Feladatok** ablaktábláján a **Feladat befejezve** üzenet jelenik meg.
 

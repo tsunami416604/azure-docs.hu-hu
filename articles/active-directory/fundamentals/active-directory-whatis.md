@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796625"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262958"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás-és hozzá
 
 - Belső erőforrások, például a vállalati hálózaton és az intraneten lévő alkalmazások, valamint a saját szervezete által fejlesztett felhőalapú alkalmazások. További információ a bérlők létrehozásáról a szervezet számára: gyors útmutató [: új bérlő létrehozása Azure Active Directoryban](active-directory-access-create-new-tenant.md).
 
-Az Azure AD és a Active Directory tartományi szolgáltatások közötti különbség megismeréséhez tekintse meg a [Active Directory összevetése a](active-directory-compare-azure-ad-to-ad.md)következővel: Azure Active Directory. Az Azure, az Azure AD és az Office 365 legfontosabb identitás-szolgáltatásainak jobb megismeréséhez használhatja a [vállalati építészek sorozatának](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) plakátjának különböző Microsoft Cloudeit is.
+Az Azure AD és a Active Directory tartományi szolgáltatások közötti különbség megismeréséhez tekintse meg a [Active Directory összevetése a](active-directory-compare-azure-ad-to-ad.md)következővel: Azure Active Directory. Az Azure, az Azure AD és az Office 365 legfontosabb identitás-szolgáltatásainak jobb megismeréséhez használhatja a [vállalati építészek sorozatának](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) plakátjának különböző Microsoft Cloudeit is.
 
 ## <a name="who-uses-azure-ad"></a>Ki használja az Azure AD-t?
 

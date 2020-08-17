@@ -4,12 +4,12 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167929"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262857"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -23,7 +23,7 @@ A leggyakoribb biztonsági mentési hibák a következő hibaelhárítási lép�
 
 ### <a name="step-1-check-azure-vm-health"></a>1. lépés: az Azure-beli virtuális gép állapotának keresése
 
-- Győződjön meg arról, hogy az Azure-beli **virtuális gép kiépítési állapota "fut"**: Ha a [virtuális gép kiépítési állapota](../virtual-machines/states-lifecycle.md#provisioning-states) **leállított/nem lefoglalt/frissítési** állapotban van, akkor az nem fog tudni a biztonsági mentési művelettel. Nyissa meg *Azure Portal > virtuálisgép-> áttekintés >* , és ellenőrizze a virtuális gép állapotát, és győződjön meg róla, hogy **fut** , és próbálkozzon újra a biztonsági mentési művelettel
+- Győződjön meg arról, hogy az Azure-beli **virtuális gép kiépítési állapota "fut"**: Ha a [virtuális gép kiépítési állapota](../virtual-machines/states-lifecycle.md#provisioning-states) **leállított/nem lefoglalt/frissítési** állapotban van, akkor az nem fog tudni a biztonsági mentési művelettel. Nyissa meg *Azure Portal > virtuálisgép-> áttekintés >* , és ellenőrizze a virtuális gép állapotát, és győződjön meg róla, hogy **fut**  , és próbálkozzon újra a biztonsági mentési művelettel
 - **Tekintse át a függőben lévő operációs rendszer frissítéseit vagy újraindítását**: Győződjön meg arról, hogy nincs függőben lévő operációsrendszer-frissítés vagy függőben lévő újraindítás a virtuális gépen.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>2. lépés: az Azure VM Guest Agent szolgáltatás állapotának keresése
@@ -96,7 +96,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 
 **5. ok: [az alkalmazás-ellenőrzési megoldás blokkolja IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
-## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – a virtuális gép sikertelen kiépítési állapotban van
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – A virtuális gép sikertelen kiépítési állapotban van
 
 **Hibakód**: UserErrorVmProvisioningStateFailed<br>
 **Hibaüzenet**: a virtuális gép sikertelen kiépítési állapotban van<br>
@@ -105,7 +105,7 @@ Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépe
 
 - Ha a VMSnapshot-bővítmény hibás állapotban van, kattintson a jobb gombbal a sikertelen bővítményre, és távolítsa el. Igény szerinti biztonsági mentés indítása. Ez a művelet újratelepíti a bővítményeket, majd futtatja a biztonsági mentési feladatot.  <br>
 - Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.
-- Ha a virtuális gép kiépítési állapota frissítési állapotban van, az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy kifogástalan állapotban van, majd próbálja megismételni a biztonsági mentési műveletet.
+- Ha a virtuális gép kiépítési állapota frissítési állapotban van, az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy kifogástalan, és próbálkozzon újra a biztonsági mentési művelettel.
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – Elérte a visszaállítási pont gyűjteményének korlátját
 
@@ -140,7 +140,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 
 **[Nem lehet lekérdezni a pillanatkép állapotát, vagy nem lehet pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 
-## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – a VMSnapshot-bővítmény művelete sikertelen volt
+## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – A VMSnapshot bővítmény művelete sikertelen volt
 
 **Hibakód**: ExtensionOperationFailedForManagedDisks <br>
 **Hibaüzenet**: a VMSnapshot-bővítmény művelete sikertelen volt.<br>
@@ -175,23 +175,23 @@ A biztonsági mentési művelet meghiúsulhat a 32 TB-nál nagyobb méretű virt
 
 A legutóbbi biztonsági mentési feladata sikertelen volt, mert folyamatban van egy meglévő biztonsági mentési művelet. Nem indíthat el új biztonsági mentési feladatot, amíg az aktuális feladatot be nem fejeződik. Győződjön meg arról, hogy a jelenleg folyamatban lévő biztonsági mentési művelet egy másik biztonsági mentési művelet elindítása vagy ütemezése előtt befejeződött. A biztonsági mentési feladatok állapotának megtekintéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be a Azure Portalba, és kattintson a **minden szolgáltatás**elemre. Írja be a Recovery Services kifejezést, és kattintson a **Recovery Services-tárolók** elemre. A Recovery Services-tárolók listája megjelenik.
+1. Jelentkezzen be a Azure Portalba, és válassza a **minden szolgáltatás**lehetőséget. Írja be a Recovery Servicest, és válassza a **Recovery Services**-tárolók lehetőséget. A Recovery Services-tárolók listája megjelenik.
 2. A Recovery Services-tárolók listájából válassza ki azt a tárat, amelyben a biztonsági mentés konfigurálva van.
-3. A tároló irányítópultjának menüjében kattintson a **biztonsági mentési feladatok** lehetőségre az összes biztonsági mentési feladat megjelenítéséhez.
+3. A tároló irányítópultjának menüjében válassza a **biztonsági mentési feladatok** lehetőséget, amely megjeleníti az összes biztonsági mentési feladatot.
    - Ha folyamatban van egy biztonsági mentési feladat, várja meg, amíg befejeződik, vagy szakítsa meg a biztonsági mentési feladatot.
-     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, majd kattintson a **Mégse** gombra, vagy használja a [PowerShellt](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
+     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, és válassza a **Mégse** vagy a [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)használata lehetőséget.
    - Ha egy másik tárolóban újrakonfigurálta a biztonsági mentést, akkor győződjön meg arról, hogy a régi tárolóban nem fut biztonsági mentési feladat. Ha létezik, szakítsa meg a biztonsági mentési feladatot.
-     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatra, majd a **Mégse** elemre, vagy használja a [PowerShellt](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
+     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, és válassza a **Mégse** vagy a [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) használata lehetőséget.
 4. Próbálkozzon újra a biztonsági mentési művelettel.
 
 Ha az ütemezett biztonsági mentési művelet tovább tart, ütközik a következő biztonsági mentési konfigurációval, tekintse át az [ajánlott eljárásokat](backup-azure-vms-introduction.md#best-practices), a [biztonsági mentés teljesítményét](backup-azure-vms-introduction.md#backup-performance)és a [visszaállítási szempontot](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
-## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – hiba miatt nem sikerült a biztonsági mentés. Részletekért lásd: feladatra vonatkozó hibaüzenet részletei
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – A biztonsági mentés egy hiba miatt nem sikerült. A részletekért lásd a feladat hibaüzenetének részleteit
 
 **Hibakód**: UserErrorCrpReportedUserError <br>
 **Hibaüzenet**: a biztonsági mentés hiba miatt meghiúsult. Részletekért lásd: feladatra vonatkozó hibaüzenet részletei.
 
-Ezt a hibát a IaaS virtuális gépről kell jelenteni. A probléma gyökerének azonosításához nyissa meg a Recovery Services tároló beállításait. A **figyelés** szakaszban válassza a **biztonsági mentési feladatok** lehetőséget az állapot szűréséhez és megtekintéséhez. Kattintson a **hibák** lehetőségre a mögöttes hibaüzenet részleteinek áttekintéséhez. A hiba részletei lapon szereplő javaslatok alapján további műveleteket is végrehajthat.
+Ezt a hibát a IaaS virtuális gépről kell jelenteni. A probléma gyökerének azonosításához nyissa meg a Recovery Services tároló beállításait. A **figyelés** szakaszban válassza a **biztonsági mentési feladatok** lehetőséget az állapot szűréséhez és megtekintéséhez. Válassza a **hibák** lehetőséget az alapul szolgáló hibaüzenet részleteinek áttekintéséhez. A hiba részletei lapon szereplő javaslatok alapján további műveleteket is végrehajthat.
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent – a biztonsági mentés nem sikerült: Ez a virtuális gép (aktívan) nem védett Azure Backup
 
@@ -204,7 +204,7 @@ Ellenőrizze, hogy az adott virtuális gép aktív-e (nem szüneteltetési álla
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution-for-this-error"></a>Megoldás ehhez a hibához
 
 Lehet, hogy a virtuálisgép-ügynök sérült, vagy a szolgáltatást leállították. A virtuálisgép-ügynök újratelepítése segíti a legújabb verzió beszerzését. A szolgáltatással folytatott kommunikáció újraindítását is lehetővé teszi.
 
@@ -229,12 +229,12 @@ A Linux rendszerű virtuális gépek esetében a legtöbb ügynökkel kapcsolato
    > [!NOTE]
    > Javasoljuk *, hogy csak* terjesztési tárházon keresztül frissítse az ügynököt. Nem javasoljuk, hogy közvetlenül a GitHubról töltse le az ügynököt, és frissítse azt. Ha a disztribúcióhoz tartozó legújabb ügynök nem érhető el, a telepítésével kapcsolatos útmutatásért forduljon az elosztási támogatáshoz. A legutóbbi ügynök kereséséhez nyissa meg a [Windows Azure Linux Agent](https://github.com/Azure/WALinuxAgent/releases) lapot a GitHub-tárházban.
 
-2. A következő parancs futtatásával győződjön meg arról, hogy az Azure-ügynök fut a virtuális gépen:`ps -e`
+2. A következő parancs futtatásával győződjön meg arról, hogy az Azure-ügynök fut a virtuális gépen: `ps -e`
 
    Ha a folyamat nem fut, indítsa újra a következő parancsok használatával:
 
-   - Ubuntu esetén:`service walinuxagent start`
-   - Egyéb disztribúciók esetén:`service waagent start`
+   - Ubuntu esetén: `service walinuxagent start`
+   - Egyéb disztribúciók esetén: `service waagent start`
 
 3. [Konfigurálja az automatikus újraindítási ügynököt](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Futtasson egy új teszt biztonsági mentést. Ha a hiba továbbra is fennáll, Gyűjtse össze a következő naplókat a virtuális gépről:
@@ -252,13 +252,13 @@ Ha a waagent részletes naplózásra van szüksége, kövesse az alábbi lépés
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Nincs beállítva a virtuálisgép-ügynök konfigurációs beállításai (Linux rendszerű virtuális gépek esetén)
 
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. Konfigurációs fájl beállításai **bővítmények. az engedélyezés** értékének az **y** és a **kiépítés** beállításnak kell lennie. az ügynököt úgy kell beállítani, hogy a biztonsági mentés **automatikusan** működjön.
-A VM-Agent konfigurációs fájl beállításainak teljes listáját lásd:<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+A VM-Agent konfigurációs fájl beállításainak teljes listáját lásd: <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Az alkalmazás-ellenőrzési megoldás blokkolja IaaSBcdrExtension.exe
 
-Ha [applockert](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtat, és a szabályok közzétevők vagy elérési utak, akkor előfordulhat, hogy letiltják a **IaaSBcdrExtension.exe** végrehajtható fájl futtatását.
+Ha az [applockert](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtatja, és a szabályok közzétevők vagy elérési utak, akkor előfordulhat, hogy letiltják a **IaaSBcdrExtension.exe** végrehajtható fájl futtatását.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution-to-this-issue"></a>A probléma megoldása
 
 Zárja ki az `/var/lib` AppLocker (vagy más alkalmazás-vezérlő szoftver) elérési útját vagy **IaaSBcdrExtension.exe** végrehajtható fájlt.
 
@@ -266,7 +266,7 @@ Zárja ki az `/var/lib` AppLocker (vagy más alkalmazás-vezérlő szoftver) el�
 
 A virtuális gép biztonsági mentése egy pillanatkép-parancsnak a mögöttes Storage-fiókba való kiállítására támaszkodik. A biztonsági mentés sikertelen lehet, mert nem fér hozzá a Storage-fiókhoz, vagy mert a pillanatkép-feladat végrehajtása késleltetve van.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution-for-this-issue"></a>A probléma megoldása
 
 A következő feltételek miatt előfordulhat, hogy a pillanatkép-feladat meghiúsul:
 
@@ -280,11 +280,11 @@ A következő feltételek miatt előfordulhat, hogy a pillanatkép-feladat meghi
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>` _ `<number>` .
 3. A zárolások megjelenítéséhez a **Beállítások** szakaszban válassza a **zárolások** lehetőséget.
-4. A zárolás eltávolításához válassza a három pontot, majd kattintson a **Törlés**gombra.
+4. A zárolás eltávolításához kattintson a három pontra, majd válassza a **Törlés**lehetőséget.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a>Visszaállítási pont gyűjtésének törlése
+### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a> Visszaállítási pont gyűjtésének törlése
 
 A zárolás eltávolítását követően a visszaállítási pontokat törölni kell.
 
@@ -307,16 +307,16 @@ A zárolás eltávolítását követően indítson el egy igény szerinti bizton
 Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, amely az erőforráscsoport zárolása miatt nem törlődik, próbálkozzon a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>` _ `<number>` , ahol a virtuális gép található.
+2. A **központi** menüben válassza a **minden erőforrás**lehetőséget, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>` _ `<number>` , ahol a virtuális gép található.
 
-    ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Válassza ki az erőforráscsoportot](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. Kattintson az erőforráscsoport elemre, és megjelenik az **Áttekintés** panel.
+3. Válassza az erőforráscsoport lehetőséget, majd az **Áttekintés** panel jelenik meg.
 4. Válassza a **rejtett típusok megjelenítése** lehetőséget az összes rejtett erőforrás megjelenítéséhez. Válassza ki a visszaállítási pontok gyűjteményeit a következő formátumban AzureBackupRG_ `<VMName>` _ `<number>` .
 
-    ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![A visszaállítási pont gyűjteményének kiválasztása](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. Kattintson a **Törlés** gombra a visszaállítási pont gyűjteményének tisztításához.
+5. Válassza a **Törlés** lehetőséget a visszaállítási pont gyűjteményének tisztításához.
 6. Próbálja megismételni a biztonsági mentési műveletet.
 
 > [!NOTE]

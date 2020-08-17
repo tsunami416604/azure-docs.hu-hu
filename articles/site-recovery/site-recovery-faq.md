@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083735"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263383"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -23,7 +23,7 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
 
-Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információ](site-recovery-overview.md).
+Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információk](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
@@ -121,7 +121,7 @@ A Recovery Services-tároló felügyelt identitásának bekapcsolásához nyissa
 
 - Resource Manager-alapú Storage-fiókok (szabványos típus):
   - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor)
-  - [Storage blob adatközreműködői](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Storage-blobadatok közreműködője](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Resource Manager-alapú Storage-fiókok (prémium típus):
   - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor)
   - [Storage blob-adattulajdonos](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -248,10 +248,79 @@ Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazás
 >[!Note]
 >Az egyéni parancsfájlok támogatásához a Site Recovery-ügynök verziószámának 9,24-es vagy újabb verziójúnak kell lennie.
 
+## <a name="replication-policy"></a>Replikációs szabályzat
+
+### <a name="what-is-a-replication-policy"></a>Mi a replikációs házirend?
+
+A replikációs házirend határozza meg a helyreállítási pontok megőrzési előzményeinek beállításait. A szabályzat az alkalmazás-konzisztens Pillanatképek gyakoriságát is meghatározza. Alapértelmezés szerint a Azure Site Recovery új replikációs házirendet hoz létre az alapértelmezett beállításokkal:
+
+- 24 óra a helyreállítási pontok megőrzési előzményeihez.
+- az alkalmazás-konzisztens Pillanatképek gyakoriságának 4 óra.
+
+[További információ a replikációs beállításokról](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Mi az összeomlás-konzisztens helyreállítási pont?
+
+Az összeomlás-konzisztens helyreállítási pont a lemezen lévő adatokkal rendelkezik, mintha a pillanatkép során kihúzta a hálózati kábelt a kiszolgálóról. Az összeomlás-konzisztens helyreállítási pont nem tartalmaz olyan semmit, ami memóriában volt a pillanatkép készítésekor.
+
+Napjainkban a legtöbb alkalmazás helyreállíthatja az összeomlás-konzisztens pillanatképeket is. Az összeomlás-konzisztens helyreállítási pontok általában elegendőek az adatbázis nélküli operációs rendszerekhez és alkalmazásokhoz, például a fájlkiszolgálók, a DHCP-kiszolgálók és a nyomtatókiszolgálók számára.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Milyen gyakorisággal történik az összeomlás-konzisztens helyreállítási pontok létrehozása?
+
+A Site Recovery 5 percenként létrehoz egy összeomlás-konzisztens helyreállítási pontot.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Mi az az alkalmazás-konzisztens helyreállítási pont?
+
+Az alkalmazással konzisztens helyreállítási pontok az alkalmazás-konzisztens Pillanatképek alapján jönnek létre. Az alkalmazás-konzisztens helyreállítási pontok ugyanazokat az adatmennyiségeket rögzítik, mint az összeomlás-konzisztens Pillanatképek, ugyanakkor a memóriában lévő és a folyamatban lévő összes tranzakció rögzítése is.
+
+A további tartalom miatt az alkalmazás-konzisztens Pillanatképek a leginkább érintettek, és a leghosszabb időt veszik igénybe. Javasoljuk, hogy az alkalmazás-konzisztens helyreállítási pontokat az adatbázis-operációs rendszerekhez és alkalmazásokhoz, például a SQL Serverhoz.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Milyen hatással van az alkalmazás-konzisztens helyreállítási pontok alkalmazása az alkalmazások teljesítményére?
+
+Az alkalmazás-konzisztens helyreállítási pontok rögzítik a memóriában és a folyamatban lévő összes adatmennyiséget. Mivel a helyreállítási pontok rögzítik ezeket az adatkereteket, a Windows rendszerhez Kötet árnyékmásolata szolgáltatás hasonló keretrendszerre van szükségük, hogy fokozatos leválasztása az alkalmazást. Ha a rögzítési folyamat gyakori, akkor hatással lehet a teljesítményre, ha a munkaterhelés már foglalt. A nem adatbázis-alapú számítási feladatok esetében nem ajánlott alacsony gyakorisággal használni az alkalmazás-konzisztens helyreállítási pontokat. Még az adatbázis-munkaterhelés esetében is, 1 óra elegendő.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mi a minimális gyakorisága az alkalmazás-konzisztens helyreállítási pontok generálásának?
+
+Site Recovery létrehozhat egy alkalmazás-konzisztens helyreállítási pontot, amelynek minimális gyakorisága 1 óra.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Hogyan történik a helyreállítási pontok létrehozása és mentése?
+
+Ha szeretné megtudni, hogyan hozza létre a Site Recovery helyreállítási pontokat, tekintse meg a replikációs házirendet. Ez a replikációs házirend egy 24 órás adatmegőrzési időszaktal rendelkező helyreállítási ponttal és 1 órás alkalmazás-konzisztens gyakorisági pillanatképtel rendelkezik.
+
+A Site Recovery 5 percenként létrehoz egy összeomlás-konzisztens helyreállítási pontot. Ez a gyakoriság nem módosítható. Az elmúlt órában 12 összeomlás-konzisztens pont és 1 alkalmazás-konzisztens pont közül választhat. Az idő előrehaladtával Site Recovery az utolsó órában túli összes helyreállítási pontot, és óránként csak 1 helyreállítási pontot ment.
+
+A következő képernyőkép szemlélteti a példát. A képernyőképen:
+
+- Az elmúlt órában a helyreállítási pontok 5 perces gyakorisággal vannak ellátva.
+- Az elmúlt órában az Site Recovery csak 1 helyreállítási pontot tart.
+
+   ![Generált helyreállítási pontok listája](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Meddig lehet visszaállítani?
+
+A legrégebben használható helyreállítási pont 72 óra.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>24 órás replikációs házirendtel rendelkezem. Mi történik, ha egy probléma megakadályozza, hogy Site Recovery a helyreállítási pontokat 24 óránál hosszabb ideig hozza létre? A korábbi helyreállítási pontok elvesznek?
+
+Nem, Site Recovery fogja megőrizni az összes korábbi helyreállítási pontot. A helyreállítási pontok adatmegőrzési időszaka alapján a Site Recovery csak akkor cseréli le a legrégebbi pontot, ha új pontokat hoz létre. A probléma miatt Site Recovery nem tud új helyreállítási pontokat előállítani. Amíg új helyreállítási pontra nem kerül sor, a régi pontok addig maradnak, amíg el nem éri a megőrzöttség ablakát.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Ha a replikáció engedélyezve van egy virtuális gépen, hogyan változtathatom meg a replikációs házirendet?
+
+Nyissa meg **site Recovery**tároló  >  **site Recovery infrastruktúra**-  >  **replikációs házirendek**lehetőséget. Válassza ki a szerkeszteni kívánt szabályzatot, és mentse a módosításokat. A módosítások az összes meglévő replikációra érvényesek lesznek.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Az összes helyreállítási pont a virtuális gép teljes másolatát vagy a különbözetet?
+
+Az első létrehozott helyreállítási pont a teljes másolattal rendelkezik. Az egymást követő helyreállítási pontok különbözeti változásokkal rendelkeznek.
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Növeli a helyreállítási pontok megőrzési időtartamát?
+
+Igen, ha 24 óra és 72 óra között növeli a megőrzési időtartamot, Site Recovery a helyreállítási pontokat további 48 óráig fogja menteni. A hozzáadott idő tárolási díjat von maga után. Előfordulhat például, hogy egy helyreállítási pont 10 GB-os különbözeti változásokkal rendelkezik, és GB-os $0,16-os díjat tartalmaz. További díjak: $1,60 × 48/hó.
+
+
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
 
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Ha az Azure-t átadja az Azure-nak, hogyan gondoskodik róla, hogy az adataim rugalmasak legyenek?

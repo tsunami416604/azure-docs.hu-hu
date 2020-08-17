@@ -1,23 +1,23 @@
 ---
 title: Az Azure Blob Storage elérése az Azure Databricks és az Azure Key Vault használatával
 description: Ebből az oktatóanyagból megtudhatja, hogyan érheti el az Azure Blob Storaget a Azure Databricksban tárolt titkos kód használatával Azure Key Vault
-author: taytran0
-ms.author: t-trtr
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: 50ea93dea62b6e4e333e58550b2750897c7e0a77
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 9b3d07eae9e47b7a8466cfb32f03b8790c079f02
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988894"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262993"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Oktatóanyag: az Azure Blob Storage elérése Azure Databricks és Azure Key Vault használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan érheti el az Azure Blob Storaget a Azure Databricks a Azure Key Vaultban tárolt titkos kulcs használatával. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Storage-fiók és blob-tároló létrehozása az Azure CLI-vel
@@ -27,7 +27,7 @@ Az oktatóanyag a következőket ismerteti:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Az oktatóanyag elindítása előtt telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
 

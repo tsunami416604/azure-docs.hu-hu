@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460983"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263027"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -28,7 +28,7 @@ Javítsa ki az értékelés készültségi problémáit az alábbiak szerint:
 Nem támogatott rendszerindítási típus | Az Azure nem támogatja az EFI rendszerindítási típussal rendelkező virtuális gépeket. Javasoljuk, hogy az áttelepítés futtatása előtt alakítsa át a rendszerindítási típust BIOS-ra. <br/><br/>Az ilyen virtuális gépek áttelepítésének kezeléséhez Azure Migrate kiszolgáló áttelepítését használhatja. Az áttelepítés során a rendszer a virtuális gép rendszerindítási típusát a BIOS-ba konvertálja.
 Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure-támogatáshoz](https://aka.ms/WSosstatement)egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni.
 Nem támogatott Windows operációs rendszer | Az Azure csak a [kiválasztott Windows operációsrendszer-verziókat](https://aka.ms/WSosstatement)támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt.
-Feltételesen támogatott Linux operációs rendszer | Az Azure csak a [kiválasztott LINUXOS operációsrendszer-verziókat](../virtual-machines/linux/endorsed-distros.md)támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt.
+Feltételesen támogatott Linux operációs rendszer | Az Azure csak a [kiválasztott LINUXOS operációsrendszer-verziókat](../virtual-machines/linux/endorsed-distros.md)támogatja. Érdemes lehet frissíteni a gépet az Azure-ba való áttelepítés előtt. [További részletekért tekintse](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) meg a következőt is:.
 Nem támogatott Linux operációs rendszer | Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációs rendszer támogatását. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítsen egy [támogatott Linux-verzióra](../virtual-machines/linux/endorsed-distros.md) .
 Ismeretlen operációs rendszer | A virtuális gép operációs rendszere a következőként lett megadva: vCenter Server. Ez a viselkedés blokkolja Azure Migrate a virtuális gép Azure-készültségének ellenőrzéséhez. Mielőtt áttelepíti a számítógépet, győződjön meg arról, hogy az Azure [támogatja](https://aka.ms/azureoslist) az operációs rendszert.
 Nem támogatott bites verzió | Az 32 bites operációs rendszerekkel rendelkező virtuális gépek az Azure-ban indíthatók, de javasoljuk, hogy az Azure-ba való Migrálás előtt frissítsen a 64-bites verzióra.
@@ -64,7 +64,7 @@ VMware és Hyper-V rendszerű virtuális gépek esetén a kiszolgáló értékel
 - Megtekintheti, hogy a helyszíni virtuális gépen futó Linux operációs rendszer az Azure [Linux-támogatás](https://aka.ms/migrate/selfhost/azureendorseddistros)áttekintésével van-e jóváhagyva az Azure-ban.
 -  A támogatott terjesztés ellenőrzése után figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
-Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](./how-to-discover-applications.md) engedélyezésével lehet megoldani. A kiszolgáló értékelése a virtuális gépről a megadott vendég hitelesítő adatok használatával észlelt operációs rendszert használja. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
+Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](./how-to-discover-applications.md) engedélyezésével lehet megoldani. A Server Assessment a megadott vendég hitelesítő adatokkal használja a virtuális gépről észlelt operációs rendszert. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
 
 ## <a name="operating-system-version-not-available"></a>Az operációs rendszer verziója nem érhető el
 
@@ -74,10 +74,9 @@ Fizikai kiszolgálók esetében az operációs rendszer alverziójának informá
 
 Azure Migrate kiszolgáló értékelése a felmérés típusa alapján több magot és memóriát is javasolhat az Azure-beli virtuális gépekhez, mint az aktuális helyszíni foglalás:
 
-
 - A VM SKU-javaslat az értékelés tulajdonságaitól függ.
 - Ezt a kiszolgáló értékelése során végrehajtott értékelés típusa befolyásolja: *teljesítmény-alapú* *vagy helyszíni*.
-- A teljesítmény-alapú értékelések esetében a kiszolgáló értékelése a helyszíni virtuális gépek (CPU, memória, lemez és hálózat kihasználtsága) kihasználtsági adatait veszi figyelembe a helyszíni virtuális gépekhez tartozó megfelelő virtuálisgép-SKU meghatározásához. Emellett a hatékony kihasználtság meghatározásakor is felvesz egy kényelmi tényezőt.
+- A teljesítmény-alapú értékelések esetében a kiszolgáló értékelése a helyszíni virtuális gépek (CPU, memória, lemez és hálózat kihasználtsága) kihasználtsági adatait veszi figyelembe a helyszíni virtuális gépekhez tartozó megfelelő virtuálisgép-SKU meghatározásához. A tényleges kihasználtság meghatározásakor kényelmi faktort is megad.
 - A helyszíni méretezés esetén a teljesítményadatok nem számítanak, és a célként megadott SKU-t a helyszíni kiosztás alapján ajánlott használni.
 
 Ha szeretné megmutatni, hogy ez milyen hatással lehet a javaslatokra, vessünk egy példát:
@@ -88,7 +87,7 @@ A helyszíni virtuális gép négy maggal és nyolc GB memóriával rendelkezik,
 - Ha az értékelés teljesítmény-alapú, a processzor és a memória tényleges kihasználtsága (50%-a 4 mag * 1,3 = 2,6 magok, valamint a 8 GB-os memória * 50%-a * 1,3 = 5,3-GB memória), ajánlott a négy mag (a legközelebbi támogatott alapszám) és a nyolc GB memória (a legközelebbi támogatott memória mérete) szerinti legolcsóbb VM SKU.
 - [További](concepts-assessment-calculation.md#types-of-assessments) információ az értékelés méretezéséről.
 
-## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Disk SKU-ban nagyobb, mint a helyszínen egy Azure-beli VM-felmérésben
+## <a name="why-is-the-recommended-azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Miért nagyobb az ajánlott Azure Disk SKU a helyszínen egy Azure-beli VM-felmérésben?
 
 Azure Migrate kiszolgáló értékelése az értékelés típusától függően nagyobb lemezt javasolhat.
 - A kiszolgáló értékelése során a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól.
@@ -97,14 +96,26 @@ Azure Migrate kiszolgáló értékelése az értékelés típusától függően 
 
 Ha például egy helyszíni lemez 32 GB memóriával rendelkezik, de a lemez összesített olvasási és írási IOPS értéke 800 IOPS, a Server Assessment a prémium szintű lemezt javasolja (a magasabb IOPS-követelmények miatt), majd javaslatot tesz a szükséges IOPS és-méretet támogató lemezes SKU-ra. Ebben a példában a legjobb megoldást a P15-ös változat (256 GB, 1100 IOPS) adja. Bár a helyszíni lemez által igényelt méret 32 GB volt, a Server Assessment a helyszíni lemez magas IOPS követelménye miatt nagyobb lemezt javasol.
 
-## <a name="utilized-corememory-percentage-missing"></a>Felhasznált mag/memória kihasználtsága (%) hiányzik
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Miért hiányoznak egyes virtuális gépek/az összes virtuális gép teljesítményadatai az értékelési jelentésből?
 
-A kiszolgáló-értékelési jelentések "PercentageOfCoresUtilizedMissing" vagy "PercentageOfMemoryUtilizedMissing", ha a Azure Migrate berendezés nem tud teljesítményadatokat gyűjteni a megfelelő helyszíni virtuális gépekhez.
+„Teljesítményalapú” értékelés esetén az értékelési jelentés exportálása PercentageOfCoresUtilizedMissing vagy PercentageOfMemoryUtilizedMissing hibát jelez, amikor az Azure Migrate-berendezés nem tud teljesítményadatokat gyűjteni a helyszíni virtuális gépekhez. Ellenőrizze a következőket:
 
-- Ez akkor fordulhat elő, ha a virtuális gépek ki vannak kapcsolva az értékelés időtartama alatt. A készülék nem tud teljesítményadatokat gyűjteni a virtuális gép számára, ha ki van kapcsolva.
-- Ha csak a teljesítményszámlálók hiányoznak, és a Hyper-V virtuális gépeket próbálja értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Csak a Hyper-V virtuális gépek ismert hibája van, amelyben egy Azure Migrate berendezés nem tudja gyűjteni a memória-kihasználtsági adatokat olyan virtuális gépek számára, amelyeken nincs engedélyezve a dinamikus memória.
-- Ha a teljesítményszámlálók bármelyike hiányzik, Azure Migrate kiszolgáló értékelése visszaesik a lefoglalt magokra és a memóriára, és a virtuális gép megfelelő méretét javasolja.
+- A virtuális gépek be vannak kapcsolva abban az időtartamban, amelyre az értékelést létrehozta
+- Ha csak a memóriaszámlálók hiányoznak, és Hyper-V virtuális gépeket próbál meg értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Jelenleg fennáll egy ismert probléma, amely miatt az Azure Migrate-berendezés nem tudja gyűjteni a memóriahasználati adatokat ilyen virtuális gépek esetében.
 - Ha az összes teljesítményszámláló hiányzik, ellenőrizze, hogy teljesülnek-e az értékeléshez szükséges port hozzáférési követelményei. További információ a [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), a [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) és a [fizikai](./migrate-support-matrix-physical.md#port-access) kiszolgáló értékeléséhez szükséges portokra vonatkozó hozzáférési követelményekről.
+Megjegyezés – Ha bármely teljesítményszámláló hiányzik, az Azure Migrate: Server Assessment áttér a helyszíni lefoglalt magokra/memóriára és ennek megfelelően javasol virtuálisgép-méretet.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Miért alacsony az értékelésem megbízhatósági minősítése?
+
+A megbízhatósági minősítés az értékelés kiszámításához szükséges [elérhető adatpontok](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) százalékán alapuló „Teljesítményalapú” értékelésekhez van kiszámítva. Alább láthatók azok az okok, amelyek miatt egy értékelés alacsony megbízhatósági minősítést kaphat:
+
+- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egyhetes teljesítmény-időtartamú értékelést hoz létre, akkor a felderítés indítását követően legalább egy hetet várnia kell az összes adatpont összegyűjtésére. Ha nem tudja megvárni az időtartam végét, módosítsa a teljesítmény időtartamát egy kisebb időszakra, és számítsa újra az értékelést.
+ 
+- A Server Assessment nem fog tudni teljesítményadatokat gyűjteni az értékelési időszakban néhány virtuális gépről vagy egyik virtuális gépről sem. Ellenőrizze, hogy a virtuális gépek be vannak-e kapcsolva az értékelés idejére, és hogy engedélyezve vannak-e a kimenő kapcsolatok a 443-as portokon. Ha Hyper-V virtuális gépek esetén engedélyezett a dinamikus memória, hiányozni fognak a memóriaszámlálók, ami alacsony megbízhatósági minősítést eredményez. Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait. 
+
+- Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
+
+[Itt tudhat meg többet](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) a megbízhatósági minősítésről.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Az operációs rendszer licence egy Azure-beli virtuális gép értékelésében szerepel?
 
@@ -115,7 +126,7 @@ Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gép
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen kombinációjával lett létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
-Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](https://go.microsoft.com/fwlink/?linkid=2131554).
+Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információk](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
 
@@ -133,10 +144,6 @@ Előfordulhat, hogy a készültségi kategória helytelenül van megjelölve "ne
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>A fizikai kiszolgálók esetében a ténylegesnél magasabban felderített hálózati adapterek száma
 
 Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél.
-
-
-## <a name="low-confidence-rating-on-physical-server-assessments"></a>Alacsony megbízhatósági minősítés a fizikai kiszolgálók értékelése során
-A minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állása alapján van kiosztva. Ha olyan fizikai kiszolgálókon van, amelyeken engedélyezve van a Hyper-V-virtualizálás, akkor az alacsony megbízhatósági minősítést helytelenül lehet hozzárendelni a fizikai kiszolgáló értékeléséhez. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. A rendszer rögzíti a hálózati átviteli sebességet a felderített virtuális hálózati adaptereken, de nem a fizikai hálózati adaptereken. A fizikai hálózati adaptereken lévő adatpontok hiánya miatt a megbízhatósági minősítés az alacsony minősítést eredményező következményekkel járhat. Ez egy olyan termékbeli hézag, amelyet a rendszer továbbít.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Függőségi vizualizáció a Azure Government
 
@@ -193,7 +200,7 @@ Az Azure Migrate jelenleg csak a következő régiókban támogatja OMS-munkater
 Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Nyomja meg az F12 billentyűt Fejlesztői eszközök elindításához. Ha szükséges, törölje a jelet a navigációs beállításban szereplő **bejegyzések törlése** elemre.
+2. Nyomja meg az F12 billentyűt Fejlesztői eszközök elindításához. Ha szükséges, törölje a jelet a navigációs beállításban szereplő  **bejegyzések törlése** elemre.
 3. Válassza a **hálózat** fület, és indítsa el a hálózati forgalom rögzítését:
    - A Chrome-ban válassza a **napló megőrzése**lehetőséget. A rögzítésnek automatikusan el kell indulnia. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha a piros kör nem jelenik meg, válassza ki az elindulni kívánt fekete kört.
    - A Microsoft Edge-ben és az Internet Explorerben a rögzítés automatikusan elindul. Ha nem, kattintson a zöld Lejátszás gombra.

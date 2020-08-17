@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829120"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263469"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -70,6 +70,13 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 - **Okok**: ez egy háttér-szolgáltatási hiba. Próbálja megismételni a műveletet, és indítsa újra a hibakeresési munkamenetet.
 - **Javaslat**: Ha az Újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfél-támogatási szolgálathoz.
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Hibakód: az adatelőnézet hibakeresése kimeneti adatokat nem a csatlakozáskor
+
+- **Üzenet**: nagy számú Null érték vagy hiányzó érték áll rendelkezésre, amelyek oka lehet a túl kevés sor mintavételének. Próbálja meg frissíteni a hibakeresési sor korlátját, és frissítse az adatforrást.
+- **Okok**: az illesztési feltétel nem felelt meg egyetlen sornak sem, vagy nagy MENNYISÉGű nullát eredményezett az adatelőnézet során.
+- **Javaslat**: lépjen a hibakeresési beállítások menüpontra, és növelje a sorok számát a Sorforrás korlátján belül. Győződjön meg róla, hogy kiválasztott és Azure IR egy nagy mennyiségű adatfolyam-fürtöt az adatkezeléshez.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 
 1. Keresse meg az adatkészlet kapcsolatainak állapotát. Minden forrás-és fogadó-átalakításban keresse fel a társított szolgáltatást minden Ön által használt adatkészlet esetében, és tesztelje a kapcsolatokat.
@@ -79,9 +86,9 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 ## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
-*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory blog](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-videók](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory Stack Overflow fóruma](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)

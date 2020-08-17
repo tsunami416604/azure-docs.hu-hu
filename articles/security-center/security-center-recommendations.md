@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791384"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263218"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
@@ -31,16 +31,15 @@ Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure 
 
 A javaslatok olyan műveletek, amelyekkel biztonságossá teheti az erőforrásokat.
 
-Az esetleges biztonsági rések azonosítása érdekében rendszeresen Security Center az Azure-erőforrások biztonsági állapotának elemzését. Ezután javaslatokat tesz a eltávolításához.
+Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására.
 
 Az egyes javaslatok a következőket biztosítják:
 
-- A javaslat rövid leírása.
-- A javaslat végrehajtásához szükséges szervizelési lépések. <!-- In some cases, Quick Fix remediation is available. -->
-- Mely erőforrásokra van szükség a javasolt művelet végrehajtásához.
-- A **biztonságos pontszám hatása**, ami azt az összeget befolyásolja, amelyet a biztonságos pontszám felvesz, ha végrehajtja ezt a javaslatot.
+- A probléma rövid leírása.
+- A javaslat végrehajtásához szükséges szervizelési lépések.
+- Az érintett erőforrások.
 
-## <a name="monitor-recommendations"></a>Javaslatok figyelése<a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>Javaslatok figyelése <a name="monitor-recommendations"></a>
 
 Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosítsa a lehetséges biztonsági réseket. A **javaslatok** csempéje az **áttekintés** területen a Security Center által azonosított javaslatok teljes számát jeleníti meg.
 
@@ -48,26 +47,28 @@ Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosíts
 
 1. Kattintson a **javaslatok csempére** az **Áttekintés**területen. Megnyílik a **javaslatok** listája.
 
-      ![Javaslatok megtekintése](./media/security-center-recommendations/view-recommendations.png)
+1. A javaslatok biztonsági vezérlőkbe vannak csoportosítva.
 
-    Lehetőség van a javaslatok szűrésére. A javaslatok szűréséhez válassza a **szűrés** lehetőséget a **javaslatok** panelen. Megnyílik a **szűrő** panel, és kiválasztja a megtekinteni kívánt súlyossági és állapot-értékeket.
+      ![Biztonsági ellenőrzés szerint csoportosított javaslatok](./media/security-center-recommendations/view-recommendations.png)
 
-   * **Javaslatok**: a javaslat.
-   * A **biztonságos pontszám hatása**: Security Center által generált pontszám a biztonsági javaslatok alapján, valamint speciális algoritmusok alkalmazása annak meghatározására, hogy az egyes javaslatok mennyire fontosak. További információ: [biztonságos pontszámok kiszámítása](secure-score-security-controls.md#how-your-secure-score-is-calculated).
-   * **Erőforrás**: felsorolja azokat az erőforrásokat, amelyekre ez a javaslat vonatkozik.
-   * **Állapotsorok**: az adott javaslat súlyosságát ismerteti:
-       * **Magas (piros)**: a biztonsági rés egy értelmes erőforrással (például egy alkalmazással, egy virtuális géppel vagy egy hálózati biztonsági csoporttal) van, és figyelmet igényel.
-       * **Közepes (narancssárga)**: biztonsági rés létezik, és nem kritikus fontosságú vagy további lépések szükségesek az eltávolításához vagy egy folyamat befejezéséhez.
-       * **Alacsony (kék)**: olyan biztonsági rés létezik, amely nem igényel azonnali beavatkozást. (Alapértelmezés szerint az alacsony javaslatok nem jelennek meg, de ha szeretné megtekinteni, az alacsony javaslatokat is szűrheti.) 
-       * **Kifogástalan (zöld)**:
-       * **Nem érhető el (szürke)**:
+1. Bontson ki egy vezérlőelemet, és válasszon egy konkrét javaslatot a javaslat lap megtekintéséhez.
 
-1. Az egyes javaslatok részleteinek megtekintéséhez kattintson a javaslatra.
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Javaslat részletei lap" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![Javaslat részletei](./media/security-center-recommendations/recommendation-details.png)
+    Az oldal tartalma:
 
->[!NOTE] 
-> Lásd: [klasszikus és Resource Manager-](../azure-classic-rm.md) alapú üzemi modellek az Azure-erőforrásokhoz.
+    - **Súlyossági mutató**
+    - **Frissességi intervallum**  (ahol szükséges) 
+    - **Leírás** – a probléma rövid leírása
+    - **Szervizelési lépések** – az érintett erőforrásokra vonatkozó biztonsági probléma megoldásához szükséges manuális lépések leírása. A "gyors javítással" kapcsolatos javaslatok esetében kiválaszthatja a **szervizelési logika megjelenítése** lehetőséget, mielőtt alkalmazza a javasolt javítást az erőforrásokra. 
+    - **Érintett erőforrások** – az erőforrások lapokra vannak csoportosítva:
+        - **Kifogástalan** állapotú erőforrások – azok a kapcsolódó erőforrások, amelyeket nem érint, vagy amelyeken már szervizelte a problémát.
+        - Nem megfelelő **állapotú erőforrások** – az azonosított probléma által továbbra is érintett erőforrások.
+        - **Nem alkalmazható erőforrások** – olyan erőforrások, amelyekhez az ajánlás nem adhat végleges választ. A nem alkalmazható lap az egyes erőforrások okait is tartalmazza. 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nem alkalmazható erőforrások az okok miatt.":::
+
+
  
 ## <a name="next-steps"></a>További lépések
 

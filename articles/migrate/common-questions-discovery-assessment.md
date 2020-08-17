@@ -3,12 +3,12 @@ title: A felderítéssel, értékeléssel és függőségi elemzéssel kapcsolat
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829883"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263503"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -36,23 +36,34 @@ Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és
 - Ha a helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) szeretné felmérni az [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md) való áttelepítéshez, használja az **Azure VMware Solution (AVS)** értékeléseit. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - A VMware rendszerű gépekkel közös csoportot csak akkor használhat, ha mindkét típusú értékelést futtatni kívánja. Vegye figyelembe, hogy ha először futtat AVS-értékeléseket az Azure Migrate-ben, akkor érdemes létrehozni egy új csoportot VMware rendszerű gépekből.
+ 
+
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Miért hiányoznak egyes virtuális gépek/az összes virtuális gép teljesítményadatai az értékelési jelentésből?
+
+„Teljesítményalapú” értékelés esetén az értékelési jelentés exportálása PercentageOfCoresUtilizedMissing vagy PercentageOfMemoryUtilizedMissing hibát jelez, amikor az Azure Migrate-berendezés nem tud teljesítményadatokat gyűjteni a helyszíni virtuális gépekhez. Ellenőrizze a következőket:
+
+- A virtuális gépek be vannak kapcsolva abban az időtartamban, amelyre az értékelést létrehozta
+- Ha csak a memóriaszámlálók hiányoznak, és Hyper-V virtuális gépeket próbál meg értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Jelenleg fennáll egy ismert probléma, amely miatt az Azure Migrate-berendezés nem tudja gyűjteni a memóriahasználati adatokat ilyen virtuális gépek esetében.
+- Ha az összes teljesítményszámláló hiányzik, győződjön meg arról, hogy a 443-as (HTTPS-) portokon engedélyezettek a kimenő kapcsolatok.
+
+Megjegyezés – Ha bármely teljesítményszámláló hiányzik, az Azure Migrate: Server Assessment áttér a helyszíni lefoglalt magokra/memóriára és ennek megfelelően javasol virtuálisgép-méretet.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Miért alacsony az értékelésem megbízhatósági minősítése?
+
+A megbízhatósági minősítés az értékelés kiszámításához szükséges [elérhető adatpontok](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) százalékán alapuló „Teljesítményalapú” értékelésekhez van kiszámítva. Alább láthatók azok az okok, amelyek miatt egy értékelés alacsony megbízhatósági minősítést kaphat:
+
+- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egyhetes teljesítmény-időtartamú értékelést hoz létre, akkor a felderítés indítását követően legalább egy hetet várnia kell az összes adatpont összegyűjtésére. Ha nem tudja megvárni az időtartam végét, módosítsa a teljesítmény időtartamát egy kisebb időszakra, és számítsa újra az értékelést.
+ 
+- A Server Assessment nem fog tudni teljesítményadatokat gyűjteni az értékelési időszakban néhány virtuális gépről vagy egyik virtuális gépről sem. Ellenőrizze, hogy a virtuális gépek be vannak-e kapcsolva az értékelés idejére, és hogy engedélyezve vannak-e a kimenő kapcsolatok a 443-as portokon. Ha Hyper-V virtuális gépek esetén engedélyezett a dinamikus memória, hiányozni fognak a memóriaszámlálók, ami alacsony megbízhatósági minősítést eredményez. Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait. 
+
+- Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
+
+[Itt tudhat meg többet](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) a megbízhatósági minősítésről.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Nem látok egyes csoportokat, amikor létrehozok egy Azure VMware-megoldás (AVS) felmérését
 
 - Az AVS-értékelés olyan csoportokon hajtható végre, amelyekben csak VMware rendszerű gépek találhatók. Ha AVS-értékelést szeretne végezni, távolítson el minden nem VMware rendszerű gépet a csoportból.
 - Ha először futtat AVS-értékeléseket az Azure Migrate-ben, akkor érdemes létrehozni egy új csoportot VMware rendszerű gépekből.
-
-## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Hogyan válassza a TRANZAKCIÓs-RAID szintet az AVS Assessment-ben?
-
-Az AVS-ben használt vSAN. A vSAN tárolási szabályzatai határozzák meg a virtuális gépek tárolási követelményeit. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető FTT-RAID-kombinációk a következők: 
-
-**Megengedhető hibák (FTT)** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek száma** | **Méretezési szempontok**
---- | --- | --- | --- 
-1 | RAID-1 (tükrözés) | 3 | Egy 100 GB-os virtuális gép 200 GB-ot használna fel.
-1 | RAID-5 (törléskódolás) | 4 | Egy 100 GB-os virtuális gép 133,33 GB-ot használna fel.
-2 | RAID-1 (tükrözés) | 5 | Egy 100 GB-os virtuális gép 300 GB-ot használna fel.
-2 | RAID-6 (törléskódolás) | 6 | Egy 100 GB-os virtuális gép 150 GB-ot használna fel.
-3 | RAID-1 (tükrözés) | 7 | Egy 100 GB-os virtuális gép 400 GB-ot használna fel.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Nem látok néhány virtuálisgép-típust Azure Government
 

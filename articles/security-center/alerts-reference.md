@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 30609535f21b64c137d7f94b89bedfab41159deb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e20e57a5fe1dde786097c658374516a1f3bf4005
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830563"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263350"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -42,6 +42,7 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 |**Vendég fiók hozzáadása a helyi Rendszergazdák csoporthoz**|A gazdagép-adatok elemzése során a rendszer a beépített vendég fiók hozzáadását észlelte a helyi rendszergazdák csoportjához a (z)% {feltört gazdagép} kiszolgálón, amely szorosan kapcsolódik a támadó tevékenységhez.|-|Közepes|
 |**Az Eseménynapló törlése megtörtént**|A gépi naplók a (z)% {CompromisedEntity} gépen a (z)% {User Name} felhasználó által a gyanús Eseménynapló-törlési műveletet jelzik. A rendszer törölte a (z)% {log Channel} naplót.|-|Tájékoztató|
 |**Kártevők elleni beavatkozás történt**|Az Azure-hoz készült Microsoft antimalware olyan műveletet végzett, amely a gép kártevők vagy más, vélhetően nemkívánatos szoftverek elleni védelemmel való ellátására szolgál.|-|Közepes|
+|**Nem sikerült a kártevő-elhárító művelet**|A Microsoft antimalware hibát észlelt a kártevő vagy más, vélhetően nemkívánatos szoftver műveletének végrehajtásakor.|-|Közepes|
 |**Petya zsarolóprogramra utaló jelek**|A (z)% {feltört gazdagép} által észlelt, a Petya ransomware társított mutatók elemzése. További információ: https://blogs.technet.microsoft.com/mmpc/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/. Tekintse át a riasztásban társított parancssort, és a riasztást a biztonsági csapatnak.|-|Magas|
 |**Az IIS-naplófájlok letiltására és törlésére vonatkozó javasolt műveletek**|A gazdagépek adatai által észlelt olyan műveletek elemzése, amelyek az IIS-naplófájlok letiltását és/vagy törlését mutatják.|-|Közepes|
 |**Kis-és nagybetűk rendellenes kombinációját észlelte a parancssorban**|A (z)% {feltört gazdagépen lévő gazdagép adatainak elemzése során a rendszer a felső és kisbetűk rendellenes kombinációját tartalmazó parancssort észlelt. Ez a fajta minta, míg valószínűleg jóindulatú, a támadók számára is jellemző, ha a feltört gazdagépen rendszergazdai feladatokat hajt végre, ha a rendszer megkülönbözteti a kis-és a kivonat-alapú szabályok megfeleltetését.|-|Közepes|
@@ -61,7 +62,7 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 |**Gyanús hitelesítő adatok észlelhetők a parancssorban**|A (z)% {feltört gazdagépen lévő gazdagép adatainak elemzése során a rendszer gyanús jelszót észlelt, amely egy fájlnak a bór által végzett végrehajtásához használatos. Ez a tevékenységi csoport ismert, hogy ezt a jelszót használja a Pirpi kártevők végrehajtásához egy sértett gazdagépen.|-|Magas|
 |**Gyanús dokumentum hitelesítő adatai észlelhetők**|A (z)% {feltört gazdagépen lévő gazdagép adatainak elemzése során a rendszer gyanús, közös előre számított jelszó-kivonatot észlelt, amelyet a kártevő a fájl végrehajtásához használ. A program ezt a jelszót használja a (z) "a" tevékenységi csoportnak a kártékony eszközön való végrehajtásához.|-|Magas|
 |**A rendszer gyanús végrehajtást észlelt a VBScript. kódolás parancsban**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése során a rendszer a VBScript. kódolás parancs végrehajtását észlelte. Ez a szkripteket nem olvasható szöveggé kódolja, így a felhasználók megnehezítik a kód vizsgálatát. A Microsoft Threat Research azt mutatják, hogy a támadók gyakran használnak kódolt VBscript-fájlokat a támadás részeként, hogy elkerüljék az észlelési rendszereket. Ez lehet legitim tevékenység, vagy egy feltört gazdagép jelzése.|-|Közepes|
-|**Gyanús végrehajtás észlelhető rundll32.exeon keresztül**|A (z)% {sérült gazdagép} gazdagép-adatainak elemzése azt észlelte, rundll32.exe egy olyan folyamat végrehajtásához használatos, amely nem köznapi névvel van ellátva, és amely összhangban van a tevékenység csoportjának ARANYával, amikor az első fázis beültetését egy sérült gazdagépre telepíti.|-|Magas|
+|**Gyanús végrehajtás észlelhető rundll32.exeon keresztül **|A (z)% {sérült gazdagép} gazdagép-adatainak elemzése azt észlelte, rundll32.exe egy olyan folyamat végrehajtásához használatos, amely nem köznapi névvel van ellátva, és amely összhangban van a tevékenység csoportjának ARANYával, amikor az első fázis beültetését egy sérült gazdagépre telepíti.|-|Magas|
 |**Gyanús fájl-karbantartási parancsok észlelhetők**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése olyan SYSTEMINFO-parancsok kombinációját észlelte, amelyek korábban már társítva lettek a tevékenységi csoport ARANYának egyik metódusával, amely kompromisszum utáni öntisztítási tevékenységet végez. Míg a "systeminfo.exe" egy legitim Windows-eszköz, amely egymás után kétszer fut le, majd egy törlési parancs, amely az itt bekövetkezett módon történt, ritka.|-|Magas|
 |**Gyanús fájlok létrehozása észlelve**|A (z)% {feltört gazdagép} gazdagép-adatainak elemzése során a rendszer egy olyan folyamat létrehozását vagy végrehajtását észlelte, amely korábban már jelezte a (z) bárium-csoportba tartozó károsult gazdagépen történt kompromisszum utáni műveletet. Ez a tevékenységi csoport ismert, hogy ezzel a technikával további kártevőket tölthet le egy feltört gazdagépre, miután megnyitotta az adathalászati dokumentum mellékletét.|-|Magas|
 |**Gyanús nevesített csövekkel való kommunikáció észlelve**|A gazdagép adatainak elemzése a (z)% {feltört gazdagépen} észlelt adatok egy helyi nevesített pipe-ra való írásakor a Windows-konzol parancsaiból. A nevesített csöveket ismert, hogy a támadók feladatnak és rosszindulatú implantátumokkal kommunikálnak. Ez lehet legitim tevékenység, vagy egy feltört gazdagép jelzése.|-|Magas|

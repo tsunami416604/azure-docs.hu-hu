@@ -3,12 +3,12 @@ title: 'Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel'
 description: A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tudásbázisait a várt válaszok, a megbízhatósági pontszámok és a több bekapcsolási kérések esetében.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 498f84c97fdc022e460dec453b1d65bb8088b787
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337733"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263146"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
 
@@ -25,7 +25,7 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
 
 [Jelentkezzen be](https://www.qnamaker.ai/) a QnA Maker portálra.
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Hozzon létre egy új tudásbázist a multi-turn sample. docx fájlból
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Új Tudásbázis létrehozása a multi-turn sample.docx fájlból
 
 1. Válassza a **Tudásbázis létrehozása** elemet az eszköztáron.
 1. Hagyja ki az **1. lépést** , mert már rendelkeznie kell egy QnA Maker erőforrással, a **2. lépésre** való áttéréssel pedig kiválaszthatja a meglévő erőforrás-információkat:
@@ -39,10 +39,10 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
 
     |Beállítás|Érték|
     |--|--|
-    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
+    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Alapértelmezett válasz szövege**| `Batch test - default answer not found.`|
     |**+ Fájl hozzáadása**|Válassza ki a letöltött `.docx` fájl listáját az előfeltételek között.|
-    |**Chit-csevegés**|**Professional** kiválasztása|
+    |**Csevegés**|**Professional** kiválasztása|
 
 1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
 
@@ -56,18 +56,18 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
     |Szükséges adatértékek| Példa|
     |--|--|
     |Közzétett gazdagép|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Közzétett kulcs|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karakterből álló karakterlánc látható `Endpoint` )|
-    |Alkalmazásazonosító|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakterből álló karakterlánc `POST` ) |
+    |Közzétett kulcs|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (32 karakterből álló karakterlánc látható `Endpoint` )|
+    |Alkalmazásazonosító|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 karakterből álló karakterlánc `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Batch-tesztkörnyezet létrehozása a kérdés-azonosítókkal
 
-A Batch test eszköz használatához hozzon létre egy nevű fájlt `batch-test-data-1.tsv` egy szövegszerkesztővel. A fájlnak a következő oszlopokat kell elválasztania egy lapon.
+A Batch test eszköz használatához hozzon létre egy nevű fájlt `batch-test-data-1.tsv` egy szövegszerkesztővel. A fájlnak UTF-8 formátumúnak kell lennie, és a következő oszlopokat kell elválasztania egy lapon.
 
 |TSV bemeneti fájl mezői|Megjegyzések|Példa|
 |--|--|--|
-|Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakterből álló karakterlánc `POST` ) |
+|Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 karakterből álló karakterlánc `POST` ) |
 |Kérdés|A felhasználó által megadott kérdés szövege. 1 000 karakter max.|`How do I sign out?`|
-|Metaadatcímkék|választható|`topic:power`a _kulcsot használja: Value_ Format|
+|Metaadatcímkék|választható|`topic:power` a _kulcsot használja: Value_ Format|
 |Felső paraméter|választható|`25`|
 |Várt válasz azonosítója|választható|`13`|
 
@@ -127,10 +127,10 @@ Ha például van egy csevegési naplója, és meg szeretné határozni, hogy mel
 
 A következő diagram segítségével megismerheti, hogyan keresheti meg a választható adatokhoz tartozó mezőértékeket.
 
-|Oszlop száma|Nem kötelező oszlop|Az adatok helye|
+|Oszlop száma|Nem kötelező oszlop|Az adatok tárolási helye|
 |--|--|--|
 |3|metaadatok|Meglévő Tudásbázis exportálása a meglévő _kulcshoz: érték_ párok.|
-|4|felül|Az alapértelmezett érték a `25` javasolt.|
+|4|top|Az alapértelmezett érték a `25` javasolt.|
 |5|Kérdés-és Levelesláda-készlet azonosítója|A meglévő Tudásbázis exportálása az azonosító értékekhez. Azt is figyelje meg, hogy az azonosítók a kimeneti fájlban lettek visszaadva.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Metaadatok hozzáadása a tudásbázishoz
@@ -199,7 +199,7 @@ Ha nem fogja tovább használni ezt a tudásbázist, törölje a tudásbázist a
 1. A QnA Maker portálon válassza a **saját Tudásbázis** lehetőséget a felső menüben.
 1. A tudásbázisok listájában válassza a **Törlés** ikont a rövid útmutató tudásbázisának sorában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

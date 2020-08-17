@@ -3,12 +3,12 @@ title: Azure Stack virtuális gépek fájljainak biztonsági mentése
 description: A Azure Backup használatával biztonsági mentést készíthet, valamint helyreállíthatja Azure Stack fájljait és alkalmazásait a Azure Stack-környezetében.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032765"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263129"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése Azure Stack
 
@@ -24,31 +24,31 @@ Ez a cikk nem tárgyalja a Azure Backup Server telepítését a Azure Stack kör
 
 A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konfigurálásához nyissa meg a Azure Backup Server-konzolt. A konzol használatával konfigurálhatja a védelmi csoportokat, és gondoskodhat a virtuális gépek adatainak védelméről.
 
-1. A Azure Backup Server-konzolon kattintson a **védelem** elemre, majd az eszköztáron kattintson az **új** elemre az **új védelmi csoport létrehozása** varázsló megnyitásához.
+1. A Azure Backup Server-konzolon válassza a **védelem** lehetőséget, majd az eszköztáron kattintson az **új** elemre az **új védelmi csoport létrehozása** varázsló megnyitásához.
 
    ![A védelem konfigurálása Azure Backup Server-konzolon](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-    A varázsló megnyitása eltarthat néhány másodpercig. A varázsló megnyitása után kattintson a **tovább** gombra a **védelmi csoport típusának kiválasztása** képernyőre való továbblépés előtt.
+    A varázsló megnyitása eltarthat néhány másodpercig. A varázsló megnyitása után kattintson a **Next (tovább** ) gombra a **védelmi csoport típusának kiválasztása** képernyőre való továbblépés előtt.
 
    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-2. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **tovább**gombra.
+2. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **Tovább gombra**.
 
-    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
+    ![Védelmi csoport típusának kiválasztása](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
     Megnyílik a **csoporttagok kiválasztása** képernyő.
 
-    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+    ![Csoporttagok kiválasztása](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. A **csoporttagok kiválasztása** képernyőn kattintson az **+** alelemek listájának kibontásához. A védelemmel ellátni kívánt összes elemnél jelölje be a jelölőnégyzetet. Ha minden elem ki van választva, kattintson a **tovább**gombra.
+3. A **csoporttagok kiválasztása** képernyőn válassza ki **+** az alelemek listájának kibontásához. A védelemmel ellátni kívánt összes elemnél jelölje be a jelölőnégyzetet. Ha az összes elem ki van választva, kattintson a **Tovább gombra**.
 
-    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+    ![Válassza ki a védelemmel ellátni kívánt elemeket](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     A Microsoft azt javasolja, hogy minden olyan, a védelmi szabályzattal megosztva tárolt adattal egy védelmi csoportba helyezze. A védelmi csoportok megtervezésével és telepítésével kapcsolatos teljes információkért tekintse meg a System Center DPM című cikket, amely a [védelmi csoportok telepítését](/system-center/dpm/create-dpm-protection-groups)ismerteti.
 
 4. Az **adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét. Jelölje be a **rövid távú védelmet szeretnék** a következő használatával jelölőnégyzetet: és **szeretnék online védelmet**használni. Kattintson a **Tovább** gombra.
 
-    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+    ![Adatvédelmi módszer kiválasztása](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     Az **online védelem kívánt**lehetőség kiválasztásához először válassza **a rövid távú védelmet szeretnék a következő használatával:** Disk (lemez) lehetőséget. Azure Backup Server nem véd a szalagra, ezért a rövid távú védelem érdekében a lemez az egyetlen választás.
 
@@ -58,11 +58,11 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
     > A Azure Backup Server csatolt lemezeken több mint öt napig **ne** őrizze meg az operatív helyreállítási (biztonsági mentési) adatait.
     >
 
-    ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Rövid távú célok megadása](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     A növekményes biztonsági mentések intervallumának kiválasztása helyett az expressz teljes biztonsági mentést csak az egyes ütemezett helyreállítási pontok előtt válassza **közvetlenül a helyreállítási pont előtt**. Ha az alkalmazások munkaterheléseit védi, Azure Backup Server helyreállítási pontokat hoz létre a szinkronizálás gyakoriságának ütemezésekor (ha az alkalmazás támogatja a növekményes biztonsági mentéseket). Ha az alkalmazás nem támogatja a növekményes biztonsági mentéseket, Azure Backup Server expressz teljes biztonsági mentést futtat.
 
-    A **Fájl-helyreállítási pontok**esetében a helyreállítási pontok létrehozásának idejét kell megadni. Kattintson a **módosítás** gombra a helyreállítási pontok létrehozásakor a hét időpontjának és napjainak megadásához.
+    A **Fájl-helyreállítási pontok**esetében a helyreállítási pontok létrehozásának idejét kell megadni. Válassza a **módosítás** lehetőséget, ha a helyreállítási pontok létrehozásakor szeretné beállítani a hét időpontját és napjait.
 
 6. A **lemez kiosztásának áttekintése** képernyőn tekintse át a védelmi csoport számára lefoglalt tárterület lemezterületét.
 
@@ -83,19 +83,19 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
 12. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás.
 
-13. Az **Összefoglalás**lapon tekintse át a beállításokat. Amikor a **csoport létrehozása**elemre kattint, a kezdeti adatreplikálás történik. Amikor az adatreplikálás befejeződik, az **állapot** lapon a védelmi csoport állapota **OK**értékként jelenik meg. A kezdeti biztonsági mentési művelet a védelmi csoport beállításaival összhangban zajlik.
+13. Az **Összefoglalás**lapon tekintse át a beállításokat. Ha a **csoport létrehozása**lehetőséget választja, a kezdeti adatreplikálás történik. Amikor az adatreplikálás befejeződik, az **állapot** lapon a védelmi csoport állapota **OK**értékként jelenik meg. A kezdeti biztonsági mentési művelet a védelmi csoport beállításaival összhangban zajlik.
 
 ## <a name="recover-file-data"></a>Fájlok adatainak helyreállítása
 
 A Azure Backup Server-konzol használatával állítsa helyre az adatokat a virtuális gépre.
 
-1. A Azure Backup Server konzol navigációs sávján kattintson a **helyreállítás** elemre, és keresse meg a helyreállítani kívánt adatokat. Az eredménypanelen jelölje ki az adatokat.
+1. A Azure Backup Server konzol navigációs sávján válassza a **helyreállítás** lehetőséget, és keresse meg a helyreállítani kívánt adatokat. Az eredménypanelen jelölje ki az adatokat.
 
 2. A helyreállítási pontok szakaszban lévő naptárban a félkövérrel szedett dátumok jelzik a helyreállítási pontokat. Válassza ki a helyreállítani kívánt dátumot.
 
 3. A helyreállítható **elem** ablaktáblán válassza ki a helyreállítani kívánt elemet.
 
-4. Kattintson a **Műveletek** panel **Helyreállítás** elemére a helyreállítási varázsló megnyitásához.
+4. A **műveletek** ablaktáblán kattintson a **helyreállítás** elemre a helyreállítási varázsló megnyitásához.
 
 5. Az adatokat a következő módon állíthatja helyre:
 
@@ -106,11 +106,11 @@ A Azure Backup Server-konzol használatával állítsa helyre az adatokat a virt
 
     * A **meglévő verzió-helyreállítási viselkedéshez**válassza a **másolat létrehozása**, a **kihagyás**vagy a **felülírás**lehetőséget. A felülírás csak az eredeti helyre történő helyreállításkor érhető el.
     * A **biztonsági mentéshez**válassza **a célszámítógép beállításainak alkalmazása** vagy a **helyreállítási pont biztonsági beállításainak alkalmazása**lehetőséget.
-    * A **hálózati sávszélesség-használat szabályozásához**kattintson a **módosítás** gombra a hálózati sávszélesség-használat szabályozásának engedélyezéséhez.
-    * **Értesítés** Kattintson az **E-mail küldése a helyreállítás befejezéséről**elemre, és adja meg a címzetteket, akik megkapják az értesítést. Az e-mail-címeket vesszővel válassza el egymástól.
-    * A kijelölések után kattintson a **tovább** gombra.
+    * A **hálózati sávszélesség használatának szabályozása**beállításnál válassza a **módosítás** lehetőséget a hálózati sávszélesség-használat szabályozásának engedélyezéséhez.
+    * **Értesítés** Válassza az **E-mail küldése a helyreállítás befejezésekor**lehetőséget, majd adja meg a címzetteket, akik megkapják az értesítést. Az e-mail-címeket vesszővel válassza el egymástól.
+    * A kijelölések után válassza a **tovább** lehetőséget.
 
-7. Nézze át a helyreállítási beállításokat, és kattintson a **Helyreállítás** gombra.
+7. Tekintse át a helyreállítási beállításokat, és kattintson a **helyreállítás**elemre.
 
     >[!Note]
     >Amíg a helyreállítási feladat folyamatban van, a kijelölt helyreállítási elemek összes szinkronizációs feladata meg lett szakítva.
@@ -119,14 +119,14 @@ Modern biztonsági másolati tárhely (MBS) használata esetén a fájlkiszolgá
 
 1. Navigáljon a védett fájlokhoz, és kattintson a jobb gombbal a fájl nevére, és válassza a **Tulajdonságok**menüpontot.
 
-2. A **Tulajdonságok** menüben kattintson az **előző verziók** lehetőségre, és válassza ki a helyreállítani kívánt verziót.
+2. A **Tulajdonságok** menüben válassza ki a **korábbi verziók** elemet, és válassza ki a helyreállítani kívánt verziót.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Azure Backup Server megtekintése tárolóval
 
 A Azure Portal Azure Backup Server entitások megtekintéséhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg Recovery Services-tárolót.
-2. Kattintson a biztonsági mentési infrastruktúra elemre.
+2. Válassza a biztonsági mentési infrastruktúra lehetőséget.
 3. A biztonságimásolat-felügyeleti kiszolgálók megtekintése.
 
 ## <a name="next-steps"></a>További lépések
