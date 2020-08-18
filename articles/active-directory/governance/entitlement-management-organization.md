@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170496"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506022"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -103,7 +103,7 @@ Külső Azure AD-címtár vagy-tartomány csatlakoztatott szervezetként való h
 
 Ha a csatlakoztatott szervezet egy másik tartományra vált, a szervezet neve megváltozik, vagy módosítani szeretné a szponzorokat, a jelen szakasz utasításait követve frissítheti a csatlakoztatott szervezetet.
 
-**Előfeltételként szükséges szerepkör**: *globális rendszergazda*, *felhasználói rendszergazda*vagy *vendég meghívója*
+**Előfeltételként szükséges szerepkör**: *globális rendszergazda* vagy *felhasználói rendszergazda*
 
 1. A Azure Portal válassza a **Azure Active Directory**lehetőséget, majd válassza az **identitás irányítása**elemet.
 
@@ -120,7 +120,7 @@ Ha a csatlakoztatott szervezet egy másik tartományra vált, a szervezet neve m
 
 Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, akkor törölheti a csatlakoztatott szervezetet.
 
-**Előfeltételként szükséges szerepkör**: *globális rendszergazda*, *felhasználói rendszergazda*vagy *vendég meghívója*
+**Előfeltételként szükséges szerepkör**: *globális rendszergazda* vagy *felhasználói rendszergazda*
 
 1. A Azure Portal válassza a **Azure Active Directory**lehetőséget, majd válassza az **identitás irányítása**elemet.
 

@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689768"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272450"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform és a OAuth 2,0-eszköz engedélyezési folyamata
 
@@ -51,11 +51,11 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Paraméter | Állapot | Leírás |
+| Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
-| `scope` | Ajánlott | Egy szóközzel tagolt lista, melyben a felhasználónak jóvá kell hagynia a [hatókört](v2-permissions-and-consent.md) .  |
+| `scope` | Kötelező | Egy szóközzel tagolt lista, melyben a felhasználónak jóvá kell hagynia a [hatókört](v2-permissions-and-consent.md) .  |
 
 ### <a name="device-authorization-response"></a>Eszköz-engedélyezési válasz
 
@@ -93,7 +93,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | Paraméter | Kötelező | Leírás|
 | -------- | -------- | ---------- |
 | `tenant`  | Kötelező | A kezdeti kérelemben használt bérlői vagy bérlői alias. |
-| `grant_type` | Kötelező | Kötelező`urn:ietf:params:oauth:grant-type:device_code`|
+| `grant_type` | Kötelező | Kötelező `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Kötelező | Meg kell egyeznie a `client_id` kezdeti kérelemben használt értékkel. |
 | `device_code`| Kötelező | A `device_code` visszaadott eszköz engedélyezési kérelme.  |
 

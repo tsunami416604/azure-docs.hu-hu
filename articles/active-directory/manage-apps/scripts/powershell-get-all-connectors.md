@@ -2,22 +2,21 @@
 title: PowerShell-minta – az összes alkalmazásproxy-összekötő csoport listázása
 description: PowerShell-példa, amely felsorolja az összes Azure Active Directory-(Azure AD-) alkalmazásproxy-összekötő csoportot és összekötőt a címtárban.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53af7f3f9049edc23ed4226f43e7fe67398c29f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d665ddf7b1902275eebd74bcbf148426ac6ddd
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482113"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506872"
 ---
 # <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Az összes összekötő-csoport és összekötő beolvasása a címtárban
 
@@ -37,7 +36,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.m
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Lekéri az összes összekötő csoport listáját, vagy ha meg van adva, a megadott összekötő-csoport részleteit. |
 | [Get-AzureADApplicationProxyConnectorGroupMembers](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers?view=azureadps-2.0) | Az egyes összekötő csoportokhoz társított összes alkalmazásproxy-összekötő beolvasása.|

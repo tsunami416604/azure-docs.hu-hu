@@ -1,6 +1,6 @@
 ---
 title: NSG-naplók olvasása | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan elemezheti a NSG folyamat naplóit
+description: Megtudhatja, hogyan használhatja a Azure PowerShellt a hálózati biztonsági csoport folyamatábráinak elemzéséhez, amelyek óránként jönnek létre, és néhány percenként frissülnek az Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738498"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272535"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 

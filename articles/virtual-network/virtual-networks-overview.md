@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 480e22b319edd03dc9bb9d666dd43718fb3c841b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386996"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507030"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -37,7 +37,7 @@ A hálózat Azure-ban való létrehozásakor fontos szem előtt tartani a követ
 
 - Győződjön meg arról, hogy nem átfedésben lévő címterület. Győződjön meg arról, hogy a VNet címtartomány (CIDR-blokk) nem fedi át a szervezet más hálózati tartományait.
 - Az alhálózatok nem fedik le a VNet teljes címterületját. Tervezze meg előre, és foglaljon le némi címtartományt a jövő számára.
-- Azt javasoljuk, hogy kevesebb nagy virtuális hálózatok legyen, mint több kis virtuális hálózatok. Ez megakadályozza a felügyelet terhelését.
+- Azt javasoljuk, hogy több kis virtuális hálózatok helyett kevesebb nagy virtuális hálózatok legyen. Ez megakadályozza a felügyelet terhelését.
 - A VNet biztonságossá tételéhez rendeljen hozzá hálózati biztonsági csoportokat (NSG) az alá tartozó alhálózatokhoz.
 
 ## <a name="communicate-with-the-internet"></a>Kommunikáció az internettel
@@ -94,6 +94,6 @@ Bizonyos korlátozások vonatkoznak az üzembe helyezhető Azure-erőforrások s
 
 Az Azure VNet díjmentesen vehető igénybe. A standard díjak olyan erőforrásokra vonatkoznak, mint a Virtual Machines (VM) és más termékek. További információ: a [VNet díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/) és az Azure [díjszabásának kalkulátora](https://azure.microsoft.com/pricing/calculator/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  A virtuális hálózatok használatának megkezdéséhez hozzon létre egyet, helyezzen üzembe rajta néhány virtuális gépet, majd létesítsen kommunikációt a virtuális gépek között. Ennek ismertetéséhez tekintse meg a [Virtuális hálózat létrehozása](quick-create-portal.md) című rövid útmutatót.

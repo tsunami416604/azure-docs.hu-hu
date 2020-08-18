@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207447"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505716"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -165,6 +165,9 @@ A terminál ablakban vagy egy parancssorban futtassa a következő parancsot a p
 func init MyFunctionProj
 ```
 
+>[!IMPORTANT]
+> A Java a Maven archetípus használatával hozza létre a helyi functions projektet, valamint az első HTTP által aktivált függvényt. A Java-projekt létrehozásához használja a következő parancsot: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . A Maven archetípusot használó példát a [parancssori](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)útmutatóban talál.  
+
 Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
 A 3. x/2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
 
@@ -305,7 +308,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Description                            |
+| Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
 | **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
@@ -334,6 +337,14 @@ Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép l
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -505,6 +516,9 @@ Ha a helyi kódot egy Azure-beli Function alkalmazásban szeretné közzétenni,
 func azure functionapp publish <FunctionAppName>
 ```
 
+>[!IMPORTANT]
+> A Java a Maven használatával teszi közzé a helyi projektet az Azure-ban. Használja az alábbi parancsot az Azure-ban való közzétételhez: `mvn azure-functions:deploy` . Az Azure-erőforrások a kezdeti üzembe helyezés során jönnek létre.
+
 Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hibaüzenet jelenik meg, ha olyan közzétételi kísérletet próbál végrehajtani, `<FunctionAppName>` amely nem létezik az előfizetésben. Ha szeretné megtudni, hogyan hozhat létre egy Function alkalmazást a parancssorból vagy a terminál ablakból az Azure CLI használatával, tekintse meg [a Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md)című témakört. Alapértelmezés szerint ez a parancs [távoli buildet](functions-deployment-technologies.md#remote-build) használ, és üzembe helyezi az alkalmazást [a központi telepítési csomagból való futtatásra](run-functions-from-deployment-package.md). Az ajánlott telepítési mód letiltásához használja a `--nozip` kapcsolót.
 
 >[!IMPORTANT]
@@ -574,7 +588,7 @@ Megtekintheti a függvények által a helyi számítógépen lévő parancssori 
 Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integrációjának engedélyezése szükséges a Function alkalmazáshoz.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831056"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505559"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
 
@@ -314,7 +314,7 @@ Ez a dokumentum több különböző területet ölel fel, amelyeket figyelembe k
 
 
 > [!IMPORTANT]
-> A dokumentum hatóköre az SQL Server Windows-verziója. Az SAP nem támogatja a SQL Server linuxos verzióját az SAP szoftverrel. A dokumentum nem Microsoft Azure SQL Database tárgyal, amely a Microsoft Azure platform szolgáltatásként kínált platform. Az ebben a dokumentumban ismertetett vita arról szól, hogyan fut a SQL Server termék, mivel ismert az Virtual Machines Azure-beli helyszíni környezetekben, az infrastruktúrát pedig az Azure szolgáltatási képességének megfelelően hasznosítja. A két ajánlat közötti adatbázis-képességek és-funkciók eltérőek, és nem szabad egymással összekeverni őket. Lásd még:<https://azure.microsoft.com/services/sql-database/>
+> A dokumentum hatóköre az SQL Server Windows-verziója. Az SAP nem támogatja a SQL Server linuxos verzióját az SAP szoftverrel. A dokumentum nem Microsoft Azure SQL Database tárgyal, amely a Microsoft Azure platform szolgáltatásként kínált platform. Az ebben a dokumentumban ismertetett vita arról szól, hogyan fut a SQL Server termék, mivel ismert az Virtual Machines Azure-beli helyszíni környezetekben, az infrastruktúrát pedig az Azure szolgáltatási képességének megfelelően hasznosítja. A két ajánlat közötti adatbázis-képességek és-funkciók eltérőek, és nem szabad egymással összekeverni őket. Lásd még: <https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
@@ -355,13 +355,13 @@ A fenti ábrán egy egyszerű eset jelenik meg. Az [Azure Virtual Machines adatb
 
 
 ### <a name="special-for-m-series-vms"></a>Speciális az M-sorozatú virtuális gépekhez
-Az Azure M sorozatú virtuális gépek esetében a tranzakciónaplóba való írás a tranzakciós naplóba való beírásával csökkenthető az Azure-Premium Storage teljesítményéhez képest, az Azure írásgyorsító használata esetén. Ezért telepítenie kell az Azure-írásgyorsító a SQL Server tranzakciónapló kötetét alkotó VHD (k) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../windows/how-to-enable-write-accelerator.md).
+Az Azure M sorozatú virtuális gépek esetében a tranzakciónaplóba való írás a tranzakciós naplóba való beírásával csökkenthető az Azure-Premium Storage teljesítményéhez képest, az Azure írásgyorsító használata esetén. Ezért telepítenie kell az Azure-írásgyorsító a SQL Server tranzakciónapló kötetét alkotó VHD (k) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../how-to-enable-write-accelerator.md).
   
 
 ### <a name="formatting-the-disks"></a>Lemezek formázása
 SQL Server esetén a SQL Server-és naplófájlokat tartalmazó lemezek NTFS-blokkjának mérete 64 kb kell lennie. Nincs szükség a D:\ formázására meghajtó. A meghajtó előre formázva van.
 
-Annak biztosítása érdekében, hogy az adatbázisok visszaállítása vagy létrehozása ne inicializálja az adatfájlokat a fájlok tartalmának nullázásával, győződjön meg arról, hogy az SQL Server szolgáltatásnak a-t futtató felhasználói környezete rendelkezik bizonyos engedéllyel. Általában a Windows rendszergazda csoportba tartozó felhasználók rendelkeznek ezekkel az engedélyekkel. Ha a SQL Server szolgáltatás a nem Windows rendszergazda felhasználójának felhasználói környezetében fut, akkor a felhasználónak hozzá kell rendelnie a felhasználói jogosultságot a **kötet-karbantartási feladatok végrehajtásához**.  Tekintse meg a Microsoft Tudásbázis következő cikkének részleteit:<https://support.microsoft.com/kb/2574695>
+Annak biztosítása érdekében, hogy az adatbázisok visszaállítása vagy létrehozása ne inicializálja az adatfájlokat a fájlok tartalmának nullázásával, győződjön meg arról, hogy az SQL Server szolgáltatásnak a-t futtató felhasználói környezete rendelkezik bizonyos engedéllyel. Általában a Windows rendszergazda csoportba tartozó felhasználók rendelkeznek ezekkel az engedélyekkel. Ha a SQL Server szolgáltatás a nem Windows rendszergazda felhasználójának felhasználói környezetében fut, akkor a felhasználónak hozzá kell rendelnie a felhasználói jogosultságot a **kötet-karbantartási feladatok végrehajtásához**.  Tekintse meg a Microsoft Tudásbázis következő cikkének részleteit: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Az adatbázis-tömörítés hatása
 Azon konfigurációk esetében, amelyekben az I/O-sávszélesség korlátozási tényezővé válhat, minden mérték, amely csökkenti a IOPS, segíthet a számítási feladatok egy IaaS-forgatókönyvben, például az Azure-ban való futtatásában. Ezért ha még nem tette meg, alkalmazza SQL Server oldal tömörítését az SAP és a Microsoft javasolta, mielőtt meglévő SAP-adatbázist tölt fel az Azure-ba.
@@ -487,16 +487,16 @@ Az SAP által támogatott adatbázis-tükrözés (lásd: [965908]-es SAP-Megjegy
 
 A csak felhőalapú központi telepítések esetében a legegyszerűbb módszer az, ha egy másik tartományi beállítással rendelkezik az Azure-ban, hogy az adatbázis-kezelő virtuális gépek (és ideális dedikált SAP virtuális gépek) egy tartományon belül legyenek.
 
-Ha egy tartomány nem lehetséges, akkor az adatbázis-tükrözési végpontokhoz is használhat tanúsítványokat az itt leírtak szerint:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Ha egy tartomány nem lehetséges, akkor az adatbázis-tükrözési végpontokhoz is használhat tanúsítványokat az itt leírtak szerint: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Az adatbázis-tükrözés Azure-ban való beállításának oktatóanyaga itt található:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Az adatbázis-tükrözés Azure-ban való beállításának oktatóanyaga itt található: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>SQL Server Always On
 Ahogy az a minden esetben támogatja a helyszíni SAP-t (lásd: SAP-Megjegyzés [1772688]), az SAP-vel együtt támogatott az Azure-ban. Az SQL Server rendelkezésre állási csoport figyelője (nem tévesztendő össze az Azure rendelkezésre állási készlettel) üzembe helyezésének néhány különleges szempontja van, mivel az Azure ebben az időpontban nem teszi lehetővé AD/DNS-objektum létrehozását, mivel az lehetséges a helyszínen. Ezért néhány különböző telepítési lépésre van szükség az Azure adott viselkedésének leküzdéséhez.
 
 A rendelkezésre állási csoport figyelőjét használó megfontolások a következők:
 
-* A rendelkezésre állási csoport figyelője csak a Windows Server 2012 vagy újabb verzióban lehetséges a virtuális gép vendég operációs rendszereként. A Windows Server 2012-hez meg kell győződnie arról, hogy a javítás alkalmazása megtörténik:<https://support.microsoft.com/kb/2854082> 
+* A rendelkezésre állási csoport figyelője csak a Windows Server 2012 vagy újabb verzióban lehetséges a virtuális gép vendég operációs rendszereként. A Windows Server 2012-hez meg kell győződnie arról, hogy a javítás alkalmazása megtörténik: <https://support.microsoft.com/kb/2854082> 
 * A Windows Server 2008 R2 esetében ez a javítás nem létezik, és a mindig az adatbázis-tükrözéssel megegyező módon kell használni, ha a kapcsolati sztringben megadta a feladatátvételi partnert (az alapértelmezett SAP-n keresztül. PFL paraméter: adatbázisok/MSS/kiszolgáló – lásd: SAP-Megjegyzés [965908]).
 * A rendelkezésre állási csoport figyelője használatakor az adatbázis-alapú virtuális gépeket dedikált Load Balancerhoz kell csatlakoztatni. Annak érdekében, hogy az Azure ne rendeljen új IP-címeket azokhoz az esetekhez, ahol mindkét virtuális gép leállt, az egyiknek statikus IP-címet kell rendelnie ezeknek a virtuális gépeknek a hálózati adapteréhez az Always On Configuration (statikus [IP-cím meghatározása című cikkben)][virtual-networks-reserved-private-ip] .
 * Speciális lépések szükségesek a WSFC-fürt konfigurálásához, ahol a fürthöz hozzá kell rendelni egy speciális IP-címet, mert az Azure és a jelenlegi funkciója a fürt nevét ugyanazzal az IP-címmel rendeli hozzá, mint a fürt létrehozásához használt csomópontot. Ez azt jelenti, hogy manuális lépést kell végrehajtani egy másik IP-cím fürthöz való hozzárendeléséhez.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921996"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506328"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Hozzon létre egy Azure Active Directory Domain Services erőforrás-erdőt és a kimenő erdőszintű megbízhatóságot a helyszíni tartományba Azure PowerShell
 
@@ -88,7 +88,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
 1. Először hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][New-AzResourceGroup] parancsmag használatával. A következő példában az erőforráscsoport neve *myResourceGroup* , és a *westus* régióban jön létre. Saját név és kívánt régió használata:
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -102,7 +102,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
 1. Tekintse át a parancsfájlhoz szükséges következő paramétereket `New-AzureAaddsForest` . Győződjön meg arról, hogy az előfeltétel **Azure PowerShell** és az **Azure ad PowerShell** -modulok is rendelkezésre állnak. Győződjön meg arról, hogy megtervezte a virtuális hálózati követelményeket az alkalmazás és a helyszíni kapcsolat biztosításához.
 
-    | Név                         | Parancsfájl paramétere          | Leírás |
+    | Name (Név)                         | Parancsfájl paramétere          | Leírás |
     |:-----------------------------|---------------------------|:------------|
     | Előfizetés                 | *-azureSubscriptionId*    | Az Azure AD DS számlázáshoz használt előfizetés-azonosító. A [Get-AzureRMSubscription][Get-AzureRMSubscription] parancsmag használatával lekérheti az előfizetések listáját. |
     | Erőforráscsoport               | *-aaddsResourceGroupName* | A felügyelt tartomány és a kapcsolódó erőforrások erőforráscsoport neve. |
@@ -112,7 +112,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
     A `New-AzureAaddsForest` szkript létrehozhatja az Azure-beli virtuális hálózatot és az azure AD DS alhálózatot, ha ezek az erőforrások még nem léteznek. A parancsfájl opcionálisan létrehozhatja a számítási feladatok alhálózatait, ha meg van adva:
 
-    | Név                              | Parancsfájl paramétere                  | Leírás |
+    | Name (Név)                              | Parancsfájl paramétere                  | Leírás |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuális hálózat neve              | *-aaddsVnetName*                  | A felügyelt tartomány virtuális hálózatának neve.|
     | Címtér                     | *-aaddsVnetCIDRAddressSpace*      | A virtuális hálózat CIDR jelölése (a virtuális hálózat létrehozásakor).|
@@ -123,7 +123,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
 1. Most hozzon létre egy felügyelt tartományi erőforrás-erdőt a `New-AzureAaaddsForest` szkript használatával. Az alábbi példa egy *addscontoso.com* nevű erdőt hoz létre, és létrehoz egy munkaterhelés-alhálózatot. Adja meg a saját paraméterek nevét és IP-címtartományt, vagy a meglévő virtuális hálózatokat.
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Most adja meg a parancsfájlt a következő információkkal:
 
-| Név                               | Parancsfájl paramétere     | Leírás |
+| Name (Név)                               | Parancsfájl paramétere     | Leírás |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS tartomány neve            | *-ManagedDomainFqdn* | A felügyelt tartomány teljes tartományneve, például *aaddscontoso.com* |
 | Helyszíni AD DS tartomány neve      | *-TrustFqdn*         | A megbízható erdő teljes tartományneve, például *onprem.contoso.com* |
@@ -204,7 +204,7 @@ Most adja meg a parancsfájlt a következő információkkal:
 
 A következő példa létrehoz egy *myAzureADDSTrust* nevű megbízhatósági kapcsolatot a *onprem.contoso.com*. Használja a saját paraméterek nevét és jelszavát:.
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

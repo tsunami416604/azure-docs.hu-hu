@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: b4cc6e046b3d6442526df40cad574dbdb9159d5f
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 8ec32c7bd0d977ea18e4ff66dc616c300851a633
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073250"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505874"
 ---
 Ismerkedés a Pythonhoz készült Face ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -65,7 +65,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 A következő osztályok és felületek a Face Python ügyféloldali kódtár főbb funkcióit kezelik.
 
-|Name|Leírás|
+|Név|Leírás|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
@@ -253,7 +253,7 @@ A pillanatképek többi művelete egy aszinkron függvényen belül történik.
 
 Miután elvégezte ezeket a lépéseket, elérheti a Face adatok szerkezeteit az új (cél) előfizetésből.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
 
@@ -261,7 +261,7 @@ Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban találhat�
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

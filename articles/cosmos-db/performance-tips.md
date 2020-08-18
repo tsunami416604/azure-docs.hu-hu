@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: 3e15adcac184a0609de3197181cb8c475a962e8d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bc73292d7ed01468fc31e5a6203a4ba53a6425a2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258358"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505767"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek a Azure Cosmos DB és a .NET SDK v2-hez
 
@@ -72,7 +72,7 @@ Az ügyfél Azure Cosmos DBhoz való kapcsolódásának módja fontos teljesítm
 
   * Átjáró üzemmód (alapértelmezett)
       
-    Az átjáró üzemmód minden SDK platformon támogatott, és a [Microsoft.Azure.DocUMENTDB SDK](sql-api-sdk-dotnet.md)-hoz konfigurált alapértelmezett érték. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az adatok beolvasása vagy írása Azure Cosmos DB. Így a közvetlen mód jobb teljesítményt nyújt, mivel kevesebb hálózati ugrás van. Azt is javasoljuk, hogy az átjáró kapcsolati üzemmódja csak korlátozott számú szoftvercsatorna-kapcsolattal rendelkező környezetekben futtatott alkalmazásokat futtasson.
+    Az átjáró üzemmód minden SDK platformon támogatott, és a [Microsoft.Azure.DocUMENTDB SDK](sql-api-sdk-dotnet.md)-hoz konfigurált alapértelmezett érték. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen DNS-végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az adatok beolvasása vagy írása Azure Cosmos DB. Így a közvetlen mód jobb teljesítményt nyújt, mivel kevesebb hálózati ugrás van. Azt is javasoljuk, hogy az átjáró kapcsolati üzemmódja csak korlátozott számú szoftvercsatorna-kapcsolattal rendelkező környezetekben futtatott alkalmazásokat futtasson.
 
     Ha az SDK-t Azure Functionsban használja, különösen a használati [tervben](../azure-functions/functions-scale.md#consumption-plan), vegye figyelembe a [kapcsolatok jelenlegi korlátait](../azure-functions/manage-connections.md). Ebben az esetben előfordulhat, hogy az átjáró mód jobb, ha más HTTP-alapú ügyfelekkel is dolgozik a Azure Functions alkalmazáson belül.
 

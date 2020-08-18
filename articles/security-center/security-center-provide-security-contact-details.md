@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042275"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506471"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail-értesítések beállítása biztonsági riasztásokhoz 
 
@@ -32,6 +32,9 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 - a **közepes súlyosságú** riasztások esetében naponta legfeljebb **két** e-mail-üzenet
 - legfeljebb **egy** e-mail-cím naponta az **alacsony súlyosságú** riasztásokhoz
 
+
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="A biztonsági riasztásokkal kapcsolatos e-maileket fogadó partner adatainak konfigurálása." :::
+
 ## <a name="availability"></a>Rendelkezésre állás
 
 |Szempont|Részletek|
@@ -43,9 +46,7 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 |||
 
 
-
-
-## <a name="set-up-email-notifications-for-alerts"></a>Értesítő e-mail-értesítések beállítása<a name="email"></a>
+## <a name="set-up-email-notifications-for-alerts"></a>Értesítő e-mail-értesítések beállítása <a name="email"></a>
 
 E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szerepkörökkel rendelkező felhasználóknak is.
 
@@ -64,3 +65,4 @@ A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a
 
 * [Biztonsági riasztások – útmutató](alerts-reference.md) a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez
 * [Biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md) – útmutató a biztonsági riasztások kezeléséhez és megválaszolásához
+- [Munkafolyamat-automatizálás](workflow-automation.md) – a riasztásokra adott válaszok automatizálása egyéni értesítési logikával

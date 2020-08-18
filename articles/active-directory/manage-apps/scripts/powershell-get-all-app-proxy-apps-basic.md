@@ -2,22 +2,21 @@
 title: PowerShell-minta – alkalmazásproxy-alkalmazások alapszintű adatainak listázása
 description: PowerShell-példa, amely felsorolja Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazásait, valamint az alkalmazás AZONOSÍTÓját (AppId), a nevet (DisplayName) és az Object ID-t (ObjId).
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 009aabb8b742a752a29d775efbd11b153588c09b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80509969a30ea3e708d2e176a87277d51fb6da3f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482217"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506903"
 ---
 # <a name="get-all-application-proxy-apps-and-list-basic-information"></a>Az összes alkalmazásproxy-alkalmazás beolvasása és alapvető információk listázása
 
@@ -36,7 +35,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.m
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy egyszerű szolgáltatásnév beolvasása. |
 

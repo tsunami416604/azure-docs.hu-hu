@@ -3,12 +3,12 @@ title: Azure-Application Insights ASP.NET Core alkalmazásokhoz | Microsoft Docs
 description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475515"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270920"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -109,12 +109,16 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    * `APPINSIGHTS_INSTRUMENTATIONKEY`általában az [Azure web Appsban](./azure-web-apps.md?tabs=net)használatos, de használható minden olyan helyen is, ahol ez az SDK támogatott. (Ha kód nélküli webalkalmazás-figyelést végez, akkor ezt a formátumot kell megadni, ha nem használ kapcsolati karakterláncokat.)
+    * `APPINSIGHTS_INSTRUMENTATIONKEY` általában az [Azure web Appsban](./azure-web-apps.md?tabs=net)használatos, de használható minden olyan helyen is, ahol ez az SDK támogatott. (Ha kód nélküli webalkalmazás-figyelést végez, akkor ezt a formátumot kell megadni, ha nem használ kapcsolati karakterláncokat.)
 
     A rendszerállapot-kulcsok beállítása helyett már használhatja a [kapcsolatok karakterláncait](./sdk-connection-string.md?tabs=net)is.
 
     > [!NOTE]
     > A kód WINS-ben megadott rendszerállapot-kulcs a környezeti változón keresztül `APPINSIGHTS_INSTRUMENTATIONKEY` , amely más beállításokon keresztül nyerhető.
+
+### <a name="user-secrets-and-other-configuration-providers"></a>Felhasználói titkok és egyéb konfigurációs szolgáltatók
+
+Ha a kialakítási kulcsot ASP.NET Core felhasználói titokban szeretné tárolni, vagy egy másik konfigurációs szolgáltatótól kéri le, akkor a túlterhelés paraméterrel is felhasználható `Microsoft.Extensions.Configuration.IConfiguration` . Például: `services.AddApplicationInsightsTelemetry(Configuration);`.
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
@@ -143,7 +147,7 @@ A [teljesítményszámlálók](./web-monitor-performance.md) támogatása ASP.ne
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3. X alkalmazások alapértelmezett számlálóit gyűjti. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
+`EventCounterCollectionModule` Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3. X alkalmazások alapértelmezett számlálóit gyűjti. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Ügyféloldali telemetria engedélyezése webalkalmazásokhoz
 
@@ -199,16 +203,16 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-A beállítások teljes listája`ApplicationInsightsServiceOptions`
+A beállítások teljes listája `ApplicationInsightsServiceOptions`
 
 |Beállítás | Leírás | Alapértelmezett
 |---------------|-------|-------
-|EnablePerformanceCounterCollectionModule  | Engedélyezés/letiltás`PerformanceCounterCollectionModule` | true
-|EnableRequestTrackingTelemetryModule   | Engedélyezés/letiltás`RequestTrackingTelemetryModule` | true
-|EnableEventCounterCollectionModule   | Engedélyezés/letiltás`EventCounterCollectionModule` | true
-|EnableDependencyTrackingTelemetryModule   | Engedélyezés/letiltás`DependencyTrackingTelemetryModule` | true
-|EnableAppServicesHeartbeatTelemetryModule  |  Engedélyezés/letiltás`AppServicesHeartbeatTelemetryModule` | true
-|EnableAzureInstanceMetadataTelemetryModule   |  Engedélyezés/letiltás`AzureInstanceMetadataTelemetryModule` | true
+|EnablePerformanceCounterCollectionModule  | Engedélyezés/letiltás `PerformanceCounterCollectionModule` | true
+|EnableRequestTrackingTelemetryModule   | Engedélyezés/letiltás `RequestTrackingTelemetryModule` | true
+|EnableEventCounterCollectionModule   | Engedélyezés/letiltás `EventCounterCollectionModule` | true
+|EnableDependencyTrackingTelemetryModule   | Engedélyezés/letiltás `DependencyTrackingTelemetryModule` | true
+|EnableAppServicesHeartbeatTelemetryModule  |  Engedélyezés/letiltás `AppServicesHeartbeatTelemetryModule` | true
+|EnableAzureInstanceMetadataTelemetryModule   |  Engedélyezés/letiltás `AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | true
 |EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | true
 |EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartbeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | true
@@ -281,13 +285,13 @@ A Application Insights telemetria-modulok használatával automatikusan gyűjti 
 
 A következő automatikus gyűjtési modulok alapértelmezés szerint engedélyezve vannak. Ezeknek a moduloknak a feladata a telemetria automatikus gyűjtése. Az alapértelmezett viselkedés megváltoztatásához letilthatja vagy konfigurálhatja őket.
 
-* `RequestTrackingTelemetryModule`– RequestTelemetry gyűjt a bejövő webes kérelmekből.
-* `DependencyTrackingTelemetryModule`– A kimenő HTTP-hívások és az SQL-hívások [DependencyTelemetry](./asp-net-dependencies.md) gyűjti.
-* `PerformanceCollectorModule`– A Windows PerformanceCounters gyűjti.
-* `QuickPulseTelemetryModule`– Az élő metrika portálon megjelenített telemetria gyűjti.
-* `AppServicesHeartbeatTelemetryModule`-Gyűjti a szívveréseket (amelyek egyéni mérőszámként lesznek elküldve), Azure App Service környezettel kapcsolatban, ahol az alkalmazás fut.
-* `AzureInstanceMetadataTelemetryModule`-Gyűjti a szívveréseket (amelyek egyéni mérőszámként lesznek elküldve) az Azure-beli virtuálisgép-környezetről, ahol az alkalmazás üzemeltetve van.
-* `EventCounterCollectionModule`– Gyűjti a [EventCounters.](eventcounters.md) Ez a modul egy új szolgáltatás, amely az SDK 2.8.0-es és újabb verzióiban érhető el.
+* `RequestTrackingTelemetryModule` – RequestTelemetry gyűjt a bejövő webes kérelmekből.
+* `DependencyTrackingTelemetryModule` – A kimenő HTTP-hívások és az SQL-hívások [DependencyTelemetry](./asp-net-dependencies.md) gyűjti.
+* `PerformanceCollectorModule` – A Windows PerformanceCounters gyűjti.
+* `QuickPulseTelemetryModule` – Az élő metrika portálon megjelenített telemetria gyűjti.
+* `AppServicesHeartbeatTelemetryModule` -Gyűjti a szívveréseket (amelyek egyéni mérőszámként lesznek elküldve), Azure App Service környezettel kapcsolatban, ahol az alkalmazás fut.
+* `AzureInstanceMetadataTelemetryModule` -Gyűjti a szívveréseket (amelyek egyéni mérőszámként lesznek elküldve) az Azure-beli virtuálisgép-környezetről, ahol az alkalmazás üzemeltetve van.
+* `EventCounterCollectionModule` – Gyűjti a [EventCounters.](eventcounters.md) Ez a modul egy új szolgáltatás, amely az SDK 2.8.0-es és újabb verzióiban érhető el.
 
 Az alapértelmezett beállítások konfigurálásához `TelemetryModule` használja a bővítmény metódusát a `ConfigureTelemetryModule<T>` `IServiceCollection` következő példában látható módon:.
 

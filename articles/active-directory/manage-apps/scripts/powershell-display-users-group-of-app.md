@@ -2,22 +2,21 @@
 title: PowerShell-minta – az alkalmazásproxy-alkalmazáshoz tartozó felhasználók & csoportok listázása
 description: PowerShell-példa, amely felsorolja az adott Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz rendelt összes felhasználót és csoportot.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab5ac5d4712dd9e72fc0b9665d740859b5a6775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236850684ce479c2356943aea4fb0af570843f1f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483387"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506957"
 ---
 # <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Alkalmazásproxy-alkalmazáshoz rendelt felhasználók és csoportok megjelenítése
 
@@ -37,7 +36,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.m
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [Get-AzureADUser](https://docs.microsoft.com/powershell/module/AzureAD/get-azureaduser?view=azureadps-2.0)| Felhasználó beolvasása. |
 | [Get-AzureADGroup](https://docs.microsoft.com/powershell/module/AzureAD/get-azureadgroup?view=azureadps-2.0)| Egy csoport beolvasása. |

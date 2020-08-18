@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563925"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506532"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -181,6 +181,8 @@ A digitális Twin tulajdonságok frissítéséhez írja be a cserélni kívánt 
 await client.UpdateDigitalTwin(id, patch);
 ```
 
+A javítási hívások a több tulajdonságot is frissíthetik egyetlen dupla értékre, ahogy szeretné (még az összeset is). Ha több ikrek esetében is frissítenie kell a tulajdonságokat, külön frissítési hívásra van szükség az egyes Twin-példányokhoz.
+
 > [!TIP]
 > A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikkben korábban](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késést, ezért a lekérdezés helyett használja az API-hívást az újonnan frissített ikrek megjelenítéséhez, ha azonnali válaszra van szüksége. 
 
@@ -204,6 +206,7 @@ await client.UpdateDigitalTwin(id, patch);
 Az [SDK](how-to-use-apis-sdks.md)-ban manuálisan is létrehozhatja a javításokat vagy a szerializálási segítő osztály használatával. Íme egy példa.
 
 #### <a name="create-patches-manually"></a>Javítások manuális létrehozása
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -279,6 +282,19 @@ Ennek a helyzetnek a javításához frissítenie kell a modellt és a Twin 's h�
 ]
 ```
 
+### <a name="handle-conflicting-update-calls"></a>Ütköző frissítési hívások kezelése
+
+Az Azure Digital Twins gondoskodik arról, hogy a rendszer minden bejövő kérelmet a másik után dolgozza fel. Ez azt jelenti, hogy még akkor is, ha több függvény próbálkozik ugyanarra a tulajdonságra egy adott Twin-on egyszerre, **nem kell** explicit zárolási kódot írnia az ütközés kezelésére.
+
+Ez a viselkedés/Twin alapon történik. 
+
+Tegyük fel például, hogy a három hívás egy időben érkezik: 
+*   Az A tulajdonság írása a *Twin1*
+*   B tulajdonság írása a *Twin1*
+*   Az A tulajdonság írása a *Twin2*
+
+A *Twin1* módosító két hívás egy másik után kerül végrehajtásra, és minden egyes módosítás esetén az üzenetek módosulnak. Előfordulhat, hogy a *Twin2* módosítására irányuló hívás egyidejűleg, ütközés nélkül is végrehajtható, amint megérkezik.
+
 ## <a name="delete-a-digital-twin"></a>Digitális Twin törlése
 
 Az ikreket a használatával törölheti `DeleteDigitalTwin(ID)` . Azonban csak akkor törölhet egy IKeret, ha nincs több kapcsolata. Először törölnie kell az összes kapcsolatot. 
@@ -351,7 +367,7 @@ Az összes ikrek egyszerre történő törléséről például töltse le az okt
 
 Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

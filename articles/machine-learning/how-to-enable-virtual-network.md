@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192396"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506498"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ A Studio a következő adattár-típusokból származó adatok olvasását támo
 
 Adja hozzá a munkaterületét és a Storage-fiókját ugyanahhoz a virtuális hálózathoz, hogy hozzáférhessenek egymáshoz.
 
-1. Ha a munkaterületet a virtuális hálózathoz szeretné csatlakoztatni, [engedélyezze az Azure privát hivatkozását](how-to-configure-private-link.md). Ez a funkció jelenleg előzetes verzióban érhető el, és az USA keleti régiójában, az USA 2. nyugati régiójában, az USA déli középső régiójában érhető el.
+1. Ha a munkaterületet a virtuális hálózathoz szeretné csatlakoztatni, [engedélyezze az Azure privát hivatkozását](how-to-configure-private-link.md). Ez a funkció jelenleg előzetes verzióban érhető el, és az USA keleti régiójában és az USA 2. nyugati régiójában is elérhető.
 
 1. A Storage-fiók virtuális hálózathoz való összekapcsolásához [konfigurálja a tűzfalak és a virtuális hálózatok beállításait](#use-a-storage-account-for-your-workspace).
 
@@ -827,9 +827,9 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)
 * [A modellek üzembe helyezési helyének kiválasztása](how-to-deploy-and-where.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)

@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c24363caac1db8dd8ce21b690ef989b2beb97f2d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930318"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506056"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Példa a Jupyter-jegyzetfüzetek megmutatják, hogyan bővítheti az adatokat a megnyitott adatkészletekkel 
 Az Azure Open-adatkészletek számára készült Jupyter-jegyzetfüzetek bemutatják, hogyan tölthetők be a megnyitott adatkészletek, és hogyan használhatók a bemutató adatai gazdagítása érdekében. A technikák a Apache Spark és a pandák használatát is feldolgozzák az adatfeldolgozáshoz.
@@ -43,3 +43,4 @@ Az Azure Open-adatkészletek számára készült Jupyter-jegyzetfüzetek bemutat
 * [Oktatóanyag: regressziós modellezés automatizált gépi tanulással és nyitott adatkészlettel](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python SDK a nyílt adatkészletekhez](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure Open Datasets-katalógus](https://azure.microsoft.com/services/open-datasets/catalog/)
+* [Azure Machine Learning adatkészlet létrehozása a megnyitott adatkészletből](how-to-create-azure-machine-learning-dataset-from-open-dataset.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848712"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507178"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -178,7 +178,7 @@ A RADIUS-kiszolgáló konfigurálásához használhatja a standard (varázsló a
 
     ![Felhasználói csoportok ablak megadásával engedélyezheti vagy megtagadhatja a hozzáférést](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Válassza a **Tovább** lehetőséget.
+9. Kattintson a **Tovább** gombra.
 
 10. Az **IP-szűrők megadása** ablakban válassza a **tovább**lehetőséget.
 
@@ -249,7 +249,7 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
 
     ![RADIUS-kiszolgáló ablakának hozzáadása az időtúllépés konfigurálásához](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
-8. Válassza az **OK** lehetőséget.
+8. Kattintson az **OK** gombra.
 
 ### <a name="test-vpn-connectivity"></a>VPN-kapcsolat tesztelése
 
@@ -308,6 +308,10 @@ Ha segítségre van a felhasználóknak a Multi-Factor Authentication konfigurá
 
 Ez a szakasz útmutatást nyújt a VPN konfigurálásához az MFA használatára a VPN-kiszolgálóval való ügyfél-hitelesítéshez.
 
+> [!NOTE]
+> A REQUIRE_USER_MATCH beállításkulcs megkülönbözteti a kis-és nagybetűket. Az összes értéket nagybetűs formátumban kell megadni.
+>
+
 A hálózati házirend-kiszolgáló bővítmény telepítése és konfigurálása után a kiszolgáló által feldolgozott összes RADIUS-alapú ügyfél-hitelesítés szükséges az MFA használatához. Ha az összes VPN-felhasználó nincs regisztrálva az Azure Multi-Factor Authenticationban, a következők valamelyikét végezheti el:
 
 * Egy másik RADIUS-kiszolgáló beállítása a nem MFA használatára konfigurált felhasználók hitelesítéséhez.
@@ -319,6 +323,8 @@ Hozzon létre egy REQUIRE_USER_MATCH nevű új karakterláncot _a HKLM\SOFTWARE\
 ![A "felhasználói egyeztetés megkövetelése" beállítás](./media/howto-mfa-nps-extension-vpn/image34.png)
 
 Ha az érték *true (igaz* ) vagy üres, az összes hitelesítési kérelem MFA-Challenge-re vonatkozik. Ha az érték *false (hamis*), a rendszer csak az Azure multi-Factor Authenticationban regisztrált felhasználók számára bocsát ki MFA-kihívásokat. A *hamis* beállítást csak tesztelési vagy éles környezetben használhatja a bevezetési időszakban.
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>A Azure Active Directory bérlő AZONOSÍTÓjának beszerzése
 

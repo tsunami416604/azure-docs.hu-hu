@@ -15,7 +15,7 @@
 - name: Útmutatók
   items:
     - name: Adathalmazok az Azure Machine Learningben
-      href: how-to-create-dataset-from-open-dataset.md
+      href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
 - name: Példák
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

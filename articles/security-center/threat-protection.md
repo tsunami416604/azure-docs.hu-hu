@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041986"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272501"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -43,7 +43,7 @@ Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy
 
 
 
-## <a name="threat-protection-for-windows-machines"></a>Veszélyforrások elleni védelem Windows rendszerű gépeken<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Veszélyforrások elleni védelem Windows rendszerű gépeken <a name="windows-machines"></a>
 
 A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-alapú gépek monitorozásához és védeleméhez. Security Center az összes szolgáltatás riasztásait és szervizelési javaslatait egyszerűen használható formátumban jeleníti meg.
 
@@ -74,7 +74,7 @@ A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-
 
 
 
-## <a name="threat-protection-for-linux-machines"></a>Veszélyforrások elleni védelem Linux rendszerű gépeken<a name="linux-machines"></a>
+## <a name="threat-protection-for-linux-machines"></a>Veszélyforrások elleni védelem Linux rendszerű gépeken <a name="linux-machines"></a>
 
 A Security Center a Linux rendszerű gépekről naplózza a naplózási rekordokat **, az**egyik leggyakrabban használt Linux-naplózási keretrendszerben. a naplózott élet a fővonali kernelben. 
 
@@ -91,7 +91,7 @@ A Security Center a Linux rendszerű gépekről naplózza a naplózási rekordok
 
 
 
-## <a name="threat-protection-for-azure-app-service"></a>Veszélyforrások elleni védelem Azure App Service<a name="app-services"></a>
+## <a name="threat-protection-for-azure-app-service"></a>Veszélyforrások elleni védelem Azure App Service <a name="app-services"></a>
 
 > [!NOTE]
 > Ez a szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
@@ -110,7 +110,7 @@ App Service csomagokkal kapcsolatos további információkért lásd: [app Servi
 
 
 
-## <a name="threat-protection-for-containers"></a>Veszélyforrások elleni védelem tárolók esetén<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Veszélyforrások elleni védelem tárolók esetén <a name="azure-containers"></a>
 
 ### <a name="availability"></a>Rendelkezésre állás
 
@@ -131,7 +131,7 @@ App Service csomagokkal kapcsolatos további információkért lásd: [app Servi
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Veszélyforrások elleni védelem SQL Database és SQL Data Warehouse<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Veszélyforrások elleni védelem SQL Database és SQL Data Warehouse <a name="data-sql"></a>
 
 A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
@@ -147,7 +147,7 @@ További információ:
 
 
 
-## <a name="threat-protection-for-azure-storage"></a>Veszélyforrások elleni védelem az Azure Storage-ban<a name="azure-storage"></a>
+## <a name="threat-protection-for-azure-storage"></a>Veszélyforrások elleni védelem az Azure Storage-ban <a name="azure-storage"></a>
 
 ### <a name="availability"></a>Rendelkezésre állás
 
@@ -204,7 +204,7 @@ További információ:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Veszélyforrások elleni védelem Azure Cosmos DB<a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db"></a>Veszélyforrások elleni védelem Azure Cosmos DB <a name="cosmos-db"></a>
 
 A Azure Cosmos DB riasztások szokatlan és potenciálisan ártalmas kísérletekkel jönnek létre Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához.
 
@@ -216,7 +216,7 @@ További információ:
 
 
 
-## <a name="threat-protection-for-azure-network-layer"></a>Veszélyforrások elleni védelem az Azure hálózati rétegben<a name="network-layer"></a>
+## <a name="threat-protection-for-azure-network-layer"></a>Veszélyforrások elleni védelem az Azure hálózati rétegben <a name="network-layer"></a>
 
 Security Center a hálózati rétegbeli elemzések a minta [IPFIX adatokon](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)alapulnak, amelyek az Azure Core-útválasztók által gyűjtött csomagok fejlécei. Ezen adatcsatorna alapján a Security Center gépi tanulási modelleket használ a kártékony forgalmi tevékenységek azonosítására és megjelölésére. A Security Center a Microsoft Threat Intelligence-adatbázist is használja az IP-címek dúsítására.
 
@@ -230,7 +230,6 @@ Bizonyos hálózati konfigurációk korlátozhatják Security Center a gyanús h
 
 Az Azure hálózati réteggel kapcsolatos riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-azurenetlayer)tartalmazza.
 
-További információ arról, hogy a Security Center hogyan használhatók a hálózattal kapcsolatos jelek a veszélyforrások elleni védelem alkalmazásához: [a heurisztikus DNS-észlelések a Security Centerban](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 
 
@@ -281,9 +280,9 @@ A Azure Key Vault riasztások listáját a [riasztások hivatkozási táblájáb
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Veszélyforrások elleni védelem más Microsoft-szolgáltatások esetében<a name="alerts-other"></a>
+## <a name="threat-protection-for-other-microsoft-services"></a>Veszélyforrások elleni védelem más Microsoft-szolgáltatások esetében <a name="alerts-other"></a>
 
-### <a name="threat-protection-for-azure-waf"></a>Veszélyforrások elleni védelem az Azure WAF<a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Veszélyforrások elleni védelem az Azure WAF <a name="azure-waf"></a>
 
 Az Azure Application Gateway egy olyan webalkalmazási tűzfalat (WAF) nyújt, amely központi védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen.
 
@@ -292,7 +291,7 @@ A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihaszná
 Ha rendelkezik Azure WAF-licenccel, a WAF-riasztások továbbítása a Security Center, és nincs szükség további konfigurálásra. A WAF által generált riasztásokkal kapcsolatos további információkért lásd: a [webalkalmazási TŰZFAL CRS-szabályait tartalmazó csoportok és szabályok](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Veszélyforrások elleni védelem Azure DDoS Protection<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Veszélyforrások elleni védelem Azure DDoS Protection <a name="azure-ddos"></a>
 
 Az elosztott szolgáltatásmegtagadási (DDoS) támadások könnyen végrehajthatók. Nagyszerű biztonsági szempontot jelentenek, különösen akkor, ha az alkalmazásokat a felhőbe helyezi át. 
 

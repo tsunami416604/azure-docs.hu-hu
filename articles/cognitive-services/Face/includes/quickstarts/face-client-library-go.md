@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: bb8f80baac5ce49db612a7d3a599d727b824bffc
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073390"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505873"
 ---
 Ismerkedés a Face ügyféloldali függvénytárával a Go-ban. Az alábbi lépéseket követve telepítheti a könyvtárat, és kipróbálhatja a példákat az alapszintű feladatokhoz. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -90,7 +90,7 @@ Ezt követően megkezdheti a kód hozzáadását a különböző Face Service-m�
 
 A következő osztályok és felületek kezelik a Face Service go ügyféloldali függvénytárának főbb funkcióit.
 
-|Name|Leírás|
+|Név|Leírás|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
 |[Ügyfél](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
@@ -293,7 +293,7 @@ Ismételje meg az azonosító lekérdezését egészen addig, amíg a művelet b
 
 Miután elvégezte ezeket a lépéseket, elérheti a Face adatok szerkezeteit az új (cél) előfizetésből.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa a go alkalmazást a `go run [arguments]` paranccsal az alkalmazás könyvtárából.
 
@@ -301,7 +301,7 @@ Futtassa a go alkalmazást a `go run [arguments]` paranccsal az alkalmazás kön
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

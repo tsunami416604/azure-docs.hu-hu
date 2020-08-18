@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 08/13/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70e7067a78b439d3dcaf0b83460296cad7b4485
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff4ff33722ac0697532285cf52d88ef459f5c7d5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80585805"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a zendesk
 
@@ -83,11 +83,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.zendesk.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.zendesk.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.zendesk.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.zendesk.com`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.zendesk.com/access/saml`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.zendesk.com/access/saml`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a zendesk ügyfélszolgálati [csapatához](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -119,9 +119,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -143,13 +143,21 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-zendesk-sso"></a>Zendesk SSO konfigurálása
 
+1. A **zendesk**belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés zendesk** gombra a zendesk alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a zendesk való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
 1. Ha manuálisan szeretné beállítani a zendesk, nyisson meg egy új böngészőablakot, és jelentkezzen be a zendesk vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-2. Kattintson a **rendszergazda**elemre.
+1. Kattintson a **rendszergazda**elemre.
 
-3. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**, majd a **Biztonság**elemre.
+1. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**, majd a **Biztonság**elemre.
 
-4. A **Biztonság** lapon hajtsa végre a következő lépéseket:
+1. A **Biztonság** lapon hajtsa végre a következő lépéseket:
 
     ![Biztonság](./media/zendesk-tutorial/ic773089.png "Biztonság")
 
@@ -165,7 +173,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. A **Tanúsítvány ujjlenyomata** szövegmezőbe illessze be a tanúsítvány **ujjlenyomatának** értékét, amelyet a Azure Portal másolt.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 ### <a name="create-zendesk-test-user"></a>Zendesk-tesztelési felhasználó létrehozása
 
@@ -196,11 +204,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a zendesk csempére kattint, automatikusan be kell jelentkeznie arra a zendesk, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -12,20 +12,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037541"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507195"
 ---
-# <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
+# <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning adatkészleteket a helyi vagy távoli kísérletek adataihoz való hozzáféréshez. Annak megismeréséhez, hogy az adatkészletek hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférés adatai](concept-data.md#data-workflow) című cikket.
 
-Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Mivel az adatok a meglévő helyükön maradnak, nem számítunk fel extra tárolási költséget, és nem kockáztatjuk az adatforrások integritását. Az adathalmazokat is kiértékeli a rendszer, ami a munkafolyamatok teljesítményének sebességét segíti elő. Adatkészleteket létrehozhat adattárolók, nyilvános URL-címek és [Azure Open-adatkészletek](../open-datasets/how-to-create-dataset-from-open-dataset.md)használatával.
+Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Mivel az adatok a meglévő helyükön maradnak, nem számítunk fel extra tárolási költséget, és nem kockáztatjuk az adatforrások integritását. Az adathalmazokat is kiértékeli a rendszer, ami a munkafolyamatok teljesítményének sebességét segíti elő. Adatkészleteket létrehozhat adattárolók, nyilvános URL-címek és [Azure Open-adatkészletek](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)használatával.
 
 Azure Machine Learning adatkészletek esetében a következőket teheti:
 
@@ -163,7 +163,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Index|PassengerId|Túlélte|Pclass|Name|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
+|Index|PassengerId|Túlélte|Pclass|Name (Név)|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
 1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
@@ -232,7 +232,7 @@ Adatkészlet létrehozása a Studióban:
 
 Az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/) olyan beszerzett nyilvános adatkészletek, amelyekkel pontosabb modelleket adhat hozzá a gépi tanulási megoldásokhoz. Az adatkészletek olyan nyilvános tartományi adatokat foglalnak magukban, mint az időjárás, a népszámlálás, az ünnepnapok, a közbiztonság és a gépi tanulási modellek betanítását és a prediktív megoldások bővítését segítő hely. A nyílt adatkészletek a felhőben vannak Microsoft Azure és az SDK-ban és a Studióban is szerepelnek.
 
-Megtudhatja, hogyan hozhat létre [Azure Machine learning adatkészleteket az Azure Open-adatkészletekben](../open-datasets/how-to-create-dataset-from-open-dataset.md). 
+Megtudhatja, hogyan hozhat létre [Azure Machine learning adatkészleteket az Azure Open-adatkészletekben](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md). 
 
 ## <a name="train-with-datasets"></a>Betanítás adathalmazok használatával
 

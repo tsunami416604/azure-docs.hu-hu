@@ -2,22 +2,21 @@
 title: PowerShell-minta – felhasználó kiosztása alkalmazásproxy-alkalmazáshoz
 description: PowerShell-példa, amely egy felhasználót Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz rendel.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42667ebdfc37b679d56421e3a82d4a6aaaed8fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: addc3f091a2699079b0463b0d6e4d0cf097f3573
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483335"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507076"
 ---
 # <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>Felhasználó társítása egy adott Azure AD Application Proxy-alkalmazáshoz
 
@@ -37,7 +36,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.m
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/new-azureaduserapproleassignment?view=azureadps-2.0) | Felhasználó társítása egy alkalmazás-szerepkörhöz. |
 

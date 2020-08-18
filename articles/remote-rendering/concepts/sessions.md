@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758860"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507093"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-munkamenetek
 
@@ -40,10 +40,10 @@ Minden munkamenet több fázison megy keresztül.
 
 Ha az ARR-t arra kéri, hogy [hozzon létre egy új munkamenetet](../how-tos/session-rest-api.md#create-a-session), akkor az első dolog, ha egy munkamenet [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-t ad vissza. Ez az UUID lehetővé teszi a munkamenet adatainak lekérdezését. Az UUID-t és a munkamenet alapszintű információit 30 napig őrzi meg a rendszer, így a munkamenet leállítása után is lekérdezheti az adatokat. Ezen a ponton a **munkamenet-állapotot** a rendszer az **induláskor**fogja jelenteni.
 
-Ezt követően az Azure Remote rendering megpróbál olyan kiszolgálót találni, amely képes a munkamenet üzemeltetésére. A keresésnek két paramétere van. Először csak a [régiójában](../reference/regions.md)lévő kiszolgálókat fogja fenntartani. Ennek oka, hogy a régiók közötti hálózati késés túl magas lehet a tisztességes felhasználói élmény garantálása érdekében. A második tényező a megadott kívánt *méret* . Az egyes régiókban korlátozott számú kiszolgáló érhető el, amelyek megfelelnek a standard vagy a *prémium* *szintű* kérésnek. Ennek következtében, ha a kért méret összes kiszolgálója jelenleg használatban van a régiójában, a munkamenet létrehozása sikertelen lesz. A hiba oka lehet a [lekérdezés](../how-tos/session-rest-api.md#get-sessions-properties).
+Ezt követően az Azure Remote rendering megpróbál olyan kiszolgálót találni, amely képes a munkamenet üzemeltetésére. A keresésnek két paramétere van. Először csak a [régiójában](../reference/regions.md)lévő kiszolgálókat fogja fenntartani. Ennek oka, hogy a régiók közötti hálózati késés túl magas lehet a tisztességes felhasználói élmény garantálása érdekében. A második tényező a megadott kívánt *méret* . Az egyes régiókban korlátozott számú kiszolgáló érhető el, amelyek megfelelnek a standard vagy a [*prémium*](../reference/vm-sizes.md) [*szintű*](../reference/vm-sizes.md) kérésnek. Ennek következtében, ha a kért méret összes kiszolgálója jelenleg használatban van a régiójában, a munkamenet létrehozása sikertelen lesz. A hiba oka lehet a [lekérdezés](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Ha *standard* virtuálisgép-méretet kér, és a kérés magas kereslet miatt meghiúsul, akkor a nem jelenti azt, hogy a *prémium* szintű kiszolgáló igénylése is sikertelen lesz. Ha így van, lehetősége van arra, hogy egy *prémium* szintű virtuális gépre visszaessen.
+> Ha *standard szintű* kiszolgáló-méretet kér, és a kérés magas kereslet miatt meghiúsul, a nem jelenti azt, hogy a *prémium* szintű kiszolgáló igénylése is sikertelen lesz. Ha így van, akkor kipróbálhatja a *prémium* szintű kiszolgáló méretének visszaesését.
 
 Ha a szolgáltatás megfelelő kiszolgálót talál, a megfelelő virtuális gépet (VM) át kell másolnia egy Azure távoli renderelési gazdagépre való bekapcsolásához. Ez a folyamat több percig is eltarthat. Ezt követően a virtuális gép elindult, és a **munkamenet állapota** **készre**vált.
 
@@ -72,7 +72,7 @@ Néhány hiba miatt előfordulhat, hogy egy munkamenet le is állítható.
 A munkamenet leállítása után minden esetben nem számítunk fel díjat.
 
 > [!WARNING]
-> Azt jelzi, hogy egy munkamenethez kapcsolódik-e, és hogy mennyi ideig, nem befolyásolja a számlázást. A szolgáltatásért fizetendő díj a *munkamenet időtartamától*függ, ami azt jelenti, hogy egy kiszolgáló kizárólag az Ön számára van fenntartva, és a kért hardveres képességek (a virtuális gép mérete). Ha elindít egy munkamenetet, öt percig kapcsolódjon, majd ne állítsa le a munkamenetet, hogy az a bérlet lejárta előtt is fusson, a teljes munkamenet címbérletének idejére. Ezzel szemben a *címbérlet maximális időtartama* többnyire biztonsági háló. Nem számít, hogy a munkamenetet nyolc órás bérlettel kéri-e, majd csak öt percig használja, ha ezt követően manuálisan leállítja a munkamenetet.
+> Azt jelzi, hogy egy munkamenethez kapcsolódik-e, és hogy mennyi ideig, nem befolyásolja a számlázást. A szolgáltatásért fizetendő díj a *munkamenet időtartamától*függ, ami azt jelenti, hogy a kiszolgáló csak Ön számára van fenntartva, és a kért hardver-képességek (a [lefoglalt méret](../reference/vm-sizes.md)). Ha elindít egy munkamenetet, öt percig kapcsolódjon, majd ne állítsa le a munkamenetet, hogy az a bérlet lejárta előtt is fusson, a teljes munkamenet címbérletének idejére. Ezzel szemben a *címbérlet maximális időtartama* többnyire biztonsági háló. Nem számít, hogy a munkamenetet nyolc órás bérlettel kéri-e, majd csak öt percig használja, ha ezt követően manuálisan leállítja a munkamenetet.
 
 #### <a name="extend-a-sessions-lease-time"></a>Munkamenet címbérleti idejének meghosszabbítása
 
@@ -138,7 +138,7 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 Több `AzureFrontend` és `AzureSession` példány is kezelhető, módosítható és lekérdezhető a kódból. Egyszerre azonban csak egyetlen eszköz csatlakozhat egyszerre `AzureSession` .
 
-A virtuális gép élettartama nincs a `AzureFrontend` példányhoz vagy a `AzureSession` példányhoz kötve. `AzureSession.StopAsync`a munkamenet leállítására kell hívni.
+A virtuális gép élettartama nincs a `AzureFrontend` példányhoz vagy a `AzureSession` példányhoz kötve. `AzureSession.StopAsync` a munkamenet leállítására kell hívni.
 
 Az állandó munkamenet-azonosító lekérdezhető helyileg a-n keresztül `AzureSession.SessionUUID()` és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `AzureFrontend.OpenSession` a kötést az adott munkamenethez.
 

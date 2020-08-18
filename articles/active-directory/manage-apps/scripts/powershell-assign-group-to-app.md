@@ -2,22 +2,21 @@
 title: PowerShell-minta – csoport társítása alkalmazásproxy-alkalmazáshoz
 description: PowerShell-példa, amely egy csoportot rendel egy Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazáshoz.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 540453e5de3eed97b1207ca16443b46dffd5f8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1a8ebe170c499febc42fed028a17f7e6e591fc6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483348"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507059"
 ---
 # <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Csoport társítása egy adott Azure AD Application Proxy-alkalmazáshoz
 
@@ -37,7 +36,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.m
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | Csoport társítása egy alkalmazás-szerepkörhöz. |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876716"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505580"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -40,10 +40,11 @@ A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítm�
 ### <a name="operating-system"></a>Operációs rendszer
 
 A Linux rendszerű csomópontok esetében a DSC Linux bővítmény támogatja a [POWERSHELL DSC dokumentációjában](/powershell/scripting/dsc/getting-started/lnxgettingstarted)felsorolt összes Linux-disztribúciót.
- 
+
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A DSCForLinux-bővítmény megköveteli, hogy a célként megadott virtuális gép csatlakozni lehessen az internethez. A regisztrálási bővítménynek például kapcsolódnia kell az Automation szolgáltatáshoz. Más műveletek, például a lekéréses, a lekéréses telepítéshez az Azure Storage-hoz és a GitHubhoz kell kapcsolódnia. Ez az ügyfél által megadott beállításoktól függ.
+A DSCForLinux-bővítmény megköveteli, hogy a célként megadott virtuális gép csatlakozni lehessen az internethez. A regisztrálási bővítménynek például kapcsolódnia kell az Automation szolgáltatáshoz.
+Más műveletek, például a lekéréses, a lekéréses telepítéshez az Azure Storage-hoz és a GitHubhoz kell kapcsolódnia. Ez az ügyfél által megadott beállításoktól függ.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -55,13 +56,13 @@ Az összes támogatott nyilvános konfigurációs paraméter:
 * `ResourceName`: (nem kötelező, karakterlánc) az egyéni erőforrás-modul neve.
 * `ExtensionAction`: (nem kötelező, karakterlánc) megadja a bővítményt. Az érvényes értékek: regisztrálás, leküldés, lekérés, telepítés és eltávolítás. Ha nincs megadva, a rendszer alapértelmezés szerint leküldéses műveletet számít.
 * `NodeConfigurationName`: (nem kötelező, karakterlánc) az alkalmazandó csomópont-konfiguráció neve.
-* `RefreshFrequencyMins`: (nem kötelező, int) Megadja, hogy a DSC milyen gyakran próbálja meg beolvasni a konfigurációt a lekérési kiszolgálóról. 
+* `RefreshFrequencyMins`: (nem kötelező, int) Megadja, hogy a DSC milyen gyakran próbálja meg beolvasni a konfigurációt a lekérési kiszolgálóról.
        Ha a lekérési kiszolgálón a konfiguráció eltér az aktuálistól, a rendszer átmásolja a függőben lévő tárolóba, és alkalmazza azokat.
 * `ConfigurationMode`: (nem kötelező, karakterlánc) Megadja, hogy a DSC hogyan alkalmazza a konfigurációt. Az érvényes értékek a következők: ApplyOnly, ApplyAndMonitor és ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (opcionális, int) Megadja, hogy milyen gyakran (percben) a DSC biztosítja, hogy a konfiguráció a kívánt állapotban legyen.
 
 > [!NOTE]
-> Ha 2,3-nál korábbi verziót használ, a mode paraméter ugyanaz, mint a ExtensionAction. A mód úgy tűnik, hogy túlterhelt kifejezés. A félreértések elkerülése érdekében a ExtensionAction a 2,3-es verziótól kezdődően használatos. A visszamenőleges kompatibilitás érdekében a bővítmény támogatja a módot és a ExtensionAction is. 
+> Ha 2,3-nál korábbi verziót használ, a mode paraméter ugyanaz, mint a ExtensionAction. A mód úgy tűnik, hogy túlterhelt kifejezés. A félreértések elkerülése érdekében a ExtensionAction a 2,3-es verziótól kezdődően használatos. A visszamenőleges kompatibilitás érdekében a bővítmény támogatja a módot és a ExtensionAction is.
 >
 
 ### <a name="protected-configuration"></a>Védett konfiguráció
@@ -269,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak, ha egy vagy több olyan virtuális gépet telepít, amely a telepítés utáni konfigurálást igényli, például Azure Automation bevezetését. 
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak, ha egy vagy több olyan virtuális gépet telepít, amely a telepítés utáni konfigurálást igényli, például Azure Automation bevezetését.
 
 A minta Resource Manager-sablon a [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) és [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
@@ -323,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 Az Azure-fiókba való bejelentkezéshez az Azure Service Management módban is bejelentkezhet:
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 És a DSCForLinux-bővítmény üzembe helyezéséhez futtassa a következőket:
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -362,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 Azure Resource Manager módban is bejelentkezhet az Azure-fiókjába a következő futtatásával:
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -370,7 +371,7 @@ Ha többet szeretne megtudni a Azure Resource Manager Azure PowerShell használa
 
 A DSCForLinux-bővítményt a futtatásával is telepítheti:
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'
@@ -425,5 +426,5 @@ Bizonyos esetekben a DSC Linux bővítmény nem tudja telepíteni a következőt
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/community/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080524"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506396"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -42,11 +42,11 @@ A IOPS és a tárolási átviteli sebességű tárolási típusok listáját és
 
 A különböző tárolási típusok minimális SAP HANA tanúsított feltételei a következők: 
 
-- Az Azure Premium Storage- **/Hana/log** szükséges az Azure [írásgyorsító](../../linux/how-to-enable-write-accelerator.md)támogatásához. A **/Hana/Data** -kötetet a Premium Storage-ra lehet helyezni az Azure írásgyorsító vagy az ultra Disk nélkül
+- Az Azure Premium Storage- **/Hana/log** szükséges az Azure [írásgyorsító](../../how-to-enable-write-accelerator.md)támogatásához. A **/Hana/Data** -kötetet a Premium Storage-ra lehet helyezni az Azure írásgyorsító vagy az ultra Disk nélkül
 - Legalább a **/Hana/log** -kötethez tartozó Azure Ultra Disk. A **/Hana/Data** -kötetet az Azure írásgyorsító nélküli Premium Storage-ra vagy az ultra Disk gyorsabb újraindítására lehet helyezni
 - A **/Hana/log és a/hana/data**Azure NetApp Files felső részén található **NFS v 4.1** kötetek. A/Hana/Shared mennyisége NFS v3 vagy NFS v 4.1 protokollt használhat.
 
-Egyes tárolási típusok kombinálhatók. Előfordulhat például, hogy az **/Hana/Data** -t a Premium Storage-ra helyezi, és a **/Hana/log** a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Ha a **/HANA/Data**ANF alapuló kötetet használ, a **/Hana/log** -kötetet a ANF-on felüli NFS-en kell alapulnia. A ANF-en keresztüli NFS használata az egyik kötetre (például a/Hana/Data-ra) és az Azure Premium Storage-ra, vagy a másik kötethez tartozó Ultra Disk (például **/Hana/log**) **nem támogatott**.
+Egyes tárolási típusok kombinálhatók. Előfordulhat például, hogy az **/Hana/Data** -t a Premium Storage-ra helyezi, és a **/Hana/log** a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Ha a **/HANA/Data**ANF alapuló kötetet használ, a  **/Hana/log** -kötetet a ANF-on felüli NFS-en kell alapulnia. A ANF-en keresztüli NFS használata az egyik kötetre (például a/Hana/Data-ra) és az Azure Premium Storage-ra, vagy a másik kötethez tartozó Ultra Disk (például **/Hana/log**) **nem támogatott**.
 
 A helyszíni világban ritkán kell foglalkoznia az I/O-alrendszerekkel és képességeivel. Ennek az az oka, hogy a készülék gyártójának meg kell győződnie arról, hogy a minimális tárolási követelmények teljesülnek SAP HANA esetén. Ha saját maga hozza létre az Azure-infrastruktúrát, tisztában kell lennie az egyes SAP-kiállított követelményekkel. Az SAP által ajánlott minimális átviteli sebességek közül néhány:
 
@@ -75,7 +75,7 @@ A Linux számos különböző I/O-ütemezési módot tartalmaz. A Linux-szállí
 Az Azure írásgyorsító egy olyan funkció, amely kizárólag az Azure M sorozatú virtuális gépekhez érhető el. A név szerint a funkció célja az, hogy javítsa az írási időt az Azure Premium Storage szolgáltatásban. SAP HANA esetén a rendszer csak a **/Hana/log** köteten használja írásgyorsító. Ezért a **/Hana/Data** és a **/Hana/log** különálló kötetek, amelyek az Azure-írásgyorsító támogatják a **/Hana/log** -kötetet. 
 
 > [!IMPORTANT]
-> Az Azure Premium Storage használatakor a **/Hana/log** -kötethez tartozó Azure [írásgyorsító](../../linux/how-to-enable-write-accelerator.md) használata kötelező. A írásgyorsító a Premium Storage és az M-Series és a Mv2 sorozatú virtuális gépek esetében is elérhető. A írásgyorsító nem működik együtt más Azure-beli virtuálisgép-családokkal, például a Esv3 vagy a Edsv4-mel.
+> Az Azure Premium Storage használatakor a **/Hana/log** -kötethez tartozó Azure [írásgyorsító](../../how-to-enable-write-accelerator.md) használata kötelező. A írásgyorsító a Premium Storage és az M-Series és a Mv2 sorozatú virtuális gépek esetében is elérhető. A írásgyorsító nem működik együtt más Azure-beli virtuálisgép-családokkal, például a Esv3 vagy a Edsv4-mel.
 
 Az alábbi Azure Premium-lemezekre vonatkozó gyorsítótárazási javaslatok feltételezik, hogy a lista SAP HANA I/O-jellemzői:
 
@@ -143,7 +143,7 @@ Különösen a kisebb adatbázis-kezelő rendszerek esetében, amelyekben a szá
 
 Az SAP **/Hana/Data** -kötet konfigurációja:
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /hana/data | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
 | M32ts | 192 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14 000 |
 | M32ls | 256 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14 000 |
@@ -160,7 +160,7 @@ Az SAP **/Hana/Data** -kötet konfigurációja:
 
 A **/Hana/log** kötethez. a konfiguráció a következőképpen fog kinézni:
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | **/Hana/log** -kötet | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | **/Hana/log** -kötet | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
 | M32ts | 192 GiB | 500 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 | 
 | M32ls | 256 GiB | 500 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 | 
@@ -177,7 +177,7 @@ A **/Hana/log** kötethez. a konfiguráció a következőképpen fog kinézni:
 
 A többi kötet esetében a konfiguráció a következőképpen fog kinézni:
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /hana/shared | /root-kötet | /usr/sap |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/shared | /root-kötet | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | M32ts | 192 GiB | 500 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
 | M32ls | 256 GiB | 500 MBps |  1 x P20 | 1 x P6 | 1 x P6 |
@@ -194,11 +194,11 @@ A többi kötet esetében a konfiguráció a következőképpen fog kinézni:
 
 Győződjön meg arról, hogy a különböző javasolt kötetek tárolási átviteli sebessége megfelel-e a futtatni kívánt munkaterhelésnek. Ha a munkaterhelés nagyobb köteteket igényel a **/Hana/Data** és a **/Hana/log**számára, növelje az Azure Premium Storage virtuális merevlemezek számát. Az Azure-beli virtuálisgép-típus korlátain belül a kötetek méretezése a IOPS és az I/O-átviteli sebesség növelésével növekszik.
 
-Az Azure írásgyorsító csak az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)szolgáltatással együtt működik. Így legalább a **/Hana/log** -kötetet alkotó Azure Premium Storage-lemezeket felügyelt lemezként kell telepíteni. Az Azure írásgyorsító részletes utasításait és korlátozásait a cikkben találja [írásgyorsító](../../linux/how-to-enable-write-accelerator.md).
+Az Azure írásgyorsító csak az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)szolgáltatással együtt működik. Így legalább a **/Hana/log** -kötetet alkotó Azure Premium Storage-lemezeket felügyelt lemezként kell telepíteni. Az Azure írásgyorsító részletes utasításait és korlátozásait a cikkben találja [írásgyorsító](../../how-to-enable-write-accelerator.md).
 
 Az Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -család HANA-tanúsítvánnyal rendelkező virtuális gépei és a [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)esetében ANF kell a **/Hana/Data** és a **/Hana/log** kötetet. Vagy az Azure Premium Storage helyett az Azure Ultra Disk Storage használatát kell kihasználnia a **/Hana/log** -kötethez. Ennek eredményeképpen az Azure Premium Storage **/Hana/Data** -kötetének konfigurációi a következőhöz hasonlóak:
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /hana/data | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | Adatbursás maximális átviteli sebessége | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- |
 | E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 510 MBps | 1500 | 10 500 |
 | E32ds_v4 | 256 GiB | 768 MBps | 3 x P10 |  510 MBps | 1500 | 10 500|
@@ -208,7 +208,7 @@ Az Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.j
 
 A többi kötet esetében, beleértve az **/Hana/log** is, a konfiguráció az alábbihoz hasonló:
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS | /hana/shared | /root-kötet | /usr/sap |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS | /hana/shared | /root-kötet | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MBps | 80 GB | 250 MBps | 1800 | 1 x P15 | 1 x P6 | 1 x P6 |
 | E32ds_v4 | 256 GiB | 768 MBps | 128 GB | 250 MBps | 1800 | 1 x P15 | 1 x P6 | 1 x P6 |
@@ -236,7 +236,7 @@ Ebben a konfigurációban a **/Hana/Data** és a **/Hana/log** kötetek külön 
 
 A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/s | 200 GB | 400 MBps | 2500 | 80 GB | 250 MB | 1800 |
 | E32ds_v4 | 256 GiB | 768 MB/s | 300 GB | 400 MBps | 2500 | 128 GB | 250 MBps | 1800 |
@@ -329,7 +329,7 @@ Eddig a jelen dokumentumban ismertetett Azure Premium Storage-megoldás a [Premi
 Az ilyen konfigurációknál a kevésbé költséges alternatíva a következőképpen néz ki:
 
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/Data és/Hana/log<br /> az LVM vagy a MDADM szalagos | /hana/shared | /root-kötet | /usr/sap | Megjegyzések |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data és/Hana/log<br /> az LVM vagy a MDADM szalagos | /hana/shared | /root-kötet | /usr/sap | Megjegyzések |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 112 GiB | 768 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
 | E16v3 | 128 GiB | 384 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | A virtuális gép típusa nem HANA-tanúsítvánnyal rendelkezik <br /> Nem érhető el kevesebb, mint 1ms tárolási késés<sup>1</sup> |
@@ -352,9 +352,9 @@ Az ilyen konfigurációknál a kevésbé költséges alternatíva a következők
 | M416ms_v2 | 11400 GiB | 2 000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | A írásgyorsító használata a kombinált és a naplózási kötetek esetében a IOPS arányt 20 000<sup>2</sup> értékre fogja korlátozni |
 
 
-<sup>1</sup> az [Azure-írásgyorsító](../../linux/how-to-enable-write-accelerator.md) nem használhatók a EV4 és a Ev4 VM-családokkal. Az Azure Premium Storage használatának eredményeképpen az I/O-késés nem lesz kevesebb, mint 1ms
+<sup>1</sup> az [Azure-írásgyorsító](../../how-to-enable-write-accelerator.md) nem használhatók a EV4 és a Ev4 VM-családokkal. Az Azure Premium Storage használatának eredményeképpen az I/O-késés nem lesz kevesebb, mint 1ms
 
-<sup>2</sup> a virtuálisgép-család támogatja az [Azure írásgyorsító](../../linux/how-to-enable-write-accelerator.md)-t, de lehetséges, hogy az írási gyorsító IOPS korlátja korlátozhatja a lemezes konfigurációk IOPS képességeit.
+<sup>2</sup> a virtuálisgép-család támogatja az [Azure írásgyorsító](../../how-to-enable-write-accelerator.md)-t, de lehetséges, hogy az írási gyorsító IOPS korlátja korlátozhatja a lemezes konfigurációk IOPS képességeit.
 
 Ha a SAP HANA adatmennyiségét és a naplózási kötetet egyesíti, a csíkozott kötetet felépítő lemezek nem rendelkezhetnek olvasási gyorsítótárral, vagy az írási/olvasási gyorsítótár engedélyezve van.
 

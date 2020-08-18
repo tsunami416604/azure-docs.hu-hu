@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389530"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505461"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Az egyszeri bejelentkezés és a jogkivonatok testreszabásának kezelése egyéni házirendek használatával Azure Active Directory B2C
 
 Ez a cikk azt ismerteti, hogyan kezelheti a tokeneket, a munkameneteket és az egyszeri bejelentkezési (SSO) konfigurációkat a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](custom-policy-overview.md) .
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW-jogkivonat élettartamai és jogcímek konfigurálása
+## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT-jogkivonat élettartamai és jogcímek konfigurálása
 
 Ha módosítani szeretné a jogkivonat-élettartamok beállításait, vegyen fel egy [ClaimsProviders](claimsproviders.md) elemet a befolyásolni kívánt szabályzat függő entitásában található fájlban.  A **ClaimsProviders** elem a [TrustFrameworkPolicy](trustframeworkpolicy.md) elem gyermeke.
 
@@ -57,7 +57,7 @@ Az előző példában az alábbi értékek vannak megadva:
 - **Frissítési jogkivonat élettartama** – a frissítési jogkivonat élettartamának értéke a **refresh_token_lifetime_secs** metaadat-elemmel van beállítva. Az alapértelmezett érték 1209600 másodperc (14 nap).
 - **Frissítési jogkivonat ablakának élettartama** – ha a frissítési tokenhez be szeretné állítani a csúszó ablak élettartamát, állítsa be **rolling_refresh_token_lifetime_secs** metaadat-elem értékét. Az alapértelmezett érték 7776000 (90 nap). Ha nem szeretné kikényszeríteni a csúszó ablak élettartamát, cserélje le az elemeket a következőre: `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` .
 - **Kiállítói (ISS) jogcím** – a kibocsátó (ISS) jogcím a **IssuanceClaimPattern** metaadat-elemmel van beállítva. A megfelelő értékek: `AuthorityAndTenantGuid` és `AuthorityWithTfp` .
-- **Házirend-azonosítót jelölő jogcím beállítása** – az érték beállításának beállításai `TFP` (megbízhatósági keretrendszer-házirend) és `ACR` (hitelesítési környezetre vonatkozó hivatkozás). `TFP`az ajánlott érték. Állítsa be a **AuthenticationContextReferenceClaimPattern** értéket a értékkel `None` .
+- **Házirend-azonosítót jelölő jogcím beállítása** – az érték beállításának beállításai `TFP` (megbízhatósági keretrendszer-házirend) és `ACR` (hitelesítési környezetre vonatkozó hivatkozás). `TFP` az ajánlott érték. Állítsa be a **AuthenticationContextReferenceClaimPattern** értéket a értékkel `None` .
 
     A **ClaimsSchema** elemben adja hozzá a következő elemet:
 

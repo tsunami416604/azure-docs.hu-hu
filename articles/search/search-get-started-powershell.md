@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: eb7dcc0956cd9ce214ad3894aa8cc2b99beed942
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519813"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506005"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a PowerShellben REST API-k használatával
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86519813"
 
 Ez a cikk végigvezeti egy Azure Cognitive Search index létrehozásának, betöltésének és lekérdezésének lépésein a PowerShell és az [azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k használatával. Ez a cikk azt ismerteti, hogyan lehet interaktív módon futtatni a PowerShell-parancsokat. Azt is megteheti, hogy [letölti és futtat egy PowerShell-parancsfájlt](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , amely ugyanezeket a műveleteket hajtja végre.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -89,7 +89,7 @@ Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy i
 
 Az index kötelező elemei közé tartozik a név és a mezők gyűjteménye. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza, hogyan használják a rendszer (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú mezőt `Edm.String` meg kell jelölni a dokumentum-identitás *kulcsaként* .
 
-Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, más forgatókönyvekben használt [szállodák indexének](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) részhalmaza. Ebben a rövid útmutatóban lerövidítjük.
+Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíciók szerepelnek. Ez egy nagyobb, az útmutatóban szereplő cikkekből álló [index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) Ebben a rövid útmutatóban a mezők definíciói a rövid útmutatóhoz lettek kimetszve.
 
 1. Illessze be a példát a PowerShellbe, és hozzon létre egy **$Body** objektumot, amely tartalmazza az index sémát.
 
@@ -319,7 +319,7 @@ A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-cím�
 
 Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.
 
-Ügyeljen arra, hogy egyetlen idézőjelet használjon a keresési $urls. A lekérdezési karakterláncok tartalmazhatnak **$** karaktereket, és kihagyhatják, hogy a teljes sztring egyetlen idézőjelben legyen bezárva.
+Ügyeljen arra, hogy egyetlen idézőjelet használjon a keresési $urls. A lekérdezési karakterláncok tartalmazhatnak **$** karaktereket, és kihagyhatják, hogy a teljes karakterlánc egyetlen idézőjelbe van-e zárva.
 
 1. Állítsa a végpontot a *Hotels-* gyors dokumentumok gyűjteményre, és adjon hozzá egy **keresési** paramétert egy lekérdezési karakterláncba való továbbításhoz. 
   
@@ -378,7 +378,7 @@ Néhány további lekérdezési példát is kipróbálhat a szintaxis megszerzé
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
-# Apply a filter to the index to find hotels rated 4 or highter
+# Apply a filter to the index to find hotels rated 4 or higher
 # Returns the HotelName and Rating. Two documents match.
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
@@ -391,15 +391,15 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a PowerShellt használta a tartalom Azure Cognitive Searchban való létrehozásához és eléréséhez szükséges alapszintű munkafolyamathoz. A fogalmakat figyelembe véve javasoljuk, hogy olyan speciális forgatókönyvekre váltson át, mint például az Azure-adatforrásokból való indexelés.
 

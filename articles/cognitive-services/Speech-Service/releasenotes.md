@@ -11,17 +11,63 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185315"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505805"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
+## <a name="text-to-speech-2020-august-release"></a>Szöveg-beszéd 2020 – augusztusi kiadás
+
+### <a name="new-features"></a>Új funkciók
+
+* **NEURÁLIS TTS: új beszéd stílusa `en-US` Aria hang**. A AriaNeural a hírek beolvasása közben is megszólalhat. A "bemondás – formális" stílus komolyabban hangzik, míg a "bemondás – alkalmi" stílus nyugodtabb és informális. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md).
+
+* **Egyéni hang: új funkció jelenik meg, amely automatikusan bejelöli az adatképzési minőséget**. Az adatok feltöltésekor az adatellenőrzési képesség megvizsgálja a hang-és a átiratok különböző aspektusait, és automatikusan kijavítja vagy szűri az adatokkal kapcsolatos problémákat, így javíthatja a betanított hangmodell minőségét. Ez magában foglalja a hang mennyiségét, a zajszintet, a beszéd kiejtési pontosságát, a beszéd igazítását a normalizált szöveggel, a hangban lévő csendet, valamint a hang-és parancsfájl-formátumot. 
+
+* **Hangtartalom létrehozása: új funkciók, amelyek lehetővé teszik az erősebb hanghangolást és hangkezelési képességeket**.
+
+    * Kiejtés: a kiejtés finomhangolása funkció a legújabb fonéma-készletre frissül. Kiválaszthatja a megfelelő fonéma elemet a könyvtárból, és pontosíthatja a kiválasztott szavak kiejtését. 
+
+    * Letöltés: a hang "Download"/"export" funkciójának továbbfejlesztése, hogy támogassa az egyes bekezdések hangjának létrehozását. Egyszerűen szerkesztheti a különböző tartalmakat ugyanabban a fájlban/SSML, miközben több hangkimenetet is generál. A "Letöltés" fájl szerkezete is finomítva van. Most egyszerűen lekérheti az összes hangfelvételt egy mappába. 
+
+    * Feladat állapota: a többfájlos exportálási élmény javult. Ha a múltban több fájlt exportál, ha valamelyik fájl meghiúsult, a teljes feladat sikertelen lesz. Most azonban az összes többi fájl exportálása sikeres lesz. A feladat jelentését részletesebb és strukturált információkkal gazdagítjuk. A jelentéssel a hibás fájlok és mondatok naplóit is megtekintheti. 
+
+    * SSML-dokumentáció: a SSML-dokumentumhoz csatolva megtekintheti az összes hangolási funkció használatának szabályait.
+
+* **A hanglista API-t úgy frissítették, hogy egy felhasználóbarát megjelenítendő nevet és a neurális hangok által támogatott beszélő stílusokat tartalmazza**.
+
+### <a name="general-tts-voice-quality-improvements"></a>Általános TTS hang minőségének fejlesztése
+
+* Csökkentett szó szintű kiejtési hiba% a `ru-RU` (hiba 56%-kal csökkent) és `sv-SE` (hiba 49%-kal csökkentve)
+
+* Továbbfejlesztett Polyphony-szó `en-US` , amely a neurális hangokat 40%-kal olvasta. Polyphony például az "olvasás", az "élő", a "Content", a "Record", az "Object" stb. 
+
+* Javult a kérdés tónusának természetes jellege a alkalmazásban `fr-FR` . A (z) (mean vélemények pontszáma) nyereség: + 0,28
+
+* Frissítette a vocoders a következő hangokon, és a megbízhatósági fejlődést és a teljes teljesítményt 40%-kal.
+
+    | Területi beállítás | Hang |
+    |---|---|    
+    | `en-GB` | Idézet |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Denise |
+    | `ja-JP` | Nanami |
+    | `ko-KR` | Sun – Hi |
+
+### <a name="bug-fixes"></a>Hibajavítások
+
+* A hangtartalom-létrehozási eszközzel kijavított hibák száma 
+    * Kijavítottuk a problémát az automatikus frissítéssel. 
+    * A Dél-Kelet-Ázsia régióban található, a zh-CN stílusú hangokat tartalmazó rögzített problémák
+    * Javítva lett a stabilitási probléma, beleértve az exportálási hibát a "break" címkével, az írásjelek hibáit.    
+
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Új beszéd-szöveg területi beállítások: 2020 – augusztus kiadás
-Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusban: 2 európai nyelv CS-CZ és hu-HU, 5 angol területi beállítás és 19 spanyol területi beállítás, amely a legtöbb Dél-amerikai országot fedi le. Az alábbi lista az új területi beállítások listáját tartalmazza. A teljes nyelvi listát [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)találja.
+Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusban: 2 európai nyelv `cs-CZ` és `hu-HU` 5 angol területi beállítás, valamint 19 spanyol területi beállítás, amely a legtöbb Dél-amerikai országot fedi le. Az alábbi lista az új területi beállítások listáját tartalmazza. A teljes nyelvi listát [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)találja.
 
 | Területi beállítás  | Nyelv                          |
 |---------|-----------------------------------|
@@ -131,7 +177,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
+    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
@@ -281,9 +327,9 @@ Egészségesek maradjanak!
 
 **Változtatások megszakítása**
 
-- `OpenSSL`frissítve lett a b 1.1.1-es verzióra, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok `OpenSSL` nem lettek telepítve a `/usr/lib/ssl` rendszeren lévő könyvtárba. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
+- `OpenSSL` frissítve lett a b 1.1.1-es verzióra, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok `OpenSSL` nem lettek telepítve a `/usr/lib/ssl` rendszeren lévő könyvtárba. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
 - Módosítottuk a C#-tól a-ig visszaadott adattípust, `WordLevelTimingResult.Offset` `int` `long` hogy engedélyezzék a hozzáférést, `WordLevelTimingResults` Ha a beszédfelismerési adatok 2 percnél hosszabbak.
-- `PushAudioInputStream`és `PullAudioInputStream` most a WAV-fejléc információit a beszédfelismerési szolgáltatásnak küldi a (z) alapján `AudioStreamFormat` , opcionálisan megadhatja őket a létrehozásuk után. Az ügyfeleknek most a [támogatott hangbemenet formátumot](how-to-use-audio-input-streams.md)kell használniuk. Bármilyen más formátum esetén a rendszer az optimálisnál rosszabb eredményeket kap, vagy más problémákat okozhat. 
+- `PushAudioInputStream` és `PullAudioInputStream` most a WAV-fejléc információit a beszédfelismerési szolgáltatásnak küldi a (z) alapján `AudioStreamFormat` , opcionálisan megadhatja őket a létrehozásuk után. Az ügyfeleknek most a [támogatott hangbemenet formátumot](how-to-use-audio-input-streams.md)kell használniuk. Bármilyen más formátum esetén a rendszer az optimálisnál rosszabb eredményeket kap, vagy más problémákat okozhat. 
 
 **Hibajavítások**
 
@@ -332,8 +378,8 @@ Egészségesek maradjanak!
 
 **Példák**
 
-- Xamarin minta a következőhöz:`KeywordRecognizer`
-- Unity minta a következőhöz:`KeywordRecognizer`
+- Xamarin minta a következőhöz: `KeywordRecognizer`
+- Unity minta a következőhöz: `KeywordRecognizer`
 - C++ és Java-minták az automatikus forrás Nyelvfelismerés.
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0:2019 – szeptemberi kiadás
@@ -356,9 +402,9 @@ Egészségesek maradjanak!
 - Az UUID-mel kapcsolatos kijavított probléma bizonyos kapcsolatok tulajdonságaiban nem egyedi.
 - Néhány figyelmeztetés a Swift-kötésekben a nullák megadásával kapcsolatban (kis kód megváltoztatására lehet szükség)
 - Kijavítva egy olyan hibát, amely miatt a WebSocket-kapcsolatok nem megfelelően vannak lezárva a hálózati terhelés alatt
-- Kijavított egy problémát az Androidon, amely időnként a következő által használt duplikált benyomási azonosítókat eredményezi:`DialogServiceConnector`
-- A kapcsolatok stabilitásának fejlesztése több fordulatos interakciók és a hibák jelentése ( `Canceled` eseményeken keresztül)`DialogServiceConnector`
-- `DialogServiceConnector`a munkamenet-indítás mostantól megfelelően biztosítja az eseményeket, beleértve `ListenOnceAsync()` az aktív`StartKeywordRecognitionAsync()`
+- Kijavított egy problémát az Androidon, amely időnként a következő által használt duplikált benyomási azonosítókat eredményezi: `DialogServiceConnector`
+- A kapcsolatok stabilitásának fejlesztése több fordulatos interakciók és a hibák jelentése ( `Canceled` eseményeken keresztül) `DialogServiceConnector`
+- `DialogServiceConnector` a munkamenet-indítás mostantól megfelelően biztosítja az eseményeket, beleértve `ListenOnceAsync()` az aktív `StartKeywordRecognitionAsync()`
 - A kapott tevékenységekhez kapcsolódó összeomlást kezelte `DialogServiceConnector`
 
 **Példák**
@@ -374,14 +420,14 @@ Egészségesek maradjanak!
 - Gyors példák a UWP és az Unity szövegének beszédére
 - Gyors üzembe helyezési minta iOS rendszeren
 - A Speech & Szándékfelismerés és a fordítás Unity mintái
-- Frissített gyors üzembe helyezési minták a következőhöz:`DialogServiceConnector`
+- Frissített gyors üzembe helyezési minták a következőhöz: `DialogServiceConnector`
 
 **Tökéletesítések/változások**
 
 - Párbeszédpanel névtere:
   - A `SpeechBotConnector` új nevet kapott: `DialogServiceConnector`
   - A `BotConfig` új nevet kapott: `DialogServiceConfig`
-  - `BotConfig::FromChannelSecret()`újra leképezve a következőre`DialogServiceConfig::FromBotSecret()`
+  - `BotConfig::FromChannelSecret()` újra leképezve a következőre `DialogServiceConfig::FromBotSecret()`
   - Az Átnevezés után az összes meglévő közvetlen beszédfelismerési ügyfél továbbra is támogatott.
 - Az TTS REST-adapter frissítése a proxy és az állandó kapcsolatok támogatásához
 - Javítsa a hibaüzenetet, ha egy érvénytelen régiót ad át
@@ -544,7 +590,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
   - A JavaScripthez készült Speech SDK nyílt forráskódú. A forráskód elérhető a [githubon](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - Most már támogatjuk a Node.jst, további információt [itt](quickstart-js-node.md)találhat.
   - A hangmunkamenetek hosszának korlátozása el lett távolítva, az újrakapcsolódás automatikusan megtörténik a fedél alatt.
-- `Connection`objektum
+- `Connection` objektum
   - A-ben elérheti az `Recognizer` `Connection` objektumokat. Ezzel az objektummal explicit módon kezdeményezheti a szolgáltatás kapcsolatát, és előfizethet az események csatlakoztatására és leválasztására.
     (Ez a funkció még nem érhető el a JavaScriptből és a Pythonból.)
 - Az Ubuntu 18,04 támogatása.
@@ -671,7 +717,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 
 **Funkcionális változások**
 
-- `StartContinuousRecognitionAsync()`támogatja a hosszan futó felismerést.
+- `StartContinuousRecognitionAsync()` támogatja a hosszan futó felismerést.
 - A felismerési eredmény több mezőt tartalmaz. Ezek a felismert szöveg és a felismerési állapotot jelképező további értékek (például a kullancsok) és az azokhoz tartozó további értékek (például: és) eltolása `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Támogatási AuthorizationToken a gyári példányok létrehozásához.
 

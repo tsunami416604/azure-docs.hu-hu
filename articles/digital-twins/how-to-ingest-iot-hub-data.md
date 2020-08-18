@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 47e4bb291d031c41c89c88435a795004490e20a1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163615"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505325"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -24,10 +24,10 @@ Ez a dokumentum végigvezeti egy olyan Azure-függvény írására szolgáló fo
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A példa folytatása előtt végre kell hajtania a következő előfeltételeket.
-* **Egy IoT hub**. Útmutatásért tekintse meg a [IoT hub](../iot-hub/quickstart-send-telemetry-cli.md) útmutató *IoT hub létrehozása* című szakaszát.
-* **Egy Azure-függvény** , amely megfelelő engedélyekkel rendelkezik a digitális kettős példány meghívásához. Útmutató [*: Azure-függvény beállítása az információk feldolgozásához*](how-to-create-azure-function.md) utasításokért. 
-* **Egy digitális Twins-példány** , amely az eszköz telemetria fogja fogadni. [ *Útmutató: Azure digitális Twins-példány és-hitelesítés beállítása*](./how-to-set-up-instance-portal.md) 
+A példának való továbblépés előtt a következő erőforrásokat kell beállítania előfeltételekként:
+* **Egy IoT hub**. Útmutatásért tekintse meg a [IoT hub](../iot-hub/quickstart-send-telemetry-cli.md)rövid útmutató *IoT hub létrehozása* című szakaszát.
+* **Egy Azure-függvény** , amely megfelelő engedélyekkel rendelkezik a digitális kettős példány meghívásához. Útmutatásért lásd [*: útmutató: Azure-függvény beállítása az adatfeldolgozáshoz*](how-to-create-azure-function.md). 
+* **Egy Azure digitális Twins-példány** , amely az eszköz telemetria fogja fogadni. Útmutatásért lásd [*: útmutató: Azure digitális Twins-példány és-hitelesítés beállítása*](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Példa telemetria forgatókönyvre
 

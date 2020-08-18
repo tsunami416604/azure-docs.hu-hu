@@ -1,18 +1,18 @@
 ---
 title: Virtuális gépek és NSG használata az Azure Bastion-ben
-description: Ez a cikk bemutatja, hogyan építhet be NSG-hozzáférést az Azure Bastion használatával
+description: A hálózati biztonsági csoportokat az Azure Bastion használatával is használhatja. Az ehhez a konfigurációhoz szükséges alhálózatok ismertetése.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112201"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270529"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>A NSG-hozzáférés és az Azure Bastion használata
 
@@ -28,7 +28,7 @@ Ebben a diagramban:
 * Integrációs csatlakozás – egyetlen kattintással RDP/SSH-munkamenet a böngészőben
 * Nem szükséges nyilvános IP-cím az Azure-beli virtuális gépen.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Network security groups (Hálózati biztonsági csoportok)
+## <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
 
 Ez a szakasz a felhasználó és az Azure-alapú megerősített hálózat közötti hálózati forgalmat, valamint a virtuális hálózatban megcélzott virtuális gépeket mutatja be:
 
@@ -58,6 +58,6 @@ Ez az az alhálózat, amely az RDP/SSH-t tartalmazó cél virtuális gépet tart
    * **Bejövő forgalom az Azure Bastion-ből:** Az Azure Bastion privát IP-címen éri el a cél virtuális gépet. Az RDP-/SSH-portokat (3389/22-as portokat) meg kell nyitni a cél virtuális gépen a privát IP-címeken. Az ajánlott eljárás az, ha az Azure megerősített alhálózati IP-címtartományt ebben a szabályban adja hozzá, hogy csak a Bastion tudja megnyitni ezeket a portokat a célként megadott virtuálisgép-alhálózatban lévő virtuális gépeken.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Bastion-ről: [Gyakori kérdések](bastion-faq.md).

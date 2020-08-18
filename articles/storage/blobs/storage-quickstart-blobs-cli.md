@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eca67c4a5a942e6cd06f67cac868905da0e1f533
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 15e1b52bfa79063cd5d7801a1aaaebc726309a16
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535144"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507127"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
 
@@ -49,7 +49,7 @@ A blob Storage-hoz kapcsolódó adatműveletekhez használható Azure CLI-paranc
 
 Csak a blob Storage-adatműveletek támogatják a `--auth-mode` paramétert. A kezelési műveletek, például az erőforráscsoport vagy a Storage-fiók létrehozása, automatikusan az Azure AD hitelesítő adatait használják az engedélyezéshez.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -81,6 +81,18 @@ az storage account create \
 A blobok minden esetben egy tárolóba lesznek feltöltve. A Blobok csoportjait ugyanúgy rendszerezheti a tárolókban, mint ahogyan a fájlokat a számítógépen mappákban rendezi. Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. 
 
 A következő példa az Azure AD-fiókját használja, hogy engedélyezze a műveletet a tároló létrehozásához. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Még ha Ön is a fiók tulajdonosa, explicit engedélyekre van szüksége az adatműveletek a Storage-fiókkal történő végrehajtásához. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: az Azure [CLI használata az Azure-beli szerepkör hozzárendeléséhez a hozzáféréshez](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
+
+Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+
+```azurecli
+az ad signed-in-user show --query objectId -o tsv | az role assignment create \
+    --role "Storage Blob Data Contributor" \
+    --assignee @- \
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
+```
+
+> [!IMPORTANT]
+> Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
 
 A Storage-fiók kulcsa segítségével engedélyezheti a művelet létrehozását a tároló létrehozásához. Az adatműveletek Azure CLI-vel való engedélyezésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése blob-vagy üzenetsor-adatokhoz az Azure CLI-vel](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
 

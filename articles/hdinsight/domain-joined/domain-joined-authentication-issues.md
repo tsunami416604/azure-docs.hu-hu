@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218850feea8b0e22b8e11695a3aa3c69173f1ab7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75896136"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504925"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Hitelesítési problémák az Azure HDInsight
 
@@ -36,7 +36,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 Azure AD-hibakód: 50126 azt jelenti, hogy a `AllowCloudPasswordValidation` házirendet a bérlő nem állította be.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Az Azure ad-bérlő vállalati rendszergazdája engedélyezheti az Azure AD számára a jelszó-kivonatok használatát az ADFS-t használó felhasználók számára.  Alkalmazza a `AllowCloudPasswordValidationPolicy` cikkben látható módon a [Enterprise Security Package használatát a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md).
 
@@ -56,7 +56,7 @@ A bejelentkezés sikertelen a 50034-es hibakód miatt. A hibaüzenet a következ
 
 A Felhasználónév helytelen (nem létezik). A felhasználó nem ugyanazt a felhasználónevet használja, mint amelyet a Azure Portal használ.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Használja ugyanazt a felhasználónevet, amely az adott portálon működik.
 
@@ -76,7 +76,7 @@ A felhasználói fiók ki van zárva, hibakód: 50053. A hibaüzenet a következ
 
 Túl sok bejelentkezési kísérlet helytelen jelszóval.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Várjon 30 percet, és állítsa le a hitelesíteni próbált alkalmazásokat.
 
@@ -96,7 +96,7 @@ A jelszó lejárt, hibakód: 50053. A hibaüzenet a következőhöz hasonló:
 
 A jelszó lejárt.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Módosítsa a jelszót a Azure Portalban (a helyszíni rendszeren), majd várjon 30 percet, amíg a szinkronizálás befejeződik.
 
@@ -112,7 +112,7 @@ Hibaüzenet fogadása `interaction_required` .
 
 A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy az AD `ServiceEndpoints` engedélyezve van az adott vnet.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Használja a feltételes hozzáférési házirendet, és a HDInisght-fürtöket az MFA-ból is felhasználhatja, ahogy [azt a Enterprise Security Package Azure Active Directory Domain Services használatával történő konfigurálása](./apache-domain-joined-configure-using-azure-adds.md)című rész mutatja.
 
@@ -128,7 +128,7 @@ A bejelentkezés megtagadva.
 
 Ennek a szakasznak a beszerzéséhez a OAuth-hitelesítés nem jelent problémát, de a Kerberos-hitelesítés is. Ha a fürtöt a ADLS támogatja, a OAuth-bejelentkezés sikeres volt a Kerberos-hitelesítés megkísérlése előtt. A WASB-fürtökön a OAuth bejelentkezés nem történt meg. Számos oka lehet a Kerberos-hibák, például a jelszó-kivonatok szinkronizálása, a felhasználói fiók kizárva az Azure AD DS, és így tovább. A jelszó-kivonatok szinkronizálása csak akkor történt meg, amikor a felhasználó megváltoztatja a jelszót. Az Azure AD DS példány létrehozásakor a rendszer elindítja a létrehozás után módosított jelszavak szinkronizálását. Nem fogja visszamenőlegesen szinkronizálni azokat a jelszavakat, amelyek a kezdetektől fogva lettek beállítva.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha úgy gondolja, hogy a jelszavak nem szinkronizálhatók, próbálja meg módosítani a jelszót, és várjon néhány percet.
 
@@ -146,9 +146,9 @@ A kinit parancsot sikertelen.
 
 Változik.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
-Ahhoz, hogy a kinit parancsot sikeres legyen, tudnia kell, hogy `sAMAccountName` (ez a fiók neve a tartomány nélkül). `sAMAccountName`általában a fiók előtagja (például a Bob a-ben `bob@contoso.com` ). Egyes felhasználók esetében eltérő lehet. A címtár megismeréséhez tallózással vagy kereséssel kell rendelkeznie `sAMAccountName` .
+Ahhoz, hogy a kinit parancsot sikeres legyen, tudnia kell, hogy `sAMAccountName` (ez a fiók neve a tartomány nélkül). `sAMAccountName` általában a fiók előtagja (például a Bob a-ben `bob@contoso.com` ). Egyes felhasználók esetében eltérő lehet. A címtár megismeréséhez tallózással vagy kereséssel kell rendelkeznie `sAMAccountName` .
 
 A keresés módjai `sAMAccountName` :
 
@@ -172,7 +172,7 @@ A kinit parancsot sikertelen `Preauthentication` .
 
 Helytelen Felhasználónév vagy jelszó.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett egyéb tulajdonságokat is. A részletes hibakeresés engedélyezéséhez futtassa `export KRB5_TRACE=/tmp/krb.log` a parancsot a munkamenetből a kinit parancsot kipróbálása előtt.
 
@@ -188,7 +188,7 @@ A Job/HDFS parancs végrehajtása a következő okból meghiúsult: `TokenNotFou
 
 A szükséges OAuth hozzáférési jogkivonat nem található a sikeres művelethez/parancshoz. A ADLS/ABFS-illesztőprogram megpróbálja lekérni a OAuth hozzáférési tokent a hitelesítőadat-szolgáltatásból a tárolási kérelmek végrehajtása előtt. Ez a jogkivonat akkor lesz regisztrálva, ha ugyanazzal a felhasználóval jelentkezik be a Ambari-portálra.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy sikeresen bejelentkezett a Ambari-portálra azon a felhasználónévn keresztül, amelynek az identitását a rendszer a feladatok futtatására használja.
 
@@ -204,11 +204,11 @@ A felhasználó hibaüzenetet kap `Error fetching access token` .
 
 Ez a hiba időnként fordul elő, amikor a felhasználók ACL-ek használatával próbálnak hozzáférni a ADLS Gen2hoz, és a Kerberos-jogkivonat lejárt.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 * Azure Data Lake Storage Gen1 a böngésző gyorsítótárát, és jelentkezzen be újra a Ambari.
 
-* Azure Data Lake Storage Gen2 esetén futtassa azt `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` a felhasználót, aki a felhasználó a következőként próbál bejelentkezni:
+* Azure Data Lake Storage Gen2 esetén futtassa azt `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` a felhasználót, aki a felhasználó a következőként próbál bejelentkezni:
 
 ---
 

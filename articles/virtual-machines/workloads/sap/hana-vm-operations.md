@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01eecf24802bc43aebfa7b02105a2b1aa679a52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051935"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506430"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
@@ -259,7 +259,7 @@ Mivel a M64-32ms virtuális gép sok memóriát tartalmaz, előfordulhat, hogy a
 
 Különösen abban az esetben, ha a munkaterhelés olvasása intenzív, az i/o-teljesítmény növelése érdekében az Azure-gazdagép gyorsítótárának "írásvédett" értékre való bekapcsolásához ajánlott az adatbázis-szoftverek adatmennyiségének használata. Míg a tranzakciónapló Azure-gazdagépének gyorsítótára "None" lehet. 
 
-A naplózási kötet méretével kapcsolatban javasolt kiindulási pont az adatméret 15%-a. A naplózási kötet létrehozása a költségeket és az átviteli sebességre vonatkozó követelményektől függően különböző Azure-lemezek használatával végezhető el. A naplózási kötet esetében magas I/O-átviteli sebességre van szükség.  A M64-32ms virtuális gép típusának használata esetén a [írásgyorsító](../../linux/how-to-enable-write-accelerator.md)engedélyezéséhez kötelező megadni. Az Azure írásgyorsító a tranzakciós napló optimális lemez-írási késését biztosítja (csak az M sorozat esetében érhető el). Néhány elemet figyelembe kell venni, bár a virtuális gépek maximális száma a virtuálisgép-típusok esetében. A írásgyorsító részletei [itt](../../windows/how-to-enable-write-accelerator.md) találhatók
+A naplózási kötet méretével kapcsolatban javasolt kiindulási pont az adatméret 15%-a. A naplózási kötet létrehozása a költségeket és az átviteli sebességre vonatkozó követelményektől függően különböző Azure-lemezek használatával végezhető el. A naplózási kötet esetében magas I/O-átviteli sebességre van szükség.  A M64-32ms virtuális gép típusának használata esetén a [írásgyorsító](../../how-to-enable-write-accelerator.md)engedélyezéséhez kötelező megadni. Az Azure írásgyorsító a tranzakciós napló optimális lemez-írási késését biztosítja (csak az M sorozat esetében érhető el). Néhány elemet figyelembe kell venni, bár a virtuális gépek maximális száma a virtuálisgép-típusok esetében. A írásgyorsító részletei [itt](../../how-to-enable-write-accelerator.md) találhatók
 
 
 Íme néhány példa a naplózási kötet méretezésére:

@@ -3,12 +3,12 @@ title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 2ebf55a15233c401904460d459a118fc46142ac3
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337993"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272433"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/group-filter.md) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -902,7 +902,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | munkaterületek | Igen | Nem |
+> | munkaterületek | Igen | Igen |
 > | munkaterületek/dbWorkspaces | Nem | Nem |
 > | munkaterületek/storageEncryption | Nem | Nem |
 > | munkaterületek/virtualNetworkPeerings | Nem | Nem |

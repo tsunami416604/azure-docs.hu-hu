@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832263"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504942"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -318,7 +318,7 @@ Az Oracle támogatja az Oracle-szoftverek futtatását Microsoft Azureon. A Wind
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak.
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Title |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -404,7 +404,7 @@ Ha további IOPS van szükség, javasoljuk, hogy a Windows Storage-készleteket 
 
 
 #### <a name="write-accelerator"></a>Írásgyorsító
-Az Azure M sorozatú virtuális gépek esetében az Azure-Premium Storagehoz képest az online ismétlési naplókba való írás késése is csökkenhet. Engedélyezze az Azure-írásgyorsító a lemezekhez (VHD-k) az Azure-Premium Storage alapján, amelyek online visszaállítási naplófájlokhoz használatosak. További információ: [írásgyorsító](../../linux/how-to-enable-write-accelerator.md).
+Az Azure M sorozatú virtuális gépek esetében az Azure-Premium Storagehoz képest az online ismétlési naplókba való írás késése is csökkenhet. Engedélyezze az Azure-írásgyorsító a lemezekhez (VHD-k) az Azure-Premium Storage alapján, amelyek online visszaállítási naplófájlokhoz használatosak. További információ: [írásgyorsító](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
@@ -498,7 +498,7 @@ Ha további IOPS van szükség, javasoljuk, hogy az LVM (logikai kötet-kezelő)
 
 
 #### <a name="write-accelerator"></a>Írásgyorsító
-Az Azure M sorozatú virtuális gépek esetében az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest faktorok csökkenthetik az online ismétlési naplókba való írás késleltetését. Engedélyezze az Azure-írásgyorsító a lemezekhez (VHD-k) az Azure-Premium Storage alapján, amelyek online visszaállítási naplófájlokhoz használatosak. További információ: [írásgyorsító](../../linux/how-to-enable-write-accelerator.md).
+Az Azure M sorozatú virtuális gépek esetében az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest faktorok csökkenthetik az online ismétlési naplókba való írás késleltetését. Engedélyezze az Azure-írásgyorsító a lemezekhez (VHD-k) az Azure-Premium Storage alapján, amelyek online visszaállítási naplófájlokhoz használatosak. További információ: [írásgyorsító](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
