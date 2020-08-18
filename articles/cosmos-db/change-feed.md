@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119375"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510283"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Változáscsatorna az Azure Cosmos DB-ben
 
@@ -42,7 +42,7 @@ Az aktuális változási csatorna nem törli a naplókat. Az előző példához 
 
 A hírcsatorna-elemek módosítása a módosítási idő sorrendjében történik. Ez a rendezési sorrend logikai partíciós kulcs alapján garantált.
 
-### <a name="consistency-level"></a>Konzisztencia szintje
+### <a name="consistency-level"></a>Konzisztenciaszint
 
 Miközben a változási csatornát egy végleges konzisztencia-szinten fogyasztja, előfordulhat, hogy a későbbi módosítási hírcsatorna olvasási műveletei között ismétlődő események szerepelnek (az egyik olvasási művelet utolsó eseménye a következőként jelenik meg).
 
@@ -56,7 +56,7 @@ Ha a TTL (time to Live) tulajdonság egy elemre van állítva, akkor a változá
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>A hírcsatorna és a _etag módosítása, _lsn vagy _ts
 
-A _etag formátuma belső, és nem érdemes attól függővé tenni, mert bármikor megváltozhat. _ts egy módosítás vagy egy létrehozási időbélyeg. A _ts a kronológiai összehasonlításhoz használható. _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy számos elemnek ugyanaz a _lsna. A FeedResponse lévő ETag eltér az elemen látható _etagtól. a _etag egy belső azonosító, amelyet a rendszer az elem verziójával kapcsolatos Egyidejűség-vezérlésre használ, míg a ETag a hírcsatorna előkészítésére szolgál.
+A _etag formátuma belső, és nem érdemes attól függővé tenni, mert bármikor megváltozhat. _ts egy módosítás vagy egy létrehozási időbélyeg. A _ts a kronológiai összehasonlításhoz használható. _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy számos elemnek ugyanaz a _lsna. A FeedResponse lévő ETag eltér az elemen látható _etagtól. a _etag egy belső azonosító, amelyet a rendszer a Egyidejűség-vezérléshez használ. Az _etag tulajdonság az elem verziójáról szól, míg a ETag tulajdonságot a rendszer a hírcsatorna előkészítésére használja.
 
 ## <a name="working-with-change-feed"></a>A változási csatorna használata
 

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994260"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509685"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
 
@@ -54,11 +54,11 @@ A zip-fájl letöltéséhez kattintson a fordítások letöltése hivatkozásra.
 
 Ez a letöltött zip-archívum három fájlt tartalmaz.
 
-1.  **Custom. Mt. txt:** Ez a fájl a forrás nyelvi mondatok gépi fordítását tartalmazza a felhasználói adatgyűjtési modell által megcélzott nyelven.
+1.  **custom.mt.txt:** Ez a fájl a forrás nyelvi mondatok gépi fordítását tartalmazza a felhasználói adatgyűjtési modell által megcélzott nyelven.
 
-2.  **ref. txt:** Ez a fájl a forrás nyelvi mondatok felhasználó által megadott fordításait tartalmazza a célnyelv nyelvén.
+2.  **ref.txt:** Ez a fájl a forrás nyelvi mondatok felhasználó által megadott fordításait tartalmazza a célnyelv nyelvén.
 
-3.  **forrás. txt:** Ez a fájl mondatokat tartalmaz a forrás nyelvén.
+3.  **source.txt:** Ez a fájl mondatokat tartalmaz a forrás nyelvén.
 
     ![A rendszertesztek letöltött eredményei](media/how-to/how-to-download-system-test.png)
 
@@ -102,6 +102,6 @@ A központi telepítési beállítások frissítése:
 
 ## <a name="next-steps"></a>További lépések
 
-- Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)-n keresztül.
+- Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.
 - Megtudhatja, [Hogyan kezelhet beállításokat](how-to-manage-settings.md) a munkaterület megosztásához, az előfizetési kulcs kezeléséhez.
 - Ismerje meg [, hogyan telepítheti át munkaterületét és projektjét](how-to-migrate.md) a [Microsoft Translator hub](https://hub.microsofttranslator.com) használatával

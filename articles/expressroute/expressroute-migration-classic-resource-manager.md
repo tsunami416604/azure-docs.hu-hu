@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7be7ce55e527d76abee0118a762c0ca666f9bdb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10a2da903ecd59abb7930f9f20c5c905748891cb
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031694"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509892"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute-társított virtuális hálózatok migrálása a Klasszikusból a Resource Managerbe
 
@@ -30,8 +30,8 @@ Ez a cikk azt ismerteti, hogyan telepítheti át a ExpressRoute-hez társított 
 * Tekintse át a következő erőforrás-áttelepítési dokumentációt:
 
     * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-    * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
-    * [Gyakori kérdések: a platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra](../virtual-machines/windows/migration-classic-resource-manager-faq.md)
+    * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
+    * [Gyakori kérdések: a platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra](../virtual-machines/migration-classic-resource-manager-faq.md)
     * [A leggyakoribb áttelepítési hibák és enyhítések áttekintése](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Támogatott és nem támogatott forgatókönyvek
@@ -83,6 +83,6 @@ Ez a szakasz a virtuális hálózatok, az átjárók és a társított központi
 
 ## <a name="next-steps"></a>További lépések
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-* [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
-* [Gyakori kérdések: a platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra](../virtual-machines/windows/migration-classic-resource-manager-faq.md)
+* [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
+* [Gyakori kérdések: a platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra](../virtual-machines/migration-classic-resource-manager-faq.md)
 * [A leggyakoribb áttelepítési hibák és enyhítések áttekintése](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -3,15 +3,15 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 383df0d9f3c8fef01d5185be1cf69fe203ba11a2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: a822ab52024a801f4443a9dd864b4b96ec52d000
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374975"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511307"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket a Custom Vision SDK és a Java használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt alapértelmezett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához.
+Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket az Custom Vision ügyféloldali kódtár használatával a Java segítségével egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt alapértelmezett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -20,11 +20,11 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el az első lépéseket a Custom 
 - Telepített [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK és mintakód beszerzése
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Az Custom Vision ügyféloldali kódtár és mintakód beszerzése
 
 A Custom Visiont használó Java-alkalmazás megírásához a Custom Vision Maven-csomagokra lesz szüksége. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
 
-A Custom Vision SDK a Maven központi adattárában található:
+A Custom Vision ügyféloldali kódtár a Maven Central adattárában található:
 - [Betanítási SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Előrejelzési SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 

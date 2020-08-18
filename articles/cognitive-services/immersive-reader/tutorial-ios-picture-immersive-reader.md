@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735130"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516503"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Oktatóanyag: hozzon létre egy iOS-alkalmazást, amely egy fényképből származó tartalommal (Swift) indít el egy lebilincselő olvasót
 
@@ -24,7 +24,7 @@ A [Computer Vision Cognitive Services Read API](https://docs.microsoft.com/azure
 
 Ebben az oktatóanyagban egy iOS-alkalmazást hoz létre a semmiből, és integrálja az olvasási API-t, valamint a magával ragadó olvasót az olvasói SDK használatával. Ebben az oktatóanyagban egy teljes körű működő minta érhető [el.](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,7 +81,7 @@ Nyissa meg a AppDelegate. Swift fájlt, és cserélje le az alábbi kódra.
 
 Nevezze át a ViewController. Swift fájlt a PictureLaunchViewController. Swift névre, és cserélje le a fájlt a következő kódra.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 Állítsa be az archiválási sémát a Xcode-ben egy szimulátor vagy egy eszköz céljának kiválasztásával.
 ![Archiválási séma](./media/ios/xcode-archive-scheme.png)<br/>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506471"
+ms.locfileid: "88516299"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail-értesítések beállítása biztonsági riasztásokhoz 
 
@@ -42,7 +42,7 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 |Kiadás állapota:|Általánosan elérhető|
 |Árképzési|Ingyenes szint|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazda**<br>**Előfizetés tulajdonosa** |
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov (részleges)<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov (részleges)<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -65,4 +65,4 @@ A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a
 
 * [Biztonsági riasztások – útmutató](alerts-reference.md) a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez
 * [Biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md) – útmutató a biztonsági riasztások kezeléséhez és megválaszolásához
-- [Munkafolyamat-automatizálás](workflow-automation.md) – a riasztásokra adott válaszok automatizálása egyéni értesítési logikával
+* [Munkafolyamat-automatizálás](workflow-automation.md) – a riasztásokra adott válaszok automatizálása egyéni értesítési logikával

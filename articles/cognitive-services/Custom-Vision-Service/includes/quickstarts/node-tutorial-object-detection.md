@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511309"
 ---
-Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision SDK-t a Node.js használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node.js alkalmazás létrehozásához.
+Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision ügyféloldali kódtár használatát Node.js használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node.js alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,9 +24,9 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision SDK-t a Node.
 [!INCLUDE [node-get-images](../../includes/node-get-images.md)]
 
 
-## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
+## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-Ha az Custom Vision Service SDK-kat szeretné telepíteni a projekt Node.jsához, futtassa a következő parancsokat:
+A Custom Vision-szolgáltatás ügyféloldali kódtárainak telepítéséhez a projekt Node.jséhez futtassa a következő parancsokat:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

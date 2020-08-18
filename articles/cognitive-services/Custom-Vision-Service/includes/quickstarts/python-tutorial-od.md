@@ -2,15 +2,15 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: dd587279e05b00304eda6edd763ecda9bd6e3c8f
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.date: 08/17/2020
+ms.openlocfilehash: f54b5c7bec7d2b9af67b967ff34ab43bd1818a7d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805907"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511305"
 ---
-Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Custom Vision SDK és a Python használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
+Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket az Custom Vision ügyféloldali kódtár és a Python használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -18,9 +18,9 @@ Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Custom Vision SDK
 - [pip](https://pip.pypa.io/en/stable/installing/) eszköz
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
+## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-A Pythonhoz készült Custom Vision Service SDK telepítéséhez futtassa a következő parancsot a PowerShellben:
+A Pythonhoz készült Custom Vision Service ügyféloldali kódtára telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision

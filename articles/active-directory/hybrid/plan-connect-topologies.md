@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698767"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509083"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek a Azure AD Connect szinkronizálást használják kulcsfontosságú integrációs megoldásként. Ebben a cikkben a támogatott és a nem támogatott konfigurációk is szerepelnek.
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure
 
 A cikkben található képek jelmagyarázata:
 
-| Description | Szimbólum |
+| Leírás | Szimbólum |
 | --- | --- |
 | Helyszíni Active Directory erdő |![Helyszíni Active Directory erdő](./media/plan-connect-topologies/LegendAD1.png) |
 | Helyszíni Active Directory szűrt importálással |![Active Directory szűrt importálással](./media/plan-connect-topologies/LegendAD2.png) |
@@ -191,6 +191,11 @@ Az Azure AD-bérlőket a kialakítás elkülöníti. Ezek a feladatok nem támog
 ![GALSync több erdő és több könyvtár topológiájában](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 A helyszíni FIM 2010 2016 vagy a GALSync segítségével szinkronizálhatja a felhasználókat a két Exchange-szervezet között. Az egyik szervezet felhasználói idegen felhasználóként vagy partnerként jelennek meg a másik szervezetben. Ezek a különböző helyszíni Active Directory példányok ezután szinkronizálhatók a saját Azure AD-bérlők használatával.
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>Jogosulatlan ügyfelek használata a Azure AD Connect háttér eléréséhez
+![Jogosulatlan ügyfelek használata a Azure AD Connect háttér eléréséhez](./media/plan-connect-topologies/other-client-unsupported.png)
+
+A Azure Active Directory Connect-kiszolgáló a Azure Active Directory Connect háttér használatával kommunikál a Azure Active Directoryokkal. Az ezzel a háttérrel való kommunikációhoz használható egyetlen szoftver Azure Active Directory Connect. Nem támogatott a Azure Active Directory Connect háttérrel való kommunikáció bármely más szoftver vagy módszer használatával. 
 
 ## <a name="next-steps"></a>További lépések
 Ha meg szeretné tudni, hogyan telepítheti Azure AD Connect a forgatókönyvekhez, tekintse meg a [Azure ad Connect egyéni telepítését](how-to-connect-install-custom.md)ismertető témakört.

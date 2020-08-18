@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888304"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510793"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
-A fordító használatával a 60 és a szöveg fordítását is lefordíthatja a szolgáltatásba. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
+A fordítóval fordítást használhat a 70-es és a szöveges fordítási nyelvek bármelyikére. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
 
 A fordítót az egyéni fordítóval együtt is használhatja olyan neurális fordítási rendszerek kiépítéséhez, amelyek megértik a saját üzleti és iparági terminológiáját, valamint a Microsoft Speech Service segítségével beszédfelismerési fordítást adhat az alkalmazásához.
 
@@ -47,6 +47,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |kínai (hagyományos)|   `zh-Hant`       |
 |Horvát|  `hr`    |
 |Cseh| `cs`    |
+|Dari|  `prs`   |
 |Dán|    `da`        |
 |Holland| `nl`|
 |Angol|   `en`    |
@@ -83,6 +84,8 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |maori| `mi`  |
 |marathi| `mr`  |
 |Norvég| `nb`    |
+|Odia|  `or`    |
+|Pasto|    `ps`    |
 |perzsa|   `fa`    |
 |Lengyel|    `pl`    |
 |Portugál (Brazília)|   `pt-br` |
@@ -106,7 +109,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Török|   `tr`        |
 |Ukrán| `uk`    |
 |urdu|  `ur`    |
-|Vietnami|    `vi`    |
+|Vietnámi|    `vi`    |
 |walesi| `cy`    |
 |Yucatec Maya|  `yua`   |
 
@@ -172,7 +175,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Török|   `tr`        |
 |Ukrán| `uk`    |
 |urdu|  `ur`    |
-|Vietnami|    `vi`    |
+|Vietnámi|    `vi`    |
 |walesi| `cy`    |
 |Yucatec Maya|  `yua`   |
 
@@ -183,28 +186,28 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 [A Átbetűzés-művelet dokumentációjának megtekintése](reference/v3-0-translate.md)
 
 
-| Nyelv    | Nyelvkód | Parancsfájl | Hová/honnan | Parancsfájl|
+| Nyelv    | Nyelvkód | Script | Hová/honnan | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arab | `ar` | arab`Arab` | <--> | Latin betűs`Latn` |
-| Bangla  | `bn` | bengáli`Beng` | <--> | Latin betűs`Latn` |
-| Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | Latin betűs`Latn` |
-| Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | kínai (hagyományos)`Hant`|
-| Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | Latin betűs`Latn` |
-| Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | kínai (egyszerűsített)`Hans` |
-| gudzsaráti | `gu`  | gudzsaráti`Gujr` | --> | Latin betűs`Latn` |
-| Héber | `he` | héber`Hebr` | <--> | Latin betűs`Latn` |
-| Hindi | `hi` | Devanagari`Deva` | <--> | Latin betűs`Latn` |
-| Japán | `ja` | japán`Jpan` | <--> | Latin betűs`Latn` |
-| kannada | `kn` | kannada`Knda` | --> | Latin betűs`Latn` |
-| malajálam | `ml` | malajálam`Mlym` | --> | Latin betűs`Latn` |
-| marathi | `mr` | Devanagari`Deva` | --> | Latin betűs`Latn` |
-| Odia | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
-| pandzsábi | `pa` | Gurmukhi`Guru`  | <--> | Latin betűs`Latn`  |
-| Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs`Cyrl`  | --> | Latin betűs`Latn` |
-| Szerb (latin betűs) | `sr-Latn` | Latin betűs`Latn` | --> | Cirill betűs`Cyrl`|
-| tamil | `ta` | tamil`Taml` | --> | Latin betűs`Latn` |
-| telugu | `te` | telugu`Telu` | --> | Latin betűs`Latn` |
-| Thai | `th` | thai`Thai` | --> | Latin betűs`Latn` |
+| Arab | `ar` | arab `Arab` | <--> | Latin betűs `Latn` |
+| Bangla  | `bn` | bengáli `Beng` | <--> | Latin betűs `Latn` |
+| Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített) `Hans`| <--> | Latin betűs `Latn` |
+| Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített) `Hans`| <--> | kínai (hagyományos) `Hant`|
+| Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | Latin betűs `Latn` |
+| Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | kínai (egyszerűsített) `Hans` |
+| gudzsaráti | `gu`  | gudzsaráti `Gujr` | --> | Latin betűs `Latn` |
+| Héber | `he` | héber `Hebr` | <--> | Latin betűs `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Latin betűs `Latn` |
+| Japán | `ja` | japán `Jpan` | <--> | Latin betűs `Latn` |
+| kannada | `kn` | kannada `Knda` | --> | Latin betűs `Latn` |
+| malajálam | `ml` | malajálam `Mlym` | --> | Latin betűs `Latn` |
+| marathi | `mr` | Devanagari `Deva` | --> | Latin betűs `Latn` |
+| Odia | `or` | Oriya `Orya` | <--> | Latin betűs `Latn` |
+| pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin betűs `Latn`  |
+| Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs `Cyrl`  | --> | Latin betűs `Latn` |
+| Szerb (latin betűs) | `sr-Latn` | Latin betűs `Latn` | --> | Cirill betűs `Cyrl`|
+| tamil | `ta` | tamil `Taml` | --> | Latin betűs `Latn` |
+| telugu | `te` | telugu `Telu` | --> | Latin betűs `Latn` |
+| Thai | `th` | thai `Thai` | --> | Latin betűs `Latn` |
 
 ### <a name="dictionary"></a>Szótár
 
@@ -262,7 +265,7 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Török      | `tr`          |
 | Ukrán      | `uk`          |
 | urdu      | `ur`          |
-| Vietnami      | `vi`          |
+| Vietnámi      | `vi`          |
 | walesi      | `cy`          |
 
 ### <a name="access-the-translator-language-list-programmatically"></a>Programozott módon férhet hozzá a Translator Language listához
@@ -322,10 +325,10 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Thai      | `th`          |
 | Török      | `tr`          |
 | Ukrán      | `uk`          |
-| Vietnami      | `vi`          |
+| Vietnámi      | `vi`          |
 | walesi | `cy` |
 
-## <a name="speech-translation"></a>Beszédfordítás
+## <a name="speech-translation"></a>Speech Translation
 A fordítás a fordító és a Cognitive Services Speech Service használatával érhető el. A [beszédfelismerési szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/) tájékozódhat a beszédfelismerés használatáról és az összes [elérhető nyelvi lehetőségről](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Diktálás
@@ -404,7 +407,7 @@ Szöveg konvertálása beszédre A szöveg és a beszéd használatával a ford�
 |telugu|
 |Thai|
 |Török|
-|Vietnami|
+|Vietnámi|
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>A Microsoft Translator webhelyén megtekintheti a nyelvi listát
 

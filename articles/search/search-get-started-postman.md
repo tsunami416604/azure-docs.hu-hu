@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 07c5e73ecd53bad0e5d5ec7959b288e0b6237a87
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 08/17/2020
+ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171924"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510912"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
@@ -25,11 +25,11 @@ ms.locfileid: "86171924"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice) -k megismerésének egyik legegyszerűbb módja a Poster vagy egy másik webes tesztelési eszköz használata a HTTP-kérelmek összeállításához és a válaszok vizsgálatához. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
+Ez a cikk azt ismerteti, hogyan lehet interaktív módon kialakítani REST API kérelmeket az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice) -kkal és egy API-ügyféllel a kérelmek küldéséhez és fogadásához. Az API-ügyféllel és ezekkel az utasításokkal bármilyen kód írása előtt elküldheti a kérelmeket, és megtekintheti a válaszokat.
 
-Ez a cikk bemutatja, hogyan lehet interaktív módon megfogalmazni a kérelmeket. Azt is megteheti, hogy [letölti és importálja a Poster-gyűjteményt](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) az előre meghatározott kérések használatára.
+A cikk a Poster alkalmazást használja. Ha előre definiált kéréseket szeretne használni, [letöltheti és importálhatja a Poster-gyűjteményeket](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) . 
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,14 +61,14 @@ Bármelyik eszközhöz ki kell választania egy parancsot (GET, POST, PUT stb.),
 
 Figyelje meg a HTTPS-előtagot, a szolgáltatás nevét, az objektum nevét (ebben az esetben az indexek gyűjteményét) és az [API-verziót](search-api-versions.md). Az API-Version egy kötelező, kisbetűs karakterlánc, amely `?api-version=2020-06-30` a jelenlegi verzióhoz hasonlóan van megadva. Az API-verziókat a rendszer rendszeresen frissíti. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
-A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusát, valamint az Azure-Cognitive Search hitelesítéséhez használt API-kulcsot. Cserélje le a felügyeleti API-kulcsot (az-AZURE-SEARCH-ADMIN-API-KEY) érvényes értékre. 
+A kérelem fejlécének összetétele két elemet tartalmaz: `Content-Type` az `api-key` Azure Cognitive Search való hitelesítéshez használt. Cserélje le a felügyeleti API-kulcsot (az-AZURE-SEARCH-ADMIN-API-KEY) érvényes értékre. 
 
 ```http
 api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
 Content-Type: application/json
 ```
 
-A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza a **beolvasás** művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik az Azure Cognitive Searchhoz, beolvassa az indexek gyűjteményét, és az 200-as HTTP-állapotkódot egy sikeres kapcsolaton keresztül adja vissza. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
+A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza a **lekérés** parancsot, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik az Azure Cognitive Searchhoz, beolvassa az indexek gyűjteményét, és az 200-as HTTP-állapotkódot egy sikeres kapcsolaton keresztül adja vissza. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
 
 ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
@@ -80,7 +80,7 @@ Az URL-cím kiterjeszthető, hogy tartalmazza az `hotels` index nevét.
 
 Ehhez tegye a következőket:
 
-1. Módosítsa a műveletet a **put**értékre.
+1. Módosítsa a parancsot a **put**értékre.
 
 2. Másolás ebben az URL-ben `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30` .
 
@@ -92,7 +92,7 @@ Ehhez tegye a következőket:
 
 ### <a name="index-definition"></a>Index definíciója
 
-A mezők gyűjteménye határozza meg a dokumentum szerkezetét. Minden dokumentumnak tartalmaznia kell ezeket a mezőket, és minden mezőnek adattípussal kell rendelkeznie. A keresésekben a sztringekat tartalmazó mezők vesznek részt, ezért a numerikus adatokat is érdemes sztringként beállítani, ha azt szeretné, hogy a keresés kiterjedjen rájuk.
+A mezők gyűjteménye határozza meg a dokumentum szerkezetét. Minden dokumentumnak tartalmaznia kell ezeket a mezőket, és minden mezőnek adattípussal kell rendelkeznie. A karakterlánc mezők teljes szöveges keresésben használatosak. Ha numerikus adatkeresésre van szüksége, a numerikus értékeket karakterláncként kell bevezetni.
 
 Az egyes mezők attribútumai határozzák meg az engedélyezett műveleteket. A REST API-k alapértelmezés szerint számos műveletet lehetővé tesznek. Például alapértelmezés szerint minden sztring kereshető, lekérdezhető, szűrhető és kategorizálható. Gyakran csak akkor kell attribútumokat beállítania, ha ki kell kapcsolni a viselkedést.
 
@@ -128,13 +128,13 @@ A kérelem elküldését követően megjelenik a 201-es HTTP-válasz, amely azt 
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Cognitive Searchban az index tartalmazza az összes kereshető, JSON-dokumentumként megadható adatelemet. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
+Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Cognitive Searchban az index tartalmazza az összes kereshető adatértéket. Ebben a forgatókönyvben az információk JSON-dokumentumként vannak megadva. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
 
 Az URL-cím kiterjeszthető a `docs` gyűjtemények és a művelet belefoglalására `index` .
 
 Ehhez tegye a következőket:
 
-1. Cserélje a parancsot a **POST** parancsra.
+1. Módosítsa a parancsot **post**értékre.
 
 2. Másolás ebben az URL-ben `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30` .
 
@@ -241,13 +241,13 @@ Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült f
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Most, hogy az index és a dokumentumok betöltődik, a [keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával küldhet lekérdezéseket.
+Most, hogy az index és a dokumentumkészlet be van töltve, a [keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával küldhet lekérdezéseket.
 
 Az URL-cím kiterjesztése a keresési operátor használatával megadott lekérdezési kifejezésre.
 
 Ehhez tegye a következőket:
 
-1. Módosítsa a **lekérdezni**kívánt műveletet.
+1. Módosítsa a parancsot a **lekéréshez**.
 
 2. Másolás ebben az URL-ben `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30` .
 
@@ -292,7 +292,7 @@ Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` k
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

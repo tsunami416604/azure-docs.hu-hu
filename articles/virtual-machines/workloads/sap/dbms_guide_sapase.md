@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525262"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510895"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -59,7 +59,7 @@ Az oldalméret általában 2048 KB. Részletekért tekintse [meg a Linuxon futó
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Javaslatok a virtuális gép és a lemez struktúrájához az SAP-alapú központi telepítések esetében
 
-Az SAP NetWeaver-alkalmazások SAP-alapú bejelentési szolgáltatásait az [SAP-támogatási megjegyzésekben](https://launchpad.support.sap.com/#/notes/1928533) felsorolt virtuálisgép-típusok támogatják, #1928533 a közepes méretű SAP betekintő adatbázis-kiszolgálóinak tipikus virtuálisgép-típusai is Esv3.  A nagyméretű, több terabájtos adatbázisok képesek az M sorozatú virtuális gépek típusának kihasználására. Az M-sorozat írásgyorsítóának engedélyezésével javítható az SAP-alapú adatátviteli napló lemezének írási teljesítménye. A írásgyorsító az SAP-bevezetőknek körültekintően kell megvizsgálnia, mivel az SAP-beolvasások végzik a naplók írását.  Tekintse át az [SAP támogatási megjegyzéseit #2816580](../../windows/how-to-enable-write-accelerator.md) és vegye fontolóra a teljesítményteszt futtatását.  
+Az SAP NetWeaver-alkalmazások SAP-alapú bejelentési szolgáltatásait az [SAP-támogatási megjegyzésekben](https://launchpad.support.sap.com/#/notes/1928533) felsorolt virtuálisgép-típusok támogatják, #1928533 a közepes méretű SAP betekintő adatbázis-kiszolgálóinak tipikus virtuálisgép-típusai is Esv3.  A nagyméretű, több terabájtos adatbázisok képesek az M sorozatú virtuális gépek típusának kihasználására. Az M-sorozat írásgyorsítóának engedélyezésével javítható az SAP-alapú adatátviteli napló lemezének írási teljesítménye. A írásgyorsító az SAP-bevezetőknek körültekintően kell megvizsgálnia, mivel az SAP-beolvasások végzik a naplók írását.  Tekintse át az [SAP támogatási megjegyzéseit #2816580](../../how-to-enable-write-accelerator.md) és vegye fontolóra a teljesítményteszt futtatását.  
 Írásgyorsító csak tranzakciónapló-lemezre lett tervezve. A lemez szintű gyorsítótárat a NONE értékre kell beállítani. Ne lepődj meg, ha az Azure írásgyorsító nem mutat hasonló fejlesztési funkciókat más adatbázis-kezelők esetében. Az SAP-nal a tranzakciónaplóba való beírása alapján előfordulhat, hogy az Azure írásgyorsító nem tud felgyorsulni.
 Az adateszközökhöz és a naplózási eszközökhöz külön lemezek használata ajánlott.  A rendszeradatbázisok sybsecurity, és `saptools` nem igényelnek dedikált lemezeket, és az SAP-adatbázis adat-és naplózási eszközeit tartalmazó lemezekre helyezhetők. 
 
@@ -68,7 +68,7 @@ Az adateszközökhöz és a naplózási eszközökhöz külön lemezek használa
 ### <a name="file-systems-stripe-size--io-balancing"></a>Fájlrendszerek, csíkozott méret & IO-egyensúly 
 Az SAP-előállítók egymás után, a lemezes tárolóeszközökbe írnak, kivéve, ha másként vannak konfigurálva. Ez azt jelenti, hogy egy üres, négy eszközzel rendelkező SAP-adatbázis csak az első eszközön fog írni.  A többi lemezes eszköz csak akkor lesz beírva, amikor az első eszköz megtelt.  Az egyes SAP-eszközök OLVASÁSI és írási IO-mennyisége valószínűleg eltérő lesz. Ha a lemezes i/o-t az összes rendelkezésre álló Azure-lemezre kiegyenlíti, a Windows-tárolóhelyek vagy a Linux-LVM2 használata szükséges. Linux rendszeren a lemezek formázásához ajánlott a XFS fájlrendszer használata. Az LVM-sáv méretét teljesítményteszttel kell tesztelni. 128 KB-os sáv mérete jó kiindulási pont. Windows rendszeren az NTFS-foglalási egység méretét (AUS) tesztelni kell. 64 KB használható kezdő értékként. 
 
-Azt javasoljuk, hogy konfigurálja az automatikus adatbázis-kiterjesztést az [SAP adaptív kiszolgáló nagyvállalati](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) és [SAP-támogatási megjegyzésének](https://launchpad.support.sap.com/#/notes/1815695)konfigurálásával foglalkozó cikkben leírtak szerint, #1815695. 
+Azt javasoljuk, hogy konfigurálja az automatikus adatbázis-kiterjesztést az [SAP adaptív kiszolgáló nagyvállalati](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)  és [SAP-támogatási megjegyzésének](https://launchpad.support.sap.com/#/notes/1815695)konfigurálásával foglalkozó cikkben leírtak szerint, #1815695. 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Az Azure-beli virtuális gépeken, a lemez-és fájlrendszer-konfigurációkon használható SAP-beszállítói minta 
 Az alábbi sablonok a Linux és a Windows rendszerhez készült minta konfigurációkat mutatják be. A virtuális gép és a lemez konfigurációjának megerősítése előtt gondoskodjon arról, hogy az egyes virtuális gépek hálózati és tárolási sávszélesség-kvótái elegendőek legyenek az üzleti igények kielégítéséhez. Azt is vegye figyelembe, hogy a különböző Azure-beli virtuálisgép-típusok különböző számú lemezzel rendelkezhetnek, amelyek a virtuális géphez csatlakoztathatók. Egy E4s_v3 virtuális gép például 48 MB/s-os korláttal rendelkezik, az IO átviteli sebessége. Ha az adatbázis biztonsági mentési tevékenysége által igényelt tárolási sebesség meghaladja a 48 MB/s-ot, a nagyobb méretű virtuálisgép-típus nem elkerülhető. Az Azure Storage konfigurálásakor azt is figyelembe kell vennie, hogy különösen az [Azure Premium Storage](../../windows/premium-storage-performance.md) esetében a kapacitás és a IOPS GB-onként változik. További információ ebben a témakörben: [milyen típusú lemezek érhetők el az Azure-ban?](../../windows/disks-types.md). Az adott Azure-beli virtuálisgép-típusok kvótái a cikkhez kapcsolódó [memória-optimalizált virtuálisgép-méretek](../../sizes-memory.md) és cikkek című cikkben vannak dokumentálva. 
@@ -309,5 +309,5 @@ További információ a következő címen érhető el
 A havi hírlevél [SAP-támogatási megjegyzéssel](https://launchpad.support.sap.com/#/notes/2381575) jelenik meg #2381575 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-beli SAP-munkaterhelések című cikkben tájékozódhat [: tervezési és üzembe helyezési ellenőrzőlista](./sap-deployment-checklist.md)

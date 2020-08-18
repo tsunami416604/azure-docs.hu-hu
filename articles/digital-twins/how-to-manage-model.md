@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 919db9338917a9c2bedd7806eb251a2e5ef6187b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509994"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -160,7 +160,7 @@ Pageable<ModelData> pmd3 = client.GetModels(null, true);
 Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 ```
 
-Az API-hívások lekérik a modelleket az összes visszaadott `ModelData` objektumra vonatkozóan. `ModelData`Az Azure Digital Twins-példányban tárolt modellel kapcsolatos metaadatokat tartalmaz, például a név, a DTMI és a modell létrehozási dátuma. Az `ModelData` objektum opcionálisan magába foglalja a modellt is. A paraméterektől függően a hívások lekérése paranccsal lekérheti a csak metaadatokat (ez olyan esetekben hasznos, amikor az elérhető eszközök felhasználói felületi listáját szeretné megjeleníteni, például) vagy a teljes modellt.
+Az API-hívások lekérik a modelleket az összes visszaadott `ModelData` objektumra vonatkozóan. `ModelData` Az Azure Digital Twins-példányban tárolt modellel kapcsolatos metaadatokat tartalmaz, például a név, a DTMI és a modell létrehozási dátuma. Az `ModelData` objektum opcionálisan magába foglalja a modellt is. A paraméterektől függően a hívások lekérése paranccsal lekérheti a csak metaadatokat (ez olyan esetekben hasznos, amikor az elérhető eszközök felhasználói felületi listáját szeretné megjeleníteni, például) vagy a teljes modellt.
 
 A `RetrieveModelWithDependencies` hívás nem csak a kért modellt adja vissza, hanem az összes olyan modellt is, amelytől a kért modell függ.
 
@@ -174,7 +174,7 @@ A modelleket a szolgáltatásból is el lehet távolítani a következő két m�
 
 Ezek különálló funkciók, és nem érintik egymást, bár ezek együtt használhatók a modellek fokozatos eltávolítására. 
 
-### <a name="decommissioning"></a>Leszerelési
+#### <a name="decommissioning"></a>Leszerelési
 
 Itt látható a modell leszerelésének kódja:
 

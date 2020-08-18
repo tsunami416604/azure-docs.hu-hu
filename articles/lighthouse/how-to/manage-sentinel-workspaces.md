@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163237"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511252"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
@@ -69,9 +69,9 @@ A felügyeleti bérlőben munkafüzetek helyezhetők üzembe, és méretezhető 
 
 A munkafüzeteket közvetlenül is üzembe helyezheti egy egyéni bérlőben, amelyet az adott ügyfélhez tartozó forgatókönyvek esetében kezel.
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Lekérdezések futtatása Azure Sentinel-munkaterületeken
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Log Analytics-és vadászati lekérdezések futtatása az Azure Sentinel-munkaterületeken
 
-A fenyegetés észleléséhez központilag hozhat létre és menthet Log Analytics-lekérdezéseket a bérlő kezelése szolgáltatásban. Ezeket a lekérdezéseket ezután a Union operátor és a munkaterület () kifejezés használatával lehet futtatni az összes ügyfél Azure Sentinel-munkaterületén. További információ: több [munkaterület lekérdezése](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+A fenyegetés észleléséhez központilag hozhat létre és menthet Log Analytics-lekérdezéseket a bérlő kezelése, beleértve a [vadászati lekérdezéseket](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)is. Ezeket a lekérdezéseket ezután a Union operátor és a munkaterület () kifejezés használatával lehet futtatni az összes ügyfél Azure Sentinel-munkaterületén. További információ: több [munkaterület lekérdezése](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Automatizálás használata a munkaterületek közötti felügyelethez
 

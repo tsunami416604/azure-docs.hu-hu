@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805011"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509297"
 ---
 # <a name="get-information-about-a-converted-model"></a>A konvertált modell adatainak lekérése
 
@@ -100,7 +100,7 @@ Ez a szakasz a forrásfájl formátumával kapcsolatos adatokat rögzíti.
 Ez a szakasz a forrás jelenetről tartalmaz információkat. Az ebben a szakaszban szereplő értékek és a forrás modellt létrehozó eszköz egyenértékű értékei között gyakran előfordulnak eltérések. Ilyen eltérések várhatók, mert a modell az exportálási és átalakítási lépések során módosul.
 
 * `numMeshes`: A rácsvonalak száma, amelyben az egyes részek hivatkozhatnak egyetlen anyagra.
-* `numFaces`: A _háromszögek_ teljes száma a teljes modellben. Vegye figyelembe, hogy a háló a konverzió során háromszögárfolyam-számítást végez. Ez a szám a [szabványos renderelési virtuálisgép-mérethez](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)járul hozzá a sokszög korlátozásához.
+* `numFaces`: A _háromszögek_ teljes száma a teljes modellben. Vegye figyelembe, hogy a háló a konverzió során háromszögárfolyam-számítást végez. Ez a szám a [szabványos renderelési kiszolgáló méretében](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)járul hozzá a sokszög korlátozásához.
 * `numVertices`: A teljes modellben lévő csúcspontok teljes száma.
 * `numMaterial`: Az anyagok teljes száma a teljes modellben.
 * `numFacesSmallestMesh`: A modell legkisebb rácsvonalában található háromszögek száma.

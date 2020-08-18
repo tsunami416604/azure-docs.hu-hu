@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: Alapelvek
   items:
+    - name: Az alkalmazások és az üzembe helyezés bemutatása
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: Kvóták és korlátok ismertetése
       href: spring-cloud-quotas.md
     - name: Metrikák ismertetése

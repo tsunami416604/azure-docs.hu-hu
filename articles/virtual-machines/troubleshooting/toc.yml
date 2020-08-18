@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: A Windows rendszerű virtuálisgép-ügynök offline telepítése
       href: install-vm-agent-offline.md
+    - name: Windows rendszerű virtuálisgép-ügynök hibaelhárítása
+      href: windows-azure-guest-agent.md
 - name: Biztonsági mentés és visszaállítás
   items:
     - name: Azure-beli virtuális gépek biztonsági mentési hibáinak elhárítása

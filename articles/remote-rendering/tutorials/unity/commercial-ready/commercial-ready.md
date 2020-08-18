@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076422"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510929"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Oktatóanyag: kereskedelmi használatra kész Azure Remote rendering-alkalmazás létrehozása
 
@@ -78,13 +78,13 @@ További információért látogasson el ide:
 
 Előfordulhat, hogy a használati eset gyors indítást igényel az alkalmazás elindítása és a 3D-modell megjelenítéséhez. Például egy olyan fontos értekezlet során, amelyben kritikus fontosságú, hogy minden időben megtörténjen a működés. Egy másik példa a CAD 3D-modell áttekintése során, ahol a CAD-alkalmazások és a vegyes valóságok közötti gyors tervezési iteráció kulcsfontosságú a hatékonyság érdekében.
 
-Az Azure távoli rendereléshez előre feldolgozható 3D modellek szükségesek, és az Azure jelenleg több percet vesz igénybe egy virtuális gép létrehozása és egy modell betöltése a rendereléshez. Ennek a folyamatnak a lehető legzökkenőmentesebb és gyors elvégzése a 3D-modell és az ARR-munkamenet előkészítését teszi szükségessé.
+Az Azure távoli rendereléshez előre feldolgozható 3D-modellek szükségesek, és az Azure jelenleg több percet vesz igénybe, és betölt egy modellt a rendereléshez. Ennek a folyamatnak a lehető legzökkenőmentesebb és gyors elvégzése a 3D-modell és az ARR-munkamenet előkészítését teszi szükségessé.
 
 Az itt megosztott javaslatok jelenleg nem tartoznak a szabványos Azure-alapú távoli rendereléshez, de a gyorsabb indítási idő érdekében saját maguk is végrehajthatják azokat.
 
 ### <a name="initiate-early"></a>Korai indítás
 
-Az indítási idő csökkentése érdekében a legegyszerűbb megoldás, ha a lehető leghamarabb áthelyezi a virtuális gép létrehozását és inicializálását a felhasználói munkafolyamatban. Az egyik stratégia a munkamenet inicializálása, amint ismert, hogy egy ARR-munkamenetre lesz szükség. Ez gyakran akkor történik meg, amikor a felhasználó megkezdi a 3D modell feltöltését az Azure-Blob Storage az Azure távoli rendereléssel való használatra. Ebben az esetben a munkamenet-létrehozás és a virtuális gép inicializálása a 3D-modell feltöltésével megegyező időpontban indítható el, hogy mindkét munkafolyamat párhuzamosan fusson.
+Az indítási idő csökkentése érdekében a legegyszerűbb megoldás, ha a munkamenet létrehozását és inicializálását a lehető leghamarabb át szeretné helyezni a felhasználói munkafolyamatban. Az egyik stratégia a munkamenet inicializálása, amint ismert, hogy egy ARR-munkamenetre lesz szükség. Ez gyakran akkor történik meg, amikor a felhasználó megkezdi a 3D modell feltöltését az Azure-Blob Storage az Azure távoli rendereléssel való használatra. Ebben az esetben a munkamenet-létrehozást és az inicializálást a 3D-modell feltöltésével megegyező időben lehet kezdeményezni, hogy mindkét munkafolyamat párhuzamosan fusson.
 
 Ez a folyamat tovább egyszerűsíthető annak biztosításával, hogy a kiválasztott Azure Blob Storage bemeneti és kimeneti tárolók ugyanabban a regionális adatközpontban legyenek, mint az Azure távoli renderelési munkamenet.
 
@@ -92,41 +92,41 @@ Ez a folyamat tovább egyszerűsíthető annak biztosításával, hogy a kivála
 
 Ha tudja, hogy van egy jövőbeli Azure-renderelési igénye, akkor egy adott dátumot és időpontot ütemezhet az Azure távoli renderelési munkamenetének elindításához.
 
-Ez a lehetőség egy webportálon keresztül érhető el, ahol a felhasználók egyszerre tölthetik fel a 3D-modelleket, és ütemezhetik az időt a későbbi megtekintéshez. Az is jó megoldás, ha más beállításokat is szeretne kérni, például a standard vagy a prémium megjelenítést. A prémium szintű renderelés akkor lehet megfelelő, ha olyan eszközöket szeretne megjeleníteni, amelyekben az ideális méretet nehezebb automatikusan meghatározni, vagy annak biztosítására, hogy az Azure-régió a megadott időpontban elérhető virtuális gépekkel rendelkezik.
+Ez a lehetőség egy webportálon keresztül érhető el, ahol a felhasználók egyszerre tölthetik fel a 3D-modelleket, és ütemezhetik az időt a későbbi megtekintéshez. Az is jó megoldás, ha más beállításokat is szeretne kérni, például a [*standard*](../../../reference/vm-sizes.md) vagy a [*prémium*](../../../reference/vm-sizes.md) megjelenítést. A *prémium* szintű renderelés akkor lehet megfelelő, ha olyan eszközöket szeretne megjeleníteni, amelyekben az ideális méretet nehezebb automatikusan meghatározni, vagy annak biztosítására, hogy az Azure-régió a megadott időpontban elérhető virtuális gépekkel rendelkezik.
 
 ### <a name="session-pooling"></a>Munkamenet-készletezés
 
 A legigényesebb helyzetekben egy másik lehetőség a munkamenet-készletezés, ahol egy vagy több munkamenet létrehozása és inicializálása mindig folyamatban van. Ez egy munkamenet-készletet hoz létre, amely azonnali használatra kéri a kérelmező felhasználó számára. Ennek a megközelítésnek a hátránya, hogy a virtuális gép inicializálása után a szolgáltatás számlázása elindul. Nem költséghatékony, hogy egy munkamenet-készletet folyamatosan futtasson, de az elemzések alapján lehetséges, hogy megjósolhatja a maximális terhelést, vagy kombinálható a fenti ütemezési stratégiával, hogy előre megjósolja a munkamenetek szükségességét, és ennek megfelelően felgyorsítja a munkamenet-készletet.
 
-Ez a stratégia a standard és a prémium szintű munkamenetek közötti választást is lehetővé teszi a dinamikus módon, mert sokkal gyorsabban lehet váltani a két típus között egy adott felhasználói munkamenetben, például a prémium komplexitású modell első megtekintésekor, majd egy, a standardon belül működhet. Ha ezek a felhasználói munkamenetek meglehetősen hosszadalmasak, jelentős költségmegtakarítást érhet el.
+Ez a stratégia a *standard* és a *prémium* szintű munkamenetek közötti választást is lehetővé teszi a dinamikus módon, mert sokkal gyorsabban lehet váltani a két típus között egy adott felhasználói munkamenetben, például a *prémium* komplexitású modell első megtekintésekor, majd egy, a *standardon*belül működhet. Ha ezek a felhasználói munkamenetek meglehetősen hosszadalmasak, jelentős költségmegtakarítást érhet el.
 
 További információ az Azure távoli renderelési munkamenetekről:
 
 * [Remote Rendering-munkamenetek](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
 
-## <a name="standard-vs-premium-vm-routing-strategies"></a>Standard és prémium szintű VM-útválasztási stratégiák
+## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standard és prémium szintű kiszolgálói útválasztási stratégiák
 
-A standard vagy prémium szintű virtuális gép létrehozásához ki kell választania egy kihívást a felhasználói élmény és a végpontok közötti rendszer kialakításához. Habár a kizárólag prémium szintű munkamenetek használata egy lehetőség, a normál munkamenetek jóval kevesebb Azure számítási erőforrást használnak, és a prémiumnál olcsóbbak. Ez erős motivációt biztosít a standard szintű munkamenetek használatára, amikor csak lehetséges, és csak szükség esetén használja a prémium szintet.
+A standard vagy *prémium* *szintű* kiszolgáló méretének kiválasztásához a felhasználói élmény és a végpontok közötti rendszer megtervezése kihívást jelent. Habár a kizárólag *prémium* szintű munkamenetek használata egy lehetőség, a *normál* munkamenetek jóval kevesebb Azure számítási erőforrást használnak, és a *prémiumnál*olcsóbbak. Ez erős motivációt biztosít a *standard szintű* munkamenetek használatára, amikor csak lehetséges, és csak szükség esetén használja a *prémium* szintet.
 
 Itt több lehetőséget is megosztunk, amelyek közül legalább a legátfogóbbat vesszük igénybe, hogy kezeljék a munkamenet-döntések kezelésének óhaját.
 
 ### <a name="use-only-standard-or-premium"></a>Csak standard vagy prémium szintű használata
 
-Ha biztos abban, hogy az igényeinek *mindig* a standard és a prémium küszöbértéke alá esik, akkor ez jelentősen leegyszerűsíti a döntést. Csak a standard használata. Ne feledje azonban, hogy a felhasználói élményre gyakorolt hatás jelentős, ha a betöltött eszközök teljes összetettségét túl összetettnek tekinti a normál munkamenetek esetében.
+Ha biztos abban, hogy az igényeinek *mindig* a *standard* és a *prémium*küszöbértéke alá esik, akkor ez jelentősen leegyszerűsíti a döntést. Csak a *standard*használata. Ne feledje azonban, hogy a felhasználói élményre gyakorolt hatás jelentős, ha a betöltött eszközök teljes összetettségét túl összetettnek tekinti a *normál* munkamenetek esetében.
 
-Hasonlóképpen, ha a felhasználás nagy hányada meghaladja a standard és a prémium közötti küszöbértéket, vagy a költségek nem kulcsfontosságú tényezők a használati esetekben, akkor a prémium lehetőség kiválasztásával is megtarthatja az egyszerűséget.
+Hasonlóképpen, ha a felhasználás nagy hányada meghaladja a *standard* és a *prémium*közötti küszöbértéket, vagy a költségek nem kulcsfontosságú tényezők a használati esetekben, akkor a *prémium* lehetőség kiválasztásával is megtarthatja az egyszerűséget.
 
 ### <a name="ask-the-user"></a>A felhasználó megkérdezése
 
-Ha mind a standard, mind a prémium szintű támogatást szeretné támogatni, a legegyszerűbb módszer annak meghatározására, hogy milyen típusú virtuálisgép-munkamenetet kell létrehoznia, hogy megkérdezze a felhasználót, amikor kiválasztja a 3D-eszközöket a megtekintéshez. Ezzel a módszerrel a felhasználónak meg kell ismernie a 3D-eszköz összetettségét, vagy akár több, megtekinthető eszközt is. Ez általában nem ajánlott erre az okból. Ha a felhasználó helytelenül választ, és a standard lehetőséget választja, akkor az eredményül kapott felhasználói élmény egy alkalmatlan pillanatban sérült.
+Ha mind a standard, mind a *prémium* *szintű* támogatást szeretné támogatni, a legegyszerűbb módszer annak meghatározására, hogy milyen típusú munkamenetet kell létrehoznia, hogy megkérdezze a felhasználót, amikor kiválasztja a 3D-eszközöket a megtekintéshez. Ezzel a módszerrel a felhasználónak meg kell ismernie a 3D-eszköz összetettségét, vagy akár több, megtekinthető eszközt is. Ez általában nem ajánlott erre az okból. Ha a felhasználó helytelenül választ, és a *standard*lehetőséget választja, akkor az eredményül kapott felhasználói élmény egy alkalmatlan pillanatban sérült.
 
 ### <a name="analyze-the-3d-model"></a>A 3D modell elemzése
 
-Egy másik viszonylag egyszerű módszer a kiválasztott 3D-eszközök bonyolultságának elemzése. Ha a modell összetettsége a standard küszöbérték alatt van, indítson el egy normál munkamenetet, ellenkező esetben egy prémium szintű munkamenetet kezdeményezzen. Itt az a kihívás, hogy egy-egy munkamenet végső soron több olyan modell megtekintésére is használható, amelynek némelyike meghaladhatja a normál munkamenet bonyolultsági küszöbértékét, ami azt eredményezi, hogy a különböző 3D-eszközök sorozatából nem képes zökkenőmentesen használni ugyanazt a munkamenetet.
+Egy másik viszonylag egyszerű módszer a kiválasztott 3D-eszközök bonyolultságának elemzése. Ha a modell összetettsége a *standard*küszöbérték alatt van, indítson el egy normál munkamenetet, ellenkező esetben egy *prémium* *szintű* munkamenetet kezdeményezzen. Itt az a kihívás, hogy egy-egy munkamenet végső soron több olyan modell megtekintésére is használható, amelynek némelyike meghaladhatja a *normál* munkamenet bonyolultsági küszöbértékét, ami azt eredményezi, hogy a különböző 3D-eszközök sorozatából nem képes zökkenőmentesen használni ugyanazt a munkamenetet.
 
 ### <a name="automatic-switching"></a>Automatikus váltás
 
-A standard és a prémium szintű munkamenetek közötti automatikus váltás sok értelmet biztosít egy olyan rendszerkialakításban, amely magában foglalja a munkamenet-készletezést is. Ez a stratégia lehetővé teszi az erőforrás-használat további optimalizálását. Ahogy a felhasználó megtekinti a modelleket, meg kell határozni a bonyolultságot, és a munkamenetek megfelelő méretét kéri a rendszer a munkamenet-készletezési szolgáltatástól.
+A standard és a *prémium* *szintű* munkamenetek közötti automatikus váltás sok értelmet biztosít egy olyan rendszerkialakításban, amely magában foglalja a munkamenet-készletezést is. Ez a stratégia lehetővé teszi az erőforrás-használat további optimalizálását. Ahogy a felhasználó megtekinti a modelleket, meg kell határozni a bonyolultságot, és a munkamenetek megfelelő méretét kéri a rendszer a munkamenet-készletezési szolgáltatástól.
 
 ## <a name="working-with-networks"></a>Hálózatok használata
 
@@ -213,7 +213,7 @@ A várható használati eset alapján határozza meg a legjobb helyet vagy a hel
 
 Ha a használati eset olyan használati mintázattal rendelkezik, ahol ugyanaz a 3D-eszköz többször is feltölthető, a háttér nyomon követheti, hogy mely modellek legyenek már konvertálva az ARR-vel való használatra, hogy a modell csak egyszer legyen feldolgozva több jövőbeli kiválasztáshoz. A tervezési áttekintés például az, hogy egy csapat Hogyan férhet hozzá egy közös eredeti 3D-eszközhöz. Minden csapattagnak a modelljét az ARR használatával kell áttekintenie a munkahelyi stream egy pontján. Ekkor csak az első nézet aktiválja az előfeldolgozás előtti lépést. A következő nézetek kikeresik a társított, feldolgozott, a SAS kimeneti tárolóban lévő fájlt.
 
-A használati esettől függően valószínű, hogy meg kell határozni, hogy a megfelelő Azure-alapú távoli renderelési virtuálisgép-méret, standard vagy prémium szint minden olyan 3D-eszközhöz vagy-csoporthoz megmaradjon, amely ugyanabban a munkamenetben fog megtekinteni.  
+A használati esettől függően valószínű, hogy meg kell határoznia, hogy megmaradjon a megfelelő Azure Remote rendering Server-méret, *standard* vagy *prémium*szint az egyes 3D-eszközök vagy-csoportok számára, amelyek ugyanabban a munkamenetben lesznek megtekintve.  
 
 ### <a name="on-device-model-selection-list"></a>Az eszközön a modell kiválasztási listája
 
@@ -248,7 +248,7 @@ A vegyes valóság egyik meggyőző használati esete a CAD-munkafolyamatok terv
 
 A sokkal egyszerűbb, de valamivel kevésbé áramvonalas megközelítés automatizálhatja a 3D modell helyi merevlemezre mentésének folyamatát, majd kezdeményezheti a mentett fájlnak a SAS bemeneti tárolóba való továbbításának folyamatát.
 
-### <a name="azure-marketplace"></a>Azure Marketplace
+### <a name="azure-marketplace"></a>Azure Piactér
 
 Számos nagyvállalati ügyfél azt adja meg, hogy a Azure Stack a saját Azure-fiókjaik és a hitelesítő adataik biztonsági okokból történő üzembe helyezésére is szükség van. Ennek elvégzéséhez érdemes megfontolnia az Azure által felügyelt alkalmazások csomagolását úgy, hogy az Azure Marketplace-en is közzétehető legyen az Azure piactéren.
 

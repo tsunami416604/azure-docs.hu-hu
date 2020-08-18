@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c2fc0b0bc1b59bcb3fa4a84235135d9b8ff1fc27
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185655"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510249"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ A több alosztálya is létezik `PipelineStep` . A on kívül `AutoMLStep` Ez a 
 
 Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használni, az `Dataset` objektumokkal. A lépések _közötti_ adatáthelyezéshez az előnyben részesített módszer az `PipelineData` objektumok használata. A szolgáltatással való használathoz `AutoMLStep` az `PipelineData` objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
 
-A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig`a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)című cikkben talál. 
+A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)című cikkben talál. 
 
 Egy `Pipeline` fut az a-ben `Experiment` . A folyamat `Run` minden egyes lépéshez gyermeket tartalmaz `StepRun` . Az automatizált ML kimenetei `StepRun` a betanítási mérőszámok és a legmagasabb teljesítményű modellek.
 
@@ -250,7 +250,7 @@ Az `prepped_data_path` objektum típusa `PipelineOutputFileDataset` . Figyelje m
 
 Az automatikus ML-folyamat konfigurálása lépés az `AutoMLConfig` osztálysal történik. Ez a rugalmas osztály az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben található. Az adatok bevitele és kimenete a konfiguráció egyetlen olyan eleme, amely különleges figyelmet igényel egy ML-folyamatban. A folyamatokban a bemeneti és kimeneti adatokat az `AutoMLConfig` alábbiakban részletesen tárgyaljuk. Az adatokon túl a ML-folyamatok előnye, hogy különböző számítási célokat is használhat a különböző lépésekhez. Dönthet úgy is, hogy a hatékonyabban `ComputeTarget` csak az automatikus ml-t használja. Ez olyan egyszerű, mint `RunConfiguration` az objektum paramétereinek kiosztása `AutoMLConfig` `run_configuration` .
 
-### <a name="send-data-to-automlstep"></a>Az adatküldés`AutoMLStep`
+### <a name="send-data-to-automlstep"></a>Az adatküldés `AutoMLStep`
 
 ML-folyamatokban a bemeneti adatoknak `Dataset` objektumnak kell lenniük. A legnagyobb teljesítményű mód az, hogy a bemeneti adatokat objektumok formájában adja meg `PipelineOutputTabularDataset` . Ilyen típusú objektumot a `parse_parquet_files()` vagy a (z) vagy `parse_delimited_files()` a (z `PipelineOutputFileDataset` ), például az `prepped_data_path` objektummal hozhat létre.
 
@@ -273,10 +273,10 @@ A két módszer összehasonlítása:
 | Módszer | Előnyök és hátrányok | 
 |-|-|
 |`PipelineOutputTabularDataset`| Nagyobb teljesítmény | 
-|| Természetes útvonal innen:`PipelineData` | 
+|| Természetes útvonal innen: `PipelineData` | 
 || A folyamat futtatása után nem őrzi meg az adattárolást |
 || [A `PipelineOutputTabularDataset` technikát bemutató jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
-| Regisztrált`Dataset` | Alacsonyabb teljesítmény |
+| Regisztrált `Dataset` | Alacsonyabb teljesítmény |
 | | Számos módon hozható létre | 
 | | Az adatmegőrzés és a munkaterület teljes egészében látható |
 | | [Regisztrált `Dataset` technikát mutató jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
@@ -337,17 +337,17 @@ A kódrészlet egy gyakran használt kifejezést mutat be `AutoMLConfig` . A tö
 
 A `automl_settings` szótárt a rendszer a kwargs adja át a `AutoMLConfig` konstruktornak. A többi paraméter nem összetett:
 
-- `task``classification`erre a példára van beállítva. A többi érvényes érték a `regression` és a`forecasting`
-- `path`és `debug_log` írja le a projekt elérési útját és egy helyi fájlt, amelybe a rendszer a hibakeresési adatokat írni fogja 
-- `compute_target`a korábban definiált, `compute_target` amely ebben a példában egy olcsó CPU-alapú gép. Ha a AutoML mély tanulási szolgáltatásait használja, a számítási célt GPU-alapúra szeretné módosítani
-- `featurization`értékre van állítva `auto` . További részletek az automatikus ML konfigurációs dokumentum [adat Featurization](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) szakaszában találhatók. 
-- `training_data`az `PipelineOutputTabularDataset` adatelőkészítési lépés eredményeiből származó objektumokra van beállítva 
-- `label_column_name`azt jelzi, hogy melyik oszlopot érdekli az előrejelzés 
+- `task``classification`erre a példára van beállítva. A többi érvényes érték a `regression` és a `forecasting`
+- `path` és `debug_log` írja le a projekt elérési útját és egy helyi fájlt, amelybe a rendszer a hibakeresési adatokat írni fogja 
+- `compute_target` a korábban definiált, `compute_target` amely ebben a példában egy olcsó CPU-alapú gép. Ha a AutoML mély tanulási szolgáltatásait használja, a számítási célt GPU-alapúra szeretné módosítani
+- `featurization` értékre van állítva `auto` . További részletek az automatikus ML konfigurációs dokumentum [adat Featurization](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) szakaszában találhatók. 
+- `training_data` az `PipelineOutputTabularDataset` adatelőkészítési lépés eredményeiből származó objektumokra van beállítva 
+- `label_column_name` azt jelzi, hogy melyik oszlopot érdekli az előrejelzés 
 
 `AutoMLStep`Maga a és a `AutoMLConfig` kimenete is a `PipelineData` mérőszámok és a modell adatainak tárolására létrehozott objektumok. 
 
 >[!Important]
-> A és a értékeit csak akkor kell beállítania, `enable_default_model_output` `enable_default_metrics_output` `False` Ha használja `AutoMLStep` .
+> A `enable_default_model_output` és `enable_default_metrics_output`  a értékeit `True` csak a használata esetén kell beállítania  `AutoMLStepRun` .
 
 Ebben a példában az automatikus ML folyamat kereszt-érvényesítést hajt végre a on `training_data` . Az argumentummal megadhatja a kereszthivatkozások számát `n_cross_validations` . Ha már kiosztotta a betanítási adatait az adatelőkészítési lépések részeként, beállíthatja a `validation_data` sajátját `Dataset` .
 

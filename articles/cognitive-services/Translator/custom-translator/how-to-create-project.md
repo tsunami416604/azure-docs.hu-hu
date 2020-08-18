@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 03f6f045e0809f79117518a22abfd74520b6d0a6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992776"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510979"
 ---
 # <a name="create-a-project"></a>Projekt létrehozása
 
@@ -52,7 +52,7 @@ Az egyéni fordító kezdőlapja a munkaterület első 10 projektjét jeleníti 
 
 A projekt kiválasztása után a következő jelenik meg a projekt oldalon:
 
-- Kategóriakód: A Kategóriakód létrehozása a munkaterület azonosítója, a projekt címkéjének és a kategória kódjának összefűzésével történik. A Kategóriakód és a szöveges fordító használatával egyéni fordításokat kaphat.
+- Kategóriakód: A Kategóriakód létrehozása a munkaterület azonosítója, a projekt címkéjének és a kategória kódjának összefűzésével történik. A Kategóriakód és a Text Translator API használatával egyéni fordításokat kaphat. A másoláshoz kattintson a másolás ikonra.
 
 - Betanítás gomb: ezzel a gombbal elindítható egy [modell képzése](how-to-train-model.md).
 

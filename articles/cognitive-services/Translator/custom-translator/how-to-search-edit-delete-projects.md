@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996737"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510354"
 ---
 # <a name="search-edit-and-delete-projects"></a>Projektek keresése, szerkesztése és törlése
 
@@ -24,36 +24,35 @@ Az egyéni Translator számos módszert kínál a projektek hatékony kezelésé
 
 A szűrő eszköz lehetővé teszi a projektek különböző szűrési feltételek szerinti keresését. Az informatikai szűrők, például a projekt neve, állapota, a forrás és a cél nyelve, valamint a projekt kategóriája.
 
-1.  Kattintson a szűrő gombra.
+1. Kattintson a szűrő gombra.
 
     ![Keresési projekt](media/how-to/how-to-search-project.png)
 
-1.  A szűrést a következő mezők bármelyike (vagy mindegyike) alapján végezheti el: projekt neve, állapot, forrás nyelve, célnyelv és kategória.
+2. A következő mezők bármelyikének (vagy mindegyikének) szűrésére van lehetőség: a projekt neve, a forrás nyelve, a cél nyelve, a kategória és a projekt rendelkezésre állása.
 
-2.  Kattintson az Alkalmaz gombra.
+3. Kattintson az Alkalmaz gombra.
 
     ![Keresési projekt szűrési beállításai](media/how-to/how-to-search-project-filters.png)
 
-3.  Törölje a szűrőt az összes projekt megtekintéséhez a "Törlés" gombra koppintva.
-
+4. Törölje a szűrőt az összes projekt megtekintéséhez a "Törlés" gombra koppintva.
 
 ## <a name="edit-a-project"></a>Projekt szerkesztése
 
 Az egyéni fordító lehetővé teszi a projekt nevének és leírásának szerkesztését. Más projekt-metaadatok, például a kategória, a forrás nyelv és a célnyelv nem érhetők el szerkesztésre. Az alábbi lépések a projektek szerkesztésének módját ismertetik.
 
-1.  Kattintson a ceruza ikonra, amely akkor jelenik meg, amikor egy projekt fölé viszi a kurzort.
+1. Kattintson a ceruza ikonra, amely akkor jelenik meg, amikor egy projekt fölé viszi a kurzort.
 
     ![Projekt szerkesztése](media/how-to/how-to-edit-project.png)
 
-2.  A párbeszédpanelen módosíthatja a projekt nevét vagy a projekt leírását, de a projekt felirata, kategóriája vagy nyelvi párja nem módosítható.
+2. A párbeszédpanelen módosíthatja a projekt nevét, a projekt leírását, a kategória leírását, valamint a projekt címkéjét, ha nincs modell telepítve. A projekt létrehozása után nem módosítható a kategória vagy a nyelvi pár.
 
     ![Projekt szerkesztése párbeszédpanel](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Kattintson a szűrő gombra.
+3. Kattintson a Save (Mentés) gombra.
 
 ## <a name="delete-a-project"></a>Projekt törlése
 
-Ha már nincs szüksége rá, törölheti a projektet. Az alábbi lépések bemutatják a projektek törlésének módját.
+Ha már nincs szüksége rá, törölheti a projektet. Győződjön meg arról, hogy a projekt nem rendelkezik aktív állapotú modellekkel (például központilag telepített, betanított, adatfeldolgozás, üzembe helyezés stb.), ellenkező esetben a törlési művelet meghiúsul. Az alábbi lépések bemutatják a projektek törlésének módját.
 
 1. Vigye a kurzort bármelyik projekt rekordra, és kattintson a Kuka ikonra.
 

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 56d947a6b2d236a04f2b71421a235120a9f02c76
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 52e305f9d50ab0f383810778be681ac41be97c72
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994189"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509788"
 ---
 # <a name="view-model-details"></a>Modell részleteinek megtekintése
 
@@ -22,25 +22,25 @@ A Project alatti modellek lap a projekt összes modelljét megjeleníti. Ezen a 
 
 A projekt egyes modelljeinél ezek a részletek jelennek meg.
 
-1.  Modell neve: egy adott modell modelljének nevét jeleníti meg.
+1. Modell neve: egy adott modell modelljének nevét jeleníti meg.
 
-2.  Állapot: egy adott modell állapotát jeleníti meg. Az új képzés a beküldött állapotba kerül, amíg el nem fogadják. Az állapot az adatfeldolgozásra változik, miközben a szolgáltatás kiértékeli a dokumentumok tartalmát. Ha a dokumentumok kiértékelése befejeződött, az állapot fut értékre változik, és megtekintheti a képzés részét képező mondatok számát, beleértve az automatikusan létrehozott hangolási és tesztelési csoportokat is. Alább látható a modellek állapotát leíró modell állapotának listája.
+2. Állapot: egy adott modell állapotát jeleníti meg. Az új képzés a beküldött állapotba kerül, amíg el nem fogadják. Az állapot az adatfeldolgozásra változik, miközben a szolgáltatás kiértékeli a dokumentumok tartalmát. Ha a dokumentumok kiértékelése befejeződött, az állapot fut értékre változik, és megtekintheti a képzés részét képező mondatok számát, beleértve az automatikusan létrehozott hangolási és tesztelési csoportokat is. Alább látható a modellek állapotát leíró modell állapotának listája.
 
-    -  Elküldve: Megadja, hogy a háttérrendszer dolgozza fel a modell dokumentumait.
+    - Elküldve: Megadja, hogy a háttérrendszer dolgozza fel a modell dokumentumait.
 
-    -  TrainingQueued: azt adja meg, hogy a betanítás várólistára kerüljön-e az MT rendszer számára a modell számára.
+    - TrainingQueued: azt adja meg, hogy a betanítás várólistára kerüljön-e az MT rendszer számára a modell számára.
 
-    -  Futtatás: azt adja meg, hogy a képzés az MT rendszeren fut a modellhez.
+    - Futtatás: azt adja meg, hogy a képzés az MT rendszeren fut a modellhez.
 
-    -  Sikeres: azt adja meg, hogy az MT rendszer sikeres betanítása és a modell elérhető. Ebben az állapotban az adott modellhez tartozó BLEU-pontszám jelenik meg.
+    - Sikeres: azt adja meg, hogy az MT rendszer sikeres betanítása és a modell elérhető. Ebben az állapotban az adott modellhez tartozó BLEU-pontszám jelenik meg.
 
-    -  Üzembe helyezett: azt adja meg, hogy a sikeres betanított modellt az MT rendszer számára telepítse.
+    - Üzembe helyezett: azt adja meg, hogy a sikeres betanított modellt az MT rendszer számára telepítse.
 
-    -  Központi telepítés: azt adja meg, hogy a telepített modell telepítése megtörténjen.
+    - Központi telepítés: azt adja meg, hogy a telepített modell telepítése megtörténjen.
 
-    -  Nem telepített: azt adja meg, hogy a modell központi telepítési folyamata sikeresen befejeződött.
+    - Nem telepített: azt adja meg, hogy a modell központi telepítési folyamata sikeresen befejeződött.
 
-    -  A képzés sikertelen: a betanítás sikertelen volt. Ha betanítási hiba történik, próbálja megismételni a betanítási feladatot. Ha a hiba továbbra is fennáll, vegye fel velünk a kapcsolatot. Ne törölje a sikertelen modellt.
+    - A képzés sikertelen: a betanítás sikertelen volt. Ha betanítási hiba történik, próbálja megismételni a betanítási feladatot. Ha a hiba továbbra is fennáll, vegye fel velünk a kapcsolatot. Ne törölje a sikertelen modellt.
 
     - DataProcessingFailed: azt adja meg, hogy az adatfeldolgozás nem sikerült egy vagy több olyan dokumentumhoz, amely a modellhez tartozik.
 
@@ -48,19 +48,19 @@ A projekt egyes modelljeinél ezek a részletek jelennek meg.
 
     - MigratedDraft: azt adja meg, hogy a modell vázlat állapotban van-e a hub-ról az egyéni fordítóra való Migrálás után.
 
-4.  BLEU pontszáma: megmutatja a modell (a kétnyelvű próbaverzió) pontszámát, amely a fordítási rendszerek minőségét mutatja. Ez a pontszám azt mutatja be, hogy a fordítási rendszer milyen módon hajtja végre a betanítás eredményeként létrejövő, a tesztelési adatkészletben szereplő hivatkozási mondatokat. A BLEU pontszám akkor jelenik meg, ha a képzés sikeresen befejeződött. Ha a képzés nem fejeződött be/nem sikerült, a BLEU egyik pontszáma sem jelenik meg.
+3. BLEU pontszáma: megmutatja a modell (a kétnyelvű próbaverzió) pontszámát, amely a fordítási rendszerek minőségét mutatja. Ez a pontszám azt mutatja be, hogy a fordítási rendszer milyen módon hajtja végre a betanítás eredményeként létrejövő, a tesztelési adatkészletben szereplő hivatkozási mondatokat. A BLEU pontszám akkor jelenik meg, ha a képzés sikeresen befejeződött. Ha a képzés nem fejeződött be/nem sikerült, a BLEU egyik pontszáma sem jelenik meg.
 
-5.  Betanítási mondatok száma: a betanítási készletként használt mondatok teljes számát jeleníti meg.
+4. Betanítási mondatok száma: a betanítási készletként használt mondatok teljes számát jeleníti meg.
 
-6.  Hangolási mondatok száma: a hangolási készletként használt mondatok teljes számát jeleníti meg.
+5. Hangolási mondatok száma: a hangolási készletként használt mondatok teljes számát jeleníti meg.
 
-7.  Betanítási mondatok száma: a tesztelési csoportként használt mondatok teljes számát jeleníti meg.
+6.  Betanítási mondatok száma: a tesztelési csoportként használt mondatok teljes számát jeleníti meg.
 
-8.  Mono-mondatok száma: a Mono-készletként használt mondatok teljes számát jeleníti meg.
+7.  Mono-mondatok száma: a Mono-készletként használt mondatok teljes számát jeleníti meg.
 
-9.  Üzembe helyezési művelet gomb: a sikeresen betanított modell esetében az "üzembe helyezés" gomb jelenik meg, ha nincs telepítve. Ha egy modellt telepítenek, megjelenik a "telepítés megkerülés" gomb.
+8.  Üzembe helyezési művelet gomb: a sikeresen betanított modell esetében az "üzembe helyezés" gomb jelenik meg, ha nincs telepítve. Ha egy modellt telepítenek, megjelenik a "telepítés megkerülés" gomb.
 
-10. Törlés: ezt a gombot használhatja, ha törölni szeretné a modellt. A modell törlése nem törli a modell létrehozásához használt dokumentumokat.
+9. Törlés: ezt a gombot használhatja, ha törölni szeretné a modellt. A modell törlése nem törli a modell létrehozásához használt dokumentumokat.
 
     ![Modell részleteinek megtekintése](media/how-to/how-to-view-model-details.png)
 

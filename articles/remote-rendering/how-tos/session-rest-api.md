@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509841"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
@@ -71,15 +71,15 @@ Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja 
 
 **Kérelem törzse:**
 
-* maxLeaseTime (TimeSpan): időtúllépési érték, ha a virtuális gép automatikusan leszerelve lesz
+* maxLeaseTime (TimeSpan): időtúllépési érték, ha a rendszer automatikusan leszereli a munkamenetet
 * modellek (Array): eszközök tárolójának URL-címei a Preload számára
-* size (karakterlánc): a virtuális gép mérete (**"standard"** vagy **"Prémium"**). Lásd a virtuálisgép- [méretek bizonyos korlátozásait](../reference/limits.md#overall-number-of-polygons).
+* size (karakterlánc): a konfigurálandó kiszolgáló mérete ([**"standard"**](../reference/vm-sizes.md) vagy [**"Prémium"**](../reference/vm-sizes.md)). Lásd az adott [méretre vonatkozó korlátozásokat](../reference/limits.md#overall-number-of-polygons).
 
 **Válaszok**
 
 | Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 202 | -Munkamenet-azonosító: GUID | Sikeres |
+| 202 | -Munkamenet-azonosító: GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>Példa szkriptre: munkamenet létrehozása
 
@@ -130,13 +130,13 @@ Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet 
 
 **Kérelem törzse:**
 
-* maxLeaseTime (TimeSpan): időtúllépési érték, ha a virtuális gép automatikusan leszerelve lesz
+* maxLeaseTime (TimeSpan): időtúllépési érték, ha a rendszer automatikusan leszereli a munkamenetet
 
 **Válaszok**
 
 | Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 200 | | Sikeres |
+| 200 | | Success |
 
 ### <a name="example-script-update-a-session"></a>Példa szkriptre: munkamenet frissítése
 
@@ -258,7 +258,7 @@ Ez a parancs leállítja a munkamenetet. A lefoglalt virtuális gép hamarosan v
 
 | Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 204 | | Sikeres |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>Példa szkriptre: munkamenet leállítása
 

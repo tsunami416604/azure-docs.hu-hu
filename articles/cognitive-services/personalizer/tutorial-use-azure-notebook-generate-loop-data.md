@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876733"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509909"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: személyre szabott használata az Azure jegyzetfüzetben
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>Új képzési szabályzat érvényesítése
 
-Térjen vissza az Azure jegyzetfüzetbe, és folytassa ugyanezt a hurkot, de csak 2 000 iteráció esetén. Rendszeresen frissítse a metrikák diagramot a Azure Portal a szolgáltatás összes hívásának megtekintéséhez. Ha körülbelül 4 000 hívása van, az ismétlések rangsora és jutalma a hurok minden egyes iterációja esetén.
+Térjen vissza a Azure Notebooks fájlhoz, és folytassa a futtatásával ugyanazzal a hurokkal, de csak 2 000 iteráció esetén. Rendszeresen frissítse a metrikák diagramot a Azure Portal a szolgáltatás összes hívásának megtekintéséhez. Ha körülbelül 4 000 hívása van, az ismétlések rangsora és jutalma a hurok minden egyes iterációja esetén.
 
 ```python
 # max iterations
@@ -652,14 +652,14 @@ A második diagramon látható növekedés jelenik meg a rangsorban a felhaszná
 
 ![A második diagramon látható növekedés jelenik meg a rangsorban a felhasználói beállításokkal összehangoló rangsorolási előrejelzések között.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem kívánja folytatni az oktatóanyag-sorozatot, törölje a következő erőforrásokat:
 
 * Törölje az Azure notebook-projektet.
 * A személyre szabott erőforrás törlése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a mintában használt [Jupyter-jegyzetfüzet és-adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) elérhetők a GitHub-tárházban a személyre szabáshoz.
 

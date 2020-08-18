@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4c6be7c8a6287c5a8ec6a60121751ff9fc0dc9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808547"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509227"
 ---
 # <a name="limitations"></a>Korlátozások
 
@@ -35,12 +35,12 @@ Számos szolgáltatás mérete, száma vagy egyéb korlátai vannak.
 
 Az összes betöltött modell számára engedélyezett számú sokszög a virtuális gép méretétől függ a [munkamenet-felügyeleti REST API](../how-tos/session-rest-api.md#create-a-session):
 
-| Virtuális gép mérete | Sokszögek maximális száma |
+| Kiszolgáló mérete | Sokszögek maximális száma |
 |:--------|:------------------|
 |Standard| 20 000 000 |
 |prémium szintű| korlátlan |
 
-A korlátozással kapcsolatos részletesebb információkért lásd a [VM-méret](../reference/vm-sizes.md) című fejezetet.
+A korlátozással kapcsolatos részletesebb információkért tekintse meg a [kiszolgáló mérete](../reference/vm-sizes.md) című fejezetet.
 
 ## <a name="platform-limitations"></a>A platformra vonatkozó korlátozások
 

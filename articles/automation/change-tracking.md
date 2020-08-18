@@ -3,14 +3,14 @@ title: A Azure Automation Change Tracking és a leltár áttekintése
 description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segít azonosítani a szoftvereket és a Microsoft szolgáltatásbeli módosításokat a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447926"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511048"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -26,10 +26,10 @@ Ez a cikk a Azure Automation Change Tracking és leltározását ismerteti. Ez a
 > [!NOTE]
 > A Azure Resource Manager tulajdonságok változásainak nyomon követéséhez tekintse meg az Azure Resource Graph [változási előzményeit](../governance/resource-graph/how-to/get-resource-changes.md).
 
-A Change Tracking és a leltár Azure Monitorból szerzi be az adatait. Log Analytics munkaterülethez csatlakozó virtuális gépek Log Analytics ügynökökkel gyűjtenek adatokat a telepített szoftverek, a Microsoft-szolgáltatások, a Windows-beállításjegyzék és-fájlok, valamint a figyelt kiszolgálókon futó Linux-démonok változásairól. Ha az adatelérési lehetőség elérhető, az ügynökök elküldik a feldolgozásra Azure Monitor. Azure Monitor alkalmazza a logikát a fogadott adatokra, rögzíti azt, és elérhetővé teszi. 
+A Change Tracking és a leltár Azure Monitorból szerzi be az adatait. Log Analytics munkaterülethez csatlakozó virtuális gépek a Log Analytics ügynökkel gyűjtenek adatokat a telepített szoftverek, a Microsoft-szolgáltatások, a Windows-beállításjegyzék és-fájlok, valamint a figyelt kiszolgálókon futó Linux-démonok változásairól. Ha az adatokat elérhetővé teszi, az ügynök elküldi Azure Monitor feldolgozásra. Azure Monitor alkalmazza a logikát a fogadott adatokra, rögzíti azt, és elérhetővé teszi.
 
 > [!NOTE]
-> A Change Tracking és a leltár funkció használatához az összes virtuális gépet az Automation-fiókhoz tartozó előfizetésben és régióban kell megkeresnie.
+> A Change Tracking és a leltár használatához Log Analytics munkaterületet kell összekapcsolni az Automation-fiókkal. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](./how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
 A Change Tracking és a leltár jelenleg nem támogatja a következő elemeket:
 
@@ -53,7 +53,7 @@ A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalos operációsrendszer-verziók a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verziójúak. A szolgáltatás számos Linux operációs rendszeren is támogatott. Az Log Analyticst támogató operációs rendszerek esetében lásd: [log Analytics ügynök áttekintése](../azure-monitor/platform/log-analytics-agent.md).
+A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalos operációsrendszer-verziók a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verziójúak. A szolgáltatás számos Linux operációs rendszeren is támogatott. A támogatott operációs rendszerek listáját lásd: [log Analytics ügynök áttekintése](../azure-monitor/platform/log-analytics-agent.md).
 
 A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -164,7 +164,7 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 
 | **Erőforrás** | **Korlát** |
 |---|---|---|
-|File|500|
+|Fájl|500|
 |Regisztrációs adatbázis|250|
 |Windows-szoftver (nem tartalmazza a gyorsjavításokat) |250|
 |Linux-csomagok|1250|

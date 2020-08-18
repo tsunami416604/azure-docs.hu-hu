@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552694"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509977"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Hitelesítés az Azure előtérbeli API-k használatával
 
@@ -60,11 +60,11 @@ A fiókadatok beszerezhetők a portálról a [fiókadatok beolvasása](create-an
 
 ## <a name="azure-frontend"></a>Azure-előtérbeli felület
 
-A megfelelő osztályok a ```AzureFrontend``` és a ```AzureSession``` . ```AzureFrontend```a a fiókok felügyeletéhez és a fiókok szintjének működéséhez használatos, beleértve a következőket: eszközök átalakítása és renderelési munkamenetek létrehozása. ```AzureSession```a munkamenet-szintű funkciókhoz használatos, és a következőket tartalmazza: munkamenet frissítése, lekérdezések, megújítása és leszerelése.
+A megfelelő osztályok a ```AzureFrontend``` és a ```AzureSession``` . ```AzureFrontend``` a a fiókok felügyeletéhez és a fiókok szintjének működéséhez használatos, beleértve a következőket: eszközök átalakítása és renderelési munkamenetek létrehozása. ```AzureSession``` a munkamenet-szintű funkciókhoz használatos, és a következőket tartalmazza: munkamenet frissítése, lekérdezések, megújítása és leszerelése.
 
 A rendszer minden megnyitott/létrehozott, ```AzureSession``` a létrehozott előtérre mutató hivatkozást vezet. A tisztításhoz az összes munkamenetet fel kell szabadítani, mielőtt a rendszer kiosztja a felületet.
 
-A munkamenet felszabadítása nem állítja le a virtuális gépet az Azure-ban, `AzureSession.StopAsync` explicit módon meg kell hívni.
+A munkamenet felszabadítása nem állítja le a kiszolgálót az Azure-ban, `AzureSession.StopAsync` explicit módon kell meghívni.
 
 Miután létrehozta a munkamenetet, és az állapota készként van megjelölve, csatlakozhat a távoli renderelési futtatókörnyezethez a következővel: `AzureSession.ConnectToRuntime` .
 

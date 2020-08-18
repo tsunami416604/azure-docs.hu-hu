@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c64fc95c44aad81087cada23639e3b13bf478056
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a8cd8bacc749ef44ee23e98709f04f75757f5919
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407183"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516333"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: a lebilincselő olvasó elindítása (Node.js)
 
@@ -30,7 +30,7 @@ Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvas
 > * A lebilincselő olvasó felület nyelvének meghatározása
 > * A lebilincselő olvasó elindítása matematikai tartalommal
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -259,7 +259,7 @@ A [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)használatával a
 
 2. Navigáljon a következőhöz: _http://localhost:3000_ . Amikor elindítja a lebilincselő olvasót, és görgessen az aljára, megjelenik a matematikai képlet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

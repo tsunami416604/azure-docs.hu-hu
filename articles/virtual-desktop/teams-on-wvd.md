@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fd20819d17861ed5171bf61e4c485fcceba7985
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006111"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509603"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -36,7 +36,7 @@ Ahhoz, hogy a Microsoft Teams szolgáltatást használhassa a Windows rendszerű
 
 ## <a name="install-the-teams-desktop-app"></a>A Teams asztali alkalmazás telepítése
 
-Ebből a szakaszból megtudhatja, hogyan telepítheti a Teams Desktop alkalmazást a Windows 10-es többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuálisgép-rendszerképbe. További információért tekintse meg [a Teams asztali alkalmazás telepítése vagy frissítése a VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/)-ben című témakört.
+Ebből a szakaszból megtudhatja, hogyan telepítheti a Teams Desktop alkalmazást a Windows 10-es többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuálisgép-rendszerképbe. További információért tekintse meg [a Teams asztali alkalmazás telepítése vagy frissítése a VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi)-ben című témakört.
 
 ### <a name="prepare-your-image-for-teams"></a>A rendszerkép előkészítése a csapatok számára
 
@@ -71,17 +71,17 @@ A következő táblázat a WebSocket szolgáltatás legújabb verzióit sorolja 
 
 A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti telepítéssel is telepítheti. A Microsoft Teams telepítése a Windows rendszerű virtuális asztali környezetben:
 
-1. Töltse le a környezetének megfelelő [Teams msi-csomagot](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) . Javasoljuk, hogy a 64 bites telepítőt egy 64 bites operációs rendszeren használja.
+1. Töltse le a környezetének megfelelő [Teams msi-csomagot](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) . Javasoljuk, hogy a 64 bites telepítőt egy 64 bites operációs rendszeren használja.
 
-      > [!NOTE]
-      > A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
+      > [!IMPORTANT]
+      > A Teams asztali ügyfélprogram legújabb frissítése 1.3.00.21759 rögzített egy problémát, amelyben a csapatok UTC időzónát mutattak a csevegésben, a csatornákon és a naptárban. Az ügyfél új verziója fogja megjeleníteni a távoli munkamenet időzónáját.
 
 2. A következő parancsok egyikének futtatásával telepítse az MSI-t a gazdagép virtuális gépre:
 
     - Felhasználónkénti telepítés
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name>
         ```
 
         Ez a folyamat az alapértelmezett telepítés, amely a csapatokat a **% AppData%** felhasználói mappába telepíti. A csapatok nem működnek megfelelően a felhasználónkénti telepítéssel a nem állandó beállításokon.
@@ -89,13 +89,13 @@ A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti tel
     - Számítógépenkénti telepítés
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
         Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 64 bites operációs rendszeren, valamint egy 32 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
 
-        Amikor legközelebb megnyitja a csapatokat egy munkamenetben, a rendszer kérni fogja a hitelesítő adatait.
-
+        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a csapatok számítógép-szintű telepítője megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows-beállításokban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat. 
+       
         > [!NOTE]
         > A felhasználók és a rendszergazdák jelenleg nem tudják letiltani a csapatok automatikus indítását a bejelentkezés során.
 
@@ -125,12 +125,11 @@ A WebSocket szolgáltatás és a csapatok asztali alkalmazás telepítése után
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-A virtualizált környezetekben lévő csapatok használata eltér a nem virtualizált környezetekben található csapatok használatával. A virtualizált környezetekben található csapatok korlátaival kapcsolatos további információkért tekintse meg a [virtualizált asztali infrastruktúra csapatait](/microsoftteams/teams-for-vdi#known-issues-and-limitations/).
+A virtualizált környezetekben lévő csapatok használata eltér a nem virtualizált környezetekben található csapatok használatával. A virtualizált környezetekben található csapatok korlátaival kapcsolatos további információkért tekintse meg a [virtualizált asztali infrastruktúra csapatait](/microsoftteams/teams-for-vdi#known-issues-and-limitations).
 
 ### <a name="client-deployment-installation-and-setup"></a>Ügyfelek központi telepítése, telepítése és beállítása
 
 - A gépi telepítéssel a VDI-csoportok nem frissülnek automatikusan ugyanúgy, mint a nem VDI-csapatok ügyfelei. Az ügyfél frissítéséhez új MSI-fájl telepítésével frissítenie kell a virtuális gép rendszerképét.
-- A csapatok jelenleg csak az UTC időzónát mutatják a csevegésben, a csatornákon és a naptárban.
 - A csapatok multimédia-optimalizálása csak Windows 10 rendszerű számítógépeken támogatott a Windows asztali ügyfél esetében.
 - A végpontokon definiált explicit HTTP-proxyk használata nem támogatott.
 
@@ -143,7 +142,7 @@ A virtualizált környezetekben lévő csapatok használata eltér a nem virtual
 - A WebRTC korlátozások miatt a bejövő és a kimenő videó stream-feloldása 720p-ra van korlátozva.
 - A Teams alkalmazás nem támogatja a HID-gombokat vagy a vezérelt vezérlőket más eszközökkel.
 
-A virtualizált környezetekkel nem kapcsolatos ismert problémák esetén lásd: [támogatási csapatok a szervezetben](/microsoftteams/known-issues/)
+A virtualizált környezetekkel nem kapcsolatos ismert problémák esetén lásd: [támogatási csapatok a szervezetben](/microsoftteams/known-issues)
 
 ## <a name="uservoice-site"></a>UserVoice-hely
 
@@ -165,8 +164,8 @@ A gazdagépek RDP protokoll (RDP) tulajdonságainak, például a többmonitoros 
 
 Az eszközök átirányításának engedélyezése nem szükséges a média-optimalizálással rendelkező csapatok használata esetén. Ha Media Optimization nélküli csapatokat használ, állítsa be a következő RDP-tulajdonságokat a mikrofon és a kamera átirányításának engedélyezéséhez:
 
-- `audiocapturemode:i:1`engedélyezi a hangrögzítést a helyi eszközről, és átirányítja a hangalkalmazásokat a távoli munkamenetbe.
-- `audiomode:i:0`hang lejátszása a helyi számítógépen.
-- `camerastoredirect:s:*`átirányítja az összes kamerát.
+- `audiocapturemode:i:1` engedélyezi a hangrögzítést a helyi eszközről, és átirányítja a hangalkalmazásokat a távoli munkamenetbe.
+- `audiomode:i:0` hang lejátszása a helyi számítógépen.
+- `camerastoredirect:s:*` átirányítja az összes kamerát.
 
 További információért tekintse meg [a gazdagépek RDP protokoll tulajdonságainak testreszabása](customize-rdp-properties.md)című témakört.

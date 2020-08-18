@@ -7,15 +7,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954536"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510742"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni Translator-munkaterület?
 
@@ -39,7 +39,7 @@ Ugyanebben a munkaterületen különböző kategóriákban hozhat létre projekt
 
 Az egyéni fordító lehetővé teszi a projekthez tartozó címke hozzárendelését. A projekt felirata megkülönbözteti a több projekt között ugyanazzal a nyelvi párral és kategóriával. Ajánlott eljárásként lehetőleg kerülje a címkék használatát, ha szükséges.
 
-A projekt címkéje a Kategóriakód részeként van használatban. Ha a projekt felirata balra van állítva, vagy azonos módon van beállítva a projektek között, akkor az azonos kategóriájú és *különböző* nyelvi párokkal rendelkező projektek ugyanazt a Kategóriakód-t fogják megosztani. Ez a megközelítés azért előnyös, mert lehetővé teszi, hogy az Ön vagy az ügyfele a fordítók közötti váltáshoz az egyes projektekben egyedi Kategóriakód használata nélkül kelljen váltania.
+A projekt címkéje a Kategóriakód részeként van használatban. Ha a projekt felirata balra van állítva, vagy azonos módon van beállítva a projektek között, akkor az azonos kategóriájú és *különböző* nyelvi párokkal rendelkező projektek ugyanazt a Kategóriakód-t fogják megosztani. Ez a megközelítés azért előnyös, mert lehetővé teszi, hogy az Ön vagy az ügyfele átváltson a nyelvek között a szöveges Translator API használata nélkül anélkül, hogy az egyes projektekre jellemző Kategóriakód-t kellene aggódnia.
 
 Ha például azt szeretném, hogy a technológiai tartomány fordításait angolról franciára vagy franciáról angolra szeretném engedélyezni, hozzon létre két projektet: egy az angol – \> francia nyelven, egy pedig francia – \> angol nyelven. Ugyanazt a kategóriát (technológiát) szeretném megadni, és a projekt címkéjét üresen hagyják. A két projekthez tartozó Kategóriakód is egyezik, ezért a Kategóriakód módosítása nélkül is lekérhetem az API-t angol és francia nyelvű fordításra.
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407200"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516282"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Oktatóanyag: több, magával ragadó olvasó erőforrásainak integrálása
 
@@ -25,7 +25,7 @@ Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvas
 > * Több alámerülés-olvasó erőforrás létrehozása egy meglévő erőforráscsoport alatt
 > * A sokrétű olvasó elindítása több erőforrás használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,7 +79,7 @@ SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 
 Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
 
-Ezután módosítjuk a több erőforrás támogatására létrehozott _routes\index.js_ fájlt. Cserélje le a tartalmát a következő kódra.
+Ezután módosítjuk a több erőforrás támogatására létrehozott  _routes\index.js_ fájlt. Cserélje le a tartalmát a következő kódra.
 
 Ahogy korábban is, ez a kód olyan API-végpontot hoz létre, amely Azure AD-hitelesítési tokent vásárol az egyszerű szolgáltatásnév jelszavával. Ezúttal lehetővé teszi, hogy a felhasználó megadjon egy erőforrás-helyet, és lekérdezési paraméterként adja át azt. Ezután egy olyan objektumot ad vissza, amely tartalmazza a tokent és a megfelelő altartományt.
 
@@ -261,7 +261,7 @@ A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie 
 
 4. Nyissa meg a böngészőt, és navigáljon a gombra `http://localhost:3000` . A fenti tartalomnak a lapon kell megjelennie. Kattintson a EastUS- **Megölelő olvasó** gombra vagy a **WestUS magával ragadó olvasó** gombra, hogy a megfelelő erőforrásokkal elindítsa a magával ragadó olvasót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

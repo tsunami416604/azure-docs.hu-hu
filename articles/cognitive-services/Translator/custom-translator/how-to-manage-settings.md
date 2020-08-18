@@ -6,19 +6,19 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962951"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510520"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
-Az egyéni fordítói beállítások lapon létrehozhat egy új munkaterületet, megoszthatja a munkaterületet, és hozzáadhatja vagy módosíthatja a Microsoft fordítási előfizetési kulcsát.
+Az egyéni fordítói beállítások lapon megoszthatja a munkaterületet, módosíthatja a fordító előfizetési kulcsát, és törölhet munkaterületet.
 
 A beállítások lap elérése:
 
@@ -33,23 +33,35 @@ A modellek betanításához vagy üzembe helyezéséhez a munkaterülethez társ
 
 Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
-1. Fizessen elő a fordítóra. Ez a cikk bemutatja, hogyan fizethet elő a fordítóra.
+1. Előfizetés fordítói erőforrás létrehozásához. A Translator- [regisztrációra](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) való feliratkozáshoz és a fordítói kulcs beszerzéséhez kövesse az alábbi lépéseket.
 2. Jegyezze fel a fordítói előfizetés kulcsát. A Key1 vagy a Key2 egyike elfogadható.
 3. Váltson vissza az egyéni Translator portálra.
 
-### <a name="add-existing-key"></a>Meglévő kulcs hozzáadása
+## <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
-1.    Navigáljon a munkaterület "beállítások" lapjára.
-2.    Kattintson a kulcs hozzáadása lehetőségre.
+1. Kattintson a "+ Munkaterület létrehozása" gombra a "Custom Translator" oldalsávban.
 
-   ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key.png)
+    ![Új munkaterület létrehozása](media/how-to/create-new-workspace.png)
 
-3. A párbeszédpanelen adja meg a fordító-előfizetés kulcsát, majd kattintson a Hozzáadás gombra.
+2. A párbeszédpanelen adja meg az új munkaterület nevét.
+3. Kattintson a "tovább" gombra.
+4. Válassza az előfizetés típusa lehetőséget.
+5. Válassza az előfizetési régió lehetőséget. A régiónak meg kell egyeznie a kiválasztott régióval, amikor a fordítói erőforrás kulcsát létrehozták.
+6. Adja meg a fordítói előfizetés kulcsát, majd kattintson a Save (Mentés) gombra.
+
+    ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
+
+
+### <a name="modify-existing-key"></a>Meglévő kulcs módosítása
+
+1. Navigáljon a munkaterület "beállítások" lapjára.
+2. Kattintson a kulcs módosítása elemre.
+
+    ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key.png)
+
+3. A párbeszédpanelen adja meg a fordítói előfizetés kulcsát, majd kattintson a Save (Mentés) gombra.
 
     ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key-dialog.png)
-4.    A kulcs hozzáadása után bármikor módosíthatja vagy törölheti a kulcsot.
-
-   ![Előfizetés kulcsa a Hozzáadás után](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Saját munkaterület kezelése
 
@@ -57,50 +69,50 @@ A munkaterület az egyéni fordítási rendszer összeállításához és létre
 
 Ha a munka különböző részeit különböző személyekkel kell megosztani, akkor lehet, hogy több munkaterület létrehozása is hasznos lehet.
 
-## <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
-
-1.    Navigáljon a munkaterület "beállítások" lapjára.
-2.    Az "új munkaterület létrehozása" szakaszban kattintson az "új munkaterület" gombra.
-
-   ![Új munkaterület létrehozása](media/how-to/create-new-workspace.png)
-
-4.    A párbeszédpanelen adja meg az új munkaterület nevét.
-5.    Kattintson a Létrehozás gombra.
-
-   ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
-
 ## <a name="share-your-workspace"></a>Munkaterület megosztása
 
 Az egyéni fordítóban megoszthatja a munkaterületet másokkal, ha a munka különböző részeit különböző személyekkel kell megosztani.
 
-1.    Navigáljon a munkaterület "beállítások" lapjára.
-2.    Kattintson a megosztás gombra a "megosztási beállítások" szakaszban.
+1. Navigáljon a munkaterület "beállítások" lapjára.
+2. Kattintson a "személyek hozzáadása" gombra a "megosztási beállítások" szakaszban.
 
-   ![Munkaterület megosztása](media/how-to/share-workspace.png)
+    ![Munkaterület megosztása](media/how-to/share-workspace.png)
 
-3.    A párbeszédpanelen adja meg a munkaterület által megosztott e-mail-címek vesszővel tagolt listáját. Győződjön meg arról, hogy a személy által az egyéni Fordítóba való bejelentkezéshez használt e-mail-címet használja. Ezután válassza ki a megfelelő szintű megosztási engedélyt.
+3. A párbeszédpanelen adja meg a munkaterület által megosztott e-mail-címek vesszővel tagolt listáját. Győződjön meg arról, hogy a személy által az egyéni Fordítóba való bejelentkezéshez használt e-mail-címet használja. Ezután válassza ki a megfelelő szintű megosztási engedélyt, és kattintson a Save (Mentés) gombra.
 
-4.    Ha a munkaterület még a "saját munkaterület" nevű alapértelmezett névvel rendelkezik, a munkaterület megosztása előtt módosítania kell azt.
-5.    Kattintson a Save (Mentés) gombra.
+    ![Munkaterület megosztása párbeszédpanel](media/how-to/share-workspace-dialog.png)
+
+4. Ha a munkaterület még a "saját munkaterület" nevű alapértelmezett névvel rendelkezik, a munkaterület megosztása előtt módosítania kell azt.
+5. Kattintson a Save (Mentés) gombra.
 
 ## <a name="sharing-permissions"></a>Megosztási engedélyek
 
-1.    **Olvasó:** A munkaterület olvasói megtekinthetik a munkaterület összes adatát.
+1. **Olvasó:** A munkaterület olvasói megtekinthetik a munkaterület összes adatát.
 
-2.    **Szerkesztő:** A munkaterületen lévő szerkesztők hozzáadhatnak dokumentumokat, betanítási modelleket és törölhetnek dokumentumokat és projekteket. Hozzáadhatnak egy előfizetési kulcsot, de nem módosíthatják, hogy a munkaterület hogyan legyen megosztva, törölje a munkaterületet, vagy módosítsa a munkaterület nevét.
+2. **Szerkesztő:** A munkaterületen lévő szerkesztők hozzáadhatnak dokumentumokat, betanítási modelleket és törölhetnek dokumentumokat és projekteket. Hozzáadhatnak egy előfizetési kulcsot, de nem módosíthatják, hogy a munkaterület hogyan legyen megosztva, törölje a munkaterületet, vagy módosítsa a munkaterület nevét.
 
-3.    **Tulajdonos:** A tulajdonos teljes hozzáféréssel rendelkezik a munkaterülethez.
+3. **Tulajdonos:** A tulajdonos teljes hozzáféréssel rendelkezik a munkaterülethez.
 
 ## <a name="change-sharing-permission"></a>Megosztási engedély módosítása
 
 Ha egy munkaterület meg van osztva, a "megosztási beállítások" szakasz megjeleníti az összes e-mail-címet, amelyet a munkaterület megosztva használ. Ha tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, módosíthatja az egyes e-mail-címek meglévő megosztási engedélyeit.
 
-1.    Az egyes e-mailek "megosztási beállítások" szakaszában a legördülő menü megjeleníti az aktuális jogosultsági szintet.
+1. Az egyes e-mailek "megosztási beállítások" szakaszában a legördülő menü megjeleníti az aktuális jogosultsági szintet.
 
-2.    Kattintson a legördülő menüre, és válassza ki az új jogosultsági szintet, amelyet hozzá szeretne rendelni ehhez az e-mail-címéhez.
+2. Kattintson a legördülő menüre, és válassza ki az új jogosultsági szintet, amelyet hozzá szeretne rendelni ehhez az e-mail-címéhez.
 
-   ![Megosztási engedély beállításai](media/how-to/sharing-permission-settings.png)
+    ![Megosztási engedély beállításai](media/how-to/sharing-permission-settings.png)
+
+## <a name="pin-your-workspace"></a>A munkaterület rögzítése
+
+Az első létrehozott munkaterület alapértelmezés szerint rögzített. Amikor bejelentkezik, a rögzített munkaterület megjelenik a hely betöltésekor. Ha több munkaterületet hozott létre, és azt szeretné, hogy az egyiket a bejelentkezéskor az alapértelmezett értékre kelljen tenni, akkor rögzítenie kell azt.
+
+1. Az oldalsávon kattintson a rögzíteni kívánt munkaterület nevére.
+2. Navigáljon a munkaterület "beállítások" lapjára.
+3. Kattintson a rögzítés ikonra.
+
+    ![Munkaterület rögzítése](media/how-to/how-to-pin-workspace.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [, hogyan telepítheti át munkaterületét és projektjét](how-to-migrate.md) a [Microsoft Translator hub](https://hub.microsofttranslator.com) használatával
+- Ismerje meg [, hogyan hozhat létre munkaterületet és projekteket](workspace-and-project.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061215"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510266"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -58,17 +58,17 @@ Kövesse az alábbi lépéseket:
 
 5. Nyissa meg a saját címtárát.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     cd
     ```
-    
-6. Futtassa az alábbi parancsot. Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
 
-    ```azurepowershell-interactive 
+6. Futtassa az alábbi parancsot: Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
+
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
-7. Futtassa az alábbi parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
+7. Futtassa az alábbi parancsot: Ezzel letölt egy parancsfájlt a saját könyvtárába.
 
     ```azurepowershell-interactive 
 
@@ -78,7 +78,7 @@ Kövesse az alábbi lépéseket:
 
 8. Futtassa az alábbi parancsfájlt. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory**  >  **áttekintő** oldalról kérhető le.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1
 
@@ -108,8 +108,8 @@ Kövesse az alábbi lépéseket:
 |          Gyártó            |         A gyártó neve    |
 |  ProductCode                    |  Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800.  |
 |            Portok          |     A port neve és típusa, amely digitális vagy analóg.
-|     Name                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
-      Description     | Adjon meg egy értelmes leírást a modellről.
+|     Name (Név)                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+      Leírás     | Adjon meg egy értelmes leírást a modellről.
 |    Tulajdonságok          |    További tulajdonságok a gyártótól.   |
 |    **Eszköz**             |                      |
 |   DeviceModelId     |     A társított eszköz-modell azonosítója.  |
@@ -117,8 +117,8 @@ Kövesse az alábbi lépéseket:
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc).
 |  Hely            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId.  |
-|    Name            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
-|     Description       |      Adjon meg egy értelmes leírást. |
+|    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
+|     Leírás       |      Adjon meg egy értelmes leírást. |
 |     Tulajdonságok    |  További tulajdonságok a gyártótól.
 |     **SensorModel**        |          |
 |       Típus (analóg, digitális)          |      Az érzékelő típusa, legyen az analóg vagy a digitális.       |
@@ -129,8 +129,8 @@ Kövesse az alábbi lépéseket:
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által meghatározott típusok: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,.|
 |    SensorMeasures > AggregationType    |  Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation.  |
-|          Name            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
-|    Description        | Adjon meg egy értelmes leírást a modellről.|
+|          Name (Név)            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
+|    Leírás        | Adjon meg egy értelmes leírást a modellről.|
 |   Tulajdonságok       |  További tulajdonságok a gyártótól.|
 |    **Érzékelő**      |          |
 | HardwareId          |   A gyártó által beállított érzékelő egyedi azonosítója.|
@@ -138,8 +138,8 @@ Kövesse az alábbi lépéseket:
 | Hely          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.|
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik. |
-| Name            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
-|    Description      | Adjon meg egy értelmes leírást.|
+| Name (Név)            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
+|    Leírás      | Adjon meg egy értelmes leírást.|
 |    Tulajdonságok        |További tulajdonságok a gyártótól.|
 
 További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).

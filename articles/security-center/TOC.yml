@@ -151,6 +151,8 @@
           href: workflow-automation.md
         - name: Javaslatok exportálása
           href: continuous-export.md
+    - name: Az erőforrások kezelése eszközleltárral
+      href: asset-inventory.md
     - name: Integráció más eszközökkel és szolgáltatásokkal
       items:
         - name: Integráció a Windows Admin Centerrel

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067256"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511142"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -114,7 +114,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](../../windows/disks-types.md#standard-hdd)használatát nem javasoljuk.
         - Az [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.
         - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)használata.
-        - Az M-sorozatú adatbázis-kezelői naplók Azure írásgyorsító használhatók. Vegye figyelembe a írásgyorsító korlátozásait és használatát a [írásgyorsító](../../linux/how-to-enable-write-accelerator.md)dokumentációjában leírtaknak megfelelően.
+        - Az M-sorozatú adatbázis-kezelői naplók Azure írásgyorsító használhatók. Vegye figyelembe a írásgyorsító korlátozásait és használatát a [írásgyorsító](../../how-to-enable-write-accelerator.md)dokumentációjában leírtaknak megfelelően.
         - A különböző adatbázis-kezelői típusok esetében olvassa el az [általános SAP-vel kapcsolatos adatbázis-kezelői dokumentációt](./dbms_guide_general.md) , valamint az általános dokumentum az adatbázis-kezelői szolgáltatásra vonatkozó dokumentációját.
         - További információ a SAP HANAről: [SAP HANA infrastruktúra-konfigurációk és-műveletek az Azure](./hana-vm-operations.md)-ban.
         - Az eszköz AZONOSÍTÓjának használatával soha ne csatlakoztassa az Azure-beli adatlemezeket egy Azure-beli linuxos virtuális géphez. Ehelyett használja az univerzálisan egyedi azonosítót (UUID). Ügyeljen arra, hogy az Azure-adatlemezek csatlakoztatásához grafikus eszközöket használjon, például:. Ellenőrizze az/etc/fstab bejegyzéseit, és győződjön meg róla, hogy az UUID a lemezek csatlakoztatására szolgál. További részleteket [ebben a cikkben](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)talál.

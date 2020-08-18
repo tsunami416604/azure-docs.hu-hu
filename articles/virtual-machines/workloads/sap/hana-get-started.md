@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042330"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509960"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>SAP HANA telepítése Azure-beli virtuális gépeken
 ## <a name="introduction"></a>Bevezetés
@@ -72,7 +72,7 @@ Ebben a fázisban végig kell haladnia a virtuális gép (ek) üzembe helyezés�
     -  [SAP-támogatás Megjegyzés #2382421 – a hálózati konfiguráció optimalizálása a HANA-és az operációs rendszer szintjén](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. Válassza ki SAP HANA Azure Storage-típusát. Ebben a lépésben a SAP HANA telepítésének tárolási elrendezését kell eldöntenie. A csatlakoztatott Azure-lemezeket vagy a natív Azure NFS-megosztásokat fogja használni. Az Azure-beli tárolási típusok, amelyek használhatók, illetve különböző Azure-beli tárolási típusok kombinációi, [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](./hana-vm-operations-storage.md)vannak dokumentálva. Végezze el a kiindulási pontként dokumentált konfigurációkat. A nem éles rendszerek esetében előfordulhat, hogy az alacsonyabb átviteli sebesség vagy a IOPS konfigurálható. Éles környezetben előfordulhat, hogy egy kicsit nagyobb átviteli sebességet és IOPS kell konfigurálnia.
-2. Az M-sorozatos vagy a Mv2-sorozatú virtuális gépek használatakor győződjön meg arról, hogy az [Azure írásgyorsító](../../linux/how-to-enable-write-accelerator.md) -t konfigurálta az adatbázis-kezelői tranzakciós naplókat tartalmazó kötetekhez, vagy a naplókat. Vegye figyelembe a írásgyorsító korlátozásait dokumentált módon.
+2. Az M-sorozatos vagy a Mv2-sorozatú virtuális gépek használatakor győződjön meg arról, hogy az [Azure írásgyorsító](../../how-to-enable-write-accelerator.md) -t konfigurálta az adatbázis-kezelői tranzakciós naplókat tartalmazó kötetekhez, vagy a naplókat. Vegye figyelembe a írásgyorsító korlátozásait dokumentált módon.
 2. Győződjön meg arról, hogy az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van-e az üzembe helyezett virtuális gépeken.
 
 > [!NOTE]

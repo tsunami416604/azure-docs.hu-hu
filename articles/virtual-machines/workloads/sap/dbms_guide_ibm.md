@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ea95603ea630a1320db5698092f6748e36a9934
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 3db8ece7cd1d3ef57b51b164fad3340b80882369
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245757"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510198"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -30,7 +30,7 @@ Az Azure-ban megjelent SAP számítási feladatok különböző cikkei.  Javasol
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területeken:
 
-| Megjegyzés száma |Cím |
+| Megjegyzés száma |Title |
 | --- |--- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -73,7 +73,7 @@ Azt is megteheti, hogy a Windows Storage-készleteket (csak a Windows Server 201
 
 A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. Windows Storage-készletek használatakor manuálisan kell létrehoznia a tárolási készleteket parancssori felületen keresztül a paraméter használatával `-LogicalSectorSizeDefault` . További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../windows/how-to-enable-write-accelerator.md).
+Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../how-to-enable-write-accelerator.md).
 
 ## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>Javaslat a virtuális gépekre és a lemez struktúrájára az IBM DB2 üzembe helyezéséhez
 

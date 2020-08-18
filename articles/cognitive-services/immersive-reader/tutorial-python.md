@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876563"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516385"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Oktatóanyag: a részletes olvasó elindítása a Python Sample Project használatával
 
@@ -27,7 +27,7 @@ Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvas
 > * Hozzáférési jogkivonat beszerzése.
 > * A részletes olvasót a minta tartalmával indíthatja el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -311,7 +311,7 @@ flask run
 
 Nyissa meg a böngészőt, és keresse fel a következőt: http://localhost:5000 .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](./reference.md).
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/).

@@ -3,12 +3,12 @@ title: A Resource Manager-alapú és a klasszikus üzemi modell
 description: A cikk a Resource Manager-alapú és a klasszikus (vagy szolgáltatásfelügyeleti) üzemi modellek közötti különbségeket ismerteti.
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057568"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511405"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
 
@@ -113,7 +113,7 @@ A következő táblázat a Compute, a Network és a Storage erőforrás-szolgál
 | Fenntartott IP-címek |Az Azure-ban fenntarthat egy IP-címet, és társíthatja egy felhőszolgáltatáshoz, hogy biztosítsa az IP-cím állandóságát. |A nyilvános IP-címek létrehozhatók statikus módban, amely ugyanazokat a képességeket biztosítja, mint a fenntartott IP-címek. |
 | Virtuális gépenként megadott nyilvános IP-cím (PIP) |A nyilvános IP-címek közvetlenül is hozzárendelhetők egy virtuális géphez. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. |
 | Végpontok |A virtuális gépen konfigurálni kell a bemeneti végpontokat, hogy bizonyos portok csatlakoztathatóvá váljanak. A virtuális gépekhez való csatlakozás egyik legelterjedtebb módja a bemeneti végpontok beállítása. |A bejövő NAT-szabályok konfigurálhatók a terheléselosztókon, így azonos képességek érhetők el a végpontok engedélyezésére adott portokon a virtuális gépekhez való csatlakozás céljából. |
-| DNS-név |Egy felhőszolgáltatás egy implicit globálisan egyedi DNS-nevet kap. Példa: `mycoffeeshop.cloudapp.net`. |A DNS-nevek opcionális paraméterek, amelyek egy nyilvános IP-cím erőforráson adhatók meg. Az FQDN formátuma a következő lesz: `<domainlabel>.<region>.cloudapp.azure.com`. |
+| DNS-név |Egy felhőszolgáltatás egy implicit globálisan egyedi DNS-nevet kap. Például: `mycoffeeshop.cloudapp.net`. |A DNS-nevek opcionális paraméterek, amelyek egy nyilvános IP-cím erőforráson adhatók meg. Az FQDN formátuma a következő lesz: `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Hálózati illesztők |Az elsődleges és másodlagos hálózati adapter és tulajdonságai egy virtuális gép hálózati konfigurációjaként voltak megadva. |A hálózati adapter egy Microsoft.Network szolgáltató által közzétett erőforrás. A hálózati adapter életciklusa nem kötődik virtuális géphez. A virtuális gép hozzárendelt IP-címére (kötelező), a virtuális gép virtuális hálózatának alhálózatára (kötelező), valamint egy hálózati biztonsági csoportra (nem kötelező) hivatkozik. |
 
 A különböző üzemi modellekből származó virtuális hálózatok összekapcsolásával kapcsolatban lásd a [különböző üzemi modellekből származó virtuális hálózatok a portálon történő összekapcsolását](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) ismertető szakaszt.
@@ -122,7 +122,7 @@ A különböző üzemi modellekből származó virtuális hálózatok összekapc
 
 Ha készen áll az erőforrások áttelepítésére a klasszikus üzembe helyezésről a Resource Manager-alapú üzembe helyezésre, tekintse meg a következőket:
 
-1. [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+1. [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 2. [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [IaaS-erőforrások migrálása a klasszikusból Resource Manager-alapú környezetbe az Azure PowerShell használatával](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [IaaS-erőforrások migrálása a klasszikusból Resource Manager-alapú környezetbe az Azure CLI használatával](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)

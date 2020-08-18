@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827418"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510232"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -82,7 +82,7 @@ Az Azure-beli SAP-munkaterheléseken más cikkek is elérhetők. Az Azure-beli S
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területek tekintetében.
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Title |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -221,7 +221,7 @@ A Premium Storage esetében a következő gyorsítótárazási lehetőségek lé
 
 A Premium Storage esetében javasoljuk, hogy az olvasási gyorsítótárazást használja az SAP-adatbázis **adatfájljaihoz** , és válassza **a nincs gyorsítótárazás lehetőséget a naplófájl (ok) lemezei**számára.
 
-Az M sorozatú üzemelő példányok esetében ajánlott az Azure írásgyorsító használata az adatbázis-kezelő üzembe helyezéséhez. Az Azure írásgyorsító részleteiről, korlátozásáról és üzembe helyezéséről az [Írásgyorsító engedélyezése](../../windows/how-to-enable-write-accelerator.md)című témakörben olvashat.
+Az M sorozatú üzemelő példányok esetében ajánlott az Azure írásgyorsító használata az adatbázis-kezelő üzembe helyezéséhez. Az Azure írásgyorsító részleteiről, korlátozásáról és üzembe helyezéséről az [Írásgyorsító engedélyezése](../../how-to-enable-write-accelerator.md)című témakörben olvashat.
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure nem állandó lemezek

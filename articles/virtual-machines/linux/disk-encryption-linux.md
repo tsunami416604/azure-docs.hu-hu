@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
+title: Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 description: Ez a cikk a Linux rendszerű virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást különböző forgatókönyvek esetén
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 88a0239409d29700d95b8949c1499dd30f50bb5f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372654"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510725"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 
 
 A Linux rendszerű virtuális gépek Azure Disk Encryption a Linux DM-Crypt funkciójának használatával biztosít teljes lemezes titkosítást az operációsrendszer-lemez és az adatlemezek számára. Emellett az ideiglenes lemez titkosítását is biztosítja az EncryptFormatAll szolgáltatás használatakor.
@@ -413,7 +413,7 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Egy "beágyazott csatlakoztatási ponttal" rendelkező virtuális gép; Ez azt eredményezi, hogy több csatlakoztatási pont van egyetlen elérési úton (például "/1stmountpoint/Data/2stmountpoint").
 - Egy virtuális gép, amely egy operációsrendszer-mappához csatlakoztatott adatmeghajtóval rendelkezik.
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
-- Az ADE alkalmazása olyan virtuális gépre, amely egy, az [ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK) rendelkező, kiszolgálóoldali titkosítással titkosított adatlemezzel rendelkezik, vagy ha az az ade-vel titkosított virtuális gép adatlemezére ALKALMAZZA az SSE + CMK.
+- Az ADE alkalmazása olyan virtuális gépre, amely vagy *valaha* is volt, [kiszolgálóoldali titkosítással titkosított lemezeket az ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK). Az SSE és a CMK az ADE-sel titkosított virtuális gépek adatlemezére való alkalmazása nem támogatott forgatókönyv is.
 - Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).
 
 ## <a name="next-steps"></a>További lépések

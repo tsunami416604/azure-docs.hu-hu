@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: d9bb3a5fb41215f2e839efc7989ea7854f254f16
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce9d3af8f7517e2acae5264197b842d47085279c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537935"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516367"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-swift-ios-code-sample"></a>Oktatóanyag: a gyors iOS-mintakód használatával megkezdheti a gördülékeny olvasót
 
@@ -26,7 +26,7 @@ Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvas
 > * Hozzáférési jogkivonat beszerzése.
 > * A részletes olvasót a minta tartalmával indíthatja el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ Ne véglegesítse ezt a változást a verziókövetés során, mert olyan titkos
 
 A Xcode válassza a **CTRL + R** billentyűkombinációt a projekt futtatásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](./reference.md).
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/).

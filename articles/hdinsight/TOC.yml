@@ -356,6 +356,8 @@
               href: ./set-up-pyspark-interactive-environment.md
         - name: Fejlesztés
           items:
+            - name: Lekérdezések optimalizálása a SparkCruise-zal
+              href: ./spark/spark-cruise.md
             - name: Interaktív Apache Spark Shell használata
               href: ./spark/apache-spark-shell.md
             - name: Távoli feladatok az Apache Livyvel

@@ -2,22 +2,21 @@
 title: PowerShell-minta – alkalmazásspecifikus proxy alkalmazások azonos tanúsítványokkal
 description: PowerShell-példa, amely az azonos tanúsítvánnyal közzétett összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást listázza.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef654226d041a7602c03e1ce4670d2f8eea0c2e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39a116cdb8900c5adb1689c6b81649b1963e4fe6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482009"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511133"
 ---
 # <a name="get-all-azure-ad-proxy-application-apps-that-are-published-with-the-identical-certificate"></a>Az azonos tanúsítvánnyal közzétett összes Azure AD-alkalmazásproxy alkalmazásának beolvasása
 
@@ -37,7 +36,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](https://docs.m
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy egyszerű szolgáltatásnév beolvasása. |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Beolvas egy Azure AD-alkalmazást. |

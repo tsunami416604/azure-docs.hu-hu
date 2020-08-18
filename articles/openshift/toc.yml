@@ -79,6 +79,8 @@
   items:
     - name: Hálózatkezelés az Azure Red Hat OpenShift 4-fürtökben
       href: concepts-networking.md
+    - name: Migrálás az Azure Red Hat OpenShift 3.11-es verziójáról az Azure Red Hat OpenShift 4-es verziójára
+      href: migration.md
 - name: Referencia
   items:
     - name: Az Azure Red Hat OpenShift parancssori felülete

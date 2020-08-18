@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: bfe609dc480dcdb71f162ca1bfd383a27257fedc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321700"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516622"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory egyszerű szolgáltatásnév az Azure SQL-sel
 
@@ -80,6 +80,8 @@ Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban eg
 
 > [!IMPORTANT]
 > Az 1. és a 2. lépést a fenti sorrendben kell végrehajtani. Először hozza létre vagy rendelje hozzá a kiszolgáló identitását, majd adja meg a [**Directory-olvasók**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) engedélyét. Ha kihagyja a fenti lépések egyikét, vagy mindkettő végrehajtási hibát okoz az Azure AD-objektum Azure SQL-beli létrehozásakor egy Azure AD-alkalmazás nevében. Az Azure ad-felhasználó Azure ad-alkalmazás nevében történő létrehozásával kapcsolatos részletes utasításokért lásd [: oktatóanyag: Azure ad-felhasználók létrehozása az Azure ad-alkalmazások használatával](authentication-aad-service-principal-tutorial.md).
+>
+> A **nyilvános előzetes**verzióban a címtár- **olvasók** szerepkört hozzárendelheti egy CSOPORThoz az Azure ad-ben. A csoport tulajdonosai ezután hozzáadhatják a felügyelt identitást a csoport tagjaként, ami megkerülheti a **globális rendszergazda** vagy a **Kiemelt szerepkörök rendszergazdájának** , hogy megadja a **címtár-olvasók** szerepkört. A szolgáltatással kapcsolatos további információkért lásd: az [Azure SQL Azure Active Directory Directory-olvasók szerepköre](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>A nyilvános előzetes verzió hibaelhárítása és korlátozásai
 

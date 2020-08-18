@@ -22,6 +22,9 @@
     - name: Tartós függvények létrehozása – Python
       displayName: 'get started, chaining'
       href: quickstart-python-vscode.md
+    - name: Tartós függvény létrehozása – PowerShell
+      displayName: 'get started, chaining'
+      href: quickstart-powershell-vscode.md
 - name: Oktatóanyagok
   items:
     - name: Függvényláncolás

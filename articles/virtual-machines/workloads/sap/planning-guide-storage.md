@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825004"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510861"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -84,7 +84,7 @@ A részletek megkezdése előtt bemutatjuk a dokumentum elején már meglévő �
 | Adatbázis-kezelői naplózási kötet nem HANA nem M/Mv2 VM-család | nem támogatott | korlátozott megfelelő (nem gyártható) | akár közepes számítási feladatokhoz is alkalmas | ajánlott | nem támogatott |
 
 
-<sup>1</sup> az [Azure Írásgyorsító](../../windows/how-to-enable-write-accelerator.md) használata az M/Mv2 virtuálisgép-családokhoz a log/relog-kötetek <sup>2</sup> . ANF használatához a/Hana/Data és a/Hana/log is szükséges a ANF 
+<sup>1</sup> az [Azure Írásgyorsító](../../how-to-enable-write-accelerator.md) használata az M/Mv2 virtuálisgép-családokhoz a log/relog-kötetek <sup>2</sup> . ANF használatához a/Hana/Data és a/Hana/log is szükséges a ANF 
 
 A különböző tárolási típusok listájából várható jellemzők:
 
@@ -101,7 +101,7 @@ A különböző tárolási típusok listájából várható jellemzők:
 | Geo-redundancia | nem felügyelt lemezekhez | nem felügyelt lemezekhez | nem | nem | nem |
 
 
-<sup>1</sup> az [Azure Írásgyorsító](../../windows/how-to-enable-write-accelerator.md) használata az M/Mv2 virtuálisgép-családokhoz a log/ismétlési naplók köteteihez
+<sup>1</sup> az [Azure Írásgyorsító](../../how-to-enable-write-accelerator.md) használata az M/Mv2 virtuálisgép-családokhoz a log/ismétlési naplók köteteihez
 
 <sup>2</sup> a költségek a kiépített IOPS és az átviteli sebességtől függenek
 
@@ -137,7 +137,7 @@ Az SAP számítási funkciói mátrixa a következőhöz hasonlóan néz ki:
 | Képesség| Megjegyzés| Megjegyzések/hivatkozások | 
 | --- | --- | --- | 
 | OPERÁCIÓSRENDSZER-alap VHD | alkalmas | minden rendszer |
-| Adatlemez | alkalmas | minden rendszer – [kifejezetten SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| Adatlemez | alkalmas | minden rendszer – [kifejezetten SAP HANA](../../how-to-enable-write-accelerator.md) |
 | SAP globális átviteli könyvtár | IGEN | [Támogatott](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | alkalmas | minden rendszer |
 | Biztonsági mentési tár | alkalmas | a biztonsági másolatok rövid távú tárolásához |
@@ -149,12 +149,12 @@ Az SAP számítási funkciói mátrixa a következőhöz hasonlóan néz ki:
 | IOPS maximális száma lemezenként | 20 000 [a lemez méretétől függ](https://azure.microsoft.com/pricing/details/managed-disks/) | A [virtuális gépek korlátozásait](../../sizes.md) is figyelembe kell venni |
 | Átviteli sebesség (SLA) | IGEN | - |
 | Lineáris átviteli sebesség a kapacitásig | félig lineáris zárójelben | [Felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA Certified | IGEN | [kifejezetten SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| HANA Certified | IGEN | [kifejezetten SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Lemezes Pillanatképek lehetséges | IGEN | - |
-| Azure Backup VM-Pillanatképek lehetséges | IGEN | [írásgyorsító](../../windows/how-to-enable-write-accelerator.md) gyorsítótárazott lemezek kivételével  |
+| Azure Backup VM-Pillanatképek lehetséges | IGEN | [írásgyorsító](../../how-to-enable-write-accelerator.md) gyorsítótárazott lemezek kivételével  |
 | Költségek | KÖZEPES | - |
 
-Az Azure Premium Storage nem teljesíti SAP HANA tárolási késési KPI-ket az Azure Premium Storage-ban kínált közös gyorsítótárazási típusokkal. A tárolási késési KPI-k SAP HANA naplóbeli írások teljesítéséhez az Azure írásgyorsító gyorsítótárazást kell használnia az [Írásgyorsító engedélyezése](../../windows/how-to-enable-write-accelerator.md)című cikkben leírtak szerint. Az Azure írásgyorsító a tranzakciónapló-írásokhoz és a naplók ismételt megismétléséhez szükséges összes egyéb adatbázis-kezelő rendszer előnyeit. Ezért azt javasoljuk, hogy az összes SAP adatbázis-kezelő üzemelő példányon keresztül használja. SAP HANA esetében az Azure-írásgyorsító használata az Azure Premium Storage szolgáltatással együtt kötelező.
+Az Azure Premium Storage nem teljesíti SAP HANA tárolási késési KPI-ket az Azure Premium Storage-ban kínált közös gyorsítótárazási típusokkal. A tárolási késési KPI-k SAP HANA naplóbeli írások teljesítéséhez az Azure írásgyorsító gyorsítótárazást kell használnia az [Írásgyorsító engedélyezése](../../how-to-enable-write-accelerator.md)című cikkben leírtak szerint. Az Azure írásgyorsító a tranzakciónapló-írásokhoz és a naplók ismételt megismétléséhez szükséges összes egyéb adatbázis-kezelő rendszer előnyeit. Ezért azt javasoljuk, hogy az összes SAP adatbázis-kezelő üzemelő példányon keresztül használja. SAP HANA esetében az Azure-írásgyorsító használata az Azure Premium Storage szolgáltatással együtt kötelező.
 
 
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502171"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509858"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -29,7 +29,7 @@ Az Azure Storage három különböző típusú közös hozzáférési aláírás
 
     A felhasználói delegálási SAS-vel kapcsolatos további információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- **Szolgáltatás SAS.** A Storage-fiók kulcsa a Service SAS védelmét biztosítja. A szolgáltatás-SAS delegál egy erőforráshoz való hozzáférést csak az egyik Azure Storage-szolgáltatásban: blob Storage, üzenetsor-tároló, Table Storage vagy Azure Files. 
+- **Szolgáltatás SAS.** A Storage-fiók kulcsa a Service SAS védelmét biztosítja. A szolgáltatás-SAS delegál egy erőforráshoz való hozzáférést csak az egyik Azure Storage-szolgáltatásban: blob Storage, üzenetsor-tároló, Table Storage vagy Azure Files.
 
     További információ a szolgáltatás SAS-ről: [Service sas létrehozása (REST API)](/rest/api/storageservices/create-service-sas).
 
@@ -38,7 +38,7 @@ Az Azure Storage három különböző típusú közös hozzáférési aláírás
     A fiók SAS-vel kapcsolatos további információkért [hozzon létre egy FIÓKOT sas (REST API)](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
-> A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait akkor használja, ha a fiók kulcsa helyett biztonsági szempontból ajánlott, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD-beli hitelesítő adatok használatával hozzon létre egy felhasználói delegálási SAS-t, ha lehetséges,
+> A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait akkor használja, ha a fiók kulcsa helyett biztonsági szempontból ajánlott, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD-beli hitelesítő adatok használatával hozzon létre egy felhasználói delegálási SAS-t, ha lehetséges, További információ: a [blobok és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
 
 A közös hozzáférésű aláírás két űrlap egyikét veheti igénybe:
 
@@ -52,15 +52,27 @@ A közös hozzáférésű aláírás két űrlap egyikét veheti igénybe:
 
 A közös hozzáférésű aláírás egy aláírt URI, amely egy vagy több tárolási erőforrásra mutat, és olyan tokent tartalmaz, amely a lekérdezési paraméterek speciális készletét tartalmazza. A jogkivonat azt jelzi, hogy az ügyfél milyen módon férhet hozzá az erőforrásokhoz. A lekérdezési paraméterek egyike, az aláírás a SAS-paraméterekből lett kialakítva, és az SAS létrehozásához használt kulccsal van aláírva. Az Azure Storage ezt az aláírást használja a tárolási erőforráshoz való hozzáférés engedélyezéséhez.
 
-### <a name="sas-signature"></a>SAS-aláírás
+### <a name="sas-signature-and-authorization"></a>SAS-aláírás és-engedélyezés
 
-Az SAS-t kétféleképpen lehet aláírni:
+Az SAS-tokent kétféleképpen lehet aláírni:
 
 - Azure Active Directory (Azure AD) hitelesítő adatok használatával létrehozott *felhasználói delegálási kulccsal* . Felhasználói delegálási SAS van aláírva a felhasználói delegálási kulccsal.
 
     A felhasználói delegálási kulcs beszerzéséhez és az SAS létrehozásához egy Azure AD rendszerbiztonsági tag számára olyan Azure-szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A felhasználói delegálási kulcs beszerzéséhez szükséges engedélyekkel rendelkező Azure-szerepkörökkel kapcsolatos részletes információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- A Storage-fiók kulcsaként. A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
+- A Storage-fiók kulcsával (megosztott kulcs). A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
+
+Ha egy kérelem SAS-jogkivonatot tartalmaz, a kérést a SAS-jogkivonat aláírásának módja alapján engedélyezi a rendszer. Az Azure Storage az SAS-token létrehozásához használt hozzáférési kulcsot vagy hitelesítő adatokat is használja az SAS-t tartalmazó ügyfélhez való hozzáférés biztosításához.
+
+Az alábbi táblázat összefoglalja, hogy az egyes SAS-jogkivonatok hogyan engedélyezettek, ha az Azure Storage-ba irányuló kérelemben szerepel:
+
+| SAS típusa | Engedélyezési típus |
+|-|-|
+| Felhasználói delegálási SAS (csak blob Storage) | Azure AD |
+| Szolgáltatás SAS | Megosztott kulcsos |
+| Fiók SAS | Megosztott kulcsos |
+
+A Microsoft azt javasolja, hogy a felhasználói delegálás SAS-t használja, ha lehetséges, a kiváló biztonság érdekében.
 
 ### <a name="sas-token"></a>SAS-jogkivonat
 

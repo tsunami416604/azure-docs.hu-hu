@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800415"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510028"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
 
@@ -103,11 +103,11 @@ Az életciklussal kapcsolatos értesítések a következők esetén aktiválódn
 
 Az életciklus-értesítés törzsének mezői.
 
-| Név | Érték |
+| Name (Név) | Érték |
 | --- | --- |
-| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`minden különböző esemény esetében egyedi. |
+| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` minden különböző esemény esetében egyedi. |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1,0 |
+| `specversion` | *1,0*<br>Az üzenet megfelel a CloudEvents-specifikáció ezen verziójának. |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | A digitális Twin azonosító |
@@ -189,14 +189,14 @@ A **kapcsolat változásával kapcsolatos értesítések** akkor aktiválódnak,
 
 Itt láthatók az Edge Change-értesítések törzsének mezői.
 
-| Név    | Érték |
+| Name (Név)    | Érték |
 | --- | --- |
-| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`egyedi a különböző eseményekhez |
+| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
 | `source` | Az Azure Digital Twins-példány neve, például *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1,0 |
+| `specversion` | *1,0*<br>Az üzenet megfelel a CloudEvents-specifikáció ezen verziójának. |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
-| `subject` | A kapcsolat azonosítója, például:`<twinID>/relationships/<relationshipID>` |
+| `subject` | A kapcsolat azonosítója, például: `<twinID>/relationships/<relationshipID>` |
 | `time` | Időbélyeg, hogy mikor történt a művelet a kapcsolaton |
 | `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
 
@@ -245,11 +245,11 @@ A digitális **kettős változásokról szóló értesítéseket** a rendszer ak
 
 Itt láthatók a digitális kettős változásokról szóló értesítés törzsének mezői.
 
-| Név    | Érték |
+| Name (Név)    | Érték |
 | --- | --- |
-| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`egyedi a különböző eseményekhez |
+| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*
-| `specversion` | 1,0 |
+| `specversion` | *1,0*<br>Az üzenet megfelel a CloudEvents-specifikáció ezen verziójának. |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | A digitális Twin azonosító |

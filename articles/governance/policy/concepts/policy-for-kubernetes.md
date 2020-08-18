@@ -3,12 +3,12 @@ title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003506"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509875"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -73,19 +73,19 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -135,7 +135,7 @@ A fenti előfeltételként szükséges lépések elvégzése után telepítse a 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
      > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. Ha a **bővítmény letiltása** gomb engedélyezve van, és az áttelepítési figyelmeztetés v2 üzenet jelenik meg, a v1 bővítmény telepítve van, és a v2 házirend-definíciók kiosztása előtt el kell távolítani. Az _elavult_ v1 bővítményt a rendszer automatikusan lecseréli a v2 bővítmény 2020. augusztus 24-én kezdődően. Ezután hozzá kell rendelni a házirend-definíciók új v2-verzióit. A frissítéshez kövesse az alábbi lépéseket:
-     > 
+     >
      > 1. Ellenőrizze, hogy az AK-fürtön telepítve van-e a v1-bővítmény, ha meglátogatja a **szabályzatok (előzetes verzió)** lapot az AK-fürtön, és az "aktuális fürt a Azure Policy bővítmény v1-es verzióját használja..." üzenetet.
      > 1. [Távolítsa el a bővítményt](#remove-the-add-on-from-aks).
      > 1. Kattintson a **bővítmény engedélyezése** gombra a bővítmény v2-verziójának telepítéséhez.
@@ -185,16 +185,16 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -205,7 +205,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
 1. A Kubernetes-fürt engedélyezve van az Azure arc számára. További információ: [Kubernetes-fürt előkészítése az Azure-](../../../azure-arc/kubernetes/connect-cluster.md)ba.
 
-1. Az Azure arc-kompatibilis Kubernetes-fürt teljes Azure-erőforrás-azonosítója. 
+1. Az Azure arc-kompatibilis Kubernetes-fürt teljes Azure-erőforrás-azonosítója.
 
 1. Nyissa meg a bővítmény portjait. A Azure Policy bővítmény ezeket a tartományokat és portokat használja a szabályzat-definíciók és-hozzárendelések beolvasásához, valamint a fürt megfelelőségének visszahívásához a Azure Policy.
 
@@ -226,7 +226,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -289,16 +289,16 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -310,7 +310,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -393,25 +393,24 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
 1. Állítsa a **hatókört** arra a felügyeleti csoportra, előfizetésre vagy Kubernetes, amelyben a házirend-hozzárendelés érvényes lesz.
 
-   > [!NOTE]    
+   > [!NOTE]
    > A Azure Policy Kubernetes-definícióhoz való hozzárendeléséhez a **hatókörnek** tartalmaznia kell a fürterőforrás-t. Az KABAi motor fürtjében a **hatókörnek** a fürt erőforráscsoport kell lennie.
 
-1. Adja meg a szabályzat hozzárendelésének **nevét** és **leírását** , hogy könnyen azonosítható legyen.    
+1. Adja meg a szabályzat hozzárendelésének **nevét** és **leírását** , hogy könnyen azonosítható legyen.
 
-1. A [szabályzat kényszerítésének](./assignment-structure.md#enforcement-mode) beállítása az értékek egyikére    
-   az alábbiakban.   
+1. Állítsa be a [szabályzat kényszerítését](./assignment-structure.md#enforcement-mode) az alábbi értékek egyikére.
 
-   - **Engedélyezve** – a szabályzat érvénybe léptetése a fürtön. A Kubernetes vonatkozó beléptetési kérelmek megtagadva.    
+   - **Engedélyezve** – a szabályzat érvénybe léptetése a fürtön. A Kubernetes vonatkozó beléptetési kérelmek megtagadva.
 
    - **Letiltva** – nem kényszeríti ki a szabályzatot a fürtön. A Kubernetes vonatkozó beléptetési kérelmeket nem tagadja meg a rendszer. A megfelelőség értékelésének eredményei továbbra is elérhetők. Amikor új szabályzat-definíciókat hoz létre a fürtök futtatásához, a _letiltott_ beállítás hasznos lehet a szabályzat-definíció teszteléséhez, mivel a rendszer nem tagadja meg a beléptetési kérelmek megsértését.
 
-1. Válassza a **Tovább** lehetőséget. 
+1. Kattintson a **Tovább** gombra.
 
-1. **Paraméterek értékének** beállítása 
+1. **Paraméterek értékének** beállítása
 
    - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása**paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_, _forgalomirányító-System_és _Azure-arc_.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 Másik megoldásként használja a [szabályzat társítása – portál](../assign-policy-portal.md) rövid útmutatót a Kubernetes szabályzat megkereséséhez és hozzárendeléséhez. Keressen egy Kubernetes házirend-definíciót a "naplózási virtuális gépek" minta helyett.
 

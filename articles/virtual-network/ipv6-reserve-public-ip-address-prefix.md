@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac79e1eb5c4f7448dc17804cd8aac3cba582497e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711493"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509943"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Nyilvános IPv6-cím előtagjának foglalása
 Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban IPv6-és IPv4-kapcsolaton keresztül is üzemeltetheti az alkalmazásokat a virtuális hálózaton belül és az internetről. Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is fenntarthatja a használatra. Ez a cikk bemutatja, hogyan hozhat létre IPv6 nyilvános IP-címeket és címtartományt a Azure PowerShell és a parancssori felület használatával.
@@ -29,7 +29,7 @@ Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban IPv
 
 Egy fenntartott (statikus) IPv6 nyilvános IP-címet a következő módon hozhat létre a [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) Azure PowerShell használatával:
 
-```azurepowershell  
+```azurepowershell
  $myOwnIPv6Address = New-AzPublicIpAddress `
  -name PIPv6_WestUS `
  -ResourceGroup MyRG `
@@ -42,7 +42,7 @@ Egy fenntartott (statikus) IPv6 nyilvános IP-címet a következő módon hozhat
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
  Létrehozhat egyetlen fenntartott (statikus) IPv6 nyilvános IP-címet az Azure CLI-vel az [az Network Public-IP Create](/cli/azure/network/public-ip) paranccsal:
-  
+
 ```azurecli
  az network public-ip create \
  --name dsPublicIP_v6 \
@@ -55,12 +55,12 @@ Egy fenntartott (statikus) IPv6 nyilvános IP-címet a következő módon hozhat
 
 ## <a name="create-a-reserved-ipv6-prefix-range"></a>Fenntartott IPv6-előtag létrehozása (tartomány)
 
-IPv6-előtag foglalásához adja hozzá az IPv6 IP-címét ugyanahhoz a parancshoz, amely az IPv4-előtagok létrehozásához használatos. A következő parancsok létrehoznak egy méret/125 (8 IPv6-cím) előtagot.  
+IPv6-előtag foglalásához adja hozzá az IPv6 IP-címét ugyanahhoz a parancshoz, amely az IPv4-előtagok létrehozásához használatos. A következő parancsok létrehoznak egy méret/125 (8 IPv6-cím) előtagot.
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
 Nyilvános IPv6-címet az [az Network Public-IP Create](/powershell/module/az.network/new-azpublicipprefix) paranccsal hozhat létre az Azure CLI használatával az alábbi módon:
-```azurepowershell  
+```azurepowershell
  $myOwnIPv6Prefix = New-AzPublicIpPrefix `
  -name IPv6PrefixWestUS `
  -ResourceGroupName MyRG `
@@ -74,7 +74,7 @@ Nyilvános IPv6-címet az [az Network Public-IP Create](/powershell/module/az.ne
 
 Az Azure CLI-vel az alábbi módon hozhat létre nyilvános IPv6-címeket:
 
-```azurecli  
+```azurecli
 az network public-ip prefix create \
 --name IPv6PrefixWestUS \
 --resource-group MyRG \
@@ -89,7 +89,7 @@ az network public-ip prefix create \
 
  Egy fenntartott előtaggal rendelkező statikus IPv6 nyilvános IP-címet úgy hozhat létre, hogy hozzáadja az `-PublicIpPrefix` argumentumot a nyilvános IP-cím a Azure PowerShell használatával történő létrehozásakor. Az alábbi példa azt feltételezi, hogy egy előtag létrehozása és tárolása egy nevű PowerShell-változóban történik: *$MyOwnIPv 6prefix*.
 
-```azurepowershell:  
+```azurepowershell
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
  -name PIPv6_fromPrefix `
  -ResourceGroup DsStdLb04 `
@@ -101,10 +101,10 @@ az network public-ip prefix create \
 ```
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
- 
+
 Az alábbi példa feltételezi, hogy egy előtagot hoztak létre és tároltak egy nevű CLI-változóban: *IPv6PrefixWestUS*.
 
-```azurecli 
+```azurecli
 az network public-ip create \
 --name dsPublicIP_v6 \
 --resource-group UpgradeInPlace_CLI_RG1 \

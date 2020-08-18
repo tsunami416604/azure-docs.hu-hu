@@ -2,14 +2,14 @@
 title: Azure rövid útmutató – az első batch-feladatot az Azure Portal futtathatja
 description: Megtudhatja, hogyan hozhat létre egy batch-fiókot, egy számítási csomópontok készletét és egy olyan feladatot, amely alapszintű feladatokat futtat a készleten a Azure Portal használatával.
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: f9af6a2f0fbbbd799b781480d499adf124b4cb7d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511371"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
@@ -23,7 +23,7 @@ Az Azure Batch használatának első lépései a Azure Portal használatával l�
 
 Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal történő létrehozásához. Készletek és feladatok létrehozásához Batch-fiók szükséges. Ahogyan az az alábbi ábrán is látható, a Batch-fiók összekapcsolható egy Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **számítási**  >  **Batch szolgáltatás**elemet. 
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása**  >  **számítási**  >  **Batch szolgáltatás**elemet. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Képernyőkép a Batch szolgáltatásról az Azure piactéren.":::
 
@@ -83,7 +83,7 @@ Batch használata esetén a parancssorban adhatja meg az alkalmazást vagy szkri
 
 Az első tevékenység létrehozása:
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. Adja meg a következő **tevékenységazonosítót**: *mytask*.
 

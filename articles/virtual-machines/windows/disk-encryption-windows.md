@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291978"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509161"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -132,7 +132,7 @@ A következő táblázat a Resource Manager-sablon paramétereit sorolja fel a m
 | Paraméter | Leírás |
 | --- | --- |
 | vmName | A titkosítási műveletet futtató virtuális gép neve. |
-| keyVaultName | Annak a kulcstárolónak a neve, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le.`az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
+| keyVaultName | Annak a kulcstárolónak a neve, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le. `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | A kulcstárolót tartalmazó erőforráscsoport neve|
 |  keyEncryptionKeyURL | A kulcs titkosítási kulcsának URL-címe, a https:// &lt; kulcstartó-név &gt; . Vault.Azure.net/Key/ &lt; kulcs-neve formátumban &gt; . Ha nem szeretne KEK-t használni, hagyja üresen ezt a mezőt. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
@@ -264,7 +264,7 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Egy titkosított virtuális gép rendszerképének vagy pillanatképének létrehozása, és annak használata további virtuális gépek telepítéséhez.
 - Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
-- Az ADE alkalmazása olyan virtuális gépre, amely egy, az [ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK) rendelkező, kiszolgálóoldali titkosítással titkosított adatlemezzel rendelkezik, vagy ha az az ade-vel titkosított virtuális gép adatlemezére ALKALMAZZA az SSE + CMK.
+- Az ADE alkalmazása olyan virtuális gépre, amely vagy *valaha* is volt, [kiszolgálóoldali titkosítással titkosított lemezeket az ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK). Az SSE és a CMK az ADE-sel titkosított virtuális gépek adatlemezére való alkalmazása nem támogatott forgatókönyv is.
 - Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).
 
 

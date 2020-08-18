@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438916"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511082"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -38,11 +38,13 @@ Az Application Gateway egy dedikált üzembe helyezés a virtuális hálózaton.
 
 A Application Gateway egy magánhálózati IP-címet és egy másik magánhálózati IP-címet használ, ha a magánhálózati előtéri IP-cím konfigurálva van.
 
-Az Azure az egyes alhálózatokban öt IP-címet is fenntart belső használatra: az első négyet és az utolsó IP-címet. Vegyünk például 15 Application Gateway-példányt, amelyek nem rendelkeznek privát előtéri IP-címmel. Ehhez az alhálózathoz legalább 20 IP-címnek kell lennie: öt belső használatra és 15 az Application Gateway-példányokhoz. Ezért egy/27 alhálózat vagy nagyobb méretűnek kell lennie.
+Az Azure az egyes alhálózatokban öt IP-címet is fenntart belső használatra: az első négyet és az utolsó IP-címet. Vegyünk például 15 Application Gateway-példányt, amelyek nem rendelkeznek privát előtéri IP-címmel. Ehhez az alhálózathoz legalább 20 IP-címnek kell lennie: öt belső használatra és 15 az Application Gateway-példányokhoz.
 
-Vegyünk egy olyan alhálózatot, amelyben 27 Application Gateway-példány és egy magánhálózati előtér-IP-cím IP-címe található. Ebben az esetben 33 IP-címre van szükség az Application Gateway példányaihoz, egyet a privát kezelőfelülethez, és öt belső használatra. Ezért a/26 alhálózat vagy nagyobb méretűnek kell lennie.
+Vegyünk egy olyan alhálózatot, amelyben 27 Application Gateway-példány és egy magánhálózati előtér-IP-cím IP-címe található. Ebben az esetben 33 IP-címre van szükség az Application Gateway példányaihoz, egyet a privát kezelőfelülethez, és öt belső használatra.
 
-Azt javasoljuk, hogy legalább/28 alhálózat-alhálózati méretet használjon. Ez a méret 11 használható IP-címet biztosít. Ha az alkalmazás terhelése több mint 10 Application Gateway példányt igényel, vegye fontolóra a/27 vagy/26 alhálózat méretét.
+A Application Gateway (standard vagy WAF) SKU legfeljebb 32 példányt tud támogatni (32 példány IP-címe + 1 privát előtér-IP + 5 Azure számára fenntartott) – Ezért az alhálózat minimális mérete/26 ajánlott
+
+Application Gateway (Standard_v2 vagy WAF_v2 SKU) legfeljebb 125 példányt tud támogatni (125 példány IP-címe + 1 privát előtér-IP + 5 Azure számára fenntartott) – Ezért az alhálózat minimális mérete/24 ajánlott
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Hálózati biztonsági csoportok a Application Gateway alhálózaton
 
@@ -403,7 +405,7 @@ Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás �
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a Application Gateway összetevőket, a következőket teheti:
 

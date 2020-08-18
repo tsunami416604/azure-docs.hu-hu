@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563262"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509280"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -105,7 +105,7 @@ Ha ez a két lépés nem segített, meg kell állapítani, hogy az ügyfél foga
 
 **A modell meghaladja a kiválasztott virtuális gép korlátait, pontosabban a sokszögek maximális számát:**
 
-Lásd: adott virtuálisgép- [méret korlátai](../reference/limits.md#overall-number-of-polygons).
+Megtekintheti az adott [kiszolgáló méretének korlátozásait](../reference/limits.md#overall-number-of-polygons).
 
 **A modell nem a kamera csonkakúpot belül található:**
 
@@ -148,7 +148,7 @@ Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, h
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>A Pepita minta a modell betöltését követően jelenik meg
 
-Ha a megjelenített rendszerkép a következőképpen néz ki: ![ Pepita ezt ](../reference/media/checkerboard.png) követően a megjelenítő [megkeresi a szabványos virtuálisgép-méret sokszögének korlátait](../reference/vm-sizes.md). A megoldáshoz váltson a prémium szintű **virtuális gép** méretére, vagy csökkentse a látható sokszögek számát.
+Ha a megjelenített rendszerkép a következőképpen néz ki: ![ Pepita ezt ](../reference/media/checkerboard.png) követően a megjelenítő [megkeresi a szabványos konfiguráció méretére vonatkozó sokszög-korlátokat](../reference/vm-sizes.md). A mérsékléshez váltson a **prémium** szintű konfiguráció méretére, vagy csökkentse a látható sokszögek számát.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>A megjelenített rendszerkép (Unity)
 

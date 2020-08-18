@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507930"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510011"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
 
@@ -52,7 +52,7 @@ Az alábbi táblázat a helyszíni megvalósítás és az Oracle-adatbázisok Az
 | **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](../../windows/infrastructure-example.md) (az Azure által kezelt javítások/frissítések) |
 | **Erőforrás** |Dedikált  |Megosztva más ügyfelekkel|
 | **Régiók** |Adatközpontok |[Régiópárok](../../regions.md#region-pairs)|
-| **Storage-fiók** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Storage** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 | **Méretezés** |Függőleges skála |Horizontális skálázhatóság|
 
 
@@ -187,7 +187,7 @@ Az I/O-követelmények egyértelmű képe után kiválaszthatja a követelménye
 - Az adattömörítés használatával csökkentheti az I/O-t (az adatmennyiség és az indexek esetében egyaránt).
 - Válassza el a naplók, a rendszer és a temps elválasztását, és vonja vissza a TS-t külön adatlemezeken.
 - Ne helyezzen minden alkalmazásfájl alapértelmezett operációsrendszer-lemezre (/dev/sda). Ezek a lemezek nem optimalizálták a virtuális gép rendszerindítási idejét, és előfordulhat, hogy nem biztosítanak jó teljesítményt az alkalmazás számára.
-- Ha az M sorozatú virtuális gépeket Premium Storage-on használja, engedélyezze a [írásgyorsítót](../../linux/how-to-enable-write-accelerator.md) a naplók megismétlése lemezre.
+- Ha az M sorozatú virtuális gépeket Premium Storage-on használja, engedélyezze a [írásgyorsítót](../../how-to-enable-write-accelerator.md) a naplók megismétlése lemezre.
 
 ### <a name="disk-cache-settings"></a>Lemezgyorsítótár beállításai
 
@@ -232,7 +232,7 @@ Az Azure-környezet beállítása és konfigurálása után a következő lépé
 - [Az Oracle Golden Gate konfigurálása](configure-oracle-golden-gate.md)
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 - [A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)

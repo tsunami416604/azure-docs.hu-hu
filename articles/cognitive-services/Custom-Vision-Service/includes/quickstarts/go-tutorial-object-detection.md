@@ -2,24 +2,24 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 45dad7d7b176037087e37638db380294521a8e19
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134095"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511308"
 ---
-Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével megkezdheti a Custom Vision SDK-val való ismerkedést az objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját Go-alkalmazás létrehozásához.
+Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével megkezdheti a Custom Vision ügyféloldali függvénytár használatát a go-val az objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját Go-alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Go 1.8 +](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
+## <a name="install-the-custom-vision-client-library"></a>Az Custom Vision ügyféloldali kódtár telepítése
 
-Az Custom Vision Service SDK for go telepítéséhez futtassa a következő parancsot a PowerShellben:
+Az Custom Vision Service ügyféloldali függvénytárának telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -274,7 +274,7 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen. A következő képzési útmutató a képbesorolással foglalkozik, de az alapelvei hasonlóak az objektumok észleléséhez.
 

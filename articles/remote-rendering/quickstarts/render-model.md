@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565505"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509365"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
@@ -84,7 +84,7 @@ Később telepíteni szeretnénk ezt a projektet egy HoloLens, és az adott eszk
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Munkamenet létrehozása és az alapértelmezett modell megtekintése
 
-A munkamenet elindításához nyomja meg az egység **Lejátszás** gombját. Meg kell jelennie egy, az állapotjelző szöveggel rendelkező átfedésnek a *játék* paneljén a nézetablak alján. A munkamenet az állapot-váltások sorozatán keresztül fog esni. A **kezdő** állapotban a távoli virtuális gép megpördült, ami több percet vesz igénybe. A művelet sikere esetén a **kész** állapotra vált. A munkamenet most a **Csatlakozás** állapotba kerül, ahol a virtuális gépen lévő renderelési futtatókörnyezetet próbálja elérni. Sikeres művelet esetén a minta a **csatlakoztatott** állapotra vált. Ekkor a rendszer elindítja a modell letöltését a rendereléshez. A modell mérete miatt a letöltés több percet is igénybe vehet. Ekkor megjelenik a távolról renderelt modell.
+A munkamenet elindításához nyomja meg az egység **Lejátszás** gombját. Meg kell jelennie egy, az állapotjelző szöveggel rendelkező átfedésnek a *játék* paneljén a nézetablak alján. A munkamenet az állapot-váltások sorozatán keresztül fog esni. A **kezdő** állapotban a kiszolgáló megpördült, ami több percet vesz igénybe. A művelet sikere esetén a **kész** állapotra vált. A munkamenet most belép a **Csatlakozás** állapotba, ahol a a kiszolgálón megpróbálja elérni a renderelési futtatókörnyezetet. Sikeres művelet esetén a minta a **csatlakoztatott** állapotra vált. Ekkor a rendszer elindítja a modell letöltését a rendereléshez. A modell mérete miatt a letöltés több percet is igénybe vehet. Ekkor megjelenik a távolról renderelt modell.
 
 ![A minta kimenete](media/arr-sample-output.png)
 
