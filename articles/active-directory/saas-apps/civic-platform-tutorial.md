@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a polgári platformmal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a polgári platform között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d790454-143e-40ac-b3cb-5a256977b4db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ccf124c5a4160715df4e685e405dcd591c49ae7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68496825"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520381"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Oktatóanyag: a polgári platform integrálása a Azure Active Directory
 
@@ -87,9 +82,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.accela.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.accela.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`civicplatform.accela.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `civicplatform.accela.com`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Civic platform ügyfél-támogatási csapatával](mailto:skale@accela.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -98,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-1. Navigáljon **Azure Active Directory** > **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást.
+1. Navigáljon **Azure Active Directory**  >  **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást.
 
 1. Másolja a **címtár-(bérlői) azonosítót** , és tárolja azt a Jegyzettömbben.
 
@@ -108,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Az alkalmazás (ügyfél) AZONOSÍTÓjának másolása](media/civic-platform-tutorial/applicationid.png)
 
-1. Navigáljon **Azure Active Directory** > **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Navigáljon **Azure Active Directory**  >  **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást. Válassza ki a **tanúsítványok & Secrets**elemet.
 
 1. Válassza ki az **ügyfél titkai-> új ügyfél titkát**.
 
@@ -129,7 +124,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Hozzon létre egy szabványos választható **ssoconfig**.
 
-1. Keresse meg a **ssoconfig** , és küldje el.
+1. Keresse meg a **ssoconfig**  , és küldje el.
 
     ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config.png)
 
@@ -147,7 +142,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. A **Könyvtárazonosító** mezőben adja meg a **könyvtár (bérlő) azonosítójának** értékét, amelyet a Azure Portal másolt.
 
-    1. Adja meg a idpName. Pl.: `Azure`–.
+    1. Adja meg a idpName. Pl.: – `Azure` .
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -157,9 +152,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -191,9 +186,9 @@ Ha a hozzáférési panelen a Civic platform csempére kattint, automatikusan be
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

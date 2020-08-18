@@ -4,18 +4,19 @@ description: A Azure Files hálózati beállításainak áttekintése.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497766"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525897"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files hálózati végpontok konfigurálása
+
 Azure Files két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
 - Nyilvános végpontok, amelyek nyilvános IP-címmel rendelkeznek, és bárhonnan elérhetők a világ bármely pontján.
 - Saját végpontok, amelyek egy virtuális hálózaton belül találhatók, és rendelkeznek magánhálózati IP-címmel a virtuális hálózat címterület területén belülről.
@@ -27,12 +28,21 @@ Ez a cikk azt ismerteti, hogyan konfigurálhatja a Storage-fiók végpontját az
 Javasoljuk, hogy olvassa el a [Azure Files hálózati megfontolásokat](storage-files-networking-overview.md) az útmutató elolvasása előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 - Ez a cikk azt feltételezi, hogy már létrehozott egy Azure-előfizetést. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
-- Ez a cikk azt feltételezi, hogy már létrehozott egy Azure-fájlmegosztást egy olyan Storage-fiókban, amelyhez a helyszíni rendszerből szeretne csatlakozni. Az Azure-fájlmegosztás létrehozásáról az [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)című témakörben olvashat bővebben.
+- Ez a cikk azt feltételezi, hogy már létrehozott egy Azure-fájlmegosztást egy olyan Storage-fiókban, amelyhez csatlakozni szeretne a helyszíni környezetből. Az Azure-fájlmegosztás létrehozásáról az [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)című témakörben olvashat bővebben.
 - Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
+## <a name="endpoint-configurations"></a>Végpont-konfigurációk
+
+A végpontokat beállíthatja úgy, hogy korlátozza a hálózati hozzáférést a Storage-fiókhoz. A Storage-fiókokhoz való hozzáférés korlátozásának két módja van:
+
+- [Hozzon létre egy vagy több privát végpontot a Storage-fiókhoz](#create-a-private-endpoint)  , és korlátozza a nyilvános végponthoz való hozzáférést. Ez biztosítja, hogy csak a kívánt virtuális hálózatokból származó forgalom férhessenek hozzá az Azure-fájlmegosztás számára a Storage-fiókon belül.
+- [Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra](#restrict-public-endpoint-access). Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-címen keresztül éri el a Storage-fiókot, de a hozzáférés csak a konfigurációban megadott helyekről lehetséges.
+
+### <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
+
 Ha létrehoz egy privát végpontot a Storage-fiókjához, a következő Azure-erőforrásokat fogja telepíteni:
 
 - **Privát végpont**: a Storage-fiók privát végpontját jelképező Azure-erőforrás. Ezt olyan erőforrásként tekintheti meg, amely összekapcsolja a Storage-fiókot és egy hálózati adaptert.
@@ -106,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Ha minden sikeresen működött, a következő kimenetnek kell megjelennie, ahol a a `192.168.0.5` virtuális hálózat privát végpontjának magánhálózati IP-címe. Vegye figyelembe, hogy az elérési út helyett továbbra is a storageaccount.file.core.windows.net-t kell használnia a fájlmegosztás csatlakoztatásához `privatelink` .
+Ha minden sikeresen működött, a következő kimenetnek kell megjelennie, ahol a a `192.168.0.5` virtuális hálózat privát végpontjának magánhálózati IP-címe. Az elérési út helyett továbbra is a storageaccount.file.core.windows.net-t kell használnia a fájlmegosztás csatlakoztatásához `privatelink` .
 
 ```Output
 Server:         127.0.0.53
@@ -120,13 +130,12 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>A nyilvános végponthoz való hozzáférés korlátozása
-A nyilvános végponthoz való hozzáférést a Storage-fiók tűzfalának beállításai alapján korlátozhatja. Általánosságban elmondható, hogy egy Storage-fiókhoz a legtöbb tűzfal-házirend korlátozza a hálózati hozzáférést egy vagy több virtuális hálózathoz. A Storage-fiókokhoz való hozzáférés korlátozásának két módja van:
+### <a name="restrict-public-endpoint-access"></a>Nyilvános végpontok hozzáférésének korlátozása
 
-- [Hozzon létre egy vagy több privát végpontot a Storage-fiókhoz](#create-a-private-endpoint) , és korlátozza a nyilvános végponthoz való hozzáférést. Ez biztosítja, hogy csak a kívánt virtuális hálózatokból származó forgalom férhessenek hozzá az Azure-fájlmegosztás számára a Storage-fiókon belül.
-- Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra. Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-cím használatával fér hozzá a Storage-fiókhoz.
+A nyilvános végpontok elérésének korlátozásához először le kell tiltania a nyilvános végponthoz való általános hozzáférést. A nyilvános végponthoz való hozzáférés letiltása nem érinti a privát végpontokat. A nyilvános végpont letiltása után kiválaszthatja azokat az adott hálózatokat vagy IP-címeket, amelyek továbbra is hozzáférhetnek. Általánosságban elmondható, hogy egy Storage-fiókhoz tartozó tűzfalszabályok többsége korlátozza a hálózati hozzáférést egy vagy több virtuális hálózathoz.
 
-### <a name="disable-access-to-the-public-endpoint"></a>A nyilvános végpont elérésének letiltása
+#### <a name="disable-access-to-the-public-endpoint"></a>A nyilvános végpont elérésének letiltása
+
 Ha a nyilvános végponthoz való hozzáférés le van tiltva, a Storage-fiók továbbra is elérhető a saját végpontján keresztül. Ellenkező esetben a rendszer elutasítja a Storage-fiók nyilvános végpontjának érvényes kérelmeit. 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
@@ -140,7 +149,8 @@ Ha a nyilvános végponthoz való hozzáférés le van tiltva, a Storage-fiók t
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>A nyilvános végponthoz való hozzáférés korlátozása adott virtuális hálózatokra
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>A nyilvános végponthoz való hozzáférés korlátozása adott virtuális hálózatokra
+
 Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virtuális hálózatokról érkező kéréseket engedélyez a nyilvános végpontnak. Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ez privát végpontokkal vagy anélkül is használható.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
@@ -154,7 +164,8 @@ Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virt
 
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
+
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
 - [DNS-továbbítás konfigurálása az Azure Fileshoz](storage-files-networking-dns.md)
 - [S2S VPN konfigurálása Azure Fileshoz](storage-files-configure-s2s-vpn.md)

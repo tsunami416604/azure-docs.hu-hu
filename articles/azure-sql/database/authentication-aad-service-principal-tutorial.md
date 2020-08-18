@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294756"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516690"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal
 
@@ -94,6 +94,8 @@ A szükséges engedély megadásához futtassa az alábbi szkriptet.
 
 > [!NOTE] 
 > Ezt a szkriptet egy Azure AD-nek `Global Administrator` vagy egy-nak kell végrehajtania `Privileged Roles Administrator` .
+>
+> A **nyilvános előzetes**verzióban hozzárendelheti a `Directory Readers` szerepkört egy csoporthoz az Azure ad-ben. A csoport tulajdonosai ezt követően hozzáadhatják a felügyelt identitást a csoport tagjaként, ami megkerüli a `Global Administrator` vagy a `Privileged Roles Administrator` szerepkör megadásának szükségességét `Directory Readers` . A szolgáltatással kapcsolatos további információkért lásd: az [Azure SQL Azure Active Directory Directory-olvasók szerepköre](authentication-aad-directory-readers-role.md).
 
 - Cserélje le a- `<TenantId>` t a `TenantId` korábban összegyűjtöttre.
 - Cserélje le az `<server name>` kifejezést az SQL logikai kiszolgáló nevére. Ha a kiszolgáló neve `myserver.database.windows.net` , cserélje le a (z) értékre `<server name>` `myserver` .
@@ -304,3 +306,4 @@ Miután létrehozta a szolgáltatásnevet az Azure AD-ben, hozza létre a felhas
 - [Azure AD-szolgáltatás egyszerű hitelesítése az SQL DB-code minta használatával](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Az Azure SQL Azure Active Directory Directory-olvasói szerepköre](authentication-aad-directory-readers-role.md)

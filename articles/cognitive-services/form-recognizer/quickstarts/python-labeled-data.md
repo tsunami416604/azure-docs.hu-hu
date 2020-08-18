@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 63b636a132e0fef806bb2d27a9dcbec5505f76a0
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 653b3dedcf969c611afa4c81cc5268c43020a7e7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904666"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517778"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API a Python használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -556,7 +556,7 @@ Esetenként, ha ugyanazon a sorban eltérő címkéket alkalmaz, a szolgáltatá
 
 Tisztában vagyunk azzal, hogy ez a forgatókönyv elengedhetetlen az ügyfelek számára, és a jövőben is dolgozunk. Jelenleg azt javasoljuk, hogy a felhasználók több zsúfolt mezőt is felcímkéznek egyetlen mezőként, majd elkülönítsék a feltételeket a kinyerési eredmények utólagos feldolgozásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az API-referenciák dokumentációját, amely részletesebben vizsgálja meg az űrlap-felismerő API-t.
 

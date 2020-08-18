@@ -1,360 +1,511 @@
 ---
-title: 'Gyors útmutató: kapcsolat a Java használatával – Azure Database for MySQL'
-description: Ez a rövid útmutató egy olyan Java-kódrészletet tartalmaz, amellyel csatlakozhat egy Azure Database for MySQL adatbázisból, és lekérdezheti azokat.
-author: ajlam
-ms.author: andrela
+title: A Java és a JDBC használata Azure Database for MySQL
+description: Ismerje meg, hogyan használható a Java és a JDBC Azure Database for MySQL adatbázissal.
+author: jdubois
+ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, devx-track-java
+ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 5/26/2020
-ms.openlocfilehash: b6f928aba1c3abda57a8ed329c0ad4e7cdb5e881
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 08/17/2020
+ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185893"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517582"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Java használatával csatlakozhat a Azure Database for MySQLhoz, és lekérdezheti azokat
+# <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>A Java és a JDBC használata Azure Database for MySQL
 
-Ebben a rövid útmutatóban egy Java-alkalmazás és a MariaDB-összekötő/J JDBC-illesztő használatával csatlakozik egy Azure Database for MySQLhoz. Ezután SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban a Mac, Ubuntu Linux és Windows platformokról. 
+Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for MySQLban](https://docs.microsoft.com/azure/mysql/)található információk tárolására és lekérésére.
 
-Ez a témakör azt feltételezi, hogy már ismeri a Java használatával való fejlesztést, de most ismerkedik a Azure Database for MySQLával.
+A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való kapcsolódáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy Azure Database for MySQL-kiszolgáló. [Hozzon létre egy Azure Database for MySQL kiszolgálót Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [hozzon létre egy Azure Database for MySQL kiszolgálót az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
-- Azure Database for MySQL a kapcsolat biztonsága konfigurálva van a tűzfal megnyitásával és az alkalmazáshoz konfigurált SSL-kapcsolati beállításokkal.
+- Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
+- Támogatott [Java Development Kit](https://aka.ms/azure-jdks), 8-as verzió (Azure Cloud Shell).
+- Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
-> [!IMPORTANT] 
-> Győződjön meg arról, hogy az IP-cím, amelyhez csatlakozik, a [Azure Portal](./howto-manage-firewall-using-portal.md) vagy az [Azure CLI](./howto-manage-firewall-using-cli.md) használatával adja hozzá a kiszolgáló tűzfalszabály-szabályait.
+## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
 
-## <a name="obtain-the-mariadb-connector"></a>Az MariaDB-összekötő beszerzése
+Környezeti változókat fogunk használni a gépelési hibák korlátozása érdekében, és egyszerűbbé tesszük a következő konfiguráció testreszabását az adott igényeknek megfelelően.
 
-Szerezze be a [MariaDB-összekötő/J-](https://mariadb.com/kb/en/library/mariadb-connector-j/) összekötőt az alábbi módszerek egyikével:
-   - A [MariaDB-Java-Client](https://search.maven.org/search?q=a:mariadb-java-client) Maven-csomaggal adja meg a [MariaDB-Java-Client függőséget](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) a projekt Pom-fájljában.
-   - Töltse le a [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) JDBC-illesztőt, és adja hozzá a JDBC jar-fájlt (például MariaDB-Java-Client-2.4.3. jar) az alkalmazás osztályának elérési útjához. Tekintse meg a környezet dokumentációját az osztályok elérési útjának (például az [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) vagy a [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) ) számára
+Állítsa be ezeket a környezeti változókat a következő parancsok használatával:
 
-## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
-
-Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
-
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
-3. Válassza ki a kiszolgálónevet.
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
- ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-java/azure-database-mysql-server-name.png)
-
-## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
-
-Az alábbi kód használatával csatlakozhat és tölthet be adatokat az **INSERT SQL-utasítással** használt függvény segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál. A [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) és az execute() metódusok a tábla létrehozásához, illetve törléséhez használatosak. A prepareStatement objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az executeUpdate() metódussal futtathatja az egyes paraméterkészletekhez tartozó értékek beszúrására szolgáló parancsot. 
-
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
-
-```java
-import java.sql.*;
-import java.util.Properties;
-
-public class CreateTableInsertRows {
-
-    public static void main (String[] args)  throws Exception
-    {
-        // Initialize connection variables. 
-        String host = "mydemoserver.mysql.database.azure.com";
-        String database = "quickstartdb";
-        String user = "myadmin@mydemoserver";
-        String password = "<server_admin_password>";
-
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:mariadb://%s/%s", host, database);
-
-            // Set connection properties.
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("useSSL", "true");
-            properties.setProperty("verifyServerCertificate", "true");
-            properties.setProperty("requireSSL", "false");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Drop previous table of same name if one exists.
-                Statement statement = connection.createStatement();
-                statement.execute("DROP TABLE IF EXISTS inventory;");
-                System.out.println("Finished dropping table (if existed).");
-    
-                // Create table.
-                statement.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);");
-                System.out.println("Created table.");
-                
-                // Insert some data into table.
-                int nRowsInserted = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO inventory (name, quantity) VALUES (?, ?);");
-                preparedStatement.setString(1, "banana");
-                preparedStatement.setInt(2, 150);
-                nRowsInserted += preparedStatement.executeUpdate();
-
-                preparedStatement.setString(1, "orange");
-                preparedStatement.setInt(2, 154);
-                nRowsInserted += preparedStatement.executeUpdate();
-
-                preparedStatement.setString(1, "apple");
-                preparedStatement.setInt(2, 100);
-                nRowsInserted += preparedStatement.executeUpdate();
-                System.out.println(String.format("Inserted %d row(s) of data.", nRowsInserted));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-    
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
-    }
-}
-
+```bash
+AZ_RESOURCE_GROUP=database-workshop
+AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
+AZ_LOCATION=<YOUR_AZURE_REGION>
+AZ_MYSQL_USERNAME=demo
+AZ_MYSQL_PASSWORD=<YOUR_MYSQL_PASSWORD>
+AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 ```
 
-## <a name="read-data"></a>Adatok olvasása
+Cserélje le a helyőrzőket a következő értékekre, amelyek a cikk során használatosak:
 
-Az alábbi kód használatával végezheti el az adatok olvasását a **SELECT** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál. A [createStatement ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) és a executeQuery () metódus a SELECT utasítás összekapcsolására és futtatására szolgál. Az eredmények feldolgozása a ResultSet objektum használatával történik. 
+- `<YOUR_DATABASE_NAME>`: A MySQL-kiszolgáló neve. Egyedinek kell lennie az Azure-ban.
+- `<YOUR_AZURE_REGION>`: A használni kívánt Azure-régió. Alapértelmezés szerint használhatja `eastus` , de azt javasoljuk, hogy a régiót közelebbről konfigurálja, ahol él. Az elérhető régiók teljes listáját a beírásával érheti el `az account list-locations` .
+- `<YOUR_MYSQL_PASSWORD>`: A MySQL adatbázis-kiszolgáló jelszava. A jelszónak legalább nyolc karakterből kell állnia. A karaktereknek a következő kategóriák közül hármat kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0-9) és nem alfanumerikus karakterek (!, $, #,% stb.).
+- `<YOUR_LOCAL_IP_ADDRESS>`: A helyi számítógép IP-címe, amelyből a Java-alkalmazást fogja futtatni. Az egyik kényelmes módszer, ha úgy találja, hogy a böngészőt a [whatismyip.Akamai.com](http://whatismyip.akamai.com/)irányítsa.
 
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
+Következő lépésként hozzon létre egy erőforráscsoportot:
 
-```java
-import java.sql.*;
-import java.util.Properties;
-
-public class ReadTable {
-
-    public static void main (String[] args)  throws Exception
-    {
-        // Initialize connection variables.
-        String host = "mydemoserver.mysql.database.azure.com";
-        String database = "quickstartdb";
-        String user = "myadmin@mydemoserver";
-        String password = "<server_admin_password>";
-
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:mariadb://%s/%s", host, database);
-
-            // Set connection properties.
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("useSSL", "true");
-            properties.setProperty("verifyServerCertificate", "true");
-            properties.setProperty("requireSSL", "false");
-            
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-    
-                Statement statement = connection.createStatement();
-                ResultSet results = statement.executeQuery("SELECT * from inventory;");
-                while (results.next())
-                {
-                    String outputString = 
-                        String.format(
-                            "Data row = (%s, %s, %s)",
-                            results.getString(1),
-                            results.getString(2),
-                            results.getString(3));
-                    System.out.println(outputString);
-                }
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database."); 
-        }
-        System.out.println("Execution finished.");
-    }
-}
+```azurecli
+az group create \
+    --name $AZ_RESOURCE_GROUP \
+    --location $AZ_LOCATION \
+  	| jq
 ```
 
-## <a name="update-data"></a>Adatok frissítése
+> [!NOTE]
+> Ezt a `jq` segédprogramot használjuk, amely alapértelmezés szerint telepítve van [Azure Cloud Shell](https://shell.azure.com/) a JSON-adat megjelenítéséhez és az olvashatóság érdekében.
+> Ha nem tetszik a segédprogram, nyugodtan eltávolíthatja az `| jq` összes használni kívánt parancs részét.
 
-Az alábbi kód használatával végezheti el az adatok módosítását az **UPDATE** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál. A [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) és az executeUpdate() metódusok előkészítésre, valamint az UPDATE-utasítás futtatására szolgálnak. 
+## <a name="create-an-azure-database-for-mysql-instance"></a>Azure Database for MySQL példány létrehozása
 
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
+Az első dolog, amit létrehozunk egy felügyelt MySQL-kiszolgáló.
+
+> [!NOTE]
+> A MySQL-kiszolgálók létrehozásával kapcsolatos részletes információkat [a Azure Portal használatával Azure Database for MySQL kiszolgáló létrehozása](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)című témakörben olvashat.
+
+A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsfájlt:
+
+```azurecli
+az mysql server create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME \
+    --location $AZ_LOCATION \
+    --sku-name B_Gen5_1 \
+    --storage-size 5120 \
+    --admin-user $AZ_MYSQL_USERNAME \
+    --admin-password $AZ_MYSQL_PASSWORD \
+  	| jq
+```
+
+Ez a parancs egy kis MySQL-kiszolgálót hoz létre.
+
+### <a name="configure-a-firewall-rule-for-your-mysql-server"></a>Tűzfalszabály konfigurálása a MySQL-kiszolgálóhoz
+
+A Azure Database for MySQL példányok alapértelmezés szerint biztonságosak. Olyan tűzfallal rendelkeznek, amely nem engedélyezi a bejövő kapcsolatokat. Az adatbázis használatához olyan tűzfalszabály hozzáadására van szükség, amely lehetővé teszi a helyi IP-cím számára az adatbázis-kiszolgáló elérését.
+
+Mivel a cikk elején konfigurálta a helyi IP-címet, a kiszolgáló tűzfalát a következő parancs futtatásával nyithatja meg:
+
+```azurecli
+az mysql server firewall-rule create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME-database-allow-local-ip \
+    --server $AZ_DATABASE_NAME \
+    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  	| jq
+```
+
+### <a name="configure-a-mysql-database"></a>MySQL-adatbázis konfigurálása
+
+A korábban létrehozott MySQL-kiszolgáló üres. Nincs olyan adatbázisa, amelyet a Java-alkalmazással használhat. Hozzon létre egy nevű új adatbázist `demo` :
+
+```azurecli
+az mysql db create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name demo \
+    --server-name $AZ_DATABASE_NAME \
+  	| jq
+```
+
+### <a name="create-a-new-java-project"></a>Új Java-projekt létrehozása
+
+Használja kedvenc IDE-t, hozzon létre egy új Java-projektet, és adjon hozzá egy `pom.xml` fájlt a gyökérkönyvtárában:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.20</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+Ez a fájl egy [Apache Maven](https://maven.apache.org/) , amely a következő használatára konfigurálja a projektet:
+
+- Java 8
+- A Java legújabb MySQL-illesztőprogramja
+
+### <a name="prepare-a-configuration-file-to-connect-to-azure-database-for-mysql"></a>Konfigurációs fájl előkészítése Azure Database for MySQLhoz való csatlakozáshoz
+
+Hozzon létre egy *src/Main/Resources/Application. properties* fájlt, és adja hozzá a következőket:
+
+```properties
+url=jdbc:mysql://$AZ_DATABASE_NAME.mysql.database.azure.com:3306/demo?serverTimezone=UTC
+user=demo@$AZ_DATABASE_NAME
+password=$AZ_MYSQL_PASSWORD
+```
+
+- Cserélje le a két `$AZ_DATABASE_NAME` változót a cikk elején konfigurált értékre.
+- Cserélje le a `$AZ_MYSQL_PASSWORD` változót a cikk elején konfigurált értékre.
+
+> [!NOTE]
+> `?serverTimezone=UTC`A Configuration (konfiguráció) tulajdonsághoz való hozzáfűzésével `url` megtudhatja, hogy a JDBC illesztőprogram az UTC dátumformátum (vagy egyezményes világidő) használatát használja az adatbázishoz való csatlakozáskor. Ellenkező esetben a Java-kiszolgáló nem ugyanazt a dátumformátumot használja, mint az adatbázis, ami hibát eredményezhet.
+
+### <a name="create-an-sql-file-to-generate-the-database-schema"></a>SQL-fájl létrehozása az adatbázis-séma létrehozásához
+
+Egy adatbázis-séma létrehozásához a *src/Main `schema.sql` /Resources* /file-t fogjuk használni. Hozza létre a fájlt a következő tartalommal:
+
+```sql
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
+```
+
+## <a name="code-the-application"></a>Az alkalmazás kódja
+
+### <a name="connect-to-the-database"></a>Csatlakozás az adatbázishoz
+
+Ezután adja hozzá a Java-kódot, amely a JDBC-t fogja használni a MySQL-kiszolgálóról származó adatok tárolására és lekérésére.
+
+Hozzon létre egy *src/Main/Java/DemoApplication. Java* fájlt, amely a következőket tartalmazza:
 
 ```java
+package com.example.demo;
+
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
+
 import java.sql.*;
-import java.util.Properties;
+import java.util.*;
+import java.util.logging.Logger;
 
-public class UpdateTable {
-    public static void main (String[] args)  throws Exception
-    {
-        // Initialize connection variables. 
-        String host = "mydemoserver.mysql.database.azure.com";
-        String database = "quickstartdb";
-        String user = "myadmin@mydemoserver";
-        String password = "<server_admin_password>";
+public class DemoApplication {
 
-        Connection connection = null;
+    private static final Logger log;
 
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:mariadb://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("useSSL", "true");
-            properties.setProperty("verifyServerCertificate", "true");
-            properties.setProperty("requireSSL", "false");
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log =Logger.getLogger(DemoApplication.class.getName());
+    }
 
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
+    public static void main(String[] args) throws Exception {
+        log.info("Loading application properties");
+        Properties properties = new Properties();
+        properties.load(DemoApplication.class.getClassLoader().getResourceAsStream("application.properties"));
+
+        log.info("Connecting to the database");
+        Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        log.info("Database connection test: " + connection.getCatalog());
+
+        log.info("Create database schema");
+        Scanner scanner = new Scanner(DemoApplication.class.getClassLoader().getResourceAsStream("schema.sql"));
+        Statement statement = connection.createStatement();
+        while (scanner.hasNextLine()) {
+            statement.execute(scanner.nextLine());
         }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Modify some data in table.
-                int nRowsUpdated = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE inventory SET quantity = ? WHERE name = ?;");
-                preparedStatement.setInt(1, 200);
-                preparedStatement.setString(2, "banana");
-                nRowsUpdated += preparedStatement.executeUpdate();
-                System.out.println(String.format("Updated %d row(s) of data.", nRowsUpdated));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
+
+        /*
+        Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+        insertData(todo, connection);
+        todo = readData(connection);
+        todo.setDetails("congratulations, you have updated data!");
+        updateData(todo, connection);
+        deleteData(todo, connection);
+        */
+
+        log.info("Closing database connection");
+        connection.close();
+        AbandonedConnectionCleanupThread.uncheckedShutdown();
     }
 }
 ```
 
-## <a name="delete-data"></a>Adat törlése
+Ez a Java-kód az *Application. properties* és a korábban létrehozott *Schema. SQL* fájlokat fogja használni, hogy csatlakozhasson a MySQL-kiszolgálóhoz, és hozzon létre egy sémát, amely az adattárolást fogja tárolni.
 
-Az alábbi kód használatával végezheti el az adatok eltávolítását a **DELETE** SQL-utasítás segítségével. A [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) metódus a MySQL-hez való kapcsolódásra szolgál.  A [prepareStatement ()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) és a executeUpdate () metódus a DELETE utasítás előkészítésére és futtatására szolgál. 
+Ebben a fájlban láthatja, hogy az adatok beszúrására, olvasására, frissítésére és törlésére szolgáló metódusok megjegyzései: ezeket a metódusokat a cikk további részében fogjuk felírni, és egy másik után törölheti őket.
 
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
+> [!NOTE]
+> Az adatbázis hitelesítő adatait az *Application. properties* fájl *felhasználói* és *jelszó* tulajdonságaiban tárolja a rendszer. Ezeket a hitelesítő adatokat a rendszer a végrehajtáskor használja `DriverManager.getConnection(properties.getProperty("url"), properties);` , mivel a tulajdonságok fájlját argumentumként adja át a rendszer.
+
+> [!NOTE]
+> A `AbandonedConnectionCleanupThread.uncheckedShutdown();` végén található sor egy MySQL-illesztőprogram-specifikus parancs, amely egy belső szálat semmisít meg az alkalmazás leállításakor.
+> Nyugodtan figyelmen kívül hagyható. 
+
+Ezt a fő osztályt a kedvenc eszközével is végrehajthatja:
+
+- Az IDE használatával kattintson a jobb gombbal a *DemoApplication* osztályra, és hajtsa végre.
+- A Maven használatával futtathatja az alkalmazást az alábbiak végrehajtásával: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"` .
+
+Az alkalmazásnak kapcsolódnia kell a Azure Database for MySQLhoz, létre kell hoznia egy adatbázis-sémát, majd be kell kapcsolnia a kapcsolatot, ahogy az a konzol naplófájljaiban látható:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Closing database connection 
+```
+
+### <a name="create-a-domain-class"></a>Tartományi osztály létrehozása
+
+Hozzon létre egy új `Todo` Java-osztályt az osztály mellett, `DemoApplication` és adja hozzá a következő kódot:
 
 ```java
-import java.sql.*;
-import java.util.Properties;
+package com.example.demo;
 
-public class DeleteTable {
-    public static void main (String[] args)  throws Exception
-    {
-        // Initialize connection variables.
-        String host = "mydemoserver.mysql.database.azure.com";
-        String database = "quickstartdb";
-        String user = "myadmin@mydemoserver";
-        String password = "<server_admin_password>";
+public class Todo {
 
-        Connection connection = null;
+    private Long id;
+    private String description;
+    private String details;
+    private boolean done;
 
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:mariadb://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("useSSL", "true");
-            properties.setProperty("verifyServerCertificate", "true");
-            properties.setProperty("requireSSL", "false");
-            
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Delete some data from table.
-                int nRowsDeleted = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM inventory WHERE name = ?;");
-                preparedStatement.setString(1, "orange");
-                nRowsDeleted += preparedStatement.executeUpdate();
-                System.out.println(String.format("Deleted %d row(s) of data.", nRowsDeleted));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
+    public Todo() {
+    }
+
+    public Todo(Long id, String description, String details, boolean done) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.done = done;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", done=" + done +
+                '}';
     }
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+Ez az osztály olyan tartományi modell, amely a `todo` *Schema. SQL* parancsfájl végrehajtásakor létrehozott táblán van leképezve.
+
+### <a name="insert-data-into-azure-database-for-mysql"></a>Adatbeszúrás Azure Database for MySQLba
+
+Az *src/Main/Java/DemoApplication. Java* fájlban a Main metódust követően adja hozzá a következő metódust az adatbázisba való beszúráshoz:
+
+```java
+private static void insertData(Todo todo, Connection connection) throws SQLException {
+    log.info("Insert data");
+    PreparedStatement insertStatement = connection
+            .prepareStatement("INSERT INTO todo (id, description, details, done) VALUES (?, ?, ?, ?);");
+
+    insertStatement.setLong(1, todo.getId());
+    insertStatement.setString(2, todo.getDescription());
+    insertStatement.setString(3, todo.getDetails());
+    insertStatement.setBoolean(4, todo.isDone());
+    insertStatement.executeUpdate();
+}
+```
+
+Mostantól megadhatja a következő két sor megjegyzését a `main` metódusban:
+
+```java
+Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+insertData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Closing database connection
+```
+
+### <a name="reading-data-from-azure-database-for-mysql"></a>Adatok olvasása a Azure Database for MySQLból
+
+Olvassa el a korábban beszúrt adatforrásokat, és ellenőrizze, hogy a kód megfelelően működik-e.
+
+Az *src/Main/Java/DemoApplication. Java* fájlban a `insertData` metódus után adja hozzá a következő metódust az adatok az adatbázisból való beolvasásához:
+
+```java
+private static Todo readData(Connection connection) throws SQLException {
+    log.info("Read data");
+    PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
+    ResultSet resultSet = readStatement.executeQuery();
+    if (!resultSet.next()) {
+        log.info("There is no data in the database!");
+        return null;
+    }
+    Todo todo = new Todo();
+    todo.setId(resultSet.getLong("id"));
+    todo.setDescription(resultSet.getString("description"));
+    todo.setDetails(resultSet.getString("details"));
+    todo.setDone(resultSet.getBoolean("done"));
+    log.info("Data read from the database: " + todo.toString());
+    return todo;
+}
+```
+
+Mostantól megadhatja a következő sor megjegyzését a `main` metódusban:
+
+```java
+todo = readData(connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="updating-data-in-azure-database-for-mysql"></a>Az Azure Database for MySQL-beli Adatfrissítés
+
+Frissítjük a korábban beszúrt adathalmazokat.
+
+Továbbra is a *src/Main/Java/DemoApplication. Java* fájlban, a `readData` metódus után adja hozzá a következő metódust az adatbázison belüli adatfrissítéshez:
+
+```java
+private static void updateData(Todo todo, Connection connection) throws SQLException {
+    log.info("Update data");
+    PreparedStatement updateStatement = connection
+            .prepareStatement("UPDATE todo SET description = ?, details = ?, done = ? WHERE id = ?;");
+
+    updateStatement.setString(1, todo.getDescription());
+    updateStatement.setString(2, todo.getDetails());
+    updateStatement.setBoolean(3, todo.isDone());
+    updateStatement.setLong(4, todo.getId());
+    updateStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Mostantól megadhatja a következő két sor megjegyzését a `main` metódusban:
+
+```java
+todo.setDetails("congratulations, you have updated data!");
+updateData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="deleting-data-in-azure-database-for-mysql"></a>Az Azure Database for MySQLban lévő adattörlés
+
+Végül törölje az előzőleg beszúrt adathalmazt.
+
+Továbbra is a *src/Main/Java/DemoApplication. Java* fájlban, a `updateData` metódus után adja hozzá a következő metódust az adatbázison belüli adattörléshez:
+
+```java
+private static void deleteData(Todo todo, Connection connection) throws SQLException {
+    log.info("Delete data");
+    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
+    deleteStatement.setLong(1, todo.getId());
+    deleteStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Mostantól megadhatja a következő sor megjegyzését a `main` metódusban:
+
+```java
+deleteData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Delete data 
+[INFO   ] Read data 
+[INFO   ] There is no data in the database! 
+[INFO   ] Closing database connection 
+```
+
+## <a name="conclusion-and-resources-clean-up"></a>Következtetések és erőforrások tisztítása
+
+Gratulálunk! Létrehozott egy Java-alkalmazást, amely a JDBC-t használja a Azure Database for MySQL adatok tárolására és lekérésére.
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)

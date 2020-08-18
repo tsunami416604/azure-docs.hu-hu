@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a TigerText Secure Messengerrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a TigerText Secure Messenger között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 03f1e128-5bcb-4e49-b6a3-fe22eedc6d5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9dff60767e923bad1322b689acd98e69eb9c2ac6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67088663"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Oktatóanyag: Azure Active Directory integráció a TigerText Secure Messengerrel
 
@@ -38,7 +34,7 @@ Az Azure AD-vel való szolgáltatott szoftverek (SaaS) alkalmazással kapcsolato
 
 Az Azure AD-integráció TigerText Secure Messengerrel való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 * Egy TigerText biztonságos Messenger-előfizetés egyszeri bejelentkezéssel.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -134,7 +130,7 @@ Ha az egyszeri bejelentkezést a biztonságos TigerText szeretné konfigurálni,
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**   > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**    >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
     ![A felhasználók és a "minden felhasználó" lehetőség](common/users.png)
 
@@ -148,7 +144,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon\@\<yourcompanydomain> értéket.\< bővítmény>**. Például **BrittaSimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon \@ \<yourcompanydomain> . \<extension> **. Például **BrittaSimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
@@ -158,7 +154,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít számukra a TigerText Secure Messengerhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás** > **TigerText Secure Messenger**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **TigerText Secure Messenger**elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -190,7 +186,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a saját alkalmazások portálon a **TigerText biztonságos Messenger** elemet választja, akkor automatikusan be kell jelentkeznie a TigerText Secure Messenger-előfizetésbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-vel való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

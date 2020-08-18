@@ -3,23 +3,19 @@ title: 'Oktatóanyag: az SAP SuccessFactors visszaírási konfigurálása a Azur
 description: Megtudhatja, hogyan állíthatja vissza az attribútumot az Azure AD-ből származó SAP-SuccessFactors.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215868b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809931"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533996"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -151,7 +147,7 @@ A SuccessFactors visszaírási kiépítési alkalmazás bizonyos *kódokat* hasz
 1. A Poster alatt kattintson a SuccessFactors-gyűjteményhez társított három pontra (...), és adjon hozzá egy "új kérés" nevű "e-mail-típusokat" az alább látható módon. 
 
    > [!div class="mx-imgBorder"]
-   > ![Poster-e-mail-kérelem](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Poster-e-mail-kérelem ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
 
 1. Nyissa meg az "e-mail-típus beolvasása" kérés panelt. 
 1. A GET URL-cím mezőbe írja be a következő URL-címet, `successFactorsAPITenantName` és cserélje le az SuccessFactors-példány API-bérlőjét. 

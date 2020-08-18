@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció üzemeltetett grafittal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és üzemeltetett grafitok között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a1ac4d7f-d079-4f3c-b6da-0f520d427ceb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6c5b689d00bd1adad820043840c43f49666655c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158081"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Azure Active Directory-integráció az üzemeltetett grafittal
 
@@ -33,7 +28,7 @@ Az üzemeltetett grafit és az Azure AD integrálásával a következő előnyö
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,15 +102,15 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
     ![Üzemeltetett grafit tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.hostedgraphite.com/metadata/<user id>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.hostedgraphite.com/metadata/<user id>`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.hostedgraphite.com/complete/saml/<user id>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.hostedgraphite.com/complete/saml/<user id>`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Üzemeltetett grafit tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.hostedgraphite.com/login/saml/<user id>/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.hostedgraphite.com/login/saml/<user id>/`
 
     > [!NOTE]
     > Vegye figyelembe, hogy ezek nem valódi értékek. Ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel kell frissíteni. Ezeknek az értékeknek a beszerzéséhez nyissa meg a hozzáférés->SAML-telepítést az alkalmazás oldalán, vagy lépjen kapcsolatba a [tárolt grafit támogatási csapatával](mailto:help@hostedgraphite.com).
@@ -146,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
     ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
-4. Az **entitás vagy a kiállító azonosítója** és az **egyszeri bejelentkezés bejelentkezési URL-címe** szövegmezőben illessze be az **Azure ad-azonosító** és a **bejelentkezési url-cím** értékét, amelyet a Azure Portal másolt.
+4. Az  **entitás vagy a kiállító azonosítója** és az **egyszeri bejelentkezés bejelentkezési URL-címe** szövegmezőben illessze be az **Azure ad-azonosító** és a **bejelentkezési url-cím** értékét, amelyet a Azure Portal másolt.
 
     ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
@@ -178,12 +173,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -216,7 +211,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a futtatott grafitban. Az üzemeltetett grafit támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az üzemeltetett grafitban, akkor a hitelesítés után létrejön egy újat.
 
 > [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, kapcsolatba kell lépnie az üzemeltetett grafit támogatási csapatával <mailto:help@hostedgraphite.com>.
+> Ha manuálisan kell létrehoznia egy felhasználót, kapcsolatba kell lépnie az üzemeltetett grafit támogatási csapatával <mailto:help@hostedgraphite.com> .
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a jutalmazási átjáróval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a jutalmazási átjáró között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 34336386-998a-4d47-ab55-721d97708e5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 03e6f52d764b72c423269fcdfdc966474978aa6e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 61d7e678b2904ff6eda1866951cfafd0fa0d6688
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169357"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534268"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Oktatóanyag: Azure Active Directory integráció a jutalmazási átjáróval
 
@@ -120,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés a jutalmazási átjáróval való konfigurá
     - `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezeknek az értékeknek a beszerzéséhez kezdjen el egy integrációt beállítani a jutalmazási portálon. A részletek a következő címen olvashatókhttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezeknek az értékeknek a beszerzéséhez kezdjen el egy integrációt beállítani a jutalmazási portálon. A részletek a következő címen olvashatók https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -138,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés a jutalmazási átjáróval való konfigurá
 
 ### <a name="configure-reward-gateway-single-sign-on"></a>Jutalmazási átjáró egyszeri bejelentkezésének konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **jutalmazási átjáró** oldalán, kezdjen el egy integrációt beállítani a jutalmazási vezető portálon. Használja a letöltött metaadatokat az aláíró tanúsítvány beszerzéséhez és a konfiguráció során történő feltöltéséhez. A részletek a következő címen olvashatókhttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **jutalmazási átjáró** oldalán, kezdjen el egy integrációt beállítani a jutalmazási vezető portálon. Használja a letöltött metaadatokat az aláíró tanúsítvány beszerzéséhez és a konfiguráció során történő feltöltéséhez. A részletek a következő címen olvashatók https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -158,12 +154,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

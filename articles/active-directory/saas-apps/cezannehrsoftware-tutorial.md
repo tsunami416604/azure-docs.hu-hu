@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Cezanne HR szoftverrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Cezanne HR-szoftverek között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158700"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Azure Active Directory integráció a Cezanne HR szoftverrel
 
@@ -33,7 +28,7 @@ A Cezanne HR-szoftverek Azure AD-vel való integrálása a következő előnyök
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés az Cezanne HR szoftverrel való konfigurál�
 
     ![Cezanne HR-szoftverek tartománya és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://w3.cezanneondemand.com/CezanneOnDemand/`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `https://w3.cezanneondemand.com/CezanneOnDemand/`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
     
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek megszerzéséhez lépjen kapcsolatba a [CEZANNE HR szoftverekkel](https://cezannehr.com/services/support/) foglalkozó ügyfélszolgálatával.
@@ -157,11 +152,11 @@ Az Azure AD egyszeri bejelentkezés az Cezanne HR szoftverrel való konfigurál�
 
     d. A **biztonsági jogkivonat szolgáltatás végpontja** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
-    e. A felhasználói azonosító attribútum neve szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`a (z) értéket.
+    e. A felhasználói azonosító attribútum neve szövegmezőbe írja be a (z `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ) értéket.
 
     f. Kattintson a **feltöltés** ikonra a letöltött tanúsítvány Azure Portal való feltöltéséhez.
 
-    g. Kattintson az **OK** gombra.
+    : Kattintson az **OK** gombra.
 
 6. Kattintson a **Save (Mentés** ) gombra.
 
@@ -185,12 +180,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -240,13 +235,13 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Cezanne HR-szoftverbe,
 
     c. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    d. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló Brittasimon@contoso.come-mail címet.
+    d. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet Brittasimon@contoso.com .
 
 4. A **fiókadatok** szakaszban hajtsa végre az alábbi lépéseket:
 
     ![Új felhasználó](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Új felhasználó")
 
-    a. A **Felhasználónév** szövegmezőbe írja be a felhasználóhoz hasonló Brittasimon@contoso.come-mail címet.
+    a. A **Felhasználónév** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet Brittasimon@contoso.com .
 
     b. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 

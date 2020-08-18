@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: az Azure AD SSO-integrációja a Change Process managementtel'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és módosíthatja a folyamatok felügyeletét.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d1215e3d-44f6-477d-9d94-bec0c9ebdbb0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 501f19b2022d221ad6facd66c483790b13491ba0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456827"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529678"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Change Process Management szolgáltatással
 
@@ -83,9 +79,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
 
-    a. Az **azonosító** mezőben adja meg az URL-címet a következő mintában:`https://<hostname>:8443/`
+    a. Az **azonosító** mezőben adja meg az URL-címet a következő mintában: `https://<hostname>:8443/`
 
-    b. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő mintában:`https://<hostname>:8443/changepilot/saml/sso`
+    b. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő mintában: `https://<hostname>:8443/changepilot/saml/sso`
 
     > [!NOTE]
     > Az előző **azonosító** és a **Válasz URL-** értékei nem a ténylegesen használt értékek. A tényleges értékek lekéréséhez lépjen kapcsolatba a [change Process Management támogatási csapatával](mailto:support@realtech-us.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

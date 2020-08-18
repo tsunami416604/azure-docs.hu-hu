@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: a tabló online beállítása az automatikus felhasználó-kiépítés Azure Active Directory | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus üzembe helyezéséhez és megszüntetéséhez a tabló Online szolgáltatásban.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fae770950810899f7c6583fa401110c3e85022b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064214"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533438"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez a tabló online beállítása
 
@@ -130,7 +125,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Tabló online értesítő E-mail](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók a tablóhoz**lehetőséget.
 

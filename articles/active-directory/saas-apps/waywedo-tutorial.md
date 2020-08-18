@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a következőképpen: Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és így.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 84fc4f36-ecd1-42c6-8a70-cb0f3dc15655
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa23f61e5a213c492a7fb51bfc5b108e5c77946
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 310a42d25ce7fb7970777e8f36abbbee562ab01d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67310407"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523875"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Oktatóanyag: a Azure Active Directory integrálásának módja
 
@@ -83,9 +78,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.waywedo.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.waywedo.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Kapcsolatfelvétel az [ügyfél-támogatási csapattal](mailto:support@waywedo.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -141,7 +136,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
       > [!NOTE]
       > Az egyszeri bejelentkezéssel hozzáadott felhasználók általános felhasználókként lesznek hozzáadva, és a rendszer nem kap szerepkört a rendszeren. A rendszergazdák megtekinthetik és módosíthatják a biztonsági szerepkört szerkesztőként vagy rendszergazdaként, és egy vagy több szervezeti diagram szerepkört is hozzárendelhet.
 
-    g. Kattintson a **Save (Mentés** ) gombra a beállítások megőrzése érdekében.
+    : Kattintson a **Save (Mentés** ) gombra a beállítások megőrzése érdekében.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -151,9 +146,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

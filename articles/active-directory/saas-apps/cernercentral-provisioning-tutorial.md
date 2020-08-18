@@ -2,25 +2,20 @@
 title: 'Oktatóanyag: a felhasználók üzembe helyezése a Cerner Central szolgáltatásban – Azure AD'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználók automatikus kiosztásához a Cerner Central szolgáltatásban.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058316"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529865"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: a Cerner központi beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -65,29 +60,29 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
 1. Első lépésként győződjön meg arról, hogy a Cerner és az Azure AD-integrációt kezelő személyeknek van egy CernerCare-fiókja, amely az utasítások végrehajtásához szükséges dokumentáció eléréséhez szükséges. Ha szükséges, az alábbi URL-címek használatával hozzon létre CernerCare-fiókokat az egyes alkalmazható környezetekben.
 
-   * Védőfalhttps://sandboxcernercare.com/accounts/create
+   * Védőfal  https://sandboxcernercare.com/accounts/create
 
-   * Éleshttps://cernercare.com/accounts/create  
+   * Éles  https://cernercare.com/accounts/create  
 
 2. Ezután létre kell hoznia egy rendszerfiókot az Azure AD-hez. Az alábbi útmutatást követve igényelhet rendszerfiókot a homokozóban és az éles környezetekben.
 
-   * Utasításokathttps://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Utasításokat  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Védőfalhttps://sandboxcernercentral.com/system-accounts/
+   * Védőfal https://sandboxcernercentral.com/system-accounts/
 
-   * Éleshttps://cernercentral.com/system-accounts/
+   * Éles  https://cernercentral.com/system-accounts/
 
 3. Ezután állítson be egy OAuth-tulajdonosi jogkivonatot mindegyik rendszerfiókhoz. Ehhez kövesse az alábbi utasításokat.
 
-   * Utasításokathttps://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Utasításokat  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Védőfalhttps://sandboxcernercentral.com/system-accounts/
+   * Védőfal https://sandboxcernercentral.com/system-accounts/
 
-   * Éleshttps://cernercentral.com/system-accounts/
+   * Éles  https://cernercentral.com/system-accounts/
 
 4. Végül meg kell adnia a felhasználói beosztási tartomány azonosítóit a Cerner-ben a homokozó és a termelési környezet számára a konfiguráció befejezéséhez. További információ a beszerzésével kapcsolatban: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
-5. Most már beállíthatja, hogy az Azure AD felhasználói fiókokat hozzon létre a Cerner-ben. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszban.
+5. Most már beállíthatja, hogy az Azure AD felhasználói fiókokat hozzon létre a Cerner-ben. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**  szakaszban.
 
 6. Ha már konfigurálta a Cerner Central-t az egyszeri bejelentkezéshez, keresse meg a Cerner Central-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **cerner Central** elemet az alkalmazás-katalógusban. Válassza ki a Cerner Central elemet a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
@@ -101,9 +96,9 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
    * A **bérlői URL-cím** mezőben adjon meg egy URL-címet az alábbi formátumban, és cserélje le a "user-névsor-REALM-id" karakterláncot a #4 lépésben beszerzett tartományi azonosítóra.
 
-    > Védőfalhttps://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Védőfal https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
-    > Éleshttps://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Éles https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * A **titkos jogkivonat** mezőben adja meg a #3 lépésben létrehozott OAuth tulajdonosi jogkivonatot, majd kattintson a **kapcsolat tesztelése**elemre.
 
@@ -111,13 +106,13 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
 1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítési e-mail** mezőben a kiépítési hibaüzeneteket, és jelölje be az alábbi jelölőnégyzetet.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a Cerner Central-be szinkronizálandó felhasználói és csoportosítási attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a cerner Central felhasználói fiókjainak és csoportjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Cerner Central számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 Ezzel elindítja a felhasználók és csoportok szakaszban a Cerner Centralhoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a cerner Central alkalmazásban végrehajtott összes műveletet.
 

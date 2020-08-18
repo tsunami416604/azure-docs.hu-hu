@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Silverback-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Silverback között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 32cfc96f-2137-49ff-818b-67feadcd73b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090914"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Oktatóanyag: Azure Active Directory integráció a Silverback
 
@@ -32,7 +28,7 @@ A Silverback és az Azure AD integrálásával a következő előnyöket nyújtj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés Silverback való konfigurálásához hajtsa 
 
     ![Silverback tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YOURSILVERBACKURL>.com/ssp`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`<YOURSILVERBACKURL>.com`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `<YOURSILVERBACKURL>.com`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a Silverback ügyfélszolgálati [csapatához](mailto:helpdesk@matrix42.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -122,7 +118,7 @@ Az Azure AD egyszeri bejelentkezés Silverback való konfigurálásához hajtsa 
 
 1. Egy másik böngészőben jelentkezzen be a Silverback-kiszolgálóra rendszergazdaként.
 
-2. Navigáljon a **rendszergazdai** > **hitelesítésszolgáltatóhoz**.
+2. Navigáljon a **rendszergazdai**  >  **hitelesítésszolgáltatóhoz**.
 
 3. A **hitelesítési szolgáltató beállításai** oldalon hajtsa végre a következő lépéseket:
 
@@ -140,11 +136,11 @@ Az Azure AD egyszeri bejelentkezés Silverback való konfigurálásához hajtsa 
 
     f.  Hozzon létre egy **címet** a gombhoz az önkiszolgáló portálon.
 
-    g.  A **fájl kiválasztása**elemre kattintva töltsön fel egy **ikont** .
+    :  A **fájl kiválasztása**elemre kattintva töltsön fel egy **ikont** .
 
     h.  Válassza ki a **gomb háttérszínét** .
 
-    i.  Kattintson a **Save** (Mentés) gombra.
+    i.  Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -164,12 +160,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -217,16 +213,16 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Si
 
     c. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    d. Az **E-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló **Brittasimon@contoso.com**e-mail címet.
+    d. Az **E-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet **Brittasimon@contoso.com** .
 
     e. A **jelszó** szövegmezőbe írja be a jelszavát.
 
     f. A **Jelszó megerősítése** szövegmezőbe írja be újra a jelszót, és erősítse meg.
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 > [!NOTE]
-> Ha nem kívánja manuálisan létrehozni az egyes felhasználókat, engedélyezze a **dinamikus felhasználói létrehozás** jelölőnégyzetet a **rendszergazdai** > **hitelesítés szolgáltató**területen.
+> Ha nem kívánja manuálisan létrehozni az egyes felhasználókat, engedélyezze a **dinamikus felhasználói létrehozás** jelölőnégyzetet a **rendszergazdai**  >  **hitelesítés szolgáltató**területen.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a TOPdesk-Secure szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és TOPdesk között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db7f2afa7993c8f8d2fe9fe30e5ecd4f2388b44b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233403"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Oktatóanyag: Azure Active Directory integráció a TOPdesk – biztonságos
 
@@ -33,7 +28,7 @@ A TOPdesk-Secure az Azure AD-vel való integrálása a következő előnyöket n
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés TOPdesk-Secure használatával történő ko
 
     ![TOPdesk – biztonságos tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.topdesk.net`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.topdesk.net`
 
-    b. Az **azonosító URL-címe** mezőben adja meg a TOPdesk metaadat URL-címét, amelyet a TOPdesk-konfigurációból kérhet le. A következő mintát kell használnia:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    b. Az **azonosító URL-címe** mezőben adja meg a TOPdesk metaadat URL-címét, amelyet a TOPdesk-konfigurációból kérhet le. A következő mintát kell használnia: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.topdesk.net/tas/secure/login/verify`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.topdesk.net/tas/secure/login/verify`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot a [TOPdesk – biztonságos ügyfél-támogatási csapattal](https://www.topdesk.com/us/support/) , hogy megszerezze ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -185,11 +180,11 @@ Az Azure AD egyszeri bejelentkezés TOPdesk-Secure használatával történő ko
 
     d. Ha fel szeretné tölteni a TOPdesk támogatási csapatának emblémáját, kattintson a **logo ikon**alatt található **Tallózás**gombra.
 
-    e. A **Felhasználónév attribútum** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`következőt:.
+    e. A **Felhasználónév attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
     f. A **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -209,12 +204,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -251,15 +246,15 @@ TOPdesk-Secure esetén a kiépítés manuális feladat.
 
 1. Jelentkezzen be a **TOPdesk-Secure** céges webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **TOPdesk \> új \> támogatási \> fájlok kezelője**elemre.
+2. A felső menüben kattintson a **TOPdesk \> új \> támogatási fájlok \> kezelője**elemre.
 
-    ![Művelet](./media/topdesk-secure-tutorial/ic790610.png "Művelet")
+    ![Operátor](./media/topdesk-secure-tutorial/ic790610.png "Operátor")
 
 3. Az **új operátor** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Új operátor](./media/topdesk-secure-tutorial/ic790611.png "Új operátor")
 
-    a. Kattintson az **általános** fülre.
+    a. Kattintson az **Általános** lapra.
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**.
 
@@ -267,7 +262,7 @@ TOPdesk-Secure esetén a kiépítés manuális feladat.
 
     d. A **TOPdesk bejelentkezési** szakasz **bejelentkezési név** szövegmezőbe írja be a felhasználó bejelentkezési nevét.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a TOPdesk által biztosított TOPdesk-alapú felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

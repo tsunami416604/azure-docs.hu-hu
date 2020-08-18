@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054829"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522844"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -20,13 +20,46 @@ A következő táblázatokban található információk segítségével elhárí
 Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt végezze el az alábbi érvényesítést:
 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Ellenőrizze, hogy van-e hálózati kapcsolat a MARS-ügynök és az Azure között](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Szükség esetén indítsa újra, és ismételje meg a műveletet.
 - [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - Ha a regisztráció sikertelen, akkor győződjön meg arról, hogy a kiszolgáló, amelyre telepíteni kívánja, Azure Backup Server még nincs regisztrálva egy másik tárolóban.
 - Ha a leküldéses telepítés sikertelen, ellenőrizze, hogy a DPM-ügynök már jelen van-e a rendszeren. Ha igen, távolítsa el az ügynököt, és próbálkozzon újra a telepítéssel
 - [Győződjön meg arról, hogy nem zavarja másik folyamat vagy víruskereső szoftver az Azure Backup működését](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - Győződjön meg arról, hogy az SQL Agent szolgáltatás fut, és állítsa automatikusra a MABS-kiszolgálón<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>A MABS-kiszolgáló víruskereső konfigurálása
+
+A MABS kompatibilis a legnépszerűbb víruskereső szoftveres termékekkel. Az ütközések elkerülése érdekében a következő lépéseket javasoljuk:
+
+1. A **valós idejű figyelés letiltása** – tiltsa le a víruskereső szoftver valós idejű figyelését a következőkhöz:
+    - `C:\Program Files<MABS Installation path>\XSD` mappa
+    - `C:\Program Files<MABS Installation path>\Temp` mappa
+    - modern biztonsági másolati tárhely kötet meghajtóbetűjele
+    - Replika-és adatátviteli naplók: ehhez tiltsa le a **dpmra.exe**valós idejű figyelését, amely a mappában található `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . A valós idejű figyelés csökkenti a teljesítményt, mert a víruskereső szoftver minden alkalommal megvizsgálja a replikákat, amikor a MABS szinkronizálja a védett kiszolgálóval, és minden alkalommal megvizsgálja az összes érintett fájlt, amikor a MABS módosítja a replikákat.
+    - Felügyeleti konzol: Ha el szeretné kerülni a teljesítményre gyakorolt hatást, tiltsa le a **csc.exe** folyamat valós idejű figyelését. A **csc.exe** folyamat a C \# fordító, és a valós idejű figyelés csökkentheti a teljesítményt, mert a víruskereső szoftver megvizsgálja azokat a fájlokat, amelyeket a **csc.exe** folyamat bocsát ki, amikor XML-üzeneteket hoz létre. **CSC.exe** a következő elérési utakon található:
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - A MABS-kiszolgálóra telepített MARS-ügynök esetében javasoljuk, hogy zárja ki a következő fájlokat és helyet:
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` folyamatként
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - Üres hely (ha nem a standard helyet használja)
+2. A **védett kiszolgálón lévő valós idejű figyelés letiltása**: tiltsa le a védett kiszolgálón a mappában található **dpmra.exe**valós idejű figyelését `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` .
+3. A **védett kiszolgálókon és a MABS-kiszolgálón található fertőzött fájlok törlésére szolgáló víruskereső szoftver beállítása**: a replikák és a helyreállítási pontok adatsérülésének megakadályozása érdekében konfigurálja a víruskereső szoftvert a fertőzött fájlok törléséhez, nem pedig automatikusan a tisztításhoz vagy a karanténba helyezéshez. Az automatikus tisztítás és a karanténba helyezés okozhatja, hogy a víruskereső szoftver módosítja a fájlokat, így a MABS által nem észlelhető módosítások is megjelenhetnek.
+
+A manuális szinkronizálást konzisztencia-ellenőrzéssel kell futtatni. Győződjön meg arról, hogy a víruskereső szoftver minden alkalommal töröl egy fájlt a replikából, még akkor is, ha a replika inkonzisztensként van megjelölve.
+
+### <a name="mabs-installation-folders"></a>MABS telepítési mappák
+
+A DPM alapértelmezett telepítési mappái a következők:
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+A telepítési mappa elérési útját a következő parancs futtatásával is megkeresheti:
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>A tároló megadott hitelesítő adatai érvénytelenek
 

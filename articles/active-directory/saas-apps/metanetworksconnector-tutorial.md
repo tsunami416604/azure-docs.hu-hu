@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a meta Networks-összekötővel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a meta Networks Connector között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160637"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Azure Active Directory integráció a meta Networks-összekötővel
 
@@ -32,7 +28,7 @@ A meta Networks-összekötő az Azure AD-vel való integrálásához a következ
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,17 +103,17 @@ Az Azure AD egyszeri bejelentkezés meta Networks-összekötővel történő kon
 
     ![Meta Networks Connector tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Meta Networks Connector tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-advanced-urls.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
-    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
+    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Az oktatóanyag későbbi részében a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján frissítse ezeket az értékeket.
@@ -128,12 +124,12 @@ Az Azure AD egyszeri bejelentkezés meta Networks-összekötővel történő kon
     
 7. A fentieken kívül a meta Networks Connector alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
     
-    | Name (Név) | Forrás attribútum | Névtér|
+    | Name | Forrás attribútum | Névtér|
     | ---------------| --------------- | -------- |
     | FirstName | User. givenName | |
     | LastName | felhasználó. vezetéknév | |
     | EmailAddress| User. mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | név | User. userPrincipalName| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | name | User. userPrincipalName| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | telefon | User. telephoneNumber | |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
@@ -152,7 +148,7 @@ Az Azure AD egyszeri bejelentkezés meta Networks-összekötővel történő kon
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -229,12 +225,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain. Extension nevet.**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension nevet.**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

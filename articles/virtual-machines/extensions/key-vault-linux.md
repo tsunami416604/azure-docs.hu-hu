@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010801"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522291"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -73,9 +73,9 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 > 
 > Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> A "authenticationSettings" tulajdonság nem kötelező olyan helyzetekben, amikor a virtuális gépnek több hozzárendelt identitása van.
-> Lehetővé teszi a specifing-identitás számára a Key Vault hitelesítését.
+> [!IMPORTANT]
+> A "authenticationSettings" tulajdonság csak a **felhasználó által hozzárendelt identitással**rendelkező virtuális gépek esetében **szükséges** .
+> Meghatározza az Key Vault hitelesítéshez használandó identitást.
 
 
 ### <a name="property-values"></a>Tulajdonságértékek

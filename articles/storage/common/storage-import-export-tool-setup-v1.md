@@ -1,6 +1,6 @@
 ---
 title: Az Azure import/export eszköz v1-es verziójának beállítása | Microsoft Docs
-description: Ismerje meg, hogyan állíthatja be az Azure import/export szolgáltatáshoz készült meghajtó-előkészítési és-javítási eszközt. Ez az importálási/exportálási eszköz v1-re vonatkozik.
+description: Ismerje meg, hogyan állíthatja be az Azure import/export szolgáltatáshoz készült meghajtó-előkészítési és-javítási eszközt. Ez a cikk az import/export eszköz 1. verziójára vonatkozik.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077828"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530800"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Az Azure import/export eszköz beállítása v1
 A Microsoft Azure Import/Export eszköz a Microsoft Azure Import/Export szolgáltatással használható meghajtó-előkészítési és-javítási eszköz. A következő függvényekhez használhatja az eszközt:  
 
--   Importálási feladatok létrehozása előtt az eszköz használatával másolhatja az adatok a Windows Azure adatközpontba szállítandó merevlemezekre.  
+-   Importálási feladatok létrehozása előtt az eszköz használatával másolhatja az adatok a Windows Azure-adatközpontba beszállított merevlemezekre.  
 
 -   Az importálási feladatok befejezését követően az eszköz használatával kijavíthatja az összes sérült, hiányzó vagy más Blobokkal ütköző blobot.  
 
 -   Miután megkapta a meghajtókat egy befejezett exportálási feladatokból, ezzel az eszközzel kijavíthatja a meghajtókon sérült vagy hiányzó fájlokat.  
 
 ## <a name="prerequisites"></a>Előfeltételek  
-Ha egy importálási feladatokhoz készít meghajtókat, meg kell felelnie a következő előfeltételeknek:  
+Ha egy importálási feladatokhoz készít meghajtókat, a következő előfeltételeknek kell megfelelnie:  
 
 -   Aktív Azure-előfizetéssel kell rendelkeznie.  
 
--   Az előfizetésnek tartalmaznia kell egy elegendő szabad hellyel rendelkező Storage-fiókot az importálni kívánt fájlok tárolásához.  
+-   Az előfizetésnek tartalmaznia kell egy elegendő szabad hellyel rendelkező Storage-fiókot az importálandó fájlok tárolásához.  
 
 -   A Storage-fiókhoz legalább egy fiók kulcsa szükséges.  
 
@@ -39,7 +39,7 @@ Ha egy importálási feladatokhoz készít meghajtókat, meg kell felelnie a kö
 
 -   A BitLockert engedélyezni kell a másolási gépen.  
 
--   Szüksége lesz egy vagy több olyan meghajtóra, amely az importálandó vagy üres 3,5 hüvelykes SATA merevlemezeket tartalmazza a másolási géphez.  
+-   Szüksége lesz egy vagy több olyan meghajtóra, amely az importálandó vagy üres, 3,5 hüvelykes SATA merevlemez-meghajtókat tartalmaz.  
 
 -   Az importálni kívánt fájloknak elérhetőnek kell lenniük a másolási gépről, függetlenül attól, hogy hálózati megosztáson vagy helyi merevlemezen találhatók-e.
 
@@ -253,5 +253,4 @@ Examples:
 * [Az exportálási feladatokhoz tartozó meghajtók használatának előzetes megtekintése](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Feladatok állapotának áttekintése a másolási naplófájlokkal](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Importálási feladat javítása](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Az Azure Import/Export eszköz hibaelhárítása](storage-import-export-tool-troubleshooting-v1.md)
+* [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)

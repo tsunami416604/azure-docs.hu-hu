@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció magyarázaton alapuló naplózási rendszerrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a magyarázat-alapú naplózási rendszer között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 419744c2-3b71-4953-9434-99b632a10854
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 49c15365b60359bc393dcd854c7f9487810f0a7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68f163442c3e13c822b6f4dfa987d0eb26ccafe3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73156305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Oktatóanyag: Azure Active Directory integráció magyarázat-alapú naplózási rendszerrel
 
@@ -32,7 +28,7 @@ A magyarázaton alapuló naplózási rendszer az Azure AD-vel való integrálás
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,7 +103,7 @@ Az Azure AD egyszeri bejelentkezés magyarázat-alapú naplózási rendszerrel v
 
     ![Magyarázaton alapuló naplózási rendszer tartománya és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://ebas.maizeanalytics.com`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://ebas.maizeanalytics.com`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -135,12 +131,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

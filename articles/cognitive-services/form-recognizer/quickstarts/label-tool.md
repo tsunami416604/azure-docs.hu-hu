@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 234d6af25f37bf04d3240177142d5ef919e8dd2d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903476"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517914"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API és a minta feliratozási eszköz használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -159,11 +159,11 @@ Opcionálisan megadhatja az egyes címkék várt adattípusát. Nyissa meg a cí
 
 A következő típusú értékek és változatok jelenleg támogatottak:
 * `string`
-    * alapértelmezett, `no-whitespaces` ,`alphanumeric`
+    * alapértelmezett, `no-whitespaces` , `alphanumeric`
 * `number`
-    * alapértelmezett`currency`
+    * alapértelmezett `currency`
 * `date` 
-    * alapértelmezett, `dmy` , `mdy` ,`ymd`
+    * alapértelmezett, `dmy` , `mdy` , `ymd`
 * `time`
 * `integer`
 
@@ -230,7 +230,7 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. vott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha szeretné integrálni a címkéző eszközt a saját alkalmazásba, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 

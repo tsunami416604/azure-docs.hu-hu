@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037167"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520523"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -103,7 +104,7 @@ További információ: [Az Azure Storage komplex veszélyforrások elleni védel
 ## <a name="storage-tiers"></a>Tárolási szintek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-Általánosságban elmondható, hogy Azure Files szolgáltatások és a más szolgáltatásokkal való együttműködés azonos a prémium fájlmegosztás és a szabványos fájlmegosztás között, azonban néhány fontos különbség:
+Általánosságban elmondható, hogy Azure Files szolgáltatások és a más szolgáltatásokkal való együttműködés azonos a prémium fájlmegosztás és a szabványos fájlmegosztás (beleértve az optimalizált, a gyors és a lassú fájlmegosztást) közötti különbségeket, azonban néhány fontos eltérés van:
 - **Számlázási modell**
     - A prémium szintű fájlmegosztás számlázása egy kiépített számlázási modellel történik, ami azt jelenti, hogy a kiépített tárterület mennyiségét kell fizetnie, és nem a ténylegesen kért tárterületet. 
     - A standard fájlmegosztás számlázása az utólagos elszámolású modell használatával történik, amely a tárterület alapdíjait tartalmazza a ténylegesen felhasznált tárterülethez, majd a megosztás használati módjától függően további tranzakciós költségeket is tartalmaz. A standard fájlmegosztás esetén a számla akkor is növekedni fog, ha az Azure-fájlmegosztás használatát (olvasás/írás/csatlakoztatás) is növeli.
@@ -113,7 +114,7 @@ További információ: [Az Azure Storage komplex veszélyforrások elleni védel
 - **Fájlmegosztás maximális mérete**
     - A prémium fájlmegosztást akár 100 TiB-ra is kiépítheti további munka nélkül.
     - Alapértelmezés szerint a standard fájlmegosztás legfeljebb 5 TiB-ra terjedhet ki, bár a megosztási korlát a 100 TiB-ra is növelhető, ha a *nagyméretű fájlmegosztás* Storage-fiók funkciójának jelzőjét választotta. A standard fájlmegosztás csak a 100 TiB-ra terjedhet a helyileg redundáns vagy zónában lévő redundáns Storage-fiókok esetében. További információ a fájlmegosztás méretének növeléséről: [nagyméretű fájlmegosztás engedélyezése és létrehozása](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share).
-- **Regionális elérhetőség**
+- **Régiónkénti rendelkezésre állás**
     - A prémium fájlmegosztás minden régióban nem érhető el, és a zóna redundáns támogatása a régiók kisebb részhalmazában érhető el. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) . Ha szeretné megtudni, hogy mely régiók támogatják a ZRS, tekintse meg az [Azure rendelkezésre állási zónák támogatása régiónként](../../availability-zones/az-region.md)című témakört. Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/pfsfeedback)az új régiók és prémium szintű funkciók rangsorolásához.
     - A standard fájlmegosztás minden Azure-régióban elérhető.
 - Az Azure Kubernetes Service (ak) prémium szintű fájlmegosztás használatát támogatja a 1,13-es és újabb verziókban.
@@ -183,7 +184,7 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
 Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.

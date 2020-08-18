@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a RFPIO konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a RFPIO.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 54419db4-47d5-4fb4-ab74-7b0b28afb11b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 6ae423305b39c1335b5db1cd893d5f817be1929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 963f89c99d71afbebbe122e3c7d8b3227dc4a8be
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77060864"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518407"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés RFPIO konfigurálása
 
@@ -94,7 +90,7 @@ Az Azure AD-vel való automatikus RFPIO konfigurálásához hozzá kell adnia a 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **RFPIO**kifejezést, válassza az **RFPIO** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **RFPIO**kifejezést, válassza az **RFPIO** elemet az eredmények panelen, majd kattintson a    **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![RFPIO az eredmények listájában](common/search-new-app.png)
 
@@ -131,7 +127,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a RFPIO**lehetőséget.
 

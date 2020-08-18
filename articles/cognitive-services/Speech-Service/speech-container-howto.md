@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808660"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518322"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása (előzetes verzió)
 
-A tárolók lehetővé teszik a beszédfelismerési szolgáltatás egyes API-jai futtatását a saját környezetében. A tárolók az adott biztonsági és adatirányítási követelményekhez is kiválóak. Ebből a cikkből megtudhatja, hogyan töltheti le, telepítheti és futtathatja a beszédfelismerési tárolókat.
+A tárolók lehetővé teszik a Speech szolgáltatás API-jainak a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ez a cikk azt mutatja be, hogyan tölthet le, telepíthet és futtathat egy Speech-tárolót.
 
-A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek olyan beszédfelismerési alkalmazás-architektúrát hozzanak létre, amely robusztus Felhőbeli képességekre és Edge-helyekre optimalizált Négy különböző tároló érhető el. A két szabványos tároló a **beszédfelismerés** és a **szöveg közötti**kommunikáció. A két egyéni tároló **Custom Speech szöveg** és **egyéni szöveg-beszéd**. A beszédfelismerési tárolók megegyeznek a felhőalapú Azure Speech Services [díjszabásával](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) .
+A Speech-tárolókkal az ügyfelek beszédalapú alkalmazások architektúráját hozhatják létre, amely a robusztus felhőbeli képességekhez és a helyi peremhálózathoz is optimalizálva van. Négy különböző tároló érhető el. A két szabványos tároló a **beszédfelismerés** és a **szöveg közötti**kommunikáció. A két egyéni tároló **Custom Speech szöveg** és **egyéni szöveg-beszéd**. A beszédfelismerési tárolók megegyeznek a felhőalapú Azure Speech Services [díjszabásával](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) .
 
 > [!IMPORTANT]
 > Az összes beszédfelismerési tároló jelenleg egy [nyilvános "GateD" előzetes](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)verzió részeként érhető el. Bejelentést kell készíteni, amikor a beszédfelismerési tárolók az általánosan elérhetővé vált (GA).
@@ -33,7 +33,7 @@ A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek olyan besz�
 | Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.5.0 |
 | Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.5.0 |
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,7 +107,7 @@ Az alap és a memória a `--cpus` `--memory` parancs részeként használt és b
 > [!NOTE]
 > A minimális és ajánlott a Docker korlátain kívüli, *nem* pedig a gazdagép erőforrásai. Például a beszéd-szöveg típusú tárolók a nagyméretű nyelvi modell részei, és azt *javasoljuk* , hogy a teljes fájl elfér a memóriában, ami egy további 4-6 GB. A tárolók első futtatása hosszabb időt is igénybe vehet, mivel a modellek a memóriába kerülnek.
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a `docker pull`
 
 A Speech tároló lemezképei a következő Container Registry érhetők el.
 
@@ -237,7 +237,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező számlázási beállításokkal. További [példák](speech-container-configuration.md#example-docker-run-commands) a `docker run` parancsra.
 1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
+## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a `docker run`
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{Endpoint_URI}` `{API_Key}` . A [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` parancshoz további példák is elérhetők.
 
@@ -411,7 +411,7 @@ A parancs a következőket hajtja végre:
 > [!NOTE]
 > Ha több tárolót futtat, használjon egyedi portszámot.
 
-| Tárolók | SDK-gazda URL-címe | Protokoll |
+| Containers | SDK-gazda URL-címe | Protokoll |
 |--|--|--|
 | Beszéd – szöveg és Custom Speech – szöveg | `ws://localhost:5000` | WS |
 | Szöveg – beszéd és egyéni szöveg – beszéd | `http://localhost:5000` | HTTP |
@@ -441,7 +441,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Simple.Extensions`a válasz gyökérelem eredményét fogja visszaadni.
+`Simple.Extensions` a válasz gyökérelem eredményét fogja visszaadni.
 
 ```json
 {
@@ -480,7 +480,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`a válasz legfelső rétegében biztosítja a hangulati eredményt. `Detailed.Options`a válasz rétegében adja meg az eredményt `NBest` . Külön vagy együtt is használhatók.
+`Detailed.Extensions` a válasz legfelső rétegében biztosítja a hangulati eredményt. `Detailed.Options` a válasz rétegében adja meg az eredményt `NBest` . Külön vagy együtt is használhatók.
 
 ```json
 {

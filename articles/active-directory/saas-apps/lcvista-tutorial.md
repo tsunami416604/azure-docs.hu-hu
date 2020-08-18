@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a LCVista-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és LCVista között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8db80d6e-3275-419f-aa39-6115a7bc9800
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e1c0487a33d8ca90cc8bf43ec53e2707a4d027
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 049381e037d4c6951f23860b64bbcc17356e592f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159625"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Oktatóanyag: Azure Active Directory integráció a LCVista
 
@@ -33,7 +28,7 @@ A LCVista és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés LCVista való konfigurálásához hajtsa vé
 
     ![LCVista tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.lcvista.com/rainier/login`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.lcvista.com/rainier/login`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.lcvista.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.lcvista.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a LCVista ügyfélszolgálati [csapatához](https://lcvista.com/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -141,13 +136,13 @@ Az Azure AD egyszeri bejelentkezés LCVista való konfigurálásához hajtsa vé
 
     c. Nyissa meg azt a metaadatokat tartalmazó XML-fájlt, amelyet Azure Portal a Jegyzettömbbe töltött le, másolja a **x509** értéket, és illessze be a **x509-tanúsítvány** szakaszban.
 
-    d. Illessze be az **első név attribútum** szövegmezőbe az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Illessze be az **első név attribútum** szövegmezőbe az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    e. Illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`a **vezetéknév attribútum** szövegmezőbe.
+    e. Illessze be az értéket a **vezetéknév attribútum** szövegmezőbe `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
-    f. Illessze be az **e-mail-attribútum** szövegmezőbe az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. Illessze be az **e-mail-attribútum** szövegmezőbe az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    g. Illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`a **username attribútum** szövegmezőbe.
+    : Illessze be az értéket a **username attribútum** szövegmezőbe `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     e. Kattintson a **Mentés** gombra a beállítások mentéséhez.
 
@@ -169,12 +164,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -204,7 +199,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-lcvista-test-user"></a>LCVista-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a LCVista-ben. A [LCVista ügyfél-támogatási csapattal](https://lcvista.com/contact) együttműködve veheti fel a felhasználókat a LCVista-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a LCVista-ben. A [LCVista ügyfél-támogatási csapattal](https://lcvista.com/contact)együttműködve   veheti fel a felhasználókat a LCVista-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

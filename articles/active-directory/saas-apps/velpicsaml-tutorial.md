@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Velpic SAML-vel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Velpic SAML között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f699e2244cde53200a9885602bd20c899c0ce4cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 85dfa6b57171ce68c3d962bac27016434d587080
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72241562"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Velpic SAML használatával
 
@@ -82,9 +77,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<sub-domain>.velpicsaml.net`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<sub-domain>.velpicsaml.net`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://auth.velpic.com/saml/v2/<entity-id>/login`
 
     > [!NOTE]
     > Vegye figyelembe, hogy a bejelentkezési URL-címet a Velpic SAML-csapat adja meg, és az azonosító értéke akkor lesz elérhető, ha az egyszeri bejelentkezés beépülő modult a Velpic SAML-oldalon konfigurálja. Ezt az értéket a Velpic SAML-alkalmazás oldaláról kell másolnia, és be kell illesztenie ide.
@@ -105,9 +100,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -169,7 +164,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     e. Másolja az **egyszeri bejelentkezési URL-címet** a szövegmezőből, és illessze be a Azure Portalba.
     
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 ### <a name="create-velpic-saml-test-user"></a>Velpic SAML-teszt felhasználó létrehozása
 
@@ -191,7 +186,7 @@ Jelentkezzen be a Velpic SAML-céges webhelyre rendszergazdaként, és hajtsa v�
 
     c. A **Felhasználónév** szövegmezőbe írja be a B. Simon nevű felhasználónevet.
 
-    d. Az **e-mail** szövegmezőbe írja be a B.Simon@contoso.com fiók e-mail-címét.
+    d. Az **e-mail** szövegmezőbe írja be a fiók e-mail-címét B.Simon@contoso.com .
 
     e. A többi adat megadása nem kötelező, szükség esetén kitöltheti.
     
@@ -207,11 +202,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 1. Az Azure ad-fiókkal való bejelentkezéshez kattintson a **"Bejelentkezés az Azure ad-vel"** gombra a Velpic való bejelentkezéshez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

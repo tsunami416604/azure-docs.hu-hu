@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a VeraSMART | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és VeraSMART között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9cab0c07-de64-4168-ae9b-73bbf775a750
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c250a82ca1cc6f76112ed9bb0e4d7afd95e57c6
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1aa52c81b7abbfb355ef06f6ae93a5dd4c985042
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88172961"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a VeraSMART
 

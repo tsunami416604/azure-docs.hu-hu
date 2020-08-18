@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Alibaba Cloud Service-szel (szerepköralapú SSO) | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az Alibaba Cloud Service (szerepköralapú SSO) között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3667841e-acfc-4490-acf5-80d9ca3e71e8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77367938"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522030"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Alibaba Cloud Service-szel (szerepköralapú SSO)
 
@@ -117,9 +112,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -154,11 +149,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 3. A **szerepköralapú egyszeri bejelentkezés** lapon kattintson a **identitásszolgáltató létrehozása**elemre.
 
-4. A megjelenő lapon írja `AAD` be a identitásszolgáltató neve mezőbe a **Leírás mezőt, és kattintson a** **feltöltés** gombra a letöltött összevonási metaadat-fájl feltöltéséhez, majd kattintson **az OK**gombra.
+4. A megjelenő lapon írja be `AAD` a identitásszolgáltató neve mezőbe a Leírás mezőt, és kattintson **a** **feltöltés** gombra a letöltött összevonási metaadat-fájl feltöltéséhez, majd kattintson **az OK**gombra.
 
 5. A identitásszolgáltató sikeres létrehozása után kattintson a **RAM-szerepkör létrehozása**lehetőségre.
 
-6. A **RAM-szerepkör neve** mezőbe írja `AADrole`be a `AAD` következőt: válasszon a **identitásszolgáltató kiválasztása** legördülő listából, majd kattintson az OK gombra.
+6. A **RAM-szerepkör neve** mezőbe írja be `AADrole` `AAD` a következőt: válasszon a **identitásszolgáltató kiválasztása** legördülő listából, majd kattintson az OK gombra.
 
     >[!NOTE]
     >Szükség esetén engedélyt adhat a szerepkörnek. A identitásszolgáltató és a hozzá tartozó szerepkör létrehozása után azt javasoljuk, hogy mentse a identitásszolgáltató és a szerepkör ARNs a későbbi használatra. A ARNs a identitásszolgáltató-információ lapon és a szerepkör adatai lapon szerezheti be.
@@ -178,19 +173,19 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     >[!NOTE]
     >Az engedélyek megadása után jelentkezzen be újra a Graph Explorerben.
 
-    d. A Graph Explorer lapon válassza az első legördülő lista **beolvasása** lehetőséget a második **beta** legördülő listából. Ezután írja `https://graph.microsoft.com/beta/servicePrincipals` be a mezőt a legördülő lista melletti mezőbe, és kattintson a **lekérdezés futtatása**elemre.
+    d. A Graph Explorer lapon válassza az első legördülő lista **beolvasása** lehetőséget a második **beta** legördülő listából. Ezután írja be `https://graph.microsoft.com/beta/servicePrincipals` a mezőt a legördülő lista melletti mezőbe, és kattintson a **lekérdezés futtatása**elemre.
 
     ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
-    >Ha több könyvtárat használ, `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` megadhatja a lekérdezés mezőjét.
+    >Ha több könyvtárat használ, megadhatja a `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` lekérdezés mezőjét.
 
     e. A **Válasz előnézete** szakaszban bontsa ki a appRoles tulajdonságot a "szolgáltatásnév" értékről a későbbi használat érdekében.
 
     ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
-    >A appRoles tulajdonság megkereséséhez írja `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` be a lekérdezést a mezőbe. Vegye figyelembe, `objectID` hogy az az objektum-azonosító, amelyet az Azure ad **tulajdonságlapján** másolt.
+    >A appRoles tulajdonság megkereséséhez írja `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` be a lekérdezést a mezőbe. Vegye figyelembe, hogy az az `objectID` objektum-azonosító, amelyet az Azure ad **tulajdonságlapján** másolt.
 
     f. Lépjen vissza a Graph Explorer programba, módosítsa a metódust a **beolvasás** **javításba**, illessze be a következő tartalmat a **kérelem törzse** szakaszba, és kattintson a **lekérdezés futtatása**gombra:
     ```
@@ -221,9 +216,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     }
     ```
     > [!NOTE]
-    > A `value` a identitásszolgáltató és a RAM-konzolon létrehozott szerepkör ARNs. Itt több szerepkört is hozzáadhat, ha szükséges. Az Azure AD a következő szerepkörök értékét küldi el az SAML-válaszban szereplő jogcím-értékként. A javítási művelet `msiam_access` részeként azonban csak új szerepköröket adhat hozzá. A létrehozási folyamat zökkenőmentes kihasználása érdekében javasoljuk, hogy használjon azonosító-generátort, például GUID-generátort, hogy valós időben hozza létre az azonosítókat.
+    > A a `value` identitásszolgáltató és a RAM-konzolon létrehozott szerepkör ARNs. Itt több szerepkört is hozzáadhat, ha szükséges. Az Azure AD a következő szerepkörök értékét küldi el az SAML-válaszban szereplő jogcím-értékként. A javítási művelet részeként azonban csak új szerepköröket adhat hozzá `msiam_access` . A létrehozási folyamat zökkenőmentes kihasználása érdekében javasoljuk, hogy használjon azonosító-generátort, például GUID-generátort, hogy valós időben hozza létre az azonosítókat.
 
-    g. Miután a "szolgáltatásnév" a szükséges szerepkörrel rendelkezik, csatolja a szerepkört az Azure AD-felhasználóhoz (U2) az oktatóanyag **Azure ad-teszt felhasználójának hozzárendelése** című szakaszának lépéseit követve.
+    : Miután a "szolgáltatásnév" a szükséges szerepkörrel rendelkezik, csatolja a szerepkört az Azure AD-felhasználóhoz (U2) az oktatóanyag **Azure ad-teszt felhasználójának hozzárendelése** című szakaszának lépéseit követve.
 
 ### <a name="configure-alibaba-cloud-service-role-based-sso-sso"></a>Az Alibaba Cloud Service (szerepköralapú SSO) egyszeri bejelentkezésének konfigurálása
 
@@ -253,11 +248,11 @@ Az előző konfigurációk befejezése után tesztelje az Alibaba Cloud Service-
 
     ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

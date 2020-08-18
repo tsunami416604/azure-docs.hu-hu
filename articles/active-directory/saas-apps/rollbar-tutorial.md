@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a bukóív-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és bukóív között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57537e54-9388-4272-a610-805ce45a451f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092677"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Oktatóanyag: Azure Active Directory integráció a bukóív
 
@@ -32,7 +28,7 @@ A bukóív és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,15 +101,15 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
     ![Bukóív tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://saml.rollbar.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://saml.rollbar.com`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://rollbar.com/<accountname>/saml/sso/azure/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Bukóív tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://rollbar.com/<accountname>/saml/login/azure/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://rollbar.com/<accountname>/saml/login/azure/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a bukóív ügyfélszolgálati [csapatához](mailto:support@rollbar.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -152,7 +148,7 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
     b. Nyissa meg a metaadat-fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az **SAML metaadatok** szövegmezőbe.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
 1. A Save (Mentés) gombra kattintva a képernyő a következőképpen fog megjelenni:
 
@@ -166,7 +162,7 @@ Az Azure AD egyszeri bejelentkezés bukóív való konfigurálásához hajtsa v�
 
     b.  Ha visszatér a képernyőre, jelölje be a **Bejelentkezés SAML-identitáson keresztül** jelölőnégyzetet.
 
-    b. Kattintson a **Save** (Mentés) gombra.
+    b. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -186,12 +182,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -239,7 +235,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a bu
 
     ![Személyek meghívása](./media/rollbar-tutorial/user2.png)
 
-1. A szövegmezőbe írja be a felhasználó nevét (például **brittasimon\@contoso.com** ), majd kattintson a **Hozzáadás/meghívás**gombra.
+1. A szövegmezőbe írja be a felhasználó nevét (például **brittasimon \@ contoso.com** ), majd kattintson a **Hozzáadás/meghívás**gombra.
 
     ![Személyek meghívása](./media/rollbar-tutorial/user3.png)
 

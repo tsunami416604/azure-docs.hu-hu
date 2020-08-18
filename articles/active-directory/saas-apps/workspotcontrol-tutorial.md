@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Workspot vezérlőhöz.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ea8e4e9-f61f-4f45-b635-b0e306eda3d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086681"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel
 
@@ -107,17 +103,17 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
     ![Workspot és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
     1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő mintában:<br/>
-    ***https://<<i> </i>példánynév> – SAML.workspot.com/SAML/metadata***
+    ***https://<<i></i> példánynév> – SAML.workspot.com/SAML/metadata***
 
     1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő mintában:<br/>
-    ***https://<<i> </i>példánynév> – SAML.workspot.com/SAML/Assertion***
+    ***https://<<i></i> példánynév> – SAML.workspot.com/SAML/Assertion***
 
 5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása**lehetőséget.
 
     ![Workspot és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL** szövegmezőben adjon meg egy URL-címet a következő mintában:<br/>
-    ***https://<<i> </i>példánynév> – SAML.workspot.com/***
+    ***https://<<i></i> példánynév> – SAML.workspot.com/***
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Cserélje le ezeket az értékeket a tényleges azonosítóra, a válasz URL-címére és a bejelentkezési URL-címre. Az értékek lekéréséhez lépjen kapcsolatba a [Workspot-vezérlő](mailto:support@workspot.com) ügyfélszolgálatával. Vagy a Azure Portal **alapszintű SAML-konfiguráció** szakaszának mintázatait is megtekintheti.
@@ -156,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
 
     1. Válassza ki a **fájl frissítése** elemet az X. 509 tanúsítványba való feltöltéshez a Azure Portal által letöltött base-64 kódolású tanúsítványt.
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -176,7 +172,7 @@ Ebben a szakaszban egy teszt felhasználót hoz létre a Azure Portal.
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A Felhasználónév mezőbe írja be a **brittasimon@* yourcompanydomain. Extension * * * **nevet** . Adja meg ** BrittaSimon@contosopéldául a következőt:.<i> </i> com**.
+    1. A Felhasználónév mezőbe írja be a **brittasimon@* yourcompanydomain. Extension * * * **nevet** . Adja meg például a következőt: ** BrittaSimon@contoso . <i></i> com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Ezután jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
@@ -228,7 +224,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wo
 
     1. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét (például **Simon**).
 
-    1. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például ** Brittasimon@contoso:<i> </i> . com**.
+    1. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például: ** Brittasimon@contoso . <i></i> com**.
 
     1. Válassza ki a megfelelő felhasználói szerepkört a **szerepkör** legördülő listából.
 
@@ -242,7 +238,7 @@ Ebben a szakaszban a *hozzáférési panelen*teszteljük az Azure ad egyszeri be
 
 Ha a hozzáférési panelen a **Workspot vezérlő** csempére kattint, automatikusan be kell jelentkeznie arra a Workspot-vezérlőre, amelyhez be kell ÁLLÍTANIA az SSO-t. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 

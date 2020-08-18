@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498951"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531259"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>A Key Vault szolgáltatás figyelése Azure Monitor for Key Vault (előzetes verzió)
 A Key Vault (előzetes verzió) Azure Monitor a kulcstartók átfogó figyelését teszi lehetővé a Key Vault kérelmek, a teljesítmény, a hibák és a késések egységes áttekintésével.
@@ -45,7 +45,7 @@ A Key Vault Azure Monitor a naplók és a metrikák összeadásával globális f
 
 A Azure Monitor a kérések, a késések és a hibák részleteit megtekintheti az előfizetésében található több kulcstartóból, és segítséget nyújthat a teljesítménnyel kapcsolatos problémák és a szabályozási helyzetek azonosításához.
 
-Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és műveleteit az összes előfizetésében, hajtsa végre a következő lépéseket:
+Ha meg szeretné tekinteni a kulcstartók kihasználtságát és műveleteit az összes előfizetésében, hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
@@ -206,6 +206,6 @@ Emellett, ha nagy számú kulcstartót és előfizetést választott ki, előfor
 
 Szerkesztheti a meglévő munkafüzetet a szerkesztési mód használatával, majd mentheti a munkáját új munkafüzetként, amely az összes új módosítást tartalmazni fogja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.

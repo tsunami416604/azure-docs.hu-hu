@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Catchpoint'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Catchpoint között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ab3eead7-8eb2-4c12-bb3a-0e46ec899d37
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b19e286d299811a950df05f93d221bd710676ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80743498"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530307"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Catchpoint
 
@@ -91,19 +87,19 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 1. A Catchpoint alkalmazás megadott formátumban várja az SAML-kijelentéseket. Egyéni attribútum-hozzárendelések hozzáadása az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi táblázat az alapértelmezett attribútumok listáját tartalmazza:
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | vezetéknév; | felhasználó. vezetéknév |
     | EmailAddress | User. mail |
-    | Name (Név) | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Egyedi felhasználói azonosító | User. userPrincipalName |
 
     ![Felhasználói attribútumok & jogcímek listája képernyőkép](common/default-attributes.png)
 
 1. Emellett a Catchpoint alkalmazás egy másik attribútumot vár, amelyet egy SAML-válaszban kell átadni. Lásd az alábbi táblázatot. Ez az attribútum előre fel van töltve, de a követelményeinek megfelelően áttekintheti és frissítheti azt.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------ | --------- |
     | névtér | User. assignedrole |
 
@@ -122,11 +118,11 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 Ebben a szakaszban a Azure Portal használatával hozzon létre egy B. Simon nevű Azure AD-teszt felhasználót.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Adja meg például a következőt: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Adja meg például a következőt: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a megjelenített jelszó értékét.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -134,7 +130,7 @@ Ebben a szakaszban a Azure Portal használatával hozzon létre egy B. Simon nev
 
 Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Catchpoint.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza a **Catchpoint**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -169,7 +165,7 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
 
    Az **összevonás metaadatait tartalmazó XML-fájlt** is feltöltheti a **metaadatok feltöltése** lehetőség kiválasztásával.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-a-catchpoint-test-user"></a>Catchpoint-teszt felhasználó létrehozása
 
@@ -186,7 +182,7 @@ Amikor kiválasztja a Catchpoint csempét a saját alkalmazások portálján, au
 > 
 > ![Catchpoint-konfiguráció](./media/catchpoint-tutorial/loginimage.png)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

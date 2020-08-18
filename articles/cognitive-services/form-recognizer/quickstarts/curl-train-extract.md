@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 94873a3ea1349a9dfac199d98fd109b1a97f72f9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d0bf5da3633ce8f34e34cbdf0cee12a94c128d72
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904734"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517965"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a cURL használatával betanítási és pontszám-űrlapok segítségével kinyerheti a kulcs-érték párokat és táblákat.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +49,7 @@ Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani eg
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az értéke a betanított új modell azonosítója. 
+A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az értéke a betanított új modell azonosítója.
 
 ## <a name="get-training-results"></a>Képzési eredmények beolvasása
 
@@ -66,64 +66,64 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>" -H
 `200 (Success)`A következő formátumban kap választ egy JSON-törzsből. Figyelje meg a `"status"` mezőt. Ez az érték a `"ready"` betanítás befejezése után lesz. Ha a modell nem fejeződött be, a parancs újbóli futtatásával újra le kell kérdezni a szolgáltatást. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
 
 A `"modelId"` mező tartalmazza a betanított modell azonosítóját. Ezt a következő lépéshez kell megadnia.
-    
+
 ```json
-{ 
-  "modelInfo":{ 
+{
+  "modelInfo":{
     "status":"ready",
     "createdDateTime":"2019-10-08T10:20:31.957784",
     "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
     "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
   },
-  "trainResult":{ 
-    "trainingDocuments":[ 
-      { 
+  "trainResult":{
+    "trainingDocuments":[
+      {
         "documentName":"invoices\\Invoice_1.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_2.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_3.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_4.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_5.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       }
     ],
-    "errors":[ 
+    "errors":[
 
     ]
   },
-  "keys":{ 
-    "0":[ 
+  "keys":{
+    "0":[
       "Address:",
       "Invoice For:",
       "Microsoft",
@@ -166,18 +166,18 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
 
 ```json
 {
-  "analyzeResult":{ 
-    "readResults":[ 
-      { 
+  "analyzeResult":{
+    "readResults":[
+      {
         "page":1,
         "width":8.5,
         "height":11.0,
         "angle":0,
         "unit":"inch",
-        "lines":[ 
-          { 
+        "lines":[
+          {
             "text":"Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               0.5278,
               1.0597,
               1.4569,
@@ -187,10 +187,10 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
               0.5278,
               1.4347
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"Contoso",
-                "boundingBox":[ 
+                "boundingBox":[
                   0.5278,
                   1.0597,
                   1.4569,
@@ -204,9 +204,9 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
             ]
           },
           ...
-          { 
+          {
             "text":"PT",
-            "boundingBox":[ 
+            "boundingBox":[
               6.2181,
               3.3528,
               6.3944,
@@ -216,10 +216,10 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
               6.2181,
               3.5417
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"PT",
-                "boundingBox":[ 
+                "boundingBox":[
                   6.2181,
                   3.3528,
                   6.3944,
@@ -236,21 +236,21 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
       }
     ],
     "version":"2.0.0",
-    "errors":[ 
+    "errors":[
 
     ],
-    "documentResults":[ 
+    "documentResults":[
 
     ],
-    "pageResults":[ 
-      { 
+    "pageResults":[
+      {
         "page":1,
         "clusterId":1,
-        "keyValuePairs":[ 
-          { 
-            "key":{ 
+        "keyValuePairs":[
+          {
+            "key":{
               "text":"Address:",
-              "boundingBox":[ 
+              "boundingBox":[
                 0.7972,
                 1.5125,
                 1.3958,
@@ -260,13 +260,13 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                 0.7972,
                 1.6431
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/1/words/0"
               ]
             },
-            "value":{ 
+            "value":{
               "text":"1 Redmond way Suite 6000 Redmond, WA 99243",
-              "boundingBox":[ 
+              "boundingBox":[
                 0.7972,
                 1.6764,
                 2.15,
@@ -276,7 +276,7 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                 0.7972,
                 2.2181
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/4/words/0",
                 "#/readResults/0/lines/4/words/1",
                 "#/readResults/0/lines/4/words/2",
@@ -289,10 +289,10 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
             },
             "confidence":0.86
           },
-          { 
-            "key":{ 
+          {
+            "key":{
               "text":"Invoice For:",
-              "boundingBox":[ 
+              "boundingBox":[
                 4.3903,
                 1.5125,
                 5.1139,
@@ -302,14 +302,14 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                 4.3903,
                 1.6431
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/2/words/0",
                 "#/readResults/0/lines/2/words/1"
               ]
             },
-            "value":{ 
+            "value":{
               "text":"Microsoft 1020 Enterprise Way Sunnayvale, CA 87659",
-              "boundingBox":[ 
+              "boundingBox":[
                 5.1917,
                 1.4458,
                 6.6583,
@@ -319,7 +319,7 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                 5.1917,
                 2.0347
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/3/words/0",
                 "#/readResults/0/lines/5/words/0",
                 "#/readResults/0/lines/5/words/1",
@@ -333,18 +333,18 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
           },
           ...
         ],
-        "tables":[ 
-          { 
+        "tables":[
+          {
             "caption":null,
             "rows":2,
             "columns":5,
-            "cells":[ 
-              { 
+            "cells":[
+              {
                 "rowIndex":0,
                 "colIndex":0,
                 "header":true,
                 "text":"Invoice Number",
-                "boundingBox":[ 
+                "boundingBox":[
                   0.5347,
                   2.8722,
                   1.575,
@@ -354,17 +354,17 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                   0.5347,
                   3.0028
                 ],
-                "elements":[ 
+                "elements":[
                   "#/readResults/0/lines/9/words/0",
                   "#/readResults/0/lines/9/words/1"
                 ]
               },
-              { 
+              {
                 "rowIndex":0,
                 "colIndex":1,
                 "header":true,
                 "text":"Invoice Date",
-                "boundingBox":[ 
+                "boundingBox":[
                   1.9403,
                   2.8722,
                   2.7569,
@@ -374,17 +374,17 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                   1.9403,
                   3.0028
                 ],
-                "elements":[ 
+                "elements":[
                   "#/readResults/0/lines/10/words/0",
                   "#/readResults/0/lines/10/words/1"
                 ]
               },
-              { 
+              {
                 "rowIndex":0,
                 "colIndex":2,
                 "header":true,
                 "text":"Invoice Due Date",
-                "boundingBox":[ 
+                "boundingBox":[
                   3.3403,
                   2.8722,
                   4.4583,
@@ -394,7 +394,7 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
                   3.3403,
                   3.0028
                 ],
-                "elements":[ 
+                "elements":[
                   "#/readResults/0/lines/11/words/0",
                   "#/readResults/0/lines/11/words/1",
                   "#/readResults/0/lines/11/words/2"
@@ -417,7 +417,7 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API és a cURL használatával végezte el a modell betanítását, és egy minta forgatókönyvben futtatja azt. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

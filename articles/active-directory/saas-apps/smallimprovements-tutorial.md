@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció kis fejlesztési funkciókkal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a kis-és nagyvállalati változások között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 59c8a112-41e1-4337-9ef3-3d7029780d61
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090364"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Oktatóanyag: Azure Active Directory integráció kis mértékű Tökéletesítésekkel
 
@@ -32,7 +28,7 @@ Az Azure AD kisméretű fejlesztése az alábbi előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés kis mértékű Tökéletesítésekkel való 
 
     ![Kis mértékű fejlesztési tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.small-improvements.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.small-improvements.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.small-improvements.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.small-improvements.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez vegye fel a kapcsolatot a [kisméretű fejlesztési](mailto:support@small-improvements.com) ügyfélszolgálattal. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -150,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés kis mértékű Tökéletesítésekkel való 
 
     d. Adja meg a megfelelő értéket, hogy az **SAML-prompt** szövegmezőben nevezze el az SSO bejelentkezés gombot.  
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -170,12 +166,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -229,7 +225,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók kis javításokban je
 
     b. Adja meg a felhasználó **vezetéknevét** (például **Simon**).
 
-    c. Adja meg a felhasználóhoz hasonló **brittasimon@contoso.com** **e-mail címet** .
+    c. Adja meg a felhasználóhoz hasonló **E-mail címet** **brittasimon@contoso.com** .
 
     d. Azt is megteheti, hogy a személyes üzenetet az **értesítő E-mail küldése** mezőben adja meg. Ha nem szeretné elküldeni az értesítést, törölje a jelet a jelölőnégyzetből.
 

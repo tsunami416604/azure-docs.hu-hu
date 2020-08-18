@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 0c7e077b3f170e3d9f1b15f78d52a1f386396983
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1777d4d09dfb12f490245f726715aed4eefd6227
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876869"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517795"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: szöveg-és elrendezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API és a Python segítségével Kinyeri a szöveg elrendezési információit és a táblák adatait az űrlap dokumentumaiból.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -278,7 +278,7 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a számla szöveg elrendezésének kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a BGS online-nal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a BGS online között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4fd6b29b-1b46-4fd1-9f5e-16b1c9d892cd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bccd90340fe8f8dfd5393a391899caf92dd2251f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf73b15e42afd95f6e7dd09db630957be02ea257
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158868"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Oktatóanyag: Azure Active Directory integráció a BGS online-nal
 
@@ -33,7 +28,7 @@ A BGS online és az Azure AD integrálásával a következő előnyöket nyújtj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,15 +103,15 @@ Az Azure AD egyszeri bejelentkezés a BGS Online szolgáltatással való konfigu
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    Éles környezetben használja ezt a mintát`https://<company name>.millwardbrown.report`
+    Éles környezetben használja ezt a mintát `https://<company name>.millwardbrown.report`
 
-    Tesztelési környezet esetén használja ezt a mintát`https://millwardbrown.marketingtracker.nl/mt5/`
+    Tesztelési környezet esetén használja ezt a mintát `https://millwardbrown.marketingtracker.nl/mt5/`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    Éles környezetben használja ezt a mintát`https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx`
+    Éles környezetben használja ezt a mintát `https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx`
 
-    Tesztelési környezet esetén használja ezt a mintát`https://millwardbrown.marketingtracker.nl/mt5/sso/saml/AssertionConsumerService.aspx`
+    Tesztelési környezet esetén használja ezt a mintát `https://millwardbrown.marketingtracker.nl/mt5/sso/saml/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez forduljon a [BGS online támogatási csapatához](mailTo:bgsdashboardteam@millwardbrown.com) .
@@ -157,12 +152,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

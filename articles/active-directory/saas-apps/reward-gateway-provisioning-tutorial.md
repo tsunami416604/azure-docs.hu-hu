@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: jutalmazási átjáró konfigurálása az automatikus felhasználó-kiépítés Azure Active Directory használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az átjáró jutalmazására.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 928d48907e43de5e65ca5604ff878bfb83d5e95b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77060995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534353"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Oktatóanyag: jutalmazási átjáró konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -122,7 +118,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza az **Azure Active Directory-felhasználók szinkronizálása az átjáró jutalmazásához**lehetőséget.
 

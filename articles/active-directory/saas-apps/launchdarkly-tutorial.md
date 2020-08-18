@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a LaunchDarkly-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és LaunchDarkly között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 3f0671bc-f93f-496e-b465-b9ce8c6633fa
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f8c3ea300960893163264e99bd6c51138c7c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159653"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Oktatóanyag: Azure Active Directory integráció a LaunchDarkly
 
@@ -33,7 +28,7 @@ A LaunchDarkly és az Azure AD integrálásával a következő előnyöket nyúj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,16 +102,16 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![LaunchDarkly tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`app.launchdarkly.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `app.launchdarkly.com`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. A tényleges válasz URL-címével frissíti az értéket, amelyet később az oktatóanyagban talál. Ha az alkalmazást **identitásszolgáltató** módban kívánja használni, hagyja üresen a **bejelentkezési URL-cím** mezőt, ellenkező esetben nem fogja tudni elindítani a bejelentkezést a **identitásszolgáltató**. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.launchdarkly.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.launchdarkly.com`
 
     ![LaunchDarkly tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
@@ -160,7 +155,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     c. Nyissa meg a letöltött tanúsítványt a Azure Portal a Jegyzettömbben, másolja a tartalmat, majd illessze be az **X. 509-tanúsítvány** mezőbe, vagy közvetlenül feltöltheti a tanúsítványt a **feltöltés**gombra kattintva.
 
-    d. Kattintson a **Mentés** gombra
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -180,12 +175,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

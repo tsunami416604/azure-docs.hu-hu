@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a IamIP Patent platformmal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a IamIP-alapú szabadalmi platform között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5b4fc1-e8fd-4418-a369-189272fef80d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d487aaf7ba4aaf666962cf91ca86d46115055b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a2139b7a0f7d51b6c759a98c93c5250666f15a9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78190738"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a IamIP szabadalmi platformmal
 
@@ -103,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. Válassza a **további URL-címek beállítása** lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** mezőbe írja be a **https:\//Patents.iamip.com/login-User**értéket.
+    A **bejelentkezési URL-cím** mezőbe írja be a  **https: \/ /Patents.iamip.com/login-User**értéket.
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a tanúsítvány **(RAW)** **letöltési** hivatkozását a tanúsítvány letöltéséhez és a számítógépbe való mentéséhez:
 
@@ -121,7 +117,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A Felhasználónév **mezőbe írja be** \<a username> @\<cégestartomány> nevet. \<bővítmény>. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -157,11 +153,11 @@ Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel has
 
 Amikor kiválasztja a IamIP szabadalmi platform csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a IamIP szabadalmi platform-példányba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

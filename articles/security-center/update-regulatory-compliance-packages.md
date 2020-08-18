@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873327"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522606"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
@@ -74,6 +74,8 @@ A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfe
     
     ![Szabályozási csomagok hozzáadása Azure Security Center szabályozási megfelelőségi irányítópulthoz](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
+1. Válassza a **Hozzáadás** lehetőséget, és adja meg az adott kezdeményezéshez szükséges összes adatot, például a hatókört, a paramétereket és a szervizelést.
+
 1. A Security Center oldalsávján válassza a **szabályozás megfelelősége** ismét lehetőséget a megfelelőségi irányítópultra való visszatéréshez.
     * Az új szabvány megjelenik az iparági & szabályozási szabványainak listájában. 
     * Ha hozzáadta az **Azure CIS 1.1.0-t (új)**, az Azure CIS 1.1.0 megfelelőségének eredeti *statikus* nézete is továbbra is fennáll. Előfordulhat, hogy a későbbiekben automatikusan el lesz távolítva.
@@ -83,7 +85,7 @@ A következő lépések azt ismertetik, hogyan adhat hozzá egy csomagot a megfe
 
     [![A korábbi és az új Azure CIS-t bemutató szabályozási megfelelőségi irányítópult](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi csomagokat** a megfelelőség további szabványokkal való figyeléséhez. 
 

@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685308"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516588"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Videotartalom elemzése a kifogásolt anyagokhoz C-ben #
 
 Ez a cikk a .NET-hez készült [Content MODERATOR SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -val való ismerkedéshez nyújt segítséget és példákat a videó tartalmának felnőtt vagy zamatos tartalomra való vizsgálatához.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Ha helyi videofájl (legegyszerűbb eset) használatát kívánja használni, adja hozzá a projekthez, és adja meg az elérési útját `INPUT_FILE` (relatív elérési utak a végrehajtási könyvtárhoz viszonyítva).
 
-Emellett létre kell hoznia az _előre definiált. JSON_ fájlt az aktuális könyvtárban, és fel kell használni a verziószám megadásához. Például:
+Emellett létre kell hoznia a _preset.js_ az aktuális könyvtárban található fájlon, és a verziószámot kell használnia. Például:
 
 ```JSON
 {
@@ -369,10 +369,10 @@ A Content moderációs feladatok befejezése után elemezze a JSON-választ. Eze
 - a **Start**, az **időtartam**, a **totalDuration**és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
  
 > [!NOTE]
-> - `adultScore`a tartalom lehetséges jelenléti és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
-> - `racyScore`a tartalom lehetséges jelenlétét és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
-> - `adultScore`és `racyScore` 0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez az előzetes verzió egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
-> - `reviewRecommended`értéke igaz vagy hamis, a belső pontszám küszöbértékének függvényében. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
+> - `adultScore` a tartalom lehetséges jelenléti és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
+> - `racyScore` a tartalom lehetséges jelenlétét és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan szuggesztív vagy érett lehet.
+> - `adultScore` és `racyScore` 0 és 1 között van. Minél magasabb a pontszám, annál nagyobb a modell, ami azt jelzi, hogy a kategória is alkalmazható. Ez az előzetes verzió egy statisztikai modellre támaszkodik, nem pedig manuálisan kódolt eredményeket. Javasoljuk, hogy tesztelje a saját tartalmait annak meghatározásához, hogy az egyes kategóriák hogyan illeszkednek a követelményekhez.
+> - `reviewRecommended` értéke igaz vagy hamis, a belső pontszám küszöbértékének függvényében. Az ügyfeleknek fel kell mérniük, hogy ezt az értéket használják-e, vagy egyéni küszöbértékeket határoznak meg a tartalmi szabályzatok alapján.
 
 ```json
 {

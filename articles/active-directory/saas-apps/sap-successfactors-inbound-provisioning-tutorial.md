@@ -3,23 +3,19 @@ title: 'Oktatóanyag: a SuccessFactors bejövő kiépítés konfigurálása az A
 description: Ismerje meg, hogyan konfigurálhatja a bejövő kiépítés SuccessFactors
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: 1ff90231-1312-463e-8949-7d976e433fc3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809952"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534105"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználó kiépítési felállításához 
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 

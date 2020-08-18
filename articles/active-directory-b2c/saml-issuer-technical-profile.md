@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d709bf02f1cb504121e52f88385d0f6c074b24a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203588"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521212"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Az SAML-token kiállítójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -57,6 +57,7 @@ A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek ür
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | IssuerUri | No | Az SAML-válaszban megjelenő kiállító neve. Az értéknek meg kell egyeznie a függő entitás alkalmazásban konfigurált névvel. |
+| XmlSignatureAlgorithm | No | Az a módszer, amelyet a Azure AD B2C az SAML-állítás aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-válasz konfigurálásával kapcsolatban lásd: [függő entitás SAML-metaadatai](relyingparty.md#metadata)|
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -76,15 +77,4 @@ Az Azure AD B2C SAML-munkamenetek konfigurálásához egy függő entitás alkal
 A következő cikkből megtudhatja, hogyan használhatja az SAML kiállítói technikai profilt:
 
 - [SAML-alkalmazás regisztrálása Azure AD B2C](connect-with-saml-service-providers.md)
-
-
-
-
-
-
-
-
-
-
-
 

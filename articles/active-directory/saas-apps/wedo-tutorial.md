@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a WEDO | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és WEDO között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 73adc94e-7656-4a92-99e3-a401c67be477
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce7ffb389a585511883c3b35de3773ae37342b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 364bb71ff9ec1cc948f9631f50ac4444c16ea4d1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76992372"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523388"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a WEDO
 
@@ -84,20 +80,20 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.wedo.swiss/sp/acs`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.wedo.swiss/sp/acs`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.wedo.swiss/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.wedo.swiss/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a WeDo ügyfélszolgálati [csapatához](mailto:info@wedo.swiss) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. A WEDO alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------ | --------- |
     | e-mail | User. e-mail |
     | firstName | felhasználó. firstName |
@@ -120,9 +116,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -168,11 +164,11 @@ Ebben a szakaszban egy WEDO nevű teszt felhasználót hoz létre a következő 
 1. Kattintson a **felhasználó hozzáadása**elemre.
 1. A felhasználó hozzáadása felugró ablakban töltse ki a felhasználó adatait
 
-    a. Keresztnév `B`.
+    a. Keresztnév `B` .
 
-    b. Vezetéknév `Simon`.
+    b. Vezetéknév `Simon` .
 
-    c. Adja meg az `username@companydomain.extension`e-mailt. Például: `B.Simon@contoso.com`. A vállalat rövid nevével megegyező tartományba tartozó e-mail-cím megadása kötelező.
+    c. Adja meg az e-mailt `username@companydomain.extension` . Például: `B.Simon@contoso.com`. A vállalat rövid nevével megegyező tartományba tartozó e-mail-cím megadása kötelező.
 
     d. Felhasználó típusa `User`
 
@@ -180,7 +176,7 @@ Ebben a szakaszban egy WEDO nevű teszt felhasználót hoz létre a következő 
 
     f. A *csoportok kiválasztása* lapon kattintson a **Mentés**gombra.
 
-    g.  A *felhasználó meghívása* lapon kattintson az **Igen**gombra.
+    :  A *felhasználó meghívása* lapon kattintson az **Igen**gombra.
 
 1. A felhasználó ellenőrzése e-mailben kapott hivatkozás használatával
 
@@ -193,11 +189,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a WEDO csempére kattint, automatikusan be kell jelentkeznie arra a WEDO, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

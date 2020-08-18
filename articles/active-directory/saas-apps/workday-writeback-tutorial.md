@@ -3,23 +3,19 @@ title: 'Oktatóanyag: munkaidő-visszaírási konfigurálása Azure Active Direc
 description: Megtudhatja, hogyan konfigurálhat visszaírási attribútumot az Azure AD-ből munkanapokra
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041791"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526830"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből munkanapokra
 Ennek az oktatóanyagnak a célja, hogy megmutassa az attribútumok Azure AD-ből munkanapokra történő visszaírási elvégzendő lépéseket. A munkanap visszaírási kiépítési alkalmazás támogatja az értékek hozzárendelését a következő munkanap-attribútumokhoz:
@@ -148,7 +144,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a forrás címtárban lévő felhasználók számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 

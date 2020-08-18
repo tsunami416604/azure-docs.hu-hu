@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SignalFx | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SignalFx között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136414"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SignalFx
 
@@ -88,15 +84,15 @@ Ezekkel az utasításokkal engedélyezheti az Azure AD SSO használatát a Azure
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon végezze el a következő mezőket: 
 
-    a. Az **azonosító**mezőben adja meg a következő `https://api.<realm>.signalfx.com/v1/saml/metadata` URL- `<realm>` címet, és cserélje le a SignalFx-tartományra. 
+    a. Az **azonosító**mezőben adja meg a következő URL-címet, `https://api.<realm>.signalfx.com/v1/saml/metadata` és cserélje le a `<realm>` SignalFx-tartományra. 
 
-    b. A **Válasz URL-címe**mezőben adja meg `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` a következő `<realm>` URL-címet, és cserélje le a `<integration ID>` SignalFx-TARTOMÁNYRA, valamint a korábban a SIGNALFX felhasználói felületéről másolt **integrációs azonosítóra** .
+    b. A **Válasz URL-címe**mezőben adja meg a következő URL-címet, `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` és cserélje le a `<realm>` SignalFx-tartományra, valamint `<integration ID>` a korábban a SignalFx felhasználói felületéről másolt **integrációs azonosítóra** .
 
 1. A SignalFx alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. 
     
 1. Tekintse át és ellenőrizze, hogy a következő jogcímek leképezik-e a Active Directoryban kitöltött forrás-attribútumokat. 
 
-    | Name (Név) |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | ------------------- | -------------------- |
     | Felhasználó. FirstName  | User. givenName |
     | User. e-mail  | User. mail |
@@ -119,10 +115,10 @@ Ezekkel az utasításokkal létrehozhat egy teszt felhasználót a **B. Simon**n
 1. A Azure Portal a bal oldali navigációs ablakban válassza a **Azure Active Directory**lehetőséget, majd válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Az oldal tetején válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban:
-   1. A **Felhasználónév**mezőbe írja be `username@companydomain.extension`a (z `b.simon@contoso.com`) nevet, például:.
-   1. A **név**mezőben adja `B.Simon`meg a nevet.
+   1. A **Felhasználónév**mezőbe írja be a (z `username@companydomain.extension` ) nevet, például: `b.simon@contoso.com` .
+   1. A **név**mezőben adja meg a nevet `B.Simon` .
    1. Jelölje be a **jelszó megjelenítése**jelölőnégyzetet, majd másolja a megjelenő értéket a **jelszó**mezőbe. Az integráció teszteléséhez szüksége lesz erre az információra a későbbi lépésben. 
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>5. lépés: az Azure AD-teszt felhasználójának kiosztása
 
@@ -148,7 +144,7 @@ Ezekkel az utasításokkal engedélyezheti a felhasználók számára az Azure e
 1. A **tanúsítvány (Base64)** mellett kattintson a **fájl feltöltése**elemre, majd keresse meg a korábban letöltött **Base64-kódolású tanúsítványfájl** Azure Portal.
 1. Az **Azure ad-azonosító**mellett illessze be a korábban a Azure Portalból másolt **Azure ad-azonosító** értékét. 
 1. Az **összevonási metaadatok URL-címe**mellett illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet korábban a Azure Portal másolt. 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="step-7-test-sso"></a>7. lépés: egyszeri bejelentkezés tesztelése
 
@@ -163,7 +159,7 @@ Tekintse át az alábbi információkat az egyszeri bejelentkezés tesztelésév
         * További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * A SignalFx alkalmazás a hozzáférési panelen vagy a szervezethez rendelt egyéni bejelentkezési oldalon keresztül érhető el. A tesztelési felhasználónak ezen helytől kezdve kell tesztelni az integrációt.
-    * A tesztelési felhasználó használhatja a folyamat során korábban létrehozott hitelesítő adatokat **b.simon@contoso.com**.
+    * A tesztelési felhasználó használhatja a folyamat során korábban létrehozott hitelesítő adatokat **b.simon@contoso.com** .
 
 ### <a name="first-time-logins"></a>Első bejelentkezések
 
@@ -171,11 +167,11 @@ Tekintse át az alábbi információkat az egyszeri bejelentkezés tesztelésév
 
 * A SignalFx **támogatja az** igény szerinti felhasználói létrehozását, ami azt jelenti, hogy ha a felhasználó nem létezik a SignalFx-ben, akkor a felhasználó fiókját az első bejelentkezési kísérlet után hozza létre a rendszer.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

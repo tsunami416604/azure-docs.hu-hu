@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 32650d44b452b90ffd2935eb31f7c7b958c0f7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/18/2020
+ms.openlocfilehash: 8ec950ddabd3844618c878471d2e1391979e2056
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737758"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521372"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Adatok másolása a és az SFTP-kiszolgálóra Azure Data Factory használatával
 
@@ -75,7 +75,7 @@ Az alapszintű hitelesítés használatához állítsa a *authenticationType* tu
 | userName (Felhasználónév) | Az a felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Yes |
 | jelszó | A felhasználó jelszava (userName). Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja azt az adatgyárban, vagy [hivatkozzon az Azure Key vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -190,7 +190,7 @@ A következő tulajdonságokat támogatja az SFTP a `location` Format-alapú ada
 | folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és határozza meg az elérési utat a tevékenység forrásának beállításai között. | No       |
 | fileName   | A megadott folderPath tartozó fájlnév. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és adja meg a fájl nevét a tevékenység forrásának beállításaiban. | No       |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -241,7 +241,7 @@ Az SFTP `storeSettings` Formátum-alapú másolási forrás beállításai alatt
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                            |
 | maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No                                            |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -284,7 +284,7 @@ Az SFTP `storeSettings` Formátum-alapú másolási forrás beállításai alatt
 
 ### <a name="sftp-as-a-sink"></a>SFTP fogadóként
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 A következő tulajdonságok támogatottak az SFTP `storeSettings` Formátum alapú másolási fogadóban lévő beállítások területen:
 
@@ -299,7 +299,7 @@ A következő tulajdonságok támogatottak az SFTP `storeSettings` Formátum ala
 >[!TIP]
 >Ha a "UserErrorSftpPathNotFound", "UserErrorSftpPermissionDenied" vagy "SftpOperationFail" hibaüzenet jelenik meg az SFTP-be való írás során, és *a használt SFTP-felhasználó rendelkezik a* megfelelő engedélyekkel, ellenőrizze, hogy működik-e az SFTP-kiszolgáló a fájl átnevezési műveletének támogatásával. Ha nem, tiltsa le a **feltöltés a temp file** ( `useTempFileRename` ) kapcsolóval, és próbálkozzon újra. A tulajdonsággal kapcsolatos további tudnivalókért tekintse meg az előző táblázatot. Ha a másolási tevékenységhez saját üzemeltetésű integrációs modult használ, ügyeljen arra, hogy a 4,6-es vagy újabb verziót használja.
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -341,9 +341,9 @@ Ez a szakasz azt a viselkedést ismerteti, amely a mappák elérési útjaival �
 | folderPath | fileName | rekurzív | A forrás mappa szerkezete és a szűrő eredménye (a **félkövérrel szedett** fájlok beolvasása)|
 |:--- |:--- |:--- |:--- |
 | `Folder*` | (üres, alapértelmezett használata) | hamis | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | (üres, alapértelmezett használata) | igaz | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | (üres, alapértelmezett használata) | true | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.jsbekapcsolva**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | `*.csv` | hamis | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | `*.csv` | igaz | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | true | Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>Példák a fájllista
 
@@ -351,7 +351,7 @@ Ez a táblázat a másolási tevékenység forrásában lévő fájllista elér�
 
 | Példa a forrás struktúrájára                                      | Tartalom FileListToCopy.txt                             | Azure Data Factory konfiguráció                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metaadatok<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **Az adatkészletben:**<br>-Mappa elérési útja:`root/FolderA`<br><br>**A másolási tevékenység forrása:**<br>-Fájllista elérési útja:`root/Metadata/FileListToCopy.txt` <br><br>A fájllista elérési útja ugyanazon az adattárban található szövegfájlra mutat, amely tartalmazza a másolni kívánt fájlok listáját (egy sor, soronként egy fájl, az adatkészletben konfigurált elérési út relatív elérési útját). |
+| legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metaadatok<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **Az adatkészletben:**<br>-Mappa elérési útja: `root/FolderA`<br><br>**A másolási tevékenység forrása:**<br>-Fájllista elérési útja: `root/Metadata/FileListToCopy.txt` <br><br>A fájllista elérési útja ugyanazon az adattárban található szövegfájlra mutat, amely tartalmazza a másolni kívánt fájlok listáját (egy sor, soronként egy fájl, az adatkészletben konfigurált elérési út relatív elérési útját). |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
@@ -376,7 +376,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 |:--- |:--- |:--- |
 | típus | Az adatkészlet *Type* tulajdonságát *fájlmegosztás*értékre kell állítani. |Yes |
 | folderPath | A mappa elérési útja. Helyettesítő karakteres szűrő használata támogatott. Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (a nulla vagy egyetlen karakternek felelnek meg); `^` Ha a tényleges fájl neve helyettesítő karakter, vagy a escape-karakter szerepel a következőben, használja a Escape karaktert. <br/><br/>Példák: gyökérmappa/almappa/, további példák a [mappák és a fájlok szűrése példákban](#folder-and-file-filter-examples). |Yes |
-| fileName |  A megadott "folderPath" alatt lévő fájlok **neve vagy helyettesítő karakteres szűrője** . Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A szűrő esetében az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (nulla vagy egyetlen karakter).<br/>– 1. példa:`"fileName": "*.csv"`<br/>– 2. példa:`"fileName": "???20180427.txt"`<br/>A (z `^` ) használatával elkerülheti a mappát, ha az aktuális mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a |No |
+| fileName |  A megadott "folderPath" alatt lévő fájlok **neve vagy helyettesítő karakteres szűrője** . Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A szűrő esetében az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (nulla vagy egyetlen karakter).<br/>– 1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>A (z `^` ) használatával elkerülheti a mappát, ha az aktuális mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a |No |
 | modifiedDatetimeStart | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br/><br/> Ha nagy számú fájlból szeretne szűrni, a rendszer az adatáthelyezés általános teljesítményét fogja érinteni. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
 | modifiedDatetimeEnd | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br/><br/> Ha nagy számú fájlból szeretne szűrni, a rendszer az adatáthelyezés általános teljesítményét fogja érinteni. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
 | formátumban | Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni, a következő fájlformátum-típusok támogatottak: *Szövegformátum*, *JsonFormat*, *AvroFormat*, *OrcFormat*és *ParquetFormat*. A *Type (típus* ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és a [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) című rész. |Nem (csak bináris másolási forgatókönyv esetén) |
@@ -388,7 +388,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 >[!NOTE]
 >Ha a *fileFilter* tulajdonságot használta a fájl szűrőhöz, azt a rendszer továbbra is támogatja, de azt javasoljuk, hogy mostantól a *fájlnévhez* hozzáadott új szűrő funkciót használja.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -427,7 +427,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE ( *igaz* ), a fogadó pedig egy fájl alapú tároló, az üres mappákat és almappákat a rendszer nem másolja vagy hozza létre a fogadón.<br/>Az engedélyezett értékek értéke *true* (alapértelmezett) és *false (hamis* ) | No |
 | maxConcurrentConnections | A tárolási tárolóhoz egyidejűleg csatlakozható kapcsolatok száma. Csak akkor válasszon számot, ha szeretné korlátozni az egyidejű kapcsolatokat az adattárral. | No |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

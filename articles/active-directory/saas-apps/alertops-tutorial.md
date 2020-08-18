@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a AlertOps-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és AlertOps között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 3db13ed4-35c2-4b1e-bed8-9b5977061f93
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67107058"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522337"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Oktatóanyag: a AlertOps és a Azure Active Directory integrálása
 
@@ -80,13 +75,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com`
+    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.alertops.com`
 
-    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com/login.aspx`
+    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.alertops.com/login.aspx`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.alertops.com/login.aspx`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.alertops.com/login.aspx`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a AlertOps ügyfélszolgálati [csapatához](mailto:support@alertops.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -131,7 +126,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Válassza **SHA256** ki a sha256 **SAML-aláírási algoritmusként** a legördülő listából.
 
-    g. Nyissa meg a letöltött tanúsítvány (Base64) fájlt a Jegyzettömbben. Másolja a vágólapra a tartalmát, majd illessze be az X. 509 tanúsítvány szövegmezőbe.
+    : Nyissa meg a letöltött tanúsítvány (Base64) fájlt a Jegyzettömbben. Másolja a vágólapra a tartalmát, majd illessze be az X. 509 tanúsítvány szövegmezőbe.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -141,9 +136,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -181,7 +176,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     a. A **bejelentkezési Felhasználónév** szövegmezőbe írja be a felhasználó felhasználónevét, például a **Brittasimon**nevet.
 
-    b. A **hivatalos e-mail** szövegmezőbe írja be annak a felhasználónak az e-mail címét, mint a **Brittasimon\@contoso.com**.
+    b. A **hivatalos e-mail** szövegmezőbe írja be annak a felhasználónak az e-mail címét, mint a **Brittasimon \@ contoso.com**.
 
     c. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
 
@@ -191,7 +186,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     f. Válassza ki a felhasználó **szerepkörét** a legördülő listából a saját szervezete számára.
 
-    g. Válassza a **Hozzáadás** lehetőséget.
+    : Válassza a **Hozzáadás** elemet.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Akamai között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1b7e0d7a-e78f-43a5-af93-b626186e2376
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232389"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -148,9 +144,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Akamai ügyfélszolgálati [csapatához](https://www.akamai.com/us/en/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -173,7 +169,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -540,15 +536,15 @@ Az identitás-szolgáltató kiosztása
 
 1. Az általános szintaxist itt találja.
 
-1. ktpass/out ActiveDirectorydomain. keytab kiterjesztésű/Princ `HTTP/yourloginportalurl@ADDomain.com` /mapuser serviceaccount@ADdomain.com /pass + RdnPass/crypto minden/ptype KRB5_NT_PRINCIPAL
+1. ktpass/out ActiveDirectorydomain. keytab kiterjesztésű/Princ `HTTP/yourloginportalurl@ADDomain.com`  /mapuser serviceaccount@ADdomain.com /pass + RdnPass/crypto minden/ptype KRB5_NT_PRINCIPAL
 
 1. Példa
 
     | Snippet | Magyarázat |
     | - | - |
     | Ktpass/out EAADemo. keytab kiterjesztésű | A kimeneti keytab kiterjesztésű fájljának neve |
-    | /princHTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
-    | /mapusereaadelegation@superdemo.live | EAA-delegálási fiók |
+    | /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
+    | /mapuser eaadelegation@superdemo.live | EAA-delegálási fiók |
     | /pass RANDOMPASS | EAA-delegálási fiók jelszava |
     | /crypto minden ptype KRB5_NT_PRINCIPAL | a Akamai EAA dokumentációjának összeegyeztetése |
     | | |
@@ -597,9 +593,9 @@ Ha a hozzáférési panelen a Akamai csempére kattint, automatikusan be kell je
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

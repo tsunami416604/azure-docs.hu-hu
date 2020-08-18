@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lenses.io | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Lenses.io között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2a0d4a7c-a171-48c6-b1c1-f2bd728fb37f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0b8d736ab169ad07bd23a21d3a420bb6a044bf01
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050986"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528639"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lenses.io DataOps-portálon.
 
@@ -85,12 +81,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>` például`https://lenses.my.company.com`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>` például `https://lenses.my.company.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>` például`https://lenses.my.company.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>` például `https://lenses.my.company.com`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
-    emelkedés pl`https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
+    emelkedés pl `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, a válasz URL-címével és az azonosítóval a lencsék-portál példányának alap URL-címe alapján. További információt a [LENSES.IO SSO dokumentációjában](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)talál.
@@ -112,15 +108,15 @@ Azt is megtudhatja, hogyan használja a lencsék csoporttagság-leképezést a [
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 A csoport létrehozása:
 1. Lépjen vissza a **Azure Active Directoryra**, majd válassza a **csoportok** lehetőséget.
 1. Válassza az **új csoport** lehetőséget a képernyő tetején.
 1. A **csoport tulajdonságainál**kövesse az alábbi lépéseket:
    1. A **csoport típusa** mezőben válassza a elemet `Security` .
-   1. A **csoport neve** mezőbe írja be a`LensesUsers`
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. A **csoport neve** mezőbe írja be a `LensesUsers`
+   1. Kattintson a **Create** (Létrehozás) gombra.
 1. Válassza ki a csoportot `LensesUsers` , és jegyezze fel az **objektum azonosítóját** (például `f8b5c1ec-45de-4abd-af5c-e874091fb5f7` ). Ezt az azonosítót fogja használni a lencsékben a csoport felhasználóinak a [megfelelő engedélyekkel](https://docs.lenses.io/install_setup/configuration/security.html#id3)való leképezéséhez.  
    
 A csoport társítása a teszt felhasználóhoz: 
@@ -129,7 +125,7 @@ A csoport társítása a teszt felhasználóhoz:
 1. Válassza a **csoportok**lehetőséget.
 1. Válassza a **tagság hozzáadása** lehetőséget a képernyő tetején.
 1. Keresse `LensesUsers` meg és jelölje ki.
-1. Válassza a **Kiválasztás** lehetőséget.
+1. Kattintson a **Kiválasztás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -167,11 +163,11 @@ Ha a hozzáférési panelen a Lenses.io csempére kattint, automatikusan be kell
 
 ## <a name="additional-resources"></a>További források
 
-- [Egyszeri bejelentkezés beállítása a Lenses.io-példányban](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
+- [ Egyszeri bejelentkezés beállítása a Lenses.io-példányban ](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

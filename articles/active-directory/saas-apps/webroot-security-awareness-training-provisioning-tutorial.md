@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Webroot biztonsági betanításának beállítása a felhasználók automatikus üzembe helyezéséhez a Azure Active Directory segítségével | Microsoft Docs'
 description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a Webroot biztonsági ismereteinek betanításához.
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 455f4396-930e-4db5-a167-d3ea6a860a17
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0b9792ce25541917bfde3291b3864f58d70d6d03
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9345aaac306c8c009d6fc0a01c57beed3a22b10b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924019"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523490"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Oktatóanyag: a Webroot biztonsági betanításának beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -112,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók kiépítése**lehetőséget.
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a TOPdesk – nyilvános | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és TOPdesk között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0873299f-ce70-457b-addc-e57c5801275f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a18cb583b246c3cfbf09f43b9921497de37a3613
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71950422"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Azure Active Directory integráció a TOPdesk-vel – nyilvános
 
@@ -32,7 +28,7 @@ A TOPdesk integrálása az Azure AD-vel a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -118,11 +114,11 @@ Az Azure AD egyszeri bejelentkezés az TOPdesk-Public használatával történő
 
     ![TOPdesk – nyilvános tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    d. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.topdesk.net`
+    d. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.topdesk.net`
 
-    e. Az **azonosító URL-címe** szövegmezőbe írja be a TOPdesk metaadat URL-címét, amelyet a TOPdesk-konfigurációból kérhet le. A következő mintát kell használnia:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    e. Az **azonosító URL-címe** szövegmezőbe írja be a TOPdesk metaadat URL-címét, amelyet a TOPdesk-konfigurációból kérhet le. A következő mintát kell használnia: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
     
-    f. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.topdesk.net/tas/public/login/verify`
+    f. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.topdesk.net/tas/public/login/verify`
     
     > [!NOTE] 
     > Ha az **azonosító** és a **Válasz URL-címe** nem lesz automatikusan feltöltve, manuálisan kell megadnia azokat. Az azonosító esetében kövesse a fentiekben említett mintát, és a válasz URL-cím értékének **megadásával adja meg a TOPdesk-nyilvános egyszeri bejelentkezés** szakaszát, amelyet az oktatóanyag későbbi részében talál. A **bejelentkezési URL-cím** értéke nem valódi, ezért frissítenie kell az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [TOPdesk – nyilvános ügyfél-támogatási csapattal](https://help.topdesk.com/saas/enterprise/user/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -195,11 +191,11 @@ Az Azure AD egyszeri bejelentkezés az TOPdesk-Public használatával történő
 
     c. Ha fel szeretné tölteni a TOPdesk támogatási csapatának emblémáját, kattintson a **logo ikon**alatt található **Tallózás**gombra.
 
-    d. A **Felhasználónév attribútum** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`következőt:.
+    d. A **Felhasználónév attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
     e. A **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -219,11 +215,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -267,13 +263,13 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a TOPdesk-Nyilvánosba, 
    
     ![Új személy](./media/topdesk-public-tutorial/ic790629.png "Új személy")
    
-    a. Kattintson az általános fülre.
+    a. Kattintson az Általános lapra.
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például Simon
  
     c. Válasszon egy **helyet** a fiókhoz.
  
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a TOPdesk által biztosított TOPdesk-nyilvános felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

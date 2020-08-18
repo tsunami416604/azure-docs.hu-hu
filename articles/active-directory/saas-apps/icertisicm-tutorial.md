@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Icertis-szerződés-kezelési platformmal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Icertis között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6627e6dd-f559-4cd4-a509-f6d9a4961b49
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d105fd9d0611ad56cd5ec2ecaa36bdcf9deed18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2d7371b38796891f2e2a37266ac30bbbfd0f6d6e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100744"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>Oktatóanyag: Azure Active Directory integráció a Icertis-szerződés felügyeleti platformmal
 
@@ -32,7 +28,7 @@ A Icertis-szerződések felügyeleti platformjának az Azure AD-vel való integr
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés az Icertis-szerződéseket kezelő platformm
 
     ![Icertis szerződés-felügyeleti platform tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.icertis.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.icertis.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.icertis.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.icertis.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez lépjen kapcsolatba a [Icertis szerződéses Management platform ügyfél-támogatási csapatával](https://www.icertis.com/company/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -116,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés az Icertis-szerződéseket kezelő platformm
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **Icertis-kezelési platform beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint. A **bejelentkezési URL-cím**mezőben használja a következő mintát:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+6. A **Icertis-kezelési platform beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint. A **bejelentkezési URL-cím**mezőben használja a következő mintát: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ az Azure ad-előfizetés bérlői azonosítója.
@@ -149,11 +145,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com.
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com.
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

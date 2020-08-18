@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával | Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a munkahely között a Facebook használatával.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1818fe4fa0a7ea2f57732a4230fd3c2732ba91
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fade4176cbbf432aabae4422553a3caf0235ebed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799255"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526431"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával
 
@@ -88,11 +84,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<instancename>.facebook.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<instancename>.facebook.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.facebook.com/company/<instanceID>`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.facebook.com/company/<instanceID>`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.facebook.com/company/<instanceID>`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE]
     > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Tekintse meg a munkahelyi Közösség megfelelő értékeit a munkahelyi vállalati irányítópult hitelesítés lapján, amelyet az oktatóanyag későbbi részében ismertet.
@@ -115,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -176,7 +172,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     f. Másolja a példányhoz tartozó **címzett URL-címet** , és illessze be a **bejelentkezési URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portalján.
 
-    g. Másolja ki a példányhoz tartozó **ACS-URL-címet** , és illessze be a **Válasz URL** -szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+    : Másolja ki a példányhoz tartozó **ACS-URL-címet** , és illessze be a **Válasz URL** -szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
     h. Görgessen a szakasz aljára, és kattintson az **egyszeri bejelentkezés tesztelése** gombra. Ennek eredményeként megjelenik egy előugró ablak, amely az Azure AD bejelentkezési oldalán jelenik meg. A hitelesítéshez adja meg a hitelesítő adatait a szokásos módon.
 
@@ -238,9 +234,9 @@ Amikor a hozzáférési panelen a munkahelyi Facebook csempére kattint, automat
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

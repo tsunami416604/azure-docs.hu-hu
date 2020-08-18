@@ -1,14 +1,14 @@
 ---
 title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
-ms.date: 04/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205041"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520713"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -22,7 +22,7 @@ A JSON használatával szabályzat-hozzárendelést hozhat létre. A szabályzat
 - kényszerítési mód
 - kizárt hatókörök
 - házirend-definíció
-- paraméterek
+- parameters
 
 Például a következő JSON egy szabályzat-hozzárendelést mutat be _DoNotEnforce_ módban dinamikus paraméterekkel:
 
@@ -64,7 +64,7 @@ Ennek a tulajdonságnak a következő értékei vannak:
 |Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Description |
 |-|-|-|-|-|-|
 |Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
-|Letiltva |DoNotEnforce |sztring |Yes |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
+|Disabled (Letiltva) |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
 
 Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.
 
@@ -75,12 +75,11 @@ A hozzárendelés **hatóköre** tartalmazza az összes gyermek erőforrás-tár
 ## <a name="policy-definition-id"></a>Házirend-definíció azonosítója
 
 Ebben a mezőben egy házirend-definíció vagy egy kezdeményezési definíció teljes elérési útjának kell szerepelnie.
-`policyDefinitionId`karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./initiative-definition-structure.md) használjon.
+`policyDefinitionId` karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./initiative-definition-structure.md) használjon.
 
 ## <a name="parameters"></a>Paraméterek
 
-A szabályzat-hozzárendelés ezen szegmense megadja a szabályzat- [definícióban vagy a kezdeményezési definícióban](./definition-structure.md#parameters)definiált paraméterek értékeit.
-Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíció más erőforrásokkal való felhasználását, de különböző üzleti értékeket vagy eredményeket kereshet.
+A szabályzat-hozzárendelés ezen szegmense megadja a szabályzat- [definícióban vagy a kezdeményezési definícióban](./definition-structure.md#parameters)definiált paraméterek értékeit. Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíció más erőforrásokkal való felhasználását, de különböző üzleti értékeket vagy eredményeket kereshet.
 
 ```json
 "parameters": {

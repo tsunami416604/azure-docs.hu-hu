@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: a Velpic konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Velpic.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064121"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532364"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Velpic konfigurálása
 
@@ -61,7 +56,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesí
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-beli Velpic:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**  szakaszt.
 
 2. Ha már konfigurálta a Velpic az egyszeri bejelentkezéshez, keresse meg a Velpic-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Velpic** az alkalmazás-gyűjteményben. Válassza a Velpic lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
@@ -79,7 +74,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesí
 
 7. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítési e-mail** mezőben a kiépítési hibaüzeneteket, és jelölje be az alábbi jelölőnégyzetet.
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
 9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Velpic**lehetőséget.
 
@@ -87,7 +82,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesí
 
 11. Az Azure AD-kiépítési szolgáltatás Velpic való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 
-12. Kattintson a **Save** (Mentés) gombra.
+12. Kattintson a **Mentés** gombra.
 
 Ezzel elindítja a felhasználók és csoportok szakaszban Velpic rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb ideig tart, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentéseire mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által végrehajtott összes műveletet.
 

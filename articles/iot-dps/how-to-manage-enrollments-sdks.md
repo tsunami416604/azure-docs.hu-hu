@@ -6,13 +6,14 @@ ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975074"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520656"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Az eszközök regisztrálásának kezelése az Azure Device kiépítési szolgáltatás SDK-k használatával
 Az *eszközök* regisztrálása egyetlen eszköz vagy eszközök egy csoportját hozza létre, amelyek egy bizonyos ponton regisztrálhatnak az eszköz kiépítési szolgáltatásával. A beléptetési rekord tartalmazza az eszköz (ek) kezdeti kívánt konfigurációját a regisztráció részeként, beleértve a kívánt IoT hubot is. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás számára az Azure IoT-létesítési szolgáltatás SDK-k használatával programozott módon.  Az SDK-k a GitHubon érhetők el ugyanazon a tárházon, mint az Azure IoT SDK-k.
@@ -39,7 +40,7 @@ Az eszközöket kétféleképpen lehet regisztrálni a kiépítési szolgáltat�
     A munkafolyamatot követő SDK-k segítségével létrehozhat egy regisztrációs csoportot:
 
     1. Beléptetési csoport esetén az igazolási mechanizmus X. 509 főtanúsítványt használ.  Hívja meg a Service SDK API ```X509Attestation.createFromRootCertificate``` -t a főtanúsítvánnyal a regisztrációhoz szükséges igazolás létrehozásához.  Az X. 509 főtanúsítvány egy PEM-fájlban vagy karakterláncként van megadva.
-    1. Hozzon létre egy új ```EnrollmentGroup``` változót a ```attestation``` létrehozott és egy egyedi használatával ```enrollmentGroupId``` .  Opcionálisan a következő paramétereket is megadhatja:, ```Device ID``` ```IoTHubHostName``` ```ProvisioningStatus``` .
+    1. Hozzon létre egy új ```EnrollmentGroup``` változót a ```attestation``` létrehozott és egy egyedi használatával ```enrollmentGroupId``` .  Megadhatja például a következő paramétereket: ```IoTHubHostName``` , ```ProvisioningStatus``` .
     2. Hívja a Service SDK API-t a ```createOrUpdateEnrollmentGroup``` háttérbeli alkalmazásban ```EnrollmentGroup``` egy regisztrációs csoport létrehozásához.
 
 * Az **Egyéni regisztráció** egy olyan bejegyzés, amely regisztrálható egyetlen eszközön. Az egyéni regisztrációk X. 509 tanúsítványokat vagy SAS-jogkivonatokat (fizikai vagy virtuális TPM-ből) is használhatnak igazolási mechanizmusként. Azt javasoljuk, hogy egyéni regisztrációkat használjon olyan eszközökhöz, amelyek egyedi kezdeti konfigurációt igényelnek, vagy olyan eszközök esetében, amelyek csak a TPM vagy a virtuális TPM modulon keresztül használhatják az igazolási mechanizmusként szolgáló SAS-jogkivonatokat. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.

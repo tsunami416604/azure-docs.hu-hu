@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció munkanapokkal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és munkanap között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fd986e31410e34871d1b795db0c8c83ece688e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4867a1735f091085f64bbe7010969bd086f820a1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648613"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527173"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció munkanapokkal
 
@@ -83,11 +79,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://impl.workday.com/<tenant>/login-saml2.flex`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://impl.workday.com/<tenant>/login-saml2.flex`
 
-    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://www.workday.com`
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `http://www.workday.com`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. A válasz URL-címének rendelkeznie kell egy altartománnyal, például: www, WD2, wd3, wd3-Impl, wd5, wd5-Impl).
@@ -112,7 +108,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Válassza az **SAML-válasz aláírása és** az **aláírási beállítás**lehetőséget.
 
-    b. Kattintson a **Mentés** gombra
+    b. Kattintson a **Mentés** gombra.
 
 1. A **munkanap beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
@@ -128,7 +124,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -170,7 +166,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
    > [!NOTE]
    > A környezeti attribútum értéke a bérlői URL-cím értékéhez van kötve:  
-   > – Ha a munkanap bérlői URL-címének tartományneve a Impl együtt kezdődik, például: * https://www.myworkday.com/ "bérlő"/login-saml2.htmld*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
+   > – Ha a munkanap bérlői URL-címének tartományneve a Impl-val kezdődik, például: * https://www.myworkday.com/ "bérlő"/login-saml2.htmld*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
    > – Ha a tartománynév egy másikkal kezdődik, kapcsolatba kell lépnie a [munkanap ügyfél-támogatási csapatával](https://www.workday.com/en-us/partners-services/services/support.html) , hogy a megfelelő **környezeti** értéket kapja.
 
 4. Az **SAML beállítása** szakaszban hajtsa végre a következő lépéseket:
@@ -201,7 +197,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Létrehozás](./media/workday-tutorial/IC782928.png "Létrehozás")
 
-    g. Kattintson a **X509 nyilvános kulcs létrehozása**lehetőségre.
+    : Kattintson a **X509 nyilvános kulcs létrehozása**lehetőségre.
 
     ![Létrehozás](./media/workday-tutorial/IC782929.png "Létrehozás")
 

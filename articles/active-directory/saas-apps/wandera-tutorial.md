@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció a Wanda szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Wanda között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a4615e56-1deb-423e-ad19-2e74c0d6d17a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4af2fa415c22abe5cd8ac98d510feb44abab0e97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68825282"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523983"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>Oktatóanyag: a Bolyongás integrálása a Azure Active Directory
 
@@ -83,7 +78,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://radar.wandera.com/saml/acs/<tenant id>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [Wanda ügyfél-támogatási csapatával](https://www.wandera.com/about-wandera/contact/#supportsection) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -116,7 +111,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 3. Ha manuálisan szeretné beállítani a barangolást, nyisson meg egy új böngészőablakot, és jelentkezzen be a Wanda vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A lap jobb felső sarkában kattintson a **Beállítások** > **felügyelet** > **egyszeri bejelentkezés** elemre, majd jelölje be a **SAML 2,0 engedélyezése** a következő lépések végrehajtásához lehetőséget.
+4. A lap jobb felső sarkában kattintson a **Beállítások**  >  **felügyelet**  >  **egyszeri bejelentkezés** elemre, majd jelölje be a **SAML 2,0 engedélyezése** a következő lépések végrehajtásához lehetőséget.
 
     ![A Wanda konfigurálása](./media/wandera-tutorial/config01.png)
 
@@ -126,7 +121,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. Nyissa meg az összevonási metaadatok XML-fájlját a Jegyzettömbben, másolja a tartalmát, és illessze be a **identitásszolgáltató Public X. 509 tanúsítvány** szövegmezőbe.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -136,9 +131,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -168,7 +163,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen a Wanda csempére kattint, automatikusan be kell jelentkeznie arra a vándorra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

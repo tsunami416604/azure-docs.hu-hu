@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a szoftverek toborzásával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a szoftverek toborzása között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 75f51dc9-9525-4ec6-80bf-28374f0c8adf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25a88e3abd7eacc323b5d45fd4fae1304010253b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158548"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Oktatóanyag: Azure Active Directory integráció a szoftverek toborzásával
 
@@ -33,7 +28,7 @@ A szoftver az Azure AD-vel való összevonása az alábbi előnyökkel jár:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     ![A szoftveres tartomány és az URL-címek egyszeri bejelentkezési adatainak összekapcsolása](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval és a válasz URL-címével. Az értékek beszerzéséhez vegye fel a kapcsolatot a [szoftveres ügyfél-támogatási csapattal](https://support.comeet.co/knowledgebase/adfs-single-sign-on/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -117,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     ![A szoftveres tartomány és az URL-címek egyszeri bejelentkezési adatainak összekapcsolása](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.comeet.co`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.comeet.co`
 
 5. A munkatársak toborzása egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
@@ -125,7 +120,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name (Név) |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | ---------------| --------------- |
     | nameidentifier | User. mail |
     | comeet_id | User. userPrincipalName |
@@ -146,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -184,12 +179,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SSOGEN-vel – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SSOGEN között – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f4311031-5a4b-468e-be58-324d06220869
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72b91be9875abf07e5f6f828ed32483a5d61eadd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76293674"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SSOGEN-vel – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE
 
@@ -85,11 +81,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [SSOGEN-vel – Azure ad SSO-átjáró az Oracle E-Business Suite-EBS, PeopleSoft és JDE ügyfél-támogatási csapatának](mailto:support@ssogen.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -110,9 +106,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -136,16 +132,16 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 Az egyszeri bejelentkezés konfigurálása a **SSOGEN-ben – Azure ad SSO-átjáró az Oracle E-Business Suite-EBS, a PeopleSoft és a JDE oldalon az** alkalmazás-specifikus SSO regisztrációs dokumentációjában olvasható
 
-* Oracle EBS – Azure AD SSO-integráció:[https://www.ssogen.com/oracle-ebs-sso-ldap/](https://www.ssogen.com/oracle-ebs-sso-ldap/)
-* PeopleSoft – Azure AD SSO-integráció:[https://www.ssogen.com/peoplesoft-sso/](https://www.ssogen.com/peoplesoft-sso/)
-* JD Edwards – Azure AD SSO-integráció:[https://www.ssogen.com/oracle-jde-sso/](https://www.ssogen.com/oracle-jde-sso/)
-* Apache – Azure AD SSO-integráció:[https://www.ssogen.com/apache-sso-authentication/](https://www.ssogen.com/apache-sso-authentication/)
+* Oracle EBS – Azure AD SSO-integráció: [https://www.ssogen.com/oracle-ebs-sso-ldap/](https://www.ssogen.com/oracle-ebs-sso-ldap/)
+* PeopleSoft – Azure AD SSO-integráció: [https://www.ssogen.com/peoplesoft-sso/](https://www.ssogen.com/peoplesoft-sso/)
+* JD Edwards – Azure AD SSO-integráció: [https://www.ssogen.com/oracle-jde-sso/](https://www.ssogen.com/oracle-jde-sso/)
+* Apache – Azure AD SSO-integráció: [https://www.ssogen.com/apache-sso-authentication/](https://www.ssogen.com/apache-sso-authentication/)
 
 ### <a name="create-ssogen-azure-ad-sso-gateway-for-oracle-e-business-suite-ebs-peoplesoft-and-jde-test-user"></a>SSOGEN Azure AD SSO-átjáró létrehozása az Oracle E Business Suite EBS, a PeopleSoft és a JDE test User számára
 
 Az Azure AD a hitelesítés sikeres elvégzése után egyedi felhasználói azonosítót (Name ID) küld a felhasználói alkalmazásnak.  Győződjön meg arról, hogy az egyedi felhasználói azonosító (Name ID) megfelel az alkalmazásban lévő felhasználói rekordnak, FND_USER. USER_NAME például az Oracle EBS-ben.
 
-Forduljon a [info@ssogen.com](mailto:info@ssogen.com) támogatási [support@ssogen.com](mailto:support@ssogen.com) szolgálathoz, és kérjen segítséget.
+Forduljon [info@ssogen.com](mailto:info@ssogen.com) [support@ssogen.com](mailto:support@ssogen.com) a támogatási szolgálathoz, és kérjen segítséget.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -153,11 +149,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha rákattint a SSOGEN – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE csempe a hozzáférési panelen, automatikusan be kell jelentkeznie a SSOGEN-Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE, amelyhez be van állítva az egyszeri bejelentkezés. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

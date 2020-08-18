@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020066"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520209"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -334,7 +334,7 @@ Az utolsó lépés a Azure AD B2C engedélyezése SAML-identitásszolgáltató a
 
 Általában a következők szükségesek:
 
-* **Metaadatok**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Metaadatok**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Kiállító**: a entityID használata a metaadat-fájlban
 * **Bejelentkezési URL-cím/SAML-végpont/SAML URL-cím**: a metaadat-fájlban található érték bejelölése
 * **Tanúsítvány**: ez *B2C_1A_SamlIdpCert*, de a titkos kulcs nélkül. A tanúsítvány nyilvános kulcsának beszerzése:
@@ -350,7 +350,7 @@ Az oktatóanyag elvégzéséhez az [SAML-teszt alkalmazás][samltest]használat�
 
 * A bérlő nevének frissítése
 * Frissítse a házirend nevét, például *B2C_1A_signup_signin_saml*
-* Adja meg a kiállító URI azonosítóját:`https://contoso.onmicrosoft.com/app-name`
+* Adja meg a kiállító URI azonosítóját: `https://contoso.onmicrosoft.com/app-name`
 
 Válassza a **Bejelentkezés** lehetőséget, és a felhasználói bejelentkezési képernyőn kell megjelennie. Bejelentkezéskor az SAML-jogcímet vissza kell adni a minta alkalmazásnak.
 
@@ -414,6 +414,10 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 * Több kijelentkezési URL-cím vagy POST-kötés a kijelentkezési URL-címhez az Application/Service Principal objektumban.
 * Az alkalmazás/szolgáltatás egyszerű objektumában az RP-kérelmek ellenőrzéséhez írja be az aláíró kulcsot.
 * A jogkivonat-titkosítási kulcs megadásához az Application/Service Principal objektumban.
+* Az identitás-szolgáltató kezdeményezte a bejelentkezést, ahol az Identity Provider Azure AD B2C.
+
+Jelenleg nem támogatottak a következő SAML-függő entitások (RP):
+* Az identitás-szolgáltató kezdeményezte a bejelentkezést, ahol az identitás szolgáltatója külső identitás-szolgáltató, például ADFS.
 
 ## <a name="next-steps"></a>További lépések
 

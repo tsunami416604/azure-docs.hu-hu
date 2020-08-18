@@ -3,12 +3,12 @@ title: 'Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel'
 description: A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tudásbázisait a várt válaszok, a megbízhatósági pontszámok és a több bekapcsolási kérések esetében.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 498f84c97fdc022e460dec453b1d65bb8088b787
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263146"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531069"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
 
@@ -16,7 +16,7 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * [Hozzon létre egy QnA Maker szolgáltatást](create-publish-knowledge-base.md) , vagy használjon egy meglévő szolgáltatást, amely az angol nyelvet használja.
 * A többfunkciós [minta `.docx` fájl](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) letöltése
 * Töltse le a [Batch Testing eszközt](https://aka.ms/qnamakerbatchtestingtool), bontsa ki a `.zip` fájlból a végrehajtható fájlt.
@@ -63,7 +63,7 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
 
 A Batch test eszköz használatához hozzon létre egy nevű fájlt `batch-test-data-1.tsv` egy szövegszerkesztővel. A fájlnak UTF-8 formátumúnak kell lennie, és a következő oszlopokat kell elválasztania egy lapon.
 
-|TSV bemeneti fájl mezői|Megjegyzések|Példa|
+|TSV bemeneti fájl mezői|Jegyzetek|Példa|
 |--|--|--|
 |Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 karakterből álló karakterlánc `POST` ) |
 |Kérdés|A felhasználó által megadott kérdés szövege. 1 000 karakter max.|`How do I sign out?`|

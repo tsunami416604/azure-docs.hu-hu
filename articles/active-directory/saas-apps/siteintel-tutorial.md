@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SiteIntel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SiteIntel között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c987f101-8746-467e-ad12-75cf2920af2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b3f6bbda9923b7f4f19dda505e799cb8b102ca
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424329"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525074"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SiteIntel
 
@@ -87,15 +83,15 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. Az alkalmazás identitásszolgáltató módban történő konfigurálásához az **alapszintű SAML-konfiguráció** szakaszban tegye a következőket:
 
-    a. Az **azonosító** mezőbe írja be az URL-címet a következő formátumban:`urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
+    a. Az **azonosító** mezőbe írja be az URL-címet a következő formátumban: `urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
 
-    b. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő formátumban:`https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
+    b. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő formátumban: `https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
 
-    c. A **továbbítási állapot** mezőbe írja be az URL-címet a következő formátumban:`https://<CLIENT>.siteintel.com`
+    c. A **továbbítási állapot** mezőbe írja be az URL-címet a következő formátumban: `https://<CLIENT>.siteintel.com`
 
 1. Az alkalmazás SP-kezdeményezésű módban való konfigurálásához válassza a **további URL-címek beállítása**lehetőséget, majd tegye a következőket:
 
-   * A **bejelentkezési URL-cím** mezőbe írja be az URL-címet a következő formátumban:`https://<CLIENT>.siteintel.com`
+   * A **bejelentkezési URL-cím** mezőbe írja be az URL-címet a következő formátumban: `https://<CLIENT>.siteintel.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse őket a tényleges azonosítóval, a válasz URL-címével, a bejelentkezési URL-címmel és a továbbítási állapottal. Az értékek beszerzéséhez forduljon a SiteIntel ügyfélszolgálati [csapatához](mailto:support@intalytics.com). Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -154,7 +150,7 @@ Amikor kiválasztja a **SiteIntel** csempét a hozzáférési panelen, automatik
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálását ismertető oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálását ismertető oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [A SiteIntel kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

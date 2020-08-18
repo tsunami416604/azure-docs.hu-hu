@@ -4,12 +4,12 @@ description: Ebben a cikkben a Microsoft Azure Backup-kiszolgálóval (MABS) és
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173159"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522929"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server és DPM – gyakori kérdések
 
@@ -36,6 +36,10 @@ Igen. Először is be kell állítania a DPM, majd telepítenie kell a Azure Bac
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Miért nem lehet külső DPM-kiszolgálót felvenni a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után?
 
 A felhőben védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 7. kumulatív frissítésnél korábbi kumulatív frissítés használatával) a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után meg kell várnia a **külső DPM-kiszolgáló hozzáadásának**megkezdését. Az egynapos időszak szükséges ahhoz, hogy feltöltse a DPM védelmi csoportok metaadatait az Azure-ba. A védelmi csoport metaadatait a rendszer első alkalommal feltölti egy éjszakai feladattal.
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Vannak javaslatok a víruskereső szoftverek kizárásának konfigurálására?
+
+Igen, javasoljuk a víruskeresők kizárásának konfigurálását. A DPM kizárásával kapcsolatban lásd: [víruskereső szoftver futtatása a DPM-kiszolgálón](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). A MABS kizárásával kapcsolatban lásd: [a MABS-kiszolgáló víruskereső konfigurálása](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware és Hyper-V biztonsági mentés
 

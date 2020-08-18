@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: 5bc8955f9eb9db837b3243b8a2937d80a4d38e2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2752e5ab2bf7c2926ec9e2c0e4929eab91ed377
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099374"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530970"
 ---
 # <a name="configure-virtual-network-service-endpoint-policies-for-azure-hdinsight"></a>Virtuális hálózati szolgáltatás-végponti szabályzatok konfigurálása az Azure HDInsight
 
@@ -91,7 +91,7 @@ A szükséges szolgáltatási végponti szabályzatok létrehozásához használ
 
     Ha a szolgáltatás-végponti házirendet a PowerShell használatával szeretné beállítani, használja a következő kódrészletet.
     
-    ```json
+    ```powershell
     #Script to assign SEP 
     $subscriptionId = "<subscription id>"
     $rgName = "<resource group name>"

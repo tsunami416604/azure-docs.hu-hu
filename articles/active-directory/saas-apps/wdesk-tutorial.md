@@ -2,24 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Wdesk-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Wdesk között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06900a91-a326-4663-8ba6-69ae741a536e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666994"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524017"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Wdesk
 
@@ -92,15 +89,15 @@ Az Azure AD egyszeri bejelentkezés Wdesk való konfigurálásához hajtsa végr
 
     ![Wdesk tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Wdesk tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezeket az értékeket a WDesk-portálról szerezheti be az egyszeri bejelentkezés konfigurálásakor.
@@ -137,11 +134,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -177,7 +174,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
  
      ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. A Wdesk-rendszergazda területen navigáljon a **Biztonság**, majd az **SAML** > **SAML-beállítások**elemre:
+3. A Wdesk-rendszergazda területen navigáljon a **Biztonság**, majd az **SAML**  >  **SAML-beállítások**elemre:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
@@ -201,7 +198,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
    
       d. A módosítások mentéséhez kattintson a Azure Portal **Mentés** gombra.      
 
-6. A **identitásszolgáltató beállításainak konfigurálása** elemre kattintva nyissa meg a **identitásszolgáltató-beállítások szerkesztése** párbeszédpanelt. A **fájl kiválasztása** elemre kattintva keresse meg a Azure Portalból mentett **metaadat. XML** fájlt, majd töltse fel.
+6. A **identitásszolgáltató beállításainak konfigurálása** elemre kattintva nyissa meg a **identitásszolgáltató-beállítások szerkesztése** párbeszédpanelt. Kattintson a **fájl kiválasztása** lehetőségre a Azure Portalból mentett **Metadata.xml** fájl megkereséséhez, majd töltse fel.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
@@ -217,7 +214,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wd
 
 1. Jelentkezzen be a Wdesk biztonsági rendszergazdaként.
 
-2. Navigáljon a **rendszergazdai** > **fiók rendszergazdájához**.
+2. Navigáljon a **rendszergazdai**  >  **fiók rendszergazdájához**.
 
      ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
@@ -227,7 +224,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wd
    
     ![Azure AD-tesztkörnyezet létrehozása](./media/wdesk-tutorial/createuser1.png)  
 
-5. A **felhasználó** szövegmezőben adja meg a felhasználóhoz hasonló b.simon@contoso.com felhasználónevet, majd kattintson a **Folytatás** gombra.
+5. A **felhasználó** szövegmezőben adja meg a felhasználóhoz hasonló felhasználónevet, b.simon@contoso.com majd kattintson a **Folytatás** gombra.
 
     ![Azure AD-tesztkörnyezet létrehozása](./media/wdesk-tutorial/createuser3.png)
 
@@ -235,7 +232,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wd
   
     ![Azure AD-tesztkörnyezet létrehozása](./media/wdesk-tutorial/createuser4.png)
  
-    a. Az **e-mail** szövege mezőben adja meg a felhasználóhoz hasonló b.simon@contoso.come-mail címet.
+    a. Az **e-mail** szövege mezőben adja meg a felhasználóhoz hasonló e-mail címet b.simon@contoso.com .
 
     b. Az **Utónév** szövegmezőbe írja be a (z) " **B**" felhasználó utónevét.
 

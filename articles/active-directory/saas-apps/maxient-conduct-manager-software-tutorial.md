@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Maxient magatartás-kezelő szoftverrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Maxient-kezelő szoftver között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847191"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518890"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Maxient magatartás-kezelő szoftverrel
 
@@ -86,7 +81,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://cm.maxient.com/<SCHOOLCODE>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://cm.maxient.com/<SCHOOLCODE>`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez működjön együtt a Maxient implementációval/támogatási képviselővel.
@@ -113,13 +108,13 @@ Ebben a szakaszban minden fiók számára hozzáférést biztosít a Maxient-kez
 
 ## <a name="test-with-maxient"></a>Tesztelés a Maxient 
 
-Ha egy támogatási jegyet még nem nyitott meg egy Maxient-implementációval/támogatási képviselővel, küldjön egy e-mailt [support@maxient.com](mailto:support@maxient.com) a tulajdonos "Campus-alapú hitelesítés/Azure Setup- \< \< School name \> \> " névre. Az e-mail törzsében adja meg az **alkalmazás-összevonási metaadatok URL-címét**. A Maxient-munkatársak egy tesztelési hivatkozással fognak válaszolni a megfelelő attribútumok felszabadítására.  
+Ha egy támogatási jegyet még nem nyitott meg egy Maxient-implementációval/támogatási képviselővel, küldjön egy e-mailt a [support@maxient.com](mailto:support@maxient.com) tulajdonos "Campus-alapú hitelesítés/Azure Setup-" kifejezésre \<\<School Name\> \> . Az e-mail törzsében adja meg az **alkalmazás-összevonási metaadatok URL-címét**. A Maxient-munkatársak egy tesztelési hivatkozással fognak válaszolni a megfelelő attribútumok felszabadítására.  
     
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521263"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -163,7 +163,7 @@ A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name | Yes | A kulcs-érték párok neve. |
+| Név | Yes | A kulcs-érték párok neve. |
 
 További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -173,7 +173,7 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | Az értéknek a számnak kell lennie `PolicyProfile` . |
+| Id | Yes | Az értéknek a számnak kell lennie `PolicyProfile` . |
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
@@ -190,9 +190,17 @@ A **protokoll** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name | Yes | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2` . Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A az `SAML2` SAML 2,0 protokoll szabványát jelöli az Oasis-specifikációnak megfelelően. |
+| Név | Yes | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2` . Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A az `SAML2` SAML 2,0 protokoll szabványát jelöli az Oasis-specifikációnak megfelelően. |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metaadatok
+
+Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza.
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | No | Az a módszer, amelyet a Azure AD B2C az SAML-válasz aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-állítás konfigurálásához tekintse meg a [SAML-kibocsátó technikai profiljának metaadatait](saml-issuer-technical-profile.md#metadata)ismertető témakört. |
+
+### <a name="outputclaims"></a>OutputClaims
 
 A **OutputClaims** elem a következő elemet tartalmazza:
 
@@ -212,13 +220,14 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
 A **SubjectNameingInfo** elemmel szabályozhatja a jogkivonat tulajdonosának értékét:
 - **JWT-jogkivonat** – a `sub` jogcím. Ez az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Felhasználható a biztonságos engedélyezési ellenőrzések elvégzésére, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. További információ: [jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása](session-behavior.md).
-- **SAML-jogkivonat** – a `<Subject><NameID>` Tárgy elemet azonosító elem.
+- **SAML-jogkivonat** – a `<Subject><NameID>` Tárgy elemet azonosító elem. A NameId formátum módosítható.
 
 A **SubjectNamingInfo** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimType | Yes | A kimeneti jogcímek **PartnerClaimType**mutató hivatkozás. A kimeneti jogcímeket a függő entitások házirendjének **OutputClaims** -gyűjteményében kell meghatározni. |
+| Formátum | No | Az SAML függő entitások esetében az SAML-állításban visszaadott **NameId formátum** beállítására szolgál. |
 
 Az alábbi példa bemutatja, hogyan határozhat meg egy OpenID Connect függő entitást. A tulajdonos neve információ a következőképpen van konfigurálva `objectId` :
 
@@ -248,4 +257,25 @@ Az JWT token tartalmazza a `sub` felhasználó objectId rendelkező jogcímet:
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+Az alábbi példa bemutatja, hogyan határozhat meg egy SAML függő entitást. A tulajdonos neve információ konfigurálva van `objectId` , és a NameId meg `format` lett adva:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```
