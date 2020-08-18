@@ -236,7 +236,7 @@
       items:
         - name: Privát végpontok konfigurálása
           href: configure-private-endpoints.md
-        - name: IP-tűzfal konfigurálása (előzetes verzió)
+        - name: IP-tűzfal konfigurálása
           href: configure-firewall.md
         - name: Biztonságos webhook AAD-vel
           href: secure-webhook-delivery.md

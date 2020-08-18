@@ -43,7 +43,7 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
-            - name: A Windows Virtual Desktop használata az Azure NetApp Fileszal
+            - name: Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei
               href: solutions-windows-virtual-desktop.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md

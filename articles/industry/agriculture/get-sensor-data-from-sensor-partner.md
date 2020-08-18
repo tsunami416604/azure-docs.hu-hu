@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497080"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508787"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -62,19 +62,19 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
 5. Nyissa meg a saját címtárát.
 
-    ```azurepowershell-interactive 
-    cd  
+    ```azurepowershell-interactive
+    cd
     ```
 
-6. Futtassa az alábbi parancsot. Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
+6. Futtassa az alábbi parancsot: Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
-    
-7. Futtassa az alábbi parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
 
-    ```azurepowershell-interactive 
+7. Futtassa az alábbi parancsot: Ezzel letölt egy parancsfájlt a saját könyvtárába.
+
+    ```azurepowershell-interactive
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -82,9 +82,9 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
 
 8. Futtassa az alábbi parancsfájlt. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory**  >  **áttekintő** oldalról kérhető le.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -138,7 +138,7 @@ Kövesse az alábbi lépéseket:
 
     ![Érzékelők lap](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>Eszközök kiosztása  
+## <a name="assign-devices"></a>Eszközök kiosztása
 
 Az érzékelők bevezetésének folyamata után hozzárendelheti azt a farmhoz, ahol az érzékelőket üzembe helyezte.
 
@@ -187,6 +187,6 @@ Kövesse az alábbi lépéseket:
 
     ![Törlés gomb](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már rendelkezik érzékelővel az Azure FarmBeats-példányba. Most megismerheti, hogyan [hozhatja](generate-maps-in-azure-farmbeats.md#generate-maps) ki a térképeket a farmokhoz.

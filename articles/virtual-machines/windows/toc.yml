@@ -423,7 +423,7 @@
         - name: Migrálás áttekintése
           href: migration-classic-resource-manager-overview.md
         - name: Az áttelepítés részletes bemutatása
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: Az áttelepítés megtervezése
           href: migration-classic-resource-manager-plan.md
         - name: Áttelepítés a PowerShell-lel
@@ -433,7 +433,7 @@
         - name: Közösségi eszközök áttelepítéshez
           href: migration-classic-resource-manager-community-tools.md
         - name: GYIK
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: Rendszerképek használata
       displayName: 'SIG, AMI, image'
       items:
@@ -853,7 +853,7 @@
           href: detach-disk.md
         - name: Lemezek üzembe helyezése ARM-sablonnal
           displayName: Azure Resource Manager
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: Megosztott lemezek engedélyezése
           href: disks-shared-enable.md
         - name: VHD feltöltése lemezre – PowerShell
@@ -901,7 +901,7 @@
         - name: Teljesítmény
           items:
             - name: Írásgyorsító engedélyezése
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: Ultra szintű lemezek használata
               href: disks-enable-ultra-ssd.md
             - name: Lemez teljesítménytesztelése

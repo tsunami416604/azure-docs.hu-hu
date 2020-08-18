@@ -1,17 +1,17 @@
 ---
 title: Magas rendelkezésre állás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a magas rendelkezésre állással kapcsolatos információkat nyújt Azure Database for PostgreSQL – egyetlen kiszolgálón
-author: sr-pg20
-ms.author: srranga
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 564aa030c442331fbcd965c87da3bfbc03d00d79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105874"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508464"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Magas rendelkezésre állás Azure Database for PostgreSQL – egyetlen kiszolgáló
 A Azure Database for PostgreSQL – az egykiszolgálós szolgáltatás garantált magas szintű rendelkezésre állást biztosít a pénzügyi felelősséggel vállalt szolgáltatói szerződéssel (SLA) [99,99%-os](https://azure.microsoft.com/support/legal/sla/postgresql) üzemidő mellett. Azure Database for PostgreSQL magas rendelkezésre állást biztosít a tervezett események (például a megkezdeni skálázási számítási művelet) során, valamint olyan nem tervezett események esetén is, mint például az alapul szolgáló hardver, szoftver vagy hálózati hiba. Azure Database for PostgreSQL gyorsan helyreállítható a legfontosabb körülmények között, így gyakorlatilag nincs alkalmazás-leállási idő a szolgáltatás használatakor.
@@ -31,6 +31,9 @@ A Azure Database for PostgreSQL a tervezett leállási műveletek során magas r
 
 ![Rugalmas skálázás megtekintése az Azure PostgreSQL-ben](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
 
+1. A PostgreSQL-adatbázis-kiszolgálók vertikális fel-és leskálázása másodpercek alatt
+2. Az ügyfél útválasztására szolgáló proxyként működő átjáró a megfelelő adatbázis-kiszolgálóhoz csatlakozik
+3. A tárterület felskálázása leállás nélkül végezhető el. A távoli tárterület lehetővé teszi a gyors leválasztást/újbóli csatolást a feladatátvétel után.
 Néhány tervezett karbantartási forgatókönyv:
 
 | **Forgatókönyv** | **Leírás**|
@@ -48,20 +51,25 @@ A nem tervezett leállás váratlan meghibásodások miatt fordulhat elő, bele�
 
 ![Magas rendelkezésre állás megtekintése az Azure PostgreSQL-ben](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
 
+1. Azure PostgreSQL-kiszolgálók gyors skálázási képességekkel.
+2. Átjáró, amely proxyként funkcionál az ügyfélkapcsolatok megfelelő adatbázis-kiszolgálóhoz való továbbításához
+3. Az Azure Storage három példánnyal rendelkezik a megbízhatóság, a rendelkezésre állás és a redundancia érdekében.
+4. A távoli tárterület lehetővé teszi a gyors leválasztást/újbóli csatolást a kiszolgáló feladatátvétele után.
+   
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Nem tervezett leállás: meghibásodási forgatókönyvek és szolgáltatás-helyreállítás
 Íme néhány meghibásodási forgatókönyv, valamint a Azure Database for PostgreSQL automatikus helyreállítása:
 
 | **Forgatókönyv** | **Automatikus helyreállítás** |
 | ---------- | ---------- |
-| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló valamilyen mögöttes hardverhiba miatt leáll, a rendszer elveti az aktív kapcsolatokat, és minden fedélzeti tranzakciót megszakít. A rendszer automatikusan telepíti az új adatbázis-kiszolgálót, és a távoli adattároló csatlakozik az új adatbázis-kiszolgálóhoz. Az adatbázis-helyreállítás befejezése után az ügyfelek az átjárón keresztül csatlakozhatnak az új adatbázis-kiszolgálóhoz. <br /> <br /> A PostgreSQL-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat.  Ha az alkalmazás újrapróbálkozik, az átjáró transzparens módon átirányítja a kapcsolódást az újonnan létrehozott adatbázis-kiszolgálóhoz. |
+| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló valamilyen mögöttes hardverhiba miatt leáll, a rendszer elveti az aktív kapcsolatokat, és minden fedélzeti tranzakciót megszakít. A rendszer automatikusan telepíti az új adatbázis-kiszolgálót, és a távoli adattároló csatlakozik az új adatbázis-kiszolgálóhoz. Az adatbázis-helyreállítás befejezése után az ügyfelek az átjárón keresztül csatlakozhatnak az új adatbázis-kiszolgálóhoz. <br /> <br /> A helyreállítási idő (RTO) függ a különböző tényezőktől, például a hiba időpontjában felmerülő tevékenységtől, például a nagy tranzakciótól és az adatbázis-kiszolgáló indítási folyamata során elvégzendő helyreállítás mennyiségétől. <br /> <br /> A PostgreSQL-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat.  Ha az alkalmazás újrapróbálkozik, az átjáró transzparens módon átirányítja a kapcsolódást az újonnan létrehozott adatbázis-kiszolgálóhoz. |
 | <B>Tárolási hiba | Az alkalmazások nem érintik a tárterülettel kapcsolatos problémákat, például a lemez meghibásodását vagy a fizikai blokk sérülését. Mivel az adattárolás 3 példányban történik, az adatmásolatot a túlélő tároló kézbesíti. A rendszer automatikusan kijavítja a blokkolási hibákat. Ha a rendszer elveszi az adatmásolatot, a rendszer automatikusan létrehozza az adatgyűjtés új másolatát. |
 
 Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek felhasználói beavatkozást igényelnek a helyreállításhoz:
 
 | **Forgatókönyv** | **Helyreállítási terv** |
 | ---------- | ---------- |
-| <b>Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
-| <b>Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani az adatbázis-kiszolgáló összes adatbázisa helyett, akkor az adatbázis-kiszolgálót visszaállíthatja egy új példányban, majd exportálhatja a táblázat (oka) t [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html), majd a [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
+| <b> Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
+| <b> Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani az adatbázis-kiszolgáló összes adatbázisa helyett, akkor az adatbázis-kiszolgálót visszaállíthatja egy új példányban, majd exportálhatja a táblázat (oka) t [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html), majd a [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
 
 
 

@@ -6,22 +6,22 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992841"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507263"
 ---
 # <a name="data-filtering"></a>Adatszűrés
 
 Ha egy egyéni rendszer betanítására szolgáló dokumentumokat küld be, a dokumentumok a betanításra való felkészüléshez szükséges feldolgozási és szűrési lépések sorozatán mennek keresztül. Ezeket a lépéseket itt találja. A szűrés ismerete segíthet megérteni az egyéni fordítóban megjelenő mondatok számát, valamint azokat a lépéseket, amelyeket a dokumentumok előkészítéséhez használhat egyéni fordítóval.
 
 ## <a name="sentence-alignment"></a>Mondatok igazítása
-Ha a dokumentum nem XLIFF-, TMX-vagy IGAZÍTÁSi formátummal rendelkezik, az egyéni fordító a forrás-és a dokumentumok mondatait a mondatok szerint rendezi. A fordító nem végez dokumentum-igazítást – a dokumentumok elnevezése alapján keresi meg a többi nyelv megfelelő dokumentumát. A dokumentumon belül az egyéni fordító megpróbálja megkeresni a megfelelő mondatot a másik nyelven. A dokumentum-jelölés, például a beágyazott HTML-címkék használatával segíti az igazítást.  
+Ha a dokumentum nem XLIFF-, TMX-vagy IGAZÍTÁSi formátummal rendelkezik, az egyéni fordító a forrás-és a dokumentumok mondatait a mondatok szerint rendezi. Az egyéni fordító nem végez dokumentum-igazítást – a dokumentumok elnevezését követi, hogy megtalálja a többi nyelv megfelelő dokumentumát. A dokumentumon belül az egyéni fordító megpróbálja megkeresni a megfelelő mondatot a másik nyelven. A dokumentum-jelölés, például a beágyazott HTML-címkék használatával segíti az igazítást.  
 
 Ha a forrás-és a cél oldali dokumentumokban a mondatok száma között nagy eltérés tapasztalható, akkor előfordulhat, hogy a dokumentum nem párhuzamos az első helyen, vagy más okok miatt nem lehetett igazítani. A dokumentum párok nagy különbséggel (>10%) mindkét oldalon a mondatok egy második pillantással gondoskodnak arról, hogy valóban párhuzamosak legyenek. Ha a mondatok száma gyanús, a Custom Translator egy figyelmeztetést jelenít meg a dokumentum mellett.  
 
@@ -49,9 +49,9 @@ Teljes szélességű betűk és számjegyek konvertálása félszélességű kar
 
 ## <a name="unescaped-xml-tags"></a>Nem kimaradt XML-címkék
 A szűrés a nem kimaradt címkéket Escape-címkékre alakítja át:
-* `&lt;`válik`&amp;lt;`
-* `&gt;`válik`&amp;gt;`
-* `&amp;`válik`&amp;amp;`
+* `&lt;` válik `&amp;lt;`
+* `&gt;` válik `&amp;gt;`
+* `&amp;` válik `&amp;amp;`
 
 ## <a name="invalid-characters"></a>Érvénytelen karakterek
 Az egyéni fordító eltávolítja az U + FFFD Unicode-karaktert tartalmazó mondatokat. Az U + FFFD karakter nem megfelelő kódolási konverziót jelez.

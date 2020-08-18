@@ -146,7 +146,11 @@
         - name: Áttekintés
           href: backup-azure-sql-database.md
         - name: Backup
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: Több SQL Servert futtató virtuális gép biztonsági mentése a tárolóból
+              href: backup-sql-server-database-azure-vms.md
+            - name: SQL Servert futtató virtuális gép biztonsági mentése a virtuális gép paneljéről
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: Visszaállítás
           href: restore-sql-database-azure-vm.md
         - name: Kezelés

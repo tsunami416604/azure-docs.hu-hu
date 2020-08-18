@@ -138,6 +138,8 @@
           href: concepts-server-parameters.md
     - name: Fejlesztés
       items:
+        - name: Ajánlott eljárások az alkalmazáshoz
+          href: app-development-best-practices.md
         - name: Az illesztőprogramok és eszközök kompatibilitása
           href: concepts-compatibility.md
         - name: Alkalmazásfejlesztés

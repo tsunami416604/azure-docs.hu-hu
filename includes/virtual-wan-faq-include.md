@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374898"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507577"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -187,7 +187,7 @@ Nem. A virtuális WAN nem igényel ExpressRoute az egyes helyekről. Előfordulh
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Van hálózati átviteli sebesség vagy kapcsolati korlát az Azure Virtual WAN használata esetén?
 
-A hálózati átviteli sebesség szolgáltatásként egy virtuális WAN-központban történik. Habár több virtuális WAN-t is használhat, minden egyes virtuális WAN régiónként 1 hub-t tesz lehetővé. Az egyes központokban a VPN aggregált átviteli sebessége akár 20 GB/s is lehet, a ExpressRoute összesített átviteli sebessége akár 20 GB/s is lehet, és a felhasználó VPN/pont – hely közötti VPN aggregált átviteli sebessége akár 20 GB/s is lehet. A Virtual hub útválasztója akár 50 GB/s-ot is támogat a VNet forgalom VNet, és összesen 2000 virtuális gép számítási feladatát feltételezi a virtuális WAN-hubok összes virtuális hálózatok.
+A hálózati átviteli sebesség szolgáltatásként egy virtuális WAN-központban történik. Habár több virtuális WAN-t is használhat, minden egyes virtuális WAN régiónként 1 hub-t tesz lehetővé. Az egyes központokban a VPN aggregált átviteli sebessége akár 20 GB/s is lehet, a ExpressRoute összesített átviteli sebessége akár 20 GB/s is lehet, és a felhasználó VPN/pont – hely közötti VPN aggregált átviteli sebessége akár 20 GB/s is lehet. A Virtual hub útválasztója akár 50 GB/s-ot is támogat a VNet forgalom VNet, és összesen 2000 virtuális gép számítási feladatát feltételezi az összes olyan virtuális hálózatok, amely egyetlen virtuális hubhoz csatlakozik.
 
 Amikor a VPN-helyek egy központhoz csatlakoznak, a kapcsolatokkal. A Virtual WAN a virtuális hubhoz legfeljebb 1000 kapcsolatot vagy 2000 IPsec-alagutat támogat. Amikor a távoli felhasználók csatlakoznak a virtuális központhoz, csatlakoznak a P2S VPN-átjáróhoz, amely legfeljebb 10 000 felhasználót támogat, attól függően, hogy milyen méretezési egység (sávszélesség) van kiválasztva a virtuális központ P2S VPN-átjárója számára.
 

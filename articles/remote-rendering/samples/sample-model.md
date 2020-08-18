@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 0c28d36c7934fbbac0ddd11562c8dc237b0360ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679484"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507535"
 ---
 # <a name="sample-models"></a>Mintamodellek
 
@@ -20,13 +20,13 @@ Ez a cikk az Azure távoli renderelési szolgáltatás teszteléséhez használh
 
 Egy beépített minta modellt biztosítunk, amely mindig betölthető az URL- **Builtin://Engine** használatával
 
-![Minta modell](./media/sample-model.png "Minta modell")
+![Mintamodell](./media/sample-model.png "Mintamodell")
 
 Modell statisztikái:
 
 | Name (Név) | Érték |
 |-----------|:-----------|
-| [Szükséges VM-méret](../how-tos/session-rest-api.md#create-a-session) | Standard |
+| [Szükséges kiszolgáló mérete](../how-tos/session-rest-api.md#create-a-session) | Standard |
 | Háromszögek száma | 18 700 000 |
 | Mozgó részek száma | 2073 |
 | Anyagok száma | 94 |

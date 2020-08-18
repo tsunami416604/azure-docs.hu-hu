@@ -138,6 +138,8 @@
           href: move-region.md
 - name: Referencia
   items:
+    - name: Ügyfélkódtárak
+      href: client-libraries.md
     - name: REST API-hibakódok – Azure Key Vault
       href: rest-error-codes.md
     - name: Gyakori paraméterek és fejlécek

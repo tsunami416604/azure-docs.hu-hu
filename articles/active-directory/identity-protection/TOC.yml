@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Azure AD Identity Protection?
+    - name: Mi az az Identity Protection?
       href: overview-identity-protection.md
 - name: Alapelvek
   expanded: false

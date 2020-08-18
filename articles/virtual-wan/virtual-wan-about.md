@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: d7e3992f12e39dd819bc18d5deb9f8b6da935616
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 451e1581350bb1d38580d00ffd24c781bc30242d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258682"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507576"
 ---
 # <a name="about-azure-virtual-wan"></a>Tudnivalók az Azure Virtual WAN-ról
 
@@ -98,7 +98,7 @@ Az útválasztó négy útválasztási állapottal rendelkezhet: kiépített, ki
 * A **none** állapot azt jelzi, hogy a virtuális központ nem tudta kiépíteni az útválasztót. Ez akkor fordulhat *elő, ha*a virtuális WAN alaptípusú, vagy ha a virtuális hub üzembe helyezése az elérhető szolgáltatás előtt megtörtént.
 * A **sikertelen** állapot azt jelzi, hogy hiba történt A példány létrehozásakor. Az útválasztó létrehozásához vagy alaphelyzetbe állításához keresse meg az **útválasztó alaphelyzetbe állítása** lehetőséget, és navigáljon a Azure Portal virtuális központ áttekintés lapjára.
 
-Minden virtuális központ útválasztója legfeljebb 50 GB/s-os összesített átviteli sebességet támogat. A virtuális hálózati kapcsolatok közötti kapcsolat a virtuális hubhoz csatlakozó összes virtuális hálózatok összesen 2000 virtuális gép számítási feladatát feltételezi.
+Minden virtuális központ útválasztója legfeljebb 50 GB/s-os összesített átviteli sebességet támogat. A virtuális hálózati kapcsolatok közötti kapcsolat azt feltételezi, hogy az összes, egyetlen virtuális hubhoz csatlakozó virtuális hálózatok összesen 2000 virtuális gép számítási feladatát veszi figyelembe.
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Átviteli kapcsolat VPN-és ExpressRoute között
 
