@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT-tároló konfigurálása – Azure
-description: Háttérbeli tárolási rendszer hozzáadása az Azure-hoz készült avere-vFXT
+description: Ismerje meg, hogyan adhat hozzá háttérrendszer-tárolót egy fürthöz az Azure-beli avere-vFXT. Ha létrehozott egy Azure BLOB-tárolót a fürttel, az készen áll a használatra.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505749"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271141"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -49,7 +49,7 @@ A következő lépésekkel adhat hozzá egy NAS Core Filer-t:
 
 1. Kattintson az **alapszintű Filer**  >  **Manage Core filers** elemre a bal oldalon.
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
    ![Képernyőkép az új alapszintű Filer hozzáadása oldalról, amely kurzort mutat a létrehozás gombon](media/avere-vfxt-add-core-filer-start.png)
 
