@@ -1,4 +1,4 @@
-- name: Load Balancer – dokumentáció
+- name: A Load Balancer dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -6,9 +6,7 @@
       href: load-balancer-overview.md
     - name: Újdonságok
       href: whats-new.md
-    - name: Gyakori kérdések
-      href: load-balancer-faqs.md
-- name: Első lépések
+- name: Rövid útmutatók
   items:
     - name: Nyilvános terheléselosztó létrehozása – Portal
       href: quickstart-load-balancer-standard-public-portal.md
@@ -130,14 +128,14 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Csak kifelé irányuló terheléselosztó konfigurációja
       href: egress-only.md
-- name: Hibaelhárítás
-  items:
-    - name: Az Azure Load Balancer hibaelhárítása
-      href: load-balancer-troubleshoot.md
-    - name: Gyakori üzembehelyezési hibák elhárítása
-      href: load-balancer-common-deployment-errors.md
-    - name: Gyakori kimenő kapcsolati problémák elhárítása
-      href: troubleshoot-outbound-connection.md
+    - name: Hibaelhárítás
+      items:
+        - name: Az Azure Load Balancer hibaelhárítása
+          href: load-balancer-troubleshoot.md
+        - name: Gyakori üzembehelyezési hibák elhárítása
+          href: load-balancer-common-deployment-errors.md
+        - name: Gyakori kimenő kapcsolati problémák elhárítása
+          href: troubleshoot-outbound-connection.md
 - name: Referencia
   items:
     - name: Kódminták
@@ -175,3 +173,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Termékfrissítések
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
+    - name: GYIK
+      href: load-balancer-faqs.md

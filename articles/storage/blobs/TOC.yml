@@ -118,6 +118,19 @@
       items:
         - name: Tárfiókok
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Engedélyezés
+          items:
+            - name: Adatműveletek engedélyezése
+              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Engedélyezés az Azure AD-vel
+                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Engedélyezés megosztott kulccsal
+                  href: /rest/api/storageservices/authorize-with-shared-key
+                - name: Hozzáférés delegálása közös hozzáférésű jogosultságkódokkal (SAS)
+                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Felügyeleti műveletek engedélyezése
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Biztonság
           items:
             - name: Biztonsági javaslatok
@@ -131,17 +144,6 @@
                   href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Felhasználó által biztosított kulcsok a kérelemhez kapcsolódóan
                   href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Adatműveletek engedélyezése
-              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: Engedélyezés az Azure AD-vel
-                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Engedélyezés megosztott kulccsal
-                  href: /rest/api/storageservices/authorize-with-shared-key
-                - name: Hozzáférés delegálása közös hozzáférésű jogosultságkódokkal (SAS)
-                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Felügyeleti műveletek engedélyezése
-              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Nem módosítható blobok
               href: storage-blob-immutable-storage.md
             - name: Speciális fenyegetésvédelem
@@ -313,64 +315,64 @@
               href: storage-blob-properties-metadata.md
             - name: Blob másolása (.NET)
               href: storage-blob-copy.md
+        - name: Blobadatok hozzáférésének engedélyezése
+          items:
+            - name: Felhasználói hitelesítési beállítások
+              items:
+                - name: Portál
+                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Hozzáférési jogosultságok felügyelete RBAC használatával
+              items:
+                - name: Portál
+                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Hitelesítés és engedélyezés az Azure AD-vel
+              items:
+                - name: Engedélyezés felügyelt identitással
+                  href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Engedélyezés egy alkalmazásból
+                  href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Engedélyezés megosztott kulccsal
+              items:
+                - name: Fiókkulcsok megtekintése és kezelése
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Kapcsolati sztringek konfigurálása
+                  href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Az Azure Storage REST API használata
+                  href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Hozzáférés delegálása közös hozzáférésű jogosultságkódokkal (SAS)
+              items:
+                - name: Felhasználódelegálási SAS létrehozása
+                  items:
+                    - name: PowerShell
+                      href: storage-blob-user-delegation-sas-create-powershell.md
+                    - name: Azure CLI
+                      href: storage-blob-user-delegation-sas-create-cli.md
+                    - name: .NET
+                      href: storage-blob-user-delegation-sas-create-dotnet.md
+                - name: Szolgáltatási SAS létrehozása (.NET)
+                  href: storage-blob-service-sas-create-dotnet.md
+                - name: Fiók-SAS létrehozása (.NET)
+                  href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Tárolt hozzáférési szabályzat meghatározása
+                  href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Blobadatok névtelen olvasási hozzáférésének kezelése
+              items:
+                - name: Tárolók és blobok névtelen olvasási hozzáférésének konfigurálása
+                  href: anonymous-read-access-configure.md
+                - name: Blobadatok névtelen olvasási hozzáférésének megakadályozása
+                  href: anonymous-read-access-prevent.md
+                - name: Névtelen hozzáférés nyilvános tárolókhoz és blobokhoz (.NET)
+                  href: anonymous-read-access-client.md
         - name: Blobadatok védelme
           items:
-            - name: Blobadatok hozzáférésének engedélyezése
-              items:
-                - name: Felhasználói hitelesítési beállítások
-                  items:
-                    - name: Portál
-                      href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Hozzáférési jogosultságok felügyelete RBAC használatával
-                  items:
-                    - name: Portál
-                      href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Hitelesítés és engedélyezés az Azure AD-vel
-                  items:
-                    - name: Engedélyezés felügyelt identitással
-                      href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Engedélyezés egy alkalmazásból
-                      href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Engedélyezés megosztott kulccsal
-                  items:
-                    - name: Fiókkulcsok megtekintése és kezelése
-                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Kapcsolati sztringek konfigurálása
-                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Az Azure Storage REST API használata
-                      href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Hozzáférés delegálása közös hozzáférésű jogosultságkódokkal (SAS)
-                  items:
-                    - name: Felhasználódelegálási SAS létrehozása
-                      items:
-                        - name: PowerShell
-                          href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure CLI
-                          href: storage-blob-user-delegation-sas-create-cli.md
-                        - name: .NET
-                          href: storage-blob-user-delegation-sas-create-dotnet.md
-                    - name: Szolgáltatási SAS létrehozása (.NET)
-                      href: storage-blob-service-sas-create-dotnet.md
-                    - name: Fiók-SAS létrehozása (.NET)
-                      href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Tárolt hozzáférési szabályzat meghatározása
-                      href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Blobadatok névtelen olvasási hozzáférésének kezelése
-                  items:
-                    - name: Tárolók és blobok névtelen olvasási hozzáférésének konfigurálása
-                      href: anonymous-read-access-configure.md
-                    - name: Blobadatok névtelen olvasási hozzáférésének megakadályozása
-                      href: anonymous-read-access-prevent.md
-                    - name: Névtelen hozzáférés nyilvános tárolókhoz és blobokhoz (.NET)
-                      href: anonymous-read-access-client.md
             - name: Azure Storage-titkosítás kezelése
               items:
                 - name: Blob titkosítási állapotának ellenőrzése
