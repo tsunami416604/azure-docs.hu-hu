@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526996"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551707"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
@@ -45,7 +45,7 @@ Hozzon létre ütemezett napi biztonsági másolatot egy Recovery Services-táro
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 3. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
-4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **biztonsági mentés engedélyezése** panel.
+4. A virtuális gép panel **műveletek** szakaszában kattintson a **biztonsági mentés**elemre. Megnyílik a **biztonsági mentés engedélyezése** panel.
 5. A **Recovery Services-tárolóban** kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Az új tároló ugyanabban az Erőforráscsoportban és ugyanazon a helyen jön létre, ahol a virtuális gép is van.
 6. Kattintson a **Biztonsági mentési szabályzat** lehetőségre. Ehhez a példához hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 7. A **Biztonsági mentés engedélyezése** panelen kattintson a **Biztonsági mentés engedélyezése** elemre. Ez létrehoz egy napi biztonsági mentést az alapértelmezett ütemezés alapján.

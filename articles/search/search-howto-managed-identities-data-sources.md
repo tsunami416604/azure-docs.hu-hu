@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664899"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553164"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával (előzetes verzió)
 
 > [!IMPORTANT] 
-> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg egy kezdeményezett nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
-> Az előnézet elérését az [űrlap](https://aka.ms/azure-cognitive-search/mi-preview-request)kitöltésével kérheti le.
+> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
 
 Az Azure Cognitive Search [Indexelő](search-indexer-overview.md) egy olyan webbejáró, amely lehetővé teszi az adatok adatforrásból való lekérését az Azure Cognitive Searchba. Az indexelő beszerez egy adatforrás-kapcsolatokat a létrehozott adatforrás-objektumból. Az adatforrás-objektum általában tartalmazza a cél adatforráshoz tartozó hitelesítő adatokat. Az adatforrás-objektum például tartalmazhat egy Azure Storage-fiók kulcsát, ha blob Storage-tárolóból kívánja indexelni az adatait.
 

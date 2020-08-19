@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Pega-rendszerekkel | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Pega rendszerek között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31acf80f-1f4b-41f1-956f-a9fbae77ee69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026803"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Oktatóanyag: Azure Active Directory integráció Pega rendszerekkel
 
@@ -57,7 +53,7 @@ A Pega rendszerek Azure AD-be való integrálásának beállításához hozzá k
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Nyissa meg a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -119,7 +115,7 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
     1. A **bejelentkezési URL-cím** mezőbe írja be a bejelentkezési URL-cím értékét.
 
-    1. A **továbbítási állapot** mezőben adja meg az URL-címet ebben a mintában:`https://<customername>.pegacloud.io/prweb/sso`
+    1. A **továbbítási állapot** mezőben adja meg az URL-címet ebben a mintában: `https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > Az itt megadott értékek helyőrzők. A tényleges azonosítót, a válasz URL-címét, a bejelentkezési URL-címet és a továbbítási állapot URL-címét kell használnia. Az Pega alkalmazásban az azonosító és a válasz URL-értékei az oktatóanyag későbbi részében leírtak szerint olvashatók be. A továbbítási állapot értékének lekéréséhez forduljon a [Pega Systems támogatási csapatához](https://www.pega.com/contact-us). Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -158,9 +154,9 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
     1. A **forrás attribútum** listáról válassza ki az adott sorhoz megjelenő attribútum értékét.
 
-    1. Kattintson **az OK gombra**.
+    1. Kattintson az **OK** gombra.
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki az **összevonási metaadatok XML-fájlja**melletti **letöltési** hivatkozást, a követelmények szerint, majd mentse a tanúsítványt a számítógépen:
 
@@ -180,7 +176,7 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
 1. Ha az egyszeri bejelentkezést a Pega- **rendszerek** oldalon szeretné konfigurálni, jelentkezzen be a Pega-portálra egy másik böngészőablakban található rendszergazdai fiókkal.
 
-2. Válassza a**sysadmin** > **Authentication szolgáltatás** **létrehozása** > lehetőséget:
+2. Válassza **Create**a  >  **sysadmin**  >  **Authentication szolgáltatás**létrehozása lehetőséget:
 
     ![Hitelesítési szolgáltatás kiválasztása](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -214,7 +210,7 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
     1. Jelölje be a **kérelmek aláírásának letiltása**jelölőnégyzetet.
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -234,7 +230,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be **brittasimon@\<yourcompanydomain>\< . bővítmény>**. (Például: BrittaSimon@contoso.com.)
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
 
     c. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
@@ -276,7 +272,7 @@ Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési pa
 
 Amikor kiválasztja a Pega-rendszerek csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Pega rendszer-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

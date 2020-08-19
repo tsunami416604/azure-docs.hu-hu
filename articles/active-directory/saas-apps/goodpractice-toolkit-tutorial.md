@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az elme Tools Toolkit használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az elme Tools eszközkészlet között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0c1cab94a6b83ca429fd640759bed8af0ae881
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124856"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550639"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Oktatóanyag: Azure Active Directory integráció az elme Tools Toolkit használatával
 
@@ -130,7 +126,7 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
 
    ![A kezelés szakaszban Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A felhasználók és csoportok ablak, a felhasználó hozzáadása kiemelve](common/add-assign-user.png)
 
@@ -154,7 +150,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a saját alkalmazások portálon az elme Tools Toolkit csempét, automatikusan bejelentkezik az elmés Tools eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [Bevezetés a My apps portálra](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok az SaaS-alkalmazások integrálásához Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a iProva | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és iProva között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7092ea68f2b7f35e372013a94108e43a83c8777
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 187ec5c42c733837689de95c8111b557519f8b7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608634"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552838"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a iProva
 
@@ -129,7 +125,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -159,7 +155,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. A **felhasználók és felhasználói csoportok** panelen válassza a **felhasználók** lehetőséget.
 
-5. Válassza a **Hozzáadás** lehetőséget.
+5. Válassza a **Hozzáadás** elemet.
 
 6. A **Felhasználónév** mezőbe írja be a felhasználóhoz hasonló felhasználónevet `B.Simon@contoso.com` .
 
@@ -191,7 +187,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 8. Válassza a **Beállítás** lehetőséget.
 
-9. Válassza a **Tovább** lehetőséget.
+9. Kattintson a **Tovább** gombra.
 
 10. a iProva megkérdezi, hogy szeretné-e letölteni az összevonási adatok URL-címről való letöltését vagy fájlból való feltöltését. Válassza ki a **from URL** lehetőséget.
 
@@ -203,13 +199,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 13. Ha a letöltés befejeződött, megjelenik a megerősítő üzenet **érvényes összevonási adatfájlja** .
 
-14. Válassza a **Tovább** lehetőséget.
+14. Kattintson a **Tovább** gombra.
 
 15. Ugorja át most a **bejelentkezési teszt** lehetőséget, majd kattintson a **tovább**gombra.
 
 16. A **használni kívánt jogcím** legördülő listáról válassza a **windowsaccountname**lehetőséget.
 
-17. Válassza a **Befejezés** gombot.
+17. Válassza a **Befejezés** lehetőséget.
 
 18. Most térjen vissza az **általános beállítások szerkesztése** képernyőre. Görgessen le a lap aljára, majd kattintson **az OK gombra** a konfiguráció mentéséhez.
 
@@ -221,9 +217,9 @@ Ha a hozzáférési panelen a iProva csempére kattint, automatikusan be kell je
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

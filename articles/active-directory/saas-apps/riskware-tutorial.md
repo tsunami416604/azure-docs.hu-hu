@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a riskware-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és riskware között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72027116"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Oktatóanyag: Azure Active Directory integráció a riskware
 
@@ -32,7 +28,7 @@ A riskware és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -168,7 +164,7 @@ Az Azure AD egyszeri bejelentkezés riskware való konfigurálásához hajtsa v�
 
     f. A **post űrlapmező** szövegmezőbe írja be az SAML-t (például SAMLResponse) tartalmazó post Response nevű mezőnevet.
 
-    g. Az **XML Identity tag neve** szövegmezőbe írja be a következőt: attribútum, amely az SAML-válaszban (például NameID) található egyedi azonosítót tartalmazza.
+    : Az **XML Identity tag neve** szövegmezőbe írja be a következőt: attribútum, amely az SAML-válaszban (például NameID) található egyedi azonosítót tartalmazza.
 
     h. Nyissa meg a letöltött **metaadatok XML-** fájlját Azure Portal a Jegyzettömbben, másolja a tanúsítványt a metaadatokból, és illessze be a **tanúsítvány** szövegmezőbe.
 
@@ -183,7 +179,7 @@ Az Azure AD egyszeri bejelentkezés riskware való konfigurálásához hajtsa v�
 
     l. Jelölje be **az SAML-kérelem használata** jelölőnégyzetet.
 
-    m. Kattintson a **Save** (Mentés) gombra.
+    m. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -203,12 +199,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -268,7 +264,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ri
 
     a. A **hitelesítés** szakaszban válassza ki a **hitelesítési** módot, amelyet úgy kell beállítania, mint az egyszeri bejelentkezéses Azure-konfiguráció.
 
-    b. A **Bejelentkezés részletei** szakasz **felhasználói azonosító** szövegmezőbe írja be a felhasználóhoz hasonló `brittasimon@contoso.com`e-mail címet.
+    b. A **Bejelentkezés részletei** szakasz **felhasználói azonosító** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `brittasimon@contoso.com` .
 
     c. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 
@@ -282,7 +278,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ri
 
     c. Az **alkalmazott** szakaszban válassza az **alkalmazotti állapot** (alkalmi) lehetőséget.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure AD SSO-integráció a Trend Micro Web Security (TMWS) szolgáltatással'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Trend Micro Web Security (TMWS) között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 827285d3-8e65-43cd-8453-baeda32ef174
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d09af492439beb931b4ab1cd08ccb9e1d82fc3f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583151"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trend Micro Web Security (TMWS) szolgáltatással
 
@@ -99,7 +95,7 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 1. Az előző képernyőképen lévő attribútumok mellett a TMWS két további attribútumot vár az SAML-válaszban. Ezek az attribútumok az alábbi táblázatban láthatók. Az attribútumok előre ki vannak töltve, de megváltoztathatók a követelmények teljesítése érdekében.
     
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | uPN | User. userPrincipalName |
@@ -119,8 +115,8 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **név** mezőbe írja be `B.Simon`a nevet.  
-   1. A Felhasználónév **mezőbe írja be a** ***username cégestartomány*@* nevet *.* bővítmény***. Például: `B.Simon@contoso.com`.
+   1. A név mezőbe írja be a **nevet** `B.Simon` .  
+   1. A Felhasználónév **mezőbe írja be a** ***username cégestartomány nevet *@* *.* bővítmény***. Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -179,7 +175,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alkalmazás oldalán.
 
-1. Jelentkezzen be a TMWS felügyeleti konzolba, és lépjen a **felügyeleti** > **felhasználók & Authentication** > **Directory Services**elemre.
+1. Jelentkezzen be a TMWS felügyeleti konzolba, és lépjen a **felügyeleti**  >  **felhasználók & Authentication**  >  **Directory Services**elemre.
 
 1. Kattintson **ide** a képernyő felső részén.
 
@@ -210,7 +206,7 @@ A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alka
 
     e. Kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad szolgáltatás sikeresen csatlakoztatva van-e.
     
-    f. Kattintson a **Mentés** gombra.
+    f. Válassza a **Mentés** lehetőséget.
  
  > [!NOTE]
  > A TMWS Azure AD-vel való konfigurálásával kapcsolatos további információkért lásd: [Az Azure ad-beállítások konfigurálása a TMWS-on](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx).
@@ -220,7 +216,7 @@ A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alka
 Miután konfigurálta az Azure AD szolgáltatást, és megadta a felhasználói hitelesítési módszerként az Azure AD-t, bejelentkezhet a TMWS a telepítés ellenőrzéséhez. Miután az Azure AD-bejelentkezés ellenőrzi a fiókját, megkeresheti az internetet.
 
 > [!NOTE]
-> A TMWS nem támogatja az egyszeri bejelentkezés tesztelését az Azure ad-portálról, az **Áttekintés** > **egyszeri bejelentkezés** > **beállításával egyszeri bejelentkezést állíthat be** > az új vállalati alkalmazás SAML-**tesztelésével** .
+> A TMWS nem támogatja az egyszeri bejelentkezés tesztelését az Azure ad-portálról, az **Áttekintés**  >  **egyszeri bejelentkezés**  >  **beállításával egyszeri bejelentkezést állíthat be**az  >  új vállalati alkalmazás SAML-**tesztelésével** .
 
 1. Törölje az összes cookie böngészőjét, majd indítsa újra a böngészőt. 
 
@@ -228,15 +224,15 @@ Miután konfigurálta az Azure AD szolgáltatást, és megadta a felhasználói 
 
 1. Látogasson el bármelyik internetes webhelyre. A TMWS a TMWS kötött portálra irányítja.
 
-1. Adjon meg egy Active Directory fiókot (Format: *domain*\\*sAMAccountName* vagy *sAMAccountName*@*tartomány*), e-mail-címet vagy egyszerű felhasználónevet, majd válassza **a bejelentkezés**lehetőséget. A TMWS az Azure AD bejelentkezési ablakát küldi el.
+1. Adjon meg egy Active Directory fiókot (Format: *domain* \\ *sAMAccountName* vagy *sAMAccountName* @ *tartomány*), e-mail-címet vagy egyszerű felhasználónevet, majd válassza **a bejelentkezés**lehetőséget. A TMWS az Azure AD bejelentkezési ablakát küldi el.
 
 1. Az Azure AD bejelentkezési ablakában adja meg az Azure AD-fiókjának hitelesítő adatait. Most be kell jelentkeznie a TMWS-be.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

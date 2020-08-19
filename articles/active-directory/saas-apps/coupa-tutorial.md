@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció a Coupa szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Coupa között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a116dff0eba7e5469ab0c352c30bca506ee18238
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227650"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Azure Active Directory a Coupa-integrációval
 
@@ -33,7 +28,7 @@ A Coupa az Azure AD-vel való integrálása a következő előnyöket biztosítj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,7 +101,7 @@ Ha az Azure AD egyszeri bejelentkezést a Coupe használatával szeretné konfig
 
     ![A coupa tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.coupahost.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.coupahost.com`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [coupa ügyfél-támogatási csapatához](https://success.coupa.com/Support/Contact_Us?) .
@@ -115,7 +110,7 @@ Ha az Azure AD egyszeri bejelentkezést a Coupe használatával szeretné konfig
 
     | Környezet  | URL-cím |
     |:-------------|----|
-    | Tesztkörnyezet | `sso-stg1.coupahost.com`|
+    | Sandbox | `sso-stg1.coupahost.com`|
     | Production | `sso-prd1.coupahost.com`|
     | | |
 
@@ -123,7 +118,7 @@ Ha az Azure AD egyszeri bejelentkezést a Coupe használatával szeretné konfig
 
     | Környezet | URL-cím |
     |------------- |----|
-    | Tesztkörnyezet | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Sandbox | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
     | Production | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
@@ -157,7 +152,7 @@ Ha az Azure AD egyszeri bejelentkezést a Coupe használatával szeretné konfig
 
     b. Kattintson a **Tallózás** gombra a Azure Portal letöltött metaadatok feltöltéséhez.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -177,12 +172,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -224,7 +219,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Coupa-be, a Coupa-be k
 
     ![Felhasználók](./media/coupa-tutorial/ic791908.png "Felhasználók")
 
-3. Kattintson a **Létrehozás**gombra.
+3. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Felhasználók létrehozása](./media/coupa-tutorial/ic791909.png "Felhasználók létrehozása")
 
@@ -234,7 +229,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Coupa-be, a Coupa-be k
 
     a. Írja be a **bejelentkezési nevet**, az **Utónév**, a **vezetéknév**, az **egyszeri bejelentkezési azonosító**, a kapcsolódó szövegmezőbe felvenni kívánt érvényes Azure Active Directory fiók **e-mail** attribútumait.
 
-    b. Kattintson a **Létrehozás**gombra.
+    b. Kattintson a **Create** (Létrehozás) gombra.
 
     >[!NOTE]
     >A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely egy hivatkozással megerősíti a fiókot, mielőtt az aktívvá válna.

@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834456"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549547"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. A detektor modell létrehozása után használhatja a Custom Vision szolgáltatást az objektumok észleléséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,7 +111,7 @@ Minden alkalommal, amikor betanítja a detektort, létrehoz egy új _iterációt
 
 A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre és taníthat egy Object detektor-modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

@@ -2,24 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Mitel-csatlakozással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Mitel közötti kapcsolat között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 204f540b-09f1-452b-a52f-78143710ef76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 60e81bed348289f560b6341398bf4fe9bdaff0eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054682"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Oktatóanyag: Azure Active Directory integráció a Mitel MiCloud csatlakozással vagy a CloudLink platformmal
 
@@ -127,8 +124,8 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 7. A **bejelentkezési URL-cím** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-    1. **https://portal.shoretelsky.com**– a Mitel-fiók portál használata alapértelmezett Mitel-alkalmazásként
-    1. **https://teamwork.shoretel.com**– a csapatmunka alapértelmezett Mitel-alkalmazásként való használata
+    1. **https://portal.shoretelsky.com** – a Mitel-fiók portál használata alapértelmezett Mitel-alkalmazásként
+    1. **https://teamwork.shoretel.com** – a csapatmunka alapértelmezett Mitel-alkalmazásként való használata
 
     > [!NOTE]
     > Az alapértelmezett Mitel alkalmazás az az alkalmazás, amely akkor érhető el, amikor egy felhasználó kiválasztja a Mitel csatlakozás csempét a hozzáférési panelen. Ez az alkalmazás akkor is elérhető, amikor az Azure AD-ból tesztet telepít.

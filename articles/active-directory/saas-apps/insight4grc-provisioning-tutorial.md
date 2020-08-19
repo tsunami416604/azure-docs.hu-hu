@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Insight4GRC konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a Insight4GRC.
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: d0eab8a0-571b-4609-96b1-bdbc761a25de
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: b5d5676009e0545ce6245d81e843b53e6f41979a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 86927a525fbfcb6a252d8e3d214733a0f1e83ed1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925192"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550375"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Insight4GRC konfigurálása
 
@@ -98,7 +94,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Insight4GRC**lehetőséget.
 

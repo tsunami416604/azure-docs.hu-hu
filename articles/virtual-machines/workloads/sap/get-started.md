@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/14/2020
+ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1152eb11d3452743daa5bcb39fb593dddf94452
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 5cee26f9c1674030903e8be6dac80f6615317a67
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245927"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551667"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -88,6 +88,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 08/17/2020: További információ a Azure Site Recovery használatáról az SAP NetWeaver-rendszerek a helyszíni rendszerből az Azure-ba való áthelyezéséhez az [azure Virtual Machines tervezése és implementálása az SAP NetWeaver](./planning-guide.md) -ban című cikk nyújt tájékoztatást.
 - 08/14/2020: lemez-konfigurációs tanácsok hozzáadása a DB2-hez az [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - 08/11/2020: a RHEL 7,6 hozzáadása [kompatibilis operációs rendszerekhez a HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) számára elérhető operációs rendszerként az I típusú HLI-egységek számára
 - 08/10/2020: SAP HANA az Azure-beli [virtuális gépek tárolási](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) konfigurációjának költséghatékonysági SAP HANA tárolási konfigurációjának bemutatása és néhány frissítés az Azure-beli [SAP-munkaterhelésekhez: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

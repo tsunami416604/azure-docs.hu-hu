@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a GoToMeeting-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és GoToMeeting között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2835fda7b709ded9fac5503d4ba0bf4b8bdd5ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b410c4a106f65c8913dc41f5957cdaf10cad3c89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76290665"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GoToMeeting
 
@@ -83,9 +79,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://authentication.logmeininc.com/saml/sp`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://authentication.logmeininc.com/saml/sp`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://authentication.logmeininc.com/saml/acs`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://authentication.logmeininc.com/saml/acs`
 
     c. Kattintson a **további URL-címek beállítása** és az alábbi URL-címek konfigurálása elemre.
 
@@ -93,13 +89,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. A **RelayState** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-   - GoToMeeting alkalmazás esetén használja a következőt:`https://global.gotomeeting.com`
+   - GoToMeeting alkalmazás esetén használja a következőt: `https://global.gotomeeting.com`
 
-   - GoToTraining esetén használja a következőt:`https://global.gototraining.com`
+   - GoToTraining esetén használja a következőt: `https://global.gototraining.com`
 
-   - GoToWebinar esetén használja a következőt:`https://global.gotowebinar.com` 
+   - GoToWebinar esetén használja a következőt: `https://global.gotowebinar.com` 
 
-   - GoToAssist esetén használja a következőt:`https://app.gotoassist.com`
+   - GoToAssist esetén használja a következőt: `https://app.gotoassist.com`
 
      > [!NOTE]
      > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a GoToMeeting ügyfélszolgálati [csapatához](https://go.microsoft.com/fwlink/?linkid=845985) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -127,9 +123,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -170,11 +166,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a GoToMeeting csempére kattint, automatikusan be kell jelentkeznie arra a GoToMeeting, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

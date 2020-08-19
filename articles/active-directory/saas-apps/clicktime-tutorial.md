@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ClickTime-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ClickTime között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256083"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Oktatóanyag: Azure Active Directory integráció a ClickTime
 
@@ -106,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa v
 
     ![ClickTime tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://app.clicktime.com/sp/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://app.clicktime.com/sp/`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
@@ -170,7 +165,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Promapp konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Promapp.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 41190ba0-9032-4725-9d2c-b3dd9c7786e6
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1a4a27846196e7eb134b834647b2a2d65672f385
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ef00026072d2c0afc1c6c6a57c225e271e0ac0f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061007"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553537"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Promapp konfigurálása
 
@@ -125,7 +121,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Promapp**lehetőséget.
 

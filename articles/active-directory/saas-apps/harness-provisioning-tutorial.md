@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása a Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 0cdb970b-440b-4e7c-9118-2f03baab6a20
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057838"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550010"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása
 
@@ -138,7 +134,7 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
     ![Az "értesítő E-mail" mező](common/provisioning-notification-email.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A **leképezések**területen válassza **a szinkronizálás Azure Active Directory felhasználók**számára lehetőséget.
 

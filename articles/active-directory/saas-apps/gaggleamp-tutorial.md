@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a GaggleAMP-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és GaggleAMP között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9cc1a4b7-964b-406b-9e0c-05cb1a7c9856
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a6dc3dc2b0580f72ffae5cb5d034b0acdb64612
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7293430968d82fbf9a5efd370f3e0a3ca85842a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73155387"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Oktatóanyag: Azure Active Directory integráció a GaggleAMP
 
@@ -32,7 +28,7 @@ A GaggleAMP és az Azure AD integrálásával a következő előnyöket nyújtja
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,13 +103,13 @@ Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához hajtsa v
 
     ![GaggleAMP tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
 
-    Az **azonosító** szövegmezőbe írja be az URL-címet:`https://accounts.gaggleamp.com/auth/saml/callback`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:  `https://accounts.gaggleamp.com/auth/saml/callback`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![image](common/both-preintegrated-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://gaggleamp.com/i/<customerid>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://gaggleamp.com/i/<customerid>`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a GaggleAMP ügyfélszolgálati [csapatához](mailto:sales@gaggleamp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -134,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához hajtsa v
 
 ### <a name="configure-gaggleamp-single-sign-on"></a>GaggleAMP egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngésző-példányban navigáljon a gágog-támogatási csapat által létrehozott SAML SSO-oldalra (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
+1. Egy másik böngésző-példányban navigáljon a gágog-támogatási csapat által létrehozott SAML SSO-oldalra (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit* ).
 
 2. Az **SAML SSO** -oldalon hajtsa végre a következő lépéseket:  
    
@@ -148,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához hajtsa v
     
     d. Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
     
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -168,12 +164,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

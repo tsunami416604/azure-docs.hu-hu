@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f65aa4b307108682fa6e190a229e9d82b6efdec0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143654"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553201"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával (előzetes verzió)
 
 > [!IMPORTANT] 
-> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg egy kezdeményezett nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
-> Az előnézet elérését az [űrlap](https://aka.ms/azure-cognitive-search/mi-preview-request)kitöltésével kérheti le.
+> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
 
 Ez a lap azt ismerteti, hogyan állítható be egy indexelő-kapcsolódás egy Azure Cosmos DB-adatbázishoz felügyelt identitás használatával ahelyett, hogy hitelesítő adatokat kellene megadnia az adatforrás-objektum kapcsolódási karakterláncában.
 
@@ -58,11 +57,9 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad az ada
 
 ### <a name="3---create-the-data-source"></a>3 – az adatforrás létrehozása
 
-Az **adatforrások** az index, a hitelesítő adatok és az adatok változásainak azonosítására szolgáló szabályzatokat határozzák meg (például módosított vagy törölt dokumentumok a gyűjteményen belül). Az adatforrás független erőforrásként van definiálva, így több indexelő is használható.
+A [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást a Cosmos DB adatainak indexeléséhez a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
 
-Ha felügyelt identitásokat használ az adatforráshoz való hitelesítéshez, a **hitelesítő adatok** nem tartalmazzák a fiók kulcsát.
-
-Példa Cosmos DB adatforrás-objektum létrehozására a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával:
+Ha felügyelt identitásokat használ a hitelesítéshez, a **hitelesítő adatok** nem tartalmazzák a fiók kulcsát.
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -93,8 +90,6 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 | **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott |
 |**dataDeletionDetectionPolicy** | Választható |
-
-A Azure Portal és a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) is támogatja a felügyelt identitások összekapcsolási karakterláncát. A Azure Portal használatához meg kell adni egy Feature jelzőt, amely akkor jelenik meg, amikor az oldal tetején található hivatkozásra kattint az előzetes verzióra való regisztráláskor. 
 
 ### <a name="4---create-the-index"></a>4 – az index létrehozása
 

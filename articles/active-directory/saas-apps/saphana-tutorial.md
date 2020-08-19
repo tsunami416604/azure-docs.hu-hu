@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a SAP HANAtal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SAP HANA között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a34fe5637e895ea69b6fc4c277b7722b306c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161180"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Azure Active Directory integráció a SAP HANA
 
@@ -33,7 +28,7 @@ A SAP HANA az Azure AD-vel való integrálása a következő előnyöket biztos�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,9 +112,9 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
     ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak SAP HANA](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be a következőt:`HA100`
+    a. Az **azonosító** szövegmezőbe írja be a következőt: `HA100`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezekhez az értékekhez vegye fel a kapcsolatot SAP HANA ügyfélszolgálati [csapatával](https://cloudplatform.sap.com/contact.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -140,7 +135,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
     c. Az **1. paraméter** listából válassza a **User. mail**elemet.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -148,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
 ### <a name="configure-sap-hana-single-sign-on"></a>SAP HANA egyszeri bejelentkezés konfigurálása
 
-1. Ha az egyszeri bejelentkezést az SAP HANA oldalon szeretné konfigurálni, jelentkezzen be a **HANA XSA Webkonzolra** a megfelelő HTTPS-végponton.
+1. Ha az egyszeri bejelentkezést az SAP HANA oldalon szeretné konfigurálni, jelentkezzen be a **HANA XSA Webkonzolra**  a megfelelő HTTPS-végponton.
 
     > [!NOTE]
     > Az alapértelmezett konfigurációban az URL-cím átirányítja a kérést egy bejelentkezési képernyőre, amelyhez hitelesített SAP HANA adatbázis-felhasználó hitelesítő adatai szükségesek. A bejelentkező felhasználónak rendelkeznie kell az SAML felügyeleti feladatok végrehajtásához szükséges engedélyekkel.
@@ -196,12 +191,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -247,10 +242,10 @@ Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő
 
 3. Válassza a **Hozzáadás** lehetőséget az SAML-identitásszolgáltató hozzáadásához.  Válassza ki a megfelelő SAML-IDENTITÁSSZOLGÁLTATÓ, majd kattintson **az OK gombra**.
 
-4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet**. Ezután kattintson az **OK** gombra.
+4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet**. Ez után válassza az **OK** gombot.
 
    > [!Note]
-   > Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a HANA-beli felhasználónévnek pontosan egyeznie kell a felhasználó nevével az UPN-ben a tartomány utótagja előtt. (Például BrittaSimon BrittaSimon@contoso.com válik a HANA-ban.)
+   > Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a HANA-beli felhasználónévnek pontosan egyeznie kell a felhasználó nevével az UPN-ben a tartomány utótagja előtt. (Például BrittaSimon@contoso.com BrittaSimon válik a HANA-ban.)
 
 5. Tesztelési célból rendeljen hozzá minden **XS** -szerepkört a felhasználóhoz.
 

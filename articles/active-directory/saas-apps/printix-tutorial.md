@@ -2,25 +2,20 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Printix-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Printix között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 4aea7320-b2d5-49e0-9b63-aeaff0f6fe66
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "62111463"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Oktatóanyag: Azure Active Directory integráció a Printix
 
@@ -113,7 +108,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_url.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.printix.net`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Printix ügyfélszolgálati [csapatához](mailto:support@printix.net) . 
@@ -184,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó**értékét.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-printix-test-user"></a>Printix-tesztelési felhasználó létrehozása
 

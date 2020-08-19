@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559939"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553138"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása Azure SQL Database felügyelt identitás használatával (előzetes verzió)
 
 > [!IMPORTANT] 
-> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg egy kezdeményezett nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
-> Az előnézet elérését az [űrlap](https://aka.ms/azure-cognitive-search/mi-preview-request)kitöltésével kérheti le.
+> A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
 
 Ez a lap azt ismerteti, hogyan állítható be egy indexelő-kapcsolódás a Azure SQL Database felügyelt identitás használatával, nem biztosítva hitelesítő adatokat az adatforrás-objektum kapcsolódási karakterláncában.
 
@@ -98,7 +97,9 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad az ada
 
 ### <a name="5---create-the-data-source"></a>5 – az adatforrás létrehozása
 
-SQL-adatbázisból való indexeléskor az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
+A [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Azure SQL Database adatainak indexeléséhez a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
+
+Amikor a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával hoz létre adatforrást, az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
 * a **Name** a keresési szolgáltatásban található adatforrás egyedi neve.
 * **típus**`azuresql`
@@ -122,8 +123,6 @@ api-key: [admin key]
     "container" : { "name" : "my-table" }
 } 
 ```
-
-A Azure Portal és a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) is támogatja a felügyelt identitások összekapcsolási karakterláncát. A Azure Portal használatához meg kell adni egy Feature jelzőt, amely akkor jelenik meg, amikor az oldal tetején található hivatkozásra kattint az előzetes verzióra való regisztráláskor. 
 
 ### <a name="6---create-the-index"></a>6 – az index létrehozása
 

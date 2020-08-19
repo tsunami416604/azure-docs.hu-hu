@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a itslearning-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és itslearning között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 60587ba3-1396-4b8a-9ac1-e22a98e5e0ac
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: df057ec236b32b1a7e7c0e2b089a6df88433e7ba
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3d0cc72cbaad802ee1e5baad60d632d9d3385ce1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799173"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Oktatóanyag: Azure Active Directory integráció a itslearning
 
@@ -32,7 +28,7 @@ A itslearning és az Azure AD integrálásával a következő előnyöket nyújt
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához hajtsa
     https://us1.itslearning.com/index.aspx
     ```
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`urn:mace:saml2v2.no:services:com.itslearning`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `urn:mace:saml2v2.no:services:com.itslearning`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -154,7 +150,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

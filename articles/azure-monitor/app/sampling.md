@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460355"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549565"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -34,10 +34,10 @@ A következő táblázat összefoglalja az egyes SDK-típusokhoz és az alkalmaz
 |-|-|-|-|
 | ASP.NET | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-applications) | Csak akkor, ha nincs más mintavételezés |
 | ASP.NET-mag | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
-| Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | Nem | Csak akkor, ha nincs más mintavételezés |
-| Java | Nem | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
-| Node.JS | Nem | [Igen](./nodejs.md#sampling) | Csak akkor, ha nincs más mintavételezés
-| Python | Nem | [Igen](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Csak akkor, ha nincs más mintavételezés |
+| Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | No | Csak akkor, ha nincs más mintavételezés |
+| Java | No | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
+| Node.JS | No | [Igen](./nodejs.md#sampling) | Csak akkor, ha nincs más mintavételezés
+| Python | No | [Igen](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Csak akkor, ha nincs más mintavételezés |
 | Minden más | Nem | Nem | [Igen](#ingestion-sampling) |
 
 > [!NOTE]
@@ -187,6 +187,8 @@ A `TelemetryProcessorChainBuilder` mintavételezési viselkedés testreszabásá
 > Ha ezt a módszert használja a mintavételezés konfigurálásához, ügyeljen arra, hogy a `aiOptions.EnableAdaptiveSampling` tulajdonságot a `false` híváskor állítsa be `AddApplicationInsightsTelemetry()` .
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility
+
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
     var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -448,7 +450,7 @@ Más típusú mintavételezéshez hasonlóan az algoritmus is megőrzi a kapcsol
 
 A mintavételezéssel elvetett adatpontok nem érhetők el semmilyen Application Insights funkcióban, például a [folyamatos exportálásban](./export-telemetry.md).
 
-A betöltési mintavételezés nem működik, miközben az adaptív vagy a rögzített arányú mintavétel működik. Az adaptív mintavétel alapértelmezés szerint engedélyezve van, ha a ASP.NET SDK vagy a ASP.NET Core SDK használatban van, vagy ha a Application Insights engedélyezve van [Azure app Service](azure-web-apps.md) vagy Állapotmonitor használatával. Ha a telemetria a Application Insights szolgáltatás végpontja fogadja, akkor megvizsgálja a telemetria, és ha a mintavételezési sebesség 100%-nál kisebb (amely azt jelzi, hogy a telemetria mintavételes), akkor a rendszer figyelmen kívül hagyja a beállított betöltési mintavételezési sebességet.
+A betöltési mintavételezés nem működik, miközben az adaptív vagy a rögzített arányú mintavétel működik. Az adaptív mintavétel alapértelmezés szerint engedélyezve van, ha a ASP.NET SDK vagy a ASP.NET Core SDK használatban van, vagy ha a Application Insights engedélyezve van [Azure app Service ](azure-web-apps.md) vagy Állapotmonitor használatával. Ha a telemetria a Application Insights szolgáltatás végpontja fogadja, akkor megvizsgálja a telemetria, és ha a mintavételezési sebesség 100%-nál kisebb (amely azt jelzi, hogy a telemetria mintavételes), akkor a rendszer figyelmen kívül hagyja a beállított betöltési mintavételezési sebességet.
 
 > [!WARNING]
 > A portál csempén megjelenő érték jelzi a betöltési mintavételezéshez beállított értéket. Nem felel meg a tényleges mintavételezési aránynak, ha az SDK-mintavétel (adaptív vagy rögzített arányú mintavétel) folyamatban van.

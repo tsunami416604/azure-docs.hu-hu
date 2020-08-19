@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: df04a58a143833be8795ccbac2a94f6cf80beb19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8aaf0b25a20f24739bb556583cd020d8f11eaf2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834048"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549524"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Java használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API a Java használatával ismeri fel az emberi arcokat egy képben.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -250,7 +250,7 @@ Fordítsa le a kódot, és futtassa. A sikeres válasz a konzol ablakában könn
 }]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű Java-konzol alkalmazást, amely REST-hívásokat használ az Azure Face API egy rendszerképben lévő arcok észleléséhez és attribútumaik visszaküldéséhez. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 

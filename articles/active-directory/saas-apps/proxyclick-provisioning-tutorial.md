@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Proxyclick konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Proxyclick.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a7723e07bd348e31b564707da9e78e96593d3c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063356"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553363"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Proxyclick konfigurálása
 
@@ -136,7 +132,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Proxyclick**lehetőséget.
 

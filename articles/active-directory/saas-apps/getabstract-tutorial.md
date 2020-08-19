@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Getabstract-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Getabstract között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a7de0dfadd7af4f5baca30a037651b4201278cba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902167"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Oktatóanyag: Azure Active Directory integráció a Getabstract
 
@@ -113,15 +109,15 @@ Az Azure AD egyszeri bejelentkezés Getabstract való konfigurálásához hajtsa
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-    Fázis/pre_production esetén:`https://int.getabstract.com`
+    Fázis/pre_production esetén: `https://int.getabstract.com`
 
-    Éles környezetben:`https://www.getabstract.com`
+    Éles környezetben: `https://www.getabstract.com`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
     
-    Fázis/pre_production esetén:`https://int.getabstract.com/ACS.do`
+    Fázis/pre_production esetén: `https://int.getabstract.com/ACS.do`
     
-    Éles környezetben:`https://www.getabstract.com/ACS.do`
+    Éles környezetben: `https://www.getabstract.com/ACS.do`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -129,9 +125,9 @@ Az Azure AD egyszeri bejelentkezés Getabstract való konfigurálásához hajtsa
     
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    Fázis/pre_production esetén:`https://int.getabstract.com/portal/<org_username>`
+    Fázis/pre_production esetén: `https://int.getabstract.com/portal/<org_username>`
     
-    Éles környezetben:`https://www.getabstract.com/portal/<org_username>`
+    Éles környezetben: `https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
     > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Getabstract](https://www.getabstract.com/en/contact) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -177,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

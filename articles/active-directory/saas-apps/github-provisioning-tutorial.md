@@ -2,25 +2,20 @@
 title: 'Oktatóanyag: felhasználói kiépítés a GitHubhoz – Azure AD'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a GitHubba.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057651"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550670"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -61,7 +56,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Automatikus felhasználói fiók üzembe helyezésének beállítása a GitHubhoz az Azure AD-ben
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**  szakaszt.
 
 2. Ha már konfigurálta a GitHubot az egyszeri bejelentkezéshez, keressen rá a GitHub-példányra a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **githubot** az alkalmazás-katalógusban. Válassza a GitHub elemet a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
@@ -83,7 +78,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 8. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az értesítő e-mail-értesítéseket az **értesítési e-mail** mezőben, és jelölje be az "e-mail-értesítés küldése hiba esetén" jelölőnégyzetet.
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a githubra**lehetőséget.
 
@@ -91,7 +86,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 12. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a GitHubhoz, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
-13. Kattintson a **Save** (Mentés) gombra.
+13. Kattintson a **Mentés** gombra.
 
 Ez a művelet elindítja a felhasználók és csoportok szakaszban a GitHubhoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz használatával figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet leírják.
 

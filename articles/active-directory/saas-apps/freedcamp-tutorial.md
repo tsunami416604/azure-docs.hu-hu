@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Freedcamp-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Freedcamp között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: bfc73563-017d-458f-b634-162f93e03b74
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101909"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551030"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Oktatóanyag: a Freedcamp és a Azure Active Directory integrálása
 
@@ -80,16 +75,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
+    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
 
-    2. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
+    2. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.freedcamp.com/login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A felhasználók a saját Ügyfélkörük alapján is megadhatják az URL-értékeket, és előfordulhat, hogy nem feltétlenül a `freedcamp.com`minta, hanem az alkalmazás példányára jellemző bármely ügyfél-tartományra érvényes értéket adhatnak meg. Emellett az URL-mintákkal kapcsolatos további információkért forduljon a Freedcamp ügyfélszolgálati [csapatához](mailto:devops@freedcamp.com) .
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A felhasználók a saját Ügyfélkörük alapján is megadhatják az URL-értékeket, és előfordulhat, hogy nem feltétlenül a minta, hanem az `freedcamp.com` alkalmazás példányára jellemző bármely ügyfél-tartományra érvényes értéket adhatnak meg. Emellett az URL-mintákkal kapcsolatos további információkért forduljon a Freedcamp ügyfélszolgálati [csapatához](mailto:devops@freedcamp.com) .
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -137,9 +132,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -177,7 +172,7 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a Freedcamp-be, h
 
     a. Kattintson a **felhasználók hozzáadása vagy meghívása**elemre.
 
-    b. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló `Brittasimon@contoso.com`e-mail-címet.
+    b. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail-címet `Brittasimon@contoso.com` .
 
     c. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 

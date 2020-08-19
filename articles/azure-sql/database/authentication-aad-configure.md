@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499177"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551840"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -71,7 +71,9 @@ Ha Geo-replikációval Azure Active Directory használ, a Azure Active Directory
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Az Azure AD-rendszergazda kiépítése (felügyelt SQL-példány)
 
 > [!IMPORTANT]
-> Csak akkor hajtsa végre ezeket a lépéseket, ha egy felügyelt Azure SQL-példányt épít ki. Ezt a műveletet csak a globális/vállalati rendszergazda vagy az Azure AD Kiemelt szerepkörű rendszergazdája hajthatja végre. A következő lépések azt mutatják be, hogyan adhatók meg engedélyek a különböző jogosultságokkal rendelkező felhasználók számára a címtárban.
+> Csak akkor hajtsa végre ezeket a lépéseket, ha egy felügyelt Azure SQL-példányt épít ki. Ezt a műveletet csak a globális/vállalati rendszergazda vagy az Azure AD Kiemelt szerepkörű rendszergazdája hajthatja végre.
+>
+> A **nyilvános előzetes**verzióban a címtár- **olvasók** szerepkört hozzárendelheti egy CSOPORThoz az Azure ad-ben. A csoport tulajdonosai ezután hozzáadhatják a felügyelt példány identitását a csoport tagjaként, ami lehetővé teszi az Azure AD-rendszergazdák kiépítését az SQL felügyelt példányához. A szolgáltatással kapcsolatos további információkért lásd: az [Azure SQL Azure Active Directory Directory-olvasók szerepköre](authentication-aad-directory-readers-role.md).
 
 Az SQL felügyelt példányának engedélyekkel kell rendelkeznie az Azure AD olvasásához, hogy sikeresen olyan feladatokat lehessen végrehajtani, mint például a felhasználók hitelesítése a biztonsági csoporttagság vagy az új felhasználók létrehozása révén. Ahhoz, hogy működjön, meg kell adnia a felügyelt SQL-példány engedélyét az Azure AD olvasásához. Ezt a Azure Portal vagy a PowerShell használatával teheti meg.
 
@@ -188,7 +190,7 @@ Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure Pow
 
 Az SQL felügyelt példányához az Azure AD-rendszergazda üzembe helyezéséhez és kezeléséhez használt parancsmagok az alábbi táblázatban láthatók:
 
-| Parancsmag neve | Leírás |
+| Parancsmag neve | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Kiépít egy Azure AD-rendszergazdát a jelenlegi előfizetésben található SQL felügyelt példányhoz. (Az aktuális előfizetésből kell származnia)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Eltávolít egy Azure AD-rendszergazdát az SQL által felügyelt példányhoz az aktuális előfizetésben. |
@@ -277,7 +279,7 @@ A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és 
 
 Az Azure AD-rendszergazdák üzembe helyezéséhez és kezeléséhez használt parancsmagok a SQL Database és az Azure szinapszis számára:
 
-| Parancsmag neve | Leírás |
+| Parancsmag neve | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Kiépít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t üzemeltető kiszolgáló számára. (Az aktuális előfizetésből kell származnia) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Eltávolít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t futtató kiszolgáló számára.|
@@ -519,7 +521,7 @@ További információ: [SQL Server biztonsági blog](https://blogs.msdn.microsof
 A következő utasítások az Sqlcmd 13,1-es verziójának használatával csatlakoznak, amely a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=53591)érhető el.
 
 > [!NOTE]
-> `sqlcmd`a `-G` paranccsal nem működik a rendszeridentitások használata, és a felhasználónak egyszerű felhasználónevet kell bejelentkeznie.
+> `sqlcmd` a `-G` paranccsal nem működik a rendszeridentitások használata, és a felhasználónak egyszerű felhasználónevet kell bejelentkeznie.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
@@ -528,7 +530,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="troubleshoot-azure-ad-authentication"></a>Az Azure AD-hitelesítés hibáinak megoldása
 
-Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítással kapcsolatban az alábbi blogban talál útmutatást:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítással kapcsolatban az alábbi blogban talál útmutatást: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>További lépések
 

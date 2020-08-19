@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a megbízottat konfigurálása a felhasználók automatikus üzembe helyezéséhez Azure Active Directory | Microsoft Docs'
 description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a megbízottat.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: a36e17ccee92e29a037d9e8023baa21e4355cbdf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d04e872d42c6134dc82f2ffd02d79fe8e2af5caa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926382"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551602"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Oktatóanyag: a megbízottat konfigurálása automatikus felhasználó-kiépítési folyamathoz
 
@@ -110,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a megbízottat**lehetőséget.
 

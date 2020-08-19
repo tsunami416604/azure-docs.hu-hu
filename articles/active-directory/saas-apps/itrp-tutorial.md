@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ITRP-szel | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ITRP között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261193"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Azure Active Directory integráció a ITRP
 
@@ -33,7 +29,7 @@ Ez az integráció az alábbi előnyöket biztosítja:
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +52,7 @@ A ITRP Azure AD-be való integrálásának beállításához hozzá kell adnia a
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás**:
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -159,7 +155,7 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
     1. A **Tanúsítvány ujjlenyomata** mezőben illessze be a tanúsítvány **ujjlenyomatának** értékét, amelyet a Azure Portal másolt.
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -179,7 +175,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<yourcompanydomain>\< . bővítmény>**. (Például: BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
 
     1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
@@ -227,7 +223,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     ![Személyek kiválasztása](./media/itrp-tutorial/ic775587.png "Személyek kiválasztása")
 
-1. Új személy hozzáadásához válassza**+** a pluszjelet ():
+1. Új személy hozzáadásához válassza a pluszjelet ( **+** ):
 
     ![Plusz jel kiválasztása](./media/itrp-tutorial/ic775576.png "Plusz jel kiválasztása")
 
@@ -237,7 +233,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     1. Adja meg a hozzáadni kívánt érvényes Azure AD-fiók nevét és e-mail-címét.
 
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez a ITRP által biztosított felhasználói fiók-létrehozási eszközt vagy API-t használhatja.
@@ -248,7 +244,7 @@ Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési pa
 
 Amikor kiválasztja a ITRP csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a ITRP-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224441"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553107"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -147,7 +148,7 @@ Csak NTFS-kötetek támogatottak; A ReFS, a FAT, a FAT32 és más fájlrendszere
 
 Az alábbi táblázat az NTFS fájlrendszer szolgáltatásainak együttműködési állapotát mutatja be: 
 
-| Szolgáltatás | Támogatás állapota | Jegyzetek |
+| Funkció | Támogatás állapota | Jegyzetek |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési lista (ACL-ek) | Teljes mértékben támogatott | A Windows-stílusú tulajdonosi hozzáférés-vezérlési listát a Azure File Sync őrzi meg, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. Az ACL-ek az Azure-fájlmegosztás közvetlen csatlakoztatása esetén is kikényszeríthető, azonban ez további konfigurálást igényel. További információért tekintse meg az [Identity szakaszt](#identity) . |
 | Rögzített hivatkozások | Kimarad | |
@@ -314,7 +315,7 @@ Azure File Sync a következő régiókban érhető el:
 | Nyilvános | Európa | Nyugat-Európa | `westeurope` |
 | Nyilvános | Franciaország | Közép-Franciaország | `francecentral` |
 | Nyilvános | Franciaország | Dél-Franciaország * | `francesouth` |
-| Nyilvános | India | Central India | `centralindia` |
+| Nyilvános | India | Közép-India | `centralindia` |
 | Nyilvános | India | Dél-India | `southindia` |
 | Nyilvános | Japán | Kelet-Japán | `japaneast` |
 | Nyilvános | Japán | Nyugat-Japán | `japanwest` |

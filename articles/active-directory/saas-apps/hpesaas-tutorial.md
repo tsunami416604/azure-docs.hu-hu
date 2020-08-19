@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a HPE SaaS-vel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a HPE SaaS között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 314003d6-ca66-4456-88c3-934254d4a9a2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14b7e269fffaf1be4fff0b2f112a5844fd73cdbf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc208e515ccf14e04460608aacbd3a69a9776185
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034346"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>Oktatóanyag: Azure Active Directory integráció a HPE SaaS-vel
 
@@ -106,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés az HPE SaaS-vel való konfigurálásához ha
 
     ![HPE SaaS-tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt:`https://login.saas.hpe.com/msg`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt: `https://login.saas.hpe.com/msg`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.saas.hpe.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.saas.hpe.com`
 
     > [!NOTE]
     > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval. Az érték beszerzéséhez lépjen kapcsolatba a [HPE SaaS-ügyfél támogatási csapatával](https://www.sas.com/en_us/contact.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -154,7 +149,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

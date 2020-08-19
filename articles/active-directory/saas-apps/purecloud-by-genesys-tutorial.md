@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PureCloud-mel a Genesys használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést az Azure Active Directory és a PureCloud között a Genesys használatával.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e16a46db-5de2-4681-b7e0-94c670e3e54e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0433b7287fc00da09fcf303fbcb8d74bf4e3b196
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800111"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553282"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PureCloud-mel a Genesys használatával
 
@@ -144,9 +139,9 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a felhasználónevet a következő formátumban: username@companydomain.extension . Példa: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőben adja meg a felhasználónevet a következő formátumban: username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
-   1. Válassza a **Létrehozás** lehetőséget.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -188,7 +183,7 @@ Ebben a szakaszban a B. Simon-t fogja beállítani az Azure egyszeri bejelentkez
 
     ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure06.png)
 
-    e. Kattintson a **Mentés** gombra.
+    e. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-purecloud-by-genesys-test-user"></a>PureCloud létrehozása a Genesys test User használatával
 
@@ -214,7 +209,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Pu
 
     b. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét. Például: **b. simon \@ contoso.com**.
 
-    c. Válassza a **Létrehozás** lehetőséget.
+    c. Kattintson a **Létrehozás** gombra.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -224,7 +219,7 @@ Ha a hozzáférési panelen kiválasztja a **PureCloud by Genesys** csempét, ak
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure AD-vel?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

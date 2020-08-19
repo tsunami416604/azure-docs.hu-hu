@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az igény szerinti Proofpoint | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Proofpoint között igény szerint.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 773e7f7d-ec31-411b-860d-6a6633335d43
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: db496ac504a48398ef7ab656cc5a6a890f882bab
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c3cebb7a63dd26f4dfb1fa46cb3b31a8b149da1d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905482"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Oktatóanyag: Azure Active Directory integráció az igény szerinti Proofpoint
 
@@ -109,11 +104,11 @@ Az Azure AD egyszeri bejelentkezés igény szerinti Proofpoint való konfigurál
 
     ![Proofpoint igény szerinti tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<hostname>.pphosted.com/ppssamlsp_hostname`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<hostname>.pphosted.com/ppssamlsp_hostname`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<hostname>.pphosted.com/ppssamlsp`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<hostname>.pphosted.com/ppssamlsp`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot [a Proofpoint on demand ügyfél-támogatási csapatával](https://www.proofpoint.com/us/support-services) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -159,7 +154,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

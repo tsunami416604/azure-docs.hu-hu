@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a MyWorkDrive-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és MyWorkDrive között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa0fe40ec28aea7f82ee0e635b3c42140a472816
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478871"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552441"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Oktatóanyag: a MyWorkDrive és a Azure Active Directory integrálása
 
@@ -79,11 +75,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** lapon adja meg a következő mező értékét:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SERVER.DOMAIN.COM>/Account/Login-saml`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Adja meg saját vállalata MyWorkDrive-kiszolgálójának állomásnevét: például
@@ -120,7 +116,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. Az **Azure app Federation metadata URL** szövegmezőben illessze be az **alkalmazás összevonási metaadat URL-címének** értékét, amelyet a Azure Portal másolt.
 
-    d. Kattintson a **Mentés** gombra
+    d. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > További információkért tekintse át a [MyWorkDrive Azure ad-támogatását ismertető cikket](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
@@ -133,9 +129,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

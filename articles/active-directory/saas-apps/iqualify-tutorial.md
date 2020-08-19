@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a iQualify LMS szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a iQualify LMS között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8a3caaff-dd8d-4afd-badf-a0fd60db3d2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a1db4784eb63df14b7e7971d0273512ba657df96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bf74994a07d69bbe53ec9a7e18f08b4232298bd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944991"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Azure Active Directory Integration with iQualify LMS
 
@@ -32,7 +28,7 @@ A iQualify LMS és az Azure AD integrálásával a következő előnyöket nyúj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,14 +105,14 @@ Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásáho
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     | |
     |--|--|
-    | Éles környezet:`https://<yourorg>.iqualify.com/`|
-    | Tesztkörnyezet:`https://<yourorg>.iqualify.io`|
+    | Éles környezet: `https://<yourorg>.iqualify.com/`|
+    | Tesztkörnyezet: `https://<yourorg>.iqualify.io`|
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     | |
     |--|--|
-    | Éles környezet:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Tesztkörnyezet:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | Éles környezet: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Tesztkörnyezet: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -125,8 +121,8 @@ Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásáho
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     | |
     |--|--|
-    | Éles környezet:`https://<yourorg>.iqualify.com/login` |
-    | Tesztkörnyezet:`https://<yourorg>.iqualify.io/login` |
+    | Éles környezet: `https://<yourorg>.iqualify.com/login` |
+    | Tesztkörnyezet: `https://<yourorg>.iqualify.io/login` |
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [IQUALIFY LMS ügyfél-támogatási csapatához](https://www.iqualify.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -137,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásáho
 
 7. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | --- | --- |
     | e-mail | User. userPrincipalName |
     | first_name | User. givenName |
@@ -160,7 +156,7 @@ Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásáho
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
     > [!Note]
     > A **person_id** attribútum nem **kötelező**
@@ -229,12 +225,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a InstaVR Viewerrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és InstaVR megjelenítője között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de94f83c260a86f313a2dd04cdd5a7ae8fc1cda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73155310"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Oktatóanyag: Azure Active Directory integráció a InstaVR Viewerrel
 
@@ -33,7 +28,7 @@ A InstaVR Viewer az Azure AD-vel való integrálása a következő előnyöket b
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,12 +102,12 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
 
     ![InstaVR-megjelenítő tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
 
     > [!NOTE]
     > Nincs rögzített minta a bejelentkezés URL-címéhez. Akkor jön létre, amikor a InstaVR-megjelenítő ügyfél webes csomagolást végez. Minden ügyfél és csomag esetében egyedi. A pontos bejelentkezési URL-cím beszerzéséhez be kell jelentkeznie a InstaVR Viewer-példányba, és el kell végeznie a webes csomagolást.
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
 
     > [!NOTE]
     > Az azonosító értéke nem valódi. Frissítse ezt az értéket az oktatóanyag későbbi részében ismertetett tényleges azonosító értékkel.
@@ -173,12 +168,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -218,7 +213,7 @@ Ebben a szakaszban a Britta Simon nevű felhasználó jön létre a InstaVR View
 
     ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
-3. Válassza a **Download** (Letöltés) lehetőséget.
+3. Válassza a **Letöltés** lehetőséget.
 
     ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 

@@ -2,24 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a helyszíni SharePoint-integrációval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a helyszíni SharePoint között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: miguego
-ms.openlocfilehash: c623ed8cfcdb61081c74a0f7326106c42781cefa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648487"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552173"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a helyi SharePoint-környezettel
 
@@ -105,7 +102,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
     1. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointSiteURL>/_trust/` .
 
     1. A **bejelentkezési URL** -cím mezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointSiteURL>/` .
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel.
@@ -159,7 +156,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
     1. Válassza a **megbízható identitás-szolgáltató**lehetőséget, majd válassza ki az imént regisztrált szolgáltatót a *AzureAD*.
 
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
     ![A hitelesítési szolgáltató konfigurálása](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
@@ -193,7 +190,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Azure
 
 1. Adja meg a **csoport típusát**, a **csoport nevét**, a **csoport leírását**és a **tagság típusa** mezőket. Kattintson a nyilakra a tagok kiválasztásához, majd keresse meg vagy válassza ki a csoportba felvenni kívánt tagokat. A kijelölt tagok hozzáadásához válassza a **kijelölés** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
-![Azure AD biztonsági csoport létrehozása](./media/sharepoint-on-premises-tutorial/new-group.png)
+![Azure AD-biztonsági csoport létrehozása](./media/sharepoint-on-premises-tutorial/new-group.png)
 
 ### <a name="grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises"></a>Engedélyek megadása egy Azure AD-fiók számára a helyszíni SharePointban
 

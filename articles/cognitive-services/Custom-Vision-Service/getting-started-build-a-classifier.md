@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 954ea8d544baa2538e1b92a9f03b7a48169e7360
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834439"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551352"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Gyors útmutató: osztályozó készítése Custom Vision
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy osztályozó a Custom Vision webhelyén. Az osztályozó modell létrehozása után használhatja a Custom Vision szolgáltatást a rendszerkép besorolásához.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -113,7 +113,7 @@ Az osztályozó betanításakor minden alkalommal létre kell hoznia egy új _it
 
 A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre és taníthat képbesorolási modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

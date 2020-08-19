@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az autotask munkahellyel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az autotask munkahely között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a9a7ff71-c389-4169-aafd-d7a505244797
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a68fd74449ea34438348cbc4c9d09c06d46d71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c7e5699930b633d900b2b31b0fe29fbd8505944
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157808"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Oktatóanyag: Azure Active Directory integráció az autotask munkahellyel
 
@@ -33,7 +28,7 @@ Az autotask munkahely az Azure AD-vel való integrálásával a következő elő
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,15 +105,15 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
 
     ![Az autotask munkahely-tartomány és az URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Az autotask munkahely-tartomány és az URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.awp.autotask.net/loginsso`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<subdomain>.awp.autotask.net/loginsso`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon az [autotask munkahelyi](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) ügyfélszolgálati csoporthoz. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -144,7 +139,7 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
     > [!Note]
     > A identitásszolgáltató konfigurálásakor meg kell adni egy altartományt. A megfelelő altartomány megerősítéséhez jelentkezzen be a munkahelyi online webhelyre. Ha bejelentkezett, jegyezze fel az altartományt az URL-címben. Az altartomány a "https://" és a ". awp.autotask.net/" közé tartozik, és a következőnek kell lennie: USA, EU, CA vagy au.
 
-2. Lépjen a **konfiguráció** > **egyszeri bejelentkezéshez** , és hajtsa végre a következő lépéseket:
+2. Lépjen a **konfiguráció**  >  **egyszeri bejelentkezéshez** , és hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezési konfiguráció automatikus feladatainak konfigurálása](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
 
@@ -179,12 +174,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

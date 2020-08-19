@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az ismeretekkel bárhol az LMS szolgáltatással | Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és az ismeretek között bárhol az LMS-ben.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5cfa07b1-a792-4f0a-8c6f-1a13142193d9
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f44324bbdd5af6675dfb4f5664cbbde2627edfec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098562"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549940"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Oktatóanyag: az ismeretek integrálása bárhová az LMS Azure Active Directory
 
@@ -80,16 +75,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/`
+    1. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CLIENTNAME>.knowledgeanywhere.com/`
 
-    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
+    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel, amelyet az oktatóanyag későbbi részében ismertet.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CLIENTNAME>.knowledgeanywhere.com/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<CLIENTNAME>.knowledgeanywhere.com/`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ha ezt az értéket szeretné megkapni, lépjen kapcsolatba az ügyfélszolgálattal [bárhol az LMS ügyfél-támogatási csapattal](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -130,7 +125,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
-    a. Adja meg a IDENTITÁSSZOLGÁLTATÓ nevét a szervezete számára. Pl.: – `Azure`.
+    a. Adja meg a IDENTITÁSSZOLGÁLTATÓ nevét a szervezete számára. Pl.: – `Azure` .
 
     b. Az **identitásszolgáltató entitás-azonosító** szövegmezőben illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt.
 
@@ -142,11 +137,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Válassza ki a **fő helyet** a **tartomány**legördülő menüjéből.
 
-    g. Másolja az **SP-entitás azonosítójának** értékét, és illessze be **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+    : Másolja az **SP-entitás azonosítójának** értékét, és illessze be **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
     h. Másolja az **SP Response (ACS) URL** értékét, és illessze be a **Válasz URL** -szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    i. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -156,9 +151,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

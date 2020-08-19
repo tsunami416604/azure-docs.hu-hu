@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a HubSpot-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és HubSpot között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944449"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Oktatóanyag: Azure Active Directory integráció a HubSpot
 
@@ -61,7 +56,7 @@ A HubSpot és az Azure AD integrálásához hozzá kell adnia a HubSpot a felüg
 
     ![Az Azure Active Directory lehetőség](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -79,7 +74,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést az HubSpot-mel konfigur�
 
 Az Azure AD egyszeri bejelentkezés HubSpot való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-| Tevékenység | Leírás |
+| Feladat | Leírás |
 | --- | --- |
 | **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók számára a funkció használatát. |
 | **[HubSpot egyszeri bejelentkezés konfigurálása](#configure-hubspot-single-sign-on)** | Az egyszeri bejelentkezési beállításokat konfigurálja az alkalmazásban. |
@@ -106,9 +101,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
 1. Az **alapszintű SAML-konfiguráció** panelen, a *identitásszolgáltató-kezdeményezésű mód*konfigurálásához hajtsa végre a következő lépéseket:
 
-    1. Az **azonosító** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik\/: https:\</API.HubSpot.com/login-API/v1/SAML/login?portalId\>= Customer id.
+    1. Az **azonosító** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik: https: \/ /API.HubSpot.com/login-API/v1/SAML/login?portalId = \<CUSTOMER ID\> .
 
-    1. A **Válasz URL-címe** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik:\<https:\>\//API.HubSpot.com/login-API/v1/SAML/ACS?portalId = Customer id.
+    1. A **Válasz URL-címe** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik: https: \/ /API.HubSpot.com/login-API/v1/SAML/ACS?portalId = \<CUSTOMER ID\> .
 
     ![HubSpot tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -119,7 +114,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
     1. Válassza a **további URL-címek beállítása**lehetőséget.
 
-    1. A **bejelentkezési URL-cím** mezőbe írja be a **https\/:/app.HubSpot.com/login**értéket.
+    1. A **bejelentkezési URL-cím** mezőbe írja be a **https: \/ /app.HubSpot.com/login**értéket.
 
     ![A további URL-címek beállítása lehetőség](common/metadata-upload-additional-signon.png)
 
@@ -171,7 +166,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
     ![A felhasználók és az összes felhasználó lehetőség](common/users.png)
 
@@ -183,7 +178,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **a brittasimon\@\<-vállalat-tartomány>.\< bővítmény\>**. Például **brittasimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension\> **. Például **brittasimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
@@ -195,7 +190,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 Ebben a szakaszban Simon Britta-hozzáférést biztosít a HubSpot, így az Azure egyszeri bejelentkezést is használhatja.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás** > **HubSpot**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **HubSpot**lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -207,7 +202,7 @@ Ebben a szakaszban Simon Britta-hozzáférést biztosít a HubSpot, így az Azur
 
     ![A felhasználók és csoportok beállítás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
@@ -237,7 +232,7 @@ Felhasználói fiók kiépítése a HubSpot-ben:
 
     ![A felhasználó létrehozása lehetőség a HubSpot](./media/hubspot-tutorial/user2.png)
 
-1. Az **e-mail addess (ek) hozzáadása** mezőben adja meg a felhasználó e-mail-címét a következő formátumban:\@brittasimon contoso.com, majd kattintson a **tovább**gombra.
+1. Az **e-mail addess (ek) hozzáadása** mezőben adja meg a felhasználó e-mail-címét a következő formátumban: brittasimon \@ contoso.com, majd kattintson a **tovább**gombra.
 
     ![Az e-mail cím (ek) hozzáadása a HubSpot felhasználók létrehozása szakaszában](./media/hubspot-tutorial/user3.png)
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a (z) és a (z) | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a legördülő között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd2c02f25584fd32acd32277a1dd2300c6a98e73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157864"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Azure Active Directory integráció
 
@@ -33,7 +28,7 @@ A (z) és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +103,9 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
     ![A legördülő tartományok és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://app.asana.com/`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://app.asana.com/`
 
-    b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be az URL-címet:`https://app.asana.com/`
+    b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be az URL-címet: `https://app.asana.com/`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -128,7 +123,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
 ### <a name="configure-asana-single-sign-on"></a>Az egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a-ba. Az egyszeri bejelentkezés a következőben való konfigurálásához a képernyő jobb felső sarkában lévő munkaterület nevére kattintva nyissa meg a munkaterület beállításait. Ezután kattintson a ** \<munkaterület neve\> beállítások**elemre.
+1. Egy másik böngészőablakban jelentkezzen be a-ba. Az egyszeri bejelentkezés a következőben való konfigurálásához a képernyő jobb felső sarkában lévő munkaterület nevére kattintva nyissa meg a munkaterület beállításait. Ezután kattintson a ** \<your workspace name\> Beállítások**elemre.
 
     ![Az egyszeri bejelentkezés beállításai](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -140,7 +135,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
     b. Kattintson a jobb gombbal a Azure Portal letöltött tanúsítványra, majd nyissa meg a fájlt a Jegyzettömb vagy a kívánt szövegszerkesztő használatával. Másolja a tartalmat a BEGIN és a end Certificate cím között, és illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
-3. Kattintson a **Save** (Mentés) gombra. Ha további segítségre van szüksége, nyissa meg a [következőt: az egyszeri bejelentkezés beállítása](https://asana.com/guide/help/premium/authentication#gl-saml) .
+3. Kattintson a **Mentés** gombra. Ha további segítségre van szüksége, nyissa meg a [következőt: az egyszeri bejelentkezés beállítása](https://asana.com/guide/help/premium/authentication#gl-saml) .
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -160,12 +155,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -205,7 +200,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó létrehozását látja e
 
     ![Azure AD-tesztkörnyezet létrehozása](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Írja be a felhasználó e-mail-címét, például **Britta. simon\@contoso.com** a szövegmezőbe, majd válassza a **meghívás**lehetőséget.
+2. Írja be a felhasználó e-mail-címét, például **Britta. simon \@ contoso.com** a szövegmezőbe, majd válassza a **meghívás**lehetőséget.
 
 3. Kattintson a **Meghívás küldése**gombra. Az új felhasználó e-mailt fog kapni az e-mail-fiókjába. a felhasználónak létre kell hoznia és ellenőriznie kell a fiókot.
 

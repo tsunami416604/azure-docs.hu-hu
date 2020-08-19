@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) a tároláshoz, az
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562838"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551795"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -88,13 +88,13 @@ További információ a tárolási osztályok beállításairól: [tárolási vi
 
 ## <a name="secure-and-back-up-your-data"></a>Az adatai biztonságossá tétele és biztonsági mentése
 
-**Ajánlott eljárások – útmutató** – az adatairól biztonsági másolatot készíthet a tárolási típusának megfelelő eszköz használatával, például Velero vagy Azure site Recovery. Ellenőrizze a biztonsági másolatok integritását és biztonságát.
+**Ajánlott eljárások – útmutató** – az adatairól biztonsági másolatot készíthet a tárolási típusának megfelelő eszköz használatával, például Velero vagy Azure Backup. Ellenőrizze a biztonsági másolatok integritását és biztonságát.
 
 Ha az alkalmazások lemezeken vagy fájlokban tárolt adatokat tárolnak és használnak fel, akkor rendszeres biztonsági mentést vagy pillanatképeket kell készítenie az adatairól. Az Azure-lemezek beépített pillanatkép-technológiákat használhatnak. Előfordulhat, hogy a pillanatkép-művelet végrehajtása előtt meg kell keresnie az alkalmazásokat a lemezre írások kiürítéséhez. A [Velero][velero] képes biztonsági másolatot készíteni az állandó kötetekről, valamint további fürterőforrás-és konfigurációkkal. Ha nem tudja [eltávolítani az állapotot az alkalmazásokból][remove-state], biztonsági másolatot készíthet az állandó kötetek adatairól, és rendszeresen teszteli a visszaállítási műveleteket az adatok integritásának és a szükséges folyamatoknak az ellenőrzéséhez.
 
 Ismerje meg az adatok biztonsági mentésének különböző módszereinek korlátozásait, és ha a pillanatkép előtt fokozatos leválasztása kell az adatait. Az adatbiztonsági másolatok nem feltétlenül lehetővé teszik a fürt üzembe helyezésének alkalmazási környezetének visszaállítását. További információ ezekről a forgatókönyvekről: [ajánlott eljárások az üzleti folytonosság és a vész-helyreállítás az AK-ban][best-practices-multi-region].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a tárolási ajánlott eljárásokat ismerteti az AK-ban. További információ a Kubernetes tárolásával kapcsolatos alapismeretekről: [az AK-beli alkalmazások tárolási fogalmai][aks-concepts-storage].
 

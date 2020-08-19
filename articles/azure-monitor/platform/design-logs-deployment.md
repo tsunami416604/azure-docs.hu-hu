@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185179"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551322"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -127,11 +127,11 @@ A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource M
 
 ## <a name="ingestion-volume-rate-limit"></a>Betöltési mennyiség maximális száma
 
-A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát arra törekszik, hogy Azure Monitor ügyfelet a hirtelen betöltési tüskékkel bérlős-környezetben. Az alapértelmezett betöltési mennyiség 500 MB (tömörített) a munkaterületekre vonatkozik, ami körülbelül **6 GB/perc** tömöríthető – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. Ez a küszöbérték az Azure-erőforrásokból a [diagnosztikai beállítások](diagnostic-settings.md), [az adatgyűjtő API vagy az](data-collector-api.md) ügynökök használatával elküldhető összes betöltött adatot érinti.
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát a bérlős-környezetben a hirtelen betöltési tüskékkel Azure Monitor ügyfelek elkülönítését tervezi. Az alapértelmezett betöltési mennyiség 500 MB (tömörített), a munkaterületeken van definiálva, ez körülbelül **6 GB/perc** tömörítve van – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. A mennyiségi díjszabási korlát minden betöltött adatokra vonatkozik, függetlenül attól, hogy az Azure-erőforrásoktól a [diagnosztikai beállítások](diagnostic-settings.md), [az adatgyűjtő API vagy az](data-collector-api.md) ügynökök használatával küldtek el.
 
-Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan elérheti azt, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt a munkaterületen. 
+Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
 
-Ha értesítést szeretne kapni a munkaterületen lévő eseményről, hozzon létre egy [riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékkel rendelkező, 5 perces értékelési időszak és 5 perc gyakorisága alapján.
+Ahhoz, hogy értesítést kapjon a munkaterületen a approching vagy a betöltési mennyiség arányának elérésekor, hozzon létre egy [riasztási szabályt](alerts-log.md) a következő lekérdezéssel a riasztási logika alapján a nulla értékkel rendelkező eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
 
 A betöltési mennyiség elérte a küszöbérték 80%-át:
 ```Kusto
@@ -171,7 +171,7 @@ A modellre való Migrálás megtervezése során vegye figyelembe a következők
 * Távolítsa el az alkalmazás-Teams engedélyt a munkaterület olvasásához és lekérdezéséhez.
 * Engedélyezheti és konfigurálhatja azokat a figyelési megoldásokat, például a tárolók és/vagy Azure Monitor for VMs Azure Monitorét, az Automation-fiók (ok) t, valamint az eredeti munkaterületen üzembe helyezett felügyeleti megoldásokat, például a Update Management, a virtuális gépek indítását és leállítását stb..
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](manage-access.md)című témakört.
 

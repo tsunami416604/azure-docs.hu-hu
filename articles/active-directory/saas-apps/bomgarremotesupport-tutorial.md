@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és BeyondTrust távoli támogatás között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 193b163f-bdee-4974-b16d-777c51b991df
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74082067"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással
 
@@ -83,11 +78,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<HOSTNAME>.bomgar.com/saml`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<HOSTNAME>.bomgar.com`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<HOSTNAME>.bomgar.com/saml/sso`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
@@ -98,11 +93,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a BeyondTrust távoli támogatási alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | ---------------| ----------|
     | GivenName | User. givenName |
     | EmailAddress | User. mail |
-    | Name (Név) | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Felhasználónév | User. userPrincipalName |
     | Csoportok | User. groups |
     | Egyedi felhasználói azonosító | User. userPrincipalName |
@@ -132,9 +127,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -162,9 +157,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A BeyondTrust távoli támogatásának konfigurálása](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
-1. Navigáljon a BeyondTrust távoli támogatás belépési pont `https://support.example.com/login` felületéhez, ahol a **support.example.com** a berendezés elsődleges állomásneve, és a rendszergazdai hitelesítő adataival hitelesíthető.
+1. Navigáljon a BeyondTrust távoli támogatás belépési pont felületéhez, `https://support.example.com/login` ahol a **support.example.com** a berendezés elsődleges állomásneve, és a rendszergazdai hitelesítő adataival hitelesíthető.
 
-1. Navigáljon a **felhasználók & biztonsági** > **biztonsági szolgáltatók**elemre.
+1. Navigáljon a **felhasználók & biztonsági**  >  **biztonsági szolgáltatók**elemre.
 
 1. A legördülő menüben válassza ki az **SAML** elemet, majd kattintson a **szolgáltató létrehozása** gombra.
 
@@ -186,7 +181,7 @@ A felhasználó-kiépítési beállításokat itt fogjuk konfigurálni. Az ebben
 ![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
-> Másik lehetőségként beállíthatja a egy SAML2 biztonsági szolgáltató alapértelmezett csoportházirendjét is. Ennek a beállításnak a megadásával a a csoportházirendben megadott engedélyek alapján az SAML-n keresztül hitelesítő összes felhasználót hozzárendeli. Az általános tagok házirend a BeyondTrust-alapú távoli támogatás/privilegizált távoli hozzáférés korlátozott engedélyekkel való használatának része, amely a hitelesítés tesztelésére és a felhasználók megfelelő szabályzatokhoz való hozzárendelésére használható. A felhasználók nem töltik be a egy SAML2-felhasználók listájára a belépési pont > felhasználóval & a biztonságot az első sikeres hitelesítési kísérletig. A csoportházirendekkel kapcsolatos további információk a következő hivatkozáson találhatók:`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
+> Másik lehetőségként beállíthatja a egy SAML2 biztonsági szolgáltató alapértelmezett csoportházirendjét is. Ennek a beállításnak a megadásával a a csoportházirendben megadott engedélyek alapján az SAML-n keresztül hitelesítő összes felhasználót hozzárendeli. Az általános tagok házirend a BeyondTrust-alapú távoli támogatás/privilegizált távoli hozzáférés korlátozott engedélyekkel való használatának része, amely a hitelesítés tesztelésére és a felhasználók megfelelő szabályzatokhoz való hozzárendelésére használható. A felhasználók nem töltik be a egy SAML2-felhasználók listájára a belépési pont > felhasználóval & a biztonságot az első sikeres hitelesítési kísérletig. A csoportházirendekkel kapcsolatos további információk a következő hivatkozáson találhatók: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -194,11 +189,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a BeyondTrust távoli támogatás csempére kattint, automatikusan be kell jelentkeznie a BeyondTrust távoli támogatására, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

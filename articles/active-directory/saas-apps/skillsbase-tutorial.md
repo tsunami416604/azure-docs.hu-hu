@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a képességek alapszintű integrációja | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a szaktudás alapja között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 237d90c4-8243-4f80-a305-b5ad9204159e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60f8e4408a3a7d4f05bc820f0c0a825106b47009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017108"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Oktatóanyag: Azure Active Directory a képességek alapszintű integrációja
 
@@ -109,7 +105,7 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő lépésekkel konfigurá
 
     ![Az alapszintű tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.skills-base.com/o/<customer-unique-key>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
     > A bejelentkezési URL-címet a képességek alapalkalmazásból szerezheti be. Jelentkezzen be rendszergazdaként, és lépjen a rendszergazda – > beállítások – > példány részletei – > parancsikon hivatkozására. Másolja a bejelentkezési URL-címet, és illessze be a fenti szövegmezőbe.
@@ -169,12 +165,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

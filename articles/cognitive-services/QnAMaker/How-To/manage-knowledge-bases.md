@@ -3,12 +3,12 @@ title: Tudásbázisok kezelése – QnA Maker
 description: A QnA Maker lehetővé teszi a Tudásbázis-beállítások és-tartalmak hozzáférésének biztosítását.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756801"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551778"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Tudásbázis létrehozása és beállítások kezelése
 
@@ -17,7 +17,7 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+> * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) a feladatok megkezdése előtt.
 > * A Azure Portalban létrehozott [QnA Maker erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) . Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
 
 ## <a name="create-a-knowledge-base"></a>Tudásbázis létrehozása
@@ -36,16 +36,16 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
 
    ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. A **3** `My Sample QnA KB`. lépésben adja meg a Tudásbázis nevét.
+1. A **3. lépésben**adja meg a Tudásbázis nevét `My Sample QnA KB` .
 
 1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
 
     |Beállítás|Érték|
     |--|--|
-    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
+    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Alapértelmezett válasz szövege**| `Quickstart - default answer not found.`|
     |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-csevegés**|**Professional** kiválasztása|
+    |**Csevegés**|**Professional** kiválasztása|
 
 1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
 
@@ -63,9 +63,9 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
 
 1. Válasszon ki egy adott tudásbázist a szerkesztéshez.
 
-1.  Válassza a **Beállítások**lehetőséget. A következő lista a módosítható mezőket tartalmazza.
+1.  Válassza a **Beállítások** lehetőséget. A következő lista a módosítható mezőket tartalmazza.
 
-       |Cél|Műveletek|
+       |Cél|Művelet|
        |--|--|
        |URL-cím hozzáadása|Új URL-címek hozzáadásával új GYIK-tartalmakat adhat hozzá a tudásbázishoz, ha a Tudásbázis kezelése elemre kattint **– > "+ URL-cím hozzáadása"** hivatkozást.|
        |URL-cím törlése|A Törlés ikonra kattintva törölheti a meglévő URL-címeket, a kukába is.|
