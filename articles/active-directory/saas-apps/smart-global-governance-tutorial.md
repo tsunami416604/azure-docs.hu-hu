@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure AD SSO-integráció intelligens globális irányítással'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az intelligens globális irányítás között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c31613e-f30d-47d9-af51-001345b6db10
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91200ba4561aa6b715149d91beee8ac9d0375657
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d93cd2efe49f819c8adeb53674b6d4f465312e06
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170462"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az intelligens globális irányítással
 
@@ -118,7 +114,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Válassza a **Létrehozás** lehetőséget.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
@@ -154,7 +150,7 @@ Amikor kiválasztja az intelligens globális irányítás csempét a hozzáfér�
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, references_regions
+ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495709"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525649"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
@@ -81,7 +81,7 @@ A speciális szakasz számos fontos beállítást tartalmaz az Azure-fájlmegosz
 
 A Speciális lapon elérhető egyéb beállítások (blob Soft-DELETE, Azure Data Lake Storage Gen 2 és a blob Storage NFSv3) nem vonatkoznak a Azure Filesra.
 
-#### <a name="tags"></a>Címkéket
+#### <a name="tags"></a>Címkék
 A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását és az összevont számlázás megtekintését, ha ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. Ezek opcionálisak, és a Storage-fiók létrehozása után is alkalmazhatók.
 
 #### <a name="review--create"></a>Ellenőrzés és létrehozás
@@ -229,6 +229,60 @@ Ez a parancs sikertelen lesz, ha a Storage-fiók egy virtuális hálózaton bel�
 
 > [!Note]  
 > A fájlmegosztás nevében csak kisbetű szerepelhet. A fájlmegosztás és a fájlok elnevezésével kapcsolatos részletes információkért lásd: [megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dn167011.aspx).
+
+### <a name="create-a-hot-or-cool-file-share"></a>Gyors vagy ritka elérésű fájlmegosztás létrehozása
+Az **általános célú v2-(GPv2-) tárolási fiókban** található fájlmegosztás tartalmazhat tranzakciós optimalizált, gyors vagy ritka fájlmegosztást (vagy annak egy keverékét). A tranzakciós optimalizált megosztások minden Azure-régióban elérhetők, de a gyakori és ritka elérésű fájlmegosztás csak a [régiók egy részhalmazában](storage-files-planning.md#storage-tiers)érhető el. A Azure PowerShell előzetes verziójának vagy az Azure CLI-nek a használatával gyors vagy lassú fájlmegosztást hozhat létre. 
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+A Azure Portal még nem támogatja a gyakori és ritka fájlmegosztás létrehozását, illetve a meglévő tranzakciós optimalizált fájlmegosztás gyors vagy lassú elérését. Tekintse meg a fájlmegosztás PowerShell-lel vagy az Azure CLI-vel való létrehozásának utasításait.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+```PowerShell
+# Update the Azure storage module to use the preview version. You may need to close and 
+# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
+# the following:
+# - Run the below cmdlets as an administrator.
+# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
+# Get-Module -ListAvailable -Name PowerShellGet
+Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
+Uninstall-Module -Name Az.Storage
+Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
+
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
+$shareName = "myhotshare"
+
+New-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Hot
+
+# You can also change an existing share's tier.
+Update-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Cool
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+A fájlmegosztás adott szinten való létrehozásához vagy áthelyezéséhez szükséges funkciók az Azure CLI legújabb frissítésében érhetők el. Az Azure CLI frissítése az Ön által használt operációs rendszerre/Linux-disztribúcióra vonatkozik. Az Azure CLI a rendszeren való frissítésével kapcsolatos útmutatásért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+```bash
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2
+# storage accounts. Standard tiers are only available in standard storage accounts.
+shareName="myhotshare"
+
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --name $shareName \
+    --access-tier "Hot"
+```
+---
 
 ## <a name="next-steps"></a>További lépések
 - [Tervezze meg Azure Files telepítését,](storage-files-planning.md) vagy [tervezze meg Azure file Sync központi telepítését](storage-sync-files-planning.md). 

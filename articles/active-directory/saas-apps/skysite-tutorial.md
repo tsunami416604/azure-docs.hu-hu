@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SKYSITE | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SKYSITE között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 04c6a47a-1730-4acf-bc5c-a04daccff9b3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ef7f4201e9613cc6fa4391bc28d257272fa1c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026133"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SKYSITE
 
@@ -107,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. Válassza ki a **csoport azonosítója** **forrás attribútumát** .
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -125,9 +120,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -153,17 +148,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Kattintson a lap jobb felső sarkában található **Beállítások** elemre, majd keresse meg a **fiók beállítást**.
 
-    ![Configuration](./media/skysite-tutorial/config03.png)
+    ![Konfiguráció](./media/skysite-tutorial/config03.png)
 
 5. Váltson át az **egyszeri bejelentkezés (SSO)** lapra, hajtsa végre a következő lépéseket:
 
-    ![Configuration](./media/skysite-tutorial/config04.png)
+    ![Konfiguráció](./media/skysite-tutorial/config04.png)
 
     a. Az **Identity Provider bejelentkezési URL-címe** szövegmezőbe illessze be a **felhasználói hozzáférési URL-cím**értékét, amelyet a Azure Portal **Tulajdonságok** lapján másolt.
 
     b. A **tanúsítvány feltöltése**lehetőségre kattintva töltse fel a Azure Portalból letöltött Base64-kódolású tanúsítványt.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
 ### <a name="create-skysite-test-user"></a>SKYSITE-tesztelési felhasználó létrehozása
 
@@ -175,11 +170,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a SKYSITE csempére kattint, automatikusan be kell jelentkeznie arra a SKYSITE, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -3,24 +3,19 @@ title: 'Oktatóanyag: munkanapok konfigurálása automatikus felhasználó-kiép
 description: Ismerje meg, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus kiépítéséhez és üzembe helyezéséhez a munkanapokon.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245347"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527808"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -395,9 +390,9 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -499,7 +494,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Igen** | Csak létrehozásra írva |
 | **PreferredNameData**    |  CN    |   |   Csak létrehozásra írva |
-| **SelectUniqueValue (" \@ ", JOIN (".", \[ FirstName \] , \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com")**   | userPrincipalName     |     | Csak létrehozásra írva 
+| **SelectUniqueValue (" \@ ", JOIN (".",  \[ FirstName \] , \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com")**   | userPrincipalName     |     | Csak létrehozásra írva 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Csak létrehozásra írva |
 | **Kapcsoló ( \[ aktív \] ,, "0", "true", "1", "false")** |  accountDisabled      |     | Létrehozás + frissítés |
 | **FirstName**   | givenName       |     |    Létrehozás + frissítés |
@@ -776,7 +771,7 @@ Gyakori követelmény, hogy a *DisplayName* attribútumot az ad-ben konfigurálj
 
 Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *DisplayName* összeállításához, hogy olyan attribútumokat tartalmazzon, mint például a vállalat, az üzleti egység, a város vagy az ország/régió.
 
-* A rendszer minden egyes munkanap attribútumot egy mögöttes XPATH API-kifejezéssel kérdez le, amely az **attribútumok leképezése – > speciális szakasz – > a munkanapokhoz tartozó attribútumok listájának szerkesztése**. Itt látható az alapértelmezett XPATH API-kifejezés a munkanap *PreferredFirstName*, a *PreferredLastName*, a *vállalati* és a *SupervisoryOrganization* attribútumokhoz.
+* A rendszer minden egyes munkanap attribútumot egy mögöttes XPATH API-kifejezéssel kérdez le, amely az  **attribútumok leképezése – > speciális szakasz – > a munkanapokhoz tartozó attribútumok listájának szerkesztése**. Itt látható az alapértelmezett XPATH API-kifejezés a munkanap *PreferredFirstName*, a *PreferredLastName*, a *vállalati* és a *SupervisoryOrganization* attribútumokhoz.
 
      | Munkanap attribútum | API XPATH kifejezés |
      | ----------------- | -------------------- |
@@ -806,7 +801,7 @@ Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *Displa
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Ha rendelkezik a megfelelő kifejezéssel, szerkessze az attribútum-hozzárendelések táblát, és módosítsa a *DisplayName* attribútum leképezését az alább látható módon: ![ DisplayName megfeleltetés](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Ha rendelkezik a megfelelő kifejezéssel, szerkessze az attribútum-hozzárendelések táblát, és módosítsa a *DisplayName* attribútum leképezését az alább látható módon:   ![ DisplayName megfeleltetés](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
 * A fenti példát kiterjesztve tegyük fel, hogy a *munkanapokból* származó városokat a Gyorsírás értékekre szeretné átalakítani, majd felhasználja a megjelenítendő nevek (például a *Smith, John (Chi)* vagy *DOE, Jane (NYC))* összeállítására
 
@@ -988,7 +983,7 @@ Ez a szakasz gyakran észlelt hibákat tartalmaz a munkanapokat használó felha
 
 |#|Hibaforgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
-|1.| Hiba történt a kiépítési ügynök telepítésekor: a (z *) "Microsoft Azure ad kapcsolódási ügynökhöz (AADConnectProvisioningAgent)" szolgáltatás nem indult el. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a rendszer elindításához.* | Ez a hiba általában akkor jelenik meg, ha a kiépítési ügynököt tartományvezérlőre próbálja telepíteni, és a csoportházirend megakadályozza a szolgáltatás indulását.  Azt is láthatja, hogy az ügynök egy korábbi verziója fut-e, és még nem távolította el az új telepítés megkezdése előtt.| Telepítse a kiépítési ügynököt egy nem TARTOMÁNYVEZÉRLŐi kiszolgálóra. Az új ügynök telepítése előtt győződjön meg arról, hogy az ügynök korábbi verziói el lesznek távolítva.|
+|1.| Hiba történt a kiépítési ügynök telepítésekor: a (z  *) "Microsoft Azure ad kapcsolódási ügynökhöz (AADConnectProvisioningAgent)" szolgáltatás nem indult el. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a rendszer elindításához.* | Ez a hiba általában akkor jelenik meg, ha a kiépítési ügynököt tartományvezérlőre próbálja telepíteni, és a csoportházirend megakadályozza a szolgáltatás indulását.  Azt is láthatja, hogy az ügynök egy korábbi verziója fut-e, és még nem távolította el az új telepítés megkezdése előtt.| Telepítse a kiépítési ügynököt egy nem TARTOMÁNYVEZÉRLŐi kiszolgálóra. Az új ügynök telepítése előtt győződjön meg arról, hogy az ügynök korábbi verziói el lesznek távolítva.|
 |2.| A Windows-szolgáltatás "Microsoft Azure AD-kapcsolat létesítési ügynöke" *kezdő* állapotban van, és nem a *futó* állapotra vált. | A telepítés részeként az ügynök varázsló létrehoz egy helyi fiókot (**NT Service \\ AADConnectProvisioningAgent**) a kiszolgálón, és ez a szolgáltatás indításához használt bejelentkezési fiók. Ha a Windows-kiszolgálón egy biztonsági házirend megakadályozza, hogy a helyi fiókok futtassák a szolgáltatásokat, akkor ezt a hibát fogja tapasztalni. | Nyissa meg a *szolgáltatások konzolt*. Kattintson a jobb gombbal a Windows-szolgáltatás "Microsoft Azure AD kapcsolat létesítési ügynöke" elemre, és a bejelentkezés lapon adja meg a szolgáltatás futtatásához szükséges tartományi rendszergazda fiókját. Indítsa újra a szolgáltatást. |
 |3.| Ha a létesítési ügynököt az AD-tartományhoz konfigurálja a *csatlakozás Active Directory*lépésben, a varázsló hosszú időt vesz igénybe az ad-séma betöltésére, és végül időtúllépést okoz. | Ez a hiba általában akkor jelentkezik, ha a varázsló tűzfalproblémák miatt nem tud csatlakozni az AD tartományvezérlői kiszolgálóhoz. | A Active Directory-varázsló *kapcsolódása* képernyőn, miközben megadja az ad-tartományhoz tartozó hitelesítő adatokat, a *tartományvezérlő prioritásának kiválasztása*lehetőségre van szükség. Ezzel a beállítással kiválaszthatja azt a tartományvezérlőt, amely ugyanabban a helyen található, mint az ügynök kiszolgálója, és gondoskodhat arról, hogy ne legyenek tűzfalszabályok blokkolja a kommunikációt. |
 
@@ -1041,7 +1036,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 
 3. Indítsa el a munkanap studiót.
 
-4. A parancssorban válassza ki a **munkanap > test Web Service in Tester** (tesztelési lehetőség) lehetőséget.
+4. A parancssorban válassza ki a  **munkanap > test Web Service in Tester** (tesztelési lehetőség) lehetőséget.
 
 5. Válassza a **külső**lehetőséget, majd válassza ki a 2. lépésben letöltött Human_Resources WSDL-fájlt.
 
@@ -1054,7 +1049,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 8.    Kattintson a kis **Konfigurálás** hivatkozásra a kérelem/válasz ablaktáblán a munkanap hitelesítő adatainak megadásához. Győződjön meg a **hitelesítésről**, majd adja meg a munkanap-integrációs rendszer fiókjához tartozó felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználónevet \@ bérlőként formázza, és hagyja kiválasztva a **WS-Security UsernameToken** beállítást.
    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. Válassza az **OK** lehetőséget.
+9. Kattintson az **OK** gombra.
 
 10. A **kérelem** ablaktáblában illessze be az alábbi XML-fájlt. **Employee_ID** beállítása egy valós felhasználó ALKALMAZOTTi azonosítójára a munkahelyen belüli bérlőben. Állítsa be a **WD: Version verziót** a használni kívánt WWS-verzióra. Válasszon ki egy olyan felhasználót, aki rendelkezik a kinyerni kívánt attribútummal.
 
@@ -1157,7 +1152,7 @@ Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** ka
 
 Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, elemzéseket végez, vagy 30 napon belül nem nyújt betekintést. Ezért az Azure AD kiépítési szolgáltatás 30 napon belül nem tárolja, dolgozza fel és nem őrzi meg az összes adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Skytap való egyszeri bejelentkezéssel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Skytap Azure Active Directory és az egyszeri bejelentkezés között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33a8035f16f531dbb17177d1c2f4d5cd344e5a28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d34ca8ed01144ee282f6411640894807a09ef08
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77565774"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527876"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Skytap való egyszeri bejelentkezéssel
 
@@ -85,16 +81,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be a következő mintát használó URL-címet:`http://pingone.com/<custom EntityID>`
+    a. Az **azonosító** szövegmezőbe írja be a következő mintát használó URL-címet: `http://pingone.com/<custom EntityID>`
 
-    b. A **Válasz URL-cím** szövegmezőbe írja be a következő mintát használó URL-címet:`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
+    b. A **Válasz URL-cím** szövegmezőbe írja be a következő mintát használó URL-címet: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
 1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépéseket, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    a. A **bejelentkezési URL** szövegmezőbe írja be a következő mintát használó URL-címet:`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
+    a. A **bejelentkezési URL** szövegmezőbe írja be a következő mintát használó URL-címet: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
     
-    b. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet:`https://pingone.com/1.0/<custom ID>`
+    b. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet: `https://pingone.com/1.0/<custom ID>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével, a bejelentkezési URL-címmel és a továbbítási állapottal. Vegye fel a kapcsolatot az [egyszeri bejelentkezéssel a Skytap ügyfél-támogatási csapatának](mailto:support@skytap.com) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -111,11 +107,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -123,13 +119,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezést használja a Skytap való egyszeri bejelentkezéshez való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza a **Skytap egyszeri bejelentkezés**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
     ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
 
@@ -152,7 +148,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hoz
 
 Ha a hozzáférési panelen bejelöli az Skytap csempe egyszeri bejelentkezését, akkor automatikusan be kell jelentkeznie a Skytap egyszeri Bejelentkezésbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505805"
+ms.locfileid: "88525921"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -26,13 +26,13 @@ ms.locfileid: "88505805"
 
 * **NEURÁLIS TTS: új beszéd stílusa `en-US` Aria hang**. A AriaNeural a hírek beolvasása közben is megszólalhat. A "bemondás – formális" stílus komolyabban hangzik, míg a "bemondás – alkalmi" stílus nyugodtabb és informális. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md).
 
-* **Egyéni hang: új funkció jelenik meg, amely automatikusan bejelöli az adatképzési minőséget**. Az adatok feltöltésekor az adatellenőrzési képesség megvizsgálja a hang-és a átiratok különböző aspektusait, és automatikusan kijavítja vagy szűri az adatokkal kapcsolatos problémákat, így javíthatja a betanított hangmodell minőségét. Ez magában foglalja a hang mennyiségét, a zajszintet, a beszéd kiejtési pontosságát, a beszéd igazítását a normalizált szöveggel, a hangban lévő csendet, valamint a hang-és parancsfájl-formátumot. 
+* **Egyéni hang: új funkció jelenik meg, amely automatikusan bejelöli az adatképzési minőséget**. Az adatok feltöltésekor a rendszer megvizsgálja a hang-és átirat-adatok különböző aspektusait, és automatikusan kijavítja vagy szűri a problémákat a hangmodell minőségének javítása érdekében. Ez magában foglalja a hang mennyiségét, a zajszintet, a beszéd kiejtési pontosságát, a beszéd igazítását a normalizált szöveggel, valamint a hang és a parancsfájl formátumát. 
 
 * **Hangtartalom létrehozása: új funkciók, amelyek lehetővé teszik az erősebb hanghangolást és hangkezelési képességeket**.
 
     * Kiejtés: a kiejtés finomhangolása funkció a legújabb fonéma-készletre frissül. Kiválaszthatja a megfelelő fonéma elemet a könyvtárból, és pontosíthatja a kiválasztott szavak kiejtését. 
 
-    * Letöltés: a hang "Download"/"export" funkciójának továbbfejlesztése, hogy támogassa az egyes bekezdések hangjának létrehozását. Egyszerűen szerkesztheti a különböző tartalmakat ugyanabban a fájlban/SSML, miközben több hangkimenetet is generál. A "Letöltés" fájl szerkezete is finomítva van. Most egyszerűen lekérheti az összes hangfelvételt egy mappába. 
+    * Letöltés: a hang "Download"/"export" funkciójának továbbfejlesztése a hanganyag-létrehozás támogatása érdekében. Szerkesztheti a tartalmat ugyanabban a fájlban/SSML, miközben több hangkimenetet is generál. A "Letöltés" fájl szerkezete is finomítva van. Most egyszerűen lekérheti az összes hangfelvételt egy mappába. 
 
     * Feladat állapota: a többfájlos exportálási élmény javult. Ha a múltban több fájlt exportál, ha valamelyik fájl meghiúsult, a teljes feladat sikertelen lesz. Most azonban az összes többi fájl exportálása sikeres lesz. A feladat jelentését részletesebb és strukturált információkkal gazdagítjuk. A jelentéssel a hibás fájlok és mondatok naplóit is megtekintheti. 
 
@@ -42,7 +42,7 @@ ms.locfileid: "88505805"
 
 ### <a name="general-tts-voice-quality-improvements"></a>Általános TTS hang minőségének fejlesztése
 
-* Csökkentett szó szintű kiejtési hiba% a `ru-RU` (hiba 56%-kal csökkent) és `sv-SE` (hiba 49%-kal csökkentve)
+* Csökkentett Word szintű kiejtési hiba (%) `ru-RU` (56%-kal csökkentett hibák) és `sv-SE` (a hibák 49%-kal csökkennek)
 
 * Továbbfejlesztett Polyphony-szó `en-US` , amely a neurális hangokat 40%-kal olvasta. Polyphony például az "olvasás", az "élő", a "Content", a "Record", az "Object" stb. 
 
@@ -63,8 +63,8 @@ ms.locfileid: "88505805"
 
 * A hangtartalom-létrehozási eszközzel kijavított hibák száma 
     * Kijavítottuk a problémát az automatikus frissítéssel. 
-    * A Dél-Kelet-Ázsia régióban található, a zh-CN stílusú hangokat tartalmazó rögzített problémák
-    * Javítva lett a stabilitási probléma, beleértve az exportálási hibát a "break" címkével, az írásjelek hibáit.    
+    * Rögzített problémák a zh-CN hangstílusokkal a Dél-Kelet-Ázsia régióban.
+    * Rögzített stabilitási probléma, beleértve az exportálási hibát a "break" címkével és az írásjelekkel kapcsolatos hibákat.    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Új beszéd-szöveg területi beállítások: 2020 – augusztus kiadás
 Az augusztusi beszéd-szöveg megjelent 26 új területi beállítás augusztusban: 2 európai nyelv `cs-CZ` és `hu-HU` 5 angol területi beállítás, valamint 19 spanyol területi beállítás, amely a legtöbb Dél-amerikai országot fedi le. Az alábbi lista az új területi beállítások listáját tartalmazza. A teljes nyelvi listát [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)találja.
@@ -177,7 +177,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
+    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |

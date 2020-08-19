@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a SmarterU-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SmarterU között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 95fe3212-d052-4ac8-87eb-ac5305227e85
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 6b4004697828e08215cc912dcd21491b43fc9d64
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981952"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Oktatóanyag: Azure Active Directory integráció a SmarterU
 
@@ -35,7 +31,7 @@ A SmarterU és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés SmarterU való konfigurálásához hajtsa v�
 
     ![SmarterU tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
 
-    Az **azonosító** szövegmezőbe írja be az URL-címet:`https://www.smarteru.com/`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:  `https://www.smarteru.com/`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -148,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés SmarterU való konfigurálásához hajtsa v�
 
     f. Válasszon ki egy **azonosító attribútumot/jogcímet**.
   
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -168,12 +164,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -221,7 +217,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Sm
 
     c. Kattintson az **aktív**gombra.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a SmarterU által biztosított SmarterU felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
