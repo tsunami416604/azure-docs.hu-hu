@@ -1,6 +1,6 @@
 ---
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a Azure Functionskal | Microsoft Docs
-description: Útmutató az Azure-alkalmazások konfigurálásához a Azure Functions használatával.
+description: Ebben a rövid útmutatóban egy Azure Functions alkalmazást hoz végre az Azure app Configuration és a C# használatával. Hozzon létre és kapcsolódjon egy alkalmazás-konfigurációs tárolóhoz. A függvény helyi tesztelése.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: bae602bd45115fa6e199e886db0539c4f47f5180
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210008"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590285"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 

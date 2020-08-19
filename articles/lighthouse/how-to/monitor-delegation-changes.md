@@ -1,14 +1,14 @@
 ---
 title: Delegálási változások figyelése a kezelési bérlőben
 description: Megtudhatja, hogyan figyelheti a delegálási tevékenységeket az ügyfelek bérlői számára a felügyeleti bérlőbe.
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163339"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589741"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelési bérlőben
 
@@ -66,9 +66,6 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
-
-> [!NOTE]
-> A monitoring Reader Azure beépített szerepkörét a root hatókörben is hozzárendelheti az egyes felhasználókhoz vagy a felhasználói csoportokhoz. Ez akkor lehet hasznos, ha azt szeretné, hogy egy felhasználó [közvetlenül a Azure Portal tudja megtekinteni a delegálási adatokat](#view-delegation-changes-in-the-azure-portal). Ha így tesz, vegye figyelembe, hogy ez egy széles körű hozzáférés, amelyet a lehető legkevesebb felhasználó számára kell korlátozni.
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>A globális rendszergazdai fiók emelt szintű hozzáférésének eltávolítása
 
@@ -164,15 +161,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Delegálási változások megtekintése a Azure Portalban
-
-Azok a felhasználók, akik a felügyeleti olvasó Azure beépített szerepkörét használták a gyökérszintű hatókörben, közvetlenül a Azure Portalban tekinthetik meg a delegálási módosításokat.
-
-1. Lépjen a **saját ügyfelek** oldalra, majd válassza a **műveletnapló** lehetőséget a bal oldali navigációs menüből.
-1. Győződjön meg arról, hogy a **címtár tevékenység** van kiválasztva a képernyő felső részén található szűrőben.
-
-Ekkor megjelenik a delegálási változások listája. Az **Oszlopok szerkesztése** lehetőség kiválasztásával megjelenítheti vagy elrejtheti az **állapotot**, az **események kategóriáját**, az **időt**, az **időbélyeget**, az **előfizetést**, az **esemény által kezdeményezett, az** **erőforráscsoport**, az **erőforrástípus**és az **erőforrás** értékét.
 
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják.

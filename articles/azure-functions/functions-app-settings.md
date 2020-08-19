@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242763"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589300"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -19,7 +19,7 @@ A Function alkalmazásban az Alkalmazásbeállítások olyan globális konfigur�
 Más globális konfigurációs beállítások is találhatók a fájl [host.jsjában](functions-host-json.md) , a fájl [local.settings.js](functions-run-local.md#local-settings-file) pedig a fájlban.
 
 > [!NOTE]  
-> Az Alkalmazásbeállítások segítségével felülbírálhatja host.jsbeállításait, anélkül, hogy módosítania kellene a host.jsa fájlon. Ez olyan esetekben hasznos, amikor egy adott környezet beállításain egy adott host.jskell konfigurálnia vagy módosítania. Ez a beállítás azt is lehetővé teszi, hogy a projekt újbóli közzététele nélkül módosítsa host.jsbeállításait. További tudnivalókat ahost.jscímű [cikkben](functions-host-json.md#override-hostjson-values)talál.  
+> Az Alkalmazásbeállítások segítségével felülbírálhatja host.jsbeállításait, anélkül, hogy módosítania kellene a host.jsa fájlon. Ez olyan esetekben hasznos, amikor egy adott környezet beállításain egy adott host.jskell konfigurálnia vagy módosítania. Ez a beállítás azt is lehetővé teszi, hogy a projekt újbóli közzététele nélkül módosítsa host.jsbeállításait. További tudnivalókat ahost.jscímű [ cikkben](functions-host-json.md#override-hostjson-values)talál.  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -94,7 +94,7 @@ Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók táro
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`azt jelenti, hogy le kell tiltania az alapértelmezett kezdőlapot, amely megjelenik a Function app gyökér URL-címénél. Az alapértelmezett szint a `false`.
+`true` azt jelenti, hogy le kell tiltania az alapértelmezett kezdőlapot, amely megjelenik a Function app gyökér URL-címénél. Az alapértelmezett szint a `false`.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -106,7 +106,7 @@ Ha ezt az alkalmazást kihagyja vagy beállítja, a `false` következő példáh
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false`hibakeresési módot használ. Az alapértelmezett szint a `true`.
+`true` azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false` hibakeresési módot használ. Az alapértelmezett szint a `true`.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -126,7 +126,7 @@ Megadja a kulcstárolóhoz használandó tárházat vagy szolgáltatót. Jelenle
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|Fájlok|
+|AzureWebJobsSecretStorageType|Files|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -234,8 +234,8 @@ Csak a prémium csomagok fogyasztása &. A függvény alkalmazás kódjának és
 
 Azon példányok maximális száma, amelyeket a Function alkalmazás fel tud skálázásra. Az alapértelmezett érték nem korlát.
 
-> [!NOTE]
-> Ez a beállítás egy előzetes verziójú szolgáltatás, és csak akkor megbízható, ha értékre van állítva <= 5
+> [!IMPORTANT]
+> Ez a beállítás előzetes verzióban érhető el.  A [maximális felskálázás funkcióhoz tartozó app Property](./functions-scale.md#limit-scale-out) hozzáadása megtörtént, és az ajánlott módszer a felskálázás korlátozására.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -271,7 +271,7 @@ Lehetővé teszi a Function alkalmazás időzónájának beállítását.
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 

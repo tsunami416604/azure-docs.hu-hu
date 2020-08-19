@@ -6,17 +6,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421773"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589707"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -27,7 +27,7 @@ Azure Load Balancer tartalmaz néhány kulcsfontosságú összetevőt. Ezek az �
 * Azure PowerShell
 * Resource Manager-sablonok
 
-## <a name="frontend-ip-configuration"></a>Előtér-IP-konfiguráció<a name = "frontend-ip-configurations"></a>
+## <a name="frontend-ip-configuration"></a>Előtér-IP-konfiguráció <a name = "frontend-ip-configurations"></a>
 
 A Azure Load Balancer IP-címe. Ez a kapcsolódási pont az ügyfelek számára. Ezek az IP-címek a következők lehetnek:
 
@@ -128,7 +128,7 @@ További információ a [kimenő kapcsolatokról és a szabályokról](load-bala
 
 Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).

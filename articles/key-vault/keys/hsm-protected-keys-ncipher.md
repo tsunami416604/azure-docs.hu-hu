@@ -7,15 +7,15 @@ manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: e67769d37b45a9e1344ce6aa72bd1e60e6bfe287
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061278"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589934"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>HSM-védelemmel ellátott kulcsok importálása Key Vaulthoz (nCipher)
 
@@ -243,7 +243,7 @@ Az eszközkészlet az alábbiakat tartalmazza:
 * Egy biztonsági globális csomag, amelynek a neve **BYOK-SecurityWorld-pkg-** vel kezdődik.
 * Egy verifykeypackage.py nevű Python-szkript **.**
 * Egy **KeyTransferRemote.exe** nevű parancssori végrehajtható fájl és a hozzá tartozó DLL-fájlok.
-* Egyvcredist_x64.exe nevű Visual C++ Újraterjeszthető csomag **.**
+* Egyvcredist_x64.exe nevű Visual C++ Újraterjeszthető csomag ** .**
 
 Másolja a csomagot egy USB-meghajtóra vagy más hordozható tárolóeszközre.
 

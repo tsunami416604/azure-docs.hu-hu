@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191199"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589503"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
 
@@ -126,9 +126,12 @@ A feladatátvétel megkezdése előtt a kimenet az alAlwaysOnon rendelkezésre �
 
 Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mint a BC esetében. Ennek az az oka, hogy a GP szolgáltatási réteg csak egy csomóponton alapul. A GP szolgáltatási réteg T-SQL-lekérdezési kimenete csak egyetlen csomópontot fog megjeleníteni a feladatátvétel előtt és után. Az ügyfél kapcsolatának elvesztése a feladatátvétel során, amely általában egy perc alatt hosszan tart, a feladatátvétel végrehajtásának jelzése lesz.
 
+> [!NOTE]
+> A feladatátvételi folyamat (nem a tényleges rövid elérhetetlenség) befejezése több percet is igénybe vehet, ha **nagy intenzitású** számítási feladatokra van szükség. Ennek az az oka, hogy a példány-motor gondoskodik az elsődleges és a másodlagos csomóponton zajló összes aktuális tranzakcióról a feladatátvétel előtt.
+
 > [!IMPORTANT]
 > A felhasználó által kezdeményezett manuális feladatátvétel működési korlátai a következők:
-> - Lehet, hogy egy (1) feladatátvétel a felügyelt példányon 30 percenként lett kezdeményezve.
+> - Lehet, hogy egy (1) feladatátvétel a felügyelt példányon **30 percenként**lett kezdeményezve.
 > - BC-példányok esetében léteznie kell a feladatátvételi kérelem elfogadásához szükséges replikák Kvórumának.
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
 

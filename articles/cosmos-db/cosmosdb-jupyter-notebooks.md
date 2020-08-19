@@ -6,16 +6,16 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118449"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588155"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>A Azure Cosmos DB beépített Jupyter notebookok támogatása (előzetes verzió)
 
-A Jupyter notebook egy nyílt forráskódú webes alkalmazás, amellyel élő kódokat, egyenleteket, vizualizációkat és narratív szöveget tartalmazó dokumentumokat hozhat létre és oszthat meg. 
+A Jupyter Notebook egy nyílt forráskódú webalkalmazás, amely az élő kódot, egyenleteket, vizualizációkat és leíró szövegeket tartalmazó dokumentumok létrehozását és megosztását teszi lehetővé. 
 
 Azure Cosmos DB beépített Jupyter jegyzetfüzetek közvetlenül integrálva vannak a Azure Portalba és a Azure Cosmos DB-fiókjába, így kényelmes és könnyen használható. A fejlesztők, az adatszakértők, a mérnökök és az elemzők az ismerős Jupyter notebookok használatával végezhetik el az adatfeltárást, az adattisztítást, az adatátalakítást, a numerikus szimulációkat, a statisztikai modellezést, az adatvizualizációt és a gépi tanulást.
 
@@ -31,9 +31,9 @@ A Jupyter notebookok eredetileg a Pythonban és az R-ben írt adatelemzési alka
 
 **Adatvizualizáció:** A Jupyter notebookok lehetővé teszik, hogy egy megosztott jegyzetfüzet formájában jelenítse meg az adathalmazt, amely egy adatkészletet grafikus formában jelenít meg. Vizualizációkat hozhat létre, interaktív módosításokat hajthat végre a megosztott kódban és az adatkészletben, és megoszthatja az eredményeket.
 
-**Kód megosztása:** Az olyan szolgáltatások, mint például a GitHub, a kódok megosztására szolgálnak, de nagyrészt nem interaktívak. A Jupyter notebookon megtekintheti a kódot, végrehajthatja és megjelenítheti az eredményeket közvetlenül a Azure Portal.
+**Kód megosztása:** Az olyan szolgáltatások, mint például a GitHub, a kódok megosztására szolgálnak, de nagyrészt nem interaktívak. A Jupyter Notebook megtekintheti a kódot, végrehajthatja és megjelenítheti az eredményeket közvetlenül a Azure Portal.
 
-**Élő interakciók kóddal:** A Jupyter-jegyzetfüzetben található kód dinamikus; szerkesztheti, és a frissítéseket Növekményesen futtathatja valós időben. Olyan felhasználói vezérlőket (például csúszkákat vagy szövegbeviteli mezőket) is beágyazhat, amelyek bemeneti forrásként használatosak a kód, bemutatók vagy fogalmak igazolásához (Pócs).
+**Élő interakciók kóddal:** Egy Jupyter Notebook programkódja dinamikus; szerkesztheti, és a frissítéseket Növekményesen futtathatja valós időben. Olyan felhasználói vezérlőket (például csúszkákat vagy szövegbeviteli mezőket) is beágyazhat, amelyek bemeneti forrásként használatosak a kód, bemutatók vagy fogalmak igazolásához (Pócs).
 
 **A kód mintáinak és az adatfeltárás eredményeinek dokumentálása:** Ha egy kódrészlettel rendelkezik, és azt szeretné elmagyarázni, hogyan működik, akkor beágyazhatja Jupyter Notebookba. A dokumentációval egyidejűleg is hozzáadhat interaktivitást.
 
@@ -41,7 +41,7 @@ A Jupyter notebookok eredetileg a Pythonban és az R-ben írt adatelemzési alka
 
 **Minden egy helyen lévő környezetben:** A Jupyter-jegyzetfüzetek kód, Rich Text, images, videos, animáció, matematikai egyenletek, ábrázolások, térképek, interaktív számok, widgetek és grafikus felhasználói felületek egyetlen dokumentumba való egyesítésére használhatók.
 
-## <a name="components-of-a-jupyter-notebook"></a>Jupyter-jegyzetfüzet összetevői
+## <a name="components-of-a-jupyter-notebook"></a>Egy Jupyter Notebook összetevői
 
 A Jupyter notebookok többféle típusú összetevőt tartalmazhatnak, amelyek mindegyike különálló blokkokba vagy cellákba rendezhető:
 
@@ -53,7 +53,7 @@ A Jupyter notebookok többféle típusú összetevőt tartalmazhatnak, amelyek m
 
 **Multimédia:** Mivel a Jupyter-jegyzetfüzetek webes technológiára épülnek, a weblapok által támogatott összes típust megjeleníthetik. A jegyzetfüzetben HTML-elemekként is megadhatja őket, vagy programozott módon létrehozhatja őket a modul használatával `IPython.display` .
 
-**Adatértékek:** Az Azure Cosmos-tárolók adatait vagy a lekérdezések eredményeit programozott módon importálhatja egy Jupyter-jegyzetfüzetbe. Azure Cosmos DBban lévő adatok feltöltéséhez és lekérdezéséhez használjon beépített Magic-parancsokat. 
+**Adatértékek:** Az adatok importálhatók az Azure Cosmos-tárolóból, illetve a lekérdezések eredményei egy Jupyter Notebook programozott módon. Azure Cosmos DBban lévő adatok feltöltéséhez és lekérdezéséhez használjon beépített Magic-parancsokat. 
 
 ## <a name="next-steps"></a>További lépések
 

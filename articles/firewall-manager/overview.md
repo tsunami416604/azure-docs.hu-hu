@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056992"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590404"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -76,7 +76,7 @@ A Azure Firewall házirendek a régiók között is használhatók. Létrehozhat
 
 Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 
-|Probléma  |Leírás  |Kockázatcsökkentés  |
+|Probléma  |Description  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |Forgalom felosztása|Az Office 365 és az Azure nyilvános Pásti forgalom-elosztás jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
 |Egy biztonságos virtuális központ régiónként|Régiónként legfeljebb egy biztonságos virtuális központ lehet.|Több virtuális WAN-t hozhat létre egy régióban.|
@@ -85,6 +85,8 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |A virtuális hubhoz eltérő régióban szólal meg|A különböző régiókban, mint a virtuális központ nem támogatott.|Kivizsgálás<br><br>Hozzon létre egy alhálózatot régiónként és egyenrangú virtuális hálózatok ugyanabban a régióban, ahol a hub található.|
 |Ág és ág közötti forgalom a privát forgalom szűrésével engedélyezve|A fiókirodák közötti forgalom nem támogatott, ha a privát forgalom szűrése engedélyezve van. |Vizsgáló.<br><br>Nem biztonságos a privát forgalom, ha a fiókirodák közötti kapcsolat létfontosságú.|
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
+|A tömeges IP-cím hozzáadása nem sikerül|Ha több nyilvános IP-címet ad hozzá, a biztonságos központ tűzfala sikertelen állapotba kerül.|Kisebb nyilvános IP-cím növekmények hozzáadása. Például adjon hozzá 10-et egyszerre.|
+|Az alkalmazási szabályok nem működnek olyan biztonságos központban, amelyben az egyéni DNS (előzetes verzió) konfigurálva van.|A DNS-proxy/egyéni DNS (előzetes verzió) nem működik olyan helyzetekben, ahol a tűzfal felügyeleti hálózati adaptere konfigurálva van. Ez magában foglalja a biztonságos központi telepítéseket és az olyan eseteket, ahol a kényszerített bújtatás engedélyezve van.|Javítás a vizsgálat alatt.|
 
 ## <a name="next-steps"></a>További lépések
 

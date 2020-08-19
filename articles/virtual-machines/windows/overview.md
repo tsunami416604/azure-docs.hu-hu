@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1d2675a55133d405041be6e309e0cc4d1596084e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835483"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589622"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek az Azure-ban
 
@@ -45,12 +45,16 @@ Az Azure-ban létrehozott minden erőforrás világszerte több [földrajzi rég
 
 Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olvasható néhány módszer.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot. |
 | REST API |Használja a [Helyek listázása](/rest/api/resources/subscriptions) műveletet. |
 | Azure CLI |Használja az [az account list-locations](/cli/azure/account?view=azure-cli-latest) műveletet. |
+
+### <a name="singapore-data-residency"></a>Szingapúri adattárolás
+
+Az Azure-ban az ügyféladatok egyetlen régióban való tárolását lehetővé tevő funkció jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja. További információ: [megbízhatósági központ](https://azuredatacentermap.azurewebsites.net/).
 
 ## <a name="availability"></a>Rendelkezésre állás
 Az Azure bejelentett egy iparágvezető, 99,9%-os elérhetőséget biztosító egypéldányos virtuálisgép-szolgáltatói szerződést, amelynek az a feltétele, hogy az üzembe helyezett virtuális gép összes lemezén prémium szintű tárolást használjon.  Ahhoz, hogy az üzembe helyezett példány megfeleljen a standard 99,95%-os virtuálisgép-szolgáltatói szerződésnek, legalább még két virtuális gépet kell üzembe helyeznie a számítási feladatok futtatásához egy rendelkezésre állási csoporton belül. A rendelkezésre állási csoport biztosítja, hogy a virtuális gépek több tartalék tartomány között legyenek elosztva az Azure-adatközpontokban, valamint az őket futtató gazdagépeknek különböző karbantartási időszakaik legyenek. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
@@ -71,7 +75,7 @@ Az Azure számos, a [piactéren elérhető rendszerképet](https://azuremarketpl
 
 Az alábbi tábla bemutat néhány módszert, amelyekkel egy rendszerképről több információ is szerezhető.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | Azure Portal |Az értékek a rendszerképek kiválasztásakor automatikusan megjelennek. |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – hely *helye*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) – hely *helye* – közzétevő *közzétevő neve*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) – hely *helye* – közzétevő *közzétevő neve* – ajánlat *offerName* |
@@ -94,14 +98,14 @@ Az alábbi táblázat a virtuális gép által használt erőforrásokat tartalm
 
 | Erőforrás | Kötelező | Leírás |
 | --- | --- | --- |
-| [Erőforráscsoport](../../azure-resource-manager/management/overview.md) |Igen |A virtuális gépnek egy erőforráscsoport tagjának kell lennie. |
-| [Storage-fiók](../../storage/common/storage-account-create.md) |Igen |A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához. |
-| [Virtuális hálózat](../../virtual-network/virtual-networks-overview.md) |Igen |A virtuális gépnek egy virtuális hálózat tagjának kell lennie. |
-| [Nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) |Nem |A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni. |
-| [Hálózati adapter](../../virtual-network/virtual-network-network-interface.md) |Igen |A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz. |
-| [Adatlemezek](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nem |A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak. |
+| [Erőforráscsoport](../../azure-resource-manager/management/overview.md) |Yes |A virtuális gépnek egy erőforráscsoport tagjának kell lennie. |
+| [Storage-fiók](../../storage/common/storage-account-create.md) |Yes |A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához. |
+| [Virtuális hálózat](../../virtual-network/virtual-networks-overview.md) |Yes |A virtuális gépnek egy virtuális hálózat tagjának kell lennie. |
+| [Nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) |No |A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni. |
+| [Hálózati adapter](../../virtual-network/virtual-network-network-interface.md) |Yes |A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz. |
+| [Adatlemezek](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozza létre az első virtuális gépet!
 

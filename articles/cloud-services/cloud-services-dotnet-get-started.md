@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255228"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590353"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -37,7 +37,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéra
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.
 * Visual Studio felhőszolgáltatás-projekt létrehozása ASP.NET MVC webes és feldolgozói szerepkörök alkalmazásával.
-* A felhőszolgáltatás-projekt helyi tesztelése az Azure Storage Emulator használatával.
+* A Cloud Service-projekt helyi tesztelése az Azure Storage Emulator használatával.
 * A felhőprojekt közzététele egy Azure-felhőszolgáltatásban és tesztelése egy Azure-tárfiók használatával.
 * Fájlok feltöltése és tárolása az Azure Blob szolgáltatásban.
 * Az Azure Queue szolgáltatás használata a rétegek közötti kommunikációhoz.
@@ -100,7 +100,7 @@ Az alkalmazást teljes mértékben helyi számítógépén futtatja, a felhőhö
 
 A következő szakaszban konfigurálhatja a megoldást az Azure felhőbeli erőforrások használatára az üzenetsorok, blobok és alkalmazás-adatbázisok esetében a felhőben való futtatásakor. A helyi futtatásra felhőalapú tárolás és adatbázis-erőforrások használata esetén is van lehetőség. Mindössze csak a kapcsolati sztringeket kell beállítani az útmutató alapján.
 
-## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
+## <a name="deploy-the-application-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 Az alkalmazás felhőben való futtatásához az alábbi lépéseket kell végrehajtania:
 
 * Hozzon létre egy Azure-felhőszolgáltatást.
@@ -124,7 +124,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás** lehetőségre.
+5. Kattintson a **Create** (Létrehozás) gombra.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
@@ -153,9 +153,9 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás** lehetőségre.
+10. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
 
 Egy valós alkalmazás esetében általában külön fiókot hozna létre az alkalmazás adatai és a naplózási adatok, illetve a tesztadatok és a termelési adatok számára is. Ebben az oktatóanyagban csak egy fiókot fog használni.
@@ -176,7 +176,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -771,7 +771,7 @@ Az alábbiakban példákat talál felhőszolgáltatás-alkalmazásokra, amelyek 
 
 Bemutató videó az Azure Storage ajánlott eljárásairól és mintáiról: [Microsoft Azure Storage – What's New, Best Practices and Patterns](https://channel9.msdn.com/Events/Build/2014/3-628) (Microsoft Azure Storage – Újdonságok, ajánlott eljárások és minták).
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Azure Cloud Services – 1. rész: Bevezetés](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services kezelése](cloud-services-how-to-manage-portal.md)

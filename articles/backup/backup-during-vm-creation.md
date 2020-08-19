@@ -3,12 +3,12 @@ title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehoz�
 description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-beli virtuális gépet hoz létre Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032850"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586698"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -47,6 +47,9 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](htt
     - [További](backup-instant-restore-capability.md) információ az azonnali visszaállítási funkcióról.
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[Az SSE és a páros főkulcs az Azure-beli virtuális gépek alapértelmezett titkosítási módszere](backup-encryption.md) . Azure Backup támogatja az Azure-beli virtuális gépek biztonsági mentését és visszaállítását.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines Azure Backup erőforráscsoport
 

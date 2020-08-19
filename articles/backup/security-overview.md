@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319303"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589384"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -48,9 +48,9 @@ A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfele
 
 * Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel [https-védelemmel](backup-support-matrix.md#network-traffic-to-azure)történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
 
-* A biztonsági mentési adatai automatikusan titkosítva vannak a [Microsoft által felügyelt kulcsokkal](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys), és nem szükséges explicit műveletet végrehajtani az engedélyezéshez. A biztonsági másolatok adatait a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](encryption-at-rest-with-cmk.md) használatával is titkosíthatja. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
+* A biztonsági mentési adatai automatikusan titkosítva vannak a [platform által felügyelt kulcsokkal](backup-encryption.md), és nem szükséges explicit műveletet végrehajtani az engedélyezéshez. A biztonsági másolatok adatait a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](encryption-at-rest-with-cmk.md) használatával is titkosíthatja. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
 
-* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) és a [CMK titkosított lemezekkel titkosított virtuális gépekkel](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys)rendelkeznek. További információért olvassa el a [titkosított Azure-beli virtuális gépek és a Azure Backup](./backup-azure-vms-encryption.md).
+* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei [Azure Disk Encryption (ADE)](backup-azure-vms-encryption.md#encryption-support-using-ade) és a [CMK titkosított lemezekkel titkosított virtuális gépekkel](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys)rendelkeznek. További információért olvassa el a [titkosított Azure-beli virtuális gépek és a Azure Backup](./backup-azure-vms-encryption.md).
 
 * Ha az adatok biztonsági mentést végeznek a helyszíni kiszolgálókról a MARS-ügynökkel, az adatok titkosítva lesznek a jelszóval, és csak azután, hogy a rendszer letölti a Azure Backup, és visszafejti azt Azure Backup. További információ a [biztonsági funkciókról a hibrid biztonsági másolatok védelméhez](#security-features-to-help-protect-hybrid-backups).
 
@@ -64,7 +64,7 @@ A Azure Backup [beépített figyelési és riasztási képességeket](./backup-a
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági másolatok védelme érdekében
 
-A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a funkciók a következők:
+A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a szolgáltatások a következők:
 
 * A rendszer egy további hitelesítési réteget ad hozzá, amikor egy kritikus művelet, például a jelszó módosítása történik. Ez az ellenőrzés biztosítja, hogy ezeket a műveleteket csak azok a felhasználók tudják végrehajtani, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal. [További információ a támadásokat megakadályozó funkciókról](./backup-azure-security-feature.md#prevent-attacks).
 
@@ -76,7 +76,7 @@ A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynö
 
 Annak érdekében, hogy a szervezetek megfeleljenek az egyéni adatgyűjtésre és-felhasználásra vonatkozó nemzeti, regionális és iparági követelményeknek, Microsoft Azure & Azure Backup a minősítések és igazolások átfogó készletét kínálja. [Tekintse meg a megfelelőségi tanúsítványok listáját](compliance-offerings.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához](backup-azure-security-feature-cloud.md)
 * [Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez](backup-azure-security-feature.md)

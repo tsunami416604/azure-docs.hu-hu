@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134496"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590370"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -54,7 +54,9 @@ Nem. A Azure NetApp Files kötetek IP-hozzárendelése dinamikus. A statikus IP-
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Titkosítható az Azure-beli virtuális gép és a tároló közötti hálózati forgalom?
 
-Az adatforgalom (a NFSv3, a NFSv 4.1 vagy a SMBv3-Azure NetApp Files ügyfél közötti forgalom nincs titkosítva). Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
+Az NFSv 4.1-ügyfelek és a Azure NetApp Files kötetek közötti adatforgalom titkosítható a Kerberos és az AES-256 titkosítás használatával. A részletekért lásd: [nfsv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz](configure-kerberos-encryption.md) .   
+
+A NFSv3 vagy a SMBv3-ügyfelek közötti adatforgalom nincs titkosítva Azure NetApp Files kötetre. Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Titkosítható a tároló a nyugalmi állapotban?
 
@@ -125,7 +127,7 @@ Azure NetApp Files támogatja a NFSv3 és a NFSv 4.1-es verziója. [A köteteket
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hogyan engedélyezi a gyökér leverését?
 
-A gyökérszintű leverés jelenleg nem támogatott.
+Megadhatja, hogy a főfiók hozzáférhet-e a kötethez, vagy sem a kötet exportálási házirendjének használatával. További részletek: az [exportálási házirend konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md) .
 
 ## <a name="smb-faqs"></a>SMB – gyakori kérdések
 
@@ -254,7 +256,7 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

@@ -1,24 +1,24 @@
 ---
-title: Azure CLI-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
+title: Válassza ki, hogyan engedélyezze a hozzáférést a blobhoz vagy a várólistához az Azure CLI-vel
 titleSuffix: Azure Storage
 description: Itt adhatja meg, hogy az Azure CLI-vel hogyan lehet engedélyezni az adatműveleteket a blob-vagy üzenetsor-adatokon. Az adatműveletek az Azure AD hitelesítő adataival, a fiók hozzáférési kulcsával vagy egy közös hozzáférés-aláírási (SAS-) jogkivonattal is engedélyezhető.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ab346af1516c29b1638811217b779e11f120043
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183394"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589062"
 ---
-# <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure CLI-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Válassza ki, hogyan engedélyezze a hozzáférést a blobhoz vagy a várólistához az Azure CLI-vel
 
 Az Azure Storage olyan bővítményeket biztosít az Azure CLI-hez, amelyek segítségével megadhatja, hogyan kívánja engedélyezni a műveleteket a blob-vagy üzenetsor-adatokon. A következő módokon engedélyezheti az adatműveleteket:
 
@@ -106,7 +106,7 @@ A környezeti változókban megadhatja az engedélyezési paramétereket, így e
 |    AZURE_STORAGE_SAS_TOKEN            |    Közös hozzáférésű aláírási (SAS) jogkivonat. Ezt a változót a Storage-fiók nevével együtt kell használni.                                                                                                                                                                                                                                                            |
 |    AZURE_STORAGE_AUTH_MODE            |    Az engedélyezési mód, amellyel a parancsot futtatni kívánja. A megengedett értékek a következők: `login` (ajánlott) vagy `key` . Ha megadja `login` , az Azure CLI az Azure ad hitelesítő adatait használja az adatok műveletének engedélyezéséhez. Ha az örökölt módot adta meg `key` , az Azure CLI megkísérli lekérdezni a fiók hozzáférési kulcsát, és engedélyezi a parancsot a kulccsal.    |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure parancssori felületének használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adateléréshez](storage-auth-aad-rbac-cli.md)
 - [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](storage-auth-aad-msi.md)

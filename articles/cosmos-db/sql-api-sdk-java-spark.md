@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 72b3b190492be5cec9986729875c5b09e2559ae5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 46ddbd18051ffa44232468704ce189d4171b50e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854248"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590009"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark-összekötő a Core (SQL) API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87854248"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring-adatv2](sql-api-sdk-java-spring-v2.md)
+> * [Spring-adatforrások v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -35,7 +36,7 @@ ms.locfileid: "87854248"
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
-A Core (SQL) Azure Cosmos DB Apache Spark Connector használatával felgyorsíthatja big data elemzését. A Spark-összekötő lehetővé teszi [Spark](https://spark.apache.org/) -feladatok futtatását Azure Cosmos DBban tárolt adatokon. A Batch-és adatfolyam-feldolgozás támogatott.
+A Core (SQL) Azure Cosmos DB Apache Spark Connector használatával felgyorsíthatja big data elemzését. A Spark-összekötő lehetővé teszi [Spark ](https://spark.apache.org/) -feladatok futtatását Azure Cosmos DBban tárolt adatokon. A Batch-és adatfolyam-feldolgozás támogatott.
 
 Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/services/databricks) vagy [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), amelyek felügyelt Spark-fürtöket biztosítanak az Azure-ban. Az alábbi táblázatban a Spark-verziók láthatók.
 
@@ -122,7 +123,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
 

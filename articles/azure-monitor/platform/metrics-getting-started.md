@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276430"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590183"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Bevezetés az Azure Metrikaböngésző használatába
 
@@ -41,16 +41,19 @@ Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizet
 
 4. Igény szerint [módosíthatja a metrikák összesítését](metrics-charts.md#changing-aggregation). Előfordulhat például, hogy a diagramot a metrika minimális, maximális vagy átlagos értékének megjelenítésére szeretné megjeleníteni.
 
-> [!NOTE]
+> [!TIP]
 > Használja a **metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több, ugyanabban a diagramban ábrázolt mérőszámot szeretne látni. Ha egy nézetben több diagramot szeretne megjeleníteni, kattintson a felül található **diagram hozzáadása** gombra.
 
 ## <a name="select-a-time-range"></a>Válasszon időtartományt
+
+> [!WARNING]
+> [Az Azure-ban a legtöbb metrika 93 napig érhető el](data-platform-metrics.md#retention-of-metrics). Egyetlen diagramon azonban legfeljebb 30 napos adatot lehet lekérdezni. Ez a korlátozás a [naplóalapú metrikákra](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) nem vonatkozik.
 
 Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat jeleníti meg. Használja az **időválasztó** panelt a diagram időtartományának, nagyításának vagy kicsinyítésének módosításához. 
 
 ![Időtartomány-panel módosítása](./media/metrics-getting-started/time-picker.png)
 
-> [!NOTE]
+> [!TIP]
 > Az **idő ecsettel** vizsgálja meg a diagram egy érdekes területét (Spike vagy DIP). Vigye az egérmutatót a terület elejére, kattintson és tartsa nyomva a bal egérgombot, húzza a terület másik oldalára, majd engedje el a gombot. A diagram az adott időtartományon nagyítja fel. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Dimenzió szűrők alkalmazása és felosztás
@@ -67,7 +70,7 @@ Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](metr
 
 Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. A [termék dokumentációját](metrics-charts.md) követve megismerheti a Azure monitor Metrics Explorer egyéb speciális funkcióit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a Metrikaböngésző speciális funkcióiról](metrics-charts.md)
 * [A Metrikaböngésző hibaelhárítása](metrics-troubleshoot.md)

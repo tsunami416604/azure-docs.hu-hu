@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019731"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589044"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -104,7 +104,7 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
    2. Hívás `Update-AzureADSSOForest -OnPremCredentials $creds` . Ez a parancs frissíti az `AZUREADSSO` adott ad-erdőben lévő számítógépfiók Kerberos-visszafejtési kulcsát, és frissíti azt az Azure ad-ben.
    
    >[!NOTE]
-   >Ha Ön nem tartományi rendszergazda, és a tartományi rendszergazda hozzárendelte az engedélyeket, akkor hívja meg a`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >Ha Ön nem tartományi rendszergazda, és a tartományi rendszergazda hozzárendelte az engedélyeket, akkor hívja meg a `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Ismételje meg a fenti lépéseket minden olyan AD-erdőnél, amelyre beállította a szolgáltatást.
 
@@ -135,6 +135,8 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
    3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
    4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
    5. Hívás `Enable-AzureADSSO -Enable $false` .
+   
+   Ezen a ponton a zökkenőmentes egyszeri bejelentkezés le van tiltva, de a tartományok konfigurálva lesznek abban az esetben, ha a zökkenőmentes egyszeri bejelentkezést vissza szeretné állítani. Ha teljesen el szeretné távolítani a tartományokat a zökkenőmentes SSO-konfigurációból, a fenti 5. lépés elvégzése után hívja meg a következő parancsmagot: `Disable-AzureADSSOForest -DomainFqdn <fqdn>` .
 
    >[!IMPORTANT]
    >A zökkenőmentes egyszeri bejelentkezés letiltása a PowerShell használatával nem változtatja meg Azure AD Connect állapotát. A zökkenőmentes egyszeri bejelentkezés a **felhasználó bejelentkezési** oldalának módosítása lapon engedélyezettként jelenik meg.

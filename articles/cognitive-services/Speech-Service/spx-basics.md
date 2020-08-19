@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 5b516eb913bf9e7b8337a41483682e1201c58890
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759036"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590217"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
@@ -25,7 +25,19 @@ Ebből a cikkből megtudhatja, hogyan használhatja a beszédfelismerési paranc
 
 ## <a name="basic-usage"></a>Alapvető használat
 
-Ez a szakasz néhány alapszintű SPX-parancsot mutat be, amelyek gyakran hasznosak az első alkalommal történő teszteléshez és kísérletezéshez. A következő parancs futtatásával kezdjen el némi beszédfelismerést az alapértelmezett mikrofon használatával.
+Ez a szakasz néhány alapszintű SPX-parancsot mutat be, amelyek gyakran hasznosak az első alkalommal történő teszteléshez és kísérletezéshez. Először az alábbi parancs futtatásával tekintse meg az eszközre épített súgót.
+
+```shell
+spx
+```
+
+Figyelje meg, hogy a parancs paramétereinek jobb oldalán **található súgótémakörök is** szerepelnek. A témaköröket kulcsszó alapján is megkeresheti. Adja meg például a következő parancsot a Speech CLI-példákkal kapcsolatos súgótémakörök megtekintéséhez:
+
+```shell
+spx help find --topics "examples"
+```
+
+A beszédfelismerési szolgáltatással a következő parancs futtatásával elvégezheti a beszédfelismerést az alapértelmezett mikrofon használatával.
 
 ```shell
 spx recognize --microphone

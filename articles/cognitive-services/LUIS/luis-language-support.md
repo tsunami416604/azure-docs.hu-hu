@@ -1,7 +1,7 @@
 ---
 title: Nyelvi támogatás – LUIS
 titleSuffix: Azure Cognitive Services
-description: A LUIS számos funkcióval rendelkezik a szolgáltatáson belül. Nem minden szolgáltatás azonos nyelvi paritású. Győződjön meg arról, hogy az Ön által érintett funkciók támogatottak-e a megcélzott nyelvi kultúrában. A LUIS-alkalmazás Culture-specifikus, és a beállítása után nem módosítható.
+description: A LUIS számos funkciót biztosít a szolgáltatáson belül. Egyes funkciók azonban nem érhetők el bizonyos nyelveken. Ellenőrizze, hogy az Önt érdeklő funkciók támogatottak-e a használni kívánt nyelvkultúrában. A LUIS-alkalmazás Culture-specifikus, és a beállítása után nem módosítható.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340198"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588022"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
-A LUIS számos funkcióval rendelkezik a szolgáltatáson belül. Nem minden szolgáltatás azonos nyelvi paritású. Győződjön meg arról, hogy az Ön által érintett funkciók támogatottak-e a megcélzott nyelvi kultúrában. A LUIS-alkalmazás Culture-specifikus, és a beállítása után nem módosítható.
+A LUIS számos funkciót biztosít a szolgáltatáson belül. Egyes funkciók azonban nem érhetők el bizonyos nyelveken. Ellenőrizze, hogy az Önt érdeklő funkciók támogatottak-e a használni kívánt nyelvkultúrában. A LUIS-alkalmazás Culture-specifikus, és a beállítása után nem módosítható.
 
 ## <a name="multi-language-luis-apps"></a>Többnyelvű LUIS-alkalmazások
 
@@ -111,12 +111,12 @@ A gépi tanulás elvégzéséhez LUIS a kulturális környezet alapján megszak�
 
 A következő kultúrákban egyéni tokenizer verziók szerepelnek:
 
-|Kulturális környezet|Verzió|Cél|
+|Kultúra|Verzió|Cél|
 |--|--|--|
 |Német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép fel, a rendszer a következőre `Ich fahre einen krankenwagen` vált: `Ich fahre einen kranken wagen` . A `kranken` és a `wagen` különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
 |Német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó `Ich fahre einen krankenwagen` Kimondás lép fel, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
-|Holland<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép fel, a rendszer a következőre `Ik ga naar de kleuterschool` vált: `Ik ga naar de kleuter school` . A `kleuter` és a `school` különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
-|Holland<br>`de-de`|1.0.1|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó `Ik ga naar de kleuterschool` Kimondás lép fel, akkor egyetlen token marad. Így `kleuterschool` egyetlen entitásként van megjelölve. |
+|Holland<br>`nl-nl`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép fel, a rendszer a következőre `Ik ga naar de kleuterschool` vált: `Ik ga naar de kleuter school` . A `kleuter` és a `school` különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
+|Holland<br>`nl-nl`|1.0.1|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó `Ik ga naar de kleuterschool` Kimondás lép fel, akkor egyetlen token marad. Így `kleuterschool` egyetlen entitásként van megjelölve. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Áttelepítés tokenizer-verziók között

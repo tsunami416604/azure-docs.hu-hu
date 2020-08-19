@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995734"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589656"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban egy olyan [Windows megjelenítési alaprendszer (WPF)](
 
 Mi az a WPF? Ez egy felhasználói felületi keretrendszer, amely asztali ügyfélprogramokat hoz létre. A WPF fejlesztői platform számos alkalmazás-fejlesztési funkciót támogat, többek között az alkalmazás-modellt, az erőforrásokat, a vezérlőket, a grafikát, az elrendezést, az adatkötéseket, a dokumentumokat és a biztonságot. Ez a .NET-keretrendszer egy részhalmaza, így ha korábban a ASP.NET vagy a Windows Forms használatával már létrehozott alkalmazásokat a .NET-keretrendszerrel, a programozási élménynek ismerősnek kell lennie. A WPF az Extensible app Markup Language (XAML) használatával biztosít egy deklaratív modellt az alkalmazások programozásához, amelyet a következő szakaszokban fogunk áttekinteni.
 
-Az oktatóanyag segítségével megtanulhatja a következőket:
+Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 > * WPF-projekt létrehozása a Visual Studióban
@@ -40,7 +40,7 @@ Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes
 | Szolgáltatás | Funkció | Leírás |
 |---------|---------|-------------|
 | Translator | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
-| Translator | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 60 nyelvre. |
+| Translator | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 70 nyelvre. |
 | Translator | [Észlelés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
 | Bing – Helyesírás-ellenőrzés | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
 
@@ -72,7 +72,7 @@ A következő szakaszban szerelvényeket és NuGet-csomagokat fogunk hozzáadni 
 
 ## <a name="add-references-and-nuget-packages-to-your-project"></a>Referenciák és NuGet-csomagok hozzáadása a projekthez
 
-A projekthez szükség van néhány .NET-keretrendszer-szerelvényre és NewtonSoft. JSON fájlra, amelyet a NuGet csomagkezelő használatával fogunk telepíteni.
+A projekthez szükség van a .NET-keretrendszer néhány szerelvényére és NewtonSoft.Jsre, amelyeket a NuGet csomagkezelő használatával fogunk telepíteni.
 
 ### <a name="add-net-framework-assemblies"></a>.NET-keretrendszer szerelvények hozzáadása
 
@@ -91,15 +91,15 @@ Vegyünk fel szerelvényeket a projektbe objektumok szerializálásához és des
 > [!NOTE]
 > Ha többet szeretne megtudni a szerelvények hivatkozásairól, tekintse meg a következő témakört [: útmutató: hivatkozás hozzáadása vagy eltávolítása a Reference Manager használatával](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
-### <a name="install-newtonsoftjson"></a>A NewtonSoft. JSON telepítése
+### <a name="install-newtonsoftjson"></a>NewtonSoft.Jstelepítése
 
-Az alkalmazás a NewtonSoft. JSON fájlt fogja használni a JSON-objektumok deszerializálásához. A csomag telepítéséhez kövesse az alábbi utasításokat.
+Az alkalmazás a NewtonSoft.Json használatával deszerializálja a JSON-objektumokat. A csomag telepítéséhez kövesse az alábbi utasításokat.
 
 1. Keresse meg a projektet a Visual Studio Megoldáskezelőban, és kattintson a jobb gombbal a projektre. Válassza a **NuGet-csomagok kezelése**lehetőséget.
 1. Keresse meg és válassza ki a **Tallózás** lapot.
-1. Írja be a [NewtonSoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) fájlt a keresősávba.
+1. Adja meg [NewtonSoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) be a keresési sávon.
 
-    ![A NewtonSoft. JSON fájl megkeresése és telepítése](media/nuget-package-manager.png)
+    ![NewtonSoft.Jsmegkeresése és telepítése](media/nuget-package-manager.png)
 
 1. Válassza ki a csomagot, majd kattintson a **telepítés**gombra.
 1. A telepítés befejezésekor kattintson a lap bezárásához.
@@ -114,7 +114,7 @@ Nézzük meg, hogy mi építünk.
 
 A felhasználói felület a következő összetevőket tartalmazza:
 
-| Name | Típus | Leírás |
+| Név | Típus | Description |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Megjeleníti a Microsoft Translator által a szöveges fordításhoz támogatott nyelvek listáját. A felhasználó kiválasztja azt a nyelvet, amelyről a fordítás történik. |
 | `ToLanguageComboBox` | ComboBox | Ugyanazokat a nyelveket jeleníti meg, mint a `FromComboBox` , de azon nyelv kiválasztására szolgál, amelyet a felhasználó lefordít. |
@@ -173,7 +173,7 @@ Ennyi, az űrlap készen áll. Most írj egy kódot a szöveges fordítás és a
 
 ## <a name="create-your-app"></a>Az alkalmazás létrehozása
 
-`MainWindow.xaml.cs`az alkalmazást vezérlő kódot tartalmazza. A következő néhány szakaszban kód hozzáadásával feltöltjük a legördülő menüket, és meghívhatjuk a fordító és Bing Spell Check által elérhetővé tett néhány API-t.
+`MainWindow.xaml.cs` az alkalmazást vezérlő kódot tartalmazza. A következő néhány szakaszban kód hozzáadásával feltöltjük a legördülő menüket, és meghívhatjuk a fordító és Bing Spell Check által elérhetővé tett néhány API-t.
 
 * A program indításakor és `MainWindow` példányain a `Languages` fordító metódusa hívja le és töltse ki a nyelvi kiválasztási legördülő listát. Ez az egyes munkamenetek elején történik.
 * Ha a **fordítás** gombra kattint, a rendszer beolvassa a felhasználó nyelvének kijelölését és szövegét, a helyesírás-ellenőrzés a bemeneten történik, a fordítás és az észlelt nyelv pedig megjelenik a felhasználó számára.
@@ -250,7 +250,7 @@ Az összes projekt be van ágyazva a `MainWindow : Window` osztályba. Kezdjük 
 
 Ebben a kódrészletben két, a fordításhoz elérhető nyelvekkel kapcsolatos információt tartalmazó tag-változót jelentettünk be:
 
-| Változó | Típus | Leírás |
+| Változó | Típus | Description |
 |----------|------|-------------|
 |`languageCodes` | Karakterláncok tömbje |A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
 |`languageCodesAndTitles` | Rendezett szótár | A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket. |
@@ -263,7 +263,7 @@ Végül hozzáadunk egy kódot a metódusok meghívásához a fordítási nyelve
 
 ## <a name="get-supported-languages"></a>Támogatott nyelvek lekérése
 
-A Translator jelenleg több mint 60 nyelvet támogat. Mivel az új nyelvi támogatást az idő múlásával vesszük fel, javasoljuk, hogy a fordító által közzétett nyelvi erőforrást ne rögzítjük az alkalmazásban.
+A Translator jelenleg több mint 70 nyelvet támogat. Mivel az új nyelvi támogatást az idő múlásával vesszük fel, javasoljuk, hogy a fordító által közzétett nyelvi erőforrást ne rögzítjük az alkalmazásban.
 
 Ebben a szakaszban egy `GET` , a Languages (nyelvek) erőforrásra vonatkozó kérelmet hozunk létre, amely azt határozza meg, hogy szeretnénk-e a fordításhoz elérhető nyelvek listáját használni.
 
@@ -289,7 +289,7 @@ Mielőtt továbblépne, vessünk egy pillantást a minta kimenetre a languages e
 }
 ```
 
-Ebből a kimenetből kinyerhetjük a nyelvi kódot és az `name` adott nyelvet. Az alkalmazás a NewtonSoft. JSON használatával deszerializálja a JSON-objektumot ( [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ).
+Ebből a kimenetből kinyerhetjük a nyelvi kódot és az `name` adott nyelvet. Az alkalmazás a NewtonSoft.Json használatával deszerializálja a JSON-objektumot ( [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ).
 
 Vegyen fel egy metódust, ahol az utolsó szakaszban leálltunk, és hozzunk létre egy módszert az alkalmazásban támogatott nyelvek beszerzéséhez.
 
@@ -358,7 +358,7 @@ Ez a metódus megismétli a `languageCodesAndTitles` szótárt, és hozzáadja a
 > [!TIP]
 > Ha a menüknek nincs alapértelmezett értéke, a felhasználó a forrásnyelv és a célnyelv kiválasztása nélkül nem kattinthat a **Translate** (Fordítás) gombra. Ha vannak alapértelmezett beállítások, a felhasználónak nem kell ezzel törődnie.
 
-Most, hogy már `MainWindow` inicializálva lett, és a felhasználói felület létrejött, ez a kód addig nem fog futni, amíg a **fordítás** gombra nem kattint.
+Most, hogy már `MainWindow` inicializálva lett, és a felhasználói felület létrejött, ez a kód addig nem fog futni, amíg a **fordítás**  gombra nem kattint.
 
 ## <a name="detect-language-of-source-text"></a>Forrás szöveg nyelvének észlelése
 

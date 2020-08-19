@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387999"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589605"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -39,7 +39,7 @@ Ez a cikk a következőket ismerteti:
 
 - Ez a funkció jelenleg csak a Azure Portal konfigurálható.
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+Ha nem hozta létre és konfigurálta a Recovery Services-tárolót, [olvassa el a következő témakört](backup-create-rs-vault.md):.
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Tároló konfigurálása az ügyfél által felügyelt kulcsok használatával történő titkosításhoz
 
@@ -258,6 +258,6 @@ Nem követi a cikkben szereplő lépéseket, és az elemek védelemmel való ell
 
 A CMK titkosítás használata a biztonsági mentéshez nem jár további költségekkel. Azonban továbbra is felmerülhetnek a költségek arra, hogy a Azure Key Vault, ahol a kulcsot tárolják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

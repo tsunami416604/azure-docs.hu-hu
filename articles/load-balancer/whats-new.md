@@ -4,15 +4,15 @@ description: Ismerje meg a Azure Load Balancer újdonságait, például a legúj
 services: load-balancer
 author: anavinahar
 ms.service: load-balancer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447022"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586715"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>A Azure Load Balancer újdonságai
 
@@ -39,7 +39,7 @@ Itt megtalálhatja a legújabb Azure Load Balancer frissítéseket, és feliratk
 
 A termékcsoport aktívan dolgozik a következő ismert problémák megoldásán:
 
-|Probléma |Leírás  |Kockázatcsökkentés  |
+|Probléma |Description  |Kockázatcsökkentés  |
 | ---------- |---------|---------|
 | Log Analytics exportálás | Log Analytics nem exportálhatja a standard Load Balancer metrikáit és az alapszintű Load Balancerhoz tartozó állapot-mintavételi eseménynaplókat.  | [Használja Azure monitor a többdimenziós metrikák számára a standard Load Balancer](load-balancer-standard-diagnostics.md). Habár nem tudja használni a Log Analytics a figyeléshez, Azure Monitor a többdimenziós metrikák gazdag készletének vizualizációját biztosítja. Az előre konfigurált mérőszámok irányítópultot a Load Balancer elemzések alpaneljén keresztül is kihasználhatja. Ha az alapszintű Load Balancer az üzemi szintű mérőszámok figyelése standard szintre való [frissítését](upgrade-basic-standard.md) használja.
 

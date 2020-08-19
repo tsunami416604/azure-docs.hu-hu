@@ -1,21 +1,21 @@
 ---
-title: Jupyter-jegyzetfüzet létrehozása és megosztása Azure Notebooks előzetes verzióban
-description: Gyorsan létrehozhat és futtathat Jupyter notebookot Azure Notebooks előzetes verzióban, majd megoszthatja a jegyzetfüzetet másokkal.
+title: Jupyter Notebook létrehozása és megosztása Azure Notebooks Preview-ban
+description: Gyorsan létrehozhat és futtathat egy Jupyter Notebook Azure Notebooks előzetes verzióban, majd megoszthatja a jegyzetfüzetet másokkal.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849400"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589333"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rövid útmutató: jegyzetfüzet létrehozása és megosztása Azure Notebooks előzetes verzióban
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Ebben a rövid útmutatóban egy Jupyter-jegyzetfüzetet hoz létre és futtat Azure Notebookson, majd megoszthatja a jegyzetfüzetet másokkal. A Jupyter segítségével egyszerűen egyesítheti a Markdown szövegét, a végrehajtható kódokat, az állandó adattípusokat, a grafikát és a vizualizációkat egy megosztható vászonon, a notebookon. Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához.
+Ebben a rövid útmutatóban létrehoz és futtat egy Jupyter Notebookt a Azure Notebookson, majd megosztja a jegyzetfüzetet másokkal. A Jupyter segítségével egyszerűen egyesítheti a Markdown szövegét, a végrehajtható kódokat, az állandó adattípusokat, a grafikát és a vizualizációkat egy megosztható vászonon, a notebookon. A Azure Notebooks egy ingyenes üzemeltetett szolgáltatás, amely Jupyter-jegyzetfüzeteket fejleszt és futtat a felhőben telepítés nélkül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Nincsenek.
@@ -91,7 +91,7 @@ Nincsenek.
 
 1. Válassza a Mentés ikont a munka mentéséhez:
 
-    ![Mentés ikon a Jupyter notebook eszköztárán](media/quickstarts/hello-results-save-icon.png)
+    ![Mentés ikon a Jupyter Notebook eszköztáron](media/quickstarts/hello-results-save-icon.png)
 
 1. Válassza a **fájl**  >  **Bezárás és** leállítás menüpontot a kiszolgáló leállításához és a böngészőablak bezárásához.
 
@@ -103,7 +103,7 @@ A projekt lapon a **megosztás** menüt is használhatja egy hivatkozás beszerz
 
 ![Projekt megosztási parancsa](media/quickstarts/share-project-command.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)
+> [Oktatóanyag: Jupyter Notebook létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

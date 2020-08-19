@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850651"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589350"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Forgatókönyv: Azure Firewall-Custom
 
@@ -40,6 +40,8 @@ Az előző táblázatban a "X" közvetlen kapcsolódást jelent két kapcsolat k
   * Társított útválasztási táblázat: **alapértelmezett**
   * Propagálás az útválasztási táblákba: **alapértelmezett**
 
+> [!NOTE]
+> Létrehozhat egy külön virtuális WAN-példányt egyetlen biztonságos virtuális központtal az egyes régiókban, majd az egyes virtuális WAN-hálózatokat helyek közötti VPN-kapcsolaton keresztül is csatlakoztathatja egymáshoz.
 
 További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
@@ -69,7 +71,7 @@ Ez azt eredményezi, hogy az útválasztási konfiguráció megváltozik az **1.
 > [!NOTE]
 > A virtuális WAN-huboknak és a csatlakoztatott virtuális hálózatoknak ugyanabban az Azure-régióban kell lenniük.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83759166"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590234"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
@@ -60,7 +60,7 @@ Az MFA engedélyezéséhez [Azure Active Directory (ad) bérlői engedélyek](ht
 
 - Ha prémium szintű AD-kiadással rendelkezik, a [feltételes hozzáférés](../active-directory/conditional-access/concept-conditional-access-policy-common.md)használatával engedélyezze az MFA-t.
 
-- Az AD Free Edition felhasználói az [ad-dokumentációban](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) leírtak szerint engedélyezhetik a Azure Active Directory **biztonsági alapértelmezéseit** , de az MFA engedélyezésére vonatkozó Security Center-javaslat továbbra is megjelenik.
+- Ha az AD ingyenes kiadást használja, engedélyezze a Azure Active Directory **biztonsági alapértelmezéseit** az ad- [dokumentációban](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)leírtak szerint.
 
 
 ## <a name="next-steps"></a>További lépések

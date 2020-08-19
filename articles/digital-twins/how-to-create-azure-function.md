@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124306"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589401"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -83,8 +83,8 @@ További információ erről: [*Event Grid trigger helyi hibakeresése*](../azur
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Az Azure Digital Twins SDK hozzáadása az Azure Function-alkalmazáshoz
 
 A Function app a [.net-hez készült Azure IoT Digital Twin ügyféloldali kódtár (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)használatával kommunikál az Azure Digital Twins szolgáltatással. Az SDK használatához a következő csomagokat kell tartalmaznia a projektben:
-* `Azure.DigitalTwins.Core`(verzió `1.0.0-preview.2` )
-* `Azure.Identity`
+* `Azure.DigitalTwins.Core` (verzió `1.0.0-preview.2` )
+* `Azure.Identity` (verzió `1.1.1` )
 
 Az Azure SDK-folyamat konfigurálásához a Azure Functions megfelelő beállításához a következőkre is szüksége lesz:
 * `Azure.Net.Http`

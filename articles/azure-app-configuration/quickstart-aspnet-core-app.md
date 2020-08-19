@@ -1,6 +1,6 @@
 ---
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a ASP.NET Corekal | Microsoft Docs
-description: Gyors útmutató az Azure-alkalmazások konfigurációjának ASP.NET Core alkalmazásokkal való használatához
+description: Hozzon létre egy ASP.NET Core alkalmazást az Azure-alkalmazás konfigurálásával, hogy központilag központosítsa egy ASP.NET Core alkalmazás alkalmazás-beállításainak tárolását és kezelését.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: fc2b5829b2978253476ad8cca1438b784c6ad10d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209990"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590302"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -41,7 +41,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját fogja has
     | TestApp: beállítások: FontColor | Fekete |
     | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
 
-    Most hagyja üresen a **címke** és a **tartalom típusát** . Kattintson az **Alkalmaz** gombra.
+    Most hagyja üresen a **címke** és a **tartalom típusát** . Válassza az **Alkalmaz** lehetőséget.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -250,7 +250,7 @@ Amikor a rendszer kéri, hogy konfigurálja a portot az előzetes verzióhoz, í
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a ASP.NET Core alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

@@ -2,25 +2,21 @@
 title: Azure AD Application Proxy gyakori kérdések | Microsoft Docs
 description: Megtudhatja, milyen válaszokat kaphat az Azure AD Application Proxy a belső, helyszíni alkalmazások távoli felhasználók számára történő közzétételére vonatkozó gyakori kérdésekre (GYIK).
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042105"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589163"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -90,6 +86,15 @@ Az alkalmazásproxy használatához a Windows Server 2012 R2 vagy újabb verzió
 
 
 ## <a name="application-configuration"></a>Alkalmazáskonfiguráció
+
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Hibaüzenetet kapok egy érvénytelen tanúsítványról vagy a lehetséges helytelen jelszóról
+
+Az SSL-tanúsítvány feltöltése után a portálon "érvénytelen tanúsítvány, lehetséges helytelen jelszó" üzenet jelenik meg.
+
+Íme néhány tipp a hiba elhárításához:
+- A tanúsítvánnyal kapcsolatos problémák keresése. Telepítse a helyi számítógépre. Ha nem tapasztal problémát, akkor a tanúsítvány jó.
+- Győződjön meg arról, hogy a jelszó nem tartalmaz speciális karaktereket. A teszteléshez a jelszó csak a 0-9, A-Z és a-z karaktereket tartalmazza.
+- Ha a tanúsítvány Microsoft szoftveres kulcstároló-szolgáltatóval lett létrehozva, akkor az RSA-algoritmust kell használni.
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Milyen hosszúságú az alapértelmezett és a "hosszú" háttérbeli időtúllépés? Ki lehet terjeszteni az időtúllépést?
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/25/2020
-ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/14/2020
+ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086829"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587310"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Az SQL felügyelt példányának jellemzői és erőforrás-korlátai a mögött
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| **Hardver** | Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
+| **Hardver** | Intel® E5-2673 v3 (Haswell) 2,4 GHz-es processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) és Intel® 8272CL (Cascade Lake) 2,5 GHz processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
 | **Virtuális magok száma** | 8, 16, 24 virtuális mag | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Maximális memória (memória/mag arány)** | 7 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. | 5,1 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
 | **Memóriában tárolt OLTP memória maximális száma** | Példány korlátja: 1 – 1,5 GB/virtuális mag| Példány korlátja: 0,8 – 1,65 GB/virtuális mag |
@@ -142,7 +142,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 |Előfizetés típusa| SQL felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
-|Használatalapú fizetés|3|320|
+|Utólagos elszámolás|3|320|
 |CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
 |Enterprise Dev/Test|3|320|
@@ -150,9 +150,9 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\*Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
 
-\*\*A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
+\*\* A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 
 > [!IMPORTANT]
 > Ha a virtuális mag és az alhálózati korlát értéke 0, az azt jelenti, hogy az előfizetése típusának alapértelmezett területi korlátja nincs beállítva. A kvóta-növelési kérést is használhatja az előfizetések hozzáférésének adott régióban való beszerzéséhez, ugyanezen eljárással, amely a szükséges virtuális mag és alhálózati értékeket is megadja.

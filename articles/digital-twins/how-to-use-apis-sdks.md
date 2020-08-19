@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73e23f24717616ef417460d2fdae6116cfdbdb3a
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810411"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587562"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -65,14 +65,14 @@ Az Azure Digital Twins .NET (C#) SDK része a .NET-hez készült Azure SDK-nak. 
 > [!NOTE]
 > Az SDK kialakításával kapcsolatos részletes információkért tekintse meg az Azure SDK-k általános [tervezési alapelveit](https://azure.github.io/azure-sdk/general_introduction.html) és az adott [.net tervezési irányelveket](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csomagot a projektbe. Az **Azure. Identity** csomagra is szüksége lesz.
+Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csomagot a projektbe. Szüksége lesz az **Azure. Identity** csomagra is (1.1.1-es verzió).
 
 * A Visual Studióban hozzáadhat csomagokat a NuGet Package Managerrel (az eszközökön keresztül érhető el *> NuGet csomagkezelő > NuGet-csomagok kezelése a megoldáshoz*). 
 * A .NET parancssori eszköz használatával a következőket végezheti el:
 
     ```cmd/sh
     dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
+    dotnet add package Azure.identity --version 1.1.1
     ```
 
 Az API-k gyakorlatban való használatának részletes ismertetését az [*oktatóanyag: az ügyfélalkalmazás kódolása*](tutorial-code.md)című témakörben tekintheti meg. 

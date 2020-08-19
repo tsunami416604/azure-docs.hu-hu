@@ -4,12 +4,12 @@ description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260223"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586920"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózaton
 
@@ -41,7 +41,12 @@ Ubuntu 18,04 LTS esetén:
 * [AzureDeploy.json][template2]
 * [AzureDeploy.Parameters.json][parameters2]
 
-A két sablon közötti különbség a **vmImageSku** attribútum "18,04-LTS" értékre van állítva, és az egyes csomópontok **typeHandlerVersion** értéke 1,1.
+Ubuntu 18,04 LTS esetén a két sablon közötti különbség a következő: 
+* a **vmImageSku** attribútum "18,04-LTS" értékre van állítva
+* az egyes csomópontok **typeHandlerVersion** beállítása 1,1
+* Microsoft. ServiceFabric/fürtök erőforrás
+   - a **apiVersion** értéke "2019-03-01" vagy magasabb
+   - a **vmImage** tulajdonság "Ubuntu18_04" értékre van állítva
 
 Ez a sablon hét virtuális gép és három csomópont típusú biztonságos fürtöt helyez üzembe egy virtuális hálózatban.  További mintasablonokat a [GitHubon](https://github.com/Azure-Samples/service-fabric-cluster-templates) talál. Az [AzureDeploy.json][template] több erőforrást is üzembe helyez, többek között az alábbiakat.
 
@@ -81,7 +86,7 @@ Ha további alkalmazásportokra van szükség, akkor módosítania kell a Micros
 
 A **AzureDeploy. Parameters** fájl számos, a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt értéket deklarál. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
 
-|Paraméter|Példaérték|Megjegyzések|
+|Paraméter|Példaérték|Jegyzetek|
 |---|---||
 |adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. |
 |adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez.|
@@ -164,7 +169,7 @@ sfctl cluster health
 
 Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](./service-fabric-tutorial-delete-cluster.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [méretezheti a fürtöt](service-fabric-tutorial-scale-cluster.md).
 

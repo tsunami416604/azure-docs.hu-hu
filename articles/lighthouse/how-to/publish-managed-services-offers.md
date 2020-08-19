@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure Lighthouse-be.
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167218"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589724"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
@@ -22,8 +22,19 @@ A [felügyelt szolgáltatásokra vonatkozó minősítési követelmények](/lega
 
 A [rendszer automatikusan hozzárendeli](../../cost-management-billing/manage/link-partner-id.md) az Ön Microsoft Partner Network (MPN) azonosítóját a közzétett ajánlatokhoz, és nyomon követheti az ügyfelek bevonásának következményeit.
 
-> [!NOTE]
-> Ha nem szeretne ajánlatot közzétenni az Azure Marketplace-en, Azure Resource Manager-sablonok használatával manuálisan is bevezetheti az ügyfeleket. További információ: az ügyfél beléptetése [Az Azure világítótoronyba](onboard-customer.md).
+Ha nem szeretne ajánlatot közzétenni az Azure Marketplace-en, vagy nem teljesíti az összes követelményt, manuálisan is bevezetheti az ügyfeleket Azure Resource Manager sablonok használatával. További információ: az ügyfél beléptetése [Az Azure világítótoronyba](onboard-customer.md).
+
+Az alábbi táblázat segítségével meghatározhatja, hogy az ügyfelek felügyelt szolgáltatási ajánlat közzétételével vagy Azure Resource Manager sablonok használatával legyenek bevezetve.
+
+|**Szempont**  |**Felügyelt szolgáltatás ajánlata**  |**ARM-sablonok**  |
+|---------|---------|---------|
+|[Partner Center-fiók](../../marketplace/partner-center-portal/create-account.md) szükséges   |Igen         |Nem        |
+|[Silver vagy Gold Cloud Platform kompetencia](/partner-center/learn-about-competencies) vagy [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) szükséges      |Igen         |Nem         |
+|Elérhető az új ügyfelek számára az Azure Marketplace-en keresztül     |Igen     |Nem       |
+|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Yes         |
+|Ügyfél-elfogadás szükséges a Azure Portal     |Igen     |Nem   |
+|Az Automation használatával több előfizetést, erőforráscsoportot vagy ügyfelet helyezhet üzembe |Nem     |Igen    |
+|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Yes         |
 
 ## <a name="create-your-offer"></a>Ajánlat létrehozása
 

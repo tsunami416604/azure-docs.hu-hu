@@ -6,23 +6,23 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: d08d7a81fddfe70593c31ac3ebd2191679ea1220
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206364"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586834"
 ---
 # <a name="azure-load-balancer-skus"></a>SKU Azure Load Balancer
 
 Azure Load Balancer két ízeket vagy SKU-t tartalmaz.
 
-## <a name="sku-comparison"></a><a name="skus"></a>SKU-összehasonlítás
+## <a name="sku-comparison"></a><a name="skus"></a> SKU-összehasonlítás
 
 A Load Balancer az alapszintű és a standard SKU-t is támogatja. Ezek az SKU-ket a forgatókönyvek skálázása, a funkciók és a díjszabás különbözik. Az alapszintű Load balancerrel lehetséges forgatókönyvek a standard Load Balancer használatával hozhatók létre.
 
@@ -38,15 +38,15 @@ Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Vi
 | **Háttérbeli készlet végpontjai** | Bármely virtuális gép vagy virtuálisgép-méretezési csoport egyetlen virtuális hálózatban. | Egyetlen rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport virtuális gépei. |
 | **[Állapotminták](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
 | **[Állapot-mintavételi leállási viselkedés](./load-balancer-custom-probe-overview.md#probedown)** | A TCP-kapcsolatok egy példányon maradnak életben __, és__ az összes mintavétel le van kapcsolva. | A TCP-kapcsolatok egy példányon maradnak életben. Minden TCP-kapcsolat leáll, ha az összes mintavétel le van állítva. |
-| **Rendelkezésre állási zónák** | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem érhető el |
+| **Availability Zones** | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem elérhető |
 | **Diagnosztika** | [Többdimenziós metrikák Azure Monitor](./load-balancer-standard-diagnostics.md) | [Naplók Azure Monitor](./load-balancer-monitor-log.md) |
-| **HA portok** | [Belső Load Balancer számára elérhető](./load-balancer-ha-ports-overview.md) | Nem érhető el |
+| **HA portok** | [Belső Load Balancer számára elérhető](./load-balancer-ha-ports-overview.md) | Nem elérhető |
 | **Alapértelmezés szerint biztonságos** | Lezárva a bejövő folyamatokhoz, kivéve, ha a hálózati biztonsági csoport engedélyezi azt. Vegye figyelembe, hogy a VNet belső forgalma a belső terheléselosztó számára engedélyezett. | Alapértelmezés szerint megnyílik. A hálózati biztonsági csoport nem kötelező. |
-| **Kimenő szabályok** | [Deklaratív kimenő NAT-konfiguráció](./load-balancer-outbound-rules-overview.md) | Nem érhető el |
-| **TCP alaphelyzetbe állítása üresjáratban** | [Bármely szabályban elérhető](./load-balancer-tcp-reset.md) | Nem érhető el |
+| **Kimenő szabályok** | [Deklaratív kimenő NAT-konfiguráció](./load-balancer-outbound-rules-overview.md) | Nem elérhető |
+| **TCP alaphelyzetbe állítása üresjáratban** | [Bármely szabályban elérhető](./load-balancer-tcp-reset.md) | Nem elérhető |
 | **[Több előtér](./load-balancer-multivip-overview.md)** | Bejövő és [kimenő](./load-balancer-outbound-connections.md) | Csak bejövő |
 | **Felügyeleti műveletek** | A legtöbb művelet < 30 másodperc | 60 – 90 + másodperc átlagos |
-| **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nem érhető el | 
+| **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nem elérhető | 
 
 További információ: [Load Balancer korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). A Standard Load Balancerről további részleteket az [áttekintés](load-balancer-standard-overview.md), a [díjszabás](https://aka.ms/lbpricing) és az [SLA](https://aka.ms/lbsla) szakaszban talál.
 

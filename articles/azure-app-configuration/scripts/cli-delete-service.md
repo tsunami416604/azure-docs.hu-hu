@@ -1,7 +1,7 @@
 ---
 title: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának törlése
 titleSuffix: Azure App Configuration
-description: Azure-alkalmazás konfigurációs tárolójának törlése az Azure CLI-parancsfájl használatával
+description: Azure-alkalmazás konfigurációs tárolójának törlése egy minta Azure CLI-parancsfájl használatával. Lásd a parancsfájlban használt parancsokra mutató hivatkozásokat.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ba04b1a9aefa942c862b89f853d015762579937d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e107ba9628eca384f518f7a241be5c00c278ef0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494842"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588302"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának törlése
 

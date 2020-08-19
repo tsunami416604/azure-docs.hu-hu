@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: bdde2076039a6f7687e06edef6dfd6f6f5148ce4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044136"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590166"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -30,6 +30,48 @@ Ezt követően újra kell futtatnia a parancsot.
 ### <a name="possible-causes"></a>Lehetséges okok
 
 Ez az Cloud Shell ismert problémájának eredménye: a [*token Lekérése Cloud Shell időszakosan meghiúsul az 400-es ügyféllel kapcsolatos hiba miatt: hibás kérelem*](https://github.com/Azure/azure-cli/issues/11749).
+
+## <a name="missing-role-assignment-after-scripted-setup"></a>A szerepkör-hozzárendelés hiányzik a parancsfájlból történő telepítés után
+
+Egyes felhasználók problémákat tapasztalhatnak a szerepkör-hozzárendelési részével kapcsolatban [*: példány és hitelesítés beállítása (parancsfájlba*](how-to-set-up-instance-scripted.md)foglalt). A parancsfájl nem jelez hibát, de az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkör nem lett sikeresen hozzárendelve a felhasználóhoz, és ez hatással lehet más erőforrások létrehozására az úton.
+
+Annak megállapításához, hogy a szerepkör-hozzárendelés sikeresen be lett-e állítva a parancsfájl futtatása után, kövesse a telepítési cikk [*felhasználói szerepkör-hozzárendelés ellenőrzése*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) szakaszának utasításait. Ha a felhasználó nem jelenik meg ezzel a szerepkörrel, ez a probléma hatással van.
+
+### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+
+A megoldáshoz manuálisan is beállíthatja a szerepkör-hozzárendelést a parancssori felület vagy a Azure Portal használatával. 
+
+Kövesse az alábbi utasításokat:
+* [Parancssori felület](how-to-set-up-instance-cli.md#set-up-user-access-permissions)
+* [portál](how-to-set-up-instance-portal.md#set-up-user-access-permissions)
+
+### <a name="possible-causes"></a>Lehetséges okok
+
+A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolgáltatásban bejelentkezett felhasználók esetében a felhasználó egyszerű azonosítója, amely az ilyen típusú parancsokban különbözik a felhasználó bejelentkezési e-mail-címétől, így megnehezíti a szkript felderítését és használatát a szerepkör megfelelő hozzárendeléséhez.
+
+## <a name="issue-with-interactive-browser-authentication"></a>Probléma az interaktív böngésző-hitelesítéssel
+
+Ha az Azure ** [. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) Library**legújabb verziójának ( **1.2.0**) használatával ír be hitelesítési kódot az Azure-beli digitális Twins-alkalmazásokban, akkor a [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódussal kapcsolatos problémák léphetnek fel.
+
+Az érintett módszert a következő cikkek használják: 
+* [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)
+* [*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)
+* [*Útmutató: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)
+
+A probléma az "Azure. Identity. AuthenticationFailedException" hibaüzenettel is rendelkezik, amikor egy böngészőablakban próbálkozik a hitelesítéssel. Előfordulhat, hogy a böngészőablak nem indul el teljesen, vagy úgy tűnik, hogy sikeresen hitelesíti a felhasználót, míg az ügyfélalkalmazás továbbra is a hibával meghiúsul.
+
+### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+
+A megoldáshoz az alkalmazások explicit módon használják az Azure. Identity **1.1.1**-es verzióját. A könyvtár ezen verziójával a böngészőnek be kell töltenie és hitelesítenie kell a várt módon.
+
+>[!NOTE]
+> Nem elegendő, ha a könyvtárat anélkül adja hozzá, hogy bármilyen verziót megad, mivel ez a legújabb **1.2.0**továbbra is alapértelmezett lesz. Explicit módon meg kell adnia a **1.1.1** -es verziót.
+
+### <a name="possible-causes"></a>Lehetséges okok
+
+Ez az Azure Digital Twins és az Azure. Identity Library legújabb verziója közötti inkompatibilitás. **1.2.0**. 
+
+Ez a probléma akkor jelenik meg, ha az alkalmazásban **1.2.0** használ, vagy ha egy verzió megadása nélkül adja hozzá a könyvtárat a projekthez (ez a legújabb verzióra is vonatkozik).
 
 ## <a name="next-steps"></a>További lépések
 

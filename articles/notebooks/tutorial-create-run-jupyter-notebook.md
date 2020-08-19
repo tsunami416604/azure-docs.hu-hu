@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Jupyter-jegyzetfüzet létrehozása és futtatása – Azure Notebooks előzetes verzió
-description: Megtudhatja, hogyan hozhat létre és futtathat Jupyter jegyzetfüzeteket Azure Notebooks előzetes verzióban, amely bemutatja az adatelemzési folyamat lineáris regressziós folyamatát.
+title: Oktatóanyag – Jupyter Notebook Azure Notebooks előzetes verziójának létrehozása és futtatása
+description: Megtudhatja, hogyan hozhat létre és futtathat egy Jupyter Notebookt Azure Notebooks előzetes verzióban, amely bemutatja a lineáris regressziós folyamatot az adatelemzésben.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846912"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589251"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása Python-val
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: Jupyter Notebook létrehozása és futtatása Python-val
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Ez az oktatóanyag végigvezeti a Azure Notebooks használatának folyamatán, amely egy teljes Jupyter jegyzetfüzetet hoz létre, amely egyszerű lineáris regressziót mutat be. Az oktatóanyag során megismerheti a Jupyter notebook felhasználói felületét, amely magában foglalja a különböző cellák létrehozását, a cellák futtatását és a jegyzetfüzet megjelenítését diavetítésként.
+Ez az oktatóanyag végigvezeti a Azure Notebooks használatának folyamatán, amely egy teljes Jupyter Notebook létrehozását mutatja be, amely egyszerű lineáris regressziót mutat be. Az oktatóanyag során Ismerkedjen meg a Jupyter Notebook felhasználói felülettel, amely magában foglalja a különböző cellák és a futó cellák létrehozását, valamint a jegyzetfüzet megjelenítését diavetítésként.
 
 Az elkészült jegyzetfüzet a [GitHub-Azure Notebooks mintákon](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)érhető el. Ez az oktatóanyag azonban egy új projekttel és egy üres jegyzetfüzettel kezdődik, így a lépésről lépésre megtekintheti a folyamatot.
 
@@ -114,7 +114,7 @@ A notebookon belül mindig használhat olyan parancsokat, mint a `!pip install` 
 1. Az első legördülő menüben (a művelet) a **környezet beállítása lépésnél**válassza a **Requirements.txt**lehetőséget.
 1. A második legördülő menüben (a fájl neve) válassza a *requirements.txt* (a létrehozott fájl) lehetőséget.
 1. A harmadik legördülő vezérlőben (a Python verziója) válassza a **python 3,6**-es verzióját.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ![A Project Settings környezet lapja requirements.txt fájlt ad meg](media/tutorial/tutorial-requirements-txt.png)
 
@@ -417,11 +417,11 @@ Ha a jegyzetfüzetben lévő kód cellái nem a várt módon viselkednek, akkor 
 
 Szerencsére letöltheti a notebook *. ipynb* -fájlját, majd a Python bővítménnyel megnyithatja a Visual Studio Code-ban. A bővítmény közvetlenül importál egy jegyzetfüzetet egyetlen kódlapként, megőrizve a Markdown-cellákat a megjegyzésekben. Miután importálta a jegyzetfüzetet, használhatja a Visual Studio Code debuggert a kód beléptetéséhez, a töréspontok beállításához, az állapot vizsgálatához és így tovább. A kód javítása után exportálja a *. ipynb* fájlt a Visual Studio Code-ból, és töltse fel újra Azure Notebooksba.
 
-További információ: Jupyter- [Jegyzetfüzet hibakeresése](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) a Visual Studio Code dokumentációjában.
+További információ: [Jupyter notebook hibakeresése](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) a Visual Studio Code dokumentációjában.
 
 Lásd még: a [Visual Studio Code-Jupyter támogatása](https://code.visualstudio.com/docs/python/jupyter-support) a Visual Studio Code további szolgáltatásaihoz a Jupyter notebookokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 

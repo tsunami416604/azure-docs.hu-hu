@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261871"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587752"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
@@ -32,10 +32,19 @@ A Recovery Services-tároló egy olyan entitás, amely az idő múlásával lét
 
 - A tárterület-redundanciával kapcsolatos további tudnivalókért tekintse meg a [geo](../storage/common/storage-redundancy.md) és a [helyi](../storage/common/storage-redundancy.md) redundancia című cikket.
 
-### <a name="additional-resources"></a>További források
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Titkosítási beállítások a Recovery Services-tárolóban
 
-- [Tár támogatott és nem támogatott forgatókönyvek](backup-support-matrix.md#vault-support)
-- [Tár – gyakori kérdések](backup-azure-backup-faq.md)
+Ez a szakasz a Recovery Services-tárolóban tárolt biztonsági másolatok titkosításához rendelkezésre álló lehetőségeket ismerteti.
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Biztonsági másolatok titkosítása a platform által felügyelt kulcsokkal
+
+Alapértelmezés szerint az összes adatait a platform által felügyelt kulcsok használatával titkosítja a rendszer. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtani a végponttól. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
+
+Dönthet úgy, hogy az Ön által birtokolt és felügyelt titkosítási kulcsok használatával titkosítja az adatait. Azure Backup lehetővé teszi, hogy a Azure Key Vault tárolt RSA-kulcsait a biztonsági mentések titkosításához használja. A biztonsági mentések titkosításához használt titkosítási kulcs különbözhet a forráshoz használttól. Az adatait egy AES 256-alapú adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) védik, amely viszont a kulcsok használatával védett. Ez teljes körű irányítást biztosít az adat és a kulcsok felett. A titkosítás engedélyezéséhez a Recovery Services-tárolónak hozzáférést kell biztosítania a Azure Key Vault található titkosítási kulcshoz. Ha szükséges, letilthatja a kulcsot, vagy visszavonhatja a hozzáférést. A titkosítást azonban a kulcsok használatával kell engedélyeznie, mielőtt bármilyen elemet a tárolóhoz próbál védelemmel ellátni.
+
+További információ arról, hogyan titkosíthatja a biztonsági mentési adatait az [ügyfél által felügyelt kulcsokkal](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
@@ -45,9 +54,15 @@ A Azure Advisor óránként [javaslatokat](../advisor/advisor-high-availability-
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>További források
+
+- [Tár támogatott és nem támogatott forgatókönyvek](backup-support-matrix.md#vault-support)
+- [Tár – gyakori kérdések](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek használhatók:</br>
-[IaaS virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md)</br>
-[Azure Backup Server biztonsági mentése](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server biztonsági mentése](backup-windows-with-mars-agent.md)
+A következő cikkek használhatók:
+
+- [IaaS virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md)
+- [Azure Backup Server biztonsági mentése](backup-azure-microsoft-azure-backup.md)
+- [Windows Server biztonsági mentése](backup-windows-with-mars-agent.md)

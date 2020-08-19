@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 7044954d2ba67e61172c08c0a77acaaaec3822c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992674"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589451"
 ---
 # <a name="what-is-the-translator"></a>Mi a fordító?
 
-A fordító egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi többnyelvű felhasználói felületek hozzáadását [több mint 60 nyelven](languages.md), és bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
+A fordító egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmény [több mint 70 nyelven](languages.md)való hozzáadását, és bármilyen hardveres platformon használható bármely operációs rendszerrel a szöveg és a szöveg közötti nyelvi fordításhoz.
 
 A fordító a gépi tanulási és AI-algoritmusok [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) -gyűjteményének része a felhőben, és könnyen fogyasztható a fejlesztési projektekben.
 

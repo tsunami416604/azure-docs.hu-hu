@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528383"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590115"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
 
@@ -22,6 +22,8 @@ Az Azure Storage a fájlmegosztás (előzetes verzió) helyreállítható törl�
 A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a Soft delete használatát az Azure-fájlmegosztás számára egy meglévő Storage-fiókban:
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
+
+## <a name="getting-started"></a>Első lépések
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Navigáljon a Storage-fiókjához, és válassza a **Soft delete** elemet a **file Service**lehetőségnél.
@@ -33,7 +35,13 @@ A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A Soft delete parancsmagok az az. Storage modul 2.1.1-Preview verziójában érhetők el. A Soft delete engedélyezéséhez frissítenie kell egy fájl ügyfél szolgáltatásának tulajdonságait. A következő példa egy Storage-fiókban lévő összes fájlmegosztás esetében lehetővé teszi a Soft delete használatát:
+## <a name="prerequisite"></a>Előfeltétel
+
+A Soft delete parancsmagok jelenleg csak az az. Storage modul [2.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) és [2.3.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) verziójában érhetők el. 
+
+## <a name="getting-started"></a>Első lépések
+
+A Soft delete engedélyezéséhez frissítenie kell egy fájl ügyfél szolgáltatásának tulajdonságait. A következő példa egy Storage-fiókban lévő összes fájlmegosztás esetében lehetővé teszi a Soft delete használatát:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -98,6 +106,6 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountNa
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatvédelem és a helyreállítás más formájával kapcsolatos további információkért tekintse meg a [Azure Files-Pillanatképek megosztásának áttekintését](storage-snapshots-files.md)ismertető cikket.

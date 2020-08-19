@@ -1,76 +1,84 @@
 ---
 title: Gyakori kérdések – Azure Key Vault tanúsítvány importálása
-description: Gyakori kérdések – Azure Key Vault tanúsítvány importálása
+description: Választ kaphat a Azure Key Vault tanúsítványok importálásával kapcsolatos gyakori kérdésekre.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056346"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588821"
 ---
-# <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Gyakori kérdések – Azure Key Vault tanúsítvány importálása
+# <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault-tanúsítványok importálása – gyakori kérdések
+
+Ez a cikk a Azure Key Vault tanúsítványok importálásával kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="how-can-i-import-a-certificate-in-azure-key-vault"></a>Hogyan importálhatók tanúsítvány Azure Key Vault?
 
-Tanúsítvány importálása – importálási művelet esetén az Azure Key Vault két, PEM és PFX formátumú tanúsítványt fogad el. Bár a PEM-fájlok csak a nyilvános részből állnak, az Azure Key Vault megköveteli és csak a fájl mappájába és egy titkos kulccsal rendelkező PEM-vagy PFX-fájlt fogad el. [A tanúsítvány importálásához kövesse az oktatóanyagot](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault)
+A tanúsítvány-importálási művelethez Azure Key Vault két tanúsítványfájl-formátumot fogad el: PEM és PFX. Bár a PEM-fájlok csak a nyilvános részből állnak, Key Vault igényel, és csak egy PEM-vagy PFX-fájlt fogad el titkos kulccsal. További információ: [tanúsítvány importálása Key Vaultba](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault).
 
-### <a name="after-importing-password-protected-certificate-into-the-key-vault-and-then-downloading-it-i-am-not-able-to-see-the-password-associated-with-the-certificate"></a>Miután importálta a jelszóval védett tanúsítványt a kulcstartóba, majd letölti, nem tudom megtekinteni a tanúsítványhoz tartozó jelszót?
+### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Miután importáltam egy jelszóval védett tanúsítványt Key Vault, majd letölti, miért nem látom a hozzá társított jelszót?
     
-A feltöltött védett tanúsítvány a Key vaultba való tárolás után nem fogja menteni a hozzá társított jelszót. Erre az importálási művelet során csak egyszer van szükség. Bár ez a kialakítási koncepció, a tanúsítványt mindig titkos fájlként szerezheti be, és a Base64-ről PFX-re alakíthatja az előző jelszót [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)használatával.
+A tanúsítvány importálását és védelmét követően Key Vault a hozzá tartozó jelszót nem menti a rendszer. A jelszót csak egyszer kell megadni az importálási művelet során. Ez a kialakítás alapján történik, de mindig titkos kulcsot kaphat a tanúsítványhoz, és a Base64-ről PFX-re alakíthatja a jelszót [Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)használatával.
 
-### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>Hogyan oldható fel a "hibás paraméteres hiba"? Mely tanúsítványformátumok importálását támogatja a Key Vault?
+### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>Hogyan oldható fel a "Hibás paraméter" hiba? Melyek a Key Vaultba való importálás támogatott tanúsítványainak formátuma?
 
-A tanúsítvány importálásakor győződjön meg arról, hogy a kulcs maga is szerepel a fájlban. Ha a titkos kulccsal külön formátumban van, akkor a kulcsot össze kell kapcsolni a tanúsítvánnyal. Egyes hitelesítésszolgáltatók különböző formátumú tanúsítványokat biztosítanak, ezért a tanúsítvány importálása előtt győződjön meg arról, hogy a. PEM vagy a. pfx formátumban vannak megadva, és hogy a használt kulcs RSA vagy ECC. Tekintse át ezeket a [tanúsítványokra vonatkozó követelmények](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) és a [tanúsítványokra vonatkozó követelmények](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)áttekintéséhez.
+Tanúsítvány importálásakor gondoskodnia kell arról, hogy a kulcs szerepeljen a fájlban. Ha más formátumban külön tárolt titkos kulccsal rendelkezik, a kulcsot össze kell kapcsolni a tanúsítvánnyal. Egyes hitelesítésszolgáltatók (CA-k) más formátumú tanúsítványokat biztosítanak. Ezért a tanúsítvány importálása előtt győződjön meg arról, hogy a PEM-vagy PFX-fájlformátumban van, és hogy a kulcs Rivest – a Adleman (RSA) vagy az elliptikus-görbe titkosítási (ECC) titkosítást használja. 
 
-###  <a name="can-i-import-certificate-using-arm-template"></a>Tudom importálni a tanúsítványt az ARM-sablon használatával?
+További információ: a [tanúsítványokra vonatkozó követelmények](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) és a [tanúsítvány kulcsa](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection).
 
-Nem, az ARM-sablonok használatával nem lehet certifiate műveleteket végezni. Az ajánlott megkerülő megoldás az API-ban, a CLI-ben vagy a PowerShellben lévő tanúsítványalapú importálási módszerek használata. Ha rendelkezik meglévő-tanúsítvánnyal, akkor azt titkos fájlként is importálhatja.
+###  <a name="can-i-import-a-certificate-by-using-an-arm-template"></a>Importálható egy tanúsítvány egy ARM-sablon használatával?
 
-### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>„Hiba történt” hibaüzenet a tanúsítvány portálon keresztül történő importálásakor. Hogyan lehet további vizsgálatot végezni?
+Nem, Azure Resource Manager-(ARM-) sablon használatával nem lehet végrehajtani a tanúsítvány-műveleteket. Ajánlott megkerülő megoldásként használja az Azure API, az Azure CLI vagy a PowerShell tanúsítvány-importálási módszereit. Ha rendelkezik meglévő tanúsítvánnyal, akkor azt titkos fájlként importálhatja.
+
+### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Ha a Azure Portal keresztül importálok egy tanúsítványt, "hiba történt" hibaüzenetet kapok. Hogyan lehet további vizsgálatot végezni?
     
-További leíró hiba megtekintéséhez importálja a tanúsítványfájl az [Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)használatával.
+Ha részletesebben szeretne megtekinteni egy leíró hibát, importálja a tanúsítványt [Az Azure CLI vagy a](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)használatával.
 
-### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hogyan oldható fel a hiba típusa: hozzáférés megtagadva, vagy a felhasználó nem jogosult a tanúsítvány importálására?
+### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hogyan oldható fel a "hiba típusa: hozzáférés megtagadva, vagy a felhasználó nem jogosult a tanúsítvány importálására"?
     
-Ehhez a művelethez a tanúsítványokra/importálásra vonatkozó engedély szükséges. Keresse meg a Key Vault helyét. A hozzáférési szabályzatok között meg kell adnia a felhasználónak a megfelelő engedélyeket. Navigáljon a Key Vault> hozzáférési szabályzatok > adja hozzá a hozzáférési házirendet > válassza a tanúsítványok engedélyei lehetőséget (vagy az engedélyek megadását) > elsődleges > keresse meg, majd adja hozzá a felhasználó e-mail címét. [További információ a tanúsítványokkal kapcsolatos hozzáférési házirendekről](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)
+Az importálási művelethez a felhasználónak engedélyeket kell adnia a tanúsítvány importálásához a hozzáférési házirendekben. Ehhez nyissa meg a Key vaultot, és válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**a  >  tanúsítvány-engedélyek rendszerbiztonsági tag**kiválasztása elemet**,  >  **Principal**keresse meg a felhasználót, majd adja hozzá a felhasználó e-mail-címét. 
+
+További információ a tanúsítványokkal kapcsolatos hozzáférési házirendekről: [Tudnivalók a Azure Key Vault tanúsítványokról](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control).
 
 
-### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Hogyan oldható fel a hiba típusa: ütközés a tanúsítvány létrehozásakor?
+### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Hogyan oldható fel a "hiba típusa: ütközés a tanúsítvány létrehozásakor"?
     
-A tanúsítvány nevének egyedinek kell lennie. Előfordulhat, hogy az azonos nevű tanúsítvány nem törölhető állapotban van, a tanúsítványnak az Azure Key vaultban való [összetételéhez](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) hasonlóan, ha van egy másik kulcs vagy titok a tanúsítványhoz használni kívánt Key Vault ugyanazzal a névvel, és el kell távolítania az adott kulcsot vagy titkot, vagy más nevet kell használnia a tanúsítványhoz. [törölt tanúsítvány megtekintése](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate)
+Minden tanúsítvány nevének egyedinek kell lennie. Egy olyan tanúsítvány, amelynek a neve azonos, egy másik lehet, hogy nem törölt állapotban van. Továbbá, ha a tanúsítvány [összetétele](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) alapján Azure Key Vault, ha a kulcstartóban van egy másik kulcs vagy titok, amelynek a neve megegyezik a tanúsítványhoz megadott névvel, a tanúsítvány létrehozása sikertelen lesz, és el kell távolítania a kulcsot vagy a titkos kulcsot, vagy más nevet kell használnia a tanúsítványhoz. 
 
-### <a name="why-am-i-getting-the-error-type-char-length-is-too-long"></a>Miért kapok a "hiba típusa: karakter hossza túl hosszú"?
+További információ: [Get Deleted Certificate Operation](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
+
+### <a name="why-am-i-getting-error-type-char-length-is-too-long"></a>Miért kapok "hiba típusa: karakter hossza túl hosszú"?
+Ezt a hibát két ok okozhatja:    
+* A tanúsítvány tulajdonosának neve legfeljebb 200 karakter hosszú lehet.
+* A tanúsítvány jelszava 200 karakterre van korlátozva.
+
+### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>Importálhatók a lejárt tanúsítványok Azure Key Vault?
     
-* A tanúsítvány tulajdonosának neve hossza 200 karakteres.
-* A tanúsítvány jelszavának hossza 200 karakteres.
+Nem, a lejárt PFX-tanúsítványok nem importálhatók Key Vaultba.
 
-### <a name="can-i-import-an-expired-certificate-in-azure-key-vault"></a>Importálhatók a lejárt tanúsítványok az Azure Key vaultban?
-    
-Nem, a lejárt PFX-tanúsítványok nem lesznek importálva Azure Key Vaultba.
+### <a name="how-can-i-convert-my-certificate-to-the-proper-format"></a>Hogyan válthatom be a tanúsítványt a megfelelő formátumba?
 
-### <a name="how-can-i-convert-my-certificate-to-proper-format"></a>Hogyan válthatom be a tanúsítványt a megfelelő formátumba?
-
-Megkérheti a hitelesítésszolgáltatót, hogy a szükséges formátumban adja meg a tanúsítványt, továbbá vannak olyan harmadik féltől származó eszközök is, amelyek segítségével a megfelelő formátumra alakíthatja át a tanúsítványt, azonban a Microsoft nem fog tudni további tanácsot adni a tanúsítvány kívánt formátumban való beszerzéséről.
+Megkérheti a HITELESÍTÉSSZOLGÁLTATÓT, hogy a szükséges formátumban adja meg a tanúsítványt. Vannak olyan külső eszközök is, amelyek segítségével a tanúsítvány megfelelő formátumba konvertálható.
 
 ### <a name="can-i-import-certificates-from-non-partner-cas"></a>Importálhatók a nem partneri hitelesítésszolgáltatóktól származó tanúsítványok?
-Igen, a tanúsítványok bármely HITELESÍTÉSSZOLGÁLTATÓTÓL importálhatók, de a Key Vault nem fogja tudni automatikusan megújítani ezeket a tanúsítványokat. E-mail-értesítéseket állíthat be, hogy értesítést kapjon a tanúsítvány lejáratáról.
+Igen, bármely HITELESÍTÉSSZOLGÁLTATÓTÓL importálhat tanúsítványokat, de a kulcstartó nem fogja tudni automatikusan megújítani őket. Az emlékeztetőket beállíthatja úgy, hogy értesítést kapjon a tanúsítvány lejáratáról.
 
-### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Ha importálok egy tanúsítványt egy partner HITELESÍTÉSSZOLGÁLTATÓTÓL, akkor is működik az automatikus megújítás funkció?
-Igen, meg kell győződnie arról, hogy a feltöltés után meg kell adnia az autorotációt a tanúsítvány kiállítási házirendjében. A módosításokat a rendszer a következő ciklus vagy tanúsítvány verziójának megfelelően is megjeleníti.
+### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>Ha importálok egy tanúsítványt egy partner HITELESÍTÉSSZOLGÁLTATÓTÓL, az automatikus megújítási funkció továbbra is működik?
+Igen. A tanúsítvány feltöltése után ne felejtse el megadnia az autorotációt a tanúsítvány kiállítási házirendjében. A beállítások érvényben maradnak a következő ciklus vagy a tanúsítvány verziójának kiadása előtt.
 
-### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Nem látható a Key Vaultba importált App Service-tanúsítvány? 
-Ha sikeresen importálta a tanúsítványt, tekintse át a titkok panel alatt.
+### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>Miért nem látom a Key Vaultba importált App Service-tanúsítványt? 
+Ha sikeresen importálta a tanúsítványt, a **titkok** ablaktáblán ellenőrizheti, hogy meg tudja-e erősíteni.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003835"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587089"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Windows-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure Marketplace számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb operációsrendszer-és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) használatával.
@@ -67,8 +67,8 @@ Hozzon létre egy *windows.js* nevű fájlt, és illessze be a következő tarta
 
 | Paraméter                           | A beszerzés helye |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Egyszerű szolgáltatás AZONOSÍTÓjának megtekintése`$sp.applicationId` |
-| *client_secret*                     | Az automatikusan generált jelszó megtekintése a`$plainPassword` |
+| *client_id*                         | Egyszerű szolgáltatás AZONOSÍTÓjának megtekintése `$sp.applicationId` |
+| *client_secret*                     | Az automatikusan generált jelszó megtekintése a `$plainPassword` |
 | *tenant_id*                         | Kimenet a `$sub.TenantId` parancsból |
 | *subscription_id*                   | Kimenet a `$sub.SubscriptionId` parancsból |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport neve |
@@ -84,7 +84,7 @@ Hozzon létre egy *windows.js* nevű fájlt, és illessze be a következő tarta
     "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
     "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",

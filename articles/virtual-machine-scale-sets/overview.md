@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075544"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590387"
 ---
-# <a name="what-are-virtual-machine-scale-sets"></a>Mik azok a virtuálisgép-méretezési csoportok?
+# <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
 Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhelésű virtuális gépek csoportjának létrehozását és kezelését. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
 
 
@@ -60,6 +60,10 @@ A méretezési csoportok nem járnak többletköltségekkel. Csak a mögöttes s
 Használja a [Azure monitor for VMst](../azure-monitor/insights/vminsights-overview.md), amely egy egyszerű előkészítési folyamattal rendelkezik, és automatizálja a méretezési csoportba tartozó virtuális gépekről származó fontos CPU-, memória-, lemez-és hálózati teljesítményszámlálók gyűjteményét. Emellett további figyelési képességeket és előre definiált vizualizációkat is tartalmaz, amelyek segítenek a méretezési csoportok rendelkezésre állásának és teljesítményének a kiépítésében.
 
 Engedélyezheti a figyelést a [virtuálisgép-méretezési csoport alkalmazásához](../azure-monitor/app/azure-vm-vmss-apps.md) a Application Insights segítségével részletes információkat gyűjthet az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és a kivételekről. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
+
+## <a name="singapore-data-residency"></a>Szingapúri adattárolás
+
+Az Azure-ban az ügyféladatok egyetlen régióban való tárolását lehetővé tevő funkció jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja. További információ: [megbízhatósági központ](https://azuredatacentermap.azurewebsites.net/).
 
 ## <a name="next-steps"></a>További lépések
 Első lépésként hozza létre első virtuálisgép-méretezési csoportját az Azure Portalon.

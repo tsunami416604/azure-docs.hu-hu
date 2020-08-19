@@ -1,18 +1,18 @@
 ---
 title: Reagálás az Azure app Configuration kulcs-érték eseményeire
-description: Azure Event Grid használata az alkalmazás-konfigurációs eseményekre való előfizetéshez.
+description: A Azure Event Grid használatával fizethet elő az alkalmazás konfigurációs eseményeire, amelyek lehetővé teszik, hogy az alkalmazások a kulcs-értékekben végrehajtott változásokra reagálva bonyolult kód nélkül reagáljanak.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523798"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590030"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Az Azure-alkalmazás konfigurációs eseményeire való reagálás
 
@@ -40,13 +40,13 @@ Az Azure-alkalmazás konfigurációs eseményei tartalmazzák az adatok változ�
 > |Tulajdonság|Típus|Description|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |témakör|sztring|Az eseményt kibocsátó alkalmazás-konfiguráció teljes Azure Resource Manager azonosítója.|
-> |tulajdonos|sztring|Az esemény tárgyát képező kulcs-érték URI-ja.|
+> |tárgy|sztring|Az esemény tárgyát képező kulcs-érték URI-ja.|
 > |eventTime|sztring|Az esemény létrehozásának dátuma és időpontja ISO 8601 formátumban.|
 > |eventType|sztring|"Microsoft. AppConfiguration. KeyValueModified" vagy "Microsoft. AppConfiguration. KeyValueDeleted".|
-> |Azonosító|sztring|Az esemény egyedi azonosítója.|
+> |Id|sztring|Az esemény egyedi azonosítója.|
 > |dataVersion|sztring|Az adatobjektum sémaverziója.|
 > |metadataVersion|sztring|A legfelső szintű tulajdonságok sémájának verziója.|
-> |adatok|objektum|Az Azure-alkalmazások konfigurációjának adott eseményeinek gyűjteménye|
+> |adatok|object|Az Azure-alkalmazások konfigurációjának adott eseményeinek gyűjteménye|
 > |adat. kulcs|sztring|A módosított vagy törölt kulcs-érték kulcsa.|
 > |a. label|sztring|A módosított vagy törölt kulcs-érték címkéje (ha van).|
 > |az ETAG.|sztring|Az `KeyValueModified` új kulcs-érték ETAG. A `KeyValueDeleted` törölt kulcs-érték ETAG.|

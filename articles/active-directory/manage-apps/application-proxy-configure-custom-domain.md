@@ -1,27 +1,22 @@
 ---
-title: Egyéni tartományok az Azure AD Application Proxyban | Microsoft Docs
+title: Egyéni tartományok az Azure-ban AD Application Proxy
 description: Egyéni tartományok konfigurálása és kezelése az Azure AD Application Proxyban.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764910"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587769"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
@@ -91,11 +86,11 @@ Az alkalmazás közzététele az Application proxyn keresztül egyéni tartomán
    
    ![Egyéni tartomány kiválasztása](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Ha a tartomány már rendelkezik tanúsítvánnyal, a **tanúsítvány** mező a tanúsítvány adatait jeleníti meg. Ellenkező esetben válassza a **tanúsítvány** mezőt. 
+6. Ha a tartomány már rendelkezik tanúsítvánnyal, a **tanúsítvány** mező a tanúsítvány adatait jeleníti meg. Ellenkező esetben válassza a **tanúsítvány** mezőt.
    
    ![Kattintson ide a tanúsítvány feltöltéséhez](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése**lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt.
+7. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése**lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt. Ha a tanúsítvány érvénytelen, vagy probléma van a jelszóval, hibaüzenet jelenik meg. Az [alkalmazásproxy gyakori kérdéseiben](application-proxy-faq.md#application-configuration) néhány olyan hibaelhárítási lépés található, amelyet kipróbálhat.
    
    ![Tanúsítvány feltöltése](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ A tanúsítvány létrehozza a biztonságos TLS-kapcsolatokat az egyéni tartom�
 
 PFX-tanúsítványt kell használnia annak biztosításához, hogy az összes szükséges közbenső tanúsítvány megtalálható legyen. A tanúsítványnak tartalmaznia kell a titkos kulcsot.
 
-A tanúsítvány-aláírási módszerek nem korlátozzák a korlátozást. Az elliptikus görbe titkosítása (ECC), a tulajdonos alternatív neve (SAN) és más gyakori tanúsítványok támogatottak. 
+A leggyakoribb tanúsítvány-aláírási módszerek (például a tulajdonos alternatív neve (SAN)) támogatottak. 
 
 Helyettesítő tanúsítványokat használhat, ha a helyettesítő karakter megfelel a külső URL-címnek. Helyettesítő tanúsítványokat kell használnia [helyettesítő alkalmazásokhoz](application-proxy-wildcard.md). Ha azt szeretné, hogy a tanúsítvány az altartományokhoz is hozzáférhessen, akkor az altartomány helyettesítő karaktereit a tulajdonos alternatív neveiként kell hozzáadnia ugyanabban a tanúsítványban. Például a. * \* Adventure-Works.com* tanúsítványa nem fog működni a * \* . apps.Adventure-Works.com* esetében, ha a * \* . apps.Adventure-Works.com* nevet adja a tulajdonos alternatív neveként. 
 

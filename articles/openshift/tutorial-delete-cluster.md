@@ -7,12 +7,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 6fdc36dbf270be61457dcd00dd1988808a80d062
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 019e40b5ce7d3feb5b2be990d5e8a648b08302b2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030096"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587701"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt törlése
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban, amely három részből áll, a OpenShift 4-es verziój
 
 Az előző oktatóanyagokban egy Azure Red Hat OpenShift-fürtöt hoztak létre és csatlakoztattak a OpenShift webkonzol használatával. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag használatával – hozzon létre egy Azure Red Hat Openshift 4 fürtöt.](tutorial-create-cluster.md)
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.75 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -40,7 +40,7 @@ Ha több előfizetéshez is rendelkezik hozzáféréssel, `az account set -s {su
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Az előző oktatóanyagokban a következő változók lettek beállítva. 
+Az előző oktatóanyagokban a következő változók lettek beállítva.
 
 ```bash
 CLUSTER=yourclustername

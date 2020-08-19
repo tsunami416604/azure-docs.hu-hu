@@ -2,28 +2,37 @@
 title: Virtuális gépek automatikus leállításának konfigurálása a Azure Lab Servicesban
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális gépek automatikus leállítása a labor-fiókban.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 783e3b310b3ad06f637453f0e1b11f6a78beec3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/17/2020
+ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445814"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589799"
 ---
-# <a name="configure-automatic-shutdown-of-vms-on-disconnect-setting-for-a-lab-account"></a>A virtuális gépek automatikus leállításának beállítása a kapcsolat bontási beállításához labor-fiók esetén
-A távoli asztali kapcsolat leválasztása után engedélyezheti vagy letilthatja a Windows Lab virtuális gépek (sablon vagy tanuló) automatikus leállítását. Megadhatja azt is, hogy a labor szolgáltatásai mennyi ideig várjon a felhasználó újrakapcsolódására az automatikus leállítás előtt.
+# <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Virtuális gépek automatikus leállításának beállítása labor-fiókhoz
+
+Több automatikus leállítási költség-vezérlési funkciót is engedélyezhet, hogy proaktív módon meggátolja a további költségeket, ha a virtuális gépeket nem használják aktívan. A következő három automatikus leállítási és leválasztási funkció kombinációja a legtöbb esetben megfogást nyújt, amikor a felhasználók véletlenül elhagyják a virtuális gépeket:
+ 
+- A felhasználók automatikus leválasztása a virtuális gépekről, amelyeket az operációs rendszer tétlennek tekint (csak Windows).
+- Virtuális gépek automatikus leállítása a felhasználók leválasztásakor (Windows & Linux).
+- Automatikusan leállítja az elindított virtuális gépeket, de a felhasználók nem csatlakoznak.
+
+Tekintse át az automatikus leállítási funkciókról szóló további részleteket a [Cost Control és az automatikus leállítás beállításai](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) szakaszban.
 
 ## <a name="enable-automatic-shutdown"></a>Automatikus leállítás engedélyezése
 
-1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-beállítások** elemét.
-2. Válassza a **virtuális gépek automatikus leállítása a felhasználók leválasztásakor** lehetőséget.
-3. Annak megadása, hogy a labor szolgáltatásai mennyi ideig várjon a felhasználó újrakapcsolódására a virtuális gépek automatikus leállítása előtt.
+1. A [Azure Portal](https://portal.azure.com/) navigáljon a **labor-fiók** lapra.
+1. Válassza a **Labs-beállítások** elemet a bal oldali menüben.
+1. Válassza ki az adott forgatókönyvnek megfelelő automatikus leállítási beállítást (ka) t.  
 
-    ![Automatikus leállítás beállítása Lab-fiókban](./media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+    > [!div class="mx-imgBorder"]
+    > ![Automatikus leállítás beállítása Lab-fiókban](./media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+    
+    A beállítás (ok) a labor-fiókban létrehozott összes laborra érvényes. A tesztkörnyezet létrehozója (pedagógus) a tesztkörnyezet szintjén felülbírálhatja ezt a beállítást. A labor-fiókban a beállítás módosítása csak a módosítás után létrehozott laborokra lesz hatással.
 
-    Ez a beállítás a labor-fiókban létrehozott összes laborra vonatkozik. A tesztkörnyezet létrehozója (pedagógus) a tesztkörnyezet szintjén felülbírálhatja ezt a beállítást. A labor-fiókban a beállítás módosítása csak a módosítás után létrehozott laborokra lesz hatással.
-
-    Ennek a beállításnak a letiltásához törölje a jelet a **virtuális gépek automatikus leállítására** szolgáló jelölőnégyzetből, ha a felhasználók ezen a lapon le vannak választva. 
+    A beállítás (ok) letiltásához törölje a jelölőnégyzet (eke) t ezen a lapon. 
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk azt ismerteti, hogyan konfigurálható vagy bírálható el a tesztkörnyezet tulajdonosa a tesztkörnyezet szintjén [.](how-to-enable-shutdown-disconnect.md)
+
+Ha szeretné megtudni, hogy a labor tulajdonosa hogyan konfigurálhatja vagy felülbírálhatja ezt a beállítást a tesztkörnyezet szintjén, tekintse [meg a virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor](how-to-enable-shutdown-disconnect.md) lehetőséget.

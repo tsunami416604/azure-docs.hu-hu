@@ -1,6 +1,6 @@
 ---
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a .NET-keretrendszerrel | Microsoft Docs
-description: Gyors útmutató az Azure-alkalmazások konfigurációjának a .NET-keretrendszer alkalmazásaival való használatához
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy .NET-keretrendszerbeli alkalmazást az Azure-alkalmazás konfigurációjának használatával, hogy központilag kezelje az alkalmazás-beállítások tárolási és kezelési beállításait
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 63b7f8b28e339abde326bf3dca34d9ee6d816a31
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209911"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590268"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
 
@@ -38,13 +38,13 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Kattintson az **Alkalmaz** gombra.
+7. Válassza az **Alkalmaz** lehetőséget.
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
 1. Indítsa el a Visual studiót, és válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 
-1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Válassza a **Tovább** lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
 1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a **Létrehozás** gombra.
 
@@ -110,7 +110,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta azt egy .NET Framework Console alkalmazással. Az `AppSettings` `ConfigurationManager` alkalmazás elindítása után nem változik az érték. Az App Configuration .NET Standard konfigurációs szolgáltatói könyvtára azonban .NET-keretrendszerbeli alkalmazásokban is használható. Ha szeretné megtudni, hogyan engedélyezheti a .NET-keretrendszer alkalmazását a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

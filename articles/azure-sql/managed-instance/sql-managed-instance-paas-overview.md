@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055212"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590064"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,15 +53,15 @@ Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban lát
 |Funkció | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
-| Felügyelt automatizált biztonsági másolatok | Igen |
-| Beépített példány-és adatbázis-figyelés és-metrikák | Igen |
-| Szoftver automatikus javítása | Igen |
-| Az adatbázismotor legújabb funkciói | Igen |
+| Felügyelt automatizált biztonsági másolatok | Yes |
+| Beépített példány-és adatbázis-figyelés és-metrikák | Yes |
+| Szoftver automatikus javítása | Yes |
+| Az adatbázismotor legújabb funkciói | Yes |
 | Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
-| VNet – Azure Resource Manager üzemelő példány | Igen |
-| VNet – klasszikus üzembe helyezési modell | Nem |
-| Portál támogatása | Igen|
+| VNet – Azure Resource Manager üzemelő példány | Yes |
+| VNet – klasszikus üzembe helyezési modell | No |
+| Portál támogatása | Yes|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) részét képezi |
 | Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
@@ -73,8 +73,8 @@ Az SQL felügyelt példány [virtuális mag-alapú vásárlási modellje](../dat
 
 A virtuális mag modellben a hardver generációi közül választhat.
 
-- A **Gen4** logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, csatlakoztatott SSD-k, fizikai magok, 7 GB RAM/mag, valamint 8 és 24 virtuális mag közötti számítási méreteken alapulnak.
-- A **Gen5** logikai CPU-k Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok, gyors NVMe SSD, Hyper-threaded logikai mag és a 4 és 80 közötti számítási méretek alapján működnek.
+- A **Gen4** logikai CPU-k Intel® E5-2673 v3 (Haswell) 2,4 GHz-es processzorok, csatlakoztatott SSD-k, fizikai magok, 7 GB RAM/mag, valamint 8 és 24 virtuális mag közötti számítási méreteken alapulnak.
+- A **Gen5** logikai CPU-k Intel® E5-2673 v4 (Broadwell) 2,3 GHz-es, Intel® SP-8160 (Skylake) és Intel® 8272CL (Cascade-tó) 2,5 GHz-es processzorokkal, gyors NVMe SSD-vel, többszálú logikai mag és 4 és 80 mag közötti számítási méretekkel rendelkeznek.
 
 További információk a hardveres generációk közötti különbségről az [SQL felügyelt példányának erőforrás-korlátaiban](resource-limits.md#hardware-generation-characteristics).
 
@@ -202,7 +202,7 @@ Az SQL felügyelt példánya támogatja a SQL Server 2008-adatbázisok visszamen
   
 Az alábbi ábra az SQL felügyelt példányának felületi kompatibilitását ismerteti:  
 
-![Áttelepítés](./media/sql-managed-instance-paas-overview/migration.png)
+![Migrálás](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>SQL Server helyszíni és az SQL felügyelt példány közötti fő különbségek
 

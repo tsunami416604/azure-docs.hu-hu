@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 27c5b166565dd8f0803f3bca05d137e643325368
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fea14c62afb03a6c0d9f1bf6894f02bd3fd06c7f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185740"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586970"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a hozzáférést a blobhoz vagy az üzenetsor-kezeléshez a Azure Portal
 
@@ -113,7 +113,7 @@ A blob-feltöltési műveletek engedélyezésének megadásához kövesse az al�
 
     :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="A blob-feltöltés engedélyezési módjának módosítását bemutató képernyőkép":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md)
 - [Hozzáférés biztosítása az Azure-tárolók és-várólisták számára a Azure Portal RBAC](storage-auth-aad-rbac-portal.md)
