@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: az Azure AD egyszeri bejelentkezéses integrációja F5-mel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és F5 között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39382eab-05fe-4dc2-8792-62d742dfb4e1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017448"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -150,13 +145,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourCustomFQDN>.f5.com/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourCustomFQDN>.f5.com/`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek megszerzéséhez lépjen kapcsolatba az [F5 ügyfél-támogatási csapattal](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -179,7 +174,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -223,7 +218,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Emellett **SSL-tanúsítványra lesz szüksége az alkalmazás állomásneve számára. Navigáljon a System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
-    >A példában az alkalmazás neve az `Kerbapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnév`WildCard-SuperDemo.live`
+    >A példában az alkalmazás neve az `Kerbapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnév `WildCard-SuperDemo.live`
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure02.png) 
  
@@ -252,7 +247,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
  
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure08.png)
 
-1. Az egyszeri bejelentkezés beállításai képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A **kiválasztott egyszeri bejelentkezés típusnál** válassza a **Kerberos**lehetőséget. Cserélje le a **Session. SAML. Last. Identity** nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a **Felhasználónév forrása** mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Válassza a **Speciális beállítások megjelenítése**lehetőséget. A **Kerberos** tartomány mezőbe írja be a tartománynevet. A **fiók neve/fiók jelszava** területen adja meg az APM-delegálási fiókot és a jelszót. A **KDC** mezőben adhatja meg a tartományvezérlő IP-címét. Kattintson a **mentés & tovább**gombra.
+1. Az egyszeri bejelentkezés beállításai képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A **kiválasztott egyszeri bejelentkezés típusnál** válassza a **Kerberos**lehetőséget. Cserélje le a **Session. SAML. Last. Identity**  nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a **Felhasználónév forrása** mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Válassza a **Speciális beállítások megjelenítése**lehetőséget. A **Kerberos** tartomány mezőbe írja be a tartománynevet. A **fiók neve/fiók jelszava** területen adja meg az APM-delegálási fiókot és a jelszót. A **KDC** mezőben adhatja meg a tartományvezérlő IP-címét. Kattintson a **mentés & tovább**gombra.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure09.png)   
 
@@ -284,7 +279,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 1. A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2. Kattintson a **Létrehozás** lehetőségre. Megnyílik az új kiszolgáló tulajdonságai képernyő.
+2. Kattintson a **Create** (Létrehozás) gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
 3. A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
@@ -347,7 +342,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 1. Az SAML SP beállításához navigáljon a **hozzáférés > összevonási > SAML-szolgáltató > helyi SP-szolgáltatások** elemre, majd kattintson a **Létrehozás**gombra. Hajtsa végre a következő információkat, majd kattintson **az OK**gombra.
 
     * Típus neve: KerbApp200SAML
-    * Entitás azonosítója *:https://kerb-app.com.cutestat.com
+    * Entitás azonosítója *: https://kerb-app.com.cutestat.com
     * SP-név beállításai
     * Séma: https
     * Gazdagép: kerbapp200. redemo. Live
@@ -456,7 +451,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 *  **1. lépés:** Delegálási fiók létrehozása
 
-    **Például**
+    **Példa**
     * Tartománynév: **főbemutató. élő**
 
     * Sam-fiók neve: **Big-ipuser**
@@ -465,7 +460,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 * **2. lépés:** SPN beállítása (az APM delegálási fiókján)
 
-    **Például**
+    **Példa**
     * Setspn – A **Host/Big-ipuser. redemo. Live** Big-ipuser
 
 * **3. lépés:** SPN-delegálás (a App Service fiók esetében) állítsa be a megfelelő delegálást az F5 delegálási fiókhoz.
@@ -487,9 +482,9 @@ Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell j
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

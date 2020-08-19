@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az adaptív ismeretekkel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az adaptív adatfelismerések között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232118"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537738"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Oktatóanyag: adaptív adatáttekintések integrálása a Azure Active Directory
 
@@ -83,9 +78,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
     > Az adaptív adatok **SAML SSO-beállításai** lapról lekérheti az azonosító (Entity ID) és a válasz URL-értékeit.
@@ -134,9 +129,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
      * **Engedélyezze az SAML**-t, válassza az **SAML egyszeri bejelentkezés engedélyezése és a közvetlen adaptív**adatellenőrzési bejelentkezés lehetőséget.
 
-    g. Másolja át az **adaptív betekintési egyszeri bejelentkezés URL-címét** , és illessze be az **azonosítót (Entity ID)** és a **Válasz URL** -szövegmezőket a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+    : Másolja át az **adaptív betekintési egyszeri bejelentkezés URL-címét** , és illessze be az **azonosítót (Entity ID)** és a **Válasz URL** -szövegmezőket a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    h. Kattintson a **Save** (Mentés) gombra.
+    h. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -146,9 +141,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -205,9 +200,9 @@ Ha a hozzáférési panelen az adaptív bepillantások csempére kattint, automa
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

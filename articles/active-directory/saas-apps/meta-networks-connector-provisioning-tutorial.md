@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a meta Networks-összekötő konfigurálása a felhasználók automatikus kiépítéséhez a Azure Active Directory segítségével | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus kiépítéséhez és üzembe helyezéséhez a meta Networks-összekötőhöz.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 6e34e540-7761-4bdf-a2f9-8c12becc119d
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 03c2dc6253fba5c2c7d59f3aefc5c1c663ed8248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17ec8c04e3313155bdd00f119dc2f75882f51f33
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061358"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535000"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a meta Networks-összekötő konfigurálása automatikus felhasználók kiépítéséhez
 
@@ -147,7 +143,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a meta Networks-összekötőhöz**lehetőséget.
 

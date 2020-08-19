@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Replicon-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Replicon között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8394191820226a0d4fdcfe1a078e85e1caafa37f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058193"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534315"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Oktatóanyag: a Replicon és a Azure Active Directory integrálása
 
@@ -83,11 +78,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
+    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
 
-    1. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://global.replicon.com/!/saml2/<client name>`
+    1. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://global.replicon.com/!/saml2/<client name>`
 
-    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://global.replicon.com/!/saml2/<client name>/sso/post`
+    1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://global.replicon.com/!/saml2/<client name>/sso/post`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a Replicon ügyfélszolgálati [csapatához](https://www.replicon.com/customerzone/contact-support) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -112,9 +107,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![SAML-hitelesítés engedélyezése](./media/replicon-tutorial/ic777805.png "SAML-hitelesítés engedélyezése")
 
-    a. A **EnableSAML Authentication2** párbeszédpanel megjelenítéséhez fűzze hozzá a következőt az URL-címhez a vállalati kulcs után:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. A **EnableSAML Authentication2** párbeszédpanel megjelenítéséhez fűzze hozzá a következőt az URL-címhez a vállalati kulcs után: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Az alábbi ábrán a teljes URL-cím sémája látható:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Az alábbi ábrán a teljes URL-cím sémája látható: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. Kattintson a elemre **+** a **v20Configuration** szakasz kibontásához.
 
@@ -134,7 +129,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

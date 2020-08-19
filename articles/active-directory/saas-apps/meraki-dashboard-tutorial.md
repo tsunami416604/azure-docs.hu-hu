@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Meraki-irányítópulttal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Meraki irányítópult között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 09766236-5de0-43fd-8950-5316390ce646
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5fd75a737a0a866b6e5c26c417458ee95845fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084141"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Meraki-irányítópulttal
 
@@ -82,7 +78,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
      
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címének értékével, amelyet az oktatóanyag későbbi részében ismertet.
@@ -95,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Meraki irányítópult-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------- |
     | `https://dashboard.meraki.com/saml/attributes/username` | User. userPrincipalName |
     | `https://dashboard.meraki.com/saml/attributes/role` | User. assignedroles |
@@ -123,9 +119,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -149,7 +145,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Meraki-irányítópultra.
 
-1. Navigáljon a **szervezeti** -> **Beállítások**elemre.
+1. Navigáljon a **szervezeti**  ->  **Beállítások**elemre.
 
     ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure1.png)
 
@@ -161,7 +157,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure3.png)
 
-1. Illessze be az **ujjlenyomat** értékét, amelyet a Azure Portal az **X. 590 CERT SHA1 ujjlenyomat** szövegmezőbe másolt. Ezután kattintson a **Mentés**gombra. A mentés után megjelenik a fogyasztói URL-cím. Másolja a fogyasztói URL-címet, és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció szakaszában** .
+1. Illessze be az **ujjlenyomat** értékét, amelyet a Azure Portal az **X. 590 CERT SHA1 ujjlenyomat** szövegmezőbe másolt. Ezután kattintson a **Mentés** gombra. A mentés után megjelenik a fogyasztói URL-cím. Másolja a fogyasztói URL-címet, és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció szakaszában** .
 
     ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure4.png)
 
@@ -169,7 +165,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Meraki-irányítópultra.
 
-1. Navigáljon a **szervezet** -> **rendszergazdái**számára.
+1. Navigáljon a **szervezet**  ->  **rendszergazdái**számára.
 
     ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/user1.png)
 
@@ -187,11 +183,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Meraki-irányítópult csempére kattint, automatikusan be kell jelentkeznie a Meraki-irányítópultra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: az automatikus felhasználó-kiépítés és a Azure Active Directory összegyűjtésének konfigurálása Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a szoftverek toborzásával.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5165c3f03d51403a978ad3574306bc27d931e1d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058333"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536886"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus kiépítés céljából történő toborzásának konfigurálása
 
@@ -102,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címét** és **titkos jogkivonatát** , amely a 6. lépésben leírtak szerint tartalmazza a szoftver fiókjának felvételét.
 
-6. A [szoftveres felügyeleti konzol](https://app.comeet.co/)összeadásával kapcsolatban navigáljon a **> beállítások > a hitelesítés > Microsoft Azure**elemre, és másolja a **vállalati érték titkos tokenjét** az Azure ad **titkos jogkivonat** mezőjébe.
+6. A [szoftveres felügyeleti konzol](https://app.comeet.co/)összeadásával kapcsolatban navigáljon a  **> beállítások > a hitelesítés > Microsoft Azure**elemre, és másolja a **vállalati érték titkos tokenjét** az Azure ad **titkos jogkivonat** mezőjébe.
 
     ![A szoftverek kiépítési feltoborzásának összetartása](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
@@ -114,7 +110,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza az **Azure Active Directory a felhasználók szinkronizálása**lehetőséget.
 

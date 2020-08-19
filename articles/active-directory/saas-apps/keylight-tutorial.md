@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció a LockPath-nal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a LockPath-jelzőfény között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 234a32f1-9f56-4650-9e31-7b38ad734b1a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098778"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Oktatóanyag: Azure Active Directory integráció az LockPath-nal
 
@@ -33,7 +28,7 @@ A LockPath-szolgáltatás Azure AD-vel való integrálása a következő előny�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,11 +102,11 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
     ![LockPath és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.keylightgrc.com/`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.keylightgrc.com/`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.keylightgrc.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.keylightgrc.com`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.keylightgrc.com/Login.aspx`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.keylightgrc.com/Login.aspx`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a LockPath-hez tartozó [ügyfél-támogatási csoporthoz](https://www.lockpath.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -162,9 +157,9 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
     e. Az **SAML felhasználói azonosító helyének** beállítása a **tárgyi utasítás NameIdentifier elemére**.
 
-    f. Adja meg a **Fényszolgáltatási szolgáltatót** a következő minta `https://<CompanyName>.keylightgrc.com`használatával:.
+    f. Adja meg a **Fényszolgáltatási szolgáltatót** a következő minta használatával: `https://<CompanyName>.keylightgrc.com` .
 
-    g. Állítsa be az **automatikus kiépítés a felhasználók** számára **aktív**lehetőséget.
+    : Állítsa be az **automatikus kiépítés a felhasználók** számára **aktív**lehetőséget.
 
     h. Az **automatikus kiépítés fiók típusának** beállítása a **teljes felhasználó**számára.
 
@@ -172,13 +167,13 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
     j. Állítsa be az **automatikus kiépítés biztonsági konfigurációját**, majd válassza a **normál felhasználói konfiguráció**lehetőséget.
 
-    k. Az **e-mail attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`a következőt:.
+    k. Az **e-mail attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    l. Az **Utónév attribútum** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`következőt:.
+    l. Az **Utónév attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    m. A **vezetéknév attribútum** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`következőt:.
+    m. A **vezetéknév attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
-    n. Kattintson a **Save** (Mentés) gombra.
+    n. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -198,11 +193,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

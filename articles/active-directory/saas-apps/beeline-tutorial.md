@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Beeline szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Beeline között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0726859d-1dac-44a0-810b-da56d89039ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cca1b4b9f27a8711d0340389359320a2f99a918a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 571ab3c3943faf6ef5cbccb401a5416c327e3975
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018514"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Oktatóanyag: Azure Active Directory integráció a beelintel
 
@@ -106,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
 
     ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak Beeline](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://projects.beeline.com/<ProjInstanceName>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://projects.beeline.com/<ProjInstanceName>`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
@@ -157,7 +152,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

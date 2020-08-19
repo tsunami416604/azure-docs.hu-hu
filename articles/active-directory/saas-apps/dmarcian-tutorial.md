@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a dmarcian-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és dmarcian között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a04b9383-3a60-4d54-9412-123daaddff3b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ad669f092fac0cc2e737d93ccc9d225ef57adf
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 8868b17766513ba1e93b25bf2aeff6553c62ba62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799547"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536155"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Oktatóanyag: a dmarcian és a Azure Active Directory integrálása
 
@@ -146,14 +141,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     * A **hitelesítés beállítása** szakasz **identitás-szolgáltató metaadatai** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét**, amelyet a Azure Portalból másolt.
 
-    * A **hitelesítés beállítása** szakaszban a **Attribute utasítások** szövegmezőbe illessze be az URL-címet`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * A **hitelesítés beállítása** szakaszban a **Attribute utasítások** szövegmezőbe illessze be az URL-címet `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     * A **bejelentkezési URL-cím beállítása** szakaszban másolja be a példányhoz tartozó **bejelentkezési URL-címet** , és ILLESSZE be a **bejelentkezési URL** SZÖVEGMEZŐbe az **alapszintű SAML-konfiguráció szakaszának** Azure Portal.
 
         > [!Note]
         > A **bejelentkezési URL-címet** a szervezete szerint módosíthatja.
 
-    * Kattintson a **Save** (Mentés) gombra.
+    * Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -165,7 +160,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -219,9 +214,9 @@ Ha a hozzáférési panelen a dmarcian csempére kattint, automatikusan be kell 
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

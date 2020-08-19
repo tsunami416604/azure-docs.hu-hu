@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a LearnUpon-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és LearnUpon között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b11c6315-c79d-4f34-9610-bd17070ab7c7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098240"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Oktatóanyag: Azure Active Directory integráció a LearnUpon
 
@@ -33,7 +28,7 @@ A LearnUpon és az Azure AD integrálásával a következő előnyöket nyújtja
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,7 +105,7 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
 
     ![LearnUpon tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-reply.png)
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.learnupon.com/saml/consumer`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a LearnUpon ügyfélszolgálati [csapatához](https://www.learnupon.com/features/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -153,11 +148,11 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
 
     d. Az **SAML-jogkivonat post params neve** szövegmezőbe írja be a kérelem post paraméterét a fent jelzett SAML fogyasztói URL-címre, amely tartalmazza az ellenőrizni és HITELESÍTENI kívánt SAML-jogkivonatot (például **SAMLResponse**).
 
-    e. A **név azonosítójának formázása** szövegmezőbe írja be azt az értéket, amely azt jelzi, hogy az SAML-azonosító hol található a felhasználók azonosítója (e- `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`mail-cím), például:.
+    e. A **név azonosítójának formázása** szövegmezőbe írja be azt az értéket, amely azt jelzi, hogy az SAML-azonosító hol található a felhasználók azonosítója (e-mail-cím), például: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
   
     f. A **szolgáltató helyének azonosítása** szövegmezőbe írja be azt az értéket, amely megadja, hogy a rendszer hová küldje a felhasználókat, ha a feltöltött ikonra kattint a Azure Portal bejelentkezési képernyőjén.
   
-    g. A kijelentkezési **URL-cím** szövegmezőbe illessze be a **kijelentkezési URL-** értéket, amelyet a Azure Portal másolt.
+    : A kijelentkezési **URL-cím** szövegmezőbe illessze be a **kijelentkezési URL-** értéket, amelyet a Azure Portal másolt.
 
     h. Kattintson az **ujjas nyomatok kezelése**elemre, majd töltse fel a letöltött tanúsítvány Finger printjét.
 
@@ -165,9 +160,9 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
 
      ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. Az **Utónév formázása** szövegmezőbe írja be azt az értéket, amely megadja, hogy hol található az SAML-azonosító a felhasználók FirstName-ben – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. Az **Utónév formázása** szövegmezőbe írja be azt az értéket, amely megadja, hogy hol található az SAML-azonosító a felhasználók FirstName-ben – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
   
-    b. A **vezetéknév-azonosító formázása** szövegmezőbe írja be azt az értéket, amely megadja, hogy hol található az SAML-alkalmazásban a felhasználók LastName (például `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`:).
+    b. A **vezetéknév-azonosító formázása** szövegmezőbe írja be azt az értéket, amely megadja, hogy hol található az SAML-alkalmazásban a felhasználók LastName (például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ).
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -187,11 +182,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

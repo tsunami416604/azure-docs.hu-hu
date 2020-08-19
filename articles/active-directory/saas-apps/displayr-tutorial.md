@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a deplayerrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a lejátszó között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: b739b4e3-1a37-4e3c-be89-c3945487f4c1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103992"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536257"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Oktatóanyag: a lejátszó integrálása Azure Active Directory
 
@@ -80,7 +75,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépést:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YOURDOMAIN>.displayr.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YOURDOMAIN>.displayr.com`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`<YOURDOMAIN>.displayr.com`
 
@@ -111,7 +106,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. **A csoportok szerepkör-jogcímként való kibocsátása**.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 1. A **set-up deplayer** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
@@ -153,7 +148,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. A **csoportos leképezések** nem kötelezőek.
 
-    g. Kattintson a **Save** (Mentés) gombra.  
+    : Kattintson a **Mentés** gombra.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -163,9 +158,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -207,11 +202,11 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a lejátszó szol
 
     a. A **név** szövegmezőbe írja be a felhasználó nevét (például **Brittasimon**).
 
-    b. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló `Brittasimon@contoso.com`e-mail címet.
+    b. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `Brittasimon@contoso.com` .
 
     c. Válassza ki a megfelelő **csoporttagság**.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
