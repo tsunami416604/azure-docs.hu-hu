@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4ad28bd65fe9bc240e963f103ca5bd658e90fdfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77529619"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213265"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>A foglalási kedvezmény alkalmazása az Azure Cache for Redisre
 
-A foglalási kedvezmény a fenntartott Azure Cache for Redis-kapacitás megvásárlása után automatikusan alkalmazva lesz a foglalás attribútumaival és mennyiségével egyező gyorsítótárpéldányokra. A foglalás csak az Azure Cache for Redis számítási költségeit fedezi. A tárolásért és a hálózatkezelésért a normál díjakat kell fizetnie. A fenntartott kapacitás csak [prémium szintű](/azure/azure-cache-for-redis/cache-premium-tier-intro) gyorsítótárakhoz érhető el.
+A foglalási kedvezmény a fenntartott Azure Cache for Redis-kapacitás megvásárlása után automatikusan alkalmazva lesz a foglalás attribútumaival és mennyiségével egyező gyorsítótárpéldányokra. A foglalás csak az Azure Cache for Redis számítási költségeit fedezi. A tárolásért és a hálózatkezelésért a normál díjakat kell fizetnie. A fenntartott kapacitás csak [prémium szintű](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis) gyorsítótárakhoz érhető el.
 
 ## <a name="how-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
