@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az E Sales Managerrel – Remix | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és E Sales Manager remixek között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202396"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555389"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
 
@@ -132,7 +127,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
 1. A **rövid útmutató** szakaszban másolja ki a kijelentkezési URL-címet és az SAML egyszeri bejelentkezési szolgáltatás URL-címét.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![A Mentés gomb](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -204,7 +199,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    d. Válassza a **Létrehozás** lehetőséget.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix tesztelési felhasználó létrehozása
 

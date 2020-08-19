@@ -3,16 +3,20 @@ title: Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli vi
 description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gépek biztonsági mentési megoldásának használatával.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535368"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566233"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
 Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. Most, hogy a szelektív lemezek biztonsági mentési és visszaállítási funkcióját használja, biztonsági mentést készíthet a virtuális gépek adatlemezei egy részhalmazáról. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Az egyes helyreállítási pontok csak a biztonsági mentési művelet részét képező lemezeket tartalmazzák. Ez lehetővé teszi, hogy a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza legyen. Ez a pillanatképek és a tároló visszaállítására egyaránt vonatkozik.
+
+>[!NOTE]
+>Az Azure-beli virtuális gépek szelektív lemezes biztonsági mentése és visszaállítása minden régióban nyilvános előzetes verzióban érhető el.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 

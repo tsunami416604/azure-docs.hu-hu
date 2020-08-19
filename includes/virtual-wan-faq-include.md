@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7411b4c000569693335cb0438fe186b290750247
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507577"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88602232"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -239,7 +239,7 @@ Ha több ExpressRoute-áramkör csatlakozik egy virtuális központhoz, a kapcso
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>A Virtual WAN előnyben részesített VPN-en keresztüli ExpressRoute az Azure-beli forgalom egressing
 
-Igen 
+Yes 
 
 ### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Ha egy virtuális WAN-hubhoz ExpressRoute-áramkör és VPN-hely van csatlakoztatva, mi okozhatja a VPN-kapcsolat útvonalát a ExpressRoute-en keresztül?
 
@@ -256,6 +256,9 @@ A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olya
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Mi a javasolt API-verzió, amelyet a parancsfájlok használnak a különböző virtuális WAN-funkciók automatizálásához?
 
 A 05-01-2020 (május 1 2020) minimális verzióját kötelező megadni. 
+
+### <a name="any-virtual-wan-limits"></a>Bármilyen virtuális WAN-korlát?
+Virtuális WAN-korlátok: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Mi a különbség a virtuális WAN-típusok (Basic és standard) között?
 

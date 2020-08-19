@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az FM-vel: rendszerek | Microsoft Docs'
 description: 'Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és FM: rendszerek között.'
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f78c58c5-6e98-458b-8991-78624a245665
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 9f869d595aeb3ff2ab7c3fd0bab7b52c72ab904b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2d6ad7daf68d9cd3ffbf4d489e3c170eef4dbe7f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048608"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Oktatóanyag: Azure Active Directory integráció FM-vel: rendszerek
 
@@ -32,7 +28,7 @@ Az FM: rendszerek az Azure AD-vel való integrálása a következő előnyöket 
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés az FM: Systems használatával történő ko
 
     ![FM: rendszerek tartománya és URL-címek egyszeri bejelentkezési adatai](common/both-replyurl.png)
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
     
     > [!NOTE]
     > Ez az érték nem valós. Frissítse ezt az értéket a tényleges válasz URL-címével. Vegye fel a kapcsolatot az [FM: Systems ügyfélszolgálati csapatával](https://fmsystems.com/support-services/) az érték beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -146,11 +142,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -182,7 +178,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. A webböngésző ablakban jelentkezzen be az FM: Systems vállalati webhelyre rendszergazdaként.
 
-2. Lépjen a **rendszerfelügyelet \> a biztonsági \> felhasználók \> felügyelete felhasználói listára**.
+2. Lépjen a **rendszerfelügyelet a \> biztonsági \> felhasználók felügyelete \> felhasználói listára**.
    
     ![Rendszerfelügyeleti webszolgáltatások](./media/fm-systems-tutorial/ic795905.png "Rendszerfelügyeleti webszolgáltatások")
 

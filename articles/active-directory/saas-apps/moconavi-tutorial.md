@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a moconavi-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és moconavi között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 038520e662a205bc173035fd19656cbaf4800239
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160520"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Oktatóanyag: Azure Active Directory integráció a moconavi
 
@@ -32,7 +28,7 @@ A moconavi és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés moconavi való konfigurálásához hajtsa v�
 
     ![moconavi tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<yourserverurl>/moconavi-saml2/saml/login`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<yourserverurl>/moconavi-saml2/saml/login`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<yourserverurl>/moconavi-saml2`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<yourserverurl>/moconavi-saml2`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<yourserverurl>/moconavi-saml2/saml/SSO`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a moconavi ügyfélszolgálati [csapatához](mailto:support@recomot.co.jp) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -150,12 +146,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -197,7 +193,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a moconavi-b
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing1.png)
 
-4. Adja `https://mcs-admin.moconavi.biz/gateway` meg a **Kapcsolódás az URL-címhez** szövegmezőt, majd kattintson a **kész** gombra.
+4. Adja meg `https://mcs-admin.moconavi.biz/gateway` a **Kapcsolódás az URL-címhez** szövegmezőt, majd kattintson a **kész** gombra.
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing2.png)
 
@@ -205,9 +201,9 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a moconavi-b
 
     ![Egyszeri bejelentkezés tesztelése](./media/moconavi-tutorial/testing3.png)
 
-    a. Adja meg a **bemeneti hitelesítési kulcsot**:`azureAD` **bemeneti hitelesítési kulcs** szövegmezőbe.
+    a. Adja meg a **bemeneti hitelesítési kulcsot**: `azureAD` **bemeneti hitelesítési kulcs** szövegmezőbe.
 
-    b. Adja **Input User ID**meg `your ad account` a bemeneti felhasználói azonosítót a bemeneti **felhasználói azonosító** szövegmezőbe.
+    b. Adja meg a **bemeneti**felhasználói azonosítót `your ad account` a bemeneti **felhasználói azonosító** szövegmezőbe.
 
     c. Kattintson a **Bejelentkezés**gombra.
 

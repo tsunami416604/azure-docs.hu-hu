@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322839"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566148"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Adatok gyűjtése Linux-alapú forrásokból a syslog használatával
 
@@ -86,6 +86,8 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 1. A következő témakörben ismertetett lekérdezési paramétereket használhatja a [függvények használatával Azure monitor napló lekérdezésekben](../azure-monitor/log-query/functions.md) a syslog-üzenetek elemzéséhez. Ezután mentheti a lekérdezést új Log Analytics függvényként, és új adattípusként használhatja azt.
 
 > [!NOTE]
+> **Ugyanazzal a géppel az egyszerű syslog *és* a CEF üzenetek továbbítása**
+>
 >
 > A meglévő [CEF-naplózási továbbító géppel](connect-cef-agent.md) is felhasználhatja a naplók egyszerű syslog-forrásokból való összegyűjtését és továbbítását. Azonban az alábbi lépéseket kell elvégeznie, hogy elkerülje az események mindkét formátumban való küldését az Azure Sentinel számára, mivel ez az események ismétlődését eredményezi.
 >

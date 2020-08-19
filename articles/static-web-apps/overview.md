@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835782"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565706"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
 
@@ -32,10 +32,10 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 - **Webes üzemeltetés** statikus tartalmakhoz, például HTML-, CSS-, JavaScript-és rendszerképekhez.
 - A Azure Functions által biztosított **integrált API** -támogatás.
-- Az **első fél GitHub-integrációja** , ahol a tárház megváltoztatja a triggereket és a központi telepítéseket.
+- Az **első osztályú GitHub-integráció** , ahol a tárház megváltoztatja a buildeket és a központi telepítéseket.
 - **Globálisan elosztott** statikus tartalom, amely közelebb helyezi a tartalmat a felhasználókhoz.
 - **Ingyenes SSL-tanúsítványok**, amelyek automatikusan megújulnak.
-- **Egyéni tartományok** \* Ha márkás testreszabásokat kíván biztosítani az alkalmazás számára.
+- **Egyéni tartományok** , amelyek márkás testreszabásokat biztosítanak az alkalmazás számára.
 - **Zökkenőmentes biztonsági modell** fordított proxyval, ha olyan API-kat hív meg, amelyek nem igényelnek CORS-konfigurációt.
 - A Azure Active Directory, a Facebook, a Google, a GitHub és a Twitter **szolgáltatást használó hitelesítésszolgáltató integrációja** .
 - **Testreszabható engedélyezési szerepkör-definíció** és hozzárendelések.
@@ -44,13 +44,11 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Mit tehet a statikus Web Apps
 
-- **Modern JavaScript-alkalmazásokat készíthet** olyan keretrendszerekkel és tárakkal, mint például a [szögletes](getting-started.md#tabpanel_CeZOj-G++Q_angular), a [reakciós](getting-started.md#tabpanel_CeZOj-G++Q_react), a [karcsú](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) [Azure functions](apis.md) háttérrel.
+- **Modern JavaScript-alkalmazásokat készíthet** olyan keretrendszerekkel és tárakkal, mint például a [szögletes](getting-started.md?tabs=angular), a [reakciós](getting-started.md?tabs=react), a [karcsú](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md?tabs=react) [Azure functions](apis.md) háttérrel.
 - **Statikus helyeket tehet közzé** olyan keretrendszerekkel, mint például a [Gatsby](publish-gatsby.md), a [Hugo](publish-hugo.md), a [VuePress](publish-vuepress.md).
 - **Webalkalmazások üzembe helyezése** olyan keretrendszerekkel, mint a [Next.js](deploy-nextjs.md) és a [Nuxt.js](deploy-nuxtjs.md).
 
-\*Az előzetes verzióban nem támogatott a APEX-tartomány regisztrációja.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az első statikus alkalmazás létrehozása](getting-started.md)

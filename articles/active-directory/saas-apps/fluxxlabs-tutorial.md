@@ -2,24 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Fluxx Labs szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Fluxx Labs között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 198e93fe03c78313dfd64da9b58f2aa9098343f2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554861"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Fluxx Labs szolgáltatással
 
@@ -85,14 +82,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     | Környezet | URL-minta|
     |-------------|------------|
-    | Éles környezet | `https://<subdomain>.fluxx.io` |
+    | Production | `https://<subdomain>.fluxx.io` |
     | Üzem előtti | `https://<subdomain>.preprod.fluxxlabs.com`|
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | Környezet | URL-minta|
     |-------------|------------|
-    | Éles környezet | `https://<subdomain>.fluxx.io/auth/saml/callback` |
+    | Production | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | Üzem előtti | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
 
     > [!NOTE]
@@ -116,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -164,11 +161,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     f. Illessze be a bejelentkezési URL-cím szövegmezőbe a Azure Portalból másolt **bejelentkezési URL** - **címet** .
 
-    g. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az identitás- **szolgáltatói tanúsítvány** szövegmezőbe.
+    : Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az identitás- **szolgáltatói tanúsítvány** szövegmezőbe.
 
     h. A **név azonosítójának formázása** szövegmezőbe írja be az értéket `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    i. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > A tartalom mentése után a mező üresen jelenik meg a biztonság esetében, az érték azonban a konfigurációban lett mentve.
@@ -195,7 +192,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Fl
 
     a. A Fluxx Labs az egyszeri bejelentkezéses bejelentkezések egyedi azonosítójaként használja az e-maileket. Töltse fel az **SSO UID** mezőt a felhasználó e-mail-címével, amely megfelel az e-mail-címnek, amelyet bejelentkezésként használ az SSO-ban.
 
-    b. Kattintson a **Save** (Mentés) gombra.
+    b. Kattintson a **Mentés** gombra.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -205,9 +202,9 @@ Ha a hozzáférési panelen a Fluxx Labs csempére kattint, automatikusan be kel
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 9f43498ec6a80776f31cd45e80be6d786c2ae863
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529356"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586239"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Chatwork
 
@@ -83,7 +83,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Chatwork ügyfélszolgálati [csapatához](mailto:info@support.chatwork.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a privát bejelentkezési URL-címmel, amelyet a **CHATWORK SSO-konfiguráció**után állított be.
+
+1. A Chatwork alkalmazás azt várja, hogy az **egyedi felhasználóazonosító** -attribútum értéke megegyezik a Chatwork szolgáltatásban regisztrált e-mail-címmel. Alapértelmezés szerint az attribútum a **User. egyszerű név** leképezésre van leképezve. Ha a egyszerű név eltér az e-mail-címtől, rendelje hozzá az  **egyedi felhasználói azonosítót** a **User. mail**fájlhoz.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -125,11 +127,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-chatwork-sso"></a>Chatwork SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Chatwork** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [Chatwork támogatási csapatához](mailto:info@support.chatwork.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az **Chatwork** oldalon az egyszeri bejelentkezés konfigurálásához olvassa el a [Chatwork rendszergazdai útmutatóját](https://download.chatwork.com/Chatwork_AdminGuide.pdf) , és konfigurálja a Chatwork-beállítást.
 
 ### <a name="create-chatwork-test-user"></a>Chatwork-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Chatwork-ben. Együttműködik a [Chatwork támogatási csapatával](mailto:info@support.chatwork.com) , hogy hozzáadja a felhasználókat a Chatwork platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Chatwork-ben. Nyissa meg a [Chatwork rendszergazdai útmutatóját](https://download.chatwork.com/Chatwork_AdminGuide.pdf) , és adja hozzá a felhasználót a Chatwork platformhoz.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

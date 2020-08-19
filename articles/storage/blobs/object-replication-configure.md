@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540596"
+ms.locfileid: "88566063"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)
 
@@ -45,7 +45,7 @@ Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az 
 
 1. Navigáljon a forrás Storage-fiókhoz a Azure Portal.
 1. A **blob Service**területen válassza az **objektum-replikáció**elemet.
-1. Válassza a **replikáció beállítása**lehetőséget.
+1. Válassza a **replikációs szabályok beállítása**lehetőséget.
 1. Válassza ki a cél előfizetést és a Storage-fiókot.
 1. A **Container Pairs (tároló párok** ) szakaszban válasszon ki egy forrásoldali tárolót a forrás fiókból, valamint egy célhelyet a célhelyről. Replikációs házirendben legfeljebb 10 tároló pár hozható létre.
 

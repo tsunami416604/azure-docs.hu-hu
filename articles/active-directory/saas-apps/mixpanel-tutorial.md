@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a mixpanel-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és mixpanel között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a2df26ef-d441-44ac-a9f3-b37bf9709bcb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 58074d02dfc437a1804784e73fa4e65086b53b9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160466"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Azure Active Directory integráció a mixpanel
 
@@ -32,7 +28,7 @@ A mixpanel és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,10 +101,10 @@ Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához hajtsa v�
 
     ![Mixpanel tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://mixpanel.com/login/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://mixpanel.com/login/`
 
     > [!NOTE]
-    > Regisztrálja a [https://mixpanel.com/register/](https://mixpanel.com/register/) (z)-t a bejelentkezési hitelesítő adatainak beállításához, és lépjen kapcsolatba a [mixpanel támogatási csapatával](mailto:support@mixpanel.com) , hogy engedélyezze az SSO-beállításokat a bérlő számára. Ha szükséges, a mixpanel-támogatási csapatnál is igénybe veheti a bejelentkezési URL-címet. 
+    > Regisztrálja a (z) [https://mixpanel.com/register/](https://mixpanel.com/register/) -t a bejelentkezési hitelesítő adatainak beállításához, és lépjen kapcsolatba a [mixpanel támogatási csapatával](mailto:support@mixpanel.com) , hogy engedélyezze az SSO-beállításokat a bérlő számára. Ha szükséges, a mixpanel-támogatási csapatnál is igénybe veheti a bejelentkezési URL-címet. 
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -144,7 +140,7 @@ Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához hajtsa v�
    
     ![Mixpanel-beállítások](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
-6. Kattintson a **Done** (Kész) gombra.
+6. Kattintson a **Kész** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -164,12 +160,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

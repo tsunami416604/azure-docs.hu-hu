@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 54408b20ebba60de2e1a696e5bd9b06f55e860ba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513160"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584879"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning adatkészletek létrehozása az Azure Open-adatkészletből
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ tabular_dataset = MNIST.get_tabular_dataset()
 file_dataset = MNIST.get_file_dataset()
 ```
 
-Ebben a példában a diabétesz `opendatasets` osztály csak a-ben érhető el `TabularDataset` , ezért a `get_tabular_dataset()`
+Ebben a példában a cukorbetegség `opendatasets` osztály csak a-ban érhető el `TabularDataset` , ezért a használata `get_tabular_dataset()` .
 
 ```python
 
@@ -98,7 +98,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-with-the-studio"></a>Adatkészletek létrehozása a Studióval
 
-Létrehozhat adatkészleteket is a nyílt adatkészletek között a [Azure Machine learning Studióval](https://ml.azure.com), egy konszolidált webes felülettel, amely tartalmazza a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szinttel rendelkező adattudományi szakemberek számára.
+Létrehozhat Azure Machine Learning adatkészleteket az Azure Open-adatkészletekről a [Azure Machine learning Studióval](https://ml.azure.com), egy összevont webes felülettel, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyveket végezhet az összes képzettségi szint adatelemző szakemberek számára.
 
 > [!Note]
 > A Azure Machine Learning Studióval létrehozott adatkészletek automatikusan regisztrálva lesznek a munkaterületen.
@@ -111,7 +111,7 @@ Létrehozhat adatkészleteket is a nyílt adatkészletek között a [Azure Machi
 
     ![Adatkészlet kiválasztása](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a **munkaszüneti** adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Kattintson a **Létrehozás** gombra.
+1. Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a **munkaszüneti** adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Az adatok részletezéséhez tekintse [meg az Azure Open adatkészletek katalógusát](https://azure.microsoft.com/services/op[en-datasets/catalog/) , például a mezők leírását és a dátumtartomány értékét. Kattintson a **Létrehozás** gombra.
 
     ![Adatkészlet-paraméterek beállítása és adatkészlet létrehozása](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

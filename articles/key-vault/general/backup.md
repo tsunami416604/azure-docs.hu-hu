@@ -7,15 +7,15 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386265"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585933"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault biztonsági mentés
 
@@ -84,7 +84,7 @@ Az ebben a szakaszban ismertetett lépéseket követve biztonsági másolatot k�
     ![Képernyőfelvétel: a biztonsági mentés visszaállításának helye a kulcstartóban.](../media/backup-4.png)
     
 5. Lépjen arra a helyre, ahol a titkosított blobot tárolta.
-6. Válassza az **OK** lehetőséget.
+6. Kattintson az **OK** gombra.
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Biztonsági mentés és visszaállítás az Azure CLI-vel
 
@@ -118,6 +118,6 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Key Vault [naplózásának és figyelésének](https://docs.microsoft.com/azure/key-vault/general/logging) bekapcsolása.

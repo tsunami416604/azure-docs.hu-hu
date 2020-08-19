@@ -4,12 +4,12 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262857"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585560"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -65,7 +65,7 @@ A Azure Backup a virtuálisgép-Pillanatképek bővítmény használatával kés
 
 - **Ellenőrizze, hogy a VSS-író szolgáltatás működik-** e: a VSS- [író hibáinak elhárításához](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state)kövesse az alábbi lépéseket.
 - **Kövesse a biztonsági mentéssel kapcsolatos ajánlott**eljárásokat ismertető útmutatót: az [Azure virtuális gépek biztonsági mentésének engedélyezésére vonatkozó ajánlott eljárások](backup-azure-vms-introduction.md#best-practices)áttekintése.
-- A **titkosított lemezekre vonatkozó irányelvek áttekintése**: Ha engedélyezi a titkosított lemezekkel rendelkező virtuális gépek biztonsági mentését, győződjön meg róla, hogy az összes szükséges engedélyt megadja. További információ: [titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása](backup-azure-vms-encryption.md#encryption-support).
+- A **titkosított lemezekre vonatkozó irányelvek áttekintése**: Ha engedélyezi a titkosított lemezekkel rendelkező virtuális gépek biztonsági mentését, győződjön meg róla, hogy az összes szükséges engedélyt megadja. További információ: [titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása](backup-azure-vms-encryption.md).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable – A virtuálisgép-ügynök nem tud kommunikálni az Azure Backup szolgáltatással
 

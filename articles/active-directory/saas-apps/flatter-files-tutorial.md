@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a laposabb fájlokkal való integrációval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és laposabb fájlok között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f86fe5e3-0e91-40d6-869c-3df6912d27ea
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 13012474e34af80c84b034703a3b34f0208036bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73156269"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Oktatóanyag: Azure Active Directory-integráció a laposabb fájlokkal
 
@@ -32,7 +28,7 @@ A laposabb fájlok az Azure AD-vel való integrálása a következő előnyöket
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -142,7 +138,7 @@ Az Azure AD egyszeri bejelentkezés laposabb fájlokkal történő konfigurálá
     a. A **tartomány** szövegmezőbe írja be a regisztrált tartományt.
    
    > [!NOTE]
-   > Ha még nem rendelkezik regisztrált tartománnyal, vegye fel a kapcsolatot a laposabb fájlok támogatási csapatával a használatával [support@flatterfiles.com](mailto:support@flatterfiles.com). 
+   > Ha még nem rendelkezik regisztrált tartománnyal, vegye fel a kapcsolatot a laposabb fájlok támogatási csapatával a használatával [support@flatterfiles.com](mailto:support@flatterfiles.com) . 
     
     b. Az **Identity Provider URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet az űrlap Azure Portal másolt.
    
@@ -168,12 +164,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

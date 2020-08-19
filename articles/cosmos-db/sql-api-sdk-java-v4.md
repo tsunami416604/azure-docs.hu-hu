@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0d1845c06c1f0373ffd4be43c104889a7327c3ac
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035773"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586215"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "88035773"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring-adatv2](sql-api-sdk-java-spring-v2.md)
+> * [Spring-adatforrások v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -143,10 +144,10 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * Az API átnevezve a következőre: `preferredLocations`  &  `multipleWriteLocations` `preferredRegions`  &  `multipleWriteRegions` . 
 * Frissítve `reactor-core` a 3.3.5. Release, `reactor-netty` a 0.9.7. Release & `netty` a 4.1.49. Final verziókig. 
 * Támogatás hozzáadva az `analyticalStoreTimeToLive` SDK-hoz.     
-* `CosmosClientException`kiterjeszti `AzureException` . 
+* `CosmosClientException` kiterjeszti `AzureException` . 
 * Ehelyett az API-k használatával eltávolította az API-kat `maxItemCount`  &  `requestContinuationToken` `FeedOptions` `byPage()` `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * `CosmosPermissionProperties`Az API-k nyilvános felületén lett bevezetve `Permission` .
-* Eltávolított `SqlParameterList` típus & lecserélve`List`
+* Eltávolított `SqlParameterList` típus & lecserélve `List`
 * Rögzített több memóriavesztés a közvetlen TCP-ügyfélben. 
 * A lekérdezések támogatása megnövelve `DISTINCT` . 
 * A külső függőségek el lettek távolítva `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
@@ -154,14 +155,14 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * Frissítve a 4.1.45. Final & Project-reaktort a 3.3.3 verzióra.
 * Frissített nyilvános Rest-szerződések `Final` osztályokba.
 * Speciális diagnosztika támogatása a pont műveleteihez.
-* Csomag frissítve`com.azure.cosmos`
+* Csomag frissítve `com.azure.cosmos`
 * Csomag hozzáadva `models` a modell/Rest szerződések számára
 * Csomag hozzáadva `utils` a `CosmosPagedFlux`  &  `CosmosPagedIterable` típusokhoz. 
 * Frissített nyilvános API-k az SDK-ban való használatra `Duration` .
 * Az összes Rest-szerződés hozzáadva a `models` csomaghoz.
-* `RetryOptions`átnevezve: `ThrottlingRetryOptions` .
+* `RetryOptions` átnevezve: `ThrottlingRetryOptions` .
 * `CosmosPagedFlux`  &  `CosmosPagedIterable` A lekérdezési API-khoz hozzáadott tördelési típusok. 
-* A TransportClient megosztásának támogatása a CosmosClients több példányán keresztül egy új API-val a`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* A TransportClient megosztásának támogatása a CosmosClients több példányán keresztül egy új API-val a `CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
 * Lekérdezések optimalizálása a kettős szerializálás/deszerializálás eltávolításával. 
 * A válasz fejlécének optimalizálása a szükségtelen másolás visszavonásával. 
 * Optimalizált `ByteBuffer` szerializálás/deszerializálás közbenső karakterlánc-példányok eltávolításával.
@@ -171,8 +172,8 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * Kijavítottuk a lekérdezés eredményeinek elemzését a lekérdezések alapján. 
 * Rögzített szoftvercsatorna-szivárgási problémák a közvetlen TCP-ügyféllel.
 * `orderByQuery`A folytatási jogkivonat hibája javítva.
-* `ChangeFeedProcessor`a partíciók felosztására szolgáló hibajavítás &, ha a partíció nem található.
-* `ChangeFeedProcessor`hibajavítás a címbérleti frissítések különböző szálak közötti szinkronizálásakor.
+* `ChangeFeedProcessor` a partíciók felosztására szolgáló hibajavítás &, ha a partíció nem található.
+* `ChangeFeedProcessor` hibajavítás a címbérleti frissítések különböző szálak közötti szinkronizálásakor.
 * Rögzített versenyhelyzet okozza `ArrayIndexOutOfBound` a kivételt a StoreReader
 
 ## <a name="faq"></a>GYIK

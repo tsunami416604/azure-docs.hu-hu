@@ -2,24 +2,29 @@
 title: Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: a5c12f9f9177c4495a82ced2b3c7d0c5edcdd78e
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 08/18/2020
+ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262789"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585328"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 
-Ez a cikk azt ismerteti, hogyan lehet biztonsági mentést készíteni és visszaállítani a titkosított lemezekkel rendelkező Windows-vagy Linux-alapú virtuális gépeket a [Azure Backup](backup-overview.md) szolgáltatás használatával.
+Ez a cikk azt ismerteti, hogyan lehet biztonsági mentést készíteni és visszaállítani a titkosított lemezekkel rendelkező Windows-vagy Linux-alapú virtuális gépeket a [Azure Backup](backup-overview.md) szolgáltatás használatával. További információ: [Az Azure-beli virtuális gépek biztonsági másolatainak titkosítása](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
-Ha többet szeretne megtudni arról, hogy a Azure Backup hogyan kommunikál az Azure-beli virtuális gépekkel az első lépések megkezdése előtt, tekintse át ezeket az erőforrásokat:
+## <a name="encryption-using-platform-managed-keys"></a>Titkosítás a platform által felügyelt kulcsokkal
 
-- [Tekintse át](backup-architecture.md#architecture-built-in-azure-vm-backup) az Azure virtuális gép biztonsági mentési architektúráját.
-- [További](backup-azure-vms-introduction.md) információ Az Azure virtuális gép biztonsági mentése és a Azure Backup bővítmény.
+Alapértelmezés szerint a virtuális gépek összes lemeze automatikusan titkosítva van, és a platform által felügyelt kulcsokat (főkulcsokat) használja, amelyek a [Storage szolgáltatás titkosítását](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)használják. A virtuális gépek biztonsági mentését Azure Backup használatával végezheti el anélkül, hogy a végponton a titkosítás támogatásához szükséges konkrét műveleteket kellene végrehajtania. A platform által felügyelt kulcsokkal történő titkosítással kapcsolatos további információkért [tekintse meg ezt a cikket](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).
 
-## <a name="encryption-support"></a>Titkosítás támogatása
+![Titkosított lemezek](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>Titkosítás az ügyfelek által felügyelt kulcsokkal
+
+Ha egyéni felügyelt kulcsokkal (CMK) titkosítja a lemezeket, a lemezek titkosításához használt kulcsot a rendszer a Azure Key Vault tárolja, és Ön felügyeli. Storage Service Encryption (SSE) a CMK használatával eltér a Azure Disk Encryption (ADE) titkosítástól. Az ADE az operációs rendszer titkosítási eszközeit használja. Az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát. A felügyelt lemezek ügyfél által felügyelt kulcsokkal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+
+## <a name="encryption-support-using-ade"></a>Titkosítási támogatás az ADE használatával
 
 A Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését, amelyeknek az operációs rendszer/adatlemezei Azure Disk Encryption (ADE) titkosítással rendelkeznek. Az ADE a BitLockert használja a Windows rendszerű virtuális gépek titkosításához és a Linux rendszerű virtuális gépekhez készült dm-crypt szolgáltatáshoz. Az ADE integrálható Azure Key Vault a lemezes titkosítási kulcsok és titkos kódok kezelésére. Key Vault kulcs titkosítási kulcsa (KEK) egy további biztonsági réteg hozzáadására használható, amely titkosítja a titkosítási titkokat, mielőtt beírja őket a Key Vaultba.
 
@@ -119,11 +124,6 @@ Engedélyek beállítása:
 1. Válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**lehetőséget.
 
     ![Hozzáférési szabályzat hozzáadása](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. Válassza a **résztvevő kiválasztása**lehetőséget, majd írja be a **biztonsági mentés kezelése**elemet.
-1. Válassza a **biztonsági mentési felügyeleti szolgáltatás**  >  **elemet**.
-
-    ![Backup szolgáltatás kiválasztása](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. A **hozzáférési szabályzat**  >  **beállítása sablonból (nem kötelező) beállításnál**válassza a **Azure Backup**lehetőséget.
     - A szükséges engedélyek a **legfontosabb engedélyek** és a **titkos engedélyek**előtt vannak feltöltve.

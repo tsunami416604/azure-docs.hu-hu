@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Figma automatikus felhasználó-kiépítés konfigurálása a Azure Active Directoryrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Figma.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: a50f1c81f5eda78ee6834aba3085f685c197b4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057957"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555122"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Figma konfigurálása
 
@@ -71,7 +67,7 @@ Az Azure AD-vel való automatikus Figma konfigurálása előtt le kell kérnie n
 
     ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/token.png)
 
-5. Másolja az **API-jogkivonat** értékét. Ez az érték a Figma alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
+5. Másolja az  **API-jogkivonat** értékét. Ez az érték a Figma alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
 
     ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/figma04.png)
 
@@ -128,7 +124,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Figma**lehetőséget.
 
