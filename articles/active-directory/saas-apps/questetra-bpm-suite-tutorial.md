@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Questetra BPM Suite szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Questetra BPM Suite között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: fb6d5b73-e491-4dd2-92d6-94e5aba21465
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093357"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Oktatóanyag: Azure Active Directory integráció a Questetra BPM Suite szolgáltatással
 
@@ -32,7 +28,7 @@ A Questetra BPM Suite és az Azure AD integrálásával a következő előnyöke
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés Questetra BPM Suite-vel való konfigurálás
 
     ![Questetra BPM Suite-tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.questetra.net/`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.questetra.net/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Ezeket az értékeket az **QUESTETRA BPM Suite** céges webhelyén található **SP Information** szakaszból szerezheti be, amelyet az oktatóanyag későbbi részében talál, vagy a [Questetra BPM Suite ügyfélszolgálati csapatához](https://www.questetra.com/contact/)fordulhat. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -156,11 +152,11 @@ Az Azure AD egyszeri bejelentkezés Questetra BPM Suite-vel való konfigurálás
     
     d. A kijelentkezési **oldal URL-címe** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
     
-    e. A **NameID formátum** szövegmezőbe írja be `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`a következőt:.
+    e. A **NameID formátum** szövegmezőbe írja be a következőt: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
 
     f. Nyissa meg az **alapszintű 64** -kódolású tanúsítványt a jegyzettömbben, Azure Portal letöltve, másolja a vágólapra a tartalmát, majd illessze be az **ellenőrzési tanúsítvány** szövegmezőbe. 
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -180,11 +176,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -226,9 +222,9 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
    
     ![Tesztelési felhasználó létrehozása][300] 
    
-    a. A **név** szövegmezőbe írja be **name** a felhasználó britta.simon@contoso.comnevét.
+    a. A **név** szövegmezőbe írja be a felhasználó **nevét** britta.simon@contoso.com .
    
-    b. Az **e-mail** szövegmezőbe írja be a felhasználó britta.simon@contoso.com **e-mail-címét** .
+    b. Az **e-mail** szövegmezőbe írja be a felhasználó **e-mail-címét** britta.simon@contoso.com .
    
     c. A **jelszó** szövegmezőbe írja be a felhasználó **jelszavát** .
     

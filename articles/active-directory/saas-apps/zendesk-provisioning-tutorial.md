@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: a zendesk konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a zendesk felhasználói fiókjait.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: 01d5e4d5-d856-42c4-a504-96fa554baf66
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c038cc309d8f1f13a04de01ed83e04afa70ba6d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062744"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546168"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés zendesk konfigurálása
 
@@ -121,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zendesk értesítő E-mail](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a zendesk**lehetőséget.
 

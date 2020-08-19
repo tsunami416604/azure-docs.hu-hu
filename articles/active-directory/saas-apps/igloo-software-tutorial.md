@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a jégkunyhó szoftverrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és jégkunyhó szoftver között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb625c1-d3fc-4ae1-a304-6a6733a10e6e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 857869b73e76c76075ac9607b64ffbb9d7358b5b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100582"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545268"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Oktatóanyag: Azure Active Directory integráció a jégkunyhó szoftverrel
 
@@ -32,7 +28,7 @@ A jégkunyhó szoftver az Azure AD-vel való integrálásával a következő el�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,11 +102,11 @@ Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálás
 
     ![Jégkunyhó és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.igloocommmunities.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.igloocommmunities.com`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<company name>.igloocommmunities.com/saml.digest`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.igloocommmunities.com/saml.digest`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [jégkunyhó szoftveres](https://www.igloosoftware.com/services/support) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -181,7 +177,7 @@ Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálás
 
     b. **Bejelentkezési beállításokként**jelölje be a **"Bejelentkezés" képernyőn az SAML-gomb használata**jelölőnégyzetet.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -201,12 +197,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

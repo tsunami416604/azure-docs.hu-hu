@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a RolePoint-szel | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és RolePoint között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 68d37f40-15da-45f5-a9e1-d53f78e786d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 0b6fd17d2f8577532778733866260f43e9ac7685
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 235010cbcdde326cf17643cec81f3b6fcb1eea59
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092739"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Oktatóanyag: Azure Active Directory integráció a RolePoint
 
@@ -33,7 +29,7 @@ Ez az integráció az alábbi előnyöket biztosítja:
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +52,7 @@ A RolePoint Azure AD-be való integrálásának beállításához hozzá kell ad
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás**:
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -152,7 +148,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<yourcompanydomain>\< . bővítmény>**. (Például: BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
 
     1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
@@ -194,7 +190,7 @@ Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési pa
 
 Amikor kiválasztja a RolePoint csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a RolePoint-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

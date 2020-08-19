@@ -2,25 +2,20 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Jobscience-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Jobscience között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870543"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Azure Active Directory integráció a Jobscience
 
@@ -105,7 +100,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-1. Az **egyszeri** Bejelentkezés párbeszédpanelen válassza a **mód** **SAML-alapú bejelentkezés** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+1. Az **egyszeri** Bejelentkezés párbeszédpanelen válassza a **mód**    **SAML-alapú bejelentkezés** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
@@ -113,7 +108,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://<company name>.my.salesforce.com`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
     > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ezt az értéket a [Jobscience-ügyfél támogatási csapata](http://www.jobscience.com/support) vagy a létrehozandó egyszeri bejelentkezési profil alapján szerezheti be, amelyet később az oktatóanyagban talál. 
@@ -164,7 +159,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     b. A **kiállító** szövegmezőbe illessze be a SAML- **entitás azonosítójának**értékét, amelyet a Azure Portalból másolt.
 
-    c. Az **entitás-azonosító** szövegmezőbe írja be a következőt:`https://salesforce-jobscience.com`
+    c. Az **entitás-azonosító** szövegmezőbe írja be a következőt: `https://salesforce-jobscience.com`
 
     d. Az Azure AD-tanúsítvány feltöltéséhez kattintson a **Tallózás** gombra.
 
@@ -176,7 +171,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     h. Az **Identity Provider kijelentkezési URL-címe** szövegmezőbe illessze be a kijelentkezési **URL-címet**, amelyet a Azure Portalból másolt.
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    i. Kattintson a **Mentés** gombra.
 
 1. A bal oldali navigációs ablaktábla **felügyelet** szakaszában kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
     
@@ -229,7 +224,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó**értékét.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-a-jobscience-test-user"></a>Jobscience-tesztelési felhasználó létrehozása
 
@@ -268,7 +263,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Jobscience, a Jobscien
 
    f. A **Nick neve** szövegmezőbe írja be a felhasználó nevét, például Simon.
 
-   : Kattintson a **Save** (Mentés) gombra.
+   : Kattintson a **Mentés** gombra.
 
     
 > [!NOTE]

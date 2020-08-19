@@ -8,15 +8,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61401fc15f6f1003f6969787854fad65bfb6a5ab
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511235"
+ms.locfileid: "88547409"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -365,7 +365,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatos témakörhöz kapcsolódnak:
 
-| Megjegyzés száma | Title |
+| Megjegyzés száma | Cím |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és méretezés |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -766,6 +766,8 @@ Microsoft Azure több módszert kínál a virtuális gépek és a kapcsolódó l
 #### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a><a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Virtuális gép áthelyezése a helyszínről az Azure-ba egy nem általánosított lemezzel
 
 Egy adott SAP-rendszer áthelyezését tervezi a helyszínről az Azure-ba. Ezt úgy teheti meg, hogy feltölti a virtuális merevlemezt, amely tartalmazza az operációs rendszer, az SAP bináris fájljait és az adatbázis-kezelő bináris fájljait, valamint a virtuális merevlemezeket, amelyek az adatbázis-kezelő és az Azure-ba Az [alább #2 forgatókönyvhöz][planning-guide-5.1.2]képest a helyi környezetben konfigurált ÁLLOMÁSNÉV, SAP SID és SAP felhasználói fiókok is megmaradnak az Azure-beli virtuális gépen. Ezért a rendszerkép általánosítása nem szükséges. A helyszíni előkészítési lépések és a nem általánosított virtuális gépek vagy virtuális merevlemezek Azure-ba való feltöltésének előkészítési fejezeteiben lásd: [felkészülés a virtuális gép helyszíni rendszerből az Azure-ba történő áthelyezésére][planning-guide-5.2.1] . Tekintse át a [3. forgatókönyv: egy virtuális gép helyszíni áthelyezése egy nem általánosított Azure VHD-vel az SAP használatával][deployment-guide-3.4] a [telepítési útmutatóban][deployment-guide] az ilyen lemezképek Azure-beli üzembe helyezésének részletes lépéseihez.
+
+Egy másik lehetőség, amelyet a jelen útmutató nem tárgyal részletesen, Azure Site Recovery használatával replikálja az SAP NetWeaver-alkalmazás-kiszolgálókat és az SAP NetWeaver Central-szolgáltatásokat az Azure-ba. Az adatbázis-réteghez nem ajánlott Azure Site Recovery használni, inkább az adatbázis-specifikus replikációs mechanizmusokat, például a HANA rendszerreplikációt kell használnia. További információ: a helyszíni alkalmazások útmutatójának a vész [-helyreállítással kapcsolatos tudnivalók](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload) a [SAP](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) -ról.
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Virtuális gép üzembe helyezése egy ügyfél-specifikus képpel
 

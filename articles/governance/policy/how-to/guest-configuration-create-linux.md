@@ -1,22 +1,22 @@
 ---
-title: A Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozása
+title: Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet Linux rendszerhez.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236590"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547720"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>A Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozása
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
 Az egyéni szabályzatok létrehozása előtt olvassa el a [Azure Policy vendég konfigurációjának](../concepts/guest-configuration.md)áttekintését ismertető cikket.
  
 A Windows rendszerhez készült vendég-konfigurációs szabályzatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerhez készült vendég-konfigurációs szabályzatok](./guest-configuration-create.md) létrehozásának oldalát.
 
-A Linux auditálásakor a vendég konfigurációja [Chef Inspect](https://www.inspec.io/)használ. Az inspec profil határozza meg azt a feltételt, amelynek a számítógépnek szerepelnie kell. Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek**minősül.
+A Linux naplózásakor a Vendégkonfiguráció a [Chef InSpecet](https://www.inspec.io/) használja. Az InSpec-profil határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek**minősül.
 
 [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállítások naplózására használható. A gépeken belüli beállítások szervizelése még nem érhető el.
 
@@ -25,9 +25,8 @@ A következő műveletek végrehajtásával hozhatja létre saját konfiguráci�
 > [!IMPORTANT]
 > A vendég-konfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
 >
-> Az Azure Virtual Machines szolgáltatásban végzett naplózáshoz a vendég konfigurációs bővítmény szükséges.
-> Ha a bővítményt a Linux rendszerű gépek skáláján szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciót:
->   - [Telepítse az előfeltételeket a vendég-konfigurációs szabályzat Linux rendszerű virtuális gépeken való engedélyezéséhez.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre. Ha a bővítményt a Linux rendszerű gépek skáláján szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciót:
+> - [Telepítse az előfeltételeket a vendég-konfigurációs szabályzat Linux rendszerű virtuális gépeken való engedélyezéséhez.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
@@ -52,8 +51,7 @@ Azok az operációs rendszerek, amelyeken telepítve van a modul:
 - Windows
 
 > [!NOTE]
-> A "test-GuestConfigurationPackage" parancsmaghoz az OpenSSL 1,0-es verziója szükséges.
-> Ez hibát okoz az OpenSSL 1,1-es vagy újabb verziójával rendelkező környezetekben.
+> A "test-GuestConfigurationPackage" parancsmaghoz az OpenSSL 1,0-es verziója szükséges. Ez hibát okoz az OpenSSL 1,1-es vagy újabb verziójával rendelkező környezetekben.
 
 A vendég konfigurációs erőforrás-modulhoz a következő szoftverek szükségesek:
 
@@ -81,7 +79,8 @@ A **GuestConfiguration** modul telepítése a PowerShellben:
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Vendég konfigurációs összetevők és szabályzat Linux rendszerhez
 
-Még Linux-környezetekben is a vendég konfigurációja a kívánt állapot konfigurációját használja nyelvi absztrakcióként. A megvalósítás natív kódból (C++) alapul, így nincs szükség a PowerShell betöltésére. Ehhez azonban szükség van egy konfigurációs MOF-re, amely leírja a környezet részleteit. A DSC burkolóként viselkedik a művelet végrehajtásához, a paraméterek meghatározásához, valamint a szolgáltatáshoz való visszatéréshez. A DSC kis ismerete szükséges, ha egyéni inspec-tartalommal dolgozik.
+Még Linux-környezetekben is a vendég konfigurációja a kívánt állapot konfigurációját használja nyelvi absztrakcióként. A megvalósítás natív kódból (C++) alapul, így nincs szükség a PowerShell betöltésére. Ehhez azonban szükség van egy konfigurációs MOF-re, amely leírja a környezet részleteit.
+A DSC burkolóként viselkedik a művelet végrehajtásához, a paraméterek meghatározásához, valamint a szolgáltatáshoz való visszatéréshez. A DSC kis ismerete szükséges, ha egyéni inspec-tartalommal dolgozik.
 
 #### <a name="configuration-requirements"></a>Konfigurációs követelmények
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 Mentse ezt a fájlt `config.ps1` a Project mappában található néven. Futtassa a PowerShellben a terminálon történő végrehajtással `./config.ps1` . A rendszer létrehoz egy új MOF-fájlt.
 
 A `Node AuditFilePathExists` parancs nem szükséges technikailag, de az alapértelmezett helyett egy nevű fájlt hoz létre `AuditFilePathExists.mof` `localhost.mof` . Ha a. MOF-fájlnevet követi, a konfiguráció megkönnyíti a sok fájl rendszerezését nagy léptékű működés esetén.
-
-
 
 Most már az alábbiak szerint kell lennie egy projekt struktúrájának:
 
@@ -288,8 +285,7 @@ A következő fájlokat hozza létre `New-GuestConfigurationPolicy` :
 
 A parancsmag kimenete egy olyan objektumot ad vissza, amely a házirend-fájlok kezdeményezésének megjelenítendő nevét és elérési útját tartalmazza.
 
-Végül tegye közzé a szabályzat-definíciókat a `Publish-GuestConfigurationPolicy` parancsmag használatával.
-A parancsmag csak a **path** paraméterrel rendelkezik, amely a által létrehozott JSON-fájlok helyére mutat `New-GuestConfigurationPolicy` .
+Végül tegye közzé a szabályzat-definíciókat a `Publish-GuestConfigurationPolicy` parancsmag használatával. A parancsmag csak a **path** paraméterrel rendelkezik, amely a által létrehozott JSON-fájlok helyére mutat `New-GuestConfigurationPolicy` .
 
 A közzétételi parancs futtatásához hozzá kell férnie a szabályzatok létrehozásához az Azure-ban. A konkrét engedélyezési követelmények dokumentálva vannak a [Azure Policy áttekintés](../overview.md) oldalon. A legjobb beépített szerepkör az erőforrás- **házirend közreműködője**.
 
@@ -314,7 +310,7 @@ Az Azure-ban létrehozott szabályzattal az utolsó lépés a kezdeményezés ki
 > [!IMPORTANT]
 > A _AuditIfNotExists_ -és _DeployIfNotExists_ -házirendeket egyesítő kezdeményezéssel **mindig** hozzá kell rendelni a vendég-konfigurációs házirendeket. Ha csak a _AuditIfNotExists_ szabályzat van hozzárendelve, az előfeltételek nincsenek telepítve, és a házirend mindig azt mutatja, hogy a "0" kiszolgálók megfelelőek.
 
-A _DeployIfNotExists_ -effektussal rendelkező szabályzat-definíció hozzárendeléséhez további hozzáférési szint szükséges. A legalacsonyabb jogosultság megadásához létrehozhat egy egyéni szerepkör-definíciót, amely kibővíti az **erőforrás-házirend közreműködőjét**. Az alábbi példa létrehoz egy erőforrás- **házirend közreműködője** nevű szerepkört a _Microsoft. Authorization/roleAssignments/Write_további engedélyeivel.
+Egy szabályzat-definíció _DeployIfNotExists_ -effektussal való hozzárendeléséhez további hozzáférési szint szükséges. A legalacsonyabb jogosultság megadásához létrehozhat egy egyéni szerepkör-definíciót, amely kibővíti az **erőforrás-házirend közreműködőjét**. Az alábbi példa létrehoz egy erőforrás- **házirend közreműködője** nevű szerepkört a _Microsoft. Authorization/roleAssignments/Write_további engedélyeivel.
 
 ```azurepowershell-interactive
 $subscriptionid = '00000000-0000-0000-0000-000000000000'
@@ -459,5 +455,5 @@ Az eszköz parancsmagokkal kapcsolatos további információkért használja a P
 ## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
-- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](get-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](./programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](./get-compliance-data.md).

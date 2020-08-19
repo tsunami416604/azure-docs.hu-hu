@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538020"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547358"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Űrlap-felismerő tárolók telepítése és futtatása (előzetes verzió)
 
@@ -28,7 +28,7 @@ Ha csökkenteni szeretné a bonyolultságot és egyszerűen integrálhat egy egy
 |----------|----------|
 | Form Recognizer | <li>PDF-, PNG-és JPG-fájlok feldolgozása<li>Az egyéni modelleket az azonos elrendezésből legalább öt formával ellátott vonatok <li>A kulcs-érték párok és a tábla adatainak kibontása <li>Az Azure Cognitive Services Computer Vision API szövegfelismerés funkció használatával azonosíthatja és kinyerheti a képekből származó nyomtatott szöveget az űrlapokon belül<li>Nincs szükség jegyzet vagy címkézésre |
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,13 +49,13 @@ Az űrlap-felismerő tárolók használata előtt meg kell felelnie a következ�
 
 Három elsődleges paraméter van a szükséges összes Cognitive Services tárolóhoz. A végfelhasználói licencszerződés (EULA) értékének a következőnek kell lennie: `accept` . Emellett a végponti URL-cím és az API-kulcs is szükséges.
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Végpont URI `{COMPUTER_VISION_ENDPOINT_URI}` -ja és`{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Végpont URI `{COMPUTER_VISION_ENDPOINT_URI}` -ja és `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
 A **végpont** URI-értéke a megfelelő kognitív szolgáltatás erőforrásának Azure Portal *Áttekintés* lapján érhető el. Navigáljon az *Áttekintés* lapra, vigye a kurzort a végpont fölé, és egy `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> ikon jelenik meg. Szükség esetén másolja és használja.
 
 ![A végpont URI-ja összegyűjtése későbbi használatra](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Kulcsok `{COMPUTER_VISION_API_KEY}` és`{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Kulcsok `{COMPUTER_VISION_API_KEY}` és `{FORM_RECOGNIZER_API_KEY}`
 
 Ez a kulcs a tároló elindítására szolgál, és a megfelelő kognitív szolgáltatási erőforrás Azure Portal kulcsok lapján érhető el. Navigáljon a *kulcsok* oldalra, és kattintson az `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> ikonra.
 
@@ -319,7 +319,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta az űrlap-felismerő tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
@@ -332,7 +332,7 @@ Ebben a cikkben megtanulta az űrlap-felismerő tárolók letöltésére, telep�
 > [!IMPORTANT]
 >  Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [tárolók konfigurálása](form-recognizer-container-configuration.md) konfigurációs beállításokat.
 * Használjon további [Cognitive Services tárolókat](../cognitive-services-container-support.md).

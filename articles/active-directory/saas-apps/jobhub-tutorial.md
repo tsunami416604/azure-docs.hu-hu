@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a JOBHUB-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és JOBHUB között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2162cab-c5d4-4207-ad59-b75b48c7f799
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc5f7bf299465b6af272c9b417a62f121b9a4d82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1623d4501a89e3614e694b57f6cae1eee28062da
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67164933"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547035"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Oktatóanyag: a JOBHUB és a Azure Active Directory integrálása
 
@@ -78,7 +73,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit: a **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://pasona.jobhub.jp/saml/init`
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit: a **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://pasona.jobhub.jp/saml/init`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a JOBHUB ügyfélszolgálati [csapatához](mailto:platform@pasonagroup.co.jp) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -113,9 +108,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

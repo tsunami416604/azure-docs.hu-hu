@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a QuickHelp-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és QuickHelp között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: f4b41098a3b374506e655bf90f972b57195e0958
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093379"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Oktatóanyag: Azure Active Directory integráció a QuickHelp
 
@@ -32,7 +28,7 @@ A QuickHelp és az Azure AD integrálásával a következő előnyöket nyújtja
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,9 +103,9 @@ Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához hajtsa v
 
     ![QuickHelp tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://quickhelp.com/<ROUTEURL>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://quickhelp.com/<ROUTEURL>`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://auth.quickhelp.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `https://auth.quickhelp.com`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a szervezet QuickHelp rendszergazdájával vagy az brainstorming-ügyfél sikerességi kezelőjével. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -150,11 +146,11 @@ Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához hajtsa v
    
     b. A letöltött Azure metadata-fájl feltöltéséhez kattintson a **Tallózás**gombra, navigáljon a fájlhoz, majd kattintson a **metaadatok feltöltése**elemre.
    
-    c. Az **e-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`a következőt:.
+    c. Az **e-mail** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
    
-    d. Az **Utónév** szövegmezőben `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Az **Utónév** szövegmezőben `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
    
-    e. Az **utolsó név** szövegmezőben `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. Az **utolsó név** szövegmezőben `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
    
     f. A **műveleti sávon**kattintson a **Mentés**gombra.
 
@@ -176,11 +172,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

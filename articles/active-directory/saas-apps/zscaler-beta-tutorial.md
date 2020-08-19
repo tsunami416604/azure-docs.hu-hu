@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Zscaler Beta szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Zscaler Beta között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943287"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Betatal
 
@@ -33,7 +28,7 @@ A Zscaler Beta és az Azure AD integrálásával a következőket teheti:
 * A fiókokat egy központi helyen kezelheti a Azure Portal használatával.
 
 További információ az Azure AD-vel való szolgáltatott szoftver-(SaaS-) alkalmazások integrálásáról: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -118,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
 6. A Zscaler Beta alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. Az alábbi táblázatban látható módon adja hozzá az SAML-jogkivonat attribútumot a felhasználói **jogcímek** szakaszban, a **felhasználói attribútumok** párbeszédpanelen.
     
-    | Name (Név) | Forrás attribútum | 
+    | Name | Forrás attribútum | 
     | ---------------| --------------- |
     | memberOf  | User. assignedroles |
 
@@ -138,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     f. Kattintson az **OK** gombra.
 
-    g. Kattintson a **Mentés** gombra.
+    : Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > A szerepkörök az Azure AD-ben való konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-jogcím konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
@@ -167,7 +162,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
 3. A Zscaler Beta manuális beállításához nyisson meg egy új böngészőablakot. Jelentkezzen be rendszergazdaként a Zscaler Beta vállalati webhelyre, és kövesse az alábbi lépéseket.
 
-4. Nyissa meg a **felügyeleti** > **hitelesítési** > **hitelesítési beállításokat**, és kövesse az alábbi lépéseket.
+4. Nyissa meg a **felügyeleti**  >  **hitelesítési**  >  **hitelesítési beállításokat**, és kövesse az alábbi lépéseket.
    
     ![Felügyelet](./media/zscaler-beta-tutorial/ic800206.png "Felügyelet")
 
@@ -191,9 +186,9 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     f. A **Csoportnév-attribútum** mezőben adja meg a **memberof** értéket, ha engedélyezni szeretné az SAML-kiépítést a memberOf attribútumaihoz.
 
-    g. A részleg **neve attribútum** mezőben adja meg a **részleg** értéket, ha engedélyezni szeretné a részleg attribútumainak SAML-kiépítését.
+    : A részleg **neve attribútum** mezőben adja meg a **részleg** értéket, ha engedélyezni szeretné a részleg attribútumainak SAML-kiépítését.
 
-    h. Kattintson a **Mentés** gombra.
+    h. Válassza a **Mentés** lehetőséget.
 
 6. A **felhasználói hitelesítés konfigurálása** párbeszédpanelen kövesse az alábbi lépéseket:
 
@@ -238,7 +233,7 @@ A proxybeállítások az Internet Explorerben való konfigurálásához kövesse
 
 Hozzon létre egy teszt felhasználót a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
     ![Felhasználók és minden felhasználó hivatkozása](common/users.png)
 
@@ -262,7 +257,7 @@ Hozzon létre egy teszt felhasználót a Britta Simon nevű Azure Portalban.
 
 Engedélyezze a Britta Simon számára az Azure egyszeri bejelentkezés használatát a Zscaler Beta elérésének biztosításával.
 
-1. A Azure Portal válassza a **Nagyvállalati alkalmazások** > **minden alkalmazás** > **Zscaler Beta**elemet.
+1. A Azure Portal válassza a **Nagyvállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler Beta**elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -274,7 +269,7 @@ Engedélyezze a Britta Simon számára az Azure egyszeri bejelentkezés használ
 
     ![Felhasználók és csoportok hivatkozása](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+4. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
     ![Felhasználó hozzáadása gomb](common/add-assign-user.png)
 
@@ -303,7 +298,7 @@ Tesztelje az Azure AD egyszeri bejelentkezési konfigurációját a hozzáféré
 
 Amikor kiválasztja a Zscaler Beta csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Zscaler Beta-ra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)

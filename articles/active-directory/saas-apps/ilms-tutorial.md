@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a iLMS-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és iLMS között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: d6e11639-6cea-48c9-b008-246cf686e726
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944023"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545206"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Oktatóanyag: a iLMS és a Azure Active Directory integrálása
 
@@ -95,7 +90,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a iLMS alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | --------|------------- |
     | osztály | felhasználó. részleg |
     | régió | felhasználó. állapot |
@@ -113,7 +108,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -165,7 +160,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Ha a **felhasználó profilja nem kötelező mezőinek frissítése jelölőnégyzet be** van jelölve, akkor a bejelentkezéskor üres, opcionális profilok mező is a felhasználó iLMS-profiljában üres értékeket fog tartalmazni ezekhez a mezőkhöz.
 
-    g. Tekintse meg a **hibajelentési értesítő e-mailt** , és adja meg annak a felhasználónak az e-mail-címét, ahová az értesítő e-mailt kapni szeretné.
+    : Tekintse meg a **hibajelentési értesítő e-mailt** , és adja meg annak a felhasználónak az e-mail-címét, ahová az értesítő e-mailt kapni szeretné.
 
 7. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -179,9 +174,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -221,7 +216,7 @@ Ha manuálisan kell létrehoznia egy felhasználót, kövesse az alábbi lépés
 
     b. A **vezetéknév** szövegmezőbe írja be a vezetéknevet, például Simon nevet.
 
-    c. Az **e-mail-azonosító** szövegmezőbe írja be a felhasználó e-mail címét BrittaSimon@contoso.com, például:.
+    c. Az **e-mail-azonosító** szövegmezőbe írja be a felhasználó e-mail címét, például: BrittaSimon@contoso.com .
 
     d. A **régió** legördülő menüben válassza ki a régió értékét.
 
@@ -229,7 +224,7 @@ Ha manuálisan kell létrehoznia egy felhasználót, kövesse az alábbi lépés
 
     f. A **részleg** legördülő menüben válassza ki a részleg értékét.
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > A regisztrációs e-mail **küldése** jelölőnégyzet bejelölésével elküldheti a felhasználónak a regisztrációs e-maileket.

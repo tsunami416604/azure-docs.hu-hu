@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a SpaceIQ-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SpaceIQ között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5b55ae29-491f-401f-9299-d3a6b64a1b99
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b3358ad473ede9e8d78a835e8c68e690e5340638
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 643d2481c171ae58a9d105d3dd7c53c251c2c41f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090099"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Oktatóanyag: Azure Active Directory integráció a SpaceIQ
 
@@ -32,7 +28,7 @@ A SpaceIQ és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés SpaceIQ való konfigurálásához hajtsa vé
 
     ![SpaceIQ tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://api.spaceiq.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://api.spaceiq.com`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://api.spaceiq.com/saml/<instanceid>/callback`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://api.spaceiq.com/saml/<instanceid>/callback`
 
     > [!NOTE]
     > Frissítse ezeket az értékeket a tényleges válasz URL-címmel és azonosítóval, amelyet az oktatóanyag későbbi részében ismertet.
@@ -150,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés SpaceIQ való konfigurálásához hajtsa vé
 
     d. Nyissa meg a letöltött tanúsítványfájl a Jegyzettömbben, másolja a tartalmat, majd illessze be az **X. 509-tanúsítvány** mezőbe.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -170,12 +166,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -205,7 +201,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-spaceiq-test-user"></a>SpaceIQ-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a SpaceIQ-ben. A SpaceIQ-platformon lévő felhasználók hozzáadásához vegye fel a [SpaceIQ-támogatási csapatot](mailto:eng@spaceiq.com) . Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a SpaceIQ-ben. [SpaceIQ support team](mailto:eng@spaceiq.com)   A SpaceIQ-platformon lévő felhasználók hozzáadásához vegye fel a SpaceIQ-támogatási csapatot. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

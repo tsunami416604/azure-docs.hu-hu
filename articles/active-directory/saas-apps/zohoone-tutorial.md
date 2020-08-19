@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Zoho One szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Zoho között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: baa33e79b3bba8eccb2d0fc03e110e1a3c4defde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086231"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Azure Active Directory integráció a Zoho One-nal
 
@@ -32,7 +28,7 @@ A Zoho One és az Azure AD integrálásával az alábbi előnyökkel jár:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,23 +101,23 @@ Ha az Azure AD egyszeri bejelentkezést a Zoho használatával szeretné konfigu
 
     ![Zoho egy tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-relay.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`one.zoho.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `one.zoho.com`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://accounts.zoho.com/samlresponse/<saml-identifier>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
-    > Az előző **Válasz URL-címének** értéke nem valódi. A `<saml-identifier>` következőt kell megadnia: #step4 a **Zoho egyszeri bejelentkezés** szakasza, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > Az előző **Válasz URL-címének** értéke nem valódi. A következőt kell megadnia `<saml-identifier>` : #step4 a **Zoho egyszeri bejelentkezés** szakasza, amelyet az oktatóanyag későbbi részében ismertetünk.
 
     c. Kattintson a **további URL-címek beállítása**elemre.
 
-    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet:`https://one.zoho.com`
+    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `https://one.zoho.com`
 
 5. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
 
     ![Zoho egy tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
     > [!NOTE] 
     > Az előző **bejelentkezési URL-cím** értéke nem valódi. A rendszer frissíti az értéket a tényleges bejelentkezési URL-címmel a **Zoho egyszeri bejelentkezés beállítása** szakaszban, amelyet az oktatóanyag későbbi részében ismertet. 
@@ -158,9 +154,9 @@ Ha az Azure AD egyszeri bejelentkezést a Zoho használatával szeretné konfigu
 
     c. Kattintson a **Tallózás** gombra a Azure Portalról letöltött **tanúsítvány (Base64)** feltöltéséhez.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
-4. Miután mentette az SAML-hitelesítés telepítését, másolja az **SAML-azonosító** értéket, és fűzze hozzá a **Válasz URL-címéhez** a helyett `<saml-identifier>`, `https://accounts.zoho.com/samlresponse/one.zoho.com` és illessze be a generált értéket a **Válasz URL-címe** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszban.
+4. Miután mentette az SAML-hitelesítés telepítését, másolja az **SAML-azonosító** értéket, és fűzze hozzá a **Válasz URL-címéhez** a helyett `<saml-identifier>` , `https://accounts.zoho.com/samlresponse/one.zoho.com` és illessze be a generált értéket a **Válasz URL-címe** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszban.
 
     ![Zoho egy SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -197,11 +193,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -247,7 +243,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Zo
     
     a. A **név** szövegmezőbe írja be a felhasználó nevét, például a **Britta Simon**nevet.
     
-    b. Az **e-mail-cím** szövegmezőbe írja be a felhasználóhoz hasonló brittasimon@contoso.come-mail-címet.
+    b. Az **e-mail-cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail-címet brittasimon@contoso.com .
 
     >[!Note]
     >Válassza ki az ellenőrzött tartományt a tartomány listából.

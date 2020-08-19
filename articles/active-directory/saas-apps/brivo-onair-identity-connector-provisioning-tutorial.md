@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Brivo onair-identitás-összekötő konfigurálása a felhasználók automatikus üzembe helyezéséhez a Azure Active Directory segítségével | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Brivo onair.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 542ce04c-ef7d-4154-9b0e-7f68e1154f6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 305a369733ce0435b5f892efd0d447b0940143fc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848696"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547749"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a Brivo onair Identity Connector konfigurálása a felhasználók automatikus kiépítési feladataihoz
 
@@ -118,7 +114,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók Brivo a onair Identity Connector**lehetőséget.
 

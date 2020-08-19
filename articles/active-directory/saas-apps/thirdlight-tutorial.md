@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ThirdLight-szel | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ThirdLight között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 168aae9a-54ee-4c2b-ab12-650a2c62b901
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089090"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Oktatóanyag: Azure Active Directory integráció a ThirdLight
 
@@ -32,7 +28,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ThirdLight a Azu
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +51,7 @@ A ThirdLight Azure AD-be való integrálásának beállításához hozzá kell a
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás**:
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -132,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés ThirdLight való konfigurálásához hajtsa 
 
 1. Egy új böngészőablakban jelentkezzen be a ThirdLight vállalati webhelyre rendszergazdaként.
 
-1. Nyissa meg a **konfigurációs** > **rendszerfelügyelet** > **egy saml2**:
+1. Nyissa meg a **konfigurációs**  >  **rendszerfelügyelet**  >  **egy saml2**:
 
     ![Rendszerfelügyeleti webszolgáltatások](./media/thirdlight-tutorial/ic805843.png "Rendszerfelügyeleti webszolgáltatások")
 
@@ -166,7 +162,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<yourcompanydomain>\< . bővítmény>**. (Például: BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
 
     1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
@@ -225,7 +221,7 @@ Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési pa
 
 Amikor kiválasztja a ThirdLight csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a ThirdLight-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -3,23 +3,22 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987103"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544672"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
-A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, mind az Azure-ban, mind az [arc-csatlakoztatott gépeken](../../../azure-arc/servers/overview.md)futó gépek esetében.
-Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
+A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, mind az Azure-ban, mind az [arc-csatlakoztatott gépeken](../../../azure-arc/servers/overview.md)futó gépek esetében. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
 - Az operációs rendszer konfigurációja
 - Alkalmazás konfigurációja vagy jelenléte
 - Környezeti beállítások
 
-Jelenleg a legtöbb Azure Policy vendég konfigurációs házirend csak a gépen belüli beállításokat naplózza.
+Jelenleg az Azure Policy vendégkonfigurációs szabályzatok többsége csak a gépen belüli beállításokat naplózza.
 Nem alkalmaznak konfigurációkat. A kivétel egy, az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített szabályzat.
 
 ## <a name="enable-guest-configuration"></a>Vendég konfiguráció engedélyezése
@@ -32,7 +31,7 @@ A vendég konfiguráció használatához regisztrálnia kell az erőforrás-szol
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure-beli virtuális gépekre vonatkozó követelmények üzembe helyezése
 
-A beállítások számítógépeken belüli naplózásához a virtuálisgép- [bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van, és a gépnek rendszer által felügyelt identitással kell rendelkeznie. A bővítmény letölti a vonatkozó szabályzat-hozzárendelést és a hozzá tartozó konfigurációs definíciót. Az identitás a gép hitelesítésére szolgál, ahogy az beolvassa és beírja a vendég konfigurációs szolgáltatásba. A bővítmény nem szükséges az arc-csatlakoztatott gépekhez, mert az az arc csatlakoztatott számítógép ügynökének része.
+A beállítások számítógépeken belüli naplózásához a virtuálisgép- [bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van, és a gépnek rendszer által felügyelt identitással kell rendelkeznie. A bővítmény letölti a vonatkozó szabályzat-hozzárendelést és a megfelelő konfigurációdefiníciót. Az identitás a gép hitelesítésére szolgál, ahogy az beolvassa és beírja a vendég konfigurációs szolgáltatásba. A bővítmény nem szükséges az arc-csatlakoztatott gépekhez, mert az az arc csatlakoztatott számítógép ügynökének része.
 
 > [!IMPORTANT]
 > Az Azure-beli virtuális gépek naplózásához a vendég konfiguráció kiterjesztése és a felügyelt identitás szükséges. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő házirend-kezdeményezést:
@@ -49,7 +48,7 @@ A gépen belül a vendég konfigurációs ügyfél helyi eszközöket használ a
 
 Az alábbi táblázat felsorolja az egyes támogatott operációs rendszereken használt helyi eszközöket. Beépített tartalom esetén a vendég konfigurációja automatikusan betölti ezeket az eszközöket.
 
-|Operációs rendszer|Érvényesítési eszköz|Megjegyzések|
+|Operációs rendszer|Érvényesítési eszköz|Jegyzetek|
 |-|-|-|
 |Windows|[PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| A rendszer csak az Azure Policy által használt mappába betöltve. Nem ütközik a Windows PowerShell DSC-vel. A PowerShell Core nincs hozzáadva a rendszer elérési útjához.|
 |Linux|[Chef Inspect](https://www.chef.io/inspec/)| Telepíti a Chef Inspect verzió 2.2.61 az alapértelmezett helyen, és hozzáadja a rendszer elérési útjához. Az inspec-csomag függőségei, például a Ruby és a Python is telepítve vannak. |
@@ -60,10 +59,10 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 
 ## <a name="supported-client-types"></a>Támogatott ügyfelek típusai
 
-A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure piactéren elérhető operációs rendszerek régebbi verziói kizárva lesznek, ha a vendég konfigurációs ügynök nem kompatibilis.
+A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis.
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Név|Verziók|
+|Publisher|Name|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|
@@ -93,8 +92,7 @@ A forgalmat az Azure [virtuális nyilvános IP-címével](../../../virtual-netwo
 
 ### <a name="azure-arc-connected-machines"></a>Azure arc-csatlakoztatott gépek
 
-Az Azure arc-on kívül található csomópontok a vendég konfigurációs szolgáltatáshoz való kapcsolódást igénylik.
-Az [Azure arc dokumentációjában](../../../azure-arc/servers/overview.md)megadott hálózati és proxy-követelmények részletei.
+Az Azure arc-on kívül található csomópontok a vendég konfigurációs szolgáltatáshoz való kapcsolódást igénylik. Az [Azure arc dokumentációjában](../../../azure-arc/servers/overview.md)megadott hálózati és proxy-követelmények részletei.
 
 Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha egy Azure-beli hálózat nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoportokra](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) vonatkozó szabályokkal. A "GuestAndHybridManagement" [szolgáltatási címke](../../../virtual-network/service-tags-overview.md) használható a vendég konfigurációs szolgáltatásra való hivatkozáshoz.
 
@@ -157,9 +155,9 @@ A vendég-konfigurációs házirendek jelenleg csak egyszer használják a vend�
 
 A vendég konfigurációs bővítmény naplófájlokat ír a következő helyszínekre:
 
-Windows`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Ahol `<version>` az aktuális verziószámra hivatkozik.
 

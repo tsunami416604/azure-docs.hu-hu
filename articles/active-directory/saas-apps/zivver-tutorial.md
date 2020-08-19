@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ZIVVER-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ZIVVER között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 64cb7ea0-df6c-4963-84d8-6f435980e2de
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f55fed72d61597f61cb246c6c74d525b51702e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233244"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Oktatóanyag: Azure Active Directory integráció a ZIVVER
 
@@ -32,7 +28,7 @@ A ZIVVER és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához hajtsa vég
 
     ![ZIVVER tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
 
-    Az **azonosító** szövegmezőbe írja be az URL-címet:`https://app.zivver.com/SAML/Zivver`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:  `https://app.zivver.com/SAML/Zivver`
 
 5. A ZIVVER alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A ZIVVER alkalmazás a **NameIdentifier** a **User. mail**használatával rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
 
@@ -113,12 +109,12 @@ Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához hajtsa vég
 
 6. A fentieken kívül a ZIVVER alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Névtér | Forrás attribútum|
+    | Name | Névtér | Forrás attribútum|
     | ---------------| --------------- |
-    | ZivverAccountKey | https:\//zivver.com/SAML/attributes | User. ObjectId |
+    | ZivverAccountKey | https: \/ /zivver.com/SAML/attributes | User. ObjectId |
 
     >[!NOTE]
-    >Ha Active Directory helyszíni és Azure AD Connect eszközzel rendelkező hibrid beállítást használ, az értéket a következőre kell állítani:`user.objectGUID`
+    >Ha Active Directory helyszíni és Azure AD Connect eszközzel rendelkező hibrid beállítást használ, az értéket a következőre kell állítani: `user.objectGUID`
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
@@ -134,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához hajtsa vég
 
     e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-kódjának** letöltéséhez, majd kattintson a **Másolás** ikonra az **alkalmazás-összevonási metaadatok URL-címének** a megadott beállítások alapján történő másolásához, és mentse a számítógépre.
 
@@ -184,11 +180,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ZenQMS-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ZenQMS között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 72857c30-8896-438d-90c9-aeb21bf5fec0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 850923940c60212ad99729b8dbd002d8f9083a0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1b4f4d801a5bbc3342b203a402f5921265630944
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167164"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Oktatóanyag: Azure Active Directory integráció a ZenQMS
 
@@ -105,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés ZenQMS való konfigurálásához hajtsa vég
 
     ![ZenQMS tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`urn:zenqms:<INSTANCE>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `urn:zenqms:<INSTANCE>`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<INSTANCE>.zenqms.com/SAML/AssertionConsumerService`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<INSTANCE>.zenqms.com/SAML/AssertionConsumerService`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -151,7 +147,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

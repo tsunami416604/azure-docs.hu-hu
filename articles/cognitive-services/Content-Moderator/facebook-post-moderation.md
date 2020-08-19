@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118639"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548514"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * A Content Moderator és a Facebook HTTP-eseményeit figyelő Azure Functions-függvények létrehozása.
 > * Facebook-oldal csatolása Content Moderator Facebook-alkalmazás használatával.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 Ez az ábra a forgatókönyv egyes összetevőit szemlélteti:
 
@@ -68,7 +68,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 1. Nyissa meg az újonnan létrehozott függvényalkalmazás.
 1. Az alkalmazáson belül lépjen a **platform szolgáltatások** lapra, és válassza a **konfiguráció**lehetőséget. A következő lap **Alkalmazásbeállítások** szakaszában válassza az **új Alkalmazásbeállítás** lehetőséget a következő kulcs/érték párok hozzáadásához:
     
-    | Alkalmazás-beállítás neve | érték   | 
+    | Alkalmazás-beállítás neve | value   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | A Content Moderator csapatazonosítójának beállítása  | 
     | `cm:SubscriptionKey` | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) |
@@ -87,7 +87,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
     1. Kattintson a **http-triggert**tartalmazó csempére.
     1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
-    1. Kattintson a **Létrehozás**gombra.
+    1. Kattintson a **Create** (Létrehozás) gombra.
     1. Cserélje le a **Run. CSX** tartalmát a **FbListener/Run. CSX** tartalmára.
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

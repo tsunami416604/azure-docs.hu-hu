@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Rackspace SSO-val | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Rackspace SSO között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 36b398be-2f7e-4ce8-9031-53587299bc4a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870303"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Azure Active Directory integráció a Rackspace SSO-val
 
@@ -32,7 +28,7 @@ A Rackspace SSO Azure AD-vel való integrálása a következő előnyöket bizto
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -113,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés Rackspace SSO-vel való konfigurálásához 
 
     c. A metaadat-fájl feltöltése után a szükséges URL-címek automatikus feltöltése automatikusan megtörténik.
 
-    d. A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://login.rackspace.com/federate/`
+    d. A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet: `https://login.rackspace.com/federate/`
 
     ![Rackspace SSO-tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)   
 
@@ -153,11 +149,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -198,8 +194,8 @@ A Rackspace egy **attribútum-hozzárendelési házirend** használatával rende
     ![A groups jogcím neve beállítások](common/sso-groups-claims-names.png)
 
 A következő példa **attribútum-hozzárendelési házirend** a következőket mutatja be:
-1. A Rackspace-felhasználó nevének beállítása `user.name` SAML-jogcímként. Bármely jogcím használható, de ez a leggyakoribb beállítás a felhasználó e-mail-címét tartalmazó mezőre.
-1. A Rackspace szerepköreinek `admin` és `billing:admin` felhasználóinak beállítása egy Azure ad-csoportnak megfelelő csoport neve vagy csoport UID azonosítója alapján. `"{0}"` A `roles` mezőhöz való `remote` *helyettesítést* használja a rendszer, és a szabály kifejezései eredményei lesznek lecserélve.
+1. A Rackspace-felhasználó nevének beállítása SAML- `user.name` jogcímként. Bármely jogcím használható, de ez a leggyakoribb beállítás a felhasználó e-mail-címét tartalmazó mezőre.
+1. A Rackspace szerepköreinek `admin` és `billing:admin` felhasználóinak beállítása egy Azure ad-csoportnak megfelelő csoport neve vagy csoport UID azonosítója alapján. A *substitution* `"{0}"` mezőhöz való helyettesítést `roles` használja a rendszer, és a szabály kifejezései eredményei lesznek lecserélve `remote` .
 1. Az `"{D}"` *alapértelmezett helyettesítéssel* a Rackspace további SAML-mezőket kérhet le, ha szabványos és jól ismert SAML-jogcímeket keres az SAML-Exchange-ben.
 
 ```yaml

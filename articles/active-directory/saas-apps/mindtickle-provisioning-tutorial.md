@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a MindTickle konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a MindTickle.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ae7b6ac9c6feb539e4da3627ebbabd3c5b628fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061219"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549061"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MindTickle konfigurálása
 
@@ -57,7 +53,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 Az Azure AD-vel való automatikus MindTickle konfigurálása előtt engedélyeznie kell a SCIM-létesítést a MindTickle-on.
 
 
-1.  Ismerje meg a [MindTickle támogatási csapatát](mailto:help@mindtickle.com) az scim-létesítés konfigurálásához szükséges JWT-token beszerzéséhez.
+1.  Ismerje meg a  [MindTickle támogatási csapatát](mailto:help@mindtickle.com) az scim-létesítés konfigurálásához szükséges JWT-token beszerzéséhez.
 
 
 ## <a name="add-mindtickle-from-the-gallery"></a>MindTickle hozzáadása a gyűjteményből
@@ -115,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MindTickle**lehetőséget.
 

@@ -11,23 +11,23 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109000"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545658"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
 > [!NOTE]
-> * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kinyerési és nyelvfelismerés-tárolók kulcsfontosságú kifejezésként elérhető nyilvános előzetes verzióként érhetők el.
+> * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kulcskifejezés-kinyerési és a nyelvfelismerési tárolók nem korlátozott nyilvános előzetes verzióként érhetők el.
 > * Az entitások összekapcsolása és megtekintő szolgáltatás jelenleg nem érhető el tárolóként.
-> * Jelenleg nem számítunk fel díjat a Text Analytics állapotának az állapotfigyelő tároló használata esetén.
+> * Jelenleg nem számolunk fel díjat az Egészségügyi Text Analytics-tároló használatáért.
 
-A tárolók lehetővé teszik a szöveges elemzési API-k futtatását a saját környezetében, és kiválóan használhatók az adott biztonsági és adatirányítási követelményekhez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. 
+A tárolók lehetővé teszik a Text Analytics API-k a saját környezetében való futtatását, és kiválóan alkalmasak saját biztonsági és adatszabályozási követelményeihez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 > [!IMPORTANT]
 > Az ingyenes fiók havonta 5 000 tranzakcióra van korlátozva, és csak az **ingyenes** és a **standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">szintű <span class="docon docon-navigate-external x-hidden-focus"></span> díjszabás</a> érvényes a tárolók esetében. A tranzakciós kérelmek díjszabásával kapcsolatos további információkért lásd az [Adatkorlátokat](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)ismertető témakört.
@@ -40,9 +40,9 @@ A Text Analytics tárolók futtatásához rendelkeznie kell a gazdagép és a t�
 
 Text Analytics tárolók használata előtt meg kell felelnie a következő előfeltételeknek:
 
-|Kötelező|Szerep|
+|Kötelező|Cél|
 |--|--|
-|Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
+|A Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.| 
 |Erőforrás Text Analytics |A tároló használatához a következőket kell tennie:<br><br>Egy Azure [text Analytics erőforrás](../../cognitive-services-apis-create-account.md) a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal Text Analytics áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont|
 
@@ -65,7 +65,7 @@ Az alábbi táblázat a Text Analytics tárolók minimális és ajánlott specif
 
 A CPU-mag és a memória `--cpus` a `--memory` parancs részeként használt és beállításoknak felel meg `docker run` .
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a `docker pull`
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -96,7 +96,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező számlázási beállításokkal.
 1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
+## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a `docker run`
 
 A tárolók futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A tároló továbbra is futni fog, amíg le nem állítja.
 
@@ -127,9 +127,9 @@ A tárolók futtatásához használja a [Docker Run](https://docs.docker.com/eng
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
-A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít.
+A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt.
 
-A tároló API-k esetében használja a gazdagépet `http://localhost:5000` .
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`).
 
 <!--  ## Validate container is running -->
 
@@ -174,7 +174,7 @@ Ebben a cikkben megtanulta Text Analytics tárolók letöltésére, telepítés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [tárolók konfigurálásának](../text-analytics-resource-container-config.md) áttekintése konfigurációs beállításokhoz
 * A funkciókkal kapcsolatos problémák megoldásához tekintse meg a [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md) című témakört.

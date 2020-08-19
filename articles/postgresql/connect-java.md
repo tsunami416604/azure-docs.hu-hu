@@ -1,392 +1,502 @@
 ---
-title: 'Gyors útmutató: kapcsolat Java-Azure Database for PostgreSQL – egyetlen kiszolgálóval'
-description: Ez a rövid útmutató egy Java-kódrészletet tartalmaz, amellyel összekapcsolhatók és lekérhető Azure Database for PostgreSQL-kiszolgálóról származó adatok lekérdezése.
-author: rachel-msft
-ms.author: raagyema
+title: A Java és a JDBC használata Azure Database for PostgreSQL
+description: Ismerje meg, hogyan használható a Java és a JDBC egy Azure Database for PostgreSQL.
+author: jdubois
+ms.author: judubois
 ms.service: postgresql
-ms.custom:
-- mvc
-- seo-java-august2019
-- devx-track-java
-ms.devlang: java
+ms.custom: mvc, devcenter
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.openlocfilehash: 4e73cf35634b29409f8316080952e46825dd1a0d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.devlang: java
+ms.date: 08/17/2020
+ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182850"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545437"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Java használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
+# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>A Java és a JDBC használata Azure Database for PostgreSQL
 
-Ebben a rövid útmutatóban egy Java-alkalmazás használatával csatlakozik egy Azure Database for PostgreSQLhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
+Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for PostgreSQLban](https://docs.microsoft.com/azure/postgresql/)található információk tárolására és lekérésére.
+
+A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való kapcsolódáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
+- Támogatott [Java Development Kit](https://aka.ms/azure-jdks), 8-as verzió (Azure Cloud Shell).
+- Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
-- A rövid útmutató befejezése [: hozzon létre egy Azure Database for PostgreSQL kiszolgálót a Azure Portal vagy a](quickstart-create-server-database-portal.md) rövid útmutatóban [: hozzon létre egy Azure Database for POSTGRESQL az Azure CLI használatával](quickstart-create-server-database-azure-cli.md).
+## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
 
-- [POSTGRESQL JDBC-illesztőprogram](https://jdbc.postgresql.org/download.html) – a Java és a Java Development Kit verziójának megfelelő.
-- [Osztályútvonal részletei](https://jdbc.postgresql.org/documentation/head/classpath.html) – a PostgreSQL JDBC jar-fájl (például PostgreSQL-42.1.1. jar) belefoglalása az alkalmazás osztályútvonal.
+Környezeti változókat fogunk használni a gépelési hibák korlátozása érdekében, és egyszerűbbé tesszük a következő konfiguráció testreszabását az adott igényeknek megfelelően.
 
-## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
-Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
+Állítsa be ezeket a környezeti változókat a következő parancsok használatával:
 
-1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **mydemoserver**).
+```bash
+AZ_RESOURCE_GROUP=database-workshop
+AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
+AZ_LOCATION=<YOUR_AZURE_REGION>
+AZ_POSTGRESQL_USERNAME=demo
+AZ_POSTGRESQL_PASSWORD=<YOUR_POSTGRESQL_PASSWORD>
+AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
+```
 
-1. A kiszolgáló **Áttekintés** paneljén jegyezze fel a **kiszolgáló nevét** és a **rendszergazdai felhasználónevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+Cserélje le a helyőrzőket a következő értékekre, amelyek a cikk során használatosak:
 
-    ![Azure Database for PostgreSQL a kapcsolatok karakterlánca](./media/connect-java/server-details-azure-database-postgresql.png)
+- `<YOUR_DATABASE_NAME>`: A PostgreSQL-kiszolgáló neve. Egyedinek kell lennie az Azure-ban.
+- `<YOUR_AZURE_REGION>`: A használni kívánt Azure-régió. Alapértelmezés szerint használhatja `eastus` , de azt javasoljuk, hogy a régiót közelebbről konfigurálja, ahol él. Az elérhető régiók teljes listáját a beírásával érheti el `az account list-locations` .
+- `<YOUR_POSTGRESQL_PASSWORD>`: A PostgreSQL-adatbázis kiszolgálójának jelszava. A jelszónak legalább nyolc karakterből kell állnia. A karaktereknek a következő kategóriák közül hármat kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0-9) és nem alfanumerikus karakterek (!, $, #,% stb.).
+- `<YOUR_LOCAL_IP_ADDRESS>`: A helyi számítógép IP-címe, amelyből a Java-alkalmazást fogja futtatni. Az egyik kényelmes módszer, ha úgy találja, hogy a böngészőt a [whatismyip.Akamai.com](http://whatismyip.akamai.com/)irányítsa.
 
-## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
-Az alábbi kóddal csatlakozhat és töltheti be adatokat az adatbázisba a függvény és egy **INSERT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a tábla eltávolítására és létrehozására szolgál. A [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódussal futtathatja az egyes paraméterkészletekhez tartozó parancsot. 
+Ezután hozzon létre egy erőforráscsoportot a következő parancs használatával:
 
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
+```azurecli
+az group create \
+    --name $AZ_RESOURCE_GROUP \
+    --location $AZ_LOCATION \
+  	| jq
+```
+
+> [!NOTE]
+> A `jq` segédprogramot a JSON-információk megjelenítésére használjuk, és olvashatóbbá teszik azokat. Ez a segédprogram alapértelmezés szerint telepítve van [Azure Cloud Shellon](https://shell.azure.com/). Ha nem tetszik a segédprogram, nyugodtan eltávolíthatja az `| jq` összes használni kívánt parancs részét.
+
+## <a name="create-an-azure-database-for-postgresql-instance"></a>Azure Database for PostgreSQL példány létrehozása
+
+A létrehozott első dolog egy felügyelt PostgreSQL-kiszolgáló.
+
+> [!NOTE]
+> A PostgreSQL-kiszolgálók létrehozásával kapcsolatos részletes információkat [a Azure Portal használatával Azure Database for PostgreSQL kiszolgáló létrehozása](/azure/postgresql/quickstart-create-server-database-portal)című témakörben olvashat.
+
+A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsot:
+
+```azurecli
+az postgres server create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME \
+    --location $AZ_LOCATION \
+    --sku-name B_Gen5_1 \
+    --storage-size 5120 \
+    --admin-user $AZ_POSTGRESQL_USERNAME \
+    --admin-password $AZ_POSTGRESQL_PASSWORD \
+  	| jq
+```
+
+Ez a parancs egy kis PostgreSQL-kiszolgálót hoz létre.
+
+### <a name="configure-a-firewall-rule-for-your-postgresql-server"></a>Tűzfalszabály konfigurálása a PostgreSQL-kiszolgálóhoz
+
+A Azure Database for PostgreSQL példányok alapértelmezés szerint biztonságosak. Olyan tűzfallal rendelkeznek, amely nem engedélyezi a bejövő kapcsolatokat. Az adatbázis használatához olyan tűzfalszabály hozzáadására van szükség, amely lehetővé teszi a helyi IP-cím számára az adatbázis-kiszolgáló elérését.
+
+Mivel a cikk elején konfigurálta a helyi IP-címet, a következő parancs futtatásával nyithatja meg a kiszolgáló tűzfalát:
+
+```azurecli
+az postgres server firewall-rule create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME-database-allow-local-ip \
+    --server $AZ_DATABASE_NAME \
+    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  	| jq
+```
+
+### <a name="configure-a-postgresql-database"></a>PostgreSQL-adatbázis konfigurálása
+
+A korábban létrehozott PostgreSQL-kiszolgáló üres. Nincs olyan adatbázisa, amelyet a Java-alkalmazással használhat. Hozzon létre egy nevű új adatbázist `demo` a következő parancs használatával:
+
+```azurecli
+az postgres db create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name demo \
+    --server-name $AZ_DATABASE_NAME \
+  	| jq
+```
+
+### <a name="create-a-new-java-project"></a>Új Java-projekt létrehozása
+
+Használja kedvenc IDE-t, hozzon létre egy új Java-projektet, és adjon hozzá egy `pom.xml` fájlt a gyökérkönyvtárában:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.12</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+Ez a fájl egy [Apache Maven](https://maven.apache.org/) , amely a következő használatára konfigurálja a projektet:
+
+- Java 8
+- A legújabb PostgreSQL-illesztőprogram Javához
+
+### <a name="prepare-a-configuration-file-to-connect-to-azure-database-for-postgresql"></a>Konfigurációs fájl előkészítése Azure Database for PostgreSQLhoz való csatlakozáshoz
+
+Hozzon létre egy *src/Main/Resources/Application. properties* fájlt, és adja hozzá a következőket:
+
+```properties
+url=jdbc:postgresql://$AZ_DATABASE_NAME.postgres.database.azure.com:5432/demo?ssl=true&sslmode=require
+user=demo@$AZ_DATABASE_NAME
+password=$AZ_POSTGRESQL_PASSWORD
+```
+
+- Cserélje le a két `$AZ_DATABASE_NAME` változót a cikk elején konfigurált értékre.
+- Cserélje le a `$AZ_POSTGRESQL_PASSWORD` változót a cikk elején konfigurált értékre.
+
+> [!NOTE]
+> A `?ssl=true&sslmode=require` Configuration (konfiguráció) tulajdonsághoz való hozzáfűzésével `url` megtudhatja, hogy a JDBC illesztőprogram a TLS-t ([Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)) használja az adatbázishoz való csatlakozáskor. A TLS-t a Azure Database for PostgreSQL használatával kötelező használni, és ez jó biztonsági gyakorlat.
+
+### <a name="create-an-sql-file-to-generate-the-database-schema"></a>SQL-fájl létrehozása az adatbázis-séma létrehozásához
+
+Egy adatbázis-séma létrehozásához a *src/Main `schema.sql` /Resources* /file-t fogjuk használni. Hozza létre a fájlt a következő tartalommal:
+
+```sql
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
+```
+
+## <a name="code-the-application"></a>Az alkalmazás kódja
+
+### <a name="connect-to-the-database"></a>Csatlakozás az adatbázishoz
+
+Ezután adja hozzá azt a Java-kódot, amely a JDBC-kiszolgálóról származó adatok tárolására és lekérésére használható.
+
+Hozzon létre egy *src/Main/Java/DemoApplication. Java* fájlt, amely a következőket tartalmazza:
 
 ```java
+package com.example.demo;
+
 import java.sql.*;
-import java.util.Properties;
+import java.util.*;
+import java.util.logging.Logger;
 
-public class CreateTableInsertRows {
+public class DemoApplication {
 
-    public static void main (String[] args)  throws Exception
-    {
+    private static final Logger log;
 
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log =Logger.getLogger(DemoApplication.class.getName());
+    }
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
+    public static void main(String[] args) throws Exception {
+        log.info("Loading application properties");
+        Properties properties = new Properties();
+        properties.load(DemoApplication.class.getClassLoader().getResourceAsStream("application.properties"));
+
+        log.info("Connecting to the database");
+        Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        log.info("Database connection test: " + connection.getCatalog());
+
+        log.info("Create database schema");
+        Scanner scanner = new Scanner(DemoApplication.class.getClassLoader().getResourceAsStream("schema.sql"));
+        Statement statement = connection.createStatement();
+        while (scanner.hasNextLine()) {
+            statement.execute(scanner.nextLine());
         }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
 
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
+        /*
+        Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+        insertData(todo, connection);
+        todo = readData(connection);
+        todo.setDetails("congratulations, you have updated data!");
+        updateData(todo, connection);
+        deleteData(todo, connection);
+        */
 
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Drop previous table of same name if one exists.
-                Statement statement = connection.createStatement();
-                statement.execute("DROP TABLE IF EXISTS inventory;");
-                System.out.println("Finished dropping table (if existed).");
-    
-                // Create table.
-                statement.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);");
-                System.out.println("Created table.");
-    
-                // Insert some data into table.
-                int nRowsInserted = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO inventory (name, quantity) VALUES (?, ?);");
-                preparedStatement.setString(1, "banana");
-                preparedStatement.setInt(2, 150);
-                nRowsInserted += preparedStatement.executeUpdate();
-
-                preparedStatement.setString(1, "orange");
-                preparedStatement.setInt(2, 154);
-                nRowsInserted += preparedStatement.executeUpdate();
-
-                preparedStatement.setString(1, "apple");
-                preparedStatement.setInt(2, 100);
-                nRowsInserted += preparedStatement.executeUpdate();
-                System.out.println(String.format("Inserted %d row(s) of data.", nRowsInserted));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-    
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
+        log.info("Closing database connection");
+        connection.close();
     }
 }
 ```
 
-## <a name="read-data"></a>Adatok olvasása
-Az alábbi kód használatával végezheti el az adatok olvasását a **SELECT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a select utasítás létrehozására és futtatására szolgál. Az eredmények feldolgozása a [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) objektum használatával történik. 
+Ez a Java-kód az *Application. properties* és a korábban létrehozott *Schema. SQL* fájlokat fogja használni, hogy csatlakozhasson a PostgreSQL-kiszolgálóhoz, és hozzon létre egy sémát, amely az adattárolást fogja tárolni.
 
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
+Ebben a fájlban láthatja, hogy az adatok beszúrására, olvasására, frissítésére és törlésére szolgáló metódusok megjegyzései: ezeket a metódusokat a cikk további részében fogjuk felírni, és egy másik után törölheti őket.
 
-```java
-import java.sql.*;
-import java.util.Properties;
+> [!NOTE]
+> Az adatbázis hitelesítő adatait az *Application. properties* fájl *felhasználói* és *jelszó* tulajdonságaiban tárolja a rendszer. Ezeket a hitelesítő adatokat a rendszer a végrehajtáskor használja `DriverManager.getConnection(properties.getProperty("url"), properties);` , mivel a tulajdonságok fájlját argumentumként adja át a rendszer.
 
-public class ReadTable {
+Ezt a fő osztályt a kedvenc eszközével is végrehajthatja:
 
-    public static void main (String[] args)  throws Exception
-    {
+- Az IDE használatával kattintson a jobb gombbal a *DemoApplication* osztályra, és hajtsa végre.
+- A Maven használatával futtathatja az alkalmazást az alábbiak végrehajtásával: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"` .
 
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
-
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-    
-                Statement statement = connection.createStatement();
-                ResultSet results = statement.executeQuery("SELECT * from inventory;");
-                while (results.next())
-                {
-                    String outputString = 
-                        String.format(
-                            "Data row = (%s, %s, %s)",
-                            results.getString(1),
-                            results.getString(2),
-                            results.getString(3));
-                    System.out.println(outputString);
-                }
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
-    }
-}
+Az alkalmazásnak kapcsolódnia kell a Azure Database for PostgreSQLhoz, létre kell hoznia egy adatbázis-sémát, majd be kell kapcsolnia a kapcsolatot, ahogy az a konzol naplófájljaiban látható:
 
 ```
-
-## <a name="update-data"></a>Adatok frissítése
-Az alábbi kód használatával végezheti el az adatok módosítását az **UPDATE** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódus az adatbázishoz való csatlakozásra, illetve az update utasítás előkészítésére és futtatására szolgál. 
-
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
-
-```java
-import java.sql.*;
-import java.util.Properties;
-
-public class UpdateTable {
-    public static void main (String[] args)  throws Exception
-    {
-
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
-
-        Connection connection = null;
-
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
-
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Modify some data in table.
-                int nRowsUpdated = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE inventory SET quantity = ? WHERE name = ?;");
-                preparedStatement.setInt(1, 200);
-                preparedStatement.setString(2, "banana");
-                nRowsUpdated += preparedStatement.executeUpdate();
-                System.out.println(String.format("Updated %d row(s) of data.", nRowsUpdated));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
-    }
-}
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Closing database connection 
 ```
-## <a name="delete-data"></a>Adat törlése
-Az alábbi kód használatával végezheti el az adatok eltávolítását a **DELETE** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódus az adatbázishoz való csatlakozásra, illetve a delete utasítás előkészítésére és futtatására szolgál. 
 
-Cserélje le a gazdagép, az adatbázis, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a saját kiszolgáló és adatbázis létrehozásakor adott meg.
+### <a name="create-a-domain-class"></a>Tartományi osztály létrehozása
+
+Hozzon létre egy új `Todo` Java-osztályt az osztály mellett, `DemoApplication` és adja hozzá a következő kódot:
 
 ```java
-import java.sql.*;
-import java.util.Properties;
+package com.example.demo;
 
-public class DeleteTable {
-    public static void main (String[] args)  throws Exception
-    {
+public class Todo {
 
-        // Initialize connection variables.
-        String host = "mydemoserver.postgres.database.azure.com";
-        String database = "mypgsqldb";
-        String user = "mylogin@mydemoserver";
-        String password = "<server_admin_password>";
+    private Long id;
+    private String description;
+    private String details;
+    private boolean done;
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
-        }
+    public Todo() {
+    }
 
-        System.out.println("PostgreSQL JDBC driver detected in library path.");
+    public Todo(Long id, String description, String details, boolean done) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.done = done;
+    }
 
-        Connection connection = null;
+    public Long getId() {
+        return id;
+    }
 
-        // Initialize connection object
-        try
-        {
-            String url = String.format("jdbc:postgresql://%s/%s", host, database);
-            
-            // set up the connection properties
-            Properties properties = new Properties();
-            properties.setProperty("user", user);
-            properties.setProperty("password", password);
-            properties.setProperty("ssl", "true");
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-            // get connection
-            connection = DriverManager.getConnection(url, properties);
-        }
-        catch (SQLException e)
-        {
-            throw new SQLException("Failed to create connection to database.", e);
-        }
-        if (connection != null) 
-        { 
-            System.out.println("Successfully created connection to database.");
-        
-            // Perform some SQL queries over the connection.
-            try
-            {
-                // Delete some data from table.
-                int nRowsDeleted = 0;
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM inventory WHERE name = ?;");
-                preparedStatement.setString(1, "orange");
-                nRowsDeleted += preparedStatement.executeUpdate();
-                System.out.println(String.format("Deleted %d row(s) of data.", nRowsDeleted));
-    
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
-            }
-            catch (SQLException e)
-            {
-                throw new SQLException("Encountered an error when executing given sql statement.", e);
-            }       
-        }
-        else {
-            System.out.println("Failed to create connection to database.");
-        }
-        System.out.println("Execution finished.");
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", done=" + done +
+                '}';
     }
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+Ez az osztály olyan tartományi modell, amely a `todo` *Schema. SQL* parancsfájl végrehajtásakor létrehozott táblán van leképezve.
+
+### <a name="insert-data-into-azure-database-for-postgresql"></a>Adatbeszúrás Azure Database for PostgreSQLba
+
+Az *src/Main/Java/DemoApplication. Java* fájlban a Main metódust követően adja hozzá a következő metódust az adatbázisba való beszúráshoz:
+
+```java
+private static void insertData(Todo todo, Connection connection) throws SQLException {
+    log.info("Insert data");
+    PreparedStatement insertStatement = connection
+            .prepareStatement("INSERT INTO todo (id, description, details, done) VALUES (?, ?, ?, ?);");
+
+    insertStatement.setLong(1, todo.getId());
+    insertStatement.setString(2, todo.getDescription());
+    insertStatement.setString(3, todo.getDetails());
+    insertStatement.setBoolean(4, todo.isDone());
+    insertStatement.executeUpdate();
+}
+```
+
+Mostantól megadhatja a következő két sor megjegyzését a `main` metódusban:
+
+```java
+Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+insertData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Closing database connection
+```
+
+### <a name="reading-data-from-azure-database-for-postgresql"></a>Adatok olvasása a Azure Database for PostgreSQLból
+
+Olvassa el a korábban beszúrt adatforrásokat, és ellenőrizze, hogy a kód megfelelően működik-e.
+
+Az *src/Main/Java/DemoApplication. Java* fájlban a `insertData` metódus után adja hozzá a következő metódust az adatok az adatbázisból való beolvasásához:
+
+```java
+private static Todo readData(Connection connection) throws SQLException {
+    log.info("Read data");
+    PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
+    ResultSet resultSet = readStatement.executeQuery();
+    if (!resultSet.next()) {
+        log.info("There is no data in the database!");
+        return null;
+    }
+    Todo todo = new Todo();
+    todo.setId(resultSet.getLong("id"));
+    todo.setDescription(resultSet.getString("description"));
+    todo.setDetails(resultSet.getString("details"));
+    todo.setDone(resultSet.getBoolean("done"));
+    log.info("Data read from the database: " + todo.toString());
+    return todo;
+}
+```
+
+Mostantól megadhatja a következő sor megjegyzését a `main` metódusban:
+
+```java
+todo = readData(connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="updating-data-in-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL-beli Adatfrissítés
+
+Frissítjük a korábban beszúrt adathalmazokat.
+
+Továbbra is a *src/Main/Java/DemoApplication. Java* fájlban, a `readData` metódus után adja hozzá a következő metódust az adatbázison belüli adatfrissítéshez:
+
+```java
+private static void updateData(Todo todo, Connection connection) throws SQLException {
+    log.info("Update data");
+    PreparedStatement updateStatement = connection
+            .prepareStatement("UPDATE todo SET description = ?, details = ?, done = ? WHERE id = ?;");
+
+    updateStatement.setString(1, todo.getDescription());
+    updateStatement.setString(2, todo.getDetails());
+    updateStatement.setBoolean(3, todo.isDone());
+    updateStatement.setLong(4, todo.getId());
+    updateStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Mostantól megadhatja a következő két sor megjegyzését a `main` metódusban:
+
+```java
+todo.setDetails("congratulations, you have updated data!");
+updateData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="deleting-data-in-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQLban lévő adattörlés
+
+Végül törölje az előzőleg beszúrt adathalmazt.
+
+Továbbra is a *src/Main/Java/DemoApplication. Java* fájlban, a `updateData` metódus után adja hozzá a következő metódust az adatbázison belüli adattörléshez:
+
+```java
+private static void deleteData(Todo todo, Connection connection) throws SQLException {
+    log.info("Delete data");
+    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
+    deleteStatement.setLong(1, todo.getId());
+    deleteStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Mostantól megadhatja a következő sor megjegyzését a `main` metódusban:
+
+```java
+deleteData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Delete data 
+[INFO   ] Read data 
+[INFO   ] There is no data in the database! 
+[INFO   ] Closing database connection 
+```
+
+## <a name="conclusion-and-resources-clean-up"></a>Következtetések és erőforrások tisztítása
+
+Gratulálunk! Létrehozott egy Java-alkalmazást, amely a JDBC-t használja a Azure Database for PostgreSQL adatok tárolására és lekérésére.
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

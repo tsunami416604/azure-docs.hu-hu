@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés a portálon'
 description: Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 03/24/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240007"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548379"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
@@ -19,7 +19,7 @@ A folyamat végén sikeresen fogja azonosítani a felügyelt lemezeket nem haszn
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
 
    :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Házirend-definíció hozzárendelése a hozzárendelések lapról" border="false":::
 
-1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
+1. A **házirend kiosztása** lapon állítsa be a **hatókört** úgy, hogy kiválasztja a három pontot, majd kiválasztja a felügyeleti csoportot vagy az előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután használja a **Select (kiválasztás** ) gombot a **hatókör** lap alján.
 
    Ebben a példában a **Contoso** előfizetést használjuk. Saját előfizetése ettől eltérhet.
 
@@ -51,7 +51,7 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
 
    Az elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](./samples/index.md).
 
-1. Keresse meg a _Felügyelt lemezeket nem használó virtuális gépek naplózása_ definíciót a szabályzatdefiníciók listájában. Kattintson a szabályzatra, majd kattintson a **Kiválasztás** elemre.
+1. Keresse meg a _Felügyelt lemezeket nem használó virtuális gépek naplózása_ definíciót a szabályzatdefiníciók listájában. Válassza ki ezt a házirendet, majd használja a **kiválasztás** gombot.
 
    :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="A megfelelő szabályzatdefiníció megtalálása" border="false":::
 
@@ -60,13 +60,13 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
 
 1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a _jelölőnégyzetet be kell jelölni_ , ha a házirend vagy kezdeményezés olyan házirendet tartalmaz, amelynek a [deployIfNotExists](./concepts/effects.md#deployifnotexists) hatása van. Mivel a rövid útmutatóhoz használt szabályzat nem, hagyja üresen. További információkért lásd a [felügyelt identitásokat](../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](./how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Kattintson a **Hozzárendelés** gombra.
+1. Válassza a **Hozzárendelés** elemet.
 
 Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának megismerése érdekében.
 
-## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
+## <a name="identify-non-compliant-resources"></a>A nem megfelelő erőforrások azonosítása
 
-A lap bal oldalán kattintson a **megfelelőség** elemre. Ezután keresse meg **azokat a naplózási virtuális gépeket, amelyek nem használják a felügyelt lemezeken** létrehozott házirend-hozzárendelést.
+A lap bal oldalán kattintson a **megfelelőség** elemre. Ezután keresse meg _azokat a naplózási virtuális gépeket, amelyek nem használják a felügyelt lemezeken_ létrehozott házirend-hozzárendelést.
 
 :::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Megfelelőségi részletek a szabályzat megfelelőségi lapján" border="false":::
 
@@ -76,10 +76,10 @@ Ha a meglévő erőforrások kiértékelésekor egy feltétel igaznak bizonyul, 
 
 | **Erőforrás-állapot** | **Hatás** | **Szabályzat-kiértékelés** | **Megfelelőségi állapot** |
 | --- | --- | --- | --- |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False (Hamis) | Megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | False (Hamis) | Megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Igaz | Nem megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Hamis | Megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelő |
 
 \* Az Append, a DeployIfNotExist és az AuditIfNotExist hatás esetében az IF utasításnak TRUE értéket kell visszaadnia.
 Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
@@ -88,9 +88,9 @@ Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy 
 
 A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépéseket:
 
-1. Válassza a **Megfelelőség** (vagy **Hozzárendelések**) elemet az Azure Policy oldal bal oldalán, és keresse meg a létrehozott **Felügyelt lemezeket nem használó virtuális gépek naplózása** szabályzat-hozzárendelést.
+1. Válassza a **Megfelelőség** (vagy **Hozzárendelések**) elemet az Azure Policy oldal bal oldalán, és keresse meg a létrehozott _Felügyelt lemezeket nem használó virtuális gépek naplózása_ szabályzat-hozzárendelést.
 
-1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését **nem használó naplózási virtuális gépekre** , és válassza a **hozzárendelés törlése**lehetőséget.
+1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését _nem használó naplózási virtuális gépekre_ , és válassza a **hozzárendelés törlése**lehetőséget.
 
    :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Hozzárendelés törlése a megfelelőség lapról" border="false":::
 

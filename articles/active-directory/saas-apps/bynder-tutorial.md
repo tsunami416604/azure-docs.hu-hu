@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Bynder-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Bynder között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 250dbdf2-faf5-48dd-be7c-d54502ef7528
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1848610250e696807acef118384f43d2a51442ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f47fe7f18c4054f65e7a6882d4003006b1a896ad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80984486"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547575"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Oktatóanyag: a Bynder és a Azure Active Directory integrálása
 
@@ -86,23 +81,23 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    Alapértelmezett tartomány esetén:`https://<company name>.getbynder.com`
+    Alapértelmezett tartomány esetén:  `https://<company name>.getbynder.com`
     
-    Egyéni tartomány esetén:`https;//<subdomain>.<domain>.com`
+    Egyéni tartomány esetén:  `https;//<subdomain>.<domain>.com`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-     Alapértelmezett tartomány esetén:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+     Alapértelmezett tartomány esetén:  `https://<company name>.getbynder.com/sso/SAML/authenticate/`
     
-    Egyéni tartomány esetén:`https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
+    Egyéni tartomány esetén:  `https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-     Alapértelmezett tartomány esetén:`https://<company name>.getbynder.com/login/`
+     Alapértelmezett tartomány esetén:  `https://<company name>.getbynder.com/login/`
     
-     Egyéni tartomány esetén:` https://<subdomain>.<domain>.com/login/`
+     Egyéni tartomány esetén:  ` https://<subdomain>.<domain>.com/login/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a Bynder ügyfélszolgálati [csapatához](https://www.bynder.com/en/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -119,7 +114,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Válassza ki a **csoport azonosítója** **forrás attribútumát** .
 
-    1. Kattintson a **Save** (Mentés) gombra.
+    1. Kattintson a **Mentés** gombra.
 
         ![image](./media/bynder-tutorial/config08.png)
 
@@ -143,9 +138,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -180,8 +175,8 @@ Ha a hozzáférési panelen a Bynder csempére kattint, automatikusan be kell je
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

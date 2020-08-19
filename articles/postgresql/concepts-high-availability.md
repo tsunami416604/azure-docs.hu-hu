@@ -1,17 +1,17 @@
 ---
 title: Magas rendelkezésre állás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a magas rendelkezésre állással kapcsolatos információkat nyújt Azure Database for PostgreSQL – egyetlen kiszolgálón
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508464"
+ms.locfileid: "88547681"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Magas rendelkezésre állás Azure Database for PostgreSQL – egyetlen kiszolgáló
 A Azure Database for PostgreSQL – az egykiszolgálós szolgáltatás garantált magas szintű rendelkezésre állást biztosít a pénzügyi felelősséggel vállalt szolgáltatói szerződéssel (SLA) [99,99%-os](https://azure.microsoft.com/support/legal/sla/postgresql) üzemidő mellett. Azure Database for PostgreSQL magas rendelkezésre állást biztosít a tervezett események (például a megkezdeni skálázási számítási művelet) során, valamint olyan nem tervezett események esetén is, mint például az alapul szolgáló hardver, szoftver vagy hálózati hiba. Azure Database for PostgreSQL gyorsan helyreállítható a legfontosabb körülmények között, így gyakorlatilag nincs alkalmazás-leállási idő a szolgáltatás használatakor.
@@ -61,7 +61,7 @@ A nem tervezett leállás váratlan meghibásodások miatt fordulhat elő, bele�
 
 | **Forgatókönyv** | **Automatikus helyreállítás** |
 | ---------- | ---------- |
-| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló valamilyen mögöttes hardverhiba miatt leáll, a rendszer elveti az aktív kapcsolatokat, és minden fedélzeti tranzakciót megszakít. A rendszer automatikusan telepíti az új adatbázis-kiszolgálót, és a távoli adattároló csatlakozik az új adatbázis-kiszolgálóhoz. Az adatbázis-helyreállítás befejezése után az ügyfelek az átjárón keresztül csatlakozhatnak az új adatbázis-kiszolgálóhoz. <br /> <br /> A helyreállítási idő (RTO) függ a különböző tényezőktől, például a hiba időpontjában felmerülő tevékenységtől, például a nagy tranzakciótól és az adatbázis-kiszolgáló indítási folyamata során elvégzendő helyreállítás mennyiségétől. <br /> <br /> A PostgreSQL-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat.  Ha az alkalmazás újrapróbálkozik, az átjáró transzparens módon átirányítja a kapcsolódást az újonnan létrehozott adatbázis-kiszolgálóhoz. |
+| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló valamilyen mögöttes hardverhiba miatt leáll, a rendszer elveti az aktív kapcsolatokat, és minden fedélzeti tranzakciót megszakít. A rendszer automatikusan telepíti az új adatbázis-kiszolgálót, és a távoli adattároló csatlakozik az új adatbázis-kiszolgálóhoz. Az adatbázis-helyreállítás befejezése után az ügyfelek az átjárón keresztül csatlakozhatnak az új adatbázis-kiszolgálóhoz. <br /> <br /> A helyreállítási idő (RTO) függ a különböző tényezőktől, például a hiba időpontjában felmerülő tevékenységtől, például a nagy tranzakciótól, valamint az adatbázis-kiszolgáló indítási folyamata során elvégzendő helyreállítás mennyiségétől. <br /> <br /> A PostgreSQL-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat.  Ha az alkalmazás újrapróbálkozik, az átjáró transzparens módon átirányítja a kapcsolódást az újonnan létrehozott adatbázis-kiszolgálóhoz. |
 | <B>Tárolási hiba | Az alkalmazások nem érintik a tárterülettel kapcsolatos problémákat, például a lemez meghibásodását vagy a fizikai blokk sérülését. Mivel az adattárolás 3 példányban történik, az adatmásolatot a túlélő tároló kézbesíti. A rendszer automatikusan kijavítja a blokkolási hibákat. Ha a rendszer elveszi az adatmásolatot, a rendszer automatikusan létrehozza az adatgyűjtés új másolatát. |
 
 Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek felhasználói beavatkozást igényelnek a helyreállításhoz:

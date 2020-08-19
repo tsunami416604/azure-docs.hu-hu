@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a BitaBIZ konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a BitaBIZ.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d0d38abe-c041-482a-9d3f-ca340678c226
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ad9176614c4a5235e5138444d4197286204a747f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3e01147e44b495a666d11a3927eabbbe0dec0e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059219"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547278"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BitaBIZ konfigurálása
 
@@ -64,7 +60,7 @@ Az Azure AD-vel való automatikus BitaBIZ konfigurálása előtt engedélyeznie 
 
     ![BitaBIZ felügyeleti konzol](media/bitabiz-provisioning-tutorial/integration.png)
 
-2.  Navigáljon **Microsoft Azure ad üzembe**helyezéshez.  Válassza az **engedélyezve** lehetőséget az automatikus felhasználó-kiépítés lehetőségnél. Másolja az **scim kiépítési végpont URL-címének** és a **tulajdonosi jogkivonat**értékeit. Ezek az értékek a bérlői URL-cím és a titkos jogkivonat mezőiben lesznek megadva a BitaBIZ alkalmazás kiépítés lapján a Azure Portal.
+2.  Navigáljon **Microsoft Azure ad üzembe**helyezéshez.  Válassza az **engedélyezve** lehetőséget az automatikus felhasználó-kiépítés lehetőségnél. Másolja az **scim kiépítési végpont URL-címének** és a  **tulajdonosi jogkivonat**értékeit. Ezek az értékek a bérlői URL-cím és a titkos jogkivonat mezőiben lesznek megadva a BitaBIZ alkalmazás kiépítés lapján a Azure Portal.
 
     ![BitaBIZ-SCIM hozzáadása](media/bitabiz-provisioning-tutorial/authentication.png)
 
@@ -124,7 +120,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BitaBIZ**lehetőséget.
 

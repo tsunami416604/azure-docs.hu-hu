@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Shopify Plus szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Shopify plusz között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4f3f2888-1bc8-42c6-94d5-163d05eeb66d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 61d2eb05f7953cda16664f6b4e3317feb46aa8ad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170479"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548570"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Shopify Plus szolgáltatással
 
@@ -84,11 +80,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://accounts.shopify.com/saml/consume/organization/<ORGANIZATION_ID>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://accounts.shopify.com/saml/consume/organization/<ORGANIZATION_ID>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://shopify.plus/login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://shopify.plus/login`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [Shopify és az ügyfél-támogatási csapattal](mailto:plus-user-management@shopify.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -118,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -161,7 +157,7 @@ Egyéni felhasználók:
 Egy e-mail tartományba tartozó összes felhasználó esetén:
 1. Térjen vissza a **Biztonság** lapra.
 1. Válassza ki az SAML hitelesítési beállításhoz **szükséges** értéket. Ez az SAML-t az e-mail-tartománnyal rendelkező összes felhasználóra kikényszeríti az Shopify Plus-ben.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 > [!IMPORTANT]
 > Az SAML engedélyezése az e-mail-tartomány összes felhasználója számára hatással van az alkalmazást használó összes felhasználóra. A felhasználók nem tudnak bejelentkezni a szokásos bejelentkezési oldalára. Csak Azure Active Directoryon keresztül férhetnek hozzá az alkalmazáshoz. A Shopify nem biztosít olyan biztonsági mentési bejelentkezési URL-címet, amelyen a felhasználók bejelentkezhetnek a normál felhasználónevével és jelszavával. Ha szükséges, az SAML kikapcsolásához forduljon a Shopify támogatási szolgálatához.

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció a vásznon | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és vászon között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232038"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Oktatóanyag: Azure Active Directory-integráció a vásznon
 
@@ -33,7 +28,7 @@ A vászon az Azure AD-vel való integrálása a következő előnyöket biztosí
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés Vászonval való konfigurálásához hajtsa 
 
     ![Vászon tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<tenant-name>.instructure.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<tenant-name>.instructure.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<tenant-name>.instructure.com/saml2`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez vegye fel a kapcsolatot a [Canvas ügyfél-támogatási csapatával](https://community.canvaslms.com/community/help) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -135,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés Vászonval való konfigurálásához hajtsa 
 
 1. Egy másik böngészőablakban jelentkezzen be a vászon vállalati webhelyre rendszergazdaként.
 
-2. Lépjen a **tanfolyamok \> felügyelt \> fiókok Microsoft webhelyre**.
+2. Lépjen a **tanfolyamok \> felügyelt fiókok \> Microsoft webhelyre**.
 
     ![Vászon](./media/canvas-lms-tutorial/ic775990.png "Vászon")
 
@@ -159,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés Vászonval való konfigurálásához hajtsa 
 
     f. A **bejelentkezési attribútum** listából válassza a **NameID**lehetőséget.
 
-    g. Az **azonosító formátuma** listából válassza az **emailAddress**lehetőséget.
+    : Az **azonosító formátuma** listából válassza az **emailAddress**lehetőséget.
 
     h. Kattintson a **hitelesítési beállítások mentése**lehetőségre.
 
@@ -181,12 +176,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -222,7 +217,7 @@ Ha engedélyezni szeretné az Azure AD-felhasználók számára, hogy bejelentke
 
 1. Jelentkezzen be a **vászon** bérlőbe.
 
-2. Lépjen a **tanfolyamok \> felügyelt \> fiókok Microsoft webhelyre**.
+2. Lépjen a **tanfolyamok \> felügyelt fiókok \> Microsoft webhelyre**.
 
    ![Vászon](./media/canvas-lms-tutorial/ic775990.png "Vászon")
 
@@ -240,9 +235,9 @@ Ha engedélyezni szeretné az Azure AD-felhasználók számára, hogy bejelentke
 
    a. A **teljes név** szövegmezőbe írja be a felhasználó nevét (például **BrittaSimon**).
 
-   b. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon\@contoso.com**-e-mail-címét.
+   b. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
 
-   c. A **Bejelentkezés** szövegmezőbe írja be a felhasználó Azure ad-beli e-mail-címét, például **brittasimon\@contoso.com**.
+   c. A **Bejelentkezés** szövegmezőbe írja be a felhasználó Azure ad-beli e-mail-címét, például **brittasimon \@ contoso.com**.
 
    d. Válassza ki **a fiók létrehozásával kapcsolatos e-mailt a felhasználónak**.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: elosztott táblák létrehozása – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
+title: 'Gyors útmutató: kiszolgálócsoport létrehozása – nagy kapacitású (Citus) – Azure Database for PostgreSQL'
 description: Gyors útmutató elosztott táblák létrehozásához és lekérdezéséhez Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: c17018e0f2f3a7c1c23d176a441842abcf5521f4
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183921"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547698"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-nagy kapacitású (Citus) létrehozása a Azure Portal
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Gyors útmutató: nagy kapacitású-(Citus-) kiszolgálócsoport létrehozása a Azure Portalban
 
 Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálói csoportot a Azure Portal használatával. Tekintse át az elosztott adatmennyiségeket: a csomópontok közötti horizontális skálázást, a mintaadatok betöltését és a több csomóponton futtatott lekérdezések futtatását.
 
@@ -134,7 +134,7 @@ SELECT gu.login, count(*)
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport **Áttekintés** lapján kattintson a **Törlés** gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet.
 

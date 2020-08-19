@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
-ms.date: 05/22/2020
+ms.date: 08/17/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135574"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545539"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -34,7 +34,7 @@ A Azure Policy [aliasokat](../concepts/definition-structure.md#aliases) használ
 
 Egy házirend-definícióban helytelen vagy nem létező alias van használatban.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez használja [Azure Policy bővítményt a Visual Studio Code](../how-to/extension-for-vscode.md), az [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)vagy az SDK használatával. Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
 
@@ -48,7 +48,7 @@ Egy erőforrás a "nincs elindítva" állapotban van, vagy a megfelelőségi ada
 
 Az új szabályzatok vagy kezdeményezési hozzárendelések alkalmazása körülbelül 30 percet vesz igénybe. Egy meglévő hozzárendelés hatókörén belüli új vagy frissített erőforrások körülbelül 15 perccel később elérhetővé válnak. A standard megfelelőségi vizsgálat 24 óránként történik. További információ: [kiértékelési eseményindítók](../how-to/get-compliance-data.md#evaluation-triggers).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 
@@ -62,7 +62,7 @@ Egy erőforrás nem a _megfelelő_ vagy _nem megfelelő_, az adott erőforrás s
 
 Az erőforrás nem a megfelelő hatókörben van a házirend-hozzárendeléshez, vagy a házirend-definíció nem a kívánt módon működik.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 - Egy nem megfelelő erőforráshoz, amelynek a megfelelőségét várták, a meg [nem felelés okainak meghatározásával](../how-to/determine-non-compliance.md)kezdheti meg. A definíció és a kiértékelt tulajdonság értékének összehasonlítása azt jelzi, hogy az erőforrás miért nem megfelelő.
 - A nem megfelelőnek minősülő megfelelő erőforrás esetén olvassa el a házirend-definíció feltételét, és értékelje ki az erőforrások tulajdonságait. Ellenőrizze, hogy a logikai operátorok a megfelelő feltételeket csoportosítják-e, és hogy a feltételek ne legyenek invertálva.
@@ -79,7 +79,7 @@ Az Azure Policy által várhatóan végrehajtott erőforrás nem, és nincs beje
 
 A házirend-hozzárendelés _le_lett állítva a [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) . Míg a kényszerítési mód le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Frissítse a **enforcementMode** az _engedélyezett_értékre. Ez a módosítás lehetővé teszi, hogy Azure Policy a szabályzat-hozzárendelés erőforrásaira, és bejegyzéseket küldjön a tevékenységi naplóba. Ha a **enforcementMode** már engedélyezve van, tekintse meg a következő témakört: [kiértékelés nem várt módon](#scenario-evaluation-not-as-expected) a tanfolyamok.
 
@@ -93,7 +93,7 @@ Egy erőforrás létrehozása vagy frissítése megtagadva.
 
 A hatókörhöz tartozó szabályzat-hozzárendelés az új vagy frissített erőforrás megfelel egy [megtagadási](../concepts/effects.md#deny) hatású házirend-definíció feltételeinek. Ezek a definíciók nem hozhatók létre vagy nem frissíthetők.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabályzat-definíciót és a szabályzat-hozzárendelési azonosítókat. Ha az üzenetben szereplő hibaüzenetek nem maradnak meg, akkor a [tevékenység naplójában](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)is elérhető. Ezekkel az információkkal további részleteket tudhat meg az erőforrás-korlátozásokról, és módosíthatja a kérésben szereplő erőforrás-tulajdonságokat az engedélyezett értékek egyeztetéséhez.
 
@@ -109,7 +109,7 @@ Azure Policy számos Azure Resource Manager sablon (ARM-sablon) függvényt és 
 
 A támogatott függvények, például a vagy a használata esetén a `parameter()` `resourceGroup()` függvény feldolgozott eredménye a központi telepítéskor, a házirend-definícióhoz való kilépés és a Azure Policy motor feldolgozása helyett.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Ha egy függvényt át szeretne adni egy házirend-definíció részévé, a teljes karakterláncot a `[` tulajdonsághoz hasonló módon kell kinéznie `[[resourceGroup().tags.myTag]` . A escape-karakter hatására a Resource Manager az értéket karakterláncként kezeli a sablon feldolgozásakor. Azure Policy ezután a függvényt a házirend-definícióba helyezi, ami lehetővé teszi, hogy az a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
 
@@ -128,7 +128,7 @@ A `helm install azure-policy-addon` parancs a következő üzenetek egyikével m
 
 A generált jelszó tartalmaz egy vesszőt ( `,` ), amely a Helm diagramra van felosztva.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A jelszó értékében válassza a vessző ( `,` ) értéket, ha `helm install azure-policy-addon` fordított perjelet ( `\` ) használ.
 
@@ -144,11 +144,11 @@ A `helm install azure-policy-addon` parancs a következő üzenettel meghiúsul:
 
 A (z) nevű Helm `azure-policy-addon` -diagram már telepítve van vagy részben telepítve van.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Kövesse az utasításokat a [Kubernetes-bővítmény Azure Policy eltávolításához](../concepts/policy-for-kubernetes.md#remove-the-add-on), majd futtassa újra a `helm install azure-policy-addon` parancsot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

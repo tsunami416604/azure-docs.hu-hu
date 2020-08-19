@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Zscaler Beta konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Zscaler Bétaverzióba.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 83db6b8d-503b-48f3-b918-f9fba1369d53
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71b40fe903e5a837046b9b29f62ef4875e3139e5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062729"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545917"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler Beta konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -113,7 +109,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Válassza az **scim kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat**lekéréséhez, majd mentse a beállításokat. Másolja az **alap URL-címet** a **bérlői URL**-címre, és a **tulajdonosi jogkivonatot** a Azure Portal **titkos jogkivonatára** .
+    Válassza az **scim kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat**lekéréséhez, majd mentse a beállításokat. Másolja az **alap URL-címet** a **bérlői URL**-címre, és a **tulajdonosi jogkivonatot**  a Azure Portal **titkos jogkivonatára** .
 
 7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Zscaler Beta szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler Beta-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -123,7 +119,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Zscaler Beta-** ra lehetőséget.
 

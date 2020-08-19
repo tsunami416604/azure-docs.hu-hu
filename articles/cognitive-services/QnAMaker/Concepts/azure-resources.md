@@ -3,12 +3,12 @@ title: Azure-erőforrások – QnA Maker
 description: QnA Maker számos Azure-forrást használ, amelyek mindegyike más célra szolgál. A használatuk módjának megismerése lehetővé teszi, hogy megtervezze és kiválassza a megfelelő árképzési szintet, vagy tudja, mikor kell módosítania az árképzési szintet. Annak megismerése, hogy a rendszer hogyan használja a kombinációkat, így megkeresheti és elháríthatja a problémákat, amikor azok bekövetkeznek.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171074"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548429"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -174,7 +174,7 @@ Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgálta
 
 |Név|Hely|Cél|
 |--|--|--|
-|Szerzői kulcs|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
+|Szerzői kulcs|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
 |Lekérdezési végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezekkel a kulcsokkal lekérdezheti a közzétett Tudásbázis-végpontot, hogy választ kapjon a felhasználó kérdéseire. Ezt a lekérdezési végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
 
 ### <a name="subscription-keys"></a>Előfizetői azonosítók

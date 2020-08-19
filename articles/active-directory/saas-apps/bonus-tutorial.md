@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a bónusszal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és bónuszok között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 29fea32a-fa20-47b2-9e24-26feb47b0ae6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232066"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Azure Active Directory integráció a Bonus-nal
 
@@ -33,7 +28,7 @@ Az Azure AD-vel való prémium integráció az alábbi előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa 
 
     ![A prémium szintű tartomány és az URL-címek egyszeri bejelentkezési adatai](common/idp-reply.png)
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://Bonus.ly/saml/<tenant-name>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez vegye fel [a kapcsolatot az ügyfélszolgálattal](https://bonus.ly/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -150,7 +145,7 @@ Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa 
     
     d. Illessze be Azure Portalba másolt **ujjlenyomatot** a **CERT ujjlenyomat** szövegmezőbe.
     
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -170,11 +165,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -237,9 +232,9 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a B
 
     b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló `brittasimon\@contoso.com`e-mail címet.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `brittasimon\@contoso.com` .
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > Az Azure AD-fiók tulajdonosa egy e-mailt kap, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válna.  

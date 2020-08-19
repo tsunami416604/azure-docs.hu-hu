@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524505"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547392"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
 
@@ -26,7 +26,7 @@ A következő videó bemutatja, hogyan használhatja ezt a tárolót.
 
 [![Cognitive Services tárolók bemutatója](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,7 +64,7 @@ Az alábbi táblázat a tároló gazdagép minimális és ajánlott értékeit s
 
 Az alap és a memória a `--cpus` `--memory` parancs részeként használt és beállításoknak felel meg `docker run` .
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a `docker pull`
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltheti le az adattárból a tároló képét `mcr.microsoft.com/azure-cognitive-services/luis` :
 
@@ -109,7 +109,7 @@ A bemeneti csatlakoztatási könyvtár az alkalmazás **éles**, **előkészít�
 |--|--|--|--|
 |Verziószámmal|LETÖLTÉS, KÖZZÉTÉTEL|Csak tároló|`{APP_ID}_v{APP_VERSION}.gz`|
 |Előkészítés|LETÖLTÉS, KÖZZÉTÉTEL|Azure és Container|`{APP_ID}_STAGING.gz`|
-|Éles környezet|LETÖLTÉS, KÖZZÉTÉTEL|Azure és Container|`{APP_ID}_PRODUCTION.gz`|
+|Production|LETÖLTÉS, KÖZZÉTÉTEL|Azure és Container|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Ne nevezze át, módosítsa, írja felül vagy bontsa ki a LUIS-csomagok fájljait.
@@ -171,7 +171,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | A közzétett LUIS-alkalmazás alkalmazás-azonosítója. |
 | **{SLOT_NAME}** | A közzétett LUIS-alkalmazás környezete. Használja az alábbi értékek egyikét:<br/>`PRODUCTION`<br/>`STAGING` |
 | **{AUTHORING_KEY}** | A LUIS-fiók szerzői kulcsa a közzétett LUIS-alkalmazáshoz.<br/>A szerzői kulcsot a LUIS-portál **felhasználói beállítások** lapján szerezheti be. |
-| **{AZURE_REGION}** | A megfelelő Azure-régió:<br/><br/>`westus`– USA nyugati régiója<br/>`westeurope`– Nyugat-Európa<br/>`australiaeast`– Kelet-Ausztrália |
+| **{AZURE_REGION}** | A megfelelő Azure-régió:<br/><br/>`westus` – USA nyugati régiója<br/>`westeurope` – Nyugat-Európa<br/>`australiaeast` – Kelet-Ausztrália |
 
 A közzétett csomag letöltéséhez tekintse meg az [API-dokumentációt itt][download-published-package]. Ha a fájl letöltése sikeres volt, a válasz egy LUIS csomagfájl. Mentse a fájlt a tároló bemeneti csatlakoztatásához megadott tárolási helyre.
 
@@ -190,11 +190,11 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | A betanított LUIS alkalmazás alkalmazás-azonosítója. |
 | **{APP_VERSION}** | A betanított LUIS alkalmazás alkalmazásának verziója. |
 | **{AUTHORING_KEY}** | A LUIS-fiók szerzői kulcsa a közzétett LUIS-alkalmazáshoz.<br/>A szerzői kulcsot a LUIS-portál **felhasználói beállítások** lapján szerezheti be. |
-| **{AZURE_REGION}** | A megfelelő Azure-régió:<br/><br/>`westus`– USA nyugati régiója<br/>`westeurope`– Nyugat-Európa<br/>`australiaeast`– Kelet-Ausztrália |
+| **{AZURE_REGION}** | A megfelelő Azure-régió:<br/><br/>`westus` – USA nyugati régiója<br/>`westeurope` – Nyugat-Európa<br/>`australiaeast` – Kelet-Ausztrália |
 
 A verzióval ellátott csomag letöltéséhez tekintse meg az [API dokumentációját itt][download-versioned-package]. Ha a fájl letöltése sikeres volt, a válasz egy LUIS csomagfájl. Mentse a fájlt a tároló bemeneti csatlakoztatásához megadott tárolási helyre.
 
-## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
+## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a `docker run`
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{ENDPOINT_URI}` `{API_KEY}` .
 
@@ -372,7 +372,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
@@ -385,7 +385,7 @@ Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [tárolók konfigurálása](luis-container-configuration.md) konfigurációs beállításokat.
 * Tekintse meg a [Luis Container korlátozásait](luis-container-limitations.md) az ismert képességekre vonatkozó korlátozásokról.

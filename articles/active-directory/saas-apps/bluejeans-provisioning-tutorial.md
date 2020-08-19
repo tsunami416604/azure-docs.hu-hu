@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: a BlueJeans konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a BlueJeans.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b90389f6ae88a073f3961cc2f0957d22e190fe0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059012"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545454"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlueJeans konfigurálása
 
@@ -116,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans**lehetőséget.
 

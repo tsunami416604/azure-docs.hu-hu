@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az értékeléssel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és értékelt.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: db063306-4d0d-43ca-aae0-09f0426e7429
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67561204"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547783"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Oktatóanyag: az értékelés integrálása a Azure Active Directory
 
@@ -82,9 +77,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Kattintson a **további URL-címek beállítása**elemre.
 
-    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet:`<TENANTCODE>`
+    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `<TENANTCODE>`
 
-    c. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, a **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.appraisd.com/saml/<TENANTCODE>`
+    c. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, a **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
     > A tényleges bejelentkezési URL-címet és a továbbítási állapot értékét az oktatóanyag későbbi részében ismertetett SSO-konfiguráció lapon olvashatja.
@@ -147,9 +142,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B. Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B. Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -193,7 +188,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az �
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló `B. Simon@contoso.com`e-mail címet.
+    c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `B. Simon@contoso.com` .
 
     d. Kattintson a **felhasználó hozzáadása**elemre.
 

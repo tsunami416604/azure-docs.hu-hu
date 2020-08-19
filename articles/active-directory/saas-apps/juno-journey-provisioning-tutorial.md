@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Juno-utazás konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a Juno-útra.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0538902897d088c8ce271487b3f30698af0bb1eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926552"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546884"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Oktatóanyag: Juno-utazás konfigurálása automatikus felhasználó-kiépítési folyamathoz
 
@@ -50,7 +46,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>2. lépés Az Azure AD-vel való kiépítés támogatásának Juno-utazásának konfigurálása
 
-1. A **titkos jogkivonat** és a **bérlői URL-cím** esetén forduljon a Juno Journey támogatási csapatához support@the-juno.com . Ez az érték a **titkos jogkivonat** és a **bérlői URL-cím** mezőkben lesz megadva a Juno Journey alkalmazás kiépítés lapján a Azure Portalban. 
+1. A **titkos jogkivonat**  és a **bérlői URL-cím** esetén forduljon a Juno Journey támogatási csapatához support@the-juno.com . Ez az érték a **titkos jogkivonat**  és a **bérlői URL-cím** mezőkben lesz megadva a Juno Journey alkalmazás kiépítés lapján a Azure Portalban. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>3. lépés Juno-utazás hozzáadása az Azure AD Application Galleryből
 
@@ -95,7 +91,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Juno-útra**lehetőséget.
 

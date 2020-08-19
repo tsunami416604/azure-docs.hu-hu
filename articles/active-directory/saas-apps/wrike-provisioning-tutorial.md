@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Wrike konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a Wrike felhasználói fiókjait.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3ec25504decca0747c8a853bb88ab3e7a10966a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064189"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546321"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Wrike konfigurálása
 
@@ -137,7 +133,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail](common/provisioning-notification-email.png)
 
-8. Kattintson a **Mentés** gombra.
+8. Válassza a **Mentés** lehetőséget.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Wrike**lehetőséget.
 

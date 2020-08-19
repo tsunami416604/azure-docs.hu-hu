@@ -1,14 +1,14 @@
 ---
 title: 'Minta: a házirend-definícióban szereplő paraméterek'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan használhatók paraméterek egy házirend-definícióban.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6d938cdf2f31d30932d3631e99254b7d833f2941
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696724"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545573"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy minta: paraméterek
 
@@ -67,7 +67,7 @@ Ezután a paramétert a ' Policyrule osztály használja a rendszer, **majd** le
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

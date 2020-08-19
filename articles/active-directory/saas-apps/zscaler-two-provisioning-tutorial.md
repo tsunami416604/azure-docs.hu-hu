@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Zscaler két beállítása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat két Zscaler.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 364b106e7c1f01269ac02b0c2851f8824ea0f58c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062693"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545737"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler két beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -79,7 +75,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 > [!TIP]
 > Az SAML-alapú egyszeri bejelentkezést is érdemes lehet engedélyezni a Zscaler. Ha ezt teszi, kövesse a [Zscaler két egyszeri bejelentkezésre vonatkozó oktatóanyagát](zscaler-two-tutorial.md). Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, de a két szolgáltatás kiegészíti egymást.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások** > **minden alkalmazás** > **Zscaler kettő**:
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler kettő**:
 
     ![Vállalati alkalmazások](common/enterprise-applications.png)
 
@@ -97,7 +93,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler-két fiók **bérlői URL-címét** és **titkos jogkivonatát** a következő lépésben leírtak szerint.
 
-6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti** > **hitelesítési beállításokat** a Zscaler két portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
+6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler két portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
 
     ![Zscaler két hitelesítési beállítás](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
 
@@ -115,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail beállítása](./media/zscaler-two-provisioning-tutorial/notification.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók ZscalerTwo**:
 
@@ -151,7 +147,7 @@ Ez a művelet elindítja a **Beállítások** szakaszban a **hatókör** szakasz
 
 További információ az Azure AD-kiépítési naplók olvasásához: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../active-directory-saas-provisioning-reporting.md)helyezéséről.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

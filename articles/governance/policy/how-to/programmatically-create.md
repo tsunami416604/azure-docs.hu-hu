@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969889"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548311"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -88,12 +88,12 @@ Az erőforrások jobb láthatóságának első lépése, hogy szabályzatokat ho
    Cserélje le a _ContosoRG_ nevet a kívánt erőforráscsoport nevére.
 
    A **hatókör** -paraméter a `New-AzPolicyAssignment` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ, amely a **ResourceId** tulajdonságot `Get-AzResourceGroup` adja vissza. Az egyes tárolók **hatókörének** mintája a következő. Cserélje le a,, `{rName}` `{rgName}` `{subId}` , és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét.
-   `{rType}`lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   `{rType}` lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
-   - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Erőforráscsoport –`/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Előfizetés`/subscriptions/{subId}/`
-   - Felügyeleti csoport –`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Erőforrás `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforráscsoport – `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Előfizetés `/subscriptions/{subId}/`
+   - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Az erőforrás-házirendek Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért tekintse meg az [az. Resources](/powershell/module/az.resources/#policies)című témakört.
 
@@ -216,12 +216,12 @@ Házirend-definíció létrehozásához kövesse az alábbi eljárást:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A **hatókör** -paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatókörének** mintája a következő. Cserélje le a,, `{rName}` `{rgName}` `{subId}` , és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{rType}`lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   A **hatókör** -paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatókörének** mintája a következő. Cserélje le a,, `{rName}` `{rgName}` `{subId}` , és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{rType}` lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
-   - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Erőforráscsoport –`/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Előfizetés`/subscriptions/{subID}`
-   - Felügyeleti csoport –`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Erőforrás `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforráscsoport – `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Előfizetés `/subscriptions/{subID}`
+   - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 A Azure Policy definíciós AZONOSÍTÓját a PowerShell használatával szerezheti be a következő paranccsal:
 

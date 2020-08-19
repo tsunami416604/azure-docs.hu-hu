@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304173"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548335"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
@@ -82,7 +82,7 @@ Közzététel<br>
 
 |  Tulajdonság neve     |  Kötelező         |  Leírás |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  Igaz      |  Adja meg a típust. A `"client_credentials"` címet használja. |
+|  `grant_type`      |  Igaz      |  Adja meg a típust. Használja az `"client_credentials"` parancsot. |
 |  `client_id`       |  Igaz      |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító. |
 |  `client_secret`   |  Igaz      |  Az Azure AD-alkalmazáshoz társított titkos kulcs. |
 |  `resource`        |  Igaz      |  A célként megadott erőforrás, amelyre a tokent kérték. Akkor használja, `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` Ha a Marketplace SaaS API mindig a cél erőforrás ebben az esetben. |
@@ -111,6 +111,6 @@ Példa a válaszra:
 
 A `"access_token"` válaszban szereplő mező értéke az, amelyet a rendszer az `<access_token>` összes SaaS-beteljesülés és a Marketplace-mérési API-k meghívásakor ad át engedélyezési paraméterként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-védelemmel ellátott alkalmazás mostantól használhatja a [SaaS-teljesítési API 2-es verzióját](./pc-saas-fulfillment-api-v2.md).

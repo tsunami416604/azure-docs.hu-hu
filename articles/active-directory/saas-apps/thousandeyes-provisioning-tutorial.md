@@ -2,25 +2,20 @@
 title: 'Oktatóanyag: felhasználói kiépítés a ThousandEyes – Azure AD'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a ThousandEyes.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87cffce636146eac3e557670ffc4fb2fc34ae38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062880"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546423"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ThousandEyes konfigurálása
 
@@ -60,7 +55,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók l�
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-beli ThousandEyes
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**  szakaszt.
 
 2. Ha már konfigurálta a ThousandEyes az egyszeri bejelentkezéshez, keresse meg a ThousandEyes-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **ThousandEyes** az alkalmazás-gyűjteményben. Válassza a ThousandEyes lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
@@ -70,7 +65,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók l�
 
     ![ThousandEyes kiépítés](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a ThousandEyes fiókja által generált **OAuth tulajdonosi jogkivonatot** (a ThousandEyes fiók **profilja** szakaszban találhatja meg és generálhatja a jogkivonatot).
+5. A **rendszergazdai hitelesítő adatok**  szakaszban adja meg a ThousandEyes fiókja által generált **OAuth tulajdonosi jogkivonatot** (a ThousandEyes fiók **profilja** szakaszban találhatja meg és generálhatja a jogkivonatot).
 
     ![ThousandEyes kiépítés](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
@@ -78,7 +73,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók l�
 
 7. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az értesítő e-mail-értesítéseket az **értesítési e-mail** mezőben, és jelölje be az "e-mail-értesítés küldése hiba esetén" jelölőnégyzetet.
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
 9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ThousandEyes**lehetőséget.
 
@@ -86,7 +81,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók l�
 
 11. Az Azure AD-kiépítési szolgáltatás ThousandEyes való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 
-12. Kattintson a **Save** (Mentés) gombra.
+12. Kattintson a **Mentés** gombra.
 
 Ez a művelet elindítja a felhasználók és csoportok szakaszban ThousandEyes rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz használatával figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet leírják.
 

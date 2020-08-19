@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a9c64d1a5c4c7ada666b5fe3a8bcc70b39871850
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72935957"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545624"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Szöveg keresése egy egyéni kifejezési listáról C-ben #
 
@@ -32,7 +32,7 @@ Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a 
 - Listaadatok szerkesztése.
 - Frissítse az indexet, hogy az új beolvasások észleljék a lista módosításait.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez. Frissítse a `AzureEndpoint` és `CMSubscriptionKey` a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
+Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez. Frissítse a `AzureEndpoint` és a `CMSubscriptionKey` mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
 
 ```csharp
 /// <summary>

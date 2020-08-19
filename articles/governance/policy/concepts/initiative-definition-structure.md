@@ -1,14 +1,14 @@
 ---
 title: A kezdeményezési definíció szerkezetének részletei
 description: Leírja, hogyan használhatók a házirend-kezdeményezési definíciók a szervezeten belüli Azure-erőforrásokra történő üzembe helyezés csoportházirend-definíciói számára.
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205959"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544638"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy kezdeményezés definíciós szerkezete
 
@@ -19,7 +19,7 @@ A JSON használatával házirend-kezdeményezési definíciót hozhat létre. A 
 - megjelenítendő név
 - leírás
 - metaadatok
-- paraméterek
+- parameters
 - szabályzat-definíciók
 - házirend-csoportok (ez a tulajdonság a [szabályozási megfelelőség (előzetes verzió) funkció](./regulatory-compliance.md)része)
 
@@ -109,14 +109,14 @@ Az ügyfelek a szervezete számára hasznos tulajdonságokat és értékeket adh
 
 ### <a name="common-metadata-properties"></a>Gyakori metaadatok tulajdonságai
 
-- `version`(karakterlánc): nyomon követi a házirend-kezdeményezési definíció tartalmának verziószámát.
-- `category`(karakterlánc): meghatározza, hogy a házirend-definíció milyen kategóriában jelenjen meg Azure Portal.
+- `version` (karakterlánc): nyomon követi a házirend-kezdeményezési definíció tartalmának verziószámát.
+- `category` (karakterlánc): meghatározza, hogy a házirend-definíció milyen kategóriában jelenjen meg Azure Portal.
 
   > [!NOTE]
   > A [szabályozási megfelelőségi](./regulatory-compliance.md) kezdeményezéshez a megfelelőségi `category` **szabályozásnak**kell megfelelnie.
 
-- `preview`(Boolean): igaz vagy hamis jelző, ha a házirend-kezdeményezés definíciója _előnézet_.
-- `deprecated`(Boolean): igaz vagy hamis jelző, ha a házirend-kezdeményezés definíciója _elavultként_van megjelölve.
+- `preview` (Boolean): igaz vagy hamis jelző, ha a házirend-kezdeményezés definíciója _előnézet_.
+- `deprecated` (Boolean): igaz vagy hamis jelző, ha a házirend-kezdeményezés definíciója _elavultként_van megjelölve.
 
 > [!NOTE]
 > A Azure Policy szolgáltatás a, a `version` `preview` és a tulajdonságot használja a `deprecated` beépített szabályzat-definícióra vagy kezdeményezésre és állapotra való váltáshoz. A formátuma `version` : `{Major}.{Minor}.{Patch}` . Bizonyos állapotokat (például az _elavult_ vagy az _előnézet_) a `version` tulajdonsághoz vagy egy másik tulajdonsághoz ( **Boolean**) kell hozzáfűzni. További információ a Azure Policy-verziókról: [beépített verziószámozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -218,10 +218,10 @@ A `policyDefinitions` kezdeményezés definíciójának része egy _tömb_ , ame
 
 A házirend-definíciót jelölő összes _tömb_ elem a következő tulajdonságokkal rendelkezik:
 
-- `policyDefinitionId`(karakterlánc): a belefoglalni kívánt egyéni vagy beépített szabályzat definíciójának azonosítója.
-- `policyDefinitionReferenceId`(karakterlánc): a belefoglalt szabályzat definíciójának rövid neve.
+- `policyDefinitionId` (karakterlánc): a belefoglalni kívánt egyéni vagy beépített szabályzat definíciójának azonosítója.
+- `policyDefinitionReferenceId` (karakterlánc): a belefoglalt szabályzat definíciójának rövid neve.
 - `parameters`: (Nem kötelező) a kezdeményezési paraméternek a házirend-definícióban szereplő tulajdonságként való átadására szolgáló név/érték párok. További információ: [Paraméterek](#parameters).
-- `groupNames`(karakterláncok tömbje): (nem kötelező) a csoport, amely a házirend-definíció tagja. További információ: [Policy groups](#policy-definition-groups).
+- `groupNames` (karakterláncok tömbje): (nem kötelező) a csoport, amely a házirend-definíció tagja. További információ: [Policy groups](#policy-definition-groups).
 
 Íme egy példa arra, `policyDefinitions` hogy két olyan házirend-definíciója van, amelyek mindegyike azonos kezdeményezési paramétert kapott:
 
@@ -257,11 +257,11 @@ További csoportosítási részletek a Microsoft által létrehozott **policyMet
 
 Az egyes _tömb_ elemeinek `policyDefinitionGroups` a következő tulajdonságokkal kell rendelkezniük:
 
-- `name`(karakterlánc) \[ kötelező \] : a **vezérlő**rövid neve. A tulajdonság értékét a következő használja: `groupNames` `policyDefinitions` .
-- `category`(karakterlánc): a vezérlő **megfelelőségi tartománya** .
-- `displayName`(karakterlánc): a **vezérlő**rövid neve. A portál használja.
-- `description`(karakterlánc): a **vezérlő** leírását.
-- `additionalMetadataId`(karakterlánc): a [policyMetadata](#metadata-objects) objektum helye, amely további részleteket tartalmaz a **vezérlő** és a **megfelelőség tartományáról**.
+- `name` (karakterlánc) \[ kötelező \] : a **vezérlő**rövid neve. A tulajdonság értékét a következő használja: `groupNames` `policyDefinitions` .
+- `category` (karakterlánc): a vezérlő **megfelelőségi tartománya** .
+- `displayName` (karakterlánc): a **vezérlő**rövid neve. A portál használja.
+- `description` (karakterlánc): a **vezérlő** leírását.
+- `additionalMetadataId` (karakterlánc): a [policyMetadata](#metadata-objects) objektum helye, amely további részleteket tartalmaz a **vezérlő** és a **megfelelőség tartományáról**.
 
   > [!NOTE]
   > Előfordulhat, hogy az ügyfelek egy meglévő [policyMetadata](#metadata-objects) -objektumra mutatnak. Ezek az objektumok azonban csak _olvashatók_ , és csak a Microsoft hoztak létre.
@@ -293,8 +293,8 @@ A házirend-csoportosítás metaadatainak a következő információkkal rendelk
 
 - `metadataId`: Az a **VEZÉRLŐELEM azonosítója** , amelyhez a csoportosítás kapcsolódik.
 - `category`(kötelező): a **vezérlőhöz** tartozó **megfelelőségi tartomány** .
-- `title`(kötelező): a **VEZÉRLŐELEM azonosítójának**rövid neve.
-- `owner`(kötelező): meghatározza, hogy ki felelős az Azure-beli vezérlésért: _ügyfél_, _Microsoft_, _közös_.
+- `title` (kötelező): a **VEZÉRLŐELEM azonosítójának**rövid neve.
+- `owner` (kötelező): meghatározza, hogy ki felelős az Azure-beli vezérlésért: _ügyfél_, _Microsoft_, _közös_.
 - `description`: További információ a vezérlőről.
 - `requirements`: A vezérlő megvalósításának felelősségével kapcsolatos részletek.
 - `additionalContentUrl`: A vezérlőelemmel kapcsolatos további információkra mutató hivatkozás. Ez a tulajdonság általában a megfelelőségi szabványban ez a vezérlőt tartalmazó dokumentáció szakaszára mutató hivatkozás.

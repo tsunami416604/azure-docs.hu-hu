@@ -1,14 +1,14 @@
 ---
 title: 'Minta: erőforrások üzembe helyezése házirend-definícióval'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan helyezhet üzembe erőforrásokat házirend-definícióval.
-ms.date: 01/31/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 705c751183a0b71c8628a505f08ef112bca1cbb7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970858"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545607"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy minta: erőforrások üzembe helyezése
 

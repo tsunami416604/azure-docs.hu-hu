@@ -1,14 +1,14 @@
 ---
 title: 'Minta: logikai operátorok egy házirend-definícióban'
 description: Ez a Azure Policy minta bemutatja, hogyan használhatók a logikai operátorok egy házirend-definícióban.
-ms.date: 04/15/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272508"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545590"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy minta: logikai operátorok
 

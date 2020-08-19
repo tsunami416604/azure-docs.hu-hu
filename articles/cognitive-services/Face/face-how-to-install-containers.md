@@ -11,21 +11,21 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497879"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548463"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face containers telepítése és futtatása (előzetes verzió)
 
 > [!IMPORTANT]
-> Elérte a Face Container-felhasználókra vonatkozó korlátot. Jelenleg nem fogadunk el új alkalmazásokat a Face tárolóhoz.
+> Elérte a Face-tároló felhasználóinak korlátját. Jelenleg nem fogadunk el új alkalmazásokat a Face-tárolóhoz.
 
 Az Azure Cognitive Services Face szabványos Linux-tárolót biztosít a Docker számára, amely észleli az emberi arcokat a képeken. Emellett azonosítja azokat az attribútumokat is, amelyek olyan arc-tereptárgyak, mint például az orr és a szemek, a nemek, az életkor és más, géppel előre jelzett arc-funkciók. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc van-e ugyanazon a képen, vagy a különböző képek azonosak-e a megbízhatósági pontszám használatával. Az arc emellett összehasonlíthatja az arcokat egy adatbázissal, hogy megtudja, van-e már hasonló vagy azonos arc. A hasonló arcok csoportokba rendezése közös vizualizációs tulajdonságok használatával is elvégezhető.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -141,7 +141,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebből a cikkből megtudhatta, hogyan töltheti le, telepítheti és futtathatja a Face Service-tárolókat. Összegezve:
 
@@ -153,7 +153,7 @@ Ebből a cikkből megtudhatta, hogyan töltheti le, telepítheti és futtathatja
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyezniük kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A konfigurációs beállításokkal kapcsolatban lásd: [tárolók konfigurálása](face-resource-container-config.md).
 * Az arcok észlelésével és azonosításával kapcsolatos további tudnivalókért tekintse meg a [Face Overview](Overview.md)című témakört.

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Zscaler-ZSCloud konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Zscaler ZSCloud.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: a752be80-d3ef-45d1-ac8f-4fb814c07b07
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062676"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545709"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler-ZSCloud konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -80,7 +76,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 > [!TIP]
 > Érdemes lehet az SAML-alapú egyszeri bejelentkezést is engedélyezni a Zscaler ZSCloud. Ha ezt teszi, kövesse az [Zscaler ZSCloud egyszeri bejelentkezési oktatóanyagának](zscaler-zsCloud-tutorial.md)utasításait. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, de a két szolgáltatás kiegészíti egymást.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások** > **minden alkalmazás** > **Zscaler ZSCloud**:
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler ZSCloud**:
 
     ![Vállalati alkalmazások](common/enterprise-applications.png)
 
@@ -98,7 +94,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler ZSCloud-fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a következő lépésben leírtak szerint.
 
-6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti** > **hitelesítési beállításokat** a Zscaler ZSCloud-portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
+6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler ZSCloud-portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
 
     ![Zscaler ZSCloud hitelesítési beállításai](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -116,7 +112,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail beállítása](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók ZscalerZSCloud**:
 
@@ -152,7 +148,7 @@ Ez a művelet elindítja a **Beállítások** szakaszban a **hatókör** szakasz
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../active-directory-saas-provisioning-reporting.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

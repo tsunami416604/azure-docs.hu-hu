@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: a MerchLogix konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a MerchLogix.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: 9df4c7c5-9a58-478e-93b7-2f77aae12807
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa60fb565552961a3c85346c39c318a90c8adc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061297"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547998"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MerchLogix konfigurálása
 
@@ -105,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MerchLogix**lehetőséget.
 

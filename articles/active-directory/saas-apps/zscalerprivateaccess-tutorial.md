@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Zscaler privát hozzáférésével (ZPA) | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Zscaler privát hozzáférése (ZPA) között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07607d6695d1010e5a704ed05608e9ea2587a64b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c7347aabb3aa6f122ea82a46ad8a09f53e271bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016156"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545684"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Oktatóanyag: a Zscaler privát hozzáférésének (ZPA) integrálása Azure Active Directory
 
@@ -83,9 +78,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    1. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://samlsp.private.zscaler.com/auth/metadata`
+    1. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE]
     > A **bejelentkezési URL-cím** értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Zscaler privát hozzáférési (ZPA) ügyfélszolgálatához](https://help.zscaler.com/zpa-submit-ticket) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -142,7 +137,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

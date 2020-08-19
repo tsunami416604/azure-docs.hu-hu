@@ -1,14 +1,14 @@
 ---
 title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236539"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547664"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -16,8 +16,7 @@ Az egyéni házirend-definíciók létrehozása előtt érdemes beolvasni a konc
  
 A Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [Linux rendszerhez készült vendég-konfigurációs szabályzatok létrehozása](./guest-configuration-create-linux.md) című oldalt.
 
-A Windows naplózásakor a vendég konfigurációja a [kívánt állapot-konfigurációs](/powershell/scripting/dsc/overview/overview) (DSC) erőforrás-modult használja a konfigurációs fájl létrehozásához. A DSC-konfiguráció azt a feltételt határozza meg, amelyet a gépen be kell állítani.
-Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek**minősül.
+A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) erőforrásmodul használatával hozza létre a konfigurációs fájlt. A DSC-konfiguráció határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése meghiúsul, a rendszer elindítja a **auditIfNotExists** , és a gép **nem megfelelőnek**minősül.
 
 [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállítások naplózására használható. A gépeken belüli beállítások szervizelése még nem érhető el.
 
@@ -26,7 +25,7 @@ A következő műveletek végrehajtásával hozhatja létre saját konfiguráci�
 > [!IMPORTANT]
 > A vendég-konfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
 >
-> Az Azure Virtual Machines szolgáltatásban végzett naplózáshoz a vendég konfigurációs bővítmény szükséges.
+> A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre.
 > Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat:
 >   - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
@@ -90,8 +89,7 @@ Ha a vendég konfigurációja naplóz egy gépet, az események sorozatából k�
 1. A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager állapotának megfelelőnek vagy nem megfelelőnek kell lennie.
 1. A szolgáltató `Get-TargetResource` úgy fut, hogy az egyes beállítások aktuális állapotát adja vissza, így a részletek mind arról szólnak, hogy a gép miért nem megfelelő, és hogy a jelenlegi állapot megfelelő-e.
 
-Az Azure Policyban található paramétereknek _karakterlánc_ típusúnak kell lenniük a vendég konfigurációs hozzárendeléseinek.
-Nem lehet paramétereken keresztül átadni a tömböket, még akkor is, ha a DSC-erőforrás támogatja a tömböket.
+Az Azure Policyban található paramétereknek _karakterlánc_ típusúnak kell lenniük a vendég konfigurációs hozzárendeléseinek. Nem lehet paramétereken keresztül átadni a tömböket, még akkor is, ha a DSC-erőforrás támogatja a tömböket.
 
 ### <a name="get-targetresource-requirements"></a>A Get-TargetResource követelményei
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-Az okok tulajdonságot az erőforráshoz tartozó MOF-hez is hozzá kell adni beágyazott osztályként.
+Az okok tulajdonságot beágyazott osztályként hozzá kell adni az erőforráshoz tartozó MOF-sémához.
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ A csomag formátumának. zip formátumúnak kell lennie.
 ### <a name="storing-guest-configuration-artifacts"></a>Vendég konfigurációs összetevők tárolása
 
 A. zip-csomagot a felügyelt virtuális gépek által elérhető helyen kell tárolni.
-Ilyenek például a GitHub-adattárak, az Azure-Tárházak vagy az Azure Storage. Ha nem szeretné, hogy a csomag nyilvános legyen, az URL-címben egy [sas-tokent](../../../storage/common/storage-sas-overview.md) is hozzáadhat.
-A magánhálózati számítógépekhez [szolgáltatási végpontot](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) is alkalmazhat, bár ez a konfiguráció csak a csomag elérésére és a szolgáltatással való kommunikációra vonatkozik.
+Ilyenek például a GitHub-adattárak, az Azure-Tárházak vagy az Azure Storage. Ha nem szeretné, hogy a csomag nyilvános legyen, az URL-címben egy [sas-tokent](../../../storage/common/storage-sas-overview.md) is hozzáadhat. A magánhálózati számítógépekhez [szolgáltatási végpontot](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) is alkalmazhat, bár ez a konfiguráció csak a csomag elérésére és a szolgáltatással való kommunikációra vonatkozik.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Lépésről lépésre, egyéni vendég-konfiguráció naplózási szabályzatának létrehozása Windows rendszerhez
 
@@ -372,7 +369,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Vendég konfigurációs szabályzatok szűrése címkék használatával
 
-A parancsmagok által a vendég konfigurációs modulban létrehozott szabályzat-definíciók tartalmazhatják a címkék szűrőit is. A **tag** paraméter a `New-GuestConfigurationPolicy` támogatja az egyéni címkéket tartalmazó szórótáblában tömbjét. A címkék hozzáadódnak a `If` szabályzat-definíció szakaszához, és nem módosíthatók házirend-hozzárendeléssel.
+A parancsmagok által a vendég konfigurációs modulban létrehozott szabályzat-definíciók tartalmazhatják a címkék szűrőit is. A **tag** paraméter a `New-GuestConfigurationPolicy` támogatja az egyéni címkéket tartalmazó szórótáblában tömbjét. A címkék hozzáadódnak a `If` házirend-definíció szakaszához, és nem módosíthatók házirend-hozzárendeléssel.
 
 A következő példa egy olyan szabályzat-definíció kódrészletét adja meg, amely a címkékre vonatkozó szűrőket mutatja.
 
@@ -602,5 +599,5 @@ Az eszköz parancsmagokkal kapcsolatos további információkért használja a P
 ## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
-- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](get-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](./programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](./get-compliance-data.md).

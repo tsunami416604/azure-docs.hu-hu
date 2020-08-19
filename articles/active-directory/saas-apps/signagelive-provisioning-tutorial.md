@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Signagelive konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Signagelive.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: bbd0d3c60c5cc4056d5cbadfc7c6d90ae2a37ca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bf9e7a4c17134a47cbaafbc2bde25d467c6a978
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548548"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Signagelive konfigurálása
 
@@ -56,7 +52,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
 Az Azure AD-vel való automatikus Signagelive konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Signagelive-on.
 
-  A SCIM-kiépítés konfigurálásához szükséges titkos token beszerzéséhez [Signagelive](mailto:development@signagelive.com) el.
+  A SCIM-kiépítés konfigurálásához szükséges titkos token beszerzéséhez  [Signagelive](mailto:development@signagelive.com) el.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Signagelive hozzáadása a gyűjteményből
 
@@ -112,7 +108,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Signagelive**lehetőséget.
 

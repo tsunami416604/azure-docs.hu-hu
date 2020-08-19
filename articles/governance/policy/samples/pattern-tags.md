@@ -1,14 +1,14 @@
 ---
 title: 'Minta: címkék használata házirend-definícióban'
 description: Ez a Azure Policy minta példákat tartalmaz a paraméteres címkék hozzáadására vagy a címkék öröklésére egy házirend-definícióban lévő erőforráscsoport használatával.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: b71a21fadfc8dec3da2feabbce127303174a95d3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83704584"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545556"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy minta: Címkék
 
@@ -58,7 +58,7 @@ A **' policyrule osztály. if** `concat` például [minta #1](#sample-1-paramete
 
 Itt az erőforráshoz tartozó **TagName** -címkéhez rendelt érték a `resourceGroup()` szülő erőforráscsoport értékének beolvasására is a függvényt használja. Így örökölheti a címkéket a szülő erőforráscsoportokből. Ha már létrehozta az erőforrást, de nem adta hozzá a címkét, akkor ugyanez a házirend-definíció és egy [szervizelési feladat](../how-to/remediate-resources.md) frissítheti a meglévő erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

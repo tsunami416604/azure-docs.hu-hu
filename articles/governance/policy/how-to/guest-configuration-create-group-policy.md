@@ -1,29 +1,29 @@
 ---
 title: Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 description: Megtudhatja, hogyan alakíthatja át Csoportházirend a Windows Server 2019 biztonsági alaptervből egy házirend-definícióba.
-ms.date: 06/05/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080669"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547768"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 
-Az egyéni házirend-definíciók létrehozása előtt érdemes beolvasni a koncepcionális áttekintési információkat [Azure Policy vendég konfigurációjában](../concepts/guest-configuration.md). A Linux rendszerhez készült egyéni vendég-konfigurációs házirend-definíciók létrehozásával kapcsolatos további információkért lásd: [vendég-konfigurációs szabályzatok létrehozása Linux rendszerhez](./guest-configuration-create-linux.md). További információ a Windows rendszerhez készült egyéni konfigurációs házirend-definíciók létrehozásáról: [vendég konfigurációs szabályzatok létrehozása Windows rendszerhez](./guest-configuration-create.md). 
+Az egyéni házirend-definíciók létrehozása előtt érdemes beolvasni a koncepcionális áttekintési információkat [Azure Policy vendég konfigurációjában](../concepts/guest-configuration.md). A Linux rendszerhez készült egyéni vendég-konfigurációs házirend-definíciók létrehozásával kapcsolatos további információkért lásd: [vendég-konfigurációs szabályzatok létrehozása Linux rendszerhez](./guest-configuration-create-linux.md). További információ a Windows rendszerhez készült egyéni konfigurációs házirend-definíciók létrehozásáról: [vendég konfigurációs szabályzatok létrehozása Windows rendszerhez](./guest-configuration-create.md).
 
-A Windows naplózásakor a vendég konfigurációja a [kívánt állapot-konfigurációs](/powershell/scripting/dsc/overview/overview) (DSC) erőforrás-modult használja a konfigurációs fájl létrehozásához. A DSC-konfiguráció azt a feltételt határozza meg, amelyet a gépen be kell állítani. Ha a konfiguráció kiértékelése **nem megfelelő**, akkor a rendszer kiváltja a házirend hatására *auditIfNotExists* . [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállításokat naplózza.
+A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) erőforrásmodul használatával hozza létre a konfigurációs fájlt. A DSC-konfiguráció határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése **nem megfelelő**, akkor a rendszer kiváltja a házirend hatására *auditIfNotExists* .
+[Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállításokat naplózza.
 
 > [!IMPORTANT]
 > A vendég-konfigurációval rendelkező egyéni házirend-definíciók előzetes verziójú funkciók.
 >
-> Az Azure Virtual Machines szolgáltatásban végzett naplózáshoz a vendég konfigurációs bővítmény szükséges.
-> Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat:
->   - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre. Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat:
+> - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
-A DSC-Közösség közzétette a [BaselineManagement modult](https://github.com/microsoft/BaselineManagement) az exportált csoportházirend-sablonok DSC formátumra való konvertálásához. A GuestConfiguration parancsmaggal együtt a BaselineManagement modul Azure Policy vendég konfigurációs csomagot hoz létre a Windows rendszerhez Csoportházirend tartalomból. A BaselineManagement modul használatáról további információt a rövid útmutató [: csoportházirend konvertálása a DSC-be](/powershell/scripting/dsc/quickstarts/gpo-quickstart)című cikkben talál. 
+A DSC-Közösség közzétette a [BaselineManagement modult](https://github.com/microsoft/BaselineManagement) az exportált csoportházirend-sablonok DSC formátumra való konvertálásához. A GuestConfiguration parancsmaggal együtt a BaselineManagement modul Azure Policy vendég konfigurációs csomagot hoz létre a Windows rendszerhez Csoportházirend tartalomból. A BaselineManagement modul használatáról további információt a rövid útmutató [: csoportházirend konvertálása a DSC-be](/powershell/scripting/dsc/quickstarts/gpo-quickstart)című cikkben talál.
 
 Ebből az útmutatóból megtudhatja, hogyan hozhat létre Azure Policy vendég konfigurációs csomagot egy Csoportházirend objektumból (GPO). Míg az útmutató a Windows Server 2019 biztonsági alapkonfigurációjának átalakítását ismerteti, ugyanez a folyamat alkalmazható más csoportházirend-objektumokra is.  
 
@@ -62,7 +62,7 @@ A **DSC**, a **GuestConfiguration**, az alapkonfiguráció **kezelése**és a ka
 
 ## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>Konvertálás Csoportházirendról Azure Policy vendég konfigurációra
 
-Ezután a letöltött Server 2019 alapkonfigurációt egy vendég konfigurációs csomagba konvertáljuk a vendég konfigurációja és az alapkonfiguráció felügyeleti modulok használatával. 
+Ezután a letöltött Server 2019 alapkonfigurációt egy vendég konfigurációs csomagba konvertáljuk a vendég konfigurációja és az alapkonfiguráció felügyeleti modulok használatával.
 
 1. Alakítsa át a Csoportházirendt a kívánt állapotra az alapkonfiguráció felügyeleti moduljának használatával.
 
@@ -203,5 +203,5 @@ Egy szabályzat-definíció _DeployIfNotExists_ -effektussal való hozzárendel�
 ## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
-- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](get-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](./programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](./get-compliance-data.md).

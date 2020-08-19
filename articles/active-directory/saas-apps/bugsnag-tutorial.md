@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Bugsnag-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Bugsnag között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f08b8a14-ef69-42a7-ac9d-da95f2e36287
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ae95bbdb3136aade1278b026164c6c3b6e4bbe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157543"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>Oktatóanyag: Azure Active Directory integráció a Bugsnag
 
@@ -32,7 +28,7 @@ A Bugsnag és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,7 +102,7 @@ Az Azure AD egyszeri bejelentkezés Bugsnag való konfigurálásához hajtsa vé
 
     ![Bugsnag tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-replyurl.png)
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [Bugsnag](mailto:support@bugsnag.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -115,7 +111,7 @@ Az Azure AD egyszeri bejelentkezés Bugsnag való konfigurálásához hajtsa vé
 
     ![Bugsnag tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt:`https://app.bugsnag.com/user/identity_provider`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt:  `https://app.bugsnag.com/user/identity_provider`
 
 6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -143,12 +139,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -1,14 +1,14 @@
 ---
 title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 06/12/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117003"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547800"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -17,7 +17,7 @@ További információ a [feltételekről](#conditions).
 
 Az egyezmények meghatározásával szabályozhatja a költségeket, és könnyebben kezelheti az erőforrásokat. Megadhatja például, hogy csak bizonyos típusú virtuális gépek engedélyezettek legyenek. Azt is megkövetelheti, hogy az erőforrások egy adott címkével rendelkezzenek. A házirend-hozzárendeléseket a gyermek erőforrások öröklik. Ha a szabályzat-hozzárendelést egy erőforráscsoporthoz alkalmazza, az az adott erőforráscsoport összes erőforrására érvényes lesz.
 
-A szabályzat-definíciós séma itt található:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+A szabályzat-definíciós séma itt található: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 A JSON használatával hozhat létre szabályzat-definíciót. A házirend-definíció a következő elemeit tartalmazza:
 
@@ -100,15 +100,15 @@ Például az erőforrás `Microsoft.Network/routeTables` támogatja a címkéket
 
 Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all` . A portálon keresztül létrehozott összes házirend-definíció a `all` módot használja. Ha a PowerShellt vagy az Azure CLI-t használja, manuálisan is megadhatja a **Mode** paramétert. Ha a házirend-definíció nem tartalmaz **Mode** értéket, az alapértelmezett értéke `all` Azure PowerShell és az `null` Azure CLI-ben. A `null` `indexed` visszafelé való kompatibilitás támogatásához egy mód ugyanaz, mint a használatával.
 
-`indexed`a címkéket vagy helyszíneket kényszerítő házirendek létrehozásakor kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok** és az **előfizetések**. Az erőforráscsoport vagy előfizetés helyét vagy címkéit kényszerítő szabályzat-definíciók **módot** kell beállítani a (z `all` ) és a (z) és a (z `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` ) típusra. Példaként tekintse meg a [minta: címkék – minta #1](../samples/pattern-tags.md). A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
+`indexed` a címkéket vagy helyszíneket kényszerítő házirendek létrehozásakor kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok** és az **előfizetések**. Az erőforráscsoport vagy előfizetés helyét vagy címkéit kényszerítő szabályzat-definíciók **módot** kell beállítani a (z `all` ) és a (z) és a (z `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` ) típusra. Példaként tekintse meg a [minta: címkék – minta #1](../samples/pattern-tags.md). A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Erőforrás-szolgáltatói módok (előzetes verzió)
 
 Az előzetes verzióban jelenleg a következő erőforrás-szolgáltatói módok támogatottak:
 
-- `Microsoft.ContainerService.Data`a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó definícióknak a [EnforceRegoPolicy](./effects.md#enforceregopolicy) effektust **kell** használniuk. Ez a mód _elavult_.
-- `Microsoft.Kubernetes.Data`Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_, _Megtagadás_és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatás használatának _elavultnak_kell lennie.
-- `Microsoft.KeyVault.Data`a [Azure Key Vault](../../../key-vault/general/overview.md)tárolók és tanúsítványok kezeléséhez.
+- `Microsoft.ContainerService.Data` a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó definícióknak a [EnforceRegoPolicy](./effects.md#enforceregopolicy) effektust **kell** használniuk. Ez a mód _elavult_.
+- `Microsoft.Kubernetes.Data` Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_, _Megtagadás_és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatás használatának _elavultnak_kell lennie.
+- `Microsoft.KeyVault.Data` a [Azure Key Vault](../../../key-vault/general/overview.md)tárolók és tanúsítványok kezeléséhez.
 
 > [!NOTE]
 > Az erőforrás-szolgáltatói módok csak a beépített szabályzat-definíciókat támogatják, és az előzetes verzióban nem támogatottak a kezdeményezések.
@@ -119,10 +119,10 @@ A választható `metadata` tulajdonság a házirend-definícióval kapcsolatos a
 
 ### <a name="common-metadata-properties"></a>Gyakori metaadatok tulajdonságai
 
-- `version`(karakterlánc): nyomon követi a szabályzat-definíció tartalmának verziószámát.
-- `category`(karakterlánc): meghatározza, hogy a házirend-definíció milyen kategóriában jelenjen meg Azure Portal.
-- `preview`(Boolean): igaz vagy hamis jelző, ha a házirend-definíció _előzetes_verzió.
-- `deprecated`(Boolean): igaz vagy hamis jelző, ha a házirend-definíció _elavultként_van megjelölve.
+- `version` (karakterlánc): nyomon követi a szabályzat-definíció tartalmának verziószámát.
+- `category` (karakterlánc): meghatározza, hogy a házirend-definíció milyen kategóriában jelenjen meg Azure Portal.
+- `preview` (Boolean): igaz vagy hamis jelző, ha a házirend-definíció _előzetes_verzió.
+- `deprecated` (Boolean): igaz vagy hamis jelző, ha a házirend-definíció _elavultként_van megjelölve.
 
 > [!NOTE]
 > A Azure Policy szolgáltatás a, a `version` `preview` és a tulajdonságot használja a `deprecated` beépített szabályzat-definícióra vagy kezdeményezésre és állapotra való váltáshoz. A formátuma `version` : `{Major}.{Minor}.{Patch}` . Bizonyos állapotokat (például az _elavult_ vagy az _előnézet_) a `version` tulajdonsághoz vagy egy másik tulajdonsághoz ( **Boolean**) kell hozzáfűzni. További információ a Azure Policy-verziókról: [beépített verziószámozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -188,7 +188,7 @@ Ez a példa a **allowedLocations** paraméterre hivatkozik, amely a [paraméter 
 
 A `metadata` tulajdonságon belül a **strongType** használatával több választási lehetőséget is megadhat a Azure Portalon belül. a **strongType** lehet egy támogatott _erőforrástípus_ vagy egy megengedett érték. Annak megállapításához, hogy az _erőforrástípus_ érvényes-e a **strongType**, használja a [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). A **strongType** _erőforrástípus_ formátuma `<Resource Provider>/<Resource Type>` . Például: `Microsoft.Network/virtualNetworks/subnets`.
 
-Bizonyos, a **Get-AzResourceProvider** által nem visszaadott _erőforrástípusok_ támogatottak. Ezek a következők:
+Bizonyos, a **Get-AzResourceProvider** által nem visszaadott _erőforrástípusok_ támogatottak. Ezek a típusok a következők:
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -275,7 +275,8 @@ A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáféré
 - `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
 - `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
 - `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
-- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
 **Kevesebb**, **lessOrEquals**, **nagyobb**és **greaterOrEquals**esetén, ha a tulajdonság típusa nem egyezik a feltétel típusával, a rendszer hibát jelez. A karakterlánc-összehasonlítások használata a használatával történik `InvariantCultureIgnoreCase` .
@@ -346,8 +347,7 @@ A következő példában a `concat` **TagName** paraméter értékének megadás
 
 ### <a name="value"></a>Érték
 
-A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi.
-az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
+A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi. az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
 
 > [!WARNING]
 > Ha egy _sablon függvény_ eredménye hibát jelez, a szabályzat kiértékelése sikertelen lesz. A sikertelen értékelés implicit **Megtagadás**. További információ: a [sablon meghibásodásának elkerülése](#avoiding-template-failures). A [enforcementMode](./assignment-structure.md#enforcement-mode) használatával **DoNotEnforce** megakadályozhatja az új vagy frissített erőforrások sikertelen értékelésének hatását az új házirend-definíció tesztelése és érvényesítése során.
@@ -453,7 +453,7 @@ A **Count**a következő tulajdonságokat használja:
 - **Count. Field** (kötelező): a tömb elérési útját tartalmazza, és tömb aliasnak kell lennie. Ha a tömb hiányzik, a kifejezés kiértékelése _hamis_ értékre történik a feltétel kifejezésének mérlegelése nélkül.
 - **darabszám. where** (nem kötelező): a feltétel kifejezése, hogy egyenként kiértékelje az egyes [ \[ \* \] aliasok](#understanding-the--alias) tömbbeli tagjainak száma **. mező értékét**. Ha ez a tulajdonság nincs megadva, a "Field" elérési úttal rendelkező összes tömb-tag _igaz_értékre van kiértékelve. Ezen a tulajdonságon belül bármely [feltétel](../concepts/definition-structure.md#conditions) használható.
   A tulajdonságon belül a [logikai operátorok](#logical-operators) összetett értékelési követelmények létrehozására használhatók.
-- **\<condition\>**(kötelező): a rendszer összehasonlítja az értéket a darabszámban teljesített elemek számával **. where** feltétel kifejezése. Numerikus [feltételt](../concepts/definition-structure.md#conditions) kell használni.
+- **\<condition\>** (kötelező): a rendszer összehasonlítja az értéket a darabszámban teljesített elemek számával **. where** feltétel kifejezése. Numerikus [feltételt](../concepts/definition-structure.md#conditions) kell használni.
 
 #### <a name="count-examples"></a>Példák száma
 
@@ -575,7 +575,7 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 
 A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban (ARM-sablon):
 
-- `utcNow()`– Az ARM-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
+- `utcNow()` – Az ARM-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
   - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumban van beállítva az aktuális dátumra és időpontra vonatkozóan (éééé-hh-NNTóó: PP: SS. fffffffZ).
 
 A következő függvények csak a házirend-szabályokban érhetők el:
@@ -586,7 +586,7 @@ A következő függvények csak a házirend-szabályokban érhetők el:
 - `field(fieldName)`
   - **Mezőnév**: [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
   - Annak az erőforrásnak az értékét adja vissza, amelyet az IF feltétel kiértékel.
-  - `field`elsődlegesen a **AuditIfNotExists** és a **DeployIfNotExists** használja a kiértékelt erőforráson található hivatkozási mezőkre. Erre a használatra példa látható az [DeployIfNotExists példában](effects.md#deployifnotexists-example).
+  - `field` elsődlegesen a **AuditIfNotExists** és a **DeployIfNotExists** használja a kiértékelt erőforráson található hivatkozási mezőkre. Erre a használatra példa látható az [DeployIfNotExists példában](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - A szabályzat kiértékelését kiváltó kérelem API-verzióját adja vissza (például: `2019-09-01` ).
     Ez az érték az a API-verzió, amelyet a PUT/PATCH kérelemben használt az erőforrás-létrehozási/frissítési kérelmekre vonatkozó értékelésekhez. A meglévő erőforrásokon a megfelelőségi értékelés során mindig a legújabb API-verziót használja a rendszer.

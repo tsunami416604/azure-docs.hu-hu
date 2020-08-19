@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a syncplicity-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és syncplicity között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 896a3211-f368-46d7-95b8-e4768c23be08
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da532adfa2d4ab97edb44de9ae49c646ccdff381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233287"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544893"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Oktatóanyag: a syncplicity és a Azure Active Directory integrálása
 
@@ -79,9 +75,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.syncplicity.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.syncplicity.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.syncplicity.com/sp`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a syncplicity ügyfélszolgálati [csapatához](https://www.syncplicity.com/contact-us) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -104,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés (SSO)** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés \(egyszeri bejelentkezéssel\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![Egyszeri bejelentkezés egyszeri bejelentkezéssel \(\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
     a. Az **egyéni tartomány** szövegmezőbe írja be a tartomány nevét.
   
@@ -118,7 +114,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Az **identitás-szolgáltató tanúsítványa**területen kattintson a **fájl kiválasztása**elemre, majd töltse fel a Azure Portalból letöltött tanúsítványt.
 
-    g. Kattintson a **módosítások mentése**gombra.
+    : Kattintson a **módosítások mentése**gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -128,9 +124,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -156,7 +152,7 @@ Ahhoz, hogy az Azure AD-felhasználók be tudják jelentkezni, a syncplicity alk
 
 **Ha felhasználói fiókot szeretne kiépíteni a syncplicity, hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **syncplicity** -bérlőbe (például `https://company.Syncplicity.com`:).
+1. Jelentkezzen be a **syncplicity** -bérlőbe (például: `https://company.Syncplicity.com` ).
 
 1. Kattintson A **rendszergazda** elemre, és válassza A **felhasználói fiókok** lehetőséget, majd kattintson **A felhasználó hozzáadása**elemre.
 

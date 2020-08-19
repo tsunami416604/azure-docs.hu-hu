@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d0c6488f9a75bbf9ba6775138edeed9c4a397abf
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552220"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547324"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Naplózás engedélyezése az Azure ML betanítási futtatásában
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,12 +42,6 @@ Több adattípust is naplózhat, beleértve a skaláris értékeket, a listát, 
 ## <a name="interactive-logging-session"></a>Interaktív naplózási munkamenet
 
 Az interaktív naplózási munkameneteket általában notebook-környezetekben használják. A [Experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) metódus egy interaktív naplózási munkamenetet indít el. A rendszer a munkamenet során naplózott összes mérőszámot hozzáadja a kísérlet futtatási rekordjához. A [Run. Complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
-
-A következő kódrészlet egy interaktív naplózási munkamenettel naplózza a betanítási paramétereket és a teljesítmény-mérőszámokat a [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) metódus használatával. Emellett feltölti a betanított modellt egy megadott kimeneti helyre.
-
-[! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb? Name = create_experiment)]
-
-Az interaktív naplózást használó teljes minta notebookhoz lásd: [modell betanítása jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb).
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig-naplók
 
@@ -101,7 +95,7 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Machine Learning használatáról a következő cikkekben talál további információt:
 

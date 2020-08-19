@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és az SAP Cloud platform között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168864"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal
 
@@ -112,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
     ![SAP Cloud platform tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL** szövegmezőbe írja be a felhasználók által a **SAP Cloud platform** alkalmazásba való bejelentkezéshez használt URL-címet. Ez a védett erőforrás fiókra vonatkozó URL-címe az SAP Cloud platform alkalmazásban. Az URL-cím a következő mintán alapul:`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. A **bejelentkezési URL** szövegmezőbe írja be a felhasználók által a **SAP Cloud platform** alkalmazásba való bejelentkezéshez használt URL-címet. Ez a védett erőforrás fiókra vonatkozó URL-címe az SAP Cloud platform alkalmazásban. Az URL-cím a következő mintán alapul: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
     >[!NOTE]
     >Ez az az SAP Cloud platform-alkalmazás URL-címe, amelyhez a felhasználónak hitelesítenie kell magát.
@@ -151,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
 2. Kattintson a **megbízhatóság** fülre.
    
-    ![Bizalmi kapcsolat](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Bizalmi kapcsolat")
+    ![Bizalom](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Bizalom")
 
 3. A megbízhatósági kezelés szakaszban a **helyi szolgáltató**területen hajtsa végre a következő lépéseket:
 
@@ -253,7 +248,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

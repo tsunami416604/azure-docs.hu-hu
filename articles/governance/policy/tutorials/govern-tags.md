@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: a címke irányításának kezelése'
 description: Ebben az oktatóanyagban a Azure Policy módosításának hatása alapján létrehozhatja és érvényesítheti a címke irányítási modelljét az új és a meglévő erőforrásokon.
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545505"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: a címke szabályozásának kezelése a Azure Policy
 
@@ -45,7 +45,7 @@ Az irányítási szabályozások megfelelő megvalósításához hasonlóan a k�
 
 ## <a name="configure-the-costcenter-tag"></a>A CostCenter címke konfigurálása
 
-A Azure Policy által felügyelt Azure-környezetekre vonatkozó feltételek a _CostCenter_ -címkézési követelmények az alábbiakat hívják meg:
+A Azure Policy által felügyelt Azure-környezetekre vonatkozó feltételek a _CostCenter_ -címkézési követelmények a következő eredményekre vonatkoznak:
 
 - Az erőforráscsoportok megtagadása elemből hiányzik a _CostCenter_ címke
 - Erőforrások módosítása a _CostCenter_ címke hozzáadásához a szülő erőforráscsoporthoz, ha hiányzik
@@ -107,7 +107,7 @@ Ez a házirend-szabály a **Hozzáadás** műveletet használja a **addOrReplace
 
 ## <a name="configure-the-env-tag"></a>Az ENV címke konfigurálása
 
-A Azure Policy által felügyelt Azure-környezetekre vonatkozó _követelmények a következők_ :
+Az Azure Policy által felügyelt Azure-környezetekre vonatkozó követelmények az _env_ címke követelményei a következő eredmények meghívását jelentik:
 
 - Módosítsa az erőforrás-csoport _env_ címkéjét az erőforráscsoport elnevezési sémája alapján.
 - Módosítsa az összes erőforráshoz tartozó _env_ címkét a szülő erőforráscsoporthoz megegyező értékkel.
@@ -194,7 +194,7 @@ Miután létrehozta a fenti címkézési szabályzatokat, csatlakoztassa azokat 
 
 A [deployIfNotExists](../concepts/effects.md#deployifnotexists) -szabályzatokhoz hasonlóan a **módosítási** házirend szervizelési feladatokat használ a meglévő nem megfelelő erőforrások módosításához. Kövesse az [erőforrások szervizelésének](../how-to/remediate-resources.md) utasításait a nem megfelelő erőforrás- **módosítási** erőforrások azonosításához, és javítsa ki a címkéket a definiált besorolásban.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett az oktatóanyag erőforrásainak használatával, a következő lépésekkel törölheti a fent létrehozott hozzárendeléseket vagy definíciókat:
 
@@ -213,7 +213,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 > - Minden követelmény leképezve egy házirend-definícióba
 > - A címkézési házirendek csoportosítása egy kezdeményezésbe
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

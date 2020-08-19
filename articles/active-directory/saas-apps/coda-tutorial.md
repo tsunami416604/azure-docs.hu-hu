@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coda szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Coda között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: acaf2012-ef2e-4ce0-8467-ceece3bae50e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 718afec8b36a27bfd36e2a018b39f480144bf822
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77194634"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545352"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coda-vel
 
@@ -107,9 +103,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
 
-   a. Az **azonosító** szövegmezőbe írja be a fenti "Entity id" értéket. A következő mintát kell követnie:`https://coda.io/samlId/<CUSTOMID>`
+   a. Az **azonosító** szövegmezőbe írja be a fenti "Entity id" értéket. A következő mintát kell követnie: `https://coda.io/samlId/<CUSTOMID>`
 
-   b. A **Válasz URL-címe** szövegmezőbe írja be a fenti "SAML-válasz URL-címe" kifejezést. A következő mintát kell követnie:`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
+   b. A **Válasz URL-címe** szövegmezőbe írja be a fenti "SAML-válasz URL-címe" kifejezést. A következő mintát kell követnie: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
    > [!NOTE]
    > Az értékek eltérnek a fentitől; az értékeket a Coda "SAML konfigurálása" konzolján találja. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel.
@@ -130,9 +126,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -162,7 +158,7 @@ A telepítés befejezéséhez Azure Active Directory értékeket kell megadnia a
 1. Az **Identity Provider bejelentkezési URL-címében**illessze be a **bejelentkezési URL-címet** az Azure-konzolból.
 1. Az **Identity Provider-kiállítóban**illessze be az **Azure ad-azonosítót** az Azure-konzolból.
 1. Az **Identitáskezelő nyilvános tanúsítványa**lapon jelölje be a **tanúsítvány feltöltése** lehetőséget, majd válassza ki a korábban letöltött tanúsítványfájl-fájlt.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Ezzel befejezte az SAML SSO-kapcsolatok beállításához szükséges munkát.
 
@@ -176,11 +172,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen a Coda csempére kattint, automatikusan be kell jelentkeznie a Coda-be, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 4fa0603868f1cc8bb2c879dbac7811ebbe6bf0dd
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d870372f418cb8873f6664d6a501e0abe0ebe374
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875115"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548480"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és a Python használatával
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban az Azure Face REST API a Python használatával ism
 
 ![Egy férfi és egy nő, egy téglalapot rajzolt az arcaik körül, és a képen látható kor és szex jelenik meg](../images/labelled-faces-python.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -262,7 +262,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ.
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 

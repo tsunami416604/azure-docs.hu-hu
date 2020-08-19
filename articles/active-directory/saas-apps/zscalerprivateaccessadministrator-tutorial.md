@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Zscaler Private Access Administrator szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Zscaler privát hozzáférési rendszergazdája között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c87392a7-e7fe-4cdc-a8e6-afe1ed975172
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104583522c7041d89d9c63ba67a5633a3bd383f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5507c25510a84dcfeafc1b2db6c2a774153a59c3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016466"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler privát hozzáférési rendszergazdájával
 
@@ -109,19 +104,19 @@ Ha az Azure AD egyszeri bejelentkezést a Zscaler privát hozzáférési rendsze
 
     ![Zscaler privát hozzáférési rendszergazdai tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-relay.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.private.zscaler.com/auth/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.private.zscaler.com/auth/metadata`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.private.zscaler.com/auth/sso`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.private.zscaler.com/auth/sso`
 
     c. Kattintson a **további URL-címek beállítása**elemre.
 
-    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet:`idpadminsso`
+    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `idpadminsso`
 
 5.  Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
     ![Zscaler privát hozzáférési rendszergazdai tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.private.zscaler.com/auth/sso`   
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.private.zscaler.com/auth/sso`   
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a [Zscaler privát hozzáférés-felügyeleti ügyfelének ügyfélszolgálatához](https://help.zscaler.com/zpa-submit-ticket) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -190,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a AnswerHub-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és AnswerHub között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73152995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Azure Active Directory integráció a AnswerHub
 
@@ -33,7 +28,7 @@ A AnswerHub az Azure AD-vel való integrálása a következő előnyöket biztos
 * A fiókokat egy központi helyről kezelheti: a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,9 +101,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést állítja be a Azure Por
 
     ![Alapszintű SAML-konfiguráció szakasz](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** mezőben adjon meg egy URL-címet, amely a következő mintával rendelkezik:`https://<company>.answerhub.com`
+    a. A **bejelentkezési URL-cím** mezőben adjon meg egy URL-címet, amely a következő mintával rendelkezik: `https://<company>.answerhub.com`
 
-    b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet, amely a következő mintával rendelkezik:`https://<company>.answerhub.com`
+    b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet, amely a következő mintával rendelkezik: `https://<company>.answerhub.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez lépjen kapcsolatba a [AnswerHub támogatási csoportjával](mailto:success@answerhub.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -161,7 +156,7 @@ Ebben a szakaszban a AnswerHub való egyszeri bejelentkezést állíthatja be.
 
     a. Nyissa meg a Jegyzettömbben a Azure Portal letöltött Base64 kódolású tanúsítványt, másolja a tartalmát, majd illessze be a tartalmat a **identitásszolgáltató nyilvános kulcs (X509 formátum)** mezőbe.
   
-    b. Kattintson a **Mentés** gombra.
+    b. Válassza a **Mentés** lehetőséget.
 
 6. A **identitásszolgáltató-konfiguráció** lapon válassza a **Mentés** újra lehetőséget.
 
@@ -185,7 +180,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@<yourcompanydomain. Extension>** értéket.  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@<yourcompanydomain. Extension>** értéket.  
     Például: BrittaSimon@contoso.com.
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
@@ -249,7 +244,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a AnswerHub csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a AnswerHub, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok az SaaS-alkalmazások integrálásához Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

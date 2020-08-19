@@ -1,14 +1,14 @@
 ---
 title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
-ms.date: 06/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791418"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544723"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -16,13 +16,13 @@ Az Azure Policyban minden egyes szabályzatdefiníció egyetlen hatással bír. 
 
 Ezek a hatások jelenleg a szabályzatok definíciójában támogatottak:
 
-- [Hozzáfűzés](#append)
-- [Naplózás](#audit)
+- [Append](#append)
+- [Audit](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
-- [Letiltva](#disabled)
-- [Módosítás](#modify)
+- [Disabled](#disabled)
+- [Modify](#modify)
 
 A következő hatások _elavultak_:
 
@@ -43,7 +43,7 @@ Az erőforrások létrehozására vagy frissítésére vonatkozó kérelmeket a 
 
 Miután az erőforrás-szolgáltató egy sikeres sikerességi kódot ad vissza egy Resource Manager módú kérelemben, a **AuditIfNotExists** és a **DeployIfNotExists** kiértékelésével megállapíthatja, hogy szükséges-e további megfelelőségi naplózás vagy művelet.
 
-## <a name="append"></a>Hozzáfűzés
+## <a name="append"></a>Append (Hozzáfűzés)
 
 A Hozzáfűzés használatával további mezőket adhat hozzá a kért erőforráshoz a létrehozás vagy a frissítés során. Gyakori példa egy tárolási erőforrás engedélyezett IP-címeinek megadására.
 
@@ -362,7 +362,7 @@ Példa: kiértékeli SQL Server adatbázisokat annak megállapítására, hogy e
 }
 ```
 
-## <a name="disabled"></a>Letiltva
+## <a name="disabled"></a>Disabled (Letiltva)
 
 Ez a hatás akkor hasznos, ha tesztelési helyzetekben vagy ha a házirend-definícióban a hatás szerepel. Ez a rugalmasság lehetővé teszi egyetlen hozzárendelés letiltását ahelyett, hogy letiltja a szabályzat összes hozzárendelését.
 

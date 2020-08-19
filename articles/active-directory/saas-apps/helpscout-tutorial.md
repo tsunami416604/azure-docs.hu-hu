@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a help Scout segítségével | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Scout segítségével.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0aad9910-0bc1-4394-9f73-267cf39973ab
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159088"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: Azure Active Directory integráció a help Scout segítségével
 
@@ -33,7 +28,7 @@ A Súgó felderítő és az Azure AD integrálásával a következő előnyöket
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,7 +102,7 @@ Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához haj
 
     ![Súgó a felderítő tartomány és az URL-címek egyszeri bejelentkezési adataihoz](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következőként:`https://secure.helpscout.net/members/login/`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következőként: `https://secure.helpscout.net/members/login/`
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -141,12 +136,12 @@ Ennek a szakasznak a célja, hogy létrehozzon egy teszt felhasználót a B. Sim
 
     a. A név mezőbe írja be a **B. Simon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a **B. Simon\@yourcompanydomain. Extension nevet.**  
+    b. A **Felhasználónév** mezőbe írja be a **B. Simon \@ yourcompanydomain. Extension nevet.**  
     Például: B.Simon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -210,11 +205,11 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
     b. Kattintson a **tanúsítvány feltöltése** gombra a Azure Portalról letöltött **tanúsítvány (Base64)** feltöltéséhez.
 
-    c. Adja meg a szervezeti e-mail- `contoso.com` tartomány (ok) E.x. az **e-mail tartományok** szövegmezőben. Vesszővel elválaszthat több tartományt is. A Súgó [felderítő bejelentkezési oldalának](https://secure.helpscout.net/members/login/) az adott tartományba bejelentkező súgójában a felhasználó vagy a rendszergazda a hitelesítő adataikkal való hitelesítés érdekében az identitás-szolgáltatóhoz irányítja a felhasználót.
+    c. Adja meg a szervezeti e-mail-tartomány (ok) e.x. `contoso.com` az **e-mail tartományok** szövegmezőben. Vesszővel elválaszthat több tartományt is. A Súgó [felderítő bejelentkezési oldalának](https://secure.helpscout.net/members/login/) az adott tartományba bejelentkező súgójában a felhasználó vagy a rendszergazda a hitelesítő adataikkal való hitelesítés érdekében az identitás-szolgáltatóhoz irányítja a felhasználót.
 
     d. Végül pedig beállíthatja a **kényszerített SAML-bejelentkezést** , ha azt szeretné, hogy a felhasználók csak a metóduson keresztül jelentkezzenek be a Súgóba. Ha továbbra is szeretné, hogy a Súgó felderítő hitelesítő adataival jelentkezzenek be, hagyja kikapcsolva a funkciót. Még ha ez engedélyezve van, a fiók tulajdonosa mindig képes lesz bejelentkezni a fiók jelszavával.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-help-scout-test-user"></a>Súgó felderítő tesztelési felhasználó létrehozása
 

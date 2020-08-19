@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Reflektive-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Reflektive között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 799a08b9-1ce6-46d1-9064-aa9f36f6604e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 76ded60421c1f6d39328ec88e964876e3eb64d78
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 70ad4bfdfda0def4fba2778725fcfc4e81e72a5b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169051"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>Oktatóanyag: Azure Active Directory integráció a Reflektive
 
@@ -114,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés Reflektive való konfigurálásához hajtsa 
 
     ![image](common/both-preintegrated-signon.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://www.reflektive.com/app`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://www.reflektive.com/app`
 
     > [!NOTE]
     > Az SP mód eléréséhez be kell szereznie a [Reflektive támogatási csapatának](https://support@reflektive.com)regisztrált e-mail-azonosítóját. Ha az **e-mail** szövegmezőbe írja be az azonosítóját, akkor az egyszeri bejelentkezés beállítás engedélyezve lesz. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -159,7 +155,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

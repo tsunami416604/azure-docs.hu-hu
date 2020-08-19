@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés a PowerShell-lel'
 description: Ebben a rövid útmutatóban a Azure PowerShell használatával hozhat létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 1fe1c7ee50c1e93f94d387440a22b011d392ffca
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684515"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548412"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához Azure PowerShell használatával
 
@@ -19,7 +19,7 @@ Ez az útmutató ismerteti, hogyan használható az az modul egy szabályzat-hoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+- Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 - Mielőtt elkezdené, győződjön meg arról, hogy a Azure PowerShell legújabb verziója van telepítve. Részletes információkért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) .
 
@@ -60,7 +60,7 @@ Az előző parancsok a következő információkat használják:
 
 Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának megismerése érdekében.
 
-## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
+## <a name="identify-non-compliant-resources"></a>A nem megfelelő erőforrások azonosítása
 
 A következő információkkal azonosíthatja a létrehozott szabályzat-hozzárendelés szempontjából nem megfelelő erőforrásokat. Futtassa az alábbi parancsot:
 
@@ -93,7 +93,7 @@ ManagementGroupIds          : {managementGroupId}
 
 Az eredmények megegyeznek a szabályzat-hozzárendelés **erőforrás-megfelelőség** lapján látható Azure Portal nézetben.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A létrehozott hozzárendelés eltávolításához használja a következő parancsot:
 
@@ -102,7 +102,7 @@ A létrehozott hozzárendelés eltávolításához használja a következő para
 Remove-AzPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 

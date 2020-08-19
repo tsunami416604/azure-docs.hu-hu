@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Learningpool törvénnyel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Learningpool-szabály között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 51e8695f-31e1-4d09-8eb3-13241999d99f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 173fab91681943576f9a4afeba8d38a99e22996f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ed4039528e60f318dcad7af864c8dcb3483e7365
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799761"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546786"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Oktatóanyag: Azure Active Directory integráció a Learningpool törvénnyel
 
@@ -33,7 +28,7 @@ A Learningpool és az Azure AD integrálásával a következő előnyökkel jár
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés a Learningpool törvénnyel való konfigurá
 
     ![A Learningpool-tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
@@ -148,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés a Learningpool törvénnyel való konfigurá
 
     f. Kattintson **az OK** gombra
 
-    : Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -191,7 +186,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
