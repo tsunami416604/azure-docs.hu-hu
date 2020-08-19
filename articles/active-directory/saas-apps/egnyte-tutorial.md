@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Egnyte-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Egnyte között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76983690"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544332"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Egnyte
 
@@ -95,7 +91,7 @@ Az Azure AD egyszeri bejelentkezés Egnyte való konfigurálásához hajtsa vég
 
     ![Egnyte tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.egnyte.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<companyname>.egnyte.com`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Egnyte ügyfélszolgálati [csapatához](https://www.egnyte.com/corp/contact_egnyte.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -132,12 +128,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -197,9 +193,9 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
    
     f. **Alapértelmezett felhasználó-hozzárendelésként**válassza az **e-mail-cím**elemet.
    
-    g. A **tartományhoz tartozó kibocsátó értékének használatakor**válassza a **Letiltva**lehetőséget.
+    : A **tartományhoz tartozó kibocsátó értékének használatakor**válassza a **Letiltva**lehetőséget.
    
-    h. Kattintson a **Save** (Mentés) gombra.
+    h. Kattintson a **Mentés** gombra.
 
 ### <a name="create-egnyte-test-user"></a>Egnyte-tesztelési felhasználó létrehozása
 
@@ -219,13 +215,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Eg
     
     ![Új általános jogú felhasználó](./media/egnyte-tutorial/ic787825.png "Új általános jogú felhasználó")   
 
-    a. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **Brittasimon\@contoso.com**-e-mail-címét.
+    a. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **Brittasimon \@ contoso.com**-e-mail-címét.
 
     b. A **Felhasználónév** szövegmezőbe írja be a **Brittasimon**, például a következőt: Felhasználónév.
 
     c. Válassza az **egyszeri bejelentkezés** **hitelesítési típusként**lehetőséget.
    
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
     
     >[!NOTE]
     >A Azure Active Directory fiók tulajdonosának értesítési e-mailt fog kapni.

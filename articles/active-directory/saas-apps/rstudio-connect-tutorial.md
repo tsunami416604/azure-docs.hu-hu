@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a RStudio-csatlakozással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a RStudio közötti kapcsolat között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9bc78022-6d38-4476-8f03-e3ca2551e72e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81407104"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Oktatóanyag: Azure Active Directory integráció a RStudio csatlakozással
 
@@ -33,7 +28,7 @@ Az RStudio-kapcsolat Azure AD-vel való integrálásával az alábbi előnyökke
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -104,22 +99,22 @@ Az Azure AD egyszeri bejelentkezés RStudio-kapcsolaton keresztüli konfigurál�
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket `<example.com>` , és cserélje le a kifejezést a RStudio csatlakozási kiszolgálójának címe és portra:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket, és cserélje le a kifejezést `<example.com>` a RStudio csatlakozási kiszolgálójának címe és portra:
 
     ![A RStudio és az URL-címek egyszeri bejelentkezési adatainak összekapcsolása](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<example.com>/__login__/saml`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<example.com>/__login__/saml`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<example.com>/__login__/saml/acs`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<example.com>/__login__/saml/acs`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![A RStudio és az URL-címek egyszeri bejelentkezési adatainak összekapcsolása](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<example.com>/`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<example.com>/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezek a RStudio csatlakozási kiszolgáló címe alapján vannak meghatározva`https://example.com` (a fenti példákban). Ha problémája van, lépjen kapcsolatba a [RStudio kapcsolódási támogatási csapatával](mailto:support@rstudio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezek a RStudio csatlakozási kiszolgáló címe alapján vannak meghatározva ( `https://example.com` a fenti példákban). Ha problémája van, lépjen kapcsolatba a [RStudio kapcsolódási támogatási csapatával](mailto:support@rstudio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 6. Az RStudio-összekötő alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. Az RStudio-összekötő alkalmazás a **NameIdentifier** -t a **User. mail**használatával rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
@@ -131,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés RStudio-kapcsolaton keresztüli konfigurál�
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio-kapcsolat egyszeri bejelentkezésének konfigurálása
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **RStudio kapcsolódáshoz**, az alkalmazás- **összevonási metaadatok URL-címét** és a fent használt **kiszolgáló-címet** kell használnia. Ez a RStudio-kapcsolat konfigurációs fájljában történik a `/etc/rstudio-connect.rstudio-connect.gcfg`következő helyen:.
+Ha be szeretné állítani az egyszeri bejelentkezést a **RStudio kapcsolódáshoz**, az alkalmazás- **összevonási metaadatok URL-címét** és a fent használt **kiszolgáló-címet** kell használnia. Ez a RStudio-kapcsolat konfigurációs fájljában történik a következő helyen: `/etc/rstudio-connect.rstudio-connect.gcfg` .
 
 Ez egy példa konfigurációs fájl:
 
@@ -158,7 +153,7 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-Tárolja a **kiszolgáló címét** az `Server.Address` értékben, és az **alkalmazás összevonási metaadatainak URL** -címét `SAML.IdPMetaData` az értékben. Vegye figyelembe, hogy ez a minta konfiguráció titkosítatlan HTTP-kapcsolaton keresztül működik, míg az Azure AD titkosított HTTPS-kapcsolat használatát igényli. Használhat [fordított proxyt](https://docs.rstudio.com/connect/admin/proxy/) a RStudio-csatlakozás előtt, vagy konfigurálhatja a RStudio csatlakozást [közvetlenül a https használatára](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS). 
+Tárolja a **kiszolgáló címét** az `Server.Address` értékben, és az **alkalmazás összevonási metaadatainak URL-címét** az `SAML.IdPMetaData` értékben. Vegye figyelembe, hogy ez a minta konfiguráció titkosítatlan HTTP-kapcsolaton keresztül működik, míg az Azure AD titkosított HTTPS-kapcsolat használatát igényli. Használhat [fordított proxyt](https://docs.rstudio.com/connect/admin/proxy/) a RStudio-csatlakozás előtt, vagy konfigurálhatja a RStudio csatlakozást [közvetlenül a https használatára](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS). 
 
 Ha problémája van a konfigurációval, olvassa el a [RStudio kapcsolódási felügyeleti útmutatót](https://docs.rstudio.com/connect/admin/authentication/saml/) , vagy küldjön segítséget a [RStudio támogatási csapatának](mailto:support@rstudio.com) .
 
@@ -180,11 +175,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

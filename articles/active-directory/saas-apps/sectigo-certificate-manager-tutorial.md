@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Sectigo tanúsítványkezelővel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Sectigo tanúsítványkezelő között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62cd6987-3373-4b58-b1ff-589f4a3d70a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67588237"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Azure Active Directory integráció a Sectigo tanúsítványkezelővel
 
@@ -61,7 +56,7 @@ A Sectigo tanúsítványkezelő Azure AD-val való integrálásához hozzá kell
 
     ![Az Azure Active Directory lehetőség](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -79,7 +74,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszte
 
 Az Azure AD egyszeri bejelentkezés a Sectigo tanúsítványkezelővel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-| Tevékenység | Leírás |
+| Feladat | Leírás |
 | --- | --- |
 | **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók számára a funkció használatát. |
 | **[A Sectigo-tanúsítványkezelő egyszeri bejelentkezésének konfigurálása](#configure-sectigo-certificate-manager-single-sign-on)** | Az egyszeri bejelentkezési beállításokat konfigurálja az alkalmazásban. |
@@ -107,26 +102,26 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Sectigo 
 1. Az **alapszintű SAML-konfiguráció** panelen, a *identitásszolgáltató-kezdeményezésű mód*konfigurálásához hajtsa végre a következő lépéseket:
 
     1. Az **azonosító** mezőben adja meg az alábbi URL-címek egyikét:
-       * https:\//CERT-Manager.com/shibboleth
-       * https:\//Hard.CERT-Manager.com/shibboleth
+       * https: \/ /CERT-Manager.com/shibboleth
+       * https: \/ /Hard.CERT-Manager.com/shibboleth
 
     1. A **Válasz URL-címe** mezőbe írja be az alábbi URL-címek egyikét:
-        * https:\//CERT-Manager.com/Shibboleth.SSO/SAML2/post
-        * https:\//Hard.CERT-Manager.com/Shibboleth.SSO/SAML2/post
+        * https: \/ /CERT-Manager.com/Shibboleth.SSO/SAML2/post
+        * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/SAML2/post
 
     1. Válassza a **további URL-címek beállítása**lehetőséget.
 
     1. A **továbbítási állapot** mezőben adja meg az alábbi URL-címek egyikét:
-       * https:\//CERT-Manager.com/Customer/SSLSupport/IDP
-       * https:\//Hard.CERT-Manager.com/Customer/SSLSupport/IDP
+       * https: \/ /CERT-Manager.com/Customer/SSLSupport/IDP
+       * https: \/ /Hard.CERT-Manager.com/Customer/SSLSupport/IDP
 
     ![Sectigo tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-relay.png)
 
 1.  Az alkalmazás *SP-kezdeményezésű módban*való konfigurálásához hajtsa végre a következő lépéseket:
 
     * A **bejelentkezési URL-cím** mezőbe írja be az alábbi URL-címek egyikét:
-      * https:\//CERT-Manager.com/Shibboleth.SSO/login
-      * https:\//Hard.CERT-Manager.com/Shibboleth.SSO/login
+      * https: \/ /CERT-Manager.com/Shibboleth.SSO/login
+      * https: \/ /Hard.CERT-Manager.com/Shibboleth.SSO/login
 
       ![Sectigo tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
@@ -150,7 +145,7 @@ Ha az egyszeri bejelentkezést a Sectigo tanúsítványkezelő oldalon szeretné
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
     ![A felhasználók és az összes felhasználó lehetőség](common/users.png)
 
@@ -162,7 +157,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **a brittasimon\@\<-vállalat-tartomány>.\< bővítmény\>**. Például **brittasimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension\> **. Például **brittasimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
@@ -174,7 +169,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 Ebben a szakaszban Simon Britta-hozzáférést biztosít a Sectigo tanúsítványkezelőnek, így az Azure egyszeri bejelentkezést is használhatja.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás** > **Sectigo a Tanúsítványkezelő**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Sectigo a Tanúsítványkezelő**elemet.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -186,7 +181,7 @@ Ebben a szakaszban Simon Britta-hozzáférést biztosít a Sectigo tanúsítván
 
     ![A felhasználók és csoportok beállítás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 

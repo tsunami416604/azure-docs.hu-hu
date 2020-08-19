@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a HackerOne-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és HackerOne között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120789"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544196"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Oktatóanyag: Azure Active Directory integráció a HackerOne
 
@@ -33,7 +28,7 @@ A HackerOne és az Azure AD integrálásával a következő előnyöket nyújtja
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,9 +102,9 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     ![HackerOne tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt:`https://hackerone.com/users/saml/sign_in?email=<configured domain>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
-    b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be a következőt:`hackerone.com`
+    b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be a következőt: `hackerone.com`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -143,11 +138,11 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     a. Az **E-mail tartomány** szövegmezőbe írja be a regisztrált tartományt.
 
-    b. Az **egyszeri bejelentkezés URL-címe** szövegmezőben illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
+    b. Az  **egyszeri bejelentkezés URL-címe** szövegmezőben illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
-    c. Nyissa meg a letöltött **tanúsítványfájl** Azure Portal a Jegyzettömbbe, másolja ki a tartalmát a vágólapra, majd illessze be a **X509-tanúsítvány** szövegmezőbe.
+    c. Nyissa meg a letöltött **tanúsítványfájl** Azure Portal a Jegyzettömbbe, másolja ki a tartalmát a vágólapra, majd illessze be a **X509-tanúsítvány**  szövegmezőbe.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 5. A hitelesítési beállítások párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -181,12 +176,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
 
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

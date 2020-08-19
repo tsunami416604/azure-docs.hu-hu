@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a szeizmikus integrációval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a szeizmikus között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 56014c05-e37f-4f85-bcfa-5115dda2d678
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: ec9a308d0eb0ea97d60ce427bb222dbebc33f735
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f21fea2b1908a0ccd5a24ae424f405fbf141c9f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Oktatóanyag: Azure Active Directory a szeizmikus integrációval
 
@@ -108,9 +104,9 @@ Az Azure AD egyszeri bejelentkezés szeizmikus használatával történő konfig
 
     ![A szeizmikus tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.seismic.com`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.seismic.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.seismic.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.seismic.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez forduljon a szeizmikus ügyfélszolgálati [csapathoz](mailto:support@seismic.com) . A szolgáltatói **metaadatokat** feltöltheti az azonosító érték automatikus feltöltésével is, ha további információt szeretne a szolgáltatói **metaadatokról**, forduljon a [szeizmikus ügyfél-támogatási csoporthoz](mailto:support@seismic.com).
@@ -156,7 +152,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

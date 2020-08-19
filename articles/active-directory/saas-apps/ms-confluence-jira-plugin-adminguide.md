@@ -2,25 +2,21 @@
 title: Atlassian JIRA/torkolati felügyeleti útmutató – Azure Active Directory | Microsoft Docs
 description: Felügyeleti útmutató a Atlassian-JIRA és a Azure Active Directory (Azure AD) összefolyásánál való használatához.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016785"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543982"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian-JIRA és-összefolyásánál felügyeleti útmutató a Azure Active Directory
 
@@ -147,7 +143,7 @@ Az alábbi képen a JIRA és a torkolatánál található konfigurációs képer
 
 * **Szeretné letiltani a websudo-t (a biztonságos rendszergazdai munkamenet letiltása)**:
 
-  * A JIRA esetében a biztonságos rendszergazdai munkamenetek (azaz jelszó-megerősítés a felügyeleti funkciók elérése előtt) alapértelmezés szerint engedélyezve vannak. Ha el szeretné távolítani ezt a képességet a JIRA-példányban, adja meg a következő sort a JIRA-config. properties fájlban:`jira.websudo.is.disabled = true`
+  * A JIRA esetében a biztonságos rendszergazdai munkamenetek (azaz jelszó-megerősítés a felügyeleti funkciók elérése előtt) alapértelmezés szerint engedélyezve vannak. Ha el szeretné távolítani ezt a képességet a JIRA-példányban, adja meg a következő sort a JIRA-config. properties fájlban: `jira.websudo.is.disabled = true`
 
   * A torkolatánál való összefolyásánál kövesse az [összefolyásánál támogatási webhelyének](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)lépéseit.
 

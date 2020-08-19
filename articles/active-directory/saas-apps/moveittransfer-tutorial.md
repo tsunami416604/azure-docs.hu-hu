@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az MOVEit-Átvitelsel – Azure AD-integráció | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a MOVEit átvitele között – Azure AD-integráció.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 43383e82d983c998d159728997da4757cc364999
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161322"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Oktatóanyag: Azure Active Directory integráció az MOVEit-Átvitelsel – Azure AD-integráció
 
@@ -32,7 +28,7 @@ Az MOVEit-átvitel integrálása – az Azure ad-integráció az alábbi előny�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -115,7 +111,7 @@ Az Azure AD egyszeri bejelentkezés MOVEit-Átvitelsel való konfigurálásához
 
     ![MOVEit-átvitel – Azure AD-integrációs tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://contoso.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://contoso.com`
 
     > [!NOTE]
     > A **bejelentkezési URL-cím** értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [MOVEit-átvitelsel – az Azure ad integrációs ügyfelének ügyfélszolgálati](https://community.ipswitch.com/s/support) csapatával. A szolgáltatói **metaadatok fájlját** letöltheti a szolgáltatói **metaadatok URL-címéről** , amelyet később a **MOVEit átvitel konfigurálása – az Azure ad Integration egyszeri bejelentkezés** szakasza ismertet az oktatóanyagban. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -173,9 +169,9 @@ Az Azure AD egyszeri bejelentkezés MOVEit-Átvitelsel való konfigurálásához
     
     a. Válassza ki az **SAML-NameID** **bejelentkezési nevet**.
     
-    b. Válassza a **másik** a **teljes név** lehetőséget, majd az **attribútum neve** szövegmezőbe tegye `http://schemas.microsoft.com/identity/claims/displayname`a következőket:.
+    b. Válassza a **másik** a **teljes név** lehetőséget, majd az **attribútum neve** szövegmezőbe tegye a következőket: `http://schemas.microsoft.com/identity/claims/displayname` .
     
-    c. Válassza **Other** az egyéb **e-mail-cím** lehetőséget, majd az **attribútum neve** szövegmezőbe tegye a következőket: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Válassza **Other** az egyéb **e-mail-cím** lehetőséget, majd az **attribútum neve** szövegmezőbe tegye a következőket: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
     
     d. Válassza az **Igen** lehetőséget, ha **a bejelentkezéskor automatikusan létrehozza a fiókot**.
     
@@ -199,12 +195,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -245,7 +241,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a MOVEit átvitel – Azure AD-integráció csempére kattint, automatikusan be kell jelentkeznie a MOVEit-átvitelbe – az Azure AD-integrációba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

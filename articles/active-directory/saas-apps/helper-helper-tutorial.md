@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Helper Helper szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Helper Helper között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5f42e4d7-4d92-4096-a0d5-02fa438a5dfd
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89467dcca75c72c3a868478cc3e46b9cb474ed19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101285"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540083"
 ---
 # <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Oktatóanyag: a Helper Helper integrálása Azure Active Directory
 
@@ -81,7 +76,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal** rendelkezik, és **identitásszolgáltató** kezdeményezett módban kívánja konfigurálni a következő lépéseket:
 
     >[!NOTE]
-    >A szolgáltatói metaadat `https://sso.helperhelper.com/saml/<customer_id>` fájljának beolvasásához nyissa meg az URL-címet. Forduljon az `<customer_id>`ügyfélszolgálathoz segítő ügyfélszolgálati [csapatához](mailto:info@helperhelper.com) .
+    >A `https://sso.helperhelper.com/saml/<customer_id>` szolgáltatói metaadat fájljának beolvasásához nyissa meg az URL-címet. Forduljon az ügyfélszolgálathoz segítő ügyfélszolgálati [csapatához](mailto:info@helperhelper.com) `<customer_id>` .
 
     a. Kattintson a **metaadat-fájl feltöltése**elemre.
 
@@ -94,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://sso.helperhelper.com/saml/<customer_id>/login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://sso.helperhelper.com/saml/<customer_id>/login`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon az ügyfélszolgálat [segítője ügyfél-támogatási csoporthoz](mailto:info@helperhelper.com) . A Azure Portal. l-ben az **alapszintű SAML-konfiguráció** szakaszban látható mintákat is megtekintheti.
@@ -119,9 +114,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

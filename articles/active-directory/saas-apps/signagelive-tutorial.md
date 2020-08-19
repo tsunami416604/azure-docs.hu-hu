@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Signagelive-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Signagelive között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: d923f0e7-ad31-4d59-a6fd-f0e895e1a32d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dab2fd0ee2f25e835b4bd07a3534475d3d93b5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160925"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539725"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Oktatóanyag: Azure Active Directory integráció a Signagelive
 
@@ -32,7 +27,7 @@ A Signagelive és az Azure AD integrálásával a következő előnyöket nyújt
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Signagelive (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Az Azure AD-vel való SaaS-alkalmazások integrálásával kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +56,7 @@ Ha Signagelive szeretne hozzáadni a katalógusból, hajtsa végre a következő
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található  **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
@@ -107,7 +102,7 @@ Az Azure AD egyszeri bejelentkezés Signagelive való konfigurálásához hajtsa
 
     ![Signagelive tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL-cím** mezőben adjon meg egy URL-címet, amely a következő mintát használja:`https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
+    A **bejelentkezési URL-cím** mezőben adjon meg egy URL-címet, amely a következő mintát használja:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Signagelive ügyfél-támogatási csapatához](mailto:support@signagelive.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -148,7 +143,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőtbrittasimon@yourcompanydomain.extension: "". Ebben az esetben például megadhatja a következőt:BrittaSimon@contoso.com"".
+    b. A **Felhasználónév** mezőbe írja be a következőt: " brittasimon@yourcompanydomain.extension ". Ebben az esetben például megadhatja a következőt: " BrittaSimon@contoso.com ".
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a jelszó mezőben megjelenő értéket.
 
@@ -190,7 +185,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a **Signagelive** csempét a MyApps-portálon, automatikusan be kell jelentkeznie. További információ a MyApps-portálról: [Mi a MyApps-portál?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszere között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ee9a924d-ccde-45b0-ab40-877f82f5dfa2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea2f5e33859852388357526052c39fa432471efb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61807f90caad9e6be2a25e54dcaa837595afc729
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67091271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Oktatóanyag: Azure Active Directory integráció a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerrel
 
@@ -33,7 +28,7 @@ A SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer az Azure
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -138,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés SensoScientific vezeték nélküli hőmérs�
 
     e. Tallózzon a Azure Portal letöltött tanúsítványon, és töltse fel ide.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -158,11 +153,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -192,7 +187,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer tesztelési felhasználójának létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerbe, a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerbe kell azokat kiépíteni. A [SensoScientific vezeték nélküli hőmérséklet-figyelési rendszertámogatási csapatával](https://www.sensoscientific.com/contact-us/) felveheti a felhasználókat a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer platformján. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerbe, a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerbe kell azokat kiépíteni. A [SensoScientific vezeték nélküli hőmérséklet-figyelési rendszertámogatási csapatával](https://www.sensoscientific.com/contact-us/)   felveheti a felhasználókat a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer platformján. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

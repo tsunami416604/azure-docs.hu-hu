@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SAML SSO között a JIRA by Solution GmbH használatával.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 20e18819-e330-4e40-bd8d-2ff3b98e035f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146579"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
 
@@ -106,15 +101,15 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
 
     ![SAML egyszeri bejelentkezés a JIRA és az URL-címek egyszeri bejelentkezési adatai alapján](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
     c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást az **SP** által kezdeményezett módban szeretné konfigurálni:
 
     ![SAML egyszeri bejelentkezés a JIRA és az URL-címek egyszeri bejelentkezési adatai alapján](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
     > Az azonosító, a válasz URL-cím és a bejelentkezési URL-cím helyére írja **\<server-base-url>** be az JIRA-példány alap URL-címét. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti. Ha problémája van, vegye fel velünk a kapcsolatot az [SAML SSO-val a JIRA by Solution GmbH ügyfélszolgálati csapatával](https://www.resolution.de/go/support).
@@ -223,7 +218,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -275,7 +270,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az S
 
     ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail-címét: <b>BrittaSimon@contoso.com</b> .
+    a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail-címét:  <b>BrittaSimon@contoso.com</b> .
 
     b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét: **Britta Simon**.
 

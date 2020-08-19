@@ -3,12 +3,12 @@ title: 'Gyors útmutató: Tudásbázis létrehozása, betanítása és közzét�
 description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a kérdésekre QnA Maker.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340589"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540754"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -17,7 +17,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+> * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) a virtuális gép létrehozásának megkezdése előtt.
 > * A Azure Portalban létrehozott QnA Maker [erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) . Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>Az első QnA Maker Tudásbázis létrehozása
@@ -42,10 +42,10 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
     |Beállítás|Érték|
     |--|--|
-    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
+    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Alapértelmezett válasz szövege**| `Quickstart - default answer not found.`|
     |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-csevegés**|**Professional** kiválasztása|
+    |**Csevegés**|**Professional** kiválasztása|
 
 1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
 
@@ -145,7 +145,7 @@ Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, 
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Metaadatokkal rendelkező kérdések felvétele](add-question-metadata-portal.md)

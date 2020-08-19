@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ScreenSteps-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ScreenSteps között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4563fe94-a88f-4895-a07f-79df44889cf9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f23f9763d25d5edfebd0e4cff7f3b7772ef1554
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67091666"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Oktatóanyag: Azure Active Directory integráció a ScreenSteps
 
@@ -32,7 +28,7 @@ A ScreenSteps és az Azure AD integrálásával a következő előnyöket nyújt
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés ScreenSteps való konfigurálásához hajtsa
 
     ![ScreenSteps tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<tenantname>.ScreenSteps.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<tenantname>.ScreenSteps.com`
 
     > [!NOTE]
     > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -148,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés ScreenSteps való konfigurálásához hajtsa
 
     b. A **Mode (mód** ) listából válassza ki az **SAML**elemet.
 
-    c. Kattintson a **Létrehozás**gombra.
+    c. Kattintson a **Create** (Létrehozás) gombra.
 
 1. **Szerkessze** az új végpontot.
 
@@ -170,7 +166,7 @@ Az Azure AD egyszeri bejelentkezés ScreenSteps való konfigurálásához hajtsa
 
     f. Másolja a **SAML-felhasználó URL-címét** a vágólapra, és illessze be a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    g. Térjen vissza az **egyszeri bejelentkezési végpont szerkesztéséhez**.
+    : Térjen vissza az **egyszeri bejelentkezési végpont szerkesztéséhez**.
 
     h. Kattintson az **alapértelmezett fiók létrehozása** gombra, hogy ezt a végpontot használja a ScreenSteps bejelentkező összes felhasználóhoz. Azt is megteheti, hogy a **Hozzáadás a helyhez** gombra kattint, hogy ezt a végpontot a **ScreenSteps**meghatározott helyeire használja.
 
@@ -192,12 +188,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -227,7 +223,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-screensteps-test-user"></a>ScreenSteps-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a ScreenSteps-ben. A [ScreenSteps ügyfél-támogatási csapattal](https://www.screensteps.com/contact) együttműködve veheti fel a felhasználókat a ScreenSteps-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a ScreenSteps-ben. A [ScreenSteps ügyfél-támogatási csapattal](https://www.screensteps.com/contact)együttműködve   veheti fel a felhasználókat a ScreenSteps-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

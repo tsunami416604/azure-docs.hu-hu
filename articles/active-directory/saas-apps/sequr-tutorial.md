@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Sequr-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Sequr között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a491e2ce-b4e8-41b8-8f4a-a2e263e462c3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eed00aab4296cb5352e74d9e6bfc014f2340646
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67091087"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Oktatóanyag: Azure Active Directory integráció a Sequr
 
@@ -33,7 +28,7 @@ A Sequr és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,13 +101,13 @@ Az Azure AD egyszeri bejelentkezés Sequr való konfigurálásához hajtsa végr
 
     ![Sequr tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
 
-    Az **azonosító** szövegmezőbe írja be az URL-címet:`https://login.sequr.io`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:  `https://login.sequr.io`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![image](common/both-advanced-urls.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://login.sequr.io`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://login.sequr.io`
 
     b. A **továbbítási állapot** szövegmezőben ez az érték jelenik meg, amelyet az oktatóanyag későbbi részében ismertetünk.
 
@@ -152,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés Sequr való konfigurálásához hajtsa végr
 
     c. A konfiguráció mentése után a rendszer létrehozza a továbbítási állapot értékét. Másolja a **Relay State** értéket, és illessze be a Azure Portal **alapszintű SAML-konfigurációs** szakaszának **Relay-állapot** szövegmezőbe.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -172,11 +167,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -206,7 +201,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-sequr-test-user"></a>Sequr-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Sequr-ben. A [Sequr ügyfél-támogatási csapattal](mailto:support@sequr.io) együttműködve veheti fel a felhasználókat a Sequr-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Sequr-ben. A [Sequr ügyfél-támogatási csapattal](mailto:support@sequr.io)együttműködve   veheti fel a felhasználókat a Sequr-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

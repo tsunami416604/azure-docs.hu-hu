@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Skillport-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Skillport között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cceb0a98cc35a41d1d46b798c9caf08fae2e3748
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680678"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Oktatóanyag: Azure Active Directory integráció a Skillport
 
@@ -32,7 +28,7 @@ A Skillport és az Azure AD integrálásával a következő előnyöket nyújtja
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,21 +103,21 @@ Az Azure AD egyszeri bejelentkezés Skillport való konfigurálásához hajtsa v
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
 
-    EU-adatközpont:`https://adfs.skillport.eu`
+    EU-adatközpont: `https://adfs.skillport.eu`
 
-    Egyesült államokbeli adatközpont:`https://sso.skillport.com`
+    Egyesült államokbeli adatközpont: `https://sso.skillport.com`
 
     b. Az **azonosító** mezőbe írja be az URL-címet:
 
-    EU-adatközpont:`http://adfs.skillport.eu/adfs/services/trust`
+    EU-adatközpont: `http://adfs.skillport.eu/adfs/services/trust`
 
-    Egyesült államokbeli adatközpont:`https://sso.skillport.com`
+    Egyesült államokbeli adatközpont: `https://sso.skillport.com`
 
     c. A **Válasz URL-cím** szövegmezőbe írja be az URL-címet:
 
-    EU-adatközpont:`https://adfs.skillport.eu/adfs/ls/`
+    EU-adatközpont: `https://adfs.skillport.eu/adfs/ls/`
 
-      Egyesült államokbeli adatközpont:`https://sso.skillport.com/sp/ACS.saml2`
+      Egyesült államokbeli adatközpont: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -159,12 +155,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

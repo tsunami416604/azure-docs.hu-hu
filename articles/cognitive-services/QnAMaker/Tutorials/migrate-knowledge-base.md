@@ -3,12 +3,12 @@ title: Tudásbázisok migrálása – QnA Maker
 description: A Tudásbázis áttelepítéséhez az egyik Tudásbázisból kell exportálni, majd importálni egy másikba.
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343088"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542921"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Tudásbázis migrálása export-import használatával
 
@@ -22,7 +22,7 @@ A Tudásbázis áttelepítéséhez egy meglévő Tudásbázisból kell exportál
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Mielőtt elkezdené, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Mielőtt elkezdené, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) .
 * Új [QnA Maker szolgáltatás](../How-To/set-up-qnamaker-service-azure.md) beállítása
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Tudásbázis migrálása a QnA Makerból
@@ -67,7 +67,7 @@ Kis-és nagybetűket nem megkülönböztető változtatások (szinonimák) nem l
 
 A csevegési naplók nem telepíthetők át, mivel az új Tudásbázis Application Insightst használ a csevegési naplók tárolásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-To/edit-knowledge-base.md)

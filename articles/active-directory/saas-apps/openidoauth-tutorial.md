@@ -2,27 +2,22 @@
 title: OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből | Microsoft Docs
 description: Az OpenID/OAuth alkalmazás Azure AD-katalógusból történő konfigurálásának lépései.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610989"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543924"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből
 
@@ -32,7 +27,7 @@ ms.locfileid: "82610989"
 
     ![A Azure Active Directory gomb](common/select-azuread.png))
 
-2. Nyissa meg a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -72,7 +67,7 @@ A felhasználó vagy a rendszergazda megadhatja az alkalmazásnak. A belefoglalt
 > [!NOTE]
 > Ha az alkalmazást több címtárban is elérhetővé teszi a felhasználók számára, szüksége lesz egy olyan mechanizmusra, amely meghatározza, hogy melyik bérlőn belül van. Az egybérlős alkalmazásoknak csak a saját címtárában kell megkeresniük a felhasználókat. Egy több-bérlős alkalmazásnak azonosítania kell egy adott felhasználót az Azure AD összes könyvtárában.
 >
-> A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, amelyben bármely több-bérlős alkalmazás képes a bejelentkezési kérelmeket a bérlő-specifikus végpont helyett. Ez a végpont `https://login.microsoftonline.com/common` az Azure ad összes könyvtára számára elérhető. A bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com`.
+> A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, amelyben bármely több-bérlős alkalmazás képes a bejelentkezési kérelmeket a bérlő-specifikus végpont helyett. Ez a végpont az `https://login.microsoftonline.com/common` Azure ad összes könyvtára számára elérhető. A bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com` .
 >
 > A közös végpontot fontos figyelembe venni az alkalmazás fejlesztésekor. A bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára lesz szüksége.
 
@@ -138,12 +133,12 @@ A normál felhasználók bizonyos engedélyekkel rendelkezhetnek. A többi enged
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>A rendszergazdai beleegyezés és a felhasználói beleegyezés közötti különbség
 
-Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a megjelenő párbeszédpanel minden felhasználó számára megjelenjen a bérlőben. A rendszergazdai szerepkörrel rendelkező felhasználók hozzájárulnak a Azure Portal. Az alkalmazás **Beállítások** lapján válassza a**rendszergazdai jóváhagyás** **szükséges engedélyek** > megadása lehetőséget.
+Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a megjelenő párbeszédpanel minden felhasználó számára megjelenjen a bérlőben. A rendszergazdai szerepkörrel rendelkező felhasználók hozzájárulnak a Azure Portal. Az alkalmazás **Beállítások** lapján válassza a rendszergazdai jóváhagyás **szükséges engedélyek**  >  **megadása**lehetőséget.
 
 ![Engedélyek megadása gomb](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> A ADAL. js-t használó egyoldalas alkalmazásokhoz (Gyógyfürdők) mostantól meg kell adni a kifejezett beleegyezést a **Grant admin jóváhagyása** gomb használatával. Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
+> A kifejezett beleegyezés megadása a **rendszergazdai jóváhagyás megadása** gomb megadásával megtörténik a ADAL.jst használó egylapos alkalmazások (SPAs) használata. Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
 Csak az alkalmazásra vonatkozó engedélyek szükségesek a bérlői rendszergazda beleegyezni. Ha az alkalmazás csak alkalmazásra vonatkozó engedélyt kér, és egy felhasználó megpróbál bejelentkezni az alkalmazásba, hibaüzenet jelenik meg. Az üzenet azt mondja, hogy a felhasználó nem tud beleegyezni.
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Brightidea-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Brightidea között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3adae3e0-f43b-492f-b373-6a512d2d6046
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff89f7323ba4cdf14ed1c052b2dd4e4e06356e00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157616"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542802"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Oktatóanyag: Azure Active Directory integráció a Brightidea
 
@@ -33,7 +28,7 @@ A Brightidea és az Azure AD integrálásával a következő előnyöket nyújtj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -126,7 +121,7 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
     ![image](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.brightidea.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.brightidea.com`
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -146,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
 1. Egy másik böngészőablakban jelentkezzen be a Brightidea-be a rendszergazdai hitelesítő adatok használatával.
 
-2. A Brightidea-rendszeren lévő egyszeri bejelentkezés funkció beszerzéséhez navigáljon a **vállalati beállítási** -> **hitelesítés lapra**. Itt két allapot láthat: auth Selection & SAML-profilok.
+2. A Brightidea-rendszeren lévő egyszeri bejelentkezés funkció beszerzéséhez navigáljon a **vállalati beállítási**  ->  **hitelesítés lapra**. Itt két allapot láthat: auth Selection & SAML-profilok.
 
     ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure1.png)
 
@@ -164,16 +159,16 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
     
     ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure4.png)
     
-   * Adja meg az **SAML-profil nevét** , például:`Azure Ad SSO`
+   * Adja meg az **SAML-profil nevét** , például: `Azure Ad SSO`
     
    * A **metaadatok feltöltéséhez**kattintson a fájl kiválasztása lehetőségre, és töltse fel a letöltött metaadat-fájlt a Azure Portal.
 
      > [!NOTE]
      > A metaadat-fájl feltöltése után a rendszer automatikusan feltölti a többi mezőt az **egyszeri bejelentkezési szolgáltatás, az Identity Provider kiállítója, a nyilvános kulcs feltöltése** .
 
-   * Az **e-mail** szövegmezőbe írja be az értéket a `mail`következőképpen:.
+   * Az **e-mail** szövegmezőbe írja be az értéket a következőképpen: `mail` .
      
-   * A **képernyő neve** szövegmezőbe írja be az értéket `givenName`.
+   * A **képernyő neve** szövegmezőbe írja be az értéket `givenName` .
      
    * Kattintson a **Save Changes** (Módosítások mentése) gombra.  
 
@@ -195,12 +190,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain. Extension nevet.**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension nevet.**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

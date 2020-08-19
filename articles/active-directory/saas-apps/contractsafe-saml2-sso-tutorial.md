@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ContractSafe egy saml2 SSO-val | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a ContractSafe egy saml2 SSO között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9d8c9eba-6a90-4c8f-b387-a6ead4af00af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9459d13e8943f7e9177d2ad493873257f46f6649
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77185619"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544383"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a ContractSafe egy saml2 SSO-val
 
@@ -80,9 +76,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő értékeket a megfelelő mezőkben:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő formátum használatával:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő formátum használatával: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő formátum használatával:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő formátum használatával: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot a [ContractSafe egy SAML2 SSO-ügyfél támogatási csapatával](mailto:support@contractsafe.com) az értékek lekéréséhez. A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
@@ -93,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. Az alapértelmezett attribútumok mellett a ContractSafe egy saml2 SSO-alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. Ezek az attribútumok előre ki vannak töltve, de a követelmények szerint áttekinthetők. Az alábbi listában a további attribútumok láthatók.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------------- |
     | EmailName | User. userPrincipalName |
     | e-mail | User. onpremisesuserprincipalname |
@@ -148,9 +144,9 @@ Hozzon létre egy B. Simon nevű felhasználót a ContractSafe egy saml2 SSO-ban
 
 Tesztelje Azure AD SSO-konfigurációját a hozzáférési panel használatával. Amikor kiválasztja a ContractSafe egy saml2 SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a ContractSafe egy saml2 SSO-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

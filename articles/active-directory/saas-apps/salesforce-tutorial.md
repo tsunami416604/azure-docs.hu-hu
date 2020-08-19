@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Salesforce | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Salesforce között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7228f4fbf348b8112654ece91aa5e9e831ac1201
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849161"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Salesforce
 
@@ -90,21 +86,21 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL** szövegmezőbe írja be az értéket a következő minta használatával:
 
-    Vállalati fiók:`https://<subdomain>.my.salesforce.com`
+    Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
-    Fejlesztői fiók:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
     
     b. A **Válasz URL-címe** szövegmezőbe írja be az értéket a következő minta használatával:
 
-    Vállalati fiók:`https://<subdomain>.my.salesforce.com`
+    Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
-    Fejlesztői fiók:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     c. Az **azonosító** szövegmezőbe írja be az értéket a következő minta használatával:
 
-    Vállalati fiók:`https://<subdomain>.my.salesforce.com`
+    Vállalati fiók: `https://<subdomain>.my.salesforce.com`
 
-    Fejlesztői fiók:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Fejlesztői fiók: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Salesforce ügyfélszolgálati [csapatához](https://help.salesforce.com/support) .
@@ -127,7 +123,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

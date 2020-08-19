@@ -2,24 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció a tabló online-nal | Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a tabló online között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d4b1149-ba3b-4f4e-8bce-9791316b730d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 187600edb599f5a5775e1b847ed1cb3a49f3b827
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76985577"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542517"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló online-nal
 
@@ -92,12 +89,12 @@ Az Azure AD egyszeri bejelentkezés a tabló Online szolgáltatással való konf
 
     ![A tabló online tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
-    > Ebben az oktatóanyagban `<entityid>` megjelenik az érték a **tabló online beállítása** szakaszban. Az entitás-azonosító érték az **Azure ad-azonosító** érték lesz a **tabló online beállítása** szakaszban.
+    > `<entityid>`Ebben az oktatóanyagban megjelenik az érték a **tabló online beállítása** szakaszban. Az entitás-azonosító érték az **Azure ad-azonosító** érték lesz a **tabló online beállítása** szakaszban.
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -131,12 +128,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
-    Például: BrittaSimon\@contoso.com
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
+    Például: BrittaSimon \@ contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -198,7 +195,7 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
     f. Az e-mailek és a vezetéknév névteri értékeinek másolásához ismételje meg a fenti lépéseket.
 
-    g. Váltson a tabló online alkalmazásra, majd állítsa be a **felhasználói attribútumok & jogcímek** szakaszt a következőképpen:
+    : Váltson a tabló online alkalmazásra, majd állítsa be a **felhasználói attribútumok & jogcímek** szakaszt a következőképpen:
 
     * **E-mail: e-mail** vagy **userPrincipalName**
 
@@ -216,7 +213,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a tabló onl
   
     ![Azure AD-tesztkörnyezet létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Válassza **a felhasználók hozzáadása (SAML) hitelesítés**lehetőséget. Az **e-mail címek megadása** szövegmezőben adja hozzá a Britta\@. Simon contoso.com
+2. Válassza **a felhasználók hozzáadása (SAML) hitelesítés**lehetőséget. Az **e-mail címek megadása** szövegmezőben adja hozzá a Britta. Simon \@ contoso.com
   
     ![Azure AD-tesztkörnyezet létrehozása](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 

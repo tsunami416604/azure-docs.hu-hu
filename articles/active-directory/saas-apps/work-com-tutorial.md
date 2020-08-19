@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Work.com-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Work.com között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 98e6739e-eb24-46bd-9dd3-20b489839076
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087083"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Oktatóanyag: Azure Active Directory integráció a Work.com
 
@@ -33,7 +28,7 @@ A Work.com és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
     ![Work.com tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://<companyname>.my.salesforce.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `http://<companyname>.my.salesforce.com`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Work.com ügyfélszolgálati [csapatához](https://help.salesforce.com/articleView?id=000159855&type=3) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -134,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 2. Nyissa meg a **telepítőt**.
    
-    ![Telepítés](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Beállítás](./media/work-com-tutorial/ic794108.png "Telepítés")
 
 3. A bal oldali navigációs ablaktábla **felügyelet** szakaszában kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
    
@@ -148,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 6. Nyissa meg a **telepítőt**.
     
-    ![Telepítés](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Beállítás](./media/work-com-tutorial/ic794108.png "Telepítés")
 
 7. Bontsa ki a **biztonsági vezérlők** menüt, majd kattintson az **egyszeri bejelentkezés beállításai**elemre.
     
@@ -175,19 +170,19 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
     
     c. A letöltött tanúsítvány Azure Portalból való feltöltéséhez kattintson a **Tallózás**gombra.
     
-    d. Az **entitás-azonosító** szövegmezőbe írja `https://salesforce-work.com`be a következőt:.
+    d. Az **entitás-azonosító** szövegmezőbe írja be a következőt: `https://salesforce-work.com` .
     
     e. **SAML-identitás típusaként**válassza **az érvényesítés az összevonási azonosítót tartalmazza a felhasználói objektumból**lehetőséget.
     
     f. **SAML-identitás helyeként**válassza az **identitás elemet a tulajdonos utasítás NameIdentfier elemében**.
     
-    g. Az **Identity Provider bejelentkezési URL-címe** szövegmezőben illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
+    : Az **Identity Provider bejelentkezési URL-címe** szövegmezőben illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
     h. Az **Identity Provider kijelentkezési URL-címe** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
     
     i. Ha a **szolgáltató kezdeményezte a kérelem kötését**, válassza a **http post**lehetőséget.
     
-    j. Kattintson a **Save** (Mentés) gombra.
+    j. Kattintson a **Mentés** gombra.
 
 10. A Work.com klasszikus portál bal oldali navigációs paneljén kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
     
@@ -219,11 +214,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -261,9 +256,9 @@ Ahhoz Azure Active Directory, hogy a felhasználók bejelentkezhetnek, a Work.co
 
 2. Nyissa meg a **telepítőt**.
    
-    ![Telepítés](./media/work-com-tutorial/IC794108.png "Telepítés")
+    ![Beállítás](./media/work-com-tutorial/IC794108.png "Telepítés")
 
-3. Nyissa meg a **felhasználók \> kezelése**lehetőséget.
+3. Nyissa meg a **felhasználók kezelése \> **lehetőséget.
    
     ![Felhasználók kezelése](./media/work-com-tutorial/IC784369.png "Felhasználók kezelése")
 
@@ -281,15 +276,15 @@ Ahhoz Azure Active Directory, hogy a felhasználók bejelentkezhetnek, a Work.co
     
     c. Az **alias** szövegmezőbe írja be a felhasználó **BrittaS** **nevét** .
     
-    d. Az **e-mail** szövegmezőbe írja be a felhasználó Brittasimon@contoso.com **e-mail-címét** .
+    d. Az **e-mail** szövegmezőbe írja be a felhasználó **e-mail-címét** Brittasimon@contoso.com .
     
-    e. A **Felhasználónév** szövegmezőbe írja be a felhasználó nevét, például Brittasimon@contoso.com:.
+    e. A **Felhasználónév** szövegmezőbe írja be a felhasználó nevét, például: Brittasimon@contoso.com .
     
     f. A **Nick neve** szövegmezőbe írja be a **Simon**felhasználó **nick-nevét** .
     
-    g. Válassza a **szerepkör**, a **felhasználói licenc**és a **profil**lehetőséget.
+    : Válassza a **szerepkör**, a **felhasználói licenc**és a **profil**lehetőséget.
     
-    h. Kattintson a **Save** (Mentés) gombra.  
+    h. Kattintson a **Mentés** gombra.  
       
     > [!NOTE]
     > Az Azure AD-fiók tulajdonosa egy e-mailt kap, amely tartalmazza a fiók megerősítését, mielőtt az aktívvá válna.

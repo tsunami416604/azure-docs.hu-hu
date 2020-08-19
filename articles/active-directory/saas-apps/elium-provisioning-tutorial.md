@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: a Elium konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Elium.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058464"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544230"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Elium konfigurálása
 
@@ -120,7 +116,7 @@ Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Elium**lehetőséget.
 

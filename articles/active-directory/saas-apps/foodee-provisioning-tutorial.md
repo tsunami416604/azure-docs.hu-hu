@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása Azure Active Directory használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a Foodee felhasználói fiókjait.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057813"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544183"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása
 
@@ -130,7 +126,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![Az értesítő E-mail szövegmező](common/provisioning-notification-email.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A **leképezések**területen válassza **a Azure Active Directory felhasználók szinkronizálása a Foodee**lehetőséget.
 

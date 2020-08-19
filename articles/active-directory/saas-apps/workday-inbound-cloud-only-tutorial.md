@@ -3,23 +3,19 @@ title: 'Oktatóanyag: a munkanap bejövő kiépítés konfigurálása a Azure Ac
 description: Megtudhatja, hogyan konfigurálhatja a beérkező kiépítés a munkanapokból az Azure AD-be
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041812"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540966"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
 Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző adatok munkanapokból Azure Active Directoryba való kiépítéséhez szükséges lépéseket. 
@@ -111,7 +107,7 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
 8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
-   * **Munkanap felhasználóneve** – adja meg a munkanap-integrációs rendszer fiókjának felhasználónevét a bérlői tartománynév hozzáfűzésével. Valahogy így kell kinéznie:username@contoso4
+   * **Munkanap felhasználóneve** – adja meg a munkanap-integrációs rendszer fiókjának felhasználónevét a bérlői tartománynév hozzáfűzésével. Valahogy így kell kinéznie: username@contoso4
 
    * **Munkanap jelszava –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
@@ -199,7 +195,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 

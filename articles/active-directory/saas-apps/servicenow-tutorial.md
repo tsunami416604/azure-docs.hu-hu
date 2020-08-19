@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ServiceNow között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507709"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540215"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow
 
@@ -98,9 +94,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. A **bejelentkezési URL-cím**mezőben adjon meg egy URL-címet, amely a következő mintát használja:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    a. A **bejelentkezési URL-cím**mezőben adjon meg egy URL-címet, amely a következő mintát használja: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
-    b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet, amely a következő mintát használja:`https://<instance-name>.service-now.com`
+    b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet, amely a következő mintát használja: `https://<instance-name>.service-now.com`
 
     c. A **Válasz URL-cím**mezőben adja meg a következő URL-cím egyikét:
 
@@ -170,9 +166,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. A **bejelentkezési URL-cím**mezőben adjon meg egy URL-címet, amely a következő mintát használja:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    a. A **bejelentkezési URL-cím**mezőben adjon meg egy URL-címet, amely a következő mintát használja: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
-    b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet, amely a következő mintát használja:`https://<instance-name>.service-now.com`
+    b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet, amely a következő mintát használja: `https://<instance-name>.service-now.com`
 
     c. A **Válasz URL-cím**mezőben adja meg a következő URL-cím egyikét:
 
@@ -292,11 +288,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
              ![Képernyőkép az oldalról, a tesztelési kapcsolatok kiemelésével](./media/servicenow-tutorial/tutorial_activate2.png "Beépülő modul aktiválása")
 
              > [!NOTE]
-             > Ha a teszt-kapcsolódás sikertelen, és nem tudja aktiválni ezt a kapcsolódást, akkor a ServiceNow a felülbírálás kapcsolót is biztosítja. Sys_properties kell megadnia **. **Megjelenik a **Keresés navigációs sávon** , és megnyílik a Rendszertulajdonságok új lapja. Itt létre kell hoznia egy olyan új tulajdonságot, amelynek a neve **Glide. hitelesítés. multisso. test.** retesze. kötelező az **adattípus** értéke **TRUE/FALSE** , majd állítsa be az értéket **hamis** **értékre** .
+             > Ha a teszt-kapcsolódás sikertelen, és nem tudja aktiválni ezt a kapcsolódást, akkor a ServiceNow a felülbírálás kapcsolót is biztosítja. Sys_properties kell megadnia **. ** Megjelenik a **Keresés navigációs sávon** , és megnyílik a Rendszertulajdonságok új lapja. Itt létre kell hoznia egy olyan új tulajdonságot, amelynek a neve **Glide. hitelesítés. multisso. test.** retesze. kötelező az **adattípus** értéke **TRUE/FALSE** , majd állítsa be az értéket **hamis** **értékre** .
 
              > ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/testconnection-fail.png "Egyszeri bejelentkezés konfigurálása")
         
-          1. Ha a rendszer kéri a hitelesítő adatait, adja meg őket. A következő oldal jelenik meg. Az **SSO-Kijelentkezési A teszt eredményei** hibát várt. Hagyja figyelmen kívül a hibát, és kattintson az **aktiválás**gombra.
+          1. Ha a rendszer kéri a hitelesítő adatait, adja meg őket. A következő oldal jelenik meg. Az **SSO-Kijelentkezési A teszt eredményei** hibát várt. Hagyja figyelmen kívül a hibát, és kattintson az  **aktiválás**gombra.
 
              ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/servicenowactivate.png "Egyszeri bejelentkezés konfigurálása")
   
@@ -349,11 +345,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
         * Válassza az oldal jobb felső sarkában található **kapcsolatok tesztelése** lehetőséget.
 
           > [!NOTE]
-          > Ha a teszt-kapcsolódás sikertelen, és nem tudja aktiválni ezt a kapcsolódást, akkor a ServiceNow a felülbírálás kapcsolót is biztosítja. Sys_properties kell megadnia **. **Megjelenik a **Keresés navigációs sávon** , és megnyílik a Rendszertulajdonságok új lapja. Itt létre kell hoznia egy olyan új tulajdonságot, amelynek a neve **Glide. hitelesítés. multisso. test.** retesze. kötelező az **adattípus** értéke **TRUE/FALSE** , majd állítsa be az értéket **hamis** **értékre** .
+          > Ha a teszt-kapcsolódás sikertelen, és nem tudja aktiválni ezt a kapcsolódást, akkor a ServiceNow a felülbírálás kapcsolót is biztosítja. Sys_properties kell megadnia **. ** Megjelenik a **Keresés navigációs sávon** , és megnyílik a Rendszertulajdonságok új lapja. Itt létre kell hoznia egy olyan új tulajdonságot, amelynek a neve **Glide. hitelesítés. multisso. test.** retesze. kötelező az **adattípus** értéke **TRUE/FALSE** , majd állítsa be az értéket **hamis** **értékre** .
 
           > ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/testconnection-fail.png "Egyszeri bejelentkezés konfigurálása")
 
-        * Ha a rendszer kéri a hitelesítő adatait, adja meg őket. A következő oldal jelenik meg. Az **SSO-Kijelentkezési A teszt eredményei** hibát várt. Hagyja figyelmen kívül a hibát, és kattintson az **aktiválás**gombra.
+        * Ha a rendszer kéri a hitelesítő adatait, adja meg őket. A következő oldal jelenik meg. Az **SSO-Kijelentkezési A teszt eredményei** hibát várt. Hagyja figyelmen kívül a hibát, és kattintson az  **aktiválás**gombra.
 
           ![A teszt eredményei lap képernyőképe](./media/servicenow-tutorial/servicenowactivate.png "Egyszeri bejelentkezés konfigurálása")
 

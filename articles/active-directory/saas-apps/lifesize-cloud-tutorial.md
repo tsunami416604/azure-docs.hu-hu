@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a életnagyságú-felhővel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a életnagyságú-felhő között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a41fe75975537a54ae142034f74a613731736525
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051263"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Oktatóanyag: Azure Active Directory integráció a életnagyságú-felhővel
 
@@ -111,13 +106,13 @@ Az Azure AD egyszeri bejelentkezés a életnagyságú-felhővel való konfigurá
 
     ![Életnagyságú felhőalapú tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-relay.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.lifesizecloud.com/ls/?acs`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://login.lifesizecloud.com/<companyname>`
+    b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.lifesizecloud.com/<companyname>`
 
     c. Kattintson a **további URL-címek beállítása**elemre.
 
-    d. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet:`https://webapp.lifesizecloud.com/?ent=<identifier>`
+    d. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és továbbítási állapottal. Vegye fel a kapcsolatot a [életnagyságú felhőalapú](https://www.lifesize.com/en/support) ügyfélszolgálatával a bejelentkezési URL-cím és az azonosító értékek beszerzéséhez, és a továbbítási állapot értékének beolvasása az oktatóanyag későbbi részében ismertetett SSO-konfigurációból. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -158,11 +153,11 @@ Az Azure AD egyszeri bejelentkezés a életnagyságú-felhővel való konfigurá
 
     c. Nyissa meg az alap-64 kódolású tanúsítványt a Jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
   
-    d. Az SAML attribútum-hozzárendelések az utónév szövegmezőbe mezőben adja meg az értéket`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    d. Az SAML attribútum-hozzárendelések az utónév szövegmezőbe mezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    e. Az SAML attribútum a **vezetéknévhez** való leképezése mezőben adja meg az értéket`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    e. Az SAML attribútum a **vezetéknévhez** való leképezése mezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    f. Az **e-mail** -szövegmezőhöz tartozó SAML-attribútumhoz adja meg az értéket`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    f. Az **e-mail** -szövegmezőhöz tartozó SAML-attribútumhoz adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
 5. A konfiguráció ellenőrzéséhez kattintson a **teszt** gombra.
 
@@ -196,7 +191,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

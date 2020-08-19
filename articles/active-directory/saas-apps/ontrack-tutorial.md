@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a OnTrack-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és OnTrack között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2cafba2-3b4a-4471-ba34-80f6a96ff2b9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 371ad2a8530de7b20427327d939bf164d871ab74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944040"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Oktatóanyag: Azure Active Directory integráció a OnTrack
 
@@ -32,7 +28,7 @@ A OnTrack és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,15 +103,15 @@ Az Azure AD egyszeri bejelentkezés OnTrack való konfigurálásához hajtsa vé
 
     a. Az **azonosító** szövegmezőben:
 
-    A tesztelési környezethez írja be az URL-címet:`https://staging.insigniagroup.com/sso`
+    A tesztelési környezethez írja be az URL-címet: `https://staging.insigniagroup.com/sso`
 
-    Az éles környezethez írja be az URL-címet:`https://oeaccessories.com/sso`
+    Az éles környezethez írja be az URL-címet: `https://oeaccessories.com/sso`
 
     b. A **Válasz URL-cím** szövegmezőben:
 
-    A tesztelési környezethez írja be az URL-címet:`https://indie.staging.insigniagroup.com/sso/autonation.aspx`
+    A tesztelési környezethez írja be az URL-címet: `https://indie.staging.insigniagroup.com/sso/autonation.aspx`
 
-    Az éles környezethez írja be az URL-címet:`https://igaccessories.com/sso/autonation.aspx`
+    Az éles környezethez írja be az URL-címet: `https://igaccessories.com/sso/autonation.aspx`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Ontrack ügyfélszolgálati [csapatához](mailto:CustomerService@insigniagroup.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -126,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés OnTrack való konfigurálásához hajtsa vé
 
 6. A fentieken kívül a OnTrack alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | -------------- | ----------------|    
     | Felhasználói szerepkör      | "42F432" |
     | Hyperion-kód  | "12345" |
@@ -150,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés OnTrack való konfigurálásához hajtsa vé
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -188,12 +184,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a AirWatch-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és AirWatch között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74231993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542819"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Oktatóanyag: a AirWatch és a Azure Active Directory integrálása
 
@@ -80,9 +75,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
-    1. Az **azonosító (Entity ID)** szövegmezőbe írja be az értéket a következőként:`AirWatch`
+    1. Az **azonosító (Entity ID)** szövegmezőbe írja be az értéket a következőként: `AirWatch`
 
     > [!NOTE]
     > Ez az érték nem az igazi. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [AirWatch](https://www.air-watch.com/company/contact-us/) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -93,7 +88,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     |---------------|----------------|
     | UID | User. userPrincipalName |
     | | |
@@ -110,7 +105,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Kattintson **az OK** gombra
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a metaadatok XML-kódjának letöltéséhez, majd mentse azt a számítógépre.
 
@@ -160,7 +155,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     d. A **hitelesítési kérések biztonsága**lehetőségnél válassza a **nincs**lehetőséget.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 1. Kattintson ismét a **felhasználó** lapra.
 
@@ -170,19 +165,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Attribútum](./media/airwatch-tutorial/ic791927.png "Attribútum")
 
-    a. Az **objektumazonosító** szövegmezőbe írja be a `http://schemas.microsoft.com/identity/claims/objectidentifier`következőt:.
+    a. Az **objektumazonosító** szövegmezőbe írja be a következőt: `http://schemas.microsoft.com/identity/claims/objectidentifier` .
 
-    b. A **Felhasználónév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`a következőt:.
+    b. A **Felhasználónév** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    c. A **megjelenítendő név** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`a következőt:.
+    c. A **megjelenítendő név** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    d. A **Utónév** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`következőt:.
+    d. A **Utónév** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    e. A **vezetéknév** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`következőt:.
+    e. A **vezetéknév** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
-    f. Az **e-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`a következőt:.
+    f. Az **e-mail** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -192,9 +187,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -236,7 +231,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ai
 
    a. Írja be a **felhasználónevet**, a **jelszót**, a **Jelszó megerősítése**, az **utónév**, a **vezetéknév**, az érvényes Azure Active Directory fiók **e-mail-címét** a kapcsolódó szövegmezőbe.
 
-   b. Kattintson a **Save** (Mentés) gombra.
+   b. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a AirWatch által biztosított AirWatch felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
@@ -245,7 +240,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ai
 
 Amikor kiválasztja a AirWatch csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a AirWatch, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

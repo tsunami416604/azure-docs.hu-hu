@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Peakon-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Peakon között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a944c397-ed3f-4d45-b9b2-6d4bcb6b0a09
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 94f8e80c7c5cb13646fbd284f2a2d7b2f6308614
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7e385b40911e1adf4e5142de4fb627334baee4a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017157"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Oktatóanyag: Azure Active Directory integráció a Peakon
 
@@ -108,15 +104,15 @@ Az Azure AD egyszeri bejelentkezés Peakon való konfigurálásához hajtsa vég
 
     ![Peakon tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.peakon.com/saml/<companyid>/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.peakon.com/saml/<companyid>/metadata`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.peakon.com/saml/<companyid>/assert`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.peakon.com/saml/<companyid>/assert`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Peakon tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.peakon.com/login`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.peakon.com/login`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével, amelyet az oktatóanyag későbbi részében ismertet. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -165,7 +161,7 @@ Az Azure AD egyszeri bejelentkezés Peakon való konfigurálásához hajtsa vég
 
     e. Kattintson a **ikonra** a **Válasz URL-cím (ACS)** másolásához, majd illessze be a **Válasz URL-címe** SZÖVEGMEZŐbe az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
 
-    f. Kattintson a **Mentés** gombra
+    f. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -185,12 +181,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:**brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
