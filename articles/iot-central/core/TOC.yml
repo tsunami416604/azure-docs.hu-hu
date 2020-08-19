@@ -121,6 +121,8 @@
           href: howto-create-custom-analytics.md
         - name: Adatok vizualizációja a Power BI-ban
           href: howto-connect-powerbi.md
+        - name: Fájlfeltöltések konfigurálása és használata
+          href: howto-configure-file-uploads.md
     - name: Felügyelet
       items:
         - name: Az alkalmazás felügyelete

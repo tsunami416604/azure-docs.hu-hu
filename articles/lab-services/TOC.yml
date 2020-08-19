@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: Kapacitási korlátok
       href: capacity-limits.md
+    - name: Cost Management tesztkörnyezetekhez
+      href: cost-management-guide.md
     - name: Forgatókönyvek
       items:
         - name: Lab Services használata tanórák lebonyolításához
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: Tesztkörnyezetek kezelése tesztkörnyezeti fiókban
           href: manage-labs.md
-        - name: A virtuális gépek automatikus leállításának konfigurálása
+        - name: Virtuális gépek automatikus leállításának konfigurálása tesztkörnyezeti fiók számára
           href: how-to-configure-lab-accounts.md
         - name: Tesztkörnyezet létrehozójának hozzáadása
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: Támogatási információk megadása (tesztkörnyezetfiók tulajdonosa)
           href: lab-account-owner-support-information.md
-        - name: Cost Management tesztkörnyezetekhez
-          href: cost-management-guide.md
     - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
       items:
         - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: Távoli asztali kapcsolat engedélyezése Linuxon
           href: how-to-enable-remote-desktop-linux.md
-        - name: Automatikus leállítás engedélyezése a kapcsolat bontásakor
+        - name: Virtuális gépek automatikus leállításának konfigurálása tesztkörnyezet számára
           href: how-to-enable-shutdown-disconnect.md
         - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
           items:

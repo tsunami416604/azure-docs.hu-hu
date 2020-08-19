@@ -6,6 +6,11 @@
       href: overview.md
     - name: Támogatott adattárak
       href: supported-data-stores.md
+- name: Rövid útmutatók
+  items:
+    - name: Adatmegosztás létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: Oktatóanyagok
   expanded: true
   items:

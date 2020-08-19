@@ -58,10 +58,10 @@
               href: connect-azure-security-center.md
             - name: Azure Security Center for IoT
               href: connect-asc-iot.md
+            - name: Azure-beli webalkalmazási tűzfal (WAF)
+              href: connect-azure-waf.md
             - name: Tartományi névkiszolgáló
               href: connect-dns.md
-            - name: Azure-beli webalkalmazási tűzfal
-              href: connect-azure-waf.md
             - name: Windows tűzfal
               href: connect-windows-firewall.md
             - name: A Windows biztonsági eseményei

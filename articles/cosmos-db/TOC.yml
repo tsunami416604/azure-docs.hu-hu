@@ -1265,9 +1265,11 @@
           href: sql-api-sdk-async-java.md
         - name: Sync Java SDK v2
           href: sql-api-sdk-java.md
-        - name: Spring Data-összekötő SQL API-hoz
-          href: sql-api-sdk-java-spring.md
-        - name: Spark-összekötő SQL API-hoz
+        - name: Spring Data-összekötő v2
+          href: sql-api-sdk-java-spring-v2.md
+        - name: Spring Data-összekötő v3
+          href: sql-api-sdk-java-spring-v3.md
+        - name: Spark-összekötő
           href: sql-api-sdk-java-spark.md
         - name: Java tömeges végrehajtói kódtár v2
           href: sql-api-sdk-bulk-executor-java.md

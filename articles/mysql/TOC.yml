@@ -28,6 +28,12 @@
           href: connect-php.md
         - name: Java
           href: connect-java.md
+        - name: Java és Spring Data JDBC
+          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: Java és Spring Data JPA
+          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: Java és Spring Data R2DBC
+          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
         - name: .NET
           href: connect-csharp.md
         - name: Python
@@ -150,10 +156,14 @@
           href: concepts-aks.md
         - name: Java
           items:
-            - name: A Spring Data JDBC konfigurálása
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
-            - name: A Spring Data JPA konfigurálása
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
+            - name: A Java és a JDBC használata
+              href: connect-java.md
+            - name: A Spring Data JDBC használata
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: A Spring Data JPA használata
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: A Spring Data R2DBC használata
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
     - name: Replikáció
       items:
         - name: Beérkező adatokra épülő replikáció

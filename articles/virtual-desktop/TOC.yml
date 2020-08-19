@@ -116,6 +116,14 @@
       href: faq.md
     - name: A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
       href: windows-10-multisession-faq.md
+    - name: MSIX-alkalmazás csatolása
+      items:
+        - name: Mit jelent az MSIX-alkalmazás csatolása?
+          href: what-is-app-attach.md
+        - name: Szószedet
+          href: app-attach-glossary.md
+        - name: GYIK
+          href: app-attach-faq.md
     - name: Adatok helye
       href: data-locations.md
 - name: Hibaelhárítás
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure parancssori felület (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure-példaforgatókönyvek
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: További források
   items:
     - name: PowerShell

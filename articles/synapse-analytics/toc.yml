@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Adatelemző
       items:
-        - name: A New York-i taxisborravalók előrejelzése
+        - name: Regressziós kísérlet futtatása Azure AutoML használatával
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Besorolási modell létrehozása Apache Spark MLlib használatával
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: Az Apache Spark kiegészítése további kódtárakkal
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: Adatelemző
       items:
         - name: Az igény szerinti SQL használata az elemzéshez és a Synapse Studio használata a vizualizációhoz
@@ -202,8 +202,6 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark-alapelvek
               href: ./spark/apache-spark-concepts.md
-            - name: Futásidejű nyelv- és kódtártámogatás
-              href: ./spark/apache-spark-version-support.md
             - name: Mi az a Delta Lake?
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Az Apache Spark teljesítménye
@@ -212,6 +210,12 @@
               href: ./spark/apache-spark-autoscale.md
         - name: Fejlesztés
           items:
+            - name: Kódtárak
+              items:
+                - name: Kódtárak létrehozása és kezelése
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: Futásidejű nyelv- és kódtártámogatás
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio-jegyzetfüzetek
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: .NET az Apache Sparkhoz

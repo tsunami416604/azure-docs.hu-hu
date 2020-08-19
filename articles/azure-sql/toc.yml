@@ -65,6 +65,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Sebezhetőségi felmérés szabályai
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Biztonságirés-keresések tárolása a tárterületen
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Bejelentkezések, felhasználói fiókok, szerepkörök és engedélyek'
               href: database/logins-create-manage.md
             - name: Azure AD-hitelesítés
@@ -80,6 +82,8 @@
                   href: database/conditional-access-configure.md
                 - name: Szolgáltatásnevek (alkalmazások)
                   href: database/authentication-aad-service-principal.md
+                - name: Címtárolvasók szerepkör
+                  href: database/authentication-aad-directory-readers-role.md
             - name: Transzparens adattitkosítás (TDE)
               items:
                 - name: Áttekintés
@@ -143,12 +147,14 @@
               href: database/long-term-backup-retention-configure.md
         - name: Biztonság
           items:
-            - name: Azure AD-vendégfelhasználók létrehozása és beállítása Azure AD-rendszergazdaként
-              href: database/authentication-aad-guest-users.md
+            - name: Azure AD-hitelesítés
+              items:
+                - name: Azure AD-vendégfelhasználók létrehozása és beállítása Azure AD-rendszergazdaként
+                  href: database/authentication-aad-guest-users.md
+                - name: Címtárolvasók szerepkör hozzárendelése csoportokhoz
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: A TDE konfigurálása BYOK megoldással
               href: database/transparent-data-encryption-byok-configure.md
-            - name: Biztonságirés-keresések tárolása a tárterületen
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Always Encrypted
               items:
                 - name: Az Azure Key Vault használata
@@ -207,12 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: A Java és a JDBC használata
+                  href: database/connect-query-java.md
                 - name: A Spring Data JDBC használata
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: A Spring Data JPA használata
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: A Spring Data R2DBC használata
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: Dokumentáció
@@ -402,11 +410,11 @@
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java és Spring Data JDBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java és Spring Data JPA
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java és Spring Data R2DBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
