@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 1decd57c8389cb826c370d47793b793c24f9e6b8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d5d16181eb4dda08f002587545f99fab757b6b0e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833674"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586426"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 A teljes mintakód elérhető a GitHubon a [kognitív Face csharp minta](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) adattárában.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -53,7 +53,7 @@ Az alábbi lépéseket követve hozzon létre egy új WPF-alkalmazás projektjé
 1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített**, majd a **Visual C#**, majd a **WPF-alkalmazás (.NET-keretrendszer)** elemet.
 1. Adja a **FaceTutorial** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
 1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Ezután keresse meg és telepítse a következő csomagot:
-    - [Microsoft. Azure. CognitiveServices. vízió. Face 2.5.0 – előzetes verzió. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
+    - [Microsoft. Azure. CognitiveServices. vízió. Face 2.6.0 – előzetes verzió. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>Kezdeti kód hozzáadása
 
@@ -128,7 +128,7 @@ Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. V�
 ![Képernyőfelvétel téglalappal bekeretezett arcokról](../Images/getting-started-cs-detected.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta a Face Service .NET SDK használatának alapszintű folyamatát, és létrehozott egy alkalmazást az arcok észleléséhez és a képek keretének megjelenítéséhez. Következő lépésként tekintse meg a Arcfelismerés részletes adatait.
 

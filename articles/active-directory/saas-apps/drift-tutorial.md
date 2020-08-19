@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Driftrel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a drift között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd749ef66ee62f6d89d949cef7ce800bc46d59a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 056b20325b58db74feced67e88157c798214ae70
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72554354"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555767"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-drift"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a drift szolgáltatással
 
@@ -84,15 +79,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
+1. Az **alapszintű SAML-konfigurációs**   szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató**által   kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés**   ) gombra kattintva.
 
     a. Kattintson a **további URL-címek beállítása**elemre.
  
-    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet:`https://app.drift.com` 
+    b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `https://app.drift.com` 
 
     c. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    d. A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://start.drift.com`
+    d. A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet: `https://start.drift.com`
 
 6. A drift-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -100,9 +95,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 7. A fentieken kívül a drift alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket. 
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------------- |    
-    | Name (Név) | felhasználó. DisplayName |
+    | Name | felhasználó. DisplayName |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -120,9 +115,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -154,7 +149,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha manuálisan szeretné beállítani a driftet, nyisson meg egy új böngészőablakot, és jelentkezzen be a drift vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A menüsáv bal oldalán kattintson a **Beállítások ikon** > **alkalmazás-beállítások** > **hitelesítés** elemre, és hajtsa végre a következő lépéseket:
+4. A menüsáv bal oldalán kattintson a **Beállítások ikon**  >  **alkalmazás-beállítások**  >  **hitelesítés** elemre, és hajtsa végre a következő lépéseket:
 
     ![A rendszergazdai hivatkozás](./media/drift-tutorial/tutorial_drift_admin.png)
 
@@ -177,11 +172,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen a drift csempére kattint, automatikusan be kell jelentkeznie arra a Driftre, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

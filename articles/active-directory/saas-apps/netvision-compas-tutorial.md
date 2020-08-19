@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a net Vision Compas | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és net Vision Compas között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a56f44c5-dc08-4c7c-ad20-b6e7127deb2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80520094"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554498"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a net Vision-Compas
 
@@ -84,13 +80,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Saml20`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<TENANT>.compas.cloud/Identity/Saml20`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a net Vision Compas-ügyfélszolgálati [csapatához](mailto:contact@net.vision) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -109,9 +105,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -150,7 +146,7 @@ Ebben a szakaszban engedélyezheti az SAML SSO-t a **net Vision Compas**.
 1. Adjon meg értelmes értékeket a **megjelenítendő név** és a **Leírás** mezőkhöz.
 1. Rendelje hozzá a **net Vision Compas** -felhasználókat a identitásszolgáltató az **elérhető felhasználók** listájának kiválasztásával, majd a **kijelöltek hozzáadása** gombra kattintva. A kiépítési eljárást követve a felhasználókat a IDENTITÁSSZOLGÁLTATÓ is hozzá lehet rendelni.
 1. A **metaadatok** SAML beállításnál kattintson a **Fájl választása** gombra, és válassza ki a korábban mentett metaadat-fájlt a számítógépen.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![IDENTITÁSSZOLGÁLTATÓ szerkesztése](media/netvision-compas-tutorial/idp-edit.png)
 
@@ -159,7 +155,7 @@ Ebben a szakaszban engedélyezheti az SAML SSO-t a **net Vision Compas**.
 
 Ebben a szakaszban egy meglévő felhasználót konfigurál a **net Vision Compas** , hogy az Azure ad-t használja az SSO-hoz.
 1. Kövesse a **net Vision Compas** felhasználói üzembe helyezési eljárást a vállalat által meghatározott módon, vagy szerkesszen egy meglévő felhasználói fiókot.
-1. A felhasználó profiljának meghatározásakor ellenőrizze, hogy a felhasználó E-mail címe **(személyes)** egyezik-e az Azure ad-felhasználónévvel: username@companydomain.extension. Például: `B.Simon@contoso.com`.
+1. A felhasználó profiljának meghatározásakor ellenőrizze, hogy a felhasználó E-mail címe **(személyes)** egyezik-e az Azure ad-felhasználónévvel: username@companydomain.extension . Például: `B.Simon@contoso.com`.
 
     ![Felhasználó szerkesztése](media/netvision-compas-tutorial/user-config.png)
 
@@ -186,11 +182,11 @@ Ha a hozzáférési panelen a net Vision Compas csempére kattint, automatikusan
 
 1. A rendszer átirányítja az Azure AD-ba a hitelesítés elvégzéséhez. A sikeres hitelesítés után automatikusan be kell jelentkeznie arra a net Vision- **Compas** , amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

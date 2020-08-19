@@ -3,12 +3,12 @@ title: OPERÁCIÓSRENDSZER-lemezek titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja az operációs rendszer (OS) lemezeit az ügyfél által felügyelt kulcsokkal Azure DevTest Labsban.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542419"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566199"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Operációs rendszer (OS) lemezek titkosítása az ügyfél által felügyelt kulcsok használatával Azure DevTest Labs
 A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az SSE alapértelmezés szerint automatikusan titkosítja a felügyelt lemezeken tárolt adatait az Azure-ban (az operációs rendszer és az adatlemezek), amikor a felhőben megmarad. További információ az Azure-beli [lemezek titkosításáról](../virtual-machines/windows/disk-encryption.md) . 
@@ -28,12 +28,11 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 1. Ha nem rendelkezik lemezes titkosítási készlettel, akkor az alábbi cikk alapján [állítson be egy Key Vault és egy lemezes titkosítási készletet](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Jegyezze fel a következő követelményeket a lemez titkosítási készletéhez: 
 
     - A lemez titkosítási készletének ugyanabban a **régióban és előfizetésben kell lennie, mint a labornak**. 
-    - Győződjön meg arról, hogy (Lab tulajdonos) rendelkezik **-e legalább olvasó szintű hozzáféréssel** ahhoz a lemezes titkosítási készlethez, amelyet a labor operációsrendszer-lemezek titkosításához fog használni.  
-2. Ahhoz, hogy a labor kezelni tudja az összes Lab operációsrendszer-lemez titkosítását, a labor tulajdonosának explicit módon meg kell adnia a labor **rendszerhez rendelt identitását** a lemez titkosítási készletéhez. A labor tulajdonosa a következő lépések végrehajtásával teheti meg:
+    - Győződjön meg arról, hogy (Lab tulajdonos) rendelkezik **-e legalább olvasó szintű hozzáféréssel** ahhoz a lemezes titkosítási készlethez, amelyet a labor operációsrendszer-lemezek titkosításához fog használni. 
+2. A 8/1/2020-es előtti laborok esetében a labor tulajdonosának biztosítania kell, hogy a labor rendszerhez rendelt identitás engedélyezve legyen. Ehhez **a** labor tulajdonosa megtekintheti a labort, kattintson a **konfiguráció és házirendek**elemre, kattintson az **identitás (előzetes verzió)** panelre, majd a rendszerhez rendelt identitás **állapotának** módosítása elemre, és kattintson a **Mentés**gombra. Az 8/1/2020 labor rendszerhez rendelt identitása után létrehozott új laborok alapértelmezés szerint engedélyezve lesznek. 
+3. Ahhoz, hogy a labor kezelni tudja az összes Lab operációsrendszer-lemez titkosítását, a labor tulajdonosának explicit módon meg kell adnia a tesztkörnyezet **rendszerhez rendelt identitás** -olvasó szerepkörét a lemez titkosítási készletén, valamint a virtuális gépi közreműködő szerepkört a mögöttes Azure-előfizetésben. A labor tulajdonosa a következő lépések végrehajtásával teheti meg:
 
-    > [!IMPORTANT]
-    > Ezeket a lépéseket a 8/1/2020-es vagy azután létrehozott laborok esetében kell végrehajtania. Az adott dátum előtt létrehozott laborokhoz nem szükséges művelet.
-
+   
     1. Győződjön meg arról, hogy tagja a [felhasználói hozzáférés rendszergazdai szerepkörének](../role-based-access-control/built-in-roles.md#user-access-administrator) az Azure-előfizetési szinten, így kezelheti az Azure-erőforrásokhoz való felhasználói hozzáférést. 
     1. A **lemez titkosítási készlete** lapon a bal oldali menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
     1. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron, majd válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.  
@@ -48,9 +47,7 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Szerepkör-hozzárendelés mentése":::
 3. Adja hozzá a labor **rendszerhez rendelt identitását** a **virtuális gép közreműködői** szerepkörhöz az **előfizetés**  ->  **-hozzáférés-vezérlés (iam)** lapon. A lépések hasonlóak az előző lépések lépéseihez. 
 
-    > [!IMPORTANT]
-    > Ezeket a lépéseket a 8/1/2020-es vagy azután létrehozott laborok esetében kell végrehajtania. Az adott dátum előtt létrehozott laborokhoz nem szükséges művelet.
-
+    
     1. Navigáljon a Azure Portal **előfizetés** lapjára. 
     1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget. 
     1. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron, majd kattintson **a szerepkör-hozzárendelés hozzáadása**lehetőségre. 

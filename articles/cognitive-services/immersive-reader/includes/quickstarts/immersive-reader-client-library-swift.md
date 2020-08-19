@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 212aa3613335fe60bab2fa3d4f632577418a7d41
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038364"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602315"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban egy iOS-alkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)egy teljes körű működő minta érhető el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -553,7 +553,7 @@ function sendContentToReader(message) {
 }
 ```
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 Állítsa be az archiválási sémát a Xcode-ben egy szimulátor vagy egy eszköz céljának kiválasztásával.
 

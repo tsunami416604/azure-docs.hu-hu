@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Fieldglass-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Fieldglass között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2510195f-d5b1-4684-b3da-283fb8619df2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a5c405095a3c045a3bf1dd7c62486ffda73825
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 442445bc930408097f213329fad98b84200943ee
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798923"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Oktatóanyag: Azure Active Directory integráció a Fieldglass
 
@@ -33,7 +28,7 @@ A Fieldglass és az Azure AD integrálásával a következő előnyöket nyújtj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés Fieldglass való konfigurálásához hajtsa 
 
     ![Fieldglass tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet, `https://www.fieldglass.com` vagy kövesse a mintát:`https://<company name>.fgvms.com`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet,  `https://www.fieldglass.com` vagy kövesse a mintát: `https://<company name>.fgvms.com`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
@@ -159,7 +154,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

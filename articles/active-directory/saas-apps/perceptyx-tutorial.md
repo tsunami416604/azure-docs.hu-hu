@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Perceptyx-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Perceptyx között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3b542350-0d2a-4213-90a2-b08225a51d86
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fba95add63a0784712b4c5b0d3989ae7b987ffb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 837c1c1a3bac064ddc808c7c083fcaa56e60f210
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67108314"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553886"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>Oktatóanyag: a Perceptyx és a Azure Active Directory integrálása
 
@@ -80,9 +75,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=B`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=B`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=P`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=P`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Perceptyx ügyfélszolgálati [csapatához](mailto:customersupport@perceptyx.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -103,9 +98,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

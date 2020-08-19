@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 82ddba67a6bd9fcc56b74c3f830663228feb945b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009698"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587973"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -110,6 +110,8 @@ A példány létrejöttének ellenőrzéséhez lépjen a Azure Portal [Azure dig
 
 > [!NOTE]
 > Ne felejtse el, hogy a parancsfájl jelenleg hozzárendeli ezt a szükséges szerepkört ugyanahhoz a felhasználóhoz, amely a parancsfájlt a Cloud Shellról futtatja. Ha ezt a szerepkört a példányt kezelő másnak szeretné hozzárendelni, ezt most a Azure Portal ([utasítások](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) vagy a CLI ([utasítások](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) segítségével teheti meg.
+>
+> A portálon vagy a CLI-ben is megadhatja saját szerepkör-hozzárendelését, ha bármilyen probléma merült fel a parancsfájlban.
 
 ### <a name="verify-app-registration"></a>Alkalmazás regisztrációjának ellenőrzése
 

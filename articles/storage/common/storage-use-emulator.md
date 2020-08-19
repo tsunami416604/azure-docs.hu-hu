@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236828"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588194"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
 
@@ -23,12 +23,12 @@ A Microsoft Azure Storage Emulator egy olyan eszköz, amely az Azure Blob-, üze
 
 ## <a name="get-the-storage-emulator"></a>A Storage Emulator beszerzése
 
-A Storage Emulator a [Microsoft Azure SDK](https://azure.microsoft.com/downloads/)részeként érhető el. A Storage emulatort a [különálló telepítő](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (közvetlen letöltés) használatával is telepítheti. A Storage Emulator telepítéséhez rendszergazdai jogosultságokkal kell rendelkeznie a számítógépen.
+A Storage Emulator a [Microsoft Azure SDK](https://azure.microsoft.com/downloads/)részeként érhető el. A Storage Emulatort a [különálló telepítő](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (közvetlen letöltés) használatával is telepítheti. A Storage Emulator telepítéséhez rendszergazdai jogosultságokkal kell rendelkeznie a számítógépen.
 
-A Storage Emulator jelenleg csak Windows rendszeren fut. Ha a Linux rendszerhez készült Storage emulatorra van szüksége, az egyik lehetőség a Közösség által karbantartott, nyílt forráskódú Storage Emulator- [Azurite](https://github.com/azure/azurite).
+A Storage Emulator jelenleg csak Windows rendszeren fut. Ha a Linux rendszerhez készült Storage Emulatorra van szüksége, az egyik lehetőség a Közösség által karbantartott, nyílt forráskódú Storage Emulator- [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
-> A Storage Emulator egyik verziójában létrehozott adatmennyiség nem garantált, hogy más verzió használata esetén nem érhető el. Ha hosszú távon is meg kell őriznie az adatait, javasoljuk, hogy az adatait egy Azure Storage-fiókban tárolja, nem pedig a Storage emulatorban.
+> A Storage Emulator egyik verziójában létrehozott adatmennyiség nem garantált, hogy más verzió használata esetén nem érhető el. Ha hosszú távon is meg kell őriznie az adatait, javasoljuk, hogy az adatait egy Azure Storage-fiókban tárolja, nem pedig a Storage Emulatorban.
 > 
 > A Storage Emulator a OData-kódtárak adott verzióitól függ. A Storage Emulator által más verziókkal használt OData DLL-ek nem támogatottak, és nem várt viselkedést okozhatnak. A tárolási szolgáltatás által támogatott bármely OData azonban a kérelmeknek az emulátorba való küldésére is használható.
 
@@ -57,12 +57,12 @@ Amikor fut az emulátor, egy ikont lát a Windows tálca értesítési terület�
 
 A Storage Emulator parancssori ablakának bezárását követően a Storage Emulator továbbra is futni fog. A Storage Emulator Console ablak újbóli létrehozásához kövesse az előző lépéseket a Storage Emulator elindítása után.
 
-Amikor első alkalommal futtatja a Storage emulatort, a helyi tárolási környezet inicializálva lesz. Az inicializálási folyamat létrehoz egy adatbázist a LocalDB-ben, és minden helyi tárolási szolgáltatáshoz fenntart HTTP-portokat.
+Amikor első alkalommal futtatja a Storage Emulatort, a helyi tárolási környezet inicializálva lesz. Az inicializálási folyamat létrehoz egy adatbázist a LocalDB-ben, és minden helyi tárolási szolgáltatáshoz fenntart HTTP-portokat.
 
 A Storage Emulator alapértelmezés szerint telepítve van `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator` .
 
 > [!TIP]
-> A [Microsoft Azure Storage Explorer](https://storageexplorer.com) használatával dolgozhat a helyi tároló-emulátor erőforrásaival. Miután telepítette és elindította a Storage emulatort, keresse meg a "(Emulator-default ports) (kulcs)" lehetőséget a Storage Explorer erőforrások fájában a "helyi & csatolt" alatt.
+> A [Microsoft Azure Storage Explorer](https://storageexplorer.com) használatával dolgozhat a helyi tároló-emulátor erőforrásaival. Miután telepítette és elindította a Storage Emulatort, keresse meg a "(Emulator-default ports) (kulcs)" lehetőséget a Storage Explorer erőforrások fájában a "helyi & csatolt" alatt.
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>A Storage Emulator inicializálása másik SQL-adatbázis használatára
@@ -89,7 +89,7 @@ További információt ezekről a parancsokról a [Storage Emulator parancssori 
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>Kérelmek hitelesítése a Storage Emulator használatával
 
-Miután telepítette és elindította a Storage emulatort, tesztelheti a kódját. A Storage-emulátoron végzett minden kérést engedélyezni kell, kivéve, ha névtelen kérést használ. Engedélyezheti a kérelmeket a Storage-emulátoron megosztott kulcsos hitelesítéssel vagy közös hozzáférésű aláírással (SAS).
+Miután telepítette és elindította a Storage Emulatort, tesztelheti a kódját. A Storage-emulátoron végzett minden kérést engedélyezni kell, kivéve, ha névtelen kérést használ. Engedélyezheti a kérelmeket a Storage-emulátoron megosztott kulcsos hitelesítéssel vagy közös hozzáférésű aláírással (SAS).
 
 ### <a name="authorize-with-shared-key-credentials"></a>Hitelesítés megosztott kulcsú hitelesítő adatokkal
 
@@ -128,7 +128,7 @@ Az ezzel a példával létrehozott megosztott elérési aláírás egy napig ér
 
 A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
 
-## <a name="addressing-resources-in-the-storage-emulator"></a>Erőforrások kezelése a Storage emulatorban
+## <a name="addressing-resources-in-the-storage-emulator"></a>Erőforrások kezelése a Storage Emulatorban
 
 A Storage Emulator szolgáltatási végpontok eltérnek az Azure Storage-fiókok végpontjaitól. A helyi számítógép nem hajtja végre a tartománynevek feloldását, ami megköveteli, hogy a Storage Emulator-végpontok helyi címek legyenek.
 
@@ -140,11 +140,11 @@ A következő URI például egy Azure Storage-fiókban található blob érvény
 
 `https://myaccount.blob.core.windows.net/mycontainer/myblob.txt`
 
-Mivel a helyi számítógép nem hajtja végre a tartománynevek feloldását, a fiók neve az URI elérési útja része az állomásnév helyett. Használja a következő URI-formátumot egy erőforráshoz a Storage emulatorban:
+Mivel a helyi számítógép nem hajtja végre a tartománynevek feloldását, a fiók neve az URI elérési útja része az állomásnév helyett. Használja a következő URI-formátumot egy erőforráshoz a Storage Emulatorban:
 
 `http://<local-machine-address>:<port>/<account-name>/<resource-path>`
 
-Például a következő címről lehet hozzáférni egy blobhoz a Storage emulatorban:
+Például a következő címről lehet hozzáférni egy blobhoz a Storage Emulatorban:
 
 `http://127.0.0.1:10000/myaccount/mycontainer/myblob.txt`
 
@@ -184,7 +184,7 @@ A beállítások listájának megtekintéséhez írja be a `/help` parancsot a p
 
 | Beállítás | Leírás | Parancs | Argumentumok |
 | --- | --- | --- | --- |
-| **Kezdés** |Elindítja a Storage emulatort. |`AzureStorageEmulator.exe start [-inprocess]` |*-Újrafeldolgozás*: indítsa el az emulátort az aktuális folyamatban az új folyamat létrehozása helyett. |
+| **Kezdés** |Elindítja a Storage Emulatort. |`AzureStorageEmulator.exe start [-inprocess]` |*-Újrafeldolgozás*: indítsa el az emulátort az aktuális folyamatban az új folyamat létrehozása helyett. |
 | **Leállítás** |Leállítja a Storage-emulátort. |`AzureStorageEmulator.exe stop` | |
 | **Állapot** |A Storage Emulator állapotának kinyomtatása. |`AzureStorageEmulator.exe status` | |
 | **Törlés** |Törli a parancssorban megadott összes szolgáltatásban lévő összes értéket. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*: törli a blob-adatvesztést. <br/>*üzenetsor*: a várólista-adathalmazok törlése. <br/>*tábla*: a tábla tartalmának törlése. <br/>*összes*: törli az összes szolgáltatás összes adatértékét. |
@@ -198,7 +198,7 @@ Mivel a Storage Emulator egy helyi emulált környezet, az emulátor és a felh�
 * A Storage Emulator nem méretezhető tárolási szolgáltatás, és nem támogatja nagy számú egyidejű ügyfél használatát.
 * A [Storage Emulator erőforrásainak kezelése](#addressing-resources-in-the-storage-emulator)című témakörben leírtak szerint az erőforrásokat a Storage-emulátorban és egy Azure Storage-fiókban eltérően kezeli a rendszer. A különbség az, hogy a tartománynév-feloldás a felhőben érhető el, de a helyi számítógépen nem.
 * A 3,1-es verziótól kezdődően a Storage Emulator-fiók támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). Az emulátorban minden fiókhoz engedélyezve van az RA-GRS, és az elsődleges és a másodlagos replikák között soha nem marad késés. A blob szolgáltatás statisztikáinak beolvasása, a várólista-szolgáltatás statisztikáinak beolvasása és a Table szolgáltatás statisztikáinak beolvasása támogatott a másodlagos fiókban, és a válasz elem értékét mindig a `LastSyncTime` mögöttes SQL-adatbázisnak megfelelő aktuális időpontra fogja visszaadni.
-* A file Service és az SMB protokoll szolgáltatási végpontok jelenleg nem támogatottak a Storage emulatorban.
+* A file Service és az SMB protokoll szolgáltatási végpontok jelenleg nem támogatottak a Storage Emulatorban.
 * Ha az emulátor által nem támogatott tárolási szolgáltatások valamelyik verzióját használja, az emulátor VersionNotSupportedByEmulator-hibát ad vissza (HTTP-állapotkód: 400 – hibás kérés).
 
 ### <a name="differences-for-blob-storage"></a>BLOB Storage-beli különbségek
@@ -314,11 +314,11 @@ Nincsenek eltérések az emulátorban található üzenetsor-tároláshoz.
 
 ### <a name="version-32"></a>3,2-es verzió
 
-* A Storage Emulator mostantól támogatja a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2014-02-14-os verzióját. A file Service-végpontok jelenleg nem támogatottak a Storage emulatorban. Az 2014-02-14-es verzióval kapcsolatos részletekért tekintse meg [Az Azure Storage szolgáltatás verziószámozását](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) .
+* A Storage Emulator mostantól támogatja a blob-, üzenetsor-és Table service-végpontok tárolási szolgáltatásainak 2014-02-14-os verzióját. A file Service-végpontok jelenleg nem támogatottak a Storage Emulatorban. Az 2014-02-14-es verzióval kapcsolatos részletekért tekintse meg [Az Azure Storage szolgáltatás verziószámozását](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) .
 
 ### <a name="version-31"></a>3,1-es verzió
 
-* Az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) mostantól támogatott a Storage emulatorban. A `Get Blob Service Stats` , a `Get Queue Service Stats` és az API- `Get Table Service Stats` k támogatottak a másodlagos fiók esetében, és mindig a LastSyncTime válasz elemének értékét adják vissza, amely az alapul szolgáló SQL-adatbázisnak megfelelően aktuális idő lesz. A másodlagos és a Storage-emulátor programozott eléréséhez használja a Storage ügyféloldali kódtárat a .NET 3,2-es vagy újabb verziójához. A részletekért tekintse meg a .NET-hez készült Microsoft Azure Storage ügyféloldali kódtárat ismertető témakört.
+* Az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) mostantól támogatott a Storage Emulatorban. A `Get Blob Service Stats` , a `Get Queue Service Stats` és az API- `Get Table Service Stats` k támogatottak a másodlagos fiók esetében, és mindig a LastSyncTime válasz elemének értékét adják vissza, amely az alapul szolgáló SQL-adatbázisnak megfelelően aktuális idő lesz. A másodlagos és a Storage-emulátor programozott eléréséhez használja a Storage ügyféloldali kódtárat a .NET 3,2-es vagy újabb verziójához. A részletekért tekintse meg a .NET-hez készült Microsoft Azure Storage ügyféloldali kódtárat ismertető témakört.
 
 ### <a name="version-30"></a>3,0-es verzió
 

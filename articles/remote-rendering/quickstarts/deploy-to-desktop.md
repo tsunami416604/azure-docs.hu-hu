@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557068"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566165"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Gyors útmutató: Unity-minta üzembe helyezése az asztalra
 
@@ -58,9 +58,6 @@ Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR
 1. Állítsa át a hibakereső üzemmódot a **helyi gépre**. \
   ![Megoldás konfigurálása](./media/unity-deploy-config-pc.png)
 1. Hozza létre a megoldást (F7).
-
-> [!WARNING]
-> Győződjön meg arról, hogy az **x86**lehetőséget választotta. A **UWP/x64** jelenleg nem támogatott, lásd a [platform korlátozásait](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>A minta projekt elindítása
 

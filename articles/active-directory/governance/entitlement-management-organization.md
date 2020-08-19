@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506022"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586571"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -131,6 +131,10 @@ Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, ak
     Jelenleg csak akkor törölhet egy csatlakoztatott szervezetet, ha nincsenek csatlakoztatott felhasználók.
 
     ![A csatlakoztatott szervezet törlése gomb](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>Csatlakoztatott szervezet programozott kezelése
+
+A csatlakoztatott szervezeteket Microsoft Graph használatával is létrehozhatja, listázhatja, frissítheti és törölheti. Egy megfelelő szerepkörrel rendelkező felhasználó, aki delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) -objektumok kezelésére, és azokhoz is beállíthatja a szponzorokat.
 
 ## <a name="next-steps"></a>További lépések
 

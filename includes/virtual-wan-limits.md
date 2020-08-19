@@ -8,20 +8,24 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0cf30666ab9950459f2a48f8fe271fd770f4efe1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c66aa6a8f0cb0efa231acee44f8fa02169d27b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71839205"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88602458"
 ---
 | Erőforrás |  Korlát |
 | --- | --- |
 | Virtuális WAN-hubok régiónként | 1  |
 | Virtuális WAN-hubok virtuális WAN-on |Azure-régiók |
-| VPN-(ág-) kapcsolatok/központ |1,000 |
-| VNet kapcsolatok/hub  | 500 |
-| Pont – hely felhasználók/központ|10,000 |
-| Összesített átviteli sebesség virtuális WAN VPN-átjárón |20 GB/s |
+| VPN-(ág-) kapcsolatok/központ | 1,000 |
+| Összesített átviteli sebesség/virtuális WAN-helyek közötti VPN-átjáró | 20 GB/s |
 | Átviteli sebesség virtuális WAN VPN-kapcsolaton (2 alagút) | 2 GB/s/1 GB/IPsec-alagút |
-| Összesített átviteli sebesség virtuális WAN ExpressRoute-átjárón |20 GB/s 
+| Pont – hely felhasználók/központ| 10,000 |
+| Összesített átviteli sebesség virtuális WAN felhasználói VPN-en (pont – hely) átjáró | 20 GB/s |
+| Összesített átviteli sebesség virtuális WAN ExpressRoute-átjárón | 20 GB/s |
+| ExpressRoute áramköri kapcsolatok/központ | 4 |
+| VNet kapcsolatok/hub  | 500 mínusz a virtuális WAN-beli hubok teljes száma |
+| Összesített átviteli sebesség/virtuális WAN hub-útválasztó | 50 GB/s a VNet VNet-átvitelhez |
+| Virtuális gépeken futó számítási feladatok az összes olyan virtuális hálózatok, amely egyetlen virtuális WAN-hubhoz csatlakozik | 2000 

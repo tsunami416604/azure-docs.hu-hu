@@ -6,15 +6,15 @@ author: ghogen
 manager: jillfra
 ms.service: key-vault
 ms.custom: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: e8c452ffb40b27ed84061e93c1758b3d403052fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054422"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588483"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
 
@@ -154,7 +154,7 @@ A Project file .NET-referenciákat és a NuGet-csomagok hivatkozásait érinti.
 
 ### <a name="added-files-for-aspnet-core"></a>Hozzáadott fájlok ASP.NET Core
 
-- `ConnectedService.json`hozzáadva, amely a csatlakoztatott szolgáltatóval, a verzióval és a dokumentáció hivatkozásával kapcsolatos információkat rögzíti.
+- `ConnectedService.json` hozzáadva, amely a csatlakoztatott szolgáltatóval, a verzióval és a dokumentáció hivatkozásával kapcsolatos információkat rögzíti.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>A Project fájl módosításai ASP.NET Core
 
@@ -192,7 +192,7 @@ A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásoka
 
 ### <a name="added-files-for-aspnet-framework"></a>Hozzáadott fájlok a ASP.NET-keretrendszerhez
 
-- `ConnectedService.json`hozzáadva, amely a csatlakoztatott szolgáltatóval, verziójával és a dokumentációra mutató hivatkozással kapcsolatos adatokat rögzíti.
+- `ConnectedService.json` hozzáadva, amely a csatlakoztatott szolgáltatóval, verziójával és a dokumentációra mutató hivatkozással kapcsolatos adatokat rögzíti.
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>A Project fájl változásai a ASP.NET-keretrendszerben
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Manabi Pocket szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Manabi Pocket között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 44cbad443cb1341ea080f517bbe614ec6fc46b13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 441c9db16550ef2b1e1c51828a4fd37068678af6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67097816"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Oktatóanyag: Azure Active Directory integráció a Manabi Pocketvel
 
@@ -32,7 +28,7 @@ A Manabi Pocket és az Azure AD integrálásával a következő előnyöket nyú
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,9 +101,9 @@ Az Azure AD egyszeri bejelentkezés Manabi Pocket használatával történő kon
 
     ![Manabi Pocket domain és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:`https://ed-cl.com/`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://ed-cl.com/`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
     > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval. Az érték beszerzéséhez vegye fel a kapcsolatot a [Manabi Pocket Client támogatási csapatával](mailto:info-ed-cl@ntt.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -148,11 +144,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

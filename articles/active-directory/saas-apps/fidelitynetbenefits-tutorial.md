@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a hűség NetBenefits | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a hűség NetBenefits között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 77dc8a98-c0e7-4129-ab88-28e7643e432a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40c1e9d493b0fb7bbf1e484799d56e91da1d0833
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 199a443bf2f0c674f85fec0ecfd0083c92f17fe4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73156324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Azure Active Directory integráció a hűség NetBenefits
 
@@ -33,7 +28,7 @@ A hűség NetBenefits az Azure AD-vel való integrálása a következő előnyö
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +105,9 @@ Az Azure AD egyszeri bejelentkezés megbízhatósági NetBenefits való konfigur
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    Tesztelési környezet esetén:`urn:sp:fidelity:geninbndnbparts20:uat:xq1`
+    Tesztelési környezet esetén:  `urn:sp:fidelity:geninbndnbparts20:uat:xq1`
 
-    Éles környezetben:`urn:sp:fidelity:geninbndnbparts20`
+    Éles környezetben:  `urn:sp:fidelity:geninbndnbparts20`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be azt az URL-címet, amelyet a megvalósítás időpontjában meg kell adni, vagy forduljon a hozzárendelt hűségű ügyfél Service Managerhoz.
 
@@ -159,12 +154,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

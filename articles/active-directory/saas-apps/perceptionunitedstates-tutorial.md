@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államokokkal (nem UltiPro) | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és észlelési Egyesült Államok (nem UltiPro) között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ba42f780c93486409077383750d0635637e99b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094835"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államok (nem UltiPro)
 
@@ -32,7 +28,7 @@ Az észlelési Egyesült Államok (nem UltiPro) integrálása az Azure AD-vel a 
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
     ![Észlelési Egyesült Államok (nem UltiPro) tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:`https://perception.kanjoya.com/sp`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://perception.kanjoya.com/sp`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
-    c. Az **észlelési Egyesült Államok (nem UltiPro)** alkalmazáshoz az **Azure ad-azonosító** értékének <entity_id>nek kell lennie, amelyet a **set up Perception Egyesült Államok (nem UltiPro)** szakaszból kap, amely URI-kódolású lesz. Az URI-kódolású érték beszerzéséhez használja a következő hivatkozást **http://www.url-encode-decode.com/**:.
+    c. Az **észlelési Egyesült Államok (nem UltiPro)** alkalmazáshoz az **Azure ad-azonosító** értékének <entity_id>nek kell lennie, amelyet a **set up Perception Egyesült Államok (nem UltiPro)** szakaszból kap, amely URI-kódolású lesz. Az URI-kódolású érték beszerzéséhez használja a következő hivatkozást: **http://www.url-encode-decode.com/** .
 
     d. Az URI-kódolású érték beolvasása után a **Válasz URL-címével** kombinálja azt a lent említett módon:
 
@@ -161,7 +157,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
     
     c. Az **identitás-szolgáltató neve** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt. 
 
-    d. Az **SAML-tartomány szövegmezőbe**írja be a @contoso.comtartományt, például:.
+    d. Az **SAML-tartomány szövegmezőbe**írja be a tartományt, például: @contoso.com .
 
     e. Kattintson a **feltöltés** gombra a **metaadatok XML-** fájljának feltöltéséhez.
 
@@ -185,11 +181,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extensiona nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

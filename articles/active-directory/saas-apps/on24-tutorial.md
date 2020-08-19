@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a ON24 virtuális környezet SAML-kapcsolataival | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ON24 virtuális környezet SAML-kapcsolata között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d4028fb5-b2ad-4c5d-b123-7b675c509d64
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 801a631b56a11e68c444ede846ff82195cd7627f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095728"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Oktatóanyag: Azure Active Directory integráció a ON24 virtuális környezet SAML-kapcsolataival
 
@@ -32,7 +28,7 @@ A ON24 virtuális környezet SAML-kapcsolatainak az Azure AD-vel való integrál
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -147,13 +143,13 @@ Az Azure AD egyszeri bejelentkezés ON24 virtuális környezet SAML-kapcsolatban
 
     c. Kattintson a **további URL-címek beállítása**elemre. 
 
-    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet:`https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
+    d. A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
 5.  Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
     ![ON24 virtuális környezet SAML-kapcsolatok tartománya és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://vshow.on24.com/vshow/<INSTANCENAME>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://vshow.on24.com/vshow/<INSTANCENAME>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges továbbítási állapottal és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a [ON24 virtuális környezet SAML-kapcsolati ügyfelének ügyfélszolgálatához](https://www.on24.com/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -194,12 +190,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

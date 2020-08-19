@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Montage online-nal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Montage online között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 89713d99b9a6d5f8b56d57c9cf6f184142510420
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 415d1b8fd8b950aec96a89965e798dfb92a3efae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160510"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Oktatóanyag: Azure Active Directory integráció a Montage online-nal
 
@@ -32,7 +28,7 @@ A Montage online és az Azure AD integrálásával a következő előnyöket ny�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,15 +103,15 @@ Az Azure AD egyszeri bejelentkezés a Montage online-ban való konfigurálásáh
 
     a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    Éles környezetben:`https://<subdomain>.montageonline.co.nz/`
+    Éles környezetben: `https://<subdomain>.montageonline.co.nz/`
 
-    Tesztelési környezet esetén:`https://build-<subdomain>.montageonline.co.nz/`
+    Tesztelési környezet esetén: `https://build-<subdomain>.montageonline.co.nz/`
 
     b. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-    Éles környezetben:`MOL_Azure`
+    Éles környezetben: `MOL_Azure`
 
-    Tesztelési környezet esetén:`MOL_Azure_Build`
+    Tesztelési környezet esetén: `MOL_Azure_Build`
 
     > [!NOTE] 
     > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Montage online ügyfél-támogatási csapatával](https://www.montage.co.nz/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -156,12 +152,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

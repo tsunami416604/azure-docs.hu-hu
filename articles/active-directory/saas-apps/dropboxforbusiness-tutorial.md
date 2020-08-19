@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a Dropbox Businessrel való integrációval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Dropbox Business között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67d684b85948a0d153d334a26f6860b4c13ed26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017805"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555739"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Oktatóanyag: a Dropbox Business integrálása a Azure Active Directory
 
@@ -85,9 +81,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.dropbox.com/sso/<id>`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.dropbox.com/sso/<id>`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be a következő értéket:`Dropbox`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be a következő értéket: `Dropbox`
 
     > [!NOTE]
     > Az előző bejelentkezési URL-cím értéke nem valós érték. A tényleges bejelentkezési URL-címmel frissítenie kell az értéket, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -117,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

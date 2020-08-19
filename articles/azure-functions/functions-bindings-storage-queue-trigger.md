@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 2b44728d1f5b2a6985e7e636d9e3593b09d009ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212963"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565655"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure üzenetsor-tárolási trigger a Azure Functionshoz
 
@@ -400,13 +400,13 @@ Ha a várólista-üzenetek több várólistára várnak, a várólista-trigger l
 
 A Batch mérete és az új köteg beolvasásának küszöbértéke a [ fájlban lévőhost.js](functions-host-json.md#queues)konfigurálható. Ha a függvény alkalmazásban a várólista által aktivált függvények párhuzamos végrehajtását szeretné csökkenteni, beállíthatja a Batch méretét 1-re. Ez a beállítás csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen (VM) fut. 
 
-A várólista-trigger automatikusan megakadályozza, hogy a függvény többször dolgozza fel a várólista-üzeneteket; a függvények nem írhatók idempotens.
+A várólista-trigger automatikusan megakadályozza, hogy egy függvény egyszerre többször dolgozza fel a várólista-üzeneteket.
 
 ## <a name="hostjson-properties"></a>Tulajdonságok host.js
 
 A [host.js](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [ meg ahost.json Settings](functions-bindings-storage-queue-output.md#hostjson-settings) szakaszt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Írási várólista tárolási üzenetei (kimeneti kötés)](./functions-bindings-storage-blob-output.md)
 

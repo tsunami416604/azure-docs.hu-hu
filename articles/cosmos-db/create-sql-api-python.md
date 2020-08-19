@@ -1,24 +1,24 @@
 ---
 title: 'Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával'
 description: Egy Python-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/11/2020
-ms.author: anfeldma
+ms.date: 08/11/2020
+ms.author: rosouz
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 7014e39492033b241d05cb670083d5b6277fac6e
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 16f1a7d3608b13dd5423205dc75500d76f62d69a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872939"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588143"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
@@ -34,11 +34,19 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs URI-ja használatával `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Python 3.6 +](https://www.python.org/downloads/), a `python` végrehajtható fájllal `PATH` .
+- Egy Cosmos DB-fiók. A lehetőségek a következők:
+    * Azure aktív előfizetésen belül:
+        * [Hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free) , vagy használja a meglévő előfizetését 
+        * [Visual Studio havi kreditek](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
+        * [Ingyenes Azure Cosmos DB szintű](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+    * Azure aktív előfizetés nélkül:
+        * [Próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/)ingyen, egy 30 napos tesztelési környezetet.
+        * [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) 
+- [Python 2,7 vagy 3.5.3 +](https://www.python.org/downloads/), a `python` végrehajtható fájllal `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - A [Python-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)-hoz.
 - [Git](https://www.git-scm.com/downloads). 
+- [A Pythonhoz készült SQL API SDK Azure Cosmos DB](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -218,11 +226,11 @@ Az alábbi kódrészletek mind a *cosmos_get_started.* file fájlból származna
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Cosmos DB fiókot, hogyan hozhat létre egy tárolót a Adatkezelő használatával, és hogyan futtathat Python-alkalmazást a Visual Studio Code-ban. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Key Vault felügyelt Storage-fiók – PowerShell-verzió
 description: A felügyelt tár fiók funkciója zökkenőmentes integrációt biztosít Azure Key Vault és egy Azure Storage-fiók között.
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 87dc1ccb887638226607a1e398c7532de8d2c94f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534532"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585100"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
 
@@ -43,7 +43,7 @@ Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű sz
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
-| Bérlők | Felhő | Alkalmazásazonosító |
+| Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
@@ -138,7 +138,7 @@ Vegye figyelembe, hogy a Storage-fiókokra vonatkozó engedélyek nem érhetők 
 
 ### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Felügyelt Storage-fiók hozzáadása a Key Vault-példányhoz
 
-A Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) parancsmaggal hozzon létre egy felügyelt Storage-fiókot a Key Vault-példányban. A `-DisableAutoRegenerateKey` kapcsoló azt adja meg, hogy ne generálja újra a Storage-fiók kulcsait.
+A Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) parancsmaggal hozzon létre egy felügyelt Storage-fiókot a Key Vault-példányban. A  `-DisableAutoRegenerateKey` kapcsoló azt adja meg, hogy ne generálja újra a Storage-fiók kulcsait.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts

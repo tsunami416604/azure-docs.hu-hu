@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory a nomád integrációs szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a nomád között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 07e6e0d1a7d358deebba7b4857b6afebcfb3be1c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5e710e8df594f6792a150fa1ffbd7779e96bb744
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800132"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>Oktatóanyag: Azure Active Directory a nomád integrációval
 
@@ -32,7 +28,7 @@ A nomád Azure AD-vel való integrálása a következő előnyöket biztosítja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés nomád használatával történő konfigurá
 
     ![Nomád tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<company name>.nomadic.fm/signin`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.nomadic.fm/signin`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
@@ -158,7 +154,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

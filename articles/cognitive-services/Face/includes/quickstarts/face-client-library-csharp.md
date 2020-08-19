@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 3e561400683d9d0679a51a761f97ec7ba8bf8ea9
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c243668f4ca1569ad05567649ad4a2498888847c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505876"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88602355"
 ---
 Ismerkedés a .NET-hez készült Face ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -26,7 +26,7 @@ A .NET-hez készült Face ügyféloldali kódtár a következőhöz használhat�
 * [Arc azonosítása](#identify-a-face)
 * [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)  |  [Példák](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Példák](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,7 +78,7 @@ Az alkalmazás `Main` metódusában hozzon létre változókat az erőforrás Az
 Az alkalmazás könyvtárában telepítse a .NET-hez készült Face ügyféloldali kódtárat a következő paranccsal:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0-preview.1
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0-preview.1
 ```
 
 Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.

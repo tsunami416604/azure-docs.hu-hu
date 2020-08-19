@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás hogyan készít biztonsági másolatot az Azure Virtual Machines szolgáltatásról, és hogyan követi az ajánlott eljárásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091045"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587497"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
@@ -51,8 +51,8 @@ Az Azure-beli virtuális gépek Azure Backup-vel történő biztonsági mentése
 
 **Titkosítás** | **Részletek** | **Támogatás**
 --- | --- | ---
+**SSE** | Az SSE használatával az Azure Storage az adatok tárolása előtt automatikusan titkosítja a titkosítást. Az Azure Storage a beolvasás előtt visszafejti az adatokkal. Azure Backup támogatja a két Storage Service Encryption típusú virtuális gépek biztonsági mentését:<li> **SSE platform által felügyelt kulcsokkal**: Ez a titkosítás alapértelmezés szerint a virtuális gépek összes lemezén elérhető. [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)talál további információt.<li> **SSE az ügyfél által felügyelt kulcsokkal**. A CMK segítségével kezelheti a lemezek titkosításához használt kulcsokat. [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)talál további információt. | A Azure Backup az SSE-t használja az Azure-beli virtuális gépek Rest titkosításához.
 **Azure Disk Encryption** | Azure Disk Encryption titkosítja az operációs rendszer és az adatlemezeket az Azure-beli virtuális gépekhez.<br/><br/> A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. | Azure Backup támogatja a kizárólag BEKs-mel titkosított felügyelt és nem felügyelt Azure-beli virtuális gépek biztonsági mentését, illetve a BEKs és a KEK együttes használatát.<br/><br/> Mind a BEKs, mind a KEK biztonsági mentése és titkosítása is megtörténik.<br/><br/> Mivel a KEK és a BEKs biztonsági mentése történik, a szükséges engedélyekkel rendelkező felhasználók visszaállíthatják a kulcsokat és a titkokat a kulcstartóba, ha szükséges. Ezek a felhasználók a titkosított virtuális gépet is helyreállítják.<br/><br/> A titkosított kulcsokat és titkos kulcsokat nem lehet beolvasni jogosulatlan felhasználók vagy az Azure.
-**SSE** | Az SSE használatával az Azure Storage az adatok tárolása előtt automatikusan titkosítja a titkosítást. Az Azure Storage a beolvasás előtt visszafejti az adatokkal. | A Azure Backup az SSE-t használja az Azure-beli virtuális gépek Rest titkosításához.
 
 Felügyelt és nem felügyelt Azure-beli virtuális gépek esetén a Backup a BEKs-mel titkosított virtuális gépeket, illetve a BEKs-mel és a KEK-szel együtt titkosított virtuális gépeket
 
@@ -140,4 +140,4 @@ Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 
 
 ## <a name="next-steps"></a>További lépések
 
-Most [készítse elő az Azure-beli virtuális gépek biztonsági mentését](backup-azure-arm-vms-prepare.md).
+- [Felkészülés az Azure-beli virtuális gépek biztonsági mentéséhez](backup-azure-arm-vms-prepare.md).

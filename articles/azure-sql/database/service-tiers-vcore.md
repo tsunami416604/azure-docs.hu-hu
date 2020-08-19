@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 07/21/2020
-ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325066"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586801"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 
 |-|**általános célú**|**üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
-|A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
+|A következőkre alkalmas|A legtöbb üzleti számítási feladat. Költséghatékony, kiegyensúlyozott és skálázható számítási és tárolási lehetőségeket nyújt. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
 |Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
 |IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database**: az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány**: lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](read-scale-out.md)|
@@ -102,12 +102,12 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 |Hardver létrehozása  |Compute  |Memória  |
 |:---------|:---------|:---------|
-|Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorok<br>-Akár 24 virtuális mag (1 virtuális mag = 1 fizikai mag)  |-7 GB/virtuális mag<br>– Akár 168 GB-nyi kiépítés|
-|Gen5     |**Kiépített számítás**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) * processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítástechnika**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) * processzorok<br>– Akár 16 virtuális mag automatikus méretezés (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítástechnika**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 48 GB-ig terjedő automatikus méretezés|
-|Fsv2 sorozat     |-Intel Xeon Platinum 8168 (Skylake) processzorok<br>– A 3,4 GHz-es és az összes Core Turbo órajel-sebesség, valamint a 3,7 GHz-es maximális, egyetlen Core Turbo órajel.<br>– Akár 72 virtuális mag (1 virtuális mag = 1 Hyper-thread)|-1,9 GB/virtuális mag<br>– Akár 136 GB-nyi kiépítés|
-|M sorozat     |-Intel Xeon E7-8890 v3 2,5 GHz és Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake) processzorok<br>– Akár 128 virtuális mag (1 virtuális mag = 1 Hyper-thread)|– 29 GB/virtuális mag<br>– Akár 3,7 TB-os kiépítés|
+|Gen4     |-Intel® E5-2673 v3 (Haswell) 2,4 GHz-es processzorok<br>-Akár 24 virtuális mag (1 virtuális mag = 1 fizikai mag)  |-7 GB/virtuális mag<br>– Akár 168 GB-nyi kiépítés|
+|Gen5     |**Kiépített számítás**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* és intel® 8272CL (Cascade Lake) 2,5 GHz-es \* processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítástechnika**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz és Intel® SP-8160 (Skylake) * processzorok<br>– Akár 40 virtuális mag automatikus méretezése (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítástechnika**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 120 GB-ig terjedő automatikus méretezés|
+|Fsv2 sorozat     |-Intel® 8168 (Skylake) processzorok<br>– A 3,4 GHz-es és az összes Core Turbo órajel-sebesség, valamint a 3,7 GHz-es maximális, egyetlen Core Turbo órajel.<br>– Akár 72 virtuális mag (1 virtuális mag = 1 Hyper-thread)|-1,9 GB/virtuális mag<br>– Akár 136 GB-nyi kiépítés|
+|M sorozat     |-Intel® E7-8890 v3 2,5 GHz és Intel® 8280M 2,7 GHz (Cascade Lake) processzorok<br>– Akár 128 virtuális mag (1 virtuális mag = 1 Hyper-thread)|– 29 GB/virtuális mag<br>– Akár 3,7 TB-os kiépítés|
 
-\*A [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamikus felügyeleti nézetében az Intel SP-8160 (Skylake) processzorokkal rendelkező Gen5-adatbázisok hardveres generálása Gen6 néven jelenik meg. Az összes Gen5-adatbázis erőforrás-korlátja azonos a processzor típusától (Broadwell vagy Skylake) függetlenül.
+\* A [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamikus felügyeleti nézetében az Intel® SP-8160 (Skylake) processzorokat használó adatbázisok hardveres generációja Gen6-ként jelenik meg, míg az Intel® 8272CL (Cascade Lake) használó adatbázisok hardveres generálása Gen7 jelenik meg. Az összes Gen5-adatbázis erőforrás-korlátja azonos a processzor típusától (Broadwell, Skylake vagy Cascade Lake) függetlenül.
 
 Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az önálló adatbázisok erőforrás-korlátai (virtuális mag)](resource-limits-vcore-single-databases.md)vagy a [rugalmas készletek erőforrás-korlátai (virtuális mag)](resource-limits-vcore-elastic-pools.md).
 
@@ -180,7 +180,7 @@ További részletekért az [az SQL mi Update](https://docs.microsoft.com/cli/azu
 
 ### <a name="hardware-availability"></a>Hardver rendelkezésre állása
 
-#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a>Gen4/Gen5
+#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a> Gen4/Gen5
 
 A Gen4 hardverek fokozatos kiépítése [folyamatban](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) van, és már nem érhető el az új üzemelő példányokhoz. Minden új adatbázist telepíteni kell a Gen5 hardveren.
 

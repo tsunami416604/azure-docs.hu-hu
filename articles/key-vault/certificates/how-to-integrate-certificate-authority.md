@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d558b414bfa27b387a559ff6c8fdb5ada32730fc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185638"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588925"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -105,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 $issuerName = "DigiCertCA"
 ```
@@ -142,7 +142,7 @@ További információkért tekintse meg a [tanúsítványok műveleteit a Key Va
    Nem. A tanúsítvány létrehozásakor a rendszer ellenőrzi, hogy az ellenőrzés folyamata hosszabb időt is igénybe vehet, és az ellenőrzés a folyamat DigiCert függ.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdcffeda1c57cdb043c51c8a3640006be8ae7418
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425219"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602415"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és integrálhatja a magával ragadó olvasót az olvasói ügyféloldali kódtár használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)egy teljes körű működő minta érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazá
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _secrets.js_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Cserélje le asecrets.jstartalmát a következőre, és adja _meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _secrets.js_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Cserélje le asecrets.jstartalmát a következőre, és adja _ meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
 
 ```json
 {

@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API, SDK &-erőforrások
 description: Ismerkedjen meg az SQL Python API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és a Azure Cosmos DB Python SDK egyes verzióiban végrehajtott módosításokat.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876257"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585984"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876257"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring-adatv2](sql-api-sdk-java-spring-v2.md)
+> * [Spring-adatforrások v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-összekötő](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876257"
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Kiadási előzmények
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- Elavult figyelmeztetés lett hozzáadva a "lusta" indexelési módhoz. A háttérrendszer már nem teszi lehetővé, hogy a tárolókat ezzel a móddal hozza létre, és a rendszer konzisztensen állítsa be őket.
+
+**Új funkciók**
+- Új tároló létrehozásakor hozzá lett adva az analitikai tároló ÉLETTARTAMának beállítása.
+
+**Hibajavítások**
+- Rögzített támogatás a dicts get_client API-k bemenetei számára.
+- Javított Python 2/3-kompatibilitás a lekérdezési iterációkban.
+- Rögzített típusú hint-hiba (probléma #12570).
+- Kijavítva a hiba, ahol a beállítások fejlécei nem lettek hozzáadva a upsert_item függvényhez. Probléma #11791 – Köszönjük @aalapatirvbd .
+- Rögzített hiba, ha nem karakterlánc-azonosítót használ egy adott elemmel. A AttributeError helyett a TypeError-t (Issue #11793).
 
 ### <a name="400"></a>4.0.0
 
@@ -81,14 +96,14 @@ ms.locfileid: "87876257"
 
 * Új konstruktor és Operational Configuration kulcsszó argumentumok hozzáadva:
 
-  * `retry_total`– Újrapróbálkozások maximális száma.
-  * `retry_backoff_max`– Maximális újrapróbálkozási várakozási idő másodpercben.
-  * `retry_fixed_interval`-Rögzített újrapróbálkozási időköz ezredmásodpercben.
-  * `retry_read`– Az olvasási próbálkozások maximális száma.
-  * `retry_connect`– A csatlakozási hiba újrapróbálkozási kísérletek maximális száma.
-  * `retry_status`– Az újrapróbálkozási kísérletek maximális száma a hibák állapotának kódjain.
-  * `retry_on_status_codes`– Az újrapróbálkozáshoz megadott állapotkódok listája.
-  * `retry_backoff_factor`– Az újrapróbálkozási kísérletek közötti várakozási idő kiszámítására szolgáló tényező.
+  * `retry_total` – Újrapróbálkozások maximális száma.
+  * `retry_backoff_max` – Maximális újrapróbálkozási várakozási idő másodpercben.
+  * `retry_fixed_interval` -Rögzített újrapróbálkozási időköz ezredmásodpercben.
+  * `retry_read` – Az olvasási próbálkozások maximális száma.
+  * `retry_connect` – A csatlakozási hiba újrapróbálkozási kísérletek maximális száma.
+  * `retry_status` – Az újrapróbálkozási kísérletek maximális száma a hibák állapotának kódjain.
+  * `retry_on_status_codes` – Az újrapróbálkozáshoz megadott állapotkódok listája.
+  * `retry_backoff_factor` – Az újrapróbálkozási kísérletek közötti várakozási idő kiszámítására szolgáló tényező.
 
 ### <a name="400b3"></a>4.0.0 B3
 
@@ -98,7 +113,7 @@ ms.locfileid: "87876257"
 
 * A 4.0.0 B2 verziója a második iteráció a Python nyelvi ajánlott eljárásainak megfelelő ügyféloldali kódtár létrehozásához.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 * Az ügyfélkapcsolatot a ben definiált HTTP-folyamat felhasználására alakítottuk ki `azure.core.pipeline` .
 
@@ -139,13 +154,13 @@ ms.locfileid: "87876257"
 * A hiba-hierarchia mostantól örökölt `azure.core.AzureError` :
 
   * A `HTTPFailure` új nevet kapott: `CosmosHttpResponseError`
-  * `JSONParseFailure`el lett távolítva, és lecserélte`azure.core.DecodeError`
+  * `JSONParseFailure` el lett távolítva, és lecserélte `azure.core.DecodeError`
   * További hibák léptek fel az adott válasz kódokhoz:
-    * `CosmosResourceNotFoundError`404-es állapot esetén
-    * `CosmosResourceExistsError`409-es állapot esetén
-    * `CosmosAccessConditionFailedError`412-es állapot esetén
+    * `CosmosResourceNotFoundError` 404-es állapot esetén
+    * `CosmosResourceExistsError` 409-es állapot esetén
+    * `CosmosAccessConditionFailedError` 412-es állapot esetén
 
-* `CosmosClient`Most már futtatható egy Context Managerben, hogy kezelni tudja a ügyfélkapcsolatot.
+* `CosmosClient` Most már futtatható egy Context Managerben, hogy kezelni tudja a ügyfélkapcsolatot.
 
 * Az ITER-válaszok (például a lekérdezési válaszok és a válaszok listája) mostantól típusúak `azure.core.paging.ItemPaged` . A metódust `fetch_next_block` egy másodlagos iteráció váltotta fel, amelyet a `by_page` metódus elért.
 
@@ -342,6 +357,6 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 

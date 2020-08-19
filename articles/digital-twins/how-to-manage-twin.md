@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506532"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587599"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -37,18 +37,22 @@ Digitális dupla létrehozásához a következőket kell megadnia:
 
 Opcionálisan megadhatja a digitális iker összes tulajdonságának kezdeti értékeit. 
 
-A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők el `initData` , amely egy JSON-karakterlánc, amely tartalmazza a megfelelő adatokat.
+A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők el `initData` , amely egy JSON-karakterlánc, amely tartalmazza a megfelelő adatokat. Az objektum strukturálásával kapcsolatos további információkért folytassa a következő szakasszal.
 
 > [!TIP]
 > A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikk későbbi részében](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késést, ezért a lekérdezés helyett használja az API-hívást az újonnan létrehozott ikrek megjelenítéséhez, ha azonnali válaszra van szüksége. 
 
-### <a name="initialize-properties"></a>Tulajdonságok inicializálása
+### <a name="initialize-model-and-properties"></a>Modell és tulajdonságok inicializálása
 
-A Twin Creation API olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírásában szerializálható. Lásd a következő [*fogalmakat: digitális ikrek és a Twin gráf*](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához.
+A Twin-létrehozási API egy olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírására van szerializálva. Lásd a következő [*fogalmakat: digitális ikrek és a Twin gráf*](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához. 
+
+Először létre kell hoznia egy adatobjektumot, amely a Twin és a tulajdonságának értékeit jelöli. Ezután a paranccsal `JsonSerializer` átadhatja ennek szerializált verzióját a paraméter API-hívásához `initdata` .
 
 A paramétereket manuálisan vagy egy megadott segítő osztály használatával is létrehozhatja. Íme egy példa.
 
 #### <a name="create-twins-using-manually-created-data"></a>Ikrek létrehozása manuálisan létrehozott adatai alapján
+
+Az egyéni segítő osztályok használata nélkül egy Twin tulajdonságot is megadhat a-ben `Dictionary<string, object>` , ahol a a tulajdonság neve, a pedig a `string` `object` tulajdonságot és annak értékét jelképező objektum.
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>Ikrek létrehozása a segítő osztállyal
 
+A segítő osztály `BasicDigitalTwin` lehetővé teszi, hogy a tulajdonságokat tartalmazó mezőket közvetlenül egy "Twin" objektumban tárolja. Előfordulhat, hogy továbbra is szeretné felépíteni a tulajdonságok listáját a használatával `Dictionary<string, object>` , amelyet aztán közvetlenül a Twin objektumhoz lehet hozzáadni `CustomProperties` .
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateDigitalTwin` . A fenti példában ez a következőképpen néz ki:
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>Digitális Twin-adatlekérdezés
 

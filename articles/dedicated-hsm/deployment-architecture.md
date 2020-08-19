@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048554"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586605"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Az Azure Dedicated HSM üzembe helyezési architektúrája
 
@@ -48,7 +48,7 @@ A HSM a Microsoft adatközpontjai között oszlanak el, és egyszerűen üzembe 
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
 
-Mindkét régióban található HSM-állványok két független adatközpontban vagy legalább két független rendelkezésre állási zónában vannak üzembe helyezve. A Dél-Kelet-Ázsia három rendelkezésre állási zónával rendelkezik, az USA 2. keleti régiója pedig kettő. Összesen nyolc régió érhető el Európa, Ázsia és az Egyesült Államok területén, amely a dedikált HSM szolgáltatást kínálja. Az Azure-régiókkal kapcsolatos további információkért tekintse meg a hivatalos [Azure-régiók információit](https://azure.microsoft.com/global-infrastructure/regions/).
+Mindkét régióban található HSM-állványok két független adatközpontban vagy legalább két független rendelkezésre állási zónában vannak üzembe helyezve. A Dél-Kelet-Ázsia három rendelkezésre állási zónával rendelkezik, az USA 2. keleti régiója pedig kettő. Összesen nyolc régió érhető el Európa, Ázsia és az Egyesült Államok területén, amely a dedikált HSM szolgáltatást kínálja. Az Azure-régiókkal kapcsolatos további információkért tekintse meg a hivatalos  [Azure-régiók információit](https://azure.microsoft.com/global-infrastructure/regions/).
 A dedikált HSM-alapú megoldás egyes tervezési tényezői a hely/késés, a magas rendelkezésre állás és más elosztott alkalmazások támogatása.
 
 ## <a name="device-location"></a>Eszközhely

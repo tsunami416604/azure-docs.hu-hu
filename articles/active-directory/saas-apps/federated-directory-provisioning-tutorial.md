@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: összevont könyvtár konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az összevont könyvtárba.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 910aaac84dacb75cd76772a0bc2960d9bfa8bb70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c083b0ca7fa506bb951a9ef27d2af04d61482eda
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057919"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555162"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Oktatóanyag: összevont könyvtár konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -146,7 +142,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók összevont címtárba**lehetőséget.
 

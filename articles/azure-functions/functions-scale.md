@@ -3,14 +3,14 @@ title: Az Azure Functions méretezése és üzemeltetése
 description: Megtudhatja, hogyan választhat Azure Functions fogyasztási terv és a Prémium csomag között.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025828"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587225"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -86,7 +86,7 @@ Ha a JavaScript-függvényeket App Service csomagon futtatja, olyan csomagot vá
 
 A [app Service Environment](../app-service/environment/intro.md) (bevezetéssel) való futtatása lehetővé teszi a függvények teljes elkülönítését és a nagy léptékű előnyök kihasználását.
 
-### <a name="always-on"></a><a name="always-on"></a>Always on
+### <a name="always-on"></a><a name="always-on"></a> Always on
 
 Ha App Service csomagot futtat, engedélyezze a **mindig** beállítást, hogy a Function alkalmazás megfelelően fusson. Egy App Service-csomag esetében a függvények futtatókörnyezete néhány perc inaktivitás után üresjáratba lép, így csak a HTTP-eseményindítók fognak felébredni a függvényekből. Az Always on csak App Service csomagon érhető el. A platform egy használati tervben automatikusan aktiválja a Function Apps szolgáltatást.
 
@@ -144,11 +144,19 @@ Azt követően, hogy a függvény alkalmazása több percig is tétlen volt, a p
 
 A skálázás több tényezőn is változhat, és a kiválasztott trigger és nyelv alapján különbözőképpen méretezhető. Van néhány bonyolult méretezési mód az alábbiakkal kapcsolatban:
 
-* Egyetlen Function-alkalmazás csak legfeljebb 200 példányra méretezhető. Egyetlen példány egyszerre több üzenetet vagy kérelmet is feldolgozhat, így az egyidejű végrehajtások száma nem megengedett.
+* Egyetlen Function-alkalmazás csak legfeljebb 200 példányra méretezhető. Egyetlen példány egyszerre több üzenetet vagy kérelmet is feldolgozhat, így az egyidejű végrehajtások száma nem megengedett.  [A maximális méretet megadhatja](#limit-scale-out) , ha szükséges.
 * HTTP-eseményindítók esetén az új példányok lefoglalása legfeljebb egyszer, másodpercenként történik.
 * A nem HTTP-triggerek esetében az új példányok lefoglalása legfeljebb 30 másodpercenként történik. A skálázás gyorsabb, ha [prémium](#premium-plan)szintű csomagban fut.
 * Service Bus eseményindítók esetében a leghatékonyabb skálázáshoz használja az erőforrások _kezelése_ jogosultságokat. A _figyelési_ jogosultságok használata esetén a skálázás nem annyira pontos, mert a várólista hossza nem használható a skálázási döntések tájékoztatására. Ha többet szeretne megtudni a Service Bus hozzáférési házirendekben található jogosultságok beállításáról, tekintse meg a [megosztott hozzáférés engedélyezési házirendjét](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
 * Az Event hub-eseményindítók esetében lásd a [méretezési útmutatót](functions-bindings-event-hubs-trigger.md#scaling) a dokumentációban. 
+
+### <a name="limit-scale-out"></a>Felskálázás korlátozása
+
+Előfordulhat, hogy korlátozni szeretné, hogy az alkalmazások hány példányon méretezhetők.  Ez leggyakrabban olyan esetekben fordul elő, amikor egy alsóbb rétegbeli összetevő, például egy adatbázis korlátozott átviteli sebességgel rendelkezik.  Alapértelmezés szerint a használati terv funkciói a több mint 200 példányra vannak kibővítve, a Prémium csomag funkciói pedig akár 100 példányra is felskálázást kapnak.  Az érték módosításával egy adott alkalmazásnál alacsonyabb maximális értéket adhat meg `functionAppScaleLimit` .  A `functionAppScaleLimit` legfeljebb 0 vagy NULL értékre állítható a nem korlátozott, vagy 1 és az alkalmazás maximális értéke között.
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ajánlott eljárások és minták méretezhető alkalmazásokhoz
 
@@ -174,7 +182,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 ### <a name="plan-summary"></a>Csomag összegzése
 | | |
 | --- | --- |  
-|**[Felhasználási terv](#consumption-plan)**| Automatikusan méretezhető, és csak a számítási erőforrásokért kell fizetnie, ha a függvények futnak. A használati terv a függvények gazdagépének példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján.<br/> ✔ Alapértelmezett üzemeltetési csomag.<br/>A ✔ csak akkor kell fizetnie, ha a függvények futnak.<br/>a ✔ automatikusan kibővíthető, akár nagy terhelésű időszakok esetén is.|  
+|**[Használatalapú csomag](#consumption-plan)**| Automatikusan méretezhető, és csak a számítási erőforrásokért kell fizetnie, ha a függvények futnak. A használati terv a függvények gazdagépének példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján.<br/> ✔ Alapértelmezett üzemeltetési csomag.<br/>A ✔ csak akkor kell fizetnie, ha a függvények futnak.<br/>a ✔ automatikusan kibővíthető, akár nagy terhelésű időszakok esetén is.|  
 |**[Prémium szintű csomag](#premium-plan)**|Míg az automatikus skálázás igény szerint történik, az előre betöltött feldolgozók az üresjárat után késedelem nélkül futtathatják az alkalmazásokat, és a virtuális hálózatok-hez csatlakoznak. Vegye figyelembe a Azure Functions prémium csomagot az alábbi helyzetekben, a App Service-csomag összes funkciója mellett: <br/>✔ A Function apps folyamatosan, vagy majdnem folyamatosan fut.<br/>✔ Nagy mennyiségű kis végrehajtással rendelkezik, és magas végrehajtási számlával rendelkezik, de a használati terv alacsony GB-os, második számlával rendelkezik.<br/>✔ Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.<br/>✔ A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben engedélyezett maximális végrehajtási idő.<br/>✔ Olyan funkciókat kell megkövetelni, amelyek csak prémium csomagon, például virtuális hálózati kapcsolaton keresztül érhetők el.|  
 |**[Dedikált](#app-service-plan)**<sup>1</sup> . csomag|A függvényeket egy App Service csomagon belül futtathatja normál App Service csomag díjszabásával. Jó illeszkedés a hosszú ideig futó műveletekhez, valamint a prediktív skálázás és a költségek kiszámításához. A következő helyzetekben vegye fontolóra App Service tervet:<br/>✔ Rendelkezik olyan meglévő, nem használt virtuális gépekkel, amelyek már futtatnak más App Service példányokat.<br/>✔ Szeretné megadni a függvények futtatására szolgáló egyéni rendszerképet.|  
 |**[ASE](#app-service-plan)**<sup>1</sup> . kiegészítő|A App Service Environment (benyújtó) egy App Service funkció, amely teljesen elkülönített és dedikált környezetet biztosít a App Service alkalmazások biztonságos, nagy léptékű futtatásához. A ASE megfelelőek a következőket igénylő alkalmazás-munkaterhelésekhez: <br/>✔ Nagyon nagy léptékű.<br/>✔ Elkülönítés és biztonságos hálózati hozzáférés.<br/>✔ A nagy memória kihasználtsága.|  
@@ -186,7 +194,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 
 | | <sup>1</sup> . Linux<br/>Csak kód | Windows<sup>2</sup><br/>Csak kód | Linux<sup>1, 3</sup><br/>Docker-tároló |
 | --- | --- | --- | --- |
-| **[Felhasználási terv](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Nincs támogatás  |
+| **[Használatalapú csomag](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Nincs támogatás  |
 | **[Prémium szintű csomag](#premium-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
 | <sup>4</sup> . **[dedikált terv](#app-service-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](#app-service-plan)**<sup>4</sup> . kiegészítő | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
@@ -201,7 +209,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 
 | | Horizontális felskálázás | Példányok maximális száma |
 | --- | --- | --- |
-| **[Felhasználási terv](#consumption-plan)** | Esemény vezérelt. Automatikus méretezés automatikusan, akár nagy terhelésű időszakok esetén is. A Azure Functions infrastruktúra a függvények által aktivált események száma alapján méretezi a processzor-és memória-erőforrásokat a functions gazdagép további példányainak hozzáadásával. | 200 |
+| **[Használatalapú csomag](#consumption-plan)** | Esemény vezérelt. Automatikus méretezés automatikusan, akár nagy terhelésű időszakok esetén is. A Azure Functions infrastruktúra a függvények által aktivált események száma alapján méretezi a processzor-és memória-erőforrásokat a functions gazdagép további példányainak hozzáadásával. | 200 |
 | **[Prémium szintű csomag](#premium-plan)** | Esemény vezérelt. Automatikus méretezés automatikusan, akár nagy terhelésű időszakok esetén is. A Azure Functions infrastruktúra a függvények által aktivált események száma alapján méretezi a processzor-és memória-erőforrásokat a functions gazdagép további példányainak hozzáadásával. |100|
 | **[Dedikált](#app-service-plan)**<sup>1</sup> . csomag | Manuális/automatikus méretezés |10-20|
 | **[ASE](#app-service-plan)**<sup>1</sup> . kiegészítő | Manuális/automatikus méretezés |100 |
@@ -233,7 +241,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 
 | | | 
 | --- | --- |
-| **[Felhasználási terv](#consumption-plan)** | Csak a függvények futtatásának idejére kell fizetnie. A számlázás a végrehajtások száma, a végrehajtási idő és a felhasznált memória alapján történik. |
+| **[Használatalapú csomag](#consumption-plan)** | Csak a függvények futtatásának idejére kell fizetnie. A számlázás a végrehajtások száma, a végrehajtási idő és a felhasznált memória alapján történik. |
 | **[Prémium szintű csomag](#premium-plan)** | A Prémium csomag a szükséges és az előre bemelegített példányok által használt fő másodpercek és memória számán alapul. A csomagoknak legalább egy példányát mindig melegen kell tartani. Ez a csomag előre jelezhető díjszabást biztosít. |
 | **[Dedikált](#app-service-plan)**<sup>1</sup> . csomag | Ugyanezt a funkciót a App Service csomagban lévő Function apps esetében is megfizeti, mint más App Service-erőforrásokhoz, például a webalkalmazásokhoz.|
 | **[ASE](#app-service-plan)**<sup>1</sup> . kiegészítő | az infrastruktúráért fizetett és a közszolgáltatási infrastruktúra méretével nem módosítható a havi díj. Ezen felül App Service díjcsomag vCPU is. Egy ASE környezeten belül az összes üzemeltetett alkalmazás az elkülönített díjszabású termékváltozatba tartozik. |

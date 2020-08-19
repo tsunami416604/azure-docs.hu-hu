@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella-nal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Cisco Umbrella között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee91ca53e32bfdc387dc20054493d02d506a75da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 86ba8527a6da3e995fc3cf63937b11f1915c82a1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158643"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88556028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella-nal
 
@@ -33,7 +28,7 @@ A Cisco Umbrella és az Azure AD integrálásával a következő előnyöket ny�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,7 +105,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     b. Kattintson a **további URL-címek beállítása**elemre.
 
-    c. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet:`https://login.umbrella.com/sso`
+    c. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet: `https://login.umbrella.com/sso`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **metaadatok XML** -fájljának a megadott beállítások alapján történő letöltéséhez, és mentse azt a számítógépre.
 
@@ -174,12 +169,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -230,13 +225,13 @@ A Cisco Umbrella esetében a kiépítés manuális feladat.
 
     c. A **delegált rendszergazdai szerepkör kiválasztása**lapon válassza ki a szerepkört.
   
-    d. Az **e-mail-cím** mezőben adja meg a **\@brittasimon contoso.com**felhasználóhoz hasonló felhasználói címet.
+    d. Az **e-mail-cím** mezőben adja meg a **brittasimon \@ contoso.com**felhasználóhoz hasonló felhasználói címet.
 
     e. A **jelszó** mezőbe írja be a jelszavát.
 
     f. A **Jelszó megerősítése** mezőbe írja be újra a jelszót.
 
-    g. Kattintson a **Létrehozás**gombra.
+    : Kattintson a **Létrehozás**gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032952"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586188"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -25,8 +25,8 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
 >- Ha még nem konfigurálta a biztonsági mentést, [kövesse az alábbi lépéseket](#set-storage-redundancy) a beállítások áttekintéséhez és módosításához.
 >- Ha már konfigurálta a biztonsági mentést, és át kell térnie a GRS-ről a LRS-re, [tekintse át ezeket a megkerülő megoldásokat](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. A **Recovery Services-tárolók** panelen kattintson az új tárolóra. A **Beállítások** szakaszban kattintson a **Tulajdonságok**elemre.
-1. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen kattintson a **frissítés**elemre.
+1. Az **Recovery Services** -tárolók ablaktáblán válassza ki az új tárolót. A **Beállítások** szakaszban válassza a  **Tulajdonságok**lehetőséget.
+1. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen válassza a **frissítés**lehetőséget.
 
 1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
 
@@ -46,7 +46,7 @@ A visszaállítási lehetőségek egyike, a régiók közötti visszaállítás 
 - a naplózási vagy megfelelőségi követelmények betartásának elvégzése
 - Állítsa vissza a virtuális gépet vagy a lemezét, ha az elsődleges régióban katasztrófa következik be.
 
-A szolgáltatás kiválasztásához válassza a **tartományok közötti visszaállítás engedélyezése** lehetőséget a **biztonsági mentési konfiguráció** panelen.
+A szolgáltatás kiválasztásához válassza a **tartományok közötti visszaállítás engedélyezése** lehetőséget a **biztonsági mentési konfiguráció** ablaktáblán.
 
 Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási szinten vannak.
 
@@ -62,22 +62,40 @@ Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási s
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
 
-A GRS-redundanciával létrehozott tárolók tartalmazzák a régiók közötti visszaállítási szolgáltatás konfigurálásának lehetőségét. Minden GRS-tárolóban megjelenik egy szalagcím, amely a dokumentációra hivatkozik. A tár CRR konfigurálásához nyissa meg a biztonsági mentési konfiguráció panelt, amely a funkció engedélyezésének lehetőségét tartalmazza.
+A GRS-redundanciával létrehozott tárolók tartalmazzák a régiók közötti visszaállítási szolgáltatás konfigurálásának lehetőségét. Minden GRS-tárolóban megjelenik egy szalagcím, amely a dokumentációra hivatkozik. A tár CRR konfigurálásához nyissa meg a biztonsági mentési konfiguráció ablaktáblát, amely a funkció engedélyezésének lehetőségét tartalmazza.
 
  ![Biztonsági mentési konfiguráció szalagcíme](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. A portálon lépjen a Recovery Services tároló > beállítások > Tulajdonságok elemre.
-2. A funkció engedélyezéséhez kattintson a **régión belüli visszaállítás engedélyezése** ebben a tárolóban elemre.
+2. A funkció engedélyezéséhez válassza a **régiók közötti visszaállítás engedélyezése ebben** a tárolóban lehetőséget.
 
-   ![Mielőtt a tárolóban a régiók közötti visszaállítás engedélyezése lehetőségre kattint](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![A régiók közötti visszaállítás engedélyezése ebben a tárban](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![Miután rákattintott a régiók közötti visszaállítás engedélyezése ebben a tárolóban](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![Miután kiválasztotta a régiók közötti visszaállítás engedélyezése ebben a tárban](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 Megtudhatja, hogyan [tekintheti meg a másodlagos régióban található biztonsági másolati elemeket](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
 
 Ismerje meg, hogyan lehet [visszaállítani a másodlagos régióban](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
 
 Megtudhatja, hogyan [figyelheti a másodlagos régió visszaállítási feladatait](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
+## <a name="set-encryption-settings"></a>Titkosítási beállítások megadása
+
+Alapértelmezés szerint a Recovery Services-tárolóban lévő adatai a platform által felügyelt kulcsokkal vannak titkosítva. A végponttól nem szükséges explicit művelet, hogy engedélyezze ezt a titkosítást, és minden olyan munkaterhelésre vonatkozik, amelyről biztonsági mentés készül a Recovery Services-tárolóba.  Dönthet úgy, hogy saját kulcsot használ a tárolóban található biztonsági másolatok titkosításához. Ezt az ügyfél által felügyelt kulcsoknak nevezzük. Ha a biztonsági mentési adatait saját kulccsal szeretné titkosítani, meg kell adni a titkosítási kulcsot, mielőtt bármely elem védve legyen a tárolóban. Miután engedélyezte a titkosítást a kulccsal, nem vonható vissza.
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Tároló konfigurálása az ügyfél által felügyelt kulcsok használatával történő titkosításhoz
+
+Ha úgy szeretné konfigurálni a tárolót, hogy az ügyfél által felügyelt kulcsokkal Titkosítsa a szolgáltatást, ezeket a lépéseket a következő sorrendben kell követnie:
+
+1. Felügyelt identitás engedélyezése a Recovery Services-tárolóban
+
+1. Engedélyek kiosztása a tárolóhoz a Azure Key Vault található titkosítási kulcs eléréséhez
+
+1. A Azure Key Vault eltávolításának és törlésének engedélyezése
+
+1. A titkosítási kulcs kiosztása a Recovery Services-tárolóhoz
+
+A fenti lépések utasításait [ebben a cikkben](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys)találja.
 
 ## <a name="modifying-default-settings"></a>Alapértelmezett beállítások módosítása
 
@@ -132,7 +150,6 @@ Ha meg kell őriznie a védett adatok védelmét a GRS-tárolóban, és egy új 
   - A helyreállítási pontok megőrzéséhez a GRS-tárolóban kell fizetnie (további részletekért lásd: [Azure Backup díjszabása](azure-backup-pricing.md) ).
   - Szükség esetén visszaállíthatja a virtuális gépet a GRS-tárból.
   - Az új erőforrásban található virtuális gép LRS-tárolójának első biztonsági mentése kezdeti replika lesz.
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -2,25 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Five9 Plus adapterrel (CTI, Contact Center Agents) | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Five9 plusz adapter (CTI, Contact Center-ügynökök) között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 88dc82ab-be0b-4017-8335-c47d00775d7b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dd4eab2d8e877cac468097c0a6ed6aa3cfb750b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ab03aecf8226662eeb03a5bb3f8adc85013375d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67102449"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Oktatóanyag: Azure Active Directory integráció a Five9 Plus adapterrel (CTI, Contact Center Agents)
 
@@ -32,7 +28,7 @@ Az Five9 Plus adapter (CTI, Contact Center Agents) és az Azure AD integrálás�
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -139,11 +135,11 @@ Az Azure AD egyszeri bejelentkezés Five9 Plus-adapterrel (CTI, Contact Center A
 
 1. Ha be szeretné állítani az egyszeri bejelentkezést a **Five9 Plus-adapteren (CTI, Contact Center-ügynökök)** , el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-t (ka) t a [Five9 Plus adapter (CTI, Contact Center Agents) támogatási csapatának](https://www.five9.com/about/contact). Emellett az SSO további konfigurálásához kövesse az alábbi lépéseket az adapternek megfelelően:
 
-    a. "Five9 Plus adapter az ügynök asztali eszközkészletéhez" rendszergazdai útmutató:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. "Five9 Plus adapter az ügynök asztali eszközkészletéhez" rendszergazdai útmutató: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. "Five9 Plus adapter a Microsoft Dynamics CRM-hez" rendszergazdai útmutató:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. "Five9 Plus adapter a Microsoft Dynamics CRM-hez" rendszergazdai útmutató: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. "Five9 Plus adapter a zendesk" rendszergazdai útmutató:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. "Five9 Plus adapter a zendesk" rendszergazdai útmutató: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -163,11 +159,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

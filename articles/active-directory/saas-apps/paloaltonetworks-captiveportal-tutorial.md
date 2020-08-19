@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory-integráció a Palo Alto Networks-szel kötött portálon | Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést Azure Active Directory és a Palo Alto Networks-portál között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160164"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: Azure Active Directory-integráció a Palo Alto Networks-szel kötött portálon
 
@@ -61,7 +56,7 @@ Első lépésként a katalógusban adja hozzá a Palo Alto Networks portált a f
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+2. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások lehetőség a menüben](common/enterprise-applications.png)
 
@@ -106,9 +101,9 @@ Először engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban:
 
     ![Palo Alto Networks – céges portál alapszintű SAML-konfigurációs panelje](common/idp-intiated.png)
 
-   1. Az **azonosító**mezőben adja meg a mintát `https://<customer_firewall_host_name>/SAML20/SP`tartalmazó URL-címet.
+   1. Az **azonosító**mezőben adja meg a mintát tartalmazó URL-címet `https://<customer_firewall_host_name>/SAML20/SP` .
 
-   2. A **Válasz URL-cím**mezőben adjon meg egy URL- `https://<customer_firewall_host_name>/SAML20/SP/ACS`címet, amely a mintát tartalmazta.
+   2. A **Válasz URL-cím**mezőben adjon meg egy URL-címet, amely a mintát tartalmazta `https://<customer_firewall_host_name>/SAML20/SP/ACS` .
 
       > [!NOTE]
       > Az ebben a lépésben szereplő helyőrző értékek frissítése a tényleges azonosító és a válasz URL-címekkel. A tényleges értékek beszerzéséhez vegye fel a kapcsolatot a [Palo Alto Networks céges portál ügyfél-támogatási csapatával](https://support.paloaltonetworks.com/support).
@@ -137,7 +132,7 @@ Következő lépésként állítsa be az egyszeri bejelentkezést a Palo Alto-h�
 
     1. A **profil neve**mezőben adjon meg egy nevet, például **AzureAD-CaptivePortal**.
     
-    2. Az **Identitáskezelő metaadatainak**mellett válassza a **Tallózás**lehetőséget. Válassza ki a metaadatok. xml fájlt, amelyet a Azure Portal letöltött.
+    2. Az **Identitáskezelő metaadatainak**mellett válassza a **Tallózás**lehetőséget. Válassza ki a Azure Portalban letöltött metadata.xml fájlt.
     
     3. Kattintson az **OK** gombra.
 
@@ -145,7 +140,7 @@ Következő lépésként állítsa be az egyszeri bejelentkezést a Palo Alto-h�
 
 Ezután hozzon létre egy *Britta Simon* nevű teszt felhasználót a Azure Portalban:
 
-1. A Azure Portal válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -159,7 +154,7 @@ Ezután hozzon létre egy *Britta Simon* nevű teszt felhasználót a Azure Port
 
     1. A **név**mezőbe írja be a következőt: **BrittaSimon**.
   
-    2. A **Felhasználónév**mezőbe írja be **a\@\<BrittaSimon\>your_company_domain**nevet. Például **BrittaSimon\@contoso.com**.
+    2. A **Felhasználónév**mezőbe írja be **az \@ \<your_company_domain\> BrittaSimon**nevet. Például **BrittaSimon \@ contoso.com**.
 
     3. A **Password (jelszó**) mezőbe írjon be egy jelszót. Javasoljuk, hogy tartsa meg a beírt jelszó rekordját. A jelszó **megjelenítése** jelölőnégyzet bejelölésével megjelenítheti a jelszót.
 
@@ -169,7 +164,7 @@ Ezután hozzon létre egy *Britta Simon* nevű teszt felhasználót a Azure Port
 
 Ezután engedélyezze a hozzáférést a Palo Alto Networks-portálhoz, hogy Britta Simon használhassa az Azure-beli egyszeri bejelentkezést:
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -181,7 +176,7 @@ Ezután engedélyezze a hozzáférést a Palo Alto Networks-portálhoz, hogy Bri
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
+4. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
@@ -202,7 +197,7 @@ Ezután hozzon létre egy *Britta Simon* nevű felhasználót a Palo Alto Networ
 
 A Palo Alto Networks-portál a tűzfal mögött van telepítve egy Windows rendszerű virtuális gépen. Ha az egyszeri bejelentkezést a Palo Alto Networks-portálon szeretné tesztelni, jelentkezzen be a Windows rendszerű virtuális gépre RDP protokoll (RDP) használatával. Az RDP-munkamenetben nyisson meg egy böngészőt, és lépjen a webhelyre. Megnyílik az egyszeri bejelentkezési URL-cím, és a rendszer felszólítja a hitelesítésre. A hitelesítés befejezésekor hozzáférhet a webhelyekhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 További információt a következő cikkekben talál:
 

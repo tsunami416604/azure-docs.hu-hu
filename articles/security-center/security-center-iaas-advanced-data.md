@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043869"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566267"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Fejlett adatbiztonság SQL-gépekhez (előzetes verzió)
 
@@ -72,7 +72,7 @@ A fentiek mindegyikét alább találja.
 
     [![Security Center díjszabási oldal opcionális csomagokkal](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    A számítógépeken futó SQL-kiszolgálók speciális adatbiztonsága a kiválasztott munkaterülethez csatlakoztatott összes SQL-kiszolgálón engedélyezve lesz. A védelem teljes mértékben aktív lesz a SQL Server első újraindítása után. 
+    A számítógépeken futó SQL-kiszolgálók speciális adatbiztonsága a kiválasztott munkaterülethez csatlakoztatott összes SQL-kiszolgálón engedélyezve lesz. A védelem teljes mértékben aktív lesz az SQL Server példány első újraindítása után.
 
     >[!TIP] 
     > Új munkaterület létrehozásához kövesse az [log Analytics-munkaterület létrehozása](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)című témakör utasításait.

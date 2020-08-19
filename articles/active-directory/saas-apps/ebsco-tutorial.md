@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a EBSCO | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és EBSCO között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 144f7f65-69e9-4016-a151-fe1104fd6ba8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f37085744b9a0e7785ef3a411d53e4df5d15e494
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2395f3c8b46f69105a81cd2d866ee4e330f4791e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72595010"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a EBSCO
 
@@ -86,20 +81,20 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    Az **azonosító** szövegmezőbe írja be az URL-címet:`pingsso.ebscohost.com`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:  `pingsso.ebscohost.com`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a EBSCO ügyfélszolgálati [csapatához](mailto:support@ebsco.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-    o **egyedi elemek:**  
+    o   **egyedi elemek:**  
 
-    o **CustId** = egyedi EBSCO-ügyfél azonosítójának megadása 
+    o   **CustId** = egyedi EBSCO-ügyfél azonosítójának megadása 
 
-    o **profil** = az ügyfelek testre szabhatók a hivatkozás, hogy egy adott profilhoz irányítsák a felhasználókat (attól függően, hogy mit vásárolnak a EBSCO). Megadhatnak egy adott profil-azonosítót. A fő azonosítók az EDS (EBSCO Discovery Service) és a ehost (EBSOCOhost-adatbázisok). Az itt megjelenő utasításokat [itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile)találja.
+    o   **profil** = az ügyfelek testre szabhatók a hivatkozás, hogy egy adott profilhoz irányítsák a felhasználókat (attól függően, hogy mit vásárolnak a EBSCO). Megadhatnak egy adott profil-azonosítót. A fő azonosítók az EDS (EBSCO Discovery Service) és a ehost (EBSOCOhost-adatbázisok). Az itt megjelenő utasításokat [itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile)találja.
 
 1. A EBSCO alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -110,7 +105,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a EBSCO alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------------- |
     | FirstName   | User. givenName |
     | LastName   | felhasználó. vezetéknév |
@@ -132,9 +127,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -186,11 +181,11 @@ További információ a hozzáférési panelről: [Bevezetés a hozzáférési p
 
 1. A fenti beállítás befejezése után törölje a cookie-k/gyorsítótár és a bejelentkezés újbóli beírását. Nem kell manuálisan bejelentkeznie, és a rendszer megjegyezi a személyre szabási beállításokat.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

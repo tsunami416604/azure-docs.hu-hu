@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760294"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565927"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
@@ -28,12 +28,12 @@ Ez a cikk bemutatja, hogyan állíthat be mindkét fajta felügyelt identitást 
 
 * [A felügyelt identitásokat támogató eseményindítók és műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [A kimenő hívások támogatott hitelesítési típusai](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [A Logic apps felügyelt identitási korlátai](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
+* [A Logic apps felügyelt identitásának korlátai](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Az Azure AD-hitelesítést támogató Azure-szolgáltatások felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). A felügyelt identitásnak és a cél Azure-erőforrásnak is, amelyhez hozzáférésre van szüksége, ugyanazt az Azure-előfizetést kell használnia.
+* Azure-fiók és -előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). A felügyelt identitásnak és a cél Azure-erőforrásnak is, amelyhez hozzáférésre van szüksége, ugyanazt az Azure-előfizetést kell használnia.
 
 * Ahhoz, hogy felügyelt identitást lehessen biztosítani egy Azure-erőforráshoz, hozzá kell adnia egy szerepkört a cél erőforráshoz az identitáshoz. Szerepkörök hozzáadásához olyan [Azure ad-rendszergazdai engedélyekre](../active-directory/users-groups-roles/directory-assign-admin-roles.md) van szükség, amelyek szerepköröket rendelhetnek a megfelelő Azure ad-bérlőben található identitásokhoz.
 
@@ -162,10 +162,10 @@ Ha felhasználó által hozzárendelt felügyelt identitást szeretne beállíta
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Erőforrás neve** | Igen | <*felhasználó által hozzárendelt identitás neve*> | A felhasználó által hozzárendelt identitás nevét adja meg. Ez a példa a "Fabrikam-User-Assigned-Identity" kifejezést használja. |
-   | **Előfizetés** | Igen | <*Azure-előfizetés – név*> | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport-név*> | A használni kívánt erőforráscsoport neve. Hozzon létre egy új csoportot, vagy válasszon ki egy meglévő csoportot. Ez a példa létrehoz egy "Fabrikam-Managed-idents-RG" nevű új csoportot. |
-   | **Hely** | Igen | <*Azure-régió*> | Az Azure-régió, ahol az erőforrással kapcsolatos információk tárolhatók. Ez a példa a "West US"-t használja. |
+   | **Erőforrás neve** | Yes | <*felhasználó által hozzárendelt identitás neve*> | A felhasználó által hozzárendelt identitás nevét adja meg. Ez a példa a "Fabrikam-User-Assigned-Identity" kifejezést használja. |
+   | **Előfizetés** | Yes | <*Azure-előfizetés – név*> | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Yes | <*Azure-Erőforrás-csoport-név*> | A használni kívánt erőforráscsoport neve. Hozzon létre egy új csoportot, vagy válasszon ki egy meglévő csoportot. Ez a példa létrehoz egy "Fabrikam-Managed-idents-RG" nevű új csoportot. |
+   | **Hely** | Yes | <*Azure-régió*> | Az Azure-régió, ahol az erőforrással kapcsolatos információk tárolhatók. Ez a példa a "West US"-t használja. |
    |||||
 
    Most hozzáadhatja a felhasználó által hozzárendelt identitást a logikai alkalmazáshoz. A logikai alkalmazáshoz nem adhat hozzá egynél több felhasználó által hozzárendelt identitást.
@@ -195,7 +195,7 @@ Ha felhasználó által hozzárendelt felügyelt identitást szeretne beállíta
 
 Az Azure-erőforrások (például a Logic apps) létrehozásának és üzembe helyezésének automatizálásához [Azure Resource Manager sablonokat](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)használhat, amelyek támogatják [a felhasználó által hozzárendelt identitásokat a hitelesítéshez](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md). A sablon `resources` szakaszában a logikai alkalmazás erőforrás-definíciója a következő elemeket igényli:
 
-* Egy `identity` objektum, amelynek tulajdonsága a következőre van `type` beállítva`UserAssigned`
+* Egy `identity` objektum, amelynek tulajdonsága a következőre van `type` beállítva `UserAssigned`
 
 * A `userAssignedIdentities` felhasználó által hozzárendelt erőforrást és nevet megadó gyermekobjektum
 
@@ -285,7 +285,7 @@ Ha a sablon a felügyelt identitás erőforrás-definícióját is tartalmazza, 
 Ahhoz, hogy használni tudja a logikai alkalmazás felügyelt identitását a hitelesítéshez, állítsa be az identitás hozzáférését azon az Azure-erőforráson, ahol az identitást szeretné használni. A feladat elvégzéséhez rendelje hozzá a megfelelő szerepkört az identitáshoz a cél Azure-erőforráson. A következő lehetőségek használhatók:
 
 * [Azure Portal](#azure-portal-assign-access)
-* [Azure Resource Manager sablon](../role-based-access-control/role-assignments-template.md)
+* [Azure Resource Manager-sablon](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) – További információ: szerepkör- [hozzárendelés hozzáadása az Azure RBAC és a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md).
 * Azure CLI ([az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) – További információ: [szerepkör-hozzárendelés hozzáadása az Azure RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
@@ -360,11 +360,11 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Módszer** | Igen | A futtatni kívánt művelet által használt HTTP-metódus |
-   | **URI** | Igen | A cél Azure-erőforrás vagy-entitás eléréséhez használt végpont URL-címe. Az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) . |
-   | **Fejlécek** | Nem | Minden szükséges vagy a kimenő kérelembe belefoglalni kívánt fejléc-érték, például a tartalom típusa |
-   | **Lekérdezések** | Nem | A kérelembe belefoglalni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy a futtatni kívánt művelet API-verzióját |
-   | **Hitelesítés** | Igen | A célként megadott erőforráshoz vagy entitáshoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
+   | **Metódus** | Yes | A futtatni kívánt művelet által használt HTTP-metódus |
+   | **URI** | Yes | A cél Azure-erőforrás vagy-entitás eléréséhez használt végpont URL-címe. Az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) . |
+   | **Fejlécek** | No | Minden szükséges vagy a kimenő kérelembe belefoglalni kívánt fejléc-érték, például a tartalom típusa |
+   | **Lekérdezések** | No | A kérelembe belefoglalni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy a futtatni kívánt művelet API-verzióját |
+   | **Hitelesítés** | Yes | A célként megadott erőforráshoz vagy entitáshoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
    ||||
 
    Tegyük fel, hogy a [Pillanatkép-blob műveletet](/rest/api/storageservices/snapshot-blob) egy olyan Azure Storage-fiókban lévő blobon szeretné futtatni, amelyben korábban beállította a hozzáférést az identitásához. Az [Azure Blob Storage-összekötő](/connectors/azureblob/) azonban jelenleg nem nyújtja ezt a műveletet. Ehelyett ezt a műveletet a [http-művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) vagy egy másik [blob Service REST API művelet](/rest/api/storageservices/operations-on-blobs)használatával futtathatja.
@@ -374,10 +374,10 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
    A pillanatkép- [blob művelet](/rest/api/storageservices/snapshot-blob)futtatásához a http-művelet a következő tulajdonságokat adja meg:
 
-   | Tulajdonság | Kötelező | Példaérték | Leírás |
+   | Tulajdonság | Kötelező | Példaérték | Description |
    |----------|----------|---------------|-------------|
-   | **Módszer** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
-   | **URI** | Igen | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
+   | **Metódus** | Yes | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
+   | **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
    | **Fejlécek** | Igen, az Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Az `x-ms-blob-type` `x-ms-version` Azure Storage-műveletekhez szükséges és a fejléc értékei. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-beli műveleti kérelmekben a fejléchez a `x-ms-version` futtatni kívánt művelethez szükséges tulajdonság és API-verzió szükséges. <p>További információt az alábbi témakörökben talál: <p><p>- [Kérések fejlécei – pillanatkép-blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Verziószámozás az Azure Storage-szolgáltatásokhoz](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Lekérdezések** | Igen, ehhez a művelethez | `comp` = `snapshot` | A lekérdezési paraméter neve és értéke a pillanatkép-blob művelethez. |
    |||||

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: e7aa5963f6e26776184de361aaa91f5a3c36ec9e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546620"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Spotinst
 
@@ -75,18 +75,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást identitásszolgáltató kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    a. **További URL-címek beállításának**engedélyezése.
-
-    b. A **továbbítási állapot** szövegmezőbe írja be a következő értéket: `<ID>`
-
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépéseket, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://console.spotinst.com/auth/saml`
-
-    > [!NOTE]
-    > A továbbítási állapot értéke nem valós. A továbbítási állapot értékének a tényleges továbbítási állapot értékével kell frissítenie, amelyet később az oktatóanyag ismertet.
+   1. Győződjön meg arról, hogy a **Válasz URL-címe** a következőre van beállítva: https://console.spotinst.com/auth/saml .
+   1. A **továbbítási állapot**mezőben adja meg a Spotinst-szervezet azonosítóját, amelyet az **SSO** lapon is ellenőrizheti.
+   1. **A bejelentkezési URL-címnek** üresnek kell lennie.
 
 1. Kattintson a **Mentés** gombra.
 

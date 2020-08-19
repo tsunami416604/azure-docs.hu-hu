@@ -1,6 +1,6 @@
 ---
 title: Útmutató az Azure-alkalmazások konfigurációjának használatáról
-description: Útmutató az Azure-alkalmazások konfigurálásához a Java Spring Apps használatával.
+description: Ebben a rövid útmutatóban egy Java Spring-alkalmazást hoz létre az Azure-alkalmazás konfigurálásával, amellyel központilag kezelheti a programkódtól elkülönítve az Alkalmazásbeállítások tárolását és kezelését.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 93a2fd89e21dbf4edee29a27bd18f63f2b835aae
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121221"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586453"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Kattintson az **Alkalmaz** gombra.
+7. Válassza az **Alkalmaz** lehetőséget.
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
