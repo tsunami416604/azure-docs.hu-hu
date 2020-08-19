@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fea75e94e6a96e3fc223670536e7c05e271fa901
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8afb6f018e9c01ee42a9e43cc726a442fa4c8965
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833827"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539338"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és a cURL használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API és a cURL használatával ismeri fel az emberi arcokat egy képben.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -158,7 +158,7 @@ Miután elvégezte a módosításokat, nyisson meg egy parancssort, és írja be
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy cURL-parancsot írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaállítsa az attribútumokat. További információért olvassa el a Face API dokumentációját.
 

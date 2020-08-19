@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Acadia-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Acadia között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e02bfb28-b3c9-424c-8c42-0c8dfa12342a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d85409dc9e53c61f0f04b7ed39ec0fd8b06e297
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73154441"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Oktatóanyag: Azure Active Directory integráció a Acadia
 
@@ -33,7 +28,7 @@ A Acadia és az Azure AD integrálásával a következő előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,15 +102,15 @@ Az Azure AD egyszeri bejelentkezés Acadia való konfigurálásához hajtsa vég
 
     ![Acadia tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/SAML2/POST`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/SAML2/POST`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     ![Acadia tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
     > A 4. és az 5. lépés értékeit a Acadia csapat a metaadat-fájlban fogja megadni, amely az **alapszintű SAML-konfiguráció** szakaszban található **metaadatok feltöltése** lehetőségre kattintva importálható. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti, hogy megbizonyosodjon róla, hogy a metaadatok értékei helyesek-e. Ha a megadott értékek helytelenek, lépjen kapcsolatba a [Acadia-ügyfél támogatási csoportjával](mailto:support@systemsalliance.com) .
@@ -156,12 +151,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

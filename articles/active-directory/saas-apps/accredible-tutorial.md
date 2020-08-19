@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció a Accredible-szel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Accredible között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7681a60bc5da8d3cae53642096fd2290e63b8f76
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 9538e51e5dc623539909f9c9efa2ac1b86a2303b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799110"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Oktatóanyag: Azure Active Directory integráció a Accredible
 
@@ -33,7 +28,7 @@ A Accredible és az Azure AD integrálásával a következő előnyöket nyújtj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -113,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés Accredible való konfigurálásához hajtsa 
     https://api.accredible.com/sp/user/accredible
     ```
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. A felhasználó szerepkörének megfelelően használja az azonosító értékét. Minden ügyfél egyedi válasz-URL-címmel rendelkezik az AZONOSÍTÓtól függően. Az értékek megszerzéséhez forduljon a [Accredible támogatási csapatához](mailto:support@accredible.com) .
@@ -159,7 +154,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

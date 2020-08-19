@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory az absztrakt integrációval | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és absztrakt között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb167ab-d769-4661-a8cb-ae371cb63d2a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f19733f01cf601c1145d5e2bb5deb58db828dc4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68302590"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538331"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Oktatóanyag: absztrakt integráció a Azure Active Directory
 
@@ -85,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.abstract.com/signin`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.abstract.com/signin`
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -93,12 +88,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-abstract-sso"></a>Absztrakt SSO konfigurálása
 
-Győződjön meg arról, hogy `App Federation Metadata Url` a ( `Azure AD Identifier` z) és a (z) Azure Portal beolvasása szükséges, mivel az SSO-t absztraktként kell konfigurálnia.
+Győződjön meg arról, hogy a (z) és a (z) Azure Portal beolvasása `App Federation Metadata Url` `Azure AD Identifier` szükséges, mivel az SSO-t absztraktként kell konfigurálnia.
 
 Ezeket az információkat az **egyszeri bejelentkezés beállítása SAML-** oldallal lapon találja:
 
-* A `App Federation Metadata Url` az **SAML aláíró tanúsítvány** szakaszban található.
-* A `Azure AD Identifier` a ( **absztrakt beállítása** ) szakaszban található.
+* A az `App Federation Metadata Url` **SAML aláíró tanúsítvány** szakaszban található.
+* A a ( `Azure AD Identifier` **absztrakt beállítása** ) szakaszban található.
 
 
 Most már készen áll az SSO konfigurálására Absztrakton:
@@ -123,9 +118,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory integráció az LMS-sel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az LMS befogadására.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d5dbd5c831b4e3cf2ab63796165dc6bad005a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59fb36765ad3cd584af4d6459cd78e2886d0edce
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905839"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538705"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Oktatóanyag: Azure Active Directory integráció az LMS-sel
 
@@ -111,15 +106,15 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
 
     Ha **5 felhasználói felületet** használ, használja a következő konfigurációt:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://company.myabsorb.com/account/saml`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/account/saml`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://company.myabsorb.com/account/saml`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/account/saml`
 
     Ha **5 – új tanulási élményt** használ, használja a következő konfigurációt:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez vegye fel a kapcsolatot az [LMS ügyfél-támogatási csapatával](https://support.absorblms.com/hc/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -202,12 +197,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be a következőt:`brittasimon\@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon\@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

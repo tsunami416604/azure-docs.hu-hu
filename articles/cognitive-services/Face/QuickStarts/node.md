@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 44bd0a766574889334601a354b47946a80fc475a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 245cb90fa49e844b6e190f6acb8a44f339fd29dd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833693"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539318"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és Node.js használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API és az Node.js használatával azonosíthatja az emberi arcokat egy képen.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -294,7 +294,7 @@ Itt találja a teljes JSON-adatforrást `response.data` . Például:
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Node.js parancsfájlt írt, amely meghívja az Azure Face Service-t, hogy felderítse az arcokat egy képben, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
 
