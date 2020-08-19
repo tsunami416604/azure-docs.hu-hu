@@ -199,7 +199,7 @@ A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásoka
 - Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.jsa fájlhoz.
 - A [hozzáadott hivatkozások](#added-references-for-aspnet-framework) szakaszban leírt .net-szerelvényekre mutató hivatkozások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha követte ezt az oktatóanyagot, a Key Vault engedélyei a saját Azure-előfizetéssel való futtatásra vannak beállítva, de előfordulhat, hogy éles környezetben nem kívánatos. Létrehozhat egy felügyelt identitást, amellyel kezelheti Key Vault hozzáférését az alkalmazáshoz. Lásd: [Key Vault hitelesítés megadása felügyelt identitással](/azure/key-vault/managed-identity).
 
