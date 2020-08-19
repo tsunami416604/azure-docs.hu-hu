@@ -2,7 +2,7 @@
 title: Dinamikus csomagolás a Azure Media Services v3-ban
 titleSuffix: Azure Media Services
 description: Ez a cikk áttekintést nyújt a Azure Media Services dinamikus csomagolásáról.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/13/2020
-ms.author: juliako
-ms.openlocfilehash: 4f0e8822d734d3c1147eb6d5cbbc8f26a7410a01
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224067"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604572"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -80,7 +80,7 @@ A folyamatos átviteli ügyfél a következő Smooth Streaming formátumokat adh
 
 Az alábbi lépések egy közös Media Services streaming-munkafolyamatot mutatnak be, amelyben a dinamikus csomagolás a Azure Media Services standard kódolóval együtt használható.
 
-1. [Töltsön fel egy bemeneti fájlt](manage-asset-concept.md) , például MP4, QuickTime/MOV vagy más támogatott fájlformátumot. Ezt a fájlt a köztes vagy a forrásfájl is nevezik. A támogatott formátumok listáját lásd: [a standard kódoló által támogatott formátumok](media-encoder-standard-formats.md).
+1. [Töltsön fel egy bemeneti fájlt](job-input-from-http-how-to.md) , például MP4, QuickTime/MOV vagy más támogatott fájlformátumot. Ezt a fájlt a köztes vagy a forrásfájl is nevezik. A támogatott formátumok listáját lásd: [a standard kódoló által támogatott formátumok](media-encoder-standard-formats.md).
 1. A köztes fájl [kódolása](#encode-to-adaptive-bitrate-mp4s) egy H. 264/AAC MP4 adaptív sávszélesség-készletbe.
 
     Ha már rendelkezik kódolt fájlokkal, és csak a fájlok másolását és továbbítását szeretné használni, használja a következőt: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) és [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API-k. Ennek eredményeképpen létrejön egy adatfolyam-jegyzékfájlt (. ISM fájlt) tartalmazó új MP4-fájl.
@@ -324,6 +324,6 @@ Tekintse meg [Azure Media Services közösségét](media-services-community.md) 
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

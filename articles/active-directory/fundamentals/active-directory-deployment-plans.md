@@ -12,14 +12,14 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799056"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605376"
 ---
-# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-telepítési csomagok
+# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Az Azure Active Directory (Azure AD) képességeinek üzembe helyezésével kapcsolatos teljes körű útmutatást keres? Az Azure AD üzembehelyezési csomagjai végigvezetik a közös Azure AD-képességek sikeres üzembe helyezéséhez szükséges üzleti értékeken, tervezési szempontokon és üzemeltetési eljárásokon.
 
 A csomag bármelyik lapján a böngészőben a PDF-fájl nyomtatása lehetőséggel létrehozhat egy naprakész offline verziót a dokumentációban.
@@ -97,3 +97,4 @@ A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzot
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) segítségével felügyelheti az Azure AD, az Azure-erőforrások és más Microsoft Online Services Kiemelt felügyeleti szerepköreit. A PIM olyan megoldásokat kínál, mint az igény szerinti hozzáférés, a jóváhagyási munkafolyamatok kérése és a teljes körűen integrált hozzáférési felülvizsgálatok, amelyek segítségével valós időben azonosíthatja, feltárhatja és megakadályozhatja a Kiemelt szerepkörök rosszindulatú tevékenységeit. |
 | [Jelentéskészítés és figyelés](../reports-monitoring/plan-monitoring-and-reporting.md)| Az Azure AD jelentéskészítési és figyelési megoldásának kialakítása a jogi, biztonsági és üzemeltetési követelményektől, valamint a meglévő környezettől és folyamattól függ. Ez a cikk bemutatja a különböző kialakítási lehetőségeket, és végigvezeti Önt a megfelelő üzembe helyezési stratégiában. |
+| [Hozzáférési felülvizsgálatok](../governance/deploy-access-reviews.md) | A hozzáférési felülvizsgálatok fontos részét képezik az irányítási stratégiának, amely lehetővé teszi, hogy megismerje és felügyelje, ki férhet hozzá, és hogy mire van hozzáférése. Ez a cikk segítséget nyújt a hozzáférési felülvizsgálatok megtervezésében és üzembe helyezésében a kívánt biztonsági és együttműködési testhelyzetek eléréséhez. |

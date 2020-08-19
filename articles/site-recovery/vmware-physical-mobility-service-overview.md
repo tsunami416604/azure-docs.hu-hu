@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131792"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604736"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
 
@@ -37,6 +37,7 @@ A leküldéses telepítés a Azure Portal futtatott feladatok szerves része a [
 
 - Győződjön meg arról, hogy a leküldéses telepítés összes [előfeltétele](vmware-azure-install-mobility-service.md) teljesül.
 - Győződjön meg arról, hogy az összes kiszolgálói konfiguráció megfelel a [VMWare virtuális gépek és a fizikai kiszolgálók Azure-ba való vész-helyreállítására szolgáló támogatási mátrix](vmware-physical-azure-support-matrix.md)feltételeinek.
+- A (z) 9,36-es [verziótól](https://support.microsoft.com/help/4578241/) kezdődően a (z) SUSE Linux Enterprise Server 11 SP4 esetében ellenőrizze, hogy a legújabb telepítő elérhető-e [a konfigurációs kiszolgálón és a kibővíthető folyamat kiszolgálóján](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) .
 
 A leküldéses telepítési munkafolyamatot az alábbi szakaszokban ismertetjük:
 
@@ -129,7 +130,7 @@ A mobilitási szolgáltatás leküldéses telepítése során a következő lép
 
 Beállítás | Részletek
 --- | ---
-Szintaxis | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Telepítési naplók | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
 `/InstallLocation`| Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét (bármely mappa).
@@ -140,9 +141,9 @@ Telepítési naplók | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 
 Beállítás | Részletek
 --- | ---
-Szintaxis | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Ügynök konfigurációs naplói | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
-`/CSEndPoint` | Kötelező paraméter. `<CSIP>`a konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
+`/CSEndPoint` | Kötelező paraméter. `<CSIP>` a konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 `/PassphraseFilePath` |  Kötelező. A jelszó helye. Használjon bármely érvényes UNC-vagy helyi elérési útvonalat.
 
 ### <a name="linux-machine"></a>Linux rendszerű gép
@@ -170,7 +171,7 @@ Szintaxis | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePa
 
 Beállítás | Részletek
 --- | ---
-Szintaxis | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
 `-d` | Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét: `/usr/local/ASR` .
 `-v` | Kötelező. Meghatározza azt a platformot, amelyen a mobilitási szolgáltatás telepítve van. <br/> **VMware** VMWare virtuális gépekhez/fizikai kiszolgálókhoz. <br/> **Azure** Azure-beli virtuális gépekhez.
@@ -180,14 +181,14 @@ Szintaxis | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Beállítás | Részletek
 --- | ---
-Szintaxis | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
-`-i` | Kötelező paraméter. `<CSIP>`a konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+`-i` | Kötelező paraméter. `<CSIP>` a konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 `-P` |  Kötelező. A fájl teljes elérési útja, amelyben a rendszer menti a jelszót. Bármilyen érvényes mappát használjon.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-beli virtuálisgép-ügynök
 
 - **Windows rendszerű virtuális gépek**: a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](../virtual-machines/extensions/features-windows.md#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
-- **Linux rendszerű virtuális gépek**: a [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
+- **Linux rendszerű virtuális gépek**: a  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
 
 ## <a name="locate-installer-files"></a>Telepítőfájlok megkeresése
 
@@ -204,13 +205,27 @@ Telepítőfájl | Operációs rendszer (csak 64-bit)
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 és SP3 szervizcsomagot tartalmaz.
-`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+A [mappát manuálisan kell letölteni és elhelyezni](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | 11 SP4 SUSE Linux Enterprise Server
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6,4 </br> Oracle Enterprise Linux 6,5
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16,04 LTS-kiszolgáló
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+
+### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>A legújabb mobilitási ügynök telepítőjének letöltése SUSE 11 SP3-kiszolgálóhoz
+
+Az 9,36-es [verziótól](https://support.microsoft.com/help/4578241/) kezdődően **SUSE Linux Enterprise Server 11 SP3 rendszerű gépek frissítésének vagy védelemmel való ellátásának előfeltétele** :
+
+1. Győződjön meg arról, hogy a legújabb mobilitási ügynök telepítője le van töltve a Microsoft letöltőközpontból, és leküldéses telepítő adattárba helyezi a konfigurációs kiszolgálón és az összes kibővíthető folyamat
+2. [Töltse le](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) a SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét.
+3. Navigáljon a konfigurációs kiszolgálóhoz, másolja a SUSE Linux Enterprise Server 11 SP3-ügynök telepítőjét a következő elérési utakra
+    1. INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+    1.  INSTALL_DIR \home\svsystems\admin\web\sw-mappák
+4. Most navigáljon a társított kibővíthető folyamat-kiszolgálókhoz & másolja a telepítőt a harmadik lépésben említett elérési utakon.
+5. Ha **például**a telepítési útvonal a C:\Program Files (x86) \Microsoft Azure site Recovery, akkor a fent említett könyvtárak lesznek
+    1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
+    1. C:\Program Files (x86) \Microsoft Azure-hely Recovery\home\svsystems\admin\web\sw elérési útja
 
 ## <a name="next-steps"></a>Következő lépések
 

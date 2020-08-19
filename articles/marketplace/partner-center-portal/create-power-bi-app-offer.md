@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030756"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604625"
 ---
-# <a name="create-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat létrehozása
+# <a name="create-a-power-bi-app-offer"></a>Power BI-alkalmazásajánlat létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Power BI alkalmazás-ajánlatokat a Microsoft [AppSource](https://appsource.microsoft.com/).
 
@@ -29,7 +29,7 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
+> Az ajánlat közzétételét követően a csak az ajánlat újbóli közzététele után az online áruházakban megjelenő szerkesztési lehetőségek jelennek meg a partner Centerben. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
 
 > [!IMPORTANT]
 > Ha **Power bi szolgáltatásalkalmazás** nem jelenik meg vagy nem engedélyezett, a fiók nem rendelkezik engedéllyel az ajánlat típusának létrehozásához. Ellenőrizze, hogy teljesítette-e az ajánlat típusával kapcsolatos összes [követelményt](create-power-bi-app-overview.md) , beleértve a fejlesztői fiók regisztrálását is.
@@ -143,10 +143,10 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
 9. Összefoglalás
-10. Description
+10. Leírás
 11. Képernyőképek/videók
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -160,7 +160,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

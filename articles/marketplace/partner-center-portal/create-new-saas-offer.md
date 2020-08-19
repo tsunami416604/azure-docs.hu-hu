@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166722"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604754"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -30,7 +30,7 @@ Ha a kereskedelmi piactéren szeretné megkezdeni a szolgáltatott szoftver-(Saa
    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-saas.png)
 
 > [!NOTE]
-> Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
+> Az ajánlat közzétételét követően a csak az ajánlat újbóli közzététele után az online áruházakban megjelenő szerkesztési lehetőségek jelennek meg a partner Centerben. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
 
 ## <a name="new-offer"></a>Új ajánlat
 
@@ -185,7 +185,7 @@ Ajánlata a AppSource vagy az Azure Marketplace-en lesz közzétéve, az ajánla
 - Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
 - Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
 
-Tekintse meg a kategóriák és alkategóriák teljes listáját, amely minden egyes kirakatra érvényes az ajánlott [eljárások](../gtm-offer-listing-best-practices.md)listájában.
+Tekintse meg az [ajánlott eljárásokat felsoroló ajánlatban](../gtm-offer-listing-best-practices.md)az egyes online áruházakhoz tartozó kategóriák és alkategóriák teljes listáját.
 
 ### <a name="industries"></a>Iparágak
 
@@ -269,11 +269,11 @@ A mező kitöltése kötelező.
 
 - **Adatvédelmi szabályzat** (kötelező) – a szervezet adatvédelmi szabályzatára mutató hivatkozás. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson
 - **CSP program marketing anyagok** (nem kötelező) – adjon meg egy hivatkozást a marketing-anyagokra, ha úgy dönt, hogy kiterjeszti az ajánlatot a [Cloud Solution Provider (CSP)](../cloud-solution-providers.md) programra. A CSP kiterjesztheti ajánlatát a minősített ügyfelek szélesebb körére azáltal, hogy lehetővé teszi a CSP-partnerek számára, hogy csomagot, piacot és viszonteladást nyújtsanak. Ezeknek a viszonteladóknak hozzá kell férniük az anyagokhoz az ajánlat marketingje érdekében. További információ: piacra jutási [szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
-- **Hasznos hivatkozások** (nem kötelező) – opcionális kiegészítő online dokumentumok az alkalmazással vagy a felsorolt kapcsolódó szolgáltatásokkal kapcsolatban a cím és az **URL-** **cím** megadásával. További hasznos hivatkozások hozzáadásához kattintson az **+ URL-cím hozzáadása**lehetőségre.
+- **Hasznos hivatkozások** (nem kötelező) – opcionális kiegészítő online dokumentumok az alkalmazással vagy a felsorolt kapcsolódó szolgáltatásokkal kapcsolatban a cím és az **URL-** **cím** megadásával. További hasznos hivatkozások hozzáadásához kattintson az  **+ URL-cím hozzáadása**lehetőségre.
 
 #### <a name="contact-information"></a>Kapcsolattartási adatok
 
-- **Névjegyek** – minden ügyfél-kapcsolattartóhoz adja meg az alkalmazott **nevét**, **telefonszámát**és **e-mail-** címét (ezeket a *rendszer nem* jeleníti meg nyilvánosan). Támogatási **URL-cím** szükséges a **támogatási kapcsolattartó** csoport számára (ez nyilvánosan látható *lesz* ).
+- **Névjegyek** – minden ügyfél-kapcsolattartóhoz adja meg az alkalmazott  **nevét**,  **telefonszámát**és **e-mail-** címét (ezeket a *rendszer nem* jeleníti meg nyilvánosan). Támogatási **URL-cím**  szükséges a **támogatási kapcsolattartó** csoport számára (ez nyilvánosan látható *lesz* ).
 
   - **Támogatási kapcsolattartó** (kötelező) – általános támogatási kérdésekre.
   - **Engineering Contact** (kötelező) – technikai kérdésekben.
@@ -282,14 +282,14 @@ A mező kitöltése kötelező.
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
 - **Dokumentumok** (kötelező) – kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz, PDF formátumban, legalább egy és legfeljebb három dokumentumhoz.
-- **Képek** – emblémaként szolgáló képek feltöltése PNG formátumban:
+- **Képek**  – emblémaként szolgáló képek feltöltése PNG formátumban:
 
   - **Kicsi** (48 x 48 képpont, kötelező)
   - **Közepes** (90 x 90 képpont, kötelező)
   - **Nagyméretű** (216 x 216 képpont, kötelező)
   - **Széles** (255 x 115 képpont) (nem kötelező)
 
-   Ezt a három embléma-méretet a kirakatok különböző helyein használják:
+   Ezt a három embléma-méretet az online áruházak különböző helyein használják:
 
    -   A kis embléma (48 x 48 képpont) megjelenik az Azure piactér keresési eredményei között, valamint a Microsoft AppSource főoldalon és a keresési eredmények oldalon. 
    -   A közepes embléma (90 x 90 képpont) akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
@@ -486,6 +486,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - Adjon meg tesztelési utasításokat a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget, ha közzé szeretné tenni az ajánlatát a nyilvános (vagy ha egy privát ajánlat, a privát célközönség) számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

@@ -4,20 +4,20 @@ description: Ismerkedjen meg az SQL System Function DateTimeToTicks Azure Cosmos
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a6fcff691ee5278ed0a9e1c132f8ecebbee9431c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227115"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605136"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB)
 
-A megadott DateTime értékre alakítja a jelölőket. Egy pipa 100 nanoszekundumban vagy 1 10-milliomodik jelöl.
-  
+A megadott DateTime értékre alakítja a jelölőket. Egy pipa 100 nanoszekundumban vagy 1 10-milliomodik jelöl. 
+
 ## <a name="syntax"></a>Szintaxis
   
 ```sql
@@ -31,7 +31,7 @@ DateTimeToTicks (<DateTime>)
 
 ## <a name="return-types"></a>Visszatérési típusok
 
-Pozitív egész értéket ad vissza.
+Egy aláírt numerikus értéket ad vissza, amely a UNIX-kor óta eltelt 100 ns-osztásjelek aktuális számát adja eredményül. Ez azt jelenti, hogy a DateTimeToTicks a 100-ns kullancsok számát adja vissza, amelyek 00:00:00 csütörtök és 1970 január 1. között elteltek.
 
 ## <a name="remarks"></a>Megjegyzések
 
@@ -69,7 +69,7 @@ SELECT DateTimeToTicks("2020-01-02T03:04:05Z") AS Ticks
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

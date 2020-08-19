@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 43623e6841c3776e6e83453ad9cb47549fc16021
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170292"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605100"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -101,21 +101,13 @@ ___
 <code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 Válassza ki az oszlopok tömbjét név szerint az adatfolyamban. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha egy oszlophoz nem tartoznak egyezések, a teljes kimenet NULL értékű. A visszaadott értéknek egy Type Conversion functions (toDate, toString,...) típusúnak kell lennie.  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
 * ``toString(byNames(['parent', 'child']))``
-* ````
 * ``byNames(['parent']) ? string``
-* ````
 * ``toLong(byNames(['income']))``
-* ````
 * ``byNames(['income']) ? long``
-* ````
 * ``toBoolean(byNames(['foster']))``
-* ````
 * ``toLong(byNames($debtCols))``
-* ````
 * ``toString(byNames(['a Column']))``
-* ````
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ````
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
@@ -354,7 +346,7 @@ Az órák száma ezredmásodpercben megadva.
 ___
 ### <code>iif</code>
 <code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-Egy feltétel alapján egy vagy több érték is érvényes. Ha más nincs meghatározva, akkor NULL értékűnek számít. Mindkét értéknek kompatibilisnek kell lennie (numerikus, string...).* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
+Egy feltétel alapján egy vagy több érték is érvényes. Ha más nincs meghatározva, akkor NULL értékűnek számít. Mindkét értéknek kompatibilisnek kell lennie (numerikus, string...). * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
 * ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
 * ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
 ___
@@ -505,7 +497,7 @@ ___
 A bal oldali Kitöltés után a karakterláncot a megadott kitöltéssel kell ellátni, amíg az adott hossz nem lesz. Ha a karakterlánc egyenlő vagy nagyobb, mint a hossz, akkor a hosszra van kimetszve.  
 * ``lpad('dumbo', 10, '-') -> '-----dumbo'``  
 * ``lpad('dumbo', 4, '-') -> 'dumb'``  
-*' ' lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
+* ' ' lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
 ___
 ### <code> LTrim</code>
 <code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
@@ -968,7 +960,7 @@ ___
 <code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 Egy dátum év értékének beolvasása.  
 * ``year(toDate('2012-8-8')) -> 2012``  
-##Összesítő függvények a következő függvények csak összesítő, pivot, unpivot és Window átalakításokban érhetők el.
+## Összesítő függvények a következő függvények csak összesítő, pivot, unpivot és Window átalakításokban érhetők el.
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -1161,7 +1153,7 @@ ___
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 A feltételek alapján lekéri egy oszlop elfogulatlan eltérését.  
 * ``varianceSampleIf(region == 'West', sales)``  
-##Az ablak funkciói a következő függvények csak az ablak átalakításokban érhetők el.
+## Az ablak funkciói a következő függvények csak az ablak átalakításokban érhetők el.
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
@@ -1201,6 +1193,6 @@ ___
 Egymást követő sorszámozást rendel egy ablak soraihoz, 1-től kezdődően.  
 * ``rowNumber()``  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg a Expression Builder használatát](concepts-data-flow-expression-builder.md).

@@ -3,12 +3,15 @@ title: Tartalom feltöltése, kódolása és továbbítása a portál használat
 description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet fel, kódolhat és továbbíthat tartalmakat Azure Media Services használatával a portálon.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053354"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605669"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 
@@ -28,7 +31,6 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
 
   * [Felhőbe történő feltöltés és tárolás](storage-account-concept.md)
   * [Eszközök koncepciója](assets-concept.md)
-  * [Eszközök kezelése](manage-asset-concept.md)
 * Miután feltölti a kiváló minőségű digitális médiafájlt egy adategységbe (egy bemeneti eszközre), feldolgozhatja (kódolja vagy elemezheti). A feldolgozott tartalom egy másik eszközre (kimeneti eszközre) mutat. 
     * [Kódolja](encoding-concept.md) a feltöltött fájlt olyan formátumokba, amelyek számos böngészőben és eszközön játszhatók le.
     * [Elemezze](analyzing-video-audio-files-concept.md) a feltöltött fájlt. 
@@ -110,6 +112,6 @@ Vagy másolja a streaming URL-címet, és használja azt az ügyfél-lejátszób
 
 Ha szeretné kipróbálni a többi rövid útmutatót, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben futtatta ezt a rövid útmutatót, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A portál használata tartalom titkosításához](encrypt-content-quickstart.md)

@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan választhat a standard (manuális) kiépített 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116808"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605202"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>A standard (manuális) és az automatikus méretezés kiépített átviteli sebességének kiválasztása 
 
@@ -26,7 +26,7 @@ Ha kiosztott átviteli sebességet használ, a számítási feladathoz a számí
 
 Az alábbi táblázat a standard (manuális) és az automatikus skálázás közötti magas szintű összehasonlítást mutatja be.
 
-|Description|Standard (manuális)|Automatikus méretezés|
+|Leírás|Standard (manuális)|Automatikus méretezés|
 |-------------|------|-------|
 |Legmegfelelőbb a következőhöz:|Állandó vagy kiszámítható forgalommal rendelkező számítási feladatok|Változó vagy kiszámíthatatlan forgalommal rendelkező számítási feladatok. Lásd: [az autoscale használatának esetei](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Működés|Kiépítheti a statikus RU/s mennyiségét az `T` idő függvényében, hacsak nem módosítja őket manuálisan. Másodpercenként akár `T` ru/s átviteli sebességet is használhat. <br/><br/>Ha például a standard (manuális) 400 RU/s érték van megadva, akkor az átviteli sebesség a 400 RU/s-ben marad.|Állítsa be a legmagasabb vagy a maximális RU/mp értéket, `Tmax` Ha nem szeretné, hogy a rendszeren túllépjek. A rendszer automatikusan méretezi az átviteli sebességet `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Ha például az 4000 RU/s értékre állítja be a maximálisan engedélyezett RU/s értéket, a rendszer a 400-4000 RU/s-t fogja méretezni.|
@@ -37,7 +37,10 @@ Az alábbi táblázat a standard (manuális) és az automatikus skálázás köz
 ## <a name="understand-your-traffic-patterns"></a>A forgalmi minták megismerése
 
 ### <a name="new-applications"></a>Új alkalmazások ###
-Ha új alkalmazást hoz létre, és még nem ismeri a forgalmi mintát, érdemes lehet az RU/s (vagy a minimum RU/s) belépési ponttal kezdeni a kiépítés elkerülését az elején. Ha azonban olyan kis alkalmazásra van szüksége, amely nem igényel nagy méretet, érdemes csak a minimálisan szükséges RU/s-t kiépíteni a költségeket optimalizálni. Mindkét esetben a standard (manuális) vagy az automatikus méretezés is megfelelő. A következőket kell figyelembe vennie:
+
+Ha új alkalmazást hoz létre, és még nem ismeri a forgalmi mintát, érdemes lehet az RU/s (vagy a minimum RU/s) belépési ponttal kezdeni a kiépítés elkerülését az elején. Ha azonban olyan kis alkalmazásra van szüksége, amely nem igényel nagy méretet, érdemes csak a minimálisan szükséges RU/s-t kiépíteni a költségeket optimalizálni. Az alacsony várható adatforgalommal rendelkező kisméretű alkalmazások esetében érdemes lehet a [kiszolgáló](throughput-serverless.md) nélküli kapacitás üzemmódot is figyelembe venni.
+
+Függetlenül attól, hogy standard (manuális) vagy automatikus méretezést szeretne használni, a következő szempontokat kell figyelembe vennie:
 
 Ha 400 RU/s belépési pontján standard (manuális) RU/s-t hoz létre, akkor nem fogja tudni használni a 400 RU/s-t, hacsak nem módosítja manuálisan az átviteli sebességet. Az 400 RU/s esetében a standard (manuális) kiosztott átviteli sebesség (óránként) alapján számítjuk fel a díjat.
 
@@ -66,7 +69,7 @@ Ha autoskálázást használ, a Azure Monitor használatával megtekintheti a ki
 > [!NOTE]
 > Ha standard (manuális) kiosztott átviteli sebességet használ, a **kiosztott átviteli sebesség** mérőszáma arra utal, hogy mit állított be a felhasználó. Ha az autoscale átviteli sebességet használja, ez a metrika a rendszer aktuálisan méretezhető RU/s-re vonatkozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az [ru-kalkulátor](https://cosmos.azure.com/capacitycalculator/) használatával becsülheti meg az új számítási feladatok átviteli sebességét.
 * A meglévő számítási feladatok figyeléséhez használja a [Azure monitor](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) .
 * Megtudhatja, hogyan építhet ki az [Azure Cosmos-adatbázison vagy-tárolón az adatméretezési sebességet](how-to-provision-autoscale-throughput.md).

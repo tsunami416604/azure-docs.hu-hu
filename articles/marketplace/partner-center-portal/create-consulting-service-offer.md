@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032594"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606157"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -38,7 +38,7 @@ A kereskedelmi piactéren való közzététel előnyei:
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-consulting-service.png)
 
 >[!NOTE]
->Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
+>Az ajánlat közzétételét követően a csak az ajánlat újbóli közzététele után az online áruházakban megjelenő szerkesztési lehetőségek jelennek meg a partner Centerben. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
 
 ## <a name="new-offer"></a>Új ajánlat
 
@@ -101,7 +101,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Elemzés
     - Alkalmazások modernizálása
     - Archívum
-    - Mesterséges intelligencia és gépi tanulás
+    - AI + Machine Learning
     - Backup
     - Big Data
     - Adatplatform
@@ -110,7 +110,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Vészhelyreállítás
     - Identitás
     - Eszközök internetes hálózata
-    - Áttelepítés
+    - Migrálás
     - Hálózatkezelés
     - Biztonság
     - Tárolás
@@ -160,7 +160,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 8. Képernyőképek/videók
 9. Dokumentumok
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 

@@ -5,39 +5,32 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/19/2020
+ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523536"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605264"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben
 
-Az Azure Cosmos DB díjszabási modellje leegyszerűsíti a költségkezelést és -tervezést. Az Azure Cosmos DB-vel a kiosztott átviteli sebességért és a felhasznált tárterületért fizet.
+Az Azure Cosmos DB díjszabási modellje leegyszerűsíti a költségkezelést és -tervezést. A Azure Cosmos DB az adatbázison elvégzett műveletekért és az adatok által felhasznált tárterületért kell fizetnie.
 
-* **Kiépített átviteli sebesség**: a [kiépített átviteli sebesség](how-to-choose-offer.md) (más néven fenntartott átviteli sebesség) garantálja a nagy teljesítményt bármilyen méretben. Meg kell adnia a szükséges átviteli sebességet (RU/mp), és Azure Cosmos DB a konfigurált átviteli sebesség biztosításához szükséges erőforrásokat. A maximális kiosztott átviteli sebességért óradíjat számolunk fel egy adott órában. Manuálisan is kiépítheti az átviteli sebességet, vagy használhatja az [autoskálázást](provision-throughput-autoscale.md).
+- **Adatbázis-műveletek**: az adatbázis-műveletekért felszámított módszer a használt Azure Cosmos-fiók típusától függ.
+
+  - **Kiépített átviteli sebesség**: a [kiépített átviteli sebesség](set-throughput.md) (más néven fenntartott átviteli sebesség) garantálja a nagy teljesítményt bármilyen méretben. Megadhatja a szükséges átviteli [sebességet másodpercenként (](request-units.md) ru/s), és Azure Cosmos db a konfigurált átviteli sebesség biztosításához szükséges erőforrásokat. [Az átviteli sebességet egy adatbázison vagy tárolón is kiépítheti](set-throughput.md). A számítási feladatok igénye alapján bármikor fel-vagy lekicsinyítheti az átviteli sebességet, vagy használhatja az [autoskálázást](provision-throughput-autoscale.md) (bár az adatbázison vagy tárolón legalább egy minimális átviteli sebesség szükséges). A maximális kiosztott átviteli sebességért óradíjat számolunk fel egy adott órában.
 
    > [!NOTE]
-   > Mivel a kiépített átviteli sebességi modell erőforrásokat rendel a tárolóhoz vagy az adatbázishoz, akkor is a kiosztott átviteli sebességért kell fizetnie, akkor is, ha nem futtat semmilyen munkaterhelést.
+   > Mivel a kiépített átviteli sebességi modell erőforrásokat rendel a tárolóhoz vagy az adatbázishoz, a kiosztott átviteli sebességért kell fizetnie, akkor is, ha nem futtat semmilyen munkaterhelést.
 
-* **Felhasználható tárterület**: a rendszer az adattároláshoz felhasznált teljes tárterület (GB) és egy adott óra indexei esetében átalány-díjat számít fel.
+  - **Kiszolgáló**nélküli: [kiszolgáló](serverless.md) nélküli módban nem szükséges átviteli sebességet kiépíteni az Azure Cosmos-fiókban lévő erőforrások létrehozásakor. A számlázási időszak végén az adatbázis-műveletek által felhasznált kérelmek mennyiségét számoljuk fel.
 
-A kiépített átviteli sebesség ( [kérési egység](request-units.md) /másodperc) szerint (ru/s) lehetővé teszi az adatok tárolók vagy adatbázisokba történő olvasását és írását. [Az átviteli sebességet egy adatbázison vagy tárolón is kiépítheti](set-throughput.md). A számítási feladatok igénye alapján bármikor felgyorsíthatja az átviteli sebességet. A Azure Cosmos DB díjszabása rugalmas, és az adatbázison vagy tárolón konfigurált átviteli sebesség arányos. A minimális átviteli sebesség és a tárolási értékek, valamint a skálázási növekmények a díjszabás és a rugalmasság spektrumának teljes skáláját biztosítják az ügyfelek összes szegmense számára, a kis mérettől a nagy méretű tárolóig. Minden adatbázishoz vagy tárolóhoz óradíjat számolunk fel a 100 RU/s egységben kiosztott átviteli sebességért, amely legalább 400 RU/s, és a GB-ban felhasznált tárterület. A kiépített átviteli sebességtől eltérően a tárterületet a szolgáltatás fogyasztási alapon számlázza. Ez azt eredményezi, hogy nem kell előzetesen lefoglalnia a tárterületet. Csak a felhasznált tárterületért kell fizetnie.
+- **Tárolás**: az adat-és indexek által az adott órában felhasznált teljes tárterület (GB-ban) átalány-díjait számítjuk fel. A tárterületet fogyasztás alapján számítjuk fel, így nem kell előzetesen lefoglalnia a tárterületet. Csak a felhasznált tárterületért kell fizetnie.
 
-További információkért tekintse meg a [Azure Cosmos db díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) , és [Ismerkedjen meg a Azure Cosmos db számlával](understand-your-bill.md).
+A Azure Cosmos DB díjszabási modellje konzisztens az összes API-ban. További információkért tekintse meg a [Azure Cosmos db díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/), amely ismerteti [a Azure Cosmos db számláját](understand-your-bill.md) , valamint [azt, hogy a Azure Cosmos db díjszabási modellje hogyan költséghatékony az ügyfelek számára](total-cost-ownership.md).
 
-A Azure Cosmos DB díjszabási modellje konzisztens az összes API-ban. További információ: [How Azure Cosmos db díjszabási modell költséghatékony az ügyfelek számára](total-cost-ownership.md). Egy adatbázison vagy tárolón legalább egy átviteli sebesség szükséges, amely biztosítja a SLA-kat, és növelheti vagy csökkentheti az egyes 100 RU/s-k kiépített átviteli sebességét.
-
-Ha az Egyesült államokbeli nem kormányzati régióba helyezi üzembe a Azure Cosmos DB-fiókját, akkor a két adatbázis és a tároló-alapú átviteli sebesség esetében jelenleg a minimális díj körülbelül 24 USD/hó. A díjszabás a használt régiótól függ, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . Ha a számítási feladat több tárolót használ, az adatbázis-szintű átviteli sebességre is optimalizálható, mert az adatbázis-szintű átviteli sebesség lehetővé teszi, hogy a tárolók között tetszőleges számú tárolót osszon meg egy adatbázisban. A következő táblázat összefoglalja a kiosztott átviteli sebességet és a különböző entitások költségeit:
-
-|**Entitás**  | **Minimális átviteli sebesség** |**Méretezési növekmények** |**Kiépítési hatókör** |
-|---------|---------|---------|-------|
-|Adatbázis    | 400 RU/s    | 100 RU/s   |Az átviteli sebesség az adatbázis számára van fenntartva, és a tárolók az adatbázison belül vannak megosztva |
-|Tároló     | 400 RU/s   | 100 RU/s  |Az átviteli sebesség egy adott tároló számára van fenntartva |
-
-Ahogy az előző táblázatban is látható, a Azure Cosmos DB minimális átviteli sebessége körülbelül $24/hó. Ha a minimális átviteli sebesség és az idő múlásával növeli az éles számítási feladatok támogatását, a költségek körülbelül 6 USD/hó-onként növekednek. A díjszabás a használt régiótól függ, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . A Azure Cosmos DB díjszabási modellje rugalmas, és a vertikális fel-vagy leskálázás során az ár zökkenőmentesen növekszik vagy csökken.
+Ha az Egyesült államokbeli nem kormányzati régióba helyezi üzembe a Azure Cosmos DB-fiókját, akkor az adatbázis és a tároló-alapú átviteli sebesség minimális ára a kiépített átviteli sebesség. A kiszolgáló nélküli módban nincs minimális díj. A díjszabás a használt régiótól függ, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
 
@@ -53,7 +46,7 @@ A Azure Cosmos DB számos lehetőséget kínál a fejlesztők számára ingyenes
 
 ## <a name="pricing-with-reserved-capacity"></a>Díjszabás a fenntartott kapacitással
 
-Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pénzt takaríthat meg, ha egy vagy három évig Azure Cosmos db erőforrásokra előre fizet. Jelentős mértékben csökkentheti a költségeket egy-vagy hároméves előzetes kötelezettségvállalásokkal, és a normál díjszabáshoz képest 20-65%-os kedvezményt takaríthat meg. Azure Cosmos DB fenntartott kapacitással csökkentheti a költségeket a kiosztott átviteli sebesség (RU/s) előre fizetve egy évig vagy három évig, és kedvezményt kap a kiosztott átviteli sebességhez. 
+Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pénzt takaríthat meg, ha a kiépített átviteli módot a Azure Cosmos db-erőforrások előfizetésével, akár egy évig, akár három évig is elvégezheti. Jelentős mértékben csökkentheti a költségeket egy-vagy hároméves előzetes kötelezettségvállalásokkal, és a normál díjszabáshoz képest 20-65%-os kedvezményt takaríthat meg. Azure Cosmos DB fenntartott kapacitással csökkentheti a költségeket a kiosztott átviteli sebesség (RU/s) előre fizetve egy évig vagy három évig, és kedvezményt kap a kiosztott átviteli sebességhez. 
 
 A fenntartott kapacitás számlázási kedvezményt nyújt, és nincs hatással az Azure Cosmos DB-erőforrások futtatási állapotára. A fenntartott kapacitás minden API-hoz elérhető, amely magában foglalja az MongoDB, a Cassandra, az SQL, a Gremlin és az Azure-táblákat, valamint a világ minden régióját. A fenntartott kapacitást előre is megtudhatja, [ha Azure Cosmos db erőforrásokhoz fenntartott](cosmos-db-reserved-capacity.md) kapacitással rendelkezik, és fenntartott kapacitást vásárol a [Azure Portal](https://portal.azure.com/).
 

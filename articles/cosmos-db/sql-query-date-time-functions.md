@@ -4,15 +4,15 @@ description: A dátum-és időértékek az SQL rendszerfunkcióinak megismerése
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 460abbc0b2a2f277aaeed57c5b938de530696776
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224951"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605189"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Dátum és idő függvények (Azure Cosmos DB)
 
@@ -20,7 +20,7 @@ A dátum-és időfüggvények lehetővé teszik a DateTime és timestamp típus�
 
 ## <a name="functions-to-obtain-the-date-and-time"></a>A dátum és idő beszerzéséhez szükséges függvények
 
-A következő skaláris függvények lehetővé teszik az aktuális UTC-dátum és idő megszerzését két formában: egy olyan karakterláncot, amely megfelel az ISO 8601 formátumnak, vagy egy numerikus időbélyegnek, amelynek értéke a UNIX-kor (ezredmásodperc):
+A következő skaláris függvények lehetővé teszik az aktuális UTC dátum és idő lekérését három formában: egy olyan karakterláncot, amely megfelel az ISO 8601 formátumnak, egy numerikus időbélyegnek, amelynek értéke a UNIX EPOCH óta eltelt ezredmásodpercek száma, illetve numerikus osztásjelek száma, amelynek értéke a UNIX-kor óta eltelt 100 ns. :
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
@@ -28,15 +28,18 @@ A következő skaláris függvények lehetővé teszik az aktuális UTC-dátum �
 
 ## <a name="functions-to-work-with-datetime-values"></a>Függvények a DateTime értékekkel való munkavégzéshez
 
-A következő függvények lehetővé teszik a dátum-és időértékek egyszerű kezelését:
+A következő függvények segítségével egyszerűen módosíthatja a DateTime, a timestamp és a Tick értékeket:
 
 * [DateTimeAdd](sql-query-datetimeadd.md)
 * [DateTimeDiff](sql-query-datetimediff.md)
 * [DateTimeFromParts](sql-query-datetimefromparts.md)
 * [DateTimePart](sql-query-datetimepart.md)
 * [DateTimeToTicks](sql-query-datetimetoticks.md)
+* [DateTimeToTimestamp](sql-query-datetimetotimestamp.md)
+* [TicksToDateTime](sql-query-tickstodatetime.md)
+* [TimestampToDateTime](sql-query-timestamptodatetime.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
 - [Bevezetés a Azure Cosmos DBba](introduction.md)

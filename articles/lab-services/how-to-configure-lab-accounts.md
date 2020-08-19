@@ -3,12 +3,12 @@ title: Virtuális gépek automatikus leállításának konfigurálása a Azure L
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális gépek automatikus leállítása a labor-fiókban.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589799"
+ms.locfileid: "88603890"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Virtuális gépek automatikus leállításának beállítása labor-fiókhoz
 
@@ -33,6 +33,6 @@ Tekintse át az automatikus leállítási funkciókról szóló további részle
 
     A beállítás (ok) letiltásához törölje a jelölőnégyzet (eke) t ezen a lapon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogy a labor tulajdonosa hogyan konfigurálhatja vagy felülbírálhatja ezt a beállítást a tesztkörnyezet szintjén, tekintse [meg a virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor](how-to-enable-shutdown-disconnect.md) lehetőséget.
+Ha szeretné megtudni, hogy a labor tulajdonosa hogyan konfigurálhatja vagy felülbírálhatja ezt a beállítást a labor szintjén, tekintse meg a [virtuális gépek automatikus leállításának beállítása laborhoz](how-to-enable-shutdown-disconnect.md) című témakört.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2f464a0b519dd7f378790c135a05d04e02704ac8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027732"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605330"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás az Azure Cosmos DB használatával
 
@@ -34,8 +34,8 @@ Globálisan elosztott adatbázisként Azure Cosmos DB átfogó SLA-kat biztosít
 
 |Művelettípus  | Egyetlen régió |Több régió (egyrégiós írások)|Többrégiós (több régiós írások) |
 |---------|---------|---------|-------|
-|Írja    | 99,99    |99,99   |99,999|
-|Olvasás     | 99,99    |99,999  |99,999|
+|Írások    | 99,99    |99,99   |99,999|
+|Olvasások     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > A gyakorlatban a kötött elavulás, munkamenet, konzisztens előtag és végleges konzisztencia-modell tényleges írási rendelkezésre állása jelentősen meghaladja a közzétett SLA-kat. Az összes konzisztencia tényleges olvasási rendelkezésre állása jelentősen meghaladja a közzétett SLA-kat.
@@ -79,7 +79,7 @@ A zóna-redundancia a [többrégiós írási funkciók replikálásának](how-to
 
 Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással.
 
-Ez a funkció a következő helyen érhető el: Egyesült Királyság déli régiója, Délkelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, *Nyugat-Európa, USA 2. nyugati* régiója, Kelet-Japán, Észak-Európa
+Ez a funkció a következő helyen érhető el: Egyesült Királyság déli régiója, Délkelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Nyugat-Európa, USA 2. nyugati régiója, Kelet- *Japán, Észak-Európa, Kelet-Ausztrália Közép-Németország*
 
 > [!NOTE]
 > Az egyetlen régióhoz tartozó Azure Cosmos-fiók Availability Zonesának engedélyezése olyan díjakat eredményez, amelyek egy további régiónak a fiókhoz való hozzáadásával egyenértékűek. A díjszabással kapcsolatos részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) és a [többrégiós költségeket Azure Cosmos db](optimize-cost-regions.md) cikkekben.
@@ -88,9 +88,9 @@ A következő táblázat összefoglalja a különböző fiókok konfigurációin
 
 |KPI  |Egyetlen régió Availability Zones nélkül (nem AZ)  |Egyetlen régió Availability Zones (AZ)  |Multi-region writes with Availability Zones (AZ, 2 Regions) – a javasolt beállítás |
 |---------|---------|---------|---------|
-|Rendelkezésre állási SLA írása | 99.99% | 99.99% | 99.999% |
-|Rendelkezésre állási SLA olvasása  | 99.99% | 99.99% | 99.999% |
-|Price | Egyetlen régió számlázási díja | Az önálló régió rendelkezésre állási zónájának számlázási sebessége | Többrégiós számlázási díj |
+|Rendelkezésre állási SLA írása | 99,99% | 99,99% | 99.999% |
+|Rendelkezésre állási SLA olvasása  | 99,99% | 99,99% | 99.999% |
+|Ár | Egyetlen régió számlázási díja | Az önálló régió rendelkezésre állási zónájának számlázási sebessége | Többrégiós számlázási díj |
 |Zónák hibái – adatvesztés | Adatvesztés | Nincs adatvesztés | Nincs adatvesztés |
 |Zónák hibái – rendelkezésre állás | Rendelkezésre állás elvesztése | Nincs rendelkezésre állási veszteség | Nincs rendelkezésre állási veszteség |
 |Olvasási késés | Régiók közötti régió | Régiók közötti régió | Alacsony |
@@ -137,7 +137,7 @@ Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezh
 
 - Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután olvassa el a következő cikkeket:
 

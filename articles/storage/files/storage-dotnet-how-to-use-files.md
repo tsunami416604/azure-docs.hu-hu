@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7ef9d87db1981c7721c2398e858404c2527dd274
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167895"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605792"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -99,7 +99,7 @@ Ezután mentse a hitelesítő adatait a projekt `App.config` fájljába. A **meg
 ```
 
 > [!NOTE]
-> Az Azure Storage Emulator legújabb verziója nem támogatja a Azure Files. A kapcsolati sztringnek egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
+> Az Azure Storage Emulator és a Azurite nyílt forráskódú emulátor legújabb verziói nem támogatják a Azure Files. A kapcsolati sztringnek egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
@@ -480,7 +480,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Ha bármilyen problémába ütközik, tekintse meg a [Windows Azure Files kapcsolatos problémák elhárítása](storage-troubleshoot-windows-file-connection-problems.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Filesről:
 

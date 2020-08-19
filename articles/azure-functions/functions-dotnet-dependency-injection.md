@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a
 author: craigshoemaker
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 09/05/2019
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: ee3caef30c573763db56f89aa4900aa62b8a436a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206109"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603870"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -186,7 +186,7 @@ A következő példában szereplő `host.json` fájl hozzáadja a naplózási sz
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Description|
+|Szolgáltatástípus|Élettartama|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -226,10 +226,10 @@ A `Startup.Configure` metódusból kinyerheti a példány értékeit az `IConfig
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 Meghívja `Bind` azokat az értékeket, amelyek a konfigurációból az egyéni példányba egyező tulajdonságokat tartalmaznak. A beállítások példány mostantól elérhető a NOB-tárolóban egy függvénybe való behelyezéshez.
@@ -253,8 +253,57 @@ public class HttpTrigger
 
 A beállításokkal kapcsolatos további részletekért tekintse meg a [ASP.net Core beállítások mintáját](/aspnet/core/fundamentals/configuration/options) .
 
-> [!WARNING]
-> Ne kísérelje meg olyan fájlok értékének olvasását, mint * alocal.settings.jsvagy a* *appSettings. { Environment}. JSON* a használati tervben. Az ezekből a fájlokból az trigger-kapcsolatokhoz kapcsolódó értékek nem érhetők el, mert az üzemeltetési infrastruktúra nem fér hozzá a konfigurációs adatokhoz, mivel a méretezési vezérlő új példányokat hoz létre az alkalmazáshoz.
+### <a name="customizing-configuration-sources"></a>Konfigurációs források testreszabása
+
+> [!NOTE]
+> A konfiguráció forrásának testreszabása Azure Functions gazdagép 2.0.14192.0 és 3.0.14191.0-verziójának elején érhető el.
+
+További konfigurációs források megadásához bírálja felül a `ConfigureAppConfiguration` metódust a Function app `StartUp` osztályában.
+
+Az alábbi minta egy alapértékből és egy opcionális, a környezetre jellemző alkalmazás-beállítási fájlokból származó konfigurációs értékeket is felvesz.
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+Adja hozzá a konfigurációs szolgáltatókat a `ConfigurationBuilder` tulajdonságához `IFunctionsConfigurationBuilder` . További információ a konfigurációs szolgáltatók használatáról: [konfiguráció a ASP.net Coreban](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers).
+
+A a `FunctionsHostBuilderContext` következőből származik: `IFunctionsConfigurationBuilder.GetContext()` . Ezzel a kontextussal kérheti le az aktuális környezeti nevet, és feloldja a konfigurációs fájlok helyét a Function app mappában.
+
+Alapértelmezés szerint a konfigurációs fájlok (például * aappsettings.js* ) nem másolódnak automatikusan a Function alkalmazás kimeneti mappájába. Frissítse a *. csproj* fájlt, hogy az megfeleljen a következő mintának a fájlok másolásának biztosításához.
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> A felhasználási vagy prémium csomagokban futó Function apps esetében az eseményindítókban használt konfigurációs értékek módosítása a skálázási hibákhoz vezethet. Ha az osztály ezen tulajdonságok bármelyikét megváltoztatja, a `FunctionsStartup` Function app indítási hibát eredményez.
 
 ## <a name="next-steps"></a>Következő lépések
 
