@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3df1ccadb69f02272c44a0ba574805c816151dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405976"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520940"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>A LUIS-alkalmazások programozott módon történő létrehozása Node.js
 
@@ -27,7 +27,7 @@ A LUIS egy programozott API-t biztosít, amely mindent tesz a [Luis](luis-refere
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Jelentkezzen be a [Luis](luis-reference-regions.md) webhelyre, és keresse meg a [szerzői kulcsot](luis-how-to-azure-subscription.md#authoring-key) a Fiókbeállítások menüpontban. Ezt a kulcsot használja a szerzői API-k meghívásához.
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 * Ez a cikk CSV-vel kezdődik a feltételezett vállalati naplófájlok felhasználói kérésekhez. Töltse le [itt](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Telepítse a legújabb Node.jst a NPM. Töltse le innen [.](https://nodejs.org/en/download/)
 * **[Ajánlott]** A Visual Studio Code az IntelliSense és a hibakeresés szolgáltatáshoz ingyenesen [letölthető innen.](https://code.visualstudio.com/)
@@ -186,7 +186,7 @@ Miután a szkript befejeződik, bejelentkezhet a [luisba](luis-reference-regions
 ![TurnOn szándék](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás tesztelése és betanítása a LUIS webhelyén](luis-interactive-test.md)
