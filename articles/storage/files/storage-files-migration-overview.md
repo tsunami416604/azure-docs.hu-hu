@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827860"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654259"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -26,7 +26,7 @@ Az Azure több elérhető felhőalapú tárhelyet tartalmaz. Az Azure-ba törté
 
 Az [Azure-fájlmegosztás](storage-files-introduction.md) alkalmas az általános célú fájlok adataira. Ez az adat magában foglalja a helyszíni SMB-vagy NFS-megosztások használatát. A [Azure file Sync](storage-sync-files-planning.md)használatával több Azure-fájlmegosztás tartalmát is gyorsítótárazhatja a helyszíni Windows Servert futtató kiszolgálókon.
 
-Egy olyan alkalmazás esetében, amely jelenleg egy helyszíni kiszolgálón fut, a fájlok Azure-fájlmegosztás alapján történő tárolása jó választás lehet. Az alkalmazást áthelyezheti az Azure-ba, és megosztott tárolóként használhatja az Azure-fájlmegosztást. Ebben a forgatókönyvben az [Azure-lemezeket](../../virtual-machines/windows/managed-disks-overview.md) is fontolóra veheti.
+Egy olyan alkalmazás esetében, amely jelenleg egy helyszíni kiszolgálón fut, a fájlok Azure-fájlmegosztás alapján történő tárolása jó választás lehet. Az alkalmazást áthelyezheti az Azure-ba, és megosztott tárolóként használhatja az Azure-fájlmegosztást. Ebben a forgatókönyvben az [Azure-lemezeket](../../virtual-machines/managed-disks-overview.md) is fontolóra veheti.
 
 Egyes felhőalapú alkalmazások nem függnek az SMB-től, illetve a számítógép helyi adathozzáférésével vagy közös hozzáférésével. Ezekhez az alkalmazásokhoz, például az [Azure-blobokhoz](../blobs/storage-blobs-overview.md) , gyakran a legjobb választás.
 
@@ -126,7 +126,7 @@ Az alábbi táblázat a Microsoft-eszközöket és az Azure-fájlmegosztás jele
 |![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
 |||||
 
-*\*Teljes hűség: megfelel az Azure-fájlmegosztás képességeinek, vagy meghaladja azokat.*
+*\* Teljes hűség: megfelel az Azure-fájlmegosztás képességeinek, vagy meghaladja azokat.*
 
 ### <a name="migration-helper-tools"></a>Áttelepítési segítő eszközök
 

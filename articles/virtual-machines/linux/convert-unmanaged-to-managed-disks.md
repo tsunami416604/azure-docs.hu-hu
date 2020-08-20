@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 072b0e3bcf4da8e2c71082a549d42d105c06ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659804"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654429"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linuxos virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
-Ha már létezik olyan linuxos virtuális gép (VM), amely nem felügyelt lemezeket használ, a virtuális gépeket átalakíthatja az [Azure Managed Disks](../linux/managed-disks-overview.md)használatára. Ez a folyamat az operációsrendszer-lemezt és a csatlakoztatott adatlemezeket is átalakítja.
+Ha már létezik olyan linuxos virtuális gép (VM), amely nem felügyelt lemezeket használ, a virtuális gépeket átalakíthatja az [Azure Managed Disks](../managed-disks-overview.md)használatára. Ez a folyamat az operációsrendszer-lemezt és a csatlakoztatott adatlemezeket is átalakítja.
 
 Ez a cikk bemutatja, hogyan alakíthatja át a virtuális gépeket az Azure CLI használatával. Ha telepíteni vagy frissíteni szeretné, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. 
 
@@ -104,4 +104,4 @@ A rendszer a Migrálás befejezése után leállítja és újraindítja a virtu�
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a tárolási lehetőségekről: az [Azure Managed Disks áttekintése](../windows/managed-disks-overview.md).
+További információ a tárolási lehetőségekről: az [Azure Managed Disks áttekintése](../managed-disks-overview.md).

@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 520754c08fc9bf89949739987b41974eccdcd29d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292145"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654769"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>A Lsv2 sorozatú linuxos virtuális gépek teljesítményének optimalizálása
 
 A Lsv2 sorozatú virtuális gépek számos olyan munkaterhelést támogatnak, amelyek nagy I/O-és átviteli sebességet igényelnek a helyi tárterületen számos alkalmazás és iparág esetében.  A Lsv2 sorozat ideális a Big Database, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok, például a Cassandra, a MongoDB, a Cloudera és a Redis számára.
 
@@ -83,7 +83,7 @@ Az ügyfél védelme érdekében az adatok biztonságos törlését szolgáló f
 - A virtuális gép nem Kifogástalan állapotba kerül, és hardveres probléma miatt egy másik csomópontra kell a szolgáltatást meggyógyítania.
 - Kis mennyiségű tervezett karbantartási karbantartási művelet, amely megköveteli, hogy a virtuális gép egy másik gazdagépre legyen hozzárendelve a karbantartáshoz.
 
-Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
+Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](../backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

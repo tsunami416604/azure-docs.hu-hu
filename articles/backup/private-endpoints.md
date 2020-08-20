@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432876"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654701"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -25,11 +25,11 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 - A Recovery Services-tárolót (mindkettő) Azure Backup és Azure Site Recovery is használja, ez a cikk a privát végpontok használatát ismerteti csak Azure Backup esetén.
 - Azure Active Directory jelenleg nem támogatja a privát végpontokat. A Azure Active Directory működéséhez szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez.
 - A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt le kell tiltania a hálózati házirendeket.
-- A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha azt a 1 2020. május előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és kattintson az **újbóli regisztrálás**gombra.
+- A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha azt a 1 2020. május előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és válassza az **ismételt regisztráció**lehetőséget.
 
 ## <a name="recommended-and-supported-scenarios"></a>Ajánlott és támogatott forgatókönyvek
 
-Habár a privát végpontok engedélyezve vannak a tárolóhoz, az SQL-és SAP HANA-munkaterhelések biztonsági mentésére és helyreállítására szolgálnak az Azure-beli virtuális gépeken és a MARS-ügynök biztonsági mentésében. A tárolót használhatja más számítási feladatok biztonsági mentéséhez is (a saját végpontokat azonban nem szükséges). Az SQL és a SAP HANA számítási feladatainak és a MARS-ügynök használatával történő biztonsági mentésének kiegészítéseként az Azure-beli virtuális gépek biztonsági mentése esetén a rendszer a fájlok helyreállítását is elvégzi. További információkért tekintse meg a következő táblázatot:
+Habár a privát végpontok engedélyezve vannak a tárolóhoz, az SQL-és SAP HANA-munkaterhelések biztonsági mentésére és helyreállítására szolgálnak az Azure-beli virtuális gépeken és a MARS-ügynök biztonsági mentésében. A tárolót más számítási feladatok biztonsági mentéséhez is használhatja (a saját végpontokat azonban nem igénylik). Az SQL és a SAP HANA számítási feladatainak és a MARS-ügynök használatával történő biztonsági mentésének kiegészítéseként az Azure-beli virtuális gépek biztonsági mentésére szolgáló fájlok helyreállítására is használhatók a privát végpontok. További információkért tekintse meg a következő táblázatot:
 
 | Munkaterhelések biztonsági mentése az Azure-beli virtuális gépen (SQL, SAP HANA), biztonsági mentés a MARS-ügynök használatával | A privát végpontok használata ajánlott a biztonsági mentéshez és a visszaállításhoz anélkül, hogy engedélyezni kellene a-t a virtuális hálózatok Azure Backup vagy Azure Storage-beli IP-címeinek/teljes tartománynevének listázásához. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -55,7 +55,7 @@ A felügyelt identitások lehetővé teszik, hogy a tároló privát végpontoka
 
     ![Identitás állapotának módosítása a következőre](./media/private-endpoints/identity-status-on.png)
 
-1. Módosítsa az **állapotot** **a be** értékre, majd kattintson a **Mentés**gombra.
+1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés**lehetőséget.
 
 1. A rendszer létrehoz egy **objektumazonosító-azonosítót** , amely a tár felügyelt identitása.
 
@@ -72,8 +72,8 @@ Használhatja az egyéni DNS-kiszolgálókat is. Az egyéni DNS-kiszolgálók ha
 
 Két kötelező DNS-zónát kell létrehoznia:
 
-- `privatelink.blob.core.windows.net`(biztonsági mentés/visszaállítás céljából)
-- `privatelink.queue.core.windows.net`(a szolgáltatással való kommunikációhoz)
+- `privatelink.blob.core.windows.net` (biztonsági mentés/visszaállítás céljából)
+- `privatelink.queue.core.windows.net` (a szolgáltatással való kommunikációhoz)
 
 1. Keresse meg **saját DNS zónát** a **minden szolgáltatás** keresési sávján, és válassza ki **saját DNS zónát** a legördülő listából.
 
@@ -90,7 +90,7 @@ Két kötelező DNS-zónát kell létrehoznia:
 
     | **Zóna**                           | **Szolgáltatás** | **Előfizetés és erőforráscsoport (RG) részletei**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni **RG**: vagy a VNET vagy a privát végponthoz tartozó RG. |
+    | `privatelink.blob.core.windows.net`  | Blob        | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni  **RG**: vagy a VNET vagy a privát végponthoz tartozó RG. |
     | `privatelink.queue.core.windows.net` | Üzenetsor       | **RG**: vagy a VNET vagy a privát végponthoz tartozó RG |
 
     ![saját DNS zóna létrehozása](./media/private-endpoints/create-private-dns-zone.png)
@@ -105,7 +105,7 @@ Ha önálló, saját DNS-zónát szeretne létrehozni az Azure-ban, ugyanezt a l
 
 | **Zóna**                                                     | **Szolgáltatás** | **Az előfizetés és az erőforráscsoport részletei**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Megjegyzés**: a *geo* itt a régiókódra hivatkozik. Például: *wcus* és *ne* az USA nyugati középső régiójában és Észak-Európában. | Backup      | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni **RG**: az előfizetésen belüli bármely RG |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Megjegyzés**: a *geo* itt a régiókódra hivatkozik. Például: *wcus* és *ne* az USA nyugati középső régiójában és Észak-Európában. | Backup      | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni  **RG**: az előfizetésen belüli bármely RG |
 
 Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz.
 
@@ -119,7 +119,7 @@ Az URL-címek elnevezési konvenciói a nemzeti régiókban:
 
 A fent létrehozott DNS-zónákat most ahhoz a virtuális hálózathoz kell kapcsolni, ahol a biztonsági mentésre kerülő kiszolgálók találhatók. Ezt az összes létrehozott DNS-zóna esetében el kell végezni.
 
-1. Nyissa meg a DNS-zónát (amelyet az előző lépésben hozott létre), és navigáljon a bal oldali sávban található **virtuális hálózati kapcsolatokhoz** . Kattintson a **+ Hozzáadás** gombra
+1. Nyissa meg a DNS-zónát (amelyet az előző lépésben hozott létre), és navigáljon a bal oldali sávban található **virtuális hálózati kapcsolatokhoz** . Ha van, kattintson a **+ Hozzáadás** gombra
 1. Adja meg a szükséges adatokat. Az **előfizetés** és a **virtuális hálózat** mezőket meg kell adni annak a virtuális hálózatnak a megfelelő részleteivel, ahol a kiszolgálók léteznek. A többi mezőnek a következőképpen kell maradnia:.
 
     ![Virtuális hálózati kapcsolat hozzáadása](./media/private-endpoints/add-virtual-network-link.png)
@@ -155,7 +155,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre saját végpont a tárolóhoz
 
     ![Privát hivatkozás keresése](./media/private-endpoints/search-for-private-link.png)
 
-1. A bal oldali navigációs sávon kattintson a **privát végpontok**elemre. Egyszer a **privát végpontok** ablaktáblán kattintson a **+ Hozzáadás** elemre a saját tárolóhoz tartozó privát végpont létrehozásának megkezdéséhez.
+1. A bal oldali navigációs sávon válassza a **privát végpontok**lehetőséget. Egyszer a **privát végpontok** ablaktáblán válassza a **+ Hozzáadás** lehetőséget a saját tárolóhoz tartozó privát végpont létrehozásához.
 
     ![Privát végpont hozzáadása a privát kapcsolati központban](./media/private-endpoints/add-private-endpoint.png)
 
@@ -169,13 +169,13 @@ Ez a szakasz azt ismerteti, hogyan hozható létre saját végpont a tárolóhoz
 
         ![Töltse ki az Erőforrás lapot](./media/private-endpoints/resource-tab.png)
 
-    1. **Konfiguráció**: a konfiguráció területen válassza ki azt a virtuális hálózatot és alhálózatot, ahol létre szeretné hozni a privát végpontot. Ez lenne a vnet, ahol a virtuális gép megtalálható. Dönthet úgy, hogy **integrálja a privát végpontot** egy privát DNS-zónával. Másik lehetőségként használhatja az egyéni DNS-kiszolgálót, vagy létrehozhat egy magánhálózati DNS-zónát is.
+    1. **Konfiguráció**: a konfiguráció területen válassza ki azt a virtuális hálózatot és alhálózatot, ahol létre szeretné hozni a privát végpontot. Ez lesz a vnet, ahol a virtuális gép megtalálható. Dönthet úgy, hogy **integrálja a privát végpontot** egy privát DNS-zónával. Másik lehetőségként használhatja az egyéni DNS-kiszolgálót, vagy létrehozhat egy magánhálózati DNS-zónát is.
 
         ![Kitöltés a konfiguráció lapon](./media/private-endpoints/configuration-tab.png)
 
     1. Igény szerint hozzáadhat **címkéket** a privát végponthoz.
 
-    1. A részletek megadása után folytassa a **felülvizsgálat + létrehozás** gombra kattintva. Az ellenőrzés befejeződése után kattintson a **Létrehozás** gombra a privát végpont létrehozásához.
+    1. Folytassa a **felülvizsgálat + létrehozás** után a részletek beírásával. Ha az ellenőrzés befejeződött, válassza a **Létrehozás** lehetőséget a privát végpont létrehozásához.
 
 ## <a name="approving-private-endpoints"></a>Privát végpontok jóváhagyása
 
@@ -200,7 +200,7 @@ Miután létrehozta a választható magánhálózati DNS-zónát és a tárolóh
 
 Ehhez a privát végponton lévő összes FQDN-hez bejegyzéseket kell készítenie a saját DNS zónába.
 
-1. Nyissa meg a **saját DNS-zónáját** , és navigáljon a bal oldali sávban található **Áttekintés** lehetőségre. Ha van, kattintson a **+** rekordhalmaz gombra a rekordok hozzáadásának megkezdéséhez.
+1. Nyissa meg a **saját DNS-zónáját** , és navigáljon a bal oldali sávban található **Áttekintés** lehetőségre. A rekordok hozzáadásának megkezdéséhez válassza a **+** rekordhalmaz lehetőséget.
 
     ![Válassza a + rekordhalmaz elemet a rekordok hozzáadásához](./media/private-endpoints/select-record-set.png)
 
@@ -332,9 +332,9 @@ Válasz JSON:
 
 A tár felügyelt identitásának a következő engedélyekkel kell rendelkeznie az erőforráscsoport és a virtuális hálózat között, ahol a magánhálózati végpontok létre lesznek hozva:
 
-- `Microsoft.Network/privateEndpoints/*`Ez szükséges ahhoz, hogy a szifilisz az erőforráscsoport privát végpontján legyen végrehajtva. Hozzá kell rendelni az erőforráscsoporthoz.
-- `Microsoft.Network/virtualNetworks/subnets/join/action`Erre azért van szükség, mert a virtuális hálózaton a magánhálózati IP-cím csatlakozik a privát végponthoz.
-- `Microsoft.Network/networkInterfaces/read`Erre azért van szükség az erőforráscsoporthoz, hogy megkapja a magánhálózati végponthoz létrehozott hálózati adaptert.
+- `Microsoft.Network/privateEndpoints/*` Ez szükséges ahhoz, hogy a szifilisz az erőforráscsoport privát végpontján legyen végrehajtva. Hozzá kell rendelni az erőforráscsoporthoz.
+- `Microsoft.Network/virtualNetworks/subnets/join/action` Erre azért van szükség, mert a virtuális hálózaton a magánhálózati IP-cím csatlakozik a privát végponthoz.
+- `Microsoft.Network/networkInterfaces/read` Erre azért van szükség az erőforráscsoporthoz, hogy megkapja a magánhálózati végponthoz létrehozott hálózati adaptert.
 - Saját DNS zóna közreműködői szerepköre ez a szerepkör már létezik, és használható a biztosításához és az engedélyek megadásához `Microsoft.Network/privateDnsZones/A/*` `Microsoft.Network/privateDnsZones/virtualNetworkLinks/read` .
 
 A szükséges engedélyekkel rendelkező szerepkörök létrehozásához az alábbi módszerek egyikét használhatja:
@@ -566,6 +566,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

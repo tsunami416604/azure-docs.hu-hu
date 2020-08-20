@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5a2205ec835fb630933dd85b4b0e5846ae864cb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236016"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653247"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>A naplófájl átmigrálása Ultra lemezre
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Készítsen [teljes biztonsági másolatot](backup-restore.md) az adatbázisról
 
 Ha engedélyezte a ultradisk kompatibilitását a virtuális gépen, csatlakoztassa a ultra SSDt a virtuális géphez. 
 
-Az ultra Disk a virtuálisgép-méretek és-régiók egy részhalmazán támogatott. A továbblépés előtt ellenőrizze, hogy a virtuális gép az ultra diskt támogató régióban, zónában és méretben van-e. Az Azure CLI vagy a PowerShell használatával [meghatározhatja és érvényesítheti a virtuális gépek méretét és régióját](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) . 
+Az ultra Disk a virtuálisgép-méretek és-régiók egy részhalmazán támogatott. A továbblépés előtt ellenőrizze, hogy a virtuális gép az ultra diskt támogató régióban, zónában és méretben van-e. Az Azure CLI vagy a PowerShell használatával [meghatározhatja és érvényesítheti a virtuális gépek méretét és régióját](../../../virtual-machines/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) . 
 
 ### <a name="enable-compatibility"></a>Kompatibilitás engedélyezése
 
@@ -50,15 +50,15 @@ A kompatibilitás engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Az **Igen** lehetőség kiválasztásával **engedélyezheti az ultravékony lemezek kompatibilitását**. 
 
-   :::image type="content" source="../../../../includes/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Válassza ki a lemezek további beállításait a Azure Portal beállítások területén.":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Válassza ki a lemezek további beállításait a Azure Portal beállítások területén.":::
 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
 
 
 ### <a name="attach-disk"></a>Lemez csatolása
 
-A Azure Portal használatával csatlakoztathat egy ultra-lemezt a virtuális géphez. Részletekért lásd: [Ultra-lemez csatlakoztatása](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
+A Azure Portal használatával csatlakoztathat egy ultra-lemezt a virtuális géphez. Részletekért lásd: [Ultra-lemez csatlakoztatása](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
 
 A lemez csatolása után indítsa el a virtuális gépet a Azure Portal használatával. 
 
@@ -85,7 +85,7 @@ Konfigurálja SQL Server az új naplófájl használatára. Ezt a Transact-SQL (
 1. Hozzon létre egy mappát (vagy több mappát) a naplófájlhoz való használatra. 
 1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok**lehetőséget.
 1. A **Biztonság** lapon adjon meg teljes hozzáférést a SQL Server szolgáltatásfiók számára. 
-1. A beállítások mentéséhez kattintson **az OK gombra** . 
+1. A beállítások mentéséhez kattintson **az OK gombra**  . 
 1. Ismételje meg ezt a műveletet minden olyan gyökérszintű mappánál, amelyben SQL-adatértéket szeretne készíteni. 
 
 ### <a name="use-new-log-drive"></a>Új log meghajtó használata 

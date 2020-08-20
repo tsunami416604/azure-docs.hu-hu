@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667369"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653341"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Az automatikus tárolási konfigurációs beállítások használatához a virtu
 
 * Kiépítve [SQL Server Gallery-képpel](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
 * A [Resource Manager](../../../azure-resource-manager/management/deployment-models.md)-alapú üzemi modellt használja.
-* [Prémium SSD](../../../virtual-machines/windows/disks-types.md)-ket használ.
+* [Prémium SSD](../../../virtual-machines/disks-types.md)-ket használ.
 
 ## <a name="new-vms"></a>Új virtuális gépek
 
@@ -115,7 +115,7 @@ Módosíthatja a SQL Server VM létrehozási folyamat során konfigurált meghaj
 Ez a szakasz az Azure által a Azure Portal SQL Server VM üzembe helyezése vagy konfigurálása során automatikusan elvégezett tárolási konfigurációs módosításokat ismerteti.
 
 * Az Azure a virtuális gépről kiválasztott tárolóból konfigurálja a tárolási készletet. A témakör következő szakasza részletesen ismerteti a Storage-készlet konfigurációját.
-* Az automatikus tárolási konfiguráció mindig [prémium SSD](../../../virtual-machines/windows/disks-types.md) -P30 adatlemezeket használ. Ennek következtében a kiválasztott számú terabájt és a virtuális géphez csatolt adatlemezek száma között van egy 1:1 leképezés.
+* Az automatikus tárolási konfiguráció mindig [prémium SSD](../../../virtual-machines/disks-types.md) -P30 adatlemezeket használ. Ennek következtében a kiválasztott számú terabájt és a virtuális géphez csatolt adatlemezek száma között van egy 1:1 leképezés.
 
 A díjszabással kapcsolatos információkért tekintse meg a [Storage díjszabását](https://azure.microsoft.com/pricing/details/storage) ismertető oldalt a **Disk Storage** lapon.
 
@@ -129,7 +129,7 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 | Lemezek mérete |1 TB |
 | Gyorsítótár |Olvasás |
 | Foglalás mérete |64 KB NTFS-foglalási egység mérete |
-| Helyreállítás | Egyszerű helyreállítás (nincs rugalmasság) |
+| Helyreállítási | Egyszerű helyreállítás (nincs rugalmasság) |
 | Oszlopok száma |Adatlemezek száma legfeljebb 8<sup>1</sup> |
 
 
@@ -140,9 +140,9 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Munkaterhelés típusa | Description | Optimalizálás |
+| Munkaterhelés típusa | Leírás | Optimalizálás |
 | --- | --- | --- |
-| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |None |
+| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincsenek |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |
 | **Adattárház** |Optimalizálja a tárolót analitikai és jelentéskészítési számítási feladatokhoz |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
 

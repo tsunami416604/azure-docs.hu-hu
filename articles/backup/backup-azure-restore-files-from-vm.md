@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611840"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654157"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -169,7 +169,7 @@ Az első oszlop (PV) megjeleníti a fizikai kötetet, az azt követő oszlopok a
 
 ###### <a name="duplicate-volume-groups"></a>Duplikált kötetek csoportjai
 
-Vannak olyan forgatókönyvek, ahol a kötetek nevei a szkript futtatása után 2 UUID-t tartalmazhatnak. Ez azt jelenti, hogy a kötet azon neve, amelyben a parancsfájlt futtatják, és a biztonsági másolatban szereplő virtuális gépen ugyanazok vannak. Ezt követően át kell neveznie a virtuális gépek biztonsági másolatának kötetei csoportot. Vessen egy pillantást az alábbi példára.
+Vannak olyan forgatókönyvek, ahol a kötetek nevei a szkript futtatása után 2 UUID-t tartalmazhatnak. Ez azt jelenti, hogy a kötet azon neve, amelyben a parancsfájlt futtatják, és a biztonsági másolatban szereplő virtuális gépen ugyanazok vannak. Ezt követően át kell neveznie a virtuális gépek biztonsági másolatának kötetei csoportot. Tekintse meg az alábbi példát.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -398,9 +398,9 @@ A helyreállítási szolgáltatás és a gép közötti adatforgalom védelme a 
 
 A szülő/biztonsági mentés alatt lévő virtuális gépen található összes fájl Access Control lista (ACL) a csatlakoztatott fájlrendszerben is megmarad.
 
-A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, és válassza le az adott helyreállítási ponthoz a **leválasztott lemezeket** . A parancsfájl azonnal érvénytelenítve lesz.
+A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban szeretné eltávolítani a hozzáférést, jelentkezzen be Azure Portal/PowerShell/parancssori felületre, és hajtson végre **leválasztott lemezeket** az adott helyreállítási ponthoz. A parancsfájl azonnal érvénytelenítve lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A fájlok visszaállítása során felmerülő problémákért tekintse meg a [hibaelhárítási](#troubleshooting) szakaszt.
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával

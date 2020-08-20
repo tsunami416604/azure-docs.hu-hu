@@ -3,12 +3,12 @@ title: Költségek elemzése és költségvetés
 description: Ismerje meg, hogyan hozhatja létre a költségek elemzését, és hogyan állíthat be költségvetést a Batch számítási feladatainak futtatásához használt számítási erőforrások és szoftverlicenc számára.
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725771"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654242"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Cost Analysis és költségvetések Azure Batch
 
@@ -68,7 +68,7 @@ Ismerje meg, hogyan állíthat be alacsony prioritású virtuális gépeket a sz
 
 ### <a name="virtual-machine-os-disk-type"></a>Virtuális gép operációsrendszer-lemezének típusa
 
-Több [virtuális gép operációsrendszer-lemeze](../virtual-machines/windows/disks-types.md)van. A legtöbb virtuálisgép-sorozat a prémium és a standard szintű tárolást egyaránt támogató méretekkel rendelkezik. Ha egy készlethez a virtuális gép mérete van kiválasztva, a Batch a prémium szintű SSD operációsrendszer-lemezeket konfigurálja. Ha a "nem s" virtuálisgép-méret van kiválasztva, akkor a rendszer az olcsóbb, standard szintű HDD-lemez típusát használja. A prémium szintű SSD operációsrendszer-lemezeket például a `Standard_D2s_v3` és a standard HDD operációsrendszer-lemezek használják `Standard_D2_v3` .
+Több [virtuális gép operációsrendszer-lemeze](../virtual-machines/disks-types.md)van. A legtöbb virtuálisgép-sorozat a prémium és a standard szintű tárolást egyaránt támogató méretekkel rendelkezik. Ha egy készlethez a virtuális gép mérete van kiválasztva, a Batch a prémium szintű SSD operációsrendszer-lemezeket konfigurálja. Ha a "nem s" virtuálisgép-méret van kiválasztva, akkor a rendszer az olcsóbb, standard szintű HDD-lemez típusát használja. A prémium szintű SSD operációsrendszer-lemezeket például a `Standard_D2s_v3` és a standard HDD operációsrendszer-lemezek használják `Standard_D2_v3` .
 
 Prémium SSD operációsrendszer-lemezek drágábbak, de a nagyobb teljesítmény és a prémium szintű lemezekkel rendelkező virtuális gépek valamivel gyorsabban elkezdődhetnek, mint a standard HDD operációsrendszer-lemezekkel rendelkező virtuális gépek. A Batch használata esetén az operációsrendszer-lemez gyakran nincs használatban, mivel az alkalmazások és a feladatok fájljai a virtuális gépek ideiglenes SSD-lemezén találhatók. Ezért számos esetben nem kell fizetnie a prémium SSD számára, amelyet a virtuális gép méretének megadásakor kell kiépíteni.
 
@@ -82,7 +82,7 @@ Az [automatikus skálázás](batch-automatic-scaling.md) dinamikusan méretezi a
 
 További információ az automatikus skálázásról: [számítási csomópontok automatikus méretezése egy Azure batch készletben](batch-automatic-scaling.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Batch-megoldások létrehozásához és figyeléséhez elérhető [Batch API-król és eszközökről](batch-apis-tools.md) .  
 

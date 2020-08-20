@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498990"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653851"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Azure-erőforrások előkészítése a Hyper-V vész-helyreállításhoz
 
@@ -89,7 +89,7 @@ Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre a t�
 5. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre kívánja hozni a hálózatot.
 6. A **hely**mezőben válassza a **Nyugat-Európa**lehetőséget. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 7. Hagyja meg az alapszintű DDoS-védelem alapértelmezett beállításait, és ne legyenek szolgáltatási végpontok a hálózaton.
-8. Válassza a **Létrehozás** lehetőséget.
+8. Kattintson a **Létrehozás** gombra.
 
 ![Képernyőkép a virtuális hálózati beállítások létrehozásáról.](media/tutorial-prepare-azure/create-network.png)
 
@@ -99,7 +99,7 @@ A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött
 
 Ismerkedjen meg a következőkkel:
 - [Azure-hálózatok](../virtual-network/virtual-networks-overview.md)
-- [Felügyelt lemezek](../virtual-machines/windows/managed-disks-overview.md)
+- [Felügyelt lemezek](../virtual-machines/managed-disks-overview.md)
 
 
 

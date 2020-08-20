@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700885"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654310"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -50,7 +50,7 @@ A kombinált forgatókönyv a következő ábrán látható: helyszíni ![ – A
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Azure-ról Azure-ba történő replikáció a ExpressRoute
 
-Azure Site Recovery lehetővé teszi az Azure-beli [virtuális gépek](azure-to-azure-architecture.md)vész-helyreállítását. Attól függően, hogy az Azure-beli virtuális gépek használják-e az [azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md)-t, a rendszer a replikációs adatait egy Azure Storage-fiókba vagy egy, a cél Azure-régióban található replika felügyelt lemezre Bár a replikációs végpontok nyilvánosak, az Azure-beli virtuális gépek replikálásának replikációs forgalma alapértelmezés szerint nem halad át az interneten, függetlenül attól, hogy melyik Azure-régió létezik a forrás virtuális hálózatban. Az Azure alapértelmezett rendszerútvonalát felülbírálhatja a 0.0.0.0/0 címek előtagja számára egy [Egyéni útvonallal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) , és átirányíthatja a virtuális gépek forgalmát egy helyszíni hálózati virtuális készülékre (NVA), de ez a konfiguráció nem ajánlott site Recovery replikáláshoz. Ha egyéni útvonalakat használ, [hozzon létre egy virtuális hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a "Storage" virtuális hálózatában, hogy a replikálási forgalom ne hagyja el az Azure-határt.
+Azure Site Recovery lehetővé teszi az Azure-beli [virtuális gépek](azure-to-azure-architecture.md)vész-helyreállítását. Attól függően, hogy az Azure-beli virtuális gépek használják-e az [azure Managed Disks](../virtual-machines/managed-disks-overview.md)-t, a rendszer a replikációs adatait egy Azure Storage-fiókba vagy egy, a cél Azure-régióban található replika felügyelt lemezre Bár a replikációs végpontok nyilvánosak, az Azure-beli virtuális gépek replikálásának replikációs forgalma alapértelmezés szerint nem halad át az interneten, függetlenül attól, hogy melyik Azure-régió létezik a forrás virtuális hálózatban. Az Azure alapértelmezett rendszerútvonalát felülbírálhatja a 0.0.0.0/0 címek előtagja számára egy [Egyéni útvonallal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) , és átirányíthatja a virtuális gépek forgalmát egy helyszíni hálózati virtuális készülékre (NVA), de ez a konfiguráció nem ajánlott site Recovery replikáláshoz. Ha egyéni útvonalakat használ, [hozzon létre egy virtuális hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a "Storage" virtuális hálózatában, hogy a replikálási forgalom ne hagyja el az Azure-határt.
 
 Az Azure-beli virtuális gépek vész-helyreállításához a ExpressRoute alapértelmezés szerint nem szükséges a replikáláshoz. Miután a virtuális gépek átvettek a feladatokat a cél Azure-régióba, hozzáférhetnek a [privát társak](../expressroute/expressroute-circuit-peerings.md#privatepeering)használatával. Vegye figyelembe, hogy az adatátviteli díjak az Azure-régiók közötti adatreplikálás módjától függetlenül érvényesek.
 

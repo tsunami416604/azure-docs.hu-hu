@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: dbcb39641f35ad0f997db30b320826764a08bff1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082256"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653511"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -133,7 +133,7 @@ ms.locfileid: "87082256"
 [deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (Az SAP-hez készült Azure-bővítmény hibaelhárítása – Kapcsolatfelvétel az ügyfélszolgálattal)
 [deployment-guide-run-the-script]:deployment-guide.md#0d2847ad-865d-4a4c-a405-f9b7baaa00c7 (Az SAP-hez készült Azure-bővítmény hibaelhárítása – a telepítési parancsfájl futtatása)
 [deployment-guide-redeploy-after-sysprep]:deployment-guide.md#2cd61f22-187d-42ed-bb8c-def0c983d756 (Azure-bővítmény hibaelhárítása SAP-re – újbóli üzembe helyezés a Sysprep után)
-[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 (Az SAP-hez készült Azure-bővítmény hibaelhárítása – internetkapcsolat javítása)
+[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 ( Az SAP-hez készült Azure-bővítmény hibaelhárítása – internetkapcsolat javítása)
 
 
 [deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Virtuálisgép-bővítmény konfigurálása)
@@ -256,7 +256,7 @@ ms.locfileid: "87082256"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -368,7 +368,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 ### <a name="resource-groups"></a>Erőforráscsoportok
 
-Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információk: [Azure Resource Manager overview][resource-group-overview] (Az Azure Resource Manager áttekintése).
+Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információt [Az Azure Resource Manager áttekintésében][resource-group-overview] találhat.
 
 ## <a name="resources"></a>További források
 
@@ -441,7 +441,7 @@ A varázsló végigvezeti a virtuális gép létrehozásához szükséges param�
      A támogatott virtuálisgép-típusok listáját lásd: SAP-Megjegyzés [1928533]. Ügyeljen arra, hogy a megfelelő virtuálisgép-típust válassza, ha az Azure Premium Storaget szeretné használni. Nem minden VM-típus támogatja a Premium Storage. További információ: [Storage: Microsoft Azure Storage és adatlemezek][planning-guide-storage-microsoft-azure-storage-and-data-disks] , valamint [Azure Storage SAP](./planning-guide-storage.md) -számítási feladatokhoz az Azure-ban [Virtual Machines az SAP NetWeaver tervezése és megvalósítása][planning-guide].
 
 1. **Beállítások**:
-   * **Storage-fiók**
+   * **Storage**
      * **Lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
      * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) a tervezési útmutatóban.
      * **Storage-fiók**: válasszon egy meglévő Storage-fiókot, vagy hozzon létre egy újat. Nem minden tárolási típus működik az SAP-alkalmazások futtatásához. További információ a tárolási típusokról: [virtuális gép tárolási szerkezete RDBMS üzemelő példányokhoz](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64).
@@ -581,7 +581,7 @@ A varázsló végigvezeti a virtuális gép létrehozásához szükséges param�
      A támogatott virtuálisgép-típusok listáját lásd: SAP-Megjegyzés [1928533]. Ügyeljen arra, hogy a megfelelő virtuálisgép-típust válassza, ha az Azure Premium Storaget szeretné használni. Nem minden VM-típus támogatja a Premium Storage. További információ: [Storage: Microsoft Azure Storage és adatlemezek][planning-guide-storage-microsoft-azure-storage-and-data-disks] , valamint [Azure Storage SAP](./planning-guide-storage.md) -számítási feladatokhoz az Azure-ban [Virtual Machines az SAP NetWeaver tervezése és megvalósítása][planning-guide].
 
 1. **Beállítások**:
-   * **Storage-fiók**
+   * **Storage**
      * **Lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
      * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) a tervezési útmutatóban.
    * **Hálózat**
@@ -861,7 +861,7 @@ A proxybeállításokat helyesen kell beállítani ahhoz, hogy a helyi rendszerf
 1. Törölje **A beállítások automatikus észlelése** jelölőnégyzet kijelölését.
 1. Jelölje be a **proxykiszolgáló használata a helyi hálózaton** jelölőnégyzetet, majd adja meg a proxy címe és a port mezőt.
 1. Kattintson a **speciális** gombra.
-1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Kattintson az **OK** gombra.
+1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Válassza az **OK** lehetőséget.
 
 #### <a name="linux"></a>Linux
 
@@ -1147,15 +1147,15 @@ Ha az **Állapot értéke nem megfelelő,** kövesse az Azure-BŐVÍTMÉNY az [S
 
 1. Keresse meg az SAP-hez készült Azure-bővítmény kimenetét.
 
-   a.  Az `more /var/lib/AzureEnhancedMonitor/PerfCounters` parancs futtatásával
+   a.  Az `more /var/lib/AzureEnhancedMonitor/PerfCounters` parancs futtatása
 
    **Várt eredmény**: a teljesítményszámlálók listáját adja vissza. A fájl nem lehet üres.
 
-   b. Az `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` parancs futtatásával
+   b. Az `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` parancs futtatása
 
    **Várt eredmény**: egy olyan sort ad vissza, ahol a **hiba nem,** például **3; config; Hiba;; 0; 0; nincs; 0; 1456416792; TST-servercs;**
 
-   c. Az `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` parancs futtatásával
+   c. Az `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` parancs futtatása
 
    **Várt eredmény**: a visszaadott érték üres vagy nem létezik.
 
@@ -1163,29 +1163,29 @@ Ha az előző ellenőrzés sikertelen volt, futtassa a következő további elle
 
 1. Győződjön meg arról, hogy a waagent telepítve és engedélyezve van.
 
-   a.  Az `sudo ls -al /var/lib/waagent/` parancs futtatásával
+   a.  Az `sudo ls -al /var/lib/waagent/` parancs futtatása
 
      **Várt eredmény**: felsorolja a waagent könyvtárának tartalmát.
 
-   b.  Az `ps -ax | grep waagent` parancs futtatásával
+   b.  Az `ps -ax | grep waagent` parancs futtatása
 
-   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg:`python /usr/sbin/waagent -daemon`
+   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg: `python /usr/sbin/waagent -daemon`
 
 1. Győződjön meg arról, hogy az SAP-hez készült Azure-bővítmény telepítve van és fut.
 
-   a.  Az `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` parancs futtatásával
+   a.  Az `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` parancs futtatása
 
    **Várt eredmény**: FELSOROLJA az SAP-címtárhoz készült Azure-bővítmény tartalmát.
 
-   b. Az `ps -ax | grep AzureEnhanced` parancs futtatásával
+   b. Az `ps -ax | grep AzureEnhanced` parancs futtatása
 
-   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
+   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Telepítse az SAP-gazdagép ügynököt az SAP Note [1031096]-as verziójában leírtak szerint, és ellenőrizze a kimenetét `saposcol` .
 
-   a.  Az `/usr/sap/hostctrl/exe/saposcol -d` parancs futtatásával
+   a.  Az `/usr/sap/hostctrl/exe/saposcol -d` parancs futtatása
 
-   b.  Az `dump ccm` parancs futtatásával
+   b.  Az `dump ccm` parancs futtatása
 
    c.  Győződjön meg arról, hogy a **Virtualization_Configuration \enhanced-figyelési hozzáférési** metrika **igaz értékű**-e.
 
@@ -1203,7 +1203,7 @@ Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő össz
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>A készültség-ellenőrzési szolgáltatás futtatása Windows rendszerű virtuális gépen
 
 1. Jelentkezzen be az Azure-beli virtuális gépre (a rendszergazdai fiók használata nem szükséges).
-1. Nyisson meg egy webböngészőt, és navigáljon a következőrehttp://127.0.0.1:11812/azure4sap/metrics
+1. Nyisson meg egy webböngészőt, és navigáljon a következőre http://127.0.0.1:11812/azure4sap/metrics
 1. A böngészőnek meg kell jelennie vagy le kell töltenie egy XML-fájlt, amely a virtuális gép figyelési adatait tartalmazza. Ha ez nem igaz, ellenőrizze, hogy telepítve van-e az Azure-bővítmény az SAP-hez.
 
 ##### <a name="check-the-content-of-the-xml-file"></a>Az XML-fájl tartalmának keresése
@@ -1228,29 +1228,29 @@ Ha az előző ellenőrzés sikertelen volt, futtassa a következő további elle
 
 1. Győződjön meg arról, hogy a waagent telepítve és engedélyezve van.
 
-   a.  Az `sudo ls -al /var/lib/waagent/` parancs futtatásával
+   a.  Az `sudo ls -al /var/lib/waagent/` parancs futtatása
 
      **Várt eredmény**: felsorolja a waagent könyvtárának tartalmát.
 
-   b.  Az `ps -ax | grep waagent` parancs futtatásával
+   b.  Az `ps -ax | grep waagent` parancs futtatása
 
-   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg:`python /usr/sbin/waagent -daemon`
+   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg: `python /usr/sbin/waagent -daemon`
 
 1. Győződjön meg arról, hogy az SAP-hez készült Azure-bővítmény telepítve van és fut.
 
-   a.  Az `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` parancs futtatásával
+   a.  Az `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` parancs futtatása
 
    **Várt eredmény**: FELSOROLJA az SAP-címtárhoz készült Azure-bővítmény tartalmát.
 
-   b. Az `ps -ax | grep AzureEnhanced` parancs futtatásával
+   b. Az `ps -ax | grep AzureEnhanced` parancs futtatása
 
-   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
+   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg: `/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. Telepítse az SAP-gazdagép ügynököt az SAP Note [1031096]-as verziójában leírtak szerint, és ellenőrizze a kimenetét `saposcol` .
 
-   a.  Az `/usr/sap/hostctrl/exe/saposcol -d` parancs futtatásával
+   a.  Az `/usr/sap/hostctrl/exe/saposcol -d` parancs futtatása
 
-   b.  Az `dump ccm` parancs futtatásával
+   b.  Az `dump ccm` parancs futtatása
 
    c.  Győződjön meg arról, hogy a **Virtualization_Configuration \enhanced-figyelési hozzáférési** metrika **igaz értékű**-e.
 

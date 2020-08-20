@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504942"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654616"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -247,7 +247,7 @@ ms.locfileid: "88504942"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -318,7 +318,7 @@ Az Oracle támogatja az Oracle-szoftverek futtatását Microsoft Azureon. A Wind
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak.
 
-| Megjegyzés száma | Title |
+| Megjegyzés száma | Cím |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -353,9 +353,9 @@ Ha nincs elegendő szabad terület, a lemez [átméretezhető](../../windows/exp
 A ideiglenesfájlok megfelelő mennyiségének meghatározásához megtekintheti a ideiglenesfájlok méretét a meglévő rendszereken.
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
-Csak az NTFS fájlrendszerű lemezeket használó egypéldányos Oracle támogatott. Az összes adatbázisfájlt a Managed Disks NTFS fájlrendszerén (ajánlott) vagy virtuális merevlemezeken kell tárolni. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) vagy az [Azure Managed Diskson](../../windows/managed-disks-overview.md)alapulnak. 
+Csak az NTFS fájlrendszerű lemezeket használó egypéldányos Oracle támogatott. Az összes adatbázisfájlt a Managed Disks NTFS fájlrendszerén (ajánlott) vagy virtuális merevlemezeken kell tárolni. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) vagy az [Azure Managed Diskson](../../managed-disks-overview.md)alapulnak. 
 
-Erősen ajánlott az [Azure Managed Disks](../../windows/managed-disks-overview.md)használata. Javasoljuk továbbá a [prémium SSD](../../windows/disks-types.md) -k használatát a Oracle Database üzemelő példányokhoz.
+Erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md)használata. Javasoljuk továbbá a [prémium SSD](../../disks-types.md) -k használatát a Oracle Database üzemelő példányokhoz.
 
 A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információ:
 
@@ -442,11 +442,11 @@ Ebben az esetben javasoljuk, hogy az Oracle Home, a Stage, a saptrace, a saparch
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
 
-Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy az [Azure Managed Diskson](../../windows/managed-disks-overview.md)alapulnak.
+Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy az [Azure Managed Diskson](../../managed-disks-overview.md)alapulnak.
 
 Oracle Linux UEK kernelek esetében az [Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
 
-Erősen ajánlott az [Azure Managed Disks](../../windows/managed-disks-overview.md)használata. Azt is javasoljuk, hogy az [Azure Premium SSD](../../windows/disks-types.md) -ket a Oracle Database üzemelő példányokhoz is használja.
+Erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md)használata. Azt is javasoljuk, hogy az [Azure Premium SSD](../../disks-types.md) -ket a Oracle Database üzemelő példányokhoz is használja.
 
 A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkat a következő cikkekben talál: 
 

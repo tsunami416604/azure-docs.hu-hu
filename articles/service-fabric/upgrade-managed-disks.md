@@ -3,16 +3,16 @@ title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
 description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192303"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653698"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
-Az [Azure Managed](../virtual-machines/windows/managed-disks-overview.md) Disks az ajánlott lemezes tárolási ajánlat az Azure Virtual Machines szolgáltatásban az adattároláshoz. A Service Fabric számítási feladatok rugalmasságát a felügyelt lemezek használatára szolgáló virtuálisgép-méretezési csoportok frissítésével növelheti. A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
+Az [Azure Managed](../virtual-machines/managed-disks-overview.md) Disks az ajánlott lemezes tárolási ajánlat az Azure Virtual Machines szolgáltatásban az adattároláshoz. A Service Fabric számítási feladatok rugalmasságát a felügyelt lemezek használatára szolgáló virtuálisgép-méretezési csoportok frissítésével növelheti. A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 
 Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissítésének általános stratégiája a következő:
 
@@ -215,7 +215,7 @@ A központi telepítési sablon `variables` szakaszban adja meg az új méretez�
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
 ```
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 
 A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva ezeket a dolgokat:
 
@@ -359,7 +359,7 @@ foreach($name in $nodeNames){
 
 ![Service Fabric Explorer a hibás állapotú csomópontok eltávolításakor](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan frissíthet egy Service Fabric-fürt virtuálisgép-méretezési csoportjait a felügyelt lemezek használatára, miközben elkerüli a szolgáltatás leállását a folyamat során. A kapcsolódó témakörökkel kapcsolatos további információkért tekintse meg az alábbi forrásokat.
 

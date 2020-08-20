@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133781"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653800"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
 
@@ -30,10 +30,10 @@ Az Azure Storage platform a Microsoft felhőalapú tárolási megoldása a moder
 Az Azure Storage platform a következő adatszolgáltatásokat tartalmazza:
 
 - [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló szöveges és bináris adatokhoz. A Data Lake Storage Gen2on keresztül big data Analitika támogatását is magában foglalja.
-- [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányokhoz.
+- [Azure Files](../files/storage-files-introduction.md): felügyelt fájlmegosztás a Felhőbeli vagy helyszíni központi telepítésekhez.
 - [Azure Queues](../queues/storage-queues-introduction.md): Az alkalmazások összetevői között megbízható üzenetkezelést biztosító üzenettároló.
 - [Azure Tables](../tables/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
-- [Azure-lemezek](../../virtual-machines/windows/managed-disks-overview.md): az Azure-beli virtuális gépek blokkolási szintű tárolási kötetei.
+- [Azure-lemezek](../../virtual-machines/managed-disks-overview.md): az Azure-beli virtuális gépek blokkolási szintű tárolási kötetei.
 
 Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-account-create.md).
 
@@ -41,7 +41,7 @@ Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként 
 
 A következő táblázat összehasonlítja a fájlokat, a blobokat, a lemezeket, a várólistákat és a táblázatokat, és megjeleníti az egyes forgatókönyvek példáit.
 
-| Szolgáltatás | Leírás | A következő esetekben használja |
+| Funkció | Leírás | A következő esetekben használja |
 |--------------|-------------|-------------|
 | **Azure Files** |A teljes körűen felügyelt felhőalapú fájlmegosztást biztosít, amely bárhonnan elérhető az iparági szabványnak megfelelő SMB protokollon keresztül.<br><br>Azure-fájlmegosztást csatlakoztathat a felhőből vagy a helyszíni Windows, Linux és macOS rendszerű környezetekről. | Olyan alkalmazást szeretne átemelni és átállítani a felhőbe, amely már a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.<br/><br/>Szeretné cserélni vagy kiegészíteni a helyszíni fájlkiszolgálók vagy NAS-eszközöket.<br><br> Olyan fejlesztési és hibakeresési eszközöket szeretne tárolni, amelyeknek számos virtuális gépről kell elérniük. |
 | **Azure Blobs** | Lehetővé teszi a strukturálatlan adatmennyiségek tárolását és elérését a blokkos Blobok nagy méretekben.<br/><br/>A [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) is támogatja a vállalati Big Data elemzési megoldásokhoz. | Azt szeretné, hogy az alkalmazás támogassa a folyamatos átvitelt és a véletlenszerű hozzáférési forgatókönyveket.<br/><br/>Bárhonnan elérhetővé szeretné tenni az alkalmazásadatok elérését.<br/><br/>Az Azure-ban szeretne létrehozni egy vállalati adattavat, és big data elemzést hajt végre. |
@@ -67,7 +67,7 @@ További információ a blob Storage-ról: [Bevezetés a blob Storage](../blobs/
 
 ## <a name="azure-files"></a>Azure Files
 
-Az [Azure Files](../files/storage-files-introduction.md) segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek az SMB protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja.
+A [Azure Files](../files/storage-files-introduction.md) lehetővé teszi, hogy olyan, a szabványos SMB protokoll használatával elérhető hálózati fájlmegosztás beállítása legyen elérhető. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja.
 
 Az egyik dolog, ami megkülönbözteti az Azure Files szolgáltatást a fájlok a vállalati fájlmegosztásokon való tárolásától, hogy a fájlokat a világ bármely pontjáról elérheti a rájuk mutató URL-címekkel, amelyek közös hozzáférésű jogosultságkód- (SAS-) tokenekkel rendelkeznek. SAS-tokeneket Ön is létrehozhat: ezek határozott ideig biztosítanak egyedi hozzáférést a privát objektumokhoz.
 
@@ -101,7 +101,7 @@ További információ a Table Storage-ról: [Az Azure Table Storage áttekintés
 
 Az Azure Managed Disk egy virtuális merevlemez (VHD). Úgy gondolhatja, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizált. Az Azure által felügyelt lemezek blobként tárolódnak, amelyek az Azure-ban véletlenszerűen kiválasztott IO Storage-objektumok. A felügyelt lemezeket nevezzük felügyelt, mivel ez egy absztrakt lap Blobok, blob-tárolók és Azure Storage-fiókok esetében. A felügyelt lemezekkel mindössze annyit kell tennie, hogy kiépíti a lemezt, az Azure pedig gondoskodik a többiről.
 
-A felügyelt lemezekkel kapcsolatos további információkért lásd: [Bevezetés az Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md)szolgáltatásba.
+A felügyelt lemezekkel kapcsolatos további információkért lásd: [Bevezetés az Azure Managed Disks](../../virtual-machines/managed-disks-overview.md)szolgáltatásba.
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
@@ -150,7 +150,7 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Azure Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Azure Storage ügyféloldali kódtár Java/Android rendszerhez](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage ügyféloldali kódtár a Node.jshoz](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Azure Storage ügyféloldali kódtár a Node.jshoz ](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Az Azure Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
 - [Az Azure Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
 - [Azure Storage ügyféloldali kódtár a Rubyhoz](https://github.com/Azure/azure-storage-ruby)

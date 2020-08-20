@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0fc7d62cc89e240d931f3d0f255a917a73a4114c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505559"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654582"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
 
@@ -247,7 +247,7 @@ ms.locfileid: "88505559"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -381,7 +381,7 @@ SQL Server 2014-es és újabb verziók megnyitják az adatbázisfájlok közvetl
 * A korábban a különböző Azure Storage-fiókokban lévő VHD-k eloszlásával kapcsolatban felsorolt megfontolások is érvényesek erre a telepítési módszerre. Azt jelenti, hogy az I/O-műveletek száma az Azure Storage-fiók korlátai szerint történik.
 * A virtuális gép tárolási I/O-kvótájának könyvelése helyett a SQL Server adatokat és naplófájlokat jelképező tárolási Blobok forgalmát a rendszer az adott virtuálisgép-típus hálózati sávszélességére veszi át. Egy adott virtuálisgép-típus hálózati és tárolási sávszélességét az [Azure-beli Windows rendszerű virtuális gépek méreteit](../../sizes.md)ismertető cikkben találja.
 * A fájlok I/O hálózati kvótán keresztüli leküldésének eredményeképpen a tárolási kvótát többnyire a virtuális gép teljes sávszélességével kell kiszolgálni, amely kizárólag részlegesen használható.
-* A IOPS és az I/O-átviteli teljesítmény azon célja, hogy az Azure Premium Storage a különböző méretű lemezek esetében ne legyenek többé érvényesek. Még akkor is, ha a létrehozott Blobok az Azure Premium Storageon találhatók. A célok a [virtuális gépek nagy teljesítményű Premium Storage és felügyelt lemezei](../../windows/disks-types.md#premium-ssd)című cikkben vannak dokumentálva. SQL Server adatfájlok és naplófájlok közvetlenül az Azure-Premium Storage tárolt blobokra való helyezésének eredményeképpen a teljesítmény jellemzői eltérőek lehetnek az Premium Storage Azure-beli virtuális merevlemezekhez képest.
+* A IOPS és az I/O-átviteli teljesítmény azon célja, hogy az Azure Premium Storage a különböző méretű lemezek esetében ne legyenek többé érvényesek. Még akkor is, ha a létrehozott Blobok az Azure Premium Storageon találhatók. A célok a [virtuális gépek nagy teljesítményű Premium Storage és felügyelt lemezei](../../disks-types.md#premium-ssd)című cikkben vannak dokumentálva. SQL Server adatfájlok és naplófájlok közvetlenül az Azure-Premium Storage tárolt blobokra való helyezésének eredményeképpen a teljesítmény jellemzői eltérőek lehetnek az Premium Storage Azure-beli virtuális merevlemezekhez képest.
 * Az Azure Premium Storage-lemezek számára elérhető gazdagép-alapú gyorsítótárazás nem érhető el SQL Server adatfájlok közvetlenül az Azure-blobokon való elhelyezésekor.
 * Az M sorozatú virtuális gépeken az Azure írásgyorsító nem használható az ezredmásodperces írások támogatásához a SQL Server tranzakciós naplófájlban. 
 

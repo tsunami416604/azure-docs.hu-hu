@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 666f84da8f0999268b09dfd06ff5b3fe21bbef96
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82554982cd55b6c5fb2b96b2752b00401cb896d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525568"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653630"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
+# <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>A Lsv2-sorozatú Windows-alapú virtuális gépek teljesítményének optimalizálása
 
 A Lsv2 sorozatú virtuális gépek számos olyan munkaterhelést támogatnak, amelyek nagy I/O-és átviteli sebességet igényelnek a helyi tárterületen számos alkalmazás és iparág esetében.  A Lsv2 sorozat ideális a Big Database, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok, például a Cassandra, a MongoDB, a Cloudera és a Redis számára.
 
@@ -75,7 +75,7 @@ Az ügyfél védelme érdekében az adatok biztonságos törlését szolgáló f
 - A virtuális gép nem Kifogástalan állapotba kerül, és hardveres probléma miatt egy másik csomópontra kell a szolgáltatást meggyógyítania.
 - Kis mennyiségű tervezett karbantartási karbantartási művelet, amely megköveteli, hogy a virtuális gép egy másik gazdagépre legyen hozzárendelve a karbantartáshoz.
 
-Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
+Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](../backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -94,6 +94,6 @@ Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági men
 * **Módosíthatom a Windows Server 2019 lekérdezési beállításait?**  
    A lekérdezési beállítások nem állíthatók be a felhasználó számára.
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg az Azure [tárolási teljesítményére optimalizált összes virtuális gép](../sizes-storage.md) specifikációit

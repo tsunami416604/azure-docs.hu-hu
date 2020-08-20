@@ -1,16 +1,16 @@
 ---
-title: Bevezetés a Azure Advisorba
+title: Az Azure Advisor bemutatása
 description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057696"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654021"
 ---
-# <a name="introduction-to-azure-advisor"></a>Bevezetés a Azure Advisorba
+# <a name="introduction-to-azure-advisor"></a>Az Azure Advisor bemutatása
 
 Ismerkedjen meg Azure Advisor főbb képességeivel, és választ kaphat a gyakori kérdésekre.
 
@@ -55,7 +55,7 @@ Az Advisor-javaslatokat az előfizetés, az erőforráscsoport vagy az erőforr�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrásokra vonatkozó ajánlásokat biztosít az Advisor?
 
-Az Advisor ajánlásokat nyújt Application Gateway, App Services, rendelkezésre állási csoportok, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure nyilvános IP-címek, SQL Data Warehouse, SQL-kiszolgálók, Storage-fiókok, Traffic Manager-profilok és virtuális gépek számára.
+Az Advisor ajánlásokat nyújt Application Gateway, App Services, rendelkezésre állási csoportok, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure nyilvános IP-címek, Azure szinapszis analitika, SQL Server, Storage-fiókok, Traffic Manager-profilok és virtuális gépek számára.
 
 A Azure Advisor a [Azure Security Center](../security-center/security-center-recommendations.md) javaslataival is rendelkezik, amelyek további erőforrástípusok esetén javaslatokat is tartalmazhatnak.
 

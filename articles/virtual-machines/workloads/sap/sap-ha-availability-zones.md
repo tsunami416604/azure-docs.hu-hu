@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035791"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653596"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure Availability Zones](../../../availability-zones/az-overview.md) az Azure által biztosított magas rendelkezésre állási funkciók egyike. A Availability Zones használata javítja az Azure-beli SAP-munkaterhelések teljes rendelkezésre állását. Ez a funkció már elérhető néhány [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/). A jövőben több régióban is elérhető lesz.
@@ -109,7 +109,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 - Az SAP Central Services és az adatbázis-kezelő réteg feladatátvevő fürtjének terheléselosztó esetén a [szabványos SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kell használnia. Az alapszintű Load Balancer nem fog működni a zónák között.
 - Az SAP-rendszer üzemeltetéséhez üzembe helyezett Azure-beli virtuális hálózat az alhálózatokkal együtt a zónák között van kiterjesztve. Minden zónához nincs szükség külön virtuális hálózatokra.
 - Az összes telepített virtuális gép esetében az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)-t kell használnia. A nem felügyelt lemezek nem támogatottak a zónákon üzemelő példányok esetében.
-- Az Azure Premium Storage és a [Ultra SSD Storage](../../windows/disks-types.md#ultra-disk) nem támogatja a zónák közötti bármilyen típusú replikációt. Az alkalmazásnak (adatbázis-kezelői vagy SAP központi szolgáltatásoknak) replikálnia kell a fontos adatforrásokat.
+- Az Azure Premium Storage és a [Ultra SSD Storage](../../disks-types.md#ultra-disk) nem támogatja a zónák közötti bármilyen típusú replikációt. Az alkalmazásnak (adatbázis-kezelői vagy SAP központi szolgáltatásoknak) replikálnia kell a fontos adatforrásokat.
 - Ugyanez érvényes a megosztott sapmnt könyvtárra, amely egy megosztott lemez (Windows), egy CIFS-megosztás (Windows) vagy egy NFS-megosztás (Linux). Olyan technológiát kell használnia, amely replikálja ezeket a megosztott lemezeket vagy megosztásokat a zónák között. Ezek a technológiák támogatottak:
   - Windows rendszer esetén a SIOS DataKeeper használó fürtözött megoldás a [Windows feladatátvevő fürtön lévő SAP ASCS/SCS-példányok fürtözött megosztott lemezzel való használatával, az Azure-ban](./sap-high-availability-guide-wsfc-shared-disk.md)dokumentálva.
   - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](./high-availability-guide-suse-nfs.md)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
@@ -137,7 +137,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 - Az SAP Central Services és az adatbázis-kezelő réteg feladatátvevő fürtjének terheléselosztó esetén a [szabványos SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kell használnia. Az alapszintű Load Balancer nem fog működni a zónák között.
 - Az SAP-rendszer üzemeltetéséhez üzembe helyezett Azure-beli virtuális hálózat az alhálózatokkal együtt a zónák között van kiterjesztve. Minden zónához nincs szükség külön virtuális hálózatokra.
 - Az összes telepített virtuális gép esetében az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)-t kell használnia. A nem felügyelt lemezek nem támogatottak a zónákon üzemelő példányok esetében.
-- Az Azure Premium Storage és a [Ultra SSD Storage](../../windows/disks-types.md#ultra-disk) nem támogatja a zónák közötti bármilyen típusú replikációt. Az alkalmazásnak (adatbázis-kezelői vagy SAP központi szolgáltatásoknak) replikálnia kell a fontos adatforrásokat.
+- Az Azure Premium Storage és a [Ultra SSD Storage](../../disks-types.md#ultra-disk) nem támogatja a zónák közötti bármilyen típusú replikációt. Az alkalmazásnak (adatbázis-kezelői vagy SAP központi szolgáltatásoknak) replikálnia kell a fontos adatforrásokat.
 - Ugyanez érvényes a megosztott sapmnt könyvtárra, amely egy megosztott lemez (Windows), egy CIFS-megosztás (Windows) vagy egy NFS-megosztás (Linux). Olyan technológiát kell használnia, amely replikálja ezeket a megosztott lemezeket vagy megosztásokat a zónák között. Ezek a technológiák támogatottak:
     - Windows rendszer esetén a SIOS DataKeeper használó fürtözött megoldás a [Windows feladatátvevő fürtön lévő SAP ASCS/SCS-példányok fürtözött megosztott lemezzel való használatával, az Azure-ban](./sap-high-availability-guide-wsfc-shared-disk.md)dokumentálva.
     - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](./high-availability-guide-suse-nfs.md)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
@@ -167,7 +167,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 - Az SAP Central Services és az adatbázis-kezelő réteg feladatátvevő fürtjének terheléselosztó esetén a [szabványos SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kell használnia. Az alapszintű Load Balancer nem fog működni a zónák között.
 - Az SAP-rendszer üzemeltetéséhez üzembe helyezett Azure-beli virtuális hálózat az alhálózatokkal együtt a zónák között van kiterjesztve. Minden zónához nincs szükség külön virtuális hálózatokra.
 - Az összes telepített virtuális gép esetében az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)-t kell használnia. A nem felügyelt lemezek nem támogatottak a zónákon üzemelő példányok esetében.
-- Az Azure Premium Storage és a [Ultra SSD Storage](../../windows/disks-types.md#ultra-disk) nem támogatja a zónák közötti bármilyen típusú replikációt. Az alkalmazásnak (adatbázis-kezelői vagy SAP központi szolgáltatásoknak) replikálnia kell a fontos adatforrásokat.
+- Az Azure Premium Storage és a [Ultra SSD Storage](../../disks-types.md#ultra-disk) nem támogatja a zónák közötti bármilyen típusú replikációt. Az alkalmazásnak (adatbázis-kezelői vagy SAP központi szolgáltatásoknak) replikálnia kell a fontos adatforrásokat.
 - Ugyanez érvényes a megosztott sapmnt könyvtárra, amely egy megosztott lemez (Windows), egy CIFS-megosztás (Windows) vagy egy NFS-megosztás (Linux). Olyan technológiát kell használnia, amely replikálja ezeket a megosztott lemezeket vagy megosztásokat a zónák között. Ezek a technológiák támogatottak:
     - Windows rendszer esetén a SIOS DataKeeper használó fürtözött megoldás a [Windows feladatátvevő fürtön lévő SAP ASCS/SCS-példányok fürtözött megosztott lemezzel való használatával, az Azure-ban](./sap-high-availability-guide-wsfc-shared-disk.md)dokumentálva.
     - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](./high-availability-guide-suse-nfs.md)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.

@@ -3,12 +3,12 @@ title: Az Azure Backup díjszabása
 description: Megtudhatja, hogyan becsülheti meg a költségvetési Azure Backup díjszabásának költségeit.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035756"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654531"
 ---
 # <a name="azure-backup-pricing"></a>Az Azure Backup díjszabása
 
@@ -100,7 +100,7 @@ Ha az Azure-beli virtuális gépeken futó SQL Server-kiszolgálók biztonsági 
 
   - Biztonsági mentés típusa
 
-    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a heti/havi/éves teljes biztonsági mentéssel. Azure Backup a különbözetet egyetlen kattintással is visszaállíthatja.
+    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a heti/havi/éves teljes biztonsági mentéssel. A Azure Backup egy kattintással is visszaállíthatja a különbségeket.
 
     - Azt is beállíthatja, hogy a szabályzat napi/heti/havi/éves teljes biztonsági mentéssel rendelkezzen. Ezzel a beállítással a rendszer valamivel több tárterületet használ, mint az első lehetőség.
 
@@ -137,7 +137,7 @@ Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backup hasz
   - Ha ismeri a **(z)%-os**adatváltozást, használhatja a **saját% megadása** lehetőséget.
 - Válassza ki a biztonsági mentési szabályzatot
   - Biztonsági mentés típusa
-    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a **heti/havi/éves** teljes biztonsági mentéssel. Azure Backup a különbözetet egyetlen kattintással is visszaállíthatja.
+    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a **heti/havi/éves** teljes biztonsági mentéssel. A Azure Backup egy kattintással is visszaállíthatja a különbségeket.
     - Azt is beállíthatja, hogy a szabályzat **napi/heti/havi/éves** teljes biztonsági mentéssel rendelkezzen. Ezzel a beállítással a rendszer valamivel több tárterületet használ, mint az első lehetőség.
   - Mennyi ideig tart a "napló" biztonsági mentések megőrzése? (napban) [7-35]
   - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
@@ -160,7 +160,7 @@ Az Azure-fájlmegosztás biztonsági mentésének költségeit a Azure Backup á
 - Ha biztonsági mentést szeretne készíteni a fájlmegosztás több Storage-fiók között, adja meg a fenti mérettel rendelkező fájlmegosztás tárolására szolgáló tárolási fiókok számát.
 
 - Az adatváltozás várható mennyisége azon fájlmegosztás esetében, amelyekről biztonsági másolatot szeretne készíteni. <br>A forgalom az adatok változásának mennyiségére utal, és közvetlenül befolyásolja a pillanatképek tárolási méretét. Ha például egy fájlmegosztás 200 GB-nyi adatról készít biztonsági mentést, és minden nap 10 GB-nyi változás történik, a napi forgalom 5%.
-  - A magasabb adatforgalom azt jelenti, hogy a fájlmegosztás tartalmának minden nap magas, és így a növekményes pillanatkép (csak az adatváltozások rögzítése) mérete is nagyobb.
+  - A magasabb adatforgalom azt jelenti, hogy a fájlmegosztás tartalmának minden napján nagy mennyiségű adat változik, így a növekményes pillanatfelvétel (csak az adatváltozások rögzítése) is nagyobb.
   - Válassza az alacsony (1%), a mérsékelt (3%) vagy a magas (5%) értéket a fájlmegosztás jellemzői és használata alapján.
   - Ha ismeri a **fájlmegosztás pontos** adatforgalmát, akkor a legördülő menüből kiválaszthatja a **saját% megadása** lehetőséget. Értékek meghatározása (%) napi, heti, havi és éves adatforgalom esetén.
 

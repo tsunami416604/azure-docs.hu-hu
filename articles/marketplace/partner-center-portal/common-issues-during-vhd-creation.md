@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504313"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653528"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Gyakori problémák a VHD létrehozása során
 
@@ -20,7 +20,7 @@ Ezek a gyakori kérdések (GYIK) a virtuális merevlemez (VHD) Azure-beli virtu�
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Hogyan hozzon létre egy virtuális gépet a Azure Portal egy Premium Storage-beli virtuális merevlemez használatával?
 
-Az Azure Marketplace jelenleg nem támogatja virtuálisgép-ajánlatok létrehozását a felügyelt tárolón vagy az Azure Premium Storage-ból származó képekből. Részletekért lásd: az [Azure Managed Disks áttekintése](../../virtual-machines/windows/managed-disks-overview.md).
+Az Azure Marketplace jelenleg nem támogatja virtuálisgép-ajánlatok létrehozását a felügyelt tárolón vagy az Azure Premium Storage-ból származó képekből. Részletekért lásd: az [Azure Managed Disks áttekintése](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Használhatok 2. generációs virtuális gépeket az ajánlatokhoz?
 
@@ -28,7 +28,7 @@ Nem, csak az 1. generációs virtuális merevlemezek támogatottak. Jelenleg azo
 
 ## <a name="how-do-i-change-the-name-of-the-host"></a>Hogyan módosítja a gazdagép nevét?
 
-Nem. A virtuális gép létrehozása után a felhasználók (beleértve a tulajdonosokat is) nem tudják frissíteni az állomásnevet.
+Ez nem kezelhető. A virtuális gép létrehozása után a felhasználók (beleértve a tulajdonosokat is) nem tudják frissíteni az állomásnevet.
 
 ## <a name="how-do-i-reset-the-remote-desktop-service-or-its-sign-in-password"></a>Hogyan alaphelyzetbe állítani a Távoli asztal szolgáltatást vagy a bejelentkezési jelszavát?
 

@@ -1,18 +1,18 @@
 ---
-title: 'Rövid útmutató: megosztás a szervezeten kívül – Azure-adatmegosztás'
-description: Rövid útmutató – az Azure adatmegosztási és Resource Manager-sablont használó ügyfelekkel és partnerekkel való adatmegosztás
+title: Megosztás a szervezeten kívül (ARM-sablon) – Azure-adatmegosztás – gyors üzembe helyezés
+description: Ebből a rövid útmutatóból megtudhatja, hogyan oszthat meg ügyfelekkel és partnerekkel az Azure adatmegosztási és Resource Manager-sablon segítségével.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 87b91d353b6d9f64f28892feed92c44ceafc2598
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640922"
+ms.locfileid: "88654106"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Gyors útmutató: adatmegosztás az Azure adatmegosztási és Resource Manager-sablonok használatával
 
@@ -99,6 +99,6 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha többet szeretne megtudni arról, hogy az adatfogyasztók hogyan fogadhatnak és fogadhatnak adatmegosztást, folytassa az [elfogadás és az Adatfogadás](subscribe-to-data-share.md) című oktatóanyagot.

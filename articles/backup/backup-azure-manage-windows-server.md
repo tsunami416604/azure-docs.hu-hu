@@ -3,12 +3,12 @@ title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263328"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654208"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -70,8 +70,8 @@ A biztonsági mentés előzetes ellenőrzése ellenőrzi a virtuális gépek kon
 A biztonsági mentés előzetes ellenőrzése az Azure-beli virtuális gépek ütemezett biztonsági mentési műveleteinek részeként fut. A következő állapotok egyikével zárulnak:
 
 * **Átadva**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációjának sikeres biztonsági mentéseket kell eredményeznie, és nem kell végrehajtania javítási műveletet.
-* **Figyelmeztetés**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációja egy vagy több olyan hibát jelez *, amely biztonsági* mentési hibákhoz vezethet. *Ajánlott* lépéseket biztosít a sikeres biztonsági mentések biztosításához. Ha például nincs telepítve a legújabb virtuálisgép-ügynök, a biztonsági mentések időnként sikertelenek lehetnek. Ez a helyzet figyelmeztetési állapotot biztosít.
-* **Kritikus**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációja egy vagy több kritikus problémát jelez *, amely a* biztonsági mentési hibákat eredményezi, és a sikeres biztonsági mentések biztosításához *szükséges* lépéseket tesz lehetővé. Például egy virtuális gép NSG-szabályainak frissítése által okozott hálózati hiba miatt a biztonsági mentések sikertelenek lesznek, mivel megakadályozza, hogy a virtuális gép kommunikáljon a Azure Backup szolgáltatással. Ez a helyzet kritikus állapotot jelentene.
+* **Figyelmeztetés**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációja egy vagy több olyan hibát jelez *, amely biztonsági* mentési hibákhoz vezethet. *Ajánlott* lépéseket biztosít a sikeres biztonsági mentések biztosításához. Ha például nincs telepítve a legújabb virtuálisgép-ügynök, a biztonsági mentések időnként sikertelenek lehetnek. Ez a helyzet figyelmeztetési állapotot ad.
+* **Kritikus**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációja egy vagy több kritikus problémát jelez *, amely a* biztonsági mentési hibákat eredményezi, és a sikeres biztonsági mentések biztosításához *szükséges* lépéseket tesz lehetővé. Például egy virtuális gép NSG-szabályainak frissítése által okozott hálózati hiba miatt a biztonsági mentések sikertelenek lesznek, mivel megakadályozza, hogy a virtuális gép kommunikáljon a Azure Backup szolgáltatással. Ez a helyzet kritikus állapotot biztosít.
 
 Az alábbi lépésekkel megkezdheti az Recovery Services-tárolóban található virtuális gépek biztonsági mentésének előzetes ellenőrzései által jelentett problémák megoldását.
 
@@ -96,7 +96,7 @@ A biztonsági mentési riasztások listája a kiválasztott adatokat jeleníti m
 | Riasztási szint | Riasztásokat létrehozó események |
 | ----------- | ----------- |
 | Kritikus | Kritikus riasztások jelennek meg, ha a biztonsági mentési feladatok sikertelenek, a helyreállítási feladatok meghiúsulnak, és a védelem leállítása a kiszolgálón, de megtartja az adatok védelmét.|
-| Figyelmeztetés | Figyelmeztető riasztások jelennek meg, ha a biztonsági mentési feladatok figyelmeztetésekkel fejeződött be, például ha az 100-nál kevesebb fájlról nem készül biztonsági mentés a sérülési problémák miatt, vagy ha nagyobb, mint 1 000 000 fájl biztonsági mentése sikeresen megtörtént. |
+| Figyelmeztetés | Figyelmeztető riasztásokat kap, ha: a biztonsági mentési feladatok figyelmeztetésekkel fejeződött be. Ha például a rendszer sérülési problémák miatt nem készít biztonsági mentést a 100-nél kevesebb fájlról, vagy ha nagyobb, mint 1 000 000 fájl, akkor a biztonsági mentés sikeresen megtörtént. |
 | Tájékoztató | Jelenleg nincsenek használatban tájékoztató riasztások. |
 
 ### <a name="viewing-alert-details"></a>A riasztások részleteinek megtekintése

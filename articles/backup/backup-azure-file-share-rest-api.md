@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése a REST API
 description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegosztás biztonsági mentésére az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036742"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654140"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
 
@@ -40,7 +40,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 A post URI a,, `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` és `{fabricName}` paraméterekkel rendelkezik. A példánkban a különböző paraméterek értéke a következő lesz:
 
-- `{fabricName}`az *Azure*
+- `{fabricName}` az *Azure*
 
 - `{vaultName}`*azurefilesvault*
 
@@ -54,13 +54,13 @@ Mivel az összes kötelező paraméter meg van adva az URI-ban, nincs szükség 
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses-to-the-refresh-operation"></a>A frissítési műveletre adott válaszok
 
 A "refresh" művelet egy [aszinkron művelet](../azure-resource-manager/management/async-operations.md). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 200 (OK), amikor a művelet befejeződik.
 
-##### <a name="example-responses"></a>Válaszok – példa
+##### <a name="example-responses-to-the-refresh-operation"></a>A frissítési műveletre adott válaszok – példa
 
 A *post* kérelem elküldése után a rendszer egy 202 (elfogadott) választ ad vissza.
 
@@ -421,7 +421,7 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy *Get* paranccsal.
+Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy  *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
@@ -487,13 +487,13 @@ Példa a kérelem szövegtörzsére
 }
 ```
 
-### <a name="responses"></a>Válaszok
+### <a name="responses-to-the-on-demand-backup-operation"></a>Az igény szerinti biztonsági mentési műveletre adott válaszok
 
 Az igény szerinti biztonsági mentés indítása [aszinkron művelet](../azure-resource-manager/management/async-operations.md). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 200 (OK), amikor a művelet befejeződik.
 
-### <a name="example-responses"></a>Válaszok – példa
+### <a name="example-responses-to-the-on-demand-backup-operation"></a>Például az igény szerinti biztonsági mentési műveletre adott válaszok
 
 Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez, a kezdeti válasz 202 (elfogadva), egy Location fejlécet vagy egy Azure-aszinkron-fejlécet tartalmaz.
 
@@ -516,7 +516,7 @@ Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez,
 'Content-Length': '0'
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy *Get* paranccsal.
+Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy  *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01

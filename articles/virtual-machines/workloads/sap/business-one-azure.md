@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831107"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654650"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum útmutatást nyújt az SAP Business One Azure Virtual Machines üzembe helyezéséhez. A dokumentáció nem helyettesíti a Business One for SAP szolgáltatás telepítési dokumentációját. A dokumentációnak az Azure-infrastruktúrára vonatkozó alapszintű tervezési és üzembe helyezési útmutatókat kell kiterjednie, amelyekkel az üzleti alkalmazások futtatása elérhető
@@ -118,7 +118,7 @@ Ezek a dokumentumok segítenek dönteni a tárolási típusok és a magas rendel
 
 Elvileg a következőket kell tennie:
 
-- Prémium SSD-k használata a standard HDD-k használatával. Ha többet szeretne megtudni a rendelkezésre álló lemezek típusairól, tekintse meg a [lemez típusának kiválasztása](../../windows/disks-types.md) című cikket.
+- Prémium SSD-k használata a standard HDD-k használatával. Ha többet szeretne megtudni a rendelkezésre álló lemezek típusairól, tekintse meg a [lemez típusának kiválasztása](../../disks-types.md) című cikket.
 - Az Azure Managed Disks használata nem felügyelt lemezeken
 - Győződjön meg arról, hogy elegendő IOPS és I/O-átviteli sebesség van konfigurálva a lemez konfigurációjával
 - /Hana/Data-és/Hana/log-kötet egyesítése a költséghatékony tárolási konfiguráció biztosítása érdekében

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054550"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654123"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -52,7 +52,7 @@ A szolgáltatás a következő forgatókönyveket figyelmeztethető forgatókön
 - Azure-beli virtuális gép biztonsági mentései
 - Azure File biztonsági mentései
 - Az Azure munkaterhelés biztonsági mentései, mint például az SQL, SAP HANA
-- Microsoft Azure Recovery Services (MARS) ügynök 
+- Microsoft Azure Recovery Services (MARS) ügynök
 
 > [!NOTE]
 > A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) riasztásai itt nem jelennek meg.
@@ -83,7 +83,7 @@ A riasztás súlyossága alapján a riasztásokat háromféle típusban lehet me
 ## <a name="notification-for-backup-alerts"></a>Értesítés a biztonsági mentési riasztásokról
 
 > [!NOTE]
-> Az értesítések konfigurálása csak az Azure Portalon végezhető el. A PS/CLI/REST API/Azure Resource Manager sablon támogatása nem támogatott.
+> Az értesítés konfigurálása csak a Azure Portalon keresztül lehetséges. A PS/CLI/REST API/Azure Resource Manager sablon támogatása nem támogatott.
 
 A riasztások kiemelése után a rendszer értesíti a felhasználókat. A Azure Backup e-mailben egy beépített értesítési mechanizmust biztosít. Megadhat egyéni e-mail-címeket vagy terjesztési listát, amelyekről értesítést kaphat, ha riasztás jön létre. Azt is megadhatja, hogy az egyes riasztások értesítést kapjanak-e, vagy egy óránkénti kivonatban csoportosítsa őket, majd értesítést kap.
 
@@ -100,7 +100,7 @@ Ha a gyakoriságot egy óránkénti kivonatoló értékre állították be, és 
 
 ## <a name="inactivating-alerts"></a>Riasztások inaktiválása
 
-Aktív riasztás inaktiválásához/feloldásához kattintson az inaktiválni kívánt riasztáshoz tartozó listaelemre. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül található "inaktiválás" gombra kattint. Erre a gombra kattintva megváltoztathatja a riasztás állapotát az "inaktív" értékre. Inaktiválhat egy riasztást úgy is, hogy a jobb gombbal rákattint a riasztáshoz tartozó listaelemre, és kiválasztja az "inaktiválás" elemet.
+Az aktív riasztások inaktiválása/feloldása érdekében kiválaszthatja az inaktiválni kívánt riasztáshoz tartozó listaelemet. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül **inaktiválás** gomb jelenik meg. Ha erre a gombra kattint, a riasztás állapota **inaktívra**változik. Inaktiválhat egy riasztást úgy is, hogy a jobb gombbal rákattint a riasztáshoz tartozó listaelemre, és kiválasztja az **inaktiválás**lehetőséget.
 
 ![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

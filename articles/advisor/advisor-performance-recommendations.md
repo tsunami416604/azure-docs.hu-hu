@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257469"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653307"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -51,32 +51,32 @@ Az Advisor a szabványos lemezekkel rendelkező virtuális gépeket azonosítja,
 
 Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az I/O-igényű számítási feladatokat futtató virtuális gépekhez. A Premium Storage fiókokat használó virtuális gépek lemezei SSD-meghajtókon tárolják az adattárolást. Az alkalmazás legjobb teljesítményének érdekében javasoljuk, hogy telepítse át a Premium Storage magas IOPS igénylő virtuálisgép-lemezeket.
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez távolítsa el az adattorzítást a SQL Data Warehouse táblákon
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez távolítsa el az adattorzítást az Azure szinapszis Analytics-tábláiban
 
 Az adatok eldöntése szükségtelen adatáthelyezést vagy erőforrás-szűk keresztmetszetet okozhat a számítási feladatok futtatásakor. Az Advisor több mint 15%-os eloszlási adatmennyiséget észlel. Azt javasolja, hogy terjessze újra az adatait, és nyissa meg újra a tábla terjesztési kulcsának beállításait. Ha többet szeretne megtudni a ferdeség azonosításáról és eltávolításáról, tekintse meg a következő témakört: [Hibaelhárítás](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice).
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez hozzon létre vagy frissítsen elavult tábla statisztikáit a SQL Data Warehouse tábláiban
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Elavult tábla-statisztikák létrehozása vagy frissítése az Azure szinapszis Analytics-táblázatokban a lekérdezési teljesítmény növeléséhez
 
-Az Advisor olyan táblákat azonosít, amelyek nem rendelkeznek naprakész [táblázat statisztikával](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) , és a statisztikák létrehozását és frissítését javasolja. A Azure SQL Data Warehouse lekérdezés-optimalizáló naprakész statisztikát használ a lekérdezési eredményekben található sorok többségének vagy számának becsléséhez. Ezek a becslések lehetővé teszik a lekérdezés-optimalizáló számára, hogy lekérdezési tervet hozzon létre a leggyorsabb teljesítmény biztosításához.
+Az Advisor olyan táblákat azonosít, amelyek nem rendelkeznek naprakész [táblázat statisztikával](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) , és a statisztikák létrehozását és frissítését javasolja. Az Azure szinapszis Analytics lekérdezés-optimalizálási szolgáltatása naprakész statisztikákat használ a lekérdezési eredményekben szereplő sorok többségének vagy számának becsléséhez. Ezek a becslések lehetővé teszik a lekérdezés-optimalizáló számára, hogy lekérdezési tervet hozzon létre a leggyorsabb teljesítmény biztosításához.
 
 ## <a name="improve-mysql-connection-management"></a>A MySQL-kapcsolatkezelés fejlesztése
 
 Az Advisor Analysis azt jelezheti, hogy az alkalmazás MySQL-kiszolgálóhoz való csatlakozása nem hatékony a kapcsolatok kezeléséhez. Ez az állapot szükségtelen erőforrás-felhasználást és általános, magasabb alkalmazások késését eredményezheti. A kapcsolatkezelés javítása érdekében javasoljuk, hogy csökkentse a rövid élettartamú kapcsolatok számát, valamint szüntesse meg a felesleges tétlen kapcsolatokat. Ezeket a funkciókat kiszolgálóoldali kapcsolatok Pooler, például a ProxySQL konfigurálásával végezheti el.
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikális felskálázás a gyorsítótár kihasználtságának optimalizálásához a SQL Data Warehouse táblákon a lekérdezési teljesítmény növeléséhez
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Vertikális felskálázás a gyorsítótár kihasználtságának optimalizálásához az Azure szinapszis Analytics-táblázatokban a lekérdezési teljesítmény növeléséhez
 
-Azure Advisor észleli, hogy a SQL Data Warehouse-táblák nagy gyorsítótárban használt százalékos arányban és alacsony találati százalékban vannak-e. Ez az állapot nagy gyorsítótár-kizárást jelez, ami hatással lehet a SQL Data Warehouse-példány teljesítményére. Az Advisor azt javasolja, hogy a SQL Data Warehouse-példány vertikális felskálázásával biztosítsa, hogy elegendő gyorsítótári kapacitást foglaljon le a munkaterhelés számára.
+Azure Advisor észleli, hogy az Azure szinapszis Analytics-táblái magas gyorsítótár-használatot és alacsony találati arányt használnak-e. Ez az állapot nagy gyorsítótár-kizárást jelez, ami hatással lehet az Azure szinapszis Analytics-példány teljesítményére. Az Advisor azt javasolja, hogy az Azure szinapszis Analytics-példány vertikális felskálázásával biztosítsa, hogy elegendő gyorsítótári kapacitást foglaljon le a munkaterhelés számára.
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez alakítsa át SQL Data Warehouse táblákat a replikált táblákba
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Az Azure szinapszis Analytics-táblázatok replikált táblázatokra konvertálása a lekérdezési teljesítmény növeléséhez
 
 Az Advisor olyan táblákat azonosít, amelyek nem replikálnak táblákat, de a konverzió hasznát vennék. Azt javasolja, hogy konvertálja ezeket a táblákat. A javaslatok alapja:
 - A replikált tábla mérete 
 - Az oszlopok száma. 
 - A tábla terjesztési típusa 
-- A SQL Data Warehouse táblán lévő partíciók száma. 
+- Az Azure szinapszis Analytics-táblázat partícióinak száma. 
 
-További heurisztikus információk is megadhatók a környezethez tartozó javaslatban. További információ a javaslat meghatározásáról: [SQL Data Warehouse javaslatok](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
+További heurisztikus információk is megadhatók a környezethez tartozó javaslatban. További információ a javaslat meghatározásáról: [Azure szinapszis Analytics-javaslatok](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>Telepítse át a Storage-fiókját Azure Resource Managerre a legújabb Azure-funkciók beszerzéséhez
 
@@ -160,7 +160,7 @@ Azure Advisor elemzi a rendszernaplókat az elmúlt 7 napban, és megállapítja
 Ezek a feltételek azt jelzik, hogy a fürtön nagy írási késés tapasztalható. Ennek oka lehet a fürtön végrehajtott nagy terhelés. A fürt teljesítményének növeléséhez érdemes lehet az Azure HDInsight HBase által biztosított gyorsított írási funkciót használni. A HDInsight Apache HBase-fürtök gyorsított írási funkciója felhőalapú tároló használata helyett prémium szintű, SSD-alapú felügyelt lemezeket csatol az egyes régiók kiszolgálóihoz (feldolgozó csomópontjához), ezáltal pedig alacsony írási késést és nagyobb rugalmasságot biztosít alkalmazásai számára. További információk a szolgáltatásról további [információt itt](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight) olvashat
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>A jobb teljesítmény érdekében tekintse át az Azure Adatkezelő Table cache – időszak (házirend) című szakaszát (előzetes verzió)
-Ez a javaslat felfedi az Azure Adatkezelő táblákat, amelyek nagy számú lekérdezéssel rendelkeznek, amelyek visszakeresik a beállított gyorsítótári időszakot (házirend) A fürt teljesítményének javítására javasolt művelet: a táblázat lekérdezéseit a minimálisan szükséges időtartományra korlátozza (a megadott házirenden belül). Ha a teljes időtartományból származó adatokra van szükség, növelje a gyorsítótári időszakot a javasolt értékre.
+Ez az ajánlás megmutatja azokat az Azure Data Explorer-táblákat, amelyekben sok olyan lekérdezés található, amely visszatekint a konfigurált gyorsítótárazási időszakon (szabályzaton) túlra. (A lekérdezések százalékos aránya alapján az a leggyakoribb 10 tábla jelenik meg, amely a gyorsítótáron kívüli adatokhoz fér hozzá.) A fürt teljesítményének javítására javasolt művelet a következő: Korlátozza a lekérdezéseket a táblában a minimálisan szükséges időtartományra (a megadott szabályzaton belül). Vagy ha a teljes időtartományból szükség van adatokra, növelje a gyorsítótárazási időszakot az ajánlott értékre.
 
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>A teljesítmény javítása a MySQL ideiglenestábla-méretének optimalizálásával
 Az Advisor Analysis azt jelzi, hogy a MySQL-kiszolgáló szükségtelen I/O-terhelést okozhat az alacsony tábla-paraméter beállításai miatt. Ez felesleges lemezalapú tranzakciókat és alacsonyabb teljesítményt eredményezhet. Javasoljuk, hogy növelje a tmp_table_size és a max_heap_table_size paraméter értékét, ezzel csökkentve a lemezalapú tranzakciók számát. [További információ](https://aka.ms/azure_mysql_tmp_table)

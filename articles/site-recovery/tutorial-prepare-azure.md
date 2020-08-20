@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498973"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653817"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése helyszíni vész-helyreállításra az Azure-ba
 
@@ -60,7 +60,7 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 4. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban a **contosoRG**-ot használjuk.
 5. A tár **neve**mezőben adjon meg egy rövid nevet a tároló azonosításához. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
 6. A **régió**területen válassza ki azt a régiót, amelyben a tárolót el szeretné helyezni. a **Nyugat-Európa** beállítást használjuk.
-7. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+7. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
    ![A Recovery Services-tár létrehozása lap képernyőképe.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
@@ -79,7 +79,7 @@ A helyszíni gépek replikálódnak az Azure Managed Disks szolgáltatásba. Fel
 7. A **hely**mezőben válassza ki ugyanazt a régiót, mint amelyben a Recovery Services-tárolót létrehozták. Az oktatóanyagban ez **Nyugat-Európa**. A hálózatnak ugyanabban a régióban kell lennie, mint a tárolónak.
 8. A **címtartomány**mezőben adja meg a hálózat tartományát. A **10.1.0.0/24**-et használja, és nem használ alhálózatot.
 9. Elhagyjuk az alapszintű DDoS-védelem alapértelmezett lehetőségeit, a szolgáltatási végpontok nélkül vagy a tűzfalat a hálózaton.
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
    ![Képernyőkép a virtuális hálózati beállítások létrehozásáról.](media/tutorial-prepare-azure/create-network.png)
 
@@ -94,4 +94,4 @@ A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött
 - A Hyper-V vész-helyreállítás esetén [készítse elő a helyszíni Hyper-v-kiszolgálókat](hyper-v-prepare-on-premises-tutorial.md).
 - A fizikai kiszolgáló vész-helyreállításához [állítsa be a konfigurációs kiszolgálót és a forrás-környezetet](physical-azure-disaster-recovery.md)
 - Az Azure Networks [ismertetése](../virtual-network/virtual-networks-overview.md).
-- [További információ a](../virtual-machines/windows/managed-disks-overview.md) felügyelt lemezekről.
+- [További információ a](../virtual-machines/managed-disks-overview.md) felügyelt lemezekről.

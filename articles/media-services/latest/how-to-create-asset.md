@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4d1e5e48e70cee1cf75b1d6605837695d26dcbf0
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: b40c936006fa47964ef67ffda37c80eb5732bdf0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608807"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653884"
 ---
 # <a name="create-an-asset"></a>Adategység létrehozása
 
@@ -54,12 +54,16 @@ Egy eszköz létrehozásához kövesse az [Media Services fiók létrehozása](.
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-asset-curl.md)]
 
+## <a name="using-postman"></a>A Postman használata
+
+[!INCLUDE[Create an asset with Postman](./includes/task-create-asset-postman.md)]
+
 ## <a name="net"></a>[.NET](#tab/net/)
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-asset-dotnet.md)]
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Media Services áttekintése](media-services-overview.md)

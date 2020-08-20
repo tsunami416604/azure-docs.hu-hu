@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510861"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653613"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -36,7 +36,7 @@ Több redundancia-módszer is rendelkezésre áll, amelyek mindegyike az Azure �
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 
-A Managed Disks egy Azure Resource Manager erőforrástípus, amely az Azure Storage-fiókokban tárolt virtuális merevlemezek helyett használható. A Managed Disks automatikusan igazodik a (z) [rendelkezésre állási csoport] [Virtual-Machines-Manage-elérhetősége] helyhez, amelyhez a virtuális gép csatlakoztatva van, és így növelheti a virtuális gép és a virtuális gépen futó szolgáltatások rendelkezésre állását. További információért olvassa el az [áttekintő cikket](../../windows/managed-disks-overview.md).
+A Managed Disks egy Azure Resource Manager erőforrástípus, amely az Azure Storage-fiókokban tárolt virtuális merevlemezek helyett használható. A Managed Disks automatikusan igazodik a (z) [rendelkezésre állási csoport] [Virtual-Machines-Manage-elérhetősége] helyhez, amelyhez a virtuális gép csatlakoztatva van, és így növelheti a virtuális gép és a virtuális gépen futó szolgáltatások rendelkezésre állását. További információért olvassa el az [áttekintő cikket](../../managed-disks-overview.md).
 
 A rugalmassággal kapcsolatos példa a felügyelt lemezek előnyeit mutatja be:
 
@@ -61,7 +61,7 @@ Az Azure-ban üzembe helyezett verem különböző összetevőiben megőrzött t
 - Azok a fájlmegosztás vagy megosztott lemezek, amelyek a globális átviteli könyvtárat tartalmazzák a NetWeaver vagy S/4HANA számára. A megosztások tartalmát több virtuális gépen futó szoftver használja, vagy a magas rendelkezésre állású feladatátvevő fürt forgatókönyvek létrehozásához használatos.
 - Az/sapmnt könyvtár vagy közös fájlmegosztás az EDI-folyamatokhoz vagy hasonló. A megosztások tartalmát több virtuális gépen futó szoftver használja, vagy a magas rendelkezésre állású feladatátvevő fürt forgatókönyvek létrehozásához használatos.
 
-A következő néhány szakaszban a különböző Azure Storage-típusok és az SAP-munkaterhelések használhatósága is megvitatva lesz, amely a fenti négy forgatókönyvre vonatkozik. A különböző Azure Storage-típusok használatának általános kategorizálását a cikk az [Azure-ban elérhető lemez-típusok](../../linux/disks-types.md)leírását ismerteti. Az SAP-számítási feladatok különböző Azure Storage-típusai használatára vonatkozó javaslatok nem lesznek jelentős mértékben eltérőek.
+A következő néhány szakaszban a különböző Azure Storage-típusok és az SAP-munkaterhelések használhatósága is megvitatva lesz, amely a fenti négy forgatókönyvre vonatkozik. A különböző Azure Storage-típusok használatának általános kategorizálását a cikk az [Azure-ban elérhető lemez-típusok](../../disks-types.md)leírását ismerteti. Az SAP-számítási feladatok különböző Azure Storage-típusai használatára vonatkozó javaslatok nem lesznek jelentős mértékben eltérőek.
 
 Az SAP NetWeaver/Application Layer (S/4HANA) Azure Storage-típusaira vonatkozó támogatási korlátozásokért olvassa el a 2015553-es [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/2015553) a SAP HANA Certified és a támogatott Azure Storage-típusok című cikket, [SAP HANA Azure-beli virtuális gépek tárolási konfigurációit](./hana-vm-operations-storage.md).
 
@@ -123,7 +123,7 @@ Az Azure Premium SSD Storage szolgáltatás a következő céllal lett bevezetve
 * SLA-kat a IOPS és az átviteli sebességhez
 * Kisebb változékonyság az I/O-késésben
 
-Az ilyen típusú tárolók az adatbázis-kezelői munkaterheléseket célozzák meg, az Azure Premium Storage esetében pedig a IOPS és az átviteli költséghatékonyságot igénylő tárolási forgalom nem az ilyen lemezeken tárolt tényleges adatmennyiség, hanem egy ilyen lemez méret kategóriája, a lemezen tárolt adatok mennyiségétől függetlenül. A Premium Storage-ban olyan lemezeket is létrehozhat, amelyek nem közvetlenül vannak leképezve a (z) [prémium SSD](../../linux/disks-types.md#premium-ssd)cikkben látható méret kategóriákba. A jelen cikk következtetései a következők:
+Az ilyen típusú tárolók az adatbázis-kezelői munkaterheléseket célozzák meg, az Azure Premium Storage esetében pedig a IOPS és az átviteli költséghatékonyságot igénylő tárolási forgalom nem az ilyen lemezeken tárolt tényleges adatmennyiség, hanem egy ilyen lemez méret kategóriája, a lemezen tárolt adatok mennyiségétől függetlenül. A Premium Storage-ban olyan lemezeket is létrehozhat, amelyek nem közvetlenül vannak leképezve a (z) [prémium SSD](../../disks-types.md#premium-ssd)cikkben látható méret kategóriákba. A jelen cikk következtetései a következők:
 
 - A tároló tartományokba vannak rendezve. Például a 513 GiB tartományba tartozó, 1024 GiB kapacitású lemez ugyanazokat a képességeket és a havi költségeket használja
 - A IOPS/GiB nem követi a lineáris adatmennyiséget a méret kategórián belül. A 32-nál kisebb méretű lemezek esetében a IOPS magasabb sebességű. A 32 GiB és a 1024 GiB közötti lemezek esetében a IOPS-sebesség az 4-5 IOPS/GiB között van. A 32 767 GiB-ig terjedő nagyobb lemezek esetén a IOPS sebessége 1 lesz
@@ -184,8 +184,8 @@ Az Azure ultralemezei magas átviteli sebességet, magas IOPS-t, és konzisztens
 Ultra-lemez létrehozásakor három dimenziót adhat meg:
 
 - A lemez kapacitása. A tartományok 4 GiB és 65 536 GiB között vannak.
-- A lemez kiépített IOPS. A lemez kapacitására eltérő maximális értékek vonatkoznak. További részletekért olvassa el az [Ultra Disk](../../linux/disks-types.md#ultra-disk) című cikket.
-- Kiépített tárolási sávszélesség. A lemez kapacitása függ a maximális sávszélességtől. További részletekért olvassa el az [Ultra Disk](../../linux/disks-types.md#ultra-disk) című cikket.
+- A lemez kiépített IOPS. A lemez kapacitására eltérő maximális értékek vonatkoznak. További részletekért olvassa el az [Ultra Disk](../../disks-types.md#ultra-disk) című cikket.
+- Kiépített tárolási sávszélesség. A lemez kapacitása függ a maximális sávszélességtől. További részletekért olvassa el az [Ultra Disk](../../disks-types.md#ultra-disk) című cikket.
 
 Az egyetlen lemez díját az adott lemezekhez külön definiált három dimenzió határozza meg. 
 

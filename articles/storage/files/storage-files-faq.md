@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245434"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654327"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -54,7 +54,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
     Az Azure Files és az Virtual Machines Azure-ban üzemeltetett fájlkiszolgáló (az Azure-lemezek háttér-tárolóként való használata mellett) egyik megközelítése, hogy a Azure File Synct egy felhőalapú virtuális gépen üzemeltetett fájlkiszolgálón telepítse. Ha az Azure-fájlmegosztás abban a régióban van, ahol a fájlkiszolgáló található, engedélyezheti a Felhőbeli adatmennyiséget, és beállíthatja a szabad terület százalékos arányát a maximális értékre (99%). Ez minimálisan duplikált adatmennyiséget biztosít. Használhatja a fájlkiszolgálók által kívánt alkalmazásokat, például az NFS protokoll támogatását igénylő alkalmazásokat is.
 
-    A nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló Azure-beli beállításával kapcsolatos további információkért lásd: [IAAS VM-vendég fürtök üzembe helyezése Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). A Azure Files és az Azure-lemezek közötti különbségek részletesebb ismertetését lásd: [az alapszintű Azure Storage szolgáltatás bemutatása](../common/storage-introduction.md). További információ az Azure-lemezekről: [azure Managed Disks – áttekintés](../../virtual-machines/windows/managed-disks-overview.md).
+    A nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló Azure-beli beállításával kapcsolatos további információkért lásd: [IAAS VM-vendég fürtök üzembe helyezése Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). A Azure Files és az Azure-lemezek közötti különbségek részletesebb ismertetését lásd: [az alapszintű Azure Storage szolgáltatás bemutatása](../common/storage-introduction.md). További információ az Azure-lemezekről: [azure Managed Disks – áttekintés](../../virtual-machines/managed-disks-overview.md).
 
 * <a id="get-started"></a>
   **Hogyan az Azure Files használatának megkezdése?**  

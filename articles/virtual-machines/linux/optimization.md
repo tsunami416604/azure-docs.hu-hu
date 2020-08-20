@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 662475bdcb6b1ea9809f4501d144fb94e21e945e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659471"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654191"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linux rendszerű virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
@@ -34,7 +34,7 @@ Annak érdekében, hogy Premium Storage lemezek legmagasabb IOps legyenek elérh
 * Ha **XFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez használja a kapcsolót `barrier` ).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Nem felügyelt Storage-fiókok szempontjai
-Ha az Azure CLI-vel hoz létre virtuális gépet, az alapértelmezett művelet az Azure Managed Disks használata.  Ezeket a lemezeket az Azure platform kezeli, és nem igényel előkészítést vagy helyet a tároláshoz.  A nem felügyelt lemezekhez szükség van egy Storage-fiókra, és további teljesítménnyel kapcsolatos szempontokat kell figyelembe vennie.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md).  A következő szakasz csak akkor ismerteti a teljesítménnyel kapcsolatos szempontokat, ha nem felügyelt lemezeket használ.  Az alapértelmezett és az ajánlott tárolási megoldás a felügyelt lemezek használata.
+Ha az Azure CLI-vel hoz létre virtuális gépet, az alapértelmezett művelet az Azure Managed Disks használata.  Ezeket a lemezeket az Azure platform kezeli, és nem igényel előkészítést vagy helyet a tároláshoz.  A nem felügyelt lemezekhez szükség van egy Storage-fiókra, és további teljesítménnyel kapcsolatos szempontokat kell figyelembe vennie.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../managed-disks-overview.md).  A következő szakasz csak akkor ismerteti a teljesítménnyel kapcsolatos szempontokat, ha nem felügyelt lemezeket használ.  Az alapértelmezett és az ajánlott tárolási megoldás a felügyelt lemezek használata.
 
 Ha nem felügyelt lemezekkel rendelkező virtuális gépet hoz létre, akkor győződjön meg arról, hogy a virtuális géppel azonos régióban található Storage-fiókok lemezeit csatlakoztatja a közeli közelség és a hálózati késés csökkentése érdekében.  A standard szintű Storage-fiókok maximális 20000 IOps és 500 TB-os kapacitással rendelkeznek.  Ez a korlát körülbelül 40 erősen használt lemezre működik, beleértve az operációsrendszer-lemezt és a létrehozott adatlemezeket is. Premium Storage-fiókok esetében nincs maximális IOps korlát, de 32 TB-os mérethatárt. 
 
@@ -51,7 +51,7 @@ Ubuntu Cloud images esetén a Cloud-init használatával kell konfigurálnia a s
 
 A Cloud-init támogatás nélküli rendszerképeknél az Azure piactéren üzembe helyezett virtuálisgép-lemezképek rendelkeznek egy, az operációs rendszerhez integrált virtuálisgép-Linux-ügynökkel. Ez az ügynök lehetővé teszi a virtuális gép számára a különböző Azure-szolgáltatásokkal való interakciót. Feltételezve, hogy az Azure Marketplace-ről standard rendszerképet helyezett üzembe, a következő lépéseket kell elvégeznie a Linux-swap fájl beállításainak megfelelő konfigurálásához:
 
-Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban. Egy dedikált swap-fájl létezését és a lapozófájl méretét vezérlik. Az ellenőrzéshez `ResourceDisk.EnableSwap` szükséges paraméterek a következők.`ResourceDisk.SwapSizeMB` 
+Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban. Egy dedikált swap-fájl létezését és a lapozófájl méretét vezérlik. Az ellenőrzéshez `ResourceDisk.EnableSwap` szükséges paraméterek a következők. `ResourceDisk.SwapSizeMB` 
 
 A megfelelően engedélyezett lemez és a csatlakoztatott lapozófájl engedélyezéséhez győződjön meg arról, hogy a paraméterek a következő beállításokkal rendelkeznek:
 
@@ -123,7 +123,7 @@ Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen 
 
 A hagyományos RAID-konfiguráció alternatívájaként azt is megteheti, hogy a logikai kötet-kezelőt (LVM) is telepíti úgy, hogy több fizikai lemezt is konfiguráljon egyetlen csíkozott logikai tárolási kötetre. Ebben a konfigurációban az olvasások és írások elosztása a mennyiségi csoportban található több lemezre történik (a RAID0-hez hasonlóan). A teljesítmény szempontjából valószínű, hogy a logikai kötetek csíkozását szeretné használni, így az olvasás és az írás az összes csatlakoztatott adatlemezt felhasználja.  A csíkozott logikai kötetek Azure-beli Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további részleteket az **[LVM konfigurálása az Azure-ban linuxos virtuális gépen](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** című témakörben találhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ne feledje, ahogy az összes optimalizálási vitafórumhoz hasonlóan az egyes módosítások előtt és után is végre kell hajtania a teszteket, hogy mérjék a változás hatását.  Az optimalizálás egy lépésről lépésre haladó folyamat, amely különböző eredményekkel rendelkezik a környezet különböző gépei között.  Előfordulhat, hogy az egyik konfiguráció működése nem működik mások számára.
 
 Néhány hasznos hivatkozás további erőforrásokra:

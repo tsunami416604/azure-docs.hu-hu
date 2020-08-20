@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053745"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654888"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Batch-fiókhoz Azure Key Vault és felügyelt identitással
 
@@ -19,7 +19,7 @@ Alapértelmezés szerint a Azure Batch platform által felügyelt kulcsokkal tit
 Az Ön által megadott kulcsokat [Azure Key Vault](../key-vault/general/basic-concepts.md)kell létrehoznia, és az ügyfél által felügyelt kulcsokkal konfigurálni kívánt batch-fiókokat engedélyezni kell az [Azure felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában, az USA keleti régiójában, az USA déli középső régiójában, az USA US Gov Virginia 2. nyugati régiójában, valamint a US Gov Arizona régióban.
+> Az ügyfél által felügyelt kulcsok támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el a Nyugat-Európában, Észak-Európában, Észak-Svájc, az USA középső régiója, az USA déli középső régiója, az USA nyugati középső régiója, az USA keleti régiója, az USA 2. nyugati régiója, a US Gov Virginia és a US Gov Arizona régiók esetében
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -82,7 +82,7 @@ A Select ( **egyszerű**) mezőben **válassza** ki a `principalId` korábban be
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Kulcs létrehozása Azure Key Vault
 
-A Azure Portal lépjen a **kulcs** szakaszban található Key Vault példányra, majd válassza a **Létrehozás/importálás**lehetőséget. Válassza ki a kívánt **kulcsot** , `RSA` és az **RSA-kulcs méretének** legalább `2048` bitenek kell lennie. `EC`a Key types jelenleg nem támogatott ügyfél által felügyelt kulcsként egy batch-fiókban.
+A Azure Portal lépjen a **kulcs** szakaszban található Key Vault példányra, majd válassza a **Létrehozás/importálás**lehetőséget. Válassza ki a kívánt **kulcsot** , `RSA` és az **RSA-kulcs méretének** legalább `2048` bitenek kell lennie. `EC` a Key types jelenleg nem támogatott ügyfél által felügyelt kulcsként egy batch-fiókban.
 
 ![Kulcs létrehozása](./media/batch-customer-managed-key/create-key.png)
 

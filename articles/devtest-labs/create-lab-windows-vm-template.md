@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban egy labort hoz létre Azure DevTest La
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537547"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653953"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Gyors útmutató: tesztkörnyezet beállítása Azure DevTest Labs ARM-sablon használatával
 Ebben a rövid útmutatóban egy Azure Resource Manager-(ARM-) sablon használatával hoz létre egy labort egy Windows Server 2019 Datacenter virtuális géppel. 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json" range="1-97" highlight="51-85":::
+:::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json":::
 
 A sablonban definiált erőforrások a következők:
 
@@ -79,7 +79,7 @@ Az üzembe helyezés automatikus futtatásához kattintson a következő gombra.
     > [!IMPORTANT] 
     > Tartsa megnyitva ezt a lapot, és kövesse a következő szakaszban található utasításokat az erőforrások törléséhez, hogy elkerülje a tesztkörnyezet és a virtuális gép Azure-beli futtatásának költségeit. Ha a következő oktatóanyag segítségével szeretné tesztelni a virtuális gépet a laborban, törölje az erőforrásokat az oktatóanyag átlépése után. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. Először törölje a labort, hogy törölhető legyen az erőforráscsoport. Nem fogja tudni törölni az erőforráscsoportot egy laborban. A labor törléséhez válassza a **Törlés** lehetőséget az eszköztáron. 
 
@@ -92,7 +92,7 @@ Az üzembe helyezés automatikus futtatásához kattintson a következő gombra.
  
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Erőforráscsoport gomb törlése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban létrehozott egy labort egy virtuális géppel. A labor elérésének megismeréséhez folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
