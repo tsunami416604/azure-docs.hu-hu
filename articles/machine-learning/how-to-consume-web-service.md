@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e5fb19b0d8d94b5ccc07c465c3e9f3bf0de50ab7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843046"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652593"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,10 +41,10 @@ A Machine learning-webszolgáltatást használó ügyfelek létrehozásának ál
 
 A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az `Webservice` ügyfélalkalmazások létrehozásához a következő tulajdonságok hasznosak:
 
-* `auth_enabled`– Ha a kulcsos hitelesítés engedélyezve van, `True` egyéb esetben `False` .
-* `token_auth_enabled`– Ha engedélyezve van a jogkivonat-hitelesítés, `True` más esetben `False` .
-* `scoring_uri`– A REST API címe.
-* `swagger_uri`– A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
+* `auth_enabled` – Ha a kulcsos hitelesítés engedélyezve van, `True` egyéb esetben `False` .
+* `token_auth_enabled` – Ha engedélyezve van a jogkivonat-hitelesítés, `True` más esetben `False` .
+* `scoring_uri` – A REST API címe.
+* `swagger_uri` – A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 Az alábbi három módon kérheti le ezeket az információkat az üzembe helyezett webszolgáltatások számára:
 
@@ -157,30 +157,6 @@ A REST API azt várja, hogy a kérelem törzse JSON-dokumentum legyen a követke
 
 > [!IMPORTANT]
 > Az adatok struktúrájának meg kell egyeznie a szolgáltatás által várt pontozási szkripttel és modellel. Előfordulhat, hogy a pontozási parancsfájl módosítja az adattípust, mielőtt átadná azt a modellnek.
-
-A példában szereplő modell a [jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példaként egy 10 számból álló tömböt vár. A példában szereplő pontozási szkript létrehoz egy NumPy tömböt a kérelemből, és átadja a modellnek. A következő példában a szolgáltatás által várt adatok láthatók:
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-A webszolgáltatás több adatkészletet is elfogadhat egyetlen kérelemben. Egy olyan JSON-dokumentumot ad vissza, amely a válaszok tömbjét tartalmazza.
 
 ### <a name="binary-data"></a>Bináris adatok
 
@@ -677,6 +653,6 @@ Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való
 
 A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

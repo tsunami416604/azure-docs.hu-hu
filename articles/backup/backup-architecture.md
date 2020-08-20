@@ -3,12 +3,12 @@ title: Az architektúra áttekintése
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835731"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652780"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -95,8 +95,8 @@ A következő táblázat összefoglalja a különböző típusú biztonsági má
 **Funkció** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
 Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green]
-Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green]
-A biztonsági mentéshez továbbított adatok tömörítése | ![Igen][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Igen][green]
+Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Yes][green]
+A biztonsági mentéshez továbbított adatok tömörítése | ![Yes][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Yes][green]
 Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![Igen][green]
 Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/> Csak a helyszínen üzembe helyezett DPM-/MABS-kiszolgálók esetében.
 
@@ -120,7 +120,7 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 - Tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy", és az erőforrások biztonsági mentésére is használható.
 - A biztonsági mentési szabályzat megőrzési időszakában bekövetkezett változások visszamenőlegesen lesznek alkalmazva az összes korábbi helyreállítási pontra az újakon kívül.
 
-### <a name="additional-reference"></a>További hivatkozás
+### <a name="additional-reference"></a>További referenciák
 
 - Azure-beli VM-gép: szabályzat [létrehozása](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) és [módosítása](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) .
 - Adatbázis SQL Server az Azure-beli VM-gépen: szabályzat [létrehozása](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) és [módosítása](./manage-monitor-sql-database-backup.md#modify-policy) .
@@ -193,9 +193,8 @@ Az Azure-beli virtuális gépek lemezek használatával tárolják az operáció
 
 A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Azure Managed Disks Windows rendszerű virtuális gépekhez](../virtual-machines/windows/managed-disks-overview.md)
-- [Azure Managed Disks Linux rendszerű virtuális gépekhez](../virtual-machines/linux/managed-disks-overview.md)
-- [A virtuális gépek számára elérhető lemezek típusai](../virtual-machines/windows/disks-types.md)
+- [Azure Managed Disks Linux rendszerű virtuális gépekhez](../virtual-machines/managed-disks-overview.md)
+- [A virtuális gépek számára elérhető lemezek típusai](../virtual-machines/disks-types.md)
 
 ### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása Premium Storage-val
 
@@ -204,7 +203,7 @@ Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a A
 - A Premium Storage *-alapú*virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
 - Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. További információ: [a prémium szintű oldal blob Storage-fiókok méretezhetőségi célpontjai](../storage/blobs/scalability-targets-premium-page-blobs.md). Ne módosítsa az átmeneti helyet.
 - A biztonsági mentési feladatok befejezése után a rendszer törli az előkészítési helyet.
-- Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/windows/disks-types.md#billing).
+- Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/disks-types.md#billing).
 
 Ha a Premium Storage használatával állítja vissza az Azure-beli virtuális gépeket, visszaállíthatja őket prémium vagy standard szintű tárolóba. Általában a Premium Storage-ba kell visszaállítani őket. Ha azonban csak a virtuális gépről származó fájlok egy részhalmazára van szüksége, akkor költséghatékony lehet a standard szintű tárolóra visszaállítani.
 

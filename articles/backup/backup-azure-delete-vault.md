@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257958"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652828"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -18,7 +18,7 @@ Ez a cikk egy [Azure Backup](backup-overview.md) Recovery Services-tároló tör
 
 Az alábbi függőségek egyike esetén sem törölhet Recovery Services-tárolót:
 
-- Védett adatforrásokat (például IaaS virtuális gépeket, SQL-adatbázisokat, Azure-fájlmegosztást stb.) tartalmazó tárolót nem lehet törölni.  
+- Védett adatforrásokat (például IaaS virtuális gépeket, SQL-adatbázisokat, Azure-fájlmegosztást) tartalmazó tárolót nem lehet törölni.
 - Olyan tárolót nem lehet törölni, amely biztonsági másolatokat tartalmaz. A biztonságimásolat-adatok a törlést követően az adatok állapota helyreállíthatóan törölt lesz.
 - Nem törölhet olyan tárolót, amely biztonsági mentési állapotot tartalmaz a törölt törlési állapotban.
 - Regisztrált Storage-fiókkal rendelkező tárolót nem lehet törölni.
@@ -45,7 +45,7 @@ A tárolók megfelelő törléséhez az alábbi lépéseket kell követnie:
   - **Felhőalapú védett elemek**: lépjen a tároló irányítópult menüjébe > **biztonsági másolati elemek elemre**. Az itt felsorolt összes elemet el kell távolítani a biztonsági mentés **leállítása** vagy a biztonsági mentési adatok **törlése** mellett.  Ezeket a [lépéseket követve](#delete-protected-items-in-the-cloud) távolíthatja el ezeket az elemeket.
   - **SQL Server példány**: lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**által  >  **védett kiszolgálók**elemre. A védett kiszolgálók lapon válassza ki a regisztrálni kívánt kiszolgálót. A tár törléséhez meg kell szüntetnie az összes kiszolgáló regisztrációját. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése**lehetőséget.
   - **Mars-védelemmel ellátott kiszolgálók**: lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**által  >  **védett kiszolgálók**elemre. Ha a MARS-védelemmel ellátott kiszolgálókkal rendelkezik, az itt felsorolt összes elemet törölni kell a biztonsági mentési adatokkal együtt. A MARS-védelemmel ellátott kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
-   - **MABS vagy DPM felügyeleti kiszolgálók**: lépjen a tár irányítópult menüjébe > **biztonsági mentési infrastruktúra**biztonsági  >  **mentési felügyeleti kiszolgálók**elemre. Ha DPM vagy Azure Backup Server (MABS) rendelkezik, akkor az itt felsorolt összes elemet törölni kell, vagy a biztonsági mentési adatokkal együtt meg kell szüntetni a regisztrációt. A felügyeleti kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
+  - **MABS vagy DPM felügyeleti kiszolgálók**: lépjen a tár irányítópult menüjébe > **biztonsági mentési infrastruktúra**biztonsági  >  **mentési felügyeleti kiszolgálók**elemre. Ha DPM vagy Azure Backup Server (MABS) rendelkezik, akkor az itt felsorolt összes elemet törölni kell, vagy a biztonsági mentési adatokkal együtt meg kell szüntetni a regisztrációt. A felügyeleti kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
 
 - **4. lépés**: Győződjön meg arról, hogy az összes regisztrált Storage-fiók törölve van. Lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**  >  **Storage-fiókok**elemre. Ha az itt felsorolt Storage-fiókokkal rendelkezik, törölje az összes regisztrációját. További információ a fiók regisztrációjának megszüntetéséről: [Storage-fiók regisztrációjának törlése](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -234,7 +234,7 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    A következő üzenet helyének megjelenítése:
+    Ezt követően a következő üzenet jelenik meg:
 
     *Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"):*
 
@@ -244,7 +244,7 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    A következő üzenet helyének megjelenítése:
+    Ezt követően a következő üzenet jelenik meg:
 
    *Microsoft Azure Backup* Biztosan el kívánja távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő leteltével a biztonsági mentés adatai véglegesen törlődnek. <br/>
    [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték "Y"):*
@@ -337,7 +337,7 @@ A meglévő Recovery Services-tároló törléséhez hajtsa végre az alábbi m�
 
 Ez a Recovery Services-tároló törlésének lehetősége csak akkor javasolt, ha az összes függőség el lett távolítva, és a tár *törlési hibája*továbbra is bekerül. Próbálja ki a következő tippek bármelyikét vagy mindegyikét:
 
-- A tár menü **Essentials** paneljén ellenőrizze, hogy nincsenek-e biztonsági másolati elemek, biztonságimásolat-kezelési kiszolgálók vagy replikált elemek felsorolva. Ha vannak biztonsági másolati elemek, tekintse át az [első lépések](#before-you-start) szakaszt.
+- A tár menü **Essentials** paneljén ellenőrizze, hogy nincsenek-e biztonsági másolati elemek, biztonságimásolat-kezelési kiszolgálók vagy replikált elemek felsorolva. Ha vannak biztonsági másolati elemek, tekintse meg a [kezdés előtti](#before-you-start) szakaszt.
 - Próbálja meg újból [törölni a tárat a portálról](#delete-the-recovery-services-vault) .
 - Ha az összes függőség el lett távolítva, és még mindig beolvassa a tár *törlési hibáját*, a ARMClient eszközzel hajtsa végre a következő lépéseket (a Megjegyzés után).
 

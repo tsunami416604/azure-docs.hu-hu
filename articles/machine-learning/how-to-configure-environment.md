@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09d82c4834e50e0dff74edb5ccd14287736b937e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844473"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652638"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -215,7 +215,7 @@ Az összetevők engedélyezése a Jupyter Notebook környezetben:
     conda activate myenv
     ```
 
-1. [A GitHub-tárház](https://aka.ms/aml-notebooks) klónozása minta típusú jegyzetfüzetek készletében.
+1. [A GitHub-tárház](https://github.com/Azure/MachineLearningNotebooks) klónozása minta típusú jegyzetfüzetek készletében.
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
@@ -312,7 +312,7 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
    > Más SDK-extrák nem telepíthetők. Válassza ki a fenti beállítások közül a [databricks] vagy a [automl] lehetőséget.
 
    * Ne válassza **az Automatikus csatolás az összes fürthöz**lehetőséget.
-   * Válassza a **csatolás** elemet a fürt neve mellett.
+   * Válassza a  **csatolás** elemet a fürt neve mellett.
 
 1. A hibák figyelése, amíg az állapot a **csatolt**értékre módosul, ami több percet is igénybe vehet.  Ha ez a lépés meghiúsul:
 
@@ -323,8 +323,8 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
 
    Vegye figyelembe a következőket is:
    + A AutoML config Azure Databricks használatakor adja hozzá a következő paramétereket:
-       1. ```max_concurrent_iterations```a fürt munkavégző csomópontjainak száma alapján történik.
-        2. ```spark_context=sc```az alapértelmezett Spark-környezeten alapul.
+       1. ```max_concurrent_iterations``` a fürt munkavégző csomópontjainak száma alapján történik.
+        2. ```spark_context=sc``` az alapértelmezett Spark-környezeten alapul.
    + Ha pedig egy régi SDK-verzióval rendelkezik, törölje a fürt telepített libs elemét, és váltson a kukába. Telepítse az új SDK-verziót, és indítsa újra a fürtöt. Ha az újraindítás után probléma merül fel, válassza le és csatlakoztassa újra a fürtöt.
 
 Ha a telepítés sikeres volt, az importált függvénytárnak a következőhöz hasonlóan kell kinéznie:
@@ -363,7 +363,7 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
 * **A [ws. Write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py): használatával**config.jsírhat *a* fájlra. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config.jst* letöltheti vagy átmásolhatja más fejlesztői környezetbe.
 
-* **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
+* **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
 
      ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
@@ -386,7 +386,7 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
     Ez a kód a konfigurációs fájlt a *. azureml/config.js* fájlba írja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése
