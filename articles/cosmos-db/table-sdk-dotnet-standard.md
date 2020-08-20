@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168199"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641840"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: letöltési és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "84168199"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**Minta**|[Cosmos DB Table API .NET-minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Sample**|[Cosmos DB Table API .NET-minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
 |**Gyors útmutató**|[Gyors útmutató](create-table-dotnet.md)|
 |**Oktatóanyag**|[Oktatóanyag](tutorial-develop-table-dotnet.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
@@ -41,6 +41,14 @@ a 2.0.0 sorozat a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Micr
 
 ## <a name="release-notes-for-100-series"></a>A 1.0.0 sorozat kibocsátási megjegyzései
 a 1.0.0 sorozat [Microsoft.Azure.DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)fájltól függ.
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Támogatás hozzáadása a TTL tulajdonság beállításához, ha az cosmosdb-végpont 
+* Az időtúllépés és a feladat megszakítása miatti újrapróbálkozási szabályzat
+* Időszakos feladat – az ASP .NET-alkalmazásokban észlelt kivétel megszakítva
+* Az Azure Table Storage kijavítása a másodlagos végpontról csak a hely módból
+* `Microsoft.Azure.DocumentDB.Core`A függőségi verzió frissítése a 2.11.2-re, amely megjavítja az időszakos null hivatkozási kivételt
+* `Odata.Core`A függőségi verzió frissítése a 7.6.4, amely az Azure Shell kompatibilitási ütközését javítja
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * A teljesítmény javítása a Table SDK alapértelmezett nyomkövetési szintjének a SourceLevels. Off értékre állításával, amely a következőn keresztül engedélyezhető: app.config

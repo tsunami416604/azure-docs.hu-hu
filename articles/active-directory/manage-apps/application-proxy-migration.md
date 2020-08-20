@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1ffb5ec0b39c5331afbc55d99268d9a3997e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764451"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641177"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
 
@@ -32,7 +32,7 @@ Azure Active Directory Application Proxy a Microsoft által kínált két tável
 
 Ebből a táblázatból megtudhatja, hogyan hasonlíthatja össze a veszélyforrások kezelési átjáróját (TMG), az egységes hozzáférési átjárót (UAG), a webalkalmazás-proxyt (WAP) és az Azure AD Application Proxy (AP) egymással.
 
-| Szolgáltatás | TMG | UAG | WAP | AP |
+| Funkció | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | Tanúsítványhitelesítés | Igen | Igen | - | - |
 | Böngészőalapú alkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
@@ -59,9 +59,9 @@ Az Azure AD Application Proxy a hasonló termékekhez képest egyedi előnyöket
    - Az olyan funkciók, mint a feltételes hozzáférés és a Multi-Factor Authentication egyszerűen engedélyezhetők
 - Nincsenek összetevők a vagy demilitarizált zónában
 - Nincs szükség bejövő kapcsolatra
-- Egyetlen hozzáférési panel, amellyel a felhasználók az összes alkalmazáshoz hozzáférhetnek, beleértve a O365, az Azure AD integrált SaaS-alkalmazásait és a helyszíni webalkalmazásokat. 
+- Az egyik My apps oldal, amellyel a felhasználók az összes alkalmazáshoz hozzáférhetnek, beleértve a O365, az Azure AD integrált SaaS-alkalmazásait és a helyszíni webalkalmazásokat is. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-alkalmazás használata biztonságos távoli hozzáférés biztosításához a helyszíni alkalmazásokhoz](application-proxy.md)

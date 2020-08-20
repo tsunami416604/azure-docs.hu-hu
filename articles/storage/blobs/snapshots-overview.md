@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055768"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640599"
 ---
 # <a name="blob-snapshots"></a>BLOB-Pillanatképek
 
 A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik.
 
 > [!NOTE]
-> A blob verziószámozása (előzetes verzió) egy másik módszert kínál a Blobok korábbi példányainak megtartására. További információ: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
+> A blob verziószámozása (előzetes verzió) egy másik módszert kínál a blob korábbi verzióinak karbantartására. További információ: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
 
 ## <a name="about-blob-snapshots"></a>Tudnivalók a blob-pillanatképekről
 
@@ -33,7 +33,7 @@ A blob pillanatképe azonos az alap blobtal, azzal a különbséggel, hogy a blo
 > Minden pillanatkép megosztja az alap blob URI-JÁT. Az alap blob és a pillanatkép közötti egyetlen különbség a hozzáfűzött **datetime** érték.
 >
 
-A Blobok tetszőleges számú pillanatképet tartalmazhatnak. A pillanatképek mindaddig megmaradnak, amíg explicit módon nem törlik őket, vagy az alap blob törlési műveletének részeként. Az alap blobhoz társított Pillanatképek enumerálásával nyomon követheti az aktuális pillanatképeket.
+A Blobok tetszőleges számú pillanatképet tartalmazhatnak. A pillanatképek mindaddig megmaradnak, amíg explicit módon nem törlik őket, vagy a [blob törlési](/rest/api/storageservices/delete-blob) műveletének részeként. Az alap blobhoz társított Pillanatképek enumerálásával nyomon követheti az aktuális pillanatképeket.
 
 Egy blob pillanatképének létrehozásakor a rendszer a blob rendszertulajdonságait a pillanatképre másolja, és ugyanazokat az értékeket. Az alap blob metaadatait a rendszer a pillanatképbe is másolja, kivéve, ha a létrehozáskor külön metaadatokat ad meg a pillanatképhez. A pillanatkép létrehozása után elolvashatja, másolhatja vagy törölheti, de nem módosítható.
 
@@ -51,15 +51,15 @@ A következő lista a pillanatképek létrehozásakor megfontolandó főbb ponto
 
 - A Storage-fiók az egyedi blokkok vagy lapok díját terheli, függetlenül attól, hogy azok a blobban vagy a pillanatképben vannak-e. A fiókja nem számít fel további díjat a blobokhoz társított pillanatképekhez, amíg nem frissíti azt a blobot, amelyen alapulnak. Az alap blob frissítése után az a pillanatképtől eltér. Ebben az esetben az egyes Blobok vagy Pillanatképek egyedi blokkait vagy lapjait kell fizetnie.
 - Ha egy blokkon belüli blokkot cserél le, a rendszer ezt a blokkot egy egyedi blokkként számítja fel. Ez akkor is igaz, ha a blokk ugyanazzal a blokk-AZONOSÍTÓval és ugyanazokkal az adatokkal rendelkezik, mint a pillanatképben. A blokk újbóli elkövetése után a rendszer az adott pillanatképtől eltér, és az adatokért kell fizetnie. Ugyanez a helyzet igaz egy olyan oldal blobján, amely azonos adattal frissült.
-- A blokk blobjának lecserélése a [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] vagy [UploadFromByteArray] [dotnet_UploadFromByteArray] metódus meghívásával a blob összes blokkját lecseréli. Ha az adott blobhoz pillanatkép van társítva, akkor az alap blobban és a pillanatképben lévő összes blokk már eltér egymástól, és a rendszer az összes blokkot felszámítja mindkét blobban. Ez akkor is igaz, ha az alap blobban lévő adatok és a pillanatkép azonos marad.
+- Egy blokk blobjának frissítése egy olyan metódus meghívásával, amely felülírja a blob teljes tartalmát, a blob összes blokkját lecseréli. Ha az adott blobhoz pillanatkép van társítva, akkor az alap blobban és a pillanatképben lévő összes blokk már eltér egymástól, és a rendszer az összes blokkot felszámítja mindkét blobban. Ez akkor is igaz, ha az alap blobban lévő adatok és a pillanatkép azonos marad.
 - Az Azure Blob service nem határozza meg, hogy két blokk tartalmaz-e azonos adathalmazt. Minden feltöltött és véglegesített blokk egyediként lesz kezelve, még akkor is, ha ugyanazokat az adatblokkokat és AZONOSÍTÓkat is tartalmazta. Mivel a díjak egyedi blokkokból állnak, fontos figyelembe venni, hogy a pillanatképet tartalmazó Blobok frissítése további egyedi blokkokat és további díjakat eredményez.
 
-### <a name="minimize-cost-with-snapshot-management"></a>A költséghatékonyság csökkentése a Snapshot Management szolgáltatással
+### <a name="minimize-costs-with-snapshot-management"></a>A költségek csökkentése a Snapshot Management szolgáltatással
 
 Javasoljuk, hogy gondosan kezelje a pillanatképeket a további költségek elkerülése érdekében. Az alábbi ajánlott eljárásokat követve csökkentheti a pillanatképek tárolásához felmerülő költségeket:
 
 - Egy blobhoz társított Pillanatképek törlése és újbóli létrehozása minden alkalommal, amikor frissíti a blobot, még akkor is, ha az alkalmazás megtervezése nem igényli a pillanatképek karbantartását. A blob Pillanatképek törlésével és újbóli létrehozásával biztosíthatja, hogy a blob és a pillanatképek ne legyenek elválasztva.
-- Ha pillanatképeket tart fenn egy blobhoz, ne hívja meg a következőt: [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] vagy [UploadFromByteArray] [dotnet_UploadFromByteArray] a blob frissítéséhez. Ezek a metódusok a blob összes blokkját lecserélik, így az alap blob és a pillanatképek jelentősen eltérhetnek. Ehelyett frissítse a lehető legkevesebb blokkot a [PutBlock] [dotnet_PutBlock] és a [PutBlockList] [dotnet_PutBlockList] metódus használatával.
+- Ha pillanatképeket tart fenn egy blobhoz, ne hívja meg azokat a metódusokat, amelyek felülírják a teljes blobot a blob frissítésekor. Ehelyett frissítse a lehető legkevesebb blokkot a költségek alacsonyra csökkentése érdekében.
 
 ### <a name="snapshot-billing-scenarios"></a>Pillanatkép-számlázási forgatókönyvek
 
@@ -85,11 +85,14 @@ A 3. forgatókönyvben az alap blob frissült, de a pillanatkép nem. A 3. blokk
 
 #### <a name="scenario-4"></a>4\. példa
 
-A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók minden nyolc egyedi blokk után díjat számít fel. Ez a forgatókönyv akkor fordulhat elő, ha olyan frissítési módszert használ, mint például a [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] vagy [UploadFromByteArray] [dotnet_UploadFromByteArray], mivel ezek a metódusok egy blob összes tartalmát lecserélik.
+A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók minden nyolc egyedi blokk után díjat számít fel.
 
 ![Azure Storage-erőforrások](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
-## <a name="next-steps"></a>További lépések
+> [!TIP]
+> Ne hívjon fel olyan metódusokat, amelyek felülírják a teljes blobot, hanem az egyes blokkok frissítésével a költségek alacsonyak maradnak.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [BLOB-pillanatkép létrehozása és kezelése a .NET-ben](snapshots-manage-dotnet.md)
 - [Azure-beli nem felügyelt VM-lemezek biztonsági mentése növekményes pillanatképekkel](../../virtual-machines/windows/incremental-snapshots.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757603"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641075"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication üzemelő példány megtervezése
 
@@ -108,6 +108,9 @@ Javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával defin
 ## <a name="plan-authentication-methods"></a>Hitelesítési módszerek megtervezése
 
 A rendszergazdák kiválaszthatják a felhasználók számára elérhetővé tenni kívánt [hitelesítési módszereket](../authentication/concept-authentication-methods.md) . Fontos, hogy egynél több hitelesítési módszert engedélyezzen, hogy a felhasználók számára elérhető legyen egy biztonsági mentési módszer, ha az elsődleges metódus nem érhető el. A rendszergazdák a következő módszerekkel engedélyezhetők:
+
+> [!TIP]
+> A Microsoft a legjobb biztonsági és felhasználói élmény érdekében javasolja a Mobile App használatát az Azure-Multi-Factor Authentication elsődleges módszerként.
 
 ### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
 
@@ -235,19 +238,19 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
 1. A **felhasználók és csoportok**területen:
    * A **beágyazás** lapon jelölje be a **minden felhasználó** választógombot.
    * A **kizárás** lapon jelölje be a **felhasználók és csoportok** jelölőnégyzetet, és válassza ki a vészhelyzeti hozzáférési fiókokat.
-   * Kattintson a **Done** (Kész) gombra.
+   * Kattintson a **Kész** gombra.
 1. A **Cloud apps**alatt válassza a **minden Cloud apps** választógombot.
    * OPCIONÁLISan: a **kizárás** lapon válassza ki azokat a felhőalapú alkalmazásokat, amelyekhez a szervezet nem igényel MFA-t a alkalmazáshoz.
-   * Kattintson a **Done** (Kész) gombra.
+   * Kattintson a **Kész** gombra.
 1. A **feltételek** szakaszban:
    * OPCIONÁLISan: Ha engedélyezte az Azure Identity Protection szolgáltatást, kiválaszthatja, hogy a szabályzat részeként kiértékeli-e a bejelentkezési kockázatot.
    * OPCIONÁLISan: ha megbízható telephelyeket vagy elnevezett helyeket konfigurált, megadhatja, hogy a rendszer belefoglalja vagy kizárja ezeket a helyeket a szabályzatból.
 1. Győződjön meg **arról, hogy**a **hozzáférés** engedélyezése választógomb be van jelölve.
     * Jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
-    * Kattintson a **Kiválasztás** gombra.
+    * Kattintson a **Kiválasztás** elemre.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -342,11 +345,11 @@ Most, hogy megtervezte a megoldást, az alábbi lépésekkel végezheti el a meg
 1. Az MFA regisztrációs szabályzatának konfigurálása
    1. [Kombinált MFA és SSPR](howto-registration-mfa-sspr-combined.md)
    1. [Identitás-védelemmel](../identity-protection/howto-mfa-policy.md)
-1. Felhasználói kommunikáció küldése és a felhasználók beléptetése[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. Felhasználói kommunikáció küldése és a felhasználók beléptetése [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [A regisztrált felhasználók nyomon követése](#identify-non-registered-users)
 
 > [!TIP]
-> A kormányzati felhő felhasználói regisztrálhatnak[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> A kormányzati felhő felhasználói regisztrálhatnak [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>A megoldás kezelése
 
@@ -354,7 +357,7 @@ Jelentések az Azure MFA-hoz
 
 Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon keresztül:
 
-| Jelentés | Hely | Description |
+| Jelentés | Hely | Leírás |
 | --- | --- | --- |
 | Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
 
@@ -362,7 +365,7 @@ Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon ke
 
 Az Azure MFA-val kapcsolatos gyakori problémák megoldásait az [azure multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Multi-Factor Authentication működés közbeni megtekintéséhez hajtsa végre a következő oktatóanyagot:
 

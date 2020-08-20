@@ -4,16 +4,16 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905125"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641959"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
-Néhány különböző technológiával üzembe helyezheti Azure Functions-projekt kódját az Azure-ban. Ez a cikk áttekintést nyújt az Ön számára elérhető üzembe helyezési módszerekről, és javaslatokat tartalmaz a legjobb módszer a különböző helyzetekben történő használathoz. Emellett részletes listát nyújt a underlyng üzembe helyezési technológiákról és a legfontosabb adatokról. 
+Néhány különböző technológiával üzembe helyezheti Azure Functions-projekt kódját az Azure-ban. Ez a cikk áttekintést nyújt az Ön számára elérhető üzembe helyezési módszerekről, és javaslatokat tartalmaz a legjobb módszer a különböző helyzetekben történő használathoz. Emellett részletes listát nyújt a mögöttes telepítési technológiákról és a legfontosabb adatokról. 
 
 ## <a name="deployment-methods"></a>Üzembe helyezési módszerek
 
@@ -34,7 +34,7 @@ Míg az adott függvények központi telepítései a környezetük alapján a le
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
 + [Felhasználás](functions-scale.md#consumption-plan)
-+ [Prémium szintű](functions-scale.md#premium-plan)
++ [Prémium](functions-scale.md#premium-plan)
 + [Dedikált (App Service)](functions-scale.md#app-service-plan)
 
 Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepítési technológia érhető el Azure Functions minden egyes ízét. A következő diagramon látható, hogy mely telepítési technológiák támogatottak az operációs rendszer és a üzemeltetési csomag minden kombinációja esetén:
@@ -202,7 +202,13 @@ A következő táblázat a portál szerkesztését támogató operációs rendsz
 | PowerShell (előzetes verzió) |✔|✔|✔| | | |
 | Írógéppel (Node.js) | | | | | | |
 
-<sup>*</sup>A portál szerkesztése csak a HTTP-és időzítő-eseményindítók esetében engedélyezett a Linux-és prémium szintű és dedikált csomagok használatával.
+<sup>*</sup> A portál szerkesztése csak a HTTP-és időzítő-eseményindítók esetében engedélyezett a Linux-és prémium szintű és dedikált csomagok használatával.
+
+## <a name="deployment-behaviors"></a>Üzembe helyezési viselkedések
+
+Központi telepítés esetén az összes meglévő végrehajtás engedélyezett vagy időtúllépés, amely után az új kód betöltődik a kérelmek feldolgozásának megkezdéséhez.
+
+Ha ennél az átmenetnél több vezérlésre van szüksége, használja az üzembe helyezési pontokat.
 
 ## <a name="deployment-slots"></a>Üzembehelyezési pontok
 

@@ -1,5 +1,5 @@
 ---
-title: A Batch átírása – beszédfelismerési szolgáltatás
+title: A Batch transzkripció használata – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A Batch-átírás ideális megoldás, ha nagy mennyiségű hanganyagot szeretne átírni a Storage-ban, például az Azure-blobokat. A dedikált REST API használatával a hangfájlok közös hozzáférésű aláírási (SAS) URI-val és aszinkron módon fogadhatók.
 services: cognitive-services
@@ -10,20 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214044"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640157"
 ---
-# <a name="what-is-batch-transcription"></a>Mi a Batch-átírás?
+# <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
 A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű hang tárolását. A hangfájlok közös hozzáférésű aláírási (SAS) URI-val, az átírási eredmények aszinkron fogadásával is megadhatók. Az új v 3.0 API-val lehetősége van egy vagy több hangfájl átírására, vagy egy teljes tároló feldolgozására.
 
 Az aszinkron beszéd – szöveg átírása csak az egyik funkció. A Batch átírása REST API-kkal a következő módszereket hívhatja:
-
-
 
 |    Kötegelt átírási művelet                                             |    Metódus    |    REST API hívás                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -46,20 +44,14 @@ A könnyen használható API mellett nem kell egyéni végpontokat telepítenie,
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscription-key"></a>Előfizetői azonosító
-
 Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md).
 
 >[!NOTE]
 > A Batch-átírás használatához standard előfizetés (S0) szükséges a Speech Service-hez. Az ingyenes előfizetési kulcsok (F0) nem működnek. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-### <a name="custom-models"></a>Egyéni modellek
-
 Ha azt tervezi, hogy testreszabja a modelleket, kövesse az [akusztikai Testreszabás](how-to-customize-acoustic-models.md) és a [nyelvi Testreszabás](how-to-customize-language-model.md)lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell helyére. A modell helyét a modell (tulajdonság) részleteinek vizsgálatával kérheti le `self` . A Batch átíró szolgáltatáshoz *nem szükséges* egy telepített egyéni végpont.
 
-## <a name="the-batch-transcription-api"></a>A Batch-átírási API
-
-### <a name="supported-formats"></a>Támogatott formátumok
+## <a name="batch-transcription-api"></a>Batch-átírási API
 
 A Batch transzkripciós API a következő formátumokat támogatja:
 
@@ -185,7 +177,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 
 A Batch átirata támogatja az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) -t, hogy hang-és írási átírásokat olvasson a tárolóba.
 
-## <a name="the-batch-transcription-result"></a>A Batch átírásának eredménye
+## <a name="batch-transcription-result"></a>Köteg átírásának eredménye
 
 Minden bemeneti hang esetében egy átírási eredményű fájl jön létre. Az eredményül kapott fájlok listáját az [átírási fájlok](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)meghívásával kérheti le. Ez a metódus az átíráshoz tartozó találati fájlok listáját adja vissza. Egy adott bemeneti fájl átírási fájljának megkereséséhez szűrje az összes visszaadott fájlt a és a értékkel `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` .
 
@@ -251,7 +243,7 @@ Minden átírási eredmény fájlja a következő formátumú:
 }
 ```
 
-Az eredmény az alábbi űrlapokat tartalmazza:
+Az eredmény a következő formákat tartalmazza:
 
 :::row:::
    :::column span="1":::
@@ -289,9 +281,9 @@ Az eredmény az alábbi űrlapokat tartalmazza:
       A felismert szöveg megjelenítési formája A rendszer a hozzáadott írásjeleket és a nagybetűket is tartalmazza.
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>Beszélő elkülönítése (Diarization)
+## <a name="speaker-separation-diarization"></a>Beszélő elkülönítése (diarization)
 
-A Diarization a hangszórók elválasztásának folyamata egy hanganyagban. A Batch-folyamat támogatja a diarization-t, és képes a Mono Channel-felvételek két hangszórójának felismerésére. A szolgáltatás nem érhető el a sztereó felvételeken.
+A Diarization a hangszórók elválasztásának folyamata egy hanganyagban. A Batch-folyamat támogatja a diarization, és képes a Mono Channel-felvételek két hangszórójának felismerésére. A szolgáltatás nem érhető el a sztereó felvételeken.
 
 Az diarization-mel rendelkező átiratok kimenete `Speaker` minden egyes átmásolt kifejezéshez tartalmaz egy bejegyzést. Ha a diarization nincs használatban, a tulajdonság `Speaker` nem szerepel a JSON-kimenetben. A diarization két hangokat támogatunk, így a hangszórók a vagy a néven azonosíthatók `1` `2` .
 
@@ -317,7 +309,7 @@ A Word-szintű időbélyegeket engedélyezni kell, ha a fenti kérelemben szerep
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az átírási szolgáltatás nagy számú beküldött átírást képes kezelni. Az átiratok állapotát lekérdezheti a `GET` [Get átiratok](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)használatával. Az eredmények lekérése után rendszeresen hívja meg a [delete átiratot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) a szolgáltatásból. Másik lehetőségként állítsa be a `timeToLive` tulajdonságot egy ésszerű értékre az eredmények végleges törlésének biztosítása érdekében.
+A Batch transzkripciós szolgáltatás nagy számú beküldött átírást képes kezelni. Az átiratok állapotát lekérdezheti a `GET` [Get átiratok](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)használatával. Az eredmények lekérése után rendszeresen hívja meg a [delete átiratot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) a szolgáltatásból. Másik lehetőségként állítsa be a `timeToLive` tulajdonságot egy ésszerű értékre az eredmények végleges törlésének biztosítása érdekében.
 
 ## <a name="sample-code"></a>Mintakód
 

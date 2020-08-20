@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764876"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642061"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Egyéni Kezdőlap beállítása a közzétett alkalmazásokhoz az Azure AD Application Proxy használatával
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy alkalmazást egy felhasználó egyéni kezdőlapra való irányításához. Ha alkalmazásproxy-alkalmazással tesz közzé egy alkalmazást, belső URL-címet kell beállítania, de néha ez nem az a lap, amelyet a felhasználónak először látnia kell. Állítson be egy egyéni kezdőlapot, hogy a felhasználó megkapja a jobb oldalt, amikor hozzáférnek az alkalmazáshoz. A felhasználó megtekintheti a beállított egyéni kezdőlapot, függetlenül attól, hogy az alkalmazást a Azure Active Directory hozzáférési paneljéről vagy az Office 365 app launcherről érik-e el.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy alkalmazást egy felhasználó egyéni kezdőlapra való irányításához. Ha alkalmazásproxy-alkalmazással tesz közzé egy alkalmazást, belső URL-címet kell beállítania, de néha ez nem az a lap, amelyet a felhasználónak először látnia kell. Állítson be egy egyéni kezdőlapot, hogy a felhasználó megkapja a jobb oldalt, amikor hozzáférnek az alkalmazáshoz. A felhasználó megtekintheti a beállított egyéni kezdőlapot, függetlenül attól, hogy a Azure Active Directory saját alkalmazások vagy a Microsoft 365 app Launcher alkalmazásból férnek hozzá az alkalmazáshoz.
 
 Amikor egy felhasználó elindítja az alkalmazást, a rendszer alapértelmezés szerint a közzétett alkalmazás gyökértartomány URL-címére irányítja. A Kezdőlap általában a Kezdőlap URL-címeként van beállítva. Az Azure AD PowerShell-modullal definiálhat egy egyéni Kezdőlap URL-címet, ha azt szeretné, hogy egy alkalmazás egy adott oldalon az alkalmazáson belül egy adott lapra szálljon.
 
@@ -37,7 +37,7 @@ Amikor egy felhasználó elindítja az alkalmazást, a rendszer alapértelmezés
 - `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`Ehelyett a Kezdőlap URL-címét szeretné beállítani, így a külső felhasználók először a bejelentkezési oldalt láthatják.
 
 > [!NOTE]
-> Amikor hozzáférést ad a felhasználóknak a közzétett alkalmazásokhoz, az alkalmazások megjelennek az [Azure ad hozzáférési paneljén](../user-help/my-apps-portal-end-user-access.md) és az [Office 365 app launcherben](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Ha hozzáférést ad a felhasználóknak a közzétett alkalmazásokhoz, az alkalmazások megjelennek a [saját alkalmazások](../user-help/my-apps-portal-end-user-access.md) és az [Office 365 app Launcher](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -59,7 +59,7 @@ Ha módosítani szeretné az alkalmazás kezdőlapjának URL-címét az Azure AD
 1. Válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk**lehetőséget. Megjelenik a regisztrált alkalmazások listája.
 1. Válassza ki az alkalmazást a listából. Megjelenik a regisztrált alkalmazás részleteit megjelenítő oldal.
 1. A **kezelés**területen válassza a **branding (védjegyezés**) lehetőséget.
-1. Frissítse a **Kezdőlap URL-címét** az új elérési úttal.
+1. Frissítse a **Kezdőlap URL-címét**  az új elérési úttal.
 
    ![A Kezdőlap URL-címét tartalmazó regisztrált alkalmazás védjegyezési lapja](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 
@@ -178,7 +178,7 @@ Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott é
 > [!NOTE]
 > Előfordulhat, hogy az alkalmazáson végzett módosítások visszaállítják a Kezdőlap URL-címét. Ha a Kezdőlap URL-címe alaphelyzetbe áll, a szakasz lépéseit megismételve állíthatja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével](application-proxy-integrate-with-sharepoint-server.md)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)

@@ -12,16 +12,16 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799502"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642027"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Felhasználók vagy csoportok hozzárendelése vállalati alkalmazáshoz az Azure Active Directoryban
 
-Ez a cikk bemutatja, hogyan rendelhet hozzá felhasználókat vagy csoportokat Azure Active Directory (Azure AD) vállalati alkalmazásaihoz a Azure Portal vagy a PowerShell használatával. Amikor felhasználót rendel hozzá egy alkalmazáshoz, az alkalmazás a felhasználók [saját alkalmazások hozzáférési paneljén](https://myapps.microsoft.com/) jelenik meg a könnyű hozzáférés érdekében. Ha az alkalmazás szerepköröket tesz elérhetővé, akkor egy adott szerepkört is hozzárendelhet a felhasználóhoz.
+Ez a cikk bemutatja, hogyan rendelhet hozzá felhasználókat vagy csoportokat Azure Active Directory (Azure AD) vállalati alkalmazásaihoz a Azure Portal vagy a PowerShell használatával. Amikor felhasználót rendel hozzá egy alkalmazáshoz, az alkalmazás könnyen elérhetővé válik a felhasználó [saját alkalmazásaiban](https://myapps.microsoft.com/) . Ha az alkalmazás szerepköröket tesz elérhetővé, akkor egy adott szerepkört is hozzárendelhet a felhasználóhoz.
 
 A nagyobb fokú szabályozás érdekében a vállalati alkalmazások bizonyos típusai úgy konfigurálhatók, hogy [felhasználói hozzárendelést kérjenek](#configure-an-application-to-require-user-assignment). 
 
@@ -45,7 +45,7 @@ Ha felhasználói hozzárendelésre van szükség, csak azokat a felhasználóka
 
 Ha nincs *szükség*hozzárendelésre, mert ezt a beállítást a **nem** értékre állította be, vagy mert az alkalmazás más egyszeri bejelentkezéses módot használ, akkor bármely felhasználó hozzáférhet az alkalmazáshoz, ha az alkalmazás **Tulajdonságok** lapján közvetlen hivatkozással rendelkezik az alkalmazásra vagy a **felhasználói hozzáférési URL-címre** . 
 
-Ez a beállítás nem befolyásolja, hogy egy alkalmazás megjelenik-e a saját alkalmazások hozzáférési paneljén. Az alkalmazások a felhasználók saját alkalmazások hozzáférési panelén jelennek meg, miután hozzárendelt egy felhasználót vagy csoportot az alkalmazáshoz. A háttérben tekintse meg az [alkalmazások hozzáférésének kezelése](what-is-access-management.md)című témakört.
+Ez a beállítás nem befolyásolja, hogy az alkalmazások megjelennek-e az alkalmazásokban. Az alkalmazások a felhasználók saját alkalmazások hozzáférési panelén jelennek meg, miután hozzárendelt egy felhasználót vagy csoportot az alkalmazáshoz. A háttérben tekintse meg az [alkalmazások hozzáférésének kezelése](what-is-access-management.md)című témakört.
 
 
 Felhasználói hozzárendelés megkövetelése egy alkalmazáshoz:
@@ -161,10 +161,10 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
 - [További információ az alkalmazásokhoz való végfelhasználói hozzáférésről](end-user-experiences.md)
-- [Azure AD hozzáférési panel üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
+- [Azure AD-beli alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
 - [Az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)

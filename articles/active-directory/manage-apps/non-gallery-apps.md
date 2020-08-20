@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d4f00061664340681b365eddfa1a742795f96d99
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164682"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641143"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>Az Azure AD használata az App Galleryben nem szereplő alkalmazásokhoz
 
@@ -31,11 +31,11 @@ Hozzáadhat bármely olyan alkalmazást, amely már létezik a szervezetében, v
 - Bármely olyan alkalmazás önkiszolgáló integrációja, amely támogatja az [Security Assertion Markup Language (SAML) 2,0-](https://wikipedia.org/wiki/SAML_2.0) es identitás-szolgáltatót (SP által kezdeményezett vagy identitásszolgáltató)
 - A HTML-alapú bejelentkezési oldallal rendelkező webalkalmazások önkiszolgáló integrációja [jelszó-alapú egyszeri bejelentkezés](sso-options.md#password-based-sso) használatával
 - Az olyan alkalmazások önkiszolgáló kapcsolata, amelyek a [rendszert a tartományok közötti Identitáskezelés-felügyeleti (scim) protokoll használatával használják a felhasználók üzembe](../app-provisioning/use-scim-to-provision-users-and-groups.md) helyezéséhez
-- Az [Office 365 app Launcher](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) vagy az [Azure ad hozzáférési paneljén](sso-options.md#linked-sign-on) bármely alkalmazásra mutató hivatkozások hozzáadásának lehetősége
+- Hivatkozás hozzáadása bármely alkalmazáshoz az [Office 365 app launcherben](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) vagy [a saját alkalmazásokban](sso-options.md#linked-sign-on)
 
 Ha az egyéni alkalmazások Azure AD-val való integrálásával kapcsolatos fejlesztői útmutatást keres, tekintse meg az [Azure ad hitelesítési forgatókönyveit](../develop/authentication-scenarios.md). Ha olyan alkalmazást fejleszt ki, amely egy modern protokollt használ, például az [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) -t a felhasználók hitelesítéséhez, akkor a Azure Portal [Alkalmazásregisztrációk](../develop/quickstart-register-app.md) felületének használatával regisztrálhatja azt a Microsoft Identity platformon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyors üzembe helyezési sorozat az App Management szolgáltatásban](view-applications-portal.md)
 

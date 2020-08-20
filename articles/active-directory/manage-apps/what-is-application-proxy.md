@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164580"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640514"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Helyszíni alkalmazások közzététele az Azure AD Application Proxy használatával távoli felhasználók számára
 
@@ -76,7 +76,7 @@ Az alkalmazásproxy egy Azure AD-szolgáltatás, amelyet a Azure Portal konfigur
 
 A szolgáltatás összetevői közé tartozik a felhőben futtatott alkalmazásproxy-összekötő, amely egy egyszerűsített ügynök, amely egy helyszíni kiszolgálón, az Azure AD-ben pedig az identitás-szolgáltatón fut. Mindhárom összetevő együttműködik, hogy a felhasználó számára egyszeri bejelentkezést biztosítson a helyszíni webalkalmazásokhoz való hozzáféréshez.
 
-A bejelentkezést követően a külső felhasználók ismerős URL-cím vagy a [MyApps-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) használatával érhetik el a helyszíni webalkalmazásokat asztali vagy iOS-vagy Mac-eszközökről. Az alkalmazásproxy például távoli hozzáférést és egyszeri bejelentkezést biztosíthat a Távoli asztal, a SharePoint-webhelyek, a tabló, a Qlik, az Outlook és az üzletági (LOB) alkalmazások számára.
+A bejelentkezést követően a külső felhasználók ismerős URL-cím vagy [saját alkalmazások](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) segítségével érhetik el a helyszíni webalkalmazásokat az asztali vagy iOS-vagy Mac-eszközökről. Az alkalmazásproxy például távoli hozzáférést és egyszeri bejelentkezést biztosíthat a Távoli asztal, a SharePoint-webhelyek, a tabló, a Qlik, az Outlook és az üzletági (LOB) alkalmazások számára.
 
 ![Azure AD Application Proxy-architektúra](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -202,7 +202,7 @@ A szervezeteknek a következő előnyök kihasználásával kell megkezdeniük a
 * Automatikus frissítések a legújabb biztonsági javítások biztosításához
 * Új funkciók, mint azok kiadása; a legutóbbi támogatás az SAML egyszeri bejelentkezéshez és az alkalmazás-cookie-k részletesebb kezeléséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure AD Application Proxy tervezésével, működésével és kezelésével kapcsolatos információkért lásd: Azure-beli [ad Application proxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md).
 * Egy élő bemutató beléptetéséhez vagy az ingyenes 90 napos próbaverzió kiértékeléséhez tekintse meg a [Enterprise Mobility + Security első lépéseivel foglalkozó](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)témakört.

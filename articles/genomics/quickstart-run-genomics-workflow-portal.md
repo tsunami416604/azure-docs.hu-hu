@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0e106f3ea8a5de80f4961a1d591d31abdbe2ca86
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876291"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642316"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -55,9 +55,9 @@ Telepítenie kell a Pythont és a Microsoft Genomics Python-ügyfelet `msgen` a 
 A Microsoft Genomics Python-ügyfél kompatibilis a Python 2.7.12 vagy újabb 2.7. xx-es verziójával. a 2.7.14 a javasolt verzió. A letöltés [itt](https://www.python.org/downloads/release/python-2714/) található. 
 
 > [!IMPORTANT]
-> A Python 3. x nem kompatibilis a Python 2.7. xx-mel.  `msgen`Python 2,7-alkalmazás. Ha fut `msgen` , ellenőrizze, hogy az aktív Python-környezet a Python 2.7. xx verzióját használja-e. Hibaüzeneteket kaphat a `msgen` Python 3. x verziójának használatakor.
+> A Python 3. x nem kompatibilis a Python 2.7. xx-mel.  `msgen` Python 2,7-alkalmazás. Ha fut `msgen` , ellenőrizze, hogy az aktív Python-környezet a Python 2.7. xx verzióját használja-e. Hibaüzeneteket kaphat a `msgen` Python 3. x verziójának használatakor.
 
-### <a name="install-the-microsoft-genomics-python-client-msgen"></a>A Microsoft Genomics Python-ügyfél telepítése`msgen`
+### <a name="install-the-microsoft-genomics-python-client-msgen"></a>A Microsoft Genomics Python-ügyfél telepítése `msgen`
 
 A Python használatával `pip` telepítse az Microsoft Genomics-ügyfelet `msgen` . A következő utasítások feltételezik, hogy a Python2. x már a rendszer elérési útjában van. Ha a telepítés során problémák merülnek `pip` fel, akkor a rendszer elérési útjához hozzá kell adnia a Pythont és a szkriptek almappáját.
 
@@ -123,9 +123,9 @@ Nyissa meg a genomikai fiókjából letöltött *config.txt* fájlt. A megadhat�
 
 Ha a GATK4-t szeretné futtatni, állítsa a paramétert a következőre: `process_name` `gatk4` .
 
-Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF kimenetet (a `-emitRefConfidence` GATK 3. x és `emit-ref-confidence` a GATK 4. x verzióban), adja hozzá a `emit_ref_confidence` paramétert a *config.txthoz* , és állítsa be a (z) értékre `gvcf` az előző ábrán látható módon.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a *config.txt* fájlból, vagy állítsa a paramétert a következőre: `emit_ref_confidence` `none` . 
+Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF kimenetet (a `-emitRefConfidence` GATK 3. x és `emit-ref-confidence` a GATK 4. x verzióban), adja hozzá a `emit_ref_confidence` paramétert a *config.txthoz * , és állítsa be a (z) értékre `gvcf` az előző ábrán látható módon.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a *config.txt* fájlból, vagy állítsa a paramétert a következőre: `emit_ref_confidence` `none` . 
 
-`bgzip`a egy olyan eszköz, amely tömöríti a vcf vagy a gvcf fájlt, és `tabix` létrehoz egy indexet a tömörített fájlhoz. Alapértelmezés szerint a genomikai szolgáltatás futtatása `bgzip` `tabix` a ". g. vcf" kimenet után történik, de a nem futtatja ezeket az eszközöket a ". vcf" kimenetnél. A futtatáskor a szolgáltatás ". gz" (bgzip output) és ". TBI" (tabix output) fájlokat hoz létre. Az argumentum egy logikai érték, amely a ". vcf" kimenetnél alapértelmezés szerint hamis értékre van állítva, a ". g. vcf" kimenetnél pedig alapértelmezés szerint igaz. A parancssorban való használathoz adja meg `-bz` vagy `--bgzip-output` a `true` (z) (bgzip és tabix futtatása) vagy `false` . Ha ezt az argumentumot a *config.txt* fájlban szeretné használni, adja hozzá `bgzip_output: true` vagy a `bgzip_output: false` fájlt a fájlhoz.
+`bgzip` a egy olyan eszköz, amely tömöríti a vcf vagy a gvcf fájlt, és `tabix` létrehoz egy indexet a tömörített fájlhoz. Alapértelmezés szerint a genomikai szolgáltatás futtatása `bgzip` `tabix` a ". g. vcf" kimenet után történik, de a nem futtatja ezeket az eszközöket a ". vcf" kimenetnél. A futtatáskor a szolgáltatás ". gz" (bgzip output) és ". TBI" (tabix output) fájlokat hoz létre. Az argumentum egy logikai érték, amely a ". vcf" kimenetnél alapértelmezés szerint hamis értékre van állítva, a ". g. vcf" kimenetnél pedig alapértelmezés szerint igaz. A parancssorban való használathoz adja meg `-bz` vagy `--bgzip-output` a `true` (z) (bgzip és tabix futtatása) vagy `false` . Ha ezt az argumentumot a *config.txt* fájlban szeretné használni, adja hozzá `bgzip_output: true` vagy a `bgzip_output: false` fájlt a fájlhoz.
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-using-the-msgen-python-client"></a>A munkafolyamat elküldése a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfél használatával
 
@@ -144,4 +144,4 @@ A munkafolyamat befejezése után megtekintheti az Azure Storage-fiókban lévő
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Az oktatóanyagot az [Azure jegyzetfüzet példájának](https://aka.ms/genomicsnotebook) használatával is megtekintheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) használatával nyitja meg a fájlt, és futtatja azt.
+Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot a [Azure Notebooks példán](https://aka.ms/genomicsnotebook) keresztül is felfedezheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) -vel nyitja meg a fájlt, és futtatja azt.

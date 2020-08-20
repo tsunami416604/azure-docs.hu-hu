@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367784"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642418"
 ---
-# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
+# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD alkalmazás-proxy telepítési útmutató
 
 A Azure Active Directory (Azure AD) alkalmazásproxy biztonságos és költséghatékony távelérési megoldás helyszíni alkalmazásokhoz. Azonnali áttérési útvonalat biztosít a "Cloud First" szervezetek számára a régi helyszíni alkalmazásokhoz való hozzáférés kezeléséhez, amelyek még nem képesek modern protokollok használatára. További bevezető információk: [Mi az a alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
 
@@ -99,7 +99,7 @@ A következő információk összegyűjtésével lefordíthatja az Application p
 | Belső hozzáférés | Az alkalmazás belső eléréséhez használt pontos URL-cím. <br> Ha egy farmon van, milyen típusú terheléselosztás van használatban? <br> Azt határozza meg, hogy az alkalmazás nem magától a forrásból hívja-e a tartalmat.<br> Annak megállapítása, hogy az alkalmazás működik-e WebSockets-en keresztül. |
 | Külső hozzáférés | A szállítói megoldás, amelyet az alkalmazás már külsőleg is kihelyezett. <br> A külső hozzáféréshez használni kívánt URL-cím. Ha a SharePoint, az alternatív hozzáférés-hozzárendelések konfigurálása [ebben az útmutatóban](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)történik. Ha nem, akkor meg kell határoznia a külső URL-címeket. |
 | Nyilvános tanúsítvány | Ha egyéni tartományt használ, egy megfelelő tulajdonos nevű tanúsítványt kell beszereznie. Ha a tanúsítvány létezik, jegyezze fel a sorozatszámot és a helyet, ahonnan beszerezhetők. |
-| Hitelesítés típusa| Az alkalmazás által támogatott hitelesítés típusa, például az alapszintű, a Windows integrációs hitelesítés, az űrlapalapú, a fejléc-alapú és a jogcímek. <br>Ha az alkalmazás egy adott tartományi fiókban való futtatásra van konfigurálva, jegyezze fel a szolgáltatásfiók teljes tartománynevét (FQDN).<br> Ha SAML-alapú, az azonosító és a válasz URL-címe. <br> Ha a fejléc-alapú, a szállítói megoldás és a hitelesítési típus kezelésére vonatkozó konkrét követelmény. |
+| Hitelesítéstípus| Az alkalmazás által támogatott hitelesítés típusa, például az alapszintű, a Windows integrációs hitelesítés, az űrlapalapú, a fejléc-alapú és a jogcímek. <br>Ha az alkalmazás egy adott tartományi fiókban való futtatásra van konfigurálva, jegyezze fel a szolgáltatásfiók teljes tartománynevét (FQDN).<br> Ha SAML-alapú, az azonosító és a válasz URL-címe. <br> Ha a fejléc-alapú, a szállítói megoldás és a hitelesítési típus kezelésére vonatkozó konkrét követelmény. |
 | Összekötő csoportjának neve | Az összekötők azon csoportjának logikai neve, amely a csatorna és az SSO e háttérbeli alkalmazás számára történő biztosítására lesz kijelölve. |
 | Felhasználók/csoportok hozzáférése | Azok a felhasználók vagy felhasználói csoportok, amelyek külső hozzáférést kapnak az alkalmazáshoz. |
 | További követelmények | Jegyezze fel az alkalmazás közzétételéhez szükséges további távelérési vagy biztonsági követelményeket. |
@@ -170,7 +170,7 @@ Az alkalmazás közzététele után alapvető funkcionális tesztelést végezhe
 
 ### <a name="deploy-application-proxy"></a>Alkalmazásproxy üzembe helyezése
 
-Ebben az oktatóanyagban az alkalmazásproxy központi telepítésének lépéseit tárgyaljuk a [táveléréshez helyszíni alkalmazás hozzáadásához](application-proxy-add-on-premises-application.md). Ha a telepítés nem sikerül, válassza az **alkalmazásproxy hibaelhárítása** lehetőséget a portálon, vagy használja a hibaelhárítási útmutatót az [alkalmazásproxy-ügynök összekötő telepítésével kapcsolatos problémák megoldásához](application-proxy-connector-installation-problem.md).
+Ebben az oktatóanyagban az alkalmazásproxy központi telepítésének lépéseit tárgyaljuk a [táveléréshez helyszíni alkalmazás hozzáadásához](application-proxy-add-on-premises-application.md). Ha a telepítés nem sikerül, válassza az  **alkalmazásproxy hibaelhárítása**  lehetőséget a portálon, vagy használja a hibaelhárítási útmutatót az [alkalmazásproxy-ügynök összekötő telepítésével kapcsolatos problémák megoldásához](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Alkalmazások közzététele alkalmazásproxy használatával
 
@@ -271,7 +271,7 @@ Az Azure AD Application Proxy támogatásához a következő lehetőségek haszn
 
 * Kockázatalapú feltételes hozzáférés: a rosszindulatú hackerek adatainak védelme olyan [kockázatalapú feltételes hozzáférési szabályzattal](https://www.microsoft.com/cloud-platform/conditional-access) , amely az összes alkalmazásra és az összes felhasználóra alkalmazható, akár a helyszínen, akár a felhőben.
 
-* Azure AD hozzáférési panel: az alkalmazásproxy szolgáltatás üzembe helyezésével és az alkalmazások biztonságos közzétételével a felhasználók egy egyszerű központtal felfedezhetik és érhetik el az összes alkalmazást. Növelje a hatékonyságot önkiszolgáló képességekkel, például az új alkalmazásokhoz és csoportokhoz való hozzáférés kérését, illetve mások nevében az erőforrásokhoz való hozzáférés kezelését a [hozzáférési panelen](https://aka.ms/AccessPanelDPDownload).
+* Azure AD saját alkalmazások: az alkalmazásproxy szolgáltatás üzembe helyezésével és az alkalmazások biztonságos közzétételével a felhasználók egy egyszerű központtal felfedezhetik és érhetik el az összes alkalmazást. Az önkiszolgáló képességekkel növelheti a hatékonyságot, például az új alkalmazásokhoz és csoportokhoz való hozzáférés kérését, illetve mások nevében, a [saját alkalmazásain](https://aka.ms/AccessPanelDPDownload)keresztül kezelheti az erőforrásokhoz való hozzáférést.
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 

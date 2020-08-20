@@ -6,15 +6,15 @@ ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 87b91d353b6d9f64f28892feed92c44ceafc2598
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575693"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640922"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>Oktatóanyag: adatmegosztás az Azure adatmegosztási és Resource Manager-sablonok használatával
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Gyors útmutató: adatmegosztás az Azure adatmegosztási és Resource Manager-sablonok használatával
 
 Megtudhatja, hogyan állíthat be új Azure-beli adatmegosztást egy Azure Storage-fiókból Azure Resource Manager sablon használatával, és megkezdheti az adatok megosztását az Azure-szervezeten kívüli ügyfelekkel és partnerekkel. A támogatott adattárak listáját lásd: [támogatott adattárak az Azure-beli adatmegosztásban](./supported-data-stores.md).
 
@@ -99,6 +99,6 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha többet szeretne megtudni arról, hogy az adatfogyasztók hogyan fogadhatnak és fogadhatnak adatmegosztást, folytassa az [elfogadás és az Adatfogadás](subscribe-to-data-share.md) című oktatóanyagot.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha többet szeretne megtudni arról, hogy az adatfogyasztók hogyan fogadhatnak és fogadhatnak adatmegosztást, folytassa az [elfogadás és az Adatfogadás](subscribe-to-data-share.md) című oktatóanyagot.

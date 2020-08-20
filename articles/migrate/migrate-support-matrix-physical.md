@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423779"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640123"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -34,7 +34,7 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Fizikai kiszolgáló üzembe helyezése**       | A fizikai kiszolgáló önálló vagy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | **Windows:** Tartományi fiókot használjon a tartományhoz csatlakoztatott gépekhez, valamint egy helyi fiókot olyan gépekhez, amelyek nem csatlakoznak a tartományhoz. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: távfelügyeleti felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
+| **Engedélyek**           | **Windows:** Tartományi fiókot használjon a tartományhoz csatlakoztatott gépekhez, valamint egy helyi fiókot olyan gépekhez, amelyek nem csatlakoznak a tartományhoz. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: távfelügyeleti felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. <br/> Másik lehetőségként ellenőrizze, hogy a szükséges funkciók a következő parancsokkal vannak-e beállítva. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (ha a/usr/sbin/fdisk nincs jelen) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
 | **Operációs rendszer** | A Windows Server 2003 és a SUSE Linux kivételével az összes operációs rendszer kiértékelése áttelepítésre lehetséges. |
 
 
@@ -53,7 +53,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 
 **Eszköz** | **Kapcsolat**
 --- | ---
-**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
+**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
 **Fizikai kiszolgálók** | **Windows:** Bejövő csatlakozás a WinRM port 5985 (HTTP) szolgáltatásban a konfiguráció és a teljesítmény metaadatainak lekéréséhez Windows-kiszolgálókról. <br/><br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (TCP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Ügynök-alapú függőségek elemzésének követelményei

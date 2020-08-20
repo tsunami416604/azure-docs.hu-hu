@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212818"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642146"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -188,7 +188,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
 
     | Mező | Leírás |
     | :---- | :---------- |
-    | **Név** | Annak az alkalmazásnak a neve, amely megjelenik majd a hozzáférési panelen és a Azure Portal. |
+    | **Név** | Annak az alkalmazásnak a neve, amely megjelenik a saját alkalmazások és a Azure Portalban. |
     | **Belső URL-cím** | Az alkalmazásnak a magánhálózaton belüli elérésére szolgáló URL-cím. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Így különböző webhelyeket tehet közzé ugyanazon a kiszolgálón, mint a különböző alkalmazásokat, és mindegyiknek saját nevet és hozzáférési szabályokat adhat.<br><br>Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Ha például az alkalmazás a https:/yourapp/app címen található, \/ és a https:/yourapp/Media helyen található rendszerképeket használja \/ , akkor a https:/yourapp/útvonalat kell közzétennie \/ . A belső URL-címnek nem kell a felhasználók által megjelenített kezdőlapnak lennie. További információt a [közzétett alkalmazások egyéni kezdőlapjának beállítása](application-proxy-configure-custom-home-page.md)című témakörben talál. |
     | **Külső URL-cím** | A felhasználók számára az alkalmazásnak a hálózaton kívülről való eléréséhez használt címe. Ha nem szeretné az alapértelmezett alkalmazásproxy-tartományt használni, olvassa el az [Azure ad Application proxy egyéni tartományait](application-proxy-configure-custom-domain.md)ismertető témakört.|
     | **Előzetes hitelesítés** | Hogyan ellenőrzi az alkalmazásproxy a felhasználókat, mielőtt hozzáférést adna nekik az alkalmazáshoz.<br><br>**Azure Active Directory** – az alkalmazásproxy átirányítja a felhasználókat, hogy jelentkezzenek be az Azure ad-be, amely hitelesíti a címtár és az alkalmazás engedélyeit. Azt javasoljuk, hogy ezt a beállítást az alapértelmezett módon tartsa elérhetővé, így kihasználhatja az Azure AD biztonsági funkcióit, például a feltételes hozzáférést és a Multi-Factor Authentication. Az alkalmazás Microsoft Cloud alkalmazás-biztonsággal való figyeléséhez **Azure Active Directory** szükséges.<br><br>**Továbbító** – a felhasználóknak nem kell hitelesíteniük az Azure ad-vel az alkalmazás eléréséhez. Továbbra is beállíthatja a háttérbeli hitelesítési követelményeket. |
@@ -205,7 +205,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
     | **URL-címek lefordítása a fejlécekben** | Tartsa meg ezt az értéket **Igen** , kivéve, ha az alkalmazásnak a hitelesítési kérelemben az eredeti állomásfejléc-fejlécet kellett volna megadnia. |
     | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne **csak akkor tartsa meg, ha** hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Válassza a **Hozzáadás** lehetőséget.
+7. Válassza a **Hozzáadás** elemet.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 

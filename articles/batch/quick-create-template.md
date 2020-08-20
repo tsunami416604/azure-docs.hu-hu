@@ -4,12 +4,12 @@ description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladato
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: c59e8891678d9fc1af7c4fe78e4ee2d267ec99b4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511388"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642401"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rövid útmutató: batch-fiók létrehozása ARM-sablon használatával
 
@@ -31,7 +31,7 @@ Aktív Azure-előfizetéssel kell rendelkeznie.
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json" range="1-80" highlight="36-69":::
+:::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
@@ -70,7 +70,7 @@ A központi telepítést a létrehozott erőforráscsoporthoz való navigáláss
 
 Ha azt tervezi, hogy az ezt követő [oktatóanyagokkal](./tutorial-parallel-dotnet.md)dolgozik tovább, akkor előfordulhat, hogy ezeket az erőforrásokat helyben szeretné hagyni. Ha már nincs szüksége rájuk, [törölheti az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)is, amely törli a Batch-fiókot és a létrehozott Storage-fiókot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy batch-fiókot és egy Storage-fiókot. Az Azure Batchről további információt az Azure Batch-oktatóanyagokban találhat.
 

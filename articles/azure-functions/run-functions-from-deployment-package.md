@@ -3,12 +3,12 @@ title: Azure Functions futtatása csomagból
 description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214240"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639885"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
@@ -50,6 +50,9 @@ Az alábbi példa egy, az Azure Blob Storage-ban üzemeltetett. zip-fájlból va
 ## <a name="integration-with-zip-deployment"></a>Integráció a zip-telepítéssel
 
 A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service szolgáltatása, amely lehetővé teszi a Function app-projekt üzembe helyezését a `wwwroot` címtárban. A projekt. zip telepítési fájlként van csomagolva. Ugyanazokat az API-kat használhatja a csomag telepítéséhez a `d:\home\data\SitePackages` mappába. Az Alkalmazásbeállítások `WEBSITE_RUN_FROM_PACKAGE` értékeként `1` a zip-telepítési API-k a fájlok mappába másolják a csomagot `d:\home\data\SitePackages` `d:\home\site\wwwroot` . Létrehozza a fájlt is `packagename.txt` . Újraindítás után a csomag `wwwroot` írásvédett fájlrendszerhez van csatlakoztatva. További információ a zip-telepítésről: [a Azure functions zip központi telepítése](deployment-zip-push.md).
+
+> [!NOTE]
+> Központi telepítés esetén a rendszer elindítja a Function alkalmazás újraindítását. Újraindítás előtt az összes meglévő függvény végrehajtásának befejezése vagy időtúllépése engedélyezett. További információ: a [központi telepítés viselkedése](functions-deployment-technologies.md#deployment-behaviors).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>Az WEBSITE_RUN_FROM_PACKAGE-beállítás hozzáadása
 

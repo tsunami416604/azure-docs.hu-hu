@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135487"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641857"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -47,7 +47,7 @@ Az alkalmazás tulajdonságainak szerkesztése:
 3. Szánjon egy kis időt a konfiguráláshoz elérhető beállítások megismerésére:
     - **Engedélyezve van a felhasználók számára a bejelentkezés?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz hozzárendelt felhasználók.
     - **Felhasználói hozzárendelés szükséges?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz nem rendelt felhasználók.
-    - **Látható a felhasználók számára?** meghatározza, hogy az alkalmazáshoz rendelt felhasználók láthatják-e a [hozzáférési panelen](https://myapps.microsoft.com) és az Office 365 app launcherben. (Lásd az Office 365 vagy Microsoft 365 webhely bal felső sarkában található Waffle menüt.)
+    - **Látható a felhasználók számára?** meghatározza, hogy az alkalmazáshoz rendelt felhasználók láthatják-e a [saját alkalmazások](https://myapps.microsoft.com) és az Office 365 app Launcher szolgáltatásban. (Lásd az Office 365 vagy Microsoft 365 webhely bal felső sarkában található Waffle menüt.)
     
     > [!TIP]
     > A felhasználók kiosztása a navigáció **felhasználók és csoportok** szakaszában történik.

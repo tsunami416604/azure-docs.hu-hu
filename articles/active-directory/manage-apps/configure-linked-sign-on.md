@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459334"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641976"
 ---
 # <a name="configure-linked-sign-on"></a>Csatolt bejelentkezés konfigurálása
 
 Az alkalmazások felügyeletének rövid útmutató [sorozatában](view-applications-portal.md) megtudhatta, hogyan használhatja az Azure ad-t az alkalmazás identitás-szolgáltatója (identitásszolgáltató) használatával. A rövid útmutatóban SAML-alapú egyszeri bejelentkezést állíthat be. Egy másik lehetőség van **csatolva**. Ez a cikk részletesebben ismerteti a csatolt kapcsolót.
 
-A **csatolt** beállítás lehetővé teszi a célhely konfigurálását, amikor a felhasználó kiválasztja az alkalmazást a szervezet [saját alkalmazások](https://myapplications.microsoft.com/) vagy Office 365 portálon.
+A **csatolt** beállítás lehetővé teszi a célhely konfigurálását, amikor a felhasználó kiválasztja az alkalmazást a szervezet [saját alkalmazások](https://myapps.microsoft.com/) vagy Office 365 portálon.
 
 Néhány gyakori forgatókönyv, ahol a hivatkozás lehetőség értékes:
 - Vegyen fel egy hivatkozást egy olyan egyéni webalkalmazásra, amely jelenleg összevonást használ, például Active Directory összevonási szolgáltatások (AD FS) (AD FS).
@@ -35,7 +35,7 @@ Néhány gyakori forgatókönyv, ahol a hivatkozás lehetőség értékes:
 
 A gyors üzembe helyezéshez járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . A rövid útmutatóban, ahol az egyszeri bejelentkezést konfigurálja, megtalálhatja a **csatolt** lehetőséget is. 
 
-A **csatolt** lehetőség nem nyújt bejelentkezési funkciókat az Azure ad-n keresztül. A beállítás egyszerűen beállítja, hogy a rendszer a felhasználók számára küldje el az [alkalmazást az alkalmazásokban vagy a](https://myapplications.microsoft.com/) Microsoft 365 app launcherben.
+A **csatolt** lehetőség nem nyújt bejelentkezési funkciókat az Azure ad-n keresztül. A beállítás egyszerűen beállítja, hogy a rendszer a felhasználók számára küldje el az [alkalmazást az alkalmazásokban vagy a](https://myapps.microsoft.com/) Microsoft 365 app launcherben.
 
 > [!IMPORTANT] 
 > Vannak olyan helyzetek, amikor az **egyszeri bejelentkezési** lehetőség nem lesz a **vállalati alkalmazásokban**lévő alkalmazás navigációjában. 
@@ -48,9 +48,9 @@ A **csatolt** lehetőség nem nyújt bejelentkezési funkciókat az Azure ad-n k
 
 Egy alkalmazás hivatkozásának megadásához válassza az **egyszeri bejelentkezés** lapon a **csatolt** lehetőséget. Ezután adja meg a hivatkozást, és kattintson a **Mentés**gombra. Szüksége van egy emlékeztetőre, ahol megtalálja ezeket a beállításokat? Tekintse meg a gyors üzembe helyezési [sorozatot](view-applications-portal.md).
  
-Miután konfigurált egy alkalmazást, rendeljen hozzá felhasználókat és csoportokat. A felhasználók hozzárendelésével szabályozhatja, hogy mikor jelenik meg az alkalmazás a [saját alkalmazások](https://myapplications.microsoft.com/) vagy a Microsoft 365 app Launcher használatával.
+Miután konfigurált egy alkalmazást, rendeljen hozzá felhasználókat és csoportokat. A felhasználók hozzárendelésével szabályozhatja, hogy mikor jelenik meg az alkalmazás a [saját alkalmazások](https://myapps.microsoft.com/) vagy a Microsoft 365 app Launcher használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
 - [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

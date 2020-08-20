@@ -15,22 +15,22 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763142"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640752"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Önkiszolgáló alkalmazás-hozzárendelés konfigurálása
 
-Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a saját alkalmazások hozzáférési paneljéről, engedélyeznie kell az **önkiszolgáló alkalmazás-hozzáférést** minden olyan alkalmazáshoz, amely számára engedélyezni szeretné a felhasználók számára az önfelderítést és a hozzáférés kérését. Ez a funkció olyan alkalmazásokhoz érhető el, amelyeket az Azure [ad](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)-katalógusból, az [Azure ad Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -ból vagy [felhasználói vagy rendszergazdai hozzájárulással](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)adott hozzá. 
+Ahhoz, hogy a felhasználók maguk is felfedezzék alkalmazásaikat a saját alkalmazásaikban, engedélyeznie kell az **önkiszolgáló alkalmazás-hozzáférést** minden olyan alkalmazáshoz, amely számára engedélyezni szeretné a felhasználók számára a saját felderítését és a hozzáférés kérését. Ez a funkció olyan alkalmazásokhoz érhető el, amelyeket az Azure [ad](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)-katalógusból, az [Azure ad Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -ból vagy [felhasználói vagy rendszergazdai hozzájárulással](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)adott hozzá. 
 
 Ez a funkció nagyszerű lehetőséget nyújt arra, hogy időt és pénzt takarítson meg informatikai csoportként, és a Azure Active Directory használatával korszerű alkalmazások központi telepítésének részeként erősen ajánlott.
 
 Ez a szolgáltatás lehetővé teszi:
 
--   Lehetővé teszi, hogy a felhasználók a [saját alkalmazások hozzáférési paneljén](https://myapps.microsoft.com/) is felfedezzék az alkalmazásokat az IT-csoport kellemetlensége nélkül.
+-   Lehetővé teszi a felhasználók számára, hogy az IT-csoport kellemetlenség nélkül is felfedezzék az alkalmazásokat a [saját alkalmazásoktól](https://myapps.microsoft.com/) .
 
 -   Adja hozzá ezeket a felhasználókat egy előre konfigurált csoporthoz, így megtekintheti, hogy ki igényelt hozzáférést, távolítsa el a hozzáférést, és kezelje a hozzájuk rendelt szerepköröket.
 
@@ -38,7 +38,7 @@ Ez a szolgáltatás lehetővé teszi:
 
 -   Opcionálisan akár 10 személyt is beállíthat, akik jóváhagyják az alkalmazáshoz való hozzáférést.
 
--   Opcionálisan engedélyezheti az üzleti jóváhagyó számára, hogy beállítsa azokat a jelszavakat, amelyeket a felhasználók az alkalmazásba való bejelentkezéshez használhatnak közvetlenül az üzleti jóváhagyó [alkalmazás-hozzáférési paneljéről](https://myapps.microsoft.com/).
+-   Opcionálisan engedélyezheti az üzleti jóváhagyó számára, hogy beállítsa azokat a jelszavakat, amelyeket a felhasználók használhatnak az alkalmazásba való bejelentkezéshez közvetlenül az üzleti jóváhagyó [saját alkalmazásaiban](https://myapps.microsoft.com/).
 
 -   Opcionálisan automatikusan hozzárendelheti az önkiszolgáló hozzárendelt felhasználókat egy alkalmazás-szerepkörhöz.
 
@@ -79,7 +79,7 @@ Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedé
 
 11. A befejezéshez kattintson a **Mentés** gombra a panel tetején.
 
-Az önkiszolgáló alkalmazás konfigurálásának befejezése után a felhasználók a saját [alkalmazások hozzáférési paneljére](https://myapps.microsoft.com/) léphetnek, és az önkiszolgáló **Alkalmazások hozzáadása** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyek engedélyezik az önkiszolgáló hozzáférést. Az üzleti jóváhagyók a saját [alkalmazások hozzáférési paneljén](https://myapps.microsoft.com/)is megtekinthetik az értesítést. Engedélyezheti az e-mailek értesítését, ha egy felhasználó hozzáférést kért egy olyan alkalmazáshoz, amelyhez jóváhagyás szükséges.
+Az önkiszolgáló alkalmazás-konfiguráció befejezése után a felhasználók megkereshetik a saját [alkalmazásaikat](https://myapps.microsoft.com/) , és az önkiszolgáló **Alkalmazások hozzáadása** gombra kattintva megtalálhatják azokat az alkalmazásokat, amelyek engedélyezik az önkiszolgáló hozzáférést. Az üzleti jóváhagyók a saját [alkalmazásaikban](https://myapps.microsoft.com/)is láthatnak értesítést. Engedélyezheti az e-mailek értesítését, ha egy felhasználó hozzáférést kért egy olyan alkalmazáshoz, amelyhez jóváhagyás szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre](../users-groups-roles/groups-self-service-management.md)

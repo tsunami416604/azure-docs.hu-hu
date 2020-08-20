@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207407"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642214"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 A következő érvényes paraméterek használhatók a híváshoz `Push-OutputBinding` :
 
-| Név | Típus | Pozíció | Description |
+| Név | Típus | Pozíció | Leírás |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sztring | 1 | A beállítani kívánt kimeneti kötés neve. |
 | **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a rendszer a folyamat ByValue fogad el. |
@@ -382,14 +382,14 @@ Ha eszközöket használó Function-alkalmazást hoz létre, például a Visual 
 * Automatikus MSI-hitelesítés az Azure-ba.
 * A Azure PowerShell PowerShell-aliasok bekapcsolásának lehetősége, `AzureRM` Ha szeretné.
 
-## <a name="powershell-version"></a>PowerShell-verzió
+## <a name="powershell-versions"></a>PowerShell-verziók
 
-A következő táblázat a függvények futtatókörnyezetének egyes főbb verziói által használt PowerShell-verziót mutatja be:
+A következő táblázat a functions Runtime egyes főverziói által támogatott PowerShell-verziókat és a szükséges .NET-verziót mutatja be:
 
-| Függvények verziója | PowerShell-verzió                             |
-|-------------------|------------------------------------------------|
-| 1. x               | Windows PowerShell 5,1 (a futtatókörnyezet zárolta) |
-| 2. x               | 6. PowerShell-mag                              |
+| Függvények verziója | PowerShell-verzió                               | .NET-verzió  | 
+|-------------------|--------------------------------------------------|---------------|
+| 3. x (ajánlott) | PowerShell 7 (ajánlott)<br/>6. PowerShell-mag | .NET Core 3,1<br/>.NET Core 3,1 |
+| 2. x               | 6. PowerShell-mag                                | .NET Core 2.2 |
 
 Az aktuális verziót bármely függvényből kinyomtatva láthatja `$PSVersionTable` .
 
@@ -421,7 +421,7 @@ Ha frissíti a requirements.psd1 fájlt, a rendszer újraindítást követően t
 
 A következő Alkalmazásbeállítások segítségével megváltoztathatja a felügyelt függőségek letöltésének és telepítésének módját. Az alkalmazás frissítése a-n belül elindul `MDMaxBackgroundUpgradePeriod` , és a frissítési folyamat körülbelül a-ban fejeződik be `MDNewSnapshotCheckPeriod` .
 
-| függvényalkalmazás beállítás              | Alapértelmezett érték             | Description                                         |
+| függvényalkalmazás beállítás              | Alapértelmezett érték             | Leírás                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 nap)     | Minden PowerShell-munkavégző folyamat kezdeményezi a modul frissítéseinek ellenőrzését a PowerShell-galéria a folyamat indításakor, majd minden `MDMaxBackgroundUpgradePeriod` után. Ha egy új modul verziója elérhető a PowerShell-galériaban, a rendszer telepíti a fájlrendszerre, és elérhetővé teszi őket a PowerShell-feldolgozók számára. Ennek az értéknek a csökkentése lehetővé teszi, hogy a Function alkalmazás hamarabb lekérje a modul újabb verzióit, de az alkalmazás erőforrás-használatát is növeli (hálózati I/O-, CPU-és tárolási). Az érték növelése csökkenti az alkalmazás erőforrás-használatát, de az új modulok verzióinak az alkalmazásba való kézbesítése is késleltethető. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 óra)       | Miután telepítette az új modul-verziókat a fájlrendszerbe, minden PowerShell-munkavégző folyamatot újra kell indítani. A PowerShell-feldolgozók újraindítása hatással van az alkalmazás rendelkezésre állására, mivel ez megszakíthatja az aktuális függvény végrehajtását. Amíg az összes PowerShell-munkavégző folyamat újra nem indul, a függvény meghívása a régi vagy az új modul verzióját is használhatja. Az összes PowerShell-feldolgozó újraindítása a alkalmazáson belül `MDNewSnapshotCheckPeriod` . Az érték növelésével csökken a megszakítások gyakorisága, de az is előfordulhat, hogy a függvény meghívásakor a régi vagy az új modul nem determinisztikus módon verzióját használja. |

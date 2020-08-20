@@ -4,13 +4,13 @@ description: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 3cd2ed692f3a34223675da69efd92e78c2ba9504
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083068"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640837"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező és a küldendő adatforrásokat határozzák meg. Ez a cikk azt ismerteti, hogyan lehet adatgyűjtési szabályt létrehozni a virtuális gépekről az Azure Monitor ügynök használatával történő adatgyűjtéshez.
@@ -48,7 +48,7 @@ Az adatgyűjtés **és** küldés lapon kattintson az **adatforrás hozzáadása
 [![Alapszintű adatforrás](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Más naplók és teljesítményszámlálók megadásához válassza az **Egyéni**lehetőséget. Ezután megadhat egy [XPath](https://www.w3schools.com/xml/xpath_syntax.asp) -értéket a gyűjtött értékek bármelyikéhez. Példák: példa a [DCR](data-collection-rule-overview.md#sample-data-collection-rule) -re.
+Más naplók és teljesítményszámlálók megadásához válassza az **Egyéni**lehetőséget. Ezután megadhat egy [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) -értéket a gyűjtött értékek bármelyikéhez. Példák: példa a [DCR](data-collection-rule-overview.md#sample-data-collection-rule) -re.
 
 [![Adatforrás egyéni](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 
@@ -61,8 +61,13 @@ Kattintson az **adatforrás hozzáadása** lehetőségre, majd **tekintse át a 
 > [!NOTE]
 > Az adatgyűjtési szabály és a társítások létrehozása után akár 5 percet is igénybe vehet, amíg a célhelyek el nem jutnak.
 
+## <a name="createusingrestapi"></a>Létrehozás a REST API használatával
+Az alábbi lépéseket követve hozzon létre egy DCR-t és egy társítást a REST API használatával. 
+1.Manuálisan hozza létre a DCR-fájlt a [DCR](data-collection-rule-overview.md#sample-data-collection-rule)-ben látható JSON-formátum használatával.
+2.Hozza létre a szabályt a [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)használatával.
+3.Hozzon létre egy társítást az egyes virtuális gépekhez az adatgyűjtési szabályhoz a [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor-ügynökről](azure-monitor-agent-overview.md).
 - További információ az [adatgyűjtési szabályokról](data-collection-rule-overview.md).

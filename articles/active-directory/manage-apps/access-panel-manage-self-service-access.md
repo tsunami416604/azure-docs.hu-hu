@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c5a003eb113289bcb798423ff649b944dcf186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ff3ca98c0fa5929a5e1c0ad5678222253130b6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84761068"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641789"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés használata
 
-Ahhoz, hogy a felhasználók saját maguk is felfedezzék az alkalmazásokat a hozzáférési paneljéről, engedélyeznie kell az **önkiszolgáló alkalmazásokhoz való hozzáférést** minden olyan alkalmazáshoz, amelyet engedélyezni kíván a felhasználók számára az önfelderítéshez és a hozzáférés kéréséhez.
+Mielőtt a felhasználók saját maguk is felfedezhetik alkalmazásaikat az alkalmazásokból, engedélyeznie kell az **önkiszolgáló alkalmazásokhoz való hozzáférést** minden olyan alkalmazáshoz, amely számára engedélyezni szeretné a felhasználók számára az önfelderítést és a hozzáférés kérését.
 
 Ez a funkció nagyszerű lehetőséget nyújt arra, hogy időt és pénzt takarítson meg informatikai csoportként, és a Azure Active Directory használatával korszerű alkalmazások központi telepítésének részeként erősen ajánlott.
 
@@ -85,5 +85,5 @@ Az önkiszolgáló alkalmazás konfigurálásának befejezése után a felhaszn�
 
 Ezek a jóváhagyások csak az egyszeri jóváhagyási munkafolyamatokat támogatják, ami azt jelenti, hogy ha több jóváhagyót ad meg, akkor egyetlen jóváhagyó jóváhagyhatja az alkalmazáshoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre](../users-groups-roles/groups-self-service-management.md)

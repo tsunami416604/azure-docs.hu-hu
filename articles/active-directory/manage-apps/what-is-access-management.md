@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562565"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639919"
 ---
 # <a name="managing-access-to-apps"></a>Az alkalmazásokhoz való hozzáférés kezelése
 
@@ -45,7 +45,7 @@ Bizonyos típusú alkalmazások esetében lehetősége van arra, hogy az [alkalm
 * Azure Active Directory előhitelesítést használó alkalmazásproxy-alkalmazások
 * Az Azure AD Application platformra épülő, OAuth 2,0/OpenID Connect hitelesítést használó alkalmazások, miután egy felhasználó vagy rendszergazda beleegyezett az adott alkalmazásba. Bizonyos vállalati alkalmazások további ellenőrzés alatt állnak, akik számára engedélyezett a bejelentkezés.
 
-Ha a felhasználó-hozzárendelés *nem szükséges*, a nem hozzárendelt felhasználók nem látják az alkalmazást a saját alkalmazások hozzáférési paneljén, de továbbra is bejelentkezhetnek az alkalmazásba (más néven az SP által kezdeményezett bejelentkezés), vagy használhatják a **felhasználói hozzáférési URL-címet** az alkalmazás **Tulajdonságok** lapján (más néven identitásszolgáltató-alapú bejelentkezés).
+Ha a felhasználó-hozzárendelés *nem szükséges*, a nem hozzárendelt felhasználók nem látják az alkalmazást a saját alkalmazásaikban, de továbbra is bejelentkezhetnek az alkalmazásba (más néven az SP által kezdeményezett bejelentkezés), vagy használhatják a **felhasználói hozzáférési URL-címet** az alkalmazás **Tulajdonságok** lapján (más néven identitásszolgáltató-alapú bejelentkezés).
 
 Egyes alkalmazások esetében a felhasználói hozzárendelés megkövetelésének lehetősége nem érhető el az alkalmazás tulajdonságaiban. Ezekben az esetekben a PowerShell használatával állíthatja be a appRoleAssignmentRequired tulajdonságot az egyszerű szolgáltatásnév számára.
 
@@ -53,12 +53,12 @@ Egyes alkalmazások esetében a felhasználói hozzárendelés megkövetelésén
 
 Az Azure AD [számos testreszabható módszert](end-user-experiences.md) biztosít az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezeten belül:
 
-* Az Azure AD saját alkalmazások hozzáférési panelje
+* Azure AD-alkalmazások
 * Office 365 Application Launcher
 * Közvetlen bejelentkezés az összevont alkalmazásokba (Service-PR)
 * Mélyhivatkozások az összevont, jelszóalapú vagy meglévő alkalmazásokhoz
 
-Megtudhatja, hogy a vállalati alkalmazáshoz hozzárendelt felhasználók láthatják-e a hozzáférési panelen és az Office 365 Application launcherben.
+Megtudhatja, hogy a vállalati alkalmazáshoz hozzárendelt felhasználók láthatják-e az alkalmazások és az Office 365 Application Launcher alkalmazásban.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Példa: összetett alkalmazás-hozzárendelés az Azure AD-vel
 Vegyünk egy olyan alkalmazást, mint például a Salesforce. Számos szervezetben a Salesforce elsődlegesen a marketing-és értékesítési csapatok használják. Gyakran a marketing csapat tagjai magas jogosultsági szintű hozzáféréssel rendelkeznek a Salesforce, míg az értékesítési csapat tagjai korlátozott hozzáféréssel rendelkeznek. Sok esetben az információkkal dolgozó szakemberek széles köre korlátozott hozzáféréssel rendelkezik az alkalmazáshoz. Az ezekre a szabályokra vonatkozó kivételek bonyolítják az ügyet. Gyakran a marketing-vagy értékesítési vezető csapatok előjoga, hogy felhasználói hozzáférést biztosítson, vagy a szerepköröket az általános szabályoktól függetlenül módosítsa.
@@ -72,7 +72,7 @@ Az Azure AD-ben az olyan alkalmazások, mint a Salesforce, előre konfigurálhat
 
 * A kivételi mechanizmus engedélyezéséhez létrehozható egy önkiszolgáló csoport az egyes szerepkörökhöz. Például a "Salesforce marketing Exception" csoport önkiszolgáló csoportként hozható létre. A csoport hozzárendelhető a Salesforce marketing szerepkörhöz, és a marketing Leadership csapata tulajdonosként is elvégezhető. A marketing Leadership csapat tagjai hozzáadhatnak vagy eltávolíthatnak felhasználókat, beállíthat egy csatlakozási szabályzatot, vagy akár jóváhagyhatja vagy megtagadhatja az egyes felhasználói kérések összekapcsolását. Ezt a mechanizmust olyan információkkal dolgozó szakemberek támogatják, akik nem igényelnek speciális képzést a tulajdonosok vagy a tagok számára.
 
-Ebben az esetben az összes hozzárendelt felhasználó automatikusan a Salesforce lesz kiépítve, mivel azokat a különböző csoportokhoz adja hozzá a szerepkör-hozzárendelésük a Salesforce-ben való frissítésekor. A felhasználók a Microsoft alkalmazás-hozzáférési paneljén, az Office-webügyfeleken, vagy akár a szervezeti Salesforce bejelentkezési oldalán is megkereshetik és érhetik el a Salesforce. A rendszergazdák könnyedén megtekinthetik a használati és hozzárendelési állapotot az Azure AD jelentéskészítési funkciójával.
+Ebben az esetben az összes hozzárendelt felhasználó automatikusan a Salesforce lesz kiépítve, mivel azokat a különböző csoportokhoz adja hozzá a szerepkör-hozzárendelésük a Salesforce-ben való frissítésekor. A felhasználók felfedezhetik és érhetik el a Salesforce a saját alkalmazások, az Office-webügyfelek vagy akár a szervezeti Salesforce bejelentkezési oldalán. A rendszergazdák könnyedén megtekinthetik a használati és hozzárendelési állapotot az Azure AD jelentéskészítési funkciójával.
 
 A rendszergazdák az [Azure ad feltételes hozzáférést](../conditional-access/concept-conditional-access-users-groups.md) alkalmazhatják a hozzáférési szabályzatok meghatározott szerepkörökhöz való beállításához. Ezek a szabályzatok magukban foglalhatják, hogy a hozzáférés engedélyezett-e a vállalati környezeten kívül, és még Multi-Factor Authentication vagy az eszközre vonatkozó követelmények a hozzáférés különböző esetekben való eléréséhez
 
@@ -88,7 +88,7 @@ A felhasználók három fő módon érhetik el a Microsoft által közzétett al
 
 Egyes alkalmazások ezeket a metódusokat kombinálják. Bizonyos Microsoft-alkalmazások például egy Office 365-előfizetés részét képezik, de továbbra is beleegyezik.
 
-A felhasználók Office 365-portálon keresztül érhetik el az Office 365-alkalmazásokat. Az Office 365-alkalmazásokat a saját alkalmazások hozzáférési paneljén is megjelenítheti vagy elrejtheti az [office 365 láthatósági kapcsolóval](hide-application-from-user-portal.md) a címtár **felhasználói beállításaiban**. 
+A felhasználók Office 365-portálon keresztül érhetik el az Office 365-alkalmazásokat. Az Office 365-alkalmazásokat a saját alkalmazások mappában is megjelenítheti vagy elrejtheti az [office 365 láthatósági kapcsolóval](hide-application-from-user-portal.md) a címtár **felhasználói beállításaiban**. 
 
 A vállalati alkalmazásokhoz hasonlóan a felhasználók bizonyos Microsoft-alkalmazásokhoz is [hozzárendelhetők](assign-user-or-group-access-portal.md) a Azure Portalon keresztül, vagy ha a portál lehetőség nem érhető el, a PowerShell használatával.
 

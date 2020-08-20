@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828404"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642163"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Hibrid virtuális gépek Azure Monitor for VMsának engedélyezése
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs az Azure-on kívüli virtuális gépekhez, beleértve a helyszíni és más felhőalapú környezeteket is.
@@ -43,8 +43,8 @@ A függőségi ügynököt a következő helyekről töltheti le:
 
 | Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DA5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepítése Windows rendszeren

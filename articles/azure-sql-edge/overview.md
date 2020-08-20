@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233166"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642469"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Mi az Azure SQL Edge (előzetes verzió)?
 
 Az Azure SQL Edge (előzetes verzió) egy optimalizált, a IoT és a IoT Edge üzemelő példányok számára készült adatkezelő motor. Lehetőséget biztosít nagy teljesítményű adattárolási és feldolgozási réteg létrehozására a IoT alkalmazások és megoldások számára. Az Azure SQL Edge lehetővé teszi a kapcsolatok és a nem rokonok, például a JSON, a Graph és az idősoros adatsorozatok továbbítását, feldolgozását és elemzését, ami a megfelelő választás számos modern IoT alkalmazáshoz.
 
-Az Azure SQL Edge az [Microsoft SQL Server adatbázismotor](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json)legújabb verziójára épül, amely piacvezető teljesítményt, biztonsági és lekérdezés-feldolgozási képességeket biztosít. Mivel az Azure SQL Edge ugyanarra a motorra épül, mint a SQL Server és a Azure SQL Database, ugyanazt a T-SQL programozási felületet nyújtja, amely megkönnyíti és gyorsabbá teszi az alkalmazások és megoldások fejlesztését, és egyidejűleg lehetővé teszi az alkalmazások hordozhatóságát IoT Edge eszközök, adatközpontok és a felhő között.
+Az Azure SQL Edge a Microsoft SQL Database Engine (/SQL/SQL-Server/SQL-Server-Technical-documentation? TOC =/Azure/Azure-SQL-Edge/toc.js) legújabb verziójára épül, amely piacvezető teljesítményt, biztonsági és lekérdezés-feldolgozási képességeket biztosít. Mivel az Azure SQL Edge ugyanarra a motorra épül, mint a [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) és az [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), ugyanazt a T-SQL programozási felületet biztosítja, amely megkönnyíti és gyorsabbá teszi az alkalmazások és megoldások fejlesztését, és ezzel egyidejűleg lehetővé teszi az alkalmazások hordozhatóságát IoT Edge eszközök, adatközpontok és a felhő között.
 
 > [!NOTE]
 > Az Azure SQL Edge jelenleg előzetes verzióban érhető el, ezért nem használható éles környezetben.
@@ -70,7 +70,7 @@ Az Azure SQL Edge egyszerűbbé és hatékonyabbá teszi az alkalmazások fejles
 - [Visual Studio Code](https://code.visualstudio.com/docs) – ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, MacOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [Az SQL Edge Machine Learning és mesterséges intelligencia](onnx-overview.md)

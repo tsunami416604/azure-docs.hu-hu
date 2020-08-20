@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763414"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640446"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Üzletági alkalmazások fejlesztése a Azure Active Directory
 Ez az útmutató áttekintést nyújt az üzletági (LoB) alkalmazások Azure Active Directory (AD) való fejlesztéséről. A célközönség a Active Directory/Office 365 globális rendszergazdák számára készült.
@@ -58,7 +58,7 @@ A globális rendszergazdának a következőket kell tennie, hogy segítse a fejl
 Alkalmazáson belüli hozzáférési szabályok konfigurálása az SaaS-alkalmazásokhoz. Megkövetelheti például az MFA-t, vagy csak megbízható hálózatokon lévő felhasználók számára engedélyezze a hozzáférést. Ennek részletei a [hozzáférési szabályok konfigurálása című](../conditional-access/app-based-mfa.md)dokumentumban találhatók.
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Az alkalmazás konfigurálása felhasználói hozzárendelés megköveteléséhez és felhasználók hozzárendeléséhez
-Alapértelmezés szerint a felhasználók hozzárendelése nélkül férhetnek hozzá az alkalmazásokhoz. Ha azonban az alkalmazás elérhetővé teszi a szerepköröket, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó hozzáférési paneljén, felhasználói hozzárendelés szükséges.
+Alapértelmezés szerint a felhasználók hozzárendelése nélkül férhetnek hozzá az alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó saját alkalmazásaiban, felhasználói hozzárendelés szükséges.
 
 Ha Ön prémium szintű Azure AD vagy nagyvállalati mobilitási csomag (EMS) előfizető, javasoljuk, hogy használjon csoportokat. A csoportok az alkalmazáshoz való hozzárendelésével a folyamatos hozzáférés-kezelést delegálhatja a csoport tulajdonosának. Létrehozhatja a csoportot, vagy megkérheti a szervezet felelős személyét, hogy hozza létre a csoportot a csoport-felügyeleti létesítmény használatával.
 

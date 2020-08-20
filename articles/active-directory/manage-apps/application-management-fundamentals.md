@@ -16,30 +16,30 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760269"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642435"
 ---
 # <a name="application-management-best-practices"></a>Alkalmazások kezelése – ajánlott eljárások
 
 Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások Azure Active Directory (Azure AD) való kezeléséhez, az automatikus kiépítéssel és a helyszíni alkalmazások alkalmazás-proxyval való közzétételével.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>A Cloud app és az egyszeri bejelentkezés javaslatai
-| Ajánlás | Megjegyzések |
+| Javaslat | Megjegyzések |
 | --- | --- |
 | Az Azure AD Application Gallery for Apps szolgáltatás megtekintése  | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak a vállalati egyszeri bejelentkezéssel (SSO). Az alkalmazásspecifikus beállítási útmutatóért tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/).  | 
 | Összevont SAML-alapú egyszeri bejelentkezés használata  | Ha egy alkalmazás támogatja azt, akkor használjon összevont, SAML-alapú egyszeri bejelentkezést az Azure AD-vel a jelszó-alapú egyszeri bejelentkezés és az ADFS helyett.  | 
 | Az SHA-256 használata tanúsítvány-aláíráshoz  | Az Azure AD alapértelmezés szerint az SHA-256 algoritmust használja az SAML-válasz aláírásához. Az SHA-256 használata, ha az alkalmazáshoz SHA-1 szükséges (lásd: [tanúsítvány-aláírási beállítások](certificate-signing-options.md) és [alkalmazás-bejelentkezési probléma](application-sign-in-problem-application-error.md).)  | 
-| Felhasználói hozzárendelés megkövetelése  | Alapértelmezés szerint a felhasználók nem férhetnek hozzá a vállalati alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó hozzáférési paneljén, felhasználói hozzárendelés szükséges. (Lásd: [fejlesztői útmutató az alkalmazások integrálásához](developer-guidance-for-integrating-applications.md).)  | 
-| A saját alkalmazások hozzáférési paneljének üzembe helyezése a felhasználók számára | A [hozzáférési panel](end-user-experiences.md) `https://myapps.microsoft.com` egy webalapú portál, amely egyetlen belépési ponttal biztosítja a felhasználókat a hozzárendelt felhőalapú alkalmazásokhoz. Mivel a további funkciók, például a csoportok kezelése és az önkiszolgáló jelszó-visszaállítás is hozzá lettek adva, a felhasználók a hozzáférési panelen is megtalálhatják őket. Lásd: [hozzáférési panel üzembe helyezésének megtervezése](access-panel-deployment-plan.md).
+| Felhasználói hozzárendelés megkövetelése  | Alapértelmezés szerint a felhasználók nem férhetnek hozzá a vállalati alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó saját alkalmazásaiban, felhasználói hozzárendelés szükséges. (Lásd: [fejlesztői útmutató az alkalmazások integrálásához](developer-guidance-for-integrating-applications.md).)  | 
+| Alkalmazások üzembe helyezése a felhasználók számára | Az [alkalmazásom](end-user-experiences.md) `https://myapps.microsoft.com` egy webalapú portál, amely egyetlen belépési ponttal biztosítja a felhasználókat a hozzárendelt felhőalapú alkalmazásokhoz. Mivel a további funkciók, például a csoportok kezelése és az önkiszolgáló jelszó-visszaállítás hozzá lettek adva, a felhasználók megkereshetik azokat az alkalmazásokban. Lásd: [az alkalmazások telepítésének megtervezése](access-panel-deployment-plan.md).
 | Csoport-hozzárendelés használata  | Ha belefoglalja az előfizetésbe, csoportokat rendel hozzá egy alkalmazáshoz, hogy a folyamatos hozzáférés-kezelést delegálja a csoport tulajdonosának. (Lásd: [fejlesztői útmutató az alkalmazások integrálásához](developer-guidance-for-integrating-applications.md).)   | 
 | A tanúsítványok kezelésére szolgáló folyamat létrehozása | Az aláíró tanúsítvány maximális élettartama három év. A tanúsítvány lejárata miatti leállások megelőzése vagy csökkentése érdekében a szerepkörök és e-mailek terjesztési listáit használva ellenőrizze, hogy a tanúsítványokkal kapcsolatos módosítási értesítések szorosan megfigyelhetők-e. |
 
 ## <a name="provisioning-recommendations"></a>Kiépítési javaslatok
-| Ajánlás | Megjegyzések |
+| Javaslat | Megjegyzések |
 | --- | --- |
 | Oktatóanyagok használata a felhőalapú alkalmazásokkal való kiépítés beállításához | Tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) , amely részletes útmutatást nyújt a hozzáadni kívánt Gallery-alkalmazás kiépítés konfigurálásához. |
 | A kiépítési naplók (előzetes verzió) használata az állapot figyeléséhez | A [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) részletezik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az egyes felhasználók állapotát is. |
@@ -47,7 +47,7 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások A
 
 
 ## <a name="application-proxy-recommendations"></a>Alkalmazásproxy-javaslatok
-| Ajánlás | Megjegyzések |
+| Javaslat | Megjegyzések |
 | --- | --- |
 | Alkalmazásproxy használata a belső erőforrásokhoz való távoli hozzáféréshez | Az alkalmazásproxy használata ajánlott a távoli felhasználók számára a belső erőforrásokhoz való hozzáféréshez, a VPN-vagy fordított proxy igényének megadásához. Nem a vállalati hálózaton belüli erőforrásokhoz való hozzáférésre szolgál, mert ez késést eredményezhet.
 | Egyéni tartományok használata | Egyéni tartományokat állíthat be az alkalmazásaihoz (lásd: [Egyéni tartományok konfigurálása](application-proxy-configure-custom-domain.md)), hogy a felhasználók és az alkalmazások közötti URL-címek a hálózaton belül vagy kívül is működjenek. Emellett a saját védjegyeit is szabályozhatja, és testre szabhatja az URL-címeket.  Egyéni tartománynevek használata esetén tervezze meg a nem a Microsofttól származó megbízható hitelesítésszolgáltatótól származó nyilvános tanúsítvány beolvasását. Az Azure Application proxy támogatja a standard, ([helyettesítő karakter](application-proxy-wildcard.md)) vagy a San-alapú tanúsítványokat. (Lásd: [alkalmazásproxy megtervezése](application-proxy-deployment-plan.md).) |

@@ -16,12 +16,12 @@ ms.date: 03/12/2019
 ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764944"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642129"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés konfigurálása alkalmazásproxy-alkalmazáshoz
 
@@ -49,9 +49,9 @@ Az egyes lehetőségek a "vállalati alkalmazások" alkalmazásban, a bal oldali
 
 Ezen az oldalon egy további bejelentkezési lehetőség is látható: a csatolt bejelentkezés. Ezt a beállítást a alkalmazásproxy is támogatja. Ez a beállítás azonban nem ad hozzá egyszeri bejelentkezést az alkalmazáshoz. Az is előfordulhat, hogy az alkalmazás már rendelkezik egy másik szolgáltatás, például a Active Directory összevonási szolgáltatások (AD FS) használatával történő egyszeri bejelentkezéssel. 
 
-Ez a beállítás lehetővé teszi, hogy a rendszergazda olyan alkalmazásra mutató hivatkozást hozzon létre, amelyet a felhasználók először az alkalmazáshoz való hozzáféréskor érnek el. Ha például van egy olyan alkalmazás, amely a felhasználók hitelesítésére van konfigurálva a Active Directory összevonási szolgáltatások (AD FS) 2,0 használatával, a rendszergazda a "csatolt bejelentkezés" lehetőség használatával létrehozhat egy hivatkozást a hozzáférési panelen.
+Ez a beállítás lehetővé teszi, hogy a rendszergazda olyan alkalmazásra mutató hivatkozást hozzon létre, amelyet a felhasználók először az alkalmazáshoz való hozzáféréskor érnek el. Ha például van egy olyan alkalmazás, amely a felhasználók hitelesítésére van konfigurálva a Active Directory összevonási szolgáltatások (AD FS) 2,0 használatával, a rendszergazda a "csatolt bejelentkezés" lehetőséggel létrehozhat egy hivatkozást a saját alkalmazásaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Jelszó-tároló egyszeri bejelentkezéshez alkalmazásproxy](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [Kerberos által korlátozott delegálás az Application proxyval való egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Fejléc-alapú hitelesítés egyszeri bejelentkezéshez alkalmazásproxy](application-proxy-configure-single-sign-on-with-ping-access.md) 

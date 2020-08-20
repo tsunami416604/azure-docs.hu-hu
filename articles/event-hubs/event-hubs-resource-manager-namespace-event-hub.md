@@ -4,12 +4,12 @@ description: 'Gyors útmutató: Event Hubs névtér létrehozása egy Event hub 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 445a52593e95074d9941a1592d688de7eea9c006
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dbec62c182fe804ba45cae2f9e40c189b9bc0279
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522040"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641126"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Rövid útmutató: Event hub létrehozása ARM-sablonnal
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
+:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json":::
 
 A sablonban definiált erőforrások a következők:
 
@@ -75,7 +75,7 @@ Get-AzEventHub -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
 

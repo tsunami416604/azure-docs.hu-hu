@@ -6,30 +6,32 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482904"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642078"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>A normalizált RU/s figyelése Azure Cosmos-tárolóhoz vagy-fiókhoz
 
 A Azure Cosmos DB Azure Monitor metrikai nézetet biztosít a fiók figyeléséhez és az irányítópultok létrehozásához. A rendszer alapértelmezés szerint összegyűjti a Azure Cosmos DB metrikákat, így nem kell explicit módon engedélyeznie vagy konfigurálnia a szolgáltatást.
 
-A **normalizált ru** -használati metrika azt mutatja, hogy mennyire telítettek a replikák a kérelmek egységei számára a partíciós kulcs tartományán keresztül. Azure Cosmos DB az átviteli sebességet egyenlően osztja el az összes fizikai partíció között. Ez a metrika egy másodpéldányon belüli maximális átviteli sebességre mutató másodpercenkénti nézetet biztosít. Ezzel a metrikával számíthatja ki az RU/s használatát az adott tároló partíciói között. Ha ezt a metrikát használja, ha a kérési egységek kihasználtságának nagy hányadát látja, növelje az átviteli sebességet, hogy megfeleljen a számítási feladatok igényeinek.
+A **normalizált ru** -használati metrika azt mutatja, hogy mennyire telített a partíciós kulcsok tartománya a forgalom tekintetében. Azure Cosmos DB az átviteli sebességet egyenlően osztja el a partíciós kulcsok összes tartománya között. Ez a metrika a partíciós kulcs tartományának maximális átviteli sebességét jeleníti meg másodpercenként. Ezzel a metrikával számíthatja ki az RU/s használatát a partíciós kulcs tartománya között az adott tárolónál. Ha ezt a metrikát használja, ha az Azure monitor összes partíciós kulcs-tartományának nagy hányadát látja, akkor növelje az átviteli sebességet, hogy megfeleljen a számítási feladatok igényeinek. 
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Mire számíthat, és ha a normalizált RU/s magasabb
 
-Ha a normalizált RU/s-használat eléri a 100%-ot, az ügyfél megkapja a sebességet korlátozó hibákat. Az ügyfélnek meg kell tartania a várakozási időt, és újra kell próbálkoznia. Ha van egy rövid szeg, amely eléri a 100%-os kihasználtságot, az azt jelenti, hogy a replika átviteli sebessége elérte a maximális teljesítmény korlátját. Például egyetlen művelet, például egy tárolt eljárás, amely egy replika összes RU/s-példányát használja, egy rövid tüske lesz a normalizált RU/s-fogyasztásban. Ilyen esetekben a rendszer nem korlátozza az azonnali díjszabást, ha a kérések aránya alacsony. Ennek az az oka, hogy Azure Cosmos DB lehetővé teszi, hogy a kérések több, mint a kiépített RU/s díjat számolnak fel az adott kérelemre vonatkozóan, és az adott időszakon belül más kérelmek esetében a díjszabás korlátozott.
+Ha a normalizált RU/s-használat eléri a 100%-ot a megadott partíciós kulcs tartománya számára, és ha egy ügyfél továbbra is a kérelmeket az adott időintervallumban, az adott partíciós kulcs tartományára is elküldi, akkor a rendszer korlátozott mértékű hibát kap Az ügyfélnek tiszteletben kell tartania a javasolt várakozási időt, és újra kell próbálkoznia a kéréssel. Az SDK-val könnyedén kezelheti ezt a helyzetet azáltal, hogy a megfelelő várakozással újrapróbálkozik az előre konfigurált időpontokkal.  Nem szükséges, hogy az RU-ráta korlátozási hibát észlelt, mert a normalizált RU elérte a 100%-ot. Ennek az az oka, hogy a normalizált RU egyetlen érték, amely a maximális kihasználtságot jelöli az összes partíciós kulcs tartományán, az egyik partíciós kulcs foglalható, de a többi partíciós kulcs tartománya probléma nélkül kiszolgálhatja a kéréseket. Például egyetlen művelet, például egy tárolt eljárás, amely a partíciós kulcsok tartományában lévő összes RU/s-t felhasználja, a normalizált RU/s-fogyasztás rövid csúcsát fogja eredményezni. Ilyen esetekben a rendszer nem korlátozza az azonnali díjszabást, ha a kérések aránya alacsony, vagy a különböző partíciós kulcs-tartományokban lévő többi partícióra vonatkozó kérések történnek. 
 
-A Azure Monitor metrikák segítségével megkeresheti a műveletekhez tartozó állapotkódot a **kérelmek teljes** metrikájának használatával. Később a 429 állapotkód alapján szűrheti ezeket a kéréseket, és a **művelet típusa**alapján feloszthatja őket.
+A Azure Monitor metrikák segítségével megkeresheti az SQL API-hoz tartozó műveleti kódokat az **összes kérelem** metrikájának használatával. Később a 429 állapotkód alapján szűrheti ezeket a kéréseket, és a **művelet típusa**alapján feloszthatja őket.  
 
 A korlátozott díjszabású kérelmek megkereséséhez az ajánlott módszer az információk diagnosztikai naplókon keresztüli beszerzése.
 
-Ha folyamatos csúcsa 100%-ban normalizált RU/s-fogyasztás, vagy a 100%-hoz közeledik, ajánlott az átviteli sebesség növelése. Az Azure monitor metrikáinak és az Azure monitor naplóinak használatával megtudhatja, hogy mely műveletek jelentősek és a maximális kihasználtságuk.
+Ha folyamatos csúcsa 100%-os normalizált RU/s-fogyasztás, vagy a több partíciós kulcs tartományához képest 100%-kal nagyobb, akkor azt javasoljuk, hogy növelje az átviteli sebességet. Az Azure monitor metrikáinak és az Azure monitor diagnosztikai naplóinak használatával megtudhatja, hogy mely műveletek jelentősek és a maximális kihasználtságuk.
 
-A **normalizált ru** -használati metrika azt is felhasználja, hogy a partíciós kulcs tartománya milyen mértékben meleg a használat szempontjából. így biztosíthatja a partíciós kulcs tartományára irányuló adatátvitelt. Később nyomon követheti a **PartitionKeyRUConsumption** -naplót, Azure monitor naplókat, amelyekkel információkat kaphat arról, hogy mely logikai partíciós kulcsok használják a használati feltételeket.
+Összefoglalva, a **normalizált ru** -használati metrika segítségével megtekintheti, hogy melyik partíciós kulcs tartománya sokkal meleg a használat szempontjából. Így a partíciós kulcs tartományához tartozó átviteli sebesség eldöntését teszi lehetővé. Később nyomon követheti a **PartitionKeyRUConsumption** -naplót, Azure monitor naplókat, amelyekkel információkat kaphat arról, hogy mely logikai partíciós kulcsok használják a használati feltételeket. Ez a partíciós kulcs választása vagy az alkalmazás logikájában megjelenő változásra mutat. A mérték korlátozásának feloldásához Ossza szét az adatok terhelését több partíció között, vagy csak növelje az átviteli sebességet, mert az valóban szükséges. 
+
+
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>A normalizált kérési egység felhasználási metrikájának megtekintése
 
@@ -59,7 +61,7 @@ Az egyes tárolók normalizált kérések egységenkénti mérőszáma az alább
 
 :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Szűrők alkalmazása a normalizált kérelmek egységének felhasználási metrikája":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban [diagnosztikai beállításokkal](cosmosdb-monitor-resource-logs.md) figyelheti Azure Cosmos db az adataikat.
 * [Azure Cosmos DB vezérlési sík műveleteinek naplózása](audit-control-plane-logs.md)

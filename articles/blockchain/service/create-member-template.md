@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
 ms.date: 07/16/2020
-ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513027"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642010"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Rövid útmutató: Azure Blockchain-szolgáltatásbeli tag létrehozása ARM-sablonnal
 
@@ -25,13 +25,13 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
+:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json":::
 
 A sablonban definiált Azure-erőforrások:
 
@@ -39,7 +39,7 @@ A sablonban definiált Azure-erőforrások:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. A következő hivatkozásra kattintva jelentkezzen be az Azure-ba, és nyisson meg egy sablont.
+1. Kattintson az alábbi hivatkozásra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához.
 
     [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 
@@ -66,7 +66,7 @@ A Azure Portal használatával megtekintheti az üzembe helyezett Azure Blockcha
 
 ![Üzembe helyezett Azure Blockchain-tagok áttekintése – részletek a Azure Portal](./media/create-member-template/deployed-member.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Használhatja a következő rövid útmutatóhoz vagy oktatóanyaghoz létrehozott blockchain tagot. Ha már nincs rá szükség, törölheti az erőforrásokat a gyors útmutatóhoz létrehozott erőforráscsoport törlésével.
 

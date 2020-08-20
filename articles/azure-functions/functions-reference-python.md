@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850746"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642197"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -17,11 +17,11 @@ Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatáva
 
 A Pythonban futó önálló függvények esetében tekintse meg a [Python függvények mintáit](/samples/browse/?products=azure-functions&languages=python).
 
-## <a name="programming-model"></a>A programozási modell
+## <a name="programming-model"></a>Programozási modell
 
 A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet azt várja, hogy a metódus a fájlban megadott globális metódusként legyen implementálva `main()` `__init__.py` . [Alternatív belépési pontot is megadhat](#alternate-entry-point).
 
-Az eseményindítók és kötések adatai a metódus attribútumain keresztül a függvényhez vannak kötve a `name` *function.js* fájlban megadott tulajdonság használatával. Az alábbi _function.js_ például egy, a nevű HTTP-kérelem által aktivált egyszerű függvényt ismertet `req` :
+Az eseményindítók és kötések adatai a metódus attribútumain keresztül a függvényhez vannak kötve a `name` *function.js* fájlban megadott tulajdonság használatával. Az alábbi  _function.js_ például egy, a nevű HTTP-kérelem által aktivált egyszerű függvényt ismertet `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -87,7 +87,6 @@ A fő projekt mappája ( \_ \_ alkalmazás \_ \_ ) a következő fájlokat tarta
 * *requirements.txt*: azon csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
 * *host.json*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
 * *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
-* *. gitignore*: (opcionális) deklarálja a git-tárházból kizárt fájlokat, például a local.settings.js.
 * *Docker*: (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function.js).
@@ -251,7 +250,7 @@ def main(req):
 
 További naplózási módszerek érhetők el, amelyek lehetővé teszik a konzolra való írást különböző nyomkövetési szinteken:
 
-| Módszer                 | Leírás                                |
+| Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | KRITIKUS szintű üzenetet ír a gyökérszintű naplózó számára.  |
 | **`error(_message_)`**   | A legfelső szintű naplózó üzenetbe írja a Level hibát.    |
@@ -351,11 +350,11 @@ def main(req: azure.functions.HttpRequest,
 
 A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python) osztály a következő karakterlánc-attribútumokkal rendelkezik:
 
-`function_directory`Az a címtár, amelyben a függvény fut.
+`function_directory` Az a címtár, amelyben a függvény fut.
 
-`function_name`A függvény neve.
+`function_name` A függvény neve.
 
-`invocation_id`Az aktuális függvény meghívásának azonosítója.
+`invocation_id` Az aktuális függvény meghívásának azonosítója.
 
 ## <a name="global-variables"></a>Globális változók
 

@@ -2,26 +2,21 @@
 title: Alkalmazásproxy – problémamegoldás | Microsoft Docs
 description: Az Azure AD Application Proxy hibáinak elhárítását ismerteti.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848459"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640854"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása
 
@@ -84,6 +79,7 @@ Ez a lista azokat a hibákat tartalmazza, amelyekkel a végfelhasználók talál
 | Ez a vállalati alkalmazás jelenleg nem érhető el. Próbálkozzon újra később... Az összekötő időkorlátja lejárt. | Előfordulhat, hogy a felhasználó ezt a hibaüzenetet kapja, amikor megpróbál hozzáférni a közzétett alkalmazáshoz, ha azokat nem megfelelően definiálták ehhez az alkalmazáshoz a helyszíni oldalon. Győződjön meg arról, hogy a felhasználók rendelkeznek a megfelelő engedélyekkel a háttérbeli alkalmazáshoz a helyszíni gépen. |
 | Ez a vállalati alkalmazás nem érhető el. Ön nem jogosult az alkalmazás elérésére. Az engedélyezés sikertelen. Győződjön meg arról, hogy a felhasználó rendelkezik prémium szintű Azure Active Directory-licenccel. | Előfordulhat, hogy a felhasználó ezt a hibaüzenetet kapja, amikor megpróbál hozzáférni a közzétett alkalmazáshoz, ha az előfizető rendszergazdája kifejezetten nem rendelt hozzájuk prémium licenccel. Lépjen az előfizető Active Directory **licencek** lapra, és győződjön meg arról, hogy a felhasználó vagy a felhasználói csoport prémium szintű licenccel van társítva. |
 | Nem található a megadott állomásnévvel rendelkező kiszolgáló. | Előfordulhat, hogy a felhasználó ezt a hibaüzenetet kapja, amikor megpróbál hozzáférni a közzétett alkalmazáshoz, ha az alkalmazás egyéni tartománya nincs megfelelően konfigurálva. Győződjön meg arról, hogy feltöltött egy tanúsítványt a tartományhoz, és megfelelően konfigurálta a DNS-rekordot az [Azure-beli egyéni tartományok használata](application-proxy-configure-custom-domain.md) című témakörben ismertetett lépéseket követve. ad Application proxy |
+|Tiltott: Ez a vállalati alkalmazás nem érhető el, vagy a felhasználó nem hitelesíthető. Győződjön meg arról, hogy a felhasználó a helyszíni AD-ben van definiálva, és hogy a felhasználó hozzáfér az alkalmazáshoz a helyszíni AD-ben. | Ez az engedélyezési adatokhoz való hozzáféréssel kapcsolatos probléma lehet: [egyes alkalmazások és API-k hozzáférését igénylik a fiók objektumainak engedélyezési adataihoz]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). Dióhéjban vegye fel az App proxy-összekötő számítógépfiókját a "Windows-engedélyezési hozzáférés csoport" beépített tartományi csoportba a megoldáshoz. |
 
 ## <a name="my-error-wasnt-listed-here"></a>A hiba nem szerepel a listán
 

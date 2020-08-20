@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321275"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639902"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Egyéni metrikák a Azure Monitorban (előzetes verzió)
 
@@ -26,6 +26,7 @@ Azure Monitor egyéni metrikák jelenleg nyilvános előzetes verzióban érhet�
 
 Az egyéni metrikák több módszer használatával is elküldhetők Azure Monitorba:
 - Az alkalmazást az Azure Application Insights SDK használatával, az egyéni telemetria pedig a Azure Monitorba küldheti. 
+- Telepítse a Azure Monitor-ügynököt (előzetes verzió) a [Windows vagy Linux rendszerű Azure-beli virtuális gépre](azure-monitor-agent-overview.md) , és használjon egy [adatgyűjtési szabályt](data-collection-rule-azure-monitor-agent.md) a teljesítményszámlálók Azure monitor metrikák küldéséhez.
 - Telepítse a Windows Azure Diagnostics (WAD) bővítményt az [Azure](collect-custom-metrics-guestos-resource-manager-vm.md)-beli virtuális gépre, a [virtuálisgép-méretezési csoportra](collect-custom-metrics-guestos-resource-manager-vmss.md), a [klasszikus virtuális gépre](collect-custom-metrics-guestos-vm-classic.md)vagy a [klasszikus Cloud Servicesre](collect-custom-metrics-guestos-vm-cloud-service-classic.md) , és küldje el a teljesítményszámlálók Azure monitor. 
 - Telepítse a [InfluxData-előgrafi ügynököt](collect-custom-metrics-linux-telegraf.md) az Azure Linux rendszerű virtuális gépre, és küldje el a metrikákat a Azure monitor kimeneti beépülő modullal.
 - Egyéni metrikák küldése [közvetlenül a Azure Monitor REST API](./metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
@@ -60,7 +61,7 @@ Ez a tulajdonság rögzíti, hogy az egyéni metrika melyik Azure-erőforrás-AZ
 > Egy erőforráscsoport vagy előfizetés erőforrás-azonosítójával nem lehet egyéni metrikákat kibocsátani.
 
 
-### <a name="region"></a>Régió
+### <a name="region"></a>Region
 Ez a tulajdonság azt az Azure-régiót rögzíti, amelybe a metrikákat kibocsátó erőforrást telepíti. A metrikákat ugyanarra a Azure Monitor regionális végpontra kell kiadni, mint az erőforrás üzembe helyezésének régióját. Az USA nyugati régiójában üzembe helyezett virtuális gépek egyéni metrikáit például a WestUS regionális Azure Monitor végpontjának kell elküldeni. A régió információi az API-hívás URL-címében is kódolva vannak.
 
 > [!NOTE]  
@@ -229,7 +230,7 @@ A Azure Monitor a következő használati korlátokat szabja meg az egyéni metr
 
 Az aktív idősorozatok a metrika, a dimenzióérték vagy a dimenzió érték bármely egyedi kombinációja, amely az elmúlt 12 órában közzétett metrikai értékeket tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Egyéni metrikák használata különböző szolgáltatásokból: 
  - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Virtuálisgép-méretezési csoport](collect-custom-metrics-guestos-resource-manager-vmss.md)

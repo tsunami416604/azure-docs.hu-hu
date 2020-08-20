@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459385"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640548"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Jelszó alapú egyszeri bejelentkezés konfigurálása
 
@@ -29,7 +29,7 @@ A jelszó-alapú egyszeri bejelentkezés nagyszerű lehetőséget biztosít az a
 
 - Olyan alkalmazások támogatása, amelyeknek több bejelentkezési mezőre van szükségük olyan alkalmazásokhoz, amelyek több, mint a Felhasználónév és a jelszó mezőt igényelnek a bejelentkezéshez
 
-- Szabja testre a felhasználónevet és a jelszó mezőket, amelyeket a felhasználók az [alkalmazás hozzáférési paneljén](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) látnak a hitelesítő adataik megadásakor
+- Testreszabhatja a felhasználónevek és a jelszó mezők címkéit, amelyeket a felhasználók a [saját alkalmazásokban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) látnak a hitelesítő adataik megadásakor
 
 - Saját felhasználónevek és jelszavak megadásának engedélyezése a felhasználók számára minden olyan meglévő alkalmazás-fiókhoz, amelyet manuálisan írunk be.
 
@@ -71,7 +71,7 @@ Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja
    ![Jelszó alapú egyszeri bejelentkezés manuális konfigurálása](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. Jelölje be **a bejelentkezési mezők rögzítése**jelölőnégyzetet. Egy új lapon megnyílik egy rögzítési állapot lap, amely azt mutatja, hogy az üzenet **metaadatainak rögzítése jelenleg folyamatban van**.
 
-4. Ha megjelenik a **hozzáférési panel bővítmény kötelező** mezője egy új lapon, válassza a **Telepítés most** lehetőséget a **saját alkalmazások biztonságos bejelentkezési bővítményének** telepítéséhez. (A böngésző kiterjesztéséhez a Microsoft Edge, a Chrome vagy a Firefox szükséges.) Ezután telepítse, indítsa el és engedélyezze a bővítményt, és frissítse a rögzítés állapota lapot.
+4. Ha a **saját alkalmazások bővítmény szükséges** mező megjelenik egy új lapon, válassza a **Telepítés most** lehetőséget a **saját alkalmazások biztonságos bejelentkezési bővítményének** telepítéséhez. (A böngésző kiterjesztéséhez a Microsoft Edge, a Chrome vagy a Firefox szükséges.) Ezután telepítse, indítsa el és engedélyezze a bővítményt, és frissítse a rögzítés állapota lapot.
 
    Ekkor megnyílik egy másik lap, amely megjeleníti a megadott URL-címet.
 5. A megadott URL-címmel rendelkező lapon ugorjon végig a bejelentkezési folyamaton. Adja meg a Felhasználónév és a jelszó mezőket, majd próbáljon meg bejelentkezni. (Nem kell megadnia a megfelelő jelszót.)
@@ -83,7 +83,7 @@ Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja
 
 8. Kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
 - [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -8,15 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074238"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639681"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-fürtök létrehozása Azure-beli virtuális gépeken
 Microsoft Azure virtuális gépek használatával hozzon létre egy vagy több MATLAB Distributed Computing Server-fürtöt a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához. Telepítse a MATLAB Distributed Computing Server szoftvert egy virtuális gépre alaprendszerképként való használatra, és használjon egy Azure-beli rövid útmutató sablont vagy Azure PowerShell szkriptet (amely a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)érhető el) a fürt üzembe helyezéséhez és kezeléséhez. Az üzembe helyezés után kapcsolódjon a fürthöz a számítási feladatok futtatásához.
+
+> [!IMPORTANT]
+> A cikk írása óta már formális támogatás érhető el a MATLAB-alkalmazások használatához az Azure-ban. Javasoljuk, hogy a jelen cikkben hivatkozott sablon és parancsfájlok helyett ezeket a legújabb funkciókat használja. Keresés az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en a "MATLAB"; a MATLAB-alkalmazások Azure-on való futtatásával kapcsolatos további információk a [MathWorks](https://www.mathworks.com/solutions/cloud.html#public-cloud)webhelyen érhetők el.
 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>Tudnivalók a MATLAB és a MATLAB Distributed Computing Serverről
 A [MATLAB](https://www.mathworks.com/products/matlab/) platform mérnöki és tudományos problémák megoldására van optimalizálva. A nagy léptékű szimulációkkal és adatfeldolgozási feladatokkal rendelkező MATLAB-felhasználók MathWorks párhuzamos számítástechnikai termékekkel növelhetik a számítási igényű munkaterheléseket a számítási fürtök és a Grid-szolgáltatások kihasználásával. A [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) lehetővé teszi, hogy a MATLAB-felhasználók integrálással az alkalmazásokat, és kihasználhassanak több magos processzort, GPU-t és számítási fürtöt. A [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) lehetővé teszi, hogy a MATLAB-felhasználók számos számítógépet használjanak egy számítási fürtben.
@@ -64,6 +67,6 @@ Más típusú MATLAB Distributed Computing Server-fürtökhöz hasonlóan a MATL
 
 ![Fürterőforrás-kezelő](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A MATLAB Distributed Computing Server-fürtök az Azure-ban való üzembe helyezésével és felügyeletével kapcsolatos részletes utasításokért tekintse meg a sablonokat és parancsfájlokat tartalmazó [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) -tárházat.
 * Nyissa meg a [MathWorks webhelyét](https://www.mathworks.com/) a MATLAB és a MATLAB Distributed Computing Server részletes dokumentációjában.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850168"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639749"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban egy olyan illesztőprogramot fog segíteni, amelynek az
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Hozzon létre és futtasson Jupyter notebookot [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) a felhőben.
+> * Hozzon létre és futtasson egy Jupyter Notebook fájlt [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) a felhőben.
 > * Azure Maps REST API-k hívása a Pythonban.
 > * Keressen egy elérhető tartományt az elektromos jármű használati modellje alapján.
 > * Keressen az elektromos járművek díjszabási állomásait a rendelkezésre álló tartományon belül, vagy isochrone.
@@ -45,9 +45,9 @@ A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsőd
 
 A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-## <a name="create-an-azure-notebook"></a>Azure-beli jegyzetfüzet létrehozása
+## <a name="create-an-azure-notebooks-project"></a>Azure Notebooks projekt létrehozása
 
-Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter notebook-fájlt. A jegyzetfüzet-fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Hozzon létre egy Azure notebook-projektet, és töltse fel a Jupyter notebook-dokumentumot a következő lépésekkel:
+Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure Notebooks projektet, és le kell töltenie és futtatnia kell a Jupyter Notebook fájlt. A Jupyter Notebook fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Azure Notebooks projekt létrehozásához és a Jupyter Notebook dokumentum feltöltéséhez tegye a következő lépéseket:
 
 1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. A nyilvános profil lap tetején válassza a **saját projektek**lehetőséget.
@@ -62,27 +62,27 @@ Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-
  
     ![Az új projekt létrehozása panel](./media/tutorial-ev-routing/create-project-window.png)
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
-1. A projekt létrehozása után töltse le ezt a [Jupyter notebook-dokumentumot](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
+1. A projekt létrehozása után töltse le ezt a [Jupyter notebook dokumentumot](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook adattárból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
-1. A **saját projektek** lap projektek listájában válassza ki a projektet, majd válassza a **feltöltés** lehetőséget a Jupyter notebook-dokumentum fájljának feltöltéséhez. 
+1. A **saját projektek** lap projektek listájában válassza ki a projektet, majd válassza a **feltöltés** lehetőséget a Jupyter notebook dokumentum feltöltéséhez. 
 
-    ![Jegyzetfüzet feltöltése](./media/tutorial-ev-routing/upload-notebook.png)
+    ![feltöltés Jupyter Notebook](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. Töltse fel a fájlt a számítógépről, majd válassza a **kész**lehetőséget.
 
-1. Miután a feltöltés sikeresen befejeződött, a fájl megjelenik a projekt oldalon. Kattintson duplán a fájlra, hogy megnyissa Jupyter jegyzetfüzetként.
+1. Miután a feltöltés sikeresen befejeződött, a fájl megjelenik a projekt oldalon. Kattintson duplán a fájlra Jupyter Notebookként való megnyitásához.
 
-Próbálja meg megismerni a jegyzetfüzet-fájlban megvalósított funkciókat. Futtassa a kódot a jegyzetfüzet-fájlban egyszerre egy cellával. A kódot minden cellában futtathatja, ha a **Futtatás** gombra kattint a notebook alkalmazás tetején.
+Próbálja meg megérteni a Jupyter Notebook fájlban implementált funkciókat. Futtassa a kódot a Jupyter Notebook fájlban egyszerre egy cellát. A kódot minden cellában futtathatja, ha a Jupyter Notebook alkalmazás tetején található **Futtatás** gombra kattint.
 
   ![A Futtatás gomb](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Projekt szintű csomagok telepítése
 
-A kód a jegyzetfüzetben való futtatásához a következő lépések végrehajtásával telepítse a csomagokat a projekt szintjén:
+A kód Jupyter Notebook-ben való futtatásához a következő lépések végrehajtásával telepítse a csomagokat a projekt szintjén:
 
-1. Töltse le a [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
+1. Töltse le a [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter notebook adattárból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
 1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget. 
 1. A **projekt beállításai** ablaktáblán válassza a **környezet** lapot, majd kattintson a **Hozzáadás**gombra.
 1. A **környezet beállítása lépésekben**tegye a következőket:   

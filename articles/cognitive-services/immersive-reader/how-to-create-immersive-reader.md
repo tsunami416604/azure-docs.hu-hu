@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042014"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639807"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -44,7 +44,8 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | Paraméter | Megjegyzések |
@@ -168,7 +171,12 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     | ResourceGroupLocation |Ha az erőforráscsoport nem létezik, meg kell adnia egy helyet, amelyben létre kívánja hozni a csoportot. A helyszínek listájának megkereséséhez futtassa a parancsot `az account list-locations` . Használja a visszaadott eredmény *Name* (szóközök nélkül) tulajdonságát. Ez a paraméter nem kötelező, ha az erőforráscsoport már létezik. |
     | AADAppDisplayName |A Azure Active Directory alkalmazás megjelenített neve. Ha egy meglévő Azure AD-alkalmazás nem található, a rendszer létrehoz egy új nevet. Ez a paraméter nem kötelező, ha az Azure AD-alkalmazás már létezik. |
     | AADAppIdentifierUri |Az Azure AD-alkalmazás URI-ja. Ha egy meglévő Azure AD-alkalmazás nem található, a rendszer létrehoz egy újat ezzel az URI-val. Például: `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Az Ön által létrehozott jelszó, amelyet később a rendszer a token beszerzése során fog használni, hogy elindítsa az olvasót. A jelszónak legalább 16 karakterből kell állnia, és legalább 1 speciális karaktert kell tartalmaznia, és legalább 1 numerikus karaktert kell tartalmaznia. |
+    | AADAppClientSecret |Az Ön által létrehozott jelszó, amelyet később a rendszer a token beszerzése során fog használni, hogy elindítsa az olvasót. A jelszónak legalább 16 karakterből kell állnia, és legalább 1 speciális karaktert kell tartalmaznia, és legalább 1 numerikus karaktert kell tartalmaznia. Ha az Azure AD-alkalmazáshoz tartozó titkos kulcsokat az erőforrás létrehozása után szeretné kezelni, látogasson el a https://portal.azure.com Home-> Azure Active Directory-> alkalmazás-regisztrációk – > `[AADAppDisplayName]` -> tanúsítványok és titkok panel – >-ügyfél titkai szakaszra (ahogy az alábbi "az Azure ad-alkalmazási titkok kezelése" képernyőképen látható). |
+    | AADAppClientSecretExpiration |Az a dátum vagy dátum, amely után `[AADAppClientSecret]` lejár a lejárat (például "2020-12-31T11:59:59 + 00:00" vagy "2020-12-31"). |
+
+    Azure AD-alkalmazási titkok kezelése
+
+    ![Azure Portal-tanúsítványok és-titkok panel](./media/client-secrets-blade.png)
 
 1. Másolja a JSON-kimenetet egy szövegfájlba későbbi használatra. A kimenetnek az alábbihoz hasonlóan kell kinéznie.
 
@@ -181,7 +189,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatót, amelyből megtudhatja, hogy mit tehet a magától az olvasói SDK-val a Node.js használatával
 * Tekintse meg az [Android-oktatóanyagot](./tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.

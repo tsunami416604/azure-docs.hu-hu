@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080079"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642044"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -203,7 +203,7 @@ fi
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
-1. A `php composer.phar install` parancs futtatása.
+1. Futtassa az `php composer.phar install` parancsot.
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
@@ -276,8 +276,8 @@ Ha inkább nem használná a *.htaccess* újraírást, üzembe helyezheti a Lara
 App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -374,7 +374,7 @@ Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.c
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`a *php.ini* létezésének alapértelmezett könyvtára. `/home/site/ini`az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a értékkel válassza el `:` .
+`/usr/local/etc/php/conf.d` a *php.ini* létezésének alapértelmezett könyvtára. `/home/site/ini` az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a értékkel válassza el `:` .
 
 Navigáljon a web SSH-munkamenethez a Linux-tárolóval ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
@@ -481,7 +481,7 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: PHP-alkalmazás és MySQL](tutorial-php-mysql-app.md)

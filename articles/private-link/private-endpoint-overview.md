@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543469"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639834"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -47,6 +47,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
  
 - Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
+- A privát kapcsolati erőforrás előfizetését is regisztrálni kell a Microsoft. Network erőforrás-szolgáltatóban. Részletekért lásd: [Azure Resource Providers](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
 
  
 ## <a name="private-link-resource"></a>Magánhálózati kapcsolat erőforrása 
@@ -131,12 +132,12 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
 
 
-## <a name="next-steps"></a>További lépések
-- [Privát végpont létrehozása SQL Database a portál használatával](create-private-endpoint-portal.md)
-- [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával](create-private-endpoint-powershell.md)
-- [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával](create-private-endpoint-cli.md)
-- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
-- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
+## <a name="next-steps"></a>Következő lépések
+- [Privát végpont létrehozása SQL Database a portál használatával ](create-private-endpoint-portal.md)
+- [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával ](create-private-endpoint-powershell.md)
+- [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával ](create-private-endpoint-cli.md)
+- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával ](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával ](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 - [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a portál használatával](../postgresql/howto-configure-privatelink-portal.md)
 - [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a parancssori felület használatával](../postgresql/howto-configure-privatelink-cli.md)

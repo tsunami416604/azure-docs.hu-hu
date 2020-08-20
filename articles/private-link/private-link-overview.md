@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168150"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639697"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -68,6 +68,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 | Azure SignalR | USA KELETI RÉGIÓJA, USA 2. NYUGATI RÉGIÓJA, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |  | Előnézet   <br/> [További információ](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Összes nyilvános régió      |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Azure File Sync | Összes nyilvános régió      | |   FE   <br/> [További információ](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | USA KELETI RÉGIÓJA, USA 2. NYUGATI RÉGIÓJA, AZ USA DÉLI KÖZÉPSŐ RÉGIÓJA, AZ USA NYUGATI KÖZÉPSŐ RÉGIÓJA, KÖZÉP-NÉMETORSZÁG, KELET-ÁZSIA, EGYESÜLT KIRÁLYSÁG DÉLI RÉGIÓJA, USA  | | FE <br/> [További információ](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 A legfrissebb értesítésekért keresse fel az [Azure Private link frissítései lapot](https://azure.microsoft.com/updates/?product=private-link).
 
@@ -99,7 +100,7 @@ A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/manag
 ## <a name="service-level-agreement"></a>szolgáltatói szerződés
 SLA esetén lásd: [SLA az Azure Private linkhez](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: privát végpont létrehozása Azure Portal használatával](create-private-endpoint-portal.md)
 - [Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával](create-private-link-service-portal.md)

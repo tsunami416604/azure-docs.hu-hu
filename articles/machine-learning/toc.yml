@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: Alkalmasság vállalati használatra és biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Vállalati biztonság és irányítás
           items:
             - name: Vállalati biztonság áttekintése

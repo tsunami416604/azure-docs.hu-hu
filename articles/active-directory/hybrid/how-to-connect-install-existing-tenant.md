@@ -16,14 +16,14 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 001706d63b22899016cc2c45e384597db3d6747f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358828"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640650"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már létezik bérlő
+# <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Ha meglévő Bérlővel rendelkezik
 A Azure AD Connect használatának első lépései a legtöbb esetben feltételezik, hogy új Azure AD-bérlőt használ, és nincsenek felhasználók vagy más objektumok. Ha azonban egy Azure AD-Bérlővel lett elindítva, feltöltve a felhasználókkal és más objektumokkal, és most a kapcsolódást szeretné használni, akkor ez a témakör Önnek szól.
 
 ## <a name="the-basics"></a>Az alapok
@@ -74,5 +74,5 @@ Néhány ügyfél csak felhőalapú megoldást indít az Azure AD-vel, és nem r
 
 Ha az egyetlen ok, amiért a helyszíni AD hozzáadását tervezi a LOBs (üzletági alkalmazások) támogatásához, érdemes lehet inkább az [Azure ad tartományi szolgáltatásokat](../../active-directory-domain-services/index.yml) használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

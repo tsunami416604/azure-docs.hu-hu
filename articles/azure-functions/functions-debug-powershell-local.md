@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082987"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642231"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell-Azure Functions helyi hibakeresése
 
@@ -235,7 +235,7 @@ Meghívhatja ugyanezt a függvényt ( `Invoke-RestMethod` például a használat
 
 A functions-kód hibakeresése során vegye figyelembe a következő problémákat.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`Előfordulhat, hogy a hibakereső nem várt helyre törik
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` Előfordulhat, hogy a hibakereső nem várt helyre törik
 
 A PowerShell-bővítmény a-t használja `Debug-Runspace` , amely viszont a PowerShell `BreakAll` szolgáltatásra támaszkodik. Ez a funkció azt jelzi, hogy a PowerShell leáll az első parancs végrehajtásakor. Ez a viselkedés lehetővé teszi a töréspontok beállítását a hibakereső RunSpace belül.
 
@@ -243,6 +243,16 @@ A Azure Functions futtatókörnyezet néhány parancsot futtat, mielőtt tényle
 
 Ha ez a szünet történik, futtassa a `continue` vagy a `c` parancsot a Töréspont átugrásához. Ezután leállíthatja a várt töréspontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha a hibakeresés során nehézségekbe ütközik, ellenőrizze a következőket:
+
+| Jelölőnégyzet | Művelet |
+|------|------|
+| Futtatás `func --version` a terminálról. Ha olyan hibaüzenetet kap `func` , amely nem található, az alapvető eszközök (func.exe) hiányozhatnak a helyi `path` változóból.| [Telepítse újra az alapvető eszközöket](functions-run-local.md#v2).|  
+| A Visual Studio Code-ban az alapértelmezett terminálnak hozzá kell férnie func.exehoz. Győződjön meg arról, hogy nem használ olyan alapértelmezett terminált, amely nem rendelkezik telepített alapeszközökkel, például a Linux Windows alrendszerét (WSL).  | Állítsa be az alapértelmezett rendszerhéjt a Visual Studio Code-ban a PowerShell 7 (ajánlott) vagy a Windows PowerShell 5,1-es verzióra.|
+  
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a függvények a PowerShell használatával történő fejlesztéséről: [Azure functions PowerShell fejlesztői útmutató](functions-reference-powershell.md).

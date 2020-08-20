@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538173"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642350"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
 
@@ -27,7 +27,7 @@ ms.locfileid: "86538173"
 
 Azure Cloud Shell fut `Ubuntu 16.04 LTS` .
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 ### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
 
@@ -57,7 +57,7 @@ A Cloud Shell PowerShell az Exchange Online modul privát összeállítását ta
 
 ![Képernyőkép a EXOPSSession és a Get-User parancsokat futtató Azure Cloud Shellról.](media/features-powershell/exchangeonline.png)
 
- Futtassa a `Get-Command -Module tmp_*` parancsot.
+ Az `Get-Command -Module tmp_*` parancs futtatása
 > [!NOTE]
 > A modul nevének a (z) értékkel kell kezdődnie `tmp_` , ha azonos előtaggal rendelkező modulokat telepített, a parancsmagok is felszínre kerülnek. 
 
@@ -69,14 +69,14 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 
 ## <a name="tools"></a>Eszközök
 
-|Kategória   |Name   |
+|Kategória   |Név   |
 |---|---|
 |Linux-eszközök            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure-eszközök            |[Azure CLI](https://github.com/Azure/azure-cli) és [klasszikus Azure CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure Functions parancssori felület](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Szövegszerkesztők           |Code (Cloud Shell Editor)<br> vim<br> nano<br> emacs    |
 |Verziókövetés         |git                    |
 |Buildelő eszközök            |make<br> maven<br> npm<br> pip         |
-|Tárolók             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL – parancsfájl](https://github.com/Microsoft/sql-xplat-cli) |
 |Egyéb                  |iPython-ügyfél<br> [Cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef Inspect](https://www.chef.io/inspec/)<br> [Báb-bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp-csomagoló](https://www.packer.io/)<br> [Office 365 parancssori felület](https://pnp.github.io/office365-cli/)|
 
@@ -84,8 +84,8 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 
 |Nyelv   |Verzió   |
 |---|---|
-|.NET Core  |2.2.402       |
-|Go         |1.9        |
+|.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
+|Indítás         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |

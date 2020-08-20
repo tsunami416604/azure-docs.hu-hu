@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 3352bb13602947f08cc974d63308f2d802b144e7
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c380642cd4297a753b113bdbfdfb46060656269e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612350"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642095"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Egyszeri bejelentkezési lehetőségek az Azure AD-ben
 
 Az egyszeri bejelentkezés számos előnyt biztosít a hagyományos bejelentkezési módszerekhez képest.
 
-- **Egyszeri bejelentkezés**esetén a felhasználók egyszer jelentkeznek be egyetlen fiókkal a tartományhoz csatlakoztatott eszközök, a vállalati erőforrások, a szolgáltatott szoftver (SaaS) alkalmazások és a webalkalmazások eléréséhez. A bejelentkezést követően a felhasználó az Office 365 portálról vagy az Azure AD MyApps hozzáférési paneljéről is indíthat alkalmazásokat. A rendszergazdák központilag konfigurálhatják a felhasználói fiókok felügyeletét, és a csoporttagság alapján automatikusan hozzáadhatják vagy eltávolíthatják az alkalmazásokhoz való felhasználói hozzáférést.
+- **Egyszeri bejelentkezés**esetén a felhasználók egyszer jelentkeznek be egyetlen fiókkal a tartományhoz csatlakoztatott eszközök, a vállalati erőforrások, a szolgáltatott szoftver (SaaS) alkalmazások és a webalkalmazások eléréséhez. A bejelentkezést követően a felhasználó az Office 365 portálról vagy a saját alkalmazásaiból is indíthat alkalmazásokat. A rendszergazdák központilag konfigurálhatják a felhasználói fiókok felügyeletét, és a csoporttagság alapján automatikusan hozzáadhatják vagy eltávolíthatják az alkalmazásokhoz való felhasználói hozzáférést.
 
 - **Egyszeri bejelentkezés nélkül a**felhasználóknak emlékezniük kell az alkalmazásfüggő jelszavakra, és be kell jelentkezniük minden alkalmazásba. Az informatikai részlegnek az egyes alkalmazásokhoz (például az Office 365, a Box és a Salesforce) tartozó felhasználói fiókokat kell létrehoznia és frissítenie. A felhasználóknak emlékezniük kell a jelszavukat, és időt kell fordítaniuk arra, hogy bejelentkezzenek az egyes alkalmazásokra.
 
@@ -123,7 +123,7 @@ Az egyes alkalmazásokhoz tartozó jelszavakat az Azure AD-rendszergazda vagy a 
 
 Amikor az Azure AD-rendszergazda kezeli a hitelesítő adatokat:  
 
-- A felhasználónak nem kell alaphelyzetbe állítania vagy megjegyeznünk a felhasználónevet és a jelszót. A felhasználó a hozzáférési paneljén vagy egy megadott hivatkozáson keresztül érheti el az alkalmazást.
+- A felhasználónak nem kell alaphelyzetbe állítania vagy megjegyeznünk a felhasználónevet és a jelszót. A felhasználó a saját alkalmazásokban vagy egy megadott hivatkozáson keresztül érheti el az alkalmazást.
 - A rendszergazda felügyeleti feladatokat végezhet a hitelesítő adatokon. A rendszergazda például a felhasználói csoport tagsága és az alkalmazott állapota alapján frissítheti az alkalmazások hozzáférését.
 - A rendszergazda rendszergazdai hitelesítő adatok használatával hozzáférést biztosíthat a sok felhasználó között megosztott alkalmazásokhoz. A rendszergazda például engedélyezheti mindazoknak, akik hozzáférhetnek egy alkalmazáshoz, hogy hozzáférjenek a közösségi média vagy a dokumentum-megosztó alkalmazáshoz.
 

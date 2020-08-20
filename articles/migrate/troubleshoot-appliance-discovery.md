@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171867"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640582"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt a [Azure Migrate](migrate-services-overview.md) be
 
 Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzés" hibaüzenet jelenik meg, tegye a következőket:
 
-1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információ](./tutorial-prepare-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
+1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](./tutorial-prepare-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
@@ -117,6 +117,28 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
     3. Adja hozzá az IP-címet és az állomásnevet egy sorban. Ismételje meg az összes olyan gazdagépet vagy fürtöt, ahol ez a hiba látható.
     4. Mentse és zárja be a hosts fájlt.
     5. Győződjön meg arról, hogy a készülék tud-e csatlakozni a gazdagépekhez a berendezés-kezelő alkalmazás használatával. 30 perc elteltével a Azure Portalban láthatja a gazdagépek legfrissebb információit.
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>60001-es hiba: nem sikerült csatlakozni a kiszolgálóhoz 
+
+- Ellenőrizze, hogy van-e kapcsolat a készülék és a kiszolgáló között
+- Linux-kiszolgáló esetén győződjön meg arról, hogy a jelszó-alapú hitelesítés engedélyezve van a következő lépések végrehajtásával:
+    1. Jelentkezzen be a Linux rendszerű gépre, és nyissa meg az SSH konfigurációs fájlt a "VI/etc/ssh/sshd_config" parancs használatával.
+    2. Állítsa az "PasswordAuthentication" beállítást Igen értékre. Mentse a fájlt.
+    3. Az SSH szolgáltatás újraindítása a "szolgáltatás sshd újraindítása" futtatásával
+- Ha ez a Windows Server, győződjön meg arról, hogy a 5985-es port nyitva van, hogy engedélyezze a távoli WMI-hívásokat.
+- Ha egy GCP Linux-kiszolgálót vagy egy root felhasználót használ, a következő parancsokkal módosíthatja a gyökérszintű bejelentkezés alapértelmezett beállítását
+    1. Jelentkezzen be a Linux rendszerű gépre, és nyissa meg az SSH konfigurációs fájlt a "VI/etc/ssh/sshd_config" parancs használatával.
+    2. Állítsa az "PermitRootLogin" beállítást Igen értékre.
+    3. Az SSH szolgáltatás újraindítása a "szolgáltatás sshd újraindítása" futtatásával
+
+## <a name="error-no-suitable-authentication-method-found"></a>Hiba: nem található megfelelő hitelesítési módszer
+
+Győződjön meg arról, hogy a jelszó alapú hitelesítés engedélyezve van a Linux-kiszolgálón a következő lépések végrehajtásával:
+    1. Jelentkezzen be a Linux rendszerű gépre, és nyissa meg az SSH konfigurációs fájlt a "VI/etc/ssh/sshd_config" parancs használatával.
+    2. Állítsa az "PasswordAuthentication" beállítást Igen értékre. Mentse a fájlt.
+    3. Az SSH szolgáltatás újraindítása a "szolgáltatás sshd újraindítása" futtatásával
+
 
 ## <a name="discovered-vms-not-in-portal"></a>Felderített virtuális gépek nem a portálon
 
@@ -226,5 +248,5 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

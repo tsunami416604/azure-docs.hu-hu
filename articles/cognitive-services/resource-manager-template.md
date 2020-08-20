@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 9ecbd7778480d37fb0a0cf135d3cc5db48bf2add
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2aa9325fc01fff683e2604063408281e66d65804
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323655"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641925"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal
 
@@ -36,7 +36,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
+:::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 * [Microsoft. CognitiveServices/fiókok](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services erőforrást hoz létre.
@@ -67,7 +67,7 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
 > [!NOTE]
-> `az deployment group`a létrehozáshoz az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A verzió típusának megjelenítéséhez `az --version` . További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/cli/azure/deployment/group).
+> `az deployment group` a létrehozáshoz az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A verzió típusának megjelenítéséhez `az --version` . További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/cli/azure/deployment/group).
 
 Futtassa a következő szkriptet az Azure parancssori felületének (CLI) használatával a [helyi gépen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy böngészőben a **TRY IT (kipróbálás** ) gombbal. Adja meg az új erőforráscsoport nevét és helyét (például `centralus` ), az ARM-sablont pedig Cognitive Services erőforrás üzembe helyezésére fogja használni. Jegyezze fel a használni kívánt nevet. Ezt később fogja használni a telepítés ellenőrzéséhez.
 
@@ -131,7 +131,7 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
 * [Mi az Azure Cognitive Services?](Welcome.md)

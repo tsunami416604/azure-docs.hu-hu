@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009118"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641024"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
@@ -55,9 +55,9 @@ A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a j�
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
    1. **Android** és **iOS**is.
-1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások**elemet.
    1. Állítsa **az** **Igen**értékre.
-   1. Válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
+   1. Válassza a **Mobile apps és az asztali ügyfelek** lehetőséget, és törölje a jelölést minden más elemnél.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza ki a következő beállításokat:
    - **Jóváhagyott ügyfélalkalmazás megkövetelése**
    - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
@@ -76,10 +76,9 @@ Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében 
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
-1. **Feltételek**:
-   1. **Ügyfélalkalmazások (előzetes verzió)**:
-      1. Állítsa **az** **Igen**értékre.
-      1. Válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások**elemet:
+   1. Állítsa **az** **Igen**értékre.
+   1. Válassza az **Exchange ActiveSync-ügyfelek** lehetőséget, és törölje a jelölést minden más elemnél.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, az **alkalmazás-védelmi házirend megkövetelése**lehetőséget, és válassza a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
@@ -107,9 +106,9 @@ A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a j�
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
    1. **Android** és **iOS**is.
-1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások**elemet.
    1. Állítsa **az** **Igen**értékre.
-   1. Válassza a **böngésző**lehetőséget.
+   1. Válassza ki a **böngészőt** , és törölje a jelölést minden más elemnél
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza ki a következő beállításokat:
    - **Jóváhagyott ügyfélalkalmazás megkövetelése**
    - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
@@ -140,9 +139,9 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
    1. **Android** és **iOS**is.
-1. A **feltételek**területen válassza az **ügyfélalkalmazások (előzetes verzió)** lehetőséget.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások**elemet.
    1. Állítsa **az** **Igen**értékre.
-   1. Válassza a **Mobile apps és az asztali ügyfelek** és a **modern hitelesítési ügyfelek**lehetőséget.
+   1. Válassza a **Mobile apps és az asztali ügyfelek** lehetőséget, és törölje a jelölést minden más elemnél.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza ki a következő beállításokat:
    - **Jóváhagyott ügyfélalkalmazás megkövetelése**
    - **Alkalmazás-védelmi házirend megkövetelése (előzetes verzió)**
@@ -159,10 +158,9 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
-1. **Feltételek**:
-   1. **Ügyfélalkalmazások (előzetes verzió)**:
-      1. Állítsa **az** **Igen**értékre.
-      1. Válassza a **Mobile apps és az asztali ügyfelek** és az **Exchange ActiveSync-ügyfelek**lehetőséget.
+1. A **feltételek**területen válassza az **ügyfélalkalmazások**elemet:
+   1. Állítsa **az** **Igen**értékre.
+   1. Válassza az **Exchange ActiveSync-ügyfelek** lehetőséget, és törölje a jelölést minden más elemnél.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, az **alkalmazás-védelmi házirend megkövetelése**lehetőséget, és válassza a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
@@ -171,7 +169,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 
 Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Mit jelent a feltételes hozzáférés?](overview.md)
 

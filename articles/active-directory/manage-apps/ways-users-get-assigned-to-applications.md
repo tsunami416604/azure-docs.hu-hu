@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762955"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639936"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Felhasználók társítása alkalmazásokhoz
 
@@ -44,9 +44,9 @@ Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, előbb hozzá ke
 
     * A [minden felhasználó](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) csoport
 
-3.  A rendszergazda lehetővé teszi az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , lehetővé téve a felhasználók számára az **alkalmazás hozzáadását** az [alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) használatával **üzleti jóváhagyás nélkül**
+3.  A rendszergazda lehetővé teszi az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , lehetővé téve a felhasználók számára, hogy a [saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **hozzáadása** funkció használatával **üzleti jóváhagyás nélkül** vegyenek fel alkalmazást
 
-4.  A rendszergazda lehetővé teszi az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , lehetővé téve a felhasználók számára, hogy az [alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **használatával vegyen** fel alkalmazást, de csak az**előzetes jóváhagyást a kiválasztott üzleti jóváhagyó**
+4.  A rendszergazda lehetővé teszi az [önkiszolgáló alkalmazásokhoz való hozzáférést](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) , lehetővé téve a felhasználók számára, hogy alkalmazásokat vegyenek fel az [alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **hozzáadása** funkció használatával, de csak**a kiválasztott üzleti jóváhagyók előzetes jóváhagyása**
 
 5.  A rendszergazda lehetővé teszi az [önkiszolgáló csoportok felügyeletét](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) , hogy a felhasználók az **üzleti jóváhagyás nélkül** legyenek hozzárendelve egy olyan csoporthoz, amelyhez az alkalmazás hozzá van rendelve.
 
@@ -60,5 +60,5 @@ Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, előbb hozzá ke
 
 10. A felhasználó az alkalmazásba való bejelentkezéssel saját maga [is beleegyezik az alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Alkalmazások kezelése Azure Active Directory](what-is-application-management.md)
