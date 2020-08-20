@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669290"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652016"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Windows rendszerű virtuális gép kiépítése a Azure Portal használatával SQL Server
 
@@ -32,9 +32,9 @@ Az útmutató segítségével saját SQL Server VM hozhat létre. Vagy használj
 > [!TIP]
 > Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a>SQL Server virtuálisgép-katalógus rendszerképei
+## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server virtuálisgép-katalógus rendszerképei
 
 SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek katalógusában található számos előre konfigurált rendszerkép egyikét. A következő lépések bemutatják, hogyan választhatja ki a SQL Server 2017 rendszerképek egyikét.
 
@@ -56,7 +56,7 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md).
 
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 
 ## <a name="1-configure-basic-settings"></a>1. az alapszintű beállítások konfigurálása
@@ -104,7 +104,7 @@ A **lemezek** lapon adja meg a lemez beállításait.
 * A **speciális**területen válassza az **igen** lehetőséget a **Managed Disks**használata elemnél.
 
    > [!NOTE]
-   > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információ: az [Azure Managed Disks áttekintése](../../../virtual-machines/windows/managed-disks-overview.md). A felügyelt lemezek a rendelkezésre állási csoportokban való használatával kapcsolatos részletekért lásd: [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel](../../../virtual-machines/windows/manage-availability.md).
+   > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információ: az [Azure Managed Disks áttekintése](../../../virtual-machines/managed-disks-overview.md). A felügyelt lemezek a rendelkezésre állási csoportokban való használatával kapcsolatos részletekért lásd: [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel](../../../virtual-machines/windows/manage-availability.md).
 
 ![Az SQL virtuális gép lemezének beállításai](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -135,7 +135,7 @@ A **figyelés** lapon konfigurálja a figyelést és az automatikus leállítás
 
 A **SQL Server beállítások** lapon adja meg a SQL Server adott beállításait és optimalizálási lehetőségeit. A SQL Server következő beállításait konfigurálhatja:
 
-- [Kapcsolódás](#connectivity)
+- [Kapcsolatok](#connectivity)
 - [Hitelesítés](#authentication)
 - [Azure Key Vault integráció](#azure-key-vault-integration)
 - [Tárolási konfiguráció](#storage-configuration)
@@ -177,7 +177,7 @@ Ha nem szeretné engedélyezni SQL Server hitelesítés használatát, a virtuá
 
 ### <a name="azure-key-vault-integration"></a>Azure Key Vault-integráció
 
-Ha biztonsági titkot szeretne tárolni az Azure-ban a titkosításhoz, válassza a **SQL Server beállításokat**, majd görgessen le az **Azure Key Vault-integráció**elemre. Válassza az **Engedélyezés** lehetőséget, majd adja meg a kért információkat. 
+Ha biztonsági titkot szeretne tárolni az Azure-ban a titkosításhoz, válassza a **SQL Server beállításokat**, majd görgessen le az  **Azure Key Vault-integráció**elemre. Válassza az **Engedélyezés** lehetőséget, majd adja meg a kért információkat. 
 
 ![Azure Key Vault-integráció](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -257,7 +257,7 @@ Az üzemelő példány az Azure Portalról monitorozható. A képernyő felső r
 > [!NOTE]
 > Egy példa arra, hogy az Azure egy SQL Server VM üzembe helyezését: az USA keleti régiójában kiépített teszt SQL Server VM az alapértelmezett beállításokkal körülbelül 12 percet vesz igénybe. Előfordulhat, hogy a régió és a kiválasztott beállítások alapján gyorsabban vagy lassabban üzemel az üzembe helyezési idő.
 
-## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a>Nyissa meg a virtuális gépet Távoli asztal
+## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a> Nyissa meg a virtuális gépet Távoli asztal
 
 A következő lépésekkel csatlakozhat a SQL Server virtuális géphez RDP protokoll (RDP) használatával:
 
@@ -267,7 +267,7 @@ Az SQL Server virtuális géphez való csatlakozás után elindíthatja az SQL S
 
 A géphez való hozzáférés lehetővé teszi, hogy igény szerint közvetlenül módosítsa a gép és az SQL Server beállításait. Például konfigurálhatja a tűzfal beállításait, vagy módosíthatja az SQL Server-konfiguráció beállításait.
 
-## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a>Kapcsolódás SQL Server távolról
+## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> Kapcsolódás SQL Server távolról
 
 Ebben az útmutatóban a virtuális gép **nyilvános** hozzáférését választotta, és **SQL Server a hitelesítést**. Ezek a beállítások automatikusan úgy konfigurálták a virtuális gépet, hogy az az internetről bármely ügyfél számára engedélyezi az SQL Serverhez való csatlakozást (feltéve, hogy helyes SQL-bejelentkezési névvel rendelkeznek).
 

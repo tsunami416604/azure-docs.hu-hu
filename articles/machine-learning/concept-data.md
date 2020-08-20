@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff335cd6276083eb76efd74a4921d2bae96cd7c9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875302"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651794"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -115,8 +115,7 @@ A gépi tanulás kontextusában az adateltolódás a modellben a teljesítmény 
 
 Az adatkészlet létrehozása című cikkből megtudhatja, hogyan azonosíthatja és [figyelheti](how-to-monitor-datasets.md) az adateltolódást az adatkészletekben lévő új adatokat.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 + Hozzon létre egy adatkészletet a Azure Machine Learning Studióban vagy a Python SDK-val az [alábbi lépések segítségével.](how-to-create-register-datasets.md)
-+ A [minta-jegyzetfüzetekkel](https://aka.ms/dataset-tutorial)kipróbálhatja az adatkészlet tanítási példáit.
-+ Az adateltolódással kapcsolatos példákért tekintse meg ezt az [adateltolódási oktatóanyagot](https://aka.ms/datadrift-notebook).
++ A [minta-jegyzetfüzetekkel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)kipróbálhatja az adatkészlet tanítási példáit.

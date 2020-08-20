@@ -9,19 +9,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: aa7e773cb45ea23d0e091ce12cc8488114ddfbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 94c47369d7b638640fab1971801177103779e896
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837057"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648938"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 és Esv4 sorozat
 
 A Ev4 és a Esv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, ideális megoldás a nagy mennyiségű, nagyvállalati szintű vállalati alkalmazásokhoz és szolgáltatásokhoz akár a RAM-504GiB.
 
 > [!NOTE]
-> A gyakori kérdésekért tekintse meg a [helyi Temp Disk nélküli Azure](azure-vms-no-temp-disk.md)-beli virtuálisgép-méreteket.
+> A gyakori kérdésekért tekintse meg a  [helyi Temp Disk nélküli Azure](azure-vms-no-temp-disk.md)-beli virtuálisgép-méreteket.
 
 ## <a name="ev4-series"></a>Ev4 sorozat
 
@@ -97,7 +97,7 @@ Memória megőrzésének frissítései: támogatott
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
+További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>További lépések

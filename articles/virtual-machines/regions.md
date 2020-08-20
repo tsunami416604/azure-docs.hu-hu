@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284727"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650553"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiói
 
@@ -79,7 +79,7 @@ A következő táblázat a tárreplikáció típusai közötti különbségek r�
 | Az adatok a másodlagos és az elsődleges helyről is olvashatók. |Nem |Nem |Nem |Igen |
 | A külön csomópontokon fenntartott adatmásolatok száma. |3 |3 |6 |6 |
 
-[Az Azure tárreplikációs lehetőségeiről itt](../storage/common/storage-redundancy.md) olvashat bővebben. További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](./windows/managed-disks-overview.md).
+[Az Azure tárreplikációs lehetőségeiről itt](../storage/common/storage-redundancy.md) olvashat bővebben. További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](./managed-disks-overview.md).
 
 ### <a name="storage-costs"></a>Tárolási költségek
 Az árak a választott tárolótípus és rendelkezésre állás függvényében változnak.

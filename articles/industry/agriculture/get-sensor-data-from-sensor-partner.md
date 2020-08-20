@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508787"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649159"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -87,6 +87,10 @@ A fenti információk létrehozásához kövesse az alábbi lépéseket:
     ./generatePartnerCredentials.ps1
 
     ```
+
+> [!NOTE]
+> 1. A Datahub API-végpont nevének kisbetűvel kell rendelkeznie.
+> 2. Ha a Datahub API-végponthoz tartozó farmbeats webhely neve URL-címét másolja, győződjön meg róla, hogy nincs záró perjel (/).
 
 9. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
 

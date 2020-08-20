@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475549"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650893"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -76,6 +76,10 @@ Az egyes partíció-transzformációs lépések részletes időzítését is meg
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>Feldolgozás utáni idő
+
+Amikor kijelöl egy fogadó transzformációs ikont a térképen, a jobb oldalon található becsúsztatható panel egy további adatpontot jelenít meg, amelynek alján a "post Processing Time" (feldolgozás időpontja) felirat jelenik meg. Az adatok betöltését, átalakítását és írását *követően* ez az idő a Spark-fürtön végzett feladatok végrehajtásával töltött időt. Ez az idő magában foglalhatja a kapcsolatok lezárását, az illesztőprogramok leállítását, a fájlok törlését, a coalescing-fájlokat stb. Ha olyan műveleteket hajt végre a folyamatokban, mint például a "fájlok áthelyezése" és a "kimenet egyetlen fájlba", akkor valószínű, hogy növekedni fog a post Processing Time értéke.
   
 ## <a name="monitor-icons"></a>Ikonok figyelése
 

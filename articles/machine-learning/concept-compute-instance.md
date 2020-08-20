@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829441"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651915"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -145,7 +145,7 @@ A Azure Machine Learning Studio munkaterületén hozzon létre egy új számít�
 
 |Mező  |Leírás  |
 |---------|---------|
-|Számítási név     |  <li>A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.</li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-** a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
+|Számítási név     |  <li>A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.</li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek  **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-**  a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
 |Virtuális gép típusa |  Válassza a CPU vagy a GPU lehetőséget. Ez a típus nem módosítható a létrehozás után     |
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |SSH-hozzáférés engedélyezése/letiltása     |   Az SSH-hozzáférés alapértelmezés szerint le van tiltva.  Az SSH-hozzáférés nem lehet. a létrehozás után módosult. Győződjön meg arról, hogy engedélyezi a hozzáférést, ha interaktívan szeretne hibakeresést végezni a [vs Code Remote](how-to-set-up-vs-code-remote.md) használatával   |
@@ -155,26 +155,22 @@ Létrehozhat egy példányt is
 * Közvetlenül az [integrált jegyzetfüzetek felületéről](tutorial-1st-experiment-sdk-setup.md#azure)
 * Azure Portal
 * Azure Resource Manager sablonból. Példa a sablonra: [Azure Machine learning számítási példány sablonjának létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).
-* [Azure Machine learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb) -val
+* Azure Machine Learning SDK-val
 * A [CLI-bővítményből Azure Machine learning](reference-azure-machine-learning-cli.md#computeinstance)
 
 A dedikált magok régiónként/virtuálisgép-család kvótája és a teljes regionális kvóta, amely a számítási példányok létrehozására vonatkozik. egységesített és közös Azure Machine Learning képzés számítási fürt kvótája. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt.
 
 ## <a name="compute-target"></a>Számítási cél
 
-A számítási példányok a Azure Machine Learning számítási képzési fürtökhöz hasonló [képzési számítási célként](concept-compute-target.md#train) használhatók. 
+A számítási példányok Azure Machine Learning számítási fürtökhöz hasonló [képzési számítási céllal](concept-compute-target.md#train) használhatók. 
 
 Egy számítási példány:
 * Rendelkezik a feladatok várólistával.
 * A feladatokat a virtuális hálózati környezetben biztonságosan futtatja anélkül, hogy a vállalatoknak SSH-portot kellene megnyitnia. A feladatot egy tároló környezetben hajtja végre a rendszer, és a modell függőségeit egy Docker-tárolóban csomagolja.
 * Több kisebb feladatot is futtathat párhuzamosan (előzetes verzió).  Az alapszintű két feladat párhuzamosan futtatható, míg a többi feladat várólistára kerül.
+* Az egycsomópontos multi-GPU elosztott betanítási feladatok támogatása
 
 A számítási példányokat a tesztelési és hibakeresési forgatókönyvekhez helyi előállítási célként is használhatja.
-
-> [!NOTE]
-> Az elosztott betanítási feladatok nem támogatottak a számítási példányokon.  Az elosztott képzéshez használja a (számítási fürtök] (útmutató – set-up-Training-Targets. MD # amlcompute).
-
-További részletek: notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Ez a jegyzetfüzet a *Training/Train-on-computeinstance*Studio **Samples** mappában is elérhető.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Mi történt a notebook virtuális géppel?
 

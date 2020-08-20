@@ -3,12 +3,12 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808627"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650876"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -175,7 +175,7 @@ Azure Backup a számítási feladatból származó adatok áthelyezését igény
 
 * *Azure-beli virtuális gép biztonsági mentése* – a Storage és a Azure Backup szolgáltatás közötti összes szükséges kommunikáció és adatforgalom az Azure-hálózaton belül történik anélkül, hogy a virtuális hálózathoz kellene férnie. A biztonságos hálózatokon belül elhelyezett Azure-beli virtuális gépek biztonsági mentése nem igényli az IP-címek és a teljes tartománynevek elérésének engedélyezését.
 
-* *SAP HANA-adatbázisok Azure-beli virtuális gépen, SQL Server Azure-beli virtuális gépen található adatbázisok* – a Azure Backup szolgáltatáshoz, az Azure Storage-hoz és a Azure Active Directoryhoz kell kapcsolódniuk. Ezt privát végpontok használatával vagy a szükséges nyilvános IP-címekhez vagy teljes tartománynevek elérésének engedélyezésével lehet elérni. A szükséges Azure-szolgáltatásokhoz való megfelelő kapcsolódás nem teszi lehetővé az adatbázis-felderítést, a biztonsági mentés konfigurálását, a biztonsági másolatok készítését és az adatok visszaállítását. A NSG-címkék, az Azure tűzfal és a HTTP-proxy használata esetén a teljes hálózati útmutatást az [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) -és a [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) -cikkekben találja.
+* *SAP HANA-adatbázisok Azure-beli virtuális gépen, SQL Server Azure-beli virtuális gépen található adatbázisok* – a Azure Backup szolgáltatáshoz, az Azure Storage-hoz és a Azure Active Directoryhoz kell kapcsolódniuk. Ezt privát végpontok használatával vagy a szükséges nyilvános IP-címekhez vagy teljes tartománynevek elérésének engedélyezésével lehet elérni. A szükséges Azure-szolgáltatásokhoz való megfelelő kapcsolódás nem teszi lehetővé az adatbázis-felderítést, a biztonsági mentés konfigurálását, a biztonsági másolatok készítését és az adatok visszaállítását. A NSG-címkék, az Azure tűzfal és a HTTP-proxy használatakor a teljes hálózati útmutatásért tekintse meg ezeket az [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) -és [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) -cikkeket.
 
 * *Hibrid* – a MARS (Microsoft Azure Recovery Services) ügynök minden kritikus művelethez hálózati hozzáférést igényel – telepítés, konfigurálás, biztonsági mentés és visszaállítás. A MARS-ügynök az [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) keresztül tud csatlakozni a Azure Backup szolgáltatáshoz a nyilvános közvetítés (a régi áramkörök számára elérhető) és a Microsoft-társ, [privát végpontok](install-mars-agent.md#private-endpoints) vagy [a megfelelő hozzáférés-vezérléssel rendelkező proxy/tűzfal](install-mars-agent.md#verify-internet-access)használatával.
 
@@ -189,7 +189,7 @@ Az Azure [Private Endpoint](../private-link/private-endpoint-overview.md) egy ol
 
 ## <a name="governance-considerations"></a>Szabályozási szempontok
 
-Az Azure-ban az irányítás elsődlegesen [Azure Policy](../governance/policy/overview.md) és [Azure Cost Managementekkel](../cost-management-billing/cost-management-billing-overview.md)valósul meg. [Azure Policy](../governance/policy/overview.md) lehetővé teszi a szabályzat-definíciók létrehozását, hozzárendelését és kezelését az erőforrások szabályainak érvényesítéséhez. Ez a szolgáltatás a vállalati szabványoknak megfelelően tartja meg ezeket az erőforrásokat. A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait. Emellett a következő eszközök, mint például az [Azure Price Calculator](https://azure.microsoft.com/pricing/calculator/) és a [Azure Advisor](../advisor/advisor-overview.md) fontos szerepet játszanak a Cost Management folyamatában.
+Az Azure-ban az irányítás elsődlegesen [Azure Policy](../governance/policy/overview.md) és [Azure Cost Managementekkel](../cost-management-billing/cost-management-billing-overview.md)valósul meg. [Azure Policy](../governance/policy/overview.md) lehetővé teszi a szabályzat-definíciók létrehozását, hozzárendelését és kezelését az erőforrások szabályainak érvényesítéséhez. Ez a szolgáltatás a vállalati szabványoknak megfelelően tartja meg ezeket az erőforrásokat. A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait. Emellett a következő eszközök, mint például az [Azure Price Calculator](https://azure.microsoft.com/pricing/calculator/) és a [Azure Advisor](../advisor/advisor-overview.md)  fontos szerepet játszanak a Cost Management folyamatában.
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup két fő forgatókönyvet támogat a beépített Azure Policy használatával
 

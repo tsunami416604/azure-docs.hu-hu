@@ -3,18 +3,18 @@ title: VHD-fájl feltöltése Azure DevTest Labs PowerShell használatával | Mi
 description: Ez a cikk egy olyan bemutatót tartalmaz, amely bemutatja, hogyan tölthet fel egy VHD-fájlt Azure DevTest Labs a PowerShell használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ff8ee15f35765027db1407f05c108739bd97433e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b393b886a50f60a918690ee2a5583f9623dbe39
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480779"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650757"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-fájl feltöltése a labor Storage-fiókjába a PowerShell használatával
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs a VHD-fájlok használhatók a virtuális gépek kiépítéséhez használt egyéni rendszerképek létrehozására. Az alábbi lépések végigvezetik a PowerShell használatával egy VHD-fájlnak a labor Storage-fiókjába való feltöltéséhez. A VHD-fájl feltöltése után a [következő lépések szakasz](#next-steps) azokat a cikkeket sorolja fel, amelyek bemutatják, hogyan hozhat létre egyéni rendszerképet a feltöltött VHD-fájlból. További információ az Azure-beli lemezekről és virtuális merevlemezekről: [Bevezetés a Managed Disks](../virtual-machines/linux/managed-disks-overview.md) szolgáltatásba
+Azure DevTest Labs a VHD-fájlok használhatók a virtuális gépek kiépítéséhez használt egyéni rendszerképek létrehozására. Az alábbi lépések végigvezetik a PowerShell használatával egy VHD-fájlnak a labor Storage-fiókjába való feltöltéséhez. A VHD-fájl feltöltése után a [következő lépések szakasz](#next-steps) azokat a cikkeket sorolja fel, amelyek bemutatják, hogyan hozhat létre egyéni rendszerképet a feltöltött VHD-fájlból. További információ az Azure-beli lemezekről és virtuális merevlemezekről: [Bevezetés a Managed Disks](../virtual-machines/managed-disks-overview.md) szolgáltatásba
 
 ## <a name="step-by-step-instructions"></a>Lépésenkénti utasítások
 

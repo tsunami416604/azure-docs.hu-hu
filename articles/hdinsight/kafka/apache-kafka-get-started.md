@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f6e1a7b8ac4dce0504fca5f03090588a75ae1ef
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 6198475025ff5222edeeb14cf25634ad2d916a1f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732441"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651437"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -25,7 +25,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Apache Kafka-f�
 
 Az Apache Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül az SSH használatával fér hozzá a fürthöz. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni az Apache Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat. További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat. A virtuális hálózatok HDInsight történő megtervezésével kapcsolatos általánosabb információkért lásd: [virtuális hálózat tervezése az Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
     ![Erőforrás-HDInsight Azure Portal létrehozása](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. Válassza az **Analytics** > **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
+1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
 1. **Az alapok** lapon adja meg a következő információkat:
 
@@ -50,10 +50,10 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
     |Előfizetés    |  A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
     |Erőforráscsoport     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
     |Fürt neve   | Adjon meg egy globálisan egyedi nevet. A név legfeljebb 59 karaktert tartalmazhat, beleértve a betűket, számokat és kötőjeleket. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
+    |Region    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
     |Fürt típusa| A lista megnyitásához válassza a **fürt típusának kiválasztása** lehetőséget. A listából válassza a **Kafka** lehetőséget a fürt típusaként.|
     |Verzió|A fürt típusának alapértelmezett verziója lesz megadva. Ha más verziót szeretne megadni, válasszon a legördülő listából.|
-    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: \)"" ". Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
+    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
     |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót szeretné használni az SSH-felhasználó számára, mint a fürt bejelentkezési felhasználójának.|
 
@@ -88,7 +88,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
 1. A HDInsight Apache Kafka rendelkezésre állásának biztosításához a **munkavégző csomóponthoz** tartozó __csomópontok számát__ 3 vagy nagyobb értékre kell állítani. Az alapértelmezett érték a 4.
 
-    A **szabványos lemezek/feldolgozó csomópontok** bejegyzései a Apache Kafka méretezhetőségét konfigurálja a HDInsight. Az Apache Kafka on HDInsight a fürt virtuális gépeinek helyi lemezén tárolja az adatokat. Mivel az Apache Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Apache Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ.
+    A **szabványos lemezek/feldolgozó csomópontok** bejegyzései a Apache Kafka méretezhetőségét konfigurálja a HDInsight. Az Apache Kafka on HDInsight a fürt virtuális gépeinek helyi lemezén tárolja az adatokat. Mivel az Apache Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Apache Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
    ![Az Apache Kafka-fürt méretének beállítása](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
 
@@ -138,13 +138,13 @@ A Kafka használatakor ismernie kell az *Apache Zookeeper* és a *Broker* gazdag
 
 Ebben a szakaszban a gazdagépre vonatkozó információkat a fürt Apache Ambari-REST API szerezheti be.
 
-1. Telepítse a [jQ](https://stedolan.github.io/jq/)parancssori JSON-processzort. Ez a segédprogram a JSON-dokumentumok elemzésére szolgál, és hasznos a gazdagép adatainak elemzéséhez. Az Open SSH-kapcsolatban adja meg a következő parancsot a `jq`telepítéséhez:
+1. Telepítse a [jQ](https://stedolan.github.io/jq/)parancssori JSON-processzort. Ez a segédprogram a JSON-dokumentumok elemzésére szolgál, és hasznos a gazdagép adatainak elemzéséhez. Az Open SSH-kapcsolatban adja meg a következő parancsot a telepítéséhez `jq` :
 
     ```bash
     sudo apt -y install jq
     ```
 
-1. Jelszó-változó beállítása. Cserélje `PASSWORD` le a nevet a fürt bejelentkezési jelszavára, majd írja be a parancsot:
+1. Jelszó-változó beállítása. Cserélje le a `PASSWORD` nevet a fürt bejelentkezési jelszavára, majd írja be a parancsot:
 
     ```bash
     export password='PASSWORD'
@@ -157,7 +157,7 @@ Ebben a szakaszban a gazdagépre vonatkozó információkat a fürt Apache Ambar
     ```
 
     > [!Note]  
-    > Ha ezt a folyamatot a fürtön kívülről hajtja végre, a fürt nevének tárolására eltérő eljárás szükséges. A fürt nevének lekérése kisbetűvel a Azure Portalból. Ezután helyettesítse `<clustername>` be a fürt nevét a következő parancsban, és hajtsa `export clusterName='<clustername>'`végre:.
+    > Ha ezt a folyamatot a fürtön kívülről hajtja végre, a fürt nevének tárolására eltérő eljárás szükséges. A fürt nevének lekérése kisbetűvel a Azure Portalból. Ezután helyettesítse be a fürt nevét `<clustername>` a következő parancsban, és hajtsa végre: `export clusterName='<clustername>'` .
 
 
 1. A Zookeeper gazdagép-információkkal rendelkező környezeti változók beállításához használja az alábbi parancsot. A parancs lekéri az összes Zookeeper-gazdagépet, majd csak az első két bejegyzést adja vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.

@@ -13,25 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: f5a8453f84854108facb4da4616a7d362e0fb38c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41f1d6c18eab35bd1a41d4cfa98d0cbda69b35ac
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531724"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650332"
 ---
 # <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>Azure Load Balancer Azure-beli virtuálisgép-méretezési csoportokkal
 
 A virtuálisgép-méretezési csoportok és a terheléselosztó használatakor figyelembe kell venni a következő irányelveket:
 
-## <a name="multiple-virtual-machine-scale-sets-cant-use-the-same-load-balancer"></a>Több virtuálisgép-méretezési csoport nem használhatja ugyanazt a terheléselosztó
 ## <a name="port-forwarding-and-inbound-nat-rules"></a>A port továbbítása és a bejövő NAT-szabályok:
   * A méretezési csoport létrehozása után a háttér-port nem módosítható a terheléselosztó állapot-mintavételi eljárása által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapot-mintavételt az Azure virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapotot.
   * A terheléselosztó backend-készletében lévő virtuálisgép-méretezési csoport használatakor a rendszer automatikusan létrehozza az alapértelmezett bejövő NAT-szabályokat.
 ## <a name="inbound-nat-pool"></a>Bejövő NAT-készlet:
   * A virtuálisgép-méretezési csoportoknak legalább egy bejövő NAT-készlettel kell rendelkezniük. 
   * A bejövő NAT-készlet a bejövő NAT-szabályok gyűjteménye. Egy bejövő NAT-készlet nem támogatja több virtuálisgép-méretezési csoport használatát.
-  
+  * NAT-készlet meglévő virtuálisgép-méretezési csoportból való törléséhez először el kell távolítania a NAT-készletet a méretezési csoportból. A CLI-t használó teljes példa alább látható:
+```azurecli-interactive
+  az vmss update
+     --resource-group MyResourceGroup
+     --name MyVMSS
+     --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
+  az vmss update-instances
+     -–instance-ids *
+     --resource-group MyResourceGroup
+     --name MyVMSS
+  az network lb inbound-nat-pool delete
+     --resource-group MyResourceGroup
+     -–lb-name MyLoadBalancer
+     --name MyNatPool
+```
 ## <a name="load-balancing-rules"></a>Terheléselosztási szabályok:
   * A terheléselosztó backend-készletében lévő virtuálisgép-méretezési csoport használatakor az alapértelmezett terheléselosztási szabály automatikusan létrejön.
 ## <a name="outbound-rules"></a>Kimenő szabályok:

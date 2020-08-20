@@ -3,12 +3,12 @@ title: Több napos felvétel lejátszása – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Media Service API-kat többnapos folyamatos videofelvételek lejátszásához.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433656"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649091"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Oktatóanyag: több napos felvétel lejátszása  
 
@@ -40,7 +40,7 @@ Javasoljuk, hogy olvassa el a következő dokumentációs oldalakat:
 
 ## <a name="run-the-sample"></a>Minta futtatása 
 
-A [CVR oktatóanyag](continuous-video-recording-tutorial.md)részeként létrehozott egy Media Service-fiókot. Ebben az oktatóanyagban ehhez a fiókhoz teljes API-hozzáféréssel kell rendelkeznie. A [hitelesítő adatok beolvasása az Media Services API-hoz való hozzáféréshez](../latest/access-api-howto.md#use-the-azure-portal) című cikkben ismertetett lépéseket követve hozhat létre egyszerű szolgáltatást. A következőhöz hasonló Azure Portal JSON-blokkot kell tudnia:
+A [CVR oktatóanyag](continuous-video-recording-tutorial.md)részeként létrehozott egy Media Service-fiókot. Ebben az oktatóanyagban ehhez a fiókhoz teljes API-hozzáféréssel kell rendelkeznie. A [hitelesítő adatok beolvasása az Media Services API-hoz való hozzáféréshez](../latest/access-api-howto.md?tabs=portal) című cikkben ismertetett lépéseket követve hozhat létre egyszerű szolgáltatást. A következőhöz hasonló Azure Portal JSON-blokkot kell tudnia:
 
 ```
 {
@@ -57,7 +57,7 @@ A [CVR oktatóanyag](continuous-video-recording-tutorial.md)részeként létreho
 }
 ```
 
-Ezután a Visual Studio Code-ban nyissa meg az src/AMS-Asset-Player elemet. Ez a mappa tartalmazza az oktatóanyaghoz szükséges fájlokat. Nyissa meg a appSettings. JSON fájlt, és másolja a tartalmát egy új fájlba (appSettings. Development. JSON). Végezze el a következő módosításokat az utóbbi fájlon:
+Ezután a Visual Studio Code-ban nyissa meg az src/AMS-Asset-Player elemet. Ez a mappa tartalmazza az oktatóanyaghoz szükséges fájlokat. Nyissa meg a appsettings.jsfájlt, és másolja a tartalmát egy új fájlba, appsettings.development.jsbe. Végezze el a következő módosításokat az utóbbi fájlon:
 
 ```
   "AMS" : {
@@ -87,7 +87,7 @@ Az AMS-eszköz felhasználója megkéri, hogy adja meg egy Media Service-eszköz
 
 Az eszköz nevének beírása és a Küldés elküldése után a lejátszó kódja betölti a folyamatos átviteli URL-címet. További információkért lásd: útmutató [a felvételek lejátszásához](playback-recordings-how-to.md). Ha a javasolt módon továbbra is rögzíti az adategységet, a lejátszó észlelni fogja, és megkísérli a lejátszást a rögzített videó legfrissebb részébe. A Player bal felső sarkában látható a timestamp (UTC). Az alábbi képernyőképen vegye figyelembe, hogy az "élő" gomb van kiválasztva.
 
-![Stream](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
+![Adatfolyam](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  
 A lejátszó jobb oldalán láthatja a vezérlőket az Archívum tallózásához. A vezérlőben szereplő évek, hónapok és dátumok a availableMedia API használatával vannak feltöltve a útmutatóban ismertetett [módon: a felvételek lejátszása](playback-recordings-how-to.md).
 Ha a nap kibontásakor a CVR-oktatóanyagot több órán keresztül futtatja, a következőhöz hasonló eredményt fog látni:
@@ -102,6 +102,6 @@ Ha a listában szereplő bármelyik bejegyzésre kattint, az alkalmazás létreh
 
 Azt is megteheti, hogy meghatározott kezdési és befejezési időpontokat használ az oldal alján található vezérlőkkel. A availableMedia-hívás eredményeit a jobb oldalon látható módon, a kezdő és a befejező időpontok megengedett értékeire mutató útmutatóként használhatja. Az időpontok és a befejezési szűrők részletes megkötéseit dokumentáljuk a útmutatóban [: a felvételek lejátszása](playback-recordings-how-to.md). Az időértékek kiválasztása után ha a Submit (küldés) gombra kattint, az alkalmazás betölti a lejátszót egy streaming URL-címmel, például: https://{hostname}/{locatorId}/Content. ISM/manifest (Format = mpd-Time-CSF, kezdő időpont = éééé-hh-NNTÓÓ: PP: MM, Befejezés = éééé-hh-NNTÓÓ: PP: mm)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszásra](event-based-video-recording-tutorial.md)

@@ -3,12 +3,12 @@ title: PowerShell-parancsfájl – tároló létrehozása a Storage-fiókhoz
 description: Megtudhatja, hogyan használható Azure PowerShell parancsfájl a Storage-fiók regisztrálásához használt Recovery Services-tároló megtalálásához.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: b343b2f93ed439188c5c0238bf108064f6e132c1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56e1b1bc1b9d46abecfbdc4b98385a0349711aab
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513251"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648717"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>PowerShell-parancsfájl azon Recovery Services-tároló megtalálásához, ahol a Storage-fiók regisztrálva van
 
@@ -70,6 +70,6 @@ A kimenet megjeleníti a Recovery Services-tároló teljes elérési útját, ah
 Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c2c0-4304-af80-af49f49af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault123
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-fájlmegosztás Azure Portal](../backup-afs.md)

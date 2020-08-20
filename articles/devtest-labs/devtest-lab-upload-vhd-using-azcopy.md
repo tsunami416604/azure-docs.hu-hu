@@ -3,18 +3,18 @@ title: VHD-fájl feltöltése a Azure DevTest Labsba a AzCopy használatával | 
 description: Ez a cikk bemutatja, hogyan tölthetők fel a AzCopy parancssori segédprogram a VHD-fájloknak Azure DevTest Labs-beli Lab Storage-fiókjába való feltöltéséhez.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483210"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650774"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>VHD-fájl feltöltése a labor Storage-fiókjába a AzCopy használatával
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs a VHD-fájlok használhatók a virtuális gépek kiépítéséhez használt egyéni rendszerképek létrehozására. A következő lépések végigvezetik a AzCopy parancssori segédprogram használatával, amellyel feltölthető egy VHD-fájl egy labor Storage-fiókjába. A VHD-fájl feltöltése után a [következő lépések szakasz](#next-steps) azokat a cikkeket sorolja fel, amelyek bemutatják, hogyan hozhat létre egyéni rendszerképet a feltöltött VHD-fájlból. További információ az Azure-beli lemezekről és virtuális merevlemezekről: [Bevezetés a Managed Disks](../virtual-machines/linux/managed-disks-overview.md) szolgáltatásba
+Azure DevTest Labs a VHD-fájlok használhatók a virtuális gépek kiépítéséhez használt egyéni rendszerképek létrehozására. A következő lépések végigvezetik a AzCopy parancssori segédprogram használatával, amellyel feltölthető egy VHD-fájl egy labor Storage-fiókjába. A VHD-fájl feltöltése után a [következő lépések szakasz](#next-steps) azokat a cikkeket sorolja fel, amelyek bemutatják, hogyan hozhat létre egyéni rendszerképet a feltöltött VHD-fájlból. További információ az Azure-beli lemezekről és virtuális merevlemezekről: [Bevezetés a Managed Disks](../virtual-machines/managed-disks-overview.md) szolgáltatásba
 
 > [!NOTE] 
 >  

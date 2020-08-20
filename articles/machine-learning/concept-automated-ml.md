@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290029"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652100"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -33,7 +33,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 + Az adatelemzési ajánlott eljárások kihasználása
 + Gyors problémamegoldás
 
-### <a name="classification"></a>Besorolás
+### <a name="classification"></a>Osztályozás
 
 A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-configure-auto-features.md#featurization). 
 
@@ -76,7 +76,7 @@ A **Azure Machine learning**használatával a következő lépésekkel megtervez
 
 1. **Válassza ki, hogy szeretné-e használni a PYTHON SDK-t vagy a Studio webes felületét**: Ismerje meg a [Python SDK és a Studio webes felülete](#parity)közötti paritást.
 
-   * A korlátozott vagy a nem szükséges programkódok kipróbálásához próbálja ki a Azure Machine Learning Studio webes felületét[https://ml.azure.com](https://ml.azure.com/)  
+   * A korlátozott vagy a nem szükséges programkódok kipróbálásához próbálja ki a Azure Machine Learning Studio webes felületét [https://ml.azure.com](https://ml.azure.com/)  
    * Python-fejlesztők számára tekintse meg a [Azure Machine learning PYTHON SDK](how-to-configure-auto-train.md) -t 
 
     [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
@@ -138,7 +138,7 @@ A beállítás engedélyezése a következővel:
 
 + Python SDK: adja meg a `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektumban. További információ a [featurization engedélyezéséről](how-to-configure-auto-features.md). 
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellek
+## <a name="ensemble-models"></a><a name="ensemble"></a> Ensemble-modellek
 
 Az automatizált gépi tanulás támogatja az Ensemble-modelleket, amelyek alapértelmezés szerint engedélyezve vannak. A Ensemble learning a gépi tanulási eredmények és a prediktív teljesítmény növelésével több modellt kombinálhat egyetlen modell használatával. Az együttes ismétlések a Futtatás utolsó ismétlései jelennek meg. Az automatizált gépi tanulás mind a szavazási, mind a halmozási módszert használja a modellek kombinálásával:
 
@@ -202,15 +202,13 @@ Például az __egyes példányok vagy egyedi__ modellek létrehozása a követke
 * Prediktív karbantartás több száz olajos kutak esetében
 * Egyéni felhasználói élmény testreszabása.
 
-További információkért lásd a GitHubon a [különböző modellek megoldás-gyorsító](https://aka.ms/many-models) című témakört.
-
 ## <a name="automl-in-azure-machine-learning"></a>AutoML Azure Machine Learning
 
 A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez
 
 * A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -t 
 
-* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at[https://ml.azure.com](https://ml.azure.com/)  
+* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 

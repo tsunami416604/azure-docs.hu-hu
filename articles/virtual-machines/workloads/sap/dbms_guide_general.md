@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510232"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650615"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -82,7 +82,7 @@ Az Azure-beli SAP-munkaterheléseken más cikkek is elérhetők. Az Azure-beli S
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területek tekintetében.
 
-| Megjegyzés száma | Title |
+| Megjegyzés száma | Cím |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -111,10 +111,7 @@ Szükség van a Microsoft Azure architektúra és a Microsoft Azure virtuális g
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Egy virtuális gép tárolási szerkezete RDBMS üzemelő példányokhoz
 Ennek a fejezetnek a követéséhez olvassa el és Ismerje meg a [telepítési útmutató][deployment-guide] [ebben a fejezetben][deployment-guide-3] ismertetett információkat. A fejezet elolvasása előtt meg kell ismernie és ismernie kell a különböző virtuálisgép-sorozatokat, valamint a standard és a Premium Storage közötti különbségeket. 
 
-Az Azure Storage Azure-beli virtuális gépekhez való megismeréséhez lásd:
-
-- Az [Azure Windows rendszerű virtuális gépek felügyelt lemezeinek bemutatása](../../windows/managed-disks-overview.md).
-- [Bevezetés a Managed Disks szolgáltatásba az Azure Linux rendszerű virtuális gépekhez](../../linux/managed-disks-overview.md).
+Az Azure Storage Azure-beli virtuális gépekhez való megismeréséhez lásd: az Azure-beli [virtuális gépek felügyelt lemezeinek bemutatása](../../managed-disks-overview.md).
 
 Alapszintű konfigurációban általában ajánlott egy üzembe helyezési struktúra, amelyben az operációs rendszer, az adatbázis-KEZELŐrendszer és a végső SAP bináris fájljai el vannak különítve az adatbázisfájloktől. Javasoljuk, hogy az Azure-beli virtuális gépeken futó SAP-rendszerek rendelkezzenek az alapszintű VHD-vel, illetve a lemezzel, az operációs rendszerrel, az adatbázis-kezelő rendszer végrehajtható fájljaival és az SAP-végrehajtható fájlokkal. 
 

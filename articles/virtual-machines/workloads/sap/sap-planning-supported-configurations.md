@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833334"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648989"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
 Az SAP NetWeaver, a Business One `Hybris` vagy a S/4HANA rendszerek Azure-architektúrájának tervezése számos különböző lehetőséget kínál a különböző architektúrák és eszközök számára, amelyek segítségével méretezhető, hatékony és nagy mértékben elérhető üzembe helyezést érhet el. Bár a használt operációs rendszertől vagy adatbázis-kezelőtől függ, korlátozások vannak érvényben. A helyszíni támogatás nem minden esetben támogatott ugyanúgy az Azure-ban. Ez a dokumentum a támogatott nem magas rendelkezésre állású konfigurációkon és a magas rendelkezésre állású konfigurációkon és architektúrán keresztül kizárólag az Azure-beli virtuális gépeket használja. A [Hana Large-példányokkal](./hana-overview-architecture.md)támogatott forgatókönyvek esetében tekintse [meg a Hana Large instances által támogatott forgatókönyvek](./hana-supported-scenario.md)című cikket. 
@@ -160,7 +160,7 @@ Az SAP Central Services az SAP-konfiguráció második meghibásodási pontja. E
     - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](./high-availability-guide-suse-netapp-files.md)
 - A Red Hat operációs rendszer pacemakere egy fürtön üzemeltetett NFS-megosztással `glusterfs` . A részletek a cikkekben találhatók
     - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux](./high-availability-guide-rhel.md)
-    - [`GlusterFS`Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
+    - [`GlusterFS` Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
 - A Red Hat operációs rendszer pacemakere [Azure NetApp Fileson](https://azure.microsoft.com/services/netapp/)ÜZEMELTETett NFS-megosztással. A részleteket a cikk ismerteti.
     - [Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)
 
@@ -215,7 +215,7 @@ A sorba helyezni replikációs kiszolgálóval rendelkező több SID-fürt semat
 A SAP HANA kibővíthető forgatókönyvek a HANA Certified Azure-beli virtuális gépek egy részhalmaza számára támogatottak, ahogy az a [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)szerepel. A "fürtözés" oszlopban az "igen" jelölésű összes virtuális gép használható OLAP-vagy S/4HANA-felskálázásra is. A STANDBY nélküli konfigurációk a következők: 
 
 - Azure Premium Storage, beleértve az Azure Write Accelerator-t a/Hana/log-kötethez
-- [Ultralemez](../../linux/disks-enable-ultra-ssd.md)
+- [Ultralemez](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 A készenléti csomópont (ok) val rendelkező OLAP-vagy S/4HANA-alapú kibővített konfigurációk kizárólag az Azure NetApp Files-on üzemeltetett NFS-en támogatottak. SAP HANA
@@ -303,7 +303,7 @@ Olyan forgatókönyv (ek), amelyek nem teszteltek, ezért nem rendelkezik a haso
 - Azure Site Recovery az adatbázis-kezelő rétegbeli virtuális gépek replikálását. Ennek eredményeképpen javasoljuk, hogy az adatbázis natív aszinkron replikálási funkcióját kihasználva potenciális vész-helyreállítási konfigurációt lehessen használni
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [Azure Virtual Machines tervezésének és megvalósításának](./planning-guide.md) következő lépéseinek elolvasása az SAP NetWeaver-ban
 
 

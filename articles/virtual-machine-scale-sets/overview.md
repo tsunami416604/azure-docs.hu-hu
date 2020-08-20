@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590387"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648666"
 ---
-# <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
+# <a name="what-are-virtual-machine-scale-sets"></a>Mik azok a virtuálisgép-méretezési csoportok?
 Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhelésű virtuális gépek csoportjának létrehozását és kezelését. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
 
 
@@ -40,7 +40,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
 
 - **Működtetés nagy léptékben**
     - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha saját virtuálisgép-rendszerképeit hozza létre és tölti fel, a korlát 600 virtuálisgép-példány.
-    - Az éles munkaterhelésekkel kapcsolatos legjobb teljesítmény érdekében használja az [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md)-t.
+    - Az éles munkaterhelésekkel kapcsolatos legjobb teljesítmény érdekében használja az [Azure Managed Disks](../virtual-machines/managed-disks-overview.md)-t.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Mi a különbség a virtuális gépek és a méretezési csoportok között?

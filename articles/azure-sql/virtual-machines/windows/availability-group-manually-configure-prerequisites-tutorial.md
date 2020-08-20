@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 881fa116b1a44d4714002f71e6ebd163279d8c70
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284302"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651182"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a SQL Server always on rendelk
 
 Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Ezzel a beállítással **+** új objektumot hozhat létre a portálon.
@@ -54,7 +54,7 @@ Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https:
    ![Erőforráscsoport](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. Válassza az **erőforráscsoport**lehetőséget.
-5. Válassza a **Létrehozás** lehetőséget.
+5. Kattintson a **Létrehozás** gombra.
 6. Az **erőforráscsoport neve**alatt adja meg az erőforráscsoport nevét. Írja be például az **SQL-ha-RG**értéket.
 7. Ha több Azure-előfizetéssel rendelkezik, ellenőrizze, hogy az előfizetés az Azure-előfizetés, amelyben létre kívánja hozni a rendelkezésre állási csoportot.
 8. Válasszon ki egy helyet. A hely az az Azure-régió, ahol létre szeretné hozni a rendelkezésre állási csoportot. Ez a cikk egy Azure-beli hely összes erőforrását felépíti.
@@ -99,7 +99,7 @@ A virtuális hálózat létrehozása a Azure Portalban:
 
    A példa az alhálózati név **rendszergazdáját**használja. Ez az alhálózat a tartományvezérlők számára érhető el.
 
-5. Válassza a **Létrehozás** lehetőséget.
+5. Kattintson a **Létrehozás** gombra.
 
    ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -192,9 +192,9 @@ A következő táblázat a két gép beállításait mutatja be:
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*Tartózkodási hely* |
 | **Méret** |DS1_V2 |
-| **Storage-fiók** | **Felügyelt lemezek használata**  -  **Igen** |
+| **Storage** | **Felügyelt lemezek használata**  -  **Igen** |
 | **Virtuális hálózat** |autoHAVNET |
-| **Alhálózat** |admin |
+| **Alhálózat** |felügyelet |
 | **Nyilvános IP-cím** |*A virtuális géppel megegyező név* |
 | **Hálózati biztonsági csoport** |*A virtuális géppel megegyező név* |
 | **Rendelkezésre állási csoport** |adavailabilityset </br>Tartalék **tartományok**: 2 </br>**Frissítési tartományok**: 2|
@@ -276,7 +276,7 @@ Miután létrehozta az első tartományvezérlőt, és engedélyezte a DNS-t az 
 
 3. Válassza az **Egyéni**lehetőséget, majd írja be az elsődleges tartományvezérlő magánhálózati IP-címét.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-second-domain-controller"></a>A második tartományvezérlő konfigurálása
 
@@ -311,7 +311,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 
     ![Központi telepítés konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. Válassza a **Kiválasztás** lehetőséget.
+18. Kattintson a **Kiválasztás** elemre.
 19. Kapcsolódjon a rendszergazdai fiók használatával (**Corp. CONTOSO. COM\domainadmin**) és jelszó (**contoso! 0000**).
 20. A **tartomány kiválasztása az erdőből**területen válassza ki a tartományt, majd kattintson **az OK gombra**.
 21. A **tartományvezérlő beállításainál**használja az alapértelmezett értékeket, és állítsa be a Címtárszolgáltatások helyreállító módjának jelszavát.
@@ -328,7 +328,7 @@ Miután a kiszolgáló befejezte a konfigurációs módosításokat, indítsa ú
 
 A Azure Portal virtuális hálózat területén módosítsa a DNS-kiszolgálót úgy, hogy az tartalmazza a másodlagos tartományvezérlő IP-címét. Ezzel a beállítással engedélyezhető a DNS-szolgáltatás redundancia.
 
-### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a>A tartományi fiókok konfigurálása
+### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a> A tartományi fiókok konfigurálása
 
 A következő lépésekben konfigurálja a Active Directory fiókokat. A következő táblázat a fiókokat mutatja be:
 
@@ -380,7 +380,7 @@ Az alábbi tervezési döntések meghozatala előtt tekintse át a következő l
 
 * **Storage – Azure Managed Disks**
 
-   A virtuális gép tárolójában használja az Azure Managed Disks. A Microsoft a SQL Server virtuális gépek Managed Disksét javasolja. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információkért lásd az [Azure Managed Disks áttekintését](../../../virtual-machines/linux/managed-disks-overview.md). A felügyelt lemezekkel kapcsolatos részletekért tekintse meg a [rendelkezésre állási csoportokban található virtuális gépek Managed Disks használatát](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)ismertető témakört.
+   A virtuális gép tárolójában használja az Azure Managed Disks. A Microsoft a SQL Server virtuális gépek Managed Disksét javasolja. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információkért lásd az [Azure Managed Disks áttekintését](../../../virtual-machines/managed-disks-overview.md). A felügyelt lemezekkel kapcsolatos részletekért tekintse meg a [rendelkezésre állási csoportokban található virtuális gépek Managed Disks használatát](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)ismertető témakört.
 
 * **Hálózat – magánhálózati IP-címek az éles környezetben**
 
@@ -496,7 +496,7 @@ Ismételje meg a lépéseket a többi SQL Server VMon.
   >
 
 
-## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a>A tűzfal konfigurálása minden SQL Server VM
+## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> A tűzfal konfigurálása minden SQL Server VM
 
 A megoldáshoz a következő TCP-portokat kell megnyitni a tűzfalon:
 
@@ -517,7 +517,7 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 
    ![SQL tűzfal](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. Válassza a **Tovább** lehetőséget.
+5. Kattintson a **Tovább** gombra.
 6. A **művelet** lapon tartsa be **a kijelölt kapcsolat lehetőséget** , majd kattintson a **tovább**gombra.
 7. A **profil** lapon fogadja el az alapértelmezett beállításokat, majd kattintson a **tovább**gombra.
 8. A **név** lapon adja meg a szabály nevét (például az **Azure LB**-mintavételt) a **név** szövegmezőben, majd válassza a **Befejezés**lehetőséget.

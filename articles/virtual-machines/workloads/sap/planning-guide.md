@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547409"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652202"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -242,7 +242,7 @@ ms.locfileid: "88547409"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -533,7 +533,7 @@ A szolgáltatások vagy virtuális gépek Azure-beli üzembe helyezése során a
 
 fontos szerepet játszott az SAP üzembe helyezésének megtervezésében az Azure-ban. A megőrzött lemezek számának kezelése a Storage-fiókon belül volt. A Storage-fiókok felügyeletéhez és a több megőrzött lemez létrehozásához szükséges új Storage-fiókok létrehozásához.
 
-Az elmúlt években az [Azure Managed Disks](../../windows/managed-disks-overview.md) bevezetése felmentette Önt ezekből a feladatokból. Az SAP központi telepítésére vonatkozó javaslat az Azure Managed Disks használata az Azure Storage-fiókok kezelése helyett. Az Azure Managed Disks a különböző tárolási fiókokba továbbítja a lemezeket, így az egyes Storage-fiókok korlátai nem lépik túl a korlátot.
+Az elmúlt években az [Azure Managed Disks](../../managed-disks-overview.md) bevezetése felmentette Önt ezekből a feladatokból. Az SAP központi telepítésére vonatkozó javaslat az Azure Managed Disks használata az Azure Storage-fiókok kezelése helyett. Az Azure Managed Disks a különböző tárolási fiókokba továbbítja a lemezeket, így az egyes Storage-fiókok korlátai nem lépik túl a korlátot.
 
 A Storage-fiókban egy "containers" nevű mappa-fogalmat is használhat, amely bizonyos lemezek adott tárolókra való csoportosítására használható.
 
@@ -804,7 +804,7 @@ A saját Azure-beli virtuális gép lemezének előkészítéséhez szükséges 
 
 * Az operációs rendszert tartalmazó virtuális merevlemeznek eredetileg legfeljebb 127 GB méretűnek kell lennie. Ez a korlátozás a 2015. márciusi időszak végén megszűnt. Az operációs rendszert tartalmazó virtuális merevlemezek mostantól akár 1 TB méretűek is lehetnek, mint bármely más Azure Storage által üzemeltetett virtuális merevlemezt is.
 * A fájlnak rögzített VHD formátumban kell lennie. Az Azure-ban a dinamikus VHD-k vagy VHDx-formátumú virtuális merevlemezek még nem támogatottak. A dinamikus VHD-k statikus VHD-re lesznek konvertálva a virtuális merevlemez PowerShell-parancsmagok vagy parancssori felülettel való feltöltésekor
-* A virtuális géphez csatlakoztatott virtuális merevlemezeket, amelyeket újra csatlakoztatni kell az Azure-ban a virtuális GÉPHEZ, rögzített VHD-formátumúnak kell lennie. Olvassa el [ezt a cikket (Linux)](../../linux/managed-disks-overview.md) és [Ez a cikk (Windows)](../../windows/managed-disks-overview.md)) az adatlemezek méretének korlátozásához. A dinamikus VHD-k statikus VHD-re lesznek konvertálva a virtuális merevlemez PowerShell-parancsmagok vagy parancssori felülettel való feltöltésekor
+* A virtuális géphez csatlakoztatott virtuális merevlemezeket, amelyeket újra csatlakoztatni kell az Azure-ban a virtuális GÉPHEZ, rögzített VHD-formátumúnak kell lennie. Olvassa el [ezt a cikket](../../managed-disks-overview.md) az adatlemezek méretének korlátozásához. A dinamikus VHD-k statikus VHD-re lesznek konvertálva a virtuális merevlemez PowerShell-parancsmagok vagy parancssori felülettel való feltöltésekor
 * Adjon hozzá egy másik helyi fiókot rendszergazdai jogosultságokkal, amelyeket a Microsoft támogatási szolgálata használhat, vagy amely a szolgáltatásokhoz és alkalmazásokhoz környezetként rendelhető a virtuális gép üzembe helyezése és a megfelelő felhasználók használata érdekében.
 * Vegyen fel más helyi fiókokat, amelyek szükségesek lehetnek az adott telepítési forgatókönyvhöz.
 
@@ -831,7 +831,7 @@ A saját Azure-beli virtuálisgép-rendszerkép előkészítésének követelmé
 
 * Az operációs rendszert tartalmazó virtuális merevlemeznek eredetileg legfeljebb 127 GB méretűnek kell lennie. Ez a korlátozás a 2015. márciusi időszak végén megszűnt. Az operációs rendszert tartalmazó virtuális merevlemezek mostantól akár 1 TB méretűek is lehetnek, mint bármely más Azure Storage által üzemeltetett virtuális merevlemezt is.
 * A fájlnak rögzített VHD formátumban kell lennie. Az Azure-ban a dinamikus VHD-k vagy VHDx-formátumú virtuális merevlemezek még nem támogatottak. A dinamikus VHD-k statikus VHD-re lesznek konvertálva a virtuális merevlemez PowerShell-parancsmagok vagy parancssori felülettel való feltöltésekor
-* A virtuális géphez csatlakoztatott virtuális merevlemezeket, amelyeket újra csatlakoztatni kell az Azure-ban a virtuális GÉPHEZ, rögzített VHD-formátumúnak kell lennie. Olvassa el [ezt a cikket (Linux)](../../windows/managed-disks-overview.md) és [ezt a cikket (Windows)](../../linux/managed-disks-overview.md) az adatlemezek méretének korlátozásához. A dinamikus VHD-k statikus VHD-re lesznek konvertálva a virtuális merevlemez PowerShell-parancsmagok vagy parancssori felülettel való feltöltésekor
+* A virtuális géphez csatlakoztatott virtuális merevlemezeket, amelyeket újra csatlakoztatni kell az Azure-ban a virtuális GÉPHEZ, rögzített VHD-formátumúnak kell lennie. Olvassa el [ezt a cikket](../../managed-disks-overview.md) az adatlemezek méretének korlátozásához. A dinamikus VHD-k statikus VHD-re lesznek konvertálva a virtuális merevlemez PowerShell-parancsmagok vagy parancssori felülettel való feltöltésekor
 * Vegyen fel más helyi fiókokat, amelyek szükségesek lehetnek az adott telepítési forgatókönyvhöz.
 * Ha a rendszerkép tartalmazza az SAP NetWeaver telepítését, és az állomásnév átnevezése az eredeti név alapján az Azure-beli központi telepítés pontján, ajánlott az SAP szoftveres kiépítési kezelő DVD legújabb verziójának másolása a sablonba. Ezzel a beállítással egyszerűen használhatja az SAP által megadott átnevezési funkciót a módosított állomásnév és/vagy az SAP-rendszer biztonsági azonosítójának az üzembe helyezett VM-lemezképen belüli módosításához, amint az új másolat elindult.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511142"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651726"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -110,9 +110,9 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
            -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
    2. Tárterület
         - Az [Azure Storage-beli tárolási típusok keresése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
-        - Legalább az [Azure standard SSD Storage](../../windows/disks-types.md#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
-        - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](../../windows/disks-types.md#standard-hdd)használatát nem javasoljuk.
-        - Az [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.
+        - Legalább az [Azure standard SSD Storage](../../disks-types.md#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
+        - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](../../disks-types.md#standard-hdd)használatát nem javasoljuk.
+        - Az [Azure Premium Storage](../../disks-types.md#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.
         - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)használata.
         - Az M-sorozatú adatbázis-kezelői naplók Azure írásgyorsító használhatók. Vegye figyelembe a írásgyorsító korlátozásait és használatát a [írásgyorsító](../../how-to-enable-write-accelerator.md)dokumentációjában leírtaknak megfelelően.
         - A különböző adatbázis-kezelői típusok esetében olvassa el az [általános SAP-vel kapcsolatos adatbázis-kezelői dokumentációt](./dbms_guide_general.md) , valamint az általános dokumentum az adatbázis-kezelői szolgáltatásra vonatkozó dokumentációját.

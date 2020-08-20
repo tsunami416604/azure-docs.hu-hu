@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506396"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650468"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
 Az Azure különböző típusú tárhelyeket biztosít, amelyek a SAP HANA rendszert futtató Azure-beli virtuális gépekhez használhatók. A **SAP HANA minősített Azure Storage-típusok** , amelyek a SAP HANA központi telepítések listájához vehetők figyelembe, például: 
 
 - Azure Premium SSD vagy Premium Storage 
-- [Ultralemez](../../linux/disks-enable-ultra-ssd.md)
+- [Ultralemez](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Az ilyen típusú lemezekkel kapcsolatos további tudnivalókért tekintse meg az [Azure tárolási típusai az SAP](./planning-guide-storage.md) számítási feladatokhoz és [a lemez típusának kiválasztása](../../linux/disks-types.md) című cikket.
+Az ilyen típusú lemezekkel kapcsolatos további tudnivalókért tekintse meg az [Azure tárolási típusai az SAP](./planning-guide-storage.md) számítási feladatokhoz és [a lemez típusának kiválasztása](../../disks-types.md) című cikket.
 
 Az Azure két üzembe helyezési módszert kínál a VHD-k számára az Azure standard és a Premium Storage szolgáltatásban. Reméljük, hogy kihasználja az Azure-beli [felügyelt lemez](https://azure.microsoft.com/services/managed-disks/) előnyeit az Azure Block Storage-példányok számára. 
 
@@ -59,7 +59,7 @@ Mivel az adatbázis-kezelő rendszerekben az alacsony tárolási késés kritiku
 
 A HANA tárolási konfigurációjának kiválasztásakor a következő néhány irányadó elv látható:
 
-- Döntse el a tároló típusát az [Azure Storage-típusok](./planning-guide-storage.md) alapján az SAP számítási feladatokhoz, és [válassza ki a lemez típusát](../../linux/disks-types.md)
+- Döntse el a tároló típusát az [Azure Storage-típusok](./planning-guide-storage.md) alapján az SAP számítási feladatokhoz, és [válassza ki a lemez típusát](../../disks-types.md)
 - A teljes VM I/O-átviteli sebesség és a IOPS a virtuális gép méretezése vagy meghatározása során figyelembe kell venni. A virtuálisgép-tárolók teljes átviteli sebességét a cikk a [memória-optimalizált virtuális gépek méreteit](../../sizes-memory.md) ismertető cikkben dokumentálja.
 - A tárolási konfiguráció eldöntése során próbálja meg a virtuális gép teljes átviteli sebességét a **/Hana/Data** -kötet konfigurációjával. A visszaállítási pontok írása SAP HANA lehet agresszív kiállító I/o-kiadás. A mentésipont írásakor könnyen lehet leküldeni a **/Hana/Data** -kötet átviteli korlátait. Ha a **/Hana/Data** -kötetet felépítő lemez (ek) nagyobb átviteli sebességgel rendelkezik, mint amennyit a virtuális gép engedélyez, akkor olyan helyzetekben futhat, ahol a mentésipont-írás által használt átviteli sebesség ütközik az Ismétlési naplók írási követelményeivel. Olyan helyzet, amely hatással lehet az alkalmazás átviteli sebességére
 - Ha az Azure Premium Storage-t használja, a legdrágább konfiguráció a logikai kötetek kezelőjének használata a **/Hana/Data** és a **/Hana/log** kötetek létrehozásához.
@@ -218,7 +218,7 @@ A többi kötet esetében, beleértve az **/Hana/log** is, a konfiguráció az a
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Az Azure ultrakönnyű lemezes tárolásának konfigurációja SAP HANA
-Egy másik Azure Storage-típus neve [Azure Ultra Disk](../../windows/disks-types.md#ultra-disk). Az Azure Storage által kínált eddigi jelentős különbség az, hogy a lemez képességei többé nincsenek a lemez méretéhez kötve. Ügyfélként meghatározhatja ezeket a képességeket az ultra Disk számára:
+Egy másik Azure Storage-típus neve [Azure Ultra Disk](../../disks-types.md#ultra-disk). Az Azure Storage által kínált eddigi jelentős különbség az, hogy a lemez képességei többé nincsenek a lemez méretéhez kötve. Ügyfélként meghatározhatja ezeket a képességeket az ultra Disk számára:
 
 - Lemez mérete 4 GiB-ról 65 536 GiB-ig
 - A IOPS tartománya 100 IOPS – 160K IOPS (a maximum a virtuálisgép-típusoktól függ)

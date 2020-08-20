@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843096"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648785"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 
@@ -163,7 +163,7 @@ A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/py
    print(feature_tensor.shape)
    ```
 
-1. Osztályozó hozzáadása Ez az osztályozó a ImageNet adatkészleten lett betanítva.  Példák az átadásra és a testreszabott súlyok betanítására a [minta jegyzetfüzetek](https://aka.ms/aml-notebooks)készletében.
+1. Osztályozó hozzáadása Ez az osztályozó a ImageNet adatkészleten lett betanítva.  Példák az átadásra és a testreszabott súlyok betanítására a [minta jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks)készletében.
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -389,7 +389,7 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölje a webszolgáltatást, a képet és a modellt (ebben a sorrendben kell elvégezni, mivel függőségek vannak).
 
@@ -401,11 +401,11 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg ezeket a jegyzetfüzeteket, videókat és blogokat:
 
-+ Több [minta jegyzetfüzet](https://aka.ms/aml-accel-models-notebooks)
++ Több [minta jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
 + A FPGA webszolgáltatások biztonságossá tételéhez tekintse meg a [biztonságos webszolgáltatások](how-to-secure-web-service.md) dokumentumát.
 + [Nagy kapacitású hardver: ML az Azure + FPGA-ra épülő skálán: build 2018 (videó)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [A Microsoft FPGA-alapú konfigurálható felhőn belül (videó)](https://channel9.msdn.com/Events/Build/2017/B8063)

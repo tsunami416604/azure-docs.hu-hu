@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507828"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652185"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Az Azure-beli SAP HANA biztonsági mentési útmutatója Virtual Machines
 
@@ -45,7 +45,7 @@ Az első forgatókönyv azt mutatja be, hogy Azure Backup szolgáltatás vagy a 
 
 A Azure Backup a [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)nevű tulajdonosi SAP HANA felülettel integrálja és minősítette SAP HANA biztonsági mentési megoldásként. A megoldással, annak képességeivel és az elérhető Azure-régiókkal kapcsolatos további információkért olvassa el a [SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentését](../../../backup/sap-hana-backup-support-matrix.md#scenario-support)ismertető cikket. A HANA Azure Backup szolgáltatásával kapcsolatos részletekért és alapelvekért olvassa el az [Azure-beli virtuális gépeken futó SAP HANA adatbázis biztonsági mentéséről szóló](../../../backup/sap-hana-db-about.md)cikket. 
 
-A második lehetőség a Azure Backup szolgáltatás kihasználása az alkalmazások konzisztens biztonsági mentésének létrehozása az Azure Premium Storage lemezes pillanatképei használatával. Más HANA minősítésű Azure-tárolók, például az [Azure Ultra Disk](../../linux/disks-enable-ultra-ssd.md) és a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) nem támogatják ezt a pillanatképet Azure Backup szolgáltatáson keresztül. A cikkek olvasása:
+A második lehetőség a Azure Backup szolgáltatás kihasználása az alkalmazások konzisztens biztonsági mentésének létrehozása az Azure Premium Storage lemezes pillanatképei használatával. Más HANA minősítésű Azure-tárolók, például az [Azure Ultra Disk](../../disks-enable-ultra-ssd.md) és a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) nem támogatják ezt a pillanatképet Azure Backup szolgáltatáson keresztül. A cikkek olvasása:
 
 - [Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban](../../../backup/backup-azure-vms-introduction.md)
 - [Azure-beli linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentése](../../../backup/backup-azure-linux-app-consistent.md) 
@@ -146,6 +146,6 @@ A [biztonsági mentési és helyreállítási stratégia megtervezésére](https
 SAP HANA az adattitkosítást és a naplót is biztosítja. Ha SAP HANA adatokat és naplókat nem titkosítja a rendszer, akkor a biztonsági mentések alapértelmezés szerint nem lesznek titkosítva. A SAP HANA azonban egy különálló biztonsági mentési titkosítást biztosít [SAP HANA biztonsági mentési titkosításban](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/5f837a57ce5e468d9db21c8683bc84da.html)dokumentált módon. Ha a SAP HANA régebbi kiadásait futtatja, előfordulhat, hogy ellenőriznie kell, hogy a biztonsági másolat titkosítása a már megadott funkciók részét képezte-e.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [SAP HANA Azure Backup a fájl szintjén](sap-hana-backup-file-level.md) leírja a fájl alapú biztonsági mentési lehetőséget.
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)

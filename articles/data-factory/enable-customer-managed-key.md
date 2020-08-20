@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 9caa4690fa6b9d6c473bb8863acdcbbe15a37fba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570018"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650577"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory titkosítása az ügyfél által felügyelt kulcsokkal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A Azure Data Factory inaktív adatok titkosítása, beleértve az entitások definícióit, a futtatott futás közben gyorsítótárazott adatok és az adatok előnézetének gyorsítótárazása. Alapértelmezés szerint az adat egy véletlenszerűen generált, Microsoft által felügyelt kulccsal van titkosítva, amely egyedileg hozzá van rendelve az adat-előállítóhoz. A további biztonsági garanciák érdekében mostantól engedélyezheti a Bring Your Own Key (BYOK) szolgáltatást a Azure Data Factory ügyfél által felügyelt kulcsok funkciójának használatával. Ha ügyfél által felügyelt kulcsot ad meg, Data Factory a gyári rendszerkulcsot és a CMK __is__ használja az ügyféladatok titkosításához. A hiányzó vagy a gyárhoz való hozzáférés megtagadását eredményezi.
+Azure Data Factory titkosítja a nyugalmi állapotot, beleértve az entitások definícióit és a Futtatás közben gyorsítótárazott adatok állapotát. Alapértelmezés szerint az adat egy véletlenszerűen generált, Microsoft által felügyelt kulccsal van titkosítva, amely egyedileg hozzá van rendelve az adat-előállítóhoz. A további biztonsági garanciák érdekében mostantól engedélyezheti a Bring Your Own Key (BYOK) szolgáltatást a Azure Data Factory ügyfél által felügyelt kulcsok funkciójának használatával. Ha ügyfél által felügyelt kulcsot ad meg, Data Factory a gyári rendszerkulcsot és a CMK __is__ használja az ügyféladatok titkosításához. A hiányzó vagy a gyárhoz való hozzáférés megtagadását eredményezi.
 
 Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vault szükséges. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Key vaultnak és a Data Factorynak ugyanabban a Azure Active Directory (Azure AD) bérlőben és ugyanabban a régióban kell lennie, de lehetnek különböző előfizetésekben. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
@@ -76,7 +76,7 @@ Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy h
 
     ![A kulcs URI-azonosítójának lekérése Key Vault](media/enable-customer-managed-key/04-get-key-identifier.png)
 
-1. Indítsa el Azure Data Factory portált, és a bal oldali navigációs sáv használatával ugorjon a Data Factory kezdőlapjára
+1. Indítsa el Azure Data Factory portált, és a bal oldalon található navigációs sáv használatával ugorjon a Data Factory felügyeleti portál
 
 1. Kattintson a __felhasználó által Kiemelt kulcs__ ikonra
 

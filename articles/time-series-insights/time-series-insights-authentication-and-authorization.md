@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cea08022b992395862fcf75e0592efd54c805a98
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168031"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649125"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -85,7 +85,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
    1. A C# nyelvben a következő kód az alkalmazás nevében tudja beszerezni a jogkivonatot. Az adatok Gen1-környezetből való lekérdezésének teljes mintáját a [lekérdezési adatok a C# használatával](time-series-insights-query-data-csharp.md)című témakörben olvashatja.
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
+        A C#-kód eléréséhez tekintse meg a [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] tárházat. 
 
    1. Ezután a jogkivonat átadható a `Authorization` fejlécben, amikor az alkalmazás meghívja a Azure Time Series INSIGHTS API-t.
 
@@ -117,8 +117,8 @@ Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 > [!IMPORTANT]
 > A jogkivonatot pontosan az erőforráshoz kell kiadni `https://api.timeseries.azure.com/` (más néven a token célközönsége).
 
-> * A [Poster](https://www.getpostman.com/) **AuthURL** ezért a következő lesz:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
-> * `https://api.timeseries.azure.com/`érvényes, de `https://api.timeseries.azure.com` nem.
+> * A [Poster](https://www.getpostman.com/) **AuthURL** ezért a következő lesz: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
+> * `https://api.timeseries.azure.com/` érvényes, de `https://api.timeseries.azure.com` nem.
 
 Az opcionális kérések fejlécei alább olvashatók.
 

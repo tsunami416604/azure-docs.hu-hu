@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847635"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650825"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Kísérlet elküldése a Futtatás indításához
 > * Eredmények megtekintése
 
-Ez a cikk a [RLlib pong példán](https://aka.ms/azureml-rl-pong) alapul, amely a Azure Machine learning notebook [GitHub-tárházban](https://aka.ms/azureml-rl-notebooks)található.
+Ez a cikk a [RLlib pong példán](https://aka.ms/azureml-rl-pong) alapul, amely a Azure Machine learning notebook [GitHub-tárházban](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,12 +45,12 @@ Futtassa ezt a kódot az alábbi környezetek egyikében. Javasoljuk, hogy prób
      - Megtudhatja, hogyan klónozott minta-jegyzetfüzeteket a következő [oktatóanyagban: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
          - A **útmutató használata – azureml** mappa klónozása az **oktatóanyagok** helyett
      - Futtassa a virtuális hálózati telepítő notebookját a (z) helyen az `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` elosztott megerősítési tanuláshoz használt hálózati portok megnyitásához.
-     - A minta jegyzetfüzet futtatása`/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
+     - A minta jegyzetfüzet futtatása `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
  
  - Saját Jupyter Notebook-kiszolgáló
 
     - Telepítse a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
-    - Telepítse a [Azure Machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)-t:`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Telepítse a [Azure Machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)-t: `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Hozzon létre egy [munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - Futtassa a virtuális hálózat [beállítása jegyzetfüzetet](https://aka.ms/azure-rl-env-setup) az elosztott megerősítési tanuláshoz használt hálózati portok megnyitásához.
 
@@ -75,7 +75,7 @@ Azure Machine Learning biztosítja az ilyen bonyolultságok kezelésére szolgá
 
 Állítsa be a helyi RL környezetet a szükséges Python-csomagok betöltésével, a munkaterület inicializálásával, a kísérlet létrehozásával és egy konfigurált virtuális hálózat megadásával.
 
-### <a name="import-libraries"></a>Tárak importálása
+### <a name="import-libraries"></a>Kódtárak importálása
 
 Importálja a szükséges Python-csomagokat a példa további részeinek futtatásához.
 
@@ -431,6 +431,6 @@ Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log.txt fá
 
 Rövid idő alatt több számítási erőforrást is megtanult a megerősítő tanulási ügynök betanítására, hogy nagyon jól játszhasson.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan taníthat meg egy megerősítéses oktatási ügynököt egy IMPALA learning-ügynök használatával. Ha további példákat szeretne látni, ugorjon a [Azure Machine learning megerősítése learning GitHub-tárházra](https://aka.ms/azureml-rl-notebooks).
+Ebben a cikkben megtanulta, hogyan taníthat meg egy megerősítéses oktatási ügynököt egy IMPALA learning-ügynök használatával. Ha további példákat szeretne látni, ugorjon a [Azure Machine learning megerősítése learning GitHub-tárházra](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).

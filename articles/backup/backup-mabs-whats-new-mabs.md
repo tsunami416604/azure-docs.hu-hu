@@ -3,12 +3,12 @@ title: A Microsoft Azure Backup Server újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190845"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648751"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
 
@@ -114,7 +114,7 @@ A MABS v3 az SQL 2017-mel telepíthető MABS-adatbázisként. Frissítheti az SQ
 
 ### <a name="windows-server-2019-support"></a>Windows Server 2019 támogatás
 
-A MABS v3 telepíthető a Windows Server 2019-es verzióra. A MABS v3 és a WS2019 használatával az operációs rendszer a MABS v3 verzióra való telepítése vagy frissítése előtt, vagy a WS2016-re való frissítés után frissítheti az operációs RENDSZERét a WS2019-re.
+A MABS v3 telepíthető a Windows Server 2019-es verzióra. A MABS v3 és a WS2019 használatával az operációs rendszer a MABS v3 verzióra való telepítése/frissítése előtt, illetve az operációs rendszer frissítését követően is frissíthető a WS2019-re.
 
 A MABS v3 egy teljes kiadás, amely közvetlenül telepíthető a Windows Server 2016, a Windows Server 2019 vagy a MABS v2 verzióról is. A Backup Server v3 verzióra való frissítés előtt olvassa el a telepítési előfeltételek című részt.
 További információ [a MABS telepítési](./backup-azure-microsoft-azure-backup.md#software-package)/frissítési lépéseiről.
@@ -123,7 +123,7 @@ További információ [a MABS telepítési](./backup-azure-microsoft-azure-backu
 >
 > A MABS ugyanazzal a kóddal rendelkezik, mint a System Center Data Protection Manager. A MABS v3 egyenértékű a Data Protection Manager 1807-vel. A MABS v3 UR1 egyenértékű a Data Protection Manager 2019 UR1.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelés védelmét:
 

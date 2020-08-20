@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067900"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652457"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -51,7 +51,7 @@ Ezt a parancsot használhatja a folyamatos átviteli végpont elindításához.
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
-Kövesse a cikkben ismertetett lépéseket a Media Service API-k eléréséhez szükséges hitelesítő adatok lekéréséhez: [a Media Service API-k eléréséhez](../latest/access-api-howto.md#use-the-azure-portal).
+A Media Service API-k eléréséhez szükséges hitelesítő adatok beszerzéséhez kövesse az ebben a cikkben ismertetett lépéseket: [a Media Service API-k eléréséhez](../latest/access-api-howto.md?tabs=portal) válassza a portál lapot.
 
 ## <a name="create-and-use-local-user-account-for-deployment"></a>Helyi felhasználói fiók létrehozása és használata központi telepítéshez
 Ha az élő videó-elemzést IoT Edge modulon szeretné futtatni, hozzon létre egy helyi felhasználói fiókot, amely a lehető legkevesebb jogosultsággal rendelkezik. Futtassa például a következő parancsokat a Linux rendszerű gépen:
@@ -168,7 +168,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     * {resourceGroupName} – ez az erőforráscsoport, amelyhez a Media Service-fiók tartozik
     * {AMS-Account-Name} – ez a Media Services fiók neve
     
-    A többi érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](../latest/access-api-howto.md#use-the-azure-portal)-hoz.  
+    A többi érték beszerzéséhez tekintse meg a [hozzáférés Azure Media Services API](../latest/access-api-howto.md?tabs=portal) -t, és válassza a portál lapot.  
     * aadTenantId – ez a bérlő azonosítója, és ugyanaz, mint a fenti hivatkozás "AadTenantId".
     * aadServicePrincipalAppId – ez a Media Service-fiókhoz tartozó egyszerű szolgáltatásnév, amely megegyezik a fenti hivatkozásban található "AadClientId" AZONOSÍTÓval.
     * aadServicePrincipalSecret – ez az egyszerű szolgáltatásnév jelszava, és ugyanaz, mint a fenti hivatkozás "AadSecret".

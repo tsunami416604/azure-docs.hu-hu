@@ -4,12 +4,12 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263010"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651148"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -184,7 +184,7 @@ A másodlagos régió visszaállítási felhasználói felülete hasonló lesz a
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>Nem felügyelt virtuális gépek és lemezek visszaállítása felügyelt
 
-A visszaállítás során lehetősége van arra, hogy a nem [felügyelt lemezeket](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) [felügyelt lemezként](../virtual-machines/windows/managed-disks-overview.md) állítsa vissza. Alapértelmezés szerint a nem felügyelt virtuális gépek/lemezek nem felügyelt virtuális gépek/lemezekként lesznek visszaállítva. Ha azonban úgy dönt, hogy felügyelt virtuális gépeket/lemezeket állít vissza, most már lehetséges. Ezek a visszaállítások nem indulnak el a pillanatkép fázisból, hanem csak a tár fázisában. Ez a funkció nem érhető el a nem felügyelt titkosított virtuális gépekhez.
+A visszaállítás során lehetősége van arra, hogy a nem [felügyelt lemezeket](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) [felügyelt lemezként](../virtual-machines/managed-disks-overview.md) állítsa vissza. Alapértelmezés szerint a nem felügyelt virtuális gépek/lemezek nem felügyelt virtuális gépek/lemezekként lesznek visszaállítva. Ha azonban úgy dönt, hogy felügyelt virtuális gépeket/lemezeket állít vissza, most már lehetséges. Ezek a visszaállítások nem indulnak el a pillanatkép fázisból, hanem csak a tár fázisában. Ez a funkció nem érhető el a nem felügyelt titkosított virtuális gépekhez.
 
 ![Visszaállítás felügyelt lemezként](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

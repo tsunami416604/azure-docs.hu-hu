@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: acd030d8108ef3983be29fe85de6d7b3caf620af
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849335"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651216"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítana
 
 Az adatkészletek létrehozásához és betanításához a következők szükségesek:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
@@ -90,7 +90,7 @@ Ez a kód egy általános kalkulátor-objektumot hoz létre, `est` amely megadja
 
 * A parancsfájlok parancsfájl-könyvtára. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A betanítási parancsfájl, *train_titanic.*
-* A betanításhoz használt bemeneti adatkészlet `titanic_ds` . `as_named_input()`azért van szükség, hogy a bemeneti adatkészletet a betanítási parancsfájlban lévő hozzárendelt név is hivatkozhat `titanic` . 
+* A betanításhoz használt bemeneti adatkészlet `titanic_ds` . `as_named_input()` azért van szükség, hogy a bemeneti adatkészletet a betanítási parancsfájlban lévő hozzárendelt név is hivatkozhat `titanic` . 
 * A kísérlet számítási célja.
 * A kísérlet környezeti definíciója.
 
@@ -115,7 +115,7 @@ A következő példa létrehoz egy FileDataset, és csatlakoztatja az adatkészl
 
 ### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
-A következő példa egy nem regisztrált FileDataset hoz létre a webes URL-címekről. További információ az [adathalmazok](https://aka.ms/azureml/howto/createdatasets) más forrásokból való létrehozásáról.
+A következő példa egy nem regisztrált FileDataset hoz létre a webes URL-címekről. További információ az [adathalmazok](how-to-create-register-datasets.md) más forrásokból való létrehozásáról.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -201,7 +201,7 @@ Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott össze
 
 Ha a szkript feldolgozza az adatkészlet által hivatkozott összes fájlt, és a számítási lemez elfér a teljes adatkészletben, a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében. Ha az adatok mérete meghaladja a számítási lemez méretét, a letöltés nem lehetséges. Ebben a forgatókönyvben javasoljuk a csatlakoztatást, mivel csak a parancsfájl által használt adatfájlok töltődnek be a feldolgozás során.
 
-A következő kód csatlakoztatja `dataset` a TEMP könyvtárhoz:`mounted_path`
+A következő kód csatlakoztatja `dataset` a TEMP könyvtárhoz: `mounted_path`
 
 ```python
 import tempfile
@@ -253,7 +253,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gépi tanulási modellek automatikus tanítása](how-to-auto-train-remote.md) a TabularDatasets.
 

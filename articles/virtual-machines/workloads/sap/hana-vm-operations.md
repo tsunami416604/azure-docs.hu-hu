@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506430"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649686"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
@@ -243,7 +243,7 @@ A DT 2,0 ajánlott eljárási útmutatója alapján a lemez i/o-átviteli sebess
 
 Több Azure-lemez csatlakoztatására van szükség a DT 2,0 virtuális géphez, és az operációs rendszer szintjén létre kell hoznia egy szoftveres RAID-t (csíkozást), hogy a maximálisan engedélyezett legyen a lemez sebessége virtuális gépenként. Egyetlen Azure-lemez nem tudja biztosítani az átviteli sebességet a virtuális gép maximális korlátjának eléréséhez. Az Azure Premium Storage használata kötelező a DT 2,0 futtatásához. 
 
-- Az elérhető Azure-lemezekre vonatkozó részletek [itt](../../windows/disks-types.md) találhatók
+- Az elérhető Azure-lemezekre vonatkozó részletek [itt](../../disks-types.md) találhatók
 - A szoftveres RAID mdadm használatával történő létrehozásával kapcsolatos részletek [itt](../../linux/configure-raid.md) találhatók
 - [Itt](../../linux/configure-lvm.md) talál részletes információt az LVM konfigurálásáról egy csíkozott kötet létrehozásához a maximális átviteli sebesség érdekében
 
@@ -316,7 +316,7 @@ A SAProuter-en keresztüli távoli támogatási kapcsolatok beállításával é
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Magas rendelkezésre állás a SAP HANA Azure-beli natív virtuális gépeken
 Ha SUSE Linux Enterprise Server vagy Red Hat rendszert futtat, létrehozhat egy pacemaker-fürtöt STONITH-eszközökkel. Az eszközök használatával olyan SAP HANA konfigurációt állíthat be, amely szinkron replikációt használ a HANA rendszerreplikációval és az automatikus feladatátvételsel. További információ a "következő lépések" szakaszban olvasható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerkedjen meg a felsorolt cikkekkel
 - [SAP HANA Azure-beli virtuális gépek tárkonfigurációi](./hana-vm-operations-storage.md)
 - [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md)

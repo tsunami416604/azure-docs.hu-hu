@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876903"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651760"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -90,7 +90,7 @@ A gépi tanulási folyamatok használhatják a korábban említett tanítási m�
 * [Oktatóanyag: Azure Machine Learning-folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)
 * [Példák: példák a gépi tanulási folyamatokra Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Példák: folyamat automatikus gépi tanulással](https://aka.ms/pl-automl)
-* [Példák: folyamat becslések-mel](https://aka.ms/pl-estimator)
+* [Példák: folyamat becslések-mel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Megtudhatja, mi történik a betanítási feladatok elküldésekor
 
@@ -108,7 +108,7 @@ Az Azure betanítási életciklusa a következőkből áll:
     1. Ha nem található, a rendszer létrehoz egy új rendszerképet (amely gyorsítótárazza és regisztrálva lesz a munkaterület ACR-ben)
 1. A tömörített projektfájl letöltése a számítási csomóponton lévő ideiglenes tárhelyre
 1. Projektfájl kicsomagolása
-1. A számítási csomópont végrehajtása`python <entry script> <arguments>`
+1. A számítási csomópont végrehajtása `python <entry script> <arguments>`
 1. A `./outputs` munkaterülethez társított Storage-fiókba írt naplók, modellező fájlok és egyéb fájlok mentése
 1. A számítási felskálázás, beleértve az ideiglenes tárolók eltávolítását is 
 
@@ -158,6 +158,6 @@ A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platf
 
 A VS Code bővítmény használatával futtathatja és kezelheti a betanítási feladatokat. További információt a [vs Code erőforrás-kezelési útmutatója](how-to-manage-resources-vscode.md#experiments) című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [állíthat be képzési környezeteket](how-to-set-up-training-targets.md).

@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319490"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650417"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
@@ -199,7 +199,7 @@ Ez a példa azt mutatja be, hogyan használható az Event Grid egy Azure Logic A
 
 Mielőtt elkezdené, hajtsa végre a következő műveleteket:
 
-* Adatkészlet-figyelő beállítása a munkaterület [adateltolódásának észleléséhez]( https://aka.ms/datadrift)
+* Adatkészlet-figyelő beállítása a munkaterület [adateltolódásának észleléséhez](how-to-monitor-datasets.md)
 * Közzétett [Azure Data Factory folyamat](https://docs.microsoft.com/azure/data-factory/)létrehozása.
 
 Ebben a példában egy egyszerű Data Factory folyamatot használunk a fájlok blob-tárolóba történő másolásához és egy közzétett Machine Learning folyamat futtatásához. További információ erről a forgatókönyvről: [Machine learning lépés beállítása Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)

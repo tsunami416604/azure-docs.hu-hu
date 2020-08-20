@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: f6dc732a512368b007a289c3aaabc3123a696d96
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c91e9832e4b415a59c12b71964a0da580e9fda21
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505257"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651131"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
@@ -59,7 +59,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
+További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>További lépések
