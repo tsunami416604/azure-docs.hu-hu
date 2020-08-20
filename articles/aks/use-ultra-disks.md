@@ -4,23 +4,23 @@ description: Megtudhatja, hogyan engedélyezheti és konfigurálhatja az ultra-l
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986831"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650179"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Az Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)
 
-Az [Azure Ultra Disks](../virtual-machines/linux/disks-enable-ultra-ssd.md) nagy teljesítményű, magas IOPS és konzisztens, kis késésű lemezes tárolást biztosít az állapot-nyilvántartó alkalmazások számára. Az ultra Disks szolgáltatás egyik legfőbb előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítani az ügynök csomópontjait. Az ultra-lemezek nagy adatigényes számítási feladatokhoz alkalmasak.
+Az [Azure Ultra Disks](../virtual-machines/disks-enable-ultra-ssd.md) nagy teljesítményű, magas IOPS és konzisztens, kis késésű lemezes tárolást biztosít az állapot-nyilvántartó alkalmazások számára. Az ultra Disks szolgáltatás egyik legfőbb előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítani az ügynök csomópontjait. Az ultra-lemezek nagy adatigényes számítási feladatokhoz alkalmasak.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehozási idején állítható be.
 
 > [!IMPORTANT]
-> Az Azure Ultra Disks szolgáltatáshoz a rendelkezésre állási zónákban és az ezeket a lemezeket támogató nodepools, valamint csak adott virtuálisgép-sorozatok szükségesek. Tekintse meg az [**Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
+> Az Azure Ultra Disks szolgáltatáshoz a rendelkezésre állási zónákban és az ezeket a lemezeket támogató nodepools, valamint csak adott virtuálisgép-sorozatok szükségesek. Tekintse meg az [**Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>Korlátozások
-- Lásd az [ **Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- Lásd az [ **Ultra Disks GA hatókörét és korlátozásait**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
 - Az ultra-lemezek számára támogatott méretkorlát 100 és 1500 közé esik
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Ultra Disks-t használó új fürt létrehozása
@@ -226,7 +226,7 @@ Events:
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az ultra Disks [szolgáltatásról: Azure Ultra Disks használata](../virtual-machines/linux/disks-enable-ultra-ssd.md).
+- További információ az ultra Disks [szolgáltatásról: Azure Ultra Disks használata](../virtual-machines/disks-enable-ultra-ssd.md).
 - További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-storage]
 
 <!-- LINKS - external -->
@@ -240,7 +240,7 @@ Events:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

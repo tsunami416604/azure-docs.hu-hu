@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: Hozzáférési felülvizsgálatok
       items:
+        - name: Hozzáférési felülvizsgálat üzembe helyezésének megtervezése
+          href: deploy-access-reviews.md
         - name: Hozzáférési csomagok
           items:
             - name: Hozzáférési felülvizsgálat létrehozása

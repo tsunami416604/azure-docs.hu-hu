@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745800"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649414"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -58,6 +58,23 @@ A. A Data Box Disk az Egyesült Államok, Kanada, Ausztrália, Nyugat-Európa é
 
 ### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>K. A szállítás során a Data Box Disk országok/régiók határok lesznek?
 A. Data Box Disk a rendeltetésük szerinti országon/régión belül, és nem léphetnek fel nemzetközi határokon. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol a lemezek bármelyik EU-országba/régióba oda tudnak szállítani.
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>K. Hogyan importálhatók a helyszíni forrásadatok egy országba vagy régióba egy másik országban/régióban lévő Azure-régióba?
+A. Data Box Disk támogatja az adatfeldolgozást csak ugyanabban a régióban (kereskedelmi határ) belül. Minden más esetben szükség lehet további műveletre. 
+
+Ha például olyan, a Kanadában található helyszíni adattal rendelkezett, amelyet egy Azure WestUS Storage-fiókba szeretne áthelyezni, akkor a következő módon érheti el:
+
+### <a name="option-1"></a>1. módszer: 
+
+Az [Azure import/export szolgáltatásból](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) származó adatokkal rendelkező [támogatott lemez](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) szállítása a kanadai forrás helyéről az Azure WestUS adatközpontba.
+
+### <a name="option-2"></a>2. lehetőség:
+
+1. Megrendelési Data Box Disk Kanadában a Storage-fiók kiválasztásával a Cananda Central-ban. Az SSD-lemezeket az Azure-adatközpontból, Közép-Kanadában, a rendelés létrehozása során megadott szállítási címtől (Kanadában) szállítjuk.
+
+2. Miután a rendszer átmásolta a helyszíni kiszolgáló adatait a lemezekre, a Microsoft által biztosított visszatérési címkék használatával visszaküldheti azokat a kanadai Azure-adatközpontba. A Data Box Disk (ok) ban található, a rendelés létrehozásakor kiválasztott Kanada Azure-régiójában lévő, a cél Storage-fiókba való feltöltésre kerül.
+
+3. Ezt követően egy olyan eszközzel is elvégezheti az AzCopy, amely az WestUS-ben lévő Storage-fiókba másolja az adatfájlokat. Ez a lépés a Data Box Disk számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
 A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, vegye fel a [kapcsolatot a Microsoft ügyfélszolgálataval](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).

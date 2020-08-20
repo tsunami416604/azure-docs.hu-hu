@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdc5f56d4500581b36f366663dc3db915070ee2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659740"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649845"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
 
@@ -56,7 +56,7 @@ A következő példákban cserélje le a példában szereplő paraméterek nevé
     ```
 
     > [!NOTE]
-    > Felügyelt lemez kibontásakor a frissített méret a legközelebbi felügyelt lemez méretére lesz kerekítve. Az elérhető felügyelt lemezek méreteiről és szintjeiről az [Azure Managed Disks áttekintése – díjszabás és számlázás](../windows/managed-disks-overview.md)című cikkben olvashat.
+    > Felügyelt lemez kibontásakor a frissített méret a legközelebbi felügyelt lemez méretére lesz kerekítve. Az elérhető felügyelt lemezek méreteiről és szintjeiről az [Azure Managed Disks áttekintése – díjszabás és számlázás](../managed-disks-overview.md)című cikkben olvashat.
 
 1. Indítsa el a virtuális gépet az [az VM Start](/cli/azure/vm#az-vm-start)paranccsal. A következő példa elindítja a *myVM* nevű virtuális gépet a *myResourceGroup*nevű erőforráscsoporthoz:
 

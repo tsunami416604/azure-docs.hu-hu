@@ -3,18 +3,18 @@ title: Az Azure Notebooks előzetes verziójának dokumentációja
 summary: '2020. október 9-én az Azure Notebooks nyilvános előzetes webhelye megszűnik, és a Visual Studio, az Azure és a GitHub integrált szolgáltatásai váltják fel. A lehetőségeiről és a Microsoft egyéb notebook-szolgáltatásairól itt tájékozódhat: https://notebooks.azure.com/Content/alternatives.html.'
 metadata:
   title: Az Azure Notebooks előzetes verziójának dokumentációja
-  description: Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett előzetes verziójú Azure Notebooks-szolgáltatással.
+  description: Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter-notebookokat az üzemeltetett előzetes verziójú Azure Notebooks szolgáltatással.
   ms.service: azure-notebooks
   ms.topic: landing-page
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 456cd23308c7258b59fa8dad628e9f09f6afc0e2
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  ms.openlocfilehash: cdc98d01a4fae5e4b09af001ec65dd7a29c34c0f
+  ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88586953"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88640276"
 landingContent:
 - title: Tudnivalók az Azure Notebooks használatáról
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
       url: /learn/modules/analyze-climate-data-with-azure-notebooks/
   - linkListType: tutorial
     links:
-    - text: Jupyter notebook létrehozása és futtatása Pythonnal
+    - text: Jupyter-notebook létrehozása és futtatása Pythonnal
       url: tutorial-create-run-jupyter-notebook.md
   - linkListType: quickstart
     links:
@@ -48,7 +48,7 @@ landingContent:
       url: quickstart-create-share-jupyter-notebook.md
     - text: Notebook klónozása
       url: quickstart-clone-jupyter-notebook.md
-    - text: Helyi Jupyter notebook migrálása
+    - text: Helyi Jupyter-notebook migrálása
       url: quickstart-migrate-local-jupyter-notebook.md
     - text: Projekt létrehozása egyéni környezettel
       url: quickstart-create-jupyter-notebook-project-environment.md
@@ -64,7 +64,7 @@ landingContent:
       url: work-with-project-data-files.md
     - text: Projektek létrehozása és klónozása
       url: create-clone-jupyter-notebooks.md
-    - text: Felhőbeli adatok elérése egy jegyzetfüzetben
+    - text: Felhőbeli adatok elérése egy notebookban
       url: access-data-resources-jupyter-notebooks.md
     - text: Csomagok telepítése notebookokban
       url: install-packages-jupyter-notebook.md

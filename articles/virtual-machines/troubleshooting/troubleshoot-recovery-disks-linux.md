@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f05804785435824970d90410d9a1c9490a3d6c06
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73620565"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654718"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez az Azure CLI-vel való csatlakoztatásával
 Ha a linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatti hibát észlel, lehetséges, hogy a virtuális merevlemezen hibaelhárítási lépéseket kell végrehajtania. Egy gyakori példa lehet egy olyan bejegyzés, `/etc/fstab` amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan lehet az Azure CLI használatával összekapcsolni a virtuális merevlemezt egy másik linuxos virtuális géppel a hibák kijavítása érdekében, majd újból létre kell hoznia az eredeti virtuális gépet. 
@@ -37,7 +37,7 @@ A hibaelhárítási folyamat a következő:
 A hibaelhárítási lépések elvégzéséhez a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t kell telepítenie, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
 > [!Important]
-> A cikkben szereplő parancsfájlok csak a [felügyelt lemezt](../linux/managed-disks-overview.md)használó virtuális gépekre vonatkoznak. 
+> A cikkben szereplő parancsfájlok csak a [felügyelt lemezt](../managed-disks-overview.md)használó virtuális gépekre vonatkoznak. 
 
 Az alábbi példákban cserélje le a paraméterek nevét a saját értékeire, például a és a paraméterre `myResourceGroup` `myVM` .
 

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 01061ce1099588029410531793279572d112f382
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850355"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650111"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -43,7 +43,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szükséges összes eszközt a fejlesztők és az adatszakértők számára, beleértve a következőket:
 + A [Azure Machine learning Designer](tutorial-designer-automobile-price-train-score.md) (előzetes verzió): húzzon-n-drop modulokat a kísérletek létrehozásához, majd a folyamatok üzembe helyezéséhez.
 
-+ Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://aka.ms/aml-notebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python</a> -mintákhoz. 
++ Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python</a> -mintákhoz. 
 
 + R-parancsfájlok vagy jegyzetfüzetek, amelyekben a saját kód írásához használja az <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK</a> -t, vagy használja a tervező R modulját.
 
@@ -88,7 +88,7 @@ A kód nélküli vagy alacsony kódú képzés és üzembe helyezés esetén pr�
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & életciklus-felügyelet üzembe helyezése
 Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
 
-Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk)-val, a [Azure Machine learning Studióval](https://ml.azure.com)vagy a [Machine learning parancssori](reference-azure-machine-learning-cli.md)felülettel.
+Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)-val, a [Azure Machine learning Studióval](https://ml.azure.com)vagy a [Machine learning parancssori](reference-azure-machine-learning-cli.md)felülettel.
 
 Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](how-to-use-parallel-run-step.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
 
@@ -130,7 +130,7 @@ Azure Machine Learning két, a gépi tanulási igényekhez igazított kiadást k
 
 Ha többet szeretne megtudni ezekről a kiadásokról és a feloldható képességekről, olvassa el a ["Azure Machine learning Editions" című cikket](concept-editions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642282"
+ms.locfileid: "88649057"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>SparkCruise az Azure HDInsight
 
@@ -58,7 +58,7 @@ Az alábbi példa azt szemlélteti, hogyan használható a *SparkCruise* az Apac
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-A `analyze` parancs elemzi a lekérdezési terveket, és létrehozza a munkaterhelés táblázatos megjelenítését. Ezután a `views` parancs azonosítja az általános altervi kifejezéseket, és kijelöli a jövőbeli megvalósításának gyakorlatban és újbóli felhasználásának érdekes altervi kifejezéseit. A kimenet egy visszajelzési fájl, amely megjegyzéseket tartalmaz a jövőbeli Spark SQL-lekérdezésekhez. 
+A `analyze` parancs elemzi a lekérdezési terveket, és létrehozza a munkaterhelés táblázatos megjelenítését. Ez a munkaterhelés-táblázat a [HDInsight SparkCruise-minták](https://github.com/Azure-Samples/azure-sparkcruise-samples) tárházában található *WorkloadInsights* notebook használatával kérdezhető le. Ezután a `views` parancs azonosítja az általános altervi kifejezéseket, és kijelöli a jövőbeli megvalósításának gyakorlatban és újbóli felhasználásának érdekes altervi kifejezéseit. A kimenet egy visszajelzési fájl, amely megjegyzéseket tartalmaz a jövőbeli Spark SQL-lekérdezésekhez. 
 
 A `show` parancs az alábbi szöveghez hasonló kimenetet jelenít meg:
 
@@ -146,7 +146,7 @@ A visszajelzési fájlok, az anyagbeli altervek és a lekérdezési naplók megm
 sudo /opt/peregrine/analyze/peregrine.sh clean
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A SparkCruise előnyeinek meghatározása a számítási feladatok beolvasása jegyzetfüzet használatával](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával](apache-spark-improve-performance-iocache.md)

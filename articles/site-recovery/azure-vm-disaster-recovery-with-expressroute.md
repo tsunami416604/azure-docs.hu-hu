@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954084"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654378"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>ExpressRoute integrálása az Azure-beli virtuális gépek vész-helyreállításával
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan integrálható az Azure-beli ExpressRoute az Azu
 
 Site Recovery az Azure-beli virtuális gépek Azure-ba történő replikálásával lehetővé teszi az Azure-beli virtuális gépek vész-helyreállítását.
 
-- Ha az Azure-beli virtuális gépek az [Azure Managed](../virtual-machines/windows/managed-disks-overview.md)Disks-t használják, a rendszer a virtuális gép-és a másodlagos régió replikált felügyelt lemezére replikál
+- Ha az Azure-beli virtuális gépek az [Azure Managed](../virtual-machines/managed-disks-overview.md)Disks-t használják, a rendszer a virtuális gép-és a másodlagos régió replikált felügyelt lemezére replikál
 - Ha az Azure-beli virtuális gépek nem felügyelt lemezeket használnak, a rendszer replikálja a virtuálisgép-fájlokat egy Azure Storage-fiókba.
 - A replikációs végpontok nyilvánosak, de az Azure-beli virtuális gépek replikációs forgalma nem az interneten keresztül történik.
 
@@ -104,23 +104,23 @@ A vállalati telepítések jellemzően több Azure-virtuális hálózatok oszlan
 
 #### <a name="spoke-to-hub"></a>A küllőt a központtal
 
-**Irányba** | **Beállítás** | **Állapot**
+**Irány** | **Beállítás** | **Állapot**
 --- | --- | ---
 A küllőt a központtal | Virtuális hálózati címek engedélyezése | Engedélyezve
 A küllőt a központtal | Továbbított forgalom engedélyezése | Engedélyezve
-A küllőt a központtal | Átjáró átvitelének engedélyezése | Letiltva
+A küllőt a központtal | Átjáró átvitelének engedélyezése | Disabled (Letiltva)
 A küllőt a központtal | Átjárók eltávolítása | Engedélyezve
 
  ![Küllős a hub-társ konfiguráció](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>A központot a küllővel
 
-**Irányba** | **Beállítás** | **Állapot**
+**Irány** | **Beállítás** | **Állapot**
 --- | --- | ---
 A központot a küllővel | Virtuális hálózati címek engedélyezése | Engedélyezve
 A központot a küllővel | Továbbított forgalom engedélyezése | Engedélyezve
 A központot a küllővel | Átjáró átvitelének engedélyezése | Engedélyezve
-A központot a küllővel | Átjárók eltávolítása | Letiltva
+A központot a küllővel | Átjárók eltávolítása | Disabled (Letiltva)
 
  ![Sugaras konfiguráció](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 

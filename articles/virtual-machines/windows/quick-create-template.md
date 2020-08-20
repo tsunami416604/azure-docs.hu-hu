@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 11e5d4e31f388dcffe7f1292afa223562d44b20a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832297"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649669"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Windows rendszerű virtuális gép létrehozása ARM-sablonnal
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json" range="1-225" highlight="67-224":::
+:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json":::
 
 
 Több erőforrás van definiálva a sablonban:
@@ -65,7 +65,7 @@ Több erőforrás van definiálva a sablonban:
     - **Windows operációs rendszer verziója**: válassza ki a virtuális gépen futtatni kívánt Windows-verziót.
     - **Virtuális gép mérete**: válassza ki a virtuális géphez használandó [méretet](../sizes.md) .
     - **Hely**: az alapértelmezett érték ugyanaz a hely, mint az erőforráscsoport, ha már létezik.
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a virtuális gépet.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az érvényesítés befejezése után a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a virtuális gépet.
 
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
@@ -75,7 +75,7 @@ Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül haszná
 A Azure Portal segítségével megkeresheti a virtuális gépet és a létrehozott más erőforrásokat. Az üzembe helyezés befejezése után válassza az **Ugrás az erőforráscsoporthoz** lehetőséget a virtuális gép és egyéb erőforrások megtekintéséhez.
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a virtuális gépet és az erőforráscsoport összes erőforrását. 
 
@@ -84,7 +84,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a v
 1. Ha a rendszer kéri, írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet egy ARM-sablon használatával. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

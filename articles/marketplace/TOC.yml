@@ -8,7 +8,7 @@
     - name: A kereskedelmi piactér áttekintése és előnyei
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 'Két áruház, közös Marketplace'
+        - name: 'Egy piactér, két online áruház'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Közzétételi lehetőségek és szempontok
           href: ./determine-your-listing-type.md

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76756249"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654803"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Méretezhetőségi és teljesítményi célok a prémium oldal blob Storage-fiókjaihoz
 
@@ -25,7 +25,7 @@ ms.locfileid: "76756249"
 A prémium teljesítményű blob Storage-fiók írási/olvasási műveletekre van optimalizálva. Ez a típusú Storage-fiók egy nem felügyelt lemezt készít egy Azure-beli virtuális géphez.
 
 > [!NOTE]
-> A Microsoft azt javasolja, hogy ha lehetséges, felügyelt lemezeket használjon az Azure Virtual Machines (VM) használatával. A felügyelt lemezekkel kapcsolatos további információkért tekintse meg a [Windows rendszerű virtuális gépek Azure Disk Storage áttekintése](../../virtual-machines/windows/managed-disks-overview.md)című témakört.
+> A Microsoft azt javasolja, hogy ha lehetséges, felügyelt lemezeket használjon az Azure Virtual Machines (VM) használatával. További információ a felügyelt lemezekről: a [virtuális gépek Azure Disk Storage áttekintése](../../virtual-machines/managed-disks-overview.md).
 
 A prémium oldal blob Storage-fiókjai a következő skálázhatósági célokat szolgálják:
 
@@ -39,7 +39,7 @@ A prémium oldal blob Storage-fiókjai a következő skálázhatósági célokat
 
 A Premium Page blob-fiók a prémium szintű teljesítményhez konfigurált általános célú fiók. Az általános célú v2 Storage-fiókok használata ajánlott.
 
-Ha prémium szintű blob Storage-fiókokat használ a nem felügyelt lemezekhez, és az alkalmazása meghaladja az egyetlen Storage-fiók skálázhatósági célját, akkor a Microsoft javasolja a felügyelt lemezekre való áttelepítést. A felügyelt lemezekkel kapcsolatos további információkért tekintse meg a [Windows rendszerű virtuális gépek Azure Disk Storage áttekintését](../../virtual-machines/windows/managed-disks-overview.md) vagy [a Linux rendszerű virtuális gépek Azure Disk Storage áttekintését](../../virtual-machines/linux/managed-disks-overview.md).
+Ha prémium szintű blob Storage-fiókokat használ a nem felügyelt lemezekhez, és az alkalmazása meghaladja az egyetlen Storage-fiók skálázhatósági célját, akkor a Microsoft javasolja a felügyelt lemezekre való áttelepítést. További információ a felügyelt lemezekről: a [virtuális gépek Azure Disk Storage áttekintése](../../virtual-machines/managed-disks-overview.md).
 
 Ha nem tud áttérni a felügyelt lemezekre, hozza létre az alkalmazást több Storage-fiók használatára, és particionálja az adatait a Storage-fiókok között. Ha például a 51 TB-os lemezeket több virtuális gépen szeretné csatlakoztatni, akkor a két Storage-fiók között kell elosztania őket. 35 TB az egyetlen prémium szintű Storage-fiókra vonatkozó korlát. Győződjön meg arról, hogy egy prémium szintű teljesítményű Storage-fiók soha nem rendelkezik több mint 35 TB kiosztott lemezzel.
 

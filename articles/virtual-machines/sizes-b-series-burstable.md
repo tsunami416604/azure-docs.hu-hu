@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832586"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654735"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -58,7 +58,7 @@ Alapterv: 270%
 
 ![Óránkénti forgalmi adatok diagramja](./media/b-series-burstable/office-workload.png)
 
-| Eset | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
+| Forgatókönyv | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
 | --- | --- | --- | --- | --- |
 | B16ms üzembe helyezése | Üzembe helyezés | Üzembe helyezés  | 480 (kezdeti kreditek) | 480 |
 | Nincs forgalom | 0:00 | 0 | 162 | 642 |
@@ -88,7 +88,7 @@ Alapterv: 270%
 
 <sup>1</sup> az óránként felhasznált kreditek/kreditek a következővel egyenértékűek: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
-Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, az óradíj a $0,936/óra (havi $673,92), valamint a 16 vCPU és 64 GiB memóriával rendelkező B16ms esetében a ráta $0,794 óránként (havi $547,86). <b>Ez 15%-os megtakarítást eredményez.</b>
+Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, az óradíj a $0,936/óra (havi $673,92), valamint a 16 vCPU és 64 GiB memóriával rendelkező B16ms esetében a ráta $0,794 óránként (havi $547,86). <b> Ez 15%-os megtakarítást eredményez.</b>
 
 ## <a name="q--a"></a>Kérdések és válaszok
 
@@ -149,7 +149,7 @@ Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage ada
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
+További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>További lépések
 

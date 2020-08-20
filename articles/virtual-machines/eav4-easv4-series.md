@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 31bc9a5f38d50318f858a4d7169391e9d2e5e610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848730"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648360"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 és Easv4 sorozat
 
@@ -83,8 +83,8 @@ A Easv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron a
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
+További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

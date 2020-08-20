@@ -19,6 +19,8 @@
       href: cognitive-services-apis-create-account.md
     - name: Új erőforrás létrehozása az Azure CLI használatával
       href: cognitive-services-apis-create-account-cli.md
+    - name: Új erőforrás létrehozása az ügyfélkódtárral
+      href: cognitive-services-apis-create-account-client-library.md
     - name: Új erőforrás létrehozása ARM-sablonnal
       displayName: Resource Manager
       href: resource-manager-template.md

@@ -1,20 +1,20 @@
 ---
 title: PCI-DSS v 3.2.1 terv minta-vezérlőelemek
 description: A Payment Card Industry adatbiztonsági standard v 3.2.1 tervezetének vezérlése a Azure Policy és a RBAC.
-ms.date: 01/29/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76905637"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649227"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
 A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervrajzok PCI-DSS v 3.2.1 terv mintája a PCI-DSS v 3.2.1 vezérlőkhöz. További információ a vezérlőelemekről: [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki ** \[az\] előzetes naplózási PCI v 3.2.1:2018 vezérlőt, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A következő leképezések a **PCI-DSS v 3.2.1:2018-** as vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az ** \[ előzetes \] naplózási PCI v 3.2.1:2018 vezérlőt, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
@@ -96,12 +96,12 @@ Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amelly
 
 Ez a terv segít az erős jelszavak betartatásában olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
 
-- \[Előzetes\]verzió: a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
-- \[Előzetes\]verzió: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
-- \[Előzetes\]verzió: a jelszó minimális hosszát 14 karakternél nem korlátozó Windows-alapú virtuális gépek naplózása
-- \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- \[Előzetes\]verzió: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
-- \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
+- \[Előzetes \] verzió: a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
+- \[Előzetes \] verzió: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[Előzetes verzió \] : a jelszó minimális hosszát 14 karakternél nem korlátozó Windows-alapú virtuális gépek naplózása
+- \[Előzetes verzió \] : követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
+- \[Előzetes \] verzió: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[Előzetes \] verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 és 10.5.4 naplózási generáció
 
@@ -127,8 +127,8 @@ Ez a terv segít a hálózat kezelésében és szabályozásában [Azure Policy]
 Most, hogy áttekintette a PCI-DSS v 3.2.1 terv vezérlési leképezését, a következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
-> [PCI-DSS v 3.2.1 Blueprint – lépések üzembe helyezése](./deploy.md)
+> [PCI-DSS v 3.2.1 terv – áttekintés](./index.md) 
+>  [PCI-DSS v 3.2.1 terv – lépések üzembe helyezése](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 

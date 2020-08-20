@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77915037"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649856"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>A klasszikus tárolási erőforrás törlésével kapcsolatos hibák elhárítása
 Ez a cikk hibaelhárítási útmutatót tartalmaz, ha a következő hibák valamelyike a klasszikus Azure Storage-fiók, a tároló vagy a *. vhd oldal blob-fájljának törlésére tett kísérlet során következik be. 
@@ -21,7 +21,7 @@ Ez a cikk hibaelhárítási útmutatót tartalmaz, ha a következő hibák valam
 
 Ez a cikk csak a klasszikus tárolási erőforrásokkal kapcsolatos problémákat fedi le. Ha a felhasználó töröl egy klasszikus virtuális gépet a Azure Portal, a PowerShell vagy a CLI használatával, a lemezek nem törlődnek automatikusan. A felhasználó lekéri a "lemez" erőforrás törlésének lehetőségét. Ha a lehetőség nincs bejelölve, a "lemez" erőforrás megakadályozza a Storage-fiók, a tároló és a tényleges *. vhd oldal blob-fájljának törlését.
 
-Az Azure-lemezekkel kapcsolatos további információkért tekintse meg [a következőt](../../virtual-machines/windows/managed-disks-overview.md):. Az Azure megakadályozza a virtuális gépekhez csatolt lemezek törlését a sérülés megelőzése érdekében. Emellett megakadályozza a tárolók és a Storage-fiókok törlését is, amelyek egy virtuális géphez csatolt oldal-blobtal rendelkeznek. 
+Az Azure-lemezekkel kapcsolatos további információkért tekintse meg [a következőt](../../virtual-machines/managed-disks-overview.md):. Az Azure megakadályozza a virtuális gépekhez csatolt lemezek törlését a sérülés megelőzése érdekében. Emellett megakadályozza a tárolók és a Storage-fiókok törlését is, amelyek egy virtuális géphez csatolt oldal-blobtal rendelkeznek. 
 
 ## <a name="what-is-a-disk"></a>Mi a "lemez"?
 A "Disk" (lemez) erőforrás egy *. vhd oldal blob-fájljának a virtuális géphez, operációsrendszer-lemezként vagy adatlemezként való csatlakoztatására szolgál. Az operációsrendszer-lemez vagy az adatlemez-erőforrás a törlésig továbbra is a *. vhd fájl bérletét fogja tartani. Az alábbi képen látható elérési úton lévő összes tárolási erőforrás nem törölhető, ha a "lemez" erőforrás rá mutat.

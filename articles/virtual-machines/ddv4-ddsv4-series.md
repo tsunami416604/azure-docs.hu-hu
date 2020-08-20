@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f6d03b289dce3987d6b939fdaf545d6206766e02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852871"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649907"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 és Ddsv4 sorozat
 
@@ -90,9 +90,9 @@ Memória megőrzésének frissítései: támogatott
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
+További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2c1b9bb8d8fa1e7b82bebfa31963be19d9024af
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837091"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648496"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Memória-optimalizált Dv2 és Dsv2 sorozat
 
@@ -66,7 +66,7 @@ Memória megőrzésének frissítései: támogatott
 | Standard_DS15_v2 <sup>2</sup> | 20 | 140 | 280 | 64 | 80000/640 (720) | 64000/960 | 8|25000 <sup>4</sup> |
 
 <sup>1</sup> a DSv2 sorozatú virtuális géppel lehetséges maximális átviteli sebesség (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható.  Részletekért lásd: [a nagy teljesítmény kialakítása](./windows/premium-storage-performance.md).
-<sup>2</sup> a példány el van különítve az Intel Haswell-alapú hardverre, és egyetlen ügyfélhez van hozzárendelve.  
+<sup>2</sup>  a példány el van különítve az Intel Haswell-alapú hardverre, és egyetlen ügyfélhez van hozzárendelve.  
 <sup>3</sup> korlátozott méretű alapméret érhető el.  
 <sup>4</sup> 25000 Mbps gyorsított hálózatkezeléssel.
 
@@ -83,7 +83,7 @@ Memória megőrzésének frissítései: támogatott
 
 Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: [lemezek típusai](./linux/disks-types.md#ultra-disk)
+További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>További lépések

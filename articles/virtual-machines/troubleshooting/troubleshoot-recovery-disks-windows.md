@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 1c7b6ee73513c7e51e3bb18c3835a1d395a4c516
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028261"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654684"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Windows rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával Azure PowerShell használatával
 Ha az Azure-beli Windows rendszerű virtuális gép rendszerindítási vagy lemezhiba-hibát észlel, előfordulhat, hogy a lemezen hibaelhárítási lépéseket kell végrehajtania. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan csatlakoztathatók a lemezek egy másik Windows rendszerű virtuális géphez a hibák javításához, majd az eredeti virtuális gép kijavításához Azure PowerShell használatával. 
 
 > [!Important]
-> A cikkben szereplő parancsfájlok csak a [felügyelt lemezt](../windows/managed-disks-overview.md)használó virtuális gépekre vonatkoznak. 
+> A cikkben szereplő parancsfájlok csak a [felügyelt lemezt](../managed-disks-overview.md)használó virtuális gépekre vonatkoznak. 
 
  
 

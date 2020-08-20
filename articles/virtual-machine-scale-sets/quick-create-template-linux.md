@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: bb23a47b702237cad55ded2fa46400eba0997264
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082845"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648632"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>Gyors útmutató: linuxos virtuálisgép-méretezési csoport létrehozása ARM-sablonnal
 
@@ -24,19 +24,19 @@ A virtuálisgép-méretezési csoport lehetővé teszi az automatikus méretezé
 
 Az ARM-sablonok lehetővé teszik a kapcsolódó erőforrások csoportjainak központi telepítését. Egyetlen sablonban hozhatja létre a virtuálisgép-méretezési csoportot, telepítheti az alkalmazásokat és konfigurálhatja az automatikus méretezési szabályokat. Különféle változók és paraméterek segítségével a sablon többször is felhasználható meglévő méretezési csoportok frissítésére vagy újabbak létrehozására. A sablonokat az Azure Portal, az Azure CLI vagy az Azure PowerShell használatával, illetve folyamatos integrációs (CI) / folyamatos továbbítási (CD) folyamatokkal helyezheti üzembe.
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
+:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json":::
 
 Ezek az erőforrások a sablonban vannak definiálva:
 
@@ -48,7 +48,7 @@ Ezek az erőforrások a sablonban vannak definiálva:
 
 ### <a name="define-a-scale-set"></a>Méretezési csoport meghatározása
 
-A kiemelt rész a méretezési csoport erőforrás-definíciója. Méretezési csoport sablon alapján való létrehozásához definiálnia kell a megfelelő erőforrásokat. A virtuálisgép-méretezési csoport erőforrástípus alapvető elemei a következők:
+Méretezési csoport sablon alapján való létrehozásához definiálnia kell a megfelelő erőforrásokat. A virtuálisgép-méretezési csoport erőforrástípus alapvető elemei a következők:
 
 | Tulajdonság                     | A tulajdonság leírása                                  | Példa sablonérték                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -113,7 +113,7 @@ Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a köve
 
 ![Alapértelmezett weboldal az NGINX-ben](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, a méretezési csoport és az összes kapcsolódó erőforrás. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
@@ -121,7 +121,7 @@ Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group) paranccsa
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Linux-méretezési készletet egy ARM-sablonnal, és az egyéni szkriptek bővítmény használatával telepít egy alapszintű Python-webkiszolgálót a VM-példányokon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 

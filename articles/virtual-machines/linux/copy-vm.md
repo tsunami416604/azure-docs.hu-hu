@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: ec8fd91dc768b44b027c96efead6924782eb0f75
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368608"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654412"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Linux rendszerű virtuális gép másolatának létrehozása az Azure CLI és a Managed Disks használatával
 
@@ -43,7 +43,7 @@ az vm deallocate \
 
 Egy virtuális gép másolásához létre kell hoznia a mögöttes virtuális merevlemez másolatát. Ez a folyamat egy speciális virtuális merevlemezt (VHD-t) hoz létre felügyelt lemezként, amely ugyanazokat a konfigurációkat és beállításokat tartalmazza, mint a forrásoldali virtuális gép.
 
-További információ az Azure Managed Disksről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md). 
+További információ az Azure Managed Disksről: [Azure Managed Disks – áttekintés](../managed-disks-overview.md). 
 
 1.  Sorolja fel az összes virtuális gépet és az operációsrendszer-lemez nevét az [az VM List](/cli/azure/vm#az-vm-list)paranccsal. Az alábbi példa felsorolja a *myResourceGroup*nevű erőforráscsoport összes virtuális gépet:
     
