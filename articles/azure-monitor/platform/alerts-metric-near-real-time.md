@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/16/2020
+ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258440"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661316"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -44,7 +44,7 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. ClassicStorage/storageAccounts/queueServices | Igen | Nem | |
 |Microsoft. ClassicStorage/storageAccounts/tableServices | Igen | Nem | |
 |Microsoft. CognitiveServices/fiókok | Igen | Nem | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Igen | Igen | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachines | Yes | Igen<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tároló-nyilvántartók](./metrics-supported.md#microsoftcontainerregistryregistries) |
@@ -83,7 +83,7 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | N/A | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRouteCircuits | n.a. | No |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways| Nem | Nem | |
 |Microsoft. Network/privateEndpoints| Nem | Nem | |
@@ -111,6 +111,8 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. Web/kiszolgálófarmok | Igen | Nem | [App Service csomagok](./metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft. Web/Sites | Igen | Nem | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) és [függvények](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft. Web/Sites/Slots | Igen | Nem | [App Service tárolóhelyek](./metrics-supported.md#microsoftwebsitesslots)|
+
+<sup>1</sup> csak a platform metrikák esetében támogatott (nem egyéni metrikák)
 
 ## <a name="payload-schema"></a>Hasznos adatok sémája
 

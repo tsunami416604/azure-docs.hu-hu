@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537445"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661180"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Gyors útmutató: Azure Database Migration Service példányának létrehozása ARM-sablonnal
 
@@ -35,7 +35,7 @@ Az Azure Database Migration Service ARM-sablonhoz a következők szükségesek:
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json" highlight="33-75":::
+:::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json":::
 
 Három Azure-erőforrás van definiálva a sablonban: 
 
@@ -64,7 +64,7 @@ További Azure Database Migration Services-sablonok a rövid útmutató [sablonj
 
 
 
-3. Válassza az **Áttekintés + létrehozás** lehetőséget. Miután a Azure Database Migration Service példánya sikeresen telepítve lett, értesítést kap. 
+3. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Miután a Azure Database Migration Service példánya sikeresen telepítve lett, értesítést kap. 
 
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
@@ -81,7 +81,7 @@ az resource list --resource-group $resourcegroupName
 ```
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot az Azure CLI vagy a Azure PowerShell használatával:
 
@@ -109,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 A Azure Database Migration Service központi telepítésének egyéb módjaival kapcsolatban lásd: 
 - [Azure Portal](quickstart-create-data-migration-service-portal.md)

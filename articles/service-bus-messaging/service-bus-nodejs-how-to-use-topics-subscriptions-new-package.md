@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080626"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660596"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Node.js és az Azure/Service-Bus csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan írhat egy Node.js programot, amely üzeneteket küld egy Service Bus témakörnek, és üzeneteket fogad egy Service Bus előfizetésből az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag használatával. Ez a csomag a gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md) használja, míg a régebbi [Azure-sb-](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A mintákat JavaScript nyelven írták.
@@ -86,7 +86,7 @@ A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-mes
 A Service Bus-előfizetésekkel való interakció a [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) osztály létrehozásával és a [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient) osztály létrehozásához használattal kezdődik. Ha már rendelkezik az előfizetési ügyféllel, létrehozhat egy fogadót, és használhat [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) vagy [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metódust is az üzenetek fogadásához.
 
 1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
-2. Hozzon létre egy nevű fájlt `recieve.js` , és illessze be az alábbi kódot. Ez a kód 10 üzenetet próbál fogadni az előfizetésből. A kapott tényleges darabszám az előfizetésben és a hálózati késésben lévő üzenetek számától függ.
+2. Hozzon létre egy nevű fájlt `receive.js` , és illessze be az alábbi kódot. Ez a kód 10 üzenetet próbál fogadni az előfizetésből. A kapott tényleges darabszám az előfizetésben és a hálózati késésben lévő üzenetek számától függ.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -117,7 +117,7 @@ A Service Bus-előfizetésekkel való interakció a [ServiceBusClient](/javascri
     });
     ```
 3. A fenti kódban adja meg a témakör és az előfizetés nevét.
-4. Ezután futtassa a parancsot `node receiveMessages.js` egy parancssorban a fájl végrehajtásához.
+4. Ezután futtassa a parancsot `node receive.js` egy parancssorban a fájl végrehajtásához.
 
 Gratulálunk! Csak Service Bus-előfizetésből érkezett üzenetek.
 
@@ -137,7 +137,7 @@ Minden előfizetéshez tartozik egy alapértelmezett szabály, amely a True szű
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalókat az alábbi forrásokban talál.
 
 - [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md)

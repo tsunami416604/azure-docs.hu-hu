@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799857"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661061"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -20,7 +20,7 @@ Az AK által felügyelt Azure AD-integráció az Azure AD integrációs felület
 
 A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) állíthat be a felhasználó identitása vagy a címtár csoporttagság alapján. Az Azure AD-hitelesítés az OpenID-kapcsolattal rendelkező AK-fürtökhöz van megadva. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][open-id-connect].
 
-A HRE integrációs folyamatáról a [Azure Active Directory Integration Concepts dokumentációjában](concepts-identity.md#azure-active-directory-integration)olvashat bővebben.
+További információ az Azure AD integrációs folyamatáról a [Azure Active Directory Integration Concepts dokumentációjában](concepts-identity.md#azure-active-directory-integration).
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
@@ -32,8 +32,8 @@ Az AK által felügyelt Azure Active Directory integráció olyan nyilvános ré
 ## <a name="limitations"></a>Korlátozások 
 
 * Az AK által felügyelt Azure AD-integráció nem tiltható le.
-* a nem RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt HRE-integrációhoz
-* Az AK által felügyelt HRE-integrációhoz társított Azure AD-bérlő módosítása nem támogatott
+* a nem RBAC-kompatibilis fürtök nem támogatottak az AK által felügyelt Azue AD-integrációhoz
+* Az AK által felügyelt Azure AD-integrációhoz társított Azure AD-bérlő módosítása nem támogatott
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -139,6 +139,31 @@ A lépések végrehajtásához hozzá kell férnie az [Azure Kubernetes szolgál
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
 
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Az AK által felügyelt Azure AD-integráció engedélyezése a meglévő fürtön
+
+Engedélyezheti az AK által felügyelt Azure AD-integrációt a meglévő RBAC-kompatibilis fürtön. Győződjön meg arról, hogy a felügyeleti csoport megtartja a hozzáférést a fürtön.
+
+```azurecli-interactive
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
+```
+
+Az AK által felügyelt Azure AD-fürt sikeres aktiválása a következő szakaszt tartalmazza a válasz törzsében:
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+Töltse le újra a felhasználói hitelesítő adatokat a fürt eléréséhez a [következő lépések][access-cluster]végrehajtásával.
+
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>Frissítés az AK által felügyelt Azure AD-integrációra
 
 Ha a fürt örökölt Azure AD-integrációt használ, frissíthet az AK által felügyelt Azure AD-integrációra.
@@ -168,13 +193,13 @@ Ha el szeretné érni a fürtöt, kövesse az alábbi [lépéseket.][access-clus
 
 Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. [`kubelogin`](https://github.com/Azure/kubelogin)A paranccsal hozzáférhet a fürthöz nem interaktív egyszerű szolgáltatás-bejelentkezéssel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [Azure RBAC-integrációról a Kubernetes-hitelesítéshez][azure-rbac-integration]
 * Ismerje meg az [Azure ad-integrációt a KUBERNETES RBAC][azure-ad-rbac].
 * A [kubelogin](https://github.com/Azure/kubelogin) használatával férhet hozzá az Azure-hitelesítés olyan szolgáltatásaihoz, amelyek nem érhetők el a kubectl-ben.
 * További információ az [AK-ról és a Kubernetes-identitással kapcsolatos fogalmakról][aks-concepts-identity].
-* A [Azure Resource Manager-(ARM-) Sablonok][aks-arm-template] használatával hozzon létre AK által felügyelt Azure ad-kompatibilis fürtöket.
+* A [Azure Resource Manager-(ARM-) Sablonok ][aks-arm-template] használatával hozzon létre AK által felügyelt Azure ad-kompatibilis fürtöket.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

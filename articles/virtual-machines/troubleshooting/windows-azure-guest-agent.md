@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/07/2020
 ms.author: genli
-ms.openlocfilehash: c3295365859ad3291a95b616cccc6fa265237a01
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263965"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659466"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>A Windows Azure Guest Agent hibaelhárítása
 
@@ -102,7 +102,7 @@ A Windows Azure vendég ügynökének automatikus frissítési funkciója van. A
 
 1. Helyezze át a Packages vagy Vendégügynök nevű mappákat a régi mappába.
 
-1. Töltse le és telepítse az ügynök-telepítési csomag legújabb [verzióját innen.](https://go.microsoft.comfwlink/?linkid=394789&clcid=0x409) A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
+1. Töltse le és telepítse az ügynök-telepítési csomag legújabb [verzióját innen.](https://go.microsoft.com/fwlink/?linkid=394789&clcid=0x409) A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
 
 1. Telepítse a Guest Agent ügynököt a következő parancs használatával:
 

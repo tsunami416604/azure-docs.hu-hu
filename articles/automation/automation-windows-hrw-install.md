@@ -3,14 +3,14 @@ title: Windows Hybrid Runbook Worker üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót, amely a helyi adatközpontban vagy a felhőalapú környezetben lévő Windows-alapú gépeken futtatott runbookok futtatására használható.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270580"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660512"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -29,6 +29,9 @@ A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfi
 Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
 Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](update-management/update-mgmt-overview.md) vagy a [change Tracking és a leltárt](change-tracking.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
+
+> [!NOTE]
+> Update Management-vagy Change Tracking-és leltározási funkció engedélyezésekor Azure Automation csak bizonyos régiókat támogat Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md). A szolgáltatás engedélyezése előtt tekintse át a Azure Automation [Azure díjszabási](https://azure.microsoft.com/pricing/details/automation/) információit.
 
    A Update Management szolgáltatás munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
 
@@ -123,9 +126,6 @@ Töltse le a **New-OnPremiseHybridWorker.ps1** szkriptet a [PowerShell-galériab
 | `SubscriptionID` | Kötelező | Az Automation-fiókhoz társított Azure-előfizetés azonosítója. |
 | `TenantID` | Választható | Az Automation-fiókhoz társított bérlői szervezet azonosítója. |
 | `WorkspaceName` | Választható | A Log Analytics munkaterület neve. Ha nem rendelkezik Log Analytics munkaterülettel, a szkript létrehoz és konfigurál egyet. |
-
-> [!NOTE]
-> A szolgáltatások engedélyezésekor Azure Automation csak bizonyos régiókat támogat, amelyekkel összekapcsolhat egy Log Analytics-munkaterületet és egy Automation-fiókot. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>2. lépés – a Windows PowerShell parancssori rendszerhéj megnyitása
 

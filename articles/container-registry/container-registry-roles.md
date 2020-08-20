@@ -2,17 +2,17 @@
 title: Azure-szerepkörök és-engedélyek
 description: Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és az identitás-és hozzáférés-kezelés (IAM) használatával részletes engedélyeket biztosíthat az Azure Container Registry erőforrásaihoz.
 ms.topic: article
-ms.date: 12/02/2019
-ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/17/2020
+ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920075"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661384"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Szerepkörök és engedélyek Azure Container Registry
 
-A Azure Container Registry szolgáltatás olyan [beépített Azure-szerepköröket](../role-based-access-control/built-in-roles.md) támogat, amelyek különböző szintű engedélyekkel rendelkeznek az Azure Container registryben. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával konkrét engedélyeket rendelhet a felhasználókhoz, a szolgáltatásokhoz vagy más identitásokhoz, amelyeknek a beállításjegyzékkel kell működniük. 
+A Azure Container Registry szolgáltatás olyan [beépített Azure-szerepköröket](../role-based-access-control/built-in-roles.md) támogat, amelyek különböző szintű engedélyekkel rendelkeznek az Azure Container registryben. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával konkrét engedélyeket rendelhet a felhasználókhoz, a szolgáltatásokhoz vagy más identitásokhoz, amelyeknek a beállításjegyzékkel kell működniük. [Egyéni szerepköröket](#custom-roles) is meghatározhat részletes engedélyekkel egy beállításjegyzékhez a különböző műveletekhez.
 
 | Szerepkör/engedély       | [Hozzáférés a Resource Managerhez](#access-resource-manager) | [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Leküldéses rendszerkép](#push-image) | [Lekéréses rendszerkép](#pull-image) | [Rendszerkép-adatok törlése](#delete-image-data) | [Szabályzatok módosítása](#change-policies) |   [Képek aláírása](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -70,7 +70,7 @@ Képes a képek aláírására, általában egy automatizált folyamathoz rendel
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
 
-A többi Azure-erőforráshoz hasonlóan saját [Egyéni szerepkörök](../role-based-access-control/custom-roles.md) is létrehozhatók részletes engedélyekkel a Azure Container Registryához. Ezután rendelje hozzá az egyéni szerepköröket a felhasználókhoz, a szolgáltatásokhoz, vagy más identitásokhoz, amelyeknek a beállításjegyzékben kell működniük. 
+A többi Azure-erőforráshoz hasonlóan a Azure Container Registryhoz részletes engedélyekkel rendelkező [Egyéni szerepkörök](../role-based-access-control/custom-roles.md) is létrehozhatók. Ezután rendelje hozzá az egyéni szerepköröket a felhasználókhoz, a szolgáltatásokhoz, vagy más identitásokhoz, amelyeknek a beállításjegyzékben kell működniük. 
 
 Annak megállapításához, hogy mely engedélyeket kell alkalmazni az egyéni szerepkörre, tekintse meg a Microsoft. ContainerRegistry [műveletek](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)listáját, tekintse át a [beépített ACR-szerepkörök](../role-based-access-control/built-in-roles.md)engedélyezett műveleteit, vagy futtassa a következő parancsot:
 
@@ -82,6 +82,36 @@ Egyéni szerepkör definiálásához tekintse meg az [Egyéni szerepkör létreh
 
 > [!IMPORTANT]
 > Egy egyéni szerepkörben a Azure Container Registry jelenleg nem támogatja a helyettesítő karaktereket, például a `Microsoft.ContainerRegistry/*` vagy `Microsoft.ContainerRegistry/registries/*` az összes egyező művelethez való hozzáférést. A szerepkörben egyenként határozza meg a szükséges műveleteket.
+
+### <a name="example-custom-role-to-import-images"></a>Példa: lemezképek importálására szolgáló egyéni szerepkör
+
+A következő JSON például meghatározza egy egyéni szerepkör minimális műveleteit, amelyek lehetővé teszik a [lemezképek importálását](container-registry-import-images.md) egy beállításjegyzékbe.
+
+```json
+{
+   "assignableScopes": [
+     "/subscriptions/<optional, but you can limit the visibility to one or more subscriptions>"
+   ],
+   "description": "Can import images to registry",
+   "Name": "AcrImport",
+   "permissions": [
+     {
+       "actions": [
+         "Microsoft.ContainerRegistry/registries/push/write",
+         "Microsoft.ContainerRegistry/registries/pull/read",
+         "Microsoft.ContainerRegistry/registries/read",
+         "Microsoft.ContainerRegistry/registries/importImage/action"
+       ],
+       "dataActions": [],
+       "notActions": [],
+       "notDataActions": []
+     }
+   ],
+   "roleType": "CustomRole"
+ }
+```
+
+Egyéni szerepkör JSON-Leírás használatával történő létrehozásához vagy frissítéséhez használja az [Azure CLI](../role-based-access-control/custom-roles-cli.md)-t, [Azure Resource Manager sablont](../role-based-access-control/custom-roles-template.md), [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)vagy más Azure-eszközt. Egyéni szerepkörhöz tartozó szerepkör-hozzárendelések hozzáadása vagy eltávolítása ugyanúgy, mint a beépített Azure-szerepkörökhöz tartozó szerepkör-hozzárendelések kezelése.
 
 ## <a name="next-steps"></a>További lépések
 

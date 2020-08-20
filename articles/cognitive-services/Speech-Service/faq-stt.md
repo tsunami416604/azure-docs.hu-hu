@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921030"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661520"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -75,7 +75,7 @@ Ha kiigazította és telepítette az alapkonfiguráció 1.0-s verziójával rend
 
 **K: a kérelmek szabályozva vannak?**
 
-**A**: a REST API 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket. A részletek megtalálhatók az oldalain a [szövegre való beszédhez](speech-to-text.md).
+**A**: lásd a [Speech Services kvótáit és korlátozásait](speech-services-quotas-and-limits.md).
 
 **K: hogyan kell fizetnem a kettős csatornás hangért?**
 
@@ -85,52 +85,14 @@ Válasz **: Ha**az egyes csatornákat külön küldi el (mindegyik csatornát a 
 > Ha további adatvédelmi kérdései vannak, amelyek tiltják a Custom Speech Service használatát, lépjen kapcsolatba az egyik támogatási csatornával.
 
 ## <a name="increasing-concurrency"></a>Párhuzamosság növelése
+Lásd: [a Speech Services kvótái és korlátai](speech-services-quotas-and-limits.md).
 
-**K: mi a teendő, ha a portálon elérhetőnél magasabb szintű egyidejűségre van szükségem a saját üzembe helyezett modellhez?**
-
-**A**: akár 20 egyidejű kérést is felhasználhat a modell vertikális felskálázásához.
-
-A szükséges információkkal hozzon létre egy támogatási kérést az [Azure támogatási portálján](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Ne tegye közzé a [támogatási oldalon](support.md)említett nyilvános csatornákon (GitHub, StackOverflow,...) lévő adatokat.
-
-Az ***Egyéni modell***egyidejűségének növeléséhez a következő információkra van szükségünk:
-
-- A modellt telepítő régió,
-- a központilag telepített modell végpont-azonosítója:
-  - A [Custom Speech portálra](https://aka.ms/customspeech)került,
-  - bejelentkezés (ha szükséges),
-  - Válassza ki a projektet és az üzembe helyezést,
-  - Válassza ki a végpontot, amelyre szüksége van a párhuzamosság növeléséhez,
-  - másolja a `Endpoint ID` .
-
-Az ***alapmodell***egyidejűségének növeléséhez a következő információkra van szükségünk:
-
-- A szolgáltatás régiója,
-
-és vagy
-
-- az előfizetéshez tartozó hozzáférési jogkivonat (lásd [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
-
-vagy
-
-- az előfizetéshez tartozó erőforrás-azonosító:
-  - Ugrás a [Azure Portalra](https://portal.azure.com)
-  - kattintson `Cognitive Services` a keresőmezőbe,
-  - a megjelenített szolgáltatások közül válassza ki azt a beszédfelismerési szolgáltatást, amelyhez a párhuzamosságot növelni szeretné,
-  - a szolgáltatás megjelenítésének megjelenítése `Properties`
-  - másolja a befejezést `Resource ID` .
-  
-**K: növeli a párhuzamossági korlátot?**
-
-**A**: nem, a díjszabás a használat alapján történik. A párhuzamosság növelése nem eredményez magasabb költségeket. További részletekért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) oldalunkat. 
-  
->[!NOTE]
->A [tárolók](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) nem igénylik a párhuzamossági korlátokat, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák.
 
 ## <a name="importing-data"></a>Adatok importálása
 
 **K: mekkora a korlátja egy adatkészlet méretének, és miért korlátozza a korlátot?**
 
-**A**: az adatkészlet jelenlegi korlátja 2 GB. A korlátot a HTTP-feltöltéshez használt fájl méretének korlátozása okozza.
+**A**: a korlátot a http-feltöltéshez használt fájl méretének korlátozása okozza. Lásd a tényleges korlátot a [Speech Services kvótái és korlátai](speech-services-quotas-and-limits.md) című részben.
 
 **K: használhatom a szövegfájlom zip-fájljait, hogy feltölthető legyen egy nagyobb szövegfájl?**
 
@@ -198,7 +160,7 @@ Válasz **: attól**függ, hogy az alkalmazásban használt szókincs és kifeje
 
 **K: milyen beszédfelismerési élményt fejlesztenek a bérlői modell?**
 
-**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését javítja. Ez egy felhasználói HRE tokent is továbbít, amely a vállalatnak való tagságot jelzi.
+**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését javítja. Ez egy felhasználói Azure AD-tokent is továbbít, amely a vállalati tagságot jelzi.
 
 Az Office 365-ben beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok, nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
 

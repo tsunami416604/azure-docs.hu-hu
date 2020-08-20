@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80236011"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660247"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
@@ -37,7 +37,7 @@ A két Jupyter jegyzetfüzet és a támogató fájlok üzemeltetéséhez Azure N
 * Rövid útmutató **:** [Jegyzetfüzet létrehozása és megosztása](../notebooks/quickstart-create-share-jupyter-notebook.md)
 * **Oktatóanyag:** [Jupyter-jegyzetfüzet létrehozása és futtatása Python-val](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-Az Azure notebookok használata konzisztens környezetet biztosít a gyakorlathoz.
+A Azure Notebooks használata konzisztens környezetet biztosít a gyakorlathoz.
 
 > [!NOTE]
 > A beállítás után a Azure Notebooks szolgáltatás bármely gépről elérhető. A telepítés során a fejlesztési virtuális gépet kell használnia, amely rendelkezik az összes szükséges fájllal.
@@ -46,7 +46,7 @@ Az Azure notebookok használata konzisztens környezetet biztosít a gyakorlatho
 
 A Azure Notebooks használatához létre kell hoznia egy fiókot. Az Azure notebook-fiókok függetlenek az Azure-előfizetéstől.
 
-1. Navigáljon az [Azure-jegyzetfüzetekhez](https://notebooks.azure.com).
+1. Navigáljon [Azure Notebooks](https://notebooks.azure.com).
 
 1. Kattintson a **Bejelentkezés** gombra a lap jobb felső sarkában.
 
@@ -84,23 +84,23 @@ A mintaként szolgáló jegyzetfüzet-fájlokat egy új Azure Notebooks projektb
 
 Tekintsük át a Azure Notebooks-projektbe feltöltött fájlokat. Az oktatóanyag ezen részében szereplő tevékenységek két jegyzetfüzet-fájlra terjednek ki, amelyek néhány kiegészítő fájlt használnak.
 
-* **01 – turbofan\_regresszió. ipynb:** Ez a jegyzetfüzet a Machine Learning szolgáltatás munkaterületen hozza létre és futtatja a Machine learning-kísérletet. A jegyzetfüzet széles körben a következő lépéseket hajtja végre:
+* **01 – turbofan \_ regresszió. ipynb:** ez a jegyzetfüzet a Machine learning szolgáltatás munkaterületet használja a Machine learning-kísérletek létrehozásához és futtatásához. A jegyzetfüzet széles körben a következő lépéseket hajtja végre:
 
   1. Az eszköz által létrehozott Azure Storage-fiókból származó adatok letöltése.
   1. Felderíti és előkészíti az adatgyűjtést, majd az adatosztályozó modell betanítására használja fel azokat.
-  1. Értékelje ki a modellt a kísérletből egy tesztelési adatkészlet\_használatával (test FD003. txt).
+  1. Értékelje ki a modellt a kísérletből egy tesztelési adatkészlet használatával (teszt \_FD003.txt).
   1. Közzéteszi a legjobb osztályozó modellt a Machine Learning szolgáltatás munkaterületen.
 
-* **02 – turbofan\_üzembe\_helyezési modell. ipynb:** Ez a jegyzetfüzet az előző jegyzetfüzetben létrehozott modellt használja, és felhasználja egy Azure IoT Edge eszközre való üzembe helyezésre kész tároló-rendszerkép létrehozásához. A jegyzetfüzet a következő lépéseket hajtja végre:
+* **02 – turbofan \_ üzembe helyezési \_ modell. ipynb:** ez a jegyzetfüzet az előző jegyzetfüzetben létrehozott modellt hozza létre, és felhasználja egy Azure IoT Edge eszközre való üzembe helyezésre kész tároló lemezkép létrehozásához. A jegyzetfüzet a következő lépéseket hajtja végre:
 
   1. Létrehoz egy pontozási parancsfájlt a modellhez.
   1. Létrehoz egy tároló-rendszerképet a Machine Learning szolgáltatás munkaterületen mentett osztályozó modell használatával.
   1. Üzembe helyezi a rendszerképet az Azure Container instance webszolgáltatásában.
   1. A webszolgáltatás használatával ellenőrzi a modellt, és a rendszerkép a várt módon működik. Az érvényesített lemezkép a IoT Edge eszközre lesz telepítve az oktatóanyag [egyéni IoT Edge modulok létrehozása és telepítése](tutorial-machine-learning-edge-06-custom-modules.md) részében.
 
-* **FD003\_. txt tesztelése:** Ez a fájl tartalmazza azokat az adatkészleteket, amelyeket a rendszer a betanított osztályozó ellenőrzésekor használ. Úgy döntöttünk, hogy a tesztet az eredeti pályázathoz megadott módon használjuk, az egyszerűség kedvéért.
+* **Test \_FD003.txt:** ez a fájl tartalmazza azokat az adatkészleteket, amelyeket a rendszer a betanított osztályozó ellenőrzésekor használ. Úgy döntöttünk, hogy a tesztet az eredeti pályázathoz megadott módon használjuk, az egyszerűség kedvéért.
 
-* **RUL\_FD003. txt:** ez a fájl tartalmazza a hátralévő hasznos élettartamot (RUL) a test\_FD003. txt fájlban lévő egyes eszközök utolsó ciklusához. Az információk részletes ismertetéséhez tekintse meg a readme. txt fájlt, valamint a "C\\:\\forrás\\IoTEdgeAndMlSample\\-adatTurbofan" című témakörben található, a Detailing Modeling. PDF fájlokat.
+* **RUL \_FD003.txt:** ez a fájl a tesztelésiFD003.txt fájlban lévő egyes eszközök utolsó ciklusának hátralévő hasznos élettartamát (RUL) tartalmazza \_ . Az \\ \\ \\ információk részletes ismertetéséhez tekintse meg a readme.txt és a kár propagálására Modeling.pdf fájlokat a C: Source IoTEdgeAndMlSample- \\ Turbofan.
 
 * **Utils.py:** Python segédprogram-függvényeket tartalmaz az adatokkal való munkavégzéshez. Az első jegyzetfüzet a függvények részletes magyarázatát tartalmazza.
 
@@ -110,7 +110,7 @@ Tekintsük át a Azure Notebooks-projektbe feltöltött fájlokat. Az oktatóany
 
 Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket. 
 
-1. A projekt lapon válassza a **01-turbofan\_regresszió. ipynb**lehetőséget.
+1. A projekt lapon válassza a **01-turbofan \_ regresszió. ipynb**lehetőséget.
 
     ![Válassza ki az első futtatandó jegyzetfüzetet](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
@@ -118,9 +118,9 @@ Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket.
 
 1. A legjobb eredmény érdekében olvassa el az egyes cellák dokumentációját, és futtassa azt egyenként. Kattintson a **Futtatás** elemre az eszköztáron. Később, célszerű több cella futtatására is. A frissítés és az elavultság figyelmeztetéseit figyelmen kívül hagyhatja.
 
-    Amikor egy cella fut, a szögletes zárójelek ([\*]) közötti csillagot jeleníti meg. Ha a cella művelete befejeződött, a csillag helyére egy szám és egy kapcsolódó kimenet is megjelenhet. Egy jegyzetfüzet cellái egymás után, egyszerre csak egy futhatnak.
+    Amikor egy cella fut, a szögletes zárójelek ([]) közötti csillagot jeleníti meg \* . Ha a cella művelete befejeződött, a csillag helyére egy szám és egy kapcsolódó kimenet is megjelenhet. Egy jegyzetfüzet cellái egymás után, egyszerre csak egy futhatnak.
 
-    A **cella** menü `Ctrl`  +  `Enter` futtatási Beállítások parancsával is futtathat egy cellát, és `Shift`  +  `Enter` egy cellát is futtathat a következő cellába.
+    A **cella** menü futtatási Beállítások parancsával is `Ctrl`  +  `Enter` futtathat egy cellát, és `Shift`  +  `Enter` egy cellát is futtathat a következő cellába.
 
     > [!TIP]
     > A konzisztens cella-műveletek esetében ne futtassa ugyanazt a jegyzetfüzetet a böngészőben több lapon.
@@ -145,7 +145,7 @@ Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket.
 
 1. Mentse a jegyzetfüzetet, és térjen vissza a projekt lapra.
 
-1. Nyissa meg a **\_02\_– turbofan üzembe helyezés Model. ipynb** , és futtassa az egyes cellákat. A **konfiguráláshoz a munkaterületet**követő cellában kell bejelentkeznie.
+1. Nyissa meg a **02 – turbofan \_ üzembe helyezés \_ Model. ipynb** , és futtassa az egyes cellákat. A **konfiguráláshoz a munkaterületet**követő cellában kell bejelentkeznie.
 
 1. Mentse a jegyzetfüzetet, és térjen vissza a projekt lapra.
 
@@ -159,13 +159,13 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
     | Fájl | Leírás |
     | --- | --- |
-    | ./aml_config/.azureml/config.JSON | A Azure Machine Learning-munkaterület létrehozásához használt konfigurációs fájl. |
-    | ./aml_config/model_config. JSON | Konfigurációs fájl, amelyre telepíteni kell a modellt a **turbofanDemo** Machine learning munkaterületen az Azure-ban. |
+    | ./aml_config/.azureml/config.jsbekapcsolva | A Azure Machine Learning-munkaterület létrehozásához használt konfigurációs fájl. |
+    | ./aml_config/model_config.jsbekapcsolva | Konfigurációs fájl, amelyre telepíteni kell a modellt a **turbofanDemo** Machine learning munkaterületen az Azure-ban. |
     | myenv. YML| Információt nyújt az üzembe helyezett Machine Learning modell függőségeiről.|
 
 1. Ellenőrizze, hogy létrejöttek-e az alábbi Azure-erőforrások. Néhány erőforrás neve véletlenszerű karakterekkel van hozzáfűzve.
 
-    | Azure-erőforrás | Name (Név) |
+    | Azure-erőforrás | Név |
     | --- | --- |
     | Machine Learning munkaterület | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
@@ -175,7 +175,7 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 ### <a name="debugging"></a>Hibakeresés
 
-A jegyzetfüzetbe beillesztheti a hibakereséshez használható Python-utasításokat, `print()` például a parancsot az értékek megjelenítéséhez. Ha olyan változókat vagy objektumokat lát, amelyek nincsenek definiálva, akkor futtassa azokat a cellákat, amelyeken először van deklarálva vagy példányban.
+A jegyzetfüzetbe beillesztheti a hibakereséshez használható Python-utasításokat, például a `print()` parancsot az értékek megjelenítéséhez. Ha olyan változókat vagy objektumokat lát, amelyek nincsenek definiálva, akkor futtassa azokat a cellákat, amelyeken először van deklarálva vagy példányban.
 
 Előfordulhat, hogy törölnie kell a korábban létrehozott fájlokat és az Azure-erőforrásokat, ha újra meg kell ismételni a jegyzetfüzeteket.
 
@@ -186,4 +186,4 @@ Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk
 IoT Edge-eszköz létrehozásához folytassa a következő cikkel.
 
 > [!div class="nextstepaction"]
-> [IoT Edge eszköz konfigurálása](tutorial-machine-learning-edge-05-configure-edge-device.md)
+> [IoT Edge-eszköz konfigurálása](tutorial-machine-learning-edge-05-configure-edge-device.md)

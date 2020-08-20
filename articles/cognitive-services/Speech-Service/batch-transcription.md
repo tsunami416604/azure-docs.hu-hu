@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640157"
+ms.locfileid: "88660874"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
-A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű hang tárolását. A hangfájlok közös hozzáférésű aláírási (SAS) URI-val, az átírási eredmények aszinkron fogadásával is megadhatók. Az új v 3.0 API-val lehetősége van egy vagy több hangfájl átírására, vagy egy teljes tároló feldolgozására.
+A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű hang tárolását. A hangfájlokra egy tipikus URI vagy egy közös hozzáférésű aláírás (SAS) URI használatával, valamint az átírási eredmények aszinkron fogadásával is rámutathat. A v 3.0 API-val egy vagy több hangfájlt is átadhat, vagy feldolgozhatja a teljes tárolót.
 
-Az aszinkron beszéd – szöveg átírása csak az egyik funkció. A Batch átírása REST API-kkal a következő módszereket hívhatja:
+A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
 |    Kötegelt átírási művelet                                             |    Metódus    |    REST API hívás                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -33,14 +33,12 @@ Az aszinkron beszéd – szöveg átírása csak az egyik funkció. A Batch át�
 |    Lekéri az adott azonosító által azonosított átírást.                        |    GET       |    speechtotext/v 3.0/átiratok/{azonosító}       |
 |    Lekéri a megadott azonosító által azonosított átirat eredményének fájljait.    |    GET       |    speechtotext/v 3.0/átiratok/{azonosító}/fájlok |
 
-
-
-
 Áttekintheti és tesztelheti a részletes API-t, amely [hencegő dokumentumként](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)érhető el.
 
-A Batch-átírási feladatok ütemezése a lehető legjobb megoldás szerint történik. Jelenleg nincs becslés arra az időpontra, amikor a feladatok a futó állapotba változnak. A normál rendszerterhelés alatt perceken belül meg kell történnie. A futó állapotban a tényleges átírást a rendszer gyorsabban dolgozza fel, mint a valós időben.
+Ez az API nem igényel egyéni végpontokat, és nem rendelkezik egyidejűségi követelményekkel.
 
-A könnyen használható API mellett nem kell egyéni végpontokat telepítenie, és nem rendelkezik egyidejűségi követelményekkel a megfigyeléshez.
+A Batch-átírási feladatok ütemezése a lehető legjobb megoldás szerint történik.
+Nem lehet megbecsülni, ha a feladat futási állapotba változik, de a normál rendszerterhelésnek megfelelően perceken belül meg kell történnie. Ha a futó állapotban van, az átirat gyorsabb, mint a lejátszási idő lejátszási sebessége.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +59,8 @@ A Batch transzkripciós API a következő formátumokat támogatja:
 | MP3    | PCM   | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
 | VORBIS    | OPUS  | 16 bites  | 8 kHz vagy 16 kHz, monó vagy sztereó |
 
-A sztereó hangadatfolyamok esetében a bal és a jobb oldali csatorna az átírás során oszlik meg. Minden csatornához létre kell hozni egy JSON-eredményhalmaz fájlját. A Kimondás után generált időbélyegek lehetővé teszik a fejlesztő számára a rendezett végső átirat létrehozását.
+A sztereó hangadatfolyamok esetében a bal és a jobb oldali csatorna az átírás során oszlik meg. Minden csatornához létre kell hozni egy JSON-eredményhalmaz fájlját.
+Rendezett végleges átirat létrehozásához használja a kiíráskor generált időbélyeget.
 
 ### <a name="configuration"></a>Konfiguráció
 
@@ -93,7 +92,7 @@ A konfigurációs paraméterek JSON-ként vannak megadva (teljes tároló feldol
 }
 ```
 
-Ha egyéni betanított modelleket szeretne használni a Batch-Átírásokban, az alábbihoz hasonló módon hivatkozhat rájuk:
+A következő JSON a Batch-átíráshoz használt egyéni betanított modellt adja meg:
 
 ```json
 {
@@ -128,42 +127,42 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
       `profanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek a `None` káromkodás szűrésének letiltására, a `Masked` káromkodás és a csillagokkal való kiváltására, `Removed` az eredményből való káromkodás eltávolítására, vagy a `Tags` "káromkodás" címkék hozzáadására szolgálnak. Az alapértelmezett beállítás: `Masked`.
+      Nem kötelező, alapértelmezett érték: `Masked` . Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek a `None` káromkodás szűrésének letiltására, a `Masked` káromkodás és a csillagokkal való kiváltására, `Removed` az eredményből való káromkodás eltávolítására, vagy a `Tags` "káromkodás" címkék hozzáadására szolgálnak.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `punctuationMode`
    :::column-end:::
    :::column span="2":::
-      Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek az `None` írásjelek letiltására szolgálnak, a `Dictated` explicit (szóbeli) írásjelek megjelenítéséhez, `Automatic` hogy a dekóder a központozással legyen kezelve, vagy `DictatedAndAutomatic` pedig diktált és automatikus írásjeleket használjon. Az alapértelmezett beállítás: `DictatedAndAutomatic`.
+      Nem kötelező, alapértelmezett érték: `DictatedAndAutomatic` . Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek az `None` írásjelek letiltására szolgálnak, a `Dictated` explicit (szóbeli) írásjelek megjelenítéséhez, `Automatic` hogy a dekóder a központozással legyen kezelve, vagy `DictatedAndAutomatic` pedig diktált és automatikus írásjeleket használjon.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `wordLevelTimestampsEnabled`
    :::column-end:::
    :::column span="2":::
-      Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek `true` lehetővé teszik a Word szintű időbélyegek és `false` a (az alapértelmezett érték) letiltását.
+      Alapértelmezés szerint nem kötelező `false` . Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez.
 :::row-end:::
 :::row:::
    :::column span="1":::
       `diarizationEnabled`
    :::column-end:::
    :::column span="2":::
-      Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely a várt két hangokat tartalmazó monó-csatorna. Az elfogadott értékek `true` lehetővé teszik a diarization és `false` (az alapértelmezett érték) letiltását. Azt is megköveteli, hogy `wordLevelTimestampsEnabled` igaz értékre legyen állítva.
+      Alapértelmezés szerint nem kötelező `false` . Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely a várt két hangokat tartalmazó monó-csatorna. Megjegyzés: a használatához a szükséges értékre `wordLevelTimestampsEnabled` kell állítani `true` .
 :::row-end:::
 :::row:::
    :::column span="1":::
       `channels`
    :::column-end:::
    :::column span="2":::
-      A feldolgozandó csatornaszám választható tömbje. Itt megadható a hangfájlban található elérhető csatornák egy részhalmaza (például `0` csak). Ha nincs megadva, a rendszer a csatornákat `0` és `1` az alapértelmezettként írja le őket.
+      Nem kötelező, `0` és `1` alapértelmezés szerint az átirata. A feldolgozandó csatorna-számok tömbje. Itt megadható a hangfájlban található elérhető csatornák egy részhalmaza (például `0` csak).
 :::row-end:::
 :::row:::
    :::column span="1":::
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      Az átiratok befejezését követően nem választható időtartam az átírások automatikus törléséhez. A a `timeToLive` tömeges feldolgozás során hasznos, hogy a rendszer végül törölni lehessen őket (például: `PT12H` ). Ha nincs megadva, vagy a értékre van állítva `PT0H` , az átírás nem lesz automatikusan törölve.
+      Nem kötelező, alapértelmezés szerint nincs törlés. Az átiratok befejezését követő automatikus törlési időtartam. A a `timeToLive` tömeges feldolgozás során hasznos, hogy a rendszer végül törölni lehessen őket (például `PT12H` 12 órára).
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -175,43 +174,44 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 
 ### <a name="storage"></a>Storage
 
-A Batch átirata támogatja az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) -t, hogy hang-és írási átírásokat olvasson a tárolóba.
+A Batch-átírás egy internetes URI-n keresztül képes olvasni a hangot, és az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)használatával olvasási vagy írási átírásokat tud olvasni.
 
 ## <a name="batch-transcription-result"></a>Köteg átírásának eredménye
 
-Minden bemeneti hang esetében egy átírási eredményű fájl jön létre. Az eredményül kapott fájlok listáját az [átírási fájlok](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)meghívásával kérheti le. Ez a metódus az átíráshoz tartozó találati fájlok listáját adja vissza. Egy adott bemeneti fájl átírási fájljának megkereséséhez szűrje az összes visszaadott fájlt a és a értékkel `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` .
+Minden hangbemenethez létrejön egy átírási eredmény fájl.
+Az [átírási fájlok beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles) művelet az átíráshoz tartozó találatok listáját adja vissza. Egy adott bemeneti fájl átírási fájljának megkereséséhez szűrje az összes visszaadott fájlt a és a értékkel `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` .
 
-Minden átírási eredmény fájlja a következő formátumú:
+Az átírási eredmények fájljának formátuma a következő:
 
 ```json
 {
-  "source": "...",                                                 // the sas url of a given contentUrl or the path relative to the root of a given container
-  "timestamp": "2020-06-16T09:30:21Z",                             // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
-  "durationInTicks": 41200000,                                     // total audio duration in ticks (1 tick is 100 nanoseconds)
-  "duration": "PT4.12S",                                           // total audio duration, ISO 8601 encoded duration
-  "combinedRecognizedPhrases": [                                   // concatenated results for simple access in single string for each channel
+  "source": "...",                      // sas url of a given contentUrl or the path relative to the root of a given container
+  "timestamp": "2020-06-16T09:30:21Z",  // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
+  "durationInTicks": 41200000,          // total audio duration in ticks (1 tick is 100 nanoseconds)
+  "duration": "PT4.12S",                // total audio duration, ISO 8601 encoded duration
+  "combinedRecognizedPhrases": [        // concatenated results for simple access in single string for each channel
     {
-      "channel": 0,                                                // channel number of the concatenated results
+      "channel": 0,                     // channel number of the concatenated results
       "lexical": "hello world",
       "itn": "hello world",
       "maskedITN": "hello world",
       "display": "Hello world."
     }
   ],
-  "recognizedPhrases": [                                           // results for each phrase and each channel individually
+  "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",                              // recognition state, e.g. "Success", "Failure"
-      "channel": 0,                                                // channel number of the result
-      "offset": "PT0.07S",                                         // offset in audio of this phrase, ISO 8601 encoded duration 
-      "duration": "PT1.59S",                                       // audio duration of this phrase, ISO 8601 encoded duration
-      "offsetInTicks": 700000.0,                                   // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
-      "durationInTicks": 15900000.0,                               // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "channel": 0,                     // channel number of the result
+      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
+      "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
+      "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
+      "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
       
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
-          "confidence": 0.898652852,                               // confidence value for the recognition of the whole phrase
-          "speaker": 1,                                            // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
+          "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
+          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",
@@ -247,7 +247,7 @@ Az eredmény a következő formákat tartalmazza:
 
 :::row:::
    :::column span="1":::
-      **Űrlap**
+      **Mező**
    :::column-end:::
    :::column span="2":::
       **Tartalom**
@@ -285,9 +285,9 @@ Az eredmény a következő formákat tartalmazza:
 
 A Diarization a hangszórók elválasztásának folyamata egy hanganyagban. A Batch-folyamat támogatja a diarization, és képes a Mono Channel-felvételek két hangszórójának felismerésére. A szolgáltatás nem érhető el a sztereó felvételeken.
 
-Az diarization-mel rendelkező átiratok kimenete `Speaker` minden egyes átmásolt kifejezéshez tartalmaz egy bejegyzést. Ha a diarization nincs használatban, a tulajdonság `Speaker` nem szerepel a JSON-kimenetben. A diarization két hangokat támogatunk, így a hangszórók a vagy a néven azonosíthatók `1` `2` .
+Az diarization-mel rendelkező átiratok kimenete `Speaker` minden egyes átmásolt kifejezéshez tartalmaz egy bejegyzést. Ha a diarization nincs használatban, a `Speaker` tulajdonság nem szerepel a JSON-kimenetben. A diarization két hangokat támogatunk, így a hangszórók a vagy a néven azonosíthatók `1` `2` .
 
-A diarization igényléséhez egyszerűen hozzá kell adnia a megfelelő paramétert a HTTP-kérelemben az alább látható módon.
+A diarization igényléséhez adja hozzá a `diarizationEnabled` tulajdonságot úgy, hogy `true` az alábbihoz hasonló HTTP-kérést adjon meg.
 
  ```json
 {
@@ -315,7 +315,7 @@ A Batch transzkripciós szolgáltatás nagy számú beküldött átírást képe
 
 A teljes minták a [GitHub minta adattárában](https://aka.ms/csspeech/samples) érhetők el az `samples/batch` alkönyvtáron belül.
 
-Ha egyéni modellt szeretne használni, frissítse a mintát az előfizetési adatokkal, a szolgáltatási régióval, az adott hangfájlra mutató SAS URI-val, és adja meg a modell helyét.
+Frissítse a mintát az előfizetési adatokkal, a szolgáltatási régióval, a hangfájlra mutató URI-val, és a modell helyére, ha egyéni modellt használ.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
 
@@ -325,17 +325,15 @@ A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezut
 
 Az előző hívásokkal kapcsolatos részletes információkért tekintse meg a [hencegő dokumentumot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). Az itt látható teljes minta esetében lépjen a [githubra](https://aka.ms/csspeech/samples) az `samples/batch` alkönyvtárban.
 
-Jegyezze fel a hang-és átírási állapot küldésének aszinkron beállítását. A létrehozott ügyfél egy .NET HTTP-ügyfél. Létezik egy `PostTranscriptions` módszer a hangfájl részleteinek elküldésére, valamint az `GetTranscriptions` állapotok fogadására szolgáló metódusra. `PostTranscriptions` egy leírót ad vissza, és a `GetTranscriptions` használatával létrehoz egy leírót az átirat állapotának lekéréséhez.
+Ez a példa egy aszinkron telepítőt használ a hang és a fogadás átírási állapotának elküldéséhez.
+A `PostTranscriptions` metódus elküldi a hangfájl részleteit, és a `GetTranscriptions` metódus fogadja az állapotokat.
+`PostTranscriptions` egy leírót ad vissza, és a `GetTranscriptions` használatával létrehoz egy leírót az átirat állapotának lekéréséhez.
 
-Az aktuális mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt használja a fájl vagy fájlok átírásához. A modell megadásához ugyanezt a módszert kell átadni az egyéni modellhez tartozó modell-referenciára.
+Ez a mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt használja a fájl vagy fájlok átírásához. A modell megadásához ugyanezt a módszert kell átadni az egyéni modellhez tartozó modell-referenciára.
 
 > [!NOTE]
 > Az alapértékek átírásakor nem kell deklarálnia az alapmodell AZONOSÍTÓját.
 
-## <a name="download-the-sample"></a>A minta letöltése
-
-A mintát a `samples/batch` [GitHub-minta adattárában](https://aka.ms/csspeech/samples)található könyvtárban találja.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Beszéd a Text V3 API-hoz – dokumentáció](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

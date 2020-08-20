@@ -3,15 +3,15 @@ title: Mit takar a Windows Virtual Desktop? – Azure
 description: A Windows rendszerű virtuális asztal áttekintése.
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002372"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661112"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
@@ -46,7 +46,7 @@ A Windows virtuális asztal használatával méretezhető és rugalmas környeze
 
 A virtuális asztalok üzembe helyezéséhez és kezeléséhez a következőket teheti:
 
-* A Windows rendszerű virtuális asztali PowerShell és a REST felületek segítségével konfigurálja a gazdagépeket, hozzon létre alkalmazásokat, rendeljen hozzá felhasználókat, és tegye közzé az erőforrásokat.
+* A Azure Portal, a Windows rendszerű virtuális asztali PowerShell és a REST felületek használatával konfigurálhatja a gazdagépeket, létrehozhat alkalmazás-csoportokat, felhasználókat rendelhet hozzá, és közzétehet erőforrásokat.
 * Teljes asztali vagy egyéni távoli alkalmazások közzététele egyetlen gazdagépről, egyéni Alkalmazáscsoport létrehozása különböző felhasználói csoportokhoz, vagy akár több alkalmazás-csoporthoz is rendelhet felhasználókat a képek számának csökkentése érdekében.
 * A környezet kezelése során a beépített delegált hozzáférés használatával szerepköröket rendelhet hozzá, és diagnosztikai adatokat gyűjthet a különböző konfigurációs vagy felhasználói hibák megismeréséhez.
 * A hibák elhárításához használja az új diagnosztikai szolgáltatást.
@@ -61,7 +61,7 @@ A felhasználókat a virtuális asztalokhoz is hozzárendelheti és összekapcso
 
 Néhány dolog szükséges a Windows rendszerű virtuális asztali környezet beállításához és a felhasználók Windows rendszerű asztali számítógépekhez és alkalmazásokhoz való sikeres összekapcsolásához.
 
-Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendszerekhez, ezért győződjön meg arról, hogy rendelkezik a [megfelelő licenccel](https://azure.microsoft.com/pricing/details/virtual-desktop/) a felhasználók számára a telepíteni kívánt asztali és alkalmazások alapján:
+A következő operációs rendszereket támogatjuk, ezért győződjön meg arról, hogy rendelkezik a [megfelelő licenccel](https://azure.microsoft.com/pricing/details/virtual-desktop/) a felhasználók számára a telepíteni kívánt asztal és alkalmazások alapján:
 
 |Operációs rendszer|Szükséges licenc|
 |---|---|
@@ -71,11 +71,17 @@ Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendsze
 
 Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
 
-* Egy [Azure Active Directory](/azure/active-directory/)
-* A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következők egyikével konfigurálhatja:
-  * Azure AD Connect (hibrid szervezetekhez)
-  * Azure AD Domain Services (hibrid vagy Felhőbeli szervezetekhez)
-* Olyan Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
+* Egy [Azure Active Directory](/azure/active-directory/).
+* A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a Azure AD Connect (hibrid szervezetek esetében) vagy Azure AD Domain Services (hibrid vagy Felhőbeli szervezetek esetében) használatával is konfigurálhatja.
+  * A Windows Server AD Azure Active Directory szinkronizálva. A felhasználó a Windows Server AD-ből származik, és a Windows rendszerű virtuális asztali gép a Windows Server AD-tartományhoz van csatlakoztatva.
+  * A Windows Server AD Azure Active Directory szinkronizálva. A felhasználó a Windows Server AD-ből származik, és a Windows rendszerű virtuális asztali gép csatlakoztatva van Azure AD Domain Services tartományhoz.
+  * Azure AD Domain Services tartomány. A felhasználó forrása Azure Active Directory, és a Windows rendszerű virtuális asztali gép csatlakoztatva van Azure AD Domain Services tartományhoz.
+* Egy Azure-előfizetés, amely ugyanahhoz az Azure AD-bérlőhöz lett felhasználva, amely egy olyan virtuális hálózatot tartalmaz, amely vagy a Windows Server Active Directory vagy az Azure AD DS példányhoz csatlakozik.
+
+A Windows rendszerű virtuális asztalhoz való kapcsolódásra vonatkozó felhasználói követelmények:
+
+* A felhasználónak ugyanabból a Active Directory kell származnia, amely az Azure AD-hez csatlakozik. A Windows virtuális asztal nem támogatja a B2B-vagy MSA-fiókokat.
+* A Windows rendszerű virtuális asztalra való előfizetéshez használt egyszerű felhasználónévnek léteznie kell abban a Active Directory tartományban, amelyhez a virtuális gép csatlakozik.
 
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
@@ -91,7 +97,7 @@ A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a 
 
 Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálózat megfelel a következő követelményeknek:
 
-* Az ügyfél hálózatáról az Azure-régióba, ahol a gazdagépek üzembe helyezése megtörtént, a RTT késése nem haladhatja meg a 150 MS-ot.
+* Az ügyfél hálózatáról az Azure-régióba, ahol a gazdagépek üzembe helyezése megtörtént, a RTT késése nem haladhatja meg a 150 MS-ot. A [Experience kalkulátor](https://azure.microsoft.com/services/virtual-desktop/assessment) használatával megtekintheti a kapcsolatok állapotát és az ajánlott Azure-régiót.
 * A hálózati forgalom az ország/régió határain kívül is eltarthat, amikor asztali számítógépeket és alkalmazásokat futtató virtuális gépek csatlakoznak a felügyeleti szolgáltatáshoz.
 * A hálózati teljesítmény optimalizálása érdekében javasoljuk, hogy a munkamenet-gazdagép virtuális gépei a közös elhelyezésű azonos Azure-régióban legyenek.
 
@@ -111,7 +117,7 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 > [!IMPORTANT]
 > A Windows virtuális asztal jelenleg nem támogatja a Távoli asztal ügyfelet a Windows áruházból. Az ügyfél támogatása egy későbbi kiadásban lesz hozzáadva.
 
-Ha többet szeretne megtudni az URL-címekről, tiltsa le a távoli ügyfelek használatát a [biztonságos URL-címek listájában](safe-url-list.md).
+Ha többet szeretne megtudni az URL-címekről, fel kell oldania az ügyfelek használatát, lásd a [biztonságos URL-címek listáját](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Támogatott virtuális gépek operációsrendszer-lemezképei
 
@@ -130,10 +136,10 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|
-|Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|
+|Windows 10 Enterprise (több munkamenet), 2004-es verzió|Igen|Igen|Igen|Igen|
+|Windows 10 Enterprise (több munkamenet), 1909-es verzió|Igen|Igen|Igen|Igen|
+|Windows 10 Enterprise (több munkamenet), 1903-es verzió|Igen|Igen|Nem|Nem|
+|Windows 10 Enterprise (több munkamenet), 1809-es verzió|Igen|Igen|Nem|Nem|
 |Windows 7 Enterprise|Igen|Igen|Nem|Nem|
 |Windows Server 2019|Igen|Igen|Nem|Nem|
 |Windows Server 2016|Igen|Igen|Igen|Igen|

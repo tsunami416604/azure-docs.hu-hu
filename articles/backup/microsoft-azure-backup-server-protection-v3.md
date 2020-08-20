@@ -3,12 +3,12 @@ title: Milyen Azure Backup Server v3 RTM biztonsági mentést készíthet
 description: Ez a cikk egy védelmi mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amely Azure Backup a v3 RTM védelmét szolgálja.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611976"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661282"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM védelmi mátrix
 
@@ -32,9 +32,9 @@ A következő mátrix felsorolja, hogy mit lehet védeni a Azure Backup Server v
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2012/2012 SP1 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli<br /><br />Azure Backup Server legalább Windows Server 2012 R2 rendszeren kell futnia a Windows Server 2012 deduplikált köteteinek védeleméhez.|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2012/2012 SP1 – Datacenter és Standard|Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut)<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl<br /><br />Azure Backup Server legalább Windows Server 2012 R2 rendszeren kell futnia a Windows Server 2012 deduplikált köteteinek védeleméhez.|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2012/2012 SP1 – Datacenter és Standard|Windows rendszerű virtuális gép VMware-ben (a VMware-ben futó Windows virtuális gépen futó munkaterhelések védelme)<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli<br /><br />Azure Backup Server legalább Windows Server 2012 R2 rendszeren kell futnia a Windows Server 2012 deduplikált köteteinek védeleméhez.|
-|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2<br />SP1 frissítéssel kell rendelkeznie, majd telepítse a [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) frissítést|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
-|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut)<br /> <br /> Azure Stack|V3, V2<br />SP1 frissítéssel kell rendelkeznie, majd telepítse a [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) frissítést|Kötet, megosztás, mappa, fájl|
-|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Windows rendszerű virtuális gép VMware-ben (a VMWare-ben futó Windows virtuális gépen futó munkaterhelések védelme)<br /> <br /> Azure Stack|V3, V2<br />SP1 frissítéssel kell rendelkeznie, majd telepítse a [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) frissítést|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2<br />A SP1 verziót kell futtatnia, és telepítenie kell a [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) -t|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut)<br /> <br /> Azure Stack|V3, V2<br />A SP1 verziót kell futtatnia, és telepítenie kell a [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) -t|Kötet, megosztás, mappa, fájl|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Windows rendszerű virtuális gép VMware-ben (a VMWare-ben futó Windows virtuális gépen futó munkaterhelések védelme)<br /> <br /> Azure Stack|V3, V2<br />A SP1 verziót kell futtatnia, és telepítenie kell a [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) -t|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|Nem támogatott|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Windows rendszerű virtuális gép VMware-ben (a VMware-ben futó Windows virtuális gépen futó munkaterhelések védelme)<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Storage Server 2008|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|

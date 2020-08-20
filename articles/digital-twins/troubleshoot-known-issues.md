@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590166"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661486"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -69,9 +69,9 @@ A megoldáshoz az alkalmazások explicit módon használják az Azure. Identity 
 
 ### <a name="possible-causes"></a>Lehetséges okok
 
-Ez az Azure Digital Twins és az Azure. Identity Library legújabb verziója közötti inkompatibilitás. **1.2.0**. 
+Ez az Azure. Identity Library ( **1.2.0**) legújabb verziójával kapcsolatos nyitott problémához kapcsolódik: a [*hitelesítés nem sikerült a InteractiveBrowserCredential használatakor*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
 
-Ez a probléma akkor jelenik meg, ha az alkalmazásban **1.2.0** használ, vagy ha egy verzió megadása nélkül adja hozzá a könyvtárat a projekthez (ez a legújabb verzióra is vonatkozik).
+Ez a probléma akkor jelenik meg, ha az Azure Digital Twins-alkalmazásban **1.2.0** használ, vagy ha egy verzió megadása nélkül adja hozzá a könyvtárat a projekthez (ez a legújabb verzióra is vonatkozik).
 
 ## <a name="next-steps"></a>További lépések
 

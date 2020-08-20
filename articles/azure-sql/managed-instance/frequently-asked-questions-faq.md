@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210512"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661418"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -223,12 +223,15 @@ A tárolási teljesítmény optimalizálása érdekében tekintse [meg a által�
 Nem, a biztonsági mentési tár nem vonható le a felügyelt példány tárolóhelyéről. A biztonsági mentési tár a példány tárolóhelytől független, és nem korlátozódik a méretre. A biztonsági mentési tárterületet a példány-adatbázisok biztonsági mentésének időtartamára korlátozza, amely akár 35 napig is konfigurálható. Részletekért lásd: [automatizált biztonsági mentések](../database/automated-backups-overview.md).
 
 **Hogyan tekinthetem meg, ha automatizált biztonsági mentés készül a felügyelt példányon?**
+
 Ha nyomon szeretné követni, hogy mikor hajtottak végre automatizált biztonsági mentéseket a felügyelt példányon, tekintse meg [Az Azure SQL felügyelt példányának automatizált biztonsági mentését](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)ismertető témakört.
 
 **Támogatott az igény szerinti biztonsági mentés?**
+
 Igen, létrehozhat egy csak másolatot tartalmazó teljes biztonsági mentést az Azure Blob Storageban, de csak felügyelt példányban lehet helyreállítani. Részletekért lásd: [csak másolási biztonsági mentés](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Azonban a csak másolásra alkalmas biztonsági mentés nem lehetséges, ha az adatbázist a szolgáltatás által felügyelt TDE titkosítja, mivel a titkosításhoz használt tanúsítvány nem érhető el. Ilyen esetben használja az időponthoz való visszaállítás funkciót, hogy az adatbázist másik SQL felügyelt példányra helyezze át, vagy váltson az ügyfél által felügyelt kulcsra.
 
 **A felügyelt példányok natív visszaállítása (a. bak fájlokból) támogatott?**
+
 Igen, a SQL Server 2005 + verziók esetében támogatott és elérhető.  A natív visszaállítás használatához töltse fel a. bak fájlt az Azure Blob Storage-ba, és hajtsa végre a T-SQL-parancsokat. További részletekért lásd: [natív visszaállítás az URL-](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)címről.
 
 ## <a name="business-continuity"></a>Az üzletmenet folytonossága
@@ -296,7 +299,7 @@ Ez nem kötelező. [Létrehozhat egy virtuális hálózatot az Azure SQL felügy
 
 Nem. Jelenleg nem támogatott olyan felügyelt példány elhelyezése olyan alhálózatban, amely már tartalmaz más típusú erőforrásokat.
 
-## <a name="connectivity"></a>Hálózati kapcsolat 
+## <a name="connectivity"></a>Kapcsolatok 
 
 **Tudok csatlakozni a felügyelt példányhoz IP-cím használatával?**
 
@@ -503,6 +506,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 (cserélje le a "test" értéket a kívánt bejelentkezési névvel, és állítsa be a szabályzatot és a lejárati értékeket)
+
+
+## <a name="service-updates"></a>Szolgáltatási hírek
+
+**Mi az SQL felügyelt példányának tervezett karbantartási eseménye?**
+
+Lásd: [Az Azure karbantartási eseményeinek tervezése az SQL felügyelt példányában](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance). 
+
 
 ## <a name="azure-feedback-and-support"></a>Azure-visszajelzés és-támogatás
 

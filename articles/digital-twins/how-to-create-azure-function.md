@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ab013a310997f43d1019d849e87c0cf1b0d151ee
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589401"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661095"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -95,8 +95,8 @@ A választott eszközöktől függően a Visual Studio Package Managerrel vagy a
 Adja hozzá a következő using utasításokat az Azure-függvényhez.
 
 ```csharp
-using Azure.Identity;
 using Azure.DigitalTwins.Core;
+using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
@@ -157,7 +157,7 @@ A rendszerfelügyelt identitás létrehozásához használja a következő paran
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-A következő parancs *principalId* értékének használatával rendelje hozzá a Function alkalmazás identitását az Azure Digital Twins-példány *tulajdonosi* szerepköréhez:
+Az alábbi parancs *principalId* értékének használatával rendelje hozzá a Function alkalmazás identitását az Azure Digital *Twins tulajdonos (előzetes verzió)* szerepkörhöz az Azure Digital Twins-példányhoz. Ezzel a művelettel a példányban az adatsík-tevékenységek elvégzéséhez a függvény alkalmazás engedélyének kell megadnia.
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"

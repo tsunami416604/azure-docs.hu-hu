@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/20/2020
+ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211515"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660969"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -147,9 +147,18 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
    using Azure.Search.Documents.Models;
    ```
 
-1. Cserélje le a [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) -t a [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential).
+1. Az ügyfél-hitelesítési kód módosítása. A korábbi verziókban az ügyfél objektumának tulajdonságaival állíthatja be az API-kulcsot (például a [SearchServiceClient. hitelesítő adatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) tulajdonságot). A jelenlegi verzióban a [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) osztály használatával adja át a kulcsot hitelesítő adatként, így ha szükséges, az API-kulcsot új ügyfélalkalmazások létrehozása nélkül is frissítheti.
 
-1. Ügyfél-referenciák frissítése az indexelő szolgáltatással kapcsolatos objektumokhoz. Ha indexelő, adatforrásokat vagy szakértelmével használ, módosítsa az ügyfél [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)mutató hivatkozásait. Ez az ügyfél a 11-es verzióban új, és nincs előzménye.
+   Az ügyfél tulajdonságainak egyszerűsítése csak `Endpoint` , `ServiceName` és `IndexName` (ahol szükséges). A következő példa a rendszer [URI](https://docs.microsoft.com/dotnet/api/system.uri) osztályát használja, hogy a végpontot és a [környezeti](https://docs.microsoft.com//dotnet/api/system.environment) osztályt adja meg a kulcs értékének olvasásához:
+
+   ```csharp
+   Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+   AzureKeyCredential credential = new AzureKeyCredential(
+      Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+   SearchIndexClient indexClient = new SearchIndexClient(endpoint, credential);
+   ```
+
+1. Új ügyfél-referenciák hozzáadása az indexelő szolgáltatással kapcsolatos objektumokhoz. Ha indexelő, adatforrásokat vagy szakértelmével használ, módosítsa az ügyfél [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)mutató hivatkozásait. Ez az ügyfél a 11-es verzióban új, és nincs előzménye.
 
 1. A lekérdezésekhez és az adatimportáláshoz tartozó ügyfél-referenciák frissítése. A [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) példányait [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)értékre kell módosítani. A félreértések elkerülése érdekében győződjön meg arról, hogy a következő lépéshez való továbblépés előtt minden példányt elkapjon.
 
@@ -173,7 +182,7 @@ A szolgáltatási verziók esetében a 10 – 11 értékre való áttérés a k�
 
 + A null értékek [rendezett eredményei](search-query-odata-orderby.md) módosultak ebben a verzióban, és először Null érték jelenik meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` . Ha kódot írt a null értékek rendezésének kezeléséhez, tekintse át és távolítsa el ezt a kódot, ha már nincs rá szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Példák a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)

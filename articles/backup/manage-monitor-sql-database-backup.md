@@ -3,12 +3,12 @@ title: SQL Server adatbázisok kezelése és figyelése Azure-beli virtuális g�
 description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok felügyeletét és figyelését ismerteti.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537304"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659585"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése és monitorozása
 
@@ -58,7 +58,7 @@ Több módon is leállíthatja a SQL Server-adatbázisok biztonsági mentését:
 Ha úgy dönt, hogy kihagyja a helyreállítási pontokat, tartsa szem előtt az alábbi adatokat:
 
 - Az összes helyreállítási pont érintetlen marad, és az összes törlés leáll a védelem leállításakor az adatmegőrzés során.
-- A védett példány és a felhasznált tárterület után díjat számítunk fel. További információ: [Azure Backup díjszabása](https://azure.microsoft.com/pricing/details/backup/).
+- A védett példányért és a felhasznált tárterületért díjat számítunk fel. További információ: [Azure Backup díjszabása](https://azure.microsoft.com/pricing/details/backup/).
 - Ha töröl egy adatforrást a biztonsági mentések leállítása nélkül, az új biztonsági mentések sikertelenek lesznek. A régi helyreállítási pontok a szabályzatnak megfelelően lejárnak, de egy utolsó helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentéseket, és törli az adatokat.
 
 Az adatbázis védelmének leállítása:
@@ -117,24 +117,6 @@ Míg a csak a teljes biztonsági mentés megőrzési időtartamát kell megadnia
 
 További információ: [SQL Server biztonsági mentési típusok](backup-architecture.md#sql-server-backup-types).
 
-## <a name="unregister-a-sql-server-instance"></a>SQL Server példány regisztrációjának törlése
-
-A védelem letiltása, de a tár törlése előtt törölje a SQL Server példány regisztrációját:
-
-1. A tároló irányítópultjának **kezelés**területén válassza a **biztonsági mentési infrastruktúra**elemet.  
-
-   ![Biztonsági mentési infrastruktúra kiválasztása](./media/backup-azure-sql-database/backup-infrastructure-button.png)
-
-2. A **felügyeleti kiszolgálók**területen válassza a **védett kiszolgálók**elemet.
-
-   ![Védett kiszolgálók kiválasztása](./media/backup-azure-sql-database/protected-servers.png)
-
-3. A **védett kiszolgálók**lapon válassza ki a regisztrálni kívánt kiszolgálót. A tár törléséhez törölnie kell az összes kiszolgálót.
-
-4. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése**lehetőséget.
-
-   ![Törlés kiválasztása](./media/backup-azure-sql-database/delete-protected-server.jpg)
-
 ## <a name="modify-policy"></a>Házirend módosítása
 
 Módosítsa a szabályzatot a biztonsági mentés gyakoriságának vagy a megőrzési tartománynak a módosításához.
@@ -160,11 +142,31 @@ Egy kattintással kijavíthatja az összes érintett elem szabályzatának verzi
 
   ![Inkonzisztens házirend javítása](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
 
+## <a name="unregister-a-sql-server-instance"></a>SQL Server példány regisztrációjának törlése
+
+A védelem letiltása, de a tár törlése előtt törölje a SQL Server példány regisztrációját:
+
+1. A tároló irányítópultjának **kezelés**területén válassza a **biztonsági mentési infrastruktúra**elemet.  
+
+   ![Biztonsági mentési infrastruktúra kiválasztása](./media/backup-azure-sql-database/backup-infrastructure-button.png)
+
+2. A **felügyeleti kiszolgálók**területen válassza a **védett kiszolgálók**elemet.
+
+   ![Védett kiszolgálók kiválasztása](./media/backup-azure-sql-database/protected-servers.png)
+
+3. A **védett kiszolgálók**lapon válassza ki a regisztrálni kívánt kiszolgálót. A tár törléséhez törölnie kell az összes kiszolgálót.
+
+4. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése**lehetőséget.
+
+   ![Törlés kiválasztása](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>A bővítmény újbóli regisztrálása a SQL Server VM
 
-Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény hatással lehet az egyik ok vagy a másikra. Ilyen esetekben a virtuális gépen aktivált összes művelet sikertelen lesz. Előfordulhat, hogy újra regisztrálnia kell a bővítményt a virtuális gépen. A művelet **ismételt regisztrálása** újratelepíti a munkaterhelési biztonsági mentési bővítményt a virtuális gépen a folytatáshoz.
+Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény az egyik ok vagy egy másikra hatással lesz. Ilyen esetekben a virtuális gépen aktivált összes művelet sikertelen lesz. Előfordulhat, hogy újra regisztrálnia kell a bővítményt a virtuális gépen. Az **ismételt regisztrálási** művelet újratelepíti a munkaterhelési biztonsági mentési bővítményt a virtuális gépen a folytatáshoz. Ezt a lehetőséget a helyreállítási tár **biztonsági mentési infrastruktúra** területén találja.
 
-Ezt a beállítást körültekintően használhatja. Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ez azt eredményezheti, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet megkezdése előtt kérjük, ellenőrizze, hogy van-e egy vagy több [tünet](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
+![Biztonsági mentési infrastruktúra alatt lévő védett kiszolgálók](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
+
+Ezt a beállítást körültekintően használhatja. Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ennek hatására előfordulhat, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet elindítása előtt keressen egy vagy több [tünetet](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
 
 ## <a name="next-steps"></a>További lépések
 

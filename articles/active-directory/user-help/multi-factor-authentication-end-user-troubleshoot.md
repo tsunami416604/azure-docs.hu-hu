@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036674"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661437"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros hitelesítéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
 
@@ -31,14 +32,10 @@ Ha a 2FV be van kapcsolva, a fiókba való bejelentkezéshez a következő adatm
 
 a 2FV sokkal biztonságosabb, mint a jelszó, mert a 2FV-nek szüksége _van_rá _, valamint egy_ adott dologra. Egyetlen hacker sem rendelkezik a fizikai telefonnal.
 
-<center>
-
-![Fogalmi hitelesítési módszerek képe](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
 >Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti Azure AD-környezetét az [Azure ad dokumentációjában](https://docs.microsoft.com/azure/active-directory).
->
->Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával való használatra szánjuk, amelyet a Szervezete (például: alain@contoso.com ) biztosít. Ha problémák merülnek fel a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, azaz egy olyan fiókkal, amelyet saját maga állított be (például danielle@outlook.com ), tekintse [meg a kétfaktoros ellenőrzés bekapcsolását a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+Ennek a tartalomnak a célja, hogy segítse Önt a munkahelyi vagy iskolai Fiókjával kapcsolatban, amely a szervezet által megadott fiók (például dritan@contoso.com ). Ha problémái vannak a kétfaktoros ellenőrzéssel egy személyes Microsoft-fiókon, amely egy saját maga által beállított fiók (például danielle@outlook.com ), tekintse [meg a kétfaktoros ellenőrzés bekapcsolását a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Nekem nincs mobileszközom
 
@@ -71,7 +68,7 @@ Próbálja ki ezt | Útmutató információk
 --------- | ------------
 Mobil eszköz újraindítása | Előfordulhat, hogy az eszköz csak a frissítésre van szüksége. Az eszköz újraindításakor az összes háttérbeli folyamat és szolgáltatás véget ér. Az újraindítás az eszköz alapvető összetevőit is leállítja. Az eszköz újraindításakor bármely szolgáltatás vagy összetevő frissül.
 Ellenőrizze, hogy helyesek-e a biztonsági adatok | Győződjön meg arról, hogy a biztonsági ellenőrzési módszer adatai pontosak, különösen a telefonszámok. Ha helytelen telefonszámot helyez üzembe, az összes riasztás nem megfelelő számú. Szerencsére a felhasználó nem fog tudni bármit megtenni a riasztásokkal, de nem segít bejelentkezni a fiókjába. Az adatok helyességének biztosításához tekintse meg a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikket.
-Ellenőrizze, hogy be vannak-e kapcsolva az értesítések | Győződjön meg arról, hogy a mobileszköz értesítések bekapcsolva. Győződjön meg arról, hogy a következő értesítési módok engedélyezettek: <br/><br/> &bull;Telefonhívások <br/> &bull;A hitelesítési alkalmazás <br/> &bull;Szöveges üzenetküldési alkalmazás <br/><br/> Győződjön meg arról, hogy ezek a módok olyan riasztást hoznak létre, amely _látható_ az eszközön.
+Ellenőrizze, hogy be vannak-e kapcsolva az értesítések | Győződjön meg arról, hogy a mobileszköz értesítések bekapcsolva. Győződjön meg arról, hogy a következő értesítési módok engedélyezettek: <br/><br/> &bull; Telefonhívások <br/> &bull; A hitelesítési alkalmazás <br/> &bull; Szöveges üzenetküldési alkalmazás <br/><br/> Győződjön meg arról, hogy ezek a módok olyan riasztást hoznak létre, amely _látható_ az eszközön.
 Győződjön meg arról, hogy rendelkezik egy eszköz-és internetkapcsolattal | Győződjön meg arról, hogy a telefonhívások és a szöveges üzenetek bekerülnek a mobileszközön. Ismerőse van, és SMS-üzenetet küld Önnek, hogy mindkét fél megkapja. Ha nem kapja meg a hívást vagy a szöveget, először ellenőrizze, hogy a mobileszköz be van-e kapcsolva. Ha az eszköz be van kapcsolva, de még nem fogadja el a hívást vagy a szöveget, valószínűleg probléma van a hálózattal. A szolgáltatóval kell kommunikálnia. Ha gyakran vannak jelekkel kapcsolatos problémák, javasoljuk, hogy telepítse és használja a [Microsoft Authenticator alkalmazást](user-help-auth-app-download-install.md) a mobileszközön. A hitelesítő alkalmazás véletlenszerű biztonsági kódokat tud létrehozni a bejelentkezéshez, és nem igényel semmilyen cellahivatkozást vagy internetkapcsolatot.
 Kikapcsolás ne zavarja | Győződjön meg arról, hogy nincs bekapcsolva a mobileszköz **ne zavarja** a funkcióját. Ha ez a funkció be van kapcsolva, az értesítések nem kaphatnak riasztást a mobileszközön. A szolgáltatás kikapcsolásával kapcsolatos útmutatásért tekintse meg a mobileszköz kézikönyvét.
 Telefonszámok feloldásának feloldása | A Egyesült Államok a Microsoft hanghívásai a következő számokból származnak: + 1 (866) 539 4191, + 1 (855) 330 8653 és + 1 (877) 668 6536.

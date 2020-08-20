@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06fda777cbebd8034ac4fd9254a4bd172d011a4
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833587"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661503"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Text to Speech gyakori kérdések
 
@@ -59,7 +59,7 @@ További szolgáltatásokat biztosítunk a parancsfájlok rögzítésére való 
 
 **K: a kérelmek szabályozva vannak?**
 
-**A**: a REST API a standard előfizetések esetében 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket. Az ingyenes szintű (F0) szolgáltatás percenként 20 kérésre van korlátozva.
+**A**: lásd a [Speech Services kvótáit és korlátozásait](speech-services-quotas-and-limits.md).
 
 ## <a name="next-steps"></a>További lépések
 

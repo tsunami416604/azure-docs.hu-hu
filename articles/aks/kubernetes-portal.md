@@ -6,18 +6,21 @@ author: laurenhughes
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: lahugh
-ms.openlocfilehash: 109192efa19605af003dcfb30592c865ce7495b5
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136860"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661350"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
 
 A Azure Portal tartalmaz egy Kubernetes erőforrás-megjelenítőt (előzetes verzió), amely megkönnyíti az Azure Kubernetes szolgáltatás (ak) fürtjében található Kubernetes-erőforrások elérését. A Kubernetes-erőforrások megtekintése a Azure Portal csökkenti a Azure Portal és a parancssori eszköz közötti helyi váltást `kubectl` , így egyszerűsítve a Kubernetes-erőforrások megtekintésének és szerkesztésének élményét. Az erőforrás-megjelenítő jelenleg több erőforrástípust tartalmaz, például központi telepítéseket, hüvelyeket és replikákat.
 
 A Azure Portal Kubernetes-erőforrás nézete lecseréli az [AK-irányítópult bővítményt][kubernetes-dashboard], amely elavultként van beállítva.
+
+>[!NOTE]
+>A capabilty jelenleg nem támogatott a [privát Azure Kubernetes Service-fürtökön](https://docs.microsoft.com/azure/aks/private-clusters).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -78,7 +81,7 @@ A meglévő fürtök esetében előfordulhat, hogy engedélyeznie kell a Kuberne
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portal üzenet a Kubernetes erőforrás nézetének engedélyezéséhez." lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk bemutatja, hogyan érheti el a Kubernetes-erőforrásokat az AK-fürthöz. A YAML és a Kubernetes erőforrás-megjelenítővel elért YAML-fájlok mélyebb megismeréséhez tekintse meg a [központi telepítések és a jegyzékfájlok][deployments] című témakört.
 

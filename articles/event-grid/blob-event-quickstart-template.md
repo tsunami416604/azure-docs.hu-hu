@@ -3,12 +3,12 @@ title: BLOB Storage-események küldése webes végpontnak – sablon
 description: A blob Storage-fiók létrehozásához használja a Azure Event Grid és egy Azure Resource Manager sablont, és fizessen elő eseményeket. Küldje el az eseményeket egy webhookba. "
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460439"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661265"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>BLOB Storage-események átirányítása a webes végpontba ARM-sablon használatával
 
@@ -41,7 +41,7 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json" range="1-91" highlight="40-85":::
+:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
@@ -51,7 +51,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. A következő hivatkozásra kattintva jelentkezzen be az Azure-ba, és nyisson meg egy sablont. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
+1. Kattintson az alábbi hivatkozásra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 

@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/18/2020
+ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386180"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661197"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Csatlakozás helyszíni adatforrásokhoz az Azure Logic Appsből
 
-Miután [telepítette a helyszíni *adatátjárót* egy helyi számítógépre](../logic-apps/logic-apps-gateway-install.md) , és ahhoz, hogy a logikai alkalmazásaiból hozzáférhessen a helyszíni adatforrásokhoz, létre kell hoznia egy átjáró-erőforrást az Azure-ban az átjáró telepítéséhez. Ezután kiválaszthatja ezt az átjáró-erőforrást a Azure Logic Appsben elérhető [helyszíni összekötők](../connectors/apis-list.md#on-premises-connectors) esetében használni kívánt eseményindítókban és műveletekben.
+Miután [telepítette a helyszíni *adatátjárót* egy helyi számítógépre](../logic-apps/logic-apps-gateway-install.md) , és ahhoz, hogy a logikai alkalmazásaiból hozzáférhessen a helyszíni adatforrásokhoz, létre kell hoznia egy átjáró-erőforrást az Azure-ban az átjáró telepítéséhez. Ezután kiválaszthatja ezt az átjáró-erőforrást a Azure Logic Appsben elérhető [helyszíni összekötők](../connectors/apis-list.md#on-premises-connectors) esetében használni kívánt eseményindítókban és műveletekben. Azure Logic Apps támogatja az olvasási és írási műveleteket az adatátjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](/data-integration/gateway/service-gateway-onprem#considerations).
 
 Ez a cikk bemutatja, hogyan hozhatja létre az Azure Gateway-erőforrást egy korábban [telepített átjáróhoz a helyi számítógépen](../logic-apps/logic-apps-gateway-install.md). Az átjáróval kapcsolatos további információkért tekintse meg [az átjáró működését](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)ismertető témakört.
 
@@ -48,7 +48,7 @@ Azure Logic Apps a helyszíni adatátjáró támogatja a helyszíni [összeköt�
 * SQL Server
 * Teradata
 
-Azure Logic Apps támogatja az olvasási és írási műveleteket az adatátjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](/data-integration/gateway/service-gateway-onprem#considerations). Bár maga az átjáró nem jár további költségekkel, a [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md) a Azure Logic Appsban található összekötőre és egyéb műveletekre is vonatkozik.
+A REST vagy a SOAP használatával olyan [Egyéni összekötőket](../logic-apps/custom-connector-overview.md) is létrehozhat, amelyek http vagy HTTPS protokollon keresztül csatlakoznak adatforrásokhoz. Bár maga az átjáró nem jár további költségekkel, a [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md) a Azure Logic Appsban található összekötőre és egyéb műveletekre is vonatkozik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -175,7 +175,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A logikai alkalmazások védelme](./logic-apps-securing-a-logic-app.md)
 * [Gyakori példák és forgatókönyvek logikai alkalmazásokhoz](./logic-apps-examples-and-scenarios.md)
