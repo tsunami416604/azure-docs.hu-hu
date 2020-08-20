@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077966"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606815"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -130,14 +130,15 @@ Más verziók esetében készítse elő a gépeket a táblázatban foglaltak sze
 
 A következő táblázat összefoglalja a fent felsorolt operációs rendszerek automatikusan végrehajtott lépéseit.
 
-| Műveletek                                      | Ügynökön \- alapuló VMware-áttelepítés | Ügynök nélküli VMware-áttelepítés | Hyper\-V   |
+
+| Művelet                                      | Ügynökön \- alapuló VMware-áttelepítés | Ügynök nélküli VMware-áttelepítés | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
 | A Hyper \- V Linux Integration Services telepítése | Igen                           | Igen                        | Nem szükséges |
-| Az Azure soros konzol naplózásának engedélyezése         | Igen                           | Igen                        | No         |
-| Eszköz-hozzárendelési fájl frissítése                      | Yes                           | Nem                         | Nem         |
-| Fstab-bejegyzések frissítése                        | Igen                           | Igen                        | No         |
-| Udev-szabály eltávolítása                            | Igen                           | Igen                        | No         |
-| Hálózati adapterek frissítése                   | Igen                           | Igen                        | No         |
+| Az Azure soros konzol naplózásának engedélyezése         | Igen                           | Igen                        | Nem         |
+| Eszköz-hozzárendelési fájl frissítése                      | Igen                           | Nem                         | Nem         |
+| Fstab-bejegyzések frissítése                        | Igen                           | Igen                        | Nem         |
+| Udev-szabály eltávolítása                            | Igen                           | Igen                        | Nem         |
+| Hálózati adapterek frissítése                   | Igen                           | Igen                        | Nem         |
 | SSH engedélyezése                                  | Nem                            | Nem                         | Nem         |
 
 További információ a [Linux rendszerű virtuális gépek Azure-beli futtatásáról](../virtual-machines/linux/create-upload-generic.md), valamint a népszerű Linux-disztribúciók használati lépéseiről.
@@ -178,12 +179,12 @@ Helyszíni Linux rendszerű gépeken:
 
 Az áttelepítés után hajtsa végre a következő lépéseket a létrehozott Azure-beli virtuális gépeken:
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információ](../virtual-network/virtual-network-public-ip-address.md).
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információk](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Döntse el, hogy melyik módszert szeretné használni a [VMWare virtuális gépek Azure-ba való áttelepítéséhez](server-migrate-overview.md) , vagy a [Hyper-V virtuális gépek](tutorial-migrate-hyper-v.md) vagy [fizikai kiszolgálók, illetve virtualizált vagy felhőalapú virtuális gépek](tutorial-migrate-physical-virtual-machines.md)áttelepítésének megkezdéséhez.
 

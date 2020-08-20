@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119718"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607257"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
@@ -22,7 +22,7 @@ Az ajánlat létrehozása előtt és a [közzétételi lehetőség](determine-yo
 
 Egyetlen ajánlat típusa konfigurálható különböző módon a különböző közzétételi beállítások, a műveletek, a kiépítés vagy a díjszabás lehetővé tételéhez. A közzétételi lehetőség és az ajánlat típusának konfigurációja is igazodik az ajánlat támogathatóságához és a technikai követelményekhez.
 
-Győződjön meg arról, hogy az ajánlat létrehozása előtt tekintse át a kirakati és az ajánlat típusának támogathatósági követelményeit, valamint a technikai közzétételi követelményeket.
+Ügyeljen arra, hogy az ajánlat létrehozása előtt tekintse át az online áruház és az ajánlat típusra vonatkozó támogathatósági követelményeit, valamint a technikai közzétételi követelményeket.
 
 ## <a name="list-of-offer-types"></a>Ajánlati típusok listája
 
@@ -45,4 +45,4 @@ Az egyszeri bejelentkezésre vonatkozó követelményekről és az ajánlatok t�
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az ajánlat típusának (a következő szakaszoknak) a megfelelő cikkben szereplő támogathatósági követelményeket az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez.
-- Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.
+- Tekintse át a közzétételi mintákat az online áruházban példákat arra, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

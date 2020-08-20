@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498021"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607389"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -32,7 +32,7 @@ A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajá
 
 A Transact Partners esetében, ahogy a kereskedelmi Marketplace platformon keresztül növeli a számlázott értékesítést, magasabb szintű előnyökkel jár.
 
-A kirakatokban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, függetlenül az MPN kompetenciás állapottól vagy a partner típusától. Minden partner a kereskedelmi Piactéren keresztül fejleszti üzleti tevékenységét.
+Az online áruházakban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, az MPN-kompetencia állapotától vagy a partner típusától függetlenül. Minden partner a kereskedelmi Piactéren keresztül fejleszti üzleti tevékenységét.
 
 Támogatni fogja az Ön számára elérhető erőforrások megértését és az ajánlott eljárások megvalósítását, amelyet [saját maga is megtekintheti](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
@@ -87,7 +87,7 @@ Minden olyan partner, aki élő ajánlattal rendelkezik, egy dedikált engagemen
 
 ![Műszaki előnyök](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\*Az eladott helyek küszöbértéke csak Microsoft 365 alkalmazásokra vonatkozik (a Microsoft Teams, az Office, az Outlook vagy a SharePoint szolgáltatással való integrációval rendelkező SaaS-alkalmazásokra) és a juttatásokat a 2021. június 30-án kell befejezni.
+\* Az eladott helyek küszöbértéke csak Microsoft 365 alkalmazásokra vonatkozik (a Microsoft Teams, az Office, az Outlook vagy a SharePoint szolgáltatással való integrációval rendelkező SaaS-alkalmazásokra) és a juttatásokat a 2021. június 30-án kell befejezni.
 
 Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://aka.ms/marketplacerewards)találja.
 

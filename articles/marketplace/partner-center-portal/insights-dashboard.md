@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323281"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607149"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace-beli ismeretek irányítópultja a partner Centerben
 
-Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a kereskedelmi piactéren elérhető, a Microsoft AppSource és az Azure Marketplace-en felsorolt termék részletes oldalain megmérjék az ügyfelek részvételét
+Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának azon összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a kereskedelmi piactér online áruházakban felsorolt, a termékekkel kapcsolatos részletes oldalain szereplő, a Microsoft AppSource és az Azure piactéren
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace Insights irányítópult
 
@@ -42,11 +42,11 @@ Az Azure Marketplace-en és a AppSource-on keresztül meglátogatott felhasznál
 
 Tekintse meg a kereskedelmi piactér mérőszámait többféle módon:
 
-- Kirakat lapok
+- Online áruház lapjai
 - Oldal szűrők
 - Dátumszűrők
 
-**Kirakat lapok**: az ajánlatok metrikáit külön tekintheti meg a AppSource & Azure Marketplace lapjain keresztül. Válassza ki az ajánlat (oka) t a jobb oldalon található ajánlat legördülő listából, és tekintse meg a kijelölt ajánlat (ok) metrikáinak vizualizációját. Alapértelmezés szerint az összes ajánlat ki van választva.
+**Online áruház lapjai**: az ajánlatok metrikáit külön tekintheti meg a AppSource & Azure Marketplace lapjain keresztül. Válassza ki az ajánlat (oka) t a jobb oldalon található ajánlat legördülő listából, és tekintse meg a kijelölt ajánlat (ok) metrikáinak vizualizációját. Alapértelmezés szerint az összes ajánlat ki van választva.
 
 ![A partner Center-bepillantást tartalmazó irányítópult ajánlat legördülő lista](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ A hő a következő képességeket tartalmazza:
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Oldal-látogatások és egyedi látogatói trend
 
-Az alábbi oszlopok a havi oldal meglátogatások számát jelölik, amelyek az Y tengelyen jelennek meg (tengely a diagram bal oldalán). A trendvonal az egyedi látogatók havi trendjét jelöli, amely a másodlagos Y tengelyen (a diagram jobb oldalán található tengely) jelenik meg, a kirakatokban közzétett ajánlatokhoz: az Azure Marketplace és a AppSource.
+Az alábbi oszlopok a havi oldal meglátogatások számát jelölik, amelyek az Y tengelyen jelennek meg (tengely a diagram bal oldalán). A trendvonal az egyedi látogatók havi trendjét jelöli, amely a másodlagos Y tengelyen (a diagram jobb oldalán található tengely) jelenik meg, az online áruházakban közzétett ajánlatokhoz: az Azure Marketplace és a AppSource.
 
 ![A partneri központ bepillantást nyerhet az egyedi látogatói trendekkel szemben](./media/insights-page-vists-unique-visitors.png)
 
@@ -134,7 +134,7 @@ Ez a táblázat a látogatások oldalának listáját, valamint a kiválasztott 
 - Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
 - Az információk az ajánlatok nevei és a kampányok neve alapján szűrhetők, hogy megjelenjenek az Önt érdeklő információk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

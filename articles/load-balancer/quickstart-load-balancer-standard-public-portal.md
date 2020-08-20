@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923832"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607206"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -36,14 +36,12 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[1. lehetőség (alapértelmezett): nyilvános Load Balancer létrehozása (standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard termékváltozat**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott.  További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
 Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. 
-
-Létrehozhat egy nyilvános terheléselosztó vagy egy belső terheléselosztó is. 
 
 Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvános IP-címet, amely a terheléselosztó számára (alapértelmezés szerint **LoadBalancerFrontend** ) van konfigurálva.
 
@@ -56,7 +54,7 @@ Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvá
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **myresourcegrouplb erőforráscsoportban** szöveget a szövegmezőbe.|
     | Név                   | **MyLoadBalancer** megadása                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata**lehetőséget. |
@@ -167,7 +165,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Erőforráscsoport   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány részletei** |                                                                 |
     | Név             | **MyVNet** megadása                                    |
-    | Régió           | **Nyugat-Európa** kiválasztása |
+    | Region           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -196,12 +194,12 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Kattintson az **OK** gombra. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -220,7 +218,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány részletei** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási zónák** kiválasztása |
     | A rendelkezésre állási zóna | **1** . választás |
     | Kép | **Windows Server 2019 Datacenter** kiválasztása |
@@ -244,7 +242,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Alhálózat | **myBackendSubnet** |
     | Nyilvános IP-cím | Válassza a **Nincs** lehetőséget. |
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
-    | Hálózati biztonsági csoport konfigurálása | Válassza az **Új létrehozása** lehetőséget. </br> A **hálózati biztonsági csoport létrehozása**területen adja meg **myNSG** a myNSG **nevet**. </br> A **Bejövő szabályok**területen válassza **a + Bejövő szabály hozzáadása**elemet. </br> A **célport tartománya**területen adja meg a **80**értéket. </br> A **Priority (prioritás**) területen adja meg a **100**értéket. </br> A **név**mezőben adja meg a **: myhttprule** </br> **Hozzáadás** kiválasztása </br> Kattintson **az OK gombra** |
+    | Hálózati biztonsági csoport konfigurálása | Válassza az **Új létrehozása** lehetőséget. </br> A **hálózati biztonsági csoport létrehozása**területen adja meg **myNSG** a myNSG **nevet**. </br> A **Bejövő szabályok**területen válassza **a + Bejövő szabály hozzáadása**elemet. </br> A  **célport tartománya**területen adja meg a **80**értéket. </br> A **Priority (prioritás**) területen adja meg a **100**értéket. </br> A **név**mezőben adja meg a **: myhttprule** </br> **Hozzáadás** kiválasztása </br> Kattintson **az OK gombra** |
     | **Terheléselosztás**  |
     | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Válassza az **Igen** lehetőséget |
     | **Terheléselosztási beállítások** |
@@ -261,7 +259,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Figyelés** |  |
     | Rendszerindítási diagnosztika | Kijelölés **kikapcsolva** |
    
-7. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+7. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 8. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -289,15 +287,15 @@ A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-out
     | Beállítás | Érték |
     | ------- | ----- |
     | Név | Adja meg a **myOutboundRule**. |
-    | Előtérbeli IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőben adja meg a **LoadBalancerFrontEndOutbound**. </br> Válasszon **IP-címet** vagy **IP-előtagot**. </br> Válassza az **új létrehozása** **nyilvános IP-cím** vagy **nyilvános IP-előtag**alapján lehetőséget. </br> A név mezőbe írja be a következőt: **myPublicIPOutbound** vagy **myPublicIPPrefixOutbound**. </br> Válassza a **Hozzáadás** lehetőséget.|
+    | Előtérbeli IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőben adja meg a **LoadBalancerFrontEndOutbound**. </br> Válasszon **IP-címet** vagy **IP-előtagot**. </br> Válassza az **új létrehozása** **nyilvános IP-cím** vagy **nyilvános IP-előtag**alapján lehetőséget. </br> A név mezőbe írja be a következőt:  **myPublicIPOutbound** vagy **myPublicIPPrefixOutbound**. </br> Válassza a **Hozzáadás** elemet.|
     | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15 percre**.|
     | TCP alaphelyzetbe állítása | Válassza az **Engedélyezve** lehetőséget.|
-    | A háttérkészlet | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyBackendPoolOutbound** **nevet**. </br> Válassza a **Hozzáadás** lehetőséget. |
+    | A háttérkészlet | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyBackendPoolOutbound** **nevet**. </br> Válassza a **Hozzáadás** elemet. |
     | Port kiosztása – > a portok kiosztása | Válassza ki **manuálisan a kimenő portok számának** kiválasztása lehetőséget. |
     | Kimenő portok – > választhat | Válassza ki a **portok száma példányt** |
     | Kimenő portok – > portok/példányok száma | Adja meg a **10000**értéket. |
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Virtuális gépek hozzáadása a kimenő készlethez
 
@@ -313,18 +311,16 @@ A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-out
 
 6. Keresse meg a **myVM1**, a **MyVM2**és a **myVM3**melletti jelölőnégyzetet. 
 
-7. Válassza a **Hozzáadás** lehetőséget.
+7. Válassza a **Hozzáadás** elemet.
 
 8. Kattintson a **Mentés** gombra.
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[2. lehetőség: nyilvános terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott.  További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
 Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. 
-
-Létrehozhat egy nyilvános terheléselosztó vagy egy belső terheléselosztó is. 
 
 Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvános IP-címet, amely a terheléselosztó számára (alapértelmezés szerint **LoadBalancerFrontend** ) van konfigurálva.
 
@@ -337,7 +333,7 @@ Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvá
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a **myresourcegrouplb erőforráscsoportban** szöveget a szövegmezőbe.|
     | Név                   | **MyLoadBalancer** megadása                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | **Alapszintű** kiválasztása |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata**lehetőséget. |
@@ -375,7 +371,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Erőforráscsoport   | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány részletei** |                                                                 |
     | Név             | **MyVNet** megadása                                    |
-    | Régió           | **Nyugat-Európa** kiválasztása |
+    | Region           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -404,12 +400,12 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Kattintson az **OK** gombra. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 ### <a name="create-a-backend-pool"></a>Háttérkészlet létrehozása
 
 A háttér-címkészlet tartalmazza a terheléselosztó számára csatlakoztatott virtuális (NIC) IP-címeit. 
@@ -445,11 +441,11 @@ Hozzon létre egy **myHealthProbe** nevű állapotmintát a virtuális gépek á
     | Név | Adja meg a **myHealthProbe**. |
     | Protokoll | Válassza a **http**lehetőséget. |
     | Port | Adja meg a **80**értéket.|
-    | Elérési út | Be**/** |
+    | Elérési út | Be **/** |
     | Időköz | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a **15** értéket. |
     | Nem kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
 
-3. Válassza az **OK** lehetőséget.
+3. Kattintson az **OK** gombra.
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
@@ -508,7 +504,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány részletei** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási csoport** kiválasztása |
     | Rendelkezésre állási csoport | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyAvailabilitySet** **nevet**. </br> Kattintson **az OK gombra** |
     | Kép | **Windows Server 2019 Datacenter** |
@@ -530,7 +526,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Alhálózat | **MyBackendSubnet** kiválasztása |
     | Nyilvános IP-cím | Válassza a **nincs** lehetőséget |
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
-    | Hálózati biztonsági csoport konfigurálása | Válassza az **Új létrehozása** lehetőséget. </br> A **hálózati biztonsági csoport létrehozása**területen adja meg **myNSG** a myNSG **nevet**. </br> A **Bejövő szabályok**területen válassza **a + Bejövő szabály hozzáadása**elemet. </br> A **célport tartománya**területen adja meg a **80**értéket. </br> A **Priority (prioritás**) területen adja meg a **100**értéket. </br> A **név**mezőben adja meg a **: myhttprule** </br> **Hozzáadás** kiválasztása </br> Kattintson **az OK gombra** |
+    | Hálózati biztonsági csoport konfigurálása | Válassza az **Új létrehozása** lehetőséget. </br> A **hálózati biztonsági csoport létrehozása**területen adja meg **myNSG** a myNSG **nevet**. </br> A **Bejövő szabályok**területen válassza **a + Bejövő szabály hozzáadása**elemet. </br> A  **célport tartománya**területen adja meg a **80**értéket. </br> A **Priority (prioritás**) területen adja meg a **100**értéket. </br> A **név**mezőben adja meg a **: myhttprule** </br> **Hozzáadás** kiválasztása </br> Kattintson **az OK gombra** |
     | **Terheléselosztás**  |
     | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Válassza a **nem** lehetőséget |
  
@@ -543,7 +539,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Figyelés** | |
     | Rendszerindítási diagnosztika | Kijelölés **kikapcsolva** |
 
-7. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+7. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 8. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -569,7 +565,7 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 5. Válassza ki a **myVM1**, a **MyVM2**és a **myVM3**melletti mezőket.
 
-6. Válassza a **Hozzáadás** lehetőséget.
+6. Válassza a **Hozzáadás** elemet.
 
 7. Kattintson a **Mentés** gombra.
 
@@ -583,7 +579,7 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 4. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-5. Kattintson a **Csatlakozás** gombra.
+5. Válassza a **Kapcsolódás** lehetőséget.
 
 6. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök**  >  **Windows PowerShell**elemre.
 
@@ -618,11 +614,11 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztó és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó erőforráscsoportot, majd válassza a **Törlés**lehetőséget a **myresourcegrouplb erőforráscsoportban** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

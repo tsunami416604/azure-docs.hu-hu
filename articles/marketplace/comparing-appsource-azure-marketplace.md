@@ -1,32 +1,32 @@
 ---
 title: Microsoft AppSource és az Azure Marketplace összehasonlítása
-description: Ez a cikk a Microsoft kereskedelmi piactérről származó kirakatok – Microsoft AppSource és az Azure Marketplace közötti különbségeket ismerteti.
+description: Ez a cikk a Microsoft kereskedelmi Marketplace online áruházai – Microsoft AppSource és az Azure Marketplace közötti különbségeket ismerteti.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121809"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607462"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource és az Azure Marketplace összehasonlítása
 
-A Microsoft kereskedelmi piactér [Microsoft AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en is elérhető. Minden kirakat egyedi ügyfél-követelményeket és különböző célközönségeket szolgál ki, így biztos lehet abban, hogy a megfelelő ügyfelek számára elérhető a megoldás vagy a szolgáltatás.
+A Microsoft kereskedelmi piactér [Microsoft AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en is elérhető. Minden online áruház egyedi vásárlói követelményeket és különböző célközönségeket kínál, így biztos lehet abban, hogy a megfelelő ügyfelek számára elérhető a megoldás vagy a szolgáltatás.
 
-## <a name="understanding-the-differences-between-storefronts"></a>A kirakatok közötti különbségek megértése
+## <a name="understanding-the-differences-between-online-stores"></a>Az online áruházak közötti különbségek ismertetése
 
-A kirakat kiválasztásához először azonosítsa az ajánlat célközönségét. Ha több kirakatban szeretne célközönséget megcélozni, egyszerre több kirakatban is közzéteheti az értékesítést.
+Az online áruház kiválasztásához először azonosítsa az ajánlat célközönségét. Ha több online áruházban szeretne célközönséget megcélozni, egyszerre több áruházban is közzéteheti az értékesítést.
 
 | Azure Piactér | AppSource |
 |:--- |:--- |
 | INFORMATIKAI szakemberek és fejlesztők | Üzleti felhasználók és üzleti döntéshozók |
 
-A következő táblázat ismerteti a kirakat használatának előnyeit:
+Az alábbi táblázat az online áruház használatának előnyeit ismerteti:
 
 | Előnyök | Azure Piactér | AppSource |
 |:--- |:--- | :--- |

@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498072"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607439"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
 Az ajánlathoz választott közzétételi lehetőség közvetlenül a támogathatósági követelményekkel és a kereskedelmi piactér GTM kapcsolatos előnyökkel is jár. Még ennél is fontosabb, hogy a közzétételi lehetőség és az ajánlat típusa határozza meg, hogy a felhasználók hogyan fognak működni a kereskedelmi Piactéri ajánlatával.
 
-Az ajánlat konfigurálásához meg kell ismernie a következő kulcsfontosságú kereskedelmi Marketplace-fogalmakat: a közzétételi lehetőségek, az ajánlatok típusai és a konfiguráció, valamint a hívások közötti művelet, amely szabályozza, hogy az ajánlat hogyan és hol jelenik meg a kereskedelmi piactéren.
+Az ajánlat konfigurálásához meg kell ismernie a következő fő kereskedelmi Marketplace-fogalmakat: a közzétételi lehetőségek, az ajánlatok típusai és a konfiguráció, valamint a hívások közötti művelet, amely szabályozza, hogy az ajánlat hogyan és hol jelenik meg a kereskedelmi piactér online áruházakban.
 
 Ebben a cikkben a következőkkel ismerkedhet meg:
 
-- A megoldás megfelelő kirakatának meghatározása
-- Az egyes kirakatokban elérhető közzétételi lehetőségek és hívások – művelet
-- Az egyes közzétételi lehetőségekhez elérhető ajánlati típusok
+- A megoldás megfelelő online áruházának meghatározása.
+- A közzétételi lehetőségek és a meghívások közötti műveletek minden online áruházban elérhetők.
+- Az egyes közzétételi lehetőségeknél milyen típusú ajánlatok érhetők el.
 
 ## <a name="commercial-marketplace-publishing-options"></a>Kereskedelmi piactér közzétételi lehetőségei
 
@@ -37,8 +37,8 @@ A következő táblázat a Microsoft AppSource és az Azure piactéren elérhet�
 | **Tároló képe** |  |  | Azure Piactér | Azure Piactér |   |
 | **IoT Edge modul** |  |  | Azure Piactér | Azure Piactér |   |
 | **Felügyelt szolgáltatások** |  |  |  | Azure Piactér |   |
-| **Tanácsadói szolgáltatások** | Mindkét kirakat |  |  |  |   |
-| **SaaS-alkalmazás** | Mindkét kirakat | Mindkét kirakat | Mindkét kirakat |  | Mindkét kirakat * |
+| **Tanácsadói szolgáltatások** | Mindkét online áruház |  |  |  |   |
+| **SaaS-alkalmazás** | Mindkét online áruház | Mindkét online áruház | Mindkét online áruház |  | Mindkét online áruház * |
 | **Microsoft 365 alkalmazás** | AppSource | AppSource |  |  | AppSource * *  |
 | **Dynamics 365 bővítmény** |  AppSource | AppSource |  |  |   |
 | **PowerApps** | AppSource |AppSource  |  |  |   |
@@ -61,19 +61,19 @@ A rendelkezésre álló közzétételi lehetőségek különböző ügyfél-öss
 > [!Note]
 > A Transact Publishing lehetőség használatakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információért tekintse át a [kereskedelmi Piactéri Transact-képességeket](./marketplace-commercial-transaction-capabilities-and-considerations.md)ismertető cikket.
 
-## <a name="selecting-a-storefront"></a>Kirakat kiválasztása
+## <a name="selecting-an-online-store"></a>Online áruház kiválasztása
 
-Az egyes kirakatok egyedi ügyfelekre vonatkozó követelményeket és meghatározott célközönségeket céloznak meg. Az ajánlat típusa, a Transact képességek és a kategória határozza meg az ajánlat közzétételének helyét. A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes kirakatokra:
+Minden online áruház egyedi vásárlói követelményeket és meghatározott célközönségeket céloz meg. Az ajánlat típusa, a Transact képességek és a kategória határozza meg az ajánlat közzétételének helyét. A kategóriák és alkategóriák az egyes online áruházakhoz a célközönség alapján vannak leképezve:
 
 **Microsoft AppSource** a Dynamics 365, a Microsoft 365 és a Power platform üzleti vagy ipari megoldásait, valamint tanácsadói szolgáltatásokat keresnek.
 
 Az Azure **Marketplace** olyan informatikai szakembereket és fejlesztőket céloz meg, akik az Azure-ra vagy az Azure-ra épülő megoldásokra, valamint az Azure használatát felgyorsító tanácsadó szolgáltatásokra
 
-Válassza ki azt a kategóriát és alkategóriát, amely a legjobban igazodik a célközönséghez. A webalkalmazási tűzfalat például közzé kell tenni az Azure Marketplace-en a biztonsági kategória alatt, mivel a célközönség az informatikai szakemberek számára készült. Ehelyett közzé kell tenni egy AppSource alkalmazást az értékesítési kategória alatt, mivel a célközönség az üzleti felhasználók számára. A helytelen kategória vagy alkategória kiválasztásával az ajánlat nem megfelelő kirakatban tehető közzé.
+Válassza ki azt a kategóriát és alkategóriát, amely a legjobban igazodik a célközönséghez. A webalkalmazási tűzfalat például közzé kell tenni az Azure Marketplace-en a biztonsági kategória alatt, mivel a célközönség az informatikai szakemberek számára készült. Ehelyett közzé kell tenni egy AppSource alkalmazást az értékesítési kategória alatt, mivel a célközönség az üzleti felhasználók számára. Ha helytelen kategóriát vagy alkategóriát választ, előfordulhat, hogy az ajánlat nem megfelelő online áruházban van közzétéve.
 
-### <a name="publishing-to-both-storefronts-saas-offers-only"></a>Közzététel mindkét kirakatban (csak SaaS-ajánlatok)
+### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Közzététel mindkét online áruházban (csak SaaS-ajánlatok esetén)
 
-Az SaaS-ajánlatokat közzéteheti az Azure piactéren vagy a AppSource. Ha az SaaS- *ajánlat egy technikai* közönség (Azure Marketplace) és egy üzleti közönség (AppSource) számára készült, válasszon ki egy kategóriát és/vagy egy alkategóriát az egyes kirakatokhoz. A kirakatokban közzétett ajánlatoknak olyan értékkel kell rendelkezniük, amely kiterjed az informatikai szakemberek *és* az üzleti felhasználók számára.
+Az SaaS-ajánlatokat közzéteheti az Azure piactéren vagy a AppSource. Ha az SaaS-ajánlat a technikai közönség (Azure Marketplace) és egy üzleti közönség (AppSource *) számára készült* , válasszon ki egy kategóriát és/vagy egy alkategóriát az egyes online áruházakhoz. Az online áruházakban közzétett ajánlatoknak olyan értékkel kell rendelkezniük, amely az informatikai szakemberek *és* az üzleti felhasználók számára is kiterjeszthető.
 
 > [!IMPORTANT]
 > A mért számlázással rendelkező SaaS-ajánlatok az Azure Marketplace-en és a Azure Portalon keresztül érhetők el. Az SaaS-ajánlatok csak privát csomagokkal érhetők el a Azure Portalon keresztül.
@@ -91,15 +91,15 @@ Például a díjszabással ellátott számlázással és a privát csomaggal (ne
 
 ### <a name="categories"></a>Kategóriák
 
-A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes kirakatokra. Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a kívánt célközönséget. Az alábbiak közül választhat:
+A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes online áruházakhoz. Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a kívánt célközönséget. Az alábbiak közül választhat:
 
 - Legalább egy és legfeljebb két kategória. Lehetősége van elsődleges és másodlagos kategória kiválasztására.
 - Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem választja ki valamelyik alkategóriát, az ajánlat továbbra is felderíthető lesz a kiválasztott kategóriában.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A közzétételi lehetőség [kiválasztása után kiválaszthatja az](./publisher-guide-by-offer-type.md) ajánlat bemutatására használni kívánt ajánlat típusát.
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
-- Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.
+- Tekintse át a közzétételi mintákat az online áruházban példákat arra, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

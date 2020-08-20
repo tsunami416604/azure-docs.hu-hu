@@ -4,8 +4,6 @@
   items:
     - name: Mi az az Azure Load Balancer?
       href: load-balancer-overview.md
-    - name: Újdonságok
-      href: whats-new.md
 - name: Rövid útmutatók
   items:
     - name: Nyilvános terheléselosztó létrehozása – Portal
@@ -45,6 +43,8 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Újdonságok
+      href: whats-new.md
     - name: Összetevők
       href: components.md
     - name: Alapelvek

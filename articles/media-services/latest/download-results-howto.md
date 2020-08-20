@@ -3,30 +3,26 @@ title: Feladatok eredményének letöltése – Azure Media Services
 description: Ez a cikk bemutatja, hogyan töltheti le a feladatok eredményeit.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
-ms.author: juliako
-ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: inhenkel
+ms.openlocfilehash: 0a2e4d1ac5cf0945ab75e58bb42d23d10d6c89aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80346290"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607244"
 ---
 # <a name="download-the-results-of-a-job"></a>Feladatok eredményének letöltése
 
 Azure Media Services a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladatok](transforms-jobs-concept.md)eredményének tárolásához. Ezután letöltheti ezeket az eredményeket egy helyi mappába a Media Service és a Storage API-k használatával. 
 
 Ez a cikk bemutatja, hogyan töltheti le az eredményeket a Java és a .NET SDK-k használatával.
-
-## <a name="prerequisites"></a>Előfeltételek 
-
-Tekintse át az [adatkezelési eszközöket](manage-asset-concept.md).
 
 ## <a name="java"></a>Java
 
@@ -122,6 +118,6 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 
 Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy feladatot a HTTPS URL-címről](job-input-from-http-how-to.md).

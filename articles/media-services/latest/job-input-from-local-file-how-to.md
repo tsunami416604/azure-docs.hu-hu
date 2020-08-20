@@ -3,20 +3,20 @@ title: Azure Media Services-feladathoz tartozó bemenet létrehozása helyi fáj
 description: Ez a cikk bemutatja, hogyan hozhat létre egy Azure Media Services-feladathoz tartozó bemenetet egy helyi fájlból.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001128"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607228"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Feladathoz tartozó bevitel létrehozása helyi fájlból
 
@@ -25,7 +25,6 @@ A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell a
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
-* Tekintse át az [adatkezelési eszközöket](manage-asset-concept.md).
 
 ## <a name="net-sample"></a>.NET-minta
 
@@ -49,6 +48,6 @@ A következő kódrészlet elküld egy kódolási feladatot:
 
 Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy feladatot a HTTPS URL-címről](job-input-from-http-how-to.md).

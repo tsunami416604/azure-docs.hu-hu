@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186454"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606520"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
 
@@ -59,12 +59,13 @@ Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 11. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
 12. Adja hozzá a létrehozott fiókot.
 13. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
+1. További lépés a SUSE Linux Enterprise Server 11 SP3 rendszerű gép frissítéséhez és védelméhez. [Győződjön meg arról, hogy a legújabb verzió elérhető a konfigurációs kiszolgálón](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Vírusirtó a replikált gépeken
 
 Ha a replikálni kívánt gépeken aktív víruskereső szoftver fut, akkor győződjön meg róla, hogy kizárja a mobilitási szolgáltatás telepítési mappáját a víruskereső műveleteiből (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció a várt módon működjön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A mobilitási szolgáltatás telepítése után a Azure Portal válassza a **+ replikálás** lehetőséget a virtuális gépek védelmének megkezdéséhez. További információ a [VMWare virtuális gépek](vmware-azure-enable-replication.md) és [fizikai kiszolgálók](physical-azure-disaster-recovery.md#enable-replication)replikálásának engedélyezéséről.
 

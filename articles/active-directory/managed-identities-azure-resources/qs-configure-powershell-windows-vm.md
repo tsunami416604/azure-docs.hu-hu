@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 08/19/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e56a5d8607ac2472ba4ef4bdb090468691c93de6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 474e6c96be810192d3c4e1ada1ab2e0391a5d4f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505006"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606486"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure-erőforrásokhoz a PowerShell használatával
 
@@ -48,10 +48,10 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
 
 1. Tekintse át a következő Azure-beli VM-gyors útmutatókat, csak a szükséges részeket ("Bejelentkezés az Azure-ba", "erőforráscsoport létrehozása", "hálózatkezelési csoport létrehozása", "Create The VM").
 
-    Ha a "virtuális gép létrehozása" szakaszra kattint, a [New-AzVMConfig](/powershell/module/az.compute/new-azvm) parancsmag szintaxisának kis módosítását kell elvégeznie. Ügyeljen arra, hogy hozzáadjon egy `-AssignIdentity:$SystemAssigned` paramétert a virtuális gép kiépítéséhez, amely engedélyezve van a rendszer által hozzárendelt identitással, például:
+    Ha a "virtuális gép létrehozása" szakaszra kattint, a [New-AzVMConfig](/powershell/module/az.compute/new-azvm) parancsmag szintaxisának kis módosítását kell elvégeznie. Ügyeljen arra, hogy hozzáadjon egy `-IdentityType SystemAssigned` paramétert a virtuális gép kiépítéséhez, amely engedélyezve van a rendszer által hozzárendelt identitással, például:
 
     ```powershell
-    $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
+    $vmConfig = New-AzVMConfig -VMName myVM -IdentityType SystemAssigned ...
     ```
 
    - [Windows rendszerű virtuális gépek létrehozása a PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md)
@@ -69,11 +69,11 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
    Connect-AzAccount
    ```
 
-2. Először kérje le a virtuális gép tulajdonságait a `Get-AzVM` parancsmag használatával. Ezután a rendszerhez rendelt felügyelt identitás engedélyezéséhez használja az `-AssignIdentity` [Update-AzVM](/powershell/module/az.compute/update-azvm) parancsmag kapcsolóját:
+2. Először kérje le a virtuális gép tulajdonságait a `Get-AzVM` parancsmag használatával. Ezután a rendszerhez rendelt felügyelt identitás engedélyezéséhez használja az `-IdentityType` [Update-AzVM](/powershell/module/az.compute/update-azvm) parancsmag kapcsolóját:
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
+   Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType SystemAssigned
    ```
 
 
@@ -208,7 +208,7 @@ $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:

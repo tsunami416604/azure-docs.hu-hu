@@ -4,21 +4,21 @@ titleSuffix: Azure Media Services
 description: Ismerje meg, hogy milyen eszközöket és hogyan használják a Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6c9f69a39f725b082771b66959a219581c281ed5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27082499263af6eedd7d9d628b7b1746a9177672
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043517"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606832"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Eszközök a Azure Media Services v3-ban
 
@@ -40,9 +40,9 @@ Az eszköz nevének egyedinek kell lennie. A (z) Media Services v3-erőforrások
 
 Az eszközön belüli fájlok/Blobok nevének a [blob neve](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) és az [NTFS-név követelményeit](/windows/win32/fileio/naming-a-file)is követnie kell. Ennek a követelménynek az oka, hogy a fájlok a blob Storage-ból egy helyi NTFS-lemezre másolhatók feldolgozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Eszközök kezelése a Media Servicesban](manage-asset-concept.md)
+[Media Services áttekintése](media-services-overview.md)
 
 ## <a name="see-also"></a>Lásd még
 

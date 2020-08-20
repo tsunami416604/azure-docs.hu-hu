@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213882"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607393"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
 Ez a cikk a Microsoft kereskedelmi Marketplace-ajánlatok létrehozásának és folytatásának javaslatait ismerteti. Az alábbi táblázatok az ajánlati információk a partner Centerben való végrehajtásával kapcsolatos ajánlott eljárásokat ismertetik. Az ajánlatok működésének elemzéséhez nyissa meg a Marketplace elemzések [irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) a partner Centerben. 
 
-## <a name="storefront-offer-details"></a>A kirakati ajánlat részletei
+## <a name="online-store-offer-details"></a>Az online áruház ajánlatának részletei
 
-| Kirakati beállítás | Ajánlott eljárás |
+| Beállítás | Ajánlott eljárás |
 |:--- |:--- |  
 | Offer Name | Alkalmazások esetében adjon meg egy világos címet, amely tartalmazza a keresési kulcsszavakat, amelyek segítségével az ügyfelek felfedezhetik az ajánlatot. <br> <br> A tanácsadási szolgáltatások esetében kövesse az alábbi formátumot: [ajánlat neve: [időtartam] [ajánlat típusa] (például contoso: 2 hetes implementáció) |
 | Ajánlat leírása | Adjon meg egy egyértelmű leírást, amely leírja az ajánlat értékeit az első néhány mondatban.  Ne feledje, hogy ezek a mondatok a keresőmotor eredményeiben is használhatók. Az értékek kiosztásának alapvető összetevői a következők: <ul> <li>A termék vagy megoldás leírása. </li> <li> A termék vagy megoldás előnyeit élvező felhasználói persona. </li> <li> Az ügyfélnek szüksége van a termékre vagy a megoldás címére. </li> </ul> <br> Ha lehetséges, használja az iparági szabványnak megfelelő szókincset vagy juttatáson alapuló szövegezést.  Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez.  Ehelyett a megadott értékre kell összpontosítania. <br> <br> A tanácsadási szolgáltatások listázásához egyértelműen adja meg az Ön által megadott professzionális szolgáltatást. |
@@ -28,11 +28,11 @@ Ez a cikk a Microsoft kereskedelmi Marketplace-ajánlatok létrehozásának és 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy az ajánlat neve és az ajánlat leírása megfelel a **[Microsoft védjegy-és márkanevei iránymutatásainak](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** , valamint a Microsoft-szoftverek,-termékek és-szolgáltatások nevének és a Microsoft-szoftvereknek, termékeinek és szolgáltatásainak a nevére vonatkozó, termékspecifikus irányelveknek.
 
-## <a name="storefront-listing-details"></a>Kirakati lista részletei
+## <a name="online-store-listing-details"></a>Online áruházbeli listaelemek részletei
 
-A különböző kirakatok kategóriái és ágazatai a különböző típusú ajánlatokra is érvényesek lesznek.
+Egy másik online áruházhoz tartozó kategóriák és iparágak a különböző ajánlati típusokra lesznek érvényesek.
 
-| Kirakat | Kategóriák <br>kirakat szerint | Kategóriák <br>kirakat szerint | Iparágak <br> AppSource |
+| Online áruház | Kategóriák <br>online áruház szerint | Kategóriák <br>online áruház szerint | Iparágak <br> AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Ajánlat típusa**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-alkalmazás | X | |
@@ -48,9 +48,9 @@ A különböző kirakatok kategóriái és ágazatai a különböző típusú aj
 
 ### <a name="categories"></a>Kategóriák
 
-A Microsoft AppSource és az Azure Marketplace két különböző kirakat, amely egyedi felhasználói igényeket szolgál ki. Az Azure Marketplace az informatikai szakemberek és fejlesztők számára kínál megoldásokat az Azure-ban.  A Microsoft AppSource üzleti és/vagy iparági SaaS-alkalmazásokat, Dynamics 365 beépülő modulokat, Microsoft 365 beépülő modulokat és a Power platformos alkalmazásokat keresik.
+A Microsoft AppSource és az Azure Marketplace két különböző online áruház, amely egyedi felhasználói igényeket szolgál ki. Az Azure Marketplace az informatikai szakemberek és fejlesztők számára kínál megoldásokat az Azure-ban.  A Microsoft AppSource üzleti és/vagy iparági SaaS-alkalmazásokat, Dynamics 365 beépülő modulokat, Microsoft 365 beépülő modulokat és a Power platformos alkalmazásokat keresik.
 
-A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes kirakatokra. Az ajánlat a Microsoft AppSource vagy az Azure Marketplace-en lesz közzétéve az ajánlat típusától, az ajánlat tranzakciós képességeitől és a kategória/alkategória kiválasztástól függően. 
+A kategóriák és alkategóriák a célközönség alapján vannak leképezve az egyes online áruházakhoz. Az ajánlat a Microsoft AppSource vagy az Azure Marketplace-en lesz közzétéve az ajánlat típusától, az ajánlat tranzakciós képességeitől és a kategória/alkategória kiválasztástól függően. 
 
 Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a célközönséget. Az alábbiak közül választhat:
 
@@ -61,9 +61,9 @@ Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóri
 
 **Fontos: SaaS-ajánlatok és Microsoft 365-bővítmények**
 
-Tekintse meg az [útmutató ajánlat típusát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) , amely részletesen ismerteti, hogy a Transact-funkciók milyen hatással lehetnek az ajánlat megtekintésére és a piactéren elérhető ügyfelek általi vásárlására. Az SaaS-ajánlatok esetében az ajánlat tranzakciós képessége, valamint a kategória kiválasztása határozza meg azt a kirakatot, ahol az ajánlat közzé lesz téve:
+Tekintse meg az [útmutató ajánlat típusát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) , amely részletesen ismerteti, hogy a Transact-funkciók milyen hatással lehetnek az ajánlat megtekintésére és a piactéren elérhető ügyfelek általi vásárlására. Az SaaS-ajánlatok esetében az ajánlat tranzakciós képessége, valamint a kategória kiválasztása határozza meg azt az online áruházat, ahol az ajánlat közzé lesz téve:
 
-| SaaS-ajánlat    | SaaS-ajánlat   | SaaS-ajánlat  | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat    | Alkalmazható kirakat | Alkalmazható kirakat |
+| SaaS-ajánlat    | SaaS-ajánlat   | SaaS-ajánlat  | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat    | Megfelelő online áruház| Megfelelő online áruház |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Mért számlázás | Bővítmények Microsoft 365 | Kapcsolatfelvétel | Transact (legalább 1 csomag) | Csak privát csomag | Csak nyilvános csomag | Nyilvános & Private-csomagok | AppSource | Azure Piactér |
 |  | X |  |  |  |  |  | X |  |
@@ -94,7 +94,7 @@ Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és
 | **Disztribúció** | Nagykereskedelem <br> Parcella & csomag szállítása |  
 | **Education** | Felsőoktatás <br> Elsődleges & másodlagos edu/K-12 <br> Könyvtárak & múzeumok |
 | **Pénzügyi szolgáltatások** | Banki & tőkepiacok <br> Biztosítási | 
-| **Államigazgatás** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
+| **Government** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
 | **Egészségügy** | Állapot költségviselő <br> Állapot szolgáltatója <br> Gyógyszerek | 
 | **Vendéglátás & utazás** | Utazási & szállítás <br> Hotelek & szabadidő <br> Éttermek & Food Services | 
 | **Gyártási & erőforrások** | Kémiai & Agrokémiai <br> Diszkrét gyártás <br> Energia | 
@@ -117,8 +117,8 @@ Válassza ki azokat a megfelelő termékeket, amelyekkel az alkalmazás együttm
 
 A kulcsszavak segítségével az ügyfelek megkereshetik az ajánlatot a kereséskor. Azonosítsa az ajánlat legfontosabb keresési kulcsszavait, és foglalja bele őket az ajánlat összefoglalásához és leírásához, valamint az ajánlat részletei című szakaszban található kulcsszó szakaszhoz.
 
-## <a name="storefront-marketing-details"></a>A kirakati marketing részletei
-| Kirakati beállítás | Ajánlott eljárás |
+## <a name="online-store-marketing-details"></a>Online áruházbeli marketing részletei
+| Beállítás | Ajánlott eljárás |
 |:--- |:--- |  
 | Ajánlat emblémája (PNG formátum, 48 &nbsp; &times; &nbsp; 48): keresési oldal | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat keresési oldalára. |
 | Ajánlat emblémája (PNG formátum, 216 &nbsp; &times; &nbsp; 216): alkalmazás részletei lap | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat alkalmazás részletei listázási oldalára. |

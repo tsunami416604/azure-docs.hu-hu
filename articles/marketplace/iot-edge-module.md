@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119480"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607373"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -38,9 +38,9 @@ A IoT Edge modul ajánlat típusa egy IoT Edge eszközön futó adott típusú t
 
 ## <a name="publishing-your-iot-edge-module"></a>A IoT Edge-modul közzététele
 
-**A megfelelő kirakat kiválasztása**
+**A megfelelő online áruház kiválasztása**
 
-IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé, a AppSource nem alkalmazható.  További információ a kirakatok közötti különbségekről és célközönségről: [a megoldás közzétételi lehetőségének meghatározása](determine-your-listing-type.md).
+IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé, a AppSource nem alkalmazható.  További információ a különbségekről és a célközönségről az online áruházakban: [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
  
 **Számlázási beállítások**
 
@@ -73,17 +73,9 @@ IoT Edge modul Azure Marketplace-en való közzétételéhez meg kell felelnie a
 
 Az IoT Edge modul elsődleges műszaki követelményei, hogy az informatikai támogatás és közzététel az Azure Marketplace-en, részletesen megtalálhatók a [IoT Edge modul előkészítésének technikai eszközein](./partner-center-portal/create-iot-edge-module-asset.md).
 
-## <a name="documentation-and-resources"></a>Dokumentáció és erőforrások
-
-[Hozzon létre egy IoT Edge modul-ajánlatot](./partner-center-portal/azure-iot-edge-module-creation.md) – ez a lépés egy új IoT Edge modul ajánlatának közzétételéhez a partner Centerben.
-
 ## <a name="next-steps"></a>Következő lépések
 
-Ha még nem tette meg,
-
-- [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.
-
-A partner Centerben való regisztrációhoz, és egy új ajánlat létrehozásához vagy egy meglévő alkalmazáshoz való munka megkezdéséhez
-
+- [További](https://azuremarketplace.microsoft.com/sell) információ a kereskedelmi Piactérről.
+- [Hozzon létre egy IoT Edge modul-ajánlatot] a partner Centerben.
 - Az ajánlat létrehozásához vagy befejezéséhez jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
 - A IoT Edge modul ajánlatának közzétételéről a [IoT Edge modul létrehozása](./partner-center-portal/azure-iot-edge-module-creation.md) című témakörben talál további információt.

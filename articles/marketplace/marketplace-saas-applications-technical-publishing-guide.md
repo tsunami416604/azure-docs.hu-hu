@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280936"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607301"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Az SaaS-alkalmazások ajánlat-közzétételi útmutatója
 
@@ -21,16 +21,16 @@ Az SaaS-alkalmazásokat a kereskedelmi piactéren teheti közzé három különb
 
 ## <a name="offer-overview"></a>Ajánlat áttekintése  
 
-Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en érhetők el.  A kirakatok támogatják a listát, a próbaverziót és a Transact ajánlatokat is.
+Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en érhetők el.  Mindkét online áruház támogatja a listát, a próbaverziót és a Transact ajánlatokat.
 
 **Lista:**  A tőzsdei közzétételi lehetőség egy kapcsolatfelvételi ajánlat típusát tartalmazza, és akkor használható, ha a próbaverziós vagy tranzakciós szintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a kiadók számára, hogy a piacon elérhető megoldással azonnal elkezdhetik a vállalkozása növekedéséhez szükséges érdeklődők fogadását.  
-**Próbaverzió/tranzakció:**  Az ügyfél lehetősége van arra, hogy közvetlenül vásároljon vagy kérjen próbaverziót a megoldásához. A próbaverziós szolgáltatás megadásával növelheti az ügyfelek számára felkínált engagement szintet, és a vásárlás előtt lehetővé teszi az ügyfeleknek a megoldás megismerését. A próbaverziós szolgáltatással jobb eséllyel népszerűsítheti a kirakatokat, és több és gazdagabb érdeklődőket kell várnia az ügyfelek bevonásával. A próbaverzióknak legalább a próbaidőszak időtartama alatt ingyenes támogatást kell tartalmazniuk.  
+**Próbaverzió/tranzakció:**  Az ügyfél lehetősége van arra, hogy közvetlenül vásároljon vagy kérjen próbaverziót a megoldásához. A próbaverziós szolgáltatás megadásával növelheti az ügyfelek számára felkínált engagement szintet, és a vásárlás előtt lehetővé teszi az ügyfeleknek a megoldás megismerését. A próbaverziós szolgáltatással jobb eséllyel lehet népszerűsíteni az online áruházakban, és több és gazdagabb érdeklődőket kellene várnia az ügyfelek bevonásához. A próbaverzióknak legalább a próbaidőszak időtartama alatt ingyenes támogatást kell tartalmazniuk.  
 
 | SaaS-alkalmazások ajánlata | Üzleti követelmények | Technikai követelmények |  
 | --- | --- | --- |  
 | **Kapcsolatfelvétel** | Igen | Nem |  
-| **Power BI/Dynamics** | Igen | Igen (Azure AD-integráció) |  
-| **SaaS-alkalmazások**| Igen | Igen (Azure AD-integráció) |     
+| **Power BI/Dynamics** | Yes | Igen (Azure AD-integráció) |  
+| **SaaS-alkalmazások**| Yes | Igen (Azure AD-integráció) |     
 
 ## <a name="saas-list"></a>SaaS-lista
 
@@ -134,7 +134,7 @@ A Microsoft üzemelteti a kereskedelmi tranzakciót. A Microsoft az Ön nevében
 >[!Note]
 >A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha még nem tette meg,
 
 * [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.

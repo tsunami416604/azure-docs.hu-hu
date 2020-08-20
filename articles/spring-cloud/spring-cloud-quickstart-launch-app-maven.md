@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9ae6524dc1d53580d0dc7de1179ccf9db8cebc61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7496ffcc365a3e9178bcc3293b518ea790e56c78
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086132"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607054"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
@@ -79,7 +79,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 1. A git-tárház klónozásához futtassa a következő parancsot:
 
     ```console
-    git clone https://github.com/Azure-Samples/PiggyMetrics
+    git clone https://github.com/Azure-Samples/piggymetrics
     ```
   
 1. Módosítsa a könyvtárat, és hozza létre a projektet a következő parancs futtatásával:
@@ -116,7 +116,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást telepített egy Maven-tárházból. Ha többet szeretne megtudni az Azure Spring Cloud-ról, folytassa az alkalmazás telepítésre való előkészítésének oktatóanyagával.
 

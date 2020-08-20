@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09daffa74ccd279c8187391ba3b86063aed7d204
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791622"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607026"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-támogatás az Azure statikus Web Apps előzetes verziójában Azure Functions
 
@@ -34,11 +34,11 @@ Az Azure statikus Web Apps Azure Functionson keresztül biztosít API-t. A Azure
 - Az API-útvonal előtagjának _API_-nak kell lennie.
 - Az API functions alkalmazásnak JavaScript-ben kell lennie.
 - Az API functions útválasztási szabályai csak az [átirányítások](routes.md#redirects) támogatását és [a szerepkörökkel rendelkező útvonalak biztonságossá](routes.md#securing-routes-with-roles)tételét támogatják.
-- Az eseményindítók és kötések a [http](../azure-functions/functions-bindings-http-webhook.md)-re korlátozódnak.
-  - Az összes többi [Azure functions eseményindító és kötés](../azure-functions/functions-triggers-bindings.md#supported-bindings) a kimeneti kötések kivételével korlátozott.
+- Az eseményindítók [http](../azure-functions/functions-bindings-http-webhook.md)-re korlátozódnak.
+  - A bemeneti és kimeneti [kötések](../azure-functions/functions-triggers-bindings.md#supported-bindings) támogatottak.
 - A naplók csak akkor érhetők el, ha [Application Insightst](../azure-functions/functions-monitoring.md) ad hozzá a functions-alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

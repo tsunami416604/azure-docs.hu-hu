@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Bastion ismertetése
+    - name: Mi az az Azure Bastion?
       href: bastion-overview.md
 - name: Rövid útmutatók
   items:

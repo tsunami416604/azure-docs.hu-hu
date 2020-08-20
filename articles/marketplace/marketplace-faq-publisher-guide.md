@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036572"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607329"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -120,11 +120,11 @@ A kereskedelmi piactér-közzétevők felelősek a szoftverek támogatásához, 
 
 A közzétételi folyamat során hozzáférést kap az ajánlat előnézetéhez. A hozzáférés a **Preview (előnézet** ) lapon megadott felhasználókra korlátozódik, és az ajánlatot bárki más nem tekintheti meg. Megvásárolhatja az előnézetet, és tesztelheti a folyamatot, de az ajánlat beállítása alapján teljes összeget kell fizetnie.
 
-Ha nagyon alacsony áron szeretné elvégezni a vásárlást, javasoljuk, hogy az Ön által megtekinthető privát csomagot a tesztelési költségként elfogadásra váró díj alapján tegye közzé. A $0,00-as díj támogatott, de nem tükrözi a teljes élményt, mivel díjköteles előfizetés lenne, ezért javasoljuk, hogy a $1,00-es árat állítsa be.
+Ha alacsony áron szeretné elvégezni a vásárlást, javasoljuk, hogy egy saját, Ön által megtekinthető saját csomagot tegyen közzé, amelyet Ön a tesztelési költségként elfogad. A $0,00-as díj támogatott, de nem tükrözi a teljes élményt, mivel díjköteles előfizetés lenne, ezért javasoljuk, hogy a $1,00-es árat állítsa be.
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Mik azok a kereskedelmi piactéren található érdeklődők, és mit tegyek?
 
-Mivel az ügyfelek az ajánlatokat a Microsoft AppSource és az Azure piactéren kirakatokban használják, az adatok rögzítése megtörténik. Miután az ügyfelek elég érdeklődést mutattak, a rendszer létrehoz egy érdeklődőt, és lehetőséget kap az Ön által választott rendszerre. Azok a kiadók, akik sikeresek voltak a kereskedelmi piactéren, gyakran vezetnek érdeklődőket, kapcsolatokat fejlesztenek, és figyelembe veszik a kamatot.
+Mivel az ügyfelek az ajánlatokat a Microsoft AppSource és az Azure Marketplace online áruházakban használják, az adatok rögzítése megtörténik. Miután az ügyfelek elég érdeklődést mutattak, a rendszer létrehoz egy érdeklődőt, és lehetőséget kap az Ön által választott rendszerre. Azok a kiadók, akik sikeresek voltak a kereskedelmi piactéren, gyakran vezetnek érdeklődőket, kapcsolatokat fejlesztenek, és figyelembe veszik a kamatot.
 
 További információkért tekintse [meg a Piactéri ajánlat ügyfeleinek vezetőit](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -140,7 +140,7 @@ Az ajánlatokat a terméken belül, a webhelyeken, a viszonteladókban és a Mic
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Megjelenhetnek az ajánlatom a Microsoft AppSource és az Azure Marketplace-en is?
 
-A Microsoft AppSource az üzleti és ipari megoldások célja, az Azure Marketplace pedig informatikai és fejlesztői megoldások számára készült. Az ajánlatok az ajánlat létrehozása során kiválasztott kategóriák és iparágak alapján érhetők el az egyes kirakatokban. Abban a ritka esetben, ha az ajánlat mindkét kirakat felhasználói számára releváns, akkor mindkettőben megjelenhet.
+A Microsoft AppSource az üzleti és ipari megoldások célja, az Azure Marketplace pedig informatikai és fejlesztői megoldások számára készült. Az ajánlatok az ajánlat létrehozása során kiválasztott kategóriák és iparágak alapján érhetők el az online áruházakban. Abban a ritka esetben, ha az ajánlat mindkét online áruház felhasználója számára releváns, akkor mindkettőben megjelenhet.
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>Mi a Cloud Solution Provider program?
 

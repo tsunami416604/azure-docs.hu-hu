@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 164a0e295179bb0c1e8d7da6b43d8e07a4e9f4e9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304411"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606804"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
 
@@ -63,13 +63,13 @@ Az API-ra adott válasz az `Resolve` SaaS-előfizetéshez kapcsolódó ajánlato
 >[!Note]
 >Ha nem szeretné bizonyos konverziós útvonalakat támogatni, tiltsa le a visszalépéseket.
 
-Az alábbi kódrészlet rögzíti a folyamatot, amikor egy Azure-ügyfél megváltoztatja az SaaS-élmény tervét:
+Az alábbi kódrészlet rögzíti a folyamatot, amikor egy Azure-ügyfél egy csomagot módosít a SaaS-élményben:
 
 ![Ügyfél-díjcsomag változási folyamata](media/saas-metering-service-integration-flow-b.png)
 
-Az alábbi kódrészlet rögzíti a folyamatot, amikor egy Azure-ügyfél megváltoztatja a Microsoft kirakatában található csomagot
+Az alábbi kódrészlet rögzíti a folyamatot, amikor egy Azure-ügyfél egy tervet módosít a Microsoft online áruházban:
 
-![Ügyfél-kirakati terv változási folyamata](media/saas-metering-service-integration-flow-c.png)
+![Az ügyfél online áruházi tervének változási folyamata](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Hogyan lehet az Azure-felhasználó lemondani az Azure-előfizetéshez társított csomagról?
 
@@ -79,9 +79,9 @@ Az alábbi kódrészlet rögzíti a folyamatot, amikor egy Azure-ügyfél leirat
 
 ![Az ügyfél lemond a SaaS-élményben](media/saas-metering-service-integration-flow-d.png)
 
-Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó leiratkozik a Microsoft kirakatában:
+Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó leiratkozik a Microsoft Online áruházában:
 
-![Ügyfél lemondása a Microsoft kirakatában](media/saas-metering-service-integration-flow-e.png)
+![Az ügyfél lemond a Microsoft Online áruházában](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,22 +1,22 @@
 ---
 title: Kifizetési részletek régiónként – Microsoft kereskedelmi piactér
-description: Megtudhatja, hogy a kifizetések várható ideje és a Microsoft-kirakatok, amelyekről fizetést kaphat, az országtól/régiótól és a kifizetési fiók típusától függően változhat.
+description: Megtudhatja, hogy a kifizetések várható ideje és a Microsoft online áruházak, amelyekről fizetést kaphat, az országtól/régiótól és a kifizetési fiók típusától függően változhat.
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327327"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607285"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Fizetési küszöbértékek, módszerek és időkeretek
 
-A kifizetések átutalásának becsült ideje, valamint a befizetéseket fogadó kirakatok az ország/régió és a kifizetési fiók típusától függően változhatnak. Ez a cikk az egyes országokban és régiókban támogatott fizetési módszereket ismerteti.
+A kifizetések átutalásának becsült ideje, valamint az online áruházak, amelyekről a kifizetéseket kaphatják, az országtól/régiótól és a kifizetési fiók típusától függően változhatnak. Ez a cikk az egyes országokban és régiókban támogatott fizetési módszereket ismerteti.
 
 Bármely adott ország és régió esetében a ACH/SEPA vagy a banki átutalás használatával kell fizetni. Néhány ország és régió is támogatja a PayPal fizetési módot.
 

@@ -5,29 +5,36 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964583"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606912"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
 
-Teljes körűen felügyelt natív adatbázis-szolgáltatásként Azure Cosmos DB leegyszerűsíti a számlázást, mivel csak a kiosztott átviteli sebességért és a felhasznált tárterületért kell megszámolni. A helyszíni vagy a IaaS által üzemeltetett alternatívákhoz képest nincsenek további licencek, hardverek, használati költségek vagy létesítmények költségei. Ha figyelembe veszi a Azure Cosmos DB több régióra kiterjedő képességeit, az adatbázis-szolgáltatás jelentős mértékben csökkenti a költségeket a meglévő helyszíni vagy IaaS-megoldásokkal szemben.
+Teljes körűen felügyelt natív adatbázis-szolgáltatásként Azure Cosmos DB leegyszerűsíti a számlázást, mivel csak az adatbázis-műveletekhez és a felhasznált tárolóhoz töltődik. A helyszíni vagy a IaaS által üzemeltetett alternatívákhoz képest nincsenek további licencek, hardverek, használati költségek vagy létesítmények költségei. Ha figyelembe veszi a Azure Cosmos DB több régióra kiterjedő képességeit, az adatbázis-szolgáltatás jelentős mértékben csökkenti a költségeket a meglévő helyszíni vagy IaaS-megoldásokkal szemben.
 
-A Azure Cosmos DB a kiosztott átviteli sebesség és a felhasznált tárterület alapján óradíjat számítunk fel. A kiépített átviteli sebesség esetében a számlázási egység 100 RU/s/óra, a legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) . A felhasználható tárterület esetében havonta 1 GB tárterületet számolunk fel, a legfrissebb díjszabási információkért lásd a [díjszabást ismertető oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+- **Adatbázis-műveletek**: az adatbázis-műveletekért felszámított módszer a használt Azure Cosmos-fiók típusától függ.
 
-Ez a cikk néhány példán keresztül elmagyarázza, mit jelentenek a havi számla különböző részei. A példákban szereplő számok az Önétől eltérőek lehetnek, ha az Ön Azure Cosmos-tárolói számára kiosztott átviteli sebesség eltérő, ha több régióra kiterjednek, vagy eltérő hosszúságú időszakban futnak havonta. A jelen cikkben szereplő összes példa a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) látható díjszabási információk alapján számítja ki a számlát.
+  - **Kiépített átviteli sebesség**: óradíjat számolunk fel a maximális kiosztott átviteli sebességért egy adott órában, 100 ru/s-onként.
+  - **Kiszolgáló**nélküli: az adatbázis-műveletek által felhasznált kérelmek teljes mennyiségét óránként számlázjuk.
+
+- **Tárolás**: az adat-és indexek által az adott órában felhasznált teljes tárterület (GB-ban) átalány-díjait számítjuk fel.
+
+A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
+
+Ez a cikk néhány példán keresztül elmagyarázza, mit jelentenek a havi számla különböző részei. A példákban szereplő számok az Önétől eltérőek lehetnek, ha az Ön Azure Cosmos-tárolói számára kiosztott átviteli sebesség eltérő, ha több régióra kiterjednek, vagy eltérő hosszúságú időszakban futnak havonta. A jelen cikkben szereplő összes példa a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)látható díjszabási információk alapján számítja ki a számlát.
 
 > [!NOTE]
 > A számlázás a fali óra bármely részén, nem 60 perces időtartamban történik. Az ebben a dokumentációban látható összes példa az USA-ban nem kormányzati régióban üzembe helyezett Azure Cosmos-fiók díjszabásán alapul. A díjszabás és a számítás a használt régiótól függően változhat, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
 ## <a name="billing-examples"></a>Számlázási példák
 
-### <a name="billing-example---throughput-on-a-container-full-month"></a>Számlázási példa – átviteli sebesség egy tárolón (teljes hónap)
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>Számlázási példa – kiosztott átviteli sebesség egy tárolón (teljes hónap)
 
 * Tegyük fel, hogy egy tárolón 1 000 RU/s sebességű átviteli sebességet állít be, és a hónapra vonatkozóan 24 órán át * 30 nap = 720 óra összesen.  
 
@@ -39,13 +46,21 @@ Ez a cikk néhány példán keresztül elmagyarázza, mit jelentenek a havi szá
 
 * A havi számlán a 7 200 egység (100 RUs) fog megjelenni, amely a $57,60-as költséget fogja kiszámítani.
 
-### <a name="billing-example---throughput-on-a-container-partial-month"></a>Számlázási példa – átviteli sebesség egy tárolón (részleges hónap)
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>Számlázási példa – kiosztott átviteli sebesség egy tárolón (részleges hónap)
 
 * Tegyük fel, hogy létrehozunk egy tárolót a 2 500 RU/s kiosztott átviteli sebességgel. A tároló 24 órát vesz igénybe a hónapban (például a létrehozás után 24 órával töröljük azt).  
 
 * Ezt követően 600 egység jelenik meg a számlán (2 500 RU/s/100 RU/mp/egység * 24 óra). A Cost $4,80 (600 egység * $0.008/egység) lesz.
 
 * A havi számla összesen $4,80 lesz.
+
+### <a name="billing-example---serverless-container"></a>Számlázási példa – kiszolgáló nélküli tároló
+
+* Tegyük fel, hogy létrehozunk egy kiszolgáló nélküli tárolót. 
+
+* Egy hónap alatt kiállítjuk az adatbázis-kérelmeket, amelyek összesen 500 000 kérelem-egységet vesznek igénybe. A díj $0,125 lesz (500 000 * $0,25/millió).
+
+* A havi számla összesen $0,125 lesz.
 
 ### <a name="billing-rate-if-storage-size-changes"></a>Számlázási sebesség, ha a tárolási méret megváltozik
 
@@ -55,7 +70,7 @@ A tárolási kapacitást a rendszer a havi időszakon belül, GB-ban tárolt max
 
 A tároló vagy az adatbázis óradíja minden órában megtörténik, függetlenül attól, hogy milyen a használat, vagy ha a tároló vagy az adatbázis egy óránál kevesebb ideig aktív. Ha például létrehoz egy tárolót vagy adatbázist, és 5 perccel később törli azt, akkor a számla egy órát fog tartalmazni.
 
-### <a name="billing-rate-when-throughput-on-a-container-or-database-scales-updown"></a>A tároló vagy az adatbázis átviteli sebessége felfelé/lefelé méretezi a számlázási sebességet
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>Adatátviteli sebesség egy tárolón vagy adatbázison felfelé/lefelé
 
 Ha az 9:30-es számú kiépített átviteli sebességet a 400 RU/s értékről a 1 000 RU/s értékre emeli, és a kiosztott átviteli sebesség a 10:45-ben, a 400 ru/mp-ben lesz felszámítva. 
 
@@ -75,7 +90,7 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Dedikált átviteli sebesség – példa":::
 
-### <a name="billing-example-containers-with-shared-throughput-mode"></a>Számlázási példa: megosztott átviteli sebességű tárolók
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>Számlázási példa: tárolók megosztott (kiépített) átviteli móddal
 
 * Ha Azure Cosmos-fiókot hoz létre az USA 2. keleti régiójában két Azure Cosmos-adatbázissal (az adatátviteli sebességet az adatbázis szintjén megosztó tárolók készletével), a 50 – K RU/s és 70-K/s értékkel rendelkező kiépített átviteli sebesség esetében pedig a 120 K/s teljes kiosztott átviteli sebességgel rendelkezhet.  
 
@@ -97,7 +112,7 @@ Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pon
 
 Tegyük fel, hogy rendelkezik egy Azure Cosmos-tárolóval az USA nyugati régiójában. A tároló a következővel jön létre: 10 000 RU/s, és ebben a hónapban 1 TB adat tárolására kerül. Tegyük fel, hogy három régiót (az USA keleti régiója, Észak-Európa és Kelet-Ázsia) vesz fel az Azure Cosmos-fiókjába, amelyek mindegyike azonos tárterülettel és átviteli sebességgel rendelkezik. A teljes havi számla a következő lesz (feltéve, hogy havonta 30 nap van megadva). A számla a következőképpen alakul: 
 
-|**Item** |**Használat (hónap)** |**Rate (Egységár)** |**Havi költség** |
+|**Item** |**Használat (hónap)** |**Sebesség** |**Havi költség** |
 |---------|---------|---------|-------|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz      | 10K RU/s * 24 * 30    |$0,008/100 RU/s/óra   |$576|
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia       | 3 * 10K RU/mp * 24 * 30    |$0,008/100 RU/s/óra  |$1 728|
@@ -111,7 +126,7 @@ Tegyük fel, hogy rendelkezik egy Azure Cosmos-tárolóval az USA nyugati régi�
 
 Tegyük fel, hogy létrehoz egy Azure Cosmos-tárolót az USA nyugati régiójában. A tároló a következővel jön létre: 10 000 RU/s, és ebben a hónapban 1 TB adat tárolására kerül. Tegyük fel, hogy három régiót vesz fel (az USA keleti régiója, Észak-Európa és Kelet-Ázsia), amelyek mindegyike azonos tárterülettel és átviteli sebességgel rendelkezik, és szeretné írni a tárolókat az Azure Cosmos-fiókhoz társított összes régióban. A havi számla összegét a következő módon számítjuk fel:
 
-|**Item** |**Használat (hónap)**|**Rate (Egységár)** |**Havi költség** |
+|**Item** |**Használat (hónap)**|**Sebesség** |**Havi költség** |
 |---------|---------|---------|-------|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)       | 10K RU/s * 24 * 30    |$0,016/100 RU/s/óra    |$1 152 |
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia (minden régió írható)        | (3 + 1) * 10K RU/mp * 24 * 30    |$0,016/100 RU/s/óra   |$4 608 |

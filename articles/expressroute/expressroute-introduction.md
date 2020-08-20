@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2fda31b97314347f52b0cd1bbe9e1b54d01af807
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75770951"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607117"
 ---
-# <a name="expressroute-overview"></a>ExpressRoute – áttekintés
+# <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure és az Office 365.
 
 A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Ez lehetővé teszi a ExpressRoute-kapcsolatok számára, hogy megbízhatóbb, gyorsabb sebességet, konzisztens késést és nagyobb biztonságot nyújtsanak, mint az interneten keresztüli szokásos kapcsolatok. További információk a hálózat a Microsofthoz való csatlakoztatásáról az ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
@@ -87,10 +87,10 @@ További információ: [Az ExpressRoute Direct ismertetése](https://go.microsof
 ### <a name="bandwidth-options"></a>Sávszélesség-lehetőségek
 A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolatcsoportokat. A támogatott sávszélességeket az alábbi lista tartalmazza. Mindenképp egyeztessen kapcsolatszolgáltatójával a támogatott sávszélességekről.
 
-* 50 Mbps
-* 100 Mbps
-* 200 Mbps
-* 500 Mbps
+* 50 Mbit/s
+* 100 Mbit/s
+* 200 Mbit/s
+* 500 Mbit/s
 * 1 Gbps
 * 2 Gbps
 * 5 Gbps
@@ -112,7 +112,7 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Az alábbi sz
 ## <a name="faq"></a>GYIK
 Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az ExpressRoute kapcsolati modelljeinek](expressroute-connectivity-models.md) ismertetése.
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).

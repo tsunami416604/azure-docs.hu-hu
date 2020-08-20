@@ -6,22 +6,22 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102293"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606768"
 ---
-# <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Kapcsolódás felügyelt identitással Azure Database for PostgreSQL
+# <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Csatlakozás felügyelt identitással az Azure Database for PostgreSQL-hez
 
-Ez a cikk bemutatja, hogyan használható egy Azure-beli virtuális gép (VM) felhasználó által hozzárendelt identitása egy Azure Database for PostgreSQL-kiszolgáló elérésére. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez a cikk bemutatja, hogyan használható egy Azure-beli virtuális gép (VM) felhasználó által hozzárendelt identitása egy Azure Database for PostgreSQL-kiszolgáló elérésére. A felügyeltszolgáltatás-identitások kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba. 
 
-> [!div class="checklist"]
-> * A virtuális gép hozzáférésének biztosítása egy Azure Database for PostgreSQL-kiszolgálóhoz
-> * Hozzon létre egy felhasználót a virtuális gép felhasználó által hozzárendelt identitását képviselő adatbázisban
-> * Hozzáférési jogkivonat beszerzése a virtuálisgép-identitás használatával és a Azure Database for PostgreSQL-kiszolgáló lekérdezéséhez
-> * Token lekérésének implementálása C#-alkalmazásban
+Az alábbiak végrehajtásának módját ismerheti meg:
+- A virtuális gép hozzáférésének biztosítása egy Azure Database for PostgreSQL-kiszolgálóhoz
+- Hozzon létre egy felhasználót a virtuális gép felhasználó által hozzárendelt identitását képviselő adatbázisban
+- Hozzáférési jogkivonat beszerzése a virtuálisgép-identitás használatával és a Azure Database for PostgreSQL-kiszolgáló lekérdezéséhez
+- Token lekérésének implementálása C#-alkalmazásban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,7 +80,7 @@ A jogkivonat lekérése egy HTTP-kérelem küldésével `http://169.254.169.254/
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`(a korábban lekért)
+* `client_id` = `CLIENT_ID` (a korábban lekért)
 
 Egy olyan JSON-eredményt kap, amely egy `access_token` mezőt tartalmaz – ez a hosszú szöveges érték a felügyelt identitás-hozzáférési jogkivonat, amelyet jelszóként kell használni az adatbázishoz való csatlakozáskor.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797865"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607447"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -22,7 +22,7 @@ A tanácsadási szolgáltatás ajánlata az ügyfél-specifikus engagement. A ki
 
 ## <a name="compare-consulting-services"></a>Tanácsadási szolgáltatások összehasonlítása
 
-A kereskedelmi piactéren kirakatok, Microsoft AppSourceek és az Azure Marketplace a célközönségek és a felhőalapú termékek összehangolva segítik az ügyfelek számára a szükséges igények megtalálását. Az egyes kirakatok speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a két kirakat közötti különbségről, tekintse meg a [Microsoft AppSource és az Azure Marketplace összehasonlítását](comparing-appsource-azure-marketplace.md)ismertető témakört.
+A kereskedelmi piactér online áruházai, Microsoft AppSource és az Azure piactér a célközönségekhez és a felhőalapú termékekhez igazodva segít az ügyfeleknek megtalálni a szükséges igényeket. Az egyes online áruházak speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a két online áruház közötti különbségről, tekintse meg a [Microsoft AppSource és az Azure Marketplace összehasonlítását](comparing-appsource-azure-marketplace.md)ismertető témakört.
 
 A Dynamics 365, a Power apps és a Power BI alapján elérhető tanácsadói szolgáltatások jogosultak a AppSource-on való listázásra. További információkért töltse le a [Microsoft AppSource Consulting Services-lista irányelvek](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF-fájlját.
 
@@ -34,7 +34,7 @@ A Microsoft Azureon alapuló tanácsadói szolgáltatások és felügyelt szolg�
 > A AppSource tanácsadói szolgáltatásainak a Dynamics 365, Power BI vagy Power apps számára minőségi megoldások nyújtásával kapcsolatos szakismeretekkel rendelkező felhasználókra kell összpontosítaniuk.
  
 > [!TIP]
-> Az Azure piactéren való közzétételhez a partner Center **elsődleges termék** legördülő listájában válassza az **Azure**lehetőséget.
+> Az Azure Marketplace-en való közzétételhez a partner Center **elsődleges termék** legördülő listájában válassza az **Azure**lehetőséget.
 >
 > A AppSource való közzétételhez a partner Center **elsődleges termék** legördülő listájában válassza a **Dynamics 365**, **Power bi**vagy a **Power apps**lehetőséget.
 
@@ -86,12 +86,12 @@ A rendszerintegrátor partnerei a következő 20 ország/régió számára nyúj
 Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vállalati adatokat a piactéren. A regisztrációs követelmények teljes listáját itt tekintheti meg: [közzétevő a piactéren](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
-A regisztráció előtt megkezdheti a tartalom gyűjtését és előkészítését, amely segít a listán a szolgáltatás és a megoldás értékének megjelölése a cél ügyfelének.
+A regisztráció előtt megkezdheti a tartalom gyűjtését és előkészítését, amely segít a listán a szolgáltatás és a megoldás értékének megjelölése a cél ügyfelének. 
 
 |Új közzétevők beállítása  |
 |---------|
 |MPN-azonosító     |
-|Cég emblémái: 48 x 48 képpont (opcionális), 216 x 216 képpont – 350 x 350 képpont (kötelező)  |
+|Vállalati emblémák (48 x 48, 216 x 216 képpont)     |
 |Érdeklődő célhelye     |
 ||
 
@@ -169,7 +169,7 @@ A partner Centerben a [Markdown](/contribute/markdown-reference)használatával 
 * Minden címsor után adjon hozzá sortörést.
 * **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

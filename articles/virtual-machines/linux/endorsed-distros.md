@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184992"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607001"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 
-A partnerek linuxos rendszerképeket biztosítanak az Azure piactéren. A Microsoft különböző Linux-közösségekkel működik együtt, hogy még több ízt adjon hozzá a támogatott terjesztési listához. A piactéren nem elérhető disztribúciók esetében a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](./create-upload-generic.md)című rész útmutatását követve mindig saját Linux-t hozhat létre.
+A partnerek linuxos rendszerképeket biztosítanak az Azure Marketplace-en. A Microsoft különböző Linux-közösségekkel működik együtt, hogy még több ízt adjon hozzá a támogatott terjesztési listához. A piactéren nem elérhető disztribúciók esetében a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](./create-upload-generic.md)című rész útmutatását követve mindig saját Linux-t hozhat létre.
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúciók és verziók
 
-A következő táblázat felsorolja az Azure-ban támogatott Linux-disztribúciókat és-verziókat. A Linux és a nyílt forráskódú technológiák Azure-beli támogatásával kapcsolatos részletesebb információkért tekintse meg a [Linux-rendszerképek támogatását Microsoft Azureban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
+A következő táblázat felsorolja az Azure-ban támogatott Linux-disztribúciókat és-verziókat. További információ: a [Linux-rendszerképek támogatása a Microsoft Azureban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure).
 
-A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok a Microsoft által közvetlenül a felsőbb rétegbeli linuxos kernelhez hozzájáruló kernel-modulok. Egyes LIS-illesztőprogramok alapértelmezés szerint a terjesztés rendszermagba vannak építve. A Red Hat Enterprise (RHEL)/CentOS alapuló régebbi disztribúciók külön letöltésként érhetők el a [Linux Integration Services 4,2-es verziójában a Hyper-V és az Azure számára](https://www.microsoft.com/download/details.aspx?id=55106). Az LIS-illesztőprogramokkal kapcsolatos további információkért tekintse meg a [Linux kernelre vonatkozó követelményeket](create-upload-generic.md#linux-kernel-requirements) .
+A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok a Microsoft által közvetlenül a felsőbb rétegbeli linuxos kernelhez hozzájáruló kernel-modulok. Egyes LIS-illesztőprogramok alapértelmezés szerint a terjesztés rendszermagba vannak építve. A Red Hat Enterprise (RHEL)/CentOS alapuló régebbi disztribúciók külön letöltésként érhetők el a [Linux Integration Services 4,2-es verziójában a Hyper-V és az Azure számára](https://www.microsoft.com/download/details.aspx?id=55106). További információ: [Linux kernel-követelmények](create-upload-generic.md#linux-kernel-requirements).
 
-Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezképeken, és általában a terjesztési csomag adattárában érhető el. A forráskód megtalálható a [githubon](https://github.com/azure/walinuxagent).
+Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezképeken, és általában elérhető a Distribution Package adattárból. A forráskód megtalálható a [githubon](https://github.com/azure/walinuxagent).
 
 | Disztribúció | Verzió | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
@@ -39,20 +39,20 @@ Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezké
 | Debian by Credativ |8.x, 9.x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Flatcar-tároló linuxos Kinvolk szerint| Stable, Edge| | |
 | Oracle-Oracle Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| A Red Hat Red Hat Enterprise Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [A Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise a SUSE használatával |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE nyilvános Felhőbeli rendszerképek életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |A kernelben |Csomag<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE – SUSE |openSUSE Leap 15.x |A kernelben |Csomag: a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu Canonical alapján |Ubuntu-kiszolgáló és Pro. 16. x, 18. x, 20. x<p>Az Ubuntu 12,04 és 14,04 kiterjesztett támogatásával kapcsolatos információk itt találhatók: [Ubuntu Extended Security karbantartás](https://www.ubuntu.com/esm). |A kernelben |Csomag: a tárházban a "walinuxagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Rendszerkép frissítésének ritmusa
 
-Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse lemezképeit az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Marketplace-en frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű [virtuális gépek rendszerképeinek megkeresése az Azure piactéren](./cli-ps-findimage.md).
+Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse a lemezképeket az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. A piactéren frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű [virtuális gépek rendszerképeinek megkeresése az Azure Marketplace-](./cli-ps-findimage.md)en.
 
 ## <a name="azure-tuned-kernels"></a>Azure által hangolt kernelek
 
-Az Azure szorosan együttműködik a különböző támogatott Linux-disztribúciókkal az Azure piactéren közzétett lemezképek optimalizálásához. Ezen együttműködés egyik aspektusa az Azure platformra optimalizált, "hangolt" Linux-kernelek fejlesztése, amely a Linux-disztribúció teljes mértékben támogatott összetevőiként érhető el. Az Azure által hangolt kernelek új funkciókkal és teljesítménnyel kapcsolatos újdonságokkal rendelkeznek, és gyorsabb (általában negyedéves) ritmust tartalmaznak a terjesztésből elérhető alapértelmezett vagy általános kernelekhez képest.
+Az Azure szorosan együttműködik a különböző támogatott Linux-disztribúciókkal az Azure Marketplace-en közzétett lemezképek optimalizálásához. Ezen együttműködés egyik aspektusa az Azure platformra optimalizált, "hangolt" Linux-kernelek fejlesztése, amely a Linux-disztribúció teljes mértékben támogatott összetevőiként érhető el. Az Azure által hangolt kernelek új funkciókkal és teljesítménnyel kapcsolatos újdonságokkal rendelkeznek, és gyorsabb (általában negyedéves) ritmust tartalmaznak a terjesztésből elérhető alapértelmezett vagy általános kernelekhez képest.
 
-A legtöbb esetben az Azure Marketplace-en az alapértelmezett lemezképekre előre telepített kerneleket talál, így az ügyfelek azonnal kihasználhatják ezeket az optimalizált kerneleket. Az Azure-ban hangolt kernelekről további információt az alábbi hivatkozásokon talál:
+A legtöbb esetben ezek a kernelek előre telepítve lesznek az Azure Marketplace-en az alapértelmezett lemezképeken, így az ügyfelek azonnal kihasználhatják ezeket az optimalizált kerneleket. Az Azure-ban hangolt kernelekről további információt az alábbi hivatkozásokon talál:
 
 - [CentOS Azure által hangolt kernel – a CentOS virtualizációs SIG használatával érhető el](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel – elérhető a Debian 10 és a Debian 9 "backports" rendszerképpel az Azure-ban](https://wiki.debian.org/Cloud/MicrosoftAzure)
@@ -78,9 +78,9 @@ A Credativ egy független tanácsadói és szolgáltatási cég, amely a profess
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
 
-A Kinvolk a Flatcar Container Linux mögötti cég, amely az eredeti CoreOS-jövőképet folytatja a tároló alkalmazások minimális, nem módosítható és automatikusan frissülő alapjaihoz. Minimális disztribúcióként a Flatcar csak azokat a csomagokat tartalmazza, amelyek a tárolók üzembe helyezéséhez szükségesek. A nem módosítható fájlrendszer garantálja a következetességet és a biztonságot, az automatikus frissítési képességek pedig lehetővé teszik, hogy mindig naprakészek legyenek a legújabb biztonsági javításokkal. 
+A Kinvolk a Flatcar Container Linux mögötti cég, amely az eredeti CoreOS-jövőképet folytatja a tároló alkalmazások minimális, megváltoztathatatlan és automatikus frissítési alapjaiban. Minimális disztribúcióként a Flatcar csak azokat a csomagokat tartalmazza, amelyek a tárolók üzembe helyezéséhez szükségesek. A nem módosítható fájlrendszer garantálja a következetességet és a biztonságot, az automatikus frissítési képességek pedig lehetővé teszik, hogy mindig naprakészek legyenek a legújabb biztonsági javításokkal. 
 
-A Flatcar-tároló linuxos biztonsági mentése a Kinvolk globális csapata, amely olyan opcionális kereskedelmi támogatási előfizetést kínál, amely nonstop választ, biztonsági és technikai riasztásokat, valamint exkluzív, Azure-ra optimalizált rendszerképeket tartalmaz, beleértve a hosszú távú támogatási csatornát.
+A Flatcar-tároló linuxos biztonsági mentése a Kinvolk globális csapata, amely olyan opcionális kereskedelmi támogatási előfizetést kínál, amely nonstop választ, biztonsági és technikai riasztásokat, valamint exkluzív, Azure-ra optimalizált képeket tartalmaz, beleértve a hosszú távú támogatási csatornát is.
 
 
 ### <a name="oracle"></a>Oracle
@@ -93,7 +93,7 @@ Az Oracle stratégiája a nyilvános és privát felhőkre vonatkozó megoldáso
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-A világ vezető nyílt forráskódú megoldásokat kínál, a Red hat a Fortune 500-vállalatok több mint 90%-át teszi lehetővé az üzleti problémák megoldását, az informatikai és üzleti stratégiák összehangolását, valamint a technológia jövőjének előkészítését. A Red Hat ezt egy nyitott üzleti modellen és egy megfizethető, kiszámítható előfizetési modellen keresztül biztosít biztonságos megoldásokkal.
+A világ vezető nyílt forráskódú megoldásokat kínál, a Red hat a Fortune 500-vállalatok több mint 90%-át teszi lehetővé az üzleti problémák megoldását, az informatikai és üzleti stratégiák összehangolását, valamint a technológia jövőjének előkészítését. A Red Hat ezt úgy éri el, hogy biztonságos megoldásokat biztosít egy nyitott üzleti modell és egy megfizethető, kiszámítható előfizetési modell használatával.
 
 ### <a name="suse"></a>SUSE
 

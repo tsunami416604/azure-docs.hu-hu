@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/19/2020
+ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084721"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606253"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Fejlesztési és tesztelési költségek optimalizálása az Azure Cosmos DB-ben
 
@@ -25,6 +25,9 @@ Ez a cikk a fejlesztéshez és teszteléshez használható Azure Cosmos DB kül�
 
 A Azure Cosmos DB ingyenes szintje megkönnyíti az alkalmazások megkezdését, fejlesztését és tesztelését, vagy akár kisebb éles számítási feladatok futtatását is ingyenesen. Ha az ingyenes szintet engedélyezi egy fiókon, az első 400 RU/s és 5 GB tárterület ingyenesen elérhető a fiókban. Létrehozhat egy közös átviteli sebességű adatbázist is, amely 25 tárolóval rendelkezik, amelyek az adatbázis szintjén osztják meg az 400 RU/s-t, és mindezt az ingyenes szint (az 5 közös átviteli sebességű adatbázis egy ingyenes szintű fiókban) fedi le. Ha az ingyenes szintet használja, ha olyan megosztott adatbázist hoz létre, amelynek a minimális átviteli sebessége 400 RU/s, az adott adatbázisban található összes tároló megoszthatja az átviteli sebességet. A megosztott átviteli sebességgel vagy tárolókkal rendelkező új adatbázisok számlázása a normál díjszabás szerint történik.
 
+> [!NOTE]
+> Az ingyenes szinten csak a kiépített átviteli sebesség módban érhető el.
+
 Az ingyenes szinten határozatlan ideig tart a fiók élettartama, és a rendszeres Azure Cosmos DB fiók összes [előnyét és funkcióját](introduction.md#key-benefits) tartalmazza, beleértve a korlátlan tárterületet és átviteli SEBESSÉGET (ru/s), SLA-kat, magas rendelkezésre állást, kulcsrakész globális elosztást az összes Azure-régióban, és így tovább. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot Azure Portal az ingyenes szintet engedélyezve](create-cosmosdb-resources-portal.md) , vagy használjon [ARM-sablont](manage-sql-with-resource-manager.md#free-tier). További részleteket a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/) talál.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
@@ -35,18 +38,22 @@ Az ingyenes szinten határozatlan ideig tart a fiók élettartama, és a rendsze
 
 A Azure Cosmos DBt az [ingyenes Azure-fiók](https://azure.microsoft.com/free)tartalmazza, amely egy adott időszakra ingyenesen kínál Azure-krediteket és-erőforrásokat. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RUs-t biztosít az egész évre kiépített átviteli sebességhez. Ez a megoldás lehetővé teszi, hogy a fejlesztők egyszerűen teszteljék Azure Cosmos DB funkcióit, vagy más Azure-szolgáltatásokkal integrálják azt nulla áron. Az ingyenes Azure-fiókkal $200 kreditet kap, amelyet az első 30 napban kell költeni. Nem számítunk fel díjat, még akkor sem, ha a szolgáltatást a frissítés megkezdése előtt elkezdi használni. Első lépésként látogasson el az [ingyenes Azure-fiók](https://azure.microsoft.com/free) oldalra.
 
+## <a name="azure-cosmos-db-serverless"></a>Kiszolgáló nélküli Azure Cosmos DB
+
+[Azure Cosmos db kiszolgáló](serverless.md) nélküli használata lehetővé teszi az Azure Cosmos-fiók felhasználáson alapuló használatát, ahol csak az adatbázis-műveletek által felhasznált kérelmekért és az adatok által felhasznált tárterületért kell fizetnie. Azure Cosmos DB kiszolgáló nélküli módban való használata esetén nem számítunk fel minimális díjat. Mivel ez kiküszöböli a kiépített kapacitás fogalmát, a fejlesztési és tesztelési tevékenységekhez legmegfelelőbb, különösen akkor, ha az adatbázisa az idő nagy részében üresjáratban van.
+
 ## <a name="use-shared-throughput-databases"></a>Megosztott átviteli sebességű adatbázisok használata
 
 Egy [megosztott átviteli sebességű adatbázisban](set-throughput.md#set-throughput-on-a-database)az adatbázisban lévő összes tároló osztozik az adatbázis kiépített átviteli sebességén (ru/s). Ha például 400 RU/s-vel rendelkező adatbázist hoz létre, és négy tárolóval rendelkezik, mind a négy tároló osztozik a 400 RU/s-ban. Fejlesztési vagy tesztelési környezetben, ahol az egyes tárolók ritkábban érhetők el, és így a minimum 400 RU/s értéknél kevesebbet igényelnek, és a tárolók egy megosztott átviteli sebességű adatbázisban való üzembe helyezése segít optimalizálni a költségeket.
 
 Tegyük fel például, hogy a fejlesztési vagy tesztelési fiók négy tárolóval rendelkezik. Ha négy tárolót hoz létre dedikált átviteli sebességgel (legalább 400 RU/s), akkor a teljes RU/s a 1600 RU/s lesz. Ezzel szemben, ha létrehoz egy megosztott átviteli sebességű adatbázist (minimum 400 RU/s), és elhelyezi a tárolókat, a teljes RU/s csak 400 RU/s lesz. Általánosságban elmondható, hogy a megosztott átviteli sebességű adatbázisok kiválóan alkalmasak olyan forgatókönyvek esetén, amelyeknél nincs szükség a garantált átviteli sebességre minden egyes tárolón  További információ a [megosztott átviteli sebességű adatbázisokról.](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az emulátor vagy az ingyenes Azure Cosmos DB fiókok használatának első lépései a következő cikkekkel szerezhetők be:
 
-* További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)
 * További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
+* További információ a [Azure Cosmos db kiszolgáló](serverless.md) nélküli használatáról
 * További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
 * További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
 * További információ [az olvasási és írási díjak optimalizálásáról](optimize-cost-reads-writes.md)

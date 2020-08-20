@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082805"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607489"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
-Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatok [kereskedelmi piactéren keresztüli webes kirakatokon](comparing-appsource-azure-marketplace.md)keresztüli közzétételén kívül a CSP program segítségével több millió minősített Microsoft-ügyfelet is elérhet, amelyeket a program kiszolgál.
+Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatoknak a [kereskedelmi piactér online áruházakon](comparing-appsource-azure-marketplace.md)keresztüli közzétételén kívül a CSP programon keresztül is elérhetővé teheti, hogy a program által kiszolgált, több millió minősített Microsoft-ügyfelet is elérhet.
 
 Az új vagy meglévő ajánlatokat a CSP programban is konfigurálhatja, amely lehetővé teszi, hogy a CSP-partnerek eladják termékeiket, és kötegelt megoldásokat hozzanak létre az ügyfeleknek.
 
@@ -166,7 +166,7 @@ Ha az ajánlat jelenleg **3. lehetőség: nincs partner a CSP programban**, bár
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Értékesítési és támogatási anyagok megosztása partnerekkel a CSP programban
 
-Ahhoz, hogy a partnerek a felhőalapú megoldás-szolgáltatói programban leghatékonyabban képviseljék az ajánlatot, és a szervezete is részt vesz, be kell nyújtania a viszonteladók számára elérhető értékesítési és támogatási anyagokat. Ezek az erőforrások nem lesznek elérhetők a piactéren kirakatokban lévő ügyfelek számára.
+Ahhoz, hogy a partnerek a felhőalapú megoldás-szolgáltatói programban leghatékonyabban képviseljék az ajánlatot, és a szervezete is részt vesz, be kell nyújtania a viszonteladók számára elérhető értékesítési és támogatási anyagokat. Ezek az erőforrások nem lesznek elérhetők az online áruházakban lévő ügyfelek számára.
 
 ### <a name="partner-center-csp-channel"></a>Partneri központ CSP-csatornája
 
@@ -174,7 +174,7 @@ Ha kiválasztotta a CSP-csatornát a partner Centerben, a kiadónak meg kell adn
 
 ![A partner Center CSP-biztosítékokkal kapcsolatos információi](media/marketplace-publishers-guide/pc-csp-channel.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](marketplace-publishers-guide.md).
 

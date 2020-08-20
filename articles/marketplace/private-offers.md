@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168014"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607189"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privát ajánlatok a Microsoft kereskedelmi piactéren
 
@@ -54,7 +54,7 @@ Az ajánlat minősítése és közzététele után az ügyfelek perceken belül 
 
 ## <a name="deploying-private-offers"></a>Privát ajánlatok üzembe helyezése
 
-A privát ajánlatok csak a [Azure Portalon](https://azure.microsoft.com/features/azure-portal/) keresztül érhetők el, és nem jelennek meg [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en. Ha többet szeretne megtudni a különböző kereskedelmi Piactéri kirakatok közzétételéről, olvassa el [a közzétételi lehetőség meghatározása](./determine-your-listing-type.md)című témakört.
+A privát ajánlatok csak a [Azure Portalon](https://azure.microsoft.com/features/azure-portal/) keresztül érhetők el, és nem jelennek meg [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en. Ha többet szeretne megtudni arról, hogyan lehet közzétenni a különböző kereskedelmi piactér online áruházait, tekintse meg [a közzétételi lehetőség meghatározása](./determine-your-listing-type.md)című témakört.
 
 Miután bejelentkezett a Azure Portalba, az ügyfelek kiválaszthatják a piactér navigációs elemét a privát ajánlatokhoz való hozzáféréshez. A privát ajánlatok is megjelennek a keresési eredmények között, és parancssorból és Azure Resource Manager-sablonokból is üzembe helyezhetők, mint bármely más ajánlat.
 
