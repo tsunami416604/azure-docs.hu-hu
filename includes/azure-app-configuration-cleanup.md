@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116988"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88638886"
 ---
 Ha nem szeretné tovább használni a cikkben létrehozott erőforrásokat, törölje az itt létrehozott erőforráscsoportot a díjak elkerüléséhez.
 
@@ -22,7 +22,7 @@ Ha nem szeretné tovább használni a cikkben létrehozott erőforrásokat, tör
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza az **erőforráscsoportok**lehetőséget.
 1. A **szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. 
-1. Az eredmény listából válassza ki az erőforráscsoportot, és kattintson a jobb gombbal a sorra, vagy használja a **három** pont (**...**) gombot a helyi menü megnyitásához.
+1. Az eredmények listájában válassza ki az erőforráscsoport nevét az Áttekintés megtekintéséhez.
 1. Válassza az **Erőforráscsoport törlése** elemet.
 1. A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 

@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263265"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612656"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -92,7 +92,7 @@ A hitelesítő adatok beszerzéséhez töltse le a tároló hitelesítőadat-fá
   - Ha a hitelesítő adatok ellenőrzése megszakad, a tároló hitelesítő adataival más gépek is regisztrálhatók a tárba.
   - A biztonsági mentési adatai azonban a felhasználóhoz tartozó jelszóval vannak titkosítva, így a meglévő biztonsági mentési adatai nem lehetnek biztonságban.
 - Győződjön meg arról, hogy a fájl egy olyan helyen lett mentve, amely a DPM-kiszolgálóról érhető el. Ha egy fájlmegosztási vagy SMB-fájlban van tárolva, ellenőrizze a hozzáférési engedélyeket.
-- A tár hitelesítő adatai 48 óra után lejárnak. Az új tár hitelesítő adatait igény szerint többször is letöltheti. A regisztrációs munkafolyamat során azonban csak a legújabb tár hitelesítőadat-fájl használható.
+- A tároló hitelesítő adatai 48 óra után lejárnak. Az új tár hitelesítő adatait igény szerint többször is letöltheti. A regisztrációs munkafolyamat során azonban csak a legújabb tár hitelesítőadat-fájl használható.
 - A Azure Backup szolgáltatás nem ismeri a tanúsítvány titkos kulcsát, és a titkos kulcs nem érhető el a portálon vagy a szolgáltatásban.
 
 Töltse le a tároló hitelesítő adatait tartalmazó fájlt egy helyi gépre a következő módon:
@@ -182,4 +182,4 @@ Győződjön meg arról, hogy a tár hitelesítő adatainak fájlja olyan helyen
 Ha a tár hitelesítő adatai érvénytelenek (például "Érvénytelen tároló hitelesítő adatok"), akkor a fájl sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal.
 
 - Próbálja megismételni a műveletet, miután letöltött egy új tároló hitelesítő adatait a portálról.
-- Ez a hiba általában akkor jelenik meg, ha a tároló **hitelesítő adatainak letöltése** lehetőséget választja a Azure Portalban, kétszer a gyors egymásutánban. Ebben az esetben csak a második tár hitelesítő adatait tartalmazó fájl érvényes.
+- Ez a hiba általában akkor látható, ha a tároló **hitelesítő adatainak letöltése** lehetőséget választja a Azure Portalban, kétszer a gyors egymásutánban. Ebben az esetben csak a második tár hitelesítő adatait tartalmazó fájl érvényes.

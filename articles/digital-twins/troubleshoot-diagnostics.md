@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003585"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612401"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
@@ -88,13 +88,13 @@ Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](ht
 | ADTEventRoutesOperation | Microsoft. DigitalTwins/eventroutes/Write | Event Routes API hozzáadása |
 |  | Microsoft. DigitalTwins/eventroutes/READ | Azonosító és lista API-k által beolvasott esemény-útvonalak |
 |  | Microsoft. DigitalTwins/eventroutes/delete | Esemény-útvonalak törlése API |
-|  | Microsoft. DigitalTwins/eventroutes/művelet | Esemény kilépése egy végponti szolgáltatásba (nem API-hívás) |
+|  | Microsoft. DigitalTwins/eventroutes/művelet | Hiba történt az események végponti szolgáltatásba való közzétételekor (nem API-hívás) |
 | ADTDigitalTwinsOperation | Microsoft. DigitalTwins/DigitalTwins/Write | Digitális ikrek hozzáadása, kapcsolat hozzáadása, frissítés, összetevő frissítése |
 |  | Microsoft. DigitalTwins/DigitalTwins/READ | Digitális ikrek által beolvasott azonosító, összetevő beolvasása, kapcsolat beolvasása azonosító alapján, bejövő kapcsolatok listázása, kapcsolatok listázása |
 |  | Microsoft. DigitalTwins/DigitalTwins/delete | Digitális ikrek törlése, kapcsolat törlése |
 |  | Microsoft. DigitalTwins/DigitalTwins/művelet | Digitális Twins – összetevő telemetria küldése, telemetria küldése |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [*adatok gyűjtése és felhasználása az Azure-erőforrásokból*](../azure-monitor/platform/platform-logs-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).

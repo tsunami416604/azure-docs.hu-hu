@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3a23e0c2546da55f977d589eb38607994d3902b
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80133164"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611789"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>A Windows IoT Edge használata Linux-tárolók futtatásához
 
@@ -34,7 +34,7 @@ Ebből a szakaszból megtekintheti, hogy a Windows-eszköz támogatja-e a IoT Ed
 
 A Linux-tárolókkal rendelkező Azure IoT Edge a Windows bármely olyan verzióját futtathatja, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) .
 
-Ha virtuális gépen szeretné telepíteni a IoT Edget, engedélyezze a beágyazott virtualizációt, és foglaljon le legalább 2 GB memóriát. A beágyazott virtualizálás engedélyezése a használt hypervisortól függően eltérő. A Hyper-V esetében a 2. generációs virtuális gépekhez alapértelmezés szerint engedélyezve van a beágyazott virtualizálás. A VMWare esetében van egy váltógomb, amely engedélyezi a szolgáltatást a virtuális gépen.
+Ha virtuális gépen szeretné telepíteni a IoT Edget, engedélyezze a beágyazott virtualizációt, és foglaljon le legalább 2 GB memóriát. A beágyazott virtualizálás engedélyezése a használt hypervisortól függően eltérő. A Hyper-V esetében a 2. generációs virtuális gépekhez alapértelmezés szerint engedélyezve van a beágyazott virtualizálás. A VMware esetében van egy váltógomb, amely engedélyezi a szolgáltatást a virtuális gépen.
 
 ### <a name="prepare-the-container-engine"></a>A tároló motorjának előkészítése
 
@@ -57,7 +57,7 @@ A különböző telepítési lehetőségekről és paraméterekről további inf
 
 1. Ha még nem tette meg, regisztráljon egy új IoT Edge eszközt, és kérje le az eszköz csatlakoztatási karakterláncát. Másolja a kapcsolódási karakterláncot a szakasz későbbi részében való használatra. Ezt a lépést a következő eszközök használatával végezheti el:
 
-   * [Azure Portalra](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
@@ -88,7 +88,7 @@ A különböző telepítési lehetőségekről és paraméterekről további inf
 
 6. Ha a rendszer kéri, adja meg az 1. lépésben lekért eszköz-kapcsolódási karakterláncot. Az eszköz-csatlakoztatási karakterlánc a fizikai eszközt a IoT Hub eszköz-azonosítójával társítja.
 
-   Az eszköz-kapcsolatok karakterlánca a következő formátumot veszi figyelembe, és nem tartalmazhat idézőjeleket:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Az eszköz-kapcsolatok karakterlánca a következő formátumot veszi figyelembe, és nem tartalmazhat idézőjeleket: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
 
@@ -116,7 +116,7 @@ Futó modulok listázása. Új telepítés után az egyetlen modulnak kell megje
 iotedge list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már telepített egy IoT Edge eszközt a futtatott futtatókörnyezettel, telepítheti [IoT Edge modulokat](how-to-deploy-modules-portal.md).
 

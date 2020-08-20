@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185808"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612707"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
@@ -72,14 +72,14 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
-| Verzió | Spark | Hive | LLAP | A HBase | Kafka | Vihar | ML |
+| Verzió | Spark | Hive | LLAP | HBase | Kafka | Vihar | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 3,6, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 4,0, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 
-\*A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
+\* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -225,7 +225,7 @@ A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevék
 
 Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
-| Fürt állapota | Description |
+| Fürt állapota | Leírás |
 |---|---|
 | Futó | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
@@ -258,6 +258,26 @@ A futó feladatok továbbra is folytatódnak. A függőben lévő feladatok a ke
 ### <a name="minimum-cluster-size"></a>Fürt minimális mérete
 
 Ne méretezze a fürtöt kevesebb, mint három csomópontra. Ha a fürtöt kevesebb mint három csomópontra szeretné méretezni, azt eredményezheti, hogy a fájlreplikációs szolgáltatás nem elegendő a biztonságos módban.  További információ: [beragadás csökkentett módban](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="llap-daemons-count"></a>LLAP-démonok száma
+
+Ha engedélyezve van az LLAP-fürtök autoskálázása, a fel-és leskálázási esemény a LLAP-démonok számát is felméretezi az aktív munkavégző csomópontok számára. A démonok számának változása azonban nem marad meg a Ambari **num_llap_nodes** -konfigurációjában. Ha a kaptár-szolgáltatások újraindítása manuálisan történik meg, akkor a LLAP-démonok száma a Ambari konfigurációjának megfelelően lesz visszaállítva.
+
+Vegyük az alábbi forgatókönyvet:
+1. A LLAP automatikus méretezést támogató fürt 3 feldolgozó csomóponttal és a betöltésen alapuló Automatikus méretezéssel van engedélyezve, és a munkavégző csomópontok minimális száma 3, a maximális munkavégző csomópont pedig 10.
+2. A LLAP démonok a LLAP konfiguráció és a Ambari szerint 3, mivel a fürt 3 feldolgozó csomóponttal lett létrehozva.
+3. Ezután az automatikus skálázás a fürt terhelése miatt aktiválódik, a fürt most már 10 csomópontra van méretezve.
+4. A rendszeres időközönként megjelenő, az LLAP-démonok számának 3, de az aktív munkavégző csomópontok száma 10, az autoskálázási folyamat most megnöveli a LLAP démon számát 10 értékre, de ez a változás nem marad meg a Ambari config-num_llap_nodes.
+5. Az autoskálázás mostantól le van tiltva.
+6. A fürt immár 10 feldolgozói csomóponttal és 10 LLAP démonral rendelkezik.
+7. A LLAP szolgáltatás manuális újraindítása folyamatban van.
+8. Az újraindítás során ellenőrzi a LLAP konfigurációjában a num_llap_nodes config fájlt, és az értéket 3 értékre észleli, így a démonok 3 példányát is felveszi, de a feldolgozó csomópontok száma 10. A kettő között eltérés van.
+
+Ebben az esetben manuálisan kell módosítani a **num_llap_node konfigurációt (a csomópont (ok) számát a kaptár llap-démon futtatásához) a speciális struktúra-interaktív-env elemnél** , hogy az megfeleljen az aktív munkavégző csomópontok számának.
+
+**Megjegyzés**
+
+Az események autoskálázása nem változtatja meg a struktúra konfigurációjának **maximális összesített lekérdezéseit** a Ambari. Ez azt jelenti, hogy a kaptár-kiszolgáló 2 interaktív szolgáltatása **csak a megadott számú egyidejű lekérdezést tudja kezelni egy adott időpontban, még akkor is, ha a LLAP-démonok száma terhelés/ütemterv alapján fel van méretezve**. Az általános javaslat az, hogy ezt a konfigurációt a maximális használati forgatókönyvhöz állítsa be, hogy a manuális beavatkozás elkerülhető legyen. Vegye azonban figyelembe, hogy az **egyidejű lekérdezések maximális száma beállítás magas értékének beállítása sikertelen lehet a kaptár-kiszolgáló 2 interaktív szolgáltatásának újraindítása, ha a munkavégző csomópontok minimális száma nem képes a megadott számú TEZ AMS (az egyidejű lekérdezések maximális teljes konfigurációjának megadásával)**
 
 ## <a name="next-steps"></a>Következő lépések
 

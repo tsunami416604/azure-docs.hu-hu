@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272654"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611942"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -46,7 +46,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/tartománynév
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A felhőalapú szolgáltatás üzemeltetett neve működik?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
+|<ul><li>A üzemi tárolóhelyek állapota Kifogástalan az összes szerepkör-példányon?</li><li>Kifogástalan a szerepkör az összes virtuálisgép-példánya között?</li><li>Mi az egyes virtuális gépek állapota egy felhőalapú szolgáltatás szerepkörén belül?</li><li>A virtuális gép állapota a platform vagy az ügyfél által kezdeményezett művelet miatt módosult?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices/fiókok
 |Végrehajtott ellenőrzések|

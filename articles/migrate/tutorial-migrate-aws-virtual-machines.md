@@ -2,21 +2,21 @@
 title: Amazon Web Services (AWS) EC2-alapú virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepítését ismerteti Azure Migrateokkal.
 ms.topic: tutorial
-ms.date: 06/16/2020
+ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066644"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611432"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
-Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel, értékelheti és áttelepítheti Amazon Web Services (AWS) virtuális gépeket az Azure-beli virtuális gépekre Azure Migrate: Server Assessment és Server áttelepítési eszközök használatával
+Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel, értékelheti és áttelepítheti Amazon Web Services (AWS) virtuális gépeket az Azure-beli virtuális gépekre Azure Migrate: Server Assessment és Azure Migrate: Server áttelepítési eszközök használatával.
 
 > [!NOTE]
-> Ha az AWS-alapú virtuális gépeket az Azure-ba telepíti át, a virtuális gépeket úgy kell kezelni, mintha fizikai kiszolgálók voltak. A kiszolgáló áttelepítési folyamatát a fizikai gépek áttelepítéséhez fogja használni az AWS-alapú virtuális gépek Azure-ba történő áttelepítéséhez.
+> Az AWS virtuális gépeket az Azure-ba migrálva fizikai kiszolgálóként kezelheti őket.
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 > [!div class="checklist"]
@@ -33,20 +33,29 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
-## <a name="discover-and-assess-aws-vms"></a>AWS virtuális gépek felderítése és értékelése  
+## <a name="discover-and-assess"></a>Felderítés és Értékelés
 
-Az Azure-ba való Migrálás előtt javasoljuk, hogy hajtsa végre a virtuális gépek felderítését és a Migrálás értékelését. Ez az értékelés segít az AWS-es virtuális gépek jobb méretezésében az Azure-ba való Migrálás és a lehetséges Azure-üzemeltetési költségek becslése érdekében.
+Az Azure-ba való Migrálás előtt javasoljuk, hogy hajtsa végre a virtuális gépek felderítését és a Migrálás értékelését. Ez az értékelés segít az AWS-es virtuális gépek megfelelő méretének az Azure-ba való áttelepítéshez, valamint a lehetséges Azure-futtatási költségek becsléséhez.
 
 Az értékelést a következőképpen állíthatja be:
 
-1. Az AWS-beli virtuális gépek fizikai gépként való kezelésével az értékelés elvégzéséhez a Azure Migrate: Server Assessment Tool használatával végezheti el az értékelést. Az [oktatóanyag](./tutorial-prepare-physical.md) alapján állítsa be az Azure-t, és készítse elő az AWS virtuális gépeket egy értékeléshez.
+1. Az [oktatóanyag](./tutorial-prepare-physical.md) alapján állítsa be az Azure-t, és készítse elő az AWS virtuális gépeket egy értékeléshez. Vegye figyelembe:
+
+    - A Azure Migrate a jelszó-hitelesítést használja az AWS-példányok felfedése során. Az AWS-példányok alapértelmezés szerint nem támogatják a jelszó-hitelesítést. A példány felderítése előtt engedélyeznie kell a jelszó-hitelesítést.
+        - Windows rendszerű gépek esetén engedélyezze a 5986-es (HTTPS) és a 5985-es (HTTP) WinRM-portot. Ez lehetővé teszi a távoli WMI-hívásokat. Ha beállítja a 
+        - Linux rendszerű gépek esetén:
+            1. Jelentkezzen be az egyes Linux-gépekre.
+            2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
+            3. A fájlban keresse meg a **PasswordAuthentication** sort, és módosítsa az értéket **Igen**értékre.
+            4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
+
 2. Ezt az [oktatóanyagot](./tutorial-assess-physical.md) követve beállíthat egy Azure Migrate projektet és berendezést az AWS virtuális gépek felderítéséhez és értékeléséhez.
 
 Bár javasoljuk, hogy kipróbáljon egy értékelést, és az értékelés végrehajtása nem kötelező lépés a virtuális gépek áttelepítéséhez.
 
-## <a name="migrate-aws-vms"></a>AWS virtuális gépek migrálása   
 
-## <a name="1-prerequisites-for-migration"></a>1. az áttelepítésre vonatkozó előfeltételek
+
+## <a name="prerequisites"></a>Előfeltételek 
 
 - Győződjön meg arról, hogy az áttelepíteni kívánt AWS virtuális gépek támogatott operációsrendszer-verziót futtatnak. Az AWS-alapú virtuális gépeket a Migrálás céljára szolgáló fizikai gépek kezelik. Tekintse át a fizikai kiszolgáló áttelepítési munkafolyamatának [támogatott operációs rendszereit](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) . Javasoljuk, hogy végezzen el egy teszt-áttelepítést (feladatátvételi teszt) annak ellenőrzéséhez, hogy a virtuális gép a várt módon működik-e a tényleges áttelepítés folytatása előtt.
 - Győződjön meg arról, hogy az AWS-beli virtuális gépek megfelelnek az Azure-ba való Migrálás [támogatott konfigurációinak](./migrate-support-matrix-physical-migration.md#physical-server-requirements) .
@@ -56,7 +65,7 @@ Bár javasoljuk, hogy kipróbáljon egy értékelést, és az értékelés végr
     - Az áttelepítés megkezdése előtt fontos, hogy elvégezze ezeket a módosításokat. Ha a módosítás előtt áttelepíti a virtuális gépet, előfordulhat, hogy a virtuális gép nem indul el az Azure-ban.
 Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux](prepare-for-migration.md#linux-machines) -módosításokat, amelyeket el kell végeznie.
 
-## <a name="2-prepare-azure-resources-for-migration"></a>2. Azure-erőforrások előkészítése az áttelepítéshez
+### <a name="prepare-azure-resources-for-migration"></a>Azure-erőforrások előkészítése az áttelepítéshez
 
 Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel történő áttelepítéshez.
 
@@ -85,7 +94,7 @@ Rendelje hozzá a virtuális gépi közreműködő szerepkört az Azure-fiókhoz
 
 Azure-beli virtuális hálózat (VNet) [beállítása](../virtual-network/manage-virtual-network.md#create-a-virtual-network) . Az Azure-ba történő replikáláskor a létrehozott Azure-beli virtuális gépek az áttelepítés beállításakor megadott Azure-VNet csatlakoznak.
 
-## <a name="3-prepare-aws-instances-for-migration"></a>3. AWS-példányok előkészítése áttelepítésre
+## <a name="prepare-aws-instances-for-migration"></a>AWS-példányok előkészítése áttelepítésre
 
 Az AWS Azure-ba való áttelepítésre való felkészüléséhez elő kell készítenie és telepítenie kell egy replikációs berendezést az áttelepítéshez.
 
@@ -111,7 +120,7 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 - A replikációs berendezés a MySQL-t használja. Tekintse át a MySQL telepítésének [lehetőségeit](migrate-replication-appliance.md#mysql-installation) a készüléken.
 - Tekintse át a replikációs berendezés számára a [nyilvános](migrate-replication-appliance.md#url-access) és a [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhők eléréséhez szükséges Azure URL-címeket.
 
-## <a name="4-add-the-server-migration-tool"></a>4. a kiszolgáló áttelepítési eszközének hozzáadása
+## <a name="add-the-server-migration-tool"></a>A kiszolgáló áttelepítési eszközének hozzáadása
 
 Állítson be egy Azure Migrate projektet, majd adja hozzá a kiszolgáló áttelepítési eszközét.
 
@@ -135,7 +144,7 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 10. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
 11. Az eszköz hozzáadása után megjelenik a Azure Migrate Project > **Servers**  >  **áttelepítési eszközök**területen.
 
-## <a name="5-set-up-the-replication-appliance"></a>5. a replikációs berendezés beállítása
+## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
 
 Az áttelepítés első lépése a replikációs berendezés beállítása. Az AWS virtuális gépek áttelepítésére szolgáló készülék beállításához le kell töltenie a készülék telepítőjének fájlját, majd futtatnia kell az [előkészített virtuális gépen](#prepare-a-machine-for-the-replication-appliance).
 
@@ -162,7 +171,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
 9. Futtassa a replikációs berendezés telepítési fájlját a következő eljárásban leírtak szerint.  
     9.1. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget, majd válassza a **Tovább** lehetőséget.   
     9,2 **harmadik féltől származó**szoftverlicenc esetében válassza **az Elfogadom a harmadik féltől származó licencszerződést**lehetőséget, majd kattintson a **tovább**gombra.   
-    9,3 a **regisztráció**lapon válassza a **Tallózás**lehetőséget, majd nyissa meg a tároló regisztrációs kulcsát tartalmazó fájlt. Válassza a **Tovább** lehetőséget.  
+    9,3 a **regisztráció**lapon válassza a **Tallózás**lehetőséget, majd nyissa meg a tároló regisztrációs kulcsát tartalmazó fájlt. Kattintson a **Tovább** gombra.  
     9,4 az **Internetbeállítások**területen válassza a **Csatlakozás Azure site Recovery proxykiszolgáló nélkül**lehetőséget, majd kattintson a **tovább**gombra.  
     9,5 az **Előfeltételek ellenőrzése** lap több elemre vonatkozó ellenőrzéseket futtat. Ha befejeződött, válassza a **Tovább** lehetőséget.  
     9,6 a **MySQL-konfigurációban**adjon meg egy jelszót a MySQL-adatbázishoz, majd kattintson a **tovább**gombra.  
@@ -170,14 +179,14 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
     9,8 a **telepítés helye**területen a **tovább** gombra kattintva fogadja el az alapértelmezett értéket.  
     9,9 a **hálózat kiválasztása**területen válassza a **tovább** lehetőséget az alapértelmezett érték elfogadásához.  
     9,10 az **Összefoglalás**területen válassza a **telepítés**lehetőséget.   
-    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Válassza az **OK** lehetőséget.   
+    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra.   
     9,12 következő lépésként egy ablak egy üzenetet jelenít meg a konfigurációs kiszolgáló hozzáférési jelszavával kapcsolatban. Másolja a jelszót a vágólapra, és mentse a jelszót egy ideiglenes szövegfájlba a forrásként szolgáló virtuális gépeken. Ezt a jelszót később kell megadnia a mobilitási szolgáltatás telepítési folyamata során.
 10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:. A következő adatok megadásával hozhatja létre a "vendég" nevet a "username" névvel, a felhasználónévvel és a jelszóval a fiók jelszavaként. Ezt a dummy-fiókot fogja használni a replikálás engedélyezése szakaszban. 
 11. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése**lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása**területen, majd kattintson a **regisztráció véglegesítése**lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.
 
     ![Regisztráció véglegesítése](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-## <a name="6-install-the-mobility-service"></a>6. a mobilitási szolgáltatás telepítése
+## <a name="install-the-mobility-service"></a>A mobilitási szolgáltatás telepítése
 
 A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a forrás AWS virtuális gépekre. Az ügynök-telepítők elérhetők a replikációs berendezésen. Megtalálja a megfelelő telepítőt, és telepítse az ügynököt minden olyan gépre, amelyet át szeretne telepíteni. Tegye a következőket:
 
@@ -229,7 +238,7 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <replication appliance IP address> -P <Passphrase File Path>
     ```
 
-## <a name="7-enable-replication-for-aws-vms"></a>7. az AWS-alapú virtuális gépek replikálásának engedélyezése
+## <a name="enable-replication-for-aws-vms"></a>Az AWS-alapú virtuális gépek replikálásának engedélyezése
 
 > [!NOTE]
 > A portálon akár 10 virtuális gépet is hozzáadhat egyszerre a replikáláshoz. Ha egyszerre több virtuális gépet szeretne replikálni, 10 kötegben adhatja hozzá őket.
@@ -276,7 +285,7 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
 > [!NOTE]
 > A replikálási beállításokat a replikáció elindítása előtt bármikor frissítheti, **kezelheti**a  >  **replikáló gépeket**. A replikáció kezdete után a beállítások már nem módosíthatók.
 
-## <a name="8-track-and-monitor-replication-status"></a>8. replikáció állapotának nyomon követése és figyelése
+## <a name="track-and-monitor-replication-status"></a>Replikáció állapotának nyomon követése és figyelése
 
 - Ha rákattint a **replikálás** indítása a replikálási feladatokhoz lehetőségre.
 - Amikor a replikálás elindítása feladatainak végrehajtása sikeresen befejeződött, a virtuális gépek kezdeti replikációját megkezdik az Azure-ba.
@@ -288,7 +297,7 @@ A replikálási állapot figyeléséhez kattintson a **kiszolgálók replikálá
 
 ![Replikáció monitorozása](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
-## <a name="9-run-a-test-migration"></a>9. tesztelési áttelepítés futtatása
+## <a name="run-a-test-migration"></a>Migrálási teszt futtatása
 
 A különbözeti replikáció megkezdése előtt futtasson egy teszt-áttelepítést a virtuális gépek számára, mielőtt az Azure-ba történő teljes áttelepítést futtatná. A tesztelési áttelepítés kifejezetten ajánlott, és lehetőséget biztosít a lehetséges problémák felderítésére, és a tényleges áttelepítés folytatása előtt kijavítani azokat. Azt javasoljuk, hogy az áttelepítés előtt legalább egyszer végezze el az egyes virtuális gépeket.
 
@@ -314,7 +323,7 @@ Végezzen el egy teszt-áttelepítést a következőképpen:
     ![Migrálás törlése](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
 
 
-## <a name="10-migrate-aws-vms"></a>10. AWS virtuális gépek migrálása
+## <a name="migrate-aws-vms"></a>AWS virtuális gépek migrálása
 
 Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, áttelepítheti az AWS virtuális gépeket.
 
@@ -340,6 +349,9 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 5. Az áttelepített Azure virtuálisgép-példány felé irányuló forgalom kivágása.
 6. Frissítse minden belső dokumentációját az Azure virtuális gépek új helyével és IP-címével. 
 
+
+
+
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
@@ -353,9 +365,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 - Figyelési és felügyeleti eszközök:
     - Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
-## <a name="next-steps"></a>További lépések
 
-Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.
 
 ## <a name="troubleshooting--tips"></a>Hibaelhárítás/tippek
 
@@ -376,3 +386,7 @@ Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adopt
 
 **Kérdés:** Nem tudom felderíteni az AWS-példányokat az Azure Migrate használatával a távoli Windows Management szolgáltatásból származó 504 HTTP-állapotkód miatt    
 **Válasz:** Győződjön meg arról, hogy az Azure migráló készülékre vonatkozó követelmények és URL-hozzáférési igényeket tekinti át. Győződjön meg arról, hogy nincs proxy-beállítás a készülék regisztrációjának blokkolására.   
+
+## <a name="next-steps"></a>Következő lépések
+
+Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

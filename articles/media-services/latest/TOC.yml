@@ -246,10 +246,7 @@
     - name: Adategységek létrehozása és kezelése
       items:
         - name: Adategység létrehozása
-          href: cli-create-asset.md
-        - name: Eszközök kezelése
-          href: manage-asset-concept.md
-          displayName: 'name, naming, file name, upload, output, download'
+          href: how-to-create-asset.md
     - name: Tartalom feltöltése
       items:
         - name: HTTPS-forrásból
@@ -392,7 +389,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Indítás
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions

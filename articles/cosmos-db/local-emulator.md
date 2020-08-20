@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/19/2020
+ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225971"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607531"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -35,6 +35,7 @@ Mivel az Azure Cosmos Emulator a helyi fejlesztői munkaállomáson futó, emul�
 
 * Az emulátorban jelenleg Adatkezelő támogatja az SQL API-ügyfeleket. Azure Cosmos DB API-k, például a MongoDB, a Table, a Graph és a Cassandra API-k Adatkezelő nézete és műveletei nem teljes mértékben támogatottak.
 * Az Azure Cosmos Emulator csak egyetlen rögzített fiókot és egy jól ismert főkulcsot támogat. A kulcs újragenerálása nem lehetséges az Azure Cosmos Emulatorban, de az alapértelmezett kulcs a parancssori kapcsoló használatával módosítható.
+* Az Azure Cosmos Emulator egy Azure Cosmos-fiókot támogat a [kiépített átviteli](set-throughput.md) üzemmódban; jelenleg nem támogatja az Azure Cosmos-fiókot [kiszolgáló](serverless.md) nélküli módban.
 * Az Azure Cosmos Emulator nem méretezhető szolgáltatás, és nem támogatja nagy mennyiségű tároló használatát.
 * Az Azure Cosmos Emulator nem biztosít különböző [Azure Cosmos db konzisztencia-szintet](consistency-levels.md).
 * Az Azure Cosmos Emulator nem nyújt [többrégiós replikálást](distribute-data-globally.md).
@@ -318,7 +319,7 @@ Itt láthatja az emulátor PowerShellből való vezérlésére szolgáló paranc
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Szintaxis**
+**Syntax**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -328,7 +329,7 @@ Ezen ServiceControllerStatus értékek egyikét adja vissza: ServiceControllerSt
 
 ### `Start-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -338,7 +339,7 @@ Elindítja az emulátort. Alapértelmezés szerint a parancs addig vár, amíg a
 
 ### `Stop-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -348,7 +349,7 @@ Leállítja az emulátort. Alapértelmezés szerint ez a parancs addig vár, am�
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -562,7 +563,7 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 3. Az alkalmazások listájában görgessen az **Azure Cosmos DB Emulator** elemhez, válassza ki azt, kattintson az **Eltávolítás** lehetőségre, majd erősítse meg, és kattintson ismét az **Eltávolítás** elemre.
 4. Az alkalmazás eltávolításakor lépjen a `%LOCALAPPDATA%\CosmosDBEmulator` mappához, és törölje ki.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban azt ismertettük, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztési feladatokhoz. Most folytassa a következő oktatóanyaggal, és megtudhatja, hogyan exportálhatja az emulátor TLS/SSL-tanúsítványait.
 

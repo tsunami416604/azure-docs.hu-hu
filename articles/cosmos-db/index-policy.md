@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja és módosíthatja az alapért
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077594"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607512"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 
@@ -30,15 +30,15 @@ A Azure Cosmos DB két indexelési módot támogat:
 - **Nincs**: az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) a befejezésig figyelhető.
 
 > [!NOTE]
-> A Azure Cosmos DB a lusta indexelési módot is támogatja. A lusta indexelés sokkal alacsonyabb prioritási szinten végzi el az index frissítését, ha a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményeket eredményezhet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a lusta indexelés lehetőséget. 2020 júniusában bevezetett egy olyan változást, amely már nem teszi lehetővé az új tárolók lusta indexelési módba való beállítását. Ha a Azure Cosmos DB fiók már tartalmaz legalább egy olyan tárolót, amely lusta indexeléssel rendelkezik, akkor ez a fiók automatikusan mentesül a változás alól. A kivételt az [Azure támogatási szolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)is felveheti.
+> A Azure Cosmos DB a lusta indexelési módot is támogatja. A lusta indexelés sokkal alacsonyabb prioritási szinten végzi el az index frissítését, ha a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményeket eredményezhet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a lusta indexelés lehetőséget. 2020 júniusában bevezetett egy olyan változást, amely már nem teszi lehetővé az új tárolók lusta indexelési módba való beállítását. Ha a Azure Cosmos DB fiók már tartalmaz legalább egy olyan tárolót, amely lusta indexeléssel rendelkezik, akkor ez a fiók automatikusan mentesül a változás alól. Kivételt is igényelhet az [Azure-támogatással](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) való kapcsolatfelvételsel (kivéve, ha olyan [kiszolgáló](serverless.md) nélküli módban használ Azure Cosmos-fiókot, amely nem támogatja a lusta indexelést).
 
 Alapértelmezés szerint az indexelési házirend a következőre van beállítva: `automatic` . Ez úgy érhető el, `automatic` Ha a tulajdonságot az indexelési házirendben a értékre állítja `true` . Ennek a tulajdonságnak a beállításával `true` engedélyezheti, hogy az Azure CosmosDB automatikusan indexelje a dokumentumokat írásuk szerint.
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Tulajdonságok elérési útjának belefoglalása és kizárása
 
 Az egyéni indexelési házirend megadhatja az indexelésből explicit módon befoglalt vagy kizárt tulajdonságokat. Az indexelt elérési utak számának optimalizálásával jelentősen csökkentheti az írási műveletek késését és az RU díját. Ezek az elérési utak az [indexelés áttekintése szakaszban leírt módszer](index-overview.md#from-trees-to-property-paths) szerint vannak meghatározva, a következő kiegészítésekkel:
 
-- egy skaláris értékhez (sztringhez vagy számhoz) vezető útvonal végződik`/?`
+- egy skaláris értékhez (sztringhez vagy számhoz) vezető útvonal végződik `/?`
 - egy tömb elemeit a rendszer a jelöléssel együtt tárgyalja `/[]` (a helyett `/0` `/1` stb.).
 - a `/*` helyettesítő karakterrel a csomópont alatti elemek is megegyeznek
 
@@ -58,9 +58,9 @@ Ugyanezt a példát még egyszer kell megtennie:
     }
 ```
 
-- az `headquarters` `employees` elérési útja`/headquarters/employees/?`
+- az `headquarters` `employees` elérési útja `/headquarters/employees/?`
 
-- az `locations` `country` elérési út`/locations/[]/country/?`
+- az `locations` `country` elérési út `/locations/[]/country/?`
 
 - az elérési út `headquarters``/headquarters/*`
 
@@ -81,11 +81,11 @@ Minden indexelési házirendnek tartalmaznia kell a gyökér elérési útját `
 
 Az útvonalak belefoglalása és kizárása esetén a következő attribútumok jelenhetnek meg:
 
-- `kind`lehet `range` vagy `hash` . A Range index funkció biztosítja a kivonatoló index összes funkcióját, ezért javasoljuk, hogy használjon egy tartomány-indexet.
+- `kind` lehet `range` vagy `hash` . A Range index funkció biztosítja a kivonatoló index összes funkcióját, ezért javasoljuk, hogy használjon egy tartomány-indexet.
 
-- `precision`a befoglalt elérési utakhoz tartozó index szintjén definiált szám. A érték a `-1` maximális pontosságot jelzi. Azt javasoljuk, hogy mindig állítsa be ezt az értéket `-1` .
+- `precision` a befoglalt elérési utakhoz tartozó index szintjén definiált szám. A érték a `-1` maximális pontosságot jelzi. Azt javasoljuk, hogy mindig állítsa be ezt az értéket `-1` .
 
-- `dataType`lehet `String` vagy `Number` . Ez azt jelzi, hogy milyen típusú JSON-tulajdonságok lesznek indexelve.
+- `dataType` lehet `String` vagy `Number` . Ez azt jelzi, hogy milyen típusú JSON-tulajdonságok lesznek indexelve.
 
 Ha nincs megadva, ezek a tulajdonságok a következő alapértelmezett értékek lesznek:
 
@@ -103,9 +103,9 @@ Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a ponto
 
 Bemutatunk egy példát:
 
-**Belefoglalt elérési út**:`/food/ingredients/nutrition/*`
+**Belefoglalt elérési út**: `/food/ingredients/nutrition/*`
 
-**Kizárt elérési út**:`/food/ingredients/*`
+**Kizárt elérési út**: `/food/ingredients/*`
 
 Ebben az esetben a belefoglalt elérési út elsőbbséget élvez a kizárt elérési úttal szemben, mert pontosabb. Ezen elérési utak alapján a rendszer az `food/ingredients` elérési útban lévő vagy egymásba ágyazott összes adattal kizárja az indexet. A kivétel a belefoglalt útvonalon belüli adatelérési út: `/food/ingredients/nutrition/*` , amely indexelve lenne.
 
@@ -261,6 +261,9 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 
 Egy tároló indexelési házirendjét bármikor frissítheti [a Azure Portal vagy a támogatott SDK-k egyikével](how-to-manage-indexing-policy.md). Az indexelési házirend frissítése elindítja a régi indexről az új verzióra történő átalakítást, amely online és helyben történik (így a művelet során nincs szükség további tárolóhelyre). A régi szabályzat indexét a rendszer hatékonyan átalakítja az új szabályzatra anélkül, hogy ez hatással lenne az írási rendelkezésre állásra, az olvasási rendelkezésre állásra vagy a tárolón kiosztott átviteli sebességre. Az index transzformáció egy aszinkron művelet, és a befejezéshez szükséges idő a kiépített átviteli sebességtől, az elemek számától és méretétől függ.
 
+> [!IMPORTANT]
+> Az index transzformáció egy művelet, amely a [kérelmek egységeit](request-units.md)használja. Az index-átalakítás által felhasznált kérési egységek jelenleg nem számítanak fel díjat, ha [kiszolgáló](serverless.md) nélküli tárolókat használ. Ezek az adatkérési egységek a kiszolgáló nélküli, általánosan elérhetővé válnak.
+
 > [!NOTE]
 > Az indexek átalakításának előrehaladását az SDK-k [egyikével](how-to-manage-indexing-policy.md)követheti nyomon.
 
@@ -284,9 +287,9 @@ Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexel
 
 - az indexelési mód konzisztens értékre van beállítva, és
 - nincs belefoglalt elérési út, és
-- `/*`az egyetlen kizárt elérési út.
+- `/*` az egyetlen kizárt elérési út.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 5e9e686d8da420c650709d3bedc103d0043fa679
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287103"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611398"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -78,7 +78,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: my-azurefile
   resources:
     requests:
       storage: 5Gi
@@ -183,7 +183,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

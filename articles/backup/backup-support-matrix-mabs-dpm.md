@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810428"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612775"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -58,7 +58,7 @@ További információk:
 
 A DPM/MABS a következő táblázatban összefoglalt módon helyezhető üzembe.
 
-**Telepítés** | **Támogatás** | **Részletek**
+**Üzembe helyezés** | **Támogatás** | **Részletek**
 --- | --- | ---
 **Helyszíni üzembe helyezés** | Fizikai kiszolgáló<br/><br/>Hyper-V virtuális gép<br/><br/> VMware virtuális gép | Ha a DPM/MABS VMware virtuális gépként van telepítve, csak a virtuális gépeken futó VMware virtuális gépekről és munkaterhelésekről készít biztonsági mentést.
 **Azure Stack virtuális gépként van üzembe helyezve** | Csak MABS | A DPM nem használható Azure Stack virtuális gépek biztonsági mentésére.
@@ -190,7 +190,7 @@ A Data Protection Managerrel védhető különböző kiszolgálókkal és munkat
 - A DPM/MABS által készített fürtözött munkaterheléseknek ugyanabban a tartományban kell lenniük, mint a DPM/MABS, vagy egy alárendelt/megbízható tartományban.
 - Az NTLM/tanúsítványalapú hitelesítés használatával biztonsági mentést készíthet a nem megbízható tartományokban vagy munkacsoportokban található adatvédelemről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) információ a MABS architektúráról.
 - [Tekintse át](backup-support-matrix-mars-agent.md) a Mars-ügynök által támogatott tudnivalókat.

@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810207"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611823"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -47,7 +47,7 @@ Az Azure-beli virtuális gépeken futó SAP HANA adatbázisoknak minden művelet
 
 A következő táblázat a kapcsolatok létrehozásához használható különböző alternatívákat sorolja fel:
 
-| **Lehetőség**                        | **Előnyök**                                               | **Hátrányok**                                            |
+| **Beállítás**                        | **Előnyök**                                               | **Hátrányok**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Privát végpontok                 | Biztonsági másolatok engedélyezése privát IP-címeken a virtuális hálózaton belül  <br><br>   Részletes vezérlés biztosítása a hálózat és a tároló oldalán | Standard magánhálózati végponti [költségek](https://azure.microsoft.com/pricing/details/private-link/) |
 | NSG szolgáltatás címkéi                  | A tartomány módosításainak könnyebb kezelése automatikusan történik   <br><br>   Nincs további költség | Csak NSG használható  <br><br>    Hozzáférést biztosít a teljes szolgáltatáshoz |
@@ -69,9 +69,9 @@ Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup*
 
 1. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
 
-1. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
+1. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
 
-1. Kattintson a **Hozzáadás** gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
+1. Kattintson a **Hozzáadás**  gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
 Hasonlóképpen NSG kimenő biztonsági szabályokat hozhat létre az Azure Storage és az Azure AD számára. A szolgáltatás címkével kapcsolatos további információkért tekintse meg [ezt a cikket](../virtual-network/service-tags-overview.md).
 
@@ -111,8 +111,8 @@ Az előzetes regisztrációs parancsfájl futtatása a következő funkciókat h
 * A parancsfájl egy kulcsot hoz létre a HANA Backup beépülő modulhoz tartozó AZUREWLBACKUPHANAUSER **hdbuserstore** , amely az összes műveletet (adatbázis-lekérdezések, visszaállítási műveletek, a biztonsági mentés konfigurálása és futtatása) kezeli.
 
 >[!NOTE]
-> Explicit módon megadhatja az [előfeltételként](#prerequisites) megadott felhasználói kulcsot az előfeltételek paraméterként az előzetes regisztrációs parancsfájlhoz:`-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
->A parancsfájl által elfogadott egyéb paraméterek megismeréséhez használja a parancsot`bash msawb-plugin-config-com-sap-hana.sh --help`
+> Explicit módon megadhatja az [előfeltételként](#prerequisites) megadott felhasználói kulcsot az előfeltételek paraméterként az előzetes regisztrációs parancsfájlhoz: `-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
+>A parancsfájl által elfogadott egyéb paraméterek megismeréséhez használja a parancsot `bash msawb-plugin-config-com-sap-hana.sh --help`
 
 A kulcs létrehozásának megerősítéséhez futtassa a HDBSQL parancsot a HANA gépen a SIDADM hitelesítő adataival:
 

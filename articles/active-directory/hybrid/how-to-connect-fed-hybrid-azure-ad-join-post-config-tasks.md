@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807587"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612469"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
@@ -63,7 +63,7 @@ Ha a szervezete összevonási szolgáltatást használ az Azure AD-be való beje
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. az Azure AD zökkenőmentes egyszeri bejelentkezésének engedélyezése a Windows rendszerű eszközökön
 
-Ha a szervezete jelszó-kivonatoló szinkronizálást vagy átmenő hitelesítést használ az Azure AD-be való bejelentkezéshez, engedélyezze az Azure AD zökkenőmentes SSO-t a bejelentkezési módszerrel a Windows Down-szintű eszközök hitelesítéséhez: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
+Ha a szervezete jelszó-kivonatoló szinkronizálást vagy átmenő hitelesítést használ az Azure AD-be való bejelentkezéshez, engedélyezze az Azure AD zökkenőmentes SSO-t a bejelentkezési módszerrel a Windows Down-szintű eszközök hitelesítéséhez:  https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Állítsa be az Azure AD-szabályzatot a Windows rendszerű eszközökön.
 
@@ -76,9 +76,9 @@ A Windows Down szintű eszközök regisztrálásához meg kell győződnie arró
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Azure AD-végpont hozzáadása a Windows régebbi eszközökhöz
 
-Adja hozzá az Azure AD-alapú hitelesítési végpontot a Windows Down-szintű eszközök helyi intranetes zónájához, hogy elkerülje a tanúsítvány kérését az eszközök hitelesítése során:`https://device.login.microsoftonline.com` 
+Adja hozzá az Azure AD-alapú hitelesítési végpontot a Windows Down-szintű eszközök helyi intranetes zónájához, hogy elkerülje a tanúsítvány kérését az eszközök hitelesítése során: `https://device.login.microsoftonline.com` 
 
-Ha [zökkenőmentes SSO](how-to-connect-sso.md)-t használ, a zónában engedélyezze az "állapotjelző sáv frissítéseinek engedélyezése" lehetőséget is, és adja hozzá a következő végpontot:`https://autologon.microsoftazuread-sso.com` 
+Ha [zökkenőmentes SSO](how-to-connect-sso.md)-t használ, a zónában engedélyezze az "állapotjelző sáv frissítéseinek engedélyezése" lehetőséget is, és adja hozzá a következő végpontot: `https://autologon.microsoftazuread-sso.com` 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Telepítse a Microsoft Workplace Joint a Windows rendszerű eszközökön.
 
@@ -88,8 +88,5 @@ Ez a telepítő egy ütemezett feladatot hoz létre a felhasználó környezeté
 
 További információ a hibrid Azure AD JOIN egyéni eszközökhöz való engedélyezéséről: [hibrid Azure ad-csatlakozás vezérelt](../devices/hybrid-azuread-join-control.md)ellenőrzése.
 
-> [!NOTE]
-> Az 2012 R2 házirend-beállításai a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakoztatási ügyfélszámítógépeken**.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az eszköz visszaírási konfigurálása](how-to-connect-device-writeback.md)

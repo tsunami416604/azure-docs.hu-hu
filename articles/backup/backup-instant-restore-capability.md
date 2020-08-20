@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6ea4c3757da4e24ae0455cf35f119bf57ed644a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531829"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611805"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -24,7 +24,7 @@ Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 * A legfeljebb 32 TB méretű lemezeket támogat. A lemezek átméretezését Azure Backup nem ajánlott.
 * A standard SSD lemezeket standard HDD lemezekkel és prémium SSD lemezekkel együtt támogatja.
 * A nem felügyelt virtuális gépek eredeti Storage-fiókjai (lemezenként) való használatának lehetősége a visszaállításkor. Ez a képesség akkor is fennáll, ha a virtuális gépnek vannak olyan lemezek, amelyek a Storage-fiókok között oszlanak el. A rendszer a virtuálisgép-konfigurációk széles körére felgyorsítja a visszaállítási műveleteket.
-* A nem felügyelt prémium szintű lemezeket használó virtuális gépek biztonsági mentéséhez azonnali visszaállítással ajánlott a teljes lefoglalt tárolóhely *50%* -a kiosztása, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
+* A nem felügyelt prémium szintű lemezeket használó virtuális gépek biztonsági mentéséhez azonnali visszaállítással ajánlott a teljes lefoglalt tárolóhely *50%* -a kiosztása, amely **csak** az első biztonsági mentéshez szükséges. Az 50%-os szabad terület nem követelmény a biztonsági mentéshez az első biztonsági mentés befejeződése után.
 
 ## <a name="whats-new-in-this-feature"></a>A szolgáltatás újdonságai
 
@@ -42,10 +42,10 @@ Alapértelmezés szerint a pillanatképek két napig őrződnek meg. Ez a funkci
 ## <a name="feature-considerations"></a>A szolgáltatással kapcsolatos megfontolások
 
 * A rendszer a pillanatképeket a lemezekkel együtt tárolja a helyreállítási pontok létrehozásának és a visszaállítási műveletek felgyorsításának fokozása érdekében. Ennek eredményeképpen megjelennek a tárolási költségek, amelyek megfelelnek az adott időszakban készített pillanatképeknek.
-* A növekményes pillanatképeket blobként tárolja a rendszer. A nem felügyelt lemezeket használó összes felhasználó díja a helyi Storage-fiókban tárolt pillanatképeknek. Mivel a felügyelt virtuális gépek biztonsági mentései által használt visszaállítási pontok gyűjteményei blob-pillanatképeket használnak az alapul szolgáló tárolási szinten, a felügyelt lemezek esetében látni fogja a blob-pillanatkép díjszabásának megfelelő költségeket, és növekményes.
+* A növekményes pillanatképeket blobként tárolja a rendszer. A nem felügyelt lemezeket használó összes felhasználó díja a helyi Storage-fiókban tárolt pillanatképeknek. Mivel a felügyelt virtuális gépek biztonsági mentései által használt visszaállítási pontok gyűjteményei blob-pillanatképeket használnak az alapul szolgáló tárolási szinten, a felügyelt lemezek esetében a blob-pillanatkép díjszabásának megfelelő költségeket láthatja, és növekményes.
 * A prémium szintű Storage-fiókok esetében az azonnali helyreállítási pontok számára készített Pillanatképek a lefoglalt terület 10 TB-os korlátján alapulnak.
-* Lehetőség van a pillanatkép-megőrzés konfigurálására a visszaállítási igények alapján. A követelménytől függően a biztonsági mentési szabályzat paneljén legalább egy napig állíthatja be a pillanatkép-megőrzést, az alább leírtak szerint. Ezzel a művelettel megtakaríthatja a pillanatképek megőrzésének költségeit, ha nem végez gyakran visszaállítást.
-* Ez egy irányított frissítés, amely az azonnali visszaállításra való frissítés után nem mehet vissza.
+* Lehetőség van a pillanatkép-megőrzés konfigurálására a visszaállítási igények alapján. A követelménytől függően a biztonsági mentési szabályzat ablaktáblán az alább látható módon állíthatja be a pillanatkép-megőrzést legalább egy napra. Ezzel a művelettel megtakaríthatja a pillanatképek megőrzésének költségeit, ha nem végez gyakran visszaállítást.
+* Ez egy irányított frissítés. Az azonnali visszaállításra való frissítés után nem mehet vissza.
 
 >[!NOTE]
 >Ezzel az azonnali visszaállítással az összes ügyfél pillanatkép-megőrzési időtartamát (az**új és a meglévőket is beleértve**) két nap alapértelmezett értékre állítja a rendszer. Megadhatja azonban az időtartamot az 1 és 5 nap közötti értékre vonatkozó követelménynek megfelelően.
@@ -61,7 +61,7 @@ A növekményes Pillanatképek tárolása a virtuális gép Storage-fiókjában 
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-A Azure Portalban megjelenik egy mező, amelyet a **virtuális gép biztonsági mentési szabályzat** paneljén, az **azonnali visszaállítás** szakaszban találhat. A pillanatképek megőrzésének időtartamát a **virtuális gép biztonsági mentési szabályzatának** paneljén módosíthatja az adott biztonsági mentési szabályzathoz társított összes virtuális géphez.
+A Azure Portal egy, a **virtuális gép biztonsági mentési házirendje** panelen hozzáadott mezőt láthat az **azonnali visszaállítás** szakaszban. A pillanatképek megőrzésének időtartamát a **virtuális gép biztonsági mentési szabályzat** paneljén módosíthatja az adott biztonsági mentési szabályzathoz társított összes virtuális géphez.
 
 ![Azonnali visszaállítási képesség](./media/backup-azure-vms/instant-restore-capability.png)
 
@@ -110,7 +110,7 @@ Az új modell nem engedélyezi a visszaállítási pont (szint) törlését, kiv
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatképem még a biztonsági mentési szabályzatban megadott megőrzési időszak után is?
 
-Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, akkor a rendszer megőrzi a következő sikeres biztonsági mentés idejét. Ez a tervezett "Garbage Collection" (GC) szabályzatnak megfelelően, amely arra kötelezi, hogy legalább egy, a legújabb RP-re vonatkozó szabály mindig jelen legyen abban az esetben, ha a virtuális gép egyik hibája miatt az összes biztonsági mentés továbbra is sikertelen. Normál forgatókönyvekben az RPs-t a lejárat után legfeljebb 24 órával töröljük.
+Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, akkor a rendszer a következő sikeres biztonsági mentésig megőrzi. Ez a tervezett "Garbage Collection" (GC) szabályzatnak megfelelően, amely arra kötelezi, hogy legalább egy, a legújabb RP-re vonatkozó szabály mindig jelen legyen abban az esetben, ha a virtuális gép egyik hibája miatt az összes biztonsági mentés továbbra is sikertelen. Normál forgatókönyvekben az RPs-t a lejárat után legfeljebb 24 órával töröljük.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükség azonnali visszaállítási funkcióra. Le lehet tiltani?
 

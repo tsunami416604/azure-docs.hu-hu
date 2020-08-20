@@ -4,12 +4,12 @@ description: Útmutató a Recovery Services-tároló Azure-előfizetések és-er
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514101"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612571"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -57,7 +57,7 @@ A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése m
 
    ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Ha nem látja a tár **alapvető** információit, kattintson a legördülő ikonra. Ekkor látnia kell a tár alapvető információit.
+   Ha nem látja a tár **alapvető** információit, válassza a legördülő ikont. Ekkor látnia kell a tár alapvető információit.
 
    ![Alapvető információk lap](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
@@ -65,11 +65,11 @@ A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése m
 
    ![Erőforráscsoport módosítása](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. Az **erőforrások áthelyezése** panelen a kiválasztott tároló esetében ajánlott áthelyezni a választható kapcsolódó erőforrásokat a jelölőnégyzet bejelölésével az alábbi ábrán látható módon.
+4. Az **erőforrások áthelyezése** ablaktáblán a kiválasztott tároló esetében ajánlott áthelyezni a választható kapcsolódó erőforrásokat a jelölőnégyzet bejelölésével az alábbi ábrán látható módon.
 
    ![Előfizetés áthelyezése](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. A cél erőforráscsoport hozzáadásához az **erőforráscsoport** legördülő listában válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új csoport létrehozása** lehetőségre.
+5. A cél erőforráscsoport hozzáadásához az **erőforráscsoport** legördülő listában válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új csoport létrehozása** lehetőséget.
 
    ![Erőforrás létrehozása](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
@@ -86,11 +86,11 @@ Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik
 
     ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Ha nem látja a tár **alapvető** információit, kattintson a legördülő ikonra. Ekkor látnia kell a tár alapvető információit.
+    Ha nem látja a tár **alapvető** információit, válassza a legördülő ikont. Ekkor látnia kell a tár alapvető információit.
 
     ![Alapvető információk lap](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. A tároló áttekintése menüben kattintson az **előfizetés**elem melletti **módosítás** elemre az **erőforrások áthelyezése** panel megnyitásához.
+3. A tároló áttekintő menüjében válassza az **előfizetés**melletti **módosítás** lehetőséget az **erőforrások áthelyezése** panel megnyitásához.
 
    ![Előfizetés módosítása](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
@@ -99,11 +99,11 @@ Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik
    ![erőforrás áthelyezése](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Válassza ki a cél előfizetést az **előfizetés** legördülő listából, ahol a tárolót át szeretné helyezni.
-6. A cél erőforráscsoport hozzáadásához az **erőforráscsoport** legördülő listában válasszon ki egy meglévő erőforráscsoportot, vagy kattintson az **új csoport létrehozása** lehetőségre.
+6. A cél erőforráscsoport hozzáadásához az **erőforráscsoport** legördülő listában válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új csoport létrehozása** lehetőséget.
 
    ![Előfizetés hozzáadása](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. Kattintson a **megértettem, hogy az áthelyezett erőforrásokhoz társított eszközök és parancsfájlok nem fognak működni, amíg nem frissíti őket az új erőforrás-azonosítók** beállítás megadásához, majd kattintson **az OK**gombra.
+7. Válassza a **megértettem, hogy az áthelyezett erőforrásokhoz társított eszközök és parancsfájlok nem fognak működni, amíg nem frissítem őket az új erőforrás-azonosítók** beállítás megadásához, majd válassza **az OK**gombot.
 
 > [!NOTE]
 > A több előfizetés biztonsági mentése (az RS-tároló és a védett virtuális gépek különböző előfizetésekben találhatók) nem támogatott forgatókönyv. Emellett a helyi redundáns tároló (LRS) és a globális redundáns tárterület (GRS) közötti tárterület-redundancia lehetősége nem módosítható a tár áthelyezési művelete során.
@@ -112,7 +112,7 @@ Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>Recovery Services-tároló áthelyezése a PowerShell használatával
 
-Recovery Services-tároló másik erőforráscsoporthoz való áthelyezéséhez használja a `Move-AzureRMResource` parancsmagot. `Move-AzureRMResource`az erőforrás nevét és típusát igényli. Mindkettőt lekérheti a `Get-AzureRmRecoveryServicesVault` parancsmagból.
+Recovery Services-tároló másik erőforráscsoporthoz való áthelyezéséhez használja a `Move-AzureRMResource` parancsmagot. `Move-AzureRMResource` az erőforrás nevét és típusát igényli. Mindkettőt lekérheti a `Get-AzureRmRecoveryServicesVault` parancsmagból.
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"

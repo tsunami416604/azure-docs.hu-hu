@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 3c3d6529b3513a9f82313675b8240cf41b44f12f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3352bb13602947f08cc974d63308f2d802b144e7
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88173146"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612350"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Egyszeri bejelentkezési lehetőségek az Azure AD-ben
 
@@ -198,6 +198,6 @@ Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti partneri kapcso
 
 További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Egyszeri bejelentkezés üzembe helyezésének tervezése](plan-sso-deployment.md)

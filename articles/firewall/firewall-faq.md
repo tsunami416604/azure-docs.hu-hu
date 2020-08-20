@@ -1,5 +1,5 @@
 ---
-title: Azure Firewall GYIK
+title: Azure Firewall – gyakori kérdések
 description: Azure Firewall kapcsolatos gyakori kérdések. Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.
 services: firewall
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: efb793898da03d2a024b559075a2d55e79b20d65
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208520"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611177"
 ---
-# <a name="azure-firewall-faq"></a>Azure Firewall GYIK
+# <a name="azure-firewall-faq"></a>Azure Firewall – gyakori kérdések
 
 ## <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -97,7 +97,7 @@ $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
 $publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
 $publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
-$azfw.Allocate($vnet,@($publicip,$publicip2))
+$azfw.Allocate($vnet,@($publicip1,$publicip2))
 
 Set-AzFirewall -AzureFirewall $azfw
 ```
@@ -185,9 +185,9 @@ Nem. A Azure Firewall alapértelmezés szerint blokkolja Active Directory hozzá
 Igen, a Azure PowerShell használatával elvégezheti a következőket:
 
 ```azurepowershell
-# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+# Add a Threat Intelligence allow list to an Existing Azure Firewall
 
-## Create the Whitelist with both FQDN and IPAddresses
+## Create the allow list with both FQDN and IPAddresses
 
 $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284285"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612554"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Terheléselosztó konfigurálása SQL Server always on rendelkezésre állási csoporthoz az Azure-ban Virtual Machines
 
@@ -71,6 +71,7 @@ Először hozza létre a Load balancert.
    | --- | --- |
    | **Név** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
    | **Típus** |**Belső**: a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső**: lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
+   | **Termékváltozat** |**Standard**: kötelező, ha az SQL-példányok egy másik rendelkezésre állási csoportba tartoznak, mint a terheléselosztó. </br> **Alapszintű**: alapértelmezett beállítás. |
    | **Virtuális hálózat** |Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
    | **IP-cím hozzárendelése** |**Statikus** |
@@ -79,7 +80,7 @@ Először hozza létre a Load balancert.
    | **Erőforráscsoport** |Válassza ki azt az erőforráscsoportot, amelybe a SQL Server példányok tartoznak. |
    | **Hely** |Válassza ki azt az Azure-helyet, amelyen a SQL Server példányok szerepelnek. |
 
-6. Válassza a **Létrehozás** lehetőséget. 
+6. Kattintson a **Létrehozás** gombra. 
 
 Az Azure létrehozza a Load balancert. A terheléselosztó egy adott hálózathoz, alhálózathoz, erőforráscsoporthoz és helyhez tartozik. Miután az Azure befejezte a feladatot, ellenőrizze a terheléselosztó beállításait az Azure-ban. 
 
@@ -123,7 +124,7 @@ A mintavétel határozza meg, hogy az Azure hogyan ellenőrzi, hogy a SQL Server
    | **Intervallum** |*5* |
    | **Nem kifogástalan állapot küszöbértéke** |*2* |
 
-4.  Válassza az **OK** lehetőséget. 
+4.  Kattintson az **OK** gombra. 
 
 > [!NOTE]
 > Győződjön meg arról, hogy a megadott port meg van nyitva a tűzfalon mindkét SQL Server példányon. Mindkét példányhoz szükség van egy bejövő szabályra a használt TCP-porthoz. További információ: [Tűzfalszabály hozzáadása vagy szerkesztése](https://technet.microsoft.com/library/cc753558.aspx). 
@@ -156,7 +157,7 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
    > Előfordulhat, hogy az összes beállítás megtekintéséhez le kell görgetni a panelt.
    > 
 
-4. Válassza az **OK** lehetőséget. 
+4. Kattintson az **OK** gombra. 
 
 5. Az Azure konfigurálja a terheléselosztási szabályt. A terheléselosztó most úgy van konfigurálva, hogy átirányítsa a forgalmat a rendelkezésre állási csoport figyelőjét futtató SQL Server-példányra. 
 
@@ -316,6 +317,6 @@ Ha egy Azure hálózati biztonsági csoporttal korlátozza a hozzáférést, gy�
 - A Load Balancer az AG-figyelőhöz tartozó lebegőpontos IP-címei
 - A fürt alapvető IP-címe, ha van ilyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL Server always on rendelkezésre állási csoport konfigurálása különböző régiókban található Azure-beli virtuális gépeken](availability-group-manually-configure-multiple-regions.md)

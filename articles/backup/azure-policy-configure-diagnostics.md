@@ -3,12 +3,12 @@ title: Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 description: Log Analytics diagnosztikai beállítások konfigurálása egy adott hatókörben lévő összes tárolóhoz a Azure Policy használatával
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498049"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612503"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 
@@ -22,7 +22,7 @@ A diagnosztikai beállítások méretezésének leegyszerűsítése érdekében 
 
 * A szabályzat egyszerre alkalmazható egy adott előfizetésben található összes Recovery Services-tárolóra (vagy az előfizetésben található erőforráscsoporthoz). A szabályzatot hozzárendelő felhasználónak tulajdonosi hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
 
-* A felhasználó által megadott LA munkaterület (amelybe a rendszer a diagnosztikai adatokhoz küldi a-t) a tárolók eltérő előfizetésében lehet, amelyhez a szabályzat hozzá van rendelve. A felhasználónak az "olvasó", a "közreműködő" vagy a "tulajdonos" jogosultsággal kell rendelkeznie ahhoz az előfizetéshez, amelyben a megadott LA munkaterület létezik.
+* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak az "olvasó", a "közreműködő" vagy a "tulajdonos" jogosultsággal kell rendelkeznie ahhoz az előfizetéshez, amelyben a megadott LA munkaterület létezik.
 
 * A felügyeleti csoport hatóköre jelenleg nem támogatott.
 
@@ -36,15 +36,15 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 2. A bal oldali menüben válassza a **definíciók** lehetőséget, hogy lekérje az Azure-erőforrások összes beépített szabályzatának listáját.
 3. A **Kategória = figyelés**listájának szűrése Keresse meg az [előzetes verzió] nevű szabályzatot **: Recovery Services-tároló diagnosztikai beállításainak központi telepítése log Analytics munkaterületre erőforrás-specifikus kategóriákhoz**.
 
-    ![Házirend-definíció panel](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
+    ![Házirend-definíciós ablaktábla](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
-4. Kattintson a szabályzat nevére. A rendszer átirányítja a szabályzat részletes definícióját.
+4. Válassza ki a szabályzat nevét. A rendszer átirányítja a szabályzat részletes definícióját.
 
     ![Részletes szabályzat-definíció](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
 
-5. Kattintson a panel tetején található **hozzárendelés** gombra. Ez átirányítja a szabályzat- **hozzárendelési** panelre.
+5. Kattintson a **hozzárendelés** gombra a panel tetején. A rendszer átirányítja a **házirend-hozzárendelési** panelre.
 
-6. Az **alapbeállítások**területen kattintson a **hatókör** mező melletti három pontra. Ekkor megnyílik a megfelelő környezeti panel, ahol kiválaszthatja az előfizetést, amelyre alkalmazni kívánja a szabályzatot. Kiválaszthat egy erőforráscsoportot is, hogy a házirend csak egy adott erőforráscsoport tárolói esetében legyen alkalmazva.
+6. Az **alapok**területen válassza a **hatókör** mező melletti három pontot. Ekkor megnyílik a megfelelő környezeti ablaktábla, ahol kiválaszthatja az előfizetést, amelyre alkalmazni kívánja a szabályzatot. Kiválaszthat egy erőforráscsoportot is, hogy a házirend csak egy adott erőforráscsoport tárolói esetében legyen alkalmazva.
 
     ![Szabályzat-hozzárendelés alapjai](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
@@ -53,7 +53,7 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
     * **Profilnév** – a házirend által létrehozott diagnosztikai beállításokhoz hozzárendelni kívánt név.
     * **Log Analytics munkaterület** – az a log Analytics munkaterület, amelyhez a diagnosztikai beállítást társítani kell. A szabályzat-hozzárendelés hatókörében lévő összes tároló diagnosztikai adatait a rendszer leküldi a megadott LA munkaterületre.
 
-    * **Kizárási címke neve (nem kötelező) és a kizárási címke értéke (nem kötelező)** – kiválaszthatja, hogy ki kell zárnia egy bizonyos címke nevét és értékét tartalmazó tárolókat a szabályzat-hozzárendelésből. Ha például **nem** szeretné, hogy a rendszer a diagnosztikai beállítást olyan tárolók számára adja hozzá, amelyek "isTest" címkéje "yes" értékre van állítva, akkor a kizárási címke **neve** mezőben a "isTest" karakterláncot kell megadnia, a kizárási címke **értéke** mezőben pedig az "igen" értéket kell megadnia. Ha a két mező bármelyike (vagy mindkettő) üresen marad, a szabályzat az összes érintett tárolóra érvényes lesz, függetlenül az általuk tartalmazott címkéktől.
+    * **Kizárási címke neve (nem kötelező) és a kizárási címke értéke (nem kötelező)** – kiválaszthatja, hogy ki kell zárnia egy bizonyos címke nevét és értékét tartalmazó tárolókat a szabályzat-hozzárendelésből. Ha például **nem** szeretné, hogy egy diagnosztikai beállítás hozzá legyen adva a "isTest" címkével rendelkező tárolók számára az "igen" értékre, akkor a kizárási címke **értéke** mezőben a "isTest" karakterláncot kell megadnia a **kizárási címke neve** mezőben, az "igen" értéket. Ha a két mező bármelyike (vagy mindkettő) üresen marad, a szabályzat az összes érintett tárolóra érvényes lesz, függetlenül attól, hogy milyen címkéket tartalmaz.
 
     ![Szabályzat-hozzárendelési paraméterek](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
 
@@ -61,18 +61,18 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 
     ![Szabályzat-hozzárendelés szervizelése](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
-9. Keresse meg a **felülvizsgálat + létrehozás** lapot, és kattintson a **Létrehozás**gombra.
+9. Navigáljon a **felülvizsgálat + létrehozás** lapra, és válassza a **Létrehozás**lehetőséget.
 
 ## <a name="under-what-conditions-will-the-remediation-task-apply-to-a-vault"></a>Milyen feltételek esetén érvényes a Szervizelési feladat egy tárolóra?
 
 A Szervizelési feladatot a szabályzat definíciója szerint meg nem felelő tárakra alkalmazza a rendszer. A tár nem megfelelő, ha megfelel a következő feltételek valamelyikének:
 
 * Nem létezik diagnosztikai beállítás a tárolóhoz.
-* A rendszer diagnosztikai beállításokat tartalmaz a tárolóhoz, de egyik beállítás sem rendelkezik az **összes** olyan erőforrás-specifikus eseménysel, amely a La as célként van engedélyezve, és az **erőforrás-specifikus** elem van kiválasztva a váltásban.
+* A rendszer diagnosztikai beállításokat tartalmaz a tárolóhoz, de egyik beállítás sem rendelkezik az **összes** olyan erőforrás-specifikus eseménysel, amely a La as Destination értékkel van engedélyezve, és az **erőforrás-specifikus** elem van kiválasztva a váltásban.
 
-Tehát akkor is, ha a felhasználó rendelkezik egy olyan tárolóval, amelyen engedélyezve van a AzureBackupReport esemény a AzureDiagnostics módban (amelyet a biztonsági mentési jelentések is támogatnak), a Szervizelési feladat továbbra is érvényes lesz erre a tárolóra, mivel az erőforrás [-specifikus](./backup-azure-diagnostic-events.md#legacy-event)mód a diagnosztikai beállítások létrehozásának ajánlott módja.
+Így még ha a felhasználó rendelkezik egy olyan tárolóval, amelyen engedélyezve van a AzureBackupReport esemény a AzureDiagnostics módban (amelyet a biztonsági mentési jelentések támogatnak), a Szervizelési feladat továbbra is [érvényes lesz erre](./backup-azure-diagnostic-events.md#legacy-event)a tárolóra, mivel az erőforrás-specifikus mód a diagnosztikai beállítások létrehozásának ajánlott módja.
 
-Ha a felhasználó rendelkezik egy olyan tárolóval, amely a hat erőforrás-specifikus eseménynek csak egy részhalmazát engedélyezi, a Szervizelési feladat érvényes lesz erre a tárolóra, mivel a biztonsági mentési jelentések csak a várt módon fognak működni, ha az összes hat erőforrás-specifikus esemény engedélyezve van.
+Ha a felhasználó rendelkezik egy olyan tárolóval, amely a hat erőforrás-specifikus eseménynek csak egy részhalmazát engedélyezi, a Szervizelési feladat erre a tárolóra vonatkozik, mivel a biztonsági mentési jelentések csak a várt módon fognak működni, ha az összes hat erőforrás-specifikus esemény engedélyezve van.
 
 > [!NOTE]
 >

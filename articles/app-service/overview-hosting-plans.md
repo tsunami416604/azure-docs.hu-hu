@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: c6aa5200220c55407ade5910b4232fffed3ffe19
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141584"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611449"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -65,11 +65,11 @@ Az alkalmazások horizontális felskálázásával kapcsolatos információkért
 
 Ez a szakasz azt ismerteti, hogyan történik a App Service alkalmazások számlázása. A régióra vonatkozó díjszabással kapcsolatos részletes információkat a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/)ismertető témakörben talál.
 
-Az **ingyenes** csomag kivételével a app Servicei csomagok óradíjat biztosítanak az általa használt számítási erőforrásokhoz.
+Az **ingyenes** csomag kivételével az App Service-csomagok díjat számítunk fel az általa használt számítási erőforrásokért.
 
-- A **megosztott** szinten az egyes alkalmazások CPU-percenként kapják meg a kvótát, így az _egyes alkalmazások_ ÓRADÍJat kapnak a CPU-kvótához.
-- A dedikált számítási rétegek (**Alapszintű**, **standard**, **prémium**, **PremiumV2**) esetében az App Service-csomag határozza meg, hogy hány virtuálisgép-példányra méretezhetők az alkalmazások, így a app Service csomag minden virtuálisgép- _példánya_ óradíjas díjat számít fel. Ezek a virtuálisgép-példányok ugyanarra a számlára vonatkoznak, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan költségek elkerülése érdekében lásd: [app Service terv tisztítása](app-service-plan-manage.md#delete).
-- Az **elkülönített** szinten a app Service Environment meghatározza az alkalmazásokat futtató elkülönített _munkavégzők számát, és minden feldolgozót_ óránként kell fizetni. Emellett a App Service Environment futtatására óradíjat is igénybe veheti.
+- A **megosztott** szinten az egyes alkalmazások CPU-percenként kapják meg a kvótát, így _minden alkalmazás_ díja a CPU-kvóta.
+- A dedikált számítási rétegek (**Alapszintű**, **standard**, **prémium**, **PremiumV2**) esetében az App Service-csomag határozza meg, hogy hány virtuálisgép-példányra méretezhetők az alkalmazások, így a app Service csomag minden virtuálisgép- _példánya_ díjköteles. Ezek a virtuálisgép-példányok ugyanarra a számlára vonatkoznak, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan költségek elkerülése érdekében lásd: [app Service terv tisztítása](app-service-plan-manage.md#delete).
+- Az **elkülönített** szinten a app Service Environment meghatározza az alkalmazásokat futtató elkülönített _munkavégzők számát, és minden feldolgozót_ felszámítunk. Emellett a App Service Environment futtatásához is van egy egyszerű Stamp-díj.
 
 Nem számítunk fel díjat az Ön számára elérhető App Service szolgáltatások (egyéni tartományok, TLS/SSL-tanúsítványok, üzembe helyezési pontok, biztonsági másolatok stb.) használatára. A kivételek a következők:
 

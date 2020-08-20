@@ -13,12 +13,12 @@ ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258591"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612316"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
 
@@ -233,6 +233,7 @@ A következőhöz hasonló hibaüzenetek jelennek meg:
 | `interaction_required` | Nem szabványos, mivel a OIDC-specifikáció csak a végponton hív meg `/authorize` . A kérés felhasználói beavatkozást igényel. Például további hitelesítési lépésre van szükség. | Próbálja megismételni a `/authorize` kérelmet ugyanazzal a hatókörökkel. |
 | `temporarily_unavailable` | A kiszolgáló átmenetileg túl elfoglalt a kérelem kezeléséhez. | Kis késleltetés után próbálja megismételni a kérést. Előfordulhat, hogy az ügyfélalkalmazás megmagyarázza a felhasználót, hogy a válasza egy ideiglenes feltétel miatt késleltetve van. |
 |`consent_required` | A kérés felhasználói beleegyezett. Ez a hiba nem szabványos, mivel ez általában csak a `/authorize` végponton, OIDC-specifikációk esetében adható vissza. Akkor tért vissza `scope` , ha olyan paramétert használtak a kód-visszaváltási folyamathoz, amelyhez az ügyfélalkalmazás nem jogosult a kérésre.  | Az ügyfélnek a megfelelő hatókörrel kell visszaküldenie a felhasználót a `/authorize` végponthoz, hogy el lehessen indítani az engedélyt. |
+|`invalid_scope` | Az alkalmazás által igényelt hatókör érvénytelen.  | Frissítse a hatókör-paraméter értékét a hitelesítési kérelemben érvényes értékre. |
 
 > [!NOTE]
 > Az egyoldalas alkalmazások olyan `invalid_request` hibaüzenetet kaphatnak, amely azt jelzi, hogy a több eredetű jogkivonat beváltásának engedélyezése csak az "egylapos alkalmazás" ügyfél-típus esetében engedélyezett.  Ez azt jelzi, hogy a jogkivonat kéréséhez használt átirányítási URI nem lett átirányítási URI-ként megjelölve `spa` .  Tekintse át az [alkalmazás regisztrációjának lépéseit](#redirect-uri-setup-required-for-single-page-apps) a folyamat engedélyezéséhez.

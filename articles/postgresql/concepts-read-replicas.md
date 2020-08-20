@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276651"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611126"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -126,7 +126,7 @@ Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-
 ## <a name="failover"></a>Feladatátvétel
 A fő-és a replika-kiszolgálók között nincs automatikus feladatátvétel. 
 
-Mivel a replikáció aszinkron, a főkiszolgáló és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a főkiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika-késés néhány másodperc és néhány perc között mozog. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
+Mivel a replikáció aszinkron, a főkiszolgáló és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a főkiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika késése pár másodperc vagy pár perc. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
 
 > [!Tip]
 > Ha feladatátvételt hajt végre a replikára, akkor a replika a főkiszolgálóról való leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.
@@ -163,18 +163,21 @@ Az olvasási replika új Azure Database for PostgreSQL-kiszolgálóként jön l�
 ### <a name="replica-configuration"></a>Replika konfigurációja
 A replika ugyanazokkal a számítási és tárolási beállításokkal jön létre, mint a főkiszolgáló. A replika létrehozása után több beállítás is módosítható, beleértve a tárolási és a biztonsági másolatok megőrzési időszakát.
 
-a virtuális mag és az árképzési szintek a következő feltételekkel is megváltoztathatók a replikán:
-* A PostgreSQL megköveteli `max_connections` , hogy az olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. Azure Database for PostgreSQL a `max_connections` paraméter értéke a SKU-ra (virtuális mag és árképzési szinten) alapul. További információ: [Limits in Azure Database for PostgreSQL](concepts-limits.md). 
-* Az alapszintű árképzési szint és az közötti méretezés nem támogatott
-
-> [!IMPORTANT]
-> A főbeállítás új értékre frissítése előtt frissítse a replika konfigurációját egy egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
-
-Ha a fent ismertetett kiszolgálói értékeket próbálja meg frissíteni, de nem tartja be a korlátozásokat, hibaüzenetet kap.
-
 A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai nem öröklődnek a főkiszolgálóról a replikára a replika létrehozásakor vagy azt követően.
 
-### <a name="basic-tier"></a>Alapszintű csomag
+### <a name="scaling"></a>Méretezés
+A virtuális mag méretezése, illetve a általános célú és a memória optimalizálása:
+* A PostgreSQL megköveteli `max_connections` , hogy a másodlagos kiszolgáló beállítása nagyobb legyen, [mint az elsődlegesnél megadott beállítás](https://www.postgresql.org/docs/current/hot-standby.html), ellenkező esetben a másodlagos nem indul el.
+* Azure Database for PostgreSQL az egyes kiszolgálók maximálisan engedélyezett kapcsolatai a számítási SKU-ra vannak rögzítve, mivel a kapcsolatok memóriát foglalnak magukban. További információ a [max_connections és a számítási SKU közötti leképezésről](concepts-limits.md).
+* **Felskálázás**: először a replika számítási felskálázása, majd az elsődleges skálázás. Ez a sorrend megakadályozza, hogy a hibák megsértsék a `max_connections` követelményt.
+* **Lefelé méretezés**: először az elsődleges számítási felskálázás, majd a replika skálázása. Ha az elsődlegesnél alacsonyabbra próbálja méretezni a replikát, akkor a rendszer hibát jelez, mivel ez megsérti a `max_connections` követelményt.
+
+Tárterület skálázása:
+* Az összes replikán engedélyezve van a tárterület automatikus növekedése, hogy megakadályozza a teljes replika replikálási problémáit. Ez a beállítás nem tiltható le.
+* A tárterületet manuálisan is méretezheti, ahogy bármely más kiszolgálón
+
+
+### <a name="basic-tier"></a>Alapszint
 Az alapszintű kiszolgálók csak azonos régióbeli replikációt támogatnak.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions

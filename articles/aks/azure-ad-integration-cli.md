@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006859"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612418"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával (örökölt)
 
@@ -27,6 +27,7 @@ Az ebben a cikkben használt teljes minta szkripttel kapcsolatban lásd: [Azure 
 ## <a name="the-following-limitations-apply"></a>Az alábbi korlátozások érvényesek:
 
 - Az Azure AD-t csak RBAC-kompatibilis fürtön lehet engedélyezni.
+- Az Azure AD örökölt integrációja csak a fürt létrehozásakor engedélyezhető.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -176,7 +177,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > Ha az RBAC-kötést megadó felhasználó ugyanabban az Azure AD-bérlőben található, akkor a *userPrincipalName*alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a *objectId* tulajdonság lekérdezése és használata.
 
-Hozzon létre egy nevű YAML-jegyzékfájlt `basic-azure-ad-binding.yaml` , és illessze be a következő tartalmakat. Az utolsó sorban cserélje le a *userPrincipalName_or_objectId* elemet az előző parancs UPN-vagy objektumazonosító-kimenetével:
+Hozzon létre egy nevű YAML-jegyzékfájlt `basic-azure-ad-binding.yaml` , és illessze be a következő tartalmakat. Az utolsó sorban cserélje le a *userPrincipalName_or_objectId*  elemet az előző parancs UPN-vagy objektumazonosító-kimenetével:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -244,9 +245,9 @@ error: You must be logged in to the server (Unauthorized)
 
 * A megfelelő objektumazonosítót vagy UPN-t definiálta attól függően, hogy a felhasználói fiók ugyanahhoz az Azure AD-bérlőhöz van-e társítva.
 * A felhasználó nem tagja több mint 200 csoportnak.
-* Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel`--aad-server-app-secret`
+* Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel `--aad-server-app-secret`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a cikkben látható parancsokat tartalmazó teljes parancsfájl esetében tekintse meg az [Azure ad-integrációs parancsfájlt az AK-minták][complete-script]tárházában.
 

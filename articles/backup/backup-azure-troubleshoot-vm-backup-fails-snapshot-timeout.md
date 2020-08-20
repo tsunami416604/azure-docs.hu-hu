@@ -4,12 +4,12 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585560"
+ms.locfileid: "88611857"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -31,7 +31,7 @@ A leggyakoribb biztonsági mentési hibák a következő hibaelhárítási lép�
 - **Győződjön meg arról, hogy az Azure VM Guest Agent szolgáltatás elindult és**naprakész:
   - Windows rendszerű virtuális gépen:
     - Navigáljon a **Services. msc szolgáltatáshoz** , és győződjön meg arról, hogy a **Windows Azure VM Guest Agent szolgáltatás** működik. Győződjön meg arról is, hogy a [legújabb verzió](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) van telepítve. További információ: a [Windows virtuális gép vendég ügynökével kapcsolatos problémák](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms).
-    - Az Azure-beli virtuálisgép-ügynök alapértelmezés szerint a portál, a PowerShell, a parancssori felület vagy egy Azure Resource Manager sablon Azure Marketplace-rendszerképből üzembe helyezett összes Windows rendszerű virtuális gépen telepítve van. [Az ügynök manuális telepítése](../virtual-machines/extensions/agent-windows.md#manual-installation) akkor lehet szükséges, ha az Azure-ban üzembe helyezett egyéni virtuálisgép-lemezképet hoz létre.
+    - Az Azure-beli virtuálisgép-ügynök alapértelmezés szerint a portál, a PowerShell, a parancssori felület vagy egy Azure Resource Manager sablon egyik Azure Piactéri rendszerképből üzembe helyezett Windows rendszerű virtuális gépen települ. [Az ügynök manuális telepítése](../virtual-machines/extensions/agent-windows.md#manual-installation) akkor lehet szükséges, ha az Azure-ban üzembe helyezett egyéni virtuálisgép-lemezképet hoz létre.
     - Tekintse át a támogatási mátrixot annak ellenőrzéséhez, hogy a virtuális gép fut-e a [támogatott Windows operációs rendszeren](backup-support-matrix-iaas.md#operating-system-support-windows).
   - Linux rendszerű virtuális gépen
     - A parancs végrehajtásával győződjön meg arról, hogy az Azure VM Guest Agent szolgáltatás fut `ps-e` . Győződjön meg arról is, hogy a [legújabb verzió](../virtual-machines/extensions/update-linux-agent.md) van telepítve. További információ: Linux rendszerű [virtuális gép vendég ügynökével kapcsolatos problémák](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).

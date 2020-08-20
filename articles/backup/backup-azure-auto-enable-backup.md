@@ -3,18 +3,18 @@ title: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure P
 description: A cikk azt ismerteti, hogyan használható a Azure Policy az adott hatókörben létrehozott összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514220"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612673"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 
 A szervezet biztonsági mentési vagy megfelelőségi rendszergazdájának egyik kulcsfontosságú feladata, hogy biztosítsa, hogy az üzleti szempontból kritikus fontosságú gépek biztonsági mentése a megfelelő megőrzéssel történjen.
 
-Napjainkban a Azure Backup egy beépített szabályzatot (Azure Policy használatával) biztosít, amely az **előfizetésen vagy az erőforráscsoport egy adott helyén lévő összes Azure-beli virtuális**géphez hozzárendelhető. Ha a szabályzatot egy adott hatókörhöz rendeli hozzá, az abban a hatókörben létrehozott összes új virtuális gépet a rendszer automatikusan konfigurálja egy meglévő tárolóba **ugyanazon a helyen és előfizetésben**. A felhasználó megadhatja a tárolót és az adatmegőrzési házirendet, amelyhez a biztonsági másolatba mentett virtuális gépek társítva lesznek.
+Napjainkban a Azure Backup egy beépített szabályzatot (Azure Policy használatával) biztosít, amely az **előfizetésen vagy az erőforráscsoport egy adott helyén lévő összes Azure-beli virtuális**géphez hozzárendelhető. Ha a szabályzatot egy adott hatókörhöz rendeli hozzá, az abban a hatókörben létrehozott összes új virtuális gépet a rendszer automatikusan konfigurálja egy meglévő tárolóba **ugyanazon a helyen és előfizetésben**. A felhasználó megadhatja azt a tárolót és adatmegőrzési házirendet, amelyhez a biztonsági másolattal rendelkező virtuális gépeket társítani kell.
 
 ## <a name="supported-scenarios"></a>Támogatott helyzetek
 
@@ -32,19 +32,19 @@ Napjainkban a Azure Backup egy beépített szabályzatot (Azure Policy használa
 
 A szabályzatnak a szükséges hatókörhöz való hozzárendeléséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure Portalra, és navigáljon a **szabályzat** irányítópultra.
-2. A bal oldali menüben válassza a **definíciók** lehetőséget, hogy lekérje az Azure-erőforrások összes beépített szabályzatának listáját.
-3. A **Kategória = Backup**szolgáltatás listájának szűrése Látni fogja, hogy a lista egyetlen "a biztonsági mentés konfigurálása a virtuális gépeken egy helyről egy meglévő központi tárba ugyanazon a helyen" nevű házirendre szűrve jelenik meg.
+1. Jelentkezzen be a Azure Portalba, és navigáljon a **szabályzat** irányítópultra.
+1. A bal oldali menüben válassza a **definíciók** lehetőséget, hogy lekérje az Azure-erőforrások összes beépített szabályzatának listáját.
+1. A **Kategória = Backup**szolgáltatás listájának szűrése A lista a "biztonsági mentés konfigurálása egy helyen lévő virtuális gépeken egy meglévő központi tárolóra ugyanazon a helyen" nevű házirendre szűrve jelenik meg.
 ![Házirend-irányítópult](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-4. Kattintson a szabályzat nevére. A rendszer átirányítja a szabályzat részletes definícióját.
-![Házirend-definíció panel](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-5. Kattintson a panel tetején található **hozzárendelés** gombra. Ez átirányítja a szabályzat- **hozzárendelési** panelre.
-6. Az **alapbeállítások**területen kattintson a **hatókör** mező melletti három pontra. Ekkor megnyílik a megfelelő környezeti panel, ahol kiválaszthatja az előfizetést, amelyre alkalmazni kívánja a szabályzatot. Kiválaszthat egy erőforráscsoportot is, hogy a házirend csak egy adott erőforráscsoport virtuális gépei esetében legyen alkalmazva.
+1. Válassza ki a szabályzat nevét. A rendszer átirányítja a szabályzat részletes definícióját.
+![Házirend-definíciós ablaktábla](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
+1. Kattintson a **hozzárendelés** gombra a panel tetején. A rendszer átirányítja a **házirend-hozzárendelési** panelre.
+1. Az **alapok**területen válassza a **hatókör** mező melletti három pontot. Ekkor megnyílik a megfelelő környezeti ablaktábla, ahol kiválaszthatja az előfizetést, amelyre alkalmazni kívánja a szabályzatot. Kiválaszthat egy erőforráscsoportot is, hogy a házirend csak egy adott erőforráscsoport virtuális gépei esetében legyen alkalmazva.
 ![Szabályzat-hozzárendelés alapjai](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-7. A **Parameters (paraméterek** ) lapon válasszon ki egy helyet a legördülő menüből, és válassza ki a tároló-és biztonsági mentési szabályzatot, amelyhez társítani kell a hatókörben lévő virtuális gépeket.
+1. A **Parameters (paraméterek** ) lapon válasszon ki egy helyet a legördülő menüből, és válassza ki a tároló-és biztonsági mentési szabályzatot, amelyhez társítani kell a hatókörben lévő virtuális gépeket.
 ![Szabályzat-hozzárendelési paraméterek](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-8. Győződjön meg arról, hogy a **hatás** a deployIfNotExists értékre van állítva.
-9. Navigáljon a **felülvizsgálat + létrehozás** elemre, és kattintson a **Létrehozás**gombra.
+1. Győződjön meg arról, hogy a **hatás** a deployIfNotExists értékre van állítva.
+1. Keresse meg a **felülvizsgálat + létrehozás** elemet, majd válassza a **Létrehozás**lehetőséget.
 
 > [!NOTE]
 >

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262670"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611840"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -87,7 +87,7 @@ A lemezek leválasztása után üzenet jelenik meg. A kapcsolatok frissítése e
 A Linux rendszerben a helyreállítási ponttal létesített csatlakozás letelte után az operációs rendszer nem távolítja el automatikusan a megfelelő csatlakoztatási útvonalakat. A csatlakoztatási útvonalak "árva" kötetekként léteznek, és láthatók, de hiba történt a fájlok elérése/írása közben. Ezeket manuálisan is el lehet távolítani. A parancsfájl futtatásakor a rendszer a korábbi helyreállítási pontokból származó összes ilyen kötetet azonosítja, és jóváhagyja őket.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a szükséges fájlok visszaállítása után a kapcsolatok be vannak zárva. Ez fontos, különösen abban az esetben, ha a gép, amelyben a parancsfájlt futtatja, a biztonsági mentésre is konfigurálva van. Ha a kapcsolatok továbbra is nyitva vannak, a következő biztonsági mentés sikertelen lehet, hiba: "UserErrorUnableToOpenMount". Ez azért történik, mert a csatlakoztatott meghajtók/kötetek elérhetőnek kell lenniük, és a hozzáférésük sikertelen lehet, mert a mögöttes tároló, azaz az iSCSI-célkiszolgáló nem érhető el. A kapcsolatok tisztítása eltávolítja ezeket a meghajtókat/köteteket, ezért azok nem lesznek elérhetők a biztonsági mentés során.
+> Győződjön meg arról, hogy a szükséges fájlok visszaállítása után a kapcsolatok be vannak zárva. Ez fontos, különösen abban az esetben, ha a gép, amelyben a parancsfájlt futtatja, a biztonsági mentésre is konfigurálva van. Ha a kapcsolatok továbbra is nyitva vannak, a következő biztonsági mentés sikertelen lehet, hiba: "UserErrorUnableToOpenMount". Ez azért történik, mert a csatlakoztatott meghajtók/kötetek elérhetőnek kell lenniük, és a hozzáférésük sikertelen lehet, mert a mögöttes tároló, azaz az iSCSI-célkiszolgáló nem érhető el. A kapcsolatok tisztítása eltávolítja ezeket a meghajtókat/köteteket, így azok nem lesznek elérhetők a biztonsági mentés során.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>A megfelelő gép kiválasztása a parancsfájl futtatásához
 
@@ -400,7 +400,7 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, és válassza le az adott helyreállítási ponthoz a **leválasztott lemezeket** . A parancsfájl azonnal érvénytelenítve lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A fájlok visszaállítása során felmerülő problémákért tekintse meg a [hibaelhárítási](#troubleshooting) szakaszt.
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával

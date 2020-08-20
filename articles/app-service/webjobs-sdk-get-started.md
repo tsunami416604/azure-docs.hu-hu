@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212858"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612486"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
@@ -327,19 +327,19 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
 
 1. Adja hozzá a következő bejegyzést a **kapcsolatok karakterláncok** mezőben.
 
-   |Name  |kapcsolatok karakterlánca  |Adatbázis típusa|
+   |Név  |kapcsolatok karakterlánca  |Adatbázis típusa|
    |---------|---------|------|
    |AzureWebJobsStorage | {a korábban átmásolt tárolási kapcsolatok karakterlánca}|Egyéni|
 
 1. Ha az **Alkalmazásbeállítások** mezőhöz nem tartozik Application Insights kialakítási kulcs, adja hozzá a korábban átmásolt eszközt. (A rendszerállapot-kulcs már ott is lehet, attól függően, hogyan hozta létre a App Service alkalmazást.)
 
-   |Name  |Érték  |
+   |Név  |Érték  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentation-kulcs} |
 
 1. Cserélje le a *{Instrumentation Key}* elemet a használt Application Insights erőforrás rendszerállapot-kulcsára.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Adja hozzá a Application Insights-kapcsolódást a projekthez, hogy helyileg is futtatható legyen. A fájl *appsettings.jsban* vegyen fel egy `APPINSIGHTS_INSTRUMENTATIONKEY` mezőt a következő példában látható módon:
 
