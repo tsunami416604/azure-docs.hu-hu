@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: A Virtual WAN bemutatása
+    - name: Mi az a Virtual WAN?
       href: virtual-wan-about.md
     - name: Architektúra
       items:
