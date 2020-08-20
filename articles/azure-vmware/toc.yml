@@ -58,8 +58,10 @@
               href: set-up-mabs-for-avs.md
             - name: AVS-alapú virtuális gépek biztonsági mentése a Backup Serverrel
               href: backup-avs-vms-with-mabs.md
-        - name: Application Gateway az AVS-en
+        - name: Application Gateway AVS-sel
           href: protect-avs-web-apps-with-app-gateway.md
+        - name: Traffic Manager AVS-sel
+          href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware-megoldások
       items:
         - name: A vRealize Operations beállítása az AVS-hez

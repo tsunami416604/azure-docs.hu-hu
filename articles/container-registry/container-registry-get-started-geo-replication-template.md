@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119854"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649601"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Gyors útmutató: földrajzilag replikált tároló-beállításjegyzék létrehozása ARM-sablon használatával
 
@@ -21,19 +21,19 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Container Registry-
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)származik. A sablon egy beállításjegyzéket és egy további regionális replikát állít be.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/) közül származik. A sablon egy beállításjegyzéket és egy további regionális replikát állít be.
 
-:::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json" range="1-81" highlight="45-74" :::
+:::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json":::
 
 A következő erőforrások vannak definiálva a sablonban:
 
@@ -80,11 +80,11 @@ A tároló-beállításjegyzék tulajdonságainak áttekintéséhez használja a
 
     :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Beállításjegyzék-replikálások":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a beállításjegyzéket és a beállításjegyzék-replikát. Ehhez nyissa meg a Azure Portal, válassza ki a beállításjegyzéket tartalmazó erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container Registry egy ARM-sablonnal, és konfigurált egy beállításjegyzék-replikát egy másik helyen. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 

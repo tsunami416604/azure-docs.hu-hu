@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: Értékelés/függőségek vizualizációjának hibaelhárítása
       href: troubleshoot-assessment.md
+    - name: Ügynök nélküli VMWare-migrálások replikációval kapcsolatos problémáinak hibaelhárítása
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: További források
   items:
     - name: Migrálás a felhőbevezetési keretrendszerbe

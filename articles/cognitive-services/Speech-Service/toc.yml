@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: Áttekintés
       items:
-        - name: Mi az a valós idejű beszédfelismerés?
+        - name: Mi az a diktálás?
           href: speech-to-text.md
-        - name: Mi az a Batch-beszédfelismerés?
-          href: batch-transcription.md
         - name: Alapszintű beszédfelismerés
           href: speech-to-text-basics.md
     - name: Rövid útmutatók
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: Automatikus forrásnyelv-felismerés használata
           href: how-to-automatic-language-detection.md
+        - name: Kötegelt átírási API használata
+          href: batch-transcription.md
     - name: Oktatóanyagok
       items:
         - name: Pontosság javítása bérlőmodellekkel

@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080505"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648564"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Tervezési szempontok a méretezési csoportokhoz
 Ez a cikk a Virtual Machine Scale Sets kialakításával kapcsolatos szempontokat ismerteti. A Virtual Machine Scale Setsával kapcsolatos információkért tekintse meg a [Virtual Machine Scale sets áttekintését](./overview.md).
@@ -39,10 +39,10 @@ Néhány funkció jelenleg csak virtuális gépeken érhető el:
 - Áttelepítheti az egyes virtuális gépeket a natív lemezekről a felügyelt lemezekre, de a méretezési csoportokban nem telepíthet át virtuálisgép-példányokat.
 - IPv6 nyilvános IP-címeket rendelhet az egyes VM virtuális hálózati adapterekhez (NIC), de a méretezési csoportokban lévő virtuálisgép-példányokhoz nem. Az IPv6-alapú nyilvános IP-címeket az egyes virtuális gépek vagy a méretezési csoport virtuális gépei előtt is hozzárendelheti.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Méretezési készletek az Azure Managed Disks
-A méretezési csoportokat a hagyományos Azure Storage-fiókok helyett [Azure-Managed Disks](../virtual-machines/windows/managed-disks-overview.md) lehet létrehozni. Managed Disks a következő előnyöket biztosítja:
+A méretezési csoportokat a hagyományos Azure Storage-fiókok helyett [Azure-Managed Disks](../virtual-machines/managed-disks-overview.md) lehet létrehozni. Managed Disks a következő előnyöket biztosítja:
 - Nem kell előzetesen létrehoznia Azure Storage-fiókok készletét a méretezési csoport virtuális gépei számára.
 - A méretezési csoportba tartozó virtuális gépekhez [csatlakoztatott adatlemezeket](virtual-machine-scale-sets-attached-disks.md) is meghatározhat.
 - A méretezési csoportok beállítható úgy, hogy [legfeljebb 1 000 virtuális gépet támogasson egy készletben](virtual-machine-scale-sets-placement-groups.md). 
