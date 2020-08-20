@@ -10,18 +10,19 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500018"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652865"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>A HB és a HC sorozatú virtuális gépek ismert problémái
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>A H- és N-sorozatú virtuális gépek ismert problémái
 
-Ez a cikk a leggyakoribb problémákat és megoldásokat ismerteti a HB és a HC sorozatú virtuális gépek használatakor.
+Ez a cikk a [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépek használatakor leggyakrabban előforduló problémákat és megoldásokat ismerteti.
 
 ## <a name="dram-on-hb-series"></a>DRAM on HB sorozat
 
@@ -87,6 +88,15 @@ A következő kernel figyelmeztető üzenetek jelenhetnek meg a HB sorozatú vir
 
 Ezt a figyelmeztetést figyelmen kívül hagyhatja. Ennek az az oka, hogy az Azure hypervisor egy ismert korlátozása, amely az idő múlásával lesz kezelve.
 
-## <a name="next-steps"></a>Következő lépések
 
-További információ a [nagy teljesítményű számítástechnikai](/azure/architecture/topics/high-performance-computing/) szolgáltatásokról az Azure-ban.
+## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>InfiniBand-illesztőprogram telepítése a InfiniBand-ben engedélyezett N sorozatú virtuálisgép-méretek
+
+NC24r_v3 és ND40r_v2 az SR-IOV engedélyezve van, miközben a NC24r és a NC24r_v2 nem engedélyezett az SR-IOV. Néhány részlet a bifurkációs [itt](../../sizes-hpc.md#rdma-capable-instances).
+A InfiniBand (IB) konfigurálható az SR-IOV-kompatibilis virtuálisgép-méretekben a OFED-illesztőprogramokkal, míg a nem SR-IOV virtuálisgép-méretekhez ND-illesztőprogramok szükségesek. Ez az IB-támogatás megfelelően elérhető a [CentOS-HPC-VMIs](configure.md). Az Ubuntu esetében tekintse meg a OFED és az ND-illesztőprogramok telepítésének [utasításait](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) a [docs](enable-infiniband.md#vm-images-with-infiniband-drivers)részben leírtak szerint.
+
+
+## <a name="next-steps"></a>További lépések
+
+- Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.
+- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042595"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652848"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Nagyszámítógépes tároló áthelyezése az Azure-ba
 
@@ -45,13 +45,13 @@ Az Azure infrastruktúra-szolgáltatás ([IaaS](https://azure.microsoft.com/over
 
 A Microsoft petabájt kínál az Azure-ban üzemeltetett alkalmazásokhoz, és több tárolási lehetőség is rendelkezésre áll. Ezen tartomány az SSD-tárolóból a nagy teljesítményű, alacsony árú blob Storage-tárolók és-archívumok számára. Az Azure emellett egy adatredundancia-lehetőséget is biztosít a tároláshoz – ami több erőfeszítést tesz a mainframe-környezetekben való beállításra.
 
-Az Azure Storage Azure- [lemezként](../../../windows/managed-disks-overview.md), [Azure Filesként](../../../../storage/files/storage-files-introduction.md)és [Azure-blobként](../../../../storage/blobs/storage-blobs-overview.md) érhető el az alábbi táblázat összefoglalása során. További információ a [használatáról](../../../../storage/common/storage-introduction.md).
+Az Azure Storage Azure- [lemezként](../../../managed-disks-overview.md), [Azure Filesként](../../../../storage/files/storage-files-introduction.md)és [Azure-blobként](../../../../storage/blobs/storage-blobs-overview.md) érhető el az alábbi táblázat összefoglalása során. További információ a [használatáról](../../../../storage/common/storage-introduction.md).
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>Típus</th><th>Description</th><th>A következő esetekben használja:</th></tr>
+    <tr><th>Típus</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -108,7 +108,7 @@ A blob Storage a legnagyobb tárterületet biztosítja az Azure-ban. A tárterü
 - [Az Azure Virtual Machines-t futtató nagyszámítógépek](../overview.md)
 - [Nagyszámítógépek számítási teljesítményének áthelyezése az Azure-ba](mainframe-compute-Azure.md)
 - [Az Azure-Blobok, a Azure Files-vagy az Azure-lemezek használatának eldöntése](../../../../storage/common/storage-introduction.md)
-- [standard SSD Managed Disks Azure-beli virtuális gépek számítási feladataihoz](../../../windows/disks-types.md#standard-ssd)
+- [standard SSD Managed Disks Azure-beli virtuális gépek számítási feladataihoz](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-erőforrások
 
