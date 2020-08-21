@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080490"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723741"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
@@ -61,8 +61,8 @@ Győződjön meg arról, hogy az alábbi követelmények állnak készen:
 
 Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek működéséhez szükségesek.
 
-* TCP a 443-es porton – >`https://:443`
-* TCP a 9418-es porton – >`git://:9418`
+* TCP a 443-es porton – > `https://:443`
+* TCP a 9418-es porton – > `git://:9418`
 
 | Végpont (DNS)                                                                                               | Leírás                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -72,6 +72,7 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 | `https://github.com`, git://github.com                                                                         | Például a GitOps repók a GitHubon futnak. A konfigurációs ügynöknek a megadott git-végponthoz való kapcsolódásra van szüksége. |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager tokenek beolvasásához és frissítéséhez szükséges                                                                                    |
 | `https://azurearcfork8s.azurecr.io`                                                                            | A tároló lemezképének lekéréséhez szükséges az Azure arc-ügynökökhöz                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  A rendszer által hozzárendelt felügyelt azonosító tanúsítványok lekéréséhez szükséges                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Regisztrálja a két szolgáltatót az Azure arc-kompatibilis Kubernetes:
 
@@ -91,7 +92,7 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Egy erőforráscsoport használatával tárolhatja a fürt metaadatait.
 
@@ -174,7 +175,7 @@ Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti.
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>Csatlakozás kimenő proxykiszolgáló használatával
 
-Ha a fürt egy kimenő proxykiszolgáló mögött található, az Azure CLI és az arc-kompatibilis Kubernetes-ügynököknek a kimenő proxykiszolgálón keresztül kell átirányítani a kéréseiket. Az alábbi konfiguráció segít elérni a következőt:
+Ha a fürt egy kimenő proxykiszolgáló mögött található, az Azure CLI és az arc-kompatibilis Kubernetes-ügynököknek a kimenő proxykiszolgálón keresztül kell átirányítani a kéréseiket. A következő konfiguráció a következőket teszi lehetővé:
 
 1. A `connectedk8s` következő parancs futtatásával keresse meg a számítógépen telepített bővítmény verzióját:
 
@@ -182,7 +183,7 @@ Ha a fürt egy kimenő proxykiszolgáló mögött található, az Azure CLI és 
     az -v
     ```
 
-    A `connectedk8s` kimenő proxyval rendelkező ügynökök telepítéséhez a >= 0.2.3 kiterjesztésű verzióra van szükség. Ha a számítógépen verziója < 0.2.3, kövesse a [frissítés lépéseit](#before-you-begin) a bővítmény legújabb verziójának lekéréséhez a gépen.
+    `connectedk8s`A kimenő proxyval rendelkező ügynökök beállításához >= 0.2.3 kiterjesztési verzió szükséges. Ha a számítógépen verziója < 0.2.3, kövesse a [frissítés lépéseit](#before-you-begin) a bővítmény legújabb verziójának lekéréséhez a gépen.
 
 2. Állítsa be az Azure CLI-hez szükséges környezeti változókat:
 

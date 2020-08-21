@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640735"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723860"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező, illetve az adatküldés és-tárolás helyét adja meg. Ez a cikk áttekintést nyújt az adatgyűjtési szabályokról, beleértve azok tartalmát és szerkezetét, valamint azt, hogy miként hozhat létre és dolgozhat velük.
@@ -28,7 +28,7 @@ Az adatgyűjtési szabály a következő összetevőket tartalmazza.
 
 | Összetevő | Leírás |
 |:---|:---|
-| Adatforrások | A monitorozási adatok egyedi forrása, amely a saját formátumával és metódusával teszi közzé az adatok mennyiségét. Adatforrások például a Windows Eseménynapló, a teljesítményszámlálók és a syslog. Az egyes adatforrások egy adott adatforrás-típusnak felelnek meg, az alább leírtak szerint. |
+| Adatforrások | A monitorozási adatok egyedi forrása a saját formátumával és az adatok megjelenítésének módjával. Adatforrások például a Windows Eseménynapló, a teljesítményszámlálók és a syslog. Az egyes adatforrások egy adott adatforrás-típusnak felelnek meg, az alább leírtak szerint. |
 | Adatfolyamok | Egyedi leíró, amely egy adatforrások egy készletét írja le, amely egyetlen típusként lesz átalakítva és sematikus. Minden adatforráshoz egy vagy több stream szükséges, és egy adatfolyamot több adatforrás is használhat. Az adatfolyamban lévő összes adatforrás közös sémával rendelkezik. Több streamet is használhat, például ha egy adott adatforrást több, ugyanazon Log Analytics munkaterületen lévő táblába szeretne küldeni. |
 | Célhelyek | Azon célhelyek összessége, amelyekben az adatküldés szükséges. Ilyenek például Log Analytics munkaterület, Azure Monitor mérőszámok és az Azure Event Hubs. | 
 | Adatfolyamok | Annak meghatározása, hogy mely adatfolyamokat kell elküldeni a célhelyekre. | 
@@ -38,13 +38,13 @@ Az alábbi ábrán egy adatgyűjtési szabály és a kapcsolat összetevői lát
 [![DCR diagramja](media/data-collection-rule/data-collection-rule-components.png)](media/data-collection-rule/data-collection-rule-components.png#lightbox)
 
 ### <a name="data-source-types"></a>Adatforrástípusok
-Minden adatforrás típusa adatforrással rendelkezik. Mindegyik típus egyedi tulajdonságokat határoz meg, amelyeket minden egyes adatforráshoz meg kell adni. A jelenleg elérhető adatforrás-típusok a következő táblázatban láthatók.
+Minden adatforrás típusa adatforrással rendelkezik. Mindegyik típus egyedi tulajdonságokat határoz meg, amelyeket minden egyes adatforráshoz meg kell adni. A jelenleg elérhető adatforrás-típusok az alábbi táblázatban láthatók.
 
 | Adatforrás típusa | Leírás | 
 |:---|:---|
 | kiterjesztés | Virtuálisgép-bővítmény-alapú adatforrás |
 | performanceCounters | Teljesítményszámlálók Windows és Linux rendszerekhez |
-| syslog | Syslog-események Linux rendszerű virtuális gépen |
+| syslog | Syslog-események Linux rendszeren |
 | windowsEventLogs | Windows-Eseménynapló |
 
 
@@ -54,10 +54,10 @@ A következő táblázat felsorolja az egyes adatgyűjtési szabályokra jelenle
 | Korlát | Érték |
 |:---|:---|
 | Adatforrások maximális száma | 10 |
-| Maximális számlálók a teljesítményben | 100 |
-| A rendelkezésre állási nevek maximális száma a SysLog-ben | 20 |
+| Számláló megadásának maximális száma a teljesítményszámláló esetében | 100 |
+| A rendelkezésre állási nevek maximális száma a syslog-ben | 20 |
 | XPath-lekérdezések maximális száma az eseménynaplóban | 100 |
-| Az adatforgalom maximális száma | 10 |
+| Adatforgalom maximális száma | 10 |
 | Adatfolyamok maximális száma | 10 |
 | Bővítmények maximális száma | 10 |
 | A bővítmények beállításainak maximális mérete | 32 KB |
@@ -83,8 +83,7 @@ Az alábbi minta adatgyűjtési szabály az Azure felügyeleti ügynökkel rende
   - Hibakeresési, kritikus és vészhelyzeti eseményeket gyűjt a cron létesítményből.
   - Riasztási, kritikus és vészhelyzeti eseményeket gyűjt a syslog létesítményből.
 - Célhelyek
-  - Az összes adatokat egy centralTeamWorkspace nevű Log Analytics-munkaterületre küldi.
-  - Teljesítményadatokat küld Azure Monitor mérőszámoknak az aktuális előfizetésben.
+  - Az összes adatokat egy centralWorkspace nevű Log Analytics-munkaterületre küldi.
 
 ```json
 {
@@ -157,7 +156,7 @@ Az alábbi minta adatgyűjtési szabály az Azure felügyeleti ügynökkel rende
             ]
           },
           {
-            "name": "sylogBase",
+            "name": "syslogBase",
             "streams": [
               "Microsoft-Syslog"
             ],
@@ -197,6 +196,6 @@ Az alábbi minta adatgyűjtési szabály az Azure felügyeleti ügynökkel rende
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre egy adatgyűjtési szabályt](data-collection-rule-azure-monitor-agent.md) , és társítsa azt egy virtuális gépről a Azure monitor ügynök használatával.

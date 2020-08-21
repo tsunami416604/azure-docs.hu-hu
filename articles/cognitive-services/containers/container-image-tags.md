@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584603"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722568"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services tároló képcímkék
 
@@ -29,19 +29,35 @@ Az [anomália-detektor][ad-containers] tárolójának képe a `mcr.microsoft.com
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 
 ## <a name="computer-vision"></a>Computer Vision
 
-Az [Computer Vision][cv-containers] -tároló rendszerképe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-read` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
+A [Computer Vision][cv-containers] az OCR-tároló rendszerképe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-read` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | • A memória használatának további csökkentése a tárolóban. |
+|                                          | • A többrétegű telepítéshez külső gyorsítótár szükséges. Például állítsa be a Redis a gyorsítótárazáshoz. |
+|                                          | • A Redis cache beállításakor és a ResultExpirationPeriod = 0 értéknél hiányzó eredmények kijavítása.  |
+|                                          | • Távolítsa el a kérelem törzsének korlátozását a 26MB. A tároló mostantól képes fogadni >26MB fájlokat.  |
+|                                          | • Időbélyegző hozzáadása és a konzol naplózásának kiépítése.  |
+| `1.1.013050001-amd64-preview`            | * Hozzáadott ReadEngineConfig: ResultExpirationPeriod-tároló inicializálási konfigurációja annak megadásához, hogy a rendszer mikor törölje a felismerés eredményét. |
+|                                          | A beállítás órában van, és az alapértelmezett érték a 48hr.   |
+|                                          |   A beállítás csökkenti a memória használatát az eredmény tárolására, különösen a memóriában tárolt tárolók használata esetén.  |
+|                                          |    * 1. példa. ReadEngineConfig: ResultExpirationPeriod = 1, a rendszer törli a felismerés eredményének 1 óra a folyamat után.   |
+|                                          |    * 2. példa. ReadEngineConfig: ResultExpirationPeriod = 0, a rendszer törli a felismerés eredményét az eredmény lekérése után.  |
+|                                          | Rögzített egy 500 belső kiszolgálóhiba, ha a rendszer érvénytelen képformátumot ad át a rendszernek. Ekkor 400-es hibát ad vissza:   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
@@ -52,7 +68,7 @@ Az [arc][fa-containers] -tároló képe megtalálható a `containerpreview.azure
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -70,7 +86,7 @@ Az [űrlap-felismerő][fr-containers] tároló rendszerképe megtalálható a `c
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -83,7 +99,7 @@ A [Luis][lu-containers] -tároló képe a `mcr.microsoft.com` Container Registry
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -101,7 +117,7 @@ A tároló beállításjegyzékében a [Custom Speech – Text][sp-cstt] tárol�
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék            | Megjegyzések |
+| Képcímkék            | Jegyzetek |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.2.0-amd64-preview` |       |
@@ -116,7 +132,7 @@ Az [egyéni szöveg-beszéd][sp-ctts] tároló képe a `containerpreview.azurecr
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék            | Megjegyzések |
+| Képcímkék            | Jegyzetek |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.3.0-amd64-preview` |       |
@@ -127,7 +143,7 @@ A [beszédfelismerési][sp-stt] tároló rendszerképe a `containerpreview.azure
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                  | Megjegyzések                                    |
+| Képcímkék                  | Jegyzetek                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Tároló képe a `en-US` területi beállítással. |
 | `2.2.0-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
@@ -449,7 +465,7 @@ A [szöveg-beszéd][sp-tts] tároló képe megtalálható a `containerpreview.az
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                                  | Megjegyzések                                                                      |
+| Képcímkék                                  | Jegyzetek                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-JessaRUS` hanggal.        |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | A tároló képe a `ar-EG` területi beállítással és a `ar-EG-Hoda` hanggal.            |
@@ -625,7 +641,7 @@ Az [kulcsszókeresés][ta-kp] -tároló rendszerképe megtalálható a `mcr.micr
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -640,7 +656,7 @@ Az [nyelvfelismerés][ta-la] -tároló rendszerképe megtalálható a `mcr.micro
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Megjegyzések |
+| Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -655,7 +671,7 @@ Az [Hangulatelemzés][ta-se] -tároló rendszerképe megtalálható a `mcr.micro
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék | Megjegyzések                                         |
+| Képcímkék | Jegyzetek                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
 | `3.0-en`   | Hangulatelemzés v3 (angol)               |

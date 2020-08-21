@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492156"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722721"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Oktatóanyag: kimenő erdőszintű megbízhatósági kapcsolat létrehozása helyi tartományhoz Azure Active Directory Domain Services
 
@@ -128,7 +128,7 @@ A következő gyakori forgatókönyvekkel ellenőrizheti, hogy az erdőszintű m
 
 A felügyelt tartományhoz csatlakoztatva kell lennie a Windows Server rendszerű virtuális gépnek. Ezzel a virtuális géppel ellenőrizheti, hogy a helyszíni felhasználó tud-e hitelesítést végezni egy virtuális gépen. Ha szükséges, [hozzon létre egy Windows rendszerű virtuális gépet, és csatlakoztassa a felügyelt tartományhoz][join-windows-vm].
 
-1. Kapcsolódjon az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez az [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) használatával és az Azure AD DS rendszergazdai hitelesítő adataival.
+1. Kapcsolódjon az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez az [Azure Bastion](../bastion/bastion-overview.md) használatával és az Azure AD DS rendszergazdai hitelesítő adataival.
 1. Nyisson meg egy parancssort, és a `whoami` parancs használatával jelenítse meg az aktuálisan hitelesített felhasználó megkülönböztető nevét:
 
     ```console
@@ -150,7 +150,7 @@ Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtu
 
 #### <a name="enable-file-and-printer-sharing"></a>Fájl-és nyomtatómegosztás engedélyezése
 
-1. Kapcsolódjon az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez az [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) használatával és az Azure AD DS rendszergazdai hitelesítő adataival.
+1. Kapcsolódjon az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez az [Azure Bastion](../bastion/bastion-overview.md) használatával és az Azure AD DS rendszergazdai hitelesítő adataival.
 
 1. Nyissa meg a **Windows-beállításokat**, majd keresse meg és válassza ki a **hálózati és megosztási központot**.
 1. Válassza a **Speciális megosztási beállítások módosítása** lehetőséget.

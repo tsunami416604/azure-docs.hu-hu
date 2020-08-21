@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254843"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723945"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
 
@@ -222,43 +222,43 @@ Az utolsó beállítás, `$ref-policy` amely a szolgáltatás példányának glo
 ### <a name="apis-folder"></a>API-k mappa
 A `apis` mappa a szolgáltatási példányban található minden API-hoz tartalmaz egy mappát, amely a következő elemeket tartalmazza.
 
-* `apis\<api name>\configuration.json`– Ez az API konfigurációja, és a háttér-szolgáltatás URL-címével és műveleteivel kapcsolatos információkat tartalmaz. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha a [megadott API](/rest/api/apimanagement/2019-12-01/apis/get) formátummal való meghívása megtörtént `export=true` `application/json` .
-* `apis\<api name>\api.description.html`– Ez az API leírása, és az `description` [API-entitás](/java/api/com.microsoft.azure.storage.table.entityproperty)tulajdonságának felel meg.
-* `apis\<api name>\operations\`– Ez a mappa olyan `<operation name>.description.html` fájlokat tartalmaz, amelyek az API-műveletekhez vannak leképezve. Minden fájl tartalmazza az API-ban lévő egyetlen művelet leírását, amely a `description` REST API [művelet entitásának](/rest/api/visualstudio/operations/list#operationproperties) tulajdonságára van leképezve.
+* `apis\<api name>\configuration.json` – Ez az API konfigurációja, és a háttér-szolgáltatás URL-címével és műveleteivel kapcsolatos információkat tartalmaz. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha a [megadott API](/rest/api/apimanagement/2019-12-01/apis/get) formátummal való meghívása megtörtént `export=true` `application/json` .
+* `apis\<api name>\api.description.html` – Ez az API leírása, és az `description` [API-entitás](/java/api/com.microsoft.azure.storage.table.entityproperty)tulajdonságának felel meg.
+* `apis\<api name>\operations\` – Ez a mappa olyan `<operation name>.description.html` fájlokat tartalmaz, amelyek az API-műveletekhez vannak leképezve. Minden fájl tartalmazza az API-ban lévő egyetlen művelet leírását, amely a `description` REST API [művelet entitásának](/rest/api/visualstudio/operations/list#operationproperties) tulajdonságára van leképezve.
 
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa a szolgáltatási példányban definiált egyes csoportok mappáját tartalmazza.
 
-* `groups\<group name>\configuration.json`– Ez a csoport konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott csoport beolvasása](/rest/api/apimanagement/2019-12-01/group/get) műveletet.
-* `groups\<group name>\description.html`– Ez a csoport leírása, és a `description` [csoport entitás](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)tulajdonságának felel meg.
+* `groups\<group name>\configuration.json` – Ez a csoport konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott csoport beolvasása](/rest/api/apimanagement/2019-12-01/group/get) műveletet.
+* `groups\<group name>\description.html` – Ez a csoport leírása, és a `description` [csoport entitás](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)tulajdonságának felel meg.
 
 ### <a name="policies-folder"></a>házirendek mappa
 A `policies` mappa tartalmazza a szolgáltatási példány szabályzatának utasításait.
 
-* `policies\global.xml`– a szolgáltatási példány globális hatókörében meghatározott szabályzatokat tartalmaz.
-* `policies\apis\<api name>\`– Ha az API-hatókörben vannak definiálva szabályzatok, azok ebben a mappában találhatók.
-* `policies\apis\<api name>\<operation name>\`mappa – ha a műveleti hatókörben definiált szabályzatok vannak megadva, azok a mappában találhatók, `<operation name>.xml` amelyek az egyes műveletek házirend-utasításait képezik le.
-* `policies\products\`– Ha a termék hatókörében meghatározott szabályzatok vannak meghatározva, akkor ebben a mappában találhatók, amely `<product name>.xml` az egyes termékekhez tartozó házirend-utasításokhoz hozzárendelt fájlokat tartalmazza.
+* `policies\global.xml` – a szolgáltatási példány globális hatókörében meghatározott szabályzatokat tartalmaz.
+* `policies\apis\<api name>\` – Ha az API-hatókörben vannak definiálva szabályzatok, azok ebben a mappában találhatók.
+* `policies\apis\<api name>\<operation name>\` mappa – ha a műveleti hatókörben definiált szabályzatok vannak megadva, azok a mappában találhatók, `<operation name>.xml` amelyek az egyes műveletek házirend-utasításait képezik le.
+* `policies\products\` – Ha a termék hatókörében meghatározott szabályzatok vannak meghatározva, akkor ebben a mappában találhatók, amely `<product name>.xml` az egyes termékekhez tartozó házirend-utasításokhoz hozzárendelt fájlokat tartalmazza.
 
 ### <a name="portalstyles-folder"></a>portalStyles mappa
 A `portalStyles` mappa konfigurációs és stíluslapokat tartalmaz a szolgáltatási példány fejlesztői portáljának testreszabásához.
 
-* `portalStyles\configuration.json`-a fejlesztői portál által használt stíluslapok nevét tartalmazza.
-* `portalStyles\<style name>.css`– minden `<style name>.css` fájl tartalmazza a fejlesztői portál stílusait ( `Preview.css` és `Production.css` alapértelmezés szerint).
+* `portalStyles\configuration.json` -a fejlesztői portál által használt stíluslapok nevét tartalmazza.
+* `portalStyles\<style name>.css` – minden `<style name>.css` fájl tartalmazza a fejlesztői portál stílusait ( `Preview.css` és `Production.css` alapértelmezés szerint).
 
 ### <a name="products-folder"></a>termékek mappa
 A `products` mappa tartalmazza a szolgáltatási példányban definiált egyes termékek mappáját.
 
-* `products\<product name>\configuration.json`– Ez a termék konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott termék beolvasása](/rest/api/apimanagement/2019-12-01/product/get) műveletet.
-* `products\<product name>\product.description.html`– Ez a termék leírása, és megfelel a `description` [termék entitás](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) tulajdonságának a REST APIban.
+* `products\<product name>\configuration.json` – Ez a termék konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott termék beolvasása](/rest/api/apimanagement/2019-12-01/product/get) műveletet.
+* `products\<product name>\product.description.html` – Ez a termék leírása, és megfelel a `description` [termék entitás](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) tulajdonságának a REST APIban.
 
 ### <a name="templates"></a>sablonok
 A `templates` mappa a szolgáltatás példányának [e-mail-sablonjainak](api-management-howto-configure-notifications.md) konfigurációját tartalmazza.
 
-* `<template name>\configuration.json`– Ez az e-mail sablon konfigurációja.
-* `<template name>\body.html`– Ez az e-mail sablon törzse.
+* `<template name>\configuration.json` – Ez az e-mail sablon konfigurációja.
+* `<template name>\body.html` – Ez az e-mail sablon törzse.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A szolgáltatási példány kezelésének egyéb módjaival kapcsolatos további információkért lásd:
 
 * A szolgáltatás példányának kezelése a következő PowerShell-parancsmagok használatával

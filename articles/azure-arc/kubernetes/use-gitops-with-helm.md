@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 44803338a27fc492f4dc896a0edb398b2ce486ea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926127"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723639"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -53,7 +53,7 @@ arc-helm-demo  eastus      k8s-clusters
 
 ```bash
 ├── charts
-│   └── azure-vote
+│   └── azure-arc-sample
 │       ├── Chart.yaml
 │       ├── templates
 │       │   ├── NOTES.txt
@@ -61,34 +61,34 @@ arc-helm-demo  eastus      k8s-clusters
 │       │   └── service.yaml
 │       └── values.yaml
 └── releases
-    └── vote-app.yaml
+    └── app.yaml
 ```
 
-A git-tárházban két címtár található, amelyek közül az egyik egy Helm-diagramot, egy pedig a releases config fájlt tartalmazza. A `releases` címtárban a `vote-app.yaml` tartalmazza az alábbi HelmRelease-konfigurációt:
+A git-tárházban két címtár található, amelyek közül az egyik egy Helm-diagramot, egy pedig a releases config fájlt tartalmazza. A `releases` címtárban a `app.yaml` tartalmazza az alábbi HelmRelease-konfigurációt:
 
-```bash
+```yaml
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: vote-app
+  name: azure-arc-sample
   namespace: arc-k8s-demo
 spec:
   releaseName: arc-k8s-demo
   chart:
     git: https://github.com/Azure/arc-helm-demo
     ref: master
-    path: charts/azure-vote
+    path: charts/azure-arc-sample
   values:
-    frontendServiceName: arc-k8s-demo-vote-front
+    serviceName: arc-k8s-demo
 ```
 
 A Helm kiadásának konfigurációja a következő mezőket tartalmazza:
 
-- `metadata.name`kötelező, és követnie kell a Kubernetes elnevezési konvencióit
-- `metadata.namespace`nem kötelező, és meghatározza, hogy a rendszer hol hozza létre a kiadást.
-- `spec.releaseName`nem kötelező, és ha nincs megadva, akkor a kiadás neve $namespace-$name
-- `spec.chart.path`a diagramot tartalmazó könyvtár, amely az adattár gyökeréhez képest van megadva
-- `spec.values`a felhasználó a diagram alapértelmezett paramétereinek értékeit is testreszabja
+- `metadata.name` kötelező, és követnie kell a Kubernetes elnevezési konvencióit
+- `metadata.namespace` nem kötelező, és meghatározza, hogy a rendszer hol hozza létre a kiadást.
+- `spec.releaseName` nem kötelező, és ha nincs megadva, akkor a kiadás neve $namespace-$name
+- `spec.chart.path` a diagramot tartalmazó könyvtár, amely az adattár gyökeréhez képest van megadva
+- `spec.values` a felhasználó a diagram alapértelmezett paramétereinek értékeit is testreszabja
 
 A HelmRelease spec. Values paraméterben megadott beállítások felülbírálják a diagram forrásának Values. YAML megadott beállításait.
 
@@ -96,10 +96,10 @@ A HelmRelease kapcsolatos további információkért tekintse meg a hivatalos [H
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
-Az Azure CLI-bővítményének használatával `k8sconfiguration` kapcsolja össze a csatlakoztatott fürtöt a példában szereplő git-adattárral. Ennek a konfigurációnak a nevét `azure-voting-app` és a Flux-operátor üzembe helyezését a névtérben fogjuk megadni `arc-k8s-demo` .
+Az Azure CLI-bővítményének használatával `k8sconfiguration` kapcsolja össze a csatlakoztatott fürtöt a példában szereplő git-adattárral. Ennek a konfigurációnak a nevét `azure-arc-sample` és a Flux-operátor üzembe helyezését a névtérben fogjuk megadni `arc-k8s-demo` .
 
 ```bash
-az k8sconfiguration create --name azure-voting-app \
+az k8sconfiguration create --name azure-arc-sample \
   --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
   --operator-instance-name flux --operator-namespace arc-k8s-demo \
   --operator-params='--git-readonly --git-path=releases' \
@@ -118,7 +118,7 @@ A konfiguráció létrehozásának testreszabásához további tudnivalókat a [
 Az Azure CLI használatával ellenőrizze, hogy a `sourceControlConfiguration` sikeresen létrejött-e.
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-voting-app --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
 ```
 
 Az `sourceControlConfiguration` erőforrás a megfelelőségi állapottal, az üzenetekkel és a hibakeresési információkkal frissül.
@@ -139,8 +139,8 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
     "chartValues": "--set helm.versions=v3",
     "chartVersion": "0.6.0"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-voting-app",
-  "name": "azure-voting-app",
+  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-arc-sample",
+  "name": "azure-arc-sample",
   "operatorInstanceName": "flux",
   "operatorNamespace": "arc-k8s-demo",
   "operatorParams": "--git-readonly --git-path=releases",
@@ -156,10 +156,10 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>Alkalmazás érvényesítése
 
-Futtassa az alábbi parancsot, és navigáljon a `localhost:3000` böngészőjében, és ellenőrizze, hogy fut-e az alkalmazás.
+Futtassa az alábbi parancsot, és navigáljon a `localhost:8080` böngészőjében, és ellenőrizze, hogy fut-e az alkalmazás.
 
 ```bash
-kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo-vote-front 3000:80
+kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 
 ## <a name="next-steps"></a>További lépések

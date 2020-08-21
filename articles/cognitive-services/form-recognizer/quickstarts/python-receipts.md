@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: a863d8ccc157272ab736201615fb079eaf7f5dbc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 235b2a1e3a75c01c8e57a0e4b0c27664f638385f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522827"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723520"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -44,7 +44,9 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
 1. Cserélje le a értékét `<your receipt URL>` egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
-    ```python
+  # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
+    ```
+    python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -81,6 +83,51 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
         print("POST analyze failed:\n%s" % str(e))
         quit()
     ```
+    
+   # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+    ```
+    python
+    ########### Python Form Recognizer Async Receipt #############
+
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<Endpoint>"
+    apim_key = "<subscription key>"
+    post_url = endpoint + "/formrecognizer/v2.0/prebuilt/receipt/analyze"
+    source = r"<path to your receipt>"
+    
+    headers = {
+        # Request headers
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    
+    params = {
+        "includeTextDetails": True
+        "locale": "en-US"
+    }
+    
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % resp.text)
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit()
+    ```
+> [!NOTE]
+> **Nyelvi bevitel** 
+>
+> Az Analzye-visszaigazolás 2,1-es kiadási művelete opcionális kérési paramétert tartalmaz a nyelvhez, a beérkezési hely területi beállításaként. A támogatott területi beállítások a következők: en-AU, en-CA, en-GB, en-IN, en-US. 
 
 1. Mentse a kódot egy. file kiterjesztésű fájlba. Például: *Form-Recognizer-receipts.py*.
 1. Nyisson meg egy parancsablakot.

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836904"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723561"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -24,7 +24,7 @@ Az Azure Form felismerő egy olyan kognitív szolgáltatás, amely gépi tanulá
 
 Az űrlap-felismerő a következő szolgáltatásokból áll:
 * **Egyéni modellek** – a kulcs/érték párok és a táblák adatainak kinyerése az űrlapokból. Ezek a modellek a saját adataival vannak betanítva, így az űrlapokra vannak szabva.
-* Előre összevont **beérkezési modell** – az USA értékesítési bevételeiből származó adatok kinyerése egy előre elkészített modell használatával.
+* Előre **elkészített modellek** – az egyedi űrlapokból származó adatok kinyerése előre elkészített modellek használatával. Jelenleg elérhetők az előre elkészített modellek az értékesítési visszaigazolásokhoz és az üzleti kártyákhoz angol nyelven.
 * **Elrendezési API** – szöveg-és táblázatos struktúrák kinyerése a dokumentumokból a határolókeret koordinátáival együtt.
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Ha címkével ellátott adatokkal látja el a képzést, a modell felügyeli a t
 
 Az űrlap-felismerő az [elrendezési API](#layout-api) segítségével tanulja meg a nyomtatott és a kézírásos szöveges elemek várt méretét és pozícióit. Ezután a felhasználó által megadott címkéket használja a dokumentumok kulcs/érték társításának megismeréséhez. Azt javasoljuk, hogy az új modell betanítása és a modell pontosságának javítása érdekében a típus öt kézzel címkézett formáját használja az első lépésekhez.
 
-## <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
+## <a name="prebuilt-models"></a>Előre összeállított modellek
 
-Az űrlap-felismerő olyan modellt is tartalmaz, amely a Egyesült Államok &mdash; az éttermek, a benzinkutak, a kiskereskedelmi és így tovább ([minta](./media/contoso-receipt-small.png)) által használt típusokból olvassa be az angol nyelvű értékesítési nyugtákat. Ez a modell kigyűjti a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adókat és az összegeket, valamint egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva.
+Az űrlap-felismerő olyan előre elkészített modelleket is tartalmaz, amelyek egyedi formátumúak.
+### <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
+Az előkészített beérkezési modell az ausztrál, Kanada, Nagy-Britannia, India, valamint Egyesült Államok az &mdash; éttermek, a benzinkutak, a kereskedelmi és egyéb szolgáltatások által használt típus angol értékesítési nyugtáinak olvasására használatos. Ez a modell Kinyeri a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adók mennyiségét, a sorok számát, az összesítéseket és egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva. 
+
+![minta nyugtája](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>Előre elkészített névjegykártya-modell
+A Business Cards modell lehetővé teszi olyan információk kinyerését, mint például a személy neve, a beosztás, a cím, az e-mail, a vállalat és a telefonszámok az üzleti kártyáról angol nyelven. 
+
+![névjegykártya minta](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>Elrendezési API
 
@@ -90,7 +99,7 @@ További információért olvassa el a [REST API dokumentációját](https://wes
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
+### <a name="prebuilt"></a>Prebuilt
 
 A beérkezési modellhez tartozó bemeneti követelmények némileg eltérőek.
 
@@ -104,6 +113,6 @@ A beérkezési modellhez tartozó bemeneti követelmények némileg eltérőek.
 
 Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.

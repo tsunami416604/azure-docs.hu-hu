@@ -2,17 +2,17 @@
 title: Végpontok közötti TLS engedélyezése az Azure Application Gateway
 description: Ez a cikk áttekintést nyújt a Application Gateway végpontok közötti TLS-támogatásról.
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962101"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723299"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>A TLS-lezárás és a végpontok közötti TLS áttekintése Application Gateway
 
@@ -30,7 +30,7 @@ Application Gateway támogatja a TLS-lezárást az átjárón, amely után a for
 A TLS-megszakítás konfigurálásához TLS/SSL-tanúsítványt kell hozzáadni a figyelőhöz ahhoz, hogy a Application Gateway a TLS/SSL protokoll specifikációja alapján szimmetrikus kulcsot lehessen származtatni. A szimmetrikus kulcs ezután az átjárónak továbbított forgalom titkosítására és visszafejtésére szolgál. A TLS/SSL-tanúsítványnak személyes információcsere (PFX) formátumúnak kell lennie. Ez a fájlformátum lehetővé teszi az Application Gateway által igényelt titkos kulcs exportálását a forgalom titkosításának és visszafejtésének elvégzéséhez.
 
 > [!IMPORTANT] 
-> Vegye figyelembe, hogy a figyelő tanúsítványa a teljes tanúsítványlánc feltöltését igényli. 
+> A figyelő tanúsítványa megköveteli a teljes tanúsítványlánc feltöltését (a HITELESÍTÉSSZOLGÁLTATÓ, a köztes és a levél tanúsítvány főtanúsítványa) a megbízhatósági lánc létrehozásához. 
 
 
 > [!NOTE] 

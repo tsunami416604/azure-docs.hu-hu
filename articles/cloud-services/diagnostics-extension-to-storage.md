@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77472673"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723254"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
-A diagnosztikai adatok nem tárolódnak véglegesen, hacsak nem továbbítja azt a Microsoft Azure Storage-emulátorba vagy az Azure Storage-ba. A tárolás után a több elérhető eszköz egyikével is megtekinthető.
+A diagnosztikai adatok nem tárolódnak véglegesen, hacsak nem továbbítja azt a Microsoft Azure Storage Emulatorba vagy az Azure Storage-ba. A tárolás után a több elérhető eszköz egyikével is megtekinthető.
 
 ## <a name="specify-a-storage-account"></a>Válasszon Storage-fiókot
 A ServiceConfiguration. cscfg fájlban használni kívánt Storage-fiókot kell megadnia. A fiókadatok a konfigurációs beállításokban kapcsolatok karakterláncként vannak megadva. Az alábbi példa a Visual Studióban egy új Cloud Service-projekthez létrehozott alapértelmezett kapcsolatok karakterláncát mutatja be:
@@ -33,13 +33,13 @@ A gyűjtött diagnosztikai adatok típusától függően Azure Diagnostics a Blo
 
 | Adatforrás | Tárolási formátum |
 | --- | --- |
-| Azure-naplók |Táblázat |
+| Azure-naplók |Tábla |
 | IIS 7,0-naplók |Blob |
-| Azure Diagnostics-infrastruktúranaplók |Táblázat |
+| Azure Diagnostics-infrastruktúranaplók |Tábla |
 | Sikertelen kérelmek nyomkövetési naplói |Blob |
-| Windows-eseménynaplók |Táblázat |
-| Teljesítményszámlálók |Táblázat |
-| összeomlási memóriaképek, |Blob |
+| Windows-eseménynaplók |Tábla |
+| Teljesítményszámlálók |Tábla |
+| Összeomlási memóriaképek |Blob |
 | Egyéni hibanaplók |Blob |
 
 ## <a name="transfer-diagnostic-data"></a>Diagnosztikai adatok átvitele
@@ -77,7 +77,7 @@ Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.
 * Az [azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) tartalmaz Azure Diagnostics kezelőt, amely lehetővé teszi az Azure-on futó alkalmazások által gyűjtött diagnosztikai adatok megtekintését, letöltését és kezelését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A folyamat nyomon követése egy Cloud Services alkalmazásban Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 
 

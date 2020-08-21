@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13c54b548a507043fda7ff230cf7641c26f471d1
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517914"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724057"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -43,7 +43,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
 
    A gazdagépnek meg kell felelnie a következő hardverkövetelmények követelményeinek:
 
-    | Tároló | Minimális | Ajánlott|
+    | Tároló | Minimum | Ajánlott|
     |:--|:--|:--|
     |Minta címkéző eszköz|2 mag, 4 GB memória|4 mag, 8 GB memória|
 
@@ -52,14 +52,35 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
+
+
+
+
 1. Szerezze be a minta címkéző eszköz tárolóját a `docker pull` paranccsal.
+
+    # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
+    # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+    ```
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    ```
+
+    ---
+
 1. Most már készen áll a tároló futtatására a használatával `docker run` .
+
+    # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
+    # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+    ```
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview    
+    ```
+
+    --- 
 
    Ezzel a paranccsal a minta feliratozási eszköz elérhetővé válik egy webböngészőn keresztül. Nyissa meg a következőt: `http://localhost:3000`.
 
@@ -97,7 +118,8 @@ Töltse ki a mezőket a következő értékekkel:
 * **Leírás** – a projekt leírása.
 * **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A szolgáltatás használatának elkezdése után állítsa be a lejárati időt. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
-![A minta-címkéző eszköz csatlakoztatási beállításai](../media/label-tool/connections.png)
+:::image type="content" source="../media/label-tool/connections.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
+
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
@@ -111,7 +133,7 @@ A minta feliratozási eszközben a projektek a konfigurációkat és a beállít
 * **API-kulcs** – az űrlap-felismerő előfizetési kulcsa.
 * **Leírás** – nem kötelező – a projekt leírása
 
-![Új projekt lap a minta címkézési eszközön](../media/label-tool/new-project.png)
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Új projekt lap a minta feliratozási eszközön.":::
 
 ## <a name="label-your-forms"></a>Űrlapok címkézése
 
@@ -125,10 +147,15 @@ Amikor létrehoz vagy megnyit egy projektet, megnyílik a fő címke-szerkesztő
 
 Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján** az egyes dokumentumok szöveg-elrendezési adatainak lekéréséhez. A címkézési eszköz az egyes szöveges elemek köré rajzolja meg a határoló mezőket.
 
+Azt is megmutatja, hogy mely táblákat kell automatikusan kibontani. A kibontott táblázat megjelenítéséhez kattintson a dokumentum bal oldalán található tábla/rács ikonra. Ebben a rövid útmutatóban, mivel a táblázat tartalma automatikusan ki van kibontva, a táblázat tartalma nem lesz felcímkézve, hanem az automatikus kivonásra támaszkodik.
+
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Táblázat vizualizációja a minta címkézési eszközben.":::
+
 ### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
 
 Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket fel szeretne ismerni a modellből.
 
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
 1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
    1. Kattintson ide **+** új címke létrehozásához.
    1. Adja meg a címke nevét.
@@ -146,7 +173,30 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
     > * A **+** címkék kereséséhez, átnevezéséhez, átrendezéséhez és törléséhez kattintson a jobb oldalon található gombokra.
     > * Ha el szeretné távolítani egy alkalmazott címkét a címke törlése nélkül, válassza ki a címkézett téglalapot a dokumentum nézetben, és nyomja le a DELETE billentyűt.
 
-![A minta-címkéző eszköz főszerkesztő ablaka](../media/label-tool/main-editor.png)
+
+# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1) 
+1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
+   1. Kattintson ide **+** új címke létrehozásához.
+   1. Adja meg a címke nevét.
+   1. Nyomja le az ENTER billentyűt a címke mentéséhez.
+1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához. A _v 2.1 előzetes verziójában_ lehetőség van arra is, hogy _kijelölje a választógombok_ , például a választógombok és a jelölőnégyzeteket a kulcs érték párokként. Az űrlap-felismerő azonosítja, hogy a kijelölési jel "kijelölt" vagy "nem kijelölt" értékű-e.
+1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
+    > [!Tip]
+    > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket.
+    > * Csak egy címkét alkalmazhat az egyes kijelölt szöveges elemekre.
+    > * Az egyes címkék csak egyszer alkalmazhatók oldalanként. Ha egy érték többször is megjelenik ugyanazon az űrlapon, hozzon létre különböző címkéket az egyes példányokhoz. Például: "számla # 1", "számla # 2" és így tovább.
+    > * A címkék nem terjedhetnek át a lapokra.
+    > * Az űrlapon megjelenő címkézett értékek ne próbáljon két részre osztani egy értéket két különböző címkével. Például egy cím mezőt egyetlen címkével kell megcímkézni, még akkor is, ha több sort is felölel.
+    > * A címkézett mezőkben ne szerepeljenek kulcsok, &mdash; csak az értékek.
+    > * A tábla adatokat automatikusan kell észlelni, és a végső kimeneti JSON-fájlban lesznek elérhetők. Ha azonban a modell nem ismeri fel az összes tábla adatait, manuálisan is címkézheti ezeket a mezőket. Címkézze fel a tábla minden celláját egy másik címkével. Ha az űrlapok különböző számú sort tartalmazó táblázatokkal rendelkeznek, ügyeljen arra, hogy legalább egy űrlapot címkével lássa el a lehető legnagyobb táblázattal.
+    > * A **+** címkék kereséséhez, átnevezéséhez, átrendezéséhez és törléséhez kattintson a jobb oldalon található gombokra.
+    > * Ha el szeretné távolítani egy alkalmazott címkét a címke törlése nélkül, válassza ki a címkézett téglalapot a dokumentum nézetben, és nyomja le a DELETE billentyűt.
+
+
+---
+
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="A minta-címkéző eszköz főszerkesztő ablaka.":::
+
 
 Kövesse a fenti lépéseket az űrlapok legalább öt megjelöléséhez.
 
@@ -166,6 +216,7 @@ A következő típusú értékek és változatok jelenleg támogatottak:
     * alapértelmezett, `dmy` , `mdy` , `ymd`
 * `time`
 * `integer`
+* `selectionMark` – _Újdonság a v 2.1-ben – előzetes verzió. 1!_
 
 > [!NOTE]
 > A dátum formázásához tekintse meg a következő szabályokat:
@@ -196,14 +247,31 @@ Kattintson a vonat ikonra a bal oldali ablaktáblán a képzés lap megnyitásá
 * **Átlagos pontosság** – a modell átlagos pontossága. A modell pontosságát úgy javíthatja, ha további űrlapokat és képzést is felcímkéz, és új modellt hoz létre. Javasoljuk, hogy öt űrlap feliratozásával kezdjen hozzá, és szükség esetén további űrlapokat adjon hozzá.
 * A címkék és a becsült pontosság a címkén.
 
-![képzés nézet](../media/label-tool/train-screen.png)
+
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Képzés nézet.":::
 
 A betanítás befejezése után vizsgálja meg az **átlagos pontossági** értéket. Ha alacsony, adjon hozzá további bemeneti dokumentumokat, és ismételje meg a fenti lépéseket. A már címkézett dokumentumok a projekt indexében maradnak.
 
 > [!TIP]
 > A betanítási folyamatot REST API hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](./python-labeled-data.md)ismertető témakört.
 
-## <a name="analyze-a-form"></a>Űrlap elemzése
+## <a name="compose-trained-models"></a>Betanított modellek összeállítása
+
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
+
+Ez a funkció jelenleg a 2.1-es verzióban érhető el. előnézet. 
+
+# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1) 
+
+A Model összeállításával akár 100 modellt is létrehozhat egyetlen modell-AZONOSÍTÓra. Ha ezzel a modell-AZONOSÍTÓval hívja meg az elemzést, az űrlap-felismerő először a beküldött űrlapot sorolja be, és a legmegfelelőbb modellnek felel meg, majd visszaadja az adott modell eredményeit. Ez akkor hasznos, ha a bejövő űrlapok több sablon egyikéhez tartozhatnak.
+
+A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (két nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. A felugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
+
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model komponált UX nézet.":::
+
+---
+
+## <a name="analyze-a-form"></a>Űrlap elemzése 
 
 Kattintson a bal oldali előrejelzés (villanykörte) ikonra a modell teszteléséhez. Töltse fel a betanítási folyamatban még nem használt űrlap-dokumentumot. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlaphoz tartozó kulcs/érték előrejelzések beszerzéséhez. Az eszköz címkét fog alkalmazni a határolókeret mezőiben, és az egyes címkék megbízhatóságát fogja jelenteni.
 

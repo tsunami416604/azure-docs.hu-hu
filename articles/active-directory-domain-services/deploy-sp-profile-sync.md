@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f498111afaaeff935e1ea7d1d3400cfe05efda12
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220269"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722959"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services konfigurálása a SharePoint Server felhasználói profilok szinkronizálásának támogatásához
 
-A SharePoint-kiszolgáló tartalmaz egy szolgáltatást a felhasználói profilok szinkronizálásához. Ez a funkció lehetővé teszi, hogy a felhasználói profilok központi helyen legyenek tárolva, és elérhetők legyenek több SharePoint-hely és-Farm között. A SharePoint Server felhasználói profil szolgáltatás konfigurálásához meg kell adni a megfelelő engedélyeket egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban. További információ: [felhasználói profil szinkronizálása a SharePoint-kiszolgálón](https://technet.microsoft.com/library/hh296982.aspx).
+A SharePoint-kiszolgáló tartalmaz egy szolgáltatást a felhasználói profilok szinkronizálásához. Ez a funkció lehetővé teszi, hogy a felhasználói profilok központi helyen legyenek tárolva, és elérhetők legyenek több SharePoint-hely és-Farm között. A SharePoint Server felhasználói profil szolgáltatás konfigurálásához meg kell adni a megfelelő engedélyeket egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban. További információ: [felhasználói profil szinkronizálása a SharePoint-kiszolgálón](/SharePoint/administration/user-profile-service-administration).
 
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure AD DSt a SharePoint Server felhasználói profil szinkronizálási szolgáltatásának engedélyezéséhez.
 
@@ -71,7 +71,7 @@ Az Azure AD DS felügyeleti virtuális gépről hajtsa végre a következő lép
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [Active Directory tartományi szolgáltatások engedélyek megadása a SharePoint-kiszolgálón a profilok szinkronizálásához](https://technet.microsoft.com/library/hh296982.aspx)
+További információ: [Active Directory tartományi szolgáltatások engedélyek megadása a SharePoint-kiszolgálón a profilok szinkronizálásához](/SharePoint/administration/user-profile-service-administration)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

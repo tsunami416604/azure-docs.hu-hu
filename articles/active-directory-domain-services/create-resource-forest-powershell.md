@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506328"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723163"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Hozzon létre egy Azure Active Directory Domain Services erőforrás-erdőt és a kimenő erdőszintű megbízhatóságot a helyszíni tartományba Azure PowerShell
 
@@ -102,7 +102,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
 1. Tekintse át a parancsfájlhoz szükséges következő paramétereket `New-AzureAaddsForest` . Győződjön meg arról, hogy az előfeltétel **Azure PowerShell** és az **Azure ad PowerShell** -modulok is rendelkezésre állnak. Győződjön meg arról, hogy megtervezte a virtuális hálózati követelményeket az alkalmazás és a helyszíni kapcsolat biztosításához.
 
-    | Name (Név)                         | Parancsfájl paramétere          | Leírás |
+    | Név                         | Parancsfájl paramétere          | Leírás |
     |:-----------------------------|---------------------------|:------------|
     | Előfizetés                 | *-azureSubscriptionId*    | Az Azure AD DS számlázáshoz használt előfizetés-azonosító. A [Get-AzureRMSubscription][Get-AzureRMSubscription] parancsmag használatával lekérheti az előfizetések listáját. |
     | Erőforráscsoport               | *-aaddsResourceGroupName* | A felügyelt tartomány és a kapcsolódó erőforrások erőforráscsoport neve. |
@@ -112,7 +112,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
     A `New-AzureAaddsForest` szkript létrehozhatja az Azure-beli virtuális hálózatot és az azure AD DS alhálózatot, ha ezek az erőforrások még nem léteznek. A parancsfájl opcionálisan létrehozhatja a számítási feladatok alhálózatait, ha meg van adva:
 
-    | Name (Név)                              | Parancsfájl paramétere                  | Leírás |
+    | Név                              | Parancsfájl paramétere                  | Leírás |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuális hálózat neve              | *-aaddsVnetName*                  | A felügyelt tartomány virtuális hálózatának neve.|
     | Címtér                     | *-aaddsVnetCIDRAddressSpace*      | A virtuális hálózat CIDR jelölése (a virtuális hálózat létrehozásakor).|
@@ -148,15 +148,15 @@ Mielőtt elkezdené, győződjön meg róla, hogy tisztában van a [hálózati m
 
 1. Hozzon létre hibrid kapcsolatot a helyszíni hálózattal az Azure-ban egy Azure VPN vagy Azure ExpressRoute-kapcsolat használatával. A hibrid hálózati konfiguráció meghaladja a dokumentáció hatókörét, és előfordulhat, hogy már létezik a környezetében. Az egyes forgatókönyvekkel kapcsolatos részletekért tekintse meg a következő cikkeket:
 
-    * [Azure-helyek közötti VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-    * Az [Azure ExpressRoute áttekintése](/azure/expressroute/expressroute-introduction).
+    * [Azure-helyek közötti VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+    * Az [Azure ExpressRoute áttekintése](../expressroute/expressroute-introduction.md).
 
     > [!IMPORTANT]
     > Ha közvetlenül a felügyelt tartomány virtuális hálózatához hozza létre a kapcsolódást, használjon külön átjáró-alhálózatot. Ne hozza létre az átjárót a felügyelt tartomány alhálózatában.
 
 1. Felügyelt tartomány felügyeletéhez létre kell hoznia egy felügyeleti virtuális gépet, csatlakoztatni kell a felügyelt tartományhoz, és telepítenie kell a szükséges AD DS felügyeleti eszközöket.
 
-    A felügyelt tartományi erőforrás-erdő üzembe helyezése közben [hozzon létre egy Windows Server rendszerű virtuális gépet](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) , majd [telepítse a Core AD DS felügyeleti eszközöket](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm) a szükséges felügyeleti eszközök telepítéséhez. Várja meg a felügyeleti virtuális gép a felügyelt tartományhoz való csatlakoztatását, amíg a tartomány sikeres telepítése után a következő lépések egyike be nem fejeződik.
+    A felügyelt tartományi erőforrás-erdő üzembe helyezése közben [hozzon létre egy Windows Server rendszerű virtuális gépet](./join-windows-vm.md) , majd [telepítse a Core AD DS felügyeleti eszközöket](./tutorial-create-management-vm.md) a szükséges felügyeleti eszközök telepítéséhez. Várja meg a felügyeleti virtuális gép a felügyelt tartományhoz való csatlakoztatását, amíg a tartomány sikeres telepítése után a következő lépések egyike be nem fejeződik.
 
 1. Ellenőrizze a hálózati kapcsolatot a helyszíni hálózat és az Azure-beli virtuális hálózat között.
 
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Most adja meg a parancsfájlt a következő információkkal:
 
-| Name (Név)                               | Parancsfájl paramétere     | Leírás |
+| Név                               | Parancsfájl paramétere     | Leírás |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS tartomány neve            | *-ManagedDomainFqdn* | A felügyelt tartomány teljes tartományneve, például *aaddscontoso.com* |
 | Helyszíni AD DS tartomány neve      | *-TrustFqdn*         | A megbízható erdő teljes tartományneve, például *onprem.contoso.com* |
@@ -260,7 +260,7 @@ A felügyelt tartományhoz tartozó erőforrás-tartományhoz csatlakoztatva kel
 1. Kapcsolódjon a felügyelt tartomány erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez a Távoli asztal és a felügyelt tartományi rendszergazdai hitelesítő adataival. Ha hálózati szintű hitelesítés (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
 
     > [!TIP]
-    > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
+    > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](../bastion/bastion-overview.md) a támogatott Azure-régiókban.
 
 1. Nyisson meg egy parancssort, és a `whoami` parancs használatával jelenítse meg az aktuálisan hitelesített felhasználó megkülönböztető nevét:
 
@@ -286,7 +286,7 @@ A felügyelt tartományi erőforrás-erdőhöz csatlakoztatott Windows Server re
 1. Kapcsolódjon a felügyelt tartomány erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális géphez a Távoli asztal és a felügyelt tartományi rendszergazdai hitelesítő adataival. Ha hálózati szintű hitelesítés (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
 
     > [!TIP]
-    > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
+    > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](../bastion/bastion-overview.md) a támogatott Azure-régiókban.
 
 1. Nyissa meg a **Windows-beállításokat**, majd keresse meg és válassza ki a **hálózati és megosztási központot**.
 1. Válassza a **Speciális megosztási beállítások módosítása** lehetőséget.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222972"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722585"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Ismert problémák: gyakori riasztások és megoldások a Azure Active Directory Domain Services
 
@@ -106,7 +106,7 @@ Az Azure AD DS aktív előfizetést igényel, és nem helyezhető át másik el�
 
 Az Azure AD DS használatához aktív előfizetés szükséges. Ha az Azure-előfizetés, amelyhez a felügyelt tartomány társítva van, nem aktív, meg kell újítania az előfizetés újraaktiválásához.
 
-1. [Újítsa meg az Azure-előfizetését](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Újítsa meg az Azure-előfizetését](../cost-management-billing/manage/subscription-disabled.md).
 2. Az Előfizetés megújítása után egy Azure AD DS-értesítés lehetővé teszi a felügyelt tartomány újbóli engedélyezését.
 
 Ha a felügyelt tartomány ismét engedélyezve van, a felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
@@ -162,7 +162,7 @@ Ez a hiba nem állítható helyre. A riasztás feloldásához [törölje a megl�
 
 Néhány automatikusan létrehozott egyszerű szolgáltatás a felügyelt tartomány erőforrásainak kezelésére és létrehozására szolgál. Ha az egyik egyszerű szolgáltatásnév hozzáférési engedélyei módosulnak, a tartomány nem tudja megfelelően kezelni az erőforrásokat. A következő lépések bemutatják, hogyan értelmezheti és engedélyezheti a hozzáférési engedélyeket egy egyszerű szolgáltatásnév számára:
 
-1. További információ [a szerepköralapú hozzáférés-vezérlésről és az alkalmazásokhoz való hozzáférés engedélyezéséről a Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+1. További információ [a szerepköralapú hozzáférés-vezérlésről és az alkalmazásokhoz való hozzáférés engedélyezéséről a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Tekintse át az *ABBA844E-BC0E-44B0-947A-DC74E5D09022* azonosítóval rendelkező szolgáltatásnév hozzáférését, és adja meg a korábbi időpontban megtagadott hozzáférést.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: nincs elegendő IP-cím a felügyelt tartományban
@@ -276,7 +276,7 @@ A felügyelt tartomány konfigurációjában felmerülő problémákat jelző [A
 
 Az Azure AD DS használatához aktív előfizetés szükséges. Ha az Azure-előfizetés, amelyhez a felügyelt tartomány társítva van, nem aktív, meg kell újítania az előfizetés újraaktiválásához.
 
-1. [Újítsa meg az Azure-előfizetését](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Újítsa meg az Azure-előfizetését](../cost-management-billing/manage/subscription-disabled.md).
 2. Az Előfizetés megújítása után egy Azure AD DS-értesítés lehetővé teszi a felügyelt tartomány újbóli engedélyezését.
 
 Ha a felügyelt tartomány ismét engedélyezve van, a felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.

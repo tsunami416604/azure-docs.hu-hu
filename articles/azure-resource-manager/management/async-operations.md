@@ -2,14 +2,14 @@
 title: Aszinkron műveletek állapota
 description: Útmutatás az aszinkron műveletek nyomon követéséhez az Azure-ban. Megjeleníti a hosszan futó művelet állapotának lekéréséhez használt értékeket.
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718424"
+ms.locfileid: "88723452"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
 
@@ -31,7 +31,7 @@ Tekintse meg az [REST API dokumentációját](/rest/api/azure/) , hogy láthassa
 
 Az 201-es vagy a 202-es válasz kódjának beolvasását követően készen áll a művelet állapotának figyelésére.
 
-## <a name="use-url-to-monitor-status"></a>Az állapot figyelésének URL-címe
+## <a name="url-to-monitor-status"></a>Az állapot figyelésének URL-címe
 
 Az aszinkron művelet állapotának figyelésére két különböző módszer áll rendelkezésre. A helyes megközelítést úgy állapíthatja meg, hogy megvizsgálja az eredeti kérelemből visszaadott fejléc-értékeket. Először keresse meg a következőt:
 
@@ -45,7 +45,9 @@ Ha `Azure-AsyncOperation` nem a fejléc értékeinek egyike, akkor keresse meg a
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation kérelem és válasz
 
-Ha a fejléc értéke URL-címmel rendelkezik `Azure-AsyncOperation` , küldjön egy Get kérelmet erre az URL-címre. A értékének használatával `Retry-After` ütemezze, hogy az állapot milyen gyakran legyen ellenőrizhető. A válasz tulajdonságai eltérőek lehetnek, de mindig tartalmazzák az aszinkron művelet állapotát.
+Ha a fejléc értéke URL-címmel rendelkezik `Azure-AsyncOperation` , küldjön egy Get kérelmet erre az URL-címre. A értékének használatával `Retry-After` ütemezze, hogy az állapot milyen gyakran legyen ellenőrizhető. A művelet állapotát jelző Response objektum jelenik meg. A művelet állapotának az URL-címmel való ellenőrzésekor a rendszer másik választ ad vissza `Location` . A hely URL-címére adott válaszról további információt a [Storage-fiók létrehozása (202, hely és újrapróbálkozás után)](#create-storage-account-202-with-location-and-retry-after)című témakörben talál.
+
+A válasz tulajdonságai eltérőek lehetnek, de mindig tartalmazzák az aszinkron művelet állapotát.
 
 ```json
 {

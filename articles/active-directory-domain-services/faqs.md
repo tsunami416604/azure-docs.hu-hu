@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116699"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722897"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Gyakori kérdések (GYIK) a Azure Active Directory (AD) tartományi szolgáltatásokkal kapcsolatban
 
@@ -61,7 +61,7 @@ Nem. Ha NTLM-vagy Kerberos-kapcsolaton keresztül kívánja hitelesíteni a felh
 Ha azonban Azure AD Connect használ a jelszó-kivonatolási szinkronizáláshoz, használhatja a Azure AD Domain Services, mert a jelszó-kivonatoló értékeket az Azure AD tárolja.
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Elérhetővé tehetek Azure AD Domain Services az előfizetésen belüli több virtuális hálózatban?
-Maga a szolgáltatás nem támogatja közvetlenül ezt a forgatókönyvet. A felügyelt tartomány egyszerre csak egy virtuális hálózatban érhető el. A több virtuális hálózat közötti kapcsolat azonban beállítható úgy, hogy a Azure AD Domain Servicest más virtuális hálózatokhoz tegye elérhetővé. További információ: [Hogyan csatlakoztathatók a virtuális hálózatok az Azure-ban VPN-átjárók](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) vagy [virtuális hálózati](../virtual-network/virtual-network-peering-overview.md)kapcsolatok használatával.
+Maga a szolgáltatás nem támogatja közvetlenül ezt a forgatókönyvet. A felügyelt tartomány egyszerre csak egy virtuális hálózatban érhető el. A több virtuális hálózat közötti kapcsolat azonban beállítható úgy, hogy a Azure AD Domain Servicest más virtuális hálózatokhoz tegye elérhetővé. További információ: [Hogyan csatlakoztathatók a virtuális hálózatok az Azure-ban VPN-átjárók](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md) vagy [virtuális hálózati](../virtual-network/virtual-network-peering-overview.md)kapcsolatok használatával.
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>Engedélyezhető Azure AD Domain Services a PowerShell használatával?
 Igen. További információ: [a Azure ad Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md).
@@ -73,14 +73,14 @@ Igen, létrehozhat egy Azure AD Domain Services felügyelt tartományt egy Resou
 Nem. A Azure AD Domain Services által megadott tartomány felügyelt tartomány. A tartományhoz tartozó tartományvezérlőket nem kell kiépíteni, konfigurálni vagy más módon kezelni. Ezeket a felügyeleti tevékenységeket a Microsoft szolgáltatásként biztosítjuk. Ezért nem adhat hozzá további tartományvezérlőket (írható vagy olvasható) a felügyelt tartományhoz.
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>A vendégnek a címtárat használó felhasználók meghívókat Azure AD Domain Services?
-Nem. Az Azure ad [B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) Meghívási folyamatát használó vendég felhasználók a Azure ad Domain Services felügyelt tartományba vannak szinkronizálva. A felhasználók jelszava azonban nem az Azure AD-címtárban van tárolva. Ezért a Azure AD Domain Services nem lehet szinkronizálni az NTLM-és Kerberos-kivonatokat a felhasználók számára a felügyelt tartományba. Ilyen felhasználók nem jelentkezhetnek be, illetve nem csatlakozhatnak számítógépekhez a felügyelt tartományhoz.
+Nem. Az Azure ad [B2B](../active-directory/external-identities/what-is-b2b.md) Meghívási folyamatát használó vendég felhasználók a Azure ad Domain Services felügyelt tartományba vannak szinkronizálva. A felhasználók jelszava azonban nem az Azure AD-címtárban van tárolva. Ezért a Azure AD Domain Services nem lehet szinkronizálni az NTLM-és Kerberos-kivonatokat a felhasználók számára a felügyelt tartományba. Ilyen felhasználók nem jelentkezhetnek be, illetve nem csatlakozhatnak számítógépekhez a felügyelt tartományhoz.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?
 Nem. Azure AD Domain Services felügyelt tartomány létrehozása után nem helyezheti át a felügyelt tartományt más erőforráscsoporthoz, virtuális hálózatra, előfizetésre stb. Ügyeljen arra, hogy a felügyelt tartomány központi telepítésekor a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki.
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>A Azure AD Domain Services magas rendelkezésre állási lehetőségeket is tartalmaz?
 
-Igen. Minden Azure AD Domain Services felügyelt tartomány két tartományvezérlőt tartalmaz. Ezek a tartományvezérlők nem kezelhetők és nem csatlakoznak, hanem a felügyelt szolgáltatás részét képezik. Ha Availability Zonest támogató régióba telepít Azure AD Domain Services, a tartományvezérlők a zónák között oszlanak meg. A Availability Zonest nem támogató régiókban a tartományvezérlők a rendelkezésre állási csoportokon keresztül oszlanak meg. Ehhez a terjesztéshez nincsenek konfigurációs beállítások vagy felügyeleti vezérlők. További információ: a [virtuális gépek rendelkezésre állási lehetőségei az Azure-ban](../virtual-machines/windows/availability.md).
+Igen. Minden Azure AD Domain Services felügyelt tartomány két tartományvezérlőt tartalmaz. Ezek a tartományvezérlők nem kezelhetők és nem csatlakoznak, hanem a felügyelt szolgáltatás részét képezik. Ha Availability Zonest támogató régióba telepít Azure AD Domain Services, a tartományvezérlők a zónák között oszlanak meg. A Availability Zonest nem támogató régiókban a tartományvezérlők a rendelkezésre állási csoportokon keresztül oszlanak meg. Ehhez a terjesztéshez nincsenek konfigurációs beállítások vagy felügyeleti vezérlők. További információ: a [virtuális gépek rendelkezésre állási lehetőségei az Azure-ban](../virtual-machines/availability.md).
 
 ## <a name="administration-and-operations"></a>Felügyelet és műveletek
 
@@ -148,7 +148,7 @@ Azure AD Domain Services az Azure ingyenes próbaverziójában szerepel. Regiszt
 Nem. Miután engedélyezte Azure AD Domain Services felügyelt tartományt, a szolgáltatás a kiválasztott virtuális hálózaton belül elérhető, amíg nem törli a felügyelt tartományt. Nem lehet szüneteltetni a szolgáltatást. A számlázás óránként folytatódik, amíg nem törli a felügyelt tartományt.
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Használhatok feladatátvételi Azure AD Domain Services egy másik régióba egy DR eseményhez?
-Nem. Azure AD Domain Services jelenleg nem biztosít földrajzi redundáns telepítési modellt. Egy Azure-régióban egyetlen virtuális hálózatra korlátozódik. Ha több Azure-régiót szeretne használni, futtatnia kell a Active Directory-tartomány-vezérlőket az Azure IaaS virtuális gépeken. Az architektúrával kapcsolatos útmutatásért lásd: [a helyszíni Active Directory tartomány kiterjesztése az Azure-ra](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Nem. Azure AD Domain Services jelenleg nem biztosít földrajzi redundáns telepítési modellt. Egy Azure-régióban egyetlen virtuális hálózatra korlátozódik. Ha több Azure-régiót szeretne használni, futtatnia kell a Active Directory-tartomány-vezérlőket az Azure IaaS virtuális gépeken. Az architektúrával kapcsolatos útmutatásért lásd: [a helyszíni Active Directory tartomány kiterjesztése az Azure-ra](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Lekérhetek Azure AD Domain Services a nagyvállalati mobilitási csomag (EMS) részeként? Szükség van-e a Azure AD Domain Services használatára prémium szintű Azure AD?
 Nem. A Azure AD Domain Services egy utólagos elszámolású Azure-szolgáltatás, amely nem része az EMS-nek. Azure AD Domain Services az Azure AD összes kiadásával használható (ingyenes és prémium szintű). A használattól függően óradíjat számolunk fel.
