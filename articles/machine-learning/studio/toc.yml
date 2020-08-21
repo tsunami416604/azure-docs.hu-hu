@@ -140,9 +140,6 @@
         - name: Katalógusadatok
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-        - name: Notebookok letöltése
-          displayName: export
-          href: download-notebooks-data.md
 - name: Referencia
   items:
     - name: Algoritmusokra és modulokra vonatkozó referenciák
@@ -165,5 +162,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
-    - name: 'Egyéni neurális hálózatok (Net#)'
+    - name: Egyéni neurális hálózatok (Net#)
       href: azure-ml-netsharp-reference-guide.md

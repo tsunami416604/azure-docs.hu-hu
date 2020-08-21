@@ -222,7 +222,7 @@
             - name: Mv2 sorozat
               href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Korlátozott vCPU-k
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md
         - name: Tárolásra optimalizált
           items:
             - name: Áttekintés
@@ -279,7 +279,7 @@
             - name: Mi az az Azure Reservations?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: Virtuálisgép-példányok méretrugalmassága
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot virtuális gépek
           displayName: 'pre-empt, preempt'
           href: spot-vms.md
@@ -305,7 +305,7 @@
             - name: Mi az az Azure Reservations?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Virtuálisgép-példányok méretrugalmassága
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
     - name: Dedikált gazdagépek
       href: dedicated-hosts.md
     - name: Karbantartás és frissítések
@@ -313,21 +313,21 @@
     - name: Lemezes tárolás
       items:
         - name: A felügyelt lemezek bemutatása
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md
         - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
-          href: disks-types.md
+          href: ../disks-types.md
         - name: Titkosítás
           href: disk-encryption.md
         - name: Lemezes tároláshoz kapcsolódó lefoglalások
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Nagy teljesítményű rendszer tervezése
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md
         - name: Lemezek adatlöket-kezelése
           href: disk-bursting.md
         - name: Lemezek skálázási célértékei
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Megosztott lemezek
           href: disks-shared.md
         - name: Rövid élettartamú operációsrendszer-lemezek
@@ -341,7 +341,7 @@
     - name: Biztonság
       items:
         - name: Biztonság és szabályzatok
-          href: security-policy.md
+          href: ../security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Az Azure Policy biztonsági vezérlői
@@ -855,7 +855,7 @@
           displayName: Azure Resource Manager
           href: ../using-managed-disks-template-deployments.md
         - name: Megosztott lemezek engedélyezése
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md
         - name: VHD feltöltése lemezre – PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Lemez biztonságos importálása/exportálása – Portal
@@ -863,11 +863,11 @@
         - name: Lemez átméretezése
           href: expand-os-disk.md
         - name: A Storage Explorer használata lemezek kezelésére
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
         - name: Lemezes tárolás lefoglalása
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md
         - name: Növekményes pillanatkép létrehozása – PowerShell
           href: disks-incremental-snapshots.md
         - name: Növekményes pillanatkép létrehozása – portál
@@ -903,7 +903,7 @@
             - name: Írásgyorsító engedélyezése
               href: ../how-to-enable-write-accelerator.md
             - name: Ultra szintű lemezek használata
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md
             - name: Lemez teljesítménytesztelése
               href: disks-benchmarks.md
         - name: Nem csatlakoztatott lemezek keresése – PowerShell

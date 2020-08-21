@@ -1,14 +1,14 @@
 ---
 title: IRS 1075-ös tervminta – Áttekintés
 description: Az IRS 1075-ös tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az IRS 1075 adott vezérlőit.
-ms.date: 05/13/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: 877621f4164b64c31d553d007da31a62892c3e3e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 41a35eed7fee1b0c2c1e792997ec61c4035b9abd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655029"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653681"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075-ös tervminta áttekintése
 

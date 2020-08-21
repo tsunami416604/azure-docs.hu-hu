@@ -193,7 +193,7 @@
 - name: Virtuális lemezek kezelésével kapcsolatos problémák
   items:
     - name: Áttekintés
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: GYIK
       href: ../windows/faq-for-disks.md
     - name: Tárerőforrások törlésekor jelentkező hibák

@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: Riasztások
       items:
-        - name: Alkalmazásriasztási szabályok
-          items:
-            - name: Rendelkezésre állás
-              href: app/monitor-web-app-availability.md
-            - name: Metrikákhoz kapcsolódó riasztások
-              href: ./platform/alerts-log.md
         - name: Metrika riasztási szabályai
           items:
             - name: Metrikariasztások kezelése
               href: platform/alerts-metric.md
+            - name: Rendelkezésre állás
+              href: app/monitor-web-app-availability.md
             - name: Dinamikus küszöbértékek használata
               href: platform/alerts-dynamic-thresholds.md
             - name: Egyetlen riasztás számos idősorhoz
