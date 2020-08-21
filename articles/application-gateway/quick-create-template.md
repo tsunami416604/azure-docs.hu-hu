@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249359"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705945"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-ARM sablonnal
 
@@ -26,7 +26,7 @@ Ezt a rövid útmutatót a [Azure Portal](quick-create-portal.md), a [Azure Powe
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
@@ -40,7 +40,7 @@ Az egyszerűség kedvéért ez a sablon egy egyszerű telepítőt hoz létre egy
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/ag-docs-qs/) származik.
 
-:::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
+:::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -87,7 +87,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607439"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705877"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
@@ -47,9 +47,9 @@ A következő táblázat a Microsoft AppSource és az Azure piactéren elérhet�
 
 A &#42;&#42; Microsoft 365 ajánlatok díjmentesen telepíthetők, és az SaaS-ajánlaton keresztül licencelési szolgáltatásként is megadhatók. További információkért tekintse [meg az Office 365-bővítmények a Microsoft kereskedelmi piactéren keresztüli bevételeit ismertető részt](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="choose-a-call-to-action"></a>Művelet hívásának kiválasztása
+## <a name="choose-a-listing-option"></a>Listaelem választása
 
-A rendelkezésre álló közzétételi lehetőségek különböző ügyfél-összevonást biztosítanak, miközben hozzáférést biztosítanak a megosztási és [kereskedelmi Piactéri előnyökhöz](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Jegyezze fel a közzétételi lehetőségnek megfelelő meghívások közötti műveletet:
+A rendelkezésre álló tőzsdei lehetőségek differenciált ügyfél-összevonást biztosítanak, miközben hozzáférést biztosít a vezető megosztási és [kereskedelmi Piactéri előnyökhöz](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Jegyezze fel a közzétételi lehetőségnek megfelelő listaelem-beállításokat:
 
 | **Közzétételi lehetőség**    | **Leírás**  |
 | :------------------- | :-------------------|
@@ -98,7 +98,7 @@ A kategóriák és alkategóriák a célközönség alapján vannak leképezve a
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A közzétételi lehetőség [kiválasztása után kiválaszthatja az](./publisher-guide-by-offer-type.md) ajánlat bemutatására használni kívánt ajánlat típusát.
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.

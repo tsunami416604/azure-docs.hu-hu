@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529607"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705248"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Rövid útmutató: privát hivatkozási szolgáltatás létrehozása ARM-sablonnal
 
@@ -37,7 +37,7 @@ Ez a sablon létrehoz egy magánhálózati kapcsolati szolgáltatást.
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-privatelink-service/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
+:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -73,7 +73,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
 
 1.  A portál keresősáv mezőjébe írja be a _myConsumerVm {UniqueID}_ értéket.
 
-2.  Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
+2.  Válassza a **Kapcsolódás** lehetőséget. Megnyílik **a virtuális géphez való kapcsolódás** .
 
 3.  Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
@@ -86,7 +86,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
     > [!NOTE]
     > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-5.  Kattintson az **OK** gombra.
+5.  Válassza az **OK** lehetőséget.
 
 6.  A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -100,7 +100,7 @@ A következő lépésekkel csatlakozhat a http-szolgáltatáshoz a virtuális g�
 2.  Nyisson meg egy böngészőt, és adja meg a magánhálózati végpont címe: `http://10.0.0.5/` .
 3.  Megjelenik az alapértelmezett IIS-oldal.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a privát kapcsolat szolgáltatással létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a Private link Service-t és az összes kapcsolódó erőforrást.
 
@@ -110,6 +110,6 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure Private linkről](private-link-overview.md).

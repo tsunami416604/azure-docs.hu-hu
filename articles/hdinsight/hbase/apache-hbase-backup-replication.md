@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076742"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705724"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>A biztonsági mentés és a replikálás beállítása az Apache HBase és a Apache Phoenix on HDInsight
 
@@ -114,11 +114,11 @@ A cél címe a következő három részből áll:
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>`Apache ZooKeeper csomópontok vesszővel tagolt listája, például:
+* `<ZooKeeperQuorum>` Apache ZooKeeper csomópontok vesszővel tagolt listája, például:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`a HDInsight alapértelmezett értéke 2181, `<ZnodeParent>` `/hbase-unsecure` így a teljes érték a `<destinationAddress>` következő:
+* `<Port>` a HDInsight alapértelmezett értéke 2181, `<ZnodeParent>` `/hbase-unsecure` így a teljes érték a `<destinationAddress>` következő:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net: 2181:/hbase-unsecure
 
@@ -213,7 +213,13 @@ A a `<hdfsHBaseLocation>` forrás-fürt számára elérhető tárolóhelyek bár
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-A Pillanatkép exportálása után az SSH-t a célszámítógép fő csomópontjára helyezi, és a restore_snapshot parancs használatával visszaállíthatja a pillanatképet az előzőekben leírtak szerint.
+Ha nem rendelkezik másodlagos Azure Storage-fiókkal a forrás-fürthöz, vagy ha a fürterőforrás egy helyszíni fürt (vagy nem HDI fürt), akkor előfordulhat, hogy engedélyezési problémákba ütközik, amikor megpróbál hozzáférni a HDI-fürt Storage-fiókjához. A probléma megoldásához adja meg a Storage-fiók kulcsát parancssori paraméterként, az alábbi példában látható módon. A Storage-fiók kulcsát a Azure Portal érheti el.
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+A Pillanatkép exportálása után az SSH-t a cél fürt fő csomópontjára helyezi, és visszaállíthatja a pillanatképet a `restore_snapshot` korábban leírtak szerint a paranccsal.
 
 A pillanatképek a parancs időpontjában teljes biztonsági mentést biztosítanak a tábláról `snapshot` . A pillanatképek nem teszik lehetővé a növekményes Pillanatképek elvégzését a Windowsban, és nem határozzák meg a pillanatképbe foglalandó oszlopok családokat.
 

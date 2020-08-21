@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265245"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706030"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -49,9 +49,8 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
 
      Bár csak egy címtartományt határozhat meg a virtuális hálózat portálon történő létrehozásakor, a virtuális hálózat létrehozása után további címtartományt is hozzáadhat a Címterület számára. Ha meg szeretné tudni, hogyan adhat hozzá címtartományt egy meglévő virtuális hálózathoz, tekintse meg a [Címtartomány hozzáadása vagy eltávolítása](#add-or-remove-an-address-range)című témakört.
 
-     >[!WARNING]
-     >Ha a virtuális hálózat olyan címtartományt tartalmaz, amelyek átfedésben vannak egy másik virtuális hálózattal vagy helyszíni hálózattal, a két hálózat nem csatlakoztatható. Címtartomány meghatározása előtt gondolja át, hogy szeretne-e a virtuális hálózatot más virtuális hálózatokhoz vagy helyi hálózatokhoz csatlakozni a jövőben.
-     >
+     > [!WARNING]
+     > Ha a virtuális hálózat olyan címtartományt tartalmaz, amelyek átfedésben vannak egy másik virtuális hálózattal vagy helyszíni hálózattal, a két hálózat nem csatlakoztatható. Címtartomány meghatározása előtt gondolja át, hogy szeretne-e a virtuális hálózatot más virtuális hálózatokhoz vagy helyi hálózatokhoz csatlakozni a jövőben. A Microsoft a szervezete tulajdonában lévő magánhálózati címtartomány vagy nyilvános címtartomány használatával javasolja a virtuális hálózati címtartományok konfigurálását.
      >
 
      - **Alhálózat neve**: az alhálózat nevének egyedinek kell lennie a virtuális hálózaton belül. Az alhálózat neve nem módosítható az alhálózat létrehozása után. A portálhoz egy virtuális hálózat létrehozásakor meg kell határoznia egy alhálózatot, bár a virtuális hálózatnak nincs szüksége alhálózatra. A portálon csak egy alhálózatot adhat meg virtuális hálózat létrehozásakor. A virtuális hálózat létrehozása után később további alhálózatokat adhat hozzá a virtuális hálózathoz. Ha alhálózatot szeretne hozzáadni egy virtuális hálózathoz, tekintse meg az [alhálózatok kezelése](virtual-network-manage-subnet.md)című témakört. Az Azure CLI vagy a PowerShell használatával több alhálózattal rendelkező virtuális hálózatot is létrehozhat.
@@ -123,7 +122,7 @@ Címtartomány hozzáadása vagy eltávolítása:
 4. Hajtsa végre a következő lehetőségek egyikét:
     - **Címtartomány hozzáadása**: adja meg az új címtartományt. A címtartomány nem fedi át a virtuális hálózathoz definiált meglévő címtartományt.
     - **Címtartomány eltávolítása**: az eltávolítani kívánt címtartomány jobb oldalán válassza a **...**, majd az **Eltávolítás**lehetőséget. Ha egy alhálózat létezik a címtartományból, nem távolíthatja el a címtartományt. Címtartomány eltávolításához először törölnie kell a címtartomány meglévő alhálózatait (és az alhálózatokban található összes erőforrást).
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 
@@ -137,14 +136,14 @@ A virtuális hálózathoz csatlakozó virtuális gépek a virtuális hálózatho
 1. A portál felső részén található Keresés mezőben adja meg a *virtuális hálózatok* kifejezést a keresőmezőbe. Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
 2. A virtuális hálózatok listájából válassza ki azt a virtuális hálózatot, amelyre vonatkozóan módosítani kívánja a DNS-kiszolgálókat.
 3. Válassza a **DNS-kiszolgálók**lehetőséget a **Beállítások**területen.
-4. Válasszon egyet az alábbi lehetőségek közül:
+4. Válasszon az alábbi lehetőségek közül:
    - **Alapértelmezett (Azure által biztosított)**: az összes erőforrás neve és magánhálózati IP-címe automatikusan regisztrálva lesz a Azure DNS-kiszolgálókon. A neveket az ugyanahhoz a virtuális hálózathoz csatlakozó erőforrások között lehet feloldani. Ezzel a beállítással nem oldhatók fel a nevek a virtuális hálózatok között. A nevek virtuális hálózatokon keresztüli feloldásához egyéni DNS-kiszolgálót kell használnia.
    - **Egyéni**: hozzáadhat egy vagy több kiszolgálót, akár egy virtuális hálózat Azure-ra vonatkozó korlátját is. További információ a DNS-kiszolgáló korlátairól: [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Az alábbi lehetőségek állnak rendelkezésére:
    - **Adja**meg a következő címeket: hozzáadja a kiszolgálót a virtuális hálózati DNS-kiszolgálók listájához. Ez a beállítás a DNS-kiszolgálót is regisztrálja az Azure-ban. Ha már regisztrált egy DNS-kiszolgálót az Azure-ban, akkor kiválaszthatja a listában a DNS-kiszolgálót.
    - Válasszon ki **egy címeket**: az eltávolítani kívánt kiszolgáló mellett válassza a **...**, majd az **Eltávolítás**lehetőséget. A kiszolgáló törlésével a kiszolgáló csak a virtuális hálózatok listájáról távolítható el. A DNS-kiszolgáló továbbra is regisztrálva lesz az Azure-ban a többi virtuális hálózat használatára.
    - **DNS-kiszolgáló címeinek átrendezése**: fontos ellenőrizni, hogy a DNS-kiszolgálókat a környezetének megfelelő sorrendben sorolja-e fel. A DNS-kiszolgálók listáját a rendszer a megadott sorrendben használja. Nem működnek ciklikus multiplexelés beállításként. Ha a lista első DNS-kiszolgálója elérhető, akkor az ügyfél ezt a DNS-kiszolgálót használja, függetlenül attól, hogy a DNS-kiszolgáló megfelelően működik-e. Távolítsa el az összes felsorolt DNS-kiszolgálót, majd adja őket vissza a kívánt sorrendben.
    - **Módosítsa a címeket**: jelölje ki a DNS-kiszolgálót a listában, majd adja meg az új címeket.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 6. Indítsa újra a virtuális hálózathoz csatlakozó virtuális gépeket, hogy azok hozzá legyenek rendelve az új DNS-kiszolgáló beállításaihoz. A virtuális gépek továbbra is a jelenlegi DNS-beállításokat használják, amíg újra nem indítják őket.
 
 **Parancsok**
@@ -171,7 +170,7 @@ A virtuális hálózat csak akkor törölhető, ha nincs csatlakoztatva erőforr
 
 Ha virtuális hálózatokon szeretné elvégezni a feladatokat, a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Művelet                                  |   Név                                |
+| Műveletek                                  |   Név                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/READ   |   Virtuális hálózat beolvasása              |
 |Microsoft. Network/virtualNetworks/Write  |   Virtuális hálózat létrehozása vagy frissítése  |

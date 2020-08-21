@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242015"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705758"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rövid útmutató: a virtuális központ biztonságossá tétele Azure Firewall Manager-ARM sablon használatával
 
@@ -23,7 +23,7 @@ Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) ha
 
 A Azure Firewall Managerrel kapcsolatos további információkért lásd: [Mi az a Azure Firewall Manager?](overview.md).
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
 
@@ -35,9 +35,9 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok 
 
 Ez a sablon egy biztonságos virtuális hubot hoz létre a Azure Firewall Manager használatával, valamint a forgatókönyv támogatásához szükséges erőforrásokat.
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/fwm-docs-qs/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
+:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -100,7 +100,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a biztonsági partner-szolgáltatókról](trusted-security-partners.md)

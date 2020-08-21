@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78191035"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88703906"
 ---
-## <a name="run-the-function-locally"></a>Függvény helyi futtatása
+## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
 A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé teszi egy Azure Functions-projekt helyi futtatását és hibakeresését. A Visual Studio Code-ban való hibakereséssel kapcsolatos részletekért lásd: a [PowerShell Azure functions helyi hibakeresése](../articles/azure-functions/functions-debug-powershell-local.md). 
 
@@ -21,7 +21,7 @@ A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé tes
 
     ![Az Azure helyi kimenete](./media/functions-run-function-test-local-vs-code-ps/functions-vscode-f5.png)
 
-1. Fűzze hozzá a lekérdezési karakterláncot `?name=<yourname>` ehhez az URL- `Invoke-RestMethod` címhez, majd a kérelem végrehajtásához egy második PowerShell-parancssorban használja a következőt:
+1. Fűzze hozzá a lekérdezési karakterláncot `?name=<yourname>` Ehhez az URL-címhez, majd a `Invoke-RestMethod` kérelem végrehajtásához egy második PowerShell-parancssorban használja a következőt:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
@@ -30,9 +30,9 @@ A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé tes
 
     A GET kérést egy böngészőből is végrehajthatja a következő URL-címről:
 
-    <http://localhost:7071/api/HttpExample?name=PowerShell>
+    `http://localhost:7071/api/HttpExample?name=PowerShell`
 
-    Ha a HttpTrigger végpontot úgy hívja meg, `name` hogy egy paramétert sem lekérdezési, sem a törzsben kellene átadnia, a függvény `BadRequest` hibát ad vissza. Amikor a Run. ps1 kódban áttekinti a kódot, láthatja, hogy ez a hiba a tervezés szerint történik.
+    Ha a HttpTrigger végpontot úgy hívja meg, hogy egy `name` paramétert sem lekérdezési, sem a törzsben kellene átadnia, a függvény hibát ad vissza `BadRequest` . Amikor áttekinti a kódot a run.ps1ban, láthatja, hogy ez a hiba a tervezés szerint történik.
 
 1. A kérésre vonatkozó információk a **terminál** panelen jelennek meg.
 

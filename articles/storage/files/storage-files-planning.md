@@ -8,12 +8,12 @@ ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520523"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705911"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -37,7 +37,7 @@ Az Azure-fájlmegosztás Storage-fiókokban való telepítésekor a következők
 
 ## <a name="identity"></a>Identitás
 Egy Azure-fájlmegosztás eléréséhez a fájlmegosztás felhasználójának hitelesítenie kell, és engedéllyel kell rendelkeznie a megosztás eléréséhez. Ez a fájlmegosztást elérő felhasználó identitása alapján történik. A Azure Files három fő identitás-szolgáltatóval integrálódik:
-- Helyszíni **Active Directory tartományi szolgáltatások (AD DS vagy helyszíni AD DS)** (előzetes verzió): az Azure Storage-fiókok tartományhoz az ügyfél, a Active Directory tartományi szolgáltatások, a Windows Server fájlkiszolgáló vagy a NAS-eszközhöz hasonlóan lehet csatlakozni. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure-beli virtuális gépen, vagy akár egy másik felhőalapú szolgáltató virtuális gépén is. Azure Files a tartományvezérlő üzemeltetéséhez szükséges agnosztikus. Miután a Storage-fiók tartományhoz csatlakozik, a végfelhasználó csatlakoztathat egy fájlmegosztást a számítógéphez bejelentkezett felhasználói fiókhoz. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
+- Helyszíni **Active Directory tartományi szolgáltatások (AD DS vagy helyszíni AD DS)**: az Azure Storage-fiókok tartományhoz, Active Directory tartományi szolgáltatásokhoz, például Windows Server FÁJLKISZOLGÁLÓ vagy NAS-eszközhöz csatlakoztathatók. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure-beli virtuális gépen, vagy akár egy másik felhőalapú szolgáltató virtuális gépén is. Azure Files a tartományvezérlő üzemeltetéséhez szükséges agnosztikus. Miután a Storage-fiók tartományhoz csatlakozik, a végfelhasználó csatlakoztathat egy fájlmegosztást a számítógéphez bejelentkezett felhasználói fiókhoz. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
 - **Azure Active Directory Domain Services (azure AD DS)**: az Azure AD DS egy Microsoft által felügyelt tartományvezérlőt biztosít, amely Azure-erőforrásokhoz használható. A Storage-fiók Azure AD DShoz való csatlakoztatása hasonló előnyökkel jár a tartományhoz való csatlakozáshoz az ügyfél tulajdonában lévő Active Directoryhoz. Ez az üzembe helyezési lehetőség az olyan alkalmazások esetében hasznos, amelyek AD-alapú engedélyeket igényelnek. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
 - **Azure Storage-fiók kulcsa**: az Azure-fájlmegosztás egy Azure Storage-fiók kulcsával is csatlakoztatható. Fájlmegosztás ily módon történő csatlakoztatásához a rendszer a Storage-fiók nevét használja felhasználónévként, és a Storage-fiók kulcsa jelszóként van használatban. Ha a Storage-fiók kulcsát használja az Azure-fájlmegosztás csatlakoztatására, akkor a felügyeleti művelet hatékony, mivel a csatlakoztatott fájlmegosztás teljes jogosultsággal rendelkezik a megosztás összes fájljához és mappájához, még akkor is, ha ACL-ekkel rendelkezik. Ha a Storage-fiók kulcsát használja az SMB protokollon keresztül történő csatlakoztatásra, a rendszer az NTLMv2 hitelesítési protokollt használja.
 

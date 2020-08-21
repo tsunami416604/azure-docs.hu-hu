@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005703"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691394"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
@@ -83,7 +83,7 @@ Az eszközre való bejelentkezéshez használható felhasználó meghatározás�
 
 Ha eldöntötte, hogy melyik felhasználót fogja használni a beleegyezikés megadásához, kövesse az alábbi utasításokat az eszköz beleegyezikének biztosításához:
 
-1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például: <https://rdmimgmtweb-210520190304.azurewebsites.net> .
+1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például:  `https://rdmimgmtweb-210520190304.azurewebsites.net` .
 2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
 3. Ha globális rendszergazdai jogosultsággal rendelkezik, most bejelölheti a **szervezet nevében**való engedélyezéshez szükséges jelölőnégyzetet. Az **elfogadás** lehetőséget választva adja meg a beleegyező értéket.
 
@@ -98,7 +98,7 @@ Miután beleegyezett a szervezetbe vagy egy adott felhasználóhoz, bármikor ho
 
 Az eszköz elindításához kövesse az alábbi utasításokat:
 
-1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például: <https://rdmimgmtweb-210520190304.azurewebsites.net> .
+1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például:  <https://rdmimgmtweb-210520190304.azurewebsites.net> .
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
 4. Amikor kiválasztja az **alapértelmezett bérlői csoportot**, egy menü jelenik meg az ablak bal oldalán. Ebben a menüben keresse meg a bérlői csoport nevét, és jelölje ki.

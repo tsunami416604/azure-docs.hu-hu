@@ -4,39 +4,43 @@ description: Ez a cikk a kereskedelmi Piactéri Transact lehetőség díjszabás
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5058f37fcf96c7c556b55f0afb8753390f51f4d1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607352"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704960"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
-## <a name="transactions-by-publishing-option"></a>Tranzakciók közzétételi lehetőség szerint
+Ez a cikk a Microsoft kereskedelmi piactér díjszabási, számlázási, számlázási és kifizetési szempontjait ismerteti. 
 
-A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánlatokhoz tartozó szoftverlicenc-tranzakciók kezeléséért. Az ajánlathoz választott közzétételi lehetőség határozza meg, hogy ki kezeli a tranzakciót. Lásd: [közzétételi lehetőség meghatározása](./determine-your-listing-type.md#choose-a-call-to-action) a rendelkezésre álláshoz és az egyes közzétételi lehetőségek magyarázatához.
+## <a name="transactions-by-listing-option"></a>Tranzakciók listázási beállítás szerint
 
-### <a name="list-trial-and-byol-publishing-options"></a>Listázási, próbaverziós és BYOL közzétételi lehetőségek
+A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánlatokhoz tartozó szoftverlicenc-tranzakciók kezeléséért. Az ajánlathoz választott listázási lehetőség határozza meg, hogy ki felügyeli a tranzakciót. A közzétételi lehetőségek rendelkezésre állásához és magyarázatához tekintse meg [a Listaelem kiválasztása lehetőséget](./determine-your-listing-type.md#choose-a-listing-option) .
 
-A meglévő kereskedelmi képességekkel rendelkező kiadók kiválaszthatják a lista, a próbaverzió és a saját licencek (BYOL) közzétételi lehetőségeit promóciós és felhasználói beszerzési célokra. Ezekkel a beállításokkal a Microsoft nem vesz részt közvetlenül a kiadó szoftverlicenc-tranzakciójában, és nincs társított tranzakciós díj. A kiadók felelősek a szoftverlicenc-tranzakció valamennyi aspektusának támogatásához, beleértve a sorrendet, a teljesítést, a mérést, a számlázást, a számlázást, a fizetést és a gyűjtést. A List és a próbaverzió közzétételi lehetőségeivel a kiadók az ügyféltől gyűjtött kiadói szoftverlicenc-díjak 100%-át őrzik meg.
+### <a name="contact-me-free-trial-and-byol-options"></a>Kapcsolatfelvétel, ingyenes próbaverzió és BYOL lehetőségek
+
+A kiadók választhatják a _kapcsolatfelvételi_ és az _ingyenes próbaverziót_, a promóciós és a felhasználói beszerzési lehetőségeket. Egyes ajánlatok esetében a kiadók választhatják a saját licenc használata (BYOL) lehetőséget, amely lehetővé teszi, hogy az ügyfelek az Ön által közvetlenül vásárolt licenccel vásárolják meg az ajánlat előfizetését. Ezekkel a beállításokkal a Microsoft nem vesz részt közvetlenül a kiadó szoftverlicenc-tranzakciójában, és nincs társított tranzakciós díj. 
+
+A közzétevők felelősek a szoftverlicenc-tranzakció valamennyi aspektusának támogatásához. Ez magában foglalja a következőket: de nem korlátozódik a rendelésre, a teljesítésre, a mérésre, a számlázásra, a számlázásra, a fizetésre és a gyűjtésre. A kapcsolattartási adatok listázása lehetőséggel a közzétevők az ügyféltől gyűjtött kiadói szoftverlicenc-díjak 100%-át őrzik meg.
 
 ### <a name="transact-publishing-option"></a>Transact közzétételi lehetőség
 
-A Transact Publishing lehetőség kihasználja a Microsoft kereskedelmi képességeinek előnyeit, és teljes körű megoldást kínál a felderítésre és a kiértékelésre a vásárlás és a megvalósítás terén. A Transact-ajánlatok számlázása egy meglévő Microsoft-előfizetés vagy egy hitelkártya alapján történik, amely lehetővé teszi a Microsoft számára, hogy a közzétevő nevében üzemeltetje a Cloud Marketplace-tranzakciókat.
+A Microsoft kereskedelmi képességeinek kihasználása a Microsoft kereskedelmi lehetőségeinek kihasználásával lehetővé teszi, hogy teljes körű tapasztalatot biztosítson a felderítéstől és az értékeléstől a vásárlásig és a megvalósításig. Egy olyan ajánlat, amely a Microsoft számára lehetővé teszi, hogy egy szoftverlicenc-licencet a kiadó nevében biztosítson. A visszagörgethető ajánlatok számlázása egy meglévő Microsoft-előfizetés vagy egy hitelkártya alapján történik, amely lehetővé teszi a Microsoft számára, hogy a közzétevő nevében üzemeltetje a felhőalapú Piactéri tranzakciókat.
 
-Akkor válassza a Transact lehetőséget, amikor új ajánlatot hoz létre a partner Centerben. Az **ajánlat beállítása** lapon a **telepítés részletei**területen válassza az "igen, szeretnék eladni a Microsofton keresztül lehetőséget, és a Microsoft gazdagép tranzakciói a saját nevükben" elemet. Ez a beállítás csak akkor jelenik meg, ha a Transact elérhető az ajánlat típusaként.
+Akkor válassza a Transact lehetőséget, amikor új ajánlatot hoz létre a partner Centerben. Ez a beállítás csak akkor jelenik meg, ha a Transact elérhető az ajánlat típusaként.
 
 ## <a name="transact-overview"></a>A Transact áttekintése
 
-A Transact Publishing lehetőség használata esetén a Microsoft engedélyezi harmadik féltől származó szoftverek értékesítését és néhány ajánlat típusának üzembe helyezését az ügyfél Azure-előfizetésében. A kiadónak meg kell fontolnia az infrastruktúra-díjak és a saját szoftverlicenc-díjak számlázását a számlázási modell és az ajánlat típusának kiválasztásakor.
+A Transact kapcsoló használata esetén a Microsoft engedélyezi harmadik féltől származó szoftverek értékesítését és néhány ajánlat típusának telepítését az ügyfél Azure-előfizetésében. A kiadónak meg kell fontolnia az infrastruktúra-díjak és a saját szoftverlicenc-díjak számlázását az ajánlat díjszabási modelljének kiválasztásakor.
 
 A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok esetében támogatott:
 
-- Virtuális gépek
+- Virtual machines (Virtuális gépek)
 - Azure-alkalmazások
 - SaaS-alkalmazás
 
@@ -44,31 +48,37 @@ A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok ese
 
 A **Virtual Machines** és az **Azure-alkalmazások**esetében az Azure-infrastruktúra használati díjait az ügyfél Azure-előfizetése alapján számoljuk el. Az infrastruktúra-használati díjak díjszabása és a szoftveres szolgáltató licencelési díjaitól függetlenül, az ügyfél számláján kell megjelenni.
 
-**SaaS-alkalmazások**esetén a közzétevőnek az Azure-infrastruktúra használati díjait és a szoftverlicenc-díjat egyetlen Cost-elemként kell megadnia.  Az ügyfél számára átalány-díj formájában történik. Az Azure-infrastruktúra használatát a rendszer felügyeli, és közvetlenül a partnernek számlázza. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadók általában az Azure-infrastruktúra használati díjait az szoftverlicenc díjszabása szerint csomagolják. A szoftver licencelési díjait nem számítjuk fel, és nem használják a felhasználást.
+**SaaS-alkalmazások**esetén a közzétevőnek az Azure-infrastruktúra használati díjait és a szoftverlicenc-díjat egyetlen Cost-elemként kell megadnia.  Az ügyfél számára átalány-díj formájában történik. Az Azure-infrastruktúra használatát a rendszer felügyeli, és közvetlenül a közzétevőnek számlázza. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadók általában az Azure-infrastruktúra használati díjait az szoftverlicenc díjszabása szerint csomagolják. A szoftver licencelési díjait nem számítjuk fel, vagy nem a felhasználói felhasználás alapján.
 
-## <a name="transact-billing-models"></a>Transact számlázási modellek
+## <a name="pricing-models"></a>Díjszabási modellek
 
-A használt tranzakciós lehetőségtől függően a szoftverlicenc-díjak a következők:
+A használt tranzakciós lehetőségtől függően az előfizetés díja a következő:
 
-- **Ingyenes** – a szoftveres licencek díjmentesek.
-- **Saját licenc** használata (BYOL) – a licenccel kapcsolatos összes díjat közvetlenül a közzétevő és az ügyfél között kezelheti. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. Ez csak a virtuális gépekre és az Azure-alkalmazásokra vonatkozik.
-- **Utólagos elszámolású – a** szoftverlicenc-díj a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelenik meg. Ez csak a virtuális gépekre és az Azure-alkalmazásokra vonatkozik.
-- Az **előfizetés díjszabása** – a szoftverlicenc-díj a havi vagy az éves, ismétlődő díj, amely átalányként vagy munkaállomásonkéntiként van kiszámlázva. Ez csak az SaaS-alkalmazásokra (havi vagy éves) és az Azure Applications által felügyelt alkalmazásokra vonatkozik (havonta).
-- **Ingyenes szoftver próbaverziója** – a szoftverlicenc 30 vagy 90 napig díjmentes.
+- Azonnali letöltés **(ingyenes)** – szoftverlicenc díjmentes. Az ügyfelek díjmentesen vehetik igénybe az Azure Marketplace díját. Az ingyenes ajánlatokat nem lehet fizetős ajánlatra konvertálni. Az ügyfeleknek fizetős ajánlatot kell rendelniük.
+- **Saját licenc** használata (BYOL) – a licenccel kapcsolatos összes díjat közvetlenül a közzétevő és az ügyfél között kezelheti. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. Ha egy ajánlat szerepel a kereskedelmi piactéren, a kereskedelmi piactéren kívüli ajánlathoz hozzáférő vagy azt használó ügyfelek nem számítanak fel kereskedelmi Piactéri díjakat.
+- **Előfizetés díjszabása** – a szoftverlicenc-díjak havi vagy éves, ismétlődő előfizetési díjat számítanak fel, amely átalányként vagy ülőhelyként van kiszámlázva. Az ismétlődő előfizetési díjakat nem számítjuk fel a félidős ügyfelek lemondása vagy a használaton kívüli szolgáltatások esetében. Ha az ügyfél frissíti vagy visszaminősíti az előfizetést az előfizetési időszak közepére, akkor az ismétlődő előfizetési díjak is eltérhetnek.
+- **Használaton alapuló díjszabás** – az Azure-beli virtuális gépekkel kapcsolatos ajánlatok esetén az ügyfeleket az ajánlat használati mértéke alapján számítjuk fel. A virtuálisgép-lemezképek esetén az ügyfeleket a kiadók által beállított, óránkénti Azure Marketplace-díjat számítjuk fel a virtuálisgép-lemezképből üzembe helyezett virtuális gépek használatára. Az óradíj a virtuális gépek méretétől függetlenül egységes vagy eltérő lehet. A percek után a részleges órákat számítjuk fel. A csomagok számlázása havonta történik.
+- Forgalmi díjas **díjszabás** – az Azure-alkalmazások és az SaaS-ajánlatok esetében a kiadók a [Piactéri mérési szolgáltatás](./partner-center-portal/marketplace-metering-service-apis.md) alapján számlázzák a felhasznált mérési méretek alapján. Például a sávszélesség, a jegyek és a feldolgozott e-mailek. A közzétevők meghatározhatnak egy vagy több mérési dimenziót az egyes csomagokhoz. A kiadók felelősek az egyes ügyfelek használatának nyomon követéséhez, az ajánlatban meghatározott minden mérőszámnál. Az eseményeket egy órán belül jelenteni kell a Microsoftnak. A Microsoft a megfelelő számlázási időszakra vonatkozóan a kiadók által jelentett használati információk alapján számítja fel az ügyfeleket.
+- **Ingyenes próbaverzió** – az ajánlat típusától függően legfeljebb 30 napig terjedő szoftverlicenc-díjat számítunk fel. Ha a kiadók ingyenes próbaidőszakot biztosítanak több csomagra ugyanazon az ajánlaton belül, az ügyfelek egy másik csomagra válthatnak egy ingyenes próbaverzióra, de a próbaidőszak nem indul újra. A virtuális gépekkel kapcsolatos ajánlatok esetében az ügyfeleknek az Azure-infrastruktúra költségeit kell megfizetniük az ajánlat próbaidőszakos használata esetén. A próbaidőszak lejárta után a rendszer automatikusan felszámítja az ügyfeleket a standard díjszabás alapján, kivéve, ha a próbaidőszak vége előtt lemondják.
 
-### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ingyenes és saját licencek (BYOL) díjszabása
+> [!NOTE]
+> Az olyan ajánlatok, amelyeknek a használata a megoldás alkalmazása után történik, nem jogosultak a visszatérítésre.
 
-Az ingyenes vagy a saját licencű tranzakciós ajánlat közzététele esetén a Microsoft nem játszik szerepet a szoftverlicenc-díjak értékesítési tranzakciójának megkönnyítésében. A lista és a próbaverzió közzétételi lehetőségeihez hasonlóan a közzétevő a szoftverlicenc-díjak 100%-át is megtartja.
+Azok a kiadók, akik szeretnék módosítani az ajánlathoz kapcsolódó használati díjakat, először el kell távolítaniuk az ajánlatot (vagy az ajánlaton belüli csomagot) a kereskedelmi piactéren. Az eltávolítást a [Microsoft kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)követelményeinek megfelelően kell elvégezni. Ezután a közzétevő közzétehet egy új ajánlatot (vagy megtervezheti az ajánlaton belül), amely tartalmazza az új használati díjakat is. További információ az ajánlat vagy a csomag eltávolításáról: [ajánlat vagy csomag eladásának leállítása](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
 
-### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Utólagos elszámolás és előfizetés (hely alapján) díjszabása
+### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>Ingyenes, kapcsolatfelvétel és saját licencek (BYOL) díjszabása
 
-Az utólagos elszámolású vagy előfizetési tranzakciós ajánlat közzétételekor a Microsoft biztosítja a technológiát és szolgáltatásokat a szoftverlicenc-vásárlások, a visszaadott adatok és a jóváírások feldolgozásához. Ebben a forgatókönyvben a közzétevő engedélyezi a Microsoft számára, hogy ügynökként működjön ezen célokból. A közzétevő lehetővé teszi a Microsoft számára, hogy elősegítse a szoftverlicencelési tranzakciót, miközben megtartja a megjelölését eladóként, szolgáltatóként, terjesztőként és licencelőként.
+Ha a letöltés után (ingyenes), Kapcsolatfelvétel vagy BYOL lehetőséggel tesz közzé ajánlatot, a Microsoft nem játszik szerepet a szoftverlicenc-díjak értékesítési tranzakciójának megkönnyítésében. A listához és az ingyenes próba-közzétételi lehetőségekhez hasonlóan a kiadó a szoftverlicenc-díjak 100%-át is megtartja.
+
+### <a name="usage-based-and-subscription-pricing"></a>A használat és az előfizetés díjszabása
+
+Az ajánlat felhasználó-vagy előfizetési tranzakciójának közzétételekor a Microsoft biztosítja a technológiát és szolgáltatásokat a szoftverlicenc-vásárlások, a visszaadott adatok és a jóváírások feldolgozásához. Ebben a forgatókönyvben a közzétevő engedélyezi a Microsoft számára, hogy ügynökként működjön ezen célokból. A közzétevő lehetővé teszi a Microsoft számára, hogy elősegítse a szoftverlicencelési tranzakciót, miközben megtartja a megjelölését eladóként, szolgáltatóként, terjesztőként és licencelőként.
 
 A Microsoft lehetővé teszi, hogy az ügyfelek a Microsoft kereskedelmi piactérének és a végfelhasználói licencszerződésének feltételeitől függően megrendelést, licencet és használati feltételeket alkalmazzanak. Meg kell adnia a saját végfelhasználói licencszerződését, vagy az ajánlat létrehozásakor a [standard szerződést](./standard-contract.md) kell választania.
 
 ### <a name="free-software-trials"></a>Ingyenes szoftveres próbaverziók
 
-A Transact Publishing forgatókönyvek esetében 30 vagy 90 napig ingyenesen elérhetővé teheti a szoftverlicenc-t. Ez a diszkont képesség nem tartalmazza az Azure-infrastruktúra használatának költségeit a partneri megoldás használatával.
+A Transact Publishing forgatókönyvek esetében az előfizetéstől függően 30 – 120 napig ingyenesen elérhetővé teheti a szoftverlicenc-t. Ez a diszkont képesség nem tartalmazza az Azure-infrastruktúra használatának költségeit a partneri megoldás használatával.
 
 ### <a name="private-offers"></a>Személyes ajánlatok
 
@@ -78,9 +88,9 @@ Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a n
 
 ### <a name="examples"></a>Példák
 
-**Használatalapú fizetés** 
+**Használat-alapú** 
 
-Az utólagos elszámolású szolgáltatás a következő felépítésű:
+A használat alapú díjszabás a következő felépítésű:
 
 |A licenc díja  | $1,00/óra   |
 |---------|---------|
@@ -127,8 +137,6 @@ Ezt a beállítást úgy kell beállítani, hogy a Microsofton keresztül érté
 
 Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $80,00-et a közzétevőnek.
 
-Azok a partnerek, akik a kedvezményes Piactéri szolgáltatási díjjal rendelkeznek, csökkentett tranzakciós díjat kapnak az SaaS-ajánlatokról, a május 2019-ig, 2020-ig.
-
 Ebben az esetben a Microsoft $100,00-es számlákat küld a szoftverlicenc számára, és kifizeti a $90,00-et a közzétevőnek:
 
 |Microsoft-számlák  | $100,00/hó  |
@@ -136,7 +144,7 @@ Ebben az esetben a Microsoft $100,00-es számlákat küld a szoftverlicenc szám
 |A Microsoft a licencelési díj 80%-ában fizet <br> \* A Microsoft a licencelési díj 90%-át fizet minden minősített SaaS-alkalmazáshoz   |   $80,00/hó <br> \* $90,00/hó    |
 |A Microsoft a licencelési díj 20%-át megtartja <br> \* A Microsoft minden minősített SaaS-alkalmazás esetében megőrzi a licencek költségeit.  |  $20,00/hó <br> \* $10,00     |
 
-A kereskedelmi piactéren közzétett egyes ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatási díj a kereskedelmi piactéren elérhető Azure IP-incentivized SaaS-, virtuális gépekre, felügyelt alkalmazásokra és bármely más, szakképzett IaaS-ajánlatra vonatkozik.
+A kereskedelmi piactéren közzétett egyes ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a [Microsoft kiadói szerződésben](https://go.microsoft.com/fwlink/?LinkID=699560)leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatási díj a kereskedelmi piactéren elérhető Azure IP-incentivized SaaS-, virtuális gépekre, felügyelt alkalmazásokra és bármely más, szakképzett IaaS-ajánlatra vonatkozik.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Ügyfél-számlázás, fizetés, Számlázás és gyűjtemények
 
@@ -163,7 +171,7 @@ Az ügyfelek általában a Nagyvállalati Szerződés vagy egy hitelkártya-alap
 
 #### <a name="billing-questions-and-support"></a>Számlázási kérdések és támogatás
 
-További információ és jogi szabályzatok: [közzétevői szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (a partner Centerben érhető el).
+További információ és jogi szabályzatok: [Microsoft kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560) (a partner Centerben érhető el).
 
 A számlázási kérdésekkel kapcsolatos segítségért forduljon a [kereskedelmi piactér közzétevője támogatási szolgálatához](https://aka.ms/marketplacepublishersupport).
 
@@ -182,13 +190,13 @@ A fiókok beállításával kapcsolatos további információkért lásd: [a ker
 
 A Transact Publishing beállítás csak a következő Piactéri ajánlatok esetében használható:
 
-- **Virtuális gép** – válassza az ingyenes, a saját licenc vagy az utólagos elszámolású modelleket, és az ajánlati szinten meghatározott csomagokként jelennek meg. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
+- **Azure-beli virtuális gép** – válassza az ingyenes, a saját licencek vagy a használaton alapuló díjszabási modelleket, és az ajánlati szinten meghatározott csomagokként jelennek meg. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
 
 - **Azure-alkalmazás: megoldás-sablon vagy felügyelt** alkalmazás – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
 - **SaaS-alkalmazás** – több-bérlős megoldásnak kell lennie, a hitelesítéshez [Azure Active Directoryt](https://azure.microsoft.com/services/active-directory/) kell használnia, és integrálni kell a [SaaS-megvalósítási API](partner-center-portal/pc-saas-fulfillment-api-v2.md)-kkal. Az Azure-infrastruktúra használatának felügyelete és számlázása közvetlenül Önnek (a partnernek) történik, ezért az Azure-infrastruktúra használati díjait és a szoftveres licencelési díjakat egyetlen költségként kell elszámolni. Részletes útmutatásért lásd: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
 - Tekintse át a közzétételi mintákat az online áruházban példákat arra, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

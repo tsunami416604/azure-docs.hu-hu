@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244346"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691462"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktív karbantartás a nagy adatmennyiséggel rendelkező Cognitive Services
 
@@ -151,4 +151,4 @@ Ha a művelet sikeres, a kimenet a következőképpen fog kinézni:
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan végezheti el a prediktív karbantartást az Azure Cognitive Services, az Azure szinapszis Analytics és az Azure CosmosDB használatával. További információ: teljes minta a [githubon](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT).
+Ismerje meg, hogyan végezheti el a prediktív karbantartást az Azure Cognitive Services, az Azure szinapszis Analytics és az Azure CosmosDB használatával. További információ: teljes minta a [githubon](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples).

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009188"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691411"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) diagnosztika eszköz üzembe helyezése
 
@@ -112,7 +112,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 
 1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Ezután lépjen **log Analytics munkaterületek** elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
-3. A **Beállítások** szakaszban válassza a **Speciális beállítások**lehetőséget.
+3. A **Beállítások** szakaszban válassza a  **Speciális beállítások**lehetőséget.
 4. Ezt követően navigáljon az **Data**  >  **adatwindows-teljesítményszámlálók** elemhez, és adja hozzá a következő számlálókat:
 
     -   LogicalDisk ( \* ) \\ % szabad terület
@@ -162,7 +162,7 @@ A virtuális gépek állapotának megtekintéséhez engedélyeznie kell a Log An
 2. Lépjen a Log Analytics munkaterületre.
 3. A bal oldali panel munkaterület-adatforrások területén válassza a **virtuális gépek**lehetőséget.
 4. Válassza ki annak a virtuális gépnek a nevét, amelyhez csatlakozni szeretne.
-5. Kattintson a **Csatlakozás** gombra.
+5. Válassza a **Kapcsolódás** lehetőséget.
 
 ## <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -191,12 +191,12 @@ Az átirányítási URI beállítása:
 4.  A bal oldali panel kezelés területén válassza a **hitelesítés**lehetőséget.
 5.  Adja meg a kívánt átirányítási URI-t az **átirányítási URI** szövegmezőbe, majd kattintson a menü bal felső sarkában található **Mentés** elemre.
 6. A típus alatt válassza a **web** lehetőséget a legördülő menüben.
-7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Példa: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Például: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Az átirányítási URI-lap](../media/redirect-uri-page.png)
 
-8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban használt alkalmazás neve `contosoapp45` , akkor a társított URL-cím: <https://contosoapp45.azurewebsites.net> ).
+8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban használt alkalmazás neve `contosoapp45` , akkor a társított URL-cím: <http://contoso.azurewebsites.net> ).
 9. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
 10.   Válassza ki az **Elfogadás** lehetőséget.
 

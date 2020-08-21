@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: ea73a4164a2f23a51ce1702cd85d29d7fb4c6790
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650400"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706064"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -136,7 +136,7 @@ Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER al
 - A felhasználható ideiglenes portok maximális száma előtér-IP-címenként 64 000.
 - A konfigurálható kimenő Üresjárati időkorlát (4 – 120 perc) tartománya (240 – 7200 másodperc).
 - A Load Balancer nem támogatja az ICMP protokollt a kimenő NAT-hoz.
-- A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Több hálózati adapter is támogatott.
+- A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Egy virtuális gép vagy NVA másodlagos IP-címéhez nem hozható létre Kimenő szabály. Több hálózati adapter is támogatott.
 - A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök csak akkor érhetők el, ha csak belső standard Load Balancer van használatban, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkciójának mellékhatása. Ne támaszkodjon erre a mellékhatásra, mert maga a saját szolgáltatás, vagy az alapul szolgáló platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a kimenő kapcsolatot explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges. A jelen cikkben ismertetett 3. forgatókönyv nem érhető el.
 
 ## <a name="next-steps"></a>További lépések

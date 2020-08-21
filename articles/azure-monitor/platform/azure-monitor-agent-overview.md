@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e38d59ff1eb31dd5fc3ecf6b7df6b12504141d5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083051"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705775"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -107,7 +107,7 @@ A Azure Monitor ügynök Azure-beli virtuálisgép- [bővítményként](../../vi
 |:---|:---|:---|
 | Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
 | Típus      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 0.9 |
+| TypeHandlerVersion  | 1,0 | 1.5 |
 
 Telepítse a Azure Monitor-ügynököt a virtuálisgép-ügynökök telepítésének bármely módszerével, beleértve az alábbiakat a PowerShell vagy a parancssori felület használatával. Azt is megteheti, hogy telepítheti az ügynököt, és az Azure-előfizetésben lévő virtuális gépeken is konfigurálhatja az adatgyűjtést a portálon az [adatgyűjtés konfigurálása a Azure monitor ügynökhöz (előzetes verzió)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)című szakaszban ismertetett eljárással.
 
@@ -116,14 +116,14 @@ Telepítse a Azure Monitor-ügynököt a virtuálisgép-ügynökök telepítés�
 # <a name="cli"></a>[Parancssori felület](#tab/CLI1)
 
 ```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --version 1.0 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
 
 ```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -Version 1.0 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 
@@ -133,14 +133,14 @@ Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publ
 # <a name="cli"></a>[Parancssori felület](#tab/CLI2)
 
 ```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --version 0.9 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -Version 0.9 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 

@@ -7,13 +7,13 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: 0ad3e6dbb63d7c89919d6d341bd62c5d57960a43
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/20/2020
+ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511653"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705894"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
@@ -201,7 +201,7 @@ public static void Main(string[] args)
     SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 ```
 
-`CreateSearchServiceClient`létrehoz egy új `SearchServiceClient` értéket az alkalmazás konfigurációs fájljában (appsettings.js) tárolt értékek használatával.
+`CreateSearchServiceClient` létrehoz egy új `SearchServiceClient` értéket az alkalmazás konfigurációs fájljában (appsettings.js) tárolt értékek használatával.
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -242,7 +242,7 @@ Az Azure Cognitive Searchban az AI-feldolgozás az indexelés (vagy az adatfeldo
 
 A `SearchServiceClient` rendelkezik egy `DataSources` tulajdonsággal. Ez a tulajdonság biztosítja az Azure Cognitive Search-adatforrások létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert.
 
-Hozzon létre egy új `DataSource` példányt a hívásával `serviceClient.DataSources.CreateOrUpdate(dataSource)` . `DataSource.AzureBlobStorage`Ehhez meg kell adnia az adatforrás nevét, a kapcsolati karakterláncot és a blob-tároló nevét.
+Hozzon létre egy új `DataSource` példányt a hívásával `serviceClient.DataSources.CreateOrUpdate(dataSource)` . `DataSource.AzureBlobStorage` Ehhez meg kell adnia az adatforrás nevét, a kapcsolati karakterláncot és a blob-tároló nevét.
 
 ```csharp
 private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceClient, IConfigurationRoot configuration)
@@ -319,15 +319,19 @@ Az **OCR** -képesség Kinyeri a szöveget a képekből. Ez a szaktudás azt fel
 ```csharp
 private static OcrSkill CreateOcrSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "image",
-        source: "/document/normalized_images/*"));
+        source: "/document/normalized_images/*")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "text",
-        targetName: "text"));
+        targetName: "text")
+    };
 
     OcrSkill ocrSkill = new OcrSkill(
         description: "Extract text (plain and structured) from image",
@@ -348,21 +352,25 @@ Ebben a szakaszban egy **egyesítési** képességet hozunk létre, amely egyes�
 ```csharp
 private static MergeSkill CreateMergeSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/content"));
-    inputMappings.Add(new InputFieldMappingEntry(
+        source: "/document/content"),
+        new InputFieldMappingEntry(
         name: "itemsToInsert",
-        source: "/document/normalized_images/*/text"));
-    inputMappings.Add(new InputFieldMappingEntry(
+        source: "/document/normalized_images/*/text"),
+        new InputFieldMappingEntry(
         name: "offsets",
-        source: "/document/normalized_images/*/contentOffset"));
+        source: "/document/normalized_images/*/contentOffset")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "mergedText",
-        targetName: "merged_text"));
+        targetName: "merged_text")
+    };
 
     MergeSkill mergeSkill = new MergeSkill(
         description: "Create merged_text which includes all the textual representation of each image inserted at the right location in the content field.",
@@ -383,15 +391,19 @@ A **nyelvfelismerési** képesség észleli a bemeneti szöveg nyelvét, és egy
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/merged_text"));
+        source: "/document/merged_text")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "languageCode",
-        targetName: "languageCode"));
+        targetName: "languageCode")
+    };
 
     LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
         description: "Detect the language used in the document",
@@ -410,19 +422,22 @@ Az alábbi **felosztott** képesség a szövegeket lapok alapján osztja szét, 
 ```csharp
 private static SplitSkill CreateSplitSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/merged_text"));
-    inputMappings.Add(new InputFieldMappingEntry(
+        source: "/document/merged_text"),
+        new InputFieldMappingEntry(
         name: "languageCode",
-        source: "/document/languageCode"));
+        source: "/document/languageCode")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "textItems",
-        targetName: "pages"));
+        targetName: "pages")
+    };
 
     SplitSkill splitSkill = new SplitSkill(
         description: "Split content into pages",
@@ -445,18 +460,24 @@ Figyelje meg, hogy a "Context" mező ```"/document/pages/*"``` csillaggal van be
 ```csharp
 private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 {
-    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
-    inputMappings.Add(new InputFieldMappingEntry(
+    List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>
+    {
+        new InputFieldMappingEntry(
         name: "text",
-        source: "/document/pages/*"));
+        source: "/document/pages/*")
+    };
 
-    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>();
-    outputMappings.Add(new OutputFieldMappingEntry(
+    List<OutputFieldMappingEntry> outputMappings = new List<OutputFieldMappingEntry>
+    {
+        new OutputFieldMappingEntry(
         name: "organizations",
-        targetName: "organizations"));
+        targetName: "organizations")
+    };
 
-    List<EntityCategory> entityCategory = new List<EntityCategory>();
-    entityCategory.Add(EntityCategory.Organization);
+    List<EntityCategory> entityCategory = new List<EntityCategory>
+    {
+        EntityCategory.Organization
+    };
 
     EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
         description: "Recognize organizations",
@@ -543,13 +564,15 @@ Adja hozzá az alábbi sorokat a következőhöz: `Main` .
 
     // Create the skillset
     Console.WriteLine("Creating or updating the skillset...");
-    List<Skill> skills = new List<Skill>();
-    skills.Add(ocrSkill);
-    skills.Add(mergeSkill);
-    skills.Add(languageDetectionSkill);
-    skills.Add(splitSkill);
-    skills.Add(entityRecognitionSkill);
-    skills.Add(keyPhraseExtractionSkill);
+    List<Skill> skills = new List<Skill>
+    {
+        ocrSkill,
+        mergeSkill,
+        languageDetectionSkill,
+        splitSkill,
+        entityRecognitionSkill,
+        keyPhraseExtractionSkill
+    };
 
     Skillset skillset = CreateOrUpdateDemoSkillSet(serviceClient, skills);
 ```
@@ -680,26 +703,30 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
         key: "imageAction",
         value: "generateNormalizedImages");
 
-    List<FieldMapping> fieldMappings = new List<FieldMapping>();
-    fieldMappings.Add(new FieldMapping(
+    List<FieldMapping> fieldMappings = new List<FieldMapping>
+    {
+        new FieldMapping(
         sourceFieldName: "metadata_storage_path",
         targetFieldName: "id",
         mappingFunction: new FieldMappingFunction(
-            name: "base64Encode")));
-    fieldMappings.Add(new FieldMapping(
+            name: "base64Encode")),
+        new FieldMapping(
         sourceFieldName: "content",
-        targetFieldName: "content"));
+        targetFieldName: "content")
+    };
 
-    List<FieldMapping> outputMappings = new List<FieldMapping>();
-    outputMappings.Add(new FieldMapping(
+    List<FieldMapping> outputMappings = new List<FieldMapping>
+    {
+        new FieldMapping(
         sourceFieldName: "/document/pages/*/organizations/*",
-        targetFieldName: "organizations"));
-    outputMappings.Add(new FieldMapping(
+        targetFieldName: "organizations"),
+        new FieldMapping(
         sourceFieldName: "/document/pages/*/keyPhrases/*",
-        targetFieldName: "keyPhrases"));
-    outputMappings.Add(new FieldMapping(
+        targetFieldName: "keyPhrases"),
+        new FieldMapping(
         sourceFieldName: "/document/languageCode",
-        targetFieldName: "languageCode"));
+        targetFieldName: "languageCode")
+    };
 
     Indexer indexer = new Indexer(
         name: "demoindexer",
@@ -749,7 +776,7 @@ Várható, hogy az indexelő létrehozása eltarthat egy kis ideig. Annak ellen�
 
 ### <a name="explore-creating-the-indexer"></a>Az indexelő létrehozásának megismerése
 
-A kód a ```"maxFailedItems"``` -1 értékre van kijelölve, amely arra utasítja az indexelési motort, hogy hagyja figyelmen kívül a hibákat az adatimportálás során Ez azért hasznos, mert az adatforrás kevés dokumentumot tartalmaz. Nagyobb méretű adatforrás esetén 0-nál nagyobb értéket kell megadnia.
+A kód a ```"maxFailedItems"```  -1 értékre van kijelölve, amely arra utasítja az indexelési motort, hogy hagyja figyelmen kívül a hibákat az adatimportálás során Ez azért hasznos, mert az adatforrás kevés dokumentumot tartalmaz. Nagyobb méretű adatforrás esetén 0-nál nagyobb értéket kell megadnia.
 
 Azt is figyelje ```"dataToExtract"``` meg, hogy a be van állítva ```"contentAndMetadata"``` . Ez az utasítást meghatározza, hogy az indexelő automatikusan kinyerje a tartalmat a különböző fájlformátumokból, beleértve az egyes fájlokra vonatkozó metaadatokat is.
 
@@ -791,7 +818,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 }
 ```
 
-`IndexerExecutionInfo`az indexelő aktuális állapotát és végrehajtási előzményeit jelöli.
+`IndexerExecutionInfo` az indexelő aktuális állapotát és végrehajtási előzményeit jelöli.
 
 A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. Ebben az oktatóanyagban a figyelmeztetések jóindulatúak (például nincs szöveges bemenet a JPEG-fájlokból).
 
@@ -832,7 +859,7 @@ catch (Exception e)
 }
 ```
 
-`CreateSearchIndexClient`létrehoz egy új `SearchIndexClient` értéket az alkalmazás konfigurációs fájljában (appsettings.js) tárolt értékek használatával. Figyelje meg, hogy a keresési szolgáltatás lekérdezési API-kulcsa használatos, nem pedig a rendszergazdai kulcs.
+`CreateSearchIndexClient` létrehoz egy új `SearchIndexClient` értéket az alkalmazás konfigurációs fájljában (appsettings.js) tárolt értékek használatával. Figyelje meg, hogy a keresési szolgáltatás lekérdezési API-kulcsa használatos, nem pedig a rendszergazdai kulcs.
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -898,13 +925,13 @@ A [beépített készségek](cognitive-search-predefined-skills.md) a készségk�
 
 Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszert a későbbi futtatásokhoz. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Emellett azt is megtanulta, hogyan ellenőrizheti az indexelő állapotát, illetve hogy melyik objektumokat kell törölnie a folyamat újrafuttatása előtt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja annak összes erőforrását.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

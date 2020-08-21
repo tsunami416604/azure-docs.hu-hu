@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: f20a40603916e703d6f3cfc13ee2d165675f3ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: df2c626de39ff4482a4dc69fa5a514fc92002ccb
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588500"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705860"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
 
@@ -101,35 +101,22 @@ A folytatáshoz [töltse le a .net-4.7.1](https://www.microsoft.com/download/det
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a forrás-ellenőrzési mappán kívüli titkos fájlba
 Ha gyors prototípust ír, és nem szeretné kiépíteni az Azure-erőforrásokat, folytassa ezt a lehetőséget.
 
-1. Telepítse a következő NuGet-csomagot a projektbe
-    ```
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    ```
+1. Kattintson a jobb gombbal a projektre, és válassza a **felhasználói titkok kezelése**lehetőséget. Ez egy NuGet-csomagot telepít **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , létrehoz egy fájlt a titkos beállítások mentéséhez web.config fájlon kívül, és a web.config fájlban adja hozzá a szakasz **konfigurációkészítők** .
 
-2. Hozzon létre egy, a következőhöz hasonló fájlt. Mentse azt a projekt mappáján kívüli helyre.
+2. Adja meg a titkos elem alatti titkos beállításokat. az alábbiakban egy példa látható
 
     ```xml
+    <?xml version="1.0" encoding="utf-8"?>
     <root>
-        <secrets ver="1.0">
-            <secret name="secret1" value="foo_one" />
-            <secret name="secret2" value="foo_two" />
-        </secrets>
+      <secrets ver="1.0">
+        <secret name="secret" value="foo"/>
+        <secret name="secret1" value="foo_one" />
+        <secret name="secret2" value="foo_two" />
+      </secrets>
     </root>
     ```
 
-3. Adja meg a titkos fájlt, hogy az Web.config fájlban lévő Configuration Builder legyen. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el.
-
-    ```xml
-    <configBuilders>
-        <builders>
-            <add name="Secrets"
-                 secretsFile="C:\Users\AppData\MyWebApplication1\secret.xml" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder,
-                    Microsoft.Configuration.ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
-        </builders>
-    </configBuilders>
-    ```
-
-4. A appSettings szakasz megadásával a titkos konfigurációs szerkesztőt használja. Ellenőrizze, hogy van-e bejegyzés a titkos beállításhoz egy dummy értékkel.
+3. A appSettings szakasz megadásával a titkos konfigurációs szerkesztőt használja. Ellenőrizze, hogy van-e bejegyzés a titkos beállításhoz egy dummy értékkel.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -148,20 +135,18 @@ A projekthez tartozó Key Vault konfigurálásához kövesse az ASP.NET Core sza
 
 1. Telepítse a következő NuGet-csomagot a projektbe
    ```
-   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   Microsoft.Configuration.ConfigurationBuilders.Azure
    ```
 
-2. Adja meg a Web.config Key Vault Configuration Builder-t. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el. Cserélje le a *vaultName* nevet a Key Vault nevére, ha a Key Vault nyilvános Azure-ban van, vagy ha szuverén felhőt használ, a teljes URI-t használja.
+2. Adja meg a Web.config Key Vault Configuration Builder-t. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el. Cserélje le a *vaultName* nevet a Key Vault nevére, ha a Key Vault a globális Azure-ban található, vagy teljes URI-t, ha szuverén felhőt használ.
 
     ```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-    <configBuilders>
+     <configBuilders>
         <builders>
-            <add name="AzureKeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
+            <add name="Secrets" userSecretsId="695823c3-6921-4458-b60b-2b82bbd39b8d" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            <add name="AzureKeyVault" vaultName="[VaultName]" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
         </builders>
-    </configBuilders>
+      </configBuilders>
     ```
 3. A appSettings szakasz megadásával a Key Vault Configuration Builder használatával. Győződjön meg arról, hogy a titkos beállításnak van-e bejegyzése egy dummy értékkel.
 

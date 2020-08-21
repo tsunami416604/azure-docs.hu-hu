@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a0f06c2db0a5bf196ae610efadd85ef1df8defe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844643"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691309"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning használata a Fairlearn nyílt forráskódú csomaggal, amellyel mérhető az ML-modellek tisztasága (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ebben a útmutatóban megtudhatja, hogyan használhatja a [Fairlearn](https://fa
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning méltányos SDK 
 
-A Azure Machine Learning méltányos SDK, amely `azureml-contrib-fairness` a Azure Machine Learningon belül integrálja a nyílt forráskódú Python-csomagot, a [Fairlearn](http://fairlearn.github.io)-t. Ha többet szeretne megtudni a Fairlearn Azure Machine Learningon belüli integrálásáról, tekintse meg ezeket a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). A Fairlearn kapcsolatos további információkért tekintse meg a [példa útmutató](https://fairlearn.github.io/auto_examples/notebooks/index.html) és a [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)című részt. 
+A Azure Machine Learning méltányos SDK, amely `azureml-contrib-fairness` a Azure Machine Learningon belül integrálja a nyílt forráskódú Python-csomagot, a [Fairlearn](http://fairlearn.github.io)-t. Ha többet szeretne megtudni a Fairlearn Azure Machine Learningon belüli integrálásáról, tekintse meg ezeket a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). A Fairlearn kapcsolatos további információkért tekintse meg a [példa útmutató](https://fairlearn.github.io/auto_examples/) és a [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)című részt. 
 
 A és a csomagok telepítéséhez használja az alábbi parancsokat `azureml-contrib-fairness` `fairlearn` :
 ```bash
@@ -321,7 +321,7 @@ Ha több modellt tölt fel egy adott futtatásban, az a méltányosság és a te
 [![Modell összehasonlító Fairlearn irányítópultja](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a modell tisztaságáról](concept-fairness-ml.md)
 

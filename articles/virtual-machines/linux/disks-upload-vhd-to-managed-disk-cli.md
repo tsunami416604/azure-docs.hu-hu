@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510446"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691343"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD feltöltése az Azure-ba vagy egy felügyelt lemez másolása egy másik régióba – Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "86510446"
 
 ## <a name="getting-started"></a>Első lépések
 
-Ha egy grafikus felhasználói felületen szeretné feltölteni a lemezeket, ezt Azure Storage Explorer használatával teheti meg. Részletekért lásd: [Azure Storage Explorer használata az Azure Managed Disks kezeléséhez](disks-use-storage-explorer-managed-disks.md)
+Ha egy grafikus felhasználói felületen szeretné feltölteni a lemezeket, ezt Azure Storage Explorer használatával teheti meg. Részletekért lásd: [Azure Storage Explorer használata az Azure Managed Disks kezeléséhez](../disks-use-storage-explorer-managed-disks.md)
 
 A virtuális merevlemez Azure-ba való feltöltéséhez létre kell hoznia egy üres felügyelt lemezt, amely ehhez a feltöltési folyamathoz van konfigurálva. Mielőtt létrehoz egyet, néhány további információra van szüksége a lemezekről.
 
@@ -129,6 +129,6 @@ az disk revoke-access -n $sourceDiskName -g $sourceRG
 az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt [adatlemezként egy meglévő virtuális géphez](add-disk.md) , vagy [csatlakoztathatja a lemezt egy virtuális géphez egy operációsrendszer-lemezként](upload-vhd.md#create-the-vm)egy új virtuális gép létrehozásához. 

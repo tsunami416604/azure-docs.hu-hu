@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292101"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705640"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -64,7 +64,7 @@ Alapértelmezés szerint a Linux rendszerhez készült legtöbb Azure Marketplac
 - Az NTP elsődlegesként, amely egy NTP-kiszolgálótól kap időt. Az Ubuntu 16,04 LTS Marketplace-lemezképek például a **NTP.Ubuntu.com**-t használják.
 - A VMICTimeSync szolgáltatás másodlagosként, amely a gazdagépek és a virtuális gépek közötti kommunikációra szolgál, és a virtuális gép karbantartás utáni szüneteltetése után végez javítást. Az Azure-gazdagépek a Microsoft által birtokolt stratum 1 eszközöket használják a pontos idő megtartására.
 
-Az újabb Linux-disztribúciókban a VMICTimeSync szolgáltatás a (z) pontosságot használja, de előfordulhat, hogy a korábbi disztribúciók nem támogatják a PTP-t, és az NTP-re kerülnek vissza a gazdagépről való idő beszerzéséhez.
+Az újabb Linux-disztribúciókban a VMICTimeSync szolgáltatás a PTP-es hardveres órajel-forrást nyújtja, de a korábbi disztribúciók nem biztosítják ezt az órajel-forrást, és az NTP-re kerülnek vissza a gazdagépről való idő beszerzéséhez.
 
 Az NTP sikeres szinkronizálásának megerősítéséhez futtassa a `ntpq -p` parancsot.
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>A PTP keresése
+### <a name="check-for-ptp-clock-source"></a>A PTP-óra forrásának keresése
 
-A Linux újabb verzióiban a VMICTimeSync-szolgáltató részeként a (z) Precision Time Protocol (PTP) órajel-forrás érhető el. Red Hat Enterprise Linux vagy CentOS 7. x régebbi verzióiban a [Linux integrációs szolgáltatások](https://github.com/LIS/lis-next) tölthetők le, és a frissített illesztőprogram telepítéséhez használhatók. A PTP használatakor a Linux-eszköz/dev/PTP*x*formátumú lesz. 
+A Linux újabb verzióiban a VMICTimeSync-szolgáltató részeként a (z) Precision Time Protocol (PTP) órajel-forrás érhető el. Red Hat Enterprise Linux vagy CentOS 7. x régebbi verzióiban a [Linux integrációs szolgáltatások](https://github.com/LIS/lis-next) tölthetők le, és a frissített illesztőprogram telepítéséhez használhatók. Ha a PTP-órajel forrása elérhető, a Linux-eszköz/dev/PTP*x*formátumú lesz. 
 
 Itt láthatja, hogy mely PTP-órajelek érhetők el.
 

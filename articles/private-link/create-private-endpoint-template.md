@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071491"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705809"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Rövid útmutató: privát végpont létrehozása ARM-sablonnal
 
@@ -37,7 +37,7 @@ Ez a sablon egy Azure SQL Database-példányhoz hoz létre egy privát végponto
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
+:::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -76,7 +76,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
 
 1. A portál keresősáv mezőjébe írja be a _myVm {UniqueID}_ értéket.
 
-2. Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
+2. Válassza a **Kapcsolódás** lehetőséget. Megnyílik **a virtuális géphez való kapcsolódás** .
 
 3. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
@@ -89,7 +89,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
       > [!NOTE]
       > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 6. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -120,12 +120,12 @@ A következőképpen csatlakozhat a virtuális gépről a SQL Database-kiszolgá
     - **Password (jelszó**): adja meg a létrehozás során megadott jelszót.
     - **Jelszó megjegyzése**: válassza az **Igen**lehetőséget.
 
-5.  Kattintson a **Csatlakozás** gombra.
+5.  Válassza a **Kapcsolódás** lehetőséget.
 6.  A bal oldali menüben válassza az **adatbázisok**elemet.
 7.  Lehetőség van arra is, hogy adatokat hozzon létre vagy lekérdezzen a _Sample-db-_ ből.
 8.  A _(távoli asztal) {UniqueID} myVm_való kapcsolódás lezárása.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a privát végponttal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a magánhálózati végpontot és az összes kapcsolódó erőforrást.
 

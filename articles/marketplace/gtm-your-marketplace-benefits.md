@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607389"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705554"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -26,7 +26,7 @@ A Piactéri juttatások célja, hogy támogassa Önt a növekedés adott fázis�
 
 A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyeit úgy tervezték, hogy a következő szakaszra haladjon, ami lehetővé teszi, hogy az üzleti piactért platformként hasznosítsa a Microsoft ügyfeleinek, a Microsoft mezője és a Microsoft csatornáján keresztül.
 
-Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](determine-your-listing-type.md#choose-a-call-to-action).
+Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](determine-your-listing-type.md#choose-a-listing-option).
 
 A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 

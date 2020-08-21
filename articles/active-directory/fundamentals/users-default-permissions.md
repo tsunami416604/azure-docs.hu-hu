@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/16/2019
+ms.date: 08/17/2020
 ms.author: ajburnle
 ms.reviewer: vincesm
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae802d8aa9378155bcca0713992a8cc041ea1a9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 042a881cc6021842dec126c92ff13f306f79dad1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799021"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705231"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusától, a [szerepkörük hozzárendeléseitől](active-directory-users-assign-role-azure-portal.md), valamint az egyes objektumok tulajdonosainak. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyeket csak az Azure AD felhasználói beállításaiban lehet módosítani.
@@ -26,26 +26,24 @@ Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelme
 ## <a name="member-and-guest-users"></a>Tag- és vendégfelhasználók
 Az alapértelmezett engedélyek készlete attól függ, hogy a felhasználó a bérlő (tag) natív tagja-e, vagy ha a felhasználót VÁLLALATKÖZI együttműködési vendégként (vendég felhasználóként) átveszik egy másik címtárból. Lásd: [Mi az az Azure ad B2B Collaboration?](../b2b/what-is-b2b.md) további információ a vendég felhasználók hozzáadásáról.
 * A tagfelhasználók alkalmazásokat regisztrálhatnak, kezelhetik saját profilképüket és mobiltelefonszámukat, módosíthatják jelszavukat, valamint meghívhatnak B2B-vendégfelhasználókat. Ezen kívül a felhasználók a címtár összes adatát olvashatják (néhány kivétellel). 
-* A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. A vendégfelhasználók például csak a saját profiljuk adatait látják a bérlőn. A vendégfelhasználók azonban egy másik felhasználó egyszerű felhasználónevének vagy ObjectId azonosítójának megadásával adatokat kérdezhetnek le az adott felhasználóról. A vendég felhasználók beolvashatják a csoportokhoz tartozó csoportok tulajdonságait, beleértve a csoporttagság is, függetlenül attól, hogy a **vendég felhasználói engedélyei korlátozottak** -e. A vendég nem tekintheti meg a többi bérlői objektum információit.
-
-A vendégekre vonatkozó alapértelmezett engedélyek korlátozásokat tartalmaznak. A vendégfelhasználókhoz rendszergazdai szerepkör rendelhető, amelynek birtokában az adott szerepkör teljes körű olvasási és írási engedélyeivel rendelkeznek. Még egy további korlátozás áll rendelkezésre a vendégfelhasználók számára, ez pedig a más felhasználók meghívásának lehetősége. Ha a **Vendégek meghívót küldhetnek** beállítás értéke **Nem**, akkor a vendégfelhasználók nem hívhatnak meg más vendégeket. További információ: [Meghívók delegálása B2B-együttműködéshez](../b2b/delegate-invitations.md). Ha azt szeretné, hogy a vendégfelhasználók a tagfelhasználók alapértelmezett engedélyeivel azonos engedélyeket kapjanak, akkor **A vendégfelhasználók engedélyei korlátozottak** beállítás számára adjon meg **Nem** értéket. E beállítás alkalmazása esetén a vendégfelhasználók megkapják a tagfelhasználók minden alapértelmezett engedélyét, továbbá a vendégfelhasználók felvehetők lesznek a rendszergazdai szerepkörökbe is.
+* A vendég felhasználók korlátozott címtárbeli engedélyekkel rendelkeznek. Kezelhetik saját profiljaikat, módosíthatják saját jelszavukat, és lekérhetnek néhány információt más felhasználókról, csoportokról és alkalmazásokról, azonban nem tudják olvasni az összes címtár-információt. Például a vendég felhasználók nem tudják enumerálni a felhasználókat, a csoportokat és az egyéb címtár-objektumokat. A vendégfelhasználókhoz rendszergazdai szerepkör rendelhető, amelynek birtokában az adott szerepkör teljes körű olvasási és írási engedélyeivel rendelkeznek. A vendégek más vendégeket is meghívhatnak.
 
 ## <a name="compare-member-and-guest-default-permissions"></a>Tagok és vendégek alapértelmezett engedélyeinek összehasonlítása
 
-**Terület** | **Tagfelhasználók engedélyei** | **Vendégfelhasználók engedélyei**
------------- | --------- | ----------
-Felhasználók és kapcsolatok | Felhasználók és kapcsolatok összes nyilvános tulajdonságának olvasása<br>Vendégek meghívása<br>Saját jelszó módosítása<br>Saját mobiltelefonszám kezelése<br>Saját fénykép kezelése<br>Saját frissítési jogkivonatok érvénytelenítése | Saját tulajdonságok olvasása<br>A megjelenítendő név, az e-mail cím, a bejelentkezési név, a fénykép, a felhasználó egyszerű neve és a felhasználói típus tulajdonságainak olvasása más felhasználók és névjegyek számára<br>Saját jelszó módosítása
-Csoportok | Biztonsági csoportok létrehozása<br>Office 365-csoportok létrehozása<br>Minden csoporttulajdonság olvasása<br>Nem rejtett csoporttagságok olvasása<br>Felvett csoport rejtett Office 365-csoporttagságainak olvasása<br>A felhasználó tulajdonában lévő csoportok tulajdonságainak, tulajdonosának és tagságának kezelése<br>Vendégek hozzáadása saját csoportokhoz<br>Dinamikus tagsági beállítások kezelése<br>Saját csoportok törlése<br>Saját Office 365-csoportok visszaállítása | Minden csoporttulajdonság olvasása<br>Nem rejtett csoporttagságok olvasása<br>Csatlakozott csoport rejtett Office 365-csoporttagságainak olvasása<br>Saját csoportok kezelése<br>Vendégek hozzáadása saját csoportokhoz (ha engedélyezett)<br>Saját csoportok törlése<br>Saját Office 365-csoportok visszaállítása<br>A csoporthoz tartozó csoportok tulajdonságainak olvasása, beleértve a tagságot is.
-Alkalmazások | Új alkalmazás regisztrálása (létrehozása)<br>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<br>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<br>Felhasználó alkalmazásjelszavának létrehozása vagy törlése<br>Saját alkalmazások törlése<br>Saját alkalmazások visszaállítása | Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<br>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<br>Saját alkalmazások törlése<br>Saját alkalmazások visszaállítása
-Eszközök | Minden eszköztulajdonság olvasása<br>Saját eszközök minden tulajdonságának olvasása<br> | Nincs engedély<br>Saját eszközök törlése<br>
-Címtár | Minden vállalati adat olvasása<br>Minden tartomány olvasása<br>Minden partnerszerződés olvasása | Megjelenített név és ellenőrzött tartományok olvasása
-Szerepkörök és hatókörök | Minden rendszergazdai szerepkör és tagság olvasása<br>Felügyeleti egységek minden tulajdonságának és tagságának olvasása | Nincs engedély 
-Előfizetések | Minden előfizetés olvasása<br>Szolgáltatáscsomag-tag engedélyezése | Nincs engedély
-Házirendek | Szabályzatok minden tulajdonságának olvasása<br>Saját szabályzat minden tulajdonságának kezelése | Nincs engedély
+**Terület** | **Tagfelhasználók engedélyei** | **Alapértelmezett vendég felhasználói engedélyek** | **Korlátozott vendég felhasználói engedélyek (előzetes verzió)**
+------------ | --------- | ---------- | ----------
+Felhasználók és kapcsolatok | <ul><li>Felhasználók és kapcsolatok összes nyilvános tulajdonságának olvasása</li><li>Vendégek meghívása<li>Saját jelszó módosítása<li>Saját mobiltelefonszám kezelése<li>Saját fénykép kezelése<li>Saját frissítési jogkivonatok érvénytelenítése</li></ul> | <ul><li>Saját tulajdonságok olvasása<li>A megjelenítendő név, az e-mail cím, a bejelentkezési név, a fénykép, a felhasználó egyszerű neve és a felhasználói típus tulajdonságainak olvasása más felhasználók és névjegyek számára<li>Saját jelszó módosítása<li>Másik felhasználó keresése megjelenítendő név, egyszerű felhasználónév vagy ObjectId szerint (ha engedélyezve van)<li>A kezelő és a közvetlen jelentési információk beolvasása más felhasználók számára</li></ul> | <ul><li>Saját tulajdonságok olvasása<li>Saját jelszó módosítása</li></ul>
+Csoportok | <ul><li>Biztonsági csoportok létrehozása<li>Office 365-csoportok létrehozása<li>Minden csoporttulajdonság olvasása<li>Nem rejtett csoporttagságok olvasása<li>Felvett csoport rejtett Office 365-csoporttagságainak olvasása<li>A felhasználó tulajdonában lévő csoportok tulajdonságainak, tulajdonosának és tagságának kezelése<li>Vendégek hozzáadása saját csoportokhoz<li>Dinamikus tagsági beállítások kezelése<li>Saját csoportok törlése<li>Saját Office 365-csoportok visszaállítása</li></ul> | <ul><li>Az összes nem rejtett csoport tulajdonságainak olvasása, beleértve a tagságot és a tulajdonjogot (még nem csatlakoztatott csoportok)<li>Csatlakozott csoport rejtett Office 365-csoporttagságainak olvasása<li>Csoportok keresése megjelenítendő név vagy ObjectId szerint (ha engedélyezve van)</li></ul> | Nincs engedély
+Alkalmazások | <ul><li>Új alkalmazás regisztrálása (létrehozása)<li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<li>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<li>Felhasználó alkalmazásjelszavának létrehozása vagy törlése<li>Saját alkalmazások törlése<li>Saját alkalmazások visszaállítása</li></ul> | <ul><li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása</li></ul> | <ul><li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása
+Eszközök</li></ul> | <ul><li>Minden eszköztulajdonság olvasása<li>Saját eszközök minden tulajdonságának olvasása</li></ul> | Nincs engedély | Nincs engedély
+Címtár | <ul><li>Minden vállalati adat olvasása<li>Minden tartomány olvasása<li>Minden partnerszerződés olvasása</li></ul> | <ul><li>Megjelenített név és ellenőrzött tartományok olvasása</li></ul> | <ul><li>Megjelenített név és ellenőrzött tartományok olvasása</li></ul>
+Szerepkörök és hatókörök | <ul><li>Minden rendszergazdai szerepkör és tagság olvasása<li>Felügyeleti egységek minden tulajdonságának és tagságának olvasása</li></ul> | Nincs engedély | Nincs engedély
+Előfizetések | <ul><li>Minden előfizetés olvasása<li>Szolgáltatáscsomag-tag engedélyezése</li></ul> | Nincs engedély | Nincs engedély
+Házirendek | <ul><li>Szabályzatok minden tulajdonságának olvasása<li>Saját szabályzat minden tulajdonságának kezelése</li></ul> | Nincs engedély | Nincs engedély
 
 ## <a name="to-restrict-the-default-permissions-for-member-users"></a>Tagfelhasználók alapértelmezett engedélyeinek korlátozása
 
-A tagfelhasználók alapértelmezett engedélyeinek korlátozására az alábbi lehetőségek állnak rendelkezésre.
+A tagok felhasználói számára a következő módokon lehet korlátozni az alapértelmezett engedélyeket:
 
 Engedély | Magyarázat beállítása
 ---------- | ------------
@@ -53,8 +51,23 @@ A felhasználók regisztrálhatják az alkalmazást | Ha ezt a beállítást ál
 Munkahelyi vagy iskolai fióknak a LinkedIn használatával való összekapcsolásának engedélyezése a felhasználók számára | Ha ezt a beállítást választja, a nem akadályozza meg, hogy a felhasználók a saját LinkedIn-fiókjával csatlakozzanak a munkahelyi vagy iskolai fiókjához. További információ: a [LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent).
 Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói rendszergazdák továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és a felhasználói rendszergazdák továbbra is létrehozhatnak Office 365-csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
-Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ha ezt a beállítást nem teszi lehetővé, a nem rendszergazdák az Azure ad felügyeleti portálon keresztül olvashatják és kezelhetik az Azure AD-erőforrásokat. Igen – korlátozza, hogy az összes nem rendszergazda hozzáférjen az összes Azure AD-adatokhoz a felügyeleti portálon. Fontos megjegyezni: Ez a beállítás nem korlátozza az Azure AD-szolgáltatásokhoz való hozzáférést a PowerShell vagy más ügyfelek, például a Visual Studio használatával. Ha az Igen értékre van állítva, akkor egy adott nem rendszergazda felhasználó számára az Azure AD felügyeleti portál használatával bármilyen rendszergazdai szerepkört hozzárendelhet, például a Directory-olvasók szerepkört. Ez a szerepkör lehetővé teszi az alapszintű címtáradatok olvasását, amelyekhez a felhasználók alapértelmezés szerint rendelkeznek (a vendégek és az egyszerű szolgáltatások nem).
+Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ha ezt a beállítást nem teszi lehetővé, a nem rendszergazdák az Azure ad felügyeleti portálon keresztül olvashatják és kezelhetik az Azure AD-erőforrásokat. Igen – korlátozza, hogy az összes nem rendszergazda hozzáférjen az összes Azure AD-adatokhoz a felügyeleti portálon.<p>**Megjegyzés**: Ez a beállítás nem korlátozza az Azure ad-adatokhoz való hozzáférést a PowerShell vagy más ügyfelek (például a Visual Studio) használatával. Ha az Igen értékre van állítva, egy adott nem rendszergazda felhasználó számára az Azure ad felügyeleti portált olyan rendszergazdai szerepkörök hozzárendelésére használhatja, mint például a címtár-olvasók szerepkör.<p>Ez a szerepkör lehetővé teszi az alapszintű címtáradatok olvasását, amelyekhez a felhasználók alapértelmezés szerint rendelkeznek (a vendégek és az egyszerű szolgáltatások nem).
 Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. Ha ezt a jelzőt úgy állítja be, hogy $false megakadályozza, hogy minden nem rendszergazda beolvassa a felhasználói adatokat a címtárból. Ez a jelző nem akadályozza meg a felhasználói adatok olvasását más Microsoft-szolgáltatásokban, például az Exchange Online-ban. Ez a beállítás különleges körülményeket jelent, és a jelzőt nem ajánlott $falsere beállítani.
+
+
+## <a name="to-restrict-the-default-permissions-for-guest-users"></a>A vendég felhasználók alapértelmezett engedélyeinek korlátozása
+
+A vendég felhasználók alapértelmezett engedélyei a következő módokon korlátozhatók:
+
+>[!NOTE] 
+>A vendég felhasználói hozzáférés korlátozásai beállítás lecserélte a vendég **felhasználók engedélyeinek** korlátozása beállítást. A szolgáltatás használatával kapcsolatos útmutatásért lásd: [a vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+
+Engedély | Magyarázat beállítása
+---------- | ------------
+Vendég felhasználói hozzáférési korlátozások (előzetes verzió) | Ha ezt a beállítást szeretné beállítani a vendég felhasználók számára, a tagoknak alapértelmezés szerint ugyanaz a hozzáférése, mint a tag felhasználói engedélyeket.<p>Ha ezt a beállítást szeretné beállítani a vendég felhasználói hozzáféréshez, a saját címtárobjektumok tulajdonságaira és tagságára korlátozódik, alapértelmezés szerint csak a saját felhasználói profiljára korlátozza a vendég hozzáférését. A más felhasználókhoz való hozzáférés már nem engedélyezett, még akkor is, ha egyszerű felhasználónév vagy objectId alapján keres. A csoportok tagságát is magában foglaló csoportokhoz való hozzáférés már nem engedélyezett. Ez a beállítás nem akadályozza meg a más Microsoft-szolgáltatások, például a Microsoft Teams-csoportok elérését. További információért tekintse meg a [Microsoft Teams vendég hozzáférését]() ismertető témakört.<p>A vendég felhasználók továbbra is hozzáadhatók a rendszergazdai szerepkörökhöz az engedély beállításaitól függetlenül.
+Vendégek küldhetnek meghívót | Ha ezt a beállítást választja, az Igen lehetőséget választva a vendégek más vendégeket is meghívhatnak. További információért lásd: [meghívások delegálása B2B-együttműködéshez](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#configure-b2b-external-collaboration-settings) .
+Tagok küldhetnek meghívót | A tagok meghívhatják, hogy ezt a beállítást Igen értékre állítva engedélyezze a címtár nem rendszergazdai tagjai számára a vendégek meghívását. További információért lásd: [meghívások delegálása B2B-együttműködéshez](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#configure-b2b-external-collaboration-settings) .
+A vendégmeghívó szerepkörű rendszergazdák és felhasználók küldhetnek meghívót | Ha ezt a beállítást az Igen értékre állítja, a "vendég meghívó" szerepkörben a rendszergazdák és a felhasználók meghívhatják a vendégeket. Ha az Igen értékre van állítva, akkor a vendég meghívó szerepkörben lévő felhasználók továbbra is meghívhatják a vendégeket, függetlenül attól, hogy a tagok meghívhatják a beállításokat. További információért lásd: [meghívások delegálása B2B-együttműködéshez](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#assign-the-guest-inviter-role-to-a-user) .
 
 ## <a name="object-ownership"></a>Objektumok tulajdonjoga
 
@@ -130,6 +143,7 @@ A felhasználók a következő műveleteket hajthatják végre a tulajdonos csop
 
 ## <a name="next-steps"></a>További lépések
 
+* Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
 * További információ az Azure AD-rendszergazdai szerepkörök hozzárendeléséről: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * További információk az Azure Active Directory és az Azure-előfizetés kapcsolatáról: [Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directoryhoz?](active-directory-how-subscriptions-associated-directory.md)

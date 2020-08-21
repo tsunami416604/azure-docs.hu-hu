@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: 39f10ed627320527a7a34fec52d540739f36e9ce
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554430"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705928"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Gyors útmutató: Azure CDN profil és végpont-ARM sablon létrehozása
 
@@ -25,7 +25,7 @@ Az Azure Content Delivery Network (CDN) használatának első lépései Azure Re
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -35,14 +35,14 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok 
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/) közül származik.
 
 Ez a sablon a következő létrehozására van konfigurálva:
 
 * Profil
 * Végpont
 
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="45-117":::
+:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json":::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 

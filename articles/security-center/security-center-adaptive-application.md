@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036969"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691479"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -83,7 +83,7 @@ Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők la
     - **Nincs javaslat** – az alkalmazások meghatározott engedélyezési listáját nem tartalmazó gépek, és amelyek nem támogatják a szolgáltatást. A gép a következő okok miatt lehet ebben a lapon:
       - Hiányzik egy Log Analytics ügynök
       - Az Log Analytics ügynök nem küld eseményeket
-      - Ez egy olyan Windows-gép, amelyen már meglévő [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) -házirend van engedélyezve egy csoportházirend-objektum vagy egy helyi biztonsági házirend segítségével.
+      - Ez egy olyan Windows-gép, amelyen már meglévő [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -házirend van engedélyezve egy csoportházirend-objektum vagy egy helyi biztonsági házirend segítségével.
 
       > [!TIP]
       > Security Centernek legalább két hétig kell lennie, hogy meghatározza a számítógépek csoportjaira vonatkozó egyedi ajánlásokat. Azok a gépek, amelyek nemrég lettek létrehozva, vagy olyan előfizetésekhez tartoznak, amelyek csak a standard szintű csomaggal lettek engedélyezve, a **No javaslat** lapon jelennek meg.
@@ -187,7 +187,7 @@ Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmaz�
 
 1. Az **adaptív alkalmazás vezérlői** lap **konfigurált** lapján válassza ki az áthelyezni kívánt gépet tartalmazó csoportot.
 
-1. Nyissa meg a **konfigurált gépek**listáját.
+1. Nyissa meg a  **konfigurált gépek**listáját.
 
 1. Nyissa meg a gép menüjét a sor végén található három pontról, majd kattintson az **Áthelyezés**elemre. Megnyílik a **gép áthelyezése másik csoportba** panel.
 

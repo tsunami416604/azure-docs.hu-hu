@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236556"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705622"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
 
@@ -35,7 +35,7 @@ Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, amely segí
 ![Táblázat a feltöltéshez és a híváshoz – az egyes sorok és oszlopok céljának és értékeinek ismertetése](./media/users-bulk-add/create-template-example.png)
 
 > [!WARNING]
-> Ha csak egy bejegyzést próbál hozzáadni a CSV-sablonhoz, meg kell őriznie a 3. sort, és fel kell vennie az új bejegyzést a 4. sorba. 
+> Ha csak egy bejegyzést ad hozzá a CSV-sablonnal, meg kell őriznie a 3. sort, és fel kell vennie az új bejegyzést a 4. sorba.
 
 ### <a name="csv-template-structure"></a>CSV-sablon szerkezete
 

@@ -3,17 +3,17 @@ title: Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzet
 description: Megtudhatja, hogyan dolgozhatja fel az adatcsatorna-naplókat egy .NET-ügyfélalkalmazás esetében
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 06/18/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74111859"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691428"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió)
 
@@ -26,348 +26,194 @@ További információ a változási csatornáról: a [hírcsatorna módosítása
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>A blob Change feed Processor Library letöltése
 
-1. A Visual Studióban adja hozzá a `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` NuGet-csomag forrásaihoz tartozó URL-címet. 
+1. Nyisson meg egy parancssori ablakot (például: Windows PowerShell).
+2. A projekt könyvtárából telepítse az **Azure. Storage. Blobs. Changefeed** NuGet csomagot.
 
-   További információ: [Package sources](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
-
-2. A NuGet csomagkezelő eszközben keresse meg a **Microsoft. Azure. Storage. Changefeed** csomagot, és telepítse a projektbe. 
-
-   További információt a [csomagok keresése és telepítése](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)című témakörben talál.
-
-## <a name="connect-to-the-storage-account"></a>Kapcsolódás a Storage-fiókhoz
-
-A [CloudStorageAccount. TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metódus meghívásával elemezheti a kapcsolatok karakterláncát. 
-
-Ezután hozzon létre egy objektumot, amely a Storage-fiókban lévő Blob Storage jelképezi, és hívja meg a [CloudStorageAccount. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) metódust.
-
-```cs
-public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
-{
-    if (CloudStorageAccount.TryParse
-        (storageConnectionString, out CloudStorageAccount storageAccount))
-        {
-            cloudBlobClient = storageAccount.CreateCloudBlobClient();
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-}
+```console
+dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
 ```
-
-## <a name="initialize-the-change-feed"></a>A változási csatorna inicializálása
-
-Adja hozzá a következő using utasításokat a fájl elejéhez. 
-
-```csharp
-using Avro.Generic;
-using ChangeFeedClient;
-```
-
-Ezután hozza létre a **ChangeFeed** osztály egy példányát a **GetContainerReference** metódus meghívásával. Adja át a változási hírcsatorna tárolójának nevét.
-
-```csharp
-public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
-{
-    CloudBlobContainer changeFeedContainer =
-        cloudBlobClient.GetContainerReference("$blobchangefeed");
-
-    ChangeFeed changeFeed = new ChangeFeed(changeFeedContainer);
-    await changeFeed.InitializeAsync();
-
-    return changeFeed;
-}
-```
-
-## <a name="reading-records"></a>Rekordok beolvasása
+## <a name="read-records"></a>Rekordok beolvasása
 
 > [!NOTE]
 > A módosítási hírcsatorna egy nem módosítható és csak olvasható entitás a Storage-fiókban. Tetszőleges számú alkalmazás olvashatja és feldolgozhatja a változási csatornát párhuzamosan és önállóan, a saját kényelmében. A rendszer nem távolítja el a rekordokat a változási hírcsatornából, amikor egy alkalmazás beolvassa őket. Az egyes fogyasztási olvasók olvasási vagy iterációs állapota független, és csak az alkalmazás tartja karban.
 
-A rekordok olvasásának legegyszerűbb módja, ha létrehozza a **ChangeFeedReader** osztály egy példányát. 
-
-Ez a példa a változási hírcsatorna összes rekordját megismétli, majd a-konzolra a rekordok néhány értékét kinyomtatja. 
+Ez a példa a változási hírcsatorna összes rekordját megismétli, hozzáadja őket egy listához, majd visszaadja ezt a listát a hívónak.
  
 ```csharp
-public async Task ProcessRecords(ChangeFeed changeFeed)
+public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionString)
 {
-    ChangeFeedReader processor = await changeFeed.CreateChangeFeedReaderAsync();
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-    ChangeFeedRecord currentRecord = null;
-    do
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
+
+    List<BlobChangeFeedEvent> changeFeedEvents = new List<BlobChangeFeedEvent>();
+
+    // Get all the events in the change feed. 
+    await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync())
     {
-        currentRecord = await processor.GetNextItemAsync();
+        changeFeedEvents.Add(changeFeedEvent);
+    }
 
-        if (currentRecord != null)
-        {
-            string subject = currentRecord.record["subject"].ToString();
-            string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-            string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-            Console.WriteLine("Subject: " + subject + "\n" +
-                "Event Type: " + eventType + "\n" +
-                "Api: " + api);
-        }
-
-    } while (currentRecord != null);
+    return changeFeedEvents;
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>Rekordok olvasásának folytatása mentett pozícióból
-
-Dönthet úgy, hogy elmenti az olvasási pozícióját a változási hírcsatornában, és folytatja a rekordok későbbi megismétlését. A módosítási hírcsatorna iterációjának állapotát bármikor mentheti a **ChangeFeedReader. SerializeState ()** metódus használatával. Az állapot egy **karakterlánc** , és az alkalmazás a terv alapján mentheti az adott állapotot (például egy adatbázisba vagy egy fájlba).
+Ez a példa a-konzolra nyomtat néhány értéket a lista egyes rekordjaiból. 
 
 ```csharp
-    string currentReadState = processor.SerializeState();
+public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
+{
+    foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedEvents)
+    {
+        string subject = changeFeedEvent.Subject;
+        string eventType = changeFeedEvent.EventType.ToString();
+        string api = changeFeedEvent.EventData.Api;
+
+        Console.WriteLine("Subject: " + subject + "\n" +
+        "Event Type: " + eventType + "\n" +
+        "Api: " + api);
+    }
+}
 ```
 
-A **ChangeFeedReader** a **CreateChangeFeedReaderFromPointerAsync** metódus használatával folytathatja az utolsó állapotú rekordok megismétlését.
+## <a name="resume-reading-records-from-a-saved-position"></a>Rekordok olvasásának folytatása mentett pozícióból
+
+Eldöntheti, hogy elmenti-e az olvasási pozícióját a változási hírcsatornában, majd újra megismétli a rekordokat a későbbi időpontokban. Az olvasási pozíciót úgy mentheti, hogy beolvassa a változási csatorna kurzort. A kurzor egy **karakterlánc** , és az alkalmazása bármilyen módon mentheti a karakterláncot, ami logikus lehet az alkalmazás kialakításához (például egy fájlhoz vagy egy adatbázishoz).
+
+Ez a példa a változási hírcsatorna összes rekordját megismétli, hozzáadja őket egy listához, és menti a kurzort. A listát és a kurzort a rendszer visszaadja a hívónak. 
 
 ```csharp
-public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
+public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCursorAsync
+    (string connectionString,  string cursor)
 {
-    ChangeFeedReader processor = await changeFeed.CreateChangeFeedReaderFromPointerAsync(lastReadState);
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-    ChangeFeedRecord currentRecord = null;
-    do
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
+    List<BlobChangeFeedEvent> changeFeedEvents = new List<BlobChangeFeedEvent>();
+
+    IAsyncEnumerator<Page<BlobChangeFeedEvent>> enumerator = changeFeedClient
+        .GetChangesAsync(continuation: cursor)
+        .AsPages(pageSizeHint: 10)
+        .GetAsyncEnumerator();
+
+    await enumerator.MoveNextAsync();
+
+    foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
     {
-        currentRecord = await processor.GetNextItemAsync();
-
-        if (currentRecord != null)
-        {
-            string subject = currentRecord.record["subject"].ToString();
-            string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-            string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-            Console.WriteLine("Subject: " + subject + "\n" +
-                "Event Type: " + eventType + "\n" +
-                "Api: " + api);
-        }
-
-    } while (currentRecord != null);
+    
+        changeFeedEvents.Add(changeFeedEvent);             
+    }
+    
+    // Update the change feed cursor.  The cursor is not required to get each page of events,
+    // it is intended to be saved and used to resume iterating at a later date.
+    cursor = enumerator.Current.ContinuationToken;
+    return (cursor, changeFeedEvents);
 }
-
 ```
 
 ## <a name="stream-processing-of-records"></a>Rekordok adatfolyam-feldolgozása
 
-Megadhatja, hogy a megérkezéskor feldolgozza-e a változási adatcsatornákat. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications).
+Megadhatja, hogy a megérkezéskor feldolgozza-e a változási adatcsatornákat. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications). Javasoljuk, hogy óránkénti lekérdezéssel kérdezze le a módosításokat.
+
+Ez a példa rendszeres időközönként lekérdezi a módosításokat.  Ha módosulnak a rekordok, ez a kód feldolgozza ezeket a rekordokat, és menti a változási hírcsatorna kurzorát. Így ha a folyamat leáll, majd újra elindítják, az alkalmazás a kurzor használatával folytathatja a rekordok feldolgozását, ahol az utolsó abbahagyta a műveletet. Ez a példa menti a kurzort egy helyi alkalmazás konfigurációs fájljába, de az alkalmazás bármely olyan formában mentheti azt, amelyik a legmegfelelőbb a forgatókönyvhöz. 
 
 ```csharp
-public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
+public async Task ChangeFeedStreamAsync
+    (string connectionString, int waitTimeMs, string cursor)
 {
-    ChangeFeedReader processor = await changeFeed.CreateChangeFeedReaderAsync();
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-    ChangeFeedRecord currentRecord = null;
-    while (true)
-    {
-        do
-        {
-            currentRecord = await processor.GetNextItemAsync();
-
-            if (currentRecord != null)
-            {
-                string subject = currentRecord.record["subject"].ToString();
-                string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-                string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-                Console.WriteLine("Subject: " + subject + "\n" +
-                    "Event Type: " + eventType + "\n" +
-                    "Api: " + api);
-            }
-
-        } while (currentRecord != null);
-
-        await Task.Delay(waitTimeMs);
-    }
-}
-```
-
-## <a name="reading-records-within-a-time-range"></a>Rekordok beolvasása egy időtartományon belül
-
-A változási csatornát óránkénti szegmensekre rendezi a változási esemény időpontja alapján. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications). Az adott időtartományon belül eső változási hírcsatorna-szegmensek rekordjait is elolvashatja.
-
-Ez a példa az összes szegmens kezdési idejét kéri le. Ezután ezt a listát ismétli meg addig, amíg a kezdési időpont nem haladja meg az utolsó felhasználó szegmens időpontját vagy a kívánt tartomány befejezési időpontját. 
-
-### <a name="selecting-segments-for-a-time-range"></a>Szegmensek kiválasztása időtartományhoz
-
-```csharp
-public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
-    (ChangeFeed changeFeed, DateTimeOffset startTime, DateTimeOffset endTime)
-{
-    List<DateTimeOffset> result = new List<DateTimeOffset>();
-
-    DateTimeOffset stAdj = startTime.AddMinutes(-15);
-    DateTimeOffset enAdj = endTime.AddMinutes(15);
-
-    DateTimeOffset lastConsumable = (DateTimeOffset)changeFeed.LastConsumable;
-
-    List<DateTimeOffset> segments = 
-        (await changeFeed.ListAvailableSegmentTimesAsync()).ToList();
-
-    foreach (var segmentStart in segments)
-    {
-        if (lastConsumable.CompareTo(segmentStart) < 0)
-        {
-            break;
-        }
-
-        if (enAdj.CompareTo(segmentStart) < 0)
-        {
-            break;
-        }
-
-        DateTimeOffset segmentEnd = segmentStart.AddMinutes(60);
-
-        bool overlaps = stAdj.CompareTo(segmentEnd) < 0 && 
-            segmentStart.CompareTo(enAdj) < 0;
-
-        if (overlaps)
-        {
-            result.Add(segmentStart);
-        }
-    }
-
-    return result;
-}
-```
-
-### <a name="reading-records-in-a-segment"></a>Rekordok beolvasása egy szegmensben
-
-Az egyes szegmensek és szegmensek rekordjait is elolvashatja.
-
-```csharp
-public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset segmentOffset)
-{
-    ChangeFeedSegment segment = new ChangeFeedSegment(segmentOffset, changeFeed);
-    await segment.InitializeAsync();
-
-    ChangeFeedSegmentReader processor = await segment.CreateChangeFeedSegmentReaderAsync();
-
-    ChangeFeedRecord currentRecord = null;
-    do
-    {
-        currentRecord = await processor.GetNextItemAsync();
-
-        if (currentRecord != null)
-        {
-            string subject = currentRecord.record["subject"].ToString();
-            string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-            string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-            Console.WriteLine("Subject: " + subject + "\n" +
-                "Event Type: " + eventType + "\n" +
-                "Api: " + api);
-        }
-
-    } while (currentRecord != null);
-}
-```
-
-## <a name="read-records-starting-from-a-time"></a>Rekordok beolvasása egy adott időpontból
-
-A változási hírcsatorna rekordjait egy kezdő szegmensből tekintheti meg, egészen a végéig. A rekordok időtartományon belüli olvasásához hasonlóan kilistázhatja a szegmenseket, és kiválaszthat egy szegmenst, amellyel megkezdheti az iterációt.
-
-Ez a példa beolvassa a feldolgozandó első szegmens [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) .
-
-```csharp
-public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
-    (ChangeFeed changeFeed, DateTimeOffset timestamp)
-{
-    DateTimeOffset result = new DateTimeOffset();
-
-    DateTimeOffset lastConsumable = (DateTimeOffset)changeFeed.LastConsumable;
-    DateTimeOffset lastConsumableEnd = lastConsumable.AddMinutes(60);
-
-    DateTimeOffset timestampAdj = timestamp.AddMinutes(-15);
-
-    if (lastConsumableEnd.CompareTo(timestampAdj) < 0)
-    {
-        return result;
-    }
-
-    List<DateTimeOffset> segments = (await changeFeed.ListAvailableSegmentTimesAsync()).ToList();
-    foreach (var segmentStart in segments)
-    {
-        DateTimeOffset segmentEnd = segmentStart.AddMinutes(60);
-        if (timestampAdj.CompareTo(segmentEnd) <= 0)
-        {
-            result = segmentStart;
-            break;
-        }
-    }
-
-    return result;
-}
-```
-
-Ez a példa a kezdő szegmens [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) kezdődő adatcsatorna-rekordok módosítását dolgozza fel.
-
-```csharp
-public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
-{
-    TimeSpan waitTime = new TimeSpan(60 * 1000);
-
-    ChangeFeedSegment segment = new ChangeFeedSegment(segmentStart, changeFeed);
-
-    await segment.InitializeAsync();
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
 
     while (true)
     {
-        while (!await IsSegmentConsumableAsync(changeFeed, segment))
+        IAsyncEnumerator<Page<BlobChangeFeedEvent>> enumerator = changeFeedClient
+        .GetChangesAsync(continuation: cursor).AsPages().GetAsyncEnumerator();
+
+        while (true) 
         {
-            await Task.Delay(waitTime);
-        }
+            var result = await enumerator.MoveNextAsync();
 
-        ChangeFeedSegmentReader reader = await segment.CreateChangeFeedSegmentReaderAsync();
-
-        do
-        {
-            await reader.CheckForFinalizationAsync();
-
-            ChangeFeedRecord currentItem = null;
-            do
+            if (result)
             {
-                currentItem = await reader.GetNextItemAsync();
-                if (currentItem != null)
+                foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
                 {
-                    string subject = currentItem.record["subject"].ToString();
-                    string eventType = ((GenericEnum)currentItem.record["eventType"]).Value;
-                    string api = ((GenericEnum)((GenericRecord)currentItem.record["data"])["api"]).Value;
+                    string subject = changeFeedEvent.Subject;
+                    string eventType = changeFeedEvent.EventType.ToString();
+                    string api = changeFeedEvent.EventData.Api;
 
                     Console.WriteLine("Subject: " + subject + "\n" +
                         "Event Type: " + eventType + "\n" +
                         "Api: " + api);
                 }
-            } while (currentItem != null);
-
-            if (segment.timeWindowStatus != ChangefeedSegmentStatus.Finalized)
-            {
-                await Task.Delay(waitTime);
+            
+                // helper method to save cursor. 
+                SaveCursor(enumerator.Current.ContinuationToken);
             }
-        } while (segment.timeWindowStatus != ChangefeedSegmentStatus.Finalized);
+            else
+            {
+                break;
+            }
 
-        segment = await segment.GetNextSegmentAsync(); // TODO: What if next window doesn't yet exist?
-        await segment.InitializeAsync(); // Should update status, shard list.
+        }
+        await Task.Delay(waitTimeMs);
     }
+
 }
 
-private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeFeedSegment segment)
+public void SaveCursor(string cursor)
 {
-    if (changeFeed.LastConsumable >= segment.startTime)
-    {
-        return true;
-    }
-    await changeFeed.InitializeAsync();
-    return changeFeed.LastConsumable >= segment.startTime;
+    System.Configuration.Configuration config = 
+        ConfigurationManager.OpenExeConfiguration
+        (ConfigurationUserLevel.None);
+
+    config.AppSettings.Settings.Clear();
+    config.AppSettings.Settings.Add("Cursor", cursor);
+    config.Save(ConfigurationSaveMode.Modified);
 }
 ```
 
->[!TIP]
-> Az lehet, hogy a szegmensek egy vagy több *chunkFilePath*módosíthatják a hírcsatorna naplóit. Több *chunkFilePath* esetén a rendszeren belül több szegmensre particionálta a rekordokat a közzétételi teljesítmény kezeléséhez. Garantáljuk, hogy a szegmens minden partíciója tartalmazni fogja a kölcsönösen kizáró Blobok módosításait, és a rendelés megszegése nélkül is feldolgozhatók egymástól függetlenül. A **ChangeFeedSegmentShardReader** osztály segítségével megismételheti a rekordokat a szegmens szintjén, ha ez a leghatékonyabb megoldás a forgatókönyvhöz.
+## <a name="reading-records-within-a-time-range"></a>Rekordok beolvasása egy időtartományon belül
+
+Egy adott időtartományon belüli rekordokat is elolvashatja. Ez a példa a változási hírcsatorna minden olyan rekordját megismétli, amely a 3:00. március 2 2017-kor és a 2:00-as számú, a 7 2019-es verzióban található, a listára kerül, majd visszaadja ezt a listát a hívónak.
+
+### <a name="selecting-segments-for-a-time-range"></a>Szegmensek kiválasztása időtartományhoz
+
+```csharp
+public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string connectionString)
+{
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
+    List<BlobChangeFeedEvent> changeFeedEvents = new List<BlobChangeFeedEvent>();
+
+    // Create the start and end time.  The change feed client will round start time down to
+    // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
+    // with minutes and seconds.
+    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+
+    // You can also provide just a start or end time.
+    await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(
+        start: startTime,
+        end: endTime))
+    {
+        changeFeedEvents.Add(changeFeedEvent);
+    }
+
+    return changeFeedEvents;
+}
+```
+
+A megadott kezdési időpontot a legközelebbi órára kerekíti a rendszer, a befejezési időpontot pedig a legközelebbi órára kerekíti. Lehetséges, hogy a felhasználók a kezdés időpontja előtt és a Befejezés időpontja előtt bekövetkezett eseményeket láthatják. Az is lehetséges, hogy a kezdő és a záró időpont között előforduló események nem jelennek meg. Ennek az az oka, hogy az események a kezdési időpontnál korábbi órában vagy a befejezési időpont utáni órában lesznek rögzítve.
 
 ## <a name="next-steps"></a>További lépések
 

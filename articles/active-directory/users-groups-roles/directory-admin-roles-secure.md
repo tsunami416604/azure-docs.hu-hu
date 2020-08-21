@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807859"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691360"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -373,7 +373,7 @@ A Kiemelt jogosultságú hozzáférési fiókok kezelésekor a következő gyako
 * Csak szükség esetén adja meg a Kiemelt jogosultságú hozzáférést, és távolítsa el később (igény szerint)
 * A rendszerjogosultságú fiókokhoz kapcsolódó naplózási tevékenység naplóinak megőrzése
 
-A teljes biztonsági ütemterv létrehozásával kapcsolatos további információkért lásd: [Microsoft Cloud it Architecture Resources](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Ha a Microsoft-szolgáltatásokkal szeretne részt venni az ütemterv bármely részének megvalósításában, forduljon a Microsoft képviselőjéhez, vagy tekintse meg a [vállalata védelme érdekében a kritikus számítógépes védelem kiépítésével](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)foglalkozó témakört.
+A teljes biztonsági ütemterv létrehozásával kapcsolatos további információkért lásd: [Microsoft Cloud it Architecture Resources](https://almbok.com/office365/microsoft_cloud_it_architecture_resources). Ha a Microsoft-szolgáltatásokkal szeretne részt venni az ütemterv bármely részének megvalósításában, forduljon a Microsoft képviselőjéhez, vagy tekintse meg a [vállalata védelme érdekében a kritikus számítógépes védelem kiépítésével](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)foglalkozó témakört.
 
 A védett privilegizált hozzáférési ütemterv ezen végső szakasza a következő összetevőket tartalmazza.
 

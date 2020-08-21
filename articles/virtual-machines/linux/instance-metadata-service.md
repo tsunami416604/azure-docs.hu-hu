@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: d0f6655d22818c119d1098bbce96ea3699a42a50
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb9bc978e49cddab13ab1e4f7ec4f0b74d369ac1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168133"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705843"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
 Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról, és a virtuális gépek felügyeletéhez és konfigurálásához használható.
 Ezen információk közé tartozik a SKU, a Storage, a hálózati konfigurációk és a közelgő karbantartási események. Az elérhető adatok teljes listáját lásd: [metadata API](#metadata-apis)-k.
-Instance Metadata Service a virtuális gép és a virtuálisgép-méretezési csoport példányai esetében is elérhető. Csak [Azure Resource Manager](/rest/api/resources/)használatával létrehozott/kezelt virtuális gépek futtatására használható.
+Instance Metadata Service a virtuális gép és a virtuálisgép-méretezési csoport példányainak futtatására is használható. Minden API támogatja a [Azure Resource Manager](/rest/api/resources/)használatával létrehozott/kezelt virtuális gépeket. Csak az igazolt és a hálózati végpontok támogatják a klasszikus (nem ARM) virtuális gépeket, és ezt csak korlátozott mértékben kell tanúsítani.
 
 Az Azure IMDS egy olyan REST-végpont, amely egy jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` , csak a virtuális gépen belülről érhető el. A virtuális gép és a IMDS közötti kommunikáció soha nem hagyja el a gazdagépet.
 Ajánlott a HTTP-ügyfeleket a virtuális gépen lévő webproxyk megkerülésére a IMDS lekérdezése során, és `169.254.169.254` ugyanazokat a szolgáltatásokkal kezelni [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
@@ -421,7 +421,7 @@ AzurePublicCloud
 
 A felhő és az Azure-környezet értékei az alábbiakban láthatók.
 
- Felhő   | Azure-környezet
+ Felhőbeli   | Azure-környezet
 ---------|-----------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -684,7 +684,7 @@ Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMD
 }
 ```
 
-Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Tartalmazza az aláíráshoz használt tanúsítványt, valamint a virtuális gép részleteit, például a vmId, az SKU, az alkalom, a subscriptionId, az időbélyeg a dokumentum létrehozásához és lejáratához, valamint a rendszerképre vonatkozó terv információit. A csomag adatai csak az Azure Marketplace-lemezképek esetében vannak kitöltve. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
+Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Ez tartalmazza az aláíráshoz használt tanúsítványt, valamint bizonyos virtuálisgép-specifikus részleteket. ARM virtuális gépek esetén ez magában foglalja az vmId, az SKU, az alkalom, a subscriptionId, a dokumentum létrehozásának és lejáratának időbélyegét, valamint a rendszerképre vonatkozó terv adatait. A csomag adatai csak az Azure Marketplace-lemezképek esetében vannak kitöltve. A klasszikus (nem ARM) virtuális gépek esetében csak a vmId garantáltan kell feltölteni. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
 A dokumentum a következő mezőket tartalmazza:
 
 Adatok | Leírás
@@ -694,8 +694,11 @@ csomag | Az [Azure Marketplace-rendszerkép terve](/rest/api/compute/virtualmach
 időbélyeg/createdOn | Az aláírt dokumentum létrehozási időpontjának UTC-időbélyege
 időbélyeg/expiresOn | Az aláírt dokumentum érvényességi időpontjának UTC-időbélyege
 vmId |  A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | Azure-előfizetés a virtuális géphez, amely a következő címen található:`2019-04-30`
-SKU | A virtuálisgép-rendszerképhez tartozó, a következőben bemutatott SKU`2019-11-01`
+subscriptionId | Azure-előfizetés a virtuális géphez, amely a következő címen található: `2019-04-30`
+SKU | A virtuálisgép-rendszerképhez tartozó, a következőben bemutatott SKU `2019-11-01`
+
+> [!NOTE]
+> A klasszikus (nem ARM) virtuális gépek esetében csak a vmId garantáltan kell feltölteni.
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>2. minta: annak ellenőrzése, hogy a virtuális gép fut-e az Azure-ban
 
@@ -768,7 +771,7 @@ Az aláírt dokumentumban szereplő alkalom összehasonlítható, ha a kezdeti k
 > [!NOTE]
 > A nyilvános felhő és a szuverén felhő tanúsítványa eltérő lesz.
 
-Felhő | Tanúsítvány
+Felhőbeli | Tanúsítvány
 ------|------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/) | *. metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *. metadata.azure.us
@@ -901,7 +904,7 @@ Használja a probléma típusát, `Management` és válassza ki `Instance Metada
 
 ![Példány metaadatainak támogatása](./media/instance-metadata-service/InstanceMetadata-support.png "Képernyőfelvétel: támogatási eset megnyitása a Instance Metadata Serviceával kapcsolatos problémák esetén")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk:
 1. [Szerezze be a virtuális gép hozzáférési jogkivonatát](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).

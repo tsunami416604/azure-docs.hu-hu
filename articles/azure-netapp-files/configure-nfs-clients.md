@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 4a54858f4a09cd62bb555a6df2c12efa2290dd69
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 20cbc9b33e567ffe306aae694bb835d95c2d861e
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653171"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704977"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
 
-A Linux-disztribúciók széles választéka használható a Azure NetApp Fileshoz. Ez a cikk két leggyakrabban használt környezet konfigurációit ismerteti: RHEL 8 és Ubuntu 18,04. Az ebben a cikkben ismertetett NFS-ügyfél konfigurációja a [nfsv 4.1 Kerberos-titkosítás konfigurálásakor](configure-kerberos-encryption.md) vagy [egy kettős protokollú kötet létrehozásakor](create-volumes-dual-protocol.md)a telepítés része.  
+Az ebben a cikkben ismertetett NFS-ügyfél konfigurációja a [nfsv 4.1 Kerberos-titkosítás konfigurálásakor](configure-kerberos-encryption.md) vagy [egy kettős protokollú kötet létrehozásakor](create-volumes-dual-protocol.md)a telepítés része. A Linux-disztribúciók széles választéka használható a Azure NetApp Fileshoz. Ez a cikk két leggyakrabban használt környezet konfigurációit ismerteti: RHEL 8 és Ubuntu 18,04. 
 
 A használt Linux-íztől függetlenül a következő konfigurációk szükségesek:
 * Konfiguráljon egy NTP-ügyfelet, hogy elkerülje a problémák időbeli eldöntését.

@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606750"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705044"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-A Piactéri jutalmak támogatják a növekedés adott fázisát, kezdve a tudatosságnövelő tevékenységekkel, amelyek segítenek az első ügyfelek beszerzésében. A kereskedelmi piactéren való növekedéssel új előnyökkel járhat, amelyek segítenek az ügyfelek átalakításában és az ajánlatok bezárásában.
+A Piactéri jutalmak támogatják a növekedés adott fázisát, kezdve a tudatosságnövelő tevékenységekkel, amelyek segítenek az első ügyfelek beszerzésében. A Microsoft kereskedelmi piactéren való növekedéssel új előnyökkel járhat, amelyek segítenek az ügyfelek átalakításában és a lezárt ajánlatokban.
 
 A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyei a következő szakaszra mutatnak, ami lehetővé teszi, hogy a Microsoft ügyfeleinek, a Microsoft és a Microsoft csatornáján keresztül növelje vállalatát, és a kereskedelmi piactért platformként hasznosítsa.
 
-Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](../determine-your-listing-type.md#choose-a-call-to-action).
+Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](../determine-your-listing-type.md#choose-a-listing-option).
 
 A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 
-A Transact-partnerek esetében, ahogy a Piactéri platformon keresztül növeli a számlázott értékesítést, a magasabb szintű előnyök feloldhatók.
+A Transact Partners esetében, ahogy a kereskedelmi Marketplace platformon keresztül növeli a számlázott értékesítést, magasabb szintű előnyökkel jár.
 
-Az online áruházakban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, az MPN-kompetencia állapotától vagy a partner típusától függetlenül. Minden partner számára lehetővé teszi, hogy platformként növelje üzleti tevékenységét a piactéren.
+Az online áruházakban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, az MPN-kompetencia állapotától vagy a partner típusától függetlenül. Minden partner a kereskedelmi Piactéren keresztül fejleszti üzleti tevékenységét.
 
 Támogatást kaphat az Ön számára elérhető erőforrások megismeréséhez és az ajánlott eljárások megvalósításához, amelyeket [saját maga is megtekintheti](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Tekintse meg a Marketplace jutalmazási programhoz való jogosultságot [itt](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace).
+Ha szeretné megtekinteni a Marketplace jutalmazási program jogosultságát, tekintse meg a [Marketplace jutalmazási](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) oldalát a partner Centerben.
 
 A kezdéshez szükséges lépések egyszerűek:
 

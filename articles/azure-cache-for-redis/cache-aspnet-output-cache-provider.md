@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 0c60eb8618568d01af9ec6ad0e3d00fe1332b766
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213021"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705027"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
 
@@ -52,12 +52,12 @@ A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat
 
 Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
 
-| Attribútum | Típus | Alapértelmezett | Description |
+| Attribútum | Típus | Alapértelmezett | Leírás |
 | --------- | ---- | ------- | ----------- |
 | *gazdagép* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
 | *Port* | pozitív egész szám | 6379 (nem TLS/SSL)<br/>6380 (TLS/SSL) | Redis-kiszolgáló portja |
 | *accessKey* | sztring | "" | Redis-kiszolgáló jelszavának engedélyezése, ha engedélyezve van a Redis engedélyezése. Alapértelmezés szerint az érték üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló nyilvánosan elérhető hálózatban (például Azure Redis Cache) található, ügyeljen arra, hogy a biztonság növelése érdekében engedélyezze a Redis-engedélyezést, és adjon meg egy biztonságos jelszót.** |
-| *SSL* | boolean | **hamis** | Azt jelzi, hogy a TLS-kapcsolaton keresztül csatlakozik-e a Redis-kiszolgálóhoz Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja a TLS-t a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem TLS port alapértelmezés szerint le van tiltva az új gyorsítótárak esetében. Ha ezt a beállítást szeretné használni a TLS-portot használja, akkor az **igaz** értéket kell megadni. A nem TLS port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
+| *SSL* | boolean | **hamis** | Azt jelzi, hogy a TLS-kapcsolaton keresztül csatlakozik-e a Redis-kiszolgálóhoz Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja a TLS-t a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem TLS port alapértelmezés szerint le van tiltva az új gyorsítótárak esetében. Ha ezt a beállítást szeretné használni, a nem TLS portot használja a **true (igaz** ) érték megadásával. A nem TLS port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
 | *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>Határozza meg, hogy melyik Redis-adatbázist kívánja használni. |
 | *connectionTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *ConnectTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
 | *operationTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *SyncTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
@@ -204,6 +204,6 @@ A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szo
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg az [Azure Cache ASP.NET munkamenet-szolgáltatóját a Redis](cache-aspnet-session-state-provider.md).

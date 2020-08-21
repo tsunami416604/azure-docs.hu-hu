@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260631"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705129"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Gyors útmutató: Azure Firewall üzembe helyezése Availability Zones ARM-sablonnal
 
@@ -29,7 +29,7 @@ A felhasználó által megadott útvonal hálózati forgalmat végez a *ServersS
 
 További információ a Azure Firewallről: [Azure Firewall központi telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md).
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
@@ -41,9 +41,9 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok 
 
 Ez a sablon létrehoz egy Azure Firewall a Availability Zones, valamint a szükséges erőforrásokat a Azure Firewall támogatásához.
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -88,7 +88,7 @@ Remove-AzResourceGroup -Name MyResourceGroup
 
 Ha folytatni szeretné a tűzfal-figyelési oktatóanyagot, ne távolítsa el az erőforráscsoportot és a tűzfalat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

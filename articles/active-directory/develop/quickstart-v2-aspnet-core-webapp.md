@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165770"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691326"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -148,7 +148,7 @@ A sort tartalmazó vonal `.AddAzureAd` hozzáadja a Microsoft Identity platform 
 > |Ahol | Leírás |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) azonosítója a Azure Portal regisztrált alkalmazásban. |
-> | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
+> | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez a `https://login.microsoftonline.com/{tenant}/v2.0` nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
 > | TokenValidationParameters | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben úgy `ValidateIssuer` van beállítva, hogy `false` jelezze, hogy fogadja-e a bejelentkezést bármely személyes vagy munkahelyi vagy iskolai fiókból. |
 
 

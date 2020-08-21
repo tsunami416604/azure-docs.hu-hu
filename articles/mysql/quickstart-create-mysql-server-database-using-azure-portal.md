@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: 61da81dd96078e0577e00be37fe27211a5b62154
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 840e7769e8a242314b10562684c942a2468ea5ad
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084413"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705146"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Rövid útmutató: Azure Database for MySQL-kiszolgáló létrehozása a Azure Portal
 
@@ -52,7 +52,7 @@ Jelszó | *Az Ön választása* | Adjon meg új jelszót a kiszolgálói rendsze
 Jelszó megerősítése | *Az Ön választása*| Erősítse meg a rendszergazdafiók jelszavát.
 Hely | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
 Verzió | *A legújabb főverzió*| A legújabb főverzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
-Számítás és tárolás | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** |Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. Ezután válassza ki a megfelelő díjszabási szintet, és további információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/mysql/). Ha engedélyezni szeretné a kiszolgáló biztonsági mentését a földrajzilag redundáns tárolóban, válassza a **földrajzilag redundáns** **lehetőséget a biztonsági mentési redundancia lehetőségei**közül. Kattintson az **OK** gombra.
+Számítás és tárolás | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** |Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. Ezután válassza ki a megfelelő díjszabási szintet, és további információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/mysql/). Ha engedélyezni szeretné a kiszolgáló biztonsági mentését a földrajzilag redundáns tárolóban, válassza a **földrajzilag redundáns** **lehetőséget a biztonsági mentési redundancia lehetőségei**közül. Válassza az **OK** lehetőséget.
 
    > [!NOTE]
    > Érdemes lehet az alapszintű díjszabást használni, ha a számítási feladathoz elegendő a könnyű számítás és az I/O. Vegye figyelembe, hogy az alapszintű díjszabásban létrehozott kiszolgálók később nem méretezhetők át általános célú vagy a memóriára optimalizált értékre. 
@@ -84,7 +84,7 @@ Az [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy a [MySQL
 
    >[!div class="mx-imgBorder"]
    > ![Portál teljes nézete Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
-2. Futtassa ezt a parancsot Azure Cloud Shell terminálon. Cserélje le az értékeket a tényleges kiszolgálónévre és a rendszergazda felhasználói bejelentkezési nevére. A rendszergazdai felhasználónévhez az alább látható @ nevet kell megadni <servername> Azure Database for MySQL  
+2. Futtassa ezt a parancsot Azure Cloud Shell terminálon. Cserélje le az értékeket a tényleges kiszolgálónévre és a rendszergazda felhasználói bejelentkezési nevére. A rendszergazdai felhasználónévhez az alább látható módon kell megadni a "@ \<servername> "-t Azure Database for MySQL  
 
   ```azurecli-interactive
   mysql --host=mydemoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
@@ -100,7 +100,7 @@ Az [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy a [MySQL
   Type "az" to use Azure CLI
   Type "help" to learn about Cloud Shell
 
-  sunitha@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u admin@wpapp-mysqldbserver -p
+  user@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
   Enter password:
   Welcome to the MySQL monitor.  Commands end with ; or \g.
   Your MySQL connection id is 64796
@@ -127,7 +127,7 @@ Az [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy a [MySQL
   ```
 5. Írja be ```quit``` a értéket, majd válassza ki az ENTER billentyűt a MySQL kilépéséhez.   
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Sikeresen létrehozott egy Azure Database for MySQL-kiszolgálót egy erőforráscsoporthoz.  Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölheti őket az erőforráscsoport törlésével vagy csak a MySQL-kiszolgáló törlésével. Az erőforráscsoport törléséhez kövesse az alábbi lépéseket:
 1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok**elemet. 
 2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.

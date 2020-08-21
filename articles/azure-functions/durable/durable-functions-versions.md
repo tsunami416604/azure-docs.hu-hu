@@ -3,14 +3,14 @@ title: Durable Functions verziók áttekintése – Azure Functions
 description: További információ a Durable Functions verziókról.
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024724"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705792"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
 
@@ -44,7 +44,29 @@ Ez a szakasz azt ismerteti, hogyan telepítheti át a meglévő 1. x verziójú 
 
 ### <a name="upgrade-the-extension"></a>A bővítmény frissítése
 
-Telepítse a projektben a [Durable functions kötések bővítmény](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 2. x verzióját. További információért lásd: [Azure functions kötési bővítmények regisztrálása](../functions-bindings-register.md) .
+Telepítse a projektben a Durable Functions kötések bővítményének legújabb 2. x verzióját.
+
+#### <a name="javascript-and-python"></a>JavaScript és Python
+
+Durable Functions 2. x a [Azure functions Extension Bundle](../functions-bindings-register.md#extension-bundles)2. x verziójában érhető el.
+
+Ha frissíteni szeretné a bővítmény csomagjának verzióját a projektben, nyissa meg a host.jst, és frissítse a `extensionBundle` szakaszt a 2. x () verzió használatára `[2.*, 3.0.0)` .
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+Frissítse .NET-projektjét, hogy az [Durable functions kötések bővítmény](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)legújabb verzióját használja.
+
+További információért lásd: [Azure functions kötési bővítmények regisztrálása](../functions-bindings-register.md#local-csharp) .
 
 ### <a name="update-your-code"></a>A kód frissítése
 
@@ -54,9 +76,9 @@ Durable Functions 2. x több feltörési változást vezet be. Durable Functions
 
 A Durable Functions 2. x egy új host.jshasznál a sémán. Az 1. x fő változásai a következők:
 
-* `"storageProvider"`(és az `"azureStorage"` alszakasz) a Storage-specifikus konfigurációhoz.
-* `"tracing"`nyomkövetési és naplózási konfigurációhoz.
-* `"notifications"`(és az `"eventGrid"` alszakasz) az Event Grid-értesítési konfigurációhoz.
+* `"storageProvider"` (és az `"azureStorage"` alszakasz) a Storage-specifikus konfigurációhoz.
+* `"tracing"` nyomkövetési és naplózási konfigurációhoz.
+* `"notifications"` (és az `"eventGrid"` alszakasz) az Event Grid-értesítési konfigurációhoz.
 
 A részletekért tekintse [meg az Durable Functions host.jsdokumentációját](durable-functions-bindings.md#durable-functions-2-0-host-json) .
 

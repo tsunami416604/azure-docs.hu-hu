@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7e89188e7ebc979c403b86ee26c876e8c40aa208
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260555"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705435"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – ARM-sablon
 
@@ -23,7 +23,7 @@ Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) ha
 
 További információ a több nyilvános IP-címmel rendelkező Azure Firewallről: [Azure Firewall üzembe helyezése több nyilvános IP-címmel Azure PowerShell használatával](deploy-multi-public-ip-powershell.md).
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
@@ -35,9 +35,9 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok 
 
 Ez a sablon két nyilvános IP-címmel rendelkező Azure Firewall hoz létre, valamint a szükséges erőforrásokat a Azure Firewall támogatásához.
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/fw-docs-qs)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/fw-docs-qs) közül származik.
 
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
+:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -83,7 +83,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)
